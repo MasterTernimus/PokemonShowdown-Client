@@ -19,7 +19,7 @@ Config.whitelist = [
 // address bar is `Config.routes.client`.
 Config.defaultserver = {
 	id: 'showdown',
-	host: 'pokemonshowdown-reborn.xyz',
+	host: 'server.pokemonshowdown-reborn.xyz',
 	port: 443,
 	httpport: 80,
 	altport: 80,
