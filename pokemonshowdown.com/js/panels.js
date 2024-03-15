@@ -58,7 +58,8 @@ if (!Function.prototype.bind) {
 	};
 
 	var App = Panels.App = Backbone.Router.extend({
-		constructor: function(options) {
+		constructor: function (options) {
+			console.log("This?");
 			if (!options) options = {};
 			if (options.root) this.root = options.root;
 			for (var i in this.states) {
