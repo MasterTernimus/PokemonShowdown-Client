@@ -326,6 +326,10 @@ exports.BattleTextAFD = {
 		end: "  The weirdness disappeared from the battlefield!",
 		block: "  [POKEMON] surrounds itself with psychic terrain!",
 	},
+	rainbowterrain: {
+		start: " What does it mean?",
+		end: " The rainbows disappeared!",
+	},
 
 	// field effects
 	gravity: {
