@@ -717,15 +717,6 @@ export class Side {
 		case 'gmaxcannonade':
 			this.sideConditions[condition] = [effect.name, 1, 4, 0];
 			break;
-		case 'grasspledge':
-			this.sideConditions[condition] = ['Swamp', 1, 4, 0];
-			break;
-		case 'waterpledge':
-			this.sideConditions[condition] = ['Rainbow', 1, 4, 0];
-			break;
-		case 'firepledge':
-			this.sideConditions[condition] = ['Sea of Fire', 1, 4, 0];
-			break;
 		default:
 			this.sideConditions[condition] = [effect.name, 1, 0, 0];
 			break;

@@ -450,6 +450,7 @@ License: GPLv2
 	background: #AAAAAA url(../fx/weather-strongwind.png) no-repeat scroll left top;
 	color: #666666;
 }
+
 .rainbowterrainweather{
 	 background: #EEAACC url(../fx/weather-rainbowterrain.png) no-repeat scroll left top;
 	  color: #551144;
@@ -470,6 +471,273 @@ License: GPLv2
 	background: #CCAAEE url(../fx/weather-psychicterrain.png) no-repeat scroll left top;
 	color: #441155;
 }
+.mirrorterrainweather {
+    background: #CCAAEE url(../fx/weather-mirrorterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+
+.watersurfaceterrainweather {
+    background: #CCAAEE url(../fx/weather-watersurfaceterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+.eliteterrainweather {
+    background: #CCAAEE url(../fx/weather-eliteterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+
+.electricterrainweather {
+    background: #CCAAEE url(../fx/weather-electricterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+
+.burningterrainweather {
+    background: #CCAAEE url(../fx/weather-burningterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+
+.flowergarden1terrainweather {
+    background: #CCAAEE url(../fx/weather-flowergarden1terrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+
+.devroomterrainweather {
+    background: #CCAAEE url(../fx/weather-devroomterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+
+.dragonsdenterrainweather {
+    background: #CCAAEE url(../fx/weather-dragonsdenterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+
+.ashenbeachterrainweather {
+    background: #CCAAEE url(../fx/weather-ashenbeachterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+
+.crystalcavernterrainweather {
+    background: #CCAAEE url(../fx/weather-crystalcavernterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+
+.forestterrainweather {
+    background: #CCAAEE url(../fx/weather-forestterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+
+.glitchterrainweather {
+    background: #CCAAEE url(../fx/weather-glitchterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+
+.darkcrystalcavernterrainweather {
+    background: #CCAAEE url(../fx/weather-darkcrystalcavernterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+
+.waternightterrainweather {
+    background: #CCAAEE url(../fx/weather-waternightterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+
+.mountainterrainweather {
+    background: #CCAAEE url(../fx/weather-mountainterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+
+.flowergarden3terrainweather {
+    background: #CCAAEE url(../fx/weather-flowergarden3terrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+
+.cityterrainweather {
+    background: #CCAAEE url(../fx/weather-cityterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+
+.superheatedterrainweather {
+    background: #CCAAEE url(../fx/weather-superheatedterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+
+.nightclubterrainweather {
+    background: #CCAAEE url(../fx/weather-nightclubterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+
+.murkwatersurfaceterrainweather {
+    background: #CCAAEE url(../fx/weather-murkwatersurfaceterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+
+.holyterrainweather {
+    background: #CCAAEE url(../fx/weather-holyterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+
+.bigtopterrainweather {
+    background: #CCAAEE url(../fx/weather-bigtopterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+
+.starlightterrainweather {
+    background: #CCAAEE url(../fx/weather-starlightterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+
+.underwaterterrainweather {
+    background: #CCAAEE url(../fx/weather-underwaterterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+
+.snowymountainterrainweather {
+    background: #CCAAEE url(../fx/weather-snowymountainterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+
+.psychicterrainweather {
+    background: #CCAAEE url(../fx/weather-psychicterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+
+.flowergarden4terrainweather {
+    background: #CCAAEE url(../fx/weather-flowergarden4terrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+
+.elitebterrainweather {
+    background: #CCAAEE url(../fx/weather-elitebterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+
+.flowergarden0terrainweather {
+    background: #CCAAEE url(../fx/weather-flowergarden0terrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+
+.glitch2terrainweather {
+    background: #CCAAEE url(../fx/weather-glitch2terrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+
+.wastelandterrainweather {
+    background: #CCAAEE url(../fx/weather-wastelandterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+
+.eliteaterrainweather {
+    background: #CCAAEE url(../fx/weather-eliteaterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+.watereveterrainweather {
+    background: #CCAAEE url(../fx/weather-watereveterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+
+.citynewterrainweather {
+    background: #CCAAEE url(../fx/weather-citynewterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+
+.elitecterrainweather {
+    background: #CCAAEE url(../fx/weather-elitecterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+
+.fairytaleterrainweather {
+    background: #CCAAEE url(../fx/weather-fairytaleterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+
+.championterrainweather {
+    background: #CCAAEE url(../fx/weather-championterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+
+.waterterrainweather {
+    background: #CCAAEE url(../fx/weather-waterterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+
+.inverseterrainweather {
+    background: #CCAAEE url(../fx/weather-inverseterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+
+.corrosivemistterrainweather {
+    background: #CCAAEE url(../fx/weather-corrosivemistterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+
+.corrosiveterrainweather {
+    background: #CCAAEE url(../fx/weather-corrosiveterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+
+.factoryterrainweather {
+    background: #CCAAEE url(../fx/weather-factoryterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+
+.swampterrainweather {
+    background: #CCAAEE url(../fx/weather-swampterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+
+.mistyterrainweather {
+    background: #CCAAEE url(../fx/weather-mistyterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+
+.flowergarden2terrainweather {
+    background: #CCAAEE url(../fx/weather-flowergarden2terrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+
+.fieldnightterrainweather {
+    background: #CCAAEE url(../fx/weather-fieldnightterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+
+.desertterrainweather {
+    background: #CCAAEE url(../fx/weather-desertterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+
+.rockyterrainweather {
+    background: #CCAAEE url(../fx/weather-rockyterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+.grassyterrainweather {
+    background: #CCAAEE url(../fx/weather-grassyterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+.fieldeveterrainweather {
+    background: #CCAAEE url(../fx/weather-fieldeveterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+.caveterrainweather {
+    background: #CCAAEE url(../fx/weather-caveterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+.newworldterrainweather {
+    background: #CCAAEE url(../fx/weather-newworldterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+.chessterrainweather {
+    background: #CCAAEE url(../fx/weather-chessterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+.shortcircuitterrainweather {
+    background: #CCAAEE url(../fx/weather-shortcircuitterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+
+.icyterrainweather {
+    background: #CCAAEE url(../fx/weather-icyterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+
 .gravityweather {
 	background: #DDAAEE url(../fx/weather-gravity.png) no-repeat scroll left top;
 	color: #661155;
