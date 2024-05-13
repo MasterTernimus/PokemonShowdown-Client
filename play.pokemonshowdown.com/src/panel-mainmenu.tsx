@@ -414,11 +414,11 @@ class FormatDropdown extends preact.Component<{format?: string, onChange?: JSX.E
 	render() {
 		if (this.props.format) {
 			return <button
-			name="format" value={this.props.format + " Bro"} class="select formatselect preselected" disabled
+			name="format" value={this.props.format} class="select formatselect preselected" disabled
 			>{this.props.format}</button>;
 		}
 		return <button
-			name="format" value={this.format + "Bro"}
+			name="format" value={this.format}
 			class="select formatselect" data-href="/formatdropdown" onChange={this.change}
 		>
 			{this.format}
