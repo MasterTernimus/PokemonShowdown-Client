@@ -404,7 +404,7 @@ class MainMenuPanel extends PSRoomPanel<MainMenuRoom> {
 
 class FormatDropdown extends preact.Component<{format?: string, onChange?: JSX.EventHandler<Event>}> {
 	declare base?: HTMLButtonElement;
-	format = '[Gen 7] Random Battl';
+	format = '[Gen 7] Random Battle';
 	change = (e: Event) => {
 		if (!this.base) return;
 		this.format = this.base.value;
@@ -414,11 +414,11 @@ class FormatDropdown extends preact.Component<{format?: string, onChange?: JSX.E
 	render() {
 		if (this.props.format) {
 			return <button
-			name="format" value={this.props.format} class="select formatselect preselected" disabled
+			name="format" value={this.props.format + " Bro"} class="select formatselect preselected" disabled
 			>{this.props.format}</button>;
 		}
 		return <button
-			name="format" value={this.format}
+			name="format" value={this.format + "Bro"}
 			class="select formatselect" data-href="/formatdropdown" onChange={this.change}
 		>
 			{this.format}
