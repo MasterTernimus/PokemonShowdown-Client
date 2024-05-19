@@ -16,7 +16,7 @@ const fs = require('fs');
 
 const thisFile = __filename;
 const thisDir = __dirname;
-const rootDir = path.resolve(thisDir, '../play.pokemonshowdown.com');
+const rootDir = path.resolve(thisDir, '../play.pokemonshowdown-reborn.xyz');
 
 const Dex = require('../caches/PokemonShowdown-Reborn/dist/sim/dex').Dex;
 const toID = Dex.toID;
