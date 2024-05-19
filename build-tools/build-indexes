@@ -300,7 +300,7 @@ function requireNoCache(pathSpec) {
 
 	buf += 'exports.BattleArticleTitles = ' + JSON.stringify(BattleArticleTitles) + ';\n\n';
 
-	fs.writeFileSync('play.pokemonshowdown.com/data/search-index.js', buf);
+	fs.writeFileSync('play.pokemonshowdown-reborn.xyz/data/search-index.js', buf);
 }
 
 console.log("DONE");
@@ -1196,7 +1196,7 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 
 	buf += `exports.BattleTeambuilderTable = JSON.parse('${JSON.stringify(BattleTeambuilderTable).replace(/['\\]/g, "\\$&")}');\n\n`;
 
-	fs.writeFileSync('play.pokemonshowdown.com/data/teambuilder-tables.js', buf);
+	fs.writeFileSync('play.pokemonshowdown-reborn.xyz/data/teambuilder-tables.js', buf);
 }
 
 console.log("DONE");
