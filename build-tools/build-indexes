@@ -300,7 +300,7 @@ function requireNoCache(pathSpec) {
 
 	buf += 'exports.BattleArticleTitles = ' + JSON.stringify(BattleArticleTitles) + ';\n\n';
 
-	fs.writeFileSync('play.pokemonshowdown-reborn.xyz/data/search-index.js', buf);
+	fs.writeFileSync('play.pokemonshowdown.com/data/search-index.js', buf);
 }
 
 console.log("DONE");
