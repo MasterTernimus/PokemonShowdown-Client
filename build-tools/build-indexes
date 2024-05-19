@@ -299,7 +299,7 @@ function requireNoCache(pathSpec) {
 	buf += 'exports.BattleSearchCountIndex = ' + JSON.stringify(BattleSearchCountIndex) + ';\n\n';
 
 	buf += 'exports.BattleArticleTitles = ' + JSON.stringify(BattleArticleTitles) + ';\n\n';
-
+	console.log(process.cwd());
 	fs.writeFileSync('play.pokemonshowdown-reborn.xyz/data/search-index.js', buf);
 }
 
