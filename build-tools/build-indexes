@@ -299,8 +299,8 @@ function requireNoCache(pathSpec) {
 	buf += 'exports.BattleSearchCountIndex = ' + JSON.stringify(BattleSearchCountIndex) + ';\n\n';
 
 	buf += 'exports.BattleArticleTitles = ' + JSON.stringify(BattleArticleTitles) + ';\n\n';
-	console.log(process.cwd());
-	fs.writeFileSync('play.pokemonshowdown-reborn.xyz/data/search-index.js', buf);
+
+	fs.writeFileSync('/var/www/PokemonShowdown-Client/play.pokemonshowdown.com/data/search-index.js', buf);
 }
 
 console.log("DONE");
@@ -1196,7 +1196,7 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 
 	buf += `exports.BattleTeambuilderTable = JSON.parse('${JSON.stringify(BattleTeambuilderTable).replace(/['\\]/g, "\\$&")}');\n\n`;
 
-	fs.writeFileSync('play.pokemonshowdown-reborn.xyz/data/teambuilder-tables.js', buf);
+	fs.writeFileSync('/var/www/PokemonShowdown-Client/play.pokemonshowdown.com/data/teambuilder-tables.js', buf);
 }
 
 console.log("DONE");
@@ -1220,8 +1220,8 @@ process.stdout.write("Building `data/pokedex.js`... ");
 		}
 	}
 	const buf = 'exports.BattlePokedex = ' + es3stringify(Pokedex) + ';';
-	fs.writeFileSync('play.pokemonshowdown-reborn.xyz/data/pokedex.js', buf);
-	fs.writeFileSync('play.pokemonshowdown-reborn.xyz/data/pokedex.json', JSON.stringify(Pokedex));
+	fs.writeFileSync('/var/www/PokemonShowdown-Client/play.pokemonshowdown.com/data/pokedex.js', buf);
+	fs.writeFileSync('/var/www/PokemonShowdown-Client/play.pokemonshowdown.com/data/pokedex.json', JSON.stringify(Pokedex));
 }
 
 console.log("DONE");
@@ -1241,8 +1241,8 @@ process.stdout.write("Building `data/moves,items,abilities,typechart,learnsets.j
 		if (move.basePowerCallback) Moves[id].basePowerCallback = true;
 	}
 	const buf = 'exports.BattleMovedex = ' + es3stringify(Moves) + ';';
-	fs.writeFileSync('play.pokemonshowdown-reborn.xyz/data/moves.js', buf);
-	fs.writeFileSync('play.pokemonshowdown-reborn.xyz/data/moves.json', JSON.stringify(Moves));
+	fs.writeFileSync('/var/www/PokemonShowdown-Client/play.pokemonshowdown.com/data/moves.js', buf);
+	fs.writeFileSync('/var/www/PokemonShowdown-Client/play.pokemonshowdown.com/data/moves.json', JSON.stringify(Moves));
 }
 
 /*********************************************************
@@ -1257,7 +1257,7 @@ process.stdout.write("Building `data/moves,items,abilities,typechart,learnsets.j
 		if (item.shortDesc) Items[id].shortDesc = item.shortDesc;
 	}
 	const buf = 'exports.BattleItems = ' + es3stringify(Items) + ';';
-	fs.writeFileSync('play.pokemonshowdown-reborn.xyz/data/items.js', buf);
+	fs.writeFileSync('/var/www/PokemonShowdown-Client/play.pokemonshowdown.com/data/items.js', buf);
 }
 
 /*********************************************************
@@ -1272,7 +1272,7 @@ process.stdout.write("Building `data/moves,items,abilities,typechart,learnsets.j
 		if (ability.shortDesc) Abilities[id].shortDesc = ability.shortDesc;
 	}
 	const buf = 'exports.BattleAbilities = ' + es3stringify(Abilities) + ';';
-	fs.writeFileSync('play.pokemonshowdown-reborn.xyz/data/abilities.js', buf);
+	fs.writeFileSync('/var/www/PokemonShowdown-Client/play.pokemonshowdown.com/data/abilities.js', buf);
 }
 
 /*********************************************************
@@ -1282,7 +1282,7 @@ process.stdout.write("Building `data/moves,items,abilities,typechart,learnsets.j
 {
 	const TypeChart = requireNoCache('../caches/PokemonShowdown-Reborn/dist/data/typechart.js').TypeChart;
 	const buf = 'exports.BattleTypeChart = ' + es3stringify(TypeChart) + ';';
-	fs.writeFileSync('play.pokemonshowdown-reborn.xyz/data/typechart.js', buf);
+	fs.writeFileSync('/var/www/PokemonShowdown-Client/play.pokemonshowdown.com/data/typechart.js', buf);
 }
 
 /*********************************************************
@@ -1292,7 +1292,7 @@ process.stdout.write("Building `data/moves,items,abilities,typechart,learnsets.j
 {
 	const Aliases = requireNoCache('../caches/PokemonShowdown-Reborn/dist/data/aliases.js').Aliases;
 	const buf = 'exports.BattleAliases = ' + es3stringify(Aliases) + ';';
-	fs.writeFileSync('play.pokemonshowdown-reborn.xyz/data/aliases.js', buf);
+	fs.writeFileSync('/var/www/PokemonShowdown-Client/play.pokemonshowdown.com/data/aliases.js', buf);
 }
 
 /*********************************************************
@@ -1302,7 +1302,7 @@ process.stdout.write("Building `data/moves,items,abilities,typechart,learnsets.j
 {
 	const FormatsData = requireNoCache('../caches/PokemonShowdown-Reborn/dist/data/formats-data.js').FormatsData;
 	const buf = 'exports.BattleFormatsData = ' + es3stringify(FormatsData) + ';';
-	fs.writeFileSync('play.pokemonshowdown-reborn.xyz/data/formats-data.js', buf);
+	fs.writeFileSync('/var/www/PokemonShowdown-Client/play.pokemonshowdown.com/data/formats-data.js', buf);
 }
 
 /*********************************************************
@@ -1312,7 +1312,7 @@ process.stdout.write("Building `data/moves,items,abilities,typechart,learnsets.j
 {
 	const Formats = requireNoCache('../caches/PokemonShowdown-Reborn/dist/config/formats.js').Formats;
 	const buf = 'exports.Formats = ' + es3stringify(Formats) + ';';
-	fs.writeFileSync('play.pokemonshowdown-reborn.xyz/data/formats.js', buf);
+	fs.writeFileSync('/var/www/PokemonShowdown-Client/play.pokemonshowdown.com/data/formats.js', buf);
 }
 
 /*********************************************************
@@ -1322,8 +1322,8 @@ process.stdout.write("Building `data/moves,items,abilities,typechart,learnsets.j
 {
 	const Learnsets = requireNoCache('../caches/PokemonShowdown-Reborn/dist/data/learnsets.js').Learnsets;
 	const buf = 'exports.BattleLearnsets = ' + es3stringify(Learnsets) + ';';
-	fs.writeFileSync('play.pokemonshowdown-reborn.xyz/data/learnsets.js', buf);
-	fs.writeFileSync('play.pokemonshowdown-reborn.xyz/data/learnsets.json', JSON.stringify(Learnsets));
+	fs.writeFileSync('/var/www/PokemonShowdown-Client/play.pokemonshowdown.com/data/learnsets.js', buf);
+	fs.writeFileSync('/var/www/PokemonShowdown-Client/play.pokemonshowdown.com/data/learnsets.json', JSON.stringify(Learnsets));
 }
 
 /*********************************************************
@@ -1354,7 +1354,7 @@ process.stdout.write("Building `data/moves,items,abilities,typechart,learnsets.j
 	for (const id in textData.Items) assignData(id, textData.Items[id]);
 
 	const buf = 'exports.BattleText = ' + es3stringify(Text) + ';';
-	fs.writeFileSync('play.pokemonshowdown-reborn.xyz/data/text.js', buf);
+	fs.writeFileSync('/var/www/PokemonShowdown-Client/play.pokemonshowdown.com/data/text.js', buf);
 }
 
 console.log("DONE");
