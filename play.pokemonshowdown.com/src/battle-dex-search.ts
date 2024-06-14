@@ -581,7 +581,10 @@ abstract class BattleTypedSearch<T extends SearchType> {
 		} else if (!format) {
 			this.dex = Dex;
 		}
-
+		if (format.includes('Field') || format.includes('Arena')) {
+			format = format.slice(4) as ID;
+			this.formatType = "natdex";
+		}
 		if (format.startsWith('dlc1') && this.dex.gen === 8) {
 			if (format.includes('doubles')) {
 				this.formatType = 'ssdlc1doubles';
