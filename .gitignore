@@ -4,3 +4,7 @@ play.pokemonshowdown.com/config/config.js
 *.html
 *.map
 *.php
+*.js
+play.pokemonshowdown.com/config/config.js
+play.pokemonshowdown.com/config/testclient-key.js
+*.js
