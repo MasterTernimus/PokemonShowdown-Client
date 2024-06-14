@@ -573,17 +573,12 @@ abstract class BattleTypedSearch<T extends SearchType> {
 
 		this.baseResults = null;
 		this.baseIllegalResults = null;
-
 		if (format.slice(0, 3) === 'gen') {
 			const gen = (Number(format.charAt(3)) || 6);
 			format = (format.slice(4) || 'customgame') as ID;
 			this.dex = Dex.forGen(gen);
 		} else if (!format) {
 			this.dex = Dex;
-		}
-		if (format.includes('Field') || format.includes('Arena')) {
-			format = format.slice(4) as ID;
-			this.formatType = "natdex";
 		}
 		if (format.startsWith('dlc1') && this.dex.gen === 8) {
 			if (format.includes('doubles')) {
@@ -637,7 +632,7 @@ abstract class BattleTypedSearch<T extends SearchType> {
 			this.formatType = 'letsgo';
 			this.dex = Dex.mod('gen7letsgo' as ID);
 		}
-		if (format.includes('nationaldex') || format.startsWith('nd') || format.includes('natdex')) {
+		if (format.includes('nationaldex') || format.startsWith('nd') || format.includes('natdex') || format.includes('field') || format.includes('arena')) {
 			if (format !== 'nationaldexdoubles') {
 				format = (format.startsWith('nd') ? format.slice(2) :
 					format.includes('natdex') ? format.slice(6) : format.slice(11)) as ID;
