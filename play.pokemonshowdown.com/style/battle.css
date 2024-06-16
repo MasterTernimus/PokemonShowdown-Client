@@ -471,8 +471,8 @@ License: GPLv2
 	background: #CCAAEE url(../fx/weather-psychicterrain.png) no-repeat scroll left top;
 	color: #441155;
 }
-.mirrorterrainweather {
-    background: #CCAAEE url(../fx/weather-mirrorterrain.png) no-repeat scroll left top;
+.mirrorarenaterrainweather {
+    background: #CCAAEE url(../fx/weather-mirrorarenaterrain.png) no-repeat scroll left top;
     color: #441155;
 }
 
@@ -482,11 +482,6 @@ License: GPLv2
 }
 .eliteterrainweather {
     background: #CCAAEE url(../fx/weather-eliteterrain.png) no-repeat scroll left top;
-    color: #441155;
-}
-
-.electricterrainweather {
-    background: #CCAAEE url(../fx/weather-electricterrain.png) no-repeat scroll left top;
     color: #441155;
 }
 
@@ -595,11 +590,6 @@ License: GPLv2
     color: #441155;
 }
 
-.psychicterrainweather {
-    background: #CCAAEE url(../fx/weather-psychicterrain.png) no-repeat scroll left top;
-    color: #441155;
-}
-
 .flowergarden4terrainweather {
     background: #CCAAEE url(../fx/weather-flowergarden4terrain.png) no-repeat scroll left top;
     color: #441155;
@@ -684,11 +674,6 @@ License: GPLv2
     color: #441155;
 }
 
-.mistyterrainweather {
-    background: #CCAAEE url(../fx/weather-mistyterrain.png) no-repeat scroll left top;
-    color: #441155;
-}
-
 .flowergarden2terrainweather {
     background: #CCAAEE url(../fx/weather-flowergarden2terrain.png) no-repeat scroll left top;
     color: #441155;
@@ -708,10 +693,7 @@ License: GPLv2
     background: #CCAAEE url(../fx/weather-rockyterrain.png) no-repeat scroll left top;
     color: #441155;
 }
-.grassyterrainweather {
-    background: #CCAAEE url(../fx/weather-grassyterrain.png) no-repeat scroll left top;
-    color: #441155;
-}
+
 .fieldeveterrainweather {
     background: #CCAAEE url(../fx/weather-fieldeveterrain.png) no-repeat scroll left top;
     color: #441155;
