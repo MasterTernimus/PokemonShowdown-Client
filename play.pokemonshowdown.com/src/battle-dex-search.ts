@@ -632,7 +632,7 @@ abstract class BattleTypedSearch<T extends SearchType> {
 			this.formatType = 'letsgo';
 			this.dex = Dex.mod('gen7letsgo' as ID);
 		}
-		if (format.includes('nationaldex') || format.startsWith('nd') || format.includes('natdex') || format.includes('field') || format.includes('arena') || format.includes('board') || format.includes('terrain')) {
+		if (format.includes('nationaldex') || format.startsWith('nd') || format.includes('natdex') || format.includes('field') || format.includes('arena') || format.includes('board') || format.includes('terrain') || format.includes('cavern')){
 			format = 'natdex' as ID;
 			this.formatType = 'natdex';
 			if (!format) format = 'ou' as ID;
