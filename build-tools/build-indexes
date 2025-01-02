@@ -372,12 +372,6 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 					ndDoublesBans[species.id] = 1;
 				}
 			}
-			if (genNum >= 5) {
-				const mono = Dex.formats.get(gen + (isNatDex ? 'nationaldex' : '') + 'monotype');
-				if (mono.exists && Dex.formats.getRuleTable(mono).isBannedSpecies(species)) {
-					monotypeBans[species.id] = 1;
-				}
-			}
 		}
 
 
