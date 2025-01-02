@@ -315,7 +315,7 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 	const BattleTeambuilderTable = {};
 
 	let buf = '// DO NOT EDIT - automatically built with build-tools/build-indexes\n\n';
-	const GENS = [9, 7];
+	const GENS = [9];
 	const DOUBLES = GENS.filter(x => x > 2).map(num => -num);
 	// process.stdout.write("\n  ");
 	for (const genIdent of [...GENS, ...DOUBLES]) {
@@ -459,23 +459,6 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 			const item = Dex.mod(gen).items.get(id);
 			if (item.gen > genNum) {
 				continue;
-			}
-			if (item.isNonstandard) {
-				if (isNatDex) {
-					let curItem = item;
-					let curGen = genNum;
-					while (item.isNonstandard && curGen >= 7) {
-						curItem = Dex.forGen(curGen).items.get(item.id);
-						curGen--;
-					}
-					if (curItem.isNonstandard) continue;
-				} else if (genNum !== 2) {
-					continue;
-				}
-			}
-			if (isMetBattle) {
-				const banlist = Dex.formats.getRuleTable(Dex.formats.get(gen + 'metronomebattle'));
-				if (banlist.isBanned('item:' + item.id)) continue;
 			}
 			switch (id) {
 			case 'leftovers':
@@ -735,7 +718,7 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 	// Past gen table
 	//
 
-	for (const genNum of [7]) {
+	for (const genNum of []) {
 		const gen = 'gen' + genNum;
 		const nextGen = 'gen' + (genNum + 1);
 		const genDex = Dex.mod(gen);
