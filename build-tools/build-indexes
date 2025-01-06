@@ -316,9 +316,11 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 
 	let buf = '// DO NOT EDIT - automatically built with build-tools/build-indexes\n\n';
 	const GENS = [9];
+	const NATDEX = [9.1];
 	const DOUBLES = GENS.filter(x => x > 2).map(num => -num);
 	// process.stdout.write("\n  ");
-	for (const genIdent of [...GENS, ...DOUBLES]) {
+	for (const genIdent of [...GENS, ...NATDEX, ...DOUBLES]) {
+		const isNatDex = ('' + genIdent).endsWith('.1') && genIdent > 8;
 		const isDoubles = (genIdent < 0);
 		const genNum = Math.floor(isDoubles ? -genIdent : genIdent);
 		const gen = (() => {
@@ -344,6 +346,9 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 				}
 				if (isDoubles && genNum > 4) {
 					return species.doublesTier;
+				}
+				if (isNatDex) {
+					return species.natDexTier;
 				}
 				return species.tier;
 			})();
@@ -379,6 +384,15 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 		const tiers = [];
 		const items = [];
 		const formatSlices = {};
+		if (isNatDex) {
+			BattleTeambuilderTable['gen' + genNum + 'natdex'] = {};
+			BattleTeambuilderTable['gen' + genNum + 'natdex'].tiers = tiers;
+			BattleTeambuilderTable['gen' + genNum + 'natdex'].overrideTier = overrideTier;
+			BattleTeambuilderTable['gen' + genNum + 'natdex'].items = items;
+			BattleTeambuilderTable['gen' + genNum + 'natdex'].ndDoublesBans = ndDoublesBans;
+			BattleTeambuilderTable['gen' + genNum + 'natdex'].monotypeBans = monotypeBans;
+			BattleTeambuilderTable['gen' + genNum + 'natdex'].formatSlices = formatSlices;
+		}
 		if (isDoubles) {
 			BattleTeambuilderTable[gen + 'doubles'] = {};
 			BattleTeambuilderTable[gen + 'doubles'].tiers = tiers;
@@ -459,6 +473,16 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 			const item = Dex.mod(gen).items.get(id);
 			if (item.gen > genNum) {
 				continue;
+			}
+			if (item.isNonstandard) {
+				if (isNatDex) {
+					let curItem = item;
+					let curGen = 9;
+					curItem = Dex.forGen(curGen).items.get(item.id);
+					if (curItem.isNonstandard) continue;
+				} else if (genNum !== 2) {
+					continue;
+				}
 			}
 			switch (id) {
 			case 'leftovers':
