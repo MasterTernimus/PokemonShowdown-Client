@@ -17069,6 +17069,55 @@ export const BattleMoveAnims: AnimTable = {
 			}, 'swing', 'explode');
 		},
 	},
+	coldsnap: {
+		anim(scene, [attacker, defender]) {
+			scene.showEffect('bluefireball', {
+				x: attacker.x,
+				y: attacker.y,
+				z: attacker.z,
+				scale: 0.4,
+				opacity: 0,
+			}, {
+				x: defender.leftof(40),
+				y: defender.y + 15,
+				z: defender.z,
+				scale: 0.8,
+				opacity: 0.7,
+				time: 500,
+			}, 'decel', 'fade');
+			if (defender.isMissedPokemon) return;
+			scene.showEffect('bluefireball', {
+				x: defender.leftof(40),
+				y: defender.y + 15,
+				z: defender.z,
+				scale: 0.8,
+				opacity: 0.7,
+				time: 500,
+			}, {
+				x: defender.leftof(-40),
+				y: defender.y,
+				z: defender.z,
+				scale: 0.7,
+				opacity: 1,
+				time: 700,
+			}, 'swing', 'fade');
+			scene.showEffect('bluefireball', {
+				x: defender.leftof(-40),
+				y: defender.y,
+				z: defender.z,
+				scale: 0.1,
+				opacity: 0,
+				time: 700,
+			}, {
+				x: defender.leftof(10),
+				y: defender.y - 15,
+				z: defender.z,
+				scale: 0.7,
+				opacity: 1,
+				time: 900,
+			}, 'swing', 'explode');
+		},
+	},
 	confuseray: {
 		anim(scene, [attacker, defender]) {
 			scene.showEffect('electroball', {
