@@ -1302,7 +1302,9 @@ function toId() {
 		},
 		parseFormats: function (formatsList) {
 			var isSection = false;
+			var isSubSection = false;
 			var section = '';
+			var subsection = '';
 
 			var column = 0;
 			var columnChanged = false;
@@ -1316,16 +1318,23 @@ function toId() {
 				if (isSection) {
 					section = formatsList[j];
 					isSection = false;
+				} else if (isSubSection) {
+					subsection = formatsList[j];
+					isSubSection = false;
 				} else if (formatsList[j] === ',LL') {
 					app.localLadder = true;
 				} else if (formatsList[j] === '' || (formatsList[j].charAt(0) === ',' && !isNaN(formatsList[j].substr(1)))) {
-					isSection = true;
-
-					if (formatsList[j]) {
-						var newColumn = parseInt(formatsList[j].substr(1), 10) || 0;
-						if (column !== newColumn) {
-							column = newColumn;
-							columnChanged = true;
+					if (formatsList[j].indexOf('.') > 0) {
+						isSubSection = true;
+					} else {
+						subsection = '';
+						isSection = true;
+						if (formatsList[j]) {
+							var newColumn = parseInt(formatsList[j].substr(1), 10) || 0;
+							if (column !== newColumn) {
+								column = newColumn;
+								columnChanged = true;
+							}
 						}
 					}
 				} else {
@@ -1388,6 +1397,7 @@ function toId() {
 									name: teambuilderFormatName,
 									team: team,
 									section: section,
+									subsection: subsection,
 									column: column,
 									rated: false,
 									isTeambuilderFormat: true,
@@ -1407,6 +1417,7 @@ function toId() {
 						name: name,
 						team: team,
 						section: section,
+						subsection: subsection,
 						column: column,
 						searchShow: searchShow,
 						challengeShow: challengeShow,
