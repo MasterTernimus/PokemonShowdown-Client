@@ -829,9 +829,9 @@ class FormatDropdownPanel extends PSRoomPanel {
 						{format.name.replace('[Gen 8 ', '[').replace('[Gen 9] ', '').replace('[Gen 7 ', '[')}
 					</button></li>
 				) : (
-					<li><h3>
+					<li><h1>
 						{format.section}
-					</h3></li>
+					</h1></li>
 				))}
 			</ul>)}
 			<div style="float: left"></div>
