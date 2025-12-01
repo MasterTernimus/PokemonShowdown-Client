@@ -1285,13 +1285,15 @@
 			}
 
 			var curSection = '';
+			var curSubSection = '';
 			for (var i in BattleFormats) {
 				var format = BattleFormats[i];
 				if (!this.shouldDisplayFormat(format)) continue;
 				if (this.search && !format.id.includes(toID(this.search))) continue;
 				if (this.starred[i]) continue; // only show it in the starred section
-
 				if (format.section && format.section !== curSection) {
+					if (curSubSection) bufs[curBuf] += '</details>';
+					curSubSection = '';
 					if (curSection) bufs[curBuf] += '</details></p>';
 					curSection = format.section;
 					if (!app.supports['formatColumns']) {
@@ -1306,6 +1308,13 @@
 					bufs[curBuf] += '<p><details' + open + ' section="' + curSection + '">';
 					bufs[curBuf] += '<summary><strong style="color: #579">';
 					bufs[curBuf] += BattleLog.escapeHTML(curSection) + '</strong></summary>';
+				}
+				if (format.subsection && curSubSection !== format.subsection) {
+					if (curSubSection) bufs[curBuf] += '</details>';
+					curSubSection = format.subsection;
+					bufs[curBuf] += '<p><details' + ' subsection="' + curSubSection + '">';
+					bufs[curBuf] += '<summary><style="color: #579">';
+					bufs[curBuf] += BattleLog.escapeHTML(curSubSection) + '</summary>';
 				}
 				var formatName = BattleLog.escapeFormat(format.id);
 				if (formatName.charAt(0) !== '[') formatName = '[Gen 6] ' + formatName;
@@ -1323,17 +1332,9 @@
 			if (bufs.every(function (buf) { return !buf; })) {
 				html = '<ul class="popupmenu"><em>No formats found</em></ul>';
 			} else {
-				for (var i = 1, l = bufs.length; i < l; i++) {
+				for (var i = 1; i < bufs.length; i++) {
 					if (!bufs[i]) continue;
-					html += '<ul class="popupmenu"';
-					if (l > 1) {
-						html += ' style="float:left';
-						if (i > 0) {
-							html += ';padding-left:5px';
-						}
-						html += '"';
-					}
-					html += '>' + bufs[i] + '</ul>';
+					html += '<ul class="popupmenu" style="float:left;padding-left:5px">' + bufs[i] + '</ul>';
 				}
 			}
 			return html;
@@ -1356,7 +1357,7 @@
 			this.update();
 		},
 		updateOpen: function (ev) {
-			var section = $(ev.currentTarget).attr('section');
+			var section = $(ev.currentTarget).attr('section') || $(ev.currentTarget).attr('subsection');
 			this.open[section] = !this.open[section];
 			Storage.prefs('openformats', this.open);
 		},
