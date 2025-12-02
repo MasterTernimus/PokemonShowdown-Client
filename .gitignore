@@ -10,8 +10,3 @@ config/config.js
 play.pokemonshowdown.com/testclient.html
 caches/PokemonShowdown-Reborn/
 *.json
-play.pokemonshowdown.com/sprites
-!play.pokemonshowdown.com/sprites/gen5
-!play.pokemonshowdown.com/sprites/gen5-back
-!play.pokemonshowdown.com/sprites/gen5-shiny
-!play.pokemonshowdown.com/sprites/gen5-back-shiny
