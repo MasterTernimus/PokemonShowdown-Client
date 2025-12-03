@@ -5,8 +5,6 @@ play.pokemonshowdown.com/config/config.js
 *.map
 *.php
 *.js
-play.pokemonshowdown.com/config/testclient-key.js
 config/config.js
-play.pokemonshowdown.com/testclient.html
 caches/PokemonShowdown-Reborn/
 *.json
