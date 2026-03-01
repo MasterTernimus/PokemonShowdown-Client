@@ -547,39 +547,34 @@ export class BattleLog {
 	}
 
 	static colorCache: {[userid: string]: string} = {};
-
 	/** @deprecated */
 	static hashColor(name: ID) {
 		return `color:${this.usernameColor(name)};`;
 	}
 
+	static generateRandomString(length: number): string {
+		let result = '';
+		const characters =
+			'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+		const charactersLength = characters.length;
+		for (let i = 0; i < length; i++) {
+			result += characters.charAt(Math.floor(Math.random() * charactersLength));
+		}
+		return result;
+	};
+
 	static usernameColor(name: ID) {
 		if (this.colorCache[name]) return this.colorCache[name];
+		let saltedName: string = name as string + this.generateRandomString(5);
 		let hash;
 		if (Config.customcolors[name]) {
 			hash = MD5(Config.customcolors[name]);
 		} else {
-			hash = MD5(name);
+			hash = MD5(saltedName);
 		}
 		let H = parseInt(hash.substr(4, 4), 16) % 360; // 0 to 360
-		let S = parseInt(hash.substr(0, 4), 16) % 50 + 40; // 40 to 89
-		let L = Math.floor(parseInt(hash.substr(8, 4), 16) % 20 + 30); // 30 to 49
-
-		let {R, G, B} = this.HSLToRGB(H, S, L);
-		let lum = R * R * R * 0.2126 + G * G * G * 0.7152 + B * B * B * 0.0722; // 0.013 (dark blue) to 0.737 (yellow)
-
-		let HLmod = (lum - 0.2) * -150; // -80 (yellow) to 28 (dark blue)
-		if (HLmod > 18) HLmod = (HLmod - 18) * 2.5;
-		else if (HLmod < 0) HLmod = (HLmod - 0) / 3;
-		else HLmod = 0;
-		// let mod = ';border-right: ' + Math.abs(HLmod) + 'px solid ' + (HLmod > 0 ? 'red' : '#0088FF');
-		let Hdist = Math.min(Math.abs(180 - H), Math.abs(240 - H));
-		if (Hdist < 15) {
-			HLmod += (15 - Hdist) / 3;
-		}
-
-		L += HLmod;
-
+		let S = parseInt(hash.substr(0, 4), 16) % 101; // 40 to 89
+		let L = Math.floor(parseInt(hash.substr(8, 4), 16) % 101); // 30 to 49
 		let {R: r, G: g, B: b} = this.HSLToRGB(H, S, L);
 		const toHex = (x: number) => {
 			const hex = Math.round(x * 255).toString(16);
