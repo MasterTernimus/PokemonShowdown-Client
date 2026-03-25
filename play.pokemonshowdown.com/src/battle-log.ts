@@ -574,7 +574,7 @@ export class BattleLog {
 		}
 		let H = parseInt(hash.substr(4, 4), 16) % 360; // 0 to 360
 		let S = parseInt(hash.substr(0, 4), 16) % 101; // 40 to 89
-		let L = Math.floor(parseInt(hash.substr(8, 4), 16) % 101); // 30 to 49
+		let L = Math.max(Math.floor(parseInt(hash.substr(8, 4), 16) % 101), 70); // 30 to 49
 		let {R: r, G: g, B: b} = this.HSLToRGB(H, S, L);
 		const toHex = (x: number) => {
 			const hex = Math.round(x * 255).toString(16);
