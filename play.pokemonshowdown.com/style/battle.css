@@ -585,6 +585,11 @@ License: GPLv2
     color: #441155;
 }
 
+.volcanicterrainweather {
+    background: #CCAAEE url(../fx/weather-volcanicterrain.png) no-repeat scroll left top;
+    color: #441155;
+}
+
 .snowymountainterrainweather {
     background: #CCAAEE url(../fx/weather-snowymountainterrain.png) no-repeat scroll left top;
     color: #441155;
