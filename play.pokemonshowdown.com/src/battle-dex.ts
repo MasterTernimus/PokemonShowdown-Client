@@ -182,7 +182,7 @@ const Dex = new class implements ModdedDex {
 	resourcePrefix = (() => {
 		let prefix = '';
 		if (window.document?.location?.protocol !== 'http:') prefix = 'https:';
-		return `${prefix}//'play.pokemonreborn-showdown.xyz'/`;
+		return `${prefix}//play.pokemonreborn-showdown.xyz/`;
 	})();
 
 	fxPrefix = (() => {
