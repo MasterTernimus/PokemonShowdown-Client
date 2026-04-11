@@ -951,7 +951,6 @@
 			}
 			var contents = Storage.exportTeam(team.team, team.gen).replace(/\n/g, '\r\n');
 			var downloadurl = "text/plain:" + filename + ":" + urlprefix + encodeURIComponent(window.btoa(unescape(encodeURIComponent(contents))));
-			console.log(downloadurl);
 			dataTransfer.setData("DownloadURL", downloadurl);
 
 			app.dragging = e.currentTarget;
