@@ -2549,7 +2549,6 @@ class StatForm extends preact.Component<{
 			case 'Flabebe':
 			case 'Floette':
 			case 'Florges':
-			case 'Furfrou':
 			case 'Gastrodon':
 			case 'Genesect':
 			case 'Keldeo':
