@@ -20,6 +20,7 @@ child_process.execSync('npm run build', {cwd: 'caches/PokemonShowdown-Reborn'});
 console.log("DONE");
 
 const Dex = require('../caches/PokemonShowdown-Reborn/dist/sim/dex').Dex;
+const CompoundWordNames = require('../caches/PokemonShowdown-Reborn/dist/data/aliases').CompoundWordNames;
 const toID = Dex.toID;
 process.stdout.write("Loading gen 6 data... ");
 Dex.includeData();
@@ -276,7 +277,7 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 			const species = Dex.mod(gen).species.get(id);
 			const baseSpecies = Dex.mod(gen).species.get(species.baseSpecies);
 			if (species.gen > genNum) continue;
-			const tier = (() => {
+			const speciesTier = (() => {
 				if (species.tier === 'CAP' || species.tier === 'CAP NFE' || species.tier === 'CAP LC') {
 					return species.tier;
 				}
@@ -300,8 +301,8 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 				}
 			}
 
-			if (!tierTable[tier]) tierTable[tier] = [];
-			tierTable[tier].push(id);
+			if (!tierTable[speciesTier]) tierTable[speciesTier] = [];
+			tierTable[speciesTier].push(id);
 
 			if (genNum === 9) {
 				const ubersUU = Dex.formats.get(gen + 'ubersuu');
@@ -314,13 +315,6 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 				}
 			}
 		}
-
-		nonstandardMoves.push(...Object.keys(Dex.data.Moves).filter(id => {
-			const move = Dex.mod(isSSDLC1 ? 'gen8dlc1' : isPreDLC ? 'gen9predlc' : 'gen9dlc1').moves.get(id);
-			const bMove = Dex.mod(isSSDLC1 ? 'gen8' : 'gen9').moves.get(id);
-			return bMove.isNonstandard !== move.isNonstandard;
-		}));
-
 		const tiers = [];
 		const items = [];
 		const formatSlices = {};
@@ -331,87 +325,19 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 			BattleTeambuilderTable['gen' + genNum + 'natdex'].items = items;
 			BattleTeambuilderTable['gen' + genNum + 'natdex'].metagameBans = metagameBans;
 			BattleTeambuilderTable['gen' + genNum + 'natdex'].formatSlices = formatSlices;
-		} else if (isMetBattle) {
-			BattleTeambuilderTable[gen + 'metronome'] = {};
-			BattleTeambuilderTable[gen + 'metronome'].tiers = tiers;
-			BattleTeambuilderTable[gen + 'metronome'].items = items;
-			BattleTeambuilderTable[gen + 'metronome'].formatSlices = formatSlices;
-		} else if (isNFE) {
-			BattleTeambuilderTable[gen + 'nfe'] = {};
-			BattleTeambuilderTable[gen + 'nfe'].tiers = tiers;
-			BattleTeambuilderTable[gen + 'nfe'].overrideTier = overrideTier;
-			BattleTeambuilderTable[gen + 'nfe'].formatSlices = formatSlices;
-		} else if (isLC) {
-			BattleTeambuilderTable[gen + 'lc'] = {};
-			BattleTeambuilderTable[gen + 'lc'].tiers = tiers;
-			BattleTeambuilderTable[gen + 'lc'].overrideTier = overrideTier;
-			BattleTeambuilderTable[gen + 'lc'].metagameBans = metagameBans;
-			BattleTeambuilderTable[gen + 'lc'].formatSlices = formatSlices;
-		} else if (isLetsGo) {
-			BattleTeambuilderTable['gen7letsgo'] = {};
-			BattleTeambuilderTable['gen7letsgo'].learnsets = {};
-			BattleTeambuilderTable['gen7letsgo'].tiers = tiers;
-			BattleTeambuilderTable['gen7letsgo'].overrideTier = overrideTier;
-			BattleTeambuilderTable['gen7letsgo'].formatSlices = formatSlices;
-		} else if (isBDSP && !isDoubles) {
-			BattleTeambuilderTable['gen8bdsp'] = {};
-			BattleTeambuilderTable['gen8bdsp'].learnsets = {};
-			BattleTeambuilderTable['gen8bdsp'].tiers = tiers;
-			BattleTeambuilderTable['gen8bdsp'].items = items;
-			BattleTeambuilderTable['gen8bdsp'].overrideTier = overrideTier;
-			BattleTeambuilderTable['gen8bdsp'].metagameBans = metagameBans;
-			BattleTeambuilderTable['gen8bdsp'].formatSlices = formatSlices;
-		} else if (isChampions) {
-			BattleTeambuilderTable['champions'] = {};
-			BattleTeambuilderTable['champions'].learnsets = {};
-			BattleTeambuilderTable['champions'].tiers = tiers;
-			BattleTeambuilderTable['champions'].items = items;
-			BattleTeambuilderTable['champions'].overrideTier = overrideTier;
-			BattleTeambuilderTable['champions'].formatSlices = formatSlices;
-		} else if (isVGC) {
-			BattleTeambuilderTable[gen + 'vgc'] = {};
-			BattleTeambuilderTable[gen + 'vgc'].tiers = tiers;
-			BattleTeambuilderTable[gen + 'vgc'].formatSlices = formatSlices;
-			if (genNum === 9) BattleTeambuilderTable[gen + 'vgc'].metagameBans = metagameBans;
-		} else if (isDoubles) {
+		}  else if (isDoubles) {
 			BattleTeambuilderTable[gen + 'doubles'] = {};
 			BattleTeambuilderTable[gen + 'doubles'].tiers = tiers;
 			BattleTeambuilderTable[gen + 'doubles'].items = items;
 			BattleTeambuilderTable[gen + 'doubles'].overrideTier = overrideTier;
 			BattleTeambuilderTable[gen + 'doubles'].metagameBans = metagameBans;
 			BattleTeambuilderTable[gen + 'doubles'].formatSlices = formatSlices;
-		} else if (isGen9BH) {
-			BattleTeambuilderTable['bh'] = {};
-			BattleTeambuilderTable['bh'].tiers = tiers;
-			BattleTeambuilderTable['bh'].overrideTier = overrideTier;
-			BattleTeambuilderTable['bh'].metagameBans = metagameBans;
-			BattleTeambuilderTable['bh'].formatSlices = formatSlices;
-		} else if (isSSB) {
-			BattleTeambuilderTable['gen9ssb'] = {};
-			BattleTeambuilderTable['gen9ssb'].tiers = tiers;
-			BattleTeambuilderTable['gen9ssb'].overrideTier = overrideTier;
-			BattleTeambuilderTable['gen9ssb'].formatSlices = formatSlices;
-		} else if (isLegendsZA) {
-			BattleTeambuilderTable['gen9legendsou'] = {};
-			BattleTeambuilderTable['gen9legendsou'].tiers = tiers;
-			BattleTeambuilderTable['gen9legendsou'].overrideTier = overrideTier;
-			BattleTeambuilderTable['gen9legendsou'].formatSlices = formatSlices;
-			BattleTeambuilderTable['gen9legendsou'].items = items;
-			BattleTeambuilderTable['gen9legendsou'].learnsets = {};
 		} else if (gen === 'gen9') {
 			BattleTeambuilderTable.tiers = tiers;
 			BattleTeambuilderTable.items = items;
 			BattleTeambuilderTable.overrideTier = overrideTier;
 			BattleTeambuilderTable.metagameBans = metagameBans;
 			BattleTeambuilderTable.formatSlices = formatSlices;
-		} else if (isBW1 || isRS || isFRLG) {
-			BattleTeambuilderTable[gen] = {};
-			BattleTeambuilderTable[gen].overrideTier = overrideTier;
-			BattleTeambuilderTable[gen].tiers = tiers;
-			BattleTeambuilderTable[gen].items = items;
-			BattleTeambuilderTable[gen].formatSlices = formatSlices;
-			BattleTeambuilderTable[gen].nonstandardMoves = nonstandardMoves;
-			BattleTeambuilderTable[gen].learnsets = {};
 		} else {
 			BattleTeambuilderTable[gen] = {};
 			BattleTeambuilderTable[gen].overrideTier = overrideTier;
@@ -421,12 +347,7 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 			if (genNum >= 5) {
 				BattleTeambuilderTable[gen].metagameBans = metagameBans;
 			}
-			if (isSSDLC1 || isPreDLC || isSVDLC1) {
-				BattleTeambuilderTable[gen].nonstandardMoves = nonstandardMoves;
-				BattleTeambuilderTable[gen].learnsets = {};
-			}
 		}
-
 		const tierOrder = (() => {
 			if (isDoubles && genNum > 4) {
 				return ["DUber", "(DUber)", "DOU", "DBL", "(DOU)", "DUU", "(DUU)", "New", "NFE", "LC"];
@@ -465,7 +386,6 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 			if (!formatSlices['DOU']) formatSlices['DOU'] = formatSlices['New'];
 			if (!formatSlices['DUU']) formatSlices['DUU'] = formatSlices['New'];
 		}
-
 		const itemList = Object.keys(Dex.data.Items);
 		itemList.sort();
 
@@ -480,23 +400,6 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 			const item = Dex.mod(gen).items.get(id);
 			if (item.gen > genNum) {
 				continue;
-			}
-			if (item.isNonstandard && !isMetBattle) {
-				if (isNatDex) {
-					let curItem = item;
-					let curGen = genNum;
-					while (curItem.isNonstandard && curGen >= 7) {
-						curItem = Dex.forGen(curGen).items.get(item.id);
-						curGen--;
-					}
-					if (curItem.isNonstandard) continue;
-				} else if (genNum !== 2) {
-					continue;
-				}
-			}
-			if (isMetBattle) {
-				const banlist = Dex.formats.getRuleTable(Dex.formats.get(gen + 'metronomebattle'));
-				if (banlist.isBanned('item:' + item.id)) continue;
 			}
 			switch (id) {
 			// mainstays
@@ -513,8 +416,7 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 			case 'focussash':
 			case 'powerherb':
 			case 'rockyhelmet':
-				if (!isMetBattle) greatItems.push(id);
-				else goodItems.push(id);
+				goodItems.push(id);
 				break;
 			// just singles
 			case 'airballoon':
@@ -522,7 +424,7 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 			case 'heavydutyboots':
 			case 'expertbelt':
 			case 'salacberry':
-				if (isDoubles || isMetBattle) goodItems.push(id);
+				if (isDoubles) goodItems.push(id);
 				else greatItems.push(id);
 				break;
 			// just doubles
@@ -536,18 +438,16 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 			case 'covertcloak':
 			case 'clearamulet':
 			case 'weaknesspolicy':
-				if (isDoubles || isMetBattle) greatItems.push(id);
+				if (isDoubles) greatItems.push(id);
 				else goodItems.push(id);
 				break;
 			// metronome only
 			case 'mirrorherb':
-				if (isMetBattle) greatItems.push(id);
-				else goodItems.push(id);
+				goodItems.push(id);
 				break;
 			// generation specific
 			case 'mentalherb':
-				if (isMetBattle) goodItems.push(id);
-				else if (genNum > 4) greatItems.push(id);
+				if (genNum > 4) greatItems.push(id);
 				else poorItems.push(id);
 				break;
 			case 'lumberry':
@@ -722,6 +622,7 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 				}
 			}
 		}
+
 		items.push(...greatItems);
 		items.push(...goodItems);
 		items.push(...specificItems);
@@ -733,7 +634,6 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 	//
 	// Learnset table
 	//
-
 	const gen3HMs = new Set(['cut', 'fly', 'surf', 'strength', 'flash', 'rocksmash', 'waterfall', 'dive']);
 	const gen4HMs = new Set(['cut', 'fly', 'surf', 'strength', 'rocksmash', 'waterfall', 'rockclimb']);
 
