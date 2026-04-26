@@ -228,13 +228,12 @@
 		},
 		updateChallenge: function ($pmWindow, challenge, name, oName) {
 			var splitChallenge = challenge.split('|');
-
 			var formatName = splitChallenge[0];
 			var teamFormat = splitChallenge[1];
-			var message = splitChallenge[2];
-			var acceptButtonLabel = splitChallenge[3] || 'Accept';
-			var rejectButtonLabel = splitChallenge[4] || 'Reject';
-
+			var official = splitChallenge[2] === "true";
+			var message = splitChallenge[3];
+			var acceptButtonLabel = splitChallenge[4] || 'Accept';
+			var rejectButtonLabel = splitChallenge[5] || 'Reject';
 			var oUserid = toID(oName);
 			var userid = toID(name);
 
@@ -269,7 +268,7 @@
 			}
 
 			app.playNotificationSound();
-			this.notifyOnce("Challenge from " + name, "Format: " + BattleLog.escapeFormat(formatName), 'challenge:' + userid);
+			this.notifyOnce((official ? "OFFICIAL " : "") + "Challenge from " + name, "Format: " + BattleLog.escapeFormat(formatName), 'challenge:' + userid);
 			var buf = '<form class="battleform"><p>' + BattleLog.escapeHTML(message || (name + ' wants to battle!')) + '</p>';
 			if (formatName) {
 				buf += '<p><label class="label">' + (teamFormat ? 'Format' : 'Game') + ':</label>' + this.renderFormats(formatName, true) + '</p>';
@@ -277,6 +276,9 @@
 			if (teamFormat) {
 				buf += '<p><label class="label">Team:</label>' + this.renderTeams(teamFormat) + '</p>';
 				buf += '<p><label class="checkbox"><input type="checkbox" name="private" ' + (Storage.prefs('disallowspectators') ? 'checked' : '') + ' /> <abbr title="You can still invite spectators by giving them the URL or using the /invite command">Don\'t allow spectators</abbr></label></p>';
+			}
+			if (official) {
+				buf += '<p style="text-align:center"><label class="label" style="centered">--- OFFICIAL BATTLE! ---</label></p>';
 			}
 			buf += '<p class="buttonbar"><button name="acceptChallenge" class="button"><strong>' + BattleLog.escapeHTML(acceptButtonLabel) + '</strong></button> <button type="button" name="rejectChallenge" class="button">' + BattleLog.escapeHTML(rejectButtonLabel) + '</button></p></form>';
 			$challenge.html(buf);
@@ -896,8 +898,9 @@
 			var buf = '<form class="battleform"><p>Challenge ' + BattleLog.escapeHTML(name) + '?</p>';
 			buf += '<p><label class="label">Format:</label>' + this.renderFormats(format) + '</p>';
 			buf += '<p><label class="label">Team:</label>' + this.renderTeams(format) + '</p>';
-			buf += '<p><label class="checkbox"><input type="checkbox" name="private" ' + (Storage.prefs('disallowspectators') ? 'checked' : '') + ' /> <abbr title="You can still invite spectators by giving them the URL or using the /invite command">Don\'t allow spectators</abbr></label></p>';
+			buf += '<p><label class="checkbox"><input type="checkbox" name="private" ' + (Storage.prefs('disallowspectators') ? 'checked' : '') + ' /><abbr title="You can still invite spectators by giving them the URL or using the /invite command">Don\'t allow spectators</abbr></label></p>';
 			var bestOfDefault = format && BattleFormats[format] ? BattleFormats[format].bestOfDefault : false;
+			buf += '<p><label class="checkbox"><input type="checkbox" name="official"/>Official match</label></p>';
 			buf += '<p' + (!bestOfDefault ? ' class="hidden">' : '>');
 			buf += '<label class="checkbox"><input type="checkbox" name="bestof" /> <abbr title="Start a team-locked best-of-n series">Best-of-<input name="bestofvalue" type="number" min="3" max="9" step="2" value="3" style="width: 28px; vertical-align: initial;"></abbr></label></p>';
 			buf += '<p class="buttonbar"><button name="makeChallenge" class="button"><strong>Challenge</strong></button> <button type="button" name="dismissChallenge" class="button">Cancel</button></p></form>';
@@ -943,6 +946,7 @@
 			var format = $pmWindow.find('button[name=format]').val();
 			var teamIndex = $pmWindow.find('button[name=team]').val();
 			var privacy = this.adjustPrivacy($pmWindow.find('input[name=private]').is(':checked'));
+			var official = $pmWindow.find('input[name=official]').is(':checked');
 
 			var bestOf = $pmWindow.find('input[name=bestof]').is(':checked');
 			var bestOfValue = $pmWindow.find('input[name=bestofvalue]').val();
@@ -967,7 +971,7 @@
 
 			$(target).closest('.challenge').html(buf);
 			app.sendTeam(team, function () {
-				app.send(privacy + '/challenge ' + userid + ', ' + format);
+				app.send(privacy + '/challenge ' + userid + ', ' + format + ', ' + official);
 			});
 		},
 		cancelChallenge: function (i, target) {
