@@ -721,13 +721,17 @@
 				}
 				if (canMegaEvo) {
 					moveMenu += '<br /><label class="megaevo"><input type="checkbox" name="megaevo" />&nbsp;Mega&nbsp;Evolution</label>';
-				} else if (canZMove) {
+				}
+				if (canZMove) {
 					moveMenu += '<br /><label class="megaevo"><input type="checkbox" name="zmove" />&nbsp;Z-Power</label>';
-				} else if (canUltraBurst) {
+				}
+				if (canUltraBurst) {
 					moveMenu += '<br /><label class="megaevo"><input type="checkbox" name="ultraburst" />&nbsp;Ultra Burst</label>';
-				} else if (canDynamax) {
+				}
+				if (canDynamax) {
 					moveMenu += '<br /><label class="megaevo"><input type="checkbox" name="dynamax" />&nbsp;Dynamax</label>';
-				} else if (canTerastallize) {
+				}
+				if (canTerastallize) {
 					moveMenu += '<br /><label class="megaevo"><input type="checkbox" name="terastallize" />&nbsp;Terastallize<br />' + Dex.getTypeIcon(canTerastallize) + '</label>';
 				}
 				if (this.finalDecisionMove) {
