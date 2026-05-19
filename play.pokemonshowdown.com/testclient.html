@@ -3,30 +3,6 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta id="viewport" name="viewport" content="width=device-width" />
-		<style>
-			#loading-screen {
-			position: fixed;
-			inset: 0;
-			background: #000 center/cover no-repeat;
-			background-image: url('fx/Loading-Ternimus.png');
-			background-size: contain;
-			z-index: 9999;
-			}
-		</style>
-
-		<script>
-			document.addEventListener("DOMContentLoaded", () => {
-			const loader = document.createElement("div");
-			loader.id = "loading-screen";
-			
-			document.body.appendChild(loader);
-
-			setTimeout(() => {
-				loader.remove();
-				document.body.style.visibility = "visible";
-			}, 3000);
-			});
-		</script>
 		<title>Showdown!</title>
 		<link rel="shortcut icon" href="favicon.ico" id="dynamic-favicon" />
 		<link rel="stylesheet" href="style/battle.css" />
