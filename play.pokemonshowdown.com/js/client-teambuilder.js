@@ -1332,7 +1332,7 @@
 					}
 				}
 				if (species.canGigantamax || species.forme === 'Gmax') {
-					buf += '<span class="detailcell"><label>Gmax</label>' + (set.gigantamax || species.forme === 'Gmax' ? 'Yes' : 'No') + '</span>';
+					buf += '<span class="detailcell"><label>Gmax</label>Yes</span>';
 				}
 				if (this.curTeam.gen === 9) {
 					buf += '<span class="detailcell"><label>Tera Type</label>' + (species.forceTeraType || set.teraType || species.types[0]) + '</span>';
