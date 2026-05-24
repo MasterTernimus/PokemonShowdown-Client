@@ -1333,6 +1333,7 @@
 				}
 				if (species.canGigantamax || species.forme === 'Gmax') {
 					buf += '<span class="detailcell"><label>Gmax</label>Yes</span>';
+					set.gigantamax = true;
 				}
 				if (this.curTeam.gen === 9) {
 					buf += '<span class="detailcell"><label>Tera Type</label>' + (species.forceTeraType || set.teraType || species.types[0]) + '</span>';
