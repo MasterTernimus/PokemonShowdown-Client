@@ -861,9 +861,11 @@ abstract class BattleTypedSearch<T extends SearchType> {
 class BattlePokemonSearch extends BattleTypedSearch<'pokemon'> {
 	sortRow: SearchRow = ['sortpokemon', ''];
 	getTable() {
+		window.ensureCustomSpecies?.();
 		return BattlePokedex;
 	}
 	getDefaultResults(): SearchRow[] {
+		window.ensureCustomSpecies?.();
 		let results: SearchRow[] = [];
 		for (let id in BattlePokedex) {
 			switch (id) {
