@@ -46,6 +46,72 @@ function toUserid(text: any) {
 	return toID(text);
 }
 
+const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
+	flygonmegaz: {
+		base: 'flygon',
+		data: {
+			name: 'Flygon-Mega-Z',
+			baseSpecies: 'Flygon',
+			forme: 'Mega-Z',
+			requiredItem: 'Leaf Stone',
+			battleOnly: 'Flygon',
+			changesFrom: 'Flygon',
+			isNonstandard: 'Custom',
+		},
+	},
+	gardevoirvoid: {
+		base: 'gardevoir',
+		data: {
+			name: 'Gardevoir-Void',
+			baseSpecies: 'Gardevoir',
+			forme: 'Void',
+			otherFormes: ['Gardevoir-Void-Mega', 'Gardevoir-Mega-Z'],
+			cosmeticFormes: null,
+			isNonstandard: 'Custom',
+		},
+	},
+	gardevoirvoidmega: {
+		base: 'gardevoirmega',
+		data: {
+			name: 'Gardevoir-Void-Mega',
+			baseSpecies: 'Gardevoir',
+			forme: 'Mega',
+			requiredItem: 'Gardevoirite',
+			battleOnly: 'Gardevoir-Void',
+			changesFrom: 'Gardevoir-Void',
+			isNonstandard: 'Custom',
+		},
+	},
+	gardevoirmegaz: {
+		base: 'gardevoirmega',
+		data: {
+			name: 'Gardevoir-Mega-Z',
+			baseSpecies: 'Gardevoir',
+			forme: 'Mega-Z',
+			requiredItem: 'Gardevoirite',
+			battleOnly: 'Gardevoir-Void',
+			changesFrom: 'Gardevoir-Void',
+			isNonstandard: 'Custom',
+		},
+	},
+};
+
+function ensureCustomSpecies(id?: string) {
+	if (!window.BattlePokedex) return;
+	for (const customId of Object.keys(CUSTOM_SPECIES)) {
+		if (id && id !== customId) continue;
+		if (window.BattlePokedex[customId]) continue;
+		const customSpecies = CUSTOM_SPECIES[customId];
+		const baseData = window.BattlePokedex[customSpecies.base];
+		if (!baseData) continue;
+		window.BattlePokedex[customId] = {
+			...baseData,
+			...customSpecies.data,
+		};
+	}
+}
+window.ensureCustomSpecies = ensureCustomSpecies;
+
 type Comparable = number | string | boolean | Comparable[] | {reverse: Comparable};
 const PSUtils = new class {
 	/**
@@ -383,6 +449,7 @@ const Dex = new class implements ModdedDex {
 				}
 			}
 			if (!window.BattlePokedex) window.BattlePokedex = {};
+			ensureCustomSpecies(id);
 			let data = window.BattlePokedex[id];
 
 			let species: Species;
