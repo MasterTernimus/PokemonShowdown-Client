@@ -109,6 +109,13 @@ function ensureCustomSpecies(id?: string) {
 			...customSpecies.data,
 		};
 	}
+	const flygon = window.BattlePokedex.flygon;
+	if (flygon) {
+		const otherFormes = flygon.otherFormes || [];
+		if (!otherFormes.includes('Flygon-Mega-Z')) {
+			flygon.otherFormes = [...otherFormes, 'Flygon-Mega-Z'];
+		}
+	}
 }
 window.ensureCustomSpecies = ensureCustomSpecies;
 
