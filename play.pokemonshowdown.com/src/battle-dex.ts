@@ -96,6 +96,28 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 	},
 };
 
+const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
+	flygonmegaz: {
+		num: 330,
+		front: {w: 195, h: 154},
+		back: {w: 181, h: 140},
+	},
+	gardevoirmegaz: {
+		num: 282,
+		front: {w: 192, h: 189},
+		back: {w: 192, h: 189},
+	},
+};
+
+function ensureCustomBWSpriteData() {
+	if (!window.BattlePokemonSpritesBW) return;
+	for (const id of Object.keys(CUSTOM_BW_SPRITES)) {
+		if (!window.BattlePokemonSpritesBW[id]) {
+			window.BattlePokemonSpritesBW[id] = CUSTOM_BW_SPRITES[id];
+		}
+	}
+}
+
 function ensureCustomSpecies(id?: string) {
 	if (!window.BattlePokedex) return;
 	for (const customId of Object.keys(CUSTOM_SPECIES)) {
@@ -109,6 +131,7 @@ function ensureCustomSpecies(id?: string) {
 			...customSpecies.data,
 		};
 	}
+	ensureCustomBWSpriteData();
 	const flygon = window.BattlePokedex.flygon;
 	if (flygon) {
 		const otherFormes = flygon.otherFormes || [];
@@ -577,6 +600,7 @@ const Dex = new class implements ModdedDex {
 			pokemon = pokemon.getSpeciesForme() + (isGigantamax ? '-Gmax' : '');
 		}
 		const species = Dex.species.get(pokemon);
+		ensureCustomBWSpriteData();
 		// Gmax sprites are already extremely large, so we don't need to double.
 		if (species.name.endsWith('-Gmax')) isDynamax = false;
 		let spriteData = {
