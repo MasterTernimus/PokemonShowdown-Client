@@ -1511,6 +1511,7 @@ class Species implements Effect {
 		this.formeid = (baseId === this.id ? '' : '-' + toID(this.forme));
 		this.spriteid = baseId + this.formeid;
 		if (this.name === 'Gardevoir-Void') this.spriteid = 'gardevoir' as ID;
+		else if (this.name === 'Gardevoir-Void-Mega') this.spriteid = 'gardevoirvoid-mega' as ID;
 		else if (this.name === 'Gardevoir-Mega-Z') this.spriteid = 'gardevoir-megaz' as ID;
 		else if (this.name === 'Flygon-Mega-Z') this.spriteid = 'flygon-megaz' as ID;
 		else if (this.name.includes('Void')) this.spriteid = baseId + 'void' + this.formeid;
