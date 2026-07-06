@@ -887,13 +887,17 @@ const Dex = new class implements ModdedDex {
 		spriteData.x = 10;
 		spriteData.y = 5;
 		if (spriteid === 'flygon-megaz') {
-			spriteData.x = 0;
-			spriteData.y = 24;
-			spriteData.backgroundSize = '96px auto';
+			spriteData.x = 3;
+			spriteData.y = 17;
+			spriteData.backgroundSize = '94px auto';
 		} else if (spriteid === 'gardevoir-megaz') {
-			spriteData.x = 10;
-			spriteData.y = 7;
-			spriteData.backgroundSize = '76px auto';
+			spriteData.x = 13;
+			spriteData.y = 8;
+			spriteData.backgroundSize = '70px auto';
+		} else if (spriteid === 'gardevoirvoid-mega') {
+			spriteData.x = 2;
+			spriteData.y = 4;
+			spriteData.backgroundSize = '92px auto';
 		}
 		return spriteData;
 	}
