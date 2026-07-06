@@ -262,6 +262,7 @@ interface TeambuilderSpriteData {
 	y: number;
 	spriteDir: string;
 	spriteid: string;
+	backgroundSize?: string;
 	shiny?: boolean;
 }
 
@@ -885,6 +886,15 @@ const Dex = new class implements ModdedDex {
 		else if (gen <= 4 && species.gen <= 4) spriteData.spriteDir = 'sprites/gen4';
 		spriteData.x = 10;
 		spriteData.y = 5;
+		if (spriteid === 'flygon-megaz') {
+			spriteData.x = 0;
+			spriteData.y = 24;
+			spriteData.backgroundSize = '96px auto';
+		} else if (spriteid === 'gardevoir-megaz') {
+			spriteData.x = 10;
+			spriteData.y = 7;
+			spriteData.backgroundSize = '76px auto';
+		}
 		return spriteData;
 	}
 
@@ -892,7 +902,7 @@ const Dex = new class implements ModdedDex {
 		if (!pokemon) return '';
 		const data = this.getTeambuilderSpriteData(pokemon, gen);
 		const shiny = (data.shiny ? '-shiny' : '');
-		return 'background-image:url(' + Dex.resourcePrefix + data.spriteDir + shiny + '/' + data.spriteid + '.png);background-position:' + data.x + 'px ' + data.y + 'px;background-repeat:no-repeat';
+		return 'background-image:url(' + Dex.resourcePrefix + data.spriteDir + shiny + '/' + data.spriteid + '.png);background-position:' + data.x + 'px ' + data.y + 'px;background-repeat:no-repeat' + (data.backgroundSize ? ';background-size:' + data.backgroundSize : '');
 	}
 
 	getItemIcon(item: any) {
