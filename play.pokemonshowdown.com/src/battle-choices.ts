@@ -41,6 +41,8 @@ interface BattleRequestActivePokemon {
 	canDynamax?: boolean;
 	canGigantamax?: boolean;
 	canMegaEvo?: boolean;
+	canMegaEvoX?: boolean;
+	canMegaEvoY?: boolean;
 	canUltraBurst?: boolean;
 	canTerastallize?: boolean;
 	trapped?: boolean;
@@ -82,6 +84,8 @@ interface BattleMoveChoice {
 	move: number;
 	targetLoc: number;
 	mega: boolean;
+	megax: boolean;
+	megay: boolean;
 	ultra: boolean;
 	max: boolean;
 	z: boolean;
@@ -114,6 +118,8 @@ class BattleChoiceBuilder {
 		move: 0,
 		targetLoc: 0, // should always be 0: is not partial if `targetLoc` is known
 		mega: false,
+		megax: false,
+		megay: false,
 		ultra: false,
 		z: false,
 		max: false,
@@ -187,6 +193,8 @@ class BattleChoiceBuilder {
 				if (choosableTargets.includes(this.getChosenMove(choice, this.index()).target)) {
 					this.current.move = choice.move;
 					this.current.mega = choice.mega;
+					this.current.megax = choice.megax;
+					this.current.megay = choice.megay;
 					this.current.ultra = choice.ultra;
 					this.current.z = choice.z;
 					this.current.max = choice.max;
@@ -194,12 +202,14 @@ class BattleChoiceBuilder {
 					return null;
 				}
 			}
-			if (choice.mega) this.alreadyMega = true;
+			if (choice.mega || choice.megax || choice.megay) this.alreadyMega = true;
 			if (choice.z) this.alreadyZ = true;
 			if (choice.max) this.alreadyMax = true;
 			if (choice.tera) this.alreadyTera = true;
 			this.current.move = 0;
 			this.current.mega = false;
+			this.current.megax = false;
+			this.current.megay = false;
 			this.current.ultra = false;
 			this.current.z = false;
 			this.current.max = false;
@@ -285,6 +295,8 @@ class BattleChoiceBuilder {
 				move: 0,
 				targetLoc: 0,
 				mega: false,
+				megax: false,
+				megay: false,
 				ultra: false,
 				z: false,
 				max: false,
@@ -299,6 +311,12 @@ class BattleChoiceBuilder {
 					if (current.targetLoc) throw new Error(`Move choice has multiple targets`);
 					current.targetLoc = parseInt(choice.slice(-2), 10);
 					choice = choice.slice(0, -2).trim();
+				} else if (choice.endsWith(' megax')) {
+					current.megax = true;
+					choice = choice.slice(0, -6);
+				} else if (choice.endsWith(' megay')) {
+					current.megay = true;
+					choice = choice.slice(0, -6);
 				} else if (choice.endsWith(' mega')) {
 					current.mega = true;
 					choice = choice.slice(0, -5);
@@ -430,7 +448,7 @@ class BattleChoiceBuilder {
 		switch (choice.choiceType) {
 		case 'move':
 			const target = choice.targetLoc ? ` ${choice.targetLoc > 0 ? '+' : ''}${choice.targetLoc}` : ``;
-			const boost = `${choice.max ? ' max' : ''}${choice.mega ? ' mega' : ''}${choice.z ? ' zmove' : ''}${choice.tera ? ' terastallize' : ''}`;
+			const boost = `${choice.max ? ' max' : ''}${choice.mega ? ' mega' : ''}${choice.megax ? ' megax' : ''}${choice.megay ? ' megay' : ''}${choice.z ? ' zmove' : ''}${choice.tera ? ' terastallize' : ''}`;
 			return `move ${choice.move}${boost}${target}`;
 		case 'switch':
 		case 'team':
