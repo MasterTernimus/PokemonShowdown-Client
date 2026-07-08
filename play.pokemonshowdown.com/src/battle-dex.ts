@@ -59,6 +59,15 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 			isNonstandard: 'Custom',
 		},
 	},
+	garchompbattlebond: {
+		base: 'garchomp',
+		data: {
+			name: 'Garchomp-Battle-Bond',
+			baseSpecies: 'Garchomp',
+			forme: 'Battle-Bond',
+			isNonstandard: 'Custom',
+		},
+	},
 	gardevoirvoid: {
 		base: 'gardevoir',
 		data: {
@@ -102,6 +111,16 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 		front: {w: 195, h: 154},
 		back: {w: 181, h: 140},
 	},
+	garchompmegaz: {
+		num: 445,
+		front: {w: 192, h: 189},
+		back: {w: 192, h: 189},
+	},
+	garchompbattlebond: {
+		num: 445,
+		front: {w: 192, h: 189},
+		back: {w: 192, h: 189},
+	},
 	gardevoirmegaz: {
 		num: 282,
 		front: {w: 192, h: 189},
@@ -132,6 +151,14 @@ function ensureCustomSpecies(id?: string) {
 		};
 	}
 	ensureCustomBWSpriteData();
+	const garchomp = window.BattlePokedex.garchomp;
+	if (garchomp) {
+		const otherFormes = garchomp.otherFormes || [];
+		for (const forme of ['Garchomp-Mega-Z', 'Garchomp-Battle-Bond']) {
+			if (!otherFormes.includes(forme)) otherFormes.push(forme);
+		}
+		garchomp.otherFormes = otherFormes;
+	}
 	const flygon = window.BattlePokedex.flygon;
 	if (flygon) {
 		const otherFormes = flygon.otherFormes || [];
@@ -890,6 +917,14 @@ const Dex = new class implements ModdedDex {
 			spriteData.x = 3;
 			spriteData.y = 17;
 			spriteData.backgroundSize = '94px auto';
+		} else if (spriteid === 'garchomp-battlebond') {
+			spriteData.x = 8;
+			spriteData.y = 9;
+			spriteData.backgroundSize = '80px auto';
+		} else if (spriteid === 'garchomp-megaz') {
+			spriteData.x = 7;
+			spriteData.y = 8;
+			spriteData.backgroundSize = '82px auto';
 		} else if (spriteid === 'gardevoir-megaz') {
 			spriteData.x = 13;
 			spriteData.y = 8;
