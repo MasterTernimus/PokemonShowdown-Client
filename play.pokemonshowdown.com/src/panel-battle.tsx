@@ -561,6 +561,21 @@ class BattlePanel extends PSRoomPanel<BattleRoom> {
 			const canMegaEvoX = moveRequest.canMegaEvoX && !choices.alreadyMega;
 			const canMegaEvoY = moveRequest.canMegaEvoY && !choices.alreadyMega;
 			const canZMove = moveRequest.zMoves && !choices.alreadyZ;
+			let megaLabel = 'Mega Evolution';
+			let megaXLabel = 'Mega Evolution X';
+			let megaYLabel = 'Mega Evolution Y';
+			const speciesid = toID(pokemon.details.split(',')[0]);
+			if (pokemon.item === 'gardevoirite') {
+				if (speciesid === 'gardevoirvoid') {
+					megaLabel = 'Gardevoir-Void-Mega';
+					megaXLabel = 'Gardevoir-Mega-Z';
+					megaYLabel = 'Gardevoir-Mega';
+				} else if (speciesid === 'gardevoir') {
+					megaLabel = 'Gardevoir-Mega';
+					megaXLabel = 'Gardevoir-Mega-Z';
+					megaYLabel = 'Gardevoir-Void-Mega';
+				}
+			}
 
 			if (choices.current.move) {
 				const moveName = choices.getChosenMove(choices.current, choices.index()).name;
@@ -597,15 +612,15 @@ class BattlePanel extends PSRoomPanel<BattleRoom> {
 						</label>}
 						{canMegaEvo && <label class={`megaevo${choices.current.mega ? ' cur' : ''}`}>
 							<input type="checkbox" name="mega" checked={choices.current.mega} onChange={this.toggleBoostedMove} /> {}
-							Mega Evolution
+							{megaLabel}
 						</label>}
 						{canMegaEvoX && <label class={`megaevo${choices.current.megax ? ' cur' : ''}`}>
 							<input type="checkbox" name="megax" checked={choices.current.megax} onChange={this.toggleBoostedMove} /> {}
-							Mega Evolution X
+							{megaXLabel}
 						</label>}
 						{canMegaEvoY && <label class={`megaevo${choices.current.megay ? ' cur' : ''}`}>
 							<input type="checkbox" name="megay" checked={choices.current.megay} onChange={this.toggleBoostedMove} /> {}
-							Mega Evolution Y
+							{megaYLabel}
 						</label>}
 						{moveRequest.canUltraBurst && <label class={`megaevo${choices.current.ultra ? ' cur' : ''}`}>
 							<input type="checkbox" name="ultra" checked={choices.current.ultra} onChange={this.toggleBoostedMove} /> {}
