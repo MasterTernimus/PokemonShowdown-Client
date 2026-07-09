@@ -558,15 +558,21 @@ class BattlePanel extends PSRoomPanel<BattleRoom> {
 
 			const canDynamax = moveRequest.canDynamax && !choices.alreadyMax;
 			const canMegaEvo = moveRequest.canMegaEvo && !choices.alreadyMega;
-			const canMegaEvoX = moveRequest.canMegaEvoX && !choices.alreadyMega;
-			const canMegaEvoY = moveRequest.canMegaEvoY && !choices.alreadyMega;
 			const canZMove = moveRequest.zMoves && !choices.alreadyZ;
 			let megaLabel = 'Mega Evolution';
 			let megaXLabel = 'Mega Evolution X';
 			let megaYLabel = 'Mega Evolution Y';
-			const speciesid = toID(pokemon.details.split(',')[0]);
-			if (pokemon.item === 'gardevoirite') {
-				if (speciesid === 'gardevoirvoid') {
+			const speciesid = toID(pokemon.speciesForme || pokemon.details.split(',')[0]);
+			const isGardevoirVoid = speciesid === 'gardevoirvoid' || (
+				speciesid === 'gardevoir' && moveRequest.moves.some(move => move.id === 'darkvoid')
+			);
+			const isGardevoiriteMega = canMegaEvo && toID(pokemon.item) === 'gardevoirite' && (
+				isGardevoirVoid || speciesid === 'gardevoir'
+			);
+			const canMegaEvoX = (moveRequest.canMegaEvoX || isGardevoiriteMega) && !choices.alreadyMega;
+			const canMegaEvoY = (moveRequest.canMegaEvoY || isGardevoiriteMega) && !choices.alreadyMega;
+			if (toID(pokemon.item) === 'gardevoirite') {
+				if (isGardevoirVoid) {
 					megaLabel = 'Gardevoir-Void-Mega';
 					megaXLabel = 'Gardevoir-Mega-Z';
 					megaYLabel = 'Gardevoir-Mega';

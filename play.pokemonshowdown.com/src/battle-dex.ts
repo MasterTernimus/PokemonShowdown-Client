@@ -47,6 +47,17 @@ function toUserid(text: any) {
 }
 
 const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
+	hypno: {
+		base: 'hypno',
+		data: {
+			name: 'Hypno',
+			types: ['Psychic', 'Dark'],
+			abilities: {0: 'No Guard', 1: 'Neutralizing Gas', H: 'Neutralization'},
+			baseStats: {hp: 90, atk: 70, def: 105, spa: 80, spd: 110, spe: 45},
+			bst: 500,
+			isNonstandard: 'Custom',
+		},
+	},
 	flygonmegaz: {
 		base: 'flygon',
 		data: {
@@ -103,28 +114,481 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 			isNonstandard: 'Custom',
 		},
 	},
+	lucariomegaz: {
+		base: 'lucariomega',
+		data: {
+			name: 'Lucario-Mega-Z',
+			baseSpecies: 'Lucario',
+			forme: 'Mega-Z',
+			requiredItem: 'Lucarionite',
+			battleOnly: 'Lucario',
+			changesFrom: 'Lucario',
+			isNonstandard: 'Custom',
+		},
+	},
+	raichumegax: {
+		base: 'raichu',
+		data: {
+			name: 'Raichu-Mega-X',
+			baseSpecies: 'Raichu',
+			forme: 'Mega-X',
+			battleOnly: 'Raichu',
+			changesFrom: 'Raichu',
+			isNonstandard: 'Custom',
+		},
+	},
+	raichumegay: {
+		base: 'raichu',
+		data: {
+			name: 'Raichu-Mega-Y',
+			baseSpecies: 'Raichu',
+			forme: 'Mega-Y',
+			battleOnly: 'Raichu',
+			changesFrom: 'Raichu',
+			isNonstandard: 'Custom',
+		},
+	},
+	scolipedemega: {
+		base: 'scolipede',
+		data: {
+			name: 'Scolipede-Mega',
+			baseSpecies: 'Scolipede',
+			forme: 'Mega',
+			battleOnly: 'Scolipede',
+			changesFrom: 'Scolipede',
+			isNonstandard: 'Custom',
+		},
+	},
+	golisopodmega: {
+		base: 'golisopod',
+		data: {
+			name: 'Golisopod-Mega',
+			baseSpecies: 'Golisopod',
+			forme: 'Mega',
+			battleOnly: 'Golisopod',
+			changesFrom: 'Golisopod',
+			isNonstandard: 'Custom',
+		},
+	},
+	golurkmega: {
+		base: 'golurk',
+		data: {
+			name: 'Golurk-Mega',
+			baseSpecies: 'Golurk',
+			forme: 'Mega',
+			battleOnly: 'Golurk',
+			changesFrom: 'Golurk',
+			isNonstandard: 'Custom',
+		},
+	},
+	glimmoramega: {
+		base: 'glimmora',
+		data: {
+			name: 'Glimmora-Mega',
+			baseSpecies: 'Glimmora',
+			forme: 'Mega',
+			battleOnly: 'Glimmora',
+			changesFrom: 'Glimmora',
+			isNonstandard: 'Custom',
+		},
+	},
+	greninjamega: {
+		base: 'greninja',
+		data: {
+			name: 'Greninja-Mega',
+			baseSpecies: 'Greninja',
+			forme: 'Mega',
+			battleOnly: 'Greninja',
+			changesFrom: 'Greninja',
+			isNonstandard: 'Custom',
+		},
+	},
+	chesnaughtmega: {
+		base: 'chesnaught',
+		data: {
+			name: 'Chesnaught-Mega',
+			baseSpecies: 'Chesnaught',
+			forme: 'Mega',
+			battleOnly: 'Chesnaught',
+			changesFrom: 'Chesnaught',
+			isNonstandard: 'Custom',
+		},
+	},
+	delphoxmega: {
+		base: 'delphox',
+		data: {
+			name: 'Delphox-Mega',
+			baseSpecies: 'Delphox',
+			forme: 'Mega',
+			battleOnly: 'Delphox',
+			changesFrom: 'Delphox',
+			isNonstandard: 'Custom',
+		},
+	},
+	dragalgemega: {
+		base: 'dragalge',
+		data: {
+			name: 'Dragalge-Mega',
+			baseSpecies: 'Dragalge',
+			forme: 'Mega',
+			battleOnly: 'Dragalge',
+			changesFrom: 'Dragalge',
+			isNonstandard: 'Custom',
+		},
+	},
+	dragonitemega: {
+		base: 'dragonite',
+		data: {
+			name: 'Dragonite-Mega',
+			baseSpecies: 'Dragonite',
+			forme: 'Mega',
+			battleOnly: 'Dragonite',
+			changesFrom: 'Dragonite',
+			isNonstandard: 'Custom',
+		},
+	},
+	baxcaliburmega: {
+		base: 'baxcalibur',
+		data: {
+			name: 'Baxcalibur-Mega',
+			baseSpecies: 'Baxcalibur',
+			forme: 'Mega',
+			battleOnly: 'Baxcalibur',
+			changesFrom: 'Baxcalibur',
+			isNonstandard: 'Custom',
+		},
+	},
+	emboarmega: {
+		base: 'emboar',
+		data: {
+			name: 'Emboar-Mega',
+			baseSpecies: 'Emboar',
+			forme: 'Mega',
+			battleOnly: 'Emboar',
+			changesFrom: 'Emboar',
+			isNonstandard: 'Custom',
+		},
+	},
+	chandeluremega: {
+		base: 'chandelure',
+		data: {
+			name: 'Chandelure-Mega',
+			baseSpecies: 'Chandelure',
+			forme: 'Mega',
+			battleOnly: 'Chandelure',
+			changesFrom: 'Chandelure',
+			isNonstandard: 'Custom',
+		},
+	},
+	crabominablemega: {
+		base: 'crabominable',
+		data: {
+			name: 'Crabominable-Mega',
+			baseSpecies: 'Crabominable',
+			forme: 'Mega',
+			battleOnly: 'Crabominable',
+			changesFrom: 'Crabominable',
+			isNonstandard: 'Custom',
+		},
+	},
+	floetteeternalmega: {
+		base: 'floetteeternal',
+		data: {
+			name: 'Floette-Eternal-Mega',
+			baseSpecies: 'Floette',
+			forme: 'Eternal-Mega',
+			battleOnly: 'Floette-Eternal',
+			changesFrom: 'Floette-Eternal',
+			isNonstandard: 'Custom',
+		},
+	},
+	chimechomega: {
+		base: 'chimecho',
+		data: {
+			name: 'Chimecho-Mega',
+			baseSpecies: 'Chimecho',
+			forme: 'Mega',
+			battleOnly: 'Chimecho',
+			changesFrom: 'Chimecho',
+			isNonstandard: 'Custom',
+		},
+	},
+	froslassmega: {
+		base: 'froslass',
+		data: {
+			name: 'Froslass-Mega',
+			baseSpecies: 'Froslass',
+			forme: 'Mega',
+			battleOnly: 'Froslass',
+			changesFrom: 'Froslass',
+			isNonstandard: 'Custom',
+		},
+	},
+	feraligatrmega: {
+		base: 'feraligatr',
+		data: {
+			name: 'Feraligatr-Mega',
+			baseSpecies: 'Feraligatr',
+			forme: 'Mega',
+			battleOnly: 'Feraligatr',
+			changesFrom: 'Feraligatr',
+			isNonstandard: 'Custom',
+		},
+	},
+	eelektrossmega: {
+		base: 'eelektross',
+		data: {
+			name: 'Eelektross-Mega',
+			baseSpecies: 'Eelektross',
+			forme: 'Mega',
+			battleOnly: 'Eelektross',
+			changesFrom: 'Eelektross',
+			isNonstandard: 'Custom',
+		},
+	},
+	excadrillmega: {
+		base: 'excadrill',
+		data: {
+			name: 'Excadrill-Mega',
+			baseSpecies: 'Excadrill',
+			forme: 'Mega',
+			battleOnly: 'Excadrill',
+			changesFrom: 'Excadrill',
+			isNonstandard: 'Custom',
+		},
+	},
+	meowsticmmega: {
+		base: 'meowstic',
+		data: {
+			name: 'Meowstic-M-Mega',
+			baseSpecies: 'Meowstic',
+			forme: 'M-Mega',
+			battleOnly: 'Meowstic',
+			changesFrom: 'Meowstic',
+			isNonstandard: 'Custom',
+		},
+	},
+	meowsticfmega: {
+		base: 'meowsticf',
+		data: {
+			name: 'Meowstic-F-Mega',
+			baseSpecies: 'Meowstic',
+			forme: 'F-Mega',
+			battleOnly: 'Meowstic-F',
+			changesFrom: 'Meowstic-F',
+			isNonstandard: 'Custom',
+		},
+	},
+	scovillainmega: {
+		base: 'scovillain',
+		data: {
+			name: 'Scovillain-Mega',
+			baseSpecies: 'Scovillain',
+			forme: 'Mega',
+			battleOnly: 'Scovillain',
+			changesFrom: 'Scovillain',
+			isNonstandard: 'Custom',
+		},
+	},
+	malamarmega: {
+		base: 'malamar',
+		data: {
+			name: 'Malamar-Mega',
+			baseSpecies: 'Malamar',
+			forme: 'Mega',
+			battleOnly: 'Malamar',
+			changesFrom: 'Malamar',
+			isNonstandard: 'Custom',
+		},
+	},
+	clefablemega: {
+		base: 'clefable',
+		data: {
+			name: 'Clefable-Mega',
+			baseSpecies: 'Clefable',
+			forme: 'Mega',
+			battleOnly: 'Clefable',
+			changesFrom: 'Clefable',
+			isNonstandard: 'Custom',
+		},
+	},
 };
 
 const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	flygonmegaz: {
 		num: 330,
-		front: {w: 195, h: 154},
-		back: {w: 181, h: 140},
+		front: {w: 96, h: 76},
+		back: {w: 96, h: 74},
 	},
 	garchompmegaz: {
 		num: 445,
-		front: {w: 192, h: 189},
-		back: {w: 192, h: 189},
+		front: {w: 96, h: 95},
+		back: {w: 96, h: 95},
 	},
 	garchompbattlebond: {
 		num: 445,
-		front: {w: 192, h: 189},
-		back: {w: 192, h: 189},
+		front: {w: 96, h: 95},
+		back: {w: 96, h: 95},
 	},
 	gardevoirmegaz: {
 		num: 282,
-		front: {w: 192, h: 189},
-		back: {w: 192, h: 189},
+		front: {w: 96, h: 95},
+		back: {w: 96, h: 95},
+	},
+	scraftymega: {
+		num: 560,
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
+	},
+	skarmorymega: {
+		num: 227,
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
+	},
+	staraptormega: {
+		num: 398,
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
+	},
+	lucariomegaz: {
+		num: 448,
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
+	},
+	meganiummega: {
+		num: 154,
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
+	},
+	raichumegax: {
+		num: 26,
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
+	},
+	raichumegay: {
+		num: 26,
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
+	},
+	scolipedemega: {
+		num: 545,
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
+	},
+	golisopodmega: {
+		num: 768,
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
+	},
+	golurkmega: {
+		num: 623,
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
+	},
+	glimmoramega: {
+		num: 970,
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
+	},
+	greninjamega: {
+		num: 658,
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
+	},
+	chesnaughtmega: {
+		num: 652,
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
+	},
+	delphoxmega: {
+		num: 655,
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
+	},
+	dragalgemega: {
+		num: 691,
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
+	},
+	dragonitemega: {
+		num: 149,
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
+	},
+	baxcaliburmega: {
+		num: 998,
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
+	},
+	emboarmega: {
+		num: 500,
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
+	},
+	chandeluremega: {
+		num: 609,
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
+	},
+	crabominablemega: {
+		num: 740,
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
+	},
+	floetteeternalmega: {
+		num: 670,
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
+	},
+	chimechomega: {
+		num: 358,
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
+	},
+	froslassmega: {
+		num: 478,
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
+	},
+	feraligatrmega: {
+		num: 160,
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
+	},
+	eelektrossmega: {
+		num: 604,
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
+	},
+	excadrillmega: {
+		num: 530,
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
+	},
+	meowsticmmega: {
+		num: 678,
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
+	},
+	meowsticfmega: {
+		num: 678,
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
+	},
+	scovillainmega: {
+		num: 952,
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
+	},
+	malamarmega: {
+		num: 687,
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
+	},
+	clefablemega: {
+		num: 36,
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
 	},
 };
 
@@ -141,7 +605,6 @@ function ensureCustomSpecies(id?: string) {
 	if (!window.BattlePokedex) return;
 	for (const customId of Object.keys(CUSTOM_SPECIES)) {
 		if (id && id !== customId) continue;
-		if (window.BattlePokedex[customId]) continue;
 		const customSpecies = CUSTOM_SPECIES[customId];
 		const baseData = window.BattlePokedex[customSpecies.base];
 		if (!baseData) continue;
@@ -914,25 +1377,25 @@ const Dex = new class implements ModdedDex {
 		spriteData.x = 10;
 		spriteData.y = 5;
 		if (spriteid === 'flygon-megaz') {
-			spriteData.x = 3;
-			spriteData.y = 17;
-			spriteData.backgroundSize = '94px auto';
+			spriteData.x = 5;
+			spriteData.y = 22;
+			spriteData.backgroundSize = '86px auto';
 		} else if (spriteid === 'garchomp-battlebond') {
-			spriteData.x = 8;
-			spriteData.y = 9;
-			spriteData.backgroundSize = '80px auto';
+			spriteData.x = 10;
+			spriteData.y = 14;
+			spriteData.backgroundSize = '74px auto';
 		} else if (spriteid === 'garchomp-megaz') {
 			spriteData.x = 7;
 			spriteData.y = 8;
 			spriteData.backgroundSize = '82px auto';
 		} else if (spriteid === 'gardevoir-megaz') {
-			spriteData.x = 13;
-			spriteData.y = 8;
-			spriteData.backgroundSize = '70px auto';
+			spriteData.x = 17;
+			spriteData.y = 12;
+			spriteData.backgroundSize = '62px auto';
 		} else if (spriteid === 'gardevoirvoid-mega') {
-			spriteData.x = 2;
-			spriteData.y = 4;
-			spriteData.backgroundSize = '92px auto';
+			spriteData.x = 11;
+			spriteData.y = 9;
+			spriteData.backgroundSize = '78px auto';
 		}
 		return spriteData;
 	}
