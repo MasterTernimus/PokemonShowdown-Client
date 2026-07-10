@@ -465,6 +465,14 @@ const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
 	absolmegaz: 'absol-megaz',
 };
 
+const CUSTOM_TEAMBUILDER_SPRITES: {[id: string]: {x: number, y: number, backgroundSize: string}} = {
+	flygonmegaz: {x: 12, y: 8, backgroundSize: '72px auto'},
+	garchompmegaz: {x: 12, y: 6, backgroundSize: '72px auto'},
+	garchompbattlebond: {x: 15, y: 7, backgroundSize: '66px auto'},
+	gardevoirmegaz: {x: 19, y: 8, backgroundSize: '58px auto'},
+	gardevoirvoidmega: {x: 15, y: 8, backgroundSize: '66px auto'},
+};
+
 const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	flygonmegaz: {
 		num: 330,
@@ -1411,9 +1419,11 @@ const Dex = new class implements ModdedDex {
 		};
 		if (pokemon.shiny) spriteData.shiny = true;
 		if (CUSTOM_ICON_SPRITES[id]) {
+			const customSpriteData = CUSTOM_TEAMBUILDER_SPRITES[id] || {x: 12, y: 6, backgroundSize: '72px auto'};
 			spriteData.spriteDir = 'sprites/gen5';
-			spriteData.x = 10;
-			spriteData.y = 5;
+			spriteData.x = customSpriteData.x;
+			spriteData.y = customSpriteData.y;
+			spriteData.backgroundSize = customSpriteData.backgroundSize;
 			return spriteData;
 		}
 		if (Dex.prefs('nopastgens')) gen = 6;
