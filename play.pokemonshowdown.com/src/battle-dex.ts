@@ -412,6 +412,17 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 			isNonstandard: 'Custom',
 		},
 	},
+	absolmegaz: {
+		base: 'absolmega',
+		data: {
+			name: 'Absol-Mega-Z',
+			baseSpecies: 'Absol',
+			forme: 'Mega-Z',
+			battleOnly: 'Absol',
+			changesFrom: 'Absol',
+			isNonstandard: 'Custom',
+		},
+	},
 };
 
 const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
@@ -451,6 +462,7 @@ const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
 	scovillainmega: 'scovillain-mega',
 	malamarmega: 'malamar-mega',
 	clefablemega: 'clefable-mega',
+	absolmegaz: 'absol-megaz',
 };
 
 const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
@@ -626,6 +638,11 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	},
 	clefablemega: {
 		num: 36,
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
+	},
+	absolmegaz: {
+		num: 359,
 		front: {w: 96, h: 96},
 		back: {w: 96, h: 96},
 	},
