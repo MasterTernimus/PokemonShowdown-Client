@@ -414,6 +414,45 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 	},
 };
 
+const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
+	flygonmegaz: 'flygon-megaz',
+	garchompmegaz: 'garchomp-megaz',
+	garchompbattlebond: 'garchomp-battlebond',
+	gardevoirvoidmega: 'gardevoirvoid-mega',
+	gardevoirmegaz: 'gardevoir-megaz',
+	scraftymega: 'scrafty-mega',
+	skarmorymega: 'skarmory-mega',
+	staraptormega: 'staraptor-mega',
+	lucariomegaz: 'lucario-megaz',
+	meganiummega: 'meganium-mega',
+	raichumegax: 'raichu-megax',
+	raichumegay: 'raichu-megay',
+	scolipedemega: 'scolipede-mega',
+	golisopodmega: 'golisopod-mega',
+	golurkmega: 'golurk-mega',
+	glimmoramega: 'glimmora-mega',
+	greninjamega: 'greninja-mega',
+	chesnaughtmega: 'chesnaught-mega',
+	delphoxmega: 'delphox-mega',
+	dragalgemega: 'dragalge-mega',
+	dragonitemega: 'dragonite-mega',
+	baxcaliburmega: 'baxcalibur-mega',
+	emboarmega: 'emboar-mega',
+	chandeluremega: 'chandelure-mega',
+	crabominablemega: 'crabominable-mega',
+	floetteeternalmega: 'floette-eternal-mega',
+	chimechomega: 'chimecho-mega',
+	froslassmega: 'froslass-mega',
+	feraligatrmega: 'feraligatr-mega',
+	eelektrossmega: 'eelektross-mega',
+	excadrillmega: 'excadrill-mega',
+	meowsticmmega: 'meowstic-mmega',
+	meowsticfmega: 'meowstic-fmega',
+	scovillainmega: 'scovillain-mega',
+	malamarmega: 'malamar-mega',
+	clefablemega: 'clefable-mega',
+};
+
 const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	flygonmegaz: {
 		num: 330,
@@ -1315,6 +1354,11 @@ const Dex = new class implements ModdedDex {
 			// @ts-ignore
 			id = toID(pokemon.volatiles.formechange[1]);
 		}
+		const customIcon = CUSTOM_ICON_SPRITES[id];
+		if (customIcon) {
+			const fainted = ((pokemon as Pokemon | ServerPokemon)?.fainted ? `;opacity:.3;filter:grayscale(100%) brightness(.5)` : ``);
+			return `background:transparent url(${Dex.resourcePrefix}sprites/gen5/${customIcon}.png) no-repeat center / contain${fainted}`;
+		}
 		let num = this.getPokemonIconNum(id, pokemon?.gender === 'F', facingLeft);
 
 		let top = Math.floor(num / 12) * 30;
@@ -1330,6 +1374,7 @@ const Dex = new class implements ModdedDex {
 		if (pokemon.species && !spriteid) {
 			spriteid = species.spriteid || toID(pokemon.species);
 		}
+		if (CUSTOM_ICON_SPRITES[id]) spriteid = CUSTOM_ICON_SPRITES[id];
 		if (species.exists === false) return { spriteDir: 'sprites/gen5', spriteid: '0', x: 10, y: 5 };
 		if (window.Config?.server?.afd || Dex.prefs('afd')) {
 			return {
@@ -1347,6 +1392,12 @@ const Dex = new class implements ModdedDex {
 			y: -3,
 		};
 		if (pokemon.shiny) spriteData.shiny = true;
+		if (CUSTOM_ICON_SPRITES[id]) {
+			spriteData.spriteDir = 'sprites/gen5';
+			spriteData.x = 10;
+			spriteData.y = 5;
+			return spriteData;
+		}
 		if (Dex.prefs('nopastgens')) gen = 6;
 		if (Dex.prefs('bwgfx') && gen > 5) gen = 5;
 		let xydexExists = (!species.isNonstandard || species.isNonstandard === 'Past' || species.isNonstandard === 'CAP') || [
