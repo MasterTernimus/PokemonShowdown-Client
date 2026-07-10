@@ -647,9 +647,10 @@ function ensureCustomSpecies(id?: string) {
 		const customSpecies = CUSTOM_SPECIES[customId];
 		const baseData = window.BattlePokedex[customSpecies.base];
 		if (!baseData) continue;
+		const existingData = window.BattlePokedex[customId];
 		window.BattlePokedex[customId] = {
-			...baseData,
 			...customSpecies.data,
+			...(existingData || baseData),
 		};
 	}
 	ensureCustomBWSpriteData();
