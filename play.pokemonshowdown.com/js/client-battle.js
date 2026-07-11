@@ -53,6 +53,9 @@
 		},
 		events: {
 			'click .replayDownloadButton': 'clickReplayDownloadButton',
+			'change input[name=megaevo]': 'updateMegaChoice',
+			'change input[name=megaevox]': 'updateMegaChoice',
+			'change input[name=megaevoy]': 'updateMegaChoice',
 			'change input[name=zmove]': 'updateZMove',
 			'change input[name=dynamax]': 'updateMaxMove'
 		},
@@ -530,6 +533,11 @@
 				this.$('.movebuttons-z').hide();
 			}
 		},
+		updateMegaChoice: function (e) {
+			var checkbox = e.currentTarget;
+			if (!checkbox.checked) return;
+			this.$('input[name=megaevo], input[name=megaevox], input[name=megaevoy]').not(checkbox).prop('checked', false);
+		},
 		updateTimer: function () {
 			this.$('.timerbutton').replaceWith(this.getTimerHTML());
 		},
@@ -571,6 +579,29 @@
 				});
 			}
 			if (gigantamax) gigantamax = Dex.moves.get(gigantamax);
+			var pokemon = switchables[pos] || {};
+			var speciesid = toID(pokemon.speciesForme || pokemon.species || pokemon.details || pokemon.name);
+			var megaTargetid = toID(canMegaEvo);
+			var isGardevoirVoid = speciesid === 'gardevoirvoid' || (speciesid === 'gardevoir' && curActive.moves.some(function (move) {
+				return toID(move.id || move.move) === 'darkvoid';
+			})) || megaTargetid === 'gardevoirvoidmega';
+			var isGardevoiriteMega = canMegaEvo && (toID(pokemon.item) === 'gardevoirite' || megaTargetid.indexOf('gardevoir') === 0) && (isGardevoirVoid || speciesid === 'gardevoir' || megaTargetid.indexOf('gardevoir') === 0);
+			var canMegaEvoX = isGardevoiriteMega;
+			var canMegaEvoY = isGardevoiriteMega;
+			var megaLabel = 'Mega Evolution';
+			var megaXLabel = 'Mega Evolution X';
+			var megaYLabel = 'Mega Evolution Y';
+			if (toID(pokemon.item) === 'gardevoirite' || megaTargetid.indexOf('gardevoir') === 0) {
+				if (isGardevoirVoid) {
+					megaLabel = 'Gardevoir-Void-Mega';
+					megaXLabel = 'Gardevoir-Mega-Z';
+					megaYLabel = 'Gardevoir-Mega';
+				} else if (speciesid === 'gardevoir') {
+					megaLabel = 'Gardevoir-Mega';
+					megaXLabel = 'Gardevoir-Mega-Z';
+					megaYLabel = 'Gardevoir-Void-Mega';
+				}
+			}
 
 			this.finalDecisionMove = curActive.maybeDisabled || false;
 			this.finalDecisionSwitch = curActive.maybeTrapped || false;
@@ -723,7 +754,13 @@
 					moveMenu += movebuttons;
 				}
 				if (canMegaEvo) {
-					moveMenu += '<br /><label class="megaevo"><input type="checkbox" name="megaevo" />&nbsp;Mega&nbsp;Evolution</label>';
+					moveMenu += '<br /><label class="megaevo"><input type="checkbox" name="megaevo" />&nbsp;' + BattleLog.escapeHTML(megaLabel) + '</label>';
+				}
+				if (canMegaEvoX) {
+					moveMenu += '<br /><label class="megaevo"><input type="checkbox" name="megaevox" />&nbsp;' + BattleLog.escapeHTML(megaXLabel) + '</label>';
+				}
+				if (canMegaEvoY) {
+					moveMenu += '<br /><label class="megaevo"><input type="checkbox" name="megaevoy" />&nbsp;' + BattleLog.escapeHTML(megaYLabel) + '</label>';
 				}
 				if (canZMove) {
 					moveMenu += '<br /><label class="megaevo"><input type="checkbox" name="zmove" />&nbsp;Z-Power</label>';
@@ -1239,6 +1276,8 @@
 			if (pos !== undefined) { // pos === undefined if called by chooseMoveTarget()
 				var nearActive = this.battle.nearSide.active;
 				var isMega = !!(this.$('input[name=megaevo]')[0] || '').checked;
+				var isMegaX = !!(this.$('input[name=megaevox]')[0] || '').checked;
+				var isMegaY = !!(this.$('input[name=megaevoy]')[0] || '').checked;
 				var isZMove = !!(this.$('input[name=zmove]')[0] || '').checked;
 				var isUltraBurst = !!(this.$('input[name=ultraburst]')[0] || '').checked;
 				var isDynamax = !!(this.$('input[name=dynamax]')[0] || '').checked;
@@ -1247,7 +1286,7 @@
 				var target = e.getAttribute('data-target');
 				var choosableTargets = {normal: 1, any: 1, adjacentAlly: 1, adjacentAllyOrSelf: 1, adjacentFoe: 1};
 
-				this.choice.choices.push('move ' + pos + (isMega ? ' mega' : '') + (isZMove ? ' zmove' : '') + (isUltraBurst ? ' ultra' : '') + (isDynamax ? ' dynamax' : '') + (isTerastal ? ' terastallize' : ''));
+				this.choice.choices.push('move ' + pos + (isMega ? ' mega' : '') + (isMegaX ? ' megax' : '') + (isMegaY ? ' megay' : '') + (isZMove ? ' zmove' : '') + (isUltraBurst ? ' ultra' : '') + (isDynamax ? ' dynamax' : '') + (isTerastal ? ' terastallize' : ''));
 				if (nearActive.length > 1 && target in choosableTargets) {
 					this.choice.type = 'movetarget';
 					this.choice.moveTarget = target;
