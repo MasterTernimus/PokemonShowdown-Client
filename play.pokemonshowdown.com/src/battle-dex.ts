@@ -466,33 +466,33 @@ const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
 };
 
 const CUSTOM_TEAMBUILDER_SPRITES: {[id: string]: {x: number, y: number, backgroundSize: string}} = {
-	flygonmegaz: {x: 12, y: 8, backgroundSize: '72px auto'},
-	garchompmegaz: {x: 12, y: 6, backgroundSize: '72px auto'},
-	garchompbattlebond: {x: 15, y: 7, backgroundSize: '66px auto'},
-	gardevoirmegaz: {x: 19, y: 8, backgroundSize: '58px auto'},
-	gardevoirvoidmega: {x: 15, y: 8, backgroundSize: '66px auto'},
+	flygonmegaz: {x: 10, y: 6, backgroundSize: '76px auto'},
+	garchompmegaz: {x: 10, y: 6, backgroundSize: '76px auto'},
+	garchompbattlebond: {x: 13, y: 10, backgroundSize: '70px auto'},
+	gardevoirmegaz: {x: 17, y: 14, backgroundSize: '62px auto'},
+	gardevoirvoidmega: {x: 13, y: 10, backgroundSize: '70px auto'},
 };
 
 const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	flygonmegaz: {
 		num: 330,
-		front: {w: 96, h: 76},
-		back: {w: 96, h: 74},
+		front: {w: 54, h: 54},
+		back: {w: 72, h: 72},
 	},
 	garchompmegaz: {
 		num: 445,
-		front: {w: 96, h: 95},
-		back: {w: 96, h: 95},
+		front: {w: 54, h: 54},
+		back: {w: 72, h: 72},
 	},
 	garchompbattlebond: {
 		num: 445,
-		front: {w: 96, h: 95},
-		back: {w: 96, h: 95},
+		front: {w: 54, h: 54},
+		back: {w: 72, h: 72},
 	},
 	gardevoirmegaz: {
 		num: 282,
-		front: {w: 96, h: 95},
-		back: {w: 96, h: 95},
+		front: {w: 48, h: 48},
+		back: {w: 72, h: 72},
 	},
 	scraftymega: {
 		num: 560,
@@ -1281,6 +1281,7 @@ const Dex = new class implements ModdedDex {
 
 		if (animationData[facing + 'f'] && options.gender === 'F') facing += 'f';
 		let allowAnim = !Dex.prefs('noanim') && !Dex.prefs('nogif');
+		if (CUSTOM_ICON_SPRITES[speciesid]) allowAnim = false;
 		if (allowAnim && spriteData.gen >= 6) spriteData.pixelated = false;
 		if (allowAnim && animationData[facing] && spriteData.gen >= 5) {
 			if (facing.slice(-1) === 'f') name += '-f';
@@ -1419,7 +1420,7 @@ const Dex = new class implements ModdedDex {
 		};
 		if (pokemon.shiny) spriteData.shiny = true;
 		if (CUSTOM_ICON_SPRITES[id]) {
-			const customSpriteData = CUSTOM_TEAMBUILDER_SPRITES[id] || {x: 12, y: 6, backgroundSize: '72px auto'};
+			const customSpriteData = CUSTOM_TEAMBUILDER_SPRITES[id] || {x: 12, y: 10, backgroundSize: '72px auto'};
 			spriteData.spriteDir = 'sprites/gen5';
 			spriteData.x = customSpriteData.x;
 			spriteData.y = customSpriteData.y;
