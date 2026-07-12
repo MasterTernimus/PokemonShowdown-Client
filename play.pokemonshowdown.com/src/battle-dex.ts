@@ -463,6 +463,7 @@ const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
 	malamarmega: 'malamar-mega',
 	clefablemega: 'clefable-mega',
 	absolmegaz: 'absol-megaz',
+	ursalunabloodmoon: 'ursaluna-bloodmoon',
 };
 
 const CUSTOM_TEAMBUILDER_SPRITES: {[id: string]: {x: number, y: number, backgroundSize: string}} = {
@@ -471,9 +472,15 @@ const CUSTOM_TEAMBUILDER_SPRITES: {[id: string]: {x: number, y: number, backgrou
 	garchompbattlebond: {x: 13, y: 10, backgroundSize: '70px auto'},
 	gardevoirmegaz: {x: 17, y: 14, backgroundSize: '62px auto'},
 	gardevoirvoidmega: {x: 13, y: 10, backgroundSize: '70px auto'},
+	ursalunabloodmoon: {x: 13, y: 9, backgroundSize: '70px auto'},
 };
 
 const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
+	ursalunabloodmoon: {
+		num: 901,
+		front: {w: 72, h: 72},
+		back: {w: 72, h: 72},
+	},
 	flygonmegaz: {
 		num: 330,
 		front: {w: 54, h: 54},
