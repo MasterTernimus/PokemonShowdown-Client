@@ -443,6 +443,7 @@ const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
 	golurkmega: 'golurk-mega',
 	glimmoramega: 'glimmora-mega',
 	greninjamega: 'greninja-mega',
+	greninjaash: 'greninja-mega',
 	chesnaughtmega: 'chesnaught-mega',
 	delphoxmega: 'delphox-mega',
 	dragalgemega: 'dragalge-mega',
@@ -1178,6 +1179,7 @@ const Dex = new class implements ModdedDex {
 			shiny: options.shiny,
 		};
 		let name = species.spriteid;
+		if (CUSTOM_ICON_SPRITES[species.id]) name = CUSTOM_ICON_SPRITES[species.id] as ID;
 		let dir;
 		let facing;
 		if (isFront) {
