@@ -79,6 +79,50 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 			isNonstandard: 'Custom',
 		},
 	},
+	butterfreemega: {
+		base: 'butterfree',
+		data: {
+			name: 'Butterfree-Mega',
+			baseSpecies: 'Butterfree',
+			forme: 'Mega',
+			battleOnly: 'Butterfree',
+			changesFrom: 'Butterfree',
+			isNonstandard: 'Custom',
+		},
+	},
+	serperiormega: {
+		base: 'serperior',
+		data: {
+			name: 'Serperior-Mega',
+			baseSpecies: 'Serperior',
+			forme: 'Mega',
+			battleOnly: 'Serperior',
+			changesFrom: 'Serperior',
+			isNonstandard: 'Custom',
+		},
+	},
+	mismagiusmega: {
+		base: 'mismagius',
+		data: {
+			name: 'Mismagius-Mega',
+			baseSpecies: 'Mismagius',
+			forme: 'Mega',
+			battleOnly: 'Mismagius',
+			changesFrom: 'Mismagius',
+			isNonstandard: 'Custom',
+		},
+	},
+	banettemegaz: {
+		base: 'banettemega',
+		data: {
+			name: 'Banette-Mega-Z',
+			baseSpecies: 'Banette',
+			forme: 'Mega-Z',
+			battleOnly: 'Banette',
+			changesFrom: 'Banette',
+			isNonstandard: 'Custom',
+		},
+	},
 	gardevoirvoid: {
 		base: 'gardevoir',
 		data: {
@@ -468,6 +512,13 @@ const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
 	scovillainmega: 'scovillain-mega',
 	malamarmega: 'malamar-mega',
 	clefablemega: 'clefable-mega',
+	blastoisegmax: 'blastoise-gmax',
+	toxtricitygmax: 'toxtricity-gmax',
+	toxtricitylowkeygmax: 'toxtricity-lowkeygmax',
+	butterfreemega: 'butterfree-mega',
+	serperiormega: 'serperior-mega',
+	mismagiusmega: 'mismagius-mega',
+	banettemegaz: 'banette-megaz',
 	absolmegaz: 'absol-megaz',
 	ursalunabloodmoon: 'ursaluna-bloodmoon',
 };
@@ -483,6 +534,13 @@ const CUSTOM_TEAMBUILDER_SPRITES: {[id: string]: {x: number, y: number, backgrou
 	banettemega: {x: 11, y: 9, backgroundSize: '74px auto'},
 	starmiemega: {x: 19, y: 10, backgroundSize: '58px auto'},
 	heracrossmega: {x: 8, y: 7, backgroundSize: '80px auto'},
+	blastoisegmax: {x: 7, y: 6, backgroundSize: '82px auto'},
+	toxtricitygmax: {x: 10, y: 8, backgroundSize: '76px auto'},
+	toxtricitylowkeygmax: {x: 10, y: 8, backgroundSize: '76px auto'},
+	butterfreemega: {x: 10, y: 8, backgroundSize: '76px auto'},
+	serperiormega: {x: 10, y: 7, backgroundSize: '76px auto'},
+	mismagiusmega: {x: 10, y: 8, backgroundSize: '76px auto'},
+	banettemegaz: {x: 17, y: 8, backgroundSize: '62px auto'},
 };
 
 const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
