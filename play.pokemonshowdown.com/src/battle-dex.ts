@@ -444,6 +444,7 @@ const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
 	glimmoramega: 'glimmora-mega',
 	greninjamega: 'greninja-mega',
 	greninjaash: 'greninja-ash',
+	greninjabond: 'greninja',
 	metagrossmega: 'metagross-mega',
 	banettemega: 'banette-mega',
 	starmiemega: 'starmie-mega',
