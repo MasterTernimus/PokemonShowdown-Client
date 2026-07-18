@@ -501,6 +501,7 @@ const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
 	emboarmega: 'emboar-mega',
 	chandeluremega: 'chandelure-mega',
 	crabominablemega: 'crabominable-mega',
+	floettemega: 'floette-mega',
 	floetteeternalmega: 'floette-eternal-mega',
 	chimechomega: 'chimecho-mega',
 	froslassmega: 'froslass-mega',
@@ -512,6 +513,7 @@ const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
 	scovillainmega: 'scovillain-mega',
 	malamarmega: 'malamar-mega',
 	clefablemega: 'clefable-mega',
+	pyroarmega: 'pyroar-mega',
 	blastoisegmax: 'blastoise-gmax',
 	toxtricitygmax: 'toxtricity-gmax',
 	toxtricitylowkeygmax: 'toxtricity-lowkeygmax',
@@ -524,23 +526,59 @@ const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
 };
 
 const CUSTOM_TEAMBUILDER_SPRITES: {[id: string]: {x: number, y: number, backgroundSize: string}} = {
-	flygonmegaz: {x: 10, y: 6, backgroundSize: '76px auto'},
-	garchompmegaz: {x: 10, y: 6, backgroundSize: '76px auto'},
-	garchompbattlebond: {x: 13, y: 10, backgroundSize: '70px auto'},
-	gardevoirmegaz: {x: 17, y: 14, backgroundSize: '62px auto'},
-	gardevoirvoidmega: {x: 13, y: 10, backgroundSize: '70px auto'},
-	ursalunabloodmoon: {x: 13, y: 9, backgroundSize: '70px auto'},
-	metagrossmega: {x: 9, y: 8, backgroundSize: '78px auto'},
-	banettemega: {x: 11, y: 9, backgroundSize: '74px auto'},
-	starmiemega: {x: 19, y: 10, backgroundSize: '58px auto'},
-	heracrossmega: {x: 8, y: 7, backgroundSize: '80px auto'},
-	blastoisegmax: {x: 7, y: 6, backgroundSize: '82px auto'},
-	toxtricitygmax: {x: 10, y: 8, backgroundSize: '76px auto'},
-	toxtricitylowkeygmax: {x: 10, y: 8, backgroundSize: '76px auto'},
-	butterfreemega: {x: 10, y: 8, backgroundSize: '76px auto'},
-	serperiormega: {x: 10, y: 7, backgroundSize: '76px auto'},
-	mismagiusmega: {x: 10, y: 8, backgroundSize: '76px auto'},
-	banettemegaz: {x: 17, y: 8, backgroundSize: '62px auto'},
+	flygonmegaz: {x: 9, y: 3, backgroundSize: '78px auto'},
+	garchompmegaz: {x: 9, y: 3, backgroundSize: '78px auto'},
+	garchompbattlebond: {x: 9, y: 3, backgroundSize: '78px auto'},
+	gardevoirvoidmega: {x: 9, y: 3, backgroundSize: '78px auto'},
+	gardevoirmegaz: {x: 9, y: 3, backgroundSize: '78px auto'},
+	scraftymega: {x: 9, y: 3, backgroundSize: '78px auto'},
+	skarmorymega: {x: 9, y: 3, backgroundSize: '78px auto'},
+	staraptormega: {x: 9, y: 3, backgroundSize: '78px auto'},
+	lucariomegaz: {x: 9, y: 3, backgroundSize: '78px auto'},
+	meganiummega: {x: 9, y: 3, backgroundSize: '78px auto'},
+	raichumegax: {x: 9, y: 3, backgroundSize: '78px auto'},
+	raichumegay: {x: 9, y: 3, backgroundSize: '78px auto'},
+	scolipedemega: {x: 9, y: 3, backgroundSize: '78px auto'},
+	golisopodmega: {x: 9, y: 3, backgroundSize: '78px auto'},
+	golurkmega: {x: 9, y: 3, backgroundSize: '78px auto'},
+	glimmoramega: {x: 9, y: 3, backgroundSize: '78px auto'},
+	greninjamega: {x: 9, y: 3, backgroundSize: '78px auto'},
+	greninjaash: {x: 9, y: 3, backgroundSize: '78px auto'},
+	greninjabond: {x: 9, y: 3, backgroundSize: '78px auto'},
+	metagrossmega: {x: 9, y: 3, backgroundSize: '78px auto'},
+	banettemega: {x: 9, y: 5, backgroundSize: '78px auto'},
+	starmiemega: {x: 16, y: 3, backgroundSize: '64px auto'},
+	heracrossmega: {x: 9, y: 5, backgroundSize: '78px auto'},
+	chesnaughtmega: {x: 9, y: 3, backgroundSize: '78px auto'},
+	delphoxmega: {x: 9, y: 3, backgroundSize: '78px auto'},
+	dragalgemega: {x: 9, y: 3, backgroundSize: '78px auto'},
+	dragonitemega: {x: 9, y: 3, backgroundSize: '78px auto'},
+	baxcaliburmega: {x: 9, y: 3, backgroundSize: '78px auto'},
+	emboarmega: {x: 9, y: 3, backgroundSize: '78px auto'},
+	chandeluremega: {x: 9, y: 3, backgroundSize: '78px auto'},
+	crabominablemega: {x: 9, y: 3, backgroundSize: '78px auto'},
+	floettemega: {x: 9, y: 3, backgroundSize: '78px auto'},
+	floetteeternalmega: {x: 9, y: 3, backgroundSize: '78px auto'},
+	chimechomega: {x: 9, y: 3, backgroundSize: '78px auto'},
+	froslassmega: {x: 9, y: 3, backgroundSize: '78px auto'},
+	feraligatrmega: {x: 9, y: 3, backgroundSize: '78px auto'},
+	eelektrossmega: {x: 9, y: 3, backgroundSize: '78px auto'},
+	excadrillmega: {x: 9, y: 3, backgroundSize: '78px auto'},
+	meowsticmmega: {x: 9, y: 3, backgroundSize: '78px auto'},
+	meowsticfmega: {x: 9, y: 3, backgroundSize: '78px auto'},
+	scovillainmega: {x: 9, y: 3, backgroundSize: '78px auto'},
+	malamarmega: {x: 9, y: 3, backgroundSize: '78px auto'},
+	clefablemega: {x: 9, y: 3, backgroundSize: '78px auto'},
+	pyroarmega: {x: 9, y: 3, backgroundSize: '78px auto'},
+	blastoisegmax: {x: 9, y: 3, backgroundSize: '78px auto'},
+	toxtricitygmax: {x: 9, y: 3, backgroundSize: '78px auto'},
+	toxtricitylowkeygmax: {x: 9, y: 3, backgroundSize: '78px auto'},
+	butterfreemega: {x: 9, y: 3, backgroundSize: '78px auto'},
+	serperiormega: {x: 9, y: 3, backgroundSize: '78px auto'},
+	mismagiusmega: {x: 9, y: 3, backgroundSize: '78px auto'},
+	banettemegaz: {x: 20, y: 3, backgroundSize: '56px auto'},
+	absolmegaz: {x: 9, y: 3, backgroundSize: '78px auto'},
+	ursalunabloodmoon: {x: 9, y: 3, backgroundSize: '78px auto'},
 };
 
 const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
@@ -629,6 +667,11 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 		front: {w: 96, h: 96},
 		back: {w: 96, h: 96},
 	},
+	pyroarmega: {
+		num: 668,
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
+	},
 	chesnaughtmega: {
 		num: 652,
 		front: {w: 96, h: 96},
@@ -666,6 +709,11 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	},
 	crabominablemega: {
 		num: 740,
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
+	},
+	floettemega: {
+		num: 670,
 		front: {w: 96, h: 96},
 		back: {w: 96, h: 96},
 	},
@@ -1548,6 +1596,10 @@ const Dex = new class implements ModdedDex {
 			spriteData.x = 17;
 			spriteData.y = 12;
 			spriteData.backgroundSize = '62px auto';
+		} else if (spriteid === 'gardevoir-mega') {
+			spriteData.x = 12;
+			spriteData.y = 3;
+			spriteData.backgroundSize = '72px auto';
 		} else if (spriteid === 'gardevoirvoid-mega') {
 			spriteData.x = 11;
 			spriteData.y = 9;
