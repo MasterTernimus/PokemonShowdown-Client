@@ -112,17 +112,6 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 			isNonstandard: 'Custom',
 		},
 	},
-	banettemegaz: {
-		base: 'banettemega',
-		data: {
-			name: 'Banette-Mega-Z',
-			baseSpecies: 'Banette',
-			forme: 'Mega-Z',
-			battleOnly: 'Banette',
-			changesFrom: 'Banette',
-			isNonstandard: 'Custom',
-		},
-	},
 	gardevoirvoid: {
 		base: 'gardevoir',
 		data: {
@@ -520,7 +509,6 @@ const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
 	butterfreemega: 'butterfree-mega',
 	serperiormega: 'serperior-mega',
 	mismagiusmega: 'mismagius-mega',
-	banettemegaz: 'banette-megaz',
 	absolmegaz: 'absol-megaz',
 	ursalunabloodmoon: 'ursaluna-bloodmoon',
 };
@@ -576,12 +564,16 @@ const CUSTOM_TEAMBUILDER_SPRITES: {[id: string]: {x: number, y: number, backgrou
 	butterfreemega: {x: 9, y: 3, backgroundSize: '78px auto'},
 	serperiormega: {x: 9, y: 3, backgroundSize: '78px auto'},
 	mismagiusmega: {x: 9, y: 3, backgroundSize: '78px auto'},
-	banettemegaz: {x: 20, y: 3, backgroundSize: '56px auto'},
 	absolmegaz: {x: 9, y: 3, backgroundSize: '78px auto'},
 	ursalunabloodmoon: {x: 9, y: 3, backgroundSize: '78px auto'},
 };
 
 const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
+	alakazammega: {
+		num: 65,
+		front: {w: 96, h: 96},
+		back: {w: 154, h: 182},
+	},
 	ursalunabloodmoon: {
 		num: 901,
 		front: {w: 72, h: 72},
@@ -779,6 +771,188 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	},
 };
 
+const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
+	hypno: {
+		name: 'Hypno',
+		types: ['Psychic', 'Dark'],
+		baseStats: {hp: 90, atk: 70, def: 105, spa: 80, spd: 110, spe: 45},
+		abilities: {0: 'No Guard', 1: 'Neutralizing Gas', H: 'Neutralization'},
+	},
+	lapras: {
+		abilities: {0: 'Safe Harbor', 1: 'Shell Armor', H: 'Ice Scales'},
+	},
+	jolteon: {
+		abilities: {0: 'Lightning Rod', 1: 'Battery', H: 'Quick Feet'},
+	},
+	banette: {
+		abilities: {0: 'Cursed Keepsake', 1: 'Cursed Armament', H: 'Shadow Shield'},
+		otherFormes: ['Banette-Mega'],
+		formeOrder: ['Banette', 'Banette-Mega'],
+	},
+	lopunny: {
+		abilities: {0: 'Fur Coat', 1: 'Friend Guard', H: 'Striker'},
+	},
+	lopunnymega: {
+		abilities: {0: 'Unchecked Assault'},
+	},
+	blazikenmega: {
+		abilities: {0: 'Blazing Tempo'},
+	},
+};
+
+const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
+	battery: {
+		name: 'Battery',
+		shortDesc: 'This Pokemon and its allies have their special attacks boosted by 1.3x.',
+	},
+	battlebond: {
+		name: 'Battle Bond',
+		desc: "When this Pokemon knocks out another Pokemon, it transforms into its Bond form. While transformed, moves that match this Pokemon's type have 1.3x power, and knocking out a target restores 1/8 of this Pokemon's maximum HP.",
+		shortDesc: 'After a KO: transforms. Bond form: matching-type moves 1.3x, KO heals 1/8 max HP.',
+	},
+	safeharbor: {
+		name: 'Safe Harbor',
+		desc: 'This Pokemon absorbs Water- and Ice-type attacks to restore 1/4 of its maximum HP. It also has Ice Body and Hydration\'s effects.',
+		shortDesc: 'Absorbs Water/Ice moves; Ice Body + Hydration.',
+	},
+};
+
+const CUSTOM_MOVE_UPDATES: {[id: string]: AnyObject} = {
+	zippyzap: {
+		num: 729,
+		accuracy: 100,
+		basePower: 60,
+		category: 'Physical',
+		isNonstandard: 'LGPE',
+		name: 'Zippy Zap',
+		pp: 10,
+		priority: 2,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		willCrit: true,
+		target: 'normal',
+		type: 'Electric',
+		contestType: 'Cool',
+		desc: 'Usually moves before other attacks. This move will always result in a critical hit.',
+		shortDesc: 'Usually moves first. Always crits.',
+	},
+};
+
+const CUSTOM_LEARNSET_REPLACEMENTS: {[id: string]: {[id: string]: string[]}} = {
+	hypno: {
+		afteryou: ['9M'],
+		allyswitch: ['9M'],
+		aurasphere: ['9M'],
+		batonpass: ['9M'],
+		blizzard: ['9M'],
+		confuseray: ['9M'],
+		darkpulse: ['9M'],
+		dazzlinggleam: ['9M'],
+		disable: ['9M'],
+		drainpunch: ['9M'],
+		dreameater: ['9M'],
+		dynamicpunch: ['9M'],
+		embargo: ['9M'],
+		encore: ['9M'],
+		energyball: ['9M'],
+		expandingforce: ['9M'],
+		firepunch: ['9M'],
+		focusblast: ['9M'],
+		foresight: ['9M'],
+		foulplay: ['9M'],
+		futuresight: ['9M'],
+		gravity: ['9M'],
+		healblock: ['9M'],
+		helpinghand: ['9M'],
+		hex: ['9M'],
+		hypnosis: ['9M'],
+		icebeam: ['9M'],
+		icepunch: ['9M'],
+		imprison: ['9M'],
+		inferno: ['9M'],
+		kinesis: ['9M'],
+		knockoff: ['9M'],
+		lashout: ['9M'],
+		lightscreen: ['9M'],
+		luckychant: ['9M'],
+		magicroom: ['9M'],
+		meditate: ['9M'],
+		memento: ['9M'],
+		miracleeye: ['9M'],
+		mistyterrain: ['9M'],
+		nightdaze: ['9M'],
+		nightmare: ['9M'],
+		partingshot: ['9M'],
+		psybeam: ['9M'],
+		psychic: ['9M'],
+		psychicterrain: ['9M'],
+		psyshock: ['9M'],
+		psystrike: ['9M'],
+		quash: ['9M'],
+		reflect: ['9M'],
+		safeguard: ['9M'],
+		shadowball: ['9M'],
+		signalbeam: ['9M'],
+		snarl: ['9M'],
+		storedpower: ['9M'],
+		suckerpunch: ['9M'],
+		taunt: ['9M'],
+		telekinesis: ['9M'],
+		throatchop: ['9M'],
+		thunder: ['9M'],
+		thunderbolt: ['9M'],
+		thunderpunch: ['9M'],
+		thunderwave: ['9M'],
+		torment: ['9M'],
+		toxic: ['9M'],
+		trickroom: ['9M'],
+		willowisp: ['9M'],
+		wonderroom: ['9M'],
+		zapcannon: ['9M'],
+	},
+};
+
+const CUSTOM_LEARNSET_ADDITIONS: {[id: string]: {[id: string]: string[]}} = {
+	pikachustarter: {
+		drainingkiss: ['9M'],
+		eeriespell: ['9M'],
+		flashcannon: ['9M'],
+		flyingpress: ['9M'],
+		freezedry: ['9M'],
+		heartstamp: ['9M'],
+		iciclecrash: ['9M'],
+		meteormash: ['9M'],
+		playrough: ['9M'],
+		vacuumwave: ['9M'],
+	},
+	raichu: {
+		drainingkiss: ['9L1', '8M'],
+		eeriespell: ['9M'],
+		flashcannon: ['9M'],
+		flyingpress: ['9L1'],
+		freezedry: ['9M'],
+		heartstamp: ['9L1'],
+		iciclecrash: ['9L1'],
+		meteormash: ['9L1'],
+		playrough: ['9M', '8M'],
+		vacuumwave: ['9M'],
+	},
+	raichualola: {
+		drainingkiss: ['9L1', '8M'],
+		eeriespell: ['9M'],
+		flashcannon: ['9M'],
+		flyingpress: ['9L1'],
+		freezedry: ['9M'],
+		heartstamp: ['9L1'],
+		iciclecrash: ['9L1'],
+		meteormash: ['9L1'],
+		playrough: ['8M'],
+		vacuumwave: ['9M'],
+	},
+	overqwil: {
+		flipturn: ['9M'],
+	},
+};
+
 function ensureCustomBWSpriteData() {
 	if (!window.BattlePokemonSpritesBW) return;
 	for (const id of Object.keys(CUSTOM_BW_SPRITES)) {
@@ -788,8 +962,59 @@ function ensureCustomBWSpriteData() {
 	}
 }
 
+function ensureCustomDataPatches() {
+	if (window.BattlePokedex) {
+		delete window.BattlePokedex.banettemegaz;
+		for (const id of Object.keys(CUSTOM_SPECIES_UPDATES)) {
+			if (!window.BattlePokedex[id]) window.BattlePokedex[id] = {};
+			Object.assign(window.BattlePokedex[id], CUSTOM_SPECIES_UPDATES[id]);
+		}
+	}
+	if (window.BattlePokedexAltForms) delete window.BattlePokedexAltForms.banettemegaz;
+	if (window.BattleAbilities) {
+		for (const id of Object.keys(CUSTOM_ABILITY_UPDATES)) {
+			if (!window.BattleAbilities[id]) window.BattleAbilities[id] = {};
+			Object.assign(window.BattleAbilities[id], CUSTOM_ABILITY_UPDATES[id]);
+		}
+	}
+	if (window.BattleMovedex) {
+		for (const id of Object.keys(CUSTOM_MOVE_UPDATES)) {
+			if (!window.BattleMovedex[id]) window.BattleMovedex[id] = {};
+			Object.assign(window.BattleMovedex[id], CUSTOM_MOVE_UPDATES[id]);
+		}
+	}
+	if (window.BattleTeambuilderTable) {
+		const table = window.BattleTeambuilderTable;
+		if (!table.overrideSpeciesData) table.overrideSpeciesData = {};
+		for (const id of Object.keys(CUSTOM_SPECIES_UPDATES)) {
+			table.overrideSpeciesData[id] = {
+				...(table.overrideSpeciesData[id] || {}),
+				...CUSTOM_SPECIES_UPDATES[id],
+			};
+		}
+		if (!table.overrideAbilityData) table.overrideAbilityData = {};
+		for (const id of Object.keys(CUSTOM_ABILITY_UPDATES)) {
+			table.overrideAbilityData[id] = {
+				...(table.overrideAbilityData[id] || {}),
+				...CUSTOM_ABILITY_UPDATES[id],
+			};
+		}
+		if (!table.learnsets) table.learnsets = {};
+		for (const id of Object.keys(CUSTOM_LEARNSET_REPLACEMENTS)) {
+			table.learnsets[id] = {...CUSTOM_LEARNSET_REPLACEMENTS[id]};
+		}
+		for (const id of Object.keys(CUSTOM_LEARNSET_ADDITIONS)) {
+			table.learnsets[id] = {
+				...(table.learnsets[id] || {}),
+				...CUSTOM_LEARNSET_ADDITIONS[id],
+			};
+		}
+	}
+}
+
 function ensureCustomSpecies(id?: string) {
 	if (!window.BattlePokedex) return;
+	ensureCustomDataPatches();
 	for (const customId of Object.keys(CUSTOM_SPECIES)) {
 		if (id && id !== customId) continue;
 		const customSpecies = CUSTOM_SPECIES[customId];
@@ -816,6 +1041,11 @@ function ensureCustomSpecies(id?: string) {
 		if (!otherFormes.includes('Flygon-Mega-Z')) {
 			flygon.otherFormes = [...otherFormes, 'Flygon-Mega-Z'];
 		}
+	}
+	const banette = window.BattlePokedex.banette;
+	if (banette) {
+		banette.otherFormes = (banette.otherFormes || []).filter((forme: string) => forme !== 'Banette-Mega-Z');
+		banette.formeOrder = (banette.formeOrder || []).filter((forme: string) => forme !== 'Banette-Mega-Z');
 	}
 }
 window.ensureCustomSpecies = ensureCustomSpecies;
@@ -1044,6 +1274,7 @@ const Dex = new class implements ModdedDex {
 
 	moves = {
 		get: (nameOrMove: string | Move | null | undefined): Move => {
+			ensureCustomDataPatches();
 			if (nameOrMove && typeof nameOrMove !== 'string') {
 				// TODO: don't accept Moves here
 				return nameOrMove;
@@ -1115,6 +1346,7 @@ const Dex = new class implements ModdedDex {
 
 	abilities = {
 		get: (nameOrAbility: string | Ability | null | undefined): Ability => {
+			ensureCustomDataPatches();
 			if (nameOrAbility && typeof nameOrAbility !== 'string') {
 				// TODO: don't accept Abilities here
 				return nameOrAbility;
@@ -1737,12 +1969,16 @@ class ModdedDex {
 
 	abilities = {
 		get: (name: string): Ability => {
+			ensureCustomDataPatches();
 			let id = toID(name);
 			if (window.BattleAliases && id in BattleAliases) {
 				name = BattleAliases[id];
 				id = toID(name);
 			}
-			if (this.cache.Abilities.hasOwnProperty(id)) return this.cache.Abilities[id];
+			if (this.cache.Abilities.hasOwnProperty(id)) {
+				if (id in CUSTOM_ABILITY_UPDATES) Object.assign(this.cache.Abilities[id], CUSTOM_ABILITY_UPDATES[id]);
+				return this.cache.Abilities[id];
+			}
 
 			let data = {...Dex.abilities.get(name)};
 
@@ -1767,12 +2003,16 @@ class ModdedDex {
 
 	species = {
 		get: (name: string): Species => {
+			ensureCustomDataPatches();
 			let id = toID(name);
 			if (window.BattleAliases && id in BattleAliases) {
 				name = BattleAliases[id];
 				id = toID(name);
 			}
-			if (this.cache.Species.hasOwnProperty(id)) return this.cache.Species[id];
+			if (this.cache.Species.hasOwnProperty(id)) {
+				if (id in CUSTOM_SPECIES_UPDATES) Object.assign(this.cache.Species[id], CUSTOM_SPECIES_UPDATES[id]);
+				return this.cache.Species[id];
+			}
 
 			let data = {...Dex.species.get(name)};
 

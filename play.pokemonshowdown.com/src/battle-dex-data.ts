@@ -1152,6 +1152,8 @@ interface MoveFlags {
 	allyanim?: 1 | 0;
 	/** Power is multiplied by 1.5 when used by a Pokemon with the Strong Jaw Ability. */
 	bite?: 1 | 0;
+	/** Bone moves ignore certain type immunities. */
+	bone?: 1 | 0;
 	/** Has no effect on Pokemon with the Bulletproof Ability. */
 	bullet?: 1 | 0;
 	/** Ignores a target's substitute. */
