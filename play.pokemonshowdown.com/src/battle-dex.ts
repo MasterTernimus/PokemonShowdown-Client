@@ -486,6 +486,7 @@ const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
 	delphoxmega: 'delphox-mega',
 	dragalgemega: 'dragalge-mega',
 	dragonitemega: 'dragonite-mega',
+	drampamega: 'drampa-mega',
 	baxcaliburmega: 'baxcalibur-mega',
 	emboarmega: 'emboar-mega',
 	chandeluremega: 'chandelure-mega',
@@ -541,6 +542,7 @@ const CUSTOM_TEAMBUILDER_SPRITES: {[id: string]: {x: number, y: number, backgrou
 	delphoxmega: {x: 9, y: 3, backgroundSize: '78px auto'},
 	dragalgemega: {x: 9, y: 3, backgroundSize: '78px auto'},
 	dragonitemega: {x: 9, y: 3, backgroundSize: '78px auto'},
+	drampamega: {x: 9, y: 3, backgroundSize: '78px auto'},
 	baxcaliburmega: {x: 9, y: 3, backgroundSize: '78px auto'},
 	emboarmega: {x: 9, y: 3, backgroundSize: '78px auto'},
 	chandeluremega: {x: 9, y: 3, backgroundSize: '78px auto'},
@@ -683,6 +685,11 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 		num: 149,
 		front: {w: 96, h: 96},
 		back: {w: 96, h: 96},
+	},
+	drampamega: {
+		num: 780,
+		front: {w: 152, h: 178},
+		back: {w: 132, h: 178},
 	},
 	baxcaliburmega: {
 		num: 998,
