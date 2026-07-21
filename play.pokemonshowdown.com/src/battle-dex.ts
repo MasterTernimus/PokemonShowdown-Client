@@ -772,17 +772,44 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 };
 
 const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
+	charizard: {
+		baseStats: {hp: 78, atk: 109, def: 75, spa: 114, spd: 78, spe: 100},
+		abilities: {0: 'Wildfire Core', 1: 'Flame Body', H: 'Solar Power'},
+	},
+	charizardgmax: {
+		baseStats: {hp: 133, atk: 109, def: 75, spa: 114, spd: 78, spe: 100},
+		abilities: {0: 'Burning Crown'},
+	},
 	hypno: {
 		name: 'Hypno',
 		types: ['Psychic', 'Dark'],
 		baseStats: {hp: 90, atk: 70, def: 105, spa: 80, spd: 110, spe: 45},
 		abilities: {0: 'No Guard', 1: 'Neutralizing Gas', H: 'Neutralization'},
 	},
+	kangaskhan: {
+		baseStats: {hp: 105, atk: 105, def: 80, spa: 40, spd: 80, spe: 90},
+	},
+	kangaskhanmega: {
+		baseStats: {hp: 105, atk: 135, def: 110, spa: 40, spd: 110, spe: 100},
+		abilities: {0: 'Parental Bond'},
+	},
 	lapras: {
 		abilities: {0: 'Safe Harbor', 1: 'Shell Armor', H: 'Ice Scales'},
 	},
 	jolteon: {
-		abilities: {0: 'Lightning Rod', 1: 'Battery', H: 'Quick Feet'},
+		abilities: {0: 'Lightning Rod', 1: 'Battery', H: 'Voltage Volley'},
+	},
+	dratini: {
+		abilities: {0: 'Shed Skin', 1: 'Dragonize', H: 'Marvel Scale'},
+	},
+	dragonair: {
+		abilities: {0: 'Shed Skin', 1: 'Dragonize', H: 'Marvel Scale'},
+	},
+	feraligatr: {
+		abilities: {0: 'Sheer Force', 1: 'Intimidate', H: 'Water Veil'},
+	},
+	feraligatrmega: {
+		abilities: {0: 'Draconic Force'},
 	},
 	banette: {
 		abilities: {0: 'Cursed Keepsake', 1: 'Cursed Armament', H: 'Shadow Shield'},
@@ -798,6 +825,24 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 	blazikenmega: {
 		abilities: {0: 'Blazing Tempo'},
 	},
+	vibrava: {
+		abilities: {0: 'Levitate', 1: 'Dragonize', H: 'Sand Stream'},
+	},
+	flygon: {
+		abilities: {0: 'Levitate', 1: 'Dragonize', H: 'Sand Stream'},
+	},
+	skrelp: {
+		abilities: {0: 'Dragonize', 1: 'Poison Touch', H: 'Adaptability'},
+	},
+	dragalge: {
+		abilities: {0: 'Dragonize', 1: 'Poison Touch', H: 'Adaptability'},
+	},
+	clauncher: {
+		abilities: {0: 'Mega Launcher', 1: 'Swift Swim', H: 'Quick Draw'},
+	},
+	clawitzer: {
+		abilities: {0: 'Mega Launcher', 1: 'Swift Swim', H: 'Quick Draw'},
+	},
 };
 
 const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
@@ -810,14 +855,120 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 		desc: "When this Pokemon knocks out another Pokemon, it transforms into its Bond form. While transformed, moves that match this Pokemon's type have 1.3x power, and knocking out a target restores 1/8 of this Pokemon's maximum HP.",
 		shortDesc: 'After a KO: transforms. Bond form: matching-type moves 1.3x, KO heals 1/8 max HP.',
 	},
+	draconicforce: {
+		name: 'Draconic Force',
+		desc: "This Pokemon has Dragonize, Sheer Force, and Guts's effects.",
+		shortDesc: 'Dragonize + Sheer Force + Guts.',
+	},
+	ragingstorm: {
+		name: 'Raging Storm',
+		desc: "This Pokemon's attacks have Mold Breaker, remove the target's positive stat changes before damage, and ignore Reflect, Light Screen, Aurora Veil, and defensive stat boosts. If this Pokemon gets a KO, it damages remaining foes for 60% of the last damage in multi battles, or raises Attack by 1 if there is no valid target or no damage is dealt. Magic Guard users do not take this damage.",
+		shortDesc: 'Mold Breaker; attacks clear target boosts and ignore screens/boosts; KO bonus.',
+	},
 	safeharbor: {
 		name: 'Safe Harbor',
 		desc: 'This Pokemon absorbs Water- and Ice-type attacks to restore 1/4 of its maximum HP. It also has Ice Body and Hydration\'s effects.',
 		shortDesc: 'Absorbs Water/Ice moves; Ice Body + Hydration.',
 	},
+	voltagevolley: {
+		name: 'Voltage Volley',
+		desc: "This Pokemon's multi-hit moves become special attacks and use its Special Attack.",
+		shortDesc: 'Multi-hit moves become special and use Sp. Atk.',
+	},
+	waterveil: {
+		name: 'Water Veil',
+		desc: 'This Pokemon cannot be burned and is immune to Hail and Sandstorm damage. Gaining this Ability while burned cures it. On switch-in, it gains Aqua Ring.',
+		shortDesc: 'Cannot be burned; immune to Hail/Sandstorm; gains Aqua Ring.',
+	},
 };
 
 const CUSTOM_MOVE_UPDATES: {[id: string]: AnyObject} = {
+	bonemerang: {
+		name: 'Bonemerang',
+		critRatio: 2,
+		secondary: {
+			chance: 30,
+			volatileStatus: 'flinch',
+		},
+		desc: 'Hits twice. Has an increased critical hit ratio. Each hit has a 30% chance to make the target flinch.',
+		shortDesc: 'Hits 2 times. High crit ratio. 30% flinch each hit.',
+	},
+	bonerush: {
+		name: 'Bone Rush',
+		accuracy: 95,
+		basePower: 30,
+		multihit: [2, 6],
+		secondary: {
+			chance: 10,
+			boosts: {def: -1},
+		},
+		desc: 'Hits 2 to 6 times. If the user holds Thick Club, hits 4 or 6 times. Each hit has a 10% chance to lower Defense by 1 stage.',
+		shortDesc: 'Hits 2-6 times; Thick Club: 4/6 hits. 10% Def drop each hit.',
+	},
+	cometpunch: {
+		name: 'Comet Punch',
+		accuracy: 100,
+		basePower: 20,
+		flags: {contact: 1, protect: 1, mirror: 1, punch: 1, metronome: 1},
+		multihit: [3, 5],
+		desc: 'Hits 3 to 5 times. The final hit has double power and always results in a critical hit.',
+		shortDesc: 'Hits 3-5 times. Final hit: 2x power and always crits.',
+	},
+	doubleslap: {
+		name: 'Double Slap',
+		accuracy: 100,
+		basePower: 20,
+		type: 'Fairy',
+		multihit: [2, 5],
+		secondary: {
+			chance: 10,
+			boosts: {atk: -1},
+		},
+		desc: 'Hits 2 to 5 times. Each hit has a 10% chance to lower Attack by 1 stage.',
+		shortDesc: 'Fairy; hits 2-5 times. 10% Atk drop each hit.',
+	},
+	furyattack: {
+		name: 'Fury Attack',
+		accuracy: 100,
+		basePower: 20,
+		type: 'Ground',
+		flags: {contact: 1, protect: 1, mirror: 1, drill: 1, metronome: 1, bone: 1},
+		multihit: [3, 5],
+		desc: 'Hits 3 to 5 times. This drill move hits Flying-type Pokemon neutrally. The final hit heals the user based on damage dealt.',
+		shortDesc: 'Ground; hits 3-5. Hits Flying neutrally. Final hit drains.',
+	},
+	hornattack: {
+		name: 'Horn Attack',
+		type: 'Rock',
+		secondary: {
+			chance: 50,
+			boosts: {def: -1},
+		},
+		desc: 'Has a 50% chance to lower the target\'s Defense by 1 stage.',
+		shortDesc: 'Rock type. 50% chance to lower Defense by 1.',
+	},
+	spikecannon: {
+		name: 'Spike Cannon',
+		accuracy: 100,
+		basePower: 20,
+		type: 'Steel',
+		multihit: [3, 5],
+		critRatio: 2,
+		desc: 'Hits 3 to 5 times. Has an increased critical hit ratio.',
+		shortDesc: 'Steel; hits 3-5 times. High crit ratio.',
+	},
+	supercellslam: {
+		name: 'Supercell Slam',
+		basePower: 120,
+	},
+	volttackle: {
+		name: 'Volt Tackle',
+		basePower: 140,
+	},
+	wildcharge: {
+		name: 'Wild Charge',
+		basePower: 120,
+	},
 	zippyzap: {
 		num: 729,
 		accuracy: 100,
@@ -950,6 +1101,118 @@ const CUSTOM_LEARNSET_ADDITIONS: {[id: string]: {[id: string]: string[]}} = {
 	},
 	overqwil: {
 		flipturn: ['9M'],
+		spikecannon: ['9M'],
+	},
+	blastoise: {
+		electroshot: ['9M'],
+	},
+	sandslash: {
+		spikecannon: ['9M'],
+	},
+	sandslashalola: {
+		spikecannon: ['9M'],
+	},
+	nidoqueen: {
+		spikecannon: ['9M'],
+	},
+	nidoking: {
+		spikecannon: ['9M'],
+	},
+	shellder: {
+		spikecannon: ['9M'],
+	},
+	rhyhorn: {
+		spikecannon: ['9M'],
+	},
+	rhydon: {
+		spikecannon: ['9M'],
+	},
+	rhyperior: {
+		spikecannon: ['9M'],
+	},
+	jolteon: {
+		spikecannon: ['9M'],
+	},
+	feraligatr: {
+		cometpunch: ['9M'],
+	},
+	clodsire: {
+		spikecannon: ['9M'],
+	},
+	qwilfish: {
+		spikecannon: ['9M'],
+	},
+	qwilfishhisui: {
+		spikecannon: ['9M'],
+	},
+	sneasler: {
+		spikecannon: ['9M'],
+	},
+	cursola: {
+		spikecannon: ['9M'],
+	},
+	aron: {
+		spikecannon: ['9M'],
+	},
+	lairon: {
+		spikecannon: ['9M'],
+	},
+	aggron: {
+		spikecannon: ['9M'],
+	},
+	roserade: {
+		spikecannon: ['9M'],
+	},
+	maractus: {
+		spikecannon: ['9M'],
+	},
+	ferroseed: {
+		spikecannon: ['9M'],
+	},
+	ferrothorn: {
+		spikecannon: ['9M'],
+	},
+	chesnaught: {
+		spikecannon: ['9M'],
+	},
+	clawitzer: {
+		electroshot: ['9M'],
+	},
+	goodra: {
+		hypervoice: ['9M'],
+	},
+	goodrahisui: {
+		hypervoice: ['9M'],
+	},
+	turtonator: {
+		spikecannon: ['9M'],
+	},
+	togedemaru: {
+		spikecannon: ['9M'],
+	},
+	dhelmise: {
+		spikecannon: ['9M'],
+	},
+	coalossal: {
+		spikecannon: ['9M'],
+	},
+	pincurchin: {
+		spikecannon: ['9M'],
+	},
+	glimmora: {
+		spikecannon: ['9M'],
+	},
+	brambleghast: {
+		spikecannon: ['9M'],
+	},
+	ironthorns: {
+		spikecannon: ['9M'],
+	},
+	ogerpon: {
+		spikecannon: ['9M'],
+	},
+	archaludon: {
+		spikecannon: ['9M'],
 	},
 };
 
@@ -1048,6 +1311,7 @@ function ensureCustomSpecies(id?: string) {
 		banette.formeOrder = (banette.formeOrder || []).filter((forme: string) => forme !== 'Banette-Mega-Z');
 	}
 }
+window.ensureCustomDataPatches = ensureCustomDataPatches;
 window.ensureCustomSpecies = ensureCustomSpecies;
 
 type Comparable = number | string | boolean | Comparable[] | {reverse: Comparable};

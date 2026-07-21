@@ -1126,9 +1126,11 @@ class BattlePokemonSearch extends BattleTypedSearch<'pokemon'> {
 
 class BattleAbilitySearch extends BattleTypedSearch<'ability'> {
 	getTable() {
+		window.ensureCustomDataPatches?.();
 		return BattleAbilities;
 	}
 	getDefaultResults(): SearchRow[] {
+		window.ensureCustomDataPatches?.();
 		const results: SearchRow[] = [];
 		for (let id in BattleAbilities) {
 			results.push(['ability', id as ID]);
@@ -1278,9 +1280,11 @@ class BattleItemSearch extends BattleTypedSearch<'item'> {
 class BattleMoveSearch extends BattleTypedSearch<'move'> {
 	sortRow: SearchRow = ['sortmove', ''];
 	getTable() {
+		window.ensureCustomDataPatches?.();
 		return BattleMovedex;
 	}
 	getDefaultResults(): SearchRow[] {
+		window.ensureCustomDataPatches?.();
 		let results: SearchRow[] = [];
 		results.push(['header', "Moves"]);
 		for (let id in BattleMovedex) {
