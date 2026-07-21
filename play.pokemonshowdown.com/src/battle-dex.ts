@@ -1216,37 +1216,53 @@ const CUSTOM_LEARNSET_ADDITIONS: {[id: string]: {[id: string]: string[]}} = {
 	},
 };
 
+let customBWSpriteDataTable: AnyObject | null = null;
+let customPokedexDataTable: AnyObject | null = null;
+let customPokedexAltFormsTable: AnyObject | null = null;
+let customAbilityDataTable: AnyObject | null = null;
+let customMoveDataTable: AnyObject | null = null;
+let customTeambuilderDataTable: AnyObject | null = null;
+let customSpeciesDataTable: AnyObject | null = null;
+
 function ensureCustomBWSpriteData() {
 	if (!window.BattlePokemonSpritesBW) return;
+	if (customBWSpriteDataTable === window.BattlePokemonSpritesBW) return;
 	for (const id of Object.keys(CUSTOM_BW_SPRITES)) {
 		if (!window.BattlePokemonSpritesBW[id]) {
 			window.BattlePokemonSpritesBW[id] = CUSTOM_BW_SPRITES[id];
 		}
 	}
+	customBWSpriteDataTable = window.BattlePokemonSpritesBW;
 }
 
 function ensureCustomDataPatches() {
-	if (window.BattlePokedex) {
+	if (window.BattlePokedex && customPokedexDataTable !== window.BattlePokedex) {
 		delete window.BattlePokedex.banettemegaz;
 		for (const id of Object.keys(CUSTOM_SPECIES_UPDATES)) {
 			if (!window.BattlePokedex[id]) window.BattlePokedex[id] = {};
 			Object.assign(window.BattlePokedex[id], CUSTOM_SPECIES_UPDATES[id]);
 		}
+		customPokedexDataTable = window.BattlePokedex;
 	}
-	if (window.BattlePokedexAltForms) delete window.BattlePokedexAltForms.banettemegaz;
-	if (window.BattleAbilities) {
+	if (window.BattlePokedexAltForms && customPokedexAltFormsTable !== window.BattlePokedexAltForms) {
+		delete window.BattlePokedexAltForms.banettemegaz;
+		customPokedexAltFormsTable = window.BattlePokedexAltForms;
+	}
+	if (window.BattleAbilities && customAbilityDataTable !== window.BattleAbilities) {
 		for (const id of Object.keys(CUSTOM_ABILITY_UPDATES)) {
 			if (!window.BattleAbilities[id]) window.BattleAbilities[id] = {};
 			Object.assign(window.BattleAbilities[id], CUSTOM_ABILITY_UPDATES[id]);
 		}
+		customAbilityDataTable = window.BattleAbilities;
 	}
-	if (window.BattleMovedex) {
+	if (window.BattleMovedex && customMoveDataTable !== window.BattleMovedex) {
 		for (const id of Object.keys(CUSTOM_MOVE_UPDATES)) {
 			if (!window.BattleMovedex[id]) window.BattleMovedex[id] = {};
 			Object.assign(window.BattleMovedex[id], CUSTOM_MOVE_UPDATES[id]);
 		}
+		customMoveDataTable = window.BattleMovedex;
 	}
-	if (window.BattleTeambuilderTable) {
+	if (window.BattleTeambuilderTable && customTeambuilderDataTable !== window.BattleTeambuilderTable) {
 		const table = window.BattleTeambuilderTable;
 		if (!table.overrideSpeciesData) table.overrideSpeciesData = {};
 		for (const id of Object.keys(CUSTOM_SPECIES_UPDATES)) {
@@ -1272,22 +1288,34 @@ function ensureCustomDataPatches() {
 				...CUSTOM_LEARNSET_ADDITIONS[id],
 			};
 		}
+		customTeambuilderDataTable = window.BattleTeambuilderTable;
 	}
 }
 
 function ensureCustomSpecies(id?: string) {
 	if (!window.BattlePokedex) return;
 	ensureCustomDataPatches();
-	for (const customId of Object.keys(CUSTOM_SPECIES)) {
-		if (id && id !== customId) continue;
-		const customSpecies = CUSTOM_SPECIES[customId];
+	if (customSpeciesDataTable !== window.BattlePokedex) {
+		for (const customId of Object.keys(CUSTOM_SPECIES)) {
+			const customSpecies = CUSTOM_SPECIES[customId];
+			const baseData = window.BattlePokedex[customSpecies.base];
+			if (!baseData) continue;
+			const existingData = window.BattlePokedex[customId];
+			window.BattlePokedex[customId] = {
+				...customSpecies.data,
+				...(existingData || baseData),
+			};
+		}
+		customSpeciesDataTable = window.BattlePokedex;
+	} else if (id && CUSTOM_SPECIES[id] && !window.BattlePokedex[id]) {
+		const customSpecies = CUSTOM_SPECIES[id];
 		const baseData = window.BattlePokedex[customSpecies.base];
-		if (!baseData) continue;
-		const existingData = window.BattlePokedex[customId];
-		window.BattlePokedex[customId] = {
-			...customSpecies.data,
-			...(existingData || baseData),
-		};
+		if (baseData) {
+			window.BattlePokedex[id] = {
+				...customSpecies.data,
+				...baseData,
+			};
+		}
 	}
 	ensureCustomBWSpriteData();
 	const garchomp = window.BattlePokedex.garchomp;
