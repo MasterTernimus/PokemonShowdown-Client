@@ -469,6 +469,8 @@ isNonstandard:'Custom'
 };
 
 var CUSTOM_ICON_SPRITES={
+garchomp:'garchomp',
+garchompmega:'garchomp-mega',
 flygonmegaz:'flygon-megaz',
 garchompmegaz:'garchomp-megaz',
 garchompbattlebond:'garchomp-battlebond',
@@ -494,6 +496,8 @@ salamencemega:'salamence-mega',
 hatterenegmax:'hatterene-gmax',
 palafinhero:'palafin-hero',
 sinistchamasterpiece:'sinistcha-masterpiece',
+venusaurmega:'venusaur-mega',
+venusaurgmax:'venusaur-gmax',
 centiskorchgmax:'centiskorch-gmax',
 basculegionf:'basculegion-f',
 ninetalesalola:'ninetales-alola',
@@ -572,8 +576,6 @@ silvallyfairy:'silvally-fairy'
 
 var CUSTOM_TEAMBUILDER_SPRITES={
 flygonmegaz:{x:9,y:3,backgroundSize:'78px auto'},
-garchompmegaz:{x:9,y:3,backgroundSize:'78px auto'},
-garchompbattlebond:{x:9,y:3,backgroundSize:'78px auto'},
 gardevoirvoidmega:{x:9,y:3,backgroundSize:'78px auto'},
 gardevoirmegaz:{x:9,y:3,backgroundSize:'78px auto'},
 scraftymega:{x:9,y:3,backgroundSize:'78px auto'},
@@ -587,7 +589,7 @@ scolipedemega:{x:9,y:3,backgroundSize:'78px auto'},
 golisopodmega:{x:9,y:3,backgroundSize:'78px auto'},
 golurkmega:{x:9,y:3,backgroundSize:'78px auto'},
 glimmoramega:{x:9,y:3,backgroundSize:'78px auto'},
-greninjamega:{x:9,y:3,backgroundSize:'78px auto'},
+greninjamega:{x:13,y:4,backgroundSize:'70px auto'},
 greninjaash:{x:9,y:3,backgroundSize:'78px auto'},
 greninjabond:{x:9,y:3,backgroundSize:'78px auto'},
 metagrossmega:{x:9,y:3,backgroundSize:'78px auto'},
@@ -597,7 +599,7 @@ heracrossmega:{x:9,y:5,backgroundSize:'78px auto'},
 chesnaughtmega:{x:9,y:3,backgroundSize:'78px auto'},
 delphoxmega:{x:9,y:3,backgroundSize:'78px auto'},
 dragalgemega:{x:9,y:3,backgroundSize:'78px auto'},
-dragonitemega:{x:9,y:3,backgroundSize:'78px auto'},
+dragonitemega:{x:7,y:7,backgroundSize:'82px auto'},
 drampamega:{x:9,y:3,backgroundSize:'78px auto'},
 baxcaliburmega:{x:9,y:3,backgroundSize:'78px auto'},
 emboarmega:{x:9,y:3,backgroundSize:'78px auto'},
@@ -623,7 +625,11 @@ butterfreemega:{x:9,y:3,backgroundSize:'78px auto'},
 serperiormega:{x:9,y:3,backgroundSize:'78px auto'},
 mismagiusmega:{x:9,y:3,backgroundSize:'78px auto'},
 absolmegaz:{x:9,y:3,backgroundSize:'78px auto'},
-ursalunabloodmoon:{x:9,y:3,backgroundSize:'78px auto'}
+ursalunabloodmoon:{x:9,y:3,backgroundSize:'78px auto'},
+garchomp:{x:9,y:7,backgroundSize:'78px auto'},
+garchompmega:{x:5,y:13,backgroundSize:'86px auto'},
+garchompmegaz:{x:7,y:8,backgroundSize:'82px auto'},
+garchompbattlebond:{x:7,y:13,backgroundSize:'82px auto'}
 };
 
 var CUSTOM_STATIC_BATTLE_SPRITES=
@@ -632,6 +638,87 @@ var CUSTOM_STATIC_BATTLE_SPRITES=
 
 
 {
+flygonmegaz:{
+front:{w:96,h:96},
+back:{w:96,h:96}
+},
+gardevoirvoidmega:{
+front:{w:96,h:96},
+back:{w:96,h:96}
+},
+gardevoirmegaz:{
+front:{w:96,h:96},
+back:{w:96,h:96}
+},
+greninjaash:{
+front:{w:192,h:192},
+back:{w:192,h:192}
+},
+metagrossmega:{
+front:{w:192,h:192},
+back:{w:192,h:192}
+},
+banettemega:{
+front:{w:162,h:154},
+back:{w:170,h:168}
+},
+starmiemega:{
+front:{w:112,h:136},
+back:{w:118,h:138}
+},
+heracrossmega:{
+front:{w:174,h:166},
+back:{w:164,h:172},
+shinyBack:{w:168,h:176}
+},
+blastoisegmax:{
+front:{w:182,h:180},
+back:{w:190,h:186}
+},
+toxtricitygmax:{
+front:{w:96,h:96},
+back:{w:96,h:96}
+},
+toxtricitylowkeygmax:{
+front:{w:96,h:96},
+back:{w:96,h:96}
+},
+butterfreemega:{
+front:{w:192,h:192},
+back:{w:192,h:192}
+},
+serperiormega:{
+front:{w:132,h:132},
+back:{w:136,h:136}
+},
+mismagiusmega:{
+front:{w:186,h:186},
+back:{w:184,h:186}
+},
+garchomp:{
+front:{w:146,h:152},
+back:{w:152,h:146}
+},
+garchompmega:{
+front:{w:186,h:150},
+back:{w:146,h:146}
+},
+garchompmegaz:{
+front:{w:192,h:186},
+back:{w:192,h:184}
+},
+garchompbattlebond:{
+front:{w:192,h:174},
+back:{w:188,h:152}
+},
+greninjamega:{
+front:{w:140,h:180},
+back:{w:172,h:168}
+},
+dragonitemega:{
+front:{w:178,h:174},
+back:{w:174,h:184}
+},
 raichumegay:{
 front:{w:186,h:165},
 back:{w:192,h:147}
@@ -810,6 +897,22 @@ cyclizar:{
 front:{w:138,h:136},
 back:{w:142,h:124}
 },
+tyrantrum:{
+front:{w:192,h:172},
+back:{w:158,h:152}
+},
+venusaur:{
+front:{w:152,h:136},
+back:{w:162,h:126}
+},
+venusaurmega:{
+front:{w:188,h:148},
+back:{w:186,h:144}
+},
+venusaurgmax:{
+front:{w:192,h:178},
+back:{w:188,h:170}
+},
 sinistcha:{
 front:{w:76,h:124},
 back:{w:82,h:122}
@@ -943,6 +1046,10 @@ back:{w:108,h:160}
 ursaluna:{
 front:{w:152,h:130},
 back:{w:162,h:134}
+},
+ursalunabloodmoon:{
+front:{w:172,h:160},
+back:{w:156,h:156}
 },
 cinderace:{
 front:{w:90,h:192},
@@ -1316,6 +1423,26 @@ num:967,
 front:{w:138,h:136},
 back:{w:142,h:124}
 },
+tyrantrum:{
+num:697,
+front:{w:192,h:172},
+back:{w:158,h:152}
+},
+venusaur:{
+num:3,
+front:{w:152,h:136},
+back:{w:162,h:126}
+},
+venusaurmega:{
+num:3,
+front:{w:188,h:148},
+back:{w:186,h:144}
+},
+venusaurgmax:{
+num:3,
+front:{w:192,h:178},
+back:{w:188,h:170}
+},
 sinistcha:{
 num:1013,
 front:{w:76,h:124},
@@ -1338,23 +1465,33 @@ back:{w:170,h:192}
 },
 ursalunabloodmoon:{
 num:901,
-front:{w:72,h:72},
-back:{w:72,h:72}
+front:{w:172,h:160},
+back:{w:156,h:156}
 },
 flygonmegaz:{
 num:330,
 front:{w:54,h:54},
 back:{w:72,h:72}
 },
+garchomp:{
+num:445,
+front:{w:146,h:152},
+back:{w:152,h:146}
+},
+garchompmega:{
+num:445,
+front:{w:186,h:150},
+back:{w:146,h:146}
+},
 garchompmegaz:{
 num:445,
-front:{w:54,h:54},
-back:{w:72,h:72}
+front:{w:192,h:186},
+back:{w:192,h:184}
 },
 garchompbattlebond:{
 num:445,
-front:{w:54,h:54},
-back:{w:72,h:72}
+front:{w:192,h:174},
+back:{w:188,h:152}
 },
 gardevoirmegaz:{
 num:282,
@@ -1707,8 +1844,8 @@ back:{w:96,h:96}
 },
 greninjamega:{
 num:658,
-front:{w:96,h:96},
-back:{w:96,h:96}
+front:{w:140,h:180},
+back:{w:172,h:168}
 },
 pyroarmega:{
 num:668,
@@ -1732,8 +1869,8 @@ back:{w:96,h:96}
 },
 dragonitemega:{
 num:149,
-front:{w:96,h:96},
-back:{w:96,h:96}
+front:{w:178,h:174},
+back:{w:174,h:184}
 },
 drampamega:{
 num:780,
@@ -3156,12 +3293,28 @@ x:-2,
 y:-3
 };
 if(pokemon.shiny)spriteData.shiny=true;
-if(CUSTOM_ICON_SPRITES[id]){
-var customSpriteData=CUSTOM_TEAMBUILDER_SPRITES[id]||{x:12,y:10,backgroundSize:'72px auto'};
+if(id==='greninjabond'){
+spriteData.spriteid='greninja';
+spriteData.x=-6;
+spriteData.y=-7;
+return spriteData;
+}
+if(CUSTOM_ICON_SPRITES[id]){var _CUSTOM_STATIC_BATTLE,_CUSTOM_BW_SPRITES$id;
 spriteData.spriteDir='sprites/gen5';
+var spriteDimensions=((_CUSTOM_STATIC_BATTLE=CUSTOM_STATIC_BATTLE_SPRITES[id])==null?void 0:_CUSTOM_STATIC_BATTLE.front)||((_CUSTOM_BW_SPRITES$id=CUSTOM_BW_SPRITES[id])==null?void 0:_CUSTOM_BW_SPRITES$id.front);
+if(spriteDimensions){
+var scale=Math.min(86/spriteDimensions.w,78/spriteDimensions.h,1);
+var width=Math.max(1,Math.round(spriteDimensions.w*scale));
+var height=Math.max(1,Math.round(spriteDimensions.h*scale));
+spriteData.x=Math.round((96-width)/2);
+spriteData.y=Math.round((90-height)/2);
+spriteData.backgroundSize=width+"px auto";
+}else{
+var customSpriteData=CUSTOM_TEAMBUILDER_SPRITES[id]||{x:12,y:10,backgroundSize:'72px auto'};
 spriteData.x=customSpriteData.x;
 spriteData.y=customSpriteData.y;
 spriteData.backgroundSize=customSpriteData.backgroundSize;
+}
 return spriteData;
 }
 if(Dex.prefs('nopastgens'))gen=6;
