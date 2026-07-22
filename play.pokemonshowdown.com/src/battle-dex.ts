@@ -1223,6 +1223,14 @@ const CUSTOM_LEARNSET_ADDITIONS: {[id: string]: {[id: string]: string[]}} = {
 	},
 };
 
+const CUSTOM_BW_SPRITE_IDS = Object.keys(CUSTOM_BW_SPRITES);
+const CUSTOM_SPECIES_IDS = Object.keys(CUSTOM_SPECIES);
+const CUSTOM_SPECIES_UPDATE_IDS = Object.keys(CUSTOM_SPECIES_UPDATES);
+const CUSTOM_ABILITY_UPDATE_IDS = Object.keys(CUSTOM_ABILITY_UPDATES);
+const CUSTOM_MOVE_UPDATE_IDS = Object.keys(CUSTOM_MOVE_UPDATES);
+const CUSTOM_LEARNSET_REPLACEMENT_IDS = Object.keys(CUSTOM_LEARNSET_REPLACEMENTS);
+const CUSTOM_LEARNSET_ADDITION_IDS = Object.keys(CUSTOM_LEARNSET_ADDITIONS);
+
 let customBWSpriteDataTable: AnyObject | null = null;
 let customPokedexDataTable: AnyObject | null = null;
 let customPokedexAltFormsTable: AnyObject | null = null;
@@ -1234,7 +1242,7 @@ let customSpeciesDataTable: AnyObject | null = null;
 function ensureCustomBWSpriteData() {
 	if (!window.BattlePokemonSpritesBW) return;
 	if (customBWSpriteDataTable === window.BattlePokemonSpritesBW) return;
-	for (const id of Object.keys(CUSTOM_BW_SPRITES)) {
+	for (const id of CUSTOM_BW_SPRITE_IDS) {
 		if (!window.BattlePokemonSpritesBW[id]) {
 			window.BattlePokemonSpritesBW[id] = CUSTOM_BW_SPRITES[id];
 		}
@@ -1243,9 +1251,16 @@ function ensureCustomBWSpriteData() {
 }
 
 function ensureCustomDataPatches() {
+	if (
+		(customPokedexDataTable || undefined) === window.BattlePokedex &&
+		(customPokedexAltFormsTable || undefined) === window.BattlePokedexAltForms &&
+		(customAbilityDataTable || undefined) === window.BattleAbilities &&
+		(customMoveDataTable || undefined) === window.BattleMovedex &&
+		(customTeambuilderDataTable || undefined) === window.BattleTeambuilderTable
+	) return;
 	if (window.BattlePokedex && customPokedexDataTable !== window.BattlePokedex) {
 		delete window.BattlePokedex.banettemegaz;
-		for (const id of Object.keys(CUSTOM_SPECIES_UPDATES)) {
+		for (const id of CUSTOM_SPECIES_UPDATE_IDS) {
 			if (!window.BattlePokedex[id]) window.BattlePokedex[id] = {};
 			Object.assign(window.BattlePokedex[id], CUSTOM_SPECIES_UPDATES[id]);
 		}
@@ -1256,14 +1271,14 @@ function ensureCustomDataPatches() {
 		customPokedexAltFormsTable = window.BattlePokedexAltForms;
 	}
 	if (window.BattleAbilities && customAbilityDataTable !== window.BattleAbilities) {
-		for (const id of Object.keys(CUSTOM_ABILITY_UPDATES)) {
+		for (const id of CUSTOM_ABILITY_UPDATE_IDS) {
 			if (!window.BattleAbilities[id]) window.BattleAbilities[id] = {};
 			Object.assign(window.BattleAbilities[id], CUSTOM_ABILITY_UPDATES[id]);
 		}
 		customAbilityDataTable = window.BattleAbilities;
 	}
 	if (window.BattleMovedex && customMoveDataTable !== window.BattleMovedex) {
-		for (const id of Object.keys(CUSTOM_MOVE_UPDATES)) {
+		for (const id of CUSTOM_MOVE_UPDATE_IDS) {
 			if (!window.BattleMovedex[id]) window.BattleMovedex[id] = {};
 			Object.assign(window.BattleMovedex[id], CUSTOM_MOVE_UPDATES[id]);
 		}
@@ -1272,24 +1287,24 @@ function ensureCustomDataPatches() {
 	if (window.BattleTeambuilderTable && customTeambuilderDataTable !== window.BattleTeambuilderTable) {
 		const table = window.BattleTeambuilderTable;
 		if (!table.overrideSpeciesData) table.overrideSpeciesData = {};
-		for (const id of Object.keys(CUSTOM_SPECIES_UPDATES)) {
+		for (const id of CUSTOM_SPECIES_UPDATE_IDS) {
 			table.overrideSpeciesData[id] = {
 				...(table.overrideSpeciesData[id] || {}),
 				...CUSTOM_SPECIES_UPDATES[id],
 			};
 		}
 		if (!table.overrideAbilityData) table.overrideAbilityData = {};
-		for (const id of Object.keys(CUSTOM_ABILITY_UPDATES)) {
+		for (const id of CUSTOM_ABILITY_UPDATE_IDS) {
 			table.overrideAbilityData[id] = {
 				...(table.overrideAbilityData[id] || {}),
 				...CUSTOM_ABILITY_UPDATES[id],
 			};
 		}
 		if (!table.learnsets) table.learnsets = {};
-		for (const id of Object.keys(CUSTOM_LEARNSET_REPLACEMENTS)) {
+		for (const id of CUSTOM_LEARNSET_REPLACEMENT_IDS) {
 			table.learnsets[id] = {...CUSTOM_LEARNSET_REPLACEMENTS[id]};
 		}
-		for (const id of Object.keys(CUSTOM_LEARNSET_ADDITIONS)) {
+		for (const id of CUSTOM_LEARNSET_ADDITION_IDS) {
 			table.learnsets[id] = {
 				...(table.learnsets[id] || {}),
 				...CUSTOM_LEARNSET_ADDITIONS[id],
@@ -1303,7 +1318,7 @@ function ensureCustomSpecies(id?: string) {
 	if (!window.BattlePokedex) return;
 	ensureCustomDataPatches();
 	if (customSpeciesDataTable !== window.BattlePokedex) {
-		for (const customId of Object.keys(CUSTOM_SPECIES)) {
+		for (const customId of CUSTOM_SPECIES_IDS) {
 			const customSpecies = CUSTOM_SPECIES[customId];
 			const baseData = window.BattlePokedex[customSpecies.base];
 			if (!baseData) continue;
@@ -2274,10 +2289,7 @@ class ModdedDex {
 				name = BattleAliases[id];
 				id = toID(name);
 			}
-			if (this.cache.Abilities.hasOwnProperty(id)) {
-				if (id in CUSTOM_ABILITY_UPDATES) Object.assign(this.cache.Abilities[id], CUSTOM_ABILITY_UPDATES[id]);
-				return this.cache.Abilities[id];
-			}
+			if (this.cache.Abilities.hasOwnProperty(id)) return this.cache.Abilities[id];
 
 			let data = {...Dex.abilities.get(name)};
 
@@ -2308,10 +2320,7 @@ class ModdedDex {
 				name = BattleAliases[id];
 				id = toID(name);
 			}
-			if (this.cache.Species.hasOwnProperty(id)) {
-				if (id in CUSTOM_SPECIES_UPDATES) Object.assign(this.cache.Species[id], CUSTOM_SPECIES_UPDATES[id]);
-				return this.cache.Species[id];
-			}
+			if (this.cache.Species.hasOwnProperty(id)) return this.cache.Species[id];
 
 			let data = {...Dex.species.get(name)};
 
