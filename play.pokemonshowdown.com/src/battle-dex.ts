@@ -112,6 +112,16 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 			isNonstandard: 'Custom',
 		},
 	},
+	alcremiegmax: {
+		base: 'alcremie',
+		data: {
+			name: 'Alcremie-Gmax',
+			baseSpecies: 'Alcremie',
+			forme: 'Gmax',
+			isGigantamax: true,
+			isNonstandard: 'Gigantamax',
+		},
+	},
 	gardevoirvoid: {
 		base: 'gardevoir',
 		data: {
@@ -478,6 +488,23 @@ const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
 	greninjamega: 'greninja-mega',
 	greninjaash: 'greninja-ash',
 	greninjabond: 'greninja',
+	gengarmega: 'gengar-mega',
+	gengargmax: 'gengar-gmax',
+	salamencemega: 'salamence-mega',
+	centiskorchgmax: 'centiskorch-gmax',
+	basculegionf: 'basculegion-f',
+	ninetalesalola: 'ninetales-alola',
+	lucariomega: 'lucario-mega',
+	slowkinggalar: 'slowking-galar',
+	weavilef: 'weavile-f',
+	rotomwash: 'rotom-wash',
+	rotomheat: 'rotom-heat',
+	rotomfrost: 'rotom-frost',
+	rotomfan: 'rotom-fan',
+	rotommow: 'rotom-mow',
+	weezinggalar: 'weezing-galar',
+	luxrayf: 'luxray-f',
+	alcremiegmax: 'alcremie-gmax',
 	metagrossmega: 'metagross-mega',
 	banettemega: 'banette-mega',
 	starmiemega: 'starmie-mega',
@@ -505,6 +532,12 @@ const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
 	clefablemega: 'clefable-mega',
 	pyroarmega: 'pyroar-mega',
 	blastoisegmax: 'blastoise-gmax',
+	butterfreegmax: 'butterfree-gmax',
+	corviknightgmax: 'corviknight-gmax',
+	grimmsnarlgmax: 'grimmsnarl-gmax',
+	inteleongmax: 'inteleon-gmax',
+	cinderacegmax: 'cinderace-gmax',
+	duraludongmax: 'duraludon-gmax',
 	toxtricitygmax: 'toxtricity-gmax',
 	toxtricitylowkeygmax: 'toxtricity-lowkeygmax',
 	butterfreemega: 'butterfree-mega',
@@ -512,6 +545,26 @@ const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
 	mismagiusmega: 'mismagius-mega',
 	absolmegaz: 'absol-megaz',
 	ursalunabloodmoon: 'ursaluna-bloodmoon',
+	lilliganthisui: 'lilligant-hisui',
+	decidueyehisui: 'decidueye-hisui',
+	silvallyfighting: 'silvally-fighting',
+	silvallyflying: 'silvally-flying',
+	silvallypoison: 'silvally-poison',
+	silvallyground: 'silvally-ground',
+	silvallyrock: 'silvally-rock',
+	silvallybug: 'silvally-bug',
+	silvallyghost: 'silvally-ghost',
+	silvallysteel: 'silvally-steel',
+	silvallyunknown: 'silvally-unknown',
+	silvallyfire: 'silvally-fire',
+	silvallywater: 'silvally-water',
+	silvallygrass: 'silvally-grass',
+	silvallyelectric: 'silvally-electric',
+	silvallypsychic: 'silvally-psychic',
+	silvallyice: 'silvally-ice',
+	silvallydragon: 'silvally-dragon',
+	silvallydark: 'silvally-dark',
+	silvallyfairy: 'silvally-fairy',
 };
 
 const CUSTOM_TEAMBUILDER_SPRITES: {[id: string]: {x: number, y: number, backgroundSize: string}} = {
@@ -526,7 +579,7 @@ const CUSTOM_TEAMBUILDER_SPRITES: {[id: string]: {x: number, y: number, backgrou
 	lucariomegaz: {x: 9, y: 3, backgroundSize: '78px auto'},
 	meganiummega: {x: 9, y: 3, backgroundSize: '78px auto'},
 	raichumegax: {x: 9, y: 3, backgroundSize: '78px auto'},
-	raichumegay: {x: 9, y: 3, backgroundSize: '78px auto'},
+	raichumegay: {x: 5, y: 0, backgroundSize: '86px auto'},
 	scolipedemega: {x: 9, y: 3, backgroundSize: '78px auto'},
 	golisopodmega: {x: 9, y: 3, backgroundSize: '78px auto'},
 	golurkmega: {x: 9, y: 3, backgroundSize: '78px auto'},
@@ -570,11 +623,596 @@ const CUSTOM_TEAMBUILDER_SPRITES: {[id: string]: {x: number, y: number, backgrou
 	ursalunabloodmoon: {x: 9, y: 3, backgroundSize: '78px auto'},
 };
 
+const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
+	front: {w: number, h: number},
+	back: {w: number, h: number},
+	shinyFront?: {w: number, h: number},
+	shinyBack?: {w: number, h: number},
+}} = {
+	raichumegay: {
+		front: {w: 186, h: 165},
+		back: {w: 192, h: 147},
+	},
+	staraptormega: {
+		front: {w: 173, h: 161},
+		back: {w: 157, h: 171},
+	},
+	toedscruel: {
+		front: {w: 104, h: 142},
+		back: {w: 128, h: 144},
+	},
+	archaludon: {
+		front: {w: 156, h: 180},
+		back: {w: 158, h: 190},
+	},
+	hydrapple: {
+		front: {w: 118, h: 168},
+		back: {w: 140, h: 178},
+	},
+	centiskorch: {
+		front: {w: 180, h: 150},
+		back: {w: 186, h: 150},
+	},
+	centiskorchgmax: {
+		front: {w: 188, h: 188},
+		back: {w: 186, h: 188},
+	},
+	basculegion: {
+		front: {w: 170, h: 112},
+		back: {w: 190, h: 106},
+		shinyFront: {w: 184, h: 132},
+		shinyBack: {w: 192, h: 116},
+	},
+	basculegionf: {
+		front: {w: 170, h: 106},
+		back: {w: 190, h: 106},
+		shinyFront: {w: 182, h: 128},
+		shinyBack: {w: 192, h: 118},
+	},
+	kingambit: {
+		front: {w: 134, h: 192},
+		back: {w: 120, h: 190},
+	},
+	electivire: {
+		front: {w: 146, h: 140},
+		back: {w: 150, h: 136},
+	},
+	farigiraf: {
+		front: {w: 132, h: 170},
+		back: {w: 126, h: 172},
+	},
+	ninetales: {
+		front: {w: 130, h: 130},
+		back: {w: 150, h: 128},
+	},
+	ninetalesalola: {
+		front: {w: 146, h: 142},
+		back: {w: 138, h: 142},
+	},
+	meowscarada: {
+		front: {w: 130, h: 158},
+		back: {w: 112, h: 156},
+	},
+	magmortar: {
+		front: {w: 154, h: 144},
+		back: {w: 136, h: 140},
+	},
+	magneton: {
+		front: {w: 126, h: 110},
+		back: {w: 114, h: 104},
+	},
+	magnezone: {
+		front: {w: 148, h: 118},
+		back: {w: 150, h: 100},
+	},
+	gliscor: {
+		front: {w: 146, h: 114},
+		back: {w: 140, h: 124},
+	},
+	metagross: {
+		front: {w: 156, h: 100},
+		back: {w: 152, h: 104},
+	},
+	primarina: {
+		front: {w: 140, h: 160},
+		back: {w: 138, h: 156},
+	},
+	talonflame: {
+		front: {w: 192, h: 156},
+		back: {w: 170, h: 190},
+	},
+	salamence: {
+		front: {w: 156, h: 142},
+		back: {w: 166, h: 152},
+	},
+	salamencemega: {
+		front: {w: 192, h: 146},
+		back: {w: 192, h: 164},
+	},
+	rotom: {
+		front: {w: 122, h: 100},
+		back: {w: 122, h: 98},
+	},
+	rotomwash: {
+		front: {w: 120, h: 106},
+		back: {w: 120, h: 106},
+	},
+	rotomheat: {
+		front: {w: 152, h: 122},
+		back: {w: 136, h: 120},
+	},
+	rotomfrost: {
+		front: {w: 158, h: 136},
+		back: {w: 158, h: 136},
+	},
+	rotomfan: {
+		front: {w: 148, h: 118},
+		back: {w: 144, h: 116},
+	},
+	rotommow: {
+		front: {w: 102, h: 130},
+		back: {w: 104, h: 104},
+	},
+	weezinggalar: {
+		front: {w: 178, h: 186},
+		back: {w: 178, h: 186},
+		shinyBack: {w: 178, h: 185},
+	},
+	empoleon: {
+		front: {w: 156, h: 150},
+		back: {w: 134, h: 148},
+	},
+	lucariomega: {
+		front: {w: 114, h: 128},
+		back: {w: 86, h: 130},
+	},
+	lucariomegaz: {
+		front: {w: 138, h: 144},
+		back: {w: 118, h: 142},
+	},
+	tinkaton: {
+		front: {w: 148, h: 140},
+		back: {w: 118, h: 110},
+	},
+	sneasler: {
+		front: {w: 100, h: 152},
+		back: {w: 120, h: 142},
+	},
+	slowking: {
+		front: {w: 100, h: 136},
+		back: {w: 92, h: 136},
+	},
+	slowkinggalar: {
+		front: {w: 90, h: 136},
+		back: {w: 90, h: 136},
+	},
+	skeledirge: {
+		front: {w: 160, h: 112},
+		back: {w: 184, h: 130},
+	},
+	weavile: {
+		front: {w: 112, h: 120},
+		back: {w: 88, h: 122},
+	},
+	weavilef: {
+		front: {w: 112, h: 120},
+		back: {w: 88, h: 122},
+	},
+	espeon: {
+		front: {w: 100, h: 106},
+		back: {w: 80, h: 100},
+	},
+	gengar: {
+		front: {w: 112, h: 104},
+		back: {w: 110, h: 108},
+		shinyFront: {w: 112, h: 108},
+		shinyBack: {w: 110, h: 110},
+	},
+	gengarmega: {
+		front: {w: 152, h: 132},
+		back: {w: 172, h: 132},
+		shinyFront: {w: 152, h: 132},
+		shinyBack: {w: 172, h: 134},
+	},
+	gengargmax: {
+		front: {w: 188, h: 180},
+		back: {w: 192, h: 174},
+		shinyFront: {w: 192, h: 184},
+		shinyBack: {w: 192, h: 178},
+	},
+	lilligant: {
+		front: {w: 104, h: 134},
+		back: {w: 108, h: 134},
+	},
+	lilliganthisui: {
+		front: {w: 106, h: 154},
+		back: {w: 106, h: 144},
+	},
+	butterfree: {
+		front: {w: 118, h: 104},
+		back: {w: 116, h: 102},
+	},
+	butterfreegmax: {
+		front: {w: 190, h: 186},
+		back: {w: 190, h: 186},
+	},
+	corviknight: {
+		front: {w: 102, h: 144},
+		back: {w: 120, h: 130},
+	},
+	corviknightgmax: {
+		front: {w: 192, h: 190},
+		back: {w: 188, h: 190},
+		shinyFront: {w: 192, h: 190},
+		shinyBack: {w: 188, h: 191},
+	},
+	ironvaliant: {
+		front: {w: 120, h: 162},
+		back: {w: 120, h: 162},
+	},
+	grimmsnarl: {
+		front: {w: 192, h: 152},
+		back: {w: 192, h: 152},
+	},
+	grimmsnarlgmax: {
+		front: {w: 128, h: 192},
+		back: {w: 114, h: 192},
+	},
+	hydreigon: {
+		front: {w: 160, h: 156},
+		back: {w: 150, h: 160},
+		shinyFront: {w: 172, h: 166},
+		shinyBack: {w: 162, h: 172},
+	},
+	infernape: {
+		front: {w: 148, h: 110},
+		back: {w: 144, h: 136},
+	},
+	inteleon: {
+		front: {w: 114, h: 192},
+		back: {w: 114, h: 192},
+	},
+	inteleongmax: {
+		front: {w: 126, h: 192},
+		back: {w: 124, h: 180},
+	},
+	torterra: {
+		front: {w: 144, h: 154},
+		back: {w: 156, h: 156},
+	},
+	tsareena: {
+		front: {w: 132, h: 160},
+		back: {w: 108, h: 160},
+	},
+	ursaluna: {
+		front: {w: 152, h: 130},
+		back: {w: 162, h: 134},
+	},
+	cinderace: {
+		front: {w: 90, h: 192},
+		back: {w: 80, h: 160},
+	},
+	cinderacegmax: {
+		front: {w: 162, h: 190},
+		back: {w: 162, h: 190},
+	},
+	crobat: {
+		front: {w: 158, h: 130},
+		back: {w: 170, h: 98},
+	},
+	decidueye: {
+		front: {w: 118, h: 158},
+		back: {w: 76, h: 152},
+	},
+	decidueyehisui: {
+		front: {w: 98, h: 164},
+		back: {w: 98, h: 156},
+	},
+	dragapult: {
+		front: {w: 142, h: 156},
+		back: {w: 142, h: 156},
+	},
+	duraludon: {
+		front: {w: 122, h: 150},
+		back: {w: 134, h: 148},
+	},
+	duraludongmax: {
+		front: {w: 152, h: 192},
+		back: {w: 150, h: 192},
+	},
+	luxray: {
+		front: {w: 126, h: 132},
+		back: {w: 134, h: 128},
+	},
+	luxrayf: {
+		front: {w: 126, h: 132},
+		back: {w: 134, h: 128},
+	},
+	silvally: {
+		front: {w: 138, h: 184},
+		back: {w: 118, h: 180},
+	},
+	silvallyfighting: {
+		front: {w: 138, h: 184},
+		back: {w: 118, h: 180},
+		shinyFront: {w: 138, h: 188},
+		shinyBack: {w: 118, h: 186},
+	},
+	silvallyflying: {
+		front: {w: 138, h: 184},
+		back: {w: 118, h: 180},
+		shinyFront: {w: 164, h: 184},
+		shinyBack: {w: 136, h: 180},
+	},
+	silvallypoison: {
+		front: {w: 138, h: 184},
+		back: {w: 118, h: 180},
+		shinyFront: {w: 156, h: 182},
+		shinyBack: {w: 128, h: 180},
+	},
+	silvallyground: {
+		front: {w: 138, h: 184},
+		back: {w: 118, h: 180},
+		shinyFront: {w: 138, h: 188},
+		shinyBack: {w: 118, h: 186},
+	},
+	silvallyrock: {
+		front: {w: 138, h: 184},
+		back: {w: 118, h: 180},
+	},
+	silvallybug: {
+		front: {w: 138, h: 184},
+		back: {w: 118, h: 180},
+		shinyFront: {w: 138, h: 182},
+		shinyBack: {w: 118, h: 182},
+	},
+	silvallyghost: {
+		front: {w: 138, h: 184},
+		back: {w: 118, h: 180},
+		shinyFront: {w: 148, h: 184},
+		shinyBack: {w: 138, h: 182},
+	},
+	silvallysteel: {
+		front: {w: 138, h: 184},
+		back: {w: 118, h: 180},
+		shinyFront: {w: 138, h: 188},
+		shinyBack: {w: 118, h: 182},
+	},
+	silvallyunknown: {
+		front: {w: 138, h: 184},
+		back: {w: 118, h: 180},
+		shinyFront: {w: 146, h: 184},
+		shinyBack: {w: 140, h: 180},
+	},
+	silvallyfire: {
+		front: {w: 138, h: 184},
+		back: {w: 118, h: 180},
+		shinyFront: {w: 140, h: 176},
+		shinyBack: {w: 118, h: 174},
+	},
+	silvallywater: {
+		front: {w: 138, h: 184},
+		back: {w: 118, h: 180},
+		shinyFront: {w: 142, h: 186},
+		shinyBack: {w: 126, h: 184},
+	},
+	silvallygrass: {
+		front: {w: 138, h: 184},
+		back: {w: 118, h: 180},
+		shinyFront: {w: 138, h: 188},
+		shinyBack: {w: 118, h: 186},
+	},
+	silvallyelectric: {
+		front: {w: 138, h: 184},
+		back: {w: 118, h: 180},
+		shinyFront: {w: 138, h: 188},
+		shinyBack: {w: 118, h: 186},
+	},
+	silvallypsychic: {
+		front: {w: 138, h: 184},
+		back: {w: 118, h: 180},
+		shinyFront: {w: 138, h: 188},
+		shinyBack: {w: 122, h: 184},
+	},
+	silvallyice: {
+		front: {w: 138, h: 184},
+		back: {w: 118, h: 180},
+		shinyFront: {w: 138, h: 186},
+		shinyBack: {w: 124, h: 184},
+	},
+	silvallydragon: {
+		front: {w: 138, h: 184},
+		back: {w: 118, h: 180},
+		shinyFront: {w: 138, h: 176},
+		shinyBack: {w: 118, h: 174},
+	},
+	silvallydark: {
+		front: {w: 138, h: 184},
+		back: {w: 118, h: 180},
+		shinyFront: {w: 138, h: 186},
+	},
+	silvallyfairy: {
+		front: {w: 138, h: 184},
+		back: {w: 118, h: 180},
+		shinyFront: {w: 156, h: 186},
+		shinyBack: {w: 136, h: 182},
+	},
+	alcremie: {
+		front: {w: 98, h: 126},
+		back: {w: 76, h: 114},
+	},
+	alcremiegmax: {
+		front: {w: 170, h: 192},
+		back: {w: 170, h: 192},
+	},
+};
+
 const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	alakazammega: {
 		num: 65,
 		front: {w: 96, h: 96},
 		back: {w: 154, h: 182},
+	},
+	toedscruel: {
+		num: 949,
+		front: {w: 104, h: 142},
+		back: {w: 128, h: 144},
+	},
+	archaludon: {
+		num: 1018,
+		front: {w: 156, h: 180},
+		back: {w: 158, h: 190},
+	},
+	hydrapple: {
+		num: 1019,
+		front: {w: 118, h: 168},
+		back: {w: 140, h: 178},
+	},
+	centiskorch: {
+		num: 851,
+		front: {w: 180, h: 150},
+		back: {w: 186, h: 150},
+	},
+	centiskorchgmax: {
+		num: 851,
+		front: {w: 188, h: 188},
+		back: {w: 186, h: 188},
+	},
+	basculegion: {
+		num: 902,
+		front: {w: 170, h: 112},
+		back: {w: 190, h: 106},
+	},
+	basculegionf: {
+		num: 902,
+		front: {w: 170, h: 106},
+		back: {w: 190, h: 106},
+	},
+	kingambit: {
+		num: 983,
+		front: {w: 134, h: 192},
+		back: {w: 120, h: 190},
+	},
+	electivire: {
+		num: 466,
+		front: {w: 146, h: 140},
+		back: {w: 150, h: 136},
+	},
+	farigiraf: {
+		num: 981,
+		front: {w: 132, h: 170},
+		back: {w: 126, h: 172},
+	},
+	ninetales: {
+		num: 38,
+		front: {w: 130, h: 130},
+		back: {w: 150, h: 128},
+	},
+	ninetalesalola: {
+		num: 38,
+		front: {w: 146, h: 142},
+		back: {w: 138, h: 142},
+	},
+	meowscarada: {
+		num: 908,
+		front: {w: 130, h: 158},
+		back: {w: 112, h: 156},
+	},
+	magmortar: {
+		num: 467,
+		front: {w: 154, h: 144},
+		back: {w: 136, h: 140},
+	},
+	magneton: {
+		num: 82,
+		front: {w: 126, h: 110},
+		back: {w: 114, h: 104},
+	},
+	magnezone: {
+		num: 462,
+		front: {w: 148, h: 118},
+		back: {w: 150, h: 100},
+	},
+	gliscor: {
+		num: 472,
+		front: {w: 146, h: 114},
+		back: {w: 140, h: 124},
+	},
+	metagross: {
+		num: 376,
+		front: {w: 156, h: 100},
+		back: {w: 152, h: 104},
+	},
+	primarina: {
+		num: 730,
+		front: {w: 140, h: 160},
+		back: {w: 138, h: 156},
+	},
+	talonflame: {
+		num: 663,
+		front: {w: 192, h: 156},
+		back: {w: 170, h: 190},
+	},
+	salamence: {
+		num: 373,
+		front: {w: 156, h: 142},
+		back: {w: 166, h: 152},
+	},
+	salamencemega: {
+		num: 373,
+		front: {w: 192, h: 146},
+		back: {w: 192, h: 164},
+	},
+	rotom: {
+		num: 479,
+		front: {w: 122, h: 100},
+		back: {w: 122, h: 98},
+	},
+	rotomwash: {
+		num: 479,
+		front: {w: 120, h: 106},
+		back: {w: 120, h: 106},
+	},
+	rotomheat: {
+		num: 479,
+		front: {w: 152, h: 122},
+		back: {w: 136, h: 120},
+	},
+	rotomfrost: {
+		num: 479,
+		front: {w: 158, h: 136},
+		back: {w: 158, h: 136},
+	},
+	rotomfan: {
+		num: 479,
+		front: {w: 148, h: 118},
+		back: {w: 144, h: 116},
+	},
+	rotommow: {
+		num: 479,
+		front: {w: 102, h: 130},
+		back: {w: 104, h: 104},
+	},
+	weezinggalar: {
+		num: 110,
+		front: {w: 178, h: 186},
+		back: {w: 178, h: 186},
+		shinyBack: {w: 178, h: 185},
+	},
+	empoleon: {
+		num: 395,
+		front: {w: 156, h: 150},
+		back: {w: 134, h: 148},
+	},
+	alcremie: {
+		num: 869,
+		front: {w: 98, h: 126},
+		back: {w: 76, h: 114},
+	},
+	alcremiegmax: {
+		num: 869,
+		front: {w: 170, h: 192},
+		back: {w: 170, h: 192},
 	},
 	ursalunabloodmoon: {
 		num: 901,
@@ -613,13 +1251,302 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	},
 	staraptormega: {
 		num: 398,
-		front: {w: 96, h: 96},
-		back: {w: 96, h: 96},
+		front: {w: 173, h: 161},
+		back: {w: 157, h: 171},
+	},
+	lucariomega: {
+		num: 448,
+		front: {w: 114, h: 128},
+		back: {w: 86, h: 130},
 	},
 	lucariomegaz: {
 		num: 448,
-		front: {w: 96, h: 96},
-		back: {w: 96, h: 96},
+		front: {w: 138, h: 144},
+		back: {w: 118, h: 142},
+	},
+	tinkaton: {
+		num: 959,
+		front: {w: 148, h: 140},
+		back: {w: 118, h: 110},
+	},
+	sneasler: {
+		num: 903,
+		front: {w: 100, h: 152},
+		back: {w: 120, h: 142},
+	},
+	slowking: {
+		num: 199,
+		front: {w: 100, h: 136},
+		back: {w: 92, h: 136},
+	},
+	slowkinggalar: {
+		num: 199,
+		front: {w: 90, h: 136},
+		back: {w: 90, h: 136},
+	},
+	skeledirge: {
+		num: 911,
+		front: {w: 160, h: 112},
+		back: {w: 184, h: 130},
+	},
+	weavile: {
+		num: 461,
+		front: {w: 112, h: 120},
+		back: {w: 88, h: 122},
+		frontf: {w: 112, h: 120},
+		backf: {w: 88, h: 122},
+	},
+	weavilef: {
+		num: 461,
+		front: {w: 112, h: 120},
+		back: {w: 88, h: 122},
+	},
+	espeon: {
+		num: 196,
+		front: {w: 100, h: 106},
+		back: {w: 80, h: 100},
+	},
+	gengar: {
+		num: 94,
+		front: {w: 112, h: 104},
+		back: {w: 110, h: 108},
+	},
+	gengarmega: {
+		num: 94,
+		front: {w: 152, h: 132},
+		back: {w: 172, h: 132},
+	},
+	gengargmax: {
+		num: 94,
+		front: {w: 188, h: 180},
+		back: {w: 192, h: 174},
+	},
+	lilligant: {
+		num: 549,
+		front: {w: 104, h: 134},
+		back: {w: 108, h: 134},
+	},
+	lilliganthisui: {
+		num: 549,
+		front: {w: 106, h: 154},
+		back: {w: 106, h: 144},
+	},
+	butterfree: {
+		num: 12,
+		front: {w: 118, h: 104},
+		back: {w: 116, h: 102},
+	},
+	butterfreegmax: {
+		num: 12,
+		front: {w: 190, h: 186},
+		back: {w: 190, h: 186},
+	},
+	corviknight: {
+		num: 823,
+		front: {w: 102, h: 144},
+		back: {w: 120, h: 130},
+	},
+	corviknightgmax: {
+		num: 823,
+		front: {w: 192, h: 190},
+		back: {w: 188, h: 190},
+	},
+	ironvaliant: {
+		num: 1006,
+		front: {w: 120, h: 162},
+		back: {w: 120, h: 162},
+	},
+	grimmsnarl: {
+		num: 861,
+		front: {w: 192, h: 152},
+		back: {w: 192, h: 152},
+	},
+	grimmsnarlgmax: {
+		num: 861,
+		front: {w: 128, h: 192},
+		back: {w: 114, h: 192},
+	},
+	hydreigon: {
+		num: 635,
+		front: {w: 160, h: 156},
+		back: {w: 150, h: 160},
+	},
+	infernape: {
+		num: 392,
+		front: {w: 148, h: 110},
+		back: {w: 144, h: 136},
+	},
+	inteleon: {
+		num: 818,
+		front: {w: 114, h: 192},
+		back: {w: 114, h: 192},
+	},
+	inteleongmax: {
+		num: 818,
+		front: {w: 126, h: 192},
+		back: {w: 124, h: 180},
+	},
+	torterra: {
+		num: 389,
+		front: {w: 144, h: 154},
+		back: {w: 156, h: 156},
+	},
+	tsareena: {
+		num: 763,
+		front: {w: 132, h: 160},
+		back: {w: 108, h: 160},
+	},
+	ursaluna: {
+		num: 901,
+		front: {w: 152, h: 130},
+		back: {w: 162, h: 134},
+	},
+	cinderace: {
+		num: 815,
+		front: {w: 90, h: 192},
+		back: {w: 80, h: 160},
+	},
+	cinderacegmax: {
+		num: 815,
+		front: {w: 162, h: 190},
+		back: {w: 162, h: 190},
+	},
+	crobat: {
+		num: 169,
+		front: {w: 158, h: 130},
+		back: {w: 170, h: 98},
+	},
+	decidueye: {
+		num: 724,
+		front: {w: 118, h: 158},
+		back: {w: 76, h: 152},
+	},
+	decidueyehisui: {
+		num: 724,
+		front: {w: 98, h: 164},
+		back: {w: 98, h: 156},
+	},
+	dragapult: {
+		num: 887,
+		front: {w: 142, h: 156},
+		back: {w: 142, h: 156},
+	},
+	duraludon: {
+		num: 884,
+		front: {w: 122, h: 150},
+		back: {w: 134, h: 148},
+	},
+	duraludongmax: {
+		num: 884,
+		front: {w: 152, h: 192},
+		back: {w: 150, h: 192},
+	},
+	luxray: {
+		num: 405,
+		front: {w: 126, h: 132},
+		back: {w: 134, h: 128},
+		frontf: {w: 126, h: 132},
+		backf: {w: 134, h: 128},
+	},
+	luxrayf: {
+		num: 405,
+		front: {w: 126, h: 132},
+		back: {w: 134, h: 128},
+	},
+	silvally: {
+		num: 773,
+		front: {w: 138, h: 184},
+		back: {w: 118, h: 180},
+	},
+	silvallyfighting: {
+		num: 773,
+		front: {w: 138, h: 184},
+		back: {w: 118, h: 180},
+	},
+	silvallyflying: {
+		num: 773,
+		front: {w: 138, h: 184},
+		back: {w: 118, h: 180},
+	},
+	silvallypoison: {
+		num: 773,
+		front: {w: 138, h: 184},
+		back: {w: 118, h: 180},
+	},
+	silvallyground: {
+		num: 773,
+		front: {w: 138, h: 184},
+		back: {w: 118, h: 180},
+	},
+	silvallyrock: {
+		num: 773,
+		front: {w: 138, h: 184},
+		back: {w: 118, h: 180},
+	},
+	silvallybug: {
+		num: 773,
+		front: {w: 138, h: 184},
+		back: {w: 118, h: 180},
+	},
+	silvallyghost: {
+		num: 773,
+		front: {w: 138, h: 184},
+		back: {w: 118, h: 180},
+	},
+	silvallysteel: {
+		num: 773,
+		front: {w: 138, h: 184},
+		back: {w: 118, h: 180},
+	},
+	silvallyunknown: {
+		num: 773,
+		front: {w: 138, h: 184},
+		back: {w: 118, h: 180},
+	},
+	silvallyfire: {
+		num: 773,
+		front: {w: 138, h: 184},
+		back: {w: 118, h: 180},
+	},
+	silvallywater: {
+		num: 773,
+		front: {w: 138, h: 184},
+		back: {w: 118, h: 180},
+	},
+	silvallygrass: {
+		num: 773,
+		front: {w: 138, h: 184},
+		back: {w: 118, h: 180},
+	},
+	silvallyelectric: {
+		num: 773,
+		front: {w: 138, h: 184},
+		back: {w: 118, h: 180},
+	},
+	silvallypsychic: {
+		num: 773,
+		front: {w: 138, h: 184},
+		back: {w: 118, h: 180},
+	},
+	silvallyice: {
+		num: 773,
+		front: {w: 138, h: 184},
+		back: {w: 118, h: 180},
+	},
+	silvallydragon: {
+		num: 773,
+		front: {w: 138, h: 184},
+		back: {w: 118, h: 180},
+	},
+	silvallydark: {
+		num: 773,
+		front: {w: 138, h: 184},
+		back: {w: 118, h: 180},
+	},
+	silvallyfairy: {
+		num: 773,
+		front: {w: 138, h: 184},
+		back: {w: 118, h: 180},
 	},
 	meganiummega: {
 		num: 154,
@@ -633,8 +1560,8 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	},
 	raichumegay: {
 		num: 26,
-		front: {w: 96, h: 96},
-		back: {w: 96, h: 96},
+		front: {w: 186, h: 165},
+		back: {w: 192, h: 147},
 	},
 	scolipedemega: {
 		num: 545,
@@ -1245,6 +2172,8 @@ function ensureCustomBWSpriteData() {
 	for (const id of CUSTOM_BW_SPRITE_IDS) {
 		if (!window.BattlePokemonSpritesBW[id]) {
 			window.BattlePokemonSpritesBW[id] = CUSTOM_BW_SPRITES[id];
+		} else {
+			Object.assign(window.BattlePokemonSpritesBW[id], CUSTOM_BW_SPRITES[id]);
 		}
 	}
 	customBWSpriteDataTable = window.BattlePokemonSpritesBW;
@@ -1324,8 +2253,8 @@ function ensureCustomSpecies(id?: string) {
 			if (!baseData) continue;
 			const existingData = window.BattlePokedex[customId];
 			window.BattlePokedex[customId] = {
-				...customSpecies.data,
 				...(existingData || baseData),
+				...customSpecies.data,
 			};
 		}
 		customSpeciesDataTable = window.BattlePokedex;
@@ -1334,8 +2263,8 @@ function ensureCustomSpecies(id?: string) {
 		const baseData = window.BattlePokedex[customSpecies.base];
 		if (baseData) {
 			window.BattlePokedex[id] = {
-				...customSpecies.data,
 				...baseData,
+				...customSpecies.data,
 			};
 		}
 	}
@@ -1691,11 +2620,11 @@ const Dex = new class implements ModdedDex {
 			let id = toID(nameOrSpecies);
 			let formid = id;
 			if (!window.BattlePokedexAltForms) window.BattlePokedexAltForms = {};
-			if (formid in window.BattlePokedexAltForms) return window.BattlePokedexAltForms[formid];
-			if (window.BattleAliases && id in BattleAliases) {
+			if (formid in window.BattlePokedexAltForms && !(formid in CUSTOM_SPECIES)) return window.BattlePokedexAltForms[formid];
+			if (window.BattleAliases && id in BattleAliases && !(id in CUSTOM_SPECIES)) {
 				name = BattleAliases[id];
 				id = toID(name);
-			} else if (window.BattlePokedex && !(id in BattlePokedex) && window.BattleBaseSpeciesChart) {
+			} else if (window.BattlePokedex && !(id in BattlePokedex) && !(id in CUSTOM_SPECIES) && window.BattleBaseSpeciesChart) {
 				for (const baseSpeciesId of BattleBaseSpeciesChart) {
 					if (formid.startsWith(baseSpeciesId)) {
 						id = baseSpeciesId;
@@ -1722,7 +2651,7 @@ const Dex = new class implements ModdedDex {
 				window.BattlePokedex[id] = species;
 			}
 
-			if (species.cosmeticFormes) {
+			if (species.cosmeticFormes && !(formid in CUSTOM_SPECIES)) {
 				for (const forme of species.cosmeticFormes) {
 					if (toID(forme) === formid) {
 						species = new Species(formid, name, {
@@ -1824,6 +2753,7 @@ const Dex = new class implements ModdedDex {
 			}
 			pokemon = pokemon.getSpeciesForme() + (isGigantamax ? '-Gmax' : '');
 		}
+		const requestedSpriteid = typeof pokemon === 'string' ? toID(pokemon) : '';
 		const species = Dex.species.get(pokemon);
 		ensureCustomBWSpriteData();
 		// Gmax sprites are already extremely large, so we don't need to double.
@@ -1840,6 +2770,7 @@ const Dex = new class implements ModdedDex {
 			shiny: options.shiny,
 		};
 		let name = species.spriteid;
+		if (requestedSpriteid && CUSTOM_STATIC_BATTLE_SPRITES[requestedSpriteid]) name = requestedSpriteid;
 		if (CUSTOM_ICON_SPRITES[species.id]) name = CUSTOM_ICON_SPRITES[species.id] as ID;
 		let dir;
 		let facing;
@@ -1872,6 +2803,7 @@ const Dex = new class implements ModdedDex {
 		let animationData = null;
 		let miscData = null;
 		let speciesid = species.id;
+		if (requestedSpriteid && CUSTOM_STATIC_BATTLE_SPRITES[requestedSpriteid]) speciesid = requestedSpriteid;
 		if (species.isTotem) speciesid = toID(name);
 		if (baseDir === '' && window.BattlePokemonSprites) {
 			animationData = BattlePokemonSprites[speciesid];
@@ -1952,6 +2884,12 @@ const Dex = new class implements ModdedDex {
 		if (animationData[facing + 'f'] && options.gender === 'F') facing += 'f';
 		let allowAnim = !Dex.prefs('noanim') && !Dex.prefs('nogif');
 		if (CUSTOM_ICON_SPRITES[speciesid]) allowAnim = false;
+		let customStaticBattleSpriteid = speciesid;
+		if (options.gender === 'F' && CUSTOM_STATIC_BATTLE_SPRITES[`${speciesid}f`]) {
+			customStaticBattleSpriteid = `${speciesid}f`;
+		}
+		const customStaticBattleSprite = CUSTOM_STATIC_BATTLE_SPRITES[customStaticBattleSpriteid];
+		if (customStaticBattleSprite) allowAnim = false;
 		if (allowAnim && spriteData.gen >= 6) spriteData.pixelated = false;
 		if (allowAnim && animationData[facing] && spriteData.gen >= 5) {
 			if (facing.slice(-1) === 'f') name += '-f';
@@ -1967,11 +2905,18 @@ const Dex = new class implements ModdedDex {
 
 			// Gender differences don't exist prior to Gen 4,
 			// so there are no sprites for it
-			if (spriteData.gen >= 4 && miscData['frontf'] && options.gender === 'F') {
+			if (spriteData.gen >= 4 && (miscData['frontf'] || customStaticBattleSpriteid !== speciesid) && options.gender === 'F') {
 				name += '-f';
 			}
 
 			spriteData.url += dir + '/' + name + '.png';
+		}
+		if (customStaticBattleSprite) {
+			const customSpriteSize = options.shiny ?
+				customStaticBattleSprite[isFront ? 'shinyFront' : 'shinyBack'] || customStaticBattleSprite[isFront ? 'front' : 'back'] :
+				customStaticBattleSprite[isFront ? 'front' : 'back'];
+			spriteData.w = customSpriteSize.w;
+			spriteData.h = customSpriteSize.h;
 		}
 
 		if (!options.noScale) {
