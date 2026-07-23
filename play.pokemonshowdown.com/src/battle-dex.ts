@@ -1992,6 +1992,9 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 	jolteon: {
 		abilities: {0: 'Lightning Rod', 1: 'Battery', H: 'Voltage Volley'},
 	},
+	archeops: {
+		abilities: {0: 'Defeatist', 1: 'Relic Instinct', H: 'Fossil Frenzy'},
+	},
 	dratini: {
 		abilities: {0: 'Shed Skin', 1: 'Dragonize', H: 'Marvel Scale'},
 	},
@@ -2017,6 +2020,18 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 	},
 	blazikenmega: {
 		abilities: {0: 'Blazing Tempo'},
+	},
+	aggronmega: {
+		abilities: {0: 'Iron Mountain'},
+	},
+	ampharosmega: {
+		abilities: {0: 'Wooly Conductor'},
+	},
+	gallademega: {
+		abilities: {0: 'Sacred Edge'},
+	},
+	gardevoirmega: {
+		abilities: {0: 'Royal Voice'},
 	},
 	vibrava: {
 		abilities: {0: 'Levitate', 1: 'Dragonize', H: 'Sand Stream'},
@@ -2048,15 +2063,55 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 		desc: "When this Pokemon knocks out another Pokemon, it transforms into its Bond form. While transformed, moves that match this Pokemon's type have 1.3x power, and knocking out a target restores 1/8 of this Pokemon's maximum HP.",
 		shortDesc: 'After a KO: transforms. Bond form: matching-type moves 1.3x, KO heals 1/8 max HP.',
 	},
+	relicinstinct: {
+		name: 'Relic Instinct',
+		desc: 'If this Pokemon has more than 50% HP, its Rock- and Flying-type moves have 1.3x power and its moves ignore opposing Abilities. If this Pokemon has 50% or less HP, its Rock- and Flying-type moves have 1.1x power, it takes 0.75x damage from attacks, cannot be critically hit, restores 1/16 max HP each turn, and its Attack and Special Attack are halved. Once, when it reaches 25% HP or less, it heals 25% max HP, clears its negative stat stages, and lowers its Defense and Special Defense by 2 stages.',
+		shortDesc: '>50%: Rock/Flying 1.3x + Mold Breaker. <=50%: defensive mode; <=25% pinch heal.',
+	},
+	fossilfrenzy: {
+		name: 'Fossil Frenzy',
+		desc: 'When this Pokemon is hit by a damaging move, its Attack and Speed rise by 1 stage and it becomes confused. While confused, it takes 1.25x damage from attacks. This Pokemon has Klutz\'s effect. If it hits itself in confusion, it also loses 1/8 of its maximum HP.',
+		shortDesc: 'Hit by attacks: +1 Atk/Spe and confusion; confused takes 1.25x; Klutz; self-hit costs 1/8.',
+	},
+	relicarmor: {
+		name: 'Relic Armor',
+		desc: 'This Pokemon cannot be critically hit. If an opposing Pokemon lowers its stats, its Defense and Special Defense rise by 1 stage. It takes 0.8x damage from attacks, does not take recoil damage except Struggle, and its moves ignore Abilities.',
+		shortDesc: 'No crits; stat drops +1 Def/SpD; takes 0.8x; Rock Head + Mold Breaker.',
+	},
 	draconicforce: {
 		name: 'Draconic Force',
 		desc: "This Pokemon has Dragonize, Sheer Force, and Guts's effects.",
 		shortDesc: 'Dragonize + Sheer Force + Guts.',
 	},
+	ironmountain: {
+		name: 'Iron Mountain',
+		desc: 'This Pokemon has Filter, Stamina, and Heavy Metal\'s effects. Super-effective attacks deal 0.75x damage to it. Once per turn when hit by an opposing damaging move, its Defense rises by 1 stage and it restores 1/16 max HP. Its weight is doubled.',
+		shortDesc: 'Filter + Stamina + Heavy Metal.',
+	},
+	woolyconductor: {
+		name: 'Wooly Conductor',
+		desc: 'This Pokemon has Fur Coat, Mold Breaker, and Static\'s effects. Its Defense is doubled, its moves ignore opposing Abilities, and contact moves used against it may paralyze the attacker.',
+		shortDesc: 'Fur Coat + Mold Breaker + Static.',
+	},
+	sacrededge: {
+		name: 'Sacred Edge',
+		desc: 'This Pokemon has Sharpness and Sworn Duty\'s effects. Its slicing moves ignore Substitute, Reflect, Light Screen, and Aurora Veil. On switch-in or Mega Evolution, it heals its ally by 1/4 max HP, or 1/3 on Fairy Tale Field.',
+		shortDesc: 'Sharpness + Sworn Duty; slicing moves ignore screens/Substitute.',
+	},
+	royalvoice: {
+		name: 'Royal Voice',
+		desc: 'This Pokemon has Pixilate, Queenly Majesty, and Sworn Duty\'s effects. Its Normal-type moves become Fairy type and have 1.2x power. Its Psychic- and Fairy-type moves have 1.2x power. On switch-in or Mega Evolution, it heals its ally by 1/4 max HP, or 1/3 on Fairy Tale Field.',
+		shortDesc: 'Pixilate + Queenly Majesty + Sworn Duty; Psychic/Fairy moves 1.2x.',
+	},
+	fallenstar: {
+		name: 'Fallen Star',
+		desc: "This Pokemon's arrow moves ignore the target's Ability and have 1.2x power. If this Pokemon has 1/3 or less of its maximum HP, its arrow moves gain +1 priority. If an arrow move targets a Pokemon that cannot switch out, it has 1.5x power instead. This Pokemon is immune to hail damage. Arrow moves are Spirit Shackle, Thousand Arrows, Triple Arrows, Snipe Shot, Razor Leaf, and Magical Leaf.",
+		shortDesc: 'Arrow moves ignore Abilities and are 1.2x; at <=1/3 HP +1 priority; hail immune.',
+	},
 	ragingstorm: {
 		name: 'Raging Storm',
-		desc: "This Pokemon's attacks have Mold Breaker, remove the target's positive stat changes before damage, and ignore Reflect, Light Screen, Aurora Veil, and defensive stat boosts. If this Pokemon gets a KO, it damages remaining foes for 60% of the last damage in multi battles, or raises Attack by 1 if there is no valid target or no damage is dealt. Magic Guard users do not take this damage.",
-		shortDesc: 'Mold Breaker; attacks clear target boosts and ignore screens/boosts; KO bonus.',
+		desc: "This Pokemon's attacks have Mold Breaker, remove the target's positive stat changes before damage, and ignore Reflect, Light Screen, Aurora Veil, and defensive stat boosts. If this Pokemon gets a KO, it damages remaining foes for 60% of the last damage in multi battles, or raises Attack by 1 if there is no valid target or no damage is dealt. Magic Guard users do not take this damage. This Pokemon is immune to hail damage.",
+		shortDesc: 'Mold Breaker; attacks clear target boosts and ignore screens/boosts; KO bonus; hail immune.',
 	},
 	safeharbor: {
 		name: 'Safe Harbor',
@@ -2072,6 +2127,16 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 		name: 'Water Veil',
 		desc: 'This Pokemon cannot be burned and is immune to Hail and Sandstorm damage. Gaining this Ability while burned cures it. On switch-in, it gains Aqua Ring.',
 		shortDesc: 'Cannot be burned; immune to Hail/Sandstorm; gains Aqua Ring.',
+	},
+	atrocity: {
+		name: 'Atrocity',
+		desc: "This Pokemon's damaging moves have 1.3x power, +1 critical hit ratio, ignore Abilities, ignore defensive stat boosts, and bypass Substitute, Reflect, Light Screen, and Aurora Veil. Its Defense and Special Defense are 1.3x. It heals 30% of the damage it deals with attacks, doubled against G-Max Pokemon, up to 33% of its max HP per hit, and restores 1/16 max HP at the end of each turn. This Pokemon is immune to hail damage.",
+		shortDesc: 'Moves 1.3x and bypass defenses/screens; drains up to 33%; heals 1/16; hail immune.',
+	},
+	ultraego: {
+		name: 'Ultra Ego',
+		desc: 'This Pokemon\'s moves ignore abilities. Once per turn, its damaging attacks heal 1/16 max HP, and if one of its moves knocks out a Pokemon it heals 1/10 max HP. After this Pokemon uses a damaging move, the next opposing damaging hit raises its Attack and Special Attack by 1 and heals 1/16 max HP, or once per switch-in heals 1/4 max HP instead at 50% HP or less on boosted fields. Additional hits before it attacks again heal 1/20 max HP. Ally hits never trigger the boost or healing.',
+		shortDesc: 'Mold Breaker; attacks heal; move KOs heal 1/10; next enemy hit boosts Atk/SpA.',
 	},
 };
 
