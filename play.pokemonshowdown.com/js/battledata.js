@@ -1213,8 +1213,8 @@ back:{w:170,h:192}
 var CUSTOM_BW_SPRITES={
 alakazammega:{
 num:65,
-front:{w:96,h:96},
-back:{w:154,h:182}
+front:{w:178,h:172},
+back:{w:152,h:178}
 },
 toedscruel:{
 num:949,
@@ -1934,8 +1934,8 @@ back:{w:96,h:96}
 },
 meowsticmmega:{
 num:678,
-front:{w:96,h:96},
-back:{w:96,h:96}
+front:{w:66,h:140},
+back:{w:82,h:140}
 },
 meowsticfmega:{
 num:678,
