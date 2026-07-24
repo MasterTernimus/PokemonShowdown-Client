@@ -490,11 +490,14 @@ const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
 	greninjamega: 'greninja-mega',
 	greninjaash: 'greninja-ash',
 	greninjabond: 'greninja',
+	alakazammega: 'alakazam-mega',
 	gengarmega: 'gengar-mega',
 	gengargmax: 'gengar-gmax',
+	houndoommega: 'houndoom-mega',
 	salamencemega: 'salamence-mega',
 	hatterenegmax: 'hatterene-gmax',
 	palafinhero: 'palafin-hero',
+	mausholdfour: 'maushold-four',
 	sinistchamasterpiece: 'sinistcha-masterpiece',
 	venusaurmega: 'venusaur-mega',
 	venusaurgmax: 'venusaur-gmax',
@@ -1407,6 +1410,83 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 		num: 904,
 		front: {w: 172, h: 166},
 		back: {w: 164, h: 186},
+	},
+	garganacl: {
+		num: 934,
+		front: {w: 148, h: 134},
+		back: {w: 146, h: 140},
+	},
+	maushold: {
+		num: 925,
+		front: {w: 128, h: 84},
+		back: {w: 134, h: 88},
+	},
+	mausholdfour: {
+		num: 925,
+		front: {w: 138, h: 84},
+		back: {w: 142, h: 88},
+	},
+	lokix: {
+		num: 920,
+		front: {w: 92, h: 126},
+		back: {w: 104, h: 132},
+	},
+	bellibolt: {
+		num: 939,
+		front: {w: 96, h: 106},
+		back: {w: 92, h: 104},
+	},
+	kilowattrel: {
+		num: 941,
+		front: {w: 100, h: 106},
+		back: {w: 114, h: 150},
+	},
+	grafaiai: {
+		num: 945,
+		front: {w: 130, h: 108},
+		back: {w: 140, h: 90},
+	},
+	rabsca: {
+		num: 954,
+		front: {w: 82, h: 134},
+		back: {w: 78, h: 132},
+	},
+	espathra: {
+		num: 956,
+		front: {w: 116, h: 144},
+		back: {w: 116, h: 140},
+	},
+	revavroom: {
+		num: 966,
+		front: {w: 164, h: 114},
+		back: {w: 168, h: 112},
+	},
+	houndstone: {
+		num: 972,
+		front: {w: 120, h: 124},
+		back: {w: 122, h: 140},
+	},
+	houndoom: {
+		num: 229,
+		front: {w: 100, h: 132},
+		back: {w: 102, h: 130},
+		shinyBack: {w: 104, h: 130},
+	},
+	houndoommega: {
+		num: 229,
+		front: {w: 124, h: 168},
+		back: {w: 116, h: 164},
+		shinyBack: {w: 114, h: 164},
+	},
+	cetitan: {
+		num: 975,
+		front: {w: 154, h: 110},
+		back: {w: 188, h: 132},
+	},
+	clodsire: {
+		num: 980,
+		front: {w: 122, h: 72},
+		back: {w: 182, h: 134},
 	},
 	palafin: {
 		num: 964,
@@ -3366,13 +3446,17 @@ const Dex = new class implements ModdedDex {
 		}
 		if (CUSTOM_ICON_SPRITES[id]) {
 			spriteData.spriteDir = 'sprites/gen5';
-			const spriteDimensions = CUSTOM_STATIC_BATTLE_SPRITES[id]?.front || CUSTOM_BW_SPRITES[id]?.front;
+			const customStaticData = CUSTOM_STATIC_BATTLE_SPRITES[id];
+			const customBWData = CUSTOM_BW_SPRITES[id];
+			const spriteDimensions = pokemon.shiny ?
+				(customStaticData?.shinyFront || customBWData?.shinyFront || customStaticData?.front || customBWData?.front) :
+				(customStaticData?.front || customBWData?.front);
 			if (spriteDimensions) {
-				const scale = Math.min(86 / spriteDimensions.w, 78 / spriteDimensions.h, 1);
+				const scale = Math.min(78 / spriteDimensions.w, 66 / spriteDimensions.h, 1);
 				const width = Math.max(1, Math.round(spriteDimensions.w * scale));
 				const height = Math.max(1, Math.round(spriteDimensions.h * scale));
 				spriteData.x = Math.round((96 - width) / 2);
-				spriteData.y = Math.round((90 - height) / 2);
+				spriteData.y = Math.round((78 - height) / 2) + 8;
 				spriteData.backgroundSize = `${width}px auto`;
 			} else {
 				const customSpriteData = CUSTOM_TEAMBUILDER_SPRITES[id] || {x: 12, y: 10, backgroundSize: '72px auto'};
@@ -3411,30 +3495,20 @@ const Dex = new class implements ModdedDex {
 		else if (gen <= 4 && species.gen <= 4) spriteData.spriteDir = 'sprites/gen4';
 		spriteData.x = 10;
 		spriteData.y = 5;
-		if (spriteid === 'flygon-megaz') {
-			spriteData.x = 5;
-			spriteData.y = 22;
-			spriteData.backgroundSize = '86px auto';
-		} else if (spriteid === 'garchomp-battlebond') {
-			spriteData.x = 10;
-			spriteData.y = 14;
-			spriteData.backgroundSize = '74px auto';
-		} else if (spriteid === 'garchomp-megaz') {
-			spriteData.x = 7;
-			spriteData.y = 8;
-			spriteData.backgroundSize = '82px auto';
-		} else if (spriteid === 'gardevoir-megaz') {
-			spriteData.x = 17;
-			spriteData.y = 12;
-			spriteData.backgroundSize = '62px auto';
-		} else if (spriteid === 'gardevoir-mega') {
-			spriteData.x = 12;
-			spriteData.y = 3;
-			spriteData.backgroundSize = '72px auto';
-		} else if (spriteid === 'gardevoirvoid-mega') {
-			spriteData.x = 11;
-			spriteData.y = 9;
-			spriteData.backgroundSize = '78px auto';
+		if (spriteData.spriteDir === 'sprites/gen5') {
+			const customStaticData = CUSTOM_STATIC_BATTLE_SPRITES[id];
+			const customBWData = CUSTOM_BW_SPRITES[id];
+			const spriteDimensions = pokemon.shiny ?
+				(customStaticData?.shinyFront || customBWData?.shinyFront || customStaticData?.front || customBWData?.front) :
+				(customStaticData?.front || customBWData?.front);
+			if (spriteDimensions) {
+				const scale = Math.min(78 / spriteDimensions.w, 66 / spriteDimensions.h, 1);
+				const width = Math.max(1, Math.round(spriteDimensions.w * scale));
+				const height = Math.max(1, Math.round(spriteDimensions.h * scale));
+				spriteData.x = Math.round((96 - width) / 2);
+				spriteData.y = Math.round((78 - height) / 2) + 8;
+				spriteData.backgroundSize = `${width}px auto`;
+			}
 		}
 		return spriteData;
 	}

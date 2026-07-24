@@ -490,11 +490,14 @@ glimmoramega:'glimmora-mega',
 greninjamega:'greninja-mega',
 greninjaash:'greninja-ash',
 greninjabond:'greninja',
+alakazammega:'alakazam-mega',
 gengarmega:'gengar-mega',
 gengargmax:'gengar-gmax',
+houndoommega:'houndoom-mega',
 salamencemega:'salamence-mega',
 hatterenegmax:'hatterene-gmax',
 palafinhero:'palafin-hero',
+mausholdfour:'maushold-four',
 sinistchamasterpiece:'sinistcha-masterpiece',
 venusaurmega:'venusaur-mega',
 venusaurgmax:'venusaur-gmax',
@@ -1407,6 +1410,83 @@ overqwil:{
 num:904,
 front:{w:172,h:166},
 back:{w:164,h:186}
+},
+garganacl:{
+num:934,
+front:{w:148,h:134},
+back:{w:146,h:140}
+},
+maushold:{
+num:925,
+front:{w:128,h:84},
+back:{w:134,h:88}
+},
+mausholdfour:{
+num:925,
+front:{w:138,h:84},
+back:{w:142,h:88}
+},
+lokix:{
+num:920,
+front:{w:92,h:126},
+back:{w:104,h:132}
+},
+bellibolt:{
+num:939,
+front:{w:96,h:106},
+back:{w:92,h:104}
+},
+kilowattrel:{
+num:941,
+front:{w:100,h:106},
+back:{w:114,h:150}
+},
+grafaiai:{
+num:945,
+front:{w:130,h:108},
+back:{w:140,h:90}
+},
+rabsca:{
+num:954,
+front:{w:82,h:134},
+back:{w:78,h:132}
+},
+espathra:{
+num:956,
+front:{w:116,h:144},
+back:{w:116,h:140}
+},
+revavroom:{
+num:966,
+front:{w:164,h:114},
+back:{w:168,h:112}
+},
+houndstone:{
+num:972,
+front:{w:120,h:124},
+back:{w:122,h:140}
+},
+houndoom:{
+num:229,
+front:{w:100,h:132},
+back:{w:102,h:130},
+shinyBack:{w:104,h:130}
+},
+houndoommega:{
+num:229,
+front:{w:124,h:168},
+back:{w:116,h:164},
+shinyBack:{w:114,h:164}
+},
+cetitan:{
+num:975,
+front:{w:154,h:110},
+back:{w:188,h:132}
+},
+clodsire:{
+num:980,
+front:{w:122,h:72},
+back:{w:182,h:134}
 },
 palafin:{
 num:964,
@@ -3364,15 +3444,19 @@ spriteData.x=-6;
 spriteData.y=-7;
 return spriteData;
 }
-if(CUSTOM_ICON_SPRITES[id]){var _CUSTOM_STATIC_BATTLE,_CUSTOM_BW_SPRITES$id;
+if(CUSTOM_ICON_SPRITES[id]){
 spriteData.spriteDir='sprites/gen5';
-var spriteDimensions=((_CUSTOM_STATIC_BATTLE=CUSTOM_STATIC_BATTLE_SPRITES[id])==null?void 0:_CUSTOM_STATIC_BATTLE.front)||((_CUSTOM_BW_SPRITES$id=CUSTOM_BW_SPRITES[id])==null?void 0:_CUSTOM_BW_SPRITES$id.front);
+var customStaticData=CUSTOM_STATIC_BATTLE_SPRITES[id];
+var customBWData=CUSTOM_BW_SPRITES[id];
+var spriteDimensions=pokemon.shiny?
+(customStaticData==null?void 0:customStaticData.shinyFront)||(customBWData==null?void 0:customBWData.shinyFront)||(customStaticData==null?void 0:customStaticData.front)||(customBWData==null?void 0:customBWData.front):
+(customStaticData==null?void 0:customStaticData.front)||(customBWData==null?void 0:customBWData.front);
 if(spriteDimensions){
-var scale=Math.min(86/spriteDimensions.w,78/spriteDimensions.h,1);
+var scale=Math.min(78/spriteDimensions.w,66/spriteDimensions.h,1);
 var width=Math.max(1,Math.round(spriteDimensions.w*scale));
 var height=Math.max(1,Math.round(spriteDimensions.h*scale));
 spriteData.x=Math.round((96-width)/2);
-spriteData.y=Math.round((90-height)/2);
+spriteData.y=Math.round((78-height)/2)+8;
 spriteData.backgroundSize=width+"px auto";
 }else{
 var customSpriteData=CUSTOM_TEAMBUILDER_SPRITES[id]||{x:12,y:10,backgroundSize:'72px auto'};
@@ -3411,30 +3495,20 @@ if(gen<=3&&species.gen<=3)spriteData.spriteDir='sprites/gen3';else
 if(gen<=4&&species.gen<=4)spriteData.spriteDir='sprites/gen4';
 spriteData.x=10;
 spriteData.y=5;
-if(spriteid==='flygon-megaz'){
-spriteData.x=5;
-spriteData.y=22;
-spriteData.backgroundSize='86px auto';
-}else if(spriteid==='garchomp-battlebond'){
-spriteData.x=10;
-spriteData.y=14;
-spriteData.backgroundSize='74px auto';
-}else if(spriteid==='garchomp-megaz'){
-spriteData.x=7;
-spriteData.y=8;
-spriteData.backgroundSize='82px auto';
-}else if(spriteid==='gardevoir-megaz'){
-spriteData.x=17;
-spriteData.y=12;
-spriteData.backgroundSize='62px auto';
-}else if(spriteid==='gardevoir-mega'){
-spriteData.x=12;
-spriteData.y=3;
-spriteData.backgroundSize='72px auto';
-}else if(spriteid==='gardevoirvoid-mega'){
-spriteData.x=11;
-spriteData.y=9;
-spriteData.backgroundSize='78px auto';
+if(spriteData.spriteDir==='sprites/gen5'){
+var _customStaticData=CUSTOM_STATIC_BATTLE_SPRITES[id];
+var _customBWData=CUSTOM_BW_SPRITES[id];
+var _spriteDimensions=pokemon.shiny?
+(_customStaticData==null?void 0:_customStaticData.shinyFront)||(_customBWData==null?void 0:_customBWData.shinyFront)||(_customStaticData==null?void 0:_customStaticData.front)||(_customBWData==null?void 0:_customBWData.front):
+(_customStaticData==null?void 0:_customStaticData.front)||(_customBWData==null?void 0:_customBWData.front);
+if(_spriteDimensions){
+var _scale=Math.min(78/_spriteDimensions.w,66/_spriteDimensions.h,1);
+var _width=Math.max(1,Math.round(_spriteDimensions.w*_scale));
+var _height=Math.max(1,Math.round(_spriteDimensions.h*_scale));
+spriteData.x=Math.round((96-_width)/2);
+spriteData.y=Math.round((78-_height)/2)+8;
+spriteData.backgroundSize=_width+"px auto";
+}
 }
 return spriteData;
 };_proto2.
