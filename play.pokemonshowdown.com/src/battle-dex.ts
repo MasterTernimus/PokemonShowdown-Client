@@ -3294,6 +3294,7 @@ const Dex = new class implements ModdedDex {
 		}
 		const customStaticBattleSprite = CUSTOM_STATIC_BATTLE_SPRITES[customStaticBattleSpriteid];
 		if (customStaticBattleSprite) allowAnim = false;
+		const customBWSprite = CUSTOM_BW_SPRITES[speciesid];
 		if (allowAnim && spriteData.gen >= 6) spriteData.pixelated = false;
 		if (allowAnim && animationData[facing] && spriteData.gen >= 5) {
 			if (facing.slice(-1) === 'f') name += '-f';
@@ -3321,6 +3322,12 @@ const Dex = new class implements ModdedDex {
 				customStaticBattleSprite[isFront ? 'front' : 'back'];
 			spriteData.w = customSpriteSize.w;
 			spriteData.h = customSpriteSize.h;
+		} else if (customBWSprite && spriteData.gen === 5) {
+			const customSpriteSize = options.shiny ?
+				customBWSprite[isFront ? 'shinyFront' : 'shinyBack'] || customBWSprite[isFront ? 'front' : 'back'] :
+				customBWSprite[isFront ? 'front' : 'back'];
+			spriteData.w = customSpriteSize.w;
+			spriteData.h = customSpriteSize.h;
 		}
 
 		if (!options.noScale) {
@@ -3337,6 +3344,13 @@ const Dex = new class implements ModdedDex {
 				spriteData.y += -11;
 			}
 			if (spriteData.gen <= 2) spriteData.y += 2;
+		}
+		if (!options.noScale && (customStaticBattleSprite || customBWSprite) && !isDynamax) {
+			const scale = Math.min(96 / spriteData.w, 96 / spriteData.h, 1);
+			if (scale < 1) {
+				spriteData.w = Math.round(spriteData.w * scale);
+				spriteData.h = Math.round(spriteData.h * scale);
+			}
 		}
 		if (isDynamax && !options.noScale) {
 			spriteData.w *= 2;
