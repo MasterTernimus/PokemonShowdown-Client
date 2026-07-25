@@ -1243,10 +1243,19 @@ back:{w:76,h:114}
 alcremiegmax:{
 front:{w:170,h:192},
 back:{w:170,h:192}
+},
+ariados:{
+front:{w:122,h:102},
+back:{w:116,h:90}
 }
 };
 
 var CUSTOM_BW_SPRITES={
+ariados:{
+num:168,
+front:{w:122,h:102},
+back:{w:116,h:90}
+},
 alakazammega:{
 num:65,
 front:{w:178,h:172},

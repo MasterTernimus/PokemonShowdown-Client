@@ -1244,9 +1244,18 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 		front: {w: 170, h: 192},
 		back: {w: 170, h: 192},
 	},
+	ariados: {
+		front: {w: 122, h: 102},
+		back: {w: 116, h: 90},
+	},
 };
 
 const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
+	ariados: {
+		num: 168,
+		front: {w: 122, h: 102},
+		back: {w: 116, h: 90},
+	},
 	alakazammega: {
 		num: 65,
 		front: {w: 178, h: 172},
