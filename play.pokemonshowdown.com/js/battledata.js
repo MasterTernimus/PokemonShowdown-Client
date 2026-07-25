@@ -505,8 +505,17 @@ centiskorchgmax:'centiskorch-gmax',
 basculegionf:'basculegion-f',
 ninetalesalola:'ninetales-alola',
 lucariomega:'lucario-mega',
+slowbrogalar:'slowbro-galar',
+slowbromega:'slowbro-mega',
 slowkinggalar:'slowking-galar',
 weavilef:'weavile-f',
+taurospaldeacombat:'tauros-paldeacombat',
+taurospaldeablaze:'tauros-paldeablaze',
+taurospaldeaaqua:'tauros-paldeaaqua',
+tatsugirimega:'tatsugiri-mega',
+tatsugiridroopymega:'tatsugiri-mega',
+tatsugiristretchymega:'tatsugiri-mega',
+zoroarkhisui:'zoroark-hisui',
 rotomwash:'rotom-wash',
 rotomheat:'rotom-heat',
 rotomfrost:'rotom-frost',
@@ -523,6 +532,7 @@ chesnaughtmega:'chesnaught-mega',
 delphoxmega:'delphox-mega',
 dragalgemega:'dragalge-mega',
 dragonitemega:'dragonite-mega',
+steelixmega:'steelix-mega',
 drampamega:'drampa-mega',
 baxcaliburmega:'baxcalibur-mega',
 emboarmega:'emboar-mega',
@@ -588,7 +598,6 @@ lucariomegaz:{x:9,y:3,backgroundSize:'78px auto'},
 meganiummega:{x:9,y:3,backgroundSize:'78px auto'},
 raichumegax:{x:9,y:3,backgroundSize:'78px auto'},
 raichumegay:{x:5,y:0,backgroundSize:'86px auto'},
-scolipedemega:{x:9,y:3,backgroundSize:'78px auto'},
 golisopodmega:{x:9,y:3,backgroundSize:'78px auto'},
 golurkmega:{x:9,y:3,backgroundSize:'78px auto'},
 glimmoramega:{x:9,y:3,backgroundSize:'78px auto'},
@@ -725,6 +734,16 @@ back:{w:174,h:184}
 raichumegay:{
 front:{w:186,h:165},
 back:{w:192,h:147}
+},
+scolipede:{
+front:{w:183,h:169},
+back:{w:185,h:163},
+shinyFront:{w:183,h:167},
+shinyBack:{w:183,h:161}
+},
+scolipedemega:{
+front:{w:182,h:192},
+back:{w:189,h:175}
 },
 staraptormega:{
 front:{w:173,h:161},
@@ -940,6 +959,18 @@ sneasler:{
 front:{w:100,h:152},
 back:{w:120,h:142}
 },
+slowbro:{
+front:{w:119,h:123},
+back:{w:143,h:119}
+},
+slowbrogalar:{
+front:{w:147,h:125},
+back:{w:135,h:117}
+},
+slowbromega:{
+front:{w:111,h:159},
+back:{w:103,h:159}
+},
 slowking:{
 front:{w:100,h:136},
 back:{w:92,h:136}
@@ -1043,8 +1074,10 @@ front:{w:144,h:154},
 back:{w:156,h:156}
 },
 tsareena:{
-front:{w:132,h:160},
-back:{w:108,h:160}
+front:{w:136,h:164},
+back:{w:112,h:165},
+shinyFront:{w:137,h:164},
+shinyBack:{w:113,h:165}
 },
 ursaluna:{
 front:{w:152,h:130},
@@ -1613,6 +1646,21 @@ num:903,
 front:{w:100,h:152},
 back:{w:120,h:142}
 },
+slowbro:{
+num:80,
+front:{w:119,h:123},
+back:{w:143,h:119}
+},
+slowbrogalar:{
+num:80,
+front:{w:147,h:125},
+back:{w:135,h:117}
+},
+slowbromega:{
+num:80,
+front:{w:111,h:159},
+back:{w:103,h:159}
+},
 slowking:{
 num:199,
 front:{w:100,h:136},
@@ -1732,8 +1780,10 @@ back:{w:156,h:156}
 },
 tsareena:{
 num:763,
-front:{w:132,h:160},
-back:{w:108,h:160}
+front:{w:136,h:164},
+back:{w:112,h:165},
+shinyFront:{w:137,h:164},
+shinyBack:{w:113,h:165}
 },
 ursaluna:{
 num:901,
@@ -1902,10 +1952,17 @@ num:26,
 front:{w:186,h:165},
 back:{w:192,h:147}
 },
+scolipede:{
+num:545,
+front:{w:183,h:169},
+back:{w:185,h:163},
+shinyFront:{w:183,h:167},
+shinyBack:{w:183,h:161}
+},
 scolipedemega:{
 num:545,
-front:{w:96,h:96},
-back:{w:96,h:96}
+front:{w:182,h:192},
+back:{w:189,h:175}
 },
 golisopodmega:{
 num:768,
@@ -1952,10 +2009,88 @@ num:149,
 front:{w:178,h:174},
 back:{w:174,h:184}
 },
+steelix:{
+num:208,
+front:{w:148,h:148},
+back:{w:160,h:158}
+},
+steelixmega:{
+num:208,
+front:{w:174,h:184},
+back:{w:182,h:186}
+},
+taurospaldeacombat:{
+num:128,
+front:{w:138,h:112},
+back:{w:140,h:98}
+},
+taurospaldeablaze:{
+num:128,
+front:{w:150,h:122},
+back:{w:160,h:108}
+},
+taurospaldeaaqua:{
+num:128,
+front:{w:136,h:108},
+back:{w:142,h:112}
+},
+tatsugiri:{
+num:978,
+front:{w:70,h:80},
+back:{w:80,h:80}
+},
+tatsugiridroopy:{
+num:978,
+front:{w:84,h:52},
+back:{w:78,h:64}
+},
+tatsugiristretchy:{
+num:978,
+front:{w:86,h:52},
+back:{w:88,h:56}
+},
+tatsugirimega:{
+num:978,
+front:{w:144,h:94},
+back:{w:138,h:86}
+},
+tatsugiridroopymega:{
+num:978,
+front:{w:144,h:94},
+back:{w:138,h:86}
+},
+tatsugiristretchymega:{
+num:978,
+front:{w:144,h:94},
+back:{w:138,h:86}
+},
+zoroark:{
+num:571,
+front:{w:136,h:128},
+back:{w:148,h:130},
+shinyBack:{w:148,h:164}
+},
+zoroarkhisui:{
+num:571,
+front:{w:140,h:182},
+back:{w:140,h:156},
+shinyFront:{w:156,h:188},
+shinyBack:{w:170,h:170}
+},
 drampa:{
 num:780,
 front:{w:180,h:122},
 back:{w:170,h:124}
+},
+whimsicott:{
+num:547,
+front:{w:110,h:104},
+back:{w:112,h:100}
+},
+runerigus:{
+num:867,
+front:{w:190,h:152},
+back:{w:190,h:146}
 },
 drampamega:{
 num:780,
@@ -3463,7 +3598,7 @@ spriteData.x=-6;
 spriteData.y=-7;
 return spriteData;
 }
-if(CUSTOM_ICON_SPRITES[id]){
+if(CUSTOM_ICON_SPRITES[id]||CUSTOM_BW_SPRITES[id]){
 spriteData.spriteDir='sprites/gen5';
 var customStaticData=CUSTOM_STATIC_BATTLE_SPRITES[id];
 var customBWData=CUSTOM_BW_SPRITES[id];
@@ -3471,11 +3606,11 @@ var spriteDimensions=pokemon.shiny?
 (customStaticData==null?void 0:customStaticData.shinyFront)||(customBWData==null?void 0:customBWData.shinyFront)||(customStaticData==null?void 0:customStaticData.front)||(customBWData==null?void 0:customBWData.front):
 (customStaticData==null?void 0:customStaticData.front)||(customBWData==null?void 0:customBWData.front);
 if(spriteDimensions){
-var scale=Math.min(78/spriteDimensions.w,66/spriteDimensions.h,1);
+var scale=Math.min(96/spriteDimensions.w,86/spriteDimensions.h,1);
 var width=Math.max(1,Math.round(spriteDimensions.w*scale));
 var height=Math.max(1,Math.round(spriteDimensions.h*scale));
 spriteData.x=Math.round((96-width)/2);
-spriteData.y=Math.round((78-height)/2)+8;
+spriteData.y=Math.round((86-height)/2);
 spriteData.backgroundSize=width+"px auto";
 }else{
 var customSpriteData=CUSTOM_TEAMBUILDER_SPRITES[id]||{x:12,y:10,backgroundSize:'72px auto'};
@@ -3521,11 +3656,11 @@ var _spriteDimensions=pokemon.shiny?
 (_customStaticData==null?void 0:_customStaticData.shinyFront)||(_customBWData==null?void 0:_customBWData.shinyFront)||(_customStaticData==null?void 0:_customStaticData.front)||(_customBWData==null?void 0:_customBWData.front):
 (_customStaticData==null?void 0:_customStaticData.front)||(_customBWData==null?void 0:_customBWData.front);
 if(_spriteDimensions){
-var _scale=Math.min(78/_spriteDimensions.w,66/_spriteDimensions.h,1);
+var _scale=Math.min(96/_spriteDimensions.w,86/_spriteDimensions.h,1);
 var _width=Math.max(1,Math.round(_spriteDimensions.w*_scale));
 var _height=Math.max(1,Math.round(_spriteDimensions.h*_scale));
 spriteData.x=Math.round((96-_width)/2);
-spriteData.y=Math.round((78-_height)/2)+8;
+spriteData.y=Math.round((86-_height)/2);
 spriteData.backgroundSize=_width+"px auto";
 }
 }
