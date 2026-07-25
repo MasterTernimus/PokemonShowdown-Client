@@ -3294,6 +3294,7 @@ customStaticBattleSpriteid=speciesid+"f";
 }
 var customStaticBattleSprite=CUSTOM_STATIC_BATTLE_SPRITES[customStaticBattleSpriteid];
 if(customStaticBattleSprite)allowAnim=false;
+var customBWSprite=CUSTOM_BW_SPRITES[speciesid];
 if(allowAnim&&spriteData.gen>=6)spriteData.pixelated=false;
 if(allowAnim&&animationData[facing]&&spriteData.gen>=5){
 if(facing.slice(-1)==='f')name+='-f';
@@ -3321,6 +3322,12 @@ customStaticBattleSprite[isFront?'shinyFront':'shinyBack']||customStaticBattleSp
 customStaticBattleSprite[isFront?'front':'back'];
 spriteData.w=customSpriteSize.w;
 spriteData.h=customSpriteSize.h;
+}else if(customBWSprite&&spriteData.gen===5){
+var _customSpriteSize=options.shiny?
+customBWSprite[isFront?'shinyFront':'shinyBack']||customBWSprite[isFront?'front':'back']:
+customBWSprite[isFront?'front':'back'];
+spriteData.w=_customSpriteSize.w;
+spriteData.h=_customSpriteSize.h;
 }
 
 if(!options.noScale){
@@ -3337,6 +3344,13 @@ spriteData.h*=2/1.5;
 spriteData.y+=-11;
 }
 if(spriteData.gen<=2)spriteData.y+=2;
+}
+if(!options.noScale&&(customStaticBattleSprite||customBWSprite)&&!isDynamax){
+var scale=Math.min(96/spriteData.w,96/spriteData.h,1);
+if(scale<1){
+spriteData.w=Math.round(spriteData.w*scale);
+spriteData.h=Math.round(spriteData.h*scale);
+}
 }
 if(isDynamax&&!options.noScale){
 spriteData.w*=2;
