@@ -1952,6 +1952,11 @@ num:149,
 front:{w:178,h:174},
 back:{w:174,h:184}
 },
+drampa:{
+num:780,
+front:{w:180,h:122},
+back:{w:170,h:124}
+},
 drampamega:{
 num:780,
 front:{w:152,h:178},
