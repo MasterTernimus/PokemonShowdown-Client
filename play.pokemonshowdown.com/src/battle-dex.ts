@@ -3232,6 +3232,9 @@ const CUSTOM_LEARNSET_ADDITIONS: {[id: string]: {[id: string]: string[]}} = {
 const CUSTOM_BW_SPRITE_IDS = Object.keys(CUSTOM_BW_SPRITES);
 const CUSTOM_SPECIES_IDS = Object.keys(CUSTOM_SPECIES);
 const CUSTOM_SPECIES_UPDATE_IDS = Object.keys(CUSTOM_SPECIES_UPDATES);
+const CUSTOM_BATTLE_SPRITE_MAX_SIZE = 64;
+const CUSTOM_TEAMBUILDER_SPRITE_MAX_WIDTH = 72;
+const CUSTOM_TEAMBUILDER_SPRITE_MAX_HEIGHT = 72;
 const CUSTOM_ABILITY_UPDATE_IDS = Object.keys(CUSTOM_ABILITY_UPDATES);
 const CUSTOM_MOVE_UPDATE_IDS = Object.keys(CUSTOM_MOVE_UPDATES);
 const CUSTOM_LEARNSET_REPLACEMENT_IDS = Object.keys(CUSTOM_LEARNSET_REPLACEMENTS);
@@ -4021,7 +4024,11 @@ const Dex = new class implements ModdedDex {
 			if (spriteData.gen <= 2) spriteData.y += 2;
 		}
 		if (!options.noScale && (customStaticBattleSprite || customBWSprite) && !isDynamax) {
-			const scale = Math.min(96 / spriteData.w, 96 / spriteData.h, 1);
+			const scale = Math.min(
+				CUSTOM_BATTLE_SPRITE_MAX_SIZE / spriteData.w,
+				CUSTOM_BATTLE_SPRITE_MAX_SIZE / spriteData.h,
+				1
+			);
 			if (scale < 1) {
 				spriteData.w = Math.round(spriteData.w * scale);
 				spriteData.h = Math.round(spriteData.h * scale);
@@ -4150,7 +4157,11 @@ const Dex = new class implements ModdedDex {
 				(customStaticData?.shinyFront || customBWData?.shinyFront || customStaticData?.front || customBWData?.front) :
 				(customStaticData?.front || customBWData?.front);
 			if (spriteDimensions) {
-				const scale = Math.min(96 / spriteDimensions.w, 86 / spriteDimensions.h, 1);
+				const scale = Math.min(
+					CUSTOM_TEAMBUILDER_SPRITE_MAX_WIDTH / spriteDimensions.w,
+					CUSTOM_TEAMBUILDER_SPRITE_MAX_HEIGHT / spriteDimensions.h,
+					1
+				);
 				const width = Math.max(1, Math.round(spriteDimensions.w * scale));
 				const height = Math.max(1, Math.round(spriteDimensions.h * scale));
 				spriteData.x = Math.round((96 - width) / 2);
@@ -4200,7 +4211,11 @@ const Dex = new class implements ModdedDex {
 				(customStaticData?.shinyFront || customBWData?.shinyFront || customStaticData?.front || customBWData?.front) :
 				(customStaticData?.front || customBWData?.front);
 			if (spriteDimensions) {
-				const scale = Math.min(96 / spriteDimensions.w, 86 / spriteDimensions.h, 1);
+				const scale = Math.min(
+					CUSTOM_TEAMBUILDER_SPRITE_MAX_WIDTH / spriteDimensions.w,
+					CUSTOM_TEAMBUILDER_SPRITE_MAX_HEIGHT / spriteDimensions.h,
+					1
+				);
 				const width = Math.max(1, Math.round(spriteDimensions.w * scale));
 				const height = Math.max(1, Math.round(spriteDimensions.h * scale));
 				spriteData.x = Math.round((96 - width) / 2);
