@@ -2599,6 +2599,11 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 		front: {w: 144, h: 94},
 		back: {w: 138, h: 86},
 	},
+	barraskewda: {
+		num: 847,
+		front: {w: 168, h: 74},
+		back: {w: 140, h: 82},
+	},
 	zoroark: {
 		num: 571,
 		front: {w: 136, h: 128},
@@ -3973,6 +3978,7 @@ const Dex = new class implements ModdedDex {
 		const customStaticBattleSprite = CUSTOM_STATIC_BATTLE_SPRITES[customStaticBattleSpriteid];
 		if (customStaticBattleSprite) allowAnim = false;
 		const customBWSprite = CUSTOM_BW_SPRITES[speciesid];
+		if (customBWSprite) allowAnim = false;
 		if (allowAnim && spriteData.gen >= 6) spriteData.pixelated = false;
 		if (allowAnim && animationData[facing] && spriteData.gen >= 5) {
 			if (facing.slice(-1) === 'f') name += '-f';
