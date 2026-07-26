@@ -2638,6 +2638,11 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 		front: {w: 114, h: 112},
 		back: {w: 108, h: 104},
 	},
+	dusknoir: {
+		num: 477,
+		front: {w: 170, h: 148},
+		back: {w: 126, h: 134},
+	},
 	zoroark: {
 		num: 571,
 		front: {w: 136, h: 128},
