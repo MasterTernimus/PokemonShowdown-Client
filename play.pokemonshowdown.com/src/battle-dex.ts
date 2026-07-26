@@ -518,6 +518,7 @@ const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
 	gengarmega: 'gengar-mega',
 	gengargmax: 'gengar-gmax',
 	houndoommega: 'houndoom-mega',
+	hawluchamega: 'hawlucha-mega',
 	salamencemega: 'salamence-mega',
 	hatterenegmax: 'hatterene-gmax',
 	palafinhero: 'palafin-hero',
@@ -2604,6 +2605,34 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 		front: {w: 168, h: 74},
 		back: {w: 140, h: 82},
 	},
+	gardevoirmega: {
+		num: 282,
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
+		shinyFront: {w: 150, h: 162},
+		shinyBack: {w: 148, h: 162},
+	},
+	glalie: {
+		num: 362,
+		front: {w: 106, h: 100},
+		back: {w: 114, h: 108},
+		shinyBack: {w: 116, h: 108},
+	},
+	glaliemega: {
+		num: 362,
+		front: {w: 120, h: 142},
+		back: {w: 120, h: 142},
+	},
+	hawlucha: {
+		num: 701,
+		front: {w: 100, h: 120},
+		back: {w: 158, h: 114},
+	},
+	hawluchamega: {
+		num: 701,
+		front: {w: 184, h: 140},
+		back: {w: 170, h: 138},
+	},
 	zoroark: {
 		num: 571,
 		front: {w: 136, h: 128},
@@ -3238,8 +3267,8 @@ const CUSTOM_BW_SPRITE_IDS = Object.keys(CUSTOM_BW_SPRITES);
 const CUSTOM_SPECIES_IDS = Object.keys(CUSTOM_SPECIES);
 const CUSTOM_SPECIES_UPDATE_IDS = Object.keys(CUSTOM_SPECIES_UPDATES);
 const CUSTOM_BATTLE_SPRITE_MAX_SIZE = 64;
-const CUSTOM_TEAMBUILDER_SPRITE_MAX_WIDTH = 72;
-const CUSTOM_TEAMBUILDER_SPRITE_MAX_HEIGHT = 72;
+const CUSTOM_TEAMBUILDER_SPRITE_MAX_WIDTH = 56;
+const CUSTOM_TEAMBUILDER_SPRITE_MAX_HEIGHT = 56;
 const CUSTOM_ABILITY_UPDATE_IDS = Object.keys(CUSTOM_ABILITY_UPDATES);
 const CUSTOM_MOVE_UPDATE_IDS = Object.keys(CUSTOM_MOVE_UPDATES);
 const CUSTOM_LEARNSET_REPLACEMENT_IDS = Object.keys(CUSTOM_LEARNSET_REPLACEMENTS);
