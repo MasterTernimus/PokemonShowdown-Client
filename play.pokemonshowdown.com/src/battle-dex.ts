@@ -2633,6 +2633,11 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 		front: {w: 184, h: 140},
 		back: {w: 170, h: 138},
 	},
+	spiritomb: {
+		num: 442,
+		front: {w: 114, h: 112},
+		back: {w: 108, h: 104},
+	},
 	zoroark: {
 		num: 571,
 		front: {w: 136, h: 128},
