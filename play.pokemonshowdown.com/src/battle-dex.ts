@@ -1024,12 +1024,12 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 		back: {w: 122, h: 98},
 	},
 	rotomwash: {
-		front: {w: 120, h: 106},
-		back: {w: 120, h: 106},
-	},
-	rotomheat: {
 		front: {w: 152, h: 122},
 		back: {w: 136, h: 120},
+	},
+	rotomheat: {
+		front: {w: 120, h: 106},
+		back: {w: 120, h: 106},
 	},
 	rotomfrost: {
 		front: {w: 158, h: 136},
@@ -1858,13 +1858,13 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	},
 	rotomwash: {
 		num: 479,
-		front: {w: 120, h: 106},
-		back: {w: 120, h: 106},
+		front: {w: 152, h: 122},
+		back: {w: 136, h: 120},
 	},
 	rotomheat: {
 		num: 479,
-		front: {w: 152, h: 122},
-		back: {w: 136, h: 120},
+		front: {w: 120, h: 106},
+		back: {w: 120, h: 106},
 	},
 	rotomfrost: {
 		num: 479,
