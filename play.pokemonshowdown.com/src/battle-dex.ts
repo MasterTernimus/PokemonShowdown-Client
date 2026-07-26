@@ -3276,23 +3276,18 @@ const CUSTOM_LEARNSET_ADDITIONS: {[id: string]: {[id: string]: string[]}} = {
 const CUSTOM_BW_SPRITE_IDS = Object.keys(CUSTOM_BW_SPRITES);
 const CUSTOM_SPECIES_IDS = Object.keys(CUSTOM_SPECIES);
 const CUSTOM_SPECIES_UPDATE_IDS = Object.keys(CUSTOM_SPECIES_UPDATES);
-const CUSTOM_BATTLE_FRONT_SPRITE_MAX_WIDTH = 88;
-const CUSTOM_BATTLE_FRONT_SPRITE_MAX_HEIGHT = 88;
-const CUSTOM_BATTLE_FRONT_MEGA_SPRITE_MAX_WIDTH = 100;
-const CUSTOM_BATTLE_FRONT_MEGA_SPRITE_MAX_HEIGHT = 100;
-const CUSTOM_BATTLE_BACK_SPRITE_MAX_WIDTH = 96;
-const CUSTOM_BATTLE_BACK_SPRITE_MAX_HEIGHT = 96;
-const CUSTOM_BATTLE_BACK_MEGA_SPRITE_MAX_WIDTH = 104;
-const CUSTOM_BATTLE_BACK_MEGA_SPRITE_MAX_HEIGHT = 104;
-const CUSTOM_BATTLE_FRONT_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: number}} = {
-	scolipede: {w: 98, h: 98},
-	scolipedemega: {w: 108, h: 108},
-};
+const CUSTOM_BATTLE_FRONT_SPRITE_MAX_WIDTH = 98;
+const CUSTOM_BATTLE_FRONT_SPRITE_MAX_HEIGHT = 98;
+const CUSTOM_BATTLE_FRONT_MEGA_SPRITE_MAX_WIDTH = 108;
+const CUSTOM_BATTLE_FRONT_MEGA_SPRITE_MAX_HEIGHT = 108;
+const CUSTOM_BATTLE_BACK_SPRITE_MAX_WIDTH = 104;
+const CUSTOM_BATTLE_BACK_SPRITE_MAX_HEIGHT = 104;
+const CUSTOM_BATTLE_BACK_MEGA_SPRITE_MAX_WIDTH = 112;
+const CUSTOM_BATTLE_BACK_MEGA_SPRITE_MAX_HEIGHT = 112;
+const CUSTOM_BATTLE_FRONT_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: number}} = {};
 const CUSTOM_BATTLE_BACK_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: number}} = {
 	indeedee: {w: 80, h: 80},
 	indeedeef: {w: 80, h: 80},
-	scolipede: {w: 104, h: 104},
-	scolipedemega: {w: 112, h: 112},
 };
 const CUSTOM_TEAMBUILDER_SPRITE_MAX_WIDTH = 64;
 const CUSTOM_TEAMBUILDER_SPRITE_MAX_HEIGHT = 82;
@@ -4091,7 +4086,8 @@ const Dex = new class implements ModdedDex {
 					CUSTOM_BATTLE_FRONT_SPRITE_SIZE_OVERRIDES[speciesid]) :
 				(CUSTOM_BATTLE_BACK_SPRITE_SIZE_OVERRIDES[customStaticBattleSpriteid] ||
 					CUSTOM_BATTLE_BACK_SPRITE_SIZE_OVERRIDES[speciesid]);
-			const isLargeCustomForm = speciesid.includes('mega') || speciesid.includes('gmax');
+			const isLargeCustomForm = speciesid.includes('mega') ||
+				speciesid.includes('gmax') || speciesid.includes('battlebond');
 			const defaultMaxWidth = isFront ?
 				(isLargeCustomForm ? CUSTOM_BATTLE_FRONT_MEGA_SPRITE_MAX_WIDTH : CUSTOM_BATTLE_FRONT_SPRITE_MAX_WIDTH) :
 				(isLargeCustomForm ? CUSTOM_BATTLE_BACK_MEGA_SPRITE_MAX_WIDTH : CUSTOM_BATTLE_BACK_SPRITE_MAX_WIDTH);
