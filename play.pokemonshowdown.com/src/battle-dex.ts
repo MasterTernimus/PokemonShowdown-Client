@@ -3276,7 +3276,8 @@ const CUSTOM_LEARNSET_ADDITIONS: {[id: string]: {[id: string]: string[]}} = {
 const CUSTOM_BW_SPRITE_IDS = Object.keys(CUSTOM_BW_SPRITES);
 const CUSTOM_SPECIES_IDS = Object.keys(CUSTOM_SPECIES);
 const CUSTOM_SPECIES_UPDATE_IDS = Object.keys(CUSTOM_SPECIES_UPDATES);
-const CUSTOM_BATTLE_SPRITE_MAX_SIZE = 52;
+const CUSTOM_BATTLE_SPRITE_MAX_WIDTH = 96;
+const CUSTOM_BATTLE_SPRITE_MAX_HEIGHT = 96;
 const CUSTOM_TEAMBUILDER_SPRITE_MAX_WIDTH = 64;
 const CUSTOM_TEAMBUILDER_SPRITE_MAX_HEIGHT = 82;
 const CUSTOM_ABILITY_UPDATE_IDS = Object.keys(CUSTOM_ABILITY_UPDATES);
@@ -4070,8 +4071,8 @@ const Dex = new class implements ModdedDex {
 		}
 		if (!options.noScale && (customStaticBattleSprite || customBWSprite) && !isDynamax) {
 			const scale = Math.min(
-				CUSTOM_BATTLE_SPRITE_MAX_SIZE / spriteData.w,
-				CUSTOM_BATTLE_SPRITE_MAX_SIZE / spriteData.h,
+				CUSTOM_BATTLE_SPRITE_MAX_WIDTH / spriteData.w,
+				CUSTOM_BATTLE_SPRITE_MAX_HEIGHT / spriteData.h,
 				1
 			);
 			if (scale < 1) {
