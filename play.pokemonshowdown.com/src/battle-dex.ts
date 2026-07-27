@@ -3322,23 +3322,26 @@ const CUSTOM_LEARNSET_ADDITIONS: {[id: string]: {[id: string]: string[]}} = {
 const CUSTOM_BW_SPRITE_IDS = Object.keys(CUSTOM_BW_SPRITES);
 const CUSTOM_SPECIES_IDS = Object.keys(CUSTOM_SPECIES);
 const CUSTOM_SPECIES_UPDATE_IDS = Object.keys(CUSTOM_SPECIES_UPDATES);
-const CUSTOM_BATTLE_FRONT_SPRITE_MAX_WIDTH = 98;
-const CUSTOM_BATTLE_FRONT_SPRITE_MAX_HEIGHT = 98;
+const CUSTOM_BATTLE_FRONT_SPRITE_MAX_WIDTH = 86;
+const CUSTOM_BATTLE_FRONT_SPRITE_MAX_HEIGHT = 86;
 const CUSTOM_BATTLE_FRONT_MEGA_SPRITE_MAX_WIDTH = 108;
 const CUSTOM_BATTLE_FRONT_MEGA_SPRITE_MAX_HEIGHT = 108;
 const CUSTOM_BATTLE_BACK_SPRITE_MAX_WIDTH = 112;
 const CUSTOM_BATTLE_BACK_SPRITE_MAX_HEIGHT = 112;
 const CUSTOM_BATTLE_BACK_MEGA_SPRITE_MAX_WIDTH = 124;
 const CUSTOM_BATTLE_BACK_MEGA_SPRITE_MAX_HEIGHT = 124;
-const CUSTOM_BATTLE_FRONT_MEDIUM_SPRITE_MAX_WIDTH = 90;
-const CUSTOM_BATTLE_FRONT_MEDIUM_SPRITE_MAX_HEIGHT = 90;
-const CUSTOM_BATTLE_BACK_MEDIUM_SPRITE_MAX_WIDTH = 100;
-const CUSTOM_BATTLE_BACK_MEDIUM_SPRITE_MAX_HEIGHT = 100;
+const CUSTOM_BATTLE_FRONT_MEDIUM_SPRITE_MAX_WIDTH = 82;
+const CUSTOM_BATTLE_FRONT_MEDIUM_SPRITE_MAX_HEIGHT = 82;
+const CUSTOM_BATTLE_BACK_MEDIUM_SPRITE_MAX_WIDTH = 90;
+const CUSTOM_BATTLE_BACK_MEDIUM_SPRITE_MAX_HEIGHT = 90;
 const CUSTOM_MEDIUM_SPRITE_MIN_DIMENSION = 104;
 const CUSTOM_MEDIUM_SPRITE_MAX_DIMENSION = 170;
 const CUSTOM_BATTLE_FRONT_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: number}} = {
 	alcremie: {w: 60, h: 60},
 	ariados: {w: 60, h: 60},
+	banettemega: {w: 82, h: 82},
+	corviknight: {w: 70, h: 70},
+	corviknightgmax: {w: 112, h: 112},
 	espeon: {w: 66, h: 66},
 	gardevoir: {w: 108, h: 108},
 	gardevoirmega: {w: 108, h: 108},
@@ -3349,10 +3352,14 @@ const CUSTOM_BATTLE_FRONT_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: n
 	glaceon: {w: 110, h: 110},
 	jolteon: {w: 110, h: 110},
 	leafeon: {w: 110, h: 110},
+	lucario: {w: 76, h: 76},
+	lucariomega: {w: 78, h: 78},
+	lucariomegaz: {w: 82, h: 82},
 	maushold: {w: 60, h: 60},
 	mausholdfour: {w: 60, h: 60},
 	ninetales: {w: 90, h: 90},
 	ninetalesalola: {w: 90, h: 90},
+	perrserker: {w: 62, h: 62},
 	ribombee: {w: 60, h: 60},
 	rotom: {w: 78, h: 78},
 	rotomfan: {w: 82, h: 82},
@@ -3377,6 +3384,9 @@ const CUSTOM_BATTLE_FRONT_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: n
 const CUSTOM_BATTLE_BACK_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: number}} = {
 	alcremie: {w: 60, h: 60},
 	ariados: {w: 60, h: 60},
+	banettemega: {w: 90, h: 90},
+	corviknight: {w: 62, h: 62},
+	corviknightgmax: {w: 132, h: 132},
 	espeon: {w: 74, h: 74},
 	gardevoir: {w: 124, h: 124},
 	gardevoirmega: {w: 124, h: 124},
@@ -3389,10 +3399,14 @@ const CUSTOM_BATTLE_BACK_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: nu
 	indeedeef: {w: 80, h: 80},
 	jolteon: {w: 108, h: 108},
 	leafeon: {w: 108, h: 108},
+	lucario: {w: 84, h: 84},
+	lucariomega: {w: 82, h: 82},
+	lucariomegaz: {w: 86, h: 86},
 	maushold: {w: 60, h: 60},
 	mausholdfour: {w: 60, h: 60},
 	ninetales: {w: 100, h: 100},
 	ninetalesalola: {w: 100, h: 100},
+	perrserker: {w: 62, h: 62},
 	ribombee: {w: 60, h: 60},
 	rotom: {w: 72, h: 72},
 	rotomfan: {w: 76, h: 76},
@@ -3433,6 +3447,7 @@ const CUSTOM_TEAMBUILDER_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: nu
 	gardevoirvoidmega: {w: 82, h: 82},
 	flareon: {w: 86, h: 86},
 	glaceon: {w: 86, h: 86},
+	hatterene: {w: 82, h: 82},
 	jolteon: {w: 86, h: 86},
 	leafeon: {w: 86, h: 86},
 	indeedee: {w: 60, h: 60},
@@ -3441,6 +3456,7 @@ const CUSTOM_TEAMBUILDER_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: nu
 	mausholdfour: {w: 60, h: 60},
 	ninetales: {w: 76, h: 76},
 	ninetalesalola: {w: 76, h: 76},
+	perrserker: {w: 60, h: 60},
 	ribombee: {w: 60, h: 60},
 	rotom: {w: 68, h: 68},
 	rotomfan: {w: 72, h: 72},
@@ -3450,6 +3466,7 @@ const CUSTOM_TEAMBUILDER_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: nu
 	rotomwash: {w: 72, h: 72},
 	sinistcha: {w: 60, h: 60},
 	sinistchamasterpiece: {w: 60, h: 60},
+	sneasler: {w: 90, h: 90},
 	tatsugiri: {w: 52, h: 52},
 	tatsugiridroopy: {w: 52, h: 52},
 	tatsugiristretchy: {w: 52, h: 52},
