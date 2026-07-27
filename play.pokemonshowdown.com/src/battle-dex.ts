@@ -596,6 +596,7 @@ const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
 	banettemega: 'banette-mega',
 	starmiemega: 'starmie-mega',
 	heracrossmega: 'heracross-mega',
+	pidgeotmega: 'pidgeot-mega',
 	chesnaughtmega: 'chesnaught-mega',
 	delphoxmega: 'delphox-mega',
 	dragalgemega: 'dragalge-mega',
@@ -3325,18 +3326,142 @@ const CUSTOM_BATTLE_FRONT_SPRITE_MAX_WIDTH = 98;
 const CUSTOM_BATTLE_FRONT_SPRITE_MAX_HEIGHT = 98;
 const CUSTOM_BATTLE_FRONT_MEGA_SPRITE_MAX_WIDTH = 108;
 const CUSTOM_BATTLE_FRONT_MEGA_SPRITE_MAX_HEIGHT = 108;
-const CUSTOM_BATTLE_BACK_SPRITE_MAX_WIDTH = 104;
-const CUSTOM_BATTLE_BACK_SPRITE_MAX_HEIGHT = 104;
-const CUSTOM_BATTLE_BACK_MEGA_SPRITE_MAX_WIDTH = 112;
-const CUSTOM_BATTLE_BACK_MEGA_SPRITE_MAX_HEIGHT = 112;
-const CUSTOM_BATTLE_FRONT_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: number}} = {};
+const CUSTOM_BATTLE_BACK_SPRITE_MAX_WIDTH = 112;
+const CUSTOM_BATTLE_BACK_SPRITE_MAX_HEIGHT = 112;
+const CUSTOM_BATTLE_BACK_MEGA_SPRITE_MAX_WIDTH = 124;
+const CUSTOM_BATTLE_BACK_MEGA_SPRITE_MAX_HEIGHT = 124;
+const CUSTOM_BATTLE_FRONT_MEDIUM_SPRITE_MAX_WIDTH = 90;
+const CUSTOM_BATTLE_FRONT_MEDIUM_SPRITE_MAX_HEIGHT = 90;
+const CUSTOM_BATTLE_BACK_MEDIUM_SPRITE_MAX_WIDTH = 100;
+const CUSTOM_BATTLE_BACK_MEDIUM_SPRITE_MAX_HEIGHT = 100;
+const CUSTOM_MEDIUM_SPRITE_MIN_DIMENSION = 104;
+const CUSTOM_MEDIUM_SPRITE_MAX_DIMENSION = 170;
+const CUSTOM_BATTLE_FRONT_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: number}} = {
+	alcremie: {w: 60, h: 60},
+	ariados: {w: 60, h: 60},
+	espeon: {w: 66, h: 66},
+	gardevoir: {w: 108, h: 108},
+	gardevoirmega: {w: 108, h: 108},
+	gardevoirmegaz: {w: 108, h: 108},
+	gardevoirvoid: {w: 116, h: 116},
+	gardevoirvoidmega: {w: 116, h: 116},
+	flareon: {w: 110, h: 110},
+	glaceon: {w: 110, h: 110},
+	jolteon: {w: 110, h: 110},
+	leafeon: {w: 110, h: 110},
+	maushold: {w: 60, h: 60},
+	mausholdfour: {w: 60, h: 60},
+	ninetales: {w: 90, h: 90},
+	ninetalesalola: {w: 90, h: 90},
+	ribombee: {w: 60, h: 60},
+	rotom: {w: 78, h: 78},
+	rotomfan: {w: 82, h: 82},
+	rotomfrost: {w: 82, h: 82},
+	rotomheat: {w: 82, h: 82},
+	rotommow: {w: 82, h: 82},
+	rotomwash: {w: 82, h: 82},
+	sinistcha: {w: 60, h: 60},
+	sinistchamasterpiece: {w: 60, h: 60},
+	tatsugiri: {w: 52, h: 52},
+	tatsugiridroopy: {w: 52, h: 52},
+	tatsugiridroopymega: {w: 78, h: 78},
+	tatsugirimega: {w: 78, h: 78},
+	tatsugiristretchy: {w: 52, h: 52},
+	tatsugiristretchymega: {w: 78, h: 78},
+	weavile: {w: 68, h: 68},
+	weavilef: {w: 68, h: 68},
+	whimsicott: {w: 60, h: 60},
+	zoroark: {w: 88, h: 88},
+	zoroarkhisui: {w: 88, h: 88},
+};
 const CUSTOM_BATTLE_BACK_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: number}} = {
+	alcremie: {w: 60, h: 60},
+	ariados: {w: 60, h: 60},
+	espeon: {w: 74, h: 74},
+	gardevoir: {w: 124, h: 124},
+	gardevoirmega: {w: 124, h: 124},
+	gardevoirmegaz: {w: 124, h: 124},
+	gardevoirvoid: {w: 132, h: 132},
+	gardevoirvoidmega: {w: 132, h: 132},
+	flareon: {w: 108, h: 108},
+	glaceon: {w: 108, h: 108},
 	indeedee: {w: 80, h: 80},
 	indeedeef: {w: 80, h: 80},
+	jolteon: {w: 108, h: 108},
+	leafeon: {w: 108, h: 108},
+	maushold: {w: 60, h: 60},
+	mausholdfour: {w: 60, h: 60},
+	ninetales: {w: 100, h: 100},
+	ninetalesalola: {w: 100, h: 100},
+	ribombee: {w: 60, h: 60},
+	rotom: {w: 72, h: 72},
+	rotomfan: {w: 76, h: 76},
+	rotomfrost: {w: 76, h: 76},
+	rotomheat: {w: 76, h: 76},
+	rotommow: {w: 76, h: 76},
+	rotomwash: {w: 76, h: 76},
+	sinistcha: {w: 60, h: 60},
+	sinistchamasterpiece: {w: 60, h: 60},
+	tatsugiri: {w: 52, h: 52},
+	tatsugiridroopy: {w: 52, h: 52},
+	tatsugiridroopymega: {w: 78, h: 78},
+	tatsugirimega: {w: 78, h: 78},
+	tatsugiristretchy: {w: 52, h: 52},
+	tatsugiristretchymega: {w: 78, h: 78},
+	sylveon: {w: 108, h: 108},
+	umbreon: {w: 108, h: 108},
+	vaporeon: {w: 108, h: 108},
+	weavile: {w: 76, h: 76},
+	weavilef: {w: 76, h: 76},
+	whimsicott: {w: 60, h: 60},
+	zoroark: {w: 96, h: 96},
+	zoroarkhisui: {w: 96, h: 96},
 };
 const CUSTOM_TEAMBUILDER_SPRITE_MAX_WIDTH = 78;
 const CUSTOM_TEAMBUILDER_SPRITE_MAX_HEIGHT = 86;
-const CUSTOM_TEAMBUILDER_SPRITE_Y_OFFSET = -2;
+const CUSTOM_TEAMBUILDER_MEDIUM_SPRITE_MAX_WIDTH = 76;
+const CUSTOM_TEAMBUILDER_MEDIUM_SPRITE_MAX_HEIGHT = 76;
+const CUSTOM_TEAMBUILDER_SPRITE_Y_OFFSET = 4;
+const CUSTOM_TEAMBUILDER_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: number}} = {
+	alcremie: {w: 60, h: 60},
+	ariados: {w: 60, h: 60},
+	espeon: {w: 58, h: 58},
+	gardevoir: {w: 82, h: 82},
+	gardevoirmega: {w: 82, h: 82},
+	gardevoirmegaz: {w: 82, h: 82},
+	gardevoirvoid: {w: 82, h: 82},
+	gardevoirvoidmega: {w: 82, h: 82},
+	flareon: {w: 86, h: 86},
+	glaceon: {w: 86, h: 86},
+	jolteon: {w: 86, h: 86},
+	leafeon: {w: 86, h: 86},
+	indeedee: {w: 60, h: 60},
+	indeedeef: {w: 60, h: 60},
+	maushold: {w: 60, h: 60},
+	mausholdfour: {w: 60, h: 60},
+	ninetales: {w: 76, h: 76},
+	ninetalesalola: {w: 76, h: 76},
+	ribombee: {w: 60, h: 60},
+	rotom: {w: 68, h: 68},
+	rotomfan: {w: 72, h: 72},
+	rotomfrost: {w: 72, h: 72},
+	rotomheat: {w: 72, h: 72},
+	rotommow: {w: 72, h: 72},
+	rotomwash: {w: 72, h: 72},
+	sinistcha: {w: 60, h: 60},
+	sinistchamasterpiece: {w: 60, h: 60},
+	tatsugiri: {w: 52, h: 52},
+	tatsugiridroopy: {w: 52, h: 52},
+	tatsugiristretchy: {w: 52, h: 52},
+	sylveon: {w: 86, h: 86},
+	umbreon: {w: 86, h: 86},
+	vaporeon: {w: 86, h: 86},
+	weavile: {w: 58, h: 58},
+	weavilef: {w: 58, h: 58},
+	whimsicott: {w: 60, h: 60},
+	zoroark: {w: 74, h: 74},
+	zoroarkhisui: {w: 74, h: 74},
+};
 const CUSTOM_ABILITY_UPDATE_IDS = Object.keys(CUSTOM_ABILITY_UPDATES);
 const CUSTOM_MOVE_UPDATE_IDS = Object.keys(CUSTOM_MOVE_UPDATES);
 const CUSTOM_LEARNSET_REPLACEMENT_IDS = Object.keys(CUSTOM_LEARNSET_REPLACEMENTS);
@@ -4107,16 +4232,19 @@ const Dex = new class implements ModdedDex {
 
 			spriteData.url += dir + '/' + name + '.png';
 		}
+		let customSpriteNaturalSize: {w: number, h: number} | undefined;
 		if (customStaticBattleSprite) {
 			const customSpriteSize = options.shiny ?
 				customStaticBattleSprite[isFront ? 'shinyFront' : 'shinyBack'] || customStaticBattleSprite[isFront ? 'front' : 'back'] :
 				customStaticBattleSprite[isFront ? 'front' : 'back'];
+			customSpriteNaturalSize = customSpriteSize;
 			spriteData.w = customSpriteSize.w;
 			spriteData.h = customSpriteSize.h;
 		} else if (customBWSprite && spriteData.gen === 5) {
 			const customSpriteSize = options.shiny ?
 				customBWSprite[isFront ? 'shinyFront' : 'shinyBack'] || customBWSprite[isFront ? 'front' : 'back'] :
 				customBWSprite[isFront ? 'front' : 'back'];
+			customSpriteNaturalSize = customSpriteSize;
 			spriteData.w = customSpriteSize.w;
 			spriteData.h = customSpriteSize.h;
 		}
@@ -4144,12 +4272,19 @@ const Dex = new class implements ModdedDex {
 					CUSTOM_BATTLE_BACK_SPRITE_SIZE_OVERRIDES[speciesid]);
 			const isLargeCustomForm = speciesid.includes('mega') ||
 				speciesid.includes('gmax') || speciesid.includes('battlebond');
+			const isMediumCustomForm = !isLargeCustomForm && customSpriteNaturalSize &&
+				Math.max(customSpriteNaturalSize.w, customSpriteNaturalSize.h) >= CUSTOM_MEDIUM_SPRITE_MIN_DIMENSION &&
+				Math.max(customSpriteNaturalSize.w, customSpriteNaturalSize.h) <= CUSTOM_MEDIUM_SPRITE_MAX_DIMENSION;
 			const defaultMaxWidth = isFront ?
-				(isLargeCustomForm ? CUSTOM_BATTLE_FRONT_MEGA_SPRITE_MAX_WIDTH : CUSTOM_BATTLE_FRONT_SPRITE_MAX_WIDTH) :
-				(isLargeCustomForm ? CUSTOM_BATTLE_BACK_MEGA_SPRITE_MAX_WIDTH : CUSTOM_BATTLE_BACK_SPRITE_MAX_WIDTH);
+				(isLargeCustomForm ? CUSTOM_BATTLE_FRONT_MEGA_SPRITE_MAX_WIDTH :
+					isMediumCustomForm ? CUSTOM_BATTLE_FRONT_MEDIUM_SPRITE_MAX_WIDTH : CUSTOM_BATTLE_FRONT_SPRITE_MAX_WIDTH) :
+				(isLargeCustomForm ? CUSTOM_BATTLE_BACK_MEGA_SPRITE_MAX_WIDTH :
+					isMediumCustomForm ? CUSTOM_BATTLE_BACK_MEDIUM_SPRITE_MAX_WIDTH : CUSTOM_BATTLE_BACK_SPRITE_MAX_WIDTH);
 			const defaultMaxHeight = isFront ?
-				(isLargeCustomForm ? CUSTOM_BATTLE_FRONT_MEGA_SPRITE_MAX_HEIGHT : CUSTOM_BATTLE_FRONT_SPRITE_MAX_HEIGHT) :
-				(isLargeCustomForm ? CUSTOM_BATTLE_BACK_MEGA_SPRITE_MAX_HEIGHT : CUSTOM_BATTLE_BACK_SPRITE_MAX_HEIGHT);
+				(isLargeCustomForm ? CUSTOM_BATTLE_FRONT_MEGA_SPRITE_MAX_HEIGHT :
+					isMediumCustomForm ? CUSTOM_BATTLE_FRONT_MEDIUM_SPRITE_MAX_HEIGHT : CUSTOM_BATTLE_FRONT_SPRITE_MAX_HEIGHT) :
+				(isLargeCustomForm ? CUSTOM_BATTLE_BACK_MEGA_SPRITE_MAX_HEIGHT :
+					isMediumCustomForm ? CUSTOM_BATTLE_BACK_MEDIUM_SPRITE_MAX_HEIGHT : CUSTOM_BATTLE_BACK_SPRITE_MAX_HEIGHT);
 			const scale = Math.min(
 				(battleSpriteMaxSize?.w || defaultMaxWidth) / spriteData.w,
 				(battleSpriteMaxSize?.h || defaultMaxHeight) / spriteData.h
@@ -4280,9 +4415,16 @@ const Dex = new class implements ModdedDex {
 				(customStaticData?.shinyFront || customBWData?.shinyFront || customStaticData?.front || customBWData?.front) :
 				(customStaticData?.front || customBWData?.front);
 			if (spriteDimensions) {
+				const sizeOverride = CUSTOM_TEAMBUILDER_SPRITE_SIZE_OVERRIDES[id];
+				const isLargeCustomForm = id.includes('mega') || id.includes('gmax') || id.includes('battlebond');
+				const isMediumCustomForm = !sizeOverride && !isLargeCustomForm &&
+					Math.max(spriteDimensions.w, spriteDimensions.h) >= CUSTOM_MEDIUM_SPRITE_MIN_DIMENSION &&
+					Math.max(spriteDimensions.w, spriteDimensions.h) <= CUSTOM_MEDIUM_SPRITE_MAX_DIMENSION;
 				const scale = Math.min(
-					CUSTOM_TEAMBUILDER_SPRITE_MAX_WIDTH / spriteDimensions.w,
-					CUSTOM_TEAMBUILDER_SPRITE_MAX_HEIGHT / spriteDimensions.h
+					(sizeOverride?.w || (isMediumCustomForm ?
+						CUSTOM_TEAMBUILDER_MEDIUM_SPRITE_MAX_WIDTH : CUSTOM_TEAMBUILDER_SPRITE_MAX_WIDTH)) / spriteDimensions.w,
+					(sizeOverride?.h || (isMediumCustomForm ?
+						CUSTOM_TEAMBUILDER_MEDIUM_SPRITE_MAX_HEIGHT : CUSTOM_TEAMBUILDER_SPRITE_MAX_HEIGHT)) / spriteDimensions.h
 				);
 				const width = Math.max(1, Math.round(spriteDimensions.w * scale));
 				const height = Math.max(1, Math.round(spriteDimensions.h * scale));
@@ -4333,9 +4475,16 @@ const Dex = new class implements ModdedDex {
 				(customStaticData?.shinyFront || customBWData?.shinyFront || customStaticData?.front || customBWData?.front) :
 				(customStaticData?.front || customBWData?.front);
 			if (spriteDimensions) {
+				const sizeOverride = CUSTOM_TEAMBUILDER_SPRITE_SIZE_OVERRIDES[id];
+				const isLargeCustomForm = id.includes('mega') || id.includes('gmax') || id.includes('battlebond');
+				const isMediumCustomForm = !sizeOverride && !isLargeCustomForm &&
+					Math.max(spriteDimensions.w, spriteDimensions.h) >= CUSTOM_MEDIUM_SPRITE_MIN_DIMENSION &&
+					Math.max(spriteDimensions.w, spriteDimensions.h) <= CUSTOM_MEDIUM_SPRITE_MAX_DIMENSION;
 				const scale = Math.min(
-					CUSTOM_TEAMBUILDER_SPRITE_MAX_WIDTH / spriteDimensions.w,
-					CUSTOM_TEAMBUILDER_SPRITE_MAX_HEIGHT / spriteDimensions.h
+					(sizeOverride?.w || (isMediumCustomForm ?
+						CUSTOM_TEAMBUILDER_MEDIUM_SPRITE_MAX_WIDTH : CUSTOM_TEAMBUILDER_SPRITE_MAX_WIDTH)) / spriteDimensions.w,
+					(sizeOverride?.h || (isMediumCustomForm ?
+						CUSTOM_TEAMBUILDER_MEDIUM_SPRITE_MAX_HEIGHT : CUSTOM_TEAMBUILDER_SPRITE_MAX_HEIGHT)) / spriteDimensions.h
 				);
 				const width = Math.max(1, Math.round(spriteDimensions.w * scale));
 				const height = Math.max(1, Math.round(spriteDimensions.h * scale));
