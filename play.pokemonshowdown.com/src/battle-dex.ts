@@ -3363,6 +3363,19 @@ function ensureCustomBWSpriteData() {
 	customBWSpriteDataTable = window.BattlePokemonSpritesBW;
 }
 
+function applyCustomTeambuilderLearnsets(table: AnyObject) {
+	if (!table.learnsets) table.learnsets = {};
+	for (const id of CUSTOM_LEARNSET_REPLACEMENT_IDS) {
+		table.learnsets[id] = {...CUSTOM_LEARNSET_REPLACEMENTS[id]};
+	}
+	for (const id of CUSTOM_LEARNSET_ADDITION_IDS) {
+		table.learnsets[id] = {
+			...(table.learnsets[id] || {}),
+			...CUSTOM_LEARNSET_ADDITIONS[id],
+		};
+	}
+}
+
 function ensureCustomDataPatches() {
 	if (
 		(customPokedexDataTable || undefined) === window.BattlePokedex &&
@@ -3413,15 +3426,12 @@ function ensureCustomDataPatches() {
 				...CUSTOM_ABILITY_UPDATES[id],
 			};
 		}
-		if (!table.learnsets) table.learnsets = {};
-		for (const id of CUSTOM_LEARNSET_REPLACEMENT_IDS) {
-			table.learnsets[id] = {...CUSTOM_LEARNSET_REPLACEMENTS[id]};
-		}
-		for (const id of CUSTOM_LEARNSET_ADDITION_IDS) {
-			table.learnsets[id] = {
-				...(table.learnsets[id] || {}),
-				...CUSTOM_LEARNSET_ADDITIONS[id],
-			};
+		applyCustomTeambuilderLearnsets(table);
+		for (const subtableid in table) {
+			const subtable = table[subtableid];
+			if (subtable && typeof subtable === 'object' && subtable.learnsets) {
+				applyCustomTeambuilderLearnsets(subtable);
+			}
 		}
 		customTeambuilderDataTable = window.BattleTeambuilderTable;
 	}
