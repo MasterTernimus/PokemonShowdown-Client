@@ -47,6 +47,44 @@ function toUserid(text: any) {
 }
 
 const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
+	sawsbuckspring: {
+		base: 'sawsbuck',
+		data: {
+			name: 'Sawsbuck-Spring',
+			baseSpecies: 'Sawsbuck',
+			forme: 'Spring',
+			spriteid: 'sawsbuck-spring',
+			otherFormes: ['Sawsbuck-Summer', 'Sawsbuck-Autumn', 'Sawsbuck-Winter'],
+			formeOrder: ['Sawsbuck-Spring', 'Sawsbuck-Summer', 'Sawsbuck-Autumn', 'Sawsbuck-Winter'],
+		},
+	},
+	sawsbucksummer: {
+		base: 'sawsbuck',
+		data: {
+			name: 'Sawsbuck-Summer',
+			baseSpecies: 'Sawsbuck',
+			forme: 'Summer',
+			spriteid: 'sawsbuck-summer',
+		},
+	},
+	sawsbuckautumn: {
+		base: 'sawsbuck',
+		data: {
+			name: 'Sawsbuck-Autumn',
+			baseSpecies: 'Sawsbuck',
+			forme: 'Autumn',
+			spriteid: 'sawsbuck-autumn',
+		},
+	},
+	sawsbuckwinter: {
+		base: 'sawsbuck',
+		data: {
+			name: 'Sawsbuck-Winter',
+			baseSpecies: 'Sawsbuck',
+			forme: 'Winter',
+			spriteid: 'sawsbuck-winter',
+		},
+	},
 	hypno: {
 		base: 'hypno',
 		data: {
@@ -2764,6 +2802,13 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 };
 
 const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
+	sawsbuck: {
+		name: 'Sawsbuck-Spring',
+		forme: 'Spring',
+		spriteid: 'sawsbuck-spring',
+		otherFormes: ['Sawsbuck-Summer', 'Sawsbuck-Autumn', 'Sawsbuck-Winter'],
+		formeOrder: ['Sawsbuck-Spring', 'Sawsbuck-Summer', 'Sawsbuck-Autumn', 'Sawsbuck-Winter'],
+	},
 	charizard: {
 		baseStats: {hp: 78, atk: 109, def: 75, spa: 114, spd: 78, spe: 100},
 		abilities: {0: 'Wildfire Core', 1: 'Flame Body', H: 'Solar Power'},
@@ -3289,8 +3334,9 @@ const CUSTOM_BATTLE_BACK_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: nu
 	indeedee: {w: 80, h: 80},
 	indeedeef: {w: 80, h: 80},
 };
-const CUSTOM_TEAMBUILDER_SPRITE_MAX_WIDTH = 64;
-const CUSTOM_TEAMBUILDER_SPRITE_MAX_HEIGHT = 82;
+const CUSTOM_TEAMBUILDER_SPRITE_MAX_WIDTH = 78;
+const CUSTOM_TEAMBUILDER_SPRITE_MAX_HEIGHT = 86;
+const CUSTOM_TEAMBUILDER_SPRITE_Y_OFFSET = -2;
 const CUSTOM_ABILITY_UPDATE_IDS = Object.keys(CUSTOM_ABILITY_UPDATES);
 const CUSTOM_MOVE_UPDATE_IDS = Object.keys(CUSTOM_MOVE_UPDATES);
 const CUSTOM_LEARNSET_REPLACEMENT_IDS = Object.keys(CUSTOM_LEARNSET_REPLACEMENTS);
@@ -4226,13 +4272,12 @@ const Dex = new class implements ModdedDex {
 			if (spriteDimensions) {
 				const scale = Math.min(
 					CUSTOM_TEAMBUILDER_SPRITE_MAX_WIDTH / spriteDimensions.w,
-					CUSTOM_TEAMBUILDER_SPRITE_MAX_HEIGHT / spriteDimensions.h,
-					1
+					CUSTOM_TEAMBUILDER_SPRITE_MAX_HEIGHT / spriteDimensions.h
 				);
 				const width = Math.max(1, Math.round(spriteDimensions.w * scale));
 				const height = Math.max(1, Math.round(spriteDimensions.h * scale));
 				spriteData.x = Math.round((96 - width) / 2);
-				spriteData.y = Math.round((86 - height) / 2);
+				spriteData.y = Math.round((86 - height) / 2) + CUSTOM_TEAMBUILDER_SPRITE_Y_OFFSET;
 				spriteData.backgroundSize = `${width}px auto`;
 			} else {
 				const customSpriteData = CUSTOM_TEAMBUILDER_SPRITES[id] || {x: 12, y: 10, backgroundSize: '72px auto'};
@@ -4280,13 +4325,12 @@ const Dex = new class implements ModdedDex {
 			if (spriteDimensions) {
 				const scale = Math.min(
 					CUSTOM_TEAMBUILDER_SPRITE_MAX_WIDTH / spriteDimensions.w,
-					CUSTOM_TEAMBUILDER_SPRITE_MAX_HEIGHT / spriteDimensions.h,
-					1
+					CUSTOM_TEAMBUILDER_SPRITE_MAX_HEIGHT / spriteDimensions.h
 				);
 				const width = Math.max(1, Math.round(spriteDimensions.w * scale));
 				const height = Math.max(1, Math.round(spriteDimensions.h * scale));
 				spriteData.x = Math.round((96 - width) / 2);
-				spriteData.y = Math.round((86 - height) / 2);
+				spriteData.y = Math.round((86 - height) / 2) + CUSTOM_TEAMBUILDER_SPRITE_Y_OFFSET;
 				spriteData.backgroundSize = `${width}px auto`;
 			}
 		}
