@@ -3336,11 +3336,16 @@ const CUSTOM_BATTLE_BACK_MEDIUM_SPRITE_MAX_WIDTH = 90;
 const CUSTOM_BATTLE_BACK_MEDIUM_SPRITE_MAX_HEIGHT = 90;
 const CUSTOM_MEDIUM_SPRITE_MIN_DIMENSION = 104;
 const CUSTOM_MEDIUM_SPRITE_MAX_DIMENSION = 170;
+const CUSTOM_BATTLE_SPRITE_Y_OFFSETS: {[id: string]: {front?: number, back?: number}} = {
+	sableye: {front: 22, back: 24},
+};
 const CUSTOM_BATTLE_FRONT_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: number}} = {
 	alcremie: {w: 60, h: 60},
 	ariados: {w: 60, h: 60},
 	banettemega: {w: 82, h: 82},
-	corviknight: {w: 70, h: 70},
+	butterfree: {w: 64, h: 64},
+	butterfreemega: {w: 82, h: 82},
+	corviknight: {w: 78, h: 78},
 	corviknightgmax: {w: 112, h: 112},
 	espeon: {w: 66, h: 66},
 	gardevoir: {w: 108, h: 108},
@@ -3350,6 +3355,7 @@ const CUSTOM_BATTLE_FRONT_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: n
 	gardevoirvoidmega: {w: 116, h: 116},
 	flareon: {w: 110, h: 110},
 	glaceon: {w: 110, h: 110},
+	hydreigon: {w: 100, h: 100},
 	jolteon: {w: 110, h: 110},
 	leafeon: {w: 110, h: 110},
 	lucario: {w: 76, h: 76},
@@ -3359,8 +3365,12 @@ const CUSTOM_BATTLE_FRONT_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: n
 	mausholdfour: {w: 60, h: 60},
 	ninetales: {w: 90, h: 90},
 	ninetalesalola: {w: 90, h: 90},
+	palafinhero: {w: 100, h: 100},
 	perrserker: {w: 62, h: 62},
 	ribombee: {w: 60, h: 60},
+	sableye: {w: 126, h: 126},
+	sableyemega: {w: 62, h: 62},
+	spiritomb: {w: 70, h: 70},
 	rotom: {w: 78, h: 78},
 	rotomfan: {w: 82, h: 82},
 	rotomfrost: {w: 82, h: 82},
@@ -3375,6 +3385,7 @@ const CUSTOM_BATTLE_FRONT_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: n
 	tatsugirimega: {w: 78, h: 78},
 	tatsugiristretchy: {w: 52, h: 52},
 	tatsugiristretchymega: {w: 78, h: 78},
+	tyrantrum: {w: 100, h: 100},
 	weavile: {w: 68, h: 68},
 	weavilef: {w: 68, h: 68},
 	whimsicott: {w: 60, h: 60},
@@ -3385,7 +3396,9 @@ const CUSTOM_BATTLE_BACK_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: nu
 	alcremie: {w: 60, h: 60},
 	ariados: {w: 60, h: 60},
 	banettemega: {w: 90, h: 90},
-	corviknight: {w: 62, h: 62},
+	butterfree: {w: 70, h: 70},
+	butterfreemega: {w: 88, h: 88},
+	corviknight: {w: 78, h: 78},
 	corviknightgmax: {w: 132, h: 132},
 	espeon: {w: 74, h: 74},
 	gardevoir: {w: 124, h: 124},
@@ -3397,6 +3410,7 @@ const CUSTOM_BATTLE_BACK_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: nu
 	glaceon: {w: 108, h: 108},
 	indeedee: {w: 80, h: 80},
 	indeedeef: {w: 80, h: 80},
+	hydreigon: {w: 118, h: 118},
 	jolteon: {w: 108, h: 108},
 	leafeon: {w: 108, h: 108},
 	lucario: {w: 84, h: 84},
@@ -3406,8 +3420,12 @@ const CUSTOM_BATTLE_BACK_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: nu
 	mausholdfour: {w: 60, h: 60},
 	ninetales: {w: 100, h: 100},
 	ninetalesalola: {w: 100, h: 100},
+	palafinhero: {w: 116, h: 116},
 	perrserker: {w: 62, h: 62},
 	ribombee: {w: 60, h: 60},
+	sableye: {w: 134, h: 134},
+	sableyemega: {w: 66, h: 66},
+	spiritomb: {w: 78, h: 78},
 	rotom: {w: 72, h: 72},
 	rotomfan: {w: 76, h: 76},
 	rotomfrost: {w: 76, h: 76},
@@ -3422,6 +3440,7 @@ const CUSTOM_BATTLE_BACK_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: nu
 	tatsugirimega: {w: 78, h: 78},
 	tatsugiristretchy: {w: 52, h: 52},
 	tatsugiristretchymega: {w: 78, h: 78},
+	tyrantrum: {w: 118, h: 118},
 	sylveon: {w: 108, h: 108},
 	umbreon: {w: 108, h: 108},
 	vaporeon: {w: 108, h: 108},
@@ -3436,9 +3455,14 @@ const CUSTOM_TEAMBUILDER_SPRITE_MAX_HEIGHT = 86;
 const CUSTOM_TEAMBUILDER_MEDIUM_SPRITE_MAX_WIDTH = 76;
 const CUSTOM_TEAMBUILDER_MEDIUM_SPRITE_MAX_HEIGHT = 76;
 const CUSTOM_TEAMBUILDER_SPRITE_Y_OFFSET = 4;
+const CUSTOM_TEAMBUILDER_SPRITE_Y_OFFSETS: {[id: string]: number} = {
+	sableye: 18,
+};
 const CUSTOM_TEAMBUILDER_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: number}} = {
 	alcremie: {w: 60, h: 60},
 	ariados: {w: 60, h: 60},
+	butterfree: {w: 58, h: 58},
+	butterfreemega: {w: 70, h: 70},
 	espeon: {w: 58, h: 58},
 	gardevoir: {w: 82, h: 82},
 	gardevoirmega: {w: 82, h: 82},
@@ -3448,6 +3472,7 @@ const CUSTOM_TEAMBUILDER_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: nu
 	flareon: {w: 86, h: 86},
 	glaceon: {w: 86, h: 86},
 	hatterene: {w: 82, h: 82},
+	hydreigon: {w: 82, h: 82},
 	jolteon: {w: 86, h: 86},
 	leafeon: {w: 86, h: 86},
 	indeedee: {w: 60, h: 60},
@@ -3456,8 +3481,12 @@ const CUSTOM_TEAMBUILDER_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: nu
 	mausholdfour: {w: 60, h: 60},
 	ninetales: {w: 76, h: 76},
 	ninetalesalola: {w: 76, h: 76},
+	palafinhero: {w: 82, h: 82},
 	perrserker: {w: 60, h: 60},
 	ribombee: {w: 60, h: 60},
+	sableye: {w: 108, h: 108},
+	sableyemega: {w: 58, h: 58},
+	spiritomb: {w: 66, h: 66},
 	rotom: {w: 68, h: 68},
 	rotomfan: {w: 72, h: 72},
 	rotomfrost: {w: 72, h: 72},
@@ -3470,6 +3499,7 @@ const CUSTOM_TEAMBUILDER_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: nu
 	tatsugiri: {w: 52, h: 52},
 	tatsugiridroopy: {w: 52, h: 52},
 	tatsugiristretchy: {w: 52, h: 52},
+	tyrantrum: {w: 82, h: 82},
 	sylveon: {w: 86, h: 86},
 	umbreon: {w: 86, h: 86},
 	vaporeon: {w: 86, h: 86},
@@ -4308,6 +4338,9 @@ const Dex = new class implements ModdedDex {
 			);
 			spriteData.w = Math.round(spriteData.w * scale);
 			spriteData.h = Math.round(spriteData.h * scale);
+			const customBattleYOffset = CUSTOM_BATTLE_SPRITE_Y_OFFSETS[customStaticBattleSpriteid] ||
+				CUSTOM_BATTLE_SPRITE_Y_OFFSETS[speciesid];
+			if (customBattleYOffset) spriteData.y += isFront ? (customBattleYOffset.front || 0) : (customBattleYOffset.back || 0);
 		}
 		if (isDynamax && !options.noScale) {
 			spriteData.w *= 2;
@@ -4446,7 +4479,8 @@ const Dex = new class implements ModdedDex {
 				const width = Math.max(1, Math.round(spriteDimensions.w * scale));
 				const height = Math.max(1, Math.round(spriteDimensions.h * scale));
 				spriteData.x = Math.round((96 - width) / 2);
-				spriteData.y = Math.round((86 - height) / 2) + CUSTOM_TEAMBUILDER_SPRITE_Y_OFFSET;
+				spriteData.y = Math.round((86 - height) / 2) + CUSTOM_TEAMBUILDER_SPRITE_Y_OFFSET +
+					(CUSTOM_TEAMBUILDER_SPRITE_Y_OFFSETS[id] || 0);
 				spriteData.backgroundSize = `${width}px auto`;
 			} else {
 				const customSpriteData = CUSTOM_TEAMBUILDER_SPRITES[id] || {x: 12, y: 10, backgroundSize: '72px auto'};
@@ -4506,7 +4540,8 @@ const Dex = new class implements ModdedDex {
 				const width = Math.max(1, Math.round(spriteDimensions.w * scale));
 				const height = Math.max(1, Math.round(spriteDimensions.h * scale));
 				spriteData.x = Math.round((96 - width) / 2);
-				spriteData.y = Math.round((86 - height) / 2) + CUSTOM_TEAMBUILDER_SPRITE_Y_OFFSET;
+				spriteData.y = Math.round((86 - height) / 2) + CUSTOM_TEAMBUILDER_SPRITE_Y_OFFSET +
+					(CUSTOM_TEAMBUILDER_SPRITE_Y_OFFSETS[id] || 0);
 				spriteData.backgroundSize = `${width}px auto`;
 			}
 		}
