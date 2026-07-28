@@ -3326,18 +3326,33 @@ const CUSTOM_BATTLE_FRONT_SPRITE_MAX_WIDTH = 86;
 const CUSTOM_BATTLE_FRONT_SPRITE_MAX_HEIGHT = 86;
 const CUSTOM_BATTLE_FRONT_MEGA_SPRITE_MAX_WIDTH = 108;
 const CUSTOM_BATTLE_FRONT_MEGA_SPRITE_MAX_HEIGHT = 108;
-const CUSTOM_BATTLE_BACK_SPRITE_MAX_WIDTH = 112;
-const CUSTOM_BATTLE_BACK_SPRITE_MAX_HEIGHT = 112;
-const CUSTOM_BATTLE_BACK_MEGA_SPRITE_MAX_WIDTH = 124;
-const CUSTOM_BATTLE_BACK_MEGA_SPRITE_MAX_HEIGHT = 124;
+const CUSTOM_BATTLE_BACK_SPRITE_MAX_WIDTH = 96;
+const CUSTOM_BATTLE_BACK_SPRITE_MAX_HEIGHT = 96;
+const CUSTOM_BATTLE_BACK_MEGA_SPRITE_MAX_WIDTH = 112;
+const CUSTOM_BATTLE_BACK_MEGA_SPRITE_MAX_HEIGHT = 112;
 const CUSTOM_BATTLE_FRONT_MEDIUM_SPRITE_MAX_WIDTH = 82;
 const CUSTOM_BATTLE_FRONT_MEDIUM_SPRITE_MAX_HEIGHT = 82;
-const CUSTOM_BATTLE_BACK_MEDIUM_SPRITE_MAX_WIDTH = 90;
-const CUSTOM_BATTLE_BACK_MEDIUM_SPRITE_MAX_HEIGHT = 90;
+const CUSTOM_BATTLE_BACK_MEDIUM_SPRITE_MAX_WIDTH = 82;
+const CUSTOM_BATTLE_BACK_MEDIUM_SPRITE_MAX_HEIGHT = 82;
+const CUSTOM_TEAM_PREVIEW_FRONT_SPRITE_MAX_WIDTH = 48;
+const CUSTOM_TEAM_PREVIEW_FRONT_SPRITE_MAX_HEIGHT = 48;
+const CUSTOM_TEAM_PREVIEW_FRONT_MEGA_SPRITE_MAX_WIDTH = 58;
+const CUSTOM_TEAM_PREVIEW_FRONT_MEGA_SPRITE_MAX_HEIGHT = 58;
+const CUSTOM_TEAM_PREVIEW_FRONT_GMAX_SPRITE_MAX_WIDTH = 68;
+const CUSTOM_TEAM_PREVIEW_FRONT_GMAX_SPRITE_MAX_HEIGHT = 68;
+const CUSTOM_TEAM_PREVIEW_BACK_SPRITE_MAX_WIDTH = 52;
+const CUSTOM_TEAM_PREVIEW_BACK_SPRITE_MAX_HEIGHT = 52;
+const CUSTOM_TEAM_PREVIEW_BACK_MEGA_SPRITE_MAX_WIDTH = 62;
+const CUSTOM_TEAM_PREVIEW_BACK_MEGA_SPRITE_MAX_HEIGHT = 62;
+const CUSTOM_TEAM_PREVIEW_BACK_GMAX_SPRITE_MAX_WIDTH = 72;
+const CUSTOM_TEAM_PREVIEW_BACK_GMAX_SPRITE_MAX_HEIGHT = 72;
 const CUSTOM_MEDIUM_SPRITE_MIN_DIMENSION = 104;
 const CUSTOM_MEDIUM_SPRITE_MAX_DIMENSION = 170;
 const CUSTOM_BATTLE_SPRITE_Y_OFFSETS: {[id: string]: {front?: number, back?: number}} = {
 	sableye: {front: 22, back: 24},
+};
+const CUSTOM_BATTLE_SPRITE_X_OFFSETS: {[id: string]: {front?: number, back?: number}} = {
+	hatterenegmax: {back: -42},
 };
 const CUSTOM_BATTLE_FRONT_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: number}} = {
 	alcremie: {w: 60, h: 60},
@@ -3345,6 +3360,7 @@ const CUSTOM_BATTLE_FRONT_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: n
 	banettemega: {w: 82, h: 82},
 	butterfree: {w: 64, h: 64},
 	butterfreemega: {w: 82, h: 82},
+	clefable: {w: 72, h: 72},
 	corviknight: {w: 78, h: 78},
 	corviknightgmax: {w: 112, h: 112},
 	espeon: {w: 66, h: 66},
@@ -4096,6 +4112,7 @@ const Dex = new class implements ModdedDex {
 		gender?: GenderName,
 		afd?: boolean,
 		noScale?: boolean,
+		teamPreview?: boolean,
 		mod?: string,
 		dynamax?: boolean,
 	} = {gen: 6}) {
@@ -4311,6 +4328,30 @@ const Dex = new class implements ModdedDex {
 			}
 			if (spriteData.gen <= 2) spriteData.y += 2;
 		}
+		if (options.teamPreview && (customStaticBattleSprite || customBWSprite) && !isDynamax) {
+			const isLargeCustomForm = speciesid.includes('mega') ||
+				speciesid.includes('battlebond');
+			const isGmaxCustomForm = speciesid.includes('gmax');
+			const defaultMaxWidth = isFront ?
+				(isGmaxCustomForm ? CUSTOM_TEAM_PREVIEW_FRONT_GMAX_SPRITE_MAX_WIDTH :
+					isLargeCustomForm ? CUSTOM_TEAM_PREVIEW_FRONT_MEGA_SPRITE_MAX_WIDTH :
+					CUSTOM_TEAM_PREVIEW_FRONT_SPRITE_MAX_WIDTH) :
+				(isGmaxCustomForm ? CUSTOM_TEAM_PREVIEW_BACK_GMAX_SPRITE_MAX_WIDTH :
+					isLargeCustomForm ? CUSTOM_TEAM_PREVIEW_BACK_MEGA_SPRITE_MAX_WIDTH :
+					CUSTOM_TEAM_PREVIEW_BACK_SPRITE_MAX_WIDTH);
+			const defaultMaxHeight = isFront ?
+				(isGmaxCustomForm ? CUSTOM_TEAM_PREVIEW_FRONT_GMAX_SPRITE_MAX_HEIGHT :
+					isLargeCustomForm ? CUSTOM_TEAM_PREVIEW_FRONT_MEGA_SPRITE_MAX_HEIGHT :
+					CUSTOM_TEAM_PREVIEW_FRONT_SPRITE_MAX_HEIGHT) :
+				(isGmaxCustomForm ? CUSTOM_TEAM_PREVIEW_BACK_GMAX_SPRITE_MAX_HEIGHT :
+					isLargeCustomForm ? CUSTOM_TEAM_PREVIEW_BACK_MEGA_SPRITE_MAX_HEIGHT :
+					CUSTOM_TEAM_PREVIEW_BACK_SPRITE_MAX_HEIGHT);
+			const scale = Math.min(defaultMaxWidth / spriteData.w, defaultMaxHeight / spriteData.h);
+			if (scale < 1) {
+				spriteData.w = Math.round(spriteData.w * scale);
+				spriteData.h = Math.round(spriteData.h * scale);
+			}
+		}
 		if (!options.noScale && (customStaticBattleSprite || customBWSprite) && !isDynamax) {
 			const battleSpriteMaxSize = isFront ?
 				(CUSTOM_BATTLE_FRONT_SPRITE_SIZE_OVERRIDES[customStaticBattleSpriteid] ||
@@ -4341,6 +4382,9 @@ const Dex = new class implements ModdedDex {
 			const customBattleYOffset = CUSTOM_BATTLE_SPRITE_Y_OFFSETS[customStaticBattleSpriteid] ||
 				CUSTOM_BATTLE_SPRITE_Y_OFFSETS[speciesid];
 			if (customBattleYOffset) spriteData.y += isFront ? (customBattleYOffset.front || 0) : (customBattleYOffset.back || 0);
+			const customBattleXOffset = CUSTOM_BATTLE_SPRITE_X_OFFSETS[customStaticBattleSpriteid] ||
+				CUSTOM_BATTLE_SPRITE_X_OFFSETS[speciesid];
+			if (customBattleXOffset) spriteData.x += isFront ? (customBattleXOffset.front || 0) : (customBattleXOffset.back || 0);
 		}
 		if (isDynamax && !options.noScale) {
 			spriteData.w *= 2;

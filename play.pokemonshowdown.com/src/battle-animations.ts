@@ -815,6 +815,7 @@ export class BattleScene implements BattleSceneStub {
 				let spriteData = Dex.getSpriteData(pokemon, !!spriteIndex, {
 					gen: this.gen,
 					noScale: true,
+					teamPreview: true,
 					mod: this.mod,
 				});
 				let y = 0;
