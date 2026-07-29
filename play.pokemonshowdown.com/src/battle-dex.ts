@@ -3454,6 +3454,14 @@ const CUSTOM_TEAM_PREVIEW_BACK_MEGA_SPRITE_MAX_WIDTH = 84;
 const CUSTOM_TEAM_PREVIEW_BACK_MEGA_SPRITE_MAX_HEIGHT = 84;
 const CUSTOM_TEAM_PREVIEW_BACK_GMAX_SPRITE_MAX_WIDTH = 96;
 const CUSTOM_TEAM_PREVIEW_BACK_GMAX_SPRITE_MAX_HEIGHT = 96;
+const CUSTOM_TEAM_PREVIEW_FRONT_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: number}} = {
+	charizard: {w: 78, h: 78},
+	dragapult: {w: 78, h: 78},
+};
+const CUSTOM_TEAM_PREVIEW_BACK_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: number}} = {
+	charizard: {w: 84, h: 84},
+	dragapult: {w: 84, h: 84},
+};
 const CUSTOM_MEDIUM_SPRITE_MIN_DIMENSION = 104;
 const CUSTOM_MEDIUM_SPRITE_MAX_DIMENSION = 170;
 const CUSTOM_BATTLE_SPRITE_Y_OFFSETS: {[id: string]: {front?: number, back?: number}} = {
@@ -3463,6 +3471,7 @@ const CUSTOM_BATTLE_SPRITE_X_OFFSETS: {[id: string]: {front?: number, back?: num
 	hatterenegmax: {back: -42},
 };
 const CUSTOM_BATTLE_FRONT_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: number}} = {
+	aegislashgmax: {w: 120, h: 120},
 	alcremie: {w: 60, h: 60},
 	ariados: {w: 60, h: 60},
 	banettemega: {w: 82, h: 82},
@@ -3471,6 +3480,7 @@ const CUSTOM_BATTLE_FRONT_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: n
 	clefable: {w: 72, h: 72},
 	corviknight: {w: 78, h: 78},
 	corviknightgmax: {w: 112, h: 112},
+	dragapultgmax: {w: 120, h: 120},
 	espeon: {w: 66, h: 66},
 	gengar: {w: 62, h: 62},
 	gardevoir: {w: 108, h: 108},
@@ -3585,10 +3595,12 @@ const CUSTOM_TEAMBUILDER_SPRITE_Y_OFFSETS: {[id: string]: number} = {
 	sableye: 18,
 };
 const CUSTOM_TEAMBUILDER_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: number}} = {
+	aegislashgmax: {w: 74, h: 74},
 	alcremie: {w: 60, h: 60},
 	ariados: {w: 60, h: 60},
 	butterfree: {w: 58, h: 58},
 	butterfreemega: {w: 70, h: 70},
+	dragapultgmax: {w: 74, h: 74},
 	espeon: {w: 58, h: 58},
 	gardevoir: {w: 82, h: 82},
 	gardevoirmega: {w: 82, h: 82},
@@ -4442,20 +4454,25 @@ const Dex = new class implements ModdedDex {
 			const isLargeCustomForm = speciesid.includes('mega') ||
 				speciesid.includes('battlebond');
 			const isGmaxCustomForm = speciesid.includes('gmax');
+			const previewSpriteMaxSize = isFront ?
+				(CUSTOM_TEAM_PREVIEW_FRONT_SPRITE_SIZE_OVERRIDES[customStaticBattleSpriteid] ||
+					CUSTOM_TEAM_PREVIEW_FRONT_SPRITE_SIZE_OVERRIDES[speciesid]) :
+				(CUSTOM_TEAM_PREVIEW_BACK_SPRITE_SIZE_OVERRIDES[customStaticBattleSpriteid] ||
+					CUSTOM_TEAM_PREVIEW_BACK_SPRITE_SIZE_OVERRIDES[speciesid]);
 			const defaultMaxWidth = isFront ?
-				(isGmaxCustomForm ? CUSTOM_TEAM_PREVIEW_FRONT_GMAX_SPRITE_MAX_WIDTH :
+				(previewSpriteMaxSize?.w || (isGmaxCustomForm ? CUSTOM_TEAM_PREVIEW_FRONT_GMAX_SPRITE_MAX_WIDTH :
 					isLargeCustomForm ? CUSTOM_TEAM_PREVIEW_FRONT_MEGA_SPRITE_MAX_WIDTH :
-					CUSTOM_TEAM_PREVIEW_FRONT_SPRITE_MAX_WIDTH) :
-				(isGmaxCustomForm ? CUSTOM_TEAM_PREVIEW_BACK_GMAX_SPRITE_MAX_WIDTH :
+					CUSTOM_TEAM_PREVIEW_FRONT_SPRITE_MAX_WIDTH)) :
+				(previewSpriteMaxSize?.w || (isGmaxCustomForm ? CUSTOM_TEAM_PREVIEW_BACK_GMAX_SPRITE_MAX_WIDTH :
 					isLargeCustomForm ? CUSTOM_TEAM_PREVIEW_BACK_MEGA_SPRITE_MAX_WIDTH :
-					CUSTOM_TEAM_PREVIEW_BACK_SPRITE_MAX_WIDTH);
+					CUSTOM_TEAM_PREVIEW_BACK_SPRITE_MAX_WIDTH));
 			const defaultMaxHeight = isFront ?
-				(isGmaxCustomForm ? CUSTOM_TEAM_PREVIEW_FRONT_GMAX_SPRITE_MAX_HEIGHT :
+				(previewSpriteMaxSize?.h || (isGmaxCustomForm ? CUSTOM_TEAM_PREVIEW_FRONT_GMAX_SPRITE_MAX_HEIGHT :
 					isLargeCustomForm ? CUSTOM_TEAM_PREVIEW_FRONT_MEGA_SPRITE_MAX_HEIGHT :
-					CUSTOM_TEAM_PREVIEW_FRONT_SPRITE_MAX_HEIGHT) :
-				(isGmaxCustomForm ? CUSTOM_TEAM_PREVIEW_BACK_GMAX_SPRITE_MAX_HEIGHT :
+					CUSTOM_TEAM_PREVIEW_FRONT_SPRITE_MAX_HEIGHT)) :
+				(previewSpriteMaxSize?.h || (isGmaxCustomForm ? CUSTOM_TEAM_PREVIEW_BACK_GMAX_SPRITE_MAX_HEIGHT :
 					isLargeCustomForm ? CUSTOM_TEAM_PREVIEW_BACK_MEGA_SPRITE_MAX_HEIGHT :
-					CUSTOM_TEAM_PREVIEW_BACK_SPRITE_MAX_HEIGHT);
+					CUSTOM_TEAM_PREVIEW_BACK_SPRITE_MAX_HEIGHT));
 			const scale = Math.min(defaultMaxWidth / spriteData.w, defaultMaxHeight / spriteData.h);
 			if (scale < 1) {
 				spriteData.w = Math.round(spriteData.w * scale);
