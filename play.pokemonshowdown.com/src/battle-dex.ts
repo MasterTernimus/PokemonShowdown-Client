@@ -2950,7 +2950,7 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		abilities: {0: 'Levitate', 1: 'Dragonize', H: 'Sand Stream'},
 	},
 	flygon: {
-		abilities: {0: 'Levitate', 1: 'Dragonize', H: 'Sand Stream'},
+		abilities: {0: 'Levitate', 1: 'Resonance Force', H: 'Sand Stream'},
 	},
 	skrelp: {
 		abilities: {0: 'Dragonize', 1: 'Poison Touch', H: 'Adaptability'},
