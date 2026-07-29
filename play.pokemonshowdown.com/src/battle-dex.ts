@@ -182,6 +182,36 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 			isNonstandard: 'Gigantamax',
 		},
 	},
+	aegislashgmax: {
+		base: 'aegislash',
+		data: {
+			name: 'Aegislash-Gmax',
+			baseSpecies: 'Aegislash',
+			forme: 'Gmax',
+			spriteid: 'aegislash-gmax',
+			types: ['Steel', 'Ghost'],
+			baseStats: {hp: 120, atk: 50, def: 150, spa: 50, spd: 150, spe: 60},
+			abilities: {0: 'Imperial Mandate'},
+			changesFrom: 'Aegislash',
+			isGigantamax: true,
+			isNonstandard: 'Gigantamax',
+		},
+	},
+	dragapultgmax: {
+		base: 'dragapult',
+		data: {
+			name: 'Dragapult-Gmax',
+			baseSpecies: 'Dragapult',
+			forme: 'Gmax',
+			spriteid: 'dragapult-gmax',
+			types: ['Dragon', 'Ghost'],
+			baseStats: {hp: 150, atk: 120, def: 75, spa: 100, spd: 75, spe: 142},
+			abilities: {0: 'Phantom Barrage'},
+			changesFrom: 'Dragapult',
+			isGigantamax: true,
+			isNonstandard: 'Gigantamax',
+		},
+	},
 	gardevoirvoid: {
 		base: 'gardevoir',
 		data: {
@@ -559,6 +589,8 @@ const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
 	hawluchamega: 'hawlucha-mega',
 	salamencemega: 'salamence-mega',
 	hatterenegmax: 'hatterene-gmax',
+	aegislashgmax: 'aegislash-gmax',
+	dragapultgmax: 'dragapult-gmax',
 	palafinhero: 'palafin-hero',
 	mausholdfour: 'maushold-four',
 	sinistchamasterpiece: 'sinistcha-masterpiece',
@@ -1365,6 +1397,18 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 	dragapult: {
 		front: {w: 142, h: 156},
 		back: {w: 142, h: 156},
+	},
+	aegislashgmax: {
+		front: {w: 240, h: 260},
+		back: {w: 288, h: 304},
+		shinyFront: {w: 240, h: 260},
+		shinyBack: {w: 288, h: 304},
+	},
+	dragapultgmax: {
+		front: {w: 246, h: 250},
+		back: {w: 244, h: 248},
+		shinyFront: {w: 246, h: 250},
+		shinyBack: {w: 244, h: 248},
 	},
 	duraludon: {
 		front: {w: 122, h: 150},
@@ -2395,6 +2439,20 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 		front: {w: 142, h: 156},
 		back: {w: 142, h: 156},
 	},
+	aegislashgmax: {
+		num: 681,
+		front: {w: 240, h: 260},
+		back: {w: 288, h: 304},
+		shinyFront: {w: 240, h: 260},
+		shinyBack: {w: 288, h: 304},
+	},
+	dragapultgmax: {
+		num: 887,
+		front: {w: 246, h: 250},
+		back: {w: 244, h: 248},
+		shinyFront: {w: 246, h: 250},
+		shinyBack: {w: 244, h: 248},
+	},
 	duraludon: {
 		num: 884,
 		front: {w: 122, h: 150},
@@ -2810,6 +2868,16 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		otherFormes: ['Sawsbuck-Summer', 'Sawsbuck-Autumn', 'Sawsbuck-Winter'],
 		formeOrder: ['Sawsbuck-Spring', 'Sawsbuck-Summer', 'Sawsbuck-Autumn', 'Sawsbuck-Winter'],
 	},
+	aegislash: {
+		otherFormes: ['Aegislash-Blade', 'Aegislash-Gmax'],
+		formeOrder: ['Aegislash', 'Aegislash-Blade', 'Aegislash-Gmax'],
+		canGigantamax: 'G-Max Final Verdict',
+	},
+	dragapult: {
+		otherFormes: ['Dragapult-Gmax'],
+		formeOrder: ['Dragapult', 'Dragapult-Gmax'],
+		canGigantamax: 'G-Max Spirit Volley',
+	},
 	charizard: {
 		baseStats: {hp: 78, atk: 109, def: 75, spa: 114, spd: 78, spe: 100},
 		abilities: {0: 'Wildfire Core', 1: 'Flame Body', H: 'Solar Power'},
@@ -2973,6 +3041,14 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 		desc: 'This Pokemon cannot be burned and is immune to Hail and Sandstorm damage. Gaining this Ability while burned cures it. On switch-in, it gains Aqua Ring.',
 		shortDesc: 'Cannot be burned; immune to Hail/Sandstorm; gains Aqua Ring.',
 	},
+	imperialmandate: {
+		name: 'Imperial Mandate',
+		shortDesc: 'This Pokemon has Imperial Mandate.',
+	},
+	phantombarrage: {
+		name: 'Phantom Barrage',
+		shortDesc: 'This Pokemon has Phantom Barrage.',
+	},
 	atrocity: {
 		name: 'Atrocity',
 		desc: "This Pokemon's damaging moves have 1.3x power, +1 critical hit ratio, ignore Abilities, ignore defensive stat boosts, and bypass Substitute, Reflect, Light Screen, and Aurora Veil. Its Defense and Special Defense are 1.3x. It heals 30% of the damage it deals with attacks, doubled against G-Max Pokemon, up to 33% of its max HP per hit, and restores 1/16 max HP at the end of each turn. This Pokemon is immune to hail damage.",
@@ -3088,6 +3164,38 @@ const CUSTOM_MOVE_UPDATES: {[id: string]: AnyObject} = {
 		contestType: 'Cool',
 		desc: 'Usually moves before other attacks. This move will always result in a critical hit.',
 		shortDesc: 'Usually moves first. Always crits.',
+	},
+	gmaxfinalverdict: {
+		num: 1000,
+		accuracy: true,
+		basePower: 10,
+		category: 'Physical',
+		isNonstandard: 'Gigantamax',
+		name: 'G-Max Final Verdict',
+		pp: 5,
+		priority: 0,
+		flags: {},
+		isMax: 'Aegislash',
+		target: 'adjacentFoe',
+		type: 'Steel',
+		desc: "Power is equal to the base move's Max Move power.",
+		shortDesc: 'Base move affects power.',
+	},
+	gmaxspiritvolley: {
+		num: 1000,
+		accuracy: true,
+		basePower: 10,
+		category: 'Physical',
+		isNonstandard: 'Gigantamax',
+		name: 'G-Max Spirit Volley',
+		pp: 5,
+		priority: 0,
+		flags: {},
+		isMax: 'Dragapult',
+		target: 'adjacentFoe',
+		type: 'Ghost',
+		desc: "Power is equal to the base move's Max Move power.",
+		shortDesc: 'Base move affects power.',
 	},
 };
 
@@ -3334,18 +3442,18 @@ const CUSTOM_BATTLE_FRONT_MEDIUM_SPRITE_MAX_WIDTH = 82;
 const CUSTOM_BATTLE_FRONT_MEDIUM_SPRITE_MAX_HEIGHT = 82;
 const CUSTOM_BATTLE_BACK_MEDIUM_SPRITE_MAX_WIDTH = 82;
 const CUSTOM_BATTLE_BACK_MEDIUM_SPRITE_MAX_HEIGHT = 82;
-const CUSTOM_TEAM_PREVIEW_FRONT_SPRITE_MAX_WIDTH = 48;
-const CUSTOM_TEAM_PREVIEW_FRONT_SPRITE_MAX_HEIGHT = 48;
-const CUSTOM_TEAM_PREVIEW_FRONT_MEGA_SPRITE_MAX_WIDTH = 58;
-const CUSTOM_TEAM_PREVIEW_FRONT_MEGA_SPRITE_MAX_HEIGHT = 58;
-const CUSTOM_TEAM_PREVIEW_FRONT_GMAX_SPRITE_MAX_WIDTH = 68;
-const CUSTOM_TEAM_PREVIEW_FRONT_GMAX_SPRITE_MAX_HEIGHT = 68;
-const CUSTOM_TEAM_PREVIEW_BACK_SPRITE_MAX_WIDTH = 52;
-const CUSTOM_TEAM_PREVIEW_BACK_SPRITE_MAX_HEIGHT = 52;
-const CUSTOM_TEAM_PREVIEW_BACK_MEGA_SPRITE_MAX_WIDTH = 62;
-const CUSTOM_TEAM_PREVIEW_BACK_MEGA_SPRITE_MAX_HEIGHT = 62;
-const CUSTOM_TEAM_PREVIEW_BACK_GMAX_SPRITE_MAX_WIDTH = 72;
-const CUSTOM_TEAM_PREVIEW_BACK_GMAX_SPRITE_MAX_HEIGHT = 72;
+const CUSTOM_TEAM_PREVIEW_FRONT_SPRITE_MAX_WIDTH = 66;
+const CUSTOM_TEAM_PREVIEW_FRONT_SPRITE_MAX_HEIGHT = 66;
+const CUSTOM_TEAM_PREVIEW_FRONT_MEGA_SPRITE_MAX_WIDTH = 78;
+const CUSTOM_TEAM_PREVIEW_FRONT_MEGA_SPRITE_MAX_HEIGHT = 78;
+const CUSTOM_TEAM_PREVIEW_FRONT_GMAX_SPRITE_MAX_WIDTH = 90;
+const CUSTOM_TEAM_PREVIEW_FRONT_GMAX_SPRITE_MAX_HEIGHT = 90;
+const CUSTOM_TEAM_PREVIEW_BACK_SPRITE_MAX_WIDTH = 72;
+const CUSTOM_TEAM_PREVIEW_BACK_SPRITE_MAX_HEIGHT = 72;
+const CUSTOM_TEAM_PREVIEW_BACK_MEGA_SPRITE_MAX_WIDTH = 84;
+const CUSTOM_TEAM_PREVIEW_BACK_MEGA_SPRITE_MAX_HEIGHT = 84;
+const CUSTOM_TEAM_PREVIEW_BACK_GMAX_SPRITE_MAX_WIDTH = 96;
+const CUSTOM_TEAM_PREVIEW_BACK_GMAX_SPRITE_MAX_HEIGHT = 96;
 const CUSTOM_MEDIUM_SPRITE_MIN_DIMENSION = 104;
 const CUSTOM_MEDIUM_SPRITE_MAX_DIMENSION = 170;
 const CUSTOM_BATTLE_SPRITE_Y_OFFSETS: {[id: string]: {front?: number, back?: number}} = {
@@ -3364,6 +3472,7 @@ const CUSTOM_BATTLE_FRONT_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: n
 	corviknight: {w: 78, h: 78},
 	corviknightgmax: {w: 112, h: 112},
 	espeon: {w: 66, h: 66},
+	gengar: {w: 62, h: 62},
 	gardevoir: {w: 108, h: 108},
 	gardevoirmega: {w: 108, h: 108},
 	gardevoirmegaz: {w: 108, h: 108},
@@ -3417,6 +3526,7 @@ const CUSTOM_BATTLE_BACK_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: nu
 	corviknight: {w: 78, h: 78},
 	corviknightgmax: {w: 132, h: 132},
 	espeon: {w: 74, h: 74},
+	gengar: {w: 60, h: 60},
 	gardevoir: {w: 124, h: 124},
 	gardevoirmega: {w: 124, h: 124},
 	gardevoirmegaz: {w: 124, h: 124},
