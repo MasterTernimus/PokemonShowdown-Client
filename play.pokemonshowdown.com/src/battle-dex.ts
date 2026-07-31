@@ -89,7 +89,7 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 		base: 'hypno',
 		data: {
 			name: 'Hypno',
-			types: ['Psychic', 'Dark'],
+			types: ['Psychic', 'Ghost'],
 			abilities: {0: 'Pendulum Swing', 1: 'Neutralizing Gas', H: 'Neutralization'},
 			baseStats: {hp: 90, atk: 70, def: 105, spa: 80, spd: 110, spe: 45},
 			bst: 500,
@@ -2986,7 +2986,7 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 	},
 	hypno: {
 		name: 'Hypno',
-		types: ['Psychic', 'Dark'],
+		types: ['Psychic', 'Ghost'],
 		baseStats: {hp: 90, atk: 70, def: 105, spa: 80, spd: 110, spe: 45},
 		abilities: {0: 'Pendulum Swing', 1: 'Neutralizing Gas', H: 'Neutralization'},
 	},
