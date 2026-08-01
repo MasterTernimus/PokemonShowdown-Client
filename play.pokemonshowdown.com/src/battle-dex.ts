@@ -3841,6 +3841,34 @@ function getSpriteSize(data: AnyObject | undefined, isFront: boolean, shiny?: bo
 	return shiny ? copySpriteSize(data[shinyFacing] || data[facing]) : copySpriteSize(data[facing]);
 }
 
+function copySpriteSizeSet(data: AnyObject | undefined) {
+	if (!data) return undefined;
+	return {
+		front: copySpriteSize(data.front),
+		back: copySpriteSize(data.back),
+		shinyFront: copySpriteSize(data.shinyFront),
+		shinyBack: copySpriteSize(data.shinyBack),
+	};
+}
+
+function getCustomBaseSpriteId(id: string) {
+	const customSpeciesBase = CUSTOM_SPECIES[id]?.base;
+	if (customSpeciesBase) return customSpeciesBase;
+
+	const species = window.BattlePokedex?.[id];
+	const baseSpeciesId = toID(species?.baseSpecies);
+	if (baseSpeciesId && baseSpeciesId !== id) return baseSpeciesId;
+
+	for (const suffix of ['battlebond', 'megaz', 'megax', 'megay', 'mega', 'gmax', 'alt']) {
+		if (id.endsWith(suffix) && id.length > suffix.length) return id.slice(0, -suffix.length);
+	}
+	return '';
+}
+
+function getNativeSpriteSizeSet(id: string) {
+	return copySpriteSizeSet(customNativeBWSpriteSizes[id] || window.BattlePokemonSpritesBW?.[id]);
+}
+
 function getCustomSpriteSize(id: string, customData: AnyObject, isFront: boolean, shiny?: boolean) {
 	return getSpriteSize(customNativeBWSpriteSizes[id], isFront, shiny) || getSpriteSize(customData, isFront, shiny)!;
 }
@@ -3852,18 +3880,19 @@ function ensureCustomBWSpriteData() {
 	for (const id of CUSTOM_BW_SPRITE_IDS) {
 		const nativeSpriteData = window.BattlePokemonSpritesBW[id];
 		if (nativeSpriteData) {
-			customNativeBWSpriteSizes[id] = {
-				front: copySpriteSize(nativeSpriteData.front),
-				back: copySpriteSize(nativeSpriteData.back),
-				shinyFront: copySpriteSize(nativeSpriteData.shinyFront),
-				shinyBack: copySpriteSize(nativeSpriteData.shinyBack),
-			};
+			customNativeBWSpriteSizes[id] = copySpriteSizeSet(nativeSpriteData)!;
 		}
 		if (!nativeSpriteData) {
 			window.BattlePokemonSpritesBW[id] = CUSTOM_BW_SPRITES[id];
 		} else {
 			Object.assign(nativeSpriteData, CUSTOM_BW_SPRITES[id]);
 		}
+	}
+	for (const id of CUSTOM_BW_SPRITE_IDS) {
+		if (customNativeBWSpriteSizes[id]) continue;
+		const baseSpriteId = getCustomBaseSpriteId(id);
+		const baseSpriteSize = baseSpriteId && getNativeSpriteSizeSet(baseSpriteId);
+		if (baseSpriteSize) customNativeBWSpriteSizes[id] = baseSpriteSize;
 	}
 	customBWSpriteDataTable = window.BattlePokemonSpritesBW;
 }
