@@ -137,6 +137,10 @@ class ModifiableValue {
 	}
 }
 
+const STEEL_MOVE_POWER_ABILITIES: {[abilityName: string]: number} = {
+	'Razor Current': 1.5,
+};
+
 class BattleTooltips {
 	battle: Battle;
 
@@ -1949,6 +1953,10 @@ class BattleTooltips {
 		if (move.recoil || move.hasCrashDamage) {
 			value.abilityModify(1.2, 'Reckless');
 		}
+		if (moveType === 'Steel') {
+			const steelMoveAbilityModifier = STEEL_MOVE_POWER_ABILITIES[value.abilityName];
+			if (steelMoveAbilityModifier) value.abilityModify(steelMoveAbilityModifier, value.abilityName);
+		}
 
 		if (move.category !== 'Status') {
 			let auraBoosted = '';
@@ -1967,7 +1975,7 @@ class BattleTooltips {
 				} else if (allyAbility === 'Power Spot' && ally !== pokemon) {
 					value.modify(1.3, 'Power Spot');
 				} else if (allyAbility === 'Steely Spirit' && moveType === 'Steel') {
-					value.modify(1.5, 'Steely Spirit');
+					value.modify(1.5, allyAbility);
 				}
 			}
 			for (const foe of pokemon.side.foe.active) {
