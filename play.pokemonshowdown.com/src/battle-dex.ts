@@ -3091,6 +3091,11 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 		desc: "This Pokemon's accuracy is 1.5x and its Special Attack is 1.5x.",
 		shortDesc: 'Accuracy and Sp. Atk are 1.5x.',
 	},
+	razorcurrent: {
+		name: 'Razor Current',
+		desc: "This Pokemon's Steel-type moves have 1.5x power. At the end of each turn, its Speed rises by 1 stage.",
+		shortDesc: 'Steel moves 1.5x; Speed rises by 1 each turn.',
+	},
 	relicinstinct: {
 		name: 'Relic Instinct',
 		desc: 'If this Pokemon has more than 50% HP, its Rock- and Flying-type moves have 1.3x power and its moves ignore opposing Abilities. If this Pokemon has 50% or less HP, its Rock- and Flying-type moves have 1.1x power, it takes 0.75x damage from attacks, cannot be critically hit, restores 1/16 max HP each turn, and its Attack and Special Attack are halved. Once, when it reaches 25% HP or less, it heals 25% max HP, clears its negative stat stages, and lowers its Defense and Special Defense by 2 stages.',
@@ -3499,6 +3504,7 @@ const CUSTOM_LEARNSET_ADDITIONS: {[id: string]: {[id: string]: string[]}} = {
 		spikecannon: ['9M'],
 	},
 	chesnaught: {
+		rage: ['9M'],
 		spikecannon: ['9M'],
 	},
 	clawitzer: {
@@ -3545,6 +3551,26 @@ const CUSTOM_LEARNSET_ADDITIONS: {[id: string]: {[id: string]: string[]}} = {
 const CUSTOM_BW_SPRITE_IDS = Object.keys(CUSTOM_BW_SPRITES);
 const CUSTOM_SPECIES_IDS = Object.keys(CUSTOM_SPECIES);
 const CUSTOM_SPECIES_UPDATE_IDS = Object.keys(CUSTOM_SPECIES_UPDATES);
+const SILVALLY_TYPE_FORMES: {[id: string]: string} = {
+	fighting: 'Silvally-Fighting',
+	flying: 'Silvally-Flying',
+	poison: 'Silvally-Poison',
+	ground: 'Silvally-Ground',
+	rock: 'Silvally-Rock',
+	bug: 'Silvally-Bug',
+	ghost: 'Silvally-Ghost',
+	steel: 'Silvally-Steel',
+	unknown: 'Silvally-Unknown',
+	fire: 'Silvally-Fire',
+	water: 'Silvally-Water',
+	grass: 'Silvally-Grass',
+	electric: 'Silvally-Electric',
+	psychic: 'Silvally-Psychic',
+	ice: 'Silvally-Ice',
+	dragon: 'Silvally-Dragon',
+	dark: 'Silvally-Dark',
+	fairy: 'Silvally-Fairy',
+};
 const CUSTOM_BATTLE_FRONT_SPRITE_MAX_WIDTH = 86;
 const CUSTOM_BATTLE_FRONT_SPRITE_MAX_HEIGHT = 86;
 const CUSTOM_BATTLE_FRONT_MEGA_SPRITE_MAX_WIDTH = 108;
@@ -3801,15 +3827,42 @@ let customAbilityDataTable: AnyObject | null = null;
 let customMoveDataTable: AnyObject | null = null;
 let customTeambuilderDataTable: AnyObject | null = null;
 let customSpeciesDataTable: AnyObject | null = null;
+let customNativeBWSpriteSizes: {[id: string]: AnyObject} = {};
+
+function copySpriteSize(size?: {w?: number, h?: number}) {
+	if (!size?.w || !size?.h) return undefined;
+	return {w: size.w, h: size.h};
+}
+
+function getSpriteSize(data: AnyObject | undefined, isFront: boolean, shiny?: boolean) {
+	if (!data) return undefined;
+	const facing = isFront ? 'front' : 'back';
+	const shinyFacing = isFront ? 'shinyFront' : 'shinyBack';
+	return shiny ? copySpriteSize(data[shinyFacing] || data[facing]) : copySpriteSize(data[facing]);
+}
+
+function getCustomSpriteSize(id: string, customData: AnyObject, isFront: boolean, shiny?: boolean) {
+	return getSpriteSize(customNativeBWSpriteSizes[id], isFront, shiny) || getSpriteSize(customData, isFront, shiny)!;
+}
 
 function ensureCustomBWSpriteData() {
 	if (!window.BattlePokemonSpritesBW) return;
 	if (customBWSpriteDataTable === window.BattlePokemonSpritesBW) return;
+	customNativeBWSpriteSizes = {};
 	for (const id of CUSTOM_BW_SPRITE_IDS) {
-		if (!window.BattlePokemonSpritesBW[id]) {
+		const nativeSpriteData = window.BattlePokemonSpritesBW[id];
+		if (nativeSpriteData) {
+			customNativeBWSpriteSizes[id] = {
+				front: copySpriteSize(nativeSpriteData.front),
+				back: copySpriteSize(nativeSpriteData.back),
+				shinyFront: copySpriteSize(nativeSpriteData.shinyFront),
+				shinyBack: copySpriteSize(nativeSpriteData.shinyBack),
+			};
+		}
+		if (!nativeSpriteData) {
 			window.BattlePokemonSpritesBW[id] = CUSTOM_BW_SPRITES[id];
 		} else {
-			Object.assign(window.BattlePokemonSpritesBW[id], CUSTOM_BW_SPRITES[id]);
+			Object.assign(nativeSpriteData, CUSTOM_BW_SPRITES[id]);
 		}
 	}
 	customBWSpriteDataTable = window.BattlePokemonSpritesBW;
@@ -4398,7 +4451,15 @@ const Dex = new class implements ModdedDex {
 					isDynamax = true;
 				}
 			}
-			pokemon = pokemon.getSpeciesForme() + (isGigantamax ? '-Gmax' : '');
+			const speciesForme = pokemon.getSpeciesForme();
+			const speciesid = toID(speciesForme);
+			let activeSilvallyForme = '';
+			if (speciesid.startsWith('silvally') && pokemon.volatiles.typechange && !pokemon.terastallized) {
+				const typeName = pokemon.volatiles.typechange[1];
+				const typeid = typeName === '???' ? 'unknown' : toID(typeName);
+				activeSilvallyForme = typeid === 'normal' ? 'Silvally' : SILVALLY_TYPE_FORMES[typeid];
+			}
+			pokemon = (activeSilvallyForme || speciesForme) + (isGigantamax ? '-Gmax' : '');
 		}
 		const requestedSpriteid = typeof pokemon === 'string' ? toID(pokemon) : '';
 		const species = Dex.species.get(pokemon);
@@ -4562,16 +4623,12 @@ const Dex = new class implements ModdedDex {
 		}
 		let customSpriteNaturalSize: {w: number, h: number} | undefined;
 		if (customStaticBattleSprite) {
-			const customSpriteSize = options.shiny ?
-				customStaticBattleSprite[isFront ? 'shinyFront' : 'shinyBack'] || customStaticBattleSprite[isFront ? 'front' : 'back'] :
-				customStaticBattleSprite[isFront ? 'front' : 'back'];
+			const customSpriteSize = getCustomSpriteSize(customStaticBattleSpriteid, customStaticBattleSprite, isFront, options.shiny);
 			customSpriteNaturalSize = customSpriteSize;
 			spriteData.w = customSpriteSize.w;
 			spriteData.h = customSpriteSize.h;
 		} else if (customBWSprite && spriteData.gen === 5) {
-			const customSpriteSize = options.shiny ?
-				customBWSprite[isFront ? 'shinyFront' : 'shinyBack'] || customBWSprite[isFront ? 'front' : 'back'] :
-				customBWSprite[isFront ? 'front' : 'back'];
+			const customSpriteSize = getCustomSpriteSize(speciesid, customBWSprite, isFront, options.shiny);
 			customSpriteNaturalSize = customSpriteSize;
 			spriteData.w = customSpriteSize.w;
 			spriteData.h = customSpriteSize.h;
@@ -4731,6 +4788,7 @@ const Dex = new class implements ModdedDex {
 	}
 
 	getTeambuilderSpriteData(pokemon: any, gen: number = 0): TeambuilderSpriteData {
+		ensureCustomBWSpriteData();
 		let id = toID(pokemon.species);
 		let spriteid = pokemon.spriteid;
 		let species = Dex.species.get(pokemon.species);
@@ -4774,9 +4832,9 @@ const Dex = new class implements ModdedDex {
 			spriteData.spriteDir = 'sprites/gen5';
 			const customStaticData = CUSTOM_STATIC_BATTLE_SPRITES[id];
 			const customBWData = CUSTOM_BW_SPRITES[id];
-			const spriteDimensions = pokemon.shiny ?
-				(customStaticData?.shinyFront || customBWData?.shinyFront || customStaticData?.front || customBWData?.front) :
-				(customStaticData?.front || customBWData?.front);
+			const spriteDimensions = customStaticData ?
+				getCustomSpriteSize(id, customStaticData, true, pokemon.shiny) :
+				customBWData ? getCustomSpriteSize(id, customBWData, true, pokemon.shiny) : undefined;
 			if (spriteDimensions) {
 				const sizeOverride = CUSTOM_TEAMBUILDER_SPRITE_SIZE_OVERRIDES[id];
 				const isLargeCustomForm = id.includes('mega') || id.includes('gmax') || id.includes('battlebond');
@@ -4835,9 +4893,9 @@ const Dex = new class implements ModdedDex {
 		if (spriteData.spriteDir === 'sprites/gen5') {
 			const customStaticData = CUSTOM_STATIC_BATTLE_SPRITES[id];
 			const customBWData = CUSTOM_BW_SPRITES[id];
-			const spriteDimensions = pokemon.shiny ?
-				(customStaticData?.shinyFront || customBWData?.shinyFront || customStaticData?.front || customBWData?.front) :
-				(customStaticData?.front || customBWData?.front);
+			const spriteDimensions = customStaticData ?
+				getCustomSpriteSize(id, customStaticData, true, pokemon.shiny) :
+				customBWData ? getCustomSpriteSize(id, customBWData, true, pokemon.shiny) : undefined;
 			if (spriteDimensions) {
 				const sizeOverride = CUSTOM_TEAMBUILDER_SPRITE_SIZE_OVERRIDES[id];
 				const isLargeCustomForm = id.includes('mega') || id.includes('gmax') || id.includes('battlebond');

@@ -2540,6 +2540,9 @@ export class Battle {
 					if (!kwArgs.silent) {
 						this.scene.typeAnim(poke, types);
 					}
+					if (toID(poke.getSpeciesForme()).startsWith('silvally')) {
+						this.scene.animTransform(poke);
+					}
 				}
 				this.scene.updateStatbar(poke);
 				break;
