@@ -26,6 +26,15 @@ declare const BattleSearchIndex: [ID, SearchType, number?, number?][];
 declare const BattleSearchIndexOffset: any;
 declare const BattleTeambuilderTable: any;
 
+const CUSTOM_CAN_LEARN_OVERRIDES: {[speciesid: string]: {[moveid: string]: true}} = {
+	blastoise: {electroshot: true},
+	clawitzer: {electroshot: true},
+	meowstic: {aurasphere: true, drainingkiss: true, vacuumwave: true},
+	meowsticf: {aurasphere: true, drainingkiss: true, vacuumwave: true},
+	meowsticmmega: {aurasphere: true, drainingkiss: true, vacuumwave: true},
+	meowsticfmega: {aurasphere: true, drainingkiss: true, vacuumwave: true},
+};
+
 /**
  * Backend for search UIs.
  */
@@ -773,6 +782,13 @@ abstract class BattleTypedSearch<T extends SearchType> {
 		const move = this.dex.moves.get(moveid);
 		if (this.formatType === 'natdex' && move.isNonstandard && move.isNonstandard !== 'Past') {
 			return false;
+		}
+		const species = this.dex.species.get(speciesid);
+		if (
+			CUSTOM_CAN_LEARN_OVERRIDES[speciesid]?.[moveid] ||
+			CUSTOM_CAN_LEARN_OVERRIDES[toID(species.baseSpecies)]?.[moveid]
+		) {
+			return true;
 		}
 		const gen = this.dex.gen;
 		let genChar = `${gen}`;
