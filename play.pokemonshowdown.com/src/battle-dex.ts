@@ -592,7 +592,6 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 };
 
 const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
-	garchomp: 'garchomp',
 	garchompmega: 'garchomp-mega',
 	flygonmegaz: 'flygon-megaz',
 	garchompmegaz: 'garchomp-megaz',
@@ -795,7 +794,6 @@ const CUSTOM_TEAMBUILDER_SPRITES: {[id: string]: {x: number, y: number, backgrou
 	mismagiusmega: {x: 9, y: 3, backgroundSize: '78px auto'},
 	absolmegaz: {x: 9, y: 3, backgroundSize: '78px auto'},
 	ursalunabloodmoon: {x: 9, y: 3, backgroundSize: '78px auto'},
-	garchomp: {x: 9, y: 7, backgroundSize: '78px auto'},
 	garchompmega: {x: 5, y: 13, backgroundSize: '86px auto'},
 	garchompmegaz: {x: 7, y: 8, backgroundSize: '82px auto'},
 	garchompbattlebond: {x: 7, y: 13, backgroundSize: '82px auto'},
@@ -814,10 +812,6 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 	sableyemega: {
 		front: {w: 112, h: 120},
 		back: {w: 74, h: 128},
-	},
-	pinsir: {
-		front: {w: 142, h: 124},
-		back: {w: 136, h: 120},
 	},
 	pinsirmega: {
 		front: {w: 184, h: 140},
@@ -991,10 +985,6 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 	mismagiusmega: {
 		front: {w: 186, h: 186},
 		back: {w: 184, h: 186},
-	},
-	garchomp: {
-		front: {w: 146, h: 152},
-		back: {w: 152, h: 146},
 	},
 	garchompmega: {
 		front: {w: 186, h: 150},
@@ -1664,11 +1654,6 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 		front: {w: 112, h: 120},
 		back: {w: 74, h: 128},
 	},
-	pinsir: {
-		num: 127,
-		front: {w: 142, h: 124},
-		back: {w: 136, h: 120},
-	},
 	pinsirmega: {
 		num: 127,
 		front: {w: 184, h: 140},
@@ -2159,9 +2144,9 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	},
 	houndoom: {
 		num: 229,
-		front: {w: 100, h: 132},
-		back: {w: 102, h: 130},
-		shinyBack: {w: 104, h: 130},
+		front: {w: 130, h: 134},
+		back: {w: 132, h: 132},
+		shinyBack: {w: 132, h: 132},
 	},
 	houndoommega: {
 		num: 229,
@@ -2260,11 +2245,6 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 		num: 330,
 		front: {w: 54, h: 54},
 		back: {w: 72, h: 72},
-	},
-	garchomp: {
-		num: 445,
-		front: {w: 146, h: 152},
-		back: {w: 152, h: 146},
 	},
 	garchompmega: {
 		num: 445,
@@ -2816,7 +2796,7 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	glaliemega: {
 		num: 362,
 		front: {w: 120, h: 142},
-		back: {w: 120, h: 142},
+		back: {w: 118, h: 140},
 	},
 	hawlucha: {
 		num: 701,
@@ -3015,6 +2995,30 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 	jolteon: {
 		abilities: {0: 'Lightning Rod', 1: 'Battery', H: 'Voltage Volley'},
 	},
+	starmiemega: {
+		abilities: {0: 'Astral Core'},
+	},
+	meowstic: {
+		types: ['Psychic', 'Fairy'],
+	},
+	meowsticf: {
+		types: ['Psychic', 'Dark'],
+	},
+	meowsticmmega: {
+		types: ['Psychic', 'Fairy'],
+	},
+	meowsticfmega: {
+		types: ['Psychic', 'Dark'],
+	},
+	quagsire: {
+		abilities: {0: 'Neutralization', 1: 'Water Absorb', H: 'Unaware'},
+	},
+	clodsire: {
+		abilities: {0: 'Neutralization', 1: 'Water Absorb', H: 'Unaware'},
+	},
+	ariados: {
+		baseStats: {hp: 80, atk: 110, def: 100, spa: 35, spd: 100, spe: 50},
+	},
 	archeops: {
 		abilities: {0: 'Defeatist', 1: 'Relic Instinct', H: 'Fossil Frenzy'},
 	},
@@ -3161,6 +3165,26 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 		desc: 'This Pokemon cannot be burned and is immune to Hail and Sandstorm damage. Gaining this Ability while burned cures it. On switch-in, it gains Aqua Ring.',
 		shortDesc: 'Cannot be burned; immune to Hail/Sandstorm; gains Aqua Ring.',
 	},
+	astralcore: {
+		name: 'Astral Core',
+		desc: "This Pokemon has Natural Cure, Pure Power, Illuminate, and Defragment's effects.",
+		shortDesc: 'Natural Cure + Pure Power + Illuminate + Defragment.',
+	},
+	lunarorbit: {
+		name: 'Lunar Orbit',
+		desc: "This Pokemon has Magic Bounce and Serene Grace. On switch-in, it sets Gravity for 5 turns. This Pokemon is immune to Gravity's negative effects: it is not grounded, its Ground immunity is not removed, and it can still use moves normally restricted by Gravity. This Pokemon also benefits from Metronome's focused mode.",
+		shortDesc: 'Magic Bounce + Serene Grace; sets Gravity; benefits from focused Metronome.',
+	},
+	spiralevolution: {
+		name: 'Spiral Evolution',
+		desc: "This Pokemon has built-in Adaptability and Hydra Bond, cannot flinch, takes half damage from priority moves, and its damaging moves hit through protection for half damage. In Trick Room, its non-priority moves act before other non-priority moves. Twineedle has double power and a 50% chance to be a critical hit; in multi battles it hits all adjacent foes once, and if Twineedle or Double Hit have some targets protected, protected hits focus into unprotected foes like Dragon Darts.",
+		shortDesc: 'Adaptability + Hydra Bond; reduced Protect-pierce; no flinch; Twineedle/Double Hit focus.',
+	},
+	ragingfists: {
+		name: 'Raging Fists',
+		desc: "This Pokemon has Scrappy, Hydra Bond, Unseen Fist, and Skill Link's effects.",
+		shortDesc: 'Scrappy + Hydra Bond + Unseen Fist + Skill Link.',
+	},
 	imperialmandate: {
 		name: 'Imperial Mandate',
 		shortDesc: 'This Pokemon has Imperial Mandate.',
@@ -3191,6 +3215,11 @@ const CUSTOM_MOVE_UPDATES: {[id: string]: AnyObject} = {
 		},
 		desc: 'Hits twice. Has an increased critical hit ratio. Each hit has a 30% chance to make the target flinch.',
 		shortDesc: 'Hits 2 times. High crit ratio. 30% flinch each hit.',
+	},
+	ceaselessedge: {
+		name: 'Ceaseless Edge',
+		desc: 'If this move is successful, it sets up a layer of Spikes on the opposing side and gives the hit target Splinter for 3 turns. Splinter deals residual damage based on a 25 Base Power Dark-type physical attack from the original user, applying type effectiveness but no random damage variance.',
+		shortDesc: 'Sets Spikes. Target takes 3 turns of Splinter.',
 	},
 	bonerush: {
 		name: 'Bone Rush',
@@ -3246,6 +3275,16 @@ const CUSTOM_MOVE_UPDATES: {[id: string]: AnyObject} = {
 		desc: 'Has a 50% chance to lower the target\'s Defense by 1 stage.',
 		shortDesc: 'Rock type. 50% chance to lower Defense by 1.',
 	},
+	needlearm: {
+		name: 'Needle Arm',
+		desc: 'Has a 30% chance to make the target flinch. If this move hits, the target takes Splinter residual damage for 3 turns based on a 25 Base Power Grass-type physical attack from the original user, applying type effectiveness but no random damage variance.',
+		shortDesc: '30% flinch. Target takes 3 turns of Splinter.',
+	},
+	pinmissile: {
+		name: 'Pin Missile',
+		desc: 'Hits three to five times. If this move hits, the target takes Splinter residual damage for 3 turns based on a 25 Base Power Bug-type physical attack from the original user, applying type effectiveness but no random damage variance. If the user has the Skill Link Ability, this move will always hit five times. If the user is holding Loaded Dice, this move will hit 5-6 times.',
+		shortDesc: 'Hits 3-5 times. Target takes 3 turns of Splinter.',
+	},
 	spikecannon: {
 		name: 'Spike Cannon',
 		accuracy: 100,
@@ -3255,6 +3294,11 @@ const CUSTOM_MOVE_UPDATES: {[id: string]: AnyObject} = {
 		critRatio: 2,
 		desc: 'Hits 3 to 5 times. Has an increased critical hit ratio.',
 		shortDesc: 'Steel; hits 3-5 times. High crit ratio.',
+	},
+	stoneaxe: {
+		name: 'Stone Axe',
+		desc: 'If this move is successful, it sets Stealth Rock on the opposing side and gives the hit target Splinter for 3 turns. Splinter deals residual damage based on a 25 Base Power Rock-type physical attack from the original user, applying type effectiveness but no random damage variance.',
+		shortDesc: 'Sets Stealth Rock. Target takes Splinter.',
 	},
 	supercellslam: {
 		name: 'Supercell Slam',
@@ -3437,6 +3481,16 @@ const CUSTOM_LEARNSET_ADDITIONS: {[id: string]: {[id: string]: string[]}} = {
 	blastoise: {
 		electroshot: ['9M'],
 	},
+	meowstic: {
+		aurasphere: ['9M'],
+		drainingkiss: ['9M'],
+		vacuumwave: ['9M'],
+	},
+	meowsticf: {
+		aurasphere: ['9M'],
+		drainingkiss: ['9M'],
+		vacuumwave: ['9M'],
+	},
 	sandslash: {
 		spikecannon: ['9M'],
 	},
@@ -3571,18 +3625,45 @@ const SILVALLY_TYPE_FORMES: {[id: string]: string} = {
 	dark: 'Silvally-Dark',
 	fairy: 'Silvally-Fairy',
 };
+const SILVALLY_FORME_TYPES: {[id: string]: string} = {
+	silvallyfighting: 'fighting',
+	silvallyflying: 'flying',
+	silvallypoison: 'poison',
+	silvallyground: 'ground',
+	silvallyrock: 'rock',
+	silvallybug: 'bug',
+	silvallyghost: 'ghost',
+	silvallysteel: 'steel',
+	silvallyunknown: 'unknown',
+	silvallyfire: 'fire',
+	silvallywater: 'water',
+	silvallygrass: 'grass',
+	silvallyelectric: 'electric',
+	silvallypsychic: 'psychic',
+	silvallyice: 'ice',
+	silvallydragon: 'dragon',
+	silvallydark: 'dark',
+	silvallyfairy: 'fairy',
+};
 const CUSTOM_BATTLE_FRONT_SPRITE_MAX_WIDTH = 86;
 const CUSTOM_BATTLE_FRONT_SPRITE_MAX_HEIGHT = 86;
-const CUSTOM_BATTLE_FRONT_MEGA_SPRITE_MAX_WIDTH = 108;
-const CUSTOM_BATTLE_FRONT_MEGA_SPRITE_MAX_HEIGHT = 108;
+const CUSTOM_BATTLE_FRONT_MEGA_SPRITE_MAX_WIDTH = 98;
+const CUSTOM_BATTLE_FRONT_MEGA_SPRITE_MAX_HEIGHT = 98;
+const CUSTOM_BATTLE_FRONT_GMAX_SPRITE_MAX_WIDTH = 122;
+const CUSTOM_BATTLE_FRONT_GMAX_SPRITE_MAX_HEIGHT = 122;
 const CUSTOM_BATTLE_BACK_SPRITE_MAX_WIDTH = 96;
 const CUSTOM_BATTLE_BACK_SPRITE_MAX_HEIGHT = 96;
-const CUSTOM_BATTLE_BACK_MEGA_SPRITE_MAX_WIDTH = 112;
-const CUSTOM_BATTLE_BACK_MEGA_SPRITE_MAX_HEIGHT = 112;
+const CUSTOM_BATTLE_BACK_MEGA_SPRITE_MAX_WIDTH = 98;
+const CUSTOM_BATTLE_BACK_MEGA_SPRITE_MAX_HEIGHT = 98;
+const CUSTOM_BATTLE_BACK_GMAX_SPRITE_MAX_WIDTH = 130;
+const CUSTOM_BATTLE_BACK_GMAX_SPRITE_MAX_HEIGHT = 130;
 const CUSTOM_BATTLE_FRONT_MEDIUM_SPRITE_MAX_WIDTH = 82;
 const CUSTOM_BATTLE_FRONT_MEDIUM_SPRITE_MAX_HEIGHT = 82;
 const CUSTOM_BATTLE_BACK_MEDIUM_SPRITE_MAX_WIDTH = 82;
 const CUSTOM_BATTLE_BACK_MEDIUM_SPRITE_MAX_HEIGHT = 82;
+const NATIVE_BATTLE_SPRITE_SIZE_OVERRIDES: {[id: string]: {front?: {w: number, h: number}, back?: {w: number, h: number}}} = {
+	garchomp: {back: {w: 112, h: 112}},
+};
 const CUSTOM_TEAM_PREVIEW_FRONT_SPRITE_MAX_WIDTH = 66;
 const CUSTOM_TEAM_PREVIEW_FRONT_SPRITE_MAX_HEIGHT = 66;
 const CUSTOM_TEAM_PREVIEW_FRONT_MEGA_SPRITE_MAX_WIDTH = 78;
@@ -3632,8 +3713,8 @@ const CUSTOM_BATTLE_FRONT_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: n
 	gardevoirvoidmega: {w: 116, h: 116},
 	flareon: {w: 110, h: 110},
 	glaceon: {w: 110, h: 110},
-	glalie: {w: 68, h: 68},
-	glaliemega: {w: 82, h: 82},
+	glalie: {w: 62, h: 62},
+	glaliemega: {w: 74, h: 74},
 	hydreigon: {w: 100, h: 100},
 	infernapealt: {w: 84, h: 84},
 	jolteon: {w: 110, h: 110},
@@ -3697,9 +3778,12 @@ const CUSTOM_BATTLE_BACK_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: nu
 	gardevoirvoid: {w: 132, h: 132},
 	gardevoirvoidmega: {w: 132, h: 132},
 	flareon: {w: 108, h: 108},
+	garchompmega: {w: 90, h: 90},
+	garchompmegaz: {w: 92, h: 92},
+	garchompbattlebond: {w: 92, h: 92},
 	glaceon: {w: 108, h: 108},
-	glalie: {w: 72, h: 72},
-	glaliemega: {w: 88, h: 88},
+	glalie: {w: 66, h: 66},
+	glaliemega: {w: 78, h: 78},
 	indeedee: {w: 80, h: 80},
 	indeedeef: {w: 80, h: 80},
 	hydreigon: {w: 118, h: 118},
@@ -3715,6 +3799,8 @@ const CUSTOM_BATTLE_BACK_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: nu
 	ninetales: {w: 100, h: 100},
 	ninetalesalola: {w: 84, h: 84},
 	palafinhero: {w: 116, h: 116},
+	pidgeot: {w: 84, h: 84},
+	pidgeotmega: {w: 92, h: 92},
 	perrserker: {w: 62, h: 62},
 	ribombee: {w: 60, h: 60},
 	sableye: {w: 134, h: 134},
@@ -3739,8 +3825,11 @@ const CUSTOM_BATTLE_BACK_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: nu
 	aurorus: {w: 104, h: 104},
 	tyrantrum: {w: 104, h: 104},
 	torterraalt: {w: 98, h: 98},
+	talonflame: {w: 84, h: 84},
 	venusaur: {w: 88, h: 88},
 	venusaurmega: {w: 100, h: 100},
+	victreebel: {w: 74, h: 74},
+	victreebelmega: {w: 84, h: 84},
 	sylveon: {w: 108, h: 108},
 	umbreon: {w: 108, h: 108},
 	vaporeon: {w: 108, h: 108},
@@ -3754,6 +3843,13 @@ const CUSTOM_TEAMBUILDER_SPRITE_MAX_WIDTH = 78;
 const CUSTOM_TEAMBUILDER_SPRITE_MAX_HEIGHT = 86;
 const CUSTOM_TEAMBUILDER_MEDIUM_SPRITE_MAX_WIDTH = 76;
 const CUSTOM_TEAMBUILDER_MEDIUM_SPRITE_MAX_HEIGHT = 76;
+const CUSTOM_TEAMBUILDER_LARGE_SPRITE_MAX_WIDTH = 82;
+const CUSTOM_TEAMBUILDER_LARGE_SPRITE_MAX_HEIGHT = 82;
+const CUSTOM_TEAMBUILDER_GMAX_SPRITE_MAX_WIDTH = 86;
+const CUSTOM_TEAMBUILDER_GMAX_SPRITE_MAX_HEIGHT = 86;
+const CUSTOM_TEAMBUILDER_OVERRIDE_MAX_WIDTH = 86;
+const CUSTOM_TEAMBUILDER_OVERRIDE_MAX_HEIGHT = 86;
+const CUSTOM_TEAMBUILDER_MAX_UPSCALE = 1.12;
 const CUSTOM_TEAMBUILDER_SPRITE_Y_OFFSET = 4;
 const CUSTOM_TEAMBUILDER_SPRITE_Y_OFFSETS: {[id: string]: number} = {
 	sableye: 18,
@@ -3815,6 +3911,31 @@ const CUSTOM_TEAMBUILDER_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: nu
 	zoroark: {w: 74, h: 74},
 	zoroarkhisui: {w: 74, h: 74},
 };
+
+function applyCustomTeambuilderSpriteSizing(spriteData: SpriteData, id: string, spriteDimensions: {w: number, h: number}) {
+	const sizeOverride = CUSTOM_TEAMBUILDER_SPRITE_SIZE_OVERRIDES[id];
+	const isGmaxCustomForm = id.includes('gmax');
+	const isLargeCustomForm = id.includes('mega') || isGmaxCustomForm || id.includes('battlebond');
+	const isMediumCustomForm = !sizeOverride && !isLargeCustomForm &&
+		Math.max(spriteDimensions.w, spriteDimensions.h) >= CUSTOM_MEDIUM_SPRITE_MIN_DIMENSION &&
+		Math.max(spriteDimensions.w, spriteDimensions.h) <= CUSTOM_MEDIUM_SPRITE_MAX_DIMENSION;
+	const defaultMaxWidth = isGmaxCustomForm ? CUSTOM_TEAMBUILDER_GMAX_SPRITE_MAX_WIDTH :
+		isLargeCustomForm ? CUSTOM_TEAMBUILDER_LARGE_SPRITE_MAX_WIDTH :
+		isMediumCustomForm ? CUSTOM_TEAMBUILDER_MEDIUM_SPRITE_MAX_WIDTH : CUSTOM_TEAMBUILDER_SPRITE_MAX_WIDTH;
+	const defaultMaxHeight = isGmaxCustomForm ? CUSTOM_TEAMBUILDER_GMAX_SPRITE_MAX_HEIGHT :
+		isLargeCustomForm ? CUSTOM_TEAMBUILDER_LARGE_SPRITE_MAX_HEIGHT :
+		isMediumCustomForm ? CUSTOM_TEAMBUILDER_MEDIUM_SPRITE_MAX_HEIGHT : CUSTOM_TEAMBUILDER_SPRITE_MAX_HEIGHT;
+	const targetWidth = sizeOverride?.w ? Math.min(sizeOverride.w, CUSTOM_TEAMBUILDER_OVERRIDE_MAX_WIDTH) : defaultMaxWidth;
+	const targetHeight = sizeOverride?.h ? Math.min(sizeOverride.h, CUSTOM_TEAMBUILDER_OVERRIDE_MAX_HEIGHT) : defaultMaxHeight;
+	let scale = Math.min(targetWidth / spriteDimensions.w, targetHeight / spriteDimensions.h);
+	if (!sizeOverride) scale = Math.min(scale, CUSTOM_TEAMBUILDER_MAX_UPSCALE);
+	const width = Math.max(1, Math.round(spriteDimensions.w * scale));
+	const height = Math.max(1, Math.round(spriteDimensions.h * scale));
+	spriteData.x = Math.round((96 - width) / 2);
+	spriteData.y = Math.round((86 - height) / 2) + CUSTOM_TEAMBUILDER_SPRITE_Y_OFFSET +
+		(CUSTOM_TEAMBUILDER_SPRITE_Y_OFFSETS[id] || 0);
+	spriteData.backgroundSize = `${width}px auto`;
+}
 const CUSTOM_ABILITY_UPDATE_IDS = Object.keys(CUSTOM_ABILITY_UPDATES);
 const CUSTOM_MOVE_UPDATE_IDS = Object.keys(CUSTOM_MOVE_UPDATES);
 const CUSTOM_LEARNSET_REPLACEMENT_IDS = Object.keys(CUSTOM_LEARNSET_REPLACEMENTS);
@@ -4483,8 +4604,9 @@ const Dex = new class implements ModdedDex {
 			const speciesForme = pokemon.getSpeciesForme();
 			const speciesid = toID(speciesForme);
 			let activeSilvallyForme = '';
-			if (speciesid.startsWith('silvally') && pokemon.volatiles.typechange && !pokemon.terastallized) {
-				const typeName = pokemon.volatiles.typechange[1];
+			if (speciesid.startsWith('silvally') && !pokemon.terastallized) {
+				const [types] = pokemon.getTypes();
+				const typeName = pokemon.volatiles.typechange?.[1] || types[0];
 				const typeid = typeName === '???' ? 'unknown' : toID(typeName);
 				activeSilvallyForme = typeid === 'normal' ? 'Silvally' : SILVALLY_TYPE_FORMES[typeid];
 			}
@@ -4507,6 +4629,7 @@ const Dex = new class implements ModdedDex {
 			shiny: options.shiny,
 		};
 		let name = species.spriteid;
+		if (requestedSpriteid && SILVALLY_FORME_TYPES[requestedSpriteid]) name = CUSTOM_ICON_SPRITES[requestedSpriteid] || requestedSpriteid;
 		if (requestedSpriteid && CUSTOM_STATIC_BATTLE_SPRITES[requestedSpriteid]) name = requestedSpriteid;
 		if (CUSTOM_ICON_SPRITES[species.id]) name = CUSTOM_ICON_SPRITES[species.id] as ID;
 		let dir;
@@ -4540,6 +4663,7 @@ const Dex = new class implements ModdedDex {
 		let animationData = null;
 		let miscData = null;
 		let speciesid = species.id;
+		if (requestedSpriteid && SILVALLY_FORME_TYPES[requestedSpriteid]) speciesid = requestedSpriteid;
 		if (requestedSpriteid && CUSTOM_STATIC_BATTLE_SPRITES[requestedSpriteid]) speciesid = requestedSpriteid;
 		if (species.isTotem) speciesid = toID(name);
 		if (baseDir === '' && window.BattlePokemonSprites) {
@@ -4678,6 +4802,16 @@ const Dex = new class implements ModdedDex {
 			}
 			if (spriteData.gen <= 2) spriteData.y += 2;
 		}
+		if (!options.noScale && !customStaticBattleSprite && !customBWSprite && !isDynamax) {
+			const nativeBattleSpriteMaxSize = NATIVE_BATTLE_SPRITE_SIZE_OVERRIDES[speciesid]?.[isFront ? 'front' : 'back'];
+			if (nativeBattleSpriteMaxSize) {
+				const scale = Math.min(nativeBattleSpriteMaxSize.w / spriteData.w, nativeBattleSpriteMaxSize.h / spriteData.h);
+				if (scale < 1) {
+					spriteData.w = Math.round(spriteData.w * scale);
+					spriteData.h = Math.round(spriteData.h * scale);
+				}
+			}
+		}
 		if (options.teamPreview && (customStaticBattleSprite || customBWSprite) && !isDynamax) {
 			const isLargeCustomForm = speciesid.includes('mega') ||
 				speciesid.includes('battlebond');
@@ -4713,20 +4847,25 @@ const Dex = new class implements ModdedDex {
 					CUSTOM_BATTLE_FRONT_SPRITE_SIZE_OVERRIDES[speciesid]) :
 				(CUSTOM_BATTLE_BACK_SPRITE_SIZE_OVERRIDES[customStaticBattleSpriteid] ||
 					CUSTOM_BATTLE_BACK_SPRITE_SIZE_OVERRIDES[speciesid]);
+			const isGmaxCustomForm = speciesid.includes('gmax');
 			const isLargeCustomForm = speciesid.includes('mega') ||
-				speciesid.includes('gmax') || speciesid.includes('battlebond');
+				isGmaxCustomForm || speciesid.includes('battlebond');
 			const isMediumCustomForm = !isLargeCustomForm && customSpriteNaturalSize &&
 				Math.max(customSpriteNaturalSize.w, customSpriteNaturalSize.h) >= CUSTOM_MEDIUM_SPRITE_MIN_DIMENSION &&
 				Math.max(customSpriteNaturalSize.w, customSpriteNaturalSize.h) <= CUSTOM_MEDIUM_SPRITE_MAX_DIMENSION;
 			const defaultMaxWidth = isFront ?
-				(isLargeCustomForm ? CUSTOM_BATTLE_FRONT_MEGA_SPRITE_MAX_WIDTH :
+				(isGmaxCustomForm ? CUSTOM_BATTLE_FRONT_GMAX_SPRITE_MAX_WIDTH :
+					isLargeCustomForm ? CUSTOM_BATTLE_FRONT_MEGA_SPRITE_MAX_WIDTH :
 					isMediumCustomForm ? CUSTOM_BATTLE_FRONT_MEDIUM_SPRITE_MAX_WIDTH : CUSTOM_BATTLE_FRONT_SPRITE_MAX_WIDTH) :
-				(isLargeCustomForm ? CUSTOM_BATTLE_BACK_MEGA_SPRITE_MAX_WIDTH :
+				(isGmaxCustomForm ? CUSTOM_BATTLE_BACK_GMAX_SPRITE_MAX_WIDTH :
+					isLargeCustomForm ? CUSTOM_BATTLE_BACK_MEGA_SPRITE_MAX_WIDTH :
 					isMediumCustomForm ? CUSTOM_BATTLE_BACK_MEDIUM_SPRITE_MAX_WIDTH : CUSTOM_BATTLE_BACK_SPRITE_MAX_WIDTH);
 			const defaultMaxHeight = isFront ?
-				(isLargeCustomForm ? CUSTOM_BATTLE_FRONT_MEGA_SPRITE_MAX_HEIGHT :
+				(isGmaxCustomForm ? CUSTOM_BATTLE_FRONT_GMAX_SPRITE_MAX_HEIGHT :
+					isLargeCustomForm ? CUSTOM_BATTLE_FRONT_MEGA_SPRITE_MAX_HEIGHT :
 					isMediumCustomForm ? CUSTOM_BATTLE_FRONT_MEDIUM_SPRITE_MAX_HEIGHT : CUSTOM_BATTLE_FRONT_SPRITE_MAX_HEIGHT) :
-				(isLargeCustomForm ? CUSTOM_BATTLE_BACK_MEGA_SPRITE_MAX_HEIGHT :
+				(isGmaxCustomForm ? CUSTOM_BATTLE_BACK_GMAX_SPRITE_MAX_HEIGHT :
+					isLargeCustomForm ? CUSTOM_BATTLE_BACK_MEGA_SPRITE_MAX_HEIGHT :
 					isMediumCustomForm ? CUSTOM_BATTLE_BACK_MEDIUM_SPRITE_MAX_HEIGHT : CUSTOM_BATTLE_BACK_SPRITE_MAX_HEIGHT);
 			const scale = Math.min(
 				(battleSpriteMaxSize?.w || defaultMaxWidth) / spriteData.w,
@@ -4865,23 +5004,7 @@ const Dex = new class implements ModdedDex {
 				getCustomSpriteSize(id, customStaticData, true, pokemon.shiny) :
 				customBWData ? getCustomSpriteSize(id, customBWData, true, pokemon.shiny) : undefined;
 			if (spriteDimensions) {
-				const sizeOverride = CUSTOM_TEAMBUILDER_SPRITE_SIZE_OVERRIDES[id];
-				const isLargeCustomForm = id.includes('mega') || id.includes('gmax') || id.includes('battlebond');
-				const isMediumCustomForm = !sizeOverride && !isLargeCustomForm &&
-					Math.max(spriteDimensions.w, spriteDimensions.h) >= CUSTOM_MEDIUM_SPRITE_MIN_DIMENSION &&
-					Math.max(spriteDimensions.w, spriteDimensions.h) <= CUSTOM_MEDIUM_SPRITE_MAX_DIMENSION;
-				const scale = Math.min(
-					(sizeOverride?.w || (isMediumCustomForm ?
-						CUSTOM_TEAMBUILDER_MEDIUM_SPRITE_MAX_WIDTH : CUSTOM_TEAMBUILDER_SPRITE_MAX_WIDTH)) / spriteDimensions.w,
-					(sizeOverride?.h || (isMediumCustomForm ?
-						CUSTOM_TEAMBUILDER_MEDIUM_SPRITE_MAX_HEIGHT : CUSTOM_TEAMBUILDER_SPRITE_MAX_HEIGHT)) / spriteDimensions.h
-				);
-				const width = Math.max(1, Math.round(spriteDimensions.w * scale));
-				const height = Math.max(1, Math.round(spriteDimensions.h * scale));
-				spriteData.x = Math.round((96 - width) / 2);
-				spriteData.y = Math.round((86 - height) / 2) + CUSTOM_TEAMBUILDER_SPRITE_Y_OFFSET +
-					(CUSTOM_TEAMBUILDER_SPRITE_Y_OFFSETS[id] || 0);
-				spriteData.backgroundSize = `${width}px auto`;
+				applyCustomTeambuilderSpriteSizing(spriteData, id, spriteDimensions);
 			} else {
 				const customSpriteData = CUSTOM_TEAMBUILDER_SPRITES[id] || {x: 12, y: 10, backgroundSize: '72px auto'};
 				spriteData.x = customSpriteData.x;
@@ -4926,23 +5049,7 @@ const Dex = new class implements ModdedDex {
 				getCustomSpriteSize(id, customStaticData, true, pokemon.shiny) :
 				customBWData ? getCustomSpriteSize(id, customBWData, true, pokemon.shiny) : undefined;
 			if (spriteDimensions) {
-				const sizeOverride = CUSTOM_TEAMBUILDER_SPRITE_SIZE_OVERRIDES[id];
-				const isLargeCustomForm = id.includes('mega') || id.includes('gmax') || id.includes('battlebond');
-				const isMediumCustomForm = !sizeOverride && !isLargeCustomForm &&
-					Math.max(spriteDimensions.w, spriteDimensions.h) >= CUSTOM_MEDIUM_SPRITE_MIN_DIMENSION &&
-					Math.max(spriteDimensions.w, spriteDimensions.h) <= CUSTOM_MEDIUM_SPRITE_MAX_DIMENSION;
-				const scale = Math.min(
-					(sizeOverride?.w || (isMediumCustomForm ?
-						CUSTOM_TEAMBUILDER_MEDIUM_SPRITE_MAX_WIDTH : CUSTOM_TEAMBUILDER_SPRITE_MAX_WIDTH)) / spriteDimensions.w,
-					(sizeOverride?.h || (isMediumCustomForm ?
-						CUSTOM_TEAMBUILDER_MEDIUM_SPRITE_MAX_HEIGHT : CUSTOM_TEAMBUILDER_SPRITE_MAX_HEIGHT)) / spriteDimensions.h
-				);
-				const width = Math.max(1, Math.round(spriteDimensions.w * scale));
-				const height = Math.max(1, Math.round(spriteDimensions.h * scale));
-				spriteData.x = Math.round((96 - width) / 2);
-				spriteData.y = Math.round((86 - height) / 2) + CUSTOM_TEAMBUILDER_SPRITE_Y_OFFSET +
-					(CUSTOM_TEAMBUILDER_SPRITE_Y_OFFSETS[id] || 0);
-				spriteData.backgroundSize = `${width}px auto`;
+				applyCustomTeambuilderSpriteSizing(spriteData, id, spriteDimensions);
 			}
 		}
 		return spriteData;
