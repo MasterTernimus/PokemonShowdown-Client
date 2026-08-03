@@ -853,8 +853,8 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 		back: {w: 96, h: 96},
 	},
 	greninjaash: {
-		front: {w: 192, h: 192},
-		back: {w: 192, h: 192},
+		front: {w: 158, h: 138},
+		back: {w: 162, h: 136},
 	},
 	metagrossmega: {
 		front: {w: 192, h: 192},
@@ -1309,12 +1309,12 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 		back: {w: 184, h: 130},
 	},
 	weavile: {
-		front: {w: 112, h: 120},
-		back: {w: 88, h: 122},
+		front: {w: 120, h: 128},
+		back: {w: 96, h: 130},
 	},
 	weavilef: {
-		front: {w: 112, h: 120},
-		back: {w: 88, h: 122},
+		front: {w: 120, h: 128},
+		back: {w: 96, h: 130},
 	},
 	espeon: {
 		front: {w: 100, h: 106},
@@ -1377,10 +1377,10 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 		back: {w: 114, h: 192},
 	},
 	hydreigon: {
-		front: {w: 160, h: 156},
-		back: {w: 150, h: 160},
-		shinyFront: {w: 172, h: 166},
-		shinyBack: {w: 162, h: 172},
+		front: {w: 148, h: 145},
+		back: {w: 140, h: 150},
+		shinyFront: {w: 156, h: 150},
+		shinyBack: {w: 150, h: 158},
 	},
 	infernape: {
 		front: {w: 148, h: 110},
@@ -2355,15 +2355,15 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	},
 	weavile: {
 		num: 461,
-		front: {w: 112, h: 120},
-		back: {w: 88, h: 122},
-		frontf: {w: 112, h: 120},
-		backf: {w: 88, h: 122},
+		front: {w: 120, h: 128},
+		back: {w: 96, h: 130},
+		frontf: {w: 120, h: 128},
+		backf: {w: 96, h: 130},
 	},
 	weavilef: {
 		num: 461,
-		front: {w: 112, h: 120},
-		back: {w: 88, h: 122},
+		front: {w: 120, h: 128},
+		back: {w: 96, h: 130},
 	},
 	espeon: {
 		num: 196,
@@ -2432,8 +2432,8 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	},
 	hydreigon: {
 		num: 635,
-		front: {w: 160, h: 156},
-		back: {w: 150, h: 160},
+		front: {w: 148, h: 145},
+		back: {w: 140, h: 150},
 	},
 	infernape: {
 		num: 392,
@@ -3905,8 +3905,8 @@ const CUSTOM_TEAMBUILDER_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: nu
 	sylveon: {w: 86, h: 86},
 	umbreon: {w: 86, h: 86},
 	vaporeon: {w: 86, h: 86},
-	weavile: {w: 58, h: 58},
-	weavilef: {w: 58, h: 58},
+	weavile: {w: 66, h: 66},
+	weavilef: {w: 66, h: 66},
 	whimsicott: {w: 60, h: 60},
 	zoroark: {w: 74, h: 74},
 	zoroarkhisui: {w: 74, h: 74},
@@ -4031,6 +4031,31 @@ function applyCustomTeambuilderLearnsets(table: AnyObject) {
 	}
 }
 
+function applyCustomTeambuilderSpecies(table: AnyObject) {
+	if (!table.overrideSpeciesData) table.overrideSpeciesData = {};
+	for (const id of CUSTOM_SPECIES_IDS) {
+		const customSpecies = CUSTOM_SPECIES[id];
+		table.overrideSpeciesData[id] = {
+			...(table.overrideSpeciesData[id] || {}),
+			...customSpecies.data,
+		};
+	}
+	if (table.tiers) {
+		for (const id of CUSTOM_SPECIES_IDS) {
+			const customSpecies = CUSTOM_SPECIES[id];
+			const baseIndex = table.tiers.indexOf(customSpecies.base);
+			if (baseIndex >= 0 && !table.tiers.includes(id)) table.tiers.splice(baseIndex + 1, 0, id);
+		}
+	}
+	if (!table.overrideTier) table.overrideTier = {};
+	for (const id of CUSTOM_SPECIES_IDS) {
+		const customSpecies = CUSTOM_SPECIES[id];
+		if (!table.overrideTier[id] && table.overrideTier[customSpecies.base]) {
+			table.overrideTier[id] = table.overrideTier[customSpecies.base];
+		}
+	}
+}
+
 function ensureCustomDataPatches() {
 	if (
 		(customPokedexDataTable || undefined) === window.BattlePokedex &&
@@ -4074,6 +4099,7 @@ function ensureCustomDataPatches() {
 				...CUSTOM_SPECIES_UPDATES[id],
 			};
 		}
+		applyCustomTeambuilderSpecies(table);
 		if (!table.overrideAbilityData) table.overrideAbilityData = {};
 		for (const id of CUSTOM_ABILITY_UPDATE_IDS) {
 			table.overrideAbilityData[id] = {
@@ -4085,6 +4111,7 @@ function ensureCustomDataPatches() {
 		for (const subtableid in table) {
 			const subtable = table[subtableid];
 			if (subtable && typeof subtable === 'object' && subtable.learnsets) {
+				applyCustomTeambuilderSpecies(subtable);
 				applyCustomTeambuilderLearnsets(subtable);
 			}
 		}
@@ -4605,7 +4632,7 @@ const Dex = new class implements ModdedDex {
 			const speciesid = toID(speciesForme);
 			let activeSilvallyForme = '';
 			if (speciesid.startsWith('silvally') && !pokemon.terastallized) {
-				const [types] = pokemon.getTypes();
+				const types = pokemon.getTypes();
 				const typeName = pokemon.volatiles.typechange?.[1] || types[0];
 				const typeid = typeName === '???' ? 'unknown' : toID(typeName);
 				activeSilvallyForme = typeid === 'normal' ? 'Silvally' : SILVALLY_TYPE_FORMES[typeid];
@@ -4990,6 +5017,7 @@ const Dex = new class implements ModdedDex {
 			y: -3,
 		};
 		if (pokemon.shiny) spriteData.shiny = true;
+		if (id.startsWith('silvally')) spriteData.shiny = true;
 		if (id === 'greninjabond') {
 			spriteData.spriteid = 'greninja';
 			spriteData.x = -6;
