@@ -620,6 +620,7 @@ const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
 	houndoommega: 'houndoom-mega',
 	hawluchamega: 'hawlucha-mega',
 	salamencemega: 'salamence-mega',
+	aggronmega: 'aggron-mega',
 	hatterenegmax: 'hatterene-gmax',
 	aegislashgmax: 'aegislash-gmax',
 	dragapultgmax: 'dragapult-gmax',
@@ -830,9 +831,9 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 		back: {w: 182, h: 176},
 	},
 	aggron: {
-		front: {w: 142, h: 136},
-		back: {w: 124, h: 142},
-		shinyBack: {w: 124, h: 140},
+		front: {w: 116, h: 111},
+		back: {w: 104, h: 119},
+		shinyBack: {w: 104, h: 117},
 	},
 	aggronmega: {
 		front: {w: 190, h: 148},
@@ -1676,9 +1677,9 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	},
 	aggron: {
 		num: 306,
-		front: {w: 142, h: 136},
-		back: {w: 124, h: 142},
-		shinyBack: {w: 124, h: 140},
+		front: {w: 116, h: 111},
+		back: {w: 104, h: 119},
+		shinyBack: {w: 104, h: 117},
 	},
 	aggronmega: {
 		num: 306,
