@@ -3637,6 +3637,7 @@ const CUSTOM_LEARNSET_ADDITIONS: {[id: string]: {[id: string]: string[]}} = {
 };
 
 const CUSTOM_BW_SPRITE_IDS = Object.keys(CUSTOM_BW_SPRITES);
+const CUSTOM_ANIMATED_BW_SPRITES = new Set(['weavile', 'weavilef', 'garchomp', 'garchompf', 'garchompmega']);
 const CUSTOM_SPECIES_IDS = Object.keys(CUSTOM_SPECIES);
 const CUSTOM_SPECIES_UPDATE_IDS = Object.keys(CUSTOM_SPECIES_UPDATES);
 const SILVALLY_TYPE_FORMES: {[id: string]: string} = {
@@ -3697,6 +3698,10 @@ const CUSTOM_BATTLE_BACK_MEDIUM_SPRITE_MAX_WIDTH = 82;
 const CUSTOM_BATTLE_BACK_MEDIUM_SPRITE_MAX_HEIGHT = 82;
 const NATIVE_BATTLE_SPRITE_SIZE_OVERRIDES: {[id: string]: {front?: {w: number, h: number}, back?: {w: number, h: number}}} = {
 	garchomp: {back: {w: 112, h: 112}},
+};
+const NATIVE_TEAMBUILDER_SPRITE_OVERRIDES: {[id: string]: {x: number, y: number, backgroundSize: string}} = {
+	garchomp: {x: 6, y: 10, backgroundSize: '78px auto'},
+	garchompf: {x: 6, y: 10, backgroundSize: '78px auto'},
 };
 const CUSTOM_TEAM_PREVIEW_FRONT_SPRITE_MAX_WIDTH = 66;
 const CUSTOM_TEAM_PREVIEW_FRONT_SPRITE_MAX_HEIGHT = 66;
@@ -3788,8 +3793,8 @@ const CUSTOM_BATTLE_FRONT_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: n
 	torterraalt: {w: 88, h: 88},
 	venusaur: {w: 78, h: 78},
 	venusaurmega: {w: 96, h: 96},
-	weavile: {w: 68, h: 68},
-	weavilef: {w: 68, h: 68},
+	weavile: {w: 62, h: 62},
+	weavilef: {w: 62, h: 62},
 	whimsicott: {w: 60, h: 60},
 	zoroark: {w: 88, h: 88},
 	zoroarkhisui: {w: 88, h: 88},
@@ -3867,8 +3872,8 @@ const CUSTOM_BATTLE_BACK_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: nu
 	sylveon: {w: 108, h: 108},
 	umbreon: {w: 108, h: 108},
 	vaporeon: {w: 108, h: 108},
-	weavile: {w: 76, h: 76},
-	weavilef: {w: 76, h: 76},
+	weavile: {w: 70, h: 70},
+	weavilef: {w: 70, h: 70},
 	whimsicott: {w: 60, h: 60},
 	zoroark: {w: 96, h: 96},
 	zoroarkhisui: {w: 96, h: 96},
@@ -3939,8 +3944,8 @@ const CUSTOM_TEAMBUILDER_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: nu
 	sylveon: {w: 86, h: 86},
 	umbreon: {w: 86, h: 86},
 	vaporeon: {w: 86, h: 86},
-	weavile: {w: 66, h: 66},
-	weavilef: {w: 66, h: 66},
+	weavile: {w: 60, h: 60},
+	weavilef: {w: 60, h: 60},
 	whimsicott: {w: 60, h: 60},
 	zoroark: {w: 74, h: 74},
 	zoroarkhisui: {w: 74, h: 74},
@@ -4805,15 +4810,17 @@ const Dex = new class implements ModdedDex {
 
 		if (animationData[facing + 'f'] && options.gender === 'F') facing += 'f';
 		let allowAnim = !Dex.prefs('noanim') && !Dex.prefs('nogif');
-		if (CUSTOM_ICON_SPRITES[speciesid]) allowAnim = false;
 		let customStaticBattleSpriteid = speciesid;
 		if (options.gender === 'F' && CUSTOM_STATIC_BATTLE_SPRITES[`${speciesid}f`]) {
 			customStaticBattleSpriteid = `${speciesid}f`;
 		}
+		const allowCustomAnimation = CUSTOM_ANIMATED_BW_SPRITES.has(customStaticBattleSpriteid) ||
+			CUSTOM_ANIMATED_BW_SPRITES.has(speciesid);
+		if (CUSTOM_ICON_SPRITES[speciesid] && !allowCustomAnimation) allowAnim = false;
 		const customStaticBattleSprite = CUSTOM_STATIC_BATTLE_SPRITES[customStaticBattleSpriteid];
-		if (customStaticBattleSprite) allowAnim = false;
+		if (customStaticBattleSprite && !allowCustomAnimation) allowAnim = false;
 		const customBWSprite = CUSTOM_BW_SPRITES[speciesid];
-		if (customBWSprite) allowAnim = false;
+		if (customBWSprite && !allowCustomAnimation) allowAnim = false;
 		if (allowAnim && spriteData.gen >= 6) spriteData.pixelated = false;
 		if (allowAnim && animationData[facing] && spriteData.gen >= 5) {
 			if (facing.slice(-1) === 'f') name += '-f';
@@ -5075,6 +5082,8 @@ const Dex = new class implements ModdedDex {
 			}
 			return spriteData;
 		}
+		const nativeTeambuilderOverride = NATIVE_TEAMBUILDER_SPRITE_OVERRIDES[pokemon.gender === 'F' ? `${id}f` : id] ||
+			NATIVE_TEAMBUILDER_SPRITE_OVERRIDES[id];
 		if (Dex.prefs('nopastgens')) gen = 6;
 		if (Dex.prefs('bwgfx') && gen > 5) gen = 5;
 		let xydexExists = (!species.isNonstandard || species.isNonstandard === 'Past' || species.isNonstandard === 'CAP') || [
@@ -5089,8 +5098,12 @@ const Dex = new class implements ModdedDex {
 				spriteData.x = -2;
 				spriteData.y = 7;
 			} else if (id === 'garchomp') {
-				spriteData.x = -2;
-				spriteData.y = 2;
+				if (nativeTeambuilderOverride) {
+					Object.assign(spriteData, nativeTeambuilderOverride);
+				} else {
+					spriteData.x = -2;
+					spriteData.y = 2;
+				}
 			} else if (id === 'garchompmega') {
 				spriteData.x = -2;
 				spriteData.y = 0;
@@ -5114,6 +5127,7 @@ const Dex = new class implements ModdedDex {
 				applyCustomTeambuilderSpriteSizing(spriteData, id, spriteDimensions);
 			}
 		}
+		if (nativeTeambuilderOverride) Object.assign(spriteData, nativeTeambuilderOverride);
 		return spriteData;
 	}
 
