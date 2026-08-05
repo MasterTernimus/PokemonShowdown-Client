@@ -20,6 +20,10 @@ import { PSIcon } from "./panels";
 
 type SelectionType = 'pokemon' | 'ability' | 'item' | 'move' | 'stats' | 'details';
 
+function isSilvallySpecies(name: string) {
+	return toID(name).startsWith('silvally');
+}
+
 type SampleSets = {
 	[speciesName: string]: {
 		[setName: string]: Dex.PokemonSet,
@@ -209,6 +213,7 @@ export class TeamEditorState extends PSModel {
 		set.species = species.name;
 		set.ability = this.getDefaultAbility(set);
 		set.item = this.getDefaultItem(species.name) ?? set.item;
+		if (isSilvallySpecies(set.species)) set.shiny = true;
 
 		if (toID(speciesName) === 'Cathy') {
 			set.name = "Cathy";
@@ -3016,6 +3021,8 @@ class DetailsForm extends preact.Component<{
 		const target = ev.currentTarget as HTMLInputElement;
 		const { set } = this.props;
 		if (target.value) {
+			set.shiny = true;
+		} else if (isSilvallySpecies(set.species)) {
 			set.shiny = true;
 		} else {
 			delete set.shiny;

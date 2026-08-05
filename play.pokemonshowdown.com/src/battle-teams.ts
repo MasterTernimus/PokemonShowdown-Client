@@ -1,6 +1,10 @@
 import { Dex, toID, type ModdedDex } from "./battle-dex";
 import { BattleNatures, BattleStatNames, BattleStatIDs, type StatNameExceptHP, type ID } from "./battle-dex-data";
 
+function isSilvallySpecies(name: string) {
+	return toID(name).startsWith('silvally');
+}
+
 export declare namespace Teams {
 	/**
 	 * Teams.PokemonSet can be sparse, in which case that entry should be
@@ -107,7 +111,7 @@ export const Teams = new class {
 			buf += ivs === '|,,,,,' ? '|' : ivs;
 
 			// shiny
-			buf += `|${set.shiny ? 'S' : ''}`;
+			buf += `|${set.shiny || isSilvallySpecies(set.species) ? 'S' : ''}`;
 
 			// level
 			buf += `|${set.level && set.level !== 100 ? set.level : ''}`;
@@ -235,6 +239,7 @@ export const Teams = new class {
 			// shiny
 			j = buf.indexOf('|', i);
 			if (i !== j) set.shiny = true;
+			if (isSilvallySpecies(set.species)) set.shiny = true;
 			i = j + 1;
 
 			// level
@@ -295,6 +300,7 @@ export const Teams = new class {
 	 * linebreaks are preserved in Markdown; I assume mostly for Reddit.)
 	 */
 	exportSet(set: Teams.PokemonSet, dex: ModdedDex = Dex, newFormat?: boolean) {
+		if (isSilvallySpecies(set.species)) set.shiny = true;
 		let text = '';
 
 		// core
