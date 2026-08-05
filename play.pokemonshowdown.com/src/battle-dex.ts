@@ -46,6 +46,10 @@ function toUserid(text: any) {
 	return toID(text);
 }
 
+function isSilvallySpecies(name: string) {
+	return toID(name).startsWith('silvally');
+}
+
 const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 	sawsbuckspring: {
 		base: 'sawsbuck',
@@ -55,7 +59,7 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 			forme: 'Spring',
 			spriteid: 'sawsbuck-spring',
 			otherFormes: ['Sawsbuck-Summer', 'Sawsbuck-Autumn', 'Sawsbuck-Winter'],
-			formeOrder: ['Sawsbuck-Spring', 'Sawsbuck-Summer', 'Sawsbuck-Autumn', 'Sawsbuck-Winter'],
+			formeOrder: ['Sawsbuck', 'Sawsbuck-Spring', 'Sawsbuck-Summer', 'Sawsbuck-Autumn', 'Sawsbuck-Winter'],
 		},
 	},
 	sawsbucksummer: {
@@ -104,6 +108,28 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 			forme: 'Alt',
 			spriteid: 'empoleon-alt',
 			changesFrom: 'Empoleon',
+			isNonstandard: 'Custom',
+		},
+	},
+	miloticalt: {
+		base: 'milotic',
+		data: {
+			name: 'Milotic-Alt',
+			baseSpecies: 'Milotic',
+			forme: 'Alt',
+			spriteid: 'milotic-alt',
+			changesFrom: 'Milotic',
+			isNonstandard: 'Custom',
+		},
+	},
+	kingambitalt: {
+		base: 'kingambit',
+		data: {
+			name: 'Kingambit-Alt',
+			baseSpecies: 'Kingambit',
+			forme: 'Alt',
+			spriteid: 'kingambit-alt',
+			changesFrom: 'Kingambit',
 			isNonstandard: 'Custom',
 		},
 	},
@@ -681,6 +707,8 @@ const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
 	steelixmega: 'steelix-mega',
 	drampamega: 'drampa-mega',
 	empoleonalt: 'empoleon-alt',
+	miloticalt: 'milotic-alt',
+	kingambitalt: 'kingambit-alt',
 	infernapealt: 'infernape-alt',
 	torterraalt: 'torterra-alt',
 	baxcaliburmega: 'baxcalibur-mega',
@@ -1080,6 +1108,10 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 		back: {w: 190, h: 180},
 	},
 	kingambit: {
+		front: {w: 134, h: 192},
+		back: {w: 120, h: 190},
+	},
+	kingambitalt: {
 		front: {w: 134, h: 192},
 		back: {w: 120, h: 190},
 	},
@@ -1656,6 +1688,10 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 		front: {w: 158, h: 146},
 		back: {w: 162, h: 152},
 	},
+	miloticalt: {
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+	},
 	ariados: {
 		front: {w: 122, h: 102},
 		back: {w: 116, h: 90},
@@ -1755,6 +1791,11 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 		num: 350,
 		front: {w: 158, h: 146},
 		back: {w: 162, h: 152},
+	},
+	miloticalt: {
+		num: 350,
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
 	},
 	ariados: {
 		num: 168,
@@ -1933,6 +1974,11 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 		back: {w: 190, h: 180},
 	},
 	kingambit: {
+		num: 983,
+		front: {w: 134, h: 192},
+		back: {w: 120, h: 190},
+	},
+	kingambitalt: {
 		num: 983,
 		front: {w: 134, h: 192},
 		back: {w: 120, h: 190},
@@ -2966,11 +3012,10 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 
 const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 	sawsbuck: {
-		name: 'Sawsbuck-Spring',
-		forme: 'Spring',
+		name: 'Sawsbuck',
 		spriteid: 'sawsbuck-spring',
-		otherFormes: ['Sawsbuck-Summer', 'Sawsbuck-Autumn', 'Sawsbuck-Winter'],
-		formeOrder: ['Sawsbuck-Spring', 'Sawsbuck-Summer', 'Sawsbuck-Autumn', 'Sawsbuck-Winter'],
+		otherFormes: ['Sawsbuck-Spring', 'Sawsbuck-Summer', 'Sawsbuck-Autumn', 'Sawsbuck-Winter'],
+		formeOrder: ['Sawsbuck', 'Sawsbuck-Spring', 'Sawsbuck-Summer', 'Sawsbuck-Autumn', 'Sawsbuck-Winter'],
 	},
 	aegislash: {
 		otherFormes: ['Aegislash-Blade', 'Aegislash-Gmax'],
@@ -2995,6 +3040,16 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		types: ['Psychic', 'Ghost'],
 		baseStats: {hp: 90, atk: 70, def: 105, spa: 80, spd: 110, spe: 45},
 		abilities: {0: 'Pendulum Swing', 1: 'Neutralizing Gas', H: 'Neutralization'},
+	},
+	milotic: {
+		otherFormes: ['Milotic-Alt'],
+		cosmeticFormes: ['Milotic-Alt'],
+		formeOrder: ['Milotic', 'Milotic-Alt'],
+	},
+	kingambit: {
+		otherFormes: ['Kingambit-Alt'],
+		cosmeticFormes: ['Kingambit-Alt'],
+		formeOrder: ['Kingambit', 'Kingambit-Alt'],
 	},
 	empoleon: {
 		otherFormes: ['Empoleon-Alt'],
@@ -3637,7 +3692,7 @@ const CUSTOM_LEARNSET_ADDITIONS: {[id: string]: {[id: string]: string[]}} = {
 };
 
 const CUSTOM_BW_SPRITE_IDS = Object.keys(CUSTOM_BW_SPRITES);
-const CUSTOM_ANIMATED_BW_SPRITES = new Set(['weavile', 'weavilef', 'garchomp', 'garchompf', 'garchompmega']);
+const CUSTOM_ANIMATED_BW_SPRITES = new Set(['hydreigon', 'weavile', 'weavilef', 'garchomp', 'garchompf', 'garchompmega']);
 const CUSTOM_SPECIES_IDS = Object.keys(CUSTOM_SPECIES);
 const CUSTOM_SPECIES_UPDATE_IDS = Object.keys(CUSTOM_SPECIES_UPDATES);
 const SILVALLY_TYPE_FORMES: {[id: string]: string} = {
@@ -3686,12 +3741,12 @@ const CUSTOM_BATTLE_FRONT_MEGA_SPRITE_MAX_WIDTH = 98;
 const CUSTOM_BATTLE_FRONT_MEGA_SPRITE_MAX_HEIGHT = 98;
 const CUSTOM_BATTLE_FRONT_GMAX_SPRITE_MAX_WIDTH = 122;
 const CUSTOM_BATTLE_FRONT_GMAX_SPRITE_MAX_HEIGHT = 122;
-const CUSTOM_BATTLE_BACK_SPRITE_MAX_WIDTH = 96;
-const CUSTOM_BATTLE_BACK_SPRITE_MAX_HEIGHT = 96;
-const CUSTOM_BATTLE_BACK_MEGA_SPRITE_MAX_WIDTH = 98;
-const CUSTOM_BATTLE_BACK_MEGA_SPRITE_MAX_HEIGHT = 98;
-const CUSTOM_BATTLE_BACK_GMAX_SPRITE_MAX_WIDTH = 130;
-const CUSTOM_BATTLE_BACK_GMAX_SPRITE_MAX_HEIGHT = 130;
+const CUSTOM_BATTLE_BACK_SPRITE_MAX_WIDTH = 86;
+const CUSTOM_BATTLE_BACK_SPRITE_MAX_HEIGHT = 86;
+const CUSTOM_BATTLE_BACK_MEGA_SPRITE_MAX_WIDTH = 90;
+const CUSTOM_BATTLE_BACK_MEGA_SPRITE_MAX_HEIGHT = 90;
+const CUSTOM_BATTLE_BACK_GMAX_SPRITE_MAX_WIDTH = 112;
+const CUSTOM_BATTLE_BACK_GMAX_SPRITE_MAX_HEIGHT = 112;
 const CUSTOM_BATTLE_FRONT_MEDIUM_SPRITE_MAX_WIDTH = 82;
 const CUSTOM_BATTLE_FRONT_MEDIUM_SPRITE_MAX_HEIGHT = 82;
 const CUSTOM_BATTLE_BACK_MEDIUM_SPRITE_MAX_WIDTH = 82;
@@ -3739,7 +3794,7 @@ const CUSTOM_BATTLE_FRONT_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: n
 	butterfree: {w: 64, h: 64},
 	butterfreemega: {w: 82, h: 82},
 	clefable: {w: 72, h: 72},
-	corviknight: {w: 78, h: 78},
+	corviknight: {w: 70, h: 70},
 	corviknightgmax: {w: 112, h: 112},
 	dragapultgmax: {w: 120, h: 120},
 	dondozo: {w: 100, h: 100},
@@ -3749,7 +3804,7 @@ const CUSTOM_BATTLE_FRONT_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: n
 	gardevoirmega: {w: 108, h: 108},
 	gardevoirmegaz: {w: 108, h: 108},
 	gardevoirvoid: {w: 116, h: 116},
-	gardevoirvoidmega: {w: 116, h: 116},
+	gardevoirvoidmega: {w: 112, h: 112},
 	flareon: {w: 110, h: 110},
 	glaceon: {w: 110, h: 110},
 	glalie: {w: 62, h: 62},
@@ -3759,7 +3814,7 @@ const CUSTOM_BATTLE_FRONT_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: n
 	jolteon: {w: 110, h: 110},
 	leafeon: {w: 110, h: 110},
 	lucario: {w: 76, h: 76},
-	lucariomega: {w: 78, h: 78},
+	lucariomega: {w: 74, h: 74},
 	lucariomegaz: {w: 82, h: 82},
 	maushold: {w: 60, h: 60},
 	mausholdfour: {w: 60, h: 60},
@@ -3815,7 +3870,7 @@ const CUSTOM_BATTLE_BACK_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: nu
 	gardevoirmega: {w: 124, h: 124},
 	gardevoirmegaz: {w: 124, h: 124},
 	gardevoirvoid: {w: 132, h: 132},
-	gardevoirvoidmega: {w: 132, h: 132},
+	gardevoirvoidmega: {w: 128, h: 128},
 	flareon: {w: 108, h: 108},
 	garchompmega: {w: 90, h: 90},
 	garchompmegaz: {w: 92, h: 92},
@@ -3825,12 +3880,12 @@ const CUSTOM_BATTLE_BACK_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: nu
 	glaliemega: {w: 78, h: 78},
 	indeedee: {w: 72, h: 72},
 	indeedeef: {w: 72, h: 72},
-	hydreigon: {w: 118, h: 118},
+	hydreigon: {w: 92, h: 92},
 	infernapealt: {w: 92, h: 92},
 	jolteon: {w: 108, h: 108},
 	leafeon: {w: 108, h: 108},
 	lucario: {w: 84, h: 84},
-	lucariomega: {w: 82, h: 82},
+	lucariomega: {w: 76, h: 76},
 	lucariomegaz: {w: 86, h: 86},
 	maushold: {w: 60, h: 60},
 	mausholdfour: {w: 60, h: 60},
@@ -3895,6 +3950,7 @@ const CUSTOM_TEAMBUILDER_SPRITE_Y_OFFSETS: {[id: string]: number} = {
 };
 const CUSTOM_TEAMBUILDER_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: number}} = {
 	aegislashgmax: {w: 74, h: 74},
+	corviknight: {w: 62, h: 62},
 	alcremie: {w: 60, h: 60},
 	ariados: {w: 60, h: 60},
 	butterfree: {w: 58, h: 58},
@@ -3906,7 +3962,7 @@ const CUSTOM_TEAMBUILDER_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: nu
 	gardevoirmega: {w: 82, h: 82},
 	gardevoirmegaz: {w: 82, h: 82},
 	gardevoirvoid: {w: 82, h: 82},
-	gardevoirvoidmega: {w: 82, h: 82},
+	gardevoirvoidmega: {w: 86, h: 86},
 	flareon: {w: 86, h: 86},
 	glaceon: {w: 86, h: 86},
 	hatterene: {w: 82, h: 82},
@@ -4723,6 +4779,9 @@ const Dex = new class implements ModdedDex {
 		let graphicsGen = mechanicsGen;
 		if (Dex.prefs('nopastgens')) graphicsGen = 6;
 		if (Dex.prefs('bwgfx') && graphicsGen >= 6) graphicsGen = 5;
+		// Use Lucario's native BW animated back sprite for a cleaner battle silhouette.
+		if (species.id === 'milotic' || species.id === 'miloticalt' || species.id === 'kingambitalt' ||
+			(!isFront && (species.id === 'lucario' || species.id === 'lucariomega'))) graphicsGen = 5;
 		spriteData.gen = Math.max(graphicsGen, Math.min(species.gen, 5));
 		const baseDir = ['', 'gen1', 'gen2', 'gen3', 'gen4', 'gen5', '', '', '', ''][spriteData.gen];
 
@@ -4948,6 +5007,14 @@ const Dex = new class implements ModdedDex {
 				CUSTOM_BATTLE_SPRITE_X_OFFSETS[speciesid];
 			if (customBattleXOffset) spriteData.x += isFront ? (customBattleXOffset.front || 0) : (customBattleXOffset.back || 0);
 		}
+		if (!options.noScale && !isFront && !isDynamax) {
+			const universalBackMax = speciesid.includes('gmax') ? 112 : speciesid.includes('mega') ? 90 : 86;
+			const scale = Math.min(universalBackMax / spriteData.w, universalBackMax / spriteData.h);
+			if (scale < 1) {
+				spriteData.w = Math.round(spriteData.w * scale);
+				spriteData.h = Math.round(spriteData.h * scale);
+			}
+		}
 		if (isDynamax && !options.noScale) {
 			spriteData.w *= 2;
 			spriteData.h *= 2;
@@ -5028,15 +5095,6 @@ const Dex = new class implements ModdedDex {
 		let id = toID(pokemon.species);
 		let spriteid = pokemon.spriteid;
 		let species = Dex.species.get(pokemon.species);
-		if (pokemon.gigantamax) {
-			const gmaxSpecies = Dex.species.get(`${species.name}-Gmax`);
-			const gmaxId = gmaxSpecies.exists ? gmaxSpecies.id : `${id}gmax`;
-			if (gmaxSpecies.exists || CUSTOM_ICON_SPRITES[gmaxId] || CUSTOM_BW_SPRITES[gmaxId]) {
-				id = gmaxId;
-				if (gmaxSpecies.exists) species = gmaxSpecies;
-				spriteid = CUSTOM_ICON_SPRITES[id] || species.spriteid || id;
-			}
-		}
 		if (pokemon.species && !spriteid) {
 			spriteid = species.spriteid || toID(pokemon.species);
 		}
@@ -5463,6 +5521,7 @@ const Teams = new class {
 			// shiny
 			j = buf.indexOf('|', i);
 			if (i !== j) set.shiny = true;
+			if (isSilvallySpecies(set.species)) set.shiny = true;
 			i = j + 1;
 
 			// level
@@ -5500,6 +5559,7 @@ const Teams = new class {
 		}
 		let text = '';
 		for (const curSet of team) {
+			if (isSilvallySpecies(curSet.species)) curSet.shiny = true;
 			if (curSet.name && curSet.name !== curSet.species) {
 				text += '' + curSet.name + ' (' + curSet.species + ')';
 			} else {
