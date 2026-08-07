@@ -52,7 +52,9 @@
 .resultheader,
 .utilichart li.resultheader,
 .utilichart .result {
-	height: 32px;
+	display: flow-root;
+	min-height: 32px;
+	height: auto;
 	padding: 1px 0 0 0;
 }
 .result p,
@@ -276,12 +278,14 @@
 .utilichart .itemdesccol,
 .utilichart .abilitydesccol,
 .utilichart .movedesccol {
-	white-space: nowrap;
+	white-space: normal;
 	padding-top: 8px;
 	font-size: 8pt;
 	width: 488px;
-	height: 21px;
-	overflow: hidden;
+	min-height: 21px;
+	height: auto;
+	overflow: visible;
+	line-height: 1.2;
 	color: #777777;
 }
 .utilichart .movedesccol {
