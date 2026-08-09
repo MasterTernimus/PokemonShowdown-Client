@@ -2472,8 +2472,10 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	},
 	corviknight: {
 		num: 823,
-		front: {w: 102, h: 144},
-		back: {w: 120, h: 130},
+		front: {w: 96, h: 96},
+		back: {w: 63, h: 70},
+		shinyFront: {w: 96, h: 96},
+		shinyBack: {w: 63, h: 70},
 	},
 	corviknightgmax: {
 		num: 823,
@@ -4110,8 +4112,17 @@ const CUSTOM_LEARNSET_ADDITIONS: {[id: string]: {[id: string]: string[]}} = {
 
 const CUSTOM_BW_SPRITE_IDS = Object.keys(CUSTOM_BW_SPRITES);
 const CUSTOM_ANIMATED_BW_SPRITES = new Set([
-	'hydreigon', 'weavile', 'weavilef', 'garchomp', 'garchompf', 'garchompmega',
-	...Object.keys(CUSTOM_STATIC_BATTLE_SPRITES), ...CUSTOM_BW_SPRITE_IDS,
+	'aggron', 'ariados', 'basculegion', 'basculegionf', 'butterfree', 'charizard', 'cinderacegmax', 'corviknight',
+	'crobat', 'dragapult', 'duraludon', 'dusknoir', 'electivire', 'empoleon', 'espeon', 'garbodorgmax',
+	'garchomp', 'garchompf', 'garchompmega', 'gardevoirmega', 'gengar', 'glalie', 'gliscor', 'grimmsnarl',
+	'houndoom', 'hydreigon', 'infernape', 'lilligant', 'lucariomega', 'luxray', 'magmortar', 'magneton',
+	'magnezone', 'metagross', 'milotic', 'mothim', 'ninetales', 'obstagoon', 'perrserker', 'pidgeot',
+	'ribombee', 'rotom', 'rotomfan', 'rotomfrost', 'rotomheat', 'rotommow', 'rotomwash', 'salamence',
+	'scolipede', 'silvally', 'silvallybug', 'silvallydark', 'silvallydragon', 'silvallyelectric', 'silvallyfairy', 'silvallyfighting',
+	'silvallyfire', 'silvallyflying', 'silvallyghost', 'silvallygrass', 'silvallyground', 'silvallyice', 'silvallypoison', 'silvallypsychic',
+	'silvallysteel', 'silvallywater', 'slowbro', 'slowking', 'sneasel', 'spiritomb', 'steelix', 'talonflame',
+	'torterra', 'typhlosion', 'tyrantrum', 'venusaur', 'victreebel', 'vikavolt', 'weavile', 'weavilef',
+	'whimsicott', 'zoroark',
 ]);
 const CUSTOM_SPECIES_IDS = Object.keys(CUSTOM_SPECIES);
 const CUSTOM_SPECIES_UPDATE_IDS = Object.keys(CUSTOM_SPECIES_UPDATES);
@@ -4214,7 +4225,7 @@ const CUSTOM_BATTLE_FRONT_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: n
 	butterfree: {w: 64, h: 64},
 	butterfreemega: {w: 82, h: 82},
 	clefable: {w: 72, h: 72},
-	corviknight: {w: 70, h: 70},
+	corviknight: {w: 62, h: 62},
 	corviknightgmax: {w: 112, h: 112},
 	dragapultgmax: {w: 120, h: 120},
 	dondozo: {w: 100, h: 100},
@@ -4281,7 +4292,7 @@ const CUSTOM_BATTLE_BACK_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: nu
 	banettemega: {w: 90, h: 90},
 	butterfree: {w: 70, h: 70},
 	butterfreemega: {w: 88, h: 88},
-	corviknight: {w: 78, h: 78},
+	corviknight: {w: 64, h: 64},
 	corviknightgmax: {w: 132, h: 132},
 	dondozo: {w: 110, h: 110},
 	dusknoir: {w: 86, h: 86},
