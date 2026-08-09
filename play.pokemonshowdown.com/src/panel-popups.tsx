@@ -708,7 +708,7 @@ class OptionsPanel extends PSRoomPanel {
 			<p>
 				<label class="checkbox"><input
 					name="bwgfx" checked={PS.prefs.bwgfx || false} type="checkbox" onChange={this.handleOnChange}
-				/>  Use 2D sprites instead of 3D models</label>
+				/>  Use BW 2D sprites and animations</label>
 			</p>
 			<p>
 				<label class="checkbox"><input

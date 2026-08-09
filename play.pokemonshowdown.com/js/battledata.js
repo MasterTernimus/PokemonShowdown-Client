@@ -2975,13 +2975,13 @@ back:{w:96,h:96}
 },
 excadrillmega:{
 num:530,
-front:{w:96,h:96},
-back:{w:96,h:96}
+front:{w:124,h:124},
+back:{w:124,h:124}
 },
 meowsticmmega:{
 num:678,
-front:{w:66,h:140},
-back:{w:82,h:140}
+front:{w:48,h:96},
+back:{w:60,h:96}
 },
 meowsticfmega:{
 num:678,
@@ -3011,6 +3011,9 @@ back:{w:96,h:96}
 };
 
 var CUSTOM_SPECIES_UPDATES={
+inteleon:{
+abilities:{0:'High Noon',1:'Super Luck',H:'Sniper'}
+},
 sawsbuck:{
 name:'Sawsbuck',
 spriteid:'sawsbuck-spring',
@@ -3029,7 +3032,7 @@ canGigantamax:'G-Max Spirit Volley'
 },
 charizard:{
 baseStats:{hp:78,atk:109,def:75,spa:114,spd:78,spe:100},
-abilities:{0:'Wildfire Core',1:'Flame Body',H:'Solar Power'}
+abilities:{0:'Wildfire Core',1:'Intimidate',H:'Solar Power'}
 },
 charizardgmax:{
 baseStats:{hp:133,atk:109,def:75,spa:114,spd:78,spe:100},
@@ -3124,7 +3127,7 @@ feraligatrmega:{
 abilities:{0:'Draconic Force'}
 },
 banette:{
-abilities:{0:'Cursed Keepsake',1:'Cursed Armament',H:'Shadow Shield'},
+abilities:{0:'Cursed Keepsake',1:'Intimidate',H:'Shadow Shield'},
 otherFormes:['Banette-Mega'],
 formeOrder:['Banette','Banette-Mega']
 },
@@ -3170,6 +3173,81 @@ abilities:{0:'Mega Launcher',1:'Swift Swim',H:'Quick Draw'}
 };
 
 var CUSTOM_ABILITY_UPDATES={
+angerpoint:{
+name:'Anger Point',
+desc:'The first damaging hit raises Attack by 1 stage. A critical hit raises Attack by 12 stages.',
+shortDesc:'First damaging hit: +1 Attack; critical hits: +12 Attack.'
+},
+battlearmor:{
+name:'Battle Armor',
+desc:'No critical hits; takes 0.8x attack damage. Fairy Tale gives +1 Def on entry; opposing stat drops give +2 Def.',
+shortDesc:'No critical hits; takes 0.8x; Fairy Tale +1 Def; stat drops give +2 Def.'
+},
+shellarmor:{
+name:'Shell Armor',
+desc:"No critical hits; takes 0.8x attack damage. Fairy Tale or Dragon's Den gives +1 Def; opposing stat drops give +2 SpD.",
+shortDesc:"No critical hits; takes 0.8x; field +1 Def; stat drops give +2 SpD."
+},
+damp:{
+name:'Damp',
+desc:'Blocks explosions and Aftermath; stifles ignition in Corrosive Mist; halves incoming Fire attacking stats.',
+shortDesc:'Blocks explosions/Aftermath; Corrosive Mist stifles ignition and halves Fire stats.'
+},
+corrosion:{
+name:'Corrosion',
+desc:'Poison bypasses immunity. Wasteland adds status effects, Corrosive fields boost damage, and poisoned foes lose Def/SpD.',
+shortDesc:'Poison bypasses immunity; Wasteland/status effects; Corrosive damage; poisoned foes lose Def/SpD.'
+},
+forewarn:{
+name:'Forewarn',
+desc:'Reveals a strongest foe move on switch-in; Psychic Terrain gives +2 SpA; takes 0.8x move damage.',
+shortDesc:'Reveals a strongest foe move; Psychic Terrain +2 SpA; takes 0.8x move damage.'
+},
+frisk:{
+name:'Frisk',
+desc:'Reveals all foes\' items on switch-in; each foe has a 30% chance to be Embargoed.',
+shortDesc:'Reveals all foes\' items; each foe has a 30% chance to be Embargoed.'
+},
+gluttony:{
+name:'Gluttony',
+desc:'Berries and supported seed items activate at 1/2 max HP instead of their normal threshold.',
+shortDesc:'Berries and supported seeds activate at 1/2 max HP.'
+},
+harvest:{
+name:'Harvest',
+desc:'Restores a used Berry or seed: 50% chance each turn, or 100% in Sun or Grassy Terrain.',
+shortDesc:'Restores used Berry/seed: 50%; 100% in Sun or Grassy Terrain.'
+},
+heavymetal:{
+name:'Heavy Metal',
+desc:'Weight is doubled; in Factory, +1 Def/-1 Spe; takes 0.5x physical damage.',
+shortDesc:'Weight doubled; Factory +1 Def/-1 Spe; takes 0.5x physical damage.'
+},
+insomnia:{
+name:'Insomnia',
+desc:'Cannot sleep; Dark damaging moves have 1.3x power.',
+shortDesc:'Cannot sleep; Dark damaging moves have 1.3x power.'
+},
+ironfist:{
+name:'Iron Fist',
+desc:'Punch-based attacks have 1.4x power.',
+shortDesc:'Punch-based attacks have 1.4x power.'
+},
+lightmetal:{
+name:'Light Metal',
+desc:'Weight is halved; in Factory, +1 Spe; unstatused Pokemon have 1.25x Speed.',
+shortDesc:'Weight halved; Factory +1 Spe; unstatused Pokemon have 1.25x Speed.'
+},
+limber:{
+name:'Limber',
+desc:'Cannot be paralyzed; cures paralysis; opposing Speed drops fail.',
+shortDesc:'Cannot be paralyzed; cures paralysis; opposing Speed drops fail.'
+},
+alchemistsurge:{
+name:'Alchemist Surge',
+desc:"This Pokemon creates Psychic Terrain on entry, gains Competitive, and has Hydra Bond's effects.",
+shortDesc:'Psychic Surge + Competitive + Hydra Bond.'
+},
 battery:{
 name:'Battery',
 shortDesc:'This Pokemon and its allies have their special attacks boosted by 1.3x.'
@@ -3201,13 +3279,13 @@ shortDesc:'Hit by attacks: +1 Atk/Spe and confusion; confused takes 1.25x; Klutz
 },
 relicarmor:{
 name:'Relic Armor',
-desc:'This Pokemon cannot be critically hit. If an opposing Pokemon lowers its stats, its Defense and Special Defense rise by 1 stage. It takes 0.8x damage from attacks, does not take recoil damage except Struggle, and its moves ignore Abilities.',
-shortDesc:'No crits; stat drops +1 Def/SpD; takes 0.8x; Rock Head + Mold Breaker.'
+desc:'This Pokemon cannot be critically hit. If an opposing Pokemon lowers its stats, its Defense and Special Defense rise by 1 stage. It takes 0.8x damage from attacks, and its moves ignore Abilities.',
+shortDesc:'No crits; stat drops +1 Def/SpD; takes 0.8x; Mold Breaker.'
 },
 draconicforce:{
 name:'Draconic Force',
-desc:"This Pokemon has Dragonize, Sheer Force, and Guts's effects.",
-shortDesc:'Dragonize + Sheer Force + Guts.'
+desc:"This Pokemon has Dragonize, Strong Jaw, and Guts's effects.",
+shortDesc:'Dragonize + Strong Jaw + Guts.'
 },
 ironmountain:{
 name:'Iron Mountain',
@@ -3256,19 +3334,330 @@ shortDesc:'Cannot be burned; immune to Hail/Sandstorm; gains Aqua Ring.'
 },
 astralcore:{
 name:'Astral Core',
-desc:"This Pokemon has Natural Cure, Pure Power, Illuminate, and Defragment's effects.",
-shortDesc:'Natural Cure + Pure Power + Illuminate + Defragment.'
+desc:"This Pokemon has Illuminate, Pure Power, and Defragment's effects.",
+shortDesc:'Illuminate + Pure Power + Defragment.'
 },
 lunarorbit:{
 name:'Lunar Orbit',
-desc:"This Pokemon has Magic Bounce and Serene Grace. On switch-in, it sets Gravity for 5 turns. This Pokemon is immune to Gravity's negative effects: it is not grounded, its Ground immunity is not removed, and it can still use moves normally restricted by Gravity. This Pokemon also benefits from Metronome's focused mode.",
-shortDesc:'Magic Bounce + Serene Grace; sets Gravity; benefits from focused Metronome.'
+desc:"This Pokemon has Magic Bounce and Serene Grace. On switch-in, it sets Gravity for 5 turns. This Pokemon is immune to Gravity's negative effects: it is not grounded, its Ground immunity is not removed, and it can still use moves normally restricted by Gravity.",
+shortDesc:"Magic Bounce + Serene Grace; sets Gravity and ignores Gravity's negative effects."
 },
 spiralevolution:{
 name:'Spiral Evolution',
-desc:"This Pokemon has built-in Adaptability and Hydra Bond, cannot flinch, takes half damage from priority moves, and its damaging moves hit through protection for half damage. In Trick Room, its non-priority moves act before other non-priority moves. Twineedle has double power and a 50% chance to be a critical hit; in multi battles it hits all adjacent foes once, and if Twineedle or Double Hit have some targets protected, protected hits focus into unprotected foes like Dragon Darts.",
-shortDesc:'Adaptability + Hydra Bond; reduced Protect-pierce; no flinch; Twineedle/Double Hit focus.'
+desc:"This Pokemon has built-in Adaptability, Levitate, and Dual Wield. Its damaging moves can hit through protection for reduced damage and it takes 50% less damage from priority moves. In Trick Room, its non-priority moves act before other non-priority moves.",
+shortDesc:'Adaptability + Levitate + Dual Wield; priority damage reduction.'
 },
+accumulation:{name:"Accumulation"},
+adaptivecell:{name:"Adaptive Cell"},
+alloycore:{name:"Alloy Core"},
+ancientbloom:{
+name:"Ancient Bloom",
+desc:"Boosted Hospitality + Effect Spore + Self Sufficient + Invigorate. Keeps its field-based Defense, Special Defense, and power boosts.",
+shortDesc:"Boosted Hospitality + Effect Spore + Self Sufficient + Invigorate; keeps field boosts."
+},
+ange:{name:"Ange"},
+apexcleave:{name:"Apex Cleave",desc:"This Pokemon has Sharpness, Dual Wield, and Moxie's effects. Slicing moves use a second Dual Wield hit at 30% of their unboosted power.",shortDesc:"Sharpness + Dual Wield + Moxie."},
+apexpredator:{name:"Apex Predator"},
+aquashell:{name:"Aqua Shell"},
+argentdevotion:{name:"Argent Devotion"},
+ascendance:{name:"Ascendance"},
+astralwatcher:{name:"Astral Watcher"},
+astralwitchcraft:{name:"Astral Witchcraft"},
+aurainstinct:{name:"Aura Instinct",desc:"This Pokemon has Sworn Duty, Adaptability, Technician, and Second Wind's effects.",shortDesc:"Sworn Duty + Adaptability + Technician + Second Wind."},
+auramaster:{name:"Aura Master",desc:"This Pokemon has Mega Launcher, Dual Wield, and Inner Focus's effects, and takes 20% less damage from damaging moves.",shortDesc:"Mega Launcher + Dual Wield + Inner Focus; takes 0.8x damage."},
+auroracurrent:{name:"Aurora Current"},
+auroraresonance:{name:"Aurora Resonance"},
+battlefervor:{name:"Battle Fervor"},
+bewitchingmajesty:{name:"Bewitching Majesty"},
+blademastery:{name:"Blade Mastery"},
+blazingmane:{name:"Blazing Mane"},
+blazingtempo:{name:"Blazing Tempo"},
+bloomingsun:{
+name:"Blooming Sun",
+desc:"Mega Sol + always-active Leaf Guard + Invigorate + Natural Cure. Allies' Attack and Special Defense are multiplied by 1.5.",
+shortDesc:"Mega Sol + always-active Leaf Guard + Invigorate + Natural Cure; allies' Atk/SpD 1.5x."
+},
+bonewarrior:{name:"Bone Warrior"},
+bruteforce:{name:"Brute Force"},
+burningcrown:{
+name:"Burning Crown",
+desc:"White Smoke + Filter + Self Sufficient. A faint raises its highest offensive stat by 1; Fire moves have 1.2x power and field bonuses remain active.",
+shortDesc:"White Smoke + Filter + Self Sufficient; faint +1 highest offense; Fire 1.2x."
+},
+burningego:{name:"Burning Ego",desc:"This Pokemon has Ultra Ego, Brute Force, and Magma Armor's effects. Recoil moves keep their power without recoil damage, and Water- and Ice-type attacks are weakened against it.",shortDesc:"Ultra Ego + Brute Force + Magma Armor."},
+burningspirit:{name:"Burning Spirit"},
+byxbysiontouch:{name:"Byxbysion Touch"},
+calderacore:{name:"Caldera Core"},
+celestialheart:{name:"Celestial Heart"},
+conductivity:{name:"Conductivity"},
+corrosivedust:{name:"Corrosive Dust",desc:"This Pokemon has Shield Dust and Levitate's effects. Poisoned Pokemon become confused, and contact moves have a 30% chance to poison the attacker.",shortDesc:"Shield Dust + Levitate; poisoned Pokemon become confused; contact can poison."},
+corrosivescale:{name:"Corrosive Scale",desc:"This Pokemon has Marvel Scale, Invigorate, and Friend Guard's effects. When this Pokemon poisons a target, that target becomes confused.",shortDesc:"Marvel Scale + Invigorate + Friend Guard; poison causes confusion."},
+crueltag:{name:"Cruel Tag"},
+crumblingshell:{name:"Crumbling Shell"},
+cursedkeepsake:{name:"Cursed Keepsake"},
+cursedmarionette:{name:"Cursed Marionette",desc:"Prankster; attacks/status curse foes; cursed foes deal 0.8x damage; heals 1/2 Curse damage; its Curse deals 1/8 max HP.",shortDesc:"Prankster + curse effects; cursed foes deal 0.8x; heals 1/2 Curse damage."},
+defragment:{name:"Defragment"},
+divineintervention:{name:"Divine Intervention"},
+doomwarning:{name:"Doom Warning"},
+dreadmaw:{name:"Dread Maw"},
+dualwield:{
+name:"Dual Wield",
+desc:"Moves boosted by Sharpness, Mega Launcher, Horn, Drill, or Arrow effects hit twice. The first hit receives the boost and the second hit deals 30% of the move's unboosted power.",
+shortDesc:"Boosted Horn/Drill/Sharpness/Mega Launcher/Arrow moves hit twice; second hit is 30% unboosted."
+},
+duneterror:{name:"Dune Terror"},
+duskdrive:{name:"Dusk Drive"},
+echofiend:{name:"Echo Fiend"},
+eclipse:{name:"Eclipse"},
+eclipsevision:{name:"Eclipse Vision"},
+elevate:{name:"Elevate"},
+emperorsresolve:{name:"Emperor's Resolve"},
+enlightenment:{name:"Enlightenment",desc:"This Pokemon has Pure Power, Inner Focus, and Technician's effects.",shortDesc:"Pure Power + Inner Focus + Technician."},
+evilsanta:{name:"Evil Santa"},
+execution:{name:"Execution"},
+falsedevotion:{name:"False Devotion"},
+firemane:{name:"Fire Mane"},
+forestsurge:{name:"Forest Surge"},
+fortressshell:{
+name:"Fortress Shell",
+desc:"Self Sufficient + Shell Armor + Friend Guard + Dual Wield. Keeps its field bonuses, including Electric redirection in Water Surface, Underwater, Factory, and Short Circuit fields.",
+shortDesc:"Self Sufficient + Shell Armor + Friend Guard + Dual Wield; keeps field bonuses."
+},
+freezerburn:{name:"Freezer Burn",desc:"This Pokemon has Slush Rush, Ice Body, and Refrigerate's effects. Fire-type moves and Refrigerate-converted moves have 1.2x power, and its charge moves skip the charge turn.",shortDesc:"Slush Rush + Ice Body + Refrigerate; Fire moves 1.2x; skips charge turns."},
+frostsovereign:{name:"Frost Sovereign",desc:"Sets 5-turn Snow and 8-turn Aurora Veil; Ice Body + Filter; foes take 1/16 Ice scaling chip and Ice types are immune.",shortDesc:"Snow + Veil; Ice Body + Filter; Ice scaling chip."},
+frozenfortress:{name:"Frozen Fortress"},
+furnaceengine:{name:"Furnace Engine"},
+grandmaster:{
+name:"Grandmaster",
+desc:"Cannot flinch; immune to powder, Hail, and Sandstorm. Status moves grant 20% damage reduction for the turn. Faster Psychic moves ignore resistances. Damage, Future Sight, and fainting queue delayed Future Sight.",
+shortDesc:"Overcoat + no flinch; status grants 20% damage reduction; queues Future Sight."
+},
+heatcoil:{name:"Heat Coil"},
+heavenlychorus:{name:"Heavenly Chorus",desc:"This Pokemon has Pixilate, Cloud Nine, Fluffy, and Natural Cure's effects.",shortDesc:"Pixilate + Cloud Nine + Fluffy + Natural Cure."},
+hellfireeclipse:{name:"Hellfire Eclipse"},
+highnoon:{name:"High Noon"},
+hydrabond:{name:"Hydra Bond"},
+hydrabreaker:{name:"Hydra Breaker"},
+hydratyrant:{name:"Hydra Tyrant"},
+hyperdrill:{
+name:"Hyper Drill",
+desc:"Power Drill + Dual Wield. Drill moves hit twice; the first receives Power Drill and the second deals 30% of the move's unboosted power. Rock moves receive STAB.",
+shortDesc:"Power Drill + Dual Wield; Rock moves get STAB."
+},
+inversion:{name:"Inversion",desc:"On switch-in, this Pokemon sets Inverse Field. Its stat changes are inverted except for Z-Power effects.",shortDesc:"Sets Inverse Field and inverts its stat changes."},
+invigorate:{name:"Invigorate"},
+ironclad:{name:"Ironclad"},
+ironcognition:{name:"Iron Cognition"},
+irondominion:{name:"Iron Dominion"},
+ironwill:{name:"Iron Will"},
+joyride:{name:"Joyride",desc:"This Pokemon has Aerilate, Infiltrator, and Hyper Cutter's effects.",shortDesc:"Aerilate + Infiltrator + Hyper Cutter."},
+knightsguard:{name:"Knight's Guard"},
+lunaridol:{name:"Lunar Idol"},
+memoryleak:{name:"Memory Leak"},
+mindfreeze:{name:"Mind Freeze"},
+mirrorgreed:{name:"Mirror Greed"},
+moonlitwings:{name:"Moonlit Wings"},
+mountainhunger:{name:"Mountain Hunger"},
+mourningsnow:{name:"Mourning Snow"},
+mourningvessel:{
+name:"Mourning Vessel",
+desc:"This Pokemon has Prankster's effect. Its damaging moves deal 10% more damage for each fainted ally. At the end of each turn, it restores 5% of its max HP for each fainted opposing Pokemon, counting every opposing side in Free-For-All battles.",
+shortDesc:"Prankster; damaging moves +10% per fainted ally; heals 5% per fainted foe each turn."
+},
+neutralization:{name:"Neutralization"},
+noseformation:{
+name:"Nose Formation",
+desc:"Filter; damaging hits trigger three organized 20 BP Mini-Noses using the best Steel, Electric, or Rock type. If a target faints, remaining Mini-Noses chain to the next valid foe.",
+shortDesc:"Filter; 3 organized 20 BP Mini-Noses chain after a KO."
+},
+omenedge:{name:"Omen Edge"},
+orchardbond:{name:"Orchard Bond"},
+paradoxengine:{name:"Paradox Engine"},
+paradoxpower:{name:"Paradox Power"},
+paradoxpull:{name:"Paradox Pull"},
+paradoxwheel:{name:"Paradox Wheel"},
+parasitism:{name:"Parasitism"},
+patternshift:{name:"Pattern Shift"},
+perfectego:{name:"Perfect Ego"},
+perfectforesight:{
+name:"Perfect Foresight",
+desc:"On switch-in, gains the Ability of the opposing Pokemon with the highest offensive stat. Its queued Future Sight has 60 BP, ignores defensive boosts, screens, and Abilities, hits Dark neutrally, and stacks from attacks, damage, or Future Sight.",
+shortDesc:"Gains strongest foe's Ability; repeatedly queues 60 BP Future Sight."
+},
+phantomfist:{name:"Phantom Fist",desc:"This Pokemon has Unseen Fist, Iron Fist, Self Sufficient, and Shadow Shield's effects. Its punching moves have 1.56x power, and Ghost-type punching moves ignore immunities and resistances.",shortDesc:"Unseen Fist + Iron Fist + Self Sufficient + Shadow Shield."},
+pollenbloom:{
+name:"Pollen Bloom",
+desc:"Thick Fat + Proficient + Invigorate. Opposing non-Grass Pokemon take 1/16 Grass-type scaling damage each turn, and this Pokemon heals the damage dealt.",
+shortDesc:"Thick Fat + Proficient + Invigorate; Grass scaling chip heals the user."
+},
+powerdrill:{name:"Power Drill"},
+piercingdrill:{
+name:"Piercing Drill",
+desc:"This Pokemon has Mold Breaker's effect. Its contact moves ignore a target's protection and deal 1/4 the usual damage. It also has Power Drill's effect, boosting drill moves by 1.5x, or 2x in Rocky, Mountain, Snowy Mountain, Cave, and Volcanic fields.",
+shortDesc:"Mold Breaker; contact pierces protection for 1/4 damage; drill moves 1.5x, or 2x in listed fields."
+},
+precision:{name:"Precision"},
+predator:{name:"Predator"},
+primaltactics:{name:"Primal Tactics"},
+prismscale:{name:"Prism Scale"},
+queensguard:{name:"Queen's Guard",desc:"This Pokemon has Contrary, Shed Skin, Inner Focus, and Multiscale's effects.",shortDesc:"Contrary + Shed Skin + Inner Focus + Multiscale."},
+ragingcurrent:{name:"Raging Current",desc:"This Pokemon has Swift Swim, Regenerator, and Stamina's effects.",shortDesc:"Swift Swim + Regenerator + Stamina."},
+railguncircuit:{name:"Railgun Circuit"},
+rainsovereign:{name:"Rain Sovereign"},
+rapidresponse:{name:"Rapid Response"},
+relentlesshunt:{name:"Relentless Hunt"},
+relentlesslink:{name:"Relentless Link",desc:"This Pokemon has Skill Link, Battle Armor, and Vital Spirit's effects.",shortDesc:"Skill Link + Battle Armor + Vital Spirit."},
+relicbeam:{name:"Relic Beam"},
+requiem:{name:"Requiem",desc:"Repeated hits apply Perish Song, Curse, Taunt, then Torment. KO healing; faint summons Haunted Field for 5 turns; cannot be suppressed.",shortDesc:"Perish Song -> Curse -> Taunt -> Torment; KO healing; Haunted Field on faint."},
+resonanceforce:{name:"Resonance Force"},
+rimeknuckle:{name:"Rime Knuckle",desc:"Filter + Iron Fist; moves have a 40% chance to cause frostbite; KO heals 1/8 or 1/4 against gimmicks.",shortDesc:"Filter + Iron Fist; 40% frostbite; KO healing."},
+riotamp:{name:"Riot Amp"},
+riptideclaws:{name:"Riptide Claws"},
+royalarmament:{name:"Royal Armament"},
+royalcurrent:{name:"Royal Current"},
+royaldecree:{name:"Royal Decree"},
+royalhive:{name:"Royal Hive"},
+royalsun:{name:"Royal Sun"},
+sandsovereign:{name:"Sand Sovereign"},
+seablessing:{name:"Sea Blessing"},
+seasonalstride:{name:"Seasonal Stride"},
+secondwind:{name:"Second Wind"},
+selfsufficient:{
+name:"Self Sufficient",
+desc:"This Pokemon restores 1/16 of its maximum HP at the end of each turn.",
+shortDesc:"Restores 1/16 HP each turn."
+},
+shadowcurrent:{name:"Shadow Current",desc:"Protean + Precision + Technician + Sworn Duty.",shortDesc:"Protean + Precision + Technician + Sworn Duty."},
+guidingomen:{name:"Guiding Omen",desc:"Friend Guard + Invigorate + Serene Grace.",shortDesc:"Friend Guard + Invigorate + Serene Grace."},
+phalanxform:{name:"Phalanx Form",desc:"Hydra Bond + Friend Guard + Battle Armor.",shortDesc:"Hydra Bond + Friend Guard + Battle Armor."},
+windchime:{name:"Wind Chime",desc:"Ironclad + Wind Power + Levitate.",shortDesc:"Ironclad + Wind Power + Levitate."},
+shadowguard:{name:"Shadow Guard"},
+shelltrap:{name:"Shell Trap"},
+siegelauncher:{
+name:"Siege Launcher",
+desc:"Water Barrage + Mega Launcher + Self Sufficient + Stalwart. Mega Launcher-boosted moves use Dual Wield: the second hit deals 30% of the move's unboosted power.",
+shortDesc:"Water Barrage + Mega Launcher + Self Sufficient + Stalwart; second hit 30% unboosted."
+},
+sinisterblaze:{name:"Sinister Blaze"},
+soaringspirit:{name:"Soaring Spirit"},
+solarbloom:{name:"Solar Bloom"},
+solaridol:{name:"Solar Idol"},
+solartrap:{name:"Solar Trap"},
+souleater:{name:"Soul Eater"},
+soulfire:{name:"Soul Fire"},
+soultag:{name:"Soul Tag"},
+starboxer:{name:"Star Boxer"},
+stormcircuit:{name:"Storm Circuit",desc:"This Pokemon creates Electric Terrain on entry and has Swift Swim and Elevate's effects. After it knocks out a foe, its highest stat rises by the number of targets fainted.",shortDesc:"Electric Surge + Swift Swim + Elevate."},
+stormfright:{name:"Storm Fright"},
+stormsovereign:{name:"Storm Sovereign",desc:"On switch-in, this Pokemon sets Strong Winds for 5 turns; the weather can be changed normally. This Pokemon has Wind Power and Speed Boost's effects, its moves cannot miss, and foes take 1/16 Flying-type scaling damage at the end of each turn.",shortDesc:"Wind Power + Speed Boost; 5-turn Strong Winds; moves cannot miss; Flying scaling chip."},
+streettyrant:{name:"Street Tyrant"},
+striker:{name:"Striker"},
+strikersmomentum:{name:"Striker's Momentum",desc:"This Pokemon has Striker and Libero's effects, and its moves cannot miss. Once per switch-in, a KO caused by this Pokemon raises its Speed by 1 stage.",shortDesc:"Moves cannot miss; Striker + Libero; first KO gives +1 Speed."},
+supremeoverlord:{name:"Supreme Overlord",desc:"Each fainted ally gives 1.1x move damage; FFA counts allies twice. At 1+, Clear Body and Self Sufficient; at 2+, Inner Focus; at 3+, Filter and Second Wind; at 4+, Infiltrator; at 5+, Magic Guard and +1 Attack/+1 Sp. Atk.",shortDesc:"Fallen allies boost damage; thresholds grant Clear Body, Filter, Infiltrator, and healing."},
+sunsovereign:{
+name:"Sun Sovereign",
+desc:"This Pokemon has Drought, Wildfire Core, and Self Sufficient's effects. Its sun lasts 5 turns.",
+shortDesc:"Drought + Wildfire Core + Self Sufficient; 5-turn Sun."
+},
+surgeconduit:{name:"Surge Conduit",desc:"This Pokemon has Electric Surge, Lightning Rod, and Brute Force's effects.",shortDesc:"Electric Surge + Lightning Rod + Brute Force."},
+sweetsanctuary:{name:"Sweet Sanctuary"},
+swornduty:{name:"Sworn Duty"},
+technicalspecialist:{name:"Technical Specialist"},
+temporalshift:{name:"Temporal Shift"},
+terastaladaptability:{name:"Terastal Adaptability"},
+terraresolve:{name:"Terra Resolve"},
+toxicbloom:{
+name:"Toxic Bloom",
+desc:"This Pokemon has Pollen Bloom, Self Sufficient, and Byxbysion Touch's effects. Poison-type moves drain 1/2 of their damage and Poison moves can poison attackers that make contact.",
+shortDesc:"Pollen Bloom + Self Sufficient + Poison drain."
+},
+toxicrenewal:{name:"Toxic Renewal"},
+treasuretitan:{name:"Treasure Titan"},
+tremor:{name:"Tremor"},
+tyrantstream:{name:"Tyrant Stream"},
+ultrainstinct:{name:"Ultra Instinct"},
+uncheckedassault:{name:"Unchecked Assault",desc:"This Pokemon has Scrappy, Technician, and Opportunist's effects.",shortDesc:"Scrappy + Technician + Opportunist."},
+unleashedego:{name:"Unleashed Ego"},
+vanguard:{name:"Vanguard"},
+vendetta:{name:"Vendetta",desc:"When hit by a damaging move, this Pokemon raises its Attack by 1. In Doubles, Multi, and Free-For-All, it endures the first damage KO at 1 HP. Its retaliatory Dark- and Ground-type moves ignore defensive boosts and screens, and a KO against that attacker heals 1/4 max HP.",shortDesc:"Hit: +1 Atk; once endures; retaliatory Dark/Ground bypass defenses; KO heals."},
+venombastion:{name:"Venom Bastion"},
+venomrush:{name:"Venom Rush"},
+verdantdrake:{
+name:"Verdant Drake",
+desc:"This Pokemon has Proficient, Regenerator, and Dual Wield's effects. Its STAB moves have 1.2x power, it restores 1/3 max HP when it switches out, and moves boosted by Sharpness or Mega Launcher, plus arrow moves, hit twice for reduced damage.",
+shortDesc:"Proficient + Regenerator + Dual Wield."
+},
+verdanthospitality:{name:"Verdant Hospitality"},
+violentrush:{name:"Violent Rush"},
+voidveil:{name:"Void Veil"},
+warpath:{name:"War Path"},
+warship:{name:"War Ship"},
+wastingsurge:{name:"Wasting Surge"},
+waterbarrage:{
+name:"Water Barrage",
+desc:"Proficient + Water Veil + Dual Wield. Grants Aqua Ring and cycles 1/16, 2/16, then 3/16 Water scaling chip to opposing non-Water Pokemon each turn.",
+shortDesc:"Proficient + Water Veil + Dual Wield; Aqua Ring; cycling Water chip."
+},
+webassassin:{name:"Web Assassin"},
+wickedcommand:{name:"Wicked Command"},
+wickedsnare:{name:"Wicked Snare"},
+wildfirecore:{
+name:"Wildfire Core",
+desc:"This Pokemon has Dragonize, Magma Armor, and Proficient's effects. It is immune to Hail damage. At the end of each turn, opposing Pokemon take Fire-type damage equal to 1/16 max HP, doubled if burned or if this Pokemon used a Fire- or Dragon-type move this turn. This damage uses Fire-type effectiveness and still deals damage to Fire-immune targets.",
+shortDesc:"Dragonize + Magma Armor + Proficient; Fire chip ignores Fire immunity."
+},
+proficient:{
+name:"Proficient",
+desc:"This Pokemon's STAB moves have their power multiplied by 1.2.",
+shortDesc:"STAB moves have 1.2x power."
+},
+dragonize:{
+name:"Dragonize",
+desc:"This Pokemon's Normal-type moves become Dragon-type moves and have their power multiplied by 1.2. This Pokemon gains STAB on Dragon-type moves.",
+shortDesc:"Normal moves become Dragon type; Dragon STAB; converted moves 1.2x."
+},
+magmaarmor:{
+name:"Magma Armor",
+desc:"No freeze outside Cold Eclipse; field +Def/SpD; halves Water/Ice attacking stats; Dragon's Den absorbs Fire.",
+shortDesc:"No freeze outside Cold Eclipse; field +Def/SpD; halves Water/Ice; Dragon's Den absorbs Fire."
+},
+megalauncher:{
+name:'Mega Launcher',
+desc:'Pulse and bullet moves have 1.5x power.',
+shortDesc:'Pulse and bullet moves have 1.5x power.'
+},
+minus:{
+name:'Minus',
+desc:'Electric/Steel moves use 1.3x Atk/SpA; Electric Terrain gives 1.5x SpA.',
+shortDesc:'Electric/Steel moves use 1.3x Atk/SpA; Electric Terrain gives 1.5x SpA.'
+},
+plus:{
+name:'Plus',
+desc:'Electric/Steel moves use 1.3x Atk/SpA; Electric Terrain gives 1.5x SpA.',
+shortDesc:'Electric/Steel moves use 1.3x Atk/SpA; Electric Terrain gives 1.5x SpA.'
+},
+runaway:{
+name:'Run Away',
+desc:'Immune to entry-hazard effects on switch-in.',
+shortDesc:'Immune to entry-hazard effects on switch-in.'
+},
+sniper:{
+name:'Sniper',
+desc:'+1 Accuracy on entry; critical hits deal 3x damage.',
+shortDesc:'+1 Accuracy on entry; critical hits deal 3x damage.'
+},
+unnerve:{
+name:'Unnerve',
+desc:'Opposing Pokemon cannot use Berries while this Pokemon is active.',
+shortDesc:'Opposing Pokemon cannot use Berries while this Pokemon is active.'
+},
+vitalspirit:{
+name:'Vital Spirit',
+desc:'Cannot sleep; Fighting moves use 1.3x Atk/SpA.',
+shortDesc:'Cannot sleep; Fighting moves use 1.3x Atk/SpA.'
+},
+windysurge:{name:"Windy Surge"},
+wrathshield:{name:"Wrath Shield"},
 ragingfists:{
 name:'Raging Fists',
 desc:"This Pokemon has Scrappy, Hydra Bond, Unseen Fist, and Skill Link's effects.",
@@ -3284,8 +3673,8 @@ shortDesc:'This Pokemon has Phantom Barrage.'
 },
 atrocity:{
 name:'Atrocity',
-desc:"This Pokemon's damaging moves have 1.3x power, +1 critical hit ratio, ignore Abilities, ignore defensive stat boosts, and bypass Substitute, Reflect, Light Screen, and Aurora Veil. Its Defense and Special Defense are 1.3x. It heals 30% of the damage it deals with attacks, doubled against G-Max Pokemon, up to 33% of its max HP per hit, and restores 1/16 max HP at the end of each turn. This Pokemon is immune to hail damage.",
-shortDesc:'Moves 1.3x and bypass defenses/screens; drains up to 33%; heals 1/16; hail immune.'
+desc:"This Ability cannot be suppressed and has Wildfire Core, Self Sufficient, and draining attacks. This Pokemon's damaging moves have 1.3x power, +1 critical hit ratio, ignore Abilities, ignore defensive stat boosts, and bypass Substitute, Reflect, Light Screen, and Aurora Veil. Its Defense and Special Defense are 1.3x. It heals 30% of the damage it deals with attacks, doubled against G-Max Pokemon, up to 33% of its max HP per hit. In Cold Eclipse, its damaging moves gain another 1.3x boost, and its Defense and Special Defense become 1.5x.",
+shortDesc:'Wildfire Core + Self Sufficient + draining attacks.'
 },
 ultraego:{
 name:'Ultra Ego',
@@ -3295,7 +3684,31 @@ shortDesc:'Mold Breaker; attacks heal; move KOs heal 1/10; next enemy hit boosts
 };
 
 var CUSTOM_MOVE_UPDATES={
+icespinner:{
+desc:"After a successful hit, ends Core terrain and temporary fields created by Z moves or abilities. Permanent fields remain.",
+shortDesc:"Clears Core and temporary Z/ability fields."
+},
+steelroller:{
+desc:"Fails if there is no terrain or if the field lasts more than 10 turns. After a successful hit, ends Core terrain and temporary Z/ability fields. Permanent fields remain.",
+shortDesc:"Clears Core and temporary Z/ability fields; fails on long fields."
+},
+blastburn:{
+name:'Blast Burn',
+desc:'160-power Fire move using the higher Atk/SpA; 60% burn; recharge unless it KOs.',
+shortDesc:'160 BP; higher Atk/SpA; 60% burn; recharge unless it KOs.'
+},
+frenzyplant:{
+name:'Frenzy Plant',
+desc:'160-power Grass move using the higher Atk/SpA; 80% bad poison; recharge unless it KOs.',
+shortDesc:'160 BP; higher Atk/SpA; 80% bad poison; recharge unless it KOs.'
+},
+hydrocannon:{
+name:'Hydro Cannon',
+desc:'160-power Water move using the higher Atk/SpA; 60% freeze; recharge unless it KOs.',
+shortDesc:'160 BP; higher Atk/SpA; 60% freeze; recharge unless it KOs.'
+},
 bonemerang:{
+basePower:50,
 name:'Bonemerang',
 critRatio:2,
 secondary:{
@@ -3692,7 +4105,10 @@ spikecannon:['9M']
 };
 
 var CUSTOM_BW_SPRITE_IDS=Object.keys(CUSTOM_BW_SPRITES);
-var CUSTOM_ANIMATED_BW_SPRITES=new Set(['hydreigon','weavile','weavilef','garchomp','garchompf','garchompmega']);
+var CUSTOM_ANIMATED_BW_SPRITES=new Set([
+'hydreigon','weavile','weavilef','garchomp','garchompf','garchompmega'].concat(
+Object.keys(CUSTOM_STATIC_BATTLE_SPRITES),CUSTOM_BW_SPRITE_IDS)
+);
 var CUSTOM_SPECIES_IDS=Object.keys(CUSTOM_SPECIES);
 var CUSTOM_SPECIES_UPDATE_IDS=Object.keys(CUSTOM_SPECIES_UPDATES);
 var SILVALLY_TYPE_FORMES={
@@ -3799,6 +4215,7 @@ corviknightgmax:{w:112,h:112},
 dragapultgmax:{w:120,h:120},
 dondozo:{w:100,h:100},
 espeon:{w:66,h:66},
+excadrillmega:{w:70,h:70},
 gengar:{w:62,h:62},
 gardevoir:{w:108,h:108},
 gardevoirmega:{w:108,h:108},
@@ -3826,7 +4243,7 @@ perrserker:{w:62,h:62},
 ribombee:{w:60,h:60},
 sableye:{w:126,h:126},
 sableyemega:{w:62,h:62},
-spiritomb:{w:70,h:70},
+spiritomb:{w:58,h:58},
 rotom:{w:64,h:64},
 rotomfan:{w:68,h:68},
 rotomfrost:{w:68,h:68},
@@ -3899,7 +4316,8 @@ perrserker:{w:62,h:62},
 ribombee:{w:60,h:60},
 sableye:{w:134,h:134},
 sableyemega:{w:66,h:66},
-spiritomb:{w:78,h:78},
+excadrillmega:{w:74,h:74},
+spiritomb:{w:64,h:64},
 rotom:{w:60,h:60},
 rotomfan:{w:64,h:64},
 rotomfrost:{w:64,h:64},
@@ -3982,7 +4400,8 @@ perrserker:{w:60,h:60},
 ribombee:{w:60,h:60},
 sableye:{w:108,h:108},
 sableyemega:{w:58,h:58},
-spiritomb:{w:66,h:66},
+excadrillmega:{w:66,h:66},
+spiritomb:{w:56,h:56},
 rotom:{w:68,h:68},
 rotomfan:{w:72,h:72},
 rotomfrost:{w:72,h:72},
@@ -4171,6 +4590,7 @@ if(window.BattlePokedexAltForms&&customPokedexAltFormsTable!==window.BattlePoked
 delete window.BattlePokedexAltForms.banettemegaz;
 customPokedexAltFormsTable=window.BattlePokedexAltForms;
 }
+if(window.BattleAliases)window.BattleAliases.alchemicsurge='Alchemist Surge';
 if(window.BattleAbilities&&customAbilityDataTable!==window.BattleAbilities){for(var _i18=0;_i18<
 CUSTOM_ABILITY_UPDATE_IDS.length;_i18++){var _id5=CUSTOM_ABILITY_UPDATE_IDS[_i18];
 if(!window.BattleAbilities[_id5])window.BattleAbilities[_id5]={};
@@ -4789,7 +5209,12 @@ var animationData=null;
 var miscData=null;
 var speciesid=species.id;
 if(requestedSpriteid&&SILVALLY_FORME_TYPES[requestedSpriteid])speciesid=requestedSpriteid;
-if(requestedSpriteid&&CUSTOM_STATIC_BATTLE_SPRITES[requestedSpriteid])speciesid=requestedSpriteid;
+if(requestedSpriteid&&(
+CUSTOM_STATIC_BATTLE_SPRITES[requestedSpriteid]||
+CUSTOM_BW_SPRITES[requestedSpriteid]||
+CUSTOM_ICON_SPRITES[requestedSpriteid]))
+speciesid=requestedSpriteid;
+if(CUSTOM_ICON_SPRITES[speciesid])name=CUSTOM_ICON_SPRITES[speciesid];
 if(species.isTotem)speciesid=toID(name);
 if(baseDir===''&&window.BattlePokemonSprites){
 animationData=BattlePokemonSprites[speciesid];
@@ -5023,6 +5448,25 @@ spriteData.y+=-22;
 spriteData.w*=1.5;
 spriteData.h*=1.5;
 spriteData.y+=-11;
+}
+if(options.teamPreview&&!isDynamax){
+var isGmax=speciesid.includes('gmax');
+var isMega=speciesid.includes('mega')||speciesid.includes('battlebond');
+var maxWidth=isFront?
+isGmax?CUSTOM_TEAM_PREVIEW_FRONT_GMAX_SPRITE_MAX_WIDTH:
+isMega?CUSTOM_TEAM_PREVIEW_FRONT_MEGA_SPRITE_MAX_WIDTH:CUSTOM_TEAM_PREVIEW_FRONT_SPRITE_MAX_WIDTH:
+isGmax?CUSTOM_TEAM_PREVIEW_BACK_GMAX_SPRITE_MAX_WIDTH:
+isMega?CUSTOM_TEAM_PREVIEW_BACK_MEGA_SPRITE_MAX_WIDTH:CUSTOM_TEAM_PREVIEW_BACK_SPRITE_MAX_WIDTH;
+var maxHeight=isFront?
+isGmax?CUSTOM_TEAM_PREVIEW_FRONT_GMAX_SPRITE_MAX_HEIGHT:
+isMega?CUSTOM_TEAM_PREVIEW_FRONT_MEGA_SPRITE_MAX_HEIGHT:CUSTOM_TEAM_PREVIEW_FRONT_SPRITE_MAX_HEIGHT:
+isGmax?CUSTOM_TEAM_PREVIEW_BACK_GMAX_SPRITE_MAX_HEIGHT:
+isMega?CUSTOM_TEAM_PREVIEW_BACK_MEGA_SPRITE_MAX_HEIGHT:CUSTOM_TEAM_PREVIEW_BACK_SPRITE_MAX_HEIGHT;
+var _scale4=Math.min(maxWidth/spriteData.w,maxHeight/spriteData.h);
+if(_scale4<1){
+spriteData.w=Math.max(1,Math.round(spriteData.w*_scale4));
+spriteData.h=Math.max(1,Math.round(spriteData.h*_scale4));
+}
 }
 
 return spriteData;

@@ -1566,13 +1566,19 @@ export class Battle {
 			for (const hitTarget of kwArgs.spread.split(',')) {
 				const curTarget = this.getPokemon(hitTarget + ': ?');
 				if (!curTarget) {
-					this.log(['error', `Invalid spread move target: "${hitTarget}"`]);
 					continue;
 				}
 				targets.push(curTarget);
 			}
 		}
 
+		// FFA logs can contain a stale or empty slot after a faint/switch. Keep
+		// move animations from receiving only the attacker or an undefined sprite.
+		if (targets.length === 1) {
+			if (!target?.sprite) return;
+			this.scene.runMoveAnim(usedMove.id, [pokemon, target]);
+			return;
+		}
 		this.scene.runMoveAnim(usedMove.id, targets);
 	}
 	cantUseMove(pokemon: Pokemon, effect: Effect, move: Move, kwArgs: KWArgs) {
