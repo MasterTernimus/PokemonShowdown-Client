@@ -3684,6 +3684,10 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 };
 
 const CUSTOM_MOVE_UPDATES: {[id: string]: AnyObject} = {
+	crosspoison: {
+		desc: "Has a high critical hit ratio and a 50% chance to badly poison the target. If the target is poisoned or badly poisoned, this move ignores the target's positive Defense boosts.",
+		shortDesc: "High crit. 50% toxic; ignores positive Def boosts vs poisoned targets.",
+	},
 	icespinner: {
 		desc: "After a successful hit, ends Core terrain and temporary fields created by Z moves or abilities. Permanent fields remain.",
 		shortDesc: "Clears Core and temporary Z/ability fields.",
