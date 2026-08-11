@@ -3542,6 +3542,11 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 		desc: "This Pokemon's accuracy is multiplied by 1.5, and its Special Attack is multiplied by 1.5.",
 		shortDesc: "1.5x accuracy and 1.5x Sp. Atk.",
 	},
+	perishbody: {
+		name: "Perish Body",
+		desc: "Any opposing damaging hit gives all foes Perish Song; repeat hits reduce their count. In Haunted Field, affected adjacent foes are trapped. Holy Field blocks this effect, and allies cannot trigger it.",
+		shortDesc: "Any enemy hit gives foes Perish Song; repeat hits reduce the count; Haunted traps.",
+	},
 	razorcurrent: {
 		name: "Razor Current",
 		desc: "This Pokemon has Drizzle, Speed Boost, Steelworker, and Strong Jaw's effects.",
