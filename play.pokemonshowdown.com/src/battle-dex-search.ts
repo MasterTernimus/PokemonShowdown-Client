@@ -480,7 +480,7 @@ class DexSearch {
 				buf.push(['header', `${ability} Pok&eacute;mon`]);
 				for (let id in BattlePokedex) {
 					if (!BattlePokedex[id].abilities) continue;
-					if (Dex.hasAbility(this.dex.species.get(id), ability)) {
+					if (Dex.hasAbilityEffect(this.dex.species.get(id), ability)) {
 						(illegal && id in illegal ? illegalBuf : buf).push(['pokemon', id as ID]);
 					}
 				}
@@ -1101,7 +1101,7 @@ class BattlePokemonSearch extends BattleTypedSearch<'pokemon'> {
 				if (this.getTier(species) !== value) return false;
 				break;
 			case 'ability':
-				if (!Dex.hasAbility(species, value)) return false;
+				if (!Dex.hasAbilityEffect(species, value)) return false;
 				break;
 			case 'move':
 				if (!this.canLearn(species.id, value as ID)) return false;

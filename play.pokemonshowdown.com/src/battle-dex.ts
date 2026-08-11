@@ -5467,6 +5467,10 @@ function applyCustomTeambuilderSpriteSizing(spriteData: SpriteData, id: string, 
 	spriteData.backgroundSize = `${width}px auto`;
 }
 const CUSTOM_ABILITY_UPDATE_IDS = Object.keys(CUSTOM_ABILITY_UPDATES);
+const CUSTOM_ABILITY_COMPONENT_OVERRIDES: {[id: string]: readonly ID[]} = {
+	// Ultra Ego implements Mold Breaker's effect without delegating to the base Ability.
+	ultraego: ['moldbreaker' as ID],
+};
 const CUSTOM_MOVE_UPDATE_IDS = Object.keys(CUSTOM_MOVE_UPDATES);
 const CUSTOM_LEARNSET_REPLACEMENT_IDS = Object.keys(CUSTOM_LEARNSET_REPLACEMENTS);
 const CUSTOM_LEARNSET_ADDITION_IDS = Object.keys(CUSTOM_LEARNSET_ADDITIONS);
@@ -5847,6 +5851,8 @@ const Dex = new class implements ModdedDex {
 
 	loadedSpriteData = {xy: 1, bw: 0};
 	moddedDexes: {[mod: string]: ModdedDex} = {};
+	abilityEffectDataTable: AnyObject | null = null;
+	abilityEffectCache: {[id: string]: ReadonlySet<ID>} = {};
 
 	mod(modid: ID): ModdedDex {
 		if (modid === 'gen9') return this;
@@ -6117,6 +6123,59 @@ const Dex = new class implements ModdedDex {
 			if (ability === species.abilities[i]) return true;
 		}
 		return false;
+	}
+
+	/** Used by Pokemon search filters; never by the ability picker or legality checks. */
+	hasAbilityEffect(species: Species, ability: string) {
+		ensureCustomDataPatches();
+		const effectId = toID(ability);
+		if (!effectId) return false;
+		for (const slot in species.abilities) {
+			// @ts-ignore
+			const abilityId = toID(species.abilities[slot]);
+			if (this.getAbilityEffects(abilityId).has(effectId)) return true;
+		}
+		return false;
+	}
+
+	getAbilityEffects(abilityId: ID, visiting = new Set<ID>()): ReadonlySet<ID> {
+		if (this.abilityEffectDataTable !== window.BattleAbilities) {
+			this.abilityEffectDataTable = window.BattleAbilities;
+			this.abilityEffectCache = {};
+		}
+		if (this.abilityEffectCache[abilityId]) return this.abilityEffectCache[abilityId];
+		if (visiting.has(abilityId)) return new Set<ID>([abilityId]);
+
+		const effects = new Set<ID>([abilityId]);
+		const source = CUSTOM_ABILITY_UPDATES[abilityId];
+		if (!source) {
+			this.abilityEffectCache[abilityId] = effects;
+			return effects;
+		}
+
+		const nextVisiting = new Set(visiting);
+		nextVisiting.add(abilityId);
+		const directComponents = new Set<ID>(CUSTOM_ABILITY_COMPONENT_OVERRIDES[abilityId] || []);
+		// Compact descriptions are the canonical component summary; long descriptions may
+		// mention abilities only as comparisons or examples.
+		const description = `${source.shortDesc || source.desc || ''}`.replace(/\u2019/g, "'");
+		for (const componentId in window.BattleAbilities) {
+			if (componentId === abilityId) continue;
+			const component = window.BattleAbilities[componentId];
+			const componentName = component?.name;
+			if (!componentName) continue;
+			const escapedName = componentName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+			if (new RegExp(`(^|[^a-z0-9])${escapedName}($|[^a-z0-9])`, 'i').test(description)) {
+				directComponents.add(componentId as ID);
+			}
+		}
+		for (const componentId of Array.from(directComponents)) {
+			for (const nestedEffect of Array.from(this.getAbilityEffects(componentId, nextVisiting))) {
+				effects.add(nestedEffect);
+			}
+		}
+		this.abilityEffectCache[abilityId] = effects;
+		return effects;
 	}
 
 	loadSpriteData(gen: 'xy' | 'bw') {
