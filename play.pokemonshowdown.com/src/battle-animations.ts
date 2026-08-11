@@ -1895,6 +1895,7 @@ export class PokemonSprite extends Sprite {
 
 	constructor(spriteData: SpriteData | null, pos: InitScenePos, scene: BattleScene, isFrontSprite: boolean) {
 		super(spriteData, pos, scene);
+		if (this.$el) this.$el.css({'will-change': 'left, top, opacity', 'backface-visibility': 'hidden'});
 		this.cryurl = this.sp.cryurl;
 		this.isFrontSprite = isFrontSprite;
 	}
