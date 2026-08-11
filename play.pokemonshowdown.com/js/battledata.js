@@ -5467,6 +5467,10 @@ CUSTOM_TEAMBUILDER_SPRITE_Y_OFFSETS[id]||0);
 spriteData.backgroundSize=width+"px auto";
 }
 var CUSTOM_ABILITY_UPDATE_IDS=Object.keys(CUSTOM_ABILITY_UPDATES);
+var CUSTOM_ABILITY_COMPONENT_OVERRIDES={
+
+ultraego:['moldbreaker']
+};
 var CUSTOM_MOVE_UPDATE_IDS=Object.keys(CUSTOM_MOVE_UPDATES);
 var CUSTOM_LEARNSET_REPLACEMENT_IDS=Object.keys(CUSTOM_LEARNSET_REPLACEMENTS);
 var CUSTOM_LEARNSET_ADDITION_IDS=Object.keys(CUSTOM_LEARNSET_ADDITIONS);
@@ -5847,6 +5851,8 @@ return protocol+"//"+'play.pokemonreborn-showdown.xyz'+"/fx/";
 
 loadedSpriteData={xy:1,bw:0};this.
 moddedDexes={};this.
+abilityEffectDataTable=null;this.
+abilityEffectCache={};this.
 
 
 
@@ -6117,6 +6123,59 @@ for(var i in species.abilities){
 if(ability===species.abilities[i])return true;
 }
 return false;
+};_proto2.
+
+
+hasAbilityEffect=function hasAbilityEffect(species,ability){
+ensureCustomDataPatches();
+var effectId=toID(ability);
+if(!effectId)return false;
+for(var slot in species.abilities){
+
+var abilityId=toID(species.abilities[slot]);
+if(this.getAbilityEffects(abilityId).has(effectId))return true;
+}
+return false;
+};_proto2.
+
+getAbilityEffects=function getAbilityEffects(abilityId){var visiting=arguments.length>1&&arguments[1]!==undefined?arguments[1]:new Set();
+if(this.abilityEffectDataTable!==window.BattleAbilities){
+this.abilityEffectDataTable=window.BattleAbilities;
+this.abilityEffectCache={};
+}
+if(this.abilityEffectCache[abilityId])return this.abilityEffectCache[abilityId];
+if(visiting.has(abilityId))return new Set([abilityId]);
+
+var effects=new Set([abilityId]);
+var source=CUSTOM_ABILITY_UPDATES[abilityId];
+if(!source){
+this.abilityEffectCache[abilityId]=effects;
+return effects;
+}
+
+var nextVisiting=new Set(visiting);
+nextVisiting.add(abilityId);
+var directComponents=new Set(CUSTOM_ABILITY_COMPONENT_OVERRIDES[abilityId]||[]);
+
+
+var description=(""+(source.shortDesc||source.desc||'')).replace(/\u2019/g,"'");
+for(var componentId in window.BattleAbilities){
+if(componentId===abilityId)continue;
+var component=window.BattleAbilities[componentId];
+var componentName=component==null?void 0:component.name;
+if(!componentName)continue;
+var escapedName=componentName.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+if(new RegExp("(^|[^a-z0-9])"+escapedName+"($|[^a-z0-9])",'i').test(description)){
+directComponents.add(componentId);
+}
+}for(var _i34=0,_Array$from2=
+Array.from(directComponents);_i34<_Array$from2.length;_i34++){var _componentId=_Array$from2[_i34];for(var _i36=0,_Array$from4=
+Array.from(this.getAbilityEffects(_componentId,nextVisiting));_i36<_Array$from4.length;_i36++){var nestedEffect=_Array$from4[_i36];
+effects.add(nestedEffect);
+}
+}
+this.abilityEffectCache[abilityId]=effects;
+return effects;
 };_proto2.
 
 loadSpriteData=function loadSpriteData(gen){
@@ -6693,8 +6752,8 @@ return"<img src=\""+Dex.resourcePrefix+"sprites/categories/"+sanitizedCategory+"
 getPokeballs=function getPokeballs(){
 if(this.pokeballs)return this.pokeballs;
 this.pokeballs=[];
-if(!window.BattleItems)window.BattleItems={};for(var _i34=0,_Object$values2=
-Object.values(window.BattleItems);_i34<_Object$values2.length;_i34++){var data=_Object$values2[_i34];
+if(!window.BattleItems)window.BattleItems={};for(var _i38=0,_Object$values2=
+Object.values(window.BattleItems);_i38<_Object$values2.length;_i38++){var data=_Object$values2[_i38];
 if(!data.isPokeball)continue;
 this.pokeballs.push(data.name);
 }
@@ -6881,8 +6940,8 @@ return data;
 getPokeballs=function getPokeballs(){
 if(this.pokeballs)return this.pokeballs;
 this.pokeballs=[];
-if(!window.BattleItems)window.BattleItems={};for(var _i36=0,_Object$values4=
-Object.values(window.BattleItems);_i36<_Object$values4.length;_i36++){var data=_Object$values4[_i36];
+if(!window.BattleItems)window.BattleItems={};for(var _i40=0,_Object$values4=
+Object.values(window.BattleItems);_i40<_Object$values4.length;_i40++){var data=_Object$values4[_i40];
 if(data.gen&&data.gen>this.gen)continue;
 if(!data.isPokeball)continue;
 this.pokeballs.push(data.name);
@@ -7018,8 +7077,8 @@ if(typeof team==='string'){
 if(team.indexOf('\n')>=0)return team;
 team=this.unpack(team);
 }
-var text='';for(var _i38=0,_team2=
-team;_i38<_team2.length;_i38++){var curSet=_team2[_i38];
+var text='';for(var _i42=0,_team2=
+team;_i42<_team2.length;_i42++){var curSet=_team2[_i42];
 if(isSilvallySpecies(curSet.species))curSet.shiny=true;
 if(curSet.name&&curSet.name!==curSet.species){
 text+=''+curSet.name+' ('+curSet.species+')';
@@ -7084,8 +7143,8 @@ text+=''+curSet.nature+' Nature'+"  \n";
 first=true;
 if(curSet.ivs){
 var defaultIvs=true;
-var hpType='';for(var _i40=0,_curSet$moves2=
-curSet.moves;_i40<_curSet$moves2.length;_i40++){var move=_curSet$moves2[_i40];
+var hpType='';for(var _i44=0,_curSet$moves2=
+curSet.moves;_i44<_curSet$moves2.length;_i44++){var move=_curSet$moves2[_i44];
 if(move.substr(0,13)==='Hidden Power '&&move.substr(0,14)!=='Hidden Power ['){
 hpType=move.substr(13);
 if(!Dex.types.isName(hpType)){
@@ -7128,8 +7187,8 @@ if(!first){
 text+="  \n";
 }
 }
-if(curSet.moves){for(var _i42=0,_curSet$moves4=
-curSet.moves;_i42<_curSet$moves4.length;_i42++){var _move=_curSet$moves4[_i42];
+if(curSet.moves){for(var _i46=0,_curSet$moves4=
+curSet.moves;_i46<_curSet$moves4.length;_i46++){var _move=_curSet$moves4[_i46];
 if(_move.substr(0,13)==='Hidden Power '){
 _move=_move.substr(0,13)+'['+_move.substr(13)+']';
 }
