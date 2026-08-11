@@ -3047,8 +3047,77 @@ back:{w:96,h:96}
 
 var CUSTOM_SPECIES_UPDATES={
 inteleon:{
-abilities:{0:'High Noon',1:'Super Luck',H:'Sniper'}
+abilities:{0:'Dual Wield',1:'Sniper',H:'Precision'}
 },
+misdreavus:{
+types:['Ghost','Fairy'],
+baseStats:{hp:80,atk:40,def:80,spa:85,spd:85,spe:85},
+abilities:{0:'Levitate',1:'Prankster',H:'Perish Body'}
+},
+ursaring:{
+baseStats:{hp:115,atk:130,def:115,spa:40,spd:115,spe:35},
+abilities:{0:'Guts',1:'Tough Claws',H:'Intimidate'}
+},
+tropius:{baseStats:{hp:115,atk:90,def:95,spa:75,spd:95,spe:70}},
+huntail:{baseStats:{hp:70,atk:114,def:115,spa:94,spd:85,spe:52}},
+gorebyss:{baseStats:{hp:70,atk:84,def:115,spa:124,spd:85,spe:52}},
+ambipom:{
+baseStats:{hp:80,atk:105,def:75,spa:105,spd:70,spe:115},
+abilities:{0:'Unburden',1:'Technician',H:'Skill Link'}
+},
+weavile:{
+baseStats:{hp:85,atk:130,def:80,spa:30,spd:90,spe:135},
+abilities:{0:'Violent Rush',1:'Pressure',H:'Technician'}
+},
+mamoswine:{baseStats:{hp:120,atk:135,def:90,spa:70,spd:70,spe:85}},
+rotom:{baseStats:{hp:60,atk:50,def:77,spa:95,spd:77,spe:91}},
+rotomheat:{baseStats:{hp:60,atk:65,def:107,spa:105,spd:107,spe:86}},
+rotomwash:{baseStats:{hp:60,atk:65,def:107,spa:105,spd:107,spe:86}},
+rotomfrost:{baseStats:{hp:60,atk:65,def:107,spa:105,spd:107,spe:86}},
+rotomfan:{baseStats:{hp:60,atk:65,def:107,spa:105,spd:107,spe:86}},
+rotommow:{baseStats:{hp:60,atk:65,def:107,spa:105,spd:107,spe:86}},
+slurpuff:{
+types:['Fairy','Fighting'],
+baseStats:{hp:112,atk:82,def:99,spa:96,spd:96,spe:65},
+abilities:{0:'Unburden',1:'Violent Rush',H:'Rapid Response'}
+},
+trevenant:{
+baseStats:{hp:108,atk:130,def:100,spa:30,spd:106,spe:76},
+abilities:{0:'Harvest',1:'Tough Claws',H:'Grassy Surge'}
+},
+gourgeist:{
+baseStats:{hp:65,atk:86,def:122,spa:118,spd:75,spe:84},
+abilities:{0:'Soul Fire',1:'Harvest',H:'Flare Boost'}
+},
+gourgeistsmall:{
+baseStats:{hp:55,atk:86,def:122,spa:113,spd:75,spe:99},
+abilities:{0:'Soul Fire',1:'Harvest',H:'Flare Boost'}
+},
+gourgeistlarge:{
+baseStats:{hp:75,atk:86,def:122,spa:123,spd:75,spe:69},
+abilities:{0:'Soul Fire',1:'Harvest',H:'Flare Boost'}
+},
+gourgeistsuper:{
+baseStats:{hp:85,atk:86,def:122,spa:128,spd:75,spe:54},
+abilities:{0:'Soul Fire',1:'Harvest',H:'Flare Boost'}
+},
+bewear:{
+types:['Normal','Fighting'],
+baseStats:{hp:130,atk:135,def:80,spa:75,spd:80,spe:70},
+abilities:{0:'Scrappy',1:'Fluffy',H:'Unaware'}
+},
+palossand:{baseStats:{hp:115,atk:55,def:75,spa:135,spd:115,spe:55}},
+dhelmise:{
+baseStats:{hp:100,atk:140,def:110,spa:60,spd:110,spe:30},
+abilities:{0:'Water Bubble',1:'Steelworker',H:'Rocky Payload'}
+},
+rillaboom:{abilities:{0:'Violent Rush',1:'Soundproof',H:'Grassy Surge'}},
+cinderace:{abilities:{0:'Defiant',1:'No Guard',H:'Libero'}},
+orbeetle:{abilities:{0:'Magic Bounce',1:'Psychic Surge',H:'Telepathy'}},
+coalossal:{abilities:{0:'Steam Engine',1:'Flame Body',H:'Earth Eater'}},
+sandslash:{baseStats:{hp:95,atk:125,def:135,spa:45,spd:75,spe:85}},
+sandslashalola:{baseStats:{hp:95,atk:125,def:135,spa:45,spd:75,spe:85}},
+golurk:{abilities:{0:'Iron Fist',1:'No Guard',H:'Self Repair'}},
 sawsbuck:{
 name:'Sawsbuck',
 spriteid:'sawsbuck-spring',
@@ -3105,6 +3174,8 @@ cosmeticFormes:['Torterra-Alt'],
 formeOrder:['Torterra','Torterra-Alt']
 },
 cacturne:{
+baseStats:{hp:75,atk:160,def:70,spa:105,spd:70,spe:90},
+abilities:{0:'Sand Rush',1:'Scarecrow',H:'Chlorophyll'},
 otherFormes:['Cacturne-Alt'],
 cosmeticFormes:['Cacturne-Alt'],
 formeOrder:['Cacturne','Cacturne-Alt']
@@ -3161,7 +3232,7 @@ dragonair:{
 abilities:{0:'Shed Skin',1:'Dragonize',H:'Marvel Scale'}
 },
 feraligatr:{
-abilities:{0:'Sheer Force',1:'Intimidate',H:'Water Veil'}
+abilities:{0:'Strong Jaw',1:'Mighty Jaw',H:'Sheer Force'}
 },
 feraligatrmega:{
 abilities:{0:'Draconic Force'}
@@ -3262,14 +3333,56 @@ baseStats:{hp:95,atk:127,def:184,spa:34,spd:76,spe:38},
 abilities:{0:'Strong Jaw',1:'Noble Armor',H:'Crumbling Shell'}
 },
 basculegion:{
-abilities:{0:'Noble Rider',1:'Supreme Overlord',H:'Rapid Response'}
+baseStats:{hp:120,atk:112,def:75,spa:80,spd:85,spe:78},
+abilities:{0:'Noble Rider',1:'Supreme Overlord',H:'Mold Breaker'}
 },
 basculegionf:{
-abilities:{0:'Noble Rider',1:'Supreme Overlord',H:'Mold Breaker'}
+baseStats:{hp:120,atk:80,def:75,spa:112,spd:85,spe:78},
+abilities:{0:'Noble Rider',1:'Supreme Overlord',H:'Rapid Response'}
 }
 };
 
 var CUSTOM_ABILITY_UPDATES={
+selfrepair:{
+name:'Self Repair',
+desc:"This Pokemon has Self Sufficient and Natural Cure's effects.",
+shortDesc:'Self Sufficient + Natural Cure.'
+},
+scarecrow:{
+name:'Scarecrow',
+desc:"This Pokemon has Wind Rider, Steelworker, and Stakeout's effects.",
+shortDesc:'Wind Rider + Steelworker + Stakeout.'
+},
+powerofalchemy:{
+name:'Power of Alchemy',
+desc:"This Pokemon has Self Sufficient and Regenerator. It copies a fainted ally's Ability while retaining both built-in effects until switching out.",
+shortDesc:"Self Sufficient + Regenerator; copies a fainted ally's Ability."
+},
+rockypayload:{
+name:'Rocky Payload',
+desc:'Gains Rock STAB; Rock attacks get 1.5x offense, or 2x in Rocky Terrain; gains Rock resistances.',
+shortDesc:'Rock STAB; Rock attacks 1.5x, or 2x in Rocky Terrain; gains Rock resistances.'
+},
+steamengine:{
+name:'Steam Engine',
+desc:'Self Sufficient + Magma Armor; Fire or Water hits raise Speed by 6; heat and water fields also activate it.',
+shortDesc:'Self Sufficient + Magma Armor; Fire/Water hits raise Speed by 6.'
+},
+steelworker:{
+name:'Steelworker',
+desc:'Gains Steel STAB; Steel attacks get 1.5x offense, or 2x in Factory; gains Steel defensive traits.',
+shortDesc:'Steel STAB; Steel attacks 1.5x, or 2x in Factory; gains Steel traits.'
+},
+waterbubble:{
+name:'Water Bubble',
+desc:'Gains Water STAB and 2x offense on Water attacks; halves incoming Fire offense; includes Water Veil and Aqua Ring.',
+shortDesc:'Water STAB and 2x offense; halves Fire offense; Water Veil + Aqua Ring.'
+},
+watercompaction:{
+name:'Water Compaction',
+desc:'Halves damage from Water attacks. Taking Water damage raises Defense by 2 stages.',
+shortDesc:'Halves Water damage; taking Water damage raises Defense by 2.'
+},
 greatmarsh:{
 name:"Great Marsh",
 desc:"This Pokemon has Dry Skin and Adaptability's effects.",
@@ -3516,8 +3629,8 @@ shortDesc:"Adaptability + Levitate + Dual Wield; priority damage reduction."
 },
 accumulation:{
 name:"Accumulation",
-desc:"This Pokemon has Thick Fat's effect and is immune to sandstorm and hail damage. Belch used by this Pokemon can be used without eating a Berry. At the end of each turn after this Pokemon has been out for at least one turn, it gains a Stockpile stack, up to 3. This does not happen if its last move was Spit Up or Swallow. Once it reaches 3 Stockpile stacks, every other turn it chooses the foe and whether Belch or Spit Up would deal more damage, then uses only that move. Automatically used Spit Up respects protection and invulnerability. If this Pokemon uses Spit Up, it follows with Belch on the same target and loses 1 Stockpile stack. If this Pokemon uses Belch, it does not follow with Spit Up. If this Pokemon uses Swallow, it also uses Spit Up and Belch on the best target before consuming its Stockpile.",
-shortDesc:"Thick Fat; Belch needs no Berry; auto-builds Stockpile; Spit Up/Swallow combo into Belch."
+desc:"This Pokemon has Thick Fat and ignores sandstorm and hail. It can use Belch without a Berry and gains one Stockpile each turn. At 3 stacks it waits one full turn, then automatically chooses Belch or Spit Up every other turn. Its Spit Up and Swallow combinations still apply.",
+shortDesc:"Thick Fat; auto-Stockpiles; at 3 waits one turn, then releases every other turn."
 },
 adaptivecell:{
 name:"Adaptive Cell",
@@ -3536,7 +3649,7 @@ shortDesc:"Boosted Hospitality + Effect Spore + Self Sufficient + Invigorate; ke
 },
 ange:{
 name:"Ange",
-desc:"This Pokemon has Eternal Flower, Fairy Aura, and Magic Guard's effects. Its Grass-type moves use 1.5x Attack and Special Attack, Fairy-type moves are boosted, and opposing Mega, G-Max, Terastallized, Stellar, and Ultra Beast Pokemon have their stats reduced to 0.6x. When this Pokemon faints, it creates Bewitched Woods for 5 turns.",
+desc:"This Pokemon has Eternal Flower, Fairy Aura, and Magic Guard's effects. Its Grass-type moves use 1.5x Attack and Special Attack, Fairy-type moves are boosted, and opposing Mega, G-Max, Terastallized, Stellar, and Ultra Beast Pokemon have their stats reduced to 0.7x. When this Pokemon faints, it creates Bewitched Woods for 5 turns.",
 shortDesc:"Eternal Flower + Fairy Aura + Magic Guard; weakens opposing gimmicks."
 },
 apexcleave:{
@@ -3566,8 +3679,8 @@ shortDesc:"All moves get STAB if needed; hits type immunities; Fur Coat + Overco
 },
 astralwatcher:{
 name:"Astral Watcher",
-desc:"This Pokemon has Prankster, Telepathy, and Defragment's effects.",
-shortDesc:"Prankster + Telepathy + Defragment."
+desc:"This Pokemon has Prankster, Telepathy, Defragment, and Power Spot's effects.",
+shortDesc:"Prankster + Telepathy + Defragment + Power Spot."
 },
 astralwitchcraft:{
 name:"Astral Witchcraft",
@@ -4001,8 +4114,8 @@ shortDesc:"Gains strongest foe's Ability; repeatedly queues 60 BP Future Sight."
 },
 phantomfist:{
 name:"Phantom Fist",
-desc:"This Pokemon's moves cannot miss and it has Filter, Self Sufficient, and Unseen Fist's effects.",
-shortDesc:"Moves cannot miss + Filter + Self Sufficient + Unseen Fist."
+desc:"This Pokemon's moves cannot miss and it has Filter, Self Repair, and Unseen Fist's effects.",
+shortDesc:"Moves cannot miss + Filter + Self Repair + Unseen Fist."
 },
 pollenbloom:{
 name:"Pollen Bloom",
@@ -4036,8 +4149,8 @@ shortDesc:"This Pokemon's Sp. Atk is 1.5x, but it can only select the first move
 },
 prismscale:{
 name:"Prism Scale",
-desc:"This Pokemon has Marvel Scale, Water Veil, and Dragonize's effects. Its Defense is 1.5x while statused or in boosted fields, it cannot be burned, it gains Aqua Ring on switch-in, it is immune to hail and sandstorm damage, its Normal-type moves become Dragon type and have 1.2x power, and it gains STAB on Dragon-type moves.",
-shortDesc:"Marvel Scale + Water Veil + Dragonize."
+desc:"This Pokemon has Marvel Scale, Water Veil, Dragonize, and Self Sufficient's effects.",
+shortDesc:"Marvel Scale + Water Veil + Dragonize + Self Sufficient."
 },
 queensguard:{
 name:"Queen's Guard",
@@ -4513,6 +4626,19 @@ shortDesc:"Mold Breaker; heals each turn/attack; KOs heal more; first enemy hit 
 };
 
 var CUSTOM_MOVE_UPDATES={
+beatup:{
+basePower:30,
+multihit:[2,6],
+desc:'Hits two to six times. Each hit has 30 base power.',
+shortDesc:'Hits 2-6 times. Each hit has 30 power.'
+},
+cut:{
+basePower:60
+},
+skyattack:{
+desc:'Charges, then attacks with +4 priority and a boosted critical-hit ratio. Instant use still keeps the critical-hit boost but not the charge priority.',
+shortDesc:'Charges, then +4 priority with high crit; instant use keeps high crit.'
+},
 needlegun:{
 basePower:30,
 type:'Steel',
@@ -4642,11 +4768,11 @@ spikecannon:{
 name:'Spike Cannon',
 accuracy:100,
 basePower:25,
-type:'Steel',
+type:'Water',
 multihit:[2,5],
 critRatio:1,
-desc:'A 25 Base Power Steel-type attack that hits 2 to 5 times. Skill Link makes it hit five times.',
-shortDesc:'25 BP Steel move. Hits 2-5 times.'
+desc:'A 25 Base Power Water-type attack that hits 2 to 5 times. Skill Link makes it hit five times.',
+shortDesc:'25 BP Water move. Hits 2-5 times.'
 },
 stoneaxe:{
 name:'Stone Axe',
@@ -4791,6 +4917,22 @@ zapcannon:['9M']
 };
 
 var CUSTOM_LEARNSET_ADDITIONS={
+weavile:{
+closecombat:['9M'],
+iciclespear:['9M']
+},
+slurpuff:{
+aurasphere:['9M'],
+drainpunch:['9M'],
+focusblast:['9M'],
+submission:['9M']
+},
+coalossal:{
+hydrosteam:['9M'],
+magmastorm:['9M'],
+spikecannon:['9M'],
+steameruption:['9M']
+},
 pikachustarter:{
 drainingkiss:['9M'],
 eeriespell:['9M'],
@@ -4943,9 +5085,6 @@ spikecannon:['9M']
 dhelmise:{
 spikecannon:['9M']
 },
-coalossal:{
-spikecannon:['9M']
-},
 pincurchin:{
 spikecannon:['9M']
 },
@@ -4968,17 +5107,17 @@ spikecannon:['9M']
 
 var CUSTOM_BW_SPRITE_IDS=Object.keys(CUSTOM_BW_SPRITES);
 var CUSTOM_ANIMATED_BW_SPRITES=new Set([
-'aggron','ariados','basculegion','basculegionf','butterfree','charizard','cinderacegmax','corviknight',
+'aggron','ariados','basculegion','basculegionf','butterfree','cacturne','charizard','cinderacegmax','corviknight',
 'crobat','dragapult','duraludon','dusknoir','electivire','empoleon','espeon','garbodorgmax',
 'garchomp','garchompf','garchompmega','gardevoirmega','gengar','glalie','gliscor','grimmsnarl',
-'houndoom','hydreigon','infernape','lilligant','lucariomega','luxray','magmortar','magneton',
+'houndoom','hydreigon','infernape','inteleon','lilligant','lucariomega','luxray','magmortar','magneton',
 'magnezone','metagross','milotic','mothim','ninetales','obstagoon','perrserker','pidgeot',
 'ribombee','rotom','rotomfan','rotomfrost','rotomheat','rotommow','rotomwash','salamence',
 'scolipede','silvally','silvallybug','silvallydark','silvallydragon','silvallyelectric','silvallyfairy','silvallyfighting',
 'silvallyfire','silvallyflying','silvallyghost','silvallygrass','silvallyground','silvallyice','silvallypoison','silvallypsychic',
 'silvallysteel','silvallywater','slowbro','slowking','sneasel','spiritomb','steelix','talonflame',
 'torterra','typhlosion','tyrantrum','venusaur','victreebel','vikavolt',
-'whimsicott','zoroark']
+'weavile','weavilef','whimsicott','zoroark']
 );
 var CUSTOM_SPECIES_IDS=Object.keys(CUSTOM_SPECIES);
 var CUSTOM_SPECIES_UPDATE_IDS=Object.keys(CUSTOM_SPECIES_UPDATES);
@@ -5042,8 +5181,12 @@ var NATIVE_BATTLE_SPRITE_SIZE_OVERRIDES={
 garchomp:{back:{w:112,h:112}}
 };
 var NATIVE_TEAMBUILDER_SPRITE_OVERRIDES={
+cacturne:{x:9,y:7,backgroundSize:'74px auto'},
 garchomp:{x:6,y:10,backgroundSize:'78px auto'},
-garchompf:{x:6,y:10,backgroundSize:'78px auto'}
+garchompf:{x:6,y:10,backgroundSize:'78px auto'},
+inteleon:{x:8,y:3,backgroundSize:'80px auto'},
+weavile:{x:9,y:6,backgroundSize:'76px auto'},
+weavilef:{x:9,y:6,backgroundSize:'76px auto'}
 };
 var CUSTOM_TEAM_PREVIEW_FRONT_SPRITE_MAX_WIDTH=66;
 var CUSTOM_TEAM_PREVIEW_FRONT_SPRITE_MAX_HEIGHT=66;
@@ -5243,7 +5386,7 @@ corviknight:{w:62,h:62},
 alcremie:{w:60,h:60},
 ariados:{w:60,h:60},
 butterfree:{w:58,h:58},
-cacturnealt:{w:56,h:56},
+cacturnealt:{w:64,h:64},
 butterfreemega:{w:70,h:70},
 dragapultgmax:{w:74,h:74},
 dondozo:{w:82,h:82},
@@ -5291,8 +5434,9 @@ torterraalt:{w:78,h:78},
 sylveon:{w:86,h:86},
 umbreon:{w:86,h:86},
 vaporeon:{w:86,h:86},
-weavile:{w:60,h:60},
-weavilef:{w:60,h:60},
+weavile:{w:72,h:72},
+weavilef:{w:72,h:72},
+inteleon:{w:76,h:76},
 whimsicott:{w:60,h:60},
 zoroark:{w:74,h:74},
 zoroarkhisui:{w:74,h:74}
@@ -6482,6 +6626,7 @@ spriteData.y=2;
 spriteData.x=-2;
 spriteData.y=0;
 }
+if(nativeTeambuilderOverride)Object.assign(spriteData,nativeTeambuilderOverride);
 return spriteData;
 }
 spriteData.spriteDir='sprites/gen5';
