@@ -3405,8 +3405,8 @@ shortDesc:"Strong Jaw + Intimidate; first action after switch-in has +2 priority
 },
 seafiend:{
 name:"Sea Fiend",
-desc:"This Pokemon has Toxic Debris, Merciless, and Water Bubble's effects.",
-shortDesc:"Toxic Debris + Merciless + Water Bubble."
+desc:"This Pokemon has Toxic Debris and Water Bubble's effects.",
+shortDesc:"Toxic Debris + Water Bubble."
 },
 hisuianoath:{
 name:"Hisuian Oath",
@@ -3415,18 +3415,18 @@ shortDesc:"Sworn Duty + Tough Claws + Corrosion."
 },
 hisuianvanguard:{
 name:"Hisuian Vanguard",
-desc:"This Pokemon has Rapid Response, Sworn Duty, and Wind Power's effects.",
-shortDesc:"Rapid Response + Sworn Duty + Wind Power."
+desc:"This Pokemon has Rapid Response and Wind Power's effects.",
+shortDesc:"Rapid Response + Wind Power."
 },
 unovavanguard:{
 name:"Unova Vanguard",
-desc:"This Pokemon has Violent Rush, Sworn Duty, and Wind Rider's effects.",
-shortDesc:"Violent Rush + Sworn Duty + Wind Rider."
+desc:"This Pokemon has Violent Rush and Wind Rider's effects.",
+shortDesc:"Violent Rush + Wind Rider."
 },
 hisuianresolve:{
 name:"Hisuian Resolve",
-desc:"This Pokemon has Brute Force, Magma Armor, and Solid Rock's effects.",
-shortDesc:"Brute Force + Magma Armor + Solid Rock."
+desc:"This Pokemon has Brute Force and Magma Armor's effects.",
+shortDesc:"Brute Force + Magma Armor."
 },
 nobleconduit:{
 name:"Noble Conduit",
@@ -3440,13 +3440,13 @@ shortDesc:"Dancer + Hospitality + Own Tempo."
 },
 noblearmor:{
 name:"Noble Armor",
-desc:"This Pokemon has Prism Armor, Ice Body, Self Sufficient, and Technician's effects.",
-shortDesc:"Prism Armor + Ice Body + Self Sufficient + Technician."
+desc:"This Pokemon has Prism Armor and Ice Body's effects.",
+shortDesc:"Prism Armor + Ice Body."
 },
 noblerider:{
 name:"Noble Rider",
-desc:"This Pokemon has Swift Swim, Adaptability, and Shadow Shield's effects.",
-shortDesc:"Swift Swim + Adaptability + Shadow Shield."
+desc:"This Pokemon has Swift Swim and Adaptability's effects.",
+shortDesc:"Swift Swim + Adaptability."
 },
 gooey:{
 name:'Gooey',
@@ -3554,8 +3554,8 @@ shortDesc:"Drizzle + Speed Boost + Steelworker + Strong Jaw."
 },
 relicinstinct:{
 name:"Relic Instinct",
-desc:"If this Pokemon has more than 50% HP, its Rock- and Flying-type moves have 1.3x power and its moves ignore opposing Abilities. If this Pokemon has 50% or less HP, its Rock- and Flying-type moves have 1.1x power, it takes 0.75x damage from attacks, cannot be critically hit, restores 1/16 max HP each turn, and its Attack and Special Attack are halved. Once, when it reaches 25% HP or less, it heals 25% max HP, clears its negative stat stages, and lowers its Defense and Special Defense by 2 stages.",
-shortDesc:">50%: Rock/Flying 1.3x + Mold Breaker. <=50%: defensive mode; <=25% pinch heal."
+desc:"Above 50% HP, this Pokemon's moves ignore opposing Abilities. At 50% HP or less, it takes 0.75x damage from attacks, cannot be critically hit, restores 1/16 max HP each turn, and its Attack and Special Attack are halved. Once at 25% HP or less, it heals 25% max HP, clears negative stat stages, and lowers its Defense and Special Defense by 2.",
+shortDesc:">50%: ignores Abilities. <=50%: defensive mode; <=25%: one pinch heal."
 },
 fossilfrenzy:{
 name:"Fossil Frenzy",
@@ -3564,8 +3564,8 @@ shortDesc:"Hit by attacks: +1 Atk/Spe and confusion; confused takes 1.25x; Klutz
 },
 relicarmor:{
 name:"Relic Armor",
-desc:"This Pokemon cannot be critically hit. If an opposing Pokemon lowers its stats, its Defense and Special Defense rise by 1 stage. It takes 0.8x damage from attacks, has Pressure's PP effect, and its moves ignore Abilities.",
-shortDesc:"No crits; stat drops +1 Def/SpD; takes 0.8x; Pressure + Mold Breaker."
+desc:"This Pokemon cannot be critically hit. Opposing stat drops raise its Defense and Special Defense by 1, it takes 0.8x damage from attacks, and it has Pressure's PP effect.",
+shortDesc:"No crits; stat drops +1 Def/SpD; takes 0.8x damage; Pressure."
 },
 draconicforce:{
 name:"Draconic Force",
@@ -3594,8 +3594,8 @@ shortDesc:"Pixilate + Queenly Majesty + Sworn Duty."
 },
 fallenstar:{
 name:"Fallen Star",
-desc:"This Ability cannot be suppressed. This Pokemon has Mold Breaker, Dual Wield, Skill Link, and Self Sufficient's effects. Its multi-hit Arrow moves have 1.5x power, and its Arrow moves have 1.5x power against trapped targets. At 1/2 HP or less, Arrow moves gain +2 priority and this Pokemon takes 50% less damage. After using an Arrow move, it takes 75% less damage for the rest of the turn. If an Arrow move KOes a target, it uses that move again at 50% power. In Free-for-All battles, Arrow moves hit all foes.",
-shortDesc:"Mold Breaker + Dual Wield + Self Sufficient; under half HP, Arrow moves gain +2 priority."
+desc:"This Ability cannot be suppressed. This Pokemon has Mold Breaker, Dual Wield, Skill Link, and Self Sufficient. Multi-hit Arrow moves have 1.5x power and Arrow moves have 1.5x power against trapped targets. At half HP or less, Arrow moves gain +1 priority and this Pokemon takes half damage. After an Arrow move, it takes 0.25x damage for the turn. An Arrow KO repeats the move at half power; in Free-for-All, Arrows hit all foes.",
+shortDesc:"Mold Breaker + Dual Wield + Self Sufficient; at half HP, Arrows gain +1 priority."
 },
 ragingstorm:{
 name:"Raging Storm",
@@ -3629,8 +3629,8 @@ shortDesc:"Magic Bounce + Serene Grace; sets Gravity and ignores Gravity's negat
 },
 spiralevolution:{
 name:"Spiral Evolution",
-desc:"This Pokemon has built-in Adaptability, Levitate, and Dual Wield. Its damaging moves can hit through protection for reduced damage and it takes 50% less damage from priority moves. In Trick Room, its non-priority moves act before other non-priority moves.",
-shortDesc:"Adaptability + Levitate + Dual Wield; priority damage reduction."
+desc:"This Pokemon has Adaptability, Levitate, and Dual Wield. Its damaging moves pierce protection for reduced damage, it takes 20% less damage from attacks, and its non-priority moves act first in Trick Room.",
+shortDesc:"Adaptability + Levitate + Dual Wield; protection pierce; takes 0.8x damage."
 },
 accumulation:{
 name:"Accumulation",
@@ -3664,43 +3664,43 @@ shortDesc:"Sharpness + Dual Wield + Moxie."
 },
 apexpredator:{
 name:"Apex Predator",
-desc:"This Pokemon has Relic Armor, Precision, and Tough Claws built in. Its super-effective moves never miss and have an increased critical-hit chance.",
-shortDesc:"Relic Armor + Precision + Tough Claws."
+desc:"This Pokemon has Relic Armor and Precision. Its super-effective moves never miss and have an increased critical-hit chance.",
+shortDesc:"Relic Armor + Precision."
 },
 aquashell:{
 name:"Aqua Shell",
-desc:"This Pokemon has Water Bubble, Water Veil, and Tough Claws built in. Its Water-type attacks are doubled, Fire-type attacks used against it are halved, contact moves are boosted by 1.3x, it cannot be burned, it is immune to Hail and Sandstorm damage, and it gains Aqua Ring on switch-in.",
-shortDesc:"Water Bubble + Water Veil + Tough Claws."
+desc:"This Pokemon has Water Bubble and Water Veil. Its Water attacks are doubled, incoming Fire attacks are halved, it cannot be burned, it ignores Hail and Sandstorm damage, and it gains Aqua Ring on entry.",
+shortDesc:"Water Bubble + Water Veil; gains Aqua Ring on entry."
 },
 argentdevotion:{
 name:"Argent Devotion",
-desc:"This Pokemon has built-in Ironclad and Sworn Duty. Steel-type and Fairy-type moves used by this Pokemon deal 1.2x damage. If this Pokemon knocks out another Pokemon with a move, it and its adjacent allies restore 1/8 max HP per target knocked out.",
-shortDesc:"Ironclad + Sworn Duty; Steel/Fairy moves 1.2x; KO heals user/allies."
+desc:"This Pokemon has Ironclad and Sworn Duty's effects.",
+shortDesc:"Ironclad + Sworn Duty."
 },
 ascendance:{
 name:"Ascendance",
-desc:"This Pokemon gains a STAB damage bonus on moves that do not already match its type. Its damaging moves ignore type-based immunities, but not Ability immunities, and still respect resistances. Its Defense is doubled, and it has Overcoat's effects.",
-shortDesc:"All moves get STAB if needed; hits type immunities; Fur Coat + Overcoat."
+desc:"Moves that do not match this Pokemon's type gain STAB. Its damaging moves ignore type immunities while respecting resistances, and it has Overcoat's effects.",
+shortDesc:"Off-type moves gain STAB; hits type immunities; Overcoat."
 },
 astralwatcher:{
 name:"Astral Watcher",
-desc:"This Pokemon has Prankster, Telepathy, Defragment, and Power Spot's effects.",
-shortDesc:"Prankster + Telepathy + Defragment + Power Spot."
+desc:"This Pokemon has Prankster, Telepathy, and Defragment. On entry, it reveals foes' items and may apply Embargo.",
+shortDesc:"Prankster + Telepathy + Defragment; reveals foes' items."
 },
 astralwitchcraft:{
 name:"Astral Witchcraft",
-desc:"This Pokemon has Sworn Duty's effect. It is airborne, immune to Ground-type moves, only takes damage from direct attacks, and reflects most non-damaging moves back at the user.",
-shortDesc:"Sworn Duty + Levitate + Magic Guard + Magic Bounce."
+desc:"This Pokemon has Sworn Duty, Levitate, and Magic Guard's effects.",
+shortDesc:"Sworn Duty + Levitate + Magic Guard."
 },
 aurainstinct:{
 name:"Aura Instinct",
-desc:"This Pokemon has Sworn Duty, Adaptability, Technician, Dual Wield, and Second Wind's effects.",
-shortDesc:"Sworn Duty + Adaptability + Technician + Dual Wield + Second Wind."
+desc:"This Pokemon has Adaptability, Dual Wield, and Second Wind's effects.",
+shortDesc:"Adaptability + Dual Wield + Second Wind."
 },
 auramaster:{
 name:"Aura Master",
-desc:"This Pokemon has Mega Launcher, Dual Wield, and Inner Focus's effects, and takes 20% less damage from damaging moves.",
-shortDesc:"Mega Launcher + Dual Wield + Inner Focus; takes 0.8x damage."
+desc:"This Pokemon has Mega Launcher, Dual Wield, and Inner Focus's effects.",
+shortDesc:"Mega Launcher + Dual Wield + Inner Focus."
 },
 auroracurrent:{
 name:"Aurora Current",
@@ -3709,8 +3709,8 @@ shortDesc:"Snow Warning; Electric STAB; in Snow, Electric never misses and Def/S
 },
 auroraresonance:{
 name:"Aurora Resonance",
-desc:"This Pokemon's sound-based moves have 1.2x power and become Water type. This Pokemon has Water Absorb's effect. If Rain is active, this Pokemon heals its status condition at the end of each turn.",
-shortDesc:"Sound moves become Water and 1.2x; Water Absorb; cures status in rain."
+desc:"This Pokemon has Liquid Voice, Water Absorb, and Hydration's effects.",
+shortDesc:"Liquid Voice + Water Absorb + Hydration."
 },
 battlefervor:{
 name:"Battle Fervor",
@@ -3729,8 +3729,8 @@ shortDesc:"Sharpness; gains Fighting STAB."
 },
 blazingmane:{
 name:"Blazing Mane",
-desc:"This Pokemon has Fire Mane's effect. Its Speed is raised by 1 stage on entry if Burning Terrain is active, and whenever Burning Terrain starts while it is active. Its damaging moves hit twice, and the second hit deals 30% of the original damage and can trigger additional secondary effects. If this Pokemon has 1/2 or less of its max HP, its Fire-type attacks have +1 priority.",
-shortDesc:"Fire 1.5x; +1 Spe in Burning Terrain; attacks hit twice; Fire gains priority at half HP."
+desc:"Fire attacks have 1.5x power and damaging moves hit twice, with the second hit at 30% power. At half HP or less, Fire attacks gain +1 priority. Burning and Volcanic Fields raise its Speed by 1 on entry or when the field starts.",
+shortDesc:"Fire 1.5x; attacks hit twice; Fire gains priority at half HP; fire fields grant +1 Speed."
 },
 blazingtempo:{
 name:"Blazing Tempo",
@@ -3739,13 +3739,13 @@ shortDesc:"Speed Boost + Striker + Proficient."
 },
 bloomingsun:{
 name:"Blooming Sun",
-desc:"This Pokemon has Mega Sol, always-active Leaf Guard, Invigorate, and Natural Cure's effects. Its allies' Attack and Special Defense are multiplied by 1.5.",
-shortDesc:"Mega Sol + always-active Leaf Guard + Invigorate + Natural Cure; allies' Atk/SpD 1.5x."
+desc:"This Pokemon has Mega Sol, Invigorate, and Natural Cure. Its allies' Attack and Special Defense are multiplied by 1.5.",
+shortDesc:"Mega Sol + Invigorate + Natural Cure; allies' Atk/SpD 1.5x."
 },
 bonewarrior:{
 name:"Bone Warrior",
-desc:"This Pokemon has Battle Armor, Brute Force, Self Sufficient, and Cursed Body's effects.",
-shortDesc:"Battle Armor + Brute Force + Self Sufficient + Cursed Body."
+desc:"This Pokemon has Battle Armor and Self Sufficient's effects.",
+shortDesc:"Battle Armor + Self Sufficient."
 },
 bruteforce:{
 name:"Brute Force",
@@ -3754,18 +3754,18 @@ shortDesc:"Reckless + Rock Head."
 },
 burningcrown:{
 name:"Burning Crown",
-desc:"This Pokemon has White Smoke, Filter, and Self Sufficient's effects. When a Pokemon faints, it raises its highest offensive stat by 1. Fire-type moves have 1.2x power, and its field bonuses remain active.",
-shortDesc:"White Smoke + Filter + Self Sufficient; faint +1 highest offense; Fire 1.2x."
+desc:"This Pokemon has White Smoke, Filter, and Self Sufficient. When a Pokemon faints, it raises the highest offensive stat of itself and its allies by 1. Its field bonuses remain active.",
+shortDesc:"White Smoke + Filter + Self Sufficient; faint raises the side's highest offenses."
 },
 burningego:{
 name:"Burning Ego",
-desc:"This Pokemon has Ultra Ego, Brute Force, and Magma Armor built in. Recoil moves receive the established Brute Force power effect without recoil damage, and Water- and Ice-type attacks are weakened against this Pokemon.",
-shortDesc:"Ultra Ego + Brute Force + Magma Armor."
+desc:"This Pokemon has Ultra Ego and Magma Armor's effects.",
+shortDesc:"Ultra Ego + Magma Armor."
 },
 burningspirit:{
 name:"Burning Spirit",
-desc:"This Pokemon has Self Sufficient, Sheer Force, Opportunist, and Magma Armor.",
-shortDesc:"Self Sufficient + Sheer Force + Opportunist + Magma Armor."
+desc:"This Pokemon has Self Sufficient, Opportunist, and Magma Armor's effects.",
+shortDesc:"Self Sufficient + Opportunist + Magma Armor."
 },
 byxbysiontouch:{
 name:"Byxbysion Touch",
@@ -3799,8 +3799,8 @@ shortDesc:"Marvel Scale + Invigorate + Friend Guard; poison causes confusion."
 },
 crueltag:{
 name:"Cruel Tag",
-desc:"This Pokemon has Shadow Tag, Infiltrator, and Precision's effects. When it faints, Haunted Field starts for 5 turns.",
-shortDesc:"Shadow Tag + Infiltrator + Precision; faint summons Haunted Field."
+desc:"This Pokemon has Shadow Tag and Infiltrator's effects. When it faints, Haunted Field starts for 5 turns.",
+shortDesc:"Shadow Tag + Infiltrator; faint summons Haunted Field."
 },
 crumblingshell:{
 name:"Crumbling Shell",
@@ -3874,8 +3874,8 @@ shortDesc:"Ground immunity plus Beast Boost-style boost after KO."
 },
 emperorsresolve:{
 name:"Emperor's Resolve",
-desc:"This Pokemon has Competitive, Slush Rush, Ice STAB, and Inner Focus.",
-shortDesc:"Competitive + Slush Rush + Ice STAB + Inner Focus."
+desc:"This Pokemon has Competitive and Slush Rush, and gains STAB on Ice-type moves.",
+shortDesc:"Competitive + Slush Rush + Ice STAB."
 },
 enlightenment:{
 name:"Enlightenment",
@@ -3889,8 +3889,8 @@ shortDesc:"Present becomes 120 BP Dark spread and applies a random successful ex
 },
 execution:{
 name:"Execution",
-desc:"Deals more damage the lower the target's HP is and built in Duskilate. This Pokemon has Sworn Duty's effect. If the target is at 50% HP or lower, this Pokemon's attacks deal 2x damage. If this Pokemon knocks out another Pokemon with a move, it restores 1/8 of its maximum HP per target knocked out. Its Attack and Special Attack cannot be lowered below -1, and fields prevent its Speed from being lowered.",
-shortDesc:"Built-in Duskilate + Sworn Duty; 2x vs targets at 50% HP or lower; KO heals."
+desc:"This Pokemon has Duskilate. Its attacks deal double damage to targets at half HP or less, move KOs heal 1/8 max HP per target, Attack and Special Attack cannot fall below -1, and fields cannot lower its Speed.",
+shortDesc:"Duskilate; 2x vs targets at half HP or less; move KOs heal 1/8."
 },
 falsedevotion:{
 name:"False Devotion",
@@ -3914,13 +3914,13 @@ shortDesc:"Self Sufficient + Shell Armor + Friend Guard + Dual Wield; keeps fiel
 },
 freezerburn:{
 name:"Freezer Burn",
-desc:"This Pokemon has Slush Rush, Ice Body, and Refrigerate's effects. Fire-type moves and Refrigerate-converted moves have 1.2x power, and its charge moves skip the charge turn.",
-shortDesc:"Slush Rush + Ice Body + Refrigerate; Fire moves 1.2x; skips charge turns."
+desc:"This Pokemon has Slush Rush, Ice Body, and Refrigerate. Refrigerate-converted moves have 1.2x power, and charge moves skip their charge turn.",
+shortDesc:"Slush Rush + Ice Body + Refrigerate; skips charge turns."
 },
 frostsovereign:{
 name:"Frost Sovereign",
-desc:"On switch-in, this Pokemon sets Snow for 5 turns and Aurora Veil for 8 turns. This Pokemon has Ice Body and Filter. At the end of each turn, foes take Ice-type damage equal to 1/16 max HP, scaled by effectiveness and blocked by Ice immunities.",
-shortDesc:"5-turn Snow + 8-turn Veil; Ice Body + Filter; Ice chip respects immunities."
+desc:"On entry, this Pokemon sets Snow through Snow Warning for 8 turns. It has Ice Body and Filter. Manually used Aurora Veil lasts 8 turns. Each turn, foes take immunity-aware Ice damage equal to 1/16 max HP, scaled by effectiveness.",
+shortDesc:"8-turn Snow Warning; Ice Body + Filter; manual Veil lasts 8 turns; Ice chip."
 },
 frozenfortress:{
 name:"Frozen Fortress",
@@ -3934,18 +3934,18 @@ shortDesc:"Steam Engine + Flame Body; Fire chip respects effectiveness and immun
 },
 grandmaster:{
 name:"Grandmaster",
-desc:"This Pokemon cannot flinch and has Overcoat's immunity to powder, Hail, and Sandstorm. After it uses Miracle Eye, it resists Dark-type moves. If it uses a status move, it takes 20% less damage from attacks for the rest of the turn. If it moves before the target, its Psychic-type moves ignore resistances. When this Pokemon is damaged by an opposing attack, uses Future Sight, or faints, Future Sight is queued on opposing slots. Existing Grandmaster delayed attacks stack instead of blocking new ones.",
-shortDesc:"Overcoat; no flinch; status grants 20% damage reduction; queues Future Sight."
+desc:"This Pokemon cannot flinch. Miracle Eye makes it resist Dark moves. After a status move, it takes 20% less attack damage for the turn. Psychic moves ignore resistances when it moves first. Being attacked, using Future Sight, or fainting queues Future Sight on foes.",
+shortDesc:"No flinch; status grants 20% damage reduction; queues Future Sight."
 },
 heatcoil:{
 name:"Heat Coil",
-desc:"This Pokemon has Speed Boost, Flame Body, and Self Sufficient's effects.",
-shortDesc:"Speed Boost + Flame Body + Self Sufficient."
+desc:"This Pokemon has Speed Boost and Magma Armor's effects.",
+shortDesc:"Speed Boost + Magma Armor."
 },
 heavenlychorus:{
 name:"Heavenly Chorus",
-desc:"This Pokemon has Pixilate, Cloud Nine, Fluffy, and Natural Cure's effects.",
-shortDesc:"Pixilate + Cloud Nine + Fluffy + Natural Cure."
+desc:"This Pokemon has Pixilate, Cloud Nine, and Fluffy's effects.",
+shortDesc:"Pixilate + Cloud Nine + Fluffy."
 },
 hellfireeclipse:{
 name:"Hellfire Eclipse",
@@ -3964,13 +3964,13 @@ shortDesc:"Damaging moves hit 3 times; hits 2/3 have 30% power. FFA: single-targ
 },
 hydrabreaker:{
 name:"Hydra Breaker",
-desc:"This Pokemon has Hydra Bond, Mold Breaker, Precision, and Self Sufficient's effects.",
-shortDesc:"Hydra Bond + Mold Breaker + Precision + Self Sufficient."
+desc:"This Pokemon has Hydra Bond and Mold Breaker's effects.",
+shortDesc:"Hydra Bond + Mold Breaker."
 },
 hydratyrant:{
 name:"Hydra Tyrant",
-desc:"This Pokemon has Hydra Bond, Self Sufficient, and Precision's effects.",
-shortDesc:"Hydra Bond + Self Sufficient + Precision."
+desc:"This Pokemon has Hydra Bond and Self Sufficient's effects.",
+shortDesc:"Hydra Bond + Self Sufficient."
 },
 hyperdrill:{
 name:"Hyper Drill",
@@ -3994,8 +3994,8 @@ shortDesc:"Normal moves become Steel type and have 1.2x power."
 },
 ironcognition:{
 name:"Iron Cognition",
-desc:"This Pokemon has Tough Claws, Full Metal Body, and Prism Armor's effects.",
-shortDesc:"Tough Claws + Full Metal Body + Prism Armor."
+desc:"This Pokemon has Tough Claws and Prism Armor's effects.",
+shortDesc:"Tough Claws + Prism Armor."
 },
 irondominion:{
 name:"Iron Dominion",
@@ -4004,18 +4004,13 @@ shortDesc:"Pressure + Mirror Armor + Sworn Duty."
 },
 ironwill:{
 name:"Iron Will",
-desc:"This Pokemon has Prism Armor, Heatproof, and Sand Force's effects. It restores 1/16 of its maximum HP after it hits with a damaging move and after it is hit by a damaging move. In Doubles, Multi, or Free-For-All, once per battle, it survives a KO from a move at 1 HP.",
-shortDesc:"Prism Armor + Heatproof + Sand Force; heals 1/16 on attacking/being hit; endures once."
+desc:"This Pokemon has Prism Armor, Second Wind, and Self Sufficient's effects.",
+shortDesc:"Prism Armor + Second Wind + Self Sufficient."
 },
 joyride:{
 name:"Joyride",
-desc:"This Pokemon has Aerilate, Infiltrator, and Hyper Cutter's effects.",
-shortDesc:"Aerilate + Infiltrator + Hyper Cutter."
-},
-knightsguard:{
-name:"Knight's Guard",
-desc:"This Pokemon cannot flinch, and a blocked flinch raises its Speed by 1 stage. Its ally takes 25% less damage from priority moves. Once per switch-in, if its ally is at 25% HP or lower at the end of the turn, this Pokemon's Attack and Speed rise by 1 and its ally takes 25% less damage from attacks until the end of the next turn. In Doubles, Multi, or Free-For-All, the first time this Pokemon would be knocked out by a move, it survives with 1 HP.",
-shortDesc:"Blocks flinch and gains Speed from it; ally resists priority; low-HP ally triggers Last Stand."
+desc:"This Pokemon has Aerilate and Hyper Cutter's effects.",
+shortDesc:"Aerilate + Hyper Cutter."
 },
 lunaridol:{
 name:"Lunar Idol",
@@ -4024,8 +4019,8 @@ shortDesc:"Levitate; immune to hail; Ice power 1.5x; Sp. Atk 1.5x in hail/snow."
 },
 memoryleak:{
 name:"Memory Leak",
-desc:"This Pokemon's two-turn charge moves no longer require a charging turn. Positive stat boosts this Pokemon would receive are passed to an adjacent ally instead.",
-shortDesc:"Skips charge turns; passes positive stat boosts to an adjacent ally."
+desc:"Positive stat boosts this Pokemon would receive are passed to an adjacent ally instead.",
+shortDesc:"Passes positive stat boosts to an adjacent ally."
 },
 mindfreeze:{
 name:"Mind Freeze",
@@ -4034,13 +4029,13 @@ shortDesc:"Absorbs Ice for 25%; Ice Body effects; Psychic moves frostbite; Physi
 },
 mirrorgreed:{
 name:"Mirror Greed",
-desc:"This Pokemon has Magic Bounce, Prankster, Stall, and Analytic's effects.",
-shortDesc:"Magic Bounce + Prankster + Stall + Analytic."
+desc:"This Pokemon has Magic Bounce and Analytic's effects.",
+shortDesc:"Magic Bounce + Analytic."
 },
 moonlitwings:{
 name:"Moonlit Wings",
-desc:"This Pokemon has Serene Grace and Shield Dust's effects, gains STAB on Fairy-type moves, takes half damage from Fire-type attacks, and is immune to status, Yawn, and confusion.",
-shortDesc:"Fairy STAB + Serene Grace + Shield Dust; takes 0.5x Fire damage; immune to status."
+desc:"This Pokemon has Serene Grace, gains STAB on Fairy moves, and is immune to status, Yawn, and confusion.",
+shortDesc:"Fairy STAB + Serene Grace; immune to status, Yawn, and confusion."
 },
 mountainhunger:{
 name:"Mountain Hunger",
@@ -4064,13 +4059,13 @@ shortDesc:"Hits lower foe offense/Spe; neutralizes field changes, not active fie
 },
 noseformation:{
 name:"Nose Formation",
-desc:"This Pokemon has Filter's effect. After this Pokemon hits with a damaging move, three Mini-Noses strike valid targets with 20 Base Power special attacks using the best type between Steel, Electric, and Rock. If a target faints, the remaining Mini-Noses chain to the next valid foe.",
-shortDesc:"Filter; 3 organized 20 BP Mini-Noses chain to the next foe after a KO."
+desc:"This Pokemon has Filter and Elevate. After it hits, three 20 BP special Mini-Noses use the best of Steel, Electric, or Rock and chain to another valid foe after a KO.",
+shortDesc:"Filter + Elevate; three 20 BP Mini-Noses chain after a KO."
 },
 omenedge:{
 name:"Omen Edge",
-desc:"This Pokemon has Sharpness, Dual Wield, and Sniper's effects. Its slicing moves have +1 critical hit ratio. When this Pokemon faints, it casts a physical Doom Desire on each opposing Pokemon.",
-shortDesc:"Sharpness + Dual Wield + Sniper; slicing +1 crit; on faint: Doom Desire on foes."
+desc:"This Pokemon has Sharpness and Dual Wield. When it faints, it casts a physical Doom Desire on each opposing Pokemon.",
+shortDesc:"Sharpness + Dual Wield; on faint: Doom Desire on foes."
 },
 orchardbond:{
 name:"Orchard Bond",
@@ -4109,8 +4104,8 @@ shortDesc:"Shed Skin + Protean + Merciless."
 },
 perfectego:{
 name:"Perfect Ego",
-desc:"This Pokemon has Ultra Ego and Vital Spirit's effects. Its moves cannot miss.",
-shortDesc:"Ultra Ego + Vital Spirit; moves cannot miss."
+desc:"This Pokemon has Ultra Ego's effects, and its moves cannot miss.",
+shortDesc:"Ultra Ego; moves cannot miss."
 },
 perfectforesight:{
 name:"Perfect Foresight",
@@ -4154,13 +4149,13 @@ shortDesc:"This Pokemon's Sp. Atk is 1.5x, but it can only select the first move
 },
 prismscale:{
 name:"Prism Scale",
-desc:"This Pokemon has Marvel Scale, Water Veil, Dragonize, and Self Sufficient's effects.",
-shortDesc:"Marvel Scale + Water Veil + Dragonize + Self Sufficient."
+desc:"This Pokemon has Marvel Scale, Dragonize, and Self Sufficient's effects.",
+shortDesc:"Marvel Scale + Dragonize + Self Sufficient."
 },
 queensguard:{
 name:"Queen's Guard",
-desc:"This Pokemon has Contrary, Shed Skin, Inner Focus, and Multiscale's effects.",
-shortDesc:"Contrary + Shed Skin + Inner Focus + Multiscale."
+desc:"This Pokemon has Contrary, Shed Skin, and Intimidate's effects.",
+shortDesc:"Contrary + Shed Skin + Intimidate."
 },
 ragingcurrent:{
 name:"Raging Current",
@@ -4174,8 +4169,8 @@ shortDesc:"Transistor effects; this Pokemon's moves never miss."
 },
 rainsovereign:{
 name:"Rain Sovereign",
-desc:"On switch-in, this Pokemon sets Rain for 5 turns. It has Berserk's effect, and its Electric-, Water-, and Flying-type moves receive STAB. At the end of each turn, foes take Water-type damage equal to 1/16 max HP, scaled by type effectiveness and blocked by Water immunities.",
-shortDesc:"5-turn Rain + Berserk; Electric/Water/Flying STAB; Water chip respects immunities."
+desc:"On entry, this Pokemon sets Rain for 8 turns. Its Electric-, Water-, and Flying-type moves receive STAB. Each turn, foes take immunity-aware Water damage equal to 1/16 max HP, scaled by effectiveness.",
+shortDesc:"8-turn Rain; Electric/Water/Flying STAB; immunity-aware Water chip."
 },
 rapidresponse:{
 name:"Rapid Response",
@@ -4189,8 +4184,8 @@ shortDesc:"Moves <=60 BP gain +1 priority; boosted fields give 1.5x or 2x damage
 },
 relentlesslink:{
 name:"Relentless Link",
-desc:"This Pokemon has Skill Link, Battle Armor, and Vital Spirit's effects.",
-shortDesc:"Skill Link + Battle Armor + Vital Spirit."
+desc:"This Pokemon has Skill Link, Battle Armor, and Mold Breaker's effects.",
+shortDesc:"Skill Link + Battle Armor + Mold Breaker."
 },
 relicbeam:{
 name:"Relic Beam",
@@ -4214,23 +4209,23 @@ shortDesc:"Filter + Iron Fist; 40% frostbite; KO heals 1/8 or 1/4 vs gimmicks."
 },
 riotamp:{
 name:"Riot Amp",
-desc:"This Pokemon has Punk Rock, Galvanize, and Technician's effects. Its Normal-type moves become Electric type and are boosted, sound moves are boosted, and moves with 60 or less Base Power are boosted.",
-shortDesc:"Punk Rock + Galvanize + Technician."
+desc:"This Pokemon has Punk Rock and Galvanize's effects. Its Normal moves become Electric and sound moves are boosted.",
+shortDesc:"Punk Rock + Galvanize."
 },
 riptideclaws:{
 name:"Riptide Claws",
-desc:"This Pokemon has Swift Swim, Technician, Shell Armor, and Anger Shell's effects.",
-shortDesc:"Swift Swim + Technician + Shell Armor + Anger Shell."
+desc:"This Pokemon has Swift Swim and Technician's effects.",
+shortDesc:"Swift Swim + Technician."
 },
 royalarmament:{
 name:"Royal Armament",
-desc:"This Pokemon gains STAB on Steel-type moves, has Power Drill built in, and has Steel-type resistances without gaining Steel-type weaknesses.",
-shortDesc:"Steel STAB; Power Drill; Steel resistances without Steel weaknesses."
+desc:"This Pokemon gains STAB on Steel-type moves and has Power Drill's effects.",
+shortDesc:"Steel STAB + Power Drill."
 },
 royalcurrent:{
 name:"Royal Current",
-desc:"This Pokemon has Marvel Scale and Sniper's effects. When it lands a critical hit, its Speed rises by 1 stage.",
-shortDesc:"Marvel Scale + Sniper; critical hits raise Speed by 1."
+desc:"This Pokemon has Marvel Scale and Sniper's effects.",
+shortDesc:"Marvel Scale + Sniper."
 },
 royaldecree:{
 name:"Royal Decree",
@@ -4249,17 +4244,17 @@ shortDesc:"Drought + Royal Decree; Safeguard blocks the reset; disabled by Neutr
 },
 sandsovereign:{
 name:"Sand Sovereign",
-desc:"On switch-in, this Pokemon sets Sandstorm for 5 turns. This Pokemon has Filter and Battle Armor's effects. At the end of each turn, foes take Rock-type damage equal to 1/16 max HP, scaled by effectiveness and blocked by Rock immunities.",
-shortDesc:"5-turn Sand; Filter + Battle Armor; Rock chip respects immunities."
+desc:"On entry, this Pokemon sets Sandstorm for 8 turns. It has Filter and Battle Armor. Manually used Arenite Wall lasts 8 turns. Each turn, foes take immunity-aware Rock damage equal to 1/16 max HP, scaled by effectiveness.",
+shortDesc:"8-turn Sand; Filter + Battle Armor; manual Arenite Wall lasts 8 turns; Rock chip."
 },
 seablessing:{
 name:"Sea Blessing",
-desc:"This Pokemon's Defense and Special Defense are multiplied by 1.5. On switch-in, this Pokemon and its adjacent allies restore 1/4 max HP, and this Pokemon gains Aqua Ring. This Pokemon has Hydration, Water Veil, and Rain Dish's effects.",
-shortDesc:"1.5x Def/SpD; entry heals self/allies 1/4; Hydration + Water Veil + Rain Dish."
+desc:"This Pokemon's Defense and Special Defense are 1.5x. On entry, it and adjacent allies heal 1/4 max HP, and it gains Aqua Ring. It has Water Veil and Rain Dish.",
+shortDesc:"1.5x Def/SpD; entry heals self/allies 1/4; Water Veil + Rain Dish."
 },
 seasonalstride:{
 name:"Seasonal Stride",
-desc:"This Pokemon's Normal-type moves become the type matching its primary type and have 1.2x power. Its kicking moves have 1.4x power. This Pokemon has Chlorophyll's effect. At the end of the turn, it changes forme to match the weather: Spring in rain, Summer in sun, Autumn in sandstorm, and Winter in hail or snow.",
+desc:"Normal moves become this Pokemon's primary type and have 1.2x power. Kicking moves have 1.4x power. It has Chlorophyll and changes forme with weather: Spring in rain, Summer in sun, Autumn in sand, Winter in snow.",
 shortDesc:"Normal moves become primary type at 1.2x; kicks 1.4x; Chlorophyll; weather changes forme."
 },
 secondwind:{
@@ -4274,13 +4269,13 @@ shortDesc:"Heals 1/16 each turn; immune to Sandstorm and Hail."
 },
 shadowcurrent:{
 name:"Shadow Current",
-desc:"This Pokemon has Protean, Precision, Technician, and Sworn Duty's effects. Before using a move, it becomes that move's type.",
-shortDesc:"Protean + Precision + Technician + Sworn Duty."
+desc:"This Pokemon has Protean, Technician, and Sworn Duty. Before using a move, it becomes that move's type.",
+shortDesc:"Protean + Technician + Sworn Duty."
 },
 guidingomen:{
 name:"Guiding Omen",
-desc:"This Pokemon has Friend Guard, Invigorate, and Serene Grace's effects.",
-shortDesc:"Friend Guard + Invigorate + Serene Grace."
+desc:"This Pokemon has Friend Guard and Serene Grace's effects.",
+shortDesc:"Friend Guard + Serene Grace."
 },
 phalanxform:{
 name:"Phalanx Form",
@@ -4299,8 +4294,8 @@ shortDesc:"Shadow Shield + Elevate; every turn queues full-power Ghost/Dark/Fair
 },
 shelltrap:{
 name:"Shell Trap",
-desc:"This Pokemon has Regenerator, Shell Armor, and Analytic's effects.",
-shortDesc:"Regenerator + Shell Armor + Analytic."
+desc:"This Pokemon has Regenerator and Shell Armor's effects.",
+shortDesc:"Regenerator + Shell Armor."
 },
 siegelauncher:{
 name:"Siege Launcher",
@@ -4314,8 +4309,8 @@ shortDesc:"Always burned; burn heals user; foes lose burn damage and heal it; ca
 },
 soaringspirit:{
 name:"Soaring Spirit",
-desc:"When this Pokemon knocks out an opposing Pokemon, its Speed and higher attacking stat rise by 1 stage, and the next attack that hits it deals 25% less damage.",
-shortDesc:"KO: +1 Speed and higher offense; next hit deals 25% less."
+desc:"This Pokemon has Wind Power and Self Sufficient's effects.",
+shortDesc:"Wind Power + Self Sufficient."
 },
 solarbloom:{
 name:"Solar Bloom",
@@ -4329,8 +4324,8 @@ shortDesc:"Levitate; Fire power 1.5x; Attack 1.5x in sun; resists Grass."
 },
 solartrap:{
 name:"Solar Trap",
-desc:"This Pokemon has Accumulation, Corrosion, Innards Out, and Solar Power's effects. In Sun, Solar Power boosts Special Attack by 1.5x and deals 1/8 max HP damage at the end of each turn.",
-shortDesc:"Accumulation + Corrosion + Innards Out + Solar Power."
+desc:"This Pokemon has Accumulation, Innards Out, and Solar Power. In Sun, Solar Power boosts Special Attack by 1.5x and costs 1/8 max HP each turn.",
+shortDesc:"Accumulation + Innards Out + Solar Power."
 },
 souleater:{
 name:"Soul Eater",
@@ -4344,8 +4339,8 @@ shortDesc:"Draws in and absorbs Fire/Ghost; burns bypass immunities; attacks ign
 },
 soultag:{
 name:"Soul Tag",
-desc:"This Pokemon has Soul Fire and Temporal Shift's effects, and prevents adjacent opposing Pokemon from switching out.",
-shortDesc:"Soul Fire + Temporal Shift + Shadow Tag."
+desc:"This Pokemon has Soul Fire and Shadow Tag's effects.",
+shortDesc:"Soul Fire + Shadow Tag."
 },
 starboxer:{
 name:"Star Boxer",
@@ -4364,8 +4359,8 @@ shortDesc:"Intimidate + Lightning Rod + Teravolt."
 },
 stormsovereign:{
 name:"Storm Sovereign",
-desc:"On switch-in, this Pokemon sets Strong Winds for 5 turns; the weather can be changed normally. This Pokemon has Wind Power and Speed Boost's effects, its moves cannot miss, and foes take 1/16 Flying-type scaling damage at the end of each turn, blocked by Flying immunities.",
-shortDesc:"Wind Power + Speed Boost; 5-turn Strong Winds; no misses; immunity-aware Flying chip."
+desc:"On entry, this Pokemon sets changeable Strong Winds for 8 turns and activates Windy Surge. It has Speed Boost, its moves cannot miss, and foes take immunity-aware Flying chip equal to 1/16 max HP, scaled by effectiveness.",
+shortDesc:"Windy Surge + Speed Boost; 8-turn Strong Winds; no misses; Flying chip."
 },
 streettyrant:{
 name:"Street Tyrant",
@@ -4385,8 +4380,8 @@ shortDesc:"Moves cannot miss; Striker + Libero; first KO gives +1 Speed."
 supremeoverlord:{name:"Supreme Overlord",desc:"Each fainted ally gives 1.1x move damage; FFA counts allies twice. At 1+, Clear Body and Self Sufficient; at 2+, Inner Focus; at 3+, Filter and Second Wind; at 4+, Infiltrator; at 5+, Magic Guard and +1 Attack/+1 Sp. Atk.",shortDesc:"Fallen allies boost damage; thresholds grant Clear Body, Filter, Infiltrator, and healing."},
 sunsovereign:{
 name:"Sun Sovereign",
-desc:"This Pokemon has Drought, Wildfire Core, and Self Sufficient's effects. Its sun lasts 5 turns.",
-shortDesc:"Drought + Wildfire Core + Self Sufficient; 5-turn Sun."
+desc:"This Pokemon has Drought, Wildfire Core, and Self Sufficient's effects. Its sun lasts 8 turns.",
+shortDesc:"Drought + Wildfire Core + Self Sufficient; 8-turn Sun."
 },
 surgeconduit:{
 name:"Surge Conduit",
@@ -4420,23 +4415,23 @@ shortDesc:"Rock/Poison Adaptability; non-STAB 1.5x; gains last move type's resis
 },
 terraresolve:{
 name:"Terra Resolve",
-desc:"This Pokemon has Stamina, Rocky Payload, Solid Rock, and Self Sufficient.",
-shortDesc:"Stamina + Rocky Payload + Solid Rock + Self Sufficient."
+desc:"This Pokemon has Stamina, Rocky Payload, and Self Sufficient's effects.",
+shortDesc:"Stamina + Rocky Payload + Self Sufficient."
 },
 toxicbloom:{
 name:"Toxic Bloom",
-desc:"This Pokemon has Pollen Bloom, Self Sufficient, and Byxbysion Touch's effects. Poison-type moves drain 1/2 of their damage, and Poison moves can poison attackers that make contact.",
+desc:"This Pokemon has Pollen Bloom and Self Sufficient. Its Poison-type attacks drain half the damage they deal.",
 shortDesc:"Pollen Bloom + Self Sufficient + Poison drain."
 },
 toxicrenewal:{
 name:"Toxic Renewal",
-desc:"This Pokemon has Adaptability, Regenerator, and Merciless's effects.",
-shortDesc:"Adaptability + Regenerator + Merciless."
+desc:"This Pokemon has Adaptability and Regenerator's effects.",
+shortDesc:"Adaptability + Regenerator."
 },
 treasuretitan:{
 name:"Treasure Titan",
-desc:"This Pokemon has Heavy Metal, Filter, and Earth Eater's effects.",
-shortDesc:"Heavy Metal + Filter + Earth Eater."
+desc:"This Pokemon has Filter and Earth Eater's effects.",
+shortDesc:"Filter + Earth Eater."
 },
 tremor:{
 name:"Tremor",
@@ -4470,8 +4465,8 @@ shortDesc:"Intimidate; Extreme Speed 1.5x; drains damage; Magic Guard; stats can
 },
 vendetta:{
 name:"Vendetta",
-desc:"When this Pokemon is hit by a damaging move, its Attack rises by 1 stage. In Doubles, Multi, or Free-For-All, the first time it would be knocked out by damage, it survives with 1 HP. If a Pokemon damaged this Pokemon this turn, this Pokemon's Dark- and Ground-type moves ignore that target's defensive boosts and screens. If it knocks out that attacker, it restores 1/4 max HP.",
-shortDesc:"Hit: +1 Atk; once endures; retaliatory Dark/Ground bypass defenses and can heal."
+desc:"This Pokemon has Anger Point, Second Wind, and Self Sufficient's effects.",
+shortDesc:"Anger Point + Second Wind + Self Sufficient."
 },
 venombastion:{
 name:"Venom Bastion",
