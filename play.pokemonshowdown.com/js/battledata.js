@@ -166,6 +166,67 @@ changesFrom:'Cacturne',
 isNonstandard:'Custom'
 }
 },
+weavilealt:{
+base:'weavile',
+data:{
+name:'Weavile-Alt',
+baseSpecies:'Weavile',
+forme:'Alt',
+spriteid:'weavile-alt',
+changesFrom:'Weavile',
+isNonstandard:'Custom'
+}
+},
+dusknoiralt:{
+base:'dusknoir',
+data:{
+name:'Dusknoir-Alt',
+baseSpecies:'Dusknoir',
+forme:'Alt',
+spriteid:'dusknoir-alt',
+changesFrom:'Dusknoir',
+isNonstandard:'Custom'
+}
+},
+spiritombalt:{
+base:'spiritomb',
+data:{
+name:'Spiritomb-Alt',
+baseSpecies:'Spiritomb',
+forme:'Alt',
+spriteid:'spiritomb-alt',
+changesFrom:'Spiritomb',
+isNonstandard:'Custom'
+}
+},
+parasectparasitism:{
+base:'parasect',
+data:{
+name:'Parasect-Parasitism',
+baseSpecies:'Parasect',
+forme:'Parasitism',
+spriteid:'parasect-parasitism',
+types:['Ghost','Bug'],
+baseStats:{hp:90,atk:120,def:105,spa:35,spd:110,spe:40},
+abilities:{0:'Parasitism'},
+battleOnly:'Parasect',
+isNonstandard:'Custom'
+}
+},
+parasectparasite:{
+base:'parasect',
+data:{
+name:'Parasect-Parasite',
+baseSpecies:'Parasect',
+forme:'Parasite',
+spriteid:'parasect-parasite',
+types:['Ghost','Poison'],
+baseStats:{hp:90,atk:150,def:65,spa:50,spd:65,spe:130},
+abilities:{0:'Resuscitation'},
+battleOnly:'Parasect',
+isNonstandard:'Custom'
+}
+},
 victreebelmega:{
 base:'victreebel',
 data:{
@@ -641,6 +702,11 @@ isNonstandard:'Custom'
 
 var CUSTOM_ICON_SPRITES={
 cacturnealt:'cacturne-alt',
+weavilealt:'weavile-alt',
+dusknoiralt:'dusknoir-alt',
+spiritombalt:'spiritomb-alt',
+parasectparasitism:'parasect-parasitism',
+parasectparasite:'parasect-parasite',
 garchompmega:'garchomp-mega',
 flygonmegaz:'flygon-megaz',
 garchompmegaz:'garchomp-megaz',
@@ -858,6 +924,30 @@ var CUSTOM_STATIC_BATTLE_SPRITES=
 
 
 {
+weavilealt:{
+front:{w:120,h:128},
+back:{w:96,h:130}
+},
+weavilealtf:{
+front:{w:120,h:128},
+back:{w:96,h:130}
+},
+dusknoiralt:{
+front:{w:170,h:148},
+back:{w:126,h:134}
+},
+spiritombalt:{
+front:{w:114,h:112},
+back:{w:108,h:104}
+},
+parasectparasitism:{
+front:{w:118,h:132},
+back:{w:128,h:122}
+},
+parasectparasite:{
+front:{w:130,h:132},
+back:{w:140,h:122}
+},
 vikavolt:{
 front:{w:180,h:142},
 back:{w:180,h:154}
@@ -3046,6 +3136,10 @@ back:{w:96,h:96}
 };
 
 var CUSTOM_SPECIES_UPDATES={
+parasect:{
+baseStats:{hp:90,atk:120,def:105,spa:35,spd:110,spe:40},
+abilities:{0:'Perish Body',1:'Poison Heal',H:'Parasitism'}
+},
 inteleon:{
 abilities:{0:'Dual Wield',1:'Sniper',H:'Precision'}
 },
@@ -3067,7 +3161,21 @@ abilities:{0:'Unburden',1:'Technician',H:'Skill Link'}
 },
 weavile:{
 baseStats:{hp:85,atk:130,def:80,spa:30,spd:90,spe:135},
-abilities:{0:'Violent Rush',1:'Pressure',H:'Technician'}
+abilities:{0:'Violent Rush',1:'Pressure',H:'Technician'},
+otherFormes:['Weavile-Alt'],
+cosmeticFormes:['Weavile-Alt'],
+formeOrder:['Weavile','Weavile-Alt']
+},
+dusknoir:{
+abilities:{0:'Requiem',1:'Shadow Tag',H:'Pressure'},
+otherFormes:['Dusknoir-Alt'],
+cosmeticFormes:['Dusknoir-Alt'],
+formeOrder:['Dusknoir','Dusknoir-Alt']
+},
+spiritomb:{
+otherFormes:['Spiritomb-Alt'],
+cosmeticFormes:['Spiritomb-Alt'],
+formeOrder:['Spiritomb','Spiritomb-Alt']
 },
 mamoswine:{baseStats:{hp:120,atk:135,def:90,spa:70,spd:70,spe:85}},
 rotom:{baseStats:{hp:60,atk:50,def:77,spa:95,spd:77,spe:91}},
@@ -3076,6 +3184,20 @@ rotomwash:{baseStats:{hp:60,atk:65,def:107,spa:105,spd:107,spe:86}},
 rotomfrost:{baseStats:{hp:60,atk:65,def:107,spa:105,spd:107,spe:86}},
 rotomfan:{baseStats:{hp:60,atk:65,def:107,spa:105,spd:107,spe:86}},
 rotommow:{baseStats:{hp:60,atk:65,def:107,spa:105,spd:107,spe:86}},
+rapidash:{baseStats:{hp:85,atk:110,def:70,spa:85,spd:80,spe:130}},
+rapidashgalar:{baseStats:{hp:85,atk:110,def:70,spa:85,spd:80,spe:130}},
+kingler:{
+baseStats:{hp:80,atk:140,def:125,spa:60,spd:60,spe:85},
+abilities:{0:'Swift Swim',1:'Hyper Cutter',H:'Sheer Force'}
+},
+kinglergmax:{
+baseStats:{hp:120,atk:140,def:125,spa:60,spd:60,spe:85},
+abilities:{0:'Riptide Claws'}
+},
+yanmega:{
+baseStats:{hp:98,atk:86,def:86,spa:126,spd:69,spe:95},
+abilities:{0:'Speed Boost',1:'Tinted Lens',H:'Compound Eyes'}
+},
 slurpuff:{
 types:['Fairy','Fighting'],
 baseStats:{hp:112,atk:82,def:99,spa:96,spd:96,spe:65},
@@ -3087,19 +3209,26 @@ abilities:{0:'Harvest',1:'Tough Claws',H:'Grassy Surge'}
 },
 gourgeist:{
 baseStats:{hp:65,atk:86,def:122,spa:118,spd:75,spe:84},
-abilities:{0:'Soul Fire',1:'Harvest',H:'Flare Boost'}
+abilities:{0:'Soul Fire',1:'Harvest',H:'Flare Boost'},
+isNonstandard:null,
+tier:'RU',
+otherFormes:[],
+formeOrder:['Gourgeist']
 },
 gourgeistsmall:{
 baseStats:{hp:55,atk:86,def:122,spa:113,spd:75,spe:99},
-abilities:{0:'Soul Fire',1:'Harvest',H:'Flare Boost'}
+abilities:{0:'Soul Fire',1:'Harvest',H:'Flare Boost'},
+isNonstandard:'Unobtainable'
 },
 gourgeistlarge:{
 baseStats:{hp:75,atk:86,def:122,spa:123,spd:75,spe:69},
-abilities:{0:'Soul Fire',1:'Harvest',H:'Flare Boost'}
+abilities:{0:'Soul Fire',1:'Harvest',H:'Flare Boost'},
+isNonstandard:'Unobtainable'
 },
 gourgeistsuper:{
 baseStats:{hp:85,atk:86,def:122,spa:128,spd:75,spe:54},
-abilities:{0:'Soul Fire',1:'Harvest',H:'Flare Boost'}
+abilities:{0:'Soul Fire',1:'Harvest',H:'Flare Boost'},
+isNonstandard:'Unobtainable'
 },
 bewear:{
 types:['Normal','Fighting'],
@@ -3199,6 +3328,7 @@ jolteon:{
 abilities:{0:'Lightning Rod',1:'Battery',H:'Voltage Volley'}
 },
 starmiemega:{
+baseStats:{hp:60,atk:100,def:105,spa:135,spd:105,spe:120},
 abilities:{0:'Astral Core'}
 },
 meowstic:{
@@ -3534,8 +3664,8 @@ shortDesc:'This Pokemon and its allies have their special attacks boosted by 1.3
 },
 battlebond:{
 name:'Battle Bond',
-desc:"When this Pokemon knocks out another Pokemon, it transforms into its Bond form. While transformed, moves that match this Pokemon's type have 1.3x power, and knocking out a target restores 1/8 of this Pokemon's maximum HP.",
-shortDesc:'After a KO: transforms. Bond form: matching-type moves 1.3x, KO heals 1/8 max HP.'
+desc:"When this Pokemon knocks out another Pokemon, it transforms into its Bond form, and knocking out a target restores 1/8 max HP. It takes 0.75x damage from attacks and 30% less damage from Fighting Clause Abilities. In Doubles, Multi, or Free-for-All, it can survive one KO from above 1/3 HP. Its attacks deal 1.3x damage to Royal Decree or Neutralization users. Cold Eclipse boosts its attacks by 1.3x and reduces attack damage to 0.6x.",
+shortDesc:'0.75x attack damage; KO transforms/heals; Cold Eclipse boosts offense and defense.'
 },
 pendulumswing:{
 name:"Pendulum Swing",
@@ -4094,8 +4224,13 @@ shortDesc:"Gains Steel/Electric STAB."
 },
 parasitism:{
 name:"Parasitism",
-desc:"This Pokemon always has Dry Skin's effects, gains Grass-type resistances without Grass-type weaknesses, is immune to powder moves, and is healed by Black Sludge. This Ability cannot be suppressed or ignored and is immune to Neutralization's stat drops and Royal Decree's stat control. When hit by a damaging move, there is a 50% chance to inflict sleep, paralysis, or poison on the attacker. While it has more than 50% HP, its weaknesses are neutralized, incoming damage is reduced to 0.8x, it is protected from indirect damage including entry hazards, opposing status moves fail against it, and secondary effects from attacks are blocked.",
-shortDesc:"Dry Skin + Grass resistances; ignores Neutralization/Royal Decree."
+desc:"This Pokemon has Dry Skin and a strengthened Effect Spore: every damaging hit has a 50% chance to inflict sleep, paralysis, or poison on the attacker. While above 50% HP, weaknesses are neutralized, incoming damage is reduced to 0.8x, Magic Guard is active, opposing status moves fail, and opposing attack secondary effects are blocked. The first time Parasect would faint, it fake-faints at 1 HP, then becomes Parasect-Parasite at the end of the turn, revives at full HP, and immediately uses its strongest damaging move. This Ability cannot be suppressed and is immune to Neutralization.",
+shortDesc:"Dry Skin + 50% Effect Spore; above half: defenses + Magic Guard; first KO triggers Resuscitation."
+},
+resuscitation:{
+name:"Resuscitation",
+desc:"After Parasect revives as Parasect-Parasite, this Ability has Magic Guard, Self Repair, and Shadow Shield's effects.",
+shortDesc:"Magic Guard + Self Repair + Shadow Shield."
 },
 patternshift:{
 name:"Pattern Shift",
@@ -4174,8 +4309,8 @@ shortDesc:"8-turn Rain; Electric/Water/Flying STAB; immunity-aware Water chip."
 },
 rapidresponse:{
 name:"Rapid Response",
-desc:"Until this Pokemon uses its first damaging move, its Speed is 1.5x and its Sp. Atk is 1.2x.",
-shortDesc:"Before first damaging move: 1.5x Speed and 1.2x Sp. Atk."
+desc:"On this Pokemon's first active turn, its Speed is 1.5x and its Sp. Atk is 1.2x.",
+shortDesc:"First active turn: 1.5x Spe and 1.2x Sp. Atk."
 },
 relentlesshunt:{
 name:"Relentless Hunt",
@@ -4194,8 +4329,8 @@ shortDesc:"SpA equals Defense using Def stages; beam/Mega Launcher moves have 1.
 },
 requiem:{
 name:"Requiem",
-desc:"This Pokemon has Cursed Body's effect. When this Pokemon damages a target, or is damaged by an attack, the other Pokemon gains Perish Song, then Curse, then Taunt, then Torment from repeated hits. Curse applied by Requiem deals 1/8 max HP each turn. If this Pokemon knocks out a target with a move, it restores 1/8 max HP per target knocked out. When this Pokemon faints, it creates Haunted Field for 5 turns, and this Ability cannot be suppressed.",
-shortDesc:"Hits progress Perish Song -> Curse -> Taunt -> Torment; KO heals; faint sets Haunted."
+desc:"This Pokemon has Cursed Body's effect. Each direct damaging interaction with an opposing Pokemon progresses that target through Perish Song, Curse, then Spite. Each target has its own progression, which clears when it switches out. Curse applied by Requiem deals 1/8 max HP each turn. Whenever another Pokemon faints, this Pokemon restores 1/4 max HP. When this Pokemon faints, it creates Haunted Field for 5 turns and curses every active Pokemon; weaker Ability-applied Curses are upgraded to the standard 1/4 max HP Curse. This Ability cannot be suppressed.",
+shortDesc:"Cursed Body; KO Heals; Faints set Haunted; Hits Progress Perish -> Curse -> Spite"
 },
 resonanceforce:{
 name:"Resonance Force",
@@ -4214,8 +4349,18 @@ shortDesc:"Punk Rock + Galvanize."
 },
 riptideclaws:{
 name:"Riptide Claws",
-desc:"This Pokemon has Swift Swim and Technician's effects.",
-shortDesc:"Swift Swim + Technician."
+desc:"This Pokemon has Swift Swim, Tough Claws, and Shell Armor's effects.",
+shortDesc:"Swift Swim + Tough Claws + Shell Armor."
+},
+stancechange:{
+name:'Stance Change',
+desc:"This Pokemon has Dual Wield. Aegislash changes to Blade Forme before attacking and Shield Forme before King's Shield. Shield Forme takes 20% less damage; consecutive Free-for-All hits deal 30% less damage. Blade Forme deals 1.2x damage.",
+shortDesc:'Dual Wield; Shield: 20% less damage; Blade: 1.2x damage.'
+},
+zerotohero:{
+name:'Zero to Hero',
+desc:'This Pokemon gains Fighting-type STAB. Palafin changes to Hero Form after switching out or entering in Water fields. In Doubles, Multi, or Free-for-All, it survives one KO at 1 HP. Hero Form grants Friend Guard and heals active allies on entry.',
+shortDesc:'Becomes Hero; Fighting STAB; Hero: Friend Guard + entry healing.'
 },
 royalarmament:{
 name:"Royal Armament",
@@ -4445,8 +4590,8 @@ shortDesc:"Brute Force + Sand Stream + Strong Jaw."
 },
 ultrainstinct:{
 name:"Ultra Instinct",
-desc:"Ignores abilities; blocks flinching and Intimidate; deals 2x damage through screens, 1.5x when moving first, and takes 30% damage if hit first.",
-shortDesc:"Ignores abilities; 2x vs screens; 1.5x when first; takes 30% if hit first."
+desc:"This Pokemon has Mold Breaker and Inner Focus. It deals 2x damage through screens and 1.5x damage when moving first. In Ashen Beach, New World, Starlight Arena, Holy Field, and Cold Eclipse, it gains 1 Accuracy on entry, deals 1.5x damage, and takes 50% less damage. Outside those fields, it takes 70% less damage when hit before its attacker has moved. Bewitched Woods disables these effects.",
+shortDesc:"Mold Breaker + Inner Focus; 2x vs screens; 1.5x moving first; boosted fields halve damage."
 },
 uncheckedassault:{
 name:"Unchecked Assault",
@@ -4626,6 +4771,14 @@ shortDesc:"Mold Breaker; heals each turn/attack; KOs heal more; first enemy hit 
 };
 
 var CUSTOM_MOVE_UPDATES={
+astonish:{
+basePower:40,
+pp:10,
+priority:3,
+secondary:{chance:100,volatileStatus:'flinch'},
+desc:"Has a 100% chance to make the target flinch. Fails unless it is the user's first turn on the field.",
+shortDesc:"Ghost-type Fake Out. First turn out only; 100% flinch."
+},
 beatup:{
 basePower:30,
 multihit:[2,6],
@@ -4697,8 +4850,8 @@ shortDesc:'Hits twice; high crit; 30% flinch each hit; hits airborne neutrally.'
 },
 ceaselessedge:{
 name:'Ceaseless Edge',
-desc:'If this move is successful, it sets up a layer of Spikes on the opposing side and gives the hit target Splinter for 3 turns. Splinter deals residual damage based on a 25 Base Power Dark-type physical attack from the original user, applying type effectiveness but no random damage variance.',
-shortDesc:'Sets Spikes. Target takes 3 turns of Splinter.'
+desc:'If this move is successful, it sets up a layer of Spikes on the opposing side.',
+shortDesc:'Sets Spikes on the opposing side.'
 },
 bonerush:{
 name:'Bone Rush',
@@ -4756,13 +4909,21 @@ shortDesc:'50% Defense drop; boosted by Power Drill and Dual Wield.'
 },
 needlearm:{
 name:'Needle Arm',
-desc:'Has a 30% chance to make the target flinch. If this move hits, the target takes Splinter residual damage for 3 turns based on a 25 Base Power Grass-type physical attack from the original user, applying type effectiveness but no random damage variance.',
-shortDesc:'30% flinch. Target takes 3 turns of Splinter.'
+basePower:100,
+desc:'Has a 30% chance to make the target flinch.',
+shortDesc:'30% chance to make the target flinch.'
+},
+meteormash:{
+name:'Meteor Mash',
+basePower:100,
+secondary:{chance:30,self:{boosts:{atk:1}}},
+desc:"Has a 30% chance to raise the user's Attack by 1 stage.",
+shortDesc:"30% chance to raise the user's Attack by 1."
 },
 pinmissile:{
 name:'Pin Missile',
-desc:'Hits three to five times. If this move hits, the target takes Splinter residual damage for 3 turns based on a 25 Base Power Bug-type physical attack from the original user, applying type effectiveness but no random damage variance. If the user has the Skill Link Ability, this move will always hit five times. If the user is holding Loaded Dice, this move will hit 5-6 times.',
-shortDesc:'Hits 3-5 times. Target takes 3 turns of Splinter.'
+desc:'Hits three to five times. Skill Link makes it hit five times. Loaded Dice makes it hit 5-6 times.',
+shortDesc:'Hits 3-5 times.'
 },
 spikecannon:{
 name:'Spike Cannon',
@@ -4776,8 +4937,8 @@ shortDesc:'25 BP Water move. Hits 2-5 times.'
 },
 stoneaxe:{
 name:'Stone Axe',
-desc:'If this move is successful, it sets Stealth Rock on the opposing side and gives the hit target Splinter for 3 turns. Splinter deals residual damage based on a 25 Base Power Rock-type physical attack from the original user, applying type effectiveness but no random damage variance.',
-shortDesc:'Sets Stealth Rock. Target takes Splinter.'
+desc:'If this move is successful, it sets Stealth Rock on the opposing side.',
+shortDesc:'Sets Stealth Rock on the opposing side.'
 },
 supercellslam:{
 name:'Supercell Slam',
@@ -4917,12 +5078,16 @@ zapcannon:['9M']
 };
 
 var CUSTOM_LEARNSET_ADDITIONS={
+milotic:{
+drainingkiss:['9M']
+},
 weavile:{
 closecombat:['9M'],
 iciclespear:['9M']
 },
 slurpuff:{
 aurasphere:['9M'],
+closecombat:['9M'],
 drainpunch:['9M'],
 focusblast:['9M'],
 submission:['9M']
@@ -5102,7 +5267,41 @@ spikecannon:['9M']
 },
 archaludon:{
 spikecannon:['9M']
+},
+tentacruel:{
+boltbeak:['9M']
+},
+kingler:{
+bodypress:['9M'],
+clamp:['9M'],
+flipturn:['9M'],
+quickguard:['9M'],
+tripledive:['9M']
+},
+porygon2:{
+shiftgear:['9M']
+},
+porygonz:{
+shiftgear:['9M']
+},
+yanmega:{
+hurricane:['9M'],
+quickguard:['9M'],
+quiverdance:['9M'],
+weatherball:['9M']
+},
+chandelure:{
+trickortreat:['9M']
+},
+kilowattrel:{
+boltbeak:['9M']
 }
+};
+
+var CUSTOM_LEARNSET_REMOVALS={
+noivern:['torchsong'],
+decidueye:['ceaselessedge'],
+decidueyehisui:['ceaselessedge']
 };
 
 var CUSTOM_BW_SPRITE_IDS=Object.keys(CUSTOM_BW_SPRITES);
@@ -5469,11 +5668,16 @@ spriteData.backgroundSize=width+"px auto";
 var CUSTOM_ABILITY_UPDATE_IDS=Object.keys(CUSTOM_ABILITY_UPDATES);
 var CUSTOM_ABILITY_COMPONENT_OVERRIDES={
 
-ultraego:['moldbreaker']
+ultraego:['moldbreaker'],
+requiem:['cursedbody'],
+ultrainstinct:['moldbreaker','innerfocus'],
+parasitism:['dryskin','effectspore','magicguard'],
+resuscitation:['magicguard','selfrepair','shadowshield']
 };
 var CUSTOM_MOVE_UPDATE_IDS=Object.keys(CUSTOM_MOVE_UPDATES);
 var CUSTOM_LEARNSET_REPLACEMENT_IDS=Object.keys(CUSTOM_LEARNSET_REPLACEMENTS);
 var CUSTOM_LEARNSET_ADDITION_IDS=Object.keys(CUSTOM_LEARNSET_ADDITIONS);
+var CUSTOM_LEARNSET_REMOVAL_IDS=Object.keys(CUSTOM_LEARNSET_REMOVALS);
 
 var customBWSpriteDataTable=null;
 var customPokedexDataTable=null;
@@ -5562,30 +5766,35 @@ table.learnsets[_id2]=Object.assign({},
 table.learnsets[_id2]||{},
 CUSTOM_LEARNSET_ADDITIONS[_id2]);
 
+}for(var _i10=0;_i10<
+CUSTOM_LEARNSET_REMOVAL_IDS.length;_i10++){var _id3=CUSTOM_LEARNSET_REMOVAL_IDS[_i10];for(var _i12=0,_CUSTOM_LEARNSET_REMO2=
+CUSTOM_LEARNSET_REMOVALS[_id3];_i12<_CUSTOM_LEARNSET_REMO2.length;_i12++){var _table$learnsets$_id;var moveid=_CUSTOM_LEARNSET_REMO2[_i12];
+(_table$learnsets$_id=table.learnsets[_id3])==null||delete _table$learnsets$_id[moveid];
+}
 }
 }
 
 function applyCustomTeambuilderSpecies(table){
-if(!table.overrideSpeciesData)table.overrideSpeciesData={};for(var _i10=0;_i10<
-CUSTOM_SPECIES_IDS.length;_i10++){var id=CUSTOM_SPECIES_IDS[_i10];
+if(!table.overrideSpeciesData)table.overrideSpeciesData={};for(var _i14=0;_i14<
+CUSTOM_SPECIES_IDS.length;_i14++){var id=CUSTOM_SPECIES_IDS[_i14];
 var customSpecies=CUSTOM_SPECIES[id];
 table.overrideSpeciesData[id]=Object.assign({},
 table.overrideSpeciesData[id]||{},
 customSpecies.data);
 
 }
-if(table.tiers){for(var _i12=0;_i12<
-CUSTOM_SPECIES_IDS.length;_i12++){var _id3=CUSTOM_SPECIES_IDS[_i12];
-var _customSpecies=CUSTOM_SPECIES[_id3];
+if(table.tiers){for(var _i16=0;_i16<
+CUSTOM_SPECIES_IDS.length;_i16++){var _id4=CUSTOM_SPECIES_IDS[_i16];
+var _customSpecies=CUSTOM_SPECIES[_id4];
 var baseIndex=table.tiers.indexOf(_customSpecies.base);
-if(baseIndex>=0&&!table.tiers.includes(_id3))table.tiers.splice(baseIndex+1,0,_id3);
+if(baseIndex>=0&&!table.tiers.includes(_id4))table.tiers.splice(baseIndex+1,0,_id4);
 }
 }
-if(!table.overrideTier)table.overrideTier={};for(var _i14=0;_i14<
-CUSTOM_SPECIES_IDS.length;_i14++){var _id4=CUSTOM_SPECIES_IDS[_i14];
-var _customSpecies2=CUSTOM_SPECIES[_id4];
-if(!table.overrideTier[_id4]&&table.overrideTier[_customSpecies2.base]){
-table.overrideTier[_id4]=table.overrideTier[_customSpecies2.base];
+if(!table.overrideTier)table.overrideTier={};for(var _i18=0;_i18<
+CUSTOM_SPECIES_IDS.length;_i18++){var _id5=CUSTOM_SPECIES_IDS[_i18];
+var _customSpecies2=CUSTOM_SPECIES[_id5];
+if(!table.overrideTier[_id5]&&table.overrideTier[_customSpecies2.base]){
+table.overrideTier[_id5]=table.overrideTier[_customSpecies2.base];
 }
 }
 }
@@ -5599,8 +5808,8 @@ if(
 (customTeambuilderDataTable||undefined)===window.BattleTeambuilderTable)
 return;
 if(window.BattlePokedex&&customPokedexDataTable!==window.BattlePokedex){
-delete window.BattlePokedex.banettemegaz;for(var _i16=0;_i16<
-CUSTOM_SPECIES_UPDATE_IDS.length;_i16++){var id=CUSTOM_SPECIES_UPDATE_IDS[_i16];
+delete window.BattlePokedex.banettemegaz;for(var _i20=0;_i20<
+CUSTOM_SPECIES_UPDATE_IDS.length;_i20++){var id=CUSTOM_SPECIES_UPDATE_IDS[_i20];
 if(!window.BattlePokedex[id])window.BattlePokedex[id]={};
 Object.assign(window.BattlePokedex[id],CUSTOM_SPECIES_UPDATES[id]);
 }
@@ -5611,35 +5820,35 @@ delete window.BattlePokedexAltForms.banettemegaz;
 customPokedexAltFormsTable=window.BattlePokedexAltForms;
 }
 if(window.BattleAliases)window.BattleAliases.alchemicsurge='Alchemist Surge';
-if(window.BattleAbilities&&customAbilityDataTable!==window.BattleAbilities){for(var _i18=0;_i18<
-CUSTOM_ABILITY_UPDATE_IDS.length;_i18++){var _id5=CUSTOM_ABILITY_UPDATE_IDS[_i18];
-if(!window.BattleAbilities[_id5])window.BattleAbilities[_id5]={};
-Object.assign(window.BattleAbilities[_id5],CUSTOM_ABILITY_UPDATES[_id5]);
+if(window.BattleAbilities&&customAbilityDataTable!==window.BattleAbilities){for(var _i22=0;_i22<
+CUSTOM_ABILITY_UPDATE_IDS.length;_i22++){var _id6=CUSTOM_ABILITY_UPDATE_IDS[_i22];
+if(!window.BattleAbilities[_id6])window.BattleAbilities[_id6]={};
+Object.assign(window.BattleAbilities[_id6],CUSTOM_ABILITY_UPDATES[_id6]);
 }
 customAbilityDataTable=window.BattleAbilities;
 }
-if(window.BattleMovedex&&customMoveDataTable!==window.BattleMovedex){for(var _i20=0;_i20<
-CUSTOM_MOVE_UPDATE_IDS.length;_i20++){var _id6=CUSTOM_MOVE_UPDATE_IDS[_i20];
-if(!window.BattleMovedex[_id6])window.BattleMovedex[_id6]={};
-Object.assign(window.BattleMovedex[_id6],CUSTOM_MOVE_UPDATES[_id6]);
+if(window.BattleMovedex&&customMoveDataTable!==window.BattleMovedex){for(var _i24=0;_i24<
+CUSTOM_MOVE_UPDATE_IDS.length;_i24++){var _id7=CUSTOM_MOVE_UPDATE_IDS[_i24];
+if(!window.BattleMovedex[_id7])window.BattleMovedex[_id7]={};
+Object.assign(window.BattleMovedex[_id7],CUSTOM_MOVE_UPDATES[_id7]);
 }
 customMoveDataTable=window.BattleMovedex;
 }
 if(window.BattleTeambuilderTable&&customTeambuilderDataTable!==window.BattleTeambuilderTable){
 var table=window.BattleTeambuilderTable;
-if(!table.overrideSpeciesData)table.overrideSpeciesData={};for(var _i22=0;_i22<
-CUSTOM_SPECIES_UPDATE_IDS.length;_i22++){var _id7=CUSTOM_SPECIES_UPDATE_IDS[_i22];
-table.overrideSpeciesData[_id7]=Object.assign({},
-table.overrideSpeciesData[_id7]||{},
-CUSTOM_SPECIES_UPDATES[_id7]);
+if(!table.overrideSpeciesData)table.overrideSpeciesData={};for(var _i26=0;_i26<
+CUSTOM_SPECIES_UPDATE_IDS.length;_i26++){var _id8=CUSTOM_SPECIES_UPDATE_IDS[_i26];
+table.overrideSpeciesData[_id8]=Object.assign({},
+table.overrideSpeciesData[_id8]||{},
+CUSTOM_SPECIES_UPDATES[_id8]);
 
 }
 applyCustomTeambuilderSpecies(table);
-if(!table.overrideAbilityData)table.overrideAbilityData={};for(var _i24=0;_i24<
-CUSTOM_ABILITY_UPDATE_IDS.length;_i24++){var _id8=CUSTOM_ABILITY_UPDATE_IDS[_i24];
-table.overrideAbilityData[_id8]=Object.assign({},
-table.overrideAbilityData[_id8]||{},
-CUSTOM_ABILITY_UPDATES[_id8]);
+if(!table.overrideAbilityData)table.overrideAbilityData={};for(var _i28=0;_i28<
+CUSTOM_ABILITY_UPDATE_IDS.length;_i28++){var _id9=CUSTOM_ABILITY_UPDATE_IDS[_i28];
+table.overrideAbilityData[_id9]=Object.assign({},
+table.overrideAbilityData[_id9]||{},
+CUSTOM_ABILITY_UPDATES[_id9]);
 
 }
 applyCustomTeambuilderLearnsets(table);
@@ -5657,8 +5866,8 @@ customTeambuilderDataTable=window.BattleTeambuilderTable;
 function ensureCustomSpecies(id){
 if(!window.BattlePokedex)return;
 ensureCustomDataPatches();
-if(customSpeciesDataTable!==window.BattlePokedex){for(var _i26=0;_i26<
-CUSTOM_SPECIES_IDS.length;_i26++){var customId=CUSTOM_SPECIES_IDS[_i26];
+if(customSpeciesDataTable!==window.BattlePokedex){for(var _i30=0;_i30<
+CUSTOM_SPECIES_IDS.length;_i30++){var customId=CUSTOM_SPECIES_IDS[_i30];
 var customSpecies=CUSTOM_SPECIES[customId];
 var baseData=window.BattlePokedex[customSpecies.base];
 if(!baseData)continue;
@@ -5682,8 +5891,8 @@ _customSpecies3.data);
 ensureCustomBWSpriteData();
 var garchomp=window.BattlePokedex.garchomp;
 if(garchomp){
-var otherFormes=garchomp.otherFormes||[];for(var _i28=0,_ref4=
-['Garchomp-Mega-Z','Garchomp-Battle-Bond'];_i28<_ref4.length;_i28++){var forme=_ref4[_i28];
+var otherFormes=garchomp.otherFormes||[];for(var _i32=0,_ref4=
+['Garchomp-Mega-Z','Garchomp-Battle-Bond'];_i32<_ref4.length;_i32++){var forme=_ref4[_i32];
 if(!otherFormes.includes(forme))otherFormes.push(forme);
 }
 garchomp.otherFormes=otherFormes;
@@ -6037,8 +6246,8 @@ if(formid in window.BattlePokedexAltForms&&!(formid in CUSTOM_SPECIES))return wi
 if(window.BattleAliases&&id in BattleAliases&&!(id in CUSTOM_SPECIES)){
 name=BattleAliases[id];
 id=toID(name);
-}else if(window.BattlePokedex&&!(id in BattlePokedex)&&!(id in CUSTOM_SPECIES)&&window.BattleBaseSpeciesChart){for(var _i30=0,_BattleBaseSpeciesCha2=
-BattleBaseSpeciesChart;_i30<_BattleBaseSpeciesCha2.length;_i30++){var baseSpeciesId=_BattleBaseSpeciesCha2[_i30];
+}else if(window.BattlePokedex&&!(id in BattlePokedex)&&!(id in CUSTOM_SPECIES)&&window.BattleBaseSpeciesChart){for(var _i34=0,_BattleBaseSpeciesCha2=
+BattleBaseSpeciesChart;_i34<_BattleBaseSpeciesCha2.length;_i34++){var baseSpeciesId=_BattleBaseSpeciesCha2[_i34];
 if(formid.startsWith(baseSpeciesId)){
 id=baseSpeciesId;
 break;
@@ -6064,8 +6273,8 @@ species=new Species(id,name,data);
 window.BattlePokedex[id]=species;
 }
 
-if(species.cosmeticFormes&&!(formid in CUSTOM_SPECIES)){for(var _i32=0,_species$cosmeticForm2=
-species.cosmeticFormes;_i32<_species$cosmeticForm2.length;_i32++){var forme=_species$cosmeticForm2[_i32];
+if(species.cosmeticFormes&&!(formid in CUSTOM_SPECIES)){for(var _i36=0,_species$cosmeticForm2=
+species.cosmeticFormes;_i36<_species$cosmeticForm2.length;_i36++){var forme=_species$cosmeticForm2[_i36];
 if(toID(forme)===formid){
 species=new Species(formid,name,Object.assign({},
 species,{
@@ -6168,9 +6377,9 @@ var escapedName=componentName.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
 if(new RegExp("(^|[^a-z0-9])"+escapedName+"($|[^a-z0-9])",'i').test(description)){
 directComponents.add(componentId);
 }
-}for(var _i34=0,_Array$from2=
-Array.from(directComponents);_i34<_Array$from2.length;_i34++){var _componentId=_Array$from2[_i34];for(var _i36=0,_Array$from4=
-Array.from(this.getAbilityEffects(_componentId,nextVisiting));_i36<_Array$from4.length;_i36++){var nestedEffect=_Array$from4[_i36];
+}for(var _i38=0,_Array$from2=
+Array.from(directComponents);_i38<_Array$from2.length;_i38++){var _componentId=_Array$from2[_i38];for(var _i40=0,_Array$from4=
+Array.from(this.getAbilityEffects(_componentId,nextVisiting));_i40<_Array$from4.length;_i40++){var nestedEffect=_Array$from4[_i40];
 effects.add(nestedEffect);
 }
 }
@@ -6574,7 +6783,7 @@ num=BattlePokemonIconIndexesLeft[id];
 return num;
 };_proto2.
 
-getPokemonIcon=function getPokemonIcon(pokemon,facingLeft){var _pokemon,_pokemon2,_pokemon3,_pokemon5,_pokemon6;
+getPokemonIcon=function getPokemonIcon(pokemon,facingLeft){var _pokemon,_pokemon2,_pokemon3,_pokemon4,_pokemon6,_pokemon7;
 if(pokemon==='pokeball'){
 return"background:transparent url("+Dex.resourcePrefix+"sprites/pokemonicons-pokeball-sheet.png) no-repeat scroll -0px 4px";
 }else if(pokemon==='pokeball-statused'){
@@ -6592,20 +6801,23 @@ if((_pokemon=pokemon)!=null&&_pokemon.speciesForme)id=toID(pokemon.speciesForme)
 
 if((_pokemon2=pokemon)!=null&&_pokemon2.species)id=toID(pokemon.species);
 
-if((_pokemon3=pokemon)!=null&&(_pokemon3=_pokemon3.volatiles)!=null&&_pokemon3.formechange&&!pokemon.volatiles.transform){
+
+if(id==='parasect'&&toID((_pokemon3=pokemon)==null?void 0:_pokemon3.ability)==='parasitism')id='parasectparasitism';
+
+if((_pokemon4=pokemon)!=null&&(_pokemon4=_pokemon4.volatiles)!=null&&_pokemon4.formechange&&!pokemon.volatiles.transform){
 
 id=toID(pokemon.volatiles.formechange[1]);
 }
 var customIcon=CUSTOM_ICON_SPRITES[id];
-if(customIcon){var _pokemon4;
-var _fainted=(_pokemon4=pokemon)!=null&&_pokemon4.fainted?";opacity:.3;filter:grayscale(100%) brightness(.5)":"";
+if(customIcon){var _pokemon5;
+var _fainted=(_pokemon5=pokemon)!=null&&_pokemon5.fainted?";opacity:.3;filter:grayscale(100%) brightness(.5)":"";
 return"background:transparent url("+Dex.resourcePrefix+"sprites/gen5/"+customIcon+".png) no-repeat center / contain"+_fainted;
 }
-var num=this.getPokemonIconNum(id,((_pokemon5=pokemon)==null?void 0:_pokemon5.gender)==='F',facingLeft);
+var num=this.getPokemonIconNum(id,((_pokemon6=pokemon)==null?void 0:_pokemon6.gender)==='F',facingLeft);
 
 var top=Math.floor(num/12)*30;
 var left=num%12*40;
-var fainted=(_pokemon6=pokemon)!=null&&_pokemon6.fainted?";opacity:.3;filter:grayscale(100%) brightness(.5)":"";
+var fainted=(_pokemon7=pokemon)!=null&&_pokemon7.fainted?";opacity:.3;filter:grayscale(100%) brightness(.5)":"";
 return"background:transparent url("+Dex.resourcePrefix+"sprites/pokemonicons-sheet.png?v16) no-repeat scroll -"+left+"px -"+top+"px"+fainted;
 };_proto2.
 
@@ -6614,6 +6826,11 @@ ensureCustomBWSpriteData();
 var id=toID(pokemon.species);
 var spriteid=pokemon.spriteid;
 var species=Dex.species.get(pokemon.species);
+if(id==='parasect'&&toID(pokemon.ability)==='parasitism'){
+id='parasectparasitism';
+spriteid='parasect-parasitism';
+species=Dex.species.get('Parasect-Parasitism');
+}
 if(pokemon.species&&!spriteid){
 spriteid=species.spriteid||toID(pokemon.species);
 }
@@ -6752,8 +6969,8 @@ return"<img src=\""+Dex.resourcePrefix+"sprites/categories/"+sanitizedCategory+"
 getPokeballs=function getPokeballs(){
 if(this.pokeballs)return this.pokeballs;
 this.pokeballs=[];
-if(!window.BattleItems)window.BattleItems={};for(var _i38=0,_Object$values2=
-Object.values(window.BattleItems);_i38<_Object$values2.length;_i38++){var data=_Object$values2[_i38];
+if(!window.BattleItems)window.BattleItems={};for(var _i42=0,_Object$values2=
+Object.values(window.BattleItems);_i42<_Object$values2.length;_i42++){var data=_Object$values2[_i42];
 if(!data.isPokeball)continue;
 this.pokeballs.push(data.name);
 }
@@ -6940,8 +7157,8 @@ return data;
 getPokeballs=function getPokeballs(){
 if(this.pokeballs)return this.pokeballs;
 this.pokeballs=[];
-if(!window.BattleItems)window.BattleItems={};for(var _i40=0,_Object$values4=
-Object.values(window.BattleItems);_i40<_Object$values4.length;_i40++){var data=_Object$values4[_i40];
+if(!window.BattleItems)window.BattleItems={};for(var _i44=0,_Object$values4=
+Object.values(window.BattleItems);_i44<_Object$values4.length;_i44++){var data=_Object$values4[_i44];
 if(data.gen&&data.gen>this.gen)continue;
 if(!data.isPokeball)continue;
 this.pokeballs.push(data.name);
@@ -7077,8 +7294,8 @@ if(typeof team==='string'){
 if(team.indexOf('\n')>=0)return team;
 team=this.unpack(team);
 }
-var text='';for(var _i42=0,_team2=
-team;_i42<_team2.length;_i42++){var curSet=_team2[_i42];
+var text='';for(var _i46=0,_team2=
+team;_i46<_team2.length;_i46++){var curSet=_team2[_i46];
 if(isSilvallySpecies(curSet.species))curSet.shiny=true;
 if(curSet.name&&curSet.name!==curSet.species){
 text+=''+curSet.name+' ('+curSet.species+')';
@@ -7143,8 +7360,8 @@ text+=''+curSet.nature+' Nature'+"  \n";
 first=true;
 if(curSet.ivs){
 var defaultIvs=true;
-var hpType='';for(var _i44=0,_curSet$moves2=
-curSet.moves;_i44<_curSet$moves2.length;_i44++){var move=_curSet$moves2[_i44];
+var hpType='';for(var _i48=0,_curSet$moves2=
+curSet.moves;_i48<_curSet$moves2.length;_i48++){var move=_curSet$moves2[_i48];
 if(move.substr(0,13)==='Hidden Power '&&move.substr(0,14)!=='Hidden Power ['){
 hpType=move.substr(13);
 if(!Dex.types.isName(hpType)){
@@ -7187,8 +7404,8 @@ if(!first){
 text+="  \n";
 }
 }
-if(curSet.moves){for(var _i46=0,_curSet$moves4=
-curSet.moves;_i46<_curSet$moves4.length;_i46++){var _move=_curSet$moves4[_i46];
+if(curSet.moves){for(var _i50=0,_curSet$moves4=
+curSet.moves;_i50<_curSet$moves4.length;_i50++){var _move=_curSet$moves4[_i50];
 if(_move.substr(0,13)==='Hidden Power '){
 _move=_move.substr(0,13)+'['+_move.substr(13)+']';
 }
