@@ -166,6 +166,67 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 			isNonstandard: 'Custom',
 		},
 	},
+	weavilealt: {
+		base: 'weavile',
+		data: {
+			name: 'Weavile-Alt',
+			baseSpecies: 'Weavile',
+			forme: 'Alt',
+			spriteid: 'weavile-alt',
+			changesFrom: 'Weavile',
+			isNonstandard: 'Custom',
+		},
+	},
+	dusknoiralt: {
+		base: 'dusknoir',
+		data: {
+			name: 'Dusknoir-Alt',
+			baseSpecies: 'Dusknoir',
+			forme: 'Alt',
+			spriteid: 'dusknoir-alt',
+			changesFrom: 'Dusknoir',
+			isNonstandard: 'Custom',
+		},
+	},
+	spiritombalt: {
+		base: 'spiritomb',
+		data: {
+			name: 'Spiritomb-Alt',
+			baseSpecies: 'Spiritomb',
+			forme: 'Alt',
+			spriteid: 'spiritomb-alt',
+			changesFrom: 'Spiritomb',
+			isNonstandard: 'Custom',
+		},
+	},
+	parasectparasitism: {
+		base: 'parasect',
+		data: {
+			name: 'Parasect-Parasitism',
+			baseSpecies: 'Parasect',
+			forme: 'Parasitism',
+			spriteid: 'parasect-parasitism',
+			types: ['Ghost', 'Bug'],
+			baseStats: {hp: 90, atk: 120, def: 105, spa: 35, spd: 110, spe: 40},
+			abilities: {0: 'Parasitism'},
+			battleOnly: 'Parasect',
+			isNonstandard: 'Custom',
+		},
+	},
+	parasectparasite: {
+		base: 'parasect',
+		data: {
+			name: 'Parasect-Parasite',
+			baseSpecies: 'Parasect',
+			forme: 'Parasite',
+			spriteid: 'parasect-parasite',
+			types: ['Ghost', 'Poison'],
+			baseStats: {hp: 90, atk: 150, def: 65, spa: 50, spd: 65, spe: 130},
+			abilities: {0: 'Resuscitation'},
+			battleOnly: 'Parasect',
+			isNonstandard: 'Custom',
+		},
+	},
 	victreebelmega: {
 		base: 'victreebel',
 		data: {
@@ -641,6 +702,11 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 
 const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
 	cacturnealt: 'cacturne-alt',
+	weavilealt: 'weavile-alt',
+	dusknoiralt: 'dusknoir-alt',
+	spiritombalt: 'spiritomb-alt',
+	parasectparasitism: 'parasect-parasitism',
+	parasectparasite: 'parasect-parasite',
 	garchompmega: 'garchomp-mega',
 	flygonmegaz: 'flygon-megaz',
 	garchompmegaz: 'garchomp-megaz',
@@ -858,6 +924,30 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 	shinyFront?: {w: number, h: number},
 	shinyBack?: {w: number, h: number},
 }} = {
+	weavilealt: {
+		front: {w: 120, h: 128},
+		back: {w: 96, h: 130},
+	},
+	weavilealtf: {
+		front: {w: 120, h: 128},
+		back: {w: 96, h: 130},
+	},
+	dusknoiralt: {
+		front: {w: 170, h: 148},
+		back: {w: 126, h: 134},
+	},
+	spiritombalt: {
+		front: {w: 114, h: 112},
+		back: {w: 108, h: 104},
+	},
+	parasectparasitism: {
+		front: {w: 118, h: 132},
+		back: {w: 128, h: 122},
+	},
+	parasectparasite: {
+		front: {w: 130, h: 132},
+		back: {w: 140, h: 122},
+	},
 	vikavolt: {
 		front: {w: 180, h: 142},
 		back: {w: 180, h: 154},
@@ -3046,6 +3136,10 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 };
 
 const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
+	parasect: {
+		baseStats: {hp: 90, atk: 120, def: 105, spa: 35, spd: 110, spe: 40},
+		abilities: {0: 'Perish Body', 1: 'Poison Heal', H: 'Parasitism'},
+	},
 	inteleon: {
 		abilities: {0: 'Dual Wield', 1: 'Sniper', H: 'Precision'},
 	},
@@ -3068,6 +3162,20 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 	weavile: {
 		baseStats: {hp: 85, atk: 130, def: 80, spa: 30, spd: 90, spe: 135},
 		abilities: {0: 'Violent Rush', 1: 'Pressure', H: 'Technician'},
+		otherFormes: ['Weavile-Alt'],
+		cosmeticFormes: ['Weavile-Alt'],
+		formeOrder: ['Weavile', 'Weavile-Alt'],
+	},
+	dusknoir: {
+		abilities: {0: 'Requiem', 1: 'Shadow Tag', H: 'Pressure'},
+		otherFormes: ['Dusknoir-Alt'],
+		cosmeticFormes: ['Dusknoir-Alt'],
+		formeOrder: ['Dusknoir', 'Dusknoir-Alt'],
+	},
+	spiritomb: {
+		otherFormes: ['Spiritomb-Alt'],
+		cosmeticFormes: ['Spiritomb-Alt'],
+		formeOrder: ['Spiritomb', 'Spiritomb-Alt'],
 	},
 	mamoswine: {baseStats: {hp: 120, atk: 135, def: 90, spa: 70, spd: 70, spe: 85}},
 	rotom: {baseStats: {hp: 60, atk: 50, def: 77, spa: 95, spd: 77, spe: 91}},
@@ -3076,6 +3184,20 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 	rotomfrost: {baseStats: {hp: 60, atk: 65, def: 107, spa: 105, spd: 107, spe: 86}},
 	rotomfan: {baseStats: {hp: 60, atk: 65, def: 107, spa: 105, spd: 107, spe: 86}},
 	rotommow: {baseStats: {hp: 60, atk: 65, def: 107, spa: 105, spd: 107, spe: 86}},
+	rapidash: {baseStats: {hp: 85, atk: 110, def: 70, spa: 85, spd: 80, spe: 130}},
+	rapidashgalar: {baseStats: {hp: 85, atk: 110, def: 70, spa: 85, spd: 80, spe: 130}},
+	kingler: {
+		baseStats: {hp: 80, atk: 140, def: 125, spa: 60, spd: 60, spe: 85},
+		abilities: {0: 'Swift Swim', 1: 'Hyper Cutter', H: 'Sheer Force'},
+	},
+	kinglergmax: {
+		baseStats: {hp: 120, atk: 140, def: 125, spa: 60, spd: 60, spe: 85},
+		abilities: {0: 'Riptide Claws'},
+	},
+	yanmega: {
+		baseStats: {hp: 98, atk: 86, def: 86, spa: 126, spd: 69, spe: 95},
+		abilities: {0: 'Speed Boost', 1: 'Tinted Lens', H: 'Compound Eyes'},
+	},
 	slurpuff: {
 		types: ['Fairy', 'Fighting'],
 		baseStats: {hp: 112, atk: 82, def: 99, spa: 96, spd: 96, spe: 65},
@@ -3088,18 +3210,25 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 	gourgeist: {
 		baseStats: {hp: 65, atk: 86, def: 122, spa: 118, spd: 75, spe: 84},
 		abilities: {0: 'Soul Fire', 1: 'Harvest', H: 'Flare Boost'},
+		isNonstandard: null,
+		tier: 'RU',
+		otherFormes: [],
+		formeOrder: ['Gourgeist'],
 	},
 	gourgeistsmall: {
 		baseStats: {hp: 55, atk: 86, def: 122, spa: 113, spd: 75, spe: 99},
 		abilities: {0: 'Soul Fire', 1: 'Harvest', H: 'Flare Boost'},
+		isNonstandard: 'Unobtainable',
 	},
 	gourgeistlarge: {
 		baseStats: {hp: 75, atk: 86, def: 122, spa: 123, spd: 75, spe: 69},
 		abilities: {0: 'Soul Fire', 1: 'Harvest', H: 'Flare Boost'},
+		isNonstandard: 'Unobtainable',
 	},
 	gourgeistsuper: {
 		baseStats: {hp: 85, atk: 86, def: 122, spa: 128, spd: 75, spe: 54},
 		abilities: {0: 'Soul Fire', 1: 'Harvest', H: 'Flare Boost'},
+		isNonstandard: 'Unobtainable',
 	},
 	bewear: {
 		types: ['Normal', 'Fighting'],
@@ -3199,6 +3328,7 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		abilities: {0: 'Lightning Rod', 1: 'Battery', H: 'Voltage Volley'},
 	},
 	starmiemega: {
+		baseStats: {hp: 60, atk: 100, def: 105, spa: 135, spd: 105, spe: 120},
 		abilities: {0: 'Astral Core'},
 	},
 	meowstic: {
@@ -3534,8 +3664,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	battlebond: {
 		name: 'Battle Bond',
-		desc: "When this Pokemon knocks out another Pokemon, it transforms into its Bond form. While transformed, moves that match this Pokemon's type have 1.3x power, and knocking out a target restores 1/8 of this Pokemon's maximum HP.",
-		shortDesc: 'After a KO: transforms. Bond form: matching-type moves 1.3x, KO heals 1/8 max HP.',
+		desc: "When this Pokemon knocks out another Pokemon, it transforms into its Bond form, and knocking out a target restores 1/8 max HP. It takes 0.75x damage from attacks and 30% less damage from Fighting Clause Abilities. In Doubles, Multi, or Free-for-All, it can survive one KO from above 1/3 HP. Its attacks deal 1.3x damage to Royal Decree or Neutralization users. Cold Eclipse boosts its attacks by 1.3x and reduces attack damage to 0.6x.",
+		shortDesc: '0.75x attack damage; KO transforms/heals; Cold Eclipse boosts offense and defense.',
 	},
 	pendulumswing: {
 		name: "Pendulum Swing",
@@ -4094,8 +4224,13 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	parasitism: {
 		name: "Parasitism",
-		desc: "This Pokemon always has Dry Skin's effects, gains Grass-type resistances without Grass-type weaknesses, is immune to powder moves, and is healed by Black Sludge. This Ability cannot be suppressed or ignored and is immune to Neutralization's stat drops and Royal Decree's stat control. When hit by a damaging move, there is a 50% chance to inflict sleep, paralysis, or poison on the attacker. While it has more than 50% HP, its weaknesses are neutralized, incoming damage is reduced to 0.8x, it is protected from indirect damage including entry hazards, opposing status moves fail against it, and secondary effects from attacks are blocked.",
-		shortDesc: "Dry Skin + Grass resistances; ignores Neutralization/Royal Decree.",
+		desc: "This Pokemon has Dry Skin and a strengthened Effect Spore: every damaging hit has a 50% chance to inflict sleep, paralysis, or poison on the attacker. While above 50% HP, weaknesses are neutralized, incoming damage is reduced to 0.8x, Magic Guard is active, opposing status moves fail, and opposing attack secondary effects are blocked. The first time Parasect would faint, it fake-faints at 1 HP, then becomes Parasect-Parasite at the end of the turn, revives at full HP, and immediately uses its strongest damaging move. This Ability cannot be suppressed and is immune to Neutralization.",
+		shortDesc: "Dry Skin + 50% Effect Spore; above half: defenses + Magic Guard; first KO triggers Resuscitation.",
+	},
+	resuscitation: {
+		name: "Resuscitation",
+		desc: "After Parasect revives as Parasect-Parasite, this Ability has Magic Guard, Self Repair, and Shadow Shield's effects.",
+		shortDesc: "Magic Guard + Self Repair + Shadow Shield.",
 	},
 	patternshift: {
 		name: "Pattern Shift",
@@ -4174,8 +4309,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	rapidresponse: {
 		name: "Rapid Response",
-		desc: "Until this Pokemon uses its first damaging move, its Speed is 1.5x and its Sp. Atk is 1.2x.",
-		shortDesc: "Before first damaging move: 1.5x Speed and 1.2x Sp. Atk.",
+		desc: "On this Pokemon's first active turn, its Speed is 1.5x and its Sp. Atk is 1.2x.",
+		shortDesc: "First active turn: 1.5x Spe and 1.2x Sp. Atk.",
 	},
 	relentlesshunt: {
 		name: "Relentless Hunt",
@@ -4194,8 +4329,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	requiem: {
 		name: "Requiem",
-		desc: "This Pokemon has Cursed Body's effect. When this Pokemon damages a target, or is damaged by an attack, the other Pokemon gains Perish Song, then Curse, then Taunt, then Torment from repeated hits. Curse applied by Requiem deals 1/8 max HP each turn. If this Pokemon knocks out a target with a move, it restores 1/8 max HP per target knocked out. When this Pokemon faints, it creates Haunted Field for 5 turns, and this Ability cannot be suppressed.",
-		shortDesc: "Hits progress Perish Song -> Curse -> Taunt -> Torment; KO heals; faint sets Haunted.",
+		desc: "This Pokemon has Cursed Body's effect. Each direct damaging interaction with an opposing Pokemon progresses that target through Perish Song, Curse, then Spite. Each target has its own progression, which clears when it switches out. Curse applied by Requiem deals 1/8 max HP each turn. Whenever another Pokemon faints, this Pokemon restores 1/4 max HP. When this Pokemon faints, it creates Haunted Field for 5 turns and curses every active Pokemon; weaker Ability-applied Curses are upgraded to the standard 1/4 max HP Curse. This Ability cannot be suppressed.",
+		shortDesc: "Cursed Body; KO Heals; Faints set Haunted; Hits Progress Perish -> Curse -> Spite",
 	},
 	resonanceforce: {
 		name: "Resonance Force",
@@ -4214,8 +4349,18 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	riptideclaws: {
 		name: "Riptide Claws",
-		desc: "This Pokemon has Swift Swim and Technician's effects.",
-		shortDesc: "Swift Swim + Technician.",
+		desc: "This Pokemon has Swift Swim, Tough Claws, and Shell Armor's effects.",
+		shortDesc: "Swift Swim + Tough Claws + Shell Armor.",
+	},
+	stancechange: {
+		name: 'Stance Change',
+		desc: "This Pokemon has Dual Wield. Aegislash changes to Blade Forme before attacking and Shield Forme before King's Shield. Shield Forme takes 20% less damage; consecutive Free-for-All hits deal 30% less damage. Blade Forme deals 1.2x damage.",
+		shortDesc: 'Dual Wield; Shield: 20% less damage; Blade: 1.2x damage.',
+	},
+	zerotohero: {
+		name: 'Zero to Hero',
+		desc: 'This Pokemon gains Fighting-type STAB. Palafin changes to Hero Form after switching out or entering in Water fields. In Doubles, Multi, or Free-for-All, it survives one KO at 1 HP. Hero Form grants Friend Guard and heals active allies on entry.',
+		shortDesc: 'Becomes Hero; Fighting STAB; Hero: Friend Guard + entry healing.',
 	},
 	royalarmament: {
 		name: "Royal Armament",
@@ -4445,8 +4590,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	ultrainstinct: {
 		name: "Ultra Instinct",
-		desc: "Ignores abilities; blocks flinching and Intimidate; deals 2x damage through screens, 1.5x when moving first, and takes 30% damage if hit first.",
-		shortDesc: "Ignores abilities; 2x vs screens; 1.5x when first; takes 30% if hit first.",
+		desc: "This Pokemon has Mold Breaker and Inner Focus. It deals 2x damage through screens and 1.5x damage when moving first. In Ashen Beach, New World, Starlight Arena, Holy Field, and Cold Eclipse, it gains 1 Accuracy on entry, deals 1.5x damage, and takes 50% less damage. Outside those fields, it takes 70% less damage when hit before its attacker has moved. Bewitched Woods disables these effects.",
+		shortDesc: "Mold Breaker + Inner Focus; 2x vs screens; 1.5x moving first; boosted fields halve damage.",
 	},
 	uncheckedassault: {
 		name: "Unchecked Assault",
@@ -4626,6 +4771,14 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 };
 
 const CUSTOM_MOVE_UPDATES: {[id: string]: AnyObject} = {
+	astonish: {
+		basePower: 40,
+		pp: 10,
+		priority: 3,
+		secondary: {chance: 100, volatileStatus: 'flinch'},
+		desc: "Has a 100% chance to make the target flinch. Fails unless it is the user's first turn on the field.",
+		shortDesc: "Ghost-type Fake Out. First turn out only; 100% flinch.",
+	},
 	beatup: {
 		basePower: 30,
 		multihit: [2, 6],
@@ -4697,8 +4850,8 @@ const CUSTOM_MOVE_UPDATES: {[id: string]: AnyObject} = {
 	},
 	ceaselessedge: {
 		name: 'Ceaseless Edge',
-		desc: 'If this move is successful, it sets up a layer of Spikes on the opposing side and gives the hit target Splinter for 3 turns. Splinter deals residual damage based on a 25 Base Power Dark-type physical attack from the original user, applying type effectiveness but no random damage variance.',
-		shortDesc: 'Sets Spikes. Target takes 3 turns of Splinter.',
+		desc: 'If this move is successful, it sets up a layer of Spikes on the opposing side.',
+		shortDesc: 'Sets Spikes on the opposing side.',
 	},
 	bonerush: {
 		name: 'Bone Rush',
@@ -4756,13 +4909,21 @@ const CUSTOM_MOVE_UPDATES: {[id: string]: AnyObject} = {
 	},
 	needlearm: {
 		name: 'Needle Arm',
-		desc: 'Has a 30% chance to make the target flinch. If this move hits, the target takes Splinter residual damage for 3 turns based on a 25 Base Power Grass-type physical attack from the original user, applying type effectiveness but no random damage variance.',
-		shortDesc: '30% flinch. Target takes 3 turns of Splinter.',
+		basePower: 100,
+		desc: 'Has a 30% chance to make the target flinch.',
+		shortDesc: '30% chance to make the target flinch.',
+	},
+	meteormash: {
+		name: 'Meteor Mash',
+		basePower: 100,
+		secondary: {chance: 30, self: {boosts: {atk: 1}}},
+		desc: "Has a 30% chance to raise the user's Attack by 1 stage.",
+		shortDesc: "30% chance to raise the user's Attack by 1.",
 	},
 	pinmissile: {
 		name: 'Pin Missile',
-		desc: 'Hits three to five times. If this move hits, the target takes Splinter residual damage for 3 turns based on a 25 Base Power Bug-type physical attack from the original user, applying type effectiveness but no random damage variance. If the user has the Skill Link Ability, this move will always hit five times. If the user is holding Loaded Dice, this move will hit 5-6 times.',
-		shortDesc: 'Hits 3-5 times. Target takes 3 turns of Splinter.',
+		desc: 'Hits three to five times. Skill Link makes it hit five times. Loaded Dice makes it hit 5-6 times.',
+		shortDesc: 'Hits 3-5 times.',
 	},
 	spikecannon: {
 		name: 'Spike Cannon',
@@ -4776,8 +4937,8 @@ const CUSTOM_MOVE_UPDATES: {[id: string]: AnyObject} = {
 	},
 	stoneaxe: {
 		name: 'Stone Axe',
-		desc: 'If this move is successful, it sets Stealth Rock on the opposing side and gives the hit target Splinter for 3 turns. Splinter deals residual damage based on a 25 Base Power Rock-type physical attack from the original user, applying type effectiveness but no random damage variance.',
-		shortDesc: 'Sets Stealth Rock. Target takes Splinter.',
+		desc: 'If this move is successful, it sets Stealth Rock on the opposing side.',
+		shortDesc: 'Sets Stealth Rock on the opposing side.',
 	},
 	supercellslam: {
 		name: 'Supercell Slam',
@@ -4917,12 +5078,16 @@ const CUSTOM_LEARNSET_REPLACEMENTS: {[id: string]: {[id: string]: string[]}} = {
 };
 
 const CUSTOM_LEARNSET_ADDITIONS: {[id: string]: {[id: string]: string[]}} = {
+	milotic: {
+		drainingkiss: ['9M'],
+	},
 	weavile: {
 		closecombat: ['9M'],
 		iciclespear: ['9M'],
 	},
 	slurpuff: {
 		aurasphere: ['9M'],
+		closecombat: ['9M'],
 		drainpunch: ['9M'],
 		focusblast: ['9M'],
 		submission: ['9M'],
@@ -5103,6 +5268,40 @@ const CUSTOM_LEARNSET_ADDITIONS: {[id: string]: {[id: string]: string[]}} = {
 	archaludon: {
 		spikecannon: ['9M'],
 	},
+	tentacruel: {
+		boltbeak: ['9M'],
+	},
+	kingler: {
+		bodypress: ['9M'],
+		clamp: ['9M'],
+		flipturn: ['9M'],
+		quickguard: ['9M'],
+		tripledive: ['9M'],
+	},
+	porygon2: {
+		shiftgear: ['9M'],
+	},
+	porygonz: {
+		shiftgear: ['9M'],
+	},
+	yanmega: {
+		hurricane: ['9M'],
+		quickguard: ['9M'],
+		quiverdance: ['9M'],
+		weatherball: ['9M'],
+	},
+	chandelure: {
+		trickortreat: ['9M'],
+	},
+	kilowattrel: {
+		boltbeak: ['9M'],
+	},
+};
+
+const CUSTOM_LEARNSET_REMOVALS: {[id: string]: string[]} = {
+	noivern: ['torchsong'],
+	decidueye: ['ceaselessedge'],
+	decidueyehisui: ['ceaselessedge'],
 };
 
 const CUSTOM_BW_SPRITE_IDS = Object.keys(CUSTOM_BW_SPRITES);
@@ -5470,10 +5669,15 @@ const CUSTOM_ABILITY_UPDATE_IDS = Object.keys(CUSTOM_ABILITY_UPDATES);
 const CUSTOM_ABILITY_COMPONENT_OVERRIDES: {[id: string]: readonly ID[]} = {
 	// Ultra Ego implements Mold Breaker's effect without delegating to the base Ability.
 	ultraego: ['moldbreaker' as ID],
+	requiem: ['cursedbody' as ID],
+	ultrainstinct: ['moldbreaker' as ID, 'innerfocus' as ID],
+	parasitism: ['dryskin' as ID, 'effectspore' as ID, 'magicguard' as ID],
+	resuscitation: ['magicguard' as ID, 'selfrepair' as ID, 'shadowshield' as ID],
 };
 const CUSTOM_MOVE_UPDATE_IDS = Object.keys(CUSTOM_MOVE_UPDATES);
 const CUSTOM_LEARNSET_REPLACEMENT_IDS = Object.keys(CUSTOM_LEARNSET_REPLACEMENTS);
 const CUSTOM_LEARNSET_ADDITION_IDS = Object.keys(CUSTOM_LEARNSET_ADDITIONS);
+const CUSTOM_LEARNSET_REMOVAL_IDS = Object.keys(CUSTOM_LEARNSET_REMOVALS);
 
 let customBWSpriteDataTable: AnyObject | null = null;
 let customPokedexDataTable: AnyObject | null = null;
@@ -5562,6 +5766,11 @@ function applyCustomTeambuilderLearnsets(table: AnyObject) {
 			...(table.learnsets[id] || {}),
 			...CUSTOM_LEARNSET_ADDITIONS[id],
 		};
+	}
+	for (const id of CUSTOM_LEARNSET_REMOVAL_IDS) {
+		for (const moveid of CUSTOM_LEARNSET_REMOVALS[id]) {
+			delete table.learnsets[id]?.[moveid];
+		}
 	}
 }
 
@@ -6591,6 +6800,9 @@ const Dex = new class implements ModdedDex {
 		if (pokemon?.speciesForme) id = toID(pokemon.speciesForme);
 		// @ts-ignore
 		if (pokemon?.species) id = toID(pokemon.species);
+		// Parasitism uses its covered host sprite everywhere except the battle team preview.
+		// @ts-ignore
+		if (id === 'parasect' && toID(pokemon?.ability) === 'parasitism') id = 'parasectparasitism' as ID;
 		// @ts-ignore
 		if (pokemon?.volatiles?.formechange && !pokemon.volatiles.transform) {
 			// @ts-ignore
@@ -6614,6 +6826,11 @@ const Dex = new class implements ModdedDex {
 		let id = toID(pokemon.species);
 		let spriteid = pokemon.spriteid;
 		let species = Dex.species.get(pokemon.species);
+		if (id === 'parasect' && toID(pokemon.ability) === 'parasitism') {
+			id = 'parasectparasitism' as ID;
+			spriteid = 'parasect-parasitism';
+			species = Dex.species.get('Parasect-Parasitism');
+		}
 		if (pokemon.species && !spriteid) {
 			spriteid = species.spriteid || toID(pokemon.species);
 		}
