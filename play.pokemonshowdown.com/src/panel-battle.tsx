@@ -378,7 +378,7 @@ class BattlePanel extends PSRoomPanel<BattleRoom> {
 				if (!zMoveData) {
 					return <button disabled>&nbsp;</button>;
 				}
-				const tooltip = `zmove|${moveData.name}|${pokemonIndex}`;
+				const tooltip = `zmove|${moveData.name}|${pokemonIndex}|${zMoveData.name}`;
 				return <MoveButton cmd={`/move ${i + 1} zmove`} type={move.type} tooltip={tooltip} moveData={{pp: 1, maxpp: 1}}>
 					{zMoveData.name}
 				</MoveButton>;

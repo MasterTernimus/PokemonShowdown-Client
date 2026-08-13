@@ -221,7 +221,7 @@ baseSpecies:'Parasect',
 forme:'Parasite',
 spriteid:'parasect-parasite',
 types:['Ghost','Poison'],
-baseStats:{hp:90,atk:150,def:65,spa:50,spd:65,spe:130},
+baseStats:{hp:90,atk:130,def:40,spa:130,spd:40,spe:120},
 abilities:{0:'Resuscitation'},
 battleOnly:'Parasect',
 isNonstandard:'Custom'
@@ -1539,12 +1539,6 @@ grimmsnarlgmax:{
 front:{w:128,h:192},
 back:{w:114,h:192}
 },
-hydreigon:{
-front:{w:148,h:145},
-back:{w:140,h:150},
-shinyFront:{w:156,h:150},
-shinyBack:{w:150,h:158}
-},
 infernape:{
 front:{w:148,h:110},
 back:{w:144,h:136}
@@ -2619,11 +2613,6 @@ grimmsnarlgmax:{
 num:861,
 front:{w:128,h:192},
 back:{w:114,h:192}
-},
-hydreigon:{
-num:635,
-front:{w:148,h:145},
-back:{w:140,h:150}
 },
 infernape:{
 num:392,
@@ -4224,13 +4213,13 @@ shortDesc:"Gains Steel/Electric STAB."
 },
 parasitism:{
 name:"Parasitism",
-desc:"This Pokemon has Dry Skin and a strengthened Effect Spore: every damaging hit has a 50% chance to inflict sleep, paralysis, or poison on the attacker. While above 50% HP, weaknesses are neutralized, incoming damage is reduced to 0.8x, Magic Guard is active, opposing status moves fail, and opposing attack secondary effects are blocked. The first time Parasect would faint, it fake-faints at 1 HP, then becomes Parasect-Parasite at the end of the turn, revives at full HP, and immediately uses its strongest damaging move. This Ability cannot be suppressed and is immune to Neutralization.",
-shortDesc:"Dry Skin + 50% Effect Spore; above half: defenses + Magic Guard; first KO triggers Resuscitation."
+desc:"This Pokemon has Dry Skin. While above 50% HP, its weaknesses are neutralized, Magic Guard is active, opposing status moves fail, and opposing attack secondary effects are blocked. The first time Parasect would faint, it fake-faints at 1 HP, then becomes Parasect-Parasite at the end of the turn and revives at full HP. This Ability cannot be suppressed and is immune to Neutralization.",
+shortDesc:"Dry Skin; above half: defensive protection; first KO triggers Resuscitation."
 },
 resuscitation:{
 name:"Resuscitation",
-desc:"After Parasect revives as Parasect-Parasite, this Ability has Magic Guard, Self Repair, and Shadow Shield's effects.",
-shortDesc:"Magic Guard + Self Repair + Shadow Shield."
+desc:"After Parasect revives as Parasect-Parasite, this Ability has Self Repair and Shadow Shield's effects.",
+shortDesc:"Self Repair + Shadow Shield."
 },
 patternshift:{
 name:"Pattern Shift",
@@ -4329,8 +4318,8 @@ shortDesc:"SpA equals Defense using Def stages; beam/Mega Launcher moves have 1.
 },
 requiem:{
 name:"Requiem",
-desc:"This Pokemon has Cursed Body's effect. Each direct damaging interaction with an opposing Pokemon progresses that target through Perish Song, Curse, then Spite. Each target has its own progression, which clears when it switches out. Curse applied by Requiem deals 1/8 max HP each turn. Whenever another Pokemon faints, this Pokemon restores 1/4 max HP. When this Pokemon faints, it creates Haunted Field for 5 turns and curses every active Pokemon; weaker Ability-applied Curses are upgraded to the standard 1/4 max HP Curse. This Ability cannot be suppressed.",
-shortDesc:"Cursed Body; KO Heals; Faints set Haunted; Hits Progress Perish -> Curse -> Spite"
+desc:"This Pokemon has Cursed Body's effect. The first direct damaging interaction with each opposing Pokemon applies Perish Song; the second applies a Curse that deals 1/8 max HP each turn. Each target's progression clears when it switches out. Whenever another Pokemon faints, this Pokemon restores 1/4 max HP. When this Pokemon faints, it creates Haunted Field for 5 turns. This Ability cannot be suppressed.",
+shortDesc:"Cursed Body; KO heals 1/4; faint sets Haunted; hits progress Perish -> 1/8 Curse."
 },
 resonanceforce:{
 name:"Resonance Force",
@@ -4791,6 +4780,19 @@ basePower:60
 skyattack:{
 desc:'Charges, then attacks with +4 priority and a boosted critical-hit ratio. Instant use still keeps the critical-hit boost but not the charge priority.',
 shortDesc:'Charges, then +4 priority with high crit; instant use keeps high crit.'
+},
+roaroftime:{
+desc:"Uses the user's higher offensive stat. Dialga also breaks protection, hits Fairy types as resisted damage, gains +3 priority in Trick Room, and queues a future hit after a non-KO.",
+shortDesc:"Higher offense. Dialga: breaks Protect, future hit, Fairies resist, +3 in Trick Room."
+},
+shadowforce:{
+desc:"Uses the user's higher offensive stat. The user vanishes, then attacks through protection. A successful hit gives Giratina 0.7x damage taken through the next turn.",
+shortDesc:"Higher offense; breaks Protect. Giratina gains 0.7x damage guard on hit."
+},
+spacialrend:{
+accuracy:95,
+desc:"Uses the user's higher offensive stat and has a high critical-hit ratio. Palkia never misses and ignores protection and redirection.",
+shortDesc:"Higher offense; high crit. Palkia: never misses; ignores Protect/redirection."
 },
 needlegun:{
 basePower:30,
@@ -5440,13 +5442,13 @@ flareon:{w:110,h:110},
 glaceon:{w:110,h:110},
 glalie:{w:62,h:62},
 glaliemega:{w:74,h:74},
-hydreigon:{w:100,h:100},
 infernapealt:{w:84,h:84},
 jolteon:{w:110,h:110},
 leafeon:{w:110,h:110},
 lucario:{w:76,h:76},
 lucariomega:{w:74,h:74},
 lucariomegaz:{w:82,h:82},
+lokix:{w:56,h:56},
 maushold:{w:60,h:60},
 mausholdfour:{w:60,h:60},
 mothim:{w:82,h:82},
@@ -5515,13 +5517,13 @@ glalie:{w:66,h:66},
 glaliemega:{w:78,h:78},
 indeedee:{w:72,h:72},
 indeedeef:{w:72,h:72},
-hydreigon:{w:92,h:92},
 infernapealt:{w:92,h:92},
 jolteon:{w:108,h:108},
 leafeon:{w:108,h:108},
 lucario:{w:84,h:84},
 lucariomega:{w:76,h:76},
 lucariomegaz:{w:86,h:86},
+lokix:{w:56,h:56},
 maushold:{w:60,h:60},
 mausholdfour:{w:60,h:60},
 mothim:{w:78,h:78},
@@ -5678,8 +5680,8 @@ var CUSTOM_ABILITY_COMPONENT_OVERRIDES={
 ultraego:['moldbreaker'],
 requiem:['cursedbody'],
 ultrainstinct:['moldbreaker','innerfocus'],
-parasitism:['dryskin','effectspore','magicguard'],
-resuscitation:['magicguard','selfrepair','shadowshield']
+parasitism:['dryskin','magicguard'],
+resuscitation:['selfrepair','shadowshield']
 };
 var CUSTOM_MOVE_UPDATE_IDS=Object.keys(CUSTOM_MOVE_UPDATES);
 var CUSTOM_LEARNSET_REPLACEMENT_IDS=Object.keys(CUSTOM_LEARNSET_REPLACEMENTS);
@@ -6491,7 +6493,7 @@ var graphicsGen=mechanicsGen;
 if(Dex.prefs('nopastgens'))graphicsGen=6;
 if(Dex.prefs('bwgfx')&&graphicsGen>=6)graphicsGen=5;
 
-if(species.id==='milotic'||species.id==='miloticalt'||species.id==='kingambitalt'||
+if(species.id==='hydreigon'||species.id==='milotic'||species.id==='miloticalt'||species.id==='kingambitalt'||
 !isFront&&(species.id==='lucario'||species.id==='lucariomega'))graphicsGen=5;
 spriteData.gen=Math.max(graphicsGen,Math.min(species.gen,5));
 var baseDir=['','gen1','gen2','gen3','gen4','gen5','','','',''][spriteData.gen];

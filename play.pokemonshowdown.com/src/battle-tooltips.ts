@@ -501,6 +501,22 @@ class BattleTooltips {
 		Stellar: "",
 		"???": "",
 	};
+	static getZMoveBasePower(move: Move) {
+		if (move.zMove?.basePower) return move.zMove.basePower;
+		let basePower = move.basePower;
+		if (Array.isArray(move.multihit)) basePower *= 3;
+		if (!basePower) return 100;
+		if (basePower >= 140) return 200;
+		if (basePower >= 130) return 195;
+		if (basePower >= 120) return 190;
+		if (basePower >= 110) return 185;
+		if (basePower >= 100) return 180;
+		if (basePower >= 90) return 175;
+		if (basePower >= 80) return 160;
+		if (basePower >= 70) return 140;
+		if (basePower >= 60) return 120;
+		return 100;
+	}
 
 	static maxMoveTable: {[type in TypeName]: string} = {
 		Poison: "Max Ooze",
@@ -552,7 +568,7 @@ class BattleTooltips {
 
 		if (isZOrMax === 'zmove') {
 			if (item.zMoveFrom === move.name) {
-				move = this.battle.dex.moves.get(item.zMove as string);
+				move = gmaxMove?.isZ ? gmaxMove : this.battle.dex.moves.get(item.zMove as string);
 			} else if (move.category === 'Status') {
 				move = new Move(move.id, "", {
 					...move,
@@ -560,9 +576,9 @@ class BattleTooltips {
 				});
 				zEffect = this.getStatusZMoveEffect(move);
 			} else {
-				let moveName = BattleTooltips.zMoveTable[item.zMoveType as TypeName];
-				let zMove = this.battle.dex.moves.get(moveName);
-				let movePower = move.zMove!.basePower;
+				let moveName = gmaxMove?.isZ ? gmaxMove.name : BattleTooltips.zMoveTable[item.zMoveType as TypeName];
+				let zMove = gmaxMove?.isZ ? gmaxMove : this.battle.dex.moves.get(moveName);
+				let movePower = BattleTooltips.getZMoveBasePower(move);
 				// the different Hidden Power types don't have a Z power set, fall back on base move
 				if (!movePower && move.id.startsWith('hiddenpower')) {
 					movePower = this.battle.dex.moves.get('hiddenpower').zMove!.basePower;
