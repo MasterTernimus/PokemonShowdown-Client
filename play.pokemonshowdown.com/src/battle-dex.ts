@@ -5314,7 +5314,7 @@ const CUSTOM_ANIMATED_BW_SPRITES = new Set([
 	'ribombee', 'rotom', 'rotomfan', 'rotomfrost', 'rotomheat', 'rotommow', 'rotomwash', 'salamence',
 	'scolipede', 'silvally', 'silvallybug', 'silvallydark', 'silvallydragon', 'silvallyelectric', 'silvallyfairy', 'silvallyfighting',
 	'silvallyfire', 'silvallyflying', 'silvallyghost', 'silvallygrass', 'silvallyground', 'silvallyice', 'silvallypoison', 'silvallypsychic',
-	'silvallysteel', 'silvallywater', 'slowbro', 'slowking', 'sneasel', 'spiritomb', 'steelix', 'talonflame',
+	'silvallysteel', 'silvallywater', 'slowbro', 'slowking', 'sneasel', 'steelix', 'talonflame',
 	'torterra', 'typhlosion', 'tyrantrum', 'venusaur', 'victreebel', 'vikavolt',
 	'weavile', 'weavilef', 'whimsicott', 'zoroark',
 ]);
@@ -5387,14 +5387,14 @@ const NATIVE_TEAMBUILDER_SPRITE_OVERRIDES: {[id: string]: {x: number, y: number,
 	weavile: {x: 9, y: 6, backgroundSize: '76px auto'},
 	weavilef: {x: 9, y: 6, backgroundSize: '76px auto'},
 };
-const CUSTOM_TEAM_PREVIEW_FRONT_SPRITE_MAX_WIDTH = 66;
-const CUSTOM_TEAM_PREVIEW_FRONT_SPRITE_MAX_HEIGHT = 66;
+const CUSTOM_TEAM_PREVIEW_FRONT_SPRITE_MAX_WIDTH = 72;
+const CUSTOM_TEAM_PREVIEW_FRONT_SPRITE_MAX_HEIGHT = 72;
 const CUSTOM_TEAM_PREVIEW_FRONT_MEGA_SPRITE_MAX_WIDTH = 78;
 const CUSTOM_TEAM_PREVIEW_FRONT_MEGA_SPRITE_MAX_HEIGHT = 78;
 const CUSTOM_TEAM_PREVIEW_FRONT_GMAX_SPRITE_MAX_WIDTH = 90;
 const CUSTOM_TEAM_PREVIEW_FRONT_GMAX_SPRITE_MAX_HEIGHT = 90;
-const CUSTOM_TEAM_PREVIEW_BACK_SPRITE_MAX_WIDTH = 72;
-const CUSTOM_TEAM_PREVIEW_BACK_SPRITE_MAX_HEIGHT = 72;
+const CUSTOM_TEAM_PREVIEW_BACK_SPRITE_MAX_WIDTH = 78;
+const CUSTOM_TEAM_PREVIEW_BACK_SPRITE_MAX_HEIGHT = 78;
 const CUSTOM_TEAM_PREVIEW_BACK_MEGA_SPRITE_MAX_WIDTH = 84;
 const CUSTOM_TEAM_PREVIEW_BACK_MEGA_SPRITE_MAX_HEIGHT = 84;
 const CUSTOM_TEAM_PREVIEW_BACK_GMAX_SPRITE_MAX_WIDTH = 96;
@@ -5410,7 +5410,8 @@ const CUSTOM_TEAM_PREVIEW_BACK_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number,
 const CUSTOM_MEDIUM_SPRITE_MIN_DIMENSION = 104;
 const CUSTOM_MEDIUM_SPRITE_MAX_DIMENSION = 170;
 const CUSTOM_BATTLE_SPRITE_Y_OFFSETS: {[id: string]: {front?: number, back?: number}} = {
-	sableye: {front: 22, back: 24},
+	sableye: {front: 0, back: 0},
+	sableyemega: {front: 0, back: 0},
 };
 const CUSTOM_BATTLE_SPRITE_X_OFFSETS: {[id: string]: {front?: number, back?: number}} = {
 	hatterenegmax: {back: -42},
@@ -5454,9 +5455,10 @@ const CUSTOM_BATTLE_FRONT_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: n
 	palafinhero: {w: 100, h: 100},
 	perrserker: {w: 62, h: 62},
 	ribombee: {w: 60, h: 60},
-	sableye: {w: 126, h: 126},
-	sableyemega: {w: 62, h: 62},
-	spiritomb: {w: 58, h: 58},
+	sableye: {w: 86, h: 86},
+	sableyemega: {w: 98, h: 98},
+	spiritomb: {w: 70, h: 70},
+	spiritombalt: {w: 70, h: 70},
 	rotom: {w: 64, h: 64},
 	rotomfan: {w: 68, h: 68},
 	rotomfrost: {w: 68, h: 68},
@@ -5527,10 +5529,11 @@ const CUSTOM_BATTLE_BACK_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: nu
 	pidgeotmega: {w: 92, h: 92},
 	perrserker: {w: 62, h: 62},
 	ribombee: {w: 60, h: 60},
-	sableye: {w: 134, h: 134},
-	sableyemega: {w: 66, h: 66},
+	sableye: {w: 86, h: 86},
+	sableyemega: {w: 90, h: 90},
 	excadrillmega: {w: 74, h: 74},
-	spiritomb: {w: 64, h: 64},
+	spiritomb: {w: 70, h: 70},
+	spiritombalt: {w: 70, h: 70},
 	rotom: {w: 60, h: 60},
 	rotomfan: {w: 64, h: 64},
 	rotomfrost: {w: 64, h: 64},
@@ -5612,10 +5615,11 @@ const CUSTOM_TEAMBUILDER_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: nu
 	palafinhero: {w: 82, h: 82},
 	perrserker: {w: 60, h: 60},
 	ribombee: {w: 60, h: 60},
-	sableye: {w: 108, h: 108},
-	sableyemega: {w: 58, h: 58},
+	sableye: {w: 72, h: 72},
+	sableyemega: {w: 78, h: 78},
 	excadrillmega: {w: 66, h: 66},
 	spiritomb: {w: 56, h: 56},
+	spiritombalt: {w: 56, h: 56},
 	rotom: {w: 68, h: 68},
 	rotomfan: {w: 72, h: 72},
 	rotomfrost: {w: 72, h: 72},
