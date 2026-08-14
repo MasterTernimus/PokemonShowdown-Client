@@ -343,26 +343,15 @@ isGigantamax:true,
 isNonstandard:'Gigantamax'
 }
 },
-gardevoirvoid:{
-base:'gardevoir',
-data:{
-name:'Gardevoir-Void',
-baseSpecies:'Gardevoir',
-forme:'Void',
-otherFormes:['Gardevoir-Void-Mega','Gardevoir-Mega-Z'],
-cosmeticFormes:null,
-isNonstandard:'Custom'
-}
-},
 gardevoirvoidmega:{
 base:'gardevoirmega',
 data:{
 name:'Gardevoir-Void-Mega',
 baseSpecies:'Gardevoir',
-forme:'Mega',
+forme:'Void-Mega',
 requiredItem:'Gardevoirite',
-battleOnly:'Gardevoir-Void',
-changesFrom:'Gardevoir-Void',
+battleOnly:'Gardevoir',
+changesFrom:'Gardevoir',
 isNonstandard:'Custom'
 }
 },
@@ -373,8 +362,8 @@ name:'Gardevoir-Mega-Z',
 baseSpecies:'Gardevoir',
 forme:'Mega-Z',
 requiredItem:'Gardevoirite',
-battleOnly:'Gardevoir-Void',
-changesFrom:'Gardevoir-Void',
+battleOnly:'Gardevoir',
+changesFrom:'Gardevoir',
 isNonstandard:'Custom'
 }
 },
@@ -3125,6 +3114,13 @@ back:{w:96,h:96}
 };
 
 var CUSTOM_SPECIES_UPDATES={
+gardevoir:{
+otherFormes:['Gardevoir-Mega','Gardevoir-Void-Mega','Gardevoir-Mega-Z'],
+formeOrder:['Gardevoir','Gardevoir-Mega','Gardevoir-Void-Mega','Gardevoir-Mega-Z']
+},
+mantine:{
+baseStats:{hp:100,atk:40,def:95,spa:100,spd:140,spe:75}
+},
 parasect:{
 baseStats:{hp:90,atk:120,def:105,spa:35,spd:110,spe:40},
 abilities:{0:'Perish Body',1:'Poison Heal',H:'Parasitism'}
@@ -4760,6 +4756,12 @@ shortDesc:"Mold Breaker; heals each turn/attack; KOs heal more; first enemy hit 
 };
 
 var CUSTOM_MOVE_UPDATES={
+aurorabeam:{
+basePower:80,
+flags:{protect:1,mirror:1,metronome:1,pulse:1},
+desc:"Has a 10% chance to lower the target's Attack by 1 stage. Boosted by Mega Launcher and Dual Wield.",
+shortDesc:"10% chance to lower Attack. Boosted by Mega Launcher and Dual Wield."
+},
 astonish:{
 basePower:40,
 pp:10,
@@ -5094,6 +5096,15 @@ zapcannon:['9M']
 };
 
 var CUSTOM_LEARNSET_ADDITIONS={
+mantine:{
+airslash:['9M'],
+calmmind:['9M'],
+dualwingbeat:['9M'],
+hurricane:['9M'],
+nastyplot:['9M'],
+signalbeam:['9M'],
+twister:['9M']
+},
 milotic:{
 drainingkiss:['9M']
 },
@@ -5315,6 +5326,7 @@ boltbeak:['9M']
 };
 
 var CUSTOM_LEARNSET_REMOVALS={
+donphan:['milkdrink','shoreup'],
 noivern:['torchsong'],
 decidueye:['ceaselessedge'],
 decidueyehisui:['ceaselessedge']
@@ -5450,7 +5462,6 @@ gengar:{w:62,h:62},
 gardevoir:{w:108,h:108},
 gardevoirmega:{w:108,h:108},
 gardevoirmegaz:{w:108,h:108},
-gardevoirvoid:{w:116,h:116},
 gardevoirvoidmega:{w:112,h:112},
 flareon:{w:110,h:110},
 glaceon:{w:110,h:110},
@@ -5520,7 +5531,6 @@ gengar:{w:60,h:60},
 gardevoir:{w:124,h:124},
 gardevoirmega:{w:124,h:124},
 gardevoirmegaz:{w:124,h:124},
-gardevoirvoid:{w:132,h:132},
 gardevoirvoidmega:{w:128,h:128},
 flareon:{w:108,h:108},
 garchompmega:{w:90,h:90},
@@ -5615,7 +5625,6 @@ espeon:{w:58,h:58},
 gardevoir:{w:82,h:82},
 gardevoirmega:{w:82,h:82},
 gardevoirmegaz:{w:82,h:82},
-gardevoirvoid:{w:82,h:82},
 gardevoirvoidmega:{w:86,h:86},
 flareon:{w:86,h:86},
 glaceon:{w:86,h:86},
@@ -8962,7 +8971,6 @@ this.forme=data.forme||'';
 var baseId=toID(this.baseSpecies);
 this.formeid=baseId===this.id?'':'-'+toID(this.forme);
 this.spriteid=baseId+this.formeid;
-if(this.name==='Gardevoir-Void')this.spriteid='gardevoir';else
 if(this.name==='Gardevoir-Void-Mega')this.spriteid='gardevoirvoid-mega';else
 if(this.name==='Garchomp-Battle-Bond')this.spriteid='garchomp-battlebond';else
 if(this.name==='Garchomp-Mega-Z')this.spriteid='garchomp-megaz';else
