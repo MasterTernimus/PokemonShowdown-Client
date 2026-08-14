@@ -1512,8 +1512,7 @@ class Species implements Effect {
 		const baseId = toID(this.baseSpecies);
 		this.formeid = (baseId === this.id ? '' : '-' + toID(this.forme));
 		this.spriteid = baseId + this.formeid;
-		if (this.name === 'Gardevoir-Void') this.spriteid = 'gardevoir' as ID;
-		else if (this.name === 'Gardevoir-Void-Mega') this.spriteid = 'gardevoirvoid-mega' as ID;
+		if (this.name === 'Gardevoir-Void-Mega') this.spriteid = 'gardevoirvoid-mega' as ID;
 		else if (this.name === 'Garchomp-Battle-Bond') this.spriteid = 'garchomp-battlebond' as ID;
 		else if (this.name === 'Garchomp-Mega-Z') this.spriteid = 'garchomp-megaz' as ID;
 		else if (this.name === 'Gardevoir-Mega-Z') this.spriteid = 'gardevoir-megaz' as ID;
