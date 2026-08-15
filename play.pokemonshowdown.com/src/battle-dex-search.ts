@@ -561,6 +561,7 @@ abstract class BattleTypedSearch<T extends SearchType> {
 	protected formatType: 'doubles' | 'bdsp' | 'bdspdoubles' | 'letsgo' | 'metronome' | 'natdex' | 'nfe' |
 	'ssdlc1' | 'ssdlc1doubles' | 'predlc' | 'predlcdoubles' | 'predlcnatdex' | 'svdlc1' | 'svdlc1doubles' |
 	'svdlc1natdex' | 'stadium' | 'lc' | null = null;
+	protected unrestrictedCatalog = false;
 
 	/**
 	 * Cached copy of what the results list would be with only base filters
@@ -582,6 +583,7 @@ abstract class BattleTypedSearch<T extends SearchType> {
 
 		this.baseResults = null;
 		this.baseIllegalResults = null;
+		const bareGeneration = /^gen\d$/.test(format);
 		if (format.slice(0, 3) === 'gen') {
 			const gen = (Number(format.charAt(3)) || 6);
 			format = (format.slice(4) || 'customgame') as ID;
@@ -589,6 +591,7 @@ abstract class BattleTypedSearch<T extends SearchType> {
 		} else if (!format) {
 			this.dex = Dex;
 		}
+		this.unrestrictedCatalog = !format || bareGeneration || format === 'customgame';
 		if (format.startsWith('dlc1') && this.dex.gen === 8) {
 			if (format.includes('doubles')) {
 				this.formatType = 'ssdlc1doubles';
@@ -795,7 +798,7 @@ abstract class BattleTypedSearch<T extends SearchType> {
 			this.format.startsWith('battlespot') ||
 			this.format.startsWith('battlestadium') ||
 			this.format.startsWith('battlefestival') ||
-			(this.dex.gen === 9 && this.formatType !== 'natdex')
+			(this.dex.gen === 9 && this.formatType !== 'natdex' && !this.unrestrictedCatalog)
 		) {
 			if (gen === 9) {
 				genChar = 'a';
@@ -1576,7 +1579,7 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 		const isHackmons = (format.includes('hackmons') || format.endsWith('bh'));
 		const isSTABmons = (format.includes('stabmons') || format === 'staaabmons');
 		const isTradebacks = format.includes('tradebacks');
-		const regionBornLegality = dex.gen >= 6 &&
+		const regionBornLegality = !this.unrestrictedCatalog && dex.gen >= 6 &&
 			(/^battle(spot|stadium|festival)/.test(format) || format.startsWith('bss') ||
 				format.startsWith('vgc') || (dex.gen === 9 && this.formatType !== 'natdex'));
 
@@ -1607,7 +1610,7 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 					) {
 						continue;
 					}
-					if (this.formatType !== 'natdex' && move.isNonstandard === "Past") {
+					if (!this.unrestrictedCatalog && this.formatType !== 'natdex' && move.isNonstandard === "Past") {
 						continue;
 					}
 					if (
