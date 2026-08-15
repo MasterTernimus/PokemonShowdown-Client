@@ -780,9 +780,6 @@ abstract class BattleTypedSearch<T extends SearchType> {
 	}
 	protected canLearn(speciesid: ID, moveid: ID) {
 		const move = this.dex.moves.get(moveid);
-		if (this.formatType === 'natdex' && move.isNonstandard && move.isNonstandard !== 'Past') {
-			return false;
-		}
 		const species = this.dex.species.get(speciesid);
 		if (
 			CUSTOM_CAN_LEARN_OVERRIDES[speciesid]?.[moveid] ||
@@ -810,16 +807,22 @@ abstract class BattleTypedSearch<T extends SearchType> {
 				genChar = 'p';
 			}
 		}
+		const rejectsNonstandardMove = (
+			this.formatType === 'natdex' && move.isNonstandard && move.isNonstandard !== 'Past'
+		);
 		let learnsetid = this.firstLearnsetid(speciesid);
 		while (learnsetid) {
 			let table = BattleTeambuilderTable;
 			if (this.formatType?.startsWith('bdsp')) table = table['gen8bdsp'];
 			if (this.formatType === 'letsgo') table = table['gen7letsgo'];
 			let learnset = table.learnsets[learnsetid];
-			if (learnset && (moveid in learnset) && (!this.format.startsWith('tradebacks') ? learnset[moveid].includes(genChar) :
-				learnset[moveid].includes(genChar) ||
-					(learnset[moveid].includes(`${gen + 1}`) && move.gen === gen))) {
-				return true;
+			if (learnset && (moveid in learnset)) {
+				const sources = learnset[moveid];
+				if (sources.includes('c') && sources.includes(`${gen}`)) return true;
+				if (!rejectsNonstandardMove && (!this.format.startsWith('tradebacks') ? sources.includes(genChar) :
+					sources.includes(genChar) || (sources.includes(`${gen + 1}`) && move.gen === gen))) {
+					return true;
+				}
 			}
 			learnsetid = this.nextLearnsetid(learnsetid, speciesid);
 		}

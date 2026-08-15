@@ -6072,16 +6072,31 @@ function ensureCustomBWSpriteData() {
 	customBWSpriteDataTable = window.BattlePokemonSpritesBW;
 }
 
+function encodeCustomLearnsetSources(sources: string[]) {
+	const gens = sources.map(source => Number(source.charAt(0))).filter(gen => gen >= 1 && gen <= 9);
+	if (!gens.length) return '';
+	const minGen = Math.min(...gens);
+	let legalGens = '0123456789'.slice(minGen);
+	if (gens.includes(6)) legalGens += 'p';
+	if (gens.includes(7) && sources.some(source => source.startsWith('7') && source !== '7V')) legalGens += 'q';
+	if (gens.includes(8) && sources.some(source => source.startsWith('8') && source !== '8V')) legalGens += 'g';
+	if (gens.includes(9) && sources.some(source => source.startsWith('9') && source !== '9V')) legalGens += 'a';
+	return `${legalGens}c`;
+}
+
 function applyCustomTeambuilderLearnsets(table: AnyObject) {
 	if (!table.learnsets) table.learnsets = {};
 	for (const id of CUSTOM_LEARNSET_REPLACEMENT_IDS) {
-		table.learnsets[id] = {...CUSTOM_LEARNSET_REPLACEMENTS[id]};
+		table.learnsets[id] = {};
+		for (const moveid in CUSTOM_LEARNSET_REPLACEMENTS[id]) {
+			table.learnsets[id][moveid] = encodeCustomLearnsetSources(CUSTOM_LEARNSET_REPLACEMENTS[id][moveid]);
+		}
 	}
 	for (const id of CUSTOM_LEARNSET_ADDITION_IDS) {
-		table.learnsets[id] = {
-			...(table.learnsets[id] || {}),
-			...CUSTOM_LEARNSET_ADDITIONS[id],
-		};
+		if (!table.learnsets[id]) table.learnsets[id] = {};
+		for (const moveid in CUSTOM_LEARNSET_ADDITIONS[id]) {
+			table.learnsets[id][moveid] = encodeCustomLearnsetSources(CUSTOM_LEARNSET_ADDITIONS[id][moveid]);
+		}
 	}
 	for (const id of CUSTOM_LEARNSET_REMOVAL_IDS) {
 		for (const moveid of CUSTOM_LEARNSET_REMOVALS[id]) {
