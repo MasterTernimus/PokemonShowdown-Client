@@ -1163,7 +1163,10 @@ class BattleAbilitySearch extends BattleTypedSearch<'ability'> {
 		let abilitySet: SearchRow[] = [['header', "Abilities"]];
 
 		if (species.isMega) {
-			abilitySet.unshift(['html', `Will be <strong>${species.abilities['0']}</strong> after Mega Evolving.`]);
+			const megaAbility = species.abilities['0'];
+			abilitySet.push(['header', "Mega Ability"]);
+			abilitySet.push(['ability', toID(megaAbility)]);
+			abilitySet.unshift(['html', `Will be <strong>${megaAbility}</strong> after Mega Evolving.`]);
 			species = dex.species.get(species.baseSpecies);
 		}
 		abilitySet.push(['ability', toID(species.abilities['0'])]);

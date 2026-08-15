@@ -207,7 +207,7 @@ baseSpecies:'Parasect',
 forme:'Parasitism',
 spriteid:'parasect-parasitism',
 types:['Ghost','Bug'],
-baseStats:{hp:90,atk:120,def:105,spa:35,spd:110,spe:40},
+baseStats:{hp:90,atk:120,def:105,spa:35,spd:110,spe:20},
 abilities:{0:'Parasitism'},
 battleOnly:'Parasect',
 isNonstandard:'Custom'
@@ -221,7 +221,7 @@ baseSpecies:'Parasect',
 forme:'Parasite',
 spriteid:'parasect-parasite',
 types:['Ghost','Poison'],
-baseStats:{hp:90,atk:130,def:40,spa:130,spd:40,spe:120},
+baseStats:{hp:90,atk:130,def:70,spa:30,spd:70,spe:110},
 abilities:{0:'Resuscitation'},
 battleOnly:'Parasect',
 isNonstandard:'Custom'
@@ -955,7 +955,8 @@ back:{w:100,h:94}
 },
 pidgeot:{
 front:{w:152,h:144},
-back:{w:126,h:132}
+back:{w:70,h:67},
+shinyBack:{w:68,h:66}
 },
 pidgeotmega:{
 front:{w:184,h:170},
@@ -1817,12 +1818,23 @@ back:{w:100,h:94}
 pidgeot:{
 num:18,
 front:{w:152,h:144},
-back:{w:126,h:132}
+back:{w:70,h:67},
+shinyBack:{w:68,h:66}
 },
 pidgeotmega:{
 num:18,
 front:{w:184,h:170},
 back:{w:182,h:176}
+},
+heracross:{
+num:214,
+front:{w:61,h:70},
+back:{w:67,h:72}
+},
+staraptor:{
+num:398,
+front:{w:69,h:69},
+back:{w:74,h:68}
 },
 aggron:{
 num:306,
@@ -3114,15 +3126,75 @@ back:{w:96,h:96}
 };
 
 var CUSTOM_SPECIES_UPDATES={
+gengargmax:{
+abilities:{0:'Soul Strike'}
+},
 gardevoir:{
 otherFormes:['Gardevoir-Mega','Gardevoir-Void-Mega','Gardevoir-Mega-Z'],
 formeOrder:['Gardevoir','Gardevoir-Mega','Gardevoir-Void-Mega','Gardevoir-Mega-Z']
 },
+blastoise:{
+baseStats:{hp:79,atk:50,def:110,spa:100,spd:118,spe:78},
+abilities:{0:'Water Barrage',1:'Regenerator',H:'Shell Armor'}
+},
+empoleon:{
+baseStats:{hp:90,atk:108,def:90,spa:111,spd:101,spe:70},
+abilities:{0:"Emperor's Resolve",1:"Emperor's Pride",H:'Royal Decree'}
+},
+sandaconda:{
+abilities:{0:'Sand Spit',1:'Stamina',H:'Shed Skin'}
+},
+butterfreemega:{
+types:['Bug','Poison'],
+baseStats:{hp:75,atk:30,def:115,spa:137,spd:115,spe:103},
+abilities:{0:'Toxic Evolution'}
+},
+chimechomega:{
+types:['Psychic','Steel'],
+baseStats:{hp:75,atk:50,def:110,spa:135,spd:120,spe:65},
+abilities:{0:'Wind Chime'}
+},
+gliscor:{
+baseStats:{hp:85,atk:110,def:140,spa:45,spd:90,spe:100},
+abilities:{0:'Hyper Cutter',1:'Poison Heal',H:'Wind Rider'}
+},
+hydreigon:{
+abilities:{0:'Levitate',1:'Dark Aura',H:'Hydra Tyrant'}
+},
+skarmory:{
+abilities:{0:'Self Sufficient',1:'Sturdy',H:'Weak Armor'}
+},
+wyrdeer:{
+baseStats:{hp:103,atk:105,def:82,spa:105,spd:85,spe:70},
+abilities:{0:'Intimidate',1:'Magic Guard',H:'Hisuian Path'}
+},
 mantine:{
 baseStats:{hp:100,atk:40,def:95,spa:100,spd:140,spe:75}
 },
+arbok:{baseStats:{hp:95,atk:125,def:95,spa:35,spd:110,spe:90}},
+golduck:{baseStats:{hp:90,atk:70,def:90,spa:110,spd:90,spe:70}},
+machamp:{baseStats:{hp:100,atk:145,def:100,spa:65,spd:70,spe:90}},
+machampgmax:{baseStats:{hp:150,atk:145,def:100,spa:65,spd:70,spe:90}},
+kingdra:{
+baseStats:{hp:85,atk:120,def:90,spa:120,spd:90,spe:95},
+abilities:{0:'Swift Swim',1:'Abyss Sniper',H:'Royal Decree'}
+},
+hitmontop:{baseStats:{hp:80,atk:130,def:105,spa:45,spd:115,spe:75}},
+exploud:{baseStats:{hp:119,atk:101,def:73,spa:116,spd:73,spe:88}},
+hariyama:{baseStats:{hp:134,atk:120,def:88,spa:40,spd:88,spe:50}},
+wailord:{baseStats:{hp:160,atk:40,def:75,spa:105,spd:90,spe:50}},
+zangoose:{baseStats:{hp:85,atk:125,def:85,spa:60,spd:90,spe:95}},
+lunatone:{baseStats:{hp:110,atk:35,def:95,spa:125,spd:95,spe:70}},
+solrock:{baseStats:{hp:110,atk:125,def:95,spa:35,spd:95,spe:70}},
+rhyperior:{baseStats:{hp:120,atk:150,def:140,spa:55,spd:85,spe:20}},
+seismitoad:{baseStats:{hp:105,atk:110,def:85,spa:90,spd:86,spe:74}},
+crustle:{baseStats:{hp:85,atk:115,def:130,spa:45,spd:95,spe:50}},
+druddigon:{baseStats:{hp:90,atk:125,def:105,spa:60,spd:92,spe:48}},
+vikavolt:{baseStats:{hp:77,atk:95,def:99,spa:145,spd:75,spe:79}},
+turtonator:{baseStats:{hp:80,atk:80,def:130,spa:80,spd:100,spe:50}},
+mrrime:{baseStats:{hp:85,atk:110,def:90,spa:110,spd:105,spe:70}},
 parasect:{
-baseStats:{hp:90,atk:120,def:105,spa:35,spd:110,spe:40},
+baseStats:{hp:90,atk:120,def:105,spa:35,spd:110,spe:20},
 abilities:{0:'Perish Body',1:'Poison Heal',H:'Parasitism'}
 },
 inteleon:{
@@ -3152,7 +3224,7 @@ cosmeticFormes:['Weavile-Alt'],
 formeOrder:['Weavile','Weavile-Alt']
 },
 dusknoir:{
-abilities:{0:'Requiem',1:'Shadow Tag',H:'Pressure'},
+abilities:{0:'Requiem',1:'Shadow Tag',H:"Reaper's Grip"},
 otherFormes:['Dusknoir-Alt'],
 cosmeticFormes:['Dusknoir-Alt'],
 formeOrder:['Dusknoir','Dusknoir-Alt']
@@ -3169,8 +3241,8 @@ rotomwash:{baseStats:{hp:60,atk:65,def:107,spa:105,spd:107,spe:86}},
 rotomfrost:{baseStats:{hp:60,atk:65,def:107,spa:105,spd:107,spe:86}},
 rotomfan:{baseStats:{hp:60,atk:65,def:107,spa:105,spd:107,spe:86}},
 rotommow:{baseStats:{hp:60,atk:65,def:107,spa:105,spd:107,spe:86}},
-rapidash:{baseStats:{hp:85,atk:110,def:70,spa:85,spd:80,spe:130}},
-rapidashgalar:{baseStats:{hp:85,atk:110,def:70,spa:85,spd:80,spe:130}},
+rapidash:{baseStats:{hp:80,atk:110,def:70,spa:80,spd:80,spe:130}},
+rapidashgalar:{baseStats:{hp:80,atk:110,def:70,spa:80,spd:80,spe:130}},
 kingler:{
 baseStats:{hp:80,atk:140,def:125,spa:60,spd:60,spe:85},
 abilities:{0:'Swift Swim',1:'Hyper Cutter',H:'Sheer Force'}
@@ -3180,12 +3252,12 @@ baseStats:{hp:120,atk:140,def:125,spa:60,spd:60,spe:85},
 abilities:{0:'Riptide Claws'}
 },
 yanmega:{
-baseStats:{hp:98,atk:86,def:86,spa:126,spd:69,spe:95},
+baseStats:{hp:98,atk:86,def:81,spa:126,spd:64,spe:95},
 abilities:{0:'Speed Boost',1:'Tinted Lens',H:'Compound Eyes'}
 },
 slurpuff:{
 types:['Fairy','Fighting'],
-baseStats:{hp:112,atk:82,def:99,spa:96,spd:96,spe:65},
+baseStats:{hp:112,atk:82,def:99,spa:91,spd:96,spe:65},
 abilities:{0:'Unburden',1:'Violent Rush',H:'Rapid Response'}
 },
 trevenant:{
@@ -3217,7 +3289,7 @@ isNonstandard:'Unobtainable'
 },
 bewear:{
 types:['Normal','Fighting'],
-baseStats:{hp:130,atk:135,def:80,spa:75,spd:80,spe:70},
+baseStats:{hp:130,atk:135,def:70,spa:75,spd:70,spe:70},
 abilities:{0:'Scrappy',1:'Fluffy',H:'Unaware'}
 },
 palossand:{baseStats:{hp:115,atk:55,def:75,spa:135,spd:115,spe:55}},
@@ -3229,8 +3301,8 @@ rillaboom:{abilities:{0:'Violent Rush',1:'Soundproof',H:'Grassy Surge'}},
 cinderace:{abilities:{0:'Defiant',1:'No Guard',H:'Libero'}},
 orbeetle:{abilities:{0:'Magic Bounce',1:'Psychic Surge',H:'Telepathy'}},
 coalossal:{abilities:{0:'Steam Engine',1:'Flame Body',H:'Earth Eater'}},
-sandslash:{baseStats:{hp:95,atk:125,def:135,spa:45,spd:75,spe:85}},
-sandslashalola:{baseStats:{hp:95,atk:125,def:135,spa:45,spd:75,spe:85}},
+sandslash:{baseStats:{hp:95,atk:120,def:130,spa:45,spd:75,spe:85}},
+sandslashalola:{baseStats:{hp:95,atk:120,def:130,spa:45,spd:75,spe:85}},
 golurk:{abilities:{0:'Iron Fist',1:'No Guard',H:'Self Repair'}},
 sawsbuck:{
 name:'Sawsbuck',
@@ -3278,14 +3350,22 @@ cosmeticFormes:['Empoleon-Alt'],
 formeOrder:['Empoleon','Empoleon-Alt']
 },
 infernape:{
+baseStats:{hp:82,atk:115,def:70,spa:115,spd:80,spe:108},
 otherFormes:['Infernape-Alt'],
 cosmeticFormes:['Infernape-Alt'],
 formeOrder:['Infernape','Infernape-Alt']
 },
+infernapealt:{baseStats:{hp:82,atk:115,def:70,spa:115,spd:80,spe:108}},
 torterra:{
+baseStats:{hp:95,atk:119,def:130,spa:65,spd:105,spe:56},
+abilities:{0:'Terra Resolve',1:'Shell Armor',H:'Terra Gift'},
 otherFormes:['Torterra-Alt'],
 cosmeticFormes:['Torterra-Alt'],
 formeOrder:['Torterra','Torterra-Alt']
+},
+torterraalt:{
+baseStats:{hp:95,atk:119,def:130,spa:65,spd:105,spe:56},
+abilities:{0:'Terra Resolve',1:'Shell Armor',H:'Terra Gift'}
 },
 cacturne:{
 baseStats:{hp:75,atk:160,def:70,spa:105,spd:70,spe:90},
@@ -3480,8 +3560,8 @@ shortDesc:'Rock STAB; Rock attacks 1.5x, or 2x in Rocky Terrain; gains Rock resi
 },
 steamengine:{
 name:'Steam Engine',
-desc:'Self Sufficient + Magma Armor; Fire or Water hits raise Speed by 6; heat and water fields also activate it.',
-shortDesc:'Self Sufficient + Magma Armor; Fire/Water hits raise Speed by 6.'
+desc:'Magma Armor; Fire or Water hits raise Speed by 6; heat and water fields also activate it.',
+shortDesc:'Magma Armor; Fire/Water hits raise Speed by 6; certain fields also activate it.'
 },
 steelworker:{
 name:'Steelworker',
@@ -3490,8 +3570,13 @@ shortDesc:'Steel STAB; Steel attacks 1.5x, or 2x in Factory; gains Steel traits.
 },
 waterbubble:{
 name:'Water Bubble',
-desc:'Gains Water STAB and 2x offense on Water attacks; halves incoming Fire offense; includes Water Veil and Aqua Ring.',
-shortDesc:'Water STAB and 2x offense; halves Fire offense; Water Veil + Aqua Ring.'
+desc:"Gains Water STAB and 2x offense on Water attacks; halves incoming Fire offense; includes Water Veil's effects.",
+shortDesc:'Water STAB/offense 2x; Fire offense 0.5x; Water Veil.'
+},
+download:{
+name:'Download',
+desc:"In Singles, this Pokemon's Attack and Special Attack rise by 1 stage on switch-in. In other battle types, one offensive stat rises based on the opposing side's weaker combined defensive stat. Its first damaging move after switching in is a critical hit.",
+shortDesc:"Singles: +1 Atk/SpA; otherwise checks foes' defenses; first damaging move crits."
 },
 watercompaction:{
 name:'Water Compaction',
@@ -3565,8 +3650,8 @@ shortDesc:"Swift Swim + Adaptability."
 },
 gooey:{
 name:'Gooey',
-desc:"Any opposing damaging hit lowers the attacker's Speed by 2 and highest offense by 1. Self Sufficient + Hydration + Sap Sipper.",
-shortDesc:'Any hit: attacker -2 Spe/-1 offense; Self Sufficient + Hydration + Sap Sipper.'
+desc:"Any opposing damaging hit lowers the attacker's Speed by 2 and highest offense by 1. Hydration + Sap Sipper.",
+shortDesc:'Any hit: attacker -2 Spe/-1 offense; Hydration + Sap Sipper.'
 },
 angerpoint:{
 name:'Anger Point',
@@ -3679,13 +3764,13 @@ shortDesc:"Hit by attacks: +1 Atk/Spe and confusion; confused takes 1.25x; Klutz
 },
 relicarmor:{
 name:"Relic Armor",
-desc:"This Pokemon cannot be critically hit. Opposing stat drops raise its Defense and Special Defense by 1, it takes 0.8x damage from attacks, and it has Pressure's PP effect.",
-shortDesc:"No crits; stat drops +1 Def/SpD; takes 0.8x damage; Pressure."
+desc:"On switch-in, this Pokemon lowers each foe's Defense and Special Defense by 1, or by 2 in Cold Eclipse. In Desert, Fairy Tale, Cave, Crystal Cavern, New World, or Volcanic Field, its Defense and Special Defense rise by 1. It cannot be critically hit, takes 0.8x damage from attacks, and raises its Defense and Special Defense by 1 after an opposing Pokemon lowers one of its stats.",
+shortDesc:"Entry drops foes' Def/SpD; no crits; takes 0.8x damage; reacts to stat drops."
 },
 draconicforce:{
 name:"Draconic Force",
-desc:"This Pokemon has Dragonize, Strong Jaw, and Guts's effects.",
-shortDesc:"Dragonize + Strong Jaw + Guts."
+desc:"This Pokemon has Dragonize and Strong Jaw's effects.",
+shortDesc:"Dragonize + Strong Jaw."
 },
 ironmountain:{
 name:"Iron Mountain",
@@ -3732,10 +3817,20 @@ name:'Water Veil',
 desc:'This Pokemon cannot be burned and is immune to Hail and Sandstorm damage. Gaining this Ability while burned cures it. On switch-in, it gains Aqua Ring.',
 shortDesc:'Cannot be burned; immune to Hail/Sandstorm; gains Aqua Ring.'
 },
+bulletproof:{
+name:'Bulletproof',
+desc:'This Pokemon is immune to bullet and pulse moves and takes 20% less damage from attacks.',
+shortDesc:'Immune to bullet/pulse moves; takes 0.8x damage from attacks.'
+},
+mirrorarmor:{
+name:'Mirror Armor',
+desc:"Reflects opposing stat drops onto their source. This Pokemon also takes 20% less damage from attacks.",
+shortDesc:'Reflects opposing stat drops; takes 0.8x damage from attacks.'
+},
 astralcore:{
 name:"Astral Core",
-desc:"This Pokemon has Illuminate, Pure Power, and Defragment's effects.",
-shortDesc:"Illuminate + Pure Power + Defragment."
+desc:"This Pokemon has Pure Power, Natural Cure, and Illuminate's effects.",
+shortDesc:"Pure Power + Natural Cure + Illuminate."
 },
 lunarorbit:{
 name:"Lunar Orbit",
@@ -3744,8 +3839,8 @@ shortDesc:"Magic Bounce + Serene Grace; sets Gravity and ignores Gravity's negat
 },
 spiralevolution:{
 name:"Spiral Evolution",
-desc:"This Pokemon has Adaptability, Levitate, and Dual Wield. Its damaging moves pierce protection for reduced damage, it takes 20% less damage from attacks, and its non-priority moves act first in Trick Room.",
-shortDesc:"Adaptability + Levitate + Dual Wield; protection pierce; takes 0.8x damage."
+desc:"This Pokemon has Adaptability, Levitate, and Dual Wield. Its damaging moves pierce protection for reduced damage, and its non-priority moves act first in Trick Room.",
+shortDesc:"Adaptability + Levitate + Dual Wield; protection pierce; acts first in Trick Room."
 },
 accumulation:{
 name:"Accumulation",
@@ -3759,13 +3854,13 @@ shortDesc:"Overcoat; physical moves turn it Fighting and can use SpA; special mo
 },
 alloycore:{
 name:"Alloy Core",
-desc:"This Pokemon has Magic Guard, Clear Body, and Self Sufficient's effects.",
-shortDesc:"Magic Guard + Clear Body + Self Sufficient."
+desc:"This Pokemon has Magic Guard and Self Sufficient's effects.",
+shortDesc:"Magic Guard + Self Sufficient."
 },
 ancientbloom:{
 name:"Ancient Bloom",
-desc:"This Pokemon has boosted Hospitality, Effect Spore, Self Sufficient, and Invigorate's effects. It keeps its field-based Defense and Special Defense boosts and field-based power boost.",
-shortDesc:"Boosted Hospitality + Effect Spore + Self Sufficient + Invigorate; keeps field boosts."
+desc:"This Pokemon has Effect Spore and Self Sufficient's effects. It keeps its field-based Defense, Special Defense, and power boosts.",
+shortDesc:"Effect Spore + Self Sufficient; keeps field boosts."
 },
 ange:{
 name:"Ange",
@@ -3779,8 +3874,8 @@ shortDesc:"Sharpness + Dual Wield + Moxie."
 },
 apexpredator:{
 name:"Apex Predator",
-desc:"This Pokemon has Relic Armor and Precision. Its super-effective moves never miss and have an increased critical-hit chance.",
-shortDesc:"Relic Armor + Precision."
+desc:"This Pokemon has Relic Armor, Precision, and Wind Rider's effects.",
+shortDesc:"Relic Armor + Precision + Wind Rider."
 },
 aquashell:{
 name:"Aqua Shell",
@@ -3854,8 +3949,8 @@ shortDesc:"Speed Boost + Striker + Proficient."
 },
 bloomingsun:{
 name:"Blooming Sun",
-desc:"This Pokemon has Mega Sol, Invigorate, and Natural Cure. Its allies' Attack and Special Defense are multiplied by 1.5.",
-shortDesc:"Mega Sol + Invigorate + Natural Cure; allies' Atk/SpD 1.5x."
+desc:"This Pokemon has Mega Sol, Invigorate, and Natural Cure's effects.",
+shortDesc:"Mega Sol + Invigorate + Natural Cure."
 },
 bonewarrior:{
 name:"Bone Warrior",
@@ -3894,18 +3989,18 @@ shortDesc:"Magma Armor + Sheer Force + Drought; Fire chip respects effectiveness
 },
 celestialheart:{
 name:"Celestial Heart",
-desc:"This Pokemon has Multiscale, Serene Grace, and Soul-Heart's effects.",
-shortDesc:"Multiscale + Serene Grace + Soul Heart."
+desc:"This Pokemon has Multiscale and Soul-Heart's effects.",
+shortDesc:"Multiscale + Soul Heart."
 },
 conductivity:{
 name:"Conductivity",
 desc:"This Pokemon is immune to sound-based moves. Its Electric-type moves hit Steel-type Pokemon super effectively.",
 shortDesc:"Sound immunity; Electric moves hit Steel super effectively."
 },
-corrosivedust:{
-name:"Corrosive Dust",
-desc:"This Pokemon has Shield Dust and Levitate's effects. Pokemon that become poisoned by any source also become confused, and contact moves have a 30% chance to poison the attacker.",
-shortDesc:"Shield Dust + Levitate; poisoned Pokemon become confused; contact can poison."
+toxicevolution:{
+name:"Toxic Evolution",
+desc:"This Pokemon has Corrosion, Dual Wield, and Shield Dust. When it poisons an opposing Pokemon, that Pokemon also becomes confused. Opposing Pokemon that hit it with a damaging move have a 50% chance to become poisoned.",
+shortDesc:"Corrosion + Dual Wield + Shield Dust; its poison confuses; attackers may be poisoned."
 },
 corrosivescale:{
 name:"Corrosive Scale",
@@ -3944,13 +4039,13 @@ shortDesc:"Sworn Duty + Friend Guard + Regenerator."
 },
 doomwarning:{
 name:"Doom Warning",
-desc:"This Pokemon has Magic Bounce and Magic Guard. Future Sight used by this Pokemon behaves like Perfect Foresight. Its damaging attacks queue Future Sight on targets they hit. On faint, Doom Desire is cast on all foes.",
-shortDesc:"Magic Bounce + Magic Guard; attacks queue Future Sight; on faint casts Doom Desire."
+desc:"This Pokemon has Magic Bounce and Magic Guard. When it faints, Doom Desire is cast on every opposing Pokemon.",
+shortDesc:"Magic Bounce + Magic Guard; faint casts Doom Desire."
 },
 dreadmaw:{
 name:"Dread Maw",
-desc:"This Pokemon has Huge Power, Strong Jaw, and Intimidate's effects.",
-shortDesc:"Huge Power + Strong Jaw + Intimidate."
+desc:"This Pokemon has Huge Power and Strong Jaw's effects.",
+shortDesc:"Huge Power + Strong Jaw."
 },
 dualwield:{
 name:"Dual Wield",
@@ -3979,8 +4074,8 @@ shortDesc:"Weather attacks 1.5x; clear weather takes 0.5x; Psychic/Dark pick bet
 },
 eclipsevision:{
 name:"Eclipse Vision",
-desc:"This Pokemon's Special Attack is multiplied by 1.5. Before it uses a Psychic-type or Dark-type move, it becomes that type and remains that type. If this Pokemon is Psychic type, it restores 1/16 of its max HP at the end of each turn. If this Pokemon is Dark type, its damaging moves restore HP equal to 1/4 of the damage dealt.",
-shortDesc:"SpA 1.5x; Psychic/Dark moves change user's type; Psychic heals; Dark drains."
+desc:"This Pokemon's Special Attack is multiplied by 1.5. Before it uses any Psychic-type or Dark-type move, it becomes that type and remains that type. If this Pokemon is Psychic type, it restores 1/8 of its max HP at the end of each turn. If this Pokemon is Dark type, its damaging moves restore HP equal to 1/4 of the damage dealt.",
+shortDesc:"SpA 1.5x; any Psychic/Dark move changes type; Psychic heals 1/8; Dark drains."
 },
 elevate:{
 name:"Elevate",
@@ -4029,8 +4124,8 @@ shortDesc:"Self Sufficient + Shell Armor + Friend Guard + Dual Wield; keeps fiel
 },
 freezerburn:{
 name:"Freezer Burn",
-desc:"This Pokemon has Slush Rush, Ice Body, and Refrigerate. Refrigerate-converted moves have 1.2x power, and charge moves skip their charge turn.",
-shortDesc:"Slush Rush + Ice Body + Refrigerate; skips charge turns."
+desc:"This Pokemon has Slush Rush and Refrigerate. Refrigerate-converted moves have 1.2x power, and charge moves skip their charge turn.",
+shortDesc:"Slush Rush + Refrigerate; 1.2x conversion; skips charges."
 },
 frostsovereign:{
 name:"Frost Sovereign",
@@ -4044,8 +4139,8 @@ shortDesc:"Shell Armor + Ice Body + Crumbling Shell."
 },
 furnaceengine:{
 name:"Furnace Engine",
-desc:"This Pokemon has Steam Engine and Flame Body's effects. At the end of each turn, opposing Pokemon take Fire-type damage equal to 1/16 max HP, scaled by effectiveness and blocked by Fire immunities.",
-shortDesc:"Steam Engine + Flame Body; Fire chip respects effectiveness and immunities."
+desc:"This Pokemon has Steam Engine, Flame Body, and Self Sufficient's effects. At the end of each turn, opposing Pokemon take Fire-type damage equal to 1/16 max HP, scaled by effectiveness and blocked by Fire immunities.",
+shortDesc:"Steam Engine + Flame Body + Self Sufficient; Fire chip."
 },
 grandmaster:{
 name:"Grandmaster",
@@ -4084,8 +4179,8 @@ shortDesc:"Hydra Bond + Mold Breaker."
 },
 hydratyrant:{
 name:"Hydra Tyrant",
-desc:"This Pokemon has Hydra Bond and Self Sufficient's effects.",
-shortDesc:"Hydra Bond + Self Sufficient."
+desc:"This Pokemon has Hydra Bond, Berserk, and Self Sufficient's effects.",
+shortDesc:"Hydra Bond + Berserk + Self Sufficient."
 },
 hyperdrill:{
 name:"Hyper Drill",
@@ -4149,8 +4244,8 @@ shortDesc:"Magic Bounce + Analytic."
 },
 moonlitwings:{
 name:"Moonlit Wings",
-desc:"This Pokemon has Serene Grace, gains STAB on Fairy moves, and is immune to status, Yawn, and confusion.",
-shortDesc:"Fairy STAB + Serene Grace; immune to status, Yawn, and confusion."
+desc:"This Pokemon has Serene Grace and gains STAB on Fairy-type moves.",
+shortDesc:"Serene Grace + Fairy STAB."
 },
 mountainhunger:{
 name:"Mountain Hunger",
@@ -4169,13 +4264,13 @@ shortDesc:"Prankster; +20% damage per fainted ally (max 2x); heals 5% per fainte
 },
 neutralization:{
 name:"Neutralization",
-desc:"When this Pokemon hits an opposing Pokemon with a damaging or status move, or inflicts status on an opposing Pokemon, the target's higher attacking stat is lowered by 2 stages and Speed is lowered by 1 stage. This does not affect other Neutralization users or Pokemon immune to stat drops, and it does not trigger stat-drop reactive effects. While active, field changes are neutralized, and Rainbow Field ends automatically. Ice Spinner and Steel Roller still remove terrain normally.",
-shortDesc:"Hits lower foe offense/Spe; neutralizes field changes, not active field effects."
+desc:"Once per target per move, when this Pokemon directly hits an opposing Pokemon, the target's higher attacking stat is lowered by 2 stages and Speed is lowered by 1 stage. Spread hits do not trigger this effect. This does not affect other Neutralization users or Pokemon immune to stat drops. While active, field changes are neutralized; Trick Room, Magic Room, and Wonder Room are ended and cannot start; and Rainbow Field ends automatically. Ice Spinner and Steel Roller still remove terrain normally.",
+shortDesc:"Hits lower foe offense/Spe; blocks field changes and Trick/Magic/Wonder Room."
 },
 noseformation:{
 name:"Nose Formation",
-desc:"This Pokemon has Filter and Elevate. After it hits, three 20 BP special Mini-Noses use the best of Steel, Electric, or Rock and chain to another valid foe after a KO.",
-shortDesc:"Filter + Elevate; three 20 BP Mini-Noses chain after a KO."
+desc:"This Pokemon has Filter and Elevate. After it hits, three 20 BP special Mini-Noses each select the strongest of Steel, Electric, or Rock against their current target. They chain to another valid foe after a KO, and their KOs trigger Elevate.",
+shortDesc:"Filter + Elevate; three adaptive 20 BP Mini-Noses chain after KOs and trigger Elevate."
 },
 omenedge:{
 name:"Omen Edge",
@@ -4214,8 +4309,8 @@ shortDesc:"Dry Skin; above half: defensive protection; first KO triggers Resusci
 },
 resuscitation:{
 name:"Resuscitation",
-desc:"After Parasect revives as Parasect-Parasite, this Ability has Self Repair and Shadow Shield's effects.",
-shortDesc:"Self Repair + Shadow Shield."
+desc:"When Parasect revives as Parasect-Parasite, its status, stat stages, and volatile effects are cleared and it returns to full HP. Afterward, this Ability has Self Repair and Magic Guard's effects.",
+shortDesc:"Revival fully resets battle effects; Self Repair + Magic Guard."
 },
 patternshift:{
 name:"Pattern Shift",
@@ -4314,8 +4409,13 @@ shortDesc:"SpA equals Defense using Def stages; beam/Mega Launcher moves have 1.
 },
 requiem:{
 name:"Requiem",
-desc:"This Pokemon has Cursed Body's effect. The first direct damaging interaction with each opposing Pokemon applies Perish Song; the second applies a Curse that deals 1/8 max HP each turn. Each target's progression clears when it switches out. Whenever another Pokemon faints, this Pokemon restores 1/4 max HP. When this Pokemon faints, it creates Haunted Field for 5 turns. This Ability cannot be suppressed.",
-shortDesc:"Cursed Body; KO heals 1/4; faint sets Haunted; hits progress Perish -> 1/8 Curse."
+desc:"This Pokemon has Cursed Body's effect. Its first direct damaging interaction with each opposing Pokemon applies Perish Song to that foe. The mark clears when the foe switches out. Whenever an opposing Pokemon faints, this Pokemon restores 1/4 max HP. When this Pokemon faints, it creates Haunted Field for 5 turns. This Ability cannot be suppressed.",
+shortDesc:"Cursed Body; first interaction marks foe with Perish Song; foe KO heals 1/4; faint sets Haunted."
+},
+reapersgrip:{
+name:"Reaper's Grip",
+desc:"This Pokemon has Iron Fist and Pressure's effects. Punch-based attacks have 1.4x power. Its foes lose 1 extra PP when targeting it. On entry, it lowers opposing Defense and Special Defense by 1 stage, or 2 stages in Cold Eclipse.",
+shortDesc:"Iron Fist + Pressure; entry lowers opposing Def/SpD, doubled in Cold Eclipse."
 },
 resonanceforce:{
 name:"Resonance Force",
@@ -4329,8 +4429,8 @@ shortDesc:"Filter + Iron Fist; 40% frostbite; KO heals 1/8 or 1/4 vs gimmicks."
 },
 riotamp:{
 name:"Riot Amp",
-desc:"This Pokemon has Punk Rock and Galvanize's effects. Its Normal moves become Electric and sound moves are boosted.",
-shortDesc:"Punk Rock + Galvanize."
+desc:"This Pokemon has Punk Rock, Galvanize, and Resonance Force's effects.",
+shortDesc:"Punk Rock + Galvanize + Resonance Force."
 },
 riptideclaws:{
 name:"Riptide Claws",
@@ -4352,10 +4452,10 @@ name:"Royal Armament",
 desc:"This Pokemon gains STAB on Steel-type moves and has Power Drill's effects.",
 shortDesc:"Steel STAB + Power Drill."
 },
-royalcurrent:{
-name:"Royal Current",
-desc:"This Pokemon has Marvel Scale and Sniper's effects.",
-shortDesc:"Marvel Scale + Sniper."
+abysssniper:{
+name:"Abyss Sniper",
+desc:"This Pokemon has Sniper and Stalwart's effects. Its critical hits deal increased damage, and its moves cannot be redirected.",
+shortDesc:"Sniper + Stalwart."
 },
 royaldecree:{
 name:"Royal Decree",
@@ -4397,6 +4497,11 @@ name:"Self Sufficient",
 desc:"Restores 1/16 of this Pokemon's maximum HP at the end of each turn and is immune to Sandstorm and Hail damage.",
 shortDesc:"Heals 1/16 each turn; immune to Sandstorm and Hail."
 },
+hisuianpath:{
+name:"Hisuian Path",
+desc:"This Pokemon has Sap Sipper, Inner Focus, and Fluffy's effects.",
+shortDesc:"Sap Sipper + Inner Focus + Fluffy."
+},
 shadowcurrent:{
 name:"Shadow Current",
 desc:"This Pokemon has Protean, Technician, and Sworn Duty. Before using a move, it becomes that move's type.",
@@ -4409,8 +4514,8 @@ shortDesc:"Friend Guard + Serene Grace."
 },
 phalanxform:{
 name:"Phalanx Form",
-desc:"This Pokemon has Hydra Bond, Friend Guard, and Battle Armor's effects.",
-shortDesc:"Hydra Bond + Friend Guard + Battle Armor."
+desc:"This Pokemon has Hydra Bond, Friend Guard, and Battle Armor's effects, gains STAB on Steel moves, and cannot be trapped.",
+shortDesc:"Hydra Bond + Friend Guard + Battle Armor; Steel STAB; untrappable."
 },
 windchime:{
 name:"Wind Chime",
@@ -4457,10 +4562,10 @@ name:"Solar Trap",
 desc:"This Pokemon has Accumulation, Innards Out, and Solar Power. In Sun, Solar Power boosts Special Attack by 1.5x and costs 1/8 max HP each turn.",
 shortDesc:"Accumulation + Innards Out + Solar Power."
 },
-souleater:{
-name:"Soul Eater",
-desc:"This Pokemon's moves ignore accuracy checks. While this Pokemon has more than 1/4 of its maximum HP, attacks deal 0.7x damage to it. This Pokemon is immune to Ghost-type moves and restores 1/4 max HP when hit by one. Soul Fire cannot redirect or bypass this immunity. When this Pokemon faints, it creates Haunted Field for 5 turns, ignoring Neutralization. This Ability cannot be ignored or suppressed by Mold Breaker-style effects.",
-shortDesc:"One-sided No Guard; 0.7x damage above 1/4 HP; on faint creates Haunted Field."
+soulstrike:{
+name:"Soul Strike",
+desc:"This Pokemon's moves ignore accuracy checks. It is immune to Ghost-type moves and restores 1/4 max HP when hit by one. Soul Fire cannot redirect or bypass this immunity. When this Pokemon faints, it creates Haunted Field for 5 turns, ignoring Neutralization. This Ability cannot be ignored or suppressed by Mold Breaker-style effects.",
+shortDesc:"Moves never miss; Ghost absorb; faint sets Haunted Field."
 },
 soulfire:{
 name:"Soul Fire",
@@ -4645,8 +4750,8 @@ shortDesc:"Sets Wasteland/Murkwater; Underwater KOs non-Poison/Steel; Byxbysion 
 },
 waterbarrage:{
 name:"Water Barrage",
-desc:"This Pokemon has Proficient, Water Veil, and Dual Wield's effects. On switch-in, it gains Aqua Ring. It is immune to burn, sand, and hail. At the end of each turn, opposing non-Water Pokemon take cycling Water damage of 1/16, 2/16, then 3/16 max HP, scaled by effectiveness and blocked by Water immunities.",
-shortDesc:"Proficient + Water Veil + Dual Wield; Aqua Ring; Water scaling chip respects immunities."
+desc:"This Pokemon has Proficient and Dual Wield's effects. At the end of each turn, opposing non-Water Pokemon take cycling Water damage of 1/16, 2/16, then 3/16 max HP, scaled by effectiveness and blocked by Water immunities.",
+shortDesc:"Proficient + Dual Wield; cycling Water chip respects effectiveness and immunities."
 },
 webassassin:{
 name:"Web Assassin",
@@ -4725,8 +4830,8 @@ shortDesc:"On switch-in, sets 2-turn Tailwind on this Pokemon's side."
 },
 wrathshield:{
 name:"Wrath Shield",
-desc:"This Pokemon has Sworn Duty and Battle Armor's effects. After this Pokemon uses a damaging move, the next enemy attack that hits it raises its Attack and Defense by 1 stage and restores 1/16 max HP. Additional hits do not trigger this again until it uses another damaging move. It blocks bullet and pulse moves, and when its stats are lowered it raises Special Defense by 1 stage and restores 1/16 max HP once per turn.",
-shortDesc:"Sworn Duty + Battle Armor; next hit after attacking gives +1 Atk/Def and heals."
+desc:"This Pokemon has Bulletproof, Filter, and Self Repair's effects. It is immune to bullet and pulse moves, takes their combined damage reductions from other attacks, heals 1/16 each turn, is immune to Sandstorm and Hail damage, and Natural Cure heals it when curing status on switch-out.",
+shortDesc:"Bulletproof + Filter + Self Repair."
 },
 ragingfists:{
 name:"Raging Fists",
@@ -5096,6 +5201,61 @@ zapcannon:['9M']
 };
 
 var CUSTOM_LEARNSET_ADDITIONS={
+abomasnow:{
+glaciallance:['9M'],
+sappyseed:['9M']
+},
+falinks:{
+gyroball:['9M'],
+heavyslam:['9M'],
+irondefense:['9M'],
+ironhead:['9M'],
+metalburst:['9M'],
+smartstrike:['9M'],
+steelroller:['9M']
+},
+mothim:{
+dazzlinggleam:['9M'],
+energyball:['9M'],
+flashcannon:['9M'],
+hurricane:['9M'],
+ragepowder:['9M'],
+reflecttype:['9M'],
+sludgebomb:['9M'],
+spikes:['9M'],
+stickyweb:['9M'],
+venoshock:['9M'],
+weatherball:['9M']
+},
+shiftry:{
+weatherball:['9M']
+},
+eevee:{
+bouncybubble:['9M'],
+sappyseed:['9M']
+},
+eeveestarter:{
+bouncybubble:['9M'],
+sappyseed:['9M']
+},
+vaporeon:{
+bouncybubble:['9M']
+},
+leafeon:{
+sappyseed:['9M']
+},
+luvdisc:{
+bouncybubble:['9M']
+},
+wishiwashi:{
+bouncybubble:['9M']
+},
+flareon:{
+sizzleslide:['9M']
+},
+wyrdeer:{
+hypervoice:['9M']
+},
 mantine:{
 airslash:['9M'],
 calmmind:['9M'],
@@ -5247,7 +5407,8 @@ roserade:{
 spikecannon:['9M']
 },
 maractus:{
-spikecannon:['9M']
+spikecannon:['9M'],
+sizzleslide:['9M']
 },
 ferroseed:{
 spikecannon:['9M']
@@ -5263,10 +5424,14 @@ clawitzer:{
 electroshot:['9M']
 },
 goodra:{
-hypervoice:['9M']
+allyswitch:['9M'],
+hypervoice:['9M'],
+recover:['9M']
 },
 goodrahisui:{
-hypervoice:['9M']
+allyswitch:['9M'],
+hypervoice:['9M'],
+recover:['9M']
 },
 turtonator:{
 spikecannon:['9M']
@@ -5326,10 +5491,103 @@ boltbeak:['9M']
 };
 
 var CUSTOM_LEARNSET_REMOVALS={
-donphan:['milkdrink','shoreup'],
-noivern:['torchsong'],
+abomasnow:['partingshot'],
+absol:['partingshot'],
+aerodactyl:['dragonascent'],
+altaria:['roaroftime'],
+arcanine:['mightycleave'],
+arcaninehisui:['accelerock','shoreup'],
+archeops:['dragonascent'],
+armaldo:['shoreup'],
+chimecho:['lightofruin'],
+clawitzer:['originpulse'],
+claydol:['lightofruin','lusterpurge','shoreup'],
+crobat:['direclaw'],
+cradily:['sappyseed'],
+crustle:['shoreup'],
 decidueye:['ceaselessedge'],
-decidueyehisui:['ceaselessedge']
+decidueyehisui:['ceaselessedge'],
+delphox:['torchsong'],
+dodrio:['triplearrows'],
+donphan:['mightycleave','milkdrink','shoreup'],
+drapion:['ceaselessedge'],
+dragonite:['roaroftime'],
+druddigon:['mightycleave','partingshot'],
+dusknoir:['partingshot'],
+empoleon:['tachyoncutter'],
+escavalier:['doubleironbash'],
+espeon:['fierydance','lusterpurge'],
+exploud:['torchsong'],
+feraligatr:['mightycleave','shoreup'],
+falinks:['astonish','destinybond','nightshade','ominouswind','phantomforce','poltergeist','shadowball','shadowclaw','shadowpunch','shadowsneak','spectralthief'],
+flygon:['roaroftime'],
+gallade:['bitterblade','tachyoncutter','triplearrows'],
+garchomp:['roaroftime','spacialrend'],
+gardevoir:['lunardance','lunarwish','psyblade','psychoboost','tachyoncutter'],
+goodra:['roaroftime','slackoff'],
+goodrahisui:['roaroftime','slackoff'],
+goomy:['roaroftime'],
+granbull:['partingshot'],
+gyarados:['dragonascent'],
+hitmonchan:['ragefist'],
+hydreigon:['roaroftime'],
+kabutops:['ceaselessedge'],
+kecleon:['partingshot'],
+kleavor:['sacredsword'],
+kommoo:['roaroftime'],
+lapras:['bouncybubble'],
+liepard:['partingshot'],
+lucario:['meteorassault','tachyoncutter'],
+lunatone:['diamondstorm'],
+lycanroc:['precipiceblades','shoreup'],
+lycanrocdusk:['precipiceblades','shoreup'],
+lycanrocmidnight:['precipiceblades','shoreup'],
+machamp:['shoreup'],
+manectric:['partingshot'],
+marowak:['mightycleave','shoreup'],
+marowakalola:['mightycleave','shoreup'],
+mawile:['doubleironbash'],
+mienshao:['meteorassault'],
+milotic:['bouncybubble'],
+muk:['partingshot'],
+mukalola:['partingshot'],
+musharna:['partingshot'],
+nidoking:['partingshot'],
+ninetales:['torchsong'],
+noivern:['partingshot','torchsong'],
+omastar:['shoreup'],
+pangoro:['ragefist'],
+parasect:['partingshot'],
+reuniclus:['lusterpurge'],
+rhydon:['saltcure'],
+rhyperior:['saltcure'],
+salamence:['roaroftime'],
+shelgon:['roaroftime'],
+sawsbuck:['shoreup'],
+sceptile:['tachyoncutter'],
+scizor:['sacredsword'],
+scyther:['sacredsword'],
+seismitoad:['shoreup'],
+seviper:['direclaw','partingshot'],
+simisage:['slackoff'],
+simisear:['slackoff'],
+simipour:['slackoff'],
+solrock:['diamondstorm','mightycleave'],
+spiritomb:['partingshot'],
+sliggoohisui:['roaroftime'],
+staraptor:['thunderouskick'],
+starmie:['diamondstorm'],
+stoutland:['shoreup'],
+toxicroak:['direclaw','partingshot'],
+umbreon:['partingshot'],
+vespiquen:['partingshot'],
+volcanion:['hydrosteam'],
+wailord:['originpulse','slackoff','sparklingaria'],
+weavile:['ceaselessedge'],
+zangoose:['partingshot'],
+trapinch:['roaroftime'],
+gabite:['roaroftime'],
+deino:['roaroftime']
 };
 
 var CUSTOM_BW_SPRITE_IDS=Object.keys(CUSTOM_BW_SPRITES);
@@ -5337,12 +5595,12 @@ var CUSTOM_ANIMATED_BW_SPRITES=new Set([
 'aggron','ariados','basculegion','basculegionf','butterfree','cacturne','charizard','cinderacegmax','corviknight',
 'crobat','dragapult','duraludon','dusknoir','electivire','empoleon','espeon','garbodorgmax',
 'garchomp','garchompf','garchompmega','gardevoirmega','gengar','glalie','gliscor','grimmsnarl',
-'houndoom','hydreigon','infernape','inteleon','lilligant','lucariomega','luxray','magmortar','magneton',
+'heracross','houndoom','hydreigon','infernape','inteleon','lilligant','lucariomega','luxray','magmortar','magneton',
 'magnezone','metagross','milotic','mothim','ninetales','obstagoon','perrserker','pidgeot',
 'ribombee','rotom','rotomfan','rotomfrost','rotomheat','rotommow','rotomwash','salamence',
 'scolipede','silvally','silvallybug','silvallydark','silvallydragon','silvallyelectric','silvallyfairy','silvallyfighting',
 'silvallyfire','silvallyflying','silvallyghost','silvallygrass','silvallyground','silvallyice','silvallypoison','silvallypsychic',
-'silvallysteel','silvallywater','slowbro','slowking','sneasel','steelix','talonflame',
+'silvallysteel','silvallywater','slowbro','slowking','sneasel','staraptor','steelix','talonflame',
 'torterra','typhlosion','tyrantrum','venusaur','victreebel','vikavolt',
 'weavile','weavilef','whimsicott','zoroark']
 );
@@ -5487,8 +5745,10 @@ sableyemega:{w:98,h:98},
 spiritomb:{w:70,h:70},
 spiritombalt:{w:70,h:70},
 parasect:{w:68,h:68},
-parasectparasitism:{w:68,h:68},
-parasectparasite:{w:68,h:68},
+parasectparasitism:{w:90,h:100},
+parasectparasite:{w:92,h:100},
+heracross:{w:92,h:104},
+staraptor:{w:96,h:96},
 rotom:{w:64,h:64},
 rotomfan:{w:68,h:68},
 rotomfrost:{w:68,h:68},
@@ -5554,7 +5814,7 @@ mothim:{w:78,h:78},
 ninetales:{w:100,h:100},
 ninetalesalola:{w:84,h:84},
 palafinhero:{w:116,h:116},
-pidgeot:{w:84,h:84},
+pidgeot:{w:70,h:68},
 pidgeotmega:{w:92,h:92},
 perrserker:{w:62,h:62},
 ribombee:{w:60,h:60},
@@ -5563,6 +5823,10 @@ sableyemega:{w:90,h:90},
 excadrillmega:{w:74,h:74},
 spiritomb:{w:70,h:70},
 spiritombalt:{w:70,h:70},
+parasectparasitism:{w:104,h:100},
+parasectparasite:{w:106,h:100},
+heracross:{w:100,h:106},
+staraptor:{w:104,h:100},
 rotom:{w:60,h:60},
 rotomfan:{w:64,h:64},
 rotomfrost:{w:64,h:64},
@@ -5701,10 +5965,30 @@ var CUSTOM_ABILITY_UPDATE_IDS=Object.keys(CUSTOM_ABILITY_UPDATES);
 var CUSTOM_ABILITY_COMPONENT_OVERRIDES={
 
 ultraego:['moldbreaker'],
+apexpredator:['relicarmor','precision','windrider'],
+alloycore:['magicguard','selfsufficient'],
+ancientbloom:['effectspore','selfsufficient'],
+astralcore:['purepower','naturalcure','illuminate'],
+bloomingsun:['megasol','invigorate','naturalcure'],
+celestialheart:['multiscale','soulheart'],
+doomwarning:['magicbounce','magicguard'],
+draconicforce:['dragonize','strongjaw'],
+dreadmaw:['hugepower','strongjaw'],
+freezerburn:['slushrush','refrigerate'],
+furnaceengine:['steamengine','flamebody','selfsufficient'],
+hisuianoath:['swornduty','toughclaws','corrosion'],
+moonlitwings:['serenegrace'],
+phalanxform:['hydrabond','friendguard','battlearmor'],
+riotamp:['punkrock','galvanize','resonanceforce'],
+waterbubble:['waterveil'],
 requiem:['cursedbody'],
+reapersgrip:['ironfist','pressure'],
 ultrainstinct:['moldbreaker','innerfocus'],
+hisuianpath:['sapsipper','innerfocus','fluffy'],
+hydratyrant:['hydrabond','berserk','selfsufficient'],
+toxicevolution:['corrosion','dualwield','shielddust'],
 parasitism:['dryskin','magicguard'],
-resuscitation:['selfrepair','shadowshield']
+resuscitation:['selfrepair','magicguard']
 };
 var CUSTOM_MOVE_UPDATE_IDS=Object.keys(CUSTOM_MOVE_UPDATES);
 var CUSTOM_LEARNSET_REPLACEMENT_IDS=Object.keys(CUSTOM_LEARNSET_REPLACEMENTS);
@@ -6516,7 +6800,7 @@ var graphicsGen=mechanicsGen;
 if(Dex.prefs('nopastgens'))graphicsGen=6;
 if(Dex.prefs('bwgfx')&&graphicsGen>=6)graphicsGen=5;
 
-if(species.id==='hydreigon'||species.id==='milotic'||species.id==='miloticalt'||species.id==='kingambitalt'||
+if(species.id==='heracross'||species.id==='hydreigon'||species.id==='milotic'||species.id==='miloticalt'||species.id==='kingambitalt'||species.id==='pidgeot'||species.id==='staraptor'||
 !isFront&&(species.id==='lucario'||species.id==='lucariomega'))graphicsGen=5;
 spriteData.gen=Math.max(graphicsGen,Math.min(species.gen,5));
 var baseDir=['','gen1','gen2','gen3','gen4','gen5','','','',''][spriteData.gen];
