@@ -6072,20 +6072,35 @@ if(baseSpriteSize)customNativeBWSpriteSizes[_id]=baseSpriteSize;
 customBWSpriteDataTable=window.BattlePokemonSpritesBW;
 }
 
+function encodeCustomLearnsetSources(sources){
+var gens=sources.map(function(source){return Number(source.charAt(0));}).filter(function(gen){return gen>=1&&gen<=9;});
+if(!gens.length)return'';
+var minGen=Math.min.apply(Math,gens);
+var legalGens='0123456789'.slice(minGen);
+if(gens.includes(6))legalGens+='p';
+if(gens.includes(7)&&sources.some(function(source){return source.startsWith('7')&&source!=='7V';}))legalGens+='q';
+if(gens.includes(8)&&sources.some(function(source){return source.startsWith('8')&&source!=='8V';}))legalGens+='g';
+if(gens.includes(9)&&sources.some(function(source){return source.startsWith('9')&&source!=='9V';}))legalGens+='a';
+return legalGens+"c";
+}
+
 function applyCustomTeambuilderLearnsets(table){
 if(!table.learnsets)table.learnsets={};for(var _i8=0;_i8<
 CUSTOM_LEARNSET_REPLACEMENT_IDS.length;_i8++){var id=CUSTOM_LEARNSET_REPLACEMENT_IDS[_i8];
-table.learnsets[id]=Object.assign({},CUSTOM_LEARNSET_REPLACEMENTS[id]);
+table.learnsets[id]={};
+for(var moveid in CUSTOM_LEARNSET_REPLACEMENTS[id]){
+table.learnsets[id][moveid]=encodeCustomLearnsetSources(CUSTOM_LEARNSET_REPLACEMENTS[id][moveid]);
+}
 }for(var _i0=0;_i0<
 CUSTOM_LEARNSET_ADDITION_IDS.length;_i0++){var _id2=CUSTOM_LEARNSET_ADDITION_IDS[_i0];
-table.learnsets[_id2]=Object.assign({},
-table.learnsets[_id2]||{},
-CUSTOM_LEARNSET_ADDITIONS[_id2]);
-
+if(!table.learnsets[_id2])table.learnsets[_id2]={};
+for(var _moveid in CUSTOM_LEARNSET_ADDITIONS[_id2]){
+table.learnsets[_id2][_moveid]=encodeCustomLearnsetSources(CUSTOM_LEARNSET_ADDITIONS[_id2][_moveid]);
+}
 }for(var _i10=0;_i10<
 CUSTOM_LEARNSET_REMOVAL_IDS.length;_i10++){var _id3=CUSTOM_LEARNSET_REMOVAL_IDS[_i10];for(var _i12=0,_CUSTOM_LEARNSET_REMO2=
-CUSTOM_LEARNSET_REMOVALS[_id3];_i12<_CUSTOM_LEARNSET_REMO2.length;_i12++){var _table$learnsets$_id;var moveid=_CUSTOM_LEARNSET_REMO2[_i12];
-(_table$learnsets$_id=table.learnsets[_id3])==null||delete _table$learnsets$_id[moveid];
+CUSTOM_LEARNSET_REMOVALS[_id3];_i12<_CUSTOM_LEARNSET_REMO2.length;_i12++){var _table$learnsets$_id;var _moveid2=_CUSTOM_LEARNSET_REMO2[_i12];
+(_table$learnsets$_id=table.learnsets[_id3])==null||delete _table$learnsets$_id[_moveid2];
 }
 }
 }
