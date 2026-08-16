@@ -228,6 +228,15 @@ export class TeamEditorState extends PSModel {
 			set.nature = 'Jolly';
 		}
 	}
+	changeCosmeticForm(set: Dex.PokemonSet, speciesName: string) {
+		const currentSpecies = this.dex.species.get(set.species);
+		const species = this.dex.species.get(speciesName);
+		if (toID(currentSpecies.baseSpecies) !== toID(species.baseSpecies)) {
+			this.changeSpecies(set, speciesName);
+			return;
+		}
+		set.species = species.name;
+	}
 	deleteSet(index: number) {
 		if (this.sets.length <= index) return;
 		this.deletedSet = {
@@ -3203,7 +3212,7 @@ class DetailsForm extends preact.Component<{
 		const { editor, set } = this.props;
 		const species = editor.dex.species.get(formId);
 		if (!species.exists) return;
-		editor.changeSpecies(set, species.name);
+		editor.changeCosmeticForm(set, species.name);
 		this.props.onChange();
 		this.forceUpdate();
 	};
