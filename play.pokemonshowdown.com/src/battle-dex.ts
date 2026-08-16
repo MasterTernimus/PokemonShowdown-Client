@@ -3691,7 +3691,7 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		abilities: {0: 'Thick Fat', 1: 'Magic Bounce', H: 'Own Tempo'},
 	},
 	hippowdon: {baseStats: {hp: 118, atk: 127}, abilities: {0: 'Sand Stream', 1: 'Ruin Jaw', H: 'Sand Force'}},
-	garchompbattlebond: {baseStats: {spe: 112}},
+	garchompbattlebond: {baseStats: {spe: 122}},
 };
 
 const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
@@ -3986,8 +3986,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	bulletproof: {
 		name: 'Bulletproof',
-		desc: 'This Pokemon is immune to bullet and pulse moves and takes 20% less damage from attacks.',
-		shortDesc: 'Immune to bullet/pulse moves; takes 0.8x damage from attacks.',
+		desc: 'This Pokemon is immune to bullet, pulse, and all Mega Launcher-boosted moves and takes 20% less damage from attacks.',
+		shortDesc: 'Immune to bullet/pulse/Mega Launcher moves; takes 0.8x damage.',
 	},
 	mirrorarmor: {
 		name: 'Mirror Armor',
