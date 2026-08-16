@@ -166,6 +166,39 @@ changesFrom:'Cacturne',
 isNonstandard:'Custom'
 }
 },
+mightyenaalt:{
+base:'mightyena',
+data:{
+name:'Mightyena-Alt',
+baseSpecies:'Mightyena',
+forme:'Alt',
+spriteid:'mightyena-alt',
+changesFrom:'Mightyena',
+isNonstandard:'Custom'
+}
+},
+toxicroakalt:{
+base:'toxicroak',
+data:{
+name:'Toxicroak-Alt',
+baseSpecies:'Toxicroak',
+forme:'Alt',
+spriteid:'toxicroak-alt',
+changesFrom:'Toxicroak',
+isNonstandard:'Custom'
+}
+},
+cinccinoalt:{
+base:'cinccino',
+data:{
+name:'Cinccino-Alt',
+baseSpecies:'Cinccino',
+forme:'Alt',
+spriteid:'cinccino-alt',
+changesFrom:'Cinccino',
+isNonstandard:'Custom'
+}
+},
 weavilealt:{
 base:'weavile',
 data:{
@@ -691,6 +724,9 @@ isNonstandard:'Custom'
 
 var CUSTOM_ICON_SPRITES={
 cacturnealt:'cacturne-alt',
+mightyenaalt:'mightyena-alt',
+toxicroakalt:'toxicroak-alt',
+cinccinoalt:'cinccino-alt',
 weavilealt:'weavile-alt',
 dusknoiralt:'dusknoir-alt',
 spiritombalt:'spiritomb-alt',
@@ -1192,6 +1228,24 @@ front:{w:96,h:116},
 back:{w:96,h:116},
 shinyFront:{w:96,h:116},
 shinyBack:{w:96,h:116}
+},
+mightyenaalt:{
+front:{w:172,h:154},
+back:{w:162,h:152},
+shinyFront:{w:172,h:154},
+shinyBack:{w:162,h:152}
+},
+toxicroakalt:{
+front:{w:180,h:152},
+back:{w:130,h:128},
+shinyFront:{w:180,h:152},
+shinyBack:{w:130,h:128}
+},
+cinccinoalt:{
+front:{w:166,h:162},
+back:{w:142,h:142},
+shinyFront:{w:166,h:162},
+shinyBack:{w:142,h:142}
 },
 basculegion:{
 front:{w:170,h:112},
@@ -2075,6 +2129,27 @@ front:{w:96,h:116},
 back:{w:96,h:116},
 shinyFront:{w:96,h:116},
 shinyBack:{w:96,h:116}
+},
+mightyenaalt:{
+num:262,
+front:{w:172,h:154},
+back:{w:162,h:152},
+shinyFront:{w:172,h:154},
+shinyBack:{w:162,h:152}
+},
+toxicroakalt:{
+num:454,
+front:{w:180,h:152},
+back:{w:130,h:128},
+shinyFront:{w:180,h:152},
+shinyBack:{w:130,h:128}
+},
+cinccinoalt:{
+num:573,
+front:{w:166,h:162},
+back:{w:142,h:142},
+shinyFront:{w:166,h:162},
+shinyBack:{w:142,h:142}
 },
 basculegion:{
 num:902,
@@ -3126,6 +3201,12 @@ back:{w:96,h:96}
 };
 
 var CUSTOM_SPECIES_UPDATES={
+manectric:{
+baseStats:{hp:70,atk:110,def:65,spa:125,spd:65,spe:105}
+},
+manectricmega:{
+baseStats:{hp:70,atk:120,def:80,spa:135,spd:80,spe:155}
+},
 gengargmax:{
 abilities:{0:'Soul Strike'}
 },
@@ -3143,6 +3224,40 @@ abilities:{0:"Emperor's Resolve",1:"Emperor's Pride",H:'Royal Decree'}
 },
 sandaconda:{
 abilities:{0:'Sand Spit',1:'Stamina',H:'Shed Skin'}
+},
+obstagoon:{
+abilities:{0:'Violent Rush',1:'Guts',H:'Defiant'}
+},
+mightyena:{
+otherFormes:['Mightyena-Alt'],
+cosmeticFormes:['Mightyena-Alt'],
+formeOrder:['Mightyena','Mightyena-Alt']
+},
+mightyenaalt:{
+baseStats:{hp:100,atk:135,def:90,spa:60,spd:80,spe:105},
+abilities:{0:'Intimidate',1:'Black Fang',H:'Stakeout'}
+},
+toxicroak:{
+baseStats:{hp:83,atk:131,def:70,spa:121,spd:70,spe:95},
+abilities:{0:'Battle Fervor',1:'Corrosion',H:'Great Marsh'},
+otherFormes:['Toxicroak-Alt'],
+cosmeticFormes:['Toxicroak-Alt'],
+formeOrder:['Toxicroak','Toxicroak-Alt']
+},
+toxicroakalt:{
+baseStats:{hp:83,atk:131,def:70,spa:121,spd:70,spe:95},
+abilities:{0:'Battle Fervor',1:'Corrosion',H:'Great Marsh'}
+},
+cinccino:{
+baseStats:{hp:75,atk:105,def:110,spa:60,spd:105,spe:115},
+abilities:{0:'Pixilate',1:'Skill Link',H:'Fluffy Craft'},
+otherFormes:['Cinccino-Alt'],
+cosmeticFormes:['Cinccino-Alt'],
+formeOrder:['Cinccino','Cinccino-Alt']
+},
+cinccinoalt:{
+baseStats:{hp:75,atk:105,def:110,spa:60,spd:105,spe:115},
+abilities:{0:'Pixilate',1:'Skill Link',H:'Fluffy Craft'}
 },
 butterfreemega:{
 types:['Bug','Poison'],
@@ -3197,6 +3312,10 @@ parasect:{
 baseStats:{hp:90,atk:120,def:105,spa:35,spd:110,spe:20},
 abilities:{0:'Perish Body',1:'Poison Heal',H:'Parasitism'}
 },
+dracozolt:{abilities:{0:'Relic Mishap',1:'Hustle',H:'Sand Rush'}},
+arctozolt:{abilities:{0:'Relic Mishap',1:'Static',H:'Slush Rush'}},
+dracovish:{abilities:{0:'Relic Mishap',1:'Strong Jaw',H:'Sand Rush'}},
+arctovish:{abilities:{0:'Relic Mishap',1:'Ice Body',H:'Slush Rush'}},
 inteleon:{
 abilities:{0:'Dual Wield',1:'Sniper',H:'Precision'}
 },
@@ -3764,8 +3883,18 @@ shortDesc:"Hit by attacks: +1 Atk/Spe and confusion; confused takes 1.25x; Klutz
 },
 relicarmor:{
 name:"Relic Armor",
-desc:"On switch-in, this Pokemon lowers each foe's Defense and Special Defense by 1, or by 2 in Cold Eclipse. In Desert, Fairy Tale, Cave, Crystal Cavern, New World, or Volcanic Field, its Defense and Special Defense rise by 1. It cannot be critically hit, takes 0.8x damage from attacks, and raises its Defense and Special Defense by 1 after an opposing Pokemon lowers one of its stats.",
-shortDesc:"Entry drops foes' Def/SpD; no crits; takes 0.8x damage; reacts to stat drops."
+desc:"On switch-in, this Pokemon lowers each foe's Defense and Special Defense by 1, or by 2 in Cold Eclipse. In Desert, Fairy Tale, Cave, Crystal Cavern, New World, or Volcanic Field, its Defense and Special Defense rise by 1. It cannot be critically hit, takes 0.8x damage from attacks, has no Rock weakness, and has Self Sufficient's effects. After an opposing Pokemon lowers one of its stats, its Defense and Special Defense rise by 1.",
+shortDesc:"Entry drops Def/SpD; no crits; 0.8x damage; no Rock weakness; Self Sufficient; reacts to drops."
+},
+relicmishap:{
+name:"Relic Mishap",
+desc:"This Pokemon takes 0.9x damage from attacks and has Self Sufficient, Water Absorb, and Volt Absorb. It restores 1/16 max HP each turn and is immune to Sandstorm and Hail damage. During Sandstorm, its Special Defense is multiplied by 1.5. During Hail or Snow, its Defense is multiplied by 1.5.",
+shortDesc:"0.9x damage; heals 1/16; Water/Volt Absorb; weather chip immune; Sand: 1.5x SpD; Hail/Snow: 1.5x Def."
+},
+shedskin:{
+name:"Shed Skin",
+desc:"At the end of each turn, this Pokemon has a 50% chance to cure its non-volatile status, remove common negative effects including Curse and Perish Song, reset its negative stat stages to 0, and restore 1/4 max HP. This can also activate while at or below half HP. In Dragon's Den, activation is guaranteed; it instead raises the higher offensive stat by 1, lowers Defense and Special Defense by 1, and restores 1/4 max HP.",
+shortDesc:"50% to cleanse status/effects and stat drops, then heal 1/4; altered and guaranteed in Dragon's Den."
 },
 draconicforce:{
 name:"Draconic Force",
@@ -3924,8 +4053,8 @@ shortDesc:"Liquid Voice + Water Absorb + Hydration."
 },
 battlefervor:{
 name:"Battle Fervor",
-desc:"If this Pokemon moves before its target, its attacks deal 1.2x damage. Once per switch-in, if it would move after the attacker, damaging attacks against it deal 0.8x damage. The first time per battle it is hit by an opposing damaging move, its Attack and Special Attack rise by 1 stage. Foes cannot eat Berries while this Pokemon is active, and Seed items are prevented.",
-shortDesc:"Fast attacks 1.2x; once per switch-in slow takes 0.8x; hit boosts once; blocks Berries."
+desc:"If this Pokemon moves before its target, its attacks deal 1.2x damage. Once per switch-in, if it would move after the attacker, damaging attacks against it deal 0.8x damage. The first time per battle it is hit by an opposing damaging move, its Attack and Special Attack rise by 1 stage. Foes cannot eat Berries while this Pokemon is active, and Seed items are prevented. Bewitched Woods, Haunted, and Holy Field disable these effects.",
+shortDesc:"Fast attacks 1.2x; slow hit 0.8x once; first hit boosts; inactive in Bewitched/Haunted/Holy."
 },
 bewitchingmajesty:{
 name:"Bewitching Majesty",
@@ -4054,8 +4183,8 @@ shortDesc:"Two 65% independent rolls; boosting pairs: full +20%; FFA: two full-p
 },
 duneterror:{
 name:"Dune Terror",
-desc:"This Pokemon has Sand Stream and custom Shed Skin's effects. During Sandstorm, grounded foes take Ground-type residual damage based on effectiveness, blocked by Ground immunities.",
-shortDesc:"Sand Stream + custom Shed Skin; Ground chip respects immunities."
+desc:"This Pokemon has Sand Stream and Shed Skin's effects. During Sandstorm, grounded foes take Ground-type residual damage based on effectiveness, blocked by Ground immunities.",
+shortDesc:"Sand Stream + Shed Skin; Ground chip respects immunities."
 },
 duskdrive:{
 name:"Dusk Drive",
@@ -4680,8 +4809,8 @@ shortDesc:"Brute Force + Sand Stream + Strong Jaw."
 },
 ultrainstinct:{
 name:"Ultra Instinct",
-desc:"This Pokemon has Mold Breaker and Inner Focus. It deals 2x damage through screens and 1.5x damage when moving first. In Ashen Beach, New World, Starlight Arena, Holy Field, and Cold Eclipse, it gains 1 Accuracy on entry, deals 1.5x damage, and takes 50% less damage. Outside those fields, it takes 70% less damage when hit before its attacker has moved. Bewitched Woods disables these effects.",
-shortDesc:"Mold Breaker + Inner Focus; 2x vs screens; 1.5x moving first; boosted fields halve damage."
+desc:"This Pokemon has Mold Breaker and Inner Focus. It deals 2x damage through screens and 1.5x damage when moving first. In Ashen Beach, New World, Starlight Arena, and Cold Eclipse, it gains 1 Accuracy on entry, deals 1.5x damage, and takes 50% less damage. Outside those fields, it takes 70% less damage when hit before its attacker has moved. Bewitched Woods, Haunted, and Holy Field disable these effects.",
+shortDesc:"Mold Breaker + Inner Focus; speed-based offense/guard; inactive in Bewitched/Haunted/Holy."
 },
 uncheckedassault:{
 name:"Unchecked Assault",
@@ -4855,8 +4984,8 @@ shortDesc:"Wildfire Core + Self Sufficient + draining attacks."
 },
 ultraego:{
 name:"Ultra Ego",
-desc:"Moves ignore abilities; it heals each turn and after attacks. KOs heal more, and the first enemy hit boosts Attack and Sp. Atk.",
-shortDesc:"Mold Breaker; heals each turn/attack; KOs heal more; first enemy hit boosts Atk/SpA."
+desc:"Moves ignore abilities; it heals each turn and after attacks. KOs heal more, and the first enemy hit boosts Attack and Sp. Atk. Bewitched Woods, Haunted, and Holy Field disable these effects.",
+shortDesc:"Mold Breaker; heals and boosts from combat; inactive in Bewitched/Haunted/Holy."
 }
 };
 
@@ -5201,6 +5330,15 @@ zapcannon:['9M']
 };
 
 var CUSTOM_LEARNSET_ADDITIONS={
+drifblim:{
+flamethrower:['9M']
+},
+tyranitar:{
+knockoff:['9M']
+},
+hitmonlee:{
+accelerock:['9M']
+},
 abomasnow:{
 glaciallance:['9M'],
 sappyseed:['9M']
@@ -5557,7 +5695,7 @@ ninetales:['torchsong'],
 noivern:['partingshot','torchsong'],
 omastar:['shoreup'],
 pangoro:['ragefist'],
-parasect:['partingshot'],
+parasect:['partingshot','shadowforce'],
 reuniclus:['lusterpurge'],
 rhydon:['saltcure'],
 rhyperior:['saltcure'],
@@ -5572,6 +5710,7 @@ seviper:['direclaw','partingshot'],
 simisage:['slackoff'],
 simisear:['slackoff'],
 simipour:['slackoff'],
+typhlosionhisui:['shadowforce'],
 solrock:['diamondstorm','mightycleave'],
 spiritomb:['partingshot'],
 sliggoohisui:['roaroftime'],
@@ -5965,6 +6104,8 @@ var CUSTOM_ABILITY_UPDATE_IDS=Object.keys(CUSTOM_ABILITY_UPDATES);
 var CUSTOM_ABILITY_COMPONENT_OVERRIDES={
 
 ultraego:['moldbreaker'],
+relicarmor:['selfsufficient'],
+relicmishap:['selfsufficient','waterabsorb','voltabsorb'],
 apexpredator:['relicarmor','precision','windrider'],
 alloycore:['magicguard','selfsufficient'],
 ancientbloom:['effectspore','selfsufficient'],

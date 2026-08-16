@@ -1089,6 +1089,15 @@ class BattlePokemonSearch extends BattleTypedSearch<'pokemon'> {
 			});
 		}
 
+		const seenSpecies = new Set<ID>();
+		tierSet = tierSet.filter(([type, id]) => {
+			if (type !== 'pokemon') return true;
+			const speciesid = toID(id);
+			if (seenSpecies.has(speciesid)) return false;
+			seenSpecies.add(speciesid);
+			return true;
+		});
+
 		return tierSet;
 	}
 	filter(row: SearchRow, filters: string[][]) {
