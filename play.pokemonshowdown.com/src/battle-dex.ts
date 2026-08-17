@@ -100,6 +100,17 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 			isNonstandard: 'Custom',
 		},
 	},
+	hypnopulse: {
+		base: 'hypno',
+		data: {
+			name: 'Hypno-Pulse',
+			baseSpecies: 'Hypno',
+			forme: 'Pulse',
+			spriteid: 'hypno-pulse',
+			changesFrom: 'Hypno',
+			isNonstandard: 'Custom',
+		},
+	},
 	empoleonalt: {
 		base: 'empoleon',
 		data: {
@@ -119,6 +130,94 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 			forme: 'Alt',
 			spriteid: 'milotic-alt',
 			changesFrom: 'Milotic',
+			isNonstandard: 'Custom',
+		},
+	},
+	miloticaevian: {
+		base: 'milotic',
+		data: {
+			name: 'Milotic-Aevian',
+			baseSpecies: 'Milotic',
+			forme: 'Aevian',
+			spriteid: 'milotic-aevian',
+			changesFrom: 'Milotic',
+			isNonstandard: 'Custom',
+		},
+	},
+	gastrodonaevian: {
+		base: 'gastrodon',
+		data: {
+			name: 'Gastrodon-Aevian',
+			baseSpecies: 'Gastrodon',
+			forme: 'Aevian',
+			spriteid: 'gastrodon-aevian',
+			changesFrom: 'Gastrodon',
+			isNonstandard: 'Custom',
+		},
+	},
+	gastrodoneastaevian: {
+		base: 'gastrodon',
+		data: {
+			name: 'Gastrodon-East-Aevian',
+			baseSpecies: 'Gastrodon',
+			forme: 'East-Aevian',
+			spriteid: 'gastrodon-east-aevian',
+			changesFrom: 'Gastrodon-East',
+			isNonstandard: 'Custom',
+		},
+	},
+	belliboltalt: {
+		base: 'bellibolt',
+		data: {
+			name: 'Bellibolt-Alt',
+			baseSpecies: 'Bellibolt',
+			forme: 'Alt',
+			spriteid: 'bellibolt-alt',
+			changesFrom: 'Bellibolt',
+			isNonstandard: 'Custom',
+		},
+	},
+	typhlosionalt: {
+		base: 'typhlosion',
+		data: {
+			name: 'Typhlosion-Alt',
+			baseSpecies: 'Typhlosion',
+			forme: 'Alt',
+			spriteid: 'typhlosion-alt',
+			changesFrom: 'Typhlosion',
+			isNonstandard: 'Custom',
+		},
+	},
+	nidokingalt: {
+		base: 'nidoking',
+		data: {
+			name: 'Nidoking-Alt',
+			baseSpecies: 'Nidoking',
+			forme: 'Alt',
+			spriteid: 'nidoking-alt',
+			changesFrom: 'Nidoking',
+			isNonstandard: 'Custom',
+		},
+	},
+	nidoqueenalt: {
+		base: 'nidoqueen',
+		data: {
+			name: 'Nidoqueen-Alt',
+			baseSpecies: 'Nidoqueen',
+			forme: 'Alt',
+			spriteid: 'nidoqueen-alt',
+			changesFrom: 'Nidoqueen',
+			isNonstandard: 'Custom',
+		},
+	},
+	ninetalesalt: {
+		base: 'ninetales',
+		data: {
+			name: 'Ninetales-Alt',
+			baseSpecies: 'Ninetales',
+			forme: 'Alt',
+			spriteid: 'ninetales-alt',
+			changesFrom: 'Ninetales',
 			isNonstandard: 'Custom',
 		},
 	},
@@ -771,6 +870,7 @@ const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
 	venusaurmega: 'venusaur-mega',
 	venusaurgmax: 'venusaur-gmax',
 	centiskorchgmax: 'centiskorch-gmax',
+	charizardmegax: 'charizard-megax',
 	basculegionf: 'basculegion-f',
 	ninetalesalola: 'ninetales-alola',
 	lucariomega: 'lucario-mega',
@@ -811,6 +911,15 @@ const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
 	drampamega: 'drampa-mega',
 	empoleonalt: 'empoleon-alt',
 	miloticalt: 'milotic-alt',
+	miloticaevian: 'milotic-aevian',
+	gastrodonaevian: 'gastrodon-aevian',
+	gastrodoneastaevian: 'gastrodon-east-aevian',
+	hypnopulse: 'hypno-pulse',
+	belliboltalt: 'bellibolt-alt',
+	typhlosionalt: 'typhlosion-alt',
+	nidokingalt: 'nidoking-alt',
+	nidoqueenalt: 'nidoqueen-alt',
+	ninetalesalt: 'ninetales-alt',
 	kingambitalt: 'kingambit-alt',
 	infernapealt: 'infernape-alt',
 	torterraalt: 'torterra-alt',
@@ -1049,6 +1158,31 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 	charizardgmax: {
 		front: {w: 96, h: 96},
 		back: {w: 96, h: 96},
+	},
+	charizardmegax: {
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+	},
+	belliboltalt: {
+		front: {w: 152, h: 172},
+		back: {w: 150, h: 168},
+	},
+	typhlosionalt: {
+		front: {w: 156, h: 184},
+		back: {w: 150, h: 178},
+	},
+	nidokingalt: {
+		front: {w: 170, h: 178},
+		back: {w: 144, h: 144},
+	},
+	nidoqueenalt: {
+		front: {w: 168, h: 170},
+		back: {w: 164, h: 166},
+	},
+	ninetalesalt: {
+		front: {w: 170, h: 170},
+		back: {w: 178, h: 170},
 	},
 	appletungmax: {
 		front: {w: 96, h: 96},
@@ -1842,6 +1976,22 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 		front: {w: 192, h: 192},
 		back: {w: 192, h: 192},
 	},
+	miloticaevian: {
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+	},
+	gastrodonaevian: {
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+	},
+	gastrodoneastaevian: {
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+	},
+	hypnopulse: {
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+	},
 	ariados: {
 		front: {w: 122, h: 102},
 		back: {w: 116, h: 90},
@@ -1955,6 +2105,51 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	},
 	miloticalt: {
 		num: 350,
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+	},
+	miloticaevian: {
+		num: 350,
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+	},
+	belliboltalt: {
+		num: 939,
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+	},
+	typhlosionalt: {
+		num: 157,
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+	},
+	nidokingalt: {
+		num: 34,
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+	},
+	nidoqueenalt: {
+		num: 31,
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+	},
+	ninetalesalt: {
+		num: 38,
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+	},
+	gastrodonaevian: {
+		num: 423,
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+	},
+	gastrodoneastaevian: {
+		num: 423,
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+	},
+	hypnopulse: {
+		num: 97,
 		front: {w: 192, h: 192},
 		back: {w: 192, h: 192},
 	},
@@ -3211,13 +3406,54 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 	gengargmax: {
 		abilities: {0: 'Soul Strike'},
 	},
+	bellibolt: {
+		otherFormes: ['Bellibolt-Alt'],
+		formeOrder: ['Bellibolt', 'Bellibolt-Alt'],
+	},
+	belliboltalt: {
+		baseStats: {hp: 109, atk: 64, def: 101, spa: 123, spd: 103, spe: 45},
+	},
+	typhlosion: {
+		otherFormes: ['Typhlosion-Hisui', 'Typhlosion-Alt'],
+		formeOrder: ['Typhlosion', 'Typhlosion-Hisui', 'Typhlosion-Alt'],
+	},
+	typhlosionalt: {
+		baseStats: {hp: 83, atk: 105, def: 85, spa: 122, spd: 70, spe: 105},
+	},
+	nidoking: {
+		otherFormes: ['Nidoking-Alt'],
+		formeOrder: ['Nidoking', 'Nidoking-Alt'],
+	},
+	nidokingalt: {
+		baseStats: {hp: 84, atk: 113, def: 90, spa: 106, spd: 87, spe: 90},
+	},
+	nidoqueen: {
+		otherFormes: ['Nidoqueen-Alt'],
+		formeOrder: ['Nidoqueen', 'Nidoqueen-Alt'],
+	},
+	nidoqueenalt: {
+		baseStats: {hp: 92, atk: 100, def: 105, spa: 93, spd: 100, spe: 80},
+	},
+	ninetales: {
+		otherFormes: ['Ninetales-Alola', 'Ninetales-Alt'],
+		formeOrder: ['Ninetales', 'Ninetales-Alola', 'Ninetales-Alt'],
+	},
+	ninetalesalt: {
+		baseStats: {hp: 73, atk: 76, def: 75, spa: 101, spd: 110, spe: 110},
+	},
 	gardevoir: {
 		otherFormes: ['Gardevoir-Mega', 'Gardevoir-Void-Mega', 'Gardevoir-Mega-Z'],
 		formeOrder: ['Gardevoir', 'Gardevoir-Mega', 'Gardevoir-Void-Mega', 'Gardevoir-Mega-Z'],
 	},
 	blastoise: {
-		baseStats: {hp: 79, atk: 50, def: 110, spa: 100, spd: 118, spe: 78},
+		baseStats: {hp: 79, atk: 75, def: 95, spa: 100, spd: 108, spe: 78},
 		abilities: {0: 'Water Barrage', 1: 'Regenerator', H: 'Shell Armor'},
+	},
+	blastoisemega: {
+		baseStats: {hp: 79, atk: 85, def: 135, spa: 135, spd: 123, spe: 78},
+	},
+	blastoisegmax: {
+		baseStats: {hp: 140, atk: 75, def: 95, spa: 100, spd: 108, spe: 78},
 	},
 	empoleon: {
 		baseStats: {hp: 90, atk: 108, def: 90, spa: 111, spd: 101, spe: 70},
@@ -3345,6 +3581,7 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		formeOrder: ['Weavile', 'Weavile-Alt'],
 	},
 	dusknoir: {
+		baseStats: {atk: 140, spe: 40},
 		abilities: {0: 'Requiem', 1: 'Shadow Tag', H: "Reaper's Grip"},
 		otherFormes: ['Dusknoir-Alt'],
 		cosmeticFormes: ['Dusknoir-Alt'],
@@ -3457,11 +3694,34 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		types: ['Psychic', 'Ghost'],
 		baseStats: {hp: 90, atk: 70, def: 105, spa: 80, spd: 110, spe: 45},
 		abilities: {0: 'Pendulum Swing', 1: 'Neutralizing Gas', H: 'Neutralization'},
+		otherFormes: ['Hypno-Pulse'],
+		cosmeticFormes: ['Hypno-Pulse'],
+		formeOrder: ['Hypno', 'Hypno-Pulse'],
 	},
 	milotic: {
-		otherFormes: ['Milotic-Alt'],
-		cosmeticFormes: ['Milotic-Alt'],
-		formeOrder: ['Milotic', 'Milotic-Alt'],
+		otherFormes: ['Milotic-Alt', 'Milotic-Aevian'],
+		cosmeticFormes: ['Milotic-Alt', 'Milotic-Aevian'],
+		formeOrder: ['Milotic', 'Milotic-Alt', 'Milotic-Aevian'],
+	},
+	miloticaevian: {
+		baseStats: {hp: 95, atk: 89, def: 90, spa: 115, spd: 130, spe: 81},
+	},
+	gastrodon: {
+		otherFormes: ['Gastrodon-East', 'Gastrodon-Aevian', 'Gastrodon-East-Aevian'],
+		cosmeticFormes: ['Gastrodon-East', 'Gastrodon-Aevian', 'Gastrodon-East-Aevian'],
+		formeOrder: ['Gastrodon', 'Gastrodon-East', 'Gastrodon-Aevian', 'Gastrodon-East-Aevian'],
+	},
+	gastrodonaevian: {
+		baseStats: {hp: 111, atk: 83, def: 78, spa: 97, spd: 92, spe: 39},
+	},
+	gastrodoneastaevian: {
+		baseStats: {hp: 111, atk: 83, def: 78, spa: 97, spd: 92, spe: 39},
+	},
+	toxtricitylowkey: {
+		types: ['Fire', 'Poison'],
+	},
+	toxtricitylowkeygmax: {
+		types: ['Fire', 'Poison'],
 	},
 	kingambit: {
 		otherFormes: ['Kingambit-Alt'],
@@ -3522,9 +3782,11 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 	},
 	meowstic: {
 		types: ['Psychic', 'Fairy'],
+		abilities: {0: 'Symbiosis', 1: 'Infiltrator', H: 'Prankster'},
 	},
 	meowsticf: {
 		types: ['Psychic', 'Dark'],
+		abilities: {0: 'Symbiosis', 1: 'Infiltrator', H: 'Competitive'},
 	},
 	meowsticmmega: {
 		types: ['Psychic', 'Fairy'],
@@ -3690,7 +3952,7 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		baseStats: {hp: 120, atk: 65, def: 65, spa: 110, spd: 130, spe: 60},
 		abilities: {0: 'Thick Fat', 1: 'Magic Bounce', H: 'Own Tempo'},
 	},
-	hippowdon: {baseStats: {hp: 118, atk: 127}, abilities: {0: 'Sand Stream', 1: 'Ruin Jaw', H: 'Sand Force'}},
+	hippowdon: {baseStats: {hp: 118, atk: 127}, abilities: {0: 'Sand Stream', 1: 'Ruin Jaw', H: 'Accumulation'}},
 	garchompbattlebond: {baseStats: {spe: 122}},
 };
 
@@ -5048,6 +5310,9 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 };
 
 const CUSTOM_MOVE_UPDATES: {[id: string]: AnyObject} = {
+	armthrust: {
+		multihit: [2, 5],
+	},
 	aurorabeam: {
 		basePower: 80,
 		flags: {protect: 1, mirror: 1, metronome: 1, pulse: 1},
@@ -5067,6 +5332,12 @@ const CUSTOM_MOVE_UPDATES: {[id: string]: AnyObject} = {
 		multihit: [2, 6],
 		desc: 'Hits two to six times. Each hit has 30 base power.',
 		shortDesc: 'Hits 2-6 times. Each hit has 30 power.',
+	},
+	barrage: {
+		multihit: [2, 5],
+	},
+	bulletseed: {
+		multihit: [2, 5],
 	},
 	cut: {
 		basePower: 60,
@@ -5147,6 +5418,9 @@ const CUSTOM_MOVE_UPDATES: {[id: string]: AnyObject} = {
 		desc: 'High critical-hit ratio; 10% confusion chance; boosted by Mega Launcher and Dual Wield.',
 		shortDesc: 'High crit; 10% confusion; launcher/Dual Wield boost.',
 	},
+	twinbeam: {
+		basePower: 60,
+	},
 	bonemerang: {
 		basePower: 50,
 		name: 'Bonemerang',
@@ -5175,27 +5449,33 @@ const CUSTOM_MOVE_UPDATES: {[id: string]: AnyObject} = {
 		desc: 'Hits 2 to 6 times. Thick Club makes it hit 5 or 6 times. Each hit has a 10% chance to lower Defense. Hits airborne targets neutrally.',
 		shortDesc: 'Hits 2-6; Thick Club: 5-6; 10% Def drop; hits airborne neutrally.',
 	},
+	furyswipes: {
+		multihit: [2, 5],
+	},
+	iciclespear: {
+		multihit: [2, 5],
+	},
 	cometpunch: {
 		name: 'Comet Punch',
 		accuracy: 100,
 		basePower: 30,
 		flags: {contact: 1, protect: 1, mirror: 1, punch: 1, metronome: 1},
-		multihit: [3, 5],
-		desc: 'Hits 3 to 5 times. The final hit has double power and always results in a critical hit.',
-		shortDesc: 'Hits 3-5 times. Final hit: 2x power and always crits.',
+		multihit: [2, 5],
+		desc: 'Hits 2 to 5 times. The final hit has double power and always results in a critical hit.',
+		shortDesc: 'Hits 2-5 times. Final hit: 2x power and always crits.',
 	},
 	doubleslap: {
 		name: 'Double Slap',
 		accuracy: 100,
 		basePower: 20,
 		type: 'Fairy',
-		multihit: [3, 5],
+		multihit: [2, 5],
 		secondary: {
 			chance: 10,
 			boosts: {atk: -1},
 		},
-		desc: 'Hits 3 to 5 times. Each hit has a 10% chance to lower Attack by 1 stage.',
-		shortDesc: 'Fairy; hits 3-5 times; 10% Atk drop each hit.',
+		desc: 'Hits 2 to 5 times. Each hit has a 10% chance to lower Attack by 1 stage.',
+		shortDesc: 'Fairy; hits 2-5 times; 10% Atk drop each hit.',
 	},
 	furyattack: {
 		name: 'Fury Attack',
@@ -5203,9 +5483,9 @@ const CUSTOM_MOVE_UPDATES: {[id: string]: AnyObject} = {
 		basePower: 20,
 		type: 'Ground',
 		flags: {contact: 1, protect: 1, mirror: 1, drill: 1, metronome: 1, bone: 1},
-		multihit: [3, 5],
-		desc: 'Hits 3 to 5 times and hits airborne targets neutrally. The final hit drains its damage; a KO also heals 1/4 max HP.',
-		shortDesc: 'Hits 3-5; final hit drains; KO heals 1/4; hits airborne neutrally.',
+		multihit: [2, 5],
+		desc: 'Hits 2 to 5 times and hits airborne targets neutrally. The final hit drains its damage; a KO also heals 1/4 max HP.',
+		shortDesc: 'Hits 2-5; final hit drains; KO heals 1/4; hits airborne neutrally.',
 	},
 	hornattack: {
 		name: 'Horn Attack',
@@ -5232,8 +5512,15 @@ const CUSTOM_MOVE_UPDATES: {[id: string]: AnyObject} = {
 	},
 	pinmissile: {
 		name: 'Pin Missile',
-		desc: 'Hits three to five times. Skill Link makes it hit five times. Loaded Dice makes it hit 5-6 times.',
-		shortDesc: 'Hits 3-5 times.',
+		multihit: [2, 5],
+		desc: 'Hits two to five times. Skill Link makes it hit five times. Loaded Dice makes it hit 5-6 times.',
+		shortDesc: 'Hits 2-5 times.',
+	},
+	rockblast: {
+		multihit: [2, 5],
+	},
+	scaleshot: {
+		multihit: [2, 5],
 	},
 	spikecannon: {
 		name: 'Spike Cannon',
@@ -5249,6 +5536,9 @@ const CUSTOM_MOVE_UPDATES: {[id: string]: AnyObject} = {
 		name: 'Stone Axe',
 		desc: 'If this move is successful, it sets Stealth Rock on the opposing side.',
 		shortDesc: 'Sets Stealth Rock on the opposing side.',
+	},
+	tailslap: {
+		multihit: [2, 5],
 	},
 	supercellslam: {
 		name: 'Supercell Slam',
@@ -5314,6 +5604,95 @@ const CUSTOM_MOVE_UPDATES: {[id: string]: AnyObject} = {
 };
 
 const CUSTOM_LEARNSET_REPLACEMENTS: {[id: string]: {[id: string]: string[]}} = {
+	toxtricitylowkey: {
+		acid: ['9L1'],
+		ember: ['9L1'],
+		leer: ['9L1'],
+		nobleroar: ['9L1'],
+		incinerate: ['9L1'],
+		scaryface: ['9L1'],
+		taunt: ['9L1'],
+		venoshock: ['9L1', '9M'],
+		screech: ['9L1'],
+		swagger: ['9L1'],
+		toxic: ['9L1'],
+		lavaplume: ['9L1'],
+		poisonjab: ['9L1'],
+		overheat: ['9L1'],
+		boomburst: ['9L1'],
+		shiftgear: ['9L1'],
+		flameburst: ['9E'],
+		sunnyday: ['9E', '9M'],
+		belch: ['9E'],
+		tearfullook: ['9E'],
+		willowisp: ['9E', '9M'],
+		growl: ['9E'],
+		flail: ['9E'],
+		acidspray: ['9E'],
+		afteryou: ['9M'],
+		agility: ['9M'],
+		batonpass: ['9M'],
+		blazekick: ['9M'],
+		bounce: ['9M'],
+		corrosivegas: ['9M'],
+		crosspoison: ['9M'],
+		defog: ['9M'],
+		dig: ['9M'],
+		dragonclaw: ['9M'],
+		drainpunch: ['9M'],
+		dualchop: ['9M'],
+		dynamicpunch: ['9M'],
+		echoedvoice: ['9M'],
+		encore: ['9M'],
+		endeavor: ['9M'],
+		fireblast: ['9M'],
+		firefang: ['9M'],
+		firepunch: ['9M'],
+		firespin: ['9M'],
+		flamecharge: ['9M'],
+		flamethrower: ['9M'],
+		flareblitz: ['9M'],
+		gastroacid: ['9M'],
+		gigaimpact: ['9M'],
+		gunkshot: ['9M'],
+		heatcrash: ['9M'],
+		heatwave: ['9M'],
+		hyperbeam: ['9M'],
+		hypervoice: ['9M'],
+		knockoff: ['9M'],
+		laserfocus: ['9M'],
+		megakick: ['9M'],
+		megapunch: ['9M'],
+		mysticalfire: ['9M'],
+		outrage: ['9M'],
+		payback: ['9M'],
+		poweruppunch: ['9M'],
+		psychup: ['9M'],
+		roar: ['9M'],
+		rockclimb: ['9M'],
+		rocksmash: ['9M'],
+		roleplay: ['9M'],
+		signalbeam: ['9M'],
+		sludgebomb: ['9M'],
+		sludgewave: ['9M'],
+		snarl: ['9M'],
+		solarbeam: ['9M'],
+		solarblade: ['9M'],
+		stompingtantrum: ['9M'],
+		stoneedge: ['9M'],
+		storedpower: ['9M'],
+		strength: ['9M'],
+		suckerpunch: ['9M'],
+		terrainpulse: ['9M'],
+		throatchop: ['9M'],
+		thunder: ['9M'],
+		thunderfang: ['9M'],
+		thunderpunch: ['9M'],
+		uproar: ['9M'],
+		venomdrench: ['9M'],
+		wildcharge: ['9M'],
+		workup: ['9M'],
+	},
 	hypno: {
 		afteryou: ['9M'],
 		allyswitch: ['9M'],
@@ -5514,6 +5893,8 @@ const CUSTOM_LEARNSET_ADDITIONS: {[id: string]: {[id: string]: string[]}} = {
 	},
 	milotic: {
 		drainingkiss: ['9M'],
+		dragondance: ['9M'],
+		dragoncheer: ['9M'],
 	},
 	weavile: {
 		closecombat: ['9M'],
@@ -5579,11 +5960,17 @@ const CUSTOM_LEARNSET_ADDITIONS: {[id: string]: {[id: string]: string[]}} = {
 		aurasphere: ['9M'],
 		drainingkiss: ['9M'],
 		vacuumwave: ['9M'],
+		heartswap: ['9M'],
+		spotlight: ['9M'],
+		twinbeam: ['9M'],
 	},
 	meowsticf: {
 		aurasphere: ['9M'],
 		drainingkiss: ['9M'],
 		vacuumwave: ['9M'],
+		heartswap: ['9M'],
+		spotlight: ['9M'],
+		twinbeam: ['9M'],
 	},
 	sandslash: {
 		spikecannon: ['9M'],
@@ -6438,7 +6825,11 @@ function ensureCustomDataPatches() {
 		delete window.BattlePokedex.banettemegaz;
 		for (const id of CUSTOM_SPECIES_UPDATE_IDS) {
 			if (!window.BattlePokedex[id]) window.BattlePokedex[id] = {};
-			Object.assign(window.BattlePokedex[id], CUSTOM_SPECIES_UPDATES[id]);
+			const update = CUSTOM_SPECIES_UPDATES[id];
+			const species = window.BattlePokedex[id];
+			const baseStats = species.baseStats;
+			Object.assign(species, update);
+			if (update.baseStats) species.baseStats = {...(baseStats || {}), ...update.baseStats};
 		}
 		customPokedexDataTable = window.BattlePokedex;
 	}
@@ -6485,10 +6876,16 @@ function ensureCustomDataPatches() {
 		applyCustomTeambuilderItems(table);
 		if (!table.overrideSpeciesData) table.overrideSpeciesData = {};
 		for (const id of CUSTOM_SPECIES_UPDATE_IDS) {
-			table.overrideSpeciesData[id] = {
-				...(table.overrideSpeciesData[id] || {}),
-				...CUSTOM_SPECIES_UPDATES[id],
-			};
+			const update = CUSTOM_SPECIES_UPDATES[id];
+			const existing = table.overrideSpeciesData[id] || {};
+			table.overrideSpeciesData[id] = {...existing, ...update};
+			if (update.baseStats) {
+				table.overrideSpeciesData[id].baseStats = {
+					...(window.BattlePokedex?.[id]?.baseStats || {}),
+					...(existing.baseStats || {}),
+					...update.baseStats,
+				};
+			}
 		}
 		applyCustomTeambuilderSpecies(table);
 		if (!table.overrideAbilityData) table.overrideAbilityData = {};
@@ -7135,7 +7532,7 @@ const Dex = new class implements ModdedDex {
 		if (Dex.prefs('nopastgens')) graphicsGen = 6;
 		if (Dex.prefs('bwgfx') && graphicsGen >= 6) graphicsGen = 5;
 		// Prefer selected native BW animations where their silhouettes fit the battle scene better.
-		if (species.id === 'heracross' || species.id === 'hydreigon' || species.id === 'milotic' || species.id === 'miloticalt' || species.id === 'kingambitalt' || species.id === 'pidgeot' || species.id === 'staraptor' ||
+		if (species.id === 'heracross' || species.id === 'hydreigon' || species.id === 'milotic' || species.id === 'miloticalt' || species.id === 'miloticaevian' || species.id === 'gastrodonaevian' || species.id === 'gastrodoneastaevian' || species.id === 'hypnopulse' || species.id === 'kingambitalt' || species.id === 'pidgeot' || species.id === 'staraptor' ||
 			(!isFront && (species.id === 'lucario' || species.id === 'lucariomega'))) graphicsGen = 5;
 		spriteData.gen = Math.max(graphicsGen, Math.min(species.gen, 5));
 		const baseDir = ['', 'gen1', 'gen2', 'gen3', 'gen4', 'gen5', '', '', '', ''][spriteData.gen];
