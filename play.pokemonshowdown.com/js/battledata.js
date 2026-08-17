@@ -818,6 +818,31 @@ battleOnly:'Absol',
 changesFrom:'Absol',
 isNonstandard:'Custom'
 }
+},
+charizardalt:{
+base:'charizard',
+data:{
+name:'Charizard-Alt',
+baseSpecies:'Charizard',
+forme:'Alt',
+spriteid:'charizard',
+otherFormes:['Charizard-Mega-X-Alt'],
+formeOrder:['Charizard-Alt','Charizard-Mega-X-Alt'],
+changesFrom:'Charizard',
+isNonstandard:'Custom'
+}
+},
+charizardmegaxalt:{
+base:'charizardmegax',
+data:{
+name:'Charizard-Mega-X-Alt',
+baseSpecies:'Charizard',
+forme:'Mega-X-Alt',
+battleOnly:'Charizard-Alt',
+changesFrom:'Charizard-Alt',
+requiredItem:'Charizardite X',
+isNonstandard:'Custom'
+}
 }
 };
 
@@ -870,7 +895,7 @@ sinistchamasterpiece:'sinistcha-masterpiece',
 venusaurmega:'venusaur-mega',
 venusaurgmax:'venusaur-gmax',
 centiskorchgmax:'centiskorch-gmax',
-charizardmegax:'charizard-megax',
+charizardmegaxalt:'charizard-megax-alt',
 basculegionf:'basculegion-f',
 ninetalesalola:'ninetales-alola',
 lucariomega:'lucario-mega',
@@ -1159,7 +1184,7 @@ charizardgmax:{
 front:{w:96,h:96},
 back:{w:96,h:96}
 },
-charizardmegax:{
+charizardmegaxalt:{
 front:{w:192,h:192},
 back:{w:192,h:192},
 shinyFront:{w:192,h:192}
@@ -3396,6 +3421,10 @@ back:{w:96,h:96}
 };
 
 var CUSTOM_SPECIES_UPDATES={
+charizard:{
+otherFormes:['Charizard-Mega-X','Charizard-Mega-Y','Charizard-Gmax','Charizard-Alt'],
+formeOrder:['Charizard','Charizard-Mega-X','Charizard-Mega-Y','Charizard-Gmax','Charizard-Alt']
+},
 manectric:{
 baseStats:{hp:70,atk:110,def:65,spa:125,spd:65,spe:105},
 abilities:{0:'Strong Jaw',1:'Competitive',H:'Lightning Rod'}
