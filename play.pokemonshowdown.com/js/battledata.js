@@ -3515,14 +3515,14 @@ baseStats:{hp:83,atk:131,def:70,spa:121,spd:70,spe:95},
 abilities:{0:'Battle Fervor',1:'Corrosion',H:'Great Marsh'}
 },
 cinccino:{
-baseStats:{hp:75,atk:105,def:110,spa:60,spd:105,spe:115},
+baseStats:{hp:85,atk:95,def:110,spa:60,spd:105,spe:115},
 abilities:{0:'Pixilate',1:'Skill Link',H:'Fluffy Craft'},
 otherFormes:['Cinccino-Alt'],
 cosmeticFormes:['Cinccino-Alt'],
 formeOrder:['Cinccino','Cinccino-Alt']
 },
 cinccinoalt:{
-baseStats:{hp:75,atk:105,def:110,spa:60,spd:105,spe:115},
+baseStats:{hp:85,atk:95,def:110,spa:60,spd:105,spe:115},
 abilities:{0:'Pixilate',1:'Skill Link',H:'Fluffy Craft'}
 },
 butterfreemega:{
@@ -4322,7 +4322,7 @@ shortDesc:"Effect Spore + Self Sufficient; keeps field boosts."
 },
 ange:{
 name:"Ange",
-desc:"This Pokemon has Eternal Flower, Fairy Aura, and Magic Guard's effects. Its Grass-type moves use 1.5x Attack and Special Attack, Fairy-type moves are boosted, and opposing Mega, G-Max, Terastallized, Stellar, and Ultra Beast Pokemon have their stats reduced to 0.7x. When this Pokemon faints, it creates Bewitched Woods for 5 turns.",
+desc:"This Pokemon has Eternal Flower, Fairy Aura, and Magic Guard's effects. In Fairy Tale or Cold Eclipse, its Attack and Special Attack are multiplied by 2x; in Starlight Arena, New World, or Bewitched, they are multiplied by 1.5x. Grass-type moves use another 1.5x multiplier. Fairy-type moves are boosted, and opposing Mega, G-Max, Terastallized, Stellar, and Ultra Beast Pokemon have their stats reduced to 0.7x. When this Pokemon faints, it creates Bewitched Woods for 5 turns.",
 shortDesc:"Eternal Flower + Fairy Aura + Magic Guard; weakens opposing gimmicks."
 },
 apexcleave:{
@@ -6807,6 +6807,8 @@ customSpecies.data);
 if(table.tiers){for(var _i18=0;_i18<
 CUSTOM_SPECIES_IDS.length;_i18++){var _id5=CUSTOM_SPECIES_IDS[_i18];
 var _customSpecies=CUSTOM_SPECIES[_id5];
+var forme=_customSpecies.data.forme;
+if(typeof forme==='string'&&(forme==='Alt'||forme==='Aevian'||forme==='East-Aevian'||forme.endsWith('-Alt')))continue;
 var baseIndex=table.tiers.indexOf(_customSpecies.base);
 if(baseIndex>=0&&!table.tiers.includes(_id5))table.tiers.splice(baseIndex+1,0,_id5);
 }
