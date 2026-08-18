@@ -3077,6 +3077,7 @@ class DetailsForm extends preact.Component<{
 		</>;
 	}
 	render() {
+		window.ensureCustomSpecies?.();
 		const { editor, set } = this.props;
 		const species = editor.dex.species.get(set.species);
 		return <div style="font-size:10pt" role="dialog" aria-label="Details">
@@ -3210,6 +3211,7 @@ class DetailsForm extends preact.Component<{
 		const target = ev.currentTarget as HTMLButtonElement;
 		const formId = target.value;
 		const { editor, set } = this.props;
+		window.ensureCustomSpecies?.();
 		const species = editor.dex.species.get(formId);
 		if (!species.exists) return;
 		editor.changeCosmeticForm(set, species.name);
