@@ -10306,7 +10306,7 @@ this.baseSpecies=data.baseSpecies||name;
 this.forme=data.forme||'';
 var baseId=toID(this.baseSpecies);
 this.formeid=baseId===this.id?'':'-'+toID(this.forme);
-this.spriteid=baseId+this.formeid;
+this.spriteid=data.spriteid||baseId+this.formeid;
 if(this.name==='Gardevoir-Void-Mega')this.spriteid='gardevoirvoid-mega';else
 if(this.name==='Garchomp-Battle-Bond')this.spriteid='garchomp-battlebond';else
 if(this.name==='Garchomp-Mega-Z')this.spriteid='garchomp-megaz';else

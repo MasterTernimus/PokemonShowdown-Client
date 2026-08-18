@@ -213,9 +213,20 @@ class DexSearch {
 
 	textSearch(query: string): SearchRow[] {
 		query = toID(query);
+		const customSpeciesQuery = query;
 
 		this.exactMatch = false;
 		let searchType: SearchType | '' = this.typedSearch?.searchType || '';
+		let customVisualSpecies: ID[] = [];
+		if (searchType === 'pokemon') {
+			window.ensureCustomSpecies?.();
+			const customFormes = ['Alt', 'Aevian', 'East-Aevian', 'Pulse', 'Spring', 'Summer', 'Autumn', 'Winter'];
+			customVisualSpecies = Object.keys(window.BattlePokedex || {}).filter(id => {
+				const species = this.dex.species.get(id);
+				return (customFormes.includes(species.forme) || species.forme.endsWith('-Alt')) &&
+					toID(species.name) === customSpeciesQuery;
+			}) as ID[];
+		}
 
 		// If searchType exists, we're searching mainly for results of that type.
 		// We'll still search for results of other types, but those results
@@ -234,6 +245,7 @@ class DexSearch {
 		// i represents the location of the search index we're looking at
 		let i = DexSearch.getClosest(query);
 		this.exactMatch = (BattleSearchIndex[i][0] === query);
+		if (customVisualSpecies.length) this.exactMatch = true;
 
 		// Even with output buffer buckets, we make multiple passes through
 		// the search index. searchPasses is a queue of which pass we're on:
@@ -436,6 +448,28 @@ class DexSearch {
 			count++;
 		}
 
+		if (instafilter && count < 20) {
+			// Result count is less than 20, so we can instafilter
+			bufs.push(this.instafilter(searchType, instafilter[0], instafilter[1]));
+		}
+
+		if (customVisualSpecies.length) {
+			const existing = new Set<ID>();
+			for (const buf of bufs) {
+				for (const row of buf) {
+					if (row[0] === 'pokemon') existing.add(row[1]);
+				}
+			}
+			const rows: SearchRow[] = [];
+			for (const id of customVisualSpecies) {
+				if (!existing.has(id)) rows.push(['pokemon', id, 0, customSpeciesQuery.length]);
+			}
+			if (rows.length) {
+				if (!bufs[1].length) bufs[1] = [['header', DexSearch.typeName.pokemon]];
+				bufs[1].splice(1, 0, ...rows);
+			}
+		}
+
 		let topbuf: SearchRow[] = [];
 		if (nearMatch) {
 			topbuf = [['html', `<em>No exact match found. The closest matches alphabetically are:</em>`]];
@@ -449,11 +483,6 @@ class DexSearch {
 			topbuf = topbuf.concat(bufs[searchTypeIndex]);
 			bufs[searchTypeIndex] = [];
 			bufs[0] = [];
-		}
-
-		if (instafilter && count < 20) {
-			// Result count is less than 20, so we can instafilter
-			bufs.push(this.instafilter(searchType, instafilter[0], instafilter[1]));
 		}
 
 		this.results = Array.prototype.concat.apply(topbuf, bufs);
