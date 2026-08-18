@@ -4125,6 +4125,11 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 };
 
 const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
+	illusion: {
+		name: 'Illusion',
+		desc: "On switch-in, this Pokemon disguises itself as the ally judged most threatening to the opposing active Pokemon using matchups, Speed, STAB, and damaging moves. It copies that ally's Ability and gains STAB from its types while keeping its own defensive typing. The disguise ends when it takes direct damage.",
+		shortDesc: 'Disguises as the ally with the best matchup; copies its Ability and STAB until directly damaged.',
+	},
 	selfrepair: {
 		name: 'Self Repair',
 		desc: "This Pokemon has Self Sufficient and Natural Cure's effects.",
