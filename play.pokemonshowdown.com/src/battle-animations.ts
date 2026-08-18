@@ -1110,6 +1110,27 @@ export class BattleScene implements BattleSceneStub {
 				time: instant ? 0 : 300,
 			});
 			break;
+		case 'arenitewall': {
+			const arenitewall = new Sprite(BattleEffects.reflect, {
+				display: 'block',
+				x,
+				y,
+				z: side.behind(-17),
+				xscale: 1,
+				yscale: 0,
+				opacity: 0.1,
+			}, this);
+			this.$spritesFront[spriteIndex].append(arenitewall.$el!);
+			this.sideConditions[siden][id] = [arenitewall];
+			arenitewall.anim({
+				opacity: 0.7,
+				time: instant ? 0 : 400,
+			}).anim({
+				opacity: 0.3,
+				time: instant ? 0 : 300,
+			});
+			break;
+		}
 		case 'reflect':
 			const reflect = new Sprite(BattleEffects.reflect, {
 				display: 'block',

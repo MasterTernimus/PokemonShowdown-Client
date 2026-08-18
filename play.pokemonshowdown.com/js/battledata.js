@@ -89,17 +89,6 @@ forme:'Winter',
 spriteid:'sawsbuck-winter'
 }
 },
-hypno:{
-base:'hypno',
-data:{
-name:'Hypno',
-types:['Psychic','Ghost'],
-abilities:{0:'Pendulum Swing',1:'Neutralizing Gas',H:'Neutralization'},
-baseStats:{hp:90,atk:70,def:105,spa:80,spd:110,spe:45},
-bst:500,
-isNonstandard:'Custom'
-}
-},
 hypnopulse:{
 base:'hypno',
 data:{
@@ -107,6 +96,9 @@ name:'Hypno-Pulse',
 baseSpecies:'Hypno',
 forme:'Pulse',
 spriteid:'hypno-pulse',
+types:['Psychic','Ghost'],
+abilities:{0:'Pendulum Swing',1:'Neutralizing Gas',H:'Neutralization'},
+baseStats:{hp:60,atk:60,def:105,spa:115,spd:125,spe:70},
 changesFrom:'Hypno',
 isNonstandard:'Custom'
 }
@@ -144,6 +136,61 @@ changesFrom:'Milotic',
 isNonstandard:'Custom'
 }
 },
+laprasaevian:{
+base:'lapras',
+data:{
+name:'Lapras-Aevian',
+baseSpecies:'Lapras',
+forme:'Aevian',
+spriteid:'lapras-aevian',
+changesFrom:'Lapras',
+isNonstandard:'Custom'
+}
+},
+primarinaalt:{
+base:'primarina',
+data:{
+name:'Primarina-Alt',
+baseSpecies:'Primarina',
+forme:'Alt',
+spriteid:'primarina-alt',
+changesFrom:'Primarina',
+isNonstandard:'Custom'
+}
+},
+decidueyealt:{
+base:'decidueye',
+data:{
+name:'Decidueye-Alt',
+baseSpecies:'Decidueye',
+forme:'Alt',
+spriteid:'decidueye-alt',
+changesFrom:'Decidueye',
+isNonstandard:'Custom'
+}
+},
+decidueyehisuialt:{
+base:'decidueyehisui',
+data:{
+name:'Decidueye-Hisui-Alt',
+baseSpecies:'Decidueye',
+forme:'Hisui-Alt',
+spriteid:'decidueye-hisui-alt',
+changesFrom:'Decidueye-Hisui',
+isNonstandard:'Custom'
+}
+},
+incineroaralt:{
+base:'incineroar',
+data:{
+name:'Incineroar-Alt',
+baseSpecies:'Incineroar',
+forme:'Alt',
+spriteid:'incineroar-alt',
+changesFrom:'Incineroar',
+isNonstandard:'Custom'
+}
+},
 gastrodonaevian:{
 base:'gastrodon',
 data:{
@@ -156,7 +203,7 @@ isNonstandard:'Custom'
 }
 },
 gastrodoneastaevian:{
-base:'gastrodon',
+base:'gastrodoneast',
 data:{
 name:'Gastrodon-East-Aevian',
 baseSpecies:'Gastrodon',
@@ -937,6 +984,11 @@ drampamega:'drampa-mega',
 empoleonalt:'empoleon-alt',
 miloticalt:'milotic-alt',
 miloticaevian:'milotic-aevian',
+laprasaevian:'lapras-aevian',
+primarinaalt:'primarina-alt',
+decidueyealt:'decidueye-alt',
+decidueyehisuialt:'decidueye-hisui-alt',
+incineroaralt:'incineroar-alt',
 gastrodonaevian:'gastrodon-aevian',
 gastrodoneastaevian:'gastrodon-east-aevian',
 hypnopulse:'hypno-pulse',
@@ -1084,12 +1136,12 @@ var CUSTOM_STATIC_BATTLE_SPRITES=
 
 {
 weavilealt:{
-front:{w:120,h:128},
-back:{w:96,h:130}
+front:{w:104,h:112},
+back:{w:82,h:112}
 },
 weavilealtf:{
-front:{w:120,h:128},
-back:{w:96,h:130}
+front:{w:104,h:112},
+back:{w:82,h:112}
 },
 dusknoiralt:{
 front:{w:170,h:148},
@@ -1208,6 +1260,30 @@ back:{w:164,h:166}
 ninetalesalt:{
 front:{w:170,h:170},
 back:{w:178,h:170}
+},
+primarinaalt:{
+front:{w:64,h:64},
+back:{w:64,h:64},
+shinyFront:{w:64,h:64},
+shinyBack:{w:64,h:64}
+},
+decidueyealt:{
+front:{w:64,h:64},
+back:{w:76,h:152},
+shinyFront:{w:64,h:64},
+shinyBack:{w:76,h:152}
+},
+decidueyehisuialt:{
+front:{w:64,h:64},
+back:{w:98,h:156},
+shinyFront:{w:64,h:64},
+shinyBack:{w:98,h:156}
+},
+incineroaralt:{
+front:{w:64,h:64},
+back:{w:168,h:144},
+shinyFront:{w:64,h:64},
+shinyBack:{w:168,h:144}
 },
 appletungmax:{
 front:{w:96,h:96},
@@ -1675,12 +1751,12 @@ front:{w:160,h:112},
 back:{w:184,h:130}
 },
 weavile:{
-front:{w:120,h:128},
-back:{w:96,h:130}
+front:{w:108,h:116},
+back:{w:82,h:112}
 },
 weavilef:{
-front:{w:120,h:128},
-back:{w:96,h:130}
+front:{w:108,h:116},
+back:{w:82,h:112}
 },
 espeon:{
 front:{w:100,h:106},
@@ -1721,8 +1797,8 @@ front:{w:190,h:186},
 back:{w:190,h:186}
 },
 corviknight:{
-front:{w:102,h:144},
-back:{w:120,h:130}
+front:{w:86,h:98},
+back:{w:62,h:70}
 },
 corviknightgmax:{
 front:{w:192,h:190},
@@ -2005,6 +2081,12 @@ miloticaevian:{
 front:{w:192,h:192},
 back:{w:192,h:192}
 },
+laprasaevian:{
+front:{w:192,h:192},
+back:{w:192,h:192},
+shinyFront:{w:192,h:192},
+shinyBack:{w:192,h:192}
+},
 gastrodonaevian:{
 front:{w:192,h:192},
 back:{w:192,h:192}
@@ -2137,6 +2219,41 @@ miloticaevian:{
 num:350,
 front:{w:192,h:192},
 back:{w:192,h:192}
+},
+laprasaevian:{
+num:131,
+front:{w:192,h:192},
+back:{w:192,h:192},
+shinyFront:{w:192,h:192},
+shinyBack:{w:192,h:192}
+},
+primarinaalt:{
+num:730,
+front:{w:64,h:64},
+back:{w:64,h:64},
+shinyFront:{w:64,h:64},
+shinyBack:{w:64,h:64}
+},
+decidueyealt:{
+num:724,
+front:{w:64,h:64},
+back:{w:76,h:152},
+shinyFront:{w:64,h:64},
+shinyBack:{w:76,h:152}
+},
+decidueyehisuialt:{
+num:724,
+front:{w:64,h:64},
+back:{w:98,h:156},
+shinyFront:{w:64,h:64},
+shinyBack:{w:98,h:156}
+},
+incineroaralt:{
+num:727,
+front:{w:64,h:64},
+back:{w:168,h:144},
+shinyFront:{w:64,h:64},
+shinyBack:{w:168,h:144}
 },
 belliboltalt:{
 num:939,
@@ -2833,15 +2950,15 @@ back:{w:184,h:130}
 },
 weavile:{
 num:461,
-front:{w:120,h:128},
-back:{w:96,h:130},
-frontf:{w:120,h:128},
-backf:{w:96,h:130}
+front:{w:108,h:116},
+back:{w:82,h:112},
+frontf:{w:108,h:116},
+backf:{w:82,h:112}
 },
 weavilef:{
 num:461,
-front:{w:120,h:128},
-back:{w:96,h:130}
+front:{w:108,h:116},
+back:{w:82,h:112}
 },
 espeon:{
 num:196,
@@ -2885,10 +3002,10 @@ back:{w:190,h:186}
 },
 corviknight:{
 num:823,
-front:{w:96,h:96},
-back:{w:63,h:70},
-shinyFront:{w:96,h:96},
-shinyBack:{w:63,h:70}
+front:{w:86,h:98},
+back:{w:62,h:70},
+shinyFront:{w:86,h:98},
+shinyBack:{w:62,h:70}
 },
 corviknightgmax:{
 num:823,
@@ -3422,12 +3539,31 @@ back:{w:96,h:96}
 
 var CUSTOM_SPECIES_UPDATES={
 charizard:{
-otherFormes:['Charizard-Mega-X','Charizard-Mega-Y','Charizard-Gmax','Charizard-Alt'],
-formeOrder:['Charizard','Charizard-Mega-X','Charizard-Mega-Y','Charizard-Gmax','Charizard-Alt']
+otherFormes:['Charizard-Mega-X','Charizard-Mega-Y','Charizard-Gmax'],
+cosmeticFormes:['Charizard-Alt'],
+formeOrder:['Charizard','Charizard-Mega-X','Charizard-Mega-Y','Charizard-Gmax','Charizard-Alt'],
+baseStats:{hp:78,atk:109,def:75,spa:114,spd:78,spe:100},
+abilities:{0:'Wildfire Core',1:'Intimidate',H:'Solar Power'}
+},
+arcanine:{
+abilities:{0:'Living Legend',1:'Vanguard',H:'Drought'}
+},
+alakazam:{
+baseStats:{hp:80,atk:50,def:60,spa:135,spd:95,spe:130}
+},
+alakazammega:{
+baseStats:{hp:80,atk:60,def:70,spa:175,spd:105,spe:160}
 },
 manectric:{
 baseStats:{hp:70,atk:110,def:65,spa:125,spd:65,spe:105},
 abilities:{0:'Strong Jaw',1:'Competitive',H:'Lightning Rod'}
+},
+hypno:{
+types:['Psychic','Ghost'],
+baseStats:{hp:60,atk:60,def:105,spa:115,spd:125,spe:70},
+abilities:{0:'Pendulum Swing',1:'Neutralizing Gas',H:'Neutralization'},
+cosmeticFormes:['Hypno-Pulse'],
+formeOrder:['Hypno','Hypno-Pulse']
 },
 manectricmega:{
 baseStats:{hp:70,atk:120,def:80,spa:135,spd:80,spe:155}
@@ -3436,7 +3572,7 @@ gengargmax:{
 abilities:{0:'Soul Strike'}
 },
 bellibolt:{
-otherFormes:['Bellibolt-Alt'],
+cosmeticFormes:['Bellibolt-Alt'],
 formeOrder:['Bellibolt','Bellibolt-Alt']
 },
 belliboltalt:{
@@ -3470,6 +3606,22 @@ formeOrder:['Ninetales','Ninetales-Alola','Ninetales-Alt']
 ninetalesalt:{
 baseStats:{hp:73,atk:76,def:75,spa:101,spd:110,spe:110}
 },
+primarina:{
+cosmeticFormes:['Primarina-Alt'],
+formeOrder:['Primarina','Primarina-Alt']
+},
+decidueye:{
+cosmeticFormes:['Decidueye-Alt'],
+formeOrder:['Decidueye','Decidueye-Alt','Decidueye-Hisui']
+},
+decidueyehisui:{
+cosmeticFormes:['Decidueye-Hisui-Alt'],
+formeOrder:['Decidueye-Hisui','Decidueye-Hisui-Alt']
+},
+incineroar:{
+cosmeticFormes:['Incineroar-Alt'],
+formeOrder:['Incineroar','Incineroar-Alt']
+},
 gardevoir:{
 otherFormes:['Gardevoir-Mega','Gardevoir-Void-Mega','Gardevoir-Mega-Z'],
 formeOrder:['Gardevoir','Gardevoir-Mega','Gardevoir-Void-Mega','Gardevoir-Mega-Z']
@@ -3486,7 +3638,10 @@ baseStats:{hp:140,atk:75,def:95,spa:100,spd:108,spe:78}
 },
 empoleon:{
 baseStats:{hp:90,atk:108,def:90,spa:111,spd:101,spe:70},
-abilities:{0:"Emperor's Resolve",1:"Emperor's Pride",H:'Royal Decree'}
+abilities:{0:"Emperor's Resolve",1:"Emperor's Pride",H:'Royal Decree'},
+otherFormes:['Empoleon-Alt'],
+cosmeticFormes:['Empoleon-Alt'],
+formeOrder:['Empoleon','Empoleon-Alt']
 },
 sandaconda:{
 abilities:{0:'Sand Spit',1:'Stamina',H:'Shed Skin'}
@@ -3710,22 +3865,9 @@ otherFormes:['Dragapult-Gmax'],
 formeOrder:['Dragapult','Dragapult-Gmax'],
 canGigantamax:'G-Max Spirit Volley'
 },
-charizard:{
-baseStats:{hp:78,atk:109,def:75,spa:114,spd:78,spe:100},
-abilities:{0:'Wildfire Core',1:'Intimidate',H:'Solar Power'}
-},
 charizardgmax:{
 baseStats:{hp:133,atk:109,def:75,spa:114,spd:78,spe:100},
 abilities:{0:'Burning Crown'}
-},
-hypno:{
-name:'Hypno',
-types:['Psychic','Ghost'],
-baseStats:{hp:90,atk:70,def:105,spa:80,spd:110,spe:45},
-abilities:{0:'Pendulum Swing',1:'Neutralizing Gas',H:'Neutralization'},
-otherFormes:['Hypno-Pulse'],
-cosmeticFormes:['Hypno-Pulse'],
-formeOrder:['Hypno','Hypno-Pulse']
 },
 milotic:{
 otherFormes:['Milotic-Alt','Milotic-Aevian'],
@@ -3756,11 +3898,6 @@ kingambit:{
 otherFormes:['Kingambit-Alt'],
 cosmeticFormes:['Kingambit-Alt'],
 formeOrder:['Kingambit','Kingambit-Alt']
-},
-empoleon:{
-otherFormes:['Empoleon-Alt'],
-cosmeticFormes:['Empoleon-Alt'],
-formeOrder:['Empoleon','Empoleon-Alt']
 },
 infernape:{
 baseStats:{hp:82,atk:115,def:70,spa:115,spd:80,spe:108},
@@ -3800,7 +3937,9 @@ baseStats:{hp:105,atk:135,def:110,spa:40,spd:110,spe:100},
 abilities:{0:'Parental Bond'}
 },
 lapras:{
-abilities:{0:'Safe Harbor',1:'Shell Armor',H:'Ice Scales'}
+abilities:{0:'Safe Harbor',1:'Shell Armor',H:'Ice Scales'},
+cosmeticFormes:['Lapras-Aevian'],
+formeOrder:['Lapras','Lapras-Aevian']
 },
 jolteon:{
 abilities:{0:'Lightning Rod',1:'Battery',H:'Voltage Volley'}
@@ -4023,8 +4162,8 @@ shortDesc:'Water STAB/offense 2x; Fire offense 0.5x; Water Veil.'
 },
 download:{
 name:'Download',
-desc:"In Singles, this Pokemon's Attack and Special Attack rise by 1 stage on switch-in. In other battle types, one offensive stat rises based on the opposing side's weaker combined defensive stat. Its first damaging move after switching in is a critical hit.",
-shortDesc:"Singles: +1 Atk/SpA; otherwise checks foes' defenses; first damaging move crits."
+desc:"In Singles, this Pokemon's Attack and Special Attack rise by 1 stage on switch-in. In other battle types, it compares all foes' combined Defense and Special Defense and raises the matching offensive stat. Its first damaging move after switching in is a critical hit.",
+shortDesc:"Singles: +1 Atk/SpA; other battles compare all foes; first damaging move crits."
 },
 watercompaction:{
 name:'Water Compaction',
@@ -4099,7 +4238,7 @@ shortDesc:"Swift Swim + Adaptability."
 gooey:{
 name:'Gooey',
 desc:"Any opposing damaging hit lowers the attacker's Speed by 2 and highest offense by 1. Hydration + Sap Sipper.",
-shortDesc:'Any hit: attacker -2 Spe/-1 offense; Hydration + Sap Sipper.'
+shortDesc:'Damaging hit: attacker -2 Spe/-1 offense; Hydration + Sap Sipper.'
 },
 angerpoint:{
 name:'Anger Point',
@@ -4124,7 +4263,7 @@ shortDesc:'Blocks explosions/Aftermath; Corrosive Mist stifles ignition and halv
 corrosion:{
 name:'Corrosion',
 desc:'Poison bypasses immunity. Wasteland adds status effects, Corrosive fields boost damage, and poisoned foes lose Def/SpD.',
-shortDesc:'Poison bypasses immunity; Wasteland/status effects; Corrosive damage; poisoned foes lose Def/SpD.'
+shortDesc:'Poison bypasses immunity; Wasteland/Corrosive effects; poison lowers Def/SpD.'
 },
 forewarn:{
 name:'Forewarn',
@@ -4153,8 +4292,8 @@ shortDesc:'Weight doubled; Factory +1 Def/-1 Spe; takes 0.5x physical damage.'
 },
 insomnia:{
 name:'Insomnia',
-desc:'Cannot sleep; Dark damaging moves have 1.3x power.',
-shortDesc:'Cannot sleep; Dark damaging moves have 1.3x power.'
+desc:'Cannot sleep; Dark- and Ghost-type damaging moves have 1.3x power.',
+shortDesc:'Cannot sleep; Dark/Ghost damaging moves have 1.3x power.'
 },
 ironfist:{
 name:'Iron Fist',
@@ -4178,22 +4317,23 @@ shortDesc:"Psychic Surge + Competitive + Hydra Bond."
 },
 battery:{
 name:'Battery',
-shortDesc:'This Pokemon and its allies have their special attacks boosted by 1.3x.'
+desc:"This Pokemon and its allies have 1.3x power on Special attacks. The user's Special attacks get an additional 1.5x multiplier in Electric Terrain or Rain.",
+shortDesc:'Self/ally Special attacks 1.3x; user gets extra 1.5x in Electric Terrain/Rain.'
 },
 battlebond:{
 name:'Battle Bond',
 desc:"When this Pokemon knocks out another Pokemon, it transforms into its Bond form, and knocking out a target restores 1/8 max HP. It takes 0.75x damage from attacks and 30% less damage from Fighting Clause Abilities. In Doubles, Multi, or Free-for-All, it can survive one KO from above 1/3 HP. Its attacks deal 1.3x damage to Royal Decree or Neutralization users. Cold Eclipse boosts its attacks by 1.3x and reduces attack damage to 0.6x.",
-shortDesc:'0.75x attack damage; KO transforms/heals; Cold Eclipse boosts offense and defense.'
+shortDesc:'Takes 0.75x attack damage; KO transforms/heals; Cold Eclipse boosts offense/defense.'
 },
 pendulumswing:{
 name:"Pendulum Swing",
-desc:"This Pokemon's accuracy is multiplied by 1.5, and its Special Attack is multiplied by 1.5.",
-shortDesc:"1.5x accuracy and 1.5x Sp. Atk."
+desc:"This Pokemon has Insomnia's effect, and its moves cannot miss.",
+shortDesc:"Insomnia; moves cannot miss."
 },
 perishbody:{
 name:"Perish Body",
 desc:"Any opposing damaging hit gives all foes Perish Song; repeat hits reduce their count. In Haunted Field, affected adjacent foes are trapped. Holy Field blocks this effect, and allies cannot trigger it.",
-shortDesc:"Any enemy hit gives foes Perish Song; repeat hits reduce the count; Haunted traps."
+shortDesc:"Enemy hit: foes get Perish Song; repeat hits lower the count; Haunted traps."
 },
 razorcurrent:{
 name:"Razor Current",
@@ -4208,22 +4348,22 @@ shortDesc:">50%: ignores Abilities. <=50%: defensive mode; <=25%: one pinch heal
 fossilfrenzy:{
 name:"Fossil Frenzy",
 desc:"When this Pokemon is hit by a damaging move, its Attack and Speed rise by 1 stage and it becomes confused. While confused, it takes 1.25x damage from attacks. This Pokemon has Klutz's effect. If it hits itself in confusion, it also loses 1/8 of its maximum HP.",
-shortDesc:"Hit by attacks: +1 Atk/Spe and confusion; confused takes 1.25x; Klutz; self-hit costs 1/8."
+shortDesc:"Hit: +1 Atk/Spe and confusion; confusion takes 1.25x; Klutz; self-hit costs 1/8."
 },
 relicarmor:{
 name:"Relic Armor",
 desc:"On switch-in, this Pokemon lowers each foe's Defense and Special Defense by 1, or by 2 in Cold Eclipse. In Desert, Fairy Tale, Cave, Crystal Cavern, New World, or Volcanic Field, its Defense and Special Defense rise by 1. It cannot be critically hit, takes 0.8x damage from attacks, has no Rock weakness, and has Self Sufficient's effects. After an opposing Pokemon lowers one of its stats, its Defense and Special Defense rise by 1.",
-shortDesc:"Entry drops Def/SpD; no crits; 0.8x damage; no Rock weakness; Self Sufficient; reacts to drops."
+shortDesc:"Entry drops Def/SpD; no crits; 0.8x damage; no Rock weakness; Self Sufficient."
 },
 relicmishap:{
 name:"Relic Mishap",
 desc:"This Pokemon takes 0.9x damage from attacks and has Self Sufficient, Water Absorb, and Volt Absorb. It restores 1/16 max HP each turn and is immune to Sandstorm and Hail damage. During Sandstorm, its Special Defense is multiplied by 1.5. During Hail or Snow, its Defense is multiplied by 1.5.",
-shortDesc:"0.9x damage; heals 1/16; Water/Volt Absorb; weather chip immune; Sand: 1.5x SpD; Hail/Snow: 1.5x Def."
+shortDesc:"0.9x damage; Self Sufficient; Water/Volt Absorb; Sand +SpD; Hail/Snow +Def."
 },
 shedskin:{
 name:"Shed Skin",
 desc:"At the end of each turn, this Pokemon has a 50% chance to cure its non-volatile status, remove common negative effects including Curse and Perish Song, reset its negative stat stages to 0, and restore 1/4 max HP. This can also activate while at or below half HP. In Dragon's Den, activation is guaranteed; it instead raises the higher offensive stat by 1, lowers Defense and Special Defense by 1, and restores 1/4 max HP.",
-shortDesc:"50% to cleanse status/effects and stat drops, then heal 1/4; altered and guaranteed in Dragon's Den."
+shortDesc:"50% to cure effects, reset drops, and heal 1/4; guaranteed in Dragon's Den."
 },
 draconicforce:{
 name:"Draconic Force",
@@ -4252,7 +4392,7 @@ shortDesc:"Pixilate + Queenly Majesty + Sworn Duty."
 },
 fallenstar:{
 name:"Fallen Star",
-desc:"This Ability cannot be suppressed. This Pokemon has Mold Breaker, Dual Wield, Skill Link, and Self Sufficient. Multi-hit Arrow moves have 1.5x power and Arrow moves have 1.5x power against trapped targets. At half HP or less, Arrow moves gain +1 priority and this Pokemon takes half damage. After an Arrow move, it takes 0.25x damage for the turn. An Arrow KO repeats the move at half power; in Free-for-All, Arrows hit all foes.",
+desc:"This Ability cannot be suppressed. This Pokemon has Mold Breaker, Dual Wield, Skill Link, and Self Sufficient. Existing multi-hit Arrow moves keep their normal power and use Skill Link instead of gaining an extra Dual Wield hit. Arrow moves deal 1.5x damage to trapped targets. At half HP or less, Arrow moves gain +1 priority and this Pokemon takes half damage. After an Arrow move, it takes 0.25x damage for the turn. An Arrow KO repeats the move at half power; in Free-for-All, Arrows hit all foes.",
 shortDesc:"Mold Breaker + Dual Wield + Self Sufficient; at half HP, Arrows gain +1 priority."
 },
 ragingstorm:{
@@ -4297,18 +4437,18 @@ shortDesc:"Magic Bounce + Serene Grace; sets Gravity and ignores Gravity's negat
 },
 spiralevolution:{
 name:"Spiral Evolution",
-desc:"This Pokemon has Adaptability, Levitate, and Dual Wield. Its damaging moves pierce protection for reduced damage, and its non-priority moves act first in Trick Room.",
-shortDesc:"Adaptability + Levitate + Dual Wield; protection pierce; acts first in Trick Room."
+desc:"This Pokemon has Adaptability, Levitate, and Dual Wield. Its damaging moves pierce protection for reduced damage, its non-priority moves act first in Trick Room, it takes 0.8x damage, and it has a raised critical-hit ratio.",
+shortDesc:"Adaptability + Levitate + Dual Wield; protection pierce; Trick Room priority; takes 0.8x."
 },
 accumulation:{
 name:"Accumulation",
 desc:"This Pokemon has Thick Fat and ignores sandstorm and hail. It can use Belch without a Berry and gains one Stockpile each turn. At 3 stacks it waits one full turn, then automatically chooses Belch or Spit Up every other turn. Its Spit Up and Swallow combinations still apply.",
-shortDesc:"Thick Fat; auto-Stockpiles; at 3 waits one turn, then releases every other turn."
+shortDesc:"Thick Fat; auto-Stockpiles; at 3 waits one turn, then auto-releases every other turn."
 },
 adaptivecell:{
 name:"Adaptive Cell",
 desc:"This Pokemon has Overcoat's effect and its Special Attack is multiplied by 1.3. Before using a physical move, it becomes Fighting type; before using a special move, it becomes Psychic type. If its Special Attack is higher than its Attack, its physical moves may use Special Attack while still targeting Defense.",
-shortDesc:"Overcoat; SpA 1.3x; physical moves become Fighting; special moves become Psychic; physical moves may use SpA."
+shortDesc:"Overcoat; SpA 1.3x; physical -> Fighting; special -> Psychic; physical may use SpA."
 },
 alloycore:{
 name:"Alloy Core",
@@ -4352,13 +4492,13 @@ shortDesc:"Off-type moves gain STAB; hits type immunities; Overcoat."
 },
 astralwatcher:{
 name:"Astral Watcher",
-desc:"This Pokemon has Prankster, Telepathy, and Defragment. On entry, it reveals foes' items and may apply Embargo.",
+desc:"This Pokemon has Prankster, Telepathy, and Defragment. On entry, it reveals foes' items and each foe has a 30% chance to gain Embargo.",
 shortDesc:"Prankster + Telepathy + Defragment; reveals foes' items."
 },
 astralwitchcraft:{
 name:"Astral Witchcraft",
-desc:"This Pokemon has Sworn Duty, Levitate, and Magic Guard's effects.",
-shortDesc:"Sworn Duty + Levitate + Magic Guard."
+desc:"This Pokemon has Sworn Duty, Levitate, and Magic Guard's effects. In Fairy Tale or New World, its Special Attack and Special Defense rise by 1 on entry.",
+shortDesc:"Sworn Duty + Levitate + Magic Guard; Fairy Tale/New World: +1 SpA/SpD."
 },
 aurainstinct:{
 name:"Aura Instinct",
@@ -4383,7 +4523,7 @@ shortDesc:"Liquid Voice + Water Absorb + Hydration."
 battlefervor:{
 name:"Battle Fervor",
 desc:"If this Pokemon moves before its target, its attacks deal 1.2x damage. Once per switch-in, if it would move after the attacker, damaging attacks against it deal 0.8x damage. The first time per battle it is hit by an opposing damaging move, its Attack and Special Attack rise by 1 stage. Foes cannot eat Berries while this Pokemon is active, and Seed items are prevented. Bewitched Woods, Haunted, and Holy Field disable these effects.",
-shortDesc:"Fast attacks 1.2x; slow hit 0.8x once; first hit boosts; inactive in Bewitched/Haunted/Holy."
+shortDesc:"Fast attacks 1.2x; slow-hit guard once; first hit +Atk/SpA; blocks Berries/Seeds."
 },
 bewitchingmajesty:{
 name:"Bewitching Majesty",
@@ -4398,7 +4538,7 @@ shortDesc:"Sharpness; gains Fighting STAB."
 blazingmane:{
 name:"Blazing Mane",
 desc:"Fire attacks have 1.5x power and damaging moves hit twice, with the second hit at 30% power. At half HP or less, Fire attacks gain +1 priority. Burning and Volcanic Fields raise its Speed by 1 on entry or when the field starts.",
-shortDesc:"Fire 1.5x; attacks hit twice; Fire gains priority at half HP; fire fields grant +1 Speed."
+shortDesc:"Fire 1.5x; second hit 30%; half-HP Fire +1 priority; fire fields +1 Spe."
 },
 blazingtempo:{
 name:"Blazing Tempo",
@@ -4437,8 +4577,8 @@ shortDesc:"Self Sufficient + Opportunist + Magma Armor."
 },
 byxbysiontouch:{
 name:"Byxbysion Touch",
-desc:"This Pokemon's Poison-type damaging moves and damaging moves that can poison heal the user for 50% of the damage dealt. Ground-type moves deal 1/4 damage to this Pokemon. When an opposing Pokemon loses HP from poison or toxic poison, this Pokemon restores HP equal to the HP lost.",
-shortDesc:"Poison/poisoning attacks drain 50%; Ground damage is 1/4; drains foes' poison damage."
+desc:"This Pokemon's Poison-type damaging moves restore 1/4 of the damage dealt. Ground-type moves deal 1/2 damage to this Pokemon. It has Poison Touch's effect.",
+shortDesc:"Poison attacks drain 1/4; Ground damage halved; Poison Touch."
 },
 calderacore:{
 name:"Caldera Core",
@@ -4523,12 +4663,12 @@ shortDesc:"Precision + Opportunist + Battle Fervor."
 echofiend:{
 name:"Echo Fiend",
 desc:"This Pokemon is immune to sound moves, and this immunity cannot be suppressed. Its sound moves become Flying type and have 1.5x power. This Pokemon's side is immune to its own damaging sound-based moves.",
-shortDesc:"Unsuppressible sound immunity; sound becomes Flying and 1.5x; allies avoid sound damage."
+shortDesc:"Unsuppressible sound immunity; sound -> Flying 1.5x; allies avoid own sound damage."
 },
 eclipse:{
 name:"Eclipse",
 desc:"During weather, this Pokemon's attacks deal 1.5x damage. In clear weather, attacks deal 0.5x damage to this Pokemon. Its Psychic-type moves become Dark type if Dark would do more damage, and its Dark-type moves become Psychic type if Psychic would do more damage. It restores 1/4 max HP instead of taking damage from Psychic- or Dark-type moves.",
-shortDesc:"Weather attacks 1.5x; clear weather takes 0.5x; Psychic/Dark pick better type; absorbs both."
+shortDesc:"Weather attacks 1.5x; clear damage halved; Psychic/Dark choose type; absorbs both."
 },
 eclipsevision:{
 name:"Eclipse Vision",
@@ -4582,8 +4722,13 @@ shortDesc:"Self Sufficient + Shell Armor + Friend Guard + Dual Wield; keeps fiel
 },
 freezerburn:{
 name:"Freezer Burn",
-desc:"This Pokemon has Slush Rush and Refrigerate. Refrigerate-converted moves have 1.2x power, and charge moves skip their charge turn.",
-shortDesc:"Slush Rush + Refrigerate; 1.2x conversion; skips charges."
+desc:"This Pokemon has Slush Rush and Refrigerate. Refrigerate-converted moves have 1.2x power.",
+shortDesc:"Slush Rush + Refrigerate; converted moves have 1.2x power."
+},
+livinglegend:{
+name:"Living Legend",
+desc:"This Pokemon has Flash Fire, Download, and Sheer Force. Hidden effect: Extreme Speed has 1.5x power.",
+shortDesc:"Flash Fire + Download + Sheer Force; Extreme Speed 1.5x."
 },
 frostsovereign:{
 name:"Frost Sovereign",
@@ -4628,7 +4773,7 @@ shortDesc:"Water moves 1.2x; attacks cannot miss; Dual Wield; +1 crit vs unmoved
 hydrabond:{
 name:"Hydra Bond",
 desc:"This Pokemon's damaging moves become multi-hit moves that hit three times. The second and third hits deal 30% damage and retarget the foe's ally if the first target fainted. In Free-for-All battles, single-target moves hit all foes once at 1.3x power; spread moves hit all foes three times, with later hits at 30% power, and full-power spread moves stay full power.",
-shortDesc:"Damaging moves hit 3 times; hits 2/3 have 30% power. FFA: single-target hits all foes at 1.3x."
+shortDesc:"Damaging moves hit 3x; hits 2/3 at 30%; FFA singles hit all foes at 1.3x."
 },
 hydrabreaker:{
 name:"Hydra Breaker",
@@ -4693,12 +4838,12 @@ shortDesc:"Passes positive stat boosts to an adjacent ally."
 mindfreeze:{
 name:"Mind Freeze",
 desc:"This Pokemon is immune to Ice-type attacks and restores 1/4 of its maximum HP when hit by one. It has Ice Body's healing and hail immunity. Its Psychic-type moves have a 40% chance to cause frostbite, and Freezing Glare's frostbite chance is doubled. Its Physical Ice-type moves become Special.",
-shortDesc:"Absorbs Ice for 25%; Ice Body effects; Psychic moves frostbite; Physical Ice becomes Special."
+shortDesc:"Ice immunity heals 1/4; Ice Body; Psychic may frostbite; physical Ice -> special."
 },
 mirrorgreed:{
 name:"Mirror Greed",
-desc:"This Pokemon has Magic Bounce and Analytic's effects.",
-shortDesc:"Magic Bounce + Analytic."
+desc:"This Pokemon has Magic Bounce, Analytic, and Filter's effects.",
+shortDesc:"Magic Bounce + Analytic + Filter."
 },
 moonlitwings:{
 name:"Moonlit Wings",
@@ -4718,7 +4863,7 @@ shortDesc:"Sets 8-turn Hail/Veil; heals when others faint; frostbite; Cursed Bod
 mourningvessel:{
 name:"Mourning Vessel",
 desc:"This Pokemon has Prankster's effect. Its damaging moves deal 20% more damage for each fainted ally, up to 2x damage. At the end of each turn, it restores 5% of its max HP for each fainted opposing Pokemon, counting every opposing side in Free-For-All battles.",
-shortDesc:"Prankster; +20% damage per fainted ally (max 2x); heals 5% per fainted foe each turn."
+shortDesc:"Prankster + Magic Guard; fallen allies boost damage; foes fainted heal 5% each turn."
 },
 neutralization:{
 name:"Neutralization",
@@ -4792,8 +4937,8 @@ shortDesc:"Moves cannot miss + Filter + Self Repair + Unseen Fist."
 },
 pollenbloom:{
 name:"Pollen Bloom",
-desc:"This Pokemon has Thick Fat, Proficient, and Invigorate's effects. At the end of each turn, opposing non-Grass Pokemon take Grass-type damage equal to 1/16 max HP, scaled by effectiveness and blocked by Grass immunities; this Pokemon heals the damage dealt.",
-shortDesc:"Thick Fat + Proficient + Invigorate; Grass scaling chip respects immunities and heals the user."
+desc:"This Pokemon has Thick Fat and Proficient's effects. At the end of each turn, opposing non-Grass Pokemon take Grass-type damage equal to 1/16 max HP, scaled by effectiveness and blocked by Grass immunities; this Pokemon heals the damage dealt.",
+shortDesc:"Thick Fat + Proficient; Grass chip scales and heals the user."
 },
 powerdrill:{
 name:"Power Drill",
@@ -4803,7 +4948,7 @@ shortDesc:"Drill moves have 1.5x power."
 piercingdrill:{
 name:"Piercing Drill",
 desc:"This Pokemon has Mold Breaker's effect. Its contact moves ignore a target's protection and deal 1/4 the usual damage. It also has Power Drill's effect, boosting drill moves by 1.5x, or 2x in Rocky, Mountain, Snowy Mountain, Cave, and Volcanic fields.",
-shortDesc:"Mold Breaker; contact pierces protection for 1/4 damage; drill moves 1.5x, or 2x in listed fields."
+shortDesc:"Mold Breaker; contact pierces Protect at 1/4; drill moves 1.5x, or 2x in fields."
 },
 precision:{
 name:"Precision",
@@ -4868,7 +5013,7 @@ shortDesc:"SpA equals Defense using Def stages; beam/Mega Launcher moves have 1.
 requiem:{
 name:"Requiem",
 desc:"This Pokemon has Cursed Body's effect. Its first direct damaging interaction with each opposing Pokemon applies Perish Song to that foe. The mark clears when the foe switches out. Whenever an opposing Pokemon faints, this Pokemon restores 1/4 max HP. When this Pokemon faints, it creates Haunted Field for 5 turns. This Ability cannot be suppressed.",
-shortDesc:"Cursed Body; first interaction marks foe with Perish Song; foe KO heals 1/4; faint sets Haunted."
+shortDesc:"Cursed Body; first hit marks foes with Perish Song; foe KO heals 1/4; faint sets Haunted."
 },
 reapersgrip:{
 name:"Reaper's Grip",
@@ -4878,7 +5023,7 @@ shortDesc:"Iron Fist + Pressure; entry lowers opposing Def/SpD, doubled in Cold 
 resonanceforce:{
 name:"Resonance Force",
 desc:"Sound-based moves used by this Pokemon's side deal 1.5x damage. This Pokemon's side is immune to its own damaging sound-based moves. Sound-based moves used by this Pokemon use Attack instead of their usual attacking stat.",
-shortDesc:"Side's sound moves 1.5x; allies avoid own damaging sound moves; user's sound moves use Atk."
+shortDesc:"Side sound moves 1.5x; allies avoid own sound damage; user sound uses Atk."
 },
 rimeknuckle:{
 name:"Rime Knuckle",
@@ -4932,8 +5077,8 @@ shortDesc:"Drought + Royal Decree; Safeguard blocks the reset; disabled by Neutr
 },
 sandsovereign:{
 name:"Sand Sovereign",
-desc:"On entry, this Pokemon sets Sandstorm for 8 turns. It has Filter and Battle Armor. Manually used Arenite Wall lasts 8 turns. Each turn, foes take immunity-aware Rock damage equal to 1/16 max HP, scaled by effectiveness.",
-shortDesc:"8-turn Sand; Filter + Battle Armor; manual Arenite Wall lasts 8 turns; Rock chip."
+desc:"On entry, this Pokemon sets Sandstorm for 8 turns. It has Dauntless Shield and Battle Armor. Arenite Wall lasts 5 turns, or 8 turns when extended. Each turn, foes take immunity-aware Rock damage equal to 1/16 max HP, scaled by effectiveness.",
+shortDesc:"8-turn Sand; Dauntless Shield + Battle Armor; Arenite Wall 5/8 turns; Rock chip."
 },
 seablessing:{
 name:"Sea Blessing",
@@ -4943,7 +5088,7 @@ shortDesc:"1.5x Def/SpD; entry heals self/allies 1/4; Water Veil + Rain Dish."
 seasonalstride:{
 name:"Seasonal Stride",
 desc:"Normal moves become this Pokemon's primary type and have 1.2x power. Kicking moves have 1.4x power. It has Chlorophyll and changes forme with weather: Spring in rain, Summer in sun, Autumn in sand, Winter in snow.",
-shortDesc:"Normal moves become primary type at 1.2x; kicks 1.4x; Chlorophyll; weather changes forme."
+shortDesc:"Normal -> primary type 1.2x; kicks 1.4x; Chlorophyll; weather forms."
 },
 secondwind:{
 name:"Second Wind",
@@ -4993,12 +5138,12 @@ shortDesc:"Regenerator + Shell Armor."
 siegelauncher:{
 name:"Siege Launcher",
 desc:"This Pokemon has Water Barrage, Mega Launcher, Self Sufficient, and Stalwart's effects. Moves boosted by Mega Launcher are used twice through Dual Wield; the second hit deals 20% of the move's unboosted power.",
-shortDesc:"Water Barrage + Mega Launcher + Self Sufficient + Stalwart; boosted moves get a 20% second hit."
+shortDesc:"Water Barrage + Mega Launcher + Self Sufficient + Stalwart; boosted moves add 20% hit."
 },
 sinisterblaze:{
 name:"Sinister Blaze",
-desc:"This Pokemon is always burned and its burn can overwrite other status conditions. Burn heals this Pokemon instead of damaging it. While this Pokemon is burned, opposing Pokemon lose doubled burn damage each turn, and this Pokemon heals the damage dealt to each foe this way. This Ability cannot be Skill Swapped, suppressed, copied by Role Play, given by Entrainment, or Traced.",
-shortDesc:"Always burned; burn heals user; foes lose burn damage and heal it; cannot be copied/suppressed."
+desc:"This Pokemon is burned on switch-in, even through Misty Terrain, and its burn can overwrite other status conditions. Burn heals this Pokemon instead of damaging it, and its physical attacks are not weakened by burn. While this Pokemon is burned, opposing Pokemon take damage equal to 1/8 of their max HP each turn, doubled to 1/4 if they are burned, and this Pokemon heals the damage dealt. This Ability cannot be Skill Swapped, suppressed, copied by Role Play, given by Entrainment, or Traced.",
+shortDesc:"Misty-bypassing burn; no burn penalty; foes take 1/8, or 1/4 if burned; heals damage."
 },
 soaringspirit:{
 name:"Soaring Spirit",
@@ -5113,8 +5258,8 @@ shortDesc:"Stamina + Rocky Payload + Self Sufficient."
 },
 toxicbloom:{
 name:"Toxic Bloom",
-desc:"This Pokemon has Pollen Bloom and Self Sufficient. Its Poison-type attacks drain half the damage they deal.",
-shortDesc:"Pollen Bloom + Self Sufficient + Poison drain."
+desc:"This Pokemon has Pollen Bloom and Self Sufficient. Its Poison-type attacks restore 1/4 of the damage they deal.",
+shortDesc:"Pollen Bloom + Self Sufficient; Poison attacks heal 1/4 damage."
 },
 toxicrenewal:{
 name:"Toxic Renewal",
@@ -5139,7 +5284,7 @@ shortDesc:"Brute Force + Sand Stream + Strong Jaw."
 ultrainstinct:{
 name:"Ultra Instinct",
 desc:"This Pokemon has Mold Breaker and Inner Focus. It deals 2x damage through screens and 1.5x damage when moving first. In Ashen Beach, New World, Starlight Arena, and Cold Eclipse, it gains 1 Accuracy on entry, deals 1.5x damage, and takes 50% less damage. Outside those fields, it takes 70% less damage when hit before its attacker has moved. Bewitched Woods, Haunted, and Holy Field disable these effects.",
-shortDesc:"Mold Breaker + Inner Focus; speed-based offense/guard; inactive in Bewitched/Haunted/Holy."
+shortDesc:"Mold Breaker + Inner Focus; screens 2x; acts-first 1.5x; field bonuses."
 },
 uncheckedassault:{
 name:"Unchecked Assault",
@@ -5153,8 +5298,8 @@ shortDesc:"Ultra Ego + Levitate + Raging Storm."
 },
 vanguard:{
 name:"Vanguard",
-desc:"This Pokemon has Intimidate built in. Extreme Speed has 1.5x power and becomes Fire-type if Fire would deal more damage. This Pokemon heals 30% of the damage it deals with attacks, doubled against G-Max Pokemon, up to 33% of its max HP per hit. After using Extreme Speed, this Pokemon takes 0.25x damage until the end of the turn. This Pokemon can only be damaged by direct attacks. Its stats cannot be lowered by opposing Pokemon. Once per battle, it endures a KO and survives at 1 HP.",
-shortDesc:"Intimidate; Extreme Speed 1.5x; drains damage; Magic Guard; stats can't drop."
+desc:"This Pokemon has Intimidate built in. Extreme Speed has 1.5x power, +2 critical-hit ratio, and becomes Fire-type if Fire would deal more damage. After Extreme Speed, this Pokemon takes 0.25x damage from attacks for the rest of the turn. Its next Extreme Speed is guaranteed to crit after its one-time Endure activates. Opposing Pokemon cannot lower its stats, and non-move damage cannot affect it. Once per battle, it survives a direct-move KO at 1 HP.",
+shortDesc:"Intimidate; Extreme Speed 1.5x/+2 crit; post-ES 0.25x damage; one-time 1 HP Endure."
 },
 vendetta:{
 name:"Vendetta",
@@ -5208,7 +5353,7 @@ shortDesc:"Sets Wasteland/Murkwater; Underwater KOs non-Poison/Steel; Byxbysion 
 },
 waterbarrage:{
 name:"Water Barrage",
-desc:"This Pokemon has Proficient and Dual Wield's effects. At the end of each turn, opposing non-Water Pokemon take cycling Water damage of 1/16, 2/16, then 3/16 max HP, scaled by effectiveness and blocked by Water immunities.",
+desc:"This Pokemon has Proficient and Dual Wield's effects. At the end of each turn, opposing Pokemon take cycling Water damage of 1/16, 2/16, then 3/16 max HP, scaled by effectiveness and blocked by Water immunities.",
 shortDesc:"Proficient + Dual Wield; cycling Water chip respects effectiveness and immunities."
 },
 webassassin:{
@@ -5219,7 +5364,7 @@ shortDesc:"Speed doubled and cannot drop; Sniper; always crits poisoned or Speed
 wickedcommand:{
 name:"Wicked Command",
 desc:"This Pokemon has Insomnia and Super Luck's effects and takes 20% less damage from other Pokemon's damaging moves. If this Pokemon knocks out an enemy with a move, its higher attacking stat is raised by 1 stage, with Attack chosen on a tie. It also restores 1/4 of its maximum HP and removes entry hazards from its side.",
-shortDesc:"Insomnia + Super Luck; takes 0.8x damage; KO boosts higher offense, heals 1/4, clears hazards."
+shortDesc:"Insomnia + Super Luck; takes 0.8x; KO boosts offense, heals 1/4, clears hazards."
 },
 wickedsnare:{
 name:"Wicked Snare",
@@ -5244,7 +5389,7 @@ shortDesc:"Normal moves become Dragon type; Dragon STAB; converted moves 1.2x."
 magmaarmor:{
 name:"Magma Armor",
 desc:"No freeze outside Cold Eclipse; field +Def/SpD; halves Water/Ice attacking stats; Dragon's Den absorbs Fire.",
-shortDesc:"No freeze outside Cold Eclipse; field +Def/SpD; halves Water/Ice; Dragon's Den absorbs Fire."
+shortDesc:"No freeze; field +Def/SpD; halves Water/Ice; Dragon's Den absorbs Fire."
 },
 megalauncher:{
 name:'Mega Launcher',
@@ -5308,8 +5453,8 @@ shortDesc:"Infiltrator + Levitate + Hydra Bond; higher offensive stat for signat
 },
 atrocity:{
 name:"Atrocity",
-desc:"This Ability cannot be suppressed and has Wildfire Core, Self Sufficient, and draining attacks. This Pokemon's damaging moves have 1.3x power, +1 critical hit ratio, ignore Abilities, ignore defensive stat boosts, and bypass Substitute, Reflect, Light Screen, and Aurora Veil. Its Defense and Special Defense are 1.3x. It heals 30% of the damage it deals with attacks, doubled against G-Max Pokemon, up to 33% of its max HP per hit. In Cold Eclipse, its damaging moves gain another 1.3x boost, and its Defense and Special Defense become 1.5x.",
-shortDesc:"Wildfire Core + Self Sufficient + draining attacks."
+desc:"This Ability cannot be suppressed and has Wildfire Core, Self Sufficient, and draining attacks. This Pokemon's damaging moves have 1.3x power, +1 critical hit ratio, ignore Abilities, ignore defensive stat boosts, and bypass Substitute, Reflect, Light Screen, and Aurora Veil. Its Defense and Special Defense are 1.3x. Each damaging hit restores 1/4 of the damage dealt, with no per-hit cap. In Cold Eclipse, its damaging moves gain another 1.3x boost, and its Defense and Special Defense become 1.5x.",
+shortDesc:"Wildfire Core + Self Sufficient; damaging hits heal 1/4 damage."
 },
 ultraego:{
 name:"Ultra Ego",
@@ -5340,13 +5485,19 @@ shortDesc:'Strong Jaw + Earth Eater.'
 
 var CUSTOM_MOVE_UPDATES={
 armthrust:{
-multihit:[2,5]
+multihit:[2,5],
+desc:'Hits two to five times. Skill Link makes it hit five times.',
+shortDesc:'Hits 2-5 times.'
 },
 aurorabeam:{
 basePower:80,
 flags:{protect:1,mirror:1,metronome:1,pulse:1},
 desc:"Has a 10% chance to lower the target's Attack by 1 stage. Boosted by Mega Launcher and Dual Wield.",
 shortDesc:"10% chance to lower Attack. Boosted by Mega Launcher and Dual Wield."
+},
+arenitewall:{
+desc:"For 5 turns, the user's side takes half damage from super-effective attacks. Its duration is 8 turns when extended by Sand Sovereign, Light Clay, or the field. Critical hits and moves that bypass screens ignore it.",
+shortDesc:"5 turns; side takes 0.5x from super-effective hits; may last 8."
 },
 astonish:{
 basePower:40,
@@ -5363,13 +5514,19 @@ desc:'Hits two to six times. Each hit has 30 base power.',
 shortDesc:'Hits 2-6 times. Each hit has 30 power.'
 },
 barrage:{
-multihit:[2,5]
+multihit:[2,5],
+desc:"Hits two to five times, uses the user's higher attacking stat, and has a 20% chance per hit to lower Special Defense. A five-hit use crits on the last hit.",
+shortDesc:'Hits 2-5; higher Atk/SpA; 20% -SpD per hit; 5 hits crit last.'
 },
 bulletseed:{
-multihit:[2,5]
+multihit:[2,5],
+desc:'Hits two to five times. Skill Link makes it hit five times.',
+shortDesc:'Hits 2-5 times.'
 },
 cut:{
-basePower:60
+basePower:60,
+desc:'A 60 Base Power physical Normal-type move.',
+shortDesc:'60 BP physical Normal move.'
 },
 fireblast:{
 flags:{protect:1,mirror:1,metronome:1,pulse:1},
@@ -5395,10 +5552,11 @@ shortDesc:"Higher offense; high crit. Palkia: never misses; ignores Protect/redi
 },
 needlegun:{
 basePower:30,
+category:'Physical',
 type:'Steel',
 multihit:6,
-desc:'A 30 Base Power Steel-type special attack that hits exactly six times.',
-shortDesc:'Steel type. Hits exactly 6 times.'
+desc:"A 30 Base Power physical Steel-type attack that hits exactly six times. It uses whichever is higher, the user's Attack or Special Attack, against whichever is lower, the target's Defense or Special Defense.",
+shortDesc:'30 BP physical Steel; hits 6 times; higher Atk/SpA vs lower Def/SpD.'
 },
 skullbash:{
 desc:"Charges with +4 priority, raising Attack, Defense, and Special Defense by 1 and reducing damage taken to 0.7x. The attack fires at normal priority and heals 1/8 max HP on a successful hit. A skipped charge has no priority boost.",
@@ -5448,7 +5606,9 @@ desc:'High critical-hit ratio; 10% confusion chance; boosted by Mega Launcher an
 shortDesc:'High crit; 10% confusion; launcher/Dual Wield boost.'
 },
 twinbeam:{
-basePower:60
+basePower:60,
+desc:'A 60 Base Power Psychic-type move that hits all adjacent foes at full power.',
+shortDesc:'60 BP Psychic; hits adjacent foes at full power.'
 },
 bonemerang:{
 basePower:50,
@@ -5479,10 +5639,14 @@ desc:'Hits 2 to 6 times. Thick Club makes it hit 5 or 6 times. Each hit has a 10
 shortDesc:'Hits 2-6; Thick Club: 5-6; 10% Def drop; hits airborne neutrally.'
 },
 furyswipes:{
-multihit:[2,5]
+multihit:[2,5],
+desc:'Hits two to five times. Skill Link makes it hit five times.',
+shortDesc:'Hits 2-5 times.'
 },
 iciclespear:{
-multihit:[2,5]
+multihit:[2,5],
+desc:'Hits two to five times. Skill Link makes it hit five times.',
+shortDesc:'Hits 2-5 times.'
 },
 cometpunch:{
 name:'Comet Punch',
@@ -5546,10 +5710,14 @@ desc:'Hits two to five times. Skill Link makes it hit five times. Loaded Dice ma
 shortDesc:'Hits 2-5 times.'
 },
 rockblast:{
-multihit:[2,5]
+multihit:[2,5],
+desc:'Hits two to five times. Skill Link makes it hit five times.',
+shortDesc:'Hits 2-5 times.'
 },
 scaleshot:{
-multihit:[2,5]
+multihit:[2,5],
+desc:"Hits two to five times. After the last hit, the user's Defense falls by 1 and Speed rises by 1.",
+shortDesc:'Hits 2-5; user -1 Def and +1 Spe after the last hit.'
 },
 spikecannon:{
 name:'Spike Cannon',
@@ -5567,19 +5735,43 @@ desc:'If this move is successful, it sets Stealth Rock on the opposing side.',
 shortDesc:'Sets Stealth Rock on the opposing side.'
 },
 tailslap:{
-multihit:[2,5]
+multihit:[2,5],
+desc:'Hits two to five times. Skill Link makes it hit five times.',
+shortDesc:'Hits 2-5 times.'
 },
 supercellslam:{
 name:'Supercell Slam',
-basePower:120
+basePower:120,
+desc:'A 120 Base Power Electric-type move. If it misses, the user loses half its maximum HP.',
+shortDesc:'120 BP; user loses half max HP if it misses.'
 },
 volttackle:{
 name:'Volt Tackle',
-basePower:140
+basePower:140,
+desc:'A 140 Base Power Electric-type move that causes recoil damage to the user.',
+shortDesc:'140 BP; recoil damage.'
 },
 wildcharge:{
 name:'Wild Charge',
-basePower:120
+basePower:120,
+desc:'A 120 Base Power Electric-type move that causes recoil damage to the user.',
+shortDesc:'120 BP; recoil damage.'
+},
+focuspunch:{
+desc:'The user loses its focus if hit before moving. This move bypasses Protect at full power; otherwise, it deals 50 Base Power.',
+shortDesc:'Bypasses Protect at full power; otherwise 50 BP.'
+},
+mudslap:{
+desc:'A 25 Base Power special Ground-type move with 95% accuracy that hits two to five times. On Murkwater Surface, it becomes Water type.',
+shortDesc:'25 BP special Ground; hits 2-5; Water on Murkwater Surface.'
+},
+rockwrecker:{
+desc:'If this move fails to KO its target, Stealth Rock is set on the target\'s side. If successful, the user must recharge on the following turn.',
+shortDesc:'If it fails to KO, sets Stealth Rock; user must recharge.'
+},
+triplearrows:{
+desc:'Has a 50% chance to lower Defense, a 30% chance to flinch, and a raised critical-hit ratio. Each use raises the user\'s side critical-hit ratio by 1.',
+shortDesc:'High crit; 50% -1 Def; 30% flinch; +1 side crit per use.'
 },
 zippyzap:{
 num:729,
@@ -5723,75 +5915,56 @@ wildcharge:['9M'],
 workup:['9M']
 },
 hypno:{
-afteryou:['9M'],
-allyswitch:['9M'],
-aurasphere:['9M'],
-batonpass:['9M'],
-blizzard:['9M'],
-confuseray:['9M'],
-darkpulse:['9M'],
-dazzlinggleam:['9M'],
-disable:['9M'],
+snatch:['9M'],
+cosmicpower:['9M'],
 drainpunch:['9M'],
-dreameater:['9M'],
-dynamicpunch:['9M'],
-embargo:['9M'],
-encore:['9M'],
-energyball:['9M'],
-expandingforce:['9M'],
-firepunch:['9M'],
-focusblast:['9M'],
-foresight:['9M'],
-foulplay:['9M'],
-futuresight:['9M'],
-gravity:['9M'],
-healblock:['9M'],
-helpinghand:['9M'],
-hex:['9M'],
-hypnosis:['9M'],
-icebeam:['9M'],
-icepunch:['9M'],
-imprison:['9M'],
-inferno:['9M'],
-kinesis:['9M'],
-knockoff:['9M'],
-lashout:['9M'],
-lightscreen:['9M'],
-luckychant:['9M'],
-magicroom:['9M'],
-meditate:['9M'],
-memento:['9M'],
-miracleeye:['9M'],
-mistyterrain:['9M'],
-nightdaze:['9M'],
 nightmare:['9M'],
-partingshot:['9M'],
+assist:['9M'],
+powertrip:['9M'],
+storedpower:['9M'],
+teleport:['9M'],
+meditate:['9M'],
+hypnosis:['9M'],
+poisongas:['9M'],
+smog:['9M'],
+clearsmog:['9M'],
+flatter:['9M'],
+allyswitch:['9M'],
+quash:['9M'],
+dreameater:['9M'],
+entrainment:['9M'],
+futuresight:['9M'],
+instruct:['9M'],
+barrier:['9M'],
+encore:['9M'],
+aurasphere:['9M'],
+focusblast:['9M'],
+eeriespell:['9M'],
+confuseray:['9M'],
+lightscreen:['9M'],
+reflect:['9M'],
+helpinghand:['9M'],
+nastyplot:['9M'],
+nightshade:['9M'],
+protect:['9M'],
 psybeam:['9M'],
 psychic:['9M'],
+psychicnoise:['9M'],
 psychicterrain:['9M'],
-psyshock:['9M'],
-psystrike:['9M'],
-quash:['9M'],
-reflect:['9M'],
-safeguard:['9M'],
+rest:['9M'],
+sleeptalk:['9M'],
+secretpower:['9M'],
+seismictoss:['9M'],
 shadowball:['9M'],
-signalbeam:['9M'],
-snarl:['9M'],
-storedpower:['9M'],
-suckerpunch:['9M'],
+skillswap:['9M'],
+spotlight:['9M'],
+substitute:['9M'],
 taunt:['9M'],
-telekinesis:['9M'],
-throatchop:['9M'],
-thunder:['9M'],
-thunderbolt:['9M'],
-thunderpunch:['9M'],
-thunderwave:['9M'],
+topsyturvy:['9M'],
 torment:['9M'],
 toxic:['9M'],
 trickroom:['9M'],
-willowisp:['9M'],
-wonderroom:['9M'],
-zapcannon:['9M']
+zenheadbutt:['9M']
 }
 };
 
@@ -5835,8 +6008,45 @@ flipturn:['9M']
 drifblim:{
 flamethrower:['9M']
 },
+arcanine:{
+jawlock:['9M'],
+doublekick:['9M'],
+nobleroar:['9M'],
+snarl:['9M'],
+wideguard:['9M'],
+safeguard:['9M']
+},
 tyranitar:{
-knockoff:['9M']
+knockoff:['9M'],
+rockwrecker:['9M'],
+breakingswipe:['9M'],
+bodypress:['9M'],
+dragoncheer:['9M'],
+nastyplot:['9M'],
+taunt:['9M'],
+weatherball:['9M'],
+wideguard:['9M']
+},
+basculegion:{
+skullbash:['9M'],
+wavecrash:['9M'],
+finalgambit:['9M'],
+blizzard:['9M'],
+curse:['9M'],
+dive:['9M'],
+flipturn:['9M'],
+haze:['9M'],
+hex:['9M'],
+hydropump:['9M'],
+icebeam:['9M'],
+nastyplot:['9M'],
+nightshade:['9M'],
+shadowball:['9M'],
+soak:['9M'],
+surf:['9M'],
+taunt:['9M'],
+swordsdance:['9M'],
+weatherball:['9M']
 },
 hitmonlee:{
 accelerock:['9M']
@@ -6260,7 +6470,7 @@ var CUSTOM_ANIMATED_BW_SPRITES=new Set([
 'aggron','ariados','basculegion','basculegionf','butterfree','cacturne','charizard','cinderacegmax',
 'crobat','dragapult','duraludon','dusknoir','electivire','empoleon','espeon','garbodorgmax',
 'garchomp','garchompf','garchompmega','gardevoirmega','gengar','glalie','gliscor','grimmsnarl',
-'heracross','houndoom','hydreigon','infernape','inteleon','lilligant','lucariomega','luxray','magmortar','magneton',
+'heracross','hydreigon','infernape','inteleon','lilligant','lucariomega','luxray','magmortar','magneton',
 'magnezone','metagross','milotic','mothim','ninetales','obstagoon','perrserker','pidgeot',
 'ribombee','rotom','rotomfan','rotomfrost','rotomheat','rotommow','rotomwash','salamence',
 'scolipede','silvally','silvallybug','silvallydark','silvallydragon','silvallyelectric','silvallyfairy','silvallyfighting',
@@ -6271,6 +6481,16 @@ var CUSTOM_ANIMATED_BW_SPRITES=new Set([
 );
 var CUSTOM_SPECIES_IDS=Object.keys(CUSTOM_SPECIES);
 var CUSTOM_SPECIES_UPDATE_IDS=Object.keys(CUSTOM_SPECIES_UPDATES);
+function getCustomSpeciesBaseData(customSpecies){
+if(!window.BattlePokedex)return undefined;
+return window.BattlePokedex[customSpecies.base]||window.BattlePokedex[toID(customSpecies.base)];
+}
+function isCustomVisualForm(data){
+var forme=data==null?void 0:data.forme;
+if(typeof forme!=='string')return false;
+return['Alt','Aevian','East-Aevian','Pulse','Spring','Summer','Autumn','Winter'].includes(forme)||
+forme.endsWith('-Alt');
+}
 var SILVALLY_TYPE_FORMES={
 fighting:'Silvally-Fighting',
 flying:'Silvally-Flying',
@@ -6434,8 +6654,11 @@ tyrantrum:{w:90,h:90},
 torterraalt:{w:88,h:88},
 venusaur:{w:78,h:78},
 venusaurmega:{w:96,h:96},
-weavile:{w:62,h:62},
-weavilef:{w:62,h:62},
+weavile:{w:52,h:52},
+weavilef:{w:52,h:52},
+weavilealt:{w:52,h:52},
+weavilealtf:{w:52,h:52},
+corviknight:{w:86,h:98},
 whimsicott:{w:60,h:60},
 zoroark:{w:88,h:88},
 zoroarkhisui:{w:88,h:88}
@@ -6447,6 +6670,7 @@ banettemega:{w:90,h:90},
 butterfree:{w:70,h:70},
 butterfreemega:{w:88,h:88},
 corviknightgmax:{w:132,h:132},
+corviknight:{w:62,h:70},
 dondozo:{w:110,h:110},
 dusknoir:{w:86,h:86},
 espeon:{w:74,h:74},
@@ -6517,8 +6741,10 @@ victreebelmega:{w:84,h:84},
 sylveon:{w:108,h:108},
 umbreon:{w:108,h:108},
 vaporeon:{w:108,h:108},
-weavile:{w:56,h:56},
-weavilef:{w:56,h:56},
+weavile:{w:46,h:46},
+weavilef:{w:46,h:46},
+weavilealt:{w:46,h:46},
+weavilealtf:{w:46,h:46},
 whimsicott:{w:60,h:60},
 zoroark:{w:96,h:96},
 zoroarkhisui:{w:96,h:96}
@@ -6626,6 +6852,12 @@ CUSTOM_TEAMBUILDER_SPRITE_Y_OFFSETS[id]||0);
 spriteData.backgroundSize=width+"px auto";
 }
 var CUSTOM_ABILITY_UPDATE_IDS=Object.keys(CUSTOM_ABILITY_UPDATES);
+var CUSTOM_ARROW_MOVE_IDS=[
+'spiritshackle','thousandarrows','triplearrows','snipeshot','razorleaf','magicalleaf',
+'spikecannon','pinmissile','iciclespear','rockblast','bulletseed','scaleshot',
+'psychocut','ceaselessedge'];
+
+var CUSTOM_HORN_MOVE_IDS=['hornattack','horndrill','hornleech','megahorn'];
 var CUSTOM_ABILITY_COMPONENT_OVERRIDES={
 
 ultraego:['moldbreaker'],
@@ -6778,6 +7010,9 @@ for(var _moveid in CUSTOM_LEARNSET_ADDITIONS[_id2]){
 table.learnsets[_id2][_moveid]=encodeCustomLearnsetSources(CUSTOM_LEARNSET_ADDITIONS[_id2][_moveid]);
 }
 }
+if(table.learnsets.basculegion&&table.learnsets.basculegionf){
+table.learnsets.basculegionf=Object.assign({},table.learnsets.basculegion);
+}
 var pikachuSharedForms=[
 'pikachucosplay','pikachurockstar','pikachubelle','pikachupopstar',
 'pikachuphd','pikachulibre','pikachupartner','pikachustarter'];for(var _i10=0;_i10<
@@ -6803,12 +7038,20 @@ table.overrideSpeciesData[id]=Object.assign({},
 table.overrideSpeciesData[id]||{},
 customSpecies.data);
 
+if(isCustomVisualForm(customSpecies.data)){
+var baseData=table.overrideSpeciesData[customSpecies.base]||table.overrideSpeciesData[toID(customSpecies.base)]||{};
+var cosmeticFormes=new Set(baseData.cosmeticFormes||[]);
+cosmeticFormes.add(customSpecies.data.name);
+table.overrideSpeciesData[customSpecies.base]=Object.assign({},
+baseData,{
+cosmeticFormes:[].concat(cosmeticFormes)});
+
+}
 }
 if(table.tiers){for(var _i18=0;_i18<
 CUSTOM_SPECIES_IDS.length;_i18++){var _id5=CUSTOM_SPECIES_IDS[_i18];
 var _customSpecies=CUSTOM_SPECIES[_id5];
-var forme=_customSpecies.data.forme;
-if(typeof forme==='string'&&(forme==='Alt'||forme==='Aevian'||forme==='East-Aevian'||forme.endsWith('-Alt')))continue;
+if(isCustomVisualForm(_customSpecies.data))continue;
 var baseIndex=table.tiers.indexOf(_customSpecies.base);
 if(baseIndex>=0&&!table.tiers.includes(_id5))table.tiers.splice(baseIndex+1,0,_id5);
 }
@@ -6882,7 +7125,27 @@ customAbilityDataTable=window.BattleAbilities;
 if(window.BattleMovedex&&customMoveDataTable!==window.BattleMovedex){for(var _i26=0;_i26<
 CUSTOM_MOVE_UPDATE_IDS.length;_i26++){var _id8=CUSTOM_MOVE_UPDATE_IDS[_i26];
 if(!window.BattleMovedex[_id8])window.BattleMovedex[_id8]={};
-Object.assign(window.BattleMovedex[_id8],CUSTOM_MOVE_UPDATES[_id8]);
+var _update=CUSTOM_MOVE_UPDATES[_id8];
+var move=window.BattleMovedex[_id8];
+var flags=move.flags;
+Object.assign(move,_update);
+if(_update.flags){
+move.flags=Object.assign({},flags||{},_update.flags);for(var _i28=0,_Object$keys2=
+Object.keys(_update.flags);_i28<_Object$keys2.length;_i28++){var flag=_Object$keys2[_i28];
+if(!_update.flags[flag])delete move.flags[flag];
+}
+}
+}for(var _i30=0;_i30<
+CUSTOM_ARROW_MOVE_IDS.length;_i30++){var _id9=CUSTOM_ARROW_MOVE_IDS[_i30];
+if(!window.BattleMovedex[_id9])continue;
+window.BattleMovedex[_id9].flags=Object.assign({},window.BattleMovedex[_id9].flags||{},{arrow:1});
+}for(var _i32=0;_i32<
+CUSTOM_HORN_MOVE_IDS.length;_i32++){var _id0=CUSTOM_HORN_MOVE_IDS[_i32];
+if(!window.BattleMovedex[_id0])continue;
+var _flags=Object.assign({},window.BattleMovedex[_id0].flags||{});
+delete _flags.drill;
+_flags.horn=1;
+window.BattleMovedex[_id0].flags=_flags;
 }
 customMoveDataTable=window.BattleMovedex;
 }
@@ -6897,33 +7160,33 @@ shortDesc:"In Dragon's Den, the holder cannot be afflicted with a status conditi
 window.BattleItems.amplifieldrock=Object.assign({},
 window.BattleItems.amplifieldrock||{},{
 desc:'Extends temporary terrains and room effects created by the holder, usually by 3 turns.',
-shortDesc:'Extends temporary terrains and room effects created by the holder, usually by 3 turns.'});for(var _i28=0;_i28<
+shortDesc:'Extends temporary terrains and room effects created by the holder, usually by 3 turns.'});for(var _i34=0;_i34<
 
-REDUNDANT_ITEM_IDS.length;_i28++){var _id9=REDUNDANT_ITEM_IDS[_i28];delete window.BattleItems[_id9];}
+REDUNDANT_ITEM_IDS.length;_i34++){var _id1=REDUNDANT_ITEM_IDS[_i34];delete window.BattleItems[_id1];}
 customItemDataTable=window.BattleItems;
 }
 if(window.BattleTeambuilderTable&&customTeambuilderDataTable!==window.BattleTeambuilderTable){
 var table=window.BattleTeambuilderTable;
 applyCustomTeambuilderItems(table);
-if(!table.overrideSpeciesData)table.overrideSpeciesData={};for(var _i30=0;_i30<
-CUSTOM_SPECIES_UPDATE_IDS.length;_i30++){var _id0=CUSTOM_SPECIES_UPDATE_IDS[_i30];
-var _update=CUSTOM_SPECIES_UPDATES[_id0];
-var existing=table.overrideSpeciesData[_id0]||{};
-table.overrideSpeciesData[_id0]=Object.assign({},existing,_update);
-if(_update.baseStats){var _window$BattlePokedex2;
-table.overrideSpeciesData[_id0].baseStats=Object.assign({},
-((_window$BattlePokedex2=window.BattlePokedex)==null||(_window$BattlePokedex2=_window$BattlePokedex2[_id0])==null?void 0:_window$BattlePokedex2.baseStats)||{},
+if(!table.overrideSpeciesData)table.overrideSpeciesData={};for(var _i36=0;_i36<
+CUSTOM_SPECIES_UPDATE_IDS.length;_i36++){var _id10=CUSTOM_SPECIES_UPDATE_IDS[_i36];
+var _update2=CUSTOM_SPECIES_UPDATES[_id10];
+var existing=table.overrideSpeciesData[_id10]||{};
+table.overrideSpeciesData[_id10]=Object.assign({},existing,_update2);
+if(_update2.baseStats){var _window$BattlePokedex2;
+table.overrideSpeciesData[_id10].baseStats=Object.assign({},
+((_window$BattlePokedex2=window.BattlePokedex)==null||(_window$BattlePokedex2=_window$BattlePokedex2[_id10])==null?void 0:_window$BattlePokedex2.baseStats)||{},
 existing.baseStats||{},
-_update.baseStats);
+_update2.baseStats);
 
 }
 }
 applyCustomTeambuilderSpecies(table);
-if(!table.overrideAbilityData)table.overrideAbilityData={};for(var _i32=0;_i32<
-CUSTOM_ABILITY_UPDATE_IDS.length;_i32++){var _id1=CUSTOM_ABILITY_UPDATE_IDS[_i32];
-table.overrideAbilityData[_id1]=Object.assign({},
-table.overrideAbilityData[_id1]||{},
-CUSTOM_ABILITY_UPDATES[_id1]);
+if(!table.overrideAbilityData)table.overrideAbilityData={};for(var _i38=0;_i38<
+CUSTOM_ABILITY_UPDATE_IDS.length;_i38++){var _id11=CUSTOM_ABILITY_UPDATE_IDS[_i38];
+table.overrideAbilityData[_id11]=Object.assign({},
+table.overrideAbilityData[_id11]||{},
+CUSTOM_ABILITY_UPDATES[_id11]);
 
 }
 applyCustomTeambuilderLearnsets(table);
@@ -6944,33 +7207,48 @@ customTeambuilderDataTable=window.BattleTeambuilderTable;
 function ensureCustomSpecies(id){
 if(!window.BattlePokedex)return;
 ensureCustomDataPatches();
-if(customSpeciesDataTable!==window.BattlePokedex){for(var _i34=0;_i34<
-CUSTOM_SPECIES_IDS.length;_i34++){var customId=CUSTOM_SPECIES_IDS[_i34];
+if(customSpeciesDataTable!==window.BattlePokedex){for(var _i40=0;_i40<
+CUSTOM_SPECIES_IDS.length;_i40++){var customId=CUSTOM_SPECIES_IDS[_i40];
 var customSpecies=CUSTOM_SPECIES[customId];
-var baseData=window.BattlePokedex[customSpecies.base];
+var baseData=getCustomSpeciesBaseData(customSpecies);
 if(!baseData)continue;
 var existingData=window.BattlePokedex[customId];
 window.BattlePokedex[customId]=Object.assign({},
-existingData||baseData,
+baseData,
+existingData||{},
 customSpecies.data);
 
+}for(var _i42=0;_i42<
+CUSTOM_SPECIES_IDS.length;_i42++){var _customId=CUSTOM_SPECIES_IDS[_i42];
+var _customSpecies3=CUSTOM_SPECIES[_customId];
+if(!isCustomVisualForm(_customSpecies3.data))continue;
+var _baseData=getCustomSpeciesBaseData(_customSpecies3);
+if(!_baseData)continue;
+var cosmeticFormes=new Set(_baseData.cosmeticFormes||[]);
+cosmeticFormes.add(_customSpecies3.data.name);
+_baseData.cosmeticFormes=[].concat(cosmeticFormes);
 }
 customSpeciesDataTable=window.BattlePokedex;
 }else if(id&&CUSTOM_SPECIES[id]&&!window.BattlePokedex[id]){
-var _customSpecies3=CUSTOM_SPECIES[id];
-var _baseData=window.BattlePokedex[_customSpecies3.base];
-if(_baseData){
+var _customSpecies4=CUSTOM_SPECIES[id];
+var _baseData2=getCustomSpeciesBaseData(_customSpecies4);
+if(_baseData2){
 window.BattlePokedex[id]=Object.assign({},
-_baseData,
-_customSpecies3.data);
+_baseData2,
+_customSpecies4.data);
 
+if(isCustomVisualForm(_customSpecies4.data)){
+var _cosmeticFormes=new Set(_baseData2.cosmeticFormes||[]);
+_cosmeticFormes.add(_customSpecies4.data.name);
+_baseData2.cosmeticFormes=[].concat(_cosmeticFormes);
+}
 }
 }
 ensureCustomBWSpriteData();
 var garchomp=window.BattlePokedex.garchomp;
 if(garchomp){
-var otherFormes=garchomp.otherFormes||[];for(var _i36=0,_ref4=
-['Garchomp-Mega-Z','Garchomp-Battle-Bond'];_i36<_ref4.length;_i36++){var forme=_ref4[_i36];
+var otherFormes=garchomp.otherFormes||[];for(var _i44=0,_ref4=
+['Garchomp-Mega-Z','Garchomp-Battle-Bond'];_i44<_ref4.length;_i44++){var forme=_ref4[_i44];
 if(!otherFormes.includes(forme))otherFormes.push(forme);
 }
 garchomp.otherFormes=otherFormes;
@@ -7325,8 +7603,8 @@ if(formid in window.BattlePokedexAltForms&&!(formid in CUSTOM_SPECIES))return wi
 if(window.BattleAliases&&id in BattleAliases&&!(id in CUSTOM_SPECIES)){
 name=BattleAliases[id];
 id=toID(name);
-}else if(window.BattlePokedex&&!(id in BattlePokedex)&&!(id in CUSTOM_SPECIES)&&window.BattleBaseSpeciesChart){for(var _i38=0,_BattleBaseSpeciesCha2=
-BattleBaseSpeciesChart;_i38<_BattleBaseSpeciesCha2.length;_i38++){var baseSpeciesId=_BattleBaseSpeciesCha2[_i38];
+}else if(window.BattlePokedex&&!(id in BattlePokedex)&&!(id in CUSTOM_SPECIES)&&window.BattleBaseSpeciesChart){for(var _i46=0,_BattleBaseSpeciesCha2=
+BattleBaseSpeciesChart;_i46<_BattleBaseSpeciesCha2.length;_i46++){var baseSpeciesId=_BattleBaseSpeciesCha2[_i46];
 if(formid.startsWith(baseSpeciesId)){
 id=baseSpeciesId;
 break;
@@ -7352,8 +7630,8 @@ species=new Species(id,name,data);
 window.BattlePokedex[id]=species;
 }
 
-if(species.cosmeticFormes&&!(formid in CUSTOM_SPECIES)){for(var _i40=0,_species$cosmeticForm2=
-species.cosmeticFormes;_i40<_species$cosmeticForm2.length;_i40++){var forme=_species$cosmeticForm2[_i40];
+if(species.cosmeticFormes&&!(formid in CUSTOM_SPECIES)){for(var _i48=0,_species$cosmeticForm2=
+species.cosmeticFormes;_i48<_species$cosmeticForm2.length;_i48++){var forme=_species$cosmeticForm2[_i48];
 if(toID(forme)===formid){
 species=new Species(formid,name,Object.assign({},
 species,{
@@ -7456,9 +7734,9 @@ var escapedName=componentName.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
 if(new RegExp("(^|[^a-z0-9])"+escapedName+"($|[^a-z0-9])",'i').test(description)){
 directComponents.add(componentId);
 }
-}for(var _i42=0,_Array$from2=
-Array.from(directComponents);_i42<_Array$from2.length;_i42++){var _componentId=_Array$from2[_i42];for(var _i44=0,_Array$from4=
-Array.from(this.getAbilityEffects(_componentId,nextVisiting));_i44<_Array$from4.length;_i44++){var nestedEffect=_Array$from4[_i44];
+}for(var _i50=0,_Array$from2=
+Array.from(directComponents);_i50<_Array$from2.length;_i50++){var _componentId=_Array$from2[_i50];for(var _i52=0,_Array$from4=
+Array.from(this.getAbilityEffects(_componentId,nextVisiting));_i52<_Array$from4.length;_i52++){var nestedEffect=_Array$from4[_i52];
 effects.add(nestedEffect);
 }
 }
@@ -8048,8 +8326,8 @@ return"<img src=\""+Dex.resourcePrefix+"sprites/categories/"+sanitizedCategory+"
 getPokeballs=function getPokeballs(){
 if(this.pokeballs)return this.pokeballs;
 this.pokeballs=[];
-if(!window.BattleItems)window.BattleItems={};for(var _i46=0,_Object$values2=
-Object.values(window.BattleItems);_i46<_Object$values2.length;_i46++){var data=_Object$values2[_i46];
+if(!window.BattleItems)window.BattleItems={};for(var _i54=0,_Object$values2=
+Object.values(window.BattleItems);_i54<_Object$values2.length;_i54++){var data=_Object$values2[_i54];
 if(!data.isPokeball)continue;
 this.pokeballs.push(data.name);
 }
@@ -8236,8 +8514,8 @@ return data;
 getPokeballs=function getPokeballs(){
 if(this.pokeballs)return this.pokeballs;
 this.pokeballs=[];
-if(!window.BattleItems)window.BattleItems={};for(var _i48=0,_Object$values4=
-Object.values(window.BattleItems);_i48<_Object$values4.length;_i48++){var data=_Object$values4[_i48];
+if(!window.BattleItems)window.BattleItems={};for(var _i56=0,_Object$values4=
+Object.values(window.BattleItems);_i56<_Object$values4.length;_i56++){var data=_Object$values4[_i56];
 if(data.gen&&data.gen>this.gen)continue;
 if(!data.isPokeball)continue;
 this.pokeballs.push(data.name);
@@ -8373,8 +8651,8 @@ if(typeof team==='string'){
 if(team.indexOf('\n')>=0)return team;
 team=this.unpack(team);
 }
-var text='';for(var _i50=0,_team2=
-team;_i50<_team2.length;_i50++){var curSet=_team2[_i50];
+var text='';for(var _i58=0,_team2=
+team;_i58<_team2.length;_i58++){var curSet=_team2[_i58];
 if(isSilvallySpecies(curSet.species))curSet.shiny=true;
 if(curSet.name&&curSet.name!==curSet.species){
 text+=''+curSet.name+' ('+curSet.species+')';
@@ -8439,8 +8717,8 @@ text+=''+curSet.nature+' Nature'+"  \n";
 first=true;
 if(curSet.ivs){
 var defaultIvs=true;
-var hpType='';for(var _i52=0,_curSet$moves2=
-curSet.moves;_i52<_curSet$moves2.length;_i52++){var move=_curSet$moves2[_i52];
+var hpType='';for(var _i60=0,_curSet$moves2=
+curSet.moves;_i60<_curSet$moves2.length;_i60++){var move=_curSet$moves2[_i60];
 if(move.substr(0,13)==='Hidden Power '&&move.substr(0,14)!=='Hidden Power ['){
 hpType=move.substr(13);
 if(!Dex.types.isName(hpType)){
@@ -8483,8 +8761,8 @@ if(!first){
 text+="  \n";
 }
 }
-if(curSet.moves){for(var _i54=0,_curSet$moves4=
-curSet.moves;_i54<_curSet$moves4.length;_i54++){var _move=_curSet$moves4[_i54];
+if(curSet.moves){for(var _i62=0,_curSet$moves4=
+curSet.moves;_i62<_curSet$moves4.length;_i62++){var _move=_curSet$moves4[_i62];
 if(_move.substr(0,13)==='Hidden Power '){
 _move=_move.substr(0,13)+'['+_move.substr(13)+']';
 }
@@ -9651,6 +9929,12 @@ this.gen=3;
 }
 }
 };var
+
+
+
+
+
+
 
 
 
