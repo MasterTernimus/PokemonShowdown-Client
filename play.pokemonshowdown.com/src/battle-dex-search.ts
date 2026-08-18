@@ -889,6 +889,7 @@ class BattlePokemonSearch extends BattleTypedSearch<'pokemon'> {
 	getDefaultResults(): SearchRow[] {
 		window.ensureCustomSpecies?.();
 		let results: SearchRow[] = [];
+		const seenSpecies = new Set<ID>();
 		for (let id in BattlePokedex) {
 			switch (id) {
 			case 'bulbasaur':
@@ -927,6 +928,11 @@ class BattlePokemonSearch extends BattleTypedSearch<'pokemon'> {
 			case 'pikachucosplay':
 				continue;
 			}
+			const species = this.dex.species.get(id);
+			if (isCustomVisualForm(species)) continue;
+			const speciesid = toID(id);
+			if (seenSpecies.has(speciesid)) continue;
+			seenSpecies.add(speciesid);
 			results.push(['pokemon', id as ID]);
 		}
 		return results;

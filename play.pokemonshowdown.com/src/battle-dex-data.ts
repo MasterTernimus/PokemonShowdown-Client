@@ -1150,6 +1150,8 @@ class Item implements Effect {
 interface MoveFlags {
 	/** The move has an animation when used on an ally. */
 	allyanim?: 1 | 0;
+	/** Eligible for Fallen Star and Dual Wield's arrow-move effects. */
+	arrow?: 1 | 0;
 	/** Power is multiplied by 1.5 when used by a Pokemon with the Strong Jaw Ability. */
 	bite?: 1 | 0;
 	/** Bone moves ignore certain type immunities. */
@@ -1168,6 +1170,10 @@ interface MoveFlags {
 	defrost?: 1 | 0;
 	/** Can target a Pokemon positioned anywhere in a Triple Battle. */
 	distance?: 1 | 0;
+	/** Power Drill and Dual Wield horn classification. */
+	horn?: 1 | 0;
+	/** Power Drill and Dual Wield drill classification. */
+	drill?: 1 | 0;
 	/** Prevented from being executed or selected during Gravity's effect. */
 	gravity?: 1 | 0;
 	/** Prevented from being executed or selected during Heal Block's effect. */

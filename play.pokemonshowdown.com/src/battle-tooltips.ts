@@ -775,6 +775,15 @@ class BattleTooltips {
 			if (move.flags.bullet) {
 				text += `<p class="movetag">&#x2713; Bullet-like <small>(doesn't affect Bulletproof pokemon)</small></p>`;
 			}
+			if (move.flags.arrow) {
+				text += `<p class="movetag">&#x2713; Arrow <small>(Fallen Star / Dual Wield)</small></p>`;
+			}
+			if (move.flags.horn) {
+				text += `<p class="movetag">&#x2713; Horn <small>(Power Drill / Dual Wield)</small></p>`;
+			}
+			if (move.flags.drill) {
+				text += `<p class="movetag">&#x2713; Drill <small>(boosted by Power Drill / Dual Wield)</small></p>`;
+			}
 			if (move.flags.slicing) {
 				text += `<p class="movetag">&#x2713; Slicing <small>(boosted by Sharpness)</small></p>`;
 			}
