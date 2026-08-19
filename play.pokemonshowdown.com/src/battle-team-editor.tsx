@@ -88,6 +88,9 @@ export class TeamEditorState extends PSModel {
 			this.sets = Teams.unpack(this.team.packedTeam);
 			this.lastPackedTeam = this.team.packedTeam;
 		}
+		for (const set of this.sets) {
+			if (isSilvallySpecies(set.species)) set.shiny = true;
+		}
 		this.readonly = readonly;
 	}
 	setFormat(format: string) {
@@ -236,6 +239,7 @@ export class TeamEditorState extends PSModel {
 			return;
 		}
 		set.species = species.name;
+		if (isSilvallySpecies(set.species)) set.shiny = true;
 	}
 	deleteSet(index: number) {
 		if (this.sets.length <= index) return;
