@@ -146,8 +146,6 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 			name: 'Lapras-Aevian',
 			baseSpecies: 'Lapras',
 			forme: 'Aevian',
-			otherFormes: ['Lapras-Gmax'],
-			formeOrder: ['Lapras', 'Lapras-Gmax', 'Lapras-Aevian'],
 			spriteid: 'lapras-aevian',
 			changesFrom: 'Lapras',
 			isNonstandard: 'Custom',
@@ -6706,6 +6704,12 @@ function isCustomVisualForm(data: AnyObject) {
 	return ['Alt', 'Aevian', 'East-Aevian', 'Pulse', 'Azzy', 'Spring', 'Summer', 'Autumn', 'Winter'].includes(forme) ||
 		forme.endsWith('-Alt');
 }
+function isCustomVisualVariantName(name: unknown, speciesTable?: AnyObject) {
+	if (typeof name !== 'string' || !name) return false;
+	const id = toID(name);
+	const data = speciesTable?.[id] || window.BattlePokedex?.[id] || CUSTOM_SPECIES[id]?.data;
+	return isCustomVisualForm(data);
+}
 const CUSTOM_VARIANT_BASE_ALIASES: {[id: string]: string} = {
 	charizardmegax: 'charizard',
 	gastrodoneast: 'gastrodon',
@@ -6732,6 +6736,7 @@ export function getCustomVisualFamilyId(species: AnyObject) {
 	return customVariantFamilyId(species);
 }
 export function getCustomCosmeticFormes(species: AnyObject) {
+	window.ensureCustomSpecies?.();
 	const familyId = customVariantFamilyId(species);
 	const baseData = window.BattlePokedex?.[familyId] || {};
 	const names: string[] = [];
@@ -6743,11 +6748,17 @@ export function getCustomCosmeticFormes(species: AnyObject) {
 	for (const customSpecies of Object.values(CUSTOM_SPECIES)) {
 		if (!isCustomVisualForm(customSpecies.data) || customVariantFamilyBaseId(customSpecies.base) !== familyId) continue;
 		addName(customSpecies.data.name);
-		for (const forme of customSpecies.data.otherFormes || []) addName(forme);
+		for (const forme of customSpecies.data.otherFormes || []) {
+			if (isCustomVisualVariantName(forme)) addName(forme);
+		}
 	}
-	for (const forme of baseData.cosmeticFormes || []) addName(forme);
+	for (const forme of baseData.cosmeticFormes || []) {
+		if (isCustomVisualVariantName(forme)) addName(forme);
+	}
 	if (names.length <= 1) {
-		for (const forme of species.cosmeticFormes || []) addName(forme);
+		for (const forme of species.cosmeticFormes || []) {
+			if (isCustomVisualVariantName(forme)) addName(forme);
+		}
 	}
 	return names;
 }
@@ -6766,7 +6777,9 @@ function applyCustomVisualVariantLinks(speciesTable: AnyObject) {
 		var group = groups[baseId] || (groups[baseId] = {ids: [], names: new Set()});
 		group.ids.push(id);
 		group.names.add(customSpecies.data.name);
-		for (var forme of customSpecies.data.otherFormes || []) group.names.add(forme);
+		for (var forme of customSpecies.data.otherFormes || []) {
+			if (isCustomVisualVariantName(forme, speciesTable)) group.names.add(forme);
+		}
 	}
 	for (var groupEntry of Object.entries(groups)) {
 		var baseId = groupEntry[0];
@@ -6787,7 +6800,9 @@ function applyCustomVisualVariantLinks(speciesTable: AnyObject) {
 		for (var name of group.names) {
 			if (!formeOrder.includes(name)) formeOrder.push(name);
 		}
-		var cosmeticFormes = new Set(baseData.cosmeticFormes || []);
+		var cosmeticFormes = new Set((baseData.cosmeticFormes || []).filter((forme: string) =>
+			isCustomVisualVariantName(forme, speciesTable)
+		));
 		for (var name of group.names) {
 			if (name !== baseName) cosmeticFormes.add(name);
 		}
@@ -7427,8 +7442,10 @@ function ensureCustomDataPatches() {
 			const update = CUSTOM_SPECIES_UPDATES[id];
 			const species = window.BattlePokedex[id];
 			const baseStats = species.baseStats;
+			const abilities = species.abilities;
 			Object.assign(species, update);
 			if (update.baseStats) species.baseStats = {...(baseStats || {}), ...update.baseStats};
+			if (update.abilities) species.abilities = {...(abilities || {}), ...update.abilities};
 		}
 		customPokedexDataTable = window.BattlePokedex;
 	}

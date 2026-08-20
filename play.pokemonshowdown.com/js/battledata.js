@@ -146,8 +146,6 @@ data:{
 name:'Lapras-Aevian',
 baseSpecies:'Lapras',
 forme:'Aevian',
-otherFormes:['Lapras-Gmax'],
-formeOrder:['Lapras','Lapras-Gmax','Lapras-Aevian'],
 spriteid:'lapras-aevian',
 changesFrom:'Lapras',
 isNonstandard:'Custom'
@@ -6706,6 +6704,12 @@ if(typeof forme!=='string')return false;
 return['Alt','Aevian','East-Aevian','Pulse','Azzy','Spring','Summer','Autumn','Winter'].includes(forme)||
 forme.endsWith('-Alt');
 }
+function isCustomVisualVariantName(name,speciesTable){var _window$BattlePokedex,_CUSTOM_SPECIES$id;
+if(typeof name!=='string'||!name)return false;
+var id=toID(name);
+var data=(speciesTable==null?void 0:speciesTable[id])||((_window$BattlePokedex=window.BattlePokedex)==null?void 0:_window$BattlePokedex[id])||((_CUSTOM_SPECIES$id=CUSTOM_SPECIES[id])==null?void 0:_CUSTOM_SPECIES$id.data);
+return isCustomVisualForm(data);
+}
 var CUSTOM_VARIANT_BASE_ALIASES={
 charizardmegax:'charizard',
 gastrodoneast:'gastrodon'
@@ -6731,9 +6735,10 @@ return customVariantFamilyBaseId(baseId);
 function getCustomVisualFamilyId(species){
 return customVariantFamilyId(species);
 }
-function getCustomCosmeticFormes(species){var _window$BattlePokedex;
+function getCustomCosmeticFormes(species){var _window$BattlePokedex2;
+window.ensureCustomSpecies==null||window.ensureCustomSpecies();
 var familyId=customVariantFamilyId(species);
-var baseData=((_window$BattlePokedex=window.BattlePokedex)==null?void 0:_window$BattlePokedex[familyId])||{};
+var baseData=((_window$BattlePokedex2=window.BattlePokedex)==null?void 0:_window$BattlePokedex2[familyId])||{};
 var names=[];
 var addName=function(name){
 if(typeof name!=='string'||!name||names.some(function(existing){return toID(existing)===toID(name);}))return;
@@ -6743,11 +6748,17 @@ addName(baseData.name||(toID(species==null?void 0:species.name)===familyId?speci
 Object.values(CUSTOM_SPECIES);_i6<_Object$values4.length;_i6++){var customSpecies=_Object$values4[_i6];
 if(!isCustomVisualForm(customSpecies.data)||customVariantFamilyBaseId(customSpecies.base)!==familyId)continue;
 addName(customSpecies.data.name);for(var _i8=0,_ref3=
-customSpecies.data.otherFormes||[];_i8<_ref3.length;_i8++){var forme=_ref3[_i8];addName(forme);}
+customSpecies.data.otherFormes||[];_i8<_ref3.length;_i8++){var forme=_ref3[_i8];
+if(isCustomVisualVariantName(forme))addName(forme);
+}
 }for(var _i0=0,_ref5=
-baseData.cosmeticFormes||[];_i0<_ref5.length;_i0++){var _forme=_ref5[_i0];addName(_forme);}
+baseData.cosmeticFormes||[];_i0<_ref5.length;_i0++){var _forme=_ref5[_i0];
+if(isCustomVisualVariantName(_forme))addName(_forme);
+}
 if(names.length<=1){for(var _i10=0,_ref7=
-species.cosmeticFormes||[];_i10<_ref7.length;_i10++){var _forme2=_ref7[_i10];addName(_forme2);}
+species.cosmeticFormes||[];_i10<_ref7.length;_i10++){var _forme2=_ref7[_i10];
+if(isCustomVisualVariantName(_forme2))addName(_forme2);
+}
 }
 return names;
 }
@@ -6766,7 +6777,9 @@ var baseId=customVariantFamilyBaseId(customSpecies.base);
 var group=groups[baseId]||(groups[baseId]={ids:[],names:new Set()});
 group.ids.push(id);
 group.names.add(customSpecies.data.name);for(var _i16=0,_ref9=
-customSpecies.data.otherFormes||[];_i16<_ref9.length;_i16++){var forme=_ref9[_i16];group.names.add(forme);}
+customSpecies.data.otherFormes||[];_i16<_ref9.length;_i16++){var forme=_ref9[_i16];
+if(isCustomVisualVariantName(forme,speciesTable))group.names.add(forme);
+}
 }for(var _i18=0,_Object$entries4=
 Object.entries(groups);_i18<_Object$entries4.length;_i18++){var _speciesTable$group$i;var groupEntry=_Object$entries4[_i18];
 var baseId=groupEntry[0];
@@ -6787,7 +6800,9 @@ if(typeof data.name==='string'&&!formeOrder.includes(data.name))formeOrder.push(
 group.names;_i22<_group$names2.length;_i22++){var name=_group$names2[_i22];
 if(!formeOrder.includes(name))formeOrder.push(name);
 }
-var cosmeticFormes=new Set(baseData.cosmeticFormes||[]);for(var _i24=0,_group$names4=
+var cosmeticFormes=new Set((baseData.cosmeticFormes||[]).filter(function(forme){return(
+isCustomVisualVariantName(forme,speciesTable));}
+));for(var _i24=0,_group$names4=
 group.names;_i24<_group$names4.length;_i24++){var name=_group$names4[_i24];
 if(name!==baseName)cosmeticFormes.add(name);
 }
@@ -7262,11 +7277,11 @@ shinyBack:copySpriteSize(data.shinyBack)
 };
 }
 
-function getCustomBaseSpriteId(id){var _CUSTOM_SPECIES$id,_window$BattlePokedex2;
-var customSpeciesBase=(_CUSTOM_SPECIES$id=CUSTOM_SPECIES[id])==null?void 0:_CUSTOM_SPECIES$id.base;
+function getCustomBaseSpriteId(id){var _CUSTOM_SPECIES$id2,_window$BattlePokedex3;
+var customSpeciesBase=(_CUSTOM_SPECIES$id2=CUSTOM_SPECIES[id])==null?void 0:_CUSTOM_SPECIES$id2.base;
 if(customSpeciesBase)return customSpeciesBase;
 
-var species=(_window$BattlePokedex2=window.BattlePokedex)==null?void 0:_window$BattlePokedex2[id];
+var species=(_window$BattlePokedex3=window.BattlePokedex)==null?void 0:_window$BattlePokedex3[id];
 var baseSpeciesId=toID(species==null?void 0:species.baseSpecies);
 if(baseSpeciesId&&baseSpeciesId!==id)return baseSpeciesId;for(var _i28=0,_ref1=
 
@@ -7427,8 +7442,10 @@ if(!window.BattlePokedex[_id0])window.BattlePokedex[_id0]={};
 var update=CUSTOM_SPECIES_UPDATES[_id0];
 var species=window.BattlePokedex[_id0];
 var baseStats=species.baseStats;
+var abilities=species.abilities;
 Object.assign(species,update);
 if(update.baseStats)species.baseStats=Object.assign({},baseStats||{},update.baseStats);
+if(update.abilities)species.abilities=Object.assign({},abilities||{},update.abilities);
 }
 customPokedexDataTable=window.BattlePokedex;
 }
@@ -7498,9 +7515,9 @@ CUSTOM_SPECIES_UPDATE_IDS.length;_i64++){var _id14=CUSTOM_SPECIES_UPDATE_IDS[_i6
 var _update2=CUSTOM_SPECIES_UPDATES[_id14];
 var existing=table.overrideSpeciesData[_id14]||{};
 table.overrideSpeciesData[_id14]=Object.assign({},existing,_update2);
-if(_update2.baseStats){var _window$BattlePokedex3;
+if(_update2.baseStats){var _window$BattlePokedex4;
 table.overrideSpeciesData[_id14].baseStats=Object.assign({},
-((_window$BattlePokedex3=window.BattlePokedex)==null||(_window$BattlePokedex3=_window$BattlePokedex3[_id14])==null?void 0:_window$BattlePokedex3.baseStats)||{},
+((_window$BattlePokedex4=window.BattlePokedex)==null||(_window$BattlePokedex4=_window$BattlePokedex4[_id14])==null?void 0:_window$BattlePokedex4.baseStats)||{},
 existing.baseStats||{},
 _update2.baseStats);
 
@@ -8433,11 +8450,11 @@ spriteData.h=Math.max(1,Math.round(spriteData.h*_scale4));
 return spriteData;
 };_proto2.
 
-getPokemonIconNum=function getPokemonIconNum(id,isFemale,facingLeft){var _window$BattlePokemon2,_window$BattlePokedex4,_window$BattlePokemon3;
+getPokemonIconNum=function getPokemonIconNum(id,isFemale,facingLeft){var _window$BattlePokemon2,_window$BattlePokedex5,_window$BattlePokemon3;
 var num=0;
 if((_window$BattlePokemon2=window.BattlePokemonSprites)!=null&&(_window$BattlePokemon2=_window$BattlePokemon2[id])!=null&&_window$BattlePokemon2.num){
 num=BattlePokemonSprites[id].num;
-}else if((_window$BattlePokedex4=window.BattlePokedex)!=null&&(_window$BattlePokedex4=_window$BattlePokedex4[id])!=null&&_window$BattlePokedex4.num){
+}else if((_window$BattlePokedex5=window.BattlePokedex)!=null&&(_window$BattlePokedex5=_window$BattlePokedex5[id])!=null&&_window$BattlePokedex5.num){
 num=BattlePokedex[id].num;
 }
 if(num<0)num=0;

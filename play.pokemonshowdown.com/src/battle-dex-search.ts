@@ -220,11 +220,11 @@ class DexSearch {
 		let customVisualSpecies: ID[] = [];
 		if (searchType === 'pokemon') {
 			window.ensureCustomSpecies?.();
-			const customFormes = ['Alt', 'Aevian', 'East-Aevian', 'Pulse', 'Spring', 'Summer', 'Autumn', 'Winter'];
+			const customFormes = ['Alt', 'Aevian', 'East-Aevian', 'Pulse', 'Azzy', 'Spring', 'Summer', 'Autumn', 'Winter'];
 			customVisualSpecies = Object.keys(window.BattlePokedex || {}).filter(id => {
 				const species = this.dex.species.get(id);
 				return (customFormes.includes(species.forme) || species.forme.endsWith('-Alt')) &&
-					toID(species.name) === customSpeciesQuery;
+					(toID(species.name) === customSpeciesQuery || getCustomVisualFamilyId(species) === customSpeciesQuery);
 			}) as ID[];
 		}
 
