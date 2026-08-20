@@ -3198,7 +3198,7 @@ class DetailsForm extends preact.Component<{
 								const isCur = toID(set.species) === id;
 								const sprite = Dex.getTeambuilderSprite({species: sp.name, shiny: set.shiny}, editor.dex);
 								return <button
-									value={id} class={`button piconbtn${isCur ? ' cur' : ''}`}
+									type="button" value={id} class={`button piconbtn${isCur ? ' cur' : ''}`}
 									style={{ padding: '2px' }} onClick={this.selectSprite}
 								>
 									<span class="sprite" style={sprite}></span>
