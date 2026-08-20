@@ -8,7 +8,7 @@
 
 import preact from "../js/lib/preact";
 import { type Team, Config, PS } from "./client-main";
-import { Dex, type ModdedDex, toID, type ID, PSUtils } from "./battle-dex";
+import { Dex, getCustomCosmeticFormes, getCustomVisualFamilyId, type ModdedDex, toID, type ID, PSUtils } from "./battle-dex";
 import { Teams } from './battle-teams';
 import { DexSearch, type SearchRow, type SearchType } from "./battle-dex-search";
 import { PSSearchResults } from "./battle-searchresults";
@@ -234,7 +234,7 @@ export class TeamEditorState extends PSModel {
 	changeCosmeticForm(set: Dex.PokemonSet, speciesName: string) {
 		const currentSpecies = this.dex.species.get(set.species);
 		const species = this.dex.species.get(speciesName);
-		if (toID(currentSpecies.baseSpecies) !== toID(species.baseSpecies)) {
+		if (getCustomVisualFamilyId(currentSpecies) !== getCustomVisualFamilyId(species)) {
 			this.changeSpecies(set, speciesName);
 			return;
 		}
@@ -3187,20 +3187,21 @@ class DetailsForm extends preact.Component<{
 						)}
 					</label>
 				</p>}
-				{species.cosmeticFormes && <div>
+				{getCustomCosmeticFormes(species).length > 1 && <div>
 					<p><strong>Form:</strong></p>
 					<div style="display:flex;flex-wrap:wrap;gap:6px;max-width:400px;">
 						{(() => {
-							const baseId = toID(species.baseSpecies);
-							const forms = species.cosmeticFormes?.length ? [baseId, ...species.cosmeticFormes.map(toID)] : [baseId];
-							return forms.map(id => {
-								const sp = editor.dex.species.get(id);
+							const forms = getCustomCosmeticFormes(species);
+							return forms.map(formName => {
+								const sp = editor.dex.species.get(formName);
+								const id = toID(sp.name);
 								const isCur = toID(set.species) === id;
+								const sprite = Dex.getTeambuilderSprite({species: sp.name, shiny: set.shiny}, editor.dex);
 								return <button
 									value={id} class={`button piconbtn${isCur ? ' cur' : ''}`}
 									style={{ padding: '2px' }} onClick={this.selectSprite}
 								>
-									<PSIcon pokemon={{ species: sp.name } as Dex.PokemonSet} />
+									<span class="sprite" style={sprite}></span>
 									<br />{sp.forme || sp.baseForme || sp.baseSpecies}
 								</button>;
 							});
