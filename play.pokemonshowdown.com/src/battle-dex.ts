@@ -98,7 +98,7 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 			spriteid: 'hypno-pulse',
 			types: ['Psychic', 'Ghost'],
 			abilities: {0: 'Pendulum Swing', 1: 'Neutralizing Gas', H: 'Neutralization'},
-			baseStats: {hp: 60, atk: 60, def: 105, spa: 115, spd: 125, spe: 70},
+			baseStats: {hp: 85, atk: 60, def: 105, spa: 115, spd: 125, spe: 70},
 			changesFrom: 'Hypno',
 			isNonstandard: 'Custom',
 		},
@@ -146,6 +146,8 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 			name: 'Lapras-Aevian',
 			baseSpecies: 'Lapras',
 			forme: 'Aevian',
+			otherFormes: ['Lapras-Gmax'],
+			formeOrder: ['Lapras', 'Lapras-Gmax', 'Lapras-Aevian'],
 			spriteid: 'lapras-aevian',
 			changesFrom: 'Lapras',
 			isNonstandard: 'Custom',
@@ -177,7 +179,7 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 		base: 'decidueyehisui',
 		data: {
 			name: 'Decidueye-Hisui-Alt',
-			baseSpecies: 'Decidueye',
+			baseSpecies: 'Decidueye-Hisui',
 			forme: 'Hisui-Alt',
 			spriteid: 'decidueye-hisui-alt',
 			changesFrom: 'Decidueye-Hisui',
@@ -3642,7 +3644,7 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		abilities: {0: 'Living Legend', 1: 'Vanguard', H: 'Drought'},
 	},
 	alakazam: {
-		baseStats: {hp: 80, atk: 48, def: 60, spa: 135, spd: 95, spe: 132},
+		baseStats: {hp: 80, atk: 60, def: 60, spa: 135, spd: 95, spe: 120},
 	},
 	alakazammega: {
 		baseStats: {hp: 80, atk: 58, def: 70, spa: 175, spd: 105, spe: 162},
@@ -3653,7 +3655,7 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 	},
 	hypno: {
 		types: ['Psychic', 'Ghost'],
-		baseStats: {hp: 60, atk: 60, def: 105, spa: 115, spd: 125, spe: 70},
+		baseStats: {hp: 85, atk: 60, def: 105, spa: 115, spd: 125, spe: 70},
 		abilities: {0: 'Pendulum Swing', 1: 'Neutralizing Gas', H: 'Neutralization'},
 		cosmeticFormes: ['Hypno-Pulse'],
 		formeOrder: ['Hypno', 'Hypno-Pulse'],
@@ -3665,6 +3667,7 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		abilities: {0: 'Soul Strike'},
 	},
 	bellibolt: {
+		abilities: {0: 'Electromorphosis', 1: 'Static', H: 'Levitate'},
 		cosmeticFormes: ['Bellibolt-Alt'],
 		formeOrder: ['Bellibolt', 'Bellibolt-Alt'],
 	},
@@ -3700,6 +3703,7 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		baseStats: {hp: 73, atk: 76, def: 75, spa: 101, spd: 110, spe: 110},
 	},
 	primarina: {
+		abilities: {0: 'Serene Grace'},
 		cosmeticFormes: ['Primarina-Alt'],
 		formeOrder: ['Primarina', 'Primarina-Alt'],
 	},
@@ -3713,8 +3717,12 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		abilities: {0: 'Fallen Star', 1: 'Unburden', H: 'Scrappy'},
 	},
 	incineroar: {
+		abilities: {1: 'Tough Claws'},
 		cosmeticFormes: ['Incineroar-Alt'],
 		formeOrder: ['Incineroar', 'Incineroar-Alt'],
+	},
+	chesnaught: {
+		abilities: {0: 'Friend Guard'},
 	},
 	gardevoir: {
 		otherFormes: ['Gardevoir-Mega', 'Gardevoir-Void-Mega', 'Gardevoir-Mega-Z'],
@@ -3764,15 +3772,21 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		abilities: {0: 'Battle Fervor', 1: 'Corrosion', H: 'Great Marsh'},
 	},
 	cinccino: {
-		baseStats: {hp: 85, atk: 95, def: 110, spa: 60, spd: 105, spe: 115},
+		baseStats: {hp: 85, atk: 110, def: 100, spa: 60, spd: 100, spe: 115},
 		abilities: {0: 'Pixilate', 1: 'Skill Link', H: 'Fluffy Craft'},
 		otherFormes: ['Cinccino-Alt'],
 		cosmeticFormes: ['Cinccino-Alt'],
 		formeOrder: ['Cinccino', 'Cinccino-Alt'],
 	},
 	cinccinoalt: {
-		baseStats: {hp: 85, atk: 95, def: 110, spa: 60, spd: 105, spe: 115},
+		baseStats: {hp: 85, atk: 110, def: 100, spa: 60, spd: 100, spe: 115},
 		abilities: {0: 'Pixilate', 1: 'Skill Link', H: 'Fluffy Craft'},
+	},
+	persian: {
+		baseStats: {hp: 70, atk: 100, def: 65, spa: 105, spd: 65, spe: 120},
+	},
+	persianalola: {
+		baseStats: {hp: 70, atk: 105, def: 65, spa: 100, spd: 65, spe: 120},
 	},
 	butterfreemega: {
 		types: ['Bug', 'Poison'],
@@ -3852,12 +3866,14 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		abilities: {0: 'Unburden', 1: 'Technician', H: 'Skill Link'},
 	},
 	weavile: {
-		baseStats: {hp: 85, atk: 130, def: 80, spa: 30, spd: 90, spe: 135},
+		baseStats: {hp: 85, atk: 135, def: 80, spa: 30, spd: 90, spe: 130},
 		abilities: {0: 'Violent Rush', 1: 'Pressure', H: 'Technician'},
 		otherFormes: ['Weavile-Alt'],
 		cosmeticFormes: ['Weavile-Alt'],
 		formeOrder: ['Weavile', 'Weavile-Alt'],
 	},
+	ribombee: {baseStats: {hp: 65, atk: 55, def: 60, spa: 90, spd: 105, spe: 125}},
+	zoroark: {baseStats: {hp: 60, atk: 110, def: 70, spa: 135, spd: 70, spe: 110}},
 	dusknoir: {
 		baseStats: {atk: 140, spe: 40},
 		abilities: {0: 'Requiem', 1: 'Shadow Tag', H: "Reaper's Grip"},
@@ -4036,8 +4052,9 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 	},
 	lapras: {
 		abilities: {0: 'Safe Harbor', 1: 'Shell Armor', H: 'Ice Scales'},
+		otherFormes: ['Lapras-Gmax', 'Lapras-Aevian'],
 		cosmeticFormes: ['Lapras-Aevian'],
-		formeOrder: ['Lapras', 'Lapras-Aevian'],
+		formeOrder: ['Lapras', 'Lapras-Gmax', 'Lapras-Aevian'],
 	},
 	jolteon: {
 		abilities: {0: 'Lightning Rod', 1: 'Battery', H: 'Voltage Volley'},
@@ -4087,7 +4104,7 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		abilities: {0: 'Draconic Force'},
 	},
 	banette: {
-		abilities: {0: 'Cursed Keepsake', 1: 'Intimidate', H: 'Shadow Shield'},
+		abilities: {0: 'Cursed Keepsake', 1: 'Intimidate', H: 'Cursed Doll'},
 		otherFormes: ['Banette-Mega'],
 		formeOrder: ['Banette', 'Banette-Mega'],
 	},
@@ -4139,6 +4156,10 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 	},
 	greninja: {
 		baseStats: {hp: 72, atk: 100, def: 67, spa: 103, spd: 71, spe: 122},
+		abilities: {0: 'Technician'},
+	},
+	serperior: {
+		abilities: {0: 'Multiscale'},
 	},
 	greninjabond: {
 		baseStats: {hp: 72, atk: 100, def: 67, spa: 103, spd: 71, spe: 122},
@@ -4225,6 +4246,49 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 	garchompbattlebond: {baseStats: {spe: 122}},
 };
 
+// Keep Gmax eligibility available to custom base entries and their cosmetic forms.
+const CUSTOM_GIGANTAMAX_MOVES: {[id: string]: string} = {
+	venusaur: 'G-Max Vine Lash',
+	charizard: 'G-Max Wildfire',
+	blastoise: 'G-Max Cannonade',
+	butterfree: 'G-Max Befuddle',
+	pikachu: 'G-Max Volt Crash',
+	meowth: 'G-Max Gold Rush',
+	machamp: 'G-Max Chi Strike',
+	gengar: 'G-Max Terror',
+	kingler: 'G-Max Foam Burst',
+	lapras: 'G-Max Resonance',
+	eevee: 'G-Max Cuddle',
+	snorlax: 'G-Max Replenish',
+	garbodor: 'G-Max Malodor',
+	aegislash: 'G-Max Final Verdict',
+	melmetal: 'G-Max Meltdown',
+	rillaboom: 'G-Max Drum Solo',
+	cinderace: 'G-Max Fireball',
+	inteleon: 'G-Max Hydrosnipe',
+	corviknight: 'G-Max Wind Rage',
+	orbeetle: 'G-Max Gravitas',
+	drednaw: 'G-Max Stonesurge',
+	coalossal: 'G-Max Volcalith',
+	flapple: 'G-Max Tartness',
+	appletun: 'G-Max Sweetness',
+	sandaconda: 'G-Max Sandblast',
+	toxtricity: 'G-Max Stun Shock',
+	toxtricitylowkey: 'G-Max Stun Shock',
+	centiskorch: 'G-Max Centiferno',
+	hatterene: 'G-Max Smite',
+	grimmsnarl: 'G-Max Snooze',
+	alcremie: 'G-Max Finale',
+	copperajah: 'G-Max Steelsurge',
+	duraludon: 'G-Max Depletion',
+	dragapult: 'G-Max Spirit Volley',
+	urshifu: 'G-Max One Blow',
+	urshifurapidstrike: 'G-Max Rapid Flow',
+};
+for (const [id, canGigantamax] of Object.entries(CUSTOM_GIGANTAMAX_MOVES)) {
+	CUSTOM_SPECIES_UPDATES[id] = {...CUSTOM_SPECIES_UPDATES[id], canGigantamax};
+}
+
 const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	illusion: {
 		name: 'Illusion',
@@ -4235,6 +4299,11 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 		name: 'Self Repair',
 		desc: "This Pokemon has Self Sufficient and Natural Cure's effects.",
 		shortDesc: 'Self Sufficient + Natural Cure.',
+	},
+	schooling: {
+		name: 'Schooling',
+		desc: "Wishiwashi changes between Solo and School Form based on its HP. School Form has Hydra Bond and Self Repair's effects.",
+		shortDesc: 'Changes form by HP; School Form has Hydra Bond + Self Repair.',
 	},
 	scarecrow: {
 		name: 'Scarecrow',
@@ -4483,8 +4552,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	woolyconductor: {
 		name: "Wooly Conductor",
-		desc: "This Pokemon has Fur Coat, Mold Breaker, and Static's effects. Its Defense is doubled, its moves ignore opposing Abilities, and contact moves used against it may paralyze the attacker.",
-		shortDesc: "Fur Coat + Mold Breaker + Static.",
+		desc: "This Pokemon has Fluffy, Mold Breaker, and Static's effects. It takes half damage from contact moves, but takes double damage from Fire moves. Its moves ignore opposing Abilities, and contact moves used against it may paralyze the attacker.",
+		shortDesc: "Fluffy + Mold Breaker + Static.",
 	},
 	sacrededge: {
 		name: "Sacred Edge",
@@ -4758,8 +4827,13 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	apexvenom: {
 		name: "Apex Venom",
-		desc: "This Pokemon has Dual Wield. Poison moves are super effective against Poison and Steel. Dark moves gain STAB against targets that resist Dark but are not weak to it. Fainting a Steel-type target heals 50% max HP.",
-		shortDesc: "Dual Wield; Poison hits Poison/Steel super effectively; Dark STAB vs resists; Steel KO heals 1/2.",
+		desc: "This Pokemon has Strong Jaw and Shed Skin's effects. Poison moves are super effective against Poison and Steel. Biting moves gain STAB and add Poison-type effectiveness. Poison Fang is Dragon-type and has 2x power.",
+		shortDesc: "Strong Jaw + Shed Skin; Poison hits Poison/Steel; bites add Poison effectiveness; Poison Fang is Dragon/2x.",
+	},
+	curseddoll: {
+		name: "Cursed Doll",
+		desc: "This Pokemon has Tough Claws and Shadow Shield's effects. Its damaging moves curse the foes they hurt. When it faints, it creates Haunted Field for 5 turns.",
+		shortDesc: "Tough Claws + Shadow Shield; damaging moves curse; faint sets Haunted.",
 	},
 	duneterror: {
 		name: "Dune Terror",
@@ -4873,8 +4947,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	hellfireeclipse: {
 		name: "Hellfire Eclipse",
-		desc: "During harsh sunlight, this Pokemon's Attack and Special Attack are multiplied by 1.5. After this Pokemon uses a Fire-type move, it sets Sunny Day for 2 turns.",
-		shortDesc: "In Sun: Atk/SpA 1.5x; Fire moves set 2-turn Sun.",
+		desc: "This Pokemon has Flash Fire and Dark Aura's effects. During harsh sunlight, its Attack and Special Attack are multiplied by 1.5. After it uses a Fire-type move, it sets Sunny Day for 2 turns.",
+		shortDesc: "Flash Fire + Dark Aura; Sun: Atk/SpA 1.5x; Fire moves set 2-turn Sun.",
 	},
 	highnoon: {
 		name: "High Noon",
@@ -5128,8 +5202,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	reapersgrip: {
 		name: "Reaper's Grip",
-		desc: "This Pokemon has Iron Fist and Pressure's effects. Punch-based attacks have 1.4x power. Its foes lose 1 extra PP when targeting it. On entry, it lowers opposing Defense and Special Defense by 1 stage, or 2 stages in Cold Eclipse.",
-		shortDesc: "Iron Fist + Pressure; entry lowers opposing Def/SpD, doubled in Cold Eclipse.",
+		desc: "This Pokemon has Unaware and Pressure's effects. Its foes lose 1 extra PP when targeting it. When it faints, it creates Haunted Field for 5 turns.",
+		shortDesc: "Unaware + Pressure; foes lose 1 extra PP; faint sets 5-turn Haunted Field.",
 	},
 	resonanceforce: {
 		name: "Resonance Force",
@@ -5253,8 +5327,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	sinisterblaze: {
 		name: "Sinister Blaze",
-		desc: "This Pokemon is burned on switch-in, even through Misty Terrain, and its burn can overwrite other status conditions. Burn heals this Pokemon instead of damaging it, and its physical attacks are not weakened by burn. While this Pokemon is burned, opposing Pokemon take damage equal to 1/8 of their max HP each turn, doubled to 1/4 if they are burned, and this Pokemon heals the damage dealt. This Ability cannot be Skill Swapped, suppressed, copied by Role Play, given by Entrainment, or Traced.",
-		shortDesc: "Misty-bypassing burn; no burn penalty; foes take 1/8, or 1/4 if burned; heals damage.",
+		desc: "This Pokemon is burned on switch-in, even through Misty Terrain, and its burn can overwrite other status conditions. In Fairy Tale, Starlight Arena, New World, Burning Field, Volcanic Field, or Superheated Field, its Defense and Special Defense rise by 1 stage on entry. Its burn damage becomes healing and deals the same damage to each foe. It does not heal from that generated damage, but heals from real burn damage dealt to foes. Its physical attacks are not weakened by burn. This Ability cannot be Skill Swapped, suppressed, copied by Role Play, given by Entrainment, or Traced.",
+		shortDesc: "Burn becomes healing + equal foe damage; heals from foe burns; no burn penalty.",
 	},
 	soaringspirit: {
 		name: "Soaring Spirit",
@@ -5419,8 +5493,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	venombastion: {
 		name: "Venom Bastion",
-		desc: "This Pokemon has Dauntless Shield's effect, raising its Defense by 1 stage on entry. In Fairy Tale, it also raises Defense and Special Defense by 1 stage. Its Bug-type moves have 1.5x power, and it restores 1/16 of its max HP at the end of each turn.",
-		shortDesc: "Dauntless Shield; Bug moves 1.5x; heals 1/16 each turn.",
+		desc: "This Pokemon has Stamina's effect: when hit by an opposing attack, its Defense rises by 1 stage once per turn and it restores 1/16 max HP. Its Bug-type moves have 1.5x power.",
+		shortDesc: "Stamina + Bug moves 1.5x; hit: +1 Def once/turn and heals 1/16.",
 	},
 	venomrush: {
 		name: "Venom Rush",
@@ -5544,8 +5618,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	wrathshield: {
 		name: "Wrath Shield",
-		desc: "This Pokemon has Bulletproof, Filter, and Self Repair's effects. It is immune to bullet and pulse moves, takes their combined damage reductions from other attacks, heals 1/16 each turn, is immune to Sandstorm and Hail damage, and Natural Cure heals it when curing status on switch-out.",
-		shortDesc: "Bulletproof + Filter + Self Repair.",
+		desc: "This Pokemon has Bulletproof, Dauntless Shield, and Self Repair's effects. It gains 1 Defense stage on entry, plus 1 Special Defense stage in Cold Eclipse, New World, Starlight Arena, or Fairy Tale. It is immune to bullet and pulse moves and restores HP through Self Repair.",
+		shortDesc: "Bulletproof + Dauntless Shield + Self Repair; boosted fields also give +1 SpD.",
 	},
 	ragingfists: {
 		name: "Raging Fists",
@@ -6080,6 +6154,17 @@ const CUSTOM_LEARNSET_REPLACEMENTS: {[id: string]: {[id: string]: string[]}} = {
 };
 
 const CUSTOM_LEARNSET_ADDITIONS: {[id: string]: {[id: string]: string[]}} = {
+	persian: {
+		dazzlinggleam: ['9M'],
+		powergem: ['9M'],
+	},
+	persianalola: {
+		dazzlinggleam: ['9M'],
+		powergem: ['9M'],
+	},
+	primarina: {
+		boomburst: ['9M'],
+	},
 	azumarill: {
 		aurasphere: ['9M'],
 		moonblast: ['9M'],
@@ -6596,6 +6681,25 @@ function getCustomSpeciesBaseData(customSpecies: {base: string}) {
 	if (!window.BattlePokedex) return undefined;
 	return window.BattlePokedex[customSpecies.base] || window.BattlePokedex[toID(customSpecies.base)];
 }
+function mergeCustomSpeciesData(baseData: AnyObject, existingData: AnyObject | undefined, customData: AnyObject) {
+	const merged = {
+		...baseData,
+		...(existingData || {}),
+		...customData,
+		baseStats: {
+			...(baseData.baseStats || {}),
+			...(existingData?.baseStats || {}),
+			...(customData.baseStats || {}),
+		},
+		abilities: {
+			...(baseData.abilities || {}),
+			...(existingData?.abilities || {}),
+			...(customData.abilities || {}),
+		},
+	};
+	if (!customData.types && !existingData?.types && baseData.types) merged.types = [...baseData.types];
+	return merged;
+}
 function isCustomVisualForm(data: AnyObject) {
 	const forme = data?.forme;
 	if (typeof forme !== 'string') return false;
@@ -6606,6 +6710,47 @@ const CUSTOM_VARIANT_BASE_ALIASES: {[id: string]: string} = {
 	charizardmegax: 'charizard',
 	gastrodoneast: 'gastrodon',
 };
+function customVariantFamilyBaseId(base: string) {
+	const id = toID(base);
+	return CUSTOM_VARIANT_BASE_ALIASES[id] || id;
+}
+function customVariantFamilyId(species: AnyObject) {
+	const id = toID(species?.id || species?.name || '');
+	for (const customSpecies of Object.values(CUSTOM_SPECIES)) {
+		if (isCustomVisualForm(customSpecies.data) && customVariantFamilyBaseId(customSpecies.base) === id) {
+			return id;
+		}
+	}
+	const customSpecies = CUSTOM_SPECIES[id];
+	if (customSpecies && isCustomVisualForm(customSpecies.data)) {
+		return customVariantFamilyBaseId(customSpecies.base);
+	}
+	const baseId = toID(species?.baseSpecies || id);
+	return customVariantFamilyBaseId(baseId);
+}
+export function getCustomVisualFamilyId(species: AnyObject) {
+	return customVariantFamilyId(species);
+}
+export function getCustomCosmeticFormes(species: AnyObject) {
+	const familyId = customVariantFamilyId(species);
+	const baseData = window.BattlePokedex?.[familyId] || {};
+	const names: string[] = [];
+	const addName = (name: unknown) => {
+		if (typeof name !== 'string' || !name || names.some(existing => toID(existing) === toID(name))) return;
+		names.push(name);
+	};
+	addName(baseData.name || (toID(species?.name) === familyId ? species.name : undefined));
+	for (const customSpecies of Object.values(CUSTOM_SPECIES)) {
+		if (!isCustomVisualForm(customSpecies.data) || customVariantFamilyBaseId(customSpecies.base) !== familyId) continue;
+		addName(customSpecies.data.name);
+		for (const forme of customSpecies.data.otherFormes || []) addName(forme);
+	}
+	for (const forme of baseData.cosmeticFormes || []) addName(forme);
+	if (names.length <= 1) {
+		for (const forme of species.cosmeticFormes || []) addName(forme);
+	}
+	return names;
+}
 function addCustomVariantFormes(formeOrder: string[], formes: unknown) {
 	if (!Array.isArray(formes)) return;
 	for (const forme of formes) {
@@ -6617,7 +6762,7 @@ function applyCustomVisualVariantLinks(speciesTable: AnyObject) {
 	for (var id of CUSTOM_SPECIES_IDS) {
 		var customSpecies = CUSTOM_SPECIES[id];
 		if (!isCustomVisualForm(customSpecies.data)) continue;
-		var baseId = CUSTOM_VARIANT_BASE_ALIASES[toID(customSpecies.base)] || toID(customSpecies.base);
+		var baseId = customVariantFamilyBaseId(customSpecies.base);
 		var group = groups[baseId] || (groups[baseId] = {ids: [], names: new Set()});
 		group.ids.push(id);
 		group.names.add(customSpecies.data.name);
@@ -6655,6 +6800,7 @@ function applyCustomVisualVariantLinks(speciesTable: AnyObject) {
 			var data = speciesTable[id] || CUSTOM_SPECIES[id].data;
 			speciesTable[id] = {
 				...data,
+				baseSpecies: baseName,
 				otherFormes: formeOrder.filter(forme => forme !== data.name),
 				cosmeticFormes: [...cosmeticFormes],
 				formeOrder,
@@ -7035,7 +7181,8 @@ const CUSTOM_ABILITY_COMPONENT_OVERRIDES: {[id: string]: readonly ID[]} = {
 	relicarmor: ['selfsufficient' as ID],
 	relicmishap: ['selfsufficient' as ID, 'waterabsorb' as ID, 'voltabsorb' as ID],
 	apexpredator: ['relicarmor' as ID, 'precision' as ID, 'windrider' as ID],
-	apexvenom: ['dualwield' as ID],
+	apexvenom: ['strongjaw' as ID, 'shedskin' as ID],
+	curseddoll: ['toughclaws' as ID, 'shadowshield' as ID],
 	shadowguard: ['shadowtag' as ID],
 	alloycore: ['magicguard' as ID, 'selfsufficient' as ID],
 	ancientbloom: ['effectspore' as ID, 'selfsufficient' as ID],
@@ -7053,13 +7200,17 @@ const CUSTOM_ABILITY_COMPONENT_OVERRIDES: {[id: string]: readonly ID[]} = {
 	riotamp: ['punkrock' as ID, 'galvanize' as ID, 'resonanceforce' as ID],
 	waterbubble: ['waterveil' as ID],
 	requiem: ['cursedbody' as ID],
-	reapersgrip: ['ironfist' as ID, 'pressure' as ID],
+	reapersgrip: ['unaware' as ID, 'pressure' as ID],
+	pendulumswing: ['insomnia' as ID, 'filter' as ID],
 	ultrainstinct: ['moldbreaker' as ID, 'innerfocus' as ID],
 	hisuianpath: ['sapsipper' as ID, 'innerfocus' as ID, 'fluffy' as ID],
 	hydratyrant: ['hydrabond' as ID, 'berserk' as ID, 'selfsufficient' as ID],
 	toxicevolution: ['corrosion' as ID, 'dualwield' as ID, 'shielddust' as ID],
 	parasitism: ['dryskin' as ID, 'magicguard' as ID],
 	resuscitation: ['selfrepair' as ID, 'magicguard' as ID],
+	venombastion: ['stamina' as ID],
+	wrathshield: ['bulletproof' as ID, 'dauntlessshield' as ID, 'selfrepair' as ID],
+	hellfireeclipse: ['solarpower' as ID, 'darkaura' as ID],
 	islandcurrent: ['swiftswim' as ID, 'windrider' as ID],
 	oceanicwings: ['waterabsorb' as ID, 'hydration' as ID, 'friendguard' as ID],
 	ruinjaw: ['strongjaw' as ID, 'eartheater' as ID],
@@ -7387,11 +7538,7 @@ function ensureCustomSpecies(id?: string) {
 			const baseData = getCustomSpeciesBaseData(customSpecies);
 			if (!baseData) continue;
 			const existingData = window.BattlePokedex[customId];
-			window.BattlePokedex[customId] = {
-				...baseData,
-				...(existingData || {}),
-				...customSpecies.data,
-			};
+			window.BattlePokedex[customId] = mergeCustomSpeciesData(baseData, existingData, customSpecies.data);
 		}
 		for (const customId of CUSTOM_SPECIES_IDS) {
 			const customSpecies = CUSTOM_SPECIES[customId];
@@ -7408,10 +7555,7 @@ function ensureCustomSpecies(id?: string) {
 		const customSpecies = CUSTOM_SPECIES[id];
 		const baseData = getCustomSpeciesBaseData(customSpecies);
 		if (baseData) {
-			window.BattlePokedex[id] = {
-				...baseData,
-				...customSpecies.data,
-			};
+			window.BattlePokedex[id] = mergeCustomSpeciesData(baseData, undefined, customSpecies.data);
 			if (isCustomVisualForm(customSpecies.data)) {
 				const cosmeticFormes = new Set(baseData.cosmeticFormes || []);
 				cosmeticFormes.add(customSpecies.data.name);
