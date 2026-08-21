@@ -2177,6 +2177,20 @@ back:{w:116,h:90}
 };
 
 var CUSTOM_BW_SPRITES={
+golisopod:{
+num:768,
+front:{w:96,h:96},
+back:{w:96,h:96},
+shinyFront:{w:96,h:96},
+shinyBack:{w:96,h:96}
+},
+noivern:{
+num:715,
+front:{w:96,h:96},
+back:{w:96,h:96},
+shinyFront:{w:96,h:96},
+shinyBack:{w:96,h:96}
+},
 vikavolt:{
 num:738,
 front:{w:180,h:142},
