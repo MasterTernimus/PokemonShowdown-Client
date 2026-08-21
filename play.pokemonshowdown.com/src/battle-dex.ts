@@ -5038,8 +5038,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	mindfreeze: {
 		name: "Mind Freeze",
-		desc: "This Pokemon is immune to Ice-type attacks and restores 1/4 of its maximum HP when hit by one. It has Ice Body's healing and hail immunity. Its Psychic-type moves have a 40% chance to cause frostbite, and Freezing Glare's frostbite chance is doubled. Its Physical Ice-type moves become Special.",
-		shortDesc: "Ice immunity heals 1/4; Ice Body; Psychic may frostbite; physical Ice -> special.",
+		desc: "This Pokemon is immune to Ice-type attacks and restores 1/4 of its maximum HP when hit by one. It has Ice Body's healing and hail immunity. Its damaging Psychic-type moves have a 40% chance to cause frostbite, and Freezing Glare's frostbite chance is doubled. Its Physical Ice-type moves become Special.",
+		shortDesc: "Ice immunity heals 1/4; Ice Body; damaging Psychic may frostbite; physical Ice -> special.",
 	},
 	mirrorgreed: {
 		name: "Mirror Greed",
@@ -5248,8 +5248,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	zerotohero: {
 		name: 'Zero to Hero',
-		desc: 'This Pokemon gains Fighting-type STAB. Palafin changes to Hero Form after switching out or entering in Water fields. In Doubles, Multi, or Free-for-All, it survives one KO at 1 HP. Hero Form grants Friend Guard and heals active allies on entry.',
-		shortDesc: 'Becomes Hero; Fighting STAB; Hero: Friend Guard + entry healing.',
+		desc: "This Pokemon gains Fighting-type STAB and has Natural Cure's switch-out effect. Palafin changes to Hero Form after switching out or entering in Water fields. In Doubles, Multi, or Free-for-All, it survives one KO at 1 HP. Hero Form grants Friend Guard and heals active allies on entry.",
+		shortDesc: 'Natural Cure; becomes Hero; Fighting STAB; Hero: Friend Guard + entry healing.',
 	},
 	royalarmament: {
 		name: "Royal Armament",
