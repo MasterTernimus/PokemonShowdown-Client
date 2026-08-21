@@ -4205,7 +4205,7 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 	},
 	basculegion: {
 		baseStats: {hp: 120, atk: 112, def: 75, spa: 80, spd: 85, spe: 78},
-		abilities: {0: 'Noble Rider', 1: 'Supreme Overlord', H: 'Mold Breaker'},
+		abilities: {0: 'Noble Rider', 1: 'Supreme Overlord', H: 'Adaptability'},
 	},
 	basculegionf: {
 		baseStats: {hp: 120, atk: 80, def: 75, spa: 112, spd: 85, spe: 78},
@@ -4405,8 +4405,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	noblerider: {
 		name: "Noble Rider",
-		desc: "This Pokemon has Swift Swim and Adaptability's effects.",
-		shortDesc: "Swift Swim + Adaptability.",
+		desc: "This Pokemon has Swift Swim and Mold Breaker's effects.",
+		shortDesc: "Swift Swim + Mold Breaker.",
 	},
 	gooey: {
 		name: 'Gooey',
@@ -7604,6 +7604,8 @@ function ensureCustomSpecies(id?: string) {
 }
 window.ensureCustomDataPatches = ensureCustomDataPatches;
 window.ensureCustomSpecies = ensureCustomSpecies;
+window.getCustomVisualFamilyId = getCustomVisualFamilyId;
+window.getCustomCosmeticFormes = getCustomCosmeticFormes;
 
 type Comparable = number | string | boolean | Comparable[] | {reverse: Comparable};
 const PSUtils = new class {
@@ -8147,7 +8149,8 @@ const Dex = new class implements ModdedDex {
 			cryurl: '',
 			shiny: options.shiny,
 		};
-		let name = species.spriteid;
+		const customSpriteSpeciesId = requestedSpriteid || species.id;
+		let name = CUSTOM_SPECIES[customSpriteSpeciesId]?.data?.spriteid || species.spriteid;
 		if (requestedSpriteid && SILVALLY_FORME_TYPES[requestedSpriteid]) name = CUSTOM_ICON_SPRITES[requestedSpriteid] || requestedSpriteid;
 		if (requestedSpriteid && CUSTOM_STATIC_BATTLE_SPRITES[requestedSpriteid]) name = requestedSpriteid;
 		if (CUSTOM_ICON_SPRITES[species.id]) name = CUSTOM_ICON_SPRITES[species.id] as ID;
@@ -8520,14 +8523,16 @@ const Dex = new class implements ModdedDex {
 		let id = toID(pokemon.species);
 		let spriteid = pokemon.spriteid;
 		let species = Dex.species.get(pokemon.species);
+		const customSpeciesData = CUSTOM_SPECIES[id]?.data;
 		if (id === 'parasect' && toID(pokemon.ability) === 'parasitism') {
 			id = 'parasectparasitism' as ID;
 			spriteid = 'parasect-parasitism';
 			species = Dex.species.get('Parasect-Parasitism');
 		}
 		if (pokemon.species && !spriteid) {
-			spriteid = species.spriteid || toID(pokemon.species);
+			spriteid = customSpeciesData?.spriteid || species.spriteid || toID(pokemon.species);
 		}
+		if (customSpeciesData?.spriteid) spriteid = customSpeciesData.spriteid;
 		if (CUSTOM_ICON_SPRITES[id]) spriteid = CUSTOM_ICON_SPRITES[id];
 		if (species.exists === false) return { spriteDir: 'sprites/gen5', spriteid: '0', x: 10, y: 5 };
 		if (window.Config?.server?.afd || Dex.prefs('afd')) {

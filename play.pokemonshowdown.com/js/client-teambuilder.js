@@ -3556,19 +3556,24 @@
 			this.room = data.room;
 			this.curSet = data.curSet;
 			this.chartIndex = data.index;
+			if (window.ensureCustomSpecies) window.ensureCustomSpecies();
 			var species = this.room.curTeam.dex.species.get(this.curSet.species);
-			var baseid = toID(species.baseSpecies);
-			var forms = [baseid].concat(species.cosmeticFormes.map(toID));
-			var spriteDir = Dex.resourcePrefix + 'sprites/';
+			var customFormNames = window.getCustomCosmeticFormes ? window.getCustomCosmeticFormes(species) : [];
+			var formNames = customFormNames.length > 1 ? customFormNames :
+				[species.baseSpecies].concat(species.cosmeticFormes || []);
+			var forms = [];
+			var seenForms = {};
+			for (var formIndex = 0; formIndex < formNames.length; formIndex++) {
+				var formSpecies = this.room.curTeam.dex.species.get(formNames[formIndex]);
+				if (!formSpecies.exists || seenForms[formSpecies.id]) continue;
+				seenForms[formSpecies.id] = true;
+				forms.push(formSpecies);
+			}
 			var spriteSize = 96;
 			var spriteDim = 'width: 96px; height: 96px;';
 
 			var gen = Math.max(this.room.curTeam.gen, species.gen);
-			var dir = gen > 5 ? 'dex' : 'gen' + gen;
-			if (Dex.prefs('nopastgens')) gen = 'dex';
-			if (Dex.prefs('bwgfx') && dir === 'dex') gen = 'gen5';
-			spriteDir += dir;
-			if (dir === 'dex') {
+			if (gen > 5 && !Dex.prefs('bwgfx')) {
 				spriteSize = 120;
 				spriteDim = 'width: 120px; height: 120px;';
 			}
@@ -3579,24 +3584,25 @@
 
 			var formCount = forms.length;
 			for (var i = 0; i < formCount; i++) {
-				var formid = forms[i].substring(baseid.length);
-				var form = (formid ? formid[0].toUpperCase() + formid.slice(1) : '');
-				buf += '<button name="setForm" value="' + form + '" style="';
-				buf += 'background-image: url(' + spriteDir + '/' + baseid + (form ? '-' + formid : '') + '.png); ' + spriteDim + '" class="option';
-				buf += (form === (species.forme || '') ? ' cur' : '') + '"></button>';
+				var formSpecies = forms[i];
+				var spriteStyle = Dex.getTeambuilderSprite({
+					species: formSpecies.name,
+					shiny: this.curSet.shiny,
+				}, gen);
+				buf += '<button name="setForm" value="' + BattleLog.escapeHTML(formSpecies.name) + '" style="';
+				buf += spriteStyle + '; ' + spriteDim + '" title="' + BattleLog.escapeHTML(formSpecies.name) + '" class="option';
+				buf += (formSpecies.id === species.id ? ' cur' : '') + '"></button>';
 			}
 			buf += '<div style="clear:both"></div>';
 			buf += '</div>';
 
 			this.$el.html(buf).css({'max-width': (4 + spriteSize) * 7});
 		},
-		setForm: function (form) {
-			var species = Dex.species.get(this.curSet.species);
-			if (form && form !== species.form) {
-				this.curSet.species = Dex.species.get(species.baseSpecies + form).name;
-			} else if (!form) {
-				this.curSet.species = species.baseSpecies;
-			}
+		setForm: function (speciesName) {
+			if (window.ensureCustomSpecies) window.ensureCustomSpecies();
+			var species = this.room.curTeam.dex.species.get(speciesName);
+			if (!species.exists) return;
+			this.curSet.species = species.name;
 			this.close();
 			if (this.room.curSet) {
 				this.room.updatePokemonSprite();
