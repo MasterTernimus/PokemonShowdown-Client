@@ -4205,7 +4205,7 @@ abilities:{0:'Strong Jaw',1:'Noble Armor',H:'Crumbling Shell'}
 },
 basculegion:{
 baseStats:{hp:120,atk:112,def:75,spa:80,spd:85,spe:78},
-abilities:{0:'Noble Rider',1:'Supreme Overlord',H:'Mold Breaker'}
+abilities:{0:'Noble Rider',1:'Supreme Overlord',H:'Adaptability'}
 },
 basculegionf:{
 baseStats:{hp:120,atk:80,def:75,spa:112,spd:85,spe:78},
@@ -4405,8 +4405,8 @@ shortDesc:"Prism Armor + Ice Body."
 },
 noblerider:{
 name:"Noble Rider",
-desc:"This Pokemon has Swift Swim and Adaptability's effects.",
-shortDesc:"Swift Swim + Adaptability."
+desc:"This Pokemon has Swift Swim and Mold Breaker's effects.",
+shortDesc:"Swift Swim + Mold Breaker."
 },
 gooey:{
 name:'Gooey',
@@ -7604,6 +7604,8 @@ banette.formeOrder=(banette.formeOrder||[]).filter(function(forme){return forme!
 }
 window.ensureCustomDataPatches=ensureCustomDataPatches;
 window.ensureCustomSpecies=ensureCustomSpecies;
+window.getCustomVisualFamilyId=getCustomVisualFamilyId;
+window.getCustomCosmeticFormes=getCustomCosmeticFormes;
 
 
 var PSUtils=new(function(){function _class(){}var _proto=_class.prototype;_proto.
@@ -8101,7 +8103,7 @@ getSpriteData=function getSpriteData(pokemon,isFront)
 
 
 
-{var _window$Config2;var options=arguments.length>2&&arguments[2]!==undefined?arguments[2]:{gen:6};
+{var _CUSTOM_SPECIES$custo,_window$Config2;var options=arguments.length>2&&arguments[2]!==undefined?arguments[2]:{gen:6};
 var mechanicsGen=options.gen||6;
 var isDynamax=!!options.dynamax;
 if(pokemon instanceof Pokemon){
@@ -8147,7 +8149,8 @@ isFrontSprite:false,
 cryurl:'',
 shiny:options.shiny
 };
-var name=species.spriteid;
+var customSpriteSpeciesId=requestedSpriteid||species.id;
+var name=((_CUSTOM_SPECIES$custo=CUSTOM_SPECIES[customSpriteSpeciesId])==null||(_CUSTOM_SPECIES$custo=_CUSTOM_SPECIES$custo.data)==null?void 0:_CUSTOM_SPECIES$custo.spriteid)||species.spriteid;
 if(requestedSpriteid&&SILVALLY_FORME_TYPES[requestedSpriteid])name=CUSTOM_ICON_SPRITES[requestedSpriteid]||requestedSpriteid;
 if(requestedSpriteid&&CUSTOM_STATIC_BATTLE_SPRITES[requestedSpriteid])name=requestedSpriteid;
 if(CUSTOM_ICON_SPRITES[species.id])name=CUSTOM_ICON_SPRITES[species.id];
@@ -8515,19 +8518,21 @@ var fainted=(_pokemon7=pokemon)!=null&&_pokemon7.fainted?";opacity:.3;filter:gra
 return"background:transparent url("+Dex.resourcePrefix+"sprites/pokemonicons-sheet.png?v16) no-repeat scroll -"+left+"px -"+top+"px"+fainted;
 };_proto2.
 
-getTeambuilderSpriteData=function getTeambuilderSpriteData(pokemon){var _window$Config3;var gen=arguments.length>1&&arguments[1]!==undefined?arguments[1]:0;
+getTeambuilderSpriteData=function getTeambuilderSpriteData(pokemon){var _CUSTOM_SPECIES$id3,_window$Config3;var gen=arguments.length>1&&arguments[1]!==undefined?arguments[1]:0;
 ensureCustomBWSpriteData();
 var id=toID(pokemon.species);
 var spriteid=pokemon.spriteid;
 var species=Dex.species.get(pokemon.species);
+var customSpeciesData=(_CUSTOM_SPECIES$id3=CUSTOM_SPECIES[id])==null?void 0:_CUSTOM_SPECIES$id3.data;
 if(id==='parasect'&&toID(pokemon.ability)==='parasitism'){
 id='parasectparasitism';
 spriteid='parasect-parasitism';
 species=Dex.species.get('Parasect-Parasitism');
 }
 if(pokemon.species&&!spriteid){
-spriteid=species.spriteid||toID(pokemon.species);
+spriteid=(customSpeciesData==null?void 0:customSpeciesData.spriteid)||species.spriteid||toID(pokemon.species);
 }
+if(customSpeciesData!=null&&customSpeciesData.spriteid)spriteid=customSpeciesData.spriteid;
 if(CUSTOM_ICON_SPRITES[id])spriteid=CUSTOM_ICON_SPRITES[id];
 if(species.exists===false)return{spriteDir:'sprites/gen5',spriteid:'0',x:10,y:5};
 if((_window$Config3=window.Config)!=null&&(_window$Config3=_window$Config3.server)!=null&&_window$Config3.afd||Dex.prefs('afd')){
