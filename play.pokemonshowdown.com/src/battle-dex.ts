@@ -3723,8 +3723,12 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		abilities: {0: 'Friend Guard'},
 	},
 	gardevoir: {
+		abilities: {0: 'Trace', 1: 'Sworn Duty', H: 'Dream Sickness', S: 'Void Veil'},
 		otherFormes: ['Gardevoir-Mega', 'Gardevoir-Void-Mega', 'Gardevoir-Mega-Z'],
 		formeOrder: ['Gardevoir', 'Gardevoir-Mega', 'Gardevoir-Void-Mega', 'Gardevoir-Mega-Z'],
+	},
+	gallade: {
+		abilities: {0: 'Dual Wield', 1: 'Sworn Duty', H: 'Inner Focus', S: "Knight's Guard"},
 	},
 	blastoise: {
 		baseStats: {hp: 79, atk: 75, def: 95, spa: 100, spd: 108, spe: 78},
@@ -4560,8 +4564,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	royalvoice: {
 		name: "Royal Voice",
-		desc: "This Pokemon has Pixilate, Queenly Majesty, and Sworn Duty's effects.",
-		shortDesc: "Pixilate + Queenly Majesty + Sworn Duty.",
+		desc: "This Pokemon has Pixilate, Queenly Majesty, and Sworn Duty's effects. It is immune to Gravity and its negative effects.",
+		shortDesc: "Pixilate + Queenly Majesty + Sworn Duty; Gravity immune.",
 	},
 	fallenstar: {
 		name: "Fallen Star",
@@ -4655,8 +4659,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	argentdevotion: {
 		name: "Argent Devotion",
-		desc: "This Pokemon has Ironclad and Sworn Duty's effects.",
-		shortDesc: "Ironclad + Sworn Duty.",
+		desc: "This Pokemon has Ironclad and Sworn Duty's effects. It is immune to Gravity and its negative effects.",
+		shortDesc: "Ironclad + Sworn Duty; Gravity immune.",
 	},
 	ascendance: {
 		name: "Ascendance",
@@ -4880,8 +4884,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	execution: {
 		name: "Execution",
-		desc: "This Pokemon has Duskilate. Its attacks deal double damage to targets at half HP or less, move KOs heal 1/8 max HP per target, Attack and Special Attack cannot fall below -1, and fields cannot lower its Speed.",
-		shortDesc: "Duskilate; 2x vs targets at half HP or less; move KOs heal 1/8.",
+		desc: "This Pokemon has Duskilate. Its attacks deal double damage to targets at half HP or less, move KOs heal 1/8 max HP per target, Attack and Special Attack cannot fall below -1, fields cannot lower its Speed, and it is immune to Gravity and its negative effects.",
+		shortDesc: "Duskilate; 2x vs low HP; KO heals 1/8; Gravity immune.",
 	},
 	falsedevotion: {
 		name: "False Devotion",
@@ -5514,10 +5518,20 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 		desc: "On this Pokemon's first active turn, its Speed is 1.5x and its Attack is 1.2x.",
 		shortDesc: "First active turn: 1.5x Spe and 1.2x Atk.",
 	},
+	dreamsickness: {
+		name: "Dream Sickness",
+		desc: "This Pokemon has Telepathy and Sworn Duty. It is immune to Gravity and its negative effects. Its stats cannot be lowered, and its allies' Speed cannot be lowered. At the end of each turn, this Pokemon and its allies restore 1/16 max HP. If an opposing attack would knock out an ally while this Pokemon is above 25% HP, this Pokemon takes the damage instead. Once per switch-in, an ally at 25% HP or lower heals 1/4 max HP, is cured of status, and is sheltered through the next turn.",
+		shortDesc: "Telepathy + Sworn Duty; Gravity immune; heals and protects allies.",
+	},
 	voidveil: {
 		name: "Void Veil",
-		desc: "This Pokemon has Telepathy and Temporal Shift's effects, but its delayed Future Sight starts after one turn out and queues every other turn. Its delayed Future Sight becomes Fairy type if that would hit the target harder. In Cold Eclipse, this delayed Future Sight is 90 Base Power instead of 60. It is immune to Gravity and its negative effects. This Pokemon and its allies cannot have their Speed lowered. At the end of each turn, this Pokemon and its ally restore 1/16 max HP. If an opposing attack would knock out this Pokemon's ally while this Pokemon is above 25% HP, this Pokemon takes that damage instead. Once per switch-in, if an ally is at 25% HP or lower at the end of the turn, that ally heals 1/4 max HP, is cured of status, and is sheltered until the end of the next turn.",
-		shortDesc: "Telepathy + delayed Void Future Sight; Cold Eclipse makes it 90 BP; protects allies.",
+		desc: "This Pokemon has Levitate, Friend Guard, and Costar's effects. It is immune to Gravity and its negative effects.",
+		shortDesc: "Levitate + Friend Guard + Costar; Gravity immune.",
+	},
+	knightsguard: {
+		name: "Knight's Guard",
+		desc: "This Pokemon has Sworn Duty, Justified, and Steadfast's effects.",
+		shortDesc: "Sworn Duty + Justified + Steadfast.",
 	},
 	warpath: {
 		name: "War Path",
@@ -5944,9 +5958,25 @@ const CUSTOM_MOVE_UPDATES: {[id: string]: AnyObject} = {
 		desc: 'The user loses its focus if hit before moving. This move bypasses Protect at full power; otherwise, it deals 50 Base Power.',
 		shortDesc: 'Bypasses Protect at full power; otherwise 50 BP.',
 	},
+	foresight: {
+		desc: "Ignores the target's positive Evasion and lets Normal- and Fighting-type attacks hit Ghost types. The user takes half damage from Ghost-type attacks until it switches out.",
+		shortDesc: 'Normal/Fighting hit Ghost; ignores Evasion; user resists Ghost.',
+	},
+	gravity: {
+		desc: 'For 5 turns, all Pokemon are grounded and move accuracy is raised. Grounded non-Psychic and non-Fairy Pokemon have 0.75x Speed, Ground-type moves have 1.2x power, and status recovery moves restore 25% less HP. Certain airborne moves cannot be used.',
+		shortDesc: '5 turns: grounds all; +accuracy; slows foes; recovery is 0.75x.',
+	},
+	miracleeye: {
+		desc: "Ignores the target's positive Evasion and lets Psychic-type attacks hit Dark types. The user takes half damage from Ghost-type attacks until it switches out. On Psychic Terrain, Fairy Tale, or Holy Field, the user gains +2 Special Attack.",
+		shortDesc: 'Psychic hits Dark; ignores Evasion; user resists Ghost; field +2 SpA.',
+	},
 	mudslap: {
 		desc: 'A 25 Base Power special Ground-type move with 95% accuracy that hits two to five times. On Murkwater Surface, it becomes Water type.',
 		shortDesc: '25 BP special Ground; hits 2-5; Water on Murkwater Surface.',
+	},
+	odorsleuth: {
+		desc: "Ignores the target's positive Evasion and lets Normal- and Fighting-type attacks hit Ghost types. The user takes half damage from Ghost-type attacks until it switches out.",
+		shortDesc: 'Normal/Fighting hit Ghost; ignores Evasion; user resists Ghost.',
 	},
 	rockwrecker: {
 		desc: 'If this move fails to KO its target, Stealth Rock is set on the target\'s side. If successful, the user must recharge on the following turn.',
