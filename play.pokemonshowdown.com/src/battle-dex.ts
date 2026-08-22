@@ -3910,10 +3910,12 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 	},
 	samurott: {
 		types: ['Water', 'Fighting'],
+		baseStats: {hp: 95, atk: 100, def: 95, spa: 120, spd: 85, spe: 75},
 		abilities: {0: 'Swift Swim', 1: 'Blade Mastery', H: 'Shell Armor'},
 	},
 	samurotthisui: {
-		abilities: {0: 'Lightning Rod', 1: 'Blade Mastery', H: 'Mold Breaker'},
+		baseStats: {hp: 90, atk: 130, def: 80, spa: 105, spd: 70, spe: 95},
+		abilities: {0: 'Lightning Rod', 1: 'Blade Mastery', H: 'Swift Swim'},
 	},
 	audino: {
 		abilities: {0: 'Invigorate', 1: 'Regenerator', H: 'Triage'},
@@ -5012,8 +5014,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	blademastery: {
 		name: "Blade Mastery",
-		desc: "This Pokemon has Sharpness's effect and gains STAB on Fighting-type moves.",
-		shortDesc: "Sharpness; gains Fighting STAB.",
+		desc: "This Pokemon has Sharpness, Dual Wield, and Mold Breaker. Below half HP, its slicing moves have their critical-hit ratio raised by 1 stage.",
+		shortDesc: "Sharpness + Dual Wield + Mold Breaker; below half HP, slicing moves gain +1 crit.",
 	},
 	blazingmane: {
 		name: "Blazing Mane",
@@ -6123,6 +6125,7 @@ const CUSTOM_MOVE_UPDATES: {[id: string]: AnyObject} = {
 	},
 	ceaselessedge: {
 		name: 'Ceaseless Edge',
+		accuracy: 95,
 		desc: 'If this move is successful, it sets up a layer of Spikes on the opposing side.',
 		shortDesc: 'Sets Spikes on the opposing side.',
 	},
@@ -6975,6 +6978,8 @@ const CUSTOM_LEARNSET_REMOVALS: {[id: string]: string[]} = {
 	simisage: ['slackoff'],
 	simisear: ['slackoff'],
 	simipour: ['slackoff'],
+	samurott: ['flashcannon', 'ironhead', 'irontail', 'metalclaw', 'tachyoncutter'],
+	samurotthisui: ['flashcannon', 'ironhead', 'irontail', 'metalclaw', 'tachyoncutter'],
 	typhlosionhisui: ['shadowforce'],
 	solrock: ['diamondstorm', 'mightycleave'],
 	spiritomb: ['partingshot'],
@@ -7573,6 +7578,7 @@ const CUSTOM_ABILITY_COMPONENT_OVERRIDES: {[id: string]: readonly ID[]} = {
 	ultrainstinct: ['moldbreaker' as ID, 'innerfocus' as ID],
 	hisuianpath: ['sapsipper' as ID, 'innerfocus' as ID, 'fluffy' as ID],
 	hydratyrant: ['hydrabond' as ID, 'berserk' as ID, 'selfsufficient' as ID],
+	blademastery: ['sharpness' as ID, 'dualwield' as ID, 'moldbreaker' as ID],
 	toxicevolution: ['corrosion' as ID, 'dualwield' as ID, 'shielddust' as ID],
 	parasitism: ['dryskin' as ID, 'magicguard' as ID],
 	resuscitation: ['selfrepair' as ID, 'magicguard' as ID],
@@ -7708,6 +7714,12 @@ function applyCustomTeambuilderLearnsets(table: AnyObject) {
 	}
 	if (table.learnsets.basculegion && table.learnsets.basculegionf) {
 		table.learnsets.basculegionf = {...table.learnsets.basculegion};
+	}
+	if (table.learnsets.samurott && table.learnsets.samurotthisui) {
+		table.learnsets.samurotthisui = {
+			...table.learnsets.samurotthisui,
+			...table.learnsets.samurott,
+		};
 	}
 	const pikachuSharedForms = [
 		'pikachucosplay', 'pikachurockstar', 'pikachubelle', 'pikachupopstar',

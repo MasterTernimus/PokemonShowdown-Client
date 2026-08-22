@@ -3910,10 +3910,12 @@ abilities:{0:"Mind's Eye",1:'Sworn Duty',H:'Ironclad'}
 },
 samurott:{
 types:['Water','Fighting'],
+baseStats:{hp:95,atk:100,def:95,spa:120,spd:85,spe:75},
 abilities:{0:'Swift Swim',1:'Blade Mastery',H:'Shell Armor'}
 },
 samurotthisui:{
-abilities:{0:'Lightning Rod',1:'Blade Mastery',H:'Mold Breaker'}
+baseStats:{hp:90,atk:130,def:80,spa:105,spd:70,spe:95},
+abilities:{0:'Lightning Rod',1:'Blade Mastery',H:'Swift Swim'}
 },
 audino:{
 abilities:{0:'Invigorate',1:'Regenerator',H:'Triage'}
@@ -5012,8 +5014,8 @@ shortDesc:"Sets Bewitched Woods for 5 turns. Magic Bounce + Queenly Majesty."
 },
 blademastery:{
 name:"Blade Mastery",
-desc:"This Pokemon has Sharpness's effect and gains STAB on Fighting-type moves.",
-shortDesc:"Sharpness; gains Fighting STAB."
+desc:"This Pokemon has Sharpness, Dual Wield, and Mold Breaker. Below half HP, its slicing moves have their critical-hit ratio raised by 1 stage.",
+shortDesc:"Sharpness + Dual Wield + Mold Breaker; below half HP, slicing moves gain +1 crit."
 },
 blazingmane:{
 name:"Blazing Mane",
@@ -6123,6 +6125,7 @@ shortDesc:'Hits twice; high crit; 30% flinch each hit; hits airborne neutrally.'
 },
 ceaselessedge:{
 name:'Ceaseless Edge',
+accuracy:95,
 desc:'If this move is successful, it sets up a layer of Spikes on the opposing side.',
 shortDesc:'Sets Spikes on the opposing side.'
 },
@@ -6975,6 +6978,8 @@ seviper:['direclaw','partingshot'],
 simisage:['slackoff'],
 simisear:['slackoff'],
 simipour:['slackoff'],
+samurott:['flashcannon','ironhead','irontail','metalclaw','tachyoncutter'],
+samurotthisui:['flashcannon','ironhead','irontail','metalclaw','tachyoncutter'],
 typhlosionhisui:['shadowforce'],
 solrock:['diamondstorm','mightycleave'],
 spiritomb:['partingshot'],
@@ -7573,6 +7578,7 @@ pendulumswing:['insomnia','filter'],
 ultrainstinct:['moldbreaker','innerfocus'],
 hisuianpath:['sapsipper','innerfocus','fluffy'],
 hydratyrant:['hydrabond','berserk','selfsufficient'],
+blademastery:['sharpness','dualwield','moldbreaker'],
 toxicevolution:['corrosion','dualwield','shielddust'],
 parasitism:['dryskin','magicguard'],
 resuscitation:['selfrepair','magicguard'],
@@ -7708,6 +7714,12 @@ table.learnsets[_id4][_moveid]=encodeCustomLearnsetSources(CUSTOM_LEARNSET_ADDIT
 }
 if(table.learnsets.basculegion&&table.learnsets.basculegionf){
 table.learnsets.basculegionf=Object.assign({},table.learnsets.basculegion);
+}
+if(table.learnsets.samurott&&table.learnsets.samurotthisui){
+table.learnsets.samurotthisui=Object.assign({},
+table.learnsets.samurotthisui,
+table.learnsets.samurott);
+
 }
 var pikachuSharedForms=[
 'pikachucosplay','pikachurockstar','pikachubelle','pikachupopstar',
