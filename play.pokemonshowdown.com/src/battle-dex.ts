@@ -103,6 +103,21 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 			isNonstandard: 'Custom',
 		},
 	},
+	eeveestarteralt: {
+		base: 'eeveestarter',
+		data: {
+			name: 'Eevee-Starter-Alt',
+			baseSpecies: 'Eevee-Starter',
+			forme: 'Alt',
+			spriteid: 'eevee-starter-alt',
+			types: ['Normal'],
+			abilities: {0: 'Protean', 1: 'Sinister Blaze', H: 'Unstable Evo'},
+			baseStats: {hp: 65, atk: 75, def: 70, spa: 65, spd: 85, spe: 75},
+			changesFrom: 'Eevee-Starter',
+			canGigantamax: 'G-Max Cuddle',
+			isNonstandard: 'Custom',
+		},
+	},
 	empoleonalt: {
 		base: 'empoleon',
 		data: {
@@ -148,6 +163,94 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 			forme: 'Aevian',
 			spriteid: 'lapras-aevian',
 			changesFrom: 'Lapras',
+			isNonstandard: 'Custom',
+		},
+	},
+	laprasazzy: {
+		base: 'lapras',
+		data: {
+			name: 'Lapras-Azzy',
+			baseSpecies: 'Lapras',
+			forme: 'Azzy',
+			spriteid: 'lapras-azzy',
+			changesFrom: 'Lapras',
+			isNonstandard: 'Custom',
+		},
+	},
+	samurottalt: {
+		base: 'samurott',
+		data: {
+			name: 'Samurott-Alt',
+			baseSpecies: 'Samurott',
+			forme: 'Alt',
+			spriteid: 'samurott-alt',
+			changesFrom: 'Samurott',
+			isNonstandard: 'Custom',
+		},
+	},
+	samurotthisuialt: {
+		base: 'samurotthisui',
+		data: {
+			name: 'Samurott-Hisui-Alt',
+			baseSpecies: 'Samurott-Hisui',
+			forme: 'Hisui-Alt',
+			spriteid: 'samurott-hisui-alt',
+			changesFrom: 'Samurott-Hisui',
+			isNonstandard: 'Custom',
+		},
+	},
+	goodrahisuialt: {
+		base: 'goodrahisui',
+		data: {
+			name: 'Goodra-Hisui-Alt',
+			baseSpecies: 'Goodra-Hisui',
+			forme: 'Hisui-Alt',
+			spriteid: 'goodra-hisui-alt',
+			changesFrom: 'Goodra-Hisui',
+			isNonstandard: 'Custom',
+		},
+	},
+	machampalt: {
+		base: 'machamp',
+		data: {
+			name: 'Machamp-Alt',
+			baseSpecies: 'Machamp',
+			forme: 'Alt',
+			spriteid: 'machamp-alt',
+			changesFrom: 'Machamp',
+			isNonstandard: 'Custom',
+		},
+	},
+	machampgmaxalt: {
+		base: 'machampgmax',
+		data: {
+			name: 'Machamp-Gmax-Alt',
+			baseSpecies: 'Machamp-Gmax',
+			forme: 'Gmax-Alt',
+			spriteid: 'machamp-gmax-alt',
+			changesFrom: 'Machamp-Gmax',
+			isNonstandard: 'Custom',
+		},
+	},
+	skeledirgealt: {
+		base: 'skeledirge',
+		data: {
+			name: 'Skeledirge-Alt',
+			baseSpecies: 'Skeledirge',
+			forme: 'Alt',
+			spriteid: 'skeledirge-alt',
+			changesFrom: 'Skeledirge',
+			isNonstandard: 'Custom',
+		},
+	},
+	tsareenaalt: {
+		base: 'tsareena',
+		data: {
+			name: 'Tsareena-Alt',
+			baseSpecies: 'Tsareena',
+			forme: 'Alt',
+			spriteid: 'tsareena-alt',
+			changesFrom: 'Tsareena',
 			isNonstandard: 'Custom',
 		},
 	},
@@ -1044,6 +1147,14 @@ const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
 	miloticalt: 'milotic-alt',
 	miloticaevian: 'milotic-aevian',
 	laprasaevian: 'lapras-aevian',
+	laprasazzy: 'lapras-azzy',
+	samurottalt: 'samurott-alt',
+	samurotthisuialt: 'samurott-hisui-alt',
+	goodrahisuialt: 'goodra-hisui-alt',
+	machampalt: 'machamp-alt',
+	machampgmaxalt: 'machamp-gmax-alt',
+	skeledirgealt: 'skeledirge-alt',
+	tsareenaalt: 'tsareena-alt',
 	primarinaalt: 'primarina-alt',
 	decidueyealt: 'decidueye-alt',
 	decidueyehisuialt: 'decidueye-hisui-alt',
@@ -1051,6 +1162,7 @@ const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
 	gastrodonaevian: 'gastrodon-aevian',
 	gastrodoneastaevian: 'gastrodon-east-aevian',
 	hypnopulse: 'hypno-pulse',
+	eeveestarteralt: 'eevee-starter-alt',
 	belliboltalt: 'bellibolt-alt',
 	typhlosionalt: 'typhlosion-alt',
 	nidokingalt: 'nidoking-alt',
@@ -1132,6 +1244,22 @@ const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
 	silvallydragon: 'silvally-dragon',
 	silvallydark: 'silvally-dark',
 	silvallyfairy: 'silvally-fairy',
+};
+
+// These cosmetic forms use custom front artwork but retain their species'
+// standard back sprite in battle.
+const CUSTOM_DEFAULT_BACK_SPRITES: {[id: string]: ID} = {
+	primarinaalt: 'primarina' as ID,
+	decidueyealt: 'decidueye' as ID,
+	decidueyehisuialt: 'decidueyehisui' as ID,
+	incineroaralt: 'incineroar' as ID,
+	samurottalt: 'samurott' as ID,
+	samurotthisuialt: 'samurotthisui' as ID,
+	goodrahisuialt: 'goodrahisui' as ID,
+	machampalt: 'machamp' as ID,
+	machampgmaxalt: 'machampgmax' as ID,
+	skeledirgealt: 'skeledirge' as ID,
+	tsareenaalt: 'tsareena' as ID,
 };
 
 const CUSTOM_TEAMBUILDER_SPRITES: {[id: string]: {x: number, y: number, backgroundSize: string}} = {
@@ -1307,8 +1435,9 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 		back: {w: 150, h: 168},
 	},
 	typhlosionalt: {
-		front: {w: 156, h: 184},
+		front: {w: 64, h: 64},
 		back: {w: 150, h: 178},
+		shinyFront: {w: 64, h: 64},
 	},
 	nidokingalt: {
 		front: {w: 170, h: 178},
@@ -2158,6 +2287,60 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 		shinyFront: {w: 192, h: 192},
 		shinyBack: {w: 192, h: 192},
 	},
+	eeveestarteralt: {
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
+	},
+	laprasazzy: {
+		front: {w: 300, h: 300},
+		back: {w: 300, h: 300},
+		shinyFront: {w: 300, h: 300},
+		shinyBack: {w: 300, h: 300},
+	},
+	samurottalt: {
+		front: {w: 64, h: 64},
+		back: {w: 64, h: 64},
+		shinyFront: {w: 64, h: 64},
+		shinyBack: {w: 64, h: 64},
+	},
+	samurotthisuialt: {
+		front: {w: 64, h: 64},
+		back: {w: 64, h: 64},
+		shinyFront: {w: 64, h: 64},
+		shinyBack: {w: 64, h: 64},
+	},
+	goodrahisuialt: {
+		front: {w: 64, h: 64},
+		back: {w: 64, h: 64},
+		shinyFront: {w: 64, h: 64},
+		shinyBack: {w: 64, h: 64},
+	},
+	machampalt: {
+		front: {w: 64, h: 64},
+		back: {w: 64, h: 64},
+		shinyFront: {w: 64, h: 64},
+		shinyBack: {w: 64, h: 64},
+	},
+	machampgmaxalt: {
+		front: {w: 64, h: 64},
+		back: {w: 96, h: 96},
+		shinyFront: {w: 64, h: 64},
+		shinyBack: {w: 96, h: 96},
+	},
+	skeledirgealt: {
+		front: {w: 64, h: 64},
+		back: {w: 64, h: 64},
+		shinyFront: {w: 64, h: 64},
+		shinyBack: {w: 64, h: 64},
+	},
+	tsareenaalt: {
+		front: {w: 64, h: 64},
+		back: {w: 64, h: 64},
+		shinyFront: {w: 64, h: 64},
+		shinyBack: {w: 64, h: 64},
+	},
 	gastrodonaevian: {
 		front: {w: 192, h: 192},
 		back: {w: 192, h: 192},
@@ -2312,6 +2495,69 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 		shinyFront: {w: 192, h: 192},
 		shinyBack: {w: 192, h: 192},
 	},
+	eeveestarteralt: {
+		num: 133,
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
+	},
+	laprasazzy: {
+		num: 131,
+		front: {w: 300, h: 300},
+		back: {w: 300, h: 300},
+		shinyFront: {w: 300, h: 300},
+		shinyBack: {w: 300, h: 300},
+	},
+	samurottalt: {
+		num: 503,
+		front: {w: 64, h: 64},
+		back: {w: 64, h: 64},
+		shinyFront: {w: 64, h: 64},
+		shinyBack: {w: 64, h: 64},
+	},
+	samurotthisuialt: {
+		num: 503,
+		front: {w: 64, h: 64},
+		back: {w: 64, h: 64},
+		shinyFront: {w: 64, h: 64},
+		shinyBack: {w: 64, h: 64},
+	},
+	goodrahisuialt: {
+		num: 706,
+		front: {w: 64, h: 64},
+		back: {w: 64, h: 64},
+		shinyFront: {w: 64, h: 64},
+		shinyBack: {w: 64, h: 64},
+	},
+	machampalt: {
+		num: 68,
+		front: {w: 64, h: 64},
+		back: {w: 96, h: 96},
+		shinyFront: {w: 64, h: 64},
+		shinyBack: {w: 96, h: 96},
+	},
+	machampgmaxalt: {
+		num: 68,
+		front: {w: 64, h: 64},
+		back: {w: 96, h: 96},
+		shinyFront: {w: 64, h: 64},
+		shinyBack: {w: 96, h: 96},
+	},
+	skeledirgealt: {
+		num: 911,
+		front: {w: 64, h: 64},
+		back: {w: 64, h: 64},
+		shinyFront: {w: 64, h: 64},
+		shinyBack: {w: 64, h: 64},
+	},
+	tsareenaalt: {
+		num: 763,
+		front: {w: 64, h: 64},
+		back: {w: 64, h: 64},
+		shinyFront: {w: 64, h: 64},
+		shinyBack: {w: 64, h: 64},
+	},
 	primarinaalt: {
 		num: 730,
 		front: {w: 64, h: 64},
@@ -2347,8 +2593,9 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	},
 	typhlosionalt: {
 		num: 157,
-		front: {w: 192, h: 192},
+		front: {w: 64, h: 64},
 		back: {w: 192, h: 192},
+		shinyFront: {w: 64, h: 64},
 	},
 	nidokingalt: {
 		num: 34,
@@ -3637,6 +3884,7 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		abilities: {0: "Mind's Eye", 1: 'Sworn Duty', H: 'Ironclad'},
 	},
 	samurott: {
+		types: ['Water', 'Fighting'],
 		abilities: {0: 'Swift Swim', 1: 'Blade Mastery', H: 'Shell Armor'},
 	},
 	samurotthisui: {
@@ -4259,6 +4507,12 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		abilities: {0: 'Thick Fat', 1: 'Magic Bounce', H: 'Own Tempo'},
 	},
 	hippowdon: {baseStats: {hp: 118, atk: 127}, abilities: {0: 'Sand Stream', 1: 'Ruin Jaw', H: 'Accumulation'}},
+	eeveestarter: {
+		abilities: {0: 'Protean', 1: 'Sinister Blaze', H: 'Unstable Evo'},
+		otherFormes: ['Eevee-Starter-Alt'],
+		cosmeticFormes: ['Eevee-Starter-Alt'],
+		formeOrder: ['Eevee-Starter', 'Eevee-Starter-Alt'],
+	},
 	garchompbattlebond: {baseStats: {spe: 122}},
 };
 
@@ -4315,6 +4569,11 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 		name: 'Self Repair',
 		desc: "This Pokemon has Self Sufficient and Natural Cure's effects.",
 		shortDesc: 'Self Sufficient + Natural Cure.',
+	},
+	unstableevo: {
+		name: 'Unstable Evo',
+		desc: "Before a Let's Go partner move, Eevee-Starter becomes its matching evolution and uses that form's stats, typing, and Speed. It keeps Unstable Evo and gains that evolution's built-in Ability effects. Switching out restores Eevee-Starter. It cannot use battle gimmicks or hold Eevium Z.",
+		shortDesc: "Let's Go moves change form before acting; gains its Ability; cannot use gimmicks.",
 	},
 	schooling: {
 		name: 'Schooling',
@@ -4578,8 +4837,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	royalvoice: {
 		name: "Royal Voice",
-		desc: "This Pokemon has Pixilate, Queenly Majesty, and Sworn Duty's effects. It is immune to Gravity and its negative effects.",
-		shortDesc: "Pixilate + Queenly Majesty + Sworn Duty; Gravity immune.",
+		desc: "This Pokemon has Pixilate, Queenly Majesty, and Sworn Duty's effects.",
+		shortDesc: "Pixilate + Queenly Majesty + Sworn Duty.",
 	},
 	fallenstar: {
 		name: "Fallen Star",
@@ -4623,8 +4882,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	lunarorbit: {
 		name: "Lunar Orbit",
-		desc: "This Pokemon has Magic Bounce and Serene Grace. On switch-in, it sets Gravity for 5 turns. This Pokemon is immune to Gravity's negative effects: it is not grounded, its Ground immunity is not removed, and it can still use moves normally restricted by Gravity.",
-		shortDesc: "Magic Bounce + Serene Grace; sets Gravity and ignores Gravity's negative effects.",
+		desc: "This Pokemon has Magic Bounce and Serene Grace. On switch-in, it sets Gravity for 5 turns.",
+		shortDesc: "Magic Bounce + Serene Grace; sets Gravity for 5 turns.",
 	},
 	spiralevolution: {
 		name: "Spiral Evolution",
@@ -4673,8 +4932,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	argentdevotion: {
 		name: "Argent Devotion",
-		desc: "This Pokemon has Ironclad and Sworn Duty's effects. It is immune to Gravity and its negative effects.",
-		shortDesc: "Ironclad + Sworn Duty; Gravity immune.",
+		desc: "This Pokemon has Ironclad and Sworn Duty's effects.",
+		shortDesc: "Ironclad + Sworn Duty.",
 	},
 	ascendance: {
 		name: "Ascendance",
@@ -4898,8 +5157,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	execution: {
 		name: "Execution",
-		desc: "This Pokemon has Duskilate. Its attacks deal double damage to targets at half HP or less, move KOs heal 1/8 max HP per target, Attack and Special Attack cannot fall below -1, fields cannot lower its Speed, and it is immune to Gravity and its negative effects.",
-		shortDesc: "Duskilate; 2x vs low HP; KO heals 1/8; Gravity immune.",
+		desc: "This Pokemon has Duskilate. Its attacks deal double damage to targets at half HP or less, move KOs heal 1/8 max HP per target, Attack and Special Attack cannot fall below -1, and fields cannot lower its Speed.",
+		shortDesc: "Duskilate; 2x vs low HP; KO heals 1/8.",
 	},
 	falsedevotion: {
 		name: "False Devotion",
@@ -5248,8 +5507,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	zerotohero: {
 		name: 'Zero to Hero',
-		desc: "This Pokemon gains Fighting-type STAB and has Natural Cure's switch-out effect. Palafin changes to Hero Form after switching out or entering in Water fields. In Doubles, Multi, or Free-for-All, it survives one KO at 1 HP. Hero Form grants Friend Guard and heals active allies on entry.",
-		shortDesc: 'Natural Cure; becomes Hero; Fighting STAB; Hero: Friend Guard + entry healing.',
+		desc: 'This Pokemon gains Fighting-type STAB. Palafin changes to Hero Form after switching out or entering in Water fields. In Doubles, Multi, or Free-for-All, it survives one KO at 1 HP. Hero Form grants Friend Guard and heals active allies on entry.',
+		shortDesc: 'Becomes Hero; Fighting STAB; Hero: Friend Guard + entry healing.',
 	},
 	royalarmament: {
 		name: "Royal Armament",
@@ -5534,13 +5793,13 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	dreamsickness: {
 		name: "Dream Sickness",
-		desc: "This Pokemon has Telepathy and Sworn Duty. It is immune to Gravity and its negative effects. Its stats cannot be lowered, and its allies' Speed cannot be lowered. At the end of each turn, this Pokemon and its allies restore 1/16 max HP. If an opposing attack would knock out an ally while this Pokemon is above 25% HP, this Pokemon takes the damage instead. Once per switch-in, an ally at 25% HP or lower heals 1/4 max HP, is cured of status, and is sheltered through the next turn.",
-		shortDesc: "Telepathy + Sworn Duty; Gravity immune; heals and protects allies.",
+		desc: "This Pokemon has Telepathy and Sworn Duty. Its stats cannot be lowered, and its allies' Speed cannot be lowered. At the end of each turn, this Pokemon and its allies restore 1/16 max HP. If an opposing attack would knock out an ally while this Pokemon is above 25% HP, this Pokemon takes the damage instead. Once per switch-in, an ally at 25% HP or lower heals 1/4 max HP, is cured of status, and is sheltered through the next turn.",
+		shortDesc: "Telepathy + Sworn Duty; heals and protects allies.",
 	},
 	voidveil: {
 		name: "Void Veil",
-		desc: "This Pokemon has Levitate, Friend Guard, and Costar's effects. It is immune to Gravity and its negative effects.",
-		shortDesc: "Levitate + Friend Guard + Costar; Gravity immune.",
+		desc: "This Pokemon has Levitate, Friend Guard, and Costar's effects.",
+		shortDesc: "Levitate + Friend Guard + Costar.",
 	},
 	knightsguard: {
 		name: "Knight's Guard",
@@ -5977,8 +6236,8 @@ const CUSTOM_MOVE_UPDATES: {[id: string]: AnyObject} = {
 		shortDesc: 'Normal/Fighting hit Ghost; ignores Evasion; user resists Ghost.',
 	},
 	gravity: {
-		desc: 'For 5 turns, all Pokemon are grounded and move accuracy is raised. Grounded non-Psychic and non-Fairy Pokemon have 0.75x Speed, Ground-type moves have 1.2x power, and status recovery moves restore 25% less HP. Certain airborne moves cannot be used.',
-		shortDesc: '5 turns: grounds all; +accuracy; slows foes; recovery is 0.75x.',
+		desc: 'For 5 turns, all Pokemon are grounded, move accuracy is raised, and certain airborne moves cannot be used.',
+		shortDesc: '5 turns: no Ground immunities; 1.67x accuracy.',
 	},
 	miracleeye: {
 		desc: "Ignores the target's positive Evasion and lets Psychic-type attacks hit Dark types. The user takes half damage from Ghost-type attacks until it switches out. On Psychic Terrain, Fairy Tale, or Holy Field, the user gains +2 Special Attack.",
@@ -6758,12 +7017,27 @@ const CUSTOM_VARIANT_BASE_ALIASES: {[id: string]: string} = {
 	charizardmegax: 'charizard',
 	gastrodoneast: 'gastrodon',
 };
+const PROFILE_VARIANT_FORMES: {[familyId: string]: string[]} = {
+	pikachustarter: [
+		'Pikachu-Starter', 'Pikachu-Cosplay', 'Pikachu-Rock-Star', 'Pikachu-Belle',
+		'Pikachu-Pop-Star', 'Pikachu-PhD', 'Pikachu-Libre', 'Pikachu-Partner',
+	],
+	furfrou: [
+		'Furfrou', 'Furfrou-Heart', 'Furfrou-Star', 'Furfrou-Diamond', 'Furfrou-Debutante',
+		'Furfrou-Matron', 'Furfrou-Dandy', 'Furfrou-La Reine', 'Furfrou-Kabuki', 'Furfrou-Pharaoh',
+	],
+};
+const PROFILE_VARIANT_FAMILY_IDS: {[speciesId: string]: string} = {};
+for (const [familyId, formes] of Object.entries(PROFILE_VARIANT_FORMES)) {
+	for (const forme of formes) PROFILE_VARIANT_FAMILY_IDS[toID(forme)] = familyId;
+}
 function customVariantFamilyBaseId(base: string) {
 	const id = toID(base);
 	return CUSTOM_VARIANT_BASE_ALIASES[id] || id;
 }
 function customVariantFamilyId(species: AnyObject) {
 	const id = toID(species?.id || species?.name || '');
+	if (PROFILE_VARIANT_FAMILY_IDS[id]) return PROFILE_VARIANT_FAMILY_IDS[id];
 	for (const customSpecies of Object.values(CUSTOM_SPECIES)) {
 		if (isCustomVisualForm(customSpecies.data) && customVariantFamilyBaseId(customSpecies.base) === id) {
 			return id;
@@ -6779,9 +7053,14 @@ function customVariantFamilyId(species: AnyObject) {
 export function getCustomVisualFamilyId(species: AnyObject) {
 	return customVariantFamilyId(species);
 }
+export function isProfileVariantForm(species: AnyObject) {
+	return !!PROFILE_VARIANT_FORMES[customVariantFamilyId(species)];
+}
 export function getCustomCosmeticFormes(species: AnyObject) {
 	window.ensureCustomSpecies?.();
 	const familyId = customVariantFamilyId(species);
+	const profileFormes = PROFILE_VARIANT_FORMES[familyId];
+	if (profileFormes) return profileFormes.filter(forme => Dex.species.get(forme).exists);
 	const baseData = window.BattlePokedex?.[familyId] || {};
 	const names: string[] = [];
 	const addName = (name: unknown) => {
@@ -7274,6 +7553,10 @@ const CUSTOM_ABILITY_COMPONENT_OVERRIDES: {[id: string]: readonly ID[]} = {
 	oceanicwings: ['waterabsorb' as ID, 'hydration' as ID, 'friendguard' as ID],
 	ruinjaw: ['strongjaw' as ID, 'eartheater' as ID],
 	stormfright: ['strongjaw' as ID],
+	unstableevo: [
+		'flashfire' as ID, 'voltabsorb' as ID, 'waterabsorb' as ID, 'eclipse' as ID,
+		'mindfreeze' as ID, 'competitive' as ID, 'chlorophyll' as ID,
+	],
 };
 const CUSTOM_MOVE_UPDATE_IDS = Object.keys(CUSTOM_MOVE_UPDATES);
 const CUSTOM_LEARNSET_REPLACEMENT_IDS = Object.keys(CUSTOM_LEARNSET_REPLACEMENTS);
@@ -8238,6 +8521,11 @@ const Dex = new class implements ModdedDex {
 			CUSTOM_BW_SPRITES[requestedSpriteid] ||
 			CUSTOM_ICON_SPRITES[requestedSpriteid]
 		)) speciesid = requestedSpriteid;
+		const defaultBackSprite = !isFront && CUSTOM_DEFAULT_BACK_SPRITES[speciesid];
+		if (defaultBackSprite) {
+			speciesid = defaultBackSprite;
+			name = Dex.species.get(defaultBackSprite).spriteid;
+		}
 		if (CUSTOM_ICON_SPRITES[speciesid]) name = CUSTOM_ICON_SPRITES[speciesid] as ID;
 		if (species.isTotem) speciesid = toID(name);
 		if (baseDir === '' && window.BattlePokemonSprites) {
