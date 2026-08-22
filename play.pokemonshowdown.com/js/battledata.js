@@ -177,6 +177,17 @@ changesFrom:'Lapras',
 isNonstandard:'Custom'
 }
 },
+jellicentazzy:{
+base:'jellicent',
+data:{
+name:'Jellicent-Azzy',
+baseSpecies:'Jellicent',
+forme:'Azzy',
+spriteid:'jellicent-azzy',
+changesFrom:'Jellicent',
+isNonstandard:'Custom'
+}
+},
 samurottalt:{
 base:'samurott',
 data:{
@@ -1148,6 +1159,7 @@ miloticalt:'milotic-alt',
 miloticaevian:'milotic-aevian',
 laprasaevian:'lapras-aevian',
 laprasazzy:'lapras-azzy',
+jellicentazzy:'jellicent-azzy',
 samurottalt:'samurott-alt',
 samurotthisuialt:'samurott-hisui-alt',
 goodrahisuialt:'goodra-hisui-alt',
@@ -2299,6 +2311,12 @@ back:{w:300,h:300},
 shinyFront:{w:300,h:300},
 shinyBack:{w:300,h:300}
 },
+jellicentazzy:{
+front:{w:300,h:300},
+back:{w:300,h:300},
+shinyFront:{w:300,h:300},
+shinyBack:{w:300,h:300}
+},
 samurottalt:{
 front:{w:64,h:64},
 back:{w:64,h:64},
@@ -2504,6 +2522,13 @@ shinyBack:{w:192,h:192}
 },
 laprasazzy:{
 num:131,
+front:{w:300,h:300},
+back:{w:300,h:300},
+shinyFront:{w:300,h:300},
+shinyBack:{w:300,h:300}
+},
+jellicentazzy:{
+num:593,
 front:{w:300,h:300},
 back:{w:300,h:300},
 shinyFront:{w:300,h:300},
@@ -4249,6 +4274,11 @@ milotic:{
 otherFormes:['Milotic-Alt','Milotic-Aevian'],
 cosmeticFormes:['Milotic-Alt','Milotic-Aevian'],
 formeOrder:['Milotic','Milotic-Alt','Milotic-Aevian']
+},
+jellicent:{
+otherFormes:['Jellicent-Azzy'],
+cosmeticFormes:['Jellicent-Azzy'],
+formeOrder:['Jellicent','Jellicent-Azzy']
 },
 miloticaevian:{
 baseStats:{hp:95,atk:89,def:90,spa:115,spd:130,spe:81}
@@ -7783,6 +7813,7 @@ customPokedexAltFormsTable=window.BattlePokedexAltForms;
 if(window.BattleAliases){
 window.BattleAliases.alchemicsurge='Alchemist Surge';
 window.BattleAliases.amuletcoin='Star Sweet';
+window.BattleAliases.richard='Jellicent-Azzy';
 }
 if(window.BattleAbilities&&customAbilityDataTable!==window.BattleAbilities){for(var _i56=0;_i56<
 CUSTOM_ABILITY_UPDATE_IDS.length;_i56++){var _id1=CUSTOM_ABILITY_UPDATE_IDS[_i56];
@@ -7819,6 +7850,16 @@ window.BattleMovedex[_id12].flags=_flags;
 customMoveDataTable=window.BattleMovedex;
 }
 if(window.BattleItems&&customItemDataTable!==window.BattleItems){
+window.BattleItems.eeviumz=Object.assign({},
+window.BattleItems.eeviumz||{},{
+desc:'Eevee forms have 1.5x Defense and Special Defense, restore 1/16 max HP each turn, and can use Extreme Evoboost with Last Resort.',
+shortDesc:'Eevee forms: Def/SpD 1.5x; heals 1/16 each turn; enables Extreme Evoboost.'});
+
+window.BattleItems.lightball=Object.assign({},
+window.BattleItems.lightball||{},{
+desc:'Pikachu forms have 2x Attack and Special Attack, 1.5x Defense and Special Defense, and restore 1/16 max HP each turn.',
+shortDesc:'Pikachu forms: Atk/SpA 2x, Def/SpD 1.5x; heals 1/16 each turn.'});
+
 var starSweet=window.BattleItems.starsweet||{};
 window.BattleItems.starsweet=Object.assign({},
 starSweet,{
