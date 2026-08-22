@@ -8,7 +8,10 @@
 
 import preact from "../js/lib/preact";
 import { type Team, Config, PS } from "./client-main";
-import { Dex, getCustomCosmeticFormes, getCustomVisualFamilyId, type ModdedDex, toID, type ID, PSUtils } from "./battle-dex";
+import {
+	Dex, getCustomCosmeticFormes, getCustomVisualFamilyId, isProfileVariantForm,
+	type ModdedDex, toID, type ID, PSUtils,
+} from "./battle-dex";
 import { Teams } from './battle-teams';
 import { DexSearch, type SearchRow, type SearchType } from "./battle-dex-search";
 import { PSSearchResults } from "./battle-searchresults";
@@ -237,6 +240,12 @@ export class TeamEditorState extends PSModel {
 		if (getCustomVisualFamilyId(currentSpecies) !== getCustomVisualFamilyId(species)) {
 			this.changeSpecies(set, speciesName);
 			return;
+		}
+		if (isProfileVariantForm(species)) {
+			const currentAbilitySlot = Object.entries(currentSpecies.abilities || {}).find(
+				([, ability]) => toID(ability) === toID(set.ability)
+			)?.[0];
+			set.ability = species.abilities[currentAbilitySlot || '0'] || species.abilities['0'];
 		}
 		set.species = species.name;
 		if (isSilvallySpecies(set.species)) set.shiny = true;

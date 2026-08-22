@@ -1332,7 +1332,11 @@ class Move implements Effect {
 		if (this.category !== 'Status' && !this.isZ && !this.isMax) {
 			let basePower = this.basePower;
 			this.zMove = {};
-			if (Array.isArray(this.multihit)) basePower *= 3;
+			if (typeof this.multihit === 'number') {
+				basePower *= this.multihit;
+			} else if (Array.isArray(this.multihit)) {
+				basePower *= 3;
+			}
 			if (!basePower) {
 				this.zMove.basePower = 100;
 			} else if (basePower >= 140) {
@@ -1356,7 +1360,7 @@ class Move implements Effect {
 			} else {
 				this.zMove.basePower = 100;
 			}
-			if (data.zMove) this.zMove.basePower = data.zMove.basePower;
+			if (data.zMove && typeof this.multihit !== 'number') this.zMove.basePower = data.zMove.basePower;
 		}
 
 		this.num = data.num || 0;

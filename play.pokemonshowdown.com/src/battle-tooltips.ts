@@ -502,9 +502,13 @@ class BattleTooltips {
 		"???": "",
 	};
 	static getZMoveBasePower(move: Move) {
-		if (move.zMove?.basePower) return move.zMove.basePower;
 		let basePower = move.basePower;
-		if (Array.isArray(move.multihit)) basePower *= 3;
+		if (typeof move.multihit === 'number') {
+			basePower *= move.multihit;
+		} else {
+			if (move.zMove?.basePower) return move.zMove.basePower;
+			if (Array.isArray(move.multihit)) basePower *= 3;
+		}
 		if (!basePower) return 100;
 		if (basePower >= 140) return 200;
 		if (basePower >= 130) return 195;

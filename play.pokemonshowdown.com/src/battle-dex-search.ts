@@ -107,7 +107,7 @@ class DexSearch {
 	}
 
 	find(query: string) {
-		query = toID(query);
+		query = query.trim().toLowerCase() === '-custom' ? '-custom' : toID(query);
 		if (this.query === query && this.results) {
 			return false;
 		}
@@ -212,6 +212,7 @@ class DexSearch {
 	}
 
 	textSearch(query: string): SearchRow[] {
+		const customOnly = query === '-custom';
 		query = toID(query);
 		const customSpeciesQuery = query;
 
@@ -224,8 +225,18 @@ class DexSearch {
 			customVisualSpecies = Object.keys(window.BattlePokedex || {}).filter(id => {
 				const species = this.dex.species.get(id);
 				return (customFormes.includes(species.forme) || species.forme.endsWith('-Alt')) &&
-					(toID(species.name) === customSpeciesQuery || getCustomVisualFamilyId(species) === customSpeciesQuery);
+					(customOnly || toID(species.name) === customSpeciesQuery ||
+						getCustomVisualFamilyId(species) === customSpeciesQuery);
 			}) as ID[];
+		}
+		if (customOnly) {
+			customVisualSpecies.sort((a, b) => this.dex.species.get(a).name.localeCompare(this.dex.species.get(b).name));
+			this.exactMatch = true;
+			this.results = [
+				['header', 'Custom skins'],
+				...customVisualSpecies.map(id => ['pokemon', id] as SearchRow),
+			];
+			return this.results;
 		}
 
 		// If searchType exists, we're searching mainly for results of that type.
@@ -954,8 +965,6 @@ class BattlePokemonSearch extends BattleTypedSearch<'pokemon'> {
 			case 'syclar':
 				results.push(['header', "CAP"]);
 				break;
-			case 'pikachucosplay':
-				continue;
 			}
 			const species = this.dex.species.get(id);
 			if (isCustomVisualForm(species)) continue;
