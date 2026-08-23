@@ -26,6 +26,19 @@ declare const BattleSearchIndex: [ID, SearchType, number?, number?][];
 declare const BattleSearchIndexOffset: any;
 declare const BattleTeambuilderTable: any;
 
+const HIDDEN_TEAMBUILDER_SPECIES = new Set<ID>([
+	'pikachualola', 'pikachucosplay', 'pikachuhoenn', 'pikachukalos', 'pikachuoriginal',
+	'pikachupartner', 'pikachusinnoh', 'pikachuunova', 'pikachuworld',
+]);
+
+function isHiddenTeamBuilderSpecies(id: string, includeSawsbuckBase = false) {
+	const speciesId = toID(id);
+	if (HIDDEN_TEAMBUILDER_SPECIES.has(speciesId)) return true;
+	if (speciesId === 'deerling' || speciesId.startsWith('deerling')) return true;
+	if (speciesId.startsWith('sawsbuck') && (speciesId !== 'sawsbuck' || includeSawsbuckBase)) return true;
+	return false;
+}
+
 const CUSTOM_CAN_LEARN_OVERRIDES: {[speciesid: string]: {[moveid: string]: true}} = {
 	blastoise: {electroshot: true},
 	clawitzer: {electroshot: true},
@@ -224,6 +237,7 @@ class DexSearch {
 			const customFormes = ['Alt', 'Aevian', 'East-Aevian', 'Pulse', 'Azzy', 'Spring', 'Summer', 'Autumn', 'Winter'];
 			customVisualSpecies = Object.keys(window.BattlePokedex || {}).filter(id => {
 				const species = this.dex.species.get(id);
+				if (isHiddenTeamBuilderSpecies(id, true)) return false;
 				return (customFormes.includes(species.forme) || species.forme.endsWith('-Alt')) &&
 					(customOnly || toID(species.name) === customSpeciesQuery ||
 						getCustomVisualFamilyId(species) === customSpeciesQuery);
@@ -421,6 +435,7 @@ class DexSearch {
 
 			// some aliases are substrings
 			if (queryAlias === id && query !== id) continue;
+			if (type === 'pokemon' && isHiddenTeamBuilderSpecies(id)) continue;
 
 			if (searchType && searchTypeIndex !== typeIndex) {
 				// This is a filter, set it as an instafilter candidate
@@ -737,6 +752,7 @@ abstract class BattleTypedSearch<T extends SearchType> {
 			this.illegalReasons = {};
 
 			for (const id in this.getTable()) {
+				if (this.searchType === 'pokemon' && isHiddenTeamBuilderSpecies(id)) continue;
 				if (!(id in legalityFilter)) {
 					this.baseIllegalResults.push([this.searchType, id as ID]);
 					this.illegalReasons[id] = 'Illegal';
@@ -967,7 +983,7 @@ class BattlePokemonSearch extends BattleTypedSearch<'pokemon'> {
 				break;
 			}
 			const species = this.dex.species.get(id);
-			if (isCustomVisualForm(species)) continue;
+			if (isCustomVisualForm(species) || isHiddenTeamBuilderSpecies(id)) continue;
 			const speciesid = toID(id);
 			if (seenSpecies.has(speciesid)) continue;
 			seenSpecies.add(speciesid);
@@ -1137,6 +1153,7 @@ class BattlePokemonSearch extends BattleTypedSearch<'pokemon'> {
 		tierSet = tierSet.filter(([type, id]) => {
 			if (type !== 'pokemon') return true;
 			const speciesid = toID(id);
+			if (isHiddenTeamBuilderSpecies(speciesid)) return false;
 			if (seenSpecies.has(speciesid)) return false;
 			seenSpecies.add(speciesid);
 			return true;

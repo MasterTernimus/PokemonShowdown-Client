@@ -36160,3 +36160,6 @@ BattleMoveAnims['trailblaze'] = {anim: BattleMoveAnims['powerwhip'].anim};
 BattleMoveAnims['tripledive'] = {anim: BattleMoveAnims['dive'].anim};
 BattleMoveAnims['hydrosteam'] = {anim: BattleMoveAnims['steameruption'].anim};
 BattleMoveAnims['psyblade'] = {anim: BattleMoveAnims['psychocut'].anim};
+BattleMoveAnims['radiantclaw'] = {anim: BattleMoveAnims['psychocut'].anim};
+BattleMoveAnims['hexingslash'] = {anim: BattleMoveAnims['shadowclaw'].anim};
+BattleMoveAnims['etherealtempest'] = {anim: BattleMoveAnims['hurricane'].anim};
