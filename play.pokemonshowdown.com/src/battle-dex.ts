@@ -5251,7 +5251,7 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	spiralevolution: {
 		name: "Spiral Evolution",
-		desc: "This Pokemon has Adaptability, Levitate, and Dual Wield. Its damaging moves pierce protection for reduced damage, its non-priority moves act first in Trick Room, it takes 0.8x damage, and it has a raised critical-hit ratio.",
+		desc: "This Pokemon has Adaptability, Levitate, and Dual Wield. Its damaging moves pierce protection for reduced damage, its non-priority moves act first in Trick Room, and it takes 0.8x damage.",
 		shortDesc: "Adaptability + Levitate + Dual Wield; protection pierce; Trick Room priority; takes 0.8x.",
 	},
 	accumulation: {
@@ -6247,8 +6247,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	sniper: {
 		name: 'Sniper',
-		desc: '+1 Accuracy on entry; critical hits deal 3x damage.',
-		shortDesc: '+1 Accuracy on entry; critical hits deal 3x damage.',
+		desc: '+1 Accuracy on entry; critical hits deal 2.25x damage.',
+		shortDesc: '+1 Accuracy on entry; critical hits deal 2.25x damage.',
 	},
 	unnerve: {
 		name: 'Unnerve',
