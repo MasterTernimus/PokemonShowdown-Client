@@ -194,7 +194,7 @@ data:{
 name:'Sneasler-Aevian',
 baseSpecies:'Sneasler-Aevian',
 types:['Fighting','Fairy'],
-baseStats:{hp:80,atk:125,def:80,spa:80,spd:60,spe:135},
+baseStats:{hp:90,atk:120,def:80,spa:80,spd:60,spe:130},
 abilities:{0:'Wind Rider',1:'Inner Focus',H:'Aevian Oath'},
 otherFormes:[],
 formeOrder:[],
@@ -1421,6 +1421,14 @@ var FORCE_SHINY_CUSTOM_SPRITE_IDS=new Set(['spiritombalt','weavilealt','weavilea
 
 
 
+
+var DEFAULT_SHINY_CUSTOM_SPRITE_IDS=new Set(['basculegion','basculegionf','spiritombalt']);
+function isDefaultShinyCustomSpecies(name){
+return DEFAULT_SHINY_CUSTOM_SPRITE_IDS.has(toID(name));
+}
+
+
+
 var CUSTOM_DEFAULT_BACK_SPRITES={
 primarinaalt:'primarina',
 decidueyealt:'decidueye',
@@ -2573,6 +2581,26 @@ back:{w:116,h:90}
 };
 
 var CUSTOM_BW_SPRITES={
+cinderace:{
+num:815,
+front:{w:90,h:192},
+back:{w:80,h:160}
+},
+cinderacegmax:{
+num:815,
+front:{w:162,h:190},
+back:{w:162,h:190}
+},
+rillaboom:{
+num:812,
+front:{w:96,h:96},
+back:{w:96,h:96}
+},
+rillaboomgmax:{
+num:812,
+front:{w:96,h:96},
+back:{w:96,h:96}
+},
 kleavor:{
 num:900,
 front:{w:192,h:192},
@@ -5206,7 +5234,7 @@ shortDesc:"Pixilate + Queenly Majesty + Sworn Duty."
 },
 fallenstar:{
 name:"Fallen Star",
-desc:"This Ability cannot be suppressed. This Pokemon has Mold Breaker, Dual Wield, Skill Link, and Self Sufficient. Existing multi-hit Arrow moves keep their normal power and use Skill Link instead of gaining an extra Dual Wield hit. Arrow moves deal 1.5x damage to trapped targets. At half HP or less, Arrow moves gain +1 priority and this Pokemon takes half damage. After an Arrow move, it takes 0.25x damage for the turn. An Arrow KO repeats the move at half power; in Free-for-All, Arrows hit all foes.",
+desc:"This Ability cannot be suppressed. This Pokemon has Mold Breaker, Dual Wield, Skill Link, and Self Sufficient. Existing multi-hit Arrow moves use Skill Link normally. Arrow moves deal 1.5x damage to trapped targets. At half HP or less, Arrow moves gain +1 priority and this Pokemon takes half damage. After an Arrow move, it takes 0.25x damage for the turn. An Arrow KO repeats the move at half power. In Free-for-All, Arrow moves hit every foe twice at full power.",
 shortDesc:"Mold Breaker + Dual Wield + Self Sufficient; at half HP, Arrows gain +1 priority."
 },
 ragingstorm:{
@@ -5955,7 +5983,7 @@ desc:"This Pokemon has Shadow Tag, Shadow Shield, and Elevate's effects. It also
 shortDesc:"Shadow Tag + Shadow Shield + Elevate; every turn queues Ghost/Dark/Fairy Temporal Shift."
 },
 shelltrap:{
-name:"Shell Trap",
+name:"Shell Tempo",
 desc:"This Pokemon has Regenerator and Shell Armor's effects.",
 shortDesc:"Regenerator + Shell Armor."
 },
@@ -7599,7 +7627,7 @@ var CUSTOM_ANIMATED_BW_SPRITES=new Set([
 'aggron','ariados','basculegion','basculegionf','butterfree','cacturne','charizard','cinderacegmax',
 'crobat','dragapult','duraludon','dusknoir','electivire','empoleon','espeon','garbodorgmax',
 'garchomp','garchompf','garchompmega','gardevoirmega','gengar','glalie','gliscor','grimmsnarl',
-'heracross','hydreigon','infernape','inteleon','lilligant','lucariomega','luxray','magmortar','magneton',
+'heracross','hydreigon','infernape','lilligant','lucariomega','luxray','magmortar','magneton',
 'magnezone','metagross','milotic','mothim','ninetales','obstagoon','perrserker','pidgeot',
 'ribombee','rotom','rotomfan','rotomfrost','rotomheat','rotommow','rotomwash','salamence',
 'scolipede','slowbro','slowking','sneasel','staraptor','steelix','talonflame',
@@ -7705,6 +7733,7 @@ names.push(name);
 };
 addName(baseData.name||(toID(species==null?void 0:species.name)===familyId?species.name:undefined));for(var _i0=0,_Object$values4=
 Object.values(CUSTOM_SPECIES);_i0<_Object$values4.length;_i0++){var customSpecies=_Object$values4[_i0];
+if(customSpecies.data.standalone)continue;
 if(!isCustomVisualForm(customSpecies.data)||customVariantFamilyBaseId(customSpecies.base)!==familyId)continue;
 addName(customSpecies.data.name);for(var _i10=0,_ref4=
 customSpecies.data.otherFormes||[];_i10<_ref4.length;_i10++){var _forme=_ref4[_i10];

@@ -9,7 +9,7 @@
 import preact from "../js/lib/preact";
 import { type Team, Config, PS } from "./client-main";
 import {
-	Dex, getCustomCosmeticFormes, getCustomVisualFamilyId, isProfileVariantForm,
+	Dex, getCustomCosmeticFormes, getCustomVisualFamilyId, isDefaultShinyCustomSpecies, isProfileVariantForm,
 	type ModdedDex, toID, type ID, PSUtils,
 } from "./battle-dex";
 import { Teams } from './battle-teams';
@@ -219,7 +219,7 @@ export class TeamEditorState extends PSModel {
 		set.species = species.name;
 		set.ability = this.getDefaultAbility(set);
 		set.item = this.getDefaultItem(species.name) ?? set.item;
-		if (isSilvallySpecies(set.species)) set.shiny = true;
+		if (isSilvallySpecies(set.species) || isDefaultShinyCustomSpecies(set.species)) set.shiny = true;
 
 		if (toID(speciesName) === 'Cathy') {
 			set.name = "Cathy";
@@ -248,7 +248,7 @@ export class TeamEditorState extends PSModel {
 			set.ability = species.abilities[currentAbilitySlot || '0'] || species.abilities['0'];
 		}
 		set.species = species.name;
-		if (isSilvallySpecies(set.species)) set.shiny = true;
+		if (isSilvallySpecies(set.species) || isDefaultShinyCustomSpecies(set.species)) set.shiny = true;
 	}
 	deleteSet(index: number) {
 		if (this.sets.length <= index) return;
