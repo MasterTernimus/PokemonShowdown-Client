@@ -111,10 +111,55 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 			forme: 'Alt',
 			spriteid: 'eevee-starter-alt',
 			types: ['Normal'],
-			abilities: {0: 'Protean', 1: 'Sinister Blaze', H: 'Unstable Evo'},
+			abilities: {0: 'Z Protean', 1: 'Opportunist', H: 'Unstable Evo', S: 'Mind Freeze', E: 'Sinister Blaze', F: 'Eclipse'},
 			baseStats: {hp: 65, atk: 75, def: 70, spa: 65, spd: 85, spe: 75},
 			changesFrom: 'Eevee-Starter',
 			canGigantamax: 'G-Max Cuddle',
+			isNonstandard: 'Custom',
+		},
+	},
+	auroreon: {
+		base: 'espeon',
+		data: {
+			name: 'Auroreon',
+			baseSpecies: 'Eevee',
+			forme: 'Auroreon',
+			spriteid: 'auroreon',
+			types: ['Ice', 'Psychic'],
+			baseStats: {hp: 60, atk: 60, def: 95, spa: 130, spd: 95, spe: 110},
+			abilities: {0: 'Mind Freeze'},
+			battleOnly: 'Espeon',
+			changesFrom: 'Espeon',
+			isNonstandard: 'Custom',
+		},
+	},
+	soluneon: {
+		base: 'espeon',
+		data: {
+			name: 'Soluneon',
+			baseSpecies: 'Eevee',
+			forme: 'Soluneon',
+			spriteid: 'soluneon',
+			types: ['Dark', 'Psychic'],
+			abilities: {0: 'Eclipse'},
+			baseStats: {hp: 80, atk: 60, def: 110, spa: 95, spd: 110, spe: 95},
+			battleOnly: 'Espeon',
+			changesFrom: 'Espeon',
+			isNonstandard: 'Custom',
+		},
+	},
+	abysseon: {
+		base: 'eeveestarter',
+		data: {
+			name: 'Abysseon',
+			baseSpecies: 'Eevee-Starter',
+			forme: 'Abysseon',
+			spriteid: 'abysseon',
+			types: ['???'],
+			abilities: {0: 'Sinister Blaze'},
+			baseStats: {hp: 110, atk: 65, def: 130, spa: 65, spd: 130, spe: 65},
+			battleOnly: 'Eevee-Starter',
+			changesFrom: 'Eevee-Starter',
 			isNonstandard: 'Custom',
 		},
 	},
@@ -435,6 +480,28 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 			isNonstandard: 'Custom',
 		},
 	},
+	gastrodonazzy: {
+		base: 'gastrodon',
+		data: {
+			name: 'Gastrodon-Azzy',
+			baseSpecies: 'Gastrodon',
+			forme: 'Azzy',
+			spriteid: 'gastrodon-azzy',
+			changesFrom: 'Gastrodon',
+			isNonstandard: 'Custom',
+		},
+	},
+	gastrodonazzy2: {
+		base: 'gastrodon',
+		data: {
+			name: 'Gastrodon-Azzy2',
+			baseSpecies: 'Gastrodon',
+			forme: 'Azzy2',
+			spriteid: 'gastrodon-azzy2',
+			changesFrom: 'Gastrodon',
+			isNonstandard: 'Custom',
+		},
+	},
 	belliboltalt: {
 		base: 'bellibolt',
 		data: {
@@ -443,6 +510,28 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 			forme: 'Alt',
 			spriteid: 'bellibolt-alt',
 			changesFrom: 'Bellibolt',
+			isNonstandard: 'Custom',
+		},
+	},
+	jynxalt: {
+		base: 'jynx',
+		data: {
+			name: 'Jynx-Alt',
+			baseSpecies: 'Jynx',
+			forme: 'Alt',
+			spriteid: 'jynx-alt',
+			changesFrom: 'Jynx',
+			isNonstandard: 'Custom',
+		},
+	},
+	lumineonalt: {
+		base: 'lumineon',
+		data: {
+			name: 'Lumineon-Alt',
+			baseSpecies: 'Lumineon',
+			forme: 'Alt',
+			spriteid: 'lumineon-alt',
+			changesFrom: 'Lumineon',
 			isNonstandard: 'Custom',
 		},
 	},
@@ -564,6 +653,54 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 			forme: 'Alt',
 			spriteid: 'arcanine-alt',
 			changesFrom: 'Arcanine',
+			isNonstandard: 'Custom',
+		},
+	},
+	tentacruelalt: {
+		base: 'tentacruel',
+		data: {
+			name: 'Tentacruel-Alt',
+			baseSpecies: 'Tentacruel',
+			forme: 'Alt',
+			spriteid: 'tentacruel-alt',
+			changesFrom: 'Tentacruel',
+			isNonstandard: 'Custom',
+		},
+	},
+	emboaralt: {
+		base: 'emboar',
+		data: {
+			name: 'Emboar-Alt',
+			baseSpecies: 'Emboar',
+			forme: 'Alt',
+			spriteid: 'emboar-alt',
+			otherFormes: ['Emboar-Mega-Alt'],
+			formeOrder: ['Emboar-Alt', 'Emboar-Mega-Alt'],
+			changesFrom: 'Emboar',
+			isNonstandard: 'Custom',
+		},
+	},
+	emboarmegaalt: {
+		base: 'emboarmega',
+		data: {
+			name: 'Emboar-Mega-Alt',
+			baseSpecies: 'Emboar',
+			forme: 'Mega-Alt',
+			battleOnly: 'Emboar-Alt',
+			changesFrom: 'Emboar-Alt',
+			requiredItem: 'Emboarite',
+			spriteid: 'emboar-mega-alt',
+			isNonstandard: 'Custom',
+		},
+	},
+	roseradealt: {
+		base: 'roserade',
+		data: {
+			name: 'Roserade-Alt',
+			baseSpecies: 'Roserade',
+			forme: 'Alt',
+			spriteid: 'roserade-alt',
+			changesFrom: 'Roserade',
 			isNonstandard: 'Custom',
 		},
 	},
@@ -758,6 +895,17 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 			forme: 'Azzy',
 			spriteid: 'grimmsnarl-azzy',
 			changesFrom: 'Grimmsnarl',
+			isNonstandard: 'Custom',
+		},
+	},
+	grimmsnarlgmaxazzy: {
+		base: 'grimmsnarlgmax',
+		data: {
+			name: 'Grimmsnarl-Gmax-Azzy',
+			baseSpecies: 'Grimmsnarl-Gmax',
+			forme: 'Gmax-Alt',
+			spriteid: 'grimmsnarl-gmax-azzy',
+			changesFrom: 'Grimmsnarl-Gmax',
 			isNonstandard: 'Custom',
 		},
 	},
@@ -1214,9 +1362,15 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 
 const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
 	cacturnealt: 'cacturne-alt',
+	granbullalt: 'granbull-alt',
+	lanturnalt: 'lanturn-alt',
+	jynxalt: 'jynx-alt',
+	lumineonalt: 'lumineon-alt',
 	sandslashalt: 'sandslash-alt',
 	haxorusalt: 'haxorus-alt',
 	arcaninealt: 'arcanine-alt',
+	emboaralt: 'emboar-alt',
+	emboarmegaalt: 'emboar-mega-alt',
 	mightyenaalt: 'mightyena-alt',
 	toxicroakalt: 'toxicroak-alt',
 	cinccinoalt: 'cinccino-alt',
@@ -1328,11 +1482,15 @@ const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
 	decidueyehisuialt: 'decidueye-hisui-alt',
 	incineroaralt: 'incineroar-alt',
 	grimmsnarlazzy: 'grimmsnarl-azzy',
+	grimmsnarlgmaxazzy: 'grimmsnarl-gmax-azzy',
 	gastrodonaevian: 'gastrodon-aevian',
 	gastrodoneastaevian: 'gastrodon-east-aevian',
 	toxtricityaevian: 'toxtricity-aevian',
 	hypnopulse: 'hypno-pulse',
 	eeveestarteralt: 'eevee-starter-alt',
+	auroreon: 'auroreon',
+	soluneon: 'soluneon',
+	abysseon: 'abysseon',
 	belliboltalt: 'bellibolt-alt',
 	typhlosionalt: 'typhlosion-alt',
 	nidokingalt: 'nidoking-alt',
@@ -1616,6 +1774,14 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 	belliboltalt: {
 		front: {w: 152, h: 172},
 		back: {w: 150, h: 168},
+	},
+	jynxalt: {
+		front: {w: 96, h: 96},
+		shinyFront: {w: 96, h: 96},
+	},
+	lumineonalt: {
+		front: {w: 96, h: 96},
+		shinyFront: {w: 96, h: 96},
 	},
 	typhlosionalt: {
 		front: {w: 64, h: 64},
@@ -2229,6 +2395,12 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 		shinyFront: {w: 300, h: 261},
 		shinyBack: {w: 300, h: 300},
 	},
+	grimmsnarlgmaxazzy: {
+		front: {w: 300, h: 334},
+		back: {w: 400, h: 505},
+		shinyFront: {w: 300, h: 334},
+		shinyBack: {w: 400, h: 505},
+	},
 	grimmsnarlgmax: {
 		front: {w: 128, h: 192},
 		back: {w: 114, h: 192},
@@ -2581,6 +2753,65 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 };
 
 const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
+	granbullalt: {
+		num: 210,
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
+	},
+	lanturnalt: {
+		num: 171,
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
+	},
+	jynxalt: {
+		num: 124,
+		front: {w: 96, h: 96},
+		shinyFront: {w: 96, h: 96},
+	},
+	lumineonalt: {
+		num: 457,
+		front: {w: 96, h: 96},
+		shinyFront: {w: 96, h: 96},
+	},
+	lycanroc: {
+		num: 745,
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
+		shinyFront: {w: 96, h: 96},
+		shinyBack: {w: 96, h: 96},
+	},
+	lycanrocmidday: {
+		num: 745,
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
+		shinyFront: {w: 96, h: 96},
+		shinyBack: {w: 96, h: 96},
+	},
+	lycanrocmidnight: {
+		num: 745,
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
+		shinyFront: {w: 96, h: 96},
+		shinyBack: {w: 96, h: 96},
+	},
+	lycanrocdusk: {
+		num: 745,
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
+		shinyFront: {w: 96, h: 96},
+		shinyBack: {w: 96, h: 96},
+	},
+	glimmora: {
+		num: 970,
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
+		shinyFront: {w: 96, h: 96},
+		shinyBack: {w: 96, h: 96},
+	},
 	cinderace: {
 		num: 815,
 		front: {w: 90, h: 192},
@@ -4152,6 +4383,49 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	},
 };
 
+Object.assign(CUSTOM_SPECIES, {
+	braveon: {
+		base: 'eeveestarter',
+		data: {name: 'Braveon', baseSpecies: 'Eevee-Starter', forme: 'Fighting', spriteid: 'braveon', types: ['Fighting'], battleOnly: 'Eevee-Starter', isNonstandard: 'Custom'},
+	},
+	nimbeon: {
+		base: 'eeveestarter',
+		data: {name: 'Nimbeon', baseSpecies: 'Eevee-Starter', forme: 'Flying', spriteid: 'nimbeon', types: ['Flying'], battleOnly: 'Eevee-Starter', isNonstandard: 'Custom'},
+	},
+	toxeon: {
+		base: 'eeveestarter',
+		data: {name: 'Toxeon', baseSpecies: 'Eevee-Starter', forme: 'Poison', spriteid: 'toxeon', types: ['Poison'], battleOnly: 'Eevee-Starter', isNonstandard: 'Custom'},
+	},
+	dusteon: {
+		base: 'eeveestarter',
+		data: {name: 'Dusteon', baseSpecies: 'Eevee-Starter', forme: 'Ground', spriteid: 'dusteon', types: ['Ground'], battleOnly: 'Eevee-Starter', isNonstandard: 'Custom'},
+	},
+	basaleon: {
+		base: 'eeveestarter',
+		data: {name: 'Basaleon', baseSpecies: 'Eevee-Starter', forme: 'Rock', spriteid: 'basaleon', types: ['Rock'], battleOnly: 'Eevee-Starter', isNonstandard: 'Custom'},
+	},
+	ephemeon: {
+		base: 'eeveestarter',
+		data: {name: 'Ephemeon', baseSpecies: 'Eevee-Starter', forme: 'Bug', spriteid: 'ephemeon', types: ['Bug'], battleOnly: 'Eevee-Starter', isNonstandard: 'Custom'},
+	},
+	kitsuneon: {
+		base: 'eeveestarter',
+		data: {name: 'Kitsuneon', baseSpecies: 'Eevee-Starter', forme: 'Ghost', spriteid: 'kitsuneon', types: ['Ghost'], battleOnly: 'Eevee-Starter', isNonstandard: 'Custom'},
+	},
+	titaneon: {
+		base: 'eeveestarter',
+		data: {name: 'Titaneon', baseSpecies: 'Eevee-Starter', forme: 'Steel', spriteid: 'titaneon', types: ['Steel'], battleOnly: 'Eevee-Starter', isNonstandard: 'Custom'},
+	},
+	byteon: {
+		base: 'eeveestarter',
+		data: {name: 'Byteon', baseSpecies: 'Eevee-Starter', forme: 'Qmarks', spriteid: 'byteon', types: ['???'], battleOnly: 'Eevee-Starter', isNonstandard: 'Custom'},
+	},
+	drekeon: {
+		base: 'eeveestarter',
+		data: {name: 'Drekeon', baseSpecies: 'Eevee-Starter', forme: 'Dragon', spriteid: 'drekeon', types: ['Dragon'], battleOnly: 'Eevee-Starter', isNonstandard: 'Custom'},
+	},
+});
+
 const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 	falinksmega: {
 		types: ['Fighting', 'Steel'],
@@ -4226,7 +4500,7 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		abilities: {0: 'Soul Strike'},
 	},
 	bellibolt: {
-		abilities: {0: 'Electromorphosis', 1: 'Static', H: 'Levitate'},
+		abilities: {0: 'Electromorphosis', 1: 'Bog Body', H: 'Levitate'},
 		cosmeticFormes: ['Bellibolt-Alt'],
 		formeOrder: ['Bellibolt', 'Bellibolt-Alt'],
 	},
@@ -4319,6 +4593,19 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		cosmeticFormes: ['Mightyena-Alt'],
 		formeOrder: ['Mightyena', 'Mightyena-Alt'],
 	},
+	granbull: {
+		types: ['Fairy', 'Ground'],
+		baseStats: {hp: 120, atk: 145, def: 95, spa: 70, spd: 85, spe: 45},
+		abilities: {0: 'Loyal Guard', 1: 'Violent Rush', H: 'Strong Jaw'},
+		otherFormes: ['Granbull-Alt'],
+		cosmeticFormes: ['Granbull-Alt'],
+		formeOrder: ['Granbull', 'Granbull-Alt'],
+	},
+	granbullalt: {
+		types: ['Fairy', 'Ground'],
+		baseStats: {hp: 120, atk: 145, def: 95, spa: 70, spd: 85, spe: 45},
+		abilities: {0: 'Loyal Guard', 1: 'Violent Rush', H: 'Strong Jaw'},
+	},
 	mightyenaalt: {
 		baseStats: {hp: 100, atk: 135, def: 90, spa: 60, spd: 80, spe: 105},
 		abilities: {0: 'Intimidate', 1: 'Black Fang', H: 'Stakeout'},
@@ -4345,6 +4632,12 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		baseStats: {hp: 85, atk: 110, def: 100, spa: 60, spd: 100, spe: 115},
 		abilities: {0: 'Pixilate', 1: 'Skill Link', H: 'Fluffy Craft'},
 	},
+	glalie: {
+		baseStats: {hp: 80, atk: 80, def: 80, spa: 80, spd: 95, spe: 105},
+	},
+	pidgeotmega: {
+		baseStats: {hp: 83, atk: 60, def: 95, spa: 140, spd: 90, spe: 126},
+	},
 	persian: {
 		baseStats: {hp: 70, atk: 100, def: 65, spa: 105, spd: 65, spe: 120},
 	},
@@ -4362,7 +4655,7 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		abilities: {0: 'Wind Chime'},
 	},
 	gliscor: {
-		baseStats: {hp: 85, atk: 110, def: 140, spa: 45, spd: 90, spe: 100},
+		baseStats: {hp: 85, atk: 105, def: 135, spa: 40, spd: 90, spe: 95},
 		abilities: {0: 'Hyper Cutter', 1: 'Poison Heal', H: 'Wind Rider'},
 	},
 	hydreigon: {
@@ -4393,13 +4686,21 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 	exploud: {baseStats: {hp: 119, atk: 101, def: 73, spa: 116, spd: 73, spe: 88}},
 	hariyama: {baseStats: {hp: 134, atk: 120, def: 88, spa: 40, spd: 88, spe: 50}},
 	wailord: {baseStats: {hp: 160, atk: 40, def: 75, spa: 105, spd: 90, spe: 50}},
-	zangoose: {baseStats: {hp: 85, atk: 125, def: 85, spa: 60, spd: 90, spe: 95}},
+	zangoose: {baseStats: {hp: 105, atk: 135, def: 85, spa: 60, spd: 90, spe: 95}},
+	beartic: {baseStats: {hp: 110, atk: 130, def: 85, spa: 70, spd: 80, spe: 65}},
+	swellow: {baseStats: {hp: 72, atk: 85, def: 72, spa: 85, spd: 61, spe: 127}},
+	rabsca: {baseStats: {hp: 100, atk: 50, def: 90, spa: 120, spd: 100, spe: 60}, abilities: {0: 'Sand Rush', 1: 'Elevate', H: 'Telepathy'}},
+	salazzle: {abilities: {0: 'Corrosion', 1: 'Dragonize', H: 'Aroma Veil'}},
 	lunatone: {baseStats: {hp: 110, atk: 35, def: 95, spa: 125, spd: 95, spe: 70}},
 	solrock: {baseStats: {hp: 110, atk: 125, def: 95, spa: 35, spd: 95, spe: 70}},
 	rhyperior: {baseStats: {hp: 120, atk: 150, def: 140, spa: 55, spd: 85, spe: 20}},
 	seismitoad: {baseStats: {hp: 105, atk: 110, def: 85, spa: 90, spd: 86, spe: 74}},
 	crustle: {baseStats: {hp: 85, atk: 115, def: 130, spa: 45, spd: 95, spe: 50}},
-	druddigon: {baseStats: {hp: 90, atk: 125, def: 105, spa: 60, spd: 92, spe: 48}},
+	druddigon: {
+		types: ['Dragon', 'Rock'],
+		baseStats: {hp: 107, atk: 130, def: 100, spa: 50, spd: 100, spe: 68},
+		abilities: {0: 'Solar Recharge', 1: 'Cavern Drake', H: 'Rough Scale'},
+	},
 	vikavolt: {baseStats: {hp: 77, atk: 103, def: 107, spa: 145, spd: 75, spe: 43}, abilities: {0: 'Levitate', 1: 'Speed Boost', H: 'Battery'}},
 	turtonator: {baseStats: {hp: 80, atk: 80, def: 130, spa: 80, spd: 100, spe: 50}},
 	mrrime: {baseStats: {hp: 85, atk: 110, def: 90, spa: 110, spd: 105, spe: 70}},
@@ -4447,6 +4748,7 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		formeOrder: ['Dusknoir', 'Dusknoir-Alt'],
 	},
 	spiritomb: {
+		baseStats: {hp: 108, atk: 108, def: 108, spa: 108, spd: 108, spe: 30},
 		otherFormes: ['Spiritomb-Alt'],
 		cosmeticFormes: ['Spiritomb-Alt'],
 		formeOrder: ['Spiritomb', 'Spiritomb-Alt'],
@@ -4595,9 +4897,9 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		isNonstandard: 'Custom',
 	},
 	gastrodon: {
-		otherFormes: ['Gastrodon-East', 'Gastrodon-Aevian', 'Gastrodon-East-Aevian'],
-		cosmeticFormes: ['Gastrodon-East', 'Gastrodon-Aevian', 'Gastrodon-East-Aevian'],
-		formeOrder: ['Gastrodon', 'Gastrodon-East', 'Gastrodon-Aevian', 'Gastrodon-East-Aevian'],
+		otherFormes: ['Gastrodon-East', 'Gastrodon-Aevian', 'Gastrodon-East-Aevian', 'Gastrodon-Azzy', 'Gastrodon-Azzy2'],
+		cosmeticFormes: ['Gastrodon-East', 'Gastrodon-Aevian', 'Gastrodon-East-Aevian', 'Gastrodon-Azzy', 'Gastrodon-Azzy2'],
+		formeOrder: ['Gastrodon', 'Gastrodon-East', 'Gastrodon-Aevian', 'Gastrodon-East-Aevian', 'Gastrodon-Azzy', 'Gastrodon-Azzy2'],
 	},
 	gastrodonaevian: {
 		baseStats: {hp: 111, atk: 83, def: 78, spa: 97, spd: 92, spe: 39},
@@ -4842,6 +5144,11 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		baseStats: {hp: 100, atk: 70, def: 115, spa: 100, spd: 115, spe: 60},
 		abilities: {0: 'Huge Power', 1: 'Sap Sipper', H: 'Mold Breaker'},
 	},
+	tsareena: {
+		types: ['Grass', 'Fairy'],
+		baseStats: {hp: 72, atk: 128, def: 108, spa: 72, spd: 108, spe: 98},
+		abilities: {0: 'Empress', 1: 'Supreme Overlord', H: 'Imperial Princess'},
+	},
 	pikachucosplay: {types: ['Electric', 'Ice'], baseStats: {hp: 45, atk: 80, def: 50, spa: 75, spd: 60, spe: 120}, abilities: {0: 'Serene Grace'}, canGigantamax: 'G-Max Volt Crash'},
 	pikachurockstar: {types: ['Electric', 'Steel'], baseStats: {hp: 45, atk: 80, def: 50, spa: 75, spd: 60, spe: 120}, abilities: {0: 'No Guard'}, canGigantamax: 'G-Max Volt Crash'},
 	pikachubelle: {types: ['Electric', 'Ice'], baseStats: {hp: 45, atk: 80, def: 50, spa: 75, spd: 60, spe: 120}, abilities: {0: 'Serene Grace'}, canGigantamax: 'G-Max Volt Crash'},
@@ -4849,7 +5156,7 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 	pikachuphd: {types: ['Electric', 'Psychic'], baseStats: {hp: 45, atk: 80, def: 50, spa: 75, spd: 60, spe: 120}, abilities: {0: 'Neutralization'}, canGigantamax: 'G-Max Volt Crash'},
 	pikachulibre: {types: ['Electric', 'Fighting'], baseStats: {hp: 45, atk: 80, def: 50, spa: 75, spd: 60, spe: 120}, abilities: {0: 'Moxie'}, canGigantamax: 'G-Max Volt Crash'},
 	pikachupartner: {types: ['Electric'], baseStats: {hp: 45, atk: 80, def: 50, spa: 75, spd: 60, spe: 120}, abilities: {0: 'Mold Breaker'}, canGigantamax: 'G-Max Volt Crash'},
-	pikachustarter: {types: ['Electric'], baseStats: {hp: 45, atk: 80, def: 50, spa: 75, spd: 60, spe: 120}, abilities: {0: 'Static', H: 'Lightning Rod'}, canGigantamax: 'G-Max Volt Crash'},
+	pikachustarter: {types: ['Electric'], baseStats: {hp: 45, atk: 80, def: 50, spa: 75, spd: 60, spe: 120}, abilities: {0: 'Mold Breaker'}, canGigantamax: 'G-Max Volt Crash'},
 	pikachugmax: {
 		baseStats: {hp: 90, atk: 80, def: 50, spa: 75, spd: 60, spe: 120},
 		abilities: {0: 'Static', H: 'Lightning Rod'},
@@ -4865,13 +5172,156 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 	},
 	hippowdon: {baseStats: {hp: 118, atk: 127}, abilities: {0: 'Sand Stream', 1: 'Ruin Jaw', H: 'Accumulation'}},
 	eeveestarter: {
-		abilities: {0: 'Protean', 1: 'Sinister Blaze', H: 'Unstable Evo'},
+		abilities: {0: 'Z Protean', 1: 'Opportunist', H: 'Unstable Evo', S: 'Mind Freeze', E: 'Sinister Blaze', F: 'Eclipse'},
 		otherFormes: ['Eevee-Starter-Alt'],
 		cosmeticFormes: ['Eevee-Starter-Alt'],
 		formeOrder: ['Eevee-Starter', 'Eevee-Starter-Alt'],
 	},
+	eeveestarteralt: {
+		abilities: {0: 'Z Protean', 1: 'Opportunist', H: 'Unstable Evo', S: 'Mind Freeze', E: 'Sinister Blaze', F: 'Eclipse'},
+	},
+	flareon: {abilities: {0: 'Fire Mane'}},
+	houndoom: {abilities: {0: 'Flash Fire', 1: 'Dark Aura', H: 'Battle Fervor'}},
+	typhlosionhisui: {abilities: {0: 'Blazing Mane', 1: 'Soul Fire', H: 'Soul Heart'}},
+	auroreon: {
+		baseStats: {hp: 60, atk: 60, def: 95, spa: 130, spd: 95, spe: 110},
+		abilities: {0: 'Mind Freeze'},
+	},
 	garchompbattlebond: {baseStats: {spe: 122}},
+	lanturn: {
+		types: ['Water', 'Electric'],
+		baseStats: {hp: 125, atk: 58, def: 88, spa: 116, spd: 106, spe: 67},
+		abilities: {0: 'Abyss Lure', 1: 'Drizzle', H: 'Dazzling'},
+		otherFormes: ['Lanturn-Alt'],
+		cosmeticFormes: ['Lanturn-Alt'],
+		formeOrder: ['Lanturn', 'Lanturn-Alt'],
+	},
+	lanturnalt: {
+		types: ['Water', 'Electric'],
+		baseStats: {hp: 125, atk: 58, def: 88, spa: 116, spd: 106, spe: 67},
+		abilities: {0: 'Abyss Lure', 1: 'Drizzle', H: 'Dazzling'},
+	},
+	jynx: {
+		types: ['Ice', 'Psychic'],
+		baseStats: {hp: 75, atk: 50, def: 75, spa: 125, spd: 125, spe: 90},
+		abilities: {0: 'Queenly Majesty', 1: 'Resonance Force', H: 'Frost Siren'},
+		otherFormes: ['Jynx-Alt'],
+		cosmeticFormes: ['Jynx-Alt'],
+		formeOrder: ['Jynx', 'Jynx-Alt'],
+	},
+	jynxalt: {
+		types: ['Ice', 'Psychic'],
+		baseStats: {hp: 75, atk: 50, def: 75, spa: 125, spd: 125, spe: 90},
+		abilities: {0: 'Queenly Majesty', 1: 'Resonance Force', H: 'Frost Siren'},
+	},
 };
+
+Object.assign(CUSTOM_SPECIES_UPDATES, {
+	cacturne: {baseStats: {spa: 90}},
+	cinccino: {baseStats: {hp: 85, atk: 110, def: 85, spa: 90, spd: 85, spe: 115}},
+	cinccinoalt: {baseStats: {hp: 85, atk: 110, def: 85, spa: 90, spd: 85, spe: 115}},
+	crawdaunt: {
+		baseStats: {hp: 83, atk: 120, def: 105, spa: 100, spd: 77, spe: 60},
+		abilities: {0: 'Adaptability', 1: 'Sheer Force', H: 'Cruel Shell'},
+	},
+	exploud: {baseStats: {hp: 109, atk: 101, def: 73, spa: 116, spd: 73, spe: 78}},
+	infernape: {baseStats: {hp: 76, atk: 115, def: 75, spa: 115, spd: 81, spe: 108}},
+	infernapealt: {baseStats: {hp: 76, atk: 115, def: 75, spa: 115, spd: 81, spe: 108}},
+	machamp: {baseStats: {hp: 100, atk: 140, def: 95, spa: 65, spd: 75, spe: 75}},
+	machampgmax: {baseStats: {hp: 150, atk: 140, def: 95, spa: 65, spd: 75, spe: 75}},
+	probopass: {baseStats: {hp: 75, atk: 50, def: 150, spa: 95, spd: 155, spe: 25}},
+	samurott: {baseStats: {hp: 95, atk: 110, def: 90, spa: 120, spd: 80, spe: 75}},
+	samurotthisui: {baseStats: {hp: 90, atk: 110, def: 75, spa: 105, spd: 65, spe: 95}},
+	samurottalt: {baseStats: {hp: 95, atk: 110, def: 90, spa: 120, spd: 80, spe: 75}},
+	samurotthisuialt: {baseStats: {hp: 90, atk: 110, def: 75, spa: 105, spd: 65, spe: 95}},
+	toxicroak: {baseStats: {hp: 98, atk: 131, def: 70, spa: 121, spd: 70, spe: 80}},
+	toxicroakalt: {baseStats: {hp: 98, atk: 126, def: 70, spa: 116, spd: 70, spe: 80}},
+	alakazam: {baseStats: {hp: 80, atk: 50, def: 50, spa: 135, spd: 95, spe: 120}},
+	alakazammega: {baseStats: {hp: 80, atk: 48, def: 60, spa: 175, spd: 105, spe: 162}},
+	dodrio: {baseStats: {hp: 90, atk: 115, def: 85, spa: 40, spd: 75, spe: 120}, abilities: {0: 'Triple Threat', 1: 'Speed Boost', H: 'Striker Frenzy'}},
+	honchkrow: {baseStats: {hp: 100, atk: 135, def: 72, spa: 71, spd: 72, spe: 100}},
+	flamigo: {baseStats: {hp: 82, atk: 125, def: 80, spa: 75, spd: 70, spe: 105}},
+	garbodor: {baseStats: {hp: 80, atk: 125, def: 90, spa: 70, spd: 90, spe: 75}},
+	garbodorgmax: {baseStats: {hp: 120, atk: 125, def: 90, spa: 70, spd: 90, spe: 75}},
+	gigalith: {baseStats: {hp: 100, atk: 135, def: 130, spa: 80, spd: 80, spe: 25}},
+	kingler: {baseStats: {hp: 80, atk: 125, def: 115, spa: 60, spd: 60, spe: 75}},
+	kinglergmax: {baseStats: {hp: 120, atk: 125, def: 115, spa: 60, spd: 60, spe: 75}},
+	rapidash: {baseStats: {hp: 80, atk: 110, def: 70, spa: 80, spd: 80, spe: 120}},
+	rapidashgalar: {baseStats: {hp: 80, atk: 110, def: 70, spa: 80, spd: 80, spe: 120}},
+	vikavolt: {baseStats: {hp: 77, atk: 95, def: 99, spa: 145, spd: 75, spe: 43}},
+	ninetales: {baseStats: {hp: 73, atk: 66, def: 75, spa: 111, spd: 110, spe: 110}},
+	ninetalesalt: {baseStats: {hp: 73, atk: 66, def: 75, spa: 111, spd: 110, spe: 110}},
+	ninetalesalola: {baseStats: {hp: 73, atk: 57, def: 75, spa: 111, spd: 110, spe: 119}},
+	breloom: {baseStats: {hp: 80, atk: 140, def: 110, spa: 50, spd: 90, spe: 70}},
+	golurk: {baseStats: {hp: 100, atk: 125, def: 100, spa: 45, spd: 95, spe: 55}},
+	golurkmega: {baseStats: {hp: 100, atk: 170, def: 125, spa: 70, spd: 100, spe: 55}},
+	blastoise: {baseStats: {hp: 89, atk: 80, def: 95, spa: 100, spd: 108, spe: 78}},
+	blastoisemega: {baseStats: {hp: 79, atk: 90, def: 135, spa: 135, spd: 123, spe: 78}},
+	blastoisegmax: {baseStats: {hp: 145, atk: 80, def: 95, spa: 100, spd: 108, spe: 78}},
+	grapploct: {baseStats: {hp: 80, atk: 128, def: 85, spa: 40, spd: 90, spe: 82}},
+	incineroar: {baseStats: {hp: 95, atk: 115, def: 90, spa: 85, spd: 90, spe: 60}},
+	primarina: {baseStats: {hp: 80, atk: 74, def: 74, spa: 126, spd: 116, spe: 65}},
+	mabosstiff: {baseStats: {hp: 110, atk: 140, def: 90, spa: 60, spd: 70, spe: 85}},
+	glalie: {baseStats: {hp: 80, atk: 80, def: 80, spa: 80, spd: 80, spe: 100}},
+	glaliemega: {baseStats: {hp: 80, atk: 140, def: 100, spa: 80, spd: 95, spe: 105}},
+	lumineon: {
+		baseStats: {hp: 89, atk: 40, def: 86, spa: 94, spd: 90, spe: 81},
+		abilities: {0: 'Protean', 1: 'Storm Drain', H: 'Drizzle'},
+		otherFormes: ['Lumineon-Alt'],
+		cosmeticFormes: ['Lumineon-Alt'],
+		formeOrder: ['Lumineon', 'Lumineon-Alt'],
+	},
+	lumineonalt: {
+		types: ['Water', 'Fairy'],
+		baseStats: {hp: 89, atk: 40, def: 86, spa: 94, spd: 90, spe: 81},
+		abilities: {0: 'Protean', 1: 'Storm Drain', H: 'Drizzle'},
+	},
+	seaking: {baseStats: {hp: 80, atk: 95, def: 75, spa: 60, spd: 90, spe: 70}},
+	bombirdier: {baseStats: {hp: 70, atk: 103, def: 85, spa: 103, spd: 85, spe: 97}},
+	durant: {baseStats: {hp: 58, atk: 109, def: 112, spa: 48, spd: 98, spe: 109}},
+	persian: {baseStats: {hp: 70, atk: 100, def: 70, spa: 105, spd: 70, spe: 115}},
+	persianalola: {baseStats: {hp: 70, atk: 105, def: 70, spa: 100, spd: 70, spe: 115}},
+	floatzel: {baseStats: {hp: 90, atk: 105, def: 65, spa: 90, spd: 50, spe: 115}},
+	gallademega: {baseStats: {hp: 75, atk: 165, def: 95, spa: 68, spd: 125, spe: 112}},
+	castform: {baseStats: {hp: 70, atk: 70, def: 70, spa: 70, spd: 70, spe: 100}},
+	heliolisk: {baseStats: {hp: 62, atk: 50, def: 60, spa: 110, spd: 99, spe: 109}},
+	typhlosion: {baseStats: {hp: 83, atk: 105, def: 85, spa: 122, spd: 70, spe: 100}},
+	typhlosionhisui: {
+		baseStats: {hp: 83, atk: 105, def: 80, spa: 137, spd: 65, spe: 95},
+		abilities: {0: 'Blazing Mane', 1: 'Soul Fire', H: 'Soul Heart'},
+	},
+	xatu: {baseStats: {hp: 65, atk: 75, def: 90, spa: 105, spd: 90, spe: 95}},
+	gligar: {baseStats: {hp: 85, atk: 85, def: 115, spa: 35, spd: 75, spe: 90}},
+	luxray: {baseStats: {hp: 85, atk: 125, def: 85, spa: 65, spd: 85, spe: 90}},
+	tentacruel: {
+		baseStats: {hp: 80, atk: 70, def: 85, spa: 100, spd: 135, spe: 100},
+		abilities: {0: 'Venom Veil', 1: 'Regenerator', H: 'Water Absorb'},
+	},
+	tentacruelalt: {
+		baseStats: {hp: 80, atk: 70, def: 85, spa: 100, spd: 135, spe: 100},
+		abilities: {0: 'Venom Veil', 1: 'Regenerator', H: 'Water Absorb'},
+	},
+	roserade: {
+		baseStats: {hp: 75, atk: 60, def: 85, spa: 135, spd: 120, spe: 95},
+		abilities: {0: 'False Devotion', 1: 'Invigorate', H: 'Technician'},
+	},
+	roseradealt: {
+		baseStats: {hp: 75, atk: 60, def: 85, spa: 135, spd: 120, spe: 95},
+		abilities: {0: 'False Devotion', 1: 'Invigorate', H: 'Technician'},
+	},
+	emboar: {
+		otherFormes: ['Emboar-Mega', 'Emboar-Alt'],
+		formeOrder: ['Emboar', 'Emboar-Mega', 'Emboar-Alt', 'Emboar-Mega-Alt'],
+	},
+	emboaralt: {
+		baseStats: {hp: 110, atk: 123, def: 65, spa: 100, spd: 65, spe: 65},
+		abilities: {0: 'Gluttony', 1: 'Violent Rush', H: 'Brute Force'},
+	},
+	emboarmegaalt: {
+		baseStats: {hp: 110, atk: 150, def: 110, spa: 80, spd: 120, spe: 58},
+		abilities: {0: 'Burning Ego'},
+	},
+});
 
 // Keep Gmax eligibility available to custom base entries and their cosmetic forms.
 const CUSTOM_GIGANTAMAX_MOVES: {[id: string]: string} = {
@@ -4939,8 +5389,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	unstableevo: {
 		name: 'Unstable Evo',
-		desc: "Eevee-Starter enters battle with 252 EVs in every stat; its IVs carry through form changes. Before a Let's Go partner move, it becomes its matching evolution and uses that form's stats, typing, and Speed. It keeps Unstable Evo, Filter, and Self Sufficient, and gains that evolution's built-in Ability effects. Switching out restores Eevee-Starter. It cannot use battle gimmicks or hold Eevium Z.",
-		shortDesc: "252 EVs in every stat; Filter + Self Sufficient; Let's Go moves change form; no gimmicks.",
+		desc: "Eevee-Starter's IVs carry through form changes. Before a Let's Go partner move, it becomes its matching evolution and uses that form's stats, typing, and Speed. It keeps Unstable Evo, Filter, and Self Sufficient, and gains that evolution's built-in Ability effects. Switching out restores Eevee-Starter. It cannot use battle gimmicks or hold Eevium Z.",
+		shortDesc: "Filter + Self Sufficient; Let's Go moves change form; no gimmicks.",
 	},
 	schooling: {
 		name: 'Schooling',
@@ -5289,8 +5739,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	adaptivecell: {
 		name: "Adaptive Cell",
-		desc: "This Pokemon has Overcoat's effect and its Special Attack is multiplied by 1.3. Before using a physical move, it becomes Fighting type; before using a special move, it becomes Psychic type. If its Special Attack is higher than its Attack, its physical moves may use Special Attack while still targeting Defense.",
-		shortDesc: "Overcoat; SpA 1.3x; physical -> Fighting; special -> Psychic; physical may use SpA.",
+		desc: "This Pokemon has Overcoat's effect and its Special Attack is multiplied by 1.3. Its first damaging move sets its opening type: Fighting for physical moves or Psychic for special moves. Each later damaging move changes its type to match its category. Physical moves use its boosted Special Attack as Attack; special moves use its boosted Special Attack normally.",
+		shortDesc: "Overcoat; SpA 1.3x; physical -> Fighting using SpA; special -> Psychic using SpA.",
 	},
 	alloycore: {
 		name: "Alloy Core",
@@ -5327,8 +5777,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 		desc: "This Pokemon has Ironclad and Sworn Duty's effects.",
 		shortDesc: "Ironclad + Sworn Duty.",
 	},
-	ascendance: {
-		name: "Ascendance",
+	fluffyevo: {
+		name: "Fluffy Evo",
 		desc: "Moves that do not match this Pokemon's type gain STAB. Its damaging moves ignore type immunities while respecting resistances, and it has Overcoat's effects.",
 		shortDesc: "Off-type moves gain STAB; hits type immunities; Overcoat.",
 	},
@@ -5452,6 +5902,11 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 		desc: "This Pokemon has Shadow Tag and Infiltrator's effects. When it faints, Haunted Field starts for 5 turns.",
 		shortDesc: "Shadow Tag + Infiltrator; faint summons Haunted Field.",
 	},
+	cruelshell: {
+		name: "Cruel Shell",
+		desc: "This Pokemon has Hyper Cutter, Shell Armor, and Anger Shell's effects.",
+		shortDesc: "Hyper Cutter + Shell Armor + Anger Shell.",
+	},
 	crumblingshell: {
 		name: "Crumbling Shell",
 		desc: "When this Pokemon is hit by a Physical attack, Stealth Rock is set on the attacker's side unless a water field is active or that side already has Stealth Rock.",
@@ -5524,8 +5979,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	eclipsevision: {
 		name: "Eclipse Vision",
-		desc: "This Pokemon's Special Attack is multiplied by 1.5. Before it uses any Psychic-type or Dark-type move, it becomes that type and remains that type. If this Pokemon is Psychic type, it restores 1/8 of its max HP at the end of each turn. If this Pokemon is Dark type, its damaging moves restore HP equal to 1/4 of the damage dealt.",
-		shortDesc: "SpA 1.5x; any Psychic/Dark move changes type; Psychic heals 1/8; Dark drains.",
+		desc: "This Pokemon's Special Attack is multiplied by 1.5. Its first Psychic- or Dark-type move sets its opening battle type, and each later Psychic- or Dark-type move changes it to that type. If this Pokemon is Psychic type, it restores 1/8 of its max HP at the end of each turn. If this Pokemon is Dark type, its damaging moves restore HP equal to 1/4 of the damage dealt.",
+		shortDesc: "SpA 1.5x; first Psychic/Dark move sets type, later moves switch it; Psychic heals; Dark drains.",
 	},
 	elevate: {
 		name: "Elevate",
@@ -5916,6 +6371,21 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 		name: "Royal Decree",
 		desc: "On switch-in, all active Pokemon's stat stages are reset to 0, except Pokemon on a side protected by Safeguard, and Reflect, Light Screen, and Aurora Veil are removed from both sides. While this Pokemon is active, Reflect, Light Screen, and Aurora Veil cannot be created, enemy stat boosts fail, and enemy-caused stat drops fail. This Pokemon's own self-inflicted stat drops still work. This Pokemon's charge moves fire immediately without charge turns, but recharge moves still require recharge. Neutralization disables these Royal Decree effects while active.",
 		shortDesc: "Haze/screen clear; Safeguard blocks reset; blocks setup/screens; skips charge turns.",
+	},
+	empress: {
+		name: 'Empress',
+		desc: "This Pokemon has Queenly Majesty and Royal Decree's effects.",
+		shortDesc: 'Queenly Majesty + Royal Decree.',
+	},
+	imperialprincess: {
+		name: 'Imperial Princess',
+		desc: "This Pokemon has Striker, Vital Spirit, and Moxie's effects.",
+		shortDesc: 'Striker + Vital Spirit + Moxie.',
+	},
+	loyalguard: {
+		name: 'Loyal Guard',
+		desc: "This Pokemon has Friend Guard, Guard Dog, and Intimidate's effects.",
+		shortDesc: 'Friend Guard + Guard Dog + Intimidate.',
 	},
 	royalhive: {
 		name: "Royal Hive",
@@ -6320,8 +6790,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	ultraego: {
 		name: "Ultra Ego",
-		desc: "Moves ignore abilities; it heals each turn and after attacks. KOs heal more, and the first enemy hit boosts Attack and Sp. Atk. Bewitched Woods, Haunted, and Holy Field disable these effects.",
-		shortDesc: "Mold Breaker; heals and boosts from combat; inactive in Bewitched/Haunted/Holy.",
+		desc: "Moves ignore abilities; it heals after combat. KOs heal more, and the first enemy hit boosts Attack and Sp. Atk. Bewitched Woods, Haunted, and Holy Field disable these effects.",
+		shortDesc: "Mold Breaker; combat healing and boosts; inactive in Bewitched/Haunted/Holy.",
 	},
 	triage: {
 		name: 'Triage',
@@ -6400,6 +6870,128 @@ const CUSTOM_MOVE_UPDATES: {[id: string]: AnyObject} = {
 		desc: 'A 100-power Flying-type special move with a 30% chance to paralyze and a 10% chance to flinch the target.',
 		shortDesc: '100 BP; 30% paralysis; 10% flinch.',
 	},
+	searingvoid: {
+		basePower: 40,
+		accuracy: 100,
+		category: 'Special',
+		name: 'Searing Void',
+		pp: 10,
+		target: 'all',
+		type: 'Fire',
+		desc: 'Hits all active Pokemon except the user and burns each target.',
+		shortDesc: '40 BP; burns all active Pokemon except the user.',
+	},
+	punchypummel: {
+		name: 'Punchy Pummel',
+		basePower: 90,
+		accuracy: 95,
+		pp: 10,
+		category: 'Physical',
+		type: 'Fighting',
+		flags: {contact: 1, protect: 1, mirror: 1, metronome: 1},
+		desc: "Lowers the target's Defense and Speed by 1 stage after a successful hit.",
+		shortDesc: 'Lowers Defense and Speed by 1 after a successful hit.',
+	},
+	twirlytwister: {
+		name: 'Twirly Twister',
+		basePower: 80,
+		accuracy: 95,
+		pp: 10,
+		category: 'Special',
+		type: 'Flying',
+		flags: {protect: 1, mirror: 1, metronome: 1, wind: 1},
+		desc: 'After a successful hit, removes entry hazards from both sides and all active Substitutes.',
+		shortDesc: 'After hitting, clears hazards and active Substitutes.',
+	},
+	rockyrampage: {
+		name: 'Rocky Rampage',
+		basePower: 85,
+		accuracy: 100,
+		pp: 10,
+		category: 'Physical',
+		type: 'Rock',
+		flags: {contact: 1, protect: 1, mirror: 1, metronome: 1},
+		desc: "After a successful hit, sets Stealth Rock on the target's side if it is not already active.",
+		shortDesc: 'After hitting, sets Stealth Rock on the target side.',
+	},
+	dustydrift: {
+		name: 'Dusty Drift',
+		basePower: 80,
+		accuracy: 95,
+		pp: 10,
+		category: 'Physical',
+		type: 'Ground',
+		flags: {contact: 1, protect: 1, mirror: 1, metronome: 1},
+		desc: 'After a successful hit, starts Sandstorm if it is not already active. Sandstorm may last 8 turns.',
+		shortDesc: 'After hitting, starts Sandstorm; may last 8 turns.',
+	},
+	steelystrike: {
+		name: 'Steely Strike',
+		basePower: 75,
+		accuracy: 100,
+		pp: 10,
+		category: 'Physical',
+		type: 'Steel',
+		flags: {contact: 1, protect: 1, mirror: 1, metronome: 1, slicing: 1},
+		desc: "Ignores and removes Reflect, Light Screen, Aurora Veil, and Arenite Wall from the target's side. 1.5x power in Fairy Tale Field.",
+		shortDesc: 'Removes screens and Arenite Wall; 1.5x in Fairy Tale.',
+	},
+	stabbyswarm: {
+		name: 'Stabby Swarm',
+		basePower: 75,
+		accuracy: 100,
+		pp: 20,
+		category: 'Physical',
+		type: 'Bug',
+		flags: {protect: 1, mirror: 1, metronome: 1},
+		target: 'allAdjacentFoes',
+		desc: 'Traps opposing Pokemon for 4-5 turns and damages them each turn. In Forest Field, power is 1.5x and Defense falls by 1. Grip Claw extends the trap to 7 turns.',
+		shortDesc: 'Traps foes; 1.5x and -1 Def in Forest; Grip Claw extends it.',
+	},
+	ickyinjection: {
+		name: 'Icky Injection',
+		basePower: 100,
+		accuracy: 95,
+		pp: 10,
+		category: 'Physical',
+		type: 'Poison',
+		flags: {contact: 1, protect: 1, mirror: 1, metronome: 1},
+		desc: 'Poisons the target. Badly poisons in Corrosive, Corrosive Mist, Murkwater Surface, and Wasteland fields.',
+		shortDesc: 'Poisons; badly poisons in toxic fields.',
+	},
+	spookyspell: {
+		name: 'Spooky Spell',
+		basePower: 60,
+		accuracy: 100,
+		pp: 10,
+		category: 'Special',
+		type: 'Ghost',
+		flags: {protect: 1, mirror: 1, metronome: 1},
+		desc: 'Applies Curse to the damaged target if it is not already cursed.',
+		shortDesc: 'Damaging a target applies Curse.',
+	},
+	scalyscorn: {
+		name: 'Scaly Scorn',
+		basePower: 75,
+		accuracy: 100,
+		pp: 15,
+		category: 'Special',
+		type: 'Dragon',
+		flags: {protect: 1, mirror: 1, metronome: 1},
+		desc: "Raises the user's Special Attack by 1 stage after a successful hit, or by 2 in Dragon's Den or Fairy Tale Field.",
+		shortDesc: "After hitting, raises Sp. Atk by 1; +2 in Dragon's Den/Fairy Tale.",
+	},
+	glitchygraphics: {
+		name: 'Glitchy Graphics',
+		basePower: 0,
+		accuracy: true,
+		pp: 10,
+		category: 'Status',
+		type: '???',
+		flags: {metronome: 1},
+		desc: 'Creates Glitch Field for 5 turns. If Glitch Field is active, randomizes each opposing active Pokemon type.',
+		shortDesc: 'Creates Glitch Field; while active, randomizes opposing types.',
+	},
 	beatup: {
 		basePower: 30,
 		multihit: [2, 6],
@@ -6452,8 +7044,8 @@ const CUSTOM_MOVE_UPDATES: {[id: string]: AnyObject} = {
 		shortDesc: '30 BP physical Steel; hits 6 times; higher Atk/SpA vs lower Def/SpD.',
 	},
 	skullbash: {
-		desc: "Charges with +4 priority, raising Attack, Defense, and Special Defense by 1 and reducing damage taken to 0.7x. The attack fires at normal priority and heals 1/8 max HP on a successful hit. A skipped charge has no priority boost.",
-		shortDesc: "+4 charge: +Atk/Def/SpD, 0.7x damage. Hit heals 1/8.",
+		desc: "Charges for one turn, raising Attack, Defense, and Special Defense by 1. While charging, damage taken is reduced to 0.8x. The attack fires at normal priority and heals 1/10 max HP on a successful hit.",
+		shortDesc: "Charge: +Atk/Def/SpD, 0.8x damage taken. Hit heals 1/10.",
 	},
 	watershuriken: {
 		basePower: 20,
@@ -7072,6 +7664,54 @@ const CUSTOM_LEARNSET_REPLACEMENTS: {[id: string]: {[id: string]: string[]}} = {
 	},
 };
 const CUSTOM_LEARNSET_ADDITIONS: {[id: string]: {[id: string]: string[]}} = {
+	furfrou: {
+		tailslap: ['9M'], nuzzle: ['9M'], volttackle: ['9M'], heartstamp: ['9M'], psyshieldbash: ['9M'], shadowbone: ['9M'],
+		destinybond: ['9M'], direclaw: ['9M'], gunkshot: ['9M'], jawlock: ['9M'], knockoff: ['9M'], brickbreak: ['9M'],
+		highjumpkick: ['9M'], aquatail: ['9M'], wavecrash: ['9M'], spiritbreak: ['9M'], playrough: ['9M'], stoneedge: ['9M'],
+		diamondstorm: ['9M'],
+	},
+	tsareena: {
+		acrobatics: ['9M'], knockoff: ['9M'], skullbash: ['9M'], moonlight: ['9M'], spikes: ['9M'], taunt: ['9M'],
+	},
+	crawdaunt: {
+		icehammer: ['9M'], powertrip: ['9M'],
+	},
+	eeveestarter: {
+		punchypummel: ['9M'], twirlytwister: ['9M'], rockyrampage: ['9M'], dustydrift: ['9M'],
+		steelystrike: ['9M'], stabbyswarm: ['9M'], ickyinjection: ['9M'], spookyspell: ['9M'],
+		scalyscorn: ['9M'], glitchygraphics: ['9M'],
+		firefang: ['9M'], icefang: ['9M'], crunch: ['9M'], thunderfang: ['9M'], iceshard: ['9M'],
+		tripleaxel: ['9M'], icebeam: ['9M'], blizzard: ['9M'], psychic: ['9M'], hypervoice: ['9M'],
+		earthpower: ['9M'], extremespeed: ['9M'], chargebeam: ['9M'], safeguard: ['9M'],
+		conversion: ['9M'], conversion2: ['9M'], calmmind: ['9M'], triattack: ['9M'],
+		paraboliccharge: ['9M'], magnetbomb: ['9M'], terrainpulse: ['9M'], victorydance: ['9M'],
+		quiverdance: ['9M'], firstimpression: ['9M'], ironhead: ['9M'], noretreat: ['9M'],
+		playrough: ['9M'], bulkup: ['9M'], triplekick: ['9M'], defog: ['9M'], airslash: ['9M'],
+		tailwind: ['9M'], swift: ['9M'], aeroblast: ['9M'], hurricane: ['9M'], tidyup: ['9M'],
+		bonerush: ['9M'], shoreup: ['9M'], earthquake: ['9M'], sandtomb: ['9M'], accelrock: ['9M'],
+		stoneedge: ['9M'], rockblast: ['9M'], rockslide: ['9M'], poisonfang: ['9M'], poisontail: ['9M'],
+		clearsmog: ['9M'], gastroacid: ['9M'], crosspoison: ['9M'], acidarmor: ['9M'], gunkshot: ['9M'],
+		toxic: ['9M'], ominouswind: ['9M'], lick: ['9M'], shadowsneak: ['9M'], nightshade: ['9M'],
+		grudge: ['9M'], hex: ['9M'], curse: ['9M'], nastyplot: ['9M'], hydropump: ['9M'],
+		thunder: ['9M'], dragonpulse: ['9M'], dragonbreath: ['9M'],
+		strengthsap: ['9M'], pursuit: ['9M'], punishment: ['9M'], spiritbreak: ['9M'],
+		bittermalice: ['9M'], infernalparade: ['9M'], destinybond: ['9M'], dreameater: ['9M'],
+		eeriespell: ['9M'], perishsong: ['9M'], blueflare: ['9M'], doomdesire: ['9M'],
+	searingvoid: ['9M'],
+	},
+	jynx: {
+		sparklingaria: ['9M'],
+		eeriespell: ['9M'],
+		spotlight: ['9M'],
+	},
+	obstagoon: {
+		return: ['9M'],
+		slash: ['9M'],
+		extremespeed: ['9M'],
+		taunt: ['9M'],
+		metalclaw: ['9M'],
+		thunderpunch: ['9M'],
+	},
 	mismagius: {
 		hexingslash: ['9M'],
 	},
@@ -7231,10 +7871,6 @@ const CUSTOM_LEARNSET_ADDITIONS: {[id: string]: {[id: string]: string[]}} = {
 		weatherball: ['9M'],
 	},
 	eevee: {
-		bouncybubble: ['9M'],
-		sappyseed: ['9M'],
-	},
-	eeveestarter: {
 		bouncybubble: ['9M'],
 		sappyseed: ['9M'],
 	},
@@ -7553,7 +8189,11 @@ const CUSTOM_LEARNSET_REMOVALS: {[id: string]: string[]} = {
 	goodra: ['roaroftime', 'slackoff'],
 	goodrahisui: ['roaroftime', 'slackoff'],
 	goomy: ['roaroftime'],
-	granbull: ['partingshot'],
+	granbull: {
+		highhorsepower: ['9M'], spiritbreak: ['9M'], stompingtantrum: ['9M'], suckerpunch: ['9M'],
+		partingshot: ['9M'], closecombat: ['9M'], smellingsalts: ['9M'], brickbreak: ['9M'],
+		leechlife: ['9M'], poweruppunch: ['9M'], wideguard: ['9M'],
+	},
 	gyarados: ['dragonascent'],
 	hitmonchan: ['ragefist'],
 	hydreigon: ['roaroftime'],
@@ -7632,7 +8272,7 @@ const CUSTOM_ANIMATED_BW_SPRITES = new Set([
 	'ribombee', 'rotom', 'rotomfan', 'rotomfrost', 'rotomheat', 'rotommow', 'rotomwash', 'salamence',
 	'scolipede', 'slowbro', 'slowking', 'sneasel', 'staraptor', 'steelix', 'talonflame',
 	'torterra', 'typhlosion', 'tyrantrum', 'venusaur', 'victreebel', 'vikavolt',
-	'weavile', 'weavilef', 'whimsicott', 'zoroark',
+	'whimsicott', 'zoroark',
 ]);
 const CUSTOM_SPECIES_IDS = Object.keys(CUSTOM_SPECIES);
 const CUSTOM_SPECIES_UPDATE_IDS = Object.keys(CUSTOM_SPECIES_UPDATES);
@@ -7662,7 +8302,7 @@ function mergeCustomSpeciesData(baseData: AnyObject, existingData: AnyObject | u
 function isCustomVisualForm(data: AnyObject) {
 	const forme = data?.forme;
 	if (typeof forme !== 'string') return false;
-	return ['Alt', 'Aevian', 'East-Aevian', 'Pulse', 'Azzy', 'Spring', 'Summer', 'Autumn', 'Winter'].includes(forme) ||
+	return ['Alt', 'Aevian', 'East-Aevian', 'Hisui-Alt', 'Pulse', 'Azzy', 'Azzy2', 'Spring', 'Summer', 'Autumn', 'Winter'].includes(forme) ||
 		forme.endsWith('-Alt');
 }
 function isCustomVisualVariantName(name: unknown, speciesTable?: AnyObject) {
@@ -7677,8 +8317,8 @@ const CUSTOM_VARIANT_BASE_ALIASES: {[id: string]: string} = {
 };
 const PROFILE_VARIANT_FORMES: {[familyId: string]: string[]} = {
 	pikachustarter: [
-		'Pikachu-Starter', 'Pikachu-Rock-Star', 'Pikachu-Belle',
-		'Pikachu-Pop-Star', 'Pikachu-PhD', 'Pikachu-Libre',
+		'Pikachu-Starter', 'Pikachu-Belle', 'Pikachu-Libre',
+		'Pikachu-PhD', 'Pikachu-Pop-Star', 'Pikachu-Rock-Star',
 	],
 	furfrou: [
 		'Furfrou', 'Furfrou-Heart', 'Furfrou-Star', 'Furfrou-Diamond', 'Furfrou-Debutante',
@@ -7689,6 +8329,13 @@ const PROFILE_VARIANT_FORMES: {[familyId: string]: string[]} = {
 	],
 	rotom: [
 		'Rotom', 'Rotom-Heat', 'Rotom-Wash', 'Rotom-Frost', 'Rotom-Fan', 'Rotom-Mow',
+	],
+	silvally: [
+		'Silvally', 'Silvally-Fighting', 'Silvally-Flying', 'Silvally-Poison',
+		'Silvally-Ground', 'Silvally-Rock', 'Silvally-Bug', 'Silvally-Ghost',
+		'Silvally-Steel', 'Silvally-Fire', 'Silvally-Water', 'Silvally-Grass',
+		'Silvally-Electric', 'Silvally-Psychic', 'Silvally-Ice', 'Silvally-Dragon',
+		'Silvally-Dark', 'Silvally-Fairy',
 	],
 };
 const PROFILE_VARIANT_FAMILY_IDS: {[speciesId: string]: string} = {};
@@ -7702,12 +8349,14 @@ function customVariantFamilyBaseId(base: string) {
 function customVariantFamilyId(species: AnyObject) {
 	const id = toID(species?.id || species?.name || '');
 	if (PROFILE_VARIANT_FAMILY_IDS[id]) return PROFILE_VARIANT_FAMILY_IDS[id];
+	const directCustomSpecies = CUSTOM_SPECIES[id];
+	if (directCustomSpecies?.data.standalone || species?.standalone) return id;
 	for (const customSpecies of Object.values(CUSTOM_SPECIES)) {
 		if (isCustomVisualForm(customSpecies.data) && customVariantFamilyBaseId(customSpecies.base) === id) {
 			return id;
 		}
 	}
-	const customSpecies = CUSTOM_SPECIES[id];
+	const customSpecies = directCustomSpecies;
 	if (customSpecies && isCustomVisualForm(customSpecies.data)) {
 		return customVariantFamilyBaseId(customSpecies.base);
 	}
@@ -8095,6 +8744,13 @@ const CUSTOM_TEAMBUILDER_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: nu
 	sandslashalt: {w: 76, h: 76},
 	haxorusalt: {w: 78, h: 78},
 	arcaninealt: {w: 78, h: 78},
+	tentacruelalt: {w: 192, h: 192},
+	roseradealt: {w: 192, h: 192},
+	auroreon: {w: 192, h: 192},
+	soluneon: {w: 192, h: 192},
+	abysseon: {w: 192, h: 192},
+	emboaralt: {w: 192, h: 192},
+	emboarmegaalt: {w: 192, h: 192},
 	butterfreemega: {w: 70, h: 70},
 	dragapultgmax: {w: 74, h: 74},
 	dondozo: {w: 82, h: 82},
@@ -8174,6 +8830,70 @@ function applyCustomTeambuilderSpriteSizing(spriteData: SpriteData, id: string, 
 		(CUSTOM_TEAMBUILDER_SPRITE_Y_OFFSETS[id] || 0);
 	spriteData.backgroundSize = `${width}px auto`;
 }
+Object.assign(CUSTOM_ABILITY_UPDATES, {
+	solarrecharge: {
+		name: 'Solar Recharge',
+		desc: "This Pokemon's Fire-type moves have STAB. It is immune to Fire-type moves and restores 1/4 of its maximum HP when hit by one. In Sun, it restores 1/8 of its maximum HP at the end of each turn.",
+		shortDesc: 'Fire STAB; Fire immunity heals 1/4; heals 1/8 each turn in Sun.',
+	},
+	caverndrake: {
+		name: 'Cavern Drake',
+		desc: "This Pokemon has Earth Eater, Solid Rock, and Mold Breaker's effects.",
+		shortDesc: 'Earth Eater + Solid Rock + Mold Breaker.',
+	},
+	roughscale: {
+		name: 'Rough Scale',
+		desc: "This Pokemon has Rough Skin, Tough Claws, and Brute Force's effects.",
+		shortDesc: 'Rough Skin + Tough Claws + Brute Force.',
+	},
+	zprotean: {
+		name: 'Z Protean',
+		desc: "Before each attack other than Struggle, this Pokemon changes to the move's type and gains STAB. If it is Eevee-Starter, its battle sprite shifts to the matching Eeveelution until it leaves battle.",
+		shortDesc: 'Before each attack, changes type and battle sprite to match its move.',
+	},
+	triplethreat: {
+		name: 'Triple Threat',
+		desc: "This Pokemon has Hydra Bond, Tangled Feet, Sniper, Big Pecks, and Keen Eye's effects.",
+		shortDesc: 'Hydra Bond + Tangled Feet + Sniper + Big Pecks + Keen Eye.',
+	},
+	strikerfrenzy: {
+		name: 'Striker Frenzy',
+		desc: "This Pokemon has Striker and Vital Spirit's effects.",
+		shortDesc: 'Striker + Vital Spirit.',
+	},
+	venomveil: {
+		name: 'Venom Veil',
+		desc: "This Pokemon has Liquid Ooze, Corrosion, and Water Veil's effects.",
+		shortDesc: 'Liquid Ooze + Corrosion + Water Veil.',
+	},
+	abysslure: {
+		name: 'Abyss Lure',
+		desc: "This Pokemon has Lightning Rod, Storm Drain, and Illuminate's effects.",
+		shortDesc: 'Lightning Rod + Storm Drain + Illuminate.',
+	},
+	bogbody: {
+		name: 'Bog Body',
+		desc: "This Pokemon has Dry Skin, Thick Fat, and Unaware's effects.",
+		shortDesc: 'Dry Skin + Thick Fat + Unaware.',
+	},
+	frostsiren: {
+		name: 'Frost Siren',
+		desc: "This Pokemon has Refrigerate, Forewarn, and Dry Skin's effects.",
+		shortDesc: 'Refrigerate + Forewarn + Dry Skin.',
+	},
+	mindfreeze: {
+		desc: "This Pokemon cannot have this Ability suppressed. It is immune to Ice-type attacks and restores 1/4 of its maximum HP when hit by one. It has Ice Body's healing and hail immunity. Its damaging Psychic-type moves have a 40% chance to cause frostbite, and Freezing Glare's frostbite chance is doubled. Its Physical Ice-type moves become Special.",
+		shortDesc: 'Cannot be suppressed; Ice immunity heals 1/4; Ice Body; Psychic may frostbite.',
+	},
+	eclipse: {
+		desc: "This Ability cannot be suppressed. During weather, this Pokemon's attacks deal 1.5x damage. In clear weather, attacks deal 0.5x damage to this Pokemon. Its Psychic-type moves become Dark type if Dark would do more damage, and its Dark-type moves become Psychic type if Psychic would do more damage. It restores 1/4 max HP instead of taking damage from Psychic- or Dark-type moves.",
+		shortDesc: 'Cannot be suppressed; weather attacks 1.5x; clear damage halved; Psychic/Dark choose type.',
+	},
+sinisterblaze: {
+		desc: 'Cannot be suppressed; burns the user on entry, converts burn damage to healing, damages foes equally, has no physical burn penalty, is immune to hail/sandstorm damage, counts as Ice in ice weather/fields, and gains +1 Def/SpD in Cold Eclipse and fire fields.',
+		shortDesc: 'Cannot be suppressed; burn heals user/damages foes; no burn penalty; hail/sand immune; Cold Eclipse +Def/SpD.',
+},
+});
 const CUSTOM_ABILITY_UPDATE_IDS = Object.keys(CUSTOM_ABILITY_UPDATES);
 const CUSTOM_ARROW_MOVE_IDS = [
 	'spiritshackle', 'thousandarrows', 'triplearrows', 'snipeshot', 'razorleaf', 'magicalleaf',
@@ -8182,6 +8902,14 @@ const CUSTOM_ARROW_MOVE_IDS = [
 ];
 const CUSTOM_HORN_MOVE_IDS = ['hornattack', 'horndrill', 'hornleech', 'megahorn'];
 const CUSTOM_ABILITY_COMPONENT_OVERRIDES: {[id: string]: readonly ID[]} = {
+	caverndrake: ['eartheater' as ID, 'solidrock' as ID, 'moldbreaker' as ID],
+	roughscale: ['roughskin' as ID, 'toughclaws' as ID, 'bruteforce' as ID],
+	empress: ['queenlymajesty' as ID, 'royaldecree' as ID],
+	imperialprincess: ['striker' as ID, 'vitalspirit' as ID, 'moxie' as ID],
+	loyalguard: ['friendguard' as ID, 'guarddog' as ID, 'intimidate' as ID],
+	abysslure: ['lightningrod' as ID, 'stormdrain' as ID, 'illuminate' as ID],
+	bogbody: ['dryskin' as ID, 'thickfat' as ID, 'unaware' as ID],
+	frostsiren: ['refrigerate' as ID, 'forewarn' as ID, 'dryskin' as ID],
 	// Ultra Ego implements Mold Breaker's effect without delegating to the base Ability.
 	ultraego: ['moldbreaker' as ID],
 	relicarmor: ['selfsufficient' as ID],
@@ -8233,9 +8961,22 @@ const CUSTOM_ABILITY_COMPONENT_OVERRIDES: {[id: string]: readonly ID[]} = {
 		'mindfreeze' as ID, 'competitive' as ID, 'chlorophyll' as ID,
 		'filter' as ID, 'selfsufficient' as ID,
 	],
+	triplethreat: ['hydrabond' as ID, 'tangledfeet' as ID, 'sniper' as ID, 'bigpecks' as ID, 'keeneye' as ID],
+	strikerfrenzy: ['striker' as ID, 'vitalspirit' as ID],
+	venomveil: ['liquidooze' as ID, 'corrosion' as ID, 'waterveil' as ID],
 };
 const CUSTOM_MOVE_UPDATE_IDS = Object.keys(CUSTOM_MOVE_UPDATES);
 const CUSTOM_LEARNSET_REPLACEMENT_IDS = Object.keys(CUSTOM_LEARNSET_REPLACEMENTS);
+Object.assign(CUSTOM_LEARNSET_ADDITIONS, {
+	druddigon: {
+		accelrock: ['9M'], headsmash: ['9M'], flareblitz: ['9M'], dragondance: ['9M'],
+		dragonrush: ['9M'], ragingfury: ['9M'], swordsdance: ['9M'],
+	},
+	lycanroc: {accelerock: ['9M']},
+	lycanrocmidday: {accelerock: ['9M']},
+	lycanrocmidnight: {accelerock: ['9M']},
+	lycanrocdusk: {accelerock: ['9M']},
+});
 const CUSTOM_LEARNSET_ADDITION_IDS = Object.keys(CUSTOM_LEARNSET_ADDITIONS);
 const CUSTOM_LEARNSET_REMOVAL_IDS = Object.keys(CUSTOM_LEARNSET_REMOVALS);
 const REDUNDANT_ITEM_IDS = [
@@ -8351,6 +9092,19 @@ function applyCustomTeambuilderLearnsets(table: AnyObject) {
 		for (const moveid in CUSTOM_LEARNSET_ADDITIONS[id]) {
 			table.learnsets[id][moveid] = encodeCustomLearnsetSources(CUSTOM_LEARNSET_ADDITIONS[id][moveid]);
 		}
+	}
+	if (table.learnsets.eeveestarter) {
+		table.learnsets.eeveestarteralt = {
+			...table.learnsets.eeveestarter,
+			...(table.learnsets.eeveestarteralt || {}),
+		};
+	}
+	for (const [target, base] of [['goodrahisui', 'goodra'], ['arcaninehisui', 'arcanine']]) {
+		if (!table.learnsets[base]) continue;
+		table.learnsets[target] = {
+			...table.learnsets[base],
+			...(table.learnsets[target] || {}),
+		};
 	}
 	if (table.learnsets.basculegion && table.learnsets.basculegionf) {
 		table.learnsets.basculegionf = {...table.learnsets.basculegion};
@@ -9940,7 +10694,7 @@ const Teams = new class {
 			const ability = Dex.abilities.get(buf.substring(i, j)).name;
 			const species = Dex.species.get(set.species);
 			set.ability = (species.abilities &&
-				['', '0', '1', 'H', 'S'].includes(ability) ? species.abilities[ability as '0' || '0'] : ability);
+		['', '0', '1', 'H', 'S', 'E', 'F'].includes(ability) ? species.abilities[ability as '0' | '1' | 'H' | 'S' | 'E' | 'F' || '0'] : ability);
 			i = j + 1;
 
 			// moves
