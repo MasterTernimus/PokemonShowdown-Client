@@ -29,13 +29,28 @@ declare const BattleTeambuilderTable: any;
 const HIDDEN_TEAMBUILDER_SPECIES = new Set<ID>([
 	'pikachualola', 'pikachucosplay', 'pikachuhoenn', 'pikachukalos', 'pikachuoriginal',
 	'pikachupartner', 'pikachusinnoh', 'pikachuunova', 'pikachuworld',
+	'pikachubelle', 'pikachulibre', 'pikachuphd', 'pikachupopstar', 'pikachurockstar',
 ]);
+
+// These are visual-only destinations for Z Protean. They must remain resolvable
+// for battle form changes, but are never valid team-builder choices.
+const Z_PROTEAN_BATTLE_ONLY_SPECIES = new Set<ID>([
+	'braveon', 'nimbeon', 'toxeon', 'dusteon', 'basaleon', 'ephemeon',
+	'kitsuneon', 'titaneon', 'byteon', 'drekeon',
+]);
+
+function isZProteanBattleOnlySpecies(id: string) {
+	return Z_PROTEAN_BATTLE_ONLY_SPECIES.has(toID(id) as ID);
+}
 
 function isHiddenTeamBuilderSpecies(id: string, includeSawsbuckBase = false) {
 	const speciesId = toID(id);
+	if (isZProteanBattleOnlySpecies(speciesId)) return true;
 	if (HIDDEN_TEAMBUILDER_SPECIES.has(speciesId)) return true;
 	if (speciesId === 'deerling' || speciesId.startsWith('deerling')) return true;
 	if (speciesId.startsWith('sawsbuck') && (speciesId !== 'sawsbuck' || includeSawsbuckBase)) return true;
+	if (speciesId.startsWith('furfrou') && speciesId !== 'furfrou') return true;
+	if (speciesId.startsWith('silvally') && speciesId !== 'silvally') return true;
 	return false;
 }
 
@@ -435,7 +450,12 @@ class DexSearch {
 
 			// some aliases are substrings
 			if (queryAlias === id && query !== id) continue;
-			if (type === 'pokemon' && isHiddenTeamBuilderSpecies(id)) continue;
+			if (
+				type === 'pokemon' &&
+				(isZProteanBattleOnlySpecies(id) ||
+					(isHiddenTeamBuilderSpecies(id) && id !== query &&
+					!(query === 'furfrou' && id.startsWith('furfrou'))))
+			) continue;
 
 			if (searchType && searchTypeIndex !== typeIndex) {
 				// This is a filter, set it as an instafilter candidate

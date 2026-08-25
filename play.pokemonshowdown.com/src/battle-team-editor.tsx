@@ -247,6 +247,14 @@ export class TeamEditorState extends PSModel {
 			)?.[0];
 			set.ability = species.abilities[currentAbilitySlot || '0'] || species.abilities['0'];
 		}
+		if (isSilvallySpecies(species.name)) {
+			const defaultItem = this.getDefaultItem(species.name);
+			if (defaultItem) {
+				set.item = defaultItem;
+			} else if (toID(species.name) === 'silvally') {
+				delete set.item;
+			}
+		}
 		set.species = species.name;
 		if (isSilvallySpecies(set.species) || isDefaultShinyCustomSpecies(set.species)) set.shiny = true;
 	}

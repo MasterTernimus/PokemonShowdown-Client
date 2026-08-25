@@ -35761,6 +35761,7 @@ BattleMoveAnims['torment'] = {anim: BattleMoveAnims['swagger'].anim};
 BattleMoveAnims['mefirst'] = {anim: BattleMoveAnims['mimic'].anim};
 
 BattleMoveAnims['conversion2'] = {anim: BattleMoveAnims['conversion'].anim};
+BattleMoveAnims['searingvoid'] = {anim: BattleMoveAnims['infernalparade'].anim};
 
 BattleMoveAnims['gearup'] = {anim: BattleMoveAnims['shiftgear'].anim};
 BattleMoveAnims['honeclaws'] = {anim: BattleMoveAnims['rockpolish'].anim};
@@ -36101,6 +36102,16 @@ BattleMoveAnims['shellsidearmphysical'] = {anim: BattleMoveAnims['poisonjab'].an
 BattleMoveAnims['shellsidearmspecial'] = {anim: BattleMoveAnims['sludgebomb'].anim};
 BattleMoveAnims['surgingstrikes'] = {anim: BattleMoveAnims['aquajet'].anim};
 BattleMoveAnims['eeriespell'] = {anim: BattleMoveAnims['psyshock'].anim};
+BattleMoveAnims['punchypummel'] = {anim: BattleMoveAnims['closecombat'].anim};
+BattleMoveAnims['twirlytwister'] = {anim: BattleMoveAnims['hurricane'].anim};
+BattleMoveAnims['rockyrampage'] = {anim: BattleMoveAnims['rockwrecker'].anim};
+BattleMoveAnims['dustydrift'] = {anim: BattleMoveAnims['sandstorm'].anim};
+BattleMoveAnims['steelystrike'] = {anim: BattleMoveAnims['steelwing'].anim};
+BattleMoveAnims['stabbyswarm'] = {anim: BattleMoveAnims['strugglebug'].anim};
+BattleMoveAnims['ickyinjection'] = {anim: BattleMoveAnims['fellstinger'].anim};
+BattleMoveAnims['spookyspell'] = {anim: BattleMoveAnims['hex'].anim};
+BattleMoveAnims['scalyscorn'] = {anim: BattleMoveAnims['dragonrage'].anim};
+BattleMoveAnims['glitchygraphics'] = {anim: BattleMoveAnims['refresh'].anim};
 
 BattleMoveAnims['axekick'] = {anim: BattleMoveAnims['highjumpkick'].anim};
 BattleMoveAnims['bittermalice'] = {anim: BattleMoveAnims['spectralthief'].anim};
