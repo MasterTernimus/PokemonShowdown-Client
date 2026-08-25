@@ -6876,7 +6876,7 @@ accuracy:100,
 category:'Special',
 name:'Searing Void',
 pp:10,
-target:'all',
+target:'allAdjacent',
 type:'Fire',
 desc:'Hits all active Pokemon except the user and burns each target.',
 shortDesc:'40 BP; burns all active Pokemon except the user.'
@@ -8843,8 +8843,8 @@ shortDesc:'Earth Eater + Solid Rock + Mold Breaker.'
 },
 roughscale:{
 name:'Rough Scale',
-desc:"This Pokemon has Rough Skin, Tough Claws, and Brute Force's effects.",
-shortDesc:'Rough Skin + Tough Claws + Brute Force.'
+desc:"This Pokemon has Rough Skin and Tough Claws' effects.",
+shortDesc:'Rough Skin + Tough Claws.'
 },
 zprotean:{
 name:'Z Protean',
@@ -8903,7 +8903,7 @@ var CUSTOM_ARROW_MOVE_IDS=[
 var CUSTOM_HORN_MOVE_IDS=['hornattack','horndrill','hornleech','megahorn'];
 var CUSTOM_ABILITY_COMPONENT_OVERRIDES={
 caverndrake:['eartheater','solidrock','moldbreaker'],
-roughscale:['roughskin','toughclaws','bruteforce'],
+roughscale:['roughskin','toughclaws'],
 empress:['queenlymajesty','royaldecree'],
 imperialprincess:['striker','vitalspirit','moxie'],
 loyalguard:['friendguard','guarddog','intimidate'],

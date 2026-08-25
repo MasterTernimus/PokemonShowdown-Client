@@ -6876,7 +6876,7 @@ const CUSTOM_MOVE_UPDATES: {[id: string]: AnyObject} = {
 		category: 'Special',
 		name: 'Searing Void',
 		pp: 10,
-		target: 'all',
+		target: 'allAdjacent',
 		type: 'Fire',
 		desc: 'Hits all active Pokemon except the user and burns each target.',
 		shortDesc: '40 BP; burns all active Pokemon except the user.',
@@ -8843,8 +8843,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 	},
 	roughscale: {
 		name: 'Rough Scale',
-		desc: "This Pokemon has Rough Skin, Tough Claws, and Brute Force's effects.",
-		shortDesc: 'Rough Skin + Tough Claws + Brute Force.',
+		desc: "This Pokemon has Rough Skin and Tough Claws' effects.",
+		shortDesc: 'Rough Skin + Tough Claws.',
 	},
 	zprotean: {
 		name: 'Z Protean',
@@ -8903,7 +8903,7 @@ const CUSTOM_ARROW_MOVE_IDS = [
 const CUSTOM_HORN_MOVE_IDS = ['hornattack', 'horndrill', 'hornleech', 'megahorn'];
 const CUSTOM_ABILITY_COMPONENT_OVERRIDES: {[id: string]: readonly ID[]} = {
 	caverndrake: ['eartheater' as ID, 'solidrock' as ID, 'moldbreaker' as ID],
-	roughscale: ['roughskin' as ID, 'toughclaws' as ID, 'bruteforce' as ID],
+	roughscale: ['roughskin' as ID, 'toughclaws' as ID],
 	empress: ['queenlymajesty' as ID, 'royaldecree' as ID],
 	imperialprincess: ['striker' as ID, 'vitalspirit' as ID, 'moxie' as ID],
 	loyalguard: ['friendguard' as ID, 'guarddog' as ID, 'intimidate' as ID],
