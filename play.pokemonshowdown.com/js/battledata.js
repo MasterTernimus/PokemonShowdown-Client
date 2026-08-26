@@ -9908,7 +9908,7 @@ getSpriteData=function getSpriteData(pokemon,isFront)
 
 
 
-{var _CUSTOM_SPECIES$custo,_BattlePokemonSprites,_window$BattlePokemon2,_BattlePokemonSprites2,_window$BattlePokemon3,_window$Config2;var options=arguments.length>2&&arguments[2]!==undefined?arguments[2]:{gen:6};
+{var _CUSTOM_SPECIES$custo,_BattlePokemonSprites,_window$BattlePokemon2,_BattlePokemonSprites2,_window$BattlePokemon3,_window$Config2,_animationData;var options=arguments.length>2&&arguments[2]!==undefined?arguments[2]:{gen:6};
 var mechanicsGen=options.gen||6;
 var isDynamax=!!options.dynamax;
 if(pokemon instanceof Pokemon){
@@ -10101,12 +10101,13 @@ if(customStaticBattleSprite&&!allowCustomAnimation)allowAnim=false;
 var customBWSprite=CUSTOM_BW_SPRITES[speciesid];
 if(customBWSprite&&!allowCustomAnimation)allowAnim=false;
 if(allowAnim&&spriteData.gen>=6)spriteData.pixelated=false;
-if(allowAnim&&animationData[facing]&&spriteData.gen>=5){
+var animation=(_animationData=animationData)==null?void 0:_animationData[facing];
+if(allowAnim&&animation!=null&&animation.w&&animation!=null&&animation.h&&spriteData.gen>=5){
 if(facing.slice(-1)==='f')name+='-f';
 dir=baseDir+'ani'+dir;
 
-spriteData.w=animationData[facing].w;
-spriteData.h=animationData[facing].h;
+spriteData.w=animation.w;
+spriteData.h=animation.h;
 spriteData.url+=dir+'/'+name+'.gif';
 }else{
 
