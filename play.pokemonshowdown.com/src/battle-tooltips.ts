@@ -571,7 +571,8 @@ class BattleTooltips {
 		let categoryDiff = move.category !== category;
 
 		if (isZOrMax === 'zmove') {
-			if (item.zMoveFrom === move.name) {
+			const zMoveFrom = item.zMoveFrom && (Array.isArray(item.zMoveFrom) ? item.zMoveFrom : [item.zMoveFrom]);
+			if (zMoveFrom?.includes(move.name)) {
 				move = gmaxMove?.isZ ? gmaxMove : this.battle.dex.moves.get(item.zMove as string);
 			} else if (move.category === 'Status') {
 				move = new Move(move.id, "", {

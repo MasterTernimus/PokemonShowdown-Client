@@ -45,7 +45,8 @@ class PSSearchResults extends preact.Component<{search: DexSearch}> {
 		const pokemon = search.dex.species.get(id);
 		if (!pokemon) return <li class="result">Unrecognized pokemon</li>;
 
-		let tagStart = (pokemon.forme ? pokemon.name.length - pokemon.forme.length - 1 : 0);
+		const hasFormeSuffix = !!pokemon.forme && pokemon.name.endsWith(pokemon.forme);
+		let tagStart = hasFormeSuffix ? pokemon.name.length - pokemon.forme.length - 1 : 0;
 
 		const stats = pokemon.baseStats;
 		let bst = 0;

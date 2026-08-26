@@ -1485,7 +1485,10 @@ export class Battle {
 				if (move.isZ) {
 					pokemon.item = move.isZ;
 					let item = Dex.items.get(move.isZ);
-					if (item.zMoveFrom) moveName = item.zMoveFrom;
+					if (item.zMoveFrom) {
+						const zMoveFrom = Array.isArray(item.zMoveFrom) ? item.zMoveFrom : [item.zMoveFrom];
+						moveName = zMoveFrom.includes(move.name) ? move.name : zMoveFrom[0];
+					}
 				} else if (move.name.slice(0, 2) === 'Z-') {
 					moveName = moveName.slice(2);
 					move = Dex.moves.get(moveName);
