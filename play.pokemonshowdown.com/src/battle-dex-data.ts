@@ -1096,7 +1096,7 @@ class Item implements Effect {
 	readonly megaEvolves: string;
 	readonly zMove: string | true | null;
 	readonly zMoveType: TypeName | '';
-	readonly zMoveFrom: string;
+	readonly zMoveFrom: string | readonly string[];
 	readonly zMoveUser: readonly string[] | null;
 	readonly onPlate: TypeName;
 	readonly onMemory: TypeName;

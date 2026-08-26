@@ -39,13 +39,25 @@ const Z_PROTEAN_BATTLE_ONLY_SPECIES = new Set<ID>([
 	'kitsuneon', 'titaneon', 'byteon', 'drekeon',
 ]);
 
+// These forms are created by battle abilities and are not valid stored team
+// choices. They must remain resolvable to the battle renderer without adding
+// clutter or invalid entries to the team builder.
+const BATTLE_ONLY_VISUAL_SPECIES = new Set<ID>([
+	'auroreon', 'soluneon', 'abysseon',
+]);
+
 function isZProteanBattleOnlySpecies(id: string) {
 	return Z_PROTEAN_BATTLE_ONLY_SPECIES.has(toID(id) as ID);
 }
 
+function isBattleOnlyVisualSpecies(id: string) {
+	const speciesId = toID(id) as ID;
+	return isZProteanBattleOnlySpecies(speciesId) || BATTLE_ONLY_VISUAL_SPECIES.has(speciesId);
+}
+
 function isHiddenTeamBuilderSpecies(id: string, includeSawsbuckBase = false) {
 	const speciesId = toID(id);
-	if (isZProteanBattleOnlySpecies(speciesId)) return true;
+	if (isBattleOnlyVisualSpecies(speciesId)) return true;
 	if (HIDDEN_TEAMBUILDER_SPECIES.has(speciesId)) return true;
 	if (speciesId === 'deerling' || speciesId.startsWith('deerling')) return true;
 	if (speciesId.startsWith('sawsbuck') && (speciesId !== 'sawsbuck' || includeSawsbuckBase)) return true;
@@ -452,7 +464,7 @@ class DexSearch {
 			if (queryAlias === id && query !== id) continue;
 			if (
 				type === 'pokemon' &&
-				(isZProteanBattleOnlySpecies(id) ||
+				(isBattleOnlyVisualSpecies(id) ||
 					(isHiddenTeamBuilderSpecies(id) && id !== query &&
 					!(query === 'furfrou' && id.startsWith('furfrou'))))
 			) continue;
@@ -554,6 +566,7 @@ class DexSearch {
 				let ability = Dex.abilities.get(fId).name;
 				buf.push(['header', `${ability} Pok&eacute;mon`]);
 				for (let id in BattlePokedex) {
+					if (isHiddenTeamBuilderSpecies(id)) continue;
 					if (!BattlePokedex[id].abilities) continue;
 					if (Dex.hasAbilityEffect(this.dex.species.get(id), ability)) {
 						(illegal && id in illegal ? illegalBuf : buf).push(['pokemon', id as ID]);
@@ -1273,9 +1286,15 @@ class BattleAbilitySearch extends BattleTypedSearch<'ability'> {
 			abilitySet.push(['header', "Hidden Ability"]);
 			abilitySet.push(['ability', toID(species.abilities['H'])]);
 		}
-		if (species.abilities['S']) {
-			abilitySet.push(['header', "Special Event Ability"]);
-			abilitySet.push(['ability', toID(species.abilities['S'])]);
+		const eventAbilitySlots = ['S', 'E', 'F'] as const;
+		const eventAbilities = eventAbilitySlots
+			.map(slot => species.abilities[slot])
+			.filter((ability): ability is string => !!ability);
+		if (eventAbilities.length) {
+			abilitySet.push(['header', "Special Event Abilities"]);
+			for (const ability of eventAbilities) {
+				abilitySet.push(['ability', toID(ability)]);
+			}
 		}
 		if (isAAA || format.includes('metronomebattle') || isHackmons) {
 			let abilities: ID[] = [];
@@ -1803,7 +1822,28 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 			}
 		}
 
-		moves.sort();
+		const eeveeStarterMoveOrder = [
+			'punchypummel', 'twirlytwister', 'rockyrampage', 'dustydrift', 'steelystrike',
+			'stabbyswarm', 'ickyinjection', 'spookyspell', 'scalyscorn', 'glitchygraphics',
+			'radiantassault', 'searingvoid', 'glitzyglow', 'baddybad', 'freezyfrost',
+			'sappyseed', 'sizzleslide', 'buzzybuzz', 'bouncybubble', 'veeveevolley', 'sparklyswirl',
+		];
+		const isEeveeStarter = species.id === 'eeveestarter' || species.id === 'eeveestarteralt';
+		if (isEeveeStarter) {
+			const priority = new Map(eeveeStarterMoveOrder.map((id, index) => [id, index]));
+			moves.sort((a, b) => {
+				const aPriority = priority.get(a);
+				const bPriority = priority.get(b);
+				if (aPriority !== undefined || bPriority !== undefined) {
+					if (aPriority === undefined) return 1;
+					if (bPriority === undefined) return -1;
+					if (aPriority !== bPriority) return aPriority - bPriority;
+				}
+				return a.localeCompare(b);
+			});
+		} else {
+			moves.sort();
+		}
 		sketchMoves.sort();
 
 		let usableMoves: SearchRow[] = [];

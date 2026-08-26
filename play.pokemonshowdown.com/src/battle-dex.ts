@@ -6877,9 +6877,13 @@ const CUSTOM_MOVE_UPDATES: {[id: string]: AnyObject} = {
 		name: 'Searing Void',
 		pp: 10,
 		target: 'allAdjacent',
-		type: 'Fire',
+		type: '???',
 		desc: 'Hits all active Pokemon except the user and burns each target.',
 		shortDesc: '40 BP; burns all active Pokemon except the user.',
+	},
+	veeveevolley: {
+		desc: "Power is based on the user's happiness and uses the higher of Attack or Special Attack.",
+		shortDesc: 'Max happiness: 102 power; uses higher Atk or SpA; cannot miss.',
 	},
 	punchypummel: {
 		name: 'Punchy Pummel',
@@ -7688,7 +7692,7 @@ const CUSTOM_LEARNSET_ADDITIONS: {[id: string]: {[id: string]: string[]}} = {
 		quiverdance: ['9M'], firstimpression: ['9M'], ironhead: ['9M'], noretreat: ['9M'],
 		playrough: ['9M'], bulkup: ['9M'], triplekick: ['9M'], defog: ['9M'], airslash: ['9M'],
 		tailwind: ['9M'], swift: ['9M'], aeroblast: ['9M'], hurricane: ['9M'], tidyup: ['9M'],
-		bonerush: ['9M'], shoreup: ['9M'], earthquake: ['9M'], sandtomb: ['9M'], accelrock: ['9M'],
+		bonerush: ['9M'], shoreup: ['9M'], earthquake: ['9M'], sandtomb: ['9M'], accelerock: ['9M'],
 		stoneedge: ['9M'], rockblast: ['9M'], rockslide: ['9M'], poisonfang: ['9M'], poisontail: ['9M'],
 		clearsmog: ['9M'], gastroacid: ['9M'], crosspoison: ['9M'], acidarmor: ['9M'], gunkshot: ['9M'],
 		toxic: ['9M'], ominouswind: ['9M'], lick: ['9M'], shadowsneak: ['9M'], nightshade: ['9M'],
@@ -7711,6 +7715,9 @@ const CUSTOM_LEARNSET_ADDITIONS: {[id: string]: {[id: string]: string[]}} = {
 		taunt: ['9M'],
 		metalclaw: ['9M'],
 		thunderpunch: ['9M'],
+	},
+	misdreavus: {
+		drainingkiss: ['9M'],
 	},
 	mismagius: {
 		hexingslash: ['9M'],
@@ -8524,6 +8531,7 @@ const NATIVE_TEAMBUILDER_SPRITE_OVERRIDES: {[id: string]: {x: number, y: number,
 	garchomp: {x: 6, y: 10, backgroundSize: '78px auto'},
 	garchompf: {x: 6, y: 10, backgroundSize: '78px auto'},
 	inteleon: {x: 8, y: 3, backgroundSize: '80px auto'},
+	pinsir: {x: 12, y: 7, backgroundSize: '72px auto'},
 	weavile: {x: 9, y: 6, backgroundSize: '76px auto'},
 	weavilef: {x: 9, y: 6, backgroundSize: '76px auto'},
 };
@@ -8744,13 +8752,13 @@ const CUSTOM_TEAMBUILDER_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: nu
 	sandslashalt: {w: 76, h: 76},
 	haxorusalt: {w: 78, h: 78},
 	arcaninealt: {w: 78, h: 78},
-	tentacruelalt: {w: 192, h: 192},
-	roseradealt: {w: 192, h: 192},
-	auroreon: {w: 192, h: 192},
-	soluneon: {w: 192, h: 192},
-	abysseon: {w: 192, h: 192},
-	emboaralt: {w: 192, h: 192},
-	emboarmegaalt: {w: 192, h: 192},
+	tentacruelalt: {w: 76, h: 82},
+	roseradealt: {w: 72, h: 72},
+	auroreon: {w: 72, h: 72},
+	soluneon: {w: 72, h: 72},
+	abysseon: {w: 78, h: 78},
+	emboaralt: {w: 78, h: 78},
+	emboarmegaalt: {w: 82, h: 82},
 	butterfreemega: {w: 70, h: 70},
 	dragapultgmax: {w: 74, h: 74},
 	dondozo: {w: 82, h: 82},
@@ -8889,10 +8897,10 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		desc: "This Ability cannot be suppressed. During weather, this Pokemon's attacks deal 1.5x damage. In clear weather, attacks deal 0.5x damage to this Pokemon. Its Psychic-type moves become Dark type if Dark would do more damage, and its Dark-type moves become Psychic type if Psychic would do more damage. It restores 1/4 max HP instead of taking damage from Psychic- or Dark-type moves.",
 		shortDesc: 'Cannot be suppressed; weather attacks 1.5x; clear damage halved; Psychic/Dark choose type.',
 	},
-sinisterblaze: {
-		desc: 'Cannot be suppressed; burns the user on entry, converts burn damage to healing, damages foes equally, has no physical burn penalty, is immune to hail/sandstorm damage, counts as Ice in ice weather/fields, and gains +1 Def/SpD in Cold Eclipse and fire fields.',
-		shortDesc: 'Cannot be suppressed; burn heals user/damages foes; no burn penalty; hail/sand immune; Cold Eclipse +Def/SpD.',
-},
+	sinisterblaze: {
+		desc: 'Cannot be suppressed; burns the user on entry, converts burn damage to healing, damages foes for 1/8 max HP or 1/4 if burned, has no physical burn penalty, is immune to hail/sandstorm damage, counts as Ice in ice weather/fields, and gains +1 Def/SpD in Cold Eclipse and fire fields.',
+		shortDesc: 'Burn heals user; foes take 1/8, or 1/4 if burned; no burn penalty; hail/sand immune.',
+	},
 });
 const CUSTOM_ABILITY_UPDATE_IDS = Object.keys(CUSTOM_ABILITY_UPDATES);
 const CUSTOM_ARROW_MOVE_IDS = [
@@ -8969,7 +8977,7 @@ const CUSTOM_MOVE_UPDATE_IDS = Object.keys(CUSTOM_MOVE_UPDATES);
 const CUSTOM_LEARNSET_REPLACEMENT_IDS = Object.keys(CUSTOM_LEARNSET_REPLACEMENTS);
 Object.assign(CUSTOM_LEARNSET_ADDITIONS, {
 	druddigon: {
-		accelrock: ['9M'], headsmash: ['9M'], flareblitz: ['9M'], dragondance: ['9M'],
+		accelerock: ['9M'], headsmash: ['9M'], flareblitz: ['9M'], dragondance: ['9M'],
 		dragonrush: ['9M'], ragingfury: ['9M'], swordsdance: ['9M'],
 	},
 	lycanroc: {accelerock: ['9M']},
@@ -9271,8 +9279,8 @@ function ensureCustomDataPatches() {
 	if (window.BattleItems && customItemDataTable !== window.BattleItems) {
 		window.BattleItems.eeviumz = {
 			...(window.BattleItems.eeviumz || {}),
-			desc: 'Eevee forms have 1.5x Defense and Special Defense, restore 1/16 max HP each turn, and can use Extreme Evoboost with Last Resort.',
-			shortDesc: 'Eevee forms: Def/SpD 1.5x; heals 1/16 each turn; enables Extreme Evoboost.',
+			desc: 'Eevee forms have 1.5x Defense and Special Defense, restore 1/16 max HP each turn, and can use Extreme Evoboost with Last Resort or Veevee Volley.',
+			shortDesc: 'Eevee forms: Def/SpD 1.5x; heals 1/16; Extreme Evoboost via Last Resort or Veevee Volley.',
 		};
 		window.BattleItems.lightball = {
 			...(window.BattleItems.lightball || {}),
@@ -9968,7 +9976,7 @@ const Dex = new class implements ModdedDex {
 		if (Dex.prefs('nopastgens')) graphicsGen = 6;
 		if (Dex.prefs('bwgfx') && graphicsGen >= 6) graphicsGen = 5;
 		// Prefer selected native BW animations where their silhouettes fit the battle scene better.
-		if (species.id === 'heracross' || species.id === 'hydreigon' || species.id === 'milotic' || species.id === 'miloticalt' || species.id === 'miloticaevian' || species.id === 'gastrodonaevian' || species.id === 'gastrodoneastaevian' || species.id === 'hypnopulse' || species.id === 'pidgeot' || species.id === 'staraptor' ||
+		if (species.id === 'heracross' || species.id === 'hydreigon' || species.id === 'milotic' || species.id === 'miloticalt' || species.id === 'miloticaevian' || species.id === 'gastrodonaevian' || species.id === 'gastrodoneastaevian' || species.id === 'hypnopulse' || species.id === 'pidgeot' || species.id === 'staraptor' || species.id === 'pinsirmega' ||
 			(!isFront && (species.id === 'lucario' || species.id === 'lucariomega'))) graphicsGen = 5;
 		spriteData.gen = Math.max(graphicsGen, Math.min(species.gen, 5));
 		const baseDir = ['', 'gen1', 'gen2', 'gen3', 'gen4', 'gen5', '', '', '', ''][spriteData.gen];
@@ -10358,9 +10366,11 @@ const Dex = new class implements ModdedDex {
 			spriteData.spriteDir = 'sprites/gen5';
 			const customStaticData = CUSTOM_STATIC_BATTLE_SPRITES[id];
 			const customBWData = CUSTOM_BW_SPRITES[id];
+			const customTeamBuilderSize = CUSTOM_TEAMBUILDER_SPRITE_SIZE_OVERRIDES[id];
 			const spriteDimensions = customStaticData ?
 				getCustomSpriteSize(id, customStaticData, true, isShiny) :
-				customBWData ? getCustomSpriteSize(id, customBWData, true, isShiny) : undefined;
+				customBWData ? getCustomSpriteSize(id, customBWData, true, isShiny) :
+				customTeamBuilderSize;
 			if (spriteDimensions) {
 				applyCustomTeambuilderSpriteSizing(spriteData, id, spriteDimensions);
 			} else {
