@@ -2753,6 +2753,13 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 };
 
 const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
+	tentacruelalt: {
+		num: 73,
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
+	},
 	granbullalt: {
 		num: 210,
 		front: {w: 192, h: 192},
@@ -8561,6 +8568,7 @@ const CUSTOM_MEDIUM_SPRITE_MAX_DIMENSION = 170;
 const CUSTOM_BATTLE_SPRITE_Y_OFFSETS: {[id: string]: {front?: number, back?: number}} = {
 	sableye: {front: 0, back: 0},
 	sableyemega: {front: 0, back: 0},
+	tentacruelalt: {front: 10, back: 8},
 };
 const CUSTOM_BATTLE_SPRITE_X_OFFSETS: {[id: string]: {front?: number, back?: number}} = {
 	hatterenegmax: {back: -42},
@@ -8611,6 +8619,7 @@ const CUSTOM_BATTLE_FRONT_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: n
 	parasectparasite: {w: 92, h: 100},
 	heracross: {w: 92, h: 104},
 	staraptor: {w: 96, h: 96},
+	tentacruelalt: {w: 82, h: 82},
 	rotom: {w: 64, h: 64},
 	rotomfan: {w: 68, h: 68},
 	rotomfrost: {w: 68, h: 68},
@@ -8753,7 +8762,7 @@ const CUSTOM_TEAMBUILDER_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: nu
 	sandslashalt: {w: 76, h: 76},
 	haxorusalt: {w: 78, h: 78},
 	arcaninealt: {w: 78, h: 78},
-	tentacruelalt: {w: 76, h: 82},
+	tentacruelalt: {w: 82, h: 82},
 	roseradealt: {w: 72, h: 72},
 	auroreon: {w: 72, h: 72},
 	soluneon: {w: 72, h: 72},
