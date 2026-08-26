@@ -191,7 +191,7 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 			name: 'Milotic-Aevian',
 			baseSpecies: 'Milotic-Aevian',
 			types: ['Poison', 'Fairy'],
-			baseStats: {hp: 95, atk: 115, def: 85, spa: 89, spd: 125, spe: 81},
+			baseStats: {hp: 95, atk: 115, def: 85, spa: 89, spd: 135, spe: 81},
 			abilities: {0: 'Prism Scale', 1: 'Defiant', H: 'Queenly Majesty'},
 			otherFormes: [],
 			formeOrder: [],
@@ -1358,6 +1358,31 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 			isNonstandard: 'Custom',
 		},
 	},
+	alakazamalt: {
+		base: 'alakazam',
+		data: {
+			name: 'Alakazam-Alt',
+			baseSpecies: 'Alakazam',
+			forme: 'Alt',
+			spriteid: 'alakazam-alt',
+			otherFormes: ['Alakazam-Mega-Alt'],
+			formeOrder: ['Alakazam-Alt', 'Alakazam-Mega-Alt'],
+			changesFrom: 'Alakazam',
+			isNonstandard: 'Custom',
+		},
+	},
+	alakazammegaalt: {
+		base: 'alakazammega',
+		data: {
+			name: 'Alakazam-Mega-Alt',
+			baseSpecies: 'Alakazam',
+			forme: 'Mega-Alt',
+			battleOnly: 'Alakazam-Alt',
+			requiredItem: 'Alakazite',
+			changesFrom: 'Alakazam-Alt',
+			isNonstandard: 'Custom',
+		},
+	},
 };
 
 const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
@@ -1375,6 +1400,8 @@ const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
 	toxicroakalt: 'toxicroak-alt',
 	cinccinoalt: 'cinccino-alt',
 	weavilealt: 'weavile-alt',
+	gligaralt: 'gligar-alt',
+	gliscoralt: 'gliscor-alt',
 	sneasleraevian: 'sneasler-aevian',
 	mismagiusaevian: 'mismagius-aevian',
 	volcaronaaevian: 'volcarona-aevian',
@@ -1382,6 +1409,14 @@ const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
 	spiritombalt: 'spiritomb-alt',
 	parasectparasitism: 'parasect-parasitism',
 	parasectparasite: 'parasect-parasite',
+	bronzongrejuv: 'bronzong-rejuv',
+	gastrodonazzy: 'gastrodon-azzy',
+	gastrodonazzy2: 'gastrodon-azzy2',
+	sawsbuckspring: 'sawsbuck-spring',
+	sawsbucksummer: 'sawsbuck-summer',
+	sawsbuckautumn: 'sawsbuck-autumn',
+	sawsbuckwinter: 'sawsbuck-winter',
+	florgesreborn: 'florges-reborn',
 	garchompmega: 'garchomp-mega',
 	flygonmegaz: 'flygon-megaz',
 	garchompmegaz: 'garchomp-megaz',
@@ -1408,6 +1443,8 @@ const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
 	greninjabond: 'greninja',
 	silvally: 'silvally',
 	alakazammega: 'alakazam-mega',
+	alakazamalt: 'alakazam-alt',
+	alakazammegaalt: 'alakazam-mega-alt',
 	gengarmega: 'gengar-mega',
 	gengargmax: 'gengar-gmax',
 	houndoommega: 'houndoom-mega',
@@ -1601,6 +1638,8 @@ const CUSTOM_DEFAULT_BACK_SPRITES: {[id: string]: ID} = {
 	machampgmaxalt: 'machampgmax' as ID,
 	skeledirgealt: 'skeledirge' as ID,
 	tsareenaalt: 'tsareena' as ID,
+	gligaralt: 'gligar' as ID,
+	gliscoralt: 'gliscor' as ID,
 };
 
 const CUSTOM_TEAMBUILDER_SPRITES: {[id: string]: {x: number, y: number, backgroundSize: string}} = {
@@ -1668,6 +1707,16 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 	weavilealt: {
 		front: {w: 104, h: 112},
 		back: {w: 82, h: 112},
+	},
+	gligaralt: {
+		front: {w: 64, h: 64},
+		back: {w: 96, h: 96},
+		shinyFront: {w: 64, h: 64},
+	},
+	gliscoralt: {
+		front: {w: 64, h: 64},
+		back: {w: 96, h: 96},
+		shinyFront: {w: 64, h: 64},
 	},
 	weavilealtf: {
 		front: {w: 104, h: 112},
@@ -3291,6 +3340,18 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 		front: {w: 178, h: 172},
 		back: {w: 152, h: 178},
 	},
+	alakazamalt: {
+		front: {w: 64, h: 64},
+		back: {w: 64, h: 64},
+		shinyFront: {w: 64, h: 64},
+		shinyBack: {w: 64, h: 64},
+	},
+	alakazammegaalt: {
+		front: {w: 64, h: 64},
+		back: {w: 64, h: 64},
+		shinyFront: {w: 64, h: 64},
+		shinyBack: {w: 64, h: 64},
+	},
 	toedscruel: {
 		num: 949,
 		front: {w: 104, h: 142},
@@ -4265,6 +4326,20 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 		front: {w: 114, h: 112},
 		back: {w: 108, h: 104},
 	},
+	bronzongrejuv: {
+		num: 437,
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
+	},
+	florgesreborn: {
+		num: 671,
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
+	},
 	dusknoir: {
 		num: 477,
 		front: {w: 170, h: 148},
@@ -4431,9 +4506,67 @@ Object.assign(CUSTOM_SPECIES, {
 		base: 'eeveestarter',
 		data: {name: 'Drekeon', baseSpecies: 'Eevee-Starter', forme: 'Dragon', spriteid: 'drekeon', types: ['Dragon'], battleOnly: 'Eevee-Starter', isNonstandard: 'Custom'},
 	},
+	gligaralt: {
+		base: 'gligar',
+		data: {
+			name: 'Gligar-Alt',
+			baseSpecies: 'Gligar',
+			forme: 'Alt',
+			spriteid: 'gligar-alt',
+			changesFrom: 'Gligar',
+			isNonstandard: 'Custom',
+		},
+	},
+	gliscoralt: {
+		base: 'gliscor',
+		data: {
+			name: 'Gliscor-Alt',
+			baseSpecies: 'Gliscor',
+			forme: 'Alt',
+			spriteid: 'gliscor-alt',
+			changesFrom: 'Gliscor',
+			isNonstandard: 'Custom',
+		},
+	},
+	bronzongrejuv: {
+		base: 'bronzong',
+		data: {
+			name: 'Bronzong-Rejuv',
+			baseSpecies: 'Bronzong',
+			forme: 'Rejuv',
+			spriteid: 'bronzong-rejuv',
+			changesFrom: 'Bronzong',
+			isNonstandard: 'Custom',
+		},
+	},
+	florgesreborn: {
+		base: 'florges',
+		data: {
+			name: 'Florges-Reborn',
+			baseSpecies: 'Florges',
+			forme: 'Reborn',
+			spriteid: 'florges-reborn',
+			types: ['Fairy'],
+			baseStats: {hp: 74, atk: 65, def: 67, spa: 125, spd: 128, spe: 92},
+			abilities: {0: 'Reborn Flower', 1: 'Sworn Duty', H: 'Symbiosis'},
+			changesFrom: 'Florges',
+			isNonstandard: 'Custom',
+		},
+	},
 });
 
 const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
+	florges: {
+		abilities: {0: 'Reborn Flower', 1: 'Sworn Duty', H: 'Symbiosis'},
+		otherFormes: ['Florges-Reborn'],
+		cosmeticFormes: ['Florges-Blue', 'Florges-Orange', 'Florges-White', 'Florges-Yellow', 'Florges-Reborn'],
+		formeOrder: ['Florges', 'Florges-Yellow', 'Florges-Orange', 'Florges-Blue', 'Florges-White', 'Florges-Reborn'],
+	},
+	florgesreborn: {
+		types: ['Fairy'],
+		baseStats: {hp: 74, atk: 65, def: 67, spa: 125, spd: 128, spe: 92},
+		abilities: {0: 'Reborn Flower', 1: 'Sworn Duty', H: 'Symbiosis'},
+	},
 	falinksmega: {
 		types: ['Fighting', 'Steel'],
 	},
@@ -4453,6 +4586,13 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 	},
 	lucario: {
 		abilities: {0: "Mind's Eye", 1: 'Sworn Duty', H: 'Ironclad'},
+	},
+	bronzong: {
+		baseStats: {spa: 89},
+		abilities: {0: 'Elevate', 1: 'Defragment', H: 'Reflector'},
+		otherFormes: ['Bronzong-Rejuv'],
+		cosmeticFormes: ['Bronzong-Rejuv'],
+		formeOrder: ['Bronzong', 'Bronzong-Rejuv'],
 	},
 	samurott: {
 		types: ['Water', 'Fighting'],
@@ -4484,7 +4624,19 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		abilities: {0: 'Living Legend', 1: 'Vanguard', H: 'Drought'},
 	},
 	alakazam: {
-		baseStats: {hp: 80, atk: 60, def: 60, spa: 135, spd: 95, spe: 120},
+		types: ['Psychic', 'Dark'],
+		baseStats: {hp: 80, atk: 50, def: 50, spa: 135, spd: 95, spe: 120},
+		abilities: {0: 'Insomnia', 1: 'Grandmaster', H: 'Magic Guard'},
+	},
+	alakazamalt: {
+		types: ['Psychic', 'Dark'],
+		baseStats: {hp: 80, atk: 50, def: 50, spa: 135, spd: 95, spe: 120},
+		abilities: {0: 'Insomnia', 1: 'Grandmaster', H: 'Magic Guard'},
+	},
+	alakazammegaalt: {
+		types: ['Psychic'],
+		baseStats: {hp: 80, atk: 48, def: 60, spa: 175, spd: 105, spe: 162},
+		abilities: {0: 'Perfect Foresight'},
 	},
 	alakazammega: {
 		baseStats: {hp: 80, atk: 58, def: 70, spa: 175, spd: 105, spe: 162},
@@ -4662,8 +4814,12 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		abilities: {0: 'Wind Chime'},
 	},
 	gliscor: {
-		baseStats: {hp: 85, atk: 105, def: 135, spa: 40, spd: 90, spe: 95},
-		abilities: {0: 'Hyper Cutter', 1: 'Poison Heal', H: 'Wind Rider'},
+		baseStats: {hp: 105, atk: 105, def: 135, spa: 40, spd: 90, spe: 95},
+		abilities: {0: 'Venom Heal', 1: 'Poison Heal', H: 'Wind Rider'},
+	},
+	gliscoralt: {
+		baseStats: {hp: 105, atk: 105, def: 135, spa: 40, spd: 90, spe: 95},
+		abilities: {0: 'Venom Heal', 1: 'Poison Heal', H: 'Wind Rider'},
 	},
 	hydreigon: {
 		abilities: {0: 'Levitate', 1: 'Dark Aura', H: 'Hydra Tyrant'},
@@ -4895,7 +5051,7 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		name: 'Milotic-Aevian',
 		baseSpecies: 'Milotic-Aevian',
 		types: ['Poison', 'Fairy'],
-		baseStats: {hp: 95, atk: 115, def: 85, spa: 89, spd: 125, spe: 81},
+		baseStats: {hp: 95, atk: 115, def: 85, spa: 89, spd: 135, spe: 81},
 		abilities: {0: 'Prism Scale', 1: 'Defiant', H: 'Queenly Majesty'},
 		otherFormes: [],
 		formeOrder: [],
@@ -5204,9 +5360,12 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		formeOrder: ['Lanturn', 'Lanturn-Alt'],
 	},
 	lanturnalt: {
+		baseSpecies: 'Lanturn',
+		forme: 'Alt',
 		types: ['Water', 'Electric'],
 		baseStats: {hp: 125, atk: 58, def: 88, spa: 116, spd: 106, spe: 67},
 		abilities: {0: 'Abyss Lure', 1: 'Drizzle', H: 'Dazzling'},
+		isNonstandard: 'Custom',
 	},
 	jynx: {
 		types: ['Ice', 'Psychic'],
@@ -5298,7 +5457,14 @@ Object.assign(CUSTOM_SPECIES_UPDATES, {
 		abilities: {0: 'Blazing Mane', 1: 'Soul Fire', H: 'Soul Heart'},
 	},
 	xatu: {baseStats: {hp: 65, atk: 75, def: 90, spa: 105, spd: 90, spe: 95}},
-	gligar: {baseStats: {hp: 85, atk: 85, def: 115, spa: 35, spd: 75, spe: 90}},
+	gligar: {
+		baseStats: {hp: 85, atk: 85, def: 115, spa: 35, spd: 75, spe: 90},
+		abilities: {0: 'Venom Heal', 1: 'Filter', H: 'Immunity'},
+	},
+	gligaralt: {
+		baseStats: {hp: 85, atk: 85, def: 115, spa: 35, spd: 75, spe: 90},
+		abilities: {0: 'Venom Heal', 1: 'Filter', H: 'Immunity'},
+	},
 	luxray: {baseStats: {hp: 85, atk: 125, def: 85, spa: 65, spd: 85, spe: 90}},
 	tentacruel: {
 		baseStats: {hp: 80, atk: 70, def: 85, spa: 100, spd: 135, spe: 100},
@@ -5831,8 +5997,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	blademastery: {
 		name: "Blade Mastery",
-		desc: "This Pokemon has Sharpness, Dual Wield, and Mold Breaker. Below half HP, its slicing moves have their critical-hit ratio raised by 1 stage.",
-		shortDesc: "Sharpness + Dual Wield + Mold Breaker; below half HP, slicing moves gain +1 crit.",
+		desc: "This Pokemon has Sharpness and Super Luck. Below half HP, its slicing moves gain +1 priority.",
+		shortDesc: "Sharpness + Super Luck; below half HP, slicing moves gain +1 priority.",
 	},
 	blazingmane: {
 		name: "Blazing Mane",
@@ -6820,6 +6986,11 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 		desc: "This Pokemon has Strong Jaw and Earth Eater's effects.",
 		shortDesc: 'Strong Jaw + Earth Eater.',
 	},
+	rebornflower: {
+		name: 'Reborn Flower',
+		desc: 'This Pokemon has Invigorate and Flower Veil\'s effects. It permanently becomes Florges-Reborn when it enters battle.',
+		shortDesc: 'Invigorate + Flower Veil; permanently becomes Florges-Reborn on entry.',
+	},
 };
 
 const CUSTOM_MOVE_UPDATES: {[id: string]: AnyObject} = {
@@ -6874,8 +7045,34 @@ const CUSTOM_MOVE_UPDATES: {[id: string]: AnyObject} = {
 			{chance: 30, status: 'par'},
 			{chance: 10, volatileStatus: 'flinch'},
 		],
-		desc: 'A 100-power Flying-type special move with a 30% chance to paralyze and a 10% chance to flinch the target.',
-		shortDesc: '100 BP; 30% paralysis; 10% flinch.',
+		desc: 'A 100-power Flying-type special move with a 30% chance to paralyze and a 10% chance to flinch the target. It is 1.5x in Volcanic Terrain, Mountain, and Snowy Mountain, and 0.5x in Cave.',
+		shortDesc: '100 BP; 30% paralysis; 10% flinch; field-modified.',
+	},
+	reflecttype: {
+		desc: "User becomes the target's types. Reflector instead refreshes its copied types without replacing its original typing.",
+		shortDesc: "Copies the target's types; Reflector refreshes copied types without replacing its typing.",
+	},
+	mirrorbeam: {
+		name: 'Mirror Beam',
+		basePower: 90,
+		accuracy: 100,
+		pp: 10,
+		category: 'Special',
+		type: 'Steel',
+		target: 'normal',
+		desc: "Uses the best damage type from Steel and the user's reflected types; field boosts apply.",
+		shortDesc: '90 BP; best Steel/reflected type; field boosts.',
+	},
+	cauterize: {
+		name: 'Cauterize',
+		basePower: 90,
+		accuracy: 100,
+		pp: 15,
+		category: 'Special',
+		type: 'Fire',
+		target: 'normal',
+		desc: "Deals Fire-type damage to foes. When used on an ally, it deals no damage and restores 50% of that ally's maximum HP.",
+		shortDesc: 'Fire damage; heals an ally for 50% max HP instead.',
 	},
 	searingvoid: {
 		basePower: 40,
@@ -7338,6 +7535,17 @@ const CUSTOM_MOVE_UPDATES: {[id: string]: AnyObject} = {
 };
 
 const CUSTOM_LEARNSET_REPLACEMENTS: {[id: string]: {[id: string]: string[]}} = {
+	bronzong: {
+		flash: ['9L1'], nightshade: ['9L1'], mirrorshot: ['9L1'], magiccoat: ['9L1'],
+		mimic: ['9L1'], signalbeam: ['9L1'], reflecttype: ['9L1'], mefirst: ['9L1'],
+		flashcannon: ['9L1'], healblock: ['9L1'], mirrorcoat: ['9L1'], synchronoise: ['9L1'],
+		afteryou: ['9M'], assurance: ['9M'], aurasphere: ['9M'], darkpulse: ['9M'],
+		dazzlinggleam: ['9M'], eerieimpulse: ['9M'], icebeam: ['9M'], magicroom: ['9M'],
+		magicalleaf: ['9M'], mysticalfire: ['9M'], rocksmash: ['9M'], roleplay: ['9M'],
+		selfdestruct: ['9M'], shockwave: ['9M'], snatch: ['9M'], terrainpulse: ['9M'],
+		thunderwave: ['9M'], thunderbolt: ['9M'], torment: ['9M'], triattack: ['9M'],
+		waterpulse: ['9M'], snowscape: ['9M'], mirrorbeam: ['9M'],
+	},
 	toxtricityaevian: {
 		acid: ['9L1'],
 		ember: ['9L1'],
@@ -7683,6 +7891,14 @@ const CUSTOM_LEARNSET_ADDITIONS: {[id: string]: {[id: string]: string[]}} = {
 	},
 	tsareena: {
 		acrobatics: ['9M'], knockoff: ['9M'], skullbash: ['9M'], moonlight: ['9M'], spikes: ['9M'], taunt: ['9M'], thunderouskick: ['9M'],
+	},
+	florges: {
+		tackle: ['9M'], ember: ['9M'], fairywind: ['9M'], flamewheel: ['9M'], incinerate: ['9M'], mysticalfire: ['9M'],
+		morningsun: ['9M'], cauterize: ['9M'],
+	},
+	florgesreborn: {
+		tackle: ['9M'], ember: ['9M'], fairywind: ['9M'], flamewheel: ['9M'], wish: ['9M'], incinerate: ['9M'],
+		sunnyday: ['9M'], mysticalfire: ['9M'], morningsun: ['9M'], cauterize: ['9M'], revivalblessing: ['9M'],
 	},
 	crawdaunt: {
 		icehammer: ['9M'], powertrip: ['9M'],
@@ -8317,7 +8533,7 @@ function mergeCustomSpeciesData(baseData: AnyObject, existingData: AnyObject | u
 function isCustomVisualForm(data: AnyObject) {
 	const forme = data?.forme;
 	if (typeof forme !== 'string') return false;
-	return ['Alt', 'Aevian', 'East-Aevian', 'Hisui-Alt', 'Pulse', 'Azzy', 'Azzy2', 'Spring', 'Summer', 'Autumn', 'Winter'].includes(forme) ||
+	return ['Alt', 'Aevian', 'East-Aevian', 'Hisui-Alt', 'Pulse', 'Azzy', 'Azzy2', 'Spring', 'Summer', 'Autumn', 'Winter', 'Rejuv', 'Reborn'].includes(forme) ||
 		forme.endsWith('-Alt');
 }
 function isCustomVisualVariantName(name: unknown, speciesTable?: AnyObject) {
@@ -8569,6 +8785,10 @@ const CUSTOM_BATTLE_SPRITE_Y_OFFSETS: {[id: string]: {front?: number, back?: num
 	sableye: {front: 0, back: 0},
 	sableyemega: {front: 0, back: 0},
 	tentacruelalt: {front: 10, back: 8},
+	// These custom canvases have different transparent bottom margins. Keep the
+	// visible artwork on the battle baseline without changing its battle size.
+	alakazamalt: {front: 12, back: 1},
+	alakazammegaalt: {front: 2, back: 1},
 };
 const CUSTOM_BATTLE_SPRITE_X_OFFSETS: {[id: string]: {front?: number, back?: number}} = {
 	hatterenegmax: {back: -42},
@@ -8818,6 +9038,8 @@ const CUSTOM_TEAMBUILDER_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: nu
 	vaporeon: {w: 86, h: 86},
 	weavile: {w: 60, h: 60},
 	weavilef: {w: 60, h: 60},
+	gligaralt: {w: 64, h: 64},
+	gliscoralt: {w: 64, h: 64},
 	inteleon: {w: 76, h: 76},
 	whimsicott: {w: 60, h: 60},
 	zoroark: {w: 74, h: 74},
@@ -8911,6 +9133,11 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		desc: 'Cannot be suppressed; burns the user on entry, converts burn damage to healing, damages foes for 1/8 max HP or 1/4 if burned, has no physical burn penalty, is immune to hail/sandstorm damage, counts as Ice in ice weather/fields, and gains +1 Def/SpD in Cold Eclipse and fire fields.',
 		shortDesc: 'Burn heals user; foes take 1/8, or 1/4 if burned; no burn penalty; hail/sand immune.',
 	},
+	reflector: {
+		name: 'Reflector',
+		desc: "On entry, copies the active foe's types and adds them to this Pokemon's typing. Matching attacks deal half damage unless this Pokemon is immune. Reflect Type refreshes the copied types.",
+		shortDesc: 'Copies foe types; adds them to its typing; matching attacks deal 0.5x unless immune.',
+	},
 });
 const CUSTOM_ABILITY_UPDATE_IDS = Object.keys(CUSTOM_ABILITY_UPDATES);
 const CUSTOM_ARROW_MOVE_IDS = [
@@ -8963,7 +9190,7 @@ const CUSTOM_ABILITY_COMPONENT_OVERRIDES: {[id: string]: readonly ID[]} = {
 	ultrainstinct: ['moldbreaker' as ID, 'innerfocus' as ID],
 	hisuianpath: ['sapsipper' as ID, 'innerfocus' as ID, 'fluffy' as ID],
 	hydratyrant: ['hydrabond' as ID, 'berserk' as ID, 'selfsufficient' as ID],
-	blademastery: ['sharpness' as ID, 'dualwield' as ID, 'moldbreaker' as ID],
+	blademastery: ['sharpness' as ID, 'superluck' as ID],
 	toxicevolution: ['corrosion' as ID, 'dualwield' as ID, 'shielddust' as ID],
 	parasitism: ['dryskin' as ID, 'magicguard' as ID],
 	resuscitation: ['selfrepair' as ID, 'magicguard' as ID],
@@ -8982,10 +9209,12 @@ const CUSTOM_ABILITY_COMPONENT_OVERRIDES: {[id: string]: readonly ID[]} = {
 	triplethreat: ['hydrabond' as ID, 'tangledfeet' as ID, 'sniper' as ID, 'bigpecks' as ID, 'keeneye' as ID],
 	strikerfrenzy: ['striker' as ID, 'vitalspirit' as ID],
 	venomveil: ['liquidooze' as ID, 'corrosion' as ID, 'waterveil' as ID],
+	venomheal: ['hypercutter' as ID, 'poisonheal' as ID, 'poisonpoint' as ID],
 };
 const CUSTOM_MOVE_UPDATE_IDS = Object.keys(CUSTOM_MOVE_UPDATES);
 const CUSTOM_LEARNSET_REPLACEMENT_IDS = Object.keys(CUSTOM_LEARNSET_REPLACEMENTS);
 Object.assign(CUSTOM_LEARNSET_ADDITIONS, {
+	alakazam: {darkpulse: ['9M'], snarl: ['9M']},
 	druddigon: {
 		accelerock: ['9M'], headsmash: ['9M'], flareblitz: ['9M'], dragondance: ['9M'],
 		dragonrush: ['9M'], ragingfury: ['9M'], swordsdance: ['9M'],
@@ -8994,6 +9223,11 @@ Object.assign(CUSTOM_LEARNSET_ADDITIONS, {
 	lycanrocmidday: {accelerock: ['9M']},
 	lycanrocmidnight: {accelerock: ['9M']},
 	lycanrocdusk: {accelerock: ['9M']},
+	gligar: {barbbarrage: ['9M']},
+	gliscor: {
+		barbbarrage: ['9M'], poisonfang: ['9M'], toxicthread: ['9M'], sludgewave: ['9M'],
+		clearsmog: ['9M'], poisonjab: ['9M'], poisontail: ['9M'], venomdrench: ['9M'],
+	},
 });
 const CUSTOM_LEARNSET_ADDITION_IDS = Object.keys(CUSTOM_LEARNSET_ADDITIONS);
 const CUSTOM_LEARNSET_REMOVAL_IDS = Object.keys(CUSTOM_LEARNSET_REMOVALS);
@@ -9115,6 +9349,28 @@ function applyCustomTeambuilderLearnsets(table: AnyObject) {
 		table.learnsets.eeveestarteralt = {
 			...table.learnsets.eeveestarter,
 			...(table.learnsets.eeveestarteralt || {}),
+		};
+	}
+	if (table.learnsets.bronzong) {
+		table.learnsets.bronzongrejuv = {
+			...table.learnsets.bronzong,
+			...(table.learnsets.bronzongrejuv || {}),
+		};
+	}
+	if (table.learnsets.florges) {
+		table.learnsets.florgesreborn = {
+			...table.learnsets.florges,
+			...(table.learnsets.florgesreborn || {}),
+		};
+	}
+	if (table.learnsets.alakazam) {
+		table.learnsets.alakazamalt = {
+			...table.learnsets.alakazam,
+			...(table.learnsets.alakazamalt || {}),
+		};
+		table.learnsets.alakazammegaalt = {
+			...table.learnsets.alakazamalt,
+			...(table.learnsets.alakazammegaalt || {}),
 		};
 	}
 	for (const [target, base] of [['goodrahisui', 'goodra'], ['arcaninehisui', 'arcanine']]) {
