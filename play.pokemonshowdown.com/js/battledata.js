@@ -7272,8 +7272,8 @@ desc:"Ignores the target's positive Evasion and lets Normal- and Fighting-type a
 shortDesc:'Normal/Fighting hit Ghost; ignores Evasion; user resists Ghost.'
 },
 rockwrecker:{
-desc:'If this move fails to KO its target, Stealth Rock is set on the target\'s side. If successful, the user must recharge on the following turn.',
-shortDesc:'If it fails to KO, sets Stealth Rock; user must recharge.'
+desc:'If this move fails to KO its target, it has a 60% chance to paralyze the target. If successful, the user must recharge on the following turn.',
+shortDesc:'If it fails to KO, 60% chance to paralyze; user must recharge.'
 },
 triplearrows:{
 desc:'Has a 50% chance to lower Defense, a 30% chance to flinch, and a raised critical-hit ratio. Each use raises the user\'s side critical-hit ratio by 1.',
