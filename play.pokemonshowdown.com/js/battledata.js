@@ -5021,7 +5021,7 @@ dragonair:{
 abilities:{0:'Shed Skin',1:'Dragonize',H:'Marvel Scale'}
 },
 feraligatr:{
-abilities:{0:'Strong Jaw',1:'Mighty Jaw',H:'Sheer Force'}
+abilities:{0:'Water Veil',1:'Mighty Jaw',H:'Sheer Force'}
 },
 feraligatrmega:{
 abilities:{0:'Draconic Force'}
@@ -7675,7 +7675,7 @@ highjumpkick:['9M'],aquatail:['9M'],wavecrash:['9M'],spiritbreak:['9M'],playroug
 diamondstorm:['9M']
 },
 tsareena:{
-acrobatics:['9M'],knockoff:['9M'],skullbash:['9M'],moonlight:['9M'],spikes:['9M'],taunt:['9M']
+acrobatics:['9M'],knockoff:['9M'],skullbash:['9M'],moonlight:['9M'],spikes:['9M'],taunt:['9M'],thunderouskick:['9M']
 },
 crawdaunt:{
 icehammer:['9M'],powertrip:['9M']
@@ -8279,7 +8279,8 @@ var CUSTOM_ANIMATED_BW_SPRITES=new Set([
 'ribombee','rotom','rotomfan','rotomfrost','rotomheat','rotommow','rotomwash','salamence',
 'scolipede','slowbro','slowking','sneasel','staraptor','steelix','talonflame',
 'torterra','typhlosion','tyrantrum','venusaur','victreebel','vikavolt',
-'whimsicott','zoroark']
+'whimsicott','zoroark','furfrou','furfrouheart','furfroustar','furfroudiamond','furfroudebutante',
+'furfroumatron','furfroudandy','furfroulareine','furfroukabuki','furfroupharaoh']
 );
 var CUSTOM_SPECIES_IDS=Object.keys(CUSTOM_SPECIES);
 var CUSTOM_SPECIES_UPDATE_IDS=Object.keys(CUSTOM_SPECIES_UPDATES);
@@ -9898,7 +9899,7 @@ getSpriteData=function getSpriteData(pokemon,isFront)
 
 
 
-{var _CUSTOM_SPECIES$custo,_window$Config2;var options=arguments.length>2&&arguments[2]!==undefined?arguments[2]:{gen:6};
+{var _CUSTOM_SPECIES$custo,_BattlePokemonSprites,_window$BattlePokemon2,_BattlePokemonSprites2,_window$BattlePokemon3,_window$Config2;var options=arguments.length>2&&arguments[2]!==undefined?arguments[2]:{gen:6};
 var mechanicsGen=options.gen||6;
 var isDynamax=!!options.dynamax;
 if(pokemon instanceof Pokemon){
@@ -10005,6 +10006,9 @@ animationData=BattlePokemonSpritesBW[speciesid];
 }
 if(window.BattlePokemonSprites)miscData=BattlePokemonSprites[speciesid];
 if(!miscData&&window.BattlePokemonSpritesBW)miscData=BattlePokemonSpritesBW[speciesid];
+var baseSpriteId=getCustomBaseSpriteId(speciesid);
+if(!animationData&&baseSpriteId)animationData=((_BattlePokemonSprites=BattlePokemonSprites)==null?void 0:_BattlePokemonSprites[baseSpriteId])||((_window$BattlePokemon2=window.BattlePokemonSpritesBW)==null?void 0:_window$BattlePokemon2[baseSpriteId]);
+if(!miscData&&baseSpriteId)miscData=((_BattlePokemonSprites2=BattlePokemonSprites)==null?void 0:_BattlePokemonSprites2[baseSpriteId])||((_window$BattlePokemon3=window.BattlePokemonSpritesBW)==null?void 0:_window$BattlePokemon3[baseSpriteId]);
 if(!animationData)animationData={};
 if(!miscData)miscData={};
 
@@ -10254,9 +10258,9 @@ spriteData.h=Math.max(1,Math.round(spriteData.h*_scale4));
 return spriteData;
 };_proto2.
 
-getPokemonIconNum=function getPokemonIconNum(id,isFemale,facingLeft){var _window$BattlePokemon2,_window$BattlePokedex5,_window$BattlePokemon3;
+getPokemonIconNum=function getPokemonIconNum(id,isFemale,facingLeft){var _window$BattlePokemon4,_window$BattlePokedex5,_window$BattlePokemon5;
 var num=0;
-if((_window$BattlePokemon2=window.BattlePokemonSprites)!=null&&(_window$BattlePokemon2=_window$BattlePokemon2[id])!=null&&_window$BattlePokemon2.num){
+if((_window$BattlePokemon4=window.BattlePokemonSprites)!=null&&(_window$BattlePokemon4=_window$BattlePokemon4[id])!=null&&_window$BattlePokemon4.num){
 num=BattlePokemonSprites[id].num;
 }else if((_window$BattlePokedex5=window.BattlePokedex)!=null&&(_window$BattlePokedex5=_window$BattlePokedex5[id])!=null&&_window$BattlePokedex5.num){
 num=BattlePokedex[id].num;
@@ -10264,7 +10268,7 @@ num=BattlePokedex[id].num;
 if(num<0)num=0;
 if(num>1025)num=0;
 
-if((_window$BattlePokemon3=window.BattlePokemonIconIndexes)!=null&&_window$BattlePokemon3[id]){
+if((_window$BattlePokemon5=window.BattlePokemonIconIndexes)!=null&&_window$BattlePokemon5[id]){
 num=BattlePokemonIconIndexes[id];
 }
 

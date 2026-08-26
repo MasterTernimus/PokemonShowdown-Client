@@ -5021,7 +5021,7 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		abilities: {0: 'Shed Skin', 1: 'Dragonize', H: 'Marvel Scale'},
 	},
 	feraligatr: {
-		abilities: {0: 'Strong Jaw', 1: 'Mighty Jaw', H: 'Sheer Force'},
+		abilities: {0: 'Water Veil', 1: 'Mighty Jaw', H: 'Sheer Force'},
 	},
 	feraligatrmega: {
 		abilities: {0: 'Draconic Force'},
@@ -7675,7 +7675,7 @@ const CUSTOM_LEARNSET_ADDITIONS: {[id: string]: {[id: string]: string[]}} = {
 		diamondstorm: ['9M'],
 	},
 	tsareena: {
-		acrobatics: ['9M'], knockoff: ['9M'], skullbash: ['9M'], moonlight: ['9M'], spikes: ['9M'], taunt: ['9M'],
+		acrobatics: ['9M'], knockoff: ['9M'], skullbash: ['9M'], moonlight: ['9M'], spikes: ['9M'], taunt: ['9M'], thunderouskick: ['9M'],
 	},
 	crawdaunt: {
 		icehammer: ['9M'], powertrip: ['9M'],
@@ -8279,7 +8279,8 @@ const CUSTOM_ANIMATED_BW_SPRITES = new Set([
 	'ribombee', 'rotom', 'rotomfan', 'rotomfrost', 'rotomheat', 'rotommow', 'rotomwash', 'salamence',
 	'scolipede', 'slowbro', 'slowking', 'sneasel', 'staraptor', 'steelix', 'talonflame',
 	'torterra', 'typhlosion', 'tyrantrum', 'venusaur', 'victreebel', 'vikavolt',
-	'whimsicott', 'zoroark',
+	'whimsicott', 'zoroark', 'furfrou', 'furfrouheart', 'furfroustar', 'furfroudiamond', 'furfroudebutante',
+	'furfroumatron', 'furfroudandy', 'furfroulareine', 'furfroukabuki', 'furfroupharaoh',
 ]);
 const CUSTOM_SPECIES_IDS = Object.keys(CUSTOM_SPECIES);
 const CUSTOM_SPECIES_UPDATE_IDS = Object.keys(CUSTOM_SPECIES_UPDATES);
@@ -10005,6 +10006,9 @@ const Dex = new class implements ModdedDex {
 		}
 		if (window.BattlePokemonSprites) miscData = BattlePokemonSprites[speciesid];
 		if (!miscData && window.BattlePokemonSpritesBW) miscData = BattlePokemonSpritesBW[speciesid];
+		const baseSpriteId = getCustomBaseSpriteId(speciesid);
+		if (!animationData && baseSpriteId) animationData = BattlePokemonSprites?.[baseSpriteId] || window.BattlePokemonSpritesBW?.[baseSpriteId];
+		if (!miscData && baseSpriteId) miscData = BattlePokemonSprites?.[baseSpriteId] || window.BattlePokemonSpritesBW?.[baseSpriteId];
 		if (!animationData) animationData = {};
 		if (!miscData) miscData = {};
 
