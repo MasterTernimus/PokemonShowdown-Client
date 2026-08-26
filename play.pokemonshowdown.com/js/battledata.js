@@ -191,7 +191,7 @@ data:{
 name:'Milotic-Aevian',
 baseSpecies:'Milotic-Aevian',
 types:['Poison','Fairy'],
-baseStats:{hp:95,atk:115,def:85,spa:89,spd:125,spe:81},
+baseStats:{hp:95,atk:115,def:85,spa:89,spd:135,spe:81},
 abilities:{0:'Prism Scale',1:'Defiant',H:'Queenly Majesty'},
 otherFormes:[],
 formeOrder:[],
@@ -1357,6 +1357,31 @@ changesFrom:'Charizard-Alt',
 requiredItem:'Charizardite X',
 isNonstandard:'Custom'
 }
+},
+alakazamalt:{
+base:'alakazam',
+data:{
+name:'Alakazam-Alt',
+baseSpecies:'Alakazam',
+forme:'Alt',
+spriteid:'alakazam-alt',
+otherFormes:['Alakazam-Mega-Alt'],
+formeOrder:['Alakazam-Alt','Alakazam-Mega-Alt'],
+changesFrom:'Alakazam',
+isNonstandard:'Custom'
+}
+},
+alakazammegaalt:{
+base:'alakazammega',
+data:{
+name:'Alakazam-Mega-Alt',
+baseSpecies:'Alakazam',
+forme:'Mega-Alt',
+battleOnly:'Alakazam-Alt',
+requiredItem:'Alakazite',
+changesFrom:'Alakazam-Alt',
+isNonstandard:'Custom'
+}
 }
 };
 
@@ -1375,6 +1400,8 @@ mightyenaalt:'mightyena-alt',
 toxicroakalt:'toxicroak-alt',
 cinccinoalt:'cinccino-alt',
 weavilealt:'weavile-alt',
+gligaralt:'gligar-alt',
+gliscoralt:'gliscor-alt',
 sneasleraevian:'sneasler-aevian',
 mismagiusaevian:'mismagius-aevian',
 volcaronaaevian:'volcarona-aevian',
@@ -1382,6 +1409,14 @@ dusknoiralt:'dusknoir-alt',
 spiritombalt:'spiritomb-alt',
 parasectparasitism:'parasect-parasitism',
 parasectparasite:'parasect-parasite',
+bronzongrejuv:'bronzong-rejuv',
+gastrodonazzy:'gastrodon-azzy',
+gastrodonazzy2:'gastrodon-azzy2',
+sawsbuckspring:'sawsbuck-spring',
+sawsbucksummer:'sawsbuck-summer',
+sawsbuckautumn:'sawsbuck-autumn',
+sawsbuckwinter:'sawsbuck-winter',
+florgesreborn:'florges-reborn',
 garchompmega:'garchomp-mega',
 flygonmegaz:'flygon-megaz',
 garchompmegaz:'garchomp-megaz',
@@ -1408,6 +1443,8 @@ greninjaash:'greninja-ash',
 greninjabond:'greninja',
 silvally:'silvally',
 alakazammega:'alakazam-mega',
+alakazamalt:'alakazam-alt',
+alakazammegaalt:'alakazam-mega-alt',
 gengarmega:'gengar-mega',
 gengargmax:'gengar-gmax',
 houndoommega:'houndoom-mega',
@@ -1600,7 +1637,9 @@ toxtricitylowkeygmaxalt:'toxtricitylowkeygmax',
 machampalt:'machamp',
 machampgmaxalt:'machampgmax',
 skeledirgealt:'skeledirge',
-tsareenaalt:'tsareena'
+tsareenaalt:'tsareena',
+gligaralt:'gligar',
+gliscoralt:'gliscor'
 };
 
 var CUSTOM_TEAMBUILDER_SPRITES={
@@ -1668,6 +1707,16 @@ var CUSTOM_STATIC_BATTLE_SPRITES=
 weavilealt:{
 front:{w:104,h:112},
 back:{w:82,h:112}
+},
+gligaralt:{
+front:{w:64,h:64},
+back:{w:96,h:96},
+shinyFront:{w:64,h:64}
+},
+gliscoralt:{
+front:{w:64,h:64},
+back:{w:96,h:96},
+shinyFront:{w:64,h:64}
 },
 weavilealtf:{
 front:{w:104,h:112},
@@ -3291,6 +3340,18 @@ num:65,
 front:{w:178,h:172},
 back:{w:152,h:178}
 },
+alakazamalt:{
+front:{w:64,h:64},
+back:{w:64,h:64},
+shinyFront:{w:64,h:64},
+shinyBack:{w:64,h:64}
+},
+alakazammegaalt:{
+front:{w:64,h:64},
+back:{w:64,h:64},
+shinyFront:{w:64,h:64},
+shinyBack:{w:64,h:64}
+},
 toedscruel:{
 num:949,
 front:{w:104,h:142},
@@ -4265,6 +4326,20 @@ num:442,
 front:{w:114,h:112},
 back:{w:108,h:104}
 },
+bronzongrejuv:{
+num:437,
+front:{w:192,h:192},
+back:{w:192,h:192},
+shinyFront:{w:192,h:192},
+shinyBack:{w:192,h:192}
+},
+florgesreborn:{
+num:671,
+front:{w:192,h:192},
+back:{w:192,h:192},
+shinyFront:{w:192,h:192},
+shinyBack:{w:192,h:192}
+},
 dusknoir:{
 num:477,
 front:{w:170,h:148},
@@ -4430,10 +4505,68 @@ data:{name:'Byteon',baseSpecies:'Eevee-Starter',forme:'Qmarks',spriteid:'byteon'
 drekeon:{
 base:'eeveestarter',
 data:{name:'Drekeon',baseSpecies:'Eevee-Starter',forme:'Dragon',spriteid:'drekeon',types:['Dragon'],battleOnly:'Eevee-Starter',isNonstandard:'Custom'}
+},
+gligaralt:{
+base:'gligar',
+data:{
+name:'Gligar-Alt',
+baseSpecies:'Gligar',
+forme:'Alt',
+spriteid:'gligar-alt',
+changesFrom:'Gligar',
+isNonstandard:'Custom'
+}
+},
+gliscoralt:{
+base:'gliscor',
+data:{
+name:'Gliscor-Alt',
+baseSpecies:'Gliscor',
+forme:'Alt',
+spriteid:'gliscor-alt',
+changesFrom:'Gliscor',
+isNonstandard:'Custom'
+}
+},
+bronzongrejuv:{
+base:'bronzong',
+data:{
+name:'Bronzong-Rejuv',
+baseSpecies:'Bronzong',
+forme:'Rejuv',
+spriteid:'bronzong-rejuv',
+changesFrom:'Bronzong',
+isNonstandard:'Custom'
+}
+},
+florgesreborn:{
+base:'florges',
+data:{
+name:'Florges-Reborn',
+baseSpecies:'Florges',
+forme:'Reborn',
+spriteid:'florges-reborn',
+types:['Fairy'],
+baseStats:{hp:74,atk:65,def:67,spa:125,spd:128,spe:92},
+abilities:{0:'Reborn Flower',1:'Sworn Duty',H:'Symbiosis'},
+changesFrom:'Florges',
+isNonstandard:'Custom'
+}
 }
 });
 
 var CUSTOM_SPECIES_UPDATES={
+florges:{
+abilities:{0:'Reborn Flower',1:'Sworn Duty',H:'Symbiosis'},
+otherFormes:['Florges-Reborn'],
+cosmeticFormes:['Florges-Blue','Florges-Orange','Florges-White','Florges-Yellow','Florges-Reborn'],
+formeOrder:['Florges','Florges-Yellow','Florges-Orange','Florges-Blue','Florges-White','Florges-Reborn']
+},
+florgesreborn:{
+types:['Fairy'],
+baseStats:{hp:74,atk:65,def:67,spa:125,spd:128,spe:92},
+abilities:{0:'Reborn Flower',1:'Sworn Duty',H:'Symbiosis'}
+},
 falinksmega:{
 types:['Fighting','Steel']
 },
@@ -4453,6 +4586,13 @@ abilities:{0:'Levitate',1:'Temporal Shift',H:'Shadow Tag'}
 },
 lucario:{
 abilities:{0:"Mind's Eye",1:'Sworn Duty',H:'Ironclad'}
+},
+bronzong:{
+baseStats:{spa:89},
+abilities:{0:'Elevate',1:'Defragment',H:'Reflector'},
+otherFormes:['Bronzong-Rejuv'],
+cosmeticFormes:['Bronzong-Rejuv'],
+formeOrder:['Bronzong','Bronzong-Rejuv']
 },
 samurott:{
 types:['Water','Fighting'],
@@ -4484,7 +4624,19 @@ baseStats:{hp:90,atk:120,def:90,spa:110,spd:90,spe:100},
 abilities:{0:'Living Legend',1:'Vanguard',H:'Drought'}
 },
 alakazam:{
-baseStats:{hp:80,atk:60,def:60,spa:135,spd:95,spe:120}
+types:['Psychic','Dark'],
+baseStats:{hp:80,atk:50,def:50,spa:135,spd:95,spe:120},
+abilities:{0:'Insomnia',1:'Grandmaster',H:'Magic Guard'}
+},
+alakazamalt:{
+types:['Psychic','Dark'],
+baseStats:{hp:80,atk:50,def:50,spa:135,spd:95,spe:120},
+abilities:{0:'Insomnia',1:'Grandmaster',H:'Magic Guard'}
+},
+alakazammegaalt:{
+types:['Psychic'],
+baseStats:{hp:80,atk:48,def:60,spa:175,spd:105,spe:162},
+abilities:{0:'Perfect Foresight'}
 },
 alakazammega:{
 baseStats:{hp:80,atk:58,def:70,spa:175,spd:105,spe:162}
@@ -4662,8 +4814,12 @@ baseStats:{hp:75,atk:50,def:110,spa:135,spd:120,spe:65},
 abilities:{0:'Wind Chime'}
 },
 gliscor:{
-baseStats:{hp:85,atk:105,def:135,spa:40,spd:90,spe:95},
-abilities:{0:'Hyper Cutter',1:'Poison Heal',H:'Wind Rider'}
+baseStats:{hp:105,atk:105,def:135,spa:40,spd:90,spe:95},
+abilities:{0:'Venom Heal',1:'Poison Heal',H:'Wind Rider'}
+},
+gliscoralt:{
+baseStats:{hp:105,atk:105,def:135,spa:40,spd:90,spe:95},
+abilities:{0:'Venom Heal',1:'Poison Heal',H:'Wind Rider'}
 },
 hydreigon:{
 abilities:{0:'Levitate',1:'Dark Aura',H:'Hydra Tyrant'}
@@ -4895,7 +5051,7 @@ miloticaevian:{
 name:'Milotic-Aevian',
 baseSpecies:'Milotic-Aevian',
 types:['Poison','Fairy'],
-baseStats:{hp:95,atk:115,def:85,spa:89,spd:125,spe:81},
+baseStats:{hp:95,atk:115,def:85,spa:89,spd:135,spe:81},
 abilities:{0:'Prism Scale',1:'Defiant',H:'Queenly Majesty'},
 otherFormes:[],
 formeOrder:[],
@@ -5204,9 +5360,12 @@ cosmeticFormes:['Lanturn-Alt'],
 formeOrder:['Lanturn','Lanturn-Alt']
 },
 lanturnalt:{
+baseSpecies:'Lanturn',
+forme:'Alt',
 types:['Water','Electric'],
 baseStats:{hp:125,atk:58,def:88,spa:116,spd:106,spe:67},
-abilities:{0:'Abyss Lure',1:'Drizzle',H:'Dazzling'}
+abilities:{0:'Abyss Lure',1:'Drizzle',H:'Dazzling'},
+isNonstandard:'Custom'
 },
 jynx:{
 types:['Ice','Psychic'],
@@ -5298,7 +5457,14 @@ baseStats:{hp:83,atk:105,def:80,spa:137,spd:65,spe:95},
 abilities:{0:'Blazing Mane',1:'Soul Fire',H:'Soul Heart'}
 },
 xatu:{baseStats:{hp:65,atk:75,def:90,spa:105,spd:90,spe:95}},
-gligar:{baseStats:{hp:85,atk:85,def:115,spa:35,spd:75,spe:90}},
+gligar:{
+baseStats:{hp:85,atk:85,def:115,spa:35,spd:75,spe:90},
+abilities:{0:'Venom Heal',1:'Filter',H:'Immunity'}
+},
+gligaralt:{
+baseStats:{hp:85,atk:85,def:115,spa:35,spd:75,spe:90},
+abilities:{0:'Venom Heal',1:'Filter',H:'Immunity'}
+},
 luxray:{baseStats:{hp:85,atk:125,def:85,spa:65,spd:85,spe:90}},
 tentacruel:{
 baseStats:{hp:80,atk:70,def:85,spa:100,spd:135,spe:100},
@@ -5831,8 +5997,8 @@ shortDesc:"Sets Bewitched Woods for 5 turns. Magic Bounce + Queenly Majesty."
 },
 blademastery:{
 name:"Blade Mastery",
-desc:"This Pokemon has Sharpness, Dual Wield, and Mold Breaker. Below half HP, its slicing moves have their critical-hit ratio raised by 1 stage.",
-shortDesc:"Sharpness + Dual Wield + Mold Breaker; below half HP, slicing moves gain +1 crit."
+desc:"This Pokemon has Sharpness and Super Luck. Below half HP, its slicing moves gain +1 priority.",
+shortDesc:"Sharpness + Super Luck; below half HP, slicing moves gain +1 priority."
 },
 blazingmane:{
 name:"Blazing Mane",
@@ -6819,6 +6985,11 @@ ruinjaw:{
 name:'Ruin Jaw',
 desc:"This Pokemon has Strong Jaw and Earth Eater's effects.",
 shortDesc:'Strong Jaw + Earth Eater.'
+},
+rebornflower:{
+name:'Reborn Flower',
+desc:'This Pokemon has Invigorate and Flower Veil\'s effects. It permanently becomes Florges-Reborn when it enters battle.',
+shortDesc:'Invigorate + Flower Veil; permanently becomes Florges-Reborn on entry.'
 }
 };
 
@@ -6874,8 +7045,34 @@ secondaries:[
 {chance:30,status:'par'},
 {chance:10,volatileStatus:'flinch'}],
 
-desc:'A 100-power Flying-type special move with a 30% chance to paralyze and a 10% chance to flinch the target.',
-shortDesc:'100 BP; 30% paralysis; 10% flinch.'
+desc:'A 100-power Flying-type special move with a 30% chance to paralyze and a 10% chance to flinch the target. It is 1.5x in Volcanic Terrain, Mountain, and Snowy Mountain, and 0.5x in Cave.',
+shortDesc:'100 BP; 30% paralysis; 10% flinch; field-modified.'
+},
+reflecttype:{
+desc:"User becomes the target's types. Reflector instead refreshes its copied types without replacing its original typing.",
+shortDesc:"Copies the target's types; Reflector refreshes copied types without replacing its typing."
+},
+mirrorbeam:{
+name:'Mirror Beam',
+basePower:90,
+accuracy:100,
+pp:10,
+category:'Special',
+type:'Steel',
+target:'normal',
+desc:"Uses the best damage type from Steel and the user's reflected types; field boosts apply.",
+shortDesc:'90 BP; best Steel/reflected type; field boosts.'
+},
+cauterize:{
+name:'Cauterize',
+basePower:90,
+accuracy:100,
+pp:15,
+category:'Special',
+type:'Fire',
+target:'normal',
+desc:"Deals Fire-type damage to foes. When used on an ally, it deals no damage and restores 50% of that ally's maximum HP.",
+shortDesc:'Fire damage; heals an ally for 50% max HP instead.'
 },
 searingvoid:{
 basePower:40,
@@ -7338,6 +7535,17 @@ shortDesc:'100 BP; uses higher offense; foes take half-hit splash damage.'
 };
 
 var CUSTOM_LEARNSET_REPLACEMENTS={
+bronzong:{
+flash:['9L1'],nightshade:['9L1'],mirrorshot:['9L1'],magiccoat:['9L1'],
+mimic:['9L1'],signalbeam:['9L1'],reflecttype:['9L1'],mefirst:['9L1'],
+flashcannon:['9L1'],healblock:['9L1'],mirrorcoat:['9L1'],synchronoise:['9L1'],
+afteryou:['9M'],assurance:['9M'],aurasphere:['9M'],darkpulse:['9M'],
+dazzlinggleam:['9M'],eerieimpulse:['9M'],icebeam:['9M'],magicroom:['9M'],
+magicalleaf:['9M'],mysticalfire:['9M'],rocksmash:['9M'],roleplay:['9M'],
+selfdestruct:['9M'],shockwave:['9M'],snatch:['9M'],terrainpulse:['9M'],
+thunderwave:['9M'],thunderbolt:['9M'],torment:['9M'],triattack:['9M'],
+waterpulse:['9M'],snowscape:['9M'],mirrorbeam:['9M']
+},
 toxtricityaevian:{
 acid:['9L1'],
 ember:['9L1'],
@@ -7683,6 +7891,14 @@ diamondstorm:['9M']
 },
 tsareena:{
 acrobatics:['9M'],knockoff:['9M'],skullbash:['9M'],moonlight:['9M'],spikes:['9M'],taunt:['9M'],thunderouskick:['9M']
+},
+florges:{
+tackle:['9M'],ember:['9M'],fairywind:['9M'],flamewheel:['9M'],incinerate:['9M'],mysticalfire:['9M'],
+morningsun:['9M'],cauterize:['9M']
+},
+florgesreborn:{
+tackle:['9M'],ember:['9M'],fairywind:['9M'],flamewheel:['9M'],wish:['9M'],incinerate:['9M'],
+sunnyday:['9M'],mysticalfire:['9M'],morningsun:['9M'],cauterize:['9M'],revivalblessing:['9M']
 },
 crawdaunt:{
 icehammer:['9M'],powertrip:['9M']
@@ -8317,7 +8533,7 @@ return merged;
 function isCustomVisualForm(data){
 var forme=data==null?void 0:data.forme;
 if(typeof forme!=='string')return false;
-return['Alt','Aevian','East-Aevian','Hisui-Alt','Pulse','Azzy','Azzy2','Spring','Summer','Autumn','Winter'].includes(forme)||
+return['Alt','Aevian','East-Aevian','Hisui-Alt','Pulse','Azzy','Azzy2','Spring','Summer','Autumn','Winter','Rejuv','Reborn'].includes(forme)||
 forme.endsWith('-Alt');
 }
 function isCustomVisualVariantName(name,speciesTable){var _window$BattlePokedex,_CUSTOM_SPECIES$id;
@@ -8568,7 +8784,11 @@ var CUSTOM_MEDIUM_SPRITE_MAX_DIMENSION=170;
 var CUSTOM_BATTLE_SPRITE_Y_OFFSETS={
 sableye:{front:0,back:0},
 sableyemega:{front:0,back:0},
-tentacruelalt:{front:10,back:8}
+tentacruelalt:{front:10,back:8},
+
+
+alakazamalt:{front:12,back:1},
+alakazammegaalt:{front:2,back:1}
 };
 var CUSTOM_BATTLE_SPRITE_X_OFFSETS={
 hatterenegmax:{back:-42}
@@ -8818,6 +9038,8 @@ umbreon:{w:86,h:86},
 vaporeon:{w:86,h:86},
 weavile:{w:60,h:60},
 weavilef:{w:60,h:60},
+gligaralt:{w:64,h:64},
+gliscoralt:{w:64,h:64},
 inteleon:{w:76,h:76},
 whimsicott:{w:60,h:60},
 zoroark:{w:74,h:74},
@@ -8910,6 +9132,11 @@ shortDesc:'Cannot be suppressed; weather attacks 1.5x; clear damage halved; Psyc
 sinisterblaze:{
 desc:'Cannot be suppressed; burns the user on entry, converts burn damage to healing, damages foes for 1/8 max HP or 1/4 if burned, has no physical burn penalty, is immune to hail/sandstorm damage, counts as Ice in ice weather/fields, and gains +1 Def/SpD in Cold Eclipse and fire fields.',
 shortDesc:'Burn heals user; foes take 1/8, or 1/4 if burned; no burn penalty; hail/sand immune.'
+},
+reflector:{
+name:'Reflector',
+desc:"On entry, copies the active foe's types and adds them to this Pokemon's typing. Matching attacks deal half damage unless this Pokemon is immune. Reflect Type refreshes the copied types.",
+shortDesc:'Copies foe types; adds them to its typing; matching attacks deal 0.5x unless immune.'
 }
 });
 var CUSTOM_ABILITY_UPDATE_IDS=Object.keys(CUSTOM_ABILITY_UPDATES);
@@ -8963,7 +9190,7 @@ spinfiend:['technician','vitalspirit'],
 ultrainstinct:['moldbreaker','innerfocus'],
 hisuianpath:['sapsipper','innerfocus','fluffy'],
 hydratyrant:['hydrabond','berserk','selfsufficient'],
-blademastery:['sharpness','dualwield','moldbreaker'],
+blademastery:['sharpness','superluck'],
 toxicevolution:['corrosion','dualwield','shielddust'],
 parasitism:['dryskin','magicguard'],
 resuscitation:['selfrepair','magicguard'],
@@ -8981,11 +9208,13 @@ unstableevo:[
 
 triplethreat:['hydrabond','tangledfeet','sniper','bigpecks','keeneye'],
 strikerfrenzy:['striker','vitalspirit'],
-venomveil:['liquidooze','corrosion','waterveil']
+venomveil:['liquidooze','corrosion','waterveil'],
+venomheal:['hypercutter','poisonheal','poisonpoint']
 };
 var CUSTOM_MOVE_UPDATE_IDS=Object.keys(CUSTOM_MOVE_UPDATES);
 var CUSTOM_LEARNSET_REPLACEMENT_IDS=Object.keys(CUSTOM_LEARNSET_REPLACEMENTS);
 Object.assign(CUSTOM_LEARNSET_ADDITIONS,{
+alakazam:{darkpulse:['9M'],snarl:['9M']},
 druddigon:{
 accelerock:['9M'],headsmash:['9M'],flareblitz:['9M'],dragondance:['9M'],
 dragonrush:['9M'],ragingfury:['9M'],swordsdance:['9M']
@@ -8993,7 +9222,12 @@ dragonrush:['9M'],ragingfury:['9M'],swordsdance:['9M']
 lycanroc:{accelerock:['9M']},
 lycanrocmidday:{accelerock:['9M']},
 lycanrocmidnight:{accelerock:['9M']},
-lycanrocdusk:{accelerock:['9M']}
+lycanrocdusk:{accelerock:['9M']},
+gligar:{barbbarrage:['9M']},
+gliscor:{
+barbbarrage:['9M'],poisonfang:['9M'],toxicthread:['9M'],sludgewave:['9M'],
+clearsmog:['9M'],poisonjab:['9M'],poisontail:['9M'],venomdrench:['9M']
+}
 });
 var CUSTOM_LEARNSET_ADDITION_IDS=Object.keys(CUSTOM_LEARNSET_ADDITIONS);
 var CUSTOM_LEARNSET_REMOVAL_IDS=Object.keys(CUSTOM_LEARNSET_REMOVALS);
@@ -9115,6 +9349,28 @@ if(table.learnsets.eeveestarter){
 table.learnsets.eeveestarteralt=Object.assign({},
 table.learnsets.eeveestarter,
 table.learnsets.eeveestarteralt||{});
+
+}
+if(table.learnsets.bronzong){
+table.learnsets.bronzongrejuv=Object.assign({},
+table.learnsets.bronzong,
+table.learnsets.bronzongrejuv||{});
+
+}
+if(table.learnsets.florges){
+table.learnsets.florgesreborn=Object.assign({},
+table.learnsets.florges,
+table.learnsets.florgesreborn||{});
+
+}
+if(table.learnsets.alakazam){
+table.learnsets.alakazamalt=Object.assign({},
+table.learnsets.alakazam,
+table.learnsets.alakazamalt||{});
+
+table.learnsets.alakazammegaalt=Object.assign({},
+table.learnsets.alakazamalt,
+table.learnsets.alakazammegaalt||{});
 
 }for(var _i42=0,_ref13=
 [['goodrahisui','goodra'],['arcaninehisui','arcanine']];_i42<_ref13.length;_i42++){var _ref11=_ref13[_i42];var target=_ref11[0];var base=_ref11[1];

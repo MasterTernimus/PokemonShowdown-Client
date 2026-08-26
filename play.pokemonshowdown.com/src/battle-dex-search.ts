@@ -39,6 +39,30 @@ const Z_PROTEAN_BATTLE_ONLY_SPECIES = new Set<ID>([
 	'kitsuneon', 'titaneon', 'byteon', 'drekeon',
 ]);
 
+// Sinister Blaze Eevee is an event-style profile with an explicit pool. Keep
+// this separate from Eevee-Starter's normal inherited learnset so the picker
+// cannot leak ordinary Eevee moves into this profile.
+const SINISTER_BLAZE_EEVEE_MOVES: readonly ID[] = [
+	'sing', 'searingvoid', 'tackle', 'helpinghand', 'tailwhip', 'sandattack', 'batonpass',
+	'strengthsap', 'torment', 'pursuit', 'moonlight', 'poisonfang', 'lovelykiss', 'punishment',
+	'willowisp', 'spiritbreak', 'bittermalice', 'infernalparade', 'destinybond', 'dreameater',
+	'memento', 'darkpulse', 'eeriespell', 'perishsong', 'blueflare', 'doomdesire',
+	'alluringvoice', 'attract', 'aurasphere', 'bodyslam', 'burningjealousy', 'calmmind', 'celebrate',
+	'charm', 'confuseray', 'curse', 'dig', 'echoedvoice', 'faketears', 'feintattack', 'firefang',
+	'firepledge', 'firespin', 'flail', 'flamethrower', 'flash', 'focusenergy', 'foulplay', 'haze',
+	'headbutt', 'healbell', 'healblock', 'hiddenpower', 'hex', 'hypervoice', 'icefang', 'icywind',
+	'irontail', 'laserfocus', 'leechlife', 'lightscreen', 'mimic', 'mudslap', 'mysticalfire',
+	'nightmare', 'nightshade', 'ominouswind', 'painsplit', 'payday', 'raindance', 'reflect',
+	'retaliate', 'round', 'scorchingsands', 'shadowball', 'snarl', 'storedpower', 'sunnyday',
+	'swagger', 'terrainpulse', 'thunderwave', 'uturn', 'weatherball', 'workup', 'lastresort',
+	'babydolleyes', 'baddybad', 'bite', 'bouncybubble', 'buzzybuzz', 'captivate', 'copycat', 'covet',
+	'detect', 'doubleedge', 'doublekick', 'dustydrift', 'endure', 'freezyfrost', 'glitzyglow', 'growl',
+	'ickyinjection', 'naturalgift', 'naturepower', 'punchypummel', 'quickattack', 'rockyrampage',
+	'sappyseed', 'scalyscorn', 'sizzlyslide', 'sparklyswirl', 'spookyspell', 'stabbyswarm',
+	'steelystrike', 'swift', 'synchronoise', 'takedown', 'tickle', 'trailblaze', 'twirlytwister',
+	'veeveevolley', 'wish', 'yawn', 'glitchygraphics',
+] as ID[];
+
 // These forms are created by battle abilities and are not valid stored team
 // choices. They must remain resolvable to the battle renderer without adding
 // clutter or invalid entries to the team builder.
@@ -64,6 +88,18 @@ function isHiddenTeamBuilderSpecies(id: string, includeSawsbuckBase = false) {
 	if (speciesId.startsWith('furfrou') && speciesId !== 'furfrou') return true;
 	if (speciesId.startsWith('silvally') && speciesId !== 'silvally') return true;
 	return false;
+}
+
+const CUSTOM_VISUAL_FORME_MARKERS = new Set([
+	'Alt', 'Aevian', 'East-Aevian', 'Pulse', 'Azzy', 'Azzy2',
+	'Spring', 'Summer', 'Autumn', 'Winter',
+]);
+
+function isCustomSearchVisualForm(species: AnyObject) {
+	const forme = species?.forme;
+	if (typeof forme !== 'string') return false;
+	return CUSTOM_VISUAL_FORME_MARKERS.has(forme) || forme.endsWith('-Alt') ||
+		[...CUSTOM_VISUAL_FORME_MARKERS].some(marker => forme.endsWith(`-${marker}`));
 }
 
 const CUSTOM_CAN_LEARN_OVERRIDES: {[speciesid: string]: {[moveid: string]: true}} = {
@@ -261,13 +297,14 @@ class DexSearch {
 		let customVisualSpecies: ID[] = [];
 		if (searchType === 'pokemon') {
 			window.ensureCustomSpecies?.();
-			const customFormes = ['Alt', 'Aevian', 'East-Aevian', 'Pulse', 'Azzy', 'Spring', 'Summer', 'Autumn', 'Winter'];
 			customVisualSpecies = Object.keys(window.BattlePokedex || {}).filter(id => {
 				const species = this.dex.species.get(id);
-				if (isHiddenTeamBuilderSpecies(id, true)) return false;
-				return (customFormes.includes(species.forme) || species.forme.endsWith('-Alt')) &&
+				// Explicit -custom searches reveal hidden stored variants, but never
+				// expose battle-only visual destinations used by abilities.
+				if (isBattleOnlyVisualSpecies(id)) return false;
+				return isCustomSearchVisualForm(species) &&
 					(customOnly || toID(species.name) === customSpeciesQuery ||
-						getCustomVisualFamilyId(species) === customSpeciesQuery);
+						window.getCustomVisualFamilyId?.(species) === customSpeciesQuery);
 			}) as ID[];
 		}
 		if (customOnly) {
@@ -1016,7 +1053,7 @@ class BattlePokemonSearch extends BattleTypedSearch<'pokemon'> {
 				break;
 			}
 			const species = this.dex.species.get(id);
-			if (isCustomVisualForm(species) || isHiddenTeamBuilderSpecies(id)) continue;
+			if (isCustomSearchVisualForm(species) || isHiddenTeamBuilderSpecies(id)) continue;
 			const speciesid = toID(id);
 			if (seenSpecies.has(speciesid)) continue;
 			seenSpecies.add(speciesid);
@@ -1439,6 +1476,12 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 
 		let abilityid: ID = set ? toID(set.ability) : '' as ID;
 		const itemid: ID = set ? toID(set.item) : '' as ID;
+		if (
+			['eeveestarter', 'eeveestarteralt'].includes(species.id) &&
+			abilityid === 'sinisterblaze' && SINISTER_BLAZE_EEVEE_MOVES.includes(id)
+		) {
+			return true;
+		}
 
 		if (dex.gen === 1) {
 			// Usually not useless for Gen 1
@@ -1823,12 +1866,19 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 		}
 
 		const eeveeStarterMoveOrder = [
+			// Eevee signature and Let's Go moves stay together at the top.
+			'spookyspell', 'glitchygraphics', 'searingvoid', 'veeveevolley',
+			'glitzyglow', 'baddybad', 'freezyfrost', 'sappyseed', 'sizzleslide',
+			'buzzybuzz', 'bouncybubble', 'sparklyswirl',
 			'punchypummel', 'twirlytwister', 'rockyrampage', 'dustydrift', 'steelystrike',
-			'stabbyswarm', 'ickyinjection', 'spookyspell', 'scalyscorn', 'glitchygraphics',
-			'radiantassault', 'searingvoid', 'glitzyglow', 'baddybad', 'freezyfrost',
-			'sappyseed', 'sizzleslide', 'buzzybuzz', 'bouncybubble', 'veeveevolley', 'sparklyswirl',
+			'stabbyswarm', 'ickyinjection', 'scalyscorn',
 		];
 		const isEeveeStarter = species.id === 'eeveestarter' || species.id === 'eeveestarteralt';
+		if (isEeveeStarter && toID(this.set?.ability) === 'sinisterblaze') {
+			// Ability-specific replacement: do not inherit Eevee-Starter's broad pool.
+			moves = [...SINISTER_BLAZE_EEVEE_MOVES];
+			sketchMoves = [];
+		}
 		if (isEeveeStarter) {
 			const priority = new Map(eeveeStarterMoveOrder.map((id, index) => [id, index]));
 			moves.sort((a, b) => {
