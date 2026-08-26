@@ -10101,12 +10101,13 @@ const Dex = new class implements ModdedDex {
 		const customBWSprite = CUSTOM_BW_SPRITES[speciesid];
 		if (customBWSprite && !allowCustomAnimation) allowAnim = false;
 		if (allowAnim && spriteData.gen >= 6) spriteData.pixelated = false;
-		if (allowAnim && animationData[facing] && spriteData.gen >= 5) {
+		const animation = animationData?.[facing];
+		if (allowAnim && animation?.w && animation?.h && spriteData.gen >= 5) {
 			if (facing.slice(-1) === 'f') name += '-f';
 			dir = baseDir + 'ani' + dir;
 
-			spriteData.w = animationData[facing].w;
-			spriteData.h = animationData[facing].h;
+			spriteData.w = animation.w;
+			spriteData.h = animation.h;
 			spriteData.url += dir + '/' + name + '.gif';
 		} else {
 			// There is no entry or enough data in pokedex-mini.js
