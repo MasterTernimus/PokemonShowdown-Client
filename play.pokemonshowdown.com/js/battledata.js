@@ -2753,6 +2753,13 @@ back:{w:116,h:90}
 };
 
 var CUSTOM_BW_SPRITES={
+tentacruelalt:{
+num:73,
+front:{w:192,h:192},
+back:{w:192,h:192},
+shinyFront:{w:192,h:192},
+shinyBack:{w:192,h:192}
+},
 granbullalt:{
 num:210,
 front:{w:192,h:192},
@@ -8560,7 +8567,8 @@ var CUSTOM_MEDIUM_SPRITE_MIN_DIMENSION=104;
 var CUSTOM_MEDIUM_SPRITE_MAX_DIMENSION=170;
 var CUSTOM_BATTLE_SPRITE_Y_OFFSETS={
 sableye:{front:0,back:0},
-sableyemega:{front:0,back:0}
+sableyemega:{front:0,back:0},
+tentacruelalt:{front:10,back:8}
 };
 var CUSTOM_BATTLE_SPRITE_X_OFFSETS={
 hatterenegmax:{back:-42}
@@ -8611,6 +8619,7 @@ parasectparasitism:{w:90,h:100},
 parasectparasite:{w:92,h:100},
 heracross:{w:92,h:104},
 staraptor:{w:96,h:96},
+tentacruelalt:{w:82,h:82},
 rotom:{w:64,h:64},
 rotomfan:{w:68,h:68},
 rotomfrost:{w:68,h:68},
@@ -8753,7 +8762,7 @@ cacturnealt:{w:64,h:64},
 sandslashalt:{w:76,h:76},
 haxorusalt:{w:78,h:78},
 arcaninealt:{w:78,h:78},
-tentacruelalt:{w:76,h:82},
+tentacruelalt:{w:82,h:82},
 roseradealt:{w:72,h:72},
 auroreon:{w:72,h:72},
 soluneon:{w:72,h:72},
