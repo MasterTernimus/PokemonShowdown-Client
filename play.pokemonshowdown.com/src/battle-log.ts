@@ -29,6 +29,7 @@ export class BattleLog {
 	scene: BattleScene | null = null;
 	preemptElem: HTMLDivElement = null!;
 	atBottom = true;
+	private scrollUpdateScheduled = false;
 	skippedLines = false;
 	className: string;
 	battleParser: BattleTextParser | null = null;
@@ -84,6 +85,7 @@ export class BattleLog {
 	destroy() {
 		this.elem.onscroll = null;
 		this.elem.innerHTML = '';
+		this.scrollUpdateScheduled = false;
 	}
 	addSeekEarlierButton() {
 		if (this.skippedLines) return;
@@ -391,14 +393,18 @@ export class BattleLog {
 	}
 	addNode(node: HTMLElement, preempt?: boolean) {
 		(preempt ? this.preemptElem : this.innerElem).appendChild(node);
-		if (this.atBottom) {
-			this.elem.scrollTop = this.elem.scrollHeight;
-		}
+		this.scheduleScrollUpdate();
 	}
 	updateScroll() {
-		if (this.atBottom) {
-			this.elem.scrollTop = this.elem.scrollHeight;
-		}
+		this.scheduleScrollUpdate();
+	}
+	private scheduleScrollUpdate() {
+		if (!this.atBottom || this.scrollUpdateScheduled) return;
+		this.scrollUpdateScheduled = true;
+		setTimeout(() => {
+			this.scrollUpdateScheduled = false;
+			if (this.atBottom) this.elem.scrollTop = this.elem.scrollHeight;
+		}, 0);
 	}
 	addDiv(className: string, innerHTML: string, preempt?: boolean) {
 		const el = document.createElement('div');

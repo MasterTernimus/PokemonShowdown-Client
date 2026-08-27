@@ -973,6 +973,9 @@ class AvatarsPanel extends PSRoomPanel {
 			if (i === 162 || i === 168) continue;
 			avatars.push([i, window.BattleAvatarNumbers?.[i] || `${i}`]);
 		}
+		const customAvatars: [string, string][] = [
+			['alainalt', 'Alain_alt'], ['shiv', 'Shiv'], ['shivalt', 'Shiv_alt'],
+		];
 
 		return <PSPanelWrapper room={room} width={1210}><div class="pad">
 			<label class="optlabel"><strong>Choose an avatar or </strong>
@@ -984,6 +987,13 @@ class AvatarsPanel extends PSRoomPanel {
 						data-cmd={`/closeand /avatar ${avatar}`} title={`/avatar ${avatar}`}
 						class={`option pixelated${avatar === PS.user.avatar ? ' cur' : ''}`}
 						style={`background-position: -${((i - 1) % 16) * 80 + 1}px -${Math.floor((i - 1) / 16) * 80 + 1}px`}
+					></button>
+				))}
+				{customAvatars.map(([avatar, label]) => (
+					<button
+						data-cmd={`/closeand /avatar ${avatar}`} title={`/avatar ${label}`} aria-label={label}
+						class={`option pixelated${avatar === PS.user.avatar ? ' cur' : ''}`}
+						style={`background-image:url(${Dex.resolveAvatar(avatar)});background-position:center;background-repeat:no-repeat;background-size:contain;`}
 					></button>
 				))}
 			</div>

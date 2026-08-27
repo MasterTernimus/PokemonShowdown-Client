@@ -41,6 +41,7 @@ License: GPLv2
 	position: relative;
 	width: 640px;
 	height: 360px;
+	contain: layout paint;
 }
 .battle-log-add {
 	position: absolute;

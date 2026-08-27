@@ -102,6 +102,10 @@ function isCustomSearchVisualForm(species: AnyObject) {
 		[...CUSTOM_VISUAL_FORME_MARKERS].some(marker => forme.endsWith(`-${marker}`));
 }
 
+function isExplicitFurfrouVariantSearch(species: AnyObject, query: string) {
+	return query === 'furfrou' && toID(species?.baseSpecies) === 'furfrou' && toID(species?.name) !== 'furfrou';
+}
+
 const CUSTOM_CAN_LEARN_OVERRIDES: {[speciesid: string]: {[moveid: string]: true}} = {
 	blastoise: {electroshot: true},
 	clawitzer: {electroshot: true},
@@ -302,7 +306,7 @@ class DexSearch {
 				// Explicit -custom searches reveal hidden stored variants, but never
 				// expose battle-only visual destinations used by abilities.
 				if (isBattleOnlyVisualSpecies(id)) return false;
-				return isCustomSearchVisualForm(species) &&
+				return (isCustomSearchVisualForm(species) || isExplicitFurfrouVariantSearch(species, customSpeciesQuery)) &&
 					(customOnly || toID(species.name) === customSpeciesQuery ||
 						window.getCustomVisualFamilyId?.(species) === customSpeciesQuery);
 			}) as ID[];
