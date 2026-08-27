@@ -3235,7 +3235,9 @@ class DetailsForm extends preact.Component<{
 		const { editor, set } = this.props;
 		window.ensureCustomSpecies?.();
 		const species = editor.dex.species.get(formId);
-		if (!species.exists) return;
+		// Raw alternate-form records may not expose `exists`; reject only an
+		// explicitly missing species so profile variants remain selectable.
+		if (species.exists === false || !species.name) return;
 		editor.changeCosmeticForm(set, species.name);
 		this.props.onChange();
 		this.forceUpdate();

@@ -525,7 +525,7 @@ export class BattleScene implements BattleSceneStub {
 	runMoveAnim(moveid: ID, participants: Pokemon[]) {
 		if (!this.animating) return;
 		let animEntry = BattleMoveAnims[moveid];
-		if (this.acceleration >= 3) {
+		if (this.acceleration >= 2) {
 			const targetsSelf = !participants[1] || participants[0] === participants[1];
 			const isSpecial = !targetsSelf && this.battle.dex.moves.get(moveid).category === 'Special';
 			animEntry = BattleOtherAnims[targetsSelf ? 'fastanimself' : isSpecial ? 'fastanimspecial' : 'fastanimattack'];
@@ -536,17 +536,17 @@ export class BattleScene implements BattleSceneStub {
 	}
 
 	runOtherAnim(moveid: ID, participants: Pokemon[]) {
-		if (!this.animating) return;
+		if (!this.animating || this.acceleration >= 3) return;
 		BattleOtherAnims[moveid].anim(this, participants.map(p => p.sprite));
 	}
 
 	runStatusAnim(moveid: ID, participants: Pokemon[]) {
-		if (!this.animating) return;
+		if (!this.animating || this.acceleration >= 3) return;
 		BattleStatusAnims[moveid].anim(this, participants.map(p => p.sprite));
 	}
 
 	runResidualAnim(moveid: ID, pokemon: Pokemon) {
-		if (!this.animating) return;
+		if (!this.animating || this.acceleration >= 3) return;
 		BattleMoveAnims[moveid].residualAnim!(this, [pokemon.sprite]);
 	}
 
@@ -982,6 +982,17 @@ export class BattleScene implements BattleSceneStub {
 			weatherhtml += this.sideConditionsLeft(side);
 		}
 		if (weatherhtml) weatherhtml = `<br />` + weatherhtml;
+
+		if (!instant && this.acceleration >= 3) {
+			this.$weather.stop(true, true).html('<em>' + weatherhtml + '</em>');
+			this.$weather.attr('class', weather ? 'weather ' + weather + 'weather' : 'weather');
+			this.$weather.css('opacity', isIntense || !weather ? 0.9 : 0.5);
+			this.$terrain.stop(true, true).attr('class', terrain ? 'weather ' + terrain + 'weather' : 'weather');
+			this.$terrain.css({top: 0, opacity: 1});
+			this.curWeather = weather;
+			this.curTerrain = terrain;
+			return;
+		}
 
 		if (instant) {
 			this.$weather.html('<em>' + weatherhtml + '</em>');
@@ -1916,7 +1927,7 @@ export class PokemonSprite extends Sprite {
 
 	constructor(spriteData: SpriteData | null, pos: InitScenePos, scene: BattleScene, isFrontSprite: boolean) {
 		super(spriteData, pos, scene);
-		if (this.$el) this.$el.css({'will-change': 'left, top, opacity', 'backface-visibility': 'hidden'});
+		if (this.$el) this.$el.css({'backface-visibility': 'hidden'});
 		this.cryurl = this.sp.cryurl;
 		this.isFrontSprite = isFrontSprite;
 	}

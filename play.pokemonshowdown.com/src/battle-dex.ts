@@ -737,17 +737,6 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 			isNonstandard: 'Custom',
 		},
 	},
-	weavilealt: {
-		base: 'weavile',
-		data: {
-			name: 'Weavile-Alt',
-			baseSpecies: 'Weavile',
-			forme: 'Alt',
-			spriteid: 'weavile-alt',
-			changesFrom: 'Weavile',
-			isNonstandard: 'Custom',
-		},
-	},
 	dusknoiralt: {
 		base: 'dusknoir',
 		data: {
@@ -767,6 +756,17 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 			forme: 'Alt',
 			spriteid: 'spiritomb-alt',
 			changesFrom: 'Spiritomb',
+			isNonstandard: 'Custom',
+		},
+	},
+	umbreonperfect: {
+		base: 'umbreon',
+		data: {
+			name: 'Umbreon-Perfect',
+			baseSpecies: 'Umbreon',
+			forme: 'Perfect',
+			spriteid: 'umbreon-perfect',
+			changesFrom: 'Umbreon',
 			isNonstandard: 'Custom',
 		},
 	},
@@ -1399,7 +1399,6 @@ const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
 	mightyenaalt: 'mightyena-alt',
 	toxicroakalt: 'toxicroak-alt',
 	cinccinoalt: 'cinccino-alt',
-	weavilealt: 'weavile-alt',
 	gligaralt: 'gligar-alt',
 	gliscoralt: 'gliscor-alt',
 	sneasleraevian: 'sneasler-aevian',
@@ -1410,6 +1409,7 @@ const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
 	parasectparasitism: 'parasect-parasitism',
 	parasectparasite: 'parasect-parasite',
 	bronzongrejuv: 'bronzong-rejuv',
+	unfezantrejuv: 'unfezant-rejuv',
 	gastrodonazzy: 'gastrodon-azzy',
 	gastrodonazzy2: 'gastrodon-azzy2',
 	sawsbuckspring: 'sawsbuck-spring',
@@ -1612,7 +1612,7 @@ const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
 };
 
 // These custom profiles intentionally use their shiny artwork in every view.
-const FORCE_SHINY_CUSTOM_SPRITE_IDS = new Set<ID>(['spiritombalt', 'weavilealt', 'weavilealtf']);
+const FORCE_SHINY_CUSTOM_SPRITE_IDS = new Set<ID>(['spiritombalt']);
 
 // These species start shiny when selected, but can still be switched back to
 // normal in the team editor. This is intentionally separate from the forced
@@ -1699,15 +1699,11 @@ const CUSTOM_TEAMBUILDER_SPRITES: {[id: string]: {x: number, y: number, backgrou
 };
 
 const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
-	front: {w: number, h: number},
-	back: {w: number, h: number},
+	front?: {w: number, h: number},
+	back?: {w: number, h: number},
 	shinyFront?: {w: number, h: number},
 	shinyBack?: {w: number, h: number},
 }} = {
-	weavilealt: {
-		front: {w: 104, h: 112},
-		back: {w: 82, h: 112},
-	},
 	gligaralt: {
 		front: {w: 64, h: 64},
 		back: {w: 96, h: 96},
@@ -1717,10 +1713,6 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 		front: {w: 64, h: 64},
 		back: {w: 96, h: 96},
 		shinyFront: {w: 64, h: 64},
-	},
-	weavilealtf: {
-		front: {w: 104, h: 112},
-		back: {w: 82, h: 112},
 	},
 	dusknoiralt: {
 		front: {w: 170, h: 148},
@@ -1756,23 +1748,23 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 	},
 	pidgeot: {
 		front: {w: 152, h: 144},
-		back: {w: 70, h: 67},
-		shinyBack: {w: 68, h: 66},
+		back: {w: 126, h: 132},
+		shinyBack: {w: 126, h: 132},
 	},
 	pidgeotmega: {
 		front: {w: 184, h: 170},
 		back: {w: 182, h: 176},
 	},
 	aggron: {
-		front: {w: 116, h: 111},
-		back: {w: 104, h: 119},
-		shinyBack: {w: 104, h: 117},
+		front: {w: 146, h: 140},
+		back: {w: 128, h: 146},
+		shinyBack: {w: 128, h: 144},
 	},
 	aggronmega: {
-		front: {w: 190, h: 148},
-		back: {w: 182, h: 140},
-		shinyFront: {w: 186, h: 146},
-		shinyBack: {w: 182, h: 138},
+		front: {w: 194, h: 152},
+		back: {w: 186, h: 144},
+		shinyFront: {w: 190, h: 150},
+		shinyBack: {w: 186, h: 142},
 	},
 	flygonmegaz: {
 		front: {w: 96, h: 96},
@@ -1812,8 +1804,10 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 		back: {w: 190, h: 186},
 	},
 	charizardgmax: {
-		front: {w: 96, h: 96},
-		back: {w: 96, h: 96},
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
 	},
 	charizardmegaxalt: {
 		front: {w: 192, h: 192},
@@ -1825,12 +1819,12 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 		back: {w: 150, h: 168},
 	},
 	jynxalt: {
-		front: {w: 96, h: 96},
-		shinyFront: {w: 96, h: 96},
+		front: {w: 64, h: 64},
+		shinyFront: {w: 64, h: 64},
 	},
 	lumineonalt: {
-		front: {w: 96, h: 96},
-		shinyFront: {w: 96, h: 96},
+		front: {w: 64, h: 64},
+		shinyFront: {w: 64, h: 64},
 	},
 	typhlosionalt: {
 		front: {w: 64, h: 64},
@@ -1838,8 +1832,8 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 		shinyFront: {w: 64, h: 64},
 	},
 	nidokingalt: {
-		front: {w: 170, h: 178},
-		back: {w: 144, h: 144},
+		front: {w: 192, h: 192},
+		back: {w: 96, h: 96},
 	},
 	nidoqueenalt: {
 		front: {w: 168, h: 170},
@@ -2007,8 +2001,10 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 		back: {w: 188, h: 152},
 	},
 	greninjamega: {
-		front: {w: 140, h: 180},
-		back: {w: 172, h: 168},
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
 	},
 	dragonitemega: {
 		front: {w: 178, h: 174},
@@ -2023,6 +2019,12 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 		back: {w: 185, h: 163},
 		shinyFront: {w: 183, h: 167},
 		shinyBack: {w: 183, h: 161},
+	},
+	scolipedef: {
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
+		shinyFront: {w: 96, h: 96},
+		shinyBack: {w: 96, h: 96},
 	},
 	scolipedeazzy: {
 		front: {w: 300, h: 300},
@@ -2039,6 +2041,12 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 	scolipedemega: {
 		front: {w: 182, h: 192},
 		back: {w: 189, h: 175},
+	},
+	scolipedemegaf: {
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
+		shinyFront: {w: 96, h: 96},
+		shinyBack: {w: 96, h: 96},
 	},
 	staraptormega: {
 		front: {w: 173, h: 161},
@@ -2069,10 +2077,10 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 		shinyBack: {w: 186, h: 188},
 	},
 	cacturnealt: {
-		front: {w: 96, h: 116},
-		back: {w: 96, h: 116},
-		shinyFront: {w: 96, h: 116},
-		shinyBack: {w: 96, h: 116},
+		front: {w: 132, h: 160},
+		back: {w: 132, h: 160},
+		shinyFront: {w: 132, h: 160},
+		shinyBack: {w: 132, h: 160},
 	},
 	sandslashalt: {
 		front: {w: 192, h: 192},
@@ -2127,8 +2135,10 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 		back: {w: 190, h: 180},
 	},
 	kingambit: {
-		front: {w: 134, h: 192},
-		back: {w: 120, h: 190},
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
 	},
 	electivire: {
 		front: {w: 146, h: 140},
@@ -2151,10 +2161,10 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 		back: {w: 112, h: 156},
 	},
 	mothim: {
-		front: {w: 198, h: 172},
-		back: {w: 178, h: 122},
-		shinyFront: {w: 198, h: 172},
-		shinyBack: {w: 178, h: 122},
+		front: {w: 184, h: 160},
+		back: {w: 166, h: 114},
+		shinyFront: {w: 184, h: 160},
+		shinyBack: {w: 166, h: 114},
 	},
 	magmortar: {
 		front: {w: 154, h: 144},
@@ -2255,8 +2265,10 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 		back: {w: 99, h: 175},
 	},
 	charizard: {
-		front: {w: 158, h: 174},
-		back: {w: 168, h: 166},
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
 	},
 	gholdengo: {
 		front: {w: 98, h: 150},
@@ -2375,11 +2387,11 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 		back: {w: 184, h: 130},
 	},
 	weavile: {
-		front: {w: 108, h: 116},
+		front: {w: 104, h: 112},
 		back: {w: 82, h: 112},
 	},
 	weavilef: {
-		front: {w: 108, h: 116},
+		front: {w: 104, h: 112},
 		back: {w: 82, h: 112},
 	},
 	espeon: {
@@ -2421,8 +2433,8 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 		back: {w: 190, h: 186},
 	},
 	corviknight: {
-		front: {w: 86, h: 98},
-		back: {w: 62, h: 70},
+		front: {w: 102, h: 144},
+		back: {w: 120, h: 130},
 	},
 	corviknightgmax: {
 		front: {w: 192, h: 190},
@@ -2460,7 +2472,7 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 	},
 	infernapealt: {
 		front: {w: 172, h: 148},
-		back: {w: 146, h: 136},
+		back: {w: 154, h: 144},
 	},
 	inteleon: {
 		front: {w: 114, h: 192},
@@ -2585,10 +2597,10 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 		back: {w: 118, h: 180},
 	},
 	silvallybug: {
-		front: {w: 138, h: 184},
-		back: {w: 118, h: 180},
-		shinyFront: {w: 138, h: 182},
-		shinyBack: {w: 118, h: 182},
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
 	},
 	silvallyghost: {
 		front: {w: 138, h: 184},
@@ -2609,10 +2621,10 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 		shinyBack: {w: 140, h: 180},
 	},
 	silvallyfire: {
-		front: {w: 138, h: 184},
-		back: {w: 118, h: 180},
-		shinyFront: {w: 140, h: 176},
-		shinyBack: {w: 118, h: 174},
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
 	},
 	silvallywater: {
 		front: {w: 138, h: 184},
@@ -2621,16 +2633,16 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 		shinyBack: {w: 126, h: 184},
 	},
 	silvallygrass: {
-		front: {w: 138, h: 184},
-		back: {w: 118, h: 180},
-		shinyFront: {w: 138, h: 188},
-		shinyBack: {w: 118, h: 186},
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
 	},
 	silvallyelectric: {
-		front: {w: 138, h: 184},
-		back: {w: 118, h: 180},
-		shinyFront: {w: 138, h: 188},
-		shinyBack: {w: 118, h: 186},
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
 	},
 	silvallypsychic: {
 		front: {w: 138, h: 184},
@@ -2682,8 +2694,8 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 		back: {w: 72, h: 102},
 	},
 	frosmoth: {
-		front: {w: 158, h: 132},
-		back: {w: 150, h: 132},
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
 	},
 	falinks: {
 		front: {w: 162, h: 104},
@@ -2802,6 +2814,55 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 };
 
 const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
+	froslassmega: {
+		num: 478,
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
+		shinyFront: {w: 96, h: 96},
+		shinyBack: {w: 96, h: 96},
+	},
+	glimmora: {
+		num: 970,
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
+		shinyFront: {w: 96, h: 96},
+		shinyBack: {w: 96, h: 96},
+	},
+	glimmoramega: {
+		num: 970,
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
+		shinyFront: {w: 96, h: 96},
+		shinyBack: {w: 96, h: 96},
+	},
+	delphox: {
+		num: 655,
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
+		shinyFront: {w: 96, h: 96},
+		shinyBack: {w: 96, h: 96},
+	},
+	delphoxmega: {
+		num: 655,
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
+		shinyFront: {w: 96, h: 96},
+		shinyBack: {w: 96, h: 96},
+	},
+	chandelure: {
+		num: 609,
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
+	},
+	chesnaught: {
+		num: 652,
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
+	},
 	tentacruelalt: {
 		num: 73,
 		front: {w: 192, h: 192},
@@ -2823,15 +2884,29 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 		shinyFront: {w: 192, h: 192},
 		shinyBack: {w: 192, h: 192},
 	},
+	umbreonperfect: {
+		num: 197,
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
+	},
 	jynxalt: {
 		num: 124,
-		front: {w: 96, h: 96},
-		shinyFront: {w: 96, h: 96},
+		front: {w: 64, h: 64},
+		shinyFront: {w: 64, h: 64},
 	},
 	lumineonalt: {
 		num: 457,
-		front: {w: 96, h: 96},
-		shinyFront: {w: 96, h: 96},
+		front: {w: 64, h: 64},
+		shinyFront: {w: 64, h: 64},
+	},
+	roseradealt: {
+		num: 407,
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
 	},
 	lycanroc: {
 		num: 745,
@@ -2932,8 +3007,8 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	pidgeot: {
 		num: 18,
 		front: {w: 152, h: 144},
-		back: {w: 70, h: 67},
-		shinyBack: {w: 68, h: 66},
+		back: {w: 126, h: 132},
+		shinyBack: {w: 126, h: 132},
 	},
 	pidgeotmega: {
 		num: 18,
@@ -2942,26 +3017,26 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	},
 	heracross: {
 		num: 214,
-		front: {w: 61, h: 70},
-		back: {w: 67, h: 72},
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
 	},
 	staraptor: {
 		num: 398,
-		front: {w: 69, h: 69},
-		back: {w: 74, h: 68},
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
 	},
 	aggron: {
 		num: 306,
-		front: {w: 116, h: 111},
-		back: {w: 104, h: 119},
-		shinyBack: {w: 104, h: 117},
+		front: {w: 146, h: 140},
+		back: {w: 128, h: 146},
+		shinyBack: {w: 128, h: 144},
 	},
 	aggronmega: {
 		num: 306,
-		front: {w: 190, h: 148},
-		back: {w: 182, h: 140},
-		shinyFront: {w: 186, h: 146},
-		shinyBack: {w: 182, h: 138},
+		front: {w: 194, h: 152},
+		back: {w: 186, h: 144},
+		shinyFront: {w: 190, h: 150},
+		shinyBack: {w: 186, h: 142},
 	},
 	incineroar: {
 		num: 727,
@@ -2980,8 +3055,8 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	},
 	frosmoth: {
 		num: 873,
-		front: {w: 158, h: 132},
-		back: {w: 150, h: 132},
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
 	},
 	falinks: {
 		num: 870,
@@ -3177,7 +3252,7 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	nidokingalt: {
 		num: 34,
 		front: {w: 192, h: 192},
-		back: {w: 192, h: 192},
+		back: {w: 96, h: 96},
 	},
 	nidoqueenalt: {
 		num: 31,
@@ -3211,8 +3286,10 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	},
 	charizardgmax: {
 		num: 6,
-		front: {w: 96, h: 96},
-		back: {w: 96, h: 96},
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
 	},
 	appletungmax: {
 		num: 842,
@@ -3383,10 +3460,10 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	},
 	cacturnealt: {
 		num: 332,
-		front: {w: 96, h: 116},
-		back: {w: 96, h: 116},
-		shinyFront: {w: 96, h: 116},
-		shinyBack: {w: 96, h: 116},
+		front: {w: 132, h: 160},
+		back: {w: 132, h: 160},
+		shinyFront: {w: 132, h: 160},
+		shinyBack: {w: 132, h: 160},
 	},
 	mightyenaalt: {
 		num: 262,
@@ -3426,8 +3503,10 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	},
 	kingambit: {
 		num: 983,
-		front: {w: 134, h: 192},
-		back: {w: 120, h: 190},
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
 	},
 	electivire: {
 		num: 466,
@@ -3456,10 +3535,10 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	},
 	mothim: {
 		num: 414,
-		front: {w: 198, h: 172},
-		back: {w: 178, h: 122},
-		shinyFront: {w: 198, h: 172},
-		shinyBack: {w: 178, h: 122},
+		front: {w: 184, h: 160},
+		back: {w: 166, h: 114},
+		shinyFront: {w: 184, h: 160},
+		shinyBack: {w: 166, h: 114},
 	},
 	magmortar: {
 		num: 467,
@@ -3585,8 +3664,16 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	},
 	charizard: {
 		num: 6,
-		front: {w: 158, h: 174},
-		back: {w: 168, h: 166},
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
+	},
+	charizardalt: {
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
 	},
 	gholdengo: {
 		num: 1000,
@@ -3754,8 +3841,8 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	},
 	flygonmegaz: {
 		num: 330,
-		front: {w: 54, h: 54},
-		back: {w: 72, h: 72},
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
 	},
 	garchompmega: {
 		num: 445,
@@ -3774,8 +3861,8 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	},
 	gardevoirmegaz: {
 		num: 282,
-		front: {w: 48, h: 48},
-		back: {w: 72, h: 72},
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
 	},
 	scraftymega: {
 		num: 560,
@@ -3784,8 +3871,10 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	},
 	skarmorymega: {
 		num: 227,
-		front: {w: 96, h: 96},
-		back: {w: 96, h: 96},
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
 	},
 	staraptormega: {
 		num: 398,
@@ -3866,14 +3955,14 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	},
 	weavile: {
 		num: 461,
-		front: {w: 108, h: 116},
+		front: {w: 104, h: 112},
 		back: {w: 82, h: 112},
-		frontf: {w: 108, h: 116},
+		frontf: {w: 104, h: 112},
 		backf: {w: 82, h: 112},
 	},
 	weavilef: {
 		num: 461,
-		front: {w: 108, h: 116},
+		front: {w: 104, h: 112},
 		back: {w: 82, h: 112},
 	},
 	espeon: {
@@ -3918,10 +4007,10 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	},
 	corviknight: {
 		num: 823,
-		front: {w: 86, h: 98},
-		back: {w: 62, h: 70},
-		shinyFront: {w: 86, h: 98},
-		shinyBack: {w: 62, h: 70},
+		front: {w: 102, h: 144},
+		back: {w: 120, h: 130},
+		shinyFront: {w: 102, h: 144},
+		shinyBack: {w: 120, h: 130},
 	},
 	corviknightgmax: {
 		num: 823,
@@ -3951,7 +4040,7 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	infernapealt: {
 		num: 392,
 		front: {w: 172, h: 148},
-		back: {w: 146, h: 136},
+		back: {w: 154, h: 144},
 	},
 	inteleon: {
 		num: 818,
@@ -4058,8 +4147,8 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	},
 	luxrayalt: {
 		num: 405,
-		front: {w: 126, h: 132},
-		back: {w: 134, h: 128},
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
 	},
 	luxrayf: {
 		num: 405,
@@ -4098,8 +4187,10 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	},
 	silvallybug: {
 		num: 773,
-		front: {w: 138, h: 184},
-		back: {w: 118, h: 180},
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
 	},
 	silvallyghost: {
 		num: 773,
@@ -4118,8 +4209,10 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	},
 	silvallyfire: {
 		num: 773,
-		front: {w: 138, h: 184},
-		back: {w: 118, h: 180},
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
 	},
 	silvallywater: {
 		num: 773,
@@ -4128,13 +4221,17 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	},
 	silvallygrass: {
 		num: 773,
-		front: {w: 138, h: 184},
-		back: {w: 118, h: 180},
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
 	},
 	silvallyelectric: {
 		num: 773,
-		front: {w: 138, h: 184},
-		back: {w: 118, h: 180},
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
 	},
 	silvallypsychic: {
 		num: 773,
@@ -4203,10 +4300,26 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 		front: {w: 96, h: 96},
 		back: {w: 96, h: 96},
 	},
+	greninja: {
+		num: 658,
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
+	},
+	greninjabond: {
+		num: 658,
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
+	},
 	greninjamega: {
 		num: 658,
-		front: {w: 140, h: 180},
-		back: {w: 172, h: 168},
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
 	},
 	pyroarmega: {
 		num: 668,
@@ -4215,8 +4328,10 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	},
 	chesnaughtmega: {
 		num: 652,
-		front: {w: 96, h: 96},
-		back: {w: 96, h: 96},
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
 	},
 	delphoxmega: {
 		num: 655,
@@ -4340,6 +4455,13 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 		shinyFront: {w: 192, h: 192},
 		shinyBack: {w: 192, h: 192},
 	},
+	unfezantrejuv: {
+		num: 521,
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
+	},
 	dusknoir: {
 		num: 477,
 		front: {w: 170, h: 148},
@@ -4370,8 +4492,18 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	},
 	runerigus: {
 		num: 867,
-		front: {w: 190, h: 152},
-		back: {w: 190, h: 146},
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+	},
+	manectric: {
+		num: 310,
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+	},
+	manectricmega: {
+		num: 310,
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
 	},
 	drampamega: {
 		num: 780,
@@ -4390,8 +4522,10 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	},
 	chandeluremega: {
 		num: 609,
-		front: {w: 96, h: 96},
-		back: {w: 96, h: 96},
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
 	},
 	crabominablemega: {
 		num: 740,
@@ -4430,13 +4564,13 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	},
 	excadrillmega: {
 		num: 530,
-		front: {w: 124, h: 124},
-		back: {w: 124, h: 124},
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
 	},
 	meowsticmmega: {
 		num: 678,
-		front: {w: 48, h: 96},
-		back: {w: 60, h: 96},
+		front: {w: 66, h: 140},
+		back: {w: 82, h: 140},
 	},
 	meowsticfmega: {
 		num: 678,
@@ -4458,10 +4592,26 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 		front: {w: 96, h: 96},
 		back: {w: 96, h: 96},
 	},
+	absol: {
+		num: 359,
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
+	},
+	absolmega: {
+		num: 359,
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
+	},
 	absolmegaz: {
 		num: 359,
-		front: {w: 96, h: 96},
-		back: {w: 96, h: 96},
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
 	},
 };
 
@@ -4505,6 +4655,22 @@ Object.assign(CUSTOM_SPECIES, {
 	drekeon: {
 		base: 'eeveestarter',
 		data: {name: 'Drekeon', baseSpecies: 'Eevee-Starter', forme: 'Dragon', spriteid: 'drekeon', types: ['Dragon'], battleOnly: 'Eevee-Starter', isNonstandard: 'Custom'},
+	},
+	unfezantrejuv: {
+		base: 'unfezant',
+		data: {
+			name: 'Unfezant-Rejuv',
+			baseSpecies: 'Unfezant',
+			forme: 'Rejuv',
+			spriteid: 'unfezant-rejuv',
+			types: ['Rock', 'Fighting'],
+			baseStats: {hp: 90, atk: 125, def: 105, spa: 40, spd: 80, spe: 107},
+			abilities: {0: 'Unova Wing', 1: 'Aevian Wing'},
+			battleOnly: 'Unfezant',
+			requiredAbility: 'Aevian Wing',
+			standalone: true,
+			isNonstandard: 'Custom',
+		},
 	},
 	gligaralt: {
 		base: 'gligar',
@@ -4748,6 +4914,7 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		abilities: {0: 'Violent Rush', 1: 'Guts', H: 'Defiant'},
 	},
 	mightyena: {
+		baseStats: {hp: 90, atk: 125, def: 90, spa: 60, spd: 80, spe: 125},
 		otherFormes: ['Mightyena-Alt'],
 		cosmeticFormes: ['Mightyena-Alt'],
 		formeOrder: ['Mightyena', 'Mightyena-Alt'],
@@ -4766,7 +4933,7 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		abilities: {0: 'Loyal Guard', 1: 'Violent Rush', H: 'Strong Jaw'},
 	},
 	mightyenaalt: {
-		baseStats: {hp: 100, atk: 135, def: 90, spa: 60, spd: 80, spe: 105},
+		baseStats: {hp: 90, atk: 125, def: 85, spa: 60, spd: 80, spe: 125},
 		abilities: {0: 'Intimidate', 1: 'Black Fang', H: 'Stakeout'},
 	},
 	toxicroak: {
@@ -4777,18 +4944,18 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		formeOrder: ['Toxicroak', 'Toxicroak-Alt'],
 	},
 	toxicroakalt: {
-		baseStats: {hp: 83, atk: 131, def: 70, spa: 121, spd: 70, spe: 95},
+		baseStats: {hp: 83, atk: 126, def: 70, spa: 116, spd: 70, spe: 95},
 		abilities: {0: 'Battle Fervor', 1: 'Corrosion', H: 'Great Marsh'},
 	},
 	cinccino: {
-		baseStats: {hp: 85, atk: 110, def: 100, spa: 60, spd: 100, spe: 115},
+		baseStats: {hp: 75, atk: 110, def: 85, spa: 70, spd: 85, spe: 125},
 		abilities: {0: 'Pixilate', 1: 'Skill Link', H: 'Fluffy Craft'},
 		otherFormes: ['Cinccino-Alt'],
 		cosmeticFormes: ['Cinccino-Alt'],
 		formeOrder: ['Cinccino', 'Cinccino-Alt'],
 	},
 	cinccinoalt: {
-		baseStats: {hp: 85, atk: 110, def: 100, spa: 60, spd: 100, spe: 115},
+		baseStats: {hp: 75, atk: 110, def: 100, spa: 60, spd: 100, spe: 125},
 		abilities: {0: 'Pixilate', 1: 'Skill Link', H: 'Fluffy Craft'},
 	},
 	glalie: {
@@ -4826,6 +4993,9 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 	},
 	skarmory: {
 		abilities: {0: 'Self Sufficient', 1: 'Sturdy', H: 'Weak Armor'},
+	},
+	skarmorymega: {
+		abilities: {0: 'Golden Talons'},
 	},
 	wyrdeer: {
 		baseStats: {hp: 103, atk: 105, def: 82, spa: 105, spd: 85, spe: 70},
@@ -4897,9 +5067,6 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 	weavile: {
 		baseStats: {hp: 85, atk: 135, def: 80, spa: 30, spd: 90, spe: 130},
 		abilities: {0: 'Violent Rush', 1: 'Pressure', H: 'Technician'},
-		otherFormes: ['Weavile-Alt'],
-		cosmeticFormes: ['Weavile-Alt'],
-		formeOrder: ['Weavile', 'Weavile-Alt'],
 	},
 	ribombee: {baseStats: {hp: 65, atk: 55, def: 60, spa: 90, spd: 105, spe: 125}},
 	zoroark: {baseStats: {hp: 60, atk: 110, def: 70, spa: 135, spd: 70, spe: 110}},
@@ -5380,12 +5547,26 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		baseStats: {hp: 75, atk: 50, def: 75, spa: 125, spd: 125, spe: 90},
 		abilities: {0: 'Queenly Majesty', 1: 'Resonance Force', H: 'Frost Siren'},
 	},
+	unfezant: {
+		types: ['Normal', 'Flying'],
+		baseStats: {hp: 90, atk: 40, def: 105, spa: 125, spd: 80, spe: 107},
+		abilities: {0: 'Unova Wing', 1: 'Aevian Wing'},
+		otherFormes: ['Unfezant-Rejuv'],
+		formeOrder: ['Unfezant', 'Unfezant-Rejuv'],
+	},
+	unfezantrejuv: {
+		types: ['Rock', 'Fighting'],
+		baseStats: {hp: 90, atk: 125, def: 105, spa: 40, spd: 80, spe: 107},
+		abilities: {0: 'Unova Wing', 1: 'Aevian Wing'},
+	},
 };
 
 Object.assign(CUSTOM_SPECIES_UPDATES, {
 	cacturne: {baseStats: {spa: 90}},
-	cinccino: {baseStats: {hp: 85, atk: 110, def: 85, spa: 90, spd: 85, spe: 115}},
-	cinccinoalt: {baseStats: {hp: 85, atk: 110, def: 85, spa: 90, spd: 85, spe: 115}},
+	mightyena: {baseStats: {hp: 90, atk: 125, def: 90, spa: 60, spd: 80, spe: 125}},
+	mightyenaalt: {baseStats: {hp: 90, atk: 125, def: 85, spa: 60, spd: 80, spe: 125}},
+	cinccino: {baseStats: {hp: 75, atk: 110, def: 85, spa: 70, spd: 85, spe: 125}},
+	cinccinoalt: {baseStats: {hp: 75, atk: 110, def: 100, spa: 60, spd: 100, spe: 125}},
 	crawdaunt: {
 		baseStats: {hp: 83, atk: 120, def: 105, spa: 100, spd: 77, spe: 60},
 		abilities: {0: 'Adaptability', 1: 'Sheer Force', H: 'Cruel Shell'},
@@ -5400,8 +5581,8 @@ Object.assign(CUSTOM_SPECIES_UPDATES, {
 	samurotthisui: {baseStats: {hp: 90, atk: 110, def: 75, spa: 105, spd: 65, spe: 95}},
 	samurottalt: {baseStats: {hp: 95, atk: 110, def: 90, spa: 120, spd: 80, spe: 75}},
 	samurotthisuialt: {baseStats: {hp: 90, atk: 110, def: 75, spa: 105, spd: 65, spe: 95}},
-	toxicroak: {baseStats: {hp: 98, atk: 131, def: 70, spa: 121, spd: 70, spe: 80}},
-	toxicroakalt: {baseStats: {hp: 98, atk: 126, def: 70, spa: 116, spd: 70, spe: 80}},
+	toxicroak: {baseStats: {hp: 83, atk: 131, def: 70, spa: 121, spd: 70, spe: 95}},
+	toxicroakalt: {baseStats: {hp: 83, atk: 126, def: 70, spa: 116, spd: 70, spe: 95}},
 	alakazam: {baseStats: {hp: 80, atk: 50, def: 50, spa: 135, spd: 95, spe: 120}},
 	alakazammega: {baseStats: {hp: 80, atk: 48, def: 60, spa: 175, spd: 105, spe: 162}},
 	dodrio: {baseStats: {hp: 90, atk: 115, def: 85, spa: 40, spd: 75, spe: 120}, abilities: {0: 'Triple Threat', 1: 'Speed Boost', H: 'Striker Frenzy'}},
@@ -5612,13 +5793,13 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	greatmarsh: {
 		name: "Great Marsh",
-		desc: "This Pokemon has Dry Skin and Adaptability's effects.",
-		shortDesc: "Dry Skin + Adaptability.",
+		desc: "This Pokemon has Dry Skin, Adaptability, Poison Touch, and Anticipation's effects. On switch-in, it removes foe Illusions.",
+		shortDesc: "Dry Skin + Adaptability + Poison Touch + Anticipation; removes foe Illusions on entry.",
 	},
 	blackfang: {
 		name: "Black Fang",
-		desc: "This Pokemon has Strong Jaw and Insomnia's effects.",
-		shortDesc: "Strong Jaw + Insomnia.",
+		desc: "This Pokemon has Strong Jaw, Insomnia, and Moxie's effects.",
+		shortDesc: "Strong Jaw + Insomnia + Moxie.",
 	},
 	fluffycraft: {
 		name: "Fluffy Craft",
@@ -5649,6 +5830,16 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 		name: "Unova Vanguard",
 		desc: "This Pokemon has Violent Rush and Wind Rider's effects.",
 		shortDesc: "Violent Rush + Wind Rider.",
+	},
+	unovawing: {
+		name: "Unova Wing",
+		desc: "This Pokemon has Super Luck, Competitive, and Unburden's effects.",
+		shortDesc: "+1 critical-hit stage; opposing stat drops give +2 Sp. Atk; item loss doubles Speed.",
+	},
+	aevianwing: {
+		name: "Aevian Wing",
+		desc: "This Pokemon has Scrappy, Rock Head, and Defiant's effects. It changes into Unfezant-Rejuv once when it enters battle.",
+		shortDesc: "Transforms once; Scrappy + Rock Head + Defiant.",
 	},
 	hisuianresolve: {
 		name: "Hisuian Resolve",
@@ -5707,13 +5898,23 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	forewarn: {
 		name: 'Forewarn',
-		desc: 'Reveals a strongest foe move on switch-in; Psychic Terrain gives +2 SpA; takes 0.8x move damage.',
-		shortDesc: 'Reveals a strongest foe move; Psychic Terrain +2 SpA; takes 0.8x move damage.',
+		desc: 'Reveals a strongest foe move and removes foe Illusions on switch-in; Psychic Terrain gives +2 SpA; takes 0.8x move damage.',
+		shortDesc: 'Reveals strongest foe move; removes Illusions; Psychic Terrain +2 SpA; takes 0.8x.',
 	},
 	frisk: {
 		name: 'Frisk',
-		desc: 'Reveals all foes\' items on switch-in; each foe has a 30% chance to be Embargoed.',
-		shortDesc: 'Reveals all foes\' items; each foe has a 30% chance to be Embargoed.',
+		desc: 'Reveals all foes\' items and removes foe Illusions on switch-in; each foe has a 30% chance to be Embargoed.',
+		shortDesc: 'Reveals items; removes Illusions; foes have a 30% Embargo chance.',
+	},
+	anticipation: {
+		name: 'Anticipation',
+		desc: 'Warns of super-effective or OHKO moves and removes foe Illusions on switch-in.',
+		shortDesc: 'Warns of dangerous moves; removes foe Illusions on entry.',
+	},
+	unaware: {
+		name: 'Unaware',
+		desc: 'Ignores foe stat stages when taking or dealing damage; removes foe Illusions on switch-in.',
+		shortDesc: 'Ignores foe stat stages; removes foe Illusions on entry.',
 	},
 	gluttony: {
 		name: 'Gluttony',
@@ -5999,6 +6200,11 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 		name: "Blade Mastery",
 		desc: "This Pokemon has Sharpness and Super Luck. Below half HP, its slicing moves gain +1 priority.",
 		shortDesc: "Sharpness + Super Luck; below half HP, slicing moves gain +1 priority.",
+	},
+	goldentalons: {
+		name: "Golden Talons",
+		desc: "This Pokemon has Stalwart, Good as Gold, and Sharpness's effects.",
+		shortDesc: "Stalwart + Good as Gold + Sharpness.",
 	},
 	blazingmane: {
 		name: "Blazing Mane",
@@ -6547,13 +6753,13 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	empress: {
 		name: 'Empress',
-		desc: "This Pokemon has Queenly Majesty and Royal Decree's effects.",
-		shortDesc: 'Queenly Majesty + Royal Decree.',
+		desc: "This Pokemon has Queenly Majesty and Royal Decree's effects, gains normal STAB on Fighting-type moves, and ignores the Fairy-type component of Poison- and Steel-type weaknesses.",
+		shortDesc: "Queenly Majesty + Royal Decree; Fighting STAB; ignores Fairy's Poison/Steel weakness.",
 	},
 	imperialprincess: {
 		name: 'Imperial Princess',
-		desc: "This Pokemon has Striker, Vital Spirit, and Moxie's effects.",
-		shortDesc: 'Striker + Vital Spirit + Moxie.',
+		desc: "This Pokemon has Striker, Vital Spirit, and Moxie's effects, gains normal STAB on Fighting-type moves, and ignores the Fairy-type component of Poison- and Steel-type weaknesses.",
+		shortDesc: "Striker + Vital Spirit + Moxie; Fighting STAB; ignores Fairy's Poison/Steel weakness.",
 	},
 	loyalguard: {
 		name: 'Loyal Guard',
@@ -8382,6 +8588,15 @@ const CUSTOM_LEARNSET_ADDITIONS: {[id: string]: {[id: string]: string[]}} = {
 	},
 };
 
+const CUSTOM_BODY_PRESS_LEARNSET_IDS = [
+	'jigglypuff', 'wigglytuff', 'graveler', 'golemalola', 'slowbrogalar', 'hypno',
+	'rhyhorn', 'taurospaldeacombat', 'taurospaldeablaze', 'taurospaldeaaqua', 'meganium',
+	'wooperpaldea', 'quagsire', 'ursaluna', 'ursalunabloodmoon', 'makuhita', 'numel',
+	'grumpig', 'regice', 'torterra', 'rampardos', 'hippopotas', 'abomasnow', 'emboar',
+	'eelektross', 'cubchoo', 'cobalion', 'goodrahisui', 'avalugghisui', 'crabominable',
+	'falinks', 'oinkolognef', 'scratchet', 'tomohawk', 'cresceidon', 'ramnarok', 'obliteryx',
+];
+
 const CUSTOM_LEARNSET_REMOVALS: {[id: string]: string[]} = {
 	abomasnow: ['partingshot'],
 	absol: ['partingshot'],
@@ -8494,7 +8709,7 @@ const CUSTOM_LEARNSET_REMOVALS: {[id: string]: string[]} = {
 
 const CUSTOM_BW_SPRITE_IDS = Object.keys(CUSTOM_BW_SPRITES);
 const CUSTOM_ANIMATED_BW_SPRITES = new Set([
-	'aggron', 'ariados', 'basculegion', 'basculegionf', 'butterfree', 'cacturne', 'charizard', 'cinderacegmax',
+	'aggron', 'ariados', 'butterfree', 'cacturne', 'cinderacegmax',
 	'crobat', 'dragapult', 'duraludon', 'dusknoir', 'electivire', 'empoleon', 'espeon', 'garbodorgmax',
 	'garchomp', 'garchompf', 'garchompmega', 'gardevoirmega', 'gengar', 'glalie', 'gliscor', 'grimmsnarl',
 	'heracross', 'hydreigon', 'infernape', 'lilligant', 'lucariomega', 'luxray', 'magmortar', 'magneton',
@@ -8502,7 +8717,7 @@ const CUSTOM_ANIMATED_BW_SPRITES = new Set([
 	'ribombee', 'rotom', 'rotomfan', 'rotomfrost', 'rotomheat', 'rotommow', 'rotomwash', 'salamence',
 	'scolipede', 'slowbro', 'slowking', 'sneasel', 'staraptor', 'steelix', 'talonflame',
 	'torterra', 'typhlosion', 'tyrantrum', 'venusaur', 'victreebel', 'vikavolt',
-	'whimsicott', 'zoroark', 'furfrou', 'furfrouheart', 'furfroustar', 'furfroudiamond', 'furfroudebutante',
+	'whimsicott', 'zoroark', 'furfrou', 'furfrouheart', 'furfroustar', 'furfroudiamond', 'furfroudebutante', 'unfezantrejuv',
 	'furfroumatron', 'furfroudandy', 'furfroulareine', 'furfroukabuki', 'furfroupharaoh',
 ]);
 const CUSTOM_SPECIES_IDS = Object.keys(CUSTOM_SPECIES);
@@ -8533,7 +8748,7 @@ function mergeCustomSpeciesData(baseData: AnyObject, existingData: AnyObject | u
 function isCustomVisualForm(data: AnyObject) {
 	const forme = data?.forme;
 	if (typeof forme !== 'string') return false;
-	return ['Alt', 'Aevian', 'East-Aevian', 'Hisui-Alt', 'Pulse', 'Azzy', 'Azzy2', 'Spring', 'Summer', 'Autumn', 'Winter', 'Rejuv', 'Reborn'].includes(forme) ||
+	return ['Alt', 'Aevian', 'East-Aevian', 'Hisui-Alt', 'Pulse', 'Azzy', 'Azzy2', 'Spring', 'Summer', 'Autumn', 'Winter', 'Rejuv', 'Reborn', 'Perfect'].includes(forme) ||
 		forme.endsWith('-Alt');
 }
 function isCustomVisualVariantName(name: unknown, speciesTable?: AnyObject) {
@@ -8604,7 +8819,12 @@ export function getCustomCosmeticFormes(species: AnyObject) {
 	window.ensureCustomSpecies?.();
 	const familyId = customVariantFamilyId(species);
 	const profileFormes = PROFILE_VARIANT_FORMES[familyId];
-	if (profileFormes) return profileFormes.filter(forme => Dex.species.get(forme).exists);
+	// Alternate-form records can come from BattlePokedexAltForms without the
+	// Species wrapper's `exists` flag. Only an explicit false means missing.
+	if (profileFormes) return profileFormes.filter(forme => {
+		const profile = Dex.species.get(forme);
+		return profile.exists !== false && !!profile.name;
+	});
 	const baseData = window.BattlePokedex?.[familyId] || {};
 	const names: string[] = [];
 	const addName = (name: unknown) => {
@@ -8773,10 +8993,12 @@ const CUSTOM_TEAM_PREVIEW_BACK_GMAX_SPRITE_MAX_WIDTH = 96;
 const CUSTOM_TEAM_PREVIEW_BACK_GMAX_SPRITE_MAX_HEIGHT = 96;
 const CUSTOM_TEAM_PREVIEW_FRONT_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: number}} = {
 	charizard: {w: 78, h: 78},
+	charizardalt: {w: 78, h: 78},
 	dragapult: {w: 78, h: 78},
 };
 const CUSTOM_TEAM_PREVIEW_BACK_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: number}} = {
 	charizard: {w: 84, h: 84},
+	charizardalt: {w: 84, h: 84},
 	dragapult: {w: 84, h: 84},
 };
 const CUSTOM_MEDIUM_SPRITE_MIN_DIMENSION = 104;
@@ -8863,8 +9085,6 @@ const CUSTOM_BATTLE_FRONT_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: n
 	venusaurmega: {w: 96, h: 96},
 	weavile: {w: 52, h: 52},
 	weavilef: {w: 52, h: 52},
-	weavilealt: {w: 52, h: 52},
-	weavilealtf: {w: 52, h: 52},
 	corviknight: {w: 86, h: 98},
 	whimsicott: {w: 60, h: 60},
 	zoroark: {w: 88, h: 88},
@@ -8950,8 +9170,6 @@ const CUSTOM_BATTLE_BACK_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: nu
 	vaporeon: {w: 108, h: 108},
 	weavile: {w: 46, h: 46},
 	weavilef: {w: 46, h: 46},
-	weavilealt: {w: 46, h: 46},
-	weavilealtf: {w: 46, h: 46},
 	whimsicott: {w: 60, h: 60},
 	zoroark: {w: 96, h: 96},
 	zoroarkhisui: {w: 96, h: 96},
@@ -9046,7 +9264,7 @@ const CUSTOM_TEAMBUILDER_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: nu
 	zoroarkhisui: {w: 74, h: 74},
 };
 
-function applyCustomTeambuilderSpriteSizing(spriteData: SpriteData, id: string, spriteDimensions: {w: number, h: number}) {
+function applyCustomTeambuilderSpriteSizing(spriteData: TeambuilderSpriteData, id: string, spriteDimensions: {w: number, h: number}) {
 	const sizeOverride = CUSTOM_TEAMBUILDER_SPRITE_SIZE_OVERRIDES[id];
 	const isGmaxCustomForm = id.includes('gmax');
 	const isLargeCustomForm = id.includes('mega') || isGmaxCustomForm || id.includes('battlebond');
@@ -9108,8 +9326,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 	},
 	abysslure: {
 		name: 'Abyss Lure',
-		desc: "This Pokemon has Lightning Rod, Storm Drain, and Illuminate's effects.",
-		shortDesc: 'Lightning Rod + Storm Drain + Illuminate.',
+		desc: 'This Pokemon redirects Electric- and Water-type moves to itself, is immune to them, restores 1/4 of its maximum HP, and raises its Attack and Special Attack by 1 stage. It also has Illuminate\'s effect.',
+		shortDesc: 'Redirects Electric/Water; heals 1/4; +1 Atk/SpA; Illuminate.',
 	},
 	bogbody: {
 		name: 'Bog Body',
@@ -9152,8 +9370,12 @@ const CUSTOM_ABILITY_COMPONENT_OVERRIDES: {[id: string]: readonly ID[]} = {
 	empress: ['queenlymajesty' as ID, 'royaldecree' as ID],
 	imperialprincess: ['striker' as ID, 'vitalspirit' as ID, 'moxie' as ID],
 	loyalguard: ['friendguard' as ID, 'guarddog' as ID, 'intimidate' as ID],
-	abysslure: ['lightningrod' as ID, 'stormdrain' as ID, 'illuminate' as ID],
+	abysslure: ['lightningrod' as ID, 'stormdrain' as ID, 'voltabsorb' as ID, 'waterabsorb' as ID, 'illuminate' as ID],
+	greatmarsh: ['dryskin' as ID, 'adaptability' as ID, 'poisontouch' as ID, 'anticipation' as ID],
+	blackfang: ['strongjaw' as ID, 'insomnia' as ID, 'moxie' as ID],
 	bogbody: ['dryskin' as ID, 'thickfat' as ID, 'unaware' as ID],
+	unovawing: ['superluck' as ID, 'competitive' as ID, 'unburden' as ID],
+	aevianwing: ['scrappy' as ID, 'rockhead' as ID, 'defiant' as ID],
 	frostsiren: ['refrigerate' as ID, 'forewarn' as ID, 'dryskin' as ID],
 	// Ultra Ego implements Mold Breaker's effect without delegating to the base Ability.
 	ultraego: ['moldbreaker' as ID],
@@ -9191,6 +9413,7 @@ const CUSTOM_ABILITY_COMPONENT_OVERRIDES: {[id: string]: readonly ID[]} = {
 	hisuianpath: ['sapsipper' as ID, 'innerfocus' as ID, 'fluffy' as ID],
 	hydratyrant: ['hydrabond' as ID, 'berserk' as ID, 'selfsufficient' as ID],
 	blademastery: ['sharpness' as ID, 'superluck' as ID],
+	goldentalons: ['stalwart' as ID, 'goodasgold' as ID, 'sharpness' as ID],
 	toxicevolution: ['corrosion' as ID, 'dualwield' as ID, 'shielddust' as ID],
 	parasitism: ['dryskin' as ID, 'magicguard' as ID],
 	resuscitation: ['selfrepair' as ID, 'magicguard' as ID],
@@ -9292,7 +9515,9 @@ function getNativeSpriteSizeSet(id: string) {
 }
 
 function getCustomSpriteSize(id: string, customData: AnyObject, isFront: boolean, shiny?: boolean) {
-	return getSpriteSize(customNativeBWSpriteSizes[id], isFront, shiny) || getSpriteSize(customData, isFront, shiny)!;
+	// Custom asset metadata is authoritative. Native dimensions describe the
+	// original sprite and can be stale after a custom PNG replaces it.
+	return getSpriteSize(customData, isFront, shiny) || getSpriteSize(customNativeBWSpriteSizes[id], isFront, shiny)!;
 }
 
 function ensureCustomBWSpriteData() {
@@ -9345,6 +9570,12 @@ function applyCustomTeambuilderLearnsets(table: AnyObject) {
 			table.learnsets[id][moveid] = encodeCustomLearnsetSources(CUSTOM_LEARNSET_ADDITIONS[id][moveid]);
 		}
 	}
+for (const id of CUSTOM_BODY_PRESS_LEARNSET_IDS) {
+	if (!table.learnsets[id]) table.learnsets[id] = {};
+	if (!table.learnsets[id].bodypress) {
+		table.learnsets[id].bodypress = encodeCustomLearnsetSources(['9M']);
+	}
+}
 	if (table.learnsets.eeveestarter) {
 		table.learnsets.eeveestarteralt = {
 			...table.learnsets.eeveestarter,
@@ -10242,7 +10473,7 @@ const Dex = new class implements ModdedDex {
 		if (Dex.prefs('nopastgens')) graphicsGen = 6;
 		if (Dex.prefs('bwgfx') && graphicsGen >= 6) graphicsGen = 5;
 		// Prefer selected native BW animations where their silhouettes fit the battle scene better.
-		if (species.id === 'heracross' || species.id === 'hydreigon' || species.id === 'milotic' || species.id === 'miloticalt' || species.id === 'miloticaevian' || species.id === 'gastrodonaevian' || species.id === 'gastrodoneastaevian' || species.id === 'hypnopulse' || species.id === 'pidgeot' || species.id === 'staraptor' || species.id === 'pinsirmega' ||
+		if (species.id === 'heracross' || species.id === 'hydreigon' || species.id === 'milotic' || species.id === 'miloticalt' || species.id === 'miloticaevian' || species.id === 'gastrodonaevian' || species.id === 'gastrodoneastaevian' || species.id === 'hypnopulse' || species.id === 'pidgeot' || species.id === 'staraptor' || species.id === 'pinsirmega' || species.id === 'frosmoth' || species.id === 'runerigus' || species.id === 'manectric' || species.id === 'manectricmega' || species.id === 'basculegion' || species.id === 'basculegionf' ||
 			(!isFront && (species.id === 'lucario' || species.id === 'lucariomega'))) graphicsGen = 5;
 		spriteData.gen = Math.max(graphicsGen, Math.min(species.gen, 5));
 		const baseDir = ['', 'gen1', 'gen2', 'gen3', 'gen4', 'gen5', '', '', '', ''][spriteData.gen];
@@ -10626,13 +10857,13 @@ const Dex = new class implements ModdedDex {
 		};
 		if (isShiny) spriteData.shiny = true;
 		if (id.startsWith('silvally')) spriteData.shiny = true;
-		if (id === 'greninjabond') {
+		if (id === 'greninjabond' && !CUSTOM_BW_SPRITES[id]) {
 			spriteData.spriteid = 'greninja';
 			spriteData.x = -6;
 			spriteData.y = -7;
 			return spriteData;
 		}
-		if (CUSTOM_ICON_SPRITES[id] || CUSTOM_BW_SPRITES[id]) {
+		if (CUSTOM_STATIC_BATTLE_SPRITES[id] || CUSTOM_ICON_SPRITES[id] || CUSTOM_BW_SPRITES[id]) {
 			spriteData.spriteDir = 'sprites/gen5';
 			const customStaticData = CUSTOM_STATIC_BATTLE_SPRITES[id];
 			const customBWData = CUSTOM_BW_SPRITES[id];
