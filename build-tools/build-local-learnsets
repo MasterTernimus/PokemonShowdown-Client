@@ -1,0 +1,73 @@
+#!/usr/bin/env node
+'use strict';
+
+const fs = require('node:fs');
+const path = require('node:path');
+
+const rootDir = path.resolve(__dirname, '..');
+const serverDir = path.resolve(process.argv[2] || path.join(rootDir, '../PokemonShowdown-Reborn'));
+const dexPath = path.join(serverDir, 'dist/sim/dex.js');
+const learnsetsPath = path.join(serverDir, 'dist/data/learnsets.js');
+
+if (!fs.existsSync(dexPath) || !fs.existsSync(learnsetsPath)) {
+	throw new Error(`Build the server first; compiled data was not found under ${serverDir}`);
+}
+
+const {Dex} = require(dexPath);
+Dex.includeData();
+const {Learnsets} = require(learnsetsPath);
+const teambuilderPath = path.join(rootDir, 'play.pokemonshowdown.com/data/teambuilder-tables.js');
+delete require.cache[require.resolve(teambuilderPath)];
+const {BattleTeambuilderTable} = require(teambuilderPath);
+
+const gen3HMs = new Set(['cut', 'fly', 'surf', 'strength', 'flash', 'rocksmash', 'waterfall', 'dive']);
+const gen4HMs = new Set(['cut', 'fly', 'surf', 'strength', 'rocksmash', 'waterfall', 'rockclimb']);
+const encodedLearnsets = {};
+
+for (const [id, data] of Object.entries(Learnsets)) {
+	if (!data.learnset) continue;
+	encodedLearnsets[id] = {};
+	for (const [move, sources] of Object.entries(data.learnset)) {
+		const gens = sources.map(source => Number(source[0])).filter(Boolean);
+		const minGen = Math.min(...gens);
+		let legalGens = '';
+		if (minGen <= 4 && (gen3HMs.has(move) || gen4HMs.has(move))) {
+			let available = false;
+			if (minGen === 3) {
+				legalGens += '3';
+				available = true;
+			}
+			if (available) available = !gen3HMs.has(move);
+			if (available || gens.includes(4)) {
+				legalGens += '4';
+				available = true;
+			}
+			if (available) available = !gen4HMs.has(move);
+			const newerGens = gens.filter(gen => gen > 4);
+			const minUpperGen = available ? 5 : Math.min(...newerGens);
+			legalGens += Number.isFinite(minUpperGen) ? '0123456789'.slice(minUpperGen) : '';
+		} else if (Number.isFinite(minGen)) {
+			legalGens = '0123456789'.slice(minGen);
+		}
+		if (gens.includes(6)) legalGens += 'p';
+		if (gens.includes(7) && sources.some(source => source.startsWith('7') && source !== '7V')) legalGens += 'q';
+		if (gens.includes(8) && sources.some(source => source.startsWith('8') && source !== '8V')) legalGens += 'g';
+		if (gens.includes(9) && sources.some(source => source.startsWith('9') && source !== '9V')) legalGens += 'a';
+		encodedLearnsets[id][move] = legalGens;
+	}
+}
+
+BattleTeambuilderTable.learnsets = encodedLearnsets;
+const serializedTable = JSON.stringify(BattleTeambuilderTable).replace(/['\\]/g, '\\$&');
+fs.writeFileSync(
+	teambuilderPath,
+	`// DO NOT EDIT - automatically built with build-tools/build-local-learnsets\n\n` +
+		`exports.BattleTeambuilderTable = JSON.parse('${serializedTable}');\n`
+);
+
+const clientLearnsetsPath = path.join(rootDir, 'play.pokemonshowdown.com/data/learnsets.js');
+const clientLearnsetsJsonPath = path.join(rootDir, 'play.pokemonshowdown.com/data/learnsets.json');
+fs.writeFileSync(clientLearnsetsPath, `exports.BattleLearnsets = ${JSON.stringify(Learnsets)};\n`);
+fs.writeFileSync(clientLearnsetsJsonPath, JSON.stringify(Learnsets));
+
+console.log(`Synced ${Object.keys(encodedLearnsets).length} learnsets from ${serverDir}`);
