@@ -1170,12 +1170,16 @@ class BattleTooltips {
 						}
 					}
 				}
-				if (weather === 'raindance' || weather === 'primordialsea') {
-					if (ability === 'swiftswim') {
-						speedModifiers.push(2);
-					}
-				}
 			}
+		}
+		if (
+			ability === 'swiftswim' &&
+			(['raindance', 'primordialsea'].includes(weather) ||
+				this.battle.hasPseudoWeather('Water Surface Terrain') ||
+				this.battle.hasPseudoWeather('Underwater Terrain') ||
+				this.battle.hasPseudoWeather('Murkwater Surface Terrain'))
+		) {
+			speedModifiers.push(2);
 		}
 		if (ability === 'defeatist' && serverPokemon.hp <= serverPokemon.maxhp / 2) {
 			stats.atk = Math.floor(stats.atk * 0.5);

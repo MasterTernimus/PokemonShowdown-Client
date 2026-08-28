@@ -974,7 +974,10 @@ class AvatarsPanel extends PSRoomPanel {
 			avatars.push([i, window.BattleAvatarNumbers?.[i] || `${i}`]);
 		}
 		const customAvatars: [string, string][] = [
-			['alainalt', 'Alain_alt'], ['shiv', 'Shiv'], ['shivalt', 'Shiv_alt'],
+			['alainalt', 'Alain_alt'], ['amelia', 'Amelia'], ['aurora', 'Aurora'],
+			['geara', 'Geara'], ['lin', 'Lin'], ['sirius', 'Sirius'],
+			['shiv', 'Shiv'], ['shivalt', 'Shiv_alt'], ['taka', 'Taka'],
+			['tyrant', 'Tyrant'], ['zetta', 'Zetta'],
 		];
 
 		return <PSPanelWrapper room={room} width={1210}><div class="pad">

@@ -57,7 +57,9 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 			name: 'Sawsbuck-Spring',
 			baseSpecies: 'Sawsbuck',
 			forme: 'Spring',
-			spriteid: 'sawsbuck-spring',
+			// Spring uses the base Sawsbuck artwork; the other seasons have
+			// dedicated sprite files.
+			spriteid: 'sawsbuck',
 			otherFormes: ['Sawsbuck-Summer', 'Sawsbuck-Autumn', 'Sawsbuck-Winter'],
 			formeOrder: ['Sawsbuck', 'Sawsbuck-Spring', 'Sawsbuck-Summer', 'Sawsbuck-Autumn', 'Sawsbuck-Winter'],
 		},
@@ -656,6 +658,39 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 			isNonstandard: 'Custom',
 		},
 	},
+	crobatalt: {
+		base: 'crobat',
+		data: {
+			name: 'Crobat-Alt',
+			baseSpecies: 'Crobat',
+			forme: 'Alt',
+			spriteid: 'crobat-alt',
+			changesFrom: 'Crobat',
+			isNonstandard: 'Custom',
+		},
+	},
+	corsolaalt: {
+		base: 'corsola',
+		data: {
+			name: 'Corsola-Alt',
+			baseSpecies: 'Corsola',
+			forme: 'Alt',
+			spriteid: 'corsola-alt',
+			changesFrom: 'Corsola',
+			isNonstandard: 'Custom',
+		},
+	},
+	mukpulse: {
+		base: 'muk',
+		data: {
+			name: 'Muk-Pulse',
+			baseSpecies: 'Muk',
+			forme: 'Pulse',
+			spriteid: 'muk-pulse',
+			changesFrom: 'Muk',
+			isNonstandard: 'Custom',
+		},
+	},
 	tentacruelalt: {
 		base: 'tentacruel',
 		data: {
@@ -704,35 +739,35 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 			isNonstandard: 'Custom',
 		},
 	},
-	mightyenaalt: {
+	mightyenadeso: {
 		base: 'mightyena',
 		data: {
-			name: 'Mightyena-Alt',
+			name: 'Mightyena-Deso',
 			baseSpecies: 'Mightyena',
-			forme: 'Alt',
-			spriteid: 'mightyena-alt',
+			forme: 'Deso',
+			spriteid: 'mightyena-deso',
 			changesFrom: 'Mightyena',
 			isNonstandard: 'Custom',
 		},
 	},
-	toxicroakalt: {
+	toxicroakdeso: {
 		base: 'toxicroak',
 		data: {
-			name: 'Toxicroak-Alt',
+			name: 'Toxicroak-Deso',
 			baseSpecies: 'Toxicroak',
-			forme: 'Alt',
-			spriteid: 'toxicroak-alt',
+			forme: 'Deso',
+			spriteid: 'toxicroak-deso',
 			changesFrom: 'Toxicroak',
 			isNonstandard: 'Custom',
 		},
 	},
-	cinccinoalt: {
+	cinccinodeso: {
 		base: 'cinccino',
 		data: {
-			name: 'Cinccino-Alt',
+			name: 'Cinccino-Deso',
 			baseSpecies: 'Cinccino',
-			forme: 'Alt',
-			spriteid: 'cinccino-alt',
+			forme: 'Deso',
+			spriteid: 'cinccino-deso',
 			changesFrom: 'Cinccino',
 			isNonstandard: 'Custom',
 		},
@@ -1387,6 +1422,9 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 
 const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
 	cacturnealt: 'cacturne-alt',
+	crobatalt: 'crobat-alt',
+	corsolaalt: 'corsola-alt',
+	mukpulse: 'muk-pulse',
 	granbullalt: 'granbull-alt',
 	lanturnalt: 'lanturn-alt',
 	jynxalt: 'jynx-alt',
@@ -1396,9 +1434,9 @@ const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
 	arcaninealt: 'arcanine-alt',
 	emboaralt: 'emboar-alt',
 	emboarmegaalt: 'emboar-mega-alt',
-	mightyenaalt: 'mightyena-alt',
-	toxicroakalt: 'toxicroak-alt',
-	cinccinoalt: 'cinccino-alt',
+	mightyenadeso: 'mightyena-deso',
+	toxicroakdeso: 'toxicroak-deso',
+	cinccinodeso: 'cinccino-deso',
 	gligaralt: 'gligar-alt',
 	gliscoralt: 'gliscor-alt',
 	sneasleraevian: 'sneasler-aevian',
@@ -1412,7 +1450,7 @@ const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
 	unfezantrejuv: 'unfezant-rejuv',
 	gastrodonazzy: 'gastrodon-azzy',
 	gastrodonazzy2: 'gastrodon-azzy2',
-	sawsbuckspring: 'sawsbuck-spring',
+	sawsbuckspring: 'sawsbuck',
 	sawsbucksummer: 'sawsbuck-summer',
 	sawsbuckautumn: 'sawsbuck-autumn',
 	sawsbuckwinter: 'sawsbuck-winter',
@@ -2100,19 +2138,19 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 		shinyFront: {w: 192, h: 192},
 		shinyBack: {w: 192, h: 192},
 	},
-	mightyenaalt: {
+	mightyenadeso: {
 		front: {w: 172, h: 154},
 		back: {w: 162, h: 152},
 		shinyFront: {w: 172, h: 154},
 		shinyBack: {w: 162, h: 152},
 	},
-	toxicroakalt: {
+	toxicroakdeso: {
 		front: {w: 180, h: 152},
 		back: {w: 130, h: 128},
 		shinyFront: {w: 180, h: 152},
 		shinyBack: {w: 130, h: 128},
 	},
-	cinccinoalt: {
+	cinccinodeso: {
 		front: {w: 166, h: 162},
 		back: {w: 142, h: 142},
 		shinyFront: {w: 166, h: 162},
@@ -2863,6 +2901,27 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 		shinyFront: {w: 192, h: 192},
 		shinyBack: {w: 192, h: 192},
 	},
+	crobatalt: {
+		num: 169,
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
+	},
+	corsolaalt: {
+		num: 222,
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
+	},
+	mukpulse: {
+		num: 89,
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
+	},
 	tentacruelalt: {
 		num: 73,
 		front: {w: 192, h: 192},
@@ -3465,21 +3524,21 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 		shinyFront: {w: 132, h: 160},
 		shinyBack: {w: 132, h: 160},
 	},
-	mightyenaalt: {
+	mightyenadeso: {
 		num: 262,
 		front: {w: 172, h: 154},
 		back: {w: 162, h: 152},
 		shinyFront: {w: 172, h: 154},
 		shinyBack: {w: 162, h: 152},
 	},
-	toxicroakalt: {
+	toxicroakdeso: {
 		num: 454,
 		front: {w: 180, h: 152},
 		back: {w: 130, h: 128},
 		shinyFront: {w: 180, h: 152},
 		shinyBack: {w: 130, h: 128},
 	},
-	cinccinoalt: {
+	cinccinodeso: {
 		num: 573,
 		front: {w: 166, h: 162},
 		back: {w: 142, h: 142},
@@ -4701,6 +4760,7 @@ Object.assign(CUSTOM_SPECIES, {
 			baseSpecies: 'Bronzong',
 			forme: 'Rejuv',
 			spriteid: 'bronzong-rejuv',
+			types: ['Steel'],
 			changesFrom: 'Bronzong',
 			isNonstandard: 'Custom',
 		},
@@ -4892,7 +4952,7 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 	},
 	blastoise: {
 		baseStats: {hp: 79, atk: 75, def: 95, spa: 100, spd: 108, spe: 78},
-		abilities: {0: 'Water Barrage', 1: 'Regenerator', H: 'Shell Armor'},
+		abilities: {0: 'Water Barrage', 1: 'Bulletproof', H: 'Shell Armor'},
 	},
 	blastoisemega: {
 		baseStats: {hp: 79, atk: 85, def: 135, spa: 135, spd: 123, spe: 78},
@@ -4915,9 +4975,9 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 	},
 	mightyena: {
 		baseStats: {hp: 90, atk: 125, def: 90, spa: 60, spd: 80, spe: 125},
-		otherFormes: ['Mightyena-Alt'],
-		cosmeticFormes: ['Mightyena-Alt'],
-		formeOrder: ['Mightyena', 'Mightyena-Alt'],
+		otherFormes: ['Mightyena-Deso'],
+		cosmeticFormes: ['Mightyena-Deso'],
+		formeOrder: ['Mightyena', 'Mightyena-Deso'],
 	},
 	granbull: {
 		types: ['Fairy', 'Ground'],
@@ -4927,34 +4987,72 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		cosmeticFormes: ['Granbull-Alt'],
 		formeOrder: ['Granbull', 'Granbull-Alt'],
 	},
+	corsola: {
+		types: ['Water', 'Rock'],
+		baseStats: {hp: 85, atk: 65, def: 80, spa: 130, spd: 135, spe: 35},
+		abilities: {0: 'Withering Shell', 1: 'Perish Body', H: 'Lightning Rod'},
+		otherFormes: ['Corsola-Galar', 'Corsola-Alt'],
+		cosmeticFormes: ['Corsola-Alt'],
+		formeOrder: ['Corsola', 'Corsola-Galar', 'Corsola-Alt'],
+	},
+	crobat: {
+		baseStats: {hp: 80, atk: 100, def: 80, spa: 100, spd: 80, spe: 130},
+		abilities: {0: 'Inner Focus', 1: 'Wind Rider', H: 'Winged Wraith'},
+		otherFormes: ['Crobat-Alt'],
+		cosmeticFormes: ['Crobat-Alt'],
+		formeOrder: ['Crobat', 'Crobat-Alt'],
+	},
+	crobatalt: {
+		types: ['Poison', 'Flying'],
+		baseStats: {hp: 80, atk: 100, def: 80, spa: 100, spd: 80, spe: 130},
+		abilities: {0: 'Inner Focus', 1: 'Wind Rider', H: 'Winged Wraith'},
+	},
+	corsolaalt: {
+		types: ['Water', 'Rock'],
+		baseStats: {hp: 85, atk: 65, def: 80, spa: 130, spd: 135, spe: 35},
+		abilities: {0: 'Withering Shell', 1: 'Perish Body', H: 'Lightning Rod'},
+	},
+	muk: {
+		types: ['Poison', 'Ghost'],
+		baseStats: {hp: 105, atk: 105, def: 75, spa: 98, spd: 157, spe: 30},
+		abilities: {0: 'Toxic Mess', 1: 'Adaptive Waste', H: 'Accumulation'},
+		otherFormes: ['Muk-Alola', 'Muk-Pulse'],
+		cosmeticFormes: ['Muk-Pulse'],
+		formeOrder: ['Muk', 'Muk-Alola', 'Muk-Pulse'],
+	},
+	mukpulse: {
+		types: ['Poison', 'Ghost'],
+		baseStats: {hp: 105, atk: 105, def: 75, spa: 98, spd: 157, spe: 30},
+		abilities: {0: 'Toxic Mess', 1: 'Adaptive Waste', H: 'Accumulation'},
+	},
 	granbullalt: {
 		types: ['Fairy', 'Ground'],
 		baseStats: {hp: 120, atk: 145, def: 95, spa: 70, spd: 85, spe: 45},
 		abilities: {0: 'Loyal Guard', 1: 'Violent Rush', H: 'Strong Jaw'},
 	},
-	mightyenaalt: {
+	mightyenadeso: {
 		baseStats: {hp: 90, atk: 125, def: 85, spa: 60, spd: 80, spe: 125},
 		abilities: {0: 'Intimidate', 1: 'Black Fang', H: 'Stakeout'},
 	},
 	toxicroak: {
 		baseStats: {hp: 83, atk: 131, def: 70, spa: 121, spd: 70, spe: 95},
 		abilities: {0: 'Battle Fervor', 1: 'Corrosion', H: 'Great Marsh'},
-		otherFormes: ['Toxicroak-Alt'],
-		cosmeticFormes: ['Toxicroak-Alt'],
-		formeOrder: ['Toxicroak', 'Toxicroak-Alt'],
+		otherFormes: ['Toxicroak-Deso'],
+		cosmeticFormes: ['Toxicroak-Deso'],
+		formeOrder: ['Toxicroak', 'Toxicroak-Deso'],
 	},
-	toxicroakalt: {
+	toxicroakdeso: {
 		baseStats: {hp: 83, atk: 126, def: 70, spa: 116, spd: 70, spe: 95},
 		abilities: {0: 'Battle Fervor', 1: 'Corrosion', H: 'Great Marsh'},
 	},
 	cinccino: {
 		baseStats: {hp: 75, atk: 110, def: 85, spa: 70, spd: 85, spe: 125},
 		abilities: {0: 'Pixilate', 1: 'Skill Link', H: 'Fluffy Craft'},
-		otherFormes: ['Cinccino-Alt'],
-		cosmeticFormes: ['Cinccino-Alt'],
-		formeOrder: ['Cinccino', 'Cinccino-Alt'],
+		otherFormes: ['Cinccino-Deso'],
+		cosmeticFormes: ['Cinccino-Deso'],
+		formeOrder: ['Cinccino', 'Cinccino-Deso'],
 	},
-	cinccinoalt: {
+	cinccinodeso: {
 		baseStats: {hp: 75, atk: 110, def: 100, spa: 60, spd: 100, spe: 125},
 		abilities: {0: 'Pixilate', 1: 'Skill Link', H: 'Fluffy Craft'},
 	},
@@ -5019,8 +5117,18 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 	exploud: {baseStats: {hp: 119, atk: 101, def: 73, spa: 116, spd: 73, spe: 88}},
 	hariyama: {baseStats: {hp: 134, atk: 120, def: 88, spa: 40, spd: 88, spe: 50}},
 	wailord: {baseStats: {hp: 160, atk: 40, def: 75, spa: 105, spd: 90, spe: 50}},
-	zangoose: {baseStats: {hp: 105, atk: 135, def: 85, spa: 60, spd: 90, spe: 95}},
-	beartic: {baseStats: {hp: 110, atk: 130, def: 85, spa: 70, spd: 80, spe: 65}},
+	zangoose: {types: ['Normal', 'Steel'], baseStats: {hp: 105, atk: 135, def: 85, spa: 60, spd: 90, spe: 95}},
+	beartic: {baseStats: {hp: 110, atk: 130, def: 90, spa: 55, spd: 85, spe: 75}, abilities: {0: 'Raging Beast', 1: 'Slush Rush', H: 'Swift Swim'}},
+	mandibuzz: {
+		baseStats: {hp: 115, atk: 65, def: 115, spa: 65, spd: 100, spe: 80},
+		abilities: {0: 'Scavenger', 1: 'Stamina', H: 'Weak Armor'},
+	},
+	toxapex: {
+		baseStats: {hp: 85, atk: 73, def: 152, spa: 63, spd: 142, spe: 35},
+		abilities: {0: 'Battle Armor', 1: 'Toxic Spines', H: 'Regenerator'},
+	},
+	wishiwashi: {baseStats: {hp: 80, atk: 20, def: 20, spa: 25, spd: 25, spe: 40}},
+	wishiwashischool: {baseStats: {hp: 80, atk: 135, def: 130, spa: 135, spd: 130, spe: 60}},
 	swellow: {baseStats: {hp: 72, atk: 85, def: 72, spa: 85, spd: 61, spe: 127}},
 	rabsca: {baseStats: {hp: 100, atk: 50, def: 90, spa: 120, spd: 100, spe: 60}, abilities: {0: 'Sand Rush', 1: 'Elevate', H: 'Telepathy'}},
 	salazzle: {abilities: {0: 'Corrosion', 1: 'Dragonize', H: 'Aroma Veil'}},
@@ -5054,8 +5162,12 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		abilities: {0: 'Levitate', 1: 'Prankster', H: 'Perish Body'},
 	},
 	ursaring: {
-		baseStats: {hp: 115, atk: 130, def: 115, spa: 40, spd: 115, spe: 35},
-		abilities: {0: 'Guts', 1: 'Tough Claws', H: 'Intimidate'},
+		baseStats: {hp: 100, atk: 130, def: 80, spa: 40, spd: 80, spe: 70},
+		abilities: {0: 'Raging Beast', 1: 'Tough Claws', H: 'Intimidate'},
+	},
+	pangoro: {
+		baseStats: {hp: 105, atk: 126, def: 76, spa: 69, spd: 69, spe: 70},
+		abilities: {0: 'Iron Fist', 1: 'Raging Beast', H: 'Scrappy'},
 	},
 	tropius: {baseStats: {hp: 115, atk: 90, def: 95, spa: 75, spd: 95, spe: 70}},
 	huntail: {baseStats: {hp: 70, atk: 114, def: 115, spa: 94, spd: 85, spe: 52}},
@@ -5178,10 +5290,25 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 	golurk: {abilities: {0: 'Iron Fist', 1: 'No Guard', H: 'Self Repair'}},
 	sawsbuck: {
 		name: 'Sawsbuck',
-		spriteid: 'sawsbuck-spring',
 		otherFormes: ['Sawsbuck-Spring', 'Sawsbuck-Summer', 'Sawsbuck-Autumn', 'Sawsbuck-Winter'],
 		cosmeticFormes: ['Sawsbuck-Spring', 'Sawsbuck-Summer', 'Sawsbuck-Autumn', 'Sawsbuck-Winter'],
 		formeOrder: ['Sawsbuck', 'Sawsbuck-Spring', 'Sawsbuck-Summer', 'Sawsbuck-Autumn', 'Sawsbuck-Winter'],
+	},
+	silvally: {
+		cosmeticFormes: [
+			'Silvally', 'Silvally-Fighting', 'Silvally-Flying', 'Silvally-Poison',
+			'Silvally-Ground', 'Silvally-Rock', 'Silvally-Bug', 'Silvally-Ghost',
+			'Silvally-Steel', 'Silvally-Fire', 'Silvally-Water', 'Silvally-Grass',
+			'Silvally-Electric', 'Silvally-Psychic', 'Silvally-Ice', 'Silvally-Dragon',
+			'Silvally-Dark', 'Silvally-Fairy',
+		],
+		formeOrder: [
+			'Silvally', 'Silvally-Fighting', 'Silvally-Flying', 'Silvally-Poison',
+			'Silvally-Ground', 'Silvally-Rock', 'Silvally-Bug', 'Silvally-Ghost',
+			'Silvally-Steel', 'Silvally-Fire', 'Silvally-Water', 'Silvally-Grass',
+			'Silvally-Electric', 'Silvally-Psychic', 'Silvally-Ice', 'Silvally-Dragon',
+			'Silvally-Dark', 'Silvally-Fairy',
+		],
 	},
 	aegislash: {
 		otherFormes: ['Aegislash-Blade', 'Aegislash-Gmax'],
@@ -5562,11 +5689,28 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 };
 
 Object.assign(CUSTOM_SPECIES_UPDATES, {
+	vileplume: {abilities: {0: 'Chlorophyll', 1: 'Storm Drain', H: 'Toxic Sink'}},
 	cacturne: {baseStats: {spa: 90}},
-	mightyena: {baseStats: {hp: 90, atk: 125, def: 90, spa: 60, spd: 80, spe: 125}},
-	mightyenaalt: {baseStats: {hp: 90, atk: 125, def: 85, spa: 60, spd: 80, spe: 125}},
-	cinccino: {baseStats: {hp: 75, atk: 110, def: 85, spa: 70, spd: 85, spe: 125}},
-	cinccinoalt: {baseStats: {hp: 75, atk: 110, def: 100, spa: 60, spd: 100, spe: 125}},
+	mightyena: {
+		baseStats: {hp: 90, atk: 125, def: 90, spa: 60, spd: 80, spe: 125},
+		abilities: {0: 'Intimidate', 1: 'Black Fang', H: 'Stakeout'},
+		otherFormes: ['Mightyena-Deso'], cosmeticFormes: ['Mightyena-Deso'],
+		formeOrder: ['Mightyena', 'Mightyena-Deso'],
+	},
+	mightyenadeso: {
+		baseStats: {hp: 90, atk: 125, def: 85, spa: 60, spd: 80, spe: 125},
+		abilities: {0: 'Intimidate', 1: 'Black Fang', H: 'Stakeout'},
+	},
+	cinccino: {
+		baseStats: {hp: 75, atk: 110, def: 85, spa: 70, spd: 85, spe: 125},
+		abilities: {0: 'Pixilate', 1: 'Skill Link', H: 'Fluffy Craft'},
+		otherFormes: ['Cinccino-Deso'], cosmeticFormes: ['Cinccino-Deso'],
+		formeOrder: ['Cinccino', 'Cinccino-Deso'],
+	},
+	cinccinodeso: {
+		baseStats: {hp: 75, atk: 110, def: 100, spa: 60, spd: 100, spe: 125},
+		abilities: {0: 'Pixilate', 1: 'Skill Link', H: 'Fluffy Craft'},
+	},
 	crawdaunt: {
 		baseStats: {hp: 83, atk: 120, def: 105, spa: 100, spd: 77, spe: 60},
 		abilities: {0: 'Adaptability', 1: 'Sheer Force', H: 'Cruel Shell'},
@@ -5581,8 +5725,16 @@ Object.assign(CUSTOM_SPECIES_UPDATES, {
 	samurotthisui: {baseStats: {hp: 90, atk: 110, def: 75, spa: 105, spd: 65, spe: 95}},
 	samurottalt: {baseStats: {hp: 95, atk: 110, def: 90, spa: 120, spd: 80, spe: 75}},
 	samurotthisuialt: {baseStats: {hp: 90, atk: 110, def: 75, spa: 105, spd: 65, spe: 95}},
-	toxicroak: {baseStats: {hp: 83, atk: 131, def: 70, spa: 121, spd: 70, spe: 95}},
-	toxicroakalt: {baseStats: {hp: 83, atk: 126, def: 70, spa: 116, spd: 70, spe: 95}},
+	toxicroak: {
+		baseStats: {hp: 83, atk: 131, def: 70, spa: 121, spd: 70, spe: 95},
+		abilities: {0: 'Battle Fervor', 1: 'Corrosion', H: 'Great Marsh'},
+		otherFormes: ['Toxicroak-Deso'], cosmeticFormes: ['Toxicroak-Deso'],
+		formeOrder: ['Toxicroak', 'Toxicroak-Deso'],
+	},
+	toxicroakdeso: {
+		baseStats: {hp: 83, atk: 126, def: 70, spa: 116, spd: 70, spe: 95},
+		abilities: {0: 'Battle Fervor', 1: 'Corrosion', H: 'Great Marsh'},
+	},
 	alakazam: {baseStats: {hp: 80, atk: 50, def: 50, spa: 135, spd: 95, spe: 120}},
 	alakazammega: {baseStats: {hp: 80, atk: 48, def: 60, spa: 175, spd: 105, spe: 162}},
 	dodrio: {baseStats: {hp: 90, atk: 115, def: 85, spa: 40, spd: 75, spe: 120}, abilities: {0: 'Triple Threat', 1: 'Speed Boost', H: 'Striker Frenzy'}},
@@ -5602,8 +5754,11 @@ Object.assign(CUSTOM_SPECIES_UPDATES, {
 	breloom: {baseStats: {hp: 80, atk: 140, def: 110, spa: 50, spd: 90, spe: 70}},
 	golurk: {baseStats: {hp: 100, atk: 125, def: 100, spa: 45, spd: 95, spe: 55}},
 	golurkmega: {baseStats: {hp: 100, atk: 170, def: 125, spa: 70, spd: 100, spe: 55}},
-	blastoise: {baseStats: {hp: 89, atk: 80, def: 95, spa: 100, spd: 108, spe: 78}},
-	blastoisemega: {baseStats: {hp: 79, atk: 90, def: 135, spa: 135, spd: 123, spe: 78}},
+	blastoise: {
+		baseStats: {hp: 89, atk: 80, def: 95, spa: 100, spd: 108, spe: 78},
+		abilities: {0: 'Water Barrage', 1: 'Bulletproof', H: 'Shell Armor'},
+	},
+	blastoisemega: {baseStats: {hp: 89, atk: 90, def: 135, spa: 135, spd: 123, spe: 78}},
 	blastoisegmax: {baseStats: {hp: 145, atk: 80, def: 95, spa: 100, spd: 108, spe: 78}},
 	grapploct: {baseStats: {hp: 80, atk: 128, def: 85, spa: 40, spd: 90, spe: 82}},
 	incineroar: {baseStats: {hp: 95, atk: 115, def: 90, spa: 85, spd: 90, spe: 60}},
@@ -5748,8 +5903,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	schooling: {
 		name: 'Schooling',
-		desc: "Wishiwashi changes between Solo and School Form based on its HP. School Form has Hydra Bond and Self Repair's effects.",
-		shortDesc: 'Changes form by HP; School Form has Hydra Bond + Self Repair.',
+		desc: "A level 20 or higher Wishiwashi changes to School Form above 1/4 maximum HP and returns to Solo Form at or below 1/4 maximum HP. While in School Form, it has Hydra Bond, Self Repair, and Filter's effects.",
+		shortDesc: 'Changes form by HP; School: Hydra Bond + Self Repair + Filter.',
 	},
 	scarecrow: {
 		name: 'Scarecrow',
@@ -5783,8 +5938,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	download: {
 		name: 'Download',
-		desc: "In Singles, this Pokemon's Attack and Special Attack rise by 1 stage on switch-in. In other battle types, it compares all foes' combined Defense and Special Defense and raises the matching offensive stat. Its first damaging move after switching in is a critical hit.",
-		shortDesc: "Singles: +1 Atk/SpA; other battles compare all foes; first damaging move crits.",
+		desc: "On switch-in, this Pokemon compares the opposing side's combined Defense and Special Defense. If Defense is lower, its Attack rises; otherwise its Special Attack rises. Its first damaging move after switching in is a critical hit.",
+		shortDesc: "Boosts the offense targeting foes' weaker defense; first damaging move crits.",
 	},
 	watercompaction: {
 		name: 'Water Compaction',
@@ -6103,8 +6258,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	spiralevolution: {
 		name: "Spiral Evolution",
-		desc: "This Pokemon has Adaptability, Levitate, and Dual Wield. Its damaging moves pierce protection for reduced damage, its non-priority moves act first in Trick Room, and it takes 0.8x damage.",
-		shortDesc: "Adaptability + Levitate + Dual Wield; protection pierce; Trick Room priority; takes 0.8x.",
+		desc: "This Pokemon has Adaptability, Levitate, Dual Wield, and Infiltrator. Its damaging moves pierce protection for reduced damage, its normal-priority moves act first in Trick Room without gaining priority, and it takes 0.8x damage.",
+		shortDesc: "Adaptability + Levitate + Dual Wield + Infiltrator; protection pierce; first in Trick Room; takes 0.8x.",
 	},
 	accumulation: {
 		name: "Accumulation",
@@ -6290,6 +6445,21 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 		name: "Crumbling Shell",
 		desc: "When this Pokemon is hit by a Physical attack, Stealth Rock is set on the attacker's side unless a water field is active or that side already has Stealth Rock.",
 		shortDesc: "Physical hits set Stealth Rock, except in water fields.",
+	},
+	witheringshell: {
+		name: 'Withering Shell',
+		desc: "This Pokemon has Crumbling Shell, Self Repair, and Weak Armor's effects. Physical hits set Stealth Rock on the attacker's side except in water fields, lower this Pokemon's Defense by 1, and raise its Speed by 2. It restores 1/16 max HP each turn, is immune to Hail and Sandstorm damage, and cures status while restoring 1/3 max HP when switching out.",
+		shortDesc: 'Crumbling Shell + Self Repair + Weak Armor.',
+	},
+	wingedwraith: {
+		name: 'Winged Wraith',
+		desc: "This Pokemon has Infiltrator and Gale Wings' effects.",
+		shortDesc: 'Infiltrator + Gale Wings.',
+	},
+	toxicsink: {
+		name: 'Toxic Sink',
+		desc: 'This Pokemon has Effect Spore and Invigorate. It redirects and absorbs Poison-type moves, raising its Attack and Special Attack by 1.',
+		shortDesc: 'Effect Spore + Invigorate; absorbs Poison moves for +1 Atk/SpA.',
 	},
 	cursedkeepsake: {
 		name: "Cursed Keepsake",
@@ -7658,8 +7828,8 @@ const CUSTOM_MOVE_UPDATES: {[id: string]: AnyObject} = {
 		shortDesc: '120 BP; recoil damage.',
 	},
 	focuspunch: {
-		desc: 'The user loses its focus if hit before moving. This move bypasses Protect at full power; otherwise, it deals 50 Base Power.',
-		shortDesc: 'Bypasses Protect at full power; otherwise 50 BP.',
+		desc: 'If the user is hit by a damaging move before it moves, this move\'s power is reduced to 50. It bypasses Protect at full power.',
+		shortDesc: '50 BP if interrupted; bypasses Protect at full power.',
 	},
 	foresight: {
 		desc: "Ignores the target's positive Evasion and lets Normal- and Fighting-type attacks hit Ghost types. The user takes half damage from Ghost-type attacks until it switches out.",
@@ -8320,7 +8490,8 @@ const CUSTOM_LEARNSET_ADDITIONS: {[id: string]: {[id: string]: string[]}} = {
 		bouncybubble: ['9M'],
 	},
 	wishiwashi: {
-		bouncybubble: ['9M'],
+		bouncybubble: ['9M'], bounce: ['9M'], icefang: ['9M'], ironhead: ['9M'],
+		psychicfangs: ['9M'], strength: ['9M'], tripledive: ['9M'], wavecrash: ['9M'],
 	},
 	flareon: {
 		sizzleslide: ['9M'],
@@ -8481,6 +8652,7 @@ const CUSTOM_LEARNSET_ADDITIONS: {[id: string]: {[id: string]: string[]}} = {
 	},
 	qwilfish: {
 		spikecannon: ['9M'],
+		soak: ['9M'],
 	},
 	qwilfishhisui: {
 		spikecannon: ['9M'],
@@ -8634,11 +8806,6 @@ const CUSTOM_LEARNSET_REMOVALS: {[id: string]: string[]} = {
 	goodra: ['roaroftime', 'slackoff'],
 	goodrahisui: ['roaroftime', 'slackoff'],
 	goomy: ['roaroftime'],
-	granbull: {
-		highhorsepower: ['9M'], spiritbreak: ['9M'], stompingtantrum: ['9M'], suckerpunch: ['9M'],
-		partingshot: ['9M'], closecombat: ['9M'], smellingsalts: ['9M'], brickbreak: ['9M'],
-		leechlife: ['9M'], poweruppunch: ['9M'], wideguard: ['9M'],
-	},
 	gyarados: ['dragonascent'],
 	hitmonchan: ['ragefist'],
 	hydreigon: ['roaroftime'],
@@ -8748,7 +8915,7 @@ function mergeCustomSpeciesData(baseData: AnyObject, existingData: AnyObject | u
 function isCustomVisualForm(data: AnyObject) {
 	const forme = data?.forme;
 	if (typeof forme !== 'string') return false;
-	return ['Alt', 'Aevian', 'East-Aevian', 'Hisui-Alt', 'Pulse', 'Azzy', 'Azzy2', 'Spring', 'Summer', 'Autumn', 'Winter', 'Rejuv', 'Reborn', 'Perfect'].includes(forme) ||
+	return ['Alt', 'Aevian', 'East-Aevian', 'Hisui-Alt', 'Pulse', 'Azzy', 'Azzy2', 'Spring', 'Summer', 'Autumn', 'Winter', 'Rejuv', 'Reborn', 'Perfect', 'Deso'].includes(forme) ||
 		forme.endsWith('-Alt');
 }
 function isCustomVisualVariantName(name: unknown, speciesTable?: AnyObject) {
@@ -8819,12 +8986,10 @@ export function getCustomCosmeticFormes(species: AnyObject) {
 	window.ensureCustomSpecies?.();
 	const familyId = customVariantFamilyId(species);
 	const profileFormes = PROFILE_VARIANT_FORMES[familyId];
-	// Alternate-form records can come from BattlePokedexAltForms without the
-	// Species wrapper's `exists` flag. Only an explicit false means missing.
-	if (profileFormes) return profileFormes.filter(forme => {
-		const profile = Dex.species.get(forme);
-		return profile.exists !== false && !!profile.name;
-	});
+	// This is the canonical list for profile families. The server owns these
+	// forms, so do not hide a selector because a raw alternate-form record has
+	// not been wrapped by the client yet.
+	if (profileFormes) return profileFormes;
 	const baseData = window.BattlePokedex?.[familyId] || {};
 	const names: string[] = [];
 	const addName = (name: unknown) => {
@@ -9356,6 +9521,36 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		desc: "On entry, copies the active foe's types and adds them to this Pokemon's typing. Matching attacks deal half damage unless this Pokemon is immune. Reflect Type refreshes the copied types.",
 		shortDesc: 'Copies foe types; adds them to its typing; matching attacks deal 0.5x unless immune.',
 	},
+	toxicmess: {
+		name: 'Toxic Mess',
+		desc: "This Pokemon has Stench, Poison Touch, and Gluttony's effects.",
+		shortDesc: 'Stench + Poison Touch + Gluttony.',
+	},
+	adaptivewaste: {
+		name: 'Adaptive Waste',
+		desc: "This Pokemon has Protean and Regenerator's effects.",
+		shortDesc: 'Protean + Regenerator.',
+	},
+	ragingbeast: {
+		name: 'Raging Beast',
+		desc: "This Pokemon has Guts and Mold Breaker's effects.",
+		shortDesc: 'Guts + Mold Breaker.',
+	},
+	scavenger: {
+		name: 'Scavenger',
+		desc: "This Pokemon has Overcoat, Big Pecks, and Regenerator's effects.",
+		shortDesc: 'Overcoat + Big Pecks + Regenerator.',
+	},
+	toxicspines: {
+		name: 'Toxic Spines',
+		desc: "This Pokemon has Toxic Debris, Corrosion, and Merciless's effects.",
+		shortDesc: 'Toxic Debris + Corrosion + Merciless.',
+	},
+	lunardread: {
+		name: 'Lunar Dread',
+		desc: "This Pokemon has Magic Guard and Pressure's effects.",
+		shortDesc: 'Magic Guard + Pressure.',
+	},
 });
 const CUSTOM_ABILITY_UPDATE_IDS = Object.keys(CUSTOM_ABILITY_UPDATES);
 const CUSTOM_ARROW_MOVE_IDS = [
@@ -9365,6 +9560,16 @@ const CUSTOM_ARROW_MOVE_IDS = [
 ];
 const CUSTOM_HORN_MOVE_IDS = ['hornattack', 'horndrill', 'hornleech', 'megahorn'];
 const CUSTOM_ABILITY_COMPONENT_OVERRIDES: {[id: string]: readonly ID[]} = {
+	schooling: ['hydrabond' as ID, 'selfrepair' as ID, 'filter' as ID],
+	wingedwraith: ['infiltrator' as ID, 'galewings' as ID],
+	toxicsink: ['effectspore' as ID, 'stormdrain' as ID, 'invigorate' as ID],
+	toxicmess: ['stench' as ID, 'poisontouch' as ID, 'gluttony' as ID],
+	adaptivewaste: ['protean' as ID, 'regenerator' as ID],
+	ragingbeast: ['guts' as ID, 'moldbreaker' as ID],
+	lunardread: ['magicguard' as ID, 'pressure' as ID],
+	scavenger: ['overcoat' as ID, 'bigpecks' as ID, 'regenerator' as ID],
+	toxicspines: ['toxicdebris' as ID, 'corrosion' as ID, 'merciless' as ID],
+	witheringshell: ['crumblingshell' as ID, 'selfrepair' as ID, 'weakarmor' as ID],
 	caverndrake: ['eartheater' as ID, 'solidrock' as ID, 'moldbreaker' as ID],
 	roughscale: ['roughskin' as ID, 'toughclaws' as ID],
 	empress: ['queenlymajesty' as ID, 'royaldecree' as ID],
@@ -9417,6 +9622,7 @@ const CUSTOM_ABILITY_COMPONENT_OVERRIDES: {[id: string]: readonly ID[]} = {
 	toxicevolution: ['corrosion' as ID, 'dualwield' as ID, 'shielddust' as ID],
 	parasitism: ['dryskin' as ID, 'magicguard' as ID],
 	resuscitation: ['selfrepair' as ID, 'magicguard' as ID],
+	spiralevolution: ['adaptability' as ID, 'levitate' as ID, 'dualwield' as ID, 'infiltrator' as ID],
 	venombastion: ['stamina' as ID],
 	wrathshield: ['bulletproof' as ID, 'dauntlessshield' as ID, 'selfrepair' as ID],
 	hellfireeclipse: ['solarpower' as ID, 'darkaura' as ID],
@@ -9438,6 +9644,15 @@ const CUSTOM_MOVE_UPDATE_IDS = Object.keys(CUSTOM_MOVE_UPDATES);
 const CUSTOM_LEARNSET_REPLACEMENT_IDS = Object.keys(CUSTOM_LEARNSET_REPLACEMENTS);
 Object.assign(CUSTOM_LEARNSET_ADDITIONS, {
 	alakazam: {darkpulse: ['9M'], snarl: ['9M']},
+	mandibuzz: {
+		bulkup: ['9M'], spikes: ['9M'], taunt: ['9M'], thief: ['9M'], toxic: ['9M'],
+		whirlwind: ['9M'], icywind: ['9M'],
+	},
+	granbull: {
+		highhorsepower: ['9M'], spiritbreak: ['9M'], stompingtantrum: ['9M'], suckerpunch: ['9M'],
+		partingshot: ['9M'], closecombat: ['9M'], smellingsalts: ['9M'], brickbreak: ['9M'],
+		leechlife: ['9M'], poweruppunch: ['9M'], wideguard: ['9M'],
+	},
 	druddigon: {
 		accelerock: ['9M'], headsmash: ['9M'], flareblitz: ['9M'], dragondance: ['9M'],
 		dragonrush: ['9M'], ragingfury: ['9M'], swordsdance: ['9M'],
@@ -9450,6 +9665,21 @@ Object.assign(CUSTOM_LEARNSET_ADDITIONS, {
 	gliscor: {
 		barbbarrage: ['9M'], poisonfang: ['9M'], toxicthread: ['9M'], sludgewave: ['9M'],
 		clearsmog: ['9M'], poisonjab: ['9M'], poisontail: ['9M'], venomdrench: ['9M'],
+	},
+	rotomheat: {
+		flameburst: ['9M'], blazingtorque: ['9M'], fireblast: ['9M'], flamethrower: ['9M'], willowisp: ['9M'],
+	},
+	rotomwash: {
+		splishysplash: ['9M'], surf: ['9M'],
+	},
+	rotomfrost: {
+		freezyfrost: ['9M'], frostbreath: ['9M'], icebeam: ['9M'],
+	},
+	rotomfan: {
+		razorwind: ['9M'], aircutter: ['9M'], hurricane: ['9M'],
+	},
+	rotommow: {
+		leechseed: ['9M'], energyball: ['9M'], gigadrain: ['9M'],
 	},
 });
 const CUSTOM_LEARNSET_ADDITION_IDS = Object.keys(CUSTOM_LEARNSET_ADDITIONS);
@@ -9570,12 +9800,22 @@ function applyCustomTeambuilderLearnsets(table: AnyObject) {
 			table.learnsets[id][moveid] = encodeCustomLearnsetSources(CUSTOM_LEARNSET_ADDITIONS[id][moveid]);
 		}
 	}
-for (const id of CUSTOM_BODY_PRESS_LEARNSET_IDS) {
-	if (!table.learnsets[id]) table.learnsets[id] = {};
-	if (!table.learnsets[id].bodypress) {
-		table.learnsets[id].bodypress = encodeCustomLearnsetSources(['9M']);
+	// Appliance forms inherit Rotom's normal learnset in the simulator. The
+	// generated client table stores only each form's signature move, so merge
+	// the base learnset before applying the appliance-specific additions.
+	for (const id of ['rotomheat', 'rotomwash', 'rotomfrost', 'rotomfan', 'rotommow']) {
+		if (!table.learnsets.rotom) continue;
+		table.learnsets[id] = {
+			...table.learnsets.rotom,
+			...(table.learnsets[id] || {}),
+		};
 	}
-}
+	for (const id of CUSTOM_BODY_PRESS_LEARNSET_IDS) {
+		if (!table.learnsets[id]) table.learnsets[id] = {};
+		if (!table.learnsets[id].bodypress) {
+			table.learnsets[id].bodypress = encodeCustomLearnsetSources(['9M']);
+		}
+	}
 	if (table.learnsets.eeveestarter) {
 		table.learnsets.eeveestarteralt = {
 			...table.learnsets.eeveestarter,
@@ -9602,6 +9842,24 @@ for (const id of CUSTOM_BODY_PRESS_LEARNSET_IDS) {
 		table.learnsets.alakazammegaalt = {
 			...table.learnsets.alakazamalt,
 			...(table.learnsets.alakazammegaalt || {}),
+		};
+	}
+	if (table.learnsets.corsola) {
+		table.learnsets.corsolaalt = {
+			...table.learnsets.corsola,
+			...(table.learnsets.corsolaalt || {}),
+		};
+	}
+	if (table.learnsets.crobat) {
+		table.learnsets.crobatalt = {
+			...table.learnsets.crobat,
+			...(table.learnsets.crobatalt || {}),
+		};
+	}
+	if (table.learnsets.muk) {
+		table.learnsets.mukpulse = {
+			...table.learnsets.muk,
+			...(table.learnsets.mukpulse || {}),
 		};
 	}
 	for (const [target, base] of [['goodrahisui', 'goodra'], ['arcaninehisui', 'arcanine']]) {
@@ -9738,6 +9996,9 @@ function ensureCustomDataPatches() {
 		window.BattleAliases.alchemicsurge = 'Alchemist Surge';
 		window.BattleAliases.amuletcoin = 'Star Sweet';
 		window.BattleAliases.richard = 'Jellicent-Azzy';
+		window.BattleAliases.mightyenaalt = 'Mightyena-Deso';
+		window.BattleAliases.toxicroakalt = 'Toxicroak-Deso';
+		window.BattleAliases.cinccinoalt = 'Cinccino-Deso';
 	}
 	if (window.BattleAbilities && customAbilityDataTable !== window.BattleAbilities) {
 		for (const id of CUSTOM_ABILITY_UPDATE_IDS) {
@@ -10935,8 +11196,11 @@ const Dex = new class implements ModdedDex {
 	getTeambuilderSprite(pokemon: any, gen: number = 0) {
 		if (!pokemon) return '';
 		const data = this.getTeambuilderSpriteData(pokemon, gen);
-		const shiny = (data.shiny ? '-shiny' : '');
-		return 'background-image:url(' + Dex.resourcePrefix + data.spriteDir + shiny + '/' + data.spriteid + '.png);background-position:' + data.x + 'px ' + data.y + 'px;background-repeat:no-repeat' + (data.backgroundSize ? ';background-size:' + data.backgroundSize : '');
+		const spriteURL = Dex.resourcePrefix + data.spriteDir + '/' + data.spriteid + '.png';
+		const backgroundImage = data.shiny ?
+			'url(' + Dex.resourcePrefix + data.spriteDir + '-shiny/' + data.spriteid + '.png),url(' + spriteURL + ')' :
+			'url(' + spriteURL + ')';
+		return 'background-image:' + backgroundImage + ';background-position:' + data.x + 'px ' + data.y + 'px;background-repeat:no-repeat' + (data.backgroundSize ? ';background-size:' + data.backgroundSize : '');
 	}
 
 	getItemIcon(item: any) {
