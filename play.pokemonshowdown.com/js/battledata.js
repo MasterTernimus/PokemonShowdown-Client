@@ -7566,6 +7566,10 @@ shortDesc:'Invigorate + Flower Veil; permanently becomes Florges-Reborn on entry
 };
 
 var CUSTOM_MOVE_UPDATES={
+crosspoison:{
+basePower:85,
+secondary:{chance:30,status:'psn'}
+},
 radiantassault:{
 num:10005,
 name:'Radiant Assault',
@@ -7848,8 +7852,8 @@ desc:'20 BP, +1 priority, high critical-hit ratio, and hits 2-6 times. Shadow Cu
 shortDesc:'+1 priority. 20 BP, high crit, hits 2-6. Greninja forms have special patterns.'
 },
 crosspoison:{
-desc:"Has a high critical hit ratio and a 50% chance to badly poison the target. If the target is poisoned or badly poisoned, this move ignores the target's positive Defense boosts.",
-shortDesc:"High crit. 50% toxic; ignores positive Def boosts vs poisoned targets."
+desc:"Has a high critical hit ratio and a 30% chance to poison the target. If the target is poisoned or badly poisoned, this move ignores the target's positive Defense boosts.",
+shortDesc:"High crit. 30% poison; ignores positive Def boosts vs poisoned targets."
 },
 icespinner:{
 desc:"After a successful hit, ends Core terrain and temporary fields created by Z moves or abilities. Permanent fields remain.",
