@@ -63,11 +63,37 @@ const SINISTER_BLAZE_EEVEE_MOVES: readonly ID[] = [
 	'veeveevolley', 'wish', 'yawn', 'glitchygraphics',
 ] as ID[];
 
+// Ascendance Eevee is an event-style profile with its own complete move pool.
+// Keep it isolated from Eevee-Starter's normal inherited learnset.
+const ASCENDANCE_EEVEE_MOVES: readonly ID[] = [
+	'sing',
+	'radiantassault', 'tackle', 'helpinghand', 'tailwhip', 'sandattack', 'batonpass',
+	'aurorabeam', 'honeclaws', 'confusion', 'morningsun', 'sonicboom', 'punishment',
+	'secretpower', 'healpulse', 'spiritbreak', 'mindreader', 'recover', 'luminacrash',
+	'healingwish', 'dazzlinggleam', 'extremespeed', 'revivalblessing', 'sacredfire', 'judgment',
+	'acrobatics', 'aerialace', 'agility', 'alluringvoice', 'ancientpower', 'attract', 'aurasphere',
+	'auroraveil', 'bodyslam', 'calmmind', 'celebrate', 'charm', 'cosmicpower', 'crunch', 'curse',
+	'defog', 'dig', 'disarmingvoice', 'dragonpulse', 'earthpower', 'echoedvoice', 'encore', 'endeavor',
+	'expandingforce', 'faketears', 'falseswipe', 'flail', 'flamethrower', 'flash', 'flashcannon',
+	'flipturn', 'focusenergy', 'futuresight', 'headbutt', 'healbell', 'heatwave', 'hiddenpower',
+	'hurricane', 'hyperbeam', 'hypervoice', 'irontail', 'laserfocus', 'lightscreen', 'magiccoat',
+	'meteorbeam', 'metronome', 'mimic', 'mudslap', 'mysticalfire', 'naturepower', 'payday', 'playrough',
+	'psychic', 'psychicfangs', 'raindance', 'reflect', 'retaliate', 'round', 'scald', 'shadowball',
+	'shockwave', 'storedpower', 'sunnyday', 'superfang', 'swagger', 'tailslap', 'tailwind',
+	'terrainpulse', 'thunderfang', 'triattack', 'uturn', 'vacuumwave', 'weatherball', 'workup',
+	'zenheadbutt', 'lastresort',
+	'babydolleyes', 'baddybad', 'bite', 'bouncybubble', 'buzzybuzz', 'captivate', 'copycat', 'covet',
+	'detect', 'doubleedge', 'doublekick', 'dustydrift', 'endure', 'freezyfrost', 'glitzyglow', 'growl',
+	'ickyinjection', 'naturalgift', 'punchypummel', 'quickattack', 'rockyrampage', 'sappyseed',
+	'scalyscorn', 'sizzlyslide', 'sparklyswirl', 'spookyspell', 'stabbyswarm', 'steelystrike', 'swift',
+	'synchronoise', 'takedown', 'tickle', 'trailblaze', 'twirlytwister', 'veeveevolley', 'wish', 'yawn',
+] as ID[];
+
 // These forms are created by battle abilities and are not valid stored team
 // choices. They must remain resolvable to the battle renderer without adding
 // clutter or invalid entries to the team builder.
 const BATTLE_ONLY_VISUAL_SPECIES = new Set<ID>([
-	'auroreon', 'soluneon', 'abysseon',
+	'auroreon', 'soluneon', 'abysseon', 'divineon',
 ]);
 
 function isZProteanBattleOnlySpecies(id: string) {
@@ -92,14 +118,26 @@ function isHiddenTeamBuilderSpecies(id: string, includeSawsbuckBase = false) {
 
 const CUSTOM_VISUAL_FORME_MARKERS = new Set([
 	'Alt', 'Aevian', 'East-Aevian', 'Pulse', 'Azzy', 'Azzy2',
-	'Spring', 'Summer', 'Autumn', 'Winter',
+	'Spring', 'Summer', 'Autumn', 'Winter', 'Rejuv', 'Reborn', 'Perfect', 'Deso',
+	'Rocky', 'Fiery', 'Icy',
 ]);
 
 function isCustomSearchVisualForm(species: AnyObject) {
+	if (!species || typeof species !== 'object') return false;
 	const forme = species?.forme;
+	if (species?.isNonstandard === 'Custom') return true;
 	if (typeof forme !== 'string') return false;
 	return CUSTOM_VISUAL_FORME_MARKERS.has(forme) || forme.endsWith('-Alt') ||
 		[...CUSTOM_VISUAL_FORME_MARKERS].some(marker => forme.endsWith(`-${marker}`));
+}
+
+function matchesCustomSearchGroup(species: AnyObject, query: string) {
+	const name = toID(species?.name);
+	const forme = toID(species?.forme);
+	if (query === 'rejuv') return forme === 'rejuv' || name.endsWith('rejuv');
+	if (query === 'aevian') return forme.includes('aevian') || name.includes('aevian');
+	if (query === 'deso') return forme === 'deso' || name.endsWith('deso') || name === 'umbreonperfect';
+	return false;
 }
 
 function isExplicitFurfrouVariantSearch(species: AnyObject, query: string) {
@@ -306,9 +344,11 @@ class DexSearch {
 				// Explicit -custom searches reveal hidden stored variants, but never
 				// expose battle-only visual destinations used by abilities.
 				if (isBattleOnlyVisualSpecies(id)) return false;
-				return (isCustomSearchVisualForm(species) || isExplicitFurfrouVariantSearch(species, customSpeciesQuery)) &&
-					(customOnly || toID(species.name) === customSpeciesQuery ||
-						window.getCustomVisualFamilyId?.(species) === customSpeciesQuery);
+				const isCustomSpecies = isCustomSearchVisualForm(species) ||
+					isExplicitFurfrouVariantSearch(species, customSpeciesQuery);
+				return isCustomSpecies && (customOnly || matchesCustomSearchGroup(species, customSpeciesQuery) ||
+					toID(species.name) === customSpeciesQuery ||
+					window.getCustomVisualFamilyId?.(species) === customSpeciesQuery);
 			}) as ID[];
 		}
 		if (customOnly) {
@@ -1327,7 +1367,7 @@ class BattleAbilitySearch extends BattleTypedSearch<'ability'> {
 			abilitySet.push(['header', "Hidden Ability"]);
 			abilitySet.push(['ability', toID(species.abilities['H'])]);
 		}
-		const eventAbilitySlots = ['S', 'E', 'F'] as const;
+		const eventAbilitySlots = ['S', 'E', 'F', 'G'] as const;
 		const eventAbilities = eventAbilitySlots
 			.map(slot => species.abilities[slot])
 			.filter((ability): ability is string => !!ability);
@@ -1481,9 +1521,18 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 		let abilityid: ID = set ? toID(set.ability) : '' as ID;
 		const itemid: ID = set ? toID(set.item) : '' as ID;
 		if (
-			['eeveestarter', 'eeveestarteralt'].includes(species.id) &&
+			['eeveestarter', 'eeveestarteralt', 'divineon'].includes(species.id) &&
 			abilityid === 'sinisterblaze' && SINISTER_BLAZE_EEVEE_MOVES.includes(id)
 		) {
+			return true;
+		}
+		if (
+			['eeveestarter', 'eeveestarteralt', 'divineon'].includes(species.id) &&
+			abilityid === 'ascendance' && ASCENDANCE_EEVEE_MOVES.includes(id)
+		) {
+			return true;
+		}
+		if (species.id === 'umbreon' && abilityid === 'ascendance' && id === 'radiantassault') {
 			return true;
 		}
 
@@ -1877,11 +1926,20 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 			'punchypummel', 'twirlytwister', 'rockyrampage', 'dustydrift', 'steelystrike',
 			'stabbyswarm', 'ickyinjection', 'scalyscorn',
 		];
-		const isEeveeStarter = species.id === 'eeveestarter' || species.id === 'eeveestarteralt';
+		const isEeveeStarter = ['eeveestarter', 'eeveestarteralt', 'divineon'].includes(species.id);
+		const isUmbreonAscendance = species.id === 'umbreon' && toID(this.set?.ability) === 'ascendance';
 		if (isEeveeStarter && toID(this.set?.ability) === 'sinisterblaze') {
 			// Ability-specific replacement: do not inherit Eevee-Starter's broad pool.
 			moves = [...SINISTER_BLAZE_EEVEE_MOVES];
 			sketchMoves = [];
+		}
+		if (isEeveeStarter && toID(this.set?.ability) === 'ascendance') {
+			// Ability-specific replacement: Ascendance has only its declared pool.
+			moves = [...ASCENDANCE_EEVEE_MOVES];
+			sketchMoves = [];
+		}
+		if (species.id === 'umbreon' && !isUmbreonAscendance) {
+			moves = moves.filter(id => id !== 'radiantassault');
 		}
 		if (isEeveeStarter) {
 			const priority = new Map(eeveeStarterMoveOrder.map((id, index) => [id, index]));
@@ -1897,6 +1955,9 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 			});
 		} else {
 			moves.sort();
+		}
+		if (isUmbreonAscendance) {
+			moves = ['radiantassault', ...moves.filter(id => id !== 'radiantassault')];
 		}
 		sketchMoves.sort();
 

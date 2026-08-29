@@ -36013,6 +36013,7 @@ BattleMoveAnims['genesissupernova'] = {anim: BattleMoveAnims['psychoboost'].anim
 BattleMoveAnims['10000000voltthunderbolt'] = {anim: BattleMoveAnims['triattack'].anim};
 BattleMoveAnims['menacingmoonrazemaelstrom'] = {anim: BattleMoveAnims['moongeistbeam'].anim};
 BattleMoveAnims['lightthatburnsthesky'] = {anim: BattleMoveAnims['fusionflare'].anim};
+BattleMoveAnims['radiantassault'] = {anim: BattleMoveAnims['lightthatburnsthesky'].anim};
 
 BattleMoveAnims['maxflutterby'] = BattleMoveAnims['savagespinout'];
 BattleMoveAnims['gmaxbefuddle'] = BattleMoveAnims['savagespinout'];

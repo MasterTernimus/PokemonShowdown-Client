@@ -1591,7 +1591,7 @@ class BattleTooltips {
 			}
 		}
 
-		if (move.id === 'photongeyser' || move.id === 'lightthatburnsthesky' ||
+		if (move.id === 'photongeyser' || move.id === 'lightthatburnsthesky' || move.id === 'radiantassault' ||
 			move.id === 'terablast' && pokemon.terastallized) {
 			const stats = this.calculateModifiedStats(pokemon, serverPokemon, true);
 			if (stats.atk > stats.spa) category = 'Physical';

@@ -821,6 +821,9 @@ export class TeamEditorState extends PSModel {
 	getDefaultItem(speciesName: string) {
 		const species = this.dex.species.get(speciesName);
 		let items = species.requiredItems;
+		if (isSilvallySpecies(species.name) && toID(species.name) !== 'silvally' && items.length === 1) {
+			return items[0];
+		}
 		if (this.gen !== 7 && !this.isNatDex) {
 			// Require plates on Arceus when Z crystals don't exist
 			items = items.filter(i => !i.endsWith('ium Z'));
