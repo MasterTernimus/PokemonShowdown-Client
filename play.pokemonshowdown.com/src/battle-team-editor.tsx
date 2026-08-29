@@ -27,6 +27,30 @@ function isSilvallySpecies(name: string) {
 	return toID(name).startsWith('silvally');
 }
 
+const SILVALLY_MEMORY_ITEMS: {[speciesId: string]: string} = {
+	silvallyfighting: 'Fighting Memory',
+	silvallyflying: 'Flying Memory',
+	silvallypoison: 'Poison Memory',
+	silvallyground: 'Ground Memory',
+	silvallyrock: 'Rock Memory',
+	silvallybug: 'Bug Memory',
+	silvallyghost: 'Ghost Memory',
+	silvallysteel: 'Steel Memory',
+	silvallyfire: 'Fire Memory',
+	silvallywater: 'Water Memory',
+	silvallygrass: 'Grass Memory',
+	silvallyelectric: 'Electric Memory',
+	silvallypsychic: 'Psychic Memory',
+	silvallyice: 'Ice Memory',
+	silvallydragon: 'Dragon Memory',
+	silvallydark: 'Dark Memory',
+	silvallyfairy: 'Fairy Memory',
+};
+
+function getSilvallyMemoryItem(speciesName: string) {
+	return SILVALLY_MEMORY_ITEMS[toID(speciesName)];
+}
+
 type SampleSets = {
 	[speciesName: string]: {
 		[setName: string]: Dex.PokemonSet,
@@ -821,8 +845,8 @@ export class TeamEditorState extends PSModel {
 	getDefaultItem(speciesName: string) {
 		const species = this.dex.species.get(speciesName);
 		let items = species.requiredItems;
-		if (isSilvallySpecies(species.name) && toID(species.name) !== 'silvally' && items.length === 1) {
-			return items[0];
+		if (isSilvallySpecies(species.name) && toID(species.name) !== 'silvally') {
+			return items[0] || getSilvallyMemoryItem(species.name);
 		}
 		if (this.gen !== 7 && !this.isNatDex) {
 			// Require plates on Arceus when Z crystals don't exist
@@ -1805,7 +1829,7 @@ class TeamTextbox extends preact.Component<{
 							style={
 								`top:${prevOffset - 7}px;left:0;position:absolute;text-align:right;` +
 								`width:94px;padding:103px 5px 0 0;min-height:24px;pointer-events:none;` +
-								Dex.getTeambuilderSprite(set, editor.dex)
+								Dex.getTeambuilderSprite(set, editor.gen)
 							}
 						>
 							<div>{species.types.map(type => <PSIcon type={type} />)}<PSIcon item={set.item || null} /></div>
@@ -1954,7 +1978,7 @@ class TeamWizard extends preact.Component<{
 	}
 	renderSet(set: Dex.PokemonSet | undefined, i: number) {
 		const { editor } = this.props;
-		const sprite = Dex.getTeambuilderSprite(set, editor.dex);
+		const sprite = Dex.getTeambuilderSprite(set, editor.gen);
 		if (!set) {
 			return <div class="set-button">
 				<div style="text-align:right">
@@ -3216,7 +3240,7 @@ class DetailsForm extends preact.Component<{
 								const sp = editor.dex.species.get(formName);
 								const id = toID(sp.name);
 								const isCur = toID(set.species) === id;
-								const sprite = Dex.getTeambuilderSprite({species: sp.name, shiny: set.shiny}, editor.dex);
+								const sprite = Dex.getTeambuilderSprite({species: sp.name, shiny: set.shiny}, editor.gen);
 								return <button
 									type="button" value={id} class={`button piconbtn${isCur ? ' cur' : ''}`}
 									style={{ padding: '2px' }} onClick={this.selectSprite}
