@@ -113,10 +113,25 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 			forme: 'Alt',
 			spriteid: 'eevee-starter-alt',
 			types: ['Normal'],
-			abilities: {0: 'Z Protean', 1: 'Opportunist', H: 'Unstable Evo', S: 'Mind Freeze', E: 'Sinister Blaze', F: 'Eclipse'},
+			abilities: {0: 'Z Protean', 1: 'Opportunist', H: 'Unstable Evo', S: 'Mind Freeze', E: 'Sinister Blaze', F: 'Eclipse', G: 'Ascendance'},
 			baseStats: {hp: 65, atk: 75, def: 70, spa: 65, spd: 85, spe: 75},
 			changesFrom: 'Eevee-Starter',
 			canGigantamax: 'G-Max Cuddle',
+			isNonstandard: 'Custom',
+		},
+	},
+	divineon: {
+		base: 'eeveestarter',
+		data: {
+			name: 'Divineon',
+			baseSpecies: 'Eevee-Starter',
+			forme: 'Divineon',
+			spriteid: 'eevee-starter',
+			types: ['???'],
+			abilities: {0: 'Ascendance'},
+			baseStats: {hp: 65, atk: 110, def: 65, spa: 110, spd: 65, spe: 130},
+			battleOnly: 'Eevee-Starter',
+			changesFrom: 'Eevee-Starter',
 			isNonstandard: 'Custom',
 		},
 	},
@@ -684,11 +699,60 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 		base: 'muk',
 		data: {
 			name: 'Muk-Pulse',
-			baseSpecies: 'Muk',
-			forme: 'Pulse',
+			baseSpecies: 'Muk-Pulse',
+			types: ['Poison', 'Ghost'],
+			baseStats: {hp: 105, atk: 105, def: 75, spa: 98, spd: 157, spe: 30},
+			abilities: {0: 'Toxic Mess', 1: 'Adaptive Waste', H: 'Accumulation'},
+			otherFormes: [],
+			formeOrder: [],
+			standalone: true,
 			spriteid: 'muk-pulse',
-			changesFrom: 'Muk',
 			isNonstandard: 'Custom',
+		},
+	},
+	palossandrocky: {
+		base: 'palossand',
+		data: {
+			name: 'Palossand-Rocky',
+			baseSpecies: 'Palossand',
+			forme: 'Rocky',
+			types: ['Ghost', 'Rock'],
+			baseStats: {hp: 100, atk: 75, def: 110, spa: 105, spd: 75, spe: 35},
+			abilities: {0: 'Clear Body', 1: 'Solid Rock', H: 'Sand Stream'},
+			spriteid: 'palossand-rocky',
+			changesFrom: 'Palossand',
+			isNonstandard: 'Custom',
+			isCosmeticForme: true,
+		},
+	},
+	palossandfiery: {
+		base: 'palossand',
+		data: {
+			name: 'Palossand-Fiery',
+			baseSpecies: 'Palossand',
+			forme: 'Fiery',
+			types: ['Ghost', 'Fire'],
+			baseStats: {hp: 100, atk: 75, def: 110, spa: 105, spd: 75, spe: 35},
+			abilities: {0: 'Soul Fire', 1: 'Steam Engine', H: 'Drought'},
+			spriteid: 'palossand-fiery',
+			changesFrom: 'Palossand',
+			isNonstandard: 'Custom',
+			isCosmeticForme: true,
+		},
+	},
+	palossandicy: {
+		base: 'palossand',
+		data: {
+			name: 'Palossand-Icy',
+			baseSpecies: 'Palossand',
+			forme: 'Icy',
+			types: ['Ghost', 'Ice'],
+			baseStats: {hp: 100, atk: 75, def: 110, spa: 105, spd: 75, spe: 35},
+			abilities: {0: 'Bulletproof', 1: 'Ice Body', H: 'Snow Warning'},
+			spriteid: 'palossand-icy',
+			changesFrom: 'Palossand',
+			isNonstandard: 'Custom',
+			isCosmeticForme: true,
 		},
 	},
 	tentacruelalt: {
@@ -1425,6 +1489,9 @@ const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
 	crobatalt: 'crobat-alt',
 	corsolaalt: 'corsola-alt',
 	mukpulse: 'muk-pulse',
+	palossandrocky: 'palossand-rocky',
+	palossandfiery: 'palossand-fiery',
+	palossandicy: 'palossand-icy',
 	granbullalt: 'granbull-alt',
 	lanturnalt: 'lanturn-alt',
 	jynxalt: 'jynx-alt',
@@ -1447,6 +1514,7 @@ const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
 	parasectparasitism: 'parasect-parasitism',
 	parasectparasite: 'parasect-parasite',
 	bronzongrejuv: 'bronzong-rejuv',
+	musharnarejuv: 'musharna-rejuv',
 	unfezantrejuv: 'unfezant-rejuv',
 	gastrodonazzy: 'gastrodon-azzy',
 	gastrodonazzy2: 'gastrodon-azzy2',
@@ -4507,6 +4575,34 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 		shinyFront: {w: 192, h: 192},
 		shinyBack: {w: 192, h: 192},
 	},
+	palossandrocky: {
+		num: 770,
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
+	},
+	palossandfiery: {
+		num: 770,
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
+	},
+	palossandicy: {
+		num: 770,
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
+	},
+	musharnarejuv: {
+		num: 518,
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
+	},
 	florgesreborn: {
 		num: 671,
 		front: {w: 192, h: 192},
@@ -4674,6 +4770,21 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	},
 };
 
+const Z_PROTEAN_STATIC_SPRITE_IDS = [
+	'braveon', 'nimbeon', 'toxeon', 'dusteon', 'basaleon',
+	'ephemeon', 'kitsuneon', 'titaneon', 'byteon', 'drekeon',
+] as const;
+for (const id of Z_PROTEAN_STATIC_SPRITE_IDS) {
+	const dimensions = {
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
+	};
+	CUSTOM_STATIC_BATTLE_SPRITES[id] = dimensions;
+	CUSTOM_BW_SPRITES[id] = {num: 133, ...dimensions};
+}
+
 Object.assign(CUSTOM_SPECIES, {
 	braveon: {
 		base: 'eeveestarter',
@@ -4765,6 +4876,22 @@ Object.assign(CUSTOM_SPECIES, {
 			isNonstandard: 'Custom',
 		},
 	},
+	musharnarejuv: {
+		base: 'musharna',
+		data: {
+			name: 'Musharna-Rejuv',
+			baseSpecies: 'Musharna',
+			forme: 'Rejuv',
+			spriteid: 'musharna-rejuv',
+			types: ['Dark', 'Fairy'],
+			baseStats: {hp: 120, atk: 110, def: 105, spa: 45, spd: 95, spe: 25},
+			abilities: {0: 'Aevian Dream'},
+			battleOnly: 'Musharna',
+			requiredAbility: 'Aevian Dream',
+			changesFrom: 'Musharna',
+			isNonstandard: 'Custom',
+		},
+	},
 	florgesreborn: {
 		base: 'florges',
 		data: {
@@ -4782,6 +4909,31 @@ Object.assign(CUSTOM_SPECIES, {
 });
 
 const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
+	// Furfrou's trims are server-defined forms, but the team builder needs
+	// explicit cosmetic links and sprite IDs for every graphics preference.
+	furfrou: {
+		otherFormes: [
+			'Furfrou-Heart', 'Furfrou-Star', 'Furfrou-Diamond', 'Furfrou-Debutante',
+			'Furfrou-Matron', 'Furfrou-Dandy', 'Furfrou-La Reine', 'Furfrou-Kabuki', 'Furfrou-Pharaoh',
+		],
+		cosmeticFormes: [
+			'Furfrou-Heart', 'Furfrou-Star', 'Furfrou-Diamond', 'Furfrou-Debutante',
+			'Furfrou-Matron', 'Furfrou-Dandy', 'Furfrou-La Reine', 'Furfrou-Kabuki', 'Furfrou-Pharaoh',
+		],
+		formeOrder: [
+			'Furfrou', 'Furfrou-Heart', 'Furfrou-Star', 'Furfrou-Diamond', 'Furfrou-Debutante',
+			'Furfrou-Matron', 'Furfrou-Dandy', 'Furfrou-La Reine', 'Furfrou-Kabuki', 'Furfrou-Pharaoh',
+		],
+	},
+	furfrouheart: {spriteid: 'furfrou-heart'},
+	furfroustar: {spriteid: 'furfrou-star'},
+	furfroudiamond: {spriteid: 'furfrou-diamond'},
+	furfroudebutante: {spriteid: 'furfrou-debutante'},
+	furfroumatron: {spriteid: 'furfrou-matron'},
+	furfroudandy: {spriteid: 'furfrou-dandy'},
+	furfroulareine: {spriteid: 'furfrou-lareine'},
+	furfroukabuki: {spriteid: 'furfrou-kabuki'},
+	furfroupharaoh: {spriteid: 'furfrou-pharaoh'},
 	florges: {
 		abilities: {0: 'Reborn Flower', 1: 'Sworn Duty', H: 'Symbiosis'},
 		otherFormes: ['Florges-Reborn'],
@@ -5014,11 +5166,10 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 	},
 	muk: {
 		types: ['Poison', 'Ghost'],
-		baseStats: {hp: 105, atk: 105, def: 75, spa: 98, spd: 157, spe: 30},
-		abilities: {0: 'Toxic Mess', 1: 'Adaptive Waste', H: 'Accumulation'},
-		otherFormes: ['Muk-Alola', 'Muk-Pulse'],
-		cosmeticFormes: ['Muk-Pulse'],
-		formeOrder: ['Muk', 'Muk-Alola', 'Muk-Pulse'],
+		baseStats: {hp: 105, atk: 105, def: 75, spa: 85, spd: 100, spe: 30},
+		abilities: {0: 'Accumulation', 1: 'Protean', H: 'Regenerator'},
+		otherFormes: ['Muk-Alola'],
+		formeOrder: ['Muk', 'Muk-Alola'],
 	},
 	mukpulse: {
 		types: ['Poison', 'Ghost'],
@@ -5026,9 +5177,13 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		abilities: {0: 'Toxic Mess', 1: 'Adaptive Waste', H: 'Accumulation'},
 	},
 	granbullalt: {
+		baseSpecies: 'Granbull',
+		forme: 'Alt',
+		changesFrom: 'Granbull',
 		types: ['Fairy', 'Ground'],
 		baseStats: {hp: 120, atk: 145, def: 95, spa: 70, spd: 85, spe: 45},
 		abilities: {0: 'Loyal Guard', 1: 'Violent Rush', H: 'Strong Jaw'},
+		isNonstandard: 'Custom',
 	},
 	mightyenadeso: {
 		baseStats: {hp: 90, atk: 125, def: 85, spa: 60, spd: 80, spe: 125},
@@ -5258,7 +5413,12 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		baseStats: {hp: 130, atk: 135, def: 70, spa: 75, spd: 70, spe: 70},
 		abilities: {0: 'Scrappy', 1: 'Fluffy', H: 'Unaware'},
 	},
-	palossand: {baseStats: {hp: 115, atk: 55, def: 75, spa: 135, spd: 115, spe: 55}},
+	palossand: {
+		baseStats: {hp: 100, atk: 75, def: 110, spa: 105, spd: 75, spe: 35},
+		otherFormes: ['Palossand-Rocky', 'Palossand-Fiery', 'Palossand-Icy'],
+		cosmeticFormes: ['Palossand-Rocky', 'Palossand-Fiery', 'Palossand-Icy'],
+		formeOrder: ['Palossand', 'Palossand-Rocky', 'Palossand-Fiery', 'Palossand-Icy'],
+	},
 	dhelmise: {
 		baseStats: {hp: 100, atk: 140, def: 110, spa: 60, spd: 110, spe: 30},
 		abilities: {0: 'Water Bubble', 1: 'Steelworker', H: 'Rocky Payload'},
@@ -5536,7 +5696,7 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 	},
 	greninja: {
 		baseStats: {hp: 72, atk: 100, def: 67, spa: 103, spd: 71, spe: 122},
-		abilities: {0: 'Technician'},
+		abilities: {0: 'Technician', 1: 'Protean', H: 'Battle Bond'},
 	},
 	serperior: {
 		abilities: {0: 'Multiscale'},
@@ -5629,13 +5789,18 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 	},
 	hippowdon: {baseStats: {hp: 118, atk: 127}, abilities: {0: 'Sand Stream', 1: 'Ruin Jaw', H: 'Accumulation'}},
 	eeveestarter: {
-		abilities: {0: 'Z Protean', 1: 'Opportunist', H: 'Unstable Evo', S: 'Mind Freeze', E: 'Sinister Blaze', F: 'Eclipse'},
-		otherFormes: ['Eevee-Starter-Alt'],
+		abilities: {0: 'Z Protean', 1: 'Opportunist', H: 'Unstable Evo', S: 'Mind Freeze', E: 'Sinister Blaze', F: 'Eclipse', G: 'Ascendance'},
+		otherFormes: ['Eevee-Starter-Alt', 'Divineon'],
 		cosmeticFormes: ['Eevee-Starter-Alt'],
-		formeOrder: ['Eevee-Starter', 'Eevee-Starter-Alt'],
+		formeOrder: ['Eevee-Starter', 'Eevee-Starter-Alt', 'Divineon'],
 	},
 	eeveestarteralt: {
-		abilities: {0: 'Z Protean', 1: 'Opportunist', H: 'Unstable Evo', S: 'Mind Freeze', E: 'Sinister Blaze', F: 'Eclipse'},
+		abilities: {0: 'Z Protean', 1: 'Opportunist', H: 'Unstable Evo', S: 'Mind Freeze', E: 'Sinister Blaze', F: 'Eclipse', G: 'Ascendance'},
+	},
+	divineon: {
+		types: ['???'],
+		baseStats: {hp: 65, atk: 110, def: 65, spa: 110, spd: 65, spe: 130},
+		abilities: {0: 'Ascendance'},
 	},
 	flareon: {abilities: {0: 'Fire Mane'}},
 	houndoom: {abilities: {0: 'Flash Fire', 1: 'Dark Aura', H: 'Battle Fervor'}},
@@ -5656,6 +5821,7 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 	lanturnalt: {
 		baseSpecies: 'Lanturn',
 		forme: 'Alt',
+		changesFrom: 'Lanturn',
 		types: ['Water', 'Electric'],
 		baseStats: {hp: 125, atk: 58, def: 88, spa: 116, spd: 106, spe: 67},
 		abilities: {0: 'Abyss Lure', 1: 'Drizzle', H: 'Dazzling'},
@@ -5686,10 +5852,24 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		baseStats: {hp: 90, atk: 125, def: 105, spa: 40, spd: 80, spe: 107},
 		abilities: {0: 'Unova Wing', 1: 'Aevian Wing'},
 	},
+	musharna: {
+		abilities: {0: 'Neutralization', 1: 'Telepathy', H: 'Aevian Dream'},
+		otherFormes: ['Musharna-Rejuv'],
+		cosmeticFormes: ['Musharna-Rejuv'],
+		formeOrder: ['Musharna', 'Musharna-Rejuv'],
+	},
+	musharnarejuv: {
+		types: ['Dark', 'Fairy'],
+		baseStats: {hp: 120, atk: 110, def: 105, spa: 45, spd: 95, spe: 25},
+		abilities: {0: 'Aevian Dream'},
+	},
 };
 
 Object.assign(CUSTOM_SPECIES_UPDATES, {
 	vileplume: {abilities: {0: 'Chlorophyll', 1: 'Storm Drain', H: 'Toxic Sink'}},
+	espeon: {abilities: {0: 'Trace', 1: 'Magic Bounce', H: 'Telepathy', S: 'Mind Freeze', E: 'Eclipse'}},
+	umbreon: {abilities: {0: 'Poison Heal', 1: 'Inner Focus', H: 'Pressure', S: 'Eclipse', G: 'Ascendance'}},
+	glaceon: {abilities: {0: 'Ice Scales', 1: 'Slush Rush', H: 'Ice Body', S: 'Mind Freeze'}},
 	cacturne: {baseStats: {spa: 90}},
 	mightyena: {
 		baseStats: {hp: 90, atk: 125, def: 90, spa: 60, spd: 80, spe: 125},
@@ -5781,7 +5961,10 @@ Object.assign(CUSTOM_SPECIES_UPDATES, {
 	seaking: {baseStats: {hp: 80, atk: 95, def: 75, spa: 60, spd: 90, spe: 70}},
 	bombirdier: {baseStats: {hp: 70, atk: 103, def: 85, spa: 103, spd: 85, spe: 97}},
 	durant: {baseStats: {hp: 58, atk: 109, def: 112, spa: 48, spd: 98, spe: 109}},
-	persian: {baseStats: {hp: 70, atk: 100, def: 70, spa: 105, spd: 70, spe: 115}},
+	persian: {
+		baseStats: {hp: 70, atk: 100, def: 70, spa: 105, spd: 70, spe: 115},
+		abilities: {0: 'Competitive', 1: 'Technician', H: 'Limber'},
+	},
 	persianalola: {baseStats: {hp: 70, atk: 105, def: 70, spa: 100, spd: 70, spe: 115}},
 	floatzel: {baseStats: {hp: 90, atk: 105, def: 65, spa: 90, spd: 50, spe: 115}},
 	gallademega: {baseStats: {hp: 75, atk: 165, def: 95, spa: 68, spd: 125, spe: 112}},
@@ -5809,6 +5992,9 @@ Object.assign(CUSTOM_SPECIES_UPDATES, {
 	tentacruelalt: {
 		baseStats: {hp: 80, atk: 70, def: 85, spa: 100, spd: 135, spe: 100},
 		abilities: {0: 'Venom Veil', 1: 'Regenerator', H: 'Water Absorb'},
+	},
+	toedscruel: {
+		baseStats: {hp: 80, atk: 70, def: 85, spa: 100, spd: 135, spe: 100},
 	},
 	roserade: {
 		baseStats: {hp: 75, atk: 60, def: 85, spa: 135, spd: 120, spe: 95},
@@ -5876,6 +6062,16 @@ for (const [id, canGigantamax] of Object.entries(CUSTOM_GIGANTAMAX_MOVES)) {
 }
 
 const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
+	ascendance: {
+		name: 'Ascendance',
+		desc: "All damaging moves deal 1.5x damage, can hit type immunities, and gain off-type STAB when the move type is not one of this Pokemon's types. On Holy Field, this Pokemon's Attack and Special Attack are raised by 1 on entry. Eevee-Starter and Umbreon transform into Divineon on entry; Umbreon uses Umbreon-Perfect's appearance while retaining Umbreon's full movepool.",
+		shortDesc: 'Damaging moves 1.5x, bypass immunities, and gain off-type STAB; transforms Eevee-Starter/Umbreon into Divineon.',
+	},
+	aeviandream: {
+		name: 'Aevian Dream',
+		desc: "This Pokemon has Bad Dreams, Shed Skin, and Tough Claws's effects. When it enters battle as Musharna, it transforms into Musharna-Rejuv.",
+		shortDesc: 'Bad Dreams + Shed Skin + Tough Claws; transforms Musharna into Musharna-Rejuv.',
+	},
 	aevianoath: {
 		name: 'Aevian Oath',
 		desc: "This Pokemon has Sworn Duty, Dual Wield, and Battle Armor's effects.",
@@ -6128,8 +6324,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	battlebond: {
 		name: 'Battle Bond',
-		desc: "When this Pokemon knocks out another Pokemon, it transforms into its Bond form, and knocking out a target restores 1/8 max HP. It takes 0.75x damage from attacks and 30% less damage from Fighting Clause Abilities. In Doubles, Multi, or Free-for-All, it can survive one KO from above 1/3 HP. Its attacks deal 1.3x damage to Royal Decree or Neutralization users. Cold Eclipse boosts its attacks by 1.3x and reduces attack damage to 0.6x.",
-		shortDesc: 'Takes 0.75x attack damage; KO transforms/heals; Cold Eclipse boosts offense/defense.',
+		desc: "When this Pokemon is Greninja or Greninja-Bond, it transforms into Ash-Greninja after knocking out another Pokemon, and knocking out a target restores 1/8 max HP. It takes 0.75x damage from attacks and 30% less damage from Fighting Clause Abilities. In Doubles, Multi, or Free-for-All, it can survive one KO from above 1/3 HP. Its attacks deal 1.3x damage to Royal Decree or Neutralization users. Cold Eclipse boosts its attacks by 1.3x and reduces attack damage to 0.6x.",
+		shortDesc: 'After a KO, Greninja or Greninja-Bond becomes Ash-Greninja; takes 0.75x attack damage; KO healing.',
 	},
 	pendulumswing: {
 		name: "Pendulum Swing",
@@ -6263,7 +6459,7 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	accumulation: {
 		name: "Accumulation",
-		desc: "This Pokemon has Thick Fat and ignores sandstorm and hail. It can use Belch without a Berry and gains one Stockpile each turn. At 3 stacks it waits one full turn, then automatically chooses Belch or Spit Up every other turn. Its Spit Up and Swallow combinations still apply.",
+		desc: "This Pokemon has Thick Fat and ignores sandstorm and hail. It can use Belch without a Berry and gains one Stockpile each turn. At 3 stacks it waits one full turn, then randomly chooses Belch or Spit Up with equal odds every other turn. Its Spit Up and Swallow combinations still apply.",
 		shortDesc: "Thick Fat; auto-Stockpiles; at 3 waits one turn, then auto-releases every other turn.",
 	},
 	adaptivecell: {
@@ -7159,8 +7355,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	uncheckedassault: {
 		name: "Unchecked Assault",
-		desc: "This Pokemon has Scrappy, Technician, and Opportunist's effects.",
-		shortDesc: "Scrappy + Technician + Opportunist.",
+		desc: "This Pokemon has Scrappy, Technician, Opportunist, and Limber's effects.",
+		shortDesc: "Scrappy + Technician + Opportunist + Limber.",
 	},
 	unleashedego: {
 		name: "Unleashed Ego",
@@ -7370,6 +7566,19 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 };
 
 const CUSTOM_MOVE_UPDATES: {[id: string]: AnyObject} = {
+	radiantassault: {
+		num: 10005,
+		name: 'Radiant Assault',
+		type: '???',
+		category: 'Physical',
+		basePower: 110,
+		accuracy: 100,
+		pp: 10,
+		target: 'allAdjacentFoes',
+		flags: {contact: 1, recharge: 1, protect: 1, mirror: 1, metronome: 1},
+		desc: "Hits all opposing Pokemon. Uses the user's higher offensive stat, including stat stages and field modifiers. The user must recharge unless this move knocks out at least one target.",
+		shortDesc: '110 BP; hits all foes; uses higher offense; recharges unless it gets a KO.',
+	},
 	armthrust: {
 		multihit: [2, 5],
 		desc: 'Hits two to five times. Skill Link makes it hit five times.',
@@ -8300,7 +8509,7 @@ const CUSTOM_LEARNSET_ADDITIONS: {[id: string]: {[id: string]: string[]}} = {
 		strengthsap: ['9M'], pursuit: ['9M'], punishment: ['9M'], spiritbreak: ['9M'],
 		bittermalice: ['9M'], infernalparade: ['9M'], destinybond: ['9M'], dreameater: ['9M'],
 		eeriespell: ['9M'], perishsong: ['9M'], blueflare: ['9M'], doomdesire: ['9M'],
-	searingvoid: ['9M'],
+		searingvoid: ['9M'], radiantassault: ['9M'],
 	},
 	jynx: {
 		sparklingaria: ['9M'],
@@ -8353,6 +8562,23 @@ const CUSTOM_LEARNSET_ADDITIONS: {[id: string]: {[id: string]: string[]}} = {
 		thief: ['9M'],
 		torment: ['9M'],
 		voltswitch: ['9M'],
+	},
+	palossandrocky: {
+		stealthrock: ['9M'], rockblast: ['9M'], rocktomb: ['9M'], powergem: ['9M'], recover: ['9M'],
+		dreameater: ['9M'], explosion: ['9M'], grassknot: ['9M'], laserfocus: ['9M'], meteobeam: ['9M'],
+		naturepower: ['9M'], selfdestruct: ['9M'], sludgewave: ['9M'], smackdown: ['9M'], strength: ['9M'],
+		taunt: ['9M'], waterpulse: ['9M'],
+	},
+	palossandfiery: {
+		willowisp: ['9M'], firespin: ['9M'], flameburst: ['9M'], lavaplume: ['9M'], morningsun: ['9M'], sunnyday: ['9M'],
+		burningjealousy: ['9M'], fireblast: ['9M'], flamecharge: ['9M'], flamethrower: ['9M'], focusblast: ['9M'], heatcrash: ['9M'],
+		heatwave: ['9M'], incinerate: ['9M'], laserfocus: ['9M'], mysticalfire: ['9M'], overheat: ['9M'], phantomforce: ['9M'],
+		shockwave: ['9M'], solarbeam: ['9M'], solarblade: ['9M'], workup: ['9M'],
+	},
+	palossandicy: {
+		coldsnap: ['9M'], haze: ['9M'], iceshard: ['9M'], aurorabeam: ['9M'], freezedry: ['9M'], moonlight: ['9M'], snowscape: ['9M'],
+		auroraveil: ['9M'], avalanche: ['9M'], blizzard: ['9M'], calmmind: ['9M'], frostbreath: ['9M'], gyroball: ['9M'], icebeam: ['9M'],
+		iciclespear: ['9M'], icywind: ['9M'], laserfocus: ['9M'], thunderwave: ['9M'], tripleaxel: ['9M'], whirlpool: ['9M'],
 	},
 	persian: {
 		dazzlinggleam: ['9M'],
@@ -8915,7 +9141,7 @@ function mergeCustomSpeciesData(baseData: AnyObject, existingData: AnyObject | u
 function isCustomVisualForm(data: AnyObject) {
 	const forme = data?.forme;
 	if (typeof forme !== 'string') return false;
-	return ['Alt', 'Aevian', 'East-Aevian', 'Hisui-Alt', 'Pulse', 'Azzy', 'Azzy2', 'Spring', 'Summer', 'Autumn', 'Winter', 'Rejuv', 'Reborn', 'Perfect', 'Deso'].includes(forme) ||
+	return ['Alt', 'Aevian', 'East-Aevian', 'Hisui-Alt', 'Pulse', 'Azzy', 'Azzy2', 'Spring', 'Summer', 'Autumn', 'Winter', 'Rejuv', 'Reborn', 'Perfect', 'Deso', 'Rocky', 'Fiery', 'Icy'].includes(forme) ||
 		forme.endsWith('-Alt');
 }
 function isCustomVisualVariantName(name: unknown, speciesTable?: AnyObject) {
@@ -8929,6 +9155,9 @@ const CUSTOM_VARIANT_BASE_ALIASES: {[id: string]: string} = {
 	gastrodoneast: 'gastrodon',
 };
 const PROFILE_VARIANT_FORMES: {[familyId: string]: string[]} = {
+	palossand: [
+		'Palossand', 'Palossand-Rocky', 'Palossand-Fiery', 'Palossand-Icy',
+	],
 	pikachustarter: [
 		'Pikachu-Starter', 'Pikachu-Belle', 'Pikachu-Libre',
 		'Pikachu-PhD', 'Pikachu-Pop-Star', 'Pikachu-Rock-Star',
@@ -8942,6 +9171,12 @@ const PROFILE_VARIANT_FORMES: {[familyId: string]: string[]} = {
 	],
 	rotom: [
 		'Rotom', 'Rotom-Heat', 'Rotom-Wash', 'Rotom-Frost', 'Rotom-Fan', 'Rotom-Mow',
+	],
+	eeveestarter: [
+		'Eevee-Starter', 'Eevee-Starter-Alt', 'Divineon',
+	],
+	musharna: [
+		'Musharna', 'Musharna-Rejuv',
 	],
 	silvally: [
 		'Silvally', 'Silvally-Fighting', 'Silvally-Flying', 'Silvally-Poison',
@@ -9370,6 +9605,7 @@ const CUSTOM_TEAMBUILDER_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: nu
 	auroreon: {w: 72, h: 72},
 	soluneon: {w: 72, h: 72},
 	abysseon: {w: 78, h: 78},
+	divineon: {w: 78, h: 78},
 	emboaralt: {w: 78, h: 78},
 	emboarmegaalt: {w: 82, h: 82},
 	butterfreemega: {w: 70, h: 70},
@@ -9560,6 +9796,7 @@ const CUSTOM_ARROW_MOVE_IDS = [
 ];
 const CUSTOM_HORN_MOVE_IDS = ['hornattack', 'horndrill', 'hornleech', 'megahorn'];
 const CUSTOM_ABILITY_COMPONENT_OVERRIDES: {[id: string]: readonly ID[]} = {
+	aeviandream: ['baddreams' as ID, 'shedskin' as ID, 'toughclaws' as ID],
 	schooling: ['hydrabond' as ID, 'selfrepair' as ID, 'filter' as ID],
 	wingedwraith: ['infiltrator' as ID, 'galewings' as ID],
 	toxicsink: ['effectspore' as ID, 'stormdrain' as ID, 'invigorate' as ID],
@@ -9644,6 +9881,27 @@ const CUSTOM_MOVE_UPDATE_IDS = Object.keys(CUSTOM_MOVE_UPDATES);
 const CUSTOM_LEARNSET_REPLACEMENT_IDS = Object.keys(CUSTOM_LEARNSET_REPLACEMENTS);
 Object.assign(CUSTOM_LEARNSET_ADDITIONS, {
 	alakazam: {darkpulse: ['9M'], snarl: ['9M']},
+	umbreon: {radiantassault: ['9M']},
+	musharna: {
+		drainingkiss: ['9L1'], leer: ['9L1'], scratch: ['9L1'], yawn: ['9L1'], assurance: ['9L1'],
+		nightmare: ['9L1'], moonlight: ['9L1'], hypnosis: ['9L1'], nightslash: ['9L1'], slash: ['9L1'],
+		playrough: ['9L1'], shadowclaw: ['9L1'], honeclaws: ['9L1'], throatchop: ['9L1'], lovelykiss: ['9L1'],
+		glare: ['9L1'], assist: ['9E'], curse: ['9E'], disable: ['9E'], encore: ['9E'], meanlook: ['9E'],
+		memento: ['9E'], nightshade: ['9E'], snore: ['9E'], sonicboom: ['9E'],
+		aerialace: ['9M'], amnesia: ['9M'], aurasphere: ['9M'], batonpass: ['9M'], beatup: ['9M'], block: ['9M'], bodypress: ['9M'], bodyslam: ['9M'],
+		breakingswipe: ['9M'], brutalswing: ['9M'], crosspoison: ['9M'], cut: ['9M'], darkestlariat: ['9M'],
+		chargebeam: ['9M'], darkpulse: ['9M'], dazzlinggleam: ['9M'], dreameater: ['9M'], dualchop: ['9M'], eerieimpulse: ['9M'], explosion: ['9M'],
+		faketears: ['9M'], falseswipe: ['9M'], fling: ['9M'], fly: ['9M'], foulplay: ['9M'], futuresight: ['9M'],
+		gastroacid: ['9M'], gigaimpact: ['9M'], gravity: ['9M'], gyroball: ['9M'], hyperbeam: ['9M'], knockoff: ['9M'],
+		laserfocus: ['9M'], lashout: ['9M'], leechlife: ['9M'], magiccoat: ['9M'], magicroom: ['9M'], mistyterrain: ['9M'],
+		painsplit: ['9M'], payback: ['9M'], phantomforce: ['9M'], poisonjab: ['9M'], powergem: ['9M'], powerswap: ['9M'],
+		psychic: ['9M'], psychocut: ['9M'], psychup: ['9M'], quash: ['9M'], rockclimb: ['9M'], rockslide: ['9M'],
+		rocksmash: ['9M'], rocktomb: ['9M'], sandstorm: ['9M'], scaryface: ['9M'], screech: ['9M'], selfdestruct: ['9M'],
+		shadowball: ['9M'], skillswap: ['9M'], smackdown: ['9M'], snarl: ['9M'], snatch: ['9M'], spite: ['9M'],
+		storedpower: ['9M'], strength: ['9M'], swordsdance: ['9M'], suckerpunch: ['9M'], taunt: ['9M'], torment: ['9M'],
+		trick: ['9M'], trickroom: ['9M'], uproar: ['9M'], venomdrench: ['9M'], waterpulse: ['9M'], willowisp: ['9M'],
+		wonderroom: ['9M'], workup: ['9M'], worryseed: ['9M'], xscissor: ['9M'], zenheadbutt: ['9M'], snowscape: ['9M'],
+	},
 	mandibuzz: {
 		bulkup: ['9M'], spikes: ['9M'], taunt: ['9M'], thief: ['9M'], toxic: ['9M'],
 		whirlwind: ['9M'], icywind: ['9M'],
@@ -9799,6 +10057,23 @@ function applyCustomTeambuilderLearnsets(table: AnyObject) {
 		for (const moveid in CUSTOM_LEARNSET_ADDITIONS[id]) {
 			table.learnsets[id][moveid] = encodeCustomLearnsetSources(CUSTOM_LEARNSET_ADDITIONS[id][moveid]);
 		}
+	}
+	const visualLearnsetBases: {[id: string]: string} = {};
+	for (const [id, customSpecies] of Object.entries(CUSTOM_SPECIES)) {
+		if (!isCustomVisualForm(customSpecies.data) || customSpecies.data.standalone) continue;
+		visualLearnsetBases[id] = toID(customSpecies.base);
+	}
+	for (const [baseId, update] of Object.entries(CUSTOM_SPECIES_UPDATES)) {
+		for (const forme of update.cosmeticFormes || []) {
+			visualLearnsetBases[toID(forme)] = baseId;
+		}
+	}
+	for (const [target, base] of Object.entries(visualLearnsetBases)) {
+		if (target === base || !table.learnsets[base]) continue;
+		table.learnsets[target] = {
+			...table.learnsets[base],
+			...(table.learnsets[target] || {}),
+		};
 	}
 	// Appliance forms inherit Rotom's normal learnset in the simulator. The
 	// generated client table stores only each form's signature move, so merge
@@ -10706,7 +10981,9 @@ const Dex = new class implements ModdedDex {
 		const customSpriteSpeciesId = requestedSpriteid || species.id;
 		let name = CUSTOM_SPECIES[customSpriteSpeciesId]?.data?.spriteid || species.spriteid;
 		if (requestedSpriteid && SILVALLY_FORME_TYPES[requestedSpriteid]) name = CUSTOM_ICON_SPRITES[requestedSpriteid] || requestedSpriteid;
-		if (requestedSpriteid && CUSTOM_STATIC_BATTLE_SPRITES[requestedSpriteid]) name = requestedSpriteid;
+		if (requestedSpriteid && CUSTOM_STATIC_BATTLE_SPRITES[requestedSpriteid]) {
+			name = CUSTOM_SPECIES[customSpriteSpeciesId]?.data?.spriteid || requestedSpriteid;
+		}
 		if (CUSTOM_ICON_SPRITES[species.id]) name = CUSTOM_ICON_SPRITES[species.id] as ID;
 		let dir;
 		let facing;
@@ -10768,12 +11045,18 @@ const Dex = new class implements ModdedDex {
 		if (!miscData && baseSpriteId) miscData = BattlePokemonSprites?.[baseSpriteId] || window.BattlePokemonSpritesBW?.[baseSpriteId];
 		if (!animationData) animationData = {};
 		if (!miscData) miscData = {};
+		const usesBaseVariantCry = isCustomVisualForm(species) && !species.standalone;
+		const crySpecies = usesBaseVariantCry ? Dex.species.get(customVariantFamilyId(species)) : species;
+		const cryBaseSpeciesid = toID(crySpecies.baseSpecies || crySpecies.name);
+		const speciesNameId = toID(species.name);
+		const customCryUrl = speciesNameId === 'umbreonperfect' ? 'audio/cries/umbreon-perfect.ogg' :
+			speciesNameId === 'divineon' ? 'audio/cries/divineon.ogg' :
+			speciesNameId === 'abysseon' ? 'audio/cries/abysseon.ogg' : '';
 
 		if (miscData.num !== 0 && miscData.num > -5000) {
-			let baseSpeciesid = toID(species.baseSpecies);
-			spriteData.cryurl = 'audio/cries/' + baseSpeciesid;
+			spriteData.cryurl = 'audio/cries/' + cryBaseSpeciesid;
 			let formeid = species.formeid;
-			if (species.isMega || formeid && (
+			if (!usesBaseVariantCry && (species.isMega || formeid && (
 				formeid === '-crowned' ||
 				formeid === '-eternal' ||
 				formeid === '-eternamax' ||
@@ -10801,12 +11084,13 @@ const Dex = new class implements ModdedDex {
 				baseSpeciesid === 'oricorio' ||
 				baseSpeciesid === 'slowpoke' ||
 				baseSpeciesid === 'tatsugiri' ||
-				baseSpeciesid === 'zygarde'
-			)) {
+				cryBaseSpeciesid === 'zygarde'
+			))) {
 				spriteData.cryurl += formeid;
 			}
 			spriteData.cryurl += '.mp3';
 		}
+		if (customCryUrl) spriteData.cryurl = customCryUrl;
 
 		if (options.shiny && mechanicsGen > 1) dir += '-shiny';
 
@@ -10830,9 +11114,10 @@ const Dex = new class implements ModdedDex {
 
 		// Mod Cries
 		if (options.mod) {
-			spriteData.cryurl = `sprites/${options.mod}/audio/${toID(species.baseSpecies)}`;
+			spriteData.cryurl = `sprites/${options.mod}/audio/${cryBaseSpeciesid}`;
 			spriteData.cryurl += '.mp3';
 		}
+		if (customCryUrl) spriteData.cryurl = customCryUrl;
 
 		if (animationData[facing + 'f'] && options.gender === 'F') facing += 'f';
 		let allowAnim = !Dex.prefs('noanim') && !Dex.prefs('nogif');

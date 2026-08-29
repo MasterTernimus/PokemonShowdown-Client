@@ -985,18 +985,21 @@ class AvatarsPanel extends PSRoomPanel {
 				<button class="button" data-cmd="/close"> Cancel</button>
 			</label>
 			<div class="avatarlist">
+				{customAvatars.map(([avatar, label]) => (
+					<button
+						data-cmd={`/closeand /avatar ${avatar}`} title={`/avatar ${label}`} aria-label={label}
+						class={`option pixelated${avatar === PS.user.avatar ? ' cur' : ''}`}
+						style="background-image:none;"
+					>
+						<img src={Dex.resolveAvatar(avatar)} alt="" width="80" height="80" class="pixelated"
+							style="width:80px;height:80px;object-fit:contain;" />
+					</button>
+				))}
 				{avatars.map(([i, avatar]) => (
 					<button
 						data-cmd={`/closeand /avatar ${avatar}`} title={`/avatar ${avatar}`}
 						class={`option pixelated${avatar === PS.user.avatar ? ' cur' : ''}`}
 						style={`background-position: -${((i - 1) % 16) * 80 + 1}px -${Math.floor((i - 1) / 16) * 80 + 1}px`}
-					></button>
-				))}
-				{customAvatars.map(([avatar, label]) => (
-					<button
-						data-cmd={`/closeand /avatar ${avatar}`} title={`/avatar ${label}`} aria-label={label}
-						class={`option pixelated${avatar === PS.user.avatar ? ' cur' : ''}`}
-						style={`background-image:url(${Dex.resolveAvatar(avatar)});background-position:center;background-repeat:no-repeat;background-size:contain;`}
 					></button>
 				))}
 			</div>
