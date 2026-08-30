@@ -10969,6 +10969,7 @@ const Dex = new class implements ModdedDex {
 		}
 		const requestedSpriteid = typeof pokemon === 'string' ? toID(pokemon) : '';
 		const species = Dex.species.get(pokemon);
+		const baseSpeciesId = toID(species.baseSpecies || species.name);
 		if (FORCE_SHINY_CUSTOM_SPRITE_IDS.has((requestedSpriteid || species.id) as ID)) options.shiny = true;
 		ensureCustomBWSpriteData();
 		// Gmax sprites are already extremely large, so we don't need to double.
@@ -11053,7 +11054,6 @@ const Dex = new class implements ModdedDex {
 		if (!miscData) miscData = {};
 		const usesBaseVariantCry = isCustomVisualForm(species) && !species.standalone;
 		const crySpecies = usesBaseVariantCry ? Dex.species.get(customVariantFamilyId(species)) : species;
-		const baseSpeciesid = toID(species.baseSpecies || species.name);
 		const cryBaseSpeciesid = toID(crySpecies.baseSpecies || crySpecies.name);
 		const speciesNameId = toID(species.name);
 		const customCryUrl = speciesNameId === 'umbreonperfect' ? 'audio/cries/umbreon-perfect.ogg' :
@@ -11081,16 +11081,16 @@ const Dex = new class implements ModdedDex {
 				formeid === '-super' ||
 				formeid === '-therian' ||
 				formeid === '-unbound' ||
-				baseSpeciesid === 'calyrex' ||
-				baseSpeciesid === 'kyurem' ||
-				baseSpeciesid === 'cramorant' ||
-				baseSpeciesid === 'indeedee' ||
-				baseSpeciesid === 'lycanroc' ||
-				baseSpeciesid === 'necrozma' ||
-				baseSpeciesid === 'oinkologne' ||
-				baseSpeciesid === 'oricorio' ||
-				baseSpeciesid === 'slowpoke' ||
-				baseSpeciesid === 'tatsugiri' ||
+				baseSpeciesId === 'calyrex' ||
+				baseSpeciesId === 'kyurem' ||
+				baseSpeciesId === 'cramorant' ||
+				baseSpeciesId === 'indeedee' ||
+				baseSpeciesId === 'lycanroc' ||
+				baseSpeciesId === 'necrozma' ||
+				baseSpeciesId === 'oinkologne' ||
+				baseSpeciesId === 'oricorio' ||
+				baseSpeciesId === 'slowpoke' ||
+				baseSpeciesId === 'tatsugiri' ||
 				cryBaseSpeciesid === 'zygarde'
 			))) {
 				spriteData.cryurl += formeid;

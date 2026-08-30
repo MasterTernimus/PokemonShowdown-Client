@@ -10969,6 +10969,7 @@ pokemon=(activeSilvallyForme||speciesForme)+(isGigantamax?'-Gmax':'');
 }
 var requestedSpriteid=typeof pokemon==='string'?toID(pokemon):'';
 var species=Dex.species.get(pokemon);
+var baseSpeciesId=toID(species.baseSpecies||species.name);
 if(FORCE_SHINY_CUSTOM_SPRITE_IDS.has(requestedSpriteid||species.id))options.shiny=true;
 ensureCustomBWSpriteData();
 
@@ -11053,7 +11054,6 @@ if(!animationData)animationData={};
 if(!miscData)miscData={};
 var usesBaseVariantCry=isCustomVisualForm(species)&&!species.standalone;
 var crySpecies=usesBaseVariantCry?Dex.species.get(customVariantFamilyId(species)):species;
-var baseSpeciesid=toID(species.baseSpecies||species.name);
 var cryBaseSpeciesid=toID(crySpecies.baseSpecies||crySpecies.name);
 var speciesNameId=toID(species.name);
 var customCryUrl=speciesNameId==='umbreonperfect'?'audio/cries/umbreon-perfect.ogg':
@@ -11081,16 +11081,16 @@ formeid==='-starter'||
 formeid==='-super'||
 formeid==='-therian'||
 formeid==='-unbound'||
-baseSpeciesid==='calyrex'||
-baseSpeciesid==='kyurem'||
-baseSpeciesid==='cramorant'||
-baseSpeciesid==='indeedee'||
-baseSpeciesid==='lycanroc'||
-baseSpeciesid==='necrozma'||
-baseSpeciesid==='oinkologne'||
-baseSpeciesid==='oricorio'||
-baseSpeciesid==='slowpoke'||
-baseSpeciesid==='tatsugiri'||
+baseSpeciesId==='calyrex'||
+baseSpeciesId==='kyurem'||
+baseSpeciesId==='cramorant'||
+baseSpeciesId==='indeedee'||
+baseSpeciesId==='lycanroc'||
+baseSpeciesId==='necrozma'||
+baseSpeciesId==='oinkologne'||
+baseSpeciesId==='oricorio'||
+baseSpeciesId==='slowpoke'||
+baseSpeciesId==='tatsugiri'||
 cryBaseSpeciesid==='zygarde')))
 {
 spriteData.cryurl+=formeid;
