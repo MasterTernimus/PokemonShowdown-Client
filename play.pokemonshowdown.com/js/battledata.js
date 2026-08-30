@@ -9164,9 +9164,9 @@ var PROFILE_VARIANT_FORMES={
 palossand:[
 'Palossand','Palossand-Rocky','Palossand-Fiery','Palossand-Icy'],
 
-pikachustarter:[
-'Pikachu-Starter','Pikachu-Belle','Pikachu-Libre',
-'Pikachu-PhD','Pikachu-Pop-Star','Pikachu-Rock-Star'],
+pikachu:[
+'Pikachu','Pikachu-Cosplay','Pikachu-Starter','Pikachu-Belle',
+'Pikachu-Libre','Pikachu-PhD','Pikachu-Pop-Star','Pikachu-Rock-Star'],
 
 furfrou:[
 'Furfrou','Furfrou-Heart','Furfrou-Star','Furfrou-Diamond','Furfrou-Debutante',
