@@ -992,7 +992,13 @@ class AvatarsPanel extends PSRoomPanel {
 						style="background-image:none;"
 					>
 						<img src={Dex.resolveAvatar(avatar)} alt="" width="80" height="80" class="pixelated"
-							style="width:80px;height:80px;object-fit:contain;" />
+							style="width:80px;height:80px;object-fit:contain;"
+							onError={ev => {
+								const image = ev.currentTarget as HTMLImageElement;
+								if (image.dataset.fallback) return;
+								image.dataset.fallback = '1';
+								image.src = `/sprites/trainers/${avatar}.png`;
+							}} />
 					</button>
 				))}
 				{avatars.map(([i, avatar]) => (

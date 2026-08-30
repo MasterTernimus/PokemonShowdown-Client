@@ -1731,6 +1731,8 @@ export function isDefaultShinyCustomSpecies(name: string) {
 // These cosmetic forms use custom front artwork but retain their species'
 // standard back sprite in battle.
 const CUSTOM_DEFAULT_BACK_SPRITES: {[id: string]: ID} = {
+	jynxalt: 'jynx' as ID,
+	lumineonalt: 'lumineon' as ID,
 	primarinaalt: 'primarina' as ID,
 	decidueyealt: 'decidueye' as ID,
 	decidueyehisuialt: 'decidueyehisui' as ID,

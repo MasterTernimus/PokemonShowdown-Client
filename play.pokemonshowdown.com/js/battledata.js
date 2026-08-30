@@ -1731,6 +1731,8 @@ return DEFAULT_SHINY_CUSTOM_SPRITE_IDS.has(toID(name));
 
 
 var CUSTOM_DEFAULT_BACK_SPRITES={
+jynxalt:'jynx',
+lumineonalt:'lumineon',
 primarinaalt:'primarina',
 decidueyealt:'decidueye',
 decidueyehisuialt:'decidueyehisui',
