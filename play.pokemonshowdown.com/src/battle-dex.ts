@@ -11053,6 +11053,7 @@ const Dex = new class implements ModdedDex {
 		if (!miscData) miscData = {};
 		const usesBaseVariantCry = isCustomVisualForm(species) && !species.standalone;
 		const crySpecies = usesBaseVariantCry ? Dex.species.get(customVariantFamilyId(species)) : species;
+		const baseSpeciesid = toID(species.baseSpecies || species.name);
 		const cryBaseSpeciesid = toID(crySpecies.baseSpecies || crySpecies.name);
 		const speciesNameId = toID(species.name);
 		const customCryUrl = speciesNameId === 'umbreonperfect' ? 'audio/cries/umbreon-perfect.ogg' :
