@@ -11053,6 +11053,7 @@ if(!animationData)animationData={};
 if(!miscData)miscData={};
 var usesBaseVariantCry=isCustomVisualForm(species)&&!species.standalone;
 var crySpecies=usesBaseVariantCry?Dex.species.get(customVariantFamilyId(species)):species;
+var baseSpeciesid=toID(species.baseSpecies||species.name);
 var cryBaseSpeciesid=toID(crySpecies.baseSpecies||crySpecies.name);
 var speciesNameId=toID(species.name);
 var customCryUrl=speciesNameId==='umbreonperfect'?'audio/cries/umbreon-perfect.ogg':
