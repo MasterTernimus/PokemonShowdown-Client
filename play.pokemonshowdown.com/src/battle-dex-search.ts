@@ -21,6 +21,19 @@ type SearchRow = (
 
 type SearchFilter = [string, string];
 
+function dedupeSearchResults(results: SearchRow[]): SearchRow[] {
+	const seen = new Set<string>();
+	return results.filter(row => {
+		if (!['pokemon', 'type', 'tier', 'move', 'item', 'ability', 'egggroup', 'category', 'article'].includes(row[0])) {
+			return true;
+		}
+		const key = `${row[0]}:${row[1]}`;
+		if (seen.has(key)) return false;
+		seen.add(key);
+		return true;
+	});
+}
+
 /** ID, SearchType, index (if alias), offset (if offset alias) */
 declare const BattleSearchIndex: [ID, SearchType, number?, number?][];
 declare const BattleSearchIndexOffset: any;
@@ -30,6 +43,19 @@ const HIDDEN_TEAMBUILDER_SPECIES = new Set<ID>([
 	'pikachualola', 'pikachucosplay', 'pikachuhoenn', 'pikachukalos', 'pikachuoriginal',
 	'pikachupartner', 'pikachusinnoh', 'pikachuunova', 'pikachuworld',
 	'pikachubelle', 'pikachulibre', 'pikachuphd', 'pikachupopstar', 'pikachurockstar',
+]);
+
+// These are official ZA Mega forms in the client catalog, not custom skins.
+// Keep them available for normal species lookup and battle rendering, but do
+// not count them as custom additions in the explicit -custom list.
+const ZA_MEGA_SPECIES = new Set<ID>([
+	'baxcaliburmega', 'chandeluremega', 'chesnaughtmega', 'chimechomega', 'clefablemega',
+	'crabominablemega', 'delphoxmega', 'dragalgemega', 'dragonitemega', 'eelektrossmega',
+	'emboarmega', 'excadrillmega', 'feraligatrmega', 'floetteeternalmega', 'froslassmega',
+	'glimmoramega', 'golisopodmega', 'golurkmega', 'greninjamega', 'lucariomegaz',
+	'malamarmega', 'meganiummega', 'meowsticfmega', 'meowsticmmega', 'raichumegax',
+	'raichumegay', 'scolipedemega', 'scovillainmega', 'scraftymega', 'skarmorymega',
+	'staraptormega',
 ]);
 
 // These are visual-only destinations for Z Protean. They must remain resolvable
@@ -116,6 +142,12 @@ function isHiddenTeamBuilderSpecies(id: string, includeSawsbuckBase = false) {
 	return false;
 }
 
+function isExcludedFromCustomSearch(id: string) {
+	const speciesId = toID(id);
+	return speciesId.startsWith('pokestar') || speciesId.startsWith('deerling') ||
+		speciesId.startsWith('sawsbuck') || ZA_MEGA_SPECIES.has(speciesId as ID);
+}
+
 const CUSTOM_VISUAL_FORME_MARKERS = new Set([
 	'Alt', 'Aevian', 'East-Aevian', 'Pulse', 'Azzy', 'Azzy2',
 	'Spring', 'Summer', 'Autumn', 'Winter', 'Rejuv', 'Reborn', 'Perfect', 'Deso',
@@ -135,6 +167,7 @@ function matchesCustomSearchGroup(species: AnyObject, query: string) {
 	const name = toID(species?.name);
 	const forme = toID(species?.forme);
 	if (query === 'rejuv') return forme === 'rejuv' || name.endsWith('rejuv');
+	if (query === 'reborn') return forme === 'reborn' || name.endsWith('reborn');
 	if (query === 'aevian') return forme.includes('aevian') || name.includes('aevian');
 	if (query === 'deso') return forme === 'deso' || name.endsWith('deso') || name === 'umbreonperfect';
 	return false;
@@ -333,6 +366,7 @@ class DexSearch {
 		const customOnly = query === '-custom';
 		query = toID(query);
 		const customSpeciesQuery = query;
+		window.ensureCustomDataPatches?.();
 
 		this.exactMatch = false;
 		let searchType: SearchType | '' = this.typedSearch?.searchType || '';
@@ -341,6 +375,7 @@ class DexSearch {
 			window.ensureCustomSpecies?.();
 			customVisualSpecies = Object.keys(window.BattlePokedex || {}).filter(id => {
 				const species = this.dex.species.get(id);
+				if (isExcludedFromCustomSearch(id)) return false;
 				// Explicit -custom searches reveal hidden stored variants, but never
 				// expose battle-only visual destinations used by abilities.
 				if (isBattleOnlyVisualSpecies(id)) return false;
@@ -609,6 +644,42 @@ class DexSearch {
 			}
 		}
 
+		// Custom abilities may be patched into BattleAbilities after the static search
+		// index was generated. Add their names and component references to this query.
+		if (!searchType || searchType === 'pokemon' || searchType === 'ability') {
+			const indexedAbilities = new Set<ID>();
+			for (const entry of BattleSearchIndex) {
+				if (entry[1] === 'ability') indexedAbilities.add(entry[0]);
+			}
+			const abilityRows: SearchRow[] = [];
+			const abilitySearchQuery = customSpeciesQuery;
+			if (abilitySearchQuery) {
+				for (const id in (window.BattleAbilities || {})) {
+					if (indexedAbilities.has(id as ID)) continue;
+					const ability = this.dex.abilities.get(id as ID);
+					if (!ability.name) continue;
+					const nameId = toID(ability.name);
+					const nameMatch = nameId.indexOf(abilitySearchQuery);
+					const effectMatch = Dex.getAbilityEffects(id as ID).has(abilitySearchQuery as ID);
+					if (nameMatch < 0 && !effectMatch) continue;
+					abilityRows.push([
+						'ability', id as ID, nameMatch < 0 ? 0 : nameMatch,
+						nameMatch < 0 ? 0 : nameMatch + abilitySearchQuery.length,
+					]);
+				}
+			}
+			if (abilityRows.length) {
+				const abilityTypeIndex = DexSearch.typeTable.ability;
+				if (!bufs[abilityTypeIndex].length) bufs[abilityTypeIndex] = [['header', DexSearch.typeName.ability]];
+				const existing = new Set<ID>(bufs[abilityTypeIndex].filter(row => row[0] === 'ability').map(row => row[1]));
+				const newAbilityRows = abilityRows.filter(row => !existing.has(row[1]));
+				bufs[abilityTypeIndex].push(...newAbilityRows);
+				if (searchType === 'pokemon' && !instafilter && newAbilityRows.length) {
+					instafilter = ['ability', newAbilityRows[0][1], abilityTypeIndex];
+				}
+			}
+		}
+
 		let topbuf: SearchRow[] = [];
 		if (nearMatch) {
 			topbuf = [['html', `<em>No exact match found. The closest matches alphabetically are:</em>`]];
@@ -624,7 +695,7 @@ class DexSearch {
 			bufs[0] = [];
 		}
 
-		this.results = Array.prototype.concat.apply(topbuf, bufs);
+		this.results = dedupeSearchResults(Array.prototype.concat.apply(topbuf, bufs));
 		return this.results;
 	}
 	private instafilter(searchType: SearchType | '', fType: SearchType, fId: ID): SearchRow[] {
@@ -730,6 +801,7 @@ abstract class BattleTypedSearch<T extends SearchType> {
 	protected formatType: 'doubles' | 'bdsp' | 'bdspdoubles' | 'letsgo' | 'metronome' | 'natdex' | 'nfe' |
 	'ssdlc1' | 'ssdlc1doubles' | 'predlc' | 'predlcdoubles' | 'predlcnatdex' | 'svdlc1' | 'svdlc1doubles' |
 	'svdlc1natdex' | 'stadium' | 'lc' | null = null;
+	protected isFieldFormat = false;
 	protected unrestrictedCatalog = false;
 
 	/**
@@ -813,7 +885,9 @@ abstract class BattleTypedSearch<T extends SearchType> {
 			this.formatType = 'letsgo';
 			this.dex = Dex.mod('gen7letsgo' as ID);
 		}
-		if (format.includes('nationaldex') || format.startsWith('nd') || format.includes('natdex') || format.includes('field') || format.includes('arena') || format.includes('board') || format.includes('terrain') || format.includes('cavern')){
+		this.isFieldFormat = format.includes('field') || format.includes('arena') || format.includes('board') ||
+			format.includes('terrain') || format.includes('cavern') || format.includes('surface') || format.includes('underwater');
+		if (format.includes('nationaldex') || format.startsWith('nd') || format.includes('natdex') || this.isFieldFormat){
 			format = 'natdex' as ID;
 			this.formatType = 'natdex';
 			if (!format) format = 'ou' as ID;
@@ -866,6 +940,16 @@ abstract class BattleTypedSearch<T extends SearchType> {
 			this.illegalReasons = {};
 
 			for (const id in this.getTable()) {
+				if (this.searchType === 'pokemon') {
+					const species = this.dex.species.get(id);
+					const baseSpeciesId = toID(species.baseSpecies);
+					// Profile/custom visual forms use the legal base species' format
+					// slot, while battle-only destinations remain hidden and invalid.
+					if (baseSpeciesId !== id && !isBattleOnlyVisualSpecies(id) &&
+						isCustomSearchVisualForm(species) && baseSpeciesId in legalityFilter) {
+						continue;
+					}
+				}
 				if (this.searchType === 'pokemon' && isHiddenTeamBuilderSpecies(id)) continue;
 				if (!(id in legalityFilter)) {
 					this.baseIllegalResults.push([this.searchType, id as ID]);
@@ -1255,7 +1339,7 @@ class BattlePokemonSearch extends BattleTypedSearch<'pokemon'> {
 		}
 
 		// Filter out Gmax Pokemon from standard tier selection
-		if (!/^(battlestadium|vgc|doublesubers)/g.test(format)) {
+		if (!this.isFieldFormat && !/^(battlestadium|vgc|doublesubers)/g.test(format)) {
 			tierSet = tierSet.filter(([type, id]) => {
 				if (type === 'header' && id === 'DUber by technicality') return false;
 				if (type === 'pokemon') return !id.endsWith('gmax');
@@ -1417,7 +1501,7 @@ class BattleAbilitySearch extends BattleTypedSearch<'ability'> {
 		for (const [filterType, value] of filters) {
 			switch (filterType) {
 			case 'pokemon':
-				if (!Dex.hasAbility(this.dex.species.get(value), ability.name)) return false;
+				if (!Dex.hasAbilityEffect(this.dex.species.get(value), ability.name)) return false;
 				break;
 			}
 		}
@@ -1482,7 +1566,7 @@ class BattleItemSearch extends BattleTypedSearch<'item'> {
 		for (const [filterType, value] of filters) {
 			switch (filterType) {
 			case 'pokemon':
-				if (!Dex.hasAbility(this.dex.species.get(value), ability.name)) return false;
+				if (!Dex.hasAbilityEffect(this.dex.species.get(value), ability.name)) return false;
 				break;
 			}
 		}
