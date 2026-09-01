@@ -1275,6 +1275,7 @@
 		},
 		renderSet: function (set, i) {
 			var species = this.curTeam.dex.species.get(set.species);
+			var customFormNames = window.getCustomCosmeticFormes ? window.getCustomCosmeticFormes(species) : [];
 			var isLetsGo = this.curTeam.format.includes('letsgo');
 			var isBDSP = this.curTeam.format.includes('bdsp');
 			var isNatDex = this.curTeam.format.includes('nationaldex') || this.curTeam.format.includes('natdex');
@@ -1296,7 +1297,7 @@
 
 			// icon
 			buf += '<div class="setcol setcol-icon">';
-			if (species.cosmeticFormes) {
+			if (customFormNames.length > 1 || (species.cosmeticFormes && species.cosmeticFormes.length)) {
 				buf += '<div class="setcell-sprite changeform"><i class="fa fa-caret-down"></i></div>';
 			} else {
 				buf += '<div class="setcell-sprite"></div>';
@@ -2719,6 +2720,7 @@
 			var isNatDex = this.curTeam.format.includes('nationaldex') || this.curTeam.format.includes('natdex');
 			var isHackmons = this.curTeam.format.includes('hackmons') || this.curTeam.format.endsWith('bh');
 			var species = this.curTeam.dex.species.get(set.species);
+			var customFormNames = window.getCustomCosmeticFormes ? window.getCustomCosmeticFormes(species) : [];
 			if (!set) return;
 			buf += '<div class="resultheader"><h3>Details</h3></div>';
 			buf += '<form class="detailsform">';
@@ -2804,7 +2806,7 @@
 			}
 
 			buf += '</form>';
-			if (species.cosmeticFormes) {
+			if (customFormNames.length > 1 || (species.cosmeticFormes && species.cosmeticFormes.length)) {
 				buf += '<button class="altform button">Change sprite</button>';
 			}
 
@@ -3565,7 +3567,10 @@
 			var seenForms = {};
 			for (var formIndex = 0; formIndex < formNames.length; formIndex++) {
 				var formSpecies = this.room.curTeam.dex.species.get(formNames[formIndex]);
-				if (!formSpecies.exists || seenForms[formSpecies.id]) continue;
+				var isListedCustomForm = customFormNames.some(function (formName) {
+					return toID(formName) === formSpecies.id;
+				});
+				if ((!formSpecies.exists && !isListedCustomForm) || seenForms[formSpecies.id]) continue;
 				seenForms[formSpecies.id] = true;
 				forms.push(formSpecies);
 			}
@@ -3601,7 +3606,12 @@
 		setForm: function (speciesName) {
 			if (window.ensureCustomSpecies) window.ensureCustomSpecies();
 			var species = this.room.curTeam.dex.species.get(speciesName);
-			if (!species.exists) return;
+			var currentSpecies = this.room.curTeam.dex.species.get(this.curSet.species);
+			var customFormNames = window.getCustomCosmeticFormes ? window.getCustomCosmeticFormes(currentSpecies) : [];
+			var isListedCustomForm = customFormNames.some(function (formName) {
+				return toID(formName) === species.id;
+			});
+			if (!species.exists && !isListedCustomForm) return;
 			this.curSet.species = species.name;
 			this.close();
 			if (this.room.curSet) {

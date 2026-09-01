@@ -712,15 +712,29 @@
 	var AvatarsPopup = this.AvatarsPopup = Popup.extend({
 		type: 'semimodal',
 		initialize: function () {
-			var cur = +app.user.get('avatar');
+			var cur = '' + app.user.get('avatar');
 			var buf = '';
 			buf += '<p>Choose an avatar or <button name="close" class="button">Cancel</button></p>';
 
 			buf += '<div class="avatarlist">';
+			var customAvatars = [
+				['alainalt', 'Alain Alt'], ['amelia', 'Amelia'], ['asriel', 'Asriel'], ['aurora', 'Aurora'],
+				['geara', 'Geara'], ['lin', 'Lin'], ['sirius', 'Sirius'],
+				['shiv', 'Shiv'], ['shivalt', 'Shiv Alt'], ['taka', 'Taka'],
+				['tyrant', 'Tyrant'], ['zetta', 'Zetta']
+			];
+			for (var j = 0; j < customAvatars.length; j++) {
+				var customAvatar = customAvatars[j][0];
+				var customLabel = customAvatars[j][1];
+				buf += '<button name="setAvatar" value="' + customAvatar + '" style="background-image:none" class="option pixelated' +
+					(customAvatar === cur ? ' cur' : '') + '" title="/avatar ' + customLabel + '">' +
+					'<img src="' + Dex.resolveAvatar(customAvatar) + '" alt="' + customLabel + '" width="80" height="80" class="pixelated" style="width:80px;height:80px;object-fit:contain;display:block" />' +
+					'</button>';
+			}
 			for (var i = 1; i <= 293; i++) {
 				if (i === 162 || i === 168) continue;
 				var offset = '-' + (((i - 1) % 16) * 80 + 1) + 'px -' + (Math.floor((i - 1) / 16) * 80 + 1) + 'px';
-				buf += '<button name="setAvatar" value="' + i + '" style="background-position:' + offset + '" class="option pixelated' + (i === cur ? ' cur' : '') + '" title="/avatar ' + i + '"></button>';
+				buf += '<button name="setAvatar" value="' + i + '" style="background-position:' + offset + '" class="option pixelated' + ('' + i === cur ? ' cur' : '') + '" title="/avatar ' + i + '"></button>';
 			}
 			buf += '</div><div style="clear:left"></div>';
 
