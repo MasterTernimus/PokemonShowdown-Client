@@ -35963,6 +35963,7 @@ BattleMoveAnims['stringshot'] = {anim: BattleMoveAnims['electroweb'].anim};
 BattleMoveAnims['toxicthread'] = {anim: BattleMoveAnims['electroweb'].anim};
 
 BattleMoveAnims['hyperfang'] = {anim: BattleMoveAnims['superfang'].anim};
+BattleMoveAnims['gmaxdeathroll'] = {anim: BattleMoveAnims['hyperfang'].anim};
 
 BattleMoveAnims['barrage'] = {anim: BattleMoveAnims['magnetbomb'].anim};
 BattleMoveAnims['eggbomb'] = {anim: BattleMoveAnims['magnetbomb'].anim};
