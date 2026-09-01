@@ -4056,6 +4056,20 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 		shinyFront: {w: 192, h: 192},
 		shinyBack: {w: 192, h: 192},
 	},
+	charizardmegax: {
+		num: 6,
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
+	},
+	charizardmegay: {
+		num: 6,
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
+	},
 	charizardalt: {
 		front: {w: 192, h: 192},
 		back: {w: 192, h: 192},
