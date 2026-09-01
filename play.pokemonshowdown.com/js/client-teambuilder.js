@@ -3612,13 +3612,17 @@
 				return toID(formName) === species.id;
 			});
 			if (!species.exists && !isListedCustomForm) return;
+			var currentAbilitySlot = Object.keys(currentSpecies.abilities || {}).find(function (slot) {
+				return toID(currentSpecies.abilities[slot]) === toID(this.curSet.ability);
+			}, this);
 			this.curSet.species = species.name;
-			this.close();
-			if (this.room.curSet) {
-				this.room.updatePokemonSprite();
-			} else {
-				this.room.update();
+			if (species.abilities) {
+				this.curSet.ability = species.abilities[currentAbilitySlot || '0'] || species.abilities['0'];
 			}
+			this.close();
+			// Re-render the set so form typing, abilities, stats, and sprites all
+			// reflect the selected profile instead of updating only the artwork.
+			this.room.update();
 			this.room.$('input[name=pokemon]').eq(this.chartIndex).val(this.curSet.species);
 			this.room.curTeam.team = Storage.packTeam(this.room.curSetList);
 			Storage.saveTeam(this.room.curTeam);
