@@ -6794,8 +6794,8 @@ shortDesc:"Magic Bounce + Serene Grace + Triage; sets Gravity for 5 turns."
 },
 spiralevolution:{
 name:"Spiral Evolution",
-desc:"This Pokemon has Adaptability, Levitate, Dual Wield, and Infiltrator. Its damaging moves pierce protection for reduced damage, its normal-priority moves act first in Trick Room without gaining priority, and it takes 0.8x damage.",
-shortDesc:"Adaptability + Levitate + Dual Wield + Infiltrator; protection pierce; first in Trick Room; takes 0.8x."
+desc:"This Pokemon has Adaptability, Levitate, Dual Wield, Infiltrator, and Shield Dust. Its damaging moves pierce protection for reduced damage, its normal-priority moves act first in Trick Room without gaining priority, it ignores field-based Speed penalties, and it takes 0.8x damage.",
+shortDesc:"Adaptability + Levitate + Dual Wield + Infiltrator + Shield Dust; ignores field Speed penalties; protection pierce; takes 0.8x."
 },
 accumulation:{
 name:"Accumulation",
@@ -7034,8 +7034,8 @@ shortDesc:"Two 65% independent rolls; boosting pairs: full +20%; FFA: two full-p
 },
 apexvenom:{
 name:"Apex Venom",
-desc:"This Pokemon has Strong Jaw and Shed Skin's effects. Poison moves are super effective against Poison and Steel. Biting moves gain STAB and add Poison-type effectiveness. Poison Fang is Dragon-type and has 2x power.",
-shortDesc:"Strong Jaw + Shed Skin; Poison hits Poison/Steel; bites add Poison effectiveness; Poison Fang is Dragon/2x."
+desc:"This Pokemon has Strong Jaw and Shed Skin's effects. Poison moves, including Poison Fang, are super effective against Poison- and Steel-type Pokemon. Poison Fang is Dragon-type and has 1.5x power. Biting moves bypass protection and have a 30% chance to badly poison the target.",
+shortDesc:"Strong Jaw + Shed Skin; Poison hits Poison/Steel; Poison Fang is Dragon/1.5x; bites bypass protection and badly poison 30%."
 },
 curseddoll:{
 name:"Cursed Doll",
@@ -9248,7 +9248,7 @@ cometpunch:['9M'],
 agility:['9M'],chillingwater:['9M'],breakingswipe:['9M'],detect:['9M'],dragonclaw:['9M'],
 dragonpulse:['9M'],faketears:['9M'],flipturn:['9M'],focusblast:['9M'],honeclaws:['9M'],
 iciclespear:['9M'],lashout:['9M'],metalclaw:['9M'],muddywater:['9M'],poweruppunch:['9M'],
-psychicfangs:['9M'],razorshell:['9M'],scaleshot:['9M'],snarl:['9M'],stompingtantrum:['9M'],trailblaze:['9M']
+psychicfangs:['9M'],razorshell:['9M'],scaleshot:['9M'],snarl:['9M'],stompingtantrum:['9M'],trailblaze:['9M'],fishiousrend:['9M']
 },
 clodsire:{
 spikecannon:['9M'],
@@ -9566,6 +9566,9 @@ pikachu:[
 furfrou:[
 'Furfrou','Furfrou-Heart','Furfrou-Star','Furfrou-Diamond','Furfrou-Debutante',
 'Furfrou-Matron','Furfrou-Dandy','Furfrou-La Reine','Furfrou-Kabuki','Furfrou-Pharaoh'],
+
+granbull:[
+'Granbull','Granbull-Reborn'],
 
 sawsbuck:[
 'Sawsbuck','Sawsbuck-Spring','Sawsbuck-Summer','Sawsbuck-Autumn','Sawsbuck-Winter'],
@@ -10295,7 +10298,7 @@ goldentalons:['stalwart','goodasgold','sharpness'],
 toxicevolution:['corrosion','dualwield','shielddust'],
 parasitism:['dryskin','magicguard'],
 resuscitation:['selfrepair','magicguard'],
-spiralevolution:['adaptability','levitate','dualwield','infiltrator'],
+spiralevolution:['adaptability','levitate','dualwield','infiltrator','shielddust'],
 venombastion:['stamina'],
 wrathshield:['bulletproof','dauntlessshield','selfrepair'],
 hellfireeclipse:['solarpower','darkaura'],
@@ -11635,7 +11638,10 @@ if(customCryUrl)spriteData.cryurl=customCryUrl;
 if(options.shiny&&mechanicsGen>1)dir+='-shiny';
 
 
-if((_window$Config2=window.Config)!=null&&(_window$Config2=_window$Config2.server)!=null&&_window$Config2.afd||Dex.prefs('afd')||options.afd){
+var hasCustomGen5Sprite=!!(
+CUSTOM_STATIC_BATTLE_SPRITES[speciesid]||CUSTOM_BW_SPRITES[speciesid]||CUSTOM_ICON_SPRITES[speciesid]);
+
+if(((_window$Config2=window.Config)!=null&&(_window$Config2=_window$Config2.server)!=null&&_window$Config2.afd||Dex.prefs('afd')||options.afd)&&!hasCustomGen5Sprite){
 dir='afd'+dir;
 spriteData.url+=dir+'/'+name+'.png';
 
@@ -11914,6 +11920,9 @@ var forceShiny=FORCE_SHINY_CUSTOM_SPRITE_IDS.has(id);
 var isShiny=!!pokemon.shiny||forceShiny;
 var spriteid=pokemon.spriteid;
 var species=Dex.species.get(pokemon.species);
+
+
+id=species.id;
 var customSpeciesData=(_CUSTOM_SPECIES$id3=CUSTOM_SPECIES[id])==null?void 0:_CUSTOM_SPECIES$id3.data;
 var customSpeciesUpdate=CUSTOM_SPECIES_UPDATES[id];
 if(id==='parasect'&&toID(pokemon.ability)==='parasitism'){
@@ -11928,7 +11937,10 @@ if(customSpeciesData!=null&&customSpeciesData.spriteid)spriteid=customSpeciesDat
 if(customSpeciesUpdate!=null&&customSpeciesUpdate.spriteid)spriteid=customSpeciesUpdate.spriteid;
 if(CUSTOM_ICON_SPRITES[id])spriteid=CUSTOM_ICON_SPRITES[id];
 if(species.exists===false)return{spriteDir:'sprites/gen5',spriteid:'0',x:10,y:5};
-if((_window$Config3=window.Config)!=null&&(_window$Config3=_window$Config3.server)!=null&&_window$Config3.afd||Dex.prefs('afd')){
+var hasCustomGen5Sprite=!!(
+CUSTOM_STATIC_BATTLE_SPRITES[id]||CUSTOM_ICON_SPRITES[id]||CUSTOM_BW_SPRITES[id]);
+
+if(((_window$Config3=window.Config)!=null&&(_window$Config3=_window$Config3.server)!=null&&_window$Config3.afd||Dex.prefs('afd'))&&!hasCustomGen5Sprite){
 return{
 spriteid:spriteid,
 spriteDir:'sprites/afd',
