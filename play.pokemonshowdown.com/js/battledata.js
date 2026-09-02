@@ -56,7 +56,8 @@ ledianite:'ledianite.png',
 roseradite:'roseradite.png',
 aridiate:'aridiate.png',
 clawitzerite:'clawitzerite.png',
-haxorite:'haxorite.png'
+haxorite:'haxorite.png',
+arbokite:'arbokite.png'
 };
 
 var CUSTOM_SPECIES={
@@ -1418,9 +1419,25 @@ types:['Psychic','Ghost'],
 baseStats:{hp:75,atk:50,def:80,spa:145,spd:100,spe:105},
 abilities:{0:'Haunted Chime'},
 battleOnly:'Chimecho',
-requiredItem:'Chimechite Y',
+requiredItem:'Chimechite',
 spriteid:'chimecho-mega-y',
 changesFrom:'Chimecho',
+isNonstandard:'Custom'
+}
+},
+meganiummegay:{
+base:'meganium',
+data:{
+name:'Meganium-Mega-Y',
+baseSpecies:'Meganium',
+forme:'Mega-Y',
+types:['Grass','Fire'],
+baseStats:{hp:80,atk:82,def:130,spa:113,spd:130,spe:90},
+abilities:{0:'Blooming Sun'},
+battleOnly:'Meganium',
+requiredItem:'Meganiumite',
+spriteid:'meganium-mega-y',
+changesFrom:'Meganium',
 isNonstandard:'Custom'
 }
 },
@@ -1607,12 +1624,60 @@ name:'Ariados-Mega',
 baseSpecies:'Ariados',
 forme:'Mega',
 types:['Bug','Poison'],
-baseStats:{hp:90,atk:110,def:90,spa:110,spd:90,spe:60},
+baseStats:{hp:90,atk:115,def:110,spa:110,spd:110,spe:50},
 abilities:{0:'Silken Decoy'},
 requiredItem:'Aridiate',
 battleOnly:'Ariados',
 spriteid:'ariados-mega',
 changesFrom:'Ariados',
+isNonstandard:'Custom'
+}
+},
+banettemegaz:{
+base:'banettemega',
+data:{
+name:'Banette-Mega-Z',
+baseSpecies:'Banette',
+forme:'Mega-Z',
+types:['Ghost','Steel'],
+baseStats:{hp:84,atk:105,def:110,spa:30,spd:100,spe:151},
+abilities:{0:'Cursed Armament'},
+requiredItem:'Banettite',
+battleOnly:'Banette',
+spriteid:'banette-megaz',
+changesFrom:'Banette',
+isNonstandard:'Custom'
+}
+},
+arbokmegax:{
+base:'arbok',
+data:{
+name:'Arbok-Mega-X',
+baseSpecies:'Arbok',
+forme:'Mega-X',
+types:['Poison','Dark'],
+baseStats:{hp:80,atk:130,def:100,spa:60,spd:140,spe:90},
+abilities:{0:'Neurotoxin'},
+requiredItem:'Arbokite',
+battleOnly:'Arbok',
+spriteid:'arbok-mega-x',
+changesFrom:'Arbok',
+isNonstandard:'Custom'
+}
+},
+arbokmegay:{
+base:'arbok',
+data:{
+name:'Arbok-Mega-Y',
+baseSpecies:'Arbok',
+forme:'Mega-Y',
+types:['Poison','Fire'],
+baseStats:{hp:80,atk:65,def:110,spa:135,spd:90,spe:120},
+abilities:{0:'Pattern Shift'},
+requiredItem:'Arbokite',
+battleOnly:'Arbok',
+spriteid:'arbok-mega-y',
+changesFrom:'Arbok',
 isNonstandard:'Custom'
 }
 }
@@ -1641,6 +1706,8 @@ furfroupharaoh:'furfrou-pharaoh',
 lanturnalt:'lanturn-alt',
 jynxalt:'jynx-alt',
 lumineonalt:'lumineon-alt',
+arbokmegax:'arbok-mega-x',
+arbokmegay:'arbok-mega-y',
 sandslashalt:'sandslash-alt',
 haxorusmega:'haxorus-alt',
 arcaninealt:'arcanine-alt',
@@ -1681,6 +1748,7 @@ skarmorymega:'skarmory-mega',
 staraptormega:'staraptor-mega',
 lucariomegaz:'lucario-megaz',
 meganiummega:'meganium-mega',
+meganiummegay:'meganium-mega-y',
 raichumegax:'raichu-megax',
 raichumegay:'raichu-megay',
 scolipedemega:'scolipede-mega',
@@ -1742,6 +1810,7 @@ sneaselhisuif:'sneasel-hisui-f',
 alcremiegmax:'alcremie-gmax',
 metagrossmega:'metagross-mega',
 banettemega:'banette-mega',
+banettemegaz:'banette-megaz',
 starmiemega:'starmie-mega',
 heracrossmega:'heracross-mega',
 pidgeotmega:'pidgeot-mega',
@@ -1925,8 +1994,11 @@ greninjaash:{x:9,y:3,backgroundSize:'78px auto'},
 greninjabond:{x:9,y:3,backgroundSize:'78px auto'},
 metagrossmega:{x:9,y:3,backgroundSize:'78px auto'},
 banettemega:{x:9,y:5,backgroundSize:'78px auto'},
+banettemegaz:{x:20,y:3,backgroundSize:'56px auto'},
 starmiemega:{x:16,y:3,backgroundSize:'64px auto'},
 heracrossmega:{x:9,y:5,backgroundSize:'78px auto'},
+arbokmegax:{x:9,y:3,backgroundSize:'78px auto'},
+arbokmegay:{x:9,y:3,backgroundSize:'78px auto'},
 chesnaughtmega:{x:9,y:3,backgroundSize:'78px auto'},
 delphoxmega:{x:9,y:3,backgroundSize:'78px auto'},
 dragalgemega:{x:9,y:3,backgroundSize:'78px auto'},
@@ -2053,6 +2125,24 @@ back:{w:192,h:192}
 banettemega:{
 front:{w:162,h:154},
 back:{w:170,h:168}
+},
+banettemegaz:{
+front:{w:138,h:192},
+back:{w:138,h:192},
+shinyFront:{w:138,h:192},
+shinyBack:{w:138,h:192}
+},
+arbokmegax:{
+front:{w:192,h:192},
+back:{w:192,h:192},
+shinyFront:{w:192,h:192},
+shinyBack:{w:192,h:192}
+},
+arbokmegay:{
+front:{w:192,h:192},
+back:{w:192,h:192},
+shinyFront:{w:192,h:192},
+shinyBack:{w:192,h:192}
 },
 starmiemega:{
 front:{w:112,h:136},
@@ -3119,6 +3209,12 @@ shinyFront:{w:192,h:192},
 shinyBack:{w:192,h:192}
 },
 chimechomegay:{
+front:{w:192,h:192},
+back:{w:192,h:192},
+shinyFront:{w:192,h:192},
+shinyBack:{w:192,h:192}
+},
+meganiummegay:{
 front:{w:192,h:192},
 back:{w:192,h:192},
 shinyFront:{w:192,h:192},
@@ -5255,6 +5351,14 @@ isNonstandard:'Custom'
 });
 
 var CUSTOM_SPECIES_UPDATES={
+meganium:{
+otherFormes:['Meganium-Mega','Meganium-Mega-Y'],
+formeOrder:['Meganium','Meganium-Mega','Meganium-Mega-Y']
+},
+chimecho:{
+otherFormes:['Chimecho-Mega','Chimecho-Mega-Y'],
+formeOrder:['Chimecho','Chimecho-Mega','Chimecho-Mega-Y']
+},
 
 
 furfrou:{
@@ -5611,9 +5715,11 @@ baseStats:{hp:95,atk:95,def:80,spa:100,spd:115,spe:65},
 abilities:{0:'Island Current',1:'Regenerator',H:'Oceanic Wings'}
 },
 arbok:{
+otherFormes:['Arbok-Mega-X','Arbok-Mega-Y'],
+formeOrder:['Arbok','Arbok-Mega-X','Arbok-Mega-Y'],
 types:['Poison'],
 baseStats:{hp:80,atk:95,def:90,spa:65,spd:90,spe:80},
-abilities:{0:'Neurotoxin',1:'Pattern Shift',H:'Accumulation'}
+abilities:{0:'Intimidate',1:'Shed Skin',H:'Accumulation'}
 },
 golduck:{baseStats:{hp:90,atk:70,def:90,spa:110,spd:90,spe:70}},
 machamp:{baseStats:{hp:100,atk:140,def:105,spa:65,spd:85,spe:75},abilities:{0:'Guts',1:'Stamina',H:'Fighting Fiend'}},
@@ -5803,13 +5909,13 @@ otherFormes:['Ledian-Mega'],
 formeOrder:['Ledian','Ledian-Mega']
 },
 ariados:{
-baseStats:{hp:90,atk:100,def:70,spa:70,spd:70,spe:40},
+baseStats:{hp:90,atk:100,def:80,spa:50,spd:80,spe:40},
 otherFormes:['Ariados-Mega'],
 formeOrder:['Ariados','Ariados-Mega']
 },
 ariadosmega:{
 types:['Bug','Poison'],
-baseStats:{hp:90,atk:110,def:90,spa:110,spd:90,spe:60},
+baseStats:{hp:90,atk:115,def:110,spa:110,spd:110,spe:50},
 abilities:{0:'Silken Decoy'}
 },
 cinderacemega:{
@@ -6048,8 +6154,8 @@ abilities:{0:'Tidal Jaw'}
 },
 banette:{
 abilities:{0:'Cursed Keepsake',1:'Intimidate',H:'Cursed Doll'},
-otherFormes:['Banette-Mega'],
-formeOrder:['Banette','Banette-Mega']
+otherFormes:['Banette-Mega','Banette-Mega-Z'],
+formeOrder:['Banette','Banette-Mega','Banette-Mega-Z']
 },
 lopunny:{
 abilities:{0:'Fur Coat',1:'Friend Guard',H:'Striker'}
@@ -7095,6 +7201,11 @@ name:"Cursed Marionette",
 desc:"This Pokemon's status moves have +1 priority. Its attacks and status moves curse opposing targets, and being hit curses the attacker. Cursed foes deal 0.8x damage to this Pokemon. This Pokemon restores HP equal to 1/2 of Curse damage it caused. Its Curse deals 1/8 max HP. When it faints, opposing Pokemon become cursed and it creates Haunted Field for 5 turns, ignoring Neutralization.",
 shortDesc:"Prankster; attacks/status curse; cursed foes deal 0.8x; heals 1/2 Curse damage."
 },
+cursedarmament:{
+name:"Cursed Armament",
+desc:"Curse used by this Pokemon becomes a 100 BP physical Ghost-type attack with 100% accuracy that hits all adjacent foes and curses each target. Curse from this Pokemon deals 1/8 max HP each turn. This Pokemon restores 1/4 of the damage dealt by its attacks and by Curse damage it caused. When this Pokemon faints, it creates Haunted Field for 5 turns.",
+shortDesc:"Curse becomes 100 BP spread Ghost attack; curses foes; heals 1/4 attack/Curse damage."
+},
 defragment:{
 name:"Defragment",
 desc:"On switch-in, this Pokemon compares the opposing side's combined Attack and Special Attack. If Attack is higher or tied, its Defense rises; otherwise its Special Defense rises. This Pokemon's moves cannot miss.",
@@ -7397,8 +7508,8 @@ shortDesc:"Revival fully resets battle effects; Self Repair + Magic Guard."
 },
 patternshift:{
 name:"Pattern Shift",
-desc:"This Pokemon has Shed Skin, Protean, and Merciless's effects.",
-shortDesc:"Shed Skin + Protean + Merciless."
+desc:"This Pokemon has Protean, Shed Skin, and Unaware's effects.",
+shortDesc:"Protean + Shed Skin + Unaware."
 },
 perfectego:{
 name:"Perfect Ego",
@@ -7482,8 +7593,8 @@ shortDesc:"Levitate; moves <=60 BP gain +1 priority; boosted fields give 1.5x or
 },
 relentlesslink:{
 name:"Relentless Link",
-desc:"This Pokemon has Skill Link, Battle Armor, and Mold Breaker's effects.",
-shortDesc:"Skill Link + Battle Armor + Mold Breaker."
+desc:"This Pokemon has Skill Link, Battle Armor, Mold Breaker's, and Guts's effects.",
+shortDesc:"Skill Link + Battle Armor + Mold Breaker + Guts."
 },
 relicbeam:{
 name:"Relic Beam",
@@ -10280,6 +10391,16 @@ name:'Adaptive Waste',
 desc:"This Pokemon has Protean and Regenerator's effects.",
 shortDesc:'Protean + Regenerator.'
 },
+neurotoxin:{
+name:'Neurotoxin',
+desc:"This Pokemon has Strong Jaw, Shed Skin, Hydra Bond, and Regenerator's effects.",
+shortDesc:'Strong Jaw + Shed Skin + Hydra Bond + Regenerator.'
+},
+patternshift:{
+name:'Pattern Shift',
+desc:"This Pokemon has Protean, Shed Skin, and Unaware's effects.",
+shortDesc:'Protean + Shed Skin + Unaware.'
+},
 ragingbeast:{
 name:'Raging Beast',
 desc:"This Pokemon has Guts and Mold Breaker's effects.",
@@ -10328,6 +10449,8 @@ wingedwraith:['infiltrator','galewings'],
 toxicsink:['effectspore','stormdrain','invigorate'],
 toxicmess:['stench','poisontouch','gluttony'],
 adaptivewaste:['protean','regenerator'],
+neurotoxin:['strongjaw','shedskin','hydrabond','regenerator'],
+patternshift:['protean','shedskin','unaware'],
 ragingbeast:['guts','moldbreaker'],
 lunardread:['magicguard','pressure'],
 scavenger:['overcoat','bigpecks','regenerator'],
@@ -10857,6 +10980,34 @@ cradily:{sappyseed:['9M']}
 var CUSTOM_LEARNSET_ADDITION_IDS=Object.keys(CUSTOM_LEARNSET_ADDITIONS);
 var CUSTOM_LEARNSET_REMOVAL_IDS=Object.keys(CUSTOM_LEARNSET_REMOVALS);
 var CUSTOM_ITEM_UPDATES={
+charizarditex:{
+desc:'If held by a Charizard, this item allows it to Mega Evolve into either Mega Charizard X or Mega Charizard Y.',
+shortDesc:'If held by a Charizard, this item allows it to Mega Evolve into either Mega Charizard X or Mega Charizard Y.'
+},
+charizarditey:{
+desc:'If held by a Charizard, this item allows it to Mega Evolve into either Mega Charizard X or Mega Charizard Y.',
+shortDesc:'If held by a Charizard, this item allows it to Mega Evolve into either Mega Charizard X or Mega Charizard Y.'
+},
+chimechite:{
+name:'Chimechite',
+spritenum:498,
+megaStone:{Chimecho:'Chimecho-Mega'},
+itemUser:['Chimecho'],
+num:2637,
+gen:9,
+desc:'If held by a Chimecho, this item allows it to Mega Evolve into either Chimecho-Mega or Chimecho-Mega-Y in battle.',
+shortDesc:'If held by a Chimecho, this item allows it to Mega Evolve into either Chimecho-Mega or Chimecho-Mega-Y in battle.'
+},
+meganiumite:{
+name:'Meganiumite',
+spritenum:548,
+megaStone:{Meganium:'Meganium-Mega'},
+itemUser:['Meganium'],
+num:2563,
+gen:9,
+desc:'If held by a Meganium, this item allows it to Mega Evolve into either Meganium-Mega or Meganium-Mega-Y in battle.',
+shortDesc:'If held by a Meganium, this item allows it to Mega Evolve into either Meganium-Mega or Meganium-Mega-Y in battle.'
+},
 cinderite:{
 name:'Cinderite',
 spritenum:0,
@@ -10897,16 +11048,6 @@ gen:9,
 desc:'If held by a Clawitzer, this item allows it to Mega Evolve in battle.',
 shortDesc:'If held by a Clawitzer, this item allows it to Mega Evolve in battle.'
 },
-chimechitey:{
-name:'Chimechite Y',
-spritenum:498,
-megaStone:{Chimecho:'Chimecho-Mega-Y'},
-itemUser:['Chimecho'],
-num:2656,
-gen:9,
-desc:'If held by a Chimecho, this item allows it to Mega Evolve into Chimecho-Mega-Y in battle.',
-shortDesc:'If held by a Chimecho, this item allows it to Mega Evolve into Chimecho-Mega-Y in battle.'
-},
 haxorite:{
 name:'Haxorite',
 spritenum:0,
@@ -10916,6 +11057,16 @@ num:2657,
 gen:9,
 desc:'If held by a Haxorus, this item allows it to Mega Evolve into Haxorus-Mega in battle.',
 shortDesc:'If held by a Haxorus, this item allows it to Mega Evolve into Haxorus-Mega in battle.'
+},
+arbokite:{
+name:'Arbokite',
+spritenum:0,
+megaStone:{Arbok:'Arbok-Mega-X'},
+itemUser:['Arbok'],
+num:2658,
+gen:9,
+desc:'If held by an Arbok, this item allows it to Mega Evolve into either Arbok-Mega-X or Arbok-Mega-Y in battle.',
+shortDesc:'If held by an Arbok, this item allows it to Mega Evolve into either Arbok-Mega-X or Arbok-Mega-Y in battle.'
 }
 };
 var CUSTOM_ITEM_IDS=Object.keys(CUSTOM_ITEM_UPDATES);
@@ -11235,8 +11386,7 @@ if(
 (customItemDataTable||undefined)===window.BattleItems&&
 (customTeambuilderDataTable||undefined)===window.BattleTeambuilderTable)
 return;
-if(window.BattlePokedex&&customPokedexDataTable!==window.BattlePokedex){
-delete window.BattlePokedex.banettemegaz;for(var _i78=0;_i78<
+if(window.BattlePokedex&&customPokedexDataTable!==window.BattlePokedex){for(var _i78=0;_i78<
 CUSTOM_SPECIES_UPDATE_IDS.length;_i78++){var _id14=CUSTOM_SPECIES_UPDATE_IDS[_i78];
 if(!window.BattlePokedex[_id14])window.BattlePokedex[_id14]={};
 var update=CUSTOM_SPECIES_UPDATES[_id14];
@@ -11250,7 +11400,6 @@ if(update.abilities)species.abilities=Object.assign({},abilities||{},update.abil
 customPokedexDataTable=window.BattlePokedex;
 }
 if(window.BattlePokedexAltForms&&customPokedexAltFormsTable!==window.BattlePokedexAltForms){
-delete window.BattlePokedexAltForms.banettemegaz;
 customPokedexAltFormsTable=window.BattlePokedexAltForms;
 }
 if(window.BattleAliases){
@@ -11429,11 +11578,6 @@ var _otherFormes=flygon.otherFormes||[];
 if(!_otherFormes.includes('Flygon-Mega-Z')){
 flygon.otherFormes=[].concat(_otherFormes,['Flygon-Mega-Z']);
 }
-}
-var banette=window.BattlePokedex.banette;
-if(banette){
-banette.otherFormes=(banette.otherFormes||[]).filter(function(forme){return forme!=='Banette-Mega-Z';});
-banette.formeOrder=(banette.formeOrder||[]).filter(function(forme){return forme!=='Banette-Mega-Z';});
 }
 }
 window.ensureCustomDataPatches=ensureCustomDataPatches;
