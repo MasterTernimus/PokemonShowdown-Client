@@ -2,6 +2,7 @@ const assert = require('assert').strict;
 
 window = global;
 
+global.BattlePokedex = require('../play.pokemonshowdown.com/data/pokedex.js').BattlePokedex;
 require('../play.pokemonshowdown.com/js/battle-dex-data.js');
 require('../play.pokemonshowdown.com/js/battle-dex.js');
 require('../play.pokemonshowdown.com/js/battle-scene-stub.js');
@@ -100,6 +101,40 @@ describe('Team Builder sprites', () => {
 		assert.match(normalSprite, /background-image:url\([^,]+\);/);
 		assert(normalSprite.includes('/sprites/gen5/lucario-megaz.png'));
 		assert(!normalSprite.includes('/sprites/gen5-shiny/lucario-megaz.png'));
+	});
+
+	it('keeps abilities on custom required-item Mega profiles', () => {
+		const expected = {
+			'Haxorus-Mega': 'Raging Overlord',
+			'Emboar-Mega-Reborn': 'Burning Ego',
+			'Roserade-Mega': 'Blind Devotion',
+			'Cinderace-Mega': 'Perfect Striker',
+			'Clawitzer-Mega': 'Heavy Artillery',
+			'Flygon-Mega-Z': 'Tremor',
+			'Gallade-Mega-Azzy': 'Sacred Edge',
+			'Gardevoir-Void-Mega': 'Execution',
+			'Gardevoir-Mega-Z': 'Argent Devotion',
+			'Lucario-Mega-Z': 'Aura Master',
+			'Scolipede-Mega-Azzy': 'Venom Bastion',
+			'Chimecho-Mega-Y': 'Haunted Chime',
+			'Meganium-Mega-Y': 'Blooming Sun',
+			'Charizard-Mega-X-Alt': 'Atrocity',
+			'Alakazam-Mega-Alt': 'Perfect Foresight',
+			'Ledian-Mega': 'Star Boxer',
+			'Ariados-Mega': 'Silken Decoy',
+			'Banette-Mega-Z': 'Cursed Armament',
+			'Arbok-Mega-X': 'Neurotoxin',
+			'Arbok-Mega-Y': 'Pattern Shift',
+		};
+		for (const [speciesName, ability] of Object.entries(expected)) {
+			assert.equal(Dex.species.get(speciesName).abilities[0], ability, `${speciesName} ability`);
+		}
+	});
+
+	it('exposes the updated Mega Banette Z stats', () => {
+		assert.deepEqual(Dex.species.get('Banette-Mega-Z').baseStats, {
+			hp: 84, atk: 145, def: 120, spa: 30, spd: 110, spe: 151,
+		});
 	});
 });
 
