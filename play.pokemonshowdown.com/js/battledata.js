@@ -6798,8 +6798,8 @@ shortDesc:"Mold Breaker + Dual Wield + Self Sufficient; at half HP, Arrows gain 
 },
 ragingstorm:{
 name:"Raging Storm",
-desc:"This Ability cannot be suppressed. This Pokemon's attacks have Mold Breaker, remove the target's positive stat changes before damage, and ignore Reflect, Light Screen, Aurora Veil, and defensive stat boosts. If this Pokemon gets a KO, it damages remaining foes for 60% of the last damage in multi battles, or raises Attack by 1 if there is no valid target or no damage is dealt. Magic Guard users do not take this damage.",
-shortDesc:"Cannot be suppressed; Mold Breaker; attacks clear boosts/ignore screens; KO bonus."
+desc:"This Ability cannot be suppressed. This Pokemon has Mold Breaker and Battle Armor. Its attacks remove the target's positive stat changes before damage and ignore Reflect, Light Screen, Aurora Veil, and defensive stat boosts. If this Pokemon gets a KO, it damages remaining foes for 60% of the last damage in multi battles, or raises Attack by 1 if there is no valid target or no damage is dealt. Magic Guard users do not take this damage.",
+shortDesc:"Cannot be suppressed; Mold Breaker + Battle Armor; attacks clear boosts/ignore screens; KO bonus."
 },
 safeharbor:{
 name:"Safe Harbor",
@@ -10337,6 +10337,7 @@ riotamp:['punkrock','galvanize','resonanceforce','technician','voltabsorb'],
 waterbubble:['waterveil'],
 requiem:['cursedbody'],
 reapersgrip:['unaware','pressure'],
+ragingstorm:['moldbreaker','battlearmor'],
 pendulumswing:['insomnia','filter'],
 fightingfiend:['vitalspirit','multiscale'],
 kickfiend:['striker','violentrush','limber'],

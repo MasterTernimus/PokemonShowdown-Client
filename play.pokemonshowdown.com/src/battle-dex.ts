@@ -6798,8 +6798,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	ragingstorm: {
 		name: "Raging Storm",
-		desc: "This Ability cannot be suppressed. This Pokemon's attacks have Mold Breaker, remove the target's positive stat changes before damage, and ignore Reflect, Light Screen, Aurora Veil, and defensive stat boosts. If this Pokemon gets a KO, it damages remaining foes for 60% of the last damage in multi battles, or raises Attack by 1 if there is no valid target or no damage is dealt. Magic Guard users do not take this damage.",
-		shortDesc: "Cannot be suppressed; Mold Breaker; attacks clear boosts/ignore screens; KO bonus.",
+		desc: "This Ability cannot be suppressed. This Pokemon has Mold Breaker and Battle Armor. Its attacks remove the target's positive stat changes before damage and ignore Reflect, Light Screen, Aurora Veil, and defensive stat boosts. If this Pokemon gets a KO, it damages remaining foes for 60% of the last damage in multi battles, or raises Attack by 1 if there is no valid target or no damage is dealt. Magic Guard users do not take this damage.",
+		shortDesc: "Cannot be suppressed; Mold Breaker + Battle Armor; attacks clear boosts/ignore screens; KO bonus.",
 	},
 	safeharbor: {
 		name: "Safe Harbor",
@@ -10337,6 +10337,7 @@ const CUSTOM_ABILITY_COMPONENT_OVERRIDES: {[id: string]: readonly ID[]} = {
 	waterbubble: ['waterveil' as ID],
 	requiem: ['cursedbody' as ID],
 	reapersgrip: ['unaware' as ID, 'pressure' as ID],
+	ragingstorm: ['moldbreaker' as ID, 'battlearmor' as ID],
 	pendulumswing: ['insomnia' as ID, 'filter' as ID],
 	fightingfiend: ['vitalspirit' as ID, 'multiscale' as ID],
 	kickfiend: ['striker' as ID, 'violentrush' as ID, 'limber' as ID],
