@@ -1406,6 +1406,22 @@ changesFrom:'Chimecho',
 isNonstandard:'Custom'
 }
 },
+chimechomegay:{
+base:'chimecho',
+data:{
+name:'Chimecho-Mega-Y',
+baseSpecies:'Chimecho',
+forme:'Mega-Y',
+types:['Psychic','Ghost'],
+baseStats:{hp:75,atk:50,def:80,spa:145,spd:100,spe:105},
+abilities:{0:'Haunted Chime'},
+battleOnly:'Chimecho',
+requiredItem:'Chimechite Y',
+spriteid:'chimecho-mega-y',
+changesFrom:'Chimecho',
+isNonstandard:'Custom'
+}
+},
 froslassmega:{
 base:'froslass',
 data:{
@@ -1776,6 +1792,7 @@ crabominablemega:'crabominable-mega',
 floettemega:'floette-mega',
 floetteeternalmega:'floette-eternal-mega',
 chimechomega:'chimecho-mega',
+chimechomegay:'chimecho-mega-y',
 froslassmega:'froslass-mega',
 feraligatrmega:'feraligatr-mega',
 eelektrossmega:'eelektross-mega',
@@ -3094,6 +3111,12 @@ shinyFront:{w:192,h:192},
 shinyBack:{w:192,h:192}
 },
 seviperreborn:{
+front:{w:192,h:192},
+back:{w:192,h:192},
+shinyFront:{w:192,h:192},
+shinyBack:{w:192,h:192}
+},
+chimechomegay:{
 front:{w:192,h:192},
 back:{w:192,h:192},
 shinyFront:{w:192,h:192},
@@ -5555,6 +5578,11 @@ types:['Psychic','Steel'],
 baseStats:{hp:75,atk:50,def:110,spa:135,spd:120,spe:65},
 abilities:{0:'Wind Chime'}
 },
+chimechomegay:{
+types:['Psychic','Ghost'],
+baseStats:{hp:75,atk:50,def:80,spa:145,spd:100,spe:105},
+abilities:{0:'Haunted Chime'}
+},
 gliscor:{
 baseStats:{hp:105,atk:105,def:135,spa:40,spd:90,spe:95},
 abilities:{0:'Venom Heal',1:'Poison Heal',H:'Wind Rider'}
@@ -7589,6 +7617,11 @@ windchime:{
 name:"Wind Chime",
 desc:"This Pokemon has Armorize, Punk Rock, and Levitate's effects.",
 shortDesc:"Armorize + Punk Rock + Levitate."
+},
+hauntedchime:{
+name:"Haunted Chime",
+desc:"This Pokemon has Elevate, Wind Power, and Cursed Body's effects.",
+shortDesc:"Elevate + Wind Power + Cursed Body."
 },
 shadowguard:{
 name:"Shadow Guard",
@@ -10282,6 +10315,7 @@ var CUSTOM_ABILITY_COMPONENT_OVERRIDES={
 alchemistsurge:['psychicsurge','competitive','hydrabond','neuroforce'],
 argentdevotion:['armorize','swornduty'],
 windchime:['armorize','punkrock','levitate'],
+hauntedchime:['elevate','windpower','cursedbody'],
 auramaster:['dualwield','innerfocus','technician'],
 doublestrike:['ironfist','technician','skilllink'],
 lunarorbit:['magicbounce','serenegrace','triage'],
@@ -10860,6 +10894,16 @@ num:2655,
 gen:9,
 desc:'If held by a Clawitzer, this item allows it to Mega Evolve in battle.',
 shortDesc:'If held by a Clawitzer, this item allows it to Mega Evolve in battle.'
+},
+chimechitey:{
+name:'Chimechite Y',
+spritenum:498,
+megaStone:{Chimecho:'Chimecho-Mega-Y'},
+itemUser:['Chimecho'],
+num:2656,
+gen:9,
+desc:'If held by a Chimecho, this item allows it to Mega Evolve into Chimecho-Mega-Y in battle.',
+shortDesc:'If held by a Chimecho, this item allows it to Mega Evolve into Chimecho-Mega-Y in battle.'
 }
 };
 var CUSTOM_ITEM_IDS=Object.keys(CUSTOM_ITEM_UPDATES);
