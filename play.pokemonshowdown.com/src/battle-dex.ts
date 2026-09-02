@@ -6618,8 +6618,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	unstableevo: {
 		name: 'Unstable Evo',
-		desc: "Eevee-Starter's IVs carry through form changes. Before a Let's Go partner move, it becomes its matching evolution and uses that form's stats, typing, and Speed. It keeps Unstable Evo, Filter, and Self Sufficient, and gains that evolution's built-in Ability effects. Switching out restores Eevee-Starter. It cannot use battle gimmicks or hold Eevium Z.",
-		shortDesc: "Filter + Self Sufficient; Let's Go moves change form; no gimmicks.",
+		desc: "Eevee-Starter's IVs carry through form changes. Before a Let's Go partner move, it becomes its matching evolution and uses that form's stats, typing, and Speed. It keeps Unstable Evo, Filter, and Self Sufficient, and gains both of that evolution's built-in Ability effects. Switching out restores Eevee-Starter. It cannot use battle gimmicks or hold Eevium Z.",
+		shortDesc: "Filter + Self Sufficient; Let's Go moves change form and grant two Ability effects; no gimmicks.",
 	},
 	schooling: {
 		name: 'Schooling',
@@ -10529,8 +10529,10 @@ const CUSTOM_ABILITY_COMPONENT_OVERRIDES: {[id: string]: readonly ID[]} = {
 	ruinjaw: ['strongjaw' as ID, 'eartheater' as ID],
 	stormfright: ['strongjaw' as ID],
 	unstableevo: [
-		'flashfire' as ID, 'voltabsorb' as ID, 'waterabsorb' as ID, 'eclipse' as ID,
-		'mindfreeze' as ID, 'competitive' as ID, 'chlorophyll' as ID,
+		'lightningrod' as ID, 'voltabsorb' as ID, 'soulfire' as ID, 'fluffy' as ID,
+		'stormdrain' as ID, 'waterabsorb' as ID, 'pressure' as ID, 'innerfocus' as ID,
+		'magicbounce' as ID, 'telepathy' as ID, 'icescales' as ID, 'slushrush' as ID,
+		'chlorophyll' as ID, 'regenerator' as ID, 'friendguard' as ID, 'competitive' as ID,
 		'filter' as ID, 'selfsufficient' as ID,
 	],
 	triplethreat: ['hydrabond' as ID, 'tangledfeet' as ID, 'sniper' as ID, 'bigpecks' as ID, 'keeneye' as ID],
@@ -12659,14 +12661,11 @@ const Dex = new class implements ModdedDex {
 		if (!pokemon) return '';
 		const data = this.getTeambuilderSpriteData(pokemon, gen);
 		const spriteURL = Dex.resourcePrefix + data.spriteDir + '/' + data.spriteid + '.png';
-		const backgroundURLs = data.shiny ? [
-			Dex.resourcePrefix + data.spriteDir + '-shiny/' + data.spriteid + '.png',
-			// Some older sprite sets have empty shiny placeholders. Let the modern
-			// catalog provide the shiny artwork before falling back to normal art.
-			...(data.spriteDir !== 'sprites/dex' ? [Dex.resourcePrefix + 'sprites/dex-shiny/' + data.spriteid + '.png'] : []),
-			spriteURL,
-		] : [spriteURL];
-		const backgroundImage = backgroundURLs.map(url => 'url(' + url + ')').join(',');
+		// Keep the shiny and normal artwork mutually exclusive. Layering a
+		// transparent shiny PNG over the normal PNG leaves the normal sprite
+		// visible behind it in the Team Builder.
+		const backgroundImage = 'url(' + (data.shiny ?
+			Dex.resourcePrefix + data.spriteDir + '-shiny/' + data.spriteid + '.png' : spriteURL) + ')';
 		return 'background-image:' + backgroundImage + ';background-position:' + data.x + 'px ' + data.y + 'px;background-repeat:no-repeat' + (data.backgroundSize ? ';background-size:' + data.backgroundSize : '');
 	}
 

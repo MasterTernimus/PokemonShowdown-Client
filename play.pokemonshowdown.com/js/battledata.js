@@ -6618,8 +6618,8 @@ shortDesc:'Self Sufficient + Natural Cure.'
 },
 unstableevo:{
 name:'Unstable Evo',
-desc:"Eevee-Starter's IVs carry through form changes. Before a Let's Go partner move, it becomes its matching evolution and uses that form's stats, typing, and Speed. It keeps Unstable Evo, Filter, and Self Sufficient, and gains that evolution's built-in Ability effects. Switching out restores Eevee-Starter. It cannot use battle gimmicks or hold Eevium Z.",
-shortDesc:"Filter + Self Sufficient; Let's Go moves change form; no gimmicks."
+desc:"Eevee-Starter's IVs carry through form changes. Before a Let's Go partner move, it becomes its matching evolution and uses that form's stats, typing, and Speed. It keeps Unstable Evo, Filter, and Self Sufficient, and gains both of that evolution's built-in Ability effects. Switching out restores Eevee-Starter. It cannot use battle gimmicks or hold Eevium Z.",
+shortDesc:"Filter + Self Sufficient; Let's Go moves change form and grant two Ability effects; no gimmicks."
 },
 schooling:{
 name:'Schooling',
@@ -10529,8 +10529,10 @@ oceanicwings:['waterabsorb','hydration','friendguard'],
 ruinjaw:['strongjaw','eartheater'],
 stormfright:['strongjaw'],
 unstableevo:[
-'flashfire','voltabsorb','waterabsorb','eclipse',
-'mindfreeze','competitive','chlorophyll',
+'lightningrod','voltabsorb','soulfire','fluffy',
+'stormdrain','waterabsorb','pressure','innerfocus',
+'magicbounce','telepathy','icescales','slushrush',
+'chlorophyll','regenerator','friendguard','competitive',
 'filter','selfsufficient'],
 
 triplethreat:['hydrabond','tangledfeet','sniper','bigpecks','keeneye'],
@@ -12659,14 +12661,11 @@ getTeambuilderSprite=function getTeambuilderSprite(pokemon){var gen=arguments.le
 if(!pokemon)return'';
 var data=this.getTeambuilderSpriteData(pokemon,gen);
 var spriteURL=Dex.resourcePrefix+data.spriteDir+'/'+data.spriteid+'.png';
-var backgroundURLs=data.shiny?[
-Dex.resourcePrefix+data.spriteDir+'-shiny/'+data.spriteid+'.png'].concat(
 
 
-data.spriteDir!=='sprites/dex'?[Dex.resourcePrefix+'sprites/dex-shiny/'+data.spriteid+'.png']:[],[
-spriteURL]):
-[spriteURL];
-var backgroundImage=backgroundURLs.map(function(url){return'url('+url+')';}).join(',');
+
+var backgroundImage='url('+(data.shiny?
+Dex.resourcePrefix+data.spriteDir+'-shiny/'+data.spriteid+'.png':spriteURL)+')';
 return'background-image:'+backgroundImage+';background-position:'+data.x+'px '+data.y+'px;background-repeat:no-repeat'+(data.backgroundSize?';background-size:'+data.backgroundSize:'');
 };_proto2.
 

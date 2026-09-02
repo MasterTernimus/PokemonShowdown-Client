@@ -89,6 +89,20 @@ describe('Battle', () => {
 	});
 });
 
+describe('Team Builder sprites', () => {
+	it('uses one mutually exclusive normal or shiny sprite layer', () => {
+		const shinySprite = Dex.getTeambuilderSprite({species: 'Lucario-Mega-Z', shiny: true}, 9);
+		assert.match(shinySprite, /background-image:url\([^,]+\);/);
+		assert(shinySprite.includes('/sprites/gen5-shiny/lucario-megaz.png'));
+		assert(!shinySprite.includes('/sprites/gen5/lucario-megaz.png'));
+
+		const normalSprite = Dex.getTeambuilderSprite({species: 'Lucario-Mega-Z'}, 9);
+		assert.match(normalSprite, /background-image:url\([^,]+\);/);
+		assert(normalSprite.includes('/sprites/gen5/lucario-megaz.png'));
+		assert(!normalSprite.includes('/sprites/gen5-shiny/lucario-megaz.png'));
+	});
+});
+
 describe('Text parser', () => {
 	it.skip('should process messages correctly', () => {
 		let parser = new BattleTextParser();
