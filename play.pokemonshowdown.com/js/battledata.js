@@ -55,7 +55,8 @@ cinderite:'cinderite.png',
 ledianite:'ledianite.png',
 roseradite:'roseradite.png',
 aridiate:'aridiate.png',
-clawitzerite:'clawitzerite.png'
+clawitzerite:'clawitzerite.png',
+haxorite:'haxorite.png'
 };
 
 var CUSTOM_SPECIES={
@@ -669,6 +670,7 @@ types:['Dragon','Steel'],
 baseStats:{hp:95,atk:177,def:131,spa:60,spd:110,spe:97},
 abilities:{0:'Raging Overlord'},
 battleOnly:'Haxorus',
+requiredItem:'Haxorite',
 spriteid:'haxorus-alt',
 changesFrom:'Haxorus',
 isNonstandard:'Custom'
@@ -10904,6 +10906,16 @@ num:2656,
 gen:9,
 desc:'If held by a Chimecho, this item allows it to Mega Evolve into Chimecho-Mega-Y in battle.',
 shortDesc:'If held by a Chimecho, this item allows it to Mega Evolve into Chimecho-Mega-Y in battle.'
+},
+haxorite:{
+name:'Haxorite',
+spritenum:0,
+megaStone:{Haxorus:'Haxorus-Mega'},
+itemUser:['Haxorus'],
+num:2657,
+gen:9,
+desc:'If held by a Haxorus, this item allows it to Mega Evolve into Haxorus-Mega in battle.',
+shortDesc:'If held by a Haxorus, this item allows it to Mega Evolve into Haxorus-Mega in battle.'
 }
 };
 var CUSTOM_ITEM_IDS=Object.keys(CUSTOM_ITEM_UPDATES);
