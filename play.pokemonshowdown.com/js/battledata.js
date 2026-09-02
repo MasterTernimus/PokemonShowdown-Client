@@ -7864,8 +7864,8 @@ shortDesc:'Pulse and bullet moves have 1.5x power.'
 },
 heavyartillery:{
 name:'Heavy Artillery',
-desc:'Damaging pulse and bullet moves have 2x power, hit both opposing Pokemon in Doubles and all opponents at full power in Free-for-All, and lower the user\'s Defense and Special Defense by 1 after use. Also has Swift Swim and Shell Armor.',
-shortDesc:'Damaging pulse/bullet moves 2x; spread in Doubles, full power in FFA; lowers Def/SpD; Swift Swim + Shell Armor.'
+desc:'Damaging pulse and bullet moves have 2x power, hit both opposing Pokemon in Doubles and all opponents at full power in Free-for-All, and lower the user\'s Defense and Special Defense by 1 after use. Also has Mold Breaker and Shell Armor.',
+shortDesc:'Damaging pulse/bullet moves 2x; spread in Doubles, full power in FFA; lowers Def/SpD; Mold Breaker + Shell Armor.'
 },
 minus:{
 name:'Minus',
@@ -10366,7 +10366,7 @@ unstableevo:[
 triplethreat:['hydrabond','tangledfeet','sniper','bigpecks','keeneye'],
 perfectstriker:['striker','noguard','libero'],
 strikersmomentum:['striker','defiant','libero','noguard'],
-heavyartillery:['swiftswim','shellarmor'],
+heavyartillery:['moldbreaker','shellarmor'],
 strikerfrenzy:['striker','vitalspirit'],
 venomveil:['liquidooze','corrosion','waterveil'],
 venomheal:['hypercutter','poisonheal','poisonpoint'],
