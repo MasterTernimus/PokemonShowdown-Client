@@ -659,12 +659,16 @@ changesFrom:'Sandslash',
 isNonstandard:'Custom'
 }
 },
-haxorusalt:{
+haxorusmega:{
 base:'haxorus',
 data:{
-name:'Haxorus-Alt',
+name:'Haxorus-Mega',
 baseSpecies:'Haxorus',
-forme:'Alt',
+forme:'Mega',
+types:['Dragon','Steel'],
+baseStats:{hp:95,atk:177,def:131,spa:60,spd:110,spe:97},
+abilities:{0:'Raging Overlord'},
+battleOnly:'Haxorus',
 spriteid:'haxorus-alt',
 changesFrom:'Haxorus',
 isNonstandard:'Custom'
@@ -1620,7 +1624,7 @@ lanturnalt:'lanturn-alt',
 jynxalt:'jynx-alt',
 lumineonalt:'lumineon-alt',
 sandslashalt:'sandslash-alt',
-haxorusalt:'haxorus-alt',
+haxorusmega:'haxorus-alt',
 arcaninealt:'arcanine-alt',
 emboaralt:'emboar-alt',
 emboarmegaalt:'emboar-mega-alt',
@@ -2329,7 +2333,7 @@ back:{w:192,h:192},
 shinyFront:{w:192,h:192},
 shinyBack:{w:192,h:192}
 },
-haxorusalt:{
+haxorusmega:{
 front:{w:192,h:192},
 back:{w:192,h:192},
 shinyFront:{w:192,h:192},
@@ -5797,13 +5801,13 @@ baseStats:{hp:95,atk:120,def:130,spa:45,spd:75,spe:85},
 abilities:{0:'Tough Claws',1:'Iron Barbs',H:'Sand Rush'}
 },
 haxorus:{
-otherFormes:['Haxorus-Alt'],
-cosmeticFormes:['Haxorus-Alt'],
-formeOrder:['Haxorus','Haxorus-Alt']
+baseStats:{hp:95,atk:147,def:90,spa:50,spd:91,spe:97},
+otherFormes:['Haxorus-Mega'],
+formeOrder:['Haxorus','Haxorus-Mega']
 },
-haxorusalt:{
-baseStats:{hp:95,atk:147,def:100,spa:60,spd:101,spe:97},
-abilities:{0:'Sharpness',1:'Raging Storm',H:'Supreme Overlord'}
+haxorusmega:{
+baseStats:{hp:95,atk:177,def:131,spa:60,spd:110,spe:97},
+abilities:{0:'Raging Overlord'}
 },
 golurk:{abilities:{0:'Iron Fist',1:'No Guard',H:'Self Repair'}},
 sawsbuck:{
@@ -6800,6 +6804,11 @@ ragingstorm:{
 name:"Raging Storm",
 desc:"This Ability cannot be suppressed. This Pokemon has Mold Breaker and Battle Armor. Its attacks remove the target's positive stat changes before damage and ignore Reflect, Light Screen, Aurora Veil, and defensive stat boosts. If this Pokemon gets a KO, it damages remaining foes for 60% of the last damage in multi battles, or raises Attack by 1 if there is no valid target or no damage is dealt. Magic Guard users do not take this damage.",
 shortDesc:"Cannot be suppressed; Mold Breaker + Battle Armor; attacks clear boosts/ignore screens; KO bonus."
+},
+ragingoverlord:{
+name:"Raging Overlord",
+desc:"This Ability cannot be suppressed. This Pokemon has Raging Storm and Supreme Overlord's effects.",
+shortDesc:"Raging Storm + Supreme Overlord."
 },
 safeharbor:{
 name:"Safe Harbor",
@@ -10056,7 +10065,7 @@ ariados:{w:60,h:60},
 butterfree:{w:58,h:58},
 cacturnealt:{w:64,h:64},
 sandslashalt:{w:76,h:76},
-haxorusalt:{w:78,h:78},
+haxorusmega:{w:78,h:78},
 arcaninealt:{w:78,h:78},
 tentacruelalt:{w:82,h:82},
 roserademega:{w:72,h:72},
@@ -10338,6 +10347,7 @@ waterbubble:['waterveil'],
 requiem:['cursedbody'],
 reapersgrip:['unaware','pressure'],
 ragingstorm:['moldbreaker','battlearmor'],
+ragingoverlord:['ragingstorm','supremeoverlord'],
 pendulumswing:['insomnia','filter'],
 fightingfiend:['vitalspirit','multiscale'],
 kickfiend:['striker','violentrush','limber'],
