@@ -994,7 +994,7 @@ class AvatarsPanel extends PSRoomPanel {
 						class={`option pixelated${avatar === PS.user.avatar ? ' cur' : ''}`}
 						style="background-image:none;"
 					>
-						<img src={Dex.resolveAvatar(avatar)} alt="" width="80" height="80" class="pixelated"
+						<img src={Dex.resolveAvatar(avatar)} alt={label} width="80" height="80" class="pixelated"
 							style="width:80px;height:80px;object-fit:contain;"
 							onError={ev => {
 								const image = ev.currentTarget as HTMLImageElement;
