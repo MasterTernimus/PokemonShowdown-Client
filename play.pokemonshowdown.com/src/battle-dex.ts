@@ -5661,7 +5661,7 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 	gorebyss: {baseStats: {hp: 70, atk: 84, def: 115, spa: 124, spd: 85, spe: 52}},
 	ambipom: {
 		types: ['Normal', 'Fighting'],
-		baseStats: {hp: 75, atk: 120, def: 70, spa: 90, spd: 70, spe: 125},
+		baseStats: {hp: 80, atk: 110, def: 70, spa: 100, spd: 70, spe: 120},
 		abilities: {0: 'Unburden', 1: 'Double Strike', H: 'Scrappy'},
 	},
 	weavile: {
