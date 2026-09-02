@@ -42,6 +42,11 @@ function toID(text: any) {
 	return ('' + text).toLowerCase().replace(/[^a-z0-9]+/g, '') as ID;
 }
 
+const LOCAL_CUSTOM_AVATAR_IDS = new Set([
+	'adrienn', 'alainalt', 'amaria', 'amelia', 'asriel', 'aurora', 'charlotte', 'florinia', 'geara', 'julia',
+	'lin', 'radomus', 'saphira', 'sirius', 'shiv', 'shivalt', 'taka', 'titania', 'tyrant', 'zetta',
+]);
+
 function toUserid(text: any) {
 	return toID(text);
 }
@@ -9659,6 +9664,7 @@ const CUSTOM_LEARNSET_REMOVALS: {[id: string]: string[]} = {
 	mawile: ['doubleironbash'],
 	mienshao: ['meteorassault'],
 	milotic: ['bouncybubble', 'takeheart'],
+	morpeko: ['aurawheelplus'],
 	phione: ['takeheart'],
 	primarina: ['takeheart'],
 	muk: ['partingshot'],
@@ -11767,6 +11773,8 @@ const Dex = new class implements ModdedDex {
 		if (window.BattleAvatarNumbers && avatar in BattleAvatarNumbers) {
 			avatar = BattleAvatarNumbers[avatar];
 		}
+		const avatarid = toID(avatar);
+		if (LOCAL_CUSTOM_AVATAR_IDS.has(avatarid)) return `/sprites/trainers/${avatarid}.png`;
 		if (avatar.charAt(0) === '#') {
 			return Dex.resourcePrefix + 'sprites/trainers-custom/' + toID(avatar.substr(1)) + '.png';
 		}

@@ -1,4 +1,6 @@
 const assert = require('assert').strict;
+const fs = require('fs');
+const path = require('path');
 
 window = global;
 
@@ -109,6 +111,21 @@ describe('Team Builder sprites', () => {
 		assert.match(normalSprite, /background-image:url\([^,]+\);/);
 		assert(normalSprite.includes('/sprites/gen5/lucario-megaz.png'));
 		assert(!normalSprite.includes('/sprites/gen5-shiny/lucario-megaz.png'));
+	});
+
+	it('resolves all Reborn trainer avatars to local client assets', () => {
+		for (const avatar of [
+			'adrienn', 'alainalt', 'amaria', 'amelia', 'asriel', 'aurora', 'charlotte', 'florinia', 'geara', 'julia',
+			'lin', 'radomus', 'saphira', 'sirius', 'shiv', 'shivalt', 'taka', 'titania', 'tyrant', 'zetta',
+		]) {
+			assert.equal(Dex.resolveAvatar(avatar), `/sprites/trainers/${avatar}.png`);
+			assert(fs.existsSync(path.join(__dirname, '..', 'play.pokemonshowdown.com', 'sprites', 'trainers', `${avatar}.png`)));
+		}
+	});
+
+	it('removes Aura Wheel Plus from Morpeko in the Team Builder', () => {
+		Dex.species.get('Morpeko');
+		assert(!('aurawheelplus' in global.BattleTeambuilderTable.learnsets.morpeko));
 	});
 
 	it('keeps abilities on custom required-item Mega profiles', () => {
