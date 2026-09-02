@@ -5660,8 +5660,9 @@ tropius:{baseStats:{hp:115,atk:90,def:95,spa:75,spd:95,spe:70}},
 huntail:{baseStats:{hp:70,atk:114,def:115,spa:94,spd:85,spe:52}},
 gorebyss:{baseStats:{hp:70,atk:84,def:115,spa:124,spd:85,spe:52}},
 ambipom:{
-baseStats:{hp:80,atk:105,def:75,spa:105,spd:70,spe:115},
-abilities:{0:'Unburden',1:'Technician',H:'Skill Link'}
+types:['Normal','Fighting'],
+baseStats:{hp:75,atk:120,def:70,spa:90,spd:70,spe:125},
+abilities:{0:'Unburden',1:'Double Strike',H:'Scrappy'}
 },
 weavile:{
 baseStats:{hp:85,atk:135,def:80,spa:30,spd:90,spe:130},
@@ -6964,6 +6965,11 @@ bruteforce:{
 name:"Brute Force",
 desc:"This Pokemon has Reckless and Rock Head's effects.",
 shortDesc:"Reckless + Rock Head."
+},
+doublestrike:{
+name:'Double Strike',
+desc:"This Pokemon has Iron Fist, Technician, and Skill Link's effects.",
+shortDesc:'Iron Fist + Technician + Skill Link.'
 },
 burningcrown:{
 name:"Burning Crown",
@@ -10268,6 +10274,7 @@ alchemistsurge:['psychicsurge','competitive','hydrabond','neuroforce'],
 argentdevotion:['armorize','swornduty'],
 windchime:['armorize','punkrock','levitate'],
 auramaster:['dualwield','innerfocus','technician'],
+doublestrike:['ironfist','technician','skilllink'],
 lunarorbit:['magicbounce','serenegrace','triage'],
 blinddevotion:['falsedevotion','technician','cottondown'],
 aeviandream:['baddreams','shedskin','toughclaws'],
@@ -10453,7 +10460,7 @@ aggron:{bulletpunch:["9M"],magnetbomb:["9M"],scorchingsands:["9M"]},
 alakazam:{hypnosis:["9M"]},
 alomomola:{bodypress:["9M"],muddywater:["9M"],powerswap:["9M"],razorshell:["9M"]},
 altaria:{coldsnap:["9M"],petaldance:["9M"]},
-ambipom:{assurance:["9M"],beatup:["9M"],bodyslam:["9M"],breakingswipe:["9M"],curse:["9M"],defensecurl:["9M"],dynamicpunch:["9M"],machpunch:["9M"],megakick:["9M"],megapunch:["9M"],mimic:["9M"],nightmare:["9M"],seismictoss:["9M"],tailslap:["9M"],triattack:["9M"],zapcannon:["9M"]},
+ambipom:{assurance:["9M"],aurasphere:["9M"],axekick:["9M"],beatup:["9M"],bodyslam:["9M"],breakingswipe:["9M"],bulkup:["9M"],closecombat:["9M"],cometpunch:["9M"],crosschop:["9M"],curse:["9M"],defensecurl:["9M"],drainpunch:["9M"],doubleslap:["9M"],dynamicpunch:["9M"],forcepalm:["9M"],focuspunch:["9M"],hammerarm:["9M"],karatechop:["9M"],machpunch:["9M"],megakick:["9M"],megapunch:["9M"],mimic:["9M"],nastyplot:["9M"],nightmare:["9M"],seismictoss:["9M"],swordsdance:["9M"],tailslap:["9M"],triattack:["9M"],victorydance:["9M"],zapcannon:["9M"]},
 amoonguss:{dazzlinggleam:["9M"],defensecurl:["9M"],firstimpression:["9M"],rollout:["9M"],toxicspikes:["9M"]},
 ampharos:{charm:["9M"],cometpunch:["9M"],flashcannon:["9M"],paraboliccharge:["9L1"],risingvoltage:["9M"]},
 annihilape:{aerialace:["9M"],beatup:["9M"],bide:["9M"],blazekick:["9M"],burningjealousy:["9M"],covet:["9M"],darkestlariat:["9M"],defensecurl:["9M"],detect:["9M"],dualchop:["9M"],dynamicpunch:["9M"],headbutt:["9M"],honeclaws:["9M"],irontail:["9M"],knockoff:["9M"],megakick:["9M"],megapunch:["9M"],mimic:["9M"],mudslap:["9M"],payback:["9M"],payday:["9M"],poweruppunch:["9M"],psychup:["9M"],rage:["9M"],retaliate:["9M"],revenge:["9M"],roar:["9M"],rockclimb:["9M"],rocksmash:["9M"],roleplay:["9M"],skullbash:["9M"],strength:["9M"],superpower:["9M"],workup:["9M"]},
