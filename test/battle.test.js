@@ -3,6 +3,14 @@ const assert = require('assert').strict;
 window = global;
 
 global.BattlePokedex = require('../play.pokemonshowdown.com/data/pokedex.js').BattlePokedex;
+const BattleTeambuilderTable = require('../play.pokemonshowdown.com/data/teambuilder-tables.js').BattleTeambuilderTable;
+for (let gen = 1; gen <= 9; gen++) {
+	const table = BattleTeambuilderTable['gen' + gen] = BattleTeambuilderTable.gen9natdex;
+	for (const key of ['overrideAbilityData', 'overrideItemDesc', 'overrideMoveData', 'overrideSpeciesData', 'overrideTypeChart', 'removeType']) {
+		if (!table[key]) table[key] = {};
+	}
+}
+global.BattleTeambuilderTable = BattleTeambuilderTable;
 require('../play.pokemonshowdown.com/js/battle-dex-data.js');
 require('../play.pokemonshowdown.com/js/battle-dex.js');
 require('../play.pokemonshowdown.com/js/battle-scene-stub.js');
@@ -133,8 +141,17 @@ describe('Team Builder sprites', () => {
 
 	it('exposes the updated Mega Banette Z stats', () => {
 		assert.deepEqual(Dex.species.get('Banette-Mega-Z').baseStats, {
-			hp: 84, atk: 145, def: 120, spa: 30, spd: 110, spe: 151,
+			hp: 84, atk: 105, def: 110, spa: 90, spd: 100, spe: 151,
 		});
+	});
+
+	it('keeps Banette coverage legal in the team builder', () => {
+		Dex.species.get('Banette');
+		const learnset = global.BattleTeambuilderTable.learnsets.banette;
+		assert(learnset, 'Banette should have a Team Builder learnset');
+		for (const move of ['flashcannon', 'magnetbomb', 'mirrorshot', 'bittermalice', 'ancientpower', 'eeriespell']) {
+			assert(move in learnset, `Banette should learn ${move}`);
+		}
 	});
 });
 

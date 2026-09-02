@@ -1649,7 +1649,7 @@ name:'Banette-Mega-Z',
 baseSpecies:'Banette',
 forme:'Mega-Z',
 types:['Ghost','Steel'],
-baseStats:{hp:84,atk:145,def:120,spa:30,spd:110,spe:151},
+baseStats:{hp:84,atk:105,def:110,spa:90,spd:100,spe:151},
 abilities:{0:'Cursed Armament'},
 requiredItem:'Banettite',
 battleOnly:'Banette',
@@ -7212,8 +7212,8 @@ shortDesc:"Prankster; attacks/status curse; cursed foes deal 0.8x; heals 1/2 Cur
 },
 cursedarmament:{
 name:"Cursed Armament",
-desc:"This Pokemon has Filter's effects. Curse used by this Pokemon becomes a 100 BP physical Ghost-type attack with 100% accuracy that hits all adjacent foes and curses each target. Curse from this Pokemon deals 1/8 max HP each turn. This Pokemon restores 1/4 of the damage dealt by its attacks and by Curse damage it caused. When this Pokemon reaches half HP or faints, it creates Haunted Field for 5 turns.",
-shortDesc:"Filter; Curse becomes 100 BP spread Ghost attack; curses foes; heals 1/4 attack/Curse damage; half HP/faint sets Haunted Field."
+desc:"This Pokemon has Filter's effects. Curse used by this Pokemon becomes a 100 BP physical or special Ghost-type attack using its higher Attack or Special Attack, with 100% accuracy, that hits all adjacent foes and curses each target. Curse from this Pokemon deals 1/8 max HP each turn. This Pokemon restores 1/4 of the damage dealt by its attacks and by Curse damage it caused. When this Pokemon reaches half HP or faints, it creates Haunted Field for 5 turns.",
+shortDesc:"Filter; Curse becomes a 100 BP spread Ghost attack using the higher Attack or Sp. Atk; curses foes; heals 1/4 damage; half HP/faint sets Haunted Field."
 },
 defragment:{
 name:"Defragment",
@@ -10661,7 +10661,7 @@ aromatisse:{healblock:["9M"],hypnosis:["9L1"]},
 audino:{triattack:["9M"]},
 aurorus:{coldsnap:["9M"],icehammer:["9L1"]},
 avalugg:{coldsnap:["9M"]},
-banette:{astonish:["9L1"],fakeout:["9M"],healblock:["9M"],iciclespear:["9M"],playrough:["9M"],psychocut:["9M"],shadowpunch:["9M"],slash:["9M"],vacuumwave:["9M"],xscissor:["9M"],zenheadbutt:["9M"]},
+banette:{ancientpower:["9M"],astonish:["9L1"],bittermalice:["9M"],eeriespell:["9M"],fakeout:["9M"],flashcannon:["9M"],healblock:["9M"],iciclespear:["9M"],magnetbomb:["9M"],mirrorshot:["9M"],playrough:["9M"],psychocut:["9M"],shadowpunch:["9M"],slash:["9M"],vacuumwave:["9M"],xscissor:["9M"],zenheadbutt:["9M"]},
 barbaracle:{closecombat:["9M"],cometpunch:["9M"],doublehit:["9M"],powergem:["9M"],waterfall:["9M"]},
 bastiodon:{firefang:["9M"],guardsplit:["9M"],icefang:["9M"],screech:["9M"],thunderfang:["9M"]},
 baxcalibur:{aquatail:["9M"],coldsnap:["9M"],hail:["9M"],icehammer:["9L1"],psychicfangs:["9M"]},
