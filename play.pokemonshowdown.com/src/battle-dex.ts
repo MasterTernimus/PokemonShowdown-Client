@@ -7864,8 +7864,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	heavyartillery: {
 		name: 'Heavy Artillery',
-		desc: 'Damaging pulse and bullet moves have 2x power, hit both opposing Pokemon in Doubles and all opponents at full power in Free-for-All, and lower the user\'s Defense and Special Defense by 1 after use. Also has Swift Swim and Shell Armor.',
-		shortDesc: 'Damaging pulse/bullet moves 2x; spread in Doubles, full power in FFA; lowers Def/SpD; Swift Swim + Shell Armor.',
+		desc: 'Damaging pulse and bullet moves have 2x power, hit both opposing Pokemon in Doubles and all opponents at full power in Free-for-All, and lower the user\'s Defense and Special Defense by 1 after use. Also has Mold Breaker and Shell Armor.',
+		shortDesc: 'Damaging pulse/bullet moves 2x; spread in Doubles, full power in FFA; lowers Def/SpD; Mold Breaker + Shell Armor.',
 	},
 	minus: {
 		name: 'Minus',
@@ -10366,7 +10366,7 @@ const CUSTOM_ABILITY_COMPONENT_OVERRIDES: {[id: string]: readonly ID[]} = {
 	triplethreat: ['hydrabond' as ID, 'tangledfeet' as ID, 'sniper' as ID, 'bigpecks' as ID, 'keeneye' as ID],
 	perfectstriker: ['striker' as ID, 'noguard' as ID, 'libero' as ID],
 	strikersmomentum: ['striker' as ID, 'defiant' as ID, 'libero' as ID, 'noguard' as ID],
-	heavyartillery: ['swiftswim' as ID, 'shellarmor' as ID],
+	heavyartillery: ['moldbreaker' as ID, 'shellarmor' as ID],
 	strikerfrenzy: ['striker' as ID, 'vitalspirit' as ID],
 	venomveil: ['liquidooze' as ID, 'corrosion' as ID, 'waterveil' as ID],
 	venomheal: ['hypercutter' as ID, 'poisonheal' as ID, 'poisonpoint' as ID],
