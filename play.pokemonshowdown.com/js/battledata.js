@@ -822,6 +822,7 @@ data:{
 name:'Emboar-Mega-Reborn',
 baseSpecies:'Emboar',
 forme:'Mega-Reborn',
+abilities:{0:'Burning Ego'},
 battleOnly:'Emboar-Reborn',
 changesFrom:'Emboar-Reborn',
 requiredItem:'Emboarite',
@@ -997,6 +998,7 @@ data:{
 name:'Flygon-Mega-Z',
 baseSpecies:'Flygon',
 forme:'Mega-Z',
+abilities:{0:'Tremor'},
 requiredItem:'Leaf Stone',
 battleOnly:'Flygon',
 changesFrom:'Flygon',
@@ -1087,6 +1089,7 @@ name:'Gallade-Mega-Azzy',
 baseSpecies:'Gallade',
 forme:'Mega-Azzy',
 spriteid:'gallade-mega-azzy',
+abilities:{0:'Sacred Edge'},
 requiredItem:'Galladite',
 battleOnly:'Gallade-Azzy',
 changesFrom:'Gallade-Azzy',
@@ -1166,6 +1169,7 @@ data:{
 name:'Gardevoir-Void-Mega',
 baseSpecies:'Gardevoir',
 forme:'Void-Mega',
+abilities:{0:'Execution'},
 requiredItem:'Gardevoirite',
 battleOnly:'Gardevoir',
 changesFrom:'Gardevoir',
@@ -1178,6 +1182,7 @@ data:{
 name:'Gardevoir-Mega-Z',
 baseSpecies:'Gardevoir',
 forme:'Mega-Z',
+abilities:{0:'Argent Devotion'},
 requiredItem:'Gardevoirite',
 battleOnly:'Gardevoir',
 changesFrom:'Gardevoir',
@@ -1190,6 +1195,7 @@ data:{
 name:'Lucario-Mega-Z',
 baseSpecies:'Lucario',
 forme:'Mega-Z',
+abilities:{0:'Aura Master'},
 requiredItem:'Lucarionite',
 battleOnly:'Lucario',
 changesFrom:'Lucario',
@@ -1249,6 +1255,7 @@ name:'Scolipede-Mega-Azzy',
 baseSpecies:'Scolipede',
 forme:'Mega-Azzy',
 spriteid:'scolipede-mega-azzy',
+abilities:{0:'Venom Bastion'},
 requiredItem:'Scolipite',
 battleOnly:'Scolipede-Azzy',
 changesFrom:'Scolipede-Azzy',
@@ -1570,6 +1577,7 @@ data:{
 name:'Charizard-Mega-X-Alt',
 baseSpecies:'Charizard',
 forme:'Mega-X-Alt',
+abilities:{0:'Atrocity'},
 battleOnly:'Charizard-Alt',
 changesFrom:'Charizard-Alt',
 requiredItem:'Charizardite X',
@@ -1595,6 +1603,7 @@ data:{
 name:'Alakazam-Mega-Alt',
 baseSpecies:'Alakazam',
 forme:'Mega-Alt',
+abilities:{0:'Perfect Foresight'},
 battleOnly:'Alakazam-Alt',
 requiredItem:'Alakazite',
 changesFrom:'Alakazam-Alt',
@@ -1640,7 +1649,7 @@ name:'Banette-Mega-Z',
 baseSpecies:'Banette',
 forme:'Mega-Z',
 types:['Ghost','Steel'],
-baseStats:{hp:84,atk:105,def:110,spa:30,spd:100,spe:151},
+baseStats:{hp:84,atk:145,def:120,spa:30,spd:110,spe:151},
 abilities:{0:'Cursed Armament'},
 requiredItem:'Banettite',
 battleOnly:'Banette',
@@ -7203,8 +7212,8 @@ shortDesc:"Prankster; attacks/status curse; cursed foes deal 0.8x; heals 1/2 Cur
 },
 cursedarmament:{
 name:"Cursed Armament",
-desc:"Curse used by this Pokemon becomes a 100 BP physical Ghost-type attack with 100% accuracy that hits all adjacent foes and curses each target. Curse from this Pokemon deals 1/8 max HP each turn. This Pokemon restores 1/4 of the damage dealt by its attacks and by Curse damage it caused. When this Pokemon faints, it creates Haunted Field for 5 turns.",
-shortDesc:"Curse becomes 100 BP spread Ghost attack; curses foes; heals 1/4 attack/Curse damage."
+desc:"This Pokemon has Filter's effects. Curse used by this Pokemon becomes a 100 BP physical Ghost-type attack with 100% accuracy that hits all adjacent foes and curses each target. Curse from this Pokemon deals 1/8 max HP each turn. This Pokemon restores 1/4 of the damage dealt by its attacks and by Curse damage it caused. When this Pokemon reaches half HP or faints, it creates Haunted Field for 5 turns.",
+shortDesc:"Filter; Curse becomes 100 BP spread Ghost attack; curses foes; heals 1/4 attack/Curse damage; half HP/faint sets Haunted Field."
 },
 defragment:{
 name:"Defragment",
@@ -9759,7 +9768,10 @@ gastrodoneast:'gastrodon'
 };
 var CUSTOM_SPECIES_ID_ALIASES={
 
-granbullreborn:'granbullalt'
+granbullreborn:'granbullalt',
+
+emboarreborn:'emboaralt',
+emboarmegareborn:'emboarmegaalt'
 };
 var PROFILE_VARIANT_FORMES={
 palossand:[
