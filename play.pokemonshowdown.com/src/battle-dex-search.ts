@@ -49,13 +49,16 @@ const HIDDEN_TEAMBUILDER_SPECIES = new Set<ID>([
 // Keep them available for normal species lookup and battle rendering, but do
 // not count them as custom additions in the explicit -custom list.
 const ZA_MEGA_SPECIES = new Set<ID>([
-	'baxcaliburmega', 'chandeluremega', 'chesnaughtmega', 'chimechomega', 'clefablemega',
-	'crabominablemega', 'delphoxmega', 'dragalgemega', 'dragonitemega', 'eelektrossmega',
-	'emboarmega', 'excadrillmega', 'feraligatrmega', 'floetteeternalmega', 'froslassmega',
-	'glimmoramega', 'golisopodmega', 'golurkmega', 'greninjamega', 'lucariomegaz',
-	'malamarmega', 'meganiummega', 'meowsticfmega', 'meowsticmmega', 'raichumegax',
-	'raichumegay', 'scolipedemega', 'scovillainmega', 'scraftymega', 'skarmorymega',
-	'staraptormega',
+	'absolmegaz', 'baxcaliburmega', 'barbaraclemega', 'chandeluremega', 'chesnaughtmega',
+	'chimechomega', 'clefablemega', 'crabominablemega', 'darkraimega', 'delphoxmega',
+	'dragalgemega', 'dragonitemega', 'drampamega', 'eelektrossmega', 'emboarmega',
+	'excadrillmega', 'feraligatrmega', 'floettemega', 'floetteeternalmega', 'froslassmega',
+	'falinksmega', 'garchompmegaz', 'glimmoramega', 'golisopodmega', 'golurkmega', 'greninjamega',
+	'hawluchamega', 'heatranmega', 'lucariomegaz', 'malamarmega', 'magearnamega',
+	'magearnaoriginalmega', 'meganiummega', 'meowsticfmega', 'meowsticmmega', 'pyroarmega',
+	'raichumegax', 'raichumegay', 'scolipedemega', 'scovillainmega', 'scraftymega',
+	'skarmorymega', 'staraptormega', 'starmiemega', 'tatsugiricurlymega', 'tatsugiridroopymega',
+	'tatsugiristretchymega', 'victreebelmega', 'zeraoramega', 'zygardemega',
 ]);
 
 // These are visual-only destinations for Z Protean. They must remain resolvable
