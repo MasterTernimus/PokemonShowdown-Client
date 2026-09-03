@@ -128,6 +128,12 @@ describe('Team Builder sprites', () => {
 		assert(!('aurawheelplus' in global.BattleTeambuilderTable.learnsets.morpeko));
 	});
 
+	it('syncs Meowscarada abilities from the server data', () => {
+		assert.deepEqual(Dex.species.get('Meowscarada').abilities, {
+			0: 'Magician', 1: 'Protean', H: 'Illusion',
+		});
+	});
+
 	it('keeps abilities on custom required-item Mega profiles', () => {
 		const expected = {
 			'Haxorus-Mega': 'Raging Overlord',
