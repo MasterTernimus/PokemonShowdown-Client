@@ -5,6 +5,8 @@ const path = require('path');
 window = global;
 
 global.BattlePokedex = require('../play.pokemonshowdown.com/data/pokedex.js').BattlePokedex;
+global.BattlePokemonSprites = {};
+global.BattlePokemonSpritesBW = {};
 const BattleTeambuilderTable = require('../play.pokemonshowdown.com/data/teambuilder-tables.js').BattleTeambuilderTable;
 for (let gen = 1; gen <= 9; gen++) {
 	const table = BattleTeambuilderTable['gen' + gen] = BattleTeambuilderTable.gen9natdex;
@@ -114,13 +116,25 @@ describe('Team Builder sprites', () => {
 	});
 
 	it('resolves all Reborn trainer avatars to local client assets', () => {
-		for (const avatar of [
+		const avatars = [
 			'adrienn', 'alainalt', 'amaria', 'amelia', 'asriel', 'aurora', 'charlotte', 'florinia', 'geara', 'julia',
 			'lin', 'radomus', 'saphira', 'sirius', 'shiv', 'shivalt', 'taka', 'titania', 'tyrant', 'zetta',
-		]) {
+		];
+		const avatarPicker = fs.readFileSync(path.join(
+			__dirname, '..', 'play.pokemonshowdown.com', 'js', 'panel-popups.js'
+		), 'utf8');
+		for (const avatar of avatars) {
 			assert.equal(Dex.resolveAvatar(avatar), `/sprites/trainers/${avatar}.png`);
 			assert(fs.existsSync(path.join(__dirname, '..', 'play.pokemonshowdown.com', 'sprites', 'trainers', `${avatar}.png`)));
+			assert(avatarPicker.includes(`['${avatar}',`), `${avatar} should be present in the deployed avatar picker`);
 		}
+	});
+
+	it('keeps opponent-facing Rotom sprites readable in battle', () => {
+		const sprite = Dex.getSpriteData('Rotom-Wash', true, {gen: 9});
+		assert.equal(sprite.w, 96);
+		assert.equal(sprite.h, 77);
+		assert(sprite.url.endsWith('/sprites/ani/rotom-wash.gif'));
 	});
 
 	it('removes Aura Wheel Plus from Morpeko in the Team Builder', () => {

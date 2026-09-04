@@ -8,3 +8,6 @@ play.pokemonshowdown.com/config/
 config/config.js
 caches/PokemonShowdown-Reborn/
 *.json
+
+# The deployed avatar selector must ship with custom trainer entries.
+!play.pokemonshowdown.com/js/panel-popups.js
