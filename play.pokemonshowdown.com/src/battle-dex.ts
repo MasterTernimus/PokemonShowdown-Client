@@ -11672,24 +11672,25 @@ function encodeCustomLearnsetSources(sources: string[]) {
 	return `${legalGens}c`;
 }
 
-function getNatDexTeambuilderIds() {
-	const natDexTable = window.BattleTeambuilderTable?.gen9natdex;
-	const rows = natDexTable?.tierSet || natDexTable?.tiers;
+function getNatDexNaturePowerIds() {
+	const natDexLearnsets = window.BattleTeambuilderTable?.gen9natdex?.learnsets;
 	const ids = new Set<string>();
-	if (!Array.isArray(rows)) return ids;
-	for (const row of rows) {
-		if (Array.isArray(row) && row[0] !== 'pokemon') continue;
-		const id = Array.isArray(row) ? row[1] : row;
-		if (typeof id === 'string') ids.add(toID(id));
+	if (!natDexLearnsets) return ids;
+	for (const [id, learnset] of Object.entries(natDexLearnsets) as [string, AnyObject][]) {
+		if (learnset.naturepower) ids.add(id);
 	}
 	return ids;
 }
 
-function isNatDexTeambuilderId(id: string, table: AnyObject, natDexIds: Set<string>) {
-	if (natDexIds.has(id)) return true;
+function isGrassFinalEvolution(id: string, table: AnyObject) {
 	const species = table.overrideSpeciesData?.[id] || window.BattlePokedex?.[id] || CUSTOM_SPECIES[id]?.data;
-	const baseId = toID(species?.baseSpecies || CUSTOM_SPECIES[id]?.base || '');
-	return baseId !== id && natDexIds.has(baseId);
+	if (!species) return false;
+	const baseId = toID(species.baseSpecies || CUSTOM_SPECIES[id]?.base || '');
+	const baseSpecies = table.overrideSpeciesData?.[baseId] || window.BattlePokedex?.[baseId] || CUSTOM_SPECIES[baseId]?.data;
+	const types = species.types || baseSpecies?.types;
+	const evos = species.evos ?? baseSpecies?.evos;
+	const forme = String(species.forme || '').toLowerCase();
+	return types?.includes('Grass') && !evos?.length && !forme.includes('mega') && !forme.includes('gmax');
 }
 
 function applyCustomTeambuilderLearnsets(table: AnyObject) {
@@ -11801,11 +11802,11 @@ function applyCustomTeambuilderLearnsets(table: AnyObject) {
 			...table.learnsets.samurott,
 		};
 	}
-	const natDexIds = getNatDexTeambuilderIds();
-	const naturePowerSource = encodeCustomLearnsetSources(['9M']);
+	const natDexNaturePowerIds = getNatDexNaturePowerIds();
 	for (const [id, learnset] of Object.entries(table.learnsets) as [string, AnyObject][]) {
-		if (isNatDexTeambuilderId(id, table, natDexIds) && !learnset.naturepower) {
-			learnset.naturepower = naturePowerSource;
+		if ((natDexNaturePowerIds.has(id) || isGrassFinalEvolution(id, table)) &&
+			!Object.prototype.hasOwnProperty.call(learnset, 'naturepower')) {
+			learnset.naturepower = encodeCustomLearnsetSources(['9M']);
 		}
 	}
 	if (table.learnsets.milotic) {
