@@ -177,6 +177,9 @@ describe('Team Builder sprites', () => {
 	it('constrains oversized native Team Builder sprites', () => {
 		const sprite = Dex.getTeambuilderSprite({species: 'Hydreigon'}, 9);
 		assert(sprite.includes('background-size:82px auto'), sprite);
+		const feraligatr = Dex.getTeambuilderSprite({species: 'Feraligatr'}, 9);
+		assert(feraligatr.includes('background-position:7px 6px'), feraligatr);
+		assert(feraligatr.includes('background-size:82px auto'), feraligatr);
 	});
 
 	it('resolves all Reborn trainer avatars to local client assets', () => {

@@ -10428,6 +10428,7 @@ garchomp:{back:{w:112,h:112}}
 };
 var NATIVE_TEAMBUILDER_SPRITE_OVERRIDES={
 cacturne:{x:9,y:7,backgroundSize:'74px auto'},
+feraligatr:{x:7,y:6,backgroundSize:'82px auto'},
 garchomp:{x:6,y:10,backgroundSize:'78px auto'},
 garchompf:{x:6,y:10,backgroundSize:'78px auto'},
 hydreigon:{x:7,y:6,backgroundSize:'82px auto'},
