@@ -7812,8 +7812,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	riotamp: {
 		name: "Riot Amp",
-		desc: "This Pokemon has Punk Rock, Galvanize, Resonance Force, Technician, and Volt Absorb's effects.",
-		shortDesc: "Punk Rock + Galvanize + Resonance Force + Technician + Volt Absorb.",
+		desc: "This Pokemon has Proficient, Galvanize, Resonance Force, and Volt Absorb's effects.",
+		shortDesc: "Proficient + Galvanize + Resonance Force + Volt Absorb.",
 	},
 	riptideclaws: {
 		name: "Riptide Claws",
@@ -10696,7 +10696,7 @@ const CUSTOM_ABILITY_COMPONENT_OVERRIDES: {[id: string]: readonly ID[]} = {
 	aevianoath: ['swornduty' as ID, 'dualwield' as ID, 'battlearmor' as ID],
 	moonlitwings: ['serenegrace' as ID],
 	phalanxform: ['hydrabond' as ID, 'friendguard' as ID, 'battlearmor' as ID],
-	riotamp: ['punkrock' as ID, 'galvanize' as ID, 'resonanceforce' as ID, 'technician' as ID, 'voltabsorb' as ID],
+riotamp: ['proficient' as ID, 'galvanize' as ID, 'resonanceforce' as ID, 'voltabsorb' as ID],
 	waterbubble: ['waterveil' as ID],
 	requiem: ['cursedbody' as ID],
 	reapersgrip: ['unaware' as ID, 'pressure' as ID],

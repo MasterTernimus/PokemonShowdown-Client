@@ -7812,8 +7812,8 @@ shortDesc:"Filter + Iron Fist; 40% frostbite; KO heals 1/8 or 1/4 vs gimmicks."
 },
 riotamp:{
 name:"Riot Amp",
-desc:"This Pokemon has Punk Rock, Galvanize, Resonance Force, Technician, and Volt Absorb's effects.",
-shortDesc:"Punk Rock + Galvanize + Resonance Force + Technician + Volt Absorb."
+desc:"This Pokemon has Proficient, Galvanize, Resonance Force, and Volt Absorb's effects.",
+shortDesc:"Proficient + Galvanize + Resonance Force + Volt Absorb."
 },
 riptideclaws:{
 name:"Riptide Claws",
@@ -10696,7 +10696,7 @@ hisuianoath:['swornduty','toughclaws','corrosion'],
 aevianoath:['swornduty','dualwield','battlearmor'],
 moonlitwings:['serenegrace'],
 phalanxform:['hydrabond','friendguard','battlearmor'],
-riotamp:['punkrock','galvanize','resonanceforce','technician','voltabsorb'],
+riotamp:['proficient','galvanize','resonanceforce','voltabsorb'],
 waterbubble:['waterveil'],
 requiem:['cursedbody'],
 reapersgrip:['unaware','pressure'],
