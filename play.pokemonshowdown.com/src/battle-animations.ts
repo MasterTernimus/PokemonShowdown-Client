@@ -84,6 +84,7 @@ export class BattleScene implements BattleSceneStub {
 	interruptionCount = 1;
 	curWeather = '';
 	curTerrain = '';
+	terrainAnimationToken = 0;
 
 	// Animation state
 	////////////////////////////////////
@@ -987,6 +988,7 @@ export class BattleScene implements BattleSceneStub {
 			this.$weather.stop(true, true).html('<em>' + weatherhtml + '</em>');
 			this.$weather.attr('class', weather ? 'weather ' + weather + 'weather' : 'weather');
 			this.$weather.css('opacity', isIntense || !weather ? 0.9 : 0.5);
+			this.terrainAnimationToken++;
 			this.$terrain.stop(true, true).attr('class', terrain ? 'weather ' + terrain + 'weather' : 'weather');
 			this.$terrain.css({top: 0, opacity: 1});
 			this.curWeather = weather;
@@ -997,6 +999,8 @@ export class BattleScene implements BattleSceneStub {
 		if (instant) {
 			this.$weather.html('<em>' + weatherhtml + '</em>');
 			if (this.curWeather === weather && this.curTerrain === terrain) return;
+			this.terrainAnimationToken++;
+			this.$terrain.stop(true, true);
 			this.$terrain.attr('class', terrain ? 'weather ' + terrain + 'weather' : 'weather');
 			this.curTerrain = terrain;
 			this.$weather.attr('class', weather ? 'weather ' + weather + 'weather' : 'weather');
@@ -1019,10 +1023,12 @@ export class BattleScene implements BattleSceneStub {
 		}
 
 		if (terrain !== this.curTerrain) {
-			this.$terrain.animate({
+			const terrainAnimationToken = ++this.terrainAnimationToken;
+			this.$terrain.stop(true, true).animate({
 				top: 360,
 				opacity: 0,
 			}, this.curTerrain ? 400 : 1, () => {
+				if (terrainAnimationToken !== this.terrainAnimationToken) return;
 				this.$terrain.attr('class', terrain ? 'weather ' + terrain + 'weather' : 'weather');
 				this.$terrain.animate({top: 0, opacity: 1}, 400);
 			});

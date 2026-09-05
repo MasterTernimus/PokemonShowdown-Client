@@ -23,6 +23,59 @@ require('../play.pokemonshowdown.com/js/battle-text-parser.js');
 require('../play.pokemonshowdown.com/js/battle.js');
 
 describe('Battle', () => {
+	it('registers Mega Sunflora stats, stone, ability, and all four BW sprites', () => {
+		global.BattleItems = require('../play.pokemonshowdown.com/data/items.js').BattleItems;
+		const base = Dex.species.get('Sunflora');
+		assert.equal(base.baseStats.def, 75);
+		assert.equal(base.baseStats.spd, 90);
+		assert(base.otherFormes.includes('Sunflora-Mega'));
+		const mega = Dex.species.get('Sunflora-Mega');
+		assert.deepEqual(mega.baseStats, {hp: 95, atk: 70, def: 105, spa: 155, spd: 115, spe: 30});
+		assert.deepEqual(mega.types, ['Grass', 'Fire']);
+		assert.equal(mega.abilities[0], 'Solar Hydra');
+		assert.equal(Dex.items.get('Sunflorite').megaStone.Sunflora, 'Sunflora-Mega');
+		assert.match(Dex.getItemIcon('Sunflorite'), /itemicons\/sunflorite.png/);
+		for (const gen of [5, 9]) {
+			for (const shiny of [false, true]) {
+				for (const front of [false, true]) {
+					const sprite = Dex.getSpriteData('Sunflora-Mega', front, {gen, shiny});
+					const dir = `gen5${front ? '' : '-back'}${shiny ? '-shiny' : ''}`;
+					assert(sprite.url.includes(`/sprites/${dir}/sunflora-mega.png`), sprite.url);
+					assert(fs.existsSync(path.join(__dirname, '../play.pokemonshowdown.com/sprites', dir, 'sunflora-mega.png')));
+				}
+			}
+		}
+	});
+	it('registers Claydol-Mega, Claydolite, and all four supplied BW sprites', () => {
+		global.BattleItems = require('../play.pokemonshowdown.com/data/items.js').BattleItems;
+		const mega = Dex.species.get('Claydol-Mega');
+		assert.deepEqual(mega.types, ['Ground', 'Psychic']);
+		assert.deepEqual(mega.baseStats, {hp: 60, atk: 70, def: 135, spa: 130, spd: 150, spe: 55});
+		assert.equal(mega.abilities[0], 'Astral Engine');
+		assert(Dex.species.get('Claydol').otherFormes.includes('Claydol-Mega'));
+		assert.equal(Dex.items.get('Claydolite').megaStone.Claydol, 'Claydol-Mega');
+		assert.match(Dex.getItemIcon('Claydolite'), /itemicons\/claydolite.png/);
+		for (const gen of [5, 9]) {
+			for (const shiny of [false, true]) {
+				for (const front of [false, true]) {
+					const sprite = Dex.getSpriteData('Claydol-Mega', front, {gen, shiny});
+					const dir = `gen5${front ? '' : '-back'}${shiny ? '-shiny' : ''}`;
+					assert(sprite.url.includes(`/sprites/${dir}/claydol-mega.png`), sprite.url);
+					assert(fs.existsSync(path.join(__dirname, '../play.pokemonshowdown.com/sprites', dir, 'claydol-mega.png')));
+				}
+			}
+		}
+	});
+	it('uses BW sprites for custom Furfrou trims and the base BW back sprite fallback', () => {
+		for (const trim of ['Heart', 'Star', 'Diamond', 'Debutante', 'Matron', 'Dandy', 'La Reine', 'Kabuki', 'Pharaoh']) {
+			const id = trim === 'La Reine' ? 'furfroulareine' : `furfrou${trim.toLowerCase()}`;
+			const front = Dex.getSpriteData(`Furfrou-${trim}`, true, {gen: 9});
+			assert(front.url.includes(`/sprites/gen5/furfrou-${id.slice(7)}.png`), front.url);
+			assert(fs.existsSync(path.join(__dirname, '../play.pokemonshowdown.com/sprites/gen5', `furfrou-${id.slice(7)}.png`)));
+			const back = Dex.getSpriteData(`Furfrou-${trim}`, false, {gen: 9});
+			assert(back.url.includes('/sprites/gen5-back/furfrou.png'), back.url);
+		}
+	});
 
 	it('should process a bunch of messages properly', () => {
 		let battle = new Battle({
@@ -115,6 +168,17 @@ describe('Team Builder sprites', () => {
 		assert(!normalSprite.includes('/sprites/gen5-shiny/lucario-megaz.png'));
 	});
 
+	it('falls back to normal Team Builder art when a shiny asset is empty', () => {
+		const sprite = Dex.getTeambuilderSprite({species: 'Togekiss', shiny: true}, 9);
+		assert(sprite.includes('/sprites/dex/togekiss.png'), sprite);
+		assert(!sprite.includes('/sprites/dex-shiny/togekiss.png'), sprite);
+	});
+
+	it('constrains oversized native Team Builder sprites', () => {
+		const sprite = Dex.getTeambuilderSprite({species: 'Hydreigon'}, 9);
+		assert(sprite.includes('background-size:82px auto'), sprite);
+	});
+
 	it('resolves all Reborn trainer avatars to local client assets', () => {
 		const avatars = [
 			'adrienn', 'alainalt', 'amaria', 'amelia', 'asriel', 'aurora', 'charlotte', 'florinia', 'geara', 'julia',
@@ -137,6 +201,130 @@ describe('Team Builder sprites', () => {
 		assert(sprite.url.endsWith('/sprites/ani/rotom-wash.gif'));
 	});
 
+	it('uses static custom Magnezone shinies without disabling normal animation', () => {
+		const animationData = require('../play.pokemonshowdown.com/data/pokedex-mini.js').BattlePokemonSprites.magnezone;
+		global.BattlePokemonSprites.magnezone = animationData;
+		try {
+			assert(Dex.getSpriteData('Magnezone', true, {gen: 9}).url.endsWith('/sprites/ani/magnezone.gif'));
+			assert(Dex.getSpriteData('Magnezone', false, {gen: 9}).url.endsWith('/sprites/ani-back/magnezone.gif'));
+			assert(Dex.getSpriteData('Magnezone', true, {gen: 9, shiny: true}).url.endsWith('/sprites/gen5-shiny/magnezone.png'));
+			assert(Dex.getSpriteData('Magnezone', false, {gen: 9, shiny: true}).url.endsWith('/sprites/gen5-back-shiny/magnezone.png'));
+		} finally {
+			delete global.BattlePokemonSprites.magnezone;
+		}
+	});
+
+	it('uses the supplied Sylveon shinies without changing normal animation', () => {
+		const animationData = require('../play.pokemonshowdown.com/data/pokedex-mini.js').BattlePokemonSprites.sylveon;
+		global.BattlePokemonSprites.sylveon = animationData;
+		try {
+			assert(Dex.getSpriteData('Sylveon', true, {gen: 9}).url.endsWith('/sprites/ani/sylveon.gif'));
+			assert(Dex.getSpriteData('Sylveon', false, {gen: 9}).url.endsWith('/sprites/ani-back/sylveon.gif'));
+			assert(Dex.getSpriteData('Sylveon', true, {gen: 9, shiny: true}).url.endsWith('/sprites/gen5-shiny/sylveon.png'));
+			assert(Dex.getSpriteData('Sylveon', false, {gen: 9, shiny: true}).url.endsWith('/sprites/gen5-back-shiny/sylveon.png'));
+		} finally {
+			delete global.BattlePokemonSprites.sylveon;
+		}
+	});
+
+	it('uses all supplied Tinkaton normal and shiny battle sprites', () => {
+		for (const front of [true, false]) {
+			for (const shiny of [false, true]) {
+				const sprite = Dex.getSpriteData('Tinkaton', front, {gen: 9, shiny, noScale: true});
+				const directory = front ? (shiny ? 'gen5-shiny' : 'gen5') : (shiny ? 'gen5-back-shiny' : 'gen5-back');
+				assert(sprite.url.endsWith(`/sprites/${directory}/tinkaton.png`));
+				assert.equal(sprite.w, front ? 144 : 180);
+				assert.equal(sprite.h, front ? 148 : 152);
+			}
+		}
+	});
+
+	it('uses all supplied Typhlosion form sprites', () => {
+		const cases = [
+			['Typhlosion', 118, 152, 110, 140],
+			['Typhlosion-Hisui', 116, 154, 112, 150],
+		];
+		for (const [species, frontWidth, frontHeight, backWidth, backHeight] of cases) {
+			for (const front of [true, false]) {
+				for (const shiny of [false, true]) {
+					const sprite = Dex.getSpriteData(species, front, {gen: 9, shiny, noScale: true});
+					const directory = front ? (shiny ? 'gen5-shiny' : 'gen5') : (shiny ? 'gen5-back-shiny' : 'gen5-back');
+					assert(sprite.url.endsWith(`/sprites/${directory}/${species.toLowerCase().replace('-', '-')}.png`));
+					assert.equal(sprite.w, front ? frontWidth : backWidth);
+					assert.equal(sprite.h, front ? frontHeight : backHeight);
+				}
+			}
+		}
+	});
+
+	it('uses all supplied Tyrantrum normal and shiny sprites', () => {
+		for (const front of [true, false]) {
+			for (const shiny of [false, true]) {
+				const sprite = Dex.getSpriteData('Tyrantrum', front, {gen: 9, shiny, noScale: true});
+				const directory = front ? (shiny ? 'gen5-shiny' : 'gen5') : (shiny ? 'gen5-back-shiny' : 'gen5-back');
+				assert(sprite.url.endsWith(`/sprites/${directory}/tyrantrum.png`));
+				assert.equal(sprite.w, front ? 140 : 158);
+				assert.equal(sprite.h, front ? 148 : 152);
+			}
+		}
+	});
+
+	it('keeps Zoroark form and gender sprites separate', () => {
+		const cases = [
+			['Zoroark', 'zoroark.png', 'zoroark-f.png', 136, 128, 148, 130],
+			['Zoroark-Hisui', 'zoroark-hisui.png', 'zoroark-hisui-f.png', 140, 182, 140, 156],
+		];
+		for (const [species, maleFile, femaleFile, frontWidth, frontHeight, backWidth, backHeight] of cases) {
+			for (const gender of [undefined, 'F']) {
+				const filename = gender === 'F' ? femaleFile : maleFile;
+				for (const front of [true, false]) {
+					for (const shiny of [false, true]) {
+						const sprite = Dex.getSpriteData(species, front, {gen: 9, gender, shiny, noScale: true});
+						const directory = front ? (shiny ? 'gen5-shiny' : 'gen5') : (shiny ? 'gen5-back-shiny' : 'gen5-back');
+						assert(sprite.url.endsWith(`/sprites/${directory}/${filename}`));
+						assert.equal(sprite.w, front ? frontWidth : backWidth);
+						assert.equal(sprite.h, front ? frontHeight : backHeight);
+					}
+				}
+			}
+		}
+	});
+
+	it('uses the supplied Medicham and Mega Medicham female sprites', () => {
+		const expectedFiles = {
+			'Medicham-F': 'medichamf.png',
+			'Medicham-Mega': 'medichammega.png',
+		};
+		for (const [species, filename] of Object.entries(expectedFiles)) {
+			for (const front of [true, false]) {
+				for (const shiny of [false, true]) {
+					const sprite = Dex.getSpriteData(species, front, {gen: 9, shiny});
+					const directory = front ? (shiny ? 'gen5-shiny' : 'gen5') : (shiny ? 'gen5-back-shiny' : 'gen5-back');
+					assert(sprite.url.endsWith(`/sprites/${directory}/${filename}`));
+				}
+			}
+		}
+	});
+
+	it('keeps Scizor gender-specific sprites separate for normal and Mega forms', () => {
+		const cases = [
+			['Scizor', 'scizor.png', 'scizor-f.png'],
+			['Scizor-Mega', 'scizormega.png', 'scizormega-f.png'],
+		];
+		for (const [species, maleFile, femaleFile] of cases) {
+			for (const gender of [undefined, 'F']) {
+				const filename = gender === 'F' ? femaleFile : maleFile;
+				for (const front of [true, false]) {
+					for (const shiny of [false, true]) {
+						const sprite = Dex.getSpriteData(species, front, {gen: 9, gender, shiny});
+						const directory = front ? (shiny ? 'gen5-shiny' : 'gen5') : (shiny ? 'gen5-back-shiny' : 'gen5-back');
+						assert(sprite.url.endsWith(`/sprites/${directory}/${filename}`));
+					}
+				}
+			}
+		}
+	});
+
 	it('removes Aura Wheel Plus from Morpeko in the Team Builder', () => {
 		Dex.species.get('Morpeko');
 		assert(!('aurawheelplus' in global.BattleTeambuilderTable.learnsets.morpeko));
@@ -146,6 +334,19 @@ describe('Team Builder sprites', () => {
 		assert.deepEqual(Dex.species.get('Meowscarada').abilities, {
 			0: 'Magician', 1: 'Protean', H: 'Illusion',
 		});
+	});
+
+	it('adds Sludge Wave to Butterfree in the team builder', () => {
+		assert(global.BattleTeambuilderTable.learnsets.butterfree.sludgewave);
+	});
+
+	it('syncs the updated Zangoose and Seviper stat lines', () => {
+		const zangoose = Dex.species.get('Zangoose');
+		const seviper = Dex.species.get('Seviper');
+		assert.deepEqual(zangoose.baseStats, {hp: 75, atk: 140, def: 110, spa: 60, spd: 70, spe: 95});
+		assert.equal(zangoose.bst, 550);
+		assert.deepEqual(seviper.baseStats, {hp: 75, atk: 120, def: 80, spa: 100, spd: 80, spe: 95});
+		assert.equal(seviper.bst, 550);
 	});
 
 	it('keeps abilities on custom required-item Mega profiles', () => {
