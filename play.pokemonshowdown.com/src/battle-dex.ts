@@ -56,6 +56,10 @@ function isSilvallySpecies(name: string) {
 }
 
 const CUSTOM_ITEM_ICON_SPRITES: {[id: string]: string} = {
+	belliboltite: 'belliboltite.png',
+	reuniclusite: 'reuniclusite.png',
+	sunflorite: 'sunflorite.png',
+	claydolite: 'claydolite.png',
 	cinderite: 'cinderite.png',
 	ledianite: 'ledianite.png',
 	roseradite: 'roseradite.png',
@@ -63,9 +67,35 @@ const CUSTOM_ITEM_ICON_SPRITES: {[id: string]: string} = {
 	clawitzerite: 'clawitzerite.png',
 	haxorite: 'haxorite.png',
 	arbokite: 'arbokite.png',
+	anomalycore: 'anomalycore.png',
 };
 
 const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
+	belliboltmega: {
+		base: 'bellibolt',
+		data: {name: 'Bellibolt-Mega', baseSpecies: 'Bellibolt', forme: 'Mega', types: ['Electric'],
+			baseStats: {hp: 119, atk: 74, def: 111, spa: 153, spd: 113, spe: 45}, abilities: {0: 'Bog Body'},
+			requiredItem: 'Belliboltite', battleOnly: 'Bellibolt', changesFrom: 'Bellibolt', spriteid: 'bellibolt-mega', gen: 9, isNonstandard: 'Custom'},
+	},
+	sunfloramega: {
+		base: 'sunflora',
+		data: {
+			name: 'Sunflora-Mega', baseSpecies: 'Sunflora', forme: 'Mega',
+			types: ['Grass', 'Fire'], baseStats: {hp: 95, atk: 70, def: 105, spa: 155, spd: 115, spe: 30}, abilities: {0: 'Solar Hydra'},
+			requiredItem: 'Sunflorite', battleOnly: 'Sunflora', changesFrom: 'Sunflora',
+			spriteid: 'sunflora-mega', gen: 9, tier: 'OU', natDexTier: 'OU', isNonstandard: 'Custom',
+		},
+	},
+	claydolmega: {
+		base: 'claydol',
+		data: {
+			name: 'Claydol-Mega', baseSpecies: 'Claydol', forme: 'Mega',
+			types: ['Ground', 'Psychic'], baseStats: { hp: 60, atk: 70, def: 135, spa: 130, spd: 150, spe: 55 },
+			abilities: {0: 'Astral Engine'}, requiredItem: 'Claydolite',
+			battleOnly: 'Claydol', changesFrom: 'Claydol', spriteid: 'claydol-mega',
+			gen: 9, tier: 'OU', natDexTier: 'OU', isNonstandard: 'Custom',
+		},
+	},
 	sawsbuckspring: {
 		base: 'sawsbuck',
 		data: {
@@ -113,10 +143,44 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 			baseSpecies: 'Hypno',
 			forme: 'Pulse',
 			spriteid: 'hypno-pulse',
-			types: ['Psychic', 'Ghost'],
-			abilities: {0: 'Pendulum Swing', 1: 'Neutralizing Gas', H: 'Neutralization'},
-			baseStats: {hp: 85, atk: 60, def: 105, spa: 115, spd: 125, spe: 70},
+			types: ['Psychic', 'Dark'],
+			abilities: {0: 'Nightmare Pulse'},
+			baseStats: {hp: 90, atk: 60, def: 125, spa: 105, spd: 140, spe: 80},
+			requiredItem: 'Anomaly Core',
+			isMega: true,
 			changesFrom: 'Hypno',
+			isNonstandard: 'Custom',
+		},
+	},
+	lilligantrift: {
+		base: 'lilligant',
+		data: {
+			name: 'Lilligant-Rift',
+			baseSpecies: 'Lilligant',
+			forme: 'Rift',
+			spriteid: 'lilligant-rift',
+			types: ['Grass', 'Fairy'],
+			abilities: {0: 'Rift Dancer'},
+			baseStats: {hp: 80, atk: 90, def: 80, spa: 130, spd: 120, spe: 100},
+			requiredItem: 'Anomaly Core',
+			isMega: true,
+			changesFrom: 'Lilligant',
+			isNonstandard: 'Custom',
+		},
+	},
+	lilliganthisuirift: {
+		base: 'lilliganthisui',
+		data: {
+			name: 'Lilligant-Hisui-Rift',
+			baseSpecies: 'Lilligant-Hisui',
+			forme: 'Rift',
+			spriteid: 'lilligant-hisui-rift',
+			types: ['Grass', 'Fighting'],
+			abilities: {0: 'Rift Dancer'},
+			baseStats: {hp: 100, atk: 130, def: 70, spa: 90, spd: 100, spe: 110},
+			requiredItem: 'Anomaly Core',
+			isMega: true,
+			changesFrom: 'Lilligant-Hisui',
 			isNonstandard: 'Custom',
 		},
 	},
@@ -741,13 +805,14 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 		base: 'muk',
 		data: {
 			name: 'Muk-Pulse',
-			baseSpecies: 'Muk-Pulse',
-			types: ['Poison', 'Ghost'],
-			baseStats: {hp: 105, atk: 105, def: 75, spa: 98, spd: 157, spe: 30},
-			abilities: {0: 'Toxic Mess', 1: 'Adaptive Waste', H: 'Accumulation'},
-			otherFormes: [],
-			formeOrder: [],
-			standalone: true,
+			baseSpecies: 'Muk',
+			forme: 'Pulse',
+			types: ['Poison'],
+			baseStats: {hp: 105, atk: 105, def: 75, spa: 108, spd: 167, spe: 40},
+			abilities: {0: 'Pulse Waste'},
+			requiredItem: 'Anomaly Core',
+			isMega: true,
+			changesFrom: 'Muk',
 			spriteid: 'muk-pulse',
 			isNonstandard: 'Custom',
 		},
@@ -1698,6 +1763,11 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 };
 
 const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
+	belliboltmega: 'bellibolt-alt',
+	reuniclus: 'reuniclus',
+	reuniclusmega: 'reuniclus-mega',
+	sunfloramega: 'sunflora-mega',
+	claydolmega: 'claydol-mega',
 	cacturnealt: 'cacturne-alt',
 	crobatalt: 'crobat-alt',
 	corsolaalt: 'corsola-alt',
@@ -1949,6 +2019,9 @@ const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
 
 // These custom profiles intentionally use their shiny artwork in every view.
 const FORCE_SHINY_CUSTOM_SPRITE_IDS = new Set<ID>(['spiritombalt']);
+// Some legacy shiny paths are tracked as empty placeholders. Use normal art
+// for those entries instead of leaving a blank sprite in the Team Builder.
+const MISSING_SHINY_SPRITE_IDS = new Set(['abra','aerodactyl','alcremie-matchacream','ampharos','anorith','arceus','arceus-fire','arceus-ground','arceus-ice','arceus-normal','arceus-poison','arceus-psychic','arceus-rock','arceus-steel','arceus-water','archen','archeops','arctovolt','argalis','arghonaut','arghonaut-f','armaldo','aron','articuno','audino','aurumoth','axew','azelf','azumarill','azurill','bagon','baltoy','banette','barboach','basculin','basculin-bluestriped','bastiodon','bayleef','beautifly','beautifly-f','beheeyem','beldum','bellossom','bellsprout','bibarel','bibarel-f','bidoof','bidoof-f','bisharp','blaziken','blissey','boldore','bouffalant','braixen','breezi','bronzong','buneary','burmy','burmy-plant','burmy-trash','butterfree-f','cacnea','caimanoe','caribolt','carnivine','carracosta','chansey','cherrim','cherubi','chinchou','chuggalong','cinccino','clefairy','cleffa','cloyster','cofagrigus','colossoil','colossoil-f','conkeldurr','coribalis','corphish','corsola','corsola-galar','cradily','cranidos','crawdaunt','cresceidon','cresselia','cyndaquil','darkrai','darmanitan-galarzen','deerling','deerling-summer','deerling-winter','deino','delcatty','delibird','diancie','doduo-f','donphan-f','dratini','druddigon','ducklett','durant','eevee','emolga','entei','equilibra','floette-red','forretress','gastrodon','gible','gigalith','golurk','gothita','grimer','gyarados','gyarados-f','hemogoblin','hitmonlee','honchkrow','hooh','houndoom-f','houndour','hypno','illumise','karrablast','keldeo','keldeo-resolute','kerfluffle','kerfluffle-f','kingdra','koffing','krillowatt','krilowatt','krilowatt-f','krokorok','krookodile','kyogre','lanturn','lileep','ludicolo','lugia','lycanroc-midday','mantyke','maractus','mienfoo','mienshao','mightyena','miltank','minior','monferno','munchlax','munna','nidorina','nincada','nuzleaf-f','omastar','pachirisu-f','pangoro','pansear','pelipper','persian','phanpy','pidgeotto','pikachu-hoenn','pineco','plusle','pokestarbrycenman','poliwrath','ponyta-galar','porygonz','primeape','prinplup','privatyke','pumpkaboo','raichu','raticate-f','rattata','rayquaza','regice','regirock','rhydon-f','rhyhorn','riolu','sceptile','seaking','seaking-f','shaymin','shedinja','shelgon','shellder','skiploom','slowpoke','snaelstrom','spinarak','spinda','spoink','squirtle','staraptor','stratagem','stunfisk-galar','swampert','swanna','teddiursa','tentacool','tentacruel','terrakion','throh','thundurus','thundurus-therian','timburr','tirtouga','togekiss','togepi','togetic','tomohawk','tomohawk-f','torchic','tornadus','tornadus-therian','totodile','toxicroak','toxicroak-f','tranquill','trapinch','trubbish','turtwig','tympole','tynamo','tyranitar','tyrogue','umbreon','unfezant','unfezant-f','unown','unown-a','unown-b','unown-c','unown-d','unown-e','unown-exclamation','unown-f','unown-g','unown-h','unown-i','unown-j','unown-k','unown-l','unown-m','unown-n','unown-o','unown-p','unown-q','unown-question','unown-s','unown-t','unown-u','unown-v','unown-w','unown-x','unown-y','unown-z','ursaring','ursaring-f','uxie','vanillish','vanillite','venipede','venomoth','venonat','venusaur-f','vespiquen','vibrava','victini','vigoroth','vileplume','vileplume-f','virizion','vivillon-pokeball','volbeat','volcanion','volcarona','volkraken','volkritter','voltorb','voodoll','voodoom','voodoom-f','vullaby','vulpix','wailmer','wailord','walrein','wartortle','watchog','weedle','weepinbell','weezing','whirlipede','whiscash','whismur','wigglytuff','wingull','wobbuffet','wobbuffet-f','woobat','wooper','wormadam','wormadam-plant','wormadam-trash','wurmple','wynaut','xatu','xatu-f','yamask','zigzagoon','zigzagoon-galar']);
 
 // These species start shiny when selected, but can still be switched back to
 // normal in the team editor. This is intentionally separate from the forced
@@ -2054,6 +2127,25 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 	shinyFront?: {w: number, h: number},
 	shinyBack?: {w: number, h: number},
 }} = {
+	zoroark: {front: {w: 136, h: 128}, back: {w: 148, h: 130}, shinyFront: {w: 136, h: 128}, shinyBack: {w: 148, h: 130}},
+	zoroarkf: {front: {w: 136, h: 128}, back: {w: 148, h: 130}, shinyFront: {w: 136, h: 128}, shinyBack: {w: 148, h: 130}},
+	zoroarkhisui: {front: {w: 140, h: 182}, back: {w: 140, h: 156}, shinyFront: {w: 140, h: 182}, shinyBack: {w: 140, h: 156}},
+	zoroarkhisuif: {front: {w: 140, h: 182}, back: {w: 140, h: 156}, shinyFront: {w: 140, h: 182}, shinyBack: {w: 140, h: 156}},
+	scizor: {front: {w: 96, h: 96}, back: {w: 96, h: 96}, shinyFront: {w: 96, h: 96}, shinyBack: {w: 96, h: 96}},
+	scizorf: {front: {w: 96, h: 96}, back: {w: 96, h: 96}, shinyFront: {w: 96, h: 96}, shinyBack: {w: 96, h: 96}},
+	scizormega: {front: {w: 96, h: 96}, back: {w: 96, h: 96}, shinyFront: {w: 96, h: 96}, shinyBack: {w: 96, h: 96}},
+	scizormegaf: {front: {w: 96, h: 96}, back: {w: 96, h: 96}, shinyFront: {w: 96, h: 96}, shinyBack: {w: 96, h: 96}},
+	medichamf: {front: {w: 96, h: 96}, back: {w: 96, h: 96}, shinyFront: {w: 96, h: 96}, shinyBack: {w: 96, h: 96}},
+	medichammega: {front: {w: 96, h: 96}, back: {w: 96, h: 96}, shinyFront: {w: 96, h: 96}, shinyBack: {w: 96, h: 96}},
+	sunfloramega: {front: {w: 192, h: 192}, back: {w: 192, h: 192}, shinyFront: {w: 192, h: 192}, shinyBack: {w: 192, h: 192}},
+	claydolmega: {
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
+	},
+	lilligantrift: {front: {w: 192, h: 192}, shinyFront: {w: 192, h: 192}},
+	lilliganthisuirift: {front: {w: 192, h: 192}, shinyFront: {w: 192, h: 192}},
 	gligaralt: {
 		front: {w: 64, h: 64},
 		back: {w: 96, h: 96},
@@ -2277,8 +2369,16 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 		back: {w: 96, h: 96},
 	},
 	laprasgmax: {
-		front: {w: 96, h: 96},
-		back: {w: 96, h: 96},
+		front: {w: 188, h: 186},
+		back: {w: 188, h: 190},
+		shinyFront: {w: 188, h: 186},
+		shinyBack: {w: 188, h: 190},
+	},
+	lapras: {
+		front: {w: 136, h: 124},
+		back: {w: 150, h: 142},
+		shinyFront: {w: 136, h: 124},
+		shinyBack: {w: 150, h: 142},
 	},
 	machampgmax: {
 		front: {w: 96, h: 96},
@@ -2665,8 +2765,10 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 		shinyBack: {w: 96, h: 96},
 	},
 	tyrantrum: {
-		front: {w: 192, h: 172},
+		front: {w: 140, h: 148},
 		back: {w: 158, h: 152},
+		shinyFront: {w: 140, h: 148},
+		shinyBack: {w: 158, h: 152},
 	},
 	venusaur: {
 		front: {w: 152, h: 136},
@@ -2706,8 +2808,10 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 		shinyFront: {w: 64, h: 64},
 	},
 	tinkaton: {
-		front: {w: 148, h: 140},
-		back: {w: 118, h: 110},
+		front: {w: 144, h: 148},
+		back: {w: 180, h: 152},
+		shinyFront: {w: 144, h: 148},
+		shinyBack: {w: 180, h: 152},
 	},
 	sneasel: {
 		front: {w: 107, h: 97},
@@ -2770,14 +2874,14 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 	gengar: {
 		front: {w: 112, h: 104},
 		back: {w: 110, h: 108},
-		shinyFront: {w: 112, h: 108},
-		shinyBack: {w: 110, h: 110},
+		shinyFront: {w: 116, h: 108},
+		shinyBack: {w: 114, h: 112},
 	},
 	gengarmega: {
 		front: {w: 152, h: 132},
 		back: {w: 172, h: 132},
-		shinyFront: {w: 152, h: 132},
-		shinyBack: {w: 172, h: 134},
+		shinyFront: {w: 156, h: 136},
+		shinyBack: {w: 176, h: 136},
 	},
 	gengargmax: {
 		front: {w: 188, h: 180},
@@ -2860,12 +2964,16 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 		back: {w: 160, h: 130},
 	},
 	typhlosion: {
-		front: {w: 123, h: 157},
-		back: {w: 115, h: 145},
+		front: {w: 118, h: 152},
+		back: {w: 110, h: 140},
+		shinyFront: {w: 118, h: 152},
+		shinyBack: {w: 110, h: 140},
 	},
 	typhlosionhisui: {
-		front: {w: 115, h: 165},
-		back: {w: 137, h: 172},
+		front: {w: 116, h: 154},
+		back: {w: 112, h: 150},
+		shinyFront: {w: 116, h: 154},
+		shinyBack: {w: 112, h: 150},
 	},
 	tsareena: {
 		front: {w: 136, h: 164},
@@ -3237,6 +3345,15 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 };
 
 const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
+	lilligantrift: {num: 549, front: {w: 192, h: 192}, shinyFront: {w: 192, h: 192}},
+	scizor: {num: 212, front: {w: 96, h: 96}, back: {w: 96, h: 96}, shinyFront: {w: 96, h: 96}, shinyBack: {w: 96, h: 96}},
+	scizormega: {num: 212, front: {w: 96, h: 96}, back: {w: 96, h: 96}, shinyFront: {w: 96, h: 96}, shinyBack: {w: 96, h: 96}},
+	medichamf: {num: 308, front: {w: 96, h: 96}, back: {w: 96, h: 96}, shinyFront: {w: 96, h: 96}, shinyBack: {w: 96, h: 96}},
+	medichammega: {num: 308, front: {w: 96, h: 96}, back: {w: 96, h: 96}, shinyFront: {w: 96, h: 96}, shinyBack: {w: 96, h: 96}},
+	aerodactylmega: {num: 142, front: {w: 192, h: 192}, back: {w: 192, h: 192}, shinyFront: {w: 192, h: 192}, shinyBack: {w: 192, h: 192}},
+	reuniclusmega: {num: 579, front: {w: 192, h: 192}, back: {w: 192, h: 192}},
+	sunfloramega: {num: 192, front: {w: 192, h: 192}, back: {w: 192, h: 192}},
+	claydolmega: {num: 344, front: {w: 192, h: 192}, back: {w: 192, h: 192}},
 	froslassmega: {
 		num: 478,
 		front: {w: 96, h: 96},
@@ -4326,8 +4443,10 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	},
 	tyrantrum: {
 		num: 697,
-		front: {w: 192, h: 172},
+		front: {w: 140, h: 148},
 		back: {w: 158, h: 152},
+		shinyFront: {w: 140, h: 148},
+		shinyBack: {w: 158, h: 152},
 	},
 	venusaur: {
 		num: 3,
@@ -4434,8 +4553,10 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	},
 	tinkaton: {
 		num: 959,
-		front: {w: 148, h: 140},
-		back: {w: 118, h: 110},
+		front: {w: 144, h: 148},
+		back: {w: 180, h: 152},
+		shinyFront: {w: 144, h: 148},
+		shinyBack: {w: 180, h: 152},
 	},
 	sneasel: {
 		num: 215,
@@ -4605,13 +4726,17 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	},
 	typhlosion: {
 		num: 157,
-		front: {w: 123, h: 157},
-		back: {w: 115, h: 145},
+		front: {w: 118, h: 152},
+		back: {w: 110, h: 140},
+		shinyFront: {w: 118, h: 152},
+		shinyBack: {w: 110, h: 140},
 	},
 	typhlosionhisui: {
 		num: 157,
-		front: {w: 115, h: 165},
-		back: {w: 137, h: 172},
+		front: {w: 116, h: 154},
+		back: {w: 112, h: 150},
+		shinyFront: {w: 116, h: 154},
+		shinyBack: {w: 112, h: 150},
 	},
 	tsareena: {
 		num: 763,
@@ -5082,14 +5207,15 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 		num: 571,
 		front: {w: 136, h: 128},
 		back: {w: 148, h: 130},
-		shinyBack: {w: 148, h: 164},
+		shinyFront: {w: 136, h: 128},
+		shinyBack: {w: 148, h: 130},
 	},
 	zoroarkhisui: {
 		num: 571,
 		front: {w: 140, h: 182},
 		back: {w: 140, h: 156},
-		shinyFront: {w: 156, h: 188},
-		shinyBack: {w: 170, h: 170},
+		shinyFront: {w: 140, h: 182},
+		shinyBack: {w: 140, h: 156},
 	},
 	drampa: {
 		num: 780,
@@ -5365,6 +5491,12 @@ Object.assign(CUSTOM_SPECIES, {
 });
 
 const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
+	hypno: {baseStats: {hp: 85, atk: 60, def: 80, spa: 93, spd: 115, spe: 67}, otherFormes: ['Hypno-Pulse'], formeOrder: ['Hypno', 'Hypno-Pulse']},
+	lilligant: {baseStats: {hp: 80, atk: 60, def: 80, spa: 110, spd: 80, spe: 90}, otherFormes: ['Lilligant-Hisui', 'Lilligant-Rift', 'Lilligant-Hisui-Rift'], formeOrder: ['Lilligant', 'Lilligant-Hisui', 'Lilligant-Rift', 'Lilligant-Hisui-Rift']},
+	lilliganthisui: {baseStats: {hp: 80, atk: 105, def: 80, spa: 50, spd: 80, spe: 105}, otherFormes: ['Lilligant-Hisui-Rift'], formeOrder: ['Lilligant-Hisui', 'Lilligant-Hisui-Rift']},
+	bellibolt: {otherFormes: ['Bellibolt-Mega'], formeOrder: ['Bellibolt', 'Bellibolt-Mega']},
+	sunflora: {baseStats: {hp: 95, atk: 55, def: 75, spa: 125, spd: 90, spe: 30}, otherFormes: ['Sunflora-Mega'], formeOrder: ['Sunflora', 'Sunflora-Mega']},
+	claydol: {otherFormes: ['Claydol-Mega'], formeOrder: ['Claydol', 'Claydol-Mega']},
 	meganium: {
 		otherFormes: ['Meganium-Mega', 'Meganium-Mega-Y'],
 		formeOrder: ['Meganium', 'Meganium-Mega', 'Meganium-Mega-Y'],
@@ -5489,9 +5621,9 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 	},
 	hypno: {
 		types: ['Psychic', 'Ghost'],
-		baseStats: {hp: 85, atk: 60, def: 105, spa: 115, spd: 125, spe: 70},
+		baseStats: {hp: 85, atk: 60, def: 80, spa: 93, spd: 115, spe: 67},
 		abilities: {0: 'Pendulum Swing', 1: 'Neutralizing Gas', H: 'Neutralization'},
-		cosmeticFormes: ['Hypno-Pulse'],
+		otherFormes: ['Hypno-Pulse'],
 		formeOrder: ['Hypno', 'Hypno-Pulse'],
 	},
 	manectricmega: {
@@ -5501,12 +5633,10 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		abilities: {0: 'Soul Strike'},
 	},
 	bellibolt: {
-		abilities: {0: 'Electromorphosis', 1: 'Bog Body', H: 'Levitate'},
-		cosmeticFormes: ['Bellibolt-Alt'],
-		formeOrder: ['Bellibolt', 'Bellibolt-Alt'],
-	},
-	belliboltalt: {
-		baseStats: {hp: 109, atk: 64, def: 101, spa: 123, spd: 103, spe: 45},
+		baseStats: {hp: 119, atk: 64, def: 91, spa: 103, spd: 93, spe: 45},
+		abilities: {0: 'Electromorphosis', 1: 'Static', H: 'Dry Skin'},
+		otherFormes: ['Bellibolt-Mega'],
+		formeOrder: ['Bellibolt', 'Bellibolt-Mega'],
 	},
 	typhlosion: {
 		otherFormes: ['Typhlosion-Hisui', 'Typhlosion-Alt'],
@@ -5631,14 +5761,24 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 	muk: {
 		types: ['Poison', 'Ghost'],
 		baseStats: {hp: 105, atk: 105, def: 75, spa: 85, spd: 100, spe: 30},
-		abilities: {0: 'Accumulation', 1: 'Protean', H: 'Regenerator'},
-		otherFormes: ['Muk-Alola'],
-		formeOrder: ['Muk', 'Muk-Alola'],
+		abilities: {0: 'Accumulation', 1: 'Poison Touch', H: 'Regenerator'},
+		otherFormes: ['Muk-Alola', 'Muk-Pulse'],
+		formeOrder: ['Muk', 'Muk-Alola', 'Muk-Pulse'],
 	},
 	mukpulse: {
-		types: ['Poison', 'Ghost'],
-		baseStats: {hp: 105, atk: 105, def: 75, spa: 98, spd: 157, spe: 30},
-		abilities: {0: 'Toxic Mess', 1: 'Adaptive Waste', H: 'Accumulation'},
+		baseSpecies: 'Muk',
+		forme: 'Pulse',
+		types: ['Poison'],
+		baseStats: {hp: 105, atk: 105, def: 75, spa: 108, spd: 167, spe: 40},
+		abilities: {0: 'Pulse Waste'},
+		requiredItem: 'Anomaly Core',
+		isMega: true,
+		changesFrom: 'Muk',
+	},
+	mukalola: {
+		abilities: {0: 'Mold Breaker', 1: 'Gluttony', H: 'Power of Alchemy'},
+		otherFormes: ['Muk-Pulse'],
+		formeOrder: ['Muk-Alola', 'Muk-Pulse'],
 	},
 	granbullalt: {
 		baseSpecies: 'Granbull',
@@ -5753,7 +5893,7 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 	wailord: {baseStats: {hp: 160, atk: 40, def: 75, spa: 105, spd: 90, spe: 50}},
 	zangoose: {
 		types: ['Normal', 'Steel'],
-		baseStats: {hp: 105, atk: 135, def: 85, spa: 60, spd: 90, spe: 95},
+		baseStats: {hp: 75, atk: 140, def: 110, spa: 60, spd: 70, spe: 95},
 		abilities: {0: 'Venom Armor', 1: 'Violent Rush', H: 'Scrappy'},
 		otherFormes: ['Zangoose-Reborn'],
 		cosmeticFormes: ['Zangoose-Reborn'],
@@ -6088,7 +6228,7 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		abilities: {0: 'Wind Rider', 1: 'Infiltrator', H: 'Sand Rush'},
 	},
 	seviper: {
-		baseStats: {hp: 75, atk: 120, def: 85, spa: 110, spd: 85, spe: 95},
+		baseStats: {hp: 75, atk: 120, def: 80, spa: 100, spd: 80, spe: 95},
 		abilities: {0: 'Apex Venom', 1: 'Rapid Response', H: 'Accumulation'},
 		otherFormes: ['Seviper-Reborn'],
 		cosmeticFormes: ['Seviper-Reborn'],
@@ -6153,6 +6293,7 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		abilities: {0: 'Shed Skin', 1: 'Dragonize', H: 'Marvel Scale'},
 	},
 	feraligatr: {
+		types: ['Water', 'Poison'],
 		baseStats: {hp: 100, atk: 109, def: 100, spa: 59, spd: 93, spe: 78},
 		abilities: {0: 'Water Veil', 1: 'Mighty Jaw', H: 'Sheer Force'},
 		otherFormes: ['Feraligatr-Mega', 'Feraligatr-Gmax'],
@@ -6264,6 +6405,7 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		abilities: {0: 'Chlorophyll', 1: 'Noble Dance', H: 'Pixilate'},
 	},
 	lilliganthisui: {
+		baseStats: {hp: 80, atk: 105, def: 80, spa: 50, spd: 80, spe: 105},
 		abilities: {0: 'Chlorophyll', 1: 'Noble Dance', H: 'Invigorate'},
 	},
 	avalugg: {
@@ -6600,6 +6742,33 @@ for (const [id, canGigantamax] of Object.entries(CUSTOM_GIGANTAMAX_MOVES)) {
 }
 
 const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
+	solarhydra: {
+		name: "Solar Hydra",
+		desc: "This Pokemon has Hydra Bond, Grassy Surge, Solar Power, and Self Repair's effects.",
+		shortDesc: "Hydra Bond + Grassy Surge + Solar Power + Self Repair.",
+	},
+
+	astralengine: {
+		name: "Astral Engine",
+		desc: "This Pokemon has Elevate, Filter, and Analytic's effects.",
+		shortDesc: "Elevate + Filter + Analytic.",
+	},
+	riftdancer: {
+		name: 'Rift Dancer',
+		desc: "This Pokemon has Opportunist, Chlorophyll, and Dancer's effects.",
+		shortDesc: 'Opportunist + Chlorophyll + Dancer.',
+	},
+	nightrealm: {
+		name: 'Night Realm',
+		desc: 'This Pokemon can use Dream Eater and Nightmare on awake targets.',
+		shortDesc: 'Dream Eater and Nightmare affect awake targets.',
+	},
+	nightmarepulse: {
+		name: 'Nightmare Pulse',
+		desc: "This Pokemon has Pendulum Swing and Night Realm's effects.",
+		shortDesc: 'Pendulum Swing + Night Realm.',
+	},
+
 	ascendance: {
 		name: 'Ascendance',
 		desc: "All damaging moves deal 1.5x damage, can hit type immunities, and gain off-type STAB when the move type is not one of this Pokemon's types. On Holy Field, this Pokemon's Attack and Special Attack are raised by 1 on entry. Eevee-Starter and Umbreon transform into Divineon on entry; Umbreon uses Umbreon-Perfect's appearance while retaining Umbreon's full movepool.",
@@ -7142,8 +7311,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	burningspirit: {
 		name: "Burning Spirit",
-		desc: "This Pokemon has Self Sufficient, Opportunist, and Magma Armor's effects.",
-		shortDesc: "Self Sufficient + Opportunist + Magma Armor.",
+		desc: "This Pokemon has Self Sufficient, Opportunist, Magma Armor, and Filter's effects.",
+		shortDesc: "Self Sufficient + Opportunist + Magma Armor + Filter.",
 	},
 	byxbysiontouch: {
 		name: "Byxbysion Touch",
@@ -9070,6 +9239,12 @@ const CUSTOM_LEARNSET_REPLACEMENTS: {[id: string]: {[id: string]: string[]}} = {
 	},
 };
 const CUSTOM_LEARNSET_ADDITIONS: {[id: string]: {[id: string]: string[]}} = {
+	lilligant: {
+		shadowball: ['9M'], fierydance: ['9M'], aurasphere: ['9M'], flowertrick: ['9M'], axekick: ['9M'], petalblizzard: ['9M'],
+	},
+	lilliganthisui: {
+		shadowball: ['9M'], fierydance: ['9M'], aurasphere: ['9M'], flowertrick: ['9M'], axekick: ['9M'], petalblizzard: ['9M'],
+	},
 	furfrou: {
 		tailslap: ['9M'], nuzzle: ['9M'], volttackle: ['9M'], heartstamp: ['9M'], psyshieldbash: ['9M'], shadowbone: ['9M'],
 		destinybond: ['9M'], direclaw: ['9M'], gunkshot: ['9M'], jawlock: ['9M'], knockoff: ['9M'], brickbreak: ['9M'],
@@ -9722,14 +9897,15 @@ const CUSTOM_BW_SPRITE_IDS = Object.keys(CUSTOM_BW_SPRITES);
 const CUSTOM_ANIMATED_BW_SPRITES = new Set([
 	'aggron', 'ariados', 'butterfree', 'cacturne', 'cinderacegmax',
 	'crobat', 'dragapult', 'duraludon', 'dusknoir', 'electivire', 'empoleon', 'espeon', 'garbodorgmax',
-	'garchomp', 'garchompf', 'garchompmega', 'gardevoirmega', 'gengar', 'glalie', 'gliscor', 'grimmsnarl',
+	'garchomp', 'garchompf', 'garchompmega', 'gardevoirmega', 'glalie', 'gliscor', 'grimmsnarl',
 	'heracross', 'hydreigon', 'infernape', 'lilligant', 'lucariomega', 'luxray', 'magmortar', 'magneton',
 	'magnezone', 'metagross', 'milotic', 'mothim', 'ninetales', 'obstagoon', 'perrserker', 'pidgeot',
 	'ribombee', 'rotom', 'rotomfan', 'rotomfrost', 'rotomheat', 'rotommow', 'rotomwash', 'salamence',
 	'scolipede', 'slowbro', 'slowking', 'sneasel', 'staraptor', 'steelix', 'talonflame',
-	'torterra', 'typhlosion', 'tyrantrum', 'venusaur', 'victreebel', 'vikavolt',
-	'whimsicott', 'zoroark', 'furfrou', 'unfezantrejuv',
+	'torterra', 'typhlosion', 'venusaur', 'victreebel', 'vikavolt',
+	'whimsicott', 'furfrou', 'unfezantrejuv',
 ]);
+const CUSTOM_STATIC_SHINY_BW_SPRITES = new Set(['magnezone', 'sylveon']);
 const CUSTOM_SPECIES_IDS = Object.keys(CUSTOM_SPECIES);
 const CUSTOM_SPECIES_UPDATE_IDS = Object.keys(CUSTOM_SPECIES_UPDATES);
 function getCustomSpeciesBaseData(customSpecies: {base: string}) {
@@ -10002,6 +10178,7 @@ const NATIVE_TEAMBUILDER_SPRITE_OVERRIDES: {[id: string]: {x: number, y: number,
 	cacturne: {x: 9, y: 7, backgroundSize: '74px auto'},
 	garchomp: {x: 6, y: 10, backgroundSize: '78px auto'},
 	garchompf: {x: 6, y: 10, backgroundSize: '78px auto'},
+	hydreigon: {x: 7, y: 6, backgroundSize: '82px auto'},
 	inteleon: {x: 8, y: 3, backgroundSize: '80px auto'},
 	pinsir: {x: 12, y: 7, backgroundSize: '72px auto'},
 	weavile: {x: 9, y: 6, backgroundSize: '76px auto'},
@@ -10399,16 +10576,6 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		desc: "On entry, copies the active foe's types and adds them to this Pokemon's typing. Matching attacks deal half damage unless this Pokemon is immune. Reflect Type refreshes the copied types.",
 		shortDesc: 'Copies foe types; adds them to its typing; matching attacks deal 0.5x unless immune.',
 	},
-	toxicmess: {
-		name: 'Toxic Mess',
-		desc: "This Pokemon has Stench, Poison Touch, and Gluttony's effects.",
-		shortDesc: 'Stench + Poison Touch + Gluttony.',
-	},
-	adaptivewaste: {
-		name: 'Adaptive Waste',
-		desc: "This Pokemon has Protean and Regenerator's effects.",
-		shortDesc: 'Protean + Regenerator.',
-	},
 	neurotoxin: {
 		name: 'Neurotoxin',
 		desc: "This Pokemon has Strong Jaw, Shed Skin, Hydra Bond, and Regenerator's effects.",
@@ -10453,6 +10620,9 @@ const CUSTOM_ARROW_MOVE_IDS = [
 ];
 const CUSTOM_HORN_MOVE_IDS = ['hornattack', 'horndrill', 'hornleech', 'megahorn'];
 const CUSTOM_ABILITY_COMPONENT_OVERRIDES: {[id: string]: readonly ID[]} = {
+	bogbody: ['electromorphosis' as ID, 'levitate' as ID, 'dryskin' as ID],
+	solarhydra: ['hydrabond' as ID, 'grassysurge' as ID, 'solarpower' as ID, 'selfrepair' as ID, 'selfsufficient' as ID, 'naturalcure' as ID],
+	astralengine: ['elevate' as ID, 'filter' as ID, 'analytic' as ID],
 	alchemistsurge: ['psychicsurge' as ID, 'competitive' as ID, 'hydrabond' as ID, 'neuroforce' as ID],
 	argentdevotion: ['armorize' as ID, 'swornduty' as ID],
 	windchime: ['armorize' as ID, 'punkrock' as ID, 'levitate' as ID],
@@ -10465,10 +10635,10 @@ const CUSTOM_ABILITY_COMPONENT_OVERRIDES: {[id: string]: readonly ID[]} = {
 	schooling: ['hydrabond' as ID, 'selfrepair' as ID, 'filter' as ID],
 	wingedwraith: ['infiltrator' as ID, 'galewings' as ID],
 	toxicsink: ['effectspore' as ID, 'stormdrain' as ID, 'invigorate' as ID],
-	toxicmess: ['stench' as ID, 'poisontouch' as ID, 'gluttony' as ID],
-	adaptivewaste: ['protean' as ID, 'regenerator' as ID],
 	neurotoxin: ['strongjaw' as ID, 'shedskin' as ID, 'hydrabond' as ID, 'regenerator' as ID],
 	patternshift: ['protean' as ID, 'shedskin' as ID, 'unaware' as ID],
+	nightmarepulse: ['pendulumswing' as ID, 'nightrealm' as ID],
+	riftdancer: ['opportunist' as ID, 'chlorophyll' as ID, 'dancer' as ID],
 	ragingbeast: ['guts' as ID, 'moldbreaker' as ID],
 	lunardread: ['magicguard' as ID, 'pressure' as ID],
 	scavenger: ['overcoat' as ID, 'bigpecks' as ID, 'regenerator' as ID],
@@ -10504,6 +10674,7 @@ const CUSTOM_ABILITY_COMPONENT_OVERRIDES: {[id: string]: readonly ID[]} = {
 	ancientbloom: ['effectspore' as ID, 'selfsufficient' as ID],
 	astralcore: ['purepower' as ID, 'naturalcure' as ID, 'illuminate' as ID],
 	bloomingsun: ['megasol' as ID, 'invigorate' as ID, 'naturalcure' as ID],
+	burningspirit: ['selfsufficient' as ID, 'opportunist' as ID, 'magmaarmor' as ID, 'filter' as ID],
 	celestialheart: ['multiscale' as ID, 'soulheart' as ID],
 	calderacore: ['magmaarmor' as ID, 'drought' as ID],
 	doomwarning: ['magicbounce' as ID, 'magicguard' as ID],
@@ -10686,7 +10857,7 @@ const DOCUMENT_LEARNSET_ADDITIONS: {[id: string]: {[id: string]: string[]}} = {
 	breloom: {coaching: ["9M"]},
 	brutebonnet: {naturepower: ["9M"]},
 	bruxish: {bodyslam: ["9M"], drainingkiss: ["9M"], storedpower: ["9M"]},
-	butterfree: {dazzlinggleam: ["9M"], poisongas: ["9L1"], sludge: ["9M"], sludgebomb: ["9M"], venomdrench: ["9M"]},
+	butterfree: {dazzlinggleam: ["9M"], poisongas: ["9L1"], sludge: ["9M"], sludgebomb: ["9M"], sludgewave: ["9M"], venomdrench: ["9M"]},
 	cacturne: {assurance: ["9M"], scorchingsands: ["9M"]},
 	camerupt: {ancientpower: ["9M"], burningjealousy: ["9M"], powergem: ["9M"], terrainpulse: ["9M"]},
 	carbink: {magnetbomb: ["9M"], selfdestruct: ["9M"]},
@@ -11000,6 +11171,36 @@ Object.assign(CUSTOM_LEARNSET_ADDITIONS, DOCUMENT_LEARNSET_ADDITIONS, {
 const CUSTOM_LEARNSET_ADDITION_IDS = Object.keys(CUSTOM_LEARNSET_ADDITIONS);
 const CUSTOM_LEARNSET_REMOVAL_IDS = Object.keys(CUSTOM_LEARNSET_REMOVALS);
 const CUSTOM_ITEM_UPDATES: {[id: string]: AnyObject} = {
+	anomalycore: {
+		name: 'Anomaly Core', spritenum: 0, megaStone: {Hypno: 'Hypno-Pulse', Lilligant: 'Lilligant-Rift', 'Lilligant-Hisui': 'Lilligant-Hisui-Rift', Muk: 'Muk-Pulse', 'Muk-Alola': 'Muk-Pulse'}, itemUser: ['Hypno', 'Lilligant', 'Lilligant-Hisui', 'Muk', 'Muk-Alola'], num: 2662, gen: 9,
+		desc: 'If held by a designated Pulse or Rift Pokemon, this Anomaly Core allows it to undergo its Pulse or Rift Evolution in battle.',
+		shortDesc: 'Pulse/Rift Evolution item for designated Anomaly Pokemon.',
+	},
+	belliboltite: {
+		name: 'Belliboltite', spritenum: 0, megaStone: {Bellibolt: 'Bellibolt-Mega'}, itemUser: ['Bellibolt'], num: 2661, gen: 9,
+		desc: 'If held by a Bellibolt, this item allows it to Mega Evolve in battle.',
+		shortDesc: 'If held by a Bellibolt, this item allows it to Mega Evolve in battle.',
+	},
+	sunflorite: {
+		name: "Sunflorite",
+		spritenum: 0,
+		megaStone: {Sunflora: "Sunflora-Mega"},
+		itemUser: ["Sunflora"],
+		num: 2660,
+		gen: 9,
+		desc: "If held by a Sunflora, this item allows it to Mega Evolve in battle.",
+		shortDesc: "If held by a Sunflora, this item allows it to Mega Evolve in battle.",
+	},
+	claydolite: {
+		name: "Claydolite",
+		spritenum: 0,
+		megaStone: { Claydol: "Claydol-Mega" },
+		itemUser: ["Claydol"],
+		num: 2659,
+		gen: 9,
+		desc: "If held by a Claydol, this item allows it to Mega Evolve in battle.",
+		shortDesc: "If held by a Claydol, this item allows it to Mega Evolve in battle.",
+	},
 	charizarditex: {
 		desc: 'If held by a Charizard, this item allows it to Mega Evolve into either Mega Charizard X or Mega Charizard Y.',
 		shortDesc: 'If held by a Charizard, this item allows it to Mega Evolve into either Mega Charizard X or Mega Charizard Y.',
@@ -11327,6 +11528,12 @@ function applyCustomTeambuilderLearnsets(table: AnyObject) {
 	for (const id of CUSTOM_LEARNSET_REMOVAL_IDS) {
 		for (const moveid of CUSTOM_LEARNSET_REMOVALS[id]) {
 			delete table.learnsets[id]?.[moveid];
+		}
+	}
+	// Hidden Power and its typed variants should never appear in the team builder.
+	for (const learnset of Object.values(table.learnsets) as AnyObject[]) {
+		for (const moveid of Object.keys(learnset)) {
+			if (moveid === 'hiddenpower' || moveid.startsWith('hiddenpower')) delete learnset[moveid];
 		}
 	}
 }
@@ -11751,6 +11958,7 @@ const Dex = new class implements ModdedDex {
 	})();
 
 	loadedSpriteData = {xy: 1, bw: 0};
+	private spriteDataCache = new Map<string, AnyObject>();
 	moddedDexes: {[mod: string]: ModdedDex} = {};
 	abilityEffectDataTable: AnyObject | null = null;
 	abilityEffectCache: {[id: string]: ReadonlySet<ID>} = {};
@@ -12099,6 +12307,7 @@ const Dex = new class implements ModdedDex {
 	loadSpriteData(gen: 'xy' | 'bw') {
 		if (this.loadedSpriteData[gen]) return;
 		this.loadedSpriteData[gen] = 1;
+		this.spriteDataCache.clear();
 
 		let path = $('script[src*="pokedex-mini.js"]').attr('src') || '';
 		let qs = '?' + (path.split('?')[1] || '');
@@ -12152,6 +12361,14 @@ const Dex = new class implements ModdedDex {
 		const baseSpeciesId = toID(species.baseSpecies || species.name);
 		if (FORCE_SHINY_CUSTOM_SPRITE_IDS.has((requestedSpriteid || species.id) as ID)) options.shiny = true;
 		ensureCustomBWSpriteData();
+		const spriteCacheKey = [
+			requestedSpriteid || species.id, species.id, isFront ? 1 : 0, options.gen || 6, options.shiny ? 1 : 0, options.gender || '',
+			options.afd ? 1 : 0, options.noScale ? 1 : 0, options.teamPreview ? 1 : 0, options.mod || '',
+			isDynamax ? 1 : 0, Dex.prefs('nopastgens') ? 1 : 0, Dex.prefs('bwgfx') ? 1 : 0,
+			Dex.prefs('noanim') ? 1 : 0, Dex.prefs('nogif') ? 1 : 0,
+		].join('|');
+		const cachedSpriteData = this.spriteDataCache.get(spriteCacheKey);
+		if (cachedSpriteData) return {...cachedSpriteData};
 		// Gmax sprites are already extremely large, so we don't need to double.
 		if (species.name.endsWith('-Gmax')) isDynamax = false;
 		let spriteData = {
@@ -12199,7 +12416,7 @@ const Dex = new class implements ModdedDex {
 		if (Dex.prefs('nopastgens')) graphicsGen = 6;
 		if (Dex.prefs('bwgfx') && graphicsGen >= 6) graphicsGen = 5;
 		// Prefer selected native BW animations where their silhouettes fit the battle scene better.
-		if (species.id === 'heracross' || species.id === 'hydreigon' || species.id === 'milotic' || species.id === 'miloticalt' || species.id === 'miloticaevian' || species.id === 'gastrodonaevian' || species.id === 'gastrodoneastaevian' || species.id === 'hypnopulse' || species.id === 'pidgeot' || species.id === 'staraptor' || species.id === 'pinsirmega' || species.id === 'frosmoth' || species.id === 'runerigus' || species.id === 'manectric' || species.id === 'manectricmega' || species.id === 'basculegion' || species.id === 'basculegionf' ||
+		if (species.id === 'heracross' || species.id === 'hydreigon' || species.id === 'milotic' || species.id === 'miloticalt' || species.id === 'miloticaevian' || species.id === 'gastrodonaevian' || species.id === 'gastrodoneastaevian' || species.id === 'hypnopulse' || species.id === 'pidgeot' || species.id === 'staraptor' || species.id === 'pinsirmega' || species.id === 'frosmoth' || species.id === 'runerigus' || species.id === 'manectric' || species.id === 'manectricmega' || species.id === 'basculegion' || species.id === 'basculegionf' || species.id.startsWith('furfrou') ||
 			(!isFront && (species.id === 'lucario' || species.id === 'lucariomega'))) graphicsGen = 5;
 		spriteData.gen = Math.max(graphicsGen, Math.min(species.gen, 5));
 		const baseDir = ['', 'gen1', 'gen2', 'gen3', 'gen4', 'gen5', '', '', '', ''][spriteData.gen];
@@ -12280,7 +12497,7 @@ const Dex = new class implements ModdedDex {
 		}
 		if (customCryUrl) spriteData.cryurl = customCryUrl;
 
-		if (options.shiny && mechanicsGen > 1) dir += '-shiny';
+		if (options.shiny && mechanicsGen > 1 && !MISSING_SHINY_SPRITE_IDS.has(toID(name))) dir += '-shiny';
 
 		// April Fool's 2014
 		const hasCustomGen5Sprite = !!(
@@ -12312,17 +12529,28 @@ const Dex = new class implements ModdedDex {
 
 		if (animationData[facing + 'f'] && options.gender === 'F') facing += 'f';
 		let allowAnim = !Dex.prefs('noanim') && !Dex.prefs('nogif');
+		if (speciesid === 'jolteon' && options.shiny) allowAnim = false;
+		if (speciesid === 'glaceon' && options.shiny) allowAnim = false;
+		if (speciesid === 'espeon' && options.shiny) allowAnim = false;
+		// Hydreigon keeps its normal animated sprites, but uses the supplied static shiny art.
+		if (speciesid === 'hydreigon' && options.shiny) allowAnim = false;
 		let customStaticBattleSpriteid = speciesid;
 		if (options.gender === 'F' && CUSTOM_STATIC_BATTLE_SPRITES[`${speciesid}f`]) {
 			customStaticBattleSpriteid = `${speciesid}f`;
 		}
 		const allowCustomAnimation = CUSTOM_ANIMATED_BW_SPRITES.has(customStaticBattleSpriteid) ||
 			CUSTOM_ANIMATED_BW_SPRITES.has(speciesid);
+		const forceStaticShiny = options.shiny && (
+			CUSTOM_STATIC_SHINY_BW_SPRITES.has(customStaticBattleSpriteid) ||
+			CUSTOM_STATIC_SHINY_BW_SPRITES.has(speciesid)
+		);
 		if (isSilvallySpecies(speciesid) || isSilvallySpecies(customStaticBattleSpriteid)) allowAnim = false;
+		if (forceStaticShiny) allowAnim = false;
 		if (CUSTOM_ICON_SPRITES[speciesid] && !allowCustomAnimation) allowAnim = false;
 		const customStaticBattleSprite = CUSTOM_STATIC_BATTLE_SPRITES[customStaticBattleSpriteid];
 		if (customStaticBattleSprite && !allowCustomAnimation) allowAnim = false;
 		const customBWSprite = CUSTOM_BW_SPRITES[speciesid];
+		const customBWUsesBaseSprite = !!customBWSprite && !getSpriteSize(customBWSprite, isFront, options.shiny);
 		if (customBWSprite && !allowCustomAnimation) allowAnim = false;
 		if (allowAnim && spriteData.gen >= 6) spriteData.pixelated = false;
 		const animation = animationData?.[facing];
@@ -12343,10 +12571,15 @@ const Dex = new class implements ModdedDex {
 			if (spriteData.gen >= 4 && (miscData['frontf'] || customStaticBattleSpriteid !== speciesid) && options.gender === 'F') {
 				name += '-f';
 			}
+			if (customBWUsesBaseSprite && baseSpriteId) name = Dex.species.get(baseSpriteId).spriteid;
 
 			spriteData.url += dir + '/' + name + '.png';
 		}
 		let customSpriteNaturalSize: {w: number, h: number} | undefined;
+		if (speciesid === 'jolteon' && options.shiny && (baseDir === 'gen5' || !baseDir)) {
+			spriteData.w = 92;
+			spriteData.h = isFront ? 98 : 96;
+		}
 		if (customStaticBattleSprite) {
 			const customSpriteSize = getCustomSpriteSize(customStaticBattleSpriteid, customStaticBattleSprite, isFront, options.shiny);
 			customSpriteNaturalSize = customSpriteSize;
@@ -12489,6 +12722,8 @@ const Dex = new class implements ModdedDex {
 			}
 		}
 
+		if (this.spriteDataCache.size >= 512) this.spriteDataCache.clear();
+		this.spriteDataCache.set(spriteCacheKey, spriteData);
 		return spriteData;
 	}
 
@@ -12600,7 +12835,7 @@ const Dex = new class implements ModdedDex {
 			x: -2,
 			y: -3,
 		};
-		if (isShiny) spriteData.shiny = true;
+		if (isShiny && !MISSING_SHINY_SPRITE_IDS.has(toID(spriteid))) spriteData.shiny = true;
 		if (id.startsWith('silvally')) spriteData.shiny = true;
 		if (id === 'greninjabond' && !CUSTOM_BW_SPRITES[id]) {
 			spriteData.spriteid = 'greninja';
