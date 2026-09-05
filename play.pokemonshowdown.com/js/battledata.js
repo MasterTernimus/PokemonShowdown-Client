@@ -1188,6 +1188,21 @@ isGigantamax:true,
 isNonstandard:'Gigantamax'
 }
 },
+dipplingmax:{
+base:'dipplin',
+data:{
+name:'Dipplin-Gmax',
+baseSpecies:'Dipplin',
+forme:'Gmax',
+spriteid:'dipplin-gmax',
+types:['Grass','Dragon'],
+baseStats:{hp:130,atk:80,def:115,spa:100,spd:85,spe:40},
+abilities:{0:'Sweet Resonance'},
+changesFrom:'Dipplin',
+isGigantamax:true,
+isNonstandard:'Gigantamax'
+}
+},
 aegislashgmax:{
 base:'aegislash',
 data:{
@@ -1959,6 +1974,7 @@ malamarmega:'malamar-mega',
 clefablemega:'clefable-mega',
 pyroarmega:'pyroar-mega',
 appletungmax:'appletun-gmax',
+dipplingmax:'dipplin-gmax',
 charizardgmax:'charizard-gmax',
 blastoisegmax:'blastoise-gmax',
 butterfreegmax:'butterfree-gmax',
@@ -2017,11 +2033,37 @@ silvallydark:'silvally-dark',
 silvallyfairy:'silvally-fairy'
 };
 
+var CUSTOM_PARTY_ICON_SPRITES=
+
+
+
+
+{
+drapionaevian:{
+normal:'drapion-aevian-party.png',
+normalFemale:'drapion-aevian-party-f.png',
+shiny:'drapion-aevian-party-shiny.png',
+shinyFemale:'drapion-aevian-party-shiny-f.png'
+},
+volcaronaaevian:{
+normal:'volcarona-aevian-party.png',
+normalFemale:'volcarona-aevian-party-f.png',
+shiny:'volcarona-aevian-party-shiny.png',
+shinyFemale:'volcarona-aevian-party-shiny-f.png'
+},
+sneasleraevian:{
+normal:'sneasler-aevian-party.png',
+normalFemale:'sneasler-aevian-party-f.png',
+shiny:'sneasler-aevian-party-shiny.png',
+shinyFemale:'sneasler-aevian-party-shiny-f.png'
+}
+};
+
 
 var FORCE_SHINY_CUSTOM_SPRITE_IDS=new Set(['spiritombalt']);
 
 
-var MISSING_SHINY_SPRITE_IDS=new Set(['abra','aerodactyl','alcremie-matchacream','ampharos','anorith','arceus','arceus-fire','arceus-ground','arceus-ice','arceus-normal','arceus-poison','arceus-psychic','arceus-rock','arceus-steel','arceus-water','archen','archeops','arctovolt','argalis','arghonaut','arghonaut-f','armaldo','aron','articuno','audino','aurumoth','axew','azelf','azumarill','azurill','bagon','baltoy','banette','barboach','basculin','basculin-bluestriped','bastiodon','bayleef','beautifly','beautifly-f','beheeyem','beldum','bellossom','bellsprout','bibarel','bibarel-f','bidoof','bidoof-f','bisharp','blaziken','blissey','boldore','bouffalant','braixen','breezi','bronzong','buneary','burmy','burmy-plant','burmy-trash','butterfree-f','cacnea','caimanoe','caribolt','carnivine','carracosta','chansey','cherrim','cherubi','chinchou','chuggalong','cinccino','clefairy','cleffa','cloyster','cofagrigus','colossoil','colossoil-f','conkeldurr','coribalis','corphish','corsola','corsola-galar','cradily','cranidos','crawdaunt','cresceidon','cresselia','cyndaquil','darkrai','darmanitan-galarzen','deerling','deerling-summer','deerling-winter','deino','delcatty','delibird','diancie','doduo-f','donphan-f','dratini','druddigon','ducklett','durant','eevee','emolga','entei','equilibra','floette-red','forretress','gastrodon','gible','gigalith','golurk','gothita','grimer','gyarados','gyarados-f','hemogoblin','hitmonlee','honchkrow','hooh','houndoom-f','houndour','hypno','illumise','karrablast','keldeo','keldeo-resolute','kerfluffle','kerfluffle-f','kingdra','koffing','krillowatt','krilowatt','krilowatt-f','krokorok','krookodile','kyogre','lanturn','lileep','ludicolo','lugia','lycanroc-midday','mantyke','maractus','mienfoo','mienshao','mightyena','miltank','minior','monferno','munchlax','munna','nidorina','nincada','nuzleaf-f','omastar','pachirisu-f','pangoro','pansear','pelipper','persian','phanpy','pidgeotto','pikachu-hoenn','pineco','plusle','pokestarbrycenman','poliwrath','ponyta-galar','porygonz','primeape','prinplup','privatyke','pumpkaboo','raichu','raticate-f','rattata','rayquaza','regice','regirock','rhydon-f','rhyhorn','riolu','sceptile','seaking','seaking-f','shaymin','shedinja','shelgon','shellder','skiploom','slowpoke','snaelstrom','spinarak','spinda','spoink','squirtle','staraptor','stratagem','stunfisk-galar','swampert','swanna','teddiursa','tentacool','tentacruel','terrakion','throh','thundurus','thundurus-therian','timburr','tirtouga','togekiss','togepi','togetic','tomohawk','tomohawk-f','torchic','tornadus','tornadus-therian','totodile','toxicroak','toxicroak-f','tranquill','trapinch','trubbish','turtwig','tympole','tynamo','tyranitar','tyrogue','umbreon','unfezant','unfezant-f','unown','unown-a','unown-b','unown-c','unown-d','unown-e','unown-exclamation','unown-f','unown-g','unown-h','unown-i','unown-j','unown-k','unown-l','unown-m','unown-n','unown-o','unown-p','unown-q','unown-question','unown-s','unown-t','unown-u','unown-v','unown-w','unown-x','unown-y','unown-z','ursaring','ursaring-f','uxie','vanillish','vanillite','venipede','venomoth','venonat','venusaur-f','vespiquen','vibrava','victini','vigoroth','vileplume','vileplume-f','virizion','vivillon-pokeball','volbeat','volcanion','volcarona','volkraken','volkritter','voltorb','voodoll','voodoom','voodoom-f','vullaby','vulpix','wailmer','wailord','walrein','wartortle','watchog','weedle','weepinbell','weezing','whirlipede','whiscash','whismur','wigglytuff','wingull','wobbuffet','wobbuffet-f','woobat','wooper','wormadam','wormadam-plant','wormadam-trash','wurmple','wynaut','xatu','xatu-f','yamask','zigzagoon','zigzagoon-galar']);
+var MISSING_SHINY_SPRITE_IDS=new Set(['abra','aerodactyl','alcremie-matchacream','ampharos','anorith','arceus','arceus-fire','arceus-ground','arceus-ice','arceus-normal','arceus-poison','arceus-psychic','arceus-rock','arceus-steel','arceus-water','archen','archeops','arctovolt','argalis','arghonaut','arghonaut-f','armaldo','aron','articuno','audino','aurumoth','axew','azelf','azumarill','azurill','bagon','baltoy','banette','barboach','basculin','basculin-bluestriped','bastiodon','bayleef','beautifly','beautifly-f','beheeyem','beldum','bellossom','bellsprout','bibarel','bibarel-f','bidoof','bidoof-f','bisharp','blaziken','blissey','boldore','bouffalant','braixen','breezi','bronzong','buneary','burmy','burmy-plant','burmy-trash','butterfree-f','cacnea','caimanoe','caribolt','carnivine','carracosta','chansey','cherrim','cherubi','chinchou','chuggalong','cinccino','clefairy','cleffa','cloyster','cofagrigus','colossoil','colossoil-f','conkeldurr','coribalis','corphish','corsola','corsola-galar','cranidos','crawdaunt','cresceidon','cresselia','cyndaquil','darkrai','darmanitan-galarzen','deerling','deerling-summer','deerling-winter','deino','delcatty','delibird','diancie','doduo-f','donphan-f','dratini','druddigon','ducklett','durant','eevee','emolga','entei','equilibra','floette-red','forretress','gastrodon','gible','gigalith','golurk','gothita','grimer','gyarados','gyarados-f','hemogoblin','hitmonlee','honchkrow','hooh','houndoom-f','houndour','hypno','illumise','karrablast','keldeo','keldeo-resolute','kerfluffle','kerfluffle-f','kingdra','koffing','krillowatt','krilowatt','krilowatt-f','krokorok','krookodile','kyogre','lanturn','lileep','ludicolo','lugia','lycanroc-midday','mantyke','maractus','mienfoo','mienshao','mightyena','miltank','minior','monferno','munchlax','munna','nidorina','nincada','nuzleaf-f','omastar','pachirisu-f','pangoro','pansear','pelipper','persian','phanpy','pidgeotto','pikachu-hoenn','pineco','plusle','pokestarbrycenman','poliwrath','ponyta-galar','porygonz','primeape','prinplup','privatyke','pumpkaboo','raichu','raticate-f','rattata','rayquaza','regice','regirock','rhydon-f','rhyhorn','riolu','sceptile','seaking','seaking-f','shaymin','shedinja','shelgon','shellder','skiploom','slowpoke','snaelstrom','spinarak','spinda','spoink','squirtle','staraptor','stratagem','stunfisk-galar','swampert','swanna','teddiursa','tentacool','tentacruel','terrakion','throh','thundurus','thundurus-therian','timburr','tirtouga','togekiss','togepi','togetic','tomohawk','tomohawk-f','torchic','tornadus','tornadus-therian','totodile','toxicroak','toxicroak-f','tranquill','trapinch','trubbish','turtwig','tympole','tynamo','tyranitar','tyrogue','umbreon','unfezant','unfezant-f','unown','unown-a','unown-b','unown-c','unown-d','unown-e','unown-exclamation','unown-f','unown-g','unown-h','unown-i','unown-j','unown-k','unown-l','unown-m','unown-n','unown-o','unown-p','unown-q','unown-question','unown-s','unown-t','unown-u','unown-v','unown-w','unown-x','unown-y','unown-z','ursaring','ursaring-f','uxie','vanillish','vanillite','venipede','venomoth','venonat','venusaur-f','vespiquen','vibrava','victini','vigoroth','vileplume','vileplume-f','virizion','vivillon-pokeball','volbeat','volcanion','volcarona','volkraken','volkritter','voltorb','voodoll','voodoom','voodoom-f','vullaby','vulpix','wailmer','wailord','walrein','wartortle','watchog','weedle','weepinbell','weezing','whirlipede','whiscash','whismur','wigglytuff','wingull','wobbuffet','wobbuffet-f','woobat','wooper','wormadam','wormadam-plant','wormadam-trash','wurmple','wynaut','xatu','xatu-f','yamask','zigzagoon','zigzagoon-galar']);
 
 
 
@@ -2050,16 +2092,7 @@ machampgmaxalt:'machampgmax',
 skeledirgealt:'skeledirge',
 tsareenaalt:'tsareena',
 gligaralt:'gligar',
-gliscoralt:'gliscor',
-furfrouheart:'furfrou',
-furfroustar:'furfrou',
-furfroudiamond:'furfrou',
-furfroudebutante:'furfrou',
-furfroumatron:'furfrou',
-furfroudandy:'furfrou',
-furfroulareine:'furfrou',
-furfroukabuki:'furfrou',
-furfroupharaoh:'furfrou'
+gliscoralt:'gliscor'
 };
 
 var CUSTOM_TEAMBUILDER_SPRITES={
@@ -2137,6 +2170,12 @@ scizormega:{front:{w:96,h:96},back:{w:96,h:96},shinyFront:{w:96,h:96},shinyBack:
 scizormegaf:{front:{w:96,h:96},back:{w:96,h:96},shinyFront:{w:96,h:96},shinyBack:{w:96,h:96}},
 medichamf:{front:{w:96,h:96},back:{w:96,h:96},shinyFront:{w:96,h:96},shinyBack:{w:96,h:96}},
 medichammega:{front:{w:96,h:96},back:{w:96,h:96},shinyFront:{w:96,h:96},shinyBack:{w:96,h:96}},
+cradily:{front:{w:96,h:96},back:{w:96,h:96},shinyFront:{w:106,h:156},shinyBack:{w:110,h:156}},
+beedrill:{front:{w:96,h:96},back:{w:96,h:96},shinyFront:{w:124,h:112},shinyBack:{w:120,h:118}},
+beedrillmega:{front:{w:126,h:132},back:{w:128,h:134},shinyFront:{w:126,h:132},shinyBack:{w:128,h:134}},
+scrafty:{front:{w:96,h:96},back:{w:96,h:96},shinyFront:{w:88,h:122},shinyBack:{w:90,h:122}},
+samurott:{front:{w:154,h:160},back:{w:154,h:158},shinyFront:{w:154,h:160},shinyBack:{w:154,h:158}},
+samurotthisui:{front:{w:158,h:162},back:{w:154,h:160},shinyFront:{w:158,h:162},shinyBack:{w:154,h:160}},
 sunfloramega:{front:{w:192,h:192},back:{w:192,h:192},shinyFront:{w:192,h:192},shinyBack:{w:192,h:192}},
 claydolmega:{
 front:{w:192,h:192},
@@ -2327,9 +2366,17 @@ back:{w:168,h:144},
 shinyFront:{w:64,h:64},
 shinyBack:{w:168,h:144}
 },
+appletun:{
+front:{w:132,h:148},
+back:{w:144,h:144},
+shinyFront:{w:132,h:148},
+shinyBack:{w:144,h:144}
+},
 appletungmax:{
-front:{w:96,h:96},
-back:{w:96,h:96}
+front:{w:140,h:188},
+back:{w:122,h:190},
+shinyFront:{w:140,h:188},
+shinyBack:{w:122,h:190}
 },
 coalossal:{
 front:{w:138,h:166},
@@ -2359,9 +2406,23 @@ eeveegmax:{
 front:{w:96,h:96},
 back:{w:96,h:96}
 },
+flapple:{
+front:{w:136,h:100},
+back:{w:136,h:100},
+shinyFront:{w:136,h:100},
+shinyBack:{w:136,h:100}
+},
 flapplegmax:{
-front:{w:96,h:96},
-back:{w:96,h:96}
+front:{w:140,h:188},
+back:{w:122,h:190},
+shinyFront:{w:140,h:188},
+shinyBack:{w:122,h:190}
+},
+dipplingmax:{
+front:{w:140,h:188},
+back:{w:122,h:190},
+shinyFront:{w:140,h:188},
+shinyBack:{w:122,h:190}
 },
 garbodorgmax:{
 front:{w:96,h:96},
@@ -2404,8 +2465,10 @@ front:{w:96,h:96},
 back:{w:96,h:96}
 },
 rillaboomgmax:{
-front:{w:96,h:96},
-back:{w:96,h:96}
+front:{w:190,h:192},
+back:{w:192,h:192},
+shinyFront:{w:190,h:192},
+shinyBack:{w:192,h:192}
 },
 sandacondagmax:{
 front:{w:96,h:96},
@@ -2486,16 +2549,16 @@ front:{w:186,h:165},
 back:{w:192,h:147}
 },
 scolipede:{
-front:{w:183,h:169},
-back:{w:185,h:163},
-shinyFront:{w:183,h:167},
-shinyBack:{w:183,h:161}
+front:{w:178,h:164},
+back:{w:180,h:158},
+shinyFront:{w:178,h:164},
+shinyBack:{w:180,h:158}
 },
 scolipedef:{
-front:{w:96,h:96},
-back:{w:96,h:96},
-shinyFront:{w:96,h:96},
-shinyBack:{w:96,h:96}
+front:{w:178,h:164},
+back:{w:180,h:158},
+shinyFront:{w:178,h:164},
+shinyBack:{w:180,h:158}
 },
 scolipedeazzy:{
 front:{w:300,h:300},
@@ -2510,14 +2573,16 @@ shinyFront:{w:300,h:300},
 shinyBack:{w:189,h:175}
 },
 scolipedemega:{
-front:{w:182,h:192},
-back:{w:189,h:175}
+front:{w:178,h:192},
+back:{w:186,h:170},
+shinyFront:{w:178,h:192},
+shinyBack:{w:186,h:170}
 },
 scolipedemegaf:{
-front:{w:96,h:96},
-back:{w:96,h:96},
-shinyFront:{w:96,h:96},
-shinyBack:{w:96,h:96}
+front:{w:178,h:192},
+back:{w:186,h:170},
+shinyFront:{w:178,h:192},
+shinyBack:{w:186,h:170}
 },
 staraptormega:{
 front:{w:173,h:161},
@@ -2742,8 +2807,10 @@ shinyFront:{w:192,h:192},
 shinyBack:{w:192,h:192}
 },
 gholdengo:{
-front:{w:98,h:150},
-back:{w:116,h:146}
+front:{w:120,h:146},
+back:{w:116,h:146},
+shinyFront:{w:120,h:146},
+shinyBack:{w:116,h:146}
 },
 overqwil:{
 front:{w:172,h:166},
@@ -2913,10 +2980,10 @@ front:{w:102,h:144},
 back:{w:120,h:130}
 },
 corviknightgmax:{
-front:{w:192,h:190},
+front:{w:182,h:188},
 back:{w:188,h:190},
-shinyFront:{w:192,h:190},
-shinyBack:{w:188,h:191}
+shinyFront:{w:182,h:188},
+shinyBack:{w:188,h:190}
 },
 ironvaliant:{
 front:{w:120,h:162},
@@ -2952,11 +3019,15 @@ back:{w:154,h:144}
 },
 inteleon:{
 front:{w:114,h:192},
-back:{w:114,h:192}
+back:{w:114,h:192},
+shinyFront:{w:112,h:160},
+shinyBack:{w:112,h:156}
 },
 inteleongmax:{
 front:{w:126,h:192},
-back:{w:124,h:180}
+back:{w:124,h:180},
+shinyFront:{w:126,h:192},
+shinyBack:{w:124,h:180}
 },
 torterra:{
 front:{w:144,h:154},
@@ -3347,6 +3418,30 @@ shinyBack:{w:192,h:192}
 }
 };
 
+
+Object.assign(CUSTOM_STATIC_BATTLE_SPRITES,{
+furfroupharaoh:{"back":{"h":126,"w":94},"front":{"h":130,"w":96},"shinyFront":{"h":130,"w":96},"shinyBack":{"h":126,"w":94}},
+furfrouf:{"back":{"h":128,"w":96},"front":{"h":124,"w":88},"shinyFront":{"h":124,"w":88},"shinyBack":{"h":128,"w":96}},
+furfroudiamondf:{"back":{"h":118,"w":82},"front":{"h":122,"w":84},"shinyFront":{"h":122,"w":84},"shinyBack":{"h":118,"w":82}},
+furfrouheartf:{"back":{"h":128,"w":88},"front":{"h":132,"w":88},"shinyFront":{"h":132,"w":88},"shinyBack":{"h":128,"w":88}},
+furfroumatron:{"back":{"h":126,"w":98},"front":{"h":128,"w":100},"shinyFront":{"h":128,"w":100},"shinyBack":{"h":126,"w":98}},
+furfroulareinef:{"back":{"h":124,"w":94},"front":{"h":128,"w":94},"shinyFront":{"h":128,"w":94},"shinyBack":{"h":124,"w":94}},
+furfroustarf:{"back":{"h":126,"w":96},"front":{"h":128,"w":96},"shinyFront":{"h":128,"w":96},"shinyBack":{"h":126,"w":96}},
+furfroupharaohf:{"back":{"h":126,"w":94},"front":{"h":130,"w":96},"shinyFront":{"h":130,"w":96},"shinyBack":{"h":126,"w":94}},
+furfrouheart:{"back":{"h":128,"w":88},"front":{"h":132,"w":88},"shinyFront":{"h":132,"w":88},"shinyBack":{"h":128,"w":88}},
+furfroudandyf:{"back":{"h":130,"w":92},"front":{"h":132,"w":92},"shinyFront":{"h":132,"w":92},"shinyBack":{"h":130,"w":92}},
+furfroustar:{"back":{"h":126,"w":96},"front":{"h":128,"w":96},"shinyFront":{"h":128,"w":96},"shinyBack":{"h":126,"w":96}},
+furfroulareine:{"back":{"h":124,"w":94},"front":{"h":128,"w":94},"shinyFront":{"h":128,"w":94},"shinyBack":{"h":124,"w":94}},
+furfrou:{"back":{"h":128,"w":96},"front":{"h":124,"w":88},"shinyFront":{"h":124,"w":88},"shinyBack":{"h":128,"w":96}},
+furfroudebutantef:{"back":{"h":128,"w":102},"front":{"h":130,"w":102},"shinyFront":{"h":130,"w":102},"shinyBack":{"h":128,"w":102}},
+furfroumatronf:{"back":{"h":126,"w":98},"front":{"h":128,"w":100},"shinyFront":{"h":128,"w":100},"shinyBack":{"h":126,"w":98}},
+furfroudebutante:{"back":{"h":128,"w":102},"front":{"h":130,"w":102},"shinyFront":{"h":130,"w":102},"shinyBack":{"h":128,"w":102}},
+furfroukabukif:{"back":{"h":126,"w":80},"front":{"h":128,"w":80},"shinyFront":{"h":128,"w":80},"shinyBack":{"h":126,"w":80}},
+furfroukabuki:{"back":{"h":126,"w":80},"front":{"h":128,"w":80},"shinyFront":{"h":128,"w":80},"shinyBack":{"h":126,"w":80}},
+furfroudiamond:{"back":{"h":118,"w":82},"front":{"h":122,"w":84},"shinyFront":{"h":122,"w":84},"shinyBack":{"h":118,"w":82}},
+furfroudandy:{"back":{"h":130,"w":92},"front":{"h":132,"w":92},"shinyFront":{"h":132,"w":92},"shinyBack":{"h":130,"w":92}}
+});
+
 var CUSTOM_BW_SPRITES={
 lilligantrift:{num:549,front:{w:192,h:192},shinyFront:{w:192,h:192}},
 scizor:{num:212,front:{w:96,h:96},back:{w:96,h:96},shinyFront:{w:96,h:96},shinyBack:{w:96,h:96}},
@@ -3587,13 +3682,17 @@ back:{w:162,h:190}
 },
 rillaboom:{
 num:812,
-front:{w:96,h:96},
-back:{w:96,h:96}
+front:{w:174,h:190},
+back:{w:174,h:178},
+shinyFront:{w:174,h:190},
+shinyBack:{w:174,h:178}
 },
 rillaboomgmax:{
 num:812,
-front:{w:96,h:96},
-back:{w:96,h:96}
+front:{w:190,h:192},
+back:{w:192,h:192},
+shinyFront:{w:190,h:192},
+shinyBack:{w:192,h:192}
 },
 kleavor:{
 num:900,
@@ -3937,10 +4036,19 @@ back:{w:192,h:192},
 shinyFront:{w:192,h:192},
 shinyBack:{w:192,h:192}
 },
+appletun:{
+num:842,
+front:{w:132,h:148},
+back:{w:144,h:144},
+shinyFront:{w:132,h:148},
+shinyBack:{w:144,h:144}
+},
 appletungmax:{
 num:842,
-front:{w:96,h:96},
-back:{w:96,h:96}
+front:{w:140,h:188},
+back:{w:122,h:190},
+shinyFront:{w:140,h:188},
+shinyBack:{w:122,h:190}
 },
 blastoisegmax:{
 num:9,
@@ -3981,10 +4089,26 @@ num:133,
 front:{w:96,h:96},
 back:{w:96,h:96}
 },
+flapple:{
+num:841,
+front:{w:136,h:100},
+back:{w:136,h:100},
+shinyFront:{w:136,h:100},
+shinyBack:{w:136,h:100}
+},
 flapplegmax:{
 num:841,
-front:{w:96,h:96},
-back:{w:96,h:96}
+front:{w:140,h:188},
+back:{w:122,h:190},
+shinyFront:{w:140,h:188},
+shinyBack:{w:122,h:190}
+},
+dipplingmax:{
+num:1011,
+front:{w:140,h:188},
+back:{w:122,h:190},
+shinyFront:{w:140,h:188},
+shinyBack:{w:122,h:190}
 },
 garbodorgmax:{
 num:569,
@@ -4340,8 +4464,10 @@ shinyBack:{w:192,h:192}
 },
 gholdengo:{
 num:1000,
-front:{w:98,h:150},
-back:{w:116,h:146}
+front:{w:120,h:146},
+back:{w:116,h:146},
+shinyFront:{w:120,h:146},
+shinyBack:{w:116,h:146}
 },
 overqwil:{
 num:904,
@@ -4531,8 +4657,10 @@ back:{w:96,h:96}
 },
 scraftymega:{
 num:560,
-front:{w:96,h:96},
-back:{w:96,h:96}
+front:{w:98,h:130},
+back:{w:106,h:126},
+shinyFront:{w:98,h:130},
+shinyBack:{w:106,h:126}
 },
 skarmorymega:{
 num:227,
@@ -4682,7 +4810,7 @@ shinyBack:{w:120,h:130}
 },
 corviknightgmax:{
 num:823,
-front:{w:192,h:190},
+front:{w:182,h:188},
 back:{w:188,h:190}
 },
 ironvaliant:{
@@ -4713,12 +4841,16 @@ back:{w:154,h:144}
 inteleon:{
 num:818,
 front:{w:114,h:192},
-back:{w:114,h:192}
+back:{w:114,h:192},
+shinyFront:{w:112,h:160},
+shinyBack:{w:112,h:156}
 },
 inteleongmax:{
 num:818,
 front:{w:126,h:192},
-back:{w:124,h:180}
+back:{w:124,h:180},
+shinyFront:{w:126,h:192},
+shinyBack:{w:124,h:180}
 },
 torterra:{
 num:389,
@@ -4989,15 +5121,17 @@ back:{w:192,h:147}
 },
 scolipede:{
 num:545,
-front:{w:183,h:169},
-back:{w:185,h:163},
-shinyFront:{w:183,h:167},
-shinyBack:{w:183,h:161}
+front:{w:178,h:164},
+back:{w:180,h:158},
+shinyFront:{w:178,h:164},
+shinyBack:{w:180,h:158}
 },
 scolipedemega:{
 num:545,
-front:{w:182,h:192},
-back:{w:189,h:175}
+front:{w:178,h:192},
+back:{w:186,h:170},
+shinyFront:{w:178,h:192},
+shinyBack:{w:186,h:170}
 },
 golisopodmega:{
 num:768,
@@ -5277,8 +5411,10 @@ back:{w:96,h:96}
 },
 floettemega:{
 num:670,
-front:{w:96,h:96},
-back:{w:96,h:96}
+front:{w:176,h:138},
+back:{w:166,h:150},
+shinyFront:{w:176,h:138},
+shinyBack:{w:166,h:150}
 },
 floetteeternalmega:{
 num:670,
@@ -5731,9 +5867,19 @@ otherFormes:['Mightyena-Deso'],
 cosmeticFormes:['Mightyena-Deso'],
 formeOrder:['Mightyena','Mightyena-Deso']
 },
+hydrapple:{
+baseStats:{hp:116,atk:85,def:110,spa:120,spd:85,spe:54},
+abilities:{0:'Supersweet Syrup',1:'Regenerator',H:'Hydra Heart'}
+},
+dipplin:{
+baseStats:{hp:80,atk:80,def:115,spa:100,spd:85,spe:40},
+abilities:{0:'Supersweet Syrup',1:'Gluttony',H:'Aroma Veil'},
+otherFormes:['Dipplin-Gmax'],
+formeOrder:['Dipplin','Dipplin-Gmax']
+},
 granbull:{
 types:['Fairy','Ground'],
-baseStats:{hp:120,atk:145,def:95,spa:70,spd:85,spe:45},
+baseStats:{hp:100,atk:135,def:95,spa:70,spd:85,spe:45},
 abilities:{0:'Loyal Guard',1:'Violent Rush',H:'Strong Jaw'},
 otherFormes:['Granbull-Reborn'],
 cosmeticFormes:['Granbull-Reborn'],
@@ -5792,9 +5938,14 @@ name:'Granbull-Reborn',
 forme:'Reborn',
 changesFrom:'Granbull',
 types:['Fairy','Ground'],
-baseStats:{hp:120,atk:145,def:95,spa:70,spd:85,spe:45},
+baseStats:{hp:100,atk:135,def:95,spa:70,spd:85,spe:45},
 abilities:{0:'Loyal Guard',1:'Violent Rush',H:'Strong Jaw'},
 isNonstandard:'Custom'
+},
+cetitan:{
+types:['Ice','Ground'],
+baseStats:{hp:170,atk:128,def:72,spa:30,spd:65,spe:75},
+abilities:{0:'Slush Rush',1:'Thick Fat',H:'Glacial Mass'}
 },
 mightyenadeso:{
 baseStats:{hp:90,atk:125,def:85,spa:60,spd:80,spe:125},
@@ -5931,7 +6082,21 @@ abilities:{0:'Solar Recharge',1:'Cavern Drake',H:'Rough Scale'}
 },
 vikavolt:{baseStats:{hp:77,atk:103,def:107,spa:145,spd:75,spe:43},abilities:{0:'Levitate',1:'Speed Boost',H:'Battery'}},
 turtonator:{baseStats:{hp:80,atk:80,def:130,spa:80,spd:100,spe:50}},
-mrrime:{baseStats:{hp:85,atk:110,def:90,spa:110,spd:105,spe:70}},
+cursola:{baseStats:{hp:60,atk:95,def:57,spa:145,spd:130,spe:50}},
+drednaw:{
+baseStats:{hp:90,atk:125,def:110,spa:48,spd:78,spe:74},
+abilities:{0:'Strong Jaw',1:'Brute Force',H:'Shell Armor'},
+otherFormes:['Drednaw-Gmax'],
+formeOrder:['Drednaw','Drednaw-Gmax']
+},
+drednawgmax:{
+baseStats:{hp:153,atk:125,def:110,spa:48,spd:78,spe:74},
+abilities:{0:'War Ship'}
+},
+mrrime:{
+baseStats:{hp:85,atk:110,def:90,spa:110,spd:105,spe:70},
+abilities:{0:'Magic Guard',1:'Royal Decree',H:'Ice Body'}
+},
 parasect:{
 baseStats:{hp:90,atk:120,def:105,spa:35,spd:110,spe:20},
 abilities:{0:'Perish Body',1:'Poison Heal',H:'Parasitism'}
@@ -6600,6 +6765,26 @@ alakazammega:{baseStats:{hp:80,atk:48,def:60,spa:175,spd:105,spe:162}},
 dodrio:{baseStats:{hp:90,atk:115,def:85,spa:40,spd:75,spe:120},abilities:{0:'Triple Threat',1:'Speed Boost',H:'Striker Frenzy'}},
 honchkrow:{baseStats:{hp:100,atk:135,def:72,spa:71,spd:72,spe:100}},
 flamigo:{baseStats:{hp:82,atk:125,def:80,spa:75,spd:70,spe:105}},
+flapple:{
+baseStats:{hp:80,atk:115,def:85,spa:95,spd:60,spe:90},
+abilities:{0:'Levitate',1:'Wind Rider',H:'Corrosion'},
+otherFormes:['Flapple-Gmax'],
+formeOrder:['Flapple','Flapple-Gmax']
+},
+flapplegmax:{
+baseStats:{hp:120,atk:115,def:85,spa:95,spd:60,spe:90},
+abilities:{0:'Sweet Decay'}
+},
+appletun:{
+baseStats:{hp:110,atk:95,def:90,spa:105,spd:95,spe:30},
+abilities:{0:'Thick Fat',1:'Well-Baked Body',H:'Harvest'},
+otherFormes:['Appletun-Gmax'],
+formeOrder:['Appletun','Appletun-Gmax']
+},
+appletungmax:{
+baseStats:{hp:165,atk:95,def:90,spa:105,spd:95,spe:30},
+abilities:{0:'Baked Bliss'}
+},
 garbodor:{baseStats:{hp:80,atk:125,def:90,spa:70,spd:90,spe:75}},
 garbodorgmax:{baseStats:{hp:120,atk:125,def:90,spa:70,spd:90,spe:75}},
 gigalith:{baseStats:{hp:100,atk:135,def:130,spa:80,spd:80,spe:25}},
@@ -6729,6 +6914,7 @@ drednaw:'G-Max Stonesurge',
 coalossal:'G-Max Volcalith',
 flapple:'G-Max Tartness',
 appletun:'G-Max Sweetness',
+dipplin:'G-Max Syrupfall',
 sandaconda:'G-Max Sandblast',
 toxtricity:'G-Max Stun Shock',
 toxtricitylowkey:'G-Max Stun Shock',
@@ -6763,6 +6949,11 @@ riftdancer:{
 name:'Rift Dancer',
 desc:"This Pokemon has Opportunist, Chlorophyll, and Dancer's effects.",
 shortDesc:'Opportunist + Chlorophyll + Dancer.'
+},
+glacialmass:{
+name:'Glacial Mass',
+desc:"This Pokemon has Heavy Metal and Thick Fat's effects.",
+shortDesc:'Heavy Metal + Thick Fat.'
 },
 nightrealm:{
 name:'Night Realm',
@@ -6804,6 +6995,11 @@ selfrepair:{
 name:'Self Repair',
 desc:"This Pokemon has Self Sufficient and Natural Cure's effects.",
 shortDesc:'Self Sufficient + Natural Cure.'
+},
+naturalrecovery:{
+name:'Natural Recovery',
+desc:"This Pokemon has Natural Cure and Regenerator's effects.",
+shortDesc:'Natural Cure + Regenerator.'
 },
 unstableevo:{
 name:'Unstable Evo',
@@ -7367,8 +7563,8 @@ shortDesc:"Physical hits set Stealth Rock, except in water fields."
 },
 witheringshell:{
 name:'Withering Shell',
-desc:"This Pokemon has Crumbling Shell, Self Repair, and Weak Armor's effects. Physical hits set Stealth Rock on the attacker's side except in water fields, lower this Pokemon's Defense by 1, and raise its Speed by 2. It restores 1/16 max HP each turn, is immune to Hail and Sandstorm damage, and cures status while restoring 1/3 max HP when switching out.",
-shortDesc:'Crumbling Shell + Self Repair + Weak Armor.'
+desc:"This Pokemon has Crumbling Shell, Natural Recovery, and Sturdy's effects. Physical hits set Stealth Rock on the attacker's side except in water fields. It cures status and restores 1/3 max HP when switching out. If it is at full HP, it survives one hit with at least 1 HP, and OHKO moves fail.",
+shortDesc:'Crumbling Shell + Natural Recovery + Sturdy.'
 },
 wingedwraith:{
 name:'Winged Wraith',
@@ -7482,8 +7678,8 @@ shortDesc:"Duskilate; 2x vs low HP; KO heals 1/8."
 },
 falsedevotion:{
 name:"False Devotion",
-desc:"This Pokemon has Serene Grace, Natural Cure, and Prankster's effects.",
-shortDesc:"Built-in Serene Grace, Natural Cure, and Prankster."
+desc:"This Pokemon has Serene Grace, Natural Recovery, and Prankster's effects.",
+shortDesc:"Built-in Serene Grace, Natural Recovery, and Prankster."
 },
 firemane:{
 name:"Fire Mane",
@@ -8031,6 +8227,31 @@ name:"Surge Conduit",
 desc:"This Pokemon has Electric Surge, Lightning Rod, and Brute Force's effects.",
 shortDesc:"Electric Surge + Lightning Rod + Brute Force."
 },
+supersweetsyrup:{
+name:"Supersweet Syrup",
+desc:"On switch-in, this Pokemon lowers the evasiveness of adjacent opposing Pokemon by 1 stage every time it switches in. This Pokemon has Sticky Hold. When this Pokemon is hit by an attack, the attacker is Embargoed for 5 turns.",
+shortDesc:"On switch-in, lowers adjacent foes' evasiveness 1 stage; Sticky Hold; attackers are Embargoed for 5 turns."
+},
+hydraheart:{
+name:"Hydra Heart",
+desc:"This Pokemon has Hydra Bond, Self Sufficient, and Stamina's effects.",
+shortDesc:"Hydra Bond + Self Sufficient + Stamina."
+},
+sweetresonance:{
+name:"Sweet Resonance",
+desc:"On switch-in, this Pokemon has Supersweet Syrup, Self Sufficient, and Hydra Bond's effects, and gives its adjacent ally Dragon Cheer.",
+shortDesc:"Supersweet Syrup + Self Sufficient + Hydra Bond; ally gets Dragon Cheer on entry."
+},
+bakedbliss:{
+name:"Baked Bliss",
+desc:"This Pokemon has Well-Baked Body, Thick Fat, Sweet Veil, and Gluttony's effects.",
+shortDesc:"Well-Baked Body + Thick Fat + Sweet Veil + Gluttony."
+},
+sweetdecay:{
+name:"Sweet Decay",
+desc:"This Pokemon has Hustle, Gluttony, Sweet Veil, and Corrosion's effects.",
+shortDesc:"Hustle + Gluttony + Sweet Veil + Corrosion."
+},
 sweetsanctuary:{
 name:"Sweet Sanctuary",
 desc:"This Pokemon has Friend Guard, Sweet Veil, Aroma Veil, and Pastel Veil's effects.",
@@ -8158,8 +8379,8 @@ shortDesc:"Overcoat; status Atk 1.5x; Rock/Fighting/Ground ignore screens/boosts
 },
 warship:{
 name:"War Ship",
-desc:"If Rain is active, this Pokemon's Speed is doubled. This Pokemon does not take recoil damage and ignores opposing stat boosts like Unaware.",
-shortDesc:"Swift Swim + Rock Head + Unaware."
+desc:"This Pokemon has Swift Swim, Unaware, Solid Rock, and Strong Jaw's effects. In rain, its Speed is doubled, it ignores opposing stat boosts, takes reduced damage from attacks, and bite-based moves have 1.5x power.",
+shortDesc:"Swift Swim + Unaware + Solid Rock + Strong Jaw."
 },
 wastingsurge:{
 name:"Wasting Surge",
@@ -8304,6 +8525,22 @@ shortDesc:'Invigorate + Flower Veil; permanently becomes Florges-Reborn on entry
 };
 
 var CUSTOM_MOVE_UPDATES={
+gmaxsyrupfall:{
+num:1000,
+accuracy:true,
+basePower:120,
+category:'Special',
+isMax:'Dipplin',
+isNonstandard:'Gigantamax',
+name:'G-Max Syrupfall',
+pp:5,
+priority:0,
+flags:{},
+target:'allAdjacentFoes',
+type:'Grass',
+desc:"This 120 BP Special move deals damage and applies Syrup Bomb's syrup effect to all opposing Pokemon for 4 turns.",
+shortDesc:'120 BP Special; all foes get Syrup for 4 turns.'
+},
 
 meteorbeam:{
 num:800,
@@ -9554,6 +9791,11 @@ magmastorm:['9M'],
 spikecannon:['9M'],
 steameruption:['9M']
 },
+drednaw:{
+psychicfangs:['9M'],
+icefang:['9M'],
+crunch:['9M']
+},
 pikachustarter:{
 drainingkiss:['9M'],
 eeriespell:['9M'],
@@ -9897,7 +10139,11 @@ zangoose:[
 trapinch:['roaroftime'],
 gabite:['roaroftime'],
 deino:['roaroftime']
-};
+};for(var _i6=0,_ref3=
+
+["furfroupharaoh","furfrouf","furfroudiamondf","furfrouheartf","furfroumatron","furfroulareinef","furfroustarf","furfroupharaohf","furfrouheart","furfroudandyf","furfroustar","furfroulareine","furfrou","furfroudebutantef","furfroumatronf","furfroudebutante","furfroukabukif","furfroukabuki","furfroudiamond","furfroudandy"];_i6<_ref3.length;_i6++){var _id2=_ref3[_i6];
+CUSTOM_BW_SPRITES[_id2]=Object.assign({num:676},CUSTOM_STATIC_BATTLE_SPRITES[_id2]);
+}
 
 var CUSTOM_BW_SPRITE_IDS=Object.keys(CUSTOM_BW_SPRITES);
 var CUSTOM_ANIMATED_BW_SPRITES=new Set([
@@ -9909,7 +10155,7 @@ var CUSTOM_ANIMATED_BW_SPRITES=new Set([
 'ribombee','rotom','rotomfan','rotomfrost','rotomheat','rotommow','rotomwash','salamence',
 'scolipede','slowbro','slowking','sneasel','staraptor','steelix','talonflame',
 'torterra','typhlosion','venusaur','victreebel','vikavolt',
-'whimsicott','furfrou','unfezantrejuv']
+'whimsicott','unfezantrejuv']
 );
 var CUSTOM_STATIC_SHINY_BW_SPRITES=new Set(['magnezone','sylveon']);
 var CUSTOM_SPECIES_IDS=Object.keys(CUSTOM_SPECIES);
@@ -9996,9 +10242,9 @@ silvally:[
 'Silvally-Dark','Silvally-Fairy']
 
 };
-var PROFILE_VARIANT_FAMILY_IDS={};for(var _i6=0,_Object$entries4=
-Object.entries(PROFILE_VARIANT_FORMES);_i6<_Object$entries4.length;_i6++){var _ref2=_Object$entries4[_i6];var familyId=_ref2[0];var formes=_ref2[1];for(var _i8=0;_i8<
-formes.length;_i8++){var forme=formes[_i8];PROFILE_VARIANT_FAMILY_IDS[toID(forme)]=familyId;}
+var PROFILE_VARIANT_FAMILY_IDS={};for(var _i8=0,_Object$entries4=
+Object.entries(PROFILE_VARIANT_FORMES);_i8<_Object$entries4.length;_i8++){var _ref4=_Object$entries4[_i8];var familyId=_ref4[0];var formes=_ref4[1];for(var _i0=0;_i0<
+formes.length;_i0++){var forme=formes[_i0];PROFILE_VARIANT_FAMILY_IDS[toID(forme)]=familyId;}
 }
 function customVariantFamilyBaseId(base){
 var id=toID(base);
@@ -10008,8 +10254,8 @@ function customVariantFamilyId(species){
 var id=toID((species==null?void 0:species.id)||(species==null?void 0:species.name)||'');
 if(PROFILE_VARIANT_FAMILY_IDS[id])return PROFILE_VARIANT_FAMILY_IDS[id];
 var directCustomSpecies=CUSTOM_SPECIES[id];
-if(directCustomSpecies!=null&&directCustomSpecies.data.standalone||species!=null&&species.standalone)return id;for(var _i0=0,_Object$values2=
-Object.values(CUSTOM_SPECIES);_i0<_Object$values2.length;_i0++){var _customSpecies=_Object$values2[_i0];
+if(directCustomSpecies!=null&&directCustomSpecies.data.standalone||species!=null&&species.standalone)return id;for(var _i10=0,_Object$values2=
+Object.values(CUSTOM_SPECIES);_i10<_Object$values2.length;_i10++){var _customSpecies=_Object$values2[_i10];
 if(isCustomVisualForm(_customSpecies.data)&&customVariantFamilyBaseId(_customSpecies.base)===id){
 return id;
 }
@@ -10041,45 +10287,45 @@ var addName=function(name){
 if(typeof name!=='string'||!name||names.some(function(existing){return toID(existing)===toID(name);}))return;
 names.push(name);
 };
-addName(baseData.name||(toID(species==null?void 0:species.name)===familyId?species.name:undefined));for(var _i10=0,_Object$values4=
-Object.values(CUSTOM_SPECIES);_i10<_Object$values4.length;_i10++){var customSpecies=_Object$values4[_i10];
+addName(baseData.name||(toID(species==null?void 0:species.name)===familyId?species.name:undefined));for(var _i12=0,_Object$values4=
+Object.values(CUSTOM_SPECIES);_i12<_Object$values4.length;_i12++){var customSpecies=_Object$values4[_i12];
 if(customSpecies.data.standalone)continue;
 if(!isCustomVisualForm(customSpecies.data)||customVariantFamilyBaseId(customSpecies.base)!==familyId)continue;
-addName(customSpecies.data.name);for(var _i12=0,_ref4=
-customSpecies.data.otherFormes||[];_i12<_ref4.length;_i12++){var _forme=_ref4[_i12];
+addName(customSpecies.data.name);for(var _i14=0,_ref6=
+customSpecies.data.otherFormes||[];_i14<_ref6.length;_i14++){var _forme=_ref6[_i14];
 if(isCustomVisualVariantName(_forme))addName(_forme);
 }
-}for(var _i14=0,_ref6=
-baseData.cosmeticFormes||[];_i14<_ref6.length;_i14++){var _forme2=_ref6[_i14];
+}for(var _i16=0,_ref8=
+baseData.cosmeticFormes||[];_i16<_ref8.length;_i16++){var _forme2=_ref8[_i16];
 if(isCustomVisualVariantName(_forme2))addName(_forme2);
 }
-if(names.length<=1){for(var _i16=0,_ref8=
-species.cosmeticFormes||[];_i16<_ref8.length;_i16++){var _forme3=_ref8[_i16];
+if(names.length<=1){for(var _i18=0,_ref0=
+species.cosmeticFormes||[];_i18<_ref0.length;_i18++){var _forme3=_ref0[_i18];
 if(isCustomVisualVariantName(_forme3))addName(_forme3);
 }
 }
 return names;
 }
 function addCustomVariantFormes(formeOrder,formes){
-if(!Array.isArray(formes))return;for(var _i18=0;_i18<
-formes.length;_i18++){var _forme4=formes[_i18];
+if(!Array.isArray(formes))return;for(var _i20=0;_i20<
+formes.length;_i20++){var _forme4=formes[_i20];
 if(typeof _forme4==='string'&&!formeOrder.includes(_forme4))formeOrder.push(_forme4);
 }
 }
 function applyCustomVisualVariantLinks(speciesTable){
-var groups={};for(var _i20=0;_i20<
-CUSTOM_SPECIES_IDS.length;_i20++){var id=CUSTOM_SPECIES_IDS[_i20];
+var groups={};for(var _i22=0;_i22<
+CUSTOM_SPECIES_IDS.length;_i22++){var id=CUSTOM_SPECIES_IDS[_i22];
 var customSpecies=CUSTOM_SPECIES[id];
 if(!isCustomVisualForm(customSpecies.data)||customSpecies.data.standalone)continue;
 var baseId=customVariantFamilyBaseId(customSpecies.base);
 var group=groups[baseId]||(groups[baseId]={ids:[],names:new Set()});
 group.ids.push(id);
-group.names.add(customSpecies.data.name);for(var _i22=0,_ref0=
-customSpecies.data.otherFormes||[];_i22<_ref0.length;_i22++){var forme=_ref0[_i22];
+group.names.add(customSpecies.data.name);for(var _i24=0,_ref10=
+customSpecies.data.otherFormes||[];_i24<_ref10.length;_i24++){var forme=_ref10[_i24];
 if(isCustomVisualVariantName(forme,speciesTable))group.names.add(forme);
 }
-}for(var _i24=0,_Object$entries6=
-Object.entries(groups);_i24<_Object$entries6.length;_i24++){var _speciesTable$group$i;var groupEntry=_Object$entries6[_i24];
+}for(var _i26=0,_Object$entries6=
+Object.entries(groups);_i26<_Object$entries6.length;_i26++){var _speciesTable$group$i;var groupEntry=_Object$entries6[_i26];
 var baseId=groupEntry[0];
 var group=groupEntry[1];
 var baseData=speciesTable[baseId]||{};
@@ -10088,28 +10334,28 @@ var formeOrder=[];
 formeOrder.push(baseName);
 addCustomVariantFormes(formeOrder,baseData.formeOrder);
 addCustomVariantFormes(formeOrder,baseData.otherFormes);
-addCustomVariantFormes(formeOrder,baseData.cosmeticFormes);for(var _i26=0,_group$ids2=
-group.ids;_i26<_group$ids2.length;_i26++){var id=_group$ids2[_i26];
+addCustomVariantFormes(formeOrder,baseData.cosmeticFormes);for(var _i28=0,_group$ids2=
+group.ids;_i28<_group$ids2.length;_i28++){var id=_group$ids2[_i28];
 var data=speciesTable[id]||CUSTOM_SPECIES[id].data;
 addCustomVariantFormes(formeOrder,data.formeOrder);
 addCustomVariantFormes(formeOrder,data.otherFormes);
 if(typeof data.name==='string'&&!formeOrder.includes(data.name))formeOrder.push(data.name);
-}for(var _i28=0,_group$names2=
-group.names;_i28<_group$names2.length;_i28++){var name=_group$names2[_i28];
+}for(var _i30=0,_group$names2=
+group.names;_i30<_group$names2.length;_i30++){var name=_group$names2[_i30];
 if(!formeOrder.includes(name))formeOrder.push(name);
 }
 var cosmeticFormes=new Set((baseData.cosmeticFormes||[]).filter(function(forme){return(
 isCustomVisualVariantName(forme,speciesTable));}
-));for(var _i30=0,_group$names4=
-group.names;_i30<_group$names4.length;_i30++){var name=_group$names4[_i30];
+));for(var _i32=0,_group$names4=
+group.names;_i32<_group$names4.length;_i32++){var name=_group$names4[_i32];
 if(name!==baseName)cosmeticFormes.add(name);
 }
 speciesTable[baseId]=Object.assign({},
 baseData,{
 cosmeticFormes:[].concat(cosmeticFormes),
-formeOrder:formeOrder});for(var _i32=0,_group$ids4=
+formeOrder:formeOrder});for(var _i34=0,_group$ids4=
 
-group.ids;_i32<_group$ids4.length;_i32++){var id=_group$ids4[_i32];
+group.ids;_i34<_group$ids4.length;_i34++){var id=_group$ids4[_i34];
 var data=speciesTable[id]||CUSTOM_SPECIES[id].data;
 speciesTable[id]=Object.assign({},
 data,{
@@ -10637,6 +10883,7 @@ auramaster:['dualwield','innerfocus','technician'],
 doublestrike:['ironfist','technician','skilllink'],
 lunarorbit:['magicbounce','serenegrace','triage'],
 blinddevotion:['falsedevotion','technician','cottondown'],
+falsedevotion:['serenegrace','naturalrecovery','prankster'],
 aeviandream:['baddreams','shedskin','toughclaws'],
 schooling:['hydrabond','selfrepair','filter'],
 wingedwraith:['infiltrator','galewings'],
@@ -10645,11 +10892,14 @@ neurotoxin:['strongjaw','shedskin','hydrabond','regenerator'],
 patternshift:['protean','shedskin','unaware'],
 nightmarepulse:['pendulumswing','nightrealm'],
 riftdancer:['opportunist','chlorophyll','dancer'],
+glacialmass:['heavymetal','thickfat'],
+warship:['swiftswim','unaware','solidrock','strongjaw'],
+naturalrecovery:['naturalcure','regenerator'],
 ragingbeast:['guts','moldbreaker'],
 lunardread:['magicguard','pressure'],
 scavenger:['overcoat','bigpecks','regenerator'],
 toxicspines:['toxicdebris','corrosion','merciless'],
-witheringshell:['crumblingshell','selfrepair','weakarmor'],
+witheringshell:['crumblingshell','naturalrecovery','sturdy'],
 caverndrake:['eartheater','solidrock','moldbreaker'],
 roughscale:['roughskin','toughclaws'],
 empress:['queenlymajesty','royaldecree'],
@@ -10674,6 +10924,11 @@ shadowguard:['shadowtag'],
 sandsovereign:['dauntlessshield','solidrock'],
 alloycore:['magicguard','selfsufficient','stalwart'],
 treasuretitan:['filter','eartheater','heavymetal'],
+supersweetsyrup:['stickyhold'],
+hydraheart:['hydrabond','selfsufficient','stamina'],
+sweetresonance:['supersweetsyrup','selfsufficient','hydrabond'],
+bakedbliss:['wellbakedbody','thickfat','sweetveil','gluttony'],
+sweetdecay:['hustle','gluttony','sweetveil','corrosion'],
 sweetsanctuary:['friendguard','sweetveil','aromaveil','pastelveil'],
 heatcoil:['speedboost','magmaarmor','flamebody'],
 wickedsnare:['stakeout','tanglinghair','prankster'],
@@ -11172,7 +11427,25 @@ zebstrika:{megakick:["9M"]},
 zoroark:{counter:["9M"],detect:["9M"],fakeout:["9M"]}
 };
 Object.assign(CUSTOM_LEARNSET_ADDITIONS,DOCUMENT_LEARNSET_ADDITIONS,{
-cradily:{sappyseed:['9M']}
+cradily:{sappyseed:['9M']},
+cetitan:{
+earthquake:['9M'],highhorsepower:['9M'],headlongrush:['9M'],icespinner:['9M'],
+iciclecrash:['9M'],heavyslam:['9M'],bodypress:['9M'],knockoff:['9M'],shoreup:['9M']
+},
+flapple:{
+firstimpression:['9M'],victorydance:['9M'],bulletseed:['9M'],gravapple:['9M'],
+fellstinger:['9M'],dragonenergy:['9M'],gunkshot:['9M'],poisonjab:['9M'],
+acidspray:['9M'],venoshock:['9M'],toxic:['9M']
+},
+appletun:{
+junglehealing:['9M'],dragonenergy:['9M'],ragepowder:['9M']
+},
+dipplin:{
+naturepower:['9M'],bodypress:['9M'],irondefense:['9M']
+},
+hydrapple:{
+triattack:['9M'],flamethrower:['9M'],fireblast:['9M'],irondefense:['9M']
+}
 });
 var CUSTOM_LEARNSET_ADDITION_IDS=Object.keys(CUSTOM_LEARNSET_ADDITIONS);
 var CUSTOM_LEARNSET_REMOVAL_IDS=Object.keys(CUSTOM_LEARNSET_REMOVALS);
@@ -11345,9 +11618,9 @@ if(customSpeciesBase)return customSpeciesBase;
 
 var species=(_window$BattlePokedex3=window.BattlePokedex)==null?void 0:_window$BattlePokedex3[id];
 var baseSpeciesId=toID(species==null?void 0:species.baseSpecies);
-if(baseSpeciesId&&baseSpeciesId!==id)return baseSpeciesId;for(var _i34=0,_ref10=
+if(baseSpeciesId&&baseSpeciesId!==id)return baseSpeciesId;for(var _i36=0,_ref12=
 
-['battlebond','megaz','megax','megay','mega','gmax','alt'];_i34<_ref10.length;_i34++){var suffix=_ref10[_i34];
+['battlebond','megaz','megax','megay','mega','gmax','alt'];_i36<_ref12.length;_i36++){var suffix=_ref12[_i36];
 if(id.endsWith(suffix)&&id.length>suffix.length)return id.slice(0,-suffix.length);
 }
 return'';
@@ -11366,23 +11639,23 @@ return getSpriteSize(customData,isFront,shiny)||getSpriteSize(customNativeBWSpri
 function ensureCustomBWSpriteData(){
 if(!window.BattlePokemonSpritesBW)return;
 if(customBWSpriteDataTable===window.BattlePokemonSpritesBW)return;
-customNativeBWSpriteSizes={};for(var _i36=0;_i36<
-CUSTOM_BW_SPRITE_IDS.length;_i36++){var _id2=CUSTOM_BW_SPRITE_IDS[_i36];
-var nativeSpriteData=window.BattlePokemonSpritesBW[_id2];
+customNativeBWSpriteSizes={};for(var _i38=0;_i38<
+CUSTOM_BW_SPRITE_IDS.length;_i38++){var _id3=CUSTOM_BW_SPRITE_IDS[_i38];
+var nativeSpriteData=window.BattlePokemonSpritesBW[_id3];
 if(nativeSpriteData){
-customNativeBWSpriteSizes[_id2]=copySpriteSizeSet(nativeSpriteData);
+customNativeBWSpriteSizes[_id3]=copySpriteSizeSet(nativeSpriteData);
 }
 if(!nativeSpriteData){
-window.BattlePokemonSpritesBW[_id2]=CUSTOM_BW_SPRITES[_id2];
+window.BattlePokemonSpritesBW[_id3]=CUSTOM_BW_SPRITES[_id3];
 }else{
-Object.assign(nativeSpriteData,CUSTOM_BW_SPRITES[_id2]);
+Object.assign(nativeSpriteData,CUSTOM_BW_SPRITES[_id3]);
 }
-}for(var _i38=0;_i38<
-CUSTOM_BW_SPRITE_IDS.length;_i38++){var _id3=CUSTOM_BW_SPRITE_IDS[_i38];
-if(customNativeBWSpriteSizes[_id3])continue;
-var baseSpriteId=getCustomBaseSpriteId(_id3);
+}for(var _i40=0;_i40<
+CUSTOM_BW_SPRITE_IDS.length;_i40++){var _id4=CUSTOM_BW_SPRITE_IDS[_i40];
+if(customNativeBWSpriteSizes[_id4])continue;
+var baseSpriteId=getCustomBaseSpriteId(_id4);
 var baseSpriteSize=baseSpriteId&&getNativeSpriteSizeSet(baseSpriteId);
-if(baseSpriteSize)customNativeBWSpriteSizes[_id3]=baseSpriteSize;
+if(baseSpriteSize)customNativeBWSpriteSizes[_id4]=baseSpriteSize;
 }
 customBWSpriteDataTable=window.BattlePokemonSpritesBW;
 }
@@ -11400,50 +11673,50 @@ return legalGens+"c";
 }
 
 function applyCustomTeambuilderLearnsets(table){
-if(!table.learnsets)table.learnsets={};for(var _i40=0;_i40<
-CUSTOM_LEARNSET_REPLACEMENT_IDS.length;_i40++){var _id4=CUSTOM_LEARNSET_REPLACEMENT_IDS[_i40];
-table.learnsets[_id4]={};
-for(var moveid in CUSTOM_LEARNSET_REPLACEMENTS[_id4]){
-table.learnsets[_id4][moveid]=encodeCustomLearnsetSources(CUSTOM_LEARNSET_REPLACEMENTS[_id4][moveid]);
+if(!table.learnsets)table.learnsets={};for(var _i42=0;_i42<
+CUSTOM_LEARNSET_REPLACEMENT_IDS.length;_i42++){var _id5=CUSTOM_LEARNSET_REPLACEMENT_IDS[_i42];
+table.learnsets[_id5]={};
+for(var moveid in CUSTOM_LEARNSET_REPLACEMENTS[_id5]){
+table.learnsets[_id5][moveid]=encodeCustomLearnsetSources(CUSTOM_LEARNSET_REPLACEMENTS[_id5][moveid]);
 }
-}for(var _i42=0;_i42<
-CUSTOM_LEARNSET_ADDITION_IDS.length;_i42++){var _id5=CUSTOM_LEARNSET_ADDITION_IDS[_i42];
-if(!table.learnsets[_id5])table.learnsets[_id5]={};
-for(var _moveid in CUSTOM_LEARNSET_ADDITIONS[_id5]){
-table.learnsets[_id5][_moveid]=encodeCustomLearnsetSources(CUSTOM_LEARNSET_ADDITIONS[_id5][_moveid]);
+}for(var _i44=0;_i44<
+CUSTOM_LEARNSET_ADDITION_IDS.length;_i44++){var _id6=CUSTOM_LEARNSET_ADDITION_IDS[_i44];
+if(!table.learnsets[_id6])table.learnsets[_id6]={};
+for(var _moveid in CUSTOM_LEARNSET_ADDITIONS[_id6]){
+table.learnsets[_id6][_moveid]=encodeCustomLearnsetSources(CUSTOM_LEARNSET_ADDITIONS[_id6][_moveid]);
 }
 }
-var visualLearnsetBases={};for(var _i44=0,_Object$entries8=
-Object.entries(CUSTOM_SPECIES);_i44<_Object$entries8.length;_i44++){var _ref11=_Object$entries8[_i44];var _id6=_ref11[0];var customSpecies=_ref11[1];
+var visualLearnsetBases={};for(var _i46=0,_Object$entries8=
+Object.entries(CUSTOM_SPECIES);_i46<_Object$entries8.length;_i46++){var _ref13=_Object$entries8[_i46];var _id7=_ref13[0];var customSpecies=_ref13[1];
 if(!isCustomVisualForm(customSpecies.data)||customSpecies.data.standalone)continue;
-visualLearnsetBases[_id6]=toID(customSpecies.base);
-}for(var _i46=0,_Object$entries0=
-Object.entries(CUSTOM_SPECIES_UPDATES);_i46<_Object$entries0.length;_i46++){var _ref12=_Object$entries0[_i46];var baseId=_ref12[0];var update=_ref12[1];for(var _i48=0,_ref14=
-update.cosmeticFormes||[];_i48<_ref14.length;_i48++){var _forme5=_ref14[_i48];
+visualLearnsetBases[_id7]=toID(customSpecies.base);
+}for(var _i48=0,_Object$entries0=
+Object.entries(CUSTOM_SPECIES_UPDATES);_i48<_Object$entries0.length;_i48++){var _ref14=_Object$entries0[_i48];var baseId=_ref14[0];var update=_ref14[1];for(var _i50=0,_ref16=
+update.cosmeticFormes||[];_i50<_ref16.length;_i50++){var _forme5=_ref16[_i50];
 visualLearnsetBases[toID(_forme5)]=baseId;
 }
-}for(var _i50=0,_Object$entries10=
-Object.entries(visualLearnsetBases);_i50<_Object$entries10.length;_i50++){var _ref15=_Object$entries10[_i50];var target=_ref15[0];var base=_ref15[1];
+}for(var _i52=0,_Object$entries10=
+Object.entries(visualLearnsetBases);_i52<_Object$entries10.length;_i52++){var _ref17=_Object$entries10[_i52];var target=_ref17[0];var base=_ref17[1];
 if(target===base||!table.learnsets[base])continue;
 table.learnsets[target]=Object.assign({},
 table.learnsets[base],
 table.learnsets[target]||{});
 
-}for(var _i52=0,_ref17=
+}for(var _i54=0,_ref19=
 
 
 
-['rotomheat','rotomwash','rotomfrost','rotomfan','rotommow'];_i52<_ref17.length;_i52++){var _id7=_ref17[_i52];
+['rotomheat','rotomwash','rotomfrost','rotomfan','rotommow'];_i54<_ref19.length;_i54++){var _id8=_ref19[_i54];
 if(!table.learnsets.rotom)continue;
-table.learnsets[_id7]=Object.assign({},
+table.learnsets[_id8]=Object.assign({},
 table.learnsets.rotom,
-table.learnsets[_id7]||{});
+table.learnsets[_id8]||{});
 
-}for(var _i54=0;_i54<
-CUSTOM_BODY_PRESS_LEARNSET_IDS.length;_i54++){var _id8=CUSTOM_BODY_PRESS_LEARNSET_IDS[_i54];
-if(!table.learnsets[_id8])table.learnsets[_id8]={};
-if(!table.learnsets[_id8].bodypress){
-table.learnsets[_id8].bodypress=encodeCustomLearnsetSources(['9M']);
+}for(var _i56=0;_i56<
+CUSTOM_BODY_PRESS_LEARNSET_IDS.length;_i56++){var _id9=CUSTOM_BODY_PRESS_LEARNSET_IDS[_i56];
+if(!table.learnsets[_id9])table.learnsets[_id9]={};
+if(!table.learnsets[_id9].bodypress){
+table.learnsets[_id9].bodypress=encodeCustomLearnsetSources(['9M']);
 }
 }
 if(table.learnsets.eeveestarter){
@@ -11491,8 +11764,8 @@ table.learnsets.mukpulse=Object.assign({},
 table.learnsets.muk,
 table.learnsets.mukpulse||{});
 
-}for(var _i56=0,_ref20=
-[['goodrahisui','goodra'],['arcaninehisui','arcanine']];_i56<_ref20.length;_i56++){var _ref18=_ref20[_i56];var _target=_ref18[0];var _base=_ref18[1];
+}for(var _i58=0,_ref22=
+[['goodrahisui','goodra'],['arcaninehisui','arcanine']];_i58<_ref22.length;_i58++){var _ref20=_ref22[_i58];var _target=_ref20[0];var _base=_ref20[1];
 if(!table.learnsets[_base])continue;
 table.learnsets[_target]=Object.assign({},
 table.learnsets[_base],
@@ -11508,48 +11781,53 @@ table.learnsets.samurotthisui,
 table.learnsets.samurott);
 
 }
+
+var naturePowerSource=encodeCustomLearnsetSources(['9M']);for(var _i60=0,_Object$values6=
+Object.values(table.learnsets);_i60<_Object$values6.length;_i60++){var learnset=_Object$values6[_i60];
+if(!learnset.naturepower)learnset.naturepower=naturePowerSource;
+}
 if(table.learnsets.milotic){
 table.learnsets.miloticaevian=Object.assign({},
 table.learnsets.milotic,
-table.learnsets.miloticaevian||{});for(var _i58=0,_moonlightPoisonstin2=
+table.learnsets.miloticaevian||{});for(var _i62=0,_moonlightPoisonstin2=
 
-'moonlight poisonsting fairywind refresh poisontail venoshock disarmingvoice slam charm dragontail playrough attract painsplit poisongas poisonjab toxic gunkshot coil wrap workup taunt icebeam blizzard hyperbeam raindance sludgewave sludgebomb rocktomb torment thief echoedvoice quash embargo payback gigaimpact thunderwave psychup bulldoze infestation dreameater snarl dazzlinggleam rockclimb leechlife whirlpool faketears mudshot brine assurance powerswap tailslap drainingkiss mistyterrain surf strength waterfall dive uproar bind lastresort covet snatch irontail spite allyswitch signalbeam bounce waterpulse aquatail icywind magiccoat gastroacid skillswap knockoff bodyslam dragondance toxicspikes venomdrench mistyexplosion corrosivegas mudslap confuseray haze mudsport belch hypnosis boomburst dragonpulse dragoncheer twister scaleshot hypervoice recover return frustration helpinghand secretpower splash swift safeguard weatherball sleeptalk rest'.split(' ');_i58<_moonlightPoisonstin2.length;_i58++){var _table$learnsets$milo,_table$learnsets$milo2;var _moveid2=_moonlightPoisonstin2[_i58];
+'moonlight poisonsting fairywind refresh poisontail venoshock disarmingvoice slam charm dragontail playrough attract painsplit poisongas poisonjab toxic gunkshot coil wrap workup taunt icebeam blizzard hyperbeam raindance sludgewave sludgebomb rocktomb torment thief echoedvoice quash embargo payback gigaimpact thunderwave psychup bulldoze infestation dreameater snarl dazzlinggleam rockclimb leechlife whirlpool faketears mudshot brine assurance powerswap tailslap drainingkiss mistyterrain surf strength waterfall dive uproar bind lastresort covet snatch irontail spite allyswitch signalbeam bounce waterpulse aquatail icywind magiccoat gastroacid skillswap knockoff bodyslam dragondance toxicspikes venomdrench mistyexplosion corrosivegas mudslap confuseray haze mudsport belch hypnosis boomburst dragonpulse dragoncheer twister scaleshot hypervoice recover return frustration helpinghand secretpower splash swift safeguard weatherball sleeptalk rest'.split(' ');_i62<_moonlightPoisonstin2.length;_i62++){var _table$learnsets$milo,_table$learnsets$milo2;var _moveid2=_moonlightPoisonstin2[_i62];
 (_table$learnsets$milo2=(_table$learnsets$milo=table.learnsets.miloticaevian)[_moveid2])!=null?_table$learnsets$milo2:_table$learnsets$milo[_moveid2]=encodeCustomLearnsetSources(['9M']);
 }
 }
-if(!table.learnsets.laprasaevian)table.learnsets.laprasaevian={};for(var _i60=0,_hardenPsywaveSing2=
-'harden psywave sing rockpolish gravity powergem confuseray rockslide zenheadbutt bodyslam psychic sandstorm miracleeye perishsong stoneedge recover ancientpower curse dragondance heavyslam rocktomb teleport afteryou allyswitch amnesia arenitewall auroraveil avalanche blizzard block bodypress breakingswipe bulldoze bulkup calmmind charm cosmicpower dazzlinggleam dragonpulse dragontail dreameater drillrun earthpower earthquake echoedvoice encore expandingforce explosion flash flashcannon focusblast frostbreath futuresight gigaimpact gyroball guardswap healbell helpinghand hyperbeam hypervoice icebeam irondefense ironhead irontail lightscreen magiccoat magicroom megahorn meteorbeam naturepower outrage powerswap psychicfangs psychicterrain psychocut psyshock reflect roar rockblast rockclimb rocksmash safeguard screech selfdestruct shadowball shockwave smackdown smartstrike speedswap stealthrock stompingtantrum strength telekinesis thunderwave trickroom uproar wonderroom zapcannon weatherball hyperdrill iceshard freezedry thunderbolt wildcharge solarblade solarbeam psychicnoise pursuit thunder icywind sleeptalk rest dive waterfall whirlpool dragoncheer dragonbreath skullbash'.split(' ');_i60<_hardenPsywaveSing2.length;_i60++){var _table$learnsets$lapr,_table$learnsets$lapr2;var _moveid3=_hardenPsywaveSing2[_i60];
+if(!table.learnsets.laprasaevian)table.learnsets.laprasaevian={};for(var _i64=0,_hardenPsywaveSing2=
+'harden psywave sing rockpolish gravity powergem confuseray rockslide zenheadbutt bodyslam psychic sandstorm miracleeye perishsong stoneedge recover ancientpower curse dragondance heavyslam rocktomb teleport afteryou allyswitch amnesia arenitewall auroraveil avalanche blizzard block bodypress breakingswipe bulldoze bulkup calmmind charm cosmicpower dazzlinggleam dragonpulse dragontail dreameater drillrun earthpower earthquake echoedvoice encore expandingforce explosion flash flashcannon focusblast frostbreath futuresight gigaimpact gyroball guardswap healbell helpinghand hyperbeam hypervoice icebeam irondefense ironhead irontail lightscreen magiccoat magicroom megahorn meteorbeam naturepower outrage powerswap psychicfangs psychicterrain psychocut psyshock reflect roar rockblast rockclimb rocksmash safeguard screech selfdestruct shadowball shockwave smackdown smartstrike speedswap stealthrock stompingtantrum strength telekinesis thunderwave trickroom uproar wonderroom zapcannon weatherball hyperdrill iceshard freezedry thunderbolt wildcharge solarblade solarbeam psychicnoise pursuit thunder icywind sleeptalk rest dive waterfall whirlpool dragoncheer dragonbreath skullbash'.split(' ');_i64<_hardenPsywaveSing2.length;_i64++){var _table$learnsets$lapr,_table$learnsets$lapr2;var _moveid3=_hardenPsywaveSing2[_i64];
 (_table$learnsets$lapr2=(_table$learnsets$lapr=table.learnsets.laprasaevian)[_moveid3])!=null?_table$learnsets$lapr2:_table$learnsets$lapr[_moveid3]=encodeCustomLearnsetSources(['9M']);
 }
 var pikachuSharedForms=[
 'pikachucosplay','pikachurockstar','pikachubelle','pikachupopstar',
-'pikachuphd','pikachulibre','pikachupartner','pikachustarter'];for(var _i62=0;_i62<
+'pikachuphd','pikachulibre','pikachupartner','pikachustarter'];for(var _i66=0;_i66<
 
-pikachuSharedForms.length;_i62++){var _id9=pikachuSharedForms[_i62];
-if(!table.learnsets[_id9])table.learnsets[_id9]={};
+pikachuSharedForms.length;_i66++){var _id0=pikachuSharedForms[_i66];
+if(!table.learnsets[_id0])table.learnsets[_id0]={};
 for(var _moveid4 in table.learnsets.pikachu||{}){var _table$learnsets$_id,_table$learnsets$_id$;
-(_table$learnsets$_id$=(_table$learnsets$_id=table.learnsets[_id9])[_moveid4])!=null?_table$learnsets$_id$:_table$learnsets$_id[_moveid4]=table.learnsets.pikachu[_moveid4];
+(_table$learnsets$_id$=(_table$learnsets$_id=table.learnsets[_id0])[_moveid4])!=null?_table$learnsets$_id$:_table$learnsets$_id[_moveid4]=table.learnsets.pikachu[_moveid4];
 }
-}for(var _i64=0;_i64<
-CUSTOM_LEARNSET_REMOVAL_IDS.length;_i64++){var _id0=CUSTOM_LEARNSET_REMOVAL_IDS[_i64];for(var _i66=0,_CUSTOM_LEARNSET_REMO2=
-CUSTOM_LEARNSET_REMOVALS[_id0];_i66<_CUSTOM_LEARNSET_REMO2.length;_i66++){var _table$learnsets$_id2;var _moveid5=_CUSTOM_LEARNSET_REMO2[_i66];
-(_table$learnsets$_id2=table.learnsets[_id0])==null||delete _table$learnsets$_id2[_moveid5];
+}for(var _i68=0;_i68<
+CUSTOM_LEARNSET_REMOVAL_IDS.length;_i68++){var _id1=CUSTOM_LEARNSET_REMOVAL_IDS[_i68];for(var _i70=0,_CUSTOM_LEARNSET_REMO2=
+CUSTOM_LEARNSET_REMOVALS[_id1];_i70<_CUSTOM_LEARNSET_REMO2.length;_i70++){var _table$learnsets$_id2;var _moveid5=_CUSTOM_LEARNSET_REMO2[_i70];
+(_table$learnsets$_id2=table.learnsets[_id1])==null||delete _table$learnsets$_id2[_moveid5];
 }
-}for(var _i68=0,_Object$values6=
+}for(var _i72=0,_Object$values8=
 
-Object.values(table.learnsets);_i68<_Object$values6.length;_i68++){var learnset=_Object$values6[_i68];for(var _i70=0,_Object$keys2=
-Object.keys(learnset);_i70<_Object$keys2.length;_i70++){var _moveid6=_Object$keys2[_i70];
-if(_moveid6==='hiddenpower'||_moveid6.startsWith('hiddenpower'))delete learnset[_moveid6];
+Object.values(table.learnsets);_i72<_Object$values8.length;_i72++){var _learnset=_Object$values8[_i72];for(var _i74=0,_Object$keys2=
+Object.keys(_learnset);_i74<_Object$keys2.length;_i74++){var _moveid6=_Object$keys2[_i74];
+if(_moveid6==='hiddenpower'||_moveid6.startsWith('hiddenpower'))delete _learnset[_moveid6];
 }
 }
 }
 
 function applyCustomTeambuilderSpecies(table){
-if(!table.overrideSpeciesData)table.overrideSpeciesData={};for(var _i72=0;_i72<
-CUSTOM_SPECIES_IDS.length;_i72++){var _id1=CUSTOM_SPECIES_IDS[_i72];
-var customSpecies=CUSTOM_SPECIES[_id1];
-table.overrideSpeciesData[_id1]=Object.assign({},
-table.overrideSpeciesData[_id1]||{},
+if(!table.overrideSpeciesData)table.overrideSpeciesData={};for(var _i76=0;_i76<
+CUSTOM_SPECIES_IDS.length;_i76++){var _id10=CUSTOM_SPECIES_IDS[_i76];
+var customSpecies=CUSTOM_SPECIES[_id10];
+table.overrideSpeciesData[_id10]=Object.assign({},
+table.overrideSpeciesData[_id10]||{},
 customSpecies.data);
 
 if(isCustomVisualForm(customSpecies.data)&&!customSpecies.data.standalone){
@@ -11563,19 +11841,19 @@ cosmeticFormes:[].concat(cosmeticFormes)});
 }
 }
 applyCustomVisualVariantLinks(table.overrideSpeciesData);
-if(table.tiers){for(var _i74=0;_i74<
-CUSTOM_SPECIES_IDS.length;_i74++){var _id10=CUSTOM_SPECIES_IDS[_i74];
-var _customSpecies2=CUSTOM_SPECIES[_id10];
+if(table.tiers){for(var _i78=0;_i78<
+CUSTOM_SPECIES_IDS.length;_i78++){var _id11=CUSTOM_SPECIES_IDS[_i78];
+var _customSpecies2=CUSTOM_SPECIES[_id11];
 if(isCustomVisualForm(_customSpecies2.data)&&!_customSpecies2.data.standalone)continue;
 var baseIndex=table.tiers.indexOf(_customSpecies2.base);
-if(baseIndex>=0&&!table.tiers.includes(_id10))table.tiers.splice(baseIndex+1,0,_id10);
+if(baseIndex>=0&&!table.tiers.includes(_id11))table.tiers.splice(baseIndex+1,0,_id11);
 }
 }
-if(!table.overrideTier)table.overrideTier={};for(var _i76=0;_i76<
-CUSTOM_SPECIES_IDS.length;_i76++){var _id11=CUSTOM_SPECIES_IDS[_i76];
-var _customSpecies3=CUSTOM_SPECIES[_id11];
-if(!table.overrideTier[_id11]&&table.overrideTier[_customSpecies3.base]){
-table.overrideTier[_id11]=table.overrideTier[_customSpecies3.base];
+if(!table.overrideTier)table.overrideTier={};for(var _i80=0;_i80<
+CUSTOM_SPECIES_IDS.length;_i80++){var _id12=CUSTOM_SPECIES_IDS[_i80];
+var _customSpecies3=CUSTOM_SPECIES[_id12];
+if(!table.overrideTier[_id12]&&table.overrideTier[_customSpecies3.base]){
+table.overrideTier[_id12]=table.overrideTier[_customSpecies3.base];
 }
 }
 }
@@ -11584,9 +11862,9 @@ function applyCustomTeambuilderItems(table){
 var hasItem=function(rows,id){return rows.some(function(row){return(
 typeof row==='string'?row===id:(row==null?void 0:row[0])==='item'&&(row==null?void 0:row[1])===id);}
 );};
-if(Array.isArray(table.items)){for(var _i78=0;_i78<
-CUSTOM_ITEM_IDS.length;_i78++){var _id12=CUSTOM_ITEM_IDS[_i78];
-if(!hasItem(table.items,_id12))table.items.push(_id12);
+if(Array.isArray(table.items)){for(var _i82=0;_i82<
+CUSTOM_ITEM_IDS.length;_i82++){var _id13=CUSTOM_ITEM_IDS[_i82];
+if(!hasItem(table.items,_id13))table.items.push(_id13);
 }
 table.items=table.items.flatMap(function(row){
 if(typeof row==='string'){
@@ -11598,9 +11876,9 @@ if(REDUNDANT_ITEM_IDS.includes(row[1]))return[];
 return[row[1]==='starsweet'?[row[0],'amuletcoin']:row];
 });
 }
-if(Array.isArray(table.itemSet)){for(var _i80=0;_i80<
-CUSTOM_ITEM_IDS.length;_i80++){var _id13=CUSTOM_ITEM_IDS[_i80];
-if(!hasItem(table.itemSet,_id13))table.itemSet.push(['item',_id13]);
+if(Array.isArray(table.itemSet)){for(var _i84=0;_i84<
+CUSTOM_ITEM_IDS.length;_i84++){var _id14=CUSTOM_ITEM_IDS[_i84];
+if(!hasItem(table.itemSet,_id14))table.itemSet.push(['item',_id14]);
 }
 table.itemSet=table.itemSet.flatMap(function(row){
 if(row[0]!=='item')return[row];
@@ -11619,11 +11897,11 @@ if(
 (customItemDataTable||undefined)===window.BattleItems&&
 (customTeambuilderDataTable||undefined)===window.BattleTeambuilderTable)
 return;
-if(window.BattlePokedex&&customPokedexDataTable!==window.BattlePokedex){for(var _i82=0;_i82<
-CUSTOM_SPECIES_UPDATE_IDS.length;_i82++){var _id14=CUSTOM_SPECIES_UPDATE_IDS[_i82];
-if(!window.BattlePokedex[_id14])window.BattlePokedex[_id14]={};
-var update=CUSTOM_SPECIES_UPDATES[_id14];
-var species=window.BattlePokedex[_id14];
+if(window.BattlePokedex&&customPokedexDataTable!==window.BattlePokedex){for(var _i86=0;_i86<
+CUSTOM_SPECIES_UPDATE_IDS.length;_i86++){var _id15=CUSTOM_SPECIES_UPDATE_IDS[_i86];
+if(!window.BattlePokedex[_id15])window.BattlePokedex[_id15]={};
+var update=CUSTOM_SPECIES_UPDATES[_id15];
+var species=window.BattlePokedex[_id15];
 var baseStats=species.baseStats;
 var abilities=species.abilities;
 Object.assign(species,update);
@@ -11659,44 +11937,44 @@ window.BattleAliases.mightyenaalt='Mightyena-Deso';
 window.BattleAliases.toxicroakalt='Toxicroak-Deso';
 window.BattleAliases.cinccinoalt='Cinccino-Deso';
 }
-if(window.BattleAbilities&&customAbilityDataTable!==window.BattleAbilities){for(var _i84=0;_i84<
-CUSTOM_ABILITY_UPDATE_IDS.length;_i84++){var _id15=CUSTOM_ABILITY_UPDATE_IDS[_i84];
-if(!window.BattleAbilities[_id15])window.BattleAbilities[_id15]={};
-Object.assign(window.BattleAbilities[_id15],CUSTOM_ABILITY_UPDATES[_id15]);
+if(window.BattleAbilities&&customAbilityDataTable!==window.BattleAbilities){for(var _i88=0;_i88<
+CUSTOM_ABILITY_UPDATE_IDS.length;_i88++){var _id16=CUSTOM_ABILITY_UPDATE_IDS[_i88];
+if(!window.BattleAbilities[_id16])window.BattleAbilities[_id16]={};
+Object.assign(window.BattleAbilities[_id16],CUSTOM_ABILITY_UPDATES[_id16]);
 }
 customAbilityDataTable=window.BattleAbilities;
 }
-if(window.BattleMovedex&&customMoveDataTable!==window.BattleMovedex){for(var _i86=0;_i86<
-CUSTOM_MOVE_UPDATE_IDS.length;_i86++){var _id16=CUSTOM_MOVE_UPDATE_IDS[_i86];
-if(!window.BattleMovedex[_id16])window.BattleMovedex[_id16]={};
-var _update=CUSTOM_MOVE_UPDATES[_id16];
-var move=window.BattleMovedex[_id16];
+if(window.BattleMovedex&&customMoveDataTable!==window.BattleMovedex){for(var _i90=0;_i90<
+CUSTOM_MOVE_UPDATE_IDS.length;_i90++){var _id17=CUSTOM_MOVE_UPDATE_IDS[_i90];
+if(!window.BattleMovedex[_id17])window.BattleMovedex[_id17]={};
+var _update=CUSTOM_MOVE_UPDATES[_id17];
+var move=window.BattleMovedex[_id17];
 var flags=move.flags;
 Object.assign(move,_update);
 if(_update.flags){
-move.flags=Object.assign({},flags||{},_update.flags);for(var _i88=0,_Object$keys4=
-Object.keys(_update.flags);_i88<_Object$keys4.length;_i88++){var flag=_Object$keys4[_i88];
+move.flags=Object.assign({},flags||{},_update.flags);for(var _i92=0,_Object$keys4=
+Object.keys(_update.flags);_i92<_Object$keys4.length;_i92++){var flag=_Object$keys4[_i92];
 if(!_update.flags[flag])delete move.flags[flag];
 }
 }
-}for(var _i90=0;_i90<
-CUSTOM_ARROW_MOVE_IDS.length;_i90++){var _id17=CUSTOM_ARROW_MOVE_IDS[_i90];
-if(!window.BattleMovedex[_id17])continue;
-window.BattleMovedex[_id17].flags=Object.assign({},window.BattleMovedex[_id17].flags||{},{arrow:1});
-}for(var _i92=0;_i92<
-CUSTOM_HORN_MOVE_IDS.length;_i92++){var _id18=CUSTOM_HORN_MOVE_IDS[_i92];
+}for(var _i94=0;_i94<
+CUSTOM_ARROW_MOVE_IDS.length;_i94++){var _id18=CUSTOM_ARROW_MOVE_IDS[_i94];
 if(!window.BattleMovedex[_id18])continue;
-var _flags=Object.assign({},window.BattleMovedex[_id18].flags||{});
+window.BattleMovedex[_id18].flags=Object.assign({},window.BattleMovedex[_id18].flags||{},{arrow:1});
+}for(var _i96=0;_i96<
+CUSTOM_HORN_MOVE_IDS.length;_i96++){var _id19=CUSTOM_HORN_MOVE_IDS[_i96];
+if(!window.BattleMovedex[_id19])continue;
+var _flags=Object.assign({},window.BattleMovedex[_id19].flags||{});
 delete _flags.drill;
 _flags.horn=1;
-window.BattleMovedex[_id18].flags=_flags;
+window.BattleMovedex[_id19].flags=_flags;
 }
 customMoveDataTable=window.BattleMovedex;
 }
-if(window.BattleItems&&customItemDataTable!==window.BattleItems){for(var _i94=0;_i94<
-CUSTOM_ITEM_IDS.length;_i94++){var _id19=CUSTOM_ITEM_IDS[_i94];
-if(!window.BattleItems[_id19])window.BattleItems[_id19]={};
-Object.assign(window.BattleItems[_id19],CUSTOM_ITEM_UPDATES[_id19]);
+if(window.BattleItems&&customItemDataTable!==window.BattleItems){for(var _i98=0;_i98<
+CUSTOM_ITEM_IDS.length;_i98++){var _id20=CUSTOM_ITEM_IDS[_i98];
+if(!window.BattleItems[_id20])window.BattleItems[_id20]={};
+Object.assign(window.BattleItems[_id20],CUSTOM_ITEM_UPDATES[_id20]);
 }
 window.BattleItems.eeviumz=Object.assign({},
 window.BattleItems.eeviumz||{},{
@@ -11718,33 +11996,33 @@ shortDesc:"In Dragon's Den, the holder cannot be afflicted with a status conditi
 window.BattleItems.amplifieldrock=Object.assign({},
 window.BattleItems.amplifieldrock||{},{
 desc:'Extends temporary terrains and room effects created by the holder, usually by 3 turns.',
-shortDesc:'Extends temporary terrains and room effects created by the holder, usually by 3 turns.'});for(var _i96=0;_i96<
+shortDesc:'Extends temporary terrains and room effects created by the holder, usually by 3 turns.'});for(var _i100=0;_i100<
 
-REDUNDANT_ITEM_IDS.length;_i96++){var _id20=REDUNDANT_ITEM_IDS[_i96];delete window.BattleItems[_id20];}
+REDUNDANT_ITEM_IDS.length;_i100++){var _id21=REDUNDANT_ITEM_IDS[_i100];delete window.BattleItems[_id21];}
 customItemDataTable=window.BattleItems;
 }
 if(window.BattleTeambuilderTable&&customTeambuilderDataTable!==window.BattleTeambuilderTable){
 var table=window.BattleTeambuilderTable;
 applyCustomTeambuilderItems(table);
-if(!table.overrideSpeciesData)table.overrideSpeciesData={};for(var _i98=0;_i98<
-CUSTOM_SPECIES_UPDATE_IDS.length;_i98++){var _id21=CUSTOM_SPECIES_UPDATE_IDS[_i98];
-var _update2=CUSTOM_SPECIES_UPDATES[_id21];
-var existing=table.overrideSpeciesData[_id21]||{};
-table.overrideSpeciesData[_id21]=Object.assign({},existing,_update2);
+if(!table.overrideSpeciesData)table.overrideSpeciesData={};for(var _i102=0;_i102<
+CUSTOM_SPECIES_UPDATE_IDS.length;_i102++){var _id22=CUSTOM_SPECIES_UPDATE_IDS[_i102];
+var _update2=CUSTOM_SPECIES_UPDATES[_id22];
+var existing=table.overrideSpeciesData[_id22]||{};
+table.overrideSpeciesData[_id22]=Object.assign({},existing,_update2);
 if(_update2.baseStats){var _window$BattlePokedex4;
-table.overrideSpeciesData[_id21].baseStats=Object.assign({},
-((_window$BattlePokedex4=window.BattlePokedex)==null||(_window$BattlePokedex4=_window$BattlePokedex4[_id21])==null?void 0:_window$BattlePokedex4.baseStats)||{},
+table.overrideSpeciesData[_id22].baseStats=Object.assign({},
+((_window$BattlePokedex4=window.BattlePokedex)==null||(_window$BattlePokedex4=_window$BattlePokedex4[_id22])==null?void 0:_window$BattlePokedex4.baseStats)||{},
 existing.baseStats||{},
 _update2.baseStats);
 
 }
 }
 applyCustomTeambuilderSpecies(table);
-if(!table.overrideAbilityData)table.overrideAbilityData={};for(var _i100=0;_i100<
-CUSTOM_ABILITY_UPDATE_IDS.length;_i100++){var _id22=CUSTOM_ABILITY_UPDATE_IDS[_i100];
-table.overrideAbilityData[_id22]=Object.assign({},
-table.overrideAbilityData[_id22]||{},
-CUSTOM_ABILITY_UPDATES[_id22]);
+if(!table.overrideAbilityData)table.overrideAbilityData={};for(var _i104=0;_i104<
+CUSTOM_ABILITY_UPDATE_IDS.length;_i104++){var _id23=CUSTOM_ABILITY_UPDATE_IDS[_i104];
+table.overrideAbilityData[_id23]=Object.assign({},
+table.overrideAbilityData[_id23]||{},
+CUSTOM_ABILITY_UPDATES[_id23]);
 
 }
 applyCustomTeambuilderLearnsets(table);
@@ -11765,15 +12043,15 @@ customTeambuilderDataTable=window.BattleTeambuilderTable;
 function ensureCustomSpecies(id){
 if(!window.BattlePokedex)return;
 ensureCustomDataPatches();
-if(customSpeciesDataTable!==window.BattlePokedex){for(var _i102=0;_i102<
-CUSTOM_SPECIES_IDS.length;_i102++){var customId=CUSTOM_SPECIES_IDS[_i102];
+if(customSpeciesDataTable!==window.BattlePokedex){for(var _i106=0;_i106<
+CUSTOM_SPECIES_IDS.length;_i106++){var customId=CUSTOM_SPECIES_IDS[_i106];
 var customSpecies=CUSTOM_SPECIES[customId];
 var baseData=getCustomSpeciesBaseData(customSpecies);
 if(!baseData)continue;
 var existingData=window.BattlePokedex[customId];
 window.BattlePokedex[customId]=mergeCustomSpeciesData(baseData,existingData,customSpecies.data);
-}for(var _i104=0;_i104<
-CUSTOM_SPECIES_IDS.length;_i104++){var _customId=CUSTOM_SPECIES_IDS[_i104];
+}for(var _i108=0;_i108<
+CUSTOM_SPECIES_IDS.length;_i108++){var _customId=CUSTOM_SPECIES_IDS[_i108];
 var _customSpecies4=CUSTOM_SPECIES[_customId];
 if(!isCustomVisualForm(_customSpecies4.data)||_customSpecies4.data.standalone)continue;
 var _baseData=getCustomSpeciesBaseData(_customSpecies4);
@@ -11799,8 +12077,8 @@ _baseData2.cosmeticFormes=[].concat(_cosmeticFormes);
 ensureCustomBWSpriteData();
 var garchomp=window.BattlePokedex.garchomp;
 if(garchomp){
-var otherFormes=garchomp.otherFormes||[];for(var _i106=0,_ref22=
-['Garchomp-Mega-Z','Garchomp-Battle-Bond'];_i106<_ref22.length;_i106++){var _forme6=_ref22[_i106];
+var otherFormes=garchomp.otherFormes||[];for(var _i110=0,_ref24=
+['Garchomp-Mega-Z','Garchomp-Battle-Bond'];_i110<_ref24.length;_i110++){var _forme6=_ref24[_i110];
 if(!otherFormes.includes(_forme6))otherFormes.push(_forme6);
 }
 garchomp.otherFormes=otherFormes;
@@ -12063,7 +12341,7 @@ var data=window.BattleMovedex[id];
 if(data&&typeof data.exists==='boolean')return data;
 
 if(!data&&id.substr(0,11)==='hiddenpower'&&id.length>11){
-var _ref23=/([a-z]*)([0-9]*)/.exec(id),hpWithType=_ref23[1],hpPower=_ref23[2];
+var _ref25=/([a-z]*)([0-9]*)/.exec(id),hpWithType=_ref25[1],hpPower=_ref25[2];
 data=Object.assign({},
 window.BattleMovedex[hpWithType]||{},{
 basePower:Number(hpPower)||60});
@@ -12159,8 +12437,8 @@ if(formid in window.BattlePokedexAltForms&&!(formid in CUSTOM_SPECIES)&&!hasCust
 if(window.BattleAliases&&id in BattleAliases&&!(id in CUSTOM_SPECIES)){
 name=BattleAliases[id];
 id=toID(name);
-}else if(window.BattlePokedex&&!(id in BattlePokedex)&&!(id in CUSTOM_SPECIES)&&window.BattleBaseSpeciesChart){for(var _i108=0,_BattleBaseSpeciesCha2=
-BattleBaseSpeciesChart;_i108<_BattleBaseSpeciesCha2.length;_i108++){var baseSpeciesId=_BattleBaseSpeciesCha2[_i108];
+}else if(window.BattlePokedex&&!(id in BattlePokedex)&&!(id in CUSTOM_SPECIES)&&window.BattleBaseSpeciesChart){for(var _i112=0,_BattleBaseSpeciesCha2=
+BattleBaseSpeciesChart;_i112<_BattleBaseSpeciesCha2.length;_i112++){var baseSpeciesId=_BattleBaseSpeciesCha2[_i112];
 if(formid.startsWith(baseSpeciesId)){
 id=baseSpeciesId;
 break;
@@ -12186,8 +12464,8 @@ species=new Species(id,name,data);
 window.BattlePokedex[id]=species;
 }
 
-if(species.cosmeticFormes&&!(formid in CUSTOM_SPECIES)){for(var _i110=0,_species$cosmeticForm2=
-species.cosmeticFormes;_i110<_species$cosmeticForm2.length;_i110++){var _forme7=_species$cosmeticForm2[_i110];
+if(species.cosmeticFormes&&!(formid in CUSTOM_SPECIES)){for(var _i114=0,_species$cosmeticForm2=
+species.cosmeticFormes;_i114<_species$cosmeticForm2.length;_i114++){var _forme7=_species$cosmeticForm2[_i114];
 if(toID(_forme7)===formid){
 species=new Species(formid,name,Object.assign({},
 species,{
@@ -12211,11 +12489,11 @@ types={
 allCache:null,
 get:function(type){
 if(!type||typeof type==='string'){
-var _id23=toID(type);
-var name=_id23.substr(0,1).toUpperCase()+_id23.substr(1);
-type=window.BattleTypeChart&&window.BattleTypeChart[_id23]||{};
+var _id24=toID(type);
+var name=_id24.substr(0,1).toUpperCase()+_id24.substr(1);
+type=window.BattleTypeChart&&window.BattleTypeChart[_id24]||{};
 if(type.damageTaken)type.exists=true;
-if(!type.id)type.id=_id23;
+if(!type.id)type.id=_id24;
 if(!type.name)type.name=name;
 if(!type.effectType){
 type.effectType='Type';
@@ -12226,8 +12504,8 @@ return type;
 all:function(){
 if(_this.types.allCache)return _this.types.allCache;
 var types=[];
-for(var _id24 in window.BattleTypeChart||{}){
-types.push(Dex.types.get(_id24));
+for(var _id25 in window.BattleTypeChart||{}){
+types.push(Dex.types.get(_id25));
 }
 if(types.length)_this.types.allCache=types;
 return types;
@@ -12300,9 +12578,9 @@ var escapedName=componentName.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
 if(new RegExp("(^|[^a-z0-9])"+escapedName+"($|[^a-z0-9])",'i').test(description)){
 directComponents.add(componentId);
 }
-}for(var _i112=0,_Array$from2=
-Array.from(directComponents);_i112<_Array$from2.length;_i112++){var _componentId=_Array$from2[_i112];for(var _i114=0,_Array$from4=
-Array.from(this.getAbilityEffects(_componentId,nextVisiting));_i114<_Array$from4.length;_i114++){var nestedEffect=_Array$from4[_i114];
+}for(var _i116=0,_Array$from2=
+Array.from(directComponents);_i116<_Array$from2.length;_i116++){var _componentId=_Array$from2[_i116];for(var _i118=0,_Array$from4=
+Array.from(this.getAbilityEffects(_componentId,nextVisiting));_i118<_Array$from4.length;_i118++){var nestedEffect=_Array$from4[_i118];
 effects.add(nestedEffect);
 }
 }
@@ -12760,7 +13038,7 @@ num=BattlePokemonIconIndexesLeft[id];
 return num;
 };_proto2.
 
-getPokemonIcon=function getPokemonIcon(pokemon,facingLeft){var _pokemon,_pokemon2,_pokemon3,_pokemon4,_pokemon6,_pokemon7;
+getPokemonIcon=function getPokemonIcon(pokemon,facingLeft){var _pokemon,_pokemon2,_pokemon3,_pokemon4,_pokemon7,_pokemon8;
 if(pokemon==='pokeball'){
 return"background:transparent url("+Dex.resourcePrefix+"sprites/pokemonicons-pokeball-sheet.png) no-repeat scroll -0px 4px";
 }else if(pokemon==='pokeball-statused'){
@@ -12785,21 +13063,31 @@ if((_pokemon4=pokemon)!=null&&(_pokemon4=_pokemon4.volatiles)!=null&&_pokemon4.f
 
 id=toID(pokemon.volatiles.formechange[1]);
 }
-var customIcon=CUSTOM_ICON_SPRITES[id];
-if(customIcon){var _pokemon5;
-var shinyDir=FORCE_SHINY_CUSTOM_SPRITE_IDS.has(id)?'-shiny':'';
+var customPartyIcon=CUSTOM_PARTY_ICON_SPRITES[id];
+if(customPartyIcon){var _pokemon5;
+var iconPokemon=typeof pokemon==='object'&&pokemon!==null?pokemon:null;
+var isShiny=!!(iconPokemon!=null&&iconPokemon.shiny);
+var isFemale=(iconPokemon==null?void 0:iconPokemon.gender)==='F';
+var iconFile=isShiny?isFemale?customPartyIcon.shinyFemale:customPartyIcon.shiny:
+isFemale?customPartyIcon.normalFemale:customPartyIcon.normal;
 var _fainted=(_pokemon5=pokemon)!=null&&_pokemon5.fainted?";opacity:.3;filter:grayscale(100%) brightness(.5)":"";
-return"background:transparent url("+Dex.resourcePrefix+"sprites/gen5"+shinyDir+"/"+customIcon+".png) no-repeat center / contain"+_fainted;
+return"background:transparent url("+Dex.resourcePrefix+"sprites/pokemonicons/"+iconFile+") no-repeat center / contain"+_fainted;
 }
-var num=this.getPokemonIconNum(id,((_pokemon6=pokemon)==null?void 0:_pokemon6.gender)==='F',facingLeft);
+var customIcon=CUSTOM_ICON_SPRITES[id];
+if(customIcon){var _pokemon6;
+var shinyDir=FORCE_SHINY_CUSTOM_SPRITE_IDS.has(id)?'-shiny':'';
+var _fainted2=(_pokemon6=pokemon)!=null&&_pokemon6.fainted?";opacity:.3;filter:grayscale(100%) brightness(.5)":"";
+return"background:transparent url("+Dex.resourcePrefix+"sprites/gen5"+shinyDir+"/"+customIcon+".png) no-repeat center / contain"+_fainted2;
+}
+var num=this.getPokemonIconNum(id,((_pokemon7=pokemon)==null?void 0:_pokemon7.gender)==='F',facingLeft);
 
 var top=Math.floor(num/12)*30;
 var left=num%12*40;
-var fainted=(_pokemon7=pokemon)!=null&&_pokemon7.fainted?";opacity:.3;filter:grayscale(100%) brightness(.5)":"";
+var fainted=(_pokemon8=pokemon)!=null&&_pokemon8.fainted?";opacity:.3;filter:grayscale(100%) brightness(.5)":"";
 return"background:transparent url("+Dex.resourcePrefix+"sprites/pokemonicons-sheet.png?v16) no-repeat scroll -"+left+"px -"+top+"px"+fainted;
 };_proto2.
 
-getTeambuilderSpriteData=function getTeambuilderSpriteData(pokemon){var _CUSTOM_SPECIES$id3,_window$Config3;var gen=arguments.length>1&&arguments[1]!==undefined?arguments[1]:0;
+getTeambuilderSpriteData=function getTeambuilderSpriteData(pokemon){var _CUSTOM_SPECIES$id3,_window$Config3,_customNativeBWSprite;var gen=arguments.length>1&&arguments[1]!==undefined?arguments[1]:0;
 ensureCustomBWSpriteData();
 var id=toID(pokemon.species);
 var forceShiny=FORCE_SHINY_CUSTOM_SPRITE_IDS.has(id);
@@ -12823,6 +13111,13 @@ if(customSpeciesData!=null&&customSpeciesData.spriteid)spriteid=customSpeciesDat
 if(customSpeciesUpdate!=null&&customSpeciesUpdate.spriteid)spriteid=customSpeciesUpdate.spriteid;
 if(CUSTOM_ICON_SPRITES[id])spriteid=CUSTOM_ICON_SPRITES[id];
 if(species.exists===false)return{spriteDir:'sprites/gen5',spriteid:'0',x:10,y:5};
+var femaleSpriteId=id+"f";
+if(pokemon.gender==='F'&&(
+CUSTOM_STATIC_BATTLE_SPRITES[femaleSpriteId]||CUSTOM_BW_SPRITES[femaleSpriteId]))
+{
+id=femaleSpriteId;
+spriteid=CUSTOM_ICON_SPRITES[id]||spriteid+"-f";
+}
 var hasCustomGen5Sprite=!!(
 CUSTOM_STATIC_BATTLE_SPRITES[id]||CUSTOM_ICON_SPRITES[id]||CUSTOM_BW_SPRITES[id]);
 
@@ -12835,13 +13130,20 @@ x:10,
 y:5
 };
 }
+var customStaticData=CUSTOM_STATIC_BATTLE_SPRITES[id];
+var customBWData=CUSTOM_BW_SPRITES[id];
+var hasCustomShinySprite=customStaticData?
+!!copySpriteSize(customStaticData.shinyFront)||!MISSING_SHINY_SPRITE_IDS.has(toID(spriteid)):
+customBWData?
+!!copySpriteSize(customBWData.shinyFront)||!!copySpriteSize((_customNativeBWSprite=customNativeBWSpriteSizes[id])==null?void 0:_customNativeBWSprite.shinyFront)||!MISSING_SHINY_SPRITE_IDS.has(toID(spriteid)):
+hasCustomGen5Sprite?!MISSING_SHINY_SPRITE_IDS.has(toID(spriteid)):species.isNonstandard!=='Custom';
 var spriteData={
 spriteid:spriteid,
 spriteDir:'sprites/dex',
 x:-2,
 y:-3
 };
-if(isShiny&&!MISSING_SHINY_SPRITE_IDS.has(toID(spriteid)))spriteData.shiny=true;
+if(isShiny&&hasCustomShinySprite)spriteData.shiny=true;
 if(id.startsWith('silvally'))spriteData.shiny=true;
 if(id==='greninjabond'&&!CUSTOM_BW_SPRITES[id]){
 spriteData.spriteid='greninja';
@@ -12851,12 +13153,12 @@ return spriteData;
 }
 if(CUSTOM_STATIC_BATTLE_SPRITES[id]||CUSTOM_ICON_SPRITES[id]||CUSTOM_BW_SPRITES[id]){
 spriteData.spriteDir='sprites/gen5';
-var customStaticData=CUSTOM_STATIC_BATTLE_SPRITES[id];
-var customBWData=CUSTOM_BW_SPRITES[id];
+var _customStaticData=CUSTOM_STATIC_BATTLE_SPRITES[id];
+var _customBWData=CUSTOM_BW_SPRITES[id];
 var customTeamBuilderSize=CUSTOM_TEAMBUILDER_SPRITE_SIZE_OVERRIDES[id];
-var spriteDimensions=customStaticData?
-getCustomSpriteSize(id,customStaticData,true,isShiny):
-customBWData?getCustomSpriteSize(id,customBWData,true,isShiny):
+var spriteDimensions=_customStaticData?
+getCustomSpriteSize(id,_customStaticData,true,isShiny):
+_customBWData?getCustomSpriteSize(id,_customBWData,true,isShiny):
 customTeamBuilderSize;
 if(spriteDimensions){
 applyCustomTeambuilderSpriteSizing(spriteData,id,spriteDimensions);
@@ -12897,6 +13199,10 @@ spriteData.y=0;
 if(nativeTeambuilderOverride)Object.assign(spriteData,nativeTeambuilderOverride);
 return spriteData;
 }
+if(gen===5&&isShiny&&spriteData.shiny&&MISSING_SHINY_SPRITE_IDS.has(toID(spriteid))&&!hasCustomGen5Sprite){
+
+return Object.assign({},spriteData,{spriteDir:'sprites/dex'});
+}
 spriteData.spriteDir='sprites/gen5';
 if(gen<=1&&species.gen<=1)spriteData.spriteDir='sprites/gen1';else
 if(gen<=2&&species.gen<=2)spriteData.spriteDir='sprites/gen2';else
@@ -12905,11 +13211,11 @@ if(gen<=4&&species.gen<=4)spriteData.spriteDir='sprites/gen4';
 spriteData.x=10;
 spriteData.y=5;
 if(spriteData.spriteDir==='sprites/gen5'){
-var _customStaticData=CUSTOM_STATIC_BATTLE_SPRITES[id];
-var _customBWData=CUSTOM_BW_SPRITES[id];
-var _spriteDimensions=_customStaticData?
-getCustomSpriteSize(id,_customStaticData,true,isShiny):
-_customBWData?getCustomSpriteSize(id,_customBWData,true,isShiny):undefined;
+var _customStaticData2=CUSTOM_STATIC_BATTLE_SPRITES[id];
+var _customBWData2=CUSTOM_BW_SPRITES[id];
+var _spriteDimensions=_customStaticData2?
+getCustomSpriteSize(id,_customStaticData2,true,isShiny):
+_customBWData2?getCustomSpriteSize(id,_customBWData2,true,isShiny):undefined;
 if(_spriteDimensions){
 applyCustomTeambuilderSpriteSizing(spriteData,id,_spriteDimensions);
 }
@@ -12971,8 +13277,8 @@ return"<img src=\""+Dex.resourcePrefix+"sprites/categories/"+sanitizedCategory+"
 getPokeballs=function getPokeballs(){
 if(this.pokeballs)return this.pokeballs;
 this.pokeballs=[];
-if(!window.BattleItems)window.BattleItems={};for(var _i116=0,_Object$values8=
-Object.values(window.BattleItems);_i116<_Object$values8.length;_i116++){var data=_Object$values8[_i116];
+if(!window.BattleItems)window.BattleItems={};for(var _i120=0,_Object$values0=
+Object.values(window.BattleItems);_i120<_Object$values0.length;_i120++){var data=_Object$values0[_i120];
 if(!data.isPokeball)continue;
 this.pokeballs.push(data.name);
 }
@@ -13159,8 +13465,8 @@ return data;
 getPokeballs=function getPokeballs(){
 if(this.pokeballs)return this.pokeballs;
 this.pokeballs=[];
-if(!window.BattleItems)window.BattleItems={};for(var _i118=0,_Object$values0=
-Object.values(window.BattleItems);_i118<_Object$values0.length;_i118++){var data=_Object$values0[_i118];
+if(!window.BattleItems)window.BattleItems={};for(var _i122=0,_Object$values10=
+Object.values(window.BattleItems);_i122<_Object$values10.length;_i122++){var data=_Object$values10[_i122];
 if(data.gen&&data.gen>this.gen)continue;
 if(!data.isPokeball)continue;
 this.pokeballs.push(data.name);
@@ -13296,8 +13602,8 @@ if(typeof team==='string'){
 if(team.indexOf('\n')>=0)return team;
 team=this.unpack(team);
 }
-var text='';for(var _i120=0,_team2=
-team;_i120<_team2.length;_i120++){var curSet=_team2[_i120];
+var text='';for(var _i124=0,_team2=
+team;_i124<_team2.length;_i124++){var curSet=_team2[_i124];
 if(isSilvallySpecies(curSet.species))curSet.shiny=true;
 if(curSet.name&&curSet.name!==curSet.species){
 text+=''+curSet.name+' ('+curSet.species+')';
@@ -13362,8 +13668,8 @@ text+=''+curSet.nature+' Nature'+"  \n";
 first=true;
 if(curSet.ivs){
 var defaultIvs=true;
-var hpType='';for(var _i122=0,_curSet$moves2=
-curSet.moves;_i122<_curSet$moves2.length;_i122++){var move=_curSet$moves2[_i122];
+var hpType='';for(var _i126=0,_curSet$moves2=
+curSet.moves;_i126<_curSet$moves2.length;_i126++){var move=_curSet$moves2[_i126];
 if(move.substr(0,13)==='Hidden Power '&&move.substr(0,14)!=='Hidden Power ['){
 hpType=move.substr(13);
 if(!Dex.types.isName(hpType)){
@@ -13406,8 +13712,8 @@ if(!first){
 text+="  \n";
 }
 }
-if(curSet.moves){for(var _i124=0,_curSet$moves4=
-curSet.moves;_i124<_curSet$moves4.length;_i124++){var _move=_curSet$moves4[_i124];
+if(curSet.moves){for(var _i128=0,_curSet$moves4=
+curSet.moves;_i128<_curSet$moves4.length;_i128++){var _move=_curSet$moves4[_i128];
 if(_move.substr(0,13)==='Hidden Power '){
 _move=_move.substr(0,13)+'['+_move.substr(13)+']';
 }
