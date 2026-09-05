@@ -180,6 +180,9 @@ describe('Team Builder sprites', () => {
 		const feraligatr = Dex.getTeambuilderSprite({species: 'Feraligatr'}, 9);
 		assert(feraligatr.includes('background-position:7px 6px'), feraligatr);
 		assert(feraligatr.includes('background-size:82px auto'), feraligatr);
+		const laprasGmax = Dex.getTeambuilderSprite({species: 'Lapras-Gmax'}, 9);
+		assert(laprasGmax.includes('background-position:9px 8px'), laprasGmax);
+		assert(laprasGmax.includes('background-size:79px auto'), laprasGmax);
 	});
 
 	it('resolves all Reborn trainer avatars to local client assets', () => {
