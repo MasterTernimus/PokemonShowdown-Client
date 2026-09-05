@@ -10428,6 +10428,7 @@ const NATIVE_BATTLE_SPRITE_SIZE_OVERRIDES: {[id: string]: {front?: {w: number, h
 };
 const NATIVE_TEAMBUILDER_SPRITE_OVERRIDES: {[id: string]: {x: number, y: number, backgroundSize: string}} = {
 	cacturne: {x: 9, y: 7, backgroundSize: '74px auto'},
+	feraligatr: {x: 7, y: 6, backgroundSize: '82px auto'},
 	garchomp: {x: 6, y: 10, backgroundSize: '78px auto'},
 	garchompf: {x: 6, y: 10, backgroundSize: '78px auto'},
 	hydreigon: {x: 7, y: 6, backgroundSize: '82px auto'},
