@@ -718,6 +718,14 @@
 
 			buf += '<div class="avatarlist">';
 			var customAvatars = [
+				['adrienn', 'Adrienn'],
+				['amaria', 'Amaria'],
+				['charlotte', 'Charlotte'],
+				['florinia', 'Florinia'],
+				['julia', 'Julia'],
+				['radomus', 'Radomus'],
+				['saphira', 'Saphira'],
+				['titania', 'Titania'],
 				['alainalt', 'Alain Alt'], ['amelia', 'Amelia'], ['asriel', 'Asriel'], ['aurora', 'Aurora'],
 				['geara', 'Geara'], ['lin', 'Lin'], ['sirius', 'Sirius'],
 				['shiv', 'Shiv'], ['shivalt', 'Shiv Alt'], ['taka', 'Taka'],

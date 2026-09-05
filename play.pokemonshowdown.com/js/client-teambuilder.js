@@ -3593,6 +3593,7 @@
 				var spriteStyle = Dex.getTeambuilderSprite({
 					species: formSpecies.name,
 					shiny: this.curSet.shiny,
+					gender: this.curSet.gender,
 				}, gen);
 				buf += '<button name="setForm" value="' + BattleLog.escapeHTML(formSpecies.name) + '" style="';
 				buf += spriteStyle + '; ' + spriteDim + '" title="' + BattleLog.escapeHTML(formSpecies.name) + '" class="option';
