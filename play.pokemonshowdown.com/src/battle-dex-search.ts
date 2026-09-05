@@ -515,6 +515,11 @@ class DexSearch {
 			let type = entry[1];
 
 			if (!id) break;
+			if (type === 'move' && (
+				id.startsWith('hiddenpower') ||
+				toID(BattleAliases[id] || '').startsWith('hiddenpower') ||
+				query === 'hp' || query.startsWith('hiddenpower')
+			)) continue;
 
 			if (passType === 'fuzzy') {
 				// fuzzy match pass; stop after 2 results
@@ -1891,6 +1896,7 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 			let learnset = lsetTable.learnsets[learnsetid];
 			if (learnset) {
 				for (let moveid in learnset) {
+					if (moveid.startsWith('hiddenpower')) continue;
 					let learnsetEntry = learnset[moveid];
 					const move = dex.moves.get(moveid);
 					const minGenCode: {[gen: number]: string} = {6: 'p', 7: 'q', 8: 'g', 9: 'a'};
@@ -1939,6 +1945,7 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 		if (sketch || isHackmons) {
 			if (isHackmons) moves = [];
 			for (let id in BattleMovedex) {
+				if (id.startsWith('hiddenpower')) continue;
 				if (!format.startsWith('cap') && (id === 'paleowave' || id === 'shadowstrike')) continue;
 				const move = dex.moves.get(id);
 				if (move.gen > dex.gen) continue;
@@ -1960,6 +1967,7 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 		if (this.formatType === 'metronome') moves = ['metronome'];
 		if (isSTABmons) {
 			for (let id in this.getTable()) {
+				if (id.startsWith('hiddenpower')) continue;
 				const move = dex.moves.get(id);
 				if (moves.includes(move.id)) continue;
 				if (move.gen > dex.gen) continue;
