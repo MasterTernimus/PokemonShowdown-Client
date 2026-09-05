@@ -11672,6 +11672,26 @@ function encodeCustomLearnsetSources(sources: string[]) {
 	return `${legalGens}c`;
 }
 
+function getNatDexTeambuilderIds() {
+	const natDexTable = window.BattleTeambuilderTable?.gen9natdex;
+	const rows = natDexTable?.tierSet || natDexTable?.tiers;
+	const ids = new Set<string>();
+	if (!Array.isArray(rows)) return ids;
+	for (const row of rows) {
+		if (Array.isArray(row) && row[0] !== 'pokemon') continue;
+		const id = Array.isArray(row) ? row[1] : row;
+		if (typeof id === 'string') ids.add(toID(id));
+	}
+	return ids;
+}
+
+function isNatDexTeambuilderId(id: string, table: AnyObject, natDexIds: Set<string>) {
+	if (natDexIds.has(id)) return true;
+	const species = table.overrideSpeciesData?.[id] || window.BattlePokedex?.[id] || CUSTOM_SPECIES[id]?.data;
+	const baseId = toID(species?.baseSpecies || CUSTOM_SPECIES[id]?.base || '');
+	return baseId !== id && natDexIds.has(baseId);
+}
+
 function applyCustomTeambuilderLearnsets(table: AnyObject) {
 	if (!table.learnsets) table.learnsets = {};
 	for (const id of CUSTOM_LEARNSET_REPLACEMENT_IDS) {
@@ -11781,10 +11801,12 @@ function applyCustomTeambuilderLearnsets(table: AnyObject) {
 			...table.learnsets.samurott,
 		};
 	}
-	// Nature Power is available to every Pokemon in this custom NatDex.
+	const natDexIds = getNatDexTeambuilderIds();
 	const naturePowerSource = encodeCustomLearnsetSources(['9M']);
-	for (const learnset of Object.values(table.learnsets) as AnyObject[]) {
-		if (!learnset.naturepower) learnset.naturepower = naturePowerSource;
+	for (const [id, learnset] of Object.entries(table.learnsets) as [string, AnyObject][]) {
+		if (isNatDexTeambuilderId(id, table, natDexIds) && !learnset.naturepower) {
+			learnset.naturepower = naturePowerSource;
+		}
 	}
 	if (table.learnsets.milotic) {
 		table.learnsets.miloticaevian = {
