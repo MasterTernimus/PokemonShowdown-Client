@@ -5945,7 +5945,7 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 	cetitan: {
 		types: ['Ice', 'Ground'],
 		baseStats: {hp: 170, atk: 128, def: 72, spa: 30, spd: 65, spe: 75},
-		abilities: {0: 'Slush Rush', 1: 'Thick Fat', H: 'Glacial Mass'},
+		abilities: {0: 'Slush Rush', 1: 'Water Absorb', H: 'Glacial Mass'},
 	},
 	mightyenadeso: {
 		baseStats: {hp: 90, atk: 125, def: 85, spa: 60, spd: 80, spe: 125},
@@ -6767,7 +6767,7 @@ Object.assign(CUSTOM_SPECIES_UPDATES, {
 	flamigo: {baseStats: {hp: 82, atk: 125, def: 80, spa: 75, spd: 70, spe: 105}},
 	flapple: {
 		baseStats: {hp: 80, atk: 115, def: 85, spa: 95, spd: 60, spe: 90},
-		abilities: {0: 'Levitate', 1: 'Wind Rider', H: 'Corrosion'},
+		abilities: {0: 'Levitate', 1: 'Hustle', H: 'Corrosion'},
 		otherFormes: ['Flapple-Gmax'],
 		formeOrder: ['Flapple', 'Flapple-Gmax'],
 	},

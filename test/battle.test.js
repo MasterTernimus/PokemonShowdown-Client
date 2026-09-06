@@ -355,6 +355,11 @@ describe('Team Builder sprites', () => {
 		assert.equal(seviper.bst, 550);
 	});
 
+	it('syncs the updated Flapple and Cetitan abilities', () => {
+		assert.deepEqual(Dex.species.get('Flapple').abilities, {0: 'Levitate', 1: 'Hustle', H: 'Corrosion'});
+		assert.deepEqual(Dex.species.get('Cetitan').abilities, {0: 'Slush Rush', 1: 'Water Absorb', H: 'Glacial Mass'});
+	});
+
 	it('keeps abilities on custom required-item Mega profiles', () => {
 		const expected = {
 			'Haxorus-Mega': 'Raging Overlord',
