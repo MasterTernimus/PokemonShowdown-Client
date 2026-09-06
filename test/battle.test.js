@@ -5,6 +5,7 @@ const path = require('path');
 window = global;
 
 global.BattlePokedex = require('../play.pokemonshowdown.com/data/pokedex.js').BattlePokedex;
+global.BattleAbilities = require('../play.pokemonshowdown.com/data/abilities.js').BattleAbilities;
 global.BattlePokemonSprites = {};
 global.BattlePokemonSpritesBW = {};
 const BattleTeambuilderTable = require('../play.pokemonshowdown.com/data/teambuilder-tables.js').BattleTeambuilderTable;
@@ -174,12 +175,12 @@ describe('Team Builder sprites', () => {
 		assert(!sprite.includes('/sprites/dex-shiny/togekiss.png'), sprite);
 	});
 
-	it('constrains oversized native Team Builder sprites', () => {
+	it('constrains oversized Team Builder sprites', () => {
 		const sprite = Dex.getTeambuilderSprite({species: 'Hydreigon'}, 9);
 		assert(sprite.includes('background-size:82px auto'), sprite);
 		const feraligatr = Dex.getTeambuilderSprite({species: 'Feraligatr'}, 9);
-		assert(feraligatr.includes('background-position:7px 6px'), feraligatr);
-		assert(feraligatr.includes('background-size:82px auto'), feraligatr);
+		assert(feraligatr.includes('background-position:9px 8px'), feraligatr);
+		assert(feraligatr.includes('background-size:78px auto'), feraligatr);
 		const laprasGmax = Dex.getTeambuilderSprite({species: 'Lapras-Gmax'}, 9);
 		assert(laprasGmax.includes('background-position:9px 8px'), laprasGmax);
 		assert(laprasGmax.includes('background-size:79px auto'), laprasGmax);
@@ -358,6 +359,26 @@ describe('Team Builder sprites', () => {
 	it('syncs the updated Flapple and Cetitan abilities', () => {
 		assert.deepEqual(Dex.species.get('Flapple').abilities, {0: 'Levitate', 1: 'Hustle', H: 'Corrosion'});
 		assert.deepEqual(Dex.species.get('Cetitan').abilities, {0: 'Slush Rush', 1: 'Water Absorb', H: 'Glacial Mass'});
+	});
+
+	it('keeps recently supplied sprites inside the Team Builder frame', () => {
+		for (const species of [
+			'Blastoise', 'Blastoise-Mega', 'Feraligatr', 'Froslass', 'Gothitelle',
+			'Hydreigon', 'Jolteon', 'Reuniclus', 'Sylveon',
+		]) {
+			for (const shiny of [false, true]) {
+				const sprite = Dex.getTeambuilderSprite({species, shiny}, 5);
+				assert(sprite.includes('/sprites/gen5'), `${species} should use the supplied Gen 5 sprite`);
+				const match = sprite.match(/background-size:(\d+)px auto/);
+				assert(match, `${species} should have bounded Team Builder sizing`);
+				assert(Number(match[1]) <= 86, `${species} should fit the Team Builder frame`);
+			}
+		}
+	});
+
+	it('shows the added composite ability effects', () => {
+		assert.match(Dex.abilities.get('Pollen Bloom').desc, /Unaware/);
+		assert.match(Dex.abilities.get('Atrocity').desc, /Mold Breaker/);
 	});
 
 	it('keeps abilities on custom required-item Mega profiles', () => {
