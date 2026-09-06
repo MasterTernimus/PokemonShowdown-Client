@@ -7913,8 +7913,8 @@ shortDesc:"Moves cannot miss + Filter + Self Repair + Unseen Fist."
 },
 pollenbloom:{
 name:"Pollen Bloom",
-desc:"This Pokemon has Thick Fat and Proficient's effects. At the end of each turn, opposing non-Grass Pokemon take Grass-type damage equal to 1/16 max HP, scaled by effectiveness and blocked by Grass immunities; this Pokemon heals the damage dealt.",
-shortDesc:"Thick Fat + Proficient; Grass chip scales and heals the user."
+desc:"This Pokemon has Thick Fat, Proficient, and Unaware's effects. At the end of each turn, opposing non-Grass Pokemon take Grass-type damage equal to 1/16 max HP, scaled by effectiveness and blocked by Grass immunities; this Pokemon heals the damage dealt.",
+shortDesc:"Thick Fat + Proficient + Unaware; Grass chip scales and heals the user."
 },
 powerdrill:{
 name:"Power Drill",
@@ -8489,8 +8489,8 @@ shortDesc:"Infiltrator + Levitate + Hydra Bond; higher offensive stat for signat
 },
 atrocity:{
 name:"Atrocity",
-desc:"This Ability cannot be suppressed and has Wildfire Core, Self Sufficient, and draining attacks. This Pokemon's damaging moves have 1.3x power, +1 critical hit ratio, ignore Abilities, ignore defensive stat boosts, and bypass Substitute, Reflect, Light Screen, and Aurora Veil. Its Defense and Special Defense are 1.3x. Each damaging hit restores 1/4 of the damage dealt, with no per-hit cap. In Cold Eclipse, its damaging moves gain another 1.3x boost, and its Defense and Special Defense become 1.5x.",
-shortDesc:"Wildfire Core + Self Sufficient; damaging hits heal 1/4 damage."
+desc:"This Ability cannot be suppressed and has Wildfire Core, Self Sufficient, and Mold Breaker's effects. This Pokemon's damaging moves have 1.3x power, +1 critical hit ratio, ignore Abilities, ignore defensive stat boosts, and bypass Substitute, Reflect, Light Screen, and Aurora Veil. Its Defense and Special Defense are 1.3x. Each damaging hit restores 1/4 of the damage dealt, with no per-hit cap. In Cold Eclipse, its damaging moves gain another 1.3x boost, and its Defense and Special Defense become 1.5x.",
+shortDesc:"Wildfire Core + Self Sufficient + Mold Breaker; damaging hits heal 1/4 damage."
 },
 ultraego:{
 name:"Ultra Ego",
@@ -10725,6 +10725,17 @@ inteleon:{w:76,h:76},
 whimsicott:{w:60,h:60},
 zoroark:{w:74,h:74},
 zoroarkhisui:{w:74,h:74}
+};
+var CUSTOM_TEAMBUILDER_SPRITE_DIMENSIONS={
+blastoise:{w:192,h:192,shinyW:192,shinyH:192},
+blastoisemega:{w:192,h:192,shinyW:192,shinyH:192},
+feraligatr:{w:192,h:192,shinyW:192,shinyH:192},
+froslass:{w:192,h:192,shinyW:192,shinyH:192},
+gothitelle:{w:192,h:192,shinyW:192,shinyH:192},
+hydreigon:{w:160,h:156,shinyW:192,shinyH:192},
+jolteon:{w:96,h:96,shinyW:92,shinyH:98},
+reuniclus:{w:64,h:64,shinyW:96,shinyH:96},
+sylveon:{w:96,h:96,shinyW:96,shinyH:96}
 };
 
 function applyCustomTeambuilderSpriteSizing(spriteData,id,spriteDimensions){
@@ -13143,7 +13154,7 @@ id=femaleSpriteId;
 spriteid=CUSTOM_ICON_SPRITES[id]||spriteid+"-f";
 }
 var hasCustomGen5Sprite=!!(
-CUSTOM_STATIC_BATTLE_SPRITES[id]||CUSTOM_ICON_SPRITES[id]||CUSTOM_BW_SPRITES[id]);
+CUSTOM_STATIC_BATTLE_SPRITES[id]||CUSTOM_ICON_SPRITES[id]||CUSTOM_BW_SPRITES[id]||CUSTOM_TEAMBUILDER_SPRITE_DIMENSIONS[id]);
 
 if(((_window$Config3=window.Config)!=null&&(_window$Config3=_window$Config3.server)!=null&&_window$Config3.afd||Dex.prefs('afd'))&&!hasCustomGen5Sprite){
 return{
@@ -13156,10 +13167,12 @@ y:5
 }
 var customStaticData=CUSTOM_STATIC_BATTLE_SPRITES[id];
 var customBWData=CUSTOM_BW_SPRITES[id];
+var customTeamBuilderDimensions=CUSTOM_TEAMBUILDER_SPRITE_DIMENSIONS[id];
 var hasCustomShinySprite=customStaticData?
 !!copySpriteSize(customStaticData.shinyFront)||!MISSING_SHINY_SPRITE_IDS.has(toID(spriteid)):
 customBWData?
 !!copySpriteSize(customBWData.shinyFront)||!!copySpriteSize((_customNativeBWSprite=customNativeBWSpriteSizes[id])==null?void 0:_customNativeBWSprite.shinyFront)||!MISSING_SHINY_SPRITE_IDS.has(toID(spriteid)):
+customTeamBuilderDimensions?!MISSING_SHINY_SPRITE_IDS.has(toID(spriteid)):
 hasCustomGen5Sprite?!MISSING_SHINY_SPRITE_IDS.has(toID(spriteid)):species.isNonstandard!=='Custom';
 var spriteData={
 spriteid:spriteid,
@@ -13175,7 +13188,7 @@ spriteData.x=-6;
 spriteData.y=-7;
 return spriteData;
 }
-if(CUSTOM_STATIC_BATTLE_SPRITES[id]||CUSTOM_ICON_SPRITES[id]||CUSTOM_BW_SPRITES[id]){
+if(CUSTOM_STATIC_BATTLE_SPRITES[id]||CUSTOM_ICON_SPRITES[id]||CUSTOM_BW_SPRITES[id]||customTeamBuilderDimensions){
 spriteData.spriteDir='sprites/gen5';
 var _customStaticData=CUSTOM_STATIC_BATTLE_SPRITES[id];
 var _customBWData=CUSTOM_BW_SPRITES[id];
@@ -13183,6 +13196,10 @@ var customTeamBuilderSize=CUSTOM_TEAMBUILDER_SPRITE_SIZE_OVERRIDES[id];
 var spriteDimensions=_customStaticData?
 getCustomSpriteSize(id,_customStaticData,true,isShiny):
 _customBWData?getCustomSpriteSize(id,_customBWData,true,isShiny):
+customTeamBuilderDimensions?{
+w:isShiny?customTeamBuilderDimensions.shinyW||customTeamBuilderDimensions.w:customTeamBuilderDimensions.w,
+h:isShiny?customTeamBuilderDimensions.shinyH||customTeamBuilderDimensions.h:customTeamBuilderDimensions.h
+}:
 customTeamBuilderSize;
 if(spriteDimensions){
 applyCustomTeambuilderSpriteSizing(spriteData,id,spriteDimensions);
