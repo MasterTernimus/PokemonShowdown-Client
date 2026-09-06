@@ -380,7 +380,7 @@ describe('Team Builder sprites', () => {
 			'Hydreigon', 'Jolteon', 'Reuniclus', 'Sylveon', 'Clefable', 'Clefable-Mega',
 			'Lopunny', 'Lopunny-Mega', 'Venusaur', 'Venusaur-Mega', 'Venusaur-Gmax',
 			'Floette-Mega', 'Floette-Eternal', 'Meowscarada', 'Alakazam', 'Alakazam-Mega',
-			'Volcarona',
+			'Volcarona', 'Magearna', 'Magearna-Mega',
 		]) {
 			for (const shiny of [false, true]) {
 				const sprite = Dex.getTeambuilderSprite({species, shiny}, 5);
@@ -566,6 +566,26 @@ describe('Team Builder sprites', () => {
 					assert.equal(sprite.w, dimensions.w);
 					assert.equal(sprite.h, dimensions.h);
 					assert(fs.existsSync(path.join(__dirname, '../play.pokemonshowdown.com/sprites', directory, filename)));
+				}
+			}
+		}
+	});
+
+	it('registers the supplied Magearna and Mega Magearna battle sprites', () => {
+		const expected = {
+			Magearna: {filename: 'magearna.png', front: {w: 90, h: 128}, back: {w: 82, h: 128}},
+			'Magearna-Mega': {filename: 'magearna-mega.png', front: {w: 164, h: 152}, back: {w: 190, h: 148}},
+		};
+		for (const [species, data] of Object.entries(expected)) {
+			for (const shiny of [false, true]) {
+				for (const front of [false, true]) {
+					const sprite = Dex.getSpriteData(species, front, {gen: 9, shiny, noScale: true});
+					const directory = `gen5${front ? '' : '-back'}${shiny ? '-shiny' : ''}`;
+					const dimensions = front ? data.front : data.back;
+					assert(sprite.url.endsWith(`/sprites/${directory}/${data.filename}`), `${species} should use its supplied sprite`);
+					assert.equal(sprite.w, dimensions.w);
+					assert.equal(sprite.h, dimensions.h);
+					assert(fs.existsSync(path.join(__dirname, '../play.pokemonshowdown.com/sprites', directory, data.filename)));
 				}
 			}
 		}
