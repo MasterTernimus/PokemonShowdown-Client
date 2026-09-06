@@ -13409,6 +13409,9 @@ x:10,
 y:5
 };
 }
+
+
+var preferGen5Shiny=isShiny&&!MISSING_SHINY_SPRITE_IDS.has(toID(spriteid));
 var customStaticData=CUSTOM_STATIC_BATTLE_SPRITES[id];
 var customBWData=CUSTOM_BW_SPRITES[id];
 var customTeamBuilderDimensions=CUSTOM_TEAMBUILDER_SPRITE_DIMENSIONS[id];
@@ -13463,7 +13466,7 @@ var xydexExists=!species.isNonstandard||species.isNonstandard==='Past'||species.
 "pikachustarter","eeveestarter","meltan","melmetal","pokestarufo","pokestarufo2","pokestarbrycenman","pokestarmt","pokestarmt2","pokestargiant","pokestarhumanoid","pokestarmonster","pokestarf00","pokestarf002","pokestarspirit"].
 includes(species.id);
 if(species.gen===8&&species.isNonstandard!=='CAP')xydexExists=false;
-if((!gen||gen>=6)&&xydexExists){
+if((!gen||gen>=6)&&xydexExists&&!preferGen5Shiny){
 if(species.gen>=7){
 spriteData.x=-6;
 spriteData.y=-7;
@@ -13482,6 +13485,7 @@ spriteData.x=-2;
 spriteData.y=0;
 }
 if(nativeTeambuilderOverride)Object.assign(spriteData,nativeTeambuilderOverride);
+if(isShiny&&MISSING_SHINY_SPRITE_IDS.has(toID(spriteid)))spriteData.shiny=false;
 return spriteData;
 }
 if(gen===5&&isShiny&&spriteData.shiny&&MISSING_SHINY_SPRITE_IDS.has(toID(spriteid))&&!hasCustomGen5Sprite){
