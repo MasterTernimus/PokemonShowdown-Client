@@ -6061,7 +6061,10 @@ types:['Poison'],
 baseStats:{hp:80,atk:95,def:90,spa:65,spd:90,spe:80},
 abilities:{0:'Intimidate',1:'Shed Skin',H:'Accumulation'}
 },
-golduck:{baseStats:{hp:90,atk:70,def:90,spa:110,spd:90,spe:70}},
+golduck:{
+baseStats:{hp:80,atk:82,def:78,spa:115,spd:80,spe:90},
+abilities:{0:'Swift Swim',1:'Still Waters',H:'Defragment'}
+},
 machamp:{baseStats:{hp:100,atk:140,def:105,spa:65,spd:85,spe:75},abilities:{0:'Guts',1:'Stamina',H:'Fighting Fiend'}},
 machampgmax:{baseStats:{hp:150,atk:140,def:105,spa:65,spd:85,spe:75},abilities:{0:'Guts',1:'Stamina',H:'Raging Fists'}},
 kingdra:{
@@ -10904,6 +10907,11 @@ name:'Lunar Dread',
 desc:"This Pokemon has Magic Guard, Pressure, and Unaware's effects.",
 shortDesc:'Magic Guard + Pressure + Unaware.'
 },
+stillwaters:{
+name:'Still Waters',
+desc:"This Pokemon has Cloud Nine, Magic Guard, and Unaware's effects.",
+shortDesc:'Cloud Nine + Magic Guard + Unaware.'
+},
 tidaljaw:{
 name:'Tidal Jaw',
 desc:"This Pokemon has Strong Jaw, Swift Swim, and Filter's effects.",
@@ -10944,6 +10952,7 @@ warship:['swiftswim','unaware','solidrock','strongjaw'],
 naturalrecovery:['naturalcure','regenerator'],
 ragingbeast:['guts','moldbreaker'],
 lunardread:['magicguard','pressure','unaware'],
+stillwaters:['cloudnine','magicguard','unaware'],
 scavenger:['overcoat','bigpecks','regenerator'],
 toxicspines:['toxicdebris','corrosion','merciless'],
 witheringshell:['crumblingshell','naturalrecovery','sturdy'],
@@ -11250,7 +11259,14 @@ glalie:{coldsnap:["9M"],fakeout:["9M"],hypervoice:["9M"],skullbash:["9M"]},
 glimmora:{explosion:["9M"],naturepower:["9M"]},
 gliscor:{airslash:["9M"],beatup:["9M"],crosspoison:["9M"],darkestlariat:["9M"],lashout:["9M"],pinmissile:["9M"],powerwhip:["9M"],scorchingsands:["9M"]},
 gogoat:{assurance:["9M"],bodypress:["9M"],charm:["9M"],defensecurl:["9M"],megahorn:["9M"],megakick:["9M"],rollout:["9M"],skullbash:["9M"],solarblade:["9M"]},
-golduck:{hypnosis:["9M"],triattack:["9M"]},
+golduck:{
+hypnosis:["9M"],triattack:["9M"],simplebeam:["9M"],weatherball:["9M"],
+futuresight:["9M"],meditate:["9M"],miracleeye:["9M"],twinbeam:["9M"],barrier:["9M"],
+kinesis:["9M"],agility:["9M"],aurasphere:["9M"],aurorabeam:["9M"],blizzard:["9M"],
+calmmind:["9M"],bulkup:["9M"],skullbash:["9M"],disable:["9M"],encore:["9M"],
+eeriespell:["9M"],flipturn:["9M"],shockwave:["9M"],chargebeam:["9M"],zapcannon:["9M"],
+psychicnoise:["9M"],topsyturvy:["9M"],nastyplot:["9M"],powergem:["9M"]
+},
 golem:{meteorbeam:["9M"],powergem:["9M"]},
 golisopod:{agility:["9M"],gunkshot:["9M"],nightslash:["9L1"],rollout:["9M"],uturn:["9M"]},
 golurk:{bulletpunch:["9M"],headlongrush:["9L1"],ironhead:["9M"],machpunch:["9M"],suckerpunch:["9M"]},
