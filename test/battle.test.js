@@ -380,6 +380,7 @@ describe('Team Builder sprites', () => {
 			'Hydreigon', 'Jolteon', 'Reuniclus', 'Sylveon', 'Clefable', 'Clefable-Mega',
 			'Lopunny', 'Lopunny-Mega', 'Venusaur', 'Venusaur-Mega', 'Venusaur-Gmax',
 			'Floette-Mega', 'Floette-Eternal', 'Meowscarada', 'Alakazam', 'Alakazam-Mega',
+			'Volcarona',
 		]) {
 			for (const shiny of [false, true]) {
 				const sprite = Dex.getTeambuilderSprite({species, shiny}, 5);
@@ -547,6 +548,24 @@ describe('Team Builder sprites', () => {
 						assert.equal(sprite.h, dimensions.h);
 						assert(fs.existsSync(path.join(__dirname, '../play.pokemonshowdown.com/sprites', directory, filename)));
 					}
+				}
+			}
+		}
+	});
+
+	it('registers the supplied Volcarona battle sprites', () => {
+		const data = {id: 'volcarona', front: {w: 152, h: 132}, back: {w: 148, h: 134}};
+		for (const gender of [undefined, 'F']) {
+			for (const shiny of [false, true]) {
+				for (const front of [false, true]) {
+					const sprite = Dex.getSpriteData('Volcarona', front, {gen: 9, gender, shiny, noScale: true});
+					const directory = `gen5${front ? '' : '-back'}${shiny ? '-shiny' : ''}`;
+					const dimensions = front ? data.front : data.back;
+					const filename = `${data.id}${gender === 'F' ? '-f' : ''}.png`;
+					assert(sprite.url.endsWith(`/sprites/${directory}/${filename}`), `Volcarona ${gender || 'M'} should use its supplied sprite`);
+					assert.equal(sprite.w, dimensions.w);
+					assert.equal(sprite.h, dimensions.h);
+					assert(fs.existsSync(path.join(__dirname, '../play.pokemonshowdown.com/sprites', directory, filename)));
 				}
 			}
 		}
