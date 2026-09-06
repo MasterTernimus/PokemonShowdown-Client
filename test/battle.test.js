@@ -448,6 +448,25 @@ describe('Team Builder sprites', () => {
 		}
 	});
 
+	it('registers the supplied Eelektross and Mega Eelektross battle sprites', () => {
+		const expected = {
+			Eelektross: {filename: 'eelektross.png', front: {w: 154, h: 118}, back: {w: 166, h: 124}},
+			'Eelektross-Mega': {filename: 'eelektross-mega.png', front: {w: 174, h: 154}, back: {w: 192, h: 164}},
+		};
+		for (const [species, data] of Object.entries(expected)) {
+			for (const shiny of [false, true]) {
+				for (const front of [false, true]) {
+					const sprite = Dex.getSpriteData(species, front, {gen: 9, shiny, noScale: true});
+					const directory = `gen5${front ? '' : '-back'}${shiny ? '-shiny' : ''}`;
+					assert(sprite.url.endsWith(`/sprites/${directory}/${data.filename}`), `${species} should use its supplied sprite`);
+					assert.equal(sprite.w, front ? data.front.w : data.back.w);
+					assert.equal(sprite.h, front ? data.front.h : data.back.h);
+					assert(fs.existsSync(path.join(__dirname, '../play.pokemonshowdown.com/sprites', directory, data.filename)));
+				}
+			}
+		}
+	});
+
 	it('shows the added composite ability effects', () => {
 		assert.match(Dex.abilities.get('Pollen Bloom').desc, /Unaware/);
 		assert.match(Dex.abilities.get('Territorial').desc, /Intimidate/);
