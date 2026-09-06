@@ -2697,8 +2697,10 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 		back: {w: 138, h: 142},
 	},
 	meowscarada: {
-		front: {w: 130, h: 158},
-		back: {w: 112, h: 156},
+		front: {w: 124, h: 164},
+		back: {w: 124, h: 164},
+		shinyFront: {w: 124, h: 164},
+		shinyBack: {w: 124, h: 166},
 	},
 	mothim: {
 		front: {w: 184, h: 160},
@@ -4357,8 +4359,10 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	},
 	meowscarada: {
 		num: 908,
-		front: {w: 130, h: 158},
-		back: {w: 112, h: 156},
+		front: {w: 124, h: 164},
+		back: {w: 124, h: 164},
+		shinyFront: {w: 124, h: 164},
+		shinyBack: {w: 124, h: 166},
 	},
 	mothim: {
 		num: 414,

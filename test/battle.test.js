@@ -379,7 +379,7 @@ describe('Team Builder sprites', () => {
 			'Blastoise', 'Blastoise-Mega', 'Feraligatr', 'Froslass', 'Gothitelle',
 			'Hydreigon', 'Jolteon', 'Reuniclus', 'Sylveon', 'Clefable', 'Clefable-Mega',
 			'Lopunny', 'Lopunny-Mega', 'Venusaur', 'Venusaur-Mega', 'Venusaur-Gmax',
-			'Floette-Mega', 'Floette-Eternal',
+			'Floette-Mega', 'Floette-Eternal', 'Meowscarada',
 		]) {
 			for (const shiny of [false, true]) {
 				const sprite = Dex.getTeambuilderSprite({species, shiny}, 5);
@@ -481,6 +481,25 @@ describe('Team Builder sprites', () => {
 					assert(sprite.url.endsWith(`/sprites/${directory}/${data.filename}`), `${species} should use its supplied sprite`);
 					assert.equal(sprite.w, front ? data.front.w : data.back.w);
 					assert.equal(sprite.h, front ? data.front.h : data.back.h);
+					assert(fs.existsSync(path.join(__dirname, '../play.pokemonshowdown.com/sprites', directory, data.filename)));
+				}
+			}
+		}
+	});
+
+	it('registers the supplied Meowscarada battle sprites', () => {
+		const expected = {
+			Meowscarada: {filename: 'meowscarada.png', front: {w: 124, h: 164}, back: {w: 124, h: 164}, shinyBack: {w: 124, h: 166}},
+		};
+		for (const [species, data] of Object.entries(expected)) {
+			for (const shiny of [false, true]) {
+				for (const front of [false, true]) {
+					const sprite = Dex.getSpriteData(species, front, {gen: 9, shiny, noScale: true});
+					const directory = `gen5${front ? '' : '-back'}${shiny ? '-shiny' : ''}`;
+					const dimensions = front ? data.front : (shiny ? data.shinyBack : data.back);
+					assert(sprite.url.endsWith(`/sprites/${directory}/${data.filename}`), `${species} should use its supplied sprite`);
+					assert.equal(sprite.w, dimensions.w);
+					assert.equal(sprite.h, dimensions.h);
 					assert(fs.existsSync(path.join(__dirname, '../play.pokemonshowdown.com/sprites', directory, data.filename)));
 				}
 			}
