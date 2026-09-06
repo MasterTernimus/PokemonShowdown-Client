@@ -3452,6 +3452,20 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	reuniclusmega: {num: 579, front: {w: 192, h: 192}, back: {w: 192, h: 192}},
 	sunfloramega: {num: 192, front: {w: 192, h: 192}, back: {w: 192, h: 192}},
 	claydolmega: {num: 344, front: {w: 192, h: 192}, back: {w: 192, h: 192}},
+	clefable: {
+		num: 36,
+		front: {w: 104, h: 102},
+		back: {w: 106, h: 102},
+		shinyFront: {w: 104, h: 102},
+		shinyBack: {w: 106, h: 102},
+	},
+	clefablemega: {
+		num: 36,
+		front: {w: 192, h: 124},
+		back: {w: 192, h: 124},
+		shinyFront: {w: 192, h: 124},
+		shinyBack: {w: 192, h: 124},
+	},
 	froslassmega: {
 		num: 478,
 		front: {w: 96, h: 96},

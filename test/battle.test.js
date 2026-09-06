@@ -364,7 +364,7 @@ describe('Team Builder sprites', () => {
 	it('keeps recently supplied sprites inside the Team Builder frame', () => {
 		for (const species of [
 			'Blastoise', 'Blastoise-Mega', 'Feraligatr', 'Froslass', 'Gothitelle',
-			'Hydreigon', 'Jolteon', 'Reuniclus', 'Sylveon',
+			'Hydreigon', 'Jolteon', 'Reuniclus', 'Sylveon', 'Clefable', 'Clefable-Mega',
 		]) {
 			for (const shiny of [false, true]) {
 				const sprite = Dex.getTeambuilderSprite({species, shiny}, 5);
@@ -372,6 +372,20 @@ describe('Team Builder sprites', () => {
 				const match = sprite.match(/background-size:(\d+)px auto/);
 				assert(match, `${species} should have bounded Team Builder sizing`);
 				assert(Number(match[1]) <= 86, `${species} should fit the Team Builder frame`);
+			}
+		}
+	});
+
+	it('registers the supplied Clefable battle sprites', () => {
+		for (const species of ['Clefable', 'Clefable-Mega']) {
+			const filename = species === 'Clefable-Mega' ? 'clefable-mega.png' : 'clefable.png';
+			for (const shiny of [false, true]) {
+				for (const front of [false, true]) {
+					const sprite = Dex.getSpriteData(species, front, {gen: 9, shiny});
+					const dir = `gen5${front ? '' : '-back'}${shiny ? '-shiny' : ''}`;
+					assert(sprite.url.includes(`/sprites/${dir}/${filename}`), `${species} should use its supplied sprite`);
+					assert(fs.existsSync(path.join(__dirname, '../play.pokemonshowdown.com/sprites', dir, filename)));
+				}
 			}
 		}
 	});
