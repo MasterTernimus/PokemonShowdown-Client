@@ -379,7 +379,7 @@ describe('Team Builder sprites', () => {
 			'Blastoise', 'Blastoise-Mega', 'Feraligatr', 'Froslass', 'Gothitelle',
 			'Hydreigon', 'Jolteon', 'Reuniclus', 'Sylveon', 'Clefable', 'Clefable-Mega',
 			'Lopunny', 'Lopunny-Mega', 'Venusaur', 'Venusaur-Mega', 'Venusaur-Gmax',
-			'Floette-Mega', 'Floette-Eternal', 'Meowscarada',
+			'Floette-Mega', 'Floette-Eternal', 'Meowscarada', 'Alakazam', 'Alakazam-Mega',
 		]) {
 			for (const shiny of [false, true]) {
 				const sprite = Dex.getTeambuilderSprite({species, shiny}, 5);
@@ -524,6 +524,29 @@ describe('Team Builder sprites', () => {
 					assert.equal(sprite.w, dimensions.w);
 					assert.equal(sprite.h, dimensions.h);
 					assert(fs.existsSync(path.join(__dirname, '../play.pokemonshowdown.com/sprites', directory, `${data.id}.png`)));
+				}
+			}
+		}
+	});
+
+	it('registers the supplied Alakazam and Mega Alakazam battle sprites', () => {
+		const expected = {
+			Alakazam: {id: 'alakazam', front: {w: 128, h: 130}, back: {w: 152, h: 132}, shinyFront: {w: 144, h: 148}, shinyBack: {w: 168, h: 148}},
+			'Alakazam-Mega': {id: 'alakazam-mega', front: {w: 178, h: 172}, back: {w: 152, h: 178}, shinyFront: {w: 182, h: 176}, shinyBack: {w: 158, h: 182}},
+		};
+		for (const [species, data] of Object.entries(expected)) {
+			for (const gender of [undefined, 'F']) {
+				for (const shiny of [false, true]) {
+					for (const front of [false, true]) {
+						const sprite = Dex.getSpriteData(species, front, {gen: 9, gender, shiny, noScale: true});
+						const directory = `gen5${front ? '' : '-back'}${shiny ? '-shiny' : ''}`;
+						const dimensions = front ? (shiny ? data.shinyFront : data.front) : (shiny ? data.shinyBack : data.back);
+						const filename = `${data.id}${gender === 'F' ? '-f' : ''}.png`;
+						assert(sprite.url.endsWith(`/sprites/${directory}/${filename}`), `${species} ${gender || 'M'} should use its supplied sprite`);
+						assert.equal(sprite.w, dimensions.w);
+						assert.equal(sprite.h, dimensions.h);
+						assert(fs.existsSync(path.join(__dirname, '../play.pokemonshowdown.com/sprites', directory, filename)));
+					}
 				}
 			}
 		}
