@@ -1820,6 +1820,8 @@ gliscoralt:'gliscor-alt',
 sneasleraevian:'sneasler-aevian',
 mismagiusaevian:'mismagius-aevian',
 volcaronaaevian:'volcarona-aevian',
+volcarona:'volcarona',
+volcaronaf:'volcarona-f',
 dusknoiralt:'dusknoir-alt',
 spiritombalt:'spiritomb-alt',
 parasectparasitism:'parasect-parasitism',
@@ -2073,6 +2075,9 @@ var FORCE_SHINY_CUSTOM_SPRITE_IDS=new Set(['spiritombalt']);
 
 
 var MISSING_SHINY_SPRITE_IDS=new Set(['abra','aerodactyl','alcremie-matchacream','ampharos','anorith','arceus','arceus-fire','arceus-ground','arceus-ice','arceus-normal','arceus-poison','arceus-psychic','arceus-rock','arceus-steel','arceus-water','archen','archeops','arctovolt','argalis','arghonaut','arghonaut-f','armaldo','aron','articuno','audino','aurumoth','axew','azelf','azumarill','azurill','bagon','baltoy','banette','barboach','basculin','basculin-bluestriped','bastiodon','bayleef','beautifly','beautifly-f','beheeyem','beldum','bellossom','bellsprout','bibarel','bibarel-f','bidoof','bidoof-f','bisharp','blaziken','blissey','boldore','bouffalant','braixen','breezi','bronzong','buneary','burmy','burmy-plant','burmy-trash','butterfree-f','cacnea','caimanoe','caribolt','carnivine','carracosta','chansey','cherrim','cherubi','chinchou','chuggalong','cinccino','clefairy','cleffa','cloyster','cofagrigus','colossoil','colossoil-f','conkeldurr','coribalis','corphish','corsola','corsola-galar','cranidos','crawdaunt','cresceidon','cresselia','cyndaquil','darkrai','darmanitan-galarzen','deerling','deerling-summer','deerling-winter','deino','delcatty','delibird','diancie','doduo-f','donphan-f','dratini','druddigon','ducklett','durant','eevee','emolga','entei','equilibra','floette-red','forretress','gastrodon','gible','gigalith','golurk','gothita','grimer','gyarados','gyarados-f','hemogoblin','hitmonlee','honchkrow','hooh','houndoom-f','houndour','hypno','illumise','karrablast','keldeo','keldeo-resolute','kerfluffle','kerfluffle-f','kingdra','koffing','krillowatt','krilowatt','krilowatt-f','krokorok','krookodile','kyogre','lanturn','lileep','ludicolo','lugia','lycanroc-midday','mantyke','maractus','mienfoo','mienshao','mightyena','miltank','minior','monferno','munchlax','munna','nidorina','nincada','nuzleaf-f','omastar','pachirisu-f','pangoro','pansear','pelipper','persian','phanpy','pidgeotto','pikachu-hoenn','pineco','plusle','pokestarbrycenman','poliwrath','ponyta-galar','porygonz','primeape','prinplup','privatyke','pumpkaboo','raichu','raticate-f','rattata','rayquaza','regice','regirock','rhydon-f','rhyhorn','riolu','sceptile','seaking','seaking-f','shaymin','shedinja','shelgon','shellder','skiploom','slowpoke','snaelstrom','spinarak','spinda','spoink','squirtle','staraptor','stratagem','stunfisk-galar','swampert','swanna','teddiursa','tentacool','tentacruel','terrakion','throh','thundurus','thundurus-therian','timburr','tirtouga','togekiss','togepi','togetic','tomohawk','tomohawk-f','torchic','tornadus','tornadus-therian','totodile','toxicroak','toxicroak-f','tranquill','trapinch','trubbish','turtwig','tympole','tynamo','tyranitar','tyrogue','umbreon','unfezant','unfezant-f','unown','unown-a','unown-b','unown-c','unown-d','unown-e','unown-exclamation','unown-f','unown-g','unown-h','unown-i','unown-j','unown-k','unown-l','unown-m','unown-n','unown-o','unown-p','unown-q','unown-question','unown-s','unown-t','unown-u','unown-v','unown-w','unown-x','unown-y','unown-z','ursaring','ursaring-f','uxie','vanillish','vanillite','venipede','venomoth','venonat','venusaur-f','vespiquen','vibrava','victini','vigoroth','vileplume','vileplume-f','virizion','vivillon-pokeball','volbeat','volcanion','volcarona','volkraken','volkritter','voltorb','voodoll','voodoom','voodoom-f','vullaby','vulpix','wailmer','wailord','walrein','wartortle','watchog','weedle','weepinbell','weezing','whirlipede','whiscash','whismur','wigglytuff','wingull','wobbuffet','wobbuffet-f','woobat','wooper','wormadam','wormadam-plant','wormadam-trash','wurmple','wynaut','xatu','xatu-f','yamask','zigzagoon','zigzagoon-galar']);
+
+
+MISSING_SHINY_SPRITE_IDS["delete"]('volcarona');
 
 
 
@@ -2732,6 +2737,18 @@ front:{w:146,h:118},
 back:{w:152,h:116},
 shinyFront:{w:146,h:118},
 shinyBack:{w:152,h:116}
+},
+volcarona:{
+front:{w:152,h:132},
+back:{w:148,h:134},
+shinyFront:{w:152,h:132},
+shinyBack:{w:148,h:134}
+},
+volcaronaf:{
+front:{w:152,h:132},
+back:{w:148,h:134},
+shinyFront:{w:152,h:132},
+shinyBack:{w:148,h:134}
 },
 alakazam:{
 front:{w:128,h:130},
@@ -3974,6 +3991,20 @@ front:{w:192,h:192},
 back:{w:192,h:192},
 shinyFront:{w:192,h:192},
 shinyBack:{w:192,h:192}
+},
+volcarona:{
+num:637,
+front:{w:152,h:132},
+back:{w:148,h:134},
+shinyFront:{w:152,h:132},
+shinyBack:{w:148,h:134}
+},
+volcaronaf:{
+num:637,
+front:{w:152,h:132},
+back:{w:148,h:134},
+shinyFront:{w:152,h:132},
+shinyBack:{w:148,h:134}
 },
 toxtricityaevian:{
 num:849,
