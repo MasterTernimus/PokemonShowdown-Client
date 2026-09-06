@@ -347,6 +347,19 @@ describe('Team Builder sprites', () => {
 		assert(global.BattleTeambuilderTable.learnsets.butterfree.sludgewave);
 	});
 
+	it('syncs Golduck stats, abilities, and requested moves', () => {
+		assert.deepEqual(Dex.species.get('Golduck').baseStats, {hp: 80, atk: 82, def: 78, spa: 115, spd: 80, spe: 90});
+		assert.equal(Dex.species.get('Golduck').bst, 525);
+		assert.deepEqual(Dex.species.get('Golduck').abilities, {0: 'Swift Swim', 1: 'Still Waters', H: 'Defragment'});
+		const learnset = global.BattleTeambuilderTable.learnsets.golduck;
+		for (const move of [
+			'simplebeam', 'weatherball', 'futuresight', 'meditate', 'miracleeye', 'twinbeam', 'barrier', 'kinesis',
+			'agility', 'aurasphere', 'aurorabeam', 'blizzard', 'calmmind', 'bulkup', 'skullbash', 'disable',
+			'encore', 'eeriespell', 'flipturn', 'shockwave', 'chargebeam', 'zapcannon', 'psychicnoise',
+			'topsyturvy', 'nastyplot', 'powergem',
+		]) assert(learnset[move], `Golduck should learn ${move}`);
+	});
+
 	it('syncs the updated Zangoose and Seviper stat lines', () => {
 		const zangoose = Dex.species.get('Zangoose');
 		const seviper = Dex.species.get('Seviper');
@@ -450,6 +463,10 @@ describe('Team Builder sprites', () => {
 		assert(Dex.getAbilityEffects('fortressshell').has('waterbarrage'));
 		assert(Dex.getAbilityEffects('lunardread').has('unaware'));
 		assert(Dex.getAbilityEffects('territorial').has('intimidate'));
+		assert.match(Dex.abilities.get('Still Waters').desc, /Cloud Nine/);
+		assert(Dex.getAbilityEffects('stillwaters').has('cloudnine'));
+		assert(Dex.getAbilityEffects('stillwaters').has('magicguard'));
+		assert(Dex.getAbilityEffects('stillwaters').has('unaware'));
 		assert(!Dex.getAbilityEffects('fortressshell').has('friendguard'));
 		assert(Dex.getAbilityEffects('burningcrown').has('wildfirecore'));
 		assert(!Dex.getAbilityEffects('burningcrown').has('filter'));
