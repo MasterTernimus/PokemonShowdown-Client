@@ -722,6 +722,7 @@ License: GPLv2
     color: #441155;
 }
 
+.icyfieldweather,
 .icyterrainweather {
     background: #CCAAEE url(../fx/weather-icyterrain.png) no-repeat scroll left top;
     color: #441155;
