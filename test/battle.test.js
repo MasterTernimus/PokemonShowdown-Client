@@ -506,6 +506,29 @@ describe('Team Builder sprites', () => {
 		}
 	});
 
+	it('registers the supplied Oricorio battle sprites and stats for every form', () => {
+		const expected = {
+			Oricorio: {id: 'oricorio', front: {w: 160, h: 170}, back: {w: 160, h: 170}},
+			'Oricorio-Pom-Pom': {id: 'oricorio-pompom', front: {w: 186, h: 122}, back: {w: 186, h: 118}},
+			"Oricorio-Pa'u": {id: 'oricorio-pau', front: {w: 140, h: 136}, back: {w: 140, h: 136}},
+			'Oricorio-Sensu': {id: 'oricorio-sensu', front: {w: 146, h: 118}, back: {w: 152, h: 116}},
+		};
+		for (const [species, data] of Object.entries(expected)) {
+			assert.deepEqual(Dex.species.get(species).baseStats, {hp: 79, atk: 80, def: 75, spa: 98, spd: 75, spe: 93});
+			for (const shiny of [false, true]) {
+				for (const front of [false, true]) {
+					const sprite = Dex.getSpriteData(species, front, {gen: 9, shiny, noScale: true});
+					const directory = `gen5${front ? '' : '-back'}${shiny ? '-shiny' : ''}`;
+					const dimensions = front ? data.front : data.back;
+					assert(sprite.url.endsWith(`/sprites/${directory}/${data.id}.png`), `${species} should use its supplied sprite`);
+					assert.equal(sprite.w, dimensions.w);
+					assert.equal(sprite.h, dimensions.h);
+					assert(fs.existsSync(path.join(__dirname, '../play.pokemonshowdown.com/sprites', directory, `${data.id}.png`)));
+				}
+			}
+		}
+	});
+
 	it('shows the added composite ability effects', () => {
 		assert.match(Dex.abilities.get('Pollen Bloom').desc, /Unaware/);
 		assert.match(Dex.abilities.get('Territorial').desc, /Intimidate/);
