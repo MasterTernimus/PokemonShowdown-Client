@@ -175,6 +175,14 @@ describe('Team Builder sprites', () => {
 		assert(!sprite.includes('/sprites/dex-shiny/togekiss.png'), sprite);
 	});
 
+	it('prefers available Gen 5 shiny art in the Team Builder', () => {
+		for (const species of ['Charizard', 'Blastoise', 'Gardevoir', 'Magearna']) {
+			const sprite = Dex.getTeambuilderSprite({species, shiny: true}, 9);
+			assert(sprite.includes('/sprites/gen5-shiny/'), `${species} should use Gen 5 shiny art`);
+			assert(!sprite.includes('/sprites/dex-shiny/'), `${species} should not use XY shiny art`);
+		}
+	});
+
 	it('constrains oversized Team Builder sprites', () => {
 		const sprite = Dex.getTeambuilderSprite({species: 'Hydreigon'}, 9);
 		assert(sprite.includes('background-size:82px auto'), sprite);

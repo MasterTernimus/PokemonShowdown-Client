@@ -13409,6 +13409,9 @@ const Dex = new class implements ModdedDex {
 				y: 5,
 			};
 		}
+		// Prefer the complete Gen 5 shiny art in Team Builder when it exists.
+		// Known empty legacy shiny files still use the modern fallback below.
+		const preferGen5Shiny = isShiny && !MISSING_SHINY_SPRITE_IDS.has(toID(spriteid));
 	const customStaticData = CUSTOM_STATIC_BATTLE_SPRITES[id];
 	const customBWData = CUSTOM_BW_SPRITES[id];
 	const customTeamBuilderDimensions = CUSTOM_TEAMBUILDER_SPRITE_DIMENSIONS[id];
@@ -13463,7 +13466,7 @@ const Dex = new class implements ModdedDex {
 			"pikachustarter", "eeveestarter", "meltan", "melmetal", "pokestarufo", "pokestarufo2", "pokestarbrycenman", "pokestarmt", "pokestarmt2", "pokestargiant", "pokestarhumanoid", "pokestarmonster", "pokestarf00", "pokestarf002", "pokestarspirit",
 		].includes(species.id);
 		if (species.gen === 8 && species.isNonstandard !== 'CAP') xydexExists = false;
-		if ((!gen || gen >= 6) && xydexExists) {
+		if ((!gen || gen >= 6) && xydexExists && !preferGen5Shiny) {
 			if (species.gen >= 7) {
 				spriteData.x = -6;
 				spriteData.y = -7;
@@ -13482,6 +13485,7 @@ const Dex = new class implements ModdedDex {
 				spriteData.y = 0;
 			}
 			if (nativeTeambuilderOverride) Object.assign(spriteData, nativeTeambuilderOverride);
+			if (isShiny && MISSING_SHINY_SPRITE_IDS.has(toID(spriteid))) spriteData.shiny = false;
 			return spriteData;
 		}
 		if (gen === 5 && isShiny && spriteData.shiny && MISSING_SHINY_SPRITE_IDS.has(toID(spriteid)) && !hasCustomGen5Sprite) {
