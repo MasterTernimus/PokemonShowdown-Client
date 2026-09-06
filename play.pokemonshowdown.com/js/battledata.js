@@ -205,7 +205,7 @@ data:{
 name:'Divineon',
 baseSpecies:'Eevee-Starter',
 forme:'Divineon',
-spriteid:'eevee-starter',
+spriteid:'divineon',
 types:['???'],
 abilities:{0:'Ascendance'},
 baseStats:{hp:65,atk:110,def:65,spa:110,spd:65,spe:130},
@@ -2108,7 +2108,26 @@ machampgmaxalt:'machampgmax',
 skeledirgealt:'skeledirge',
 tsareenaalt:'tsareena',
 gligaralt:'gligar',
-gliscoralt:'gliscor'
+gliscoralt:'gliscor',
+furfrou:'furfrou',
+furfroudebutante:'furfrou',
+furfroudebutantef:'furfrou',
+furfroudiamond:'furfrou',
+furfroudiamondf:'furfrou',
+furfroudandy:'furfrou',
+furfroudandyf:'furfrou',
+furfrouheart:'furfrou',
+furfrouheartf:'furfrou',
+furfroukabuki:'furfrou',
+furfroukabukif:'furfrou',
+furfroulareine:'furfrou',
+furfroulareinef:'furfrou',
+furfroumatron:'furfrou',
+furfroumatronf:'furfrou',
+furfroupharaoh:'furfrou',
+furfroupharaohf:'furfrou',
+furfroustar:'furfrou',
+furfroustarf:'furfrou'
 };
 
 var CUSTOM_TEAMBUILDER_SPRITES={
@@ -2176,6 +2195,9 @@ var CUSTOM_STATIC_BATTLE_SPRITES=
 
 
 {
+abysseon:{front:{w:192,h:192},back:{w:192,h:192},shinyFront:{w:192,h:192},shinyBack:{w:192,h:192}},
+divineon:{front:{w:192,h:192},back:{w:192,h:192},shinyFront:{w:192,h:192},shinyBack:{w:192,h:192}},
+froslass:{front:{w:192,h:192},back:{w:192,h:192},shinyFront:{w:192,h:192},shinyBack:{w:192,h:192}},
 zoroark:{front:{w:136,h:128},back:{w:148,h:130},shinyFront:{w:136,h:128},shinyBack:{w:148,h:130}},
 zoroarkf:{front:{w:136,h:128},back:{w:148,h:130},shinyFront:{w:136,h:128},shinyBack:{w:148,h:130}},
 zoroarkhisui:{front:{w:140,h:182},back:{w:140,h:156},shinyFront:{w:140,h:182},shinyBack:{w:140,h:156}},
@@ -3571,6 +3593,9 @@ furfroudandy:{"back":{"h":130,"w":92},"front":{"h":132,"w":92},"shinyFront":{"h"
 });
 
 var CUSTOM_BW_SPRITES={
+abysseon:{num:133,front:{w:192,h:192},back:{w:192,h:192},shinyFront:{w:192,h:192},shinyBack:{w:192,h:192}},
+divineon:{num:133,front:{w:192,h:192},back:{w:192,h:192},shinyFront:{w:192,h:192},shinyBack:{w:192,h:192}},
+froslass:{num:478,front:{w:192,h:192},back:{w:192,h:192},shinyFront:{w:192,h:192},shinyBack:{w:192,h:192}},
 lilligantrift:{num:549,front:{w:192,h:192},shinyFront:{w:192,h:192}},
 scizor:{num:212,front:{w:96,h:96},back:{w:96,h:96},shinyFront:{w:96,h:96},shinyBack:{w:96,h:96}},
 scizormega:{num:212,front:{w:96,h:96},back:{w:96,h:96},shinyFront:{w:96,h:96},shinyBack:{w:96,h:96}},

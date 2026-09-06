@@ -205,7 +205,7 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 			name: 'Divineon',
 			baseSpecies: 'Eevee-Starter',
 			forme: 'Divineon',
-			spriteid: 'eevee-starter',
+			spriteid: 'divineon',
 			types: ['???'],
 			abilities: {0: 'Ascendance'},
 			baseStats: {hp: 65, atk: 110, def: 65, spa: 110, spd: 65, spe: 130},
@@ -2109,6 +2109,25 @@ const CUSTOM_DEFAULT_BACK_SPRITES: {[id: string]: ID} = {
 	tsareenaalt: 'tsareena' as ID,
 	gligaralt: 'gligar' as ID,
 	gliscoralt: 'gliscor' as ID,
+	furfrou: 'furfrou' as ID,
+	furfroudebutante: 'furfrou' as ID,
+	furfroudebutantef: 'furfrou' as ID,
+	furfroudiamond: 'furfrou' as ID,
+	furfroudiamondf: 'furfrou' as ID,
+	furfroudandy: 'furfrou' as ID,
+	furfroudandyf: 'furfrou' as ID,
+	furfrouheart: 'furfrou' as ID,
+	furfrouheartf: 'furfrou' as ID,
+	furfroukabuki: 'furfrou' as ID,
+	furfroukabukif: 'furfrou' as ID,
+	furfroulareine: 'furfrou' as ID,
+	furfroulareinef: 'furfrou' as ID,
+	furfroumatron: 'furfrou' as ID,
+	furfroumatronf: 'furfrou' as ID,
+	furfroupharaoh: 'furfrou' as ID,
+	furfroupharaohf: 'furfrou' as ID,
+	furfroustar: 'furfrou' as ID,
+	furfroustarf: 'furfrou' as ID,
 };
 
 const CUSTOM_TEAMBUILDER_SPRITES: {[id: string]: {x: number, y: number, backgroundSize: string}} = {
@@ -2176,6 +2195,9 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 	shinyFront?: {w: number, h: number},
 	shinyBack?: {w: number, h: number},
 }} = {
+	abysseon: {front: {w: 192, h: 192}, back: {w: 192, h: 192}, shinyFront: {w: 192, h: 192}, shinyBack: {w: 192, h: 192}},
+	divineon: {front: {w: 192, h: 192}, back: {w: 192, h: 192}, shinyFront: {w: 192, h: 192}, shinyBack: {w: 192, h: 192}},
+	froslass: {front: {w: 192, h: 192}, back: {w: 192, h: 192}, shinyFront: {w: 192, h: 192}, shinyBack: {w: 192, h: 192}},
 	zoroark: {front: {w: 136, h: 128}, back: {w: 148, h: 130}, shinyFront: {w: 136, h: 128}, shinyBack: {w: 148, h: 130}},
 	zoroarkf: {front: {w: 136, h: 128}, back: {w: 148, h: 130}, shinyFront: {w: 136, h: 128}, shinyBack: {w: 148, h: 130}},
 	zoroarkhisui: {front: {w: 140, h: 182}, back: {w: 140, h: 156}, shinyFront: {w: 140, h: 182}, shinyBack: {w: 140, h: 156}},
@@ -3571,6 +3593,9 @@ Object.assign(CUSTOM_STATIC_BATTLE_SPRITES, {
 });
 
 const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
+	abysseon: {num: 133, front: {w: 192, h: 192}, back: {w: 192, h: 192}, shinyFront: {w: 192, h: 192}, shinyBack: {w: 192, h: 192}},
+	divineon: {num: 133, front: {w: 192, h: 192}, back: {w: 192, h: 192}, shinyFront: {w: 192, h: 192}, shinyBack: {w: 192, h: 192}},
+	froslass: {num: 478, front: {w: 192, h: 192}, back: {w: 192, h: 192}, shinyFront: {w: 192, h: 192}, shinyBack: {w: 192, h: 192}},
 	lilligantrift: {num: 549, front: {w: 192, h: 192}, shinyFront: {w: 192, h: 192}},
 	scizor: {num: 212, front: {w: 96, h: 96}, back: {w: 96, h: 96}, shinyFront: {w: 96, h: 96}, shinyBack: {w: 96, h: 96}},
 	scizormega: {num: 212, front: {w: 96, h: 96}, back: {w: 96, h: 96}, shinyFront: {w: 96, h: 96}, shinyBack: {w: 96, h: 96}},

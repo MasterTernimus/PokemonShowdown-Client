@@ -254,6 +254,20 @@ describe('Team Builder sprites', () => {
 		}
 	});
 
+	it('uses the supplied BW battle sprites for Froslass, Abysseon, and Divineon', () => {
+		for (const species of ['Froslass', 'Abysseon', 'Divineon']) {
+			for (const front of [true, false]) {
+				for (const shiny of [false, true]) {
+					const sprite = Dex.getSpriteData(species, front, {gen: 9, shiny, noScale: true});
+					const directory = front ? (shiny ? 'gen5-shiny' : 'gen5') : (shiny ? 'gen5-back-shiny' : 'gen5-back');
+					assert(sprite.url.endsWith(`/sprites/${directory}/${species.toLowerCase()}.png`), sprite.url);
+					assert.equal(sprite.w, 192);
+					assert.equal(sprite.h, 192);
+				}
+			}
+		}
+	});
+
 	it('uses all supplied Typhlosion form sprites', () => {
 		const cases = [
 			['Typhlosion', 118, 152, 110, 140],
