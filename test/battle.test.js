@@ -365,7 +365,7 @@ describe('Team Builder sprites', () => {
 		for (const species of [
 			'Blastoise', 'Blastoise-Mega', 'Feraligatr', 'Froslass', 'Gothitelle',
 			'Hydreigon', 'Jolteon', 'Reuniclus', 'Sylveon', 'Clefable', 'Clefable-Mega',
-			'Lopunny', 'Lopunny-Mega',
+			'Lopunny', 'Lopunny-Mega', 'Venusaur', 'Venusaur-Mega', 'Venusaur-Gmax',
 		]) {
 			for (const shiny of [false, true]) {
 				const sprite = Dex.getTeambuilderSprite({species, shiny}, 5);
@@ -406,6 +406,30 @@ describe('Team Builder sprites', () => {
 					assert.equal(sprite.w, dimensions.w);
 					assert.equal(sprite.h, dimensions.h);
 					assert(fs.existsSync(path.join(__dirname, '../play.pokemonshowdown.com/sprites', directory, data.filename)));
+				}
+			}
+		}
+	});
+
+	it('registers the supplied Venusaur, Mega Venusaur, and G-Max Venusaur sprites', () => {
+		const expected = {
+			Venusaur: {filename: 'venusaur.png', front: {w: 152, h: 136}, back: {w: 162, h: 126}},
+			'Venusaur-Mega': {filename: 'venusaur-mega.png', front: {w: 188, h: 148}, back: {w: 186, h: 144}},
+			'Venusaur-Gmax': {filename: 'venusaur-gmax.png', front: {w: 192, h: 178}, back: {w: 188, h: 170}},
+		};
+		for (const [species, data] of Object.entries(expected)) {
+			for (const gender of [undefined, 'F']) {
+				for (const shiny of [false, true]) {
+					for (const front of [false, true]) {
+						const sprite = Dex.getSpriteData(species, front, {gen: 9, gender, shiny, noScale: true});
+						const directory = `gen5${front ? '' : '-back'}${shiny ? '-shiny' : ''}`;
+						const filename = gender === 'F' ? data.filename.replace('.png', '-f.png') : data.filename;
+						const dimensions = front ? data.front : data.back;
+						assert(sprite.url.endsWith(`/sprites/${directory}/${filename}`), `${species} ${gender || 'M'} should use its supplied sprite`);
+						assert.equal(sprite.w, dimensions.w);
+						assert.equal(sprite.h, dimensions.h);
+						assert(fs.existsSync(path.join(__dirname, '../play.pokemonshowdown.com/sprites', directory, filename)));
+					}
 				}
 			}
 		}
