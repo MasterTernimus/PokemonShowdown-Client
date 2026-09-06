@@ -7402,8 +7402,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	ancientbloom: {
 		name: "Ancient Bloom",
-		desc: "This Pokemon has Effect Spore and Self Sufficient's effects. It keeps its field-based Defense, Special Defense, and power boosts.",
-		shortDesc: "Effect Spore + Self Sufficient; keeps field boosts.",
+		desc: "This Pokemon has Effect Spore, Self Sufficient, and Pollen Bloom's effects. It keeps its field-based Defense, Special Defense, and power boosts.",
+		shortDesc: "Effect Spore + Self Sufficient + Pollen Bloom; keeps field boosts.",
 	},
 	ange: {
 		name: "Ange",
@@ -7517,8 +7517,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	burningcrown: {
 		name: "Burning Crown",
-		desc: "This Pokemon has White Smoke, Filter, and Self Sufficient. When a Pokemon faints, it raises the highest offensive stat of itself and its allies by 1. Its field bonuses remain active.",
-		shortDesc: "White Smoke + Filter + Self Sufficient; faint raises the side's highest offenses.",
+		desc: "This Pokemon has Intimidate, White Smoke, Wildfire Core, and Self Sufficient. Hidden effect: Filter. When a Pokemon faints, it raises the highest offensive stat of itself and its allies by 1. Its field bonuses remain active.",
+		shortDesc: "Intimidate + White Smoke + Wildfire Core + Self Sufficient; faint raises the side's highest offenses.",
 	},
 	burningego: {
 		name: "Burning Ego",
@@ -7707,8 +7707,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	fortressshell: {
 		name: "Fortress Shell",
-		desc: "This Pokemon has Self Sufficient, Shell Armor, Friend Guard, and Dual Wield's effects. In Water Surface, Underwater, Factory, and Short Circuit fields, Electric moves are redirected to it and raise its Attack and Special Attack. Fairy Tale, New World, Cold Eclipse, and Starlight Arena give it +1 Defense and +1 Special Defense once per active terrain.",
-		shortDesc: "Self Sufficient + Shell Armor + Friend Guard + Dual Wield; keeps field bonuses.",
+		desc: "This Pokemon has Self Sufficient, Shell Armor, and Water Barrage's effects. Hidden effect: Friend Guard. In Water Surface, Underwater, Factory, and Short Circuit fields, Electric moves are redirected to it and raise its Attack and Special Attack. Fairy Tale, New World, Cold Eclipse, and Starlight Arena give it +1 Defense and +1 Special Defense once per active terrain.",
+		shortDesc: "Self Sufficient + Shell Armor + Water Barrage; keeps field bonuses.",
 	},
 	freezerburn: {
 		name: "Freezer Burn",
@@ -10958,10 +10958,12 @@ const CUSTOM_ABILITY_COMPONENT_OVERRIDES: {[id: string]: readonly ID[]} = {
 	sweetsanctuary: ['friendguard' as ID, 'sweetveil' as ID, 'aromaveil' as ID, 'pastelveil' as ID],
 	heatcoil: ['speedboost' as ID, 'magmaarmor' as ID, 'flamebody' as ID],
 	wickedsnare: ['stakeout' as ID, 'tanglinghair' as ID, 'prankster' as ID],
-	ancientbloom: ['effectspore' as ID, 'selfsufficient' as ID],
+	ancientbloom: ['effectspore' as ID, 'selfsufficient' as ID, 'pollenbloom' as ID],
+	fortressshell: ['selfsufficient' as ID, 'shellarmor' as ID, 'waterbarrage' as ID],
 	astralcore: ['purepower' as ID, 'naturalcure' as ID, 'illuminate' as ID],
 	bloomingsun: ['megasol' as ID, 'invigorate' as ID, 'naturalcure' as ID],
 	burningspirit: ['selfsufficient' as ID, 'opportunist' as ID, 'magmaarmor' as ID, 'filter' as ID],
+	burningcrown: ['intimidate' as ID, 'whitesmoke' as ID, 'wildfirecore' as ID, 'selfsufficient' as ID],
 	celestialheart: ['multiscale' as ID, 'soulheart' as ID],
 	calderacore: ['magmaarmor' as ID, 'drought' as ID],
 	doomwarning: ['magicbounce' as ID, 'magicguard' as ID],
