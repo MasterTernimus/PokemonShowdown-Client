@@ -10889,6 +10889,11 @@ name:'Scavenger',
 desc:"This Pokemon has Overcoat, Big Pecks, and Regenerator's effects.",
 shortDesc:'Overcoat + Big Pecks + Regenerator.'
 },
+territorial:{
+name:'Territorial',
+desc:"This Pokemon has Unnerve, Unaware, Tough Claws, and Intimidate's effects.",
+shortDesc:'Unnerve + Unaware + Tough Claws + Intimidate.'
+},
 toxicspines:{
 name:'Toxic Spines',
 desc:"This Pokemon has Toxic Debris, Corrosion, and Merciless's effects.",
@@ -10923,6 +10928,7 @@ hauntedchime:['elevate','windpower','cursedbody'],
 auramaster:['dualwield','innerfocus','technician'],
 doublestrike:['ironfist','technician','skilllink'],
 lunarorbit:['magicbounce','serenegrace','triage'],
+territorial:['unnerve','unaware','toughclaws','intimidate'],
 blinddevotion:['falsedevotion','technician','cottondown'],
 falsedevotion:['serenegrace','naturalrecovery','prankster'],
 aeviandream:['baddreams','shedskin','toughclaws'],
