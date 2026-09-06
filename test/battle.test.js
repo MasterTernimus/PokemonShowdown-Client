@@ -393,6 +393,17 @@ describe('Team Builder sprites', () => {
 	it('shows the added composite ability effects', () => {
 		assert.match(Dex.abilities.get('Pollen Bloom').desc, /Unaware/);
 		assert.match(Dex.abilities.get('Atrocity').desc, /Mold Breaker/);
+		assert.match(Dex.abilities.get('Ancient Bloom').desc, /Pollen Bloom/);
+		assert.match(Dex.abilities.get('Fortress Shell').desc, /Water Barrage/);
+		assert.match(Dex.abilities.get('Fortress Shell').desc, /Hidden effect: Friend Guard/);
+		assert.doesNotMatch(Dex.abilities.get('Fortress Shell').shortDesc, /Friend Guard|Dual Wield/);
+		assert.match(Dex.abilities.get('Burning Crown').desc, /Wildfire Core/);
+		assert.match(Dex.abilities.get('Burning Crown').desc, /Hidden effect: Filter/);
+		assert.doesNotMatch(Dex.abilities.get('Burning Crown').shortDesc, /Filter/);
+		assert(Dex.getAbilityEffects('fortressshell').has('waterbarrage'));
+		assert(!Dex.getAbilityEffects('fortressshell').has('friendguard'));
+		assert(Dex.getAbilityEffects('burningcrown').has('wildfirecore'));
+		assert(!Dex.getAbilityEffects('burningcrown').has('filter'));
 	});
 
 	it('keeps abilities on custom required-item Mega profiles', () => {

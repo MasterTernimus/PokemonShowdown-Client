@@ -7402,8 +7402,8 @@ shortDesc:"Magic Guard + Self Sufficient + Stalwart."
 },
 ancientbloom:{
 name:"Ancient Bloom",
-desc:"This Pokemon has Effect Spore and Self Sufficient's effects. It keeps its field-based Defense, Special Defense, and power boosts.",
-shortDesc:"Effect Spore + Self Sufficient; keeps field boosts."
+desc:"This Pokemon has Effect Spore, Self Sufficient, and Pollen Bloom's effects. It keeps its field-based Defense, Special Defense, and power boosts.",
+shortDesc:"Effect Spore + Self Sufficient + Pollen Bloom; keeps field boosts."
 },
 ange:{
 name:"Ange",
@@ -7517,8 +7517,8 @@ shortDesc:'Iron Fist + Technician + Skill Link.'
 },
 burningcrown:{
 name:"Burning Crown",
-desc:"This Pokemon has White Smoke, Filter, and Self Sufficient. When a Pokemon faints, it raises the highest offensive stat of itself and its allies by 1. Its field bonuses remain active.",
-shortDesc:"White Smoke + Filter + Self Sufficient; faint raises the side's highest offenses."
+desc:"This Pokemon has Intimidate, White Smoke, Wildfire Core, and Self Sufficient. Hidden effect: Filter. When a Pokemon faints, it raises the highest offensive stat of itself and its allies by 1. Its field bonuses remain active.",
+shortDesc:"Intimidate + White Smoke + Wildfire Core + Self Sufficient; faint raises the side's highest offenses."
 },
 burningego:{
 name:"Burning Ego",
@@ -7707,8 +7707,8 @@ shortDesc:"On switch-in, this Pokemon sets Forest Terrain for 5 turns."
 },
 fortressshell:{
 name:"Fortress Shell",
-desc:"This Pokemon has Self Sufficient, Shell Armor, Friend Guard, and Dual Wield's effects. In Water Surface, Underwater, Factory, and Short Circuit fields, Electric moves are redirected to it and raise its Attack and Special Attack. Fairy Tale, New World, Cold Eclipse, and Starlight Arena give it +1 Defense and +1 Special Defense once per active terrain.",
-shortDesc:"Self Sufficient + Shell Armor + Friend Guard + Dual Wield; keeps field bonuses."
+desc:"This Pokemon has Self Sufficient, Shell Armor, and Water Barrage's effects. Hidden effect: Friend Guard. In Water Surface, Underwater, Factory, and Short Circuit fields, Electric moves are redirected to it and raise its Attack and Special Attack. Fairy Tale, New World, Cold Eclipse, and Starlight Arena give it +1 Defense and +1 Special Defense once per active terrain.",
+shortDesc:"Self Sufficient + Shell Armor + Water Barrage; keeps field bonuses."
 },
 freezerburn:{
 name:"Freezer Burn",
@@ -10958,10 +10958,12 @@ sweetdecay:['hustle','gluttony','sweetveil','corrosion'],
 sweetsanctuary:['friendguard','sweetveil','aromaveil','pastelveil'],
 heatcoil:['speedboost','magmaarmor','flamebody'],
 wickedsnare:['stakeout','tanglinghair','prankster'],
-ancientbloom:['effectspore','selfsufficient'],
+ancientbloom:['effectspore','selfsufficient','pollenbloom'],
+fortressshell:['selfsufficient','shellarmor','waterbarrage'],
 astralcore:['purepower','naturalcure','illuminate'],
 bloomingsun:['megasol','invigorate','naturalcure'],
 burningspirit:['selfsufficient','opportunist','magmaarmor','filter'],
+burningcrown:['intimidate','whitesmoke','wildfirecore','selfsufficient'],
 celestialheart:['multiscale','soulheart'],
 calderacore:['magmaarmor','drought'],
 doomwarning:['magicbounce','magicguard'],
