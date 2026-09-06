@@ -437,6 +437,7 @@ describe('Team Builder sprites', () => {
 
 	it('shows the added composite ability effects', () => {
 		assert.match(Dex.abilities.get('Pollen Bloom').desc, /Unaware/);
+		assert.match(Dex.abilities.get('Territorial').desc, /Intimidate/);
 		assert.match(Dex.abilities.get('Lunar Dread').desc, /Unaware/);
 		assert.match(Dex.abilities.get('Atrocity').desc, /Mold Breaker/);
 		assert.match(Dex.abilities.get('Ancient Bloom').desc, /Pollen Bloom/);
@@ -448,6 +449,7 @@ describe('Team Builder sprites', () => {
 		assert.doesNotMatch(Dex.abilities.get('Burning Crown').shortDesc, /Filter/);
 		assert(Dex.getAbilityEffects('fortressshell').has('waterbarrage'));
 		assert(Dex.getAbilityEffects('lunardread').has('unaware'));
+		assert(Dex.getAbilityEffects('territorial').has('intimidate'));
 		assert(!Dex.getAbilityEffects('fortressshell').has('friendguard'));
 		assert(Dex.getAbilityEffects('burningcrown').has('wildfirecore'));
 		assert(!Dex.getAbilityEffects('burningcrown').has('filter'));

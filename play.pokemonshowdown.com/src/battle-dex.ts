@@ -10889,6 +10889,11 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		desc: "This Pokemon has Overcoat, Big Pecks, and Regenerator's effects.",
 		shortDesc: 'Overcoat + Big Pecks + Regenerator.',
 	},
+	territorial: {
+		name: 'Territorial',
+		desc: "This Pokemon has Unnerve, Unaware, Tough Claws, and Intimidate's effects.",
+		shortDesc: 'Unnerve + Unaware + Tough Claws + Intimidate.',
+	},
 	toxicspines: {
 		name: 'Toxic Spines',
 		desc: "This Pokemon has Toxic Debris, Corrosion, and Merciless's effects.",
@@ -10923,6 +10928,7 @@ const CUSTOM_ABILITY_COMPONENT_OVERRIDES: {[id: string]: readonly ID[]} = {
 	auramaster: ['dualwield' as ID, 'innerfocus' as ID, 'technician' as ID],
 	doublestrike: ['ironfist' as ID, 'technician' as ID, 'skilllink' as ID],
 	lunarorbit: ['magicbounce' as ID, 'serenegrace' as ID, 'triage' as ID],
+	territorial: ['unnerve' as ID, 'unaware' as ID, 'toughclaws' as ID, 'intimidate' as ID],
 	blinddevotion: ['falsedevotion' as ID, 'technician' as ID, 'cottondown' as ID],
 	falsedevotion: ['serenegrace' as ID, 'naturalrecovery' as ID, 'prankster' as ID],
 	aeviandream: ['baddreams' as ID, 'shedskin' as ID, 'toughclaws' as ID],
