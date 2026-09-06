@@ -365,6 +365,7 @@ describe('Team Builder sprites', () => {
 		for (const species of [
 			'Blastoise', 'Blastoise-Mega', 'Feraligatr', 'Froslass', 'Gothitelle',
 			'Hydreigon', 'Jolteon', 'Reuniclus', 'Sylveon', 'Clefable', 'Clefable-Mega',
+			'Lopunny', 'Lopunny-Mega',
 		]) {
 			for (const shiny of [false, true]) {
 				const sprite = Dex.getTeambuilderSprite({species, shiny}, 5);
@@ -385,6 +386,26 @@ describe('Team Builder sprites', () => {
 					const dir = `gen5${front ? '' : '-back'}${shiny ? '-shiny' : ''}`;
 					assert(sprite.url.includes(`/sprites/${dir}/${filename}`), `${species} should use its supplied sprite`);
 					assert(fs.existsSync(path.join(__dirname, '../play.pokemonshowdown.com/sprites', dir, filename)));
+				}
+			}
+		}
+	});
+
+	it('registers the supplied Lopunny and Mega Lopunny battle sprites', () => {
+		const expected = {
+			Lopunny: {filename: 'lopunny.png', front: {w: 106, h: 120}, back: {w: 108, h: 124}},
+			'Lopunny-Mega': {filename: 'lopunny-mega.png', front: {w: 112, h: 126}, back: {w: 112, h: 128}},
+		};
+		for (const [species, data] of Object.entries(expected)) {
+			for (const shiny of [false, true]) {
+				for (const front of [false, true]) {
+					const sprite = Dex.getSpriteData(species, front, {gen: 9, shiny, noScale: true});
+					const directory = `gen5${front ? '' : '-back'}${shiny ? '-shiny' : ''}`;
+					const dimensions = front ? data.front : data.back;
+					assert(sprite.url.endsWith(`/sprites/${directory}/${data.filename}`), `${species} should use its supplied sprite`);
+					assert.equal(sprite.w, dimensions.w);
+					assert.equal(sprite.h, dimensions.h);
+					assert(fs.existsSync(path.join(__dirname, '../play.pokemonshowdown.com/sprites', directory, data.filename)));
 				}
 			}
 		}
