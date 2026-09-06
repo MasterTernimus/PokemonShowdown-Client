@@ -10896,8 +10896,8 @@ shortDesc:'Toxic Debris + Corrosion + Merciless.'
 },
 lunardread:{
 name:'Lunar Dread',
-desc:"This Pokemon has Magic Guard and Pressure's effects.",
-shortDesc:'Magic Guard + Pressure.'
+desc:"This Pokemon has Magic Guard, Pressure, and Unaware's effects.",
+shortDesc:'Magic Guard + Pressure + Unaware.'
 },
 tidaljaw:{
 name:'Tidal Jaw',
@@ -10937,7 +10937,7 @@ glacialmass:['heavymetal','thickfat'],
 warship:['swiftswim','unaware','solidrock','strongjaw'],
 naturalrecovery:['naturalcure','regenerator'],
 ragingbeast:['guts','moldbreaker'],
-lunardread:['magicguard','pressure'],
+lunardread:['magicguard','pressure','unaware'],
 scavenger:['overcoat','bigpecks','regenerator'],
 toxicspines:['toxicdebris','corrosion','merciless'],
 witheringshell:['crumblingshell','naturalrecovery','sturdy'],

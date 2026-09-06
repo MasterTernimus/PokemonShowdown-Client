@@ -10896,8 +10896,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 	},
 	lunardread: {
 		name: 'Lunar Dread',
-		desc: "This Pokemon has Magic Guard and Pressure's effects.",
-		shortDesc: 'Magic Guard + Pressure.',
+		desc: "This Pokemon has Magic Guard, Pressure, and Unaware's effects.",
+		shortDesc: 'Magic Guard + Pressure + Unaware.',
 	},
 	tidaljaw: {
 		name: 'Tidal Jaw',
@@ -10937,7 +10937,7 @@ const CUSTOM_ABILITY_COMPONENT_OVERRIDES: {[id: string]: readonly ID[]} = {
 	warship: ['swiftswim' as ID, 'unaware' as ID, 'solidrock' as ID, 'strongjaw' as ID],
 	naturalrecovery: ['naturalcure' as ID, 'regenerator' as ID],
 	ragingbeast: ['guts' as ID, 'moldbreaker' as ID],
-	lunardread: ['magicguard' as ID, 'pressure' as ID],
+	lunardread: ['magicguard' as ID, 'pressure' as ID, 'unaware' as ID],
 	scavenger: ['overcoat' as ID, 'bigpecks' as ID, 'regenerator' as ID],
 	toxicspines: ['toxicdebris' as ID, 'corrosion' as ID, 'merciless' as ID],
 	witheringshell: ['crumblingshell' as ID, 'naturalrecovery' as ID, 'sturdy' as ID],
