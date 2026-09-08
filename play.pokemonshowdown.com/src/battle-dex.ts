@@ -56,6 +56,51 @@ function isSilvallySpecies(name: string) {
 }
 
 const CUSTOM_ITEM_ICON_SPRITES: {[id: string]: string} = {
+	absolitez: 'absolitez.png',
+	barbaracite: 'barbaracite.png',
+	baxcalibrite: 'baxcalibrite.png',
+	chandelurite: 'chandelurite.png',
+	chesnaughtite: 'chesnaughtite.png',
+	chimechite: 'chimechite.png',
+	clefablite: 'clefablite.png',
+	crabominite: 'crabominite.png',
+	darkranite: 'darkranite.png',
+	delphoxite: 'delphoxite.png',
+	dragalgite: 'dragalgite.png',
+	dragoninite: 'dragoninite.png',
+	drampanite: 'drampanite.png',
+	eelektrossite: 'eelektrossite.png',
+	emboarite: 'emboarite.png',
+	excadrite: 'excadrite.png',
+	falinksite: 'falinksite.png',
+	feraligite: 'feraligite.png',
+	floettite: 'floettite.png',
+	froslassite: 'froslassite.png',
+	garchompitez: 'garchompitez.png',
+	glimmoranite: 'glimmoranite.png',
+	golisopite: 'golisopite.png',
+	golurkite: 'golurkite.png',
+	greninjite: 'greninjite.png',
+	hawluchanite: 'hawluchanite.png',
+	heatranite: 'heatranite.png',
+	lucarionitez: 'lucarionitez.png',
+	magearnite: 'magearnite.png',
+	malamarite: 'malamarite.png',
+	meganiumite: 'meganiumite.png',
+	meowsticite: 'meowsticite.png',
+	pyroarite: 'pyroarite.png',
+	raichunitex: 'raichunitex.png',
+	raichunitey: 'raichunitey.png',
+	scolipite: 'scolipite.png',
+	scovillainite: 'scovillainite.png',
+	scraftinite: 'scraftinite.png',
+	skarmorite: 'skarmorite.png',
+	staraptite: 'staraptite.png',
+	starminite: 'starminite.png',
+	tatsugirinite: 'tatsugirinite.png',
+	victreebelite: 'victreebelite.png',
+	zeraorite: 'zeraorite.png',
+	zygardite: 'zygardite.png',
 	belliboltite: 'belliboltite.png',
 	reuniclusite: 'reuniclusite.png',
 	sunflorite: 'sunflorite.png',
@@ -368,7 +413,7 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 			baseSpecies: 'Volcarona-Aevian',
 			types: ['Flying'],
 			baseStats: {hp: 100, atk: 60, def: 90, spa: 135, spd: 100, spe: 115},
-			abilities: {0: 'Shield Dust', 1: 'Wind Power', H: 'Pressure'},
+			abilities: {0: 'Air Lock', 1: 'Wind Power', H: 'Pressure'},
 			otherFormes: [],
 			formeOrder: [],
 			standalone: true,
@@ -1776,6 +1821,10 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 		},
 	},
 };
+
+// Official menu icons use their own sheet so custom icon slots remain unchanged.
+const OFFICIAL_MENU_ICON_INDEXES: {[id: string]: number} = {"bulbasaur":1,"ivysaur":2,"venusaur":3,"venusaurmega":1320,"venusaurgmax":1397,"charmander":4,"charmeleon":5,"charizard":6,"charizardmegax":1321,"charizardmegay":1322,"charizardgmax":1370,"squirtle":7,"wartortle":8,"blastoise":9,"blastoisemega":1323,"blastoisegmax":1398,"caterpie":10,"metapod":11,"butterfree":12,"butterfreegmax":1371,"weedle":13,"kakuna":14,"beedrill":15,"beedrillmega":1324,"pidgey":16,"pidgeotto":17,"pidgeot":18,"pidgeotmega":1325,"rattata":19,"rattataalola":1151,"raticate":20,"raticatealola":1152,"raticatealolatotem":1152,"spearow":21,"fearow":22,"ekans":23,"arbok":24,"pikachu":25,"pikachucosplay":1039,"pikachurockstar":1038,"pikachubelle":1034,"pikachupopstar":1037,"pikachuphd":1036,"pikachulibre":1035,"pikachuoriginal":1185,"pikachuhoenn":1186,"pikachusinnoh":1187,"pikachuunova":1188,"pikachukalos":1189,"pikachualola":1190,"pikachupartner":1191,"pikachustarter":1196,"pikachugmax":1372,"pikachuworld":1231,"raichu":26,"raichualola":1153,"raichumegax":1430,"raichumegay":1431,"sandshrew":27,"sandshrewalola":1154,"sandslash":28,"sandslashalola":1155,"nidoranf":29,"nidorina":30,"nidoqueen":31,"nidoranm":32,"nidorino":33,"nidoking":34,"clefairy":35,"clefable":36,"clefablemega":1404,"vulpix":37,"vulpixalola":1156,"ninetales":38,"ninetalesalola":1157,"jigglypuff":39,"wigglytuff":40,"zubat":41,"golbat":42,"oddish":43,"gloom":44,"vileplume":45,"paras":46,"parasect":47,"venonat":48,"venomoth":49,"diglett":50,"diglettalola":1158,"dugtrio":51,"dugtrioalola":1159,"meowth":52,"meowthalola":1160,"meowthgalar":1198,"meowthgmax":1373,"persian":53,"persianalola":1161,"psyduck":54,"golduck":55,"mankey":56,"primeape":57,"growlithe":58,"growlithehisui":1238,"arcanine":59,"arcaninehisui":1239,"poliwag":60,"poliwhirl":61,"poliwrath":62,"abra":63,"kadabra":64,"alakazam":65,"alakazammega":1326,"machop":66,"machoke":67,"machamp":68,"machampgmax":1374,"bellsprout":69,"weepinbell":70,"victreebel":71,"victreebelmega":1405,"tentacool":72,"tentacruel":73,"geodude":74,"geodudealola":1162,"graveler":75,"graveleralola":1163,"golem":76,"golemalola":1164,"ponyta":77,"ponytagalar":1199,"rapidash":78,"rapidashgalar":1200,"slowpoke":79,"slowpokegalar":1228,"slowbro":80,"slowbromega":1327,"slowbrogalar":1229,"magnemite":81,"magneton":82,"farfetchd":83,"farfetchdgalar":1201,"doduo":84,"dodrio":85,"seel":86,"dewgong":87,"grimer":88,"grimeralola":1165,"muk":89,"mukalola":1166,"shellder":90,"cloyster":91,"gastly":92,"haunter":93,"gengar":94,"gengarmega":1328,"gengargmax":1375,"onix":95,"drowzee":96,"hypno":97,"krabby":98,"kingler":99,"kinglergmax":1376,"voltorb":100,"voltorbhisui":1240,"electrode":101,"electrodehisui":1241,"exeggcute":102,"exeggutor":103,"exeggutoralola":1167,"cubone":104,"marowak":105,"marowakalola":1168,"marowakalolatotem":1168,"hitmonlee":106,"hitmonchan":107,"lickitung":108,"koffing":109,"weezing":110,"weezinggalar":1202,"rhyhorn":111,"rhydon":112,"chansey":113,"tangela":114,"kangaskhan":115,"kangaskhanmega":1329,"horsea":116,"seadra":117,"goldeen":118,"seaking":119,"staryu":120,"starmie":121,"starmiemega":1406,"mrmime":122,"mrmimegalar":1203,"scyther":123,"jynx":124,"electabuzz":125,"magmar":126,"pinsir":127,"pinsirmega":1330,"tauros":128,"taurospaldeacombat":1256,"taurospaldeablaze":1257,"taurospaldeaaqua":1258,"magikarp":129,"gyarados":130,"gyaradosmega":1331,"lapras":131,"laprasgmax":1377,"ditto":132,"eevee":133,"eeveestarter":1197,"eeveegmax":1378,"vaporeon":134,"jolteon":135,"flareon":136,"porygon":137,"omanyte":138,"omastar":139,"kabuto":140,"kabutops":141,"aerodactyl":142,"aerodactylmega":1332,"snorlax":143,"snorlaxgmax":1379,"articuno":144,"articunogalar":1232,"zapdos":145,"zapdosgalar":1233,"moltres":146,"moltresgalar":1234,"dratini":147,"dragonair":148,"dragonite":149,"dragonitemega":1407,"mewtwo":150,"mewtwomegax":1333,"mewtwomegay":1334,"mew":151,"chikorita":152,"bayleef":153,"meganium":154,"meganiummega":1408,"cyndaquil":155,"quilava":156,"typhlosion":157,"typhlosionhisui":1242,"totodile":158,"croconaw":159,"feraligatr":160,"feraligatrmega":1409,"sentret":161,"furret":162,"hoothoot":163,"noctowl":164,"ledyba":165,"ledian":166,"spinarak":167,"ariados":168,"crobat":169,"chinchou":170,"lanturn":171,"pichu":172,"pichuspikyeared":172,"cleffa":173,"igglybuff":174,"togepi":175,"togetic":176,"natu":177,"xatu":178,"mareep":179,"flaaffy":180,"ampharos":181,"ampharosmega":1335,"bellossom":182,"marill":183,"azumarill":184,"sudowoodo":185,"politoed":186,"hoppip":187,"skiploom":188,"jumpluff":189,"aipom":190,"sunkern":191,"sunflora":192,"yanma":193,"wooper":194,"wooperpaldea":1259,"quagsire":195,"espeon":196,"umbreon":197,"murkrow":198,"slowking":199,"slowkinggalar":1235,"misdreavus":200,"unown":201,"wobbuffet":202,"girafarig":203,"pineco":204,"forretress":205,"dunsparce":206,"gligar":207,"steelix":208,"steelixmega":1336,"snubbull":209,"granbull":210,"qwilfish":211,"qwilfishhisui":1243,"scizor":212,"scizormega":1337,"shuckle":213,"heracross":214,"heracrossmega":1338,"sneasel":215,"sneaselhisui":1244,"teddiursa":216,"ursaring":217,"slugma":218,"magcargo":219,"swinub":220,"piloswine":221,"corsola":222,"corsolagalar":1204,"remoraid":223,"octillery":224,"delibird":225,"mantine":226,"skarmory":227,"skarmorymega":1410,"houndour":228,"houndoom":229,"houndoommega":1339,"kingdra":230,"phanpy":231,"donphan":232,"porygon2":233,"stantler":234,"smeargle":235,"tyrogue":236,"hitmontop":237,"smoochum":238,"elekid":239,"magby":240,"miltank":241,"blissey":242,"raikou":243,"entei":244,"suicune":245,"larvitar":246,"pupitar":247,"tyranitar":248,"tyranitarmega":1340,"lugia":249,"hooh":250,"celebi":251,"treecko":252,"grovyle":253,"sceptile":254,"sceptilemega":1341,"torchic":255,"combusken":256,"blaziken":257,"blazikenmega":1342,"mudkip":258,"marshtomp":259,"swampert":260,"swampertmega":1343,"poochyena":261,"mightyena":262,"zigzagoon":263,"zigzagoongalar":1205,"linoone":264,"linoonegalar":1206,"wurmple":265,"silcoon":266,"beautifly":267,"cascoon":268,"dustox":269,"lotad":270,"lombre":271,"ludicolo":272,"seedot":273,"nuzleaf":274,"shiftry":275,"taillow":276,"swellow":277,"wingull":278,"pelipper":279,"ralts":280,"kirlia":281,"gardevoir":282,"gardevoirmega":1344,"surskit":283,"masquerain":284,"shroomish":285,"breloom":286,"slakoth":287,"vigoroth":288,"slaking":289,"nincada":290,"ninjask":291,"shedinja":292,"whismur":293,"loudred":294,"exploud":295,"makuhita":296,"hariyama":297,"azurill":298,"nosepass":299,"skitty":300,"delcatty":301,"sableye":302,"sableyemega":1345,"mawile":303,"mawilemega":1346,"aron":304,"lairon":305,"aggron":306,"aggronmega":1347,"meditite":307,"medicham":308,"medichammega":1348,"electrike":309,"manectric":310,"manectricmega":1349,"plusle":311,"minun":312,"volbeat":313,"illumise":314,"roselia":315,"gulpin":316,"swalot":317,"carvanha":318,"sharpedo":319,"sharpedomega":1350,"wailmer":320,"wailord":321,"numel":322,"camerupt":323,"cameruptmega":1351,"torkoal":324,"spoink":325,"grumpig":326,"spinda":327,"trapinch":328,"vibrava":329,"flygon":330,"cacnea":331,"cacturne":332,"swablu":333,"altaria":334,"altariamega":1352,"zangoose":335,"seviper":336,"lunatone":337,"solrock":338,"barboach":339,"whiscash":340,"corphish":341,"crawdaunt":342,"baltoy":343,"claydol":344,"lileep":345,"cradily":346,"anorith":347,"armaldo":348,"feebas":349,"milotic":350,"castform":351,"castformsunny":1069,"castformrainy":1067,"castformsnowy":1068,"kecleon":352,"shuppet":353,"banette":354,"banettemega":1353,"duskull":355,"dusclops":356,"tropius":357,"chimecho":358,"chimechomega":1432,"absol":359,"absolmega":1354,"absolmegaz":1433,"wynaut":360,"snorunt":361,"glalie":362,"glaliemega":1355,"spheal":363,"sealeo":364,"walrein":365,"clamperl":366,"huntail":367,"gorebyss":368,"relicanth":369,"luvdisc":370,"bagon":371,"shelgon":372,"salamence":373,"salamencemega":1356,"beldum":374,"metang":375,"metagross":376,"metagrossmega":1357,"regirock":377,"regice":378,"registeel":379,"latias":380,"latiasmega":1358,"latios":381,"latiosmega":1359,"kyogre":382,"kyogreprimal":1360,"groudon":383,"groudonprimal":1361,"rayquaza":384,"rayquazamega":1362,"jirachi":385,"deoxys":386,"deoxysattack":1070,"deoxysdefense":1071,"deoxysspeed":1072,"turtwig":387,"grotle":388,"torterra":389,"chimchar":390,"monferno":391,"infernape":392,"piplup":393,"prinplup":394,"empoleon":395,"starly":396,"staravia":397,"staraptor":398,"staraptormega":1434,"bidoof":399,"bibarel":400,"kricketot":401,"kricketune":402,"shinx":403,"luxio":404,"luxray":405,"budew":406,"roserade":407,"cranidos":408,"rampardos":409,"shieldon":410,"bastiodon":411,"burmy":412,"wormadam":413,"wormadamsandy":1075,"wormadamtrash":1076,"mothim":414,"combee":415,"vespiquen":416,"pachirisu":417,"buizel":418,"floatzel":419,"cherubi":420,"cherrim":421,"cherrimsunshine":1077,"shellos":422,"gastrodon":423,"ambipom":424,"drifloon":425,"drifblim":426,"buneary":427,"lopunny":428,"lopunnymega":1363,"mismagius":429,"honchkrow":430,"glameow":431,"purugly":432,"chingling":433,"stunky":434,"skuntank":435,"bronzor":436,"bronzong":437,"bonsly":438,"mimejr":439,"happiny":440,"chatot":441,"spiritomb":442,"gible":443,"gabite":444,"garchomp":445,"garchompmega":1364,"garchompmegaz":1435,"munchlax":446,"riolu":447,"lucario":448,"lucariomega":1365,"lucariomegaz":1436,"hippopotas":449,"hippowdon":450,"skorupi":451,"drapion":452,"croagunk":453,"toxicroak":454,"carnivine":455,"finneon":456,"lumineon":457,"mantyke":458,"snover":459,"abomasnow":460,"abomasnowmega":1366,"weavile":461,"magnezone":462,"lickilicky":463,"rhyperior":464,"tangrowth":465,"electivire":466,"magmortar":467,"togekiss":468,"yanmega":469,"leafeon":470,"glaceon":471,"gliscor":472,"mamoswine":473,"porygonz":474,"gallade":475,"gallademega":1367,"probopass":476,"dusknoir":477,"froslass":478,"froslassmega":1411,"rotom":479,"rotomheat":1082,"rotomwash":1084,"rotomfrost":1081,"rotomfan":1080,"rotommow":1083,"uxie":480,"mesprit":481,"azelf":482,"dialga":483,"dialgaorigin":1269,"palkia":484,"palkiaorigin":1270,"heatran":485,"heatranmega":1437,"regigigas":486,"giratina":487,"giratinaorigin":1085,"cresselia":488,"phione":489,"manaphy":490,"darkrai":491,"darkraimega":1438,"shaymin":492,"shayminsky":1086,"arceus":493,"arceusbug":1278,"arceusdark":1279,"arceusdragon":1280,"arceuselectric":1281,"arceusfairy":1282,"arceusfighting":1283,"arceusfire":1284,"arceusflying":1285,"arceusghost":1286,"arceusgrass":1287,"arceusground":1288,"arceusice":1289,"arceuspoison":1290,"arceuspsychic":1291,"arceusrock":1292,"arceussteel":1293,"arceuswater":1294,"victini":494,"snivy":495,"servine":496,"serperior":497,"tepig":498,"pignite":499,"emboar":500,"emboarmega":1412,"oshawott":501,"dewott":502,"samurott":503,"samurotthisui":1245,"patrat":504,"watchog":505,"lillipup":506,"herdier":507,"stoutland":508,"purrloin":509,"liepard":510,"pansage":511,"simisage":512,"pansear":513,"simisear":514,"panpour":515,"simipour":516,"munna":517,"musharna":518,"pidove":519,"tranquill":520,"unfezant":521,"blitzle":522,"zebstrika":523,"roggenrola":524,"boldore":525,"gigalith":526,"woobat":527,"swoobat":528,"drilbur":529,"excadrill":530,"excadrillmega":1413,"audino":531,"audinomega":1368,"timburr":532,"gurdurr":533,"conkeldurr":534,"tympole":535,"palpitoad":536,"seismitoad":537,"throh":538,"sawk":539,"sewaddle":540,"swadloon":541,"leavanny":542,"venipede":543,"whirlipede":544,"scolipede":545,"scolipedemega":1414,"cottonee":546,"whimsicott":547,"petilil":548,"lilligant":549,"lilliganthisui":1246,"basculin":550,"basculinbluestriped":1088,"basculinwhitestriped":1271,"sandile":551,"krokorok":552,"krookodile":553,"darumaka":554,"darumakagalar":1207,"darmanitan":555,"darmanitanzen":1089,"darmanitangalar":1208,"darmanitangalarzen":1209,"maractus":556,"dwebble":557,"crustle":558,"scraggy":559,"scrafty":560,"scraftymega":1415,"sigilyph":561,"yamask":562,"yamaskgalar":1210,"cofagrigus":563,"tirtouga":564,"carracosta":565,"archen":566,"archeops":567,"trubbish":568,"garbodor":569,"garbodorgmax":1380,"zorua":570,"zoruahisui":1247,"zoroark":571,"zoroarkhisui":1248,"minccino":572,"cinccino":573,"gothita":574,"gothorita":575,"gothitelle":576,"solosis":577,"duosion":578,"reuniclus":579,"ducklett":580,"swanna":581,"vanillite":582,"vanillish":583,"vanilluxe":584,"deerling":585,"sawsbuck":586,"emolga":587,"karrablast":588,"escavalier":589,"foongus":590,"amoonguss":591,"frillish":592,"jellicent":593,"alomomola":594,"joltik":595,"galvantula":596,"ferroseed":597,"ferrothorn":598,"klink":599,"klang":600,"klinklang":601,"tynamo":602,"eelektrik":603,"eelektross":604,"eelektrossmega":1416,"elgyem":605,"beheeyem":606,"litwick":607,"lampent":608,"chandelure":609,"chandeluremega":1417,"axew":610,"fraxure":611,"haxorus":612,"cubchoo":613,"beartic":614,"cryogonal":615,"shelmet":616,"accelgor":617,"stunfisk":618,"stunfiskgalar":1211,"mienfoo":619,"mienshao":620,"druddigon":621,"golett":622,"golurk":623,"golurkmega":1439,"pawniard":624,"bisharp":625,"bouffalant":626,"rufflet":627,"braviary":628,"braviaryhisui":1249,"vullaby":629,"mandibuzz":630,"heatmor":631,"durant":632,"deino":633,"zweilous":634,"hydreigon":635,"larvesta":636,"volcarona":637,"cobalion":638,"terrakion":639,"virizion":640,"tornadus":641,"tornadustherian":1098,"thundurus":642,"thundurustherian":1099,"reshiram":643,"zekrom":644,"landorus":645,"landorustherian":1100,"kyurem":646,"kyuremblack":1101,"kyuremwhite":1102,"keldeo":647,"keldeoresolute":1103,"meloetta":648,"meloettapirouette":1104,"genesect":649,"genesectdouse":1295,"genesectshock":1296,"genesectburn":1297,"genesectchill":1298,"chespin":650,"quilladin":651,"chesnaught":652,"chesnaughtmega":1418,"fennekin":653,"braixen":654,"delphox":655,"delphoxmega":1419,"froakie":656,"frogadier":657,"greninja":658,"greninjabond":658,"greninjaash":1169,"greninjamega":1420,"bunnelby":659,"diggersby":660,"fletchling":661,"fletchinder":662,"talonflame":663,"scatterbug":664,"spewpa":665,"vivillon":666,"vivillonfancy":1108,"vivillonpokeball":1117,"litleo":667,"pyroar":668,"pyroarmega":1421,"flabebe":669,"floette":670,"floetteeternal":1130,"floettemega":1422,"florges":671,"skiddo":672,"gogoat":673,"pancham":674,"pangoro":675,"furfrou":676,"espurr":677,"meowstic":678,"meowsticf":1147,"meowsticmmega":1440,"meowsticfmega":1440,"honedge":679,"doublade":680,"aegislash":681,"aegislashblade":1148,"spritzee":682,"aromatisse":683,"swirlix":684,"slurpuff":685,"inkay":686,"malamar":687,"malamarmega":1423,"binacle":688,"barbaracle":689,"barbaraclemega":1424,"skrelp":690,"dragalge":691,"dragalgemega":1425,"clauncher":692,"clawitzer":693,"helioptile":694,"heliolisk":695,"tyrunt":696,"tyrantrum":697,"amaura":698,"aurorus":699,"sylveon":700,"hawlucha":701,"hawluchamega":1426,"dedenne":702,"carbink":703,"goomy":704,"sliggoo":705,"sliggoohisui":1250,"goodra":706,"goodrahisui":1251,"klefki":707,"phantump":708,"trevenant":709,"pumpkaboo":710,"pumpkaboosmall":710,"pumpkaboolarge":710,"pumpkaboosuper":710,"gourgeist":711,"gourgeistsmall":711,"gourgeistlarge":711,"gourgeistsuper":711,"bergmite":712,"avalugg":713,"avalugghisui":1252,"noibat":714,"noivern":715,"xerneas":716,"xerneasneutral":1149,"yveltal":717,"zygarde":718,"zygarde10":1170,"zygardecomplete":1171,"zygardemega":1427,"diancie":719,"dianciemega":1369,"hoopa":720,"hoopaunbound":1150,"volcanion":721,"rowlet":722,"dartrix":723,"decidueye":724,"decidueyehisui":1253,"litten":725,"torracat":726,"incineroar":727,"popplio":728,"brionne":729,"primarina":730,"pikipek":731,"trumbeak":732,"toucannon":733,"yungoos":734,"gumshoos":735,"gumshoostotem":735,"grubbin":736,"charjabug":737,"vikavolt":738,"vikavolttotem":738,"crabrawler":739,"crabominable":740,"crabominablemega":1441,"oricorio":741,"oricoriopompom":1172,"oricoriopau":1173,"oricoriosensu":1174,"cutiefly":742,"ribombee":743,"ribombeetotem":743,"rockruff":744,"rockruffdusk":744,"lycanroc":745,"lycanrocmidnight":1175,"lycanrocdusk":1192,"wishiwashi":746,"wishiwashischool":1176,"mareanie":747,"toxapex":748,"mudbray":749,"mudsdale":750,"dewpider":751,"araquanid":752,"araquanidtotem":752,"fomantis":753,"lurantis":754,"lurantistotem":754,"morelull":755,"shiinotic":756,"salandit":757,"salazzle":758,"salazzletotem":758,"stufful":759,"bewear":760,"bounsweet":761,"steenee":762,"tsareena":763,"comfey":764,"oranguru":765,"passimian":766,"wimpod":767,"golisopod":768,"golisopodmega":1442,"sandygast":769,"palossand":770,"pyukumuku":771,"typenull":772,"silvally":773,"silvallybug":1299,"silvallydark":1300,"silvallydragon":1301,"silvallyelectric":1302,"silvallyfairy":1303,"silvallyfighting":1304,"silvallyfire":1305,"silvallyflying":1306,"silvallyghost":1307,"silvallygrass":1308,"silvallyground":1309,"silvallyice":1310,"silvallypoison":1311,"silvallypsychic":1312,"silvallyrock":1313,"silvallysteel":1314,"silvallywater":1315,"minior":774,"miniormeteor":1177,"komala":775,"turtonator":776,"togedemaru":777,"togedemarutotem":777,"mimikyu":778,"mimikyubusted":778,"mimikyutotem":778,"mimikyubustedtotem":778,"bruxish":779,"drampa":780,"drampamega":1428,"dhelmise":781,"jangmoo":782,"hakamoo":783,"kommoo":784,"kommoototem":784,"tapukoko":785,"tapulele":786,"tapubulu":787,"tapufini":788,"cosmog":789,"cosmoem":790,"solgaleo":791,"lunala":792,"nihilego":793,"buzzwole":794,"pheromosa":795,"xurkitree":796,"celesteela":797,"kartana":798,"guzzlord":799,"necrozma":800,"necrozmaduskmane":1193,"necrozmadawnwings":1194,"necrozmaultra":1195,"magearna":801,"magearnaoriginal":1184,"magearnamega":1443,"magearnaoriginalmega":1444,"marshadow":802,"poipole":803,"naganadel":804,"stakataka":805,"blacephalon":806,"zeraora":807,"zeraoramega":1445,"meltan":808,"melmetal":809,"melmetalgmax":1381,"grookey":810,"thwackey":811,"rillaboom":812,"rillaboomgmax":1399,"scorbunny":813,"raboot":814,"cinderace":815,"cinderacegmax":1400,"sobble":816,"drizzile":817,"inteleon":818,"inteleongmax":1401,"skwovet":819,"greedent":820,"rookidee":821,"corvisquire":822,"corviknight":823,"corviknightgmax":1382,"blipbug":824,"dottler":825,"orbeetle":826,"orbeetlegmax":1383,"nickit":827,"thievul":828,"gossifleur":829,"eldegoss":830,"wooloo":831,"dubwool":832,"chewtle":833,"drednaw":834,"drednawgmax":1384,"yamper":835,"boltund":836,"rolycoly":837,"carkol":838,"coalossal":839,"coalossalgmax":1385,"applin":840,"flapple":841,"flapplegmax":1386,"appletun":842,"appletungmax":1387,"silicobra":843,"sandaconda":844,"sandacondagmax":1388,"cramorant":845,"cramorantgulping":1212,"cramorantgorging":1213,"arrokuda":846,"barraskewda":847,"toxel":848,"toxtricity":849,"toxtricitylowkey":1214,"toxtricitygmax":1389,"toxtricitylowkeygmax":1389,"sizzlipede":850,"centiskorch":851,"centiskorchgmax":1390,"clobbopus":852,"grapploct":853,"sinistea":854,"sinisteaantique":854,"polteageist":855,"polteageistantique":855,"hatenna":856,"hattrem":857,"hatterene":858,"hatterenegmax":1391,"impidimp":859,"morgrem":860,"grimmsnarl":861,"grimmsnarlgmax":1392,"obstagoon":862,"perrserker":863,"cursola":864,"sirfetchd":865,"mrrime":866,"runerigus":867,"milcery":868,"alcremie":869,"alcremiegmax":1393,"falinks":870,"falinksmega":1429,"pincurchin":871,"snom":872,"frosmoth":873,"stonjourner":874,"eiscue":875,"eiscuenoice":1223,"indeedee":876,"indeedeef":1224,"morpeko":877,"morpekohangry":1225,"cufant":878,"copperajah":879,"copperajahgmax":1394,"dracozolt":880,"arctozolt":881,"dracovish":882,"arctovish":883,"duraludon":884,"duraludongmax":1395,"dreepy":885,"drakloak":886,"dragapult":887,"zacian":888,"zaciancrowned":1226,"zamazenta":889,"zamazentacrowned":1227,"eternatus":890,"eternatuseternamax":1396,"kubfu":891,"urshifu":892,"urshifurapidstrike":892,"urshifugmax":1402,"urshifurapidstrikegmax":1403,"zarude":893,"zarudedada":1230,"regieleki":894,"regidrago":895,"glastrier":896,"spectrier":897,"calyrex":898,"calyrexice":1236,"calyrexshadow":1237,"wyrdeer":899,"kleavor":900,"ursaluna":901,"ursalunabloodmoon":1272,"basculegion":902,"basculegionf":1254,"sneasler":903,"overqwil":904,"enamorus":905,"enamorustherian":1255,"sprigatito":906,"floragato":907,"meowscarada":908,"fuecoco":909,"crocalor":910,"skeledirge":911,"quaxly":912,"quaxwell":913,"quaquaval":914,"lechonk":915,"oinkologne":916,"oinkolognef":1260,"tarountula":917,"spidops":918,"nymble":919,"lokix":920,"pawmi":921,"pawmo":922,"pawmot":923,"tandemaus":924,"maushold":925,"mausholdfour":1262,"fidough":926,"dachsbun":927,"smoliv":928,"dolliv":929,"arboliva":930,"squawkabilly":931,"squawkabillyblue":1265,"squawkabillyyellow":1266,"squawkabillywhite":1267,"nacli":932,"naclstack":933,"garganacl":934,"charcadet":935,"armarouge":936,"ceruledge":937,"tadbulb":938,"bellibolt":939,"wattrel":940,"kilowattrel":941,"maschiff":942,"mabosstiff":943,"shroodle":944,"grafaiai":945,"bramblin":946,"brambleghast":947,"toedscool":948,"toedscruel":949,"klawf":950,"capsakid":951,"scovillain":952,"scovillainmega":1446,"rellor":953,"rabsca":954,"flittle":955,"espathra":956,"tinkatink":957,"tinkatuff":958,"tinkaton":959,"wiglett":960,"wugtrio":961,"bombirdier":962,"finizen":963,"palafin":964,"palafinhero":1261,"varoom":965,"revavroom":966,"cyclizar":967,"orthworm":968,"glimmet":969,"glimmora":970,"glimmoramega":1447,"greavard":971,"houndstone":972,"flamigo":973,"cetoddle":974,"cetitan":975,"veluza":976,"dondozo":977,"tatsugiri":978,"tatsugiridroopy":1263,"tatsugiristretchy":1264,"tatsugiricurlymega":1448,"tatsugiridroopymega":1449,"tatsugiristretchymega":1450,"annihilape":979,"clodsire":980,"farigiraf":981,"dudunsparce":982,"dudunsparcethreesegment":982,"kingambit":983,"greattusk":984,"screamtail":985,"brutebonnet":986,"fluttermane":987,"slitherwing":988,"sandyshocks":989,"irontreads":990,"ironbundle":991,"ironhands":992,"ironjugulis":993,"ironmoth":994,"ironthorns":995,"frigibax":996,"arctibax":997,"baxcalibur":998,"baxcaliburmega":1451,"gimmighoul":999,"gimmighoulroaming":1268,"gholdengo":1000,"wochien":1001,"chienpao":1002,"tinglu":1003,"chiyu":1004,"roaringmoon":1005,"ironvaliant":1006,"koraidon":1007,"miraidon":1008,"walkingwake":1009,"ironleaves":1010,"dipplin":1011,"poltchageist":1012,"poltchageistartisan":1012,"sinistcha":1013,"sinistchamasterpiece":1013,"okidogi":1014,"munkidori":1015,"fezandipiti":1016,"ogerpon":1017,"ogerponwellspring":1273,"ogerponhearthflame":1274,"ogerponcornerstone":1275,"ogerpontealtera":1017,"ogerponwellspringtera":1273,"ogerponhearthflametera":1274,"ogerponcornerstonetera":1275,"archaludon":1018,"hydrapple":1019,"gougingfire":1020,"ragingbolt":1021,"ironboulder":1022,"ironcrown":1023,"terapagos":1024,"terapagosterastal":1276,"terapagosstellar":1277,"pecharunt":1025,"egg":1033,"unownexclamation":1040,"unownquestion":1041,"unownb":1042,"unownc":1043,"unownd":1044,"unowne":1045,"unownf":1046,"unowng":1047,"unownh":1048,"unowni":1049,"unownj":1050,"unownk":1051,"unownl":1052,"unownm":1053,"unownn":1054,"unowno":1055,"unownp":1056,"unownq":1057,"unownr":1058,"unowns":1059,"unownt":1060,"unownu":1061,"unownv":1062,"unownw":1063,"unownx":1064,"unowny":1065,"unownz":1066,"burmysandy":1073,"burmytrash":1074,"shelloseast":1078,"gastrodoneast":1079,"unfezantf":1087,"deerlingautumn":1090,"deerlingsummer":1091,"deerlingwinter":1092,"sawsbuckautumn":1093,"sawsbucksummer":1094,"sawsbuckwinter":1095,"frillishf":1096,"jellicentf":1097,"vivillonarchipelago":1105,"vivilloncontinental":1106,"vivillonelegant":1107,"vivillongarden":1109,"vivillonhighplains":1110,"vivillonicysnow":1111,"vivillonjungle":1112,"vivillonmarine":1113,"vivillonmodern":1114,"vivillonmonsoon":1115,"vivillonocean":1116,"vivillonpolar":1118,"vivillonriver":1119,"vivillonsandstorm":1120,"vivillonsavanna":1121,"vivillonsun":1122,"vivillontundra":1123,"pyroarf":1124,"flabebeblue":1125,"flabebeorange":1126,"flabebewhite":1127,"flabebeyellow":1128,"floetteblue":1129,"floetteorange":1131,"floettewhite":1132,"floetteyellow":1133,"florgesblue":1134,"florgesorange":1135,"florgeswhite":1136,"florgesyellow":1137,"furfroudandy":1138,"furfroudebutante":1139,"furfroudiamond":1140,"furfrouheart":1141,"furfroukabuki":1142,"furfroulareine":1143,"furfroumatron":1144,"furfroupharaoh":1145,"furfroustar":1146,"miniororange":1178,"minioryellow":1179,"miniorgreen":1180,"miniorblue":1181,"miniorindigo":1182,"miniorviolet":1183,"alcremierubycream":1215,"alcremiematchacream":1216,"alcremiemintcream":1217,"alcremielemoncream":1218,"alcremiesaltedcream":1219,"alcremierubyswirl":1220,"alcremiecaramelswirl":1221,"alcremierainbowswirl":1222,"syclant":1560,"revenankh":1561,"pyroak":1562,"fidgit":1563,"stratagem":1564,"arghonaut":1565,"kitsunoh":1566,"cyclohm":1567,"colossoil":1568,"krilowatt":1569,"voodoom":1570,"tomohawk":1571,"necturna":1572,"mollux":1573,"aurumoth":1574,"malaconda":1575,"cawmodore":1576,"volkraken":1577,"plasmanta":1578,"naviathan":1579,"crucibelle":1580,"crucibellemega":1581,"kerfluffle":1582,"pajantom":1583,"jumbao":1584,"caribolt":1585,"smokomodo":1586,"snaelstrom":1587,"equilibra":1588,"astrolotl":1589,"miasmaw":1590,"chromera":1591,"venomicon":1592,"venomiconepilogue":1593,"saharaja":1594,"hemogoblin":1595,"syclar":1596,"embirch":1597,"flarelm":1598,"breezi":1599,"scratchet":1600,"necturine":1601,"cupra":1602,"argalis":1603,"brattler":1604,"cawdet":1605,"volkritter":1606,"snugglow":1607,"floatoy":1608,"caimanoe":1609,"pluffle":1610,"rebble":1611,"tactite":1612,"privatyke":1613,"nohface":1614,"monohm":1615,"duohm":1616,"protowatt":1617,"voodoll":1618,"mumbao":1619,"fawnifer":1620,"electrelk":1621,"smogecko":1622,"smoguana":1623,"swirlpool":1624,"coribalis":1625,"justyke":1626,"solotl":1627,"miasmite":1628,"dorsoil":1629,"saharascal":1630,"ababo":1631,"scattervein":1632,"cresceidon":1633,"chuggalong":1634,"shox":1635,"chuggon":1636,"draggalong":1637,"ramnarok":1638,"ramnarokradiant":1639,"flox":1640,"obliteryx":1641};
+const OFFICIAL_MENU_ICON_INDEXES_LEFT: {[id: string]: number} = {"pikachubelle":1452,"pikachupopstar":1453,"clefairy":1454,"clefable":1455,"jigglypuff":1456,"wigglytuff":1457,"dugtrioalola":1458,"poliwhirl":1459,"poliwrath":1460,"mukalola":1461,"kingler":1462,"croconaw":1463,"cleffa":1464,"igglybuff":1465,"politoed":1466,"unownb":1467,"unownc":1468,"unownd":1469,"unowne":1470,"unownf":1471,"unowng":1472,"unownh":1473,"unownj":1474,"unownk":1475,"unownl":1476,"unownm":1477,"unownn":1478,"unownp":1479,"unownq":1480,"unownquestion":1481,"unownr":1482,"unowns":1483,"unownt":1484,"unownv":1485,"unownz":1486,"sneasel":1487,"teddiursa":1488,"roselia":1489,"zangoose":1490,"seviper":1491,"castformsnowy":1492,"absolmega":1493,"absol":1494,"regirock":1495,"torterra":1496,"budew":1497,"roserade":1498,"magmortar":1499,"togekiss":1500,"rotomwash":1501,"shayminsky":1502,"emboar":1503,"pansear":1504,"simisear":1505,"drilbur":1506,"excadrill":1507,"sawk":1508,"lilligant":1509,"garbodor":1510,"solosis":1511,"vanilluxe":1512,"amoonguss":1513,"klink":1514,"klang":1515,"klinklang":1516,"litwick":1517,"golett":1518,"golurk":1519,"kyuremblack":1520,"kyuremwhite":1521,"kyurem":1522,"keldeoresolute":1523,"meloetta":1524,"greninja":1525,"greninjabond":1525,"greninjaash":1526,"furfroudebutante":1527,"barbaracle":1528,"clauncher":1529,"clawitzer":1530,"sylveon":1531,"klefki":1532,"zygarde":1533,"zygarde10":1534,"zygardecomplete":1535,"dartrix":1536,"steenee":1537,"tsareena":1538,"comfey":1539,"miniormeteor":1540,"minior":1541,"miniororange":1542,"minioryellow":1543,"miniorgreen":1544,"miniorblue":1545,"miniorviolet":1546,"miniorindigo":1547,"dhelmise":1548,"necrozma":1549,"marshadow":1550,"pikachuoriginal":1551,"pikachupartner":1552,"necrozmaduskmane":1553,"necrozmadawnwings":1554,"necrozmaultra":1555,"stakataka":1556,"blacephalon":1557};
 
 const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
 	belliboltmega: 'bellibolt-alt',
@@ -6387,7 +6436,7 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		abilities: {0: 'Violent Rush', 1: 'Pressure', H: 'Technician'},
 	},
 	ribombee: {baseStats: {hp: 65, atk: 55, def: 60, spa: 90, spd: 105, spe: 125}},
-	zoroark: {baseStats: {hp: 60, atk: 110, def: 70, spa: 135, spd: 70, spe: 110}},
+	zoroark: {baseStats: {hp: 55, atk: 105, def: 60, spa: 125, spd: 60, spe: 105}},
 	dusknoir: {
 		baseStats: {atk: 140, spe: 40},
 		abilities: {0: 'Requiem', 1: 'Shadow Tag', H: "Reaper's Grip"},
@@ -7641,8 +7690,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	ancientbloom: {
 		name: "Ancient Bloom",
-		desc: "This Pokemon has Effect Spore, Self Sufficient, and Pollen Bloom's effects. It keeps its field-based Defense, Special Defense, and power boosts.",
-		shortDesc: "Effect Spore + Self Sufficient + Pollen Bloom; keeps field boosts.",
+		desc: "This Pokemon has Effect Spore and Pollen Bloom's effects. Thick Fat applies once through Pollen Bloom: Fire and Ice damage is halved, not quartered. It keeps its field-based Defense, Special Defense, and power boosts.",
+		shortDesc: "Effect Spore + Pollen Bloom; Thick Fat applies once; field boosts.",
 	},
 	ange: {
 		name: "Ange",
@@ -7756,8 +7805,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	burningcrown: {
 		name: "Burning Crown",
-		desc: "This Pokemon has Intimidate, White Smoke, Wildfire Core, and Self Sufficient. Hidden effect: Filter. When a Pokemon faints, it raises the highest offensive stat of itself and its allies by 1. Its field bonuses remain active.",
-		shortDesc: "Intimidate + White Smoke + Wildfire Core + Self Sufficient; faint raises the side's highest offenses.",
+		desc: "This Pokemon has Intimidate, White Smoke, Mold Breaker, and Wildfire Core. It takes 20% less damage from attacks. It gains no boosts when a Pokemon faints. Its field bonuses remain active.",
+		shortDesc: "Intimidate + White Smoke + Mold Breaker + Wildfire Core; no KO boost.",
 	},
 	burningego: {
 		name: "Burning Ego",
@@ -7946,8 +7995,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	fortressshell: {
 		name: "Fortress Shell",
-		desc: "This Pokemon has Self Sufficient, Shell Armor, and Water Barrage's effects. Hidden effect: Friend Guard. In Water Surface, Underwater, Factory, and Short Circuit fields, Electric moves are redirected to it and raise its Attack and Special Attack. Fairy Tale, New World, Cold Eclipse, and Starlight Arena give it +1 Defense and +1 Special Defense once per active terrain.",
-		shortDesc: "Self Sufficient + Shell Armor + Water Barrage; keeps field bonuses.",
+		desc: "This Pokemon has Shell Armor and Water Barrage's effects, plus Power Spot and Friend Guard. In Electric Terrain, Murkwater Surface, Water Surface, Underwater, Factory, and Short Circuit fields, incoming Electric moves are blocked and redirected to it, raising its Attack and Special Attack by 1. Fairy Tale, New World, Cold Eclipse, and Starlight Arena give it +1 Defense and +1 Special Defense once per active terrain. New World, Cold Eclipse, and Starlight Arena also boost its move power by 1.5x.",
+		shortDesc: "Shell Armor + Water Barrage; field Electric absorption; ally support.",
 	},
 	freezerburn: {
 		name: "Freezer Burn",
@@ -10372,6 +10421,7 @@ const CUSTOM_LEARNSET_REMOVALS: {[id: string]: string[]} = {
 	simipour: ['slackoff'],
 	samurott: ['flashcannon', 'ironhead', 'irontail', 'metalclaw', 'tachyoncutter'],
 	samurotthisui: ['flashcannon', 'ironhead', 'irontail', 'metalclaw', 'tachyoncutter'],
+	zoroark: ['bloodmoon'], zoroarkhisui: ['bloodmoon'],
 	typhlosionhisui: ['shadowforce'],
 	solrock: ['diamondstorm', 'mightycleave'],
 	spiritomb: ['partingshot'],
@@ -10905,9 +10955,12 @@ const CUSTOM_TEAMBUILDER_SPRITE_Y_OFFSET = 4;
 const CUSTOM_TEAMBUILDER_SPRITE_Y_OFFSETS: {[id: string]: number} = {
 	sableye: 18,
 };
-// Espeon's shiny BW file keeps a 100px-wide sprite centered on a 192px canvas.
+// Espeon's shiny BW file keeps the same 100x106 artwork centered on a 192px canvas.
 const CUSTOM_TEAMBUILDER_BACKGROUND_SIZE_OVERRIDES: {[id: string]: {normal?: string, shiny?: string}} = {
-	espeon: {shiny: '112px auto'},
+	espeon: {shiny: '106px auto'},
+};
+const CUSTOM_TEAMBUILDER_BACKGROUND_POSITION_OVERRIDES: {[id: string]: {normal?: {x: number, y: number}, shiny?: {x: number, y: number}}} = {
+	espeon: {shiny: {x: -7, y: -9}},
 };
 const CUSTOM_TEAMBUILDER_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: number}} = {
 	garchompbattlebond: {w: 96, h: 96},
@@ -11021,6 +11074,12 @@ function applyCustomTeambuilderSpriteSizing(spriteData: TeambuilderSpriteData, i
 		(CUSTOM_TEAMBUILDER_SPRITE_Y_OFFSETS[id] || 0);
 	const backgroundSizeOverride = CUSTOM_TEAMBUILDER_BACKGROUND_SIZE_OVERRIDES[id];
 	spriteData.backgroundSize = backgroundSizeOverride?.[spriteData.shiny ? 'shiny' : 'normal'] || `${width}px auto`;
+	const backgroundPositionOverride = CUSTOM_TEAMBUILDER_BACKGROUND_POSITION_OVERRIDES[id];
+	const position = backgroundPositionOverride?.[spriteData.shiny ? 'shiny' : 'normal'];
+	if (position) {
+		spriteData.x = position.x;
+		spriteData.y = position.y;
+	}
 }
 Object.assign(CUSTOM_ABILITY_UPDATES, {
 	kickfiend: {
@@ -11216,12 +11275,12 @@ const CUSTOM_ABILITY_COMPONENT_OVERRIDES: {[id: string]: readonly ID[]} = {
 	sweetsanctuary: ['friendguard' as ID, 'sweetveil' as ID, 'aromaveil' as ID, 'pastelveil' as ID],
 	heatcoil: ['speedboost' as ID, 'magmaarmor' as ID, 'flamebody' as ID],
 	wickedsnare: ['stakeout' as ID, 'tanglinghair' as ID, 'prankster' as ID],
-	ancientbloom: ['effectspore' as ID, 'selfsufficient' as ID, 'pollenbloom' as ID],
-	fortressshell: ['selfsufficient' as ID, 'shellarmor' as ID, 'waterbarrage' as ID],
+	ancientbloom: ['effectspore' as ID, 'pollenbloom' as ID],
+	fortressshell: ['shellarmor' as ID, 'waterbarrage' as ID],
 	astralcore: ['purepower' as ID, 'naturalcure' as ID, 'illuminate' as ID],
 	bloomingsun: ['megasol' as ID, 'invigorate' as ID, 'naturalcure' as ID],
 	burningspirit: ['selfsufficient' as ID, 'opportunist' as ID, 'magmaarmor' as ID, 'filter' as ID],
-	burningcrown: ['intimidate' as ID, 'whitesmoke' as ID, 'wildfirecore' as ID, 'selfsufficient' as ID],
+	burningcrown: ['intimidate' as ID, 'moldbreaker' as ID, 'whitesmoke' as ID, 'wildfirecore' as ID],
 	celestialheart: ['multiscale' as ID, 'soulheart' as ID],
 	calderacore: ['magmaarmor' as ID, 'drought' as ID],
 	doomwarning: ['magicbounce' as ID, 'magicguard' as ID],
@@ -11283,6 +11342,8 @@ riotamp: ['proficient' as ID, 'galvanize' as ID, 'resonanceforce' as ID, 'voltab
 const CUSTOM_MOVE_UPDATE_IDS = Object.keys(CUSTOM_MOVE_UPDATES);
 const CUSTOM_LEARNSET_REPLACEMENT_IDS = Object.keys(CUSTOM_LEARNSET_REPLACEMENTS);
 Object.assign(CUSTOM_LEARNSET_ADDITIONS, {
+	salamence: {bloodmoon: ['9M'], moongeistbeam: ['9M']},
+	ursalunabloodmoon: {moongeistbeam: ['9M']},
 	alakazam: {darkpulse: ['9M'], snarl: ['9M']},
 	umbreon: {radiantassault: ['9M']},
 	ariados: {
@@ -13401,6 +13462,15 @@ const Dex = new class implements ModdedDex {
 			const shinyDir = FORCE_SHINY_CUSTOM_SPRITE_IDS.has(id) ? '-shiny' : '';
 			const fainted = ((pokemon as Pokemon | ServerPokemon)?.fainted ? `;opacity:.3;filter:grayscale(100%) brightness(.5)` : ``);
 			return `background:transparent url(${Dex.resourcePrefix}sprites/gen5${shinyDir}/${customIcon}.png) no-repeat center / contain${fainted}`;
+		}
+		let menuId: string = id;
+		if (pokemon?.gender === 'F' && ['unfezant', 'frillish', 'jellicent', 'meowstic', 'pyroar'].includes(id)) menuId += 'f';
+		const officialNum = (facingLeft ? OFFICIAL_MENU_ICON_INDEXES_LEFT[menuId] : undefined) ?? OFFICIAL_MENU_ICON_INDEXES[menuId];
+		if (officialNum !== undefined) {
+			const top = Math.floor(officialNum / 12) * 30;
+			const left = (officialNum % 12) * 40;
+			const fainted = (pokemon as Pokemon | ServerPokemon)?.fainted ? ';opacity:.3;filter:grayscale(100%) brightness(.5)' : '';
+			return `background:transparent url(${Dex.resourcePrefix}sprites/pokemonicons-official-sheet.png?v1) no-repeat scroll -${left}px -${top}px${fainted}`;
 		}
 		let num = this.getPokemonIconNum(id, pokemon?.gender === 'F', facingLeft);
 
