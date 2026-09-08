@@ -183,6 +183,12 @@ describe('Team Builder sprites', () => {
 		}
 	});
 
+	it('scales Espeon BW shiny canvases in the Team Builder', () => {
+		const sprite = Dex.getTeambuilderSprite({species: 'Espeon', shiny: true}, 9);
+		assert(sprite.includes('/sprites/gen5-shiny/espeon.png'), sprite);
+		assert(sprite.includes('background-size:112px auto'), sprite);
+	});
+
 	it('constrains oversized Team Builder sprites', () => {
 		const sprite = Dex.getTeambuilderSprite({species: 'Hydreigon'}, 9);
 		assert(sprite.includes('background-size:82px auto'), sprite);
@@ -265,6 +271,24 @@ describe('Team Builder sprites', () => {
 					assert.equal(sprite.h, 192);
 				}
 			}
+		}
+	});
+
+	it('uses the supplied Espeon BW shiny canvases at their natural size', () => {
+		for (const front of [true, false]) {
+			const sprite = Dex.getSpriteData('Espeon', front, {gen: 9, shiny: true, noScale: true});
+			const directory = front ? 'gen5-shiny' : 'gen5-back-shiny';
+			assert(sprite.url.endsWith(`/sprites/${directory}/espeon.png`), sprite.url);
+			assert.equal(sprite.w, 192);
+			assert.equal(sprite.h, 192);
+		}
+	});
+
+	it('uses the Cofagrigus team preview size override for both sides', () => {
+		for (const front of [true, false]) {
+			const sprite = Dex.getSpriteData('Cofagrigus', front, {gen: 9, teamPreview: true});
+			assert(sprite.w > 78, `${front ? 'front' : 'back'} Cofagrigus should be larger in preview`);
+			assert(sprite.h > 53, `${front ? 'front' : 'back'} Cofagrigus should be larger in preview`);
 		}
 	});
 

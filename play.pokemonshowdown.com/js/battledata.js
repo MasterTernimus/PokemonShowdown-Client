@@ -3089,7 +3089,9 @@ back:{w:82,h:112}
 },
 espeon:{
 front:{w:100,h:106},
-back:{w:80,h:100}
+back:{w:80,h:100},
+shinyFront:{w:192,h:192},
+shinyBack:{w:192,h:192}
 },
 gengar:{
 front:{w:112,h:104},
@@ -5012,7 +5014,10 @@ back:{w:82,h:112}
 espeon:{
 num:196,
 front:{w:100,h:106},
-back:{w:80,h:100}
+back:{w:80,h:100},
+
+shinyFront:{w:192,h:192},
+shinyBack:{w:192,h:192}
 },
 gengar:{
 num:94,
@@ -10700,12 +10705,14 @@ var CUSTOM_TEAM_PREVIEW_BACK_GMAX_SPRITE_MAX_HEIGHT=96;
 var CUSTOM_TEAM_PREVIEW_FRONT_SPRITE_SIZE_OVERRIDES={
 charizard:{w:78,h:78},
 charizardalt:{w:78,h:78},
-dragapult:{w:78,h:78}
+dragapult:{w:78,h:78},
+cofagrigus:{w:88,h:88}
 };
 var CUSTOM_TEAM_PREVIEW_BACK_SPRITE_SIZE_OVERRIDES={
 charizard:{w:84,h:84},
 charizardalt:{w:84,h:84},
-dragapult:{w:84,h:84}
+dragapult:{w:84,h:84},
+cofagrigus:{w:88,h:88}
 };
 var CUSTOM_MEDIUM_SPRITE_MIN_DIMENSION=104;
 var CUSTOM_MEDIUM_SPRITE_MAX_DIMENSION=170;
@@ -10898,6 +10905,10 @@ var CUSTOM_TEAMBUILDER_SPRITE_Y_OFFSET=4;
 var CUSTOM_TEAMBUILDER_SPRITE_Y_OFFSETS={
 sableye:18
 };
+
+var CUSTOM_TEAMBUILDER_BACKGROUND_SIZE_OVERRIDES={
+espeon:{shiny:'112px auto'}
+};
 var CUSTOM_TEAMBUILDER_SPRITE_SIZE_OVERRIDES={
 garchompbattlebond:{w:96,h:96},
 aegislashgmax:{w:74,h:74},
@@ -11008,7 +11019,8 @@ var height=Math.max(1,Math.round(spriteDimensions.h*scale));
 spriteData.x=Math.round((96-width)/2);
 spriteData.y=Math.round((86-height)/2)+CUSTOM_TEAMBUILDER_SPRITE_Y_OFFSET+(
 CUSTOM_TEAMBUILDER_SPRITE_Y_OFFSETS[id]||0);
-spriteData.backgroundSize=width+"px auto";
+var backgroundSizeOverride=CUSTOM_TEAMBUILDER_BACKGROUND_SIZE_OVERRIDES[id];
+spriteData.backgroundSize=(backgroundSizeOverride==null?void 0:backgroundSizeOverride[spriteData.shiny?'shiny':'normal'])||width+"px auto";
 }
 Object.assign(CUSTOM_ABILITY_UPDATES,{
 kickfiend:{
@@ -13173,7 +13185,7 @@ var customSpriteSize=getCustomSpriteSize(customStaticBattleSpriteid,customStatic
 customSpriteNaturalSize=customSpriteSize;
 spriteData.w=customSpriteSize.w;
 spriteData.h=customSpriteSize.h;
-}else if(customBWSprite&&spriteData.gen===5){
+}else if(customBWSprite&&(spriteData.gen===5||options.shiny)){
 var _customSpriteSize=getCustomSpriteSize(speciesid,customBWSprite,isFront,options.shiny);
 customSpriteNaturalSize=_customSpriteSize;
 spriteData.w=_customSpriteSize.w;
@@ -13293,16 +13305,23 @@ spriteData.y+=-11;
 if(options.teamPreview&&!isDynamax){
 var isGmax=speciesid.includes('gmax');
 var isMega=speciesid.includes('mega')||speciesid.includes('battlebond');
+var _previewSpriteMaxSize=isFront?
+CUSTOM_TEAM_PREVIEW_FRONT_SPRITE_SIZE_OVERRIDES[speciesid]:
+CUSTOM_TEAM_PREVIEW_BACK_SPRITE_SIZE_OVERRIDES[speciesid];
 var maxWidth=isFront?
 isGmax?CUSTOM_TEAM_PREVIEW_FRONT_GMAX_SPRITE_MAX_WIDTH:
-isMega?CUSTOM_TEAM_PREVIEW_FRONT_MEGA_SPRITE_MAX_WIDTH:CUSTOM_TEAM_PREVIEW_FRONT_SPRITE_MAX_WIDTH:
+isMega?CUSTOM_TEAM_PREVIEW_FRONT_MEGA_SPRITE_MAX_WIDTH:
+(_previewSpriteMaxSize==null?void 0:_previewSpriteMaxSize.w)||CUSTOM_TEAM_PREVIEW_FRONT_SPRITE_MAX_WIDTH:
 isGmax?CUSTOM_TEAM_PREVIEW_BACK_GMAX_SPRITE_MAX_WIDTH:
-isMega?CUSTOM_TEAM_PREVIEW_BACK_MEGA_SPRITE_MAX_WIDTH:CUSTOM_TEAM_PREVIEW_BACK_SPRITE_MAX_WIDTH;
+isMega?CUSTOM_TEAM_PREVIEW_BACK_MEGA_SPRITE_MAX_WIDTH:
+(_previewSpriteMaxSize==null?void 0:_previewSpriteMaxSize.w)||CUSTOM_TEAM_PREVIEW_BACK_SPRITE_MAX_WIDTH;
 var maxHeight=isFront?
 isGmax?CUSTOM_TEAM_PREVIEW_FRONT_GMAX_SPRITE_MAX_HEIGHT:
-isMega?CUSTOM_TEAM_PREVIEW_FRONT_MEGA_SPRITE_MAX_HEIGHT:CUSTOM_TEAM_PREVIEW_FRONT_SPRITE_MAX_HEIGHT:
+isMega?CUSTOM_TEAM_PREVIEW_FRONT_MEGA_SPRITE_MAX_HEIGHT:
+(_previewSpriteMaxSize==null?void 0:_previewSpriteMaxSize.h)||CUSTOM_TEAM_PREVIEW_FRONT_SPRITE_MAX_HEIGHT:
 isGmax?CUSTOM_TEAM_PREVIEW_BACK_GMAX_SPRITE_MAX_HEIGHT:
-isMega?CUSTOM_TEAM_PREVIEW_BACK_MEGA_SPRITE_MAX_HEIGHT:CUSTOM_TEAM_PREVIEW_BACK_SPRITE_MAX_HEIGHT;
+isMega?CUSTOM_TEAM_PREVIEW_BACK_MEGA_SPRITE_MAX_HEIGHT:
+(_previewSpriteMaxSize==null?void 0:_previewSpriteMaxSize.h)||CUSTOM_TEAM_PREVIEW_BACK_SPRITE_MAX_HEIGHT;
 var _scale4=Math.min(maxWidth/spriteData.w,maxHeight/spriteData.h);
 if(_scale4<1){
 spriteData.w=Math.max(1,Math.round(spriteData.w*_scale4));

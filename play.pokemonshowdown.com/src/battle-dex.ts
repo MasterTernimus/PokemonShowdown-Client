@@ -3090,6 +3090,8 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 	espeon: {
 		front: {w: 100, h: 106},
 		back: {w: 80, h: 100},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
 	},
 	gengar: {
 		front: {w: 112, h: 104},
@@ -5013,6 +5015,9 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 		num: 196,
 		front: {w: 100, h: 106},
 		back: {w: 80, h: 100},
+		// The supplied shiny canvases are 192px, with BW artwork centered inside.
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
 	},
 	gengar: {
 		num: 94,
@@ -10701,11 +10706,13 @@ const CUSTOM_TEAM_PREVIEW_FRONT_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number
 	charizard: {w: 78, h: 78},
 	charizardalt: {w: 78, h: 78},
 	dragapult: {w: 78, h: 78},
+	cofagrigus: {w: 88, h: 88},
 };
 const CUSTOM_TEAM_PREVIEW_BACK_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: number}} = {
 	charizard: {w: 84, h: 84},
 	charizardalt: {w: 84, h: 84},
 	dragapult: {w: 84, h: 84},
+	cofagrigus: {w: 88, h: 88},
 };
 const CUSTOM_MEDIUM_SPRITE_MIN_DIMENSION = 104;
 const CUSTOM_MEDIUM_SPRITE_MAX_DIMENSION = 170;
@@ -10898,6 +10905,10 @@ const CUSTOM_TEAMBUILDER_SPRITE_Y_OFFSET = 4;
 const CUSTOM_TEAMBUILDER_SPRITE_Y_OFFSETS: {[id: string]: number} = {
 	sableye: 18,
 };
+// Espeon's shiny BW file keeps a 100px-wide sprite centered on a 192px canvas.
+const CUSTOM_TEAMBUILDER_BACKGROUND_SIZE_OVERRIDES: {[id: string]: {normal?: string, shiny?: string}} = {
+	espeon: {shiny: '112px auto'},
+};
 const CUSTOM_TEAMBUILDER_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: number}} = {
 	garchompbattlebond: {w: 96, h: 96},
 	aegislashgmax: {w: 74, h: 74},
@@ -11008,7 +11019,8 @@ function applyCustomTeambuilderSpriteSizing(spriteData: TeambuilderSpriteData, i
 	spriteData.x = Math.round((96 - width) / 2);
 	spriteData.y = Math.round((86 - height) / 2) + CUSTOM_TEAMBUILDER_SPRITE_Y_OFFSET +
 		(CUSTOM_TEAMBUILDER_SPRITE_Y_OFFSETS[id] || 0);
-	spriteData.backgroundSize = `${width}px auto`;
+	const backgroundSizeOverride = CUSTOM_TEAMBUILDER_BACKGROUND_SIZE_OVERRIDES[id];
+	spriteData.backgroundSize = backgroundSizeOverride?.[spriteData.shiny ? 'shiny' : 'normal'] || `${width}px auto`;
 }
 Object.assign(CUSTOM_ABILITY_UPDATES, {
 	kickfiend: {
@@ -13173,7 +13185,7 @@ const Dex = new class implements ModdedDex {
 			customSpriteNaturalSize = customSpriteSize;
 			spriteData.w = customSpriteSize.w;
 			spriteData.h = customSpriteSize.h;
-		} else if (customBWSprite && spriteData.gen === 5) {
+		} else if (customBWSprite && (spriteData.gen === 5 || options.shiny)) {
 			const customSpriteSize = getCustomSpriteSize(speciesid, customBWSprite, isFront, options.shiny);
 			customSpriteNaturalSize = customSpriteSize;
 			spriteData.w = customSpriteSize.w;
@@ -13293,16 +13305,23 @@ const Dex = new class implements ModdedDex {
 		if (options.teamPreview && !isDynamax) {
 			const isGmax = speciesid.includes('gmax');
 			const isMega = speciesid.includes('mega') || speciesid.includes('battlebond');
+			const previewSpriteMaxSize = isFront ?
+				CUSTOM_TEAM_PREVIEW_FRONT_SPRITE_SIZE_OVERRIDES[speciesid] :
+				CUSTOM_TEAM_PREVIEW_BACK_SPRITE_SIZE_OVERRIDES[speciesid];
 			const maxWidth = isFront ?
 				(isGmax ? CUSTOM_TEAM_PREVIEW_FRONT_GMAX_SPRITE_MAX_WIDTH :
-					isMega ? CUSTOM_TEAM_PREVIEW_FRONT_MEGA_SPRITE_MAX_WIDTH : CUSTOM_TEAM_PREVIEW_FRONT_SPRITE_MAX_WIDTH) :
+					isMega ? CUSTOM_TEAM_PREVIEW_FRONT_MEGA_SPRITE_MAX_WIDTH :
+						previewSpriteMaxSize?.w || CUSTOM_TEAM_PREVIEW_FRONT_SPRITE_MAX_WIDTH) :
 				(isGmax ? CUSTOM_TEAM_PREVIEW_BACK_GMAX_SPRITE_MAX_WIDTH :
-					isMega ? CUSTOM_TEAM_PREVIEW_BACK_MEGA_SPRITE_MAX_WIDTH : CUSTOM_TEAM_PREVIEW_BACK_SPRITE_MAX_WIDTH);
+					isMega ? CUSTOM_TEAM_PREVIEW_BACK_MEGA_SPRITE_MAX_WIDTH :
+						previewSpriteMaxSize?.w || CUSTOM_TEAM_PREVIEW_BACK_SPRITE_MAX_WIDTH);
 			const maxHeight = isFront ?
 				(isGmax ? CUSTOM_TEAM_PREVIEW_FRONT_GMAX_SPRITE_MAX_HEIGHT :
-					isMega ? CUSTOM_TEAM_PREVIEW_FRONT_MEGA_SPRITE_MAX_HEIGHT : CUSTOM_TEAM_PREVIEW_FRONT_SPRITE_MAX_HEIGHT) :
+					isMega ? CUSTOM_TEAM_PREVIEW_FRONT_MEGA_SPRITE_MAX_HEIGHT :
+						previewSpriteMaxSize?.h || CUSTOM_TEAM_PREVIEW_FRONT_SPRITE_MAX_HEIGHT) :
 				(isGmax ? CUSTOM_TEAM_PREVIEW_BACK_GMAX_SPRITE_MAX_HEIGHT :
-					isMega ? CUSTOM_TEAM_PREVIEW_BACK_MEGA_SPRITE_MAX_HEIGHT : CUSTOM_TEAM_PREVIEW_BACK_SPRITE_MAX_HEIGHT);
+					isMega ? CUSTOM_TEAM_PREVIEW_BACK_MEGA_SPRITE_MAX_HEIGHT :
+						previewSpriteMaxSize?.h || CUSTOM_TEAM_PREVIEW_BACK_SPRITE_MAX_HEIGHT);
 			const scale = Math.min(maxWidth / spriteData.w, maxHeight / spriteData.h);
 			if (scale < 1) {
 				spriteData.w = Math.max(1, Math.round(spriteData.w * scale));
