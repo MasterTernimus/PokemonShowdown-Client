@@ -56,6 +56,7 @@ function isSilvallySpecies(name: string) {
 }
 
 const CUSTOM_ITEM_ICON_SPRITES: {[id: string]: string} = {
+	luxranite: 'luxranite.png',
 	noctowlite: 'noctowlite.png',
 	dusknoirite: 'dusknoirite.png',
 	weavilite: 'weavilite.png',
@@ -121,6 +122,7 @@ const CUSTOM_ITEM_ICON_SPRITES: {[id: string]: string} = {
 };
 
 const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
+	luxraymega: {"base":"luxray","data":{"num":405,"name":"Luxray-Mega","baseSpecies":"Luxray","forme":"Mega","types":["Electric","Dark"],"baseStats":{"hp":85,"atk":160,"def":91,"spa":90,"spd":104,"spe":105},"abilities":{"0":"Night Hunt"},"heightm":1.4,"weightkg":42,"color":"Blue","eggGroups":["Field"],"requiredItem":"Luxranite","battleOnly":"Luxray","isNonstandard":"Custom","spriteid":"luxray-mega","tier":"OU","gen":9}},
 	gardevoirvoid: {"base":"gardevoir","data":{"name":"Gardevoir-Void","baseSpecies":"Gardevoir","forme":"Void","spriteid":"gardevoir-void","changesFrom":"Gardevoir","isNonstandard":"Custom"}},
 	noctowlmega: {"base":"noctowl","data":{"num":164,"name":"Noctowl-Mega","baseSpecies":"Noctowl","forme":"Mega","types":["Dark","Flying"],"baseStats":{"hp":100,"atk":65,"def":98,"spa":106,"spd":141,"spe":100},"abilities":{"0":"Sacred Power"},"heightm":1.6,"weightkg":40.8,"color":"Brown","eggGroups":["Flying"],"requiredItem":"Noctowlite","battleOnly":"Noctowl","isNonstandard":"Custom","spriteid":"noctowl-mega","tier":"OU","gen":9}},
 	dusknoirmega: {"base":"dusknoir","data":{"num":477,"name":"Dusknoir-Mega","baseSpecies":"Dusknoir","forme":"Mega","types":["Ghost","Dark"],"baseStats":{"hp":65,"atk":180,"def":155,"spa":70,"spd":155,"spe":45},"abilities":{"0":"Reaper's Grip"},"heightm":2.2,"weightkg":106.6,"color":"Black","eggGroups":["Amorphous"],"requiredItem":"Dusknoirite","battleOnly":"Dusknoir","isNonstandard":"Custom","spriteid":"dusknoir-mega","tier":"OU","gen":9}},
@@ -1781,7 +1783,7 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 			baseSpecies: 'Ariados',
 			forme: 'Mega',
 			types: ['Bug', 'Poison'],
-			baseStats: {hp: 90, atk: 115, def: 110, spa: 110, spd: 110, spe: 50},
+			baseStats: {hp: 80, atk: 130, def: 120, spa: 40, spd: 120, spe: 85},
 			abilities: {0: 'Silken Decoy'},
 			requiredItem: 'Aridiate',
 			battleOnly: 'Ariados',
@@ -1845,6 +1847,7 @@ const OFFICIAL_MENU_ICON_INDEXES: {[id: string]: number} = {"bulbasaur":1,"ivysa
 const OFFICIAL_MENU_ICON_INDEXES_LEFT: {[id: string]: number} = {"pikachubelle":1452,"pikachupopstar":1453,"clefairy":1454,"clefable":1455,"jigglypuff":1456,"wigglytuff":1457,"dugtrioalola":1458,"poliwhirl":1459,"poliwrath":1460,"mukalola":1461,"kingler":1462,"croconaw":1463,"cleffa":1464,"igglybuff":1465,"politoed":1466,"unownb":1467,"unownc":1468,"unownd":1469,"unowne":1470,"unownf":1471,"unowng":1472,"unownh":1473,"unownj":1474,"unownk":1475,"unownl":1476,"unownm":1477,"unownn":1478,"unownp":1479,"unownq":1480,"unownquestion":1481,"unownr":1482,"unowns":1483,"unownt":1484,"unownv":1485,"unownz":1486,"sneasel":1487,"teddiursa":1488,"roselia":1489,"zangoose":1490,"seviper":1491,"castformsnowy":1492,"absolmega":1493,"absol":1494,"regirock":1495,"torterra":1496,"budew":1497,"roserade":1498,"magmortar":1499,"togekiss":1500,"rotomwash":1501,"shayminsky":1502,"emboar":1503,"pansear":1504,"simisear":1505,"drilbur":1506,"excadrill":1507,"sawk":1508,"lilligant":1509,"garbodor":1510,"solosis":1511,"vanilluxe":1512,"amoonguss":1513,"klink":1514,"klang":1515,"klinklang":1516,"litwick":1517,"golett":1518,"golurk":1519,"kyuremblack":1520,"kyuremwhite":1521,"kyurem":1522,"keldeoresolute":1523,"meloetta":1524,"greninja":1525,"greninjabond":1525,"greninjaash":1526,"furfroudebutante":1527,"barbaracle":1528,"clauncher":1529,"clawitzer":1530,"sylveon":1531,"klefki":1532,"zygarde":1533,"zygarde10":1534,"zygardecomplete":1535,"dartrix":1536,"steenee":1537,"tsareena":1538,"comfey":1539,"miniormeteor":1540,"minior":1541,"miniororange":1542,"minioryellow":1543,"miniorgreen":1544,"miniorblue":1545,"miniorviolet":1546,"miniorindigo":1547,"dhelmise":1548,"necrozma":1549,"marshadow":1550,"pikachuoriginal":1551,"pikachupartner":1552,"necrozmaduskmane":1553,"necrozmadawnwings":1554,"necrozmaultra":1555,"stakataka":1556,"blacephalon":1557};
 
 const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
+	luxraymega: 'luxray-mega',
 	gardevoirvoid: 'gardevoir-void',
 	noctowlmega: 'noctowl-mega',
 	dusknoirmega: 'dusknoir-mega',
@@ -6017,9 +6020,9 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		baseStats: {hp: 85, atk: 140, def: 110, spa: 60, spd: 100, spe: 115},
 	},
 	luxray: {
-		otherFormes: ['Luxray-Deso'],
+		otherFormes: ['Luxray-Deso', 'Luxray-Mega'],
 		cosmeticFormes: ['Luxray-Deso'],
-		formeOrder: ['Luxray', 'Luxray-Deso'],
+		formeOrder: ['Luxray', 'Luxray-Deso', 'Luxray-Mega'],
 	},
 	mismagius: {
 		abilities: {0: 'Levitate', 1: 'Temporal Shift', H: 'Shadow Tag'},
@@ -6563,13 +6566,13 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		formeOrder: ['Ledian', 'Ledian-Mega'],
 	},
 	ariados: {
-		baseStats: {hp: 90, atk: 100, def: 80, spa: 50, spd: 80, spe: 40},
+		baseStats: {hp: 90, atk: 100, def: 70, spa: 70, spd: 70, spe: 40},
 		otherFormes: ['Ariados-Mega'],
 		formeOrder: ['Ariados', 'Ariados-Mega'],
 	},
 	ariadosmega: {
 		types: ['Bug', 'Poison'],
-		baseStats: {hp: 90, atk: 115, def: 110, spa: 110, spd: 110, spe: 50},
+		baseStats: {hp: 80, atk: 130, def: 120, spa: 40, spd: 120, spe: 85},
 		abilities: {0: 'Silken Decoy'},
 	},
 	cinderacemega: {
@@ -6781,7 +6784,7 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		abilities: {0: 'Neutralization', 1: 'Water Absorb', H: 'Unaware'},
 	},
 	ariados: {
-		baseStats: {hp: 80, atk: 110, def: 100, spa: 35, spd: 100, spe: 50},
+		baseStats: {hp: 90, atk: 100, def: 70, spa: 70, spd: 70, spe: 40},
 	},
 	archeops: {
 		abilities: {0: 'Defeatist', 1: 'Relic Instinct', H: 'Fossil Frenzy'},
@@ -7265,11 +7268,12 @@ for (const [id, canGigantamax] of Object.entries(CUSTOM_GIGANTAMAX_MOVES)) {
 }
 
 const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
+	nighthunt: {"name":"Night Hunt","desc":"Strong Jaw + Infiltrator + Intimidate. Biting moves have 1.5x power. Moves bypass substitutes and opposing screens. Lowers adjacent foes' Attack on entry.","shortDesc":"Strong Jaw + Infiltrator + Intimidate."},
 	sacredpower: {"name":"Sacred Power","desc":"Duskilate + Adaptability + Magic Guard. Eligible Normal moves become Dark (Fairy on Holy and Rainbow fields) with 1.3x power, or 1.5x on Duskilate-boosting fields. STAB is 2x (2.25x when already 2x). Prevents indirect damage. Gains +1 Sp. Def on entry in Fairy Tale Field and ignores hail damage on Cold Eclipse.","shortDesc":"Duskilate + Adaptability + Magic Guard."},
 	froststalker: {"name":"Frost Stalker","desc":"Stakeout + Sharpness + Refrigerate. Doubles attacking stats against foes that just entered battle. Slicing moves have 1.5x power except on Cold Eclipse. Eligible Normal moves become Ice with 1.2x power, or 1.5x on Icy and Snowy Mountain fields.","shortDesc":"Stakeout + Sharpness + Refrigerate."},
 	echosense: {"name":"Echo Sense","desc":"This Pokemon has Echo Fiend, Frisk, Telepathy, and Infiltrator's effects.","shortDesc":"Echo Fiend + Frisk + Telepathy + Infiltrator."},
 	stormbell: {"name":"Storm Bell","desc":"Mirror Armor + Drizzle + Elevate. Starts rain, reflects opposing stat drops, reduces attack damage by 20%, is airborne, and boosts its best stat after a move KO. Retains Mirror Armor field effects, including +1 Defense and Sp. Def on Fairy Tale entry.","shortDesc":"Mirror Armor + Drizzle + Elevate."},
-	apexarmor: {name: "Apex Armor", desc: "Bulletproof + Rough Skin + Stalwart. Blocks bullet/pulse moves, reduces attack damage by 20%, damages contact attackers by 1/8 max HP, and ignores redirection. Stalwart grants +1 Sp. Atk on its supported fields; Fairy Tale additionally grants +1 Defense and Sp. Def on entry.", shortDesc: "Bulletproof + Rough Skin + Stalwart; Fairy Tale: +1 Def/SpD."},
+	apexarmor: {"name":"Apex Armor","desc":"Bulletproof + Rough Skin + Stalwart + Self Sufficient. Blocks bullet/pulse moves, reduces attack damage by 20%, damages contact attackers by 1/8 max HP, and ignores redirection. Restores 1/16 max HP each turn and prevents hail and sandstorm damage.","shortDesc":"Bulletproof + Rough Skin + Stalwart + Self Sufficient."},
 	solarhydra: {
 		name: "Solar Hydra",
 		desc: "This Pokemon has Hydra Bond, Grassy Surge, Solar Power, and Self Repair's effects.",
@@ -8319,17 +8323,13 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 		desc: "This Pokemon has Cursed Body's effect. Its first direct damaging interaction with each opposing Pokemon applies Perish Song to that foe. The mark clears when the foe switches out. Whenever an opposing Pokemon faints, this Pokemon restores 1/4 max HP. When this Pokemon faints, it creates Haunted Field for 5 turns. This Ability cannot be suppressed.",
 		shortDesc: "Cursed Body; first hit marks foes with Perish Song; foe KO heals 1/4; faint sets Haunted.",
 	},
-	reapersgrip: {"name":"Reaper's Grip","desc":"Unaware + Iron Fist + Dark Aura. Ignores opposing stat changes when attacking or taking attacks. Punching moves have 1.4x power; all Dark moves receive Dark Aura's boost. The first damaging hit that leaves this Pokemon at half HP or less creates Haunted Field for 3 turns (or refreshes it to at least 3). Fainting creates Haunted Field for 5 turns, or adds 5 turns to an existing Haunted Field.","shortDesc":"Unaware + Iron Fist + Dark Aura; half HP: 3-turn Haunted Field; faint: +5 turns."},
+	reapersgrip: {"name":"Reaper's Grip","desc":"Unaware + Iron Fist + Dark Aura + Self Sufficient. Restores 1/16 max HP each turn and prevents hail and sandstorm damage. Ignores opposing stat changes when attacking or taking attacks. Punching moves have 1.4x power; all Dark moves receive Dark Aura's boost. The first damaging hit that leaves this Pokemon at half HP or less creates Haunted Field for 3 turns (or refreshes it to at least 3). Fainting creates Haunted Field for 5 turns, or adds 5 turns to an existing Haunted Field.","shortDesc":"Unaware + Iron Fist + Dark Aura + Self Sufficient; half HP: 3-turn Haunted Field; faint: +5 turns."},
 	resonanceforce: {
 		name: "Resonance Force",
 		desc: "Sound-based moves used by this Pokemon's side deal 1.5x damage. This Pokemon's side is immune to its own damaging sound-based moves. Sound-based moves used by this Pokemon use its higher offensive stat.",
 		shortDesc: "Side sound moves 1.5x; allies avoid own sound damage; sound uses higher offense.",
 	},
-	rimeknuckle: {
-		name: "Rime Knuckle",
-		desc: "This Pokemon has Filter and Iron Fist. Its moves have a 40% chance to cause frostbite. If this Pokemon knocks out a target, it restores 1/8 of its maximum HP, or 1/4 if the target was Mega, G-Max, Terastallized, Stellar, or holding a Z-Move item.",
-		shortDesc: "Filter + Iron Fist; 40% frostbite; KO heals 1/8 or 1/4 vs gimmicks.",
-	},
+	rimeknuckle: {"name":"Rime Knuckle","desc":"Filter + Iron Fist + Ice Body. Damaging moves have a 40% chance to cause frostbite (80% on Icy Field). KOs restore 1/8 max HP, or 1/4 against Mega, G-Max, Terastallized, Stellar or Z-Move item targets. Ice Body adds a 30% chance to frostbite contact attackers, hail immunity, and healing in hail/snow or on Icy, Snowy Mountain and Cold Eclipse fields. Healing is 1/16 max HP, or 1/8 in hail on Cold Eclipse.","shortDesc":"Filter + Iron Fist + Ice Body; frostbite chance; KO healing."},
 	riotamp: {
 		name: "Riot Amp",
 		desc: "This Pokemon has Proficient, Galvanize, Resonance Force, and Volt Absorb's effects.",
@@ -10493,6 +10493,8 @@ Object.assign(CUSTOM_STATIC_BATTLE_SPRITES.decidueyealt, {back: {w: 192, h: 192}
 Object.assign(CUSTOM_BW_SPRITES.decidueyealt, {back: {w: 192, h: 192}, shinyBack: {w: 192, h: 192}});
 Object.assign(CUSTOM_STATIC_BATTLE_SPRITES,{gardevoirvoid:{"back":{"h":64,"w":64},"front":{"h":64,"w":64},"shinyFront":{"h":64,"w":64},"shinyBack":{"h":64,"w":64}}});
 Object.assign(CUSTOM_BW_SPRITES,{gardevoirvoid:{"num":282,"back":{"h":64,"w":64},"front":{"h":64,"w":64},"shinyFront":{"h":64,"w":64},"shinyBack":{"h":64,"w":64}}});
+Object.assign(CUSTOM_STATIC_BATTLE_SPRITES,{luxraymega:{"shinyBack":{"h":192,"w":192},"front":{"h":192,"w":192},"back":{"h":192,"w":192},"shinyFront":{"h":192,"w":192}}});
+Object.assign(CUSTOM_BW_SPRITES,{luxraymega:{"num":405,"shinyBack":{"h":192,"w":192},"front":{"h":192,"w":192},"back":{"h":192,"w":192},"shinyFront":{"h":192,"w":192}}});
 const CUSTOM_BW_SPRITE_IDS = Object.keys(CUSTOM_BW_SPRITES);
 const CUSTOM_ANIMATED_BW_SPRITES = new Set([
 	'aggron', 'ariados', 'butterfree', 'cacturne', 'cinderacegmax',
@@ -11259,13 +11261,15 @@ const CUSTOM_ARROW_MOVE_IDS = [
 ];
 const CUSTOM_HORN_MOVE_IDS = ['hornattack', 'horndrill', 'hornleech', 'megahorn'];
 const CUSTOM_ABILITY_COMPONENT_OVERRIDES: {[id: string]: readonly ID[]} = {
+	nighthunt: ['strongjaw' as ID, 'infiltrator' as ID, 'intimidate' as ID],
+	rimeknuckle: ['filter' as ID, 'ironfist' as ID, 'icebody' as ID],
 	royalvoice: ['pixilate' as ID, 'queenlymajesty' as ID, 'dreamsickness' as ID],
 	aquashell: ["waterveil" as ID, "toughclaws" as ID, "innerfocus" as ID],
 	sacredpower: ['duskilate' as ID, 'adaptability' as ID, 'magicguard' as ID],
 	froststalker: ['stakeout' as ID, 'sharpness' as ID, 'refrigerate' as ID],
 	echosense: ['echofiend' as ID, 'frisk' as ID, 'telepathy' as ID, 'infiltrator' as ID],
 	stormbell: ['mirrorarmor' as ID, 'drizzle' as ID, 'elevate' as ID],
-	apexarmor: ['bulletproof' as ID, 'roughskin' as ID, 'stalwart' as ID],
+	apexarmor: ['bulletproof' as ID, 'roughskin' as ID, 'stalwart' as ID, 'selfsufficient' as ID],
 	bogbody: ['electromorphosis' as ID, 'levitate' as ID, 'dryskin' as ID],
 	solarhydra: ['hydrabond' as ID, 'grassysurge' as ID, 'solarpower' as ID, 'selfrepair' as ID, 'selfsufficient' as ID, 'naturalcure' as ID],
 	astralengine: ['elevate' as ID, 'filter' as ID, 'analytic' as ID],
@@ -11352,7 +11356,7 @@ const CUSTOM_ABILITY_COMPONENT_OVERRIDES: {[id: string]: readonly ID[]} = {
 riotamp: ['proficient' as ID, 'galvanize' as ID, 'resonanceforce' as ID, 'voltabsorb' as ID],
 	waterbubble: ['waterveil' as ID],
 	requiem: ['cursedbody' as ID],
-	reapersgrip: ['unaware' as ID, 'ironfist' as ID, 'darkaura' as ID],
+	reapersgrip: ['unaware' as ID, 'ironfist' as ID, 'darkaura' as ID, 'selfsufficient' as ID],
 	ragingstorm: ['moldbreaker' as ID, 'battlearmor' as ID],
 	ragingoverlord: ['ragingstorm' as ID, 'supremeoverlord' as ID],
 	pendulumswing: ['insomnia' as ID, 'filter' as ID],
@@ -11857,6 +11861,7 @@ Object.assign(CUSTOM_LEARNSET_ADDITIONS, DOCUMENT_LEARNSET_ADDITIONS, {
 const CUSTOM_LEARNSET_ADDITION_IDS = Object.keys(CUSTOM_LEARNSET_ADDITIONS);
 const CUSTOM_LEARNSET_REMOVAL_IDS = Object.keys(CUSTOM_LEARNSET_REMOVALS);
 const CUSTOM_ITEM_UPDATES: {[id: string]: AnyObject} = {
+	luxranite: {"name":"Luxranite","spritenum":619,"megaStone":{"Luxray":"Luxray-Mega"},"itemUser":["Luxray"],"num":11100,"gen":9,"isNonstandard":"Custom","desc":"Allows Luxray to Mega Evolve into Mega Luxray.","shortDesc":"Allows Luxray to Mega Evolve."},
 	noctowlite: {"name":"Noctowlite","spritenum":619,"megaStone":{"Noctowl":"Noctowl-Mega"},"itemUser":["Noctowl"],"num":11098,"gen":9,"isNonstandard":"Custom","desc":"Allows Noctowl to Mega Evolve into Mega Noctowl.","shortDesc":"Allows Noctowl to Mega Evolve."},
 	dusknoirite: {"name":"Dusknoirite","spritenum":619,"megaStone":{"Dusknoir":"Dusknoir-Mega"},"itemUser":["Dusknoir"],"num":11097,"gen":9,"isNonstandard":"Custom","desc":"Allows Dusknoir to Mega Evolve into Mega Dusknoir.","shortDesc":"Allows Dusknoir to Mega Evolve."},
 	weavilite: {"name":"Weavilite","spritenum":619,"megaStone":{"Weavile":"Weavile-Mega"},"itemUser":["Weavile"],"num":11095,"gen":9,"isNonstandard":"Custom","desc":"Allows Weavile to Mega Evolve into Mega Weavile.","shortDesc":"Allows Weavile to Mega Evolve."},
@@ -13173,7 +13178,7 @@ const Dex = new class implements ModdedDex {
 		const crySpecies = usesBaseVariantCry ? Dex.species.get(customVariantFamilyId(species)) : species;
 		const cryBaseSpeciesid = toID(crySpecies.baseSpecies || crySpecies.name);
 		const speciesNameId = toID(species.name);
-		const customCryUrl = speciesNameId === 'sharpedomegay' ? 'audio/cries/sharpedo-megay.ogg' :
+		const customCryUrl = speciesNameId === 'luxraymega' ? 'audio/cries/luxray.mp3' : speciesNameId === 'sharpedomegay' ? 'audio/cries/sharpedo-megay.ogg' :
 			speciesNameId === 'noivernmega' ? 'audio/cries/noivern-mega.ogg' :
 			speciesNameId === 'weavilemega' ? 'audio/cries/weavile-mega.ogg' :
 			speciesNameId === 'noctowlmega' ? 'audio/cries/noctowl-mega.ogg' :
