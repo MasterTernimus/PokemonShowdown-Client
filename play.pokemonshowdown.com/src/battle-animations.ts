@@ -36,6 +36,11 @@ This license DOES NOT extend to any other files in this repository.
 
 */
 
+// Cropped back sprites must meet the foreground edge in every battle slot.
+function isBottomAlignedBackSprite(url: string) {
+ return /\/gen5-back(?:-shiny)?\/(?:alakazam-alt|alakazam-mega-alt|sharpedo-megay|gardevoir-void)\.png(?:\?|$)/.test(url);
+}
+
 export class BattleScene implements BattleSceneStub {
 	battle: Battle;
 	animating = true;
@@ -360,6 +365,12 @@ export class BattleScene implements BattleSceneStub {
 		let hoffset = Math.floor((obj.h - (obj.y || 0) * 2) * scale * loc.yscale!);
 		left -= Math.floor(width / 2);
 		top -= Math.floor(hoffset / 2);
+		// This cropped back view ends at the foreground edge of the battle window.
+		// Retain vertical animation motion while keeping its resting pose bottom-aligned.
+		if (isBottomAlignedBackSprite(obj.url)) {
+			top = 360 - height - Math.floor(loc.y! * scale);
+		}
+
 
 		let pos: JQuery.PlainObject = {
 			left,
@@ -2225,6 +2236,8 @@ export class PokemonSprite extends Sprite {
 			if (!this.isFrontSprite) statbarOffset = -7 * slot;
 			if (this.isFrontSprite && moreActive === 2) statbarOffset = 14 * slot - 10;
 		}
+		// Slot offsets must not push cropped artwork below the foreground edge.
+		if (!this.isFrontSprite && isBottomAlignedBackSprite(this.sp.url)) this.y = 0;
 		if (this.scene.gen <= 2) {
 			statbarOffset += this.isFrontSprite ? 20 : 1;
 		} else if (this.scene.gen <= 3) {
