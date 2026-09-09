@@ -6566,7 +6566,7 @@ otherFormes:['Ledian-Mega'],
 formeOrder:['Ledian','Ledian-Mega']
 },
 ariados:{
-baseStats:{hp:90,atk:100,def:70,spa:70,spd:70,spe:40},
+baseStats:{hp:90,atk:100,def:85,spa:75,spd:85,spe:40},
 otherFormes:['Ariados-Mega'],
 formeOrder:['Ariados','Ariados-Mega']
 },
@@ -6784,7 +6784,7 @@ baseStats:{hp:140,atk:95,def:70,spa:75,spd:110,spe:20},
 abilities:{0:'Neutralization',1:'Water Absorb',H:'Unaware'}
 },
 ariados:{
-baseStats:{hp:90,atk:100,def:70,spa:70,spd:70,spe:40}
+baseStats:{hp:90,atk:100,def:85,spa:75,spd:85,spe:40}
 },
 archeops:{
 abilities:{0:'Defeatist',1:'Relic Instinct',H:'Fossil Frenzy'}
