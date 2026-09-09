@@ -565,13 +565,13 @@ class BattlePanel extends PSRoomPanel<BattleRoom> {
 			const speciesid = toID(pokemon.speciesForme || pokemon.details.split(',')[0]);
 			const isGardevoirMega = ['gardevoirmega', 'gardevoirmegaz', 'gardevoirvoidmega'].includes(speciesid);
 			const isGardevoiriteMega = canMegaEvo && toID(pokemon.item) === 'gardevoirite' && speciesid === 'gardevoir';
-			const isSharedMega = (toID(pokemon.item) === 'meganiumite' && ['meganium', 'meganiummega', 'meganiummegay'].includes(speciesid)) ||
+			const isSharedMega = (toID(pokemon.item) === 'sharpedonite' && ['sharpedo', 'sharpedomega', 'sharpedomegay'].includes(speciesid)) || (toID(pokemon.item) === 'meganiumite' && ['meganium', 'meganiummega', 'meganiummegay'].includes(speciesid)) ||
 				(toID(pokemon.item) === 'chimechite' && ['chimecho', 'chimechomega', 'chimechomegay'].includes(speciesid)) ||
 				(toID(pokemon.item) === 'arbokite' && ['arbok', 'arbokmegax', 'arbokmegay'].includes(speciesid));
 			const canMegaEvoX = (moveRequest.canMegaEvoX || isGardevoiriteMega) && !choices.alreadyMega;
 			const canMegaEvoY = (moveRequest.canMegaEvoY || isGardevoiriteMega || isSharedMega) && !choices.alreadyMega;
 			if (isSharedMega) {
-				const baseName = speciesid.startsWith('meganium') ? 'Meganium' : speciesid.startsWith('arbok') ? 'Arbok' : 'Chimecho';
+				const baseName = speciesid.startsWith('sharpedo') ? 'Sharpedo' : speciesid.startsWith('meganium') ? 'Meganium' : speciesid.startsWith('arbok') ? 'Arbok' : 'Chimecho';
 				megaLabel = baseName === 'Arbok' ? 'Arbok-Mega-X' : `${baseName}-Mega`;
 				megaYLabel = `${baseName}-Mega-Y`;
 			}

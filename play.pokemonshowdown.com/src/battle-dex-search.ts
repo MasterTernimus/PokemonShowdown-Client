@@ -378,6 +378,7 @@ class DexSearch {
 			window.ensureCustomSpecies?.();
 			customVisualSpecies = Object.keys(window.BattlePokedex || {}).filter(id => {
 				const species = this.dex.species.get(id);
+				if (id === 'gardevoirvoid' && (customOnly || customSpeciesQuery === 'alt')) return false;
 				if (isExcludedFromCustomSearch(id)) return false;
 				// Explicit -custom searches reveal hidden stored variants, but never
 				// expose battle-only visual destinations used by abilities.

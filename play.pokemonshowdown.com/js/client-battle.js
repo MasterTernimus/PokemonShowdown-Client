@@ -587,10 +587,13 @@
 			})) || megaTargetid === 'gardevoirvoidmega';
 			var isGardevoiriteMega = canMegaEvo && (toID(pokemon.item) === 'gardevoirite' || megaTargetid.indexOf('gardevoir') === 0) && (isGardevoirVoid || speciesid === 'gardevoir' || megaTargetid.indexOf('gardevoir') === 0);
 			var canMegaEvoX = isGardevoiriteMega;
-			var canMegaEvoY = isGardevoiriteMega;
+			var canMegaEvoY = curActive.canMegaEvoY || isGardevoiriteMega;
 			var megaLabel = 'Mega Evolution';
 			var megaXLabel = 'Mega Evolution X';
 			var megaYLabel = 'Mega Evolution Y';
+			if (toID(pokemon.item) === 'sharpedonite' && canMegaEvoY) {
+				megaLabel = 'Sharpedo-Mega'; megaYLabel = 'Sharpedo-Mega-Y';
+			}
 			if (toID(pokemon.item) === 'gardevoirite' || megaTargetid.indexOf('gardevoir') === 0) {
 				if (isGardevoirVoid) {
 					megaLabel = 'Gardevoir-Void-Mega';
