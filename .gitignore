@@ -11,3 +11,11 @@ caches/PokemonShowdown-Reborn/
 
 # The deployed avatar selector must ship with custom trainer entries.
 !play.pokemonshowdown.com/js/panel-popups.js
+
+# Reproducible dedicated Team Builder artwork import and coverage checks.
+!teambuilder-art-manifest.json
+!teambuilder-audit-before.json
+!test/teambuilder-art.test.js
+!menu-icons-before.json
+!test/menu-icons.test.js
+!MENU_ICON_COMPARISON.html

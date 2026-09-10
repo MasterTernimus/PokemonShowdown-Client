@@ -175,24 +175,24 @@ describe('Team Builder sprites', () => {
 		assert(!sprite.includes('/sprites/dex-shiny/togekiss.png'), sprite);
 	});
 
-	it('prefers available Gen 5 shiny art in the Team Builder', () => {
+	it('prefers dedicated native shiny art in modern Team Builder teams', () => {
 		for (const species of ['Charizard', 'Blastoise', 'Gardevoir', 'Magearna']) {
 			const sprite = Dex.getTeambuilderSprite({species, shiny: true}, 9);
-			assert(sprite.includes('/sprites/gen5-shiny/'), `${species} should use Gen 5 shiny art`);
-			assert(!sprite.includes('/sprites/dex-shiny/'), `${species} should not use XY shiny art`);
+			assert(sprite.includes('/sprites/dex-shiny/'), `${species} should use dedicated shiny art`);
+			assert(!sprite.includes('/sprites/gen5-shiny/'), `${species} should not use battle art`);
 		}
 	});
 
-	it('scales Espeon BW shiny canvases in the Team Builder', () => {
+	it('fits Espeon dedicated shiny art inside the Team Builder canvas', () => {
 		const sprite = Dex.getTeambuilderSprite({species: 'Espeon', shiny: true}, 9);
-		assert(sprite.includes('/sprites/gen5-shiny/espeon.png'), sprite);
-		assert(sprite.includes('background-size:112px auto'), sprite);
+		assert(sprite.includes('/sprites/dex-shiny/espeon.png'), sprite);
+		assert(sprite.includes('background-size:96px auto'), sprite);
 	});
 
 	it('constrains oversized Team Builder sprites', () => {
-		const sprite = Dex.getTeambuilderSprite({species: 'Hydreigon'}, 9);
+		const sprite = Dex.getTeambuilderSprite({species: 'Hydreigon'}, 5);
 		assert(sprite.includes('background-size:82px auto'), sprite);
-		const feraligatr = Dex.getTeambuilderSprite({species: 'Feraligatr'}, 9);
+		const feraligatr = Dex.getTeambuilderSprite({species: 'Feraligatr'}, 5);
 		assert(feraligatr.includes('background-position:9px 8px'), feraligatr);
 		assert(feraligatr.includes('background-size:78px auto'), feraligatr);
 		const laprasGmax = Dex.getTeambuilderSprite({species: 'Lapras-Gmax'}, 9);

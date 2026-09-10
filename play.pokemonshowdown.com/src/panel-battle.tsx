@@ -564,7 +564,7 @@ class BattlePanel extends PSRoomPanel<BattleRoom> {
 			let megaYLabel = 'Mega Evolution Y';
 			const speciesid = toID(pokemon.speciesForme || pokemon.details.split(',')[0]);
 			const isGardevoirMega = ['gardevoirmega', 'gardevoirmegaz', 'gardevoirvoidmega'].includes(speciesid);
-			const isGardevoiriteMega = canMegaEvo && toID(pokemon.item) === 'gardevoirite' && speciesid === 'gardevoir';
+			const isGardevoiriteMega = canMegaEvo && toID(pokemon.item) === 'gardevoirite' && ['gardevoir', 'gardevoirvoid'].includes(speciesid);
 			const isSharedMega = (toID(pokemon.item) === 'sharpedonite' && ['sharpedo', 'sharpedomega', 'sharpedomegay'].includes(speciesid)) || (toID(pokemon.item) === 'meganiumite' && ['meganium', 'meganiummega', 'meganiummegay'].includes(speciesid)) ||
 				(toID(pokemon.item) === 'chimechite' && ['chimecho', 'chimechomega', 'chimechomegay'].includes(speciesid)) ||
 				(toID(pokemon.item) === 'arbokite' && ['arbok', 'arbokmegax', 'arbokmegay'].includes(speciesid));
@@ -575,8 +575,8 @@ class BattlePanel extends PSRoomPanel<BattleRoom> {
 				megaLabel = baseName === 'Arbok' ? 'Arbok-Mega-X' : `${baseName}-Mega`;
 				megaYLabel = `${baseName}-Mega-Y`;
 			}
-			if (toID(pokemon.item) === 'gardevoirite' && (isGardevoirMega || speciesid === 'gardevoir')) {
-				if (speciesid === 'gardevoir') {
+			if (toID(pokemon.item) === 'gardevoirite' && (isGardevoirMega || ['gardevoir', 'gardevoirvoid'].includes(speciesid))) {
+				if (['gardevoir', 'gardevoirvoid'].includes(speciesid)) {
 					megaLabel = 'Gardevoir-Mega';
 					megaXLabel = 'Gardevoir-Mega-Z';
 					megaYLabel = 'Gardevoir-Void-Mega';
