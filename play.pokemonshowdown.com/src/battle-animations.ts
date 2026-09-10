@@ -38,7 +38,7 @@ This license DOES NOT extend to any other files in this repository.
 
 // Cropped back sprites must meet the foreground edge in every battle slot.
 function isBottomAlignedBackSprite(url: string) {
- return /\/gen5-back(?:-shiny)?\/(?:alakazam-alt|alakazam-mega-alt|sharpedo-megay|gardevoir-void)\.png(?:\?|$)/.test(url);
+ return /\/gen5-back(?:-shiny)?\/(?:alakazam-alt|alakazam-mega-alt|sharpedo-megay|gardevoir-void|tentacruel-alt)\.png(?:\?|$)/.test(url);
 }
 
 export class BattleScene implements BattleSceneStub {
