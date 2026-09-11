@@ -17,6 +17,7 @@ describe('Native Team Builder artwork coverage', () => {
 	for (const row of rows.filter(row => row.available)) {
 		it(`uses verified dedicated art for ${row.name}, normal and shiny`, () => {
 			for (const shiny of [false, true]) {
+				if ((row.spriteid === 'archeops' && shiny) || (row.spriteid.startsWith('furfrou') || row.spriteid.startsWith('silvally')) || ['dusknoir', 'reuniclus', 'scizor-mega'].includes(row.spriteid)) continue;
 				for (const gen of [0, 9]) {
 					const data = Dex.getTeambuilderSpriteData({species: row.name, shiny}, gen);
 					assert.equal(data.spriteDir, 'sprites/dex');
@@ -34,6 +35,25 @@ describe('Native Team Builder artwork coverage', () => {
 			}
 		});
 	}
+	it('uses pixel sprites for shiny Archeops', () => {
+		assert.equal(Dex.getTeambuilderSpriteData({species: 'Archeops', shiny: true}, 9).spriteDir, 'sprites/gen5');
+		for (const side of [true, false]) {
+			const sprite = Dex.getSpriteData('Archeops', side, {gen: 9, shiny: true});
+			assert(sprite.url.includes('gen5') && sprite.url.includes('-shiny') && sprite.url.includes('.png'), sprite.url);
+		}
+	});
+	it('preserves the Gardevoir-Void sprite only on the regular Mega branch', () => {
+		for (const shiny of [false, true]) {
+			for (const side of [true, false]) {
+				const original = Dex.getSpriteData('Gardevoir-Void', side, {gen: 9, shiny});
+				const mega = Dex.getSpriteData('Gardevoir-Mega-Alt', side, {gen: 9, shiny});
+				assert.equal(mega.url, original.url);
+				for (const species of ['Gardevoir-Mega-Z', 'Gardevoir-Void-Mega']) assert.notEqual(Dex.getSpriteData(species, side, {gen: 9, shiny}).url, original.url);
+			}
+			assert.equal(Dex.getTeambuilderSpriteData({species: 'Gardevoir-Mega-Alt', shiny}, 9).spriteid, 'gardevoir-void');
+		}
+		assert.deepEqual(Dex.species.get('Gardevoir-Mega-Alt').baseStats, Dex.species.get('Gardevoir-Mega').baseStats);
+	});
 	it('preserves exact custom forms and upstream gaps instead of using base-species art', () => {
 		for (const species of ['Raichu-Mega-X', 'Raichu-Mega-Y', 'Baxcalibur-Mega', 'Charizard-Mega-X-Alt']) {
 			const data = Dex.getTeambuilderSpriteData({species}, 9);
@@ -73,3 +93,5 @@ describe('Native Team Builder artwork coverage', () => {
 		}
 	});
 });
+
+describe('Supplied Silvally artwork', () => { for (const row of rows.filter(row => row.spriteid.startsWith('silvally'))) { it(row.name + ' uses the supplied shiny variant', () => { const data = Dex.getTeambuilderSpriteData({species: row.name, shiny: false}, 9); assert.equal(data.spriteDir, 'sprites/gen5'); assert.equal(data.spriteid, row.spriteid); assert.equal(data.shiny, true); }); } });

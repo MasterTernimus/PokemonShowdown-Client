@@ -98,7 +98,6 @@ Examples corrected: Mega Dragonite, Annihilape, Garchomp Mega Z, Charizard Mega 
 | Infernape-Reborn | legacy sheet | battle fallback |
 | Empoleon-Reborn | legacy sheet | battle fallback |
 | Staraptor-Mega | battle fallback | official menu icon |
-| Luxray-Deso | legacy sheet | battle fallback |
 | Lopunny | battle fallback | official menu icon |
 | Lopunny-Mega | battle fallback | official menu icon |
 | Garchomp-Mega | battle fallback | official menu icon |
@@ -281,7 +280,6 @@ These entries have valid exact-form artwork, but no dedicated native/supplied me
 - Feraligatr-Gmax
 - Crobat-Alt
 - Lanturn-Alt
-- Bellibolt-Alt
 - Umbreon-Perfect
 - Granbull-Reborn
 - Corsola-Reborn
@@ -300,7 +298,6 @@ These entries have valid exact-form artwork, but no dedicated native/supplied me
 - Torterra-Reborn
 - Infernape-Reborn
 - Empoleon-Reborn
-- Luxray-Deso
 - Gastrodon-Aevian
 - Gastrodon-East-Aevian
 - Gastrodon-Azzy
@@ -386,7 +383,6 @@ These entries have valid exact-form artwork, but no dedicated native/supplied me
 - Claydol-Mega
 - Lilligant-Rift
 - Lilligant-Hisui-Rift
-- Dusknoir-Alt
 - Spiritomb-Alt
 - Dipplin-Gmax
 - Floette-Eternal-Mega
@@ -404,3 +400,8 @@ These entries have valid exact-form artwork, but no dedicated native/supplied me
 ## Reproduce
 
 Run `node build-tools/audit-menu-icons.cjs` for current coverage and `node node_modules/mocha/bin/mocha test/menu-icons.test.js test/teambuilder-art.test.js --reporter dot` for validation. `menu-icons-before.json` is the saved pre-change selection snapshot. `MENU_ICON_COMPARISON.html` contains side-by-side examples at actual icon dimensions.
+
+
+## 2026-09-11 matching review
+
+See [SPRITE_MATCHING_REVIEW.md](SPRITE_MATCHING_REVIEW.md) for Furfrou trim/gender/shiny synchronization, Mega Scizor and G-Max Cinderace routing fixes, and current verification totals. The earlier counts above describe their original audit snapshot.

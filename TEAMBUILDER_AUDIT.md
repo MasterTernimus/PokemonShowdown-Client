@@ -84,7 +84,6 @@ Mega Dragonite, Mega Clefable, Mega Victreebel, Mega Starmie, Mega Meganium, Meg
 | Feraligatr-Gmax | feraligatr-gmax.png |
 | Crobat-Alt | crobat-alt.png |
 | Lanturn-Alt | lanturn-alt.png |
-| Bellibolt-Alt | bellibolt-alt.png |
 | Umbreon-Perfect | umbreon-perfect.png |
 | Granbull-Reborn | granbull-reborn.png |
 | Qwilfish-Hisui | qwilfish-hisui.png |
@@ -108,7 +107,6 @@ Mega Dragonite, Mega Clefable, Mega Victreebel, Mega Starmie, Mega Meganium, Meg
 | Infernape-Reborn | 0.png |
 | Empoleon-Reborn | 0.png |
 | Staraptor-Mega | staraptor-mega.png |
-| Luxray-Deso | 0.png |
 | Gastrodon-Aevian | gastrodon-aevian.png |
 | Gastrodon-East-Aevian | gastrodon-east-aevian.png |
 | Gastrodon-Azzy | gastrodon-azzy.png |
@@ -303,3 +301,8 @@ Resolved: Gliscor and Gliscor-Alt now list Venom Heal, Toxic Boost, and Wind Rid
 ## Team-strip follow-up
 
 The small menu icons were audited separately and 211 selections corrected. See [MENU_ICON_AUDIT.md](MENU_ICON_AUDIT.md) for coverage, remaining dedicated-art gaps, and validation.
+
+
+## 2026-09-11 matching review
+
+See [SPRITE_MATCHING_REVIEW.md](SPRITE_MATCHING_REVIEW.md) for Furfrou trim/gender/shiny synchronization, Mega Scizor and G-Max Cinderace routing fixes, and current verification totals. The earlier counts above describe their original audit snapshot.

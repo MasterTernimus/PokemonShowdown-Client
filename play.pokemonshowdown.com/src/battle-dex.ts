@@ -123,6 +123,7 @@ const CUSTOM_ITEM_ICON_SPRITES: {[id: string]: string} = {
 };
 
 const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
+	gardevoirmegaalt: {base: 'gardevoirmega', data: {name: 'Gardevoir-Mega-Alt', baseSpecies: 'Gardevoir', forme: 'Mega-Alt', spriteid: 'gardevoir-void', abilities: {0: 'Royal Voice'}, requiredItem: 'Gardevoirite', battleOnly: 'Gardevoir-Void', isNonstandard: 'Custom'}},
 	breloommega: {"base":"breloom","data":{"num":286,"name":"Breloom-Mega","baseSpecies":"Breloom","forme":"Mega","types":["Poison","Fighting"],"baseStats":{"hp":80,"atk":160,"def":90,"spa":55,"spd":105,"spe":110},"abilities":{"0":"Corrosive Touch"},"heightm":1.2,"weightkg":39.2,"color":"Purple","eggGroups":["Fairy","Grass"],"requiredItem":"Breloomite","battleOnly":"Breloom","isNonstandard":"Custom","spriteid":"breloom-mega","tier":"OU","gen":9}},
 	luxraymega: {"base":"luxray","data":{"num":405,"name":"Luxray-Mega","baseSpecies":"Luxray","forme":"Mega","types":["Electric","Dark"],"baseStats":{"hp":85,"atk":160,"def":91,"spa":90,"spd":104,"spe":105},"abilities":{"0":"Night Hunt"},"heightm":1.4,"weightkg":42,"color":"Blue","eggGroups":["Field"],"requiredItem":"Luxranite","battleOnly":"Luxray","isNonstandard":"Custom","spriteid":"luxray-mega","tier":"OU","gen":9}},
 	gardevoirvoid: {"base":"gardevoir","data":{"name":"Gardevoir-Void","baseSpecies":"Gardevoir","forme":"Void","spriteid":"gardevoir-void","changesFrom":"Gardevoir","isNonstandard":"Custom"}},
@@ -665,17 +666,6 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 			isNonstandard: 'Custom',
 		},
 	},
-	belliboltalt: {
-		base: 'bellibolt',
-		data: {
-			name: 'Bellibolt-Alt',
-			baseSpecies: 'Bellibolt',
-			forme: 'Alt',
-			spriteid: 'bellibolt-alt',
-			changesFrom: 'Bellibolt',
-			isNonstandard: 'Custom',
-		},
-	},
 	jynxalt: {
 		base: 'jynx',
 		data: {
@@ -739,17 +729,6 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 			forme: 'Reborn',
 			spriteid: 'ninetales-alt',
 			changesFrom: 'Ninetales',
-			isNonstandard: 'Custom',
-		},
-	},
-	luxrayalt: {
-		base: 'luxray',
-		data: {
-			name: 'Luxray-Deso',
-			baseSpecies: 'Luxray',
-			forme: 'Deso',
-			spriteid: 'luxray-alt',
-			changesFrom: 'Luxray',
 			isNonstandard: 'Custom',
 		},
 	},
@@ -1043,17 +1022,6 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 			forme: 'Deso',
 			spriteid: 'cinccino-deso',
 			changesFrom: 'Cinccino',
-			isNonstandard: 'Custom',
-		},
-	},
-	dusknoiralt: {
-		base: 'dusknoir',
-		data: {
-			name: 'Dusknoir-Alt',
-			baseSpecies: 'Dusknoir',
-			forme: 'Alt',
-			spriteid: 'dusknoir-alt',
-			changesFrom: 'Dusknoir',
 			isNonstandard: 'Custom',
 		},
 	},
@@ -1849,10 +1817,13 @@ const OFFICIAL_MENU_ICON_INDEXES: {[id: string]: number} = {"bulbasaur":1,"ivysa
 const OFFICIAL_MENU_ICON_INDEXES_LEFT: {[id: string]: number} = {"pikachubelle":1452,"pikachupopstar":1453,"clefairy":1454,"clefable":1455,"jigglypuff":1456,"wigglytuff":1457,"dugtrioalola":1458,"poliwhirl":1459,"poliwrath":1460,"mukalola":1461,"kingler":1462,"croconaw":1463,"cleffa":1464,"igglybuff":1465,"politoed":1466,"unownb":1467,"unownc":1468,"unownd":1469,"unowne":1470,"unownf":1471,"unowng":1472,"unownh":1473,"unownj":1474,"unownk":1475,"unownl":1476,"unownm":1477,"unownn":1478,"unownp":1479,"unownq":1480,"unownquestion":1481,"unownr":1482,"unowns":1483,"unownt":1484,"unownv":1485,"unownz":1486,"sneasel":1487,"teddiursa":1488,"roselia":1489,"zangoose":1490,"seviper":1491,"castformsnowy":1492,"absolmega":1493,"absol":1494,"regirock":1495,"torterra":1496,"budew":1497,"roserade":1498,"magmortar":1499,"togekiss":1500,"rotomwash":1501,"shayminsky":1502,"emboar":1503,"pansear":1504,"simisear":1505,"drilbur":1506,"excadrill":1507,"sawk":1508,"lilligant":1509,"garbodor":1510,"solosis":1511,"vanilluxe":1512,"amoonguss":1513,"klink":1514,"klang":1515,"klinklang":1516,"litwick":1517,"golett":1518,"golurk":1519,"kyuremblack":1520,"kyuremwhite":1521,"kyurem":1522,"keldeoresolute":1523,"meloetta":1524,"greninja":1525,"greninjabond":1525,"greninjaash":1526,"furfroudebutante":1527,"barbaracle":1528,"clauncher":1529,"clawitzer":1530,"sylveon":1531,"klefki":1532,"zygarde":1533,"zygarde10":1534,"zygardecomplete":1535,"dartrix":1536,"steenee":1537,"tsareena":1538,"comfey":1539,"miniormeteor":1540,"minior":1541,"miniororange":1542,"minioryellow":1543,"miniorgreen":1544,"miniorblue":1545,"miniorviolet":1546,"miniorindigo":1547,"dhelmise":1548,"necrozma":1549,"marshadow":1550,"pikachuoriginal":1551,"pikachupartner":1552,"necrozmaduskmane":1553,"necrozmadawnwings":1554,"necrozmaultra":1555,"stakataka":1556,"blacephalon":1557};
 
 const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
+	scizormega: 'scizormega',
+	scizormegaf: 'scizormega-f',
 	breloommega: 'breloom-mega',
 	lopunny: 'lopunny',
 	luxraymega: 'luxray-mega',
 	gardevoirvoid: 'gardevoir-void',
+	gardevoirmegaalt: 'gardevoir-void',
 	noctowlmega: 'noctowl-mega',
 	dusknoirmega: 'dusknoir-mega',
 	weavilemega: 'weavile-mega',
@@ -1862,7 +1833,7 @@ const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
 	sharpedo: 'sharpedo',
 	sharpedomega: 'sharpedo-mega',
 	sharpedomegay: 'sharpedo-megay',
-	belliboltmega: 'bellibolt-alt',
+	belliboltmega: 'bellibolt-mega',
 	reuniclus: 'reuniclus',
 	reuniclusmega: 'reuniclus-mega',
 	sunfloramega: 'sunflora-mega',
@@ -1906,7 +1877,6 @@ const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
 	volcaronaaevian: 'volcarona-aevian',
 	volcarona: 'volcarona',
 	volcaronaf: 'volcarona-f',
-	dusknoiralt: 'dusknoir-alt',
 	spiritombalt: 'spiritomb-alt',
 	parasectparasitism: 'parasect-parasitism',
 	parasectparasite: 'parasect-parasite',
@@ -2039,7 +2009,6 @@ const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
 	auroreon: 'auroreon',
 	soluneon: 'soluneon',
 	abysseon: 'abysseon',
-	belliboltalt: 'bellibolt-alt',
 	typhlosionalt: 'typhlosion-alt',
 	nidokingalt: 'nidoking-alt',
 	nidoqueenalt: 'nidoqueen-alt',
@@ -2135,7 +2104,6 @@ const CUSTOM_MENU_SPRITE_FALLBACKS: {[id: string]: string} = {
 	"umbreonperfect": "umbreon-perfect",
 	"castformsandy": "castform-sandy",
 	"castformwindy": "castform-windy",
-	"luxrayalt": "luxray-alt",
 	"missingno": "missingno",
 	"pokestarsmeargle": "pokestarsmeargle",
 	"pokestarufo": "pokestarufo",
@@ -2209,7 +2177,651 @@ const CUSTOM_PARTY_ICON_SPRITES: {[id: string]: {
 		shiny: 'sneasler-aevian-party-shiny.png',
 		shinyFemale: 'sneasler-aevian-party-shiny-f.png',
 	},
+	ursaluna: {
+		normal: 'ursaluna.png',
+		normalFemale: 'ursaluna.png',
+		shiny: 'ursaluna-shiny.png',
+		shinyFemale: 'ursaluna-shiny.png',
+	},
+	ursalunabloodmoon: {
+		normal: 'ursaluna-bloodmoon.png',
+		normalFemale: 'ursaluna-bloodmoon.png',
+		shiny: 'ursaluna-bloodmoon-shiny.png',
+		shinyFemale: 'ursaluna-bloodmoon-shiny.png',
+	},
+	reuniclus: {
+		normal: 'reuniclus.png',
+		normalFemale: 'reuniclus.png',
+		shiny: 'reuniclus-shiny.png',
+		shinyFemale: 'reuniclus-shiny.png',
+	},
+	reuniclusmega: {
+		normal: 'reuniclus-mega.png',
+		normalFemale: 'reuniclus-mega.png',
+		shiny: 'reuniclus-mega-shiny.png',
+		shinyFemale: 'reuniclus-mega-shiny.png',
+	},
+	musharna: {
+		normal: 'musharna.png',
+		normalFemale: 'musharna.png',
+		shiny: 'musharna-shiny.png',
+		shinyFemale: 'musharna-shiny.png',
+	},
+	musharnarejuv: {
+		normal: 'musharna-rejuv.png',
+		normalFemale: 'musharna-rejuv.png',
+		shiny: 'musharna-rejuv-shiny.png',
+		shinyFemale: 'musharna-rejuv-shiny.png',
+	},
+	alakazam: {
+		normal: 'alakazam.png',
+		normalFemale: 'alakazam.png',
+		shiny: 'alakazam-shiny.png',
+		shinyFemale: 'alakazam-shiny.png',
+	},
+	alakazammega: {
+		normal: 'alakazam-mega.png',
+		normalFemale: 'alakazam-mega.png',
+		shiny: 'alakazam-mega-shiny.png',
+		shinyFemale: 'alakazam-mega-shiny.png',
+	},
+	palossand: {
+		normal: 'palossand.png',
+		normalFemale: 'palossand.png',
+		shiny: 'palossand-shiny.png',
+		shinyFemale: 'palossand-shiny.png',
+	},
+	palossandrocky: {
+		normal: 'palossand-rocky.png',
+		normalFemale: 'palossand-rocky.png',
+		shiny: 'palossand-rocky-shiny.png',
+		shinyFemale: 'palossand-rocky-shiny.png',
+	},
+	palossandfiery: {
+		normal: 'palossand-fiery.png',
+		normalFemale: 'palossand-fiery.png',
+		shiny: 'palossand-fiery-shiny.png',
+		shinyFemale: 'palossand-fiery-shiny.png',
+	},
+	palossandicy: {
+		normal: 'palossand-icy.png',
+		normalFemale: 'palossand-icy.png',
+		shiny: 'palossand-icy-shiny.png',
+		shinyFemale: 'palossand-icy-shiny.png',
+	},
+	sandslash: {
+		normal: 'sandslash.png',
+		normalFemale: 'sandslash.png',
+		shiny: 'sandslash-shiny.png',
+		shinyFemale: 'sandslash-shiny.png',
+	},
+	sandslashalola: {
+		normal: 'sandslash-alola.png',
+		normalFemale: 'sandslash-alola.png',
+		shiny: 'sandslash-alola-shiny.png',
+		shinyFemale: 'sandslash-alola-shiny.png',
+	},
+	sandslashalt: {
+		normal: 'sandslash-alt.png',
+		normalFemale: 'sandslash-alt.png',
+		shiny: 'sandslash-alt-shiny.png',
+		shinyFemale: 'sandslash-alt-shiny.png',
+	},
+	sharpedo: {
+		normal: 'sharpedo.png',
+		normalFemale: 'sharpedo.png',
+		shiny: 'sharpedo-shiny.png',
+		shinyFemale: 'sharpedo-shiny.png',
+	},
+	sharpedomega: {
+		normal: 'sharpedo-mega.png',
+		normalFemale: 'sharpedo-mega.png',
+		shiny: 'sharpedo-mega-shiny.png',
+		shinyFemale: 'sharpedo-mega-shiny.png',
+	},
+	sharpedomegay: {
+		normal: 'sharpedo-megay.png',
+		normalFemale: 'sharpedo-megay.png',
+		shiny: 'sharpedo-megay-shiny.png',
+		shinyFemale: 'sharpedo-megay-shiny.png',
+	},
+	cinccino: {
+		normal: 'cinccino.png',
+		normalFemale: 'cinccino.png',
+		shiny: 'cinccino-shiny.png',
+		shinyFemale: 'cinccino-shiny.png',
+	},
+	cinccinodeso: {
+		normal: 'cinccino-deso.png',
+		normalFemale: 'cinccino-deso.png',
+		shiny: 'cinccino-deso-shiny.png',
+		shinyFemale: 'cinccino-deso-shiny.png',
+	},
+	luxray: {
+		normal: 'luxray.png',
+		normalFemale: 'luxray.png',
+		shiny: 'luxray-shiny.png',
+		shinyFemale: 'luxray-shiny.png',
+	},
+	luxraymega: {
+		normal: 'luxray-mega.png',
+		normalFemale: 'luxray-mega.png',
+		shiny: 'luxray-mega-shiny.png',
+		shinyFemale: 'luxray-mega-shiny.png',
+	},
+	toxicroak: {
+		normal: 'toxicroak.png',
+		normalFemale: 'toxicroak.png',
+		shiny: 'toxicroak-shiny.png',
+		shinyFemale: 'toxicroak-shiny.png',
+	},
+	toxicroakdeso: {
+		normal: 'toxicroak-deso.png',
+		normalFemale: 'toxicroak-deso.png',
+		shiny: 'toxicroak-deso-shiny.png',
+		shinyFemale: 'toxicroak-deso-shiny.png',
+	},
+	mightyena: {
+		normal: 'mightyena.png',
+		normalFemale: 'mightyena.png',
+		shiny: 'mightyena-shiny.png',
+		shinyFemale: 'mightyena-shiny.png',
+	},
+	mightyenadeso: {
+		normal: 'mightyena-deso.png',
+		normalFemale: 'mightyena-deso.png',
+		shiny: 'mightyena-deso-shiny.png',
+		shinyFemale: 'mightyena-deso-shiny.png',
+	},
+	florgesreborn: {
+		normal: 'florges-reborn.png',
+		normalFemale: 'florges-reborn.png',
+		shiny: 'florges-reborn-shiny.png',
+		shinyFemale: 'florges-reborn-shiny.png',
+	},
+	aerodactyl: {
+		normal: 'aerodactyl.png',
+		normalFemale: 'aerodactyl.png',
+		shiny: 'aerodactyl-shiny.png',
+		shinyFemale: 'aerodactyl-shiny.png',
+	},
+	aerodactylmega: {
+		normal: 'aerodactyl-mega.png',
+		normalFemale: 'aerodactyl-mega.png',
+		shiny: 'aerodactyl-mega-shiny.png',
+		shinyFemale: 'aerodactyl-mega-shiny.png',
+	},
+	greninja: {
+		normal: 'greninja.png',
+		normalFemale: 'greninja.png',
+		shiny: 'greninja-shiny.png',
+		shinyFemale: 'greninja-shiny.png',
+	},
+	greninjamega: {
+		normal: 'greninja-mega.png',
+		normalFemale: 'greninja-mega.png',
+		shiny: 'greninja-mega-shiny.png',
+		shinyFemale: 'greninja-mega-shiny.png',
+	},
+	blastoise: {
+		normal: 'blastoise.png',
+		normalFemale: 'blastoise.png',
+		shiny: 'blastoise-shiny.png',
+		shinyFemale: 'blastoise-shiny.png',
+	},
+	blastoisemega: {
+		normal: 'blastoise-mega.png',
+		normalFemale: 'blastoise-mega.png',
+		shiny: 'blastoise-mega-shiny.png',
+		shinyFemale: 'blastoise-mega-shiny.png',
+	},
+	lapras: {
+		normal: 'lapras.png',
+		normalFemale: 'lapras.png',
+		shiny: 'lapras-shiny.png',
+		shinyFemale: 'lapras-shiny.png',
+	},
+	laprasaevian: {
+		normal: 'lapras-aevian.png',
+		normalFemale: 'lapras-aevian.png',
+		shiny: 'lapras-aevian-shiny.png',
+		shinyFemale: 'lapras-aevian-shiny.png',
+	},
+	laprasgmax: {
+		normal: 'lapras-gmax.png',
+		normalFemale: 'lapras-gmax.png',
+		shiny: 'lapras-gmax-shiny.png',
+		shinyFemale: 'lapras-gmax-shiny.png',
+	},
+	absol: {
+		normal: 'absol.png',
+		normalFemale: 'absol.png',
+		shiny: 'absol-shiny.png',
+		shinyFemale: 'absol-shiny.png',
+	},
+	absolmega: {
+		normal: 'absol-mega.png',
+		normalFemale: 'absol-mega.png',
+		shiny: 'absol-mega-shiny.png',
+		shinyFemale: 'absol-mega-shiny.png',
+	},
+	darkrai: {
+		normal: 'darkrai.png',
+		normalFemale: 'darkrai.png',
+		shiny: 'darkrai-shiny.png',
+		shinyFemale: 'darkrai-shiny.png',
+	},
+	chesnaught: {
+		normal: 'chesnaught.png',
+		normalFemale: 'chesnaught.png',
+		shiny: 'chesnaught-shiny.png',
+		shinyFemale: 'chesnaught-shiny.png',
+	},
+	chesnaughtmega: {
+		normal: 'chesnaught-mega.png',
+		normalFemale: 'chesnaught-mega.png',
+		shiny: 'chesnaught-mega-shiny.png',
+		shinyFemale: 'chesnaught-mega-shiny.png',
+	},
+	venusaur: {
+		normal: 'venusaur.png',
+		normalFemale: 'venusaur.png',
+		shiny: 'venusaur-shiny.png',
+		shinyFemale: 'venusaur-shiny.png',
+	},
+	venusaurmega: {
+		normal: 'venusaur-mega.png',
+		normalFemale: 'venusaur-mega.png',
+		shiny: 'venusaur-mega-shiny.png',
+		shinyFemale: 'venusaur-mega-shiny.png',
+	},
+	venusaurgmax: {
+		normal: 'venusaur-gmax.png',
+		normalFemale: 'venusaur-gmax.png',
+		shiny: 'venusaur-gmax-shiny.png',
+		shinyFemale: 'venusaur-gmax-shiny.png',
+	},
+	rillaboom: {
+		normal: 'rillaboom.png',
+		normalFemale: 'rillaboom.png',
+		shiny: 'rillaboom-shiny.png',
+		shinyFemale: 'rillaboom-shiny.png',
+	},
+	rillaboomgmax: {
+		normal: 'rillaboom-gmax.png',
+		normalFemale: 'rillaboom-gmax.png',
+		shiny: 'rillaboom-gmax-shiny.png',
+		shinyFemale: 'rillaboom-gmax-shiny.png',
+	},
+	corviknight: {
+		normal: 'corviknight.png',
+		normalFemale: 'corviknight.png',
+		shiny: 'corviknight-shiny.png',
+		shinyFemale: 'corviknight-shiny.png',
+	},
+	corviknightgmax: {
+		normal: 'corviknight-gmax.png',
+		normalFemale: 'corviknight-gmax.png',
+		shiny: 'corviknight-gmax-shiny.png',
+		shinyFemale: 'corviknight-gmax-shiny.png',
+	},
+	milotic: {
+		normal: 'milotic.png',
+		normalFemale: 'milotic.png',
+		shiny: 'milotic-shiny.png',
+		shinyFemale: 'milotic-shiny.png',
+	},
+	miloticaevian: {
+		normal: 'milotic-aevian.png',
+		normalFemale: 'milotic-aevian.png',
+		shiny: 'milotic-aevian-shiny.png',
+		shinyFemale: 'milotic-aevian-shiny.png',
+	},
+	scolipede: {
+		normal: 'scolipede.png',
+		normalFemale: 'scolipede-f.png',
+		shiny: 'scolipede-shiny.png',
+		shinyFemale: 'scolipede-f-shiny.png',
+	},
+	scolipedemega: {
+		normal: 'scolipede-mega.png',
+		normalFemale: 'scolipede-mega-f.png',
+		shiny: 'scolipede-mega-shiny.png',
+		shinyFemale: 'scolipede-mega-f-shiny.png',
+	},
+	tinkaton: {
+		normal: 'tinkaton.png',
+		normalFemale: 'tinkaton.png',
+		shiny: 'tinkaton-shiny.png',
+		shinyFemale: 'tinkaton-shiny.png',
+	},
+	cradily: {
+		normal: 'cradily.png',
+		normalFemale: 'cradily.png',
+		shiny: 'cradily-shiny.png',
+		shinyFemale: 'cradily-shiny.png',
+	},
+	froslass: {
+		normal: 'froslass.png',
+		normalFemale: 'froslass.png',
+		shiny: 'froslass-shiny.png',
+		shinyFemale: 'froslass-shiny.png',
+	},
+	froslassmega: {
+		normal: 'froslass-mega.png',
+		normalFemale: 'froslass-mega.png',
+		shiny: 'froslass-mega-shiny.png',
+		shinyFemale: 'froslass-mega-shiny.png',
+	},
+	hawlucha: {
+		normal: 'hawlucha.png',
+		normalFemale: 'hawlucha.png',
+		shiny: 'hawlucha-shiny.png',
+		shinyFemale: 'hawlucha-shiny.png',
+	},
+	hawluchamega: {
+		normal: 'hawlucha-mega.png',
+		normalFemale: 'hawlucha-mega.png',
+		shiny: 'hawlucha-mega-shiny.png',
+		shinyFemale: 'hawlucha-mega-shiny.png',
+	},
+	bronzongrejuv: {
+		normal: 'bronzong-rejuv.png',
+		normalFemale: 'bronzong-rejuv.png',
+		shiny: 'bronzong-rejuv-shiny.png',
+		shinyFemale: 'bronzong-rejuv-shiny.png',
+	},
+	charizard: {
+		normal: 'charizard.png',
+		normalFemale: 'charizard.png',
+		shiny: 'charizard-shiny.png',
+		shinyFemale: 'charizard-shiny.png',
+	},
+	charizardmegax: {
+		normal: 'charizard-megax.png',
+		normalFemale: 'charizard-megax.png',
+		shiny: 'charizard-megax-shiny.png',
+		shinyFemale: 'charizard-megax-shiny.png',
+	},
+	charizardmegay: {
+		normal: 'charizard-megay.png',
+		normalFemale: 'charizard-megay.png',
+		shiny: 'charizard-megay-shiny.png',
+		shinyFemale: 'charizard-megay-shiny.png',
+	},
+	charizardgmax: {
+		normal: 'charizard-gmax.png',
+		normalFemale: 'charizard-gmax.png',
+		shiny: 'charizard-gmax-shiny.png',
+		shinyFemale: 'charizard-gmax-shiny.png',
+	},
+	gengar: {
+		normal: 'gengar.png',
+		normalFemale: 'gengar.png',
+		shiny: 'gengar-shiny.png',
+		shinyFemale: 'gengar-shiny.png',
+	},
+	gengarmega: {
+		normal: 'gengar-mega.png',
+		normalFemale: 'gengar-mega.png',
+		shiny: 'gengar-mega-shiny.png',
+		shinyFemale: 'gengar-mega-shiny.png',
+	},
+	gengargmax: {
+		normal: 'gengar-gmax.png',
+		normalFemale: 'gengar-gmax.png',
+		shiny: 'gengar-gmax-shiny.png',
+		shinyFemale: 'gengar-gmax-shiny.png',
+	},
+	unfezantrejuv: {
+		normal: 'unfezant-rejuv.png',
+		normalFemale: 'unfezant-rejuv.png',
+		shiny: 'unfezant-rejuv-shiny.png',
+		shinyFemale: 'unfezant-rejuv-shiny.png',
+	},
+	scizor: {
+		normal: 'scizor.png',
+		normalFemale: 'scizor-f.png',
+		shiny: 'scizor-shiny.png',
+		shinyFemale: 'scizor-f-shiny.png',
+	},
+	scizormega: {
+		normal: 'scizor-mega.png',
+		normalFemale: 'scizor-mega-f.png',
+		shiny: 'scizor-mega-shiny.png',
+		shinyFemale: 'scizor-mega-f-shiny.png',
+	},
+	abysseon: {
+		normal: 'abysseon.png',
+		normalFemale: 'abysseon.png',
+		shiny: 'abysseon-shiny.png',
+		shinyFemale: 'abysseon-shiny.png',
+	},
+	divineon: {
+		normal: 'divineon.png',
+		normalFemale: 'divineon.png',
+		shiny: 'divineon-shiny.png',
+		shinyFemale: 'divineon-shiny.png',
+	},
+	miloticalt: {
+		normal: 'milotic-alt.png',
+		normalFemale: 'milotic-alt.png',
+		shiny: 'milotic-alt-shiny.png',
+		shinyFemale: 'milotic-alt-shiny.png',
+	},
+	nidoqueen: {
+		normal: 'nidoqueen.png',
+		normalFemale: 'nidoqueen.png',
+		shiny: 'nidoqueen-shiny.png',
+		shinyFemale: 'nidoqueen-shiny.png',
+	},
+	nidoqueenalt: {
+		normal: 'nidoqueen-alt.png',
+		normalFemale: 'nidoqueen-alt.png',
+		shiny: 'nidoqueen-alt-shiny.png',
+		shinyFemale: 'nidoqueen-alt-shiny.png',
+	},
+	emboar: {
+		normal: 'emboar.png',
+		normalFemale: 'emboar.png',
+		shiny: 'emboar-shiny.png',
+		shinyFemale: 'emboar-shiny.png',
+	},
+	emboarmega: {
+		normal: 'emboar-mega.png',
+		normalFemale: 'emboar-mega.png',
+		shiny: 'emboar-mega-shiny.png',
+		shinyFemale: 'emboar-mega-shiny.png',
+	},
+	espeon: {
+		normal: 'espeon.png',
+		normalFemale: 'espeon.png',
+		shiny: 'espeon-shiny.png',
+		shinyFemale: 'espeon-shiny.png',
+	},
+	auroreon: {
+		normal: 'auroreon.png',
+		normalFemale: 'auroreon.png',
+		shiny: 'auroreon-shiny.png',
+		shinyFemale: 'auroreon-shiny.png',
+	},
+	soluneon: {
+		normal: 'soluneon.png',
+		normalFemale: 'soluneon.png',
+		shiny: 'soluneon-shiny.png',
+		shinyFemale: 'soluneon-shiny.png',
+	},
+	granbull: {
+		normal: 'granbull.png',
+		normalFemale: 'granbull.png',
+		shiny: 'granbull-shiny.png',
+		shinyFemale: 'granbull-shiny.png',
+	},
+	granbullalt: {
+		normal: 'granbull-alt.png',
+		normalFemale: 'granbull-alt.png',
+		shiny: 'granbull-alt-shiny.png',
+		shinyFemale: 'granbull-alt-shiny.png',
+	},
+	haxorus: {
+		normal: 'haxorus.png',
+		normalFemale: 'haxorus.png',
+		shiny: 'haxorus-shiny.png',
+		shinyFemale: 'haxorus-shiny.png',
+	},
+	haxorusmega: {
+		normal: 'haxorus-mega.png',
+		normalFemale: 'haxorus-mega.png',
+		shiny: 'haxorus-mega-shiny.png',
+		shinyFemale: 'haxorus-mega-shiny.png',
+	},
+	butterfree: {
+		normal: 'butterfree.png',
+		normalFemale: 'butterfree.png',
+		shiny: 'butterfree-shiny.png',
+		shinyFemale: 'butterfree-shiny.png',
+	},
+	butterfreemega: {
+		normal: 'butterfree-mega.png',
+		normalFemale: 'butterfree-mega.png',
+		shiny: 'butterfree-mega-shiny.png',
+		shinyFemale: 'butterfree-mega-shiny.png',
+	},
+	centiskorch: {
+		normal: 'centiskorch.png',
+		normalFemale: 'centiskorch.png',
+		shiny: 'centiskorch-shiny.png',
+		shinyFemale: 'centiskorch-shiny.png',
+	},
+	centiskorchgmax: {
+		normal: 'centiskorch-gmax.png',
+		normalFemale: 'centiskorch-gmax.png',
+		shiny: 'centiskorch-gmax-shiny.png',
+		shinyFemale: 'centiskorch-gmax-shiny.png',
+	},
+	cinderace: {
+		normal: 'cinderace.png',
+		normalFemale: 'cinderace.png',
+		shiny: 'cinderace-shiny.png',
+		shinyFemale: 'cinderace-shiny.png',
+	},
+	cinderacegmax: {
+		normal: 'cinderace-gmax.png',
+		normalFemale: 'cinderace-gmax.png',
+		shiny: 'cinderace-gmax-shiny.png',
+		shinyFemale: 'cinderace-gmax-shiny.png',
+	},
+	cinderacemega: {
+		normal: 'cinderace-mega.png',
+		normalFemale: 'cinderace-mega.png',
+		shiny: 'cinderace-mega-shiny.png',
+		shinyFemale: 'cinderace-mega-shiny.png',
+	},
+	chimecho: {
+		normal: 'chimecho.png',
+		normalFemale: 'chimecho.png',
+		shiny: 'chimecho-shiny.png',
+		shinyFemale: 'chimecho-shiny.png',
+	},
+	chimechomega: {
+		normal: 'chimecho-mega.png',
+		normalFemale: 'chimecho-mega.png',
+		shiny: 'chimecho-mega-shiny.png',
+		shinyFemale: 'chimecho-mega-shiny.png',
+	},
+	chimechomegay: {
+		normal: 'chimecho-mega-y.png',
+		normalFemale: 'chimecho-mega-y.png',
+		shiny: 'chimecho-mega-y-shiny.png',
+		shinyFemale: 'chimecho-mega-y-shiny.png',
+	},
+	dragapult: {
+		normal: 'dragapult.png',
+		normalFemale: 'dragapult.png',
+		shiny: 'dragapult-shiny.png',
+		shinyFemale: 'dragapult-shiny.png',
+	},
+	dragapultgmax: {
+		normal: 'dragapult-gmax.png',
+		normalFemale: 'dragapult-gmax.png',
+		shiny: 'dragapult-gmax-shiny.png',
+		shinyFemale: 'dragapult-gmax-shiny.png',
+	},
+	aegislash: {
+		normal: 'aegislash.png',
+		normalFemale: 'aegislash.png',
+		shiny: 'aegislash-shiny.png',
+		shinyFemale: 'aegislash-shiny.png',
+	},
+	aegislashblade: {
+		normal: 'aegislash-blade.png',
+		normalFemale: 'aegislash-blade.png',
+		shiny: 'aegislash-blade-shiny.png',
+		shinyFemale: 'aegislash-blade-shiny.png',
+	},
+	aegislashgmax: {
+		normal: 'aegislash-gmax.png',
+		normalFemale: 'aegislash-gmax.png',
+		shiny: 'aegislash-gmax-shiny.png',
+		shinyFemale: 'aegislash-gmax-shiny.png',
+	},
+	arbok: {
+		normal: 'arbok.png',
+		normalFemale: 'arbok.png',
+		shiny: 'arbok-shiny.png',
+		shinyFemale: 'arbok-shiny.png',
+	},
+	arbokmegax: {
+		normal: 'arbok-mega-x.png',
+		normalFemale: 'arbok-mega-x.png',
+		shiny: 'arbok-mega-x-shiny.png',
+		shinyFemale: 'arbok-mega-x-shiny.png',
+	},
+	arbokmegay: {
+		normal: 'arbok-mega-y.png',
+		normalFemale: 'arbok-mega-y.png',
+		shiny: 'arbok-mega-y-shiny.png',
+		shinyFemale: 'arbok-mega-y-shiny.png',
+	},
+	ariadosmega: {
+		normal: 'ariados-mega.png',
+		normalFemale: 'ariados-mega.png',
+		shiny: 'ariados-mega-shiny.png',
+		shinyFemale: 'ariados-mega-shiny.png',
+	},
+	banette: {
+		normal: 'banette.png',
+		normalFemale: 'banette.png',
+		shiny: 'banette-shiny.png',
+		shinyFemale: 'banette-shiny.png',
+	},
+	banettemega: {
+		normal: 'banette-mega.png',
+		normalFemale: 'banette-mega.png',
+		shiny: 'banette-mega-shiny.png',
+		shinyFemale: 'banette-mega-shiny.png',
+	},
+	banettemegaz: {
+		normal: 'banette-megaz.png',
+		normalFemale: 'banette-megaz.png',
+		shiny: 'banette-mega-shiny.png',
+		shinyFemale: 'banette-mega-shiny.png',
+	},
+	basculegion: {
+		normal: 'basculegion.png',
+		normalFemale: 'basculegion.png',
+		shiny: 'basculegion-shiny.png',
+		shinyFemale: 'basculegion-shiny.png',
+	},
+	basculegionf: {
+		normal: 'basculegion-f.png',
+		normalFemale: 'basculegion-f.png',
+		shiny: 'basculegion-f-shiny.png',
+		shinyFemale: 'basculegion-f-shiny.png',
+	},
 };
+Object.assign(CUSTOM_PARTY_ICON_SPRITES,{"silvally":{"normal":"silvally.png","normalFemale":"silvally.png","shiny":"silvally-shiny.png","shinyFemale":"silvally-shiny.png"},"silvallyfighting":{"normal":"silvally-fighting.png","normalFemale":"silvally-fighting.png","shiny":"silvally-fighting-shiny.png","shinyFemale":"silvally-fighting-shiny.png"},"silvallyflying":{"normal":"silvally-flying.png","normalFemale":"silvally-flying.png","shiny":"silvally-flying-shiny.png","shinyFemale":"silvally-flying-shiny.png"},"silvallypoison":{"normal":"silvally-poison.png","normalFemale":"silvally-poison.png","shiny":"silvally-poison-shiny.png","shinyFemale":"silvally-poison-shiny.png"},"silvallyground":{"normal":"silvally-ground.png","normalFemale":"silvally-ground.png","shiny":"silvally-ground-shiny.png","shinyFemale":"silvally-ground-shiny.png"},"silvallyrock":{"normal":"silvally-rock.png","normalFemale":"silvally-rock.png","shiny":"silvally-rock-shiny.png","shinyFemale":"silvally-rock-shiny.png"},"silvallybug":{"normal":"silvally-bug.png","normalFemale":"silvally-bug.png","shiny":"silvally-bug-shiny.png","shinyFemale":"silvally-bug-shiny.png"},"silvallyghost":{"normal":"silvally-ghost.png","normalFemale":"silvally-ghost.png","shiny":"silvally-ghost-shiny.png","shinyFemale":"silvally-ghost-shiny.png"},"silvallysteel":{"normal":"silvally-steel.png","normalFemale":"silvally-steel.png","shiny":"silvally-steel-shiny.png","shinyFemale":"silvally-steel-shiny.png"},"silvallyunknown":{"normal":"silvally-unknown.png","normalFemale":"silvally-unknown.png","shiny":"silvally-unknown-shiny.png","shinyFemale":"silvally-unknown-shiny.png"},"silvallyfire":{"normal":"silvally-fire.png","normalFemale":"silvally-fire.png","shiny":"silvally-fire-shiny.png","shinyFemale":"silvally-fire-shiny.png"},"silvallywater":{"normal":"silvally-water.png","normalFemale":"silvally-water.png","shiny":"silvally-water-shiny.png","shinyFemale":"silvally-water-shiny.png"},"silvallygrass":{"normal":"silvally-grass.png","normalFemale":"silvally-grass.png","shiny":"silvally-grass-shiny.png","shinyFemale":"silvally-grass-shiny.png"},"silvallyelectric":{"normal":"silvally-electric.png","normalFemale":"silvally-electric.png","shiny":"silvally-electric-shiny.png","shinyFemale":"silvally-electric-shiny.png"},"silvallypsychic":{"normal":"silvally-psychic.png","normalFemale":"silvally-psychic.png","shiny":"silvally-psychic-shiny.png","shinyFemale":"silvally-psychic-shiny.png"},"silvallyice":{"normal":"silvally-ice.png","normalFemale":"silvally-ice.png","shiny":"silvally-ice-shiny.png","shinyFemale":"silvally-ice-shiny.png"},"silvallydragon":{"normal":"silvally-dragon.png","normalFemale":"silvally-dragon.png","shiny":"silvally-dragon-shiny.png","shinyFemale":"silvally-dragon-shiny.png"},"silvallydark":{"normal":"silvally-dark.png","normalFemale":"silvally-dark.png","shiny":"silvally-dark-shiny.png","shinyFemale":"silvally-dark-shiny.png"},"silvallyfairy":{"normal":"silvally-fairy.png","normalFemale":"silvally-fairy.png","shiny":"silvally-fairy-shiny.png","shinyFemale":"silvally-fairy-shiny.png"}});
+
 
 // These custom profiles intentionally use their shiny artwork in every view.
 const FORCE_SHINY_CUSTOM_SPRITE_IDS = new Set<ID>(['spiritombalt']);
@@ -2219,6 +2831,8 @@ const MISSING_SHINY_SPRITE_IDS = new Set(['abra','aerodactyl','alcremie-matchacr
 
 // Volcarona now has supplied shiny assets for both gender variants.
 MISSING_SHINY_SPRITE_IDS.delete('volcarona');
+MISSING_SHINY_SPRITE_IDS.delete('archeops');
+MISSING_SHINY_SPRITE_IDS.delete('mightyena');
 
 // These species start shiny when selected, but can still be switched back to
 // normal in the team editor. This is intentionally separate from the forced
@@ -2244,31 +2858,13 @@ const CUSTOM_DEFAULT_BACK_SPRITES: {[id: string]: ID} = {
 	goodrahisuialt: 'goodrahisui' as ID,
 	toxtricitylowkeyalt: 'toxtricitylowkey' as ID,
 	toxtricitylowkeygmaxalt: 'toxtricitylowkeygmax' as ID,
+	arcaninealt: 'arcanine' as ID,
 	machampalt: 'machamp' as ID,
 	machampgmaxalt: 'machampgmax' as ID,
 	skeledirgealt: 'skeledirge' as ID,
 	tsareenaalt: 'tsareena' as ID,
 	gligaralt: 'gligar' as ID,
 	gliscoralt: 'gliscor' as ID,
-	furfrou: 'furfrou' as ID,
-	furfroudebutante: 'furfrou' as ID,
-	furfroudebutantef: 'furfrou' as ID,
-	furfroudiamond: 'furfrou' as ID,
-	furfroudiamondf: 'furfrou' as ID,
-	furfroudandy: 'furfrou' as ID,
-	furfroudandyf: 'furfrou' as ID,
-	furfrouheart: 'furfrou' as ID,
-	furfrouheartf: 'furfrou' as ID,
-	furfroukabuki: 'furfrou' as ID,
-	furfroukabukif: 'furfrou' as ID,
-	furfroulareine: 'furfrou' as ID,
-	furfroulareinef: 'furfrou' as ID,
-	furfroumatron: 'furfrou' as ID,
-	furfroumatronf: 'furfrou' as ID,
-	furfroupharaoh: 'furfrou' as ID,
-	furfroupharaohf: 'furfrou' as ID,
-	furfroustar: 'furfrou' as ID,
-	furfroustarf: 'furfrou' as ID,
 };
 
 const CUSTOM_TEAMBUILDER_SPRITES: {[id: string]: {x: number, y: number, backgroundSize: string}} = {
@@ -2376,7 +2972,7 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 		back: {w: 96, h: 96},
 		shinyFront: {w: 64, h: 64},
 	},
-	dusknoiralt: {
+	dusknoir: {
 		front: {w: 170, h: 148},
 		back: {w: 126, h: 134},
 	},
@@ -2494,7 +3090,7 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 		back: {w: 192, h: 192},
 		shinyFront: {w: 192, h: 192},
 	},
-	belliboltalt: {
+	belliboltmega: {
 		front: {w: 152, h: 172},
 		back: {w: 150, h: 168},
 	},
@@ -2779,16 +3375,16 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 		back: {w: 140, h: 178},
 	},
 	centiskorch: {
-		front: {w: 180, h: 150},
-		back: {w: 186, h: 150},
-		shinyFront: {w: 180, h: 150},
-		shinyBack: {w: 186, h: 150},
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
 	},
 	centiskorchgmax: {
-		front: {w: 188, h: 188},
-		back: {w: 186, h: 188},
-		shinyFront: {w: 188, h: 188},
-		shinyBack: {w: 186, h: 188},
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
 	},
 	cacturnealt: {
 		front: {w: 132, h: 160},
@@ -2814,11 +3410,17 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 		shinyFront: {w: 192, h: 192},
 		shinyBack: {w: 192, h: 192},
 	},
+	mightyena: {
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
+	},
 	mightyenadeso: {
-		front: {w: 172, h: 154},
-		back: {w: 162, h: 152},
-		shinyFront: {w: 172, h: 154},
-		shinyBack: {w: 162, h: 152},
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
 	},
 	toxicroakdeso: {
 		front: {w: 180, h: 152},
@@ -4305,7 +4907,7 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 		shinyFront: {w: 64, h: 64},
 		shinyBack: {w: 168, h: 144},
 	},
-	belliboltalt: {
+	belliboltmega: {
 		num: 939,
 		front: {w: 192, h: 192},
 		back: {w: 192, h: 192},
@@ -4578,17 +5180,17 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	},
 	centiskorch: {
 		num: 851,
-		front: {w: 180, h: 150},
-		back: {w: 186, h: 150},
-		shinyFront: {w: 180, h: 150},
-		shinyBack: {w: 186, h: 150},
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
 	},
 	centiskorchgmax: {
 		num: 851,
-		front: {w: 188, h: 188},
-		back: {w: 186, h: 188},
-		shinyFront: {w: 188, h: 188},
-		shinyBack: {w: 186, h: 188},
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
 	},
 	cacturnealt: {
 		num: 332,
@@ -4597,12 +5199,19 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 		shinyFront: {w: 132, h: 160},
 		shinyBack: {w: 132, h: 160},
 	},
+	mightyena: {
+		num: 262,
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
+	},
 	mightyenadeso: {
 		num: 262,
-		front: {w: 172, h: 154},
-		back: {w: 162, h: 152},
-		shinyFront: {w: 172, h: 154},
-		shinyBack: {w: 162, h: 152},
+		front: {w: 192, h: 192},
+		back: {w: 192, h: 192},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 192, h: 192},
 	},
 	toxicroakdeso: {
 		num: 454,
@@ -5383,11 +5992,6 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 		frontf: {w: 126, h: 132},
 		backf: {w: 134, h: 128},
 	},
-	luxrayalt: {
-		num: 405,
-		front: {w: 192, h: 192},
-		back: {w: 192, h: 192},
-	},
 	luxrayf: {
 		num: 405,
 		front: {w: 126, h: 132},
@@ -6000,7 +6604,7 @@ Object.assign(CUSTOM_SPECIES, {
 			baseSpecies: 'Florges',
 			forme: 'Reborn',
 			spriteid: 'florges-reborn',
-			types: ['Fairy'],
+			types: ['Fairy', 'Fire'],
 			baseStats: {hp: 74, atk: 65, def: 67, spa: 125, spd: 128, spe: 92},
 			abilities: {0: 'Reborn Flower', 1: 'Sworn Duty', H: 'Symbiosis'},
 			changesFrom: 'Florges',
@@ -6014,7 +6618,7 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 	hypno: {baseStats: {hp: 85, atk: 60, def: 80, spa: 93, spd: 115, spe: 67}, otherFormes: ['Hypno-Pulse'], formeOrder: ['Hypno', 'Hypno-Pulse']},
 	lilligant: {baseStats: {hp: 80, atk: 60, def: 80, spa: 110, spd: 80, spe: 90}, otherFormes: ['Lilligant-Hisui', 'Lilligant-Rift', 'Lilligant-Hisui-Rift'], formeOrder: ['Lilligant', 'Lilligant-Hisui', 'Lilligant-Rift', 'Lilligant-Hisui-Rift']},
 	lilliganthisui: {baseStats: {hp: 80, atk: 105, def: 80, spa: 50, spd: 80, spe: 105}, otherFormes: ['Lilligant-Hisui-Rift'], formeOrder: ['Lilligant-Hisui', 'Lilligant-Hisui-Rift']},
-	bellibolt: {otherFormes: ['Bellibolt-Mega'], formeOrder: ['Bellibolt', 'Bellibolt-Mega']},
+	bellibolt: {otherFormes: ['Bellibolt-Mega'], cosmeticFormes: [], formeOrder: ['Bellibolt', 'Bellibolt-Mega']},
 	sunflora: {baseStats: {hp: 95, atk: 55, def: 75, spa: 125, spd: 90, spe: 30}, otherFormes: ['Sunflora-Mega'], formeOrder: ['Sunflora', 'Sunflora-Mega']},
 	claydol: {otherFormes: ['Claydol-Mega'], formeOrder: ['Claydol', 'Claydol-Mega']},
 	meganium: {
@@ -6057,7 +6661,7 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		formeOrder: ['Florges', 'Florges-Yellow', 'Florges-Orange', 'Florges-Blue', 'Florges-White', 'Florges-Reborn'],
 	},
 	florgesreborn: {
-		types: ['Fairy'],
+		types: ['Fairy', 'Fire'],
 		baseStats: {hp: 74, atk: 65, def: 67, spa: 125, spd: 128, spe: 92},
 		abilities: {0: 'Reborn Flower', 1: 'Sworn Duty', H: 'Symbiosis'},
 	},
@@ -6071,9 +6675,9 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		baseStats: {hp: 85, atk: 140, def: 110, spa: 60, spd: 100, spe: 115},
 	},
 	luxray: {
-		otherFormes: ['Luxray-Deso', 'Luxray-Mega'],
-		cosmeticFormes: ['Luxray-Deso'],
-		formeOrder: ['Luxray', 'Luxray-Deso', 'Luxray-Mega'],
+		otherFormes: ['Luxray-Mega'],
+		cosmeticFormes: [],
+		formeOrder: ['Luxray', 'Luxray-Mega'],
 	},
 	mismagius: {
 		abilities: {0: 'Levitate', 1: 'Temporal Shift', H: 'Shadow Tag'},
@@ -6128,11 +6732,12 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		abilities: {0: 'Insomnia', 1: 'Grandmaster', H: 'Magic Guard'},
 	},
 	alakazammegaalt: {
-		types: ['Psychic'],
+		types: ['Psychic', 'Dark'],
 		baseStats: {hp: 80, atk: 48, def: 60, spa: 175, spd: 105, spe: 162},
 		abilities: {0: 'Perfect Foresight'},
 	},
 	alakazammega: {
+		types: ['Psychic', 'Dark'],
 		baseStats: {hp: 80, atk: 58, def: 70, spa: 175, spd: 105, spe: 162},
 	},
 	manectric: {
@@ -6156,6 +6761,7 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		baseStats: {hp: 119, atk: 64, def: 91, spa: 103, spd: 93, spe: 45},
 		abilities: {0: 'Electromorphosis', 1: 'Static', H: 'Dry Skin'},
 		otherFormes: ['Bellibolt-Mega'],
+		cosmeticFormes: [],
 		formeOrder: ['Bellibolt', 'Bellibolt-Mega'],
 	},
 	typhlosion: {
@@ -6420,7 +7026,7 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		abilities: {0: 'Swift Swim', 1: 'Still Waters', H: 'Defragment'},
 	},
 	machamp: {baseStats: {hp: 100, atk: 140, def: 105, spa: 65, spd: 85, spe: 75}, abilities: {0: 'Guts', 1: 'Stamina', H: 'Fighting Fiend'}},
-	machampgmax: {baseStats: {hp: 150, atk: 140, def: 105, spa: 65, spd: 85, spe: 75}, abilities: {0: 'Guts', 1: 'Stamina', H: 'Raging Fists'}},
+	machampgmax: {baseStats: {hp: 150, atk: 140, def: 105, spa: 65, spd: 85, spe: 75}, abilities: {0: 'Raging Fists', 1: 'Stamina', H: 'Guts'}},
 	kingdra: {
 		baseStats: {hp: 85, atk: 120, def: 90, spa: 120, spd: 90, spe: 95},
 		abilities: {0: 'Swift Swim', 1: 'Abyss Sniper', H: 'Royal Decree'},
@@ -6523,7 +7129,7 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 	ribombee: {baseStats: {hp: 65, atk: 55, def: 60, spa: 90, spd: 105, spe: 125}},
 	zoroark: {baseStats: {hp: 55, atk: 105, def: 60, spa: 125, spd: 60, spe: 105}},
 	dusknoir: {
-		baseStats: {"hp":65,"atk":120,"def":135,"spa":70,"spd":135,"spe":45}, abilities: {0: 'Requiem', 1: 'Pressure', H: 'Shadow Tag'}, otherFormes: ['Dusknoir-Mega','Dusknoir-Alt'], cosmeticFormes: ['Dusknoir-Alt'], formeOrder: ['Dusknoir','Dusknoir-Mega','Dusknoir-Alt'],
+		baseStats: {"hp":65,"atk":120,"def":135,"spa":70,"spd":135,"spe":45}, abilities: {0: 'Requiem', 1: 'Pressure', H: 'Shadow Tag'}, otherFormes: ['Dusknoir-Mega'], cosmeticFormes: [], formeOrder: ['Dusknoir','Dusknoir-Mega'],
 	},
 	spiritomb: {
 		baseStats: {hp: 108, atk: 108, def: 108, spa: 108, spd: 108, spe: 30},
@@ -7129,7 +7735,8 @@ Object.assign(CUSTOM_SPECIES_UPDATES, {
 	infernape: {baseStats: {hp: 76, atk: 115, def: 75, spa: 115, spd: 81, spe: 108}},
 	infernapealt: {baseStats: {hp: 76, atk: 115, def: 75, spa: 115, spd: 81, spe: 108}},
 	machamp: {baseStats: {hp: 100, atk: 140, def: 95, spa: 65, spd: 75, spe: 75}},
-	machampgmax: {baseStats: {hp: 150, atk: 140, def: 95, spa: 65, spd: 75, spe: 75}},
+	machampgmaxalt: {abilities: {0: 'Raging Fists', 1: 'Stamina', H: 'Guts'}},
+	machampgmax: {baseStats: {hp: 150, atk: 140, def: 95, spa: 65, spd: 75, spe: 75}, abilities: {0: 'Raging Fists', 1: 'Stamina', H: 'Guts'}},
 	probopass: {baseStats: {hp: 75, atk: 50, def: 150, spa: 95, spd: 155, spe: 25}},
 	samurott: {baseStats: {hp: 95, atk: 110, def: 90, spa: 120, spd: 80, spe: 75}},
 	samurotthisui: {baseStats: {hp: 90, atk: 110, def: 75, spa: 105, spd: 65, spe: 95}},
@@ -7146,7 +7753,7 @@ Object.assign(CUSTOM_SPECIES_UPDATES, {
 		abilities: {0: 'Battle Fervor', 1: 'Corrosion', H: 'Great Marsh'},
 	},
 	alakazam: {baseStats: {hp: 80, atk: 50, def: 50, spa: 135, spd: 95, spe: 120}},
-	alakazammega: {baseStats: {hp: 80, atk: 48, def: 60, spa: 175, spd: 105, spe: 162}},
+	alakazammega: {types: ['Psychic', 'Dark'], baseStats: {hp: 80, atk: 48, def: 60, spa: 175, spd: 105, spe: 162}},
 	dodrio: {baseStats: {hp: 90, atk: 115, def: 85, spa: 40, spd: 75, spe: 120}, abilities: {0: 'Triple Threat', 1: 'Speed Boost', H: 'Striker Frenzy'}},
 	honchkrow: {baseStats: {hp: 100, atk: 135, def: 72, spa: 71, spd: 72, spe: 100}},
 	flamigo: {baseStats: {hp: 82, atk: 125, def: 80, spa: 75, spd: 70, spe: 105}},
@@ -7703,7 +8310,7 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 		desc: "This Pokemon has Sharpness, Dual Wield, and Sworn Duty's effects. Its slicing moves have 1.5x power. When Dual Wield applies to one of those slicing moves, the first hit keeps the 1.5x Sharpness boost and the second hit has 20% of the move's unboosted power. On switch-in or Mega Evolution, it heals its ally by 1/4 max HP, or 1/3 on Fairy Tale Field.",
 		shortDesc: "Sharpness + Dual Wield + Sworn Duty.",
 	},
-	royalvoice: {"name":"Royal Voice","desc":"Pixilate + Queenly Majesty + Dream Sickness. Retains its Fairy conversion, Psychic/Fairy power boost and priority protection, with all Dream Sickness effects, including ally protection, healing, stat-drop protection and dream shelter.","shortDesc":"Pixilate + Queenly Majesty + Dream Sickness."},
+	royalvoice: {"name":"Royal Voice","desc":"Pixilate + Queenly Majesty + Dream Sickness. Normal moves become Fairy and receive Pixilate power boosts. Blocks opposing priority moves targeting its side. Includes all Dream Sickness effects: ally protection, healing, stat-drop protection and dream shelter.","shortDesc":"Pixilate + Queenly Majesty + Dream Sickness."},
 	fallenstar: {
 		name: "Fallen Star",
 		desc: "This Ability cannot be suppressed. This Pokemon has Mold Breaker, Dual Wield, Skill Link, and Self Sufficient. Existing multi-hit Arrow moves use Skill Link normally. Arrow moves deal 1.5x damage to trapped targets. At half HP or less, Arrow moves gain +1 priority and this Pokemon takes half damage. After an Arrow move, it takes 0.25x damage for the turn. An Arrow KO repeats the move at half power. In Free-for-All, Arrow moves hit every foe twice at full power.",
@@ -8237,8 +8844,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	omenedge: {
 		name: "Omen Edge",
-		desc: "This Pokemon has Sharpness, Dual Wield, and Tough Claws. When it faints, it casts a physical Doom Desire on each opposing Pokemon.",
-		shortDesc: "Sharpness + Dual Wield + Tough Claws; on faint: Doom Desire on foes.",
+		desc: "This Pokemon has Sharpness, Dual Wield, and Pressure. When it faints, it casts a physical Doom Desire on each opposing Pokemon.",
+		shortDesc: "Sharpness + Dual Wield + Pressure; on faint: Doom Desire on foes.",
 	},
 	orchardbond: {
 		name: "Orchard Bond",
@@ -8287,8 +8894,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	perfectforesight: {
 		name: "Perfect Foresight",
-		desc: "On switch-in, this Pokemon identifies and gains the Ability of the opposing Pokemon with the highest offensive stat. Future Sight queued by this Ability has 60 BP, ignores defensive boosts, screens, and Abilities, and hits Dark-type Pokemon neutrally. If this Pokemon uses a move on opposing Pokemon, is damaged by an opposing attack, or uses Future Sight, Future Sight is queued on the affected opposing slots. Spread moves queue Future Sight on all enemies, and existing Perfect Foresight delayed attacks stack instead of blocking new ones.",
-		shortDesc: "Gains strongest foe's Ability; repeatedly queues 60 BP Future Sight.",
+		desc: "Includes Insomnia: prevents sleep and Yawn, cures sleep, and boosts damaging Dark- and Ghost-type moves by 1.3x. On activation, prioritizes opposing Speed abilities whose conditions are met for this Pokemon (Sand Rush, Chlorophyll, Swift Swim, Slush Rush, Surge Surfer, Quick Feet, or Speed Boost). Ties and fallback use the highest Attack or Special Attack. Future Sight queued by this Ability has 90 BP, ignores defensive boosts, screens, and Abilities, and hits Dark-type Pokemon neutrally. If this Pokemon uses a move on opposing Pokemon, is damaged by an opposing attack, or uses Future Sight, Future Sight is queued on the affected opposing slots. Spread moves queue Future Sight on all enemies, and existing Perfect Foresight delayed attacks stack instead of blocking new ones.",
+		shortDesc: "Insomnia + strongest foe's Ability; queues 90 BP Future Sight.",
 	},
 	phantomfist: {
 		name: "Phantom Fist",
@@ -8394,7 +9001,7 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	stancechange: {
 		name: 'Stance Change',
-		desc: "This Pokemon has Dual Wield. Aegislash changes to Blade Forme before attacking and Shield Forme before King's Shield. Shield Forme takes 20% less damage; consecutive Free-for-All hits deal 30% less damage. Blade Forme deals 1.2x damage.",
+		desc: "This Pokemon has Dual Wield. Aegislash changes to Blade Forme before attacking and Shield Forme before King's Shield. Shield Forme takes 20% less damage; consecutive Free-for-All hits deal 30% less damage. Blade Forme deals 1.2x damage. On Fairy Tale and Chessboard, activation raises Defense and Special Defense by 1; switching to Blade raises Attack and Special Attack by 1 and lowers both defenses by 1, with the reverse on switching to Shield.",
 		shortDesc: 'Dual Wield; Shield: 20% less damage; Blade: 1.2x damage.',
 	},
 	zerotohero: {
@@ -8405,7 +9012,7 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	royalarmament: {
 		name: "Royal Armament",
 		desc: "This Pokemon gains STAB on Steel-type moves and has Power Drill's effects.",
-		shortDesc: "Steel STAB + Power Drill.",
+		shortDesc: "Dual Wield; Shield: 20% less damage; Blade: 1.2x damage.",
 	},
 	abysssniper: {
 		name: "Abyss Sniper",
@@ -8569,8 +9176,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	streettyrant: {
 		name: "Street Tyrant",
-		desc: "This Pokemon has Intimidate, Regenerator, and Mold Breaker's effects.",
-		shortDesc: "Intimidate + Regenerator + Mold Breaker.",
+		desc: "This Pokemon has Intimidate, Shed Skin, and Mold Breaker's effects.",
+		shortDesc: "Intimidate + Shed Skin + Mold Breaker.",
 	},
 	striker: {
 		name: "Striker",
@@ -8740,8 +9347,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	voidveil: {
 		name: "Void Veil",
-		desc: "This Pokemon has Levitate, Friend Guard, and Costar's effects.",
-		shortDesc: "Levitate + Friend Guard + Costar.",
+		desc: "Levitate + Friend Guard + Insomnia. Each turn heals itself and allies by 1/16 max HP. Once per entry, an ally at 25% HP or less before healing gets another 1/4 max HP heal, a status cure, and Dream Sickness shelter.",
+		shortDesc: "Levitate + Friend Guard + Insomnia; Dream Sickness healing.",
 	},
 	knightsguard: {
 		name: "Knight's Guard",
@@ -8855,8 +9462,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	imperialmandate: {
 		name: "Imperial Mandate",
-		desc: "At 50% HP or higher, this Pokemon's damage dealt is doubled. Below 50% HP, its Speed is doubled instead. It also deals 1.2x damage and takes 0.8x damage from attacks. In Fairy Tale, Cold Eclipse, and New World, it raises Defense and Special Defense by 1 and deals 1.5x damage.",
-		shortDesc: "High HP doubles damage; low HP doubles Speed; 1.2x dealt and 0.8x taken.",
+		desc: "Outside boosted fields: at 50% HP or higher, attacks have 2.4x power; below 50%, attacks have 1.2x power and Speed is doubled. Takes 20% less attack damage outside boosted fields. On Fairy Tale, Chessboard, New World, Starlight Arena, and Cold Eclipse: at 50% HP or higher, grants +1 Defense and Special Defense with no attack boost; below 50%, removes its granted defense stages and grants 1.5x attack power and double Speed. Field defense stages do not stack and are removed on leaving these fields.",
+		shortDesc: "Boosted fields: high HP +1 Def/SpD; low HP 1.5x power, 2x Speed.",
 	},
 	phantombarrage: {
 		name: "Phantom Barrage",
@@ -10545,12 +11152,17 @@ Object.assign(CUSTOM_STATIC_BATTLE_SPRITES.decidueyealt, {back: {w: 192, h: 192}
 Object.assign(CUSTOM_BW_SPRITES.decidueyealt, {back: {w: 192, h: 192}, shinyBack: {w: 192, h: 192}});
 Object.assign(CUSTOM_STATIC_BATTLE_SPRITES,{gardevoirvoid:{"back":{"h":64,"w":64},"front":{"h":64,"w":64},"shinyFront":{"h":64,"w":64},"shinyBack":{"h":64,"w":64}}});
 Object.assign(CUSTOM_BW_SPRITES,{gardevoirvoid:{"num":282,"back":{"h":64,"w":64},"front":{"h":64,"w":64},"shinyFront":{"h":64,"w":64},"shinyBack":{"h":64,"w":64}}});
+Object.assign(CUSTOM_STATIC_BATTLE_SPRITES, {gardevoirmegaalt: CUSTOM_STATIC_BATTLE_SPRITES.gardevoirvoid});
+Object.assign(CUSTOM_BW_SPRITES, {gardevoirmegaalt: CUSTOM_BW_SPRITES.gardevoirvoid});
 Object.assign(CUSTOM_STATIC_BATTLE_SPRITES,{luxraymega:{"shinyBack":{"h":192,"w":192},"front":{"h":192,"w":192},"back":{"h":192,"w":192},"shinyFront":{"h":192,"w":192}}});
 Object.assign(CUSTOM_BW_SPRITES,{luxraymega:{"num":405,"shinyBack":{"h":192,"w":192},"front":{"h":192,"w":192},"back":{"h":192,"w":192},"shinyFront":{"h":192,"w":192}}});
+Object.assign(CUSTOM_STATIC_BATTLE_SPRITES, {archeops: {front: {w: 96, h: 96}, back: {w: 96, h: 96}, shinyFront: {w: 96, h: 96}, shinyBack: {w: 96, h: 96}}});
 Object.assign(CUSTOM_STATIC_BATTLE_SPRITES,{"lopunny":{"back":{"h":122,"w":106},"front":{"h":119,"w":105},"shinyFront":{"h":119,"w":104},"shinyBack":{"h":122,"w":106}},"lopunnymega":{"back":{"h":130,"w":101},"front":{"h":134,"w":126},"shinyFront":{"h":134,"w":126},"shinyBack":{"h":130,"w":101}}});
 Object.assign(CUSTOM_BW_SPRITES,{"lopunny":{"num":428,"back":{"h":122,"w":106},"front":{"h":119,"w":105},"shinyFront":{"h":119,"w":104},"shinyBack":{"h":122,"w":106}},"lopunnymega":{"num":428,"back":{"h":130,"w":101},"front":{"h":134,"w":126},"shinyFront":{"h":134,"w":126},"shinyBack":{"h":130,"w":101}}});
 Object.assign(CUSTOM_STATIC_BATTLE_SPRITES,{"breloommegaf":{"shinyBack":{"w":150,"h":210},"shinyFront":{"w":120,"h":132},"front":{"w":120,"h":132},"back":{"w":150,"h":210}},"breloommega":{"shinyBack":{"w":150,"h":210},"shinyFront":{"w":120,"h":132},"front":{"w":120,"h":132},"back":{"w":150,"h":210}}});
 Object.assign(CUSTOM_BW_SPRITES,{"breloommegaf":{"num":286,"shinyBack":{"w":150,"h":210},"shinyFront":{"w":120,"h":132},"front":{"w":120,"h":132},"back":{"w":150,"h":210}},"breloommega":{"num":286,"shinyBack":{"w":150,"h":210},"shinyFront":{"w":120,"h":132},"front":{"w":120,"h":132},"back":{"w":150,"h":210}}});
+Object.assign(CUSTOM_STATIC_BATTLE_SPRITES,{"silvally":{"front":{"w":192,"h":192},"back":{"w":192,"h":192},"shinyFront":{"w":192,"h":192},"shinyBack":{"w":192,"h":192}},"silvallyfighting":{"front":{"w":192,"h":192},"back":{"w":192,"h":192},"shinyFront":{"w":192,"h":192},"shinyBack":{"w":192,"h":192}},"silvallyflying":{"front":{"w":192,"h":192},"back":{"w":192,"h":192},"shinyFront":{"w":192,"h":192},"shinyBack":{"w":192,"h":192}},"silvallypoison":{"front":{"w":192,"h":192},"back":{"w":192,"h":192},"shinyFront":{"w":192,"h":192},"shinyBack":{"w":192,"h":192}},"silvallyground":{"front":{"w":192,"h":192},"back":{"w":192,"h":192},"shinyFront":{"w":192,"h":192},"shinyBack":{"w":192,"h":192}},"silvallyrock":{"front":{"w":192,"h":192},"back":{"w":192,"h":192},"shinyFront":{"w":192,"h":192},"shinyBack":{"w":192,"h":192}},"silvallybug":{"front":{"w":192,"h":192},"back":{"w":192,"h":192},"shinyFront":{"w":192,"h":192},"shinyBack":{"w":192,"h":192}},"silvallyghost":{"front":{"w":192,"h":192},"back":{"w":192,"h":192},"shinyFront":{"w":192,"h":192},"shinyBack":{"w":192,"h":192}},"silvallysteel":{"front":{"w":192,"h":192},"back":{"w":192,"h":192},"shinyFront":{"w":192,"h":192},"shinyBack":{"w":192,"h":192}},"silvallyunknown":{"front":{"w":192,"h":192},"back":{"w":192,"h":192},"shinyFront":{"w":192,"h":192},"shinyBack":{"w":192,"h":192}},"silvallyfire":{"front":{"w":192,"h":192},"back":{"w":192,"h":192},"shinyFront":{"w":192,"h":192},"shinyBack":{"w":192,"h":192}},"silvallywater":{"front":{"w":192,"h":192},"back":{"w":192,"h":192},"shinyFront":{"w":192,"h":192},"shinyBack":{"w":192,"h":192}},"silvallygrass":{"front":{"w":192,"h":192},"back":{"w":192,"h":192},"shinyFront":{"w":192,"h":192},"shinyBack":{"w":192,"h":192}},"silvallyelectric":{"front":{"w":192,"h":192},"back":{"w":192,"h":192},"shinyFront":{"w":192,"h":192},"shinyBack":{"w":192,"h":192}},"silvallypsychic":{"front":{"w":192,"h":192},"back":{"w":192,"h":192},"shinyFront":{"w":192,"h":192},"shinyBack":{"w":192,"h":192}},"silvallyice":{"front":{"w":192,"h":192},"back":{"w":192,"h":192},"shinyFront":{"w":192,"h":192},"shinyBack":{"w":192,"h":192}},"silvallydragon":{"front":{"w":192,"h":192},"back":{"w":192,"h":192},"shinyFront":{"w":192,"h":192},"shinyBack":{"w":192,"h":192}},"silvallydark":{"front":{"w":192,"h":192},"back":{"w":192,"h":192},"shinyFront":{"w":192,"h":192},"shinyBack":{"w":192,"h":192}},"silvallyfairy":{"front":{"w":192,"h":192},"back":{"w":192,"h":192},"shinyFront":{"w":192,"h":192},"shinyBack":{"w":192,"h":192}}});
+Object.assign(CUSTOM_BW_SPRITES,{"silvally":{"front":{"w":192,"h":192},"back":{"w":192,"h":192},"shinyFront":{"w":192,"h":192},"shinyBack":{"w":192,"h":192}},"silvallyfighting":{"front":{"w":192,"h":192},"back":{"w":192,"h":192},"shinyFront":{"w":192,"h":192},"shinyBack":{"w":192,"h":192}},"silvallyflying":{"front":{"w":192,"h":192},"back":{"w":192,"h":192},"shinyFront":{"w":192,"h":192},"shinyBack":{"w":192,"h":192}},"silvallypoison":{"front":{"w":192,"h":192},"back":{"w":192,"h":192},"shinyFront":{"w":192,"h":192},"shinyBack":{"w":192,"h":192}},"silvallyground":{"front":{"w":192,"h":192},"back":{"w":192,"h":192},"shinyFront":{"w":192,"h":192},"shinyBack":{"w":192,"h":192}},"silvallyrock":{"front":{"w":192,"h":192},"back":{"w":192,"h":192},"shinyFront":{"w":192,"h":192},"shinyBack":{"w":192,"h":192}},"silvallybug":{"front":{"w":192,"h":192},"back":{"w":192,"h":192},"shinyFront":{"w":192,"h":192},"shinyBack":{"w":192,"h":192}},"silvallyghost":{"front":{"w":192,"h":192},"back":{"w":192,"h":192},"shinyFront":{"w":192,"h":192},"shinyBack":{"w":192,"h":192}},"silvallysteel":{"front":{"w":192,"h":192},"back":{"w":192,"h":192},"shinyFront":{"w":192,"h":192},"shinyBack":{"w":192,"h":192}},"silvallyunknown":{"front":{"w":192,"h":192},"back":{"w":192,"h":192},"shinyFront":{"w":192,"h":192},"shinyBack":{"w":192,"h":192}},"silvallyfire":{"front":{"w":192,"h":192},"back":{"w":192,"h":192},"shinyFront":{"w":192,"h":192},"shinyBack":{"w":192,"h":192}},"silvallywater":{"front":{"w":192,"h":192},"back":{"w":192,"h":192},"shinyFront":{"w":192,"h":192},"shinyBack":{"w":192,"h":192}},"silvallygrass":{"front":{"w":192,"h":192},"back":{"w":192,"h":192},"shinyFront":{"w":192,"h":192},"shinyBack":{"w":192,"h":192}},"silvallyelectric":{"front":{"w":192,"h":192},"back":{"w":192,"h":192},"shinyFront":{"w":192,"h":192},"shinyBack":{"w":192,"h":192}},"silvallypsychic":{"front":{"w":192,"h":192},"back":{"w":192,"h":192},"shinyFront":{"w":192,"h":192},"shinyBack":{"w":192,"h":192}},"silvallyice":{"front":{"w":192,"h":192},"back":{"w":192,"h":192},"shinyFront":{"w":192,"h":192},"shinyBack":{"w":192,"h":192}},"silvallydragon":{"front":{"w":192,"h":192},"back":{"w":192,"h":192},"shinyFront":{"w":192,"h":192},"shinyBack":{"w":192,"h":192}},"silvallydark":{"front":{"w":192,"h":192},"back":{"w":192,"h":192},"shinyFront":{"w":192,"h":192},"shinyBack":{"w":192,"h":192}},"silvallyfairy":{"front":{"w":192,"h":192},"back":{"w":192,"h":192},"shinyFront":{"w":192,"h":192},"shinyBack":{"w":192,"h":192}}});
 const CUSTOM_BW_SPRITE_IDS = Object.keys(CUSTOM_BW_SPRITES);
 const CUSTOM_ANIMATED_BW_SPRITES = new Set([
 	'aggron', 'ariados', 'butterfree', 'cacturne', 'cinderacegmax',
@@ -10570,6 +11182,12 @@ function customSpriteRevision(id: string) {
 }
 const CUSTOM_SPECIES_IDS = Object.keys(CUSTOM_SPECIES);
 const CUSTOM_SPECIES_UPDATE_IDS = Object.keys(CUSTOM_SPECIES_UPDATES);
+const REMOVED_SPECIES_IDS = ['belliboltalt', 'dusknoiralt', 'luxrayalt'];
+const CLEAN_BASE_FORMES: {[id: string]: string[]} = {
+	bellibolt: ['Bellibolt', 'Bellibolt-Mega'],
+	luxray: ['Luxray', 'Luxray-Mega'],
+	dusknoir: ['Dusknoir', 'Dusknoir-Mega'],
+};
 function getCustomSpeciesBaseData(customSpecies: {base: string}) {
 	if (!window.BattlePokedex) return undefined;
 	return window.BattlePokedex[customSpecies.base] || window.BattlePokedex[toID(customSpecies.base)];
@@ -11163,7 +11781,7 @@ const CUSTOM_TEAMBUILDER_SPRITE_DIMENSIONS: {[id: string]: {w: number, h: number
 	gothitelle: {w: 192, h: 192, shinyW: 192, shinyH: 192},
 	hydreigon: {w: 160, h: 156, shinyW: 192, shinyH: 192},
 	jolteon: {w: 96, h: 96, shinyW: 92, shinyH: 98},
-	reuniclus: {w: 64, h: 64, shinyW: 96, shinyH: 96},
+	reuniclus: {w: 96, h: 96, shinyW: 96, shinyH: 96},
 	sylveon: {w: 96, h: 96, shinyW: 96, shinyH: 96},
 };
 
@@ -11413,7 +12031,7 @@ const CUSTOM_ABILITY_COMPONENT_OVERRIDES: {[id: string]: readonly ID[]} = {
 	doomwarning: ['magicbounce' as ID, 'magicguard' as ID],
 	draconicforce: ['dragonize' as ID, 'strongjaw' as ID, 'moldbreaker' as ID],
 	tidaljaw: ['strongjaw' as ID, 'swiftswim' as ID, 'filter' as ID],
-	omenedge: ['sharpness' as ID, 'dualwield' as ID, 'toughclaws' as ID],
+	omenedge: ['sharpness' as ID, 'dualwield' as ID, 'pressure' as ID],
 	ragingcurrent: ['swiftswim' as ID, 'damp' as ID, 'waterveil' as ID, 'dryskin' as ID, 'regenerator' as ID, 'stamina' as ID],
 	relentlesshunt: ['levitate' as ID],
 	dreadmaw: ['hugepower' as ID, 'strongjaw' as ID],
@@ -11589,7 +12207,7 @@ const DOCUMENT_LEARNSET_ADDITIONS: {[id: string]: {[id: string]: string[]}} = {
 	boltund: {fakeout: ["9M"], icefang: ["9M"]},
 	brambleghast: {beatup: ["9M"], block: ["9M"], naturepower: ["9M"]},
 	braviary: {ominouswind: ["9M"], twister: ["9M"]},
-	breloom: {coaching: ["9M"]},
+	breloom: {barbbarrage: ["9M"], coaching: ["9M"]},
 	brutebonnet: {naturepower: ["9M"]},
 	bruxish: {bodyslam: ["9M"], drainingkiss: ["9M"], storedpower: ["9M"]},
 	butterfree: {dazzlinggleam: ["9M"], poisongas: ["9L1"], sludge: ["9M"], sludgebomb: ["9M"], sludgewave: ["9M"], venomdrench: ["9M"]},
@@ -11931,6 +12549,7 @@ Object.assign(CUSTOM_LEARNSET_ADDITIONS, DOCUMENT_LEARNSET_ADDITIONS, {
 const CUSTOM_LEARNSET_ADDITION_IDS = Object.keys(CUSTOM_LEARNSET_ADDITIONS);
 const CUSTOM_LEARNSET_REMOVAL_IDS = Object.keys(CUSTOM_LEARNSET_REMOVALS);
 const CUSTOM_ITEM_UPDATES: {[id: string]: AnyObject} = {
+	gardevoirite: {megaStone: {'Gardevoir': 'Gardevoir-Mega', 'Gardevoir-Void': 'Gardevoir-Mega-Alt'}, itemUser: ['Gardevoir', 'Gardevoir-Void']},
 	breloomite: {"name":"Breloomite","spritenum":619,"megaStone":{"Breloom":"Breloom-Mega"},"itemUser":["Breloom"],"num":11102,"gen":9,"isNonstandard":"Custom","desc":"Allows Breloom to Mega Evolve into Mega Breloom.","shortDesc":"Allows Breloom to Mega Evolve."},
 	luxranite: {"name":"Luxranite","spritenum":619,"megaStone":{"Luxray":"Luxray-Mega"},"itemUser":["Luxray"],"num":11100,"gen":9,"isNonstandard":"Custom","desc":"Allows Luxray to Mega Evolve into Mega Luxray.","shortDesc":"Allows Luxray to Mega Evolve."},
 	noctowlite: {"name":"Noctowlite","spritenum":619,"megaStone":{"Noctowl":"Noctowl-Mega"},"itemUser":["Noctowl"],"num":11098,"gen":9,"isNonstandard":"Custom","desc":"Allows Noctowl to Mega Evolve into Mega Noctowl.","shortDesc":"Allows Noctowl to Mega Evolve."},
@@ -12409,6 +13028,7 @@ function ensureCustomDataPatches() {
 		(customTeambuilderDataTable || undefined) === window.BattleTeambuilderTable
 	) return;
 	if (window.BattlePokedex && customPokedexDataTable !== window.BattlePokedex) {
+		for (const id of REMOVED_SPECIES_IDS) delete window.BattlePokedex[id];
 		for (const id of CUSTOM_SPECIES_UPDATE_IDS) {
 			if (!window.BattlePokedex[id]) window.BattlePokedex[id] = {};
 			const update = CUSTOM_SPECIES_UPDATES[id];
@@ -12419,12 +13039,21 @@ function ensureCustomDataPatches() {
 			if (update.baseStats) species.baseStats = {...(baseStats || {}), ...update.baseStats};
 			if (update.abilities) species.abilities = {...(update.replaceAbilities ? {} : (abilities || {})), ...update.abilities};
 		}
+		for (const [id, formeOrder] of Object.entries(CLEAN_BASE_FORMES)) {
+			const species = window.BattlePokedex[id];
+			if (!species) continue;
+			species.otherFormes = formeOrder.slice(1);
+			species.cosmeticFormes = [];
+			species.formeOrder = formeOrder;
+		}
 		customPokedexDataTable = window.BattlePokedex;
 	}
 	if (window.BattlePokedexAltForms && customPokedexAltFormsTable !== window.BattlePokedexAltForms) {
+		for (const id of REMOVED_SPECIES_IDS) delete window.BattlePokedexAltForms[id];
 		customPokedexAltFormsTable = window.BattlePokedexAltForms;
 	}
 	if (window.BattleAliases) {
+		delete window.BattleAliases.luxraydeso;
 		window.BattleAliases.alchemicsurge = 'Alchemist Surge';
 		window.BattleAliases.amuletcoin = 'Star Sweet';
 		window.BattleAliases.richard = 'Jellicent-Azzy';
@@ -12436,7 +13065,6 @@ function ensureCustomDataPatches() {
 		window.BattleAliases.torterrareborn = 'Torterra-Alt';
 		window.BattleAliases.infernapereborn = 'Infernape-Alt';
 		window.BattleAliases.empoleonreborn = 'Empoleon-Alt';
-		window.BattleAliases.luxraydeso = 'Luxray-Alt';
 		window.BattleAliases.nidoqueenreborn = 'Nidoqueen-Alt';
 		window.BattleAliases.nidokingreborn = 'Nidoking-Alt';
 		window.BattleAliases.ninetalesreborn = 'Ninetales-Alt';
@@ -13854,6 +14482,10 @@ const NATIVE_TEAMBUILDER_ART: {[spriteid: string]: {normal: {w: number, h: numbe
 	"zygarde-complete": {"normal":{"w":128,"h":128},"shiny":{"w":128,"h":128}},
 };
 
+// These species have supplied BW artwork that should take precedence over
+// native 3D Team Builder art.
+const FORCE_GEN5_TEAMBUILDER_SPRITES = new Set<ID>(['dusknoir', 'mightyena', 'mightyenadeso', 'reuniclus']);
+
 const Dex = new class implements ModdedDex {
 	readonly gen = 9;
 	readonly modid = 'gen9' as ID;
@@ -14337,7 +14969,7 @@ const Dex = new class implements ModdedDex {
 		if (Dex.prefs('nopastgens')) graphicsGen = 6;
 		if (Dex.prefs('bwgfx') && graphicsGen >= 6) graphicsGen = 5;
 		// Prefer selected native BW animations where their silhouettes fit the battle scene better.
-		if (species.id === 'heracross' || species.id === 'hydreigon' || species.id === 'milotic' || species.id === 'miloticalt' || species.id === 'miloticaevian' || species.id === 'gastrodonaevian' || species.id === 'gastrodoneastaevian' || species.id === 'hypnopulse' || species.id === 'pidgeot' || species.id === 'staraptor' || species.id === 'pinsirmega' || species.id === 'frosmoth' || species.id === 'runerigus' || species.id === 'manectric' || species.id === 'manectricmega' || species.id === 'basculegion' || species.id === 'basculegionf' || species.id.startsWith('furfrou') ||
+		if (species.id === 'heracross' || species.id === 'hydreigon' || species.id === 'milotic' || species.id === 'miloticalt' || species.id === 'miloticaevian' || species.id === 'gastrodonaevian' || species.id === 'gastrodoneastaevian' || species.id === 'hypnopulse' || species.id === 'pidgeot' || species.id === 'staraptor' || species.id === 'pinsirmega' || species.id === 'frosmoth' || species.id === 'runerigus' || species.id === 'manectric' || species.id === 'manectricmega' || species.id === 'basculegion' || species.id === 'basculegionf' || species.id === 'cinderacegmax' || species.id.startsWith('furfrou') ||
 			(!isFront && (species.id === 'lucario' || species.id === 'lucariomega'))) graphicsGen = 5;
 		spriteData.gen = Math.max(graphicsGen, Math.min(species.gen, 5));
 		const baseDir = ['', 'gen1', 'gen2', 'gen3', 'gen4', 'gen5', '', '', '', ''][spriteData.gen];
@@ -14716,10 +15348,17 @@ const Dex = new class implements ModdedDex {
 			// @ts-ignore
 			id = toID(pokemon.volatiles.formechange[1]);
 		}
+		if (id.startsWith('furfrou') && CUSTOM_STATIC_BATTLE_SPRITES[id]) {
+			const isFemale = pokemon?.gender === 'F' && !!CUSTOM_STATIC_BATTLE_SPRITES[`${id}f`];
+			const spriteid = (CUSTOM_ICON_SPRITES[id] || iconSpecies.spriteid) + (isFemale ? '-f' : '');
+			const shinyDir = pokemon?.shiny ? '-shiny' : '';
+			const fainted = (pokemon as Pokemon | ServerPokemon)?.fainted ? ';opacity:.3;filter:grayscale(100%) brightness(.5)' : '';
+			return `background:transparent url(${Dex.resourcePrefix}sprites/gen5${shinyDir}/${spriteid}.png) no-repeat center / contain${fainted}`;
+		}
 		const customPartyIcon = CUSTOM_PARTY_ICON_SPRITES[id];
 		if (customPartyIcon) {
 			const iconPokemon = typeof pokemon === 'object' && pokemon !== null ? pokemon : null;
-			const isShiny = !!iconPokemon?.shiny;
+			const isShiny = !!iconPokemon?.shiny || isSilvallySpecies(id);
 			const isFemale = iconPokemon?.gender === 'F';
 			const iconFile = isShiny ? (isFemale ? customPartyIcon.shinyFemale : customPartyIcon.shiny) :
 				(isFemale ? customPartyIcon.normalFemale : customPartyIcon.normal);
@@ -14783,8 +15422,8 @@ const Dex = new class implements ModdedDex {
 		// Keep explicit older-generation graphics and exact custom forme fallbacks.
 		const artGen = Dex.prefs('nopastgens') ? 6 : gen;
 		const nativeArt = NATIVE_TEAMBUILDER_ART[spriteid];
-		if (nativeArt && (!artGen || artGen >= 6) && !Dex.prefs('bwgfx') &&
-			!(window.Config?.server?.afd || Dex.prefs('afd'))) {
+		if (nativeArt && !(id === 'archeops' && isShiny) && (!artGen || artGen >= 6) && !Dex.prefs('bwgfx') &&
+			!(window.Config?.server?.afd || Dex.prefs('afd')) && !FORCE_GEN5_TEAMBUILDER_SPRITES.has(id) && !id.startsWith('furfrou') && !isSilvallySpecies(id)) {
 			const useShiny = isShiny && !!nativeArt.shiny;
 			const size = (useShiny ? nativeArt.shiny : nativeArt.normal)!;
 			// Native dex images include their own padding; fit the entire canvas.

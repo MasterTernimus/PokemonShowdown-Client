@@ -67,14 +67,14 @@ describe('Battle', () => {
 			}
 		}
 	});
-	it('uses BW sprites for custom Furfrou trims and the base BW back sprite fallback', () => {
+	it('uses matching front and back BW sprites for custom Furfrou trims', () => {
 		for (const trim of ['Heart', 'Star', 'Diamond', 'Debutante', 'Matron', 'Dandy', 'La Reine', 'Kabuki', 'Pharaoh']) {
 			const id = trim === 'La Reine' ? 'furfroulareine' : `furfrou${trim.toLowerCase()}`;
 			const front = Dex.getSpriteData(`Furfrou-${trim}`, true, {gen: 9});
 			assert(front.url.includes(`/sprites/gen5/furfrou-${id.slice(7)}.png`), front.url);
 			assert(fs.existsSync(path.join(__dirname, '../play.pokemonshowdown.com/sprites/gen5', `furfrou-${id.slice(7)}.png`)));
 			const back = Dex.getSpriteData(`Furfrou-${trim}`, false, {gen: 9});
-			assert(back.url.includes('/sprites/gen5-back/furfrou.png'), back.url);
+			assert(back.url.includes(`/sprites/gen5-back/furfrou-${id.slice(7)}.png`), back.url);
 		}
 	});
 
@@ -267,6 +267,72 @@ describe('Team Builder sprites', () => {
 					const sprite = Dex.getSpriteData(species, front, {gen: 9, shiny, noScale: true});
 					const directory = front ? (shiny ? 'gen5-shiny' : 'gen5') : (shiny ? 'gen5-back-shiny' : 'gen5-back');
 					assert(sprite.url.endsWith(`/sprites/${directory}/${species.toLowerCase()}.png`), sprite.url);
+					assert.equal(sprite.w, 192);
+					assert.equal(sprite.h, 192);
+				}
+			}
+		}
+	});
+
+	it('removes repurposed Alt forms while preserving base and Mega sprites', () => {
+		for (const species of ['Bellibolt-Alt', 'Dusknoir-Alt', 'Luxray-Deso']) {
+			assert.equal(Dex.species.get(species).exists, false, `${species} should be removed`);
+		}
+		const dusknoirTeamBuilder = Dex.getTeambuilderSpriteData({species: 'Dusknoir'});
+		assert.equal(dusknoirTeamBuilder.spriteDir, 'sprites/gen5');
+		assert.equal(dusknoirTeamBuilder.spriteid, 'dusknoir');
+		const cases = [
+			['Bellibolt-Mega', 'bellibolt-mega.png', 152, 172, 150, 168],
+			['Dusknoir', 'dusknoir.png', 170, 148, 126, 134],
+			['Luxray-Mega', 'luxray-mega.png', 192, 192, 192, 192],
+		];
+		for (const [species, filename, frontWidth, frontHeight, backWidth, backHeight] of cases) {
+			for (const front of [true, false]) {
+				for (const shiny of [false, true]) {
+					const sprite = Dex.getSpriteData(species, front, {gen: 9, shiny, noScale: true});
+					const directory = front ? (shiny ? 'gen5-shiny' : 'gen5') : (shiny ? 'gen5-back-shiny' : 'gen5-back');
+					assert(sprite.url.endsWith(`/sprites/${directory}/${filename}`), sprite.url);
+					assert.equal(sprite.w, front ? frontWidth : backWidth);
+					assert.equal(sprite.h, front ? frontHeight : backHeight);
+				}
+			}
+		}
+	});
+
+	it('uses BW Mightyena and Mightyena-Deso sprites for normal and shiny art', () => {
+		for (const [species, filename] of [
+			['Mightyena', 'mightyena.png'],
+			['Mightyena-Deso', 'mightyena-deso.png'],
+		]) {
+			for (const front of [true, false]) {
+				for (const shiny of [false, true]) {
+					const sprite = Dex.getSpriteData(species, front, {gen: 9, shiny, noScale: true});
+					const directory = front ? (shiny ? 'gen5-shiny' : 'gen5') : (shiny ? 'gen5-back-shiny' : 'gen5-back');
+					assert(sprite.url.endsWith(`/sprites/${directory}/${filename}`), sprite.url);
+					assert.equal(sprite.w, 192);
+					assert.equal(sprite.h, 192);
+				}
+			}
+			for (const shiny of [false, true]) {
+				const teamBuilderSprite = Dex.getTeambuilderSpriteData({species, shiny});
+				assert.equal(teamBuilderSprite.spriteDir, 'sprites/gen5');
+				assert.equal(teamBuilderSprite.spriteid, species === 'Mightyena' ? 'mightyena' : 'mightyena-deso');
+				assert.equal(!!teamBuilderSprite.shiny, shiny);
+				const teamBuilderCSS = Dex.getTeambuilderSprite({species, shiny});
+				const spriteDir = shiny ? 'sprites/gen5-shiny' : 'sprites/gen5';
+				assert(teamBuilderCSS.includes(`${spriteDir}/${teamBuilderSprite.spriteid}.png`));
+			}
+		}
+	});
+
+	it('uses all supplied Centiskorch and G-Max Centiskorch BW battle sprites', () => {
+		for (const species of ['Centiskorch', 'Centiskorch-Gmax']) {
+			const filename = species === 'Centiskorch-Gmax' ? 'centiskorch-gmax.png' : 'centiskorch.png';
+			for (const front of [true, false]) {
+				for (const shiny of [false, true]) {
+					const sprite = Dex.getSpriteData(species, front, {gen: 9, shiny, noScale: true});
+					const directory = front ? (shiny ? 'gen5-shiny' : 'gen5') : (shiny ? 'gen5-back-shiny' : 'gen5-back');
+					assert(sprite.url.endsWith(`/sprites/${directory}/${filename}`), sprite.url);
 					assert.equal(sprite.w, 192);
 					assert.equal(sprite.h, 192);
 				}
@@ -649,6 +715,10 @@ describe('Team Builder sprites', () => {
 		assert.match(Dex.abilities.get('Burning Crown').desc, /Wildfire Core/);
 		assert.match(Dex.abilities.get('Burning Crown').desc, /Hidden effect: Filter/);
 		assert.doesNotMatch(Dex.abilities.get('Burning Crown').shortDesc, /Filter/);
+		assert.match(Dex.abilities.get('Omen Edge').desc, /Pressure/);
+		assert.doesNotMatch(Dex.abilities.get('Omen Edge').desc, /Tough Claws/);
+		assert(Dex.getAbilityEffects('omenedge').has('pressure'));
+		assert(!Dex.getAbilityEffects('omenedge').has('toughclaws'));
 		assert(Dex.getAbilityEffects('fortressshell').has('waterbarrage'));
 		assert(Dex.getAbilityEffects('lunardread').has('unaware'));
 		assert(Dex.getAbilityEffects('territorial').has('intimidate'));
@@ -665,7 +735,7 @@ describe('Team Builder sprites', () => {
 		const expected = {
 			'Haxorus-Mega': 'Raging Overlord',
 			'Emboar-Mega-Reborn': 'Burning Ego',
-			'Roserade-Mega': 'Blind Devotion',
+			'Roserade-Mega': 'True Devotion',
 			'Cinderace-Mega': 'Perfect Striker',
 			'Clawitzer-Mega': 'Heavy Artillery',
 			'Flygon-Mega-Z': 'Tremor',
