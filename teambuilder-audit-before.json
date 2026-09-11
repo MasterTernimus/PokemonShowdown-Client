@@ -856,14 +856,6 @@
     "shiny": false
   },
   {
-    "id": "belliboltalt",
-    "name": "Bellibolt-Alt",
-    "spriteid": "bellibolt-alt",
-    "dir": "sprites/gen5",
-    "available": false,
-    "shiny": false
-  },
-  {
     "id": "espeon",
     "name": "Espeon",
     "spriteid": "espeon",
@@ -1358,14 +1350,6 @@
     "dir": "sprites/gen5",
     "available": true,
     "shiny": true
-  },
-  {
-    "id": "luxrayalt",
-    "name": "Luxray-Deso",
-    "spriteid": "0",
-    "dir": "sprites/gen5",
-    "available": false,
-    "shiny": false
   },
   {
     "id": "mothim",

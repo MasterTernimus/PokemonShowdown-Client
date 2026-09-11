@@ -3420,6 +3420,7 @@
 			} else {
 				set.item = '';
 			}
+			applySilvallyVariant(set, species);
 			set.ability = species.abilities['0'];
 
 			set.moves = [];
@@ -3552,6 +3553,16 @@
 			this.close();
 		}
 	});
+	function applySilvallyVariant(set, species) {
+  if (species.baseSpecies !== 'Silvally' && species.id !== 'silvally') return;
+  set.shiny = true;
+  var type = species.types[0];
+  if (type !== 'Normal') {
+   set.item = species.requiredItems && species.requiredItems[0] || type + ' Memory';
+  } else if (/memory$/i.test(set.item || '')) {
+   set.item = '';
+  }
+ }
 	var AltFormPopup = this.AltFormPopup = Popup.extend({
 		type: 'semimodal',
 		initialize: function (data) {
@@ -3617,6 +3628,7 @@
 				return toID(currentSpecies.abilities[slot]) === toID(this.curSet.ability);
 			}, this);
 			this.curSet.species = species.name;
+			applySilvallyVariant(this.curSet, species);
 			if (species.abilities) {
 				this.curSet.ability = species.abilities[currentAbilitySlot || '0'] || species.abilities['0'];
 			}

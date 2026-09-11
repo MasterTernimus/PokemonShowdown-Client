@@ -2142,13 +2142,6 @@
     "css": "background:transparent url(https://play.pokemonreborn-showdown.xyz/sprites/pokemonicons-official-sheet.png?v1) no-repeat scroll -240px -450px"
   },
   {
-    "id": "belliboltalt",
-    "name": "Bellibolt-Alt",
-    "kind": "battle fallback",
-    "officialAvailable": false,
-    "css": "background:transparent url(https://play.pokemonreborn-showdown.xyz/sprites/gen5/bellibolt-alt.png) no-repeat center / contain"
-  },
-  {
     "id": "hoppip",
     "name": "Hoppip",
     "kind": "official menu icon",
@@ -4114,13 +4107,6 @@
     "kind": "official menu icon",
     "officialAvailable": true,
     "css": "background:transparent url(https://play.pokemonreborn-showdown.xyz/sprites/pokemonicons-official-sheet.png?v1) no-repeat scroll -360px -990px"
-  },
-  {
-    "id": "luxrayalt",
-    "name": "Luxray-Deso",
-    "kind": "legacy sheet",
-    "officialAvailable": false,
-    "css": "background:transparent url(https://play.pokemonreborn-showdown.xyz/sprites/pokemonicons-sheet.png?v16) no-repeat scroll -0px -0px"
   },
   {
     "id": "budew",
@@ -11512,7 +11498,7 @@
     "name": "Bellibolt-Mega",
     "kind": "battle fallback",
     "officialAvailable": false,
-    "css": "background:transparent url(https://play.pokemonreborn-showdown.xyz/sprites/gen5/bellibolt-alt.png) no-repeat center / contain"
+    "css": "background:transparent url(https://play.pokemonreborn-showdown.xyz/sprites/gen5/bellibolt-mega.png) no-repeat center / contain"
   },
   {
     "id": "sunfloramega",
@@ -11541,13 +11527,6 @@
     "kind": "legacy sheet",
     "officialAvailable": false,
     "css": "background:transparent url(https://play.pokemonreborn-showdown.xyz/sprites/pokemonicons-sheet.png?v16) no-repeat scroll -360px -1350px"
-  },
-  {
-    "id": "dusknoiralt",
-    "name": "Dusknoir-Alt",
-    "kind": "battle fallback",
-    "officialAvailable": false,
-    "css": "background:transparent url(https://play.pokemonreborn-showdown.xyz/sprites/gen5/dusknoir-alt.png) no-repeat center / contain"
   },
   {
     "id": "spiritombalt",

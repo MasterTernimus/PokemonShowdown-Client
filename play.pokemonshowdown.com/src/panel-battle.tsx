@@ -563,7 +563,7 @@ class BattlePanel extends PSRoomPanel<BattleRoom> {
 			let megaXLabel = 'Mega Evolution X';
 			let megaYLabel = 'Mega Evolution Y';
 			const speciesid = toID(pokemon.speciesForme || pokemon.details.split(',')[0]);
-			const isGardevoirMega = ['gardevoirmega', 'gardevoirmegaz', 'gardevoirvoidmega'].includes(speciesid);
+			const isGardevoirMega = ['gardevoirmega', 'gardevoirmegaalt', 'gardevoirmegaz', 'gardevoirvoidmega'].includes(speciesid);
 			const isGardevoiriteMega = canMegaEvo && toID(pokemon.item) === 'gardevoirite' && ['gardevoir', 'gardevoirvoid'].includes(speciesid);
 			const isSharedMega = (toID(pokemon.item) === 'sharpedonite' && ['sharpedo', 'sharpedomega', 'sharpedomegay'].includes(speciesid)) || (toID(pokemon.item) === 'meganiumite' && ['meganium', 'meganiummega', 'meganiummegay'].includes(speciesid)) ||
 				(toID(pokemon.item) === 'chimechite' && ['chimecho', 'chimechomega', 'chimechomegay'].includes(speciesid)) ||
