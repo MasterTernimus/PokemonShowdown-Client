@@ -8428,7 +8428,7 @@ shortDesc:"Prankster + Telepathy + Defragment; reveals foes' items."
 },
 astralwitchcraft:{
 name:"Astral Witchcraft",
-desc:"Its same-type attacks have 1.2x power (Proficient). This Pokemon has Sworn Duty, Levitate, and Magic Guard's effects. In Fairy Tale or New World, its Special Attack and Special Defense rise by 1 on entry.",
+desc:"Its same-type attacks have 1.3x power (Proficient). This Pokemon has Sworn Duty, Levitate, and Magic Guard's effects. In Fairy Tale or New World, its Special Attack and Special Defense rise by 1 on entry.",
 shortDesc:"Proficient + Sworn Duty + Levitate + Magic Guard; Fairy Tale/New World: +1 SpA/SpD."
 },
 aurainstinct:{
@@ -8958,7 +8958,7 @@ shortDesc:"Contrary + Shed Skin + Intimidate."
 },
 ragingcurrent:{
 name:"Raging Current",
-desc:"Its same-type attacks have 1.2x power (Proficient). This Pokemon has Swift Swim, Damp, Water Veil, Dry Skin, and Stamina's effects.",
+desc:"Its same-type attacks have 1.3x power (Proficient). This Pokemon has Swift Swim, Damp, Water Veil, Dry Skin, and Stamina's effects.",
 shortDesc:"Proficient + Swift Swim + Damp + Water Veil + Dry Skin + Stamina."
 },
 railguncircuit:{
@@ -9095,7 +9095,7 @@ shortDesc:"Sap Sipper + Inner Focus + Fluffy."
 },
 shadowcurrent:{
 name:"Shadow Current",
-desc:"Its same-type attacks have 1.2x power (Proficient). This Pokemon has Protean, Technician, Infiltrator, and Anticipation's effects. Before using a move, it becomes that move's type.",
+desc:"Its same-type attacks have 1.3x power (Proficient). This Pokemon has Protean, Technician, Infiltrator, and Anticipation's effects. Before using a move, it becomes that move's type.",
 shortDesc:"Proficient + Protean + Technician + Infiltrator + Anticipation."
 },
 guidingomen:{
@@ -9341,7 +9341,7 @@ shortDesc:"Self-poisons on switch-in; Poison Heal + Dual Wield; poisoned physica
 },
 verdantdrake:{
 name:"Verdant Drake",
-desc:"This Pokemon has Proficient, Regenerator, and Dual Wield's effects. Its STAB moves have 1.2x power, it restores 1/3 max HP when it switches out, and moves boosted by Sharpness or Mega Launcher, plus arrow moves, hit twice for reduced damage.",
+desc:"This Pokemon has Proficient, Regenerator, and Dual Wield's effects. Its STAB moves have 1.3x power, it restores 1/3 max HP when it switches out, and moves boosted by Sharpness or Mega Launcher, plus arrow moves, hit twice for reduced damage.",
 shortDesc:"Proficient + Regenerator + Dual Wield."
 },
 verdanthospitality:{
@@ -9406,8 +9406,8 @@ shortDesc:"Dragonize + Magma Armor + Proficient; Fire scaling chip respects immu
 },
 proficient:{
 name:"Proficient",
-desc:"This Pokemon's STAB moves have their power multiplied by 1.2.",
-shortDesc:"STAB moves have 1.2x power."
+desc:"This Pokemon's STAB moves have their power multiplied by 1.3.",
+shortDesc:"STAB moves have 1.3x power."
 },
 dragonize:{
 name:"Dragonize",
@@ -9466,7 +9466,7 @@ shortDesc:"On switch-in, sets 2-turn Tailwind on this Pokemon's side."
 },
 wrathshield:{
 name:"Wrath Shield",
-desc:"Its same-type attacks have 1.2x power (Proficient). This Pokemon has Bulletproof, Dauntless Shield, and Self Repair's effects. It gains 1 Defense stage on entry, plus 1 Special Defense stage in Cold Eclipse, New World, Starlight Arena, or Fairy Tale. It is immune to bullet and pulse moves and restores HP through Self Repair.",
+desc:"Its same-type attacks have 1.3x power (Proficient). This Pokemon has Bulletproof, Dauntless Shield, and Self Repair's effects. It gains 1 Defense stage on entry, plus 1 Special Defense stage in Cold Eclipse, New World, Starlight Arena, or Fairy Tale. It is immune to bullet and pulse moves and restores HP through Self Repair.",
 shortDesc:"Proficient + Bulletproof + Dauntless Shield + Self Repair; boosted fields also give +1 SpD."
 },
 ragingfists:{
