@@ -781,26 +781,17 @@ export class Side {
 			}
 			if (toRemove >= 0) {
 				if (this.pokemon[toRemove].fainted) {
-					// A fainted Pokemon was actually a Zoroark
+					// A fainted Pokemon was actually an Illusion user
 					let illusionFound = null;
 					for (const curPoke of this.pokemon) {
 						if (curPoke === poke) continue;
 						if (curPoke.fainted) continue;
 						if (this.active.indexOf(curPoke) >= 0) continue;
-						if (curPoke.speciesForme === 'Zoroark' || curPoke.speciesForme === 'Zorua' || curPoke.ability === 'Illusion') {
-							illusionFound = curPoke;
-							break;
-						}
-					}
-					if (!illusionFound) {
-						// This is Hackmons; we'll just guess a random unfainted Pokemon.
-						// This will keep the fainted Pokemon count correct, and will
-						// eventually become correct as incorrect guesses are switched in
-						// and reguessed.
-						for (const curPoke of this.pokemon) {
-							if (curPoke === poke) continue;
-							if (curPoke.fainted) continue;
-							if (this.active.indexOf(curPoke) >= 0) continue;
+						const baseSpecies = curPoke.getBaseSpecies();
+						const canHaveIllusion = Object.values(baseSpecies.abilities || {}).some(
+							ability => toID(ability) === 'illusion'
+						);
+						if (canHaveIllusion || toID(curPoke.ability) === 'illusion') {
 							illusionFound = curPoke;
 							break;
 						}

@@ -1434,7 +1434,9 @@ baseSpecies:'Chesnaught',
 forme:'Mega',
 battleOnly:'Chesnaught',
 changesFrom:'Chesnaught',
-isNonstandard:'Custom'
+isNonstandard:'Custom',
+replaceAbilities:true,
+abilities:{0:'Wrath Shield'}
 }
 },
 delphoxmega:{
@@ -2820,6 +2822,8 @@ shiny:'basculegion-f-shiny.png',
 shinyFemale:'basculegion-f-shiny.png'
 }
 };
+Object.assign(CUSTOM_PARTY_ICON_SPRITES,{"aurorus":{"normal":"aurorus.png","normalFemale":"aurorus.png","shiny":"aurorus-shiny.png","shinyFemale":"aurorus-shiny.png"},"tyrantrum":{"normal":"tyrantrum.png","normalFemale":"tyrantrum.png","shiny":"tyrantrum-shiny.png","shinyFemale":"tyrantrum-shiny.png"}});
+
 Object.assign(CUSTOM_PARTY_ICON_SPRITES,{"silvally":{"normal":"silvally.png","normalFemale":"silvally.png","shiny":"silvally-shiny.png","shinyFemale":"silvally-shiny.png"},"silvallyfighting":{"normal":"silvally-fighting.png","normalFemale":"silvally-fighting.png","shiny":"silvally-fighting-shiny.png","shinyFemale":"silvally-fighting-shiny.png"},"silvallyflying":{"normal":"silvally-flying.png","normalFemale":"silvally-flying.png","shiny":"silvally-flying-shiny.png","shinyFemale":"silvally-flying-shiny.png"},"silvallypoison":{"normal":"silvally-poison.png","normalFemale":"silvally-poison.png","shiny":"silvally-poison-shiny.png","shinyFemale":"silvally-poison-shiny.png"},"silvallyground":{"normal":"silvally-ground.png","normalFemale":"silvally-ground.png","shiny":"silvally-ground-shiny.png","shinyFemale":"silvally-ground-shiny.png"},"silvallyrock":{"normal":"silvally-rock.png","normalFemale":"silvally-rock.png","shiny":"silvally-rock-shiny.png","shinyFemale":"silvally-rock-shiny.png"},"silvallybug":{"normal":"silvally-bug.png","normalFemale":"silvally-bug.png","shiny":"silvally-bug-shiny.png","shinyFemale":"silvally-bug-shiny.png"},"silvallyghost":{"normal":"silvally-ghost.png","normalFemale":"silvally-ghost.png","shiny":"silvally-ghost-shiny.png","shinyFemale":"silvally-ghost-shiny.png"},"silvallysteel":{"normal":"silvally-steel.png","normalFemale":"silvally-steel.png","shiny":"silvally-steel-shiny.png","shinyFemale":"silvally-steel-shiny.png"},"silvallyunknown":{"normal":"silvally-unknown.png","normalFemale":"silvally-unknown.png","shiny":"silvally-unknown-shiny.png","shinyFemale":"silvally-unknown-shiny.png"},"silvallyfire":{"normal":"silvally-fire.png","normalFemale":"silvally-fire.png","shiny":"silvally-fire-shiny.png","shinyFemale":"silvally-fire-shiny.png"},"silvallywater":{"normal":"silvally-water.png","normalFemale":"silvally-water.png","shiny":"silvally-water-shiny.png","shinyFemale":"silvally-water-shiny.png"},"silvallygrass":{"normal":"silvally-grass.png","normalFemale":"silvally-grass.png","shiny":"silvally-grass-shiny.png","shinyFemale":"silvally-grass-shiny.png"},"silvallyelectric":{"normal":"silvally-electric.png","normalFemale":"silvally-electric.png","shiny":"silvally-electric-shiny.png","shinyFemale":"silvally-electric-shiny.png"},"silvallypsychic":{"normal":"silvally-psychic.png","normalFemale":"silvally-psychic.png","shiny":"silvally-psychic-shiny.png","shinyFemale":"silvally-psychic-shiny.png"},"silvallyice":{"normal":"silvally-ice.png","normalFemale":"silvally-ice.png","shiny":"silvally-ice-shiny.png","shinyFemale":"silvally-ice-shiny.png"},"silvallydragon":{"normal":"silvally-dragon.png","normalFemale":"silvally-dragon.png","shiny":"silvally-dragon-shiny.png","shinyFemale":"silvally-dragon-shiny.png"},"silvallydark":{"normal":"silvally-dark.png","normalFemale":"silvally-dark.png","shiny":"silvally-dark-shiny.png","shinyFemale":"silvally-dark-shiny.png"},"silvallyfairy":{"normal":"silvally-fairy.png","normalFemale":"silvally-fairy.png","shiny":"silvally-fairy-shiny.png","shinyFemale":"silvally-fairy-shiny.png"}});
 
 
@@ -3671,10 +3675,10 @@ front:{w:138,h:136},
 back:{w:142,h:124}
 },
 aurorus:{
-front:{w:96,h:96},
-back:{w:96,h:96},
-shinyFront:{w:96,h:96},
-shinyBack:{w:96,h:96}
+front:{w:190,h:182},
+back:{w:160,h:182},
+shinyFront:{w:190,h:182},
+shinyBack:{w:160,h:182}
 },
 tyrantrum:{
 front:{w:140,h:148},
@@ -5566,10 +5570,10 @@ back:{w:142,h:124}
 },
 aurorus:{
 num:699,
-front:{w:96,h:96},
-back:{w:96,h:96},
-shinyFront:{w:96,h:96},
-shinyBack:{w:96,h:96}
+front:{w:190,h:182},
+back:{w:160,h:182},
+shinyFront:{w:190,h:182},
+shinyBack:{w:160,h:182}
 },
 tyrantrum:{
 num:697,
@@ -7706,6 +7710,10 @@ umbreon:{abilities:{0:'Poison Heal',1:'Inner Focus',H:'Pressure',S:'Eclipse',G:'
 glaceon:{abilities:{0:'Ice Scales',1:'Slush Rush',H:'Ice Body',S:'Mind Freeze'}},
 scizor:{abilities:{0:'Tough Claws',1:'Technician',H:'Light Metal'}},
 swampert:{abilities:{0:'Dry Skin',1:'Regenerator',H:'Damp'}},
+swampertmega:{replaceAbilities:true,abilities:{0:'Raging Current'}},
+chesnaughtmega:{replaceAbilities:true,abilities:{0:'Wrath Shield'}},
+delphox:{replaceAbilities:true,abilities:{0:'Sworn Duty',1:'Magic Guard',H:'Magician'}},
+greninja:{replaceAbilities:true,abilities:{0:'Technician',1:'Protean',H:'Battle Bond'}},
 altaria:{abilities:{0:'Natural Cure',1:'Fluffy',H:'Cloud Nine',S:'Echo Fiend'}},
 cacturne:{baseStats:{spa:90}},
 mightyena:{
@@ -8420,8 +8428,8 @@ shortDesc:"Prankster + Telepathy + Defragment; reveals foes' items."
 },
 astralwitchcraft:{
 name:"Astral Witchcraft",
-desc:"This Pokemon has Sworn Duty, Levitate, and Magic Guard's effects. In Fairy Tale or New World, its Special Attack and Special Defense rise by 1 on entry.",
-shortDesc:"Sworn Duty + Levitate + Magic Guard; Fairy Tale/New World: +1 SpA/SpD."
+desc:"Its same-type attacks have 1.2x power (Proficient). This Pokemon has Sworn Duty, Levitate, and Magic Guard's effects. In Fairy Tale or New World, its Special Attack and Special Defense rise by 1 on entry.",
+shortDesc:"Proficient + Sworn Duty + Levitate + Magic Guard; Fairy Tale/New World: +1 SpA/SpD."
 },
 aurainstinct:{
 name:"Aura Instinct",
@@ -8950,8 +8958,8 @@ shortDesc:"Contrary + Shed Skin + Intimidate."
 },
 ragingcurrent:{
 name:"Raging Current",
-desc:"This Pokemon has Swift Swim, Dry Skin, Regenerator, and Stamina's effects.",
-shortDesc:"Swift Swim + Dry Skin + Regenerator + Stamina."
+desc:"Its same-type attacks have 1.2x power (Proficient). This Pokemon has Swift Swim, Damp, Water Veil, Dry Skin, and Stamina's effects.",
+shortDesc:"Proficient + Swift Swim + Damp + Water Veil + Dry Skin + Stamina."
 },
 railguncircuit:{
 name:"Railgun Circuit",
@@ -9087,8 +9095,8 @@ shortDesc:"Sap Sipper + Inner Focus + Fluffy."
 },
 shadowcurrent:{
 name:"Shadow Current",
-desc:"This Pokemon has Protean, Technician, and Sworn Duty. Before using a move, it becomes that move's type.",
-shortDesc:"Protean + Technician + Sworn Duty."
+desc:"Its same-type attacks have 1.2x power (Proficient). This Pokemon has Protean, Technician, Infiltrator, and Anticipation's effects. Before using a move, it becomes that move's type.",
+shortDesc:"Proficient + Protean + Technician + Infiltrator + Anticipation."
 },
 guidingomen:{
 name:"Guiding Omen",
@@ -9458,8 +9466,8 @@ shortDesc:"On switch-in, sets 2-turn Tailwind on this Pokemon's side."
 },
 wrathshield:{
 name:"Wrath Shield",
-desc:"This Pokemon has Bulletproof, Dauntless Shield, and Self Repair's effects. It gains 1 Defense stage on entry, plus 1 Special Defense stage in Cold Eclipse, New World, Starlight Arena, or Fairy Tale. It is immune to bullet and pulse moves and restores HP through Self Repair.",
-shortDesc:"Bulletproof + Dauntless Shield + Self Repair; boosted fields also give +1 SpD."
+desc:"Its same-type attacks have 1.2x power (Proficient). This Pokemon has Bulletproof, Dauntless Shield, and Self Repair's effects. It gains 1 Defense stage on entry, plus 1 Special Defense stage in Cold Eclipse, New World, Starlight Arena, or Fairy Tale. It is immune to bullet and pulse moves and restores HP through Self Repair.",
+shortDesc:"Proficient + Bulletproof + Dauntless Shield + Self Repair; boosted fields also give +1 SpD."
 },
 ragingfists:{
 name:"Raging Fists",
@@ -11181,8 +11189,12 @@ var CUSTOM_ANIMATED_BW_SPRITES=new Set([
 'torterra','typhlosion','venusaur','victreebel','vikavolt',
 'whimsicott','unfezantrejuv']
 );
-var CUSTOM_STATIC_SHINY_BW_SPRITES=new Set(['magnezone','sylveon']);
+var ROTOM_SHINY_SPRITE_IDS=new Set(['rotom','rotomheat','rotomwash','rotomfrost','rotomfan','rotommow']);
+var CUSTOM_STATIC_SHINY_BW_SPRITES=new Set(['magnezone','sylveon'].concat(Array.from(ROTOM_SHINY_SPRITE_IDS)));
 function customSpriteRevision(id){
+if(toID(id).startsWith('silvally'))return'?v=silvally-forms-20260912';
+if(['aurorus','tyrantrum'].includes(toID(id)))return'?v=fossils-20260912';
+if(ROTOM_SHINY_SPRITE_IDS.has(toID(id)))return'?v=rotom-shiny-1';
 if(['raichu-megax','raichu-megay'].includes(id))return'?v=raichu-refresh-1';
 return['sharpedo','sharpedo-mega','sharpedo-megay','lopunny','lopunny-mega'].includes(id)?'?v=bw-refresh-2':'';
 }
@@ -11954,6 +11966,7 @@ var CUSTOM_ARROW_MOVE_IDS=[
 
 var CUSTOM_HORN_MOVE_IDS=['hornattack','horndrill','hornleech','megahorn'];
 var CUSTOM_ABILITY_COMPONENT_OVERRIDES={
+astralwitchcraft:['proficient','levitate','magicguard','swornduty'],
 corrosivetouch:['technician','poisontouch','corrosion'],
 hardyskin:['dryskin','vitalspirit','moxie'],
 joyride:['aerilate','hypercutter','vitalspirit'],
@@ -12040,7 +12053,8 @@ doomwarning:['magicbounce','magicguard'],
 draconicforce:['dragonize','strongjaw','moldbreaker'],
 tidaljaw:['strongjaw','swiftswim','filter'],
 omenedge:['sharpness','dualwield','pressure'],
-ragingcurrent:['swiftswim','damp','waterveil','dryskin','regenerator','stamina'],
+ragingcurrent:['proficient','swiftswim','damp','waterveil','dryskin','stamina'],
+shadowcurrent:['proficient','protean','technician','infiltrator','anticipation'],
 relentlesshunt:['levitate'],
 dreadmaw:['hugepower','strongjaw'],
 freezerburn:['slushrush','refrigerate'],
@@ -12070,7 +12084,7 @@ parasitism:['dryskin','magicguard'],
 resuscitation:['selfrepair','magicguard'],
 spiralevolution:['adaptability','levitate','dualwield','infiltrator','shielddust'],
 venombastion:['stamina'],
-wrathshield:['bulletproof','dauntlessshield','selfrepair'],
+wrathshield:['proficient','bulletproof','dauntlessshield','selfrepair'],
 hellfireeclipse:['solarpower','darkaura'],
 islandcurrent:['swiftswim','windrider'],
 oceanicwings:['waterabsorb','hydration','friendguard'],
@@ -15299,7 +15313,7 @@ spriteData.h=Math.max(1,Math.round(spriteData.h*_scale4));
 
 if(this.spriteDataCache.size>=512)this.spriteDataCache.clear();
 this.spriteDataCache.set(spriteCacheKey,spriteData);
-if(['raichumegax','raichumegay'].includes(speciesid)&&!spriteData.url.includes('?'))spriteData.url+=customSpriteRevision(name);
+if(!spriteData.url.includes('?'))spriteData.url+=customSpriteRevision(name);
 return spriteData;
 };_proto2.
 
@@ -15330,7 +15344,7 @@ num=window.BattlePokemonIconIndexesLeft[id];
 return num;
 };_proto2.
 
-getPokemonIcon=function getPokemonIcon(pokemon,facingLeft){var _pokemon,_pokemon2,_pokemon3,_pokemon4,_pokemon9,_ref30,_pokemon10,_pokemon11;
+getPokemonIcon=function getPokemonIcon(pokemon,facingLeft){var _pokemon,_pokemon2,_pokemon3,_pokemon4,_pokemon8,_pokemon0,_ref30,_pokemon11,_pokemon12;
 if(pokemon==='pokeball'){
 return"background:transparent url("+Dex.resourcePrefix+"sprites/pokemonicons-pokeball-sheet.png) no-repeat scroll -0px 4px";
 }else if(pokemon==='pokeball-statused'){
@@ -15364,15 +15378,20 @@ var shinyDir=(_pokemon6=pokemon)!=null&&_pokemon6.shiny?'-shiny':'';
 var _fainted=(_pokemon7=pokemon)!=null&&_pokemon7.fainted?';opacity:.3;filter:grayscale(100%) brightness(.5)':'';
 return"background:transparent url("+Dex.resourcePrefix+"sprites/gen5"+shinyDir+"/"+spriteid+".png) no-repeat center / contain"+_fainted;
 }
+if(ROTOM_SHINY_SPRITE_IDS.has(id)&&typeof pokemon==='object'&&(_pokemon8=pokemon)!=null&&_pokemon8.shiny){
+var filename=id==='rotom'?'rotom':'rotom-'+id.slice(5);
+var _fainted2=pokemon.fainted?';opacity:.3;filter:grayscale(100%) brightness(.5)':'';
+return"background:transparent url("+Dex.resourcePrefix+"sprites/pokemonicons/"+filename+"-shiny.png?v=rotom-shiny-1) no-repeat center / contain"+_fainted2;
+}
 var customPartyIcon=CUSTOM_PARTY_ICON_SPRITES[id];
-if(customPartyIcon){var _pokemon8;
+if(customPartyIcon){var _pokemon9;
 var iconPokemon=typeof pokemon==='object'&&pokemon!==null?pokemon:null;
 var isShiny=!!(iconPokemon!=null&&iconPokemon.shiny)||isSilvallySpecies(id);
 var _isFemale=(iconPokemon==null?void 0:iconPokemon.gender)==='F';
 var iconFile=isShiny?_isFemale?customPartyIcon.shinyFemale:customPartyIcon.shiny:
 _isFemale?customPartyIcon.normalFemale:customPartyIcon.normal;
-var _fainted2=(_pokemon8=pokemon)!=null&&_pokemon8.fainted?";opacity:.3;filter:grayscale(100%) brightness(.5)":"";
-return"background:transparent url("+Dex.resourcePrefix+"sprites/pokemonicons/"+iconFile+") no-repeat center / contain"+_fainted2;
+var _fainted3=(_pokemon9=pokemon)!=null&&_pokemon9.fainted?";opacity:.3;filter:grayscale(100%) brightness(.5)":"";
+return"background:transparent url("+Dex.resourcePrefix+"sprites/pokemonicons/"+iconFile+customSpriteRevision(id)+") no-repeat center / contain"+_fainted3;
 }
 
 var menuId=id;
@@ -15380,26 +15399,26 @@ var spriteAlias=toID(CUSTOM_ICON_SPRITES[id]||iconSpecies.spriteid);
 if(OFFICIAL_MENU_ICON_INDEXES[menuId]===undefined&&OFFICIAL_MENU_ICON_INDEXES[spriteAlias]!==undefined){
 menuId=spriteAlias;
 }
-if(((_pokemon9=pokemon)==null?void 0:_pokemon9.gender)==='F'&&['unfezant','frillish','jellicent','meowstic','pyroar'].includes(menuId))menuId+='f';
+if(((_pokemon0=pokemon)==null?void 0:_pokemon0.gender)==='F'&&['unfezant','frillish','jellicent','meowstic','pyroar'].includes(menuId))menuId+='f';
 var officialNum=(_ref30=facingLeft?OFFICIAL_MENU_ICON_INDEXES_LEFT[menuId]:undefined)!=null?_ref30:OFFICIAL_MENU_ICON_INDEXES[menuId];
-if(officialNum!==undefined){var _pokemon0;
+if(officialNum!==undefined){var _pokemon1;
 var _top=Math.floor(officialNum/12)*30;
 var _left=officialNum%12*40;
-var _fainted3=(_pokemon0=pokemon)!=null&&_pokemon0.fainted?';opacity:.3;filter:grayscale(100%) brightness(.5)':'';
-return"background:transparent url("+Dex.resourcePrefix+"sprites/pokemonicons-official-sheet.png?v1) no-repeat scroll -"+_left+"px -"+_top+"px"+_fainted3;
+var _fainted4=(_pokemon1=pokemon)!=null&&_pokemon1.fainted?';opacity:.3;filter:grayscale(100%) brightness(.5)':'';
+return"background:transparent url("+Dex.resourcePrefix+"sprites/pokemonicons-official-sheet.png?v1) no-repeat scroll -"+_left+"px -"+_top+"px"+_fainted4;
 }
 
 var customIcon=CUSTOM_ICON_SPRITES[id]||CUSTOM_MENU_SPRITE_FALLBACKS[id];
-if(customIcon){var _pokemon1;
+if(customIcon){var _pokemon10;
 var _shinyDir=FORCE_SHINY_CUSTOM_SPRITE_IDS.has(id)?'-shiny':'';
-var _fainted4=(_pokemon1=pokemon)!=null&&_pokemon1.fainted?";opacity:.3;filter:grayscale(100%) brightness(.5)":"";
-return"background:transparent url("+Dex.resourcePrefix+"sprites/gen5"+_shinyDir+"/"+customIcon+".png"+customSpriteRevision(customIcon)+") no-repeat center / contain"+_fainted4;
+var _fainted5=(_pokemon10=pokemon)!=null&&_pokemon10.fainted?";opacity:.3;filter:grayscale(100%) brightness(.5)":"";
+return"background:transparent url("+Dex.resourcePrefix+"sprites/gen5"+_shinyDir+"/"+customIcon+".png"+customSpriteRevision(customIcon)+") no-repeat center / contain"+_fainted5;
 }
-var num=this.getPokemonIconNum(id,((_pokemon10=pokemon)==null?void 0:_pokemon10.gender)==='F',facingLeft);
+var num=this.getPokemonIconNum(id,((_pokemon11=pokemon)==null?void 0:_pokemon11.gender)==='F',facingLeft);
 
 var top=Math.floor(num/12)*30;
 var left=num%12*40;
-var fainted=(_pokemon11=pokemon)!=null&&_pokemon11.fainted?";opacity:.3;filter:grayscale(100%) brightness(.5)":"";
+var fainted=(_pokemon12=pokemon)!=null&&_pokemon12.fainted?";opacity:.3;filter:grayscale(100%) brightness(.5)":"";
 return"background:transparent url("+Dex.resourcePrefix+"sprites/pokemonicons-sheet.png?v16) no-repeat scroll -"+left+"px -"+top+"px"+fainted;
 };_proto2.
 

@@ -1435,6 +1435,8 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 			battleOnly: 'Chesnaught',
 			changesFrom: 'Chesnaught',
 			isNonstandard: 'Custom',
+			replaceAbilities: true,
+			abilities: {0: 'Wrath Shield'},
 		},
 	},
 	delphoxmega: {
@@ -2820,6 +2822,8 @@ const CUSTOM_PARTY_ICON_SPRITES: {[id: string]: {
 		shinyFemale: 'basculegion-f-shiny.png',
 	},
 };
+Object.assign(CUSTOM_PARTY_ICON_SPRITES, {"aurorus":{"normal":"aurorus.png","normalFemale":"aurorus.png","shiny":"aurorus-shiny.png","shinyFemale":"aurorus-shiny.png"},"tyrantrum":{"normal":"tyrantrum.png","normalFemale":"tyrantrum.png","shiny":"tyrantrum-shiny.png","shinyFemale":"tyrantrum-shiny.png"}});
+
 Object.assign(CUSTOM_PARTY_ICON_SPRITES,{"silvally":{"normal":"silvally.png","normalFemale":"silvally.png","shiny":"silvally-shiny.png","shinyFemale":"silvally-shiny.png"},"silvallyfighting":{"normal":"silvally-fighting.png","normalFemale":"silvally-fighting.png","shiny":"silvally-fighting-shiny.png","shinyFemale":"silvally-fighting-shiny.png"},"silvallyflying":{"normal":"silvally-flying.png","normalFemale":"silvally-flying.png","shiny":"silvally-flying-shiny.png","shinyFemale":"silvally-flying-shiny.png"},"silvallypoison":{"normal":"silvally-poison.png","normalFemale":"silvally-poison.png","shiny":"silvally-poison-shiny.png","shinyFemale":"silvally-poison-shiny.png"},"silvallyground":{"normal":"silvally-ground.png","normalFemale":"silvally-ground.png","shiny":"silvally-ground-shiny.png","shinyFemale":"silvally-ground-shiny.png"},"silvallyrock":{"normal":"silvally-rock.png","normalFemale":"silvally-rock.png","shiny":"silvally-rock-shiny.png","shinyFemale":"silvally-rock-shiny.png"},"silvallybug":{"normal":"silvally-bug.png","normalFemale":"silvally-bug.png","shiny":"silvally-bug-shiny.png","shinyFemale":"silvally-bug-shiny.png"},"silvallyghost":{"normal":"silvally-ghost.png","normalFemale":"silvally-ghost.png","shiny":"silvally-ghost-shiny.png","shinyFemale":"silvally-ghost-shiny.png"},"silvallysteel":{"normal":"silvally-steel.png","normalFemale":"silvally-steel.png","shiny":"silvally-steel-shiny.png","shinyFemale":"silvally-steel-shiny.png"},"silvallyunknown":{"normal":"silvally-unknown.png","normalFemale":"silvally-unknown.png","shiny":"silvally-unknown-shiny.png","shinyFemale":"silvally-unknown-shiny.png"},"silvallyfire":{"normal":"silvally-fire.png","normalFemale":"silvally-fire.png","shiny":"silvally-fire-shiny.png","shinyFemale":"silvally-fire-shiny.png"},"silvallywater":{"normal":"silvally-water.png","normalFemale":"silvally-water.png","shiny":"silvally-water-shiny.png","shinyFemale":"silvally-water-shiny.png"},"silvallygrass":{"normal":"silvally-grass.png","normalFemale":"silvally-grass.png","shiny":"silvally-grass-shiny.png","shinyFemale":"silvally-grass-shiny.png"},"silvallyelectric":{"normal":"silvally-electric.png","normalFemale":"silvally-electric.png","shiny":"silvally-electric-shiny.png","shinyFemale":"silvally-electric-shiny.png"},"silvallypsychic":{"normal":"silvally-psychic.png","normalFemale":"silvally-psychic.png","shiny":"silvally-psychic-shiny.png","shinyFemale":"silvally-psychic-shiny.png"},"silvallyice":{"normal":"silvally-ice.png","normalFemale":"silvally-ice.png","shiny":"silvally-ice-shiny.png","shinyFemale":"silvally-ice-shiny.png"},"silvallydragon":{"normal":"silvally-dragon.png","normalFemale":"silvally-dragon.png","shiny":"silvally-dragon-shiny.png","shinyFemale":"silvally-dragon-shiny.png"},"silvallydark":{"normal":"silvally-dark.png","normalFemale":"silvally-dark.png","shiny":"silvally-dark-shiny.png","shinyFemale":"silvally-dark-shiny.png"},"silvallyfairy":{"normal":"silvally-fairy.png","normalFemale":"silvally-fairy.png","shiny":"silvally-fairy-shiny.png","shinyFemale":"silvally-fairy-shiny.png"}});
 
 
@@ -3671,10 +3675,10 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 		back: {w: 142, h: 124},
 	},
 	aurorus: {
-		front: {w: 96, h: 96},
-		back: {w: 96, h: 96},
-		shinyFront: {w: 96, h: 96},
-		shinyBack: {w: 96, h: 96},
+		front: {w: 190, h: 182},
+		back: {w: 160, h: 182},
+		shinyFront: {w: 190, h: 182},
+		shinyBack: {w: 160, h: 182},
 	},
 	tyrantrum: {
 		front: {w: 140, h: 148},
@@ -5566,10 +5570,10 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 	},
 	aurorus: {
 		num: 699,
-		front: {w: 96, h: 96},
-		back: {w: 96, h: 96},
-		shinyFront: {w: 96, h: 96},
-		shinyBack: {w: 96, h: 96},
+		front: {w: 190, h: 182},
+		back: {w: 160, h: 182},
+		shinyFront: {w: 190, h: 182},
+		shinyBack: {w: 160, h: 182},
 	},
 	tyrantrum: {
 		num: 697,
@@ -7706,6 +7710,10 @@ Object.assign(CUSTOM_SPECIES_UPDATES, {
 	glaceon: {abilities: {0: 'Ice Scales', 1: 'Slush Rush', H: 'Ice Body', S: 'Mind Freeze'}},
 	scizor: {abilities: {0: 'Tough Claws', 1: 'Technician', H: 'Light Metal'}},
 	swampert: {abilities: {0: 'Dry Skin', 1: 'Regenerator', H: 'Damp'}},
+	swampertmega: {replaceAbilities: true, abilities: {0: 'Raging Current'}},
+	chesnaughtmega: {replaceAbilities: true, abilities: {0: 'Wrath Shield'}},
+	delphox: {replaceAbilities: true, abilities: {0: 'Sworn Duty', 1: 'Magic Guard', H: 'Magician'}},
+	greninja: {replaceAbilities: true, abilities: {0: 'Technician', 1: 'Protean', H: 'Battle Bond'}},
 	altaria: {abilities: {0: 'Natural Cure', 1: 'Fluffy', H: 'Cloud Nine', S: 'Echo Fiend'}},
 	cacturne: {baseStats: {spa: 90}},
 	mightyena: {
@@ -8420,8 +8428,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	astralwitchcraft: {
 		name: "Astral Witchcraft",
-		desc: "This Pokemon has Sworn Duty, Levitate, and Magic Guard's effects. In Fairy Tale or New World, its Special Attack and Special Defense rise by 1 on entry.",
-		shortDesc: "Sworn Duty + Levitate + Magic Guard; Fairy Tale/New World: +1 SpA/SpD.",
+		desc: "Its same-type attacks have 1.2x power (Proficient). This Pokemon has Sworn Duty, Levitate, and Magic Guard's effects. In Fairy Tale or New World, its Special Attack and Special Defense rise by 1 on entry.",
+		shortDesc: "Proficient + Sworn Duty + Levitate + Magic Guard; Fairy Tale/New World: +1 SpA/SpD.",
 	},
 	aurainstinct: {
 		name: "Aura Instinct",
@@ -8950,8 +8958,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	ragingcurrent: {
 		name: "Raging Current",
-		desc: "This Pokemon has Swift Swim, Dry Skin, Regenerator, and Stamina's effects.",
-		shortDesc: "Swift Swim + Dry Skin + Regenerator + Stamina.",
+		desc: "Its same-type attacks have 1.2x power (Proficient). This Pokemon has Swift Swim, Damp, Water Veil, Dry Skin, and Stamina's effects.",
+		shortDesc: "Proficient + Swift Swim + Damp + Water Veil + Dry Skin + Stamina.",
 	},
 	railguncircuit: {
 		name: "Railgun Circuit",
@@ -9087,8 +9095,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	shadowcurrent: {
 		name: "Shadow Current",
-		desc: "This Pokemon has Protean, Technician, and Sworn Duty. Before using a move, it becomes that move's type.",
-		shortDesc: "Protean + Technician + Sworn Duty.",
+		desc: "Its same-type attacks have 1.2x power (Proficient). This Pokemon has Protean, Technician, Infiltrator, and Anticipation's effects. Before using a move, it becomes that move's type.",
+		shortDesc: "Proficient + Protean + Technician + Infiltrator + Anticipation.",
 	},
 	guidingomen: {
 		name: "Guiding Omen",
@@ -9458,8 +9466,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	wrathshield: {
 		name: "Wrath Shield",
-		desc: "This Pokemon has Bulletproof, Dauntless Shield, and Self Repair's effects. It gains 1 Defense stage on entry, plus 1 Special Defense stage in Cold Eclipse, New World, Starlight Arena, or Fairy Tale. It is immune to bullet and pulse moves and restores HP through Self Repair.",
-		shortDesc: "Bulletproof + Dauntless Shield + Self Repair; boosted fields also give +1 SpD.",
+		desc: "Its same-type attacks have 1.2x power (Proficient). This Pokemon has Bulletproof, Dauntless Shield, and Self Repair's effects. It gains 1 Defense stage on entry, plus 1 Special Defense stage in Cold Eclipse, New World, Starlight Arena, or Fairy Tale. It is immune to bullet and pulse moves and restores HP through Self Repair.",
+		shortDesc: "Proficient + Bulletproof + Dauntless Shield + Self Repair; boosted fields also give +1 SpD.",
 	},
 	ragingfists: {
 		name: "Raging Fists",
@@ -11181,8 +11189,12 @@ const CUSTOM_ANIMATED_BW_SPRITES = new Set([
 	'torterra', 'typhlosion', 'venusaur', 'victreebel', 'vikavolt',
 	'whimsicott', 'unfezantrejuv',
 ]);
-const CUSTOM_STATIC_SHINY_BW_SPRITES = new Set(['magnezone', 'sylveon']);
+const ROTOM_SHINY_SPRITE_IDS = new Set(['rotom', 'rotomheat', 'rotomwash', 'rotomfrost', 'rotomfan', 'rotommow']);
+const CUSTOM_STATIC_SHINY_BW_SPRITES = new Set(['magnezone', 'sylveon', ...Array.from(ROTOM_SHINY_SPRITE_IDS)]);
 function customSpriteRevision(id: string) {
+ if (toID(id).startsWith('silvally')) return '?v=silvally-forms-20260912';
+ if (['aurorus', 'tyrantrum'].includes(toID(id))) return '?v=fossils-20260912';
+ if (ROTOM_SHINY_SPRITE_IDS.has(toID(id))) return '?v=rotom-shiny-1';
  if (['raichu-megax', 'raichu-megay'].includes(id)) return '?v=raichu-refresh-1';
  return ['sharpedo', 'sharpedo-mega', 'sharpedo-megay', 'lopunny', 'lopunny-mega'].includes(id) ? '?v=bw-refresh-2' : '';
 }
@@ -11954,6 +11966,7 @@ const CUSTOM_ARROW_MOVE_IDS = [
 ];
 const CUSTOM_HORN_MOVE_IDS = ['hornattack', 'horndrill', 'hornleech', 'megahorn'];
 const CUSTOM_ABILITY_COMPONENT_OVERRIDES: {[id: string]: readonly ID[]} = {
+	astralwitchcraft: ['proficient' as ID, 'levitate' as ID, 'magicguard' as ID, 'swornduty' as ID],
 	corrosivetouch: ['technician' as ID, 'poisontouch' as ID, 'corrosion' as ID],
 	hardyskin: ['dryskin' as ID, 'vitalspirit' as ID, 'moxie' as ID],
 	joyride: ['aerilate' as ID, 'hypercutter' as ID, 'vitalspirit' as ID],
@@ -12040,7 +12053,8 @@ const CUSTOM_ABILITY_COMPONENT_OVERRIDES: {[id: string]: readonly ID[]} = {
 	draconicforce: ['dragonize' as ID, 'strongjaw' as ID, 'moldbreaker' as ID],
 	tidaljaw: ['strongjaw' as ID, 'swiftswim' as ID, 'filter' as ID],
 	omenedge: ['sharpness' as ID, 'dualwield' as ID, 'pressure' as ID],
-	ragingcurrent: ['swiftswim' as ID, 'damp' as ID, 'waterveil' as ID, 'dryskin' as ID, 'regenerator' as ID, 'stamina' as ID],
+	ragingcurrent: ['proficient' as ID, 'swiftswim' as ID, 'damp' as ID, 'waterveil' as ID, 'dryskin' as ID, 'stamina' as ID],
+	shadowcurrent: ['proficient' as ID, 'protean' as ID, 'technician' as ID, 'infiltrator' as ID, 'anticipation' as ID],
 	relentlesshunt: ['levitate' as ID],
 	dreadmaw: ['hugepower' as ID, 'strongjaw' as ID],
 	freezerburn: ['slushrush' as ID, 'refrigerate' as ID],
@@ -12070,7 +12084,7 @@ riotamp: ['proficient' as ID, 'galvanize' as ID, 'resonanceforce' as ID, 'voltab
 	resuscitation: ['selfrepair' as ID, 'magicguard' as ID],
 	spiralevolution: ['adaptability' as ID, 'levitate' as ID, 'dualwield' as ID, 'infiltrator' as ID, 'shielddust' as ID],
 	venombastion: ['stamina' as ID],
-	wrathshield: ['bulletproof' as ID, 'dauntlessshield' as ID, 'selfrepair' as ID],
+	wrathshield: ['proficient' as ID, 'bulletproof' as ID, 'dauntlessshield' as ID, 'selfrepair' as ID],
 	hellfireeclipse: ['solarpower' as ID, 'darkaura' as ID],
 	islandcurrent: ['swiftswim' as ID, 'windrider' as ID],
 	oceanicwings: ['waterabsorb' as ID, 'hydration' as ID, 'friendguard' as ID],
@@ -15299,7 +15313,7 @@ const Dex = new class implements ModdedDex {
 
 		if (this.spriteDataCache.size >= 512) this.spriteDataCache.clear();
 		this.spriteDataCache.set(spriteCacheKey, spriteData);
-		if (['raichumegax', 'raichumegay'].includes(speciesid) && !spriteData.url.includes('?')) spriteData.url += customSpriteRevision(name);
+		if (!spriteData.url.includes('?')) spriteData.url += customSpriteRevision(name);
 		return spriteData;
 	}
 
@@ -15364,6 +15378,11 @@ const Dex = new class implements ModdedDex {
 			const fainted = (pokemon as Pokemon | ServerPokemon)?.fainted ? ';opacity:.3;filter:grayscale(100%) brightness(.5)' : '';
 			return `background:transparent url(${Dex.resourcePrefix}sprites/gen5${shinyDir}/${spriteid}.png) no-repeat center / contain${fainted}`;
 		}
+		if (ROTOM_SHINY_SPRITE_IDS.has(id) && typeof pokemon === 'object' && pokemon?.shiny) {
+			const filename = id === 'rotom' ? 'rotom' : 'rotom-' + id.slice(5);
+			const fainted = (pokemon as Pokemon | ServerPokemon).fainted ? ';opacity:.3;filter:grayscale(100%) brightness(.5)' : '';
+			return `background:transparent url(${Dex.resourcePrefix}sprites/pokemonicons/${filename}-shiny.png?v=rotom-shiny-1) no-repeat center / contain${fainted}`;
+		}
 		const customPartyIcon = CUSTOM_PARTY_ICON_SPRITES[id];
 		if (customPartyIcon) {
 			const iconPokemon = typeof pokemon === 'object' && pokemon !== null ? pokemon : null;
@@ -15372,7 +15391,7 @@ const Dex = new class implements ModdedDex {
 			const iconFile = isShiny ? (isFemale ? customPartyIcon.shinyFemale : customPartyIcon.shiny) :
 				(isFemale ? customPartyIcon.normalFemale : customPartyIcon.normal);
 			const fainted = ((pokemon as Pokemon | ServerPokemon)?.fainted ? `;opacity:.3;filter:grayscale(100%) brightness(.5)` : ``);
-			return `background:transparent url(${Dex.resourcePrefix}sprites/pokemonicons/${iconFile}) no-repeat center / contain${fainted}`;
+			return `background:transparent url(${Dex.resourcePrefix}sprites/pokemonicons/${iconFile}${customSpriteRevision(id)}) no-repeat center / contain${fainted}`;
 		}
 		// A sprite alias is safe only when it names the exact displayed artwork.
 		let menuId: string = id;
