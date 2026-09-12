@@ -123,6 +123,26 @@ const CUSTOM_ITEM_ICON_SPRITES: {[id: string]: string} = {
 };
 
 const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
+	ampharosaevian: {
+		base: 'ampharos',
+		data: {
+			name: 'Ampharos-Aevian', baseSpecies: 'Ampharos-Aevian', forme: 'Aevian', spriteid: 'ampharos-aevian',
+			types: ['Ice', 'Electric'], baseStats: {hp: 110, atk: 75, def: 90, spa: 115, spd: 85, spe: 55},
+			abilities: {0: 'Ice Scales', 1: 'Fluffy', H: 'Filter'},
+			otherFormes: ['Ampharos-Aevian-Mega'], formeOrder: ['Ampharos-Aevian', 'Ampharos-Aevian-Mega'],
+			standalone: true, gen: 9, isNonstandard: 'Custom',
+		},
+	},
+	ampharosaevianmega: {
+		base: 'ampharos',
+		data: {
+			name: 'Ampharos-Aevian-Mega', baseSpecies: 'Ampharos-Aevian', forme: 'Mega-Aevian',
+			spriteid: 'ampharos-aevian-mega', types: ['Ice', 'Electric'],
+			baseStats: {hp: 110, atk: 95, def: 110, spa: 165, spd: 105, spe: 45},
+			abilities: {0: 'Wooly Conductor'}, requiredItem: 'Ampharosite', battleOnly: 'Ampharos-Aevian',
+			changesFrom: 'Ampharos-Aevian', isMega: true, gen: 9, isNonstandard: 'Custom', tier: 'OU',
+		},
+	},
 	gardevoirmegaalt: {base: 'gardevoirmega', data: {name: 'Gardevoir-Mega-Alt', baseSpecies: 'Gardevoir', forme: 'Mega-Alt', spriteid: 'gardevoir-void', abilities: {0: 'Royal Voice'}, requiredItem: 'Gardevoirite', battleOnly: 'Gardevoir-Void', isNonstandard: 'Custom'}},
 	breloommega: {"base":"breloom","data":{"num":286,"name":"Breloom-Mega","baseSpecies":"Breloom","forme":"Mega","types":["Poison","Fighting"],"baseStats":{"hp":80,"atk":160,"def":90,"spa":55,"spd":105,"spe":110},"abilities":{"0":"Corrosive Touch"},"heightm":1.2,"weightkg":39.2,"color":"Purple","eggGroups":["Fairy","Grass"],"requiredItem":"Breloomite","battleOnly":"Breloom","isNonstandard":"Custom","spriteid":"breloom-mega","tier":"OU","gen":9}},
 	luxraymega: {"base":"luxray","data":{"num":405,"name":"Luxray-Mega","baseSpecies":"Luxray","forme":"Mega","types":["Electric","Dark"],"baseStats":{"hp":85,"atk":160,"def":91,"spa":90,"spd":104,"spe":105},"abilities":{"0":"Night Hunt"},"heightm":1.4,"weightkg":42,"color":"Blue","eggGroups":["Field"],"requiredItem":"Luxranite","battleOnly":"Luxray","isNonstandard":"Custom","spriteid":"luxray-mega","tier":"OU","gen":9}},
@@ -2150,6 +2170,14 @@ const CUSTOM_PARTY_ICON_SPRITES: {[id: string]: {
 	shiny: string,
 	shinyFemale: string,
 }} = {
+	ampharosaevian: {
+		normal: 'ampharos-aevian.png', normalFemale: 'ampharos-aevian-f.png',
+		shiny: 'ampharos-aevian-shiny.png', shinyFemale: 'ampharos-aevian-f-shiny.png',
+	},
+	ampharosaevianmega: {
+		normal: 'ampharos-aevian-mega.png', normalFemale: 'ampharos-aevian-mega-f.png',
+		shiny: 'ampharos-aevian-mega-shiny.png', shinyFemale: 'ampharos-aevian-mega-f-shiny.png',
+	},
 	garchomp: {normal: 'garchomp-menu.svg', normalFemale: 'garchomp-menu.svg', shiny: 'garchomp-menu-shiny.svg', shinyFemale: 'garchomp-menu-shiny.svg'},
 	garchompmega: {normal: 'garchompmega-menu.svg', normalFemale: 'garchompmega-menu.svg', shiny: 'garchompmega-menu-shiny.svg', shinyFemale: 'garchompmega-menu-shiny.svg'},
 	garchompmegaz: {normal: 'garchompmegaz-menu.svg', normalFemale: 'garchompmegaz-menu.svg', shiny: 'garchompmegaz-menu-shiny.svg', shinyFemale: 'garchompmegaz-menu-shiny.svg'},
@@ -2936,6 +2964,10 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 	shinyFront?: {w: number, h: number},
 	shinyBack?: {w: number, h: number},
 }} = {
+	ampharosaevian: {front: {w: 192, h: 192}, back: {w: 192, h: 192}, shinyFront: {w: 192, h: 192}, shinyBack: {w: 192, h: 192}},
+	ampharosaevianf: {front: {w: 192, h: 192}, back: {w: 192, h: 192}, shinyFront: {w: 192, h: 192}, shinyBack: {w: 192, h: 192}},
+	ampharosaevianmega: {front: {w: 192, h: 192}, back: {w: 192, h: 192}, shinyFront: {w: 192, h: 192}, shinyBack: {w: 192, h: 192}},
+	ampharosaevianmegaf: {front: {w: 192, h: 192}, back: {w: 192, h: 192}, shinyFront: {w: 192, h: 192}, shinyBack: {w: 192, h: 192}},
 	abysseon: {front: {w: 192, h: 192}, back: {w: 192, h: 192}, shinyFront: {w: 192, h: 192}, shinyBack: {w: 192, h: 192}},
 	divineon: {front: {w: 192, h: 192}, back: {w: 192, h: 192}, shinyFront: {w: 192, h: 192}, shinyBack: {w: 192, h: 192}},
 	froslass: {front: {w: 192, h: 192}, back: {w: 192, h: 192}, shinyFront: {w: 192, h: 192}, shinyBack: {w: 192, h: 192}},
@@ -8136,8 +8168,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	gooey: {
 		name: 'Gooey',
-		desc: "Any opposing damaging hit lowers the attacker's Speed by 2 and highest offense by 1. Hydration + Sap Sipper.",
-		shortDesc: 'Damaging hit: attacker -2 Spe/-1 offense; Hydration + Sap Sipper.',
+		desc: "Any opposing damaging hit lowers the attacker's Speed by 2, or by 4 on Murkwater Surface. Hydration + Sap Sipper.",
+		shortDesc: 'Damaging hit: attacker -2 Spe (-4 on Murkwater); Hydration + Sap Sipper.',
 	},
 	angerpoint: {
 		name: 'Anger Point',
@@ -10131,6 +10163,26 @@ const CUSTOM_MOVE_UPDATES: {[id: string]: AnyObject} = {
 };
 
 const CUSTOM_LEARNSET_REPLACEMENTS: {[id: string]: {[id: string]: string[]}} = {
+	ampharosaevian: {
+		tackle: ['9L1'], snowscape: ['9L1'], thunderwave: ['9L1'], thundershock: ['9L1'],
+		thunderpunch: ['9L1'], icywind: ['9L1'], cottonspore: ['9L1'], takedown: ['9L1'],
+		iceball: ['9L1'], confuseray: ['9L1'], powergem: ['9L1'], discharge: ['9L1'],
+		cottonguard: ['9L1'], rest: ['9L1'], reflect: ['9L1'], thunder: ['9L1'], blizzard: ['9L1'],
+		zapcannon: ['9M'], haze: ['9M'], icepunch: ['9M'], afteryou: ['9M'], agility: ['9M'],
+		bodyslam: ['9M'], charge: ['9M'], eerieimpulse: ['9M'], electricterrain: ['9M'], flatter: ['9M'],
+		frostbreath: ['9M'], irontail: ['9M'], sandattack: ['9M'], screech: ['9M'], auroraveil: ['9M'],
+		avalanche: ['9M'], beatup: ['9M'], bodypress: ['9M'], brutalswing: ['9M'], chargebeam: ['9M'],
+		dragondance: ['9M'], dragonpulse: ['9M'], dynamicpunch: ['9M'], echoedvoice: ['9M'], electroball: ['9M'],
+		electroweb: ['9M'], endeavor: ['9M'], faketears: ['9M'], flash: ['9M'], flashcannon: ['9M'],
+		fling: ['9M'], focusblast: ['9M'], focuspunch: ['9M'], gigaimpact: ['9M'], guardswap: ['9M'],
+		gyroball: ['9M'], healbell: ['9M'], hyperbeam: ['9M'], icebeam: ['9M'], iciclespear: ['9M'],
+		laserfocus: ['9M'], magiccoat: ['9M'], magnetrise: ['9M'], megakick: ['9M'], megapunch: ['9M'],
+		metronome: ['9M'], outrage: ['9M'], payday: ['9M'], payback: ['9M'], playrough: ['9M'],
+		raindance: ['9M'], recycle: ['9M'], risingvoltage: ['9M'], rockclimb: ['9M'], rocksmash: ['9M'],
+		roleplay: ['9M'], safeguard: ['9M'], shadowball: ['9M'], shockwave: ['9M'], signalbeam: ['9M'],
+		skillswap: ['9M'], snatch: ['9M'], strength: ['9M'], taunt: ['9M'], thunderbolt: ['9M'],
+		voltswitch: ['9M'], waterpulse: ['9M'], weatherball: ['9M'], wildcharge: ['9M'],
+	},
 	bronzong: {
 		flash: ['9L1'], nightshade: ['9L1'], mirrorshot: ['9L1'], magiccoat: ['9L1'],
 		mimic: ['9L1'], signalbeam: ['9L1'], reflecttype: ['9L1'], mefirst: ['9L1'],
@@ -11192,6 +11244,7 @@ const CUSTOM_ANIMATED_BW_SPRITES = new Set([
 const ROTOM_SHINY_SPRITE_IDS = new Set(['rotom', 'rotomheat', 'rotomwash', 'rotomfrost', 'rotomfan', 'rotommow']);
 const CUSTOM_STATIC_SHINY_BW_SPRITES = new Set(['magnezone', 'sylveon', ...Array.from(ROTOM_SHINY_SPRITE_IDS)]);
 function customSpriteRevision(id: string) {
+	if (toID(id).startsWith('ampharosaevian')) return '?v=ampharos-aevian-1';
  if (toID(id).startsWith('silvally')) return '?v=silvally-forms-20260912';
  if (['aurorus', 'tyrantrum'].includes(toID(id))) return '?v=fossils-20260912';
  if (ROTOM_SHINY_SPRITE_IDS.has(toID(id))) return '?v=rotom-shiny-1';
@@ -11264,6 +11317,7 @@ for (const [id, species] of Object.entries(CUSTOM_SPECIES)) {
 }
 
 const PROFILE_VARIANT_FORMES: {[familyId: string]: string[]} = {
+	ampharos: ['Ampharos', 'Ampharos-Mega', 'Ampharos-Aevian', 'Ampharos-Aevian-Mega'],
 	palossand: [
 		'Palossand', 'Palossand-Rocky', 'Palossand-Fiery', 'Palossand-Icy',
 	],
