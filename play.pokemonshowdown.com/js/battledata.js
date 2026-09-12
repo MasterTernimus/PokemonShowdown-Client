@@ -6614,6 +6614,7 @@ isNonstandard:'Custom'
 });
 
 var CUSTOM_SPECIES_UPDATES={
+pinsir:{types:['Bug','Ground'],abilities:{0:'Hyper Cutter',1:'Hardy Skin',H:'Violent Rush'}},
 noctowl:{"baseStats":{"hp":100,"atk":50,"def":78,"spa":96,"spd":106,"spe":80},"otherFormes":["Noctowl-Mega"],"formeOrder":["Noctowl","Noctowl-Mega"]},
 hypno:{baseStats:{hp:85,atk:60,def:80,spa:93,spd:115,spe:67},otherFormes:['Hypno-Pulse'],formeOrder:['Hypno','Hypno-Pulse']},
 lilligant:{baseStats:{hp:80,atk:60,def:80,spa:110,spd:80,spe:90},otherFormes:['Lilligant-Hisui','Lilligant-Rift','Lilligant-Hisui-Rift'],formeOrder:['Lilligant','Lilligant-Hisui','Lilligant-Rift','Lilligant-Hisui-Rift']},
@@ -8789,8 +8790,13 @@ shortDesc:"Prism Armor + Second Wind + Self Sufficient."
 },
 joyride:{
 name:"Joyride",
-desc:"This Pokemon has Aerilate and Hyper Cutter's effects.",
-shortDesc:"Aerilate + Hyper Cutter."
+desc:"This Pokemon has Aerilate, Hyper Cutter, and Vital Spirit's effects.",
+shortDesc:"Aerilate + Hyper Cutter + Vital Spirit."
+},
+hardyskin:{
+name:"Hardy Skin",
+desc:"This Pokemon has Dry Skin, Vital Spirit, and Moxie's effects.",
+shortDesc:"Dry Skin + Vital Spirit + Moxie."
 },
 lunaridol:{
 name:"Lunar Idol",
@@ -11949,6 +11955,8 @@ var CUSTOM_ARROW_MOVE_IDS=[
 var CUSTOM_HORN_MOVE_IDS=['hornattack','horndrill','hornleech','megahorn'];
 var CUSTOM_ABILITY_COMPONENT_OVERRIDES={
 corrosivetouch:['technician','poisontouch','corrosion'],
+hardyskin:['dryskin','vitalspirit','moxie'],
+joyride:['aerilate','hypercutter','vitalspirit'],
 nighthunt:['strongjaw','infiltrator','intimidate'],
 rimeknuckle:['filter','ironfist','icebody'],
 royalvoice:['pixilate','queenlymajesty','dreamsickness'],
@@ -12415,7 +12423,8 @@ pelipper:{pursuit:["9L1"]},
 perrserker:{bulkup:["9M"],bulletpunch:["9M"],covet:["9M"],hypnosis:["9L1"],liquidation:["9M"],outrage:["9M"],spikes:["9M"],thunderwave:["9M"]},
 persian:{happyhour:["9M"],sing:["9L1"],spikes:["9M"]},
 pidgeot:{bravebird:["9M"],dualwingbeat:["9M"],feintattack:["9M"],hypervoice:["9M"]},
-pinsir:{aerialace:["9M"],circlethrow:["9M"],dualwingbeat:["9M"],lunge:["9M"]},
+dhelmise:{strengthsap:["9M"]},
+pinsir:{aerialace:["9M"],circlethrow:["9M"],dualwingbeat:["9M"],extremespeed:["9M"],lunge:["9M"]},
 plusle:{drainingkiss:["9M"],mysticalfire:["9M"],powerswap:["9M"],risingvoltage:["9M"],screech:["9M"],terrainpulse:["9M"]},
 politoed:{bide:["9M"],fissure:["9M"],iceball:["9M"],psywave:["9M"],rage:["9M"],skullbash:["9M"],submission:["9M"]},
 poliwrath:{iceball:["9M"],jetpunch:["9L1"],machpunch:["9M"]},
