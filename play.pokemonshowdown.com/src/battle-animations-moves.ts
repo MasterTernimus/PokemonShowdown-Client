@@ -35907,6 +35907,7 @@ BattleMoveAnims['venoshock'] = {anim: BattleMoveAnims['sludgebomb'].anim};
 BattleMoveAnims['venomdrench'] = {anim: BattleMoveAnims['sludge'].anim};
 BattleMoveAnims['poisonsting'] = {anim: BattleMoveAnims['poisonjab'].anim};
 BattleMoveAnims['poisontail'] = {anim: BattleMoveAnims['poisonjab'].anim};
+BattleMoveAnims['vileassault'] = {anim: BattleMoveAnims['poisonjab'].anim};
 BattleMoveAnims['gastroacid'] = {anim: BattleMoveAnims['toxic'].anim};
 
 BattleMoveAnims['magnitude'] = {anim: BattleMoveAnims['earthquake'].anim};

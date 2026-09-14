@@ -27,7 +27,7 @@ assert.deepEqual(base.baseStats, {hp: 110, atk: 75, def: 90, spa: 115, spd: 85, 
 assert.deepEqual(base.abilities, {0: 'Ice Scales', 1: 'Fluffy', H: 'Filter'});
 assert.deepEqual(mega.baseStats, {hp: 110, atk: 95, def: 110, spa: 165, spd: 105, spe: 45});
 assert(mega.requiredItems.includes('Ampharosite'));
-assert.equal(mega.abilities[0], 'Wooly Conductor');
+assert.equal(mega.abilities[0], 'Absolute Zero');
 
 for (const species of [base, mega]) for (const gender of ['M', 'F']) for (const shiny of [false, true]) {
 	const id = species.spriteid + (gender === 'F' ? '-f' : '');

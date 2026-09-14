@@ -171,7 +171,7 @@ function matchesCustomSearchGroup(species: AnyObject, query: string) {
 	const forme = toID(species?.forme);
 	if (query === 'rejuv') return forme === 'rejuv' || name.endsWith('rejuv');
 	if (query === 'reborn') return forme === 'reborn' || name.endsWith('reborn');
-	if (query === 'aevian') return forme.includes('aevian') || name.includes('aevian');
+	if (query === 'aevian') return forme.includes('aevian') || name.includes('aevian') || name === 'miloticterajuma';
 	if (query === 'deso') return forme === 'deso' || name.endsWith('deso') || name === 'umbreonperfect';
 	return false;
 }
