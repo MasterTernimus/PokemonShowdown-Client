@@ -12415,6 +12415,7 @@ const ROTOM_SHINY_SPRITE_IDS = new Set(['rotom', 'rotomheat', 'rotomwash', 'roto
 const CUSTOM_STATIC_SHINY_BW_SPRITES = new Set(['dragonite', 'dragonitemega', 'magnezone', 'nidoking', 'nidoqueen', 'ninetales', 'persian', 'persianalola', 'sylveon', 'umbreon', 'vaporeon', 'flareon', 'tauros', 'taurospaldeacombat', 'taurospaldeablaze', 'taurospaldeaaqua', ...Array.from(ROTOM_SHINY_SPRITE_IDS)]);
 function customSpriteRevision(id: string) {
 	const spriteid = id.toLowerCase();
+	if (spriteid === 'banette' || spriteid === 'banette-mega') return '?v=banette-354-1';
 	if (spriteid.startsWith('lapras-aevian')) return '?v=lapras-aevian-gmax-1';
 	if (spriteid.startsWith('toxtricity-aevian-gmax')) return '?v=toxtricity-aevian-gmax-1';
 	if (spriteid.startsWith('froslass-aevian')) return '?v=froslass-aevian-1';
