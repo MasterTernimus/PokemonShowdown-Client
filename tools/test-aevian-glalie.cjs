@@ -40,7 +40,7 @@ for (const species of ['Glalie', 'Glalie-Aevian', 'Glalie-Mega', 'Glalie-Aevian-
 }
 
 const learnset = BattleTeambuilderTable.learnsets.glalieaevian;
-for (const move of ['absorb', 'woodhammer', 'grassyglide', 'leechseed', 'arenitewall', 'slashandburn', 'mudslap', 'accelerock']) {
+for (const move of ['absorb', 'woodhammer', 'grassyglide', 'leechseed', 'arenitewall', 'mudslap', 'accelerock']) {
 	assert(learnset[move], `missing ${move}`);
 }
 assert(BattleTeambuilderTable.learnsets.ampharosaevian.paraboliccharge);
