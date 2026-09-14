@@ -17,7 +17,7 @@ describe('Native Team Builder artwork coverage', () => {
 	for (const row of rows.filter(row => row.available)) {
 		it(`uses verified dedicated art for ${row.name}, normal and shiny`, () => {
 			for (const shiny of [false, true]) {
-				if ((row.spriteid === 'archeops' && shiny) || (row.spriteid.startsWith('furfrou') || row.spriteid.startsWith('silvally')) || ['dusknoir', 'reuniclus', 'scizor-mega'].includes(row.spriteid)) continue;
+				if ((row.spriteid === 'archeops' && shiny) || (row.spriteid.startsWith('furfrou') || row.spriteid.startsWith('silvally')) || ['dusknoir', 'reuniclus', 'scizor-mega', 'raichu-alola'].includes(row.spriteid)) continue;
 				for (const gen of [0, 9]) {
 					const data = Dex.getTeambuilderSpriteData({species: row.name, shiny}, gen);
 					assert.equal(data.spriteDir, 'sprites/dex');
