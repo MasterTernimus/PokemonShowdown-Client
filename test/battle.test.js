@@ -500,6 +500,17 @@ describe('Team Builder sprites', () => {
 		assert(global.BattleTeambuilderTable.learnsets.butterfree.sludgewave);
 	});
 
+	it('keeps Feraligatr poison coverage legal in the team builder', () => {
+		Dex.species.get('Feraligatr');
+		const learnset = global.BattleTeambuilderTable.learnsets.feraligatr;
+		for (const move of ['poisonfang', 'sludgebomb', 'sludgewave']) {
+			assert(learnset[move], `Feraligatr should learn ${move}`);
+		}
+		for (const move of ['firefang', 'thunderfang']) {
+			assert(!learnset[move], `Feraligatr should not learn ${move}`);
+		}
+	});
+
 	it('syncs Golduck stats, abilities, and requested moves', () => {
 		assert.deepEqual(Dex.species.get('Golduck').baseStats, {hp: 80, atk: 82, def: 78, spa: 115, spd: 80, spe: 90});
 		assert.equal(Dex.species.get('Golduck').bst, 525);
@@ -746,7 +757,7 @@ describe('Team Builder sprites', () => {
 
 	it('shows the added composite ability effects', () => {
 		assert.match(Dex.abilities.get('Pollen Bloom').desc, /Unaware/);
-		assert.match(Dex.abilities.get('Territorial').desc, /Intimidate/);
+		assert.match(Dex.abilities.get('Territorial').desc, /Unnerve/);
 		assert.match(Dex.abilities.get('Lunar Dread').desc, /Unaware/);
 		assert.match(Dex.abilities.get('Atrocity').desc, /Mold Breaker/);
 		assert.match(Dex.abilities.get('Ancient Bloom').desc, /Pollen Bloom/);
@@ -762,7 +773,10 @@ describe('Team Builder sprites', () => {
 		assert(!Dex.getAbilityEffects('omenedge').has('toughclaws'));
 		assert(Dex.getAbilityEffects('fortressshell').has('waterbarrage'));
 		assert(Dex.getAbilityEffects('lunardread').has('unaware'));
-		assert(Dex.getAbilityEffects('territorial').has('intimidate'));
+		assert(Dex.getAbilityEffects('territorial').has('unnerve'));
+		assert(Dex.getAbilityEffects('territorial').has('unaware'));
+		assert(Dex.getAbilityEffects('territorial').has('toughclaws'));
+		assert(!Dex.getAbilityEffects('territorial').has('intimidate'));
 		assert.match(Dex.abilities.get('Still Waters').desc, /Cloud Nine/);
 		assert(Dex.getAbilityEffects('stillwaters').has('cloudnine'));
 		assert(Dex.getAbilityEffects('stillwaters').has('magicguard'));

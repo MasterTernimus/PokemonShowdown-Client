@@ -1199,6 +1199,7 @@ interface MoveFlags {
 	/** Can be stolen from the original user and instead used by another Pokemon using Snatch. */
 	snatch?: 1 | 0;
 	/** Has no effect on Pokemon with the Soundproof Ability. */
+	tail?: 1 | 0;
 	sound?: 1 | 0;
 	/** Activates the effects of the Wind Power and Wind Rider Abilities. */
 	wind?: 1 | 0;
