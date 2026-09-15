@@ -12417,7 +12417,7 @@ function customSpriteRevision(id){
 var spriteid=id.toLowerCase();
 if(spriteid==='banette'||spriteid==='banette-mega')return'?v=banette-354-1';
 if(spriteid.startsWith('lapras-aevian'))return'?v=lapras-aevian-gmax-1';
-if(spriteid.startsWith('toxtricity-aevian-gmax'))return'?v=toxtricity-aevian-gmax-1';
+if(spriteid.startsWith('toxtricity-aevian-gmax'))return'?v=toxtricity-aevian-gmax-2';
 if(spriteid.startsWith('froslass-aevian'))return'?v=froslass-aevian-1';
 if(spriteid.startsWith('glalie'))return'?v=glalie-aevian-1';
 if(RESTORED_BW_SHINY_SPRITE_IDS.has(spriteid)||TEAMBUILDER_ONLY_BW_SHINY_SPRITE_IDS.has(spriteid)){

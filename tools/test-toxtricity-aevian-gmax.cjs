@@ -29,7 +29,7 @@ for (const shiny of [false, true]) {
 	for (const facing of [0, 1]) {
 		const data = Dex.getSpriteData(species.name, facing, {gen: 9, shiny});
 		const directory = facing ? `gen5${shiny ? '-shiny' : ''}` : `gen5-back${shiny ? '-shiny' : ''}`;
-		assert(data.url.includes(`/sprites/${directory}/toxtricity-aevian-gmax.png?v=toxtricity-aevian-gmax-1`), data.url);
+		assert(data.url.includes(`/sprites/${directory}/toxtricity-aevian-gmax.png?v=toxtricity-aevian-gmax-2`), data.url);
 		assert(fs.statSync(root + `sprites/${directory}/toxtricity-aevian-gmax.png`).size > 0);
 	}
 	const icon = Dex.getPokemonIcon({species: species.name, shiny});
