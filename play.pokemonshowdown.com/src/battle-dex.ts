@@ -12415,7 +12415,7 @@ const ROTOM_SHINY_SPRITE_IDS = new Set(['rotom', 'rotomheat', 'rotomwash', 'roto
 const CUSTOM_STATIC_SHINY_BW_SPRITES = new Set(['dragonite', 'dragonitemega', 'magnezone', 'nidoking', 'nidoqueen', 'ninetales', 'persian', 'persianalola', 'sylveon', 'umbreon', 'vaporeon', 'flareon', 'tauros', 'taurospaldeacombat', 'taurospaldeablaze', 'taurospaldeaaqua', ...Array.from(ROTOM_SHINY_SPRITE_IDS)]);
 function customSpriteRevision(id: string) {
 	const spriteid = id.toLowerCase();
-	if (spriteid === 'banette' || spriteid === 'banette-mega') return '?v=banette-354-1';
+	if (spriteid === 'banette' || spriteid === 'banette-mega') return '?v=banette-354-2';
 	if (spriteid.startsWith('lapras-aevian')) return '?v=lapras-aevian-gmax-1';
 	if (spriteid.startsWith('toxtricity-aevian-gmax')) return '?v=toxtricity-aevian-gmax-2';
 	if (spriteid.startsWith('froslass-aevian')) return '?v=froslass-aevian-1';
@@ -13422,6 +13422,7 @@ const CUSTOM_TEAMBUILDER_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: nu
 	zoroarkhisui: {w: 74, h: 74},
 };
 const CUSTOM_TEAMBUILDER_SPRITE_DIMENSIONS: {[id: string]: {w: number, h: number, shinyW?: number, shinyH?: number}} = {
+	banette: {w: 192, h: 192, shinyW: 192, shinyH: 192},
 	blastoise: {w: 192, h: 192, shinyW: 192, shinyH: 192},
 	blastoisemega: {w: 192, h: 192, shinyW: 192, shinyH: 192},
 	feraligatr: {w: 192, h: 192, shinyW: 192, shinyH: 192},
