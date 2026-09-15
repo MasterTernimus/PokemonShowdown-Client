@@ -8042,7 +8042,7 @@ Object.assign(CUSTOM_SPECIES_UPDATES, {
 	alakazam: {baseStats: {hp: 80, atk: 50, def: 50, spa: 135, spd: 95, spe: 120}},
 	alakazammega: {types: ['Psychic', 'Dark'], baseStats: {hp: 80, atk: 48, def: 60, spa: 175, spd: 105, spe: 162}},
 	dodrio: {baseStats: {hp: 90, atk: 115, def: 85, spa: 40, spd: 75, spe: 120}, abilities: {0: 'Triple Threat', 1: 'Speed Boost', H: 'Striker Frenzy'}},
-	honchkrow: {baseStats: {hp: 100, atk: 135, def: 72, spa: 71, spd: 72, spe: 90}},
+	honchkrow: {baseStats: {hp: 100, atk: 135, def: 72, spa: 71, spd: 72, spe: 90}, abilities: {0: 'Pressure', 1: 'Wicked Command', H: 'Supreme Overlord'}},
 	flamigo: {baseStats: {hp: 82, atk: 125, def: 80, spa: 75, spd: 70, spe: 105}},
 	flapple: {
 		baseStats: {hp: 80, atk: 115, def: 85, spa: 95, spd: 60, spe: 90},
@@ -8328,8 +8328,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	schooling: {
 		name: 'Schooling',
-		desc: "A level 20 or higher Wishiwashi changes to School Form above 1/4 maximum HP and returns to Solo Form at or below 1/4 maximum HP. While in School Form, it has Hydra Bond, Self Repair, and Filter's effects.",
-		shortDesc: 'Changes form by HP; School: Hydra Bond + Self Repair + Filter.',
+		desc: "A level 20 or higher Wishiwashi changes to School Form above 1/4 maximum HP. Underwater always forces School Form; Water Surface and Murkwater force it while grounded. It returns to Solo Form at or below 1/4 maximum HP otherwise. While in School Form, it has Hydra Bond, Self Repair, and Filter's effects.",
+		shortDesc: 'Changes form by HP and water terrain; School: Hydra Bond + Self Repair + Filter.',
 	},
 	scarecrow: {
 		name: 'Scarecrow',
@@ -9730,6 +9730,11 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 		name: "Wicked Snare",
 		desc: "This Pokemon has Stakeout, Tangling Hair, and Prankster's effects.",
 		shortDesc: "Stakeout + Tangling Hair + Prankster.",
+	},
+	wickedcommand: {
+		name: 'Wicked Command',
+		desc: "This Pokemon has Insomnia and Super Luck's effects and takes 20% less damage from other Pokemon's damaging moves. If this Pokemon knocks out an enemy with a move, its higher attacking stat is raised by 1 stage, with Attack chosen on a tie.",
+		shortDesc: 'Insomnia + Super Luck; move KOs boost the higher attacking stat.',
 	},
 	wildfirecore: {
 		name: "Wildfire Core",
@@ -13688,6 +13693,7 @@ const CUSTOM_ABILITY_COMPONENT_OVERRIDES: {[id: string]: readonly ID[]} = {
 	sweetsanctuary: ['friendguard' as ID, 'sweetveil' as ID, 'aromaveil' as ID, 'pastelveil' as ID],
 	heatcoil: ['speedboost' as ID, 'magmaarmor' as ID, 'flamebody' as ID],
 	wickedsnare: ['stakeout' as ID, 'tanglinghair' as ID, 'prankster' as ID],
+	wickedcommand: ['insomnia' as ID, 'superluck' as ID],
 	ancientbloom: ['effectspore' as ID, 'pollenbloom' as ID],
 	fortressshell: ['shellarmor' as ID, 'waterbarrage' as ID],
 	astralcore: ['purepower' as ID, 'naturalcure' as ID, 'illuminate' as ID],
