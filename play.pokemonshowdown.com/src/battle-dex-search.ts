@@ -1190,7 +1190,7 @@ class BattlePokemonSearch extends BattleTypedSearch<'pokemon'> {
 				break;
 			}
 			const species = this.dex.species.get(id);
-			if (isCustomSearchVisualForm(species) || isHiddenTeamBuilderSpecies(id)) continue;
+			if ((isCustomSearchVisualForm(species) && species.tier === 'Illegal') || isHiddenTeamBuilderSpecies(id)) continue;
 			const speciesid = toID(id);
 			if (seenSpecies.has(speciesid)) continue;
 			seenSpecies.add(speciesid);
@@ -1200,7 +1200,7 @@ class BattlePokemonSearch extends BattleTypedSearch<'pokemon'> {
 	}
 	getBaseResults(): SearchRow[] {
 		const format = this.format;
-		if (!format) return this.getDefaultResults();
+		if (!format || this.unrestrictedCatalog) return this.getDefaultResults();
 		const isVGCOrBS = format.startsWith('battlespot') || format.startsWith('bss') ||
 			format.startsWith('battlestadium') || format.startsWith('vgc');
 		const isHackmons = format.includes('hackmons') || format.endsWith('bh');
@@ -1356,6 +1356,17 @@ class BattlePokemonSearch extends BattleTypedSearch<'pokemon'> {
 			});
 		}
 
+		// New standalone profiles have no upstream tier-table entry or legal base
+		// slot to inherit. Include the custom roster before computing illegalReasons.
+		if (this.isFieldFormat || this.unrestrictedCatalog || this.formatType === 'natdex') {
+			window.ensureCustomSpecies?.();
+			tierSet = [...tierSet];
+			for (const id in BattlePokedex) {
+				const species = dex.species.get(id);
+				if (isCustomSearchVisualForm(species) && species.tier !== 'Illegal' &&
+					!isHiddenTeamBuilderSpecies(id)) tierSet.push(['pokemon', id as ID]);
+			}
+		}
 		const seenSpecies = new Set<ID>();
 		tierSet = tierSet.filter(([type, id]) => {
 			if (type !== 'pokemon') return true;
