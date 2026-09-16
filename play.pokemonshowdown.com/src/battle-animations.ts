@@ -898,6 +898,8 @@ export class BattleScene implements BattleSceneStub {
 	}
 
 	pseudoWeatherLeft(pWeather: WeatherState) {
+		const garden = /^flowergarden([1-5])$/.exec(toID(pWeather[0]));
+		if (garden) return `<br />Flower Garden (Stage ${garden[1]})`;
 		let buf = '<br />' + Dex.moves.get(pWeather[0]).name;
 		if (!pWeather[1] && pWeather[2]) {
 			pWeather[1] = pWeather[2];
@@ -982,9 +984,12 @@ export class BattleScene implements BattleSceneStub {
 			weather = '' as ID;
 		}
 		let terrain = '' as ID;
+		let garden = '' as ID;
 		for (const pseudoWeatherData of this.battle.pseudoWeather) {
 			terrain = toID(pseudoWeatherData[0]);
+			if (/^flowergarden[1-5]$/.test(terrain)) garden = terrain;
 		}
+		if (garden) terrain = garden;
 		if (weather === 'desolateland' || weather === 'primordialsea' || weather === 'deltastream') {
 			isIntense = true;
 		}

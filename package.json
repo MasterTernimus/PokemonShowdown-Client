@@ -30,6 +30,7 @@
     "@types/mocha": "^5.2.6",
     "eslint": "^5.16.0",
     "mocha": "^6.0.2",
+    "omggif": "^1.0.10",
     "preact": "^8.3.1",
     "source-map": "^0.7.3",
     "tslint": "^5.20.1",

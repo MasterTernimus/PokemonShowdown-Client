@@ -554,6 +554,9 @@ class BattleTooltips {
 	}
 
 	showMoveTooltip(move: Move, isZOrMax: string, pokemon: Pokemon, serverPokemon: ServerPokemon, gmaxMove?: Move) {
+		const gardenStage = [1, 2, 3, 4, 5].find(stage => this.battle.hasPseudoWeather(`Flower Garden ${stage}`)) || 0;
+		const gardenSecretPower = move.id === 'secretpower' && isZOrMax !== 'zmove' && isZOrMax !== 'maxmove' && [1, 5].includes(gardenStage);
+		if (gardenSecretPower) move = this.battle.dex.moves.get(gardenStage === 5 ? 'Petal Dance' : 'Sweet Scent');
 		let text = '';
 
 		let zEffect = '';
@@ -641,6 +644,11 @@ class BattleTooltips {
 
 		text += Dex.getTypeIcon(moveType);
 		text += ` ${Dex.getCategoryIcon(category)}</h2>`;
+		if (gardenSecretPower) text += `<p>Secret Power becomes ${move.name} in Flower Garden Stage ${gardenStage}.</p>`;
+		if (this.battle.hasPseudoWeather('Flower Garden 1') && ['growth', 'rototiller'].includes(move.id)) {
+			text += '<p>Flower Garden: +2 Attack and +2 Sp. Atk.' +
+				(move.id === 'rototiller' ? ' Also affects the grounded user regardless of type.' : '') + '</p>';
+		}
 
 		// Check if there are more than one active Pokémon to check for multiple possible BPs.
 		let showingMultipleBasePowers = false;
@@ -678,7 +686,11 @@ class BattleTooltips {
 		if (move.id === 'naturepower') {
 			let calls;
 			if (this.battle.gen > 5) {
-				if (this.battle.hasPseudoWeather('Electric Terrain')) {
+				if (this.battle.hasPseudoWeather('Flower Garden 1')) {
+					calls = 'Growth';
+				} else if (this.battle.hasPseudoWeather('Flower Garden 5')) {
+					calls = 'Petal Blizzard';
+				} else if (this.battle.hasPseudoWeather('Electric Terrain')) {
 					calls = 'Thunderbolt';
 				} else if (this.battle.hasPseudoWeather('Grassy Terrain')) {
 					calls = 'Energy Ball';
