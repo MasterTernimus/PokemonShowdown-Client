@@ -492,6 +492,18 @@ License: GPLv2
     color: #441155;
 }
 
+.flowergarden1weather,
+.flowergarden2weather,
+.flowergarden3weather,
+.flowergarden4weather,
+.flowergarden5weather {
+    background: #35401f url(../fx/weather-flowergarden1.png) no-repeat left top;
+    background-size: 100% 100%;
+}
+.flowergarden2weather { background-image: url(../fx/weather-flowergarden2.png); }
+.flowergarden3weather { background-image: url(../fx/weather-flowergarden3.png); }
+.flowergarden4weather { background-image: url(../fx/weather-flowergarden4.png); }
+.flowergarden5weather { background-image: url(../fx/weather-flowergarden5.png); }
 .flowergarden1terrainweather {
     background: #CCAAEE url(../fx/weather-flowergarden1terrain.png) no-repeat scroll left top;
     color: #441155;

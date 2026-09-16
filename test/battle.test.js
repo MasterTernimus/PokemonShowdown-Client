@@ -24,6 +24,26 @@ require('../play.pokemonshowdown.com/js/battle-text-parser.js');
 require('../play.pokemonshowdown.com/js/battle.js');
 
 describe('Battle', () => {
+	it('replaces Flower Garden stages without timers and preserves room effects', () => {
+		const battle = new Battle({debug: true});
+		battle.gen = 9;
+		battle.runMinor(['-fieldstart', 'Electric Terrain'], {});
+		battle.runMinor(['-fieldstart', 'Trick Room'], {});
+		for (let stage = 1; stage <= 5; stage++) {
+			battle.runMinor(['-fieldstart', `Flower Garden ${stage}`], {});
+			assert.deepEqual(battle.pseudoWeather.filter(pw => pw[0] !== 'Trick Room'), [[`Flower Garden ${stage}`, 0, 0]]);
+			assert(battle.hasPseudoWeather('Trick Room'));
+		}
+		battle.runMinor(['-fieldstart', 'Burning Terrain'], {garden: '.'});
+		assert.deepEqual(battle.pseudoWeather.filter(pw => pw[0] !== 'Trick Room'), [['Burning Terrain', 0, 0]]);
+		for (const stage of [3, 2, 1]) {
+			battle.runMinor(['-fieldstart', `Flower Garden ${stage}`], {});
+			assert.deepEqual(battle.pseudoWeather.filter(pw => pw[0] !== 'Trick Room'), [[`Flower Garden ${stage}`, 0, 0]]);
+		}
+		battle.runMinor(['-fieldend', 'Flower Garden 1'], {});
+		assert.deepEqual(battle.pseudoWeather.map(pw => pw[0]), ['Trick Room']);
+		battle.destroy();
+	});
 	it('registers Mega Sunflora stats, stone, ability, and all four BW sprites', () => {
 		global.BattleItems = require('../play.pokemonshowdown.com/data/items.js').BattleItems;
 		const base = Dex.species.get('Sunflora');

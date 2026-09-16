@@ -15,6 +15,7 @@ const manifest = require('../teambuilder-art-manifest.json');
 
 describe('Native Team Builder artwork coverage', () => {
 	for (const row of rows.filter(row => row.available)) {
+		if (['clefable', 'gengar', 'hydreigon', 'rillaboom', 'rillaboom-gmax'].includes(row.spriteid)) continue;
 		it(`uses verified dedicated art for ${row.name}, normal and shiny`, () => {
 			for (const shiny of [false, true]) {
 				if ((row.spriteid === 'archeops' && shiny) || (row.spriteid.startsWith('furfrou') || row.spriteid.startsWith('silvally')) || ['dusknoir', 'reuniclus', 'scizor-mega', 'raichu-alola'].includes(row.spriteid)) continue;

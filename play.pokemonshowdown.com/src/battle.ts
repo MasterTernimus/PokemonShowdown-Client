@@ -3053,10 +3053,11 @@ export class Battle {
 			this.activateAbility(poke, fromeffect);
 			let minTimeLeft = 5;
 			let maxTimeLeft = 0;
-			if (effect.id.endsWith('terrain')) {
+			const flowerGarden = /^flowergarden[1-5]$/.test(effect.id);
+			if (effect.id.endsWith('terrain') || flowerGarden) {
 				for (let i = this.pseudoWeather.length - 1; i >= 0; i--) {
 					let pwID = toID(this.pseudoWeather[i][0]);
-					if (pwID.endsWith('terrain')) {
+					if (pwID.endsWith('terrain') || /^flowergarden[1-5]$/.test(pwID)) {
 						this.pseudoWeather.splice(i, 1);
 						continue;
 					}
@@ -3064,6 +3065,7 @@ export class Battle {
 				if (this.gen > 6) maxTimeLeft = 8;
 			}
 			if (kwArgs.persistent) minTimeLeft += 2;
+			if (flowerGarden || kwArgs.garden) minTimeLeft = maxTimeLeft = 0;
 			this.addPseudoWeather(effect.name, minTimeLeft, maxTimeLeft);
 
 			switch (effect.id) {
