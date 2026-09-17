@@ -19,7 +19,62 @@ function localFile(url) {
 	return path.join(root, 'sprites', url.split('sprites/')[1].split('?')[0]);
 }
 
+function assertBWPreview(data, species, front, shiny) {
+	const filename = Dex.species.get(species).spriteid;
+	const directory = 'gen5ani' + (front ? '' : '-back') + (shiny ? '-shiny' : '');
+	const animation = path.join(root, 'sprites', directory, filename + '.gif');
+	let animated = false;
+	if (fs.existsSync(animation)) {
+		const bytes = fs.readFileSync(animation);
+		animated = bytes.subarray(0, 3).toString() === 'GIF' && new GifReader(bytes).numFrames() > 1;
+	}
+	if (animated) {
+		assert.equal(localFile(data.url), animation);
+	} else {
+		const staticDirectory = 'gen5' + (front ? '' : '-back') + (shiny ? '-shiny' : '');
+		assert.equal(localFile(data.url), path.join(root, 'sprites', staticDirectory, filename + '.png'));
+	}
+	assert(fs.existsSync(localFile(data.url)));
+	assert(data.pixelated);
+}
+
 describe('Sprite rendering regressions', () => {
+	it('uses the renamed Parasect profile and a compact shiny Jolteon', () => {
+		assert.equal(Dex.species.get('Parasect-Aevian').id, 'parasectrejuv');
+		assert.deepEqual(Dex.species.get('Parasect-Parasite').types, ['Ghost', 'Grass']);
+		for (const name of ['Parasect', 'Parasect-Rejuv', 'Parasect-Mega']) {
+			assert.deepEqual(Dex.species.get(name).types, ['Ghost', 'Bug']);
+		}
+		for (const front of [false, true]) {
+			const shiny = Dex.getSpriteData('Jolteon', front, {gen: 5, shiny: true});
+			assert(shiny.w <= 50 && shiny.h <= 50);
+			const host = Dex.getSpriteData('Parasect-Rejuv', front, {gen: 5});
+			assert(host.w <= 68 && host.h <= 68);
+		}
+	});
+	it('keeps normal roster sprites inside the projected battle size budget', () => {
+		for (const id of Object.keys(BattlePokedex)) {
+			const species = Dex.species.get(id);
+			if (!species.exists || species.isTotem || id.includes('gmax') || id.includes('mega') || id === 'hydreigon' || id === 'feraligatr') continue;
+			for (const gen of [5, 9]) for (const shiny of [false, true]) for (const front of [false, true]) {
+				const data = Dex.getSpriteData(species.name, front, {gen, shiny});
+				const max = front ? 80 : 72;
+				assert(data.w <= max && data.h <= max, `${id}: ${data.w}x${data.h}`);
+			}
+		}
+	});
+	it('keeps Jolteon, Rotom, and every Oricorio compact in normal and shiny views', () => {
+		for (const [species, max] of [['Rotom', 64], ['Rotom-Wash', 64], ['Rotom-Heat', 64], ['Rotom-Frost', 64], ['Rotom-Fan', 64], ['Rotom-Mow', 64], ['Jolteon', 64], ['Oricorio', 60], ['Oricorio-Pom-Pom', 60], ['Oricorio-Pau', 60], ['Oricorio-Sensu', 60]]) {
+			for (const shiny of [false, true]) for (const front of [false, true]) {
+				const data = Dex.getSpriteData(species, front, {gen: 5, shiny});
+				const limit = species.startsWith('Rotom') && front ? 80 : max;
+				assert(data.w <= limit && data.h <= limit, species);
+				if (species.startsWith('Rotom') && front) assert.equal(Math.max(data.w, data.h), 80);
+				const dimensions = sizeOf(localFile(data.url));
+				assert(Math.abs(data.w / data.h - dimensions.width / dimensions.height) < 0.03, species);
+			}
+		}
+	});
 	before(() => {
 		for (const file of ['pokedex-mini', 'pokedex-mini-bw']) {
 			Object.assign(global, JSON.parse(JSON.stringify(require(path.join(root, 'data', file + '.js')))));
@@ -30,8 +85,7 @@ describe('Sprite rendering regressions', () => {
 			for (const shiny of [false, true]) for (const front of [false, true]) {
 				const before = Dex.getSpriteData(species, front, {gen: 9, shiny});
 				const preview = Dex.getSpriteData(species, front, {gen: 9, shiny, teamPreview: true, noScale: true});
-				const bytes = fs.readFileSync(localFile(preview.url));
-				assert(new GifReader(bytes).numFrames() > 1, preview.url);
+				assertBWPreview(preview, species, front, shiny);
 				assert.deepEqual(Dex.getSpriteData(species, front, {gen: 9, shiny}), before);
 			}
 		}
@@ -49,11 +103,7 @@ describe('Sprite rendering regressions', () => {
 				assert(!fs.readFileSync(builderFile).equals(fs.readFileSync(localFile(back.url))));
 				for (const facing of [true, false]) {
 					const preview = Dex.getSpriteData(species, facing, {gen: 9, shiny, gender, teamPreview: true, noScale: true});
-					if (species === 'Rillaboom') {
-						assert(new GifReader(fs.readFileSync(localFile(preview.url))).numFrames() > 1);
-					} else {
-						assert(preview.url.includes('rillaboom-gmax.png'), preview.url);
-					}
+					assertBWPreview(preview, species, facing, shiny);
 				}
 				assert.deepEqual(Dex.getSpriteData(species, true, {gen: 9, shiny, gender}), front);
 			}
@@ -82,6 +132,15 @@ describe('Sprite rendering regressions', () => {
 		assert(hydreigon.w >= 90 && hydreigon.h >= 108, JSON.stringify(hydreigon));
 		for (const species of ['Clefable', 'Gengar', 'Hydreigon']) {
 			assert.equal(Dex.getTeambuilderSpriteData({species}, 9).spriteDir, 'sprites/gen5');
+		}
+	});
+	it('caps Cacturne battle sprites without changing the artwork aspect ratio', () => {
+		for (const gen of [5, 9]) for (const shiny of [false, true]) for (const front of [false, true]) {
+			const data = Dex.getSpriteData('Cacturne', front, {gen, shiny});
+			const max = front ? 64 : 72;
+			assert(data.w <= max && data.h <= max, JSON.stringify(data));
+			const dimensions = sizeOf(localFile(data.url));
+			assert(Math.abs(data.w / data.h - dimensions.width / dimensions.height) < 0.03);
 		}
 	});
 	it('preserves file aspect ratios in named normal and shiny battle sprites', () => {
