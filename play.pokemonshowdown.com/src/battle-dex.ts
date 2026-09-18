@@ -124,6 +124,7 @@ const CUSTOM_ITEM_ICON_SPRITES: {[id: string]: string} = {
 	clawitzerite: 'clawitzerite.png',
 	zangoosite: 'zangoosite.png',
 	sevipite: 'sevipite.png',
+	salazzite: 'salazzite.png',
 	haxorite: 'haxorite.png',
 	arbokite: 'arbokite.png',
 	anomalycore: 'anomalycore.png',
@@ -941,6 +942,23 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 			requiredItem: 'Sevipite',
 			battleOnly: 'Seviper',
 			changesFrom: 'Seviper',
+			isMega: true,
+			isNonstandard: 'Custom',
+		},
+	},
+	salazzlemega: {
+		base: 'salazzle',
+		data: {
+			name: 'Salazzle-Mega',
+			types: ['Poison', 'Fire'],
+			baseStats: {hp: 68, atk: 64, def: 70, spa: 148, spd: 150, spe: 80},
+			abilities: {0: 'Corrosive Burn'},
+			baseSpecies: 'Salazzle',
+			forme: 'Mega',
+			spriteid: 'salazzle-mega',
+			requiredItem: 'Salazzite',
+			battleOnly: 'Salazzle',
+			changesFrom: 'Salazzle',
 			isMega: true,
 			isNonstandard: 'Custom',
 		},
@@ -2068,6 +2086,7 @@ const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
 	corsolaalt: 'corsola-alt',
 	zangoosemega: 'zangoose-mega',
 	sevipermega: 'seviper-mega',
+	salazzlemega: 'salazzle-mega',
 	mukpulse: 'muk-pulse',
 	palossandrocky: 'palossand-rocky',
 	palossandfiery: 'palossand-fiery',
@@ -4646,6 +4665,12 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 		shinyFront: {w: 192, h: 192},
 		shinyBack: {w: 192, h: 192},
 	},
+	salazzlemega: {
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 194, h: 204},
+	},
 	chimechomegay: {
 		front: {w: 192, h: 192},
 		back: {w: 192, h: 192},
@@ -5321,6 +5346,13 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 		back: {w: 192, h: 192},
 		shinyFront: {w: 192, h: 192},
 		shinyBack: {w: 192, h: 192},
+	},
+	salazzlemega: {
+		num: 758,
+		front: {w: 96, h: 96},
+		back: {w: 96, h: 96},
+		shinyFront: {w: 192, h: 192},
+		shinyBack: {w: 194, h: 204},
 	},
 	charizardgmax: {
 		num: 6,
@@ -7395,7 +7427,11 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 	wishiwashischool: {baseStats: {hp: 80, atk: 135, def: 130, spa: 135, spd: 130, spe: 60}},
 	swellow: {baseStats: {hp: 72, atk: 85, def: 72, spa: 85, spd: 61, spe: 127}},
 	rabsca: {baseStats: {hp: 100, atk: 50, def: 90, spa: 120, spd: 100, spe: 60}, abilities: {0: 'Sand Rush', 1: 'Elevate', H: 'Telepathy'}},
-	salazzle: {abilities: {0: 'Corrosion', 1: 'Dragonize', H: 'Aroma Veil'}},
+	salazzle: {
+		abilities: {0: 'Corrosion', 1: 'Dragonize', H: 'Aroma Veil'},
+		otherFormes: ['Salazzle-Totem', 'Salazzle-Mega'],
+		formeOrder: ['Salazzle', 'Salazzle-Totem', 'Salazzle-Mega'],
+	},
 	lunatone: {baseStats: {hp: 110, atk: 35, def: 95, spa: 125, spd: 95, spe: 70}},
 	solrock: {baseStats: {hp: 110, atk: 125, def: 95, spa: 35, spd: 95, spe: 70}},
 	rhyperior: {baseStats: {hp: 120, atk: 150, def: 140, spa: 55, spd: 85, spe: 20}},
@@ -7503,11 +7539,11 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 	rapidash: {baseStats: {hp: 80, atk: 115, def: 70, spa: 80, spd: 80, spe: 125}},
 	rapidashgalar: {baseStats: {hp: 80, atk: 115, def: 70, spa: 80, spd: 80, spe: 125}},
 	kingler: {
-		baseStats: {hp: 80, atk: 140, def: 125, spa: 60, spd: 60, spe: 85},
+		baseStats: {hp: 80, atk: 135, def: 115, spa: 60, spd: 80, spe: 75},
 		abilities: {0: 'Swift Swim', 1: 'Hyper Cutter', H: 'Sheer Force'},
 	},
 	kinglergmax: {
-		baseStats: {hp: 120, atk: 140, def: 125, spa: 60, spd: 60, spe: 85},
+		baseStats: {hp: 120, atk: 135, def: 115, spa: 60, spd: 80, spe: 75},
 		abilities: {0: 'Riptide Claws'},
 	},
 	yanmega: {
@@ -8136,8 +8172,8 @@ Object.assign(CUSTOM_SPECIES_UPDATES, {
 	garbodor: {baseStats: {hp: 80, atk: 125, def: 90, spa: 70, spd: 90, spe: 75}},
 	garbodorgmax: {baseStats: {hp: 120, atk: 125, def: 90, spa: 70, spd: 90, spe: 75}},
 	gigalith: {baseStats: {hp: 100, atk: 135, def: 130, spa: 80, spd: 80, spe: 25}},
-	kingler: {baseStats: {hp: 80, atk: 125, def: 115, spa: 60, spd: 60, spe: 75}},
-	kinglergmax: {baseStats: {hp: 120, atk: 125, def: 115, spa: 60, spd: 60, spe: 75}},
+	kingler: {baseStats: {hp: 80, atk: 135, def: 115, spa: 60, spd: 80, spe: 75}},
+	kinglergmax: {baseStats: {hp: 120, atk: 135, def: 115, spa: 60, spd: 80, spe: 75}},
 	rapidash: {baseStats: {hp: 80, atk: 110, def: 70, spa: 80, spd: 80, spe: 120}},
 	rapidashgalar: {baseStats: {hp: 80, atk: 110, def: 70, spa: 80, spd: 80, spe: 120}},
 	vikavolt: {baseStats: {hp: 77, atk: 95, def: 99, spa: 145, spd: 75, spe: 43}},
@@ -9435,8 +9471,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	riptideclaws: {
 		name: "Riptide Claws",
-		desc: "This Pokemon has Swift Swim, Tough Claws, and Shell Armor's effects.",
-		shortDesc: "Swift Swim + Tough Claws + Shell Armor.",
+		desc: "This Pokemon has Swift Swim, Tough Claws, Shell Armor, and Mold Breaker's effects.",
+		shortDesc: "Swift Swim + Tough Claws + Shell Armor + Mold Breaker.",
 	},
 	stancechange: {
 		name: 'Stance Change',
@@ -9768,6 +9804,11 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 		name: "Toxic Armor",
 		desc: "This Pokemon has Venom Armor, Violent Rush, and Scrappy's effects.",
 		shortDesc: "Venom Armor + Violent Rush + Scrappy.",
+	},
+	corrosiveburn: {
+		name: "Corrosive Burn",
+		desc: "This Pokemon has Merciless, Regenerator, and Corrosion's effects.",
+		shortDesc: "Merciless + Regenerator + Corrosion.",
 	},
 	verdantdrake: {
 		name: "Verdant Drake",
@@ -12543,6 +12584,7 @@ const CUSTOM_SHINY_ICON_FILES: {[id: string]: string} = {dragonite: 'dragonite-s
 const ROTOM_SHINY_SPRITE_IDS = new Set(['rotom', 'rotomheat', 'rotomwash', 'rotomfrost', 'rotomfan', 'rotommow']);
 const CUSTOM_STATIC_SHINY_BW_SPRITES = new Set(['dragonite', 'dragonitemega', 'magnezone', 'nidoking', 'nidoqueen', 'ninetales', 'persian', 'persianalola', 'sylveon', 'umbreon', 'vaporeon', 'flareon', 'tauros', 'taurospaldeacombat', 'taurospaldeablaze', 'taurospaldeaaqua', ...Array.from(ROTOM_SHINY_SPRITE_IDS)]);
 function customSpriteRevision(id: string) {
+	if (id === 'salazzle' || id === 'salazzle-mega') return '?v=salazzle-20260918';
 	const spriteid = id.toLowerCase();
 	if (spriteid === 'appletun' || spriteid === 'appletun-gmax') return '?v=appletun-back-20260917';
 	if (spriteid === 'lilligant') return '?v=lilligant-custom-shiny-1';
@@ -13296,6 +13338,7 @@ const CUSTOM_BATTLE_FRONT_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: n
 	ariados: {w: 60, h: 60},
 	zangoosemega: {w: 78, h: 78},
 	sevipermega: {w: 78, h: 78},
+	salazzlemega: {w: 82, h: 82},
 	banettemega: {w: 82, h: 82},
 	butterfree: {w: 64, h: 64},
 	butterfreemega: {w: 82, h: 82},
@@ -13577,6 +13620,7 @@ const CUSTOM_TEAMBUILDER_SPRITE_DIMENSIONS: {[id: string]: {w: number, h: number
 	gyaradosaevian: {w: 192, h: 192, shinyW: 192, shinyH: 192},
 	chandelureaevian: {w: 192, h: 192, shinyW: 192, shinyH: 192},
 	gyaradosaevianmega: {w: 192, h: 192, shinyW: 192, shinyH: 192},
+	salazzlemega: {w: 96, h: 96, shinyW: 192, shinyH: 192},
 	arcanineaevian: {w: 192, h: 192, shinyW: 192, shinyH: 192},
 	kommooaevian: {w: 192, h: 192, shinyW: 192, shinyH: 192},
 	froslassaevian: {w: 192, h: 192, shinyW: 192, shinyH: 192},
@@ -13620,6 +13664,11 @@ function applyCustomTeambuilderSpriteSizing(spriteData: TeambuilderSpriteData, i
 	}
 }
 Object.assign(CUSTOM_ABILITY_UPDATES, {
+	shieldsdown: {
+		name: 'Shields Down',
+		desc: "If this Pokemon is a Minior, it changes to Core Forme at 1/2 max HP or less and Meteor Form above 1/2 max HP. Meteor Form blocks non-volatile status and Yawn. This Pokemon also has Shell Armor, Self Repair, and Crumbling Shell's effects.",
+		shortDesc: 'Form changes at 1/2 HP; Shell Armor + Self Repair + Crumbling Shell.',
+	},
 	kickfiend: {
 		name: 'Kick Fiend',
 		desc: "This Pokemon has Striker, Violent Rush, and Limber's effects.",
@@ -13769,6 +13818,7 @@ const CUSTOM_ABILITY_COMPONENT_OVERRIDES: {[id: string]: readonly ID[]} = {
 	siegelauncher: ['proficient' as ID],
 	waterbarrage: ['proficient' as ID],
 	helios: ['drought' as ID, 'moldbreaker' as ID, 'multiscale' as ID],
+	riptideclaws: ['moldbreaker' as ID],
 	sunsovereign: ['proficient' as ID],
 	atrocity: ['proficient' as ID],
 	wildfirecore: ['proficient' as ID],
@@ -13836,6 +13886,7 @@ const CUSTOM_ABILITY_COMPONENT_OVERRIDES: {[id: string]: readonly ID[]} = {
 	// Ultra Ego implements Mold Breaker's effect without delegating to the base Ability.
 	ultraego: ['moldbreaker' as ID],
 	defeatist: ['relicarmor' as ID],
+	shieldsdown: ['shellarmor' as ID, 'selfrepair' as ID, 'crumblingshell' as ID],
 	relicarmor: ['selfsufficient' as ID],
 	relicmishap: ['selfsufficient' as ID, 'waterabsorb' as ID, 'voltabsorb' as ID],
 	apexpredator: ['relicarmor' as ID, 'precision' as ID, 'windrider' as ID],
@@ -13844,6 +13895,7 @@ const CUSTOM_ABILITY_COMPONENT_OVERRIDES: {[id: string]: readonly ID[]} = {
 	solarrush: ['sandrush' as ID, 'chlorophyll' as ID],
 	venomarmor: ['poisonheal' as ID, 'dualwield' as ID],
 	toxicarmor: ['venomarmor' as ID, 'violentrush' as ID, 'scrappy' as ID],
+	corrosiveburn: ['merciless' as ID, 'regenerator' as ID, 'corrosion' as ID],
 	curseddoll: ['toughclaws' as ID, 'shadowshield' as ID],
 	shadowguard: ['shadowtag' as ID],
 	sandsovereign: ['dauntlessshield' as ID, 'solidrock' as ID],
@@ -14239,7 +14291,7 @@ const DOCUMENT_LEARNSET_ADDITIONS: {[id: string]: {[id: string]: string[]}} = {
 	miloticterajuma: {accelerock: ["9M"], aquajet: ["9M"], aquatail: ["9M"], coil: ["9M"], doublehit: ["9M"], feint: ["9M"], harden: ["9M"], liquidation: ["9M"], poisontail: ["9M"], rockslide: ["9M"], stoneedge: ["9M"], suckerpunch: ["9M"], tailwhip: ["9M"], tailwind: ["9M"], tripleaxel: ["9M"], wavecrash: ["9M"], dragontail: ["9M"], irontail: ["9M"], atlantiswall: ["9M"], bind: ["9M"], blizzard: ["9M"], brutalswing: ["9M"], bulldoze: ["9M"], dive: ["9M"], dragonpulse: ["9M"], flipturn: ["9M"], gigaimpact: ["9M"], hail: ["9M"], helpinghand: ["9M"], hyperbeam: ["9M"], icebeam: ["9M"], icywind: ["9M"], ironhead: ["9M"], laserfocus: ["9M"], lightscreen: ["9M"], magiccoat: ["9M"], mudslap: ["9M"], raindance: ["9M"], safeguard: ["9M"], scald: ["9M"], surf: ["9M"], swift: ["9M"], twister: ["9M"], waterfall: ["9M"], waterpulse: ["9M"], mudbarrage: ["9M"], tackle: ["9M"], return: ["9M"], round: ["9M"], secretpower: ["9M"], sleeptalk: ["9M"]},
 	milotic: {calmmind: ["9M"], dazzlinggleam: ["9M"], liquidation: ["9M"]},
 	mimikyu: {fakeout: ["9M"], nightslash: ["9L1"], poltergeist: ["9M"]},
-	minior: {spikes: ["9M"]},
+	minior: {accelerock: ["9M"], bulkup: ["9M"], calmmind: ["9M"], gravity: ["9M"], headsmash: ["9M"], hurricane: ["9M"], lunardance: ["9M"], meteorbeam: ["9M"], spikes: ["9M"], tailwind: ["9M"]},
 	minun: {drainingkiss: ["9M"], eerieimpulse: ["9M"], guardswap: ["9M"], hex: ["9M"], risingvoltage: ["9M"], screech: ["9M"], terrainpulse: ["9M"]},
 	mismagius: {defensecurl: ["9M"], doubleedge: ["9M"], mimic: ["9M"], nightmare: ["9M"], zapcannon: ["9M"]},
 	mothim: {pollenpuff: ["9M"]},
@@ -14533,6 +14585,16 @@ const CUSTOM_ITEM_UPDATES: {[id: string]: AnyObject} = {
 		gen: 9,
 		desc: 'If held by a Seviper, this item allows it to Mega Evolve in battle.',
 		shortDesc: 'If held by a Seviper, this item allows it to Mega Evolve in battle.',
+	},
+	salazzite: {
+		name: 'Salazzite',
+		spritenum: 0,
+		megaStone: {Salazzle: 'Salazzle-Mega'},
+		itemUser: ['Salazzle'],
+		num: 2665,
+		gen: 9,
+		desc: 'If held by a Salazzle, this item allows it to Mega Evolve in battle.',
+		shortDesc: 'If held by a Salazzle, this item allows it to Mega Evolve in battle.',
 	},
 	haxorite: {
 		name: 'Haxorite',
