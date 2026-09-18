@@ -586,11 +586,15 @@
 				return toID(move.id || move.move) === 'darkvoid';
 			})) || megaTargetid === 'gardevoirvoidmega';
 			var isGardevoiriteMega = canMegaEvo && (toID(pokemon.item) === 'gardevoirite' || megaTargetid.indexOf('gardevoir') === 0) && (isGardevoirVoid || speciesid === 'gardevoir' || megaTargetid.indexOf('gardevoir') === 0);
-			var canMegaEvoX = isGardevoiriteMega;
+			var canMegaEvoX = curActive.canMegaEvoX || isGardevoiriteMega;
 			var canMegaEvoY = curActive.canMegaEvoY || isGardevoiriteMega;
 			var megaLabel = 'Mega Evolution';
 			var megaXLabel = 'Mega Evolution X';
 			var megaYLabel = 'Mega Evolution Y';
+			if (speciesid === 'banette' && toID(pokemon.item) === 'banettite') {
+				megaLabel = 'Banette-Mega';
+				megaXLabel = 'Banette-Mega-Z';
+			}
 			if (toID(pokemon.item) === 'sharpedonite' && canMegaEvoY) {
 				megaLabel = 'Sharpedo-Mega'; megaYLabel = 'Sharpedo-Mega-Y';
 			}

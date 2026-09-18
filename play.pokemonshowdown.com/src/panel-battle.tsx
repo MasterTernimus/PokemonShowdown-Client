@@ -570,6 +570,10 @@ class BattlePanel extends PSRoomPanel<BattleRoom> {
 				(toID(pokemon.item) === 'arbokite' && ['arbok', 'arbokmegax', 'arbokmegay'].includes(speciesid));
 			const canMegaEvoX = (moveRequest.canMegaEvoX || isGardevoiriteMega) && !choices.alreadyMega;
 			const canMegaEvoY = (moveRequest.canMegaEvoY || isGardevoiriteMega || isSharedMega) && !choices.alreadyMega;
+			if (speciesid === 'banette' && toID(pokemon.item) === 'banettite') {
+				megaLabel = 'Banette-Mega';
+				megaXLabel = 'Banette-Mega-Z';
+			}
 			if (isSharedMega) {
 				const baseName = speciesid.startsWith('sharpedo') ? 'Sharpedo' : speciesid.startsWith('meganium') ? 'Meganium' : speciesid.startsWith('arbok') ? 'Arbok' : 'Chimecho';
 				megaLabel = baseName === 'Arbok' ? 'Arbok-Mega-X' : `${baseName}-Mega`;
