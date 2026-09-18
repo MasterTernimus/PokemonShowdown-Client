@@ -1011,7 +1011,7 @@ class BattleTooltips {
 		}
 		buf = `<p>${weatherbuf}</p>` + buf;
 		if (this.battle.hasPseudoWeather('Midnight Zone Terrain')) {
-			buf += '<p><strong>Midnight Zone</strong>: Fire, weather, and generated fields fail. Speed ×0.25 except Water, Swift Swim, Steelworker, or Schooling. Physical power ×0.33 except Water moves or those three abilities.</p>';
+			buf += '<p><strong>Midnight Zone</strong>: Fire, weather, and generated fields fail. Speed ×0.25 except Water, Swift Swim, Steelworker, or Schooling. Physical power ×0.33 except Water-type Pokemon or those three abilities.</p>';
 			buf += '<p>Water/Ice/Dark ×1.5; Electric/Ground ×1.2. Ground, Dragon Darts, and Grav Apple become Water. Special Dark uses Water matchups; Dark attacks have a 30% Sp. Atk drop chance.</p>';
 			buf += '<p>Pressure damage: 10% HP, or 25% for Steel/Ice/Fire/Rock. Water, Water Veil, Dry Skin, Storm Drain, Steelworker, Schooling, and Magic Guard are immune. Water heals 1/16; Water Absorb/Dry Skin heal 1/10.</p>';
 			buf += '<p>Flash, Dazzling Gleam, Light That Burns the Sky, Bounce, and Fly return to Underwater.</p>';
@@ -2109,8 +2109,8 @@ class BattleTooltips {
 			if (move.id === 'waterpulse') value.modify(1.5, 'Jet-streamed');
 			if (['anchorshot', 'dragondarts'].includes(move.id)) value.modify(2, 'From the depths');
 			if (['darkpulse', 'nightdaze', 'nightslash', 'shadowball', 'shadowforce', 'shadowclaw', 'shadowpunch', 'shadowbone'].includes(move.id)) value.modify(1.2, 'Lightless abyss');
-			if (['signalbeam', 'doomdummy', 'flashcannon', 'lusterpurge', 'dazzlinggleam', 'mirrorshot', 'technoblast', 'powergem', 'moongeistbeam', 'menacingmoonrazemaelstrom'].includes(move.id)) value.modify(0.5, 'Light disappeared');
-			if (move.category === 'Physical' && moveType !== 'Water' && !value.tryAbility('Steelworker') && !value.tryAbility('Schooling') && !value.tryAbility('Swift Swim')) value.modify(0.33, 'Water pressure');
+			if (['signalbeam', 'doomdesire', 'flashcannon', 'lusterpurge', 'dazzlinggleam', 'mirrorshot', 'technoblast', 'powergem', 'moongeistbeam', 'menacingmoonrazemaelstrom'].includes(move.id)) value.modify(0.5, 'Light disappeared');
+			if (move.category === 'Physical' && !pokemon.getTypes(serverPokemon)[0].includes('Water') && !value.tryAbility('Steelworker') && !value.tryAbility('Schooling') && !value.tryAbility('Swift Swim')) value.modify(0.33, 'Water pressure');
 			if (moveType === 'Fire' || ['defog', 'spikes', 'stealthrock', 'stickyweb', 'toxicspikes', 'tarshot', 'stoneaxe', 'ceaselessedge'].includes(move.id)) value.set(0, 'Fails in Midnight Zone');
 		}
 
