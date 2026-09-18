@@ -1710,7 +1710,7 @@ base:'gyarados',
 data:{
 name:'Gyarados-Aevian',baseSpecies:'Gyarados-Aevian',forme:'Aevian',
 types:['Fire','Dragon'],
-baseStats:{hp:95,atk:165,def:115,spa:99,spd:145,spe:81},
+baseStats:{hp:95,atk:89,def:85,spa:135,spd:115,spe:81},
 abilities:{0:'Multiscale',1:'Competitive',H:'Intimidate'},
 otherFormes:['Gyarados-Aevian-Mega'],formeOrder:['Gyarados-Aevian','Gyarados-Aevian-Mega'],
 spriteid:'gyarados-aevian',standalone:true,gen:9,tier:'OU',isNonstandard:'Custom'
@@ -12584,6 +12584,7 @@ var CUSTOM_SHINY_ICON_FILES={dragonite:'dragonite-shiny.png',dragonitemega:'drag
 var ROTOM_SHINY_SPRITE_IDS=new Set(['rotom','rotomheat','rotomwash','rotomfrost','rotomfan','rotommow']);
 var CUSTOM_STATIC_SHINY_BW_SPRITES=new Set(['dragonite','dragonitemega','magnezone','nidoking','nidoqueen','ninetales','persian','persianalola','sylveon','umbreon','vaporeon','flareon','tauros','taurospaldeacombat','taurospaldeablaze','taurospaldeaaqua'].concat(Array.from(ROTOM_SHINY_SPRITE_IDS)));
 function customSpriteRevision(id){
+if(toID(id).startsWith('toxtricityaevian'))return'?v=toxtricity-aevian-icons-20260918';
 if(id==='salazzle'||id==='salazzle-mega')return'?v=salazzle-20260918';
 var spriteid=id.toLowerCase();
 if(spriteid==='appletun'||spriteid==='appletun-gmax')return'?v=appletun-back-20260917';
