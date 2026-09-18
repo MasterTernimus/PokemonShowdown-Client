@@ -355,19 +355,22 @@ export class BattleScene implements BattleSceneStub {
 			? 2.0 - ((loc.z!) / 200)
 			: 1.5 - 0.5 * ((loc.z!) / 200));
 		if (scale < .1) scale = .1;
+		// Cropped custom backs need less magnification than full-body BW sprites.
+		const bottomAlignedBack = isBottomAlignedBackSprite(obj.url);
+		const spriteScale = bottomAlignedBack ? scale * 0.75 : scale;
 
 		left += (410 - 190) * ((loc.z!) / 200);
 		top += (135 - 245) * ((loc.z!) / 200);
 		left += Math.floor(loc.x! * scale);
 		top -= Math.floor(loc.y! * scale /* - loc.x * scale / 4 */);
-		let width = Math.floor(obj.w * scale * loc.xscale!);
-		let height = Math.floor(obj.h * scale * loc.yscale!);
-		let hoffset = Math.floor((obj.h - (obj.y || 0) * 2) * scale * loc.yscale!);
+		let width = Math.floor(obj.w * spriteScale * loc.xscale!);
+		let height = Math.floor(obj.h * spriteScale * loc.yscale!);
+		let hoffset = Math.floor((obj.h - (obj.y || 0) * 2) * spriteScale * loc.yscale!);
 		left -= Math.floor(width / 2);
 		top -= Math.floor(hoffset / 2);
 		// This cropped back view ends at the foreground edge of the battle window.
 		// Retain vertical animation motion while keeping its resting pose bottom-aligned.
-		if (isBottomAlignedBackSprite(obj.url)) {
+		if (bottomAlignedBack) {
 			top = 360 - height - Math.floor(loc.y! * scale);
 		}
 
@@ -898,6 +901,7 @@ export class BattleScene implements BattleSceneStub {
 	}
 
 	pseudoWeatherLeft(pWeather: WeatherState) {
+		if (toID(pWeather[0]) === 'midnightzoneterrain') return '<br />Midnight Zone';
 		const garden = /^flowergarden([1-5])$/.exec(toID(pWeather[0]));
 		if (garden) return `<br />Flower Garden (Stage ${garden[1]})`;
 		let buf = '<br />' + Dex.moves.get(pWeather[0]).name;

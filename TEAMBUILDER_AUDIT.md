@@ -97,8 +97,8 @@ Mega Dragonite, Mega Clefable, Mega Victreebel, Mega Starmie, Mega Meganium, Meg
 | Gardevoir-Void-Mega | gardevoirvoid-mega.png |
 | Flygon-Mega-Z | flygon-megaz.png |
 | Cacturne-Alt | cacturne-alt.png |
-| Zangoose-Reborn | zangoose-reborn.png |
-| Seviper-Reborn | seviper-reborn.png |
+| Zangoose-Mega | zangoose-mega.png |
+| Seviper-Mega | seviper-mega.png |
 | Milotic-Reborn | 0.png |
 | Milotic-Aevian | milotic-aevian.png |
 | Banette-Mega-Z | banette-megaz.png |

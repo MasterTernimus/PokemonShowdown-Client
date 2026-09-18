@@ -7,7 +7,7 @@ const path = require('path');
 const searchPath = path.resolve(__dirname, '../play.pokemonshowdown.com/js/battle-dex-search.js');
 vm.runInThisContext(fs.readFileSync(searchPath, 'utf8') + '\nglobal.AevianAuditSearch = BattlePokemonSearch;');
 const names = ['Arcanine-Aevian', 'Glalie-Aevian', 'Roserade-Aevian', 'Froslass-Aevian',
-  'Kommo-o-Aevian', 'Froslass-Aevian-Mega', 'Musharna'];
+  'Kommo-o-Aevian', 'Froslass-Aevian-Mega', 'Chandelure-Aevian', 'Gyarados-Aevian', 'Musharna'];
 let checks = 0;
 for (const format of ['', 'gen9', 'gen9customgame', 'gen9nofieldsinglesgame', 'gen9watersurface', 'gen9doubleswatersurface', 'gen9nationaldex']) {
   const search = new AevianAuditSearch('pokemon', format);
