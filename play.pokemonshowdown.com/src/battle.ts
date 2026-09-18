@@ -3065,7 +3065,7 @@ export class Battle {
 				if (this.gen > 6) maxTimeLeft = 8;
 			}
 			if (kwArgs.persistent) minTimeLeft += 2;
-			if (flowerGarden || kwArgs.garden) minTimeLeft = maxTimeLeft = 0;
+			if (flowerGarden || kwArgs.garden || effect.id === 'midnightzoneterrain') minTimeLeft = maxTimeLeft = 0;
 			this.addPseudoWeather(effect.name, minTimeLeft, maxTimeLeft);
 
 			switch (effect.id) {

@@ -9,7 +9,7 @@ global.Config = {whitelist: [], routes: {root: 'pokemonshowdown.com'}};
 global.BattlePokedex = require(path.join(client, 'data/pokedex')).BattlePokedex;
 global.BattlePokemonSprites = {}; global.BattlePokemonSpritesBW = {};
 for (const name of ['battle-dex-data','battle-dex','battle-scene-stub','battle-text-parser','battle']) require(path.join(client, 'js', name));
-const diff = execFileSync('git', ['diff','--no-ext-diff','--unified=0','HEAD','--','play.pokemonshowdown.com/src/battle-dex.ts'], {cwd:root,encoding:'utf8'});
+const diff = execFileSync('git', ['diff','--no-ext-diff','--unified=0','HEAD','--','play.pokemonshowdown.com/src/battle-dex.ts'], {cwd:root,encoding:'utf8',maxBuffer:32 * 1024 * 1024});
 const ids = new Set();
 for (const line of diff.split('\n').filter(line=>line.startsWith('+') && !line.startsWith('+++'))) {
  for (const m of line.matchAll(/(?:^\+\s*|[{,]\s*)["']?([a-z0-9]+)["']?\s*:/g)) if (Dex.species.get(m[1]).exists) ids.add(m[1]);

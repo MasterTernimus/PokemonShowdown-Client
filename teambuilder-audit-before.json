@@ -1136,17 +1136,17 @@
     "shiny": false
   },
   {
-    "id": "zangoosereborn",
-    "name": "Zangoose-Reborn",
-    "spriteid": "zangoose-reborn",
+    "id": "zangoosemega",
+    "name": "Zangoose-Mega",
+    "spriteid": "zangoose-mega",
     "dir": "sprites/gen5",
     "available": false,
     "shiny": false
   },
   {
-    "id": "seviperreborn",
-    "name": "Seviper-Reborn",
-    "spriteid": "seviper-reborn",
+    "id": "sevipermega",
+    "name": "Seviper-Mega",
+    "spriteid": "seviper-mega",
     "dir": "sprites/gen5",
     "available": false,
     "shiny": false

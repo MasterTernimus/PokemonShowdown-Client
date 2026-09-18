@@ -288,8 +288,8 @@ These entries have valid exact-form artwork, but no dedicated native/supplied me
 - Gardevoir-Void-Mega
 - Flygon-Mega-Z
 - Cacturne-Alt
-- Zangoose-Reborn
-- Seviper-Reborn
+- Zangoose-Mega
+- Seviper-Mega
 - Milotic-Reborn
 - Milotic-Aevian
 - Castform-Sandy

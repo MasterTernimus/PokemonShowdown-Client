@@ -32,7 +32,7 @@ describe('Team strip menu icons', () => {
 					assert(+position[1] + 40 <= size.width && +position[2] + 30 <= size.height, `${row.name}: cell outside sheet`);
 					if (row.id !== 'raidboss') assert(+position[1] || +position[2], `${row.name}: unknown icon`);
 				}
-				if (!row.id.startsWith('furfrou') && row.officialAvailable && row.kind !== 'dedicated custom icon' && !css.includes('/sprites/pokemonicons/')) {
+				if (!shiny && !row.id.startsWith('furfrou') && row.officialAvailable && row.kind !== 'dedicated custom icon' && !css.includes('/sprites/pokemonicons/')) {
 					assert(css.includes('pokemonicons-official-sheet.png'), `${row.name}: official icon displaced`);
 				}
 			}
@@ -45,6 +45,12 @@ describe('Team strip menu icons', () => {
 			assert(css.includes(`scroll -${index % 12 * 40}px -${Math.floor(index / 12) * 30}px`));
 		}
 	});
+	it('prioritizes supplied custom shiny artwork for team icons', () => {
+		assert(Dex.getPokemonIcon({species: 'Lilligant', shiny: true}).includes('/sprites/gen5-shiny/lilligant.png'));
+		assert(Dex.getPokemonIcon({species: 'Aurorus', shiny: true}).includes('/sprites/pokemonicons/aurorus-shiny.png'));
+		assert(Dex.getPokemonIcon({species: 'Tyrantrum', shiny: true}).includes('/sprites/pokemonicons/tyrantrum-shiny.png'));
+	});
+
 	it('preserves supplied Raichu and gender-specific Breloom menu icons', () => {
 		assert(Dex.getPokemonIcon('Raichu-Mega-X').includes('/pokemonicons/raichu-megax.png'));
 		assert(Dex.getPokemonIcon('Raichu-Mega-Y').includes('/pokemonicons/raichu-megay.png'));

@@ -1010,6 +1010,12 @@ class BattleTooltips {
 			weatherbuf = weatherbuf.slice(6);
 		}
 		buf = `<p>${weatherbuf}</p>` + buf;
+		if (this.battle.hasPseudoWeather('Midnight Zone Terrain')) {
+			buf += '<p><strong>Midnight Zone</strong>: Fire, weather, and generated fields fail. Speed ×0.25 except Water, Swift Swim, Steelworker, or Schooling. Physical power ×0.33 except Water moves or those three abilities.</p>';
+			buf += '<p>Water/Ice/Dark ×1.5; Electric/Ground ×1.2. Ground, Dragon Darts, and Grav Apple become Water. Special Dark uses Water matchups; Dark attacks have a 30% Sp. Atk drop chance.</p>';
+			buf += '<p>Pressure damage: 10% HP, or 25% for Steel/Ice/Fire/Rock. Water, Water Veil, Dry Skin, Storm Drain, Steelworker, Schooling, and Magic Guard are immune. Water heals 1/16; Water Absorb/Dry Skin heal 1/10.</p>';
+			buf += '<p>Flash, Dazzling Gleam, Light That Burns the Sky, Bounce, and Fly return to Underwater.</p>';
+		}
 		return `<p>${buf}</p>`;
 	}
 
@@ -1189,11 +1195,17 @@ class BattleTooltips {
 			(['raindance', 'primordialsea'].includes(weather) ||
 				this.battle.hasPseudoWeather('Water Surface Terrain') ||
 				this.battle.hasPseudoWeather('Underwater Terrain') ||
+				this.battle.hasPseudoWeather('Midnight Zone Terrain') ||
 				this.battle.hasPseudoWeather('Murkwater Surface Terrain'))
 		) {
 			speedModifiers.push(2);
 		}
-		if (ability === 'defeatist' && serverPokemon.hp <= serverPokemon.maxhp / 2) {
+		if (this.battle.hasPseudoWeather('Midnight Zone Terrain')) {
+			const types = clientPokemon ? clientPokemon.getTypes(serverPokemon)[0] : this.battle.dex.species.get(serverPokemon.speciesForme).types;
+			if (!types.includes('Water') && !['steelworker', 'schooling', 'swiftswim'].includes(ability)) speedModifiers.push(0.25);
+			if (ability === 'propellertail') speedModifiers.push(2);
+		}
+		if (ability === 'defeatist' && serverPokemon.hp <= serverPokemon.maxhp / 4) {
 			stats.atk = Math.floor(stats.atk * 0.5);
 			stats.spa = Math.floor(stats.spa * 0.5);
 		}
@@ -1608,6 +1620,8 @@ class BattleTooltips {
 			const stats = this.calculateModifiedStats(pokemon, serverPokemon, true);
 			if (stats.atk > stats.spa) category = 'Physical';
 		}
+		if (this.battle.hasPseudoWeather('Midnight Zone Terrain') && category !== 'Status' &&
+			(moveType === 'Ground' || ['dragondarts', 'gravapple'].includes(move.id))) moveType = 'Water';
 		return [moveType, category];
 	}
 
@@ -1630,6 +1644,7 @@ class BattleTooltips {
 			value.weatherModify(0, 'Primordial Sea');
 		}
 		value.abilityModify(0, 'No Guard');
+		if (this.battle.hasPseudoWeather('Midnight Zone Terrain')) value.abilityModify(0, 'Illuminate');
 		if (!value.value) return value;
 
 		// OHKO moves don't use standard accuracy / evasion modifiers
@@ -2086,6 +2101,17 @@ class BattleTooltips {
 			)
 		) {
 			value.set(60, 'Tera type BP minimum');
+		}
+
+		if (this.battle.hasPseudoWeather('Midnight Zone Terrain') && move.category !== 'Status') {
+			if (['Water', 'Ice', 'Dark'].includes(moveType)) value.modify(1.5, 'Midnight Zone');
+			if (moveType === 'Electric' || move.type === 'Ground') value.modify(1.2, 'Midnight Zone');
+			if (move.id === 'waterpulse') value.modify(1.5, 'Jet-streamed');
+			if (['anchorshot', 'dragondarts'].includes(move.id)) value.modify(2, 'From the depths');
+			if (['darkpulse', 'nightdaze', 'nightslash', 'shadowball', 'shadowforce', 'shadowclaw', 'shadowpunch', 'shadowbone'].includes(move.id)) value.modify(1.2, 'Lightless abyss');
+			if (['signalbeam', 'doomdummy', 'flashcannon', 'lusterpurge', 'dazzlinggleam', 'mirrorshot', 'technoblast', 'powergem', 'moongeistbeam', 'menacingmoonrazemaelstrom'].includes(move.id)) value.modify(0.5, 'Light disappeared');
+			if (move.category === 'Physical' && moveType !== 'Water' && !value.tryAbility('Steelworker') && !value.tryAbility('Schooling') && !value.tryAbility('Swift Swim')) value.modify(0.33, 'Water pressure');
+			if (moveType === 'Fire' || ['defog', 'spikes', 'stealthrock', 'stickyweb', 'toxicspikes', 'tarshot', 'stoneaxe', 'ceaselessedge'].includes(move.id)) value.set(0, 'Fails in Midnight Zone');
 		}
 
 		// Burn isn't really a base power modifier, so it needs to be applied after the Tera BP floor

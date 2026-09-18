@@ -134,8 +134,13 @@ function isBattleOnlyVisualSpecies(id: string) {
 	return isZProteanBattleOnlySpecies(speciesId) || BATTLE_ONLY_VISUAL_SPECIES.has(speciesId);
 }
 
+function isCAPSpecies(id: string) {
+	return Dex.species.get(id).isNonstandard === 'CAP';
+}
+
 function isHiddenTeamBuilderSpecies(id: string, includeSawsbuckBase = false) {
 	const speciesId = toID(id);
+	if (isCAPSpecies(speciesId)) return true;
 	if (isBattleOnlyVisualSpecies(speciesId)) return true;
 	if (HIDDEN_TEAMBUILDER_SPECIES.has(speciesId)) return true;
 	if (speciesId === 'deerling' || speciesId.startsWith('deerling')) return true;
@@ -589,7 +594,7 @@ class DexSearch {
 			if (queryAlias === id && query !== id) continue;
 			if (
 				type === 'pokemon' &&
-				(isBattleOnlyVisualSpecies(id) ||
+				(isCAPSpecies(id) || isBattleOnlyVisualSpecies(id) ||
 					(isHiddenTeamBuilderSpecies(id) && id !== query &&
 					!(query === 'furfrou' && id.startsWith('furfrou'))))
 			) continue;
@@ -654,7 +659,7 @@ class DexSearch {
 		}
 
 		// Custom abilities may be patched into BattleAbilities after the static search
-		// index was generated. Add their names and component references to this query.
+		// index was generated. Match their actual names, not component references.
 		if (!searchType || searchType === 'pokemon' || searchType === 'ability') {
 			const indexedAbilities = new Set<ID>();
 			for (const entry of BattleSearchIndex) {
@@ -895,7 +900,7 @@ abstract class BattleTypedSearch<T extends SearchType> {
 			this.dex = Dex.mod('gen7letsgo' as ID);
 		}
 		this.isFieldFormat = format.includes('field') || format.includes('arena') || format.includes('board') ||
-			format.includes('terrain') || format.includes('cavern') || format.includes('surface') || format.includes('underwater');
+			format.includes('terrain') || format.includes('cavern') || format.includes('surface') || format.includes('underwater') || format.includes('midnightzone');
 		if (format.includes('nationaldex') || format.startsWith('nd') || format.includes('natdex') || this.isFieldFormat){
 			format = 'natdex' as ID;
 			this.formatType = 'natdex';
@@ -1185,9 +1190,6 @@ class BattlePokemonSearch extends BattleTypedSearch<'pokemon'> {
 			case 'missingno':
 				results.push(['header', "Glitch"]);
 				break;
-			case 'syclar':
-				results.push(['header', "CAP"]);
-				break;
 			}
 			const species = this.dex.species.get(id);
 			if ((isCustomSearchVisualForm(species) && species.tier === 'Illegal') || isHiddenTeamBuilderSpecies(id)) continue;
@@ -1356,16 +1358,30 @@ class BattlePokemonSearch extends BattleTypedSearch<'pokemon'> {
 			});
 		}
 
+		// CAP species are not part of this server's public roster and should not
+		// appear as legal or illegal choices in any format.
+		tierSet = tierSet.filter(([type, id]) => {
+			if (type === 'pokemon') return !isCAPSpecies(id);
+			if (type === 'header') return !id.startsWith('CAP');
+			return true;
+		});
+
 		// New standalone profiles have no upstream tier-table entry or legal base
-		// slot to inherit. Include the custom roster before computing illegalReasons.
+		// slot to inherit. Put them under an explicit Custom heading so they cannot
+		// inherit the preceding tier label (formerly CAP for Clawitzer-Mega).
 		if (this.isFieldFormat || this.unrestrictedCatalog || this.formatType === 'natdex') {
 			window.ensureCustomSpecies?.();
 			tierSet = [...tierSet];
+			const listedSpecies = new Set(tierSet.filter(row => row[0] === 'pokemon').map(row => row[1]));
+			const customSpecies: SearchRow[] = [];
 			for (const id in BattlePokedex) {
 				const species = dex.species.get(id);
 				if (isCustomSearchVisualForm(species) && species.tier !== 'Illegal' &&
-					!isHiddenTeamBuilderSpecies(id)) tierSet.push(['pokemon', id as ID]);
+					!listedSpecies.has(id as ID) && !isHiddenTeamBuilderSpecies(id)) {
+					customSpecies.push(['pokemon', id as ID]);
+				}
 			}
+			if (customSpecies.length) tierSet.push(['header', 'Custom'], ...customSpecies);
 		}
 		const seenSpecies = new Set<ID>();
 		tierSet = tierSet.filter(([type, id]) => {

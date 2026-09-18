@@ -52,6 +52,21 @@ describe('Sprite rendering regressions', () => {
 			assert(host.w <= 68 && host.h <= 68);
 		}
 	});
+	it('prioritizes supplied custom shinies in battles, previews, and Team Builder', () => {
+		for (const species of ['Lilligant', 'Aurorus', 'Tyrantrum']) {
+			const spriteid = Dex.species.get(species).spriteid;
+			for (const front of [false, true]) for (const gen of [5, 9]) for (const teamPreview of [false, true]) {
+				const data = Dex.getSpriteData(species, front, {gen, shiny: true, teamPreview});
+				assert(data.url.includes(`/sprites/gen5${front ? '' : '-back'}-shiny/${spriteid}.png`), data.url);
+				assert(fs.existsSync(localFile(data.url)));
+			}
+			const builder = Dex.getTeambuilderSpriteData({species, shiny: true}, 9);
+			assert.equal(builder.spriteDir, 'sprites/gen5');
+			assert.equal(builder.spriteid, spriteid);
+			assert.equal(builder.shiny, true);
+		}
+	});
+
 	it('keeps normal roster sprites inside the projected battle size budget', () => {
 		for (const id of Object.keys(BattlePokedex)) {
 			const species = Dex.species.get(id);
@@ -63,13 +78,15 @@ describe('Sprite rendering regressions', () => {
 			}
 		}
 	});
-	it('keeps Jolteon, Rotom, and every Oricorio compact in normal and shiny views', () => {
-		for (const [species, max] of [['Rotom', 64], ['Rotom-Wash', 64], ['Rotom-Heat', 64], ['Rotom-Frost', 64], ['Rotom-Fan', 64], ['Rotom-Mow', 64], ['Jolteon', 64], ['Oricorio', 60], ['Oricorio-Pom-Pom', 60], ['Oricorio-Pau', 60], ['Oricorio-Sensu', 60]]) {
+	it('keeps Jolteon, Rotom, and every Oricorio compact after battle projection', () => {
+		for (const species of ['Rotom', 'Rotom-Wash', 'Rotom-Heat', 'Rotom-Frost', 'Rotom-Fan', 'Rotom-Mow', 'Jolteon', 'Oricorio', 'Oricorio-Pom-Pom', 'Oricorio-Pau', 'Oricorio-Sensu']) {
 			for (const shiny of [false, true]) for (const front of [false, true]) {
 				const data = Dex.getSpriteData(species, front, {gen: 5, shiny});
-				const limit = species.startsWith('Rotom') && front ? 80 : max;
-				assert(data.w <= limit && data.h <= limit, species);
+				const limit = front ? (species.startsWith('Rotom') ? 80 : species.startsWith('Jolteon') ? (shiny ? 50 : 64) : 60) :
+					(species.startsWith('Jolteon') && shiny ? 40 : 44);
+				assert(data.w <= limit && data.h <= limit, species + ': ' + data.w + 'x' + data.h);
 				if (species.startsWith('Rotom') && front) assert.equal(Math.max(data.w, data.h), 80);
+				if (!front) assert(Math.max(data.w, data.h) * 2 <= 88, species + ' projected too large');
 				const dimensions = sizeOf(localFile(data.url));
 				assert(Math.abs(data.w / data.h - dimensions.width / dimensions.height) < 0.03, species);
 			}
@@ -80,12 +97,17 @@ describe('Sprite rendering regressions', () => {
 			Object.assign(global, JSON.parse(JSON.stringify(require(path.join(root, 'data', file + '.js')))));
 		}
 	});
-	it('uses genuine animations in preview without changing custom battle artwork', () => {
+	it('uses animations for normal previews and supplied static shiny artwork', () => {
 		for (const species of ['Clefable', 'Gengar', 'Hydreigon', 'Banette', 'Scizor', 'Rillaboom', 'Corviknight']) {
 			for (const shiny of [false, true]) for (const front of [false, true]) {
 				const before = Dex.getSpriteData(species, front, {gen: 9, shiny});
 				const preview = Dex.getSpriteData(species, front, {gen: 9, shiny, teamPreview: true, noScale: true});
-				assertBWPreview(preview, species, front, shiny);
+				if (shiny) {
+					const spriteid = Dex.species.get(species).spriteid;
+					assert(preview.url.includes(`/sprites/gen5${front ? '' : '-back'}-shiny/${spriteid}.png`), preview.url);
+				} else {
+					assertBWPreview(preview, species, front, shiny);
+				}
 				assert.deepEqual(Dex.getSpriteData(species, front, {gen: 9, shiny}), before);
 			}
 		}
@@ -137,7 +159,7 @@ describe('Sprite rendering regressions', () => {
 	it('caps Cacturne battle sprites without changing the artwork aspect ratio', () => {
 		for (const gen of [5, 9]) for (const shiny of [false, true]) for (const front of [false, true]) {
 			const data = Dex.getSpriteData('Cacturne', front, {gen, shiny});
-			const max = front ? 64 : 72;
+			const max = front ? 64 : 52;
 			assert(data.w <= max && data.h <= max, JSON.stringify(data));
 			const dimensions = sizeOf(localFile(data.url));
 			assert(Math.abs(data.w / data.h - dimensions.width / dimensions.height) < 0.03);

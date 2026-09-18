@@ -17,7 +17,7 @@ require(root + 'js/battle-dex.js');
 
 const expected = {
 	'Clefable-Mega': {x: 13, y: 18, size: '70px auto'},
-	Gengar: {x: 16, y: 16, size: '64px auto'},
+	Gengar: {x: 19, y: 20, size: '58px auto'},
 	'Arbok-Mega-Y': {x: 13, y: 12, size: '70px auto'},
 	'Lapras-Gmax': {x: 14, y: 14, size: '68px auto'},
 	'Lapras-Aevian-Gmax': {x: 14, y: 13, size: '68px auto'},

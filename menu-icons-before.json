@@ -3423,18 +3423,18 @@
     "css": "background:transparent url(https://play.pokemonreborn-showdown.xyz/sprites/pokemonicons-official-sheet.png?v1) no-repeat scroll -0px -840px"
   },
   {
-    "id": "zangoosereborn",
-    "name": "Zangoose-Reborn",
+    "id": "zangoosemega",
+    "name": "Zangoose-Mega",
     "kind": "battle fallback",
     "officialAvailable": false,
-    "css": "background:transparent url(https://play.pokemonreborn-showdown.xyz/sprites/gen5/zangoose-reborn.png) no-repeat center / contain"
+    "css": "background:transparent url(https://play.pokemonreborn-showdown.xyz/sprites/gen5/zangoose-mega.png) no-repeat center / contain"
   },
   {
-    "id": "seviperreborn",
-    "name": "Seviper-Reborn",
+    "id": "sevipermega",
+    "name": "Seviper-Mega",
     "kind": "battle fallback",
     "officialAvailable": false,
-    "css": "background:transparent url(https://play.pokemonreborn-showdown.xyz/sprites/gen5/seviper-reborn.png) no-repeat center / contain"
+    "css": "background:transparent url(https://play.pokemonreborn-showdown.xyz/sprites/gen5/seviper-mega.png) no-repeat center / contain"
   },
   {
     "id": "lunatone",
