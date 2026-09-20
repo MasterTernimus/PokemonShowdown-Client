@@ -12,13 +12,13 @@ Object.assign(SPRITE_ASSET_DIMENSIONS, {
 // Supplied Flygon Mega sprite dimensions
 Object.assign(SPRITE_ASSET_DIMENSIONS, {
 	'gen5/flygon-mega.png': [192, 192],
-	'gen5/flygon-megaz.png': [192, 192],
+	'gen5/flygon-megaz.png': [96, 96],
 	'gen5-shiny/flygon-mega.png': [192, 192],
-	'gen5-shiny/flygon-megaz.png': [192, 192],
+	'gen5-shiny/flygon-megaz.png': [96, 96],
 	'gen5-back/flygon-mega.png': [192, 192],
-	'gen5-back/flygon-megaz.png': [192, 192],
+	'gen5-back/flygon-megaz.png': [96, 96],
 	'gen5-back-shiny/flygon-mega.png': [192, 192],
-	'gen5-back-shiny/flygon-megaz.png': [192, 192],
+	'gen5-back-shiny/flygon-megaz.png': [96, 96],
 });
 /**
  * Pokemon Showdown Dex
@@ -3508,7 +3508,7 @@ const CUSTOM_STATIC_BATTLE_SPRITES: {[id: string]: {
 	golisopodaevian: {front: {w: 192, h: 192}, back: {w: 192, h: 192}, shinyFront: {w: 192, h: 192}, shinyBack: {w: 192, h: 192}},
 	golisopodaevianmega: {front: {w: 192, h: 192}, back: {w: 192, h: 192}, shinyFront: {w: 192, h: 192}, shinyBack: {w: 192, h: 192}},
 	flygonmega: {front: {w: 192, h: 192}, back: {w: 192, h: 192}, shinyFront: {w: 192, h: 192}, shinyBack: {w: 192, h: 192}},
-	flygonmegaz: {front: {w: 192, h: 192}, back: {w: 192, h: 192}, shinyFront: {w: 192, h: 192}, shinyBack: {w: 192, h: 192}},
+	flygonmegaz: {front: {w: 96, h: 96}, back: {w: 96, h: 96}, shinyFront: {w: 96, h: 96}, shinyBack: {w: 96, h: 96}},
 	gardevoirvoidmega: {
 		front: {w: 96, h: 96},
 		back: {w: 96, h: 96},
@@ -6146,7 +6146,7 @@ const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
 		back: {w: 156, h: 156},
 	},
 	flygonmega: {num: 330, front: {w: 192, h: 192}, back: {w: 192, h: 192}, shinyFront: {w: 192, h: 192}, shinyBack: {w: 192, h: 192}},
-	flygonmegaz: {num: 330, front: {w: 192, h: 192}, back: {w: 192, h: 192}, shinyFront: {w: 192, h: 192}, shinyBack: {w: 192, h: 192}},
+	flygonmegaz: {num: 330, front: {w: 96, h: 96}, back: {w: 96, h: 96}, shinyFront: {w: 96, h: 96}, shinyBack: {w: 96, h: 96}},
 	garchompmega: {
 		num: 445,
 		front: {w: 186, h: 150},
@@ -12915,7 +12915,8 @@ function customSpriteRevision(id: string) {
 	if (id === 'gastrodonaevian' || id === 'gastrodoneastaevian' || id === 'gastrodon-aevian' || id === 'gastrodon-east-aevian') return '?v=gastrodon-aevian-profiles-20260920';
 	if (id === 'golisopodaevian' || id === 'golisopodaevianmega' || id === 'golisopod-aevian' || id === 'golisopod-aevian-mega') return '?v=golisopod-aevian-mega-20260920';
 	if (id === 'typhlosionmega' || id === 'typhlosion-mega') return '?v=typhlosion-mega-20260920';
-	if (id === 'flygonmega' || id === 'flygonmegaz' || id === 'flygon-mega' || id === 'flygon-megaz') return '?v=flygon-megas-20260920';
+	if (id === 'flygonmegaz' || id === 'flygon-megaz') return '?v=flygon-megaz-restored-20260920';
+	if (id === 'flygonmega' || id === 'flygon-mega') return '?v=flygon-megas-20260920';
 	if (id === 'arboliva' || id === 'arbolivamega') return '?v=arboliva-mega-20260919';
 	if (id === 'meowscarada') return '?v=meowscarada-icons-20260919';
 	if (id === 'clefable' || id === 'clefablemega') return '?v=clefable-icons-20260919';
