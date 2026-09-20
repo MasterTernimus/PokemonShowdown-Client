@@ -28,7 +28,7 @@
  */
 
 import {BattleSceneStub} from './battle-scene-stub';
-import {BattleLog} from './battle-log';
+import {BattleLog, isRoutineResidualEffect} from './battle-log';
 import {BattleScene, PokemonSprite, BattleStatusAnims} from './battle-animations';
 
 /** [id, element?, ...misc] */
@@ -1623,13 +1623,13 @@ export class Battle {
 		this.scene.animReset(pokemon);
 	}
 
-	activateAbility(pokemon: Pokemon | null, effectOrName: Effect | string, isNotBase?: boolean) {
+	activateAbility(pokemon: Pokemon | null, effectOrName: Effect | string, isNotBase?: boolean, quiet = false) {
 		if (!pokemon || !effectOrName) return;
 		if (typeof effectOrName !== 'string') {
 			if (effectOrName.effectType !== 'Ability') return;
 			effectOrName = effectOrName.name;
 		}
-		this.scene.abilityActivateAnim(pokemon, effectOrName);
+		if (!quiet) this.scene.abilityActivateAnim(pokemon, effectOrName);
 		pokemon.rememberAbility(effectOrName, isNotBase);
 	}
 
@@ -1676,6 +1676,7 @@ export class Battle {
 		const CONSUMED = ['eaten', 'popped', 'consumed', 'held up'];
 		switch (args[0]) {
 		case '-damage': {
+			const quiet = isRoutineResidualEffect(args, kwArgs);
 			let poke = this.getPokemon(args[1])!;
 			let damage = poke.healthParse(args[2], true);
 			if (damage === null) break;
@@ -1684,14 +1685,14 @@ export class Battle {
 			if (kwArgs.from) {
 				let effect = Dex.getEffect(kwArgs.from);
 				let ofpoke = this.getPokemon(kwArgs.of);
-				this.activateAbility(ofpoke, effect);
+				this.activateAbility(ofpoke, effect, false, quiet);
 				if (effect.effectType === 'Item') {
 					const itemPoke = ofpoke || poke;
 					if (itemPoke.prevItem !== effect.name && !CONSUMED.includes(itemPoke.prevItemEffect)) {
 						itemPoke.item = effect.name;
 					}
 				}
-				switch (effect.id) {
+				if (!quiet) switch (effect.id) {
 				case 'brn':
 					this.scene.runStatusAnim('brn' as ID, [poke]);
 					break;
@@ -1731,11 +1732,12 @@ export class Battle {
 				}
 				args[3] = damageinfo;
 			}
-			this.scene.damageAnim(poke, Pokemon.getFormattedRange(range, 0, ' to '));
+			this.scene.damageAnim(poke, Pokemon.getFormattedRange(range, 0, ' to '), !quiet);
 			this.log(args, kwArgs);
 			break;
 		}
 		case '-heal': {
+			const quiet = isRoutineResidualEffect(args, kwArgs);
 			let poke = this.getPokemon(args[1], Dex.getEffect(kwArgs.from).id === 'revivalblessing')!;
 			let damage = poke.healthParse(args[2], true, true);
 			if (damage === null) break;
@@ -1744,7 +1746,7 @@ export class Battle {
 			if (kwArgs.from) {
 				let effect = Dex.getEffect(kwArgs.from);
 				let ofpoke = this.getPokemon(kwArgs.of);
-				this.activateAbility(ofpoke || poke, effect);
+				this.activateAbility(ofpoke || poke, effect, false, quiet);
 				if (effect.effectType === 'Item' && !CONSUMED.includes(poke.prevItemEffect)) {
 					if (poke.prevItem !== effect.name) {
 						poke.item = effect.name;
@@ -1776,8 +1778,8 @@ export class Battle {
 					break;
 				}
 			}
-			this.scene.runOtherAnim('heal' as ID, [poke]);
-			this.scene.healAnim(poke, Pokemon.getFormattedRange(range, 0, ' to '));
+			if (!quiet) this.scene.runOtherAnim('heal' as ID, [poke]);
+			this.scene.healAnim(poke, Pokemon.getFormattedRange(range, 0, ' to '), !quiet);
 			this.log(args, kwArgs);
 			break;
 		}

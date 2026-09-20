@@ -38,7 +38,7 @@ This license DOES NOT extend to any other files in this repository.
 
 // Cropped back sprites must meet the foreground edge in every battle slot.
 function isBottomAlignedBackSprite(url: string) {
- return /\/gen5-back(?:-shiny)?\/(?:alakazam-alt|alakazam-mega-alt|sharpedo-megay|gardevoir-void|tentacruel-alt)\.png(?:\?|$)/.test(url);
+ return /\/gen5-back(?:-shiny)?\/(?:alakazam-alt|alakazam-mega-alt|sharpedo-megay|gardevoir-void|tentacruel-alt|wishiwashi-school|wishiwashi-seviischooling)\.png(?:\?|$)/.test(url);
 }
 
 export class BattleScene implements BattleSceneStub {
@@ -371,7 +371,8 @@ export class BattleScene implements BattleSceneStub {
 		// This cropped back view ends at the foreground edge of the battle window.
 		// Retain vertical animation motion while keeping its resting pose bottom-aligned.
 		if (bottomAlignedBack) {
-			top = 360 - height - Math.floor(loc.y! * scale);
+			top = 360 - height - Math.floor(loc.y! * scale) -
+				(obj.url.includes('/wishiwashi-seviischooling.png') ? 6 : 0);
 		}
 
 
@@ -1470,7 +1471,7 @@ export class BattleScene implements BattleSceneStub {
 		pokemon.sprite.updateStatbar(pokemon);
 		if (this.acceleration < 3) this.waitFor($effect);
 	}
-	damageAnim(pokemon: Pokemon, damage: number | string) {
+	damageAnim(pokemon: Pokemon, damage: number | string, showResult = true) {
 		if (!this.animating) return;
 		if (!pokemon.sprite.$statbar) return;
 		pokemon.sprite.updateHPText(pokemon);
@@ -1487,14 +1488,14 @@ export class BattleScene implements BattleSceneStub {
 		}
 
 		if (damage === '100%' && pokemon.hp > 0) damage = '99%';
-		this.resultAnim(pokemon, this.battle.hardcoreMode ? 'Damage' : '&minus;' + damage, 'bad');
+		if (showResult) this.resultAnim(pokemon, this.battle.hardcoreMode ? 'Damage' : '&minus;' + damage, 'bad');
 
 		$hp.animate({
 			width: w,
 			'border-right-width': w ? 1 : 0,
 		}, 350, callback);
 	}
-	healAnim(pokemon: Pokemon, damage: number | string) {
+	healAnim(pokemon: Pokemon, damage: number | string, showResult = true) {
 		if (!this.animating) return;
 		if (!pokemon.sprite.$statbar) return;
 		pokemon.sprite.updateHPText(pokemon);
@@ -1510,7 +1511,7 @@ export class BattleScene implements BattleSceneStub {
 			callback = () => { $hp.removeClass('hp-red'); };
 		}
 
-		this.resultAnim(pokemon, this.battle.hardcoreMode ? 'Heal' : '+' + damage, 'good');
+		if (showResult) this.resultAnim(pokemon, this.battle.hardcoreMode ? 'Heal' : '+' + damage, 'good');
 
 		$hp.animate({
 			width: w,

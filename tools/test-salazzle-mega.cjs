@@ -16,7 +16,7 @@ require(root + 'js/battle-dex.js');
 
 const mega = Dex.species.get('Salazzle-Mega');
 assert.deepEqual(mega.types, ['Poison', 'Fire']);
-assert.deepEqual(mega.baseStats, {hp: 68, atk: 64, def: 70, spa: 148, spd: 150, spe: 80});
+assert.deepEqual(mega.baseStats, {hp: 68, atk: 74, def: 70, spa: 148, spd: 80, spe: 140});
 assert.equal(mega.abilities[0], 'Corrosive Burn');
 assert.deepEqual(mega.requiredItems, ['Salazzite']);
 assert.equal(Dex.items.get('Salazzite').megaStone.Salazzle, 'Salazzle-Mega');

@@ -35804,6 +35804,7 @@ BattleMoveAnims['magikarpsrevenge'] = {anim: BattleMoveAnims['outrage'].anim};
 BattleMoveAnims['electrify'] = {anim: BattleMoveAnims['thunderwave'].anim};
 BattleMoveAnims['volttackle'] = {anim: BattleMoveAnims['wildcharge'].anim};
 BattleMoveAnims['zingzap'] = {anim: BattleMoveAnims['wildcharge'].anim};
+BattleMoveAnims['wakeupshock'] = {anim: BattleMoveAnims['zingzap'].anim};
 BattleMoveAnims['nuzzle'] = {anim: BattleMoveAnims['spark'].anim};
 BattleMoveAnims['thundershock'] = {anim: BattleMoveAnims['electroball'].anim};
 
@@ -36111,6 +36112,7 @@ BattleMoveAnims['rockyrampage'] = {anim: BattleMoveAnims['rockwrecker'].anim};
 BattleMoveAnims['dustydrift'] = {anim: BattleMoveAnims['sandstorm'].anim};
 BattleMoveAnims['steelystrike'] = {anim: BattleMoveAnims['steelwing'].anim};
 BattleMoveAnims['stabbyswarm'] = {anim: BattleMoveAnims['strugglebug'].anim};
+BattleMoveAnims['injection'] = {anim: BattleMoveAnims['gigadrain'].anim};
 BattleMoveAnims['ickyinjection'] = {anim: BattleMoveAnims['fellstinger'].anim};
 BattleMoveAnims['spookyspell'] = {anim: BattleMoveAnims['hex'].anim};
 BattleMoveAnims['scalyscorn'] = {anim: BattleMoveAnims['dragonrage'].anim};

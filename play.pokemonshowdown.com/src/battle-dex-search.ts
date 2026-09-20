@@ -176,7 +176,8 @@ function matchesCustomSearchGroup(species: AnyObject, query: string) {
 	const forme = toID(species?.forme);
 	if (query === 'rejuv') return forme === 'rejuv' || name.endsWith('rejuv');
 	if (query === 'reborn') return forme === 'reborn' || name.endsWith('reborn');
-	if (query === 'aevian') return forme.includes('aevian') || name.includes('aevian') || name === 'miloticterajuma';
+	if (query === 'aevian') return forme.includes('aevian') || name.includes('aevian') ||
+		forme.includes('rejuv') || name.includes('rejuv') || name === 'miloticterajuma';
 	if (query === 'deso') return forme === 'deso' || name.endsWith('deso') || name === 'umbreonperfect';
 	return false;
 }
@@ -186,8 +187,6 @@ function isExplicitFurfrouVariantSearch(species: AnyObject, query: string) {
 }
 
 const CUSTOM_CAN_LEARN_OVERRIDES: {[speciesid: string]: {[moveid: string]: true}} = {
-	blastoise: {electroshot: true},
-	clawitzer: {electroshot: true},
 	meowstic: {aurasphere: true, drainingkiss: true, vacuumwave: true},
 	meowsticf: {aurasphere: true, drainingkiss: true, vacuumwave: true},
 	meowsticmmega: {aurasphere: true, drainingkiss: true, vacuumwave: true},

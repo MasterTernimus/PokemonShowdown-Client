@@ -17,7 +17,8 @@ const before = require('../menu-icons-before.json');
 const sizes = new Map();
 
 describe('Team strip menu icons', () => {
-	for (const row of before) {
+	for (const row of before.map(row => row.id === 'drapionaevian' ?
+		{...row, id: 'drapionrejuv', name: 'Drapion-Rejuv'} : row)) {
 		it(`resolves visible local assets for ${row.name} across gender, shiny, and facing variants`, () => {
 			for (const gender of ['M', 'F']) for (const shiny of [false, true]) for (const left of [false, true]) {
 				const css = Dex.getPokemonIcon({species: row.name, gender, shiny}, left);
