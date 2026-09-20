@@ -23,6 +23,29 @@ declare const html: any;
 declare function MD5(input: string): string;
 declare function formatText(input: string, isTrusted?: boolean): string;
 
+// Keep routine HP changes in the protocol, but show their narration once in a compact group.
+const ROUTINE_RESIDUAL_EFFECTS = new Set([
+	'brn', 'psn', 'tox', 'leechseed', 'curse', 'saltcure', 'aquaring', 'ingrain',
+	'leftovers', 'blacksludge', 'eeviumz', 'midnightzoneterrain', 'underwaterterrain',
+	'sinisterblaze', 'mourningvessel', 'dryskin', 'poisonheal', 'icebody', 'raindish',
+	'wildfirecore', 'pollenbloom', 'waterbarrage', 'sunsovereign', 'sandsovereign', 'frostsovereign',
+]);
+const QUIET_FIELD_MESSAGES = new Set([
+	'The water strengthened the attack!', 'Warmth has been eliminated...!',
+	'Darkness gathers...!', 'The water super-conducted the attack!',
+	'The trenches strengthened the attack.', 'Jet-streamed!', 'From the depths!',
+	'The lightless abyss boosted the attack.', 'The light disappeared in the dark...',
+]);
+
+export function isRoutineResidualEffect(args: Args, kwArgs: KWArgs): boolean {
+	if (args[0] === '-message') {
+		return /^(The water pressure hurt |The water healed |The intense water pressure healed )/.test(args[1] || '');
+	}
+	if (args[0] !== '-damage' && args[0] !== '-heal') return false;
+	const effect = toID((kwArgs.from || '').replace(/^(ability|item):\s*/i, ''));
+	return effect.endsWith('terrain') || ROUTINE_RESIDUAL_EFFECTS.has(effect);
+}
+
 export class BattleLog {
 	elem: HTMLDivElement;
 	innerElem: HTMLDivElement;
@@ -30,6 +53,7 @@ export class BattleLog {
 	preemptElem: HTMLDivElement = null!;
 	atBottom = true;
 	private scrollUpdateScheduled = false;
+	private routineGroup: {element: HTMLDetailsElement, summary: HTMLElement, body: HTMLDivElement, count: number} | null = null;
 	skippedLines = false;
 	className: string;
 	battleParser: BattleTextParser | null = null;
@@ -78,6 +102,7 @@ export class BattleLog {
 		this.atBottom = (distanceFromBottom < 30);
 	};
 	reset() {
+		this.routineGroup = null;
 		this.innerElem.innerHTML = '';
 		this.atBottom = true;
 		this.skippedLines = false;
@@ -102,6 +127,9 @@ export class BattleLog {
 	}
 	add(args: Args, kwArgs?: KWArgs, preempt?: boolean) {
 		if (kwArgs?.silent) return;
+		if (['chat', 'c', 'c:', 'pm', 'join', 'j', 'leave', 'l', 'raw', 'html', 'uhtml', 'uhtmlchange'].includes(args[0])) {
+			this.routineGroup = null;
+		}
 		const battle = this.scene?.battle;
 		if (battle?.seeking) {
 			if (battle.stepQueue.length > 2000) {
@@ -319,6 +347,7 @@ export class BattleLog {
 			break;
 
 		case 'turn':
+			this.routineGroup = null;
 			const h2elem = document.createElement('h2');
 			h2elem.className = 'battle-history';
 			let turnMessage;
@@ -347,7 +376,20 @@ export class BattleLog {
 				return;
 			}
 			if (!line) return;
-			this.message(...this.parseLogMessage(line));
+			const [logMessage, sceneMessage] = this.parseLogMessage(line);
+			if (isRoutineResidualEffect(args, kwArgs || {})) {
+				// Midnight Zone already sends a descriptive pressure/healing message.
+				if (['-damage', '-heal'].includes(args[0]) &&
+					toID(kwArgs?.from || '') === 'midnightzoneterrain') break;
+				this.addRoutineMessage(logMessage);
+			} else {
+				this.routineGroup = null;
+				if (args[0] === '-message' && QUIET_FIELD_MESSAGES.has(args[1])) {
+					this.addDiv('battle-history', logMessage);
+				} else {
+					this.message(logMessage, sceneMessage);
+				}
+			}
 			break;
 		}
 	}
@@ -386,6 +428,26 @@ export class BattleLog {
 			messages.join('<br />'),
 			messages.filter(line => !line.startsWith('<small>[')).join('<br />'),
 		];
+	}
+	private addRoutineMessage(message: string) {
+		if (!this.routineGroup) {
+			const element = document.createElement('details');
+			element.className = 'battle-history';
+			const summary = document.createElement('summary');
+			const body = document.createElement('div');
+			body.style.paddingLeft = '1em';
+			element.appendChild(summary);
+			element.appendChild(body);
+			this.routineGroup = {element, summary, body, count: 0};
+			this.addNode(element);
+		}
+		const group = this.routineGroup;
+		group.count++;
+		group.summary.textContent = 'End-of-turn effects (' + group.count + ')';
+		const detail = document.createElement('div');
+		detail.innerHTML = message;
+		group.body.appendChild(detail);
+		this.scheduleScrollUpdate();
 	}
 	message(message: string, sceneMessage = message) {
 		if (this.scene) this.scene.message(sceneMessage);
