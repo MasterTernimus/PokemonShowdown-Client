@@ -1,13 +1,13 @@
-import { Dex, toID, type ModdedDex } from "./battle-dex";
-import { BattleNatures, BattleStatNames, BattleStatIDs, type StatNameExceptHP, type ID } from "./battle-dex-data";
+
+
 
 function isSilvallySpecies(name: string) {
 	return toID(name).startsWith('silvally');
 }
 
-export declare namespace Teams {
+export declare namespace ModernTeams {
 	/**
-	 * Teams.PokemonSet can be sparse, in which case that entry should be
+	 * ModernTeams.PokemonSet can be sparse, in which case that entry should be
 	 * inferred from the rest of the set, according to sensible
 	 * defaults.
 	 */
@@ -21,13 +21,13 @@ export declare namespace Teams {
 		ability?: string;
 		moves: string[];
 		/** Defaults to no nature (error in Gen 3+) */
-		nature?: Dex.NatureName;
+		nature?: NatureName;
 		/** Defaults to random legal gender, NOT subject to gender ratios */
 		gender?: string;
 		/** Defaults to flat 252's (200's/0's in Let's Go) (error in gen 3+) */
-		evs: Partial<Dex.StatsTable>;
+		evs: StatsTable;
 		/** Defaults to whatever makes sense - flat 31's unless you have Gyro Ball etc */
-		ivs: Dex.StatsTable;
+		ivs: StatsTable;
 		/** Defaults as you'd expect (100 normally, 50 in VGC-likes, 5 in LC) */
 		level: number;
 		/** Defaults to no (error if shiny event) */
@@ -60,11 +60,11 @@ export declare namespace Teams {
 	}
 }
 
-export const Teams = new class {
-	pack(team: Teams.PokemonSet[] | null): string {
+export const ModernTeams = new class {
+	pack(team: ModernTeams.PokemonSet[] | null): string {
 		if (!team) return '';
 
-		function getIv(ivs: Dex.StatsTable, s: keyof Dex.StatsTable): string {
+		function getIv(ivs: StatsTable, s: keyof StatsTable): string {
 			return ivs[s] === 31 || ivs[s] === undefined ? '' : ivs[s].toString();
 		}
 
@@ -137,7 +137,7 @@ export const Teams = new class {
 		return name.replace(/[^A-Za-z0-9]+/g, '');
 	}
 
-	unpack(buf: string): Teams.PokemonSet[] {
+	unpack(buf: string): ModernTeams.PokemonSet[] {
 		if (!buf) return [];
 
 		// first, detect if this has team metadata
@@ -156,7 +156,7 @@ export const Teams = new class {
 		let lastI = 0;
 
 		while (true) {
-			const set: Teams.PokemonSet = {} as any;
+			const set: ModernTeams.PokemonSet = {} as any;
 			team.push(set);
 
 			// name
@@ -192,7 +192,7 @@ export const Teams = new class {
 
 			// nature
 			j = buf.indexOf('|', i);
-			set.nature = buf.substring(i, j) as Dex.NatureName;
+			set.nature = buf.substring(i, j) as NatureName;
 			if (set.nature as any === 'undefined') delete set.nature;
 			i = j + 1;
 
@@ -299,7 +299,7 @@ export const Teams = new class {
 	 * (You may wish to manually add two spaces to the end of every line so
 	 * linebreaks are preserved in Markdown; I assume mostly for Reddit.)
 	 */
-	exportSet(set: Teams.PokemonSet, dex: ModdedDex = Dex, newFormat?: boolean) {
+	exportSet(set: ModernTeams.PokemonSet, dex: ModdedDex = Dex, newFormat?: boolean) {
 		if (isSilvallySpecies(set.species)) set.shiny = true;
 		let text = '';
 
@@ -416,19 +416,19 @@ export const Teams = new class {
 		return text;
 	}
 	// TODO: finish this impl
-	// getFullSet(set: Teams.PokemonSet, dex: ModdedDex): Teams.FullPokemonSet {
+	// getFullSet(set: ModernTeams.PokemonSet, dex: ModdedDex): ModernTeams.FullPokemonSet {
 	// 	//
 	// }
-	export(sets: Teams.PokemonSet[], dex?: ModdedDex, newFormat?: boolean) {
+	export(sets: ModernTeams.PokemonSet[], dex?: ModdedDex, newFormat?: boolean) {
 		let text = '';
 		for (const set of sets) {
 			// core
-			text += Teams.exportSet(set, dex, newFormat);
+			text += ModernTeams.exportSet(set, dex, newFormat);
 		}
 		return text;
 	}
 
-	parseExportedTeamLine(line: string, isFirstLine: boolean, set: Dex.PokemonSet) {
+	parseExportedTeamLine(line: string, isFirstLine: boolean, set: PokemonSet) {
 		if (isFirstLine || line.startsWith('[')) {
 			let item;
 			[line, item] = line.split('@');
@@ -523,12 +523,12 @@ export const Teams = new class {
 			if (natureIndex === -1) natureIndex = line.indexOf(' nature');
 			if (natureIndex === -1) return;
 			line = line.slice(0, natureIndex);
-			if (line !== 'undefined') set.nature = line as Dex.NatureName;
+			if (line !== 'undefined') set.nature = line as NatureName;
 		} else if (line.startsWith('-') || line.startsWith('~') || line.startsWith('Move:')) {
 			if (line.startsWith('Move:')) line = line.slice(4);
 			line = line.slice(line.charAt(1) === ' ' ? 2 : 1);
 			if (line.startsWith('Hidden Power [')) {
-				let hpType = line.slice(14, line.indexOf(']')) as Dex.TypeName;
+				let hpType = line.slice(14, line.indexOf(']')) as TypeName;
 				if (hpType.includes(']') || hpType.includes('[')) hpType = '' as any;
 				line = 'Hidden Power ' + hpType;
 				set.hpType = hpType;
@@ -541,26 +541,26 @@ export const Teams = new class {
 	}
 	getNatureFromPlusMinus(
 		plus: StatNameExceptHP | '' | null, minus: StatNameExceptHP | '' | null
-	): Dex.NatureName | null {
+	): NatureName | null {
 		if (!plus || !minus) return null;
 		for (const i in BattleNatures) {
 			if (BattleNatures[i as 'Serious'].plus === plus && BattleNatures[i as 'Serious'].minus === minus) {
-				return i as Dex.NatureName;
+				return i as NatureName;
 			}
 		}
 		return null;
 	}
-	import(buffer: string): Dex.PokemonSet[] {
+	import(buffer: string): PokemonSet[] {
 		const lines = buffer.split("\n");
 
-		const sets: Dex.PokemonSet[] = [];
-		let curSet: Dex.PokemonSet | null = null;
+		const sets: PokemonSet[] = [];
+		let curSet: PokemonSet | null = null;
 
 		while (lines.length && !lines[0]) lines.shift();
 		while (lines.length && !lines[lines.length - 1]) lines.pop();
 
 		if (lines.length === 1 && lines[0].includes('|')) {
-			return Teams.unpack(lines[0]);
+			return ModernTeams.unpack(lines[0]);
 		}
 		for (let line of lines) {
 			line = line.trim();
@@ -570,7 +570,7 @@ export const Teams = new class {
 				// team backup format; ignore
 			} else if (line.includes('|')) {
 				// packed format
-				return Teams.unpack(line);
+				return ModernTeams.unpack(line);
 			} else if (!curSet) {
 				curSet = {
 					name: '', species: '', gender: '',

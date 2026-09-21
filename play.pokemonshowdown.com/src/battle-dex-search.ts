@@ -39,7 +39,7 @@ declare const BattleSearchIndex: [ID, SearchType, number?, number?][];
 declare const BattleSearchIndexOffset: any;
 declare const BattleTeambuilderTable: any;
 
-const HIDDEN_TEAMBUILDER_SPECIES = new Set<ID>([
+const HIDDEN_TEAMBUILDER_SPECIES = new Set<string>([
 	'pikachualola', 'pikachucosplay', 'pikachuhoenn', 'pikachukalos', 'pikachuoriginal',
 	'pikachupartner', 'pikachusinnoh', 'pikachuunova', 'pikachuworld',
 	'pikachubelle', 'pikachulibre', 'pikachuphd', 'pikachupopstar', 'pikachurockstar',
@@ -48,7 +48,7 @@ const HIDDEN_TEAMBUILDER_SPECIES = new Set<ID>([
 // These are official ZA Mega forms in the client catalog, not custom skins.
 // Keep them available for normal species lookup and battle rendering, but do
 // not count them as custom additions in the explicit -custom list.
-const ZA_MEGA_SPECIES = new Set<ID>([
+const ZA_MEGA_SPECIES = new Set<string>([
 	'absolmegaz', 'baxcaliburmega', 'barbaraclemega', 'chandeluremega', 'chesnaughtmega',
 	'chimechomega', 'clefablemega', 'crabominablemega', 'darkraimega', 'delphoxmega',
 	'dragalgemega', 'dragonitemega', 'drampamega', 'eelektrossmega', 'emboarmega',
@@ -63,7 +63,7 @@ const ZA_MEGA_SPECIES = new Set<ID>([
 
 // These are visual-only destinations for Z Protean. They must remain resolvable
 // for battle form changes, but are never valid team-builder choices.
-const Z_PROTEAN_BATTLE_ONLY_SPECIES = new Set<ID>([
+const Z_PROTEAN_BATTLE_ONLY_SPECIES = new Set<string>([
 	'braveon', 'nimbeon', 'toxeon', 'dusteon', 'basaleon', 'ephemeon',
 	'kitsuneon', 'titaneon', 'byteon', 'drekeon',
 ]);
@@ -121,7 +121,7 @@ const ASCENDANCE_EEVEE_MOVES: readonly ID[] = [
 // These forms are created by battle abilities and are not valid stored team
 // choices. They must remain resolvable to the battle renderer without adding
 // clutter or invalid entries to the team builder.
-const BATTLE_ONLY_VISUAL_SPECIES = new Set<ID>([
+const BATTLE_ONLY_VISUAL_SPECIES = new Set<string>([
 	'auroreon', 'soluneon', 'abysseon', 'divineon',
 ]);
 
@@ -197,6 +197,7 @@ const CUSTOM_CAN_LEARN_OVERRIDES: {[speciesid: string]: {[moveid: string]: true}
  * Backend for search UIs.
  */
 class DexSearch {
+	prependResults: SearchRow[] | null = null;
 	query = '';
 
 	/**
@@ -641,7 +642,7 @@ class DexSearch {
 		}
 
 		if (customVisualSpecies.length) {
-			const existing = new Set<ID>();
+			const existing = new Set<string>();
 			for (const buf of bufs) {
 				for (const row of buf) {
 					if (row[0] === 'pokemon') existing.add(row[1]);
@@ -660,11 +661,11 @@ class DexSearch {
 		// Custom abilities may be patched into BattleAbilities after the static search
 		// index was generated. Match their actual names, not component references.
 		if (!searchType || searchType === 'pokemon' || searchType === 'ability') {
-			const indexedAbilities = new Set<ID>();
+			const indexedAbilities = new Set<string>();
 			for (const entry of BattleSearchIndex) {
 				if (entry[1] === 'ability') indexedAbilities.add(entry[0]);
 			}
-			const abilityRows: SearchRow[] = [];
+			const abilityRows: ['ability', ID, number?, number?][] = [];
 			const abilitySearchQuery = customSpeciesQuery;
 			if (abilitySearchQuery) {
 				for (const id in (window.BattleAbilities || {})) {
@@ -684,7 +685,7 @@ class DexSearch {
 			if (abilityRows.length) {
 				const abilityTypeIndex = DexSearch.typeTable.ability;
 				if (!bufs[abilityTypeIndex].length) bufs[abilityTypeIndex] = [['header', DexSearch.typeName.ability]];
-				const existing = new Set<ID>(bufs[abilityTypeIndex].filter(row => row[0] === 'ability').map(row => row[1]));
+				const existing = new Set<string>(bufs[abilityTypeIndex].filter(row => row[0] === 'ability').map(row => row[1]));
 				const newAbilityRows = abilityRows.filter(row => !existing.has(row[1]));
 				bufs[abilityTypeIndex].push(...newAbilityRows);
 				if (searchType === 'pokemon' && !instafilter && newAbilityRows.length) {
@@ -1156,7 +1157,7 @@ class BattlePokemonSearch extends BattleTypedSearch<'pokemon'> {
 	getDefaultResults(): SearchRow[] {
 		window.ensureCustomSpecies?.();
 		let results: SearchRow[] = [];
-		const seenSpecies = new Set<ID>();
+		const seenSpecies = new Set<string>();
 		for (let id in BattlePokedex) {
 			switch (id) {
 			case 'bulbasaur':
@@ -1382,7 +1383,7 @@ class BattlePokemonSearch extends BattleTypedSearch<'pokemon'> {
 			}
 			if (customSpecies.length) tierSet.push(['header', 'Custom'], ...customSpecies);
 		}
-		const seenSpecies = new Set<ID>();
+		const seenSpecies = new Set<string>();
 		tierSet = tierSet.filter(([type, id]) => {
 			if (type !== 'pokemon') return true;
 			const speciesid = toID(id);

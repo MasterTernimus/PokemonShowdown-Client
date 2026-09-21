@@ -28,6 +28,27 @@ const PSPrefsDefaults: {[key: string]: any} = {};
  * Updates will name the key updated, so you don't need to overreact.
  */
 class PSPrefs extends PSStreamModel<string | null> {
+	language = 'en';
+	bwgfx = false;
+	nopastgens = false;
+	noanim = false;
+	blockPMs = false;
+	blockChallenges = false;
+	inchatpm = false;
+	noselfhighlight = false;
+	leavePopupRoom = false;
+	refreshprompt = false;
+	autotimer = false;
+	autohardcore = false;
+	ignoreopp = false;
+	ignorespects = false;
+	ignorenicks = false;
+	rightpanelbattles = false;
+	disallowspectators = false;
+	ignore: {[userid: string]: boolean} = {};
+	tournaments: 'show' | 'hide' | 'notify' = 'show';
+	chatformatting: {[key: string]: boolean} = {};
+	timestamps: {chatrooms?: TimestampOptions, pms?: TimestampOptions} = {};
 	/**
 	 * The theme to use. "system" matches the theme of the system accessing the client.
 	 */
@@ -50,7 +71,7 @@ class PSPrefs extends PSStreamModel<string | null> {
 	/**
 	 * true = one panel, false = two panels, left and right
 	 */
-	onepanel = false;
+	onepanel: boolean | 'vertical' = false;
 
 	mute = false;
 	effectvolume = 50;
@@ -81,7 +102,7 @@ class PSPrefs extends PSStreamModel<string | null> {
 	/**
 	 * Change a preference.
 	 */
-	set<T extends keyof PSPrefs>(key: T, value: PSPrefs[T]) {
+	set<T extends keyof PSPrefs>(key: T, value: PSPrefs[T] | null) {
 		if (value === null) {
 			delete this.storage[key];
 			(this as any)[key] = PSPrefsDefaults[key];
@@ -95,6 +116,9 @@ class PSPrefs extends PSStreamModel<string | null> {
 	load(newPrefs: object, noSave?: boolean) {
 		this.fixPrefs(newPrefs);
 		Object.assign(this, PSPrefsDefaults);
+		for (const key of Object.keys(PSPrefsDefaults)) {
+			if (Object.prototype.hasOwnProperty.call(newPrefs, key)) (this as any)[key] = (newPrefs as AnyObject)[key];
+		}
 		this.storage = newPrefs;
 		this.update(null);
 		if (!noSave) this.save();
@@ -147,6 +171,7 @@ class PSPrefs extends PSStreamModel<string | null> {
  *********************************************************************/
 
 interface Team {
+	isBox?: boolean;
 	name: string;
 	format: ID;
 	packedTeam: string;
@@ -191,6 +216,7 @@ class PSTeams extends PSStreamModel<'team' | 'format'> {
 		return key;
 	}
 	unpackAll(buffer: string | null) {
+		this.byKey = {};
 		if (!buffer) {
 			this.list = [];
 			return;
@@ -212,6 +238,14 @@ class PSTeams extends PSStreamModel<'team' | 'format'> {
 		team.key = this.getKey(team.name);
 		this.list.push(team);
 		this.byKey[team.key] = team;
+	}
+	spliceIn(index: number, teams: Team[]) {
+		for (const team of teams) {
+			team.key = this.getKey(team.name);
+			this.byKey[team.key] = team;
+		}
+		this.list.splice(index, 0, ...teams);
+		this.save();
 	}
 	unshift(team: Team) {
 		team.key = this.getKey(team.name);
@@ -273,12 +307,55 @@ class PSTeams extends PSStreamModel<'team' | 'format'> {
  * User
  *********************************************************************/
 
+interface PSLoginState { name?: string; error?: string; needsPassword?: boolean; needsGoogle?: boolean; success?: boolean }
 class PSUser extends PSModel {
+	challstr = '';
+	loggingIn = '';
+	gapiLoaded = false;
+	loginState: PSLoginState = {};
+	async changeName(name: string) {
+		name = name.replace(/[|,;\n\r]/g, '').trim();
+		if (!toID(name)) return;
+		this.loggingIn = name;
+		this.loginState = {};
+		this.update();
+		const result = await PSLoginServer.query('getassertion', {userid: toID(name), challstr: this.challstr});
+		this.handleAssertion(name, result?.assertion || '');
+	}
+	async changeNameWithPassword(name: string, password: string, options?: {needsGoogle?: boolean}) {
+		name = name.replace(/[|,;\n\r]/g, '').trim();
+		this.loggingIn = name;
+		this.update();
+		const result = await PSLoginServer.query('login', {name, pass: password, challstr: this.challstr});
+		if (result?.curuser?.loggedin) {
+			this.registered = {name, userid: toID(name)};
+			this.handleAssertion(name, result.assertion);
+		} else {
+			this.loggingIn = '';
+			this.loginState = {name, needsPassword: !options?.needsGoogle, needsGoogle: options?.needsGoogle,
+				error: result?.error || 'Unable to log in. Check your credentials and connection.'};
+			this.update();
+		}
+	}
+	handleAssertion(name: string, assertion: string) {
+		this.loggingIn = '';
+		if (assertion === ';' || assertion === ';;@gmail') {
+			this.loginState = {name, needsPassword: assertion === ';', needsGoogle: assertion === ';;@gmail'};
+		} else if (!assertion || assertion.startsWith(';;')) {
+			this.loginState = {name, error: assertion.slice(2) || 'Unable to contact the login server.'};
+		} else if (assertion.includes('<') || assertion.includes('\n') || assertion.includes('\r')) {
+			this.loginState = {name, error: 'Invalid login response.'};
+		} else {
+			PS.send('|/trn ' + name.replace(/[|,;\n\r]/g, '') + ',0,' + assertion);
+			this.loginState = {success: true};
+		}
+		this.update();
+	}
 	name = "";
 	group = '';
 	userid = "" as ID;
 	named = false;
-	registered = false;
+	registered: false | {name: string; userid: ID} = false;
 	avatar = "1";
 	setName(fullName: string, named: boolean, avatar: string) {
 		const loggingIn = (!this.named && named);
@@ -415,6 +492,7 @@ class PSServer {
 type PSRoomLocation = 'left' | 'right' | 'popup' | 'mini-window' | 'modal-popup' | 'semimodal-popup';
 
 interface RoomOptions {
+	args?: AnyObject;
 	id: RoomID;
 	title?: string;
 	type?: string;
@@ -442,6 +520,14 @@ interface PSNotificationState {
  * and `null` to mean "tell Preact to re-render this room"
  */
 class PSRoom extends PSStreamModel<Args | null> implements RoomOptions {
+	args: AnyObject = {};
+	parentRoomid: RoomID | null = null;
+	getParent<T extends PSRoom = PSRoom>(): T | null {
+		return (this.parentRoomid ? PS.rooms[this.parentRoomid] as T : null) || null;
+	}
+	add(line: string) {
+		for (const message of line.split('\n')) this.receiveLine(BattleTextParser.parseLine(message));
+	}
 	id: RoomID;
 	title = "";
 	type = '';
@@ -478,6 +564,8 @@ class PSRoom extends PSStreamModel<Args | null> implements RoomOptions {
 
 	constructor(options: RoomOptions) {
 		super();
+		this.args = options.args || {};
+		this.parentRoomid = options.parentRoomid || null;
 		this.id = options.id;
 		if (options.title) this.title = options.title;
 		if (!this.title) this.title = this.id;
@@ -577,7 +665,8 @@ class PlaceholderRoom extends PSRoom {
  * PS
  *********************************************************************/
 
-type RoomType = {Model?: typeof PSRoom, Component: any, title?: string};
+type TimestampOptions = '' | 'off' | 'minutes' | 'seconds';
+type RoomType = {Model?: typeof PSRoom, Component: any, title?: string, routes?: readonly string[], location?: PSRoomLocation};
 
 /**
  * This model updates:
@@ -586,6 +675,17 @@ type RoomType = {Model?: typeof PSRoom, Component: any, title?: string};
  * - changing the width of the left room, in two-panel mode
  */
 const PS = new class extends PSModel {
+	private popupCounter = 0;
+	addRoomType(...components: Array<{id: string, Model?: typeof PSRoom, title?: string, routes?: readonly string[], location?: PSRoomLocation}>) {
+		for (const Component of components) this.roomTypes[Component.id] = {...Component, Component};
+		this.updateRoomTypes();
+	}
+	alert(message: string) {
+		this.addRoom({id: ('popup-' + ++this.popupCounter) as RoomID, type: 'popup', location: 'modal-popup', args: {message}});
+		this.update();
+	}
+	get rightPanel() { return this.rightRoom; }
+	set rightPanel(room: PSRoom | null) { this.rightRoom = room; }
 	down: string | boolean = false;
 
 	prefs = new PSPrefs();
@@ -709,7 +809,7 @@ const PS = new class extends PSModel {
 			this.addRoom({
 				id: 'news' as RoomID,
 				title: "News",
-			});
+			}, true);
 		}
 
 		this.updateLayout();
@@ -901,6 +1001,16 @@ const PS = new class extends PSModel {
 		return 0;
 	}
 	createRoom(options: RoomOptions) {
+		if (!options.type) {
+			for (const id in this.roomTypes) {
+				const entry = this.roomTypes[id];
+				if (entry && entry.routes?.some(route => route.endsWith('*') ? options.id.startsWith(route.slice(0, -1)) : route === options.id)) {
+					options.type = id;
+					options.location ||= entry.location;
+					break;
+				}
+			}
+		}
 		// type/side not defined in roomTypes because they need to be guessed before the types are loaded
 		if (!options.type) {
 			const hyphenIndex = options.id.indexOf('-');
@@ -1054,6 +1164,7 @@ const PS = new class extends PSModel {
 		return this.rooms[roomid] as ChatRoom;
 	}
 	addRoom(options: RoomOptions, noFocus?: boolean) {
+		if (options.parentElem && !options.parentRoomid) options.parentRoomid = this.room?.id;
 		// support hardcoded PM room-IDs
 		if (options.id.startsWith('challenge-')) {
 			options.id = `pm-${options.id.slice(10)}` as RoomID;
@@ -1169,9 +1280,9 @@ const PS = new class extends PSModel {
 		this.leave(this.popups[this.popups.length - 1]);
 		if (!skipUpdate) this.update();
 	}
-	join(roomid: RoomID, side?: PSRoomLocation | null, noFocus?: boolean) {
+	join(roomid: RoomID, side?: PSRoomLocation | Omit<RoomOptions, 'id'> | null, noFocus?: boolean) {
 		if (this.room.id === roomid) return;
-		this.addRoom({id: roomid, side}, noFocus);
+		this.addRoom({id: roomid, ...(side && typeof side === 'object' ? side : {side})}, noFocus);
 		this.update();
 	}
 	leave(roomid: RoomID) {

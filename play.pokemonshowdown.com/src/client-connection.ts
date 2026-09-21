@@ -58,7 +58,8 @@ class PSConnection {
 PS.connection = new PSConnection();
 
 const PSLoginServer = new class {
-	query(data: PostData): Promise<{[k: string]: any} | null> {
+	query(action: string | PostData, params: PostData = {}): Promise<{[k: string]: any} | null> {
+		const data: PostData = typeof action === 'string' ? {...params, act: action} : {...action};
 		let url = '/~~' + PS.server.id + '/action.php';
 		if (location.pathname.endsWith('.html')) {
 			url = 'https://' + Config.routes.client + url;
@@ -69,7 +70,11 @@ const PSLoginServer = new class {
 			}
 		}
 		return Net(url).get({method: data ? 'POST' : 'GET', body: data}).then(
-			res => res ? JSON.parse(res.slice(1)) : null
+			res => {
+				if (!res) return null;
+				if (data.act === 'getassertion') return {assertion: res};
+				return JSON.parse(res.startsWith(']') ? res.slice(1) : res);
+			}
 		).catch(
 			() => null
 		);

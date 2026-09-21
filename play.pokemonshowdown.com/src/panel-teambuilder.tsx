@@ -6,7 +6,7 @@
  */
 
 class TeambuilderRoom extends PSRoom {
-	readonly DEFAULT_FORMAT = 'gen8' as ID;
+	readonly DEFAULT_FORMAT = 'gen9' as ID;
 
 	/**
 	 * - `""` - all
@@ -33,15 +33,18 @@ class TeambuilderRoom extends PSRoom {
 			} else {
 				PS.teams.unshift(this.createTeam());
 			}
+			PS.teams.save();
 			this.update(null);
 			return true;
 		} case 'deleteteam': {
 			const team = PS.teams.byKey[target];
 			if (team) PS.teams.delete(team);
+			PS.teams.save();
 			this.update(null);
 			return true;
 		} case 'undeleteteam': {
 			PS.teams.undelete();
+			PS.teams.save();
 			this.update(null);
 			return true;
 		}}

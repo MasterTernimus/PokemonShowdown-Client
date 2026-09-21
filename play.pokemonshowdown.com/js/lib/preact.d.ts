@@ -4,7 +4,7 @@ export as namespace preact;
 declare namespace preact {
 	type Key = string | number;
 	type Ref<T> = (instance: T) => void;
-	type ComponentChild = VNode<any> | string | number | null;
+	type ComponentChild = VNode<any> | string | number | boolean | null | undefined;
 	type ComponentChildren = ComponentChild[] | ComponentChild | object | string | number | null;
 
 	/**
@@ -408,6 +408,7 @@ declare global {
 
 		interface DOMAttributes extends preact.PreactDOMAttributes {
 			// Image Events
+			onError?: GenericEventHandler;
 			onLoad?: GenericEventHandler;
 			onLoadCapture?: GenericEventHandler;
 

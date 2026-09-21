@@ -6,6 +6,15 @@
  */
 
 class ChatRoom extends PSRoom {
+	log: BattleLog | null = null;
+	tour = new ChatTournament(this);
+	override receiveLine(args: Args) {
+		if (args[0] === 'tournament' || args[0] === 'tournaments') {
+			this.tour.receiveLine(args);
+			return;
+		}
+		super.receiveLine(args);
+	}
 	readonly classType: 'chat' | 'battle' = 'chat';
 	users: {[userid: string]: string} = {};
 	userCount = 0;
@@ -380,7 +389,7 @@ class ChatPanel extends PSRoomPanel<ChatRoom> {
 		</div> : null;
 
 		return <PSPanelWrapper room={room}>
-			<div class="tournament-wrapper hasuserlist"></div>
+			<TournamentBox tour={room.tour} left={tinyLayout ? 0 : 146} />
 			<ChatLog class="chat-log" room={this.props.room} onClick={this.focusIfNoSelection} left={tinyLayout ? 0 : 146}>
 				{challengeTo || challengeFrom && [challengeTo, challengeFrom]}
 			</ChatLog>
@@ -390,7 +399,7 @@ class ChatPanel extends PSRoomPanel<ChatRoom> {
 	}
 }
 
-class ChatUserList extends preact.Component<{room: ChatRoom, left?: number, minimized?: boolean}> {
+class ChatUserList extends preact.Component<{room: ChatRoom, left?: number, minimized?: boolean, static?: boolean}> {
 	subscription: PSSubscription | null = null;
 	state = {
 		expanded: false,
@@ -450,6 +459,7 @@ class ChatLog extends preact.Component<{
 	componentDidMount() {
 		if (!this.props.noSubscription) {
 			this.log = new BattleLog(this.base! as HTMLDivElement);
+			this.props.room.log = this.log;
 		}
 		this.subscription = this.props.room.subscribe(tokens => {
 			if (!tokens) return;

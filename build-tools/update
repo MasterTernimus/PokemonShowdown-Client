@@ -104,6 +104,8 @@ compiledFiles += compiler.compileToDir(`replay.pokemonshowdown.com/src`, `replay
 
 compiledFiles += compiler.compileToFile(
 	[
+		'play.pokemonshowdown.com/src/battle-field-rules.ts',
+		'play.pokemonshowdown.com/src/battle-field-tooltips.ts',
 		'play.pokemonshowdown.com/src/battle-dex.ts',
 		'play.pokemonshowdown.com/src/battle-dex-data.ts',
 		'play.pokemonshowdown.com/src/battle-log.ts',

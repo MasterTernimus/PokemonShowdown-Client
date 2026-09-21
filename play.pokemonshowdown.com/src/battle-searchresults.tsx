@@ -7,14 +7,47 @@
  * @license AGPLv3
  */
 
-class PSSearchResults extends preact.Component<{search: DexSearch}> {
+class PSSearchResults extends preact.Component<{
+	search: DexSearch, resultIndex?: number, windowing?: number | null, hideFilters?: boolean,
+	onSelect?: (type: string | null, name: string, slot?: string, reverse?: boolean) => void,
+}> {
+	shownResults = 20;
+	showMore = () => { this.shownResults += 40; this.forceUpdate(); };
+	static renderFilters(search: DexSearch) {
+		return search.filters?.map(([type, name]) => <button class="filter" data-filter={`${type}:${name}`}>
+			{name} <i class="fa fa-times-circle" />
+		</button>);
+	}
+	selectResult = (event: MouseEvent) => {
+		if (!this.props.onSelect) return;
+		const target = event.target as Element;
+		const sort = target.closest<HTMLButtonElement>('button[data-sort]');
+		const filter = target.closest<HTMLButtonElement>('button[data-filter]');
+		if (sort || filter) {
+			event.preventDefault(); event.stopPropagation();
+			if (sort) this.props.search.toggleSort(sort.dataset.sort || '');
+			if (filter) {
+				const [type, name] = filter.dataset.filter!.split(':');
+				this.props.search.removeFilter([type, name] as SearchFilter);
+				this.props.search.find(this.props.search.query);
+			}
+			this.props.onSelect(null, ''); this.forceUpdate(); return;
+		}
+		const entry = target.closest<HTMLElement>('[data-entry]');
+		if (!entry) return;
+		event.preventDefault();
+		event.stopPropagation();
+		const [type, name, slot] = entry.dataset.entry!.split('|');
+		if (!slot && this.props.search.addFilter([type, name])) { this.props.onSelect(null, ''); return; }
+		this.props.onSelect(type, name, slot);
+	};
 	readonly URL_ROOT = `//${Config.routes.dex}/`;
 
 	renderPokemonSortRow() {
 		const search = this.props.search;
 		const sortCol = search.sortCol;
 		return <li class="result"><div class="sortrow">
-			<button class={`sortcol numsortcol${!sortCol ? ' cur' : ''}`}>{!sortCol ? 'Sort: ' : search.firstPokemonColumn}</button>
+			<button class={`sortcol numsortcol${!sortCol ? ' cur' : ''}`} data-sort="">{!sortCol ? 'Sort: ' : search.firstPokemonColumn}</button>
 			<button class={`sortcol pnamesortcol${sortCol === 'name' ? ' cur' : ''}`} data-sort="name">Name</button>
 			<button class={`sortcol typesortcol${sortCol === 'type' ? ' cur' : ''}`} data-sort="type">Types</button>
 			<button class={`sortcol abilitysortcol${sortCol === 'ability' ? ' cur' : ''}`} data-sort="ability">Abilities</button>
@@ -209,7 +242,9 @@ class PSSearchResults extends preact.Component<{search: DexSearch}> {
 
 			<span class="col movedesccol">{move.shortDesc}</span>
 
-		</a></li>;
+		</a><details class="field-move-info" data-field-move={move.id}>
+			<summary>Field effects</summary><div />
+		</details></li>;
 	}
 
 	renderTypeRow(id: ID, matchStart: number, matchEnd: number, errorMessage?: preact.ComponentChildren) {
@@ -326,7 +361,7 @@ class PSSearchResults extends preact.Component<{search: DexSearch}> {
 				<p dangerouslySetInnerHTML={{__html: sanitizedHTML}}></p>
 			</li>;
 		case 'header':
-			return <li class="result"><h3>{id}</h3></li>;
+			return <li class="result"><h3>{id.replace(/&eacute;/g, 'é')}</h3></li>;
 		case 'sortpokemon':
 			return this.renderPokemonSortRow();
 		case 'sortmove':
@@ -355,22 +390,22 @@ class PSSearchResults extends preact.Component<{search: DexSearch}> {
 
 	render() {
 		const search = this.props.search;
-		return <ul class="dexlist">
-			{search.filters && <p>
+		const results = [...(search.prependResults || []), ...(search.results || [])];
+		const limit = this.props.windowing === null ? results.length : Math.max(this.props.windowing || this.shownResults, (this.props.resultIndex || 0) + 1);
+		return <ul class="dexlist" onClick={this.selectResult}>
+			{!this.props.hideFilters && search.filters && <p>
 				Filters: {}
 				{search.filters.map(([type, name]) =>
-					<button class="filter" value={`${type}:${name}`}>
+					<button class="filter" data-filter={`${type}:${name}`}>
 						${name} <i class="fa fa-times-circle"></i>
 					</button>
 				)}
 				{!search.query && <small style="color: #888">(backspace = delete filter)</small>}
 			</p>}
-			{search.results &&
-			// TODO: implement windowing
-			// for now, just show first twenty results
-			search.results.slice(0, 20).map(result =>
+			{results.slice(0, limit).map(result =>
 				this.renderRow(result)
 			)}
+		{results.length > limit && <li><button class="button" onClick={this.showMore}>Show more results</button></li>}
 		</ul>;
 	}
 }

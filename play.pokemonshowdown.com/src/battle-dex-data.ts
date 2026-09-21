@@ -19,7 +19,7 @@
  */
 type ID = string & {__isID: true};
 
-const BattleNatures: {[k in NatureName]: {plus?: StatName, minus?: StatName}} = {
+const BattleNatures: {[k in NatureName]: {plus?: StatNameExceptHP, minus?: StatNameExceptHP}} = {
 	Adamant: {
 		plus: 'atk',
 		minus: 'spa',
@@ -1243,8 +1243,10 @@ class Move implements Effect {
 	readonly ohko: true | 'Ice' | null;
 	readonly recoil: number[] | null;
 	readonly heal: number[] | null;
+	readonly drain?: number[];
 	readonly multihit: number[] | number | null;
 	readonly hasCrashDamage: boolean;
+	readonly damage?: number | 'level';
 	readonly basePowerCallback: boolean;
 	readonly noPPBoosts: boolean;
 	readonly status: string;
@@ -1280,8 +1282,10 @@ class Move implements Effect {
 		this.ohko = data.ohko || null;
 		this.recoil = data.recoil || null;
 		this.heal = data.heal || null;
+		this.drain = data.drain;
 		this.multihit = data.multihit || null;
 		this.hasCrashDamage = data.hasCrashDamage || false;
+		this.damage = data.damage;
 		this.basePowerCallback = !!data.basePowerCallback;
 		this.noPPBoosts = data.noPPBoosts || false;
 		this.status = data.status || '';
@@ -1466,13 +1470,14 @@ class Species implements Effect {
 	readonly forme: string;
 	readonly formeid: string;
 	readonly spriteid: string;
+	readonly standalone: boolean;
 	readonly baseForme: string;
 
 	// basic data
 	readonly num: number;
 	readonly types: ReadonlyArray<TypeName>;
 	readonly abilities: Readonly<{
-		0: string, 1?: string, H?: string, S?: string,
+		0: string, 1?: string, H?: string, S?: string, F?: string, E?: string, G?: string,
 	}>;
 	readonly baseStats: Readonly<{
 		hp: number, atk: number, def: number, spa: number, spd: number, spe: number,
@@ -1499,6 +1504,7 @@ class Species implements Effect {
 	readonly evoItem: string;
 	readonly evoCondition: string;
 	readonly requiredItems: ReadonlyArray<string>;
+	readonly requiredTeraType?: TypeName;
 	readonly tier: string;
 	readonly isTotem: boolean;
 	readonly isMega: boolean;
@@ -1533,6 +1539,7 @@ class Species implements Effect {
 		if (this.spriteid === 'greninja-bond') this.spriteid = 'greninja';
 		if (this.spriteid.slice(-1) === '-') this.spriteid = this.spriteid.slice(0, -1);
 		this.baseForme = data.baseForme || '';
+		this.standalone = !!data.standalone;
 
 		this.num = data.num || 0;
 		this.types = data.types || ['???'];
@@ -1559,6 +1566,7 @@ class Species implements Effect {
 		this.evoItem = data.evoItem || '';
 		this.evoCondition = data.evoCondition || '';
 		this.requiredItems = data.requiredItems || (data.requiredItem ? [data.requiredItem] : []);
+		this.requiredTeraType = data.requiredTeraType;
 		this.tier = data.tier || '';
 
 		this.isTotem = false;

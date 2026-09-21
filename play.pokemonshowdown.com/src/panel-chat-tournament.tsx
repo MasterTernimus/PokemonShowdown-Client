@@ -1,14 +1,45 @@
-import preact from "../js/lib/preact";
-import { Dex, toRoomid } from "./battle-dex";
-import { BattleLog } from "./battle-log";
-import { PSModel, type PSSubscription } from "./client-core";
-import { PS, type RoomID, type Team } from "./client-main";
-import { TeamForm } from "./panel-mainmenu";
-import type { Args } from "./battle-text-parser";
-import type { ChatRoom } from "./panel-chat";
+
+
+
+
+
+
+
 // we check window.d3 before using it, so d3 doesn't need to be loaded before this file
-import * as d3 from 'd3';
-import { PSPanelWrapper, PSRoomPanel } from "./panels";
+// The client ships d3 v3 as a browser global.
+interface D3Point {x: number; y: number}
+interface D3Link<T> {source: T; target: T}
+interface D3Selection<T> {
+	append(name: string): D3Selection<T>;
+	attr(name: string, value: string | number | ((datum: T) => string | number)): D3Selection<T>;
+	classed(name: string, value: boolean | ((datum: T) => boolean)): D3Selection<T>;
+	selectAll(name: string): D3Selection<T>;
+	data<U>(values: U[]): D3Selection<U>;
+	enter(): D3Selection<T>;
+	each(callback: (this: EventTarget, datum: T) => void): D3Selection<T>;
+	on(event: string, callback: () => void): D3Selection<T>;
+	text(value: string): D3Selection<T>;
+}
+interface D3Tree<T> {
+	size(size: number[]): D3Tree<T>;
+	separation(fn: () => number): D3Tree<T>;
+	children(fn: (node: T) => T[] | null): D3Tree<T>;
+	nodes(root: T): T[];
+	links(nodes: T[]): D3Link<T>[];
+}
+interface D3Diagonal {
+	(link: D3Link<TournamentElimBracketNode>): string;
+	source(fn: (link: D3Link<TournamentElimBracketNode>) => D3Point): D3Diagonal;
+	target(fn: (link: D3Link<TournamentElimBracketNode>) => D3Point): D3Diagonal;
+	projection(fn: (point: D3Point) => number[]): D3Diagonal;
+}
+declare const d3: {
+	layout: {tree<T>(): D3Tree<T>};
+	svg: {diagonal(): D3Diagonal};
+	select(element: EventTarget): D3Selection<unknown>;
+	event: Event;
+};
+
 
 interface TreeNode {
 	children?: TreeNode[];
@@ -65,7 +96,7 @@ type TournamentInfo = {
 	challengeBys?: string[],
 	bracketData?: TournamentTreeBracketData | TournamentTableBracketData,
 };
-export class ChatTournament extends PSModel {
+class ChatTournament extends PSModel {
 	info: TournamentInfo = {};
 	updates: TournamentInfo = {};
 	room: ChatRoom;
@@ -335,7 +366,8 @@ export class ChatTournament extends PSModel {
 				}
 				// clear room's tour, so next tour gets a different tour object
 				//  (and the bracket for this one's pop-out is unaffected)
-				this.room.tour = null;
+				this.room.tour = new ChatTournament(this.room);
+				this.room.update(null);
 				this.update();
 				break;
 
@@ -410,7 +442,7 @@ export class ChatTournament extends PSModel {
 	}
 }
 
-export class TournamentBox extends preact.Component<{ tour: ChatTournament, left?: number }> {
+class TournamentBox extends preact.Component<{ tour: ChatTournament, left?: number }> {
 	subscription!: PSSubscription;
 	override componentDidMount(): void {
 		this.subscription = this.props.tour.subscribe(() => {
@@ -524,7 +556,7 @@ export class TournamentBox extends preact.Component<{ tour: ChatTournament, left
 	}
 }
 
-export class TournamentBracket extends preact.Component<{
+class TournamentBracket extends preact.Component<{
 	tour: ChatTournament, poppedOut?: boolean, abbreviated?: boolean,
 }> {
 	subscription!: PSSubscription;
@@ -669,7 +701,7 @@ export class TournamentBracket extends preact.Component<{
 		</div>;
 	}
 }
-export class TournamentTreeBracket extends preact.Component<{
+class TournamentTreeBracket extends preact.Component<{
 	data: TournamentTreeBracketData, abbreviated?: boolean,
 }> {
 	d3Loader: Promise<void> | null = null;
@@ -713,9 +745,7 @@ export class TournamentTreeBracket extends preact.Component<{
 		}
 		if (!window.d3) {
 			div.innerHTML = `<b>d3 not loaded yet</b>`;
-			this.d3Loader ||= PS.libsLoaded.then(() => {
-				this.forceUpdate();
-			});
+			div.textContent = 'Tournament chart library unavailable. Reload to retry.';
 			return div;
 		}
 		this.d3Loader = null;
@@ -940,7 +970,7 @@ export class TournamentTreeBracket extends preact.Component<{
 	}
 }
 
-export class TourPopOutPanel extends PSRoomPanel {
+class TourPopOutPanel extends PSRoomPanel {
 	static readonly id = 'tourpopout';
 	static readonly routes = ['tourpopout'];
 	static readonly location = 'semimodal-popup';

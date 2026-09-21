@@ -1,3 +1,4 @@
+import {TeamEditor} from './battle-team-editor';
 /**
  * Teambuilder team panel
  *
@@ -9,7 +10,7 @@ class TeamRoom extends PSRoom {
 	team: Team | null = null;
 }
 
-class TeamTextbox extends preact.Component<{team: Team}> {
+class LegacyTeamTextbox extends preact.Component<{team: Team}> {
 	setInfo: {
 		species: string,
 		bottomY: number,
@@ -212,7 +213,7 @@ class TeamPanel extends PSRoomPanel<TeamRoom> {
 					Team name:
 					<input class="textbox" type="text" value={team.name} onInput={this.rename} onChange={this.rename} onKeyUp={this.rename} />
 				</label>
-				<TeamTextbox team={team} />
+				<TeamEditor team={team} />
 			</div>
 		</PSPanelWrapper>;
 	}

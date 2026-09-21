@@ -34,7 +34,7 @@ window.addEventListener('dragover', e => {
 });
 
 class PSHeader extends preact.Component<{style: {}}> {
-	handleDragEnter = (e: DragEvent) => {
+	static handleDragEnter = (e: DragEvent) => {
 		console.log('dragenter ' + e.dataTransfer!.dropEffect);
 		e.preventDefault();
 		if (!PS.dragging) return; // TODO: handle dragging other things onto roomtabs
@@ -64,13 +64,13 @@ class PSHeader extends preact.Component<{style: {}}> {
 		// Chrome/Safari/Opera
 		// if (e.dataTransfer) e.dataTransfer.dropEffect = 'move';
 	};
-	handleDragStart = (e: DragEvent) => {
+	static handleDragStart = (e: DragEvent) => {
 		const roomid = PS.router.extractRoomID((e.currentTarget as HTMLAnchorElement).href);
 		if (!roomid) return; // should never happen
 
 		PS.dragging = {type: 'room', roomid};
 	};
-	dragOnto(fromRoom: RoomID, toRoomList: 'leftRoomList' | 'rightRoomList' | 'miniRoomList', toIndex: number) {
+	static dragOnto(fromRoom: RoomID, toRoomList: 'leftRoomList' | 'rightRoomList' | 'miniRoomList', toIndex: number) {
 		// one day you will be able to rearrange mainmenu and rooms, but not today
 		if (fromRoom === '' || fromRoom === 'rooms') return;
 
@@ -119,7 +119,7 @@ class PSHeader extends preact.Component<{style: {}}> {
 		}
 		PS.update();
 	}
-	renderRoomTab(id: RoomID) {
+	static renderRoomTab(id: RoomID, vertical = false) {
 		const room = PS.rooms[id]!;
 		const closable = (id === '' || id === 'rooms' ? '' : ' closable');
 		const cur = PS.isVisible(room) ? ' cur' : '';
@@ -194,7 +194,7 @@ class PSHeader extends preact.Component<{style: {}}> {
 		return <li>
 			<a
 				class={className} href={`/${id}`} draggable={true}
-				onDragEnter={this.handleDragEnter} onDragStart={this.handleDragStart}
+				onDragEnter={PSHeader.handleDragEnter} onDragStart={PSHeader.handleDragStart}
 			>
 				{icon} <span>{title}</span>
 			</a>
@@ -228,13 +228,13 @@ class PSHeader extends preact.Component<{style: {}}> {
 			<div class="maintabbarbottom"></div>
 			<div class="tabbar maintabbar"><div class="inner">
 				<ul>
-					{this.renderRoomTab(PS.leftRoomList[0])}
+					{PSHeader.renderRoomTab(PS.leftRoomList[0])}
 				</ul>
 				<ul>
-					{PS.leftRoomList.slice(1).map(roomid => this.renderRoomTab(roomid))}
+					{PS.leftRoomList.slice(1).map(roomid => PSHeader.renderRoomTab(roomid))}
 				</ul>
 				<ul class="siderooms" style={{float: 'none', marginLeft: PS.leftRoomWidth - 144}}>
-					{PS.rightRoomList.map(roomid => this.renderRoomTab(roomid))}
+					{PS.rightRoomList.map(roomid => PSHeader.renderRoomTab(roomid))}
 				</ul>
 			</div></div>
 			<div class="userbar">
@@ -256,7 +256,7 @@ preact.render(<PSMain />, document.body, document.getElementById('ps-frame')!);
  * User popup
  */
 
-class UserRoom extends PSRoom {
+class LegacyUserRoom extends PSRoom {
 	readonly classType = 'user';
 	userid: ID;
 	name: string;
@@ -271,7 +271,7 @@ class UserRoom extends PSRoom {
 	}
 }
 
-class UserPanel extends PSRoomPanel<UserRoom> {
+class LegacyUserPanel extends PSRoomPanel<LegacyUserRoom> {
 	render() {
 		const room = this.props.room;
 		const user = PS.mainmenu.userdetailsCache[room.userid] || {userid: room.userid, avatar: '[loading]'};
@@ -386,11 +386,11 @@ class UserPanel extends PSRoomPanel<UserRoom> {
 }
 
 PS.roomTypes['user'] = {
-	Model: UserRoom,
-	Component: UserPanel,
+	Model: LegacyUserRoom,
+	Component: LegacyUserPanel,
 };
 
-class VolumePanel extends PSRoomPanel {
+class LegacyVolumePanel extends PSRoomPanel {
 	setVolume = (e: Event) => {
 		const slider = e.currentTarget as HTMLInputElement;
 		PS.prefs.set(slider.name as 'effectvolume', Number(slider.value));
@@ -446,10 +446,10 @@ class VolumePanel extends PSRoomPanel {
 }
 
 PS.roomTypes['volume'] = {
-	Component: VolumePanel,
+	Component: LegacyVolumePanel,
 };
 
-class OptionsPanel extends PSRoomPanel {
+class LegacyOptionsPanel extends PSRoomPanel {
 	setTheme = (e: Event) => {
 		const theme = (e.currentTarget as HTMLSelectElement).value as 'light' | 'dark' | 'system';
 		PS.prefs.set('theme', theme);
@@ -471,5 +471,5 @@ class OptionsPanel extends PSRoomPanel {
 }
 
 PS.roomTypes['options'] = {
-	Component: OptionsPanel,
+	Component: LegacyOptionsPanel,
 };

@@ -52,10 +52,11 @@ describe('Reviewed sprite asset routes', () => {
    assert(fs.statSync(local(`${data.spriteDir}${data.shiny?'-shiny':''}/${data.spriteid}.png`)).size>0);
   }
  });
- it('uses existing BW G-Max Cinderace animations', () => {
+ it('uses BW G-Max Cinderace animations and supplied static shinies', () => {
   for(const shiny of [false,true])for(const front of [false,true]) {
    const data=Dex.getSpriteData('Cinderace-Gmax',front,{gen:9,shiny});
-   assert(data.url.includes('/gen5ani'),data.url);
+   assert(data.url.includes(shiny ? '/gen5' + (front ? '' : '-back') + '-shiny/' : '/gen5ani'),data.url);
+   if(shiny) assert(data.url.split('?')[0].endsWith('.png'),data.url);
    assert(fs.statSync(local(data.url)).size>0);
   }
  });

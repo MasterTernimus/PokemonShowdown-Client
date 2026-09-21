@@ -573,7 +573,9 @@
 		// desc
 		buf += '<span class="col movedesccol">' + BattleLog.escapeHTML(move.shortDesc) + '</span> ';
 
-		buf += '</a></li>';
+		buf += '</a>';
+		if (window.BattleFieldTooltips) buf += window.BattleFieldTooltips.teamBuilderHTML(move);
+		buf += '</li>';
 
 		return buf;
 	};

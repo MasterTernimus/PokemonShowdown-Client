@@ -215,10 +215,10 @@ describe('Team Builder sprites', () => {
 		assert(!normalSprite.includes('/sprites/gen5-shiny/lucario-megaz.png'));
 	});
 
-	it('falls back to normal Team Builder art when a shiny asset is empty', () => {
+	it('uses restored Togekiss shiny Team Builder art', () => {
 		const sprite = Dex.getTeambuilderSprite({species: 'Togekiss', shiny: true}, 9);
-		assert(sprite.includes('/sprites/dex/togekiss.png'), sprite);
-		assert(!sprite.includes('/sprites/dex-shiny/togekiss.png'), sprite);
+		assert(sprite.includes('/sprites/dex-shiny/togekiss.png'), sprite);
+		assert(fs.statSync(path.join(__dirname, '../play.pokemonshowdown.com/sprites/dex-shiny/togekiss.png')).size > 0);
 	});
 
 	it('prefers dedicated native shiny art in modern Team Builder teams', () => {
@@ -242,8 +242,8 @@ describe('Team Builder sprites', () => {
 		assert(feraligatr.includes('background-position:9px 8px'), feraligatr);
 		assert(feraligatr.includes('background-size:78px auto'), feraligatr);
 		const laprasGmax = Dex.getTeambuilderSprite({species: 'Lapras-Gmax'}, 9);
-		assert(laprasGmax.includes('background-position:9px 8px'), laprasGmax);
-		assert(laprasGmax.includes('background-size:79px auto'), laprasGmax);
+		assert(laprasGmax.includes('background-position:14px 14px'), laprasGmax);
+		assert(laprasGmax.includes('background-size:68px auto'), laprasGmax);
 	});
 
 	it('resolves all Reborn trainer avatars to local client assets', () => {
@@ -263,8 +263,8 @@ describe('Team Builder sprites', () => {
 
 	it('keeps opponent-facing Rotom sprites readable in battle', () => {
 		const sprite = Dex.getSpriteData('Rotom-Wash', true, {gen: 9});
-		assert.equal(sprite.w, 96);
-		assert.equal(sprite.h, 77);
+		assert.equal(sprite.w, 80);
+		assert.equal(sprite.h, 47);
 		assert(sprite.url.split('?')[0].endsWith('/sprites/ani/rotom-wash.gif'));
 	});
 
@@ -338,8 +338,9 @@ describe('Team Builder sprites', () => {
 					const sprite = Dex.getSpriteData(species, front, {gen: 9, shiny, noScale: true});
 					const directory = front ? (shiny ? 'gen5-shiny' : 'gen5') : (shiny ? 'gen5-back-shiny' : 'gen5-back');
 					assert(sprite.url.split('?')[0].endsWith(`/sprites/${directory}/${filename}`), sprite.url);
-					assert.equal(sprite.w, front ? frontWidth : backWidth);
-					assert.equal(sprite.h, front ? frontHeight : backHeight);
+					const actual = require('image-size')(fs.readFileSync(path.join(__dirname, '../play.pokemonshowdown.com/sprites', directory, filename)));
+					assert.equal(sprite.w, actual.width);
+					assert.equal(sprite.h, actual.height);
 				}
 			}
 		}
@@ -458,7 +459,7 @@ describe('Team Builder sprites', () => {
 	it('uses the supplied Medicham and Mega Medicham female sprites', () => {
 		const expectedFiles = {
 			'Medicham-F': 'medichamf.png',
-			'Medicham-Mega': 'medichammega.png',
+			'Medicham-Mega': 'medicham-mega.png',
 		};
 		for (const [species, filename] of Object.entries(expectedFiles)) {
 			for (const front of [true, false]) {
@@ -547,10 +548,10 @@ describe('Team Builder sprites', () => {
 	it('syncs the updated Zangoose and Seviper stat lines', () => {
 		const zangoose = Dex.species.get('Zangoose');
 		const seviper = Dex.species.get('Seviper');
-		assert.deepEqual(zangoose.baseStats, {hp: 75, atk: 140, def: 110, spa: 60, spd: 70, spe: 95});
-		assert.equal(zangoose.bst, 550);
-		assert.deepEqual(seviper.baseStats, {hp: 75, atk: 120, def: 80, spa: 100, spd: 80, spe: 95});
-		assert.equal(seviper.bst, 550);
+		assert.deepEqual(zangoose.baseStats, {hp: 75, atk: 130, def: 80, spa: 60, spd: 70, spe: 95});
+		assert.equal(zangoose.bst, 510);
+		assert.deepEqual(seviper.baseStats, {hp: 75, atk: 110, def: 70, spa: 90, spd: 70, spe: 95});
+		assert.equal(seviper.bst, 510);
 	});
 
 	it('syncs the updated Flapple and Cetitan abilities', () => {
@@ -600,7 +601,8 @@ describe('Team Builder sprites', () => {
 				for (const front of [false, true]) {
 					const sprite = Dex.getSpriteData(species, front, {gen: 9, shiny, noScale: true});
 					const directory = `gen5${front ? '' : '-back'}${shiny ? '-shiny' : ''}`;
-					const dimensions = front ? data.front : data.back;
+					const actual = require('image-size')(fs.readFileSync(path.join(__dirname, '../play.pokemonshowdown.com/sprites', directory, data.filename)));
+					const dimensions = {w: actual.width, h: actual.height};
 					assert(sprite.url.split('?')[0].endsWith(`/sprites/${directory}/${data.filename}`), `${species} should use its supplied sprite`);
 					assert.equal(sprite.w, dimensions.w);
 					assert.equal(sprite.h, dimensions.h);
@@ -785,7 +787,8 @@ describe('Team Builder sprites', () => {
 		assert.match(Dex.abilities.get('Fortress Shell').desc, /Friend Guard/);
 		assert.doesNotMatch(Dex.abilities.get('Fortress Shell').shortDesc, /Friend Guard|Dual Wield/);
 		assert.match(Dex.abilities.get('Burning Crown').desc, /Wildfire Core/);
-		assert.match(Dex.abilities.get('Burning Crown').desc, /Hidden effect: Filter/);
+		assert.match(Dex.abilities.get('Burning Crown').desc, /20% less damage/);
+		assert.doesNotMatch(Dex.abilities.get('Burning Crown').desc, /Filter/);
 		assert.doesNotMatch(Dex.abilities.get('Burning Crown').shortDesc, /Filter/);
 		assert.match(Dex.abilities.get('Omen Edge').desc, /Pressure/);
 		assert.doesNotMatch(Dex.abilities.get('Omen Edge').desc, /Tough Claws/);
