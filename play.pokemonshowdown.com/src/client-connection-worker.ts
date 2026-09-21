@@ -1,8 +1,9 @@
+export {};
 declare const SockJS: any;
-import type { ServerInfo } from "./client-main";
+
 
 let socket: WebSocket | null = null;
-let serverInfo: ServerInfo;
+let serverInfo: {protocol: 'http' | 'https'; host: string; port: number; prefix: string};
 let reconnectTimeout: ReturnType<typeof setTimeout> | null = null;
 let queue: string[] = [];
 

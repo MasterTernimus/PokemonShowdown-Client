@@ -142,6 +142,22 @@ const STEEL_MOVE_POWER_ABILITIES: {[abilityName: string]: number} = {
 };
 
 class BattleTooltips {
+	static getTypeAbilityWeakness(type: TypeName, ability: ID, dex: ModdedDex = Dex): number {
+		const effects = Dex.getAbilityEffects(ability, new Set<ID>(), dex);
+		const has = (id: string) => effects.has(toID(id));
+		if (type === 'Ground' && has('levitate')) return 0;
+		if (type === 'Water' && ['waterabsorb', 'stormdrain', 'dryskin'].some(has)) return 0;
+		if (type === 'Fire' && ['flashfire', 'wellbakedbody'].some(has)) return 0;
+		if (type === 'Electric' && ['voltabsorb', 'motordrive', 'lightningrod'].some(has)) return 0;
+		if (type === 'Grass' && has('sapsipper')) return 0;
+		let factor = 1;
+		if ((type === 'Fire' || type === 'Ice') && has('thickfat')) factor *= 0.5;
+		if (type === 'Fire' && has('waterbubble')) factor *= 0.5;
+		if (type === 'Fire' && has('heatproof')) factor *= 0.5;
+		if (type === 'Fire' && has('dryskin')) factor *= 1.25;
+		if (type === 'Ghost' && has('purifyingsalt')) factor *= 0.5;
+		return factor;
+	}
 	battle: Battle;
 
 	constructor(battle: Battle) {
@@ -589,7 +605,7 @@ class BattleTooltips {
 				let movePower = BattleTooltips.getZMoveBasePower(move);
 				// the different Hidden Power types don't have a Z power set, fall back on base move
 				if (!movePower && move.id.startsWith('hiddenpower')) {
-					movePower = this.battle.dex.moves.get('hiddenpower').zMove!.basePower;
+					movePower = this.battle.dex.moves.get('hiddenpower').zMove?.basePower || 0;
 				}
 				if (move.id === 'weatherball') {
 					switch (this.battle.weather) {
@@ -644,6 +660,8 @@ class BattleTooltips {
 
 		text += Dex.getTypeIcon(moveType);
 		text += ` ${Dex.getCategoryIcon(category)}</h2>`;
+		const fieldNotes = (window as any).BattleFieldTooltips?.activeNotes(this.battle, move, pokemon, serverPokemon, foeActive[0]);
+		if (fieldNotes) text += '<p class="tooltip-section">' + BattleLog.escapeHTML(fieldNotes) + '</p>';
 		if (gardenSecretPower) text += `<p>Secret Power becomes ${move.name} in Flower Garden Stage ${gardenStage}.</p>`;
 		if (this.battle.hasPseudoWeather('Flower Garden 1') && ['growth', 'rototiller'].includes(move.id)) {
 			text += '<p>Flower Garden: +2 Attack and +2 Sp. Atk.' +
@@ -1620,14 +1638,22 @@ class BattleTooltips {
 			const stats = this.calculateModifiedStats(pokemon, serverPokemon, true);
 			if (stats.atk > stats.spa) category = 'Physical';
 		}
-		if (this.battle.hasPseudoWeather('Midnight Zone Terrain') && category !== 'Status' &&
-			(moveType === 'Ground' || ['dragondarts', 'gravapple'].includes(move.id))) moveType = 'Water';
+		const fieldPreview = (window as any).BattleFieldTooltips?.preview(this.battle, {...move, type: moveType, category}, pokemon, serverPokemon);
+		if (fieldPreview) {
+			moveType = fieldPreview.result.move.type;
+			category = fieldPreview.result.move.category;
+		}
 		return [moveType, category];
 	}
 
 	// Gets the current accuracy for a move.
 	getMoveAccuracy(move: Move, value: ModifiableValue, target?: Pokemon) {
 		value.reset(move.accuracy === true ? 0 : move.accuracy, true);
+		const fieldAccuracy = (window as any).BattleFieldTooltips?.preview(this.battle, move, value.pokemon, value.serverPokemon, target);
+		if (fieldAccuracy && fieldAccuracy.result.accuracy !== move.accuracy) {
+			value.set(fieldAccuracy.result.accuracy === true ? 0 : fieldAccuracy.result.accuracy, fieldAccuracy.field.name);
+			if (fieldAccuracy.result.accuracy === true) return value;
+		}
 
 		let pokemon = value.pokemon!;
 		// Sure-hit accuracy
@@ -1747,7 +1773,11 @@ class BattleTooltips {
 		// apply modifiers for moves that depend on the actual stats
 		const modifiedStats = this.calculateModifiedStats(pokemon, serverPokemon);
 
-		value.reset(move.basePower);
+		const fieldPower = (window as any).BattleFieldTooltips?.preview(this.battle,
+			{...move, type: moveType, midnightGround: move.type === 'Ground' && this.battle.hasPseudoWeather('Midnight Zone Terrain')},
+			pokemon, serverPokemon, target);
+		if (fieldPower) move = {...move, category: fieldPower.result.move.category};
+		value.reset(fieldPower ? fieldPower.result.move.basePower : move.basePower);
 
 		if (move.id === 'acrobatics') {
 			if (!serverPokemon.item) {
@@ -1850,10 +1880,10 @@ class BattleTooltips {
 		if (move.id === 'hydrosteam') {
 			value.weatherModify(1.5, 'Sunny Day');
 		}
-		if (move.id === 'psyblade' && this.battle.hasPseudoWeather('Electric Terrain')) {
+		if (!fieldPower && move.id === 'psyblade' && this.battle.hasPseudoWeather('Electric Terrain')) {
 			value.modify(1.5, 'Electric Terrain');
 		}
-		if (move.id === 'terrainpulse' && pokemon.isGrounded(serverPokemon)) {
+		if (!fieldPower && move.id === 'terrainpulse' && pokemon.isGrounded(serverPokemon)) {
 			if (
 				this.battle.hasPseudoWeather('Electric Terrain') ||
 				this.battle.hasPseudoWeather('Grassy Terrain') ||
@@ -2059,35 +2089,37 @@ class BattleTooltips {
 		}
 
 		// Terrain
-		if ((this.battle.hasPseudoWeather('Electric Terrain') && moveType === 'Electric') ||
-			(this.battle.hasPseudoWeather('Grassy Terrain') && moveType === 'Grass') ||
-			(this.battle.hasPseudoWeather('Psychic Terrain') && moveType === 'Psychic')) {
-			if (pokemon.isGrounded(serverPokemon)) {
-				value.modify(this.battle.gen > 7 ? 1.3 : 1.5, 'Terrain boost');
+		if (!fieldPower) {
+			if ((this.battle.hasPseudoWeather('Electric Terrain') && moveType === 'Electric') ||
+				(this.battle.hasPseudoWeather('Grassy Terrain') && moveType === 'Grass') ||
+				(this.battle.hasPseudoWeather('Psychic Terrain') && moveType === 'Psychic')) {
+				if (pokemon.isGrounded(serverPokemon)) {
+					value.modify(this.battle.gen > 7 ? 1.3 : 1.5, 'Terrain boost');
+				}
+			} else if (this.battle.hasPseudoWeather('Misty Terrain') && moveType === 'Dragon') {
+				if (target ? target.isGrounded() : true) {
+					value.modify(0.5, 'Misty Terrain + grounded target');
+				}
+			} else if (
+				this.battle.hasPseudoWeather('Grassy Terrain') && ['earthquake', 'bulldoze', 'magnitude'].includes(move.id)
+			) {
+				if (target ? target.isGrounded() : true) {
+					value.modify(0.5, 'Grassy Terrain + grounded target');
+				}
 			}
-		} else if (this.battle.hasPseudoWeather('Misty Terrain') && moveType === 'Dragon') {
-			if (target ? target.isGrounded() : true) {
-				value.modify(0.5, 'Misty Terrain + grounded target');
+			if (
+				move.id === 'expandingforce' &&
+				this.battle.hasPseudoWeather('Psychic Terrain') &&
+				pokemon.isGrounded(serverPokemon)
+			) {
+				value.modify(1.5, 'Expanding Force + Psychic Terrain boost');
 			}
-		} else if (
-			this.battle.hasPseudoWeather('Grassy Terrain') && ['earthquake', 'bulldoze', 'magnitude'].includes(move.id)
-		) {
-			if (target ? target.isGrounded() : true) {
-				value.modify(0.5, 'Grassy Terrain + grounded target');
+			if (move.id === 'mistyexplosion' && this.battle.hasPseudoWeather('Misty Terrain')) {
+				value.modify(1.5, 'Misty Explosion + Misty Terrain boost');
 			}
-		}
-		if (
-			move.id === 'expandingforce' &&
-			this.battle.hasPseudoWeather('Psychic Terrain') &&
-			pokemon.isGrounded(serverPokemon)
-		) {
-			value.modify(1.5, 'Expanding Force + Psychic Terrain boost');
-		}
-		if (move.id === 'mistyexplosion' && this.battle.hasPseudoWeather('Misty Terrain')) {
-			value.modify(1.5, 'Misty Explosion + Misty Terrain boost');
-		}
-		if (move.id === 'risingvoltage' && this.battle.hasPseudoWeather('Electric Terrain') && target?.isGrounded()) {
-			value.modify(2, 'Rising Voltage + Electric Terrain boost');
+			if (move.id === 'risingvoltage' && this.battle.hasPseudoWeather('Electric Terrain') && target?.isGrounded()) {
+				value.modify(2, 'Rising Voltage + Electric Terrain boost');
+			}
 		}
 
 		// Item
@@ -2103,15 +2135,16 @@ class BattleTooltips {
 			value.set(60, 'Tera type BP minimum');
 		}
 
-		if (this.battle.hasPseudoWeather('Midnight Zone Terrain') && move.category !== 'Status') {
-			if (['Water', 'Ice', 'Dark'].includes(moveType)) value.modify(1.5, 'Midnight Zone');
-			if (moveType === 'Electric' || move.type === 'Ground') value.modify(1.2, 'Midnight Zone');
-			if (move.id === 'waterpulse') value.modify(1.5, 'Jet-streamed');
-			if (['anchorshot', 'dragondarts'].includes(move.id)) value.modify(2, 'From the depths');
-			if (['darkpulse', 'nightdaze', 'nightslash', 'shadowball', 'shadowforce', 'shadowclaw', 'shadowpunch', 'shadowbone'].includes(move.id)) value.modify(1.2, 'Lightless abyss');
-			if (['signalbeam', 'doomdesire', 'flashcannon', 'lusterpurge', 'dazzlinggleam', 'mirrorshot', 'technoblast', 'powergem', 'moongeistbeam', 'menacingmoonrazemaelstrom'].includes(move.id)) value.modify(0.5, 'Light disappeared');
-			if (move.category === 'Physical' && !pokemon.getTypes(serverPokemon)[0].includes('Water') && !value.tryAbility('Steelworker') && !value.tryAbility('Schooling') && !value.tryAbility('Swift Swim')) value.modify(0.33, 'Water pressure');
-			if (moveType === 'Fire' || ['defog', 'spikes', 'stealthrock', 'stickyweb', 'toxicspikes', 'tarshot', 'stoneaxe', 'ceaselessedge'].includes(move.id)) value.set(0, 'Fails in Midnight Zone');
+		if (fieldPower && move.category !== 'Status') {
+			const reason = fieldPower.field.name;
+			if (fieldPower.min !== fieldPower.max) {
+				value.setRange(value.value * fieldPower.min, (value.maxValue || value.value) * fieldPower.max,
+					reason + ' (range: field state is not sent to the client)');
+			} else if (fieldPower.min === 0) {
+				value.set(0, 'Fails in ' + reason);
+			} else if (fieldPower.min !== 1) {
+				value.modify(fieldPower.min, reason);
+			}
 		}
 
 		// Burn isn't really a base power modifier, so it needs to be applied after the Tera BP floor
@@ -2411,8 +2444,8 @@ class BattleStatGuesser {
 		for (let stat in evs) {
 			evs[stat as StatName] = comboEVs[stat as StatName] || 0;
 		}
-		let plusStat = comboEVs.plusStat || '';
-		let minusStat = comboEVs.minusStat || '';
+		let plusStat: StatNameExceptHP | '' = comboEVs.plusStat || '';
+		let minusStat: StatNameExceptHP | '' = comboEVs.minusStat || '';
 		return {role, evs, plusStat, minusStat, moveCount: this.moveCount, hasMove: this.hasMove};
 	}
 	guessRole(set: PokemonSet) {
@@ -2724,7 +2757,7 @@ class BattleStatGuesser {
 		evTotal -= diff;
 		return evTotal; // can't do it :(
 	}
-	guessEVs(set: PokemonSet, role: string): Partial<StatsTable> & {plusStat?: StatName | '', minusStat?: StatName | ''} {
+	guessEVs(set: PokemonSet, role: string): Partial<StatsTable> & {plusStat?: StatNameExceptHP | '', minusStat?: StatNameExceptHP | ''} {
 		if (!set) return {};
 		if (role === '?') return {};
 		let species = this.dex.species.get(set.species || set.name!);
@@ -2733,11 +2766,11 @@ class BattleStatGuesser {
 		let hasMove = this.hasMove;
 		let moveCount = this.moveCount;
 
-		let evs: StatsTable & {plusStat?: StatName | '', minusStat?: StatName | ''} = {
+		let evs: StatsTable & {plusStat?: StatNameExceptHP | '', minusStat?: StatNameExceptHP | ''} = {
 			hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0,
 		};
-		let plusStat: StatName | '' = '';
-		let minusStat: StatName | '' = '';
+		let plusStat: StatNameExceptHP | '' = '';
+		let minusStat: StatNameExceptHP | '' = '';
 
 		let statChart: {[role: string]: [StatName, StatName]} = {
 			'Bulky Band': ['atk', 'hp'],
@@ -2757,11 +2790,11 @@ class BattleStatGuesser {
 			'Specially Defensive': ['spd', 'hp'],
 		};
 
-		plusStat = statChart[role][0];
+		plusStat = statChart[role][0] as StatNameExceptHP;
 		if (role === 'Fast Bulky Support') moveCount['Ultrafast'] = 0;
 		if (plusStat === 'spe' && moveCount['Ultrafast']) {
 			if (statChart[role][1] === 'atk' || statChart[role][1] === 'spa') {
-				plusStat = statChart[role][1];
+				plusStat = statChart[role][1] as 'atk' | 'spa';
 			} else if (moveCount['Physical'] >= 3) {
 				plusStat = 'atk';
 			} else if (stats.spd > stats.def) {
@@ -2988,3 +3021,29 @@ if (typeof require === 'function') {
 	// in Node
 	(global as any).BattleStatGuesser = BattleStatGuesser;
 }
+
+/** Find a legal spread that preserves every stat while saving EVs. */
+function BattleStatOptimizer(set: PokemonSet, format: ID) {
+	const calculator = new BattleStatGuesser(format);
+	if (calculator.dex.gen < 3 || !calculator.supportsEVs || calculator.ignoreEVLimits) return null;
+	const originalTotal = Dex.statNames.reduce((sum, stat) => sum + (set.evs?.[stat] || 0), 0);
+	if (originalTotal > 510) return null;
+	const targets = Dex.statNames.map(stat => calculator.getStat(stat, set));
+	let best: {evs: StatsTable; plus?: StatNameExceptHP; minus?: StatNameExceptHP; savedEVs: number} | null = null;
+	for (const nature of Object.values(BattleNatures)) {
+		const evs: StatsTable = {hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0};
+		let possible = true;
+		for (let i = 0; i < Dex.statNames.length; i++) {
+			const stat = Dex.statNames[i];
+			const multiplier = nature.plus === stat ? 1.1 : nature.minus === stat ? 0.9 : 1;
+			let ev = 0;
+			while (ev <= 252 && calculator.getStat(stat, set, ev, multiplier) < targets[i]) ev += 4;
+			if (ev > 252) { possible = false; break; }
+			evs[stat] = ev;
+		}
+		const savedEVs = originalTotal - Object.values(evs).reduce((a, b) => a + b, 0);
+		if (possible && savedEVs > (best?.savedEVs || 0)) best = {evs, plus: nature.plus, minus: nature.minus, savedEVs};
+	}
+	return best;
+}
+if (typeof require === 'function') (global as any).BattleStatOptimizer = BattleStatOptimizer;

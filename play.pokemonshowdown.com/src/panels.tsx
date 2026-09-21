@@ -119,6 +119,10 @@ class PSRouter {
 PS.router = new PSRouter();
 
 class PSRoomPanel<T extends PSRoom = PSRoom> extends preact.Component<{room: T}> {
+	close() { PS.leave(this.props.room.id); }
+	subscribeTo(model: PSModel, listener?: () => void) {
+		this.subscriptions.push(model.subscribe(listener || (() => this.forceUpdate())));
+	}
 	subscriptions: PSSubscription[] = [];
 	componentDidMount() {
 		if (PS.room === this.props.room) this.focus();
@@ -166,8 +170,16 @@ class PSRoomPanel<T extends PSRoom = PSRoom> extends preact.Component<{room: T}>
 	}
 }
 
+function PSIcon(props: {pokemon?: string | PokemonSet, item?: string | null, type?: string}) {
+	if (props.type) return <span dangerouslySetInnerHTML={{__html: Dex.getTypeIcon(props.type)}} />;
+	if ('item' in props) return <span class="itemicon" style={Dex.getItemIcon(props.item || '')} />;
+	return <span class="picon" style={Dex.getPokemonIcon(props.pokemon || null)} />;
+}
+
+const PSView = {isMac: /Mac|iPhone|iPad/.test(navigator.platform)};
+
 function PSPanelWrapper(props: {
-	room: PSRoom, children: preact.ComponentChildren, scrollable?: boolean, width?: number | 'auto',
+	room: PSRoom, children: preact.ComponentChildren, scrollable?: boolean, width?: number | 'auto', fullSize?: boolean,
 }) {
 	const room = props.room;
 	if (room.location === 'mini-window') {
@@ -177,7 +189,7 @@ function PSPanelWrapper(props: {
 		return <div id={`room-${room.id}`} class="mini-window-contents ps-room-light">{props.children}</div>;
 	}
 	if (room.location !== 'left' && room.location !== 'right') {
-		const style = PSMain.getPopupStyle(room, props.width);
+		const style = PSMain.getPopupStyle(room, props.fullSize ? window.innerWidth - 40 : props.width);
 		return <div class="ps-popup" id={`room-${room.id}`} style={style}>
 			{props.children}
 		</div>;

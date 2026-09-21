@@ -3262,7 +3262,7 @@ Object.assign(CUSTOM_PARTY_ICON_SPRITES,{"silvally":{"normal":"silvally.png","no
 
 
 // These custom profiles intentionally use their shiny artwork in every view.
-const FORCE_SHINY_CUSTOM_SPRITE_IDS = new Set<ID>(['spiritombalt']);
+const FORCE_SHINY_CUSTOM_SPRITE_IDS = new Set<string>(['spiritombalt']);
 // Some legacy shiny paths are tracked as empty placeholders. Use normal art
 // for those entries instead of leaving a blank sprite in the Team Builder.
 const MISSING_SHINY_SPRITE_IDS = new Set(['abra','aerodactyl','alcremie-matchacream','ampharos','anorith','arceus','arceus-fire','arceus-ground','arceus-ice','arceus-normal','arceus-poison','arceus-psychic','arceus-rock','arceus-steel','arceus-water','archen','archeops','arctovolt','argalis','arghonaut','arghonaut-f','armaldo','aron','articuno','audino','aurumoth','axew','azelf','azumarill','azurill','bagon','baltoy','banette','barboach','basculin','basculin-bluestriped','bastiodon','bayleef','beautifly','beautifly-f','beheeyem','beldum','bellossom','bellsprout','bibarel','bibarel-f','bidoof','bidoof-f','bisharp','blaziken','blissey','boldore','bouffalant','braixen','breezi','bronzong','buneary','burmy','burmy-plant','burmy-trash','butterfree-f','cacnea','caimanoe','caribolt','carnivine','carracosta','chansey','cherrim','cherubi','chinchou','chuggalong','cinccino','clefairy','cleffa','cloyster','cofagrigus','colossoil','colossoil-f','conkeldurr','coribalis','corphish','corsola','corsola-galar','cranidos','crawdaunt','cresceidon','cresselia','cyndaquil','darkrai','darmanitan-galarzen','deerling','deerling-summer','deerling-winter','deino','delcatty','delibird','diancie','doduo-f','donphan-f','dratini','druddigon','ducklett','durant','eevee','emolga','entei','equilibra','floette-red','forretress','gastrodon','gible','gigalith','golurk','gothita','grimer','gyarados','gyarados-f','hemogoblin','hitmonlee','honchkrow','hooh','houndoom-f','houndour','hypno','illumise','karrablast','keldeo','keldeo-resolute','kerfluffle','kerfluffle-f','kingdra','koffing','krillowatt','krilowatt','krilowatt-f','krokorok','krookodile','kyogre','lanturn','lileep','ludicolo','lugia','lycanroc-midday','mantyke','maractus','mienfoo','mienshao','mightyena','miltank','minior','monferno','munchlax','munna','nidorina','nincada','nuzleaf-f','omastar','pachirisu-f','pangoro','pansear','pelipper','persian','phanpy','pidgeotto','pikachu-hoenn','pineco','plusle','pokestarbrycenman','poliwrath','ponyta-galar','porygonz','primeape','prinplup','privatyke','pumpkaboo','raichu','raticate-f','rattata','rayquaza','regice','regirock','rhydon-f','rhyhorn','riolu','sceptile','seaking','seaking-f','shaymin','shedinja','shelgon','shellder','skiploom','slowpoke','snaelstrom','spinarak','spinda','spoink','squirtle','staraptor','stratagem','stunfisk-galar','swampert','swanna','teddiursa','tentacool','tentacruel','terrakion','throh','thundurus','thundurus-therian','timburr','tirtouga','togekiss','togepi','togetic','tomohawk','tomohawk-f','torchic','tornadus','tornadus-therian','totodile','toxicroak','toxicroak-f','tranquill','trapinch','trubbish','turtwig','tympole','tynamo','tyranitar','tyrogue','umbreon','unfezant','unfezant-f','unown','unown-a','unown-b','unown-c','unown-d','unown-e','unown-exclamation','unown-f','unown-g','unown-h','unown-i','unown-j','unown-k','unown-l','unown-m','unown-n','unown-o','unown-p','unown-q','unown-question','unown-s','unown-t','unown-u','unown-v','unown-w','unown-x','unown-y','unown-z','ursaring','ursaring-f','uxie','vanillish','vanillite','venipede','venomoth','venonat','venusaur-f','vespiquen','vibrava','victini','vigoroth','vileplume','vileplume-f','virizion','vivillon-pokeball','volbeat','volcanion','volcarona','volkraken','volkritter','voltorb','voodoll','voodoom','voodoom-f','vullaby','vulpix','wailmer','wailord','walrein','wartortle','watchog','weedle','weepinbell','weezing','whirlipede','whiscash','whismur','wigglytuff','wingull','wobbuffet','wobbuffet-f','woobat','wooper','wormadam','wormadam-plant','wormadam-trash','wurmple','wynaut','xatu','xatu-f','yamask','zigzagoon','zigzagoon-galar']);
@@ -3296,8 +3296,8 @@ MISSING_SHINY_SPRITE_IDS.delete('ampharos');
 // These species start shiny when selected, but can still be switched back to
 // normal in the team editor. This is intentionally separate from the forced
 // set above so an explicit "No" shiny choice remains respected in battle.
-const DEFAULT_SHINY_CUSTOM_SPRITE_IDS = new Set<ID>(['basculegion', 'basculegionf', 'spiritombalt']);
-export function isDefaultShinyCustomSpecies(name: string) {
+const DEFAULT_SHINY_CUSTOM_SPRITE_IDS = new Set<string>(['basculegion', 'basculegionf', 'spiritombalt']);
+function isDefaultShinyCustomSpecies(name: string) {
 	return DEFAULT_SHINY_CUSTOM_SPRITE_IDS.has(toID(name));
 }
 
@@ -8510,7 +8510,7 @@ for (const [id, canGigantamax] of Object.entries(CUSTOM_GIGANTAMAX_MOVES)) {
 
 const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	desertshell: {name: 'Desert Shell', desc: 'Skill Link + Heatproof + Sand Stream. Multi-hit moves always strike the maximum number of times and gain 1.5x power. Fire move and burn damage are halved. Summons a sandstorm on entry.', shortDesc: 'Skill Link + Heatproof + Sand Stream.', num: 10267, rating: 5},
-	plasmaeruption: {name: 'Plasma Eruption', desc: "Proficient + Blazing Mane. Fire and Electric moves have a 50% chance to swap types unless the target would be immune to the new type. After Burn Up removes Fire, Fire moves become Electric; after Double Shock removes Electric, Electric moves become Fire. Blazing Mane boosts Electric moves too.", shortDesc: 'Proficient + Blazing Mane; Fire/Electric swap and forced conversion after type loss.'},
+	plasmaeruption: {name: 'Plasma Eruption', desc: "Proficient boosts same-type attacks by 1.3x. Contact attackers have Static's chance to be paralyzed and Flame Body's chance to be burned. Fire moves may become Electric, and Electric moves may become Fire (50% chance each), unless the new type would make the target immune. After Burn Up removes Fire typing, Fire moves always become Electric; after Double Shock removes Electric typing, Electric moves always become Fire. Burn Up and Double Shock themselves keep their original type.", shortDesc: 'Proficient + Static + Flame Body; Fire may turn Electric or vice versa (50%). Type loss forces it unless immune.'},
 	desertspirit: {name: 'Desert Spirit', desc: "Levitate + Sand Stream + Tinted Lens. This Pokemon is airborne, starts a sandstorm on entry, doubles damage from resisted attacks, and receives STAB on Ground attacks.", shortDesc: 'Levitate + Sand Stream + Tinted Lens; Ground STAB.'},
 	verdantsanctuary: {name: 'Verdant Sanctuary', desc: 'On entry, sets Grassy Terrain and heals each adjacent ally by 1/4 max HP. Healing received by this Pokemon and its allies is multiplied by 1.3. At the end of each turn, this Pokemon has a 50% chance to cure each adjacent ally status. Allies also take 3/4 damage from attacks.', shortDesc: 'Grassy Surge + Invigorate + Hospitality + Friend Guard.'},
 	emperorspride: {"name":"Emperor's Pride","desc":"This Pokemon has Defiant and Swift Swim's effects. Its Flying-type moves receive STAB.","shortDesc":"Defiant + Swift Swim; Flying moves get STAB."},
@@ -9264,8 +9264,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	divineintervention: {
 		name: "Divine Intervention",
-		desc: "This Pokemon has Sworn Duty, Friend Guard, Regenerator, Triage, Fluffy, Queen's Guard, Proficient, and Infiltrator's effects. Queen's Guard lowers foes' Attack on entry, reverses this Pokemon's stat changes, and can clear its status at the end of a turn. Its STAB attacks have 1.3x power and its moves bypass substitutes and opposing screens.",
-		shortDesc: "Sworn Duty + Friend Guard + Regenerator + Triage + Fluffy + Queen's Guard + Proficient + Infiltrator.",
+		desc: "This Pokemon has Sworn Duty, Friend Guard, Regenerator, and Fluffy's effects.",
+		shortDesc: "Sworn Duty + Friend Guard + Regenerator + Fluffy.",
 	},
 	doomwarning: {
 		name: "Doom Warning",
@@ -9424,8 +9424,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	divinemockery: {
 		name: "Divine Mockery",
-		desc: "This Pokemon has Hydra Bond, Mold Breaker, Sniper, and Water Bubble's effects. Eligible attacks hit three times and ignore opposing Abilities. It gains +1 accuracy on entry and its critical hits deal more damage. Water attacks gain Water Bubble's power and STAB effects; incoming Fire damage is halved, and it cannot be burned.",
-		shortDesc: "Hydra Bond + Mold Breaker + Sniper + Water Bubble.",
+		desc: "This Pokemon has Hydra Bond, Mold Breaker, and Sniper's effects. Eligible attacks gain Hydra Bond's extra hits and ignore opposing Abilities. It gains +1 accuracy on entry and its critical hits deal more damage. Water attacks receive STAB even without Water typing.",
+		shortDesc: "Hydra Bond + Mold Breaker + Sniper; Water STAB.",
 	},
 	hydratyrant: {
 		name: "Hydra Tyrant",
@@ -9629,8 +9629,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	queensguard: {
 		name: "Queen's Guard",
-		desc: "This Pokemon has Contrary, Shed Skin, and Intimidate's effects.",
-		shortDesc: "Contrary + Shed Skin + Intimidate.",
+		desc: "This Pokemon has Contrary, Shed Skin, Intimidate, Infiltrator, and Proficient's effects. Its stat changes are reversed, it lowers opposing Attack on entry, and Shed Skin can clear ailments and restore HP. Its moves bypass substitutes and opposing screens, and attacks matching its type have 1.3x power.",
+		shortDesc: "Contrary + Shed Skin + Intimidate + Infiltrator + Proficient.",
 	},
 	ragingcurrent: {
 		name: "Raging Current",
@@ -13327,9 +13327,17 @@ for (const customSpecies of Object.values(CUSTOM_SPECIES)) {
 CUSTOM_SPECIES_UPDATES.breloom = {...CUSTOM_SPECIES_UPDATES.breloom, abilities: {0: 'Technician', 1: 'Poison Heal', H: 'Guts', S: 'Aevian Spark'}, otherFormes: ['Breloom-Rejuv', 'Breloom-Mega'], formeOrder: ['Breloom', 'Breloom-Rejuv', 'Breloom-Mega']};
 CUSTOM_SPECIES_UPDATES.sigilyph = {...CUSTOM_SPECIES_UPDATES.sigilyph, abilities: {0: 'Tablets of Ruin', 1: 'Magic Guard', H: 'Tinted Lens', S: 'Aevian Grief'}, otherFormes: ['Sigilyph-Rejuv'], formeOrder: ['Sigilyph', 'Sigilyph-Rejuv']};
 CUSTOM_SPECIES_UPDATES.veluza = {...CUSTOM_SPECIES_UPDATES.veluza, abilities: {0: 'Mold Breaker', 1: 'Swift Swim', H: 'Sharpness', S: 'Aevian Rocket'}, otherFormes: ['Veluza-Rejuv'], formeOrder: ['Veluza', 'Veluza-Rejuv']};
+// Re-enable alongside data/disabled-custom-content.ts on the server.
+const ENABLE_MEGA_HYDREIGON_X = false;
+if (!ENABLE_MEGA_HYDREIGON_X) {
+	delete CUSTOM_SPECIES.hydreigonmegax;
+	CUSTOM_SPECIES_UPDATES.hydreigon.otherFormes = [];
+	CUSTOM_SPECIES_UPDATES.hydreigon.formeOrder = ['Hydreigon'];
+}
 const CUSTOM_SPECIES_IDS = Object.keys(CUSTOM_SPECIES);
 const CUSTOM_SPECIES_UPDATE_IDS = Object.keys(CUSTOM_SPECIES_UPDATES);
-const REMOVED_SPECIES_IDS = ['belliboltalt', 'dusknoiralt', 'luxrayalt', 'zangoosereborn', 'seviperreborn', 'drapionaevian'];
+const REMOVED_SPECIES_IDS = ['belliboltalt', 'dusknoiralt', 'luxrayalt', 'zangoosereborn', 'seviperreborn', 'drapionaevian',
+	...(!ENABLE_MEGA_HYDREIGON_X ? ['hydreigonmegax'] : [])];
 const CLEAN_BASE_FORMES: {[id: string]: string[]} = {
 	bellibolt: ['Bellibolt', 'Bellibolt-Mega'],
 	luxray: ['Luxray', 'Luxray-Mega'],
@@ -13345,7 +13353,7 @@ function mergeCustomSpeciesData(baseData: AnyObject, existingData: AnyObject | u
 		customData.battleOnly || existingData?.requiredItem || existingData?.battleOnly ||
 		String(customData.forme || existingData?.forme || '').includes('Mega') ||
 		String(customData.forme || existingData?.forme || '').includes('Gmax'));
-	const merged = {
+	const merged: AnyObject = {
 		...baseData,
 		...(existingData || {}),
 		...customData,
@@ -13460,13 +13468,13 @@ function customVariantFamilyId(species: AnyObject) {
 	const baseId = toID(species?.baseSpecies || id);
 	return customVariantFamilyBaseId(baseId);
 }
-export function getCustomVisualFamilyId(species: AnyObject) {
+function getCustomVisualFamilyId(species: AnyObject) {
 	return customVariantFamilyId(species);
 }
-export function isProfileVariantForm(species: AnyObject) {
+function isProfileVariantForm(species: AnyObject) {
 	return !!PROFILE_VARIANT_FORMES[customVariantFamilyId(species)];
 }
-export function getCustomCosmeticFormes(species: AnyObject) {
+function getCustomCosmeticFormes(species: AnyObject) {
 	window.ensureCustomSpecies?.();
 	const familyId = customVariantFamilyId(species);
 	const profileFormes = PROFILE_VARIANT_FORMES[familyId];
@@ -14153,14 +14161,14 @@ const CUSTOM_ABILITY_COMPONENT_OVERRIDES: {[id: string]: readonly ID[]} = {
 	aeviangrief: ['flareboost' as ID, 'wonderskin' as ID, 'levitate' as ID],
 	aevianspark: ['toughclaws' as ID, 'technician' as ID, 'static' as ID],
 	truehydra: ['hydrabond' as ID, 'regenerator' as ID, 'shedskin' as ID, 'selfsufficient' as ID],
-	plasmaeruption: ['proficient' as ID, 'blazingmane' as ID],
+	plasmaeruption: ['proficient' as ID, 'static' as ID, 'flamebody' as ID],
 	desertspirit: ['levitate' as ID, 'sandstream' as ID, 'tintedlens' as ID],
 	desertshell: ['skilllink' as ID, 'heatproof' as ID, 'sandstream' as ID],
 	highnoon: ['proficient' as ID],
 	forestsurge: ['proficient' as ID],
 	fallenstar: ['proficient' as ID],
 	burningego: ['proficient' as ID],
-	queensguard: ['contrary' as ID, 'shedskin' as ID, 'intimidate' as ID, 'proficient' as ID],
+	queensguard: ['contrary' as ID, 'shedskin' as ID, 'intimidate' as ID, 'infiltrator' as ID, 'proficient' as ID],
 	emperorspride: ['proficient' as ID],
 	emperorsresolve: ['proficient' as ID],
 	burningrage: ['proficient' as ID],
@@ -14208,9 +14216,9 @@ const CUSTOM_ABILITY_COMPONENT_OVERRIDES: {[id: string]: readonly ID[]} = {
 	falsedevotion: ['serenegrace' as ID, 'naturalrecovery' as ID, 'prankster' as ID],
 	aevianfrost: ['icebody' as ID, 'guts' as ID, 'filter' as ID],
 	aeviantoxin: ['strongjaw' as ID, 'layeredcoat' as ID, 'furcoat' as ID, 'overcoat' as ID, 'merciless' as ID],
-	divinemockery: ['hydrabond' as ID, 'moldbreaker' as ID, 'sniper' as ID, 'waterbubble' as ID, 'waterveil' as ID],
+	divinemockery: ['hydrabond' as ID, 'moldbreaker' as ID, 'sniper' as ID],
 	verdantsanctuary: ['grassysurge' as ID, 'invigorate' as ID, 'hospitality' as ID, 'friendguard' as ID],
-	divineintervention: ['swornduty' as ID, 'friendguard' as ID, 'regenerator' as ID, 'triage' as ID, 'fluffy' as ID, 'queensguard' as ID, 'contrary' as ID, 'shedskin' as ID, 'intimidate' as ID, 'proficient' as ID, 'infiltrator' as ID],
+	divineintervention: ['swornduty' as ID, 'friendguard' as ID, 'regenerator' as ID, 'fluffy' as ID],
 	aevianbolt: ['stormpower' as ID, 'surgesurfer' as ID, 'voltabsorb' as ID],
 	aevianglacier: ['snowwarning' as ID, 'icebody' as ID, 'refrigerate' as ID],
 	aeviandream: ['baddreams' as ID, 'shedskin' as ID, 'toughclaws' as ID],
@@ -14866,7 +14874,11 @@ const VELUZA_REJUV_MOVE_ADDITIONS: {[id: string]: string[]} = {
 CUSTOM_LEARNSET_ADDITIONS.veluza = {...CUSTOM_LEARNSET_ADDITIONS.veluza, ...VELUZA_REJUV_MOVE_ADDITIONS};
 CUSTOM_LEARNSET_ADDITIONS.veluzarejuv = {...VELUZA_REJUV_MOVE_ADDITIONS};
 CUSTOM_LEARNSET_ADDITIONS.glimmora = {...CUSTOM_LEARNSET_ADDITIONS.glimmora, injection: ['9M']};
+CUSTOM_LEARNSET_ADDITIONS.arboliva = {...CUSTOM_LEARNSET_ADDITIONS.arboliva, forestscurse: ['9M']};
+CUSTOM_LEARNSET_ADDITIONS.arbolivamega = {...CUSTOM_LEARNSET_ADDITIONS.arbolivamega, forestscurse: ['9M']};
 const CUSTOM_LEARNSET_ADDITION_IDS = Object.keys(CUSTOM_LEARNSET_ADDITIONS);
+CUSTOM_LEARNSET_REMOVALS.arboliva = [...(CUSTOM_LEARNSET_REMOVALS.arboliva || []), 'forestcurse'];
+CUSTOM_LEARNSET_REMOVALS.arbolivamega = [...(CUSTOM_LEARNSET_REMOVALS.arbolivamega || []), 'forestcurse'];
 const CUSTOM_LEARNSET_REMOVAL_IDS = Object.keys(CUSTOM_LEARNSET_REMOVALS);
 const CUSTOM_ITEM_UPDATES: {[id: string]: AnyObject} = {
 	hydreigonite: {name: 'Hydreigonite', spritenum: 0, megaStone: {Hydreigon: 'Hydreigon-Mega-X'}, itemUser: ['Hydreigon'], num: 2714, gen: 9, isNonstandard: 'Custom', shortDesc: 'Allows Hydreigon to Mega Evolve into Hydreigon-Mega-X.'},
@@ -15046,8 +15058,10 @@ CUSTOM_ITEM_UPDATES.glimmoranite = {
 	desc: 'Allows Glimmora or Glimmora-Aevian to Mega Evolve into its matching Mega form.',
 	shortDesc: 'Allows Glimmora or Glimmora-Aevian to Mega Evolve.',
 };
+if (!ENABLE_MEGA_HYDREIGON_X) delete CUSTOM_ITEM_UPDATES.hydreigonite;
 const CUSTOM_ITEM_IDS = Object.keys(CUSTOM_ITEM_UPDATES);
 const REDUNDANT_ITEM_IDS = [
+	...(!ENABLE_MEGA_HYDREIGON_X ? ['hydreigonite'] : []),
 	'berserkgene',
 	'berry', 'bitterberry', 'burntberry', 'goldberry', 'iceberry',
 	'mintberry', 'miracleberry', 'mysteryberry', 'przcureberry', 'psncureberry',
@@ -15377,7 +15391,7 @@ function applyCustomTeambuilderItems(table: AnyObject) {
 		for (const id of CUSTOM_ITEM_IDS) {
 			if (!hasItem(table.items, id)) table.items.push(id);
 		}
-		table.items = table.items.flatMap((row: string | [string, string]) => {
+		table.items = table.items.flatMap<string | [string, string]>((row: string | [string, string]) => {
 			if (typeof row === 'string') {
 				if (REDUNDANT_ITEM_IDS.includes(row)) return [];
 				return [row === 'starsweet' ? 'amuletcoin' : row];
@@ -15722,6 +15736,7 @@ function toName(name: any) {
 interface SpriteData {
 	w: number;
 	h: number;
+	x?: number;
 	y?: number;
 	gen?: number;
 	url?: string;
@@ -15730,6 +15745,10 @@ interface SpriteData {
 	isFrontSprite?: boolean;
 	cryurl?: string;
 	shiny?: boolean;
+}
+
+interface PokemonSpriteData extends SpriteData {
+	gen: number; y: number; url: string; pixelated: boolean; isFrontSprite: boolean; cryurl: string;
 }
 
 interface TeambuilderSpriteData {
@@ -16771,6 +16790,7 @@ const NATIVE_TEAMBUILDER_ART: {[spriteid: string]: {normal: {w: number, h: numbe
 	"toedscool": {"normal":{"w":120,"h":120},"shiny":{"w":120,"h":120}},
 	"toedscruel": {"normal":{"w":120,"h":120},"shiny":{"w":120,"h":120}},
 	"togedemaru": {"normal":{"w":128,"h":128},"shiny":{"w":128,"h":128}},
+	"togekiss": {"normal":{"w":120,"h":120},"shiny":{"w":120,"h":120}},
 	"torkoal": {"normal":{"w":120,"h":120},"shiny":{"w":120,"h":120}},
 	"tornadus-therian": {"normal":{"w":120,"h":120},"shiny":{"w":120,"h":120}},
 	"torracat": {"normal":{"w":128,"h":128},"shiny":{"w":128,"h":128}},
@@ -16867,7 +16887,7 @@ const NATIVE_TEAMBUILDER_ART: {[spriteid: string]: {normal: {w: number, h: numbe
 
 // These species have supplied BW artwork that should take precedence over
 // native 3D Team Builder art.
-const FORCE_GEN5_TEAMBUILDER_SPRITES = new Set<ID>(['dusknoir', 'mightyena', 'mightyenadeso', 'raichu', 'raichualola', 'raichumegax', 'raichumegay', 'reuniclus']);
+const FORCE_GEN5_TEAMBUILDER_SPRITES = new Set<string>(['banette', 'banettemega', 'scizormega', 'dusknoir', 'mightyena', 'mightyenadeso', 'raichu', 'raichualola', 'raichumegax', 'raichumegay', 'reuniclus']);
 
 // A registered custom sprite with an actual BW shiny file is deliberate artwork.
 // Prefer it consistently over native animations and dex renders.
@@ -16885,6 +16905,13 @@ function hasSuppliedCustomShinySprite(id: string, spriteid: string, isFront = tr
 
 const Dex = new class implements ModdedDex {
 	readonly gen = 9;
+	readonly IMMUNE = 3;
+	readonly RESIST = 2;
+	readonly WEAK = 1;
+	forFormat(format: string): ModdedDex {
+		const gen = Number(/^gen(\d+)/.exec(format)?.[1]) || 9;
+		return this.forGen(gen);
+	}
 	readonly modid = 'gen9' as ID;
 	readonly cache = null!;
 
@@ -16905,7 +16932,7 @@ const Dex = new class implements ModdedDex {
 	})();
 
 	loadedSpriteData = {xy: 1, bw: 0};
-	private spriteDataCache = new Map<string, AnyObject>();
+	private spriteDataCache = new Map<string, PokemonSpriteData>();
 	moddedDexes: {[mod: string]: ModdedDex} = {};
 	abilityEffectDataTable: AnyObject | null = null;
 	abilityEffectCache: {[id: string]: ReadonlySet<ID>} = {};
@@ -16962,7 +16989,7 @@ const Dex = new class implements ModdedDex {
 
 	prefs(prop: string) {
 		// @ts-ignore
-		return window.Storage?.prefs?.(prop);
+		return window.PS ? window.PS.prefs[prop] : window.Storage?.prefs?.(prop);
 	}
 
 	getShortName(name: string) {
@@ -17093,7 +17120,7 @@ const Dex = new class implements ModdedDex {
 			let formid = id;
 			const customSpeciesId = CUSTOM_SPECIES_ID_ALIASES[id];
 			if (customSpeciesId) {
-				id = customSpeciesId;
+				id = toID(customSpeciesId);
 				formid = id;
 			}
 			const hasCustomUpdate = id in CUSTOM_SPECIES_UPDATES;
@@ -17159,6 +17186,7 @@ const Dex = new class implements ModdedDex {
 
 	types = {
 		allCache: null as Type[] | null,
+		names: (): TypeName[] => this.types.all().filter(type => type.exists).map(type => type.name as TypeName),
 		get: (type: any): Type => {
 			if (!type || typeof type === 'string') {
 				const id = toID(type) as string;
@@ -17210,25 +17238,27 @@ const Dex = new class implements ModdedDex {
 		return false;
 	}
 
-	getAbilityEffects(abilityId: ID, visiting = new Set<ID>()): ReadonlySet<ID> {
+	getAbilityEffects(abilityId: ID, visiting = new Set<ID>(), dex: ModdedDex = this): ReadonlySet<ID> {
 		ensureCustomDataPatches();
 		if (this.abilityEffectDataTable !== window.BattleAbilities) {
 			this.abilityEffectDataTable = window.BattleAbilities;
 			this.abilityEffectCache = {};
 		}
-		if (this.abilityEffectCache[abilityId]) return this.abilityEffectCache[abilityId];
+		if (dex === this && this.abilityEffectCache[abilityId]) return this.abilityEffectCache[abilityId];
 		if (visiting.has(abilityId)) return new Set<ID>([abilityId]);
 
 		const effects = new Set<ID>([abilityId]);
-		const source = CUSTOM_ABILITY_UPDATES[abilityId] || window.BattleAbilities?.[abilityId];
+		const globalSource = CUSTOM_ABILITY_UPDATES[abilityId] || window.BattleAbilities?.[abilityId];
+		const source = dex === this ? globalSource : dex.abilities.get(abilityId);
+		const inheritsComponents = dex === this || (source?.shortDesc === this.abilities.get(abilityId).shortDesc && source?.desc === this.abilities.get(abilityId).desc);
 		if (!source) {
-			this.abilityEffectCache[abilityId] = effects;
+			if (dex === this) this.abilityEffectCache[abilityId] = effects;
 			return effects;
 		}
 
 		const nextVisiting = new Set(visiting);
 		nextVisiting.add(abilityId);
-		const directComponents = new Set<ID>(CUSTOM_ABILITY_COMPONENT_OVERRIDES[abilityId] || []);
+		const directComponents = new Set<ID>((inheritsComponents ? CUSTOM_ABILITY_COMPONENT_OVERRIDES[abilityId] || [] : []).map(toID));
 		// Compact descriptions are the canonical component summary; long descriptions may
 		// mention abilities only as comparisons or examples. Keep the no-miss check narrow
 		// so conditional effects such as Precision do not become No Guard.
@@ -17255,11 +17285,11 @@ const Dex = new class implements ModdedDex {
 			}
 		}
 		for (const componentId of Array.from(directComponents)) {
-			for (const nestedEffect of Array.from(this.getAbilityEffects(componentId, nextVisiting))) {
+			for (const nestedEffect of Array.from(this.getAbilityEffects(componentId, nextVisiting, dex))) {
 				effects.add(nestedEffect);
 			}
 		}
-		this.abilityEffectCache[abilityId] = effects;
+		if (dex === this) this.abilityEffectCache[abilityId] = effects;
 		return effects;
 	}
 
@@ -17330,7 +17360,7 @@ const Dex = new class implements ModdedDex {
 		if (cachedSpriteData) return {...cachedSpriteData};
 		// Gmax sprites are already extremely large, so we don't need to double.
 		if (species.name.endsWith('-Gmax')) isDynamax = false;
-		let spriteData = {
+		let spriteData: PokemonSpriteData = {
 			gen: mechanicsGen,
 			w: 96,
 			h: 96,
@@ -17502,7 +17532,7 @@ const Dex = new class implements ModdedDex {
 		if (speciesid === 'hydreigon' && options.shiny) allowAnim = false;
 		let customStaticBattleSpriteid = speciesid;
 		if (options.gender === 'F' && CUSTOM_STATIC_BATTLE_SPRITES[`${speciesid}f`]) {
-			customStaticBattleSpriteid = `${speciesid}f`;
+			customStaticBattleSpriteid = toID(`${speciesid}f`);
 		}
 		const allowCustomAnimation = CUSTOM_ANIMATED_BW_SPRITES.has(customStaticBattleSpriteid) ||
 			CUSTOM_ANIMATED_BW_SPRITES.has(speciesid);
@@ -17677,7 +17707,7 @@ const Dex = new class implements ModdedDex {
 			if (customBattleYOffset) spriteData.y += isFront ? (customBattleYOffset.front || 0) : (customBattleYOffset.back || 0);
 			const customBattleXOffset = CUSTOM_BATTLE_SPRITE_X_OFFSETS[customStaticBattleSpriteid] ||
 				CUSTOM_BATTLE_SPRITE_X_OFFSETS[speciesid];
-			if (customBattleXOffset) spriteData.x += isFront ? (customBattleXOffset.front || 0) : (customBattleXOffset.back || 0);
+			if (customBattleXOffset) spriteData.x = (spriteData.x || 0) + (isFront ? (customBattleXOffset.front || 0) : (customBattleXOffset.back || 0));
 		}
 		if (!options.noScale && !isFront && !isDynamax) {
 			const universalBackMax = speciesid === 'feraligatr' ? 86 : speciesid === 'cofagrigus' ? 84 : speciesid === 'hydreigon' ? 112 : speciesid.includes('gmax') ? 112 : speciesid.includes('mega') ? 82 : 72;
@@ -17905,6 +17935,10 @@ const Dex = new class implements ModdedDex {
 		const data = this.getTeambuilderSpriteDataRaw(pokemon, gen);
 		const suffix = (data.shiny ? '-shiny' : '') + '/' + data.spriteid + '.png';
 		let dimensions = SPRITE_ASSET_DIMENSIONS[data.spriteDir.slice('sprites/'.length) + suffix];
+		if (!dimensions && data.spriteDir === 'sprites/dex') {
+			const native = NATIVE_TEAMBUILDER_ART[data.spriteid]?.[data.shiny ? 'shiny' : 'normal'];
+			if (native) dimensions = [native.w, native.h];
+		}
 		if (!dimensions && data.spriteDir === 'sprites/dex' && SPRITE_ASSET_DIMENSIONS['gen5' + suffix]) {
 			data.spriteDir = 'sprites/gen5';
 			dimensions = SPRITE_ASSET_DIMENSIONS['gen5' + suffix];
@@ -17953,8 +17987,8 @@ const Dex = new class implements ModdedDex {
 		const nativeArt = NATIVE_TEAMBUILDER_ART[spriteid];
 		const nativeTeambuilderOverride = NATIVE_TEAMBUILDER_SPRITE_OVERRIDES[pokemon.gender === 'F' ? `${id}f` : id] ||
 			NATIVE_TEAMBUILDER_SPRITE_OVERRIDES[id];
-		const preferSuppliedCustomShiny = isShiny && hasSuppliedCustomShinySprite(id, spriteid, true);
-		if (nativeArt && !preferSuppliedCustomShiny && !(id === 'archeops' && isShiny) && (!artGen || artGen >= 6) && !Dex.prefs('bwgfx') &&
+		const suppliedShiny = isShiny && ['lilligant', 'aurorus', 'tyrantrum'].includes(id);
+		if (nativeArt && !suppliedShiny && !(id === 'archeops' && isShiny) && (!artGen || artGen >= 6) && !Dex.prefs('bwgfx') &&
 			!(window.Config?.server?.afd || Dex.prefs('afd')) && !FORCE_GEN5_TEAMBUILDER_SPRITES.has(id) && !id.startsWith('furfrou') && !isSilvallySpecies(id)) {
 			const useShiny = isShiny && !!nativeArt.shiny;
 			const size = (useShiny ? nativeArt.shiny : nativeArt.normal)!;
@@ -18168,7 +18202,7 @@ class ModdedDex {
 		Items: {} as any as {[k: string]: Item},
 		Abilities: {} as any as {[k: string]: Ability},
 		Species: {} as any as {[k: string]: Species},
-		Types: {} as any as {[k: string]: Effect},
+		Types: {} as {[k: string]: Type},
 	};
 	pokeballs: string[] | null = null;
 	constructor(modid: ID) {
@@ -18190,13 +18224,13 @@ class ModdedDex {
 
 			for (let i = Dex.gen - 1; i >= this.gen; i--) {
 				const table = window.BattleTeambuilderTable[`gen${i}`];
-				if (id in table.overrideMoveData) {
+				if (id in (table?.overrideMoveData || {})) {
 					Object.assign(data, table.overrideMoveData[id]);
 				}
 			}
 			if (this.modid !== `gen${this.gen}`) {
 				const table = window.BattleTeambuilderTable[this.modid];
-				if (id in table.overrideMoveData) {
+				if (id in (table?.overrideMoveData || {})) {
 					Object.assign(data, table.overrideMoveData[id]);
 				}
 			}
@@ -18223,7 +18257,7 @@ class ModdedDex {
 
 			for (let i = this.gen; i < 9; i++) {
 				const table = window.BattleTeambuilderTable['gen' + i];
-				if (id in table.overrideItemDesc) {
+				if (id in (table?.overrideItemDesc || {})) {
 					data.shortDesc = table.overrideItemDesc[id];
 					break;
 				}
@@ -18249,13 +18283,13 @@ class ModdedDex {
 
 			for (let i = Dex.gen - 1; i >= this.gen; i--) {
 				const table = window.BattleTeambuilderTable[`gen${i}`];
-				if (id in table.overrideAbilityData) {
+				if (id in (table?.overrideAbilityData || {})) {
 					Object.assign(data, table.overrideAbilityData[id]);
 				}
 			}
 			if (this.modid !== `gen${this.gen}`) {
 				const table = window.BattleTeambuilderTable[this.modid];
-				if (id in table.overrideAbilityData) {
+				if (id in (table?.overrideAbilityData || {})) {
 					Object.assign(data, table.overrideAbilityData[id]);
 				}
 			}
@@ -18280,13 +18314,13 @@ class ModdedDex {
 
 			for (let i = Dex.gen - 1; i >= this.gen; i--) {
 				const table = window.BattleTeambuilderTable[`gen${i}`];
-				if (id in table.overrideSpeciesData) {
+				if (id in (table?.overrideSpeciesData || {})) {
 					Object.assign(data, table.overrideSpeciesData[id]);
 				}
 			}
 			if (this.modid !== `gen${this.gen}`) {
 				const table = window.BattleTeambuilderTable[this.modid];
-				if (id in table.overrideSpeciesData) {
+				if (id in (table?.overrideSpeciesData || {})) {
 					Object.assign(data, table.overrideSpeciesData[id]);
 				}
 			}
@@ -18295,7 +18329,7 @@ class ModdedDex {
 			}
 
 			const table = window.BattleTeambuilderTable[this.modid];
-			if (id in table.overrideTier) data.tier = table.overrideTier[id];
+			if (id in (table?.overrideTier || {})) data.tier = table.overrideTier[id];
 			if (!data.tier && id.slice(-5) === 'totem') {
 				data.tier = this.species.get(id.slice(0, -5)).tier;
 			}
@@ -18311,7 +18345,8 @@ class ModdedDex {
 	};
 
 	types = {
-		get: (name: string): Effect => {
+		names: (): TypeName[] => Dex.types.all().filter(type => type.exists).map(type => type.name as TypeName),
+		get: (name: string): Type => {
 			const id = toID(name) as ID;
 			name = id.substr(0, 1).toUpperCase() + id.substr(1);
 
@@ -18326,7 +18361,7 @@ class ModdedDex {
 					// don't bother correcting its attributes given it doesn't exist
 					break;
 				}
-				if (id in table.overrideTypeChart) {
+				if (id in (table?.overrideTypeChart || {})) {
 					data = {...data, ...table.overrideTypeChart[id]};
 				}
 			}

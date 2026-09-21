@@ -1,16 +1,14 @@
-import preact from "../js/lib/preact";
-import { toID, toRoomid, toUserid, Dex, PSUtils } from "./battle-dex";
-import type { ID } from "./battle-dex-data";
+
+
+
 import { BattleLog } from "./battle-log";
-import { PSLoginServer } from "./client-connection";
-import { PSBackground } from "./client-core";
-import {
-	PS, PSRoom, Config, type RoomOptions, type PSLoginState, type RoomID, type TimestampOptions,
-} from "./client-main";
-import { type BattleRoom } from "./panel-battle";
-import { ChatUserList, type ChatRoom } from "./panel-chat";
-import { PSRoomPanel, PSPanelWrapper, PSView } from "./panels";
-import { PSHeader } from "./panel-topbar";
+
+
+
+
+
+
+
 
 /**
  * User popup
@@ -347,7 +345,7 @@ class UserOptionsPanel extends PSRoomPanel {
 
 	isIgnoringUser = (userid: string) => {
 		const ignoring = PS.prefs.ignore || {};
-		if (ignoring[userid] === 1) return true;
+		if (!!ignoring[userid]) return true;
 		return false;
 	};
 
@@ -673,7 +671,7 @@ class OptionsPanel extends PSRoomPanel {
 				</p>
 			)}
 
-			{PS.user.named && (PS.user.registered?.userid === PS.user.userid ?
+			{PS.user.named && ((PS.user.registered && PS.user.registered.userid) === PS.user.userid ?
 				<button className="button" data-href="changepassword">Password...</button> :
 				<button className="button" data-href="register">Register</button>)}
 
@@ -841,7 +839,8 @@ class LoginPanel extends PSRoomPanel {
 
 	override componentDidMount() {
 		super.componentDidMount();
-		this.subscriptions.push(PS.user.subscribe(args => {
+		this.subscriptions.push(PS.user.subscribe(() => {
+			const args = PS.user.loginState;
 			if (args) {
 				if (args.success) {
 					this.close();
@@ -883,7 +882,7 @@ class LoginPanel extends PSRoomPanel {
 	reset = (ev: Event) => {
 		ev.preventDefault();
 		ev.stopImmediatePropagation();
-		this.props.room.args = null;
+		this.props.room.args = {};
 		this.forceUpdate();
 	};
 	handleShowPassword = (ev: Event) => {

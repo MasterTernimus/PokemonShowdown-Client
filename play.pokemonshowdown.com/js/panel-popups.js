@@ -14,8 +14,6 @@ function _inheritsLoose(t,o){t.prototype=Object.create(o.prototype),t.prototype.
 
 
 
-
-
 UserRoom=function(_PSRoom){
 
 
@@ -347,7 +345,7 @@ ev.stopImmediatePropagation();
 
 isIgnoringUser=function(userid){
 var ignoring=PS.prefs.ignore||{};
-if(ignoring[userid]===1)return true;
+if(!!ignoring[userid])return true;
 return false;
 };return _this3;}_inheritsLoose(UserOptionsPanel,_PSRoomPanel2);var _proto3=UserOptionsPanel.prototype;_proto3.getTargets=function getTargets(){var _targetRoom,_targetRoom2,_targetRoom3,_targetRoom4,_targetRoom5;var _PSUtils$splitFirst=PSUtils.splitFirst(this.props.room.id,'-',2),targetUser=_PSUtils$splitFirst[1],targetRoomid=_PSUtils$splitFirst[2];var targetRoom=PS.rooms[targetRoomid]||null;if(((_targetRoom=targetRoom)==null?void 0:_targetRoom.type)!=='chat')targetRoom=(_targetRoom2=targetRoom)==null?void 0:_targetRoom2.getParent();if(((_targetRoom3=targetRoom)==null?void 0:_targetRoom3.type)!=='chat')targetRoom=(_targetRoom4=targetRoom)==null?void 0:_targetRoom4.getParent();if(((_targetRoom5=targetRoom)==null?void 0:_targetRoom5.type)!=='chat')targetRoom=null;return{targetUser:targetUser,targetRoomid:targetRoomid,targetRoom:targetRoom};};_proto3.
 
@@ -647,7 +645,7 @@ ev.preventDefault();
 ev.stopImmediatePropagation();
 };return _this7;}_inheritsLoose(OptionsPanel,_PSRoomPanel5);var _proto6=OptionsPanel.prototype;_proto6.componentDidMount=function componentDidMount(){_PSRoomPanel5.prototype.componentDidMount.call(this);this.subscribeTo(PS.user);};_proto6.
 
-render=function render(){var _PS$user$registered;
+render=function render(){
 var room=this.props.room;
 return preact.h(PSPanelWrapper,{room:room},preact.h("div",{"class":"pad"},
 preact.h("p",null,
@@ -673,7 +671,7 @@ this.state.showStatusUpdated?'Status Updated':'Status...')
 ),
 
 
-PS.user.named&&(((_PS$user$registered=PS.user.registered)==null?void 0:_PS$user$registered.userid)===PS.user.userid?
+PS.user.named&&((PS.user.registered&&PS.user.registered.userid)===PS.user.userid?
 preact.h("button",{className:"button","data-href":"changepassword"},"Password..."):
 preact.h("button",{className:"button","data-href":"register"},"Register")),
 
@@ -863,6 +861,7 @@ LoginPanel=function(_PSRoomPanel6){function LoginPanel(){var _this9;for(var _len
 
 
 
+
 handleSubmit=function(ev){
 ev.preventDefault();
 var passwordBox=_this9.base.querySelector('input[name=password]');
@@ -883,14 +882,14 @@ _this9.forceUpdate();
 reset=function(ev){
 ev.preventDefault();
 ev.stopImmediatePropagation();
-_this9.props.room.args=null;
+_this9.props.room.args={};
 _this9.forceUpdate();
 };_this9.
 handleShowPassword=function(ev){
 ev.preventDefault();
 ev.stopImmediatePropagation();
 _this9.setState({passwordShown:!_this9.state.passwordShown});
-};return _this9;}_inheritsLoose(LoginPanel,_PSRoomPanel6);var _proto8=LoginPanel.prototype;_proto8.componentDidMount=function componentDidMount(){var _this0=this;_PSRoomPanel6.prototype.componentDidMount.call(this);this.subscriptions.push(PS.user.subscribe(function(args){if(args){if(args.success){_this0.close();return;}_this0.props.room.args=args;setTimeout(function(){return _this0.focus();},1);}_this0.forceUpdate();}));};_proto8.getUsername=function getUsername(){var _this$props$room$args,_this$base;var loginName=PS.user.loggingIn||((_this$props$room$args=this.props.room.args)==null?void 0:_this$props$room$args.name);if(loginName)return loginName;var input=(_this$base=this.base)==null?void 0:_this$base.querySelector('input[name=username]');if(input&&!input.disabled){return input.value;}return PS.user.named?PS.user.name:'';};_proto8.focus=function focus(){var _ref;var passwordBox=this.base.querySelector('input[name=password]');var usernameBox=this.base.querySelector('input[name=username]');(_ref=passwordBox||usernameBox)==null||_ref.select();};_proto8.
+};return _this9;}_inheritsLoose(LoginPanel,_PSRoomPanel6);var _proto8=LoginPanel.prototype;_proto8.componentDidMount=function componentDidMount(){var _this0=this;_PSRoomPanel6.prototype.componentDidMount.call(this);this.subscriptions.push(PS.user.subscribe(function(){var args=PS.user.loginState;if(args){if(args.success){_this0.close();return;}_this0.props.room.args=args;setTimeout(function(){return _this0.focus();},1);}_this0.forceUpdate();}));};_proto8.getUsername=function getUsername(){var _this$props$room$args,_this$base;var loginName=PS.user.loggingIn||((_this$props$room$args=this.props.room.args)==null?void 0:_this$props$room$args.name);if(loginName)return loginName;var input=(_this$base=this.base)==null?void 0:_this$base.querySelector('input[name=username]');if(input&&!input.disabled){return input.value;}return PS.user.named?PS.user.name:'';};_proto8.focus=function focus(){var _ref;var passwordBox=this.base.querySelector('input[name=password]');var usernameBox=this.base.querySelector('input[name=username]');(_ref=passwordBox||usernameBox)==null||_ref.select();};_proto8.
 render=function render(){
 var room=this.props.room;
 var loginState=room.args;

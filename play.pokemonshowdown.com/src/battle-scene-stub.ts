@@ -21,10 +21,10 @@ export class BattleSceneStub {
 	animationOn(): void { }
 	maybeCloseMessagebar(args: Args, kwArgs: KWArgs): boolean { return false; }
 	closeMessagebar(): boolean { return false; }
-	damageAnim(pokemon: Pokemon, damage: string | number): void { }
+	damageAnim(pokemon: Pokemon, damage: string | number, showResult = true): void { }
 	destroy(): void { }
 	finishAnimations(): JQuery.Promise<JQuery<HTMLElement>, any, any> | undefined { return void(0); }
-	healAnim(pokemon: Pokemon, damage: string | number): void { }
+	healAnim(pokemon: Pokemon, damage: string | number, showResult = true): void { }
 	hideJoinButtons(): void { }
 	incrementTurn(): void { }
 	updateAcceleration(): void { }

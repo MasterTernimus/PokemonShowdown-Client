@@ -2,9 +2,9 @@
  * A panel displaying lists of commands and some basic informational resources
  * @author mia-pi-git
  */
-import { PS, PSRoom, type RoomOptions } from "./client-main";
-import { PSPanelWrapper, PSRoomPanel } from "./panels";
-import { toID } from "./battle-dex";
+
+
+
 declare const BattleChatCommands: Record<string, string[]>;
 
 class ResourceRoom extends PSRoom {

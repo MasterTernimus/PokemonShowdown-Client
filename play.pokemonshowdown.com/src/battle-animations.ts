@@ -356,7 +356,7 @@ export class BattleScene implements BattleSceneStub {
 			: 1.5 - 0.5 * ((loc.z!) / 200));
 		if (scale < .1) scale = .1;
 		// Cropped custom backs need less magnification than full-body BW sprites.
-		const bottomAlignedBack = isBottomAlignedBackSprite(obj.url);
+		const bottomAlignedBack = isBottomAlignedBackSprite(obj.url || "");
 		const spriteScale = bottomAlignedBack ? scale * 0.75 : scale;
 
 		left += (410 - 190) * ((loc.z!) / 200);
@@ -372,7 +372,7 @@ export class BattleScene implements BattleSceneStub {
 		// Retain vertical animation motion while keeping its resting pose bottom-aligned.
 		if (bottomAlignedBack) {
 			top = 360 - height - Math.floor(loc.y! * scale) -
-				(obj.url.includes('/wishiwashi-seviischooling.png') ? 6 : 0);
+				(obj.url?.includes('/wishiwashi-seviischooling.png') ? 6 : 0);
 		}
 
 
@@ -2247,7 +2247,7 @@ export class PokemonSprite extends Sprite {
 			if (this.isFrontSprite && moreActive === 2) statbarOffset = 14 * slot - 10;
 		}
 		// Slot offsets must not push cropped artwork below the foreground edge.
-		if (!this.isFrontSprite && isBottomAlignedBackSprite(this.sp.url)) this.y = 0;
+		if (!this.isFrontSprite && isBottomAlignedBackSprite(this.sp.url || "")) this.y = 0;
 		if (this.scene.gen <= 2) {
 			statbarOffset += this.isFrontSprite ? 20 : 1;
 		} else if (this.scene.gen <= 3) {

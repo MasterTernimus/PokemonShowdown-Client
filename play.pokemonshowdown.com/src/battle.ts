@@ -3896,6 +3896,7 @@ export class Battle {
 
 if (typeof require === 'function') {
 	// in Node
+	require('./battle-log');
 	(global as any).Battle = Battle;
 	(global as any).Pokemon = Pokemon;
 }

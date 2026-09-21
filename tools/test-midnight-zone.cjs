@@ -10,6 +10,7 @@ global.BattleAbilities = require(root+'data/abilities').BattleAbilities;
 global.BattlePokemonSprites = {};
 global.BattlePokemonSpritesBW = {};
 for (const file of ['battle-dex-data', 'battle-dex', 'battle-scene-stub', 'battle-text-parser', 'battle']) require(root+'js/'+file);
+for (const file of ['battle-field-rules', 'battle-field-tooltips']) require(root+'js/'+file);
 vm.runInThisContext(fs.readFileSync(root+'js/battle-tooltips.js','utf8'));
 const battle = new Battle({log: [
  '|init|battle', '|gen|9', '|tier|[Gen 9] Midnight Zone', '|gametype|singles',

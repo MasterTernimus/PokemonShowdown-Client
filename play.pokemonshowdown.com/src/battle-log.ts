@@ -46,6 +46,8 @@ export function isRoutineResidualEffect(args: Args, kwArgs: KWArgs): boolean {
 	return effect.endsWith('terrain') || ROUTINE_RESIDUAL_EFFECTS.has(effect);
 }
 
+if (typeof require === 'function') (global as any).isRoutineResidualEffect = isRoutineResidualEffect;
+
 export class BattleLog {
 	elem: HTMLDivElement;
 	innerElem: HTMLDivElement;
@@ -602,6 +604,10 @@ export class BattleLog {
 		return this.escapeHTML(formatid);
 	}
 
+	static formatName(format: string) { return window.BattleFormats?.[toID(format)]?.name || format; }
+	static html(strings: TemplateStringsArray, ...values: unknown[]) {
+		return strings.reduce((html, text, i) => html + (i ? BattleLog.escapeHTML(String(values[i - 1] ?? '')) : '') + text, '');
+	}
 	static escapeHTML(str: string, jsEscapeToo?: boolean) {
 		if (typeof str !== 'string') return '';
 		str = str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -804,7 +810,7 @@ export class BattleLog {
 	}
 
 	static interstice = (() => {
-		const whitelist: string[] = Config.whitelist;
+		const whitelist: string[] = typeof Config === 'undefined' ? [] : Config.whitelist || [];
 		const patterns = whitelist.map(entry => new RegExp(
 			`^(https?:)?//([A-Za-z0-9-]*\\.)?${entry.replace(/\./g, '\\.')}(/.*)?`,
 		'i'));

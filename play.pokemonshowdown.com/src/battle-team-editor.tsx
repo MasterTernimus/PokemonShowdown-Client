@@ -6,20 +6,17 @@
  * @license AGPLv3
  */
 
-import preact from "../js/lib/preact";
-import { type Team, Config, PS } from "./client-main";
-import {
-	Dex, getCustomCosmeticFormes, getCustomVisualFamilyId, isDefaultShinyCustomSpecies, isProfileVariantForm,
-	type ModdedDex, toID, type ID, PSUtils,
-} from "./battle-dex";
-import { Teams } from './battle-teams';
-import { DexSearch, type SearchRow, type SearchType } from "./battle-dex-search";
-import { PSSearchResults } from "./battle-searchresults";
-import { BattleNatures, BattleStatNames, type StatName } from "./battle-dex-data";
-import { BattleStatGuesser, BattleStatOptimizer, BattleTooltips } from "./battle-tooltips";
-import { PSModel } from "./client-core";
-import { Net } from "./client-connection";
-import { PSIcon } from "./panels";
+
+
+
+import { ModernTeams } from './battle-teams';
+
+
+
+
+
+
+
 
 type SelectionType = 'pokemon' | 'ability' | 'item' | 'move' | 'stats' | 'details';
 
@@ -53,7 +50,7 @@ function getSilvallyMemoryItem(speciesName: string) {
 
 type SampleSets = {
 	[speciesName: string]: {
-		[setName: string]: Dex.PokemonSet,
+		[setName: string]: PokemonSet,
 	},
 };
 type SampleSetsTable = { dex?: SampleSets, stats?: SampleSets };
@@ -63,22 +60,22 @@ export class TeamEditorState extends PSModel {
 		teams: {
 			[teamKey: string]: {
 				team: Team,
-				sets: { [index: number]: Dex.PokemonSet },
+				sets: { [index: number]: PokemonSet },
 				/** was the team added from the team list rather than the team editor's set list?
 				  * (if yes, delete the team itself when moving it) */
 				entire: boolean,
 			},
 		} | null,
-		otherSets: Dex.PokemonSet[] | null,
+		otherSets: PokemonSet[] | null,
 		readonly: boolean,
 	} | null = null;
 	team: Team;
-	sets: Dex.PokemonSet[] = [];
+	sets: PokemonSet[] = [];
 	lastPackedTeam = '';
 	gen = Dex.gen;
 	dex: ModdedDex = Dex;
 	deletedSet: {
-		set: Dex.PokemonSet,
+		set: PokemonSet,
 		index: number,
 	} | null = null;
 	search = new DexSearch();
@@ -102,7 +99,7 @@ export class TeamEditorState extends PSModel {
 	defaultLevel = 100;
 	readonly = false;
 	fetching = false;
-	private userSetsCache: Record<ID, { [species: string]: { [setName: string]: Dex.PokemonSet } }> = {};
+	private userSetsCache: Record<ID, { [species: string]: { [setName: string]: PokemonSet } }> = {};
 	constructor(team: Team) {
 		super();
 		this.team = team;
@@ -112,7 +109,7 @@ export class TeamEditorState extends PSModel {
 	}
 	updateTeam(readonly: boolean) {
 		if (this.lastPackedTeam !== this.team.packedTeam) {
-			this.sets = Teams.unpack(this.team.packedTeam);
+			this.sets = ModernTeams.unpack(this.team.packedTeam);
 			this.lastPackedTeam = this.team.packedTeam;
 		}
 		for (const set of this.sets) {
@@ -198,9 +195,9 @@ export class TeamEditorState extends PSModel {
 
 		if (type === 'item') (this.search.prependResults ||= []).push(['item', '' as ID]);
 		this.search.find(value || '');
-		this.searchIndex = this.search.results?.[0]?.[0] === 'header' ? 1 : 0;
+		this.searchIndex = this.searchResults?.[0]?.[0] === 'header' ? 1 : 0;
 	}
-	updateSearchMoves(set: Dex.PokemonSet) {
+	updateSearchMoves(set: PokemonSet) {
 		let oldResultsLength = this.search.prependResults?.length || 0;
 		this.search.prependResults = this.getSearchMoves(set);
 		this.searchIndex += this.search.prependResults.length - oldResultsLength;
@@ -212,7 +209,7 @@ export class TeamEditorState extends PSModel {
 			this.search.find('');
 		}
 	}
-	getSearchMoves(set: Dex.PokemonSet) {
+	getSearchMoves(set: PokemonSet) {
 		const out: SearchRow[] = [];
 		for (let i = 0; i < Math.max(set.moves.length, 4); i++) {
 			out.push(['move', `_${i + 1}_${toID(set.moves[i] || '')}` as ID]);
@@ -221,22 +218,22 @@ export class TeamEditorState extends PSModel {
 	}
 	setSearchValue(value: string) {
 		this.search.find(value);
-		this.searchIndex = this.search.results?.[0]?.[0] === 'header' ? 1 : 0;
+		this.searchIndex = this.searchResults?.[0]?.[0] === 'header' ? 1 : 0;
 	}
 	selectSearchValue(): string | null {
-		let result = this.search.results?.[this.searchIndex];
+		let result = this.searchResults?.[this.searchIndex];
 		if (result?.[0] === 'header') {
 			this.searchIndex++;
-			result = this.search.results?.[this.searchIndex];
+			result = this.searchResults?.[this.searchIndex];
 		}
 		if (!result) return null;
-		if (this.search.addFilter(result)) {
+		if (this.search.addFilter([result[0], result[1]])) {
 			this.searchIndex = 0;
 			return null;
 		}
 		return this.getResultValue(result);
 	}
-	changeSpecies(set: Dex.PokemonSet, speciesName: string) {
+	changeSpecies(set: PokemonSet, speciesName: string) {
 		const species = this.dex.species.get(speciesName);
 		if (set.item === this.getDefaultItem(set.species)) set.item = undefined;
 		if (set.name === set.species.split('-')[0]) delete set.name;
@@ -258,7 +255,7 @@ export class TeamEditorState extends PSModel {
 			set.nature = 'Jolly';
 		}
 	}
-	changeCosmeticForm(set: Dex.PokemonSet, speciesName: string) {
+	changeCosmeticForm(set: PokemonSet, speciesName: string) {
 		const currentSpecies = this.dex.species.get(set.species);
 		const species = this.dex.species.get(speciesName);
 		if (getCustomVisualFamilyId(currentSpecies) !== getCustomVisualFamilyId(species)) {
@@ -269,7 +266,7 @@ export class TeamEditorState extends PSModel {
 			const currentAbilitySlot = Object.entries(currentSpecies.abilities || {}).find(
 				([, ability]) => toID(ability) === toID(set.ability)
 			)?.[0];
-			set.ability = species.abilities[currentAbilitySlot || '0'] || species.abilities['0'];
+			set.ability = species.abilities[(currentAbilitySlot || '0') as keyof typeof species.abilities] || species.abilities['0'];
 		}
 		if (isSilvallySpecies(species.name)) {
 			const defaultItem = this.getDefaultItem(species.name);
@@ -348,7 +345,7 @@ export class TeamEditorState extends PSModel {
 		TeamEditorState.clipboard.teams[team.key] ||= {
 			team, sets: {}, entire: true,
 		};
-		const sets = Teams.unpack(team.packedTeam);
+		const sets = ModernTeams.unpack(team.packedTeam);
 		for (let i = 0; i < sets.length; i++) {
 			TeamEditorState.clipboard.teams[team.key].sets[i] = sets[i];
 		}
@@ -371,16 +368,16 @@ export class TeamEditorState extends PSModel {
 						if (source < index) index--;
 					} else {
 						const team = clipboardTeam.team;
-						const sets = Teams.unpack(team.packedTeam);
+						const sets = ModernTeams.unpack(team.packedTeam);
 						sets.splice(source, 1);
-						team.packedTeam = Teams.pack(sets);
+						team.packedTeam = ModernTeams.pack(sets);
 						team.iconCache = null;
 					}
 				}
 			}
 		}
 
-		const sets: Dex.PokemonSet[] = [];
+		const sets: PokemonSet[] = [];
 		for (const key in TeamEditorState.clipboard.teams) {
 			const clipboardTeam = TeamEditorState.clipboard.teams[key];
 			for (const set of Object.values(clipboardTeam.sets)) {
@@ -391,7 +388,7 @@ export class TeamEditorState extends PSModel {
 
 		for (const set of sets) {
 			// not the most efficient way to deepclone but we don't need efficiency here
-			const newSet = JSON.parse(JSON.stringify(set)) as Dex.PokemonSet;
+			const newSet = JSON.parse(JSON.stringify(set)) as PokemonSet;
 			this.sets.splice(index, 0, newSet);
 			index++;
 		}
@@ -422,7 +419,7 @@ export class TeamEditorState extends PSModel {
 
 		const teams: Team[] = [];
 
-		const sets: Teams.PokemonSet[] = [];
+		const sets: ModernTeams.PokemonSet[] = [];
 		for (const key in TeamEditorState.clipboard.teams) {
 			const clipboardTeam = TeamEditorState.clipboard.teams[key];
 			if (clipboardTeam.entire) {
@@ -453,7 +450,7 @@ export class TeamEditorState extends PSModel {
 				name: `Pasted Team`,
 				format: Dex.modid,
 				folder,
-				packedTeam: Teams.pack(sets),
+				packedTeam: ModernTeams.pack(sets),
 				isBox: false,
 				iconCache: null,
 				key: '',
@@ -467,32 +464,33 @@ export class TeamEditorState extends PSModel {
 	}
 	ignoreRows = ['header', 'sortpokemon', 'sortmove', 'html'];
 	downSearchValue() {
-		if (!this.search.results || this.searchIndex >= this.search.results.length - 1) return;
+		if (!this.searchResults || this.searchIndex >= this.searchResults.length - 1) return;
 
 		this.searchIndex++;
-		if (this.ignoreRows.includes(this.search.results[this.searchIndex]?.[0])) {
-			if (this.searchIndex >= this.search.results.length - 1) return;
+		if (this.ignoreRows.includes(this.searchResults[this.searchIndex]?.[0])) {
+			if (this.searchIndex >= this.searchResults.length - 1) return;
 			this.searchIndex++;
 		}
-		if (this.ignoreRows.includes(this.search.results[this.searchIndex]?.[0])) {
-			if (this.searchIndex >= this.search.results.length - 1) return;
+		if (this.ignoreRows.includes(this.searchResults[this.searchIndex]?.[0])) {
+			if (this.searchIndex >= this.searchResults.length - 1) return;
 			this.searchIndex++;
 		}
 	}
 	upSearchValue() {
-		if (!this.search.results || this.searchIndex <= 0) return;
+		if (!this.searchResults || this.searchIndex <= 0) return;
 
-		if (this.searchIndex <= 1 && this.ignoreRows.includes(this.search.results[0]?.[0])) return;
+		if (this.searchIndex <= 1 && this.ignoreRows.includes(this.searchResults[0]?.[0])) return;
 		this.searchIndex--;
-		if (this.ignoreRows.includes(this.search.results[this.searchIndex]?.[0])) {
+		if (this.ignoreRows.includes(this.searchResults[this.searchIndex]?.[0])) {
 			if (this.searchIndex <= 0) return;
 			this.searchIndex--;
 		}
-		if (this.ignoreRows.includes(this.search.results[this.searchIndex]?.[0])) {
+		if (this.ignoreRows.includes(this.searchResults[this.searchIndex]?.[0])) {
 			if (this.searchIndex <= 0) return;
 			this.searchIndex--;
 		}
 	}
+	get searchResults(): SearchRow[] { return [...(this.search.prependResults || []), ...(this.search.results || [])]; }
 	getResultValue(result: SearchRow): string {
 		switch (result[0]) {
 		case 'pokemon':
@@ -515,10 +513,10 @@ export class TeamEditorState extends PSModel {
 		}
 	}
 	canAdd(): boolean {
-		return this.sets.length < 6 || this.team.isBox;
+		return this.sets.length < 6 || !!this.team.isBox;
 	}
-	getHPType(set: Dex.PokemonSet): Dex.TypeName {
-		if (set.hpType) return set.hpType as Dex.TypeName;
+	getHPType(set: PokemonSet): TypeName {
+		if (set.hpType) return set.hpType as TypeName;
 		const hpMove = set.ivs ? null : this.getHPMove(set);
 		if (hpMove) return hpMove;
 
@@ -552,7 +550,7 @@ export class TeamEditorState extends PSModel {
 			return hpTypes[Math.floor(hpTypeX * 15 / 63)];
 		}
 	};
-	hpTypeMatters(set: Dex.PokemonSet): boolean {
+	hpTypeMatters(set: PokemonSet): boolean {
 		if (this.gen < 2) return false;
 		if (this.gen > 7) return false;
 		for (const move of set.moves) {
@@ -563,23 +561,23 @@ export class TeamEditorState extends PSModel {
 		if (toID(set.ability) === 'imposter') return true;
 		return false;
 	}
-	getHPMove(set: Dex.PokemonSet): Dex.TypeName | null {
+	getHPMove(set: PokemonSet): TypeName | null {
 		if (set.moves) {
 			for (const move of set.moves) {
 				const moveid = toID(move);
 				if (moveid.startsWith('hiddenpower')) {
-					return moveid.charAt(11).toUpperCase() + moveid.slice(12) as Dex.TypeName;
+					return moveid.charAt(11).toUpperCase() + moveid.slice(12) as TypeName;
 				}
 			}
 		}
 		return null;
 	}
-	getIVs(set: Dex.PokemonSet) {
+	getIVs(set: PokemonSet) {
 		const ivs = this.defaultIVs(set);
 		if (set.ivs) Object.assign(ivs, set.ivs);
 		return ivs;
 	}
-	defaultIVs(set: Dex.PokemonSet, noGuess = !!set.ivs): Record<Dex.StatName, number> {
+	defaultIVs(set: PokemonSet, noGuess = !!set.ivs): Record<StatName, number> {
 		const useIVs = this.gen > 2;
 		const defaultIVs = { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, spe: 31 };
 		if (!useIVs) {
@@ -596,7 +594,7 @@ export class TeamEditorState extends PSModel {
 		if (!useIVs) {
 			const hpDVs = hpType ? this.dex.types.get(hpType).HPdvs : null;
 			if (hpDVs) {
-				for (const stat in hpDVs) defaultIVs[stat as Dex.StatName] = hpDVs[stat as Dex.StatName]!;
+				for (const stat in hpDVs) defaultIVs[stat as StatName] = hpDVs[stat as StatName]!;
 			}
 		} else {
 			const hpIVs = hpType ? this.dex.types.get(hpType).HPivs : null;
@@ -605,7 +603,7 @@ export class TeamEditorState extends PSModel {
 					if (minSpe) defaultIVs['spe'] = hpIVs['spe'] ?? 31;
 					if (minAtk) defaultIVs['atk'] = hpIVs['atk'] ?? 31;
 				} else {
-					for (const stat in hpIVs) defaultIVs[stat as Dex.StatName] = hpIVs[stat as Dex.StatName]!;
+					for (const stat in hpIVs) defaultIVs[stat as StatName] = hpIVs[stat as StatName]!;
 				}
 			}
 		}
@@ -626,12 +624,12 @@ export class TeamEditorState extends PSModel {
 		}
 		return defaultIVs;
 	}
-	defaultHappiness(set: Dex.PokemonSet) {
+	defaultHappiness(set: PokemonSet) {
 		if (set.moves.includes('Return')) return 255;
 		if (set.moves.includes('Frustration')) return 0;
 		return undefined;
 	}
-	prefersMinStats(set: Dex.PokemonSet) {
+	prefersMinStats(set: PokemonSet) {
 		let minSpe = !set.evs?.spe && set.moves.includes('Gyro Ball');
 		let minAtk = !set.evs?.atk;
 
@@ -673,17 +671,17 @@ export class TeamEditorState extends PSModel {
 
 		return { minAtk, minSpe };
 	}
-	getNickname(set: Dex.PokemonSet) {
+	getNickname(set: PokemonSet) {
 		return set.name || this.dex.species.get(set.species).baseSpecies || '';
 	}
-	canHyperTrain(set: Dex.PokemonSet) {
+	canHyperTrain(set: PokemonSet) {
 		let format: string = this.format;
 		if (this.gen < 7 || format === 'gen7hiddentype') return false;
 		if ((set.level || this.defaultLevel) === 100) return true;
 		if ((set.level || this.defaultLevel) >= 50 && this.defaultLevel === 50) return true;
 		return false;
 	}
-	getHPIVs(hpType: Dex.TypeName | null) {
+	getHPIVs(hpType: TypeName | null) {
 		switch (hpType) {
 		case 'Dark':
 			return ['111111'];
@@ -721,7 +719,7 @@ export class TeamEditorState extends PSModel {
 			return null;
 		}
 	}
-	getStat(stat: StatName, set: Dex.PokemonSet, ivOverride: number, evOverride?: number, natureOverride?: number) {
+	getStat(stat: StatName, set: PokemonSet, ivOverride: number, evOverride?: number, natureOverride?: number) {
 		const supportsEVs = !this.isLetsGo;
 		const supportsAVs = !supportsEVs;
 
@@ -759,47 +757,43 @@ export class TeamEditorState extends PSModel {
 		return Math.trunc(val);
 	}
 	export(compat?: boolean) {
-		return Teams.export(this.sets, this.dex, !compat);
+		return ModernTeams.export(this.sets, this.dex, !compat);
 	}
 	import(value: string) {
-		this.sets = Teams.import(value);
+		this.sets = ModernTeams.import(value);
 		this.save();
 	}
-	getTypeWeakness(type: Dex.TypeName, attackType: Dex.TypeName): 0 | 0.5 | 1 | 2 {
+	getTypeWeakness(type: TypeName, attackType: TypeName): 0 | 0.5 | 1 | 2 {
 		const weaknessType = this.dex.types.get(type).damageTaken?.[attackType];
 		if (weaknessType === Dex.IMMUNE) return 0;
 		if (weaknessType === Dex.RESIST) return 0.5;
 		if (weaknessType === Dex.WEAK) return 2;
 		return 1;
 	}
-	getWeakness(types: readonly Dex.TypeName[], abilityid: ID, attackType: Dex.TypeName): number {
+	getWeakness(types: readonly TypeName[], abilityid: ID, attackType: TypeName): number {
 		const abilityFactor = BattleTooltips.getTypeAbilityWeakness(attackType, abilityid, this.dex);
 		if (abilityFactor === 0) return 0;
 
-		if (abilityid === 'wonderguard') {
-			for (const type of types) {
-				if (this.getTypeWeakness(type, attackType) <= 1) return 0;
-			}
-		}
-
-		let factor = abilityFactor;
-		for (const type of types) {
-			factor *= this.getTypeWeakness(type, attackType);
-		}
+		let effectiveness = 1;
+		for (const type of types) effectiveness *= this.getTypeWeakness(type, attackType);
+		const effects = Dex.getAbilityEffects(abilityid, new Set<ID>(), this.dex);
+		if (effects.has(toID('wonderguard')) && effectiveness <= 1) return 0;
+		let factor = abilityFactor * effectiveness;
+		if (effectiveness > 1 && ['filter', 'solidrock', 'prismarmor'].some(id => effects.has(toID(id)))) factor *= 0.75;
 		return factor;
 	}
-	pokemonDefensiveCoverage(set: Dex.PokemonSet) {
+	pokemonDefensiveCoverage(set: PokemonSet) {
 		const coverage: Record<string, number> = {};
 		const species = this.dex.species.get(set.species);
 		const abilityid = toID(set.ability);
 		for (const type of this.dex.types.names()) {
 			coverage[type] = this.getWeakness(species.types, abilityid, type);
 		}
-		return coverage as Record<Dex.TypeName, number>;
+		return coverage as Record<TypeName, number>;
 	}
 	teamDefensiveCoverage() {
-		type Counter = { type: Dex.TypeName, resists: number, neutrals: number, weaknesses: number };
-		const counters: Record<Dex.TypeName, Counter> = {} as any;
+		type Counter = { type: TypeName, resists: number, neutrals: number, weaknesses: number };
+		const counters: Record<TypeName, Counter> = {} as any;
 		for (const type of this.dex.types.names()) {
 			counters[type] = {
 				type,
@@ -810,7 +804,7 @@ export class TeamEditorState extends PSModel {
 		}
 		for (const set of this.sets) {
 			const coverage = this.pokemonDefensiveCoverage(set);
-			for (const [type, value] of Object.entries(coverage) as [Dex.TypeName, number][]) {
+			for (const [type, value] of Object.entries(coverage) as [TypeName, number][]) {
 				if (value < 1) {
 					counters[type].resists++;
 				} else if (value === 1) {
@@ -822,7 +816,7 @@ export class TeamEditorState extends PSModel {
 		}
 		return counters;
 	}
-	getDefaultAbility(set: Dex.PokemonSet) {
+	getDefaultAbility(set: PokemonSet) {
 		if (this.gen < 3 || this.isLetsGo || this.formeLegality === 'custom') return set.ability;
 		const species = this.dex.species.get(set.species);
 		if (this.formeLegality === 'hackmons') {
@@ -862,7 +856,7 @@ export class TeamEditorState extends PSModel {
 		return undefined;
 	}
 	save() {
-		this.team.packedTeam = Teams.pack(this.sets);
+		this.team.packedTeam = ModernTeams.pack(this.sets);
 		this.lastPackedTeam = this.team.packedTeam;
 		this.team.iconCache = null;
 	}
@@ -893,7 +887,7 @@ export class TeamEditorState extends PSModel {
 		}
 	}
 	/** returns null if sample sets aren't done loading */
-	getSampleSets(set: Dex.PokemonSet): string[] | null {
+	getSampleSets(set: PokemonSet): string[] | null {
 		const d = TeamEditorState.sampleSets[this.format];
 		if (d === undefined) {
 			this.fetchSampleSets(this.format);
@@ -910,14 +904,14 @@ export class TeamEditorState extends PSModel {
 		return Object.keys(all);
 	}
 	/** returns null if no boxes exist, empty array if no sets for this species */
-	getUserSets(set: Dex.PokemonSet): { [setName: string]: Dex.PokemonSet } | null {
+	getUserSets(set: PokemonSet): { [setName: string]: PokemonSet } | null {
 		if (!this.userSetsCache[this.format]) {
-			const userSets: { [species: string]: { [setName: string]: Dex.PokemonSet } } = {};
+			const userSets: { [species: string]: { [setName: string]: PokemonSet } } = {};
 
 			for (const team of window.PS?.teams.list || []) {
 				if (team.format !== this.format || !team.isBox) continue;
 
-				const setList = Teams.unpack(team.packedTeam);
+				const setList = ModernTeams.unpack(team.packedTeam);
 				const duplicateNameIndices: Record<string, number> = {};
 
 				for (const boxSet of setList) {
@@ -943,14 +937,14 @@ export class TeamEditorState extends PSModel {
 	static renderClipboard(cancelClipboard: () => void) {
 		if (!TeamEditorState.clipboard) return null;
 
-		const renderSet = (set: Dex.PokemonSet) => <div class="set">
+		const renderSet = (set: PokemonSet) => <div class="set">
 			<small>
 				<PSIcon pokemon={set} /> {set.name || set.species}
 				{set.ability && ` [${set.ability}]`}{set.item && ` @ ${set.item}`}
 				{} - {set.moves.join(' / ') || '(No moves)'}
 			</small>
 		</div>;
-		const renderTeam = (team: Team, sets: Dex.PokemonSet[]) => <div class="set"><small>
+		const renderTeam = (team: Team, sets: PokemonSet[]) => <div class="set"><small>
 			<strong>{team.name}</strong><br />
 			{sets.map(set => <PSIcon pokemon={set} />)}
 		</small></div>;
@@ -1613,7 +1607,7 @@ class TeamTextbox extends preact.Component<{
 		const { team } = editor;
 		if (!team) return;
 
-		let newText = Teams.exportSet(editor.sets[index], editor.dex, !this.compat);
+		let newText = ModernTeams.exportSet(editor.sets[index], editor.dex, !this.compat);
 		const [start, end] = this.getSetRange(index);
 		if (start && start === this.textbox.value.length && !this.textbox.value.endsWith('\n\n')) {
 			newText = (this.textbox.value.endsWith('\n') ? '\n' : '\n\n') + newText;
@@ -1721,7 +1715,7 @@ class TeamTextbox extends preact.Component<{
 		return null;
 	}
 
-	renderDetails(set: Dex.PokemonSet, i: number) {
+	renderDetails(set: PokemonSet, i: number) {
 		const editor = this.editor;
 		const species = editor.dex.species.get(set.species);
 
@@ -1755,7 +1749,7 @@ class TeamTextbox extends preact.Component<{
 		</button>;
 	}
 
-	renderStats(set: Dex.PokemonSet, i: number) {
+	renderStats(set: PokemonSet, i: number) {
 		const editor = this.editor;
 
 		// stat cell
@@ -1976,7 +1970,7 @@ class TeamWizard extends preact.Component<{
 		}
 		this.props.onUpdate();
 	}
-	renderSet(set: Dex.PokemonSet | undefined, i: number) {
+	renderSet(set: PokemonSet | undefined, i: number) {
 		const { editor } = this.props;
 		const sprite = Dex.getTeambuilderSprite(set, editor.gen);
 		if (!set) {
@@ -2221,7 +2215,7 @@ class TeamWizard extends preact.Component<{
 			data?.stats?.[set.species]?.[setName] ?? data?.stats?.[sid]?.[setName];
 		if (!setTemplate) return;
 
-		const applied: Partial<Dex.PokemonSet> = JSON.parse(JSON.stringify(setTemplate));
+		const applied: Partial<PokemonSet> = JSON.parse(JSON.stringify(setTemplate));
 		Object.assign(set, applied);
 
 		editor.save();
@@ -2242,7 +2236,7 @@ class TeamWizard extends preact.Component<{
 		const setTemplate = userSets?.[setName];
 		if (!setTemplate) return;
 
-		const applied: Partial<Dex.PokemonSet> = JSON.parse(JSON.stringify(setTemplate));
+		const applied: Partial<PokemonSet> = JSON.parse(JSON.stringify(setTemplate));
 		delete applied.name;
 		Object.assign(set, applied);
 
@@ -2382,7 +2376,7 @@ class TeamWizard extends preact.Component<{
 		const { editor } = this.props;
 		if (!editor.innerFocus) return null;
 		const { type, setIndex } = editor.innerFocus;
-		const set = this.props.editor.sets[setIndex] as Dex.PokemonSet | undefined;
+		const set = this.props.editor.sets[setIndex] as PokemonSet | undefined;
 		const cur = (i: number) => setIndex === i ? ' cur' : '';
 		const sampleSets = type === 'ability' ? editor.getSampleSets(set!) : [];
 		const userSets = type === 'ability' ? editor.getUserSets(set!) : null;
@@ -2501,10 +2495,10 @@ class TeamWizard extends preact.Component<{
 
 class StatForm extends preact.Component<{
 	editor: TeamEditorState,
-	set: Dex.PokemonSet,
+	set: PokemonSet,
 	onChange: () => void,
 }> {
-	static renderStatGraph(set: Dex.PokemonSet, editor: TeamEditorState, evs?: boolean) {
+	static renderStatGraph(set: PokemonSet, editor: TeamEditorState, evs?: boolean) {
 		const defaultEV = (editor.gen > 2 ? 0 : 252);
 		const ivs = editor.getIVs(set);
 		return Dex.statNames.map(statID => {
@@ -2772,8 +2766,8 @@ class StatForm extends preact.Component<{
 	override componentDidUpdate(): void {
 		this.update();
 	}
-	plus: Dex.StatNameExceptHP | null = null;
-	minus: Dex.StatNameExceptHP | null = null;
+	plus: StatNameExceptHP | null = null;
+	minus: StatNameExceptHP | null = null;
 	renderStatbar(stat: number, statID: StatName) {
 		const { editor } = this.props;
 		const maxStat = statID === 'hp' ?
@@ -2788,14 +2782,14 @@ class StatForm extends preact.Component<{
 	changeEV = (ev: Event) => {
 		const target = ev.currentTarget as HTMLInputElement;
 		const { set } = this.props;
-		const statID = target.name.split('-')[1] as Dex.StatName;
+		const statID = target.name.split('-')[1] as StatName;
 		let value = Math.abs(parseInt(target.value));
 
 		if (isNaN(value)) {
 			if (set.evs) delete set.evs[statID];
 		} else {
 			if (this.maxEVs() < 6 * 252 || this.props.editor.isLetsGo) {
-				set.evs ||= {};
+				set.evs ||= {hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0};
 			} else {
 				set.evs ||= { hp: 252, atk: 252, def: 252, spa: 252, spd: 252, spe: 252 };
 			}
@@ -2838,7 +2832,7 @@ class StatForm extends preact.Component<{
 	};
 	updateNatureFromPlusMinus = () => {
 		const { set } = this.props;
-		set.nature = Teams.getNatureFromPlusMinus(this.plus, this.minus) || undefined;
+		set.nature = ModernTeams.getNatureFromPlusMinus(this.plus, this.minus) || undefined;
 	};
 	/** Converts DV/IV in a textbox to the value in set. */
 	dvToIv(dvOrIvString?: string): number | null {
@@ -2874,7 +2868,7 @@ class StatForm extends preact.Component<{
 	changeNature = (ev: Event) => {
 		const target = ev.currentTarget as HTMLSelectElement;
 		const { set } = this.props;
-		const nature = target.value as Dex.NatureName;
+		const nature = target.value as NatureName;
 		if (nature === 'Serious') {
 			delete set.nature;
 		} else {
@@ -3007,7 +3001,7 @@ class StatForm extends preact.Component<{
 
 class DetailsForm extends preact.Component<{
 	editor: TeamEditorState,
-	set: Dex.PokemonSet,
+	set: PokemonSet,
 	onChange: () => void,
 }> {
 	update(init?: boolean) {
@@ -3116,7 +3110,7 @@ class DetailsForm extends preact.Component<{
 		}
 		this.props.onChange();
 	};
-	renderGender(gender: Dex.GenderName) {
+	renderGender(gender: GenderName) {
 		const genderTable = { 'M': "Male", 'F': "Female" };
 		if (gender === 'N') return 'Unknown';
 		return <>

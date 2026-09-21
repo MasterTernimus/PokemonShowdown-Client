@@ -13,6 +13,7 @@ class MainMenuRoom extends PSRoom {
 	readonly classType: string = 'mainmenu';
 	userdetailsCache: {[userid: string]: {
 		userid: ID,
+		name?: string,
 		avatar?: string | number,
 		status?: string,
 		group?: string,
@@ -30,6 +31,7 @@ class MainMenuRoom extends PSRoom {
 		switch (cmd) {
 		case 'challstr': {
 			const [, challstr] = args;
+			PS.user.challstr = challstr;
 			PSLoginServer.query({
 				act: 'upkeep',
 				challstr,
@@ -243,7 +245,7 @@ class MainMenuRoom extends PSRoom {
 			} else {
 				Object.assign(userdetails, response);
 			}
-			const userRoom = PS.rooms[`user-${userid}`] as UserRoom;
+			const userRoom = PS.rooms[`user-${userid}`] as import('./panel-popups').UserRoom;
 			if (userRoom) userRoom.update(null);
 			break;
 		case 'rooms':
@@ -473,7 +475,8 @@ class TeamDropdown extends preact.Component<{format: string}> {
 }
 
 class TeamForm extends preact.Component<{
-	children: preact.ComponentChildren, class?: string, format?: string,
+	children: preact.ComponentChildren, class?: string, format?: string, teamFormat?: string, hideFormat?: boolean,
+	onValidate?: (e: Event, format: string, team?: Team) => void,
 	onSubmit: null | ((e: Event, format: string, team?: Team) => void),
 }> {
 	state = {format: '[Gen 7] Random Battle'};
@@ -482,14 +485,15 @@ class TeamForm extends preact.Component<{
 	};
 	submit = (e: Event) => {
 		e.preventDefault();
-		const format = (this.base!.querySelector('button[name=format]') as HTMLButtonElement).value;
+		const format = this.props.format || (this.base!.querySelector('button[name=format]') as HTMLButtonElement)?.value || this.state.format;
 		const teamKey = (this.base!.querySelector('button[name=team]') as HTMLButtonElement).value;
 		const team = teamKey ? PS.teams.byKey[teamKey] : undefined;
-		if (this.props.onSubmit) this.props.onSubmit(e, format, team);
+		if ((e as SubmitEvent).submitter?.getAttribute('name') === 'validate') this.props.onValidate?.(e, format, team);
+		else this.props.onSubmit?.(e, format, team);
 	};
 	render() {
 		return <form class={this.props.class} onSubmit={this.submit}>
-			<p>
+			<p style={this.props.hideFormat ? "display:none" : ""}>
 				<label class="label">
 					Format:<br />
 					<FormatDropdown onChange={this.changeFormat} format={this.props.format} />
@@ -498,7 +502,7 @@ class TeamForm extends preact.Component<{
 			<p>
 				<label class="label">
 					Team:<br />
-					<TeamDropdown format={this.state.format} />
+					<TeamDropdown format={this.props.teamFormat || this.props.format || this.state.format} />
 				</label>
 			</p>
 			<p>{this.props.children}</p>

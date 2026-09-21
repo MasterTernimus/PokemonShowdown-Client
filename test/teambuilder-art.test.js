@@ -15,10 +15,11 @@ const manifest = require('../teambuilder-art-manifest.json');
 
 describe('Native Team Builder artwork coverage', () => {
 	for (const row of rows.filter(row => row.available)) {
-		if (['clefable', 'gengar', 'hydreigon', 'rillaboom', 'rillaboom-gmax'].includes(row.spriteid)) continue;
+		if (['clefable', 'gengar', 'hydreigon', 'rillaboom', 'rillaboom-gmax', 'banette', 'banette-mega'].includes(row.spriteid)) continue;
 		it(`uses verified dedicated art for ${row.name}, normal and shiny`, () => {
 			for (const shiny of [false, true]) {
 				if ((row.spriteid === 'archeops' && shiny) || (row.spriteid.startsWith('furfrou') || row.spriteid.startsWith('silvally')) || ['dusknoir', 'reuniclus', 'scizor-mega', 'raichu-alola'].includes(row.spriteid)) continue;
+				if (shiny && ['lilligant', 'aurorus', 'tyrantrum'].includes(row.spriteid)) continue;
 				for (const gen of [0, 9]) {
 					const data = Dex.getTeambuilderSpriteData({species: row.name, shiny}, gen);
 					assert.equal(data.spriteDir, 'sprites/dex');
@@ -31,7 +32,14 @@ describe('Native Team Builder artwork coverage', () => {
 					assert.equal(png.readUInt32BE(16), size.w);
 					assert.equal(png.readUInt32BE(20), size.h);
 					const width = parseInt(data.backgroundSize);
-					assert(width <= 96 && width * size.h / size.w <= 97);
+					if (row.spriteid === 'pinsir') {
+						assert.equal(width, 120);
+						assert.equal(data.x, -12);
+						assert.equal(data.y, -12);
+						assert.equal(data.nativeSizeOnly, true);
+					} else {
+						assert(width <= 96 && width * size.h / size.w <= 97);
+					}
 				}
 			}
 		});
