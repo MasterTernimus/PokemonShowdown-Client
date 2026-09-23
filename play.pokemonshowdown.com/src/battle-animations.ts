@@ -38,7 +38,7 @@ This license DOES NOT extend to any other files in this repository.
 
 // Cropped back sprites must meet the foreground edge in every battle slot.
 function isBottomAlignedBackSprite(url: string) {
- return /\/gen5-back(?:-shiny)?\/(?:alakazam-alt|alakazam-mega-alt|sharpedo-megay|gardevoir-void|tentacruel-alt|wishiwashi-school|wishiwashi-seviischooling)\.png(?:\?|$)/.test(url);
+ return /\/gen5-back(?:-shiny)?\/(?:alakazam-alt|alakazam-mega-alt|sharpedo-megay|gardevoir-void|tentacruel-alt|wishiwashi-school|wishiwashi-seviischooling|wishiwashi-sevii-schooling)\.png(?:\?|$)/.test(url);
 }
 
 export class BattleScene implements BattleSceneStub {
@@ -371,8 +371,7 @@ export class BattleScene implements BattleSceneStub {
 		// This cropped back view ends at the foreground edge of the battle window.
 		// Retain vertical animation motion while keeping its resting pose bottom-aligned.
 		if (bottomAlignedBack) {
-			top = 360 - height - Math.floor(loc.y! * scale) -
-				(obj.url?.includes('/wishiwashi-seviischooling.png') ? 6 : 0);
+			top = 360 - height - Math.floor(loc.y! * scale);
 		}
 
 

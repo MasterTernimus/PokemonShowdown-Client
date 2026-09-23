@@ -41,7 +41,7 @@ const circuit = fields.find(f => f.id === 'shortcircuitterrain');
 assert.deepEqual([0,1,2,3,4].map(v => preview.evaluate(circuit, thunder, base, base, '', v).factor), [0.8,1.5,0.5,1.2,2]);
 const notes = preview.allNotes(Dex.moves.get('accelerock'));
 assert(notes.some(n => n.includes('Rocky Terrain: power ×2.25')));
-assert(preview.teamBuilderHTML(Dex.moves.get('accelerock')).includes('<summary>Field effects</summary>'));
+assert.equal(preview.teamBuilderHTML(Dex.moves.get('accelerock')), '');
 assert(preview.allNotes(Dex.moves.get('calmmind')).some(n => n.includes('Psychic Terrain: stat changes: +2 Sp. Atk, +2 Sp. Def')));
 assert(!preview.allNotes(Dex.moves.get('thunder')).some(n => n.startsWith('Flower Garden')));
 check('bigtopterrain', 'acrobatics', 3, {...base, item: 'leftovers'});
