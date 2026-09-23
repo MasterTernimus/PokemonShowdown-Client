@@ -873,6 +873,7 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 		base: 'cacturne',
 		data: {
 			name: 'Cacturne-Alt',
+			abilities: {0: 'Scarecrow', 1: 'Solar Rush', H: 'Storm Drain'},
 			baseSpecies: 'Cacturne',
 			forme: 'Alt',
 			spriteid: 'cacturne-alt',
@@ -1582,7 +1583,7 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 		data: {
 			name: 'Golisopod-Mega',
 			baseSpecies: 'Golisopod',
-			requiredItem: 'Mega Golisopite',
+			requiredItem: undefined, requiredItems: ['Golisopite', 'Mega Golisopite'],
 			forme: 'Mega',
 			battleOnly: 'Golisopod',
 			changesFrom: 'Golisopod',
@@ -2139,6 +2140,8 @@ const OFFICIAL_MENU_ICON_INDEXES: {[id: string]: number} = {"bulbasaur":1,"ivysa
 const OFFICIAL_MENU_ICON_INDEXES_LEFT: {[id: string]: number} = {"pikachubelle":1452,"pikachupopstar":1453,"clefairy":1454,"clefable":1455,"jigglypuff":1456,"wigglytuff":1457,"dugtrioalola":1458,"poliwhirl":1459,"poliwrath":1460,"mukalola":1461,"kingler":1462,"croconaw":1463,"cleffa":1464,"igglybuff":1465,"politoed":1466,"unownb":1467,"unownc":1468,"unownd":1469,"unowne":1470,"unownf":1471,"unowng":1472,"unownh":1473,"unownj":1474,"unownk":1475,"unownl":1476,"unownm":1477,"unownn":1478,"unownp":1479,"unownq":1480,"unownquestion":1481,"unownr":1482,"unowns":1483,"unownt":1484,"unownv":1485,"unownz":1486,"sneasel":1487,"teddiursa":1488,"roselia":1489,"zangoose":1490,"seviper":1491,"castformsnowy":1492,"absolmega":1493,"absol":1494,"regirock":1495,"torterra":1496,"budew":1497,"roserade":1498,"magmortar":1499,"togekiss":1500,"rotomwash":1501,"shayminsky":1502,"emboar":1503,"pansear":1504,"simisear":1505,"drilbur":1506,"excadrill":1507,"sawk":1508,"lilligant":1509,"garbodor":1510,"solosis":1511,"vanilluxe":1512,"amoonguss":1513,"klink":1514,"klang":1515,"klinklang":1516,"litwick":1517,"golett":1518,"golurk":1519,"kyuremblack":1520,"kyuremwhite":1521,"kyurem":1522,"keldeoresolute":1523,"meloetta":1524,"greninja":1525,"greninjabond":1525,"greninjaash":1526,"furfroudebutante":1527,"barbaracle":1528,"clauncher":1529,"clawitzer":1530,"sylveon":1531,"klefki":1532,"zygarde":1533,"zygarde10":1534,"zygardecomplete":1535,"dartrix":1536,"steenee":1537,"tsareena":1538,"comfey":1539,"miniormeteor":1540,"minior":1541,"miniororange":1542,"minioryellow":1543,"miniorgreen":1544,"miniorblue":1545,"miniorviolet":1546,"miniorindigo":1547,"dhelmise":1548,"necrozma":1549,"marshadow":1550,"pikachuoriginal":1551,"pikachupartner":1552,"necrozmaduskmane":1553,"necrozmadawnwings":1554,"necrozmaultra":1555,"stakataka":1556,"blacephalon":1557};
 
 const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
+	wishiwashisevii: 'wishiwashi-sevii',
+	wishiwashiseviischooling: 'wishiwashi-sevii-schooling',
 	parasectmega: 'parasect-mega',
 	rockruffdusk: 'rockruff',
 	tatsugiricurlymega: 'tatsugiri-mega',
@@ -7603,7 +7606,7 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 	wishiwashi: {baseStats: {hp: 80, atk: 20, def: 20, spa: 25, spd: 25, spe: 40}, abilities: {0: 'Schooling', 1: 'Sevii Schooling'}, otherFormes: ['Wishiwashi-School', 'Wishiwashi-Sevii', 'Wishiwashi-Sevii-Schooling'], formeOrder: ['Wishiwashi', 'Wishiwashi-School', 'Wishiwashi-Sevii', 'Wishiwashi-Sevii-Schooling']},
 	wishiwashischool: {baseStats: {hp: 80, atk: 135, def: 130, spa: 135, spd: 130, spe: 60}},
 	wishiwashisevii: {"num":746,"name":"Wishiwashi-Sevii","baseSpecies":"Wishiwashi","forme":"Sevii","types":["Ghost"],"baseStats":{"hp":80,"atk":20,"def":20,"spa":25,"spd":25,"spe":40},"abilities":{"0":"Sevii Schooling"},"heightm":0.2,"weightkg":0.3,"color":"Purple","eggGroups":["Water 2"],"requiredAbility":"Sevii Schooling","battleOnly":"Wishiwashi"},
-	wishiwashiseviischooling: {"num":746,"name":"Wishiwashi-Sevii-Schooling","baseSpecies":"Wishiwashi","forme":"Sevii-Schooling","types":["Ghost","Dragon"],"baseStats":{"hp":80,"atk":135,"def":130,"spa":135,"spd":130,"spe":60},"abilities":{"0":"Sevii Schooling"},"heightm":8.2,"weightkg":78.6,"color":"Purple","eggGroups":["Water 2"],"requiredAbility":"Sevii Schooling","battleOnly":"Wishiwashi"},
+	wishiwashiseviischooling: {"num":746,"name":"Wishiwashi-Sevii-Schooling","spriteid":"wishiwashi-sevii-schooling","baseSpecies":"Wishiwashi","forme":"Sevii-Schooling","types":["Ghost","Dragon"],"baseStats":{"hp":80,"atk":135,"def":130,"spa":135,"spd":130,"spe":60},"abilities":{"0":"Sevii Schooling"},"heightm":8.2,"weightkg":78.6,"color":"Purple","eggGroups":["Water 2"],"requiredAbility":"Sevii Schooling","battleOnly":"Wishiwashi"},
 	swellow: {baseStats: {hp: 72, atk: 85, def: 72, spa: 85, spd: 61, spe: 127}},
 	rabsca: {baseStats: {hp: 100, atk: 50, def: 90, spa: 120, spd: 100, spe: 60}, abilities: {0: 'Sand Rush', 1: 'Elevate', H: 'Telepathy'}},
 	salazzle: {
@@ -12912,6 +12915,7 @@ const CUSTOM_SHINY_ICON_FILES: {[id: string]: string} = {dragonite: 'dragonite-s
 const ROTOM_SHINY_SPRITE_IDS = new Set(['rotom', 'rotomheat', 'rotomwash', 'rotomfrost', 'rotomfan', 'rotommow']);
 const CUSTOM_STATIC_SHINY_BW_SPRITES = new Set(['dragonite', 'dragonitemega', 'magnezone', 'nidoking', 'nidoqueen', 'ninetales', 'persian', 'persianalola', 'sylveon', 'umbreon', 'vaporeon', 'flareon', 'tauros', 'taurospaldeacombat', 'taurospaldeablaze', 'taurospaldeaaqua', ...Array.from(ROTOM_SHINY_SPRITE_IDS)]);
 function customSpriteRevision(id: string) {
+	if (toID(id).startsWith('wishiwashisevii')) return '?v=sevii-preview-20260921';
 	if (id === 'gastrodonaevian' || id === 'gastrodoneastaevian' || id === 'gastrodon-aevian' || id === 'gastrodon-east-aevian') return '?v=gastrodon-aevian-profiles-20260920';
 	if (id === 'golisopodaevian' || id === 'golisopodaevianmega' || id === 'golisopod-aevian' || id === 'golisopod-aevian-mega') return '?v=golisopod-aevian-mega-20260920';
 	if (id === 'typhlosionmega' || id === 'typhlosion-mega') return '?v=typhlosion-mega-20260920';
@@ -13683,6 +13687,8 @@ const CUSTOM_BATTLE_SPRITE_X_OFFSETS: {[id: string]: {front?: number, back?: num
 	hatterenegmax: {back: -42},
 };
 const CUSTOM_BATTLE_FRONT_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: number}} = {
+	wishiwashisevii: {w: 40, h: 40},
+	wishiwashiseviischooling: {w: 80, h: 80},
 	aegislashgmax: {w: 120, h: 120},
 	alcremie: {w: 60, h: 60},
 	ariados: {w: 60, h: 60},
@@ -13764,6 +13770,8 @@ const CUSTOM_BATTLE_FRONT_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: n
 	zoroarkhisui: {w: 88, h: 88},
 };
 const CUSTOM_BATTLE_BACK_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: number}} = {
+	wishiwashisevii: {w: 40, h: 40},
+	wishiwashiseviischooling: {w: 80, h: 80},
 	clefable: {w: 57, h: 55},
 	alcremie: {w: 60, h: 60},
 	ariados: {w: 60, h: 60},
@@ -13872,6 +13880,8 @@ const CUSTOM_TEAMBUILDER_BACKGROUND_POSITION_OVERRIDES: {[id: string]: {normal?:
 	espeon: {shiny: {x: -7, y: -9}},
 };
 const CUSTOM_TEAMBUILDER_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: number}} = {
+	wishiwashisevii: {w: 40, h: 40},
+	wishiwashiseviischooling: {w: 80, h: 80},
 	clefable: {w: 54, h: 53},
 	arbokmegay: {w: 70, h: 70},
 	garchompbattlebond: {w: 96, h: 96},
@@ -14223,7 +14233,7 @@ const CUSTOM_ABILITY_COMPONENT_OVERRIDES: {[id: string]: readonly ID[]} = {
 	aevianglacier: ['snowwarning' as ID, 'icebody' as ID, 'refrigerate' as ID],
 	aeviandream: ['baddreams' as ID, 'shedskin' as ID, 'toughclaws' as ID],
 	schooling: ['hydrabond' as ID, 'selfrepair' as ID, 'moldbreaker' as ID],
-	seviischooling: ['hydrabond' as ID, 'selfrepair' as ID, 'moldbreaker' as ID],
+	seviischooling: ['schooling' as ID, 'hydrabond' as ID, 'selfrepair' as ID, 'moldbreaker' as ID],
 	wingedwraith: ['infiltrator' as ID, 'galewings' as ID],
 	toxicsink: ['effectspore' as ID, 'stormdrain' as ID, 'invigorate' as ID],
 	neurotoxin: ['strongjaw' as ID, 'shedskin' as ID, 'hydrabond' as ID, 'regenerator' as ID],
@@ -14882,7 +14892,7 @@ CUSTOM_LEARNSET_REMOVALS.arbolivamega = [...(CUSTOM_LEARNSET_REMOVALS.arbolivame
 const CUSTOM_LEARNSET_REMOVAL_IDS = Object.keys(CUSTOM_LEARNSET_REMOVALS);
 const CUSTOM_ITEM_UPDATES: {[id: string]: AnyObject} = {
 	hydreigonite: {name: 'Hydreigonite', spritenum: 0, megaStone: {Hydreigon: 'Hydreigon-Mega-X'}, itemUser: ['Hydreigon'], num: 2714, gen: 9, isNonstandard: 'Custom', shortDesc: 'Allows Hydreigon to Mega Evolve into Hydreigon-Mega-X.'},
-	golisopite: {name: 'Golisopite', spritenum: 508, megaStone: {'Golisopod-Aevian': 'Golisopod-Aevian-Mega'}, itemUser: ['Golisopod-Aevian'], num: 2713, gen: 9, isNonstandard: 'Future', shortDesc: 'Allows Golisopod-Aevian to Mega Evolve.'},
+	golisopite: {name: 'Golisopite', spritenum: 508, megaStone: {Golisopod: 'Golisopod-Mega', 'Golisopod-Aevian': 'Golisopod-Aevian-Mega'}, itemUser: ['Golisopod', 'Golisopod-Aevian'], num: 2713, gen: 9, isNonstandard: 'Future', shortDesc: 'Allows either Golisopod form to evolve into its own Mega form.'},
 	megagolisopite: {name: 'Mega Golisopite', spritenum: 508, megaStone: {Golisopod: 'Golisopod-Mega'}, itemUser: ['Golisopod'], num: 2645, gen: 9, isNonstandard: 'Future', shortDesc: 'Allows regular Golisopod to Mega Evolve.'},
 	typhlosionite: {name: 'Typhlosionite', spritenum: 578, megaStone: {Typhlosion: 'Typhlosion-Mega', 'Typhlosion-Alt': 'Typhlosion-Mega', 'Typhlosion-Hisui': 'Typhlosion-Mega'}, itemUser: ['Typhlosion', 'Typhlosion-Alt', 'Typhlosion-Hisui'], num: 2712, gen: 9, isNonstandard: 'Custom', desc: 'Allows Typhlosion and Typhlosion-Hisui to Mega Evolve.', shortDesc: 'Allows Typhlosion to Mega Evolve.'},
 	leafstone: {megaStone: null, itemUser: []},

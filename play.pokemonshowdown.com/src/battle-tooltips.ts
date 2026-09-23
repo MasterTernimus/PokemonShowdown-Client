@@ -1220,7 +1220,7 @@ class BattleTooltips {
 		}
 		if (this.battle.hasPseudoWeather('Midnight Zone Terrain')) {
 			const types = clientPokemon ? clientPokemon.getTypes(serverPokemon)[0] : this.battle.dex.species.get(serverPokemon.speciesForme).types;
-			if (!types.includes('Water') && !['steelworker', 'schooling', 'swiftswim'].includes(ability)) speedModifiers.push(0.25);
+			if (!types.includes('Water') && !['steelworker', 'schooling', 'swiftswim'].some(id => Dex.getAbilityEffects(ability).has(toID(id)))) speedModifiers.push(0.25);
 			if (ability === 'propellertail') speedModifiers.push(2);
 		}
 		if (ability === 'defeatist' && serverPokemon.hp <= serverPokemon.maxhp / 4) {

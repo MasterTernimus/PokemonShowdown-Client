@@ -221,8 +221,7 @@ const BattleFieldTooltips = {
 		return rows;
 	},
 	teamBuilderHTML(move: Move) {
-		return '<details class="field-move-info" data-field-move="' + BattleLog.escapeHTML(move.id) +
-			'"><summary>Field effects</summary><div></div></details>';
+		return '';
 	},
 	teamBuilderContent(move: Move) {
 		const rows = this.allNotes(move);
