@@ -118,6 +118,18 @@ const ASCENDANCE_EEVEE_MOVES: readonly ID[] = [
 	'synchronoise', 'takedown', 'tickle', 'trailblaze', 'twirlytwister', 'veeveevolley', 'wish', 'yawn',
 ] as ID[];
 
+const AEVIAN_GRIEF_MOVE_IDS: readonly ID[] = [
+	'aerialace', 'airslash', 'allyswitch', 'ancientpower', 'astonish', 'aurasphere', 'calmmind', 'chargebeam',
+	'cosmicpower', 'curse', 'darkpulse', 'dazzlinggleam', 'defog', 'drainingkiss', 'dreameater', 'dualwingbeat',
+	'energyball', 'fairywind', 'firespin', 'flamethrower', 'flash', 'fly', 'futuresight', 'gigaimpact',
+	'gravity', 'guardswap', 'heatwave', 'hex', 'hyperbeam', 'hypnosis', 'icywind', 'incinerate',
+	'frustration', 'lightscreen', 'luckychant', 'magiccoat', 'magicroom', 'mindreader', 'miracleeye', 'mistyexplosion',
+	'mistyterrain', 'moonblast', 'mysticalfire', 'nightshade', 'nightmare', 'ominouswind', 'painsplit', 'phantomforce',
+	'poltergeist', 'powerswap', 'psychoshift', 'psychic', 'reflect', 'roost', 'safeguard', 'shadowball',
+	'shadowclaw', 'shockwave', 'signalbeam', 'skillswap', 'solarbeam', 'spite', 'steelwing', 'storedpower',
+	'tailwind', 'thief', 'thunderwave', 'trick', 'trickroom', 'whirlwind', 'willowisp', 'wonderroom',
+] as ID[];
+
 // These forms are created by battle abilities and are not valid stored team
 // choices. They must remain resolvable to the battle renderer without adding
 // clutter or invalid entries to the team builder.
@@ -143,6 +155,7 @@ function isHiddenTeamBuilderSpecies(id: string, includeSawsbuckBase = false) {
 	if (isCAPSpecies(speciesId)) return true;
 	if (isBattleOnlyVisualSpecies(speciesId)) return true;
 	if (HIDDEN_TEAMBUILDER_SPECIES.has(speciesId)) return true;
+	if (isVariantSelectorOnlySpecies(Dex.species.get(speciesId))) return true;
 	if (speciesId === 'deerling' || speciesId.startsWith('deerling')) return true;
 	if (speciesId.startsWith('sawsbuck') && (speciesId !== 'sawsbuck' || includeSawsbuckBase)) return true;
 	if (speciesId.startsWith('furfrou') && speciesId !== 'furfrou') return true;
@@ -162,6 +175,11 @@ const CUSTOM_VISUAL_FORME_MARKERS = new Set([
 	'Rocky', 'Fiery', 'Icy',
 ]);
 
+// Alt and Reborn profiles are selected through their base species selector.
+function isVariantSelectorOnlySpecies(species: AnyObject) {
+	return !!species?.baseSpecies && toID(species.baseSpecies) !== toID(species.name) &&
+		/(?:^|-)(?:Alt|Reborn)$/.test(species.forme || '');
+}
 function isCustomSearchVisualForm(species: AnyObject) {
 	if (!species || typeof species !== 'object') return false;
 	const forme = species?.forme;
@@ -387,7 +405,7 @@ class DexSearch {
 				if (isExcludedFromCustomSearch(id)) return false;
 				// Explicit -custom searches reveal hidden stored variants, but never
 				// expose battle-only visual destinations used by abilities.
-				if (isBattleOnlyVisualSpecies(id)) return false;
+				if (isBattleOnlyVisualSpecies(id) || isVariantSelectorOnlySpecies(species)) return false;
 				const isCustomSpecies = isCustomSearchVisualForm(species) ||
 					isExplicitFurfrouVariantSearch(species, customSpeciesQuery);
 				return isCustomSpecies && (customOnly || matchesCustomSearchGroup(species, customSpeciesQuery) ||
@@ -595,6 +613,7 @@ class DexSearch {
 			if (
 				type === 'pokemon' &&
 				(isCAPSpecies(id) || isBattleOnlyVisualSpecies(id) ||
+					isVariantSelectorOnlySpecies(this.dex.species.get(id)) ||
 					(isHiddenTeamBuilderSpecies(id) && id !== query &&
 					!(query === 'furfrou' && id.startsWith('furfrou'))))
 			) continue;
@@ -694,6 +713,30 @@ class DexSearch {
 			}
 		}
 
+		// Search the custom Terajuma moves missing from the static index.
+		if ((!searchType || searchType === 'move') && customSpeciesQuery) {
+			for (const id of ['atlantiswall', 'tailsmash'] as ID[]) {
+				const nameId = toID(this.dex.moves.get(id).name);
+				const matchStart = nameId.indexOf(customSpeciesQuery);
+				let alreadyShown = false;
+				for (const buf of bufs) {
+					for (const entry of buf) {
+						if (entry[0] === 'move' && entry[1] === id) alreadyShown = true;
+					}
+				}
+				if (matchStart < 0 || alreadyShown) continue;
+				const row: SearchRow = ['move', id, matchStart, matchStart + customSpeciesQuery.length];
+				const index = DexSearch.typeTable.move;
+				if (searchType === 'move' && illegal && !(id in illegal)) {
+					if (!bufs[0].length) bufs[0] = [['header', DexSearch.typeName.move]];
+					bufs[0].push(row);
+				} else {
+					if (!bufs[index].length) bufs[index] = [['header', DexSearch.typeName.move]];
+					bufs[index].push(row);
+				}
+			}
+		}
+
 		let topbuf: SearchRow[] = [];
 		if (nearMatch) {
 			topbuf = [['html', `<em>No exact match found. The closest matches alphabetically are:</em>`]];
@@ -722,7 +765,7 @@ class DexSearch {
 				let type = fId.charAt(0).toUpperCase() + fId.slice(1) as TypeName;
 				buf.push(['header', `${type}-type Pok&eacute;mon`]);
 				for (let id in BattlePokedex) {
-					if (!BattlePokedex[id].types) continue;
+					if (isHiddenTeamBuilderSpecies(id) || !BattlePokedex[id].types) continue;
 					if (this.dex.species.get(id).types.includes(type)) {
 						(illegal && id in illegal ? illegalBuf : buf).push(['pokemon', id as ID]);
 					}
@@ -1052,6 +1095,10 @@ abstract class BattleTypedSearch<T extends SearchType> {
 	protected canLearn(speciesid: ID, moveid: ID) {
 		const move = this.dex.moves.get(moveid);
 		const species = this.dex.species.get(speciesid);
+		if ((species.id === 'sigilyphrejuv' ||
+			(species.id === 'sigilyph' && toID(this.set?.ability) === 'aeviangrief'))) {
+			return AEVIAN_GRIEF_MOVE_IDS.includes(moveid);
+		}
 		if (
 			CUSTOM_CAN_LEARN_OVERRIDES[speciesid]?.[moveid] ||
 			CUSTOM_CAN_LEARN_OVERRIDES[toID(species.baseSpecies)]?.[moveid]
@@ -1639,6 +1686,8 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 		const dex = this.dex;
 
 		let abilityid: ID = set ? toID(set.ability) : '' as ID;
+		if ((species.id === 'sigilyphrejuv' || (species.id === 'sigilyph' && abilityid === 'aeviangrief')) &&
+			AEVIAN_GRIEF_MOVE_IDS.includes(id)) return true;
 		const itemid: ID = set ? toID(set.item) : '' as ID;
 		if (
 			['eeveestarter', 'eeveestarteralt', 'divineon'].includes(species.id) &&
@@ -2059,6 +2108,11 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 		if (isEeveeStarter && toID(this.set?.ability) === 'ascendance') {
 			// Ability-specific replacement: Ascendance has only its declared pool.
 			moves = [...ASCENDANCE_EEVEE_MOVES];
+			sketchMoves = [];
+		}
+		if (species.id === 'sigilyphrejuv' ||
+			(species.id === 'sigilyph' && toID(this.set?.ability) === 'aeviangrief')) {
+			moves = [...AEVIAN_GRIEF_MOVE_IDS];
 			sketchMoves = [];
 		}
 		if (species.id === 'umbreon' && !isUmbreonAscendance) {

@@ -214,6 +214,26 @@ function PokemonButton(props: {
 }
 
 class BattlePanel extends PSRoomPanel<BattleRoom> {
+	renderLiveField() {
+		const battle = this.props.room.battle;
+		if (!battle) return null;
+		const status = (window as any).BattleFieldTooltips?.liveStatus(battle);
+		if (!status) return null;
+		return <details class="live-field-panel" aria-label="Current field">
+			<summary>
+				<strong>{status.field?.name || 'Normal field'}</strong>
+				{status.field && <span class="live-field-turns">{status.field.turns}</span>}
+				{status.aura && <span class="live-field-extra">{status.aura.name} ({status.aura.turns})</span>}
+				{status.weather && <span class="live-field-extra">{status.weather.name} ({status.weather.turns})</span>}
+				{status.rooms.map((room: {name: string, turns: string}) =>
+					<span class="live-field-extra" key={room.name}>{room.name} ({room.turns})</span>)}
+			</summary>
+			<div class="live-field-details">
+				{status.field?.notes.length ? status.field.notes.map((note: string) => <p>{note}</p>) :
+					<p>No additional field effects.</p>}
+			</div>
+		</details>;
+	}
 	send = (text: string) => {
 		this.props.room.send(text);
 	};
@@ -714,7 +734,8 @@ class BattlePanel extends PSRoomPanel<BattleRoom> {
 			</ChatLog>
 			<ChatTextEntry room={this.props.room} onMessage={this.send} onKey={this.onKey} left={640} />
 			<ChatUserList room={this.props.room} left={640} minimized />
-			<div class="battle-controls" role="complementary" aria-label="Battle Controls" style="top: 370px;">
+			<div class="battle-controls" role="complementary" aria-label="Battle Controls">
+				{this.renderLiveField()}
 				{this.renderControls()}
 			</div>
 		</PSPanelWrapper>;

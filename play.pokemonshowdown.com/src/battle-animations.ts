@@ -990,6 +990,7 @@ export class BattleScene implements BattleSceneStub {
 		let terrain = '' as ID;
 		let garden = '' as ID;
 		for (const pseudoWeatherData of this.battle.pseudoWeather) {
+			if (/^(electric|grassy|misty|psychic|rainbow)aura$/.test(toID(pseudoWeatherData[0]))) continue;
 			terrain = toID(pseudoWeatherData[0]);
 			if (/^flowergarden[1-5]$/.test(terrain)) garden = terrain;
 		}

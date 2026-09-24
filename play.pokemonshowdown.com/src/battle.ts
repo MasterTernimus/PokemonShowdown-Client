@@ -3066,8 +3066,17 @@ export class Battle {
 				}
 				if (this.gen > 6) maxTimeLeft = 8;
 			}
+			if (kwArgs.aura) {
+				minTimeLeft = Math.max(0, Number(kwArgs.aura) || 0);
+				maxTimeLeft = 0;
+				this.pseudoWeather = this.pseudoWeather.filter(state => !/^(electric|grassy|misty|psychic|rainbow)aura$/.test(toID(state[0])));
+			}
 			if (kwArgs.persistent) minTimeLeft += 2;
 			if (flowerGarden || kwArgs.garden || effect.id === 'midnightzoneterrain') minTimeLeft = maxTimeLeft = 0;
+			if (kwArgs.turns !== undefined) {
+				const turns = Number(kwArgs.turns);
+				if (Number.isInteger(turns) && turns >= 0) minTimeLeft = maxTimeLeft = turns;
+			}
 			this.addPseudoWeather(effect.name, minTimeLeft, maxTimeLeft);
 
 			switch (effect.id) {

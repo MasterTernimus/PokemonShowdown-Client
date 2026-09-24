@@ -4,6 +4,7 @@
 const BattleFieldRules = [
 {id: "flowergarden1",
 name: "Flower Garden 1",
+notes: ["Flower Garden stage 1/5. Growth and Rototiller raise Attack and Special Attack by 2; Flower Gift and Swarm activate.","Growth effects advance the garden. Cut and X-Scissor cannot lower it further. This stage cannot ignite. Auras are rejected."],
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
     if (move.type === "Grass")
@@ -31,6 +32,7 @@ onModifyPriority(priority, pokemon, target, move) {
 uncertain: false},
 {id: "flowergarden2",
 name: "Flower Garden 2",
+notes: ["Flower Garden stage 2/5. Grass attacks gain 1.1x power. Cut gains 1.5x power, or 2x against Grass. Harvest and Leaf Guard activate; Ingrain healing doubles.","Growth effects advance the garden. Cut and X-Scissor lower it one stage. This stage cannot ignite. Auras are rejected."],
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
     if (move.type === "Grass")
@@ -58,6 +60,7 @@ onModifyPriority(priority, pokemon, target, move) {
 uncertain: false},
 {id: "flowergarden3",
 name: "Flower Garden 3",
+notes: ["Flower Garden stage 3/5. Grass attacks gain 1.3x, Bug and Fire attacks 1.5x, and flower moves 1.2x power. Flower Veil protects allies; the garden can ignite.","Growth effects advance the garden. Cut and X-Scissor lower it one stage. Fire ignition moves can start Burning Field. Auras are rejected."],
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
     if (move.type === "Grass")
@@ -85,6 +88,7 @@ onModifyPriority(priority, pokemon, target, move) {
 uncertain: false},
 {id: "flowergarden4",
 name: "Flower Garden 4",
+notes: ["Flower Garden stage 4/5. Grass attacks gain 1.5x, Bug attacks 2x, Fire attacks 1.5x, and flower moves 1.5x power. Grass weaknesses are annulled; Ingrain healing is quadrupled.","Growth effects advance the garden. Cut and X-Scissor lower it one stage. Fire ignition moves can start Burning Field. Auras are rejected."],
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
     if (move.type === "Grass")
@@ -112,6 +116,7 @@ onModifyPriority(priority, pokemon, target, move) {
 uncertain: false},
 {id: "flowergarden5",
 name: "Flower Garden 5",
+notes: ["Flower Garden stage 5/5. Grass and Bug attacks gain 2x power; Fire attacks 1.5x and flower moves 1.5x. Grass weaknesses are annulled; eligible petal and powder moves hit both foes.","Growth effects advance the garden. Cut and X-Scissor lower it one stage. Fire ignition moves can start Burning Field. Auras are rejected."],
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
     if (move.type === "Grass")
@@ -139,6 +144,7 @@ onModifyPriority(priority, pokemon, target, move) {
 uncertain: false},
 {id: "ashenbeachterrain",
 name: "Ashen Beach Terrain",
+notes: ["Fighting Pokémon and Inner Focus holders cannot become confused. Sand Tomb lowers accuracy each turn. Accuracy and move bonuses are listed below."],
 onBasePower(basePower, source, target, move) {
     const uberboost = ["sandtomb", "mudbomb", "mudshot", "mudslap"];
     const megaboost = ["hiddenpower", "landswrath", "muddywater", "strength", "surf", "thousandwaves", "clangoroussoulblaze"];
@@ -170,6 +176,7 @@ onAccuracy(accuracy, target, source, move) {
 uncertain: false},
 {id: "bewitchedwoodsterrain",
 name: "Bewitched Woods Terrain",
+notes: ["Sleeping Pokémon lose 1/16 HP. Grounded Grass Pokémon heal 1/16 HP. Eternal Flower/Ange grant 1.5× defenses, status immunity and 1/16 healing. Fairy is super effective against Steel and neutral against Dark/Poison; Poison is resisted by Fairy and neutral against Grass. Accepts Auras but blocks their conversion."],
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
     const boostMoves = ["hex", "mysticalfire", "spiritbreak"];
@@ -209,6 +216,7 @@ onBasePower(basePower, source, target, move) {
 uncertain: false},
 {id: "bigtopterrain",
 name: "Big Top Terrain",
+notes: ["Physical Fighting attacks and designated striking moves receive a high-striker damage roll: 0.5×, 1×, 1.5×, 2× or 3×. The roll uses the existing Striker Bonus rules. Sound, dance and acrobatic move changes are listed below."],
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
     const boost = ["acrobatics", "fierydance", "firelash", "firstimpression", "fly", "petaldance", "powerwhip", "revelationdance", "vinewhip"];
@@ -261,6 +269,7 @@ onTryMove(source, target, move) {
 uncertain: false},
 {id: "burningterrain",
 name: "Burning Terrain",
+notes: ["Prevents freezing. Grounded non-Fire Pokémon without a protective ability or Aqua Ring take Fire-effectiveness-scaled residual damage based on 1/8 HP; vulnerable abilities and Tar Shot double it. Hail is removed. Rain/sand can extinguish the field. Blazing Mane grants +1 Speed on entry."],
 onBasePower(basePower, source, target, move) {
     const terrainEndMoves = ["defog", "gust", "hurricane", "muddywater", "sandtomb", "razorwind", "sludgewave", "sparklingaria", "surf", "waterpledge", "watersport", "waterspout", "hydrovortex", "tailwind", "twister", "whirlwind", "oceanicoperatta", "continentalcrush", "supersonicskystrike", "gmaxwindrage"];
     const rockfireMoves = ["rockslide", "smackdown", "thousandarrows"];
@@ -298,6 +307,7 @@ onModifyMove(move) {
 uncertain: false},
 {id: "caveterrain",
 name: "Cave Terrain",
+notes: ["Ground attacks can affect airborne Pokémon. Repeated disruptive attacks can collapse or transform the cave; move-dependent power/type changes are listed below."],
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
     const icy = ["blizzard", "subzeroslammer"];
@@ -342,6 +352,7 @@ onBasePower(basePower, source, target, move) {
 uncertain: true},
 {id: "chessboardterrain",
 name: "Chess Board Terrain",
+notes: ["Roles: King adds +1 move priority. Rook and Queen gain +1 Defense and Special Defense on entry. Bishop gains +1 Attack and Special Attack on entry. A full-HP Pawn survives one otherwise lethal direct attack with 1 HP, then becomes a used Pawn.","Queen attacks gain 1.5× power. Knight attacks against a Queen gain 3×; Knight attacks targeting all adjacent foes gain another 1.25×.","Ancient Power, Barrage, Continental Crush, Psychic, Rock Throw, Secret Power, Shattered Psyche and Strength gain Rock typing and 1.5× power. They gain another 2× against confused targets or targets with Unaware, Simple, Klutz, Oblivious or Defeatist; Adaptability, Synchronize, Anticipation and Telepathy instead halve them. Barrage also gains its own 2× bonus.","Fake Out, Feint, Feint Attack, First Impression, Shadow Sneak, Smart Strike and Sucker Punch gain 1.5×. Stomping Tantrum and Tectonic Rage gain 1.3×. Stomping Tantrum, Outrage and Thrash gain a critical-hit stage. Attacks against Reckless or Gorilla Tactics gain a critical-hit stage.","Accepts Auras, but blocks replacement by other full fields and Aura conversion."],
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
     const chessMoves = ["ancientpower", "barrage", "continentalcrush", "psychic", "rockthrow", "secretpower", "shatteredpsyche", "strength"];
@@ -407,6 +418,7 @@ onModifyPriority(priority, source, target, move) {
 uncertain: false},
 {id: "coldeclipseterrain",
 name: "Cold Eclipse Terrain",
+notes: ["Auras do not count down here. Ice, Ghost, Fire, Steel and Dragon Pokémon, or holders of Mind Freeze, Thick Fat, Sinister Blaze, Illusion, Ascendance, Duskilate or Armorize, gain 1.5× Defense and Special Defense. Ice Scales additionally doubles Defense.","Grounded Pokémon lose 25% Speed unless Ice/Dragon-type or benefiting from Slush Rush, Ice Body, Mind Freeze, Thick Fat, Illusion, Duskilate, Armorize, Web Assassin or Spiral Evolution.","Ice resists Ice attacks against Dragon typing; Fighting loses its super-effective bonus against Ice typing. Dragons avoid hail damage. In hail, Ice Pokémon or holders of Mind Freeze, Ice Body, Thick Fat or Sinister Blaze heal 1/10 HP.","Rock, Steel, Ground and Water moves gain Ice typing, except Armorize Steel moves. Ice power is 1.5×, Dragon power 2×, Rock/Fighting power 0.5×. Wind and named move bonuses can stack. See the move reference for conditional Fire/ability modifiers.","Gravity, Trick Room, Wonder Room and Magic Room fail and are removed on entry. Solar Beam/Blade fail without sun. Rain creates Water Sport for 3 turns; ordinary rain and sandstorm turn to hail. Sustained sun ends the field; harsh sunlight ends it immediately. Fortress Shell grants +1 Defense and Special Defense once per qualifying field."],
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
     const moveTypes = move.types || [move.type];
@@ -417,7 +429,7 @@ onBasePower(basePower, source, target, move) {
         modifier *= 1.5;
     }
     if (moveTypes.includes("Dragon")) {
-        modifier *= 1.5;
+        modifier *= 2;
     }
     if (moveTypes.includes("Rock") || moveTypes.includes("Fighting")) {
         modifier *= 0.5;
@@ -427,14 +439,9 @@ onBasePower(basePower, source, target, move) {
             modifier *= 2;
             this.add("-message", source.name + "'s " + source.ability + " defies the frozen night!");
         }
-        else if (source.hasAbility("soulfire")) {
-            modifier *= 1.5;
-            this.add("-message", "The heat was swallowed by the frozen night!");
-            modifier *= 0.5;
-        }
         else {
             this.add("-message", "The heat was swallowed by the frozen night!");
-            modifier *= 0.5;
+            modifier *= source.hasAbility("soulfire") ? 0.75 : 0.5;
         }
     }
     if (moveTypes.includes("Ghost") && source.hasAbility("soulfire")) {
@@ -461,8 +468,6 @@ onModifyMove(move, pokemon) {
     if (iceSubTypes.includes(move.type) && !armorizeSteel && !move.types?.includes("Ice")) {
         move.types = [move.type, "Ice"];
     }
-    if (move.id === "terrainpulse")
-        move.type = "Ice";
     if (move.id === "freezeshock" || move.id === "iceburn") {
         delete move.flags["charge"];
     }
@@ -502,6 +507,7 @@ onTryMove(source, target, move) {
 uncertain: false},
 {id: "corrosivemistterrain",
 name: "Corrosive Mist Terrain",
+notes: ["Poisons eligible non-Poison/non-Steel Pokémon at turn end and applies immediate poison damage when newly poisoned, unless its Neutralizing Gas field state prevents this. Gravity turns it into Corrosive Field. Misty Aura is rejected."],
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
     const poisonedMoves = ["appleacid", "bubble", "bubblebeam", "sparklingaria"];
@@ -533,6 +539,7 @@ onModifyMove(move) {
 uncertain: false},
 {id: "corrosiveterrain",
 name: "Corrosive Terrain",
+notes: ["Grounded entrants without Poison/Steel typing or Immunity, Magic Guard, Poison Heal, Toxic Boost or Wonder Guard take Poison-effectiveness-scaled damage based on 1/4 HP. Unprotected sleeping/Comatose Pokémon lose 1/16 HP each turn."],
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
     const superStrong = ["acid", "acidspray", "grassknot", "snaptrap"];
@@ -564,6 +571,7 @@ onModifyMove(move) {
 uncertain: false},
 {id: "crystalcavernterrain",
 name: "Crystal Cavern Terrain",
+notes: ["Rock and designated crystal attacks cycle an additional type through Fire, Water, Grass and Psychic. The current crystal cycle affects outcomes. A cavern brightened by Sunny Day returns to Dark Crystal when that sunlight ends."],
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
     const crystalBoost = ["judgement", "multiattack", "rockclimb", "strength", "prismaticlaser"];
@@ -608,6 +616,7 @@ onModifyMove(move) {
 uncertain: true},
 {id: "darkcrystalcavernterrain",
 name: "Dark Crystal Cavern Terrain",
+notes: ["Dark and Ghost Pokémon gain 1.5× Defense and Special Defense. Sunny Day brightens it into Crystal Cavern."],
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
     const superboost = ["prismaticlaser"];
@@ -632,6 +641,7 @@ onBasePower(basePower, source, target, move) {
 uncertain: true},
 {id: "desertterrain",
 name: "Desert Terrain",
+notes: ["Ground Pokémon gain 1.5× Special Defense. Water attacks against other Water/Grass Pokémon heal the target by 1/4 HP instead. Sun damages Water/Grass Pokémon by 1/8 HP unless protected by Chlorophyll or Solar Power."],
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
     const sandified = ["burnup", "dig", "needlearm", "heatwave", "pinmissile", "sandtomb", "sandsearstorm", "scald", "scorchingsands", "searingsunrazesmash", "solarbeam", "solarblade", "steameruption", "thousandwaves", "hydrosteam"];
@@ -668,6 +678,7 @@ onTryMove(source, target, move) {
 uncertain: false},
 {id: "dragonsdenterrain",
 name: "Dragon's Den Terrain",
+notes: ["Rejects Auras and ordinary field replacement. Dragon Pokémon gain 1.3× Defense. Multiscale removes super-effective bonuses against Dragon typing. Cave transformation progress is affected by Dragon attacks."],
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
     const uberboost = ["smackdown", "thousandarrows", "continentalcrush", "tectonicrage", "dragonascent", "payday", "lusterpurge", "mistball"];
@@ -732,6 +743,7 @@ onModifyMove(move) {
 uncertain: true},
 {id: "factoryterrain",
 name: "Factory Terrain",
+notes: ["Electric attacks gain 1.2× power. Industrial and electrical moves can switch Factory to Short Circuit. Accepts Electric Aura, but it cannot be converted into Full Electric Terrain here."],
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
     const quakemoves = ["bulldoze", "fissure", "earthquake", "explosion", "magnitude", "selfdestruct", "tectonicrage", "lightthatburnsthesky", "aurawheel", "discharge", "gigavolthavoc", "iondeluge", "overdrive"];
@@ -755,6 +767,7 @@ onBasePower(basePower, source, target, move) {
 uncertain: false},
 {id: "fairytaleterrain",
 name: "Fairy Tale Terrain",
+notes: ["Dragon attacks gain 2× power. Steel becomes super effective against Dragon. Cut, Sacred Sword, Secret Sword and Slash become Steel-type. Fortress Shell grants +1 Defense and Special Defense once per qualifying field."],
 onBasePower(basePower, source, target, move) {
     const strengthenedMoves = ["airslash", "ancientpower", "fleurcannon", "leafblade", "magicalleaf", "moongeistbeam", "mysticalfire", "nightslash", "psychocut", "relicsong", "smartstrike", "solarblade", "sparklingaria", "menacingmoonrazemaelstorm", "oceanicoperetta", "kowtowcleave", "aquacutter", "ceaselessedge", "stoneaxe", "behemothblade", "razorshell", "behemothbash"];
     let modifier = 1;
@@ -797,6 +810,7 @@ onModifyMove(move) {
 uncertain: false},
 {id: "forestterrain",
 name: "Forest Terrain",
+notes: ["Grass attacks gain 1.5× power. Cutting, fire and wind move interactions are listed below. Bloom Doom does not replace Forest with Grassy Terrain."],
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
     const igniteMoves = ["eruption", "firepledge", "flameburst", "heatwave", "incinerate", "lavaplume", "mindblown", "searingshot", "infernooverdrive"];
@@ -852,6 +866,7 @@ onModifyMove(move) {
 uncertain: true},
 {id: "glitchterrain",
 name: "Glitch Terrain",
+notes: ["Uses its retro category/type rules. Faster attackers gain a critical-hit stage. Psychic is immune to Ghost; Bug/Poison hit each other super effectively; Ice is neutral against Fire; Dragon matchups are neutral; Steel resists Dark/Ghost. Psychic power is 1.2×. Recharge attacks skip recharging after a knockout. Accepts Auras but blocks conversion."],
 onBasePower(basePower, source, target, move) {
     if (move.type === "Psychic") {
         this.add("-message", ".0P pl$ nerf!-//");
@@ -883,6 +898,7 @@ onTryMove(target, source, move) {
 uncertain: false},
 {id: "hauntedterrain",
 name: "Haunted Terrain",
+notes: ["Ghost attacks can hit Normal typing. Ghost Pokémon gain 1.3× Defense and Special Defense. Sleeping non-Ghost Pokémon lose 1/16 HP per turn. Accepts all five Auras; full-field replacement remains restricted."],
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
     const wispMoves = ["firespin", "flameburst", "flamecharge", "inferno"];
@@ -912,6 +928,7 @@ onBasePower(basePower, source, target, move) {
 uncertain: false},
 {id: "holyterrain",
 name: "Holy Terrain",
+notes: ["Damaging allied attacks are blocked. Normal attacks are super effective against Ghost/Dark typing. Special Fairy/Normal power is 1.5×; Dragon/Psychic power is 1.2×. Ghost and special Dark power is halved."],
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
     const strong_boost = ["mysticalfire", "magicalleaf", "ancientpower", "judgment", "sacredfire", "extremespeed", "sacredsword", "return"];
@@ -961,6 +978,7 @@ onModifyMove(move) {
 uncertain: false},
 {id: "icyterrain",
 name: "Icy Terrain",
+notes: ["Grounded non-Ice Pokémon lose 25% Speed unless protected by Snow Cloak, Slush Rush, Ice Body, Refrigerate or Spiral Evolution. Ice Pokémon gain 1.5× Defense in hail. Icy Spikes hurt grounded entrants. Heat and underlying water affect field transitions."],
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
     const igniteMoves = ["burningjealousy", "eruption", "firepledge", "flameburst", "heatwave", "incinerate", "infernooverdrive", "lavaplume", "magmadrift", "mindblown", "ragingfury", "searingshot"];
@@ -1024,9 +1042,11 @@ onModifyMove(move, pokemon) {
 uncertain: true},
 {id: "inverseterrain",
 name: "Inverse Terrain",
+notes: ["Reverses ordinary type effectiveness, turning type immunities into weaknesses. Freeze-Dry retains its special Water interaction. Ground Pokémon remain immune to Thunder Wave."],
 uncertain: false},
 {id: "mirrorarenaterrain",
 name: "Mirror Arena Terrain",
+notes: ["Bright Powder/Lax Incense grant +1 evasion on entry; Wide Lens/Zoom Lens grant +1 accuracy and Laser Focus. Positive user accuracy/evasion and negative target accuracy/evasion increase critical-hit stages. Missing physical contact moves can cost 1/4 HP and one positive evasion stage, with armor/protection exceptions."],
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
     let isevasion = false;
@@ -1066,6 +1086,7 @@ onModifyMove(move, pokemon, target) {
 uncertain: false},
 {id: "mountainterrain",
 name: "Mountain Terrain",
+notes: ["Sustained hail transforms the mountain into Snowy Mountain. Wind, altitude and move-specific modifiers are listed below."],
 onBasePower(basePower, source, target, move) {
     const moveToMessageMap = /* @__PURE__ */ new Map([
         ["vitalthrow", target.name + " was thrown partway down the mountain!"],
@@ -1109,6 +1130,7 @@ onBasePower(basePower, source, target, move) {
 uncertain: false},
 {id: "murkwatersurfaceterrain",
 name: "Murkwater Surface Terrain",
+notes: ["Grounded non-Water Pokémon lose 25% Speed unless protected by Surge Surfer, Swift Swim, Limber, Web Assassin or Spiral Evolution. Toxic water damages eligible grounded Pokémon based on Poison effectiveness and 1/8 HP; Dive quadruples it and vulnerable abilities double it."],
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
     const strengthenedMoves = ["mudbomb", "mudshot", "mudbarrage", "mudslap", "thousandwaves", "acid", "acidspray", "brine", "smackdown", "wavecrash", "appleacid"];
@@ -1166,6 +1188,7 @@ onTryMove(source, target, move) {
 uncertain: false},
 {id: "newworldterrain",
 name: "New World Terrain",
+notes: ["Rejects weather and Auras. Grounded Pokémon lose 25% Speed unless protected by Limber, Web Assassin or Spiral Evolution; airborne Pokémon lose 10% Defense and Special Defense. Fortress Shell grants +1 Defense and Special Defense once per qualifying field. Terrain Pulse chooses a random type."],
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
     const boost = ["aurorabeam", "signalbeam", "flashcannon", "dazzlinggleam", "mirrorshot", "photongeyser", "psystrike", "aeroblast", "sacredfire", "mistball", "lusterpurge", "originpulse", "precipiceblades", "dragonascent", "psychoboost", "roaroftime", "magmastorm", "crushgrip", "judgment", "seedflare", "shadowforce", "searingshot", "vcreate", "secretsword", "sacredsword", "relicsong", "fusionbolt", "fusionflare", "iceburn", "freezeshock", "boltstrike", "blueflare", "technoblast", "oblivionwing", "landswrath", "thousandarrows", "thousandwaves", "diamondstorm", "steameruption", "coreenforcer", "fleurcannon", "prismaticlaser", "sunsteelstrike", "spectralthief", "moongeistbeam", "multiattack", "mindblown", "plasmafists", "earthpower", "powergem", "eruption", "continentalcrush", "genesissupernova", "soulstealing7starstrike", "searingsunrazesmash", "menacingmoonrazemaelstrom", "astralbarrage", "behemothbash", "behemothblade", "collisioncourse", "doubleironbash", "dragonenergy", "dynamaxcannon", "electrodrift", "eternabeam", "fierywrath", "glaciallance", "ruination", "freezingglare", "terastarstorm", "surgingstrikes", "malignantchain", "tachyoncutter", "mightycleave", "hydrosteam", "thunderclap", "ivycudgel", "psyblade", "sandsearstorm", "wildboltstorm", "springtidestorm", "thundercage", "thunderouskick", "wickedblow", "mirrorbeam"];
@@ -1200,9 +1223,10 @@ onBasePower(basePower, source, target, move) {
 uncertain: false},
 {id: "rainbowterrain",
 name: "Rainbow Terrain",
+notes: ["Eligible secondary-effect chances double unless the user has Serene Grace. Special Normal attacks gain 1.5× power and a random additional type. Sleeping Pokémon heal 1/16 HP; Comatose also qualifies unless combined with Magic Guard. Hail and sandstorm remove the field."],
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
-    const strengthenedMoves = ["aurorabeam", "dazzlinggleam", "dragonpulse", "firepledge", "fleurcannon", "grasspledge", "heartstamp", "hiddenpower", "judgment", "mirrorbeam", "mistball", "moonblast", "mysticalfire", "oceanicoperetta", "prismatictlaser", "relicsong", "sacredfire", "secretpower", "silverwind", "solarbeam", "solarblade", "sparklingaria", "triattack", "twinkletackle", "waterpledge", "weatherball", "zenheadbutt"];
+    const strengthenedMoves = ["aurorabeam", "dazzlinggleam", "dragonpulse", "firepledge", "fleurcannon", "grasspledge", "heartstamp", "hiddenpower", "judgment", "mirrorbeam", "mistball", "moonblast", "mysticalfire", "oceanicoperetta", "prismaticlaser", "relicsong", "sacredfire", "secretpower", "silverwind", "solarbeam", "solarblade", "sparklingaria", "triattack", "twinkletackle", "waterpledge", "weatherball", "zenheadbutt"];
     const weakenedMoves = ["darkpulse", "nightdaze", "neverendingnightmare", "shadowball"];
     if (move.type === "Normal" && move.category === "Special") {
         modifier *= 1.5;
@@ -1239,6 +1263,7 @@ onModifyMove(move, pokemon) {
 uncertain: false},
 {id: "rockyterrain",
 name: "Rocky Terrain",
+notes: ["Failed contact moves cost the user 1/8 maximum HP unless protected by Rock Head; this includes misses, immunity and protection failures. Raised Defense prevents flinching and blocks bullet moves; Substitute also blocks bullet moves. Flinching costs 1/4 HP unless protected by Steadfast or Sturdy. Rock attacks gain 1.5× power; named move boosts can stack."],
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
     const rockymoves = ["bulldoze", "earthquake", "magnitude", "rockclimb", "strength", "accelerock"];
@@ -1265,6 +1290,7 @@ onModifyMove(move) {
 uncertain: false},
 {id: "shortcircuitterrain",
 name: "Short-Circuit Terrain",
+notes: ["Electric power depends on the short-circuit cycle. Electric Aura does not add its Electric type bonus here, and cannot convert this field into Full Electric Terrain. Industrial attacks can restore Factory."],
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
     const multiplier = [0.8, 1.5, 0.5, 1.2, 2];
@@ -1312,6 +1338,7 @@ onModifyMove(move) {
 uncertain: true},
 {id: "snowymountainterrain",
 name: "Snowy Mountain Terrain",
+notes: ["Snow, wind, ice and mountain move bonuses are listed below. Field-history and weather conditions affect certain attacks."],
 onBasePower(basePower, source, target, move) {
     const moveToMessageMap = /* @__PURE__ */ new Map([
         ["vitalthrow", "{1} was thrown partway down the mountain!"],
@@ -1371,6 +1398,7 @@ onModifyMove(move) {
 uncertain: false},
 {id: "snowyterrain",
 name: "Snowy Terrain",
+notes: ["Grounded non-Ice Pokémon lose 25% Speed unless protected by Slush Rush, Ice Body, Snow Cloak, Limber, Web Assassin or Spiral Evolution. Ice Pokémon gain 1.5× Special Defense in hail. Rain turns to hail; sustained sun can clear the field unless Water Sport is active."],
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
     const weak = ["scald", "eruption", "hydrosteam"];
@@ -1403,6 +1431,7 @@ onModifyMove(move) {
 uncertain: false},
 {id: "starlightarenaterrain",
 name: "Starlight Arena Terrain",
+notes: ["Weather can suppress starlight attack bonuses. Fortress Shell grants +1 Defense and Special Defense once per qualifying field. Cosmic and beam move modifiers are listed below."],
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
     const boost = ["aurorabeam", "signalbeam", "flashcannon", "lusterpurge", "dazzlinggleam", "mirrorshot", "technoblast", "solarbeam", "photongeyser", "moonblast", "meteorbeam", "mirrorbeam"];
@@ -1439,6 +1468,7 @@ onModifyMove(move) {
 uncertain: false},
 {id: "superheatedterrain",
 name: "Super-Heated Terrain",
+notes: ["Hail and snow are removed. Heat, water and steam move effects are listed below."],
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
     const scald = ["scald", "steameruption"];
@@ -1474,6 +1504,7 @@ onBasePower(basePower, source, target, move) {
 uncertain: false},
 {id: "swampterrain",
 name: "Swamp Terrain",
+notes: ["Eligible grounded Pokémon lose Speed each turn; trapped Pokémon lose more. Sleeping/Comatose Pokémon take residual damage unless protected by Magic Guard, doubled when trapped. Certain trapping effects also lower random stats. Ability/item exceptions and accumulated swamp history affect outcomes."],
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
     const strengthenedMoves = ["thousandarrows", "smackdown", "brine", "gunkshot", "hydrovortex", "mudbarrage", "mudbomb", "mudshot", "mudslap", "muddywater", "savagespinout", "sludgewave"];
@@ -1547,6 +1578,7 @@ onTryMove(target, source, effect) {
 uncertain: true},
 {id: "midnightzoneterrain",
 name: "Midnight Zone Terrain",
+notes: ["Rejects Auras and weather. Non-Water Pokémon have quarter Speed unless protected by Steelworker, Schooling or Swift Swim. Water Pokémon heal 1/16 HP; Water Absorb/Dry Skin add 1/10 healing. Unprotected non-Water/non-Ghost Pokémon suffer pressure damage: 1/4 HP for Steel/Ice/Fire/Rock, otherwise 1/10. Only non-whitelisted physical attacks receive the field damage reduction. Escape moves can return the battle to Underwater."],
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
     const messages = {
@@ -1635,6 +1667,7 @@ onTryMove(pokemon, target, move) {
 uncertain: false},
 {id: "underwaterterrain",
 name: "Underwater Terrain",
+notes: ["Rejects Auras and weather. Non-Water Pokémon generally have half Speed, with ability exceptions. Water attacks are neutral against Water typing. Water-weak Pokémon take effectiveness-scaled residual damage unless protected. Tar Shot washes off; entry hazards are swept away. Gravity leads to Midnight Zone."],
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
     const change = ["bounce", "dive", "skydrop", "fly", "aciddownpour"];
@@ -1701,6 +1734,7 @@ onTryMove(source, target, move) {
 uncertain: true},
 {id: "volcanicterrain",
 name: "Volcanic Terrain",
+notes: ["Prevents freezing and removes hail. Grounded unprotected non-Fire Pokémon take Fire-effectiveness-scaled residual damage based on 1/8 HP, with doubled damage for vulnerable abilities/Tar Shot. Rain or sandstorm turns it into Cave. Blazing Mane grants +1 Speed on entry."],
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
     if (move.id === "etherealtempest") {
@@ -1751,6 +1785,7 @@ onModifyMove(move) {
 uncertain: true},
 {id: "wastelandterrain",
 name: "Wasteland Terrain",
+notes: ["Hazards erupt as turn effects: Toxic Spikes poison and deal 1/8 HP to eligible grounded targets; Spikes deal 1/3 HP; Sticky Web lowers Speed four stages; Stealth Rock deals Rock-effectiveness-scaled damage based on 1/4 HP. Semi-invulnerability and type/grounding rules apply."],
 onBasePower(basePower, source, pokemon, move) {
     let modifier = 1;
     const boost = ["mudbomb", "mudshot", "mudslap", "powerwhip", "vinewhip"];
@@ -1783,6 +1818,7 @@ onModifyMove(move) {
 uncertain: false},
 {id: "watersurfaceterrain",
 name: "Water Surface Terrain",
+notes: ["Grounded non-Water Pokémon lose 25% Speed unless protected by Swift Swim, Surge Surfer, Limber, Web Assassin or Spiral Evolution. Tar Shot washes off. Spikes/Toxic Spikes sink. Accepts Auras, but Gravity sinks the field to Underwater and removes them."],
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
     const change = ["dive", "gravity", "aciddownpour", "blizzard", "subzeroslammer", "glaciate", "gravapple"];
@@ -1834,6 +1870,7 @@ onTryMove(source, target, move) {
 uncertain: true},
 {id: "electricterrain",
 name: "Electric Terrain",
+notes: ["Grounded Pokémon cannot be put to sleep or affected by Yawn. Electric moves gain 1.5× power for grounded, non-semi-invulnerable users. Quark Drive is active."],
 onBasePower(basePower, attacker, defender, move) {
     let modifier = 1;
     const electrified = ["explosion", "hurricane", "muddywater", "selfdestruct", "smackdown", "thousandarrows", "surf", "overdrive", "wildboltstorm"];
@@ -1857,9 +1894,10 @@ onModifyMove(move) {
 uncertain: false},
 {id: "grassyterrain",
 name: "Grassy Terrain",
+notes: ["Grounded, non-semi-invulnerable Pokémon recover 1/16 maximum HP each turn. Grass moves gain 1.5× power for grounded users. Earthquake, Bulldoze, Magnitude, Surf and Muddy Water are weakened. Absorb, Mega Drain, Giga Drain and Horn Leech drain 75%. Fire, poison and flooding moves can transform the field."],
 onBasePower(basePower, attacker, defender, move) {
     const igniteMoves = ["eruption", "firepledge", "flameburst", "heatwave", "incinerate", "lavaplume", "mindblown", "searingshot", "infernooverdrive"];
-    const windyMoves = ["fairywind", "silverwind", "grassknot", "icywind", "ominouswind", "razordwind", "twister"];
+    const windyMoves = ["fairywind", "silverwind", "grassknot", "icywind", "ominouswind", "razorwind", "twister"];
     const weakenedMoves = ["earthquake", "bulldoze", "magnitude", "muddywater", "surf"];
     let modifier = 1;
     if (weakenedMoves.includes(move.id)) {
@@ -1901,6 +1939,7 @@ onModifyMove(move) {
 uncertain: true},
 {id: "mistyterrain",
 name: "Misty Terrain",
+notes: ["Fairy Pokémon gain 1.5× Special Defense. Grounded, non-semi-invulnerable Pokémon are protected from status and confusion. Fairy moves gain 1.5× power; Dragon moves are halved. Explosion, Self-Destruct and Mind Blown fail. Poisonous moves can turn the field corrosive; wind moves can clear it."],
 onBasePower(basePower, attacker, defender, move) {
     const strMoves = ["aurasphere", "clearsmog", "doomdesire", "icywind", "magicalleaf", "mistball", "moongeistbeam", "mysticalfire", "silverwind", "smog", "springtidestorm", "steameruption", "strangesteam"];
     const weakMoves = ["shadowball", "nightdaze", "darkpulse"];
@@ -1943,6 +1982,7 @@ onTryMove(target, source, effect) {
 uncertain: true},
 {id: "psychicterrain",
 name: "Psychic Terrain",
+notes: ["Protects grounded, non-semi-invulnerable targets from opposing priority attacks; allies, self-targeting moves and redirection moves are exempt. Grounded Psychic attacks gain 1.5× power. Telepathy doubles Speed. Grounded Expanding Force receives its own additional 1.5× power bonus and targets all adjacent opponents."],
 onBasePower(basePower, attacker, defender, move) {
     const strengthenedMoves = ["aurasphere", "hex", "magicalleaf", "mindblown", "moonblast", "mysticalfire"];
     let modifier = 1;
@@ -2008,6 +2048,13 @@ uncertain: false},
       }
     },
 base: {"boosts":{"spd":1},"critRatio":1},
+uncertain: false},
+"atlantiswall": {onModifyPriority(priority) {
+      if (this.field.isTerrain(["watersurfaceterrain", "underwaterterrain", "mistyterrain", "murkwatersurfaceterrain", "midnightzoneterrain"])) {
+        return priority + 1;
+      }
+    },
+base: {"critRatio":1},
 uncertain: false},
 "autotomize": {onModifyMove(move) {
       if (this.field.isTerrain("factoryterrain")) {
@@ -2291,12 +2338,12 @@ uncertain: false},
 base: {"secondaries":[{"chance":100,"self":{"boosts":{"spe":1}}}],"critRatio":2},
 uncertain: false},
 "expandingforce": {onModifyMove(move, source, target) {
-      if (this.field.isTerrain("psychicterrain") && source.isGrounded()) {
+      if (this.field.isAura("psychicterrain") || this.field.isTerrain("psychicterrain") && source.isGrounded()) {
         move.target = "allAdjacentFoes";
       }
     },
 onBasePower(basePower, source) {
-      if (this.field.isTerrain("psychicterrain") && source.isGrounded()) {
+      if (this.field.isTerrainOrAura("psychicterrain") && source.isGrounded()) {
         this.debug("terrain buff");
         return this.chainModify(1.5);
       }
@@ -2381,6 +2428,13 @@ uncertain: true},
       }
       if (this.field.isTerrain("bewitchedwoodsterrain")) {
         move.accuracy = 85;
+      }
+    },
+base: {"critRatio":1},
+uncertain: false},
+"grassyglide": {onModifyPriority(priority, source, target, move) {
+      if (this.field.isAura("grassyterrain") || this.field.isTerrain("grassyterrain") && source.isGrounded()) {
+        return priority + 1;
       }
     },
 base: {"critRatio":1},
@@ -2567,7 +2621,7 @@ uncertain: false},
 base: {"secondaries":[{"chance":30,"boosts":{"accuracy":-1}}],"critRatio":1},
 uncertain: false},
 "mistyexplosion": {onBasePower(basePower, source) {
-      if (this.field.isTerrain("mistyterrain") && source.isGrounded()) {
+      if ((this.field.isTerrain(["mistyterrain", "corrosivemistterrain"]) || this.field.isAura("mistyterrain")) && source.isGrounded()) {
         this.debug("misty terrain boost");
         return this.chainModify(1.5);
       }
@@ -2708,7 +2762,7 @@ uncertain: false},
 base: {"critRatio":1},
 uncertain: false},
 "psyblade": {onBasePower(basePower, source) {
-      if (this.field.isTerrain("electricterrain")) {
+      if (this.field.isTerrainOrAura("electricterrain")) {
         this.debug("psyblade electric terrain boost");
         return this.chainModify(1.5);
       }
@@ -2752,7 +2806,7 @@ uncertain: false},
 base: {"self":{"volatileStatus":"lockedmove"},"critRatio":1},
 uncertain: false},
 "risingvoltage": {basePowerCallback(source, target, move) {
-      if (this.field.isTerrain("electricterrain") && target.isGrounded()) {
+      if (this.field.isTerrainOrAura("electricterrain") && target.isGrounded()) {
         if (!source.isAlly(target)) this.hint(`${move.name}'s BP doubled on grounded target.`);
         return move.basePower * 2;
       }
@@ -3237,6 +3291,11 @@ uncertain: false},
 base: {"volatileStatus":"telekinesis","critRatio":1},
 uncertain: false},
 "terrainpulse": {onModifyType(move, pokemon) {
+      const aura = this.field.getAura();
+      if (aura) {
+        move.type = aura.mimicryType;
+        return;
+      }
       const terrainTypeMap = /* @__PURE__ */ new Map([
         ["ashenbeachterrain", "Ground"],
         ["bewitchedwoodsterrain", "Fairy"],
@@ -3290,6 +3349,9 @@ uncertain: false},
         newType = this.sample(["Water", "Fire", "Grass", "Steel", "Ground", "Rock", "Bug", "Ice", "Ghost", "Fairy", "Dark", "Electric", "Normal", "Fighting", "Flying", "Psychic", "Dragon", "Poison"]);
       }
       move.type = newType !== void 0 ? newType : "Normal";
+    },
+onBasePower() {
+      if (!this.field.getAura() && this.field.isTerrain(["electricterrain", "grassyterrain", "mistyterrain", "psychicterrain", "rainbowterrain"])) return this.chainModify(2);
     },
 base: {"critRatio":1},
 uncertain: true},
@@ -3449,6 +3511,61 @@ onBasePower() {
     },
 base: {"volatileStatus":"partiallytrapped","critRatio":1},
 uncertain: false}};
+const BattleAuraRules = {"electricterrain":{"id":"electricterrain","name":"Electric Aura","turns":5,"mimicryType":"Electric","secretPowerMove":"shockwave","naturePowerMove":"thunderbolt","damageMultipliers":{"explosion":1.5,"selfdestruct":1.5,"hurricane":1.5,"surf":1.5,"smackdown":1.5,"muddywater":1.5,"thousandarrows":1.5,"wildboltstorm":1.5,"magnetbomb":2},"secondaryTypeAdditions":{"explosion":"Electric","selfdestruct":"Electric","hurricane":"Electric","surf":"Electric","smackdown":"Electric","muddywater":"Electric","thousandarrows":"Electric"},"typeMultipliers":{"Electric":1.3},"typeCondition":"electric","moveMessages":{"explosion":"The explosion became hyper-charged!","selfdestruct":"The explosion became hyper-charged!","hurricane":"The attack became hyper-charged!","surf":"The attack became hyper-charged!","smackdown":"The attack became hyper-charged!","muddywater":"The attack became hyper-charged!","thousandarrows":"The attack became hyper-charged!","wildboltstorm":"The attack became hyper-charged!","magnetbomb":"The attack powered up!"},"typeMessage":"The Electric Aura strengthened the attack!","endMessage":"The electricity disappeared from the battlefield.","statusBuffs":["magnetrise","risingvoltage","psyblade"],"statusNerfs":[]},"grassyterrain":{"id":"grassyterrain","name":"Grassy Aura","turns":5,"mimicryType":"Grass","secretPowerMove":"seedbomb","naturePowerMove":"energyball","damageMultipliers":{"fairywind":1.5,"silverwind":1.5,"ominouswind":1.5,"icywind":1.5,"razorwind":1.5,"gust":1.5,"twister":1.5},"secondaryTypeAdditions":{},"typeMultipliers":{"Grass":1.3},"typeCondition":"grounded","moveMessages":{"fairywind":"The wind picked up strength from the Aura!","silverwind":"The wind picked up strength from the Aura!","ominouswind":"The wind picked up strength from the Aura!","icywind":"The wind picked up strength from the Aura!","razorwind":"The wind picked up strength from the Aura!","gust":"The wind picked up strength from the Aura!","twister":"The wind picked up strength from the Aura!"},"typeMessage":"The Grassy Aura strengthened the attack!","endMessage":"The grass disappeared from the battlefield.","statusBuffs":["grassyglide"],"statusNerfs":[]},"mistyterrain":{"id":"mistyterrain","name":"Misty Aura","turns":5,"mimicryType":"Fairy","secretPowerMove":"mistball","naturePowerMove":"mistball","damageMultipliers":{"mysticalfire":1.5,"magicalleaf":1.5,"doomdesire":1.5,"icywind":1.5,"mistball":1.5,"aurasphere":1.5,"steameruption":1.5,"silverwind":1.5,"moongeistbeam":1.5,"smog":1.5,"clearsmog":1.5,"strangesteam":1.5,"springtidestorm":1.5,"hydrosteam":1.5},"secondaryTypeAdditions":{},"typeMultipliers":{"Fairy":1.3},"typeCondition":"none","moveMessages":{"mysticalfire":"The mist's energy strengthened the attack!","magicalleaf":"The mist's energy strengthened the attack!","doomdesire":"The mist's energy strengthened the attack!","icywind":"The mist's energy strengthened the attack!","mistball":"The mist's energy strengthened the attack!","aurasphere":"The mist's energy strengthened the attack!","steameruption":"The mist's energy strengthened the attack!","silverwind":"The mist's energy strengthened the attack!","moongeistbeam":"The mist's energy strengthened the attack!","smog":"The mist's energy strengthened the attack!","clearsmog":"The mist's energy strengthened the attack!","strangesteam":"The mist's energy strengthened the attack!","springtidestorm":"The mist's energy strengthened the attack!","hydrosteam":"The mist's energy strengthened the attack!"},"typeMessage":"The Misty Aura strengthened the attack!","endMessage":"The mist disappeared from the battlefield.","statusBuffs":["mistyexplosion"],"statusNerfs":[]},"rainbowterrain":{"id":"rainbowterrain","name":"Rainbow Aura","turns":5,"mimicryType":"Dragon","secretPowerMove":"aurorabeam","naturePowerMove":"aurorabeam","damageMultipliers":{"silverwind":1.5,"mysticalfire":1.5,"dragonpulse":1.5,"triattack":1.5,"sacredfire":1.5,"firepledge":1.5,"waterpledge":1.5,"grasspledge":1.5,"aurorabeam":1.5,"mirrorbeam":1.5,"judgment":1.5,"relicsong":1.5,"hiddenpower":1.5,"secretpower":1.5,"weatherball":1.5,"mistball":1.5,"heartstamp":1.5,"moonblast":1.5,"zenheadbutt":1.5,"sparklingaria":1.5,"fleurcannon":1.5,"prismaticlaser":1.5,"twinkletackle":1.5,"oceanicoperetta":1.5,"solarbeam":1.5,"solarblade":1.5,"dazzlinggleam":1.5,"luminacrash":1.5},"secondaryTypeAdditions":{},"typeMultipliers":{"Normal":1.3},"typeCondition":"special","moveMessages":{"silverwind":"The attack was rainbow-charged!","mysticalfire":"The attack was rainbow-charged!","dragonpulse":"The attack was rainbow-charged!","triattack":"The attack was rainbow-charged!","sacredfire":"The attack was rainbow-charged!","firepledge":"The attack was rainbow-charged!","waterpledge":"The attack was rainbow-charged!","grasspledge":"The attack was rainbow-charged!","aurorabeam":"The attack was rainbow-charged!","mirrorbeam":"The attack was rainbow-charged!","judgment":"The attack was rainbow-charged!","relicsong":"The attack was rainbow-charged!","hiddenpower":"The attack was rainbow-charged!","secretpower":"The attack was rainbow-charged!","weatherball":"The attack was rainbow-charged!","mistball":"The attack was rainbow-charged!","heartstamp":"The attack was rainbow-charged!","moonblast":"The attack was rainbow-charged!","zenheadbutt":"The attack was rainbow-charged!","sparklingaria":"The attack was rainbow-charged!","fleurcannon":"The attack was rainbow-charged!","prismaticlaser":"The attack was rainbow-charged!","twinkletackle":"The attack was rainbow-charged!","oceanicoperetta":"The attack was rainbow-charged!","solarbeam":"The attack was rainbow-charged!","solarblade":"The attack was rainbow-charged!","dazzlinggleam":"The attack was rainbow-charged!","luminacrash":"The attack was rainbow-charged!"},"typeMessage":"The rainbow energized the attack!","endMessage":"The rainbow disappeared.","statusBuffs":[],"statusNerfs":[]},"psychicterrain":{"id":"psychicterrain","name":"Psychic Aura","turns":5,"mimicryType":"Psychic","secretPowerMove":"psychic","naturePowerMove":"psychic","damageMultipliers":{"secretpower":1.5,"hiddenpower":1.5,"hex":1.5,"magicalleaf":1.5,"mysticalfire":1.5,"moonblast":1.5,"aurasphere":1.5,"focusblast":1.5,"mindblown":1.5},"secondaryTypeAdditions":{},"typeMultipliers":{"Psychic":1.3},"typeCondition":"psychic","moveMessages":{"secretpower":"The psychic energy strengthened the attack!","hiddenpower":"The psychic energy strengthened the attack!","hex":"The psychic energy strengthened the attack!","magicalleaf":"The psychic energy strengthened the attack!","mysticalfire":"The psychic energy strengthened the attack!","moonblast":"The psychic energy strengthened the attack!","aurasphere":"The psychic energy strengthened the attack!","focusblast":"The psychic energy strengthened the attack!","mindblown":"The psychic energy strengthened the attack!"},"typeMessage":"The Psychic Aura strengthened the attack!","endMessage":"The psychic energy disappeared from the battlefield.","statusBuffs":["expandingforce"],"statusNerfs":[]}};
+const BattleAuraMethods = {baseAuraTypeBoost(move, source, target) {
+    const type = move.type;
+    if (this.terrain === "bewitchedwoodsterrain" && type === "Fairy") return 1.5;
+    if (this.terrain === "glitchterrain" && type === "Psychic") return 1.2;
+    if (this.terrain === "factoryterrain" && type === "Electric") return 1.2;
+    if (this.terrain === "fairytaleterrain" && type === "Fairy") return 1.5;
+    if (this.terrain === "forestterrain" && type === "Grass") return 1.5;
+    if (this.terrain === "swampterrain" && type === "Grass") return 1.3;
+    if (this.terrain === "holyterrain") {
+      if (["Fairy", "Normal"].includes(type) && move.category === "Special") return 1.5;
+      if (type === "Psychic") return 1.2;
+    }
+    if (this.terrain === "starlightarenaterrain" && !this.weather) {
+      if (type === "Psychic") return 1.5;
+      if (type === "Fairy") return 1.3;
+    }
+    if (type === "Electric" && target.isGrounded()) {
+      if (this.terrain === "watersurfaceterrain") return 1.5;
+      if (this.terrain === "murkwatersurfaceterrain") return 5325 / 4096;
+    }
+    return 1;
+  },
+auraPowerMultiplier(source, target, move) {
+    const aura = this.getAura();
+    if (!aura || move.category === "Status") return 1;
+    let multiplier = aura.damageMultipliers[move.id] || 1;
+    if (multiplier !== 1) this.battle.add("-message", aura.moveMessages[move.id]);
+    const types = move.types || [move.type];
+    const grounded = source.isGrounded() && !source.isSemiInvulnerable();
+    const typeAllowed = aura.typeCondition === "none" || (aura.typeCondition === "special" ? move.category === "Special" : grounded);
+    if (!typeAllowed || this.auraField === "electricterrain" && this.terrain === "shortcircuitterrain") return multiplier;
+    for (const [type, boost] of Object.entries(aura.typeMultipliers)) {
+      if (!types.includes(type)) continue;
+      const baseBoost = move.type === type ? this.baseAuraTypeBoost(move, source, target) : 1;
+      multiplier *= baseBoost > 1 && boost > 1 ? Math.max(1.5, baseBoost, boost) / baseBoost : boost;
+      this.battle.add("-message", aura.typeMessage);
+    }
+    return multiplier;
+  }};
+const BattleAuraHooks = {onModifyMove(move) {
+      const aura = this.field.getAura();
+      if (!aura) return;
+      const addedType = aura.secondaryTypeAdditions[move.id];
+      if (addedType) {
+        const types = move.types || [move.type];
+        move.types = types.includes(addedType) ? types : [...types, addedType];
+      }
+    },
+onBasePower(basePower, source, target, move) {
+      let multiplier = this.field.auraPowerMultiplier(source, target, move);
+      if (move.id === "terrainpulse") multiplier *= 2;
+      return this.chainModify(multiplier);
+    }};
+if (typeof window !== 'undefined') Object.assign(window, {BattleAuraRules, BattleAuraMethods, BattleAuraHooks});
 if (typeof window !== 'undefined') (window as any).BattleFieldMoveRules = BattleFieldMoveRules;
 if (typeof window !== 'undefined') (window as any).BattleFieldRules = BattleFieldRules;
 if (typeof require === 'function') (global as any).BattleFieldRules = BattleFieldRules;

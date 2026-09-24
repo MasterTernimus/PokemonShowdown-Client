@@ -719,13 +719,16 @@ export class TeamEditorState extends PSModel {
 			return null;
 		}
 	}
+	getPreviewSpecies(set: PokemonSet) {
+		return Dex.getAbilityFormPreview(set, this.dex).species;
+	}
 	getStat(stat: StatName, set: PokemonSet, ivOverride: number, evOverride?: number, natureOverride?: number) {
 		const supportsEVs = !this.isLetsGo;
 		const supportsAVs = !supportsEVs;
 
 		// do this after setting set.evs because it's assumed to exist
 		// after getStat is run
-		const species = this.dex.species.get(set.species);
+		const species = this.getPreviewSpecies(set);
 		if (!species.exists) return 0;
 
 		const level = set.level || this.defaultLevel;
@@ -784,7 +787,7 @@ export class TeamEditorState extends PSModel {
 	}
 	pokemonDefensiveCoverage(set: PokemonSet) {
 		const coverage: Record<string, number> = {};
-		const species = this.dex.species.get(set.species);
+		const species = this.getPreviewSpecies(set);
 		const abilityid = toID(set.ability);
 		for (const type of this.dex.types.names()) {
 			coverage[type] = this.getWeakness(species.types, abilityid, type);
@@ -939,14 +942,14 @@ export class TeamEditorState extends PSModel {
 
 		const renderSet = (set: PokemonSet) => <div class="set">
 			<small>
-				<PSIcon pokemon={set} /> {set.name || set.species}
+				<PSIcon pokemon={Dex.getAbilityFormPreviewSet(set)} /> {set.name || set.species}
 				{set.ability && ` [${set.ability}]`}{set.item && ` @ ${set.item}`}
 				{} - {set.moves.join(' / ') || '(No moves)'}
 			</small>
 		</div>;
 		const renderTeam = (team: Team, sets: PokemonSet[]) => <div class="set"><small>
 			<strong>{team.name}</strong><br />
-			{sets.map(set => <PSIcon pokemon={set} />)}
+			{sets.map(set => <PSIcon pokemon={Dex.getAbilityFormPreviewSet(set)} />)}
 		</small></div>;
 
 		return <div class="infobox">
@@ -1808,13 +1811,13 @@ class TeamTextbox extends preact.Component<{
 						const set = editor.sets[i];
 						if (!set) return null;
 						const prevOffset = i === 0 ? 8 : this.setInfo[i - 1].bottomY;
-						const species = editor.dex.species.get(info.species);
-						const num = Dex.getPokemonIconNum(species.id);
+						const {species, visualSpecies} = Dex.getAbilityFormPreview(set, editor.dex);
+						const num = Dex.getPokemonIconNum(visualSpecies.id);
 						if (!num) return null;
 
 						if (editor.narrow) {
 							return <div style={`top:${prevOffset + 1}px;left:5px;position:absolute;text-align:center;pointer-events:none`}>
-								<div><PSIcon pokemon={species.id} /></div>
+								<div><PSIcon pokemon={Dex.getAbilityFormPreviewSet(set, editor.dex)} /></div>
 								{species.types.map(type => <div><PSIcon type={type} /></div>)}
 								<div><PSIcon item={set.item || null} /></div>
 							</div>;
@@ -1823,7 +1826,7 @@ class TeamTextbox extends preact.Component<{
 							style={
 								`top:${prevOffset - 7}px;left:0;position:absolute;text-align:right;` +
 								`width:94px;padding:103px 5px 0 0;min-height:24px;pointer-events:none;` +
-								Dex.getTeambuilderSprite(set, editor.gen)
+								Dex.getTeambuilderSprite(Dex.getAbilityFormPreviewSet(set, editor.dex), editor.gen)
 							}
 						>
 							<div>{species.types.map(type => <PSIcon type={type} />)}<PSIcon item={set.item || null} /></div>
@@ -1972,7 +1975,7 @@ class TeamWizard extends preact.Component<{
 	}
 	renderSet(set: PokemonSet | undefined, i: number) {
 		const { editor } = this.props;
-		const sprite = Dex.getTeambuilderSprite(set, editor.gen);
+		const sprite = Dex.getTeambuilderSprite(set && Dex.getAbilityFormPreviewSet(set, editor.dex), editor.gen);
 		if (!set) {
 			return <div class="set-button">
 				<div style="text-align:right">
@@ -2009,7 +2012,8 @@ class TeamWizard extends preact.Component<{
 		const cur = (t: SelectionType) => (
 			editor.readonly || (editor.innerFocus?.type === t && editor.innerFocus.setIndex === i) ? ' cur' : ''
 		);
-		const species = editor.dex.species.get(set.species);
+		const species = editor.getPreviewSpecies(set);
+		const baseSpecies = editor.dex.species.get(set.species);
 		const isCur = TeamEditorState.clipboard?.teams?.[editor.team.key]?.sets[i] ? ' cur' : '';
 		return <div class={`set-button${isCur}`}>
 			<div style="text-align:right">
@@ -2059,7 +2063,7 @@ class TeamWizard extends preact.Component<{
 							</span>}
 							{editor.gen === 9 && <span class="detailcell">
 								<strong class="label">Tera</strong> {}
-								<PSIcon type={set.teraType || species.requiredTeraType || species.types[0]} />
+								<PSIcon type={set.teraType || baseSpecies.requiredTeraType || baseSpecies.types[0]} />
 							</span>}
 							{editor.hpTypeMatters(set) && <span class="detailcell">
 								<strong class="label">H.P.</strong> {}
@@ -2388,7 +2392,7 @@ class TeamWizard extends preact.Component<{
 				{editor.sets.map((curSet, i) => <li><button
 					class={`button picontab${cur(i)}`} onClick={this.setFocus} value={`${type}|${i}`}
 				>
-					<PSIcon pokemon={curSet} /><br />
+					<PSIcon pokemon={Dex.getAbilityFormPreviewSet(curSet, editor.dex)} /><br />
 					{editor.getNickname(curSet)}
 				</button></li>)}
 				{editor.canAdd() && <li><button
@@ -2896,7 +2900,7 @@ class StatForm extends preact.Component<{
 	}
 	override render() {
 		const { editor, set } = this.props;
-		const species = editor.dex.species.get(set.species);
+		const species = editor.getPreviewSpecies(set);
 
 		const baseStats = species.baseStats;
 
@@ -3003,7 +3007,74 @@ class DetailsForm extends preact.Component<{
 	editor: TeamEditorState,
 	set: PokemonSet,
 	onChange: () => void,
-}> {
+}, {spriteMode: 'current' | 'bw', spriteForm: string, spriteTransform: string}> {
+	state: {spriteMode: 'current' | 'bw', spriteForm: string, spriteTransform: string} = {
+		spriteMode: 'current', spriteForm: '', spriteTransform: '',
+	};
+	changeSpriteMode = (ev: Event) => {
+		this.setState({spriteMode: (ev.currentTarget as HTMLSelectElement).value as 'current' | 'bw'});
+	};
+	changeSpriteForm = (ev: Event) => {
+		this.setState({spriteForm: (ev.currentTarget as HTMLSelectElement).value, spriteTransform: 'base'});
+	};
+	changeSpriteTransform = (ev: Event) => {
+		this.setState({spriteTransform: (ev.currentTarget as HTMLButtonElement).value});
+	};
+	renderSpritePreview() {
+		const {editor, set} = this.props;
+		const base = editor.dex.species.get(set.species);
+		const preview = Dex.getAbilityFormPreviewSet(set, editor.dex).species;
+		const root = editor.dex.species.get(base.baseSpecies || base.name);
+		const otherFormes = root.otherFormes || [];
+		const isTransformation = (form: string) => /-(?:Mega|Gmax)(?:-|$)/i.test(form);
+		const previewForm = isTransformation(preview) ? root.name : preview;
+		const forms = Array.from(new Set([previewForm, ...otherFormes.filter(form => !isTransformation(form))]));
+		const selectedForm = forms.includes(this.state.spriteForm) ? this.state.spriteForm : previewForm;
+		const transformations = otherFormes.filter(form =>
+			isTransformation(form) && editor.dex.species.get(form).baseSpecies === selectedForm);
+		const transform = this.state.spriteTransform === 'base' ? '' : this.state.spriteTransform || preview;
+		const selected = transformations.includes(transform) ? transform : selectedForm;
+		const gen = this.state.spriteMode === 'bw' ? 5 : editor.gen;
+		const sprite = (front: boolean, shiny: boolean) => {
+			const gender = set.gender === 'M' || set.gender === 'F' ? set.gender : undefined;
+			const data = Dex.getSpriteData(selected, front, {gen, shiny, gender});
+			const localPreview = Config.testclient && /^https?:$/.test(location.protocol);
+			const asset = localPreview ? new URL(data.url, location.href) : null;
+			const src = asset ? `${asset.pathname}${asset.search}` : data.url;
+			return <figure class="sprite-preview-item">
+				<div class="sprite-preview-stage">
+					<img src={src} width={data.w} height={data.h} class={data.pixelated ? 'pixelated' : ''}
+						onError={event => {
+							const image = event.currentTarget as HTMLImageElement;
+							if (image.src !== data.url) image.src = data.url;
+						}}
+						alt={`${selected} ${shiny ? 'shiny ' : ''}${front ? 'front' : 'back'} sprite`} />
+				</div>
+				<figcaption>{shiny ? 'Shiny' : 'Normal'} {front ? 'front' : 'back'} <small>{data.w} x {data.h}</small></figcaption>
+			</figure>;
+		};
+		return <details class="sprite-preview-tool">
+			<summary><i class="fa fa-eye" aria-hidden="true"></i> Sprite preview</summary>
+			<div class="sprite-preview-options">
+				{forms.length > 1 && <label>Form <select value={selectedForm} onChange={this.changeSpriteForm}>
+					{forms.map(form => <option value={form}>{form}</option>)}
+				</select></label>}
+				<label>Graphics <select value={this.state.spriteMode} onChange={this.changeSpriteMode}>
+					<option value="current">Current</option><option value="bw">BW</option>
+				</select></label>
+			</div>
+			{!!transformations.length && <div class="sprite-preview-transform" role="group" aria-label="Transformation preview">
+				<button type="button" value="base" class={selected === selectedForm ? 'is-active' : ''}
+					aria-pressed={selected === selectedForm} onClick={this.changeSpriteTransform}>Base</button>
+				{transformations.map(form => <button type="button" value={form}
+					class={selected === form ? 'is-active' : ''} aria-pressed={selected === form}
+					onClick={this.changeSpriteTransform}>{editor.dex.species.get(form).forme || form}</button>)}
+			</div>}
+			<div class="sprite-preview-grid">
+				{sprite(true, false)}{sprite(false, false)}{sprite(true, true)}{sprite(false, true)}
+			</div>
+		</details>;
+	}
 	update(init?: boolean) {
 		const { set } = this.props;
 		const skipID = !init ? this.base!.querySelector<HTMLInputElement>('input:focus')?.name : undefined;
@@ -3125,6 +3196,7 @@ class DetailsForm extends preact.Component<{
 		return <div style="font-size:10pt" role="dialog" aria-label="Details">
 			<div class="resultheader"><h3>Details</h3></div>
 			<div class="pad">
+				{this.renderSpritePreview()}
 				<p><label class="label">Nickname: <input
 					name="nickname" class="textbox default-placeholder" placeholder={species.baseSpecies}
 					onInput={this.changeNickname} onChange={this.changeNickname}

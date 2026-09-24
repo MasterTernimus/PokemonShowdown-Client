@@ -9,6 +9,34 @@ const BattleFieldTooltips = {
 	active(battle: Battle) {
 		return (window as any).BattleFieldRules?.find((field: any) => battle.hasPseudoWeather(field.name));
 	},
+	activeAura(battle: Battle) {
+		return Object.values((window as any).BattleAuraRules || {}).find((aura: any) => battle.hasPseudoWeather(aura.name)) as any;
+	},
+	liveStatus(battle: Battle) {
+		const field = this.active(battle);
+		const aura = this.activeAura(battle);
+		const state = (name: string) => battle.pseudoWeather.find(([active]) => active === name);
+		const duration = (remaining?: [string, number, number]) => {
+			if (!remaining || (!remaining[1] && !remaining[2])) return 'Persistent';
+			if (!remaining[2] || remaining[1] === remaining[2]) return `${remaining[1]} turn${remaining[1] === 1 ? '' : 's'}`;
+			return `${remaining[1]}-${remaining[2]} turns`;
+		};
+		const rooms = battle.pseudoWeather.filter(([name]) =>
+			['trickroom', 'magicroom', 'wonderroom', 'gravity'].includes(toID(name)));
+		const weatherNames: {[id: string]: string} = {
+			raindance: 'Rain', sunnyday: 'Sun', sandstorm: 'Sandstorm', hail: 'Hail', snow: 'Snow',
+			desolateland: 'Harsh sunlight', primordialsea: 'Heavy rain', deltastream: 'Strong winds',
+		};
+		return {
+			field: field ? {name: field.name, turns: duration(state(field.name)), notes: field.notes || []} : null,
+			aura: aura ? {name: aura.name, turns: duration(state(aura.name))} : null,
+			weather: battle.weather ? {
+				name: weatherNames[battle.weather] || Dex.getEffect(battle.weather).name,
+				turns: duration(['', battle.weatherMinTimeLeft, battle.weatherTimeLeft]),
+			} : null,
+			rooms: rooms.map(room => ({name: room[0], turns: duration(room)})),
+		};
+	},
 	pokemon(pokemon?: Pokemon | null, server?: ServerPokemon) {
 		const types = pokemon?.getTypes(server)[0] || ['Normal'];
 		const ability = toID(pokemon?.effectiveAbility(server) || server?.ability || '');
@@ -37,7 +65,7 @@ const BattleFieldTooltips = {
 		}
 		return input;
 	},
-	evaluate(field: any, original: any, source: any, target: any, weather = '', variant = 0) {
+	evaluate(field: any, original: any, source: any, target: any, weather = '', variant = 0, aura?: any) {
 		const rule = (window as any).BattleFieldMoveRules?.[original.id];
 		const move: any = this.clone({...rule?.base, ...original});
 		move.flags ||= {};
@@ -45,12 +73,14 @@ const BattleFieldTooltips = {
 		target = {...target, effectiveWeather: () => weather};
 		let factor = 1;
 		const context: any = {
-			field: {weather, terrain: field.id, pseudoWeather: {},
+			field: {weather, terrain: field.id, auraField: aura?.id || '', pseudoWeather: {},
+				getAura: () => aura, isAura: (id: string) => aura?.id === id,
+				isTerrainOrAura: (id: string) => id === field.id || id === aura?.id,
 				getTerrain: () => field,
 				isTerrain: (ids: any) => (Array.isArray(ids) ? ids : [ids]).includes(field.id),
 				canSetTerrain: (id: string) => id !== field.id && !field.id.startsWith('flowergarden') &&
 					!['underwaterterrain', 'midnightzoneterrain', 'newworldterrain', 'dragonsdenterrain'].includes(field.id) &&
-					!(field.id === 'hauntedterrain' && ['electricterrain', 'grassyterrain', 'mistyterrain', 'psychicterrain', 'coldeclipseterrain'].includes(id)),
+					!(field.id === 'hauntedterrain' && id === 'coldeclipseterrain'),
 				isWeather: (w: any) => (Array.isArray(w) ? w : [w]).includes(weather),
 				terrainState: {terrainChanges: {get: () => variant % 3},
 					underlyingTerrain: variant ? 'watersurfaceterrain' : ''}, terrainStack: []},
@@ -60,10 +90,11 @@ const BattleFieldTooltips = {
 			dex: {moves: Dex.moves, getActiveMove: (id: string) => this.clone(Dex.moves.get(id))},
 			effectState: {}, sample: (items: any[]) => items[variant % items.length],
 		};
+		Object.assign(context.field, (window as any).BattleAuraMethods || {}, {battle: context});
 		// Compare move-owned hooks against the same situation without a field. This
 		// isolates field bonuses from weather/status/item bonuses already in the tooltip.
 		const baseline: any = this.clone(move);
-		const neutral = {...context, field: {...context.field, terrain: '', getTerrain: () => ({id: ''}), isTerrain: () => false,
+		const neutral = {...context, field: {...context.field, terrain: '', auraField: '', getAura: () => undefined, isAura: () => false, isTerrainOrAura: () => false, getTerrain: () => ({id: ''}), isTerrain: () => false,
 			canSetTerrain: () => true,
 			terrainState: {terrainChanges: {get: () => 0}}}};
 		rule?.onModifyType?.call(neutral, baseline, source, target);
@@ -74,6 +105,7 @@ const BattleFieldTooltips = {
 		const modifiedPower = move.basePower;
 		if (baseline.basePower && original.basePower) move.basePower = original.basePower * move.basePower / baseline.basePower;
 		field.onModifyMove?.call(context, move, source, target);
+		if (aura) (window as any).BattleAuraHooks.onModifyMove.call(context, move, source, target);
 		const allowed = field.onTryMove?.call(context, source, target, move);
 		const failed = allowed === false || allowed === null;
 		if (move.category !== 'Status' && !failed) {
@@ -88,25 +120,28 @@ const BattleFieldTooltips = {
 				if (before) factor *= after / before;
 			}
 			field.onBasePower?.call(context, move.basePower, source, target, move);
+			if (aura) (window as any).BattleAuraHooks.onBasePower.call(context, move.basePower, source, target, move);
 		}
 		const accuracy = field.onAccuracy?.call(context, move.accuracy, target, source, move);
-		const priority = field.onModifyPriority?.call(context, move.priority || 0, source, target, move);
+		const movePriority = rule?.onModifyPriority?.call(context, move.priority || 0, source, target, move) ?? move.priority ?? 0;
+		const priority = field.onModifyPriority?.call(context, movePriority, source, target, move) ?? movePriority;
 		return {move, baseline, factor: failed ? 0 : Number(factor.toFixed(12)), failed,
 			accuracy: accuracy === undefined ? move.accuracy : accuracy,
 			priority: priority === undefined ? move.priority || 0 : priority};
 	},
 	preview(battle: Battle, move: any, pokemon: Pokemon, server: ServerPokemon, target?: Pokemon | null) {
-		const field = this.active(battle);
+		const aura = this.activeAura(battle);
+		const field = this.active(battle) || (aura ? {id: '', name: 'Base field'} : null);
 		if (!field) return null;
 		const source = this.pokemon(pokemon, server);
 		const foe = this.pokemon(target);
 		const variants = this.variantValues(field, move);
-		const results = variants.map(v => this.evaluate(field, move, source, foe, battle.weather, v));
+		const results = variants.map(v => this.evaluate(field, move, source, foe, battle.weather, v, aura));
 		if (field.id === 'chessboardterrain' && !source.Role) {
 			results.push(this.evaluate(field, move, {...source, Role: 'Queen'}, foe, battle.weather));
 			results.push(this.evaluate(field, move, {...source, Role: 'Knight'}, {...foe, Role: 'Queen'}, battle.weather));
 		}
-		return {field, result: results[0], min: Math.min(...results.map(r => r.factor)),
+		return {field, aura, result: results[0], min: Math.min(...results.map(r => r.factor)),
 			max: Math.max(...results.map(r => r.factor)), results};
 	},
 	notes(original: any, result: any) {
@@ -164,7 +199,7 @@ const BattleFieldTooltips = {
 		if (preview.field.id === 'crystalcavernterrain' && notes.some(n => n.startsWith('dual typing:'))) {
 			return `${preview.field.name}: ${notes.filter(n => !n.startsWith('dual typing:')).join('; ')}; Rock + Fire/Water/Grass/Psychic, depending on the crystal cycle.`;
 		}
-		return notes.length ? `${preview.field.name}: ${notes.join('; ')}.` : '';
+		return notes.length ? `${preview.field.name}${preview.aura ? ' + ' + preview.aura.name : ''}: ${notes.join('; ')}.` : '';
 	},
 	/** Team Builder is not tied to a battle: list conditional outcomes rather than inventing a current state. */
 	allNotes(move: any): string[] {
@@ -217,6 +252,13 @@ const BattleFieldTooltips = {
 				rows.push(`${field.name}: ${text}${labels.some(Boolean) ? ` (${labels.filter(Boolean).join(', ')})` : ''}${text.includes(' OR ') ? ' [field cycle/history may vary]' : ''}`);
 			});
 		});
+		Object.values((window as any).BattleAuraRules || {}).forEach((aura: any) => {
+			for (const [label, source, target] of scenarios.slice(0, 3)) {
+				const result = this.evaluate({id: '', name: 'Base field'}, move, source, target, '', 0, aura);
+				const notes = this.notes(move, result);
+				if (notes.length) rows.push(`${aura.name}: ${notes.join('; ')}${label ? ' (' + label + ')' : ''}`);
+			}
+		});
 		this.cache.set(key, rows);
 		return rows;
 	},
@@ -226,7 +268,7 @@ const BattleFieldTooltips = {
 	teamBuilderContent(move: Move) {
 		const rows = this.allNotes(move);
 		if (!rows.length) return '<p>No direct field modifiers for this move.</p>';
-		return '<p>Conditional effects are shown separately. Power multipliers are additional field effects, including stacked boosts.</p>' +
+		return '<p>Conditional effects are shown separately. Aura rules are additional to the base field. Shared type boosts use the stronger value (minimum 1.5x); move-specific bonuses can stack.</p>' +
 			rows.map(row => '<p>' + BattleLog.escapeHTML(row) + '</p>').join('');
 	},
 };

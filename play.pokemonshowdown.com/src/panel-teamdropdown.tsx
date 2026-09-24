@@ -564,8 +564,8 @@ function TeamBox(props: {team: Team | null, noLink?: boolean, button?: boolean})
 			if (!team.packedTeam) {
 				icons = <em>(empty team)</em>;
 			} else {
-				icons = PSTeambuilder.packedTeamNames(team.packedTeam).map(species =>
-					<span class="picon" style={Dex.getPokemonIcon(species)}></span>
+				icons = PSTeambuilder.unpackTeam(team.packedTeam).map(set =>
+					<span class="picon" style={Dex.getPokemonIcon(Dex.getAbilityFormPreviewSet(set))}></span>
 				);
 			}
 			team.iconCache = icons;
