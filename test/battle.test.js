@@ -807,6 +807,8 @@ describe('Team Builder sprites', () => {
 		assert(!Dex.getAbilityEffects('fortressshell').has('friendguard'));
 		assert(Dex.getAbilityEffects('burningcrown').has('wildfirecore'));
 		assert(!Dex.getAbilityEffects('burningcrown').has('filter'));
+		assert(Dex.getAbilityEffects('pollenbloom').has('thickfat'));
+		assert(Dex.getAbilityEffects('toxicbloom').has('thickfat'));
 	});
 
 	it('keeps abilities on custom required-item Mega profiles', () => {

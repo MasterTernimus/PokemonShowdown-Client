@@ -36179,3 +36179,17 @@ BattleMoveAnims['psyblade'] = {anim: BattleMoveAnims['psychocut'].anim};
 BattleMoveAnims['radiantclaw'] = {anim: BattleMoveAnims['psychocut'].anim};
 BattleMoveAnims['hexingslash'] = {anim: BattleMoveAnims['shadowclaw'].anim};
 BattleMoveAnims['etherealtempest'] = {anim: BattleMoveAnims['hurricane'].anim};
+
+BattleMoveAnims['tailsmash'] = {
+	anim(scene, [attacker, defender]) {
+		BattleMoveAnims['tailglow'].anim(scene, [attacker, defender]);
+		BattleMoveAnims['slam'].anim(scene, [attacker, defender]);
+	},
+};
+BattleMoveAnims['atlantiswall'] = {
+	anim(scene, [attacker]) {
+		BattleMoveAnims['aquaring'].anim(scene, [attacker]);
+		BattleMoveAnims['matblock'].anim(scene, [attacker]);
+	},
+};
+BattleMoveAnims['deluge'] = {anim: BattleMoveAnims['brine'].anim};

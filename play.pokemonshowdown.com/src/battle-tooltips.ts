@@ -1218,6 +1218,13 @@ class BattleTooltips {
 		) {
 			speedModifiers.push(2);
 		}
+		if (this.battle.hasPseudoWeather('Psychic Aura') && Dex.getAbilityEffects(ability).has(toID('telepathy'))) {
+			speedModifiers.push(2);
+		}
+		if (this.battle.hasPseudoWeather('Misty Aura')) {
+			const types = clientPokemon ? clientPokemon.getTypes(serverPokemon)[0] : this.battle.dex.species.get(serverPokemon.speciesForme).types;
+			if (types.includes('Fairy')) stats.spd = Math.floor(stats.spd * 1.5);
+		}
 		if (this.battle.hasPseudoWeather('Midnight Zone Terrain')) {
 			const types = clientPokemon ? clientPokemon.getTypes(serverPokemon)[0] : this.battle.dex.species.get(serverPokemon.speciesForme).types;
 			if (!types.includes('Water') && !['steelworker', 'schooling', 'swiftswim'].some(id => Dex.getAbilityEffects(ability).has(toID(id)))) speedModifiers.push(0.25);

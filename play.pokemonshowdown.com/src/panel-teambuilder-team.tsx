@@ -132,6 +132,7 @@ class LegacyTeamTextbox extends preact.Component<{team: Team}> {
 	};
 	save() {
 		const sets = PSTeambuilder.importTeam(this.textbox.value);
+		this.sets = sets;
 		this.props.team.packedTeam = PSTeambuilder.packTeam(sets);
 		this.props.team.iconCache = null;
 		PS.teams.save();
@@ -162,8 +163,8 @@ class LegacyTeamTextbox extends preact.Component<{team: Team}> {
 				{this.setInfo.map((info, i) => {
 					if (!info.species) return null;
 					const prevOffset = i === 0 ? 8 : this.setInfo[i - 1].bottomY;
-					const species = info.species;
-					const iconStyle = Dex.getPokemonIcon(species);
+					const set = this.sets[i];
+					const iconStyle = Dex.getPokemonIcon(set ? Dex.getAbilityFormPreviewSet(set) : info.species);
 
 					return <span class="picon" style={
 						`top:${prevOffset + 1}px;left:50px;position:absolute;${iconStyle}`

@@ -242,9 +242,7 @@ class PSSearchResults extends preact.Component<{
 
 			<span class="col movedesccol">{move.shortDesc}</span>
 
-		</a><details class="field-move-info" data-field-move={move.id}>
-			<summary>Field effects</summary><div />
-		</details></li>;
+		</a></li>;
 	}
 
 	renderTypeRow(id: ID, matchStart: number, matchEnd: number, errorMessage?: preact.ComponentChildren) {
