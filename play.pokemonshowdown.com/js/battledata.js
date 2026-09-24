@@ -4559,6 +4559,7 @@ decidueyealt:{
 base:'decidueye',
 data:{
 name:'Decidueye-Alt',
+baseStats:{hp:83,atk:112,def:80,spa:85,spd:90,spe:100},
 baseSpecies:'Decidueye',
 forme:'Alt',
 spriteid:'decidueye-alt',
@@ -4570,6 +4571,7 @@ decidueyehisuialt:{
 base:'decidueyehisui',
 data:{
 name:'Decidueye-Hisui-Alt',
+baseStats:{hp:93,atk:117,def:80,spa:80,spd:85,spe:95},
 baseSpecies:'Decidueye-Hisui',
 forme:'Hisui-Alt',
 spriteid:'decidueye-hisui-alt',
@@ -11198,10 +11200,12 @@ cosmeticFormes:['Primarina-Alt'],
 formeOrder:['Primarina','Primarina-Alt']
 },
 decidueye:{
+baseStats:{hp:83,atk:112,def:80,spa:85,spd:90,spe:100},
 cosmeticFormes:['Decidueye-Alt'],
 formeOrder:['Decidueye','Decidueye-Alt','Decidueye-Hisui']
 },
 decidueyehisui:{
+baseStats:{hp:93,atk:117,def:80,spa:80,spd:85,spe:95},
 cosmeticFormes:['Decidueye-Hisui-Alt'],
 formeOrder:['Decidueye-Hisui','Decidueye-Hisui-Alt'],
 abilities:{0:'Fallen Star',1:'Unburden',H:'Scrappy'}
@@ -12179,10 +12183,10 @@ machamp:{baseStats:{hp:100,atk:140,def:95,spa:65,spd:75,spe:75}},
 machampgmaxalt:{abilities:{0:'Raging Fists',1:'Stamina',H:'Guts'}},
 machampgmax:{baseStats:{hp:150,atk:140,def:95,spa:65,spd:75,spe:75},abilities:{0:'Raging Fists',1:'Stamina',H:'Guts'}},
 probopass:{baseStats:{hp:75,atk:50,def:150,spa:95,spd:155,spe:25}},
-samurott:{baseStats:{hp:95,atk:110,def:90,spa:120,spd:80,spe:75}},
-samurotthisui:{baseStats:{hp:90,atk:110,def:75,spa:105,spd:65,spe:95}},
-samurottalt:{baseStats:{hp:95,atk:110,def:90,spa:120,spd:80,spe:75}},
-samurotthisuialt:{baseStats:{hp:90,atk:110,def:75,spa:105,spd:65,spe:95}},
+samurott:{baseStats:{hp:90,atk:105,def:85,spa:115,spd:80,spe:75}},
+samurotthisui:{baseStats:{hp:90,atk:115,def:80,spa:105,spd:65,spe:95}},
+samurottalt:{baseStats:{hp:90,atk:105,def:85,spa:115,spd:80,spe:75}},
+samurotthisuialt:{baseStats:{hp:90,atk:115,def:80,spa:105,spd:65,spe:95}},
 toxicroak:{
 baseStats:{hp:83,atk:131,def:70,spa:121,spd:70,spe:95},
 abilities:{0:'Battle Fervor',1:'Corrosion',H:'Great Marsh'},
