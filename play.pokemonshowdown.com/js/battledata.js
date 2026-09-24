@@ -12719,8 +12719,8 @@ shortDesc:'Cannot be paralyzed; cures paralysis; opposing Speed drops fail.'
 },
 alchemistsurge:{
 name:"Alchemist Surge",
-desc:"This Pokemon creates Psychic Terrain on entry, gains Competitive, Neuroforce, and Hydra Bond's effects.",
-shortDesc:"Psychic Surge + Competitive + Neuroforce + Hydra Bond."
+desc:"This Pokemon creates Psychic Terrain on entry and has Competitive, Neuroforce, Hydra Bond, and Prankster's effects.",
+shortDesc:"Psychic Surge + Competitive + Neuroforce + Hydra Bond + Prankster."
 },
 protectiveward:{
 name:'Protective Ward',
@@ -13231,8 +13231,8 @@ shortDesc:"This Pokemon's Fire-type attacks have 1.5x power."
 },
 forestsurge:{
 name:"Forest Surge",
-desc:"On switch-in, this Pokemon sets Forest Terrain for 5 turns.",
-shortDesc:"On switch-in, this Pokemon sets Forest Terrain for 5 turns."
+desc:"On switch-in, this Pokemon sets Forest Terrain and Grassy Aura for 5 turns. It also has Proficient's effect.",
+shortDesc:"Sets Forest and Grassy Aura for 5 turns; Proficient."
 },
 fortressshell:{
 name:"Fortress Shell",
@@ -18100,7 +18100,7 @@ apexarmor:['bulletproof','roughskin','stalwart','selfsufficient'],
 bogbody:['thickfat','levitate','dryskin'],
 solarhydra:['hydrabond','grassysurge','solarpower','selfrepair','selfsufficient','naturalcure'],
 astralengine:['elevate','filter','analytic'],
-alchemistsurge:['psychicsurge','competitive','hydrabond','neuroforce'],
+alchemistsurge:['psychicsurge','competitive','hydrabond','neuroforce','prankster'],
 argentdevotion:['armorize','swornduty'],
 windchime:['armorize','punkrock','levitate'],
 hauntedchime:['elevate','windpower','cursedbody'],

@@ -8865,8 +8865,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	alchemistsurge: {
 		name: "Alchemist Surge",
-		desc: "This Pokemon creates Psychic Terrain on entry, gains Competitive, Neuroforce, and Hydra Bond's effects.",
-		shortDesc: "Psychic Surge + Competitive + Neuroforce + Hydra Bond.",
+		desc: "This Pokemon creates Psychic Terrain on entry and has Competitive, Neuroforce, Hydra Bond, and Prankster's effects.",
+		shortDesc: "Psychic Surge + Competitive + Neuroforce + Hydra Bond + Prankster.",
 	},
 	protectiveward: {
 		name: 'Protective Ward',
@@ -9377,8 +9377,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	forestsurge: {
 		name: "Forest Surge",
-		desc: "On switch-in, this Pokemon sets Forest Terrain for 5 turns.",
-		shortDesc: "On switch-in, this Pokemon sets Forest Terrain for 5 turns.",
+		desc: "On switch-in, this Pokemon sets Forest Terrain and Grassy Aura for 5 turns. It also has Proficient's effect.",
+		shortDesc: "Sets Forest and Grassy Aura for 5 turns; Proficient.",
 	},
 	fortressshell: {
 		name: "Fortress Shell",
@@ -14246,7 +14246,7 @@ const CUSTOM_ABILITY_COMPONENT_OVERRIDES: {[id: string]: readonly ID[]} = {
 	bogbody: ['thickfat' as ID, 'levitate' as ID, 'dryskin' as ID],
 	solarhydra: ['hydrabond' as ID, 'grassysurge' as ID, 'solarpower' as ID, 'selfrepair' as ID, 'selfsufficient' as ID, 'naturalcure' as ID],
 	astralengine: ['elevate' as ID, 'filter' as ID, 'analytic' as ID],
-	alchemistsurge: ['psychicsurge' as ID, 'competitive' as ID, 'hydrabond' as ID, 'neuroforce' as ID],
+	alchemistsurge: ['psychicsurge' as ID, 'competitive' as ID, 'hydrabond' as ID, 'neuroforce' as ID, 'prankster' as ID],
 	argentdevotion: ['armorize' as ID, 'swornduty' as ID],
 	windchime: ['armorize' as ID, 'punkrock' as ID, 'levitate' as ID],
 	hauntedchime: ['elevate' as ID, 'windpower' as ID, 'cursedbody' as ID],
