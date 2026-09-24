@@ -12245,7 +12245,7 @@ mabosstiff:{baseStats:{hp:110,atk:140,def:90,spa:60,spd:70,spe:85}},
 glalie:{baseStats:{hp:80,atk:80,def:80,spa:80,spd:80,spe:100}},
 glaliemega:{baseStats:{hp:80,atk:140,def:100,spa:80,spd:95,spe:105}},
 lumineon:{
-baseStats:{hp:89,atk:40,def:86,spa:94,spd:90,spe:81},
+baseStats:{hp:89,atk:40,def:86,spa:104,spd:90,spe:91},
 abilities:{0:'Protean',1:'Storm Drain',H:'Drizzle'},
 otherFormes:['Lumineon-Alt'],
 cosmeticFormes:['Lumineon-Alt'],
@@ -12253,10 +12253,10 @@ formeOrder:['Lumineon','Lumineon-Alt']
 },
 lumineonalt:{
 types:['Water','Fairy'],
-baseStats:{hp:89,atk:40,def:86,spa:94,spd:90,spe:81},
+baseStats:{hp:89,atk:40,def:86,spa:104,spd:90,spe:91},
 abilities:{0:'Protean',1:'Storm Drain',H:'Drizzle'}
 },
-seaking:{baseStats:{hp:80,atk:95,def:75,spa:60,spd:90,spe:70}},
+seaking:{baseStats:{hp:90,atk:105,def:75,spa:60,spd:90,spe:80}},
 bombirdier:{baseStats:{hp:70,atk:103,def:85,spa:103,spd:85,spe:97}},
 durant:{baseStats:{hp:58,atk:109,def:112,spa:48,spd:98,spe:109}},
 persian:{
