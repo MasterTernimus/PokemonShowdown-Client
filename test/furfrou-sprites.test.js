@@ -81,3 +81,48 @@ describe('Available BW animations', () => {
   }
  });
 });
+describe('Custom preview sprites and battle sizes', () => {
+ it('keeps form artwork in preview, including Deso Toxicroak back', () => {
+  for (const [species, file] of [
+   ['Toxicroak-Deso', 'toxicroak-deso.png'],
+   ['Wishiwashi-Sevii', 'wishiwashi-sevii.png'],
+   ['Wishiwashi-Sevii-Schooling', 'wishiwashi-sevii-schooling.png'],
+   ['Gyarados-Aevian', 'gyarados-aevian.png'],
+   ['Tatsugiri-Droopy-Mega', 'tatsugiri-mega.png'],
+  ]) for (const front of [true, false]) {
+   const data = Dex.getSpriteData(species, front, {gen: 9, teamPreview: true});
+   assert.equal(data.url.split('?')[0].split('/').pop(), file, data.url);
+   assert(fs.statSync(local(data.url)).size > 0);
+  }
+ });
+ it('renders Mega Beedrill, Kilowattrel, and Hawlucha at compact battle sizes', () => {
+  for (const [species, frontLimit, backLimit] of [
+   ['Beedrill-Mega', 68, 59], ['Kilowattrel', 58, 56], ['Hawlucha', 62, 58],
+  ]) for (const front of [true, false]) {
+   const data = Dex.getSpriteData(species, front, {gen: 9});
+   assert(Math.max(data.w, data.h) <= (front ? frontLimit : backLimit), species);
+  }
+ });
+});
+
+describe('Magneton BW shiny battle size', () => {
+ it('keeps the shiny sprite smaller than normal without changing the animation route', () => {
+  for (const front of [true, false]) {
+   const normal = Dex.getSpriteData('Magneton', front, {gen: 9});
+   const shiny = Dex.getSpriteData('Magneton', front, {gen: 9, shiny: true});
+   assert(normal.url.includes('/gen5ani'), normal.url);
+   assert(shiny.url.includes(front ? '/gen5-shiny/' : '/gen5-back-shiny/'), shiny.url);
+   assert(Math.max(shiny.w, shiny.h) <= (front ? 68 : 60), JSON.stringify(shiny));
+  }
+ });
+});
+
+describe('Beedrill BW animation', () => {
+ it('animates normal Beedrill from both sides in both palettes', () => {
+  for (const shiny of [false, true]) for (const front of [true, false]) {
+   const data = Dex.getSpriteData('Beedrill', front, {gen: 9, shiny});
+   assert(data.url.includes(`/sprites/gen5ani${front ? '' : '-back'}${shiny ? '-shiny' : ''}/beedrill.gif`), data.url);
+   assert(fs.statSync(local(data.url)).size > 0);
+  }
+ });
+});

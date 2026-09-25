@@ -24,6 +24,23 @@ require('../play.pokemonshowdown.com/js/battle-text-parser.js');
 require('../play.pokemonshowdown.com/js/battle.js');
 
 describe('Battle', () => {
+	it('keeps one Stockpile tag when Accumulation consumes a layer', () => {
+		const battle = new Battle({debug: true, log: [
+			'|init|battle', '|gen|9', '|gametype|singles',
+			'|switch|p1a: Sirius|Seviper, L100|100/100',
+		]});
+		const sirius = battle.p1.active[0];
+		for (const layer of [1, 2, 3, 2, 1]) {
+			battle.runMinor(['-start', 'p1a: Sirius', `stockpile${layer}`], {});
+			assert.deepEqual(
+				Object.keys(sirius.volatiles).filter(id => id.startsWith('stockpile')),
+				[`stockpile${layer}`]
+			);
+		}
+		battle.runMinor(['-end', 'p1a: Sirius', 'Stockpile'], {});
+		assert.equal(Object.keys(sirius.volatiles).filter(id => id.startsWith('stockpile')).length, 0);
+		battle.destroy();
+	});
 	it('replaces Flower Garden stages without timers and preserves room effects', () => {
 		const battle = new Battle({debug: true});
 		battle.gen = 9;

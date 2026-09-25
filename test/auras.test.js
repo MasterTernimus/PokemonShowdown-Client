@@ -57,6 +57,8 @@ describe('Aura client support', () => {
 
 require('vm').runInThisContext(require('fs').readFileSync(require('path').join(__dirname, '../play.pokemonshowdown.com/js/battle-tooltips.js'), 'utf8') + '\nglobal.AuraAuditTooltips = BattleTooltips;');
 global.BattleItems = require('../play.pokemonshowdown.com/data/items.js').BattleItems;
+require('vm').runInThisContext(require('fs').readFileSync(require('path').join(__dirname, '../play.pokemonshowdown.com/js/battle-log.js'), 'utf8') +
+  '\nglobal.BattleLog = BattleLog;');
 describe('Aura displayed stats', () => {
  it('updates Telepathy Speed and Fairy Special Defense only while their Aura applies', () => {
   const battle = new Battle({debug: true}); battle.gen = 9;
@@ -74,5 +76,65 @@ describe('Aura displayed stats', () => {
    battle.runMinor(['-fieldend', 'Misty Aura'], {aura: '.'});
    assert.equal(tips.calculateModifiedStats(null, p).spd, 100);
   } finally { battle.destroy(); }
+ });
+});
+
+describe('Z-Move battle tooltips', () => {
+ function tooltip(baseMove, zMove, item, field) {
+  const battle = new Battle({debug: true, log: [
+   '|init|battle', '|gen|9', '|gametype|singles',
+   '|switch|p1a: Snorlax|Snorlax, L100|100/100',
+   '|switch|p2a: Mew|Mew, L100|100/100',
+  ]});
+  battle.gen = 9;
+  if (field) battle.runMinor(['-fieldstart', field], {});
+  const server = {
+   speciesForme: 'Snorlax', item, ability: 'Immunity', baseAbility: 'Immunity',
+   level: 100, hp: 100, maxhp: 100, status: '', stats: {atk: 100, def: 100, spa: 100, spd: 100, spe: 100},
+  };
+  try {
+   return new AuraAuditTooltips(battle).showMoveTooltip(
+    Dex.moves.get(baseMove), 'zmove', battle.p1.active[0], server, Dex.moves.get(zMove)
+   );
+  } finally { battle.destroy(); }
+ }
+
+ it('shows the powered-up name, converted power, and active field bonus', () => {
+  const html = tooltip('Thunderbolt', 'Gigavolt Havoc', 'Electrium Z', 'Electric Terrain');
+  assert.match(html, /Gigavolt Havoc/);
+  assert.match(html, /Powered-up Z-Move from Thunderbolt/);
+  assert.match(html, /Z-Move base power: 175/);
+  assert.match(html, /Current power: 262\.5/);
+  assert.match(html, /Electric Terrain/);
+ });
+
+ it('uses a signature Z-Move\'s fixed power instead of the generic conversion', () => {
+  const html = tooltip('Last Resort', 'Pulverizing Pancake', 'Snorlium Z');
+  assert.match(html, /Pulverizing Pancake/);
+  assert.match(html, /Z-Move base power: 210/);
+ });
+});
+
+describe('Full field stat display parity', () => {
+ for (const [aura, field, stat, expected] of [['Psychic Aura','Psychic Terrain','spe',200],['Misty Aura','Misty Terrain','spd',150]]) {
+  it(aura + ' promotion preserves the displayed ' + stat + ' bonus', () => {
+   const battle=new Battle({debug:true}); battle.gen=9;
+   const p={speciesForme:'Gardevoir',ability:'Telepathy',baseAbility:'Telepathy',item:'',hp:300,maxhp:300,status:'',level:100,stats:{atk:100,def:100,spa:100,spd:100,spe:100}};
+   const tips=new AuraAuditTooltips(battle);
+   try {
+    battle.runMinor(['-fieldstart',aura],{aura:'5'});
+    assert.equal(tips.calculateModifiedStats(null,p)[stat],expected);
+    battle.runMinor(['-fieldend',aura],{aura:'.'});
+    battle.runMinor(['-fieldstart',field],{});
+    assert.equal(tips.calculateModifiedStats(null,p)[stat],expected);
+    assert.equal(tips.calculateModifiedStats(null,{...p,ability:'Synchronize',speciesForme:'Mew'})[stat],100);
+    battle.runMinor(['-fieldend',field],{});
+    assert.equal(tips.calculateModifiedStats(null,p)[stat],100);
+   } finally {battle.destroy();}
+  });
+ }
+ it('describes Sacred Bond with Flash Fire and without Brute Force', () => {
+  const effects=Dex.getAbilityEffects(toID('sacredbond'));
+  assert(effects.has(toID('flashfire'))); assert(!effects.has(toID('bruteforce')));
  });
 });

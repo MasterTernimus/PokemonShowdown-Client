@@ -733,7 +733,7 @@ export class TeamEditorState extends PSModel {
 
 		const level = set.level || this.defaultLevel;
 
-		const baseStat = species.baseStats[stat];
+		const baseStat = Dex.getAbilityFormPreview(set, this.dex).baseStats[stat];
 		const iv = ivOverride;
 		const ev = evOverride ?? set.evs?.[stat] ?? (this.gen > 2 ? 0 : 252);
 
@@ -2900,9 +2900,7 @@ class StatForm extends preact.Component<{
 	}
 	override render() {
 		const { editor, set } = this.props;
-		const species = editor.getPreviewSpecies(set);
-
-		const baseStats = species.baseStats;
+		const baseStats = Dex.getAbilityFormPreview(set, editor.dex).baseStats;
 
 		const nature = BattleNatures[set.nature || 'Serious'];
 

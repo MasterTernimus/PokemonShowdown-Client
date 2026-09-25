@@ -1293,7 +1293,7 @@
 			buf += '<div class="setchart-nickname">';
 			buf += '<label>Nickname</label><input type="text" name="nickname" class="textbox" value="' + BattleLog.escapeHTML(set.name || '') + '" placeholder="' + BattleLog.escapeHTML(species.baseSpecies) + '" />';
 			buf += '</div>';
-			buf += '<div class="setchart" style="' + Dex.getTeambuilderSprite(set, this.curTeam.gen) + ';">';
+			buf += '<div class="setchart" style="' + Dex.getTeambuilderSprite(Dex.getAbilityFormPreviewSet(set, this.curTeam.dex), this.curTeam.gen) + ';">';
 
 			// icon
 			buf += '<div class="setcol setcol-icon">';
@@ -1353,7 +1353,7 @@
 			buf += itemicon;
 			buf += '</div>';
 			buf += '<div class="setcell setcell-typeicons">';
-			var types = species.types;
+			var types = Dex.getAbilityFormPreview(set, this.curTeam.dex).species.types;
 			if (types) {
 				for (var i = 0; i < types.length; i++) buf += Dex.getTypeIcon(types[i]);
 			}
@@ -1939,7 +1939,7 @@
 			}
 			for (var i = start; i < end; i++) {
 				var set = this.curSetList[i];
-				var pokemonicon = '<span class="picon pokemonicon-' + i + '" style="' + Dex.getPokemonIcon(set) + '"></span>';
+				var pokemonicon = '<span class="picon pokemonicon-' + i + '" style="' + Dex.getPokemonIcon(Dex.getAbilityFormPreviewSet(set)) + '"></span>';
 				if (!set.species) {
 					buf += '<button disabled class="addpokemon" aria-label="Add Pok&eacute;mon"><i class="fa fa-plus"></i></button> ';
 					isAdd = true;
@@ -1958,9 +1958,9 @@
 			var set = this.curSet;
 			if (!set) return;
 
-			this.$('.setchart').attr('style', Dex.getTeambuilderSprite(set, this.curTeam.gen));
+			this.$('.setchart').attr('style', Dex.getTeambuilderSprite(Dex.getAbilityFormPreviewSet(set, this.curTeam.dex), this.curTeam.gen));
 
-			this.$('.pokemonicon-' + this.curSetLoc).css('background', Dex.getPokemonIcon(set).substr(11));
+			this.$('.pokemonicon-' + this.curSetLoc).css('background', Dex.getPokemonIcon(Dex.getAbilityFormPreviewSet(set)).substr(11));
 
 			var item = this.curTeam.dex.items.get(set.item);
 			if (item.id) {
@@ -1969,6 +1969,8 @@
 				this.$('.setcol-details .itemicon').css('background', 'none');
 			}
 
+			var previewSpecies = Dex.getAbilityFormPreview(set, this.curTeam.dex).species;
+			this.$('.setcell-typeicons').html(previewSpecies.types.map(function (type) { return Dex.getTypeIcon(type); }).join(''));
 			this.updateStatGraph();
 		},
 		updateStatGraph: function () {
@@ -2194,9 +2196,9 @@
 		updateStatForm: function (setGuessed) {
 			var buf = '';
 			var set = this.curSet;
-			var species = this.curTeam.dex.species.get(this.curSet.species);
+			var species = Dex.getAbilityFormPreview(set, this.curTeam.dex).species;
 
-			var baseStats = species.baseStats;
+			var baseStats = Dex.getAbilityFormPreview(set, this.curTeam.dex).baseStats;
 
 			buf += '<div class="resultheader"><h3>EVs</h3></div>';
 			buf += '<div class="statform">';
@@ -3206,6 +3208,7 @@
 				break;
 			case 'ability':
 				this.curSet.ability = val;
+				this.updatePokemonSprite();
 				if (selectNext) this.$('input[name=move1]').select();
 				break;
 			case 'move1':
@@ -3455,13 +3458,13 @@
 
 			// do this after setting set.evs because it's assumed to exist
 			// after getStat is run
-			var species = this.curTeam.dex.species.get(set.species);
+			var species = Dex.getAbilityFormPreview(set, this.curTeam.dex).species;
 			if (!species.exists) return 0;
 
 			if (!set.level) set.level = 100;
 			if (typeof set.ivs[stat] === 'undefined') set.ivs[stat] = 31;
 
-			var baseStat = species.baseStats[stat];
+			var baseStat = Dex.getAbilityFormPreview(set, this.curTeam.dex).baseStats[stat];
 			var iv = (set.ivs[stat] || 0);
 			if (this.curTeam.gen <= 2) iv &= 30;
 			var ev = set.evs[stat];
@@ -3511,7 +3514,7 @@
 				if (i !== data.i && i !== data.i + 1) {
 					buf += '<li><button name="moveHere" value="' + i + '" class="option"><i class="fa fa-arrow-right"></i> Move here</button></li>';
 				}
-				buf += '<li' + (i === data.i ? ' style="opacity:.3"' : ' style="opacity:.6"') + '><span class="picon" style="display:inline-block;vertical-align:middle;' + Dex.getPokemonIcon(set) + '"></span> ' + BattleLog.escapeHTML(set.name || set.species) + '</li>';
+				buf += '<li' + (i === data.i ? ' style="opacity:.3"' : ' style="opacity:.6"') + '><span class="picon" style="display:inline-block;vertical-align:middle;' + Dex.getPokemonIcon(Dex.getAbilityFormPreviewSet(set)) + '"></span> ' + BattleLog.escapeHTML(set.name || set.species) + '</li>';
 			}
 			if (i !== data.i && i !== data.i + 1) {
 				buf += '<li><button name="moveHere" value="' + i + '" class="option"><i class="fa fa-arrow-right"></i> Move here</button></li>';

@@ -822,6 +822,13 @@ License: GPLv2
 	display: none;
 	position: absolute;
 }
+.sidecondition-atlantiswall {
+	background: linear-gradient(135deg, #9befff, #42b9e8 55%, #b7f7ff);
+	border: 1px solid #1689bf;
+	box-shadow: inset 0 0 10px #e0fbff;
+	display: none;
+	position: absolute;
+}
 .sidecondition-reflect {
 	background: #EEEEEE;
 	border: 1px solid #888888;
