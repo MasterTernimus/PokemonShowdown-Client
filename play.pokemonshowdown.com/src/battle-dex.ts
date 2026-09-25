@@ -1850,7 +1850,7 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 		data: {
 			name: 'Druddigon-Rejuv', baseSpecies: 'Druddigon', forme: 'Rejuv',
 			types: ['Dragon', 'Electric'],
-			baseStats: {hp: 107, atk: 30, def: 98, spa: 130, spd: 100, spe: 90},
+			baseStats: {hp: 107, atk: 50, def: 88, spa: 120, spd: 100, spe: 90},
 			abilities: {0: 'Aevian Bolt'}, battleOnly: 'Druddigon', requiredAbility: 'Aevian Bolt',
 			changesFrom: 'Druddigon', spriteid: 'druddigon-rejuv', isNonstandard: 'Custom',
 		},
@@ -4849,6 +4849,7 @@ Object.assign(CUSTOM_STATIC_BATTLE_SPRITES, {
 });
 
 const CUSTOM_BW_SPRITES: {[id: string]: AnyObject} = {
+	gardevoir: {num: 282, front: {w: 71, h: 77}, back: {w: 74, h: 77}, shinyFront: {w: 71, h: 77}, shinyBack: {w: 74, h: 77}},
 	glimmoraaevian: {num: 970, front: {w: 192, h: 192}, back: {w: 192, h: 192}, shinyFront: {w: 192, h: 192}, shinyBack: {w: 192, h: 192}},
 	glimmoraaevianmega: {num: 970, front: {w: 192, h: 192}, back: {w: 192, h: 192}, shinyFront: {w: 192, h: 192}, shinyBack: {w: 192, h: 192}},
 	veluzarejuv: {num: 976, front: {w: 192, h: 192}, back: {w: 192, h: 192}, shinyFront: {w: 192, h: 192}, shinyBack: {w: 192, h: 192}},
@@ -8590,8 +8591,8 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 	aevianbolt: {
 		name: 'Aevian Bolt',
-		desc: 'On entry, Druddigon permanently transforms into Druddigon-Rejuv. This Pokemon also has the effects of Storm Power, Surge Surfer, and Volt Absorb.',
-		shortDesc: 'Transforms Druddigon into Druddigon-Rejuv; Storm Power + Surge Surfer + Volt Absorb.',
+		desc: 'On entry, Druddigon permanently transforms into Druddigon-Rejuv. This Pokemon also has the effects of Storm Power, Static, and Volt Absorb.',
+		shortDesc: 'Transforms Druddigon into Druddigon-Rejuv; Storm Power + Static + Volt Absorb.',
 	},
 	aevianfrost: {
 		name: 'Aevian Frost',
@@ -10234,6 +10235,26 @@ const CUSTOM_ABILITY_UPDATES: {[id: string]: AnyObject} = {
 	},
 };
 
+const TYPE_Z_MOVES: [string, string, string, string][] = [
+	['buginiumz', 'savagespinout', 'Bug', 'Savage Spin-Out'],
+	['darkiniumz', 'blackholeeclipse', 'Dark', 'Black Hole Eclipse'],
+	['dragoniumz', 'devastatingdrake', 'Dragon', 'Devastating Drake'],
+	['electriumz', 'gigavolthavoc', 'Electric', 'Gigavolt Havoc'],
+	['fairiumz', 'twinkletackle', 'Fairy', 'Twinkle Tackle'],
+	['fightiniumz', 'alloutpummeling', 'Fighting', 'All-Out Pummeling'],
+	['firiumz', 'infernooverdrive', 'Fire', 'Inferno Overdrive'],
+	['flyiniumz', 'supersonicskystrike', 'Flying', 'Supersonic Skystrike'],
+	['ghostiumz', 'neverendingnightmare', 'Ghost', 'Never-Ending Nightmare'],
+	['grassiumz', 'bloomdoom', 'Grass', 'Bloom Doom'],
+	['groundiumz', 'tectonicrage', 'Ground', 'Tectonic Rage'],
+	['iciumz', 'subzeroslammer', 'Ice', 'Subzero Slammer'],
+	['normaliumz', 'breakneckblitz', 'Normal', 'Breakneck Blitz'],
+	['poisoniumz', 'aciddownpour', 'Poison', 'Acid Downpour'],
+	['psychiumz', 'shatteredpsyche', 'Psychic', 'Shattered Psyche'],
+	['rockiumz', 'continentalcrush', 'Rock', 'Continental Crush'],
+	['steeliumz', 'corkscrewcrash', 'Steel', 'Corkscrew Crash'],
+	['wateriumz', 'hydrovortex', 'Water', 'Hydro Vortex'],
+];
 const CUSTOM_MOVE_UPDATES: {[id: string]: AnyObject} = {
 	wakeupshock: {
 		num: 10414, accuracy: 100, basePower: 80, category: 'Physical', name: 'Wake-Up Shock',
@@ -12927,7 +12948,7 @@ const CUSTOM_BW_SPRITE_IDS = Object.keys(CUSTOM_BW_SPRITES);
 const CUSTOM_ANIMATED_BW_SPRITES = new Set([
 	'aggron', 'ariados', 'butterfree', 'cacturne', 'cinderacegmax',
 	'crobat', 'dragapult', 'dragonite', 'duraludon', 'dusknoir', 'electivire', 'empoleon', 'espeon', 'flareon', 'garbodorgmax',
-	'garchomp', 'garchompf', 'garchompmega', 'gardevoirmega', 'glalie', 'gliscor', 'grimmsnarl',
+	'garchomp', 'garchompf', 'garchompmega', 'gardevoir', 'gardevoirmega', 'glalie', 'gliscor', 'grimmsnarl',
 	'heracross', 'hydreigon', 'infernape', 'lilligant', 'lucariomega', 'luxray', 'magmortar', 'magneton',
 	'magnezone', 'metagross', 'nidoking', 'nidoqueen', 'milotic', 'mothim', 'ninetales', 'obstagoon', 'perrserker', 'persian', 'pidgeot',
 	'ribombee', 'rotom', 'rotomfan', 'rotomfrost', 'rotomheat', 'rotommow', 'rotomwash', 'salamence',
@@ -14265,7 +14286,7 @@ const CUSTOM_ABILITY_COMPONENT_OVERRIDES: {[id: string]: readonly ID[]} = {
 	divinemockery: ['hydrabond' as ID, 'moldbreaker' as ID, 'sniper' as ID],
 	verdantsanctuary: ['grassysurge' as ID, 'invigorate' as ID, 'hospitality' as ID, 'friendguard' as ID],
 	divineintervention: ['swornduty' as ID, 'friendguard' as ID, 'regenerator' as ID, 'fluffy' as ID],
-	aevianbolt: ['stormpower' as ID, 'surgesurfer' as ID, 'voltabsorb' as ID],
+	aevianbolt: ['stormpower' as ID, 'static' as ID, 'voltabsorb' as ID],
 	aevianglacier: ['snowwarning' as ID, 'icebody' as ID, 'refrigerate' as ID],
 	aeviandream: ['baddreams' as ID, 'shedskin' as ID, 'toughclaws' as ID],
 	schooling: ['hydrabond' as ID, 'selfrepair' as ID, 'moldbreaker' as ID],
@@ -14400,7 +14421,25 @@ CUSTOM_MOVE_UPDATES.injection = {
 	desc: "Deals Steel-type special damage and restores the user's HP by 50% of the damage dealt. Makes contact.",
 	shortDesc: 'Restores HP equal to 50% of damage dealt; makes contact.',
 };
-const CUSTOM_MOVE_UPDATE_IDS = Object.keys(CUSTOM_MOVE_UPDATES);
+for (const [, moveId, type] of TYPE_Z_MOVES) {
+	CUSTOM_MOVE_UPDATES[moveId] = {
+		desc: 'A one-use ' + type + '-type Z-Move. Its power depends on the damaging ' + type + '-type move selected as its base.',
+		shortDesc: 'Power depends on the base ' + type + '-type move.',
+	};
+}
+for (const [moveId, user, baseMove] of [
+	['catastropika', 'Pikachu', 'Volt Tackle'],
+	['letssnuggleforever', 'Mimikyu', 'Play Rough'],
+	['oceanicoperetta', 'Primarina', 'Sparkling Aria'],
+	['pulverizingpancake', 'Snorlax', 'Giga Impact'],
+	['sinisterarrowraid', 'Decidueye', 'Spirit Shackle'],
+	['soulstealing7starstrike', 'Marshadow', 'Spectral Thief'],
+]) {
+	CUSTOM_MOVE_UPDATES[moveId] = {
+		desc: user + "'s exclusive Z-Move, used through " + baseMove + '. No additional effect.',
+		shortDesc: 'Exclusive ' + user + ' Z-Move; no additional effect.',
+	};
+}const CUSTOM_MOVE_UPDATE_IDS = Object.keys(CUSTOM_MOVE_UPDATES);
 const GLIMMORA_AEVIAN_MOVE_IDS = 'injection curse ancientpower harden tackle magnetbomb gust twister autotomize wonderroom magicroom mirrorshot trickroom paraboliccharge airslash discharge flashcannon disable conversion2 charge workup psyshock toxic lightscreen taunt safeguard hyperbeam smackdown thunderbolt thunder psychic shadowball reflect sludgebomb aerialace overheat energyball chargebeam acrobatics explosion embargo rockpolish flash voltswitch thunderwave psychup zapcannon triattack selfdestruct screech weatherball mudshot electricterrain ironhead bugbuzz powergem metalsound psybeam stealthrock gravity magiccoat recycle shockwave waterpulse roleplay electroweb focusenergy signalbeam laserfocus electroball allyswitch trick helpinghand magnetrise terrainpulse defog hurricane gigadrain earthpower psychicnoise snowscape nastyplot'.split(' ');
 CUSTOM_LEARNSET_REPLACEMENTS.glimmoraaevian = Object.fromEntries(GLIMMORA_AEVIAN_MOVE_IDS.map(id => [id, [id === 'injection' ? '9L1' : '9M']]));
 CUSTOM_LEARNSET_REPLACEMENTS.glimmoraaevianmega = {...CUSTOM_LEARNSET_REPLACEMENTS.glimmoraaevian};
@@ -14980,6 +15019,7 @@ CUSTOM_LEARNSET_REMOVALS.arboliva = [...(CUSTOM_LEARNSET_REMOVALS.arboliva || []
 CUSTOM_LEARNSET_REMOVALS.arbolivamega = [...(CUSTOM_LEARNSET_REMOVALS.arbolivamega || []), 'forestcurse'];
 const CUSTOM_LEARNSET_REMOVAL_IDS = Object.keys(CUSTOM_LEARNSET_REMOVALS);
 const CUSTOM_ITEM_UPDATES: {[id: string]: AnyObject} = {
+	reuniclusite: {desc: 'Allows Reuniclus to Mega Evolve into Mega Reuniclus in battle.', shortDesc: 'Allows Reuniclus to Mega Evolve.'},
 	miloticide: {name: 'Miloticide', spritenum: 0, megaStone: {Milotic: 'Milotic-Mega'}, itemUser: ['Milotic'], num: 2717, gen: 9, isNonstandard: 'Custom', shortDesc: 'Allows regular Milotic to Mega Evolve.'},
 	aurorite: {name: 'Aurorite', spritenum: 0, megaStone: {Aurorus: 'Aurorus-Mega'}, itemUser: ['Aurorus'], num: 2716, gen: 9, isNonstandard: 'Custom', shortDesc: 'Allows Aurorus to Mega Evolve.'},
 	tyrantrumite: {name: 'Tyrantrumite', spritenum: 0, megaStone: {Tyrantrum: 'Tyrantrum-Mega'}, itemUser: ['Tyrantrum'], num: 2715, gen: 9, isNonstandard: 'Custom', shortDesc: 'Allows Tyrantrum to Mega Evolve.'},
@@ -15161,7 +15201,32 @@ CUSTOM_ITEM_UPDATES.glimmoranite = {
 	shortDesc: 'Allows Glimmora or Glimmora-Aevian to Mega Evolve.',
 };
 if (!ENABLE_MEGA_HYDREIGON_X) delete CUSTOM_ITEM_UPDATES.hydreigonite;
-const CUSTOM_ITEM_IDS = Object.keys(CUSTOM_ITEM_UPDATES);
+for (const [itemId, , type, move] of TYPE_Z_MOVES) {
+	CUSTOM_ITEM_UPDATES[itemId] = {
+		desc: 'Once per battle, converts a damaging ' + type + '-type move into ' + move + ', or gives a ' + type + '-type status move its Z-effect.',
+		shortDesc: type + ' Z-Move crystal; use once per battle.',
+	};
+}
+for (const [itemId, description] of [
+	['aloraichiumz', 'Alolan Raichu with Thunderbolt can use Stoked Sparksurfer once per battle.'],
+	['decidiumz', 'Decidueye with Spirit Shackle can use Sinister Arrow Raid once per battle.'],
+	['inciniumz', 'Incineroar with Darkest Lariat can use Malicious Moonsault once per battle.'],
+	['kommoniumz', 'Kommo-o with Clanging Scales can use Clangorous Soulblaze once per battle.'],
+	['lunaliumz', 'Lunala or Dawn Wings Necrozma with Moongeist Beam can use Menacing Moonraze Maelstrom once per battle.'],
+	['lycaniumz', 'Any Lycanroc form with Stone Edge can use Splintered Stormshards once per battle.'],
+	['marshadiumz', 'Marshadow with Spectral Thief can use Soul-Stealing 7-Star Strike once per battle.'],
+	['mewniumz', 'Mew with Psychic can use Genesis Supernova once per battle.'],
+	['mimikiumz', "Mimikyu with Play Rough can use Let's Snuggle Forever once per battle."],
+	['pikaniumz', 'Pikachu with Volt Tackle can use Catastropika once per battle.'],
+	['pikashuniumz', 'Cap Pikachu with Thunderbolt can use 10,000,000 Volt Thunderbolt once per battle.'],
+	['primariumz', 'Primarina with Sparkling Aria can use Oceanic Operetta once per battle.'],
+	['snorliumz', 'Snorlax with Giga Impact can use Pulverizing Pancake once per battle.'],
+	['solganiumz', 'Solgaleo or Dusk Mane Necrozma with Sunsteel Strike can use Searing Sunraze Smash once per battle.'],
+	['tapuniumz', "A Tapu with Nature's Madness can use Guardian of Alola once per battle."],
+	['ultranecroziumz', 'Dusk Mane or Dawn Wings Necrozma can Ultra Burst; with Photon Geyser, it can use Light That Burns the Sky once per battle.'],
+]) {
+	CUSTOM_ITEM_UPDATES[itemId] = {desc: description, shortDesc: description};
+}const CUSTOM_ITEM_IDS = Object.keys(CUSTOM_ITEM_UPDATES);
 const REDUNDANT_ITEM_IDS = [
 	...(!ENABLE_MEGA_HYDREIGON_X ? ['hydreigonite'] : []),
 	'berserkgene',
@@ -17521,6 +17586,11 @@ const Dex = new class implements ModdedDex {
 		let graphicsGen = mechanicsGen;
 		if (Dex.prefs('nopastgens')) graphicsGen = 6;
 		if (Dex.prefs('bwgfx') && graphicsGen >= 6) graphicsGen = 5;
+	const bwAnimationPath = 'gen5ani' + (isFront ? '' : '-back') + (options.shiny ? '-shiny' : '') + '/' + name + '.gif';
+	const preferSuppliedShinyAnimation = !!options.shiny &&
+		(species.id === 'gardevoir' || species.id === 'gardevoirmega') && !!TEAM_PREVIEW_ANIMATIONS[bwAnimationPath];
+	if (!Dex.prefs('nopastgens') && !!TEAM_PREVIEW_ANIMATIONS[bwAnimationPath] &&
+		((!options.shiny && CUSTOM_ANIMATED_BW_SPRITES.has(customSpriteSpeciesId)) || preferSuppliedShinyAnimation)) graphicsGen = 5;
 		// Prefer selected native BW animations where their silhouettes fit the battle scene better.
 		if (species.id === 'heracross' || species.id === 'hydreigon' || species.id === 'milotic' || species.id === 'miloticmega' || species.id === 'miloticaevian' || species.id === 'gastrodonaevian' || species.id === 'gastrodoneastaevian' || species.id === 'hypnopulse' || species.id === 'pidgeot' || species.id === 'staraptor' || species.id === 'pinsirmega' || species.id === 'frosmoth' || species.id === 'runerigus' || species.id === 'manectric' || species.id === 'manectricmega' || species.id === 'basculegion' || species.id === 'basculegionf' || species.id === 'cinderacegmax' || species.id.startsWith('furfrou') ||
 			(!isFront && (species.id === 'lucario' || species.id === 'lucariomega'))) graphicsGen = 5;
@@ -17651,10 +17721,10 @@ const Dex = new class implements ModdedDex {
 			customStaticBattleSpriteid = toID(`${speciesid}f`);
 		}
 		const allowCustomAnimation = CUSTOM_ANIMATED_BW_SPRITES.has(customStaticBattleSpriteid) ||
-			CUSTOM_ANIMATED_BW_SPRITES.has(speciesid);
+			CUSTOM_ANIMATED_BW_SPRITES.has(speciesid) || preferSuppliedShinyAnimation;
 		const staticShinySpriteName = options.gender === 'F' && customStaticBattleSpriteid !== speciesid ?
 			`${name}-f` : name;
-		const forceStaticShiny = options.shiny && (
+		const forceStaticShiny = options.shiny && !preferSuppliedShinyAnimation && (
 			CUSTOM_STATIC_SHINY_BW_SPRITES.has(customStaticBattleSpriteid) ||
 			CUSTOM_STATIC_SHINY_BW_SPRITES.has(speciesid) ||
 			hasSuppliedCustomShinySprite(customStaticBattleSpriteid, staticShinySpriteName, isFront) ||
