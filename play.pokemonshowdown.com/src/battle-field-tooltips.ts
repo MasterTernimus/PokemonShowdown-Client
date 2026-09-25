@@ -190,7 +190,11 @@ const BattleFieldTooltips = {
 		if (preview.min !== preview.max) {
 			const index = notes.findIndex(n => n.startsWith('power ×'));
 			if (index >= 0) notes.splice(index, 1);
-			notes.unshift(`power ×${Number(preview.min.toFixed(3))}–${Number(preview.max.toFixed(3))} (depends on field state not sent to the client)`);
+			if (preview.field.id === 'watersurfaceterrain' && move.id === 'sludgewave') {
+				notes.unshift(`power ×${Number(preview.min.toFixed(3))} before Sludge Wave primes the water; ×${Number(preview.max.toFixed(3))} afterward. The second Sludge Wave turns the field into Murkwater Surface`);
+			} else {
+				notes.unshift(`power ×${Number(preview.min.toFixed(3))}–${Number(preview.max.toFixed(3))}, depending on field conditions`);
+			}
 		}
 		if (preview.field.id === 'rainbowterrain' && move.type === 'Normal' && move.category === 'Special') {
 			const index = notes.findIndex(n => n.startsWith('dual typing:'));

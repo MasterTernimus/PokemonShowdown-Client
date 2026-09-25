@@ -687,6 +687,9 @@ export class Side {
 		case 'auroraveil':
 			this.sideConditions[condition] = [effect.name, 1, 5, 8];
 			break;
+		case 'atlantiswall':
+			this.sideConditions[condition] = [effect.name, 1, persist ? 8 : 5, 0];
+			break;
 		case 'arenitewall':
 			this.sideConditions[condition] = [effect.name, 1, 5, persist ? 8 : 0];
 			break;
@@ -1407,7 +1410,7 @@ export class Battle {
 	}
 	swapSideConditions() {
 		const sideConditions = [
-			'mist', 'lightscreen', 'reflect', 'spikes', 'safeguard', 'tailwind', 'toxicspikes', 'stealthrock', 'waterpledge', 'firepledge', 'grasspledge', 'stickyweb', 'auroraveil', 'gmaxsteelsurge', 'gmaxcannonade', 'gmaxvinelash', 'gmaxwildfire',
+			'mist', 'lightscreen', 'reflect', 'spikes', 'safeguard', 'tailwind', 'toxicspikes', 'stealthrock', 'waterpledge', 'firepledge', 'grasspledge', 'stickyweb', 'auroraveil', 'atlantiswall', 'gmaxsteelsurge', 'gmaxcannonade', 'gmaxvinelash', 'gmaxwildfire',
 		];
 		if (this.gameType === 'freeforall') {
 			// TODO: Add FFA support
@@ -2416,6 +2419,13 @@ export class Battle {
 		}
 		case 'detailschange': {
 			let poke = this.getPokemon(args[1])!;
+			if (kwArgs.cosmetic) {
+				poke.speciesForme = args[2].split(',')[0];
+				poke.details = args[2];
+				poke.searchid = args[1].substr(0, 2) + args[1].substr(3) + '|' + args[2];
+				this.scene.animTransform(poke, false, true);
+				break;
+			}
 			poke.removeVolatile('formechange' as ID);
 			poke.removeVolatile('typeadd' as ID);
 			poke.removeVolatile('typechange' as ID);
@@ -2608,15 +2618,12 @@ export class Battle {
 				this.scene.resultAnim(poke, 'Aqua Ring', 'good');
 				break;
 			case 'stockpile1':
-				this.scene.resultAnim(poke, 'Stockpile', 'good');
-				break;
 			case 'stockpile2':
-				poke.removeVolatile('stockpile1' as ID);
-				this.scene.resultAnim(poke, 'Stockpile&times;2', 'good');
-				break;
 			case 'stockpile3':
-				poke.removeVolatile('stockpile2' as ID);
-				this.scene.resultAnim(poke, 'Stockpile&times;3', 'good');
+				for (const layer of ['stockpile1', 'stockpile2', 'stockpile3']) {
+					if (layer !== effect.id) poke.removeVolatile(layer as ID);
+				}
+				this.scene.resultAnim(poke, effect.id === 'stockpile1' ? 'Stockpile' : `Stockpile&times;${effect.id.slice(-1)}`, 'good');
 				break;
 			case 'perish0':
 				poke.removeVolatile('perish1' as ID);
@@ -3004,6 +3011,7 @@ export class Battle {
 			switch (effect.id) {
 			case 'tailwind':
 			case 'auroraveil':
+			case 'atlantiswall':
 			case 'arenitewall':
 			case 'reflect':
 			case 'lightscreen':

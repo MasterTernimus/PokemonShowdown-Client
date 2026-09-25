@@ -11,6 +11,7 @@
 class ModifiableValue {
 	value = 0;
 	maxValue = 0;
+	rangeSeparator = ' to ';
 	comment: string[];
 	battle: Battle;
 	pokemon: Pokemon;
@@ -34,6 +35,7 @@ class ModifiableValue {
 	reset(value = 0, isAccuracy?: boolean) {
 		this.value = value;
 		this.maxValue = 0;
+		this.rangeSeparator = ' to ';
 		this.isAccuracy = !!isAccuracy;
 		this.comment = [];
 	}
@@ -131,7 +133,7 @@ class ModifiableValue {
 			valueString = this.value ? `${this.round(this.value)}` : ``;
 		}
 		if (this.maxValue) {
-			valueString += ` to ${this.round(this.maxValue)}` + (this.isAccuracy ? '%' : '');
+			valueString += `${this.rangeSeparator}${this.round(this.maxValue)}` + (this.isAccuracy ? '%' : '');
 		}
 		return valueString + this.comment.join('');
 	}
@@ -576,6 +578,8 @@ class BattleTooltips {
 		let text = '';
 
 		let zEffect = '';
+		const baseMove = move;
+		let zMoveBasePower = 0;
 		let foeActive = pokemon.side.foe.active;
 		if (this.battle.gameType === 'freeforall') {
 			foeActive = [...foeActive, ...pokemon.side.active].filter(active => active !== pokemon);
@@ -593,6 +597,7 @@ class BattleTooltips {
 			const zMoveFrom = item.zMoveFrom && (Array.isArray(item.zMoveFrom) ? item.zMoveFrom : [item.zMoveFrom]);
 			if (zMoveFrom?.includes(move.name)) {
 				move = gmaxMove?.isZ ? gmaxMove : this.battle.dex.moves.get(item.zMove as string);
+				zMoveBasePower = move.basePower;
 			} else if (move.category === 'Status') {
 				move = new Move(move.id, "", {
 					...move,
@@ -602,7 +607,8 @@ class BattleTooltips {
 			} else {
 				let moveName = gmaxMove?.isZ ? gmaxMove.name : BattleTooltips.zMoveTable[item.zMoveType as TypeName];
 				let zMove = gmaxMove?.isZ ? gmaxMove : this.battle.dex.moves.get(moveName);
-				let movePower = BattleTooltips.getZMoveBasePower(move);
+				let movePower = gmaxMove?.isZ && gmaxMove.basePower > 1 ?
+					gmaxMove.basePower : BattleTooltips.getZMoveBasePower(move);
 				// the different Hidden Power types don't have a Z power set, fall back on base move
 				if (!movePower && move.id.startsWith('hiddenpower')) {
 					movePower = this.battle.dex.moves.get('hiddenpower').zMove?.basePower || 0;
@@ -631,6 +637,7 @@ class BattleTooltips {
 					category: move.category,
 					basePower: movePower,
 				});
+				zMoveBasePower = move.basePower;
 				categoryDiff = false;
 			}
 		} else if (isZOrMax === 'maxmove') {
@@ -660,6 +667,10 @@ class BattleTooltips {
 
 		text += Dex.getTypeIcon(moveType);
 		text += ` ${Dex.getCategoryIcon(category)}</h2>`;
+		if (isZOrMax === 'zmove') {
+			text += '<p>Powered-up Z-Move from ' + baseMove.name + '.</p>';
+			if (zMoveBasePower) text += '<p>Z-Move base power: ' + zMoveBasePower + '</p>';
+		}
 		const fieldNotes = (window as any).BattleFieldTooltips?.activeNotes(this.battle, move, pokemon, serverPokemon, foeActive[0]);
 		if (fieldNotes) text += '<p class="tooltip-section">' + BattleLog.escapeHTML(fieldNotes) + '</p>';
 		if (gardenSecretPower) text += `<p>Secret Power becomes ${move.name} in Flower Garden Stage ${gardenStage}.</p>`;
@@ -684,7 +695,8 @@ class BattleTooltips {
 				basePower = '' + value;
 				if (prevBasePower === null) prevBasePower = basePower;
 				if (prevBasePower !== basePower) difference = true;
-				basePowers.push('Base power vs ' + active.name + ': ' + basePower);
+				basePowers.push((isZOrMax === 'zmove' ? 'Current power' : 'Base power') +
+					' vs ' + active.name + ': ' + basePower);
 			}
 			if (difference) {
 				text += '<p>' + basePowers.join('<br />') + '</p>';
@@ -695,7 +707,7 @@ class BattleTooltips {
 		if (!showingMultipleBasePowers && category !== 'Status') {
 			let activeTarget = foeActive[0] || foeActive[1] || foeActive[2];
 			value = this.getMoveBasePower(move, moveType, value, activeTarget);
-			text += '<p>Base power: ' + value + '</p>';
+			text += '<p>' + (isZOrMax === 'zmove' ? 'Current power' : 'Base power') + ': ' + value + '</p>';
 		}
 
 		let accuracy = this.getMoveAccuracy(move, value);
@@ -1218,10 +1230,11 @@ class BattleTooltips {
 		) {
 			speedModifiers.push(2);
 		}
-		if (this.battle.hasPseudoWeather('Psychic Aura') && Dex.getAbilityEffects(ability).has(toID('telepathy'))) {
+		if ((this.battle.hasPseudoWeather('Psychic Aura') || this.battle.hasPseudoWeather('Psychic Terrain')) &&
+			Dex.getAbilityEffects(ability).has(toID('telepathy'))) {
 			speedModifiers.push(2);
 		}
-		if (this.battle.hasPseudoWeather('Misty Aura')) {
+		if (this.battle.hasPseudoWeather('Misty Aura') || this.battle.hasPseudoWeather('Misty Terrain')) {
 			const types = clientPokemon ? clientPokemon.getTypes(serverPokemon)[0] : this.battle.dex.species.get(serverPokemon.speciesForme).types;
 			if (types.includes('Fairy')) stats.spd = Math.floor(stats.spd * 1.5);
 		}
@@ -1985,6 +1998,9 @@ class BattleTooltips {
 		if (!value.value) return value;
 
 		// Other ability boosts
+		if (['dragondarts', 'gmaxspiritvolley'].includes(move.id)) {
+			value.abilityModify(1.2, 'Phantom Barrage');
+		}
 		if (pokemon.status === 'brn' && move.category === 'Special') {
 			value.abilityModify(1.5, "Flare Boost");
 		}
@@ -2145,8 +2161,15 @@ class BattleTooltips {
 		if (fieldPower && move.category !== 'Status') {
 			const reason = fieldPower.field.name;
 			if (fieldPower.min !== fieldPower.max) {
-				value.setRange(value.value * fieldPower.min, (value.maxValue || value.value) * fieldPower.max,
-					reason + ' (range: field state is not sent to the client)');
+				if (fieldPower.field.id === 'watersurfaceterrain' && move.id === 'sludgewave') {
+					value.setRange(Math.floor(value.value * fieldPower.min),
+						Math.floor((value.maxValue || value.value) * fieldPower.max),
+						reason + '; first / second Sludge Wave');
+					value.rangeSeparator = ' or ';
+				} else {
+					value.setRange(value.value * fieldPower.min, (value.maxValue || value.value) * fieldPower.max,
+						reason + '; varies with field conditions');
+				}
 			} else if (fieldPower.min === 0) {
 				value.set(0, 'Fails in ' + reason);
 			} else if (fieldPower.min !== 1) {

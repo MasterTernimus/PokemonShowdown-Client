@@ -1667,7 +1667,7 @@ onTryMove(pokemon, target, move) {
 uncertain: false},
 {id: "underwaterterrain",
 name: "Underwater Terrain",
-notes: ["Rejects Auras and weather. Non-Water Pokémon generally have half Speed, with ability exceptions. Water attacks are neutral against Water typing. Water-weak Pokémon take effectiveness-scaled residual damage unless protected. Tar Shot washes off; entry hazards are swept away. Gravity leads to Midnight Zone."],
+notes: ["Rejects Auras and weather. Non-Water Pokémon generally have half Speed, with ability exceptions. Water attacks are neutral against Water typing. Water-weak Pokémon take effectiveness-scaled residual damage unless protected. Tar Shot washes off; entry hazards are swept away. Gravity, a landed Phantom Force, or certain Dark moves lead to Midnight Zone."],
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
     const change = ["bounce", "dive", "skydrop", "fly", "aciddownpour"];
