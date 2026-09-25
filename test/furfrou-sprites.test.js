@@ -61,3 +61,23 @@ describe('Reviewed sprite asset routes', () => {
   }
  });
 });
+describe('Available BW animations', () => {
+ it('uses sharp animated BW sprites for normal Aggron', () => {
+  for (const front of [true, false]) {
+   const data = Dex.getSpriteData('Aggron', front, {gen: 9});
+   assert(data.url.includes('/sprites/gen5ani' + (front ? '' : '-back') + '/aggron.gif'), data.url);
+   assert.equal(data.pixelated, true);
+   assert(fs.statSync(local(data.url)).size > 0);
+  }
+ });
+ it('animates both normal and shiny Gardevoir in battle and preview', () => {
+  for (const species of ['Gardevoir', 'Gardevoir-Mega']) {
+   for (const shiny of [false, true]) for (const front of [true, false]) for (const teamPreview of [false, true]) {
+    const data = Dex.getSpriteData(species, front, {gen: 9, shiny, teamPreview});
+    const file = species === 'Gardevoir' ? 'gardevoir' : 'gardevoir-mega';
+    assert(data.url.includes('/sprites/gen5ani' + (front ? '' : '-back') + (shiny ? '-shiny' : '') + '/' + file + '.gif'), data.url);
+    assert(fs.statSync(local(data.url)).size > 0);
+   }
+  }
+ });
+});
