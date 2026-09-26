@@ -177,6 +177,22 @@ const BattleFieldTooltips = {
 		if (move.category !== 'Status' && move.ignoreImmunity?.Normal && !original.ignoreImmunity?.Normal) notes.push('Normal attacks bypass type immunity');
 		return notes;
 	},
+	transitionBonusNote(fieldId: string, move: Move) {
+		if (move.category === 'Status') return '';
+		const destinations: {[fieldId: string]: {[moveId: string]: string}} = {
+			watersurfaceterrain: {
+				dive: 'Underwater', gravapple: 'Underwater',
+				aciddownpour: 'Murkwater Surface',
+				blizzard: 'Icy Field', subzeroslammer: 'Icy Field', glaciate: 'Icy Field',
+			},
+			underwaterterrain: {
+				bounce: 'Water Surface', dive: 'Water Surface', skydrop: 'Water Surface', fly: 'Water Surface',
+				aciddownpour: 'Murkwater Surface',
+			},
+		};
+		const destination = destinations[fieldId]?.[move.id];
+		return destination ? `field-change power bonus ×1.3 is included above; after use, the field changes to ${destination}` : '';
+	},
 	activeNotes(battle: Battle, move: Move, pokemon: Pokemon, server: ServerPokemon, target?: Pokemon | null) {
 		const preview = this.preview(battle, move, pokemon, server, target);
 		if (!preview) return '';
@@ -195,6 +211,10 @@ const BattleFieldTooltips = {
 			} else {
 				notes.unshift(`power ×${Number(preview.min.toFixed(3))}–${Number(preview.max.toFixed(3))}, depending on field conditions`);
 			}
+		}
+		if (!preview.result.failed) {
+			const transitionNote = this.transitionBonusNote(preview.field.id, move);
+			if (transitionNote) notes.push(transitionNote);
 		}
 		if (preview.field.id === 'rainbowterrain' && move.type === 'Normal' && move.category === 'Special') {
 			const index = notes.findIndex(n => n.startsWith('dual typing:'));

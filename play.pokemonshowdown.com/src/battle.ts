@@ -1410,11 +1410,27 @@ export class Battle {
 	}
 	swapSideConditions() {
 		const sideConditions = [
-			'mist', 'lightscreen', 'reflect', 'spikes', 'safeguard', 'tailwind', 'toxicspikes', 'stealthrock', 'waterpledge', 'firepledge', 'grasspledge', 'stickyweb', 'auroraveil', 'atlantiswall', 'gmaxsteelsurge', 'gmaxcannonade', 'gmaxvinelash', 'gmaxwildfire',
+			'mist', 'lightscreen', 'reflect', 'spikes', 'safeguard', 'tailwind', 'toxicspikes', 'stealthrock', 'waterpledge', 'firepledge', 'grasspledge', 'stickyweb', 'auroraveil', 'arenitewall', 'atlantiswall', 'luckychant', 'gmaxsteelsurge', 'gmaxcannonade', 'gmaxvinelash', 'gmaxwildfire', 'gmaxvolcalith',
 		];
 		if (this.gameType === 'freeforall') {
-			// TODO: Add FFA support
-			return;
+			// Match the server's clockwise rotation: p1 -> p4 -> p2 -> p3 -> p1.
+			const sides = [this.sides[0], this.sides[3]!, this.sides[1], this.sides[2]!];
+			const transferred = sides.map(side => {
+				const conditions: typeof side.sideConditions = {};
+				for (const id of sideConditions) {
+					if (!side.sideConditions[id]) continue;
+					conditions[id] = side.sideConditions[id];
+					side.removeSideCondition(id);
+				}
+				return conditions;
+			});
+			for (let i = 0; i < sides.length; i++) {
+				const target = sides[(i + 1) % sides.length];
+				for (const id in transferred[i]) {
+					target.sideConditions[id] = transferred[i][id];
+					this.scene.addSideCondition(target.n, id as ID);
+				}
+			}
 		} else {
 			let side1 = this.sides[0];
 			let side2 = this.sides[1];
