@@ -3,6 +3,7 @@
 const assert = require('assert').strict;
 
 global.window = global;
+global.BattleMovedex = require('../play.pokemonshowdown.com/data/moves.js').BattleMovedex;
 global.BattlePokedex = require('../play.pokemonshowdown.com/data/pokedex.js').BattlePokedex;
 global.BattleAbilities = require('../play.pokemonshowdown.com/data/abilities.js').BattleAbilities;
 global.BattlePokemonSprites = {};
@@ -54,5 +55,26 @@ describe('Live field status', () => {
 		status = BattleFieldTooltips.liveStatus(battle);
 		assert.equal(status.field.name, 'Cold Eclipse Terrain');
 		assert.equal(status.field.turns, '5-8 turns');
+	});
+
+	it('explains the Dive field-change power bonus only for the active field', () => {
+		battle = new Battle({debug: true});
+		battle.gen = 9;
+		const pokemon = {
+			name: 'Mew', speciesForme: 'Mew', boosts: {}, volatiles: {}, status: '',
+			getTypes: () => [['Psychic']], effectiveAbility: () => 'No Ability', isGrounded: () => true,
+			side: {foe: {active: []}},
+		};
+		const server = {ability: 'No Ability', item: '', status: '', speciesForme: 'Mew'};
+		const dive = Dex.moves.get('dive');
+		battle.runMinor(['-fieldstart', 'Water Surface Terrain'], {});
+		let note = BattleFieldTooltips.activeNotes(battle, dive, pokemon, server);
+		assert.match(note, /power ×3\.51/);
+		assert.match(note, /field-change power bonus ×1\.3.*Underwater/);
+		battle.runMinor(['-fieldstart', 'Underwater Terrain'], {});
+		note = BattleFieldTooltips.activeNotes(battle, dive, pokemon, server);
+		assert.match(note, /power ×1\.95/);
+		assert.match(note, /field-change power bonus ×1\.3.*Water Surface/);
+		assert.equal(BattleFieldTooltips.transitionBonusNote('electricterrain', dive), '');
 	});
 });
