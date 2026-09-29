@@ -450,6 +450,67 @@
 			}
 
 			switch (toID(cmd)) {
+			case 'copylog':
+				if (this.checkBroadcast(cmd, text)) return false;
+				if (!this.battle || !this.battle.stepQueue || !this.battle.stepQueue.length) {
+					this.add('|error|/copylog works in a battle with a log.');
+					return false;
+				}
+				var rawBattleLog = this.battle.stepQueue.join('\n');
+				var fullBattleLog = rawBattleLog;
+				if (toID(target) !== 'raw' && this.battle.scene && this.battle.scene.log &&
+					this.battle.scene.log.battleParser) {
+					try {
+						var parser = new BattleTextParser(this.battle.scene.log.battleParser.perspective);
+						var readableLog = '';
+						for (var logIndex = 0; logIndex < this.battle.stepQueue.length; logIndex++) {
+							var logLine = this.battle.stepQueue[logIndex];
+							var parsedLine = BattleTextParser.parseBattleLine(logLine);
+							var args = parsedLine.args;
+							if (args[0] === 'chat' || args[0] === 'c') {
+								readableLog += args[1] + ': ' + args[2] + '\n';
+							} else if (args[0] === 'c:') {
+								readableLog += args[2] + ': ' + args[3] + '\n';
+							} else if (args[0] === 'chatmsg' || args[0] === 'inactive') {
+								readableLog += args[1] + '\n';
+							} else if (args[0] === 'join' || args[0] === 'j') {
+								readableLog += args[1] + ' joined.\n';
+							} else if (args[0] === 'leave' || args[0] === 'l') {
+								readableLog += args[1] + ' left.\n';
+							} else {
+								readableLog += parser.parseArgs(args, parsedLine.kwArgs) || '';
+							}
+						}
+						fullBattleLog = readableLog.trim() || rawBattleLog;
+					} catch (error) {
+						fullBattleLog = rawBattleLog;
+					}
+				}
+				var copyRoom = this;
+				var copyBattleLogFallback = function () {
+					var textarea = document.createElement('textarea');
+					textarea.value = fullBattleLog;
+					textarea.style.position = 'fixed';
+					textarea.style.opacity = '0';
+					document.body.appendChild(textarea);
+					textarea.select();
+					var copied = false;
+					try {
+						copied = document.execCommand('copy');
+					} catch (error) {}
+					document.body.removeChild(textarea);
+					copyRoom.add(copied ? 'Copied the full battle log to your clipboard.' :
+						'|error|Could not copy the battle log. Check clipboard permission and try again.');
+				};
+				if (navigator.clipboard && navigator.clipboard.writeText) {
+					navigator.clipboard.writeText(fullBattleLog).then(function () {
+						copyRoom.add('Copied the full battle log to your clipboard.');
+					}).catch(copyBattleLogFallback);
+				} else {
+					copyBattleLogFallback();
+				}
+				return false;
+
 			case 'chal':
 			case 'chall':
 			case 'challenge':
