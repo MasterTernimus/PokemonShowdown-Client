@@ -21,3 +21,6 @@ caches/PokemonShowdown-Reborn/
 !MENU_ICON_COMPARISON.html
 
 !test/furfrou-sprites.test.js
+!test/infernape-profile.test.js
+!test/court-change-participants.test.js
+!test/server-data-sync.test.js

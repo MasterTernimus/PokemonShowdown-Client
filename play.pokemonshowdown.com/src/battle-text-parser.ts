@@ -946,6 +946,9 @@ class BattleTextParser {
 
 		case '-heal': {
 			let [, pokemon] = args;
+			if (BattleTextParser.effectId(kwArgs.from) === 'megaenergy') {
+				return `${this.pokemon(pokemon)} recovered HP from Mega energy!\n`;
+			}
 			let template = this.template('heal', kwArgs.from, 'NODEFAULT');
 			const line1 = this.maybeAbility(kwArgs.from, kwArgs.of || pokemon);
 			if (template) {

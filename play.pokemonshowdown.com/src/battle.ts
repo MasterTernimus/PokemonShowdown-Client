@@ -1413,8 +1413,11 @@ export class Battle {
 			'mist', 'lightscreen', 'reflect', 'spikes', 'safeguard', 'tailwind', 'toxicspikes', 'stealthrock', 'waterpledge', 'firepledge', 'grasspledge', 'stickyweb', 'auroraveil', 'arenitewall', 'atlantiswall', 'luckychant', 'gmaxsteelsurge', 'gmaxcannonade', 'gmaxvinelash', 'gmaxwildfire', 'gmaxvolcalith',
 		];
 		if (this.gameType === 'freeforall') {
-			// Match the server's clockwise rotation: p1 -> p4 -> p2 -> p3 -> p1.
-			const sides = [this.sides[0], this.sides[3]!, this.sides[1], this.sides[2]!];
+			// The client allocates p4 even in three-player battles. Player names distinguish actual sides.
+			// Keep eliminated players in the rotation and support old logs without player announcements.
+			const hasPlayers = this.sides.some(side => side.name);
+			const sides = [this.sides[0], this.sides[3]!, this.sides[1], this.sides[2]!]
+				.filter(side => !hasPlayers || side.name);
 			const transferred = sides.map(side => {
 				const conditions: typeof side.sideConditions = {};
 				for (const id of sideConditions) {
