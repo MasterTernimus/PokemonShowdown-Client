@@ -39,6 +39,18 @@ declare const BattleSearchIndex: [ID, SearchType, number?, number?][];
 declare const BattleSearchIndexOffset: any;
 declare const BattleTeambuilderTable: any;
 
+// Fan-made standalone species and movie props are kept for battle/replay data,
+// but are not selectable in the team builder (including exact-name searches).
+const HIDDEN_FAKE_SPECIES = new Set<string>([
+	'raidboss', 'missingno', 'chuggon', 'draggalong', 'chuggalong', 'shox',
+	'ramnarok', 'ramnarokradiant',
+]);
+
+function isHiddenFakeSpecies(id: string) {
+	const speciesId = toID(id);
+	return HIDDEN_FAKE_SPECIES.has(speciesId) || speciesId.startsWith('pokestar');
+}
+
 const HIDDEN_TEAMBUILDER_SPECIES = new Set<string>([
 	'pikachualola', 'pikachucosplay', 'pikachuhoenn', 'pikachukalos', 'pikachuoriginal',
 	'pikachupartner', 'pikachusinnoh', 'pikachuunova', 'pikachuworld',
@@ -152,7 +164,7 @@ function isCAPSpecies(id: string) {
 
 function isHiddenTeamBuilderSpecies(id: string, includeSawsbuckBase = false) {
 	const speciesId = toID(id);
-	if (isCAPSpecies(speciesId)) return true;
+	if (isCAPSpecies(speciesId) || isHiddenFakeSpecies(speciesId)) return true;
 	if (isBattleOnlyVisualSpecies(speciesId)) return true;
 	if (HIDDEN_TEAMBUILDER_SPECIES.has(speciesId)) return true;
 	if (isVariantSelectorOnlySpecies(Dex.species.get(speciesId))) return true;
@@ -165,7 +177,7 @@ function isHiddenTeamBuilderSpecies(id: string, includeSawsbuckBase = false) {
 
 function isExcludedFromCustomSearch(id: string) {
 	const speciesId = toID(id);
-	return speciesId.startsWith('pokestar') || speciesId.startsWith('deerling') ||
+	return isHiddenFakeSpecies(speciesId) || speciesId.startsWith('deerling') ||
 		speciesId.startsWith('sawsbuck') || ZA_MEGA_SPECIES.has(speciesId as ID);
 }
 
@@ -612,7 +624,7 @@ class DexSearch {
 			if (queryAlias === id && query !== id) continue;
 			if (
 				type === 'pokemon' &&
-				(isCAPSpecies(id) || isBattleOnlyVisualSpecies(id) ||
+				(isCAPSpecies(id) || isHiddenFakeSpecies(id) || isBattleOnlyVisualSpecies(id) ||
 					isVariantSelectorOnlySpecies(this.dex.species.get(id)) ||
 					(isHiddenTeamBuilderSpecies(id) && id !== query &&
 					!(query === 'furfrou' && id.startsWith('furfrou'))))
@@ -678,17 +690,12 @@ class DexSearch {
 		}
 
 		// Custom abilities may be patched into BattleAbilities after the static search
-		// index was generated. Match their actual names, not component references.
+		// index was generated. Match their names and explicitly declared ability components.
 		if (!searchType || searchType === 'pokemon' || searchType === 'ability') {
-			const indexedAbilities = new Set<string>();
-			for (const entry of BattleSearchIndex) {
-				if (entry[1] === 'ability') indexedAbilities.add(entry[0]);
-			}
 			const abilityRows: ['ability', ID, number?, number?][] = [];
 			const abilitySearchQuery = customSpeciesQuery;
 			if (abilitySearchQuery) {
 				for (const id in (window.BattleAbilities || {})) {
-					if (indexedAbilities.has(id as ID)) continue;
 					const ability = this.dex.abilities.get(id as ID);
 					if (!ability.name) continue;
 					const nameId = toID(ability.name);
@@ -1233,9 +1240,6 @@ class BattlePokemonSearch extends BattleTypedSearch<'pokemon'> {
 				break;
 			case 'sprigatito':
 				results.push(['header', "Generation 9"]);
-				break;
-			case 'missingno':
-				results.push(['header', "Glitch"]);
 				break;
 			}
 			const species = this.dex.species.get(id);

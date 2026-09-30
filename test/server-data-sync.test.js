@@ -28,7 +28,7 @@ describe('Server data synchronization', () => {
 			it('resolves assigned composite abilities and their component effects', () => {
 				for (const [species, ability, components] of [
 					['Reuniclus-Mega', 'Adaptive Power', ['hugepower', 'magicguard', 'regenerator']],
-					['Slowbro-Mega', 'Shell Trap', ['shellarmor', 'regenerator']],
+					['Slowbro-Mega', 'Slow Clamp', ['shellarmor', 'owntempo', 'analytic', 'sweetveil']],
 					['Muk-Pulse', 'Pulse Waste', ['protean', 'poisontouch', 'regenerator']],
 				]) {
 					assert.equal(dex.species.get(species).abilities[0], ability);
@@ -60,7 +60,7 @@ describe('Server data synchronization', () => {
 				assert.match(dex.abilities.get('eclipsevision').desc, /first move slot/);
 				assert.match(dex.abilities.get('schooling').desc, /Mold Breaker/);
 				assert.doesNotMatch(dex.abilities.get('schooling').desc, /Filter/);
-				assert.match(dex.abilities.get('venombastion').desc, /Bug-type moves have 1\.5x power/);
+				assert.match(dex.abilities.get('venombastion').desc, /Stamina.*poisoned foe.*higher offensive stat/);
 				assert.match(dex.moves.get('skullbash').desc, /0\.7x damage/);
 				assert.match(dex.moves.get('skullbash').desc, /1\/8/);
 				assert.match(dex.moves.get('cut').desc, /Steel-type.*Defense boosts/);

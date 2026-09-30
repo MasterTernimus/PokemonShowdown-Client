@@ -24,3 +24,4 @@ caches/PokemonShowdown-Reborn/
 !test/infernape-profile.test.js
 !test/court-change-participants.test.js
 !test/server-data-sync.test.js
+!test/field-display.test.js

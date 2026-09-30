@@ -1648,7 +1648,7 @@ class BattleTooltips {
 				forMaxMove ?
 				this.getMaxMoveFromType(moveType, forMaxMove !== true && forMaxMove || undefined) : move
 			).flags['sound'];
-			if (isSound && value.abilityModify(0, 'Liquid Voice')) {
+			if (isSound && (value.abilityModify(0, 'Liquid Voice') || value.abilityModify(0, 'Tidal Voice'))) {
 				moveType = 'Water';
 			}
 		}
@@ -1657,6 +1657,9 @@ class BattleTooltips {
 			move.id === 'terablast' && pokemon.terastallized) {
 			const stats = this.calculateModifiedStats(pokemon, serverPokemon, true);
 			if (stats.atk > stats.spa) category = 'Physical';
+		}
+		if (!forMaxMove && category !== 'Status' && move.flags['sound'] && value.abilityModify(0, 'Primal Rhythm')) {
+			category = 'Physical';
 		}
 		const fieldPreview = (window as any).BattleFieldTooltips?.preview(this.battle, {...move, type: moveType, category}, pokemon, serverPokemon);
 		if (fieldPreview) {
@@ -2030,6 +2033,7 @@ class BattleTooltips {
 		}
 		if (move.flags['sound']) {
 			value.abilityModify(1.3, "Punk Rock");
+			value.abilityModify(1.3, 'Tidal Voice');
 		}
 		if (move.flags['slicing']) {
 			value.abilityModify(1.5, "Sharpness");

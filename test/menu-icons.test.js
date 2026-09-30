@@ -15,9 +15,13 @@ if (process.env.MENU_ICON_BUNDLE) {
 }
 const before = require('../menu-icons-before.json');
 const sizes = new Map();
+const retired = new Set(['nidoqueenreborn', 'nidokingreborn', 'miloticreborn', 'torterrareborn', 'infernapereborn', 'empoleonreborn']);
 
 describe('Team strip menu icons', () => {
-	for (const row of before.map(row => row.id === 'drapionaevian' ?
+	for (const id of retired) it(`keeps retired profile ${id} out of the roster`, () => {
+		assert.equal(Dex.species.get(id).exists, false);
+	});
+	for (const row of before.filter(row => !retired.has(toID(row.name))).map(row => row.id === 'drapionaevian' ?
 		{...row, id: 'drapionrejuv', name: 'Drapion-Rejuv'} : row)) {
 		it(`resolves visible local assets for ${row.name} across gender, shiny, and facing variants`, () => {
 			for (const gender of ['M', 'F']) for (const shiny of [false, true]) for (const left of [false, true]) {
