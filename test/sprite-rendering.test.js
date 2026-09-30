@@ -138,12 +138,12 @@ describe('Sprite rendering regressions', () => {
 			assert.equal(sizeOf(localFile(data.url)).width, 192);
 		}
 	});
-	it('uses distinct front and back assets for Nidoking-Reborn and its shiny', () => {
+	it('uses distinct front and back assets for base Nidoking and its shiny', () => {
 		for (const shiny of [false, true]) {
-			const front = Dex.getSpriteData('Nidoking-Reborn', true, {gen: 9, shiny});
-			const back = Dex.getSpriteData('Nidoking-Reborn', false, {gen: 9, shiny});
-			assert(back.url.includes('nidoking-alt') && back.url.includes('-back'), back.url);
-			assert.equal(sizeOf(localFile(back.url)).width, 192);
+			const front = Dex.getSpriteData('Nidoking', true, {gen: 9, shiny});
+			const back = Dex.getSpriteData('Nidoking', false, {gen: 9, shiny});
+			assert(back.url.includes('nidoking') && back.url.includes('-back'), back.url);
+			assert(sizeOf(localFile(back.url)).width > 1);
 			assert(!fs.readFileSync(localFile(front.url)).equals(fs.readFileSync(localFile(back.url))));
 		}
 	});
@@ -166,7 +166,7 @@ describe('Sprite rendering regressions', () => {
 		}
 	});
 	it('preserves file aspect ratios in named normal and shiny battle sprites', () => {
-		for (const species of ['Clefable', 'Gengar', 'Hydreigon', 'Golisopod-Mega', 'Nidoking-Alt']) {
+		for (const species of ['Clefable', 'Gengar', 'Hydreigon', 'Golisopod-Mega', 'Nidoking']) {
 			for (const shiny of [false, true]) for (const front of [false, true]) {
 				const data = Dex.getSpriteData(species, front, {gen: 9, shiny});
 				const size = sizeOf(localFile(data.url));

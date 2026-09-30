@@ -1181,16 +1181,24 @@ export class Battle {
 		this.subscription = listener;
 	}
 
+	getTerrainId(weather: string): ID {
+		const id = toID(weather);
+		// Icy Field is the server's display name for Icy Terrain.
+		if (id === 'icyfield') return 'icyterrain' as ID;
+		return id.endsWith('terrain') || /^flowergarden[1-5]$/.test(id) ? id : '' as ID;
+	}
 	removePseudoWeather(weather: string) {
-		for (let i = 0; i < this.pseudoWeather.length; i++) {
-			if (this.pseudoWeather[i][0] === weather) {
-				this.pseudoWeather.splice(i, 1);
-				this.scene.updateWeather();
-				return;
-			}
-		}
+		const id = this.getTerrainId(weather) || toID(weather);
+		this.pseudoWeather = this.pseudoWeather.filter(state =>
+			(this.getTerrainId(state[0]) || toID(state[0])) !== id
+		);
+		this.scene.updateWeather();
 	}
 	addPseudoWeather(weather: string, minTimeLeft: number, timeLeft: number) {
+		const terrain = this.getTerrainId(weather);
+		this.pseudoWeather = this.pseudoWeather.filter(state =>
+			!(terrain && this.getTerrainId(state[0])) && toID(state[0]) !== toID(weather)
+		);
 		this.pseudoWeather.push([weather, minTimeLeft, timeLeft]);
 		this.scene.updateWeather();
 	}
@@ -3026,6 +3034,11 @@ export class Battle {
 			let side = this.getSide(args[1]);
 			let effect = Dex.getEffect(args[2]);
 			side.addSideCondition(effect, !!kwArgs.persistent);
+			const turns = Number(kwArgs.turns);
+			if (kwArgs.turns !== undefined && Number.isInteger(turns) && turns >= 0 && side.sideConditions[effect.id]) {
+				side.sideConditions[effect.id][2] = turns;
+				side.sideConditions[effect.id][3] = turns;
+			}
 
 			switch (effect.id) {
 			case 'tailwind':
@@ -3083,14 +3096,7 @@ export class Battle {
 			let minTimeLeft = 5;
 			let maxTimeLeft = 0;
 			const flowerGarden = /^flowergarden[1-5]$/.test(effect.id);
-			if (effect.id.endsWith('terrain') || flowerGarden) {
-				for (let i = this.pseudoWeather.length - 1; i >= 0; i--) {
-					let pwID = toID(this.pseudoWeather[i][0]);
-					if (pwID.endsWith('terrain') || /^flowergarden[1-5]$/.test(pwID)) {
-						this.pseudoWeather.splice(i, 1);
-						continue;
-					}
-				}
+			if (this.getTerrainId(effect.name)) {
 				if (this.gen > 6) maxTimeLeft = 8;
 			}
 			if (kwArgs.aura) {

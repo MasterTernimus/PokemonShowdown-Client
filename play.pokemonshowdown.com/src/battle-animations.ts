@@ -910,7 +910,7 @@ export class BattleScene implements BattleSceneStub {
 			pWeather[2] = 0;
 		}
 		if (this.battle.gen < 7 && this.battle.hardcoreMode) return buf;
-		if (pWeather[2]) {
+		if (pWeather[2] && pWeather[2] !== pWeather[1]) {
 			return buf + ' <small>(' + pWeather[1] + ' or ' + pWeather[2] + ' turns)</small>';
 		}
 		if (pWeather[1]) {
@@ -988,13 +988,14 @@ export class BattleScene implements BattleSceneStub {
 			weather = '' as ID;
 		}
 		let terrain = '' as ID;
-		let garden = '' as ID;
+		let room = '' as ID;
 		for (const pseudoWeatherData of this.battle.pseudoWeather) {
-			if (/^(electric|grassy|misty|psychic|rainbow)aura$/.test(toID(pseudoWeatherData[0]))) continue;
-			terrain = toID(pseudoWeatherData[0]);
-			if (/^flowergarden[1-5]$/.test(terrain)) garden = terrain;
+			const field = this.battle.getTerrainId(pseudoWeatherData[0]);
+			if (field) terrain = field;
+			const id = toID(pseudoWeatherData[0]);
+			if (!/^(electric|grassy|misty|psychic|rainbow)aura$/.test(id)) room = id;
 		}
-		if (garden) terrain = garden;
+		if (!terrain) terrain = room;
 		if (weather === 'desolateland' || weather === 'primordialsea' || weather === 'deltastream') {
 			isIntense = true;
 		}
@@ -1841,6 +1842,8 @@ export class PokemonSprite extends Sprite {
 		dynamax: ['Dynamaxed', 'good'],
 		trapped: null, // linked volatiles are not implemented yet
 		throatchop: ['Throat Chop', 'bad'],
+		meridianseal: ['Meridian Seal', 'bad'],
+		lunardread: ['Lunar Dread', 'bad'],
 		confusion: ['Confused', 'bad'],
 		healblock: ['Heal Block', 'bad'],
 		yawn: ['Drowsy', 'bad'],

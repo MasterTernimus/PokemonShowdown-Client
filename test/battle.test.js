@@ -281,16 +281,16 @@ describe('Team Builder sprites', () => {
 	it('keeps opponent-facing Rotom sprites readable in battle', () => {
 		const sprite = Dex.getSpriteData('Rotom-Wash', true, {gen: 9});
 		assert.equal(sprite.w, 80);
-		assert.equal(sprite.h, 47);
-		assert(sprite.url.split('?')[0].endsWith('/sprites/ani/rotom-wash.gif'));
+		assert.equal(sprite.h, 69);
+		assert(sprite.url.split('?')[0].endsWith('/sprites/gen5ani/rotom-wash.gif'));
 	});
 
 	it('uses static custom Magnezone shinies without disabling normal animation', () => {
 		const animationData = require('../play.pokemonshowdown.com/data/pokedex-mini.js').BattlePokemonSprites.magnezone;
 		global.BattlePokemonSprites.magnezone = animationData;
 		try {
-			assert(Dex.getSpriteData('Magnezone', true, {gen: 9}).url.endsWith('/sprites/ani/magnezone.gif'));
-			assert(Dex.getSpriteData('Magnezone', false, {gen: 9}).url.endsWith('/sprites/ani-back/magnezone.gif'));
+			assert(Dex.getSpriteData('Magnezone', true, {gen: 9}).url.endsWith('/sprites/gen5ani/magnezone.gif'));
+			assert(Dex.getSpriteData('Magnezone', false, {gen: 9}).url.endsWith('/sprites/gen5ani-back/magnezone.gif'));
 			assert(Dex.getSpriteData('Magnezone', true, {gen: 9, shiny: true}).url.endsWith('/sprites/gen5-shiny/magnezone.png'));
 			assert(Dex.getSpriteData('Magnezone', false, {gen: 9, shiny: true}).url.endsWith('/sprites/gen5-back-shiny/magnezone.png'));
 		} finally {
@@ -353,9 +353,10 @@ describe('Team Builder sprites', () => {
 			for (const front of [true, false]) {
 				for (const shiny of [false, true]) {
 					const sprite = Dex.getSpriteData(species, front, {gen: 9, shiny, noScale: true});
-					const directory = front ? (shiny ? 'gen5-shiny' : 'gen5') : (shiny ? 'gen5-back-shiny' : 'gen5-back');
-					assert(sprite.url.split('?')[0].endsWith(`/sprites/${directory}/${filename}`), sprite.url);
-					const actual = require('image-size')(fs.readFileSync(path.join(__dirname, '../play.pokemonshowdown.com/sprites', directory, filename)));
+					const directory = (species === 'Dusknoir' && !shiny ? 'gen5ani' : 'gen5') + (front ? '' : '-back') + (shiny ? '-shiny' : '');
+					const asset = species === 'Dusknoir' && !shiny ? filename.replace('.png', '.gif') : filename;
+					assert(sprite.url.split('?')[0].endsWith(`/sprites/${directory}/${asset}`), sprite.url);
+					const actual = require('image-size')(fs.readFileSync(path.join(__dirname, '../play.pokemonshowdown.com/sprites', directory, asset)));
 					assert.equal(sprite.w, actual.width);
 					assert.equal(sprite.h, actual.height);
 				}
@@ -431,10 +432,12 @@ describe('Team Builder sprites', () => {
 			for (const front of [true, false]) {
 				for (const shiny of [false, true]) {
 					const sprite = Dex.getSpriteData(species, front, {gen: 9, shiny, noScale: true});
-					const directory = front ? (shiny ? 'gen5-shiny' : 'gen5') : (shiny ? 'gen5-back-shiny' : 'gen5-back');
-					assert(sprite.url.split('?')[0].endsWith(`/sprites/${directory}/${species.toLowerCase().replace('-', '-')}.png`));
-					assert.equal(sprite.w, front ? frontWidth : backWidth);
-					assert.equal(sprite.h, front ? frontHeight : backHeight);
+					const directory = (species === 'Typhlosion' && !shiny ? 'gen5ani' : 'gen5') + (front ? '' : '-back') + (shiny ? '-shiny' : '');
+					const filename = species.toLowerCase() + (species === 'Typhlosion' && !shiny ? '.gif' : '.png');
+					const actual = require('image-size')(path.join(__dirname, '../play.pokemonshowdown.com/sprites', directory, filename));
+					assert(sprite.url.split('?')[0].endsWith(`/sprites/${directory}/${filename}`));
+					assert.equal(sprite.w, actual.width);
+					assert.equal(sprite.h, actual.height);
 				}
 			}
 		}
@@ -515,7 +518,7 @@ describe('Team Builder sprites', () => {
 
 	it('syncs Meowscarada abilities from the server data', () => {
 		assert.deepEqual(Dex.species.get('Meowscarada').abilities, {
-			0: 'Magician', 1: 'Protean', H: 'Illusion',
+			0: 'False Bouquet', 1: 'Protean', H: 'Illusion',
 		});
 	});
 
@@ -640,9 +643,11 @@ describe('Team Builder sprites', () => {
 				for (const shiny of [false, true]) {
 					for (const front of [false, true]) {
 						const sprite = Dex.getSpriteData(species, front, {gen: 9, gender, shiny, noScale: true});
-						const directory = `gen5${front ? '' : '-back'}${shiny ? '-shiny' : ''}`;
-						const filename = gender === 'F' ? data.filename.replace('.png', '-f.png') : data.filename;
-						const dimensions = front ? data.front : data.back;
+						const directory = `${species === 'Venusaur' && !shiny ? 'gen5ani' : 'gen5'}${front ? '' : '-back'}${shiny ? '-shiny' : ''}`;
+						let filename = gender === 'F' ? data.filename.replace('.png', '-f.png') : data.filename;
+						if (species === 'Venusaur' && !shiny) filename = 'venusaur.gif';
+						const actual = require('image-size')(path.join(__dirname, '../play.pokemonshowdown.com/sprites', directory, filename));
+						const dimensions = {w: actual.width, h: actual.height};
 						assert(sprite.url.split('?')[0].endsWith(`/sprites/${directory}/${filename}`), `${species} ${gender || 'M'} should use its supplied sprite`);
 						assert.equal(sprite.w, dimensions.w);
 						assert.equal(sprite.h, dimensions.h);
@@ -796,9 +801,10 @@ describe('Team Builder sprites', () => {
 
 	it('shows the added composite ability effects', () => {
 		assert.match(Dex.abilities.get('Pollen Bloom').desc, /Unaware/);
-		assert.match(Dex.abilities.get('Territorial').desc, /Unnerve/);
-		assert.match(Dex.abilities.get('Lunar Dread').desc, /Unaware/);
-		assert.match(Dex.abilities.get('Atrocity').desc, /Mold Breaker/);
+		assert.match(Dex.abilities.get('Territorial').desc, /next Ground attack.*heal 1\/8/);
+		assert.match(Dex.abilities.get('Lunar Dread').desc, /mark foes for 2 turns/);
+		assert.match(Dex.abilities.get('Atrocity').desc, /Wildfire Core.*Levitate.*Proficient/);
+		assert(!Dex.getAbilityEffects('atrocity').has('moldbreaker'));
 		assert.match(Dex.abilities.get('Ancient Bloom').desc, /Pollen Bloom/);
 		assert.match(Dex.abilities.get('Fortress Shell').desc, /Water Barrage/);
 		assert.match(Dex.abilities.get('Fortress Shell').desc, /Friend Guard/);
@@ -812,10 +818,10 @@ describe('Team Builder sprites', () => {
 		assert(Dex.getAbilityEffects('omenedge').has('pressure'));
 		assert(!Dex.getAbilityEffects('omenedge').has('toughclaws'));
 		assert(Dex.getAbilityEffects('fortressshell').has('waterbarrage'));
-		assert(Dex.getAbilityEffects('lunardread').has('unaware'));
-		assert(Dex.getAbilityEffects('territorial').has('unnerve'));
-		assert(Dex.getAbilityEffects('territorial').has('unaware'));
-		assert(Dex.getAbilityEffects('territorial').has('toughclaws'));
+		assert(!Dex.getAbilityEffects('lunardread').has('unaware'));
+		assert(!Dex.getAbilityEffects('territorial').has('unnerve'));
+		assert(!Dex.getAbilityEffects('territorial').has('unaware'));
+		assert(!Dex.getAbilityEffects('territorial').has('toughclaws'));
 		assert(!Dex.getAbilityEffects('territorial').has('intimidate'));
 		assert.match(Dex.abilities.get('Still Waters').desc, /Cloud Nine/);
 		assert(Dex.getAbilityEffects('stillwaters').has('cloudnine'));
@@ -823,7 +829,7 @@ describe('Team Builder sprites', () => {
 		assert(Dex.getAbilityEffects('stillwaters').has('unaware'));
 		assert(!Dex.getAbilityEffects('fortressshell').has('friendguard'));
 		assert(Dex.getAbilityEffects('burningcrown').has('wildfirecore'));
-		assert(!Dex.getAbilityEffects('burningcrown').has('filter'));
+		assert(Dex.getAbilityEffects('burningcrown').has('filter'));
 		assert(Dex.getAbilityEffects('pollenbloom').has('thickfat'));
 		assert(Dex.getAbilityEffects('toxicbloom').has('thickfat'));
 	});
