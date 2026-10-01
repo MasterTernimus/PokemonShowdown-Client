@@ -261,6 +261,33 @@
 		 *********************************************************/
 
 		updateControls: function () {
+			this.updateControlsInner();
+			this.updateMobileGimmickCounters();
+		},
+		setControlsHTML: function (html) {
+			this.$controls.html(html);
+			this.updateMobileGimmickCounters();
+		},
+		updateMobileGimmickCounters: function () {
+			this.$controls.find('.mobile-gimmick-counters').remove();
+			var $counter = this.$('.battle-log > .gimmick-counters');
+			if ($counter.length) this.$controls.prepend($counter.clone().addClass('mobile-gimmick-counters').removeAttr('style'));
+		},
+		updateControlsInner: function () {
+			var battle = this.battle;
+			var counters = battle.gimmickCounters ? Object.keys(battle.gimmickCounters).sort().map(function (id) {
+				var counter = battle.gimmickCounters[id];
+				return {id: id, name: battle.getSide(id).name, used: counter.used, limit: counter.limit};
+			}) : this.request && this.request.side && this.request.side.gimmicks;
+			this.$('.gimmick-counters').remove();
+			if (Array.isArray(counters) && counters.length) {
+				var counterHTML = '<div class="gimmick-counters infobox" style="position:sticky;top:0;z-index:2;background:inherit" role="status"><strong>Gimmicks per trainer</strong>';
+				counters.forEach(function (counter) {
+					if (!Number.isInteger(counter.used) || !Number.isInteger(counter.limit)) return;
+					counterHTML += '<div>' + BattleLog.escapeHTML(counter.name || counter.id) + ': ' + counter.used + ' used / ' + Math.max(0, counter.limit - counter.used) + ' remaining (shared limit ' + counter.limit + ')</div>';
+				});
+				this.$('.battle-log').prepend(counterHTML + '</div>');
+			}
 			if (this.battle.scene.customControls) return;
 			var controlsShown = this.controlsShown;
 			var switchViewpointButton = '<p><button class="button" name="switchViewpoint"><i class="fa fa-random"></i> Switch viewpoint</button></p>';
@@ -269,7 +296,7 @@
 			if (this.battle.seeking !== null) {
 
 				// battle is seeking
-				this.$controls.html('');
+				this.setControlsHTML('');
 				return;
 
 			} else if (!this.battle.atQueueEnd) {
@@ -279,14 +306,14 @@
 					// spectator
 					if (this.battle.paused) {
 						// paused
-						this.$controls.html(
+						this.setControlsHTML(
 							'<p><button class="button" style="min-width:4.5em;margin-right:3px" name="resume"><i class="fa fa-play"></i><br />Play</button> ' +
 							'<button class="button button-first" name="instantReplay"><i class="fa fa-undo"></i><br />First turn</button><button class="button button-first" style="margin-left:1px" name="rewindTurn"><i class="fa fa-step-backward"></i><br />Prev turn</button><button class="button button-last" style="margin-right:2px" name="skipTurn"><i class="fa fa-step-forward"></i><br />Skip turn</button><button class="button button-last" name="goToEnd"><i class="fa fa-fast-forward"></i><br />Skip to end</button></p>' +
 							switchViewpointButton
 						);
 					} else {
 						// playing
-						this.$controls.html(
+						this.setControlsHTML(
 							'<p><button class="button" style="min-width:4.5em;margin-right:3px" name="pause"><i class="fa fa-pause"></i><br />Pause</button> ' +
 							'<button class="button button-first" name="instantReplay"><i class="fa fa-undo"></i><br />First turn</button><button class="button button-first" style="margin-left:1px" name="rewindTurn"><i class="fa fa-step-backward"></i><br />Prev turn</button><button class="button button-last" style="margin-right:2px" name="skipTurn"><i class="fa fa-step-forward"></i><br />Skip turn</button><button class="button button-last" name="goToEnd"><i class="fa fa-fast-forward"></i><br />Skip to end</button></p>' +
 							switchViewpointButton
@@ -294,7 +321,7 @@
 					}
 				} else {
 					// is a player
-					this.$controls.html('<p>' + this.getTimerHTML() + '<button class="button" name="skipTurn"><i class="fa fa-step-forward"></i><br />Skip turn</button> <button class="button" name="goToEnd"><i class="fa fa-fast-forward"></i><br />Skip to end</button></p>');
+					this.setControlsHTML('<p>' + this.getTimerHTML() + '<button class="button" name="skipTurn"><i class="fa fa-step-forward"></i><br />Skip turn</button> <button class="button" name="goToEnd"><i class="fa fa-fast-forward"></i><br />Skip to end</button></p>');
 				}
 				return;
 
@@ -308,9 +335,9 @@
 				if (this.side) {
 					// was a player
 					this.closeNotification('choice');
-					this.$controls.html('<div class="controls"><p>' + replayDownloadButton + '<button class="button" name="instantReplay"><i class="fa fa-undo"></i><br />Instant replay</button></p><p><button class="button" name="closeAndMainMenu"><strong>Main menu</strong><br /><small>(closes this battle)</small></button> <button class="button" name="closeAndRematch"><strong>Rematch</strong><br /><small>(closes this battle)</small></button></p></div>');
+					this.setControlsHTML('<div class="controls"><p>' + replayDownloadButton + '<button class="button" name="instantReplay"><i class="fa fa-undo"></i><br />Instant replay</button></p><p><button class="button" name="closeAndMainMenu"><strong>Main menu</strong><br /><small>(closes this battle)</small></button> <button class="button" name="closeAndRematch"><strong>Rematch</strong><br /><small>(closes this battle)</small></button></p></div>');
 				} else {
-					this.$controls.html('<div class="controls"><p>' + replayDownloadButton + '<button class="button" name="instantReplay"><i class="fa fa-undo"></i><br />Instant replay</button></p>' + switchViewpointButton + '</div>');
+					this.setControlsHTML('<div class="controls"><p>' + replayDownloadButton + '<button class="button" name="instantReplay"><i class="fa fa-undo"></i><br />Instant replay</button></p>' + switchViewpointButton + '</div>');
 				}
 
 			} else if (this.side) {
@@ -327,21 +354,21 @@
 			} else if (!this.battle.nearSide.name || !this.battle.farSide.name) {
 
 				// empty battle
-				this.$controls.html('<p><em>Waiting for players...</em></p>');
+				this.setControlsHTML('<p><em>Waiting for players...</em></p>');
 
 			} else {
 
 				// full battle
 				if (this.battle.paused) {
 					// paused
-					this.$controls.html(
+					this.setControlsHTML(
 						'<p><button class="button" style="min-width:4.5em;margin-right:3px" name="resume"><i class="fa fa-play"></i><br />Play</button> ' +
 						'<button class="button button-first" name="instantReplay"><i class="fa fa-undo"></i><br />First turn</button><button class="button button-first" style="margin-left:1px" name="rewindTurn"><i class="fa fa-step-backward"></i><br />Prev turn</button><button class="button button-last disabled" style="margin-right:2px" disabled><i class="fa fa-step-forward"></i><br />Skip turn</button><button class="button button-last disabled" disabled><i class="fa fa-fast-forward"></i><br />Skip to end</button></p>' +
 						switchViewpointButton + '<p><em>Waiting for players...</em></p>'
 					);
 				} else {
 					// playing
-					this.$controls.html(
+					this.setControlsHTML(
 						'<p><button class="button" style="min-width:4.5em;margin-right:3px" name="pause"><i class="fa fa-pause"></i><br />Pause</button> ' +
 						'<button class="button button-first" name="instantReplay"><i class="fa fa-undo"></i><br />First turn</button><button class="button button-first" style="margin-left:1px" name="rewindTurn"><i class="fa fa-step-backward"></i><br />Prev turn</button><button class="button button-last disabled" style="margin-right:2px" disabled><i class="fa fa-step-forward"></i><br />Skip turn</button><button class="button button-last disabled" disabled><i class="fa fa-fast-forward"></i><br />Skip to end</button></p>' +
 						switchViewpointButton + '<p><em>Waiting for players...</em></p>'
@@ -680,7 +707,7 @@
 					}
 				}
 
-				this.$controls.html(
+				this.setControlsHTML(
 					'<div class="controls">' +
 					'<div class="whatdo">' + requestTitle + this.getTimerHTML() + '</div>' +
 					'<div class="switchmenu" style="display:block">' + targetMenus[0] + '<div style="clear:both"></div> </div>' +
@@ -814,7 +841,7 @@
 					'<div class="switchmenu">' + switchMenu + '</div>' +
 					'</div>'
 				);
-				this.$controls.html(
+				this.setControlsHTML(
 					'<div class="controls">' +
 					'<div class="whatdo">' + requestTitle + this.getTimerHTML() + '</div>' +
 					moveControls + shiftControls + switchControls +
@@ -894,7 +921,7 @@
 					}
 				}
 				controls += '</div>';
-				this.$controls.html(
+				this.setControlsHTML(
 					'<div class="controls">' +
 					'<div class="whatdo">' + requestTitle + this.getTimerHTML() + '</div>' +
 					controls +
@@ -935,7 +962,7 @@
 					'<div class="switchmenu">' + switchMenu + '</div>' +
 					'</div>'
 				);
-				this.$controls.html(
+				this.setControlsHTML(
 					'<div class="controls">' +
 					'<div class="whatdo">' + requestTitle + this.getTimerHTML() + '</div>' +
 					controls +
@@ -973,7 +1000,7 @@
 				'<div class="switchmenu">' + switchMenu + '</div>' +
 				'</div>'
 			);
-			this.$controls.html(
+			this.setControlsHTML(
 				'<div class="controls">' +
 				'<div class="whatdo">' + requestTitle + this.getTimerHTML() + '</div>' +
 				controls +
@@ -991,7 +1018,7 @@
 					buf += '<p><button class="button" name="setTimer" value="on">Claim victory</button> <small>&larr; Your opponent has disconnected. Click this if they don\'t reconnect.</small></p>';
 				}
 			}
-			this.$controls.html(buf + '</div>');
+			this.setControlsHTML(buf + '</div>');
 		},
 
 		getPlayerChoicesHTML: function () {

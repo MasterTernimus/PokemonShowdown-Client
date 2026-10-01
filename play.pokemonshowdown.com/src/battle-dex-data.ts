@@ -1436,7 +1436,7 @@ class Ability implements Effect {
 		this.num = data.num || 0;
 		this.shortDesc = data.shortDesc || data.desc || '';
 		this.desc = data.desc || data.shortDesc || '';
-		this.rating = data.rating || 1;
+		this.rating = data.rating ?? 1;
 		this.flags = data.flags || {};
 		this.isNonstandard = !!data.isNonstandard;
 		if (!this.gen) {
