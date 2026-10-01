@@ -18,7 +18,9 @@ const thisFile = __filename;
 const thisDir = __dirname;
 const rootDir = path.resolve(thisDir, '../play.pokemonshowdown.com');
 
-const Dex = require('../caches/PokemonShowdown-Reborn/dist/sim/dex').Dex;
+const serverDir = process.env.PS_SERVER_SOURCE ? fs.realpathSync(process.env.PS_SERVER_SOURCE) :
+	path.resolve(__dirname, '../caches/PokemonShowdown-Reborn');
+const Dex = require(path.join(serverDir, 'dist/sim/dex')).Dex;
 const toID = Dex.toID;
 
 function updateLearnsets(callback) {

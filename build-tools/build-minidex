@@ -6,7 +6,9 @@ const path = require("path");
 process.chdir(path.resolve(__dirname, '../play.pokemonshowdown.com'));
 const imageSize = require('image-size');
 
-const Dex = require('./../caches/PokemonShowdown-Reborn/dist/sim/dex').Dex;
+const serverDir = process.env.PS_SERVER_SOURCE ? fs.realpathSync(process.env.PS_SERVER_SOURCE) :
+	path.resolve(__dirname, '../caches/PokemonShowdown-Reborn');
+const Dex = require(path.join(serverDir, 'dist/sim/dex')).Dex;
 const toID = Dex.toID;
 
 process.stdout.write("Updating animated sprite dimensions... ");
@@ -58,7 +60,7 @@ function updateSizes() {
 				if (backSize) row.back = backSize;
 				const backSizeF = sizeObj('sprites/ani-back/' + spriteid + '-f.gif');
 				if (backSizeF) row.backf = backSizeF;
-				if (row.front || row.back || !row.forme) {
+				if (row.front || row.back) {
 					buf += `\t${id}:` + JSON.stringify(row).replace(/"/g, '') + `,\n`;
 				}
 			}
@@ -73,7 +75,7 @@ function updateSizes() {
 				if (backSize) g5row.back = backSize;
 				const backSizeF = sizeObj('sprites/gen5ani-back/' + spriteid + '-f.gif');
 				if (backSizeF) g5row.backf = backSizeF;
-				if (g5row.front || g5row.back || !g5row.forme) {
+				if (g5row.front || g5row.back) {
 					g5buf += `\t${id}:` + JSON.stringify(g5row).replace(/"/g, '') + `,\n`;
 				}
 			}

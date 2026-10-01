@@ -1,0 +1,32 @@
+#!/usr/bin/env node
+'use strict';
+// Reproducible release preparation; never publishes or accesses the network.
+const fs = require('fs');
+const path = require('path');
+const cp = require('child_process');
+const crypto = require('crypto');
+const root = path.resolve(__dirname, '..');
+if (!process.env.PS_SERVER_SOURCE) throw new Error('Set PS_SERVER_SOURCE to the approved server checkout.');
+const source = fs.realpathSync(process.env.PS_SERVER_SOURCE);
+const manifest = require('../server-data-sync-manifest.json');
+const actualHead = cp.execFileSync('git', ['rev-parse', 'HEAD'], {cwd: source, encoding: 'utf8'}).trim();
+if (actualHead !== manifest.sourceHead) throw new Error('Check out the exact approved server commit: ' + manifest.sourceHead);
+const hash = crypto.createHash('sha256');
+for (const file of manifest.files) { hash.update(file); hash.update(fs.readFileSync(path.join(source, file), 'utf8').replace(/\r\n/g, '\n')); }
+if (hash.digest('hex') !== manifest.sourceDataSHA256) throw new Error('Server data differs from the reviewed snapshot. Review and regenerate the snapshot before preparing assets.');
+function run(file, cwd) { cp.execFileSync(process.execPath, [file], {cwd, env: process.env, stdio: 'inherit'}); }
+run('build', source);
+run('build-tools/build-indexes', root);
+run('build-tools/build-learnsets', root);
+run('build-tools/build-minidex', root);
+for (const file of ['pokedex-mini.js', 'pokedex-mini-bw.js']) {
+	if (!fs.existsSync(path.join(root, 'play.pokemonshowdown.com/data', file))) throw new Error('Sprite metadata missing: ' + file + '. Restore the tracked sprite assets before preparing a release.');
+}
+run('build', root);
+const outputs = {};
+for (const name of fs.readdirSync(path.join(root, 'play.pokemonshowdown.com/data')).sort()) {
+	if (!name.endsWith('.js')) continue;
+	outputs['data/' + name] = crypto.createHash('sha256').update(fs.readFileSync(path.join(root, 'play.pokemonshowdown.com/data', name))).digest('hex');
+}
+fs.writeFileSync(path.join(root, 'client-data-provenance.json'), JSON.stringify({sourceHead: manifest.sourceHead, sourceDataSHA256: manifest.sourceDataSHA256, outputs}, null, 2) + '\n');
+console.log('Prepared local client assets. Nothing has been published.');

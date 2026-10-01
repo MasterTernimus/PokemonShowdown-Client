@@ -40,6 +40,9 @@
 			}
 		},
 		events: {
+			'input .roster-species-search': 'searchRosterSpecies',
+			'change .roster-profile-select': 'rosterProfileChange',
+			'change .roster-profile-filter': 'rosterFilterChange',
 			// team changes
 			'change input.teamnameedit': 'teamNameChange',
 			'click button.formatselect': 'selectFormat',
@@ -721,7 +724,7 @@
 			var $teamwrapper = this.$('.teamwrapper');
 			var width = $(window).width();
 			if (!$teamwrapper.length) return;
-			if (width < 640) {
+			if (width < 640 && !this.curSet) {
 				var scale = (width / 640);
 				$teamwrapper.css('transform', 'scale(' + scale + ')');
 				$teamwrapper.addClass('scaled');
@@ -1878,6 +1881,144 @@
 		 * Set view
 		 *********************************************************/
 
+		rosterData: function () {
+			var data = Storage.prefs('rosterprofiles');
+			if (!data || !Array.isArray(data.profiles)) return {profiles: [], selected: '', enabled: false};
+			return data;
+		},
+		rosterSpeciesID: function (name) {
+			var species = Dex.species.get(name);
+			if (!species.exists) return '';
+			var base = Dex.species.get(species.baseSpecies);
+			// Only explicitly cosmetic forms share an entry. Regional and other true forms stay distinct.
+			if (base.cosmeticFormes && base.cosmeticFormes.indexOf(species.name) >= 0) return base.id;
+			return species.id;
+		},
+		renderRosterProfiles: function () {
+			var data = this.rosterData();
+			var profile = data.profiles.find(function (p) { return p.id === data.selected; });
+			var html = '<div class="roster-profiles" style="padding:8px"><label>Roster profile: <select class="roster-profile-select"><option value="">None</option>';
+			data.profiles.forEach(function (p) {
+				html += '<option value="' + BattleLog.escapeHTML(p.id) + '"' + (p.id === data.selected ? ' selected' : '') + '>' + BattleLog.escapeHTML(p.name) + '</option>';
+			});
+			html += '</select></label> <label><input type="checkbox" class="roster-profile-filter"' + (data.enabled ? ' checked' : '') + (profile ? '' : ' disabled') + ' /> Only this roster</label> ';
+			html += '<button class="button" name="createRosterProfile">New</button> ';
+			if (profile) {
+				html += '<button class="button" name="renameRosterProfile">Rename</button> <button class="button" name="deleteRosterProfile">Delete</button> ';
+				html += '<details class="roster-manager"><summary>Manage species (' + profile.species.length + ')</summary>';
+				html += '<p>Saved in this browser. True forms have separate entries.</p><div class="roster-chips">';
+				html += profile.species.length ? profile.species.map(function (id) {
+					var name = BattleLog.escapeHTML(Dex.species.get(id).name);
+					return '<button class="button roster-chip" name="removeRosterSpecies" value="' + id + '" aria-label="Remove ' + name + '">' + name + ' ×</button>';
+				}).join(' ') : '<p>This roster is empty. Add species below or turn the filter off.</p>';
+				html += '</div><label>Find species or form <input class="textbox roster-species-search" type="search" placeholder="e.g. Raichu or Raichu-Alola" autocomplete="off" /></label>';
+				html += '<div class="roster-species-matches" aria-live="polite">Type a name to add species.</div></details>';
+			}
+			if (data.deleted) {
+				html += '<p class="roster-undo" role="status">Deleted “' + BattleLog.escapeHTML(data.deleted.profile.name) + '”. <button class="button" name="undoRosterDelete">Undo delete</button></p>';
+			}
+			return html + '</div>';
+		},
+		saveRosterProfiles: function (data) {
+			Storage.prefs('rosterprofiles', data);
+			var open = this.$('.roster-manager').prop('open');
+			var query = this.$('.roster-species-search').val() || '';
+			this.$('.roster-profiles').replaceWith(this.renderRosterProfiles());
+			this.$('.roster-manager').prop('open', open);
+			this.$('.roster-species-search').val(query);
+			this.searchRosterSpecies();
+			if (this.search && this.curChartType in this.searchChartTypes && this.search.engine.typedSearch) {
+				this.search.engine.query = undefined;
+				this.search.find(this.search.q || '');
+			}
+		},
+		rosterProfileChange: function (event) {
+			var data = this.rosterData();
+			data.selected = event.currentTarget.value;
+			if (!data.selected) data.enabled = false;
+			this.saveRosterProfiles(data);
+		},
+		rosterFilterChange: function (event) {
+			var data = this.rosterData();
+			data.enabled = event.currentTarget.checked;
+			this.saveRosterProfiles(data);
+		},
+		createRosterProfile: function () {
+			var self = this;
+			app.addPopupPrompt('Roster name:', 'Create', function (name) {
+				name = name.trim().slice(0, 80);
+				if (!name) return;
+				var data = self.rosterData();
+				data.selected = Date.now().toString(36) + Math.random().toString(36).slice(2);
+				data.profiles.push({id: data.selected, name: name, species: []});
+				self.saveRosterProfiles(data);
+			});
+		},
+		renameRosterProfile: function () {
+			var self = this;
+			var data = this.rosterData();
+			var profile = data.profiles.find(function (p) { return p.id === data.selected; });
+			if (!profile) return;
+			app.addPopupPrompt('New roster name:', 'Rename', function (name) {
+				name = name.trim().slice(0, 80);
+				if (!name) return;
+				profile.name = name;
+				self.saveRosterProfiles(data);
+			});
+		},
+		deleteRosterProfile: function () {
+			var data = this.rosterData();
+			var index = data.profiles.findIndex(function (p) { return p.id === data.selected; });
+			if (index < 0) return;
+			data.deleted = {profile: data.profiles[index], index: index, enabled: data.enabled};
+			data.profiles.splice(index, 1);
+			data.selected = '';
+			data.enabled = false;
+			this.saveRosterProfiles(data);
+		},
+		undoRosterDelete: function () {
+			var data = this.rosterData();
+			var deleted = data.deleted;
+			if (!deleted) return;
+			if (!data.profiles.some(function (p) { return p.id === deleted.profile.id; })) {
+				data.profiles.splice(deleted.index, 0, deleted.profile);
+			}
+			data.selected = deleted.profile.id;
+			data.enabled = deleted.enabled;
+			delete data.deleted;
+			this.saveRosterProfiles(data);
+		},
+		searchRosterSpecies: function () {
+			var query = toID(this.$('.roster-species-search').val() || '');
+			var data = this.rosterData();
+			var profile = data.profiles.find(function (p) { return p.id === data.selected; });
+			if (!profile) return;
+			var matches = [];
+			var seen = {};
+			if (query) for (var key in window.BattlePokedex) {
+				if (key.indexOf(query) < 0) continue;
+				var id = this.rosterSpeciesID(key);
+				if (!id || seen[id]) continue;
+				seen[id] = true;
+				var added = profile.species.indexOf(id) >= 0;
+				matches.push('<button class="button" name="addRosterSpecies" value="' + id + '"' + (added ? ' disabled' : '') + '>' + BattleLog.escapeHTML(Dex.species.get(id).name) + (added ? ' — Added' : ' +') + '</button>');
+				if (matches.length === 20) break;
+			}
+			this.$('.roster-species-matches').html(matches.join(' ') || (query ? 'No matching species. Try another name.' : 'Type a name to add species.'));
+		},
+		addRosterSpecies: function (id) { this.editRosterSpecies(id, false); },
+		removeRosterSpecies: function (id) { this.editRosterSpecies(id, true); },
+		editRosterSpecies: function (id, remove) {
+			var data = this.rosterData();
+			var profile = data.profiles.find(function (p) { return p.id === data.selected; });
+			id = this.rosterSpeciesID(id);
+			if (!profile || !id) return;
+			if (remove) profile.species = profile.species.filter(function (species) { return species !== id; });
+			else if (profile.species.indexOf(id) < 0) profile.species.push(id);
+			this.saveRosterProfiles(data);
+			this.$('.roster-species-search').focus();
+		},
+
 		updateSetView: function () {
 			// pokemon
 			var buf = '<div class="pad">';
@@ -1895,7 +2036,7 @@
 
 			// results
 			this.chartPrevSearch = '[init]';
-			buf += '<div class="teambuilder-results"></div>';
+			buf += '<div class="teambuilder-results">' + this.renderRosterProfiles() + '<div class="roster-search-results"></div></div>';
 
 			// import/export
 			buf += '<div class="teambuilder-pokemon-import">';
@@ -1904,14 +2045,34 @@
 			buf += '<div class="teambuilder-import-smogon-sets"></div>';
 			buf += '</div>';
 
-			this.$el.html('<div class="teamwrapper">' + buf + '</div>');
+			this.$el.html('<div class="teamwrapper editing-set">' + buf + '</div>');
 			if ($(window).width() < 640) this.show();
-			this.$chart = this.$('.teambuilder-results');
-			this.search = new BattleSearch(this.$chart, this.$chart);
+			this.$chart = this.$('.roster-search-results');
+			this.search = new BattleSearch(this.$chart, this.$('.teambuilder-results'));
+			var room = this;
+			this.search.rosterFilter = function (rows) {
+				var data = room.rosterData();
+				var profile = data.profiles.find(function (p) { return p.id === data.selected; });
+				if (!data.enabled || !profile) return rows;
+				rows = rows.filter(function (row) {
+					return row[0] !== 'pokemon' || profile.species.indexOf(room.rosterSpeciesID(row[1])) >= 0;
+				});
+				rows = rows.filter(function (row, index) {
+					if (row[0] !== 'header') return true;
+					for (var i = index + 1; i < rows.length && rows[i][0] !== 'header'; i++) {
+						if (rows[i][0] === 'pokemon') return true;
+					}
+					return false;
+				});
+				if (!rows.some(function (row) { return row[0] === 'pokemon'; })) {
+					rows = [['html', '<p>No species match this roster and the current search. Add species, change the search, or turn the roster filter off.</p>']];
+				}
+				return rows;
+			};
 			var self = this;
 			// fun fact: Backbone DOM events don't support scroll...
 			// I guess scroll doesn't bubble like other events
-			this.$chart.on('scroll', function () {
+			this.$('.teambuilder-results').on('scroll', function () {
 				if (self.curChartType in self.searchChartTypes) {
 					self.search.updateScroll();
 				}

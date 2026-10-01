@@ -1000,6 +1000,7 @@ export interface ServerPokemon extends PokemonDetails, PokemonHealth {
 }
 
 export class Battle {
+	gimmickCounters: {[side: string]: {used: number, limit: number}} | null = null;
 	scene: BattleSceneStub;
 
 	viewpointSwitched = false;
@@ -1249,6 +1250,8 @@ export class Battle {
 		this.subscription?.('paused');
 	}
 	resetStep() {
+		// Keep protocol availability, but rebuild values from the replay position.
+		if (this.gimmickCounters) this.gimmickCounters = {};
 		// battle state
 		this.turn = -1;
 		this.started = !this.paused;
@@ -3395,6 +3398,16 @@ export class Battle {
 	}
 	runMajor(args: Args, kwArgs: KWArgs, preempt?: boolean) {
 		switch (args[0]) {
+		case 'gimmickcount': {
+			const used = Number(args[2]), limit = Number(args[3]);
+			if (!/^p[1-4]$/.test(args[1]) || !Number.isInteger(used) || !Number.isInteger(limit) ||
+				used < 0 || limit < 0 || limit > 2 || used > limit) break;
+			if (!this.gimmickCounters) this.gimmickCounters = {};
+			this.gimmickCounters[args[1]] = {used, limit};
+			this.log(args);
+			this.subscription?.('callback');
+			break;
+		}
 		case 'start': {
 			this.nearSide.active[0] = null;
 			this.farSide.active[0] = null;

@@ -3276,3 +3276,149 @@ a.ilink.yours {
 .dark iframe.textbox:focus {
 	background: #DDDDDD;
 }
+
+/* Custom engine calculator: scoped to the existing popup. */
+.ps-popup.custom-calculator { box-sizing: border-box; padding: 22px; background: #f4f7fa; color: #243344; border: 1px solid #bccbd7; border-radius: 12px; box-shadow: 0 12px 48px #172a4055; font-family: Arial, Helvetica, sans-serif; font-size: 13px; line-height: 1.45; }
+.custom-calculator * { box-sizing: border-box; }
+.custom-calculator .calc-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.custom-calculator h2 { margin: 3px 0; font-size: 25px; color: #203951; }
+.custom-calculator h3 { font-size: 14px; margin: 0 0 8px; }
+.custom-calculator .calc-eyebrow { color: #41627c; font-size: 10px; font-weight: bold; letter-spacing: 1px; }
+.custom-calculator .calc-intro { margin: 10px 0 16px; color: #506273; }
+.custom-calculator .calc-conditions { background: #e6edf3; padding: 12px 14px; border-radius: 8px; margin-bottom: 16px; }
+.custom-calculator .calc-condition-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 10px; }
+.custom-calculator label { display: flex; flex-direction: column; gap: 4px; font-size: 12px; font-weight: bold; min-width: 0; }
+.custom-calculator input.textbox, .custom-calculator select, .custom-calculator input[type=number] { min-width: 0; width: 100%; height: 32px; border: 1px solid #a5b7c7; border-radius: 5px; background: #fff; color: #243344; padding: 4px 7px; font: inherit; font-weight: normal; box-shadow: none; }
+.custom-calculator .calc-screens { display: flex; flex-wrap: wrap; gap: 12px; margin: 10px 0 0; align-items: center; }
+.custom-calculator .calc-screens label { flex-direction: row; align-items: center; font-weight: normal; }
+.custom-calculator .calc-matchup { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px; }
+.custom-calculator .calc-actor { min-width: 0; border: 1px solid #bacbd7; border-top: 3px solid #4585b4; border-radius: 8px; padding: 12px 14px; margin: 0; background: white; }
+.custom-calculator .calc-actor[data-slot="1"] { border-top-color: #a8794c; }
+.custom-calculator legend { padding: 0 7px; font-weight: bold; color: #31526d; }
+.custom-calculator .calc-identity { display: flex; align-items: center; gap: 10px; min-height: 52px; margin-bottom: 10px; overflow-wrap: anywhere; }
+.custom-calculator .calc-identity > div { min-width: 0; }
+.custom-calculator .calc-identity strong { font-size: 17px; }
+.custom-calculator .calc-picon { width: 40px; height: 30px; flex: 0 0 40px; image-rendering: pixelated; }
+.custom-calculator .calc-chips { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 3px; }
+.custom-calculator .calc-chips span { background: #eaf0f6; color: #375269; border-radius: 4px; font-size: 10px; padding: 2px 6px; }
+.custom-calculator .calc-fields { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 9px 12px; }
+.custom-calculator details { margin-top: 10px; border-top: 1px solid #d7e1e9; padding-top: 9px; }
+.custom-calculator summary { cursor: pointer; color: #315b7b; font-weight: bold; padding: 2px 0; }
+.custom-calculator details[open] > summary { margin-bottom: 10px; }
+.custom-calculator textarea { width: 100%; margin: 6px 0; }
+.custom-calculator .calc-stats { width: 100%; text-align: center; margin-top: 10px; border-spacing: 5px; }
+.custom-calculator .calc-stats input { width: 100%; max-width: 75px; }
+.custom-calculator .calc-action { display: flex; align-items: end; gap: 12px; margin-top: 16px; padding: 12px 14px; background: #e6edf3; border-radius: 8px; }
+.custom-calculator .calc-action-fields { display: grid; grid-template-columns: 1.5fr 1.2fr .6fr .7fr; gap: 9px; flex: 1; min-width: 0; }
+.custom-calculator .calc-primary { background: #315f83; color: white; border-color: #294e6a; min-height: 34px; text-shadow: none; white-space: nowrap; }
+.custom-calculator .calc-primary:hover { background: #254b69; }
+.custom-calculator button:disabled { opacity: .6; cursor: wait; }
+.custom-calculator .calc-status { color: #4b6275; margin: 10px 0; }
+.custom-calculator .calc-error { background: #fff0ed; color: #923322; border-left: 3px solid #b64d36; padding: 10px; }
+.custom-calculator .calc-result-card { background: #e8f4ed; border: 1px solid #a5cbb4; border-radius: 8px; padding: 14px 16px; margin: 12px 0; }
+.custom-calculator .calc-result-head { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+.custom-calculator .calc-result-head h3 { margin: 3px 0; font-size: 19px; }
+.custom-calculator .calc-result-head strong { font-size: 26px; color: #245d3e; }
+.custom-calculator .calc-result-card p { margin: 4px 0 9px; }
+.custom-calculator .calc-damage-bar { height: 11px; background: #cadbd0; border-radius: 6px; position: relative; overflow: hidden; margin-bottom: 8px; }
+.custom-calculator .calc-damage-bar span, .custom-calculator .calc-damage-bar b { position: absolute; height: 100%; left: 0; background: #7bb392; }
+.custom-calculator .calc-damage-bar b { background: #347850; }
+.custom-calculator small { color: #435f51; }
+.custom-calculator .calc-result-table { width: 100%; text-align: left; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.custom-calculator .calc-result-table th, .custom-calculator .calc-result-table td { padding: 8px; border-bottom: 1px solid #d5e0e8; }
+.custom-calculator .calc-result-table th { color: #3c566c; }
+.custom-calculator .calc-version { color: #596f80; font-size: 10px; overflow-wrap: anywhere; margin-top: 16px; }
+.custom-calculator :focus-visible { outline: 3px solid #1877ba; outline-offset: 2px; }
+.custom-calculator pre { overflow-wrap: anywhere; }
+@media (max-width: 620px) {
+ .ps-popup.custom-calculator { padding: 14px; }
+ .custom-calculator h2 { font-size: 21px; }
+ .custom-calculator .calc-matchup, .custom-calculator .calc-condition-grid { grid-template-columns: minmax(0,1fr); }
+ .custom-calculator .calc-action { flex-direction: column; align-items: stretch; }
+ .custom-calculator .calc-action-fields { grid-template-columns: repeat(2,minmax(0,1fr)); }
+ .custom-calculator .calc-result-table { font-size: 11px; }
+ .custom-calculator .calc-result-table th, .custom-calculator .calc-result-table td { padding: 6px 3px; }
+}
+
+/* Local battle tools: readable small-screen controls without changing desktop layout. */
+.roster-manager { margin-top: 10px; }
+.roster-manager summary { cursor: pointer; padding: 6px 0; }
+.roster-manager p { margin: 6px 0; }
+.roster-manager input { display: block; width: min(100%, 360px); box-sizing: border-box; }
+.roster-chips, .roster-species-matches { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+.roster-chips { max-height: 210px; overflow: auto; }
+.roster-undo { padding: 8px; border: 1px solid #879eb0; border-radius: 4px; }
+.challenge-options small { display: block; margin-top: 6px; }
+.mobile-gimmick-counters { display: none; }
+@media (max-width: 627px) {
+	.news-embed:not(.mobile-news-open) .pm-log { display: none !important; }
+	.news-embed.mobile-news-open .pm-log { display: block !important; }
+	.news-embed h3 { min-height: 36px; display: flex; align-items: center; }
+	.news-embed .minimizebutton { min-width: 36px; min-height: 36px; }
+	.news-embed:not(.mobile-news-open) h3::after { content: ' · tap to read'; font-size: 12px; font-weight: normal; }
+	.battle-controls .mobile-gimmick-counters { margin: 6px; padding: 8px; font-size: 13px; background: #f5f8fc; color: #243747; }
+	.mobile-gimmick-counters > div { margin-top: 4px; overflow-wrap: anywhere; }
+}
+@media (max-width: 639px) {
+	.editing-set { width: 100%; font-size: 14px; }
+	.editing-set > .pad { padding: 8px; }
+	.editing-set .teambar { position: static; min-width: 0; display: flex; overflow-x: auto; padding: 0 8px; }
+	.editing-set .teambar button { flex: 0 0 80px; float: none; min-height: 48px; font-size: 12px; }
+	.editing-set .teamchartbox.individual, .editing-set .teambuilder-results { position: static; min-width: 0; width: auto; overflow: visible; }
+	.editing-set .teamchart { padding: 8px; }
+	.editing-set .teamchart li { padding: 0; }
+	.editing-set .setmenu { position: static; width: auto; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 4px; }
+	.editing-set .setchart-nickname { position: static; width: auto; margin-top: 8px; padding: 8px; }
+	.editing-set .setchart { width: auto; height: auto; padding: 8px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; background-image: none !important; }
+	.editing-set .setcol, .editing-set .setcell { float: none; width: auto; height: auto; min-width: 0; }
+	.editing-set .setcol-icon, .editing-set .setcol-details { grid-column: 1 / -1; }
+	.editing-set .setcell-sprite:not(.changeform) { display: none; }
+	.editing-set .setcell-sprite.changeform { height: 44px; background: #e9f1f8; }
+	.editing-set .setcell-sprite.changeform::before { content: 'Change appearance '; }
+	.editing-set .setcol-details > .setrow:last-child { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+	.editing-set .setrow-icons { display: none; }
+	.editing-set .setchart label, .editing-set .setchart-nickname label { font-size: 13px; }
+	.editing-set .textbox, .editing-set select { box-sizing: border-box; max-width: 100%; font-size: 16px; min-height: 44px; }
+	.editing-set .setchart input, .editing-set .setchart-nickname input, .editing-set .setdetails, .editing-set .setstats { width: 100%; }
+	.editing-set .setdetails { display: flex; flex-wrap: wrap; padding: 6px; }
+	.editing-set .detailcell { width: auto; min-width: 44px; font-size: 14px; }
+	.editing-set .setcol-moves .setcell { padding-bottom: 6px; }
+	.editing-set .setstats .statrow { display: flex; justify-content: space-between; }
+	.editing-set .setstats .statgraph { max-width: 50px; overflow: hidden; }
+	.editing-set button, .editing-set summary { min-height: 44px; box-sizing: border-box; }
+	.editing-set .roster-profiles { background: #e3edf5; color: #243747; }
+	.editing-set .roster-profiles > label { display: block; margin-bottom: 8px; }
+	.editing-set .roster-profile-filter { width: 22px; height: 22px; vertical-align: middle; }
+	.editing-set .roster-profiles button { margin-bottom: 4px; font-size: 14px; }
+	.editing-set .roster-manager summary { padding: 12px 0; }
+	.editing-set .roster-search-results { overflow-x: auto; }
+	.editing-set .utilichart { min-width: 0; }
+	.editing-set .utilichart .result > a { min-height: 44px; display: flex; align-items: center; flex-wrap: wrap; white-space: normal; }
+	.editing-set .utilichart .col { font-size: 13px; }
+	.editing-set .utilichart .statcol, .editing-set .utilichart .bstcol, .editing-set .utilichart .numcol, .editing-set .utilichart .abilitycol { display: none; }
+	.editing-set .detailsform, .editing-set .statform { padding: 8px; }
+	.editing-set .detailsform label { min-height: 44px; display: inline-flex; align-items: center; }
+	.editing-set .statform .slidercell { max-width: 90px; }
+	.editing-set .teambuilder-pokemon-import { position: static; width: auto; min-width: 0; }
+	.editing-set .pokemonedit { width: 100%; box-sizing: border-box; }
+}
+
+@media (max-width: 639px) {
+	.editing-set .abilitysortcol, .editing-set .statsortcol, .editing-set .bstsortcol { display: none; }
+	.challenge-options select { min-height: 44px; font-size: 16px; max-width: 100%; }
+	.challenge-options summary { padding: 10px 0; }
+}
+
+@media (max-width: 639px) {
+	.editing-set .statform .graphcol { display: none; }
+	.editing-set .statform .labelcol { width: 62px; }
+	.editing-set .statform .basestatscol { width: 34px; }
+	.editing-set .statform .evslidercol { width: calc(100% - 248px); min-width: 30px; margin: 0 4px; }
+	.editing-set .statform .evslider { width: 100%; height: 44px; margin: 0; }
+	.editing-set .statform .col > div { height: 48px; box-sizing: border-box; }
+	.editing-set .statform input.numform { min-height: 44px; font-size: 16px; box-sizing: border-box; }
+	.editing-set .statform .col div label, .editing-set .statform .col div b { padding-top: 12px; }
+}
+
+/* Match the room layout that hides chat, including landscape and split panes. */
+.small-layout .battle-controls .mobile-gimmick-counters { display: block; margin: 6px; padding: 8px; font-size: 13px; background: #f5f8fc; color: #243747; }

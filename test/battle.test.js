@@ -905,3 +905,26 @@ Shroomish used **Power-Up Punch**!
 `);
 	});
 });
+
+
+describe('Public gimmick counters', () => {
+	it('reconstructs FFA counters, ignores malformed values, and resets on replay rewind', () => {
+		const battle = new Battle({debug: true});
+		battle.runMajor(['gametype', 'freeforall'], {});
+		for (const id of ['p1', 'p2', 'p3', 'p4']) battle.runMajor(['gimmickcount', id, '0', '1'], {});
+		battle.runMajor(['gimmickcount', 'p3', '1', '1'], {});
+		assert.deepEqual(Object.values(battle.gimmickCounters).map(c => c.used), [0, 0, 1, 0]);
+		battle.runMajor(['gimmickcount', 'p3', '-1', '1'], {});
+		assert.equal(battle.gimmickCounters.p3.used, 1);
+		battle.resetStep();
+		assert.deepEqual(battle.gimmickCounters, {});
+		battle.runMajor(['gimmickcount', 'p3', '0', '1'], {});
+		assert.equal(battle.gimmickCounters.p3.used, 0);
+		battle.destroy();
+	});
+	it('provides a visible text log for standalone replays', () => {
+		const parser = new BattleTextParser();
+		parser.parseArgsInner(['player', 'p1', 'Alice'], {});
+		assert.match(parser.parseArgsInner(['gimmickcount', 'p1', '1', '1'], {}), /Alice: 1 gimmicks used \/ 0 remaining/);
+	});
+});

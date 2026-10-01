@@ -25,3 +25,6 @@ caches/PokemonShowdown-Reborn/
 !test/court-change-participants.test.js
 !test/server-data-sync.test.js
 !test/field-display.test.js
+
+# Reviewed server-data provenance and parity fixture.
+!server-data-sync-manifest.json

@@ -77,6 +77,9 @@
 				this.resultSet[0] = sortRow;
 			}
 		}
+		if (this.rosterFilter && this.engine.typedSearch && this.engine.typedSearch.searchType === 'pokemon') {
+			this.resultSet = this.rosterFilter(this.resultSet);
+		}
 		if (this.filters) {
 			this.resultSet = [['html', this.getFilterText()]].concat(this.resultSet);
 		}

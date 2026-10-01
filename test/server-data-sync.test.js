@@ -25,6 +25,21 @@ describe('Server data synchronization', () => {
 			let dex;
 			before(() => { dex = loadDex(bundled); });
 
+			it('matches the reviewed server snapshot, including newly added abilities', () => {
+				const snapshot = require('../server-data-sync-manifest.json').snapshot;
+				for (const kind of ['species', 'abilities', 'moves']) {
+					for (const [id, expected] of Object.entries(snapshot[kind])) {
+						const actual = dex[kind].get(id);
+						for (const [key, value] of Object.entries(expected)) {
+							if (key === 'replaceAbilities') continue;
+							const normalize = data => key === 'isNonstandard' ? data || false : JSON.parse(JSON.stringify(data));
+							assert.deepEqual(normalize(actual[key]), normalize(value), `${kind}.${id}.${key}`);
+						}
+					}
+				}
+				assert.equal(dex.species.get('Sylveon').abilities[1], 'Soothing Presence');
+			});
+
 			it('resolves assigned composite abilities and their component effects', () => {
 				for (const [species, ability, components] of [
 					['Reuniclus-Mega', 'Adaptive Power', ['hugepower', 'magicguard', 'regenerator']],
