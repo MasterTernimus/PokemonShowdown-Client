@@ -485,7 +485,7 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 			baseSpecies: 'Empoleon',
 			forme: 'Mega',
 			types: ['Water', 'Steel'],
-			baseStats: {hp: 84, atk: 86, def: 118, spa: 151, spd: 131, spe: 60},
+			baseStats: {"hp":84,"atk":116,"def":118,"spa":126,"spd":121,"spe":70},
 			abilities: {0: "Emperor's Resolve"}, replaceAbilities: true,
 			spriteid: 'empoleon-alt',
 			requiredItem: 'Empoleonite', battleOnly: 'Empoleon', changesFrom: 'Empoleon',
@@ -13699,6 +13699,36 @@ CUSTOM_SPECIES_UPDATES.scizormega = {...CUSTOM_SPECIES_UPDATES.scizormega, abili
 CUSTOM_SPECIES_UPDATES.floatzel = {...CUSTOM_SPECIES_UPDATES.floatzel, abilities: { 0: "Swift Swim", 1: "Life Guard", H: "Battle Fervor" }};
 // BEGIN APPROVED ROSTER SPECIES
 for (const [id, update] of Object.entries({
+  "empoleon": {
+    "baseStats": {
+      "hp": 84,
+      "atk": 86,
+      "def": 88,
+      "spa": 111,
+      "spd": 101,
+      "spe": 65
+    },
+    "abilities": {
+      "0": "Competitive",
+      "1": "Exalt",
+      "H": "Royal Decree"
+    },
+    "replaceAbilities": true
+  },
+  "empoleonmega": {
+    "baseStats": {
+      "hp": 84,
+      "atk": 116,
+      "def": 118,
+      "spa": 126,
+      "spd": 121,
+      "spe": 70
+    },
+    "abilities": {
+      "0": "Emperor's Resolve"
+    },
+    "replaceAbilities": true
+  },
   "mienshao": {
     "baseStats": {
       "hp": 65,

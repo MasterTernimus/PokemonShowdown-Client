@@ -4363,7 +4363,7 @@ name:'Empoleon-Mega',
 baseSpecies:'Empoleon',
 forme:'Mega',
 types:['Water','Steel'],
-baseStats:{hp:84,atk:86,def:118,spa:151,spd:131,spe:60},
+baseStats:{"hp":84,"atk":116,"def":118,"spa":126,"spd":121,"spe":70},
 abilities:{0:"Emperor's Resolve"},replaceAbilities:true,
 spriteid:'empoleon-alt',
 requiredItem:'Empoleonite',battleOnly:'Empoleon',changesFrom:'Empoleon',
@@ -17577,6 +17577,36 @@ CUSTOM_SPECIES_UPDATES.scizormega=Object.assign({},CUSTOM_SPECIES_UPDATES.scizor
 CUSTOM_SPECIES_UPDATES.floatzel=Object.assign({},CUSTOM_SPECIES_UPDATES.floatzel,{abilities:{0:"Swift Swim",1:"Life Guard",H:"Battle Fervor"}});for(var _i10=0,_Object$entries6=
 
 Object.entries({
+"empoleon":{
+"baseStats":{
+"hp":84,
+"atk":86,
+"def":88,
+"spa":111,
+"spd":101,
+"spe":65
+},
+"abilities":{
+"0":"Competitive",
+"1":"Exalt",
+"H":"Royal Decree"
+},
+"replaceAbilities":true
+},
+"empoleonmega":{
+"baseStats":{
+"hp":84,
+"atk":116,
+"def":118,
+"spa":126,
+"spd":121,
+"spe":70
+},
+"abilities":{
+"0":"Emperor's Resolve"
+},
+"replaceAbilities":true
+},
 "mienshao":{
 "baseStats":{
 "hp":65,
