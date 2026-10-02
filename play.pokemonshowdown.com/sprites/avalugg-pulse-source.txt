@@ -1,0 +1,7 @@
+Avalugg-Pulse sprite provenance
+
+Pokemon Reborn artwork; individual artist and asset-specific open license not established.
+Complete front: first embedded PNG at https://andrew-foote.github.io/reborn-db-site/pokemon_sprites/avalugg_pulse.html (Andrew Foote extraction gallery), 192x256, unchanged.
+Matching custom mountain back: https://www.reatomized.com/Graphics/Battlers/avalugg.png, observed at https://www.reatomized.com/pokemon/AVALUGG/0 . Crop (0,576,192,192), no resizing or pixel changes.
+The supplied sheet clips the front's legs; the complete public front preserves the same design and full artwork. No shiny artwork invented; normal art reused for shiny selections.
+Retrieved 2026-10-02 for authorized local integration. Public-source files do not carry the original Library identity.

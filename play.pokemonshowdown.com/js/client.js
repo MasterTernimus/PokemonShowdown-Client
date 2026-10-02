@@ -975,6 +975,47 @@ function toId() {
 		/**
 		 * Receive from sim server
 		 */
+		usernameColors: null,
+		usernameColorWatches: null,
+		watchUsernameColor: function (id) {
+			if (!/^[a-z0-9]{1,18}$/.test(id)) return;
+			if (!this.usernameColorWatches) this.usernameColorWatches = Object.create(null);
+			if (this.usernameColorWatches[id]) return;
+			this.usernameColorWatches[id] = 1;
+			if (this.usernameColorTimer) return;
+			var self = this;
+			this.usernameColorTimer = setTimeout(function flush() {
+				self.usernameColorTimer = null;
+				if (self.isDisconnected) { self.usernameColorWatches = null; return; }
+				var ids = Object.keys(self.usernameColorWatches || {}).filter(function (name) { return self.usernameColorWatches[name] === 1; }).slice(0, 100);
+				if (!ids.length) return;
+				ids.forEach(function (name) { self.usernameColorWatches[name] = 2; });
+				self.send('/usernamecolor watch ' + ids.join(','));
+				self.usernameColorTimer = setTimeout(flush, 250);
+			}, 250);
+		},
+		applyUsernameColors: function (data) {
+			if (!data || !data.colors || typeof data.colors !== 'object' || Array.isArray(data.colors)) return;
+			if (!this.usernameColors) this.usernameColors = Object.create(null);
+			var self = this;
+			Object.keys(data.colors).forEach(function (id) {
+				var color = data.colors[id];
+				if (!/^[a-z0-9]{1,18}$/.test(id) || (color !== '' && !/^#[0-9a-f]{6}$/i.test(color))) return;
+				if (color) self.usernameColors[id] = color;
+				else delete self.usernameColors[id];
+				delete BattleLog.colorCache[id];
+			});
+			var light = '', dark = '';
+			Object.keys(this.usernameColors).forEach(function (id) {
+				light += '--username-bg-' + id + ':#eef2ef;--username-' + id + ':' + BattleLog.readableUsernameColor(self.usernameColors[id], false) + ';';
+				dark += '--username-bg-' + id + ':#303e40;--username-' + id + ':' + BattleLog.readableUsernameColor(self.usernameColors[id], true) + ';';
+			});
+			var style = document.getElementById('account-username-colors');
+			if (!style) { style = document.createElement('style'); style.id = 'account-username-colors'; document.head.appendChild(style); }
+			style.textContent = ':root{' + light + '}html.dark{' + dark + '}';
+			if (data.own && data.own.userid === this.user.get('userid')) this.usernameColorAccount = {userid: data.own.userid, registered: data.own.registered === true, color: this.usernameColors[data.own.userid] || ''};
+			this.trigger('usernamecolor', data);
+		},
 		receive: function (data) {
 			var roomid = '';
 			var autojoined = false;
@@ -1104,6 +1145,11 @@ function toId() {
 				break;
 
 			case 'challstr':
+				this.usernameColorRestore = Object.keys(this.usernameColorWatches || {});
+				this.usernameColors = null;
+				this.usernameColorWatches = null;
+				this.usernameColorAccount = null;
+				$('#account-username-colors').remove();
 				if (parts[2]) {
 					this.user.receiveChallstr(parts[1] + '|' + parts[2]);
 				} else {
@@ -1153,6 +1199,11 @@ function toId() {
 					away: parsed.away
 				});
 				this.user.setPersistentName(named ? parsed.name : null);
+				this.usernameColorWatches = null;
+				this.watchUsernameColor(userid);
+				(this.usernameColorRestore || []).forEach(this.watchUsernameColor.bind(this));
+				this.usernameColorRestore = null;
+				if (this.usernameColors) Object.keys(this.usernameColors).forEach(this.watchUsernameColor.bind(this));
 				if (named) {
 					this.trigger('init:choosename');
 				}
@@ -1168,6 +1219,7 @@ function toId() {
 
 			case 'queryresponse':
 				var responseData = JSON.parse(data.substr(16 + parts[1].length));
+				if (parts[1] === 'usernamecolor') this.applyUsernameColors(responseData);
 				app.trigger('response:' + parts[1], responseData);
 				break;
 

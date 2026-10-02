@@ -434,6 +434,17 @@
 			return false;
 		},
 		parseCommand: function (text) {
+			var calculatorCommand = /^\/(calc|calculator|damagecalc|damagecalculator)(?:\s+([\s\S]*))?$/i.exec(text.trim());
+			if (calculatorCommand) {
+				if ((calculatorCommand[2] || '').trim()) {
+					this.add('|error|Use /calc without arguments. For arithmetic, use /calculate.');
+				} else if (window.CustomCalculatorRoom && app.rooms[''] && app.rooms[''].customCalculator) {
+					app.rooms[''].customCalculator();
+				} else {
+					this.add('|error|Calculator unavailable. Reload the client and try /calc again.');
+				}
+				return '';
+			}
 			var cmd = '';
 			var target = '';
 			var noSpace = false;

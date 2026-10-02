@@ -803,13 +803,13 @@ describe('Team Builder sprites', () => {
 		assert.match(Dex.abilities.get('Pollen Bloom').desc, /Unaware/);
 		assert.match(Dex.abilities.get('Territorial').desc, /next Ground attack.*heal 1\/8/);
 		assert.match(Dex.abilities.get('Lunar Dread').desc, /mark foes for 2 turns/);
-		assert.match(Dex.abilities.get('Atrocity').desc, /Wildfire Core.*Levitate.*Proficient/);
+		assert.match(Dex.abilities.get('Atrocity').desc, /Unbound Blaze.*Levitate.*Proficient/);
 		assert(!Dex.getAbilityEffects('atrocity').has('moldbreaker'));
 		assert.match(Dex.abilities.get('Ancient Bloom').desc, /Pollen Bloom/);
 		assert.match(Dex.abilities.get('Fortress Shell').desc, /Water Barrage/);
 		assert.match(Dex.abilities.get('Fortress Shell').desc, /Friend Guard/);
 		assert.doesNotMatch(Dex.abilities.get('Fortress Shell').shortDesc, /Friend Guard|Dual Wield/);
-		assert.match(Dex.abilities.get('Burning Crown').desc, /Wildfire Core/);
+		assert.match(Dex.abilities.get('Burning Crown').desc, /Unbound Blaze/);
 		assert.match(Dex.abilities.get('Burning Crown').desc, /20% less damage/);
 		assert.doesNotMatch(Dex.abilities.get('Burning Crown').desc, /Filter/);
 		assert.doesNotMatch(Dex.abilities.get('Burning Crown').shortDesc, /Filter/);
@@ -828,7 +828,7 @@ describe('Team Builder sprites', () => {
 		assert(Dex.getAbilityEffects('stillwaters').has('magicguard'));
 		assert(Dex.getAbilityEffects('stillwaters').has('unaware'));
 		assert(!Dex.getAbilityEffects('fortressshell').has('friendguard'));
-		assert(Dex.getAbilityEffects('burningcrown').has('wildfirecore'));
+		assert(Dex.getAbilityEffects('burningcrown').has('unboundblaze'));
 		assert(Dex.getAbilityEffects('burningcrown').has('filter'));
 		assert(Dex.getAbilityEffects('pollenbloom').has('thickfat'));
 		assert(Dex.getAbilityEffects('toxicbloom').has('thickfat'));

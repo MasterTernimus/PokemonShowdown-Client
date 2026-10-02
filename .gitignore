@@ -28,3 +28,6 @@ caches/PokemonShowdown-Reborn/
 
 # Reviewed server-data provenance and parity fixture.
 !server-data-sync-manifest.json
+
+# Keep regression tests versioned despite the generated-JavaScript rule.
+!test/**/*.js

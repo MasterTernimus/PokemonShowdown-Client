@@ -1,0 +1,6 @@
+Camerupt-Pulse sprite provenance
+
+Front: Pokemon Reborn team artwork, extracted by Andrew Foote at https://andrew-foote.github.io/reborn-db-site/pokemon_sprites/camerupt_pulse.html (first embedded PNG, 192x192). Individual artist and asset-specific open license not established.
+Back: user-approved generated derivative, downloaded by the user as ChatGPT Image Oct 2, 2026, 01_39_59 AM.png, 192x192 RGBA. Copied unchanged from the explicitly provided Downloads file; original generated alpha values retained. Related approved Library reference: libfile_a21ffdee98d48191ab2af02c0f92cc17. Local-file ingestion does not claim Library identity metadata was transferred.
+No shiny artwork created; normal front/back art reused for shiny selections.
+Local integration 2026-10-02; server mechanics and publication are separate.

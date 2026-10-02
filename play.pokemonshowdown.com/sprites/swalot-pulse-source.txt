@@ -1,0 +1,10 @@
+Swalot-Pulse sprite provenance
+
+Artwork: Pokemon Reborn team. Individual artist and asset-specific open license not established.
+Extraction gallery: Andrew Foote, https://andrew-foote.github.io/reborn-db-site/pokemon_sprites/swalot_pulse.html
+Gallery project provenance: https://andrew-foote.github.io/reborn-db-site/about.html
+
+Front: first embedded PNG, original 192x228, cropped at (0,4) to 192x192 without resizing or changing visible pixels.
+Back: third embedded PNG, original 192x192, copied unchanged. Uses the user-accepted smaller rear silhouette.
+The blank second/fourth PNGs are not shiny artwork. No shiny assets created.
+Retrieved 2026-10-02 for authorized local integration. No original Library identity assigned to these public-source files.

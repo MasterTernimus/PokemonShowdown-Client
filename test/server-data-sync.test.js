@@ -27,8 +27,8 @@ describe('Server data synchronization', () => {
 
 			it('matches the reviewed server snapshot, including newly added abilities', () => {
 				const snapshot = require('../server-data-sync-manifest.json').snapshot;
-				for (const kind of ['species', 'abilities', 'moves']) {
-					for (const [id, expected] of Object.entries(snapshot[kind])) {
+				for (const kind of ['species', 'abilities', 'moves', 'items']) {
+					for (const [id, expected] of Object.entries(snapshot[kind] || {})) {
 						const actual = dex[kind].get(id);
 						for (const [key, value] of Object.entries(expected)) {
 							if (key === 'replaceAbilities') continue;
@@ -38,6 +38,132 @@ describe('Server data synchronization', () => {
 					}
 				}
 				assert.equal(dex.species.get('Sylveon').abilities[1], 'Soothing Presence');
+			});
+
+			it('keeps Skeledirge-Aevian and Glimmora-Aevian selectable with current ability slots', () => {
+				for (const name of ['Skeledirge-Aevian', 'Glimmora-Aevian']) {
+					assert.equal(dex.species.get(name).tier, 'OU', name);
+				}
+				assert.equal(dex.species.get('Skeledirge-Aevian').abilities.H, 'Venom Canticle');
+				assert.equal(dex.species.get('Glimmora-Aevian').abilities[0], 'Memory Leak');
+			});
+
+			it('publishes Soul Siphon with its unique custom number and generation', () => {
+				assert.equal(dex.abilities.get('Soul Siphon').num, 11232);
+				assert.equal(dex.abilities.get('Soul Siphon').gen, 9);
+			});
+
+			it('keeps signature selector previews compact without replacing full mechanics', () => {
+				for (const id of ['searescuer', 'dreepyvanguard', 'groundingtail', 'updraft', 'currentcoil', 'stillwater']) {
+					const ability = dex.abilities.get(id);
+					assert(ability.shortDesc.length < 100, id);
+					assert.notEqual(ability.shortDesc, ability.desc, id);
+				}
+				const ability = dex.abilities.get('dreepyvanguard');
+				assert.equal(ability.shortDesc, 'Stalwart. Once per entry, Dragon Darts damage breaks the matching screen.');
+				assert(ability.desc.includes('after both darts finish'));
+				assert(ability.desc.includes('Ability changes do not refresh'));
+			});
+
+			it('retains named components and the new Soul Pyre effects in concise previews', () => {
+				const soul = dex.abilities.get('soulcremation');
+				for (const name of ['Soul Siphon', 'Soul Pyre', 'Malice Well']) assert(soul.shortDesc.includes(name), name);
+				for (const component of ['soulsiphon', 'soulpyre', 'malicewell', 'flamebody']) {
+					assert(dex.getAbilityEffects('soulcremation').has(component), component);
+				}
+				assert(dex.getAbilityEffects('malicewell').has('flamebody'));
+				assert.match(dex.abilities.get('malicewell').shortDesc, /Flame Body.*first hostile damaging move per entry/);
+				assert.match(dex.abilities.get('malicewell').desc, /after the entire move finishes.*Protect, misses and immunity/);
+				assert.match(soul.desc, /Malice Well includes full Flame Body/);
+				assert(dex.abilities.get('soulpyre').exists);
+				assert.match(dex.abilities.get('soulpyre').shortDesc, /1\/8.*Ghost hits/);
+			});
+
+			if (process.env.PS_SERVER_SOURCE) it('matches every effective server display summary and full description', () => {
+				const server = process.env.PS_SERVER_SOURCE;
+				const authoritative = require(path.join(server, 'dist/sim/dex')).Dex;
+				const display = require(path.join(server, 'dist/data/ability-display')).getAbilityDisplayComponents;
+				let checked = 0;
+				for (const ability of authoritative.abilities.all()) {
+					if (!display(ability.id).length) continue;
+					assert.equal(dex.abilities.get(ability.id).shortDesc, ability.shortDesc, ability.id + ' preview');
+					assert.equal(dex.abilities.get(ability.id).desc, ability.desc, ability.id + ' full details');
+					checked++;
+				}
+				assert(checked >= 375, 'includes all composite display entries');
+			});
+
+			it('preserves approved Wigglytuff and base Kingler updates without changing Gmax', () => {
+				const plain = value => JSON.parse(JSON.stringify(value));
+				const wigglytuff = dex.species.get('wigglytuff');
+				assert.deepEqual(plain(wigglytuff.types), ['Normal', 'Fairy']);
+				assert.deepEqual(plain(wigglytuff.baseStats), {hp: 150, atk: 50, def: 70, spa: 110, spd: 80, spe: 45});
+				assert.deepEqual(plain(wigglytuff.abilities), {0: 'Fluffy', 1: 'Reinflate', H: 'Punk Rock'});
+				const learns = require(path.join(client, 'data/learnsets')).BattleLearnsets;
+				assert(learns.wigglytuff.learnset.roar.includes('9M'));
+				assert.deepEqual(plain(dex.species.get('kingler').types), ['Water', 'Steel']);
+				assert.deepEqual(plain(dex.species.get('kingler').abilities), {0: 'Shell Armor', 1: 'Titan Pincer', H: 'Shellcracker'});
+				assert.deepEqual(plain(dex.species.get('kinglergmax').types), ['Water', 'Bug']);
+				assert.deepEqual(plain(dex.species.get('kinglergmax').abilities), {0: 'Tidal Dominion'});
+				assert.match(dex.abilities.get('reinflate').desc, /Once per turn.*finishes.*actual HP damage.*remains active and survives/);
+				assert.match(dex.abilities.get('reinflate').shortDesc, /1\/8/);
+				assert.match(dex.abilities.get('titanpincer').desc, /Crabhammer and physical Steel-type moves.*Defense.*higher/);
+				assert(dex.getAbilityEffects('titanpincer').has('hypercutter'));
+			});
+
+			it('loads real Swalot-Pulse data and Anomaly Core routing', () => {
+				const swalot = dex.species.get('swalotpulse');
+				assert(swalot.exists);
+				assert.deepEqual(JSON.parse(JSON.stringify(swalot.types)), ['Water', 'Poison']);
+				assert.equal(swalot.bst, 630);
+				assert.equal(swalot.abilities[0], 'Pulse Filtration');
+				assert.equal(swalot.changesFrom, 'Swalot');
+				assert.equal(dex.items.get('anomalycore').megaStone.Swalot, 'Swalot-Pulse');
+				assert(dex.abilities.get('pulsefiltration').exists);
+			});
+
+			if (process.env.PS_SERVER_SOURCE) it('matches current batch species without applying blocked proposals', () => {
+				const authoritative = require(path.join(process.env.PS_SERVER_SOURCE, 'dist/sim/dex')).Dex;
+				for (const id of ['persian', 'kingdra', 'ampharos', 'ampharosmega', 'bellossom', 'corsola', 'octillery', 'slaking', 'swalotpulse', 'cameruptpulse', 'houndoom', 'houndoommega', 'victreebelmega', 'masquerain', 'miltank']) {
+					for (const key of ['types', 'baseStats', 'abilities']) {
+						assert.deepEqual(JSON.parse(JSON.stringify(dex.species.get(id)[key])), JSON.parse(JSON.stringify(authoritative.species.get(id)[key])), id + '.' + key);
+					}
+				}
+				const learns = require(path.join(client, 'data/learnsets')).BattleLearnsets;
+				assert(learns.octillery.learnset.trickroom);
+			});
+
+			it('loads actual Camerupt-Pulse stats, item routing, and preserves absent blocked forms', () => {
+				const form = dex.species.get('cameruptpulse');
+				assert(form.exists);
+				assert.deepEqual(JSON.parse(JSON.stringify(form.types)), ['Fire', 'Ghost']);
+				assert.deepEqual(JSON.parse(JSON.stringify(form.baseStats)), {hp: 1, atk: 10, def: 10, spa: 170, spd: 10, spe: 10});
+				assert.equal(form.abilities[0], 'Pulse Eruption');
+				assert.equal(dex.items.get('anomalycore').megaStone.Camerupt, 'Camerupt-Pulse');
+				assert(dex.items.get('anomalycore').itemUser.includes('Camerupt'));
+				for (const [id, types, stats, ability, bst] of [
+					['avaluggpulse', ['Ice'], [105, 145, 210, 44, 140, 10], 'Pulse Blockade', 654],
+					['magnezonepulse', ['Electric', 'Steel'], [100, 70, 145, 175, 120, 60], 'Pulse Triad', 670],
+					['mrmimepulse', ['Ghost', 'Dark'], [85, 45, 110, 100, 140, 90], 'Pulse Bulwark', 570],
+				]) {
+					const species = dex.species.get(id);
+					assert(species.exists, id);
+					assert.deepEqual(JSON.parse(JSON.stringify(species.types)), types, id);
+					assert.deepEqual(Object.values(JSON.parse(JSON.stringify(species.baseStats))), stats, id);
+					assert.equal(species.abilities[0], ability, id);
+					assert.equal(species.bst, bst, id);
+				}
+				const core = dex.items.get('anomalycore');
+				for (const [base, form] of [['Avalugg', 'Avalugg-Pulse'], ['Avalugg-Hisui', 'Avalugg-Pulse'], ['Magnezone', 'Magnezone-Pulse'], ['Mr. Mime', 'Mr. Mime-Pulse']]) {
+					assert.equal(core.megaStone[base], form);
+					assert(core.itemUser.includes(base));
+				}
+				assert.equal(dex.abilities.get('holycow').num, 11226);
+				assert.notEqual(dex.abilities.get('holycow').num, dex.abilities.get('agonyflame').num);
+				assert(!dex.getAbilityEffects('nightmarepulse').has('infiltrator'));
+				for (const component of ['hydrabond', 'levitate', 'clearbody']) assert(dex.getAbilityEffects('pulsetriad').has(component));
+				const learns = require(path.join(client, 'data/learnsets')).BattleLearnsets;
+				assert(learns.mrmime.learnset.darkpulse);
 			});
 
 			it('resolves assigned composite abilities and their component effects', () => {

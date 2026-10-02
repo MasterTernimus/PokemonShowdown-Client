@@ -14,9 +14,10 @@ const base = process.env.PS_SERVER_BASE || 'HEAD';
 const git = args => cp.execFileSync('git', args, {cwd: server, encoding: 'utf8', maxBuffer: 32 * 1024 * 1024});
 const {Dex} = require(path.join(server, 'dist/sim/dex'));
 Dex.includeData();
-const groups = {species: new Set(), abilities: new Set(), moves: new Set()};
-const tables = {species: Dex.data.Pokedex, abilities: Dex.data.Abilities, moves: Dex.data.Moves};
-const changed = git(['diff', '--name-only', base, '--', 'data']).trim().split('\n').filter(Boolean);
+const groups = {species: new Set(), abilities: new Set(), moves: new Set(), items: new Set()};
+const tables = {species: Dex.data.Pokedex, abilities: Dex.data.Abilities, moves: Dex.data.Moves, items: Dex.data.Items};
+const changed = [...new Set((git(['diff', '--name-only', base, '--', 'data']) + '\n' +
+	git(['ls-files', '--others', '--exclude-standard', '--', 'data'])).trim().split('\n').filter(Boolean))];
 for (const file of changed) {
 	if (!file.endsWith('.ts') || !fs.existsSync(path.join(server, file))) continue;
 	const text = fs.readFileSync(path.join(server, file), 'utf8');
@@ -37,8 +38,14 @@ for (const file of changed) {
 	visit(source);
 }
 if (!Object.values(groups).some(ids => ids.size)) throw new Error('No changed entries. Supply the approved PS_SERVER_BASE; refusing to erase the snapshot.');
+// Computed display summaries can change without a property-level source diff.
+// Include their effective Dex values so older client overrides cannot mask them.
+const {getAbilityDisplayComponents} = require(path.join(server, 'dist/data/ability-display'));
+for (const id of Object.keys(tables.abilities)) {
+	if (getAbilityDisplayComponents(id).length) groups.abilities.add(id);
+}
 const select = (entry, keys) => Object.fromEntries(keys.map(key => [key, entry[key]]).filter(([, value]) => value !== undefined));
-const snapshot = {species: {}, abilities: {}, moves: {}, components: {}};
+const snapshot = {species: {}, abilities: {}, moves: {}, items: {}, components: {}};
 const {AbilityComponents} = require(path.join(server, 'dist/data/ability-components'));
 for (const id of [...groups.species].sort()) {
 	const data = Dex.species.get(id);
@@ -46,12 +53,16 @@ for (const id of [...groups.species].sort()) {
 }
 for (const id of [...groups.abilities].sort()) {
 	const data = Dex.abilities.get(id);
-	snapshot.abilities[id] = select(data, ['name', 'num', 'desc', 'shortDesc', 'rating', 'flags', 'isNonstandard']);
+	snapshot.abilities[id] = select(data, ['name', 'num', 'gen', 'desc', 'shortDesc', 'rating', 'flags', 'isNonstandard']);
 	snapshot.components[id] = AbilityComponents[id] || [];
 }
 for (const id of [...groups.moves].sort()) {
 	const data = Dex.moves.get(id);
 	snapshot.moves[id] = select(data, ['name', 'num', 'type', 'category', 'basePower', 'accuracy', 'pp', 'priority', 'target', 'flags', 'desc', 'shortDesc']);
+}
+for (const id of [...groups.items].sort()) {
+	const data = Dex.items.get(id);
+	snapshot.items[id] = select(data, ['name', 'num', 'desc', 'shortDesc', 'gen', 'isNonstandard', 'megaStone', 'megaEvolves', 'itemUser', 'zMove', 'zMoveType', 'zMoveFrom', 'fling', 'naturalGift']);
 }
 const target = path.join(root, 'play.pokemonshowdown.com/src/battle-dex.ts');
 let source = fs.readFileSync(target, 'utf8');
@@ -66,9 +77,10 @@ const json = data => JSON.stringify(data, null, '\t');
 block('SPECIES', 'const CUSTOM_SPECIES_UPDATE_IDS =', `for (const [id, update] of Object.entries(${json(snapshot.species)})) {\n\tCUSTOM_SPECIES_UPDATES[id] = {...CUSTOM_SPECIES_UPDATES[id], ...update};\n\tif (CUSTOM_SPECIES[id]) Object.assign(CUSTOM_SPECIES[id].data, update);\n}`);
 block('ABILITIES', 'const CUSTOM_ABILITY_UPDATE_IDS =', `Object.assign(CUSTOM_ABILITY_UPDATES, ${json(snapshot.abilities)});`);
 block('MOVES', 'const CUSTOM_MOVE_UPDATE_IDS =', `Object.assign(CUSTOM_MOVE_UPDATES, ${json(snapshot.moves)});\nObject.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, ${json(snapshot.components)});`);
+block('ITEMS', 'const CUSTOM_ITEM_IDS =', `Object.assign(CUSTOM_ITEM_UPDATES, ${json(snapshot.items)});`);
 fs.writeFileSync(target, source);
 const hash = crypto.createHash('sha256');
 for (const file of changed.sort()) { hash.update(file); hash.update(fs.readFileSync(path.join(server, file), 'utf8').replace(/\r\n/g, '\n')); }
 const manifest = {sourceHead: git(['rev-parse', 'HEAD']).trim(), base, sourceDataSHA256: hash.digest('hex'), files: changed, snapshot};
 fs.writeFileSync(path.join(root, 'server-data-sync-manifest.json'), JSON.stringify(manifest, null, '\t') + '\n');
-console.log(JSON.stringify({species: groups.species.size, abilities: groups.abilities.size, moves: groups.moves.size, sourceHead: manifest.sourceHead, sourceDataSHA256: manifest.sourceDataSHA256}));
+console.log(JSON.stringify({species: groups.species.size, abilities: groups.abilities.size, moves: groups.moves.size, items: groups.items.size, sourceHead: manifest.sourceHead, sourceDataSHA256: manifest.sourceDataSHA256}));

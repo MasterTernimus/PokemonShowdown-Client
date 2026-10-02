@@ -1,0 +1,5 @@
+Magnezone-Pulse sprite provenance
+
+Front: exact public artwork at https://xephy.github.io/assets/images/battler/magnezone_1.png, 170x186 RGBA, copied unchanged including alpha. Individual artist and asset-specific license not established.
+Back: user-approved generated derivative downloaded as e8b30578-8460-490f-ab6a-1dcf2f1fe6d1.png, 192x192 RGBA, copied byte-for-byte from the explicitly provided Windows Downloads file.
+No shiny artwork created; normal artwork reused for shiny selections. Local integration 2026-10-02; server mechanics/publication are separate.

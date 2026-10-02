@@ -356,3 +356,24 @@
 .dexlist .ppsortcol {
 	width: 23px;
 }
+
+/* Ability descriptions can wrap without covering the next result. */
+.dexlist li.abilityresult > a {
+	display: flex;
+	align-items: flex-start;
+	min-height: 30px;
+	height: auto;
+}
+.dexlist li.abilityresult .namecol {
+	flex: 0 0 120px;
+	height: auto;
+}
+.dexlist li.abilityresult .abilitydesccol {
+	flex: 1 1 auto;
+	float: none;
+	width: auto;
+	min-width: 0;
+	height: auto;
+	padding: 6px 0;
+	overflow-wrap: anywhere;
+}
