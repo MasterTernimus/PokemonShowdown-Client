@@ -2,7 +2,7 @@
 
 	this.MainMenuRoom = this.Room.extend({
 		type: 'mainmenu',
-		customCalculator: function () { app.addPopup(CustomCalculatorPopup); },
+		customCalculator: function () { if (!app.rooms.calculator) app.addRoom('calculator', CustomCalculatorRoom, true, 'Calculator'); app.focusRoom('calculator'); app.topbar.updateTabbar(); },
 		tinyWidth: 340,
 		bestWidth: 628,
 		events: {
@@ -913,8 +913,8 @@
 			buf += '<p><label class="label">Format:</label>' + this.renderFormats(format) + '</p>';
 			buf += '<p><label class="label">Team:</label>' + this.renderTeams(format) + '</p>';
 			buf += '<p><label class="checkbox"><input type="checkbox" name="private" ' + (Storage.prefs('disallowspectators') ? 'checked' : '') + ' /><abbr title="You can still invite spectators by giving them the URL or using the /invite command">Don\'t allow spectators</abbr></label></p>';
-			buf += '<details class="challenge-options"><summary>Battle options</summary><p><label>Starting weather: <select name="startingweather" disabled><option value="">Format default</option><option value="raindance">Rain</option><option value="sunnyday">Sun</option><option value="sandstorm">Sandstorm</option><option value="hail">Hail</option></select></label><small class="weather-reason">Checking format support…</small></p>';
-			buf += '<p><label>Shared gimmick uses per trainer: <select name="gimmicklimit" disabled><option value="">Format default</option><option value="0">0</option><option value="1">1</option><option value="2">2</option></select></label><small class="gimmicks-reason">Checking format support…</small></p><p><small>Gen 9 engine only. Existing mechanic bans and caps apply. Weather has normal duration and may change. Applies equally to each trainer, including FFA and supported Multi formats.</small></p></details>';
+			buf += '<details class="challenge-options"><summary>Battle options</summary><p><label>Weather: <select name="startingweather" disabled><option value="">Format default</option><option value="raindance">Rain</option><option value="sunnyday">Sun</option><option value="sandstorm">Sandstorm</option><option value="hail">Hail</option></select></label><small class="weather-reason">Checking format support…</small></p>';
+			buf += '<p><label>Gimmicks / trainer: <select name="gimmicklimit" disabled><option value="">Format default</option><option value="0">0</option><option value="1">1</option><option value="2">2</option></select></label><small class="gimmicks-reason">Checking format support…</small></p><p><small>Gen 9 · Same allowance for every trainer. Format bans and caps apply.</small></p></details>';
 			var bestOfDefault = format && BattleFormats[format] ? BattleFormats[format].bestOfDefault : false;
 			buf += '<p><label class="checkbox"><input type="checkbox" name="official"/>Official match</label></p>';
 			buf += '<p' + (!bestOfDefault ? ' class="hidden">' : '>');
@@ -926,7 +926,7 @@
 		refreshChallengeOptions: function ($form) {
 			if (!$form.find('.challenge-options').length) return;
 			$form.find('.challenge-options select').val('').prop('disabled', true);
-			$form.find('.weather-reason, .gimmicks-reason').text('Checking format support. Defaults remain available.');
+			$form.find('.weather-reason, .gimmicks-reason').text('Checking support…');
 			app.send('/cmd challengeoptions ' + $form.find('button[name=format]').val());
 		},
 		receiveChallengeOptions: function (data) {
@@ -940,7 +940,11 @@
 					var $select = $form.find('select[name=' + (key === 'weather' ? 'startingweather' : 'gimmicklimit') + ']');
 					$select.prop('disabled', !!reason);
 					if (reason) $select.val('');
-					$form.find('.' + key + '-reason').text(reason || (key === 'weather' ? 'Normal duration; weather can change.' : '0–2 shared uses per trainer; existing mechanic bans still apply.'));
+					var hint = reason;
+					if (reason.indexOf('random field') >= 0) hint = 'Unavailable on a random field. Choose a fixed field.';
+					else if (reason.indexOf('Gen 9') >= 0) hint = 'Gen 9 only.';
+					else if (reason.indexOf('Multi 1v2') >= 0) hint = 'Unavailable in solo Multi 1v2.';
+					$form.find('.' + key + '-reason').attr('title', reason).text(hint || (key === 'weather' ? 'Normal duration; can change.' : '0–2 shared uses per trainer; existing mechanic bans still apply.'));
 				});
 			});
 		},
@@ -1669,9 +1673,9 @@
 	});
 
 	var CustomCalculatorPopup = this.CustomCalculatorPopup = Popup.extend({
-		type: 'semimodal',
+		type: 'modal',
 		className: 'ps-popup custom-calculator',
-		events: {'input input': 'scenarioEdited', 'change select': 'scenarioEdited', 'change input': 'scenarioEdited'},
+		events: {'input input': 'scenarioEdited', 'change select': 'scenarioEdited', 'change input': 'scenarioEdited', 'input [name=species]': 'searchSpecies', 'input [name=calc-field-search]': 'searchFields', 'change [name=calc-mode]': 'changeMode'},
 		initialize: function () {
 			this.scenarioRevision = 0;
 			this.pendingScenario = null;
@@ -1700,7 +1704,7 @@
 			this.$el.attr('aria-busy', 'false');
 			this.$('button[name=calculate]').prop('disabled', false);
 			this.$('.calc-results').empty();
-			this.$('.calc-status').removeClass('calc-error').text('Scenario changed. Calculate again for these settings.');
+			this.$('.calc-status').removeClass('calc-error').text('Settings changed. Calculate again.');
 			this.refreshActors();
 		},
 		refreshActors: function () {
@@ -1712,15 +1716,49 @@
 				(species.exists ? species.types : []).forEach(function (type) { html += '<span>' + self.escape(type) + '</span>'; });
 				html += '<span>' + self.escape($actor.find('[name=ability]').val() || 'Default ability') + '</span></div></div>';
 				$actor.find('.calc-identity').html(html);
+				var info = (self.metadata.species || []).find(function (p) { return toID(p.name) === species.id; });
+				var slots = '';
+				Object.keys(info ? info.abilities : {}).forEach(function (slot) { var name = info.abilities[slot]; slots += '<button type="button" class="button" name="chooseAbility" value="' + $actor.attr('data-slot') + ':' + self.escape(name) + '">' + self.escape(slot === 'H' ? 'Hidden' : slot === 'S' ? 'Special' : 'Slot ' + (Number(slot) + 1)) + ': ' + self.escape(name) + '</button> '; });
+				$actor.find('.calc-ability-slots').html(slots);
+				var parts = (self.metadata.abilityComponents || {})[toID($actor.find('[name=ability]').val())] || [];
+				$actor.find('.calc-component-details').toggle(!!parts.length);
+				$actor.find('.calc-components').text(parts.length ? 'Components: ' + parts.join(' · ') + '. Each effect has its own conditions.' : 'No composite components listed.');
 				var spec = self.readActor(Number($actor.attr('data-slot')));
 				var evTotal = Object.keys(spec.evs).reduce(function (total, stat) { return total + spec.evs[stat]; }, 0);
 				var stages = Object.keys(spec.boosts).filter(function (stat) { return spec.boosts[stat] !== 0; }).length;
 				$actor.find('.calc-advanced > summary').text('Stats, stages & moveset' + (evTotal ? ' | ' + evTotal + ' EVs' : '') + (stages ? ' | ' + stages + ' changed stages' : '') + (spec.moves ? ' | ' + spec.moves.length + ' moves' : ''));
 			});
 		},
+		searchFields: function () {
+			var q = toID(this.$('[name=calc-field-search]').val());
+			this.$('[name=calc-field] option').each(function () { this.hidden = !!q && toID(this.text).indexOf(q) < 0; });
+		},
+		changeMode: function () {
+			var mode = this.$('[name=calc-mode]').val();
+			var f = this.metadata.formats.find(function (f) { return f.mode === mode && !f.field; }) || this.metadata.formats.find(function (f) { return f.mode === mode; });
+			this.$('[name=calc-format]').val(f.id);
+			this.scenarioEdited();
+		},
+		searchSpecies: function (e) {
+			var self = this, $actor = $(e.target).closest('.calc-actor'), q = toID(e.target.value), index = $actor.attr('data-slot');
+			var matches = (this.metadata.species || []).filter(function (p) { return q && toID(p.name).indexOf(q) >= 0; }).slice(0, 12);
+			$actor.find('.calc-species-results').html(matches.map(function (p) { return '<button type="button" class="button" name="chooseSpecies" value="' + index + ':' + self.escape(p.name) + '">' + self.escape(p.name) + '</button>'; }).join(' ') || 'No matching Pokémon.');
+			this.scenarioEdited();
+		},
+		chooseSpecies: function (value) {
+			var parts = value.split(':'), $actor = this.$('.calc-actor[data-slot=' + parts[0] + ']');
+			var species = this.metadata.species.find(function (p) { return p.name === parts[1]; });
+			$actor.find('[name=species]').val(species.name);
+			$actor.find('[name=ability]').val(species.abilities['0']);
+			$actor.find('.calc-species-results').empty();
+			this.scenarioEdited();
+		},
+		chooseAbility: function (value) {
+			var parts = value.split(':'); this.$('.calc-actor[data-slot=' + parts[0] + '] [name=ability]').val(parts[1]); this.scenarioEdited();
+		},
 		actorHTML: function (index, label) {
-			var buf = '<fieldset class="calc-actor" data-slot="' + index + '"><legend>' + label + '</legend><div class="calc-identity"></div><div class="calc-fields">';
-			[['species', 'Species / form', 'Mew'], ['ability', 'Ability', 'No Ability'], ['item', 'Item', ''], ['nature', 'Nature', 'Serious'], ['level', 'Level', '100'], ['hpPercent', 'Current HP %', '100']].forEach(function (f) {
+			var buf = '<fieldset class="calc-actor" data-slot="' + index + '"><legend>' + label + '</legend><div class="calc-identity"></div><div class="calc-species-results" aria-live="polite"></div><div class="calc-ability-slots" aria-label="Species ability slots"></div><details class="calc-component-details"><summary>Ability details</summary><p class="calc-components"></p></details><div class="calc-fields">';
+			[['species', 'Pokémon', 'Mew'], ['ability', 'Ability', 'No Ability'], ['item', 'Item', ''], ['nature', 'Nature', 'Serious'], ['level', 'Level', '100'], ['hpPercent', 'Current HP %', '100']].forEach(function (f) {
 				buf += '<label>' + f[1] + '<input class="textbox" autocomplete="off" list="calc-list-' + f[0] + '" name="' + f[0] + '" value="' + f[2] + '" /></label>';
 			});
 			buf += '<label>Gender<select name="gender"><option value="">Engine default</option><option value="M">Male</option><option value="F">Female</option><option value="N">Genderless</option></select></label>';
@@ -1740,17 +1778,19 @@
 		},
 		renderCalculator: function () {
 			var self = this;
-			var buf = '<header class="calc-header"><div><span class="calc-eyebrow">REBORN · BATTLE TOOLS</span><h2>Damage calculator</h2></div><button name="close" class="button" aria-label="Close calculator">Close</button></header><p class="calc-intro">Your custom engine. One attack, fresh battle entry. <strong>Sampled outcomes, not guaranteed bounds.</strong></p><section class="calc-conditions" aria-label="Battle conditions"><h3>Battle conditions</h3><div class="calc-condition-grid">';
-			buf += '<label>Mode / full base field <select name="calc-format" style="max-width:95%">';
+			var buf = '<header class="calc-header"><div><span class="calc-eyebrow">REBORN · BATTLE TOOLS</span><h2>Damage calculator</h2></div><button name="close" class="button" aria-label="Close calculator">Close</button></header><p class="calc-intro">Try one attack from a fresh battle. <strong>Sampled results, not guaranteed limits.</strong></p><section class="calc-conditions" aria-label="Battle conditions"><h3>Battle conditions</h3><div class="calc-condition-grid">';
+			buf += '<label hidden><span hidden>Engine rules<select name="calc-format">';
 			this.metadata.formats.forEach(function (f) { buf += '<option value="' + self.escape(f.id) + '"' + (f.id === 'gen9nofieldsinglesgame' ? ' selected' : '') + '>' + self.escape(f.name) + '</option>'; });
+			buf += '</select></span></label><label>Battle mode<select name="calc-mode"><option value="singles">Singles</option><option value="doubles">Doubles</option><option value="freeforall">FFA · 4 trainers</option></select></label><label>Find a field<input class="textbox" name="calc-field-search" placeholder="Search all fields" autocomplete="off" /></label><label>Starting field<select name="calc-field">';
+			(this.metadata.fields || []).forEach(function (f) { buf += '<option value="' + self.escape(f.id) + '">' + self.escape(f.name) + '</option>'; });
 			buf += '</select></label><label>Temporary aura <select name="calc-aura"><option value="">Entry state / none</option>';
 			this.metadata.auras.forEach(function (a) { buf += '<option value="' + self.escape(a.id) + '">' + self.escape(a.name) + '</option>'; });
 			buf += '</select></label> <label>Weather <select name="calc-weather"><option value="">Entry state / format default</option><option value="raindance">Rain</option><option value="sunnyday">Sun</option><option value="sandstorm">Sandstorm</option><option value="hail">Hail</option></select></label></div>';
 			buf += '<p class="calc-screens"><strong>Defender screens</strong> <label><input type="checkbox" name="reflect" /> Reflect</label> <label><input type="checkbox" name="lightscreen" /> Light Screen</label> <label><input type="checkbox" name="auroraveil" /> Aurora Veil</label></p></section>';
-			buf += '<div class="calc-matchup">' + this.actorHTML(0, 'Attacker') + this.actorHTML(1, 'Selected defender') + '</div>';
-			buf += '<details><summary>Other active slots (used in Doubles / FFA)</summary><p>Doubles: attacker ally and defender ally. FFA: two other foes. Defaults are Mew with No Ability.</p><div class="calc-matchup">' + this.actorHTML(2, 'Slot 3') + this.actorHTML(3, 'Slot 4') + '</div></details>';
-			buf += '<section class="calc-action" aria-label="Attack and sampling"><div class="calc-action-fields"><label>Attack <input class="textbox" list="calc-list-move" autocomplete="off" name="calc-move" value="Psychic" /></label> <label>Powered move <select name="calc-powered"><option value="">Normal</option><option value="z">Z-move</option><option value="max">Max move (activate Gmax)</option></select></label><label>Samples <select name="calc-samples"><option>8</option><option selected>32</option><option>64</option></select></label> <label>Seed <input name="calc-seed" type="number" min="1" max="2147483647" value="1"  /></label> </div><button type="button" class="button calc-primary" name="calculate"><strong>Calculate damage</strong></button></section><p class="calc-status" role="status">Choose your sets and attack, then calculate.</p><div class="calc-results" aria-live="polite"></div>';
-			buf += '<details><summary>Scenario JSON: save / load</summary><textarea name="calc-json" rows="5" style="width:98%" aria-label="Scenario JSON"></textarea><br /><button type="button" name="exportScenario" class="button">Export scenario</button> <button type="button" name="importScenario" class="button">Import scenario</button></details><details><summary>Assumptions and coverage</summary><ul>';
+			buf += '<div class="calc-matchup">' + this.actorHTML(0, 'Attacker') + this.actorHTML(1, 'Defender') + '</div>';
+			buf += '<details><summary>Allies / other players</summary><p>Doubles: attacker ally and defender ally. FFA: two other foes. Defaults are Mew with No Ability.</p><div class="calc-matchup">' + this.actorHTML(2, 'Slot 3') + this.actorHTML(3, 'Slot 4') + '</div></details>';
+			buf += '<section class="calc-action" aria-label="Attack and sampling"><div class="calc-action-fields"><label>Move <input class="textbox" list="calc-list-move" autocomplete="off" name="calc-move" value="Psychic" /></label> <label>Powered move <select name="calc-powered"><option value="">Normal</option><option value="z">Z-move</option><option value="max">Max move (activate Gmax)</option></select></label><label>Samples <select name="calc-samples"><option>8</option><option selected>32</option><option>64</option></select></label> <label>Seed <input name="calc-seed" type="number" min="1" max="2147483647" value="1"  /></label> </div><button type="button" class="button calc-primary" name="calculate"><strong>Calculate damage</strong></button></section><p class="calc-status" role="status">Choose Pokémon and a move, then calculate.</p><div class="calc-results" aria-live="polite"></div>';
+			buf += '<details><summary>Save / load setup</summary><textarea name="calc-json" rows="5" style="width:98%" aria-label="Scenario JSON"></textarea><br /><button type="button" name="exportScenario" class="button">Export scenario</button> <button type="button" name="importScenario" class="button">Import scenario</button></details><details><summary>How results work</summary><ul>';
 			this.metadata.assumptions.forEach(function (a) { buf += '<li>' + self.escape(a) + '</li>'; });
 			buf += '</ul><p>Custom type rules apply (including this engine\'s Stellar Tera behavior). These are hypothetical sets; this tool does not validate team legality. Delayed and charging moves can show zero damage for this action. Engine log and resolved forms are shown below each result.</p></details>';
 			buf += '<p class="calc-version"></p>';
@@ -1761,6 +1801,16 @@
 			});
 			this.$el.html(buf).css({position: 'fixed', left: '50%', right: 'auto', top: '3vh', bottom: 'auto', transform: 'translateX(-50%)', width: 'min(1000px, 96vw)', maxWidth: '96vw', maxHeight: '90vh', margin: 0});
 			this.refreshActors();
+			if (this.workspace) {
+				this.$el.removeAttr('style');
+				var draft = app.calculatorDraft;
+				if (draft) { this.$('[name=calc-json]').val(draft); this.importScenario(); }
+				if (app.calculatorInputs) {
+					this.$('input,select,textarea').each(function (i) { var saved = app.calculatorInputs[i]; if (saved && saved.name === this.name) { this.value = saved.value; this.checked = saved.checked; } });
+					this.refreshActors();
+					this.$('.calc-status').text('Draft restored. Calculate when ready.');
+				}
+			}
 			this.$('.calc-version').text('Engine build ' + this.metadata.version.engine + ' — ' + this.metadata.version.builtAt);
 		},
 		readActor: function (index) {
@@ -1810,10 +1860,10 @@
 		},
 		scenario: function () {
 			var self = this;
-			return {format: this.$('[name=calc-format]').val(), move: this.$('[name=calc-move]').val(), aura: this.$('[name=calc-aura]').val(), weather: this.$('[name=calc-weather]').val(), attackMode: this.$('[name=calc-powered]').val(), samples: Number(this.$('[name=calc-samples]').val()), seed: Number(this.$('[name=calc-seed]').val()), actors: [0, 1, 2, 3].map(function (i) { return self.readActor(i); }), screens: ['reflect', 'lightscreen', 'auroraveil'].filter(function (s) { return self.$('[name=' + s + ']').is(':checked'); })};
+			return {format: this.$('[name=calc-format]').val(), field: this.$('[name=calc-field]').val(), move: this.$('[name=calc-move]').val(), aura: this.$('[name=calc-aura]').val(), weather: this.$('[name=calc-weather]').val(), attackMode: this.$('[name=calc-powered]').val(), samples: Number(this.$('[name=calc-samples]').val()), seed: Number(this.$('[name=calc-seed]').val()), actors: [0, 1, 2, 3].map(function (i) { return self.readActor(i); }), screens: ['reflect', 'lightscreen', 'auroraveil'].filter(function (s) { return self.$('[name=' + s + ']').is(':checked'); })};
 		},
 		calculate: function () {
-			this.$('.calc-status').removeClass('calc-error').text('Running isolated engine samples...');
+			this.$('.calc-status').removeClass('calc-error').text('Calculating…');
 			this.$el.attr('aria-busy', 'true');
 			this.$('.calc-results').empty();
 			this.$('button[name=calculate]').prop('disabled', true);
@@ -1841,12 +1891,12 @@
 				var data = JSON.parse(this.$('[name=calc-json]').val());
 				if (!data || !Array.isArray(data.actors) || data.actors.length !== 4) throw new Error('Expected four actor slots.');
 				var self = this;
-				var allowed = ['format', 'move', 'aura', 'weather', 'samples', 'seed', 'attackMode', 'screens', 'actors'];
+				var allowed = ['format', 'field', 'move', 'aura', 'weather', 'samples', 'seed', 'attackMode', 'screens', 'actors'];
 				if (Object.keys(data).some(function (key) { return allowed.indexOf(key) < 0; })) throw new Error('Unsupported scenario field.');
 				for (var i = 0; i < 4; i++) this.validateActorImport(i, data.actors[i]);
-				var defaults = {aura: '', weather: '', samples: 32, seed: 1, attackMode: '', screens: []};
+				var defaults = {field: (this.metadata.formats.find(function (f) { return f.id === data.format; }) || {}).field || '', aura: '', weather: '', samples: 32, seed: 1, attackMode: '', screens: []};
 				Object.keys(defaults).forEach(function (key) { if (data[key] === undefined) data[key] = defaults[key]; });
-				['format', 'aura', 'weather', 'samples', 'attackMode'].forEach(function (key) {
+				['format', 'field', 'aura', 'weather', 'samples', 'attackMode'].forEach(function (key) {
 					var select = self.$('[name=calc-' + (key === 'attackMode' ? 'powered' : key) + ']')[0];
 					if (typeof data[key] !== (key === 'samples' ? 'number' : 'string') || !Array.from(select.options).some(function (option) { return option.value === '' + data[key]; })) throw new Error('Unsupported ' + key + '.');
 				});
@@ -1855,8 +1905,9 @@
 				if (!Array.isArray(data.screens) || data.screens.some(function (key) { return ['reflect', 'lightscreen', 'auroraveil'].indexOf(key) < 0; })) throw new Error('Unsupported screens.');
 				// Commit only after every slot and control can be represented without loss.
 				for (var i = 0; i < 4; i++) this.writeActor(i, data.actors[i]);
-				['format', 'move', 'aura', 'weather', 'samples', 'seed'].forEach(function (key) { self.$('[name=calc-' + key + ']').val(data[key]); });
+				['format', 'field', 'move', 'aura', 'weather', 'samples', 'seed'].forEach(function (key) { self.$('[name=calc-' + key + ']').val(data[key]); });
 				this.$('[name=calc-powered]').val(data.attackMode);
+				this.$('[name=calc-mode]').val(this.metadata.formats.find(function (f) { return f.id === data.format; }).mode);
 				['reflect', 'lightscreen', 'auroraveil'].forEach(function (key) { self.$('[name=' + key + ']').prop('checked', data.screens.indexOf(key) >= 0); });
 				this.$('.calc-status').text('Scenario loaded. Calculate to validate it against the current engine.');
 			} catch (e) { this.$('.calc-status').text('Invalid scenario: ' + e.message); }
@@ -1876,14 +1927,23 @@
 			if (data.formats) { this.metadata = data; this.renderCalculator(); return; }
 			if (!this.pendingScenario) return;
 			var self = this;
-			this.$('.calc-status').text(data.samples + ' reproducible samples, seed ' + data.seed + '. Observed outcomes only; unobserved extremes remain possible.');
+			this.$('.calc-status').text(data.samples + ' samples · Seed ' + data.seed + '. Results may vary.');
 			this.$('.calc-version').text('Engine build ' + data.version.engine + ' — ' + data.version.builtAt);
 			var main = data.results[1];
-			var html = '<div class="calc-result-card"><span class="calc-eyebrow">SELECTED DEFENDER · OBSERVED RANGE</span><div class="calc-result-head"><h3>' + this.escape(data.move) + '</h3><strong>' + main.minPercent.toFixed(1) + '–' + main.maxPercent.toFixed(1) + '%</strong></div><p>' + main.min + '–' + main.max + ' HP removed · Observed KOs: ' + main.kos + '/' + data.samples + ' samples</p><div class="calc-damage-bar" role="img" aria-label="Observed damage ' + main.minPercent.toFixed(1) + ' to ' + main.maxPercent.toFixed(1) + ' percent of maximum HP"><span style="width:' + Math.min(100, main.maxPercent) + '%"></span><b style="width:' + Math.min(100, main.minPercent) + '%"></b></div><small>Bar shows HP removed as a share of max HP. Unobserved extremes remain possible.</small></div><h3>' + this.escape(data.move) + ' — observed damage</h3><div style="overflow:auto"><table class="calc-result-table"><tr><th>Slot</th><th>HP removed</th><th>% max HP</th><th>Net HP loss</th><th>Observed KO frequency</th></tr>';
+			var html = '<div class="calc-result-card"><span class="calc-eyebrow">DEFENDER · SAMPLED DAMAGE</span><div class="calc-result-head"><h3>' + this.escape(data.move) + '</h3><strong>' + main.minPercent.toFixed(1) + '–' + main.maxPercent.toFixed(1) + '%</strong></div><p>' + main.min + '–' + main.max + ' HP removed · KOs: ' + main.kos + '/' + data.samples + ' samples</p><div class="calc-damage-bar" role="img" aria-label="Observed damage ' + main.minPercent.toFixed(1) + ' to ' + main.maxPercent.toFixed(1) + ' percent of maximum HP"><span style="width:' + Math.min(100, main.maxPercent) + '%"></span><b style="width:' + Math.min(100, main.minPercent) + '%"></b></div><small>Percent of max HP lost in these samples.</small></div><h3>' + this.escape(data.move) + ' — observed damage</h3><div style="overflow:auto"><table class="calc-result-table"><tr><th>Slot</th><th>HP removed</th><th>% max HP</th><th>Net HP loss</th><th>Sample KOs</th></tr>';
 			data.results.forEach(function (r) { html += '<tr><th>' + self.escape(r.label) + '</th><td>' + r.min + '–' + r.max + '</td><td>' + r.minPercent.toFixed(1) + '–' + r.maxPercent.toFixed(1) + '%</td><td>' + r.minNetLoss + '–' + r.maxNetLoss + '</td><td>' + r.kos + '/' + data.samples + ' (' + (100 * r.kos / data.samples).toFixed(1) + '%)</td></tr>'; });
-			html += '</table></div><p>No guaranteed KO / 2HKO claim is made from sampled results.</p><details><summary>Resolved engine state and first sample log</summary><pre style="white-space:pre-wrap">' + this.escape(JSON.stringify(data.resolved, null, 2)) + '\n' + this.escape(data.exampleLog.join('\n')) + '</pre></details>';
+			html += '</table></div><p>Samples do not guarantee a KO.</p><details><summary>Battle details</summary><pre style="white-space:pre-wrap">' + this.escape(JSON.stringify(data.resolved, null, 2)) + '\n' + this.escape(data.exampleLog.join('\n')) + '</pre></details>';
 			this.$('.calc-results').html(html);
 		}
 	});
+	var CustomCalculatorRoom = this.CustomCalculatorRoom = Room.extend($.extend({}, CustomCalculatorPopup.prototype, {
+		constructor: function () { Room.apply(this, arguments); },
+		type: 'calculator', title: 'Calculator', workspace: true, minWidth: 320, maxWidth: 1100,
+		initialize: function () { this.$el.addClass('calculator-workspace custom-calculator'); CustomCalculatorPopup.prototype.initialize.call(this); this.$el.removeAttr('style'); },
+		close: function () { app.leaveRoom(this.id); },
+		remove: function () { if (this.metadata) { app.calculatorDraft = JSON.stringify(this.scenario()); app.calculatorInputs = this.$('input,select,textarea').map(function () { return {name: this.name, value: this.value, checked: this.checked}; }).get(); } clearTimeout(this.calcTimer); return Room.prototype.remove.call(this); },
+		destroy: function () { this.remove(); }
+	}));
+
 
 }).call(this, jQuery);

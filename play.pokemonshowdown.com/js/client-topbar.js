@@ -446,10 +446,12 @@
 	var OptionsPopup = this.OptionsPopup = Popup.extend({
 		initialize: function (data) {
 			app.user.on('change', this.update, this);
+			this.listenTo(app, 'usernamecolor', this.usernameColorResponse);
 			app.send('/cmd userdetails ' + app.user.get('userid'));
 			this.update();
 		},
 		events: {
+			'input input[name=usernamecolor]': 'previewUsernameColor',
 			'change input[name=noanim]': 'setNoanim',
 			'change input[name=nogif]': 'setNogif',
 			'change input[name=bwgfx]': 'setBwgfx',
@@ -479,6 +481,10 @@
 			var buf = '';
 			buf += '<p>' + (avatar ? '<img class="trainersprite" src="' + Dex.resolveAvatar(avatar) + '" width="40" height="40" style="vertical-align:middle;cursor:pointer" />' : '') + '<strong>' + BattleLog.escapeHTML(name) + '</strong></p>';
 			buf += '<p><button class="button" name="avatars">Avatar...</button></p>';
+			var account = app.usernameColorAccount;
+			var signedIn = account && account.userid === app.user.get('userid') && account.registered;
+			buf += '<fieldset class="username-color-settings"><legend>Username color</legend><label>Color <input type="color" name="usernamecolor" value="' + (account && account.color || '#148a99') + '" /></label> <button class="button" name="saveUsernameColor"' + (signedIn ? '' : ' disabled') + '>Save</button> <button class="button" name="resetUsernameColor"' + (signedIn ? '' : ' disabled') + '>Reset</button><p><span class="username-color-light" style="background:#eef2ef;padding:6px">' + BattleLog.escapeHTML(name) + '</span> <span class="username-color-dark" style="background:#303e40;padding:6px">' + BattleLog.escapeHTML(name) + '</span></p><small>Shared on this server. Brightness adjusts for readability.</small><p class="username-color-status" role="status">' + (signedIn ? 'Saved to your signed-in account.' : 'Sign in to save a color. Server support is required.') + '</p></fieldset>';
+
 			if (app.user.get('named')) {
 				var registered = app.user.get('registered');
 				if (registered && (registered.userid === app.user.get('userid'))) {
@@ -588,6 +594,30 @@
 			var nogif = !!e.currentTarget.checked;
 			Storage.prefs('nogif', nogif);
 			Dex.loadSpriteData(nogif || Dex.prefs('bwgfx') ? 'bw' : 'xy');
+		},
+		previewUsernameColor: function () {
+			var color = this.$('input[name=usernamecolor]').val();
+			if (!/^#[0-9a-f]{6}$/i.test(color || '')) return;
+			this.$('.username-color-light').css('color', BattleLog.readableUsernameColor(color, false));
+			this.$('.username-color-dark').css('color', BattleLog.readableUsernameColor(color, true));
+		},
+		saveUsernameColor: function () {
+			app.send('/usernamecolor ' + this.$('input[name=usernamecolor]').val());
+			this.$('.username-color-status').text('Saving...');
+		},
+		resetUsernameColor: function () {
+			app.send('/usernamecolor reset');
+			this.$('.username-color-status').text('Resetting...');
+		},
+		usernameColorResponse: function (data) {
+			var account = app.usernameColorAccount;
+			this.$('[name=saveUsernameColor], [name=resetUsernameColor]').prop('disabled', !account || !account.registered);
+			if (!data.error && account && Object.prototype.hasOwnProperty.call(data.colors, account.userid)) {
+				this.$('input[name=usernamecolor]').val(account.color || BattleLog.defaultUsernameColor(account.userid));
+				this.previewUsernameColor();
+			}
+			if (data.error) this.$('.username-color-status').text(data.error);
+			else if (data.own) this.$('.username-color-status').text(account && account.registered ? 'Saved to your signed-in account.' : 'Sign in to save a color.');
 		},
 		setTheme: function (e) {
 			var theme = e.currentTarget.value;

@@ -1220,16 +1220,7 @@ class BattleTooltips {
 				}
 			}
 		}
-		if (
-			ability === 'swiftswim' &&
-			(['raindance', 'primordialsea'].includes(weather) ||
-				this.battle.hasPseudoWeather('Water Surface Terrain') ||
-				this.battle.hasPseudoWeather('Underwater Terrain') ||
-				this.battle.hasPseudoWeather('Midnight Zone Terrain') ||
-				this.battle.hasPseudoWeather('Murkwater Surface Terrain'))
-		) {
-			speedModifiers.push(2);
-		}
+		if (this.swiftSwimSpeedBoost(ability, weather, item)) speedModifiers.push(2);
 		if ((this.battle.hasPseudoWeather('Psychic Aura') || this.battle.hasPseudoWeather('Psychic Terrain')) &&
 			Dex.getAbilityEffects(ability).has(toID('telepathy'))) {
 			speedModifiers.push(2);
@@ -1376,12 +1367,34 @@ class BattleTooltips {
 		return stats;
 	}
 
+	/** Mirrors verified server Speed hooks, not merely component labels. */
+	swiftSwimSpeedBoost(ability: string, weather: string, item = ''): boolean {
+		const fullSwiftSwim = ['swiftswim', 'islandcurrent', 'noblerider', 'warship', 'aevianrocket',
+			'swiftdrill', 'emperorsresolve', 'ragingcurrent', 'crosscurrent', 'prismscale', 'royalscales',
+			'tidaljaw', 'helios', 'tidaldominion', 'currentcoil', 'stormcircuit'].includes(ability);
+		const rain = item !== 'utilityumbrella' && ['raindance', 'primordialsea'].includes(weather);
+		if (ability === 'riptideclaws') return rain; // This server's hook is rain-only.
+		return fullSwiftSwim && (rain || ['Water Surface Terrain', 'Underwater Terrain',
+			'Midnight Zone Terrain', 'Murkwater Surface Terrain'].some(field => this.battle.hasPseudoWeather(field)));
+	}
+
 	renderStats(clientPokemon: Pokemon | null, serverPokemon?: ServerPokemon | null, short?: boolean) {
 		const isTransformed = clientPokemon?.volatiles.transform;
 		if (!serverPokemon || isTransformed) {
 			if (!clientPokemon) throw new Error('Must pass either clientPokemon or serverPokemon');
 			let [min, max] = this.getSpeedRange(clientPokemon);
-			return '<p><small>Spe</small> ' + min + ' to ' + max + ' <small>(before items/abilities/modifiers)</small></p>';
+			let note = '';
+			// Only revealed active abilities; never infer an opponent's slot from its species.
+			const ability = clientPokemon.isActive() ? toID(clientPokemon.effectiveAbility()) : '';
+			if (this.swiftSwimSpeedBoost(ability, '')) {
+				note = '<p><small>Known field effect: Swift Swim component doubles Speed (×2). The range above is unmodified.</small></p>';
+			} else {
+				const weather = this.battle.abilityActive(['Air Lock', 'Cloud Nine']) ? '' : this.battle.weather;
+				if (this.swiftSwimSpeedBoost(ability, weather, toID(clientPokemon.item))) {
+					note = '<p><small>Swift Swim component: ×2 Speed in effective rain; unknown item effects are not included.</small></p>';
+				}
+			}
+			return '<p><small>Spe</small> ' + min + ' to ' + max + ' <small>(before items/abilities/modifiers)</small></p>' + note;
 		}
 		const stats = serverPokemon.stats;
 		const modifiedStats = this.calculateModifiedStats(clientPokemon, serverPokemon);

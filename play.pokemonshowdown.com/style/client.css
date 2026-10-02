@@ -3422,3 +3422,13 @@ a.ilink.yours {
 
 /* Match the room layout that hides chat, including landscape and split panes. */
 .small-layout .battle-controls .mobile-gimmick-counters { display: block; margin: 6px; padding: 8px; font-size: 13px; background: #f5f8fc; color: #243747; }
+
+.calculator-workspace {overflow:auto; padding:20px; box-sizing:border-box; background:#eef3f9;}
+.calculator-workspace .calc-species-results {display:flex; flex-wrap:wrap; gap:5px; margin:8px 0;}
+.calculator-workspace .calc-ability-slots .button {margin:3px 0;}
+.calculator-workspace .calc-components {font-size:12px; color:#45556b; line-height:1.5;}
+@media(max-width:627px){.calculator-workspace {padding:10px;} .calculator-workspace .calc-matchup {grid-template-columns:1fr;} .calculator-workspace .calc-condition-grid {grid-template-columns:1fr;} }
+
+.calculator-workspace.custom-calculator {color:#243344; font:13px/1.45 Arial,Helvetica,sans-serif;}
+.calculator-workspace [hidden] {display:none !important;}
+@media(max-width:627px){.calculator-workspace.custom-calculator input,.calculator-workspace.custom-calculator select,.calculator-workspace.custom-calculator button {min-height:44px;font-size:16px;} }

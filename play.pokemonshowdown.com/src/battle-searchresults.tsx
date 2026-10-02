@@ -196,7 +196,7 @@ class PSSearchResults extends preact.Component<{
 		const ability = search.dex.abilities.get(id);
 		if (!ability) return <li class="result">Unrecognized ability</li>;
 
-		return <li class="result"><a href={`${this.URL_ROOT}abilitys/${id}`} data-target="push" data-entry={`ability|${ability.name}`}>
+		return <li class="result abilityresult"><a href={`${this.URL_ROOT}abilitys/${id}`} data-target="push" data-entry={`ability|${ability.name}`} title={ability.desc}>
 			<span class="col namecol">{this.renderName(ability.name, matchStart, matchEnd)}</span>
 
 			{errorMessage}

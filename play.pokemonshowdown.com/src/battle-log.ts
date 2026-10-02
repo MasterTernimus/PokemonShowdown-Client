@@ -637,7 +637,30 @@ export class BattleLog {
 		return result;
 	};
 
-	static usernameColor(name: ID) {
+	static readableUsernameColor(hex: string, dark: boolean) {
+		const rgb = [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16) / 255);
+		const luminance = (v: number[]) => v.map(x => x <= 0.04045 ? x / 12.92 : ((x + 0.055) / 1.055) ** 2.4)
+			.reduce((sum, x, i) => sum + x * [0.2126, 0.7152, 0.0722][i], 0);
+		const bg = dark ? luminance([0.19, 0.24, 0.25]) : luminance([0.91, 0.94, 0.92]);
+		let color = rgb;
+		let step = 0;
+		for (; step <= 100; step++) {
+			color = rgb.map(x => x * (1 - step / 100) + (dark ? 1 : 0) * step / 100);
+			const light = luminance(color);
+			if ((Math.max(light, bg) + 0.05) / (Math.min(light, bg) + 0.05) >= 4.6) break;
+		}
+		return '#' + color.map(x => Math.round(x * 255).toString(16).padStart(2, '0')).join('');
+	}
+	static usernameColor(name: ID): string {
+		// Live app only: standalone historical replay rendering keeps its existing colors.
+		const liveApp = window.app as {watchUsernameColor?: (id: string) => void} | undefined;
+		if (liveApp?.watchUsernameColor && /^[a-z0-9]{1,18}$/.test(name)) {
+			liveApp.watchUsernameColor(name);
+			return `var(--username-${name}, ${this.defaultUsernameColor(name)})`;
+		}
+		return this.defaultUsernameColor(name);
+	}
+	static defaultUsernameColor(name: ID) {
 		if (this.colorCache[name]) return this.colorCache[name];
 		let saltedName: string = name as string + this.generateRandomString(5);
 		let hash;

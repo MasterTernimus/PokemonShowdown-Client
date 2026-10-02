@@ -41,7 +41,9 @@
 		},
 		events: {
 			'input .roster-species-search': 'searchRosterSpecies',
+			'input .roster-import-text, .roster-import-name': 'cancelRosterImport',
 			'change .roster-profile-select': 'rosterProfileChange',
+			'change .roster-quick-select': 'rosterQuickChange',
 			'change .roster-profile-filter': 'rosterFilterChange',
 			// team changes
 			'change input.teamnameedit': 'teamNameChange',
@@ -97,6 +99,12 @@
 			if (this[e.currentTarget.value]) this[e.currentTarget.value](e);
 		},
 		back: function () {
+			if (this.profilesView) {
+				this.profilesView = false;
+				this.update();
+				if (this.curSet) this.updateChart(true);
+				return;
+			}
 			if (this.exportMode) {
 				if (this.curTeam) {
 					this.curTeam.team = Storage.packTeam(this.curSetList);
@@ -144,6 +152,7 @@
 		exportMode: false,
 		formatResources: {},
 		update: function () {
+			if (this.profilesView) return this.showRosterProfiles();
 			teams = Storage.teams;
 			if (this.curTeam) {
 				if (this.curTeam.format && !this.formatResources[this.curTeam.format]) {
@@ -385,6 +394,7 @@
 			var buf = '';
 
 			// teampane
+			buf += '<p><button class="button big" name="showRosterProfiles">Profiles</button></p>';
 			buf += this.clipboardHTML();
 
 			var filterFormat = '';
@@ -1881,6 +1891,73 @@
 		 * Set view
 		 *********************************************************/
 
+		showRosterProfiles: function () {
+			this.profilesView = true;
+			this.rosterImportPreview = null;
+			this.$el.html('<div class="pad roster-page"><button class="button" name="back">Back to Teambuilder</button><h2>Profiles</h2><p>Save Pokémon lists and use them to filter team selections. Saved in this browser.</p>' + this.renderRosterProfiles() +
+				'<h3>Import a list</h3><p>One Pokémon name per line. A # header may name the profile. Base species include their Mega forms; remove any entry afterward.</p>' +
+				'<label>New profile name <input class="textbox roster-import-name" placeholder="Leave blank to use the # header" maxlength="80" /></label><p><textarea class="textbox roster-import-text" rows="7" style="width:100%;box-sizing:border-box" aria-label="Pokémon list" placeholder="# My locks&#10;Charizard&#10;Venusaur"></textarea></p>' +
+				'<p><button class="button" name="previewRosterImport" value="new">Create profile</button> <button class="button" name="previewRosterImport" value="add">Add to selected</button> <button class="button" name="previewRosterImport" value="replace">Replace selected</button></p><div class="roster-import-preview" aria-live="polite"></div></div>');
+		},
+		rosterExpandedSpecies: function (id) {
+			var result = [id];
+			for (var key in window.BattlePokedex) {
+				var species = Dex.species.get(key);
+				// The legacy Dex flag omits custom Mega suffixes such as Mega-X-Alt.
+				if (!species.isMega && !/^Mega(?:-|$)/.test(species.forme)) continue;
+				var source = species.battleOnly || species.changesFrom || species.baseSpecies;
+				if ((Array.isArray(source) ? source : [source]).some(function (name) { return toID(name) === id; })) result.push(species.id);
+			}
+			return result.filter(function (value, index) { return result.indexOf(value) === index; });
+		},
+		parseRosterImport: function (text) {
+			var result = {name: '', species: [], unknown: []};
+			var self = this;
+			text.split(/\r?\n/).forEach(function (line) {
+				line = line.trim();
+				if (!line) return;
+				if (line.charAt(0) === '#') { if (!result.name) result.name = line.slice(1).trim().slice(0, 80); return; }
+				var id = self.rosterSpeciesID(line);
+				if (!id) { if (result.unknown.indexOf(line) < 0) result.unknown.push(line); return; }
+				self.rosterExpandedSpecies(id).forEach(function (entry) { if (result.species.indexOf(entry) < 0) result.species.push(entry); });
+			});
+			return result;
+		},
+		previewRosterImport: function (mode) {
+			var data = this.rosterData();
+			var profile = data.profiles.find(function (p) { return p.id === data.selected; });
+			var parsed = this.parseRosterImport(this.$('.roster-import-text').val() || '');
+			parsed.name = (this.$('.roster-import-name').val() || parsed.name).trim().slice(0, 80);
+			this.rosterImportPreview = null;
+			var html = parsed.unknown.length ? '<p>Unknown names: ' + BattleLog.escapeHTML(parsed.unknown.join(', ')) + '. Correct these before importing.</p>' : '';
+			if (!parsed.species.length) html += '<p>No Pokémon found.</p>';
+			if (mode !== 'new' && !profile) html += '<p>Select a profile first.</p>';
+			if (mode === 'new' && !parsed.name) html += '<p>Enter a new profile name or add a # header.</p>';
+			if (!html) {
+				this.rosterImportPreview = {mode: mode, target: data.selected, parsed: parsed};
+				html = '<p>' + (mode === 'replace' ? 'Replace all ' + profile.species.length + ' entries in ' : mode === 'add' ? 'Add to ' : 'Create ') + BattleLog.escapeHTML(mode === 'new' ? parsed.name : profile.name) + ': ' + parsed.species.length + ' entries (including Megas).</p><p>' + parsed.species.map(function (id) { return BattleLog.escapeHTML(Dex.species.get(id).name); }).join(', ') + '</p><button class="button" name="confirmRosterImport">Confirm ' + mode + '</button> <button class="button" name="cancelRosterImport">Cancel</button>';
+			}
+			this.$('.roster-import-preview').html(html);
+		},
+		cancelRosterImport: function () {
+			this.rosterImportPreview = null;
+			this.$('.roster-import-preview').empty();
+		},
+		confirmRosterImport: function () {
+			var preview = this.rosterImportPreview;
+			if (!preview) return;
+			var data = this.rosterData();
+			var profile = data.profiles.find(function (p) { return p.id === preview.target; });
+			if (preview.mode === 'new') {
+				profile = {id: Date.now().toString(36) + Math.random().toString(36).slice(2), name: preview.parsed.name, species: []};
+				data.profiles.push(profile);
+			} else if (!profile || data.selected !== preview.target) { return this.cancelRosterImport(); }
+			if (preview.mode === 'replace') profile.species = [];
+			preview.parsed.species.forEach(function (id) { if (profile.species.indexOf(id) < 0) profile.species.push(id); });
+			data.selected = profile.id;
+			this.saveRosterProfiles(data);
+			this.$('.roster-import-preview').text('Imported ' + profile.species.length + ' entries into ' + profile.name + '.');
+		},
 		rosterData: function () {
 			var data = Storage.prefs('rosterprofiles');
 			if (!data || !Array.isArray(data.profiles)) return {profiles: [], selected: '', enabled: false};
@@ -1894,9 +1971,20 @@
 			if (base.cosmeticFormes && base.cosmeticFormes.indexOf(species.name) >= 0) return base.id;
 			return species.id;
 		},
+		rosterQuickChange: function (event) {
+			var data = this.rosterData();
+			data.selected = event.currentTarget.value;
+			data.enabled = !!data.selected;
+			this.saveRosterProfiles(data);
+		},
 		renderRosterProfiles: function () {
 			var data = this.rosterData();
 			var profile = data.profiles.find(function (p) { return p.id === data.selected; });
+			if (!this.profilesView) {
+				return '<div class="roster-profiles"><label>Pokémon: <select class="roster-quick-select"><option value="">All Pokémon</option>' + data.profiles.map(function (p) {
+					return '<option value="' + BattleLog.escapeHTML(p.id) + '"' + (data.enabled && p.id === data.selected ? ' selected' : '') + '>' + BattleLog.escapeHTML(p.name) + '</option>';
+				}).join('') + '</select></label> <button class="button small" name="showRosterProfiles">Profiles</button></div>';
+			}
 			var html = '<div class="roster-profiles" style="padding:8px"><label>Roster profile: <select class="roster-profile-select"><option value="">None</option>';
 			data.profiles.forEach(function (p) {
 				html += '<option value="' + BattleLog.escapeHTML(p.id) + '"' + (p.id === data.selected ? ' selected' : '') + '>' + BattleLog.escapeHTML(p.name) + '</option>';
@@ -1905,7 +1993,7 @@
 			html += '<button class="button" name="createRosterProfile">New</button> ';
 			if (profile) {
 				html += '<button class="button" name="renameRosterProfile">Rename</button> <button class="button" name="deleteRosterProfile">Delete</button> ';
-				html += '<details class="roster-manager"><summary>Manage species (' + profile.species.length + ')</summary>';
+				html += '<details class="roster-manager"' + (this.profilesView ? ' open' : '') + '><summary>Manage species (' + profile.species.length + ')</summary>';
 				html += '<p>Saved in this browser. True forms have separate entries.</p><div class="roster-chips">';
 				html += profile.species.length ? profile.species.map(function (id) {
 					var name = BattleLog.escapeHTML(Dex.species.get(id).name);
@@ -1920,6 +2008,7 @@
 			return html + '</div>';
 		},
 		saveRosterProfiles: function (data) {
+			this.cancelRosterImport();
 			Storage.prefs('rosterprofiles', data);
 			var open = this.$('.roster-manager').prop('open');
 			var query = this.$('.roster-species-search').val() || '';
@@ -2014,7 +2103,7 @@
 			id = this.rosterSpeciesID(id);
 			if (!profile || !id) return;
 			if (remove) profile.species = profile.species.filter(function (species) { return species !== id; });
-			else if (profile.species.indexOf(id) < 0) profile.species.push(id);
+			else this.rosterExpandedSpecies(id).forEach(function (entry) { if (profile.species.indexOf(entry) < 0) profile.species.push(entry); });
 			this.saveRosterProfiles(data);
 			this.$('.roster-species-search').focus();
 		},

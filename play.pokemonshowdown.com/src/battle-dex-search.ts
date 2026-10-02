@@ -177,7 +177,9 @@ function isHiddenTeamBuilderSpecies(id: string, includeSawsbuckBase = false) {
 
 function isExcludedFromCustomSearch(id: string) {
 	const speciesId = toID(id);
-	return isHiddenFakeSpecies(speciesId) || speciesId.startsWith('deerling') ||
+	// Balance-patched official records are not additional custom forms.
+	return ['unfezant', 'xerneasneutral'].includes(speciesId) ||
+		isHiddenFakeSpecies(speciesId) || speciesId.startsWith('deerling') ||
 		speciesId.startsWith('sawsbuck') || ZA_MEGA_SPECIES.has(speciesId as ID);
 }
 
@@ -401,7 +403,7 @@ class DexSearch {
 	}
 
 	textSearch(query: string): SearchRow[] {
-		const customOnly = query === '-custom';
+		const customOnly = query === '-custom' && this.typedSearch?.searchType === 'pokemon';
 		query = toID(query);
 		const customSpeciesQuery = query;
 		window.ensureCustomDataPatches?.();
@@ -413,6 +415,13 @@ class DexSearch {
 			window.ensureCustomSpecies?.();
 			customVisualSpecies = Object.keys(window.BattlePokedex || {}).filter(id => {
 				const species = this.dex.species.get(id);
+				if (customOnly) {
+					// Read the effective catalog, including selector-only and battle forms,
+					// rather than relying on the upstream text index or name substrings.
+					return species.exists && !isExcludedFromCustomSearch(id) &&
+						isCustomSearchVisualForm(species) &&
+						this.typedSearch!.filter(['pokemon', id as ID], this.filters || []);
+				}
 				if (id === 'gardevoirvoid' && (customOnly || customSpeciesQuery === 'alt')) return false;
 				if (isExcludedFromCustomSearch(id)) return false;
 				// Explicit -custom searches reveal hidden stored variants, but never
@@ -429,9 +438,11 @@ class DexSearch {
 			customVisualSpecies.sort((a, b) => this.dex.species.get(a).name.localeCompare(this.dex.species.get(b).name));
 			this.exactMatch = true;
 			this.results = [
-				['header', 'Custom skins'],
+				['header', 'Custom Pokémon and variants'],
+				['html', '<p>Custom species, skins, and battle forms. Battle-only forms are for inspection; use the listed starting species and required item. Format legality still applies.</p>'],
 				...customVisualSpecies.map(id => ['pokemon', id] as SearchRow),
 			];
+			if (!customVisualSpecies.length) this.results.push(['html', '<p>No custom species match the current filters.</p>']);
 			return this.results;
 		}
 

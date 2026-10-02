@@ -201,6 +201,17 @@
 			return this.renderMoveSortRow();
 		case 'pokemon':
 			var pokemon = this.engine.dex.species.get(id);
+			var battleParent = pokemon.battleOnly || (pokemon.requiredItem && pokemon.changesFrom);
+			if (this.engine.query === '-custom' && battleParent) {
+				var parents = Array.isArray(battleParent) ? battleParent.join(' / ') : battleParent;
+				var guidance = 'Battle-only form. Start with ' + parents + '.';
+				var required = pokemon.requiredItem || (pokemon.requiredItems || []).join(' / ');
+				if (required) guidance += ' Required item: ' + required + '.';
+				// A div keeps inspection rows out of click and keyboard set selection.
+				var preview = this.renderPokemonRow(pokemon, matchStart, matchLength, '', '')
+					.replace(/<a[^>]*>/, '<div class="custom-form-preview" style="padding:1px 0">').replace('</a>', '</div>');
+				return preview.replace('</li>', '<p style="margin:2px 8px 8px">' + BattleLog.escapeHTML(guidance) + '</p></li>');
+			}
 			return this.renderPokemonRow(pokemon, matchStart, matchLength, errorMessage, attrs);
 		case 'move':
 			var move = this.engine.dex.moves.get(id);
@@ -521,7 +532,7 @@
 			return buf;
 		}
 
-		buf += '<span class="col abilitydesccol">' + BattleLog.escapeHTML(ability.shortDesc) + '</span> ';
+		buf += '<span class="col abilitydesccol" title="' + BattleLog.escapeHTML(ability.desc || ability.shortDesc) + '">' + BattleLog.escapeHTML(ability.shortDesc) + '</span> ';
 
 		buf += '</a></li>';
 
