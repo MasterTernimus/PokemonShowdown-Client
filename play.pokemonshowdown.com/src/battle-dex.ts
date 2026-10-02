@@ -16388,15 +16388,15 @@ for (const [id, update] of Object.entries({
 	},
 	"poliwrath": {
 		"abilities": {
-			"0": "Gluttony",
+			"0": "Reservoir",
 			"1": "Knuckle Tide",
-			"H": "Water Absorb"
+			"H": "Crosscurrent"
 		},
 		"baseStats": {
 			"hp": 100,
-			"atk": 115,
+			"atk": 100,
 			"def": 100,
-			"spa": 80,
+			"spa": 95,
 			"spd": 90,
 			"spe": 75
 		},
@@ -22575,6 +22575,18 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		},
 		"isNonstandard": null
 	},
+	"reservoir": {
+		"name": "Reservoir",
+		"num": 11233,
+		"gen": 9,
+		"desc": "Has Water Absorb, Gluttony, and Damp's full effects. Water-type moves from other Pokemon heal 1/4 maximum HP instead of hitting; qualifying water fields heal 1/16 each turn. Berries normally eaten at 1/4 HP activate at 1/2 HP. Prevents Explosion, Self-Destruct, Mind Blown, Misty Explosion, and Aftermath damage. Halves the attacking stat used by incoming Fire-type moves, and prevents Damp's ignition moves on Corrosive Mist Field.",
+		"shortDesc": "Water Absorb + Gluttony + Damp.",
+		"rating": 4,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
 	"resonantblade": {
 		"name": "Resonant Blade",
 		"num": 10456,
@@ -22727,8 +22739,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Royal Scales",
 		"num": 11122,
 		"gen": 9,
-		"desc": "Prism Scale and Dragonize. Status or Prism Scale's supported fields boost Defense by 1.5x. Blocks Attract, Captivate, Taunt, and Intimidate's Attack drop. Speed doubles in rain and Swift Swim's supported fields. Normal moves become Dragon and gain Dragonize's power boost.",
-		"shortDesc": "Prism Scale + Marvel Scale + Oblivious + Swift Swim + Dragonize.",
+		"desc": "Prism Scale, Dragonize, and Self Sufficient. Status or Prism Scale's supported fields boost Defense by 1.5x. Blocks Attract, Captivate, Taunt, and Intimidate's Attack drop. Speed doubles in rain and Swift Swim's supported fields. Normal moves become Dragon and gain Dragonize's power boost. Restores 1/16 of this Pokemon's maximum HP at the end of each turn and prevents Sandstorm and Hail damage.",
+		"shortDesc": "Prism Scale + Marvel Scale + Oblivious + Swift Swim + Dragonize + Self Sufficient. Prism Scale + Dragonize + Self Sufficient; heals 1/16 each turn; immune to Sandstorm and Hail.",
 		"rating": 5,
 		"flags": {
 			"breakable": 1
@@ -27942,6 +27954,11 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"requiem": [
 		"cursedbody"
 	],
+	"reservoir": [
+		"waterabsorb",
+		"gluttony",
+		"damp"
+	],
 	"resonantblade": [],
 	"resuscitation": [
 		"selfrepair",
@@ -27995,7 +28012,8 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"marvelscale",
 		"oblivious",
 		"swiftswim",
-		"dragonize"
+		"dragonize",
+		"selfsufficient"
 	],
 	"royalsun": [
 		"drought",
