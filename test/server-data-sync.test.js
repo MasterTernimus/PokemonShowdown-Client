@@ -53,6 +53,18 @@ describe('Server data synchronization', () => {
 				assert.equal(dex.abilities.get('Soul Siphon').gen, 9);
 			});
 
+			it('syncs mixed Poliwrath, Reservoir and Royal Scales components', () => {
+				const p = dex.species.get('Poliwrath');
+				assert.deepEqual(JSON.parse(JSON.stringify(p.abilities)), {0: 'Reservoir', 1: 'Knuckle Tide', H: 'Crosscurrent'});
+				assert.equal(p.baseStats.atk, 100);
+				assert.equal(p.baseStats.spa, 95);
+				assert.equal(p.bst, 560);
+				assert(dex.abilities.get('Reservoir').exists);
+				for (const id of ['waterabsorb', 'gluttony', 'damp']) assert(dex.getAbilityEffects('reservoir').has(id), id);
+				assert(dex.getAbilityEffects('royalscales').has('selfsufficient'));
+				assert(dex.abilities.get('Royal Scales').desc.includes('1/16'));
+			});
+
 			it('keeps signature selector previews compact without replacing full mechanics', () => {
 				for (const id of ['searescuer', 'dreepyvanguard', 'groundingtail', 'updraft', 'currentcoil', 'stillwater']) {
 					const ability = dex.abilities.get(id);
