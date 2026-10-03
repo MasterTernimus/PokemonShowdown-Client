@@ -3499,3 +3499,60 @@ a.ilink.yours {
 .ps-room.editing-set { overflow-y: auto; }
 .item-picker-tools { display: flex; flex-wrap: wrap; gap: 6px; }
 @media (max-width: 640px) { .editing-set .teamchartbox.individual { margin-top: 0; } .local-set-tools { max-width: 100%; } .local-set-tools label { max-width: 100%; } .local-tools-manager button, .local-tools-manager select { min-height: 44px; } }
+
+/* Compact tools for the classic Team Builder (which loads client.css). */
+.set-tools-panel {
+ box-sizing: border-box; clear: both; width: 631px; max-width: 100%; margin: 4px 0 0;
+ border: 1px solid #b2bfcc; border-radius: 5px; background: #edf2f6; color: #293d4e;
+ font: 12px/1.4 Verdana, sans-serif;
+}
+.set-tools-panel > summary { padding: 7px 10px; cursor: pointer; font-weight: bold; }
+.set-tools-panel > summary:hover { background: rgba(100, 140, 170, .12); }
+.set-tools-panel[open] > summary { border-bottom: 1px solid #b2bfcc; }
+.set-tools-state { font-weight: normal; margin-left: 8px; }
+.set-tools-content { padding: 8px 10px; display: grid; gap: 8px; }
+.set-tools-row { display: grid; grid-template-columns: 86px minmax(0, 1fr); gap: 8px; align-items: start; }
+.set-tools-label { padding-top: 6px; font-weight: bold; }
+.set-tools-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; min-width: 0; }
+.set-tools-controls .button, .set-tools-controls select,
+.teambuilder-results > .roster-profiles .button, .teambuilder-results > .roster-profiles select {
+ box-sizing: border-box; min-height: 28px; margin: 0; padding: 3px 8px; font: 12px Verdana, sans-serif;
+}
+.set-tools-controls select { max-width: 100%; min-width: 0; flex: 1 1 150px; width: 150px; }
+.set-tools-controls .button { white-space: nowrap; }
+.form-preview-help, .form-preview-notice { margin: 6px 0 0 94px; font-size: 11px; line-height: 1.5; }
+.form-preview-help summary { cursor: pointer; }
+.form-preview-help p { margin: 5px 0 0; }
+.form-preview-result { display: grid; grid-template-columns: 100px minmax(0, 1fr); align-items: center; column-gap: 8px; margin-left: 86px; }
+.form-preview-result .form-preview-sprite { grid-row: span 2; }
+.form-preview-result strong { align-self: end; }
+.form-preview-result > span:last-child { align-self: start; }
+.teambuilder-results > .roster-profiles {
+ box-sizing: border-box; display: flex; align-items: center; flex-wrap: wrap; gap: 6px;
+ padding: 8px; margin: 8px 0 0; background: #edf3f8; color: #25394b; border: 1px solid #bdccda;
+ border-radius: 5px 5px 0 0; font: 12px Verdana, sans-serif;
+}
+.teambuilder-results > .roster-profiles > label { display: flex; align-items: center; gap: 6px; margin: 0; min-width: 0; }
+.teambuilder-results > .roster-profiles select { min-width: 0; max-width: 220px; }
+.pokemon-picker-filters { padding: 0; border: 1px solid #bdccda; border-top: 0; font: 12px/1.4 Verdana, sans-serif; }
+.picker-filter-panel > summary { padding: 8px; cursor: pointer; font-weight: bold; }
+.picker-filter-panel > summary .picker-filter-status { margin-left: 12px; font-weight: normal; font-size: 11px; }
+.picker-filter-panel .picker-filter-options { padding: 2px 8px 8px; gap: 5px 12px; }
+.picker-filter-panel .picker-filter-help { margin: 0; padding: 0 8px 8px; }
+.picker-filter-panel .picker-filter-options select { min-height: 28px; }
+.dark .set-tools-panel, .dark .teambuilder-results > .roster-profiles { background: #263440; color: #e2edf7; border-color: #506170; }
+.dark .set-tools-panel[open] > summary { border-color: #506170; }
+.dark .set-tools-controls select, .dark .teambuilder-results > .roster-profiles select,
+.dark .picker-filter-panel select { background: #18242d; color: #e2edf7; border: 1px solid #617181; border-radius: 3px; }
+.set-tools-panel :focus-visible, .picker-filter-panel :focus-visible { outline: 2px solid #479acb; outline-offset: 2px; }
+@media (max-width: 639px) {
+ .set-tools-panel { width: 100%; }
+ .set-tools-panel > summary, .picker-filter-panel > summary { padding: 11px 9px; }
+ .set-tools-row { grid-template-columns: 1fr; gap: 4px; }
+ .set-tools-label { padding-top: 0; }
+ .set-tools-controls .button, .set-tools-controls select { min-height: 36px; }
+ .form-preview-help, .form-preview-notice, .form-preview-result { margin-left: 0; }
+ .teambuilder-results > .roster-profiles > label { flex: 1 1 100%; margin: 0; }
+ .teambuilder-results > .roster-profiles select { flex: 1; max-width: 100%; }
+ .teambuilder-results > .roster-profiles .button { min-height: 36px; }
+}

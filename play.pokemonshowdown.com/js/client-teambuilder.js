@@ -1985,7 +1985,7 @@
 		},
 		renderPokemonPickerFilters: function () {
 			var options = this.pokemonPickerOptions();
-			var html = '<div class="pokemon-picker-filters"' + (this.curChartType === 'pokemon' ? '' : ' hidden') + '><fieldset><legend>Browse Pok&eacute;mon</legend><div class="picker-filter-options">';
+			var html = '<div class="pokemon-picker-filters"' + (this.curChartType === 'pokemon' ? '' : ' hidden') + '><details class="picker-filter-panel"' + (this.pickerFiltersOpen ? ' open' : '') + '><summary>Filters <span class="picker-filter-status" role="status" aria-live="polite" aria-atomic="true"></span></summary><div class="picker-filter-options">';
 			[['hideMegas', 'Hide Megas'], ['hideGimmicks', 'Hide Gimmick Forms'], ['customOnly', 'Custom-only']].forEach(function (option) {
 				html += '<label><input type="checkbox" class="pokemon-picker-option" data-option="' + option[0] + '"' + (options[option[0]] ? ' checked' : '') + ' /> ' + option[1] + '</label>';
 			});
@@ -1995,7 +1995,7 @@
 			});
 			return html + '</select></label><button type="button" class="button small" name="resetPokemonPickerFilters" title="Reset view filters; keep your search and roster profile">Reset filters</button></div>' +
 				'<details class="picker-filter-help"><summary>What counts as a gimmick form?</summary><p>Megas, Primal, Gmax, Anomaly Core transformations, and forms marked battle-only. Ordinary regional and cosmetic forms stay visible. These controls only filter this list; they do not change legality or your team. Custom-only uses the same catalog as -custom. Preferences are saved in this browser.</p></details>' +
-				'<p class="picker-filter-status" role="status" aria-live="polite" aria-atomic="true"></p></fieldset></div>';
+				'</details></div>';
 		},
 		pokemonPickerChange: function (event) {
 			var input = event.currentTarget;
@@ -2025,7 +2025,7 @@
 			if (options.customOnly || this.search.q === '-custom') active.push('Custom-only');
 			if (options.group !== 'all') active.push(options.group === 'regional' ? 'Regional' : options.group === 'pulse' ? 'Pulse' : 'Rift');
 			var count = rows.filter(function (row) { return row[0] === 'pokemon'; }).length;
-			this.$('.picker-filter-status').text(count + ' Pokemon' + (active.length ? ' | ' + active.join(' | ') : ' | All forms shown') + ' | Current search and profile apply');
+			this.$('.picker-filter-status').text(count + ' Pokémon' + (active.length ? ' · ' + active.join(' · ') : ''));
 			return count;
 		},
 		renderRosterProfiles: function () {
@@ -4027,15 +4027,26 @@
 		if (!set.species) return html;
 		var data = this.toolsData(), self = this;
 		var builds = data.builds.filter(function (b) { return T.id(b.set.species) === T.id(set.species); });
-		var box = '<div class="local-set-tools"><label>Saved build <select class="saved-build-choice" aria-label="Saved build for ' + escape(set.species) + '"><option value="">Choose a build</option>';
+		var open = this.openSetTools && this.openSetTools.has(set);
+		var box = '<details class="set-tools-panel"' + (open ? ' open' : '') + '><summary>Build &amp; form options<span class="set-tools-state"></span></summary><div class="set-tools-content"><div class="set-tools-row"><span class="set-tools-label">Saved build</span><div class="set-tools-controls"><select class="saved-build-choice" aria-label="Saved build for ' + escape(set.species) + '"><option value="">Choose a build</option>';
 		builds.forEach(function (b) {
 			box += '<option value="' + escape(b.id) + '">' + escape(b.name) + ' — ' + escape(T.compatibility(b, set, self.curTeam.format, self.curTeam.dex)) + '</option>';
 		});
-		box += '</select></label> ' + button('applySavedBuild', 'Apply build') + button('saveNamedBuild', 'Save build') + button('updateSavedBuild', 'Update selected build');
+		box += '</select>' + button('applySavedBuild', 'Apply') + button('saveNamedBuild', 'Save new') + button('updateSavedBuild', 'Update selected');
 		if (this.buildUndo && this.buildUndo.team === this.curTeam && this.buildUndo.applied === set) box += button('undoSavedBuild', 'Undo apply');
-		box += button('applyNicknameProfile', 'Apply nickname', index) + button('showToolsManager', 'Builds & nicknames') + '</div>';
+		box += '</div></div><div class="set-tools-row"><span class="set-tools-label">Nickname</span><div class="set-tools-controls">' + button('applyNicknameProfile', 'Apply profile', index) + button('showToolsManager', 'Manage library') + '</div></div><!-- SET FORM PREVIEW --></div></details>';
 		return html.replace(/<\/li>$/, box + '</li>');
 	};
+	proto.toggleSetTools = function (event) {
+		var set = this.curSetList[this.toolsSetIndex(event.currentTarget)];
+		if (!set) return;
+		if (!this.openSetTools) this.openSetTools = new WeakSet();
+		if ($(event.currentTarget).parent().prop('open')) this.openSetTools.delete(set);
+		else this.openSetTools.add(set);
+	};
+	proto.events['click .set-tools-panel > summary'] = 'toggleSetTools';
+	proto.events['click .picker-filter-panel > summary'] = 'togglePickerFilters';
+	proto.togglePickerFilters = function (event) { this.pickerFiltersOpen = !$(event.currentTarget).parent().prop('open'); };
 	proto.saveNamedBuild = function (value, btn) {
 		var index = this.toolsSetIndex(btn), team = this.curTeam, self = this;
 		var snapshot = T.cleanSet(this.curSetList[index]);
@@ -4055,6 +4066,7 @@
 		this.buildUndo = {team: this.curTeam, index: index, set: T.clone(this.curSetList[index])};
 		this.curSetList[index] = T.cleanSet(build.set);
 		this.buildUndo.applied = this.curSetList[index];
+		if (this.openSetTools) this.openSetTools.add(this.curSetList[index]);
 		if (this.curSetLoc === index) this.curSet = this.curSetList[index];
 		this.toolsCommit();
 	};
@@ -4073,6 +4085,7 @@
 		const index = this.curSetList.indexOf(undo.applied);
 		if (index < 0) { this.buildUndo = null; return; }
 		this.curSetList[index] = T.clone(undo.set);
+		if (this.openSetTools) this.openSetTools.add(this.curSetList[index]);
 		if (this.curSetLoc === index) this.curSet = this.curSetList[index];
 		this.buildUndo = null;
 		this.toolsCommit();
@@ -4196,7 +4209,11 @@
 		return result;
 	};
 	var profiles = proto.renderRosterProfiles;
-	proto.renderRosterProfiles = function () { return profiles.apply(this, arguments) + '<p>' + button('showToolsManager', 'Builds & Pokémon nicknames') + '</p>'; };
+	proto.renderRosterProfiles = function () {
+		var html = profiles.apply(this, arguments);
+		if (this.profilesView) return html;
+		return html.replace(/<\/div>$/, button('showToolsManager', 'Builds & nicknames') + '</div>');
+	};
 	var update = proto.update;
 	proto.update = function () { if (this.toolsView) return this.showToolsManager(); return update.apply(this, arguments); };
 	var back = proto.back;
@@ -4303,20 +4320,26 @@
 		var html = renderBuildSet.call(this, set, index);
 		if (!set.species) return html;
 		this.currentFormPreview(set);
-		var preview = this.formPreview, box = '<div class="local-set-tools form-preview-tools">' + button('loadFormPreviews', 'Load Mega / G-Max preview', index);
+		var preview = this.formPreview, box = '<div class="form-preview-tools"><div class="set-tools-row"><span class="set-tools-label">Forms</span><div class="set-tools-controls">' + button('loadFormPreviews', preview && preview.set === set ? 'Refresh' : 'Load forms', index);
 		if (preview && preview.set === set) {
-			box += '<label>Preview form <select class="form-preview-choice"><option value="">Base set</option>';
+			box += '<select class="form-preview-choice" aria-label="Preview form"><option value="">Base set</option>';
 			preview.options.forEach(function (option) { box += '<option value="' + escape(option.id) + '"' + (preview.selected === option.id ? ' selected' : '') + '>' + escape(option.name) + '</option>'; });
-			box += '</select></label>';
+			box += '</select>';
 			var selected = this.currentFormPreview(set);
+			box += '</div></div>';
 			if (selected) {
 				var view = T.clone(set);
 				view.species = selected.name;
-				box += '<span class="form-preview-sprite" style="display:inline-block;width:100px;height:100px;' + Dex.getTeambuilderSprite(view, this.curTeam.gen) + '"></span><strong>Preview: ' + escape(selected.name) + '</strong><span>' + escape(selected.types.join(' / ')) + ' · ' + escape(selected.ability) + '</span>';
+				box += '<div class="form-preview-result"><span class="form-preview-sprite" style="display:inline-block;width:100px;height:100px;' + Dex.getTeambuilderSprite(view, this.curTeam.gen) + '"></span><strong>Preview: ' + escape(selected.name) + '</strong><span>' + escape(selected.types.join(' / ')) + ' · ' + escape(selected.ability) + '</span></div>';
 			}
-			box += '<small>' + escape(preview.error || preview.note || (!preview.options.length ? 'No eligible transformations in this format with this set.' : 'One shared EV/IV/nature spread. Saved species, ability and item are unchanged.')) + '</small>';
+			if (preview.error || !preview.options.length) box += '<p class="form-preview-notice" role="status">' + escape(preview.error || (preview.note === 'Loading from server…' ? preview.note : 'No eligible forms for this set and format.')) + '</p>';
+			else box += '<details class="form-preview-help"><summary>Preview details</summary><p>' + escape(preview.note || 'Uses this set’s EVs, IVs and nature. Your saved set stays unchanged.') + '</p></details>';
 		}
-		return html.replace(/<\/li>$/, box + '</li>');
+		else box += '</div></div>';
+		var state = selected ? ' · ' + escape(selected.name) : '';
+		if (this.buildUndo && this.buildUndo.team === this.curTeam && this.buildUndo.applied === set) state += ' · Undo available';
+		return html.replace('<span class="set-tools-state"></span>', '<span class="set-tools-state">' + state + '</span>')
+			.replace('<!-- SET FORM PREVIEW -->', box + '</div>');
 	};
 	proto.loadFormPreviews = function (index) {
 		var self = this, set = this.curSetList[Number(index)], team = this.curTeam;
@@ -4421,7 +4444,7 @@
 		var preview = this.formPreview, result = previewChartSet.apply(this, arguments);
 		if (preview && (!this.formPreview || preview.key !== T.previewKey(this.curSet, this.curTeam.format))) {
 			this.formPreview = null;
-			this.$('.form-preview-tools').html(button('loadFormPreviews', 'Load Mega / G-Max preview', this.curSetLoc));
+			this.$('.form-preview-tools').html('<div class="set-tools-row"><span class="set-tools-label">Forms</span><div class="set-tools-controls">' + button('loadFormPreviews', 'Load forms', this.curSetLoc) + '</div></div>');
 			this.updateStatGraph();
 		}
 		return result;
