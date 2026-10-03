@@ -975,6 +975,7 @@ function toId() {
 		/**
 		 * Receive from sim server
 		 */
+		displayNicknames: null,
 		usernameColors: null,
 		usernameColorWatches: null,
 		watchUsernameColor: function (id) {
@@ -1005,6 +1006,17 @@ function toId() {
 				else delete self.usernameColors[id];
 				delete BattleLog.colorCache[id];
 			});
+			if (!this.displayNicknames) this.displayNicknames = Object.create(null);
+			Object.keys(data.nicknames || {}).forEach(function (id) {
+				var nickname = data.nicknames[id];
+				if (!/^[a-z0-9]{1,18}$/.test(id) || typeof nickname !== 'string' || Array.from(nickname).length > 24 || /[\p{Cc}\p{Cf}\p{Zl}\p{Zp}]/u.test(nickname)) return;
+				if (nickname) self.displayNicknames[id] = nickname;
+				else delete self.displayNicknames[id];
+				document.querySelectorAll('[data-account-id="' + id + '"]').forEach(function (element) {
+					var name = element.getAttribute('data-account-name');
+					element.textContent = nickname ? nickname + ' (@' + name + ')' : name;
+				});
+			});
 			var light = '', dark = '';
 			Object.keys(this.usernameColors).forEach(function (id) {
 				light += '--username-bg-' + id + ':#eef2ef;--username-' + id + ':' + BattleLog.readableUsernameColor(self.usernameColors[id], false) + ';';
@@ -1013,7 +1025,7 @@ function toId() {
 			var style = document.getElementById('account-username-colors');
 			if (!style) { style = document.createElement('style'); style.id = 'account-username-colors'; document.head.appendChild(style); }
 			style.textContent = ':root{' + light + '}html.dark{' + dark + '}';
-			if (data.own && data.own.userid === this.user.get('userid')) this.usernameColorAccount = {userid: data.own.userid, registered: data.own.registered === true, color: this.usernameColors[data.own.userid] || ''};
+			if (data.own && data.own.userid === this.user.get('userid')) this.usernameColorAccount = {userid: data.own.userid, registered: data.own.registered === true, color: this.usernameColors[data.own.userid] || '', nickname: this.displayNicknames[data.own.userid] || ''};
 			this.trigger('usernamecolor', data);
 		},
 		receive: function (data) {
@@ -1147,6 +1159,8 @@ function toId() {
 			case 'challstr':
 				this.usernameColorRestore = Object.keys(this.usernameColorWatches || {});
 				this.usernameColors = null;
+				this.displayNicknames = null;
+				document.querySelectorAll('[data-account-id]').forEach(function (element) { element.textContent = element.getAttribute('data-account-name'); });
 				this.usernameColorWatches = null;
 				this.usernameColorAccount = null;
 				$('#account-username-colors').remove();
@@ -2811,7 +2825,7 @@ function toId() {
 
 			var buf = '<div class="userdetails">';
 			if (avatar) buf += '<img class="trainersprite' + (userid === ownUserid ? ' yours' : '') + '" src="' + Dex.resolveAvatar(avatar) + '" />';
-			buf += '<strong><a href="//' + Config.routes.users + '/' + userid + '" target="_blank">' + BattleLog.escapeHTML(name) + '</a></strong><br />';
+			buf += '<strong><a href="//' + Config.routes.users + '/' + userid + '" target="_blank">' + BattleLog.accountName(name) + '</a></strong><br />';
 			var offline = data.rooms === false;
 			if (data.status || offline) {
 				var status = offline ? '(Offline)' : data.status.startsWith('!') ? data.status.slice(1) : data.status;

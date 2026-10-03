@@ -41,7 +41,7 @@ const BattleFieldTooltips = {
 		const types = pokemon?.getTypes(server)[0] || ['Normal'];
 		const ability = toID(pokemon?.effectiveAbility(server) || server?.ability || '');
 		return {
-			name: pokemon?.name || 'Target', types, ability,
+			name: pokemon?.name || 'Target', types, ability, adaptation: pokemon?.adaptation,
 			item: server?.item || pokemon?.item || '', status: pokemon?.status || server?.status || '',
 			species: {id: toID(server?.speciesForme || pokemon?.speciesForme || '')},
 			positiveBoosts: () => Object.values(pokemon?.boosts || {}).reduce((sum, n) => sum + Math.max(0, n || 0), 0),
@@ -69,8 +69,8 @@ const BattleFieldTooltips = {
 		const rule = (window as any).BattleFieldMoveRules?.[original.id];
 		const move: any = this.clone({...rule?.base, ...original});
 		move.flags ||= {};
-		source = {...source, effectiveWeather: () => weather};
-		target = {...target, effectiveWeather: () => weather};
+		source = {...source, adaptiveField: field.id, effectiveWeather: () => weather};
+		target = {...target, adaptiveField: field.id, effectiveWeather: () => weather};
 		let factor = 1;
 		const context: any = {
 			field: {weather, terrain: field.id, auraField: aura?.id || '', pseudoWeather: {},
@@ -104,9 +104,20 @@ const BattleFieldTooltips = {
 		rule?.onModifyMove?.call(context, move, source, target);
 		const modifiedPower = move.basePower;
 		if (baseline.basePower && original.basePower) move.basePower = original.basePower * move.basePower / baseline.basePower;
+		const fieldBefore = this.clone(move);
 		field.onModifyMove?.call(context, move, source, target);
+		const fieldKey = field.id.replace(/^flowergarden[1-5]$/, 'flowergarden');
+		const sourceAdapted = !!source.adaptation?.active && source.adaptation.fields?.[fieldKey]?.stage === 3;
+		const targetAdapted = !!target.adaptation?.active && target.adaptation.fields?.[fieldKey]?.stage === 3;
+		// Mirror the server's direct numeric field rewrites; shared typing/category stays.
+		for (const key of ['basePower', 'damage', 'accuracy']) {
+			const before = fieldBefore[key], after = move[key];
+			if (typeof before !== 'number' || typeof after !== 'number') continue;
+			if (key === 'accuracy' ? sourceAdapted && after < before :
+				(sourceAdapted && after < before) || (targetAdapted && after > before)) move[key] = before;
+		}
 		if (aura) (window as any).BattleAuraHooks.onModifyMove.call(context, move, source, target);
-		const allowed = field.onTryMove?.call(context, source, target, move);
+		const allowed = sourceAdapted ? undefined : field.onTryMove?.call(context, source, target, move);
 		const failed = allowed === false || allowed === null;
 		if (move.category !== 'Status' && !failed) {
 			rule?.onBasePower?.call(neutral, baseline.basePower, source, target, baseline);
@@ -122,7 +133,8 @@ const BattleFieldTooltips = {
 			field.onBasePower?.call(context, move.basePower, source, target, move);
 			if (aura) (window as any).BattleAuraHooks.onBasePower.call(context, move.basePower, source, target, move);
 		}
-		const accuracy = field.onAccuracy?.call(context, move.accuracy, target, source, move);
+		let accuracy = field.onAccuracy?.call(context, move.accuracy, target, source, move);
+		if (sourceAdapted && typeof accuracy === 'number' && (move.accuracy === true || accuracy < move.accuracy)) accuracy = move.accuracy;
 		const movePriority = rule?.onModifyPriority?.call(context, move.priority || 0, source, target, move) ?? move.priority ?? 0;
 		const priority = field.onModifyPriority?.call(context, movePriority, source, target, move) ?? movePriority;
 		return {move, baseline, factor: failed ? 0 : Number(factor.toFixed(12)), failed,

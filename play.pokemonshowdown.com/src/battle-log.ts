@@ -620,6 +620,19 @@ export class BattleLog {
 		return str.replace(/&quot;/g, '"').replace(/&gt;/g, '>').replace(/&lt;/g, '<').replace(/&amp;/g, '&');
 	}
 
+	static accountName(name: string): string {
+		const id = toID(name);
+		const liveApp = window.app as {
+			watchUsernameColor?: (id: string) => void, displayNicknames?: { [id: string]: string },
+		} | undefined;
+		if (!liveApp?.watchUsernameColor || !/^[a-z0-9]{1,18}$/.test(id)) return this.escapeHTML(name);
+		liveApp.watchUsernameColor(id);
+		const nickname = liveApp.displayNicknames?.[id];
+		const label = nickname ? nickname + ' (@' + name + ')' : name;
+		return '<span class="account-display-name" data-account-id="' + id + '" data-account-name="' +
+			this.escapeHTML(name) + '" title="Account: @' + this.escapeHTML(name) + '">' + this.escapeHTML(label) + '</span>';
+	}
+
 	static colorCache: {[userid: string]: string} = {};
 	/** @deprecated */
 	static hashColor(name: ID) {
@@ -722,7 +735,7 @@ export class BattleLog {
 			name = name.substr(1);
 		}
 		const colorStyle = ` style="color:${BattleLog.usernameColor(toID(name))}"`;
-		const clickableName = `<small>${BattleLog.escapeHTML(group)}</small><span class="username" data-name="${BattleLog.escapeHTML(name)}">${BattleLog.escapeHTML(name)}</span>`;
+		const clickableName = `<small>${BattleLog.escapeHTML(group)}</small><span class="username" data-name="${BattleLog.escapeHTML(name)}">${BattleLog.accountName(name)}</span>`;
 		let hlClass = isHighlighted ? ' highlighted' : '';
 		let isMine = (window.app?.user?.get('name') === name) || (window.PS?.user.name === name);
 		let mineClass = isMine ? ' mine' : '';

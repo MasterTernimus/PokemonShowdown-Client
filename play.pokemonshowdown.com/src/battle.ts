@@ -37,7 +37,16 @@ export type EffectState = any[] & {0: ID};
 export type WeatherState = [string, number, number];
 export type HPColor = 'r' | 'y' | 'g';
 
+export interface AdaptationDisplay {
+ active: boolean; types: {[type: string]: {stage: number}}; activeTypes: string[];
+ opponents: {[id: string]: {label: string; points: number; complete: boolean; moves: string[];
+ setup: {stage: number}; bypass: string[]; defenses: string[]}};
+ statuses: {[id: string]: {stage: number}}; chip: {[id: string]: {stage: number}};
+ fields: {[id: string]: {stage: number}}; weather: {[id: string]: {stage: number}};
+ field: string; currentWeather: string;
+}
 export class Pokemon implements PokemonDetails, PokemonHealth {
+ adaptation: AdaptationDisplay | null = null;
 	name = '';
 	speciesForme = '';
 
@@ -356,6 +365,8 @@ export class Pokemon implements PokemonDetails, PokemonHealth {
 	}
 	rememberAbility(ability: string, isNotBase?: boolean) {
 		ability = Dex.abilities.get(ability).name;
+		// A component reveal must not replace a known composite; explicit replacements still do.
+		if (!isNotBase && this.ability && Dex.getAbilityEffects(toID(this.ability)).has(toID(ability))) return;
 		this.ability = ability;
 		if (!this.baseAbility && !isNotBase) {
 			this.baseAbility = ability;
@@ -509,7 +520,8 @@ export class Pokemon implements PokemonDetails, PokemonHealth {
 		if (item === 'ironball') {
 			return true;
 		}
-		if (ability === 'levitate') {
+		if (['levitate', 'elevate', 'solaridol', 'lunaridol', 'burningcrown', 'astralwitchcraft',
+			'voidcraft', 'phantombarrage'].some(id => Dex.getAbilityEffects(ability).has(id as ID))) {
 			return false;
 		}
 		if (this.volatiles['magnetrise'] || this.volatiles['telekinesis']) {
@@ -527,7 +539,7 @@ export class Pokemon implements PokemonDetails, PokemonHealth {
 		if (
 			this.fainted ||
 			(this.volatiles['transform'] && ability.flags['notransform']) ||
-			(!ability.flags['cantsuppress'] && (this.side.battle.ngasActive() || this.volatiles['gastroacid']))
+			(ability.id !== 'adaptivecycle' && !ability.flags['cantsuppress'] && (this.side.battle.ngasActive() || this.volatiles['gastroacid']))
 		) {
 			return '';
 		}
@@ -1725,29 +1737,31 @@ export class Battle {
 						itemPoke.item = effect.name;
 					}
 				}
-				if (!quiet) switch (effect.id) {
-				case 'brn':
-					this.scene.runStatusAnim('brn' as ID, [poke]);
-					break;
-				case 'psn':
-					this.scene.runStatusAnim('psn' as ID, [poke]);
-					break;
-				case 'baddreams':
-					this.scene.runStatusAnim('cursed' as ID, [poke]);
-					break;
-				case 'curse':
-					this.scene.runStatusAnim('cursed' as ID, [poke]);
-					break;
-				case 'confusion':
-					this.scene.runStatusAnim('confusedselfhit' as ID, [poke]);
-					break;
-				case 'leechseed':
-					this.scene.runOtherAnim('leech' as ID, [ofpoke!, poke]);
-					break;
-				case 'bind':
-				case 'wrap':
-					this.scene.runOtherAnim('bound' as ID, [poke]);
-					break;
+				if (!quiet) {
+					switch (effect.id) {
+					case 'brn':
+						this.scene.runStatusAnim('brn' as ID, [poke]);
+						break;
+					case 'psn':
+						this.scene.runStatusAnim('psn' as ID, [poke]);
+						break;
+					case 'baddreams':
+						this.scene.runStatusAnim('cursed' as ID, [poke]);
+						break;
+					case 'curse':
+						this.scene.runStatusAnim('cursed' as ID, [poke]);
+						break;
+					case 'confusion':
+						this.scene.runStatusAnim('confusedselfhit' as ID, [poke]);
+						break;
+					case 'leechseed':
+						this.scene.runOtherAnim('leech' as ID, [ofpoke!, poke]);
+						break;
+					case 'bind':
+					case 'wrap':
+						this.scene.runOtherAnim('bound' as ID, [poke]);
+						break;
+					}
 				}
 			} else {
 				if (this.dex.moves.get(this.lastMove).category !== 'Status') {
@@ -2565,6 +2579,17 @@ export class Battle {
 			this.log(args, kwArgs);
 			break;
 		}
+		case '-adaptation': {
+			const poke = this.getPokemon(args[1]);
+			if (!poke) break;
+			try {
+				const memory = JSON.parse(args[2]);
+				if (!memory || typeof memory !== 'object' || !Array.isArray(memory.activeTypes)) break;
+				poke.adaptation = memory;
+				this.scene.updateStatbar(poke);
+			} catch {}
+			break;
+		}
 		case '-start': {
 			let poke = this.getPokemon(args[1])!;
 			let effect = Dex.getEffect(args[2]);
@@ -3105,7 +3130,8 @@ export class Battle {
 			if (kwArgs.aura) {
 				minTimeLeft = Math.max(0, Number(kwArgs.aura) || 0);
 				maxTimeLeft = 0;
-				this.pseudoWeather = this.pseudoWeather.filter(state => !/^(electric|grassy|misty|psychic|rainbow)aura$/.test(toID(state[0])));
+				this.pseudoWeather = this.pseudoWeather.filter(state =>
+					!/^(electric|grassy|misty|psychic|rainbow)aura$/.test(toID(state[0])));
 			}
 			if (kwArgs.persistent) minTimeLeft += 2;
 			if (flowerGarden || kwArgs.garden || effect.id === 'midnightzoneterrain') minTimeLeft = maxTimeLeft = 0;
@@ -3399,7 +3425,8 @@ export class Battle {
 	runMajor(args: Args, kwArgs: KWArgs, preempt?: boolean) {
 		switch (args[0]) {
 		case 'gimmickcount': {
-			const used = Number(args[2]), limit = Number(args[3]);
+			const used = Number(args[2]);
+			const limit = Number(args[3]);
 			if (!/^p[1-4]$/.test(args[1]) || !Number.isInteger(used) || !Number.isInteger(limit) ||
 				used < 0 || limit < 0 || limit > 2 || used > limit) break;
 			if (!this.gimmickCounters) this.gimmickCounters = {};
@@ -3950,7 +3977,8 @@ export class Battle {
 }
 
 if (typeof require === 'function') {
-	// in Node
+	// Conditional Node-only dependency; a static import would also load this in the browser.
+	// tslint:disable-next-line:no-var-requires
 	require('./battle-log');
 	(global as any).Battle = Battle;
 	(global as any).Pokemon = Pokemon;

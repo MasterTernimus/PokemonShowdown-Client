@@ -286,7 +286,7 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 			changesFrom: 'Glalie-Aevian', isMega: true, gen: 9, isNonstandard: 'Custom', tier: 'Illegal',
 		},
 	},
-	gardevoirmegaalt: {base: 'gardevoirmega', data: {name: 'Gardevoir-Mega-Alt', baseSpecies: 'Gardevoir', forme: 'Mega-Alt', spriteid: 'gardevoir-void', abilities: {0: 'Royal Voice'}, requiredItem: 'Gardevoirite', battleOnly: 'Gardevoir-Void', isNonstandard: 'Custom'}},
+	gardevoirmegaalt: {base: 'gardevoirmega', data: {name: 'Gardevoir-Mega-Alt', baseSpecies: 'Gardevoir', forme: 'Mega-Alt', spriteid: 'gardevoir-mega-alt', abilities: {0: 'Royal Voice'}, requiredItem: 'Gardevoirite', battleOnly: 'Gardevoir-Void', isNonstandard: 'Custom'}},
 	breloommega: {"base":"breloom","data":{"num":286,"name":"Breloom-Mega","baseSpecies":"Breloom","forme":"Mega","types":["Poison","Fighting"],"baseStats":{"hp":80,"atk":160,"def":90,"spa":55,"spd":105,"spe":110},"abilities":{"0":"Corrosive Touch"},"heightm":1.2,"weightkg":39.2,"color":"Purple","eggGroups":["Fairy","Grass"],"requiredItem":"Breloomite","battleOnly":"Breloom","isNonstandard":"Custom","spriteid":"breloom-mega","tier":"OU","gen":9}},
 	luxraymega: {"base":"luxray","data":{"num":405,"name":"Luxray-Mega","baseSpecies":"Luxray","forme":"Mega","types":["Electric","Dark"],"baseStats":{"hp":85,"atk":160,"def":91,"spa":90,"spd":104,"spe":105},"abilities":{"0":"Night Hunt"},"heightm":1.4,"weightkg":42,"color":"Blue","eggGroups":["Field"],"requiredItem":"Luxranite","battleOnly":"Luxray","isNonstandard":"Custom","spriteid":"luxray-mega","tier":"OU","gen":9}},
 	gardevoirvoid: {"base":"gardevoir","data":{"name":"Gardevoir-Void","baseSpecies":"Gardevoir","forme":"Void","spriteid":"gardevoir-void","changesFrom":"Gardevoir","isNonstandard":"Custom"}},
@@ -1531,7 +1531,7 @@ const CUSTOM_SPECIES: {[id: string]: {base: string, data: AnyObject}} = {
 			name: 'Mismagius-Mega',
 			baseSpecies: 'Mismagius',
 			forme: 'Mega',
-			abilities: {0: 'Shadow Guard'},
+			abilities: {0: 'Voidcraft'},
 			battleOnly: 'Mismagius',
 			changesFrom: 'Mismagius',
 			isNonstandard: 'Custom',
@@ -2309,7 +2309,7 @@ const CUSTOM_ICON_SPRITES: {[id: string]: string} = {
 	lopunny: 'lopunny',
 	luxraymega: 'luxray-mega',
 	gardevoirvoid: 'gardevoir-void',
-	gardevoirmegaalt: 'gardevoir-void',
+	gardevoirmegaalt: 'gardevoir-mega-alt',
 	noctowlmega: 'noctowl-mega',
 	dusknoirmega: 'dusknoir-mega',
 	weavilemega: 'weavile-mega',
@@ -7765,7 +7765,7 @@ const CUSTOM_SPECIES_UPDATES: {[id: string]: AnyObject} = {
 		otherFormes: ['Hydreigon-Mega-X'], formeOrder: ['Hydreigon', 'Hydreigon-Mega-X'],
 	},
 	skarmory: {
-		abilities: {0: 'Self Sufficient', 1: 'Sturdy', H: 'Weak Armor'},
+		abilities: {0: 'Fresh Plumage', 1: 'Sturdy', H: 'Weak Armor'},
 	},
 	skarmorymega: {
 		abilities: {0: 'Golden Talons'},
@@ -8759,7 +8759,7 @@ moonveil: {name: 'Moon Veil', desc: 'Pastel Veil + Misty Surge. On entry, sets M
 	plasmaeruption: {name: 'Plasma Eruption', desc: "Proficient boosts same-type attacks by 1.3x. Contact attackers have Static's chance to be paralyzed and Flame Body's chance to be burned. Fire moves may become Electric, and Electric moves may become Fire (50% chance each), unless the new type would make the target immune. After Burn Up removes Fire typing, Fire moves always become Electric; after Double Shock removes Electric typing, Electric moves always become Fire. Burn Up and Double Shock themselves keep their original type.", shortDesc: 'Proficient + Static + Flame Body; Fire may turn Electric or vice versa (50%). Type loss forces it unless immune.'},
 	desertspirit: {name: 'Desert Spirit', desc: "Levitate + Sand Stream + Tinted Lens. This Pokemon is airborne, starts a sandstorm on entry, doubles damage from resisted attacks, and receives STAB on Ground attacks.", shortDesc: 'Levitate + Sand Stream + Tinted Lens; Ground STAB.'},
 	verdantsanctuary: {name: 'Verdant Sanctuary', desc: 'On entry, sets Grassy Terrain and heals each adjacent ally by 1/4 max HP. Healing received by this Pokemon and its allies is multiplied by 1.3. At the end of each turn, this Pokemon has a 50% chance to cure each adjacent ally status. Allies also take 3/4 damage from attacks.', shortDesc: 'Grassy Surge + Invigorate + Hospitality + Friend Guard.'},
-	exalt: {name: 'Exalt', desc: "This Pokemon has Defiant's effect and gains STAB on Ice- and Flying-type moves.", shortDesc: 'Defiant; Ice and Flying moves get STAB.'},
+	exalt: {name: 'Exalt', desc: "This Pokemon has Defiant: opposing stat drops raise its Attack by 2 stages. It cannot flinch. Its slicing moves and Steel Wing have 1.5x power, except on Cold Eclipse, as with Sharpness. Intimidate still lowers its Attack and triggers Defiant. Flinch protection can be bypassed by Mold Breaker; ability suppression disables all effects.", shortDesc: 'Defiant + Sharpness. Defiant; cannot flinch; slicing moves and Steel Wing have 1.5x power except on Cold Eclipse.'},
 	burningrage: {"name":"Burning Rage","desc":"This Pokemon has Brute Force, Iron Fist, and Turboblaze's effects.","shortDesc":"Brute Force + Iron Fist + Turboblaze."},
 	terragift: {"name":"Terra Gift","desc":"This Pokemon has Hospitality, Unaware, and Proficient's effects.","shortDesc":"Hospitality + Unaware + Proficient."},
 	tidaljaw: {"name":"Tidal Jaw","desc":"This Pokemon has Strong Jaw, Swift Swim, Filter's effects.","shortDesc":"Strong Jaw + Swift Swim + Filter."},
@@ -10069,9 +10069,9 @@ moonveil: {name: 'Moon Veil', desc: 'Pastel Veil + Misty Surge. On entry, sets M
 		desc: "Shadow Tag + Prankster. Traps adjacent foes that lack Shadow Tag, unless they are Ghost types or hold Shed Shell. This Pokemon takes 0.75x damage from attacks. Its status moves gain +1 priority, and opposing Dark types block those boosted moves outside Bewitched Woods. On Haunted Field, it reveals foes' held items on entry. It does not create Haunted Field on faint.",
 		shortDesc: "Shadow Tag + Prankster; traps foes, takes 0.75x damage, and gives status moves +1 priority.",
 	},
-	shadowguard: {
-		name: "Shadow Guard",
-		desc: "Elevate + Shadow Shield + Temporal Shift + Insomnia. It is ungrounded, halves attack damage at full HP, cannot sleep or be affected by Yawn, and opposing Pokemon cannot lower its stats. On Dark Crystal Cavern, New World, Starlight Arena, or Cold Eclipse, super-effective attack damage is further reduced to 0.75x. Its Dark- and Ghost-type damaging moves have 1.3x power, and it raises its highest stat after a move KO. Starting on Mega Evolution, it queues a 120 BP Ghost-type Future Sight on that turn and every other turn afterward; each queued attack strikes two turns later. It does not trap foes or have Magic Guard's indirect-damage immunity.",
+	voidcraft: {
+		name: "Voidcraft",
+		desc: "Elevate + Shadow Shield + Temporal Shift + Insomnia. It is ungrounded, takes 0.8x attack damage at any HP (0.6x from super-effective attacks), cannot sleep or be affected by Yawn, and opposing Pokemon cannot lower its stats. Damage reduction cannot be bypassed by Mold Breaker; suppression disables it. Its Dark- and Ghost-type damaging moves have 1.3x power, and it raises its highest stat after a move KO. Starting on Mega Evolution, it queues a 120 BP Ghost-type Future Sight on that turn and every other turn afterward; each queued attack strikes two turns later. It does not trap foes or have Magic Guard's indirect-damage immunity.",
 		shortDesc: "Elevate + Shadow Shield + Temporal Shift + Insomnia; 120 BP Ghost Future Sight every other turn.",
 	},
 	siegelauncher: {
@@ -13320,8 +13320,9 @@ function customSpriteRevision(id: string) {
 	if (toID(id).startsWith('toxtricityaevian')) return '?v=toxtricity-aevian-icons-20260918';
 	if (id === 'salazzle' || id === 'salazzle-mega') return '?v=salazzle-20260918';
 	const spriteid = id.toLowerCase();
+	if (spriteid === 'gardevoir-void') return '?v=crimson-void-20261003';
 	if (spriteid === 'mrmime-pulse') return '?v=pulse-mime-front-back-20261002';
-	if (['gardevoir-void', 'arcanine-alt', 'torterra-rift', 'torterra-rift-shatter'].includes(spriteid)) {
+	if (['gardevoir-void', 'gardevoir-mega-alt', 'arcanine-alt', 'torterra-rift', 'torterra-rift-shatter'].includes(spriteid)) {
 		return '?v=approved-sprites-20261002';
 	}
 	if (spriteid === 'appletun' || spriteid === 'appletun-gmax') return '?v=appletun-back-20260917';
@@ -15483,6 +15484,439 @@ for (const [id, update] of Object.entries({
 
 
 
+CUSTOM_SPECIES_UPDATES.mismagiusmega = {...CUSTOM_SPECIES_UPDATES.mismagiusmega, abilities: {0: 'Voidcraft'}, replaceAbilities: true};
+// APPROVED SALAZZLE IGNITION SLOTS
+CUSTOM_SPECIES_UPDATES.salazzle = {...CUSTOM_SPECIES_UPDATES.salazzle, abilities: {"0":"Corrosion","1":"Venom Ignition","H":"Aroma Veil"}, replaceAbilities: true};
+// APPROVED ARAQUANID 500 BST
+CUSTOM_SPECIES_UPDATES.araquanid = {...CUSTOM_SPECIES_UPDATES.araquanid, baseStats: {"hp":88,"atk":80,"def":92,"spa":50,"spd":147,"spe":43}};
+// APPROVED FINAL SKARMORY SLOTS
+CUSTOM_SPECIES_UPDATES.skarmory = {...CUSTOM_SPECIES_UPDATES.skarmory, abilities: {"0":"Fresh Plumage","1":"Sturdy","H":"Weak Armor"}, replaceAbilities: true};
+// APPROVED FINAL ESPATHRA SLOTS
+CUSTOM_SPECIES_UPDATES.espathra = {...CUSTOM_SPECIES_UPDATES.espathra, abilities: {"0":"Opportunist","1":"Transfixing Gaze","H":"Speed Boost"}, replaceAbilities: true};
+// APPROVED EMBOAR 528 BST
+CUSTOM_SPECIES_UPDATES.emboar = {...CUSTOM_SPECIES_UPDATES.emboar, baseStats: {"hp":110,"atk":123,"def":75,"spa":80,"spd":75,"spe":65}};
+// APPROVED EMBOARALT 528 BST
+CUSTOM_SPECIES_UPDATES.emboaralt = {...CUSTOM_SPECIES_UPDATES.emboaralt, baseStats: {"hp":110,"atk":123,"def":75,"spa":80,"spd":75,"spe":65}};
+// APPROVED FINAL URSALUNA SLOTS
+CUSTOM_SPECIES_UPDATES.ursaluna = {...CUSTOM_SPECIES_UPDATES.ursaluna, abilities: {"0":"Raging Beast","1":"Bulletproof","H":"Territorial"}, replaceAbilities: true};
+// APPROVED FINAL EMBOAR SLOTS
+CUSTOM_SPECIES_UPDATES.emboar = {...CUSTOM_SPECIES_UPDATES.emboar, abilities: {"0":"Gluttony","1":"Thick Fat","H":"Brute Force"}, replaceAbilities: true};
+// APPROVED FINAL EMBOARALT SLOTS
+CUSTOM_SPECIES_UPDATES.emboaralt = {...CUSTOM_SPECIES_UPDATES.emboaralt, abilities: {"0":"Gluttony","1":"Thick Fat","H":"Brute Force"}, replaceAbilities: true};
+// BEGIN APPROVED SIGNATURE SPECIES
+for (const [id, update] of Object.entries({
+	"tinkaton": {
+		"abilities": {
+			"0": "Scrapbreaker",
+			"1": "Own Tempo",
+			"H": "Steely Spirit"
+		},
+		"baseStats": {
+			"hp": 85,
+			"atk": 75,
+			"def": 77,
+			"spa": 70,
+			"spd": 105,
+			"spe": 94
+		},
+		"types": [
+			"Fairy",
+			"Steel"
+		],
+		"replaceAbilities": true
+	},
+	"grafaiai": {
+		"abilities": {
+			"0": "Unburden",
+			"1": "Toxic Signature",
+			"H": "Prankster"
+		},
+		"baseStats": {
+			"hp": 63,
+			"atk": 95,
+			"def": 65,
+			"spa": 80,
+			"spd": 72,
+			"spe": 110
+		},
+		"types": [
+			"Poison",
+			"Normal"
+		],
+		"replaceAbilities": true
+	},
+	"grimmsnarl": {
+		"abilities": {
+			"0": "Wicked Weave",
+			"1": "Tangling Hair",
+			"H": "Frisk"
+		},
+		"baseStats": {
+			"hp": 95,
+			"atk": 120,
+			"def": 65,
+			"spa": 95,
+			"spd": 75,
+			"spe": 60
+		},
+		"types": [
+			"Dark",
+			"Fairy"
+		],
+		"replaceAbilities": true
+	},
+	"klefki": {
+		"abilities": {
+			"0": "Vault Keeper",
+			"1": "Master Key",
+			"H": "Magician"
+		},
+		"baseStats": {
+			"hp": 57,
+			"atk": 80,
+			"def": 91,
+			"spa": 80,
+			"spd": 87,
+			"spe": 75
+		},
+		"types": [
+			"Steel",
+			"Fairy"
+		],
+		"replaceAbilities": true
+	},
+	"kleavor": {
+		"abilities": {
+			"0": "Flint Fracture",
+			"1": "Sheer Force",
+			"H": "Sharpness"
+		},
+		"baseStats": {
+			"hp": 70,
+			"atk": 135,
+			"def": 95,
+			"spa": 45,
+			"spd": 70,
+			"spe": 85
+		},
+		"types": [
+			"Bug",
+			"Rock"
+		],
+		"replaceAbilities": true
+	},
+	"glalie": {
+		"abilities": {
+			"0": "Inner Focus",
+			"1": "Frozen Feast",
+			"H": "Intimidate"
+		},
+		"baseStats": {
+			"hp": 80,
+			"atk": 80,
+			"def": 80,
+			"spa": 80,
+			"spd": 80,
+			"spe": 100
+		},
+		"types": [
+			"Ice",
+			"Fire"
+		],
+		"replaceAbilities": true
+	},
+	"chimecho": {
+		"abilities": {
+			"0": "Temple Chime",
+			"1": "Restorative Chime",
+			"H": "Dissonant Chime"
+		},
+		"baseStats": {
+			"hp": 75,
+			"atk": 50,
+			"def": 80,
+			"spa": 95,
+			"spd": 90,
+			"spe": 65
+		},
+		"types": [
+			"Psychic"
+		],
+		"replaceAbilities": true
+	},
+	"gengar": {
+		"abilities": {
+			"0": "Shadow Shield",
+			"1": "Levitate",
+			"H": "Grave Hunger"
+		},
+		"baseStats": {
+			"hp": 70,
+			"atk": 65,
+			"def": 60,
+			"spa": 130,
+			"spd": 85,
+			"spe": 110
+		},
+		"types": [
+			"Ghost",
+			"Poison"
+		],
+		"replaceAbilities": true
+	},
+	"volcarona": {
+		"abilities": {
+	"0": "Cinder Scales",
+	"1": "Overcoat",
+	"H": "Dawn Herald"
+},
+		"baseStats": {
+			"hp": 110,
+			"atk": 60,
+			"def": 90,
+			"spa": 135,
+			"spd": 105,
+			"spe": 100
+		},
+		"types": [
+			"Bug",
+			"Fire"
+		],
+		"replaceAbilities": true
+	},
+	"magcargo": {
+		"abilities": {
+			"0": "Evaporate",
+			"1": "Pressure Kiln",
+			"H": "Shattercrust"
+		},
+		"baseStats": {
+			"hp": 95,
+			"atk": 50,
+			"def": 145,
+			"spa": 115,
+			"spd": 105,
+			"spe": 30
+		},
+		"types": [
+			"Fire",
+			"Rock"
+		],
+		"replaceAbilities": true
+	},
+	"armaldo": {
+		"abilities": {
+			"0": "Relic Armor",
+			"1": "Swift Swim",
+			"H": "Primeval Hunt"
+		},
+		"baseStats": {
+			"hp": 75,
+			"atk": 145,
+			"def": 120,
+			"spa": 30,
+			"spd": 105,
+			"spe": 55
+		},
+		"types": [
+			"Rock",
+			"Bug"
+		],
+		"replaceAbilities": true
+	},
+	"walrein": {
+		"abilities": {
+			"0": "Rimebreaker",
+			"1": "Ice Body",
+			"H": "Accumulation"
+		},
+		"baseStats": {
+			"hp": 140,
+			"atk": 115,
+			"def": 80,
+			"spa": 115,
+			"spd": 80,
+			"spe": 30
+		},
+		"types": [
+			"Ice",
+			"Water"
+		],
+		"replaceAbilities": true
+	},
+	"amoonguss": {
+		"abilities": {
+			"0": "Effect Spore",
+			"1": "Spore Shroud",
+			"H": "Regenerator"
+		},
+		"baseStats": {
+			"hp": 114,
+			"atk": 105,
+			"def": 70,
+			"spa": 75,
+			"spd": 80,
+			"spe": 30
+		},
+		"types": [
+			"Grass",
+			"Poison"
+		],
+		"replaceAbilities": true
+	},
+	"charizardmegax": {
+		"abilities": {
+			"0": "Atrocity"
+		},
+		"baseStats": {
+			"hp": 78,
+			"atk": 130,
+			"def": 110,
+			"spa": 125,
+			"spd": 106,
+			"spe": 105
+		},
+		"types": [
+			"Fire",
+			"Dragon"
+		],
+		"replaceAbilities": true
+	},
+	"charizardmegaxalt": {
+		"abilities": {
+			"0": "Atrocity"
+		},
+		"baseStats": {
+			"hp": 78,
+			"atk": 130,
+			"def": 110,
+			"spa": 125,
+			"spd": 106,
+			"spe": 105
+		},
+		"types": [
+			"Fire",
+			"Dragon"
+		],
+		"replaceAbilities": true
+	},
+	"raichu": {
+		"abilities": {
+			"0": "Static",
+			"1": "Grounding Tail",
+			"H": "Lightning Rod"
+		},
+		"baseStats": {
+			"hp": 60,
+			"atk": 90,
+			"def": 55,
+			"spa": 90,
+			"spd": 80,
+			"spe": 120
+		},
+		"types": [
+			"Electric"
+		],
+		"replaceAbilities": true
+	},
+	"lycanrocdusk": {
+		"abilities": {
+			"0": "Tough Claws",
+			"1": "Twilight Instinct",
+			"H": "Dusk Drive"
+		},
+		"baseStats": {
+			"hp": 75,
+			"atk": 125,
+			"def": 70,
+			"spa": 45,
+			"spd": 70,
+			"spe": 115
+		},
+		"types": [
+			"Rock",
+			"Fighting"
+		],
+		"replaceAbilities": true
+	}
+})) {
+	CUSTOM_SPECIES_UPDATES[id] = {...CUSTOM_SPECIES_UPDATES[id], ...update};
+	if (CUSTOM_SPECIES[id]) Object.assign(CUSTOM_SPECIES[id].data, update);
+}
+CUSTOM_SPECIES_UPDATES.grimmsnarlazzy = {...CUSTOM_SPECIES_UPDATES.grimmsnarlazzy, abilities: {...CUSTOM_SPECIES_UPDATES.grimmsnarl.abilities}, replaceAbilities: true};
+if (CUSTOM_SPECIES.grimmsnarlazzy) CUSTOM_SPECIES.grimmsnarlazzy.data.abilities = {...CUSTOM_SPECIES_UPDATES.grimmsnarl.abilities};
+for (const [id, update] of Object.entries({
+	"cradily": {
+		"abilities": {
+			"0": "Storm Drain",
+			"1": "Relic Armor",
+			"H": "Primeval Hunger"
+		},
+		"baseStats": {
+			"hp": 95,
+			"atk": 75,
+			"def": 120,
+			"spa": 85,
+			"spd": 130,
+			"spe": 25
+		},
+		"types": [
+			"Rock",
+			"Grass"
+		],
+		"replaceAbilities": true
+	},
+	"volcarona": {
+		"abilities": {
+	"0": "Cinder Scales",
+	"1": "Overcoat",
+	"H": "Dawn Herald"
+},
+		"baseStats": {
+			"hp": 110,
+			"atk": 60,
+			"def": 90,
+			"spa": 135,
+			"spd": 105,
+			"spe": 100
+		},
+		"types": [
+			"Bug",
+			"Fire"
+		],
+		"replaceAbilities": true
+	}
+})) {
+	CUSTOM_SPECIES_UPDATES[id] = {...CUSTOM_SPECIES_UPDATES[id], ...update};
+	if (CUSTOM_SPECIES[id]) Object.assign(CUSTOM_SPECIES[id].data, update);
+}
+for (const [id, update] of Object.entries({
+	"drapion": {
+		"abilities": {
+			"0": "Razor Reach",
+			"1": "Withering Touch",
+			"H": "Strong Jaw",
+			"S": "Aevian Toxin"
+		},
+		"baseStats": {
+			"hp": 80,
+			"atk": 110,
+			"def": 125,
+			"spa": 60,
+			"spd": 80,
+			"spe": 95
+		},
+		"types": [
+			"Poison",
+			"Dark"
+		],
+		"replaceAbilities": true
+	}
+})) {
+	CUSTOM_SPECIES_UPDATES[id] = {...CUSTOM_SPECIES_UPDATES[id], ...update};
+	if (CUSTOM_SPECIES[id]) Object.assign(CUSTOM_SPECIES[id].data, update);
+}
+// END APPROVED SIGNATURE SPECIES
 // BEGIN SERVER WORKING SYNC SPECIES
 for (const [id, update] of Object.entries({
 	"ampharos": {
@@ -15519,6 +15953,26 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Electric",
 			"Dragon"
+		],
+		"replaceAbilities": true
+	},
+	"araquanid": {
+		"abilities": {
+			"0": "Water Bubble",
+			"1": "Water Absorb",
+			"H": "Neutralization"
+		},
+		"baseStats": {
+			"hp": 88,
+			"atk": 80,
+			"def": 92,
+			"spa": 50,
+			"spd": 147,
+			"spe": 43
+		},
+		"types": [
+			"Water",
+			"Bug"
 		],
 		"replaceAbilities": true
 	},
@@ -15810,10 +16264,30 @@ for (const [id, update] of Object.entries({
 		],
 		"replaceAbilities": true
 	},
+	"dragonair": {
+		"abilities": {
+			"0": "Shed Skin",
+			"1": "Dragonize",
+			"H": "Marvel Scale"
+		},
+		"baseStats": {
+			"hp": 61,
+			"atk": 84,
+			"def": 65,
+			"spa": 70,
+			"spd": 70,
+			"spe": 70
+		},
+		"types": [
+			"Dragon",
+			"Fairy"
+		],
+		"replaceAbilities": true
+	},
 	"drapion": {
 		"abilities": {
-			"0": "Serrated Pincers",
-			"1": "Debilitating Venom",
+			"0": "Razor Reach",
+			"1": "Withering Touch",
 			"H": "Strong Jaw",
 			"S": "Aevian Toxin"
 		},
@@ -15847,6 +16321,65 @@ for (const [id, update] of Object.entries({
 		},
 		"types": [
 			"Ground"
+		],
+		"replaceAbilities": true
+	},
+	"emboar": {
+		"abilities": {
+			"0": "Gluttony",
+			"1": "Thick Fat",
+			"H": "Brute Force"
+		},
+		"baseStats": {
+			"hp": 110,
+			"atk": 123,
+			"def": 75,
+			"spa": 80,
+			"spd": 75,
+			"spe": 65
+		},
+		"types": [
+			"Fire",
+			"Fighting"
+		],
+		"replaceAbilities": true
+	},
+	"emboaralt": {
+		"abilities": {
+			"0": "Gluttony",
+			"1": "Thick Fat",
+			"H": "Brute Force"
+		},
+		"baseStats": {
+			"hp": 110,
+			"atk": 123,
+			"def": 75,
+			"spa": 80,
+			"spd": 75,
+			"spe": 65
+		},
+		"types": [
+			"Fire",
+			"Fighting"
+		],
+		"replaceAbilities": true
+	},
+	"espathra": {
+		"abilities": {
+			"0": "Opportunist",
+			"1": "Transfixing Gaze",
+			"H": "Speed Boost"
+		},
+		"baseStats": {
+			"hp": 95,
+			"atk": 60,
+			"def": 60,
+			"spa": 101,
+			"spd": 60,
+			"spe": 105
+		},
+		"types": [
+			"Psychic"
 		],
 		"replaceAbilities": true
 	},
@@ -15890,7 +16423,7 @@ for (const [id, update] of Object.entries({
 	"glalie": {
 		"abilities": {
 			"0": "Inner Focus",
-			"1": "Strong Jaw",
+			"1": "Frozen Feast",
 			"H": "Intimidate"
 		},
 		"baseStats": {
@@ -16020,6 +16553,26 @@ for (const [id, update] of Object.entries({
 		},
 		"types": [
 			"Electric"
+		],
+		"replaceAbilities": true
+	},
+	"kecleon": {
+		"abilities": {
+			"0": "Shed Skin",
+			"1": "Protean",
+			"H": "Mimicry",
+			"S": "Adaptive Cycle"
+		},
+		"baseStats": {
+			"hp": 90,
+			"atk": 115,
+			"def": 90,
+			"spa": 50,
+			"spd": 135,
+			"spe": 50
+		},
+		"types": [
+			"Normal"
 		],
 		"replaceAbilities": true
 	},
@@ -16193,6 +16746,24 @@ for (const [id, update] of Object.entries({
 		},
 		"types": [
 			"Normal"
+		],
+		"replaceAbilities": true
+	},
+	"mismagiusmega": {
+		"abilities": {
+			"0": "Voidcraft"
+		},
+		"baseStats": {
+			"hp": 60,
+			"atk": 60,
+			"def": 60,
+			"spa": 140,
+			"spd": 140,
+			"spe": 140
+		},
+		"types": [
+			"Ghost",
+			"Dark"
 		],
 		"replaceAbilities": true
 	},
@@ -16445,6 +17016,26 @@ for (const [id, update] of Object.entries({
 		],
 		"replaceAbilities": true
 	},
+	"salazzle": {
+		"abilities": {
+			"0": "Corrosion",
+			"1": "Venom Ignition",
+			"H": "Aroma Veil"
+		},
+		"baseStats": {
+			"hp": 68,
+			"atk": 64,
+			"def": 60,
+			"spa": 111,
+			"spd": 60,
+			"spe": 117
+		},
+		"types": [
+			"Poison",
+			"Fire"
+		],
+		"replaceAbilities": true
+	},
 	"sandslashalt": {
 		"abilities": {
 			"0": "Bedrock Claw",
@@ -16507,7 +17098,8 @@ for (const [id, update] of Object.entries({
 		"abilities": {
 			"0": "RKS System",
 			"1": "Mimicry",
-			"H": "Memory Leak"
+			"H": "Memory Leak",
+			"S": "Adaptive Cycle"
 		},
 		"baseStats": {
 			"hp": 100,
@@ -16637,6 +17229,46 @@ for (const [id, update] of Object.entries({
 		},
 		"types": [
 			"Normal"
+		],
+		"replaceAbilities": true
+	},
+	"stunfisk": {
+		"abilities": {
+			"0": "Static",
+			"1": "Limber",
+			"H": "Earth Eater",
+			"S": "Adaptive Cycle"
+		},
+		"baseStats": {
+			"hp": 109,
+			"atk": 66,
+			"def": 84,
+			"spa": 81,
+			"spd": 99,
+			"spe": 32
+		},
+		"types": [
+			"Ground",
+			"Electric"
+		],
+		"replaceAbilities": true
+	},
+	"stunfiskgalar": {
+		"abilities": {
+			"0": "Mimicry",
+			"S": "Adaptive Cycle"
+		},
+		"baseStats": {
+			"hp": 109,
+			"atk": 81,
+			"def": 99,
+			"spa": 66,
+			"spd": 84,
+			"spe": 32
+		},
+		"types": [
+			"Ground",
+			"Steel"
 		],
 		"replaceAbilities": true
 	},
@@ -16772,6 +17404,26 @@ for (const [id, update] of Object.entries({
 		},
 		"types": [
 			"Psychic"
+		],
+		"replaceAbilities": true
+	},
+	"ursaluna": {
+		"abilities": {
+			"0": "Raging Beast",
+			"1": "Bulletproof",
+			"H": "Territorial"
+		},
+		"baseStats": {
+			"hp": 150,
+			"atk": 145,
+			"def": 110,
+			"spa": 25,
+			"spd": 120,
+			"spe": 50
+		},
+		"types": [
+			"Ground",
+			"Normal"
 		],
 		"replaceAbilities": true
 	},
@@ -17342,6 +17994,7 @@ const CUSTOM_BATTLE_SPRITE_X_OFFSETS: {[id: string]: {front?: number, back?: num
 	hatterenegmax: {back: -42},
 };
 const CUSTOM_BATTLE_FRONT_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: number}} = {
+	lopunny: {w: 64, h: 64},
 	mrrime: {w: 66, h: 70},
 	bellibolt: {w: 68, h: 72},
 	beedrillmega: {w: 66, h: 68},
@@ -17430,6 +18083,7 @@ const CUSTOM_BATTLE_FRONT_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: n
 	zoroarkhisui: {w: 88, h: 88},
 };
 const CUSTOM_BATTLE_BACK_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: number}} = {
+	lopunnymega: {w: 68, h: 68},
 	mrrime: {w: 54, h: 54},
 	bellibolt: {w: 54, h: 54},
 	beedrillmega: {w: 56, h: 59},
@@ -17469,7 +18123,7 @@ const CUSTOM_BATTLE_BACK_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: nu
 	leafeon: {w: 108, h: 108},
 	lucario: {w: 84, h: 84},
 	lucariomega: {w: 76, h: 76},
-	lucariomegaz: {w: 86, h: 86},
+	lucariomegaz: {w: 68, h: 68},
 	lokix: {w: 56, h: 56},
 	maushold: {w: 60, h: 60},
 	mausholdfour: {w: 60, h: 60},
@@ -18152,1161 +18806,2705 @@ for (const [id, update] of Object.entries({
 }
 // BEGIN APPROVED ROSTER ABILITIES
 Object.assign(CUSTOM_ABILITY_UPDATES, {
-  "updraft": {
-    "name": "Updraft",
-    "num": 10437,
-    "rating": 4,
-    "desc": "Flying moves ignore evasion boosts. Once per switch-in, its first Flying attack to damage a foe raises an adjacent ally's Speed by 1 stage.",
-    "shortDesc": "Flying moves ignore evasion boosts. Once per switch-in, its first Flying attack to damage a foe raises an adjacent ally's Speed by 1 stage."
-  },
-  "corneredfang": {
-    "name": "Cornered Fang",
-    "num": 10438,
-    "rating": 3.5,
-    "desc": "Guts. Once per switch-in, the first biting move selected while at half HP or less has +1 priority. Using that move spends the priority effect even if it misses or is blocked.",
-    "shortDesc": "Guts; at half HP, the first biting move each entry gains +1 priority."
-  },
-  "nighthoard": {
-    "name": "Night Hoard",
-    "num": 10439,
-    "rating": 4,
-    "desc": "Eating a Berry restores an additional 1/8 maximum HP and primes the next Dark-type biting attack that damages a foe to apply Taunt for 2 turns. Misses and blocked attacks preserve the charge.",
-    "shortDesc": "Eating a Berry heals 1/8 more and charges the next Dark bite to Taunt."
-  },
-  "dunerunner": {
-    "name": "Dune Runner",
-    "num": 10440,
-    "rating": 3,
-    "desc": "Sand Rush. Once per switch-in, being active in sandstorm clears entry hazards from its side. Retains Sand Rush's weather and field Speed effects.",
-    "shortDesc": "Sand Rush; entering during sand clears its side's hazards once."
-  },
-  "frostrunner": {
-    "name": "Frost Runner",
-    "num": 10441,
-    "rating": 3,
-    "desc": "Slush Rush. While hail or snow is active, entry hazards cannot damage, poison, or lower this Pokemon's Speed. Retains Slush Rush's field effects.",
-    "shortDesc": "Slush Rush. While hail or snow is active, entry hazards cannot damage, poison, or lower its Speed. Retains Slush Rush's field effects."
-  },
-  "bedrockclaw": {
-    "name": "Bedrock Claw",
-    "num": 10442,
-    "rating": 3.5,
-    "desc": "Tough Claws. The first Ground-type contact attack to damage a foe each switch-in removes one opposing screen after damage.",
-    "shortDesc": "Tough Claws. The first Ground-type contact attack to damage a foe each switch-in removes one opposing screen after damage."
-  },
-  "rimeclaw": {
-    "name": "Rime Claw",
-    "num": 10443,
-    "rating": 3.5,
-    "desc": "Tough Claws. The first Ice-type contact attack to damage a foe each switch-in removes one opposing screen after damage.",
-    "shortDesc": "Tough Claws. The first Ice-type contact attack to damage a foe each switch-in removes one opposing screen after damage."
-  },
-  "broodguard": {
-    "name": "Broodguard",
-    "num": 10444,
-    "rating": 0,
-    "desc": "Thick Fat + Friend Guard. Once per switch-in, when an adjacent ally survives an opposing hit that takes it from above half HP to half or less, this Pokemon gains +1 Defense.",
-    "shortDesc": "Thick Fat + Friend Guard; an ally dropping below half HP grants +1 Defense."
-  },
-  "suncharm": {
-    "name": "Sun Charm",
-    "num": 10445,
-    "rating": 4,
-    "desc": "Drought. Its first landed Fire hit each entry extends the sunlight it summoned by 1 turn, capped at 8 remaining turns. Once per entry, burning a foe also curses it: 1/8 maximum HP lost per turn under this server's ability-Curse rules. No HP cost to Ninetales.",
-    "shortDesc": "Drought; first Fire hit adds 1 sun turn (max 8); first burn also curses the foe."
-  },
-  "causticscales": {
-    "name": "Caustic Scales",
-    "num": 10446,
-    "rating": 4,
-    "desc": "Once per switch-in, the first opposing contact attack to damage this Pokemon poisons the attacker, subject to normal status immunity.",
-    "shortDesc": "Once per switch-in, the first opposing contact attack to damage it poisons the attacker, subject to normal status immunity."
-  },
-  "prismwings": {
-    "name": "Prism Wings",
-    "num": 10447,
-    "rating": 4,
-    "desc": "Tinted Lens. Once per switch-in, damaging a foe with a resisted attack raises this Pokemon's Speed by 1 stage.",
-    "shortDesc": "Tinted Lens. Once per switch-in, damaging a foe with a resisted attack raises its Speed by 1 stage."
-  },
-  "oneiricdust": {
-    "name": "Oneiric Dust",
-    "num": 10448,
-    "rating": 4,
-    "desc": "Psychic Surge. Once per switch-in, its first powder move that successfully hits a foe also lowers that foe's Sp. Def by 1 stage. Misses, immunity and protection do not spend the effect.",
-    "shortDesc": "Psychic Surge; the first landed powder move each entry lowers Sp. Def."
-  },
-  "pincercrush": {
-    "name": "Pincer Crush",
-    "num": 10449,
-    "rating": 3.5,
-    "desc": "Tough Claws. Once per switch-in, its first Steel-type contact attack to damage a foe lowers the foe's Defense by 1 stage.",
-    "shortDesc": "Tough Claws. Once per switch-in, its first Steel-type contact attack to damage a foe lowers the foe's Defense by 1 stage."
-  },
-  "decoypincers": {
-    "name": "Decoy Pincers",
-    "num": 10450,
-    "rating": 4,
-    "desc": "Once per switch-in, the first opposing direct hit deals 25% less damage and lowers the attacker's Attack by 1 stage. Multi-hit moves spend this protection on the first hit.",
-    "shortDesc": "First direct hit each entry deals 25% less and lowers the attacker's Attack."
-  },
-  "toxiccocoon": {
-    "name": "Toxic Cocoon",
-    "num": 10451,
-    "rating": 4,
-    "desc": "Once per switch-in, the first opposing special hit deals half damage. Separately, the first opposing contact hit each switch-in poisons its attacker, subject to normal immunity.",
-    "shortDesc": "First special hit deals half damage; the first contact attacker is poisoned."
-  },
-  "galebloom": {
-    "name": "Gale Bloom",
-    "num": 10452,
-    "rating": 4,
-    "desc": "Once per switch-in, its first Flying attack to damage a foe raises an adjacent ally's Sp. Atk by 1 stage.",
-    "shortDesc": "Once per switch-in, its first Flying attack to damage a foe raises an adjacent ally's Sp. Atk by 1 stage."
-  },
-  "gemeye": {
-    "name": "Gem Eye",
-    "num": 10453,
-    "rating": 0.5,
-    "desc": "Keen Eye. Once per switch-in, reflects the first reflectable opposing status move aimed directly at this Pokemon. Side-targeting hazards do not use this reflection.",
-    "shortDesc": "Keen Eye; reflects the first direct opposing status move each entry."
-  },
-  "lastlaugh": {
-    "name": "Last Laugh",
-    "num": 10454,
-    "rating": 4,
-    "desc": "If no other active Pokemon has a move left to use this turn, this Pokemon's damaging attack bypasses Substitute. Damaging a foe with that attack restores 1/8 maximum HP, once per turn.",
-    "shortDesc": "When no other Pokemon will move this turn, its hit bypasses Substitute and heals 1/8."
-  },
-  "openingoverture": {
-    "name": "Opening Overture",
-    "num": 10455,
-    "rating": 4,
-    "desc": "Once per switch-in, successfully using a sound move starts Tailwind for 3 turns. An existing longer Tailwind is not shortened.",
-    "shortDesc": "Once per switch-in, successfully using a sound move starts Tailwind for 3 turns. An existing longer Tailwind is not shortened."
-  },
-  "resonantblade": {
-    "name": "Resonant Blade",
-    "num": 10456,
-    "rating": 4,
-    "desc": "Slicing moves ignore damage reduction from Reflect, Light Screen, Aurora Veil, Atlantis Wall and Arenite Wall. Does not bypass Substitute.",
-    "shortDesc": "Slicing moves ignore damage reduction from Reflect, Light Screen, Aurora Veil, Atlantis Wall and Arenite Wall. Does not bypass Substitute."
-  },
-  "finalnote": {
-    "name": "Final Note",
-    "num": 10457,
-    "rating": 4,
-    "desc": "Once per switch-in, its first sound move selected while at half HP or less gains +1 priority. Using it spends the effect even if it misses or is blocked.",
-    "shortDesc": "At half HP, the first sound move each entry gains +1 priority."
-  },
-  "livingtangle": {
-    "name": "Living Tangle",
-    "num": 10458,
-    "rating": 4,
-    "desc": "Tangling Hair + Stamina. Contact attackers lose 1 Speed stage. Opposing hits raise Defense once per turn and restore 1/16 maximum HP per hit, as this server's Stamina does.",
-    "shortDesc": "Tangling Hair + Stamina; contact slows foes while opposing hits raise Defense and heal."
-  },
-  "rootrenewal": {
-    "name": "Root Renewal",
-    "num": 10459,
-    "rating": 4.5,
-    "desc": "Regenerator. Switching out restores 1/3 maximum HP and cures one adjacent active ally's major status condition.",
-    "shortDesc": "Regenerator. Switching out restores 1/3 HP and cures one adjacent active ally's major status condition."
-  },
-  "guidingomen": {
-    "name": "Guiding Omen",
-    "num": 10283,
-    "rating": 4.5,
-    "desc": "Friend Guard + Serene Grace. Once per switch-in, successfully applying a move secondary effect creates a ward that blocks the next opposing stat-drop event against an adjacent ally. Retains both components' effects.",
-    "shortDesc": "Friend Guard + Serene Grace; first secondary effect shields an ally from a stat drop."
-  },
-  "fortunatewing": {
-    "name": "Fortunate Wing",
-    "num": 10460,
-    "rating": 1.5,
-    "desc": "Super Luck. Once per switch-in, its first critical hit to damage a foe creates Safeguard for 5 turns. Does not shorten an existing longer Safeguard.",
-    "shortDesc": "Super Luck; the first critical hit each entry sets Safeguard for 5 turns."
-  },
-  "snowpack": {
-    "name": "Snowpack",
-    "num": 10461,
-    "rating": 3.5,
-    "desc": "Thick Fat + Ice Body + Tough Claws. Includes reduced Fire/Ice damage, contact-move power, weather/field healing, and this server's Ice Body contact-freeze chance.",
-    "shortDesc": "Thick Fat + Ice Body + Tough Claws."
-  },
-  "icemirror": {
-    "name": "Ice Mirror",
-    "num": 10462,
-    "rating": 4,
-    "desc": "Once per switch-in, the first opposing direct hit deals 25% less damage and lowers the attacker's Speed by 1 stage.",
-    "shortDesc": "Once per switch-in, the first opposing direct hit deals 25% less damage and lowers the attacker's Speed by 1 stage."
-  },
-  "wailingsnow": {
-    "name": "Wailing Snow",
-    "num": 10463,
-    "rating": 4,
-    "desc": "Once per switch-in, damaging a foe with an Ice attack primes the next damaging Ghost move for +1 priority. Using the Ghost attack spends the effect even if blocked or missed.",
-    "shortDesc": "An Ice hit charges the next Ghost attack for +1 priority."
-  },
-  "stonewall": {
-    "name": "Stonewall",
-    "num": 10464,
-    "rating": 3,
-    "desc": "Sturdy. When Sturdy saves this Pokemon from a direct hit, it sets one layer of Spikes on the opposing side.",
-    "shortDesc": "Sturdy. When Sturdy saves it from a direct hit, it sets one layer of Spikes on the opposing side."
-  },
-  "layeredshell": {
-    "name": "Layered Shell",
-    "num": 10467,
-    "rating": 1,
-    "desc": "Shell Armor. Once per switch-in, its first opposing special hit deals a further 25% less damage. Includes this server's Shell Armor critical-hit immunity, 20% damage reduction and field/stat-drop effects.",
-    "shortDesc": "Shell Armor; the first special hit each entry deals 25% less damage."
-  },
-  "breakaway": {
-    "name": "Breakaway",
-    "num": 10468,
-    "rating": 4,
-    "desc": "Once per switch-in, surviving an opposing physical hit lowers Defense by 1 stage and raises Speed by 2 stages.",
-    "shortDesc": "Once per switch-in, surviving an opposing physical hit lowers Defense by 1 stage and raises Speed by 2 stages."
-  },
-  "fossilram": {
-    "name": "Fossil Ram",
-    "num": 10469,
-    "rating": 3,
-    "desc": "Rock Head. Once per turn, damaging a foe with a recoil move lowers its Speed by 1 stage. Struggle recoil is not prevented.",
-    "shortDesc": "Rock Head. Once per turn, damaging a foe with a recoil move lowers its Speed by 1 stage. Struggle recoil is not prevented."
-  },
-  "rootediron": {
-    "name": "Rooted Iron",
-    "num": 10470,
-    "rating": 4,
-    "desc": "Stamina. At the end of turns in which this Pokemon did not attempt a damaging move, it restores 1/16 maximum HP. Also retains this server's Stamina on-hit Defense gain and healing.",
-    "shortDesc": "Stamina; heals 1/16 HP on turns when it does not attack."
-  },
-  "encorearia": {
-    "name": "Encore Aria",
-    "num": 10471,
-    "rating": 3.5,
-    "desc": "Serene Grace. Once per switch-in, successfully applying a move secondary effect creates Safeguard for 5 turns. A blocked secondary does not trigger this effect.",
-    "shortDesc": "Serene Grace; the first secondary effect each entry sets 5-turn Safeguard."
-  },
-  "saltbastion": {
-    "name": "Salt Bastion",
-    "num": 10465,
-    "rating": 3,
-    "desc": "Sturdy. When Sturdy saves this Pokemon from a direct hit, its side gains Safeguard for 5 turns.",
-    "shortDesc": "Sturdy. When Sturdy saves it from a direct hit, its side gains Safeguard for 5 turns."
-  },
-  "peppersting": {
-    "name": "Pepper Sting",
-    "num": 10472,
-    "rating": 1.5,
-    "desc": "Insomnia. After using a Fire move, its first Grass attack to damage a foe each switch-in lowers that foe's Speed and Sp. Def by 1 stage. Retains this server's full Insomnia effects.",
-    "shortDesc": "Insomnia; a Fire move primes the next Grass hit to lower Speed and Sp. Def."
-  },
-  "sushitrick": {
-    "name": "Sushi Trick",
-    "num": 10473,
-    "rating": 4,
-    "desc": "Hospitality. On entry, restores 1/4 of each adjacent ally's maximum HP and cures its confusion, with a cheerful sushi-service message.",
-    "shortDesc": "Hospitality. On entry, restores 1/4 of each adjacent ally's HP and cures its confusion, with a cheerful sushi-service message."
-  },
-  "mastercourse": {
-    "name": "Master Course",
-    "num": 10474,
-    "rating": 4.5,
-    "desc": "Contrary. Once per turn, damaging a foe with a Water or Dragon attack gives an adjacent ally +1 critical-hit stage for its next damaging move. The charge does not stack and ends on switching out.",
-    "shortDesc": "Contrary; Water or Dragon hits grant an adjacent ally +1 critical-hit stage."
-  },
-  "secondbrew": {
-    "name": "Second Brew",
-    "num": 10475,
-    "rating": 4,
-    "desc": "Once per turn, when this Pokemon receives draining-move healing, it also restores 1/8 of the lowest-HP adjacent ally's maximum HP.",
-    "shortDesc": "Once per turn, when it receives draining-move healing, it also restores 1/8 of the lowest-HP adjacent ally's HP."
-  },
-  "anchorbridge": {
-    "name": "Anchor Bridge",
-    "num": 10466,
-    "rating": 3,
-    "desc": "Sturdy. When Sturdy saves this Pokemon from a direct hit, its side gains Light Screen for 3 turns. Does not shorten a longer existing screen.",
-    "shortDesc": "Sturdy. When Sturdy saves it from a direct hit, its side gains Light Screen for 3 turns. Does not shorten a longer existing screen."
-  },
-  "railsight": {
-    "name": "Rail Sight",
-    "num": 10476,
-    "rating": 0,
-    "desc": "Stalwart. Once per switch-in, a successful attack against a foe using Follow Me, Rage Powder, Lightning Rod or Storm Drain ignores damage-reducing screens. Does not bypass Substitute.",
-    "shortDesc": "Stalwart; first hit through redirection each entry ignores screens."
-  },
-  "execution": {
-    "name": "Execution",
-    "num": 10198,
-    "rating": 4.5,
-    "desc": "Duskilate. Attacks against targets at half HP or less gain 1.3x power. Once per switch-in, a direct hit that brings a surviving foe from above half HP to half or less marks it; the next Dark or Ghost hit against that foe ignores positive defensive boosts and spends the mark. The mark ends if either Pokemon switches. Restores 1/8 maximum HP per KO; Attack and Sp. Atk cannot fall below -1, and Speed cannot be lowered while a field is active. Retains Duskilate field effects.",
-    "shortDesc": "Duskilate; stronger against low-HP foes; a hit crossing half HP marks them for defense bypass."
-  },
-  "sovereignarsenal": {
-    "name": "Sovereign Arsenal",
-    "num": 10500,
-    "rating": 4,
-    "desc": "Poison and Ground attacks choose Physical or Special using the higher Attack/Defense or Sp. Atk/Sp. Def stat ratio, like Shell Side Arm. Horn and tail moves gain +1 critical-hit stage. Contact flags are unchanged.",
-    "shortDesc": "Poison/Ground attacks use the stronger damage category; horn and tail moves crit more often."
-  },
-  "pollenengine": {
-    "name": "Pollen Engine",
-    "num": 10501,
-    "rating": 3,
-    "desc": "Chlorophyll. Once per turn, successfully hitting a foe with a powder move or damaging Grass move heals itself and adjacent allies by 1/16 maximum HP, or 1/8 in sunlight.",
-    "shortDesc": "Chlorophyll; Grass or powder hits heal it and its allies, more in sun."
-  },
-  "titanpincer": {
-    "name": "Titan Pincer",
-    "num": 10502,
-    "rating": 1.5,
-    "desc": "Hyper Cutter. Crabhammer uses this Pokemon's Defense instead of Attack when its Defense is higher. Retains all Hyper Cutter effects.",
-    "shortDesc": "Hyper Cutter. Crabhammer uses its Defense instead of Attack when its Defense is higher. Retains all Hyper Cutter effects."
-  },
-  "shellcracker": {
-    "name": "Shellcracker",
-    "num": 10503,
-    "rating": 4,
-    "desc": "Crabhammer has 100% base accuracy and always critically hits, unless critical hits are prevented.",
-    "shortDesc": "Crabhammer has 100% base accuracy and always critically hits, unless critical hits are prevented."
-  },
-  "tidaldominion": {
-    "name": "Tidal Dominion",
-    "num": 10504,
-    "rating": 3,
-    "desc": "Swift Swim. Opponents with a lowered Speed stage cannot hit this Pokemon or its allies with priority moves. Pairs with G-Max Foam Burst's existing Speed drops.",
-    "shortDesc": "Swift Swim; foes with lowered Speed cannot use priority against its side."
-  },
-  "tempestfury": {
-    "name": "Tempest Fury",
-    "num": 10505,
-    "rating": 4,
-    "desc": "Surviving an opposing direct attack charges its next damaging Water move to critically hit. A landed Water hit spends the non-stacking charge; misses and Protect do not.",
-    "shortDesc": "After surviving a direct hit, its next damaging Water move is a critical hit."
-  },
-  "ironlash": {
-    "name": "Iron Lash",
-    "num": 10506,
-    "rating": 3.5,
-    "desc": "Whiplash. Gains +1 accuracy on entry and tail moves have 1.5x power. Once per turn, damaging a foe with a tail move also raises its Sp. Def by 1 stage.",
-    "shortDesc": "Whiplash; tail hits raise Sp. Def once per turn."
-  },
-  "trailbreaker": {
-    "name": "Trailbreaker",
-    "num": 10507,
-    "rating": 4,
-    "desc": "Immune to entry-hazard damage, Toxic Spikes poison and Sticky Web Speed drops. Rapid Spin can hit Ghost types.",
-    "shortDesc": "Immune to entry-hazard damage, Toxic Spikes poison and Sticky Web Speed drops. Rapid Spin can hit Ghost types."
-  },
-  "armoredadvance": {
-    "name": "Armored Advance",
-    "num": 10508,
-    "rating": 4,
-    "desc": "Its own damaging moves cannot lower its Defense or Sp. Def. Ground attacks ignore its negative offensive stat stages.",
-    "shortDesc": "Its own damaging moves cannot lower its Defense or Sp. Def. Ground attacks ignore its negative offensive stat stages."
-  },
-  "gritgrappler": {
-    "name": "Grit Grappler",
-    "num": 10509,
-    "rating": 3.5,
-    "desc": "Guts. While statused, damaging a foe with a Fighting move restores 1/16 maximum HP once per turn.",
-    "shortDesc": "Guts. While statused, damaging a foe with a Fighting move restores 1/16 HP once per turn."
-  },
-  "dreadjaw": {
-    "name": "Dread Jaw",
-    "num": 10510,
-    "rating": 3,
-    "desc": "Moxie. A move KO also stores one charge that lowers the next opposing entrant's Attack by 1 stage. Charges do not stack and end when the holder leaves.",
-    "shortDesc": "Moxie; a move KO lowers the next opposing entrant's Attack."
-  },
-  "floehunter": {
-    "name": "Floe Hunter",
-    "num": 10511,
-    "rating": 3,
-    "desc": "Slush Rush. In snow or hail, biting moves always critically hit slower targets, unless critical hits are prevented.",
-    "shortDesc": "Slush Rush. In snow or hail, biting moves always critically hit slower targets, unless critical hits are prevented."
-  },
-  "lanceguard": {
-    "name": "Lanceguard",
-    "num": 10512,
-    "rating": 1,
-    "desc": "Shell Armor, including this server's damage reduction and field/stat-drop effects. Blocking a contact move with Protect lowers the attacker's Defense by 1 stage.",
-    "shortDesc": "Shell Armor; blocking contact with Protect lowers the attacker's Defense."
-  },
-  "headlongresolve": {
-    "name": "Headlong Resolve",
-    "num": 10513,
-    "rating": 4,
-    "desc": "Recoil moves ignore positive defensive boosts. Surviving its own recoil raises Defense by 1 stage once per turn.",
-    "shortDesc": "Recoil moves ignore positive defensive boosts. Surviving its own recoil raises Defense by 1 stage once per turn."
-  },
-  "herdshelter": {
-    "name": "Herd Shelter",
-    "num": 10514,
-    "rating": 2,
-    "desc": "Soundproof. Adjacent allies are also immune to opposing damaging sound moves.",
-    "shortDesc": "Soundproof. Adjacent allies are also immune to opposing damaging sound moves."
-  },
-  "scorchsweep": {
-    "name": "Scorch Sweep",
-    "num": 10515,
-    "rating": 4,
-    "desc": "Once per switch-in, damaging a foe with a recoil move clears entry hazards from its side. The attack still deals normal recoil.",
-    "shortDesc": "Once per switch-in, damaging a foe with a recoil move clears entry hazards from its side. The attack still deals normal recoil."
-  },
-  "opensky": {
-    "name": "Open Sky",
-    "num": 10516,
-    "rating": 4,
-    "desc": "While itemless, immune to entry-hazard damage, Toxic Spikes poison and Sticky Web Speed drops; Flying moves do not make contact.",
-    "shortDesc": "While itemless, immune to entry-hazard damage, Toxic Spikes poison and Sticky Web Speed drops; Flying moves do not make contact."
-  },
-  "tidalvoice": {
-    "name": "Tidal Voice",
-    "num": 10517,
-    "rating": 1.5,
-    "desc": "Liquid Voice: sound moves become Water-type (Ice on Icy Field) and gain 1.3x power, including already-Water moves such as Sparkling Aria. Sound moves spare allies. Its first damaging sound hit each entry clears its negative stat stages.",
-    "shortDesc": "Liquid Voice; sound moves gain 1.3x power, spare allies, and first hit clears stat drops."
-  },
-  "rechargerelay": {
-    "name": "Recharge Relay",
-    "num": 10518,
-    "rating": 0,
-    "desc": "Battery, including its existing Electric Terrain effect. Switching with Volt Switch restores 1/8 of the incoming teammate's maximum HP.",
-    "shortDesc": "Battery, including its existing Electric Terrain effect. Switching with Volt Switch restores 1/8 of the incoming teammate's HP."
-  },
-  "hovercannon": {
-    "name": "Hover Cannon",
-    "num": 10519,
-    "rating": 4,
-    "desc": "Levitate. Above half HP, damaging Electric moves cannot miss or be redirected. Type and ability immunities still apply.",
-    "shortDesc": "Levitate. Above half HP, damaging Electric moves cannot miss or be redirected. Type and ability immunities still apply."
-  },
-  "keenhunt": {
-    "name": "Keen Hunt",
-    "num": 10520,
-    "rating": 4,
-    "desc": "Opponents cannot lower its Speed. Rock moves cannot miss and gain +1 critical-hit stage against targets at half HP or less.",
-    "shortDesc": "Opponents cannot lower its Speed. Rock moves cannot miss and gain +1 critical-hit stage against targets at half HP or less."
-  },
-  "bloodchallenge": {
-    "name": "Blood Challenge",
-    "num": 10521,
-    "rating": 4,
-    "desc": "Its first opposing direct hit each entry deals 25% less damage. Counter can retaliate against either physical or special attacks.",
-    "shortDesc": "Its first opposing direct hit each entry deals 25% less damage. Counter can retaliate against either physical or special attacks."
-  },
-  "twilightinstinct": {
-    "name": "Twilight Instinct",
-    "num": 10522,
-    "rating": 4,
-    "desc": "Consecutive damaging attacks landed on the same foe gain +1 critical-hit stage per repeat, up to +2. Missing, being blocked or changing targets resets the chain; status moves pause it.",
-    "shortDesc": "Repeated hits on the same foe gain critical-hit stages, up to +2."
-  },
-  "twincannons": {
-    "name": "Twin Cannons",
-    "num": 10523,
-    "rating": 4,
-    "desc": "Single-target special Fire and Psychic attacks hit twice at half power per hit. Both use Sp. Atk: the first targets Sp. Def, the second Defense. Secondary effects roll only on the first hit. Excludes Z/Max, fixed-damage and existing multi-hit moves.",
-    "shortDesc": "Fire/Psychic attacks hit twice; the second hit targets Defense instead of Sp. Def."
-  },
-  "twinblades": {
-    "name": "Twin Blades",
-    "num": 10524,
-    "rating": 4,
-    "desc": "Single-target Fire and Ghost slicing attacks hit twice at half power per hit. The second hit ignores positive defensive stages. Secondary effects roll only on the first hit. Excludes Z/Max, fixed-damage and existing multi-hit moves.",
-    "shortDesc": "Fire/Ghost slicing moves hit twice; the second hit ignores defensive boosts."
-  },
-  "heatreservoir": {
-    "name": "Heat Reservoir",
-    "num": 10525,
-    "rating": 3.5,
-    "desc": "Flash Fire. After a boosted Armor Cannon deals damage, consumes the Flash Fire charge to prevent Armor Cannon's own Defense and Sp. Def drops. Retains Flash Fire's field effects.",
-    "shortDesc": "Flash Fire; a boosted Armor Cannon avoids its own defensive drops."
-  },
-  "mourningcoat": {
-    "name": "Mourning Coat",
-    "num": 10526,
-    "rating": 3.5,
-    "desc": "Fluffy. After a teammate has fainted, Fluffy's extra Fire weakness is removed for the rest of battle; contact damage reduction remains.",
-    "shortDesc": "Fluffy. After a teammate has fainted, Fluffy's extra Fire weakness is removed for the rest of battle; contact damage reduction remains."
-  },
-  "gravewind": {
-    "name": "Gravewind",
-    "num": 10527,
-    "rating": 3,
-    "desc": "Sand Rush. Entering directly into a fainted teammate's slot summons sandstorm for 3 turns. Does not shorten or refresh an existing sandstorm.",
-    "shortDesc": "Sand Rush; entering a fainted ally's slot summons sand for 3 turns."
-  },
-  "dozinggiant": {
-    "name": "Dozing Giant",
-    "num": 10528,
-    "rating": 1.5,
-    "desc": "Oblivious. While asleep, takes 25% less damage from special attacks. Sleep Talk cannot select Rest.",
-    "shortDesc": "Oblivious. While asleep, takes 25% less damage from special attacks. Sleep Talk cannot select Rest."
-  },
-  "quillreservoir": {
-    "name": "Quill Reservoir",
-    "num": 10529,
-    "rating": 3.5,
-    "desc": "Water Absorb, including its field effects. Absorbing a Water move primes its next landed damaging Poison move to poison the target. The charge does not stack; normal status immunities apply.",
-    "shortDesc": "Water Absorb; the next Poison hit after absorbing Water poisons its foe."
-  },
-  "raisedquills": {
-    "name": "Raised Quills",
-    "num": 10530,
-    "rating": 4,
-    "desc": "Successfully using a status move primes one non-stacking charge that poisons the next opposing contact attacker, subject to normal status immunities.",
-    "shortDesc": "Using a status move primes the next contact attacker to be poisoned."
-  },
-  "mountainbreaker": {
-    "name": "Mountainbreaker",
-    "num": 10540,
-    "rating": 4,
-    "desc": "Damaging Rock moves remain Rock-type with normal Rock STAB, but use the better overall Rock or Ground type-chart effectiveness against each target. Ground-immune typings do not replace the Rock matchup. No extra power multiplier.",
-    "shortDesc": "Rock moves use the better Rock/Ground matchup without changing type."
-  },
-  "dreadpresence": {
-    "name": "Dread Presence",
-    "num": 10541,
-    "rating": 4,
-    "desc": "Opponents lose 1/8 maximum HP after successfully using a status move, at most once per opponent per turn. Failed moves do not trigger this effect.",
-    "shortDesc": "Opponents lose 1/8 HP after successfully using a status move, at most once per opponent per turn. Failed moves do not trigger this effect."
-  },
-  "palmmastery": {
-    "name": "Palm Mastery",
-    "num": 10542,
-    "rating": 3.5,
-    "desc": "Thick Fat. Force Palm always inflicts paralysis when it lands, subject to status immunities. Its paralysis becomes a primary effect rather than a secondary roll.",
-    "shortDesc": "Thick Fat; Force Palm always paralyzes when it lands."
-  },
-  "galvanicspirit": {
-    "name": "Galvanic Spirit",
-    "num": 10543,
-    "rating": 1.5,
-    "desc": "Vital Spirit, including this server's sleep immunity, 1.3x Fighting attack-stat boost and 20% direct-damage reduction. Contact Electric hits lower the foe's Sp. Def by 1 stage once per turn.",
-    "shortDesc": "Vital Spirit; Electric contact hits lower Sp. Def once per turn."
-  },
-  "blastchamber": {
-    "name": "Blast Chamber",
-    "num": 10544,
-    "rating": 1.5,
-    "desc": "Vital Spirit, including sleep immunity, 1.3x Fighting attack-stat boost and 20% direct-damage reduction. A landed Fire attack makes its next Fighting attack unable to miss, and a landed Fighting attack does the same for its next Fire attack. Charges end on switching.",
-    "shortDesc": "Vital Spirit; Fire and Fighting hits make the other type's next attack never miss."
-  },
-  "venomspurs": {
-    "name": "Venom Spurs",
-    "num": 10545,
-    "rating": 4,
-    "desc": "Damaging a foe with a Poison move primes the next Bug hit against a foe to lower Defense by 1 stage before damage. Non-stacking charge; Protect, misses and Substitute preserve it; switching clears it.",
-    "shortDesc": "A Poison hit charges the next Bug hit to lower Defense before damage."
-  },
-  "lastbrood": {
-    "name": "Last Brood",
-    "num": 10546,
-    "rating": 2,
-    "desc": "Swarm. Once per battle, surviving an opposing hit that crosses from above half HP to half or less creates a Substitute with 1/8 maximum HP, at no HP cost. Cannot replace an existing Substitute.",
-    "shortDesc": "Swarm; once per battle, crossing half HP creates a 1/8-HP Substitute."
-  },
-  "venombastion": {
-    "name": "Venom Bastion",
-    "num": 10117,
-    "rating": 4,
-    "desc": "Stamina, including Defense gains once per turn and this server's 1/16 healing per opposing hit. Once per turn, a poisoned foe that damages it loses one stage of its higher offensive stat. No separate Bug power boost, Merciless or Self Sufficient.",
-    "shortDesc": "Stamina; poisoned attackers lose 1 stage of their higher offense once per turn."
-  },
-  "shadowfeint": {
-    "name": "Shadow Feint",
-    "num": 10547,
-    "rating": 4,
-    "desc": "Ordinary damaging Dark moves penetrate normal protection at one-third damage, without secondary effects through protection. Does not remove Protect, bypass Max Guard, or alter Z/Max move protection rules.",
-    "shortDesc": "Dark attacks pierce Protect at one-third power, without secondary effects."
-  },
-  "silksights": {
-    "name": "Silk Sights",
-    "num": 10548,
-    "rating": 3,
-    "desc": "Compound Eyes. Electric attacks ignore positive defensive stat stages against foes whose Speed is lowered.",
-    "shortDesc": "Compound Eyes. Electric attacks ignore positive defensive stat stages against foes whose Speed is lowered."
-  },
-  "livenet": {
-    "name": "Live Net",
-    "num": 10549,
-    "rating": 1,
-    "desc": "Unnerve. While active, Sticky Web placed by this Pokemon also deals 1/16 maximum HP of Electric damage to grounded entrants. Heavy-Duty Boots, hazard immunity and Electric immunity prevent the added damage.",
-    "shortDesc": "Unnerve; its Sticky Web also chips grounded entrants with Electric damage."
-  },
-  "barbharvest": {
-    "name": "Barb Harvest",
-    "num": 10550,
-    "rating": 2.5,
-    "desc": "Iron Barbs. After taking three opposing contact moves, restores its consumed Berry once per battle, if its item slot is empty. Multi-hit attacks count as one move; progress persists through switching.",
-    "shortDesc": "Iron Barbs; restores its used Berry after three opposing contact attacks, once per battle."
-  },
-  "currentcoil": {
-    "name": "Current Coil",
-    "num": 10551,
-    "rating": 3,
-    "desc": "Swift Swim, including this server's eligible water fields. Coil additionally raises Sp. Atk by 1 stage, preserving its other boosts.",
-    "shortDesc": "Swift Swim, including this server's eligible water fields. Coil additionally raises Sp. Atk by 1 stage, preserving its other boosts."
-  },
-  "stormcircuit": {
-    "name": "Storm Circuit",
-    "num": 10156,
-    "rating": 4,
-    "desc": "Electric Surge + Elevate + Current Coil. Summons the Electric aura, retains its existing KO highest-stat boost, and has Swift Swim plus Coil granting an additional +1 Sp. Atk.",
-    "shortDesc": "Electric Surge + Current Coil; Coil also raises Sp. Atk, with Swift Swim."
-  },
-  "soulpyre": {
-    "name": "Soul Pyre",
-    "num": 10552,
-    "rating": 4,
-    "desc": "Restores 1/8 maximum HP at the end of a turn when an opposing Pokemon actually took burn damage. Ghost hits against already-burned foes lower Sp. Def by 1 stage once per turn. Prevented burn damage does not grant healing.",
-    "shortDesc": "Heals 1/8 after foe burn damage; Ghost hits lower burned foes' Sp. Def."
-  },
-  "blackviper": {
-    "name": "Black Viper",
-    "num": 10553,
-    "rating": 3.5,
-    "desc": "Whiplash: +1 accuracy on entry and 1.5x tail-move power. Its first tail hit against a foe each entry badly poisons that target, subject to normal status immunities.",
-    "shortDesc": "Whiplash; the first tail hit each entry badly poisons."
-  },
-  "silkshuriken": {
-    "name": "Silk Shuriken",
-    "num": 10554,
-    "rating": 4,
-    "desc": "Water Shuriken becomes Bug-type and hits exactly three times at 20 base power per hit, retaining its priority. Does not alter Z/Max moves.",
-    "shortDesc": "Water Shuriken becomes Bug-type and hits exactly three times at 20 base power per hit, retaining its priority. Does not alter Z/Max moves."
-  },
-  "hiddenscroll": {
-    "name": "Hidden Scroll",
-    "num": 10555,
-    "rating": 4,
-    "desc": "Once per switch-in in doubles, a successful single-target status move aimed at a foe also attempts the move against the other adjacent foe. Each target independently respects accuracy, protection, immunity and reflection. Excludes moves that call other moves.",
-    "shortDesc": "In doubles, its first single-target status move each entry also targets the other foe."
-  },
-  "toxicserenity": {
-    "name": "Toxic Serenity",
-    "num": 10556,
-    "rating": 4,
-    "desc": "Poison Heal. While poisoned or badly poisoned, Dragon moves cannot miss. Retains the full Poison Heal effects.",
-    "shortDesc": "Poison Heal. While poisoned or badly poisoned, Dragon moves cannot miss. Retains the full Poison Heal effects."
-  },
-  "mudtemper": {
-    "name": "Mud Temper",
-    "num": 10557,
-    "rating": 1,
-    "desc": "Battle Armor, including this server's critical-hit immunity, 20% damage reduction and field/stat-drop effects. Surviving an opposing Fire or Water hit raises Sp. Def by 1 stage once per turn.",
-    "shortDesc": "Battle Armor; surviving a Fire or Water hit raises Sp. Def once per turn."
-  },
-  "skywarden": {
-    "name": "Skywarden",
-    "num": 10558,
-    "rating": 4,
-    "desc": "After successfully using Defog, creates Mist for its team for 5 turns. The Mist is applied after Defog removes effects; an existing longer Mist is not shortened.",
-    "shortDesc": "Defog sets 5-turn Mist for its side."
-  },
-  "lockjaw": {
-    "name": "Lockjaw",
-    "num": 10559,
-    "rating": 3.5,
-    "desc": "Strong Jaw. Biting hits inflict Torment on a surviving foe for 2 turns. Does not prevent switching.",
-    "shortDesc": "Strong Jaw. Biting hits inflict Torment on a surviving foe for 2 turns. Does not prevent switching."
-  },
-  "rivershell": {
-    "name": "River Shell",
-    "num": 10560,
-    "rating": 1,
-    "desc": "Shell Armor, including this server's damage reduction and field/stat-drop effects. Shell Smash does not lower its Defense, but still lowers its Sp. Def.",
-    "shortDesc": "Shell Armor; Shell Smash keeps Defense but still lowers Sp. Def."
-  },
-  "territorial": {
-    "name": "Territorial",
-    "num": 10264,
-    "rating": 4,
-    "desc": "Surviving an opposing physical hit charges its next Ground attack to ignore its own negative Attack stages and positive target evasion. Landing a Ground hit on a foe consumes the charge to heal 1/8 maximum HP. Misses and Protect preserve it; charges do not stack and switching clears them. Ground immunities still apply.",
-    "shortDesc": "After surviving a physical hit, its next Ground hit ignores drops/evasion and heals 1/8."
-  },
-  "funeralchoir": {
-    "name": "Funeral Choir",
-    "num": 10561,
-    "rating": 4,
-    "desc": "Damaging sound moves restore 1/32 maximum HP per currently fainted teammate, capped at 1/8 and once per turn. While a teammate is fainted, damaging Ghost moves also become sound moves, including sound interactions such as Soundproof and Substitute bypass.",
-    "shortDesc": "Sound hits heal per fainted ally; Ghost attacks become sound after an ally faints."
-  },
-  "festivalstep": {
-    "name": "Festival Step",
-    "num": 10562,
-    "rating": 4,
-    "desc": "Landing a damaging dance move against a foe clears this Pokemon's negative stat stages after damage. Positive stages are preserved; blocked or missed moves do not trigger the effect.",
-    "shortDesc": "Dance hits clear its negative stat stages."
-  },
-  "saltcrust": {
-    "name": "Salt Crust",
-    "num": 10563,
-    "rating": 2,
-    "desc": "Clear Body. While Defense is positively boosted, opponents cannot remove its held item. Does not prevent its boosts being reset, stolen or ignored.",
-    "shortDesc": "Clear Body; while Defense is boosted, its held item cannot be removed."
-  },
-  "beyondfear": {
-    "name": "Beyond Fear",
-    "num": 10564,
-    "rating": 1,
-    "desc": "Inner Focus. Once per switch-in, an opposing Attack increase grants +1 Defense, or an opposing Sp. Atk increase grants +1 Sp. Def. A move raising both grants both, consuming the one activation.",
-    "shortDesc": "Inner Focus; an opposing offensive boost grants a matching defensive boost once per entry."
-  },
-  "stillwater": {
-    "name": "Stillwater",
-    "num": 10565,
-    "rating": 3.5,
-    "desc": "Water Absorb, including its field effects. Absorbing a Water move while already at full HP raises Sp. Def by 1 stage once per turn.",
-    "shortDesc": "Water Absorb, including its field effects. Absorbing a Water move while already at full HP raises Sp. Def by 1 stage once per turn."
-  },
-  "mudmeditation": {
-    "name": "Mud Meditation",
-    "num": 10566,
-    "rating": 4,
-    "desc": "While waiting to perform a selected status move, takes 25% less damage from special attacks. The protection ends when its action resolves or is cancelled.",
-    "shortDesc": "Takes 25% less special damage while waiting to use a status move."
-  },
-  "sirius": {
-    "name": "Sirius",
-    "num": 10404,
-    "rating": 5,
-    "desc": "Apex Venom + Black Viper. Retains Apex Venom, Dragon-type Poison Fang, +1 accuracy on entry and 1.5x tail power. Its first tail hit against a foe each entry also badly poisons it, subject to status immunities.",
-    "shortDesc": "Apex Venom + Black Viper; first tail hit each entry badly poisons."
-  },
-  "coldopen": {
-    "name": "Cold Open",
-    "num": 10580,
-    "rating": 4,
-    "desc": "Its first successful damaging move each entry ignores positive defensive stat stages and screens. All hits of that move benefit. Misses and Protect preserve the effect; it does not bypass Substitute.",
-    "shortDesc": "First damaging move each entry ignores defensive boosts and screens."
-  },
-  "quarrycannon": {
-    "name": "Quarry Cannon",
-    "num": 10581,
-    "rating": 3,
-    "desc": "Solid Rock, including this server's 20% damage reduction and additional 25% reduction against super-effective hits. Rock Blast always hits five times unless interrupted. Does not alter Z/Max moves or Rock Wrecker recharge rules.",
-    "shortDesc": "Solid Rock; Rock Blast always hits five times."
-  },
-  "tundramarch": {
-    "name": "Tundra March",
-    "num": 10582,
-    "rating": 1.5,
-    "desc": "Oblivious. Landing a Ground attack on a foe removes Spikes, Toxic Spikes and Sticky Web from its own side. Ground immunity, Protect and Substitute prevent this activation. Stealth Rock remains.",
-    "shortDesc": "Oblivious; Ground hits remove Spikes, Toxic Spikes, and Sticky Web."
-  },
-  "undertow": {
-    "name": "Undertow",
-    "num": 10583,
-    "rating": 3.5,
-    "desc": "Water Absorb, including its field effects. Damaging Water hits ground surviving foes as with Smack Down. Does not trap them or bypass protection, Substitute or Water immunity.",
-    "shortDesc": "Water Absorb; Water hits ground surviving foes."
-  },
-  "deadwater": {
-    "name": "Deadwater",
-    "num": 10584,
-    "rating": 4,
-    "desc": "Foes receive half their normal passive end-of-turn healing. Absorbs the HP actually prevented, capped at 1/8 of its maximum HP per turn. Excludes healing moves, Wish, draining, Leech Seed and switching recovery. Multiple Deadwater holders do not stack.",
-    "shortDesc": "Halves foes' passive end-turn healing and absorbs up to 1/8 HP per turn."
-  },
-  "vitalcircuit": {
-    "name": "Vital Circuit",
-    "num": 10585,
-    "rating": 4,
-    "desc": "Electric attacks without an existing drain effect restore 25% of damage dealt to foes, capped at 1/8 maximum HP per turn, including Big Root. Respects Liquid Ooze and Heal Block. Does not add to or cap a move's existing drain effect.",
-    "shortDesc": "Electric attacks drain 25% of damage, capped at 1/8 HP per turn."
-  },
-  "ringmaster": {
-    "name": "Ringmaster",
-    "num": 10586,
-    "rating": 3.5,
-    "desc": "Tough Claws. Its first damaging Dark hit against a surviving foe each entry attempts to inflict Taunt for 2 turns. Normal Taunt immunities apply; no Fake Out requirement.",
-    "shortDesc": "Tough Claws; first Dark hit each entry Taunts the foe for 2 turns."
-  },
-  "unyielding": {
-    "name": "Unyielding",
-    "num": 10587,
-    "rating": 4,
-    "desc": "Stamina, including this server's Defense increase once per turn and 1/16 healing per opposing hit. While its Defense stage is positive, opponents cannot force it to switch. Normal switching and stat resets still work.",
-    "shortDesc": "Stamina; while Defense is raised, foes cannot force it out."
-  },
-  "primalrhythm": {
-    "name": "Primal Rhythm",
-    "num": 10588,
-    "rating": 4,
-    "desc": "Damaging sound moves become physical and use Attack. These moves spare allies. Retains normal sound interactions, including Soundproof and Throat Chop.",
-    "shortDesc": "Sound attacks use Attack and spare allies."
-  },
-  "setpiece": {
-    "name": "Set Piece",
-    "num": 10589,
-    "rating": 4,
-    "desc": "Successfully using Court Change or damaging a target with Feint primes its next Fire attack to gain +1 priority and never miss. One non-stacking charge; used when the attack is attempted, and cleared on switching. Protect and immunities still work.",
-    "shortDesc": "Court Change or Feint charges the next Fire attack with +1 priority and perfect accuracy."
-  },
-  "calculatedshot": {
-    "name": "Calculated Shot",
-    "num": 10590,
-    "rating": 4,
-    "desc": "Damaging Water moves gain +1 critical-hit stage and always use the highest normal damage roll. Does not increase fixed damage or bypass accuracy checks.",
-    "shortDesc": "Water attacks gain +1 critical-hit stage and the highest normal damage roll."
-  },
-  "lunardread": {
-    "name": "Lunar Dread",
-    "num": 10265,
-    "rating": 4,
-    "desc": "Damaging Normal hits mark foes for 2 turns, including the current turn. Marked foes deal 25% less damage to this Pokemon, and its Ground attacks against them gain +1 critical-hit stage. Switching the marked foe clears its mark. Replaces the previous Magic Guard, Pressure and Unaware effects.",
-    "shortDesc": "Normal hits mark foes; marked foes deal 25% less damage and face stronger Ground crits."
-  },
-  "falsebouquet": {
-    "name": "False Bouquet",
-    "num": 10591,
-    "rating": 4,
-    "desc": "Its first damaging Flower Trick against a surviving foe each entry also attempts to plant Leech Seed. Grass-type immunity and Substitute still apply.",
-    "shortDesc": "First Flower Trick hit each entry also plants Leech Seed."
-  },
-  "hydratyrant": {
-    "name": "Hydra Tyrant",
-    "num": 10179,
-    "rating": 5,
-    "desc": "Hydra Bond + Berserk. Once per battle, after Draco Meteor applies its Sp. Atk drops, restores all negative stat stages to zero after the entire attack finishes. Positive stages remain. No Self Sufficient healing or immunity.",
-    "shortDesc": "Hydra Bond + Berserk; once per battle, Draco Meteor clears its negative stat stages."
-  },
-  "meridianseal": {
-    "name": "Meridian Seal",
-    "num": 10592,
-    "rating": 4,
-    "desc": "Its first Fighting hit against a surviving foe each entry attempts to suppress that foe's Ability for 2 turns, including the current turn. Protect, Substitute, Ability Shield and unsuppressible Abilities prevent suppression. Switching clears the seal.",
-    "shortDesc": "First Fighting hit each entry suppresses the foe's Ability for 2 turns."
-  },
-  "rimeplate": {
-    "name": "Rimeplate",
-    "num": 10593,
-    "rating": 4,
-    "desc": "Takes 75% less damage from hits after the first hit of a multi-hit attack. The first hit and separate attacks deal normal damage. Does not change Glaive Rush's effects.",
-    "shortDesc": "Later hits of a multi-hit move deal 75% less damage."
-  },
-  "darkdominion": {
-    "name": "Dark Dominion",
-    "num": 10594,
-    "rating": 3,
-    "desc": "Dark Aura. Damaging Dark hits inflict Heal Block on surviving foes for 2 turns, including the current turn. Respects protection and Substitute; does not shorten a longer existing Heal Block.",
-    "shortDesc": "Dark Aura; Dark hits Heal Block surviving foes for 2 turns."
-  },
-  "knuckletide": {
-    "name": "Knuckle Tide",
-    "num": 10432,
-    "rating": 4,
-    "desc": "Has Iron Fist's full effect: punching moves have 1.4x power. After a punch damages a foe, the next physical or special Water-type attack to damage a foe ignores positive Defense or Sp. Def stat stages, respectively. A miss or Water-type status move does not spend the charge.",
-    "shortDesc": "Iron Fist; a landed punch primes the next landed Water attack to ignore positive defensive boosts."
-  },
-  "crosscurrent": {
-    "name": "Crosscurrent",
-    "num": 10433,
-    "rating": 4,
-    "desc": "Has Swift Swim's full effect, doubling Speed in rain and qualifying water fields. After this Pokemon damages a foe, its next damaging move has 1.3x power if it uses the opposite category, Physical or Special. Misses and status moves do not change the last landed category. This bonus does not stack with itself.",
-    "shortDesc": "Swift Swim; alternating landed Physical and Special attacks gain 1.3x power."
-  },
-  "pearlcurrent": {
-    "name": "Pearl Current",
-    "num": 10434,
-    "rating": 4,
-    "desc": "Has Water Absorb's full effect, including its water-field healing. The first Water-type move absorbed each switch-in also heals its lowest-HP active ally by 1/8 of that ally's maximum HP.",
-    "shortDesc": "Water Absorb; first absorbed Water move each switch-in heals an ally by 1/8."
-  },
-  "slipstream": {
-    "name": "Slipstream",
-    "num": 10435,
-    "rating": 4,
-    "desc": "Has Levitate's full effect. Once per switch-in, its first Flying-type attack to damage a foe sets Tailwind on its side for 3 turns. If Tailwind is already active, its duration is refreshed to 3 turns.",
-    "shortDesc": "Levitate; first landed Flying attack each switch-in sets 3-turn Tailwind."
-  },
-  "mimecraft": {
-    "name": "Mimecraft",
-    "num": 10436,
-    "rating": 3.5,
-    "desc": "Reflect and Light Screen gain +1 priority. Once per switch-in, the first one this Pokemon successfully sets heals its lowest-HP active ally by 1/8 of that ally's maximum HP.",
-    "shortDesc": "+1 priority for Reflect and Light Screen; first successful screen heals an ally by 1/8."
-  },
-  "dreamsickness": {
-    "name": "Dream Sickness",
-    "num": 10262,
-    "rating": 4.5,
-    "desc": "Retains Telepathy, including avoiding allied damaging moves and doubled Speed in Psychic Terrain or Psychic Aura. At the end of each turn, it and its active allies each heal 1/16 max HP. Once per switch-in, if an opposing move would knock out an ally, that ally survives at 1 HP and this Pokemon loses 1/4 max HP, provided it has more HP than the cost.",
-    "shortDesc": "Telepathy; heals its side 1/16 each turn; once per switch-in saves an ally from a lethal hit at a 1/4 HP cost."
-  },
-  "voidveil": {
-    "name": "Void Veil",
-    "num": 10167,
-    "rating": 4,
-    "desc": "Levitate + Magic Guard + Insomnia. Immune to Ground moves, indirect damage, sleep, and Yawn; Dark- and Ghost-type moves have 1.3x power. In Fairy Tale, raises Sp. Def by 1 on entry. Its first Dark- or Ghost-type attack each switch-in bypasses Substitute and screens. It does not heal or shelter allies.",
-    "shortDesc": "Levitate + Magic Guard + Insomnia; first Dark/Ghost attack pierces Substitute and screens."
-  },
-  "knightsguard": {
-    "name": "Knight's Guard",
-    "num": 10263,
-    "rating": 4,
-    "desc": "Once per switch-in in doubles, redirects the first single-target damaging attack aimed at an adjacent ally to this Pokemon. It takes 25% less damage from that attack and, if it survives a hit, gains one Attack stage. Spread moves and status moves are not redirected.",
-    "shortDesc": "Once per switch-in, intercepts an ally-targeted attack; takes 25% less and gains +1 Atk if hit."
-  },
-  "terraresolve": {
-    "name": "Terra Resolve",
-    "num": 10042,
-    "rating": 3.5,
-    "desc": "This Pokemon has Stamina, Solid Rock, and Proficient's effects. Rocky Payload is removed.",
-    "shortDesc": "Stamina + Solid Rock + Proficient."
-  },
-  "abysslure": {
-    "name": "Abyss Lure",
-    "num": 10314,
-    "rating": 4,
-    "desc": "This Pokemon absorbs Electric- and Water-type moves that hit it, restoring 1/4 of its maximum HP and raising its Attack and Special Attack by 1 stage. It no longer redirects those moves from allies. It also has Illuminate's effect.",
-    "shortDesc": "Absorbs Electric/Water hits; heals 1/4; +1 Atk/SpA; Illuminate; no redirection."
-  },
-  "purifyingfrost": {
-    "name": "Purifying Frost",
-    "num": 10428,
-    "rating": 4,
-    "desc": "On switch-in, cures status conditions from this Pokemon and its active allies. Once per switch-in, after its first Ice-type move, it sets Safeguard on its side for 5 turns, even if that move misses or fails.",
-    "shortDesc": "Cures its side's active Pokemon on entry; first Ice move sets 5-turn Safeguard."
-  },
-  "smolderingshroud": {
-    "name": "Smoldering Shroud",
-    "num": 10429,
-    "rating": 4,
-    "desc": "Has White Smoke's full effect: prevents stat drops from other Pokemon, and raises Attack and Sp. Atk on entry on Volcanic Field. The first foe-caused stat drop it prevents each switch-in also raises its Sp. Atk by one stage.",
-    "shortDesc": "White Smoke; first blocked foe stat drop each switch-in raises Sp. Atk by 1."
-  },
-  "springfur": {
-    "name": "Spring Fur",
-    "num": 10430,
-    "rating": 4,
-    "desc": "Has Fur Coat's full effect, doubling Defense. Once per switch-in, surviving the first damaging physical move from a foe raises this Pokemon's Attack by one stage.",
-    "shortDesc": "Fur Coat; first survived physical hit from a foe each switch-in raises Atk by 1."
-  },
-  "varietyrush": {
-    "name": "Variety Rush",
-    "num": 10431,
-    "rating": 4,
-    "desc": "The first damaging hit of each non-Normal move type it lands on a foe each switch-in has 1.4x power. A type is spent only after a hit connects. Pivot moves such as U-turn qualify.",
-    "shortDesc": "First connected hit of each non-Normal type each switch-in has 1.4x power; pivots qualify."
-  },
-  "forgegrit": {
-    "name": "Forge Grit",
-    "num": 10420,
-    "rating": 4,
-    "desc": "Has Guts's full effect: status raises Attack by 50% and burn does not weaken physical attacks. Once per switch-in, the first damaging move it takes from a foe while statused raises its Defense by one stage.",
-    "shortDesc": "Guts; first foe hit taken while statused each switch-in raises Defense by 1."
-  },
-  "masonsfist": {
-    "name": "Mason's Fist",
-    "num": 10421,
-    "rating": 4,
-    "desc": "Has Iron Fist's full effect. When a punching move damages a foe, it removes Reflect, Light Screen, Aurora Veil, Arenite Wall, and Atlantis Wall from that foe's side.",
-    "shortDesc": "Iron Fist; punches that damage a foe break that side's screens."
-  },
-  "marshconduit": {
-    "name": "Marsh Conduit",
-    "num": 10422,
-    "rating": 4,
-    "desc": "Has Water Absorb's full effect, including healing from Water moves and qualifying water fields. The first Water move it absorbs each switch-in also lowers each active foe's Speed by one stage.",
-    "shortDesc": "Water Absorb; first absorbed Water move each switch-in lowers foes' Speed by 1."
-  },
-  "silkward": {
-    "name": "Silk Ward",
-    "num": 10423,
-    "rating": 4,
-    "desc": "Once per switch-in, the first super-effective damaging hit against this Pokemon deals half damage. It does not set weather.",
-    "shortDesc": "First super-effective hit each switch-in deals half damage."
-  },
-  "swarmdrive": {
-    "name": "Swarm Drive",
-    "num": 10424,
-    "rating": 4,
-    "desc": "Has Swarm's full effect. Once per switch-in, knocking out a foe with a Bug-type move that does not switch the user out raises this Pokemon's Speed by one stage. U-turn and other pivot moves cannot trigger the Speed boost.",
-    "shortDesc": "Swarm; first non-pivot Bug-move KO each switch-in raises Speed by 1."
-  },
-  "mirechorus": {
-    "name": "Mire Chorus",
-    "num": 10426,
-    "rating": 4,
-    "desc": "Has Liquid Voice and Poison Touch's effects. Each foe damaged by a noncontact sound move also has an independent 20% chance to be poisoned. Shield Dust and Covert Cloak block this added poison chance.",
-    "shortDesc": "Liquid Voice + Poison Touch; noncontact sound hits have a 20% poison chance."
-  },
-  "boretunnel": {
-    "name": "Bore Tunnel",
-    "num": 10427,
-    "rating": 4,
-    "desc": "Has Earth Eater's full effect. The first Ground-type move it absorbs each switch-in also removes Spikes, Toxic Spikes, Stealth Rock, Sticky Web, and G-Max Steelsurge from its own side.",
-    "shortDesc": "Earth Eater; first Ground absorption each switch-in clears own-side hazards."
-  },
-  "apexflytrap": {
-    "name": "Apex Flytrap",
-    "num": 10425,
-    "rating": 4,
-    "desc": "The holder is airborne, as with Levitate. Once per switch-in, a foe that damages it with a contact move is trapped through the following turn while the holder remains active.",
-    "shortDesc": "Levitate; once per switch-in, traps a foe that hits it with contact through the next turn."
-  },
-  "crueltag": {
-    "name": "Cruel Tag",
-    "num": 10294,
-    "rating": 5,
-    "desc": "Shadow Tag + Infiltrator + Bad Dreams. Traps adjacent foes, bypasses screens and Substitute, and damages sleeping foes each turn.",
-    "shortDesc": "Shadow Tag + Infiltrator + Bad Dreams."
-  },
-  "battery": {
-    "name": "Battery",
-    "num": 217,
-    "rating": 0,
-    "desc": "This Pokemon and its allies have 1.3x power on Special attacks. The user's Special attacks get an additional 1.5x multiplier in Electric Terrain.",
-    "shortDesc": "Self/ally Special attacks 1.3x; user gets extra 1.5x in Electric Terrain."
-  },
-  "mythicscale": {
-    "name": "Mythic Scale",
-    "num": 10046,
-    "rating": 3.5,
-    "desc": "Marvel Scale + Levitate + Compound Eyes + Shield Dust. Boosts Defense under Marvel Scale conditions, grants Ground immunity, improves move accuracy, and blocks opponents' move secondary effects.",
-    "shortDesc": "Marvel Scale + Levitate + Compound Eyes + Shield Dust."
-  },
-  "freezerburn": {
-    "name": "Freezer Burn",
-    "num": 10181,
-    "rating": 5,
-    "desc": "Slush Rush + Refrigerate + Strong Jaw + Levitate. Speed rises in snow; eligible Normal moves become Ice, biting moves gain power, and this Pokemon is airborne.",
-    "shortDesc": "Slush Rush + Refrigerate + Strong Jaw + Levitate."
-  },
-  "royalvoice": {
-    "name": "Royal Voice",
-    "num": 10113,
-    "rating": 5,
-    "desc": "Pixilate + Queenly Majesty + Dream Sickness, plus Perfect Foresight's ability copying. Normal moves become Fairy and receive Pixilate power boosts. Blocks opposing priority moves targeting its side. Includes Telepathy, 1/16 end-turn healing for itself and allies, and a once-per-switch-in rescue that leaves an ally at 1 HP and costs the holder 1/4 max HP. On activation, copies an opposing Pokemon's Ability, prioritizing an active Speed Ability; otherwise it selects the foe with the higher Attack or Special Attack. The copied Ability's effects apply until this Pokemon leaves battle or loses Royal Voice.",
-    "shortDesc": "Pixilate + Queenly Majesty + Dream Sickness; copies a foe's Ability."
-  },
-  "mountainhunger": {
-    "name": "Mountain Hunger",
-    "num": 10050,
-    "rating": 4,
-    "desc": "Sap Sipper + Thick Fat + Early Bird. Absorbs Grass moves, takes less damage from Fire and Ice moves, and wakes from sleep faster.",
-    "shortDesc": "Sap Sipper + Thick Fat + Early Bird."
-  },
-  "treasuretitan": {
-    "name": "Treasure Titan",
-    "num": 10053,
-    "rating": 4,
-    "desc": "Filter + Earth Eater + Heavy Metal + Intimidate. Lowers adjacent foes' Attack on entry; Copperajah-Gmax's weight-based moves always use their maximum power.",
-    "shortDesc": "Filter + Earth Eater + Heavy Metal + Intimidate; max weight-move power."
-  },
-  "furnaceengine": {
-    "name": "Furnace Engine",
-    "num": 10056,
-    "rating": 4,
-    "desc": "Steam Engine + Flame Body + Self Sufficient + Solid Rock. At the end of each turn, opposing Pokemon take Fire-type damage equal to 1/16 max HP, blocked by Fire immunities. Only in Free-for-All does Fire type effectiveness scale this chip.",
-    "shortDesc": "Steam Engine + Flame Body + Self Sufficient + Solid Rock; Fire chip."
-  },
-  "duneterror": {
-    "name": "Dune Terror",
-    "num": 10057,
-    "rating": 4,
-    "desc": "Sand Stream + Shed Skin + Sand Spit. Summons sand on entry and when hit; during Sandstorm, opposing Pokemon take Ground-type damage equal to 1/16 max HP, blocked by Ground immunities. On fainting, creates Desert Field for 5 turns.",
-    "shortDesc": "Sand Stream + Shed Skin + Sand Spit; Desert Field for 5 turns on faint."
-  },
-  "argentdevotion": {
-    "name": "Argent Devotion",
-    "num": 10199,
-    "rating": 4.5,
-    "desc": "Armorize + Sworn Duty + Serene Grace. Eligible Normal moves become Steel, Sworn Duty supports its ally, and move secondary effects are more likely.",
-    "shortDesc": "Armorize + Sworn Duty + Serene Grace."
-  },
-  "slowclamp": {
-    "name": "Slow Clamp",
-    "num": 10407,
-    "rating": 4,
-    "desc": "Shell Armor + Own Tempo + Analytic + Sweet Veil. Prevents critical hits and confusion, boosts attacks used after other active Pokemon move, and protects this Pokemon and allies from sleep.",
-    "shortDesc": "Shell Armor + Own Tempo + Analytic + Sweet Veil."
-  },
-  "soultag": {
-    "name": "Soul Tag",
-    "num": 10029,
-    "rating": 5,
-    "desc": "Soul Fire + Shadow Tag + Flame Body. Traps adjacent foes, gains Soul Fire's Fire/Ghost effects, and can burn contact attackers.",
-    "shortDesc": "Soul Fire + Shadow Tag + Flame Body."
-  },
-  "royalsun": {
-    "name": "Royal Sun",
-    "num": 10142,
-    "rating": 4.5,
-    "desc": "Drought + Royal Decree + Supreme Overlord. Summons sun, clears stat changes and screens unless Safeguard or Neutralization prevents it, and gains Supreme Overlord's bonuses as allies faint.",
-    "shortDesc": "Drought + Royal Decree + Supreme Overlord."
-  },
-  "toxicrenewal": {
-    "name": "Toxic Renewal",
-    "num": 10155,
-    "rating": 4.5,
-    "desc": "Adaptability + Regenerator + Poison Touch. Same-type attacks deal more damage, switching out restores HP, and contact attacks can poison.",
-    "shortDesc": "Adaptability + Regenerator + Poison Touch."
-  },
-  "absolutezero": {
-    "name": "Absolute Zero",
-    "num": 10397,
-    "rating": 5,
-    "desc": "Snow Warning + Mold Breaker + Filter. Summons Snow on entry, ignores opposing Abilities when attacking, and reduces damage from super-effective hits.",
-    "shortDesc": "Snow Warning + Mold Breaker + Filter."
-  },
-  "phantomfist": {
-    "name": "Phantom Fist",
-    "num": 10193,
-    "rating": 4,
-    "desc": "Unseen Fist + Self Repair + Shadow Shield + Aftermath. Its moves cannot miss, contact moves bypass Protect, it repairs itself, takes less damage at full HP, and damages contact attackers that knock it out.",
-    "shortDesc": "Unseen Fist + Self Repair + Shadow Shield + Aftermath; moves cannot miss."
-  },
-  "ultrainstinct": {
-    "name": "Ultra Instinct",
-    "num": 10013,
-    "rating": 3,
-    "desc": "Mold Breaker + Inner Focus. Attacks deal 2x damage through screens or 1.5x damage when the target has yet to move or has just switched in. On Ashen Beach, New World, Starlight Arena, or Cold Eclipse, it gains 1 Accuracy on entry, deals 1.5x damage, and takes 50% less damage. Otherwise it takes 70% less damage if the attacker has not yet moved. Bewitched Woods, Haunted, and Holy Field suppress these effects.",
-    "shortDesc": "Mold Breaker + Inner Focus; screen and timing boosts; field defenses."
-  },
-  "burningego": {
-    "name": "Burning Ego",
-    "num": 10256,
-    "rating": 4,
-    "desc": "Proficient + Ultra Ego + Flame Body + Thick Fat. Same-type moves have 1.3x power; it heals and gains Attack and Sp. Atk when fighting, can burn contact attackers, and halves damage from Fire and Ice moves.",
-    "shortDesc": "Proficient + Ultra Ego + Flame Body + Thick Fat."
-  },
-  "coldlogic": {
-    "name": "Cold Logic",
-    "num": 10128,
-    "rating": 4.5,
-    "desc": "Tough Claws + Prism Armor + Aftermath + Forewarn. Contact moves hit harder, super-effective damage is reduced, contact attackers take damage if this Pokemon is knocked out, and the strongest opposing move is revealed on entry.",
-    "shortDesc": "Tough Claws + Prism Armor + Aftermath + Forewarn."
-  },
-  "mossarmor": {
-    "name": "Moss Armor",
-    "num": 10390,
-    "rating": 5,
-    "desc": "Stamina + Natural Recovery + Levitate. Boosts Defense when hit, recovers status or HP through Natural Recovery, and is airborne.",
-    "shortDesc": "Stamina + Natural Recovery + Levitate."
-  },
-  "propellertail": {
-    "name": "Propeller Tail",
-    "num": 239,
-    "rating": 0,
-    "desc": "Moves cannot be redirected. Speed is doubled on Water Surface, Underwater, and Midnight Zone fields.",
-    "shortDesc": "Blocks redirection; doubles Speed on Water Surface, Underwater, and Midnight Zone."
-  },
-  "ultraego": {
-    "name": "Ultra Ego",
-    "num": 10012,
-    "rating": 3,
-    "desc": "Damaging moves ignore opposing Abilities. Once per turn after dealing damage, this Pokemon heals 1/16 max HP. The first opposing damaging hit boosts its Attack and Sp. Atk by 1 and heals it by 1/16; later hits in the same move heal 1/20. Certain fields grant defensive boosts or stronger healing. Bewitched Woods, Haunted, and Holy Field suppress these effects.",
-    "shortDesc": "Ignores Abilities; heals when attacking or hit; first hit boosts Atk and SpA."
-  }
+	"updraft": {
+		"name": "Updraft",
+		"num": 10437,
+		"rating": 4,
+		"desc": "Flying moves ignore evasion boosts. Once per switch-in, its first Flying attack to damage a foe raises an adjacent ally's Speed by 1 stage.",
+		"shortDesc": "Flying moves ignore evasion boosts. Once per switch-in, its first Flying attack to damage a foe raises an adjacent ally's Speed by 1 stage."
+	},
+	"corneredfang": {
+		"name": "Cornered Fang",
+		"num": 10438,
+		"rating": 3.5,
+		"desc": "Guts. Once per switch-in, the first biting move selected while at half HP or less has +1 priority. Using that move spends the priority effect even if it misses or is blocked.",
+		"shortDesc": "Guts; at half HP, the first biting move each entry gains +1 priority."
+	},
+	"nighthoard": {
+		"name": "Night Hoard",
+		"num": 10439,
+		"rating": 4,
+		"desc": "Eating a Berry restores an additional 1/8 maximum HP and primes the next Dark-type biting attack that damages a foe to apply Taunt for 2 turns. Misses and blocked attacks preserve the charge.",
+		"shortDesc": "Eating a Berry heals 1/8 more and charges the next Dark bite to Taunt."
+	},
+	"dunerunner": {
+		"name": "Dune Runner",
+		"num": 10440,
+		"rating": 3,
+		"desc": "Sand Rush. Once per switch-in, being active in sandstorm clears entry hazards from its side. Retains Sand Rush's weather and field Speed effects.",
+		"shortDesc": "Sand Rush; entering during sand clears its side's hazards once."
+	},
+	"frostrunner": {
+		"name": "Frost Runner",
+		"num": 10441,
+		"rating": 3,
+		"desc": "Slush Rush. While hail or snow is active, entry hazards cannot damage, poison, or lower this Pokemon's Speed. Retains Slush Rush's field effects.",
+		"shortDesc": "Slush Rush. While hail or snow is active, entry hazards cannot damage, poison, or lower its Speed. Retains Slush Rush's field effects."
+	},
+	"bedrockclaw": {
+		"name": "Bedrock Claw",
+		"num": 10442,
+		"rating": 3.5,
+		"desc": "Tough Claws. The first Ground-type contact attack to damage a foe each switch-in removes one opposing screen after damage.",
+		"shortDesc": "Tough Claws. The first Ground-type contact attack to damage a foe each switch-in removes one opposing screen after damage."
+	},
+	"rimeclaw": {
+		"name": "Rime Claw",
+		"num": 10443,
+		"rating": 3.5,
+		"desc": "Tough Claws. The first Ice-type contact attack to damage a foe each switch-in removes one opposing screen after damage.",
+		"shortDesc": "Tough Claws. The first Ice-type contact attack to damage a foe each switch-in removes one opposing screen after damage."
+	},
+	"broodguard": {
+		"name": "Broodguard",
+		"num": 10444,
+		"rating": 0,
+		"desc": "Thick Fat + Friend Guard. Once per switch-in, when an adjacent ally survives an opposing hit that takes it from above half HP to half or less, this Pokemon gains +1 Defense.",
+		"shortDesc": "Thick Fat + Friend Guard; an ally dropping below half HP grants +1 Defense."
+	},
+	"suncharm": {
+		"name": "Sun Charm",
+		"num": 10445,
+		"rating": 4,
+		"desc": "Drought. Its first landed Fire hit each entry extends the sunlight it summoned by 1 turn, capped at 8 remaining turns. Once per entry, burning a foe also curses it: 1/8 maximum HP lost per turn under this server's ability-Curse rules. No HP cost to Ninetales.",
+		"shortDesc": "Drought; first Fire hit adds 1 sun turn (max 8); first burn also curses the foe."
+	},
+	"causticscales": {
+		"name": "Caustic Scales",
+		"num": 10446,
+		"rating": 4,
+		"desc": "Once per switch-in, the first opposing contact attack to damage this Pokemon poisons the attacker, subject to normal status immunity.",
+		"shortDesc": "Once per switch-in, the first opposing contact attack to damage it poisons the attacker, subject to normal status immunity."
+	},
+	"prismwings": {
+		"name": "Prism Wings",
+		"num": 10447,
+		"rating": 4,
+		"desc": "Tinted Lens. Once per switch-in, damaging a foe with a resisted attack raises this Pokemon's Speed by 1 stage.",
+		"shortDesc": "Tinted Lens. Once per switch-in, damaging a foe with a resisted attack raises its Speed by 1 stage."
+	},
+	"oneiricdust": {
+		"name": "Oneiric Dust",
+		"num": 10448,
+		"rating": 4,
+		"desc": "Psychic Surge. Once per switch-in, its first powder move that successfully hits a foe also lowers that foe's Sp. Def by 1 stage. Misses, immunity and protection do not spend the effect.",
+		"shortDesc": "Psychic Surge; the first landed powder move each entry lowers Sp. Def."
+	},
+	"pincercrush": {
+		"name": "Pincer Crush",
+		"num": 10449,
+		"rating": 3.5,
+		"desc": "Tough Claws. Once per switch-in, its first Steel-type contact attack to damage a foe lowers the foe's Defense by 1 stage.",
+		"shortDesc": "Tough Claws. Once per switch-in, its first Steel-type contact attack to damage a foe lowers the foe's Defense by 1 stage."
+	},
+	"decoypincers": {
+		"name": "Decoy Pincers",
+		"num": 10450,
+		"rating": 4,
+		"desc": "Once per switch-in, the first opposing direct hit deals 25% less damage and lowers the attacker's Attack by 1 stage. Multi-hit moves spend this protection on the first hit.",
+		"shortDesc": "First direct hit each entry deals 25% less and lowers the attacker's Attack."
+	},
+	"toxiccocoon": {
+		"name": "Toxic Cocoon",
+		"num": 10451,
+		"rating": 4,
+		"desc": "Once per switch-in, the first opposing special hit deals half damage. Separately, the first opposing contact hit each switch-in poisons its attacker, subject to normal immunity.",
+		"shortDesc": "First special hit deals half damage; the first contact attacker is poisoned."
+	},
+	"galebloom": {
+		"name": "Gale Bloom",
+		"num": 10452,
+		"rating": 4,
+		"desc": "Once per switch-in, its first Flying attack to damage a foe raises an adjacent ally's Sp. Atk by 1 stage.",
+		"shortDesc": "Once per switch-in, its first Flying attack to damage a foe raises an adjacent ally's Sp. Atk by 1 stage."
+	},
+	"gemeye": {
+		"name": "Gem Eye",
+		"num": 10453,
+		"rating": 0.5,
+		"desc": "Keen Eye. Once per switch-in, reflects the first reflectable opposing status move aimed directly at this Pokemon. Side-targeting hazards do not use this reflection.",
+		"shortDesc": "Keen Eye; reflects the first direct opposing status move each entry."
+	},
+	"lastlaugh": {
+		"name": "Last Laugh",
+		"num": 10454,
+		"rating": 4,
+		"desc": "If no other active Pokemon has a move left to use this turn, this Pokemon's damaging attack bypasses Substitute. Damaging a foe with that attack restores 1/8 maximum HP, once per turn.",
+		"shortDesc": "When no other Pokemon will move this turn, its hit bypasses Substitute and heals 1/8."
+	},
+	"openingoverture": {
+		"name": "Opening Overture",
+		"num": 10455,
+		"rating": 4,
+		"desc": "Once per switch-in, successfully using a sound move starts Tailwind for 3 turns. An existing longer Tailwind is not shortened.",
+		"shortDesc": "Once per switch-in, successfully using a sound move starts Tailwind for 3 turns. An existing longer Tailwind is not shortened."
+	},
+	"resonantblade": {
+		"name": "Resonant Blade",
+		"num": 10456,
+		"rating": 4,
+		"desc": "Slicing moves ignore damage reduction from Reflect, Light Screen, Aurora Veil, Atlantis Wall and Arenite Wall. Does not bypass Substitute.",
+		"shortDesc": "Slicing moves ignore damage reduction from Reflect, Light Screen, Aurora Veil, Atlantis Wall and Arenite Wall. Does not bypass Substitute."
+	},
+	"finalnote": {
+		"name": "Final Note",
+		"num": 10457,
+		"rating": 4,
+		"desc": "Once per switch-in, its first sound move selected while at half HP or less gains +1 priority. Using it spends the effect even if it misses or is blocked.",
+		"shortDesc": "At half HP, the first sound move each entry gains +1 priority."
+	},
+	"livingtangle": {
+		"name": "Living Tangle",
+		"num": 10458,
+		"rating": 4,
+		"desc": "Tangling Hair + Stamina. Contact attackers lose 1 Speed stage. Opposing hits raise Defense once per turn and restore 1/16 maximum HP per hit, as this server's Stamina does.",
+		"shortDesc": "Tangling Hair + Stamina; contact slows foes while opposing hits raise Defense and heal."
+	},
+	"rootrenewal": {
+		"name": "Root Renewal",
+		"num": 10459,
+		"rating": 4.5,
+		"desc": "Regenerator. Switching out restores 1/3 maximum HP and cures one adjacent active ally's major status condition.",
+		"shortDesc": "Regenerator. Switching out restores 1/3 HP and cures one adjacent active ally's major status condition."
+	},
+	"guidingomen": {
+		"name": "Guiding Omen",
+		"num": 10283,
+		"rating": 4.5,
+		"desc": "Friend Guard + Serene Grace. Once per switch-in, successfully applying a move secondary effect creates a ward that blocks the next opposing stat-drop event against an adjacent ally. Retains both components' effects.",
+		"shortDesc": "Friend Guard + Serene Grace; first secondary effect shields an ally from a stat drop."
+	},
+	"fortunatewing": {
+		"name": "Fortunate Wing",
+		"num": 10460,
+		"rating": 1.5,
+		"desc": "Super Luck. Once per switch-in, its first critical hit to damage a foe creates Safeguard for 5 turns. Does not shorten an existing longer Safeguard.",
+		"shortDesc": "Super Luck; the first critical hit each entry sets Safeguard for 5 turns."
+	},
+	"snowpack": {
+		"name": "Snowpack",
+		"num": 10461,
+		"rating": 3.5,
+		"desc": "Thick Fat + Ice Body + Tough Claws. Includes reduced Fire/Ice damage, contact-move power, weather/field healing, and this server's Ice Body contact-freeze chance.",
+		"shortDesc": "Thick Fat + Ice Body + Tough Claws."
+	},
+	"icemirror": {
+		"name": "Ice Mirror",
+		"num": 10462,
+		"rating": 4,
+		"desc": "Once per switch-in, the first opposing direct hit deals 25% less damage and lowers the attacker's Speed by 1 stage.",
+		"shortDesc": "Once per switch-in, the first opposing direct hit deals 25% less damage and lowers the attacker's Speed by 1 stage."
+	},
+	"wailingsnow": {
+		"name": "Wailing Snow",
+		"num": 10463,
+		"rating": 4,
+		"desc": "Once per switch-in, damaging a foe with an Ice attack primes the next damaging Ghost move for +1 priority. Using the Ghost attack spends the effect even if blocked or missed.",
+		"shortDesc": "An Ice hit charges the next Ghost attack for +1 priority."
+	},
+	"stonewall": {
+		"name": "Stonewall",
+		"num": 10464,
+		"rating": 3,
+		"desc": "Sturdy. When Sturdy saves this Pokemon from a direct hit, it sets one layer of Spikes on the opposing side.",
+		"shortDesc": "Sturdy. When Sturdy saves it from a direct hit, it sets one layer of Spikes on the opposing side."
+	},
+	"layeredshell": {
+		"name": "Layered Shell",
+		"num": 10467,
+		"rating": 1,
+		"desc": "Shell Armor. Once per switch-in, its first opposing special hit deals a further 25% less damage. Includes this server's Shell Armor critical-hit immunity, 20% damage reduction and field/stat-drop effects.",
+		"shortDesc": "Shell Armor; the first special hit each entry deals 25% less damage."
+	},
+	"breakaway": {
+		"name": "Breakaway",
+		"num": 10468,
+		"rating": 4,
+		"desc": "Once per switch-in, surviving an opposing physical hit lowers Defense by 1 stage and raises Speed by 2 stages.",
+		"shortDesc": "Once per switch-in, surviving an opposing physical hit lowers Defense by 1 stage and raises Speed by 2 stages."
+	},
+	"fossilram": {
+		"name": "Fossil Ram",
+		"num": 10469,
+		"rating": 3,
+		"desc": "Rock Head. Once per turn, damaging a foe with a recoil move lowers its Speed by 1 stage. Struggle recoil is not prevented.",
+		"shortDesc": "Rock Head. Once per turn, damaging a foe with a recoil move lowers its Speed by 1 stage. Struggle recoil is not prevented."
+	},
+	"rootediron": {
+		"name": "Rooted Iron",
+		"num": 10470,
+		"rating": 4,
+		"desc": "Stamina. At the end of turns in which this Pokemon did not attempt a damaging move, it restores 1/16 maximum HP. Also retains this server's Stamina on-hit Defense gain and healing.",
+		"shortDesc": "Stamina; heals 1/16 HP on turns when it does not attack."
+	},
+	"encorearia": {
+		"name": "Encore Aria",
+		"num": 10471,
+		"rating": 3.5,
+		"desc": "Serene Grace. Once per switch-in, successfully applying a move secondary effect creates Safeguard for 5 turns. A blocked secondary does not trigger this effect.",
+		"shortDesc": "Serene Grace; the first secondary effect each entry sets 5-turn Safeguard."
+	},
+	"saltbastion": {
+		"name": "Salt Bastion",
+		"num": 10465,
+		"rating": 3,
+		"desc": "Sturdy. When Sturdy saves this Pokemon from a direct hit, its side gains Safeguard for 5 turns.",
+		"shortDesc": "Sturdy. When Sturdy saves it from a direct hit, its side gains Safeguard for 5 turns."
+	},
+	"peppersting": {
+		"name": "Pepper Sting",
+		"num": 10472,
+		"rating": 1.5,
+		"desc": "Insomnia. After using a Fire move, its first Grass attack to damage a foe each switch-in lowers that foe's Speed and Sp. Def by 1 stage. Retains this server's full Insomnia effects.",
+		"shortDesc": "Insomnia; a Fire move primes the next Grass hit to lower Speed and Sp. Def."
+	},
+	"sushitrick": {
+		"name": "Sushi Trick",
+		"num": 10473,
+		"gen": 9,
+		"desc": "On entry, restores 1/4 of each adjacent ally's maximum HP and cures its confusion.",
+		"shortDesc": "On entry, heals adjacent allies by 1/4 max HP and cures confusion.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"mastercourse": {
+		"name": "Master Course",
+		"num": 10474,
+		"rating": 4.5,
+		"desc": "Contrary. Once per turn, damaging a foe with a Water or Dragon attack gives an adjacent ally +1 critical-hit stage for its next damaging move. The charge does not stack and ends on switching out.",
+		"shortDesc": "Contrary; Water or Dragon hits grant an adjacent ally +1 critical-hit stage."
+	},
+	"secondbrew": {
+		"name": "Second Brew",
+		"num": 10475,
+		"rating": 4,
+		"desc": "Once per turn, when this Pokemon receives draining-move healing, it also restores 1/8 of the lowest-HP adjacent ally's maximum HP.",
+		"shortDesc": "Once per turn, when it receives draining-move healing, it also restores 1/8 of the lowest-HP adjacent ally's HP."
+	},
+	"anchorbridge": {
+		"name": "Anchor Bridge",
+		"num": 10466,
+		"gen": 9,
+		"desc": "Full Sturdy + local Solid Rock. Immune to OHKO moves; at full HP survives an otherwise fatal direct hit with 1 HP. Takes 0.8x attack damage, or 0.6x from super-effective attacks. Normal ability suppression and Mold Breaker rules apply. Does not create Light Screen.",
+		"shortDesc": "Sturdy + Solid Rock: survives at full HP; 20% less attack damage, 40% less if super effective.",
+		"rating": 3,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"railsight": {
+		"name": "Rail Sight",
+		"num": 10476,
+		"gen": 9,
+		"desc": "Full Stalwart, including its local field effects. Once per switch-in, surviving a whole opposing damaging move that hits HP stores a non-stacking 1.5x boost for the next Electric attack. Consumed when that attack executes, including misses, Protect or immunity; charge-only and interrupted turns do not consume it. Switching clears it. Does not skip Electro Shot charging, grant an extra Sp. Atk boost or ignore screens.",
+		"shortDesc": "Stalwart; once/entry after surviving an opposing HP hit, next Electric attack has 1.5x power.",
+		"rating": 0,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"execution": {
+		"name": "Execution",
+		"num": 10198,
+		"rating": 4.5,
+		"desc": "Duskilate. Attacks against targets at half HP or less gain 1.3x power. Once per switch-in, a direct hit that brings a surviving foe from above half HP to half or less marks it; the next Dark or Ghost hit against that foe ignores positive defensive boosts and spends the mark. The mark ends if either Pokemon switches. Restores 1/8 maximum HP per KO; Attack and Sp. Atk cannot fall below -1, and Speed cannot be lowered while a field is active. Retains Duskilate field effects.",
+		"shortDesc": "Duskilate; stronger against low-HP foes; a hit crossing half HP marks them for defense bypass."
+	},
+	"sovereignarsenal": {
+		"name": "Sovereign Arsenal",
+		"num": 10500,
+		"rating": 4,
+		"desc": "Poison and Ground attacks choose Physical or Special using the higher Attack/Defense or Sp. Atk/Sp. Def stat ratio, like Shell Side Arm. Horn and tail moves gain +1 critical-hit stage. Contact flags are unchanged.",
+		"shortDesc": "Poison/Ground attacks use the stronger damage category; horn and tail moves crit more often."
+	},
+	"pollenengine": {
+		"name": "Pollen Engine",
+		"num": 10501,
+		"rating": 3,
+		"desc": "Chlorophyll. Once per turn, successfully hitting a foe with a powder move or damaging Grass move heals itself and adjacent allies by 1/16 maximum HP, or 1/8 in sunlight.",
+		"shortDesc": "Chlorophyll; Grass or powder hits heal it and its allies, more in sun."
+	},
+	"titanpincer": {
+		"name": "Titan Pincer",
+		"num": 10502,
+		"rating": 1.5,
+		"desc": "Hyper Cutter. Crabhammer uses this Pokemon's Defense instead of Attack when its Defense is higher. Retains all Hyper Cutter effects.",
+		"shortDesc": "Hyper Cutter. Crabhammer uses its Defense instead of Attack when its Defense is higher. Retains all Hyper Cutter effects."
+	},
+	"shellcracker": {
+		"name": "Shellcracker",
+		"num": 10503,
+		"rating": 4,
+		"desc": "Crabhammer has 100% base accuracy and always critically hits, unless critical hits are prevented.",
+		"shortDesc": "Crabhammer has 100% base accuracy and always critically hits, unless critical hits are prevented."
+	},
+	"tidaldominion": {
+		"name": "Tidal Dominion",
+		"num": 10504,
+		"rating": 3,
+		"desc": "Swift Swim. Opponents with a lowered Speed stage cannot hit this Pokemon or its allies with priority moves. Pairs with G-Max Foam Burst's existing Speed drops.",
+		"shortDesc": "Swift Swim; foes with lowered Speed cannot use priority against its side."
+	},
+	"tempestfury": {
+		"name": "Tempest Fury",
+		"num": 10505,
+		"rating": 4,
+		"desc": "Surviving an opposing direct attack charges its next damaging Water move to critically hit. A landed Water hit spends the non-stacking charge; misses and Protect do not.",
+		"shortDesc": "After surviving a direct hit, its next damaging Water move is a critical hit."
+	},
+	"ironlash": {
+		"name": "Iron Lash",
+		"num": 10506,
+		"rating": 3.5,
+		"desc": "Whiplash. Gains +1 accuracy on entry and tail moves have 1.5x power. Once per turn, damaging a foe with a tail move also raises its Sp. Def by 1 stage.",
+		"shortDesc": "Whiplash; tail hits raise Sp. Def once per turn."
+	},
+	"trailbreaker": {
+		"name": "Trailbreaker",
+		"num": 10507,
+		"rating": 4,
+		"desc": "Immune to entry-hazard damage, Toxic Spikes poison and Sticky Web Speed drops. Rapid Spin can hit Ghost types.",
+		"shortDesc": "Immune to entry-hazard damage, Toxic Spikes poison and Sticky Web Speed drops. Rapid Spin can hit Ghost types."
+	},
+	"armoredadvance": {
+		"name": "Armored Advance",
+		"num": 10508,
+		"rating": 4,
+		"desc": "Its own damaging moves cannot lower its Defense or Sp. Def. Ground attacks ignore its negative offensive stat stages.",
+		"shortDesc": "Its own damaging moves cannot lower its Defense or Sp. Def. Ground attacks ignore its negative offensive stat stages."
+	},
+	"gritgrappler": {
+		"name": "Grit Grappler",
+		"num": 10509,
+		"rating": 3.5,
+		"desc": "Guts. While statused, damaging a foe with a Fighting move restores 1/16 maximum HP once per turn.",
+		"shortDesc": "Guts. While statused, damaging a foe with a Fighting move restores 1/16 HP once per turn."
+	},
+	"dreadjaw": {
+		"name": "Dread Jaw",
+		"num": 10510,
+		"rating": 3,
+		"desc": "Moxie. A move KO also stores one charge that lowers the next opposing entrant's Attack by 1 stage. Charges do not stack and end when the holder leaves.",
+		"shortDesc": "Moxie; a move KO lowers the next opposing entrant's Attack."
+	},
+	"floehunter": {
+		"name": "Floe Hunter",
+		"num": 10511,
+		"rating": 3,
+		"desc": "Slush Rush. In snow or hail, biting moves always critically hit slower targets, unless critical hits are prevented.",
+		"shortDesc": "Slush Rush. In snow or hail, biting moves always critically hit slower targets, unless critical hits are prevented."
+	},
+	"lanceguard": {
+		"name": "Lanceguard",
+		"num": 10512,
+		"rating": 1,
+		"desc": "Shell Armor, including this server's damage reduction and field/stat-drop effects. Blocking a contact move with Protect lowers the attacker's Defense by 1 stage.",
+		"shortDesc": "Shell Armor; blocking contact with Protect lowers the attacker's Defense."
+	},
+	"headlongresolve": {
+		"name": "Headlong Resolve",
+		"num": 10513,
+		"rating": 4,
+		"desc": "Recoil moves ignore positive defensive boosts. Surviving its own recoil raises Defense by 1 stage once per turn.",
+		"shortDesc": "Recoil moves ignore positive defensive boosts. Surviving its own recoil raises Defense by 1 stage once per turn."
+	},
+	"herdshelter": {
+		"name": "Herd Shelter",
+		"num": 10514,
+		"rating": 2,
+		"desc": "Soundproof. Adjacent allies are also immune to opposing damaging sound moves.",
+		"shortDesc": "Soundproof. Adjacent allies are also immune to opposing damaging sound moves."
+	},
+	"scorchsweep": {
+		"name": "Scorch Sweep",
+		"num": 10515,
+		"rating": 4,
+		"desc": "Once per switch-in, damaging a foe with a recoil move clears entry hazards from its side. The attack still deals normal recoil.",
+		"shortDesc": "Once per switch-in, damaging a foe with a recoil move clears entry hazards from its side. The attack still deals normal recoil."
+	},
+	"opensky": {
+		"name": "Open Sky",
+		"num": 10516,
+		"rating": 4,
+		"desc": "While itemless, immune to entry-hazard damage, Toxic Spikes poison and Sticky Web Speed drops; Flying moves do not make contact.",
+		"shortDesc": "While itemless, immune to entry-hazard damage, Toxic Spikes poison and Sticky Web Speed drops; Flying moves do not make contact."
+	},
+	"tidalvoice": {
+		"name": "Tidal Voice",
+		"num": 10517,
+		"gen": 9,
+		"desc": "Liquid Voice: sound moves become Water-type (Ice on Icy Field) and gain 1.3x power, including already-Water moves such as Sparkling Aria. Sound moves spare allies. Its first damaging sound hit each entry clears its negative stat stages. After executing Sparkling Aria, each active adjacent ally heals 1/8 of its maximum HP once per move, even if foes avoid the attack. Does not heal the user or benched allies; Heal Block applies.",
+		"shortDesc": "Liquid Voice; 1.3x sound, spares allies, first hit clears drops; Aria heals adjacent allies 1/8.",
+		"rating": 1.5,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"rechargerelay": {
+		"name": "Recharge Relay",
+		"num": 10518,
+		"rating": 0,
+		"desc": "Battery, including its existing Electric Terrain effect. Switching with Volt Switch restores 1/8 of the incoming teammate's maximum HP.",
+		"shortDesc": "Battery, including its existing Electric Terrain effect. Switching with Volt Switch restores 1/8 of the incoming teammate's HP."
+	},
+	"hovercannon": {
+		"name": "Hover Cannon",
+		"num": 10519,
+		"rating": 4,
+		"desc": "Levitate. Above half HP, damaging Electric moves cannot miss or be redirected. Type and ability immunities still apply.",
+		"shortDesc": "Levitate. Above half HP, damaging Electric moves cannot miss or be redirected. Type and ability immunities still apply."
+	},
+	"keenhunt": {
+		"name": "Keen Hunt",
+		"num": 10520,
+		"rating": 4,
+		"desc": "Opponents cannot lower its Speed. Rock moves cannot miss and gain +1 critical-hit stage against targets at half HP or less.",
+		"shortDesc": "Opponents cannot lower its Speed. Rock moves cannot miss and gain +1 critical-hit stage against targets at half HP or less."
+	},
+	"bloodchallenge": {
+		"name": "Blood Challenge",
+		"num": 10521,
+		"rating": 4,
+		"desc": "Its first opposing direct hit each entry deals 25% less damage. Counter can retaliate against either physical or special attacks.",
+		"shortDesc": "Its first opposing direct hit each entry deals 25% less damage. Counter can retaliate against either physical or special attacks."
+	},
+	"twilightinstinct": {
+		"name": "Twilight Instinct",
+		"num": 10522,
+		"gen": 9,
+		"desc": "The first opposing damaging HP hit each stay deals 0.75x damage. If an opponent damages this Pokemon before it acts, it prepares +1 priority for its next normally zero-priority damaging move on the following turn. One charge, consumed on attempt even if it misses or is protected; expires at that following turn's end. Status and already-prioritized moves receive no boost.",
+		"shortDesc": "First foe hit each stay deals 25% less; hit before acting readies a next-turn priority attack.",
+		"rating": 4,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"twincannons": {
+		"name": "Twin Cannons",
+		"num": 10523,
+		"rating": 4,
+		"desc": "Single-target special Fire and Psychic attacks hit twice at half power per hit. Both use Sp. Atk: the first targets Sp. Def, the second Defense. Secondary effects roll only on the first hit. Excludes Z/Max, fixed-damage and existing multi-hit moves.",
+		"shortDesc": "Fire/Psychic attacks hit twice; the second hit targets Defense instead of Sp. Def."
+	},
+	"twinblades": {
+		"name": "Twin Blades",
+		"num": 10524,
+		"rating": 4,
+		"desc": "Single-target Fire and Ghost slicing attacks hit twice at half power per hit. The second hit ignores positive defensive stages. Secondary effects roll only on the first hit. Excludes Z/Max, fixed-damage and existing multi-hit moves.",
+		"shortDesc": "Fire/Ghost slicing moves hit twice; the second hit ignores defensive boosts."
+	},
+	"heatreservoir": {
+		"name": "Heat Reservoir",
+		"num": 10525,
+		"rating": 3.5,
+		"desc": "Flash Fire. After a boosted Armor Cannon deals damage, consumes the Flash Fire charge to prevent Armor Cannon's own Defense and Sp. Def drops. Retains Flash Fire's field effects.",
+		"shortDesc": "Flash Fire; a boosted Armor Cannon avoids its own defensive drops."
+	},
+	"mourningcoat": {
+		"name": "Mourning Coat",
+		"num": 10526,
+		"rating": 3.5,
+		"desc": "Fluffy. After a teammate has fainted, Fluffy's extra Fire weakness is removed for the rest of battle; contact damage reduction remains.",
+		"shortDesc": "Fluffy. After a teammate has fainted, Fluffy's extra Fire weakness is removed for the rest of battle; contact damage reduction remains."
+	},
+	"gravewind": {
+		"name": "Gravewind",
+		"num": 10527,
+		"rating": 3,
+		"desc": "Sand Rush. Entering directly into a fainted teammate's slot summons sandstorm for 3 turns. Does not shorten or refresh an existing sandstorm.",
+		"shortDesc": "Sand Rush; entering a fainted ally's slot summons sand for 3 turns."
+	},
+	"dozinggiant": {
+		"name": "Dozing Giant",
+		"num": 10528,
+		"rating": 1.5,
+		"desc": "Oblivious. While asleep, takes 25% less damage from special attacks. Sleep Talk cannot select Rest.",
+		"shortDesc": "Oblivious. While asleep, takes 25% less damage from special attacks. Sleep Talk cannot select Rest."
+	},
+	"quillreservoir": {
+		"name": "Quill Reservoir",
+		"num": 10529,
+		"rating": 3.5,
+		"desc": "Water Absorb, including its field effects. Absorbing a Water move primes its next landed damaging Poison move to poison the target. The charge does not stack; normal status immunities apply.",
+		"shortDesc": "Water Absorb; the next Poison hit after absorbing Water poisons its foe."
+	},
+	"raisedquills": {
+		"name": "Raised Quills",
+		"num": 10530,
+		"rating": 4,
+		"desc": "Successfully using a status move primes one non-stacking charge that poisons the next opposing contact attacker, subject to normal status immunities.",
+		"shortDesc": "Using a status move primes the next contact attacker to be poisoned."
+	},
+	"mountainbreaker": {
+		"name": "Mountainbreaker",
+		"num": 10540,
+		"rating": 4,
+		"desc": "Damaging Rock moves remain Rock-type with normal Rock STAB, but use the better overall Rock or Ground type-chart effectiveness against each target. Ground-immune typings do not replace the Rock matchup. No extra power multiplier.",
+		"shortDesc": "Rock moves use the better Rock/Ground matchup without changing type."
+	},
+	"dreadpresence": {
+		"name": "Dread Presence",
+		"num": 10541,
+		"rating": 4,
+		"desc": "Opponents lose 1/8 maximum HP after successfully using a status move, at most once per opponent per turn. Failed moves do not trigger this effect.",
+		"shortDesc": "Opponents lose 1/8 HP after successfully using a status move, at most once per opponent per turn. Failed moves do not trigger this effect."
+	},
+	"palmmastery": {
+		"name": "Palm Mastery",
+		"num": 10542,
+		"rating": 3.5,
+		"desc": "Thick Fat. Force Palm always inflicts paralysis when it lands, subject to status immunities. Its paralysis becomes a primary effect rather than a secondary roll.",
+		"shortDesc": "Thick Fat; Force Palm always paralyzes when it lands."
+	},
+	"galvanicspirit": {
+		"name": "Galvanic Spirit",
+		"num": 10543,
+		"rating": 1.5,
+		"desc": "Vital Spirit, including this server's sleep immunity, 1.3x Fighting attack-stat boost and 20% direct-damage reduction. Contact Electric hits lower the foe's Sp. Def by 1 stage once per turn.",
+		"shortDesc": "Vital Spirit; Electric contact hits lower Sp. Def once per turn."
+	},
+	"blastchamber": {
+		"name": "Blast Chamber",
+		"num": 10544,
+		"rating": 1.5,
+		"desc": "Vital Spirit, including sleep immunity, 1.3x Fighting attack-stat boost and 20% direct-damage reduction. A landed Fire attack makes its next Fighting attack unable to miss, and a landed Fighting attack does the same for its next Fire attack. Charges end on switching.",
+		"shortDesc": "Vital Spirit; Fire and Fighting hits make the other type's next attack never miss."
+	},
+	"venomspurs": {
+		"name": "Venom Spurs",
+		"num": 10545,
+		"rating": 4,
+		"desc": "Damaging a foe with a Poison move primes the next Bug hit against a foe to lower Defense by 1 stage before damage. Non-stacking charge; Protect, misses and Substitute preserve it; switching clears it.",
+		"shortDesc": "A Poison hit charges the next Bug hit to lower Defense before damage."
+	},
+	"lastbrood": {
+		"name": "Last Brood",
+		"num": 10546,
+		"rating": 2,
+		"desc": "Swarm. Once per battle, surviving an opposing hit that crosses from above half HP to half or less creates a Substitute with 1/8 maximum HP, at no HP cost. Cannot replace an existing Substitute.",
+		"shortDesc": "Swarm; once per battle, crossing half HP creates a 1/8-HP Substitute."
+	},
+	"venombastion": {
+		"name": "Venom Bastion",
+		"num": 10117,
+		"rating": 4,
+		"desc": "Stamina, including Defense gains once per turn and this server's 1/16 healing per opposing hit. Once per turn, a poisoned foe that damages it loses one stage of its higher offensive stat. No separate Bug power boost, Merciless or Self Sufficient.",
+		"shortDesc": "Stamina; poisoned attackers lose 1 stage of their higher offense once per turn."
+	},
+	"shadowfeint": {
+		"name": "Shadow Feint",
+		"num": 10547,
+		"rating": 4,
+		"desc": "Ordinary damaging Dark moves penetrate normal protection at one-third damage, without secondary effects through protection. Does not remove Protect, bypass Max Guard, or alter Z/Max move protection rules.",
+		"shortDesc": "Dark attacks pierce Protect at one-third power, without secondary effects."
+	},
+	"silksights": {
+		"name": "Silk Sights",
+		"num": 10548,
+		"gen": 9,
+		"desc": "Compound Eyes. Electric attacks ignore positive defensive stat stages against foes whose Speed is lowered. Full local Keen Eye prevents opposing accuracy drops, ignores evasion boosts and reveals opposing Illusions on activation. Mirror Arena grants +1 accuracy and Laser Focus; shared accuracy entry rewards apply once.",
+		"shortDesc": "Compound Eyes + Keen Eye; Electric moves ignore defense boosts on foes with lowered Speed.",
+		"rating": 3,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"livenet": {
+		"name": "Live Net",
+		"num": 10549,
+		"rating": 1,
+		"desc": "Unnerve. While active, Sticky Web placed by this Pokemon also deals 1/16 maximum HP of Electric damage to grounded entrants. Heavy-Duty Boots, hazard immunity and Electric immunity prevent the added damage.",
+		"shortDesc": "Unnerve; its Sticky Web also chips grounded entrants with Electric damage."
+	},
+	"barbharvest": {
+		"name": "Barb Harvest",
+		"num": 10550,
+		"rating": 2.5,
+		"desc": "Iron Barbs. After taking three opposing contact moves, restores its consumed Berry once per battle, if its item slot is empty. Multi-hit attacks count as one move; progress persists through switching.",
+		"shortDesc": "Iron Barbs; restores its used Berry after three opposing contact attacks, once per battle."
+	},
+	"currentcoil": {
+		"name": "Current Coil",
+		"num": 10551,
+		"rating": 3,
+		"desc": "Swift Swim, including this server's eligible water fields. Coil additionally raises Sp. Atk by 1 stage, preserving its other boosts.",
+		"shortDesc": "Swift Swim, including this server's eligible water fields. Coil additionally raises Sp. Atk by 1 stage, preserving its other boosts."
+	},
+	"stormcircuit": {
+		"name": "Storm Circuit",
+		"num": 10156,
+		"gen": 9,
+		"desc": "Electric Surge + Elevate + Current Coil. Summons the Electric aura, retains its existing KO highest-stat boost, and has Swift Swim plus Coil granting an additional +1 Sp. Atk.",
+		"shortDesc": "Electric Surge + Elevate + Current Coil; Coil also raises Sp. Atk, with Swift Swim.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"soulpyre": {
+		"name": "Soul Pyre",
+		"num": 10552,
+		"rating": 4,
+		"desc": "Restores 1/8 maximum HP at the end of a turn when an opposing Pokemon actually took burn damage. Ghost hits against already-burned foes lower Sp. Def by 1 stage once per turn. Prevented burn damage does not grant healing.",
+		"shortDesc": "Heals 1/8 after foe burn damage; Ghost hits lower burned foes' Sp. Def."
+	},
+	"blackviper": {
+		"name": "Black Viper",
+		"num": 10553,
+		"rating": 3.5,
+		"desc": "Whiplash: +1 accuracy on entry and 1.5x tail-move power. Its first tail hit against a foe each entry badly poisons that target, subject to normal status immunities.",
+		"shortDesc": "Whiplash; the first tail hit each entry badly poisons."
+	},
+	"silkshuriken": {
+		"name": "Silk Shuriken",
+		"num": 10554,
+		"rating": 4,
+		"desc": "Water Shuriken becomes Bug-type and hits exactly three times at 20 base power per hit, retaining its priority. Does not alter Z/Max moves.",
+		"shortDesc": "Water Shuriken becomes Bug-type and hits exactly three times at 20 base power per hit, retaining its priority. Does not alter Z/Max moves."
+	},
+	"hiddenscroll": {
+		"name": "Hidden Scroll",
+		"num": 10555,
+		"rating": 4,
+		"desc": "Once per switch-in in doubles, a successful single-target status move aimed at a foe also attempts the move against the other adjacent foe. Each target independently respects accuracy, protection, immunity and reflection. Excludes moves that call other moves.",
+		"shortDesc": "In doubles, its first single-target status move each entry also targets the other foe."
+	},
+	"toxicserenity": {
+		"name": "Toxic Serenity",
+		"num": 10556,
+		"rating": 4,
+		"desc": "Poison Heal. While poisoned or badly poisoned, Dragon moves cannot miss. Retains the full Poison Heal effects.",
+		"shortDesc": "Poison Heal. While poisoned or badly poisoned, Dragon moves cannot miss. Retains the full Poison Heal effects."
+	},
+	"mudtemper": {
+		"name": "Mud Temper",
+		"num": 10557,
+		"rating": 1,
+		"desc": "Battle Armor, including this server's critical-hit immunity, 20% damage reduction and field/stat-drop effects. Surviving an opposing Fire or Water hit raises Sp. Def by 1 stage once per turn.",
+		"shortDesc": "Battle Armor; surviving a Fire or Water hit raises Sp. Def once per turn."
+	},
+	"skywarden": {
+		"name": "Skywarden",
+		"num": 10558,
+		"rating": 4,
+		"desc": "After successfully using Defog, creates Mist for its team for 5 turns. The Mist is applied after Defog removes effects; an existing longer Mist is not shortened.",
+		"shortDesc": "Defog sets 5-turn Mist for its side."
+	},
+	"lockjaw": {
+		"name": "Lockjaw",
+		"num": 10559,
+		"rating": 3.5,
+		"desc": "Strong Jaw. Biting hits inflict Torment on a surviving foe for 2 turns. Does not prevent switching.",
+		"shortDesc": "Strong Jaw. Biting hits inflict Torment on a surviving foe for 2 turns. Does not prevent switching."
+	},
+	"rivershell": {
+		"name": "River Shell",
+		"num": 10560,
+		"rating": 1,
+		"desc": "Shell Armor, including this server's damage reduction and field/stat-drop effects. Shell Smash does not lower its Defense, but still lowers its Sp. Def.",
+		"shortDesc": "Shell Armor; Shell Smash keeps Defense but still lowers Sp. Def."
+	},
+	"territorial": {
+		"name": "Territorial",
+		"num": 10264,
+		"gen": 9,
+		"desc": "Full Unnerve, Stamina and Guard Dog. Each opposing physical or special hit that damages its HP heals 1/16 base maximum HP; the first such hit each turn immediately raises Defense by 1, including between multi-hit strikes. Opposing forced switching is blocked and Intimidate raises Attack instead. Opponents cannot eat Berries or use field seeds; Cold Eclipse entry lowers opposing Speed.",
+		"shortDesc": "Unnerve + Stamina + Guard Dog.",
+		"rating": 4,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"funeralchoir": {
+		"name": "Funeral Choir",
+		"num": 10561,
+		"rating": 4,
+		"desc": "Damaging sound moves restore 1/32 maximum HP per currently fainted teammate, capped at 1/8 and once per turn. While a teammate is fainted, damaging Ghost moves also become sound moves, including sound interactions such as Soundproof and Substitute bypass.",
+		"shortDesc": "Sound hits heal per fainted ally; Ghost attacks become sound after an ally faints."
+	},
+	"festivalstep": {
+		"name": "Festival Step",
+		"num": 10562,
+		"rating": 4,
+		"desc": "Landing a damaging dance move against a foe clears this Pokemon's negative stat stages after damage. Positive stages are preserved; blocked or missed moves do not trigger the effect.",
+		"shortDesc": "Dance hits clear its negative stat stages."
+	},
+	"saltcrust": {
+		"name": "Salt Crust",
+		"num": 10563,
+		"rating": 2,
+		"desc": "Clear Body. While Defense is positively boosted, opponents cannot remove its held item. Does not prevent its boosts being reset, stolen or ignored.",
+		"shortDesc": "Clear Body; while Defense is boosted, its held item cannot be removed."
+	},
+	"beyondfear": {
+		"name": "Beyond Fear",
+		"num": 10564,
+		"rating": 1,
+		"desc": "Inner Focus. Once per switch-in, an opposing Attack increase grants +1 Defense, or an opposing Sp. Atk increase grants +1 Sp. Def. A move raising both grants both, consuming the one activation.",
+		"shortDesc": "Inner Focus; an opposing offensive boost grants a matching defensive boost once per entry."
+	},
+	"stillwater": {
+		"name": "Stillwater",
+		"num": 10565,
+		"rating": 3.5,
+		"desc": "Water Absorb, including its field effects. Absorbing a Water move while already at full HP raises Sp. Def by 1 stage once per turn.",
+		"shortDesc": "Water Absorb, including its field effects. Absorbing a Water move while already at full HP raises Sp. Def by 1 stage once per turn."
+	},
+	"mudmeditation": {
+		"name": "Mud Meditation",
+		"num": 10566,
+		"rating": 4,
+		"desc": "While waiting to perform a selected status move, takes 25% less damage from special attacks. The protection ends when its action resolves or is cancelled.",
+		"shortDesc": "Takes 25% less special damage while waiting to use a status move."
+	},
+	"sirius": {
+		"name": "Sirius",
+		"num": 10404,
+		"gen": 9,
+		"desc": "Apex Venom + Black Viper. Retains Apex Venom, Dragon-type Poison Fang, +1 accuracy on entry and 1.5x tail power. Its first tail hit against a foe each entry also badly poisons it, subject to status immunities.",
+		"shortDesc": "Apex Venom + Black Viper; first tail hit each entry badly poisons.",
+		"rating": 5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"coldopen": {
+		"name": "Cold Open",
+		"num": 10580,
+		"rating": 4,
+		"desc": "Its first successful damaging move each entry ignores positive defensive stat stages and screens. All hits of that move benefit. Misses and Protect preserve the effect; it does not bypass Substitute.",
+		"shortDesc": "First damaging move each entry ignores defensive boosts and screens."
+	},
+	"quarrycannon": {
+		"name": "Quarry Cannon",
+		"num": 10581,
+		"rating": 3,
+		"desc": "Solid Rock, including this server's 20% damage reduction and additional 25% reduction against super-effective hits. Rock Blast always hits five times unless interrupted. Does not alter Z/Max moves or Rock Wrecker recharge rules.",
+		"shortDesc": "Solid Rock; Rock Blast always hits five times."
+	},
+	"tundramarch": {
+		"name": "Tundra March",
+		"num": 10582,
+		"rating": 1.5,
+		"desc": "Oblivious. Landing a Ground attack on a foe removes Spikes, Toxic Spikes and Sticky Web from its own side. Ground immunity, Protect and Substitute prevent this activation. Stealth Rock remains.",
+		"shortDesc": "Oblivious; Ground hits remove Spikes, Toxic Spikes, and Sticky Web."
+	},
+	"undertow": {
+		"name": "Undertow",
+		"num": 10583,
+		"rating": 3.5,
+		"desc": "Water Absorb, including its field effects. Damaging Water hits ground surviving foes as with Smack Down. Does not trap them or bypass protection, Substitute or Water immunity.",
+		"shortDesc": "Water Absorb; Water hits ground surviving foes."
+	},
+	"deadwater": {
+		"name": "Deadwater",
+		"num": 10584,
+		"rating": 4,
+		"desc": "Foes receive half their normal passive end-of-turn healing. Absorbs the HP actually prevented, capped at 1/8 of its maximum HP per turn. Excludes healing moves, Wish, draining, Leech Seed and switching recovery. Multiple Deadwater holders do not stack.",
+		"shortDesc": "Halves foes' passive end-turn healing and absorbs up to 1/8 HP per turn."
+	},
+	"vitalcircuit": {
+		"name": "Vital Circuit",
+		"num": 10585,
+		"rating": 4,
+		"desc": "Electric attacks without an existing drain effect restore 25% of damage dealt to foes, capped at 1/8 maximum HP per turn, including Big Root. Respects Liquid Ooze and Heal Block. Does not add to or cap a move's existing drain effect.",
+		"shortDesc": "Electric attacks drain 25% of damage, capped at 1/8 HP per turn."
+	},
+	"ringmaster": {
+		"name": "Ringmaster",
+		"num": 10586,
+		"rating": 3.5,
+		"desc": "Tough Claws. Its first damaging Dark hit against a surviving foe each entry attempts to inflict Taunt for 2 turns. Normal Taunt immunities apply; no Fake Out requirement.",
+		"shortDesc": "Tough Claws; first Dark hit each entry Taunts the foe for 2 turns."
+	},
+	"unyielding": {
+		"name": "Unyielding",
+		"num": 10587,
+		"rating": 4,
+		"desc": "Stamina, including this server's Defense increase once per turn and 1/16 healing per opposing hit. While its Defense stage is positive, opponents cannot force it to switch. Normal switching and stat resets still work.",
+		"shortDesc": "Stamina; while Defense is raised, foes cannot force it out."
+	},
+	"primalrhythm": {
+		"name": "Primal Rhythm",
+		"num": 10588,
+		"rating": 4,
+		"desc": "Damaging sound moves become physical and use Attack. These moves spare allies. Retains normal sound interactions, including Soundproof and Throat Chop.",
+		"shortDesc": "Sound attacks use Attack and spare allies."
+	},
+	"setpiece": {
+		"name": "Set Piece",
+		"num": 10589,
+		"rating": 4,
+		"desc": "Successfully using Court Change or damaging a target with Feint primes its next Fire attack to gain +1 priority and never miss. One non-stacking charge; used when the attack is attempted, and cleared on switching. Protect and immunities still work.",
+		"shortDesc": "Court Change or Feint charges the next Fire attack with +1 priority and perfect accuracy."
+	},
+	"calculatedshot": {
+		"name": "Calculated Shot",
+		"num": 10590,
+		"gen": 9,
+		"desc": "Damaging Water moves gain +1 critical-hit stage and always use the highest normal damage roll. Does not increase fixed damage or bypass accuracy checks. Full local Frisk reveals opposing Illusions (including itemless foes), reveals held items and independently has a 30% chance to Embargo each opposing item holder for 5 turns.",
+		"shortDesc": "Frisk; Water attacks gain +1 critical-hit stage and the highest normal damage roll.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"lunardread": {
+		"name": "Lunar Dread",
+		"num": 10265,
+		"gen": 9,
+		"desc": "Dishearten + Insomnia + Pressure. On entry, lowers adjacent foes Sp. Atk by 1 stage, blocked by Substitute and normal stat-drop protection. Prevents sleep and Yawn; Dark and Ghost attacks have 1.3x power. Retains local Pressure: lowers foes Defense and Sp. Def by 1 stage on entry (2 on Cold Eclipse), costs foes 1 extra PP (2 on Midnight Zone), and changes Underwater to Midnight Zone. No mark, damage-reduction or Ground critical-hit effects.",
+		"shortDesc": "Dishearten + Insomnia + Pressure; retains their local field effects.",
+		"rating": 4,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"falsebouquet": {
+		"name": "False Bouquet",
+		"num": 10591,
+		"rating": 4,
+		"desc": "Its first damaging Flower Trick against a surviving foe each entry also attempts to plant Leech Seed. Grass-type immunity and Substitute still apply.",
+		"shortDesc": "First Flower Trick hit each entry also plants Leech Seed."
+	},
+	"hydratyrant": {
+		"name": "Hydra Tyrant",
+		"num": 10179,
+		"rating": 5,
+		"desc": "Hydra Bond + Berserk. Once per battle, after Draco Meteor applies its Sp. Atk drops, restores all negative stat stages to zero after the entire attack finishes. Positive stages remain. No Self Sufficient healing or immunity.",
+		"shortDesc": "Hydra Bond + Berserk; once per battle, Draco Meteor clears its negative stat stages."
+	},
+	"meridianseal": {
+		"name": "Meridian Seal",
+		"num": 10592,
+		"rating": 4,
+		"desc": "Its first Fighting hit against a surviving foe each entry attempts to suppress that foe's Ability for 2 turns, including the current turn. Protect, Substitute, Ability Shield and unsuppressible Abilities prevent suppression. Switching clears the seal.",
+		"shortDesc": "First Fighting hit each entry suppresses the foe's Ability for 2 turns."
+	},
+	"rimeplate": {
+		"name": "Rimeplate",
+		"num": 10593,
+		"rating": 4,
+		"desc": "Takes 75% less damage from hits after the first hit of a multi-hit attack. The first hit and separate attacks deal normal damage. Does not change Glaive Rush's effects.",
+		"shortDesc": "Later hits of a multi-hit move deal 75% less damage."
+	},
+	"darkdominion": {
+		"name": "Dark Dominion",
+		"num": 10594,
+		"rating": 3,
+		"desc": "Dark Aura. Damaging Dark hits inflict Heal Block on surviving foes for 2 turns, including the current turn. Respects protection and Substitute; does not shorten a longer existing Heal Block.",
+		"shortDesc": "Dark Aura; Dark hits Heal Block surviving foes for 2 turns."
+	},
+	"knuckletide": {
+		"name": "Knuckle Tide",
+		"num": 10432,
+		"rating": 4,
+		"desc": "Has Iron Fist's full effect: punching moves have 1.4x power. After a punch damages a foe, the next physical or special Water-type attack to damage a foe ignores positive Defense or Sp. Def stat stages, respectively. A miss or Water-type status move does not spend the charge.",
+		"shortDesc": "Iron Fist; a landed punch primes the next landed Water attack to ignore positive defensive boosts."
+	},
+	"crosscurrent": {
+		"name": "Crosscurrent",
+		"num": 10433,
+		"rating": 4,
+		"desc": "Has Swift Swim's full effect, doubling Speed in rain and qualifying water fields. After this Pokemon damages a foe, its next damaging move has 1.3x power if it uses the opposite category, Physical or Special. Misses and status moves do not change the last landed category. This bonus does not stack with itself.",
+		"shortDesc": "Swift Swim; alternating landed Physical and Special attacks gain 1.3x power."
+	},
+	"pearlcurrent": {
+		"name": "Pearl Current",
+		"num": 10434,
+		"rating": 4,
+		"desc": "Has Water Absorb's full effect, including its water-field healing. The first Water-type move absorbed each switch-in also heals its lowest-HP active ally by 1/8 of that ally's maximum HP.",
+		"shortDesc": "Water Absorb; first absorbed Water move each switch-in heals an ally by 1/8."
+	},
+	"slipstream": {
+		"name": "Slipstream",
+		"num": 10435,
+		"gen": 9,
+		"desc": "Has Levitate's full effect. Once per switch-in, its first Flying-type attack to damage a foe sets Tailwind on its side for 3 turns. If Tailwind is already active, its duration is refreshed to 3 turns. Full local Keen Eye prevents opposing accuracy drops, ignores evasion boosts and reveals opposing Illusions on activation. Mirror Arena grants +1 accuracy and Laser Focus; shared accuracy entry rewards apply once.",
+		"shortDesc": "Levitate + Keen Eye; first landed Flying attack each switch-in sets 3-turn Tailwind.",
+		"rating": 4,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"mimecraft": {
+		"name": "Mimecraft",
+		"num": 10436,
+		"rating": 3.5,
+		"desc": "Reflect and Light Screen gain +1 priority. Once per switch-in, the first one this Pokemon successfully sets heals its lowest-HP active ally by 1/8 of that ally's maximum HP.",
+		"shortDesc": "+1 priority for Reflect and Light Screen; first successful screen heals an ally by 1/8."
+	},
+	"dreamsickness": {
+		"name": "Dream Sickness",
+		"num": 10262,
+		"rating": 4.5,
+		"desc": "Retains Telepathy, including avoiding allied damaging moves and doubled Speed in Psychic Terrain or Psychic Aura. At the end of each turn, it and its active allies each heal 1/16 max HP. Once per switch-in, if an opposing move would knock out an ally, that ally survives at 1 HP and this Pokemon loses 1/4 max HP, provided it has more HP than the cost.",
+		"shortDesc": "Telepathy; heals its side 1/16 each turn; once per switch-in saves an ally from a lethal hit at a 1/4 HP cost."
+	},
+	"voidveil": {
+		"name": "Void Veil",
+		"num": 10167,
+		"rating": 4,
+		"desc": "Levitate + Magic Guard + Insomnia. Immune to Ground moves, indirect damage, sleep, and Yawn; Dark- and Ghost-type moves have 1.3x power. In Fairy Tale, raises Sp. Def by 1 on entry. Its first Dark- or Ghost-type attack each switch-in bypasses Substitute and screens. It does not heal or shelter allies.",
+		"shortDesc": "Levitate + Magic Guard + Insomnia; first Dark/Ghost attack pierces Substitute and screens."
+	},
+	"knightsguard": {
+		"name": "Knight's Guard",
+		"num": 10263,
+		"rating": 4,
+		"desc": "Once per switch-in in doubles, redirects the first single-target damaging attack aimed at an adjacent ally to this Pokemon. It takes 25% less damage from that attack and, if it survives a hit, gains one Attack stage. Spread moves and status moves are not redirected.",
+		"shortDesc": "Once per switch-in, intercepts an ally-targeted attack; takes 25% less and gains +1 Atk if hit."
+	},
+	"terraresolve": {
+		"name": "Terra Resolve",
+		"num": 10042,
+		"rating": 3.5,
+		"desc": "This Pokemon has Stamina, Solid Rock, and Proficient's effects. Rocky Payload is removed.",
+		"shortDesc": "Stamina + Solid Rock + Proficient."
+	},
+	"abysslure": {
+		"name": "Abyss Lure",
+		"num": 10314,
+		"gen": 9,
+		"desc": "This Pokemon absorbs Electric- and Water-type moves that hit it, restoring 1/4 of its maximum HP and raising its Attack and Special Attack by 1 stage. It no longer redirects those moves from allies. It also has Illuminate's effect.",
+		"shortDesc": "Volt Absorb + Water Absorb + Illuminate; Absorbs Electric/Water hits; heals 1/4; +1 Atk/SpA; no redirection.",
+		"rating": 4,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"purifyingfrost": {
+		"name": "Purifying Frost",
+		"num": 10428,
+		"rating": 4,
+		"desc": "On switch-in, cures status conditions from this Pokemon and its active allies. Once per switch-in, after its first Ice-type move, it sets Safeguard on its side for 5 turns, even if that move misses or fails.",
+		"shortDesc": "Cures its side's active Pokemon on entry; first Ice move sets 5-turn Safeguard."
+	},
+	"smolderingshroud": {
+		"name": "Smoldering Shroud",
+		"num": 10429,
+		"rating": 4,
+		"desc": "Has White Smoke's full effect: prevents stat drops from other Pokemon, and raises Attack and Sp. Atk on entry on Volcanic Field. The first foe-caused stat drop it prevents each switch-in also raises its Sp. Atk by one stage.",
+		"shortDesc": "White Smoke; first blocked foe stat drop each switch-in raises Sp. Atk by 1."
+	},
+	"springfur": {
+		"name": "Spring Fur",
+		"num": 10430,
+		"rating": 4,
+		"desc": "Has Fur Coat's full effect, doubling Defense. Once per switch-in, surviving the first damaging physical move from a foe raises this Pokemon's Attack by one stage.",
+		"shortDesc": "Fur Coat; first survived physical hit from a foe each switch-in raises Atk by 1."
+	},
+	"varietyrush": {
+		"name": "Variety Rush",
+		"num": 10431,
+		"rating": 4,
+		"desc": "The first damaging hit of each non-Normal move type it lands on a foe each switch-in has 1.4x power. A type is spent only after a hit connects. Pivot moves such as U-turn qualify.",
+		"shortDesc": "First connected hit of each non-Normal type each switch-in has 1.4x power; pivots qualify."
+	},
+	"forgegrit": {
+		"name": "Forge Grit",
+		"num": 10420,
+		"rating": 4,
+		"desc": "Has Guts's full effect: status raises Attack by 50% and burn does not weaken physical attacks. Once per switch-in, the first damaging move it takes from a foe while statused raises its Defense by one stage.",
+		"shortDesc": "Guts; first foe hit taken while statused each switch-in raises Defense by 1."
+	},
+	"masonsfist": {
+		"name": "Mason's Fist",
+		"num": 10421,
+		"rating": 4,
+		"desc": "Has Iron Fist's full effect. When a punching move damages a foe, it removes Reflect, Light Screen, Aurora Veil, Arenite Wall, and Atlantis Wall from that foe's side.",
+		"shortDesc": "Iron Fist; punches that damage a foe break that side's screens."
+	},
+	"marshconduit": {
+		"name": "Marsh Conduit",
+		"num": 10422,
+		"rating": 4,
+		"desc": "Has Water Absorb's full effect, including healing from Water moves and qualifying water fields. The first Water move it absorbs each switch-in also lowers each active foe's Speed by one stage.",
+		"shortDesc": "Water Absorb; first absorbed Water move each switch-in lowers foes' Speed by 1."
+	},
+	"silkward": {
+		"name": "Silk Ward",
+		"num": 10423,
+		"rating": 4,
+		"desc": "Once per switch-in, the first super-effective damaging hit against this Pokemon deals half damage. It does not set weather.",
+		"shortDesc": "First super-effective hit each switch-in deals half damage."
+	},
+	"swarmdrive": {
+		"name": "Swarm Drive",
+		"num": 10424,
+		"rating": 4,
+		"desc": "Has Swarm's full effect. Once per switch-in, knocking out a foe with a Bug-type move that does not switch the user out raises this Pokemon's Speed by one stage. U-turn and other pivot moves cannot trigger the Speed boost.",
+		"shortDesc": "Swarm; first non-pivot Bug-move KO each switch-in raises Speed by 1."
+	},
+	"mirechorus": {
+		"name": "Mire Chorus",
+		"num": 10426,
+		"rating": 4,
+		"desc": "Has Liquid Voice and Poison Touch's effects. Each foe damaged by a noncontact sound move also has an independent 20% chance to be poisoned. Shield Dust and Covert Cloak block this added poison chance.",
+		"shortDesc": "Liquid Voice + Poison Touch; noncontact sound hits have a 20% poison chance."
+	},
+	"boretunnel": {
+		"name": "Bore Tunnel",
+		"num": 10427,
+		"rating": 4,
+		"desc": "Has Earth Eater's full effect. The first Ground-type move it absorbs each switch-in also removes Spikes, Toxic Spikes, Stealth Rock, Sticky Web, and G-Max Steelsurge from its own side.",
+		"shortDesc": "Earth Eater; first Ground absorption each switch-in clears own-side hazards."
+	},
+	"apexflytrap": {
+		"name": "Apex Flytrap",
+		"num": 10425,
+		"rating": 4,
+		"desc": "The holder is airborne, as with Levitate. Once per switch-in, a foe that damages it with a contact move is trapped through the following turn while the holder remains active.",
+		"shortDesc": "Levitate; once per switch-in, traps a foe that hits it with contact through the next turn."
+	},
+	"crueltag": {
+		"name": "Cruel Tag",
+		"num": 10294,
+		"rating": 5,
+		"desc": "Shadow Tag + Infiltrator + Bad Dreams. Traps adjacent foes, bypasses screens and Substitute, and damages sleeping foes each turn.",
+		"shortDesc": "Shadow Tag + Infiltrator + Bad Dreams."
+	},
+	"battery": {
+		"name": "Battery",
+		"num": 217,
+		"rating": 0,
+		"desc": "This Pokemon and its allies have 1.3x power on Special attacks. The user's Special attacks get an additional 1.5x multiplier in Electric Terrain.",
+		"shortDesc": "Self/ally Special attacks 1.3x; user gets extra 1.5x in Electric Terrain."
+	},
+	"mythicscale": {
+		"name": "Mythic Scale",
+		"num": 10046,
+		"rating": 3.5,
+		"desc": "Marvel Scale + Levitate + Compound Eyes + Shield Dust. Boosts Defense under Marvel Scale conditions, grants Ground immunity, improves move accuracy, and blocks opponents' move secondary effects.",
+		"shortDesc": "Marvel Scale + Levitate + Compound Eyes + Shield Dust."
+	},
+	"freezerburn": {
+		"name": "Freezer Burn",
+		"num": 10181,
+		"rating": 5,
+		"desc": "Slush Rush + Refrigerate + Strong Jaw + Levitate. Speed rises in snow; eligible Normal moves become Ice, biting moves gain power, and this Pokemon is airborne.",
+		"shortDesc": "Slush Rush + Refrigerate + Strong Jaw + Levitate."
+	},
+	"royalvoice": {
+		"name": "Royal Voice",
+		"num": 10113,
+		"gen": 9,
+		"desc": "Pixilate + Queenly Majesty + Dream Sickness. Normal moves become Fairy and receive Pixilate power boosts. Blocks opposing priority moves targeting its side. Includes Telepathy and its field effects, 1/16 end-turn healing for itself and allies, and a once-per-switch-in rescue that leaves an ally at 1 HP and costs the holder 1/4 max HP.",
+		"shortDesc": "Pixilate + Queenly Majesty + Dream Sickness.",
+		"rating": 5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"mountainhunger": {
+		"name": "Mountain Hunger",
+		"num": 10050,
+		"rating": 4,
+		"desc": "Sap Sipper + Thick Fat + Early Bird. Absorbs Grass moves, takes less damage from Fire and Ice moves, and wakes from sleep faster.",
+		"shortDesc": "Sap Sipper + Thick Fat + Early Bird."
+	},
+	"treasuretitan": {
+		"name": "Treasure Titan",
+		"num": 10053,
+		"rating": 4,
+		"desc": "Filter + Earth Eater + Heavy Metal + Intimidate. Lowers adjacent foes' Attack on entry; Copperajah-Gmax's weight-based moves always use their maximum power.",
+		"shortDesc": "Filter + Earth Eater + Heavy Metal + Intimidate; max weight-move power."
+	},
+	"furnaceengine": {
+		"name": "Furnace Engine",
+		"num": 10056,
+		"rating": 4,
+		"desc": "Steam Engine + Flame Body + Self Sufficient + Solid Rock. At the end of each turn, opposing Pokemon take Fire-type damage equal to 1/16 max HP, blocked by Fire immunities. Only in Free-for-All does Fire type effectiveness scale this chip.",
+		"shortDesc": "Steam Engine + Flame Body + Self Sufficient + Solid Rock; Fire chip."
+	},
+	"duneterror": {
+		"name": "Dune Terror",
+		"num": 10057,
+		"rating": 4,
+		"desc": "Sand Stream + Shed Skin + Sand Spit. Summons sand on entry and when hit; during Sandstorm, opposing Pokemon take Ground-type damage equal to 1/16 max HP, blocked by Ground immunities. On fainting, creates Desert Field for 5 turns.",
+		"shortDesc": "Sand Stream + Shed Skin + Sand Spit; Desert Field for 5 turns on faint."
+	},
+	"argentdevotion": {
+		"name": "Argent Devotion",
+		"num": 10199,
+		"rating": 4.5,
+		"desc": "Armorize + Sworn Duty + Serene Grace. Eligible Normal moves become Steel, Sworn Duty supports its ally, and move secondary effects are more likely.",
+		"shortDesc": "Armorize + Sworn Duty + Serene Grace."
+	},
+	"slowclamp": {
+		"name": "Slow Clamp",
+		"num": 10407,
+		"rating": 4,
+		"desc": "Shell Armor + Own Tempo + Analytic + Sweet Veil. Prevents critical hits and confusion, boosts attacks used after other active Pokemon move, and protects this Pokemon and allies from sleep.",
+		"shortDesc": "Shell Armor + Own Tempo + Analytic + Sweet Veil."
+	},
+	"soultag": {
+		"name": "Soul Tag",
+		"num": 10029,
+		"rating": 5,
+		"desc": "Soul Fire + Shadow Tag + Flame Body. Traps adjacent foes, gains Soul Fire's Fire/Ghost effects, and can burn contact attackers.",
+		"shortDesc": "Soul Fire + Shadow Tag + Flame Body."
+	},
+	"royalsun": {
+		"name": "Royal Sun",
+		"num": 10142,
+		"gen": 9,
+		"desc": "Drought + Supreme Overlord + Unnerve + Flame Body. Summons sun for the usual Drought duration. Move power gains 10% per fainted ally; at 2 fallen allies, gains Infiltrator; at 4, flinch immunity; at 5, Magic Guard and a one-time +1 Attack and Special Attack. Opponents cannot eat Berries or use field seeds. Contact has a 30% burn chance, or 60% on Volcanic Field. On Cold Eclipse, lowers opposing Speed by 1 on entry (blocked by Substitute), raises its Defense and Special Defense by 1, and cannot burn through contact.",
+		"shortDesc": "Drought + Supreme Overlord + Unnerve + Flame Body.",
+		"rating": 4.5,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"toxicrenewal": {
+		"name": "Toxic Renewal",
+		"num": 10155,
+		"rating": 4.5,
+		"desc": "Adaptability + Regenerator + Poison Touch. Same-type attacks deal more damage, switching out restores HP, and contact attacks can poison.",
+		"shortDesc": "Adaptability + Regenerator + Poison Touch."
+	},
+	"absolutezero": {
+		"name": "Absolute Zero",
+		"num": 10397,
+		"rating": 5,
+		"desc": "Snow Warning + Mold Breaker + Filter. Summons Snow on entry, ignores opposing Abilities when attacking, and reduces damage from super-effective hits.",
+		"shortDesc": "Snow Warning + Mold Breaker + Filter."
+	},
+	"phantomfist": {
+		"name": "Phantom Fist",
+		"num": 10193,
+		"gen": 9,
+		"desc": "Unseen Fist + Self Repair + Shadow Shield + Aftermath. Its moves cannot miss, contact moves bypass Protect, it repairs itself, takes 0.8x attack damage at any HP (0.6x total from super-effective attacks), and damages contact attackers that knock it out.",
+		"shortDesc": "Unseen Fist + Self Repair + Shadow Shield + Aftermath; moves cannot miss.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"ultrainstinct": {
+		"name": "Ultra Instinct",
+		"num": 10013,
+		"rating": 3,
+		"desc": "Mold Breaker + Inner Focus. Attacks deal 2x damage through screens or 1.5x damage when the target has yet to move or has just switched in. On Ashen Beach, New World, Starlight Arena, or Cold Eclipse, it gains 1 Accuracy on entry, deals 1.5x damage, and takes 50% less damage. Otherwise it takes 70% less damage if the attacker has not yet moved. Bewitched Woods, Haunted, and Holy Field suppress these effects.",
+		"shortDesc": "Mold Breaker + Inner Focus; screen and timing boosts; field defenses."
+	},
+	"burningego": {
+		"name": "Burning Ego",
+		"num": 10256,
+		"gen": 9,
+		"desc": "Proficient + Ultra Ego + Flame Body + Magma Armor. Same-type moves have 1.3x power; it heals and gains Attack and Sp. Atk when fighting, can burn contact attackers, and has full local Magma Armor. Water and Ice moves use half attacking stats; Dragon's Den blocks opposing Fire moves. Freeze is prevented outside Cold Eclipse and cured on update. Dragon's Den, Volcanic Field and Cold Eclipse grant +1 Defense and Special Defense on entry. Flame Body separately retains its Cold Eclipse +1 Defense and Special Defense. There is no Thick Fat Fire reduction or hail immunity. Its enhanced-field one-time 1/4 HP pinch recovery is consumed only when it actually restores HP; blocked healing preserves it for a later eligible hit window.",
+		"shortDesc": "Proficient + Ultra Ego + Flame Body + Magma Armor.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"coldlogic": {
+		"name": "Cold Logic",
+		"num": 10128,
+		"rating": 4.5,
+		"desc": "Tough Claws + Prism Armor + Aftermath + Forewarn. Contact moves hit harder, super-effective damage is reduced, contact attackers take damage if this Pokemon is knocked out, and the strongest opposing move is revealed on entry.",
+		"shortDesc": "Tough Claws + Prism Armor + Aftermath + Forewarn."
+	},
+	"mossarmor": {
+		"name": "Moss Armor",
+		"num": 10390,
+		"rating": 5,
+		"desc": "Stamina + Natural Recovery + Levitate. Boosts Defense when hit, recovers status or HP through Natural Recovery, and is airborne.",
+		"shortDesc": "Stamina + Natural Recovery + Levitate."
+	},
+	"propellertail": {
+		"name": "Propeller Tail",
+		"num": 239,
+		"rating": 0,
+		"desc": "Moves cannot be redirected. Speed is doubled on Water Surface, Underwater, and Midnight Zone fields.",
+		"shortDesc": "Blocks redirection; doubles Speed on Water Surface, Underwater, and Midnight Zone."
+	},
+	"ultraego": {
+		"name": "Ultra Ego",
+		"num": 10012,
+		"gen": 9,
+		"desc": "Damaging moves ignore opposing Abilities. Once per turn after dealing damage, this Pokemon heals 1/16 max HP. The first opposing damaging hit boosts its Attack and Sp. Atk by 1 and heals it by 1/16; later hits in the same move heal 1/20. Certain fields grant defensive boosts or stronger healing. Bewitched Woods, Haunted, and Holy Field suppress these effects. Its enhanced-field one-time 1/4 HP pinch recovery is consumed only when it actually restores HP; blocked healing preserves it for a later eligible hit window.",
+		"shortDesc": "Ignores Abilities; heals when attacking or hit; first hit boosts Atk and SpA.",
+		"rating": 3,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"dishearten": {
+		"name": "Dishearten",
+		"num": 11234,
+		"gen": 9,
+		"desc": "On entry, lowers adjacent opposing Pokemon Sp. Atk by 1 stage. Blocked by Substitute and normal stat-drop protection; normal stat-drop reflection and reactions apply. Intimidate-specific immunities and reactions do not apply.",
+		"shortDesc": "On entry, lowers adjacent foes Sp. Atk by 1 stage.",
+		"rating": 3.5,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"shadowshield": {
+		"name": "Shadow Shield",
+		"num": 231,
+		"gen": 7,
+		"desc": "Takes 0.8x damage from attacks at any HP. Super-effective attacks deal a further 0.75x damage (0.6x total). These reductions are not bypassed by Mold Breaker or ability-ignoring moves, but ability suppression disables them. Does not reduce indirect damage. Retains hail immunity on Cold Eclipse.",
+		"shortDesc": "Takes 0.8x attack damage at any HP; super-effective hits deal 0.6x total.",
+		"rating": 3.5,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"voidcraft": {
+		"name": "Voidcraft",
+		"num": 10121,
+		"gen": 9,
+		"desc": "Elevate + Shadow Shield + Temporal Shift + Insomnia. It is ungrounded, takes 0.8x attack damage at any HP (0.6x total from super-effective attacks), cannot sleep or be affected by Yawn, and opposing Pokemon cannot lower its stats. Its damage reduction is not bypassed by Mold Breaker or ability-ignoring moves; its other defensive components remain bypassable. Ability suppression disables it. It retains hail immunity on Cold Eclipse. Its Dark- and Ghost-type damaging moves have 1.3x power, and it raises its highest stat after a move KO. Starting on Mega Evolution, it queues a 120 BP Ghost-type Future Sight on that turn and every other turn afterward; each queued attack strikes two turns later. It does not trap foes or have Magic Guard's indirect-damage immunity.",
+		"shortDesc": "Elevate + Shadow Shield + Temporal Shift + Insomnia; 120 BP Ghost Future Sight every other turn.",
+		"rating": 4,
+		"flags": {
+			"breakable": 1,
+			"unbreakableDamage": 1
+		},
+		"isNonstandard": null
+	},
+	"curseddoll": {
+		"name": "Cursed Doll",
+		"num": 10362,
+		"gen": 9,
+		"desc": "This Pokemon has Tough Claws and Shadow Shield's effects. Its damaging moves curse the foes they hurt. When it faints, it creates Haunted Field for 5 turns. Full local Frisk breaks all opposing active Illusions on entry, reveals their held items, and independently has a 30% chance to Embargo each item holder for 5 turns.",
+		"shortDesc": "Tough Claws + Shadow Shield + Frisk; damaging moves curse; faint sets Haunted.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"surgeconduit": {
+		"name": "Surge Conduit",
+		"num": 10157,
+		"gen": 9,
+		"desc": "This Pokemon has Electric Surge, Lightning Rod, and Brute Force's effects.",
+		"shortDesc": "Shadow Shield; Electric Surge + Lightning Rod + Brute Force.",
+		"rating": 4.5,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"exalt": {
+		"name": "Exalt",
+		"num": 10350,
+		"gen": 9,
+		"desc": "This Pokemon has Defiant: opposing stat drops raise its Attack by 2 stages. It cannot flinch. Its slicing moves and Steel Wing have 1.5x power, except on Cold Eclipse, as with Sharpness. Intimidate still lowers its Attack and triggers Defiant. Flinch protection can be bypassed by Mold Breaker; ability suppression disables all effects.",
+		"shortDesc": "Defiant + Sharpness; cannot flinch; slicing moves and Steel Wing have 1.5x power except on Cold Eclipse.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"spentforce": {
+		"name": "Spent Force",
+		"num": 11218,
+		"gen": 9,
+		"desc": "After executing a damaging move, this Pokemon has half attack damage and Speed for the next two complete turns, then automatically recovers. The triggering move finishes at full power, including all hits and spread targets. Attacking during fatigue does not extend it, and status moves or waiting do not accelerate recovery. Executed misses, Protect and immunities trigger fatigue; prevented execution and charging-only turns do not. Switching clears fatigue. Suppression disables the penalties but does not reset or pause the timer, and ability replacement does not reset it. Fixed-damage moves retain their fixed damage.",
+		"shortDesc": "After an attack, half damage and Speed for two complete turns; then recovers.",
+		"rating": -1,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"pulsewaste": {
+		"name": "Pulse Waste",
+		"num": 10353,
+		"gen": 9,
+		"desc": "On entry, summons Murkwater Surface for 5 turns, subject to field-generation blockers. This Pokemon has Protean, Poison Touch, and Regenerator's effects.",
+		"shortDesc": "Protean + Poison Touch + Regenerator; 5-turn Murkwater Surface on entry.",
+		"rating": 4.5,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"pulsefiltration": {
+		"name": "Pulse Filtration",
+		"num": 11220,
+		"gen": 9,
+		"desc": "Water- and Poison-type moves used by another Pokemon do not affect this Pokemon and instead restore 1/4 of its maximum HP. This immunity still works at full HP or when healing is blocked. Mold Breaker and other applicable ability-ignoring effects bypass it. On entry, summons Murkwater Surface for 5 turns, subject to field-generation blockers. It provides no ability-based residual healing.",
+		"shortDesc": "5-turn Murkwater Surface on entry; absorbs Water/Poison moves to heal 1/4 max HP.",
+		"rating": 3.5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"scrapbreaker": {
+		"name": "Scrapbreaker",
+		"num": 11235,
+		"gen": 9,
+		"desc": "Full Mold Breaker. A connecting Gigaton Hammer removes the target side's Reflect, Light Screen and Aurora Veil before damage. Actual opposing HP damage also grounds the target as Smack Down; Substitute-only damage does not ground it. Normal accuracy, protection and consecutive-use restrictions remain.",
+		"shortDesc": "Mold Breaker; Gigaton Hammer breaks screens and grounds foes it damages.",
+		"rating": 3,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"toxicsignature": {
+		"name": "Toxic Signature",
+		"num": 11236,
+		"gen": 9,
+		"desc": "Full Unnerve, including its field effects. Poison attacks dealing opposing HP damage place one Toxic Spikes layer on that side only if none exists. Damaging attacks against poisoned targets ignore accuracy and evasion stages but retain their base accuracy and other accuracy modifiers.",
+		"shortDesc": "Unnerve; Poison HP hits lay a first Toxic Spikes layer; ignores stages vs poisoned foes.",
+		"rating": 1,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"wickedweave": {
+		"name": "Wicked Weave",
+		"num": 11237,
+		"gen": 9,
+		"desc": "Full Prankster. A successful status move readies the next contact attack to lower a foe's Speed by 1 after actual HP damage. The charge does not stack, is consumed by a qualifying hit, and expires at the end of the following turn.",
+		"shortDesc": "Prankster; successful status moves ready a contact-hit Speed drop through the next turn.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"vaultkeeper": {
+		"name": "Vault Keeper",
+		"num": 11238,
+		"gen": 9,
+		"desc": "Full Prankster and Sticky Hold. While active, opposing moves cannot remove this side's Reflect, Light Screen or Aurora Veil. Normal expiration and damage bypass still work; applicable Mold Breaker effects bypass the protection.",
+		"shortDesc": "Prankster + Sticky Hold; protects this side's screens from opposing removal.",
+		"rating": 1.5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"masterkey": {
+		"name": "Master Key",
+		"num": 11239,
+		"gen": 9,
+		"desc": "Single-target status moves bypass Substitute and ignore opposing abilities under normal Mold Breaker rules. No priority boost. Accuracy, Protect, type/status immunities, Safeguard, terrain and Taunt still apply.",
+		"shortDesc": "Single-target status moves bypass Substitute and ignore opposing abilities.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"groundingtail": {
+		"name": "Grounding Tail",
+		"num": 11208,
+		"gen": 9,
+		"desc": "Electric moves treat each Ground typing as a resistance instead of an immunity, retaining all other type factors, and cause no move recoil. Water/Ground takes neutral damage; Ground/Dragon takes quarter damage. Absorption abilities still block them, and incoming Ground attacks are unchanged.",
+		"shortDesc": "Electric moves have no recoil and treat Ground immunity as resistance.",
+		"rating": 2.5,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"flintfracture": {
+		"name": "Flint Fracture",
+		"num": 11240,
+		"gen": 9,
+		"desc": "Connecting slicing moves remove the target side's Reflect and Aurora Veil before damage. Opposing HP damage applies stone splinters dealing 1/16 maximum HP at the end of this turn and the following turn. Reapplication refreshes, never stacks; switching clears splinters. No slicing power multiplier.",
+		"shortDesc": "Slicing attacks break Reflect/Veil; HP hits inflict two turns of 1/16 stone splinters.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"frozenfeast": {
+		"name": "Frozen Feast",
+		"num": 11241,
+		"gen": 9,
+		"desc": "Full Strong Jaw. Ice moves dealing opposing HP damage lower each surviving target's Speed by 1 after the whole move, once per target, unless that move already successfully lowered its Speed. Biting attacks drain half their actual opposing HP damage if that target had negative Speed stages before the attack began. Normal draining interactions apply.",
+		"shortDesc": "Strong Jaw; Ice HP hits lower Speed once; bites drain 50% against already-slowed foes.",
+		"rating": 3.5,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"cinderscales": {
+		"name": "Cinder Scales",
+		"num": 11242,
+		"gen": 9,
+		"desc": "Full Flame Body, Swarm and Shield Dust, including their existing field effects.",
+		"shortDesc": "Flame Body + Swarm + Shield Dust.",
+		"rating": 2,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"sporeshroud": {
+		"name": "Spore Shroud",
+		"num": 11243,
+		"gen": 9,
+		"desc": "Full Effect Spore. Contact attacks deal 0.75x damage; non-contact physical attacks are unaffected.",
+		"shortDesc": "Effect Spore; takes 25% less damage from contact attacks.",
+		"rating": 2,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"primevalhunt": {
+		"name": "Primeval Hunt",
+		"num": 11244,
+		"gen": 9,
+		"desc": "Full Skill Link and Battle Armor. The final scheduled hit of a move with at least three hits is a guaranteed critical hit unless critical-hit immunity prevents it. Earlier hits retain normal critical chances; interruption does not promote an earlier hit.",
+		"shortDesc": "Skill Link + Battle Armor; final scheduled hit of 3+ hit moves critically hits.",
+		"rating": 1,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"rimebreaker": {
+		"name": "Rimebreaker",
+		"num": 11245,
+		"gen": 9,
+		"desc": "Full Refrigerate, including its field boosts only for converted moves. Once per turn, an Ice move dealing opposing HP damage removes this side's Stealth Rock and one Spikes layer. Toxic Spikes and Sticky Web remain. Natural Ice moves receive no extra ability damage boost.",
+		"shortDesc": "Refrigerate; Ice HP hits clear own Stealth Rock and one Spikes layer once per turn.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"duskdrive": {
+		"name": "Dusk Drive",
+		"num": 10166,
+		"gen": 9,
+		"desc": "Full Battle Fervor, Precision and Opportunist, including their field effects, entry behavior, item blocking, damage modifiers and boost-copy timing.",
+		"shortDesc": "Battle Fervor + Precision + Opportunist.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"evaporate": {
+		"name": "Evaporate",
+		"num": 11246,
+		"gen": 9,
+		"desc": "Full Dry Skin, including field/weather effects. On entry, ends ordinary rain but not Primordial Sea. Once per stay, ending rain or absorbing Water grants one Steam Veil; the next damaging special HP hit deals 0.75x damage and consumes it. It cannot stack or refresh within that stay.",
+		"shortDesc": "Dry Skin; ends ordinary rain on entry; once per stay earns a one-hit special damage veil.",
+		"rating": 3,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"pressurekiln": {
+		"name": "Pressure Kiln",
+		"num": 11247,
+		"gen": 9,
+		"desc": "Stores half the actual HP damage from opposing direct moves, up to 1/4 maximum HP. Its next Fire attack dealing opposing HP damage consumes the reservoir and heals the stored amount. Residual, recoil, ally and Substitute-only damage do not fill it. Switching clears storage.",
+		"shortDesc": "Stores half foe move HP damage (cap 1/4 max HP); next Fire HP hit consumes it to heal.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"shattercrust": {
+		"name": "Shattercrust",
+		"num": 11248,
+		"gen": 9,
+		"desc": "Full Crumbling Shell: physical HP hits set Stealth Rock on the attacker's side if absent (an allied attacker instead selects the opposing side), except on Water Surface, Underwater, Murkwater Surface and Swamp. Additionally, the first opposing physical HP hit each stay deals half damage; if this Pokemon survives it, adds one Spikes layer to the attacker's side.",
+		"shortDesc": "Crumbling Shell; first foe physical HP hit each stay deals half damage and scatters Spikes if survived.",
+		"rating": 2,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"restorativechime": {
+		"name": "Restorative Chime",
+		"num": 11249,
+		"gen": 9,
+		"desc": "Once per stay, a healing move that actually restores HP also cures the healed recipient's major status; Rest is excluded. Wish checks and consumes the originating entry's cure only when it heals its eventual recipient. Successful sound moves heal this Pokemon by 1/8 maximum HP once per turn.",
+		"shortDesc": "Healing moves cure a healed recipient once per stay (not Rest); successful sound moves heal 1/8 per turn.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"dissonantchime": {
+		"name": "Dissonant Chime",
+		"num": 11250,
+		"gen": 9,
+		"desc": "Immune to opposing sound moves. Once per stay, a damaging sound move that deals opposing HP damage removes that target's positive stat stages. The use is spent only when a positive stage is removed.",
+		"shortDesc": "Immune to opposing sound; one sound HP hit per stay clears positive boosts when present.",
+		"rating": 4,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"gravehunger": {
+		"name": "Grave Hunger",
+		"num": 11251,
+		"gen": 9,
+		"desc": "Full Bad Dreams. Ghost attacks drain 25% of actual opposing HP damage, without adding drain to moves that already drain. While active, halves opposing active Pokemon's healing and gains the HP actually prevented. Combined new healing is capped at 1/8 maximum HP per turn; opposing healing stays reduced when this Pokemon is full or capped. Bench healing and switching-out Regenerator are unaffected. Normal healing blockers and drain interactions apply.",
+		"shortDesc": "Bad Dreams; Ghost HP hits drain 25%; halves foe healing and takes prevented HP (combined cap 1/8 per turn).",
+		"rating": 1.5,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"atrocity": {
+		"name": "Atrocity",
+		"num": 10126,
+		"gen": 9,
+		"desc": "Unbound Blaze + Self Sufficient + Tough Claws + Proficient; boosts critical hits. Dragon Rush never misses. It does not drain HP or bypass abilities, screens, Veil, or Substitute.",
+		"shortDesc": "Unbound Blaze + Self Sufficient + Tough Claws; boosts critical hits.",
+		"rating": 5,
+		"flags": {
+			"cantsuppress": 1
+		},
+		"isNonstandard": null
+	},
+	"primevalhunger": {
+		"name": "Primeval Hunger",
+		"num": 11252,
+		"gen": 9,
+		"desc": "Full Accumulation, including Stockpile, automatic releases, weather immunity and Fire/Ice damage protection. Draining attacks that damage a foe's HP inflict Heal Block through the end of the following turn. After the whole move, lower one positive Attack or Sp. Atk stage of each damaged foe, choosing the more boosted stat and Sp. Atk on ties. Never lowers an unboosted stat or grants the user a boost. Substitute-only damage does not trigger these effects; normal stat-drop protections apply.",
+		"shortDesc": "Accumulation; draining hits briefly Heal Block and lower a foe's higher positive attacking stage.",
+		"rating": 3,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"toxicbloom": {
+		"name": "Toxic Bloom",
+		"num": 10037,
+		"gen": 9,
+		"desc": "Pollen Bloom (including Proficient, Thick Fat, Unaware and healing Grass chip) + Self Sufficient, each applied once. Poison-type attacks restore 1/4 of actual opposing HP damage, using normal drain rounding and Heal Block, Liquid Ooze and Big Root interactions. No added drain from Substitute-only damage, misses, Protect, immunity or residual poison. Moves that already drain keep their native drain without an extra heal.",
+		"shortDesc": "Pollen Bloom + Self Sufficient; Poison hits drain 25% foe HP damage; no extra native drain.",
+		"rating": 4.5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"pollenbloom": {
+		"name": "Pollen Bloom",
+		"num": 10137,
+		"gen": 9,
+		"desc": "This Pokemon has Proficient, Thick Fat and Unaware's effects. At the end of each turn, opposing non-Grass Pokemon take Grass-type damage equal to 1/16 max HP, blocked by Grass immunities; this Pokemon heals the damage dealt by that chip. Only in Free-for-All does Grass type effectiveness scale this chip.",
+		"shortDesc": "Proficient + Thick Fat + Unaware; healing Grass chip scales by type in FFA.",
+		"rating": 4,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"razorreach": {
+		"name": "Razor Reach",
+		"num": 11229,
+		"gen": 9,
+		"desc": "Full Sharpness + Long Reach. Slicing moves have 1.5x power (except on Cold Eclipse), all attacks are non-contact, and entry grants +1 accuracy. Retains local Long Reach critical-hit and field effects: 0.9x move accuracy on Rocky/Grassy Field and 1.5x power on Mountain/Snowy Mountain. Replaces the former 1.3x slicing boost; no stacking with it.",
+		"shortDesc": "Sharpness + full local Long Reach; all attacks non-contact; +1 accuracy on entry.",
+		"rating": 3.5,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"witheringtouch": {
+		"name": "Withering Touch",
+		"num": 11230,
+		"gen": 9,
+		"desc": "Full Poison Touch + local Corrosion. Contact hits may poison. Corrosion permits poisoning Steel/Poison targets and Poison attacks bypass Steel immunity; foes becoming poisoned lose 1 Defense and Sp. Def stage. Retains Corrosion field effects. Poison attacks that damage the HP of a foe already poisoned before that hit lower its Attack by 1 once per target per turn. Poison newly inflicted by that same hit does not qualify. No effect from Substitute-only or residual damage.",
+		"shortDesc": "Poison Touch + full Corrosion; Poison HP hits on already-poisoned foes lower Attack once/turn.",
+		"rating": 2.5,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"selfrepair": {
+		"name": "Self Repair",
+		"num": 10346,
+		"gen": 9,
+		"desc": "This Pokemon has Self Sufficient and Natural Cure's effects.",
+		"shortDesc": "Natural Cure + Self Sufficient.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"verdantedge": {
+		"name": "Verdant Edge",
+		"num": 11127,
+		"gen": 9,
+		"desc": "Chlorophyll + Sharpness + Grass Pelt. Boosts Speed in sun, slicing damage, and Defense on grassy fields. Invigorate is removed.",
+		"shortDesc": "Chlorophyll + Grass Pelt + Sharpness.",
+		"rating": 5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"burningrage": {
+		"name": "Burning Rage",
+		"num": 10349,
+		"gen": 9,
+		"desc": "This Pokemon has Brute Force, Iron Fist, and Turboblaze's effects.",
+		"shortDesc": "Proficient; Brute Force + Iron Fist + Turboblaze.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"doublestrike": {
+		"name": "Double Strike",
+		"num": 10384,
+		"gen": 9,
+		"desc": "Skill Link maximizes eligible multi-hit moves. Moves with 60 or less effective base power (80 or less on Factory Field) gain 1.5x power, punching moves gain 1.4x power. These bonuses stack.",
+		"shortDesc": "Iron Fist + Technician + Skill Link; stacking boosts to weaker and punching moves.",
+		"rating": 4.5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"seafiend": {
+		"name": "Sea Fiend",
+		"num": 10336,
+		"gen": 9,
+		"desc": "This Pokemon has Toxic Debris and Water Bubble's effects.",
+		"shortDesc": "Toxic Debris + Water Bubble.",
+		"rating": 5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"unovawing": {
+		"name": "Unova Wing",
+		"num": 10364,
+		"gen": 9,
+		"desc": "Critical-hit and Competitive effects; no Unburden. Stat drops can raise Special Attack, but item use or loss no longer doubles Speed.",
+		"shortDesc": "Super Luck; Critical-hit and Competitive effects; no Unburden.",
+		"rating": 5,
+		"flags": {
+			"failroleplay": 1,
+			"noreceiver": 1,
+			"noentrain": 1,
+			"notrace": 1,
+			"failskillswap": 1,
+			"cantsuppress": 1,
+			"notransform": 1
+		},
+		"isNonstandard": null
+	},
+	"aeviantoxin": {
+		"name": "Aevian Toxin",
+		"num": 10411,
+		"gen": 9,
+		"desc": "Full Strong Jaw + Layered Coat + Merciless. Layered Coat includes Fur Coat and Overcoat: doubles Defense and preserves weather/powder protection and local field effects. Merciless guarantees critical hits against poisoned targets or on Corrosive, Corrosive Mist, Murkwater Surface and Wasteland fields, and retains its Chessboard critical-ratio effect. Critical-hit immunity still applies. Drapion transforms into Drapion-Rejuv on entry.",
+		"shortDesc": "Strong Jaw + Layered Coat + Merciless.",
+		"rating": 5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"aeviangrief": {
+		"name": "Aevian Grief",
+		"num": 10415,
+		"gen": 9,
+		"desc": "Wonder Skin + Levitate + Magic Guard + Cursed Body. Flare Boost is removed.",
+		"shortDesc": "Magic Guard + Cursed Body + Wonder Skin + Levitate.",
+		"rating": 5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"aevianrocket": {
+		"name": "Aevian Rocket",
+		"num": 10416,
+		"gen": 9,
+		"desc": "When Veluza enters battle with this Ability, it changes into Veluza-Rejuv. It has Brute Force's Reckless power boost and Rock Head recoil protection, restores 1/3 of its maximum HP on switching out through Regenerator, ignores opposing Abilities with Mold Breaker, and doubles its Speed under Swift Swim's conditions. If this Ability is suppressed, its Rejuv form reverts to the normal species until it switches out, even if suppression ends earlier.",
+		"shortDesc": "Brute Force + Regenerator + Mold Breaker + Swift Swim; Transforms Veluza into Veluza-Rejuv.",
+		"rating": 5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"aevianglacier": {
+		"name": "Aevian Glacier",
+		"num": 10393,
+		"gen": 9,
+		"desc": "On entry, Turtonator permanently transforms into Turtonator-Rejuv. This Pokemon also has the effects of Snow Warning, Ice Body, and Refrigerate. If this Ability is suppressed, its Rejuv form reverts to the normal species until it switches out, even if suppression ends earlier.",
+		"shortDesc": "Snow Warning + Ice Body + Refrigerate; Transforms Turtonator into Turtonator-Rejuv.",
+		"rating": 5,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"aevianbolt": {
+		"name": "Aevian Bolt",
+		"num": 10394,
+		"gen": 9,
+		"desc": "On entry, Druddigon permanently transforms into Druddigon-Rejuv. This Pokemon also has the effects of Storm Power, Static, and Volt Absorb. If this Ability is suppressed, its Rejuv form reverts to the normal species until it switches out, even if suppression ends earlier.",
+		"shortDesc": "Storm Power + Static + Volt Absorb; Transforms Druddigon into Druddigon-Rejuv.",
+		"rating": 5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"hisuianresolve": {
+		"name": "Hisuian Resolve",
+		"num": 10340,
+		"gen": 9,
+		"desc": "This Pokemon has Brute Force and Magma Armor's effects.",
+		"shortDesc": "Brute Force + Magma Armor.",
+		"rating": 5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"auramaster": {
+		"name": "Aura Master",
+		"num": 10280,
+		"gen": 9,
+		"desc": "This Pokemon takes half damage from contact moves and has Dual Wield, Inner Focus, and Technician's effects.",
+		"shortDesc": "Dual Wield + Inner Focus + Technician; 0.5x from contact.",
+		"rating": 4.5,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"battlebond": {
+		"name": "Battle Bond",
+		"num": 210,
+		"gen": 7,
+		"desc": "A KO can trigger a Bond form; no lethal-hit survival. Eligible Arcanine, Garchomp, and Greninja forms transform after a KO. It no longer leaves the holder at 1 HP from a lethal hit.",
+		"shortDesc": "Filter + Self Sufficient; A KO can trigger a Bond form; no lethal-hit survival.",
+		"rating": 3.5,
+		"flags": {
+			"failroleplay": 1,
+			"noreceiver": 1,
+			"noentrain": 1,
+			"notrace": 1,
+			"failskillswap": 1,
+			"cantsuppress": 1
+		},
+		"isNonstandard": null
+	},
+	"shadowbond": {
+		"name": "Shadow Bond",
+		"num": 10408,
+		"gen": 9,
+		"desc": "Battle Bond's shared effects plus Proficient and Infiltrator. Ash-Greninja's Water Shuriken hits three times at 30 base power per hit and always critically hits.",
+		"shortDesc": "Battle Bond + Proficient + Infiltrator; Water Shuriken is 3 hits at 30 power, always critical.",
+		"rating": 4,
+		"flags": {
+			"failroleplay": 1,
+			"noreceiver": 1,
+			"noentrain": 1,
+			"notrace": 1,
+			"failskillswap": 1,
+			"cantsuppress": 1
+		},
+		"isNonstandard": null
+	},
+	"apexbond": {
+		"name": "Apex Bond",
+		"num": 10409,
+		"gen": 9,
+		"desc": "Battle Bond's shared effects plus Supreme Overlord and Rough Skin. Garchomp-Battle-Bond's Dual Chop never misses and always critically hits.",
+		"shortDesc": "Battle Bond + Supreme Overlord + Rough Skin; Dual Chop never misses and always critical.",
+		"rating": 4,
+		"flags": {
+			"failroleplay": 1,
+			"noreceiver": 1,
+			"noentrain": 1,
+			"notrace": 1,
+			"failskillswap": 1,
+			"cantsuppress": 1
+		},
+		"isNonstandard": null
+	},
+	"sacredbond": {
+		"name": "Sacred Bond",
+		"num": 10410,
+		"gen": 9,
+		"desc": "Battle Bond's shared effects plus Magma Armor, Intimidate, and Flash Fire. Arcanine-Battle-Bond's Extreme Speed has 1.5x power and always critically hits.",
+		"shortDesc": "Battle Bond + Magma Armor + Intimidate + Flash Fire; Extreme Speed is 1.5x power and always critical.",
+		"rating": 4,
+		"flags": {
+			"failroleplay": 1,
+			"noreceiver": 1,
+			"noentrain": 1,
+			"notrace": 1,
+			"failskillswap": 1,
+			"cantsuppress": 1
+		},
+		"isNonstandard": null
+	},
+	"astralengine": {
+		"name": "Astral Engine",
+		"num": 10386,
+		"gen": 9,
+		"desc": "Elevate + Analytic + Power Spot. Boosts allied move power. Filter is removed.",
+		"shortDesc": "Elevate + Power Spot + Analytic.",
+		"rating": 5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"fossilfrenzy": {
+		"name": "Fossil Frenzy",
+		"num": 10065,
+		"gen": 9,
+		"desc": "When this Pokemon is hit by a damaging move, its Attack and Speed rise by 1 stage and it becomes confused. While confused, it takes 1.25x damage from attacks. This Pokemon has Klutz's effect. If it hits itself in confusion, it also loses 1/8 of its maximum HP.",
+		"shortDesc": "Klutz; Hit: +1 Atk/Spe and confusion; confusion takes 1.25x; self-hit costs 1/8.",
+		"rating": 3.5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"sunsovereign": {
+		"name": "Sun Sovereign",
+		"num": 10039,
+		"gen": 9,
+		"desc": "This Pokemon has Drought, Unbound Blaze, and Self Sufficient's effects. Its sun lasts 8 turns.",
+		"shortDesc": "Drought + Unbound Blaze + Self Sufficient; 8-turn Sun.",
+		"rating": 4.5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"venomarmor": {
+		"name": "Venom Armor",
+		"num": 10154,
+		"gen": 9,
+		"desc": "On switch-in, this Pokemon becomes poisoned if it has no status, even if it is Steel-type. This Pokemon has Poison Heal and Dual Wield's effects. While poisoned, its physical damage is multiplied by 1.3. Metal Claw has 1.5x power.",
+		"shortDesc": "Poison Heal + Dual Wield; Self-poisons on switch-in; poisoned physical damage 1.3x; Metal Claw 1.5x.",
+		"rating": 4,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"noseformation": {
+		"name": "Nose Formation",
+		"num": 10156,
+		"gen": 9,
+		"desc": "This Pokemon has Filter and Elevate. After it hits, three 20 BP special Mini-Noses each select the strongest of Steel, Electric, or Rock against their current target. They chain to another valid foe after a KO, and their KOs trigger Elevate.",
+		"shortDesc": "Filter; three adaptive 20 BP Mini-Noses chain after KOs and trigger Elevate.",
+		"rating": 4,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"fallenstar": {
+		"name": "Fallen Star",
+		"num": 10043,
+		"gen": 9,
+		"desc": "Arrow moves gain 1.3x power against trapped foes. No Skill Link effect. Retains its arrow follow-up and protective effects.",
+		"shortDesc": "Mold Breaker + Dual Wield + Self Sufficient + Proficient; Arrow moves gain 1.3x power against trapped foes.",
+		"rating": 3.5,
+		"flags": {
+			"breakable": 1,
+			"cantsuppress": 1
+		},
+		"isNonstandard": null
+	},
+	"ragingstorm": {
+		"name": "Raging Storm",
+		"num": 10121,
+		"gen": 9,
+		"desc": "This Ability cannot be suppressed. This Pokemon has Mold Breaker and Battle Armor. Its attacks ignore Reflect, Light Screen, Aurora Veil, and defensive stat boosts. If this Pokemon gets a KO, it damages remaining foes for 60% of the last damage in multi battles, or raises Attack by 1 if there is no valid target or no damage is dealt. Magic Guard users do not take this damage.",
+		"shortDesc": "Mold Breaker + Battle Armor; Cannot be suppressed; attacks ignore screens/defensive boosts; KO bonus.",
+		"rating": 4.5,
+		"flags": {
+			"cantsuppress": 1
+		},
+		"isNonstandard": null
+	},
+	"ragingoverlord": {
+		"name": "Raging Overlord",
+		"num": 10385,
+		"gen": 9,
+		"desc": "This Ability cannot be suppressed. This Pokemon has Raging Storm and Supreme Overlord's effects.",
+		"shortDesc": "Raging Storm + Supreme Overlord.",
+		"rating": 5,
+		"flags": {
+			"cantsuppress": 1
+		},
+		"isNonstandard": null
+	},
+	"hellfireeclipse": {
+		"name": "Hellfire Eclipse",
+		"num": 10100,
+		"gen": 9,
+		"desc": "This Pokemon has Flash Fire and Dark Aura's effects. During harsh sunlight, its Attack and Special Attack are multiplied by 1.5. After it uses a Fire-type move, it sets Sunny Day for 2 turns.",
+		"shortDesc": "Solar Power; Flash Fire + Dark Aura; Sun: Atk/SpA 1.5x; Fire moves set 2-turn Sun.",
+		"rating": 4.5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"sandsovereign": {
+		"name": "Sand Sovereign",
+		"num": 10105,
+		"gen": 9,
+		"desc": "On entry, this Pokemon sets Sandstorm for 8 turns. It has Dauntless Shield and Solid Rock. Arenite Wall lasts 5 turns, or 8 turns when extended. Each turn, non-immune foes take Rock damage equal to 1/16 max HP. Only in Free-for-All does Rock type effectiveness scale this chip.",
+		"shortDesc": "Sand Stream + Dauntless Shield + Solid Rock; 8-turn Sand; Rock chip scales by type in FFA.",
+		"rating": 5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"frostsovereign": {
+		"name": "Frost Sovereign",
+		"num": 10106,
+		"gen": 9,
+		"desc": "On entry, this Pokemon sets Snow through Snow Warning for 8 turns. It has Ice Body and Filter. Manually used Aurora Veil lasts 8 turns. Each turn, non-immune foes take Ice damage equal to 1/16 max HP. Only in Free-for-All does Ice type effectiveness scale this chip.",
+		"shortDesc": "Snow Warning + Ice Body + Filter; 8-turn Snow; Ice chip scales by type in FFA.",
+		"rating": 5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"perfectforesight": {
+		"name": "Perfect Foresight",
+		"num": 10114,
+		"gen": 9,
+		"desc": "Includes Insomnia and retains its opposing-ability copying. Automatically applies target-specific Miracle Eye before a direct damaging Psychic move. Direct single-target HP damage stores a 90 BP Psychic special attack; opposing special HP damage stores a 90 BP special attack of the incoming type. Shares one pending attack per opposing trainer (one in singles, up to three in Free-for-All), released one per turn beginning next turn. Snapshots its own level, Special Attack, stages and typing, without copied offensive abilities or items. Queues survive switching/fainting and coexist with ordinary Future Sight; normal live defenses apply. Once per battle when Alakazam Mega Evolves, sets real Reflect and Light Screen for 5 turns without shortening longer screens.",
+		"shortDesc": "Trace; Insomnia + ability copy; Miracle Eye; stored attacks; once-per-battle Mega screens.",
+		"rating": 5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"mourningsnow": {
+		"name": "Mourning Snow",
+		"num": 10116,
+		"gen": 9,
+		"desc": "On switch-in, this Pokemon summons Hail for 8 turns, and Aurora Veil used by this Pokemon lasts 8 turns. During Hail or Snow, it heals 1/16 max HP each turn. Its damaging moves of any type gain an additional 30% chance to inflict frostbite, preserving their existing effects; this does not require weather. It is immune to Hail damage. When another Pokemon faints, it restores 1/8 max HP, or 1/4 if the faint was caused by an Ice move, Hail, Snow, or Curse. When it faints, all opposing Pokemon become cursed. Damaging hits disable the attacker's move when possible.",
+		"shortDesc": "Snow Warning + Ice Body; 8-turn Hail/Veil; damaging moves add 30% frostbite; faint healing/curse; hit Disable.",
+		"rating": 4.5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"rimeknuckle": {
+		"name": "Rime Knuckle",
+		"num": 10118,
+		"gen": 9,
+		"desc": "Filter + Iron Fist + Ice Body. Damaging moves have a 40% chance to cause frostbite (80% on Icy Field). KOs restore 1/8 max HP, or 1/4 against Mega, G-Max, Terastallized, Stellar or Z-Move item targets. Ice Body adds a 30% chance to frostbite contact attackers, hail immunity, and healing in hail/snow or on Icy, Snowy Mountain and Cold Eclipse fields. Healing is 1/16 max HP, or 1/8 in hail on Cold Eclipse.",
+		"shortDesc": "Iron Fist + Filter + Ice Body; frostbite chance; KO healing.",
+		"rating": 4,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"irondominion": {
+		"name": "Iron Dominion",
+		"num": 10051,
+		"gen": 9,
+		"desc": "On switch-in or G-Max activation, this Pokemon activates Pressure and Mirror Armor's effects and heals its ally like Sworn Duty.",
+		"shortDesc": "Pressure + Sworn Duty + Mirror Armor.",
+		"rating": 4,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"astralwatcher": {
+		"name": "Astral Watcher",
+		"num": 10052,
+		"gen": 9,
+		"desc": "Defragment + Frisk + Prankster. Telepathy is removed; allied damaging moves can hit it. On activation, reveals all opposing active Illusions, including itemless foes; this is not a continuous effect.",
+		"shortDesc": "Prankster + Defragment + Frisk; Reveals opposing Illusions on activation.",
+		"rating": 4,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"ragingfists": {
+		"name": "Raging Fists",
+		"num": 10054,
+		"gen": 9,
+		"desc": "Hydra Bond, Normal/Fighting Ghost-immunity bypass, and damaging moves cannot miss. Retains Hydra Bond's Free-for-All targeting and Dragon's Den power bonus, without an extra multi-hit power multiplier. Does not grant Fighting Fiend's sleep immunity or Multiscale, or Scrappy's Intimidate immunity. Status moves retain their normal accuracy.",
+		"shortDesc": "Hydra Bond + Scrappy; Normal/Fighting hits Ghosts; damaging moves cannot miss.",
+		"rating": 4.5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"fluffyevo": {
+		"name": "Fluffy Evo",
+		"num": 10131,
+		"gen": 9,
+		"desc": "Moves that do not match this Pokemon's type gain STAB. Its damaging moves ignore type immunities while respecting resistances, and it has Overcoat's effects.",
+		"shortDesc": "Overcoat; Off-type moves gain STAB; hits type immunities.",
+		"rating": 5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"tyrantdomain": {
+		"name": "Tyrant Domain",
+		"num": 11120,
+		"gen": 9,
+		"desc": "Sand Stream + Relic Armor + Supreme Overlord + Self Sufficient; Dragon's Den for 5 turns on faint. Shows \"The Tyrant will persist\" when it faints.",
+		"shortDesc": "Relic Armor + Supreme Overlord + Self Sufficient + Sand Stream; Dragon's Den on faint.",
+		"rating": 5,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"auroradomain": {
+		"name": "Aurora Domain",
+		"num": 11121,
+		"gen": 9,
+		"desc": "Snow Warning + Relic Armor + Refrigerate + Self Sufficient. Does not set Aurora Veil on entry; Aurora Veil can still be used manually. On faint, sets Fairy Tale and refreshes Aurora Veil for 5 turns. Shows \"The Aurora will persist\".",
+		"shortDesc": "Relic Armor + Refrigerate + Self Sufficient + Snow Warning; Veil on faint.",
+		"rating": 5,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"royalscales": {
+		"name": "Royal Scales",
+		"num": 11122,
+		"gen": 9,
+		"desc": "Prism Scale, Dragonize, and Self Sufficient. Status or Prism Scale's supported fields boost Defense by 1.5x. Blocks Attract, Captivate, Taunt, and Intimidate's Attack drop. Speed doubles in rain and Swift Swim's supported fields. Normal moves become Dragon and gain Dragonize's power boost. Restores 1/16 of this Pokemon's maximum HP at the end of each turn and prevents Sandstorm and Hail damage.",
+		"shortDesc": "Prism Scale + Dragonize + Self Sufficient; heals 1/16 each turn; immune to Sandstorm and Hail.",
+		"rating": 5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"truedevotion": {
+		"name": "True Devotion",
+		"num": 10379,
+		"gen": 9,
+		"desc": "This Pokemon has False Devotion and Technician's effects.",
+		"shortDesc": "False Devotion + Technician.",
+		"rating": 5,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"ancientbloom": {
+		"name": "Ancient Bloom",
+		"num": 10024,
+		"gen": 9,
+		"desc": "This Pokemon has Effect Spore and Pollen Bloom's effects. Thick Fat applies once through Pollen Bloom: Fire and Ice damage is halved, not quartered. It keeps its field-based Defense, Special Defense, and power boosts.",
+		"shortDesc": "Self Sufficient + Proficient; Effect Spore + Pollen Bloom; Thick Fat applies once; field boosts.",
+		"rating": 4.5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"blazingmane": {
+		"name": "Blazing Mane",
+		"num": 10158,
+		"gen": 9,
+		"desc": "Fire attacks have 1.5x power and damaging moves hit twice, with the second hit at 30% power. At half HP or less, Fire attacks gain +1 priority. Burning and Volcanic Fields raise its Speed by 1 on entry or when the field starts.",
+		"shortDesc": "Proficient; Fire 1.5x; second hit 30%; half-HP Fire +1 priority; fire fields +1 Spe.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"fortressshell": {
+		"name": "Fortress Shell",
+		"num": 10025,
+		"gen": 9,
+		"desc": "This Pokemon has Shell Armor and Water Barrage's effects, plus Power Spot and Friend Guard. In Electric Terrain, Murkwater Surface, Water Surface, Underwater, Factory, and Short Circuit fields, incoming Electric moves are blocked and redirected to it, raising its Attack and Special Attack by 1. Fairy Tale, New World, Cold Eclipse, and Starlight Arena give it +1 Defense and +1 Special Defense once per active terrain. New World, Cold Eclipse, and Starlight Arena also boost its move power by 1.5x.",
+		"shortDesc": "Proficient; Shell Armor + Water Barrage; field Electric absorption; ally support.",
+		"rating": 4.5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"waterbarrage": {
+		"name": "Water Barrage",
+		"num": 10138,
+		"gen": 9,
+		"desc": "This Pokemon has Dual Wield's effects. At the end of each turn, opposing Pokemon take cycling Water damage of 1/16, 2/16, then 3/16 max HP, blocked by Water immunities. Only in Free-for-All does Water type effectiveness scale this chip.",
+		"shortDesc": "Proficient; Dual Wield; cycling Water chip scales by type in FFA.",
+		"rating": 4,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"templechime": {
+		"name": "Temple Chime",
+		"num": 11205,
+		"gen": 9,
+		"desc": "Full Elevate (Levitate and highest-stat boosts after move KOs). Once per entry, Heal Bell actually curing at least one status also resets only the user's negative Special Defense stages. No additional healing.",
+		"shortDesc": "Elevate + Levitate; once/entry, a successful Heal Bell cure resets the user's negative SpD.",
+		"rating": 3.5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"soothingpresence": {
+		"name": "Soothing Presence",
+		"num": 11200,
+		"gen": 9,
+		"desc": "Combines Friend Guard and Aroma Veil. Other allies take 25% less attack damage; this does not reduce the holder's damage taken. The holder and its allies are protected from Attract, Disable, Encore, Heal Block, Taunt, and Torment.",
+		"shortDesc": "Friend Guard; Other allies take 25% less attack damage. Holder and allies have Aroma Veil protection.",
+		"rating": 3.5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"verdanthospitality": {
+		"name": "Verdant Hospitality",
+		"num": 10160,
+		"gen": 9,
+		"desc": "This Pokemon has Friend Guard's effect. On switch-in, it restores 1/8 of its ally's max HP. At the end of each turn, this Pokemon restores 1/8 of its max HP and its ally restores 1/16 of its max HP.",
+		"shortDesc": "Proficient; Friend Guard; heals ally on switch-in; heals self and ally each turn.",
+		"rating": 4,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"gooey": {
+		"name": "Gooey",
+		"num": 183,
+		"gen": 6,
+		"desc": "When this Pokemon is hit by an opposing damaging move, once per attacking move, the attacker's Speed is lowered by 2 stages, or 4 stages on Murkwater Surface. This Pokemon also has Hydration and Sap Sipper's effects.",
+		"shortDesc": "Hydration + Sap Sipper; Damaging hit: attacker -2 Spe (-4 on Murkwater).",
+		"rating": 2,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"phantombarrage": {
+		"name": "Phantom Barrage",
+		"num": 10259,
+		"gen": 9,
+		"desc": "This Pokemon has Infiltrator, Levitate, and Hydra Bond's effects. Dragon Darts and G-Max Spirit Volley use its higher offensive stat and gain 20% power from Hydra Bond instead of extra hits. Dragon Darts keeps its two-hit pattern; Spirit Volley keeps its full-power hit and weaker follow-up against another foe. In Free-for-All battles, Dragon Darts hits all opposing Pokemon twice.",
+		"shortDesc": "Clear Body + Infiltrator + Levitate + Hydra Bond; signature moves gain 20% power.",
+		"rating": 5,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"burningcrown": {
+		"name": "Burning Crown",
+		"num": 10023,
+		"gen": 9,
+		"desc": "This Pokemon has Intimidate, White Smoke, Mold Breaker, Unbound Blaze, Self Sufficient, and Proficient. It takes 20% less damage from all damaging attacks. Self Sufficient restores 1/16 base maximum HP at turn end and prevents sandstorm and hail damage. Proficient boosts damaging attacks matching its type by 1.3x. It gains no boosts when a Pokemon faints. Its field bonuses remain active.",
+		"shortDesc": "Intimidate + White Smoke + Mold Breaker + Unbound Blaze + Self Sufficient; attacks deal 20% less; no KO boost.",
+		"rating": 4.5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"unboundblaze": {
+		"name": "Unbound Blaze",
+		"num": 10139,
+		"gen": 9,
+		"desc": "This Pokemon has Dragonize and Magma Armor's effects. It is immune to Hail damage. At the end of each turn, opposing Pokemon take Fire-type damage equal to 1/16 max HP, doubled if burned or if this Pokemon used a Fire- or Dragon-type move this turn. This damage is blocked by Fire immunities. Only in Free-for-All does Fire type effectiveness scale this chip.",
+		"shortDesc": "Proficient; Dragonize + Magma Armor; Fire chip scales by type in FFA.",
+		"rating": 4,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"limber": {
+		"name": "Limber",
+		"num": 7,
+		"gen": 3,
+		"desc": "This Pokemon cannot be paralyzed, cures paralysis if it gains this Ability, and cannot have its Speed lowered by another Pokemon or field effects, including field Speed multipliers. Self-inflicted Speed costs and held-item slowdowns still apply. This does not change Trick Room ordering or prevent losing positive Speed boosts or Tailwind.",
+		"shortDesc": "Cannot be paralyzed or have Speed reduced by other Pokemon or field effects.",
+		"rating": 2,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"longreach": {
+		"name": "Long Reach",
+		"num": 203,
+		"gen": 7,
+		"desc": "Removes contact and raises critical-hit rate by one stage. Also raises Accuracy on entry and retains field bonuses. No triple critical-hit damage. Full local Keen Eye prevents opposing accuracy drops, ignores evasion boosts and reveals opposing Illusions on activation. Mirror Arena grants +1 accuracy and Laser Focus; shared accuracy entry rewards apply once.",
+		"shortDesc": "Super Luck + Keen Eye; Removes contact and raises critical-hit rate by one stage.",
+		"rating": 1,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"heavyartillery": {
+		"name": "Heavy Artillery",
+		"num": 10383,
+		"gen": 9,
+		"desc": "Unaware + Shell Armor. Damaging pulse and bullet moves have double power and hit all foes in Doubles and Free-for-All. In Free-for-All, the designated primary target takes full damage and other foes take half their otherwise-calculated damage; protection or immunity of the primary does not promote another target. If no valid primary is supplied, the first active foe in side order is selected. Defense and Special Defense fall by 1 after firing. On activation, reveals all opposing active Illusions, including itemless foes; this is not a continuous effect.",
+		"shortDesc": "Unaware + Shell Armor; Reveals opposing Illusions on activation; Double pulse/bullet power; spread. FFA primary full, others half; -1 Def/SpD after firing.",
+		"rating": 5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"seablessing": {
+		"name": "Sea Blessing",
+		"num": 10197,
+		"gen": 9,
+		"desc": "This Pokemon's Defense and Special Defense are 1.5x. On entry, it and adjacent allies heal 1/4 max HP, and it gains Aqua Ring. It has Water Veil and Rain Dish.",
+		"shortDesc": "Water Veil + Rain Dish; 1.5x Def/SpD; entry heals self/allies 1/4.",
+		"rating": 4.5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"seviischooling": {
+		"name": "Sevii Schooling",
+		"num": -9001,
+		"gen": 0,
+		"desc": "Changes Wishiwashi into its Ghost-type Sevii form, or Ghost/Dragon Sevii Schooling form at level 20 or higher above 1/4 maximum HP. Underwater and Midnight Zone force School Form; Water Surface and Murkwater force it while grounded. The School Form has Hydra Bond, Self Repair, and Mold Breaker's effects.",
+		"shortDesc": "Schooling; Changes Wishiwashi to Sevii form; School: Hydra Bond + Self Repair + Mold Breaker.",
+		"rating": 3,
+		"flags": {
+			"failroleplay": 1,
+			"noreceiver": 1,
+			"noentrain": 1,
+			"notrace": 1,
+			"failskillswap": 1,
+			"cantsuppress": 1
+		},
+		"isNonstandard": null
+	},
+	"seasonalstride": {
+		"name": "Seasonal Stride",
+		"num": 10202,
+		"gen": 9,
+		"desc": "Normal moves become this Pokemon's primary type and have 1.2x power. Kicking moves have 1.4x power. It has Chlorophyll and changes forme with weather: Spring in rain, Summer in sun, Autumn in sand, Winter in snow.",
+		"shortDesc": "Chlorophyll; Normal -> primary type 1.2x; kicks 1.4x; weather forms.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"silkendecoy": {
+		"name": "Silken Decoy",
+		"num": 10381,
+		"gen": 9,
+		"desc": "Mega Ariados spins a persistent cocoon, renewed when another Pokemon faints. It blocks status moves and status conditions while intact, and absorbs one damaging move including all its hits and secondary effects. Also has Insomnia, Self Sufficient, and Swarm.",
+		"shortDesc": "Insomnia + Self Sufficient + Swarm; Cocoon blocks a move, status and secondaries.",
+		"rating": 4,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"shieldsdown": {
+		"name": "Shields Down",
+		"num": 197,
+		"gen": 7,
+		"desc": "If this Pokemon is a Minior, it changes to its Core forme if it has 1/2 or less of its maximum HP, and changes to Meteor Form if it has more than 1/2 its maximum HP. This check is done on switch-in and at the end of each turn. While in its Meteor Form, it cannot become affected by a non-volatile status condition or Yawn. This Pokemon also has Shell Armor, Self Repair, and Crumbling Shell's effects.",
+		"shortDesc": "Shell Armor + Self Repair + Crumbling Shell; Form changes at 1/2 HP.",
+		"rating": 3,
+		"flags": {
+			"failroleplay": 1,
+			"noreceiver": 1,
+			"noentrain": 1,
+			"notrace": 1,
+			"failskillswap": 1,
+			"cantsuppress": 1
+		},
+		"isNonstandard": null
+	},
+	"highnoon": {
+		"name": "High Noon",
+		"num": 10028,
+		"gen": 9,
+		"desc": "Proficient + Dual Wield + Mega Launcher. Pulse and bullet moves gain Mega Launcher power; damaging moves never miss.",
+		"shortDesc": "Dual Wield + Mega Launcher + Proficient.",
+		"rating": 4.5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"forestsurge": {
+		"name": "Forest Surge",
+		"num": 10026,
+		"gen": 9,
+		"desc": "On switch-in, this Pokemon sets Forest Terrain and Grassy Aura for 5 turns, or 8 turns with Amplifield Rock. It also has Proficient's effect.",
+		"shortDesc": "Proficient; Forest and Grassy Aura: 5 turns (8 with Amplifield Rock).",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"completeparasitism": {
+		"name": "Complete Parasitism",
+		"num": 10401,
+		"gen": 9,
+		"desc": "Parasitism, Filter, and Self Repair. A lethal hit triggers a full-HP revival as Parasect-Parasite at the end of the turn, even if Parasitism was used before Mega Evolution.",
+		"shortDesc": "Parasitism + Filter + Self Repair; Mega can revive as Parasite.",
+		"rating": 5,
+		"flags": {
+			"cantsuppress": 1
+		},
+		"isNonstandard": null
+	},
+	"resuscitation": {
+		"name": "Resuscitation",
+		"num": 10347,
+		"gen": 9,
+		"desc": "When Parasect revives as Parasect-Parasite, its status, stat stages, and volatile effects are cleared and it returns to full HP. Afterward, this Ability has Self Repair and Magic Guard's effects.",
+		"shortDesc": "Self Repair + Magic Guard; Revival fully resets battle effects.",
+		"rating": 5,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"verdantdrake": {
+		"name": "Verdant Drake",
+		"num": 10030,
+		"gen": 9,
+		"desc": "Same-type attacks gain 1.3x power. Dual Wield makes moves boosted by Sharpness or Mega Launcher, plus arrow moves, hit twice for reduced damage. Regenerator restores 1/3 maximum HP on switching out. Limber prevents paralysis, cures existing paralysis, and blocks Speed reductions from other Pokemon and field effects; self-inflicted costs and item slowdowns still apply. Lightning Rod draws in and absorbs Electric moves, raising Attack and Special Attack by 1 stage; Electric Terrain also grants these boosts on entry.",
+		"shortDesc": "Proficient + Dual Wield + Regenerator + Lightning Rod + Limber; 1.3x same-type moves.",
+		"rating": 4,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"wrathshield": {
+		"name": "Wrath Shield",
+		"num": 10032,
+		"gen": 9,
+		"desc": "This Pokemon has Bulletproof, Dauntless Shield, and Self Repair's effects. It gains 1 Defense stage on entry, plus 1 Special Defense stage in Cold Eclipse, New World, Starlight Arena, or Fairy Tale. It is immune to bullet and pulse moves and restores HP through Self Repair.",
+		"shortDesc": "Bulletproof + Dauntless Shield + Self Repair + Proficient; boosted fields also give +1 SpD.",
+		"rating": 4.5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"astralwitchcraft": {
+		"name": "Astral Witchcraft",
+		"num": 10034,
+		"gen": 9,
+		"desc": "Proficient + Magic Guard + Magic Bounce + Levitate. Reflects eligible status moves. Sworn Duty is removed.",
+		"shortDesc": "Levitate + Magic Guard + Magic Bounce + Proficient.",
+		"rating": 5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"blazingtempo": {
+		"name": "Blazing Tempo",
+		"num": 10035,
+		"gen": 9,
+		"desc": "Speed Boost + Proficient + Striker + Magma Armor + Keen Eye. Gains +1 Speed at the end of each eligible turn; same-type moves have 1.3x power and kicking moves have 1.4x power. Prevents freezing and Accuracy drops, and ignores the target's evasiveness. Magma Armor and Keen Eye also retain their field effects.",
+		"shortDesc": "Proficient + Speed Boost + Striker + Magma Armor + Keen Eye.",
+		"rating": 4.5,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"siegelauncher": {
+		"name": "Siege Launcher",
+		"num": 10038,
+		"gen": 9,
+		"desc": "This Pokemon has Water Barrage, Mega Launcher, Self Sufficient, and Stalwart's effects. Moves boosted by Mega Launcher are used twice through Dual Wield; the second hit deals 15% of the move's unboosted power.",
+		"shortDesc": "Proficient; Water Barrage + Mega Launcher + Self Sufficient + Stalwart; boosted moves add 15% hit.",
+		"rating": 4.5,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"calderacore": {
+		"name": "Caldera Core",
+		"num": 10039,
+		"gen": 9,
+		"desc": "Sheer Force + Drought + Magma Armor. Solid Rock damage reduction is removed.",
+		"shortDesc": "Magma Armor + Sheer Force + Drought.",
+		"rating": 4.5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"strikersmomentum": {
+		"name": "Striker's Momentum",
+		"num": 10027,
+		"gen": 9,
+		"desc": "This Pokemon has Striker, Defiant, and Libero's effects, and its moves cannot miss. Once per switch-in, a KO caused by this Pokemon raises its Speed by 1 stage.",
+		"shortDesc": "Proficient; Moves cannot miss; Striker + Defiant + Libero; first KO gives +1 Speed.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"mightyjaw": {
+		"name": "Mighty Jaw",
+		"num": 10308,
+		"gen": 9,
+		"desc": "This Pokemon has Strong Jaw and Intimidate's effects. On its first action after switching in, its biting moves have 2 higher priority.",
+		"shortDesc": "Proficient; Strong Jaw + Intimidate; biting moves gain +2 priority on first action.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"supersweetsyrup": {
+		"name": "Supersweet Syrup",
+		"num": 306,
+		"gen": 9,
+		"desc": "On switch-in, this Pokemon lowers the evasiveness of adjacent opposing Pokemon by 1 stage every time it switches in. This Pokemon has Sticky Hold. When this Pokemon is hit by an attack, the attacker is Embargoed for 5 turns.",
+		"shortDesc": "Sticky Hold; On switch-in, lowers adjacent foes' evasiveness 1 stage; attackers are Embargoed for 5 turns.",
+		"rating": 1.5,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"rainsovereign": {
+		"name": "Rain Sovereign",
+		"num": 10154,
+		"gen": 9,
+		"desc": "On entry, this Pokemon sets Rain for 8 turns. Its Electric-, Water-, and Flying-type moves receive STAB. Each turn, non-immune foes take Water damage equal to 1/16 max HP. Only in Free-for-All does Water type effectiveness scale this chip.",
+		"shortDesc": "Drizzle; 8-turn Rain; Electric/Water/Flying STAB; Water chip scales by type in FFA.",
+		"rating": 4.5,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"waterbubble": {
+		"name": "Water Bubble",
+		"num": 199,
+		"gen": 7,
+		"desc": "This Pokemon gains Water STAB, and its offensive stat is doubled while using Water attacks. Fire attacks against it use half the attacker's offensive stat. It also has Water Veil's effects.",
+		"shortDesc": "Water Veil; Water STAB/offense 2x; Fire offense 0.5x.",
+		"rating": 4.5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"stormsovereign": {
+		"name": "Storm Sovereign",
+		"num": 10127,
+		"gen": 9,
+		"desc": "Sets changeable Strong Winds; Gale Wings + Keen Eye; moves never miss. Strong Winds lasts 8 turns and can be replaced by another weather. This ability does not summon Windy Aura.",
+		"shortDesc": "Gale Wings + Keen Eye; Sets changeable Strong Winds; moves never miss.",
+		"rating": 4.5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"amethystglow": {
+		"name": "Amethyst Glow",
+		"num": 10251,
+		"gen": 9,
+		"desc": "This Pokemon's moves cannot miss and it has Ice Body and Refrigerate's effects. It is treated as an Ice-type Pokemon in Hail and Ice fields.",
+		"shortDesc": "Ice Body + Refrigerate; Moves cannot miss; Ice in Ice fields.",
+		"rating": 4,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"kickfiend": {
+		"name": "Kick Fiend",
+		"num": 10352,
+		"gen": 9,
+		"desc": "This Pokemon has Striker, Violent Rush, and Limber's effects.",
+		"shortDesc": "Striker + Violent Rush + Limber.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"fluffycraft": {
+		"name": "Fluffy Craft",
+		"num": 10310,
+		"gen": 9,
+		"desc": "Full Fluffy + Technician + local Natural Cure. Contact attacks deal half damage; Fire attacks deal double damage (contact Fire attacks are neutral). Moves of 60 power or less gain 1.5x power, with the existing Factory Field threshold of 80. Switching out cures major status and, only when a status was cured, heals 1/3 maximum HP. Bewitched Woods also cures status at turn end without this switch-out heal. Normal ability suppression applies.",
+		"shortDesc": "Fluffy + Technician + Natural Cure.",
+		"rating": 3.5,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"greatmarsh": {
+		"name": "Great Marsh",
+		"num": 10335,
+		"gen": 9,
+		"desc": "Full Anticipation + Dry Skin + Adaptability + Toxic Chain. Anticipation reveals dangerous moves and removes opposing Illusions. Dry Skin absorbs Water to heal 1/4 HP, increases incoming Fire power by 25%, retains rain/sun recovery/damage and all local field effects. Adaptability strengthens STAB. Toxic Chain has a 30% chance per damaging hit to badly poison (60% on Corrosive Mist or Wasteland); Shield Dust, Covert Cloak, Substitute and normal poison immunities still apply. Poison moves gain 1.3x power on Wasteland. No Corrosion.",
+		"shortDesc": "Anticipation + Dry Skin + Adaptability + Toxic Chain.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"dawnherald": {
+		"name": "Dawn Herald",
+		"num": 11253,
+		"gen": 9,
+		"desc": "Full Drought + Friend Guard. On entry, summons sun for 5 turns (8 with Heat Rock). While active, allies take 25% less attack damage; this does not protect the holder. Normal weather blocking, ability suppression and bypass rules apply.",
+		"shortDesc": "Drought + Friend Guard; summons sun; allies take 25% less attack damage.",
+		"rating": 0,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"corrosiveburn": {
+		"name": "Corrosive Burn",
+		"num": 10406,
+		"gen": 9,
+		"desc": "Full local Corrosion + Oblivious + Venom Ignition. Corrosion allows poisoning Poison/Steel types and Poison attacks to hit Steel; newly poisoned foes lose 1 Defense and Sp. Def stage, with existing field effects retained. Oblivious blocks and cures attraction/Taunt, blocks Captivate and prevents Intimidate. Fire damaging attacks deal 1.2x damage if the target is poisoned or badly poisoned when damage is calculated, once per hit. No poison consumption or additional burn/residual effect; no Merciless or Regenerator.",
+		"shortDesc": "Corrosion + Oblivious + Venom Ignition; Fire damage 1.2x against poisoned targets.",
+		"rating": 5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"venomignition": {
+		"name": "Venom Ignition",
+		"num": 11254,
+		"gen": 9,
+		"desc": "Fire-type damaging attacks deal 1.2x damage against a poisoned or badly poisoned target. Status is checked when each hit is calculated. Does not consume poison, cause burns or add residual damage.",
+		"shortDesc": "Fire attacks deal 1.2x damage against poisoned targets.",
+		"rating": 3,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"transfixinggaze": {
+		"name": "Transfixing Gaze",
+		"num": 11255,
+		"gen": 9,
+		"desc": "Full local Frisk: removes opposing Illusions, reveals their held items, and each revealed item holder has a 30% chance of Embargo. While this Pokemon remains active with its ability functioning, opposing moves cannot switch their user out. Damage, stat changes and other move effects still occur. Manual switching, forced switching and item-triggered switches remain allowed. If this Pokemon faints, leaves or loses its ability before the move finishes, the pivot succeeds. No lingering mark.",
+		"shortDesc": "Frisk; opposing moves cannot pivot while this Pokemon remains active.",
+		"rating": 1.5,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"freshplumage": {
+		"name": "Fresh Plumage",
+		"num": 11256,
+		"gen": 9,
+		"desc": "Full local Natural Cure: cures status when switching out and heals 1/3 maximum HP only when curing a status; Bewitched Woods cures status at turn end without that heal. The first successful Flying damaging move each entry deals 1.2x damage across its entire hit sequence. Misses, Protect and immunity do not consume it; damaging a Substitute does. No additional recoil protection or Body Press bonus. Switching back in resets the Flying bonus.",
+		"shortDesc": "Natural Cure; first successful Flying attack each entry deals 1.2x damage.",
+		"rating": 2.5,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"cursedkeepsake": {
+		"name": "Cursed Keepsake",
+		"num": 10131,
+		"gen": 9,
+		"desc": "When this Pokemon is hit by an opposing damaging move, the attacker becomes cursed. Cursed Pokemon deal 0.5x damage to this Pokemon. This Pokemon restores HP equal to 1/2 of Curse damage it caused. When this Pokemon faints, opposing Pokemon become cursed and it creates Haunted Field for 5 turns, ignoring Neutralization. Full local Frisk breaks all opposing active Illusions on entry, reveals their held items, and independently has a 30% chance to Embargo each item holder for 5 turns.",
+		"shortDesc": "Frisk; Curses attackers; cursed foes deal 0.5x; heals 1/2 Curse damage.",
+		"rating": 4.5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"cursedmarionette": {
+		"name": "Cursed Marionette",
+		"num": 10104,
+		"gen": 9,
+		"desc": "This Pokemon's status moves have +1 priority. Its attacks and status moves curse opposing targets, and being hit curses the attacker. Cursed foes deal 0.8x damage to this Pokemon. This Pokemon restores HP equal to 1/2 of Curse damage it caused. Its Curse deals 1/8 max HP. When it faints, opposing Pokemon become cursed and it creates Haunted Field for 5 turns, ignoring Neutralization. Full local Frisk breaks all opposing active Illusions on entry, reveals their held items, and independently has a 30% chance to Embargo each item holder for 5 turns.",
+		"shortDesc": "Prankster + Frisk; attacks/status curse; cursed foes deal 0.8x; heals 1/2 Curse damage.",
+		"rating": 4.5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"cursedarmament": {
+		"name": "Cursed Armament",
+		"num": 10122,
+		"gen": 9,
+		"desc": "This Pokemon has Filter's effects. Curse used by this Pokemon becomes a 100 BP physical or special Ghost-type attack using its higher Attack or Special Attack, with 100% accuracy, that hits all adjacent foes and curses each target. Curse from this Pokemon deals 1/8 max HP each turn. This Pokemon restores 1/4 of the damage dealt by its attacks and by Curse damage it caused. When this Pokemon reaches half HP or faints, it creates Haunted Field for 5 turns. Full local Frisk breaks all opposing active Illusions on entry, reveals their held items, and independently has a 30% chance to Embargo each item holder for 5 turns.",
+		"shortDesc": "Filter + Frisk; Curse becomes a 100 BP spread Ghost attack using the higher Attack or Sp. Atk; curses foes; heals 1/4 damage; half HP/faint sets Haunted Field.",
+		"rating": 4.5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"terragift": {
+		"name": "Terra Gift",
+		"num": 10356,
+		"gen": 9,
+		"desc": "This Pokemon has Hospitality, Unaware, and Proficient's effects. On activation, reveals all opposing active Illusions, including itemless foes; this is not a continuous effect.",
+		"shortDesc": "Hospitality + Unaware + Proficient; Reveals opposing Illusions on activation.",
+		"rating": 4,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"illuminate": {
+		"name": "Illuminate",
+		"num": 35,
+		"gen": 3,
+		"desc": "Prevents other Pokemon from lowering this Pokemon's accuracy stat stage. This Pokemon ignores a target's evasiveness stat stage. On activation, reveals all opposing active Illusions, including itemless foes; this is not a continuous effect.",
+		"shortDesc": "Reveals opposing Illusions on activation; This Pokemon's accuracy can't be lowered by others; ignores their evasiveness stat.",
+		"rating": 0.5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"keeneye": {
+		"name": "Keen Eye",
+		"num": 51,
+		"gen": 3,
+		"desc": "Prevents other Pokemon from lowering this Pokemon's accuracy stat stage. This Pokemon ignores a target's evasiveness stat stage. On activation, reveals all opposing active Illusions, including itemless foes; this is not a continuous effect.",
+		"shortDesc": "Reveals opposing Illusions on activation; This Pokemon's accuracy can't be lowered by others; ignores their evasiveness stat.",
+		"rating": 0.5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"astralward": {
+		"name": "Astral Ward",
+		"num": 11145,
+		"gen": 9,
+		"desc": "Magic Bounce + Telepathy. Reflects eligible status moves and avoids allied damaging moves. Full local Anticipation reveals opposing Illusions and alerts to a super-effective or OHKO move. On Psychic Terrain, it gains +2 Special Attack only if no threat triggered the early alert.",
+		"shortDesc": "Magic Bounce + Telepathy + Anticipation.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"doomwarning": {
+		"name": "Doom Warning",
+		"num": 10115,
+		"gen": 9,
+		"desc": "This Pokemon has Magic Bounce and Magic Guard. When it faints, Doom Desire is cast on every opposing Pokemon. Full local Anticipation reveals opposing Illusions and alerts to a super-effective or OHKO move. On Psychic Terrain, it gains +2 Special Attack only if no threat triggered the early alert.",
+		"shortDesc": "Magic Bounce + Magic Guard + Anticipation; faint casts Doom Desire.",
+		"rating": 5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"nighthunt": {
+		"name": "Night Hunt",
+		"num": 11101,
+		"gen": 9,
+		"desc": "Strong Jaw + Infiltrator + Intimidate. Biting moves have 1.5x power. Moves bypass substitutes and opposing screens. Lowers adjacent foes' Attack on entry. Full local Frisk reveals opposing Illusions (including itemless foes), reveals held items and independently has a 30% chance to Embargo each opposing item holder for 5 turns. Full local Illuminate prevents opposing accuracy drops and ignores evasion boosts. Mirror Arena lowers opposing accuracy by 1; Starlight Arena raises Special Attack by 2 and places Spotlight on the first adjacent ally in multi-active battles. Shared Illusion reveals occur once.",
+		"shortDesc": "Strong Jaw + Infiltrator + Intimidate + Frisk + Illuminate.",
+		"rating": 4.5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"primalego": {
+		"name": "Primal Ego",
+		"num": 10419,
+		"gen": 9,
+		"desc": "This Pokemon has Unaware, Proficient, and Ultra Ego's effects. Ultra Ego's combat effects are inactive on Bewitched Woods, Haunted, and Holy Field. Its enhanced-field one-time 1/4 HP pinch recovery is consumed only when it actually restores HP; blocked healing preserves it for a later eligible hit window.",
+		"shortDesc": "Unaware + Proficient + Ultra Ego + Mold Breaker.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"perfectego": {
+		"name": "Perfect Ego",
+		"num": 10116,
+		"gen": 9,
+		"desc": "This Pokemon has Ultra Ego's effects, and its moves cannot miss. Its enhanced-field one-time 1/4 HP pinch recovery is consumed only when it actually restores HP; blocked healing preserves it for a later eligible hit window.",
+		"shortDesc": "Ultra Ego; moves cannot miss.",
+		"rating": 5,
+		"flags": {},
+		"isNonstandard": null
+	}
 });
 // END APPROVED ROSTER ABILITIES
 
@@ -19331,7 +21529,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10314,
 		"gen": 9,
 		"desc": "This Pokemon absorbs Electric- and Water-type moves that hit it, restoring 1/4 of its maximum HP and raising its Attack and Special Attack by 1 stage. It no longer redirects those moves from allies. It also has Illuminate's effect.",
-		"shortDesc": "Volt Absorb + Water Absorb + Illuminate. Absorbs Electric/Water hits; heals 1/4; +1 Atk/SpA; Illuminate; no redirection.",
+		"shortDesc": "Volt Absorb + Water Absorb + Illuminate; Absorbs Electric/Water hits; heals 1/4; +1 Atk/SpA; no redirection.",
 		"rating": 4,
 		"flags": {
 			"breakable": 1
@@ -19348,12 +21546,48 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {},
 		"isNonstandard": null
 	},
+	"accumulation": {
+		"name": "Accumulation",
+		"num": 10143,
+		"gen": 9,
+		"desc": "This Pokemon has Thick Fat and is immune to sandstorm and hail damage. It can use Belch without eating a Berry and automatically gains one Stockpile each turn. After reaching 3 Stockpiles, it waits one full turn before randomly choosing Belch or Spit Up with equal odds, then can release every other turn. Its established Spit Up and Swallow combinations still apply.",
+		"shortDesc": "Thick Fat; auto-Stockpiles; at 3 waits one turn, then auto-releases every other turn.",
+		"rating": 3,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"adaptivecell": {
+		"name": "Adaptive Cell",
+		"num": 10163,
+		"gen": 9,
+		"desc": "This Pokemon has Overcoat's effect and its Special Attack is multiplied by 1.3. Its first move slot sets its opening type: Fighting for physical moves or Psychic for special moves. Each later damaging move changes its type to match its category. Physical moves use its boosted Special Attack as Attack; special moves use its boosted Special Attack normally.",
+		"shortDesc": "Overcoat; SpA 1.3x; first move slot sets Fighting/Psychic; later moves switch type.",
+		"rating": 4,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
 	"adaptivecore": {
 		"name": "Adaptive Core",
 		"num": 10417,
 		"gen": 9,
 		"desc": "Download + Defragment + Self Repair. Combines those three effects; Self Sufficient and Natural Cure are part of Self Repair, not separate added components.",
 		"shortDesc": "Download + Defragment + Self Repair.",
+		"rating": 5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"adaptivecycle": {
+		"name": "Adaptive Cycle",
+		"num": 11260,
+		"gen": 9,
+		"desc": "Cannot be suppressed by Neutralizing Gas, Gastro Acid or similar effects. Battle-long individual memory pauses while inactive or replaced. After surviving a whole opposing move, its type joins two active memories (oldest archived): active end turns grant 20/35/50% damage reduction. Observed opposing actions grant 1 analysis point per turn (2 with shared typing); 4 points unlock 50% incoming reduction, 1.5x outgoing damage, known harmful move/secondary immunity, interaction-specific negation of that individual's entire ability (including composites) and resistant countertyping. Type/opponent reductions use the stronger only. Learns each foe's bypass or encountered defensive reduction at turn end. Two observed boosted turns counter positive combat/accuracy stages, not Speed. Status and named chip causes complete in two active end turns, curing/removing the learned condition. Each full field/weather completes in three: ignores personal penalties and incoming direct damage bonuses, retaining benefits, Auras and shared transformations. See the Adapted display for observed progress.",
+		"shortDesc": "Learns foes, two active attack types, status/chip, fields and weather; keeps memory when switching.",
 		"rating": 5,
 		"flags": {
 			"breakable": 1
@@ -19377,7 +21611,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10394,
 		"gen": 9,
 		"desc": "On entry, Druddigon permanently transforms into Druddigon-Rejuv. This Pokemon also has the effects of Storm Power, Static, and Volt Absorb. If this Ability is suppressed, its Rejuv form reverts to the normal species until it switches out, even if suppression ends earlier.",
-		"shortDesc": "Transforms Druddigon into Druddigon-Rejuv; Storm Power + Static + Volt Absorb.",
+		"shortDesc": "Storm Power + Static + Volt Absorb; Transforms Druddigon into Druddigon-Rejuv.",
 		"rating": 5,
 		"flags": {
 			"breakable": 1
@@ -19413,7 +21647,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10393,
 		"gen": 9,
 		"desc": "On entry, Turtonator permanently transforms into Turtonator-Rejuv. This Pokemon also has the effects of Snow Warning, Ice Body, and Refrigerate. If this Ability is suppressed, its Rejuv form reverts to the normal species until it switches out, even if suppression ends earlier.",
-		"shortDesc": "Transforms Turtonator into Turtonator-Rejuv; Snow Warning + Ice Body + Refrigerate.",
+		"shortDesc": "Snow Warning + Ice Body + Refrigerate; Transforms Turtonator into Turtonator-Rejuv.",
 		"rating": 5,
 		"flags": {},
 		"isNonstandard": null
@@ -19423,7 +21657,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10415,
 		"gen": 9,
 		"desc": "Wonder Skin + Levitate + Magic Guard + Cursed Body. Flare Boost is removed.",
-		"shortDesc": "Wonder Skin + Levitate + Magic Guard + Cursed Body.",
+		"shortDesc": "Magic Guard + Cursed Body + Wonder Skin + Levitate.",
 		"rating": 5,
 		"flags": {
 			"breakable": 1
@@ -19447,7 +21681,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10416,
 		"gen": 9,
 		"desc": "When Veluza enters battle with this Ability, it changes into Veluza-Rejuv. It has Brute Force's Reckless power boost and Rock Head recoil protection, restores 1/3 of its maximum HP on switching out through Regenerator, ignores opposing Abilities with Mold Breaker, and doubles its Speed under Swift Swim's conditions. If this Ability is suppressed, its Rejuv form reverts to the normal species until it switches out, even if suppression ends earlier.",
-		"shortDesc": "Brute Force + Reckless + Rock Head + Regenerator + Mold Breaker + Swift Swim. Transforms Veluza into Veluza-Rejuv; Brute Force + Regenerator + Mold Breaker + Swift Swim.",
+		"shortDesc": "Brute Force + Regenerator + Mold Breaker + Swift Swim; Transforms Veluza into Veluza-Rejuv.",
 		"rating": 5,
 		"flags": {
 			"breakable": 1
@@ -19470,8 +21704,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Aevian Toxin",
 		"num": 10411,
 		"gen": 9,
-		"desc": "Strong Jaw + Layered Coat. Merciless is removed; poisoned targets do not receive its critical-hit boost.",
-		"shortDesc": "Strong Jaw + Layered Coat + Fur Coat + Overcoat.",
+		"desc": "Full Strong Jaw + Layered Coat + Merciless. Layered Coat includes Fur Coat and Overcoat: doubles Defense and preserves weather/powder protection and local field effects. Merciless guarantees critical hits against poisoned targets or on Corrosive, Corrosive Mist, Murkwater Surface and Wasteland fields, and retains its Chessboard critical-ratio effect. Critical-hit immunity still applies. Drapion transforms into Drapion-Rejuv on entry.",
+		"shortDesc": "Strong Jaw + Layered Coat + Merciless.",
 		"rating": 5,
 		"flags": {
 			"breakable": 1
@@ -19493,6 +21727,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 			"failskillswap": 1,
 			"notransform": 1
 		},
+		"isNonstandard": null
+	},
+	"agonyflame": {
+		"name": "Agony Flame",
+		"num": 11221,
+		"gen": 9,
+		"desc": "After this Pokemon finishes a damaging Fire-type move that deals actual HP damage to an opponent, each surviving active opponent damaged by that move is burned if normal status protections allow, and receives Heal Block for 2 turns, including the current turn. Each target is affected once per move. Heal Block can apply even if burn fails, and a longer existing Heal Block is not shortened. If the move already burned a target, the Ability does not attempt to burn it again after a curing Berry. Protected, immune, Substitute-only, ally, self and delayed damage do not qualify. Ability suppression disables these effects.",
+		"shortDesc": "Fire hits burn foes and block healing for 2 turns; requires actual opposing HP damage.",
+		"rating": 4.5,
+		"flags": {},
 		"isNonstandard": null
 	},
 	"alchemistsurge": {
@@ -19522,7 +21766,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10251,
 		"gen": 9,
 		"desc": "This Pokemon's moves cannot miss and it has Ice Body and Refrigerate's effects. It is treated as an Ice-type Pokemon in Hail and Ice fields.",
-		"shortDesc": "Moves cannot miss; Ice Body + Refrigerate; Ice in Ice fields.",
+		"shortDesc": "Ice Body + Refrigerate; Moves cannot miss; Ice in Ice fields.",
 		"rating": 4,
 		"flags": {
 			"breakable": 1
@@ -19533,8 +21777,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Anchor Bridge",
 		"num": 10466,
 		"gen": 9,
-		"desc": "Sturdy. When Sturdy saves this Pokemon from a direct hit, its side gains Light Screen for 3 turns. Does not shorten a longer existing screen.",
-		"shortDesc": "Sturdy. When Sturdy saves it from a direct hit, its side gains Light Screen for 3 turns. Does not shorten a longer existing screen.",
+		"desc": "Full Sturdy + local Solid Rock. Immune to OHKO moves; at full HP survives an otherwise fatal direct hit with 1 HP. Takes 0.8x attack damage, or 0.6x from super-effective attacks. Normal ability suppression and Mold Breaker rules apply. Does not create Light Screen.",
+		"shortDesc": "Sturdy + Solid Rock: survives at full HP; 20% less attack damage, 40% less if super effective.",
 		"rating": 3,
 		"flags": {
 			"breakable": 1
@@ -19558,11 +21802,21 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10024,
 		"gen": 9,
 		"desc": "This Pokemon has Effect Spore and Pollen Bloom's effects. Thick Fat applies once through Pollen Bloom: Fire and Ice damage is halved, not quartered. It keeps its field-based Defense, Special Defense, and power boosts.",
-		"shortDesc": "Effect Spore + Self Sufficient + Proficient. Effect Spore + Pollen Bloom; Thick Fat applies once; field boosts.",
+		"shortDesc": "Self Sufficient + Proficient; Effect Spore + Pollen Bloom; Thick Fat applies once; field boosts.",
 		"rating": 4.5,
 		"flags": {
 			"breakable": 1
 		},
+		"isNonstandard": null
+	},
+	"ange": {
+		"name": "Ange",
+		"num": 10130,
+		"gen": 9,
+		"desc": "This Pokemon has Eternal Flower, Fairy Aura, and Magic Guard's effects. Its Grass-type moves use 1.5x Attack and Special Attack, Fairy-type moves are boosted, and opposing Mega, G-Max, Terastallized, Stellar, and Ultra Beast Pokemon have their stats reduced to 0.7x. Rift and Pulse forms are excluded from this stat suppression, even when Terastallized. When this Pokemon faints, it creates Bewitched Woods for 5 turns.",
+		"shortDesc": "Eternal Flower + Fairy Aura + Magic Guard; weakens opposing gimmicks.",
+		"rating": 5,
+		"flags": {},
 		"isNonstandard": null
 	},
 	"apexarmor": {
@@ -19582,7 +21836,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10409,
 		"gen": 9,
 		"desc": "Battle Bond's shared effects plus Supreme Overlord and Rough Skin. Garchomp-Battle-Bond's Dual Chop never misses and always critically hits.",
-		"shortDesc": "Battle Bond + Filter + Self Sufficient + Supreme Overlord + Rough Skin. Battle Bond + Supreme Overlord + Rough Skin; Dual Chop never misses and always critical.",
+		"shortDesc": "Battle Bond + Supreme Overlord + Rough Skin; Dual Chop never misses and always critical.",
 		"rating": 4,
 		"flags": {
 			"failroleplay": 1,
@@ -19672,6 +21926,28 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {},
 		"isNonstandard": null
 	},
+	"armorize": {
+		"name": "Armorize",
+		"num": 10004,
+		"gen": 9,
+		"desc": "This Pokemon's Normal-type moves become Steel-type moves and have their power multiplied by 1.2.",
+		"shortDesc": "Normal moves become Steel type and have 1.2x power.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"ascendance": {
+		"name": "Ascendance",
+		"num": 10378,
+		"gen": 9,
+		"desc": "All damaging moves deal 1.5x damage, can hit type immunities, and gain a 1.5x STAB-style boost when they do not match this Pokemon's type. On Holy Field, this Pokemon's Attack and Special Attack are raised by 1 on entry. Eevee-Starter and Umbreon transform into Divineon on entry; Umbreon uses Umbreon-Perfect's appearance while retaining Umbreon's full movepool.",
+		"shortDesc": "Damaging moves deal 1.5x, bypass immunities, and gain off-type STAB; transforms Eevee-Starter/Umbreon into Divineon.",
+		"rating": 5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
 	"asoneglastrier": {
 		"name": "As One (Glastrier)",
 		"num": 266,
@@ -19721,7 +21997,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10386,
 		"gen": 9,
 		"desc": "Elevate + Analytic + Power Spot. Boosts allied move power. Filter is removed.",
-		"shortDesc": "Elevate + Analytic + Power Spot.",
+		"shortDesc": "Elevate + Power Spot + Analytic.",
 		"rating": 5,
 		"flags": {
 			"breakable": 1
@@ -19732,8 +22008,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Astral Ward",
 		"num": 11145,
 		"gen": 9,
-		"desc": "Magic Bounce + Telepathy. Reflects eligible status moves and avoids allied damaging moves.",
-		"shortDesc": "Magic Bounce + Telepathy.",
+		"desc": "Magic Bounce + Telepathy. Reflects eligible status moves and avoids allied damaging moves. Full local Anticipation reveals opposing Illusions and alerts to a super-effective or OHKO move. On Psychic Terrain, it gains +2 Special Attack only if no threat triggered the early alert.",
+		"shortDesc": "Magic Bounce + Telepathy + Anticipation.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null
@@ -19742,8 +22018,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Astral Watcher",
 		"num": 10052,
 		"gen": 9,
-		"desc": "Defragment + Frisk + Prankster. Telepathy is removed; allied damaging moves can hit it.",
-		"shortDesc": "Defragment + Frisk + Prankster.",
+		"desc": "Defragment + Frisk + Prankster. Telepathy is removed; allied damaging moves can hit it. On activation, reveals all opposing active Illusions, including itemless foes; this is not a continuous effect.",
+		"shortDesc": "Prankster + Defragment + Frisk; Reveals opposing Illusions on activation.",
 		"rating": 4,
 		"flags": {
 			"breakable": 1
@@ -19755,7 +22031,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10034,
 		"gen": 9,
 		"desc": "Proficient + Magic Guard + Magic Bounce + Levitate. Reflects eligible status moves. Sworn Duty is removed.",
-		"shortDesc": "Proficient + Magic Guard + Magic Bounce + Levitate.",
+		"shortDesc": "Levitate + Magic Guard + Magic Bounce + Proficient.",
 		"rating": 5,
 		"flags": {
 			"breakable": 1
@@ -19766,8 +22042,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Atrocity",
 		"num": 10126,
 		"gen": 9,
-		"desc": "Unbound Blaze + Self Sufficient + Levitate + Proficient; boosts critical hits. Dragon Rush never misses. It does not drain HP or bypass abilities, screens, Veil, or Substitute.",
-		"shortDesc": "Unbound Blaze + Self Sufficient + Levitate + Proficient; boosts critical hits.",
+		"desc": "Unbound Blaze + Self Sufficient + Tough Claws + Proficient; boosts critical hits. Dragon Rush never misses. It does not drain HP or bypass abilities, screens, Veil, or Substitute.",
+		"shortDesc": "Unbound Blaze + Self Sufficient + Tough Claws; boosts critical hits.",
 		"rating": 5,
 		"flags": {
 			"cantsuppress": 1
@@ -19789,7 +22065,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10280,
 		"gen": 9,
 		"desc": "This Pokemon takes half damage from contact moves and has Dual Wield, Inner Focus, and Technician's effects.",
-		"shortDesc": "0.5x from contact; Dual Wield + Inner Focus + Technician.",
+		"shortDesc": "Dual Wield + Inner Focus + Technician; 0.5x from contact.",
 		"rating": 4.5,
 		"flags": {},
 		"isNonstandard": null
@@ -19809,7 +22085,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 11121,
 		"gen": 9,
 		"desc": "Snow Warning + Relic Armor + Refrigerate + Self Sufficient. Does not set Aurora Veil on entry; Aurora Veil can still be used manually. On faint, sets Fairy Tale and refreshes Aurora Veil for 5 turns. Shows \"The Aurora will persist\".",
-		"shortDesc": "Snow Warning + Relic Armor + Refrigerate + Self Sufficient; Veil on faint.",
+		"shortDesc": "Relic Armor + Refrigerate + Self Sufficient + Snow Warning; Veil on faint.",
 		"rating": 5,
 		"flags": {},
 		"isNonstandard": null
@@ -19824,6 +22100,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {
 			"breakable": 1
 		},
+		"isNonstandard": null
+	},
+	"backwash": {
+		"name": "Backwash",
+		"num": 11216,
+		"gen": 9,
+		"desc": "Once per turn, after this Pokemon finishes a damaging Water-type move that deals actual HP damage to an opponent, its negative Attack and Special Attack stages reset to zero if it survives and remains active. The entire attack uses its current stats before the reset. Positive stages and all other stat stages remain unchanged. All hits and spread targets share one activation. Missed, protected, immune, Substitute-only, ally, self and delayed damage do not qualify. Ability suppression disables the effect, and ability changes do not refresh the turn's activation.",
+		"shortDesc": "Once per turn, after Water damage to a foe's HP, clears its negative Atk/Sp. Atk stages.",
+		"rating": 3.5,
+		"flags": {},
 		"isNonstandard": null
 	},
 	"bakedbliss": {
@@ -19853,7 +22139,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 210,
 		"gen": 7,
 		"desc": "A KO can trigger a Bond form; no lethal-hit survival. Eligible Arcanine, Garchomp, and Greninja forms transform after a KO. It no longer leaves the holder at 1 HP from a lethal hit.",
-		"shortDesc": "Filter + Self Sufficient. A KO can trigger a Bond form; no lethal-hit survival.",
+		"shortDesc": "Filter + Self Sufficient; A KO can trigger a Bond form; no lethal-hit survival.",
 		"rating": 3.5,
 		"flags": {
 			"failroleplay": 1,
@@ -19863,6 +22149,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 			"failskillswap": 1,
 			"cantsuppress": 1
 		},
+		"isNonstandard": null
+	},
+	"battlefervor": {
+		"name": "Battle Fervor",
+		"num": 10014,
+		"gen": 9,
+		"desc": "If this Pokemon moves before its target, its attacks deal 1.2x damage. Once per switch-in, if it would move after the attacker, damaging attacks against it deal 0.8x damage. The first time per battle it is hit by an opposing damaging move, its Attack and Special Attack rise by 1 stage. Foes cannot eat Berries while this Pokemon is active, and Seed items are prevented. Bewitched Woods, Haunted, and Holy Field disable these effects.",
+		"shortDesc": "Fast attacks 1.2x; slow-hit guard once; first hit +Atk/SpA; blocks Berries/Seeds.",
+		"rating": 4,
+		"flags": {},
 		"isNonstandard": null
 	},
 	"bedrockclaw": {
@@ -19946,7 +22242,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10158,
 		"gen": 9,
 		"desc": "Fire attacks have 1.5x power and damaging moves hit twice, with the second hit at 30% power. At half HP or less, Fire attacks gain +1 priority. Burning and Volcanic Fields raise its Speed by 1 on entry or when the field starts.",
-		"shortDesc": "Proficient. Fire 1.5x; second hit 30%; half-HP Fire +1 priority; fire fields +1 Spe.",
+		"shortDesc": "Proficient; Fire 1.5x; second hit 30%; half-HP Fire +1 priority; fire fields +1 Spe.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null
@@ -19956,7 +22252,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10035,
 		"gen": 9,
 		"desc": "Speed Boost + Proficient + Striker + Magma Armor + Keen Eye. Gains +1 Speed at the end of each eligible turn; same-type moves have 1.3x power and kicking moves have 1.4x power. Prevents freezing and Accuracy drops, and ignores the target's evasiveness. Magma Armor and Keen Eye also retain their field effects.",
-		"shortDesc": "Speed Boost + Proficient + Striker + Magma Armor + Keen Eye.",
+		"shortDesc": "Proficient + Speed Boost + Striker + Magma Armor + Keen Eye.",
 		"rating": 4.5,
 		"flags": {},
 		"isNonstandard": null
@@ -20076,7 +22372,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10023,
 		"gen": 9,
 		"desc": "This Pokemon has Intimidate, White Smoke, Mold Breaker, Unbound Blaze, Self Sufficient, and Proficient. It takes 20% less damage from all damaging attacks. Self Sufficient restores 1/16 base maximum HP at turn end and prevents sandstorm and hail damage. Proficient boosts damaging attacks matching its type by 1.3x. It gains no boosts when a Pokemon faints. Its field bonuses remain active.",
-		"shortDesc": "Intimidate + White Smoke + Mold Breaker + Unbound Blaze + Self Sufficient + Proficient; attacks deal 20% less; no KO boost.",
+		"shortDesc": "Intimidate + White Smoke + Mold Breaker + Unbound Blaze + Self Sufficient; attacks deal 20% less; no KO boost.",
 		"rating": 4.5,
 		"flags": {
 			"breakable": 1
@@ -20087,8 +22383,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Burning Ego",
 		"num": 10256,
 		"gen": 9,
-		"desc": "Proficient + Ultra Ego + Flame Body + Thick Fat. Same-type moves have 1.3x power; it heals and gains Attack and Sp. Atk when fighting, can burn contact attackers, and halves damage from Fire and Ice moves.",
-		"shortDesc": "Proficient + Ultra Ego + Flame Body + Thick Fat.",
+		"desc": "Proficient + Ultra Ego + Flame Body + Magma Armor. Same-type moves have 1.3x power; it heals and gains Attack and Sp. Atk when fighting, can burn contact attackers, and has full local Magma Armor. Water and Ice moves use half attacking stats; Dragon's Den blocks opposing Fire moves. Freeze is prevented outside Cold Eclipse and cured on update. Dragon's Den, Volcanic Field and Cold Eclipse grant +1 Defense and Special Defense on entry. Flame Body separately retains its Cold Eclipse +1 Defense and Special Defense. There is no Thick Fat Fire reduction or hail immunity. Its enhanced-field one-time 1/4 HP pinch recovery is consumed only when it actually restores HP; blocked healing preserves it for a later eligible hit window.",
+		"shortDesc": "Proficient + Ultra Ego + Flame Body + Magma Armor.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null
@@ -20098,7 +22394,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10349,
 		"gen": 9,
 		"desc": "This Pokemon has Brute Force, Iron Fist, and Turboblaze's effects.",
-		"shortDesc": "Proficient. Brute Force + Iron Fist + Turboblaze.",
+		"shortDesc": "Proficient; Brute Force + Iron Fist + Turboblaze.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null
@@ -20115,16 +22411,48 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		},
 		"isNonstandard": null
 	},
+	"byxbysiontouch": {
+		"name": "Byxbysion Touch",
+		"num": 10203,
+		"gen": 9,
+		"desc": "This Pokemon's Poison-type damaging moves restore 1/4 of the damage dealt. Ground-type moves deal 1/2 damage to this Pokemon. It has Poison Touch's effect.",
+		"shortDesc": "Poison attacks drain 1/4; Ground damage halved; Poison Touch.",
+		"rating": 4,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"calculatedshot": {
+		"name": "Calculated Shot",
+		"num": 10590,
+		"gen": 9,
+		"desc": "Damaging Water moves gain +1 critical-hit stage and always use the highest normal damage roll. Does not increase fixed damage or bypass accuracy checks. Full local Frisk reveals opposing Illusions (including itemless foes), reveals held items and independently has a 30% chance to Embargo each opposing item holder for 5 turns.",
+		"shortDesc": "Frisk; Water attacks gain +1 critical-hit stage and the highest normal damage roll.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
 	"calderacore": {
 		"name": "Caldera Core",
 		"num": 10039,
 		"gen": 9,
 		"desc": "Sheer Force + Drought + Magma Armor. Solid Rock damage reduction is removed.",
-		"shortDesc": "Sheer Force + Drought + Magma Armor.",
+		"shortDesc": "Magma Armor + Sheer Force + Drought.",
 		"rating": 4.5,
 		"flags": {
 			"breakable": 1
 		},
+		"isNonstandard": null
+	},
+	"causticscales": {
+		"name": "Caustic Scales",
+		"num": 10446,
+		"gen": 9,
+		"desc": "Once per switch-in, the first opposing contact attack to damage this Pokemon poisons the attacker, subject to normal status immunity.",
+		"shortDesc": "Once per switch-in, the first opposing contact attack to damage it poisons the attacker, subject to normal status immunity.",
+		"rating": 4,
+		"flags": {},
 		"isNonstandard": null
 	},
 	"caverndrake": {
@@ -20149,6 +22477,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {},
 		"isNonstandard": null
 	},
+	"cinderscales": {
+		"name": "Cinder Scales",
+		"num": 11242,
+		"gen": 9,
+		"desc": "Full Flame Body, Swarm and Shield Dust, including their existing field effects.",
+		"shortDesc": "Flame Body + Swarm + Shield Dust.",
+		"rating": 2,
+		"flags": {},
+		"isNonstandard": null
+	},
 	"coldlogic": {
 		"name": "Cold Logic",
 		"num": 10128,
@@ -20161,15 +22499,37 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		},
 		"isNonstandard": null
 	},
+	"coldopen": {
+		"name": "Cold Open",
+		"num": 10580,
+		"gen": 9,
+		"desc": "Its first successful damaging move each entry ignores positive defensive stat stages and screens. All hits of that move benefit. Misses and Protect preserve the effect; it does not bypass Substitute.",
+		"shortDesc": "First damaging move each entry ignores defensive boosts and screens.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
 	"completeparasitism": {
 		"name": "Complete Parasitism",
 		"num": 10401,
 		"gen": 9,
 		"desc": "Parasitism, Filter, and Self Repair. A lethal hit triggers a full-HP revival as Parasect-Parasite at the end of the turn, even if Parasitism was used before Mega Evolution.",
-		"shortDesc": "Parasitism + Dry Skin + Filter + Self Repair. Parasitism + Filter + Self Repair; Mega can revive as Parasite.",
+		"shortDesc": "Parasitism + Filter + Self Repair; Mega can revive as Parasite.",
 		"rating": 5,
 		"flags": {
 			"cantsuppress": 1
+		},
+		"isNonstandard": null
+	},
+	"conductivity": {
+		"name": "Conductivity",
+		"num": 10067,
+		"gen": 9,
+		"desc": "This Pokemon is immune to sound-based moves. Its Electric-type moves hit Steel-type Pokemon super effectively.",
+		"shortDesc": "Sound immunity; Electric moves hit Steel super effectively.",
+		"rating": 3.5,
+		"flags": {
+			"breakable": 1
 		},
 		"isNonstandard": null
 	},
@@ -20187,10 +22547,12 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Corrosive Burn",
 		"num": 10406,
 		"gen": 9,
-		"desc": "This Pokemon has Merciless, Regenerator, and Corrosion's effects.",
-		"shortDesc": "Merciless + Regenerator + Corrosion.",
+		"desc": "Full local Corrosion + Oblivious + Venom Ignition. Corrosion allows poisoning Poison/Steel types and Poison attacks to hit Steel; newly poisoned foes lose 1 Defense and Sp. Def stage, with existing field effects retained. Oblivious blocks and cures attraction/Taunt, blocks Captivate and prevents Intimidate. Fire damaging attacks deal 1.2x damage if the target is poisoned or badly poisoned when damage is calculated, once per hit. No poison consumption or additional burn/residual effect; no Merciless or Regenerator.",
+		"shortDesc": "Corrosion + Oblivious + Venom Ignition; Fire damage 1.2x against poisoned targets.",
 		"rating": 5,
-		"flags": {},
+		"flags": {
+			"breakable": 1
+		},
 		"isNonstandard": null
 	},
 	"corrosivetouch": {
@@ -20235,6 +22597,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {},
 		"isNonstandard": null
 	},
+	"crumblingshell": {
+		"name": "Crumbling Shell",
+		"num": 10005,
+		"gen": 9,
+		"desc": "When this Pokemon is hit by a Physical attack, Stealth Rock is set on the attacker's side unless a water field is active or that side already has Stealth Rock.",
+		"shortDesc": "Physical hits set Stealth Rock, except in water fields.",
+		"rating": 2,
+		"flags": {},
+		"isNonstandard": null
+	},
 	"crystalresonance": {
 		"name": "Crystal Resonance",
 		"num": 10388,
@@ -20261,8 +22633,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Cursed Armament",
 		"num": 10122,
 		"gen": 9,
-		"desc": "This Pokemon has Filter's effects. Curse used by this Pokemon becomes a 100 BP physical or special Ghost-type attack using its higher Attack or Special Attack, with 100% accuracy, that hits all adjacent foes and curses each target. Curse from this Pokemon deals 1/8 max HP each turn. This Pokemon restores 1/4 of the damage dealt by its attacks and by Curse damage it caused. When this Pokemon reaches half HP or faints, it creates Haunted Field for 5 turns.",
-		"shortDesc": "Filter; Curse becomes a 100 BP spread Ghost attack using the higher Attack or Sp. Atk; curses foes; heals 1/4 damage; half HP/faint sets Haunted Field.",
+		"desc": "This Pokemon has Filter's effects. Curse used by this Pokemon becomes a 100 BP physical or special Ghost-type attack using its higher Attack or Special Attack, with 100% accuracy, that hits all adjacent foes and curses each target. Curse from this Pokemon deals 1/8 max HP each turn. This Pokemon restores 1/4 of the damage dealt by its attacks and by Curse damage it caused. When this Pokemon reaches half HP or faints, it creates Haunted Field for 5 turns. Full local Frisk breaks all opposing active Illusions on entry, reveals their held items, and independently has a 30% chance to Embargo each item holder for 5 turns.",
+		"shortDesc": "Filter + Frisk; Curse becomes a 100 BP spread Ghost attack using the higher Attack or Sp. Atk; curses foes; heals 1/4 damage; half HP/faint sets Haunted Field.",
 		"rating": 4.5,
 		"flags": {
 			"breakable": 1
@@ -20273,18 +22645,30 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Cursed Doll",
 		"num": 10362,
 		"gen": 9,
-		"desc": "This Pokemon has Tough Claws and Shadow Shield's effects. Its damaging moves curse the foes they hurt. When it faints, it creates Haunted Field for 5 turns.",
-		"shortDesc": "Tough Claws + Shadow Shield; damaging moves curse; faint sets Haunted.",
+		"desc": "This Pokemon has Tough Claws and Shadow Shield's effects. Its damaging moves curse the foes they hurt. When it faints, it creates Haunted Field for 5 turns. Full local Frisk breaks all opposing active Illusions on entry, reveals their held items, and independently has a 30% chance to Embargo each item holder for 5 turns.",
+		"shortDesc": "Tough Claws + Shadow Shield + Frisk; damaging moves curse; faint sets Haunted.",
 		"rating": 4,
 		"flags": {},
+		"isNonstandard": null
+	},
+	"cursedkeepsake": {
+		"name": "Cursed Keepsake",
+		"num": 10131,
+		"gen": 9,
+		"desc": "When this Pokemon is hit by an opposing damaging move, the attacker becomes cursed. Cursed Pokemon deal 0.5x damage to this Pokemon. This Pokemon restores HP equal to 1/2 of Curse damage it caused. When this Pokemon faints, opposing Pokemon become cursed and it creates Haunted Field for 5 turns, ignoring Neutralization. Full local Frisk breaks all opposing active Illusions on entry, reveals their held items, and independently has a 30% chance to Embargo each item holder for 5 turns.",
+		"shortDesc": "Frisk; Curses attackers; cursed foes deal 0.5x; heals 1/2 Curse damage.",
+		"rating": 4.5,
+		"flags": {
+			"breakable": 1
+		},
 		"isNonstandard": null
 	},
 	"cursedmarionette": {
 		"name": "Cursed Marionette",
 		"num": 10104,
 		"gen": 9,
-		"desc": "This Pokemon's status moves have +1 priority. Its attacks and status moves curse opposing targets, and being hit curses the attacker. Cursed foes deal 0.8x damage to this Pokemon. This Pokemon restores HP equal to 1/2 of Curse damage it caused. Its Curse deals 1/8 max HP. When it faints, opposing Pokemon become cursed and it creates Haunted Field for 5 turns, ignoring Neutralization.",
-		"shortDesc": "Prankster; attacks/status curse; cursed foes deal 0.8x; heals 1/2 Curse damage.",
+		"desc": "This Pokemon's status moves have +1 priority. Its attacks and status moves curse opposing targets, and being hit curses the attacker. Cursed foes deal 0.8x damage to this Pokemon. This Pokemon restores HP equal to 1/2 of Curse damage it caused. Its Curse deals 1/8 max HP. When it faints, opposing Pokemon become cursed and it creates Haunted Field for 5 turns, ignoring Neutralization. Full local Frisk breaks all opposing active Illusions on entry, reveals their held items, and independently has a 30% chance to Embargo each item holder for 5 turns.",
+		"shortDesc": "Prankster + Frisk; attacks/status curse; cursed foes deal 0.8x; heals 1/2 Curse damage.",
 		"rating": 4.5,
 		"flags": {
 			"breakable": 1
@@ -20301,13 +22685,35 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {},
 		"isNonstandard": null
 	},
-	"debilitatingvenom": {
-		"name": "Debilitating Venom",
-		"num": 11230,
+	"dawnherald": {
+		"name": "Dawn Herald",
+		"num": 11253,
 		"gen": 9,
-		"desc": "This Pokemon can poison Steel- and Poison-type targets while other status protections still apply. Steel remains immune to Poison-type attack damage. When its damaging Poison move hits an already-poisoned opposing Pokemon's HP, that target's Attack falls by 1 stage once per turn.",
-		"shortDesc": "Can poison Steel/Poison types; Poison HP hits lower poisoned foes' Attack once per turn.",
-		"rating": 3.5,
+		"desc": "Full Drought + Friend Guard. On entry, summons sun for 5 turns (8 with Heat Rock). While active, allies take 25% less attack damage; this does not protect the holder. Normal weather blocking, ability suppression and bypass rules apply.",
+		"shortDesc": "Drought + Friend Guard; summons sun; allies take 25% less attack damage.",
+		"rating": 0,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"deadwater": {
+		"name": "Deadwater",
+		"num": 10584,
+		"gen": 9,
+		"desc": "Foes receive half their normal passive end-of-turn healing. Absorbs the HP actually prevented, capped at 1/8 of its maximum HP per turn. Excludes healing moves, Wish, draining, Leech Seed and switching recovery. Multiple Deadwater holders do not stack.",
+		"shortDesc": "Halves foes' passive end-turn healing and absorbs up to 1/8 HP per turn.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"decoypincers": {
+		"name": "Decoy Pincers",
+		"num": 10450,
+		"gen": 9,
+		"desc": "Once per switch-in, the first opposing direct hit deals 25% less damage and lowers the attacker's Attack by 1 stage. Multi-hit moves spend this protection on the first hit.",
+		"shortDesc": "First direct hit each entry deals 25% less and lowers the attacker's Attack.",
+		"rating": 4,
 		"flags": {},
 		"isNonstandard": null
 	},
@@ -20319,6 +22725,18 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"shortDesc": "At 1/4 HP or less, Atk/SpA are halved; also has Relic Armor.",
 		"rating": -1,
 		"flags": {},
+		"isNonstandard": null
+	},
+	"defragment": {
+		"name": "Defragment",
+		"num": 10141,
+		"gen": 9,
+		"desc": "On switch-in, this Pokemon compares the opposing side's combined Attack and Special Attack. If Attack is higher or tied, its Defense rises; otherwise its Special Defense rises. This Pokemon's moves cannot miss.",
+		"shortDesc": "Entry defensive boost based on foes' offenses; moves cannot miss.",
+		"rating": 3.5,
+		"flags": {
+			"breakable": 1
+		},
 		"isNonstandard": null
 	},
 	"desertrift": {
@@ -20386,6 +22804,38 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		},
 		"isNonstandard": null
 	},
+	"dishearten": {
+		"name": "Dishearten",
+		"num": 11234,
+		"gen": 9,
+		"desc": "On entry, lowers adjacent opposing Pokemon Sp. Atk by 1 stage. Blocked by Substitute and normal stat-drop protection; normal stat-drop reflection and reactions apply. Intimidate-specific immunities and reactions do not apply.",
+		"shortDesc": "On entry, lowers adjacent foes Sp. Atk by 1 stage.",
+		"rating": 3.5,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"dissonantchime": {
+		"name": "Dissonant Chime",
+		"num": 11250,
+		"gen": 9,
+		"desc": "Immune to opposing sound moves. Once per stay, a damaging sound move that deals opposing HP damage removes that target's positive stat stages. The use is spent only when a positive stage is removed.",
+		"shortDesc": "Immune to opposing sound; one sound HP hit per stay clears positive boosts when present.",
+		"rating": 4,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"dissonantecho": {
+		"name": "Dissonant Echo",
+		"num": 11204,
+		"gen": 9,
+		"desc": "Once per entry, the first resisted sound attack dealing opposing HP damage marks one foe after the attack. The next sound attack against that foe, through the end of the next turn, consumes the mark on attempt and treats resistance as neutral. Does not bypass immunity. Switching clears the mark. Spread attacks mark only their eligible primary foe, otherwise the first eligible foe in side order.",
+		"shortDesc": "Once/entry: resisted sound hit marks one foe; next sound attempt ignores its resistance.",
+		"rating": 2.5,
+		"flags": {},
+		"isNonstandard": null
+	},
 	"divineintervention": {
 		"name": "Divine Intervention",
 		"num": 10120,
@@ -20414,8 +22864,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Doom Warning",
 		"num": 10115,
 		"gen": 9,
-		"desc": "This Pokemon has Magic Bounce and Magic Guard. When it faints, Doom Desire is cast on every opposing Pokemon.",
-		"shortDesc": "Magic Bounce + Magic Guard; faint casts Doom Desire.",
+		"desc": "This Pokemon has Magic Bounce and Magic Guard. When it faints, Doom Desire is cast on every opposing Pokemon. Full local Anticipation reveals opposing Illusions and alerts to a super-effective or OHKO move. On Psychic Terrain, it gains +2 Special Attack only if no threat triggered the early alert.",
+		"shortDesc": "Magic Bounce + Magic Guard + Anticipation; faint casts Doom Desire.",
 		"rating": 5,
 		"flags": {
 			"breakable": 1
@@ -20427,7 +22877,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10384,
 		"gen": 9,
 		"desc": "Skill Link maximizes eligible multi-hit moves. Moves with 60 or less effective base power (80 or less on Factory Field) gain 1.5x power, punching moves gain 1.4x power. These bonuses stack.",
-		"shortDesc": "Iron Fist + Technician + Skill Link. Skill Link; stacking boosts to weaker and punching moves.",
+		"shortDesc": "Iron Fist + Technician + Skill Link; stacking boosts to weaker and punching moves.",
 		"rating": 4.5,
 		"flags": {
 			"breakable": 1
@@ -20476,6 +22926,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {
 			"breakable": 1
 		},
+		"isNonstandard": null
+	},
+	"dreadpresence": {
+		"name": "Dread Presence",
+		"num": 10541,
+		"gen": 9,
+		"desc": "Opponents lose 1/8 maximum HP after successfully using a status move, at most once per opponent per turn. Failed moves do not trigger this effect.",
+		"shortDesc": "Opponents lose 1/8 HP after successfully using a status move, at most once per opponent per turn. Failed moves do not trigger this effect.",
+		"rating": 4,
+		"flags": {},
 		"isNonstandard": null
 	},
 	"dreamsickness": {
@@ -20532,6 +22992,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		},
 		"isNonstandard": null
 	},
+	"dualwield": {
+		"name": "Dual Wield",
+		"num": 10284,
+		"gen": 9,
+		"desc": "",
+		"shortDesc": "Two 60% independent rolls; boosting pairs: full +15%; FFA: two full-power targets.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
 	"dunerunner": {
 		"name": "Dune Runner",
 		"num": 10440,
@@ -20558,10 +23028,22 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Dusk Drive",
 		"num": 10166,
 		"gen": 9,
-		"desc": "This Pokemon has Precision, Opportunist, and Battle Fervor built in.",
-		"shortDesc": "Precision + Opportunist + Battle Fervor.",
+		"desc": "Full Battle Fervor, Precision and Opportunist, including their field effects, entry behavior, item blocking, damage modifiers and boost-copy timing.",
+		"shortDesc": "Battle Fervor + Precision + Opportunist.",
 		"rating": 4,
 		"flags": {},
+		"isNonstandard": null
+	},
+	"echofiend": {
+		"name": "Echo Fiend",
+		"num": 10006,
+		"gen": 9,
+		"desc": "This Pokemon is immune to sound moves, and this immunity cannot be suppressed. Its sound moves become Flying type and have 1.5x power. This Pokemon's side is immune to its own damaging sound-based moves.",
+		"shortDesc": "Unsuppressible sound immunity; sound -> Flying 1.5x; allies avoid own sound damage.",
+		"rating": 4,
+		"flags": {
+			"cantsuppress": 1
+		},
 		"isNonstandard": null
 	},
 	"echosense": {
@@ -20586,6 +23068,30 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {
 			"breakable": 1,
 			"cantsuppress": 1
+		},
+		"isNonstandard": null
+	},
+	"eclipsevision": {
+		"name": "Eclipse Vision",
+		"num": 10153,
+		"gen": 9,
+		"desc": "This Pokemon's Special Attack is multiplied by 1.5. Its first move slot sets its opening type if Psychic or Dark, and each later Psychic- or Dark-type move changes it to that type. If this Pokemon is Psychic type, it restores 1/8 of its max HP at the end of each turn. If this Pokemon is Dark type, its damaging moves restore HP equal to 1/4 of the damage dealt.",
+		"shortDesc": "SpA 1.5x; first move slot sets Psychic/Dark type; later moves switch it; Psychic heals; Dark drains.",
+		"rating": 4,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"elevate": {
+		"name": "Elevate",
+		"num": 10015,
+		"gen": 9,
+		"desc": "This Pokemon is immune to Ground-type attacks and Spikes, Toxic Spikes, Sticky Web, and the Arena Trap Ability. This Pokemon's highest stat is raised by 1 stage if it attacks and knocks out another Pokemon. Stat stage changes are not considered.",
+		"shortDesc": "Ground immunity plus Beast Boost-style boost after KO.",
+		"rating": 3.5,
+		"flags": {
+			"breakable": 1
 		},
 		"isNonstandard": null
 	},
@@ -20633,12 +23139,34 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		},
 		"isNonstandard": null
 	},
+	"evaporate": {
+		"name": "Evaporate",
+		"num": 11246,
+		"gen": 9,
+		"desc": "Full Dry Skin, including field/weather effects. On entry, ends ordinary rain but not Primordial Sea. Once per stay, ending rain or absorbing Water grants one Steam Veil; the next damaging special HP hit deals 0.75x damage and consumes it. It cannot stack or refresh within that stay.",
+		"shortDesc": "Dry Skin; ends ordinary rain on entry; once per stay earns a one-hit special damage veil.",
+		"rating": 3,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"evilsanta": {
+		"name": "Evil Santa",
+		"num": 10016,
+		"gen": 9,
+		"desc": "Present hits all adjacent Pokémon and rolls one extra effect per hit. Delibird gets Dark STAB on other Dark moves, but not Present. A failed extra effect is not rerolled.",
+		"shortDesc": "Present hits all adjacent Pokémon and rolls one extra effect per hit.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
 	"exalt": {
 		"name": "Exalt",
 		"num": 10350,
 		"gen": 9,
-		"desc": "This Pokemon has Defiant's effect and gains STAB on Ice- and Flying-type moves.",
-		"shortDesc": "Defiant; Ice and Flying moves get STAB.",
+		"desc": "This Pokemon has Defiant: opposing stat drops raise its Attack by 2 stages. It cannot flinch. Its slicing moves and Steel Wing have 1.5x power, except on Cold Eclipse, as with Sharpness. Intimidate still lowers its Attack and triggers Defiant. Flinch protection can be bypassed by Mold Breaker; ability suppression disables all effects.",
+		"shortDesc": "Defiant + Sharpness; cannot flinch; slicing moves and Steel Wing have 1.5x power except on Cold Eclipse.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null
@@ -20660,12 +23188,22 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10043,
 		"gen": 9,
 		"desc": "Arrow moves gain 1.3x power against trapped foes. No Skill Link effect. Retains its arrow follow-up and protective effects.",
-		"shortDesc": "Mold Breaker + Dual Wield + Self Sufficient + Proficient. Arrow moves gain 1.3x power against trapped foes.",
+		"shortDesc": "Mold Breaker + Dual Wield + Self Sufficient + Proficient; Arrow moves gain 1.3x power against trapped foes.",
 		"rating": 3.5,
 		"flags": {
 			"breakable": 1,
 			"cantsuppress": 1
 		},
+		"isNonstandard": null
+	},
+	"falsebouquet": {
+		"name": "False Bouquet",
+		"num": 10591,
+		"gen": 9,
+		"desc": "Its first damaging Flower Trick against a surviving foe each entry also attempts to plant Leech Seed. Grass-type immunity and Substitute still apply.",
+		"shortDesc": "First Flower Trick hit each entry also plants Leech Seed.",
+		"rating": 4,
+		"flags": {},
 		"isNonstandard": null
 	},
 	"falsedevotion": {
@@ -20674,6 +23212,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"gen": 9,
 		"desc": "This Pokemon has Serene Grace, Natural Recovery, and Prankster's effects.",
 		"shortDesc": "Built-in Serene Grace, Natural Recovery, and Prankster.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"festivalstep": {
+		"name": "Festival Step",
+		"num": 10562,
+		"gen": 9,
+		"desc": "Landing a damaging dance move against a foe clears this Pokemon's negative stat stages after damage. Positive stages are preserved; blocked or missed moves do not trigger the effect.",
+		"shortDesc": "Dance hits clear its negative stat stages.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null
@@ -20690,6 +23238,26 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		},
 		"isNonstandard": null
 	},
+	"finalnote": {
+		"name": "Final Note",
+		"num": 10457,
+		"gen": 9,
+		"desc": "Once per switch-in, its first sound move selected while at half HP or less gains +1 priority. Using it spends the effect even if it misses or is blocked.",
+		"shortDesc": "At half HP, the first sound move each entry gains +1 priority.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"firemane": {
+		"name": "Fire Mane",
+		"num": 10022,
+		"gen": 9,
+		"desc": "This Pokemon's Fire-type attacks have 1.5x power.",
+		"shortDesc": "This Pokemon's Fire-type attacks have 1.5x power.",
+		"rating": 3.5,
+		"flags": {},
+		"isNonstandard": null
+	},
 	"flashfire": {
 		"name": "Flash Fire",
 		"num": 18,
@@ -20700,6 +23268,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {
 			"breakable": 1
 		},
+		"isNonstandard": null
+	},
+	"flintfracture": {
+		"name": "Flint Fracture",
+		"num": 11240,
+		"gen": 9,
+		"desc": "Connecting slicing moves remove the target side's Reflect and Aurora Veil before damage. Opposing HP damage applies stone splinters dealing 1/16 maximum HP at the end of this turn and the following turn. Reapplication refreshes, never stacks; switching clears splinters. No slicing power multiplier.",
+		"shortDesc": "Slicing attacks break Reflect/Veil; HP hits inflict two turns of 1/16 stone splinters.",
+		"rating": 4,
+		"flags": {},
 		"isNonstandard": null
 	},
 	"floehunter": {
@@ -20716,8 +23294,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Fluffy Craft",
 		"num": 10310,
 		"gen": 9,
-		"desc": "This Pokemon has Fluffy and Technician's effects.",
-		"shortDesc": "Fluffy + Technician.",
+		"desc": "Full Fluffy + Technician + local Natural Cure. Contact attacks deal half damage; Fire attacks deal double damage (contact Fire attacks are neutral). Moves of 60 power or less gain 1.5x power, with the existing Factory Field threshold of 80. Switching out cures major status and, only when a status was cured, heals 1/3 maximum HP. Bewitched Woods also cures status at turn end without this switch-out heal. Normal ability suppression applies.",
+		"shortDesc": "Fluffy + Technician + Natural Cure.",
 		"rating": 3.5,
 		"flags": {},
 		"isNonstandard": null
@@ -20727,7 +23305,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10131,
 		"gen": 9,
 		"desc": "Moves that do not match this Pokemon's type gain STAB. Its damaging moves ignore type immunities while respecting resistances, and it has Overcoat's effects.",
-		"shortDesc": "Off-type moves gain STAB; hits type immunities; Overcoat.",
+		"shortDesc": "Overcoat; Off-type moves gain STAB; hits type immunities.",
 		"rating": 5,
 		"flags": {
 			"breakable": 1
@@ -20739,7 +23317,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10026,
 		"gen": 9,
 		"desc": "On switch-in, this Pokemon sets Forest Terrain and Grassy Aura for 5 turns, or 8 turns with Amplifield Rock. It also has Proficient's effect.",
-		"shortDesc": "Forest and Grassy Aura: 5 turns (8 with Amplifield Rock); Proficient.",
+		"shortDesc": "Proficient; Forest and Grassy Aura: 5 turns (8 with Amplifield Rock).",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null
@@ -20759,7 +23337,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10025,
 		"gen": 9,
 		"desc": "This Pokemon has Shell Armor and Water Barrage's effects, plus Power Spot and Friend Guard. In Electric Terrain, Murkwater Surface, Water Surface, Underwater, Factory, and Short Circuit fields, incoming Electric moves are blocked and redirected to it, raising its Attack and Special Attack by 1. Fairy Tale, New World, Cold Eclipse, and Starlight Arena give it +1 Defense and +1 Special Defense once per active terrain. New World, Cold Eclipse, and Starlight Arena also boost its move power by 1.5x.",
-		"shortDesc": "Proficient. Shell Armor + Water Barrage; field Electric absorption; ally support.",
+		"shortDesc": "Proficient; Shell Armor + Water Barrage; field Electric absorption; ally support.",
 		"rating": 4.5,
 		"flags": {
 			"breakable": 1
@@ -20781,7 +23359,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10065,
 		"gen": 9,
 		"desc": "When this Pokemon is hit by a damaging move, its Attack and Speed rise by 1 stage and it becomes confused. While confused, it takes 1.25x damage from attacks. This Pokemon has Klutz's effect. If it hits itself in confusion, it also loses 1/8 of its maximum HP.",
-		"shortDesc": "Hit: +1 Atk/Spe and confusion; confusion takes 1.25x; Klutz; self-hit costs 1/8.",
+		"shortDesc": "Klutz; Hit: +1 Atk/Spe and confusion; confusion takes 1.25x; self-hit costs 1/8.",
 		"rating": 3.5,
 		"flags": {
 			"breakable": 1
@@ -20805,6 +23383,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"desc": "Slush Rush + Refrigerate + Strong Jaw + Levitate. Speed rises in snow; eligible Normal moves become Ice, biting moves gain power, and this Pokemon is airborne.",
 		"shortDesc": "Slush Rush + Refrigerate + Strong Jaw + Levitate.",
 		"rating": 5,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"freshplumage": {
+		"name": "Fresh Plumage",
+		"num": 11256,
+		"gen": 9,
+		"desc": "Full local Natural Cure: cures status when switching out and heals 1/3 maximum HP only when curing a status; Bewitched Woods cures status at turn end without that heal. The first successful Flying damaging move each entry deals 1.2x damage across its entire hit sequence. Misses, Protect and immunity do not consume it; damaging a Substitute does. No additional recoil protection or Body Press bonus. Switching back in resets the Flying bonus.",
+		"shortDesc": "Natural Cure; first successful Flying attack each entry deals 1.2x damage.",
+		"rating": 2.5,
 		"flags": {},
 		"isNonstandard": null
 	},
@@ -20845,7 +23433,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10106,
 		"gen": 9,
 		"desc": "On entry, this Pokemon sets Snow through Snow Warning for 8 turns. It has Ice Body and Filter. Manually used Aurora Veil lasts 8 turns. Each turn, non-immune foes take Ice damage equal to 1/16 max HP. Only in Free-for-All does Ice type effectiveness scale this chip.",
-		"shortDesc": "Snow Warning + Ice Body + Filter. 8-turn Snow; Ice Body + Filter; Ice chip scales by type in FFA.",
+		"shortDesc": "Snow Warning + Ice Body + Filter; 8-turn Snow; Ice chip scales by type in FFA.",
 		"rating": 5,
 		"flags": {
 			"breakable": 1
@@ -20859,6 +23447,36 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"desc": "Stakeout + Sharpness + Refrigerate. Doubles attacking stats against foes that just entered battle. Slicing moves have 1.5x power except on Cold Eclipse. Eligible Normal moves become Ice with 1.2x power, or 1.5x on Icy and Snowy Mountain fields.",
 		"shortDesc": "Stakeout + Sharpness + Refrigerate.",
 		"rating": 5,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"frozenfeast": {
+		"name": "Frozen Feast",
+		"num": 11241,
+		"gen": 9,
+		"desc": "Full Strong Jaw. Ice moves dealing opposing HP damage lower each surviving target's Speed by 1 after the whole move, once per target, unless that move already successfully lowered its Speed. Biting attacks drain half their actual opposing HP damage if that target had negative Speed stages before the attack began. Normal draining interactions apply.",
+		"shortDesc": "Strong Jaw; Ice HP hits lower Speed once; bites drain 50% against already-slowed foes.",
+		"rating": 3.5,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"frozenfortress": {
+		"name": "Frozen Fortress",
+		"num": 10236,
+		"gen": 9,
+		"desc": "This Pokemon has Shell Armor, Ice Body, and Crumbling Shell's effects.",
+		"shortDesc": "Shell Armor + Ice Body + Crumbling Shell.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"funeralchoir": {
+		"name": "Funeral Choir",
+		"num": 10561,
+		"gen": 9,
+		"desc": "Damaging sound moves restore 1/32 maximum HP per currently fainted teammate, capped at 1/8 and once per turn. While a teammate is fainted, damaging Ghost moves also become sound moves, including sound interactions such as Soundproof and Substitute bypass.",
+		"shortDesc": "Sound hits heal per fainted ally; Ghost attacks become sound after an ally faints.",
+		"rating": 4,
 		"flags": {},
 		"isNonstandard": null
 	},
@@ -20920,6 +23538,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		},
 		"isNonstandard": null
 	},
+	"gildedgrace": {
+		"name": "Gilded Grace",
+		"num": 11215,
+		"gen": 9,
+		"desc": "Once per switch-in, this Pokemon prevents the first Special Attack reduction caused by its own damaging move. The entire reduction is prevented. Opposing moves and status moves are unaffected. A reduction that cannot occur at -6 does not spend the use. Losing, regaining, or suppressing this Ability does not refresh it; switching out and back in does.",
+		"shortDesc": "Once per entry, prevents its first Sp. Atk drop from its own damaging move.",
+		"rating": 3,
+		"flags": {},
+		"isNonstandard": null
+	},
 	"glacialheart": {
 		"name": "Glacial Heart",
 		"num": 11129,
@@ -20959,7 +23587,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 183,
 		"gen": 6,
 		"desc": "When this Pokemon is hit by an opposing damaging move, once per attacking move, the attacker's Speed is lowered by 2 stages, or 4 stages on Murkwater Surface. This Pokemon also has Hydration and Sap Sipper's effects.",
-		"shortDesc": "Damaging hit: attacker -2 Spe (-4 on Murkwater); Hydration + Sap Sipper.",
+		"shortDesc": "Hydration + Sap Sipper; Damaging hit: attacker -2 Spe (-4 on Murkwater).",
 		"rating": 2,
 		"flags": {
 			"breakable": 1
@@ -20978,6 +23606,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		},
 		"isNonstandard": null
 	},
+	"gravehunger": {
+		"name": "Grave Hunger",
+		"num": 11251,
+		"gen": 9,
+		"desc": "Full Bad Dreams. Ghost attacks drain 25% of actual opposing HP damage, without adding drain to moves that already drain. While active, halves opposing active Pokemon's healing and gains the HP actually prevented. Combined new healing is capped at 1/8 maximum HP per turn; opposing healing stays reduced when this Pokemon is full or capped. Bench healing and switching-out Regenerator are unaffected. Normal healing blockers and drain interactions apply.",
+		"shortDesc": "Bad Dreams; Ghost HP hits drain 25%; halves foe healing and takes prevented HP (combined cap 1/8 per turn).",
+		"rating": 1.5,
+		"flags": {},
+		"isNonstandard": null
+	},
 	"gravewind": {
 		"name": "Gravewind",
 		"num": 10527,
@@ -20992,8 +23630,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Great Marsh",
 		"num": 10335,
 		"gen": 9,
-		"desc": "Anticipation + Dry Skin + Adaptability. Poison Touch is removed.",
-		"shortDesc": "Anticipation + Dry Skin + Adaptability.",
+		"desc": "Full Anticipation + Dry Skin + Adaptability + Toxic Chain. Anticipation reveals dangerous moves and removes opposing Illusions. Dry Skin absorbs Water to heal 1/4 HP, increases incoming Fire power by 25%, retains rain/sun recovery/damage and all local field effects. Adaptability strengthens STAB. Toxic Chain has a 30% chance per damaging hit to badly poison (60% on Corrosive Mist or Wasteland); Shield Dust, Covert Cloak, Substitute and normal poison immunities still apply. Poison moves gain 1.3x power on Wasteland. No Corrosion.",
+		"shortDesc": "Anticipation + Dry Skin + Adaptability + Toxic Chain.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null
@@ -21012,8 +23650,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Grounding Tail",
 		"num": 11208,
 		"gen": 9,
-		"desc": "Once per entry, the first Electric attack dealing opposing HP damage removes Sticky Web from the user's side. No Ground immunity or Speed boost. Ability changes do not refresh this effect.",
-		"shortDesc": "Once per entry, Electric damage clears Sticky Web from its side.",
+		"desc": "Electric moves treat each Ground typing as a resistance instead of an immunity, retaining all other type factors, and cause no move recoil. Water/Ground takes neutral damage; Ground/Dragon takes quarter damage. Absorption abilities still block them, and incoming Ground attacks are unchanged.",
+		"shortDesc": "Electric moves have no recoil and treat Ground immunity as resistance.",
 		"rating": 2.5,
 		"flags": {},
 		"isNonstandard": null
@@ -21123,8 +23761,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Heavy Artillery",
 		"num": 10383,
 		"gen": 9,
-		"desc": "Unaware + Shell Armor. Damaging pulse and bullet moves have double power and hit all foes in Doubles and Free-for-All. In Free-for-All, the designated primary target takes full damage and other foes take half their otherwise-calculated damage; protection or immunity of the primary does not promote another target. If no valid primary is supplied, the first active foe in side order is selected. Defense and Special Defense fall by 1 after firing.",
-		"shortDesc": "Unaware + Shell Armor. Double pulse/bullet power; spread. FFA primary full, others half; -1 Def/SpD after firing.",
+		"desc": "Unaware + Shell Armor. Damaging pulse and bullet moves have double power and hit all foes in Doubles and Free-for-All. In Free-for-All, the designated primary target takes full damage and other foes take half their otherwise-calculated damage; protection or immunity of the primary does not promote another target. If no valid primary is supplied, the first active foe in side order is selected. Defense and Special Defense fall by 1 after firing. On activation, reveals all opposing active Illusions, including itemless foes; this is not a continuous effect.",
+		"shortDesc": "Unaware + Shell Armor; Reveals opposing Illusions on activation; Double pulse/bullet power; spread. FFA primary full, others half; -1 Def/SpD after firing.",
 		"rating": 5,
 		"flags": {
 			"breakable": 1
@@ -21146,7 +23784,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10100,
 		"gen": 9,
 		"desc": "This Pokemon has Flash Fire and Dark Aura's effects. During harsh sunlight, its Attack and Special Attack are multiplied by 1.5. After it uses a Fire-type move, it sets Sunny Day for 2 turns.",
-		"shortDesc": "Solar Power + Dark Aura. Flash Fire + Dark Aura; Sun: Atk/SpA 1.5x; Fire moves set 2-turn Sun.",
+		"shortDesc": "Solar Power; Flash Fire + Dark Aura; Sun: Atk/SpA 1.5x; Fire moves set 2-turn Sun.",
 		"rating": 4.5,
 		"flags": {
 			"breakable": 1
@@ -21175,12 +23813,22 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {},
 		"isNonstandard": null
 	},
+	"hiddenscroll": {
+		"name": "Hidden Scroll",
+		"num": 10555,
+		"gen": 9,
+		"desc": "Once per switch-in in doubles, a successful single-target status move aimed at a foe also attempts the move against the other adjacent foe. Each target independently respects accuracy, protection, immunity and reflection. Excludes moves that call other moves.",
+		"shortDesc": "In doubles, its first single-target status move each entry also targets the other foe.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
 	"highnoon": {
 		"name": "High Noon",
 		"num": 10028,
 		"gen": 9,
 		"desc": "Proficient + Dual Wield + Mega Launcher. Pulse and bullet moves gain Mega Launcher power; damaging moves never miss.",
-		"shortDesc": "Proficient + Dual Wield + Mega Launcher.",
+		"shortDesc": "Dual Wield + Mega Launcher + Proficient.",
 		"rating": 4.5,
 		"flags": {
 			"breakable": 1
@@ -21216,7 +23864,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10340,
 		"gen": 9,
 		"desc": "This Pokemon has Brute Force and Magma Armor's effects.",
-		"shortDesc": "Brute Force + Reckless + Rock Head + Magma Armor.",
+		"shortDesc": "Brute Force + Magma Armor.",
 		"rating": 5,
 		"flags": {
 			"breakable": 1
@@ -21252,6 +23900,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"desc": "Levitate. Above half HP, damaging Electric moves cannot miss or be redirected. Type and ability immunities still apply.",
 		"shortDesc": "Levitate; above half HP, Electric attacks cannot miss or be redirected.",
 		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"hydrabond": {
+		"name": "Hydra Bond",
+		"num": 10000,
+		"gen": 9,
+		"desc": "This Pokemon's damaging moves become multi-hit moves that hit three times. The second and third hits deal 30% damage and retarget the foe's ally if the first target fainted. In Free-for-All battles, single-target moves hit all foes once at 1.3x power; spread moves hit all foes three times, with later hits at 30% power, and full-power spread moves stay full power.",
+		"shortDesc": "Damaging moves hit 3x; hits 2/3 at 30%; FFA singles hit all foes at 1.3x.",
+		"rating": 4.5,
 		"flags": {},
 		"isNonstandard": null
 	},
@@ -21316,6 +23974,18 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {},
 		"isNonstandard": null
 	},
+	"illuminate": {
+		"name": "Illuminate",
+		"num": 35,
+		"gen": 3,
+		"desc": "Prevents other Pokemon from lowering this Pokemon's accuracy stat stage. This Pokemon ignores a target's evasiveness stat stage. On activation, reveals all opposing active Illusions, including itemless foes; this is not a continuous effect.",
+		"shortDesc": "Reveals opposing Illusions on activation; This Pokemon's accuracy can't be lowered by others; ignores their evasiveness stat.",
+		"rating": 0.5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
 	"imperialmandate": {
 		"name": "Imperial Mandate",
 		"num": 10258,
@@ -21336,6 +24006,26 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {},
 		"isNonstandard": null
 	},
+	"inexorable": {
+		"name": "Inexorable",
+		"num": 10398,
+		"gen": 9,
+		"desc": "This Pokemon's attacks have 1.3x power if its target has not moved yet or is switching out.",
+		"shortDesc": "1.3x power against targets that have not moved or are switching.",
+		"rating": 3,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"intimidate": {
+		"name": "Intimidate",
+		"num": 22,
+		"gen": 3,
+		"desc": "On switch-in, this Pokemon lowers the Attack of opposing Pokemon by 1 stage. Pokemon with the Inner Focus, Oblivious, Own Tempo, or Scrappy Abilities and Pokemon behind a substitute are immune.",
+		"shortDesc": "On switch-in, this Pokemon lowers the Attack of opponents by 1 stage.",
+		"rating": 3.5,
+		"flags": {},
+		"isNonstandard": null
+	},
 	"intrepidsword": {
 		"name": "Intrepid Sword",
 		"num": 234,
@@ -21346,12 +24036,34 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {},
 		"isNonstandard": null
 	},
+	"inversion": {
+		"name": "Inversion",
+		"num": 10001,
+		"gen": 9,
+		"desc": "On switch-in, this Pokemon sets Inverse Field. Stat changes this Pokemon receives are inverted, except those from Z-Power effects.",
+		"shortDesc": "Sets Inverse Field and inverts its stat changes.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"invigorate": {
+		"name": "Invigorate",
+		"num": 10144,
+		"gen": 9,
+		"desc": "Healing received by this Pokemon and its allies is multiplied by 1.3. At the end of each turn, this Pokemon has a 50% chance to cure each adjacent ally's status condition.",
+		"shortDesc": "User/allies receive 1.3x healing; 50% to cure ally status each turn.",
+		"rating": 3,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
 	"irondominion": {
 		"name": "Iron Dominion",
 		"num": 10051,
 		"gen": 9,
 		"desc": "On switch-in or G-Max activation, this Pokemon activates Pressure and Mirror Armor's effects and heals its ally like Sworn Duty.",
-		"shortDesc": "Pressure + Mirror Armor + Sworn Duty.",
+		"shortDesc": "Pressure + Sworn Duty + Mirror Armor.",
 		"rating": 4,
 		"flags": {
 			"breakable": 1
@@ -21422,6 +24134,18 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {},
 		"isNonstandard": null
 	},
+	"keeneye": {
+		"name": "Keen Eye",
+		"num": 51,
+		"gen": 3,
+		"desc": "Prevents other Pokemon from lowering this Pokemon's accuracy stat stage. This Pokemon ignores a target's evasiveness stat stage. On activation, reveals all opposing active Illusions, including itemless foes; this is not a continuous effect.",
+		"shortDesc": "Reveals opposing Illusions on activation; This Pokemon's accuracy can't be lowered by others; ignores their evasiveness stat.",
+		"rating": 0.5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
 	"keenhunt": {
 		"name": "Keen Hunt",
 		"num": 10520,
@@ -21449,6 +24173,18 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"desc": "Fluffy + Guts + Flash Fire. Fire attacks are absorbed, status strengthens physical attacks, and contact damage is reduced. Does not include Brute Force.",
 		"shortDesc": "Fluffy + Guts + Flash Fire.",
 		"rating": 5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"knightsguard": {
+		"name": "Knight's Guard",
+		"num": 10263,
+		"gen": 9,
+		"desc": "Once per switch-in in doubles, redirects the first single-target damaging attack aimed at an adjacent ally to this Pokemon. It takes 25% less damage from that attack and, if it survives a hit, gains one Attack stage. Spread moves and status moves are not redirected.",
+		"shortDesc": "Once per switch-in, intercepts an ally-targeted attack; takes 25% less and gains +1 Atk if hit.",
+		"rating": 4,
 		"flags": {
 			"breakable": 1
 		},
@@ -21495,6 +24231,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"desc": "Swarm. Once per battle, surviving an opposing hit that crosses from above half HP to half or less creates a Substitute with 1/8 maximum HP, at no HP cost. Cannot replace an existing Substitute.",
 		"shortDesc": "Swarm; once per battle, crossing half HP creates a 1/8-HP Substitute.",
 		"rating": 2,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"lastlaugh": {
+		"name": "Last Laugh",
+		"num": 10454,
+		"gen": 9,
+		"desc": "If no other active Pokemon has a move left to use this turn, this Pokemon's damaging attack bypasses Substitute. Damaging a foe with that attack restores 1/8 maximum HP, once per turn.",
+		"shortDesc": "When no other Pokemon will move this turn, its hit bypasses Substitute and heals 1/8.",
+		"rating": 4,
 		"flags": {},
 		"isNonstandard": null
 	},
@@ -21551,6 +24297,18 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"desc": "This Pokemon is immune to Electric-type moves and raises its Attack and Special Attack by 1 stage when hit by an Electric-type move. It redirects single-target Electric moves within range to itself. On Electric Terrain, both stats rise by 1 stage on entry.",
 		"shortDesc": "Draws Electric moves to raise Attack and Sp. Atk by 1; Electric immunity.",
 		"rating": 3,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"limber": {
+		"name": "Limber",
+		"num": 7,
+		"gen": 3,
+		"desc": "This Pokemon cannot be paralyzed, cures paralysis if it gains this Ability, and cannot have its Speed lowered by another Pokemon or field effects, including field Speed multipliers. Self-inflicted Speed costs and held-item slowdowns still apply. This does not change Trick Room ordering or prevent losing positive Speed boosts or Tailwind.",
+		"shortDesc": "Cannot be paralyzed or have Speed reduced by other Pokemon or field effects.",
+		"rating": 2,
 		"flags": {
 			"breakable": 1
 		},
@@ -21614,10 +24372,12 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Long Reach",
 		"num": 203,
 		"gen": 7,
-		"desc": "Removes contact and raises critical-hit rate by one stage. Also raises Accuracy on entry and retains field bonuses. No triple critical-hit damage.",
-		"shortDesc": "Super Luck. Removes contact and raises critical-hit rate by one stage.",
+		"desc": "Removes contact and raises critical-hit rate by one stage. Also raises Accuracy on entry and retains field bonuses. No triple critical-hit damage. Full local Keen Eye prevents opposing accuracy drops, ignores evasion boosts and reveals opposing Illusions on activation. Mirror Arena grants +1 accuracy and Laser Focus; shared accuracy entry rewards apply once.",
+		"shortDesc": "Super Luck + Keen Eye; Removes contact and raises critical-hit rate by one stage.",
 		"rating": 1,
-		"flags": {},
+		"flags": {
+			"breakable": 1
+		},
 		"isNonstandard": null
 	},
 	"loyalguard": {
@@ -21630,6 +24390,30 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {},
 		"isNonstandard": null
 	},
+	"lunardread": {
+		"name": "Lunar Dread",
+		"num": 10265,
+		"gen": 9,
+		"desc": "Dishearten + Insomnia + Pressure. On entry, lowers adjacent foes Sp. Atk by 1 stage, blocked by Substitute and normal stat-drop protection. Prevents sleep and Yawn; Dark and Ghost attacks have 1.3x power. Retains local Pressure: lowers foes Defense and Sp. Def by 1 stage on entry (2 on Cold Eclipse), costs foes 1 extra PP (2 on Midnight Zone), and changes Underwater to Midnight Zone. No mark, damage-reduction or Ground critical-hit effects.",
+		"shortDesc": "Dishearten + Insomnia + Pressure; retains their local field effects.",
+		"rating": 4,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"lunaridol": {
+		"name": "Lunar Idol",
+		"num": 10019,
+		"gen": 9,
+		"desc": "This Pokemon has Levitate's Ground immunity and is immune to hail damage. Its Ice-type moves have 1.5x power, and its Special Attack is 1.5x during hail or snow.",
+		"shortDesc": "Levitate; immune to hail; Ice power 1.5x; Sp. Atk 1.5x in hail/snow.",
+		"rating": 4,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
 	"lunarorbit": {
 		"name": "Lunar Orbit",
 		"num": 10140,
@@ -21640,6 +24424,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {
 			"breakable": 1
 		},
+		"isNonstandard": null
+	},
+	"lunarspirit": {
+		"name": "Lunar Spirit",
+		"num": 10348,
+		"gen": 9,
+		"desc": "This Pokemon has STAB on Psychic- and Normal-type moves.",
+		"shortDesc": "Psychic- and Normal-type moves get STAB.",
+		"rating": 3,
+		"flags": {},
 		"isNonstandard": null
 	},
 	"malicewell": {
@@ -21686,14 +24480,68 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		},
 		"isNonstandard": null
 	},
+	"masterkey": {
+		"name": "Master Key",
+		"num": 11239,
+		"gen": 9,
+		"desc": "Single-target status moves bypass Substitute and ignore opposing abilities under normal Mold Breaker rules. No priority boost. Accuracy, Protect, type/status immunities, Safeguard, terrain and Taunt still apply.",
+		"shortDesc": "Single-target status moves bypass Substitute and ignore opposing abilities.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"memoryleak": {
+		"name": "Memory Leak",
+		"num": 10140,
+		"gen": 9,
+		"desc": "Positive stat boosts this Pokemon would receive are passed to an adjacent ally instead.",
+		"shortDesc": "Passes positive stat boosts to an adjacent ally.",
+		"rating": 3,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"meridianseal": {
+		"name": "Meridian Seal",
+		"num": 10592,
+		"gen": 9,
+		"desc": "Its first Fighting hit against a surviving foe each entry attempts to suppress that foe's Ability for 2 turns, including the current turn. Protect, Substitute, Ability Shield and unsuppressible Abilities prevent suppression. Switching clears the seal.",
+		"shortDesc": "First Fighting hit each entry suppresses the foe's Ability for 2 turns.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
 	"mightyjaw": {
 		"name": "Mighty Jaw",
 		"num": 10308,
 		"gen": 9,
 		"desc": "This Pokemon has Strong Jaw and Intimidate's effects. On its first action after switching in, its biting moves have 2 higher priority.",
-		"shortDesc": "Proficient. Strong Jaw + Intimidate; biting moves gain +2 priority on first action.",
+		"shortDesc": "Proficient; Strong Jaw + Intimidate; biting moves gain +2 priority on first action.",
 		"rating": 4,
 		"flags": {},
+		"isNonstandard": null
+	},
+	"mimecraft": {
+		"name": "Mimecraft",
+		"num": 10436,
+		"gen": 9,
+		"desc": "Reflect and Light Screen gain +1 priority. Once per switch-in, the first one this Pokemon successfully sets heals its lowest-HP active ally by 1/8 of that ally's maximum HP.",
+		"shortDesc": "+1 priority for Reflect and Light Screen; first successful screen heals an ally by 1/8.",
+		"rating": 3.5,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"mindfreeze": {
+		"name": "Mind Freeze",
+		"num": 10132,
+		"gen": 9,
+		"desc": "This Pokemon cannot have this Ability suppressed. It is immune to Ice-type attacks and restores 1/4 of its maximum HP when hit by one. It has Ice Body's healing and hail immunity. Its damaging Psychic-type moves have a 40% chance to cause frostbite, and Freezing Glare's frostbite chance is doubled. Its Physical Ice-type moves become Special.",
+		"shortDesc": "Cannot be suppressed; Ice immunity heals 1/4; Ice Body; Psychic may frostbite.",
+		"rating": 4,
+		"flags": {
+			"cantsuppress": 1
+		},
 		"isNonstandard": null
 	},
 	"mirechorus": {
@@ -21772,6 +24620,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		},
 		"isNonstandard": null
 	},
+	"mountainbreaker": {
+		"name": "Mountainbreaker",
+		"num": 10540,
+		"gen": 9,
+		"desc": "Damaging Rock moves remain Rock-type with normal Rock STAB, but use the better overall Rock or Ground type-chart effectiveness against each target. Ground-immune typings do not replace the Rock matchup. No extra power multiplier.",
+		"shortDesc": "Rock moves use the better Rock/Ground matchup without changing type.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
 	"mountainhunger": {
 		"name": "Mountain Hunger",
 		"num": 10050,
@@ -21813,7 +24671,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10116,
 		"gen": 9,
 		"desc": "On switch-in, this Pokemon summons Hail for 8 turns, and Aurora Veil used by this Pokemon lasts 8 turns. During Hail or Snow, it heals 1/16 max HP each turn. Its damaging moves of any type gain an additional 30% chance to inflict frostbite, preserving their existing effects; this does not require weather. It is immune to Hail damage. When another Pokemon faints, it restores 1/8 max HP, or 1/4 if the faint was caused by an Ice move, Hail, Snow, or Curse. When it faints, all opposing Pokemon become cursed. Damaging hits disable the attacker's move when possible.",
-		"shortDesc": "Snow Warning + Ice Body. 8-turn Hail/Veil; damaging moves add 30% frostbite; faint healing/curse; hit Disable.",
+		"shortDesc": "Snow Warning + Ice Body; 8-turn Hail/Veil; damaging moves add 30% frostbite; faint healing/curse; hit Disable.",
 		"rating": 4.5,
 		"flags": {
 			"breakable": 1
@@ -21830,6 +24688,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {
 			"breakable": 1
 		},
+		"isNonstandard": null
+	},
+	"mudmeditation": {
+		"name": "Mud Meditation",
+		"num": 10566,
+		"gen": 9,
+		"desc": "While waiting to perform a selected status move, takes 25% less damage from special attacks. The protection ends when its action resolves or is cancelled.",
+		"shortDesc": "Takes 25% less special damage while waiting to use a status move.",
+		"rating": 4,
+		"flags": {},
 		"isNonstandard": null
 	},
 	"mudtemper": {
@@ -21888,23 +24756,45 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {},
 		"isNonstandard": null
 	},
+	"nighthoard": {
+		"name": "Night Hoard",
+		"num": 10439,
+		"gen": 9,
+		"desc": "Eating a Berry restores an additional 1/8 maximum HP and primes the next Dark-type biting attack that damages a foe to apply Taunt for 2 turns. Misses and blocked attacks preserve the charge.",
+		"shortDesc": "Eating a Berry heals 1/8 more and charges the next Dark bite to Taunt.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
 	"nighthunt": {
 		"name": "Night Hunt",
 		"num": 11101,
 		"gen": 9,
-		"desc": "Strong Jaw + Infiltrator + Intimidate. Biting moves have 1.5x power. Moves bypass substitutes and opposing screens. Lowers adjacent foes' Attack on entry.",
-		"shortDesc": "Strong Jaw + Infiltrator + Intimidate.",
+		"desc": "Strong Jaw + Infiltrator + Intimidate. Biting moves have 1.5x power. Moves bypass substitutes and opposing screens. Lowers adjacent foes' Attack on entry. Full local Frisk reveals opposing Illusions (including itemless foes), reveals held items and independently has a 30% chance to Embargo each opposing item holder for 5 turns. Full local Illuminate prevents opposing accuracy drops and ignores evasion boosts. Mirror Arena lowers opposing accuracy by 1; Starlight Arena raises Special Attack by 2 and places Spotlight on the first adjacent ally in multi-active battles. Shared Illusion reveals occur once.",
+		"shortDesc": "Strong Jaw + Infiltrator + Intimidate + Frisk + Illuminate.",
 		"rating": 4.5,
-		"flags": {},
+		"flags": {
+			"breakable": 1
+		},
 		"isNonstandard": null
 	},
 	"nightmarepulse": {
 		"name": "Nightmare Pulse",
-		"num": 10351,
+		"num": 11257,
 		"gen": 9,
 		"desc": "Pendulum Swing + Cursed Body + Bad Dreams. On entry, sets Haunted Field for 5 turns if field rules allow. Retains sleep immunity, accurate moves, damage reduction, disabling attackers, and damage to sleeping foes. Does not bypass screens or Substitute.",
 		"shortDesc": "Pendulum Swing + Cursed Body + Bad Dreams; 5-turn Haunted Field on entry.",
 		"rating": 4.5,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"nightrealm": {
+		"name": "Night Realm",
+		"num": 10350,
+		"gen": 9,
+		"desc": "This Pokemon can use Dream Eater and Nightmare on awake targets.",
+		"shortDesc": "Dream Eater and Nightmare affect awake targets.",
+		"rating": 3,
 		"flags": {},
 		"isNonstandard": null
 	},
@@ -21961,7 +24851,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10156,
 		"gen": 9,
 		"desc": "This Pokemon has Filter and Elevate. After it hits, three 20 BP special Mini-Noses each select the strongest of Steel, Electric, or Rock against their current target. They chain to another valid foe after a KO, and their KOs trigger Elevate.",
-		"shortDesc": "Filter + Elevate; three adaptive 20 BP Mini-Noses chain after KOs and trigger Elevate.",
+		"shortDesc": "Filter; three adaptive 20 BP Mini-Noses chain after KOs and trigger Elevate.",
 		"rating": 4,
 		"flags": {
 			"breakable": 1
@@ -22054,12 +24944,42 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		},
 		"isNonstandard": null
 	},
+	"paradoxengine": {
+		"name": "Paradox Engine",
+		"num": 10119,
+		"gen": 9,
+		"desc": "Speed and Fighting/Electric power rise 30% in their conditions. Speed increases by 30% in sun or Electric Terrain; Fighting- and Electric-type moves gain 30% power.",
+		"shortDesc": "Speed and Fighting/Electric power rise 30% in their conditions.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
 	"paradoxpower": {
 		"name": "Paradox Power",
 		"num": 10214,
 		"gen": 9,
 		"desc": "This Pokemon has Sheer Force's effect and gains STAB on Electric-type moves.",
 		"shortDesc": "Sheer Force; gains Electric STAB.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"paradoxpull": {
+		"name": "Paradox Pull",
+		"num": 10215,
+		"gen": 9,
+		"desc": "This Pokemon has Magnet Pull's effect. Its Steel typing only contributes resistances and immunities, not weaknesses.",
+		"shortDesc": "Magnet Pull; ignores Steel weaknesses.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"paradoxwheel": {
+		"name": "Paradox Wheel",
+		"num": 10213,
+		"gen": 9,
+		"desc": "This Pokemon gains STAB on Steel- and Electric-type moves.",
+		"shortDesc": "Gains Steel/Electric STAB.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null
@@ -22126,7 +25046,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Perfect Ego",
 		"num": 10116,
 		"gen": 9,
-		"desc": "This Pokemon has Ultra Ego's effects, and its moves cannot miss.",
+		"desc": "This Pokemon has Ultra Ego's effects, and its moves cannot miss. Its enhanced-field one-time 1/4 HP pinch recovery is consumed only when it actually restores HP; blocked healing preserves it for a later eligible hit window.",
 		"shortDesc": "Ultra Ego; moves cannot miss.",
 		"rating": 5,
 		"flags": {},
@@ -22137,7 +25057,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10114,
 		"gen": 9,
 		"desc": "Includes Insomnia and retains its opposing-ability copying. Automatically applies target-specific Miracle Eye before a direct damaging Psychic move. Direct single-target HP damage stores a 90 BP Psychic special attack; opposing special HP damage stores a 90 BP special attack of the incoming type. Shares one pending attack per opposing trainer (one in singles, up to three in Free-for-All), released one per turn beginning next turn. Snapshots its own level, Special Attack, stages and typing, without copied offensive abilities or items. Queues survive switching/fainting and coexist with ordinary Future Sight; normal live defenses apply. Once per battle when Alakazam Mega Evolves, sets real Reflect and Light Screen for 5 turns without shortening longer screens.",
-		"shortDesc": "Trace + Insomnia. Insomnia + ability copy; Miracle Eye; stored attacks; once-per-battle Mega screens.",
+		"shortDesc": "Trace; Insomnia + ability copy; Miracle Eye; stored attacks; once-per-battle Mega screens.",
 		"rating": 5,
 		"flags": {
 			"breakable": 1
@@ -22191,7 +25111,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10259,
 		"gen": 9,
 		"desc": "This Pokemon has Infiltrator, Levitate, and Hydra Bond's effects. Dragon Darts and G-Max Spirit Volley use its higher offensive stat and gain 20% power from Hydra Bond instead of extra hits. Dragon Darts keeps its two-hit pattern; Spirit Volley keeps its full-power hit and weaker follow-up against another foe. In Free-for-All battles, Dragon Darts hits all opposing Pokemon twice.",
-		"shortDesc": "Clear Body + Infiltrator + Levitate + Hydra Bond. Infiltrator + Levitate + Hydra Bond; signature moves gain 20% power.",
+		"shortDesc": "Clear Body + Infiltrator + Levitate + Hydra Bond; signature moves gain 20% power.",
 		"rating": 5,
 		"flags": {},
 		"isNonstandard": null
@@ -22200,7 +25120,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Phantom Fist",
 		"num": 10193,
 		"gen": 9,
-		"desc": "Unseen Fist + Self Repair + Shadow Shield + Aftermath. Its moves cannot miss, contact moves bypass Protect, it repairs itself, takes less damage at full HP, and damages contact attackers that knock it out.",
+		"desc": "Unseen Fist + Self Repair + Shadow Shield + Aftermath. Its moves cannot miss, contact moves bypass Protect, it repairs itself, takes 0.8x attack damage at any HP (0.6x total from super-effective attacks), and damages contact attackers that knock it out.",
 		"shortDesc": "Unseen Fist + Self Repair + Shadow Shield + Aftermath; moves cannot miss.",
 		"rating": 4,
 		"flags": {},
@@ -22230,8 +25150,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Pollen Bloom",
 		"num": 10137,
 		"gen": 9,
-		"desc": "This Pokemon has Thick Fat and Unaware's effects. At the end of each turn, opposing non-Grass Pokemon take Grass-type damage equal to 1/16 max HP, blocked by Grass immunities; this Pokemon heals the damage dealt by that chip. Only in Free-for-All does Grass type effectiveness scale this chip.",
-		"shortDesc": "Proficient + Thick Fat. Thick Fat + Unaware; healing Grass chip scales by type in FFA.",
+		"desc": "This Pokemon has Proficient, Thick Fat and Unaware's effects. At the end of each turn, opposing non-Grass Pokemon take Grass-type damage equal to 1/16 max HP, blocked by Grass immunities; this Pokemon heals the damage dealt by that chip. Only in Free-for-All does Grass type effectiveness scale this chip.",
+		"shortDesc": "Proficient + Thick Fat + Unaware; healing Grass chip scales by type in FFA.",
 		"rating": 4,
 		"flags": {
 			"breakable": 1
@@ -22248,14 +25168,98 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {},
 		"isNonstandard": null
 	},
+	"powerdrill": {
+		"name": "Power Drill",
+		"num": 10007,
+		"gen": 9,
+		"desc": "This Pokemon's drill moves have 1.5x power.",
+		"shortDesc": "Drill moves have 1.5x power.",
+		"rating": 3,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"precision": {
+		"name": "Precision",
+		"num": 10290,
+		"gen": 9,
+		"desc": "Super-effective moves used by this Pokemon cannot miss and have an increased critical-hit ratio.",
+		"shortDesc": "Super-effective moves never miss; boosted critical-hit ratio.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"predator": {
+		"name": "Predator",
+		"num": 10002,
+		"gen": 9,
+		"desc": "Stat changes this Pokemon receives are inverted, except those from Z-Power effects. If the target has not moved yet or just switched in, this Pokemon's attacks deal 1.3x damage. Attacks deal 2x damage to targets with Neutralization or Royal Decree.",
+		"shortDesc": "Has Contrary; boosts attacks into slower/new targets; 2x into authority abilities.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"pressurekiln": {
+		"name": "Pressure Kiln",
+		"num": 11247,
+		"gen": 9,
+		"desc": "Stores half the actual HP damage from opposing direct moves, up to 1/4 maximum HP. Its next Fire attack dealing opposing HP damage consumes the reservoir and heals the stored amount. Residual, recoil, ally and Substitute-only damage do not fill it. Switching clears storage.",
+		"shortDesc": "Stores half foe move HP damage (cap 1/4 max HP); next Fire HP hit consumes it to heal.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
 	"primalego": {
 		"name": "Primal Ego",
 		"num": 10419,
 		"gen": 9,
-		"desc": "This Pokemon has Unaware, Proficient, and Ultra Ego's effects. Ultra Ego's combat effects are inactive on Bewitched Woods, Haunted, and Holy Field.",
+		"desc": "This Pokemon has Unaware, Proficient, and Ultra Ego's effects. Ultra Ego's combat effects are inactive on Bewitched Woods, Haunted, and Holy Field. Its enhanced-field one-time 1/4 HP pinch recovery is consumed only when it actually restores HP; blocked healing preserves it for a later eligible hit window.",
 		"shortDesc": "Unaware + Proficient + Ultra Ego + Mold Breaker.",
 		"rating": 4,
 		"flags": {},
+		"isNonstandard": null
+	},
+	"primalrhythm": {
+		"name": "Primal Rhythm",
+		"num": 10588,
+		"gen": 9,
+		"desc": "Damaging sound moves become physical and use Attack. These moves spare allies. Retains normal sound interactions, including Soundproof and Throat Chop.",
+		"shortDesc": "Sound attacks use Attack and spare allies.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"primaltactics": {
+		"name": "Primal Tactics",
+		"num": 10206,
+		"gen": 9,
+		"desc": "This Pokemon's Special Attack is multiplied by 1.5, but it can only select the first move it executes. These effects are prevented while this Pokemon is Dynamaxed.",
+		"shortDesc": "This Pokemon's Sp. Atk is 1.5x, but it can only select the first move it executes.",
+		"rating": 4.5,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"primevalhunger": {
+		"name": "Primeval Hunger",
+		"num": 11252,
+		"gen": 9,
+		"desc": "Full Accumulation, including Stockpile, automatic releases, weather immunity and Fire/Ice damage protection. Draining attacks that damage a foe's HP inflict Heal Block through the end of the following turn. After the whole move, lower one positive Attack or Sp. Atk stage of each damaged foe, choosing the more boosted stat and Sp. Atk on ties. Never lowers an unboosted stat or grants the user a boost. Substitute-only damage does not trigger these effects; normal stat-drop protections apply.",
+		"shortDesc": "Accumulation; draining hits briefly Heal Block and lower a foe's higher positive attacking stage.",
+		"rating": 3,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"primevalhunt": {
+		"name": "Primeval Hunt",
+		"num": 11244,
+		"gen": 9,
+		"desc": "Full Skill Link and Battle Armor. The final scheduled hit of a move with at least three hits is a guaranteed critical hit unless critical-hit immunity prevents it. Earlier hits retain normal critical chances; interruption does not promote an earlier hit.",
+		"shortDesc": "Skill Link + Battle Armor; final scheduled hit of 3+ hit moves critically hits.",
+		"rating": 1,
+		"flags": {
+			"breakable": 1
+		},
 		"isNonstandard": null
 	},
 	"prismscale": {
@@ -22277,6 +25281,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"desc": "Tinted Lens. Once per switch-in, damaging a foe with a resisted attack raises this Pokemon's Speed by 1 stage.",
 		"shortDesc": "Tinted Lens. Once per switch-in, damaging a foe with a resisted attack raises its Speed by 1 stage.",
 		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"proficient": {
+		"name": "Proficient",
+		"num": 10300,
+		"gen": 9,
+		"desc": "This Pokemon's STAB moves have their power multiplied by 1.3.",
+		"shortDesc": "STAB moves have 1.3x power.",
+		"rating": 3,
 		"flags": {},
 		"isNonstandard": null
 	},
@@ -22327,6 +25341,18 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		},
 		"isNonstandard": null
 	},
+	"pulsefiltration": {
+		"name": "Pulse Filtration",
+		"num": 11220,
+		"gen": 9,
+		"desc": "Water- and Poison-type moves used by another Pokemon do not affect this Pokemon and instead restore 1/4 of its maximum HP. This immunity still works at full HP or when healing is blocked. Mold Breaker and other applicable ability-ignoring effects bypass it. On entry, summons Murkwater Surface for 5 turns, subject to field-generation blockers. It provides no ability-based residual healing.",
+		"shortDesc": "5-turn Murkwater Surface on entry; absorbs Water/Poison moves to heal 1/4 max HP.",
+		"rating": 3.5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
 	"pulsetriad": {
 		"name": "Pulse Triad",
 		"num": 11228,
@@ -22343,8 +25369,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Pulse Waste",
 		"num": 10353,
 		"gen": 9,
-		"desc": "This Pokemon has Protean, Poison Touch, and Regenerator's effects.",
-		"shortDesc": "Protean + Poison Touch + Regenerator.",
+		"desc": "On entry, summons Murkwater Surface for 5 turns, subject to field-generation blockers. This Pokemon has Protean, Poison Touch, and Regenerator's effects.",
+		"shortDesc": "Protean + Poison Touch + Regenerator; 5-turn Murkwater Surface on entry.",
 		"rating": 4.5,
 		"flags": {},
 		"isNonstandard": null
@@ -22359,6 +25385,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {
 			"breakable": 1
 		},
+		"isNonstandard": null
+	},
+	"purifyingfrost": {
+		"name": "Purifying Frost",
+		"num": 10428,
+		"gen": 9,
+		"desc": "On switch-in, cures status conditions from this Pokemon and its active allies. Once per switch-in, after its first Ice-type move, it sets Safeguard on its side for 5 turns, even if that move misses or fails.",
+		"shortDesc": "Cures its side's active Pokemon on entry; first Ice move sets 5-turn Safeguard.",
+		"rating": 4,
+		"flags": {},
 		"isNonstandard": null
 	},
 	"quarrycannon": {
@@ -22424,7 +25460,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10054,
 		"gen": 9,
 		"desc": "Hydra Bond, Normal/Fighting Ghost-immunity bypass, and damaging moves cannot miss. Retains Hydra Bond's Free-for-All targeting and Dragon's Den power bonus, without an extra multi-hit power multiplier. Does not grant Fighting Fiend's sleep immunity or Multiscale, or Scrappy's Intimidate immunity. Status moves retain their normal accuracy.",
-		"shortDesc": "Hydra Bond + Scrappy. Hydra Bond; Normal/Fighting hits Ghosts; damaging moves cannot miss.",
+		"shortDesc": "Hydra Bond + Scrappy; Normal/Fighting hits Ghosts; damaging moves cannot miss.",
 		"rating": 4.5,
 		"flags": {
 			"breakable": 1
@@ -22436,7 +25472,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10385,
 		"gen": 9,
 		"desc": "This Ability cannot be suppressed. This Pokemon has Raging Storm and Supreme Overlord's effects.",
-		"shortDesc": "Raging Storm + Supreme Overlord + Mold Breaker + Battle Armor.",
+		"shortDesc": "Raging Storm + Supreme Overlord.",
 		"rating": 5,
 		"flags": {
 			"cantsuppress": 1
@@ -22448,7 +25484,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10121,
 		"gen": 9,
 		"desc": "This Ability cannot be suppressed. This Pokemon has Mold Breaker and Battle Armor. Its attacks ignore Reflect, Light Screen, Aurora Veil, and defensive stat boosts. If this Pokemon gets a KO, it damages remaining foes for 60% of the last damage in multi battles, or raises Attack by 1 if there is no valid target or no damage is dealt. Magic Guard users do not take this damage.",
-		"shortDesc": "Cannot be suppressed; Mold Breaker + Battle Armor; attacks ignore screens/defensive boosts; KO bonus.",
+		"shortDesc": "Mold Breaker + Battle Armor; Cannot be suppressed; attacks ignore screens/defensive boosts; KO bonus.",
 		"rating": 4.5,
 		"flags": {
 			"cantsuppress": 1
@@ -22469,8 +25505,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Rail Sight",
 		"num": 10476,
 		"gen": 9,
-		"desc": "Stalwart. Once per switch-in, a successful attack against a foe using Follow Me, Rage Powder, Lightning Rod or Storm Drain ignores damage-reducing screens. Does not bypass Substitute.",
-		"shortDesc": "Stalwart; first hit through redirection each entry ignores screens.",
+		"desc": "Full Stalwart, including its local field effects. Once per switch-in, surviving a whole opposing damaging move that hits HP stores a non-stacking 1.5x boost for the next Electric attack. Consumed when that attack executes, including misses, Protect or immunity; charge-only and interrupted turns do not consume it. Switching clears it. Does not skip Electro Shot charging, grant an extra Sp. Atk boost or ignore screens.",
+		"shortDesc": "Stalwart; once/entry after surviving an opposing HP hit, next Electric attack has 1.5x power.",
 		"rating": 0,
 		"flags": {},
 		"isNonstandard": null
@@ -22480,8 +25516,28 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10154,
 		"gen": 9,
 		"desc": "On entry, this Pokemon sets Rain for 8 turns. Its Electric-, Water-, and Flying-type moves receive STAB. Each turn, non-immune foes take Water damage equal to 1/16 max HP. Only in Free-for-All does Water type effectiveness scale this chip.",
-		"shortDesc": "Drizzle. 8-turn Rain; Electric/Water/Flying STAB; Water chip scales by type in FFA.",
+		"shortDesc": "Drizzle; 8-turn Rain; Electric/Water/Flying STAB; Water chip scales by type in FFA.",
 		"rating": 4.5,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"raisedquills": {
+		"name": "Raised Quills",
+		"num": 10530,
+		"gen": 9,
+		"desc": "Successfully using a status move primes one non-stacking charge that poisons the next opposing contact attacker, subject to normal status immunities.",
+		"shortDesc": "Using a status move primes the next contact attacker to be poisoned.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"rapidresponse": {
+		"name": "Rapid Response",
+		"num": 10292,
+		"gen": 9,
+		"desc": "On this Pokemon's first active turn, its Speed is 1.5x and its Sp. Atk is 1.2x.",
+		"shortDesc": "First active turn: 1.5x Spe and 1.2x Sp. Atk.",
+		"rating": 4,
 		"flags": {},
 		"isNonstandard": null
 	},
@@ -22493,6 +25549,18 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"shortDesc": "Drizzle + Strong Jaw + Speed Boost.",
 		"rating": 4,
 		"flags": {},
+		"isNonstandard": null
+	},
+	"razorreach": {
+		"name": "Razor Reach",
+		"num": 11229,
+		"gen": 9,
+		"desc": "Full Sharpness + Long Reach. Slicing moves have 1.5x power (except on Cold Eclipse), all attacks are non-contact, and entry grants +1 accuracy. Retains local Long Reach critical-hit and field effects: 0.9x move accuracy on Rocky/Grassy Field and 1.5x power on Mountain/Snowy Mountain. Replaces the former 1.3x slicing boost; no stacking with it.",
+		"shortDesc": "Sharpness + full local Long Reach; all attacks non-contact; +1 accuracy on entry.",
+		"rating": 3.5,
+		"flags": {
+			"breakable": 1
+		},
 		"isNonstandard": null
 	},
 	"reapersgrip": {
@@ -22529,6 +25597,28 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {},
 		"isNonstandard": null
 	},
+	"reflector": {
+		"name": "Reflector",
+		"num": 10303,
+		"gen": 9,
+		"desc": "On entry, copies the active foe's types and adds them to this Pokemon's typing. Matching attacks deal half damage unless this Pokemon is immune. Reflect Type refreshes the copied types. If this Ability is suppressed, its Rejuv form reverts to the normal species until it switches out, even if suppression ends earlier.",
+		"shortDesc": "Copies foe types; adds them to its typing; matching attacks deal 0.5x unless immune.",
+		"rating": 3,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"reinflate": {
+		"name": "Reinflate",
+		"num": 11210,
+		"gen": 9,
+		"desc": "Once per turn, after this Pokemon finishes a sound-based damaging move that deals actual HP damage to an opponent, it restores 1/8 of its maximum HP if it remains active and survives. All hits and spread targets share one activation. Substitute-only, ally, self, delayed, missed, protected and immune damage do not qualify. Status moves do not qualify. Heal Block prevents recovery, and ability suppression disables this effect. Ability changes do not refresh the turn's activation.",
+		"shortDesc": "Once per turn, after a sound move damages a foe's HP, restores 1/8 max HP.",
+		"rating": 3.5,
+		"flags": {},
+		"isNonstandard": null
+	},
 	"relentlesshunt": {
 		"name": "Relentless Hunt",
 		"num": 10003,
@@ -22546,6 +25636,40 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"desc": "Skill Link + Mold Breaker + Power Drill. Drill and horn moves gain Power Drill effects. Guts and Battle Armor are removed.",
 		"shortDesc": "Skill Link + Mold Breaker + Power Drill.",
 		"rating": 4.5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"relicarmor": {
+		"name": "Relic Armor",
+		"num": 10134,
+		"gen": 9,
+		"desc": "In Desert, Fairy Tale, Cave, Crystal Cavern, New World, or Volcanic Field, this Pokemon's Defense and Special Defense rise by 1. Its Rock typing does not add weaknesses to Fighting, Ground, Steel, Water, or Grass. It cannot be critically hit, takes 0.8x damage from attacks, and has Self Sufficient's effects. After an opposing Pokemon lowers one of its stats, its Defense and Special Defense rise by 1.",
+		"shortDesc": "Rock weaknesses removed; field +1 Def/SpD; no crits; 0.8x damage; Self Sufficient.",
+		"rating": 5,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"relicbeam": {
+		"name": "Relic Beam",
+		"num": 10164,
+		"gen": 9,
+		"desc": "This Pokemon's Sp. Atk becomes equal to its Defense, and Special Attack stat stages use Defense stages instead. Beam moves and moves boosted by Mega Launcher have 1.5x power.",
+		"shortDesc": "SpA equals Defense using Def stages; beam/Mega Launcher moves have 1.5x power.",
+		"rating": 4,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"relicinstinct": {
+		"name": "Relic Instinct",
+		"num": 10064,
+		"gen": 9,
+		"desc": "Above 50% HP, this Pokemon's moves ignore opposing Abilities. At 50% HP or less, it takes 0.75x damage from attacks, cannot be critically hit, restores 1/16 max HP each turn, and its Attack and Special Attack are halved. Once at 25% HP or less, it heals 25% max HP, clears negative stat stages, and lowers its Defense and Special Defense by 2.",
+		"shortDesc": ">50%: ignores Abilities. <=50%: defensive mode; <=25%: one pinch heal.",
+		"rating": 3.5,
 		"flags": {
 			"breakable": 1
 		},
@@ -22587,6 +25711,18 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		},
 		"isNonstandard": null
 	},
+	"resonanceforce": {
+		"name": "Resonance Force",
+		"num": 10200,
+		"gen": 9,
+		"desc": "Sound-based moves used by this Pokemon's side deal 1.5x damage. This Pokemon's side is immune to its own damaging sound-based moves. Sound-based moves used by this Pokemon use its higher offensive stat.",
+		"shortDesc": "Side sound moves 1.5x; allies avoid own sound damage; sound uses higher offense.",
+		"rating": 4.5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
 	"resonantblade": {
 		"name": "Resonant Blade",
 		"num": 10456,
@@ -22597,12 +25733,22 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {},
 		"isNonstandard": null
 	},
+	"restorativechime": {
+		"name": "Restorative Chime",
+		"num": 11249,
+		"gen": 9,
+		"desc": "Once per stay, a healing move that actually restores HP also cures the healed recipient's major status; Rest is excluded. Wish checks and consumes the originating entry's cure only when it heals its eventual recipient. Successful sound moves heal this Pokemon by 1/8 maximum HP once per turn.",
+		"shortDesc": "Healing moves cure a healed recipient once per stay (not Rest); successful sound moves heal 1/8 per turn.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
 	"resuscitation": {
 		"name": "Resuscitation",
 		"num": 10347,
 		"gen": 9,
 		"desc": "When Parasect revives as Parasect-Parasite, its status, stat stages, and volatile effects are cleared and it returns to full HP. Afterward, this Ability has Self Repair and Magic Guard's effects.",
-		"shortDesc": "Revival fully resets battle effects; Self Repair + Magic Guard.",
+		"shortDesc": "Self Repair + Magic Guard; Revival fully resets battle effects.",
 		"rating": 5,
 		"flags": {},
 		"isNonstandard": null
@@ -22629,6 +25775,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		},
 		"isNonstandard": null
 	},
+	"rimebreaker": {
+		"name": "Rimebreaker",
+		"num": 11245,
+		"gen": 9,
+		"desc": "Full Refrigerate, including its field boosts only for converted moves. Once per turn, an Ice move dealing opposing HP damage removes this side's Stealth Rock and one Spikes layer. Toxic Spikes and Sticky Web remain. Natural Ice moves receive no extra ability damage boost.",
+		"shortDesc": "Refrigerate; Ice HP hits clear own Stealth Rock and one Spikes layer once per turn.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
 	"rimeclaw": {
 		"name": "Rime Claw",
 		"num": 10443,
@@ -22644,11 +25800,21 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10118,
 		"gen": 9,
 		"desc": "Filter + Iron Fist + Ice Body. Damaging moves have a 40% chance to cause frostbite (80% on Icy Field). KOs restore 1/8 max HP, or 1/4 against Mega, G-Max, Terastallized, Stellar or Z-Move item targets. Ice Body adds a 30% chance to frostbite contact attackers, hail immunity, and healing in hail/snow or on Icy, Snowy Mountain and Cold Eclipse fields. Healing is 1/16 max HP, or 1/8 in hail on Cold Eclipse.",
-		"shortDesc": "Filter + Iron Fist + Ice Body; frostbite chance; KO healing.",
+		"shortDesc": "Iron Fist + Filter + Ice Body; frostbite chance; KO healing.",
 		"rating": 4,
 		"flags": {
 			"breakable": 1
 		},
+		"isNonstandard": null
+	},
+	"rimeplate": {
+		"name": "Rimeplate",
+		"num": 10593,
+		"gen": 9,
+		"desc": "Takes 75% less damage from hits after the first hit of a multi-hit attack. The first hit and separate attacks deal normal damage. Does not change Glaive Rush's effects.",
+		"shortDesc": "Later hits of a multi-hit move deal 75% less damage.",
+		"rating": 4,
+		"flags": {},
 		"isNonstandard": null
 	},
 	"ringmaster": {
@@ -22715,6 +25881,18 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {},
 		"isNonstandard": null
 	},
+	"roughscale": {
+		"name": "Rough Scale",
+		"num": 10365,
+		"gen": 9,
+		"desc": "This Pokemon has Rough Skin and Tough Claws' effects.",
+		"shortDesc": "Rough Skin + Tough Claws.",
+		"rating": 4,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
 	"royalarmament": {
 		"name": "Royal Armament",
 		"num": 10182,
@@ -22735,12 +25913,22 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {},
 		"isNonstandard": null
 	},
+	"royalhive": {
+		"name": "Royal Hive",
+		"num": 10201,
+		"gen": 9,
+		"desc": "On switch-in, this Pokemon starts in Attack Stance and raises its Attack and Special Attack by 1 stage. After it uses a status move, it changes to Defense Stance, lowering its Attack and Special Attack by 1 stage and raising its Defense and Special Defense by 1 stage. After it uses a damaging move while in Defense Stance, it changes back to Attack Stance, lowering its Defense and Special Defense by 1 stage and raising its Attack and Special Attack by 1 stage. While in Defense Stance, it restores 1/16 of its maximum HP at the end of each turn.",
+		"shortDesc": "Starts +1 Atk/SpA; status moves swap to +1 Def/SpD and heal 1/16; attacks swap back.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
 	"royalscales": {
 		"name": "Royal Scales",
 		"num": 11122,
 		"gen": 9,
 		"desc": "Prism Scale, Dragonize, and Self Sufficient. Status or Prism Scale's supported fields boost Defense by 1.5x. Blocks Attract, Captivate, Taunt, and Intimidate's Attack drop. Speed doubles in rain and Swift Swim's supported fields. Normal moves become Dragon and gain Dragonize's power boost. Restores 1/16 of this Pokemon's maximum HP at the end of each turn and prevents Sandstorm and Hail damage.",
-		"shortDesc": "Prism Scale + Marvel Scale + Oblivious + Swift Swim + Dragonize + Self Sufficient. Prism Scale + Dragonize + Self Sufficient; heals 1/16 each turn; immune to Sandstorm and Hail.",
+		"shortDesc": "Prism Scale + Dragonize + Self Sufficient; heals 1/16 each turn; immune to Sandstorm and Hail.",
 		"rating": 5,
 		"flags": {
 			"breakable": 1
@@ -22751,8 +25939,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Royal Sun",
 		"num": 10142,
 		"gen": 9,
-		"desc": "Drought + Supreme Overlord. Summons sun on entry and gains Supreme Overlord's bonuses as allies faint.",
-		"shortDesc": "Drought + Supreme Overlord.",
+		"desc": "Drought + Supreme Overlord + Unnerve + Flame Body. Summons sun for the usual Drought duration. Move power gains 10% per fainted ally; at 2 fallen allies, gains Infiltrator; at 4, flinch immunity; at 5, Magic Guard and a one-time +1 Attack and Special Attack. Opponents cannot eat Berries or use field seeds. Contact has a 30% burn chance, or 60% on Volcanic Field. On Cold Eclipse, lowers opposing Speed by 1 on entry (blocked by Substitute), raises its Defense and Special Defense by 1, and cannot burn through contact.",
+		"shortDesc": "Drought + Supreme Overlord + Unnerve + Flame Body.",
 		"rating": 4.5,
 		"flags": {},
 		"isNonstandard": null
@@ -22762,7 +25950,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10113,
 		"gen": 9,
 		"desc": "Pixilate + Queenly Majesty + Dream Sickness. Normal moves become Fairy and receive Pixilate power boosts. Blocks opposing priority moves targeting its side. Includes Telepathy and its field effects, 1/16 end-turn healing for itself and allies, and a once-per-switch-in rescue that leaves an ally at 1 HP and costs the holder 1/4 max HP.",
-		"shortDesc": "Pixilate + Queenly Majesty + Dream Sickness + Telepathy.",
+		"shortDesc": "Pixilate + Queenly Majesty + Dream Sickness.",
 		"rating": 5,
 		"flags": {
 			"breakable": 1
@@ -22786,7 +25974,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10410,
 		"gen": 9,
 		"desc": "Battle Bond's shared effects plus Magma Armor, Intimidate, and Flash Fire. Arcanine-Battle-Bond's Extreme Speed has 1.5x power and always critically hits.",
-		"shortDesc": "Battle Bond + Filter + Self Sufficient + Magma Armor + Intimidate + Flash Fire. Battle Bond + Magma Armor + Intimidate + Flash Fire; Extreme Speed is 1.5x power and always critical.",
+		"shortDesc": "Battle Bond + Magma Armor + Intimidate + Flash Fire; Extreme Speed is 1.5x power and always critical.",
 		"rating": 4,
 		"flags": {
 			"failroleplay": 1,
@@ -22861,7 +26049,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10105,
 		"gen": 9,
 		"desc": "On entry, this Pokemon sets Sandstorm for 8 turns. It has Dauntless Shield and Solid Rock. Arenite Wall lasts 5 turns, or 8 turns when extended. Each turn, non-immune foes take Rock damage equal to 1/16 max HP. Only in Free-for-All does Rock type effectiveness scale this chip.",
-		"shortDesc": "Sand Stream + Dauntless Shield + Solid Rock. 8-turn Sand; Dauntless Shield + Solid Rock; Rock chip scales by type in FFA.",
+		"shortDesc": "Sand Stream + Dauntless Shield + Solid Rock; 8-turn Sand; Rock chip scales by type in FFA.",
 		"rating": 5,
 		"flags": {
 			"breakable": 1
@@ -22951,12 +26139,22 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {},
 		"isNonstandard": null
 	},
+	"scrapbreaker": {
+		"name": "Scrapbreaker",
+		"num": 11235,
+		"gen": 9,
+		"desc": "Full Mold Breaker. A connecting Gigaton Hammer removes the target side's Reflect, Light Screen and Aurora Veil before damage. Actual opposing HP damage also grounds the target as Smack Down; Substitute-only damage does not ground it. Normal accuracy, protection and consecutive-use restrictions remain.",
+		"shortDesc": "Mold Breaker; Gigaton Hammer breaks screens and grounds foes it damages.",
+		"rating": 3,
+		"flags": {},
+		"isNonstandard": null
+	},
 	"seablessing": {
 		"name": "Sea Blessing",
 		"num": 10197,
 		"gen": 9,
 		"desc": "This Pokemon's Defense and Special Defense are 1.5x. On entry, it and adjacent allies heal 1/4 max HP, and it gains Aqua Ring. It has Water Veil and Rain Dish.",
-		"shortDesc": "1.5x Def/SpD; entry heals self/allies 1/4; Water Veil + Rain Dish.",
+		"shortDesc": "Water Veil + Rain Dish; 1.5x Def/SpD; entry heals self/allies 1/4.",
 		"rating": 4.5,
 		"flags": {
 			"breakable": 1
@@ -22968,7 +26166,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10336,
 		"gen": 9,
 		"desc": "This Pokemon has Toxic Debris and Water Bubble's effects.",
-		"shortDesc": "Toxic Debris + Water Bubble + Water Veil.",
+		"shortDesc": "Toxic Debris + Water Bubble.",
 		"rating": 5,
 		"flags": {
 			"breakable": 1
@@ -22990,7 +26188,27 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10202,
 		"gen": 9,
 		"desc": "Normal moves become this Pokemon's primary type and have 1.2x power. Kicking moves have 1.4x power. It has Chlorophyll and changes forme with weather: Spring in rain, Summer in sun, Autumn in sand, Winter in snow.",
-		"shortDesc": "Normal -> primary type 1.2x; kicks 1.4x; Chlorophyll; weather forms.",
+		"shortDesc": "Chlorophyll; Normal -> primary type 1.2x; kicks 1.4x; weather forms.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"secondbrew": {
+		"name": "Second Brew",
+		"num": 10475,
+		"gen": 9,
+		"desc": "Once per turn, when this Pokemon receives draining-move healing, it also restores 1/8 of the lowest-HP adjacent ally's maximum HP.",
+		"shortDesc": "Once per turn, when it receives draining-move healing, it also restores 1/8 of the lowest-HP adjacent ally's HP.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"secondwind": {
+		"name": "Second Wind",
+		"num": 10291,
+		"gen": 9,
+		"desc": "The first otherwise lethal attack has a 50% chance to leave this Pokemon at 1 HP. This Ability rolls only once per battle, even if the roll fails or this Pokemon switches out.",
+		"shortDesc": "50% chance to survive the first lethal attack at 1 HP; one roll per battle.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null
@@ -23000,18 +26218,28 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10346,
 		"gen": 9,
 		"desc": "This Pokemon has Self Sufficient and Natural Cure's effects.",
-		"shortDesc": "Self Sufficient + Natural Cure.",
+		"shortDesc": "Natural Cure + Self Sufficient.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null
 	},
-	"serratedpincers": {
-		"name": "Serrated Pincers",
-		"num": 11229,
+	"selfsufficient": {
+		"name": "Self Sufficient",
+		"num": 10288,
 		"gen": 9,
-		"desc": "This Pokemon's slicing moves deal 1.3x damage and do not make contact.",
-		"shortDesc": "Slicing moves deal 1.3x damage and do not make contact.",
-		"rating": 3.5,
+		"desc": "Restores 1/16 of this Pokemon's maximum HP at the end of each turn and is immune to Sandstorm and Hail damage.",
+		"shortDesc": "Heals 1/16 each turn; immune to Sandstorm and Hail.",
+		"rating": 3,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"setpiece": {
+		"name": "Set Piece",
+		"num": 10589,
+		"gen": 9,
+		"desc": "Successfully using Court Change or damaging a target with Feint primes its next Fire attack to gain +1 priority and never miss. One non-stacking charge; used when the attack is attempted, and cleared on switching. Protect and immunities still work.",
+		"shortDesc": "Court Change or Feint charges the next Fire attack with +1 priority and perfect accuracy.",
+		"rating": 4,
 		"flags": {},
 		"isNonstandard": null
 	},
@@ -23020,7 +26248,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": -9001,
 		"gen": 0,
 		"desc": "Changes Wishiwashi into its Ghost-type Sevii form, or Ghost/Dragon Sevii Schooling form at level 20 or higher above 1/4 maximum HP. Underwater and Midnight Zone force School Form; Water Surface and Murkwater force it while grounded. The School Form has Hydra Bond, Self Repair, and Mold Breaker's effects.",
-		"shortDesc": "Schooling + Hydra Bond + Self Repair + Mold Breaker. Changes Wishiwashi to Sevii form; School: Hydra Bond + Self Repair + Mold Breaker.",
+		"shortDesc": "Schooling; Changes Wishiwashi to Sevii form; School: Hydra Bond + Self Repair + Mold Breaker.",
 		"rating": 3,
 		"flags": {
 			"failroleplay": 1,
@@ -23037,7 +26265,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10408,
 		"gen": 9,
 		"desc": "Battle Bond's shared effects plus Proficient and Infiltrator. Ash-Greninja's Water Shuriken hits three times at 30 base power per hit and always critically hits.",
-		"shortDesc": "Battle Bond + Filter + Self Sufficient + Proficient + Infiltrator. Battle Bond + Proficient + Infiltrator; Water Shuriken is 3 hits at 30 power, always critical.",
+		"shortDesc": "Battle Bond + Proficient + Infiltrator; Water Shuriken is 3 hits at 30 power, always critical.",
 		"rating": 4,
 		"flags": {
 			"failroleplay": 1,
@@ -23059,16 +26287,44 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {},
 		"isNonstandard": null
 	},
-	"shadowguard": {
-		"name": "Shadow Guard",
-		"num": 10121,
+	"shadowfeint": {
+		"name": "Shadow Feint",
+		"num": 10547,
 		"gen": 9,
-		"desc": "Elevate + Shadow Shield + Temporal Shift + Insomnia. It is ungrounded, halves attack damage at full HP, cannot sleep or be affected by Yawn, and opposing Pokemon cannot lower its stats. On Dark Crystal Cavern, New World, Starlight Arena, or Cold Eclipse, super-effective attack damage is further reduced to 0.75x. Its Dark- and Ghost-type damaging moves have 1.3x power, and it raises its highest stat after a move KO. Starting on Mega Evolution, it queues a 120 BP Ghost-type Future Sight on that turn and every other turn afterward; each queued attack strikes two turns later. It does not trap foes or have Magic Guard's indirect-damage immunity.",
-		"shortDesc": "Elevate + Shadow Shield + Temporal Shift + Insomnia; 120 BP Ghost Future Sight every other turn.",
+		"desc": "Ordinary damaging Dark moves penetrate normal protection at one-third damage, without secondary effects through protection. Does not remove Protect, bypass Max Guard, or alter Z/Max move protection rules.",
+		"shortDesc": "Dark attacks pierce Protect at one-third power, without secondary effects.",
 		"rating": 4,
-		"flags": {
-			"breakable": 1
-		},
+		"flags": {},
+		"isNonstandard": null
+	},
+	"shadowshield": {
+		"name": "Shadow Shield",
+		"num": 231,
+		"gen": 7,
+		"desc": "Takes 0.8x damage from attacks at any HP. Super-effective attacks deal a further 0.75x damage (0.6x total). These reductions are not bypassed by Mold Breaker or ability-ignoring moves, but ability suppression disables them. Does not reduce indirect damage. Retains hail immunity on Cold Eclipse.",
+		"shortDesc": "Takes 0.8x attack damage at any HP; super-effective hits deal 0.6x total.",
+		"rating": 3.5,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"shattercrust": {
+		"name": "Shattercrust",
+		"num": 11248,
+		"gen": 9,
+		"desc": "Full Crumbling Shell: physical HP hits set Stealth Rock on the attacker's side if absent (an allied attacker instead selects the opposing side), except on Water Surface, Underwater, Murkwater Surface and Swamp. Additionally, the first opposing physical HP hit each stay deals half damage; if this Pokemon survives it, adds one Spikes layer to the attacker's side.",
+		"shortDesc": "Crumbling Shell; first foe physical HP hit each stay deals half damage and scatters Spikes if survived.",
+		"rating": 2,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"shellcracker": {
+		"name": "Shellcracker",
+		"num": 10503,
+		"gen": 9,
+		"desc": "Crabhammer has 100% base accuracy and always critically hits, unless critical hits are prevented.",
+		"shortDesc": "Crabhammer has 100% base accuracy and always critically hits, unless critical hits are prevented.",
+		"rating": 4,
+		"flags": {},
 		"isNonstandard": null
 	},
 	"shieldsdown": {
@@ -23076,7 +26332,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 197,
 		"gen": 7,
 		"desc": "If this Pokemon is a Minior, it changes to its Core forme if it has 1/2 or less of its maximum HP, and changes to Meteor Form if it has more than 1/2 its maximum HP. This check is done on switch-in and at the end of each turn. While in its Meteor Form, it cannot become affected by a non-volatile status condition or Yawn. This Pokemon also has Shell Armor, Self Repair, and Crumbling Shell's effects.",
-		"shortDesc": "Form changes at 1/2 HP; Shell Armor + Self Repair + Crumbling Shell.",
+		"shortDesc": "Shell Armor + Self Repair + Crumbling Shell; Form changes at 1/2 HP.",
 		"rating": 3,
 		"flags": {
 			"failroleplay": 1,
@@ -23093,7 +26349,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10038,
 		"gen": 9,
 		"desc": "This Pokemon has Water Barrage, Mega Launcher, Self Sufficient, and Stalwart's effects. Moves boosted by Mega Launcher are used twice through Dual Wield; the second hit deals 15% of the move's unboosted power.",
-		"shortDesc": "Stalwart + Proficient. Water Barrage + Mega Launcher + Self Sufficient + Stalwart; boosted moves add 15% hit.",
+		"shortDesc": "Proficient; Water Barrage + Mega Launcher + Self Sufficient + Stalwart; boosted moves add 15% hit.",
 		"rating": 4.5,
 		"flags": {},
 		"isNonstandard": null
@@ -23103,7 +26359,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10381,
 		"gen": 9,
 		"desc": "Mega Ariados spins a persistent cocoon, renewed when another Pokemon faints. It blocks status moves and status conditions while intact, and absorbs one damaging move including all its hits and secondary effects. Also has Insomnia, Self Sufficient, and Swarm.",
-		"shortDesc": "Cocoon blocks a move, status and secondaries; Insomnia + Self Sufficient + Swarm.",
+		"shortDesc": "Insomnia + Self Sufficient + Swarm; Cocoon blocks a move, status and secondaries.",
 		"rating": 4,
 		"flags": {
 			"breakable": 1
@@ -23124,10 +26380,40 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Silk Sights",
 		"num": 10548,
 		"gen": 9,
-		"desc": "Compound Eyes. Electric attacks ignore positive defensive stat stages against foes whose Speed is lowered.",
-		"shortDesc": "Compound Eyes; Electric moves ignore defense boosts on foes with lowered Speed.",
+		"desc": "Compound Eyes. Electric attacks ignore positive defensive stat stages against foes whose Speed is lowered. Full local Keen Eye prevents opposing accuracy drops, ignores evasion boosts and reveals opposing Illusions on activation. Mirror Arena grants +1 accuracy and Laser Focus; shared accuracy entry rewards apply once.",
+		"shortDesc": "Compound Eyes + Keen Eye; Electric moves ignore defense boosts on foes with lowered Speed.",
 		"rating": 3,
-		"flags": {},
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"silkward": {
+		"name": "Silk Ward",
+		"num": 10423,
+		"gen": 9,
+		"desc": "Once per switch-in, the first super-effective damaging hit against this Pokemon deals half damage. It does not set weather.",
+		"shortDesc": "First super-effective hit each switch-in deals half damage.",
+		"rating": 4,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"sinisterblaze": {
+		"name": "Sinister Blaze",
+		"num": 10068,
+		"gen": 9,
+		"desc": "This Ability cannot be suppressed, copied, or transferred. This Pokemon is burned on switch-in, even through Misty Terrain, and its burn can overwrite other status conditions. In Fairy Tale, Starlight Arena, New World, Burning Field, Volcanic Field, Superheated Field, or Cold Eclipse, its Defense and Special Defense rise by 1 stage on entry. Its burn damage becomes healing; foes take 1/8 max HP each turn, or 1/4 if already burned. It does not heal from this generated damage, but heals from real burn damage dealt to foes. Its physical attacks are not weakened by burn. It is immune to hail and sandstorm damage and counts as Ice type in hail, snow, and ice fields, except for Abysseon and Divineon.",
+		"shortDesc": "Burn heals user; foes take 1/8, or 1/4 if burned; no burn penalty; hail/sand immune.",
+		"rating": 4,
+		"flags": {
+			"cantsuppress": 1,
+			"failroleplay": 1,
+			"failskillswap": 1,
+			"noentrain": 1,
+			"notrace": 1
+		},
 		"isNonstandard": null
 	},
 	"sirius": {
@@ -23135,19 +26421,29 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10404,
 		"gen": 9,
 		"desc": "Apex Venom + Black Viper. Retains Apex Venom, Dragon-type Poison Fang, +1 accuracy on entry and 1.5x tail power. Its first tail hit against a foe each entry also badly poisons it, subject to status immunities.",
-		"shortDesc": "Apex Venom + Black Viper + Whiplash. Apex Venom + Black Viper; first tail hit each entry badly poisons.",
+		"shortDesc": "Apex Venom + Black Viper; first tail hit each entry badly poisons.",
 		"rating": 5,
 		"flags": {
 			"breakable": 1
 		},
 		"isNonstandard": null
 	},
+	"skywarden": {
+		"name": "Skywarden",
+		"num": 10558,
+		"gen": 9,
+		"desc": "After successfully using Defog, creates Mist for its team for 5 turns. The Mist is applied after Defog removes effects; an existing longer Mist is not shortened.",
+		"shortDesc": "Defog sets 5-turn Mist for its side.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
 	"slipstream": {
 		"name": "Slipstream",
 		"num": 10435,
 		"gen": 9,
-		"desc": "Has Levitate's full effect. Once per switch-in, its first Flying-type attack to damage a foe sets Tailwind on its side for 3 turns. If Tailwind is already active, its duration is refreshed to 3 turns.",
-		"shortDesc": "Levitate; first landed Flying attack each switch-in sets 3-turn Tailwind.",
+		"desc": "Has Levitate's full effect. Once per switch-in, its first Flying-type attack to damage a foe sets Tailwind on its side for 3 turns. If Tailwind is already active, its duration is refreshed to 3 turns. Full local Keen Eye prevents opposing accuracy drops, ignores evasion boosts and reveals opposing Illusions on activation. Mirror Arena grants +1 accuracy and Laser Focus; shared accuracy entry rewards apply once.",
+		"shortDesc": "Levitate + Keen Eye; first landed Flying attack each switch-in sets 3-turn Tailwind.",
 		"rating": 4,
 		"flags": {
 			"breakable": 1
@@ -23208,6 +26504,26 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {},
 		"isNonstandard": null
 	},
+	"solarbloom": {
+		"name": "Solar Bloom",
+		"num": 10031,
+		"gen": 9,
+		"desc": "If sun is active, this Pokemon transforms into Cherrim-Sunshine and restores 1/8 of its maximum HP. While sun is active, its Speed is doubled.",
+		"shortDesc": "In sun: becomes Sunshine, heals 1/8, and has doubled Speed.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"solarbud": {
+		"name": "Solar Bud",
+		"num": 11203,
+		"gen": 9,
+		"desc": "Once per entry, finishing a turn in effective sun stores one bud. The next Grass attack dealing HP damage to a foe consumes it to cure status and restore 1/8 maximum HP.",
+		"shortDesc": "Once/entry: sun stores a bud; Grass HP damage spends it to cure status/heal 1/8.",
+		"rating": 2,
+		"flags": {},
+		"isNonstandard": null
+	},
 	"solarhydra": {
 		"name": "Solar Hydra",
 		"num": 10387,
@@ -23216,6 +26532,30 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"shortDesc": "Hydra Bond + Grassy Surge + Solar Power + one sun-charged Solar Bud per entry.",
 		"rating": 5,
 		"flags": {},
+		"isNonstandard": null
+	},
+	"solaridol": {
+		"name": "Solar Idol",
+		"num": 10018,
+		"gen": 9,
+		"desc": "This Pokemon has Levitate's Ground immunity. Its Fire-type moves have 1.5x power, its Attack is 1.5x during sun, and Grass-type attacks are resisted.",
+		"shortDesc": "Levitate; Fire power 1.5x; Attack 1.5x in sun; resists Grass.",
+		"rating": 4,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"solarrecharge": {
+		"name": "Solar Recharge",
+		"num": 10364,
+		"gen": 9,
+		"desc": "This Pokemon's Fire-type moves have STAB. It is immune to Fire-type moves and restores 1/4 of its maximum HP when hit by one. In Sun, it restores 1/8 of its maximum HP at the end of each turn.",
+		"shortDesc": "Fire STAB; Fire immunity heals 1/4; heals 1/8 each turn in Sun.",
+		"rating": 4,
+		"flags": {
+			"breakable": 1
+		},
 		"isNonstandard": null
 	},
 	"solarrush": {
@@ -23230,7 +26570,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 	},
 	"solartrap": {
 		"name": "Solar Trap",
-		"num": 10158,
+		"num": 11258,
 		"gen": 9,
 		"desc": "Accumulation + Digestive Sap + Liquid Ooze. Poison attacks heal 1/3 of actual damage dealt to foes, capped at 1/8 max HP per turn; draining moves used on this Pokemon hurt the user instead.",
 		"shortDesc": "Accumulation + Digestive Sap + Liquid Ooze.",
@@ -23243,7 +26583,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 11200,
 		"gen": 9,
 		"desc": "Combines Friend Guard and Aroma Veil. Other allies take 25% less attack damage; this does not reduce the holder's damage taken. The holder and its allies are protected from Attract, Disable, Encore, Heal Block, Taunt, and Torment.",
-		"shortDesc": "Friend Guard + Aroma Veil. Other allies take 25% less attack damage. Holder and allies have Aroma Veil protection.",
+		"shortDesc": "Friend Guard; Other allies take 25% less attack damage. Holder and allies have Aroma Veil protection.",
 		"rating": 3.5,
 		"flags": {
 			"breakable": 1
@@ -23252,11 +26592,33 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 	},
 	"soulcremation": {
 		"name": "Soul Cremation",
-		"num": 0,
-		"gen": 0,
+		"num": 11259,
+		"gen": 9,
 		"desc": "Soul Siphon + Soul Pyre + Malice Well. Malice Well includes full Flame Body. Once per entry, the first executed opposing damaging move targeting this Pokemon grants +1 Sp. Atk after the entire move resolves if it is still active and alive, even through Protect, misses or immunity. Multihit and spread moves count only once. Ability changes and suppression do not reset the spent limit; a genuine switch-in does. The first activation is spent even at +6 Sp. Atk. The boost is an ordinary stat stage, removed by switching or Haze. Soul Siphon: direct Fire/Ghost attacks that deal actual HP damage to foes heal one-third of that damage, capped at one-sixth of the user's maximum HP per turn across all hits and targets. Surviving targets cannot heal through the following turn. Native draining moves get no extra siphon healing; delayed attacks, allies and Substitute damage do not count. Soul Pyre: after at least one foe actually takes burn damage that turn, heal 1/8 base maximum HP at turn end, once regardless of how many foes were burned (including FFA). This is separate from Soul Siphon's cap; prevented burn damage does not count. Once per turn across all hits and foes, a damaging Ghost hit against an already-burned surviving foe also attempts to lower its Sp. Def by 1. Flame Body: contact attackers have a 30% burn chance, 60% on Volcanic Field; Cold Eclipse instead gives +1 Defense and Sp. Def on entry and prevents these contact burns. Healing prevention on the holder still blocks both healing effects; ability suppression stops the component hooks. No trapping.",
 		"shortDesc": "Soul Siphon + Soul Pyre + Malice Well; drain/burn healing; first hostile attack per entry: +1 SpA after survival.",
 		"rating": 5,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"soulfire": {
+		"name": "Soul Fire",
+		"num": 10008,
+		"gen": 9,
+		"desc": "This Pokemon draws in Fire- and Ghost-type moves to itself and is immune to Fire-type moves, Ghost-type moves, Will-O-Wisp, and damaging weather conditions, raising Attack and Special Attack by 1 stage when hit by them. Its Fire- and Ghost-type moves bypass type immunities, cannot hit Normal-type Pokemon with Ghost-type attacks, and are resisted by Steel- and Dark-type Pokemon. Burns caused by this Pokemon's Fire- and Ghost-type moves or Will-O-Wisp bypass burn immunities, Misty Terrain, and Mist. Fire- and Ghost-type moves from this Ability deal 4x damage to opposing Soul Fire users.",
+		"shortDesc": "Draws in and absorbs Fire/Ghost; burns bypass immunities; attacks ignore most resists.",
+		"rating": 4,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"soulpyre": {
+		"name": "Soul Pyre",
+		"num": 10552,
+		"gen": 9,
+		"desc": "Restores 1/8 maximum HP at the end of a turn when an opposing Pokemon actually took burn damage. Ghost hits against already-burned foes lower Sp. Def by 1 stage once per turn. Prevented burn damage does not grant healing.",
+		"shortDesc": "Heals 1/8 after foe burn damage; Ghost hits lower burned foes' Sp. Def.",
+		"rating": 4,
 		"flags": {},
 		"isNonstandard": null
 	},
@@ -23270,6 +26632,18 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {},
 		"isNonstandard": null
 	},
+	"soulstrike": {
+		"name": "Soul Strike",
+		"num": 10048,
+		"gen": 9,
+		"desc": "This Pokemon's moves ignore accuracy checks. It is immune to Ghost-type moves and restores 1/4 max HP when hit by one. Soul Fire cannot redirect or bypass this immunity. When this Pokemon faints, it creates Haunted Field for 5 turns, ignoring Neutralization. This Ability cannot be ignored or suppressed by Mold Breaker-style effects.",
+		"shortDesc": "Moves never miss; Ghost absorb; faint sets Haunted Field.",
+		"rating": 5,
+		"flags": {
+			"cantsuppress": 1
+		},
+		"isNonstandard": null
+	},
 	"soultag": {
 		"name": "Soul Tag",
 		"num": 10029,
@@ -23280,6 +26654,26 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {
 			"breakable": 1
 		},
+		"isNonstandard": null
+	},
+	"sovereignarsenal": {
+		"name": "Sovereign Arsenal",
+		"num": 10500,
+		"gen": 9,
+		"desc": "Poison and Ground attacks choose Physical or Special using the higher Attack/Defense or Sp. Atk/Sp. Def stat ratio, like Shell Side Arm. Horn and tail moves gain +1 critical-hit stage. Contact flags are unchanged.",
+		"shortDesc": "Poison/Ground attacks use the stronger damage category; horn and tail moves crit more often.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"spentforce": {
+		"name": "Spent Force",
+		"num": 11218,
+		"gen": 9,
+		"desc": "After executing a damaging move, this Pokemon has half attack damage and Speed for the next two complete turns, then automatically recovers. The triggering move finishes at full power, including all hits and spread targets. Attacking during fatigue does not extend it, and status moves or waiting do not accelerate recovery. Executed misses, Protect and immunities trigger fatigue; prevented execution and charging-only turns do not. Switching clears fatigue. Suppression disables the penalties but does not reset or pause the timer, and ability replacement does not reset it. Fixed-damage moves retain their fixed damage.",
+		"shortDesc": "After an attack, half damage and Speed for two complete turns; then recovers.",
+		"rating": -1,
+		"flags": {},
 		"isNonstandard": null
 	},
 	"spinfiend": {
@@ -23301,6 +26695,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"desc": "This Pokemon has Adaptability, Levitate, Dual Wield, Infiltrator, and Shield Dust. Its damaging moves pierce protection for reduced damage, its normal-priority moves act first in Trick Room without gaining priority, it ignores field-based Speed penalties, and it takes 0.8x damage.",
 		"shortDesc": "Adaptability + Levitate + Dual Wield + Infiltrator + Shield Dust; ignores field Speed penalties; protection pierce; takes 0.8x.",
 		"rating": 5,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"sporeshroud": {
+		"name": "Spore Shroud",
+		"num": 11243,
+		"gen": 9,
+		"desc": "Full Effect Spore. Contact attacks deal 0.75x damage; non-contact physical attacks are unaffected.",
+		"shortDesc": "Effect Spore; takes 25% less damage from contact attacks.",
+		"rating": 2,
 		"flags": {},
 		"isNonstandard": null
 	},
@@ -23333,6 +26737,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		},
 		"isNonstandard": null
 	},
+	"starboxer": {
+		"name": "Star Boxer",
+		"num": 10161,
+		"gen": 9,
+		"desc": "Eligible punching moves hit four times at 40% damage per hit, without changing base power. Secondary and self effects occur once after the sequence. Contact and ordinary draining occur per hit; the sequence stops when the user or target faints and never retargets.",
+		"shortDesc": "Punches hit 4 times at 40% damage; secondary/self effects once after the sequence.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
 	"steamengine": {
 		"name": "Steam Engine",
 		"num": 243,
@@ -23340,6 +26754,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"desc": "This Pokemon has Magma Armor. Fire- or Water-type hits raise its Speed by 6 stages; heat fields activate it on entry, and Water Surface, Underwater, or Volcanic Terrain raises Speed each turn.",
 		"shortDesc": "Magma Armor; Fire/Water hits raise Speed by 6; certain fields also activate it.",
 		"rating": 2,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"steelplumage": {
+		"name": "Steel Plumage",
+		"num": 11201,
+		"gen": 9,
+		"desc": "Once per entry, after surviving an opposing contact move's full hit sequence and taking actual HP damage, sets one layer of Spikes on that attacker's side. Normal Spikes layer limit applies.",
+		"shortDesc": "Once/entry, surviving a foe contact attack sets Spikes on its side.",
+		"rating": 3,
 		"flags": {},
 		"isNonstandard": null
 	},
@@ -23408,7 +26832,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10156,
 		"gen": 9,
 		"desc": "Electric Surge + Elevate + Current Coil. Summons the Electric aura, retains its existing KO highest-stat boost, and has Swift Swim plus Coil granting an additional +1 Sp. Atk.",
-		"shortDesc": "Electric Surge + Elevate + Current Coil + Swift Swim. Electric Surge + Current Coil; Coil also raises Sp. Atk, with Swift Swim.",
+		"shortDesc": "Electric Surge + Elevate + Current Coil; Coil also raises Sp. Atk, with Swift Swim.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null
@@ -23437,6 +26861,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		},
 		"isNonstandard": null
 	},
+	"stormpower": {
+		"name": "Storm Power",
+		"num": 10391,
+		"gen": 9,
+		"desc": "If Rain Dance or Primordial Sea is active, this Pokemon's Special Attack is multiplied by 1.5 and it loses 1/8 of its maximum HP at the end of each turn.",
+		"shortDesc": "In rain, 1.5x Sp. Atk and loses 1/8 max HP each turn.",
+		"rating": 2,
+		"flags": {},
+		"isNonstandard": null
+	},
 	"stormsong": {
 		"name": "Storm Song",
 		"num": 11144,
@@ -23452,7 +26886,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10127,
 		"gen": 9,
 		"desc": "Sets changeable Strong Winds; Gale Wings + Keen Eye; moves never miss. Strong Winds lasts 8 turns and can be replaced by another weather. This ability does not summon Windy Aura.",
-		"shortDesc": "Sets changeable Strong Winds; Gale Wings + Keen Eye; moves never miss.",
+		"shortDesc": "Gale Wings + Keen Eye; Sets changeable Strong Winds; moves never miss.",
 		"rating": 4.5,
 		"flags": {
 			"breakable": 1
@@ -23471,6 +26905,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		},
 		"isNonstandard": null
 	},
+	"striker": {
+		"name": "Striker",
+		"num": 10009,
+		"gen": 9,
+		"desc": "This Pokemon's kicking moves have 1.4x power.",
+		"shortDesc": "Kicking moves have 1.4x power.",
+		"rating": 3,
+		"flags": {},
+		"isNonstandard": null
+	},
 	"strikerfrenzy": {
 		"name": "Striker Frenzy",
 		"num": 10301,
@@ -23486,7 +26930,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10027,
 		"gen": 9,
 		"desc": "This Pokemon has Striker, Defiant, and Libero's effects, and its moves cannot miss. Once per switch-in, a KO caused by this Pokemon raises its Speed by 1 stage.",
-		"shortDesc": "Proficient. Moves cannot miss; Striker + Defiant + Libero; first KO gives +1 Speed.",
+		"shortDesc": "Proficient; Moves cannot miss; Striker + Defiant + Libero; first KO gives +1 Speed.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null
@@ -23506,7 +26950,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10039,
 		"gen": 9,
 		"desc": "This Pokemon has Drought, Unbound Blaze, and Self Sufficient's effects. Its sun lasts 8 turns.",
-		"shortDesc": "Drought + Unbound Blaze + Self Sufficient + Proficient. Drought + Unbound Blaze + Self Sufficient; 8-turn Sun.",
+		"shortDesc": "Drought + Unbound Blaze + Self Sufficient; 8-turn Sun.",
 		"rating": 4.5,
 		"flags": {
 			"breakable": 1
@@ -23518,7 +26962,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 306,
 		"gen": 9,
 		"desc": "On switch-in, this Pokemon lowers the evasiveness of adjacent opposing Pokemon by 1 stage every time it switches in. This Pokemon has Sticky Hold. When this Pokemon is hit by an attack, the attacker is Embargoed for 5 turns.",
-		"shortDesc": "On switch-in, lowers adjacent foes' evasiveness 1 stage; Sticky Hold; attackers are Embargoed for 5 turns.",
+		"shortDesc": "Sticky Hold; On switch-in, lowers adjacent foes' evasiveness 1 stage; attackers are Embargoed for 5 turns.",
 		"rating": 1.5,
 		"flags": {},
 		"isNonstandard": null
@@ -23538,7 +26982,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10157,
 		"gen": 9,
 		"desc": "This Pokemon has Electric Surge, Lightning Rod, and Brute Force's effects.",
-		"shortDesc": "Brute Force + Shadow Shield. Electric Surge + Lightning Rod + Brute Force.",
+		"shortDesc": "Shadow Shield; Electric Surge + Lightning Rod + Brute Force.",
 		"rating": 4.5,
 		"flags": {},
 		"isNonstandard": null
@@ -23547,8 +26991,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Sushi Trick",
 		"num": 10473,
 		"gen": 9,
-		"desc": "Hospitality. On entry, restores 1/4 of each adjacent ally's maximum HP and cures its confusion, with a cheerful sushi-service message.",
-		"shortDesc": "Hospitality. On entry, restores 1/4 of each adjacent ally's HP and cures its confusion, with a cheerful sushi-service message.",
+		"desc": "On entry, restores 1/4 of each adjacent ally's maximum HP and cures its confusion.",
+		"shortDesc": "On entry, heals adjacent allies by 1/4 max HP and cures confusion.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null
@@ -23609,12 +27053,34 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {},
 		"isNonstandard": null
 	},
+	"swornduty": {
+		"name": "Sworn Duty",
+		"num": 10145,
+		"gen": 9,
+		"desc": "On switch-in, this Pokemon heals its adjacent ally by 1/4 max HP.",
+		"shortDesc": "On entry, heals an adjacent ally by 1/4 max HP.",
+		"rating": 3,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"tempestfury": {
+		"name": "Tempest Fury",
+		"num": 10505,
+		"gen": 9,
+		"desc": "Surviving an opposing direct attack charges its next damaging Water move to critically hit. A landed Water hit spends the non-stacking charge; misses and Protect do not.",
+		"shortDesc": "After surviving a direct hit, its next damaging Water move is a critical hit.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
 	"templechime": {
 		"name": "Temple Chime",
 		"num": 11205,
 		"gen": 9,
 		"desc": "Full Elevate (Levitate and highest-stat boosts after move KOs). Once per entry, Heal Bell actually curing at least one status also resets only the user's negative Special Defense stages. No additional healing.",
-		"shortDesc": "Elevate + Levitate. Elevate; once/entry, a successful Heal Bell cure resets the user's negative SpD.",
+		"shortDesc": "Elevate + Levitate; once/entry, a successful Heal Bell cure resets the user's negative SpD.",
 		"rating": 3.5,
 		"flags": {
 			"breakable": 1
@@ -23633,12 +27099,22 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		},
 		"isNonstandard": null
 	},
+	"terastaladaptability": {
+		"name": "Terastal Adaptability",
+		"num": 10210,
+		"gen": 9,
+		"desc": "This Pokemon has Adaptability's effect for Rock- and Poison-type moves. Its non-STAB damaging moves deal 1.5x damage. After it uses a damaging move, it gains that type's resistances until it uses another damaging move.",
+		"shortDesc": "Rock/Poison Adaptability; non-STAB 1.5x; gains last move type's resistances.",
+		"rating": 4.5,
+		"flags": {},
+		"isNonstandard": null
+	},
 	"terragift": {
 		"name": "Terra Gift",
 		"num": 10356,
 		"gen": 9,
-		"desc": "This Pokemon has Hospitality, Unaware, and Proficient's effects.",
-		"shortDesc": "Hospitality + Unaware + Proficient.",
+		"desc": "This Pokemon has Hospitality, Unaware, and Proficient's effects. On activation, reveals all opposing active Illusions, including itemless foes; this is not a continuous effect.",
+		"shortDesc": "Hospitality + Unaware + Proficient; Reveals opposing Illusions on activation.",
 		"rating": 4,
 		"flags": {
 			"breakable": 1
@@ -23661,10 +27137,12 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Territorial",
 		"num": 10264,
 		"gen": 9,
-		"desc": "Surviving an opposing physical hit charges its next Ground attack to ignore its own negative Attack stages and positive target evasion. Landing a Ground hit on a foe consumes the charge to heal 1/8 maximum HP. Misses and Protect preserve it; charges do not stack and switching clears them. Ground immunities still apply.",
-		"shortDesc": "After surviving a physical hit, its next Ground hit ignores drops/evasion and heals 1/8.",
+		"desc": "Full Unnerve, Stamina and Guard Dog. Each opposing physical or special hit that damages its HP heals 1/16 base maximum HP; the first such hit each turn immediately raises Defense by 1, including between multi-hit strikes. Opposing forced switching is blocked and Intimidate raises Attack instead. Opponents cannot eat Berries or use field seeds; Cold Eclipse entry lowers opposing Speed.",
+		"shortDesc": "Unnerve + Stamina + Guard Dog.",
 		"rating": 4,
-		"flags": {},
+		"flags": {
+			"breakable": 1
+		},
 		"isNonstandard": null
 	},
 	"thickfat": {
@@ -23705,8 +27183,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Tidal Voice",
 		"num": 10517,
 		"gen": 9,
-		"desc": "Liquid Voice: sound moves become Water-type (Ice on Icy Field) and gain 1.3x power, including already-Water moves such as Sparkling Aria. Sound moves spare allies. Its first damaging sound hit each entry clears its negative stat stages.",
-		"shortDesc": "Liquid Voice; sound moves gain 1.3x power, spare allies, and first hit clears stat drops.",
+		"desc": "Liquid Voice: sound moves become Water-type (Ice on Icy Field) and gain 1.3x power, including already-Water moves such as Sparkling Aria. Sound moves spare allies. Its first damaging sound hit each entry clears its negative stat stages. After executing Sparkling Aria, each active adjacent ally heals 1/8 of its maximum HP once per move, even if foes avoid the attack. Does not heal the user or benched allies; Heal Block applies.",
+		"shortDesc": "Liquid Voice; 1.3x sound, spares allies, first hit clears drops; Aria heals adjacent allies 1/8.",
 		"rating": 1.5,
 		"flags": {},
 		"isNonstandard": null
@@ -23751,12 +27229,22 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Toxic Bloom",
 		"num": 10037,
 		"gen": 9,
-		"desc": "This Pokemon has Pollen Bloom and Self Sufficient. Its Poison-type attacks restore 1/4 of the damage they deal.",
-		"shortDesc": "Pollen Bloom + Self Sufficient + Proficient + Thick Fat. Pollen Bloom + Self Sufficient; Poison attacks heal 1/4 damage.",
+		"desc": "Pollen Bloom (including Proficient, Thick Fat, Unaware and healing Grass chip) + Self Sufficient, each applied once. Poison-type attacks restore 1/4 of actual opposing HP damage, using normal drain rounding and Heal Block, Liquid Ooze and Big Root interactions. No added drain from Substitute-only damage, misses, Protect, immunity or residual poison. Moves that already drain keep their native drain without an extra heal.",
+		"shortDesc": "Pollen Bloom + Self Sufficient; Poison hits drain 25% foe HP damage; no extra native drain.",
 		"rating": 4.5,
 		"flags": {
 			"breakable": 1
 		},
+		"isNonstandard": null
+	},
+	"toxiccocoon": {
+		"name": "Toxic Cocoon",
+		"num": 10451,
+		"gen": 9,
+		"desc": "Once per switch-in, the first opposing special hit deals half damage. Separately, the first opposing contact hit each switch-in poisons its attacker, subject to normal immunity.",
+		"shortDesc": "First special hit deals half damage; the first contact attacker is poisoned.",
+		"rating": 4,
+		"flags": {},
 		"isNonstandard": null
 	},
 	"toxicevolution": {
@@ -23791,6 +27279,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {},
 		"isNonstandard": null
 	},
+	"toxicsignature": {
+		"name": "Toxic Signature",
+		"num": 11236,
+		"gen": 9,
+		"desc": "Full Unnerve, including its field effects. Poison attacks dealing opposing HP damage place one Toxic Spikes layer on that side only if none exists. Damaging attacks against poisoned targets ignore accuracy and evasion stages but retain their base accuracy and other accuracy modifiers.",
+		"shortDesc": "Unnerve; Poison HP hits lay a first Toxic Spikes layer; ignores stages vs poisoned foes.",
+		"rating": 1,
+		"flags": {},
+		"isNonstandard": null
+	},
 	"toxicsink": {
 		"name": "Toxic Sink",
 		"num": 10371,
@@ -23820,6 +27318,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"desc": "Immune to entry-hazard damage, Toxic Spikes poison and Sticky Web Speed drops. Rapid Spin can hit Ghost types.",
 		"shortDesc": "Immune to entry hazards. Rapid Spin can hit Ghost types.",
 		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"transfixinggaze": {
+		"name": "Transfixing Gaze",
+		"num": 11255,
+		"gen": 9,
+		"desc": "Full local Frisk: removes opposing Illusions, reveals their held items, and each revealed item holder has a 30% chance of Embargo. While this Pokemon remains active with its ability functioning, opposing moves cannot switch their user out. Damage, stat changes and other move effects still occur. Manual switching, forced switching and item-triggered switches remain allowed. If this Pokemon faints, leaves or loses its ability before the move finishes, the pivot succeeds. No lingering mark.",
+		"shortDesc": "Frisk; opposing moves cannot pivot while this Pokemon remains active.",
+		"rating": 1.5,
 		"flags": {},
 		"isNonstandard": null
 	},
@@ -23860,7 +27368,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10379,
 		"gen": 9,
 		"desc": "This Pokemon has False Devotion and Technician's effects.",
-		"shortDesc": "False Devotion + Serene Grace + Natural Recovery + Prankster + Technician.",
+		"shortDesc": "False Devotion + Technician.",
 		"rating": 5,
 		"flags": {},
 		"isNonstandard": null
@@ -23889,12 +27397,44 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		},
 		"isNonstandard": null
 	},
+	"twilightinstinct": {
+		"name": "Twilight Instinct",
+		"num": 10522,
+		"gen": 9,
+		"desc": "The first opposing damaging HP hit each stay deals 0.75x damage. If an opponent damages this Pokemon before it acts, it prepares +1 priority for its next normally zero-priority damaging move on the following turn. One charge, consumed on attempt even if it misses or is protected; expires at that following turn's end. Status and already-prioritized moves receive no boost.",
+		"shortDesc": "First foe hit each stay deals 25% less; hit before acting readies a next-turn priority attack.",
+		"rating": 4,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"twinblades": {
+		"name": "Twin Blades",
+		"num": 10524,
+		"gen": 9,
+		"desc": "Single-target Fire and Ghost slicing attacks hit twice at half power per hit (full power in FFA). In FFA the second hit targets a random different eligible foe, or the original foe if none exists; elsewhere it redirects after a KO. The second hit ignores positive defensive stages. Secondary effects roll only on the first hit. Excludes Z/Max, fixed-damage and existing multi-hit moves.",
+		"shortDesc": "Fire/Ghost slicing moves hit twice; the second hit ignores defensive boosts.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"twincannons": {
+		"name": "Twin Cannons",
+		"num": 10523,
+		"gen": 9,
+		"desc": "Single-target special Fire and Psychic attacks hit twice at half power per hit (full power in FFA). In FFA the second hit targets a random different eligible foe, or the original foe if none exists; elsewhere it redirects after a KO. Both use Sp. Atk: the first targets Sp. Def, the second Defense. Secondary effects roll only on the first hit. Excludes Z/Max, fixed-damage and existing multi-hit moves.",
+		"shortDesc": "Fire/Psychic attacks hit twice; the second hit targets Defense instead of Sp. Def.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
 	"tyrantdomain": {
 		"name": "Tyrant Domain",
 		"num": 11120,
 		"gen": 9,
 		"desc": "Sand Stream + Relic Armor + Supreme Overlord + Self Sufficient; Dragon's Den for 5 turns on faint. Shows \"The Tyrant will persist\" when it faints.",
-		"shortDesc": "Sand Stream + Relic Armor + Supreme Overlord + Self Sufficient; Dragon's Den on faint.",
+		"shortDesc": "Relic Armor + Supreme Overlord + Self Sufficient + Sand Stream; Dragon's Den on faint.",
 		"rating": 5,
 		"flags": {},
 		"isNonstandard": null
@@ -23909,6 +27449,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {
 			"breakable": 1
 		},
+		"isNonstandard": null
+	},
+	"ultraego": {
+		"name": "Ultra Ego",
+		"num": 10012,
+		"gen": 9,
+		"desc": "Damaging moves ignore opposing Abilities. Once per turn after dealing damage, this Pokemon heals 1/16 max HP. The first opposing damaging hit boosts its Attack and Sp. Atk by 1 and heals it by 1/16; later hits in the same move heal 1/20. Certain fields grant defensive boosts or stronger healing. Bewitched Woods, Haunted, and Holy Field suppress these effects. Its enhanced-field one-time 1/4 HP pinch recovery is consumed only when it actually restores HP; blocked healing preserves it for a later eligible hit window.",
+		"shortDesc": "Ignores Abilities; heals when attacking or hit; first hit boosts Atk and SpA.",
+		"rating": 3,
+		"flags": {},
 		"isNonstandard": null
 	},
 	"ultrainstinct": {
@@ -23926,7 +27476,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10139,
 		"gen": 9,
 		"desc": "This Pokemon has Dragonize and Magma Armor's effects. It is immune to Hail damage. At the end of each turn, opposing Pokemon take Fire-type damage equal to 1/16 max HP, doubled if burned or if this Pokemon used a Fire- or Dragon-type move this turn. This damage is blocked by Fire immunities. Only in Free-for-All does Fire type effectiveness scale this chip.",
-		"shortDesc": "Proficient. Dragonize + Magma Armor; Fire chip scales by type in FFA.",
+		"shortDesc": "Proficient; Dragonize + Magma Armor; Fire chip scales by type in FFA.",
 		"rating": 4,
 		"flags": {
 			"breakable": 1
@@ -23984,7 +27534,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10364,
 		"gen": 9,
 		"desc": "Critical-hit and Competitive effects; no Unburden. Stat drops can raise Special Attack, but item use or loss no longer doubles Speed.",
-		"shortDesc": "Super Luck + Competitive. Critical-hit and Competitive effects; no Unburden.",
+		"shortDesc": "Super Luck; Critical-hit and Competitive effects; no Unburden.",
 		"rating": 5,
 		"flags": {
 			"failroleplay": 1,
@@ -24044,6 +27594,28 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		},
 		"isNonstandard": null
 	},
+	"varietyrush": {
+		"name": "Variety Rush",
+		"num": 10431,
+		"gen": 9,
+		"desc": "The first damaging hit of each non-Normal move type it lands on a foe each switch-in has 1.4x power. A type is spent only after a hit connects. Pivot moves such as U-turn qualify.",
+		"shortDesc": "First connected hit of each non-Normal type each switch-in has 1.4x power; pivots qualify.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"vaultkeeper": {
+		"name": "Vault Keeper",
+		"num": 11238,
+		"gen": 9,
+		"desc": "Full Prankster and Sticky Hold. While active, opposing moves cannot remove this side's Reflect, Light Screen or Aurora Veil. Normal expiration and damage bypass still work; applicable Mold Breaker effects bypass the protection.",
+		"shortDesc": "Prankster + Sticky Hold; protects this side's screens from opposing removal.",
+		"rating": 1.5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
 	"vendetta": {
 		"name": "Vendetta",
 		"num": 10160,
@@ -24059,7 +27631,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10154,
 		"gen": 9,
 		"desc": "On switch-in, this Pokemon becomes poisoned if it has no status, even if it is Steel-type. This Pokemon has Poison Heal and Dual Wield's effects. While poisoned, its physical damage is multiplied by 1.3. Metal Claw has 1.5x power.",
-		"shortDesc": "Self-poisons on switch-in; Poison Heal + Dual Wield; poisoned physical damage 1.3x; Metal Claw 1.5x.",
+		"shortDesc": "Poison Heal + Dual Wield; Self-poisons on switch-in; poisoned physical damage 1.3x; Metal Claw 1.5x.",
 		"rating": 4,
 		"flags": {
 			"breakable": 1
@@ -24076,12 +27648,42 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {},
 		"isNonstandard": null
 	},
+	"venomcanticle": {
+		"name": "Venom Canticle",
+		"num": 11202,
+		"gen": 9,
+		"desc": "Damaging Normal-type sound moves become Poison-type, with no extra power boost. Status moves and targeting are unchanged.",
+		"shortDesc": "Damaging Normal sound moves become Poison; no extra power boost.",
+		"rating": 3,
+		"flags": {},
+		"isNonstandard": null
+	},
 	"venomheal": {
 		"name": "Venom Heal",
 		"num": 10367,
 		"gen": 9,
 		"desc": "This Pokemon has Hyper Cutter, Poison Heal, and Poison Point's effects. Its Poison-type moves have 1.5x STAB.",
 		"shortDesc": "Hyper Cutter + Poison Heal + Poison Point; Poison moves get 1.5x STAB.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"venomignition": {
+		"name": "Venom Ignition",
+		"num": 11254,
+		"gen": 9,
+		"desc": "Fire-type damaging attacks deal 1.2x damage against a poisoned or badly poisoned target. Status is checked when each hit is calculated. Does not consume poison, cause burns or add residual damage.",
+		"shortDesc": "Fire attacks deal 1.2x damage against poisoned targets.",
+		"rating": 3,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"venomspurs": {
+		"name": "Venom Spurs",
+		"num": 10545,
+		"gen": 9,
+		"desc": "Damaging a foe with a Poison move primes the next Bug hit against a foe to lower Defense by 1 stage before damage. Non-stacking charge; Protect, misses and Substitute preserve it; switching clears it.",
+		"shortDesc": "A Poison hit charges the next Bug hit to lower Defense before damage.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null
@@ -24102,8 +27704,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Verdant Drake",
 		"num": 10030,
 		"gen": 9,
-		"desc": "Same-type attacks gain 1.3x power. Dual Wield makes moves boosted by Sharpness or Mega Launcher, plus arrow moves, hit twice for reduced damage. Regenerator restores 1/3 max HP on switching out. Lightning Rod draws in and absorbs Electric moves, raising Attack and Special Attack by 1 stage; Electric Terrain also grants these boosts on entry.",
-		"shortDesc": "Proficient + Dual Wield + Regenerator + Lightning Rod. 1.3x same-type moves; Dual Wield + Regenerator + Lightning Rod.",
+		"desc": "Same-type attacks gain 1.3x power. Dual Wield makes moves boosted by Sharpness or Mega Launcher, plus arrow moves, hit twice for reduced damage. Regenerator restores 1/3 maximum HP on switching out. Limber prevents paralysis, cures existing paralysis, and blocks Speed reductions from other Pokemon and field effects; self-inflicted costs and item slowdowns still apply. Lightning Rod draws in and absorbs Electric moves, raising Attack and Special Attack by 1 stage; Electric Terrain also grants these boosts on entry.",
+		"shortDesc": "Proficient + Dual Wield + Regenerator + Lightning Rod + Limber; 1.3x same-type moves.",
 		"rating": 4,
 		"flags": {
 			"breakable": 1
@@ -24115,7 +27717,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 11127,
 		"gen": 9,
 		"desc": "Chlorophyll + Sharpness + Grass Pelt. Boosts Speed in sun, slicing damage, and Defense on grassy fields. Invigorate is removed.",
-		"shortDesc": "Chlorophyll + Sharpness + Grass Pelt.",
+		"shortDesc": "Chlorophyll + Grass Pelt + Sharpness.",
 		"rating": 5,
 		"flags": {
 			"breakable": 1
@@ -24127,7 +27729,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10160,
 		"gen": 9,
 		"desc": "This Pokemon has Friend Guard's effect. On switch-in, it restores 1/8 of its ally's max HP. At the end of each turn, this Pokemon restores 1/8 of its max HP and its ally restores 1/16 of its max HP.",
-		"shortDesc": "Proficient. Friend Guard; heals ally on switch-in; heals self and ally each turn.",
+		"shortDesc": "Proficient; Friend Guard; heals ally on switch-in; heals self and ally each turn.",
 		"rating": 4,
 		"flags": {
 			"breakable": 1
@@ -24143,6 +27745,39 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"rating": 4,
 		"flags": {
 			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"violentrush": {
+		"name": "Violent Rush",
+		"num": 10286,
+		"gen": 9,
+		"desc": "On this Pokemon's first active turn, its Speed is 1.5x and its Attack is 1.2x.",
+		"shortDesc": "First active turn: 1.5x Spe and 1.2x Atk.",
+		"rating": 3.5,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"vitalcircuit": {
+		"name": "Vital Circuit",
+		"num": 10585,
+		"gen": 9,
+		"desc": "Electric attacks without an existing drain effect restore 25% of damage dealt to foes, capped at 1/8 maximum HP per turn, including Big Root. Respects Liquid Ooze and Heal Block. Does not add to or cap a move's existing drain effect.",
+		"shortDesc": "Electric attacks drain 25% of damage, capped at 1/8 HP per turn.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"voidcraft": {
+		"name": "Voidcraft",
+		"num": 10121,
+		"gen": 9,
+		"desc": "Elevate + Shadow Shield + Temporal Shift + Insomnia. It is ungrounded, takes 0.8x attack damage at any HP (0.6x total from super-effective attacks), cannot sleep or be affected by Yawn, and opposing Pokemon cannot lower its stats. Its damage reduction is not bypassed by Mold Breaker or ability-ignoring moves; its other defensive components remain bypassable. Ability suppression disables it. It retains hail immunity on Cold Eclipse. Its Dark- and Ghost-type damaging moves have 1.3x power, and it raises its highest stat after a move KO. Starting on Mega Evolution, it queues a 120 BP Ghost-type Future Sight on that turn and every other turn afterward; each queued attack strikes two turns later. It does not trap foes or have Magic Guard's indirect-damage immunity.",
+		"shortDesc": "Elevate + Shadow Shield + Temporal Shift + Insomnia; 120 BP Ghost Future Sight every other turn.",
+		"rating": 4,
+		"flags": {
+			"breakable": 1,
+			"unbreakableDamage": 1
 		},
 		"isNonstandard": null
 	},
@@ -24168,6 +27803,26 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {
 			"breakable": 1
 		},
+		"isNonstandard": null
+	},
+	"voltagevolley": {
+		"name": "Voltage Volley",
+		"num": 10178,
+		"gen": 9,
+		"desc": "This Pokemon's multi-hit moves become special attacks and use its Special Attack.",
+		"shortDesc": "Multi-hit moves become special and use Sp. Atk.",
+		"rating": 3.5,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"wailingsnow": {
+		"name": "Wailing Snow",
+		"num": 10463,
+		"gen": 9,
+		"desc": "Once per switch-in, damaging a foe with an Ice attack primes the next damaging Ghost move for +1 priority. Using the Ghost attack spends the effect even if blocked or missed.",
+		"shortDesc": "An Ice hit charges the next Ghost attack for +1 priority.",
+		"rating": 4,
+		"flags": {},
 		"isNonstandard": null
 	},
 	"warpath": {
@@ -24219,7 +27874,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10138,
 		"gen": 9,
 		"desc": "This Pokemon has Dual Wield's effects. At the end of each turn, opposing Pokemon take cycling Water damage of 1/16, 2/16, then 3/16 max HP, blocked by Water immunities. Only in Free-for-All does Water type effectiveness scale this chip.",
-		"shortDesc": "Proficient. Dual Wield; cycling Water chip scales by type in FFA.",
+		"shortDesc": "Proficient; Dual Wield; cycling Water chip scales by type in FFA.",
 		"rating": 4,
 		"flags": {
 			"breakable": 1
@@ -24231,11 +27886,31 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 199,
 		"gen": 7,
 		"desc": "This Pokemon gains Water STAB, and its offensive stat is doubled while using Water attacks. Fire attacks against it use half the attacker's offensive stat. It also has Water Veil's effects.",
-		"shortDesc": "Water STAB/offense 2x; Fire offense 0.5x; Water Veil.",
+		"shortDesc": "Water Veil; Water STAB/offense 2x; Fire offense 0.5x.",
 		"rating": 4.5,
 		"flags": {
 			"breakable": 1
 		},
+		"isNonstandard": null
+	},
+	"webassassin": {
+		"name": "Web Assassin",
+		"num": 10162,
+		"gen": 9,
+		"desc": "This Pokemon's Speed is doubled and cannot be lowered. This Pokemon has Sniper's effect. Its attacks are always critical hits against targets that are poisoned or have lowered Speed.",
+		"shortDesc": "Speed doubled and cannot drop; Sniper; always crits poisoned or Speed-lowered targets.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"whiplash": {
+		"name": "Whiplash",
+		"num": 10396,
+		"gen": 9,
+		"desc": "On entry, this Pokemon gains +1 accuracy. Its Tail moves have their power multiplied by 1.5.",
+		"shortDesc": "On entry: +1 accuracy. Tail moves have 1.5x power.",
+		"rating": 3.5,
+		"flags": {},
 		"isNonstandard": null
 	},
 	"wickedcommand": {
@@ -24257,6 +27932,28 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"desc": "This Pokemon has Stakeout, Tangling Hair, and Prankster's effects.",
 		"shortDesc": "Stakeout + Tangling Hair + Prankster.",
 		"rating": 4,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"wickedweave": {
+		"name": "Wicked Weave",
+		"num": 11237,
+		"gen": 9,
+		"desc": "Full Prankster. A successful status move readies the next contact attack to lower a foe's Speed by 1 after actual HP damage. The charge does not stack, is consumed by a qualifying hit, and expires at the end of the following turn.",
+		"shortDesc": "Prankster; successful status moves ready a contact-hit Speed drop through the next turn.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"wildspirit": {
+		"name": "Wild Spirit",
+		"num": 10399,
+		"gen": 9,
+		"desc": "On switch-in, this Pokemon's accuracy rises by 1 stage. During its first turn out, its attacks are guaranteed to critical hit. It takes 30% less damage from attacks.",
+		"shortDesc": "+1 accuracy on entry; first-turn critical hits; takes 30% less attack damage.",
+		"rating": 4.5,
 		"flags": {
 			"breakable": 1
 		},
@@ -24302,6 +27999,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {},
 		"isNonstandard": null
 	},
+	"witheringtouch": {
+		"name": "Withering Touch",
+		"num": 11230,
+		"gen": 9,
+		"desc": "Full Poison Touch + local Corrosion. Contact hits may poison. Corrosion permits poisoning Steel/Poison targets and Poison attacks bypass Steel immunity; foes becoming poisoned lose 1 Defense and Sp. Def stage. Retains Corrosion field effects. Poison attacks that damage the HP of a foe already poisoned before that hit lower its Attack by 1 once per target per turn. Poison newly inflicted by that same hit does not qualify. No effect from Substitute-only or residual damage.",
+		"shortDesc": "Poison Touch + full Corrosion; Poison HP hits on already-poisoned foes lower Attack once/turn.",
+		"rating": 2.5,
+		"flags": {},
+		"isNonstandard": null
+	},
 	"wonderguard": {
 		"name": "Wonder Guard",
 		"num": 25,
@@ -24335,7 +28042,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"num": 10032,
 		"gen": 9,
 		"desc": "This Pokemon has Bulletproof, Dauntless Shield, and Self Repair's effects. It gains 1 Defense stage on entry, plus 1 Special Defense stage in Cold Eclipse, New World, Starlight Arena, or Fairy Tale. It is immune to bullet and pulse moves and restores HP through Self Repair.",
-		"shortDesc": "Bulletproof + Dauntless Shield + Self Repair + Proficient. Bulletproof + Dauntless Shield + Self Repair; boosted fields also give +1 SpD.",
+		"shortDesc": "Bulletproof + Dauntless Shield + Self Repair + Proficient; boosted fields also give +1 SpD.",
 		"rating": 4.5,
 		"flags": {
 			"breakable": 1
@@ -24401,7 +28108,7 @@ moonveil: ['pastelveil' as ID, 'mistysurge' as ID],
 	fallenstar: ['moldbreaker' as ID, 'dualwield' as ID, 'selfsufficient' as ID, 'proficient' as ID],
 	burningego: ['proficient' as ID],
 	queensguard: ['contrary' as ID, 'shedskin' as ID, 'intimidate' as ID, 'infiltrator' as ID, 'proficient' as ID],
-	exalt: ['defiant' as ID],
+	exalt: ['defiant' as ID, 'sharpness' as ID],
 	emperorsresolve: ['competitive' as ID, 'slushrush' as ID, 'swiftswim' as ID, 'proficient' as ID],
 	burningrage: ['proficient' as ID],
 	terragift: ['hospitality' as ID, 'unaware' as ID, 'proficient' as ID],
@@ -24418,7 +28125,7 @@ moonveil: ['pastelveil' as ID, 'mistysurge' as ID],
 	riptideclaws: ['moldbreaker' as ID],
 	sunsovereign: ['proficient' as ID],
 
-	atrocity: ['wildfirecore' as ID, 'selfsufficient' as ID, 'proficient' as ID, 'levitate' as ID],
+	atrocity: ['unboundblaze' as ID, 'selfsufficient' as ID, 'proficient' as ID, 'toughclaws' as ID],
 	wildfirecore: ['proficient' as ID],
 	toxicbloom: ['pollenbloom' as ID, 'selfsufficient' as ID, 'proficient' as ID, 'thickfat' as ID],
 	pollenbloom: ['proficient' as ID, 'thickfat' as ID],
@@ -24517,7 +28224,7 @@ moonveil: ['pastelveil' as ID, 'mistysurge' as ID],
 	curseddoll: ['toughclaws' as ID, 'shadowshield' as ID],
 	voidveil: ['levitate' as ID, 'magicguard' as ID, 'insomnia' as ID],
 	hexbound: ['shadowtag' as ID, 'prankster' as ID],
-	shadowguard: ['elevate' as ID, 'shadowshield' as ID, 'temporalshift' as ID, 'insomnia' as ID],
+	voidcraft: ['elevate' as ID, 'shadowshield' as ID, 'temporalshift' as ID, 'insomnia' as ID],
 	sandsovereign: ['dauntlessshield' as ID, 'solidrock' as ID],
 	alloycore: ['magicguard' as ID, 'selfsufficient' as ID, 'stalwart' as ID],
 	treasuretitan: ['filter' as ID, 'eartheater' as ID, 'heavymetal' as ID],
@@ -24682,1547 +28389,1676 @@ for (const id of ["aquatail","tailsmash","bodyslam","breakingswipe","brutalswing
 }
 // BEGIN APPROVED ROSTER COMPONENTS
 Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
-  "shadowbond": [
-    "battlebond",
-    "filter",
-    "selfsufficient",
-    "proficient",
-    "infiltrator"
-  ],
-  "apexbond": [
-    "battlebond",
-    "filter",
-    "selfsufficient",
-    "supremeoverlord",
-    "roughskin"
-  ],
-  "sacredbond": [
-    "battlebond",
-    "filter",
-    "selfsufficient",
-    "magmaarmor",
-    "intimidate",
-    "flashfire"
-  ],
-  "battlebond": [
-    "filter",
-    "selfsufficient"
-  ],
-  "highnoon": [
-    "dualwield",
-    "megalauncher",
-    "proficient"
-  ],
-  "strikersmomentum": [
-    "proficient"
-  ],
-  "forestsurge": [
-    "proficient"
-  ],
-  "exalt": [
-    "defiant"
-  ],
-  "burningrage": [
-    "proficient"
-  ],
-  "terragift": [
-    "hospitality",
-    "unaware",
-    "proficient"
-  ],
-  "blazingtempo": [
-    "proficient",
-    "speedboost",
-    "striker",
-    "magmaarmor",
-    "keeneye"
-  ],
-  "verdantdrake": [
-    "proficient",
-    "dualwield",
-    "regenerator",
-    "lightningrod"
-  ],
-  "mightyjaw": [
-    "proficient"
-  ],
-  "blazingmane": [
-    "proficient"
-  ],
-  "plasmaeruption": [
-    "proficient",
-    "static",
-    "flamebody"
-  ],
-  "gigavolt": [
-    "moldbreaker",
-    "lightningrod",
-    "static"
-  ],
-  "verdantedge": [
-    "chlorophyll",
-    "grasspelt",
-    "sharpness"
-  ],
-  "permafrost": [
-    "icebody",
-    "icescales",
-    "refrigerate"
-  ],
-  "glacialheart": [
-    "thermalexchange",
-    "icebody",
-    "stalwart"
-  ],
-  "tidalwave": [
-    "waterabsorb",
-    "hydration",
-    "raindish"
-  ],
-  "livewire": [
-    "transistor",
-    "voltabsorb",
-    "quickfeet",
-    "ironbarbs"
-  ],
-  "kindledfury": [
-    "fluffy",
-    "guts",
-    "flashfire"
-  ],
-  "verdanthospitality": [
-    "proficient"
-  ],
-  "verdantsanctuary": [
-    "grassysurge",
-    "invigorate",
-    "hospitality",
-    "friendguard"
-  ],
-  "fortressshell": [
-    "proficient"
-  ],
-  "waterbarrage": [
-    "proficient"
-  ],
-  "wildfirecore": [
-    "proficient"
-  ],
-  "pollenbloom": [
-    "proficient",
-    "thickfat"
-  ],
-  "ironclad": [
-    "armorize"
-  ],
-  "apexpredator": [
-    "relicarmor",
-    "dragonize",
-    "windrider"
-  ],
-  "tyrantdomain": [
-    "relicarmor",
-    "supremeoverlord",
-    "selfsufficient",
-    "sandstream"
-  ],
-  "auroradomain": [
-    "relicarmor",
-    "refrigerate",
-    "selfsufficient",
-    "snowwarning"
-  ],
-  "royalscales": [
-    "prismscale",
-    "marvelscale",
-    "oblivious",
-    "swiftswim",
-    "dragonize",
-    "selfsufficient"
-  ],
-  "aeviandream": [
-    "baddreams",
-    "shedskin",
-    "toughclaws"
-  ],
-  "wingedwraith": [
-    "infiltrator",
-    "galewings"
-  ],
-  "toxicsink": [
-    "effectspore",
-    "invigorate"
-  ],
-  "ragingbeast": [
-    "guts",
-    "moldbreaker"
-  ],
-  "lunardread": [],
-  "stillwaters": [
-    "cloudnine",
-    "magicguard",
-    "unaware"
-  ],
-  "scavenger": [
-    "overcoat",
-    "bigpecks",
-    "regenerator"
-  ],
-  "toxicspines": [
-    "toxicdebris",
-    "corrosion",
-    "merciless"
-  ],
-  "truedevotion": [
-    "falsedevotion",
-    "serenegrace",
-    "naturalrecovery",
-    "prankster",
-    "protean",
-    "technician"
-  ],
-  "falsedevotion": [
-    "serenegrace",
-    "naturalrecovery",
-    "prankster"
-  ],
-  "witheringshell": [
-    "crumblingshell",
-    "naturalrecovery",
-    "sturdy"
-  ],
-  "argentdevotion": [
-    "armorize",
-    "swornduty",
-    "serenegrace"
-  ],
-  "fluffyevo": [
-    "overcoat"
-  ],
-  "bonewarrior": [
-    "battlearmor",
-    "selfsufficient"
-  ],
-  "seafiend": [
-    "toxicdebris",
-    "waterbubble",
-    "waterveil"
-  ],
-  "hisuianoath": [
-    "swornduty",
-    "toughclaws",
-    "corrosion"
-  ],
-  "abysslure": [
-    "voltabsorb",
-    "waterabsorb",
-    "illuminate"
-  ],
-  "celestialheart": [
-    "soulheart",
-    "friendguard",
-    "serenegrace"
-  ],
-  "phalanxform": [
-    "hydrabond",
-    "friendguard",
-    "battlearmor"
-  ],
-  "astralcore": [
-    "purepower",
-    "naturalcure",
-    "illuminate"
-  ],
-  "doomwarning": [
-    "magicbounce",
-    "magicguard"
-  ],
-  "ancientbloom": [
-    "effectspore",
-    "selfsufficient",
-    "proficient"
-  ],
-  "furnaceengine": [
-    "steamengine",
-    "flamebody",
-    "selfsufficient",
-    "solidrock"
-  ],
-  "apexflytrap": [
-    "levitate"
-  ],
-  "forgegrit": [
-    "guts"
-  ],
-  "masonsfist": [
-    "ironfist"
-  ],
-  "marshconduit": [
-    "waterabsorb"
-  ],
-  "swarmdrive": [
-    "swarm"
-  ],
-  "mirechorus": [
-    "liquidvoice",
-    "poisontouch"
-  ],
-  "boretunnel": [
-    "eartheater"
-  ],
-  "duneterror": [
-    "sandstream",
-    "shedskin",
-    "sandspit"
-  ],
-  "waterbubble": [
-    "waterveil"
-  ],
-  "hisuianvanguard": [
-    "rapidresponse",
-    "windpower"
-  ],
-  "unovavanguard": [
-    "violentrush",
-    "windrider"
-  ],
-  "hisuianresolve": [
-    "bruteforce",
-    "reckless",
-    "rockhead",
-    "magmaarmor"
-  ],
-  "nobleconduit": [
-    "battery",
-    "solarpower",
-    "aftermath"
-  ],
-  "nobledance": [
-    "dancer",
-    "hospitality",
-    "owntempo"
-  ],
-  "noblearmor": [
-    "prismarmor",
-    "icebody"
-  ],
-  "noblerider": [
-    "swiftswim",
-    "moldbreaker"
-  ],
-  "gooey": [
-    "hydration",
-    "sapsipper"
-  ],
-  "irondominion": [
-    "pressure",
-    "swornduty",
-    "mirrorarmor"
-  ],
-  "bewitchingmajesty": [
-    "magicbounce",
-    "queenlymajesty"
-  ],
-  "soulstrike": [],
-  "mountainhunger": [
-    "sapsipper",
-    "thickfat",
-    "earlybird"
-  ],
-  "astralwatcher": [
-    "prankster",
-    "defragment",
-    "frisk"
-  ],
-  "alchemistsurge": [
-    "psychicsurge",
-    "competitive",
-    "hydrabond",
-    "neuroforce",
-    "prankster"
-  ],
-  "lunarorbit": [
-    "magicbounce",
-    "serenegrace",
-    "triage",
-    "magicguard"
-  ],
-  "territorial": [],
-  "treasuretitan": [
-    "filter",
-    "eartheater",
-    "heavymetal",
-    "intimidate"
-  ],
-  "royalsun": [
-    "drought",
-    "royaldecree",
-    "supremeoverlord"
-  ],
-  "ragingfists": [
-    "hydrabond",
-    "fightingfiend",
-    "scrappy"
-  ],
-  "aquashell": [
-    "waterveil",
-    "toughclaws",
-    "innerfocus"
-  ],
-  "warship": [
-    "swiftswim",
-    "unaware",
-    "solidrock",
-    "strongjaw"
-  ],
-  "sweetdecay": [
-    "hustle",
-    "gluttony",
-    "sweetveil",
-    "corrosion"
-  ],
-  "bakedbliss": [
-    "wellbakedbody",
-    "thickfat",
-    "sweetveil",
-    "gluttony"
-  ],
-  "hydraheart": [
-    "hydrabond",
-    "selfsufficient",
-    "stamina"
-  ],
-  "truehydra": [
-    "hydrabond",
-    "regenerator",
-    "shedskin",
-    "selfsufficient"
-  ],
-  "moonveil": [
-    "pastelveil",
-    "mistysurge"
-  ],
-  "aevianspark": [
-    "technician",
-    "static",
-    "earlybird"
-  ],
-  "aeviangrief": [
-    "magicguard",
-    "cursedbody",
-    "wonderskin",
-    "levitate"
-  ],
-  "aevianrocket": [
-    "bruteforce",
-    "reckless",
-    "rockhead",
-    "regenerator",
-    "moldbreaker",
-    "swiftswim"
-  ],
-  "railguncircuit": [
-    "lightningrod"
-  ],
-  "wreckingball": [
-    "sturdy",
-    "selfsufficient",
-    "crumblingshell"
-  ],
-  "swiftdrill": [
-    "swiftswim",
-    "powerdrill",
-    "raindish"
-  ],
-  "bullrush": [
-    "violentrush",
-    "intimidate"
-  ],
-  "safeharbor": [
-    "icebody",
-    "waterabsorb",
-    "hydration"
-  ],
-  "ironvise": [
-    "toughclaws",
-    "battlearmor",
-    "lightmetal",
-    "intimidate"
-  ],
-  "razorcurrent": [
-    "drizzle",
-    "strongjaw",
-    "speedboost"
-  ],
-  "longreach": [
-    "superluck"
-  ],
-  "paradoxengine": [],
-  "greatmarsh": [
-    "anticipation",
-    "dryskin",
-    "adaptability"
-  ],
-  "lifeguard": [
-    "friendguard",
-    "swornduty",
-    "propellertail"
-  ],
-  "zen": [
-    "waterabsorb",
-    "unaware",
-    "damp"
-  ],
-  "stormsong": [
-    "liquidvoice",
-    "drizzle",
-    "soundproof"
-  ],
-  "astralward": [
-    "magicbounce",
-    "telepathy"
-  ],
-  "moonlightvigil": [
-    "innerfocus",
-    "pressure",
-    "illuminate"
-  ],
-  "adaptivecore": [
-    "download",
-    "defragment",
-    "selfrepair"
-  ],
-  "sweetresonance": [
-    "supersweetsyrup",
-    "selfsufficient",
-    "hydrabond"
-  ],
-  "sweetsanctuary": [
-    "friendguard",
-    "sweetveil",
-    "aromaveil",
-    "pastelveil"
-  ],
-  "auroraresonance": [
-    "liquidvoice",
-    "waterabsorb",
-    "icebody",
-    "raindish"
-  ],
-  "absolutezero": [
-    "snowwarning",
-    "moldbreaker",
-    "filter"
-  ],
-  "protectiveward": [
-    "liquidvoice",
-    "shellarmor",
-    "waterabsorb"
-  ],
-  "crystalresonance": [
-    "amethystglow",
-    "magicbounce"
-  ],
-  "windchime": [
-    "armorize",
-    "punkrock",
-    "levitate"
-  ],
-  "bogbody": [
-    "thickfat",
-    "levitate",
-    "dryskin"
-  ],
-  "solarhydra": [
-    "hydrabond",
-    "grassysurge",
-    "solarpower",
-    "selfrepair",
-    "selfsufficient",
-    "naturalcure"
-  ],
-  "astralengine": [
-    "elevate",
-    "powerspot",
-    "analytic"
-  ],
-  "hauntedchime": [
-    "elevate",
-    "windpower",
-    "cursedbody"
-  ],
-  "auramaster": [
-    "dualwield",
-    "innerfocus",
-    "technician"
-  ],
-  "bloomingsun": [
-    "megasol",
-    "invigorate",
-    "naturalcure",
-    "proficient"
-  ],
-  "echosense": [
-    "echofiend",
-    "frisk",
-    "telepathy",
-    "infiltrator"
-  ],
-  "froststalker": [
-    "stakeout",
-    "sharpness",
-    "refrigerate"
-  ],
-  "sacredpower": [
-    "duskilate",
-    "insomnia",
-    "magicguard"
-  ],
-  "nighthunt": [
-    "strongjaw",
-    "infiltrator",
-    "intimidate"
-  ],
-  "corrosivetouch": [
-    "technician",
-    "poisontouch",
-    "corrosion"
-  ],
-  "stormbell": [
-    "mirrorarmor",
-    "drizzle",
-    "elevate"
-  ],
-  "apexarmor": [
-    "bulletproof",
-    "roughskin",
-    "stalwart",
-    "selfsufficient"
-  ],
-  "burningcrown": [
-    "filter",
-    "selfsufficient",
-    "whitesmoke",
-    "moldbreaker",
-    "proficient"
-  ],
-  "burningego": [
-    "proficient",
-    "ultraego",
-    "flamebody",
-    "thickfat"
-  ],
-  "burningspirit": [
-    "selfsufficient",
-    "opportunist",
-    "magmaarmor",
-    "proficient"
-  ],
-  "crueltag": [
-    "shadowtag",
-    "infiltrator",
-    "baddreams"
-  ],
-  "emperorsresolve": [
-    "competitive",
-    "slushrush",
-    "swiftswim",
-    "proficient"
-  ],
-  "execution": [
-    "duskilate"
-  ],
-  "fallenstar": [
-    "moldbreaker",
-    "dualwield",
-    "selfsufficient",
-    "proficient"
-  ],
-  "parasitism": [
-    "dryskin"
-  ],
-  "completeparasitism": [
-    "parasitism",
-    "dryskin",
-    "filter",
-    "selfrepair"
-  ],
-  "silkendecoy": [
-    "insomnia",
-    "selfsufficient",
-    "swarm"
-  ],
-  "wickedsnare": [
-    "stakeout",
-    "tanglinghair",
-    "prankster"
-  ],
-  "mythicscale": [
-    "marvelscale",
-    "levitate",
-    "compoundeyes",
-    "shielddust"
-  ],
-  "aurainstinct": [
-    "adaptability",
-    "dualwield",
-    "secondwind"
-  ],
-  "wrathshield": [
-    "bulletproof",
-    "dauntlessshield",
-    "selfrepair",
-    "proficient"
-  ],
-  "shadowcurrent": [
-    "protean",
-    "technician",
-    "anticipation",
-    "infiltrator",
-    "proficient"
-  ],
-  "astralwitchcraft": [
-    "levitate",
-    "magicguard",
-    "magicbounce",
-    "proficient"
-  ],
-  "ragingcurrent": [
-    "swiftswim",
-    "damp",
-    "dryskin",
-    "stamina",
-    "proficient"
-  ],
-  "calderacore": [
-    "magmaarmor",
-    "sheerforce",
-    "drought"
-  ],
-  "doublestrike": [
-    "ironfist",
-    "technician",
-    "skilllink"
-  ],
-  "siegelauncher": [
-    "stalwart",
-    "proficient"
-  ],
-  "soultag": [
-    "soulfire",
-    "shadowtag",
-    "flamebody"
-  ],
-  "deserttyrant": [
-    "sandstream"
-  ],
-  "desertspirit": [
-    "levitate",
-    "sandstream",
-    "tintedlens"
-  ],
-  "tremor": [
-    "levitate",
-    "resonanceforce",
-    "sandforce"
-  ],
-  "desertshell": [
-    "skilllink",
-    "heatproof",
-    "sandstream"
-  ],
-  "riptideclaws": [
-    "swiftswim",
-    "toughclaws",
-    "shellarmor",
-    "moldbreaker"
-  ],
-  "fossilfrenzy": [
-    "klutz"
-  ],
-  "phantomfist": [
-    "unseenfist",
-    "selfrepair",
-    "shadowshield",
-    "aftermath"
-  ],
-  "alloycore": [
-    "magicguard",
-    "selfsufficient",
-    "stalwart"
-  ],
-  "hellfireeclipse": [
-    "solarpower",
-    "darkaura"
-  ],
-  "sacrededge": [
-    "sharpness",
-    "swornduty"
-  ],
-  "omenedge": [
-    "sharpness",
-    "dualwield",
-    "pressure"
-  ],
-  "dreadmaw": [
-    "hugepower",
-    "strongjaw",
-    "invigorate"
-  ],
-  "cursedmarionette": [
-    "prankster"
-  ],
-  "cursedarmament": [
-    "filter"
-  ],
-  "phantombarrage": [
-    "clearbody",
-    "infiltrator",
-    "levitate",
-    "hydrabond"
-  ],
-  "sandsovereign": [
-    "sandstream",
-    "dauntlessshield",
-    "solidrock"
-  ],
-  "frostsovereign": [
-    "snowwarning",
-    "icebody",
-    "filter"
-  ],
-  "freezerburn": [
-    "slushrush",
-    "refrigerate",
-    "strongjaw",
-    "levitate"
-  ],
-  "stormfright": [
-    "intimidate",
-    "stormpower",
-    "lightningrod"
-  ],
-  "enlightenment": [
-    "purepower"
-  ],
-  "relentlesslink": [
-    "skilllink",
-    "moldbreaker",
-    "powerdrill"
-  ],
-  "relentlesshunt": [
-    "levitate"
-  ],
-  "mirrorgreed": [
-    "magicbounce",
-    "analytic"
-  ],
-  "moonlitwings": [
-    "serenegrace"
-  ],
-  "uncheckedassault": [
-    "scrappy",
-    "striker",
-    "opportunist",
-    "limber"
-  ],
-  "royalvoice": [
-    "pixilate",
-    "queenlymajesty",
-    "dreamsickness",
-    "telepathy",
-    "trace"
-  ],
-  "perfectforesight": [
-    "trace",
-    "insomnia"
-  ],
-  "dreamsickness": [
-    "telepathy"
-  ],
-  "voidveil": [
-    "levitate",
-    "magicguard",
-    "insomnia"
-  ],
-  "knuckletide": [
-    "ironfist"
-  ],
-  "crosscurrent": [
-    "swiftswim"
-  ],
-  "pearlcurrent": [
-    "waterabsorb"
-  ],
-  "slipstream": [
-    "levitate"
-  ],
-  "smolderingshroud": [
-    "whitesmoke"
-  ],
-  "springfur": [
-    "furcoat"
-  ],
-  "hexbound": [
-    "shadowtag",
-    "prankster"
-  ],
-  "divinemockery": [
-    "hydrabond",
-    "moldbreaker",
-    "sniper"
-  ],
-  "hydratyrant": [
-    "hydrabond",
-    "berserk"
-  ],
-  "hisuianpath": [
-    "sapsipper",
-    "innerfocus",
-    "fluffy"
-  ],
-  "toxicevolution": [
-    "corrosion",
-    "dualwield",
-    "shielddust",
-    "levitate"
-  ],
-  "heavenlychorus": [
-    "pixilate",
-    "cloudnine",
-    "fluffy"
-  ],
-  "guidingomen": [
-    "friendguard",
-    "serenegrace"
-  ],
-  "heatcoil": [
-    "speedboost",
-    "magmaarmor",
-    "flamebody"
-  ],
-  "coldlogic": [
-    "toughclaws",
-    "prismarmor",
-    "aftermath",
-    "forewarn"
-  ],
-  "ironwill": [
-    "prismarmor",
-    "secondwind",
-    "selfsufficient",
-    "whiplash"
-  ],
-  "joyride": [
-    "aerilate",
-    "violentrush",
-    "vitalspirit"
-  ],
-  "hardyskin": [
-    "dryskin",
-    "vitalspirit",
-    "moxie"
-  ],
-  "noseformation": [
-    "filter",
-    "elevate"
-  ],
-  "perfectego": [
-    "ultraego"
-  ],
-  "prismscale": [
-    "marvelscale",
-    "oblivious",
-    "swiftswim"
-  ],
-  "queensguard": [
-    "contrary",
-    "shedskin",
-    "intimidate",
-    "infiltrator",
-    "proficient"
-  ],
-  "rainsovereign": [
-    "drizzle"
-  ],
-  "riotamp": [
-    "galvanize",
-    "resonanceforce",
-    "voltabsorb"
-  ],
-  "mourningsnow": [
-    "snowwarning",
-    "icebody"
-  ],
-  "venombastion": [
-    "stamina"
-  ],
-  "draconicforce": [
-    "dragonize",
-    "strongjaw",
-    "moldbreaker",
-    "proficient"
-  ],
-  "tidaljaw": [
-    "strongjaw",
-    "swiftswim",
-    "filter",
-    "proficient"
-  ],
-  "heavyartillery": [
-    "unaware",
-    "shellarmor"
-  ],
-  "perfectstriker": [
-    "striker",
-    "noguard",
-    "libero",
-    "proficient"
-  ],
-  "vanguard": [
-    "intimidate"
-  ],
-  "royalarmament": [
-    "powerdrill"
-  ],
-  "seablessing": [
-    "waterveil",
-    "raindish"
-  ],
-  "seasonalstride": [
-    "chlorophyll"
-  ],
-  "slowclamp": [
-    "shellarmor",
-    "owntempo",
-    "analytic",
-    "sweetveil"
-  ],
-  "soaringspirit": [
-    "windpower",
-    "selfsufficient"
-  ],
-  "solartrap": [
-    "accumulation",
-    "innardsout",
-    "solarpower"
-  ],
-  "spiralevolution": [
-    "adaptability",
-    "levitate",
-    "dualwield",
-    "infiltrator",
-    "shielddust"
-  ],
-  "stormsovereign": [
-    "galewings",
-    "keeneye"
-  ],
-  "sunsovereign": [
-    "drought",
-    "wildfirecore",
-    "selfsufficient",
-    "proficient"
-  ],
-  "terraresolve": [
-    "stamina",
-    "solidrock",
-    "proficient"
-  ],
-  "primalego": [
-    "unaware",
-    "proficient",
-    "ultraego",
-    "moldbreaker"
-  ],
-  "toxicbloom": [
-    "pollenbloom",
-    "selfsufficient",
-    "proficient",
-    "thickfat"
-  ],
-  "toxicrenewal": [
-    "adaptability",
-    "regenerator",
-    "poisontouch"
-  ],
-  "vendetta": [
-    "angerpoint",
-    "secondwind",
-    "selfsufficient"
-  ],
-  "auroracurrent": [
-    "snowwarning"
-  ],
-  "dunetyrant": [
-    "sandstream",
-    "strongjaw"
-  ],
-  "ironmountain": [
-    "filter",
-    "stamina",
-    "heavymetal"
-  ],
-  "woolyconductor": [
-    "fluffy",
-    "moldbreaker",
-    "static"
-  ],
-  "helios": [
-    "drought",
-    "moldbreaker",
-    "berserk",
-    "swiftswim"
-  ],
-  "rimeknuckle": [
-    "ironfist",
-    "filter",
-    "icebody"
-  ],
-  "ragingstorm": [
-    "moldbreaker",
-    "battlearmor"
-  ],
-  "ragingoverlord": [
-    "ragingstorm",
-    "supremeoverlord",
-    "moldbreaker",
-    "battlearmor"
-  ],
-  "abysssniper": [
-    "sniper",
-    "stalwart"
-  ],
-  "atrocity": [
-    "wildfirecore",
-    "selfsufficient",
-    "proficient",
-    "levitate"
-  ],
-  "streettyrant": [
-    "intimidate",
-    "shedskin",
-    "moldbreaker"
-  ],
-  "divineintervention": [
-    "swornduty",
-    "friendguard",
-    "regenerator",
-    "fluffy"
-  ],
-  "shadowguard": [
-    "elevate",
-    "shadowshield",
-    "temporalshift",
-    "insomnia"
-  ],
-  "requiem": [
-    "cursedbody"
-  ],
-  "reapersgrip": [
-    "unaware",
-    "darkaura",
-    "selfsufficient"
-  ],
-  "pendulumswing": [
-    "insomnia",
-    "filter"
-  ],
-  "nightmarepulse": [
-    "pendulumswing",
-    "cursedbody",
-    "baddreams",
-    "infiltrator"
-  ],
-  "pulsewaste": [
-    "protean",
-    "poisontouch",
-    "regenerator"
-  ],
-  "rifteater": [
-    "accumulation",
-    "sandstream"
-  ],
-  "mountainrift": [
-    "shellarmor",
-    "selfsufficient"
-  ],
-  "desertrift": [
-    "sandforce",
-    "sandstream",
-    "heavymetal"
-  ],
-  "glacialmass": [
-    "heavymetal",
-    "thickfat"
-  ],
-  "supersweetsyrup": [
-    "stickyhold"
-  ],
-  "naturalrecovery": [
-    "naturalcure",
-    "regenerator"
-  ],
-  "mossarmor": [
-    "stamina",
-    "naturalrecovery",
-    "levitate"
-  ],
-  "stormcalling": [
-    "drizzle",
-    "liquidvoice",
-    "tintedlens"
-  ],
-  "aevianfrost": [
-    "icebody",
-    "guts"
-  ],
-  "aeviantoxin": [
-    "strongjaw",
-    "layeredcoat",
-    "furcoat",
-    "overcoat"
-  ],
-  "aevianglacier": [
-    "snowwarning",
-    "icebody",
-    "refrigerate"
-  ],
-  "aevianbolt": [
-    "stormpower",
-    "static",
-    "voltabsorb"
-  ],
-  "riftdancer": [
-    "opportunist",
-    "chlorophyll",
-    "dancer"
-  ],
-  "curseddoll": [
-    "toughclaws",
-    "shadowshield"
-  ],
-  "apexvenom": [
-    "strongjaw",
-    "shedskin"
-  ],
-  "sirius": [
-    "apexvenom",
-    "blackviper",
-    "whiplash"
-  ],
-  "neurotoxin": [
-    "hydrabond",
-    "shedskin",
-    "regenerator"
-  ],
-  "patternshift": [
-    "protean",
-    "shedskin",
-    "unaware"
-  ],
-  "venomarmor": [
-    "poisonheal",
-    "dualwield"
-  ],
-  "toxicarmor": [
-    "venomarmor",
-    "violentrush"
-  ],
-  "corrosiveburn": [
-    "merciless",
-    "regenerator",
-    "corrosion"
-  ],
-  "solarrush": [
-    "sandrush",
-    "chlorophyll"
-  ],
-  "ultrainstinct": [
-    "moldbreaker",
-    "innerfocus"
-  ],
-  "unovawing": [
-    "superluck",
-    "competitive"
-  ],
-  "aevianwing": [
-    "rockhead",
-    "defiant"
-  ],
-  "resuscitation": [
-    "selfrepair",
-    "magicguard"
-  ],
-  "shieldsdown": [
-    "shellarmor",
-    "selfrepair",
-    "crumblingshell"
-  ],
-  "schooling": [
-    "hydrabond",
-    "selfrepair",
-    "moldbreaker"
-  ],
-  "seviischooling": [
-    "schooling",
-    "hydrabond",
-    "selfrepair",
-    "moldbreaker"
-  ],
-  "updraft": [],
-  "corneredfang": [
-    "guts"
-  ],
-  "nighthoard": [],
-  "dunerunner": [
-    "sandrush"
-  ],
-  "frostrunner": [
-    "slushrush"
-  ],
-  "bedrockclaw": [
-    "toughclaws"
-  ],
-  "rimeclaw": [
-    "toughclaws"
-  ],
-  "broodguard": [
-    "thickfat",
-    "friendguard"
-  ],
-  "suncharm": [
-    "drought"
-  ],
-  "causticscales": [],
-  "prismwings": [
-    "tintedlens"
-  ],
-  "oneiricdust": [
-    "psychicsurge"
-  ],
-  "pincercrush": [
-    "toughclaws"
-  ],
-  "decoypincers": [],
-  "toxiccocoon": [],
-  "galebloom": [],
-  "gemeye": [
-    "keeneye"
-  ],
-  "lastlaugh": [],
-  "openingoverture": [],
-  "resonantblade": [],
-  "finalnote": [],
-  "livingtangle": [
-    "tanglinghair",
-    "stamina"
-  ],
-  "rootrenewal": [
-    "regenerator"
-  ],
-  "fortunatewing": [
-    "superluck"
-  ],
-  "snowpack": [
-    "thickfat",
-    "icebody",
-    "toughclaws"
-  ],
-  "icemirror": [],
-  "wailingsnow": [],
-  "stonewall": [
-    "sturdy"
-  ],
-  "saltbastion": [
-    "sturdy"
-  ],
-  "anchorbridge": [
-    "sturdy"
-  ],
-  "layeredshell": [
-    "shellarmor"
-  ],
-  "breakaway": [],
-  "fossilram": [
-    "rockhead"
-  ],
-  "rootediron": [
-    "stamina"
-  ],
-  "encorearia": [
-    "serenegrace"
-  ],
-  "peppersting": [
-    "insomnia"
-  ],
-  "sushitrick": [
-    "hospitality"
-  ],
-  "mastercourse": [
-    "contrary"
-  ],
-  "secondbrew": [],
-  "railsight": [
-    "stalwart"
-  ],
-  "sovereignarsenal": [],
-  "pollenengine": [
-    "chlorophyll"
-  ],
-  "titanpincer": [
-    "hypercutter"
-  ],
-  "shellcracker": [],
-  "tidaldominion": [
-    "swiftswim"
-  ],
-  "tempestfury": [],
-  "ironlash": [
-    "whiplash"
-  ],
-  "trailbreaker": [],
-  "armoredadvance": [],
-  "gritgrappler": [
-    "guts"
-  ],
-  "dreadjaw": [
-    "moxie"
-  ],
-  "floehunter": [
-    "slushrush"
-  ],
-  "lanceguard": [
-    "shellarmor"
-  ],
-  "headlongresolve": [],
-  "herdshelter": [
-    "soundproof"
-  ],
-  "scorchsweep": [],
-  "opensky": [],
-  "tidalvoice": [
-    "liquidvoice"
-  ],
-  "rechargerelay": [
-    "battery"
-  ],
-  "hovercannon": [
-    "levitate"
-  ],
-  "keenhunt": [],
-  "bloodchallenge": [],
-  "twilightinstinct": [],
-  "twincannons": [],
-  "twinblades": [],
-  "heatreservoir": [
-    "flashfire"
-  ],
-  "mourningcoat": [
-    "fluffy"
-  ],
-  "gravewind": [
-    "sandrush"
-  ],
-  "dozinggiant": [
-    "oblivious"
-  ],
-  "quillreservoir": [
-    "waterabsorb"
-  ],
-  "raisedquills": [],
-  "mountainbreaker": [],
-  "dreadpresence": [],
-  "palmmastery": [
-    "thickfat"
-  ],
-  "galvanicspirit": [
-    "vitalspirit"
-  ],
-  "blastchamber": [
-    "vitalspirit"
-  ],
-  "venomspurs": [],
-  "lastbrood": [
-    "swarm"
-  ],
-  "shadowfeint": [],
-  "silksights": [
-    "compoundeyes"
-  ],
-  "livenet": [
-    "unnerve"
-  ],
-  "barbharvest": [
-    "ironbarbs"
-  ],
-  "currentcoil": [
-    "swiftswim"
-  ],
-  "stormcircuit": [
-    "electricsurge",
-    "elevate",
-    "currentcoil",
-    "swiftswim"
-  ],
-  "soulpyre": [],
-  "blackviper": [
-    "whiplash"
-  ],
-  "silkshuriken": [],
-  "hiddenscroll": [],
-  "toxicserenity": [
-    "poisonheal"
-  ],
-  "mudtemper": [
-    "battlearmor"
-  ],
-  "skywarden": [],
-  "lockjaw": [
-    "strongjaw"
-  ],
-  "rivershell": [
-    "shellarmor"
-  ],
-  "funeralchoir": [],
-  "festivalstep": [],
-  "saltcrust": [
-    "clearbody"
-  ],
-  "beyondfear": [
-    "innerfocus"
-  ],
-  "stillwater": [
-    "waterabsorb"
-  ],
-  "mudmeditation": [],
-  "coldopen": [],
-  "quarrycannon": [
-    "solidrock"
-  ],
-  "tundramarch": [
-    "oblivious"
-  ],
-  "undertow": [
-    "waterabsorb"
-  ],
-  "deadwater": [],
-  "vitalcircuit": [],
-  "ringmaster": [
-    "toughclaws"
-  ],
-  "unyielding": [
-    "stamina"
-  ],
-  "primalrhythm": [],
-  "setpiece": [],
-  "calculatedshot": [],
-  "falsebouquet": [],
-  "meridianseal": [],
-  "rimeplate": [],
-  "darkdominion": [
-    "darkaura"
-  ]
+	"shadowbond": [
+		"battlebond",
+		"filter",
+		"selfsufficient",
+		"proficient",
+		"infiltrator"
+	],
+	"apexbond": [
+		"battlebond",
+		"filter",
+		"selfsufficient",
+		"supremeoverlord",
+		"roughskin"
+	],
+	"sacredbond": [
+		"battlebond",
+		"filter",
+		"selfsufficient",
+		"magmaarmor",
+		"intimidate",
+		"flashfire"
+	],
+	"battlebond": [
+		"filter",
+		"selfsufficient"
+	],
+	"highnoon": [
+		"dualwield",
+		"megalauncher",
+		"proficient"
+	],
+	"strikersmomentum": [
+		"proficient"
+	],
+	"forestsurge": [
+		"proficient"
+	],
+	"exalt": [
+		"defiant",
+		"sharpness"
+	],
+	"burningrage": [
+		"proficient"
+	],
+	"terragift": [
+		"hospitality",
+		"unaware",
+		"proficient"
+	],
+	"blazingtempo": [
+		"proficient",
+		"speedboost",
+		"striker",
+		"magmaarmor",
+		"keeneye"
+	],
+	"verdantdrake": [
+		"proficient",
+		"dualwield",
+		"regenerator",
+		"lightningrod",
+		"limber"
+	],
+	"mightyjaw": [
+		"proficient"
+	],
+	"blazingmane": [
+		"proficient"
+	],
+	"plasmaeruption": [
+		"proficient",
+		"static",
+		"flamebody"
+	],
+	"gigavolt": [
+		"moldbreaker",
+		"lightningrod",
+		"static"
+	],
+	"verdantedge": [
+		"chlorophyll",
+		"grasspelt",
+		"sharpness"
+	],
+	"permafrost": [
+		"icebody",
+		"icescales",
+		"refrigerate"
+	],
+	"glacialheart": [
+		"thermalexchange",
+		"icebody",
+		"stalwart"
+	],
+	"tidalwave": [
+		"waterabsorb",
+		"hydration",
+		"raindish"
+	],
+	"livewire": [
+		"transistor",
+		"voltabsorb",
+		"quickfeet",
+		"ironbarbs"
+	],
+	"kindledfury": [
+		"fluffy",
+		"guts",
+		"flashfire"
+	],
+	"verdanthospitality": [
+		"proficient"
+	],
+	"verdantsanctuary": [
+		"grassysurge",
+		"invigorate",
+		"hospitality",
+		"friendguard"
+	],
+	"fortressshell": [
+		"proficient"
+	],
+	"waterbarrage": [
+		"proficient"
+	],
+	"wildfirecore": [
+		"proficient"
+	],
+	"pollenbloom": [
+		"proficient",
+		"thickfat"
+	],
+	"ironclad": [
+		"armorize"
+	],
+	"apexpredator": [
+		"relicarmor",
+		"dragonize",
+		"windrider"
+	],
+	"tyrantdomain": [
+		"relicarmor",
+		"supremeoverlord",
+		"selfsufficient",
+		"sandstream"
+	],
+	"auroradomain": [
+		"relicarmor",
+		"refrigerate",
+		"selfsufficient",
+		"snowwarning"
+	],
+	"royalscales": [
+		"prismscale",
+		"marvelscale",
+		"oblivious",
+		"swiftswim",
+		"dragonize",
+		"selfsufficient"
+	],
+	"aeviandream": [
+		"baddreams",
+		"shedskin",
+		"toughclaws"
+	],
+	"wingedwraith": [
+		"infiltrator",
+		"galewings"
+	],
+	"toxicsink": [
+		"effectspore",
+		"invigorate"
+	],
+	"ragingbeast": [
+		"guts",
+		"moldbreaker"
+	],
+	"lunardread": [
+		"dishearten",
+		"insomnia",
+		"pressure"
+	],
+	"stillwaters": [
+		"cloudnine",
+		"magicguard",
+		"unaware"
+	],
+	"scavenger": [
+		"overcoat",
+		"bigpecks",
+		"regenerator"
+	],
+	"toxicspines": [
+		"toxicdebris",
+		"corrosion",
+		"merciless"
+	],
+	"truedevotion": [
+		"falsedevotion",
+		"serenegrace",
+		"naturalrecovery",
+		"prankster",
+		"technician"
+	],
+	"falsedevotion": [
+		"serenegrace",
+		"naturalrecovery",
+		"prankster"
+	],
+	"witheringshell": [
+		"crumblingshell",
+		"naturalrecovery",
+		"sturdy"
+	],
+	"argentdevotion": [
+		"armorize",
+		"swornduty",
+		"serenegrace"
+	],
+	"fluffyevo": [
+		"overcoat"
+	],
+	"bonewarrior": [
+		"battlearmor",
+		"selfsufficient"
+	],
+	"seafiend": [
+		"toxicdebris",
+		"waterbubble",
+		"waterveil"
+	],
+	"hisuianoath": [
+		"swornduty",
+		"toughclaws",
+		"corrosion"
+	],
+	"abysslure": [
+		"voltabsorb",
+		"waterabsorb",
+		"illuminate"
+	],
+	"celestialheart": [
+		"soulheart",
+		"friendguard",
+		"serenegrace"
+	],
+	"phalanxform": [
+		"hydrabond",
+		"friendguard",
+		"battlearmor"
+	],
+	"astralcore": [
+		"purepower",
+		"naturalcure",
+		"illuminate"
+	],
+	"doomwarning": [
+		"magicbounce",
+		"magicguard",
+		"anticipation"
+	],
+	"ancientbloom": [
+		"effectspore",
+		"selfsufficient",
+		"proficient"
+	],
+	"furnaceengine": [
+		"steamengine",
+		"flamebody",
+		"selfsufficient",
+		"solidrock"
+	],
+	"apexflytrap": [
+		"levitate"
+	],
+	"forgegrit": [
+		"guts"
+	],
+	"masonsfist": [
+		"ironfist"
+	],
+	"marshconduit": [
+		"waterabsorb"
+	],
+	"swarmdrive": [
+		"swarm"
+	],
+	"mirechorus": [
+		"liquidvoice",
+		"poisontouch"
+	],
+	"boretunnel": [
+		"eartheater"
+	],
+	"duneterror": [
+		"sandstream",
+		"shedskin",
+		"sandspit"
+	],
+	"waterbubble": [
+		"waterveil"
+	],
+	"hisuianvanguard": [
+		"rapidresponse",
+		"windpower"
+	],
+	"unovavanguard": [
+		"violentrush",
+		"windrider"
+	],
+	"hisuianresolve": [
+		"bruteforce",
+		"reckless",
+		"rockhead",
+		"magmaarmor"
+	],
+	"nobleconduit": [
+		"battery",
+		"solarpower",
+		"aftermath"
+	],
+	"nobledance": [
+		"dancer",
+		"hospitality",
+		"owntempo"
+	],
+	"noblearmor": [
+		"prismarmor",
+		"icebody"
+	],
+	"noblerider": [
+		"swiftswim",
+		"moldbreaker"
+	],
+	"gooey": [
+		"hydration",
+		"sapsipper"
+	],
+	"irondominion": [
+		"pressure",
+		"swornduty",
+		"mirrorarmor"
+	],
+	"bewitchingmajesty": [
+		"magicbounce",
+		"queenlymajesty"
+	],
+	"soulstrike": [],
+	"mountainhunger": [
+		"sapsipper",
+		"thickfat",
+		"earlybird"
+	],
+	"astralwatcher": [
+		"prankster",
+		"defragment",
+		"frisk"
+	],
+	"alchemistsurge": [
+		"psychicsurge",
+		"competitive",
+		"hydrabond",
+		"neuroforce",
+		"prankster"
+	],
+	"lunarorbit": [
+		"magicbounce",
+		"serenegrace",
+		"triage",
+		"magicguard"
+	],
+	"territorial": [
+		"unnerve",
+		"stamina",
+		"guarddog"
+	],
+	"treasuretitan": [
+		"filter",
+		"eartheater",
+		"heavymetal",
+		"intimidate"
+	],
+	"royalsun": [
+		"drought",
+		"supremeoverlord",
+		"unnerve",
+		"flamebody"
+	],
+	"ragingfists": [
+		"hydrabond",
+		"scrappy"
+	],
+	"aquashell": [
+		"waterveil",
+		"toughclaws",
+		"innerfocus"
+	],
+	"warship": [
+		"swiftswim",
+		"unaware",
+		"solidrock",
+		"strongjaw"
+	],
+	"sweetdecay": [
+		"hustle",
+		"gluttony",
+		"sweetveil",
+		"corrosion"
+	],
+	"bakedbliss": [
+		"wellbakedbody",
+		"thickfat",
+		"sweetveil",
+		"gluttony"
+	],
+	"hydraheart": [
+		"hydrabond",
+		"selfsufficient",
+		"stamina"
+	],
+	"truehydra": [
+		"hydrabond",
+		"regenerator",
+		"shedskin",
+		"selfsufficient"
+	],
+	"moonveil": [
+		"pastelveil",
+		"mistysurge"
+	],
+	"aevianspark": [
+		"technician",
+		"static",
+		"earlybird"
+	],
+	"aeviangrief": [
+		"magicguard",
+		"cursedbody",
+		"wonderskin",
+		"levitate"
+	],
+	"aevianrocket": [
+		"bruteforce",
+		"reckless",
+		"rockhead",
+		"regenerator",
+		"moldbreaker",
+		"swiftswim"
+	],
+	"railguncircuit": [
+		"lightningrod"
+	],
+	"wreckingball": [
+		"sturdy",
+		"selfsufficient",
+		"crumblingshell"
+	],
+	"swiftdrill": [
+		"swiftswim",
+		"powerdrill",
+		"raindish"
+	],
+	"bullrush": [
+		"violentrush",
+		"intimidate"
+	],
+	"safeharbor": [
+		"icebody",
+		"waterabsorb",
+		"hydration"
+	],
+	"ironvise": [
+		"toughclaws",
+		"battlearmor",
+		"lightmetal",
+		"intimidate"
+	],
+	"razorcurrent": [
+		"drizzle",
+		"strongjaw",
+		"speedboost"
+	],
+	"longreach": [
+		"superluck",
+		"keeneye"
+	],
+	"paradoxengine": [],
+	"greatmarsh": [
+		"anticipation",
+		"dryskin",
+		"adaptability",
+		"toxicchain"
+	],
+	"lifeguard": [
+		"friendguard",
+		"swornduty",
+		"propellertail"
+	],
+	"zen": [
+		"waterabsorb",
+		"unaware",
+		"damp"
+	],
+	"stormsong": [
+		"liquidvoice",
+		"drizzle",
+		"soundproof"
+	],
+	"astralward": [
+		"magicbounce",
+		"telepathy",
+		"anticipation"
+	],
+	"moonlightvigil": [
+		"innerfocus",
+		"pressure",
+		"illuminate"
+	],
+	"adaptivecore": [
+		"download",
+		"defragment",
+		"selfrepair"
+	],
+	"sweetresonance": [
+		"supersweetsyrup",
+		"selfsufficient",
+		"hydrabond"
+	],
+	"sweetsanctuary": [
+		"friendguard",
+		"sweetveil",
+		"aromaveil",
+		"pastelveil"
+	],
+	"auroraresonance": [
+		"liquidvoice",
+		"waterabsorb",
+		"icebody",
+		"raindish"
+	],
+	"absolutezero": [
+		"snowwarning",
+		"moldbreaker",
+		"filter"
+	],
+	"protectiveward": [
+		"liquidvoice",
+		"shellarmor",
+		"waterabsorb"
+	],
+	"crystalresonance": [
+		"amethystglow",
+		"magicbounce"
+	],
+	"windchime": [
+		"armorize",
+		"punkrock",
+		"levitate"
+	],
+	"bogbody": [
+		"thickfat",
+		"levitate",
+		"dryskin"
+	],
+	"solarhydra": [
+		"hydrabond",
+		"grassysurge",
+		"solarpower",
+		"selfrepair",
+		"selfsufficient",
+		"naturalcure"
+	],
+	"astralengine": [
+		"elevate",
+		"powerspot",
+		"analytic"
+	],
+	"hauntedchime": [
+		"elevate",
+		"windpower",
+		"cursedbody"
+	],
+	"auramaster": [
+		"dualwield",
+		"innerfocus",
+		"technician"
+	],
+	"bloomingsun": [
+		"megasol",
+		"invigorate",
+		"naturalcure",
+		"proficient"
+	],
+	"echosense": [
+		"echofiend",
+		"frisk",
+		"telepathy",
+		"infiltrator"
+	],
+	"froststalker": [
+		"stakeout",
+		"sharpness",
+		"refrigerate"
+	],
+	"sacredpower": [
+		"duskilate",
+		"insomnia",
+		"magicguard"
+	],
+	"nighthunt": [
+		"strongjaw",
+		"infiltrator",
+		"intimidate",
+		"frisk",
+		"illuminate"
+	],
+	"corrosivetouch": [
+		"technician",
+		"poisontouch",
+		"corrosion"
+	],
+	"stormbell": [
+		"mirrorarmor",
+		"drizzle",
+		"elevate"
+	],
+	"apexarmor": [
+		"bulletproof",
+		"roughskin",
+		"stalwart",
+		"selfsufficient"
+	],
+	"burningcrown": [
+		"filter",
+		"selfsufficient",
+		"whitesmoke",
+		"moldbreaker",
+		"proficient"
+	],
+	"burningego": [
+		"proficient",
+		"ultraego",
+		"flamebody",
+		"magmaarmor"
+	],
+	"burningspirit": [
+		"selfsufficient",
+		"opportunist",
+		"magmaarmor",
+		"proficient"
+	],
+	"crueltag": [
+		"shadowtag",
+		"infiltrator",
+		"baddreams"
+	],
+	"emperorsresolve": [
+		"competitive",
+		"slushrush",
+		"swiftswim",
+		"proficient"
+	],
+	"execution": [
+		"duskilate"
+	],
+	"fallenstar": [
+		"moldbreaker",
+		"dualwield",
+		"selfsufficient",
+		"proficient"
+	],
+	"parasitism": [
+		"dryskin"
+	],
+	"completeparasitism": [
+		"parasitism",
+		"dryskin",
+		"filter",
+		"selfrepair"
+	],
+	"silkendecoy": [
+		"insomnia",
+		"selfsufficient",
+		"swarm"
+	],
+	"wickedsnare": [
+		"stakeout",
+		"tanglinghair",
+		"prankster"
+	],
+	"mythicscale": [
+		"marvelscale",
+		"levitate",
+		"compoundeyes",
+		"shielddust"
+	],
+	"aurainstinct": [
+		"adaptability",
+		"dualwield",
+		"secondwind"
+	],
+	"wrathshield": [
+		"bulletproof",
+		"dauntlessshield",
+		"selfrepair",
+		"proficient"
+	],
+	"shadowcurrent": [
+		"protean",
+		"technician",
+		"anticipation",
+		"infiltrator",
+		"proficient"
+	],
+	"astralwitchcraft": [
+		"levitate",
+		"magicguard",
+		"magicbounce",
+		"proficient"
+	],
+	"ragingcurrent": [
+		"swiftswim",
+		"damp",
+		"dryskin",
+		"stamina",
+		"proficient"
+	],
+	"calderacore": [
+		"magmaarmor",
+		"sheerforce",
+		"drought"
+	],
+	"doublestrike": [
+		"ironfist",
+		"technician",
+		"skilllink"
+	],
+	"siegelauncher": [
+		"stalwart",
+		"proficient"
+	],
+	"soultag": [
+		"soulfire",
+		"shadowtag",
+		"flamebody"
+	],
+	"deserttyrant": [
+		"sandstream"
+	],
+	"desertspirit": [
+		"levitate",
+		"sandstream",
+		"tintedlens"
+	],
+	"tremor": [
+		"levitate",
+		"resonanceforce",
+		"sandforce"
+	],
+	"desertshell": [
+		"skilllink",
+		"heatproof",
+		"sandstream"
+	],
+	"riptideclaws": [
+		"swiftswim",
+		"toughclaws",
+		"shellarmor",
+		"moldbreaker"
+	],
+	"fossilfrenzy": [
+		"klutz"
+	],
+	"phantomfist": [
+		"unseenfist",
+		"selfrepair",
+		"shadowshield",
+		"aftermath"
+	],
+	"alloycore": [
+		"magicguard",
+		"selfsufficient",
+		"stalwart"
+	],
+	"hellfireeclipse": [
+		"solarpower",
+		"darkaura"
+	],
+	"sacrededge": [
+		"sharpness",
+		"swornduty"
+	],
+	"omenedge": [
+		"sharpness",
+		"dualwield",
+		"pressure"
+	],
+	"dreadmaw": [
+		"hugepower",
+		"strongjaw",
+		"invigorate"
+	],
+	"cursedmarionette": [
+		"prankster",
+		"frisk"
+	],
+	"cursedarmament": [
+		"filter",
+		"frisk"
+	],
+	"phantombarrage": [
+		"clearbody",
+		"infiltrator",
+		"levitate",
+		"hydrabond"
+	],
+	"sandsovereign": [
+		"sandstream",
+		"dauntlessshield",
+		"solidrock"
+	],
+	"frostsovereign": [
+		"snowwarning",
+		"icebody",
+		"filter"
+	],
+	"freezerburn": [
+		"slushrush",
+		"refrigerate",
+		"strongjaw",
+		"levitate"
+	],
+	"stormfright": [
+		"intimidate",
+		"stormpower",
+		"lightningrod"
+	],
+	"enlightenment": [
+		"purepower"
+	],
+	"relentlesslink": [
+		"skilllink",
+		"moldbreaker",
+		"powerdrill"
+	],
+	"relentlesshunt": [
+		"levitate"
+	],
+	"mirrorgreed": [
+		"magicbounce",
+		"analytic"
+	],
+	"moonlitwings": [
+		"serenegrace"
+	],
+	"uncheckedassault": [
+		"scrappy",
+		"striker",
+		"opportunist",
+		"limber"
+	],
+	"royalvoice": [
+		"pixilate",
+		"queenlymajesty",
+		"dreamsickness",
+		"telepathy"
+	],
+	"perfectforesight": [
+		"trace",
+		"insomnia"
+	],
+	"dreamsickness": [
+		"telepathy"
+	],
+	"voidveil": [
+		"levitate",
+		"magicguard",
+		"insomnia"
+	],
+	"knuckletide": [
+		"ironfist"
+	],
+	"crosscurrent": [
+		"swiftswim"
+	],
+	"pearlcurrent": [
+		"waterabsorb"
+	],
+	"slipstream": [
+		"levitate",
+		"keeneye"
+	],
+	"smolderingshroud": [
+		"whitesmoke"
+	],
+	"springfur": [
+		"furcoat"
+	],
+	"hexbound": [
+		"shadowtag",
+		"prankster"
+	],
+	"divinemockery": [
+		"hydrabond",
+		"moldbreaker",
+		"sniper"
+	],
+	"hydratyrant": [
+		"hydrabond",
+		"berserk"
+	],
+	"hisuianpath": [
+		"sapsipper",
+		"innerfocus",
+		"fluffy"
+	],
+	"toxicevolution": [
+		"corrosion",
+		"dualwield",
+		"shielddust",
+		"levitate"
+	],
+	"heavenlychorus": [
+		"pixilate",
+		"cloudnine",
+		"fluffy"
+	],
+	"guidingomen": [
+		"friendguard",
+		"serenegrace"
+	],
+	"heatcoil": [
+		"speedboost",
+		"magmaarmor",
+		"flamebody"
+	],
+	"coldlogic": [
+		"toughclaws",
+		"prismarmor",
+		"aftermath",
+		"forewarn"
+	],
+	"ironwill": [
+		"prismarmor",
+		"secondwind",
+		"selfsufficient",
+		"whiplash"
+	],
+	"joyride": [
+		"aerilate",
+		"violentrush",
+		"vitalspirit"
+	],
+	"hardyskin": [
+		"dryskin",
+		"vitalspirit",
+		"moxie"
+	],
+	"noseformation": [
+		"filter",
+		"elevate"
+	],
+	"perfectego": [
+		"ultraego"
+	],
+	"prismscale": [
+		"marvelscale",
+		"oblivious",
+		"swiftswim"
+	],
+	"queensguard": [
+		"contrary",
+		"shedskin",
+		"intimidate",
+		"infiltrator",
+		"proficient"
+	],
+	"rainsovereign": [
+		"drizzle"
+	],
+	"riotamp": [
+		"galvanize",
+		"resonanceforce",
+		"voltabsorb"
+	],
+	"mourningsnow": [
+		"snowwarning",
+		"icebody"
+	],
+	"venombastion": [
+		"stamina"
+	],
+	"draconicforce": [
+		"dragonize",
+		"strongjaw",
+		"moldbreaker",
+		"proficient"
+	],
+	"tidaljaw": [
+		"strongjaw",
+		"swiftswim",
+		"filter",
+		"proficient"
+	],
+	"heavyartillery": [
+		"unaware",
+		"shellarmor"
+	],
+	"perfectstriker": [
+		"striker",
+		"noguard",
+		"libero",
+		"proficient"
+	],
+	"vanguard": [
+		"intimidate"
+	],
+	"royalarmament": [
+		"powerdrill"
+	],
+	"seablessing": [
+		"waterveil",
+		"raindish"
+	],
+	"seasonalstride": [
+		"chlorophyll"
+	],
+	"slowclamp": [
+		"shellarmor",
+		"owntempo",
+		"analytic",
+		"sweetveil"
+	],
+	"soaringspirit": [
+		"windpower",
+		"selfsufficient"
+	],
+	"solartrap": [
+		"accumulation",
+		"innardsout",
+		"solarpower"
+	],
+	"spiralevolution": [
+		"adaptability",
+		"levitate",
+		"dualwield",
+		"infiltrator",
+		"shielddust"
+	],
+	"stormsovereign": [
+		"galewings",
+		"keeneye"
+	],
+	"sunsovereign": [
+		"drought",
+		"unboundblaze",
+		"selfsufficient",
+		"proficient"
+	],
+	"terraresolve": [
+		"stamina",
+		"solidrock",
+		"proficient"
+	],
+	"primalego": [
+		"unaware",
+		"proficient",
+		"ultraego",
+		"moldbreaker"
+	],
+	"toxicbloom": [
+		"pollenbloom",
+		"selfsufficient"
+	],
+	"toxicrenewal": [
+		"adaptability",
+		"regenerator",
+		"poisontouch"
+	],
+	"vendetta": [
+		"angerpoint",
+		"secondwind",
+		"selfsufficient"
+	],
+	"auroracurrent": [
+		"snowwarning"
+	],
+	"dunetyrant": [
+		"sandstream",
+		"strongjaw"
+	],
+	"ironmountain": [
+		"filter",
+		"stamina",
+		"heavymetal"
+	],
+	"woolyconductor": [
+		"fluffy",
+		"moldbreaker",
+		"static"
+	],
+	"helios": [
+		"drought",
+		"moldbreaker",
+		"berserk",
+		"swiftswim"
+	],
+	"rimeknuckle": [
+		"ironfist",
+		"filter",
+		"icebody"
+	],
+	"ragingstorm": [
+		"moldbreaker",
+		"battlearmor"
+	],
+	"ragingoverlord": [
+		"ragingstorm",
+		"supremeoverlord",
+		"moldbreaker",
+		"battlearmor"
+	],
+	"abysssniper": [
+		"sniper",
+		"stalwart"
+	],
+	"atrocity": [
+		"unboundblaze",
+		"selfsufficient",
+		"proficient",
+		"toughclaws"
+	],
+	"streettyrant": [
+		"intimidate",
+		"shedskin",
+		"moldbreaker"
+	],
+	"divineintervention": [
+		"swornduty",
+		"friendguard",
+		"regenerator",
+		"fluffy"
+	],
+	"voidcraft": [
+		"elevate",
+		"shadowshield",
+		"temporalshift",
+		"insomnia"
+	],
+	"requiem": [
+		"cursedbody"
+	],
+	"reapersgrip": [
+		"unaware",
+		"darkaura",
+		"selfsufficient"
+	],
+	"pendulumswing": [
+		"insomnia",
+		"filter"
+	],
+	"nightmarepulse": [
+		"pendulumswing",
+		"cursedbody",
+		"baddreams",
+		"infiltrator"
+	],
+	"pulsewaste": [
+		"protean",
+		"poisontouch",
+		"regenerator"
+	],
+	"rifteater": [
+		"accumulation",
+		"sandstream"
+	],
+	"mountainrift": [
+		"shellarmor",
+		"selfsufficient"
+	],
+	"desertrift": [
+		"sandforce",
+		"sandstream",
+		"heavymetal"
+	],
+	"glacialmass": [
+		"heavymetal",
+		"thickfat"
+	],
+	"supersweetsyrup": [
+		"stickyhold"
+	],
+	"naturalrecovery": [
+		"naturalcure",
+		"regenerator"
+	],
+	"mossarmor": [
+		"stamina",
+		"naturalrecovery",
+		"levitate"
+	],
+	"stormcalling": [
+		"drizzle",
+		"liquidvoice",
+		"tintedlens"
+	],
+	"aevianfrost": [
+		"icebody",
+		"guts"
+	],
+	"aeviantoxin": [
+		"strongjaw",
+		"layeredcoat",
+		"furcoat",
+		"overcoat",
+		"merciless"
+	],
+	"aevianglacier": [
+		"snowwarning",
+		"icebody",
+		"refrigerate"
+	],
+	"aevianbolt": [
+		"stormpower",
+		"static",
+		"voltabsorb"
+	],
+	"riftdancer": [
+		"opportunist",
+		"chlorophyll",
+		"dancer"
+	],
+	"curseddoll": [
+		"toughclaws",
+		"shadowshield",
+		"frisk"
+	],
+	"apexvenom": [
+		"strongjaw",
+		"shedskin"
+	],
+	"sirius": [
+		"apexvenom",
+		"blackviper",
+		"whiplash"
+	],
+	"neurotoxin": [
+		"hydrabond",
+		"shedskin",
+		"regenerator"
+	],
+	"patternshift": [
+		"protean",
+		"shedskin",
+		"unaware"
+	],
+	"venomarmor": [
+		"poisonheal",
+		"dualwield"
+	],
+	"toxicarmor": [
+		"venomarmor",
+		"violentrush"
+	],
+	"corrosiveburn": [
+		"corrosion",
+		"oblivious",
+		"venomignition"
+	],
+	"solarrush": [
+		"sandrush",
+		"chlorophyll"
+	],
+	"ultrainstinct": [
+		"moldbreaker",
+		"innerfocus"
+	],
+	"unovawing": [
+		"superluck",
+		"competitive"
+	],
+	"aevianwing": [
+		"rockhead",
+		"defiant"
+	],
+	"resuscitation": [
+		"selfrepair",
+		"magicguard"
+	],
+	"shieldsdown": [
+		"shellarmor",
+		"selfrepair",
+		"crumblingshell"
+	],
+	"schooling": [
+		"hydrabond",
+		"selfrepair",
+		"moldbreaker"
+	],
+	"seviischooling": [
+		"schooling",
+		"hydrabond",
+		"selfrepair",
+		"moldbreaker"
+	],
+	"updraft": [],
+	"corneredfang": [
+		"guts"
+	],
+	"nighthoard": [],
+	"dunerunner": [
+		"sandrush"
+	],
+	"frostrunner": [
+		"slushrush"
+	],
+	"bedrockclaw": [
+		"toughclaws"
+	],
+	"rimeclaw": [
+		"toughclaws"
+	],
+	"broodguard": [
+		"thickfat",
+		"friendguard"
+	],
+	"suncharm": [
+		"drought"
+	],
+	"causticscales": [],
+	"prismwings": [
+		"tintedlens"
+	],
+	"oneiricdust": [
+		"psychicsurge"
+	],
+	"pincercrush": [
+		"toughclaws"
+	],
+	"decoypincers": [],
+	"toxiccocoon": [],
+	"galebloom": [],
+	"gemeye": [
+		"keeneye"
+	],
+	"lastlaugh": [],
+	"openingoverture": [],
+	"resonantblade": [],
+	"finalnote": [],
+	"livingtangle": [
+		"tanglinghair",
+		"stamina"
+	],
+	"rootrenewal": [
+		"regenerator"
+	],
+	"fortunatewing": [
+		"superluck"
+	],
+	"snowpack": [
+		"thickfat",
+		"icebody",
+		"toughclaws"
+	],
+	"icemirror": [],
+	"wailingsnow": [],
+	"stonewall": [
+		"sturdy"
+	],
+	"saltbastion": [
+		"sturdy"
+	],
+	"anchorbridge": [
+		"sturdy",
+		"solidrock"
+	],
+	"layeredshell": [
+		"shellarmor"
+	],
+	"breakaway": [],
+	"fossilram": [
+		"rockhead"
+	],
+	"rootediron": [
+		"stamina"
+	],
+	"encorearia": [
+		"serenegrace"
+	],
+	"peppersting": [
+		"insomnia"
+	],
+	"sushitrick": [
+		"hospitality"
+	],
+	"mastercourse": [
+		"contrary"
+	],
+	"secondbrew": [],
+	"railsight": [
+		"stalwart"
+	],
+	"sovereignarsenal": [],
+	"pollenengine": [
+		"chlorophyll"
+	],
+	"titanpincer": [
+		"hypercutter"
+	],
+	"shellcracker": [],
+	"tidaldominion": [
+		"swiftswim"
+	],
+	"tempestfury": [],
+	"ironlash": [
+		"whiplash"
+	],
+	"trailbreaker": [],
+	"armoredadvance": [],
+	"gritgrappler": [
+		"guts"
+	],
+	"dreadjaw": [
+		"moxie"
+	],
+	"floehunter": [
+		"slushrush"
+	],
+	"lanceguard": [
+		"shellarmor"
+	],
+	"headlongresolve": [],
+	"herdshelter": [
+		"soundproof"
+	],
+	"scorchsweep": [],
+	"opensky": [],
+	"tidalvoice": [
+		"liquidvoice"
+	],
+	"rechargerelay": [
+		"battery"
+	],
+	"hovercannon": [
+		"levitate"
+	],
+	"keenhunt": [],
+	"bloodchallenge": [],
+	"twilightinstinct": [],
+	"twincannons": [],
+	"twinblades": [],
+	"heatreservoir": [
+		"flashfire"
+	],
+	"mourningcoat": [
+		"fluffy"
+	],
+	"gravewind": [
+		"sandrush"
+	],
+	"dozinggiant": [
+		"oblivious"
+	],
+	"quillreservoir": [
+		"waterabsorb"
+	],
+	"raisedquills": [],
+	"mountainbreaker": [],
+	"dreadpresence": [],
+	"palmmastery": [
+		"thickfat"
+	],
+	"galvanicspirit": [
+		"vitalspirit"
+	],
+	"blastchamber": [
+		"vitalspirit"
+	],
+	"venomspurs": [],
+	"lastbrood": [
+		"swarm"
+	],
+	"shadowfeint": [],
+	"silksights": [
+		"compoundeyes",
+		"keeneye"
+	],
+	"livenet": [
+		"unnerve"
+	],
+	"barbharvest": [
+		"ironbarbs"
+	],
+	"currentcoil": [
+		"swiftswim"
+	],
+	"stormcircuit": [
+		"electricsurge",
+		"elevate",
+		"currentcoil",
+		"swiftswim"
+	],
+	"soulpyre": [],
+	"blackviper": [
+		"whiplash"
+	],
+	"silkshuriken": [],
+	"hiddenscroll": [],
+	"toxicserenity": [
+		"poisonheal"
+	],
+	"mudtemper": [
+		"battlearmor"
+	],
+	"skywarden": [],
+	"lockjaw": [
+		"strongjaw"
+	],
+	"rivershell": [
+		"shellarmor"
+	],
+	"funeralchoir": [],
+	"festivalstep": [],
+	"saltcrust": [
+		"clearbody"
+	],
+	"beyondfear": [
+		"innerfocus"
+	],
+	"stillwater": [
+		"waterabsorb"
+	],
+	"mudmeditation": [],
+	"coldopen": [],
+	"quarrycannon": [
+		"solidrock"
+	],
+	"tundramarch": [
+		"oblivious"
+	],
+	"undertow": [
+		"waterabsorb"
+	],
+	"deadwater": [],
+	"vitalcircuit": [],
+	"ringmaster": [
+		"toughclaws"
+	],
+	"unyielding": [
+		"stamina"
+	],
+	"primalrhythm": [],
+	"setpiece": [],
+	"calculatedshot": [
+		"frisk"
+	],
+	"falsebouquet": [],
+	"meridianseal": [],
+	"rimeplate": [],
+	"darkdominion": [
+		"darkaura"
+	],
+	"dishearten": [],
+	"shadowshield": [],
+	"spentforce": [],
+	"pulsefiltration": [],
+	"scrapbreaker": [
+		"moldbreaker"
+	],
+	"toxicsignature": [
+		"unnerve"
+	],
+	"wickedweave": [
+		"prankster"
+	],
+	"vaultkeeper": [
+		"prankster",
+		"stickyhold"
+	],
+	"masterkey": [],
+	"groundingtail": [],
+	"flintfracture": [],
+	"frozenfeast": [
+		"strongjaw"
+	],
+	"cinderscales": [
+		"flamebody",
+		"swarm",
+		"shielddust"
+	],
+	"sporeshroud": [
+		"effectspore"
+	],
+	"primevalhunt": [
+		"skilllink",
+		"battlearmor"
+	],
+	"rimebreaker": [
+		"refrigerate"
+	],
+	"duskdrive": [
+		"battlefervor",
+		"precision",
+		"opportunist"
+	],
+	"evaporate": [
+		"dryskin"
+	],
+	"pressurekiln": [],
+	"shattercrust": [
+		"crumblingshell"
+	],
+	"restorativechime": [],
+	"dissonantchime": [],
+	"gravehunger": [
+		"baddreams"
+	],
+	"primevalhunger": [
+		"accumulation"
+	],
+	"razorreach": [
+		"sharpness",
+		"longreach"
+	],
+	"witheringtouch": [
+		"poisontouch",
+		"corrosion"
+	],
+	"templechime": [
+		"elevate",
+		"levitate"
+	],
+	"soothingpresence": [
+		"friendguard",
+		"aromaveil"
+	],
+	"unboundblaze": [
+		"proficient"
+	],
+	"kickfiend": [
+		"striker",
+		"violentrush",
+		"limber"
+	],
+	"selfrepair": [],
+	"limber": [],
+	"fluffycraft": [
+		"fluffy",
+		"technician",
+		"naturalcure"
+	],
+	"surgeconduit": [],
+	"amethystglow": [],
+	"dawnherald": [
+		"drought",
+		"friendguard"
+	],
+	"venomignition": [],
+	"transfixinggaze": [
+		"frisk"
+	],
+	"freshplumage": [
+		"naturalcure"
+	],
+	"cursedkeepsake": [
+		"frisk"
+	],
+	"illuminate": [],
+	"keeneye": [],
+	"ultraego": []
 });
 // END APPROVED ROSTER COMPONENTS
 
@@ -26230,6 +30066,26 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 
 // BEGIN SERVER WORKING SYNC MOVES
 Object.assign(CUSTOM_MOVE_UPDATES, {
+	"acrobatics": {
+		"name": "Acrobatics",
+		"num": 512,
+		"type": "Flying",
+		"category": "Physical",
+		"basePower": 55,
+		"accuracy": 100,
+		"pp": 15,
+		"priority": 0,
+		"target": "any",
+		"flags": {
+			"contact": 1,
+			"protect": 1,
+			"mirror": 1,
+			"distance": 1,
+			"metronome": 1
+		},
+		"desc": "Power doubles if the user has no held item.",
+		"shortDesc": "Power doubles if the user has no held item."
+	},
 	"auroraveil": {
 		"name": "Aurora Veil",
 		"num": 694,
@@ -26246,6 +30102,24 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		},
 		"desc": "For 5 turns, the user and its party members take 0.5x damage from physical and special attacks, or 0.66x damage if in a Double Battle; does not reduce damage further with Reflect or Light Screen. Critical hits ignore this protection. It is removed from the user's side if the user or an ally is successfully hit by Brick Break, Psychic Fangs, or Defog. Brick Break and Psychic Fangs remove the effect before damage is calculated. Lasts for 8 turns if the user is holding Light Clay. Fails unless the weather is Snow.",
 		"shortDesc": "For 5 turns, damage to allies halved. Snow only."
+	},
+	"barbbarrage": {
+		"name": "Barb Barrage",
+		"num": 839,
+		"type": "Poison",
+		"category": "Physical",
+		"basePower": 60,
+		"accuracy": 100,
+		"pp": 10,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1
+		},
+		"desc": "Has a 50% chance to poison the target. Power doubles if the target has a non-volatile status condition.",
+		"shortDesc": "50% psn. 2x power if target is statused."
 	},
 	"batonpass": {
 		"name": "Baton Pass",
@@ -26346,6 +30220,86 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"desc": "Until the user's next move, if an opposing Pokemon's attack knocks the user out, that Pokemon faints as well, unless the attack was Doom Desire or Future Sight. Fails if the user used this move successfully as its last move, disregarding moves used through the Dancer Ability.",
 		"shortDesc": "If an opponent knocks out the user, it also faints."
 	},
+	"dive": {
+		"name": "Dive",
+		"num": 291,
+		"type": "Water",
+		"category": "Physical",
+		"basePower": 80,
+		"accuracy": 100,
+		"pp": 10,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"contact": 1,
+			"charge": 1,
+			"protect": 1,
+			"mirror": 1,
+			"nonsky": 1,
+			"allyanim": 1,
+			"metronome": 1,
+			"nosleeptalk": 1,
+			"noassist": 1,
+			"failinstruct": 1
+		},
+		"desc": "This attack charges on the first turn and executes on the second. On the first turn, the user avoids all attacks other than Surf and Whirlpool but takes double damage from them, and is also unaffected by weather. If the user is holding a Power Herb, the move completes in one turn.",
+		"shortDesc": "Dives underwater turn 1, strikes turn 2."
+	},
+	"doubleshock": {
+		"name": "Double Shock",
+		"num": 892,
+		"type": "Electric",
+		"category": "Physical",
+		"basePower": 120,
+		"accuracy": 100,
+		"pp": 5,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"contact": 1,
+			"protect": 1,
+			"mirror": 1,
+			"punch": 1
+		},
+		"desc": "Fails unless the user is an Electric type. If this move is successful and the user is not Terastallized, the user's Electric type becomes typeless as long as it remains active.",
+		"shortDesc": "User's Electric type: typeless; must be Electric."
+	},
+	"dragondarts": {
+		"name": "Dragon Darts",
+		"num": 751,
+		"type": "Dragon",
+		"category": "Physical",
+		"basePower": 50,
+		"accuracy": 100,
+		"pp": 10,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1,
+			"noparentalbond": 1
+		},
+		"desc": "Hits twice. Uses the user's higher Attack or Special Attack, including the matching defensive stat.",
+		"shortDesc": "Hits twice; uses higher Atk or SpA."
+	},
+	"electricterrain": {
+		"name": "Electric Terrain",
+		"num": 604,
+		"type": "Electric",
+		"category": "Status",
+		"basePower": 0,
+		"accuracy": true,
+		"pp": 10,
+		"priority": 0,
+		"target": "all",
+		"flags": {
+			"nonsky": 1,
+			"metronome": 1
+		},
+		"desc": "For 5 turns, the terrain becomes Electric Terrain. During the effect, the power of Electric-type attacks made by grounded Pokemon is multiplied by 1.3 and grounded Pokemon cannot fall asleep; Pokemon already asleep do not wake up. Grounded Pokemon cannot become affected by Yawn or fall asleep from its effect. Camouflage transforms the user into an Electric type, Nature Power becomes Thunderbolt, and Secret Power has a 30% chance to cause paralysis. Fails if the current terrain is Electric Terrain.",
+		"shortDesc": "5 turns. Grounded: +Electric power, can't sleep."
+	},
 	"encore": {
 		"name": "Encore",
 		"num": 227,
@@ -26366,6 +30320,81 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		},
 		"desc": "For its next 3 turns, the target is forced to repeat its last move used. If the affected move runs out of PP, the effect ends. Fails if the target is already under this effect, if it has not made a move, if the move has 0 PP, or if the move is Assist, Blazing Torque, Combat Torque, Copycat, Dynamax Cannon, Encore, Magical Torque, Me First, Metronome, Mimic, Mirror Move, Nature Power, Noxious Torque, Sketch, Sleep Talk, Struggle, Transform, or Wicked Torque.",
 		"shortDesc": "Target repeats its last move for its next 3 turns."
+	},
+	"expandingforce": {
+		"name": "Expanding Force",
+		"num": 797,
+		"type": "Psychic",
+		"category": "Special",
+		"basePower": 80,
+		"accuracy": 100,
+		"pp": 10,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1
+		},
+		"desc": "If the current terrain is Psychic Terrain and the user is grounded, this move hits all opposing Pokemon and has its power multiplied by 1.5.",
+		"shortDesc": "User on Psychic Terrain: 1.5x power, hits foes."
+	},
+	"explosion": {
+		"name": "Explosion",
+		"num": 153,
+		"type": "Normal",
+		"category": "Physical",
+		"basePower": 250,
+		"accuracy": 100,
+		"pp": 5,
+		"priority": 0,
+		"target": "allAdjacent",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1,
+			"noparentalbond": 1
+		},
+		"desc": "The user faints after using this move, even if this move fails for having no target. This move uses the user's higher attacking stat and halves the matching defensive stat during damage calculation. This move is prevented from executing if any active Pokemon has the Damp Ability.",
+		"shortDesc": "Uses higher Atk/SpA; halves defense; user faints."
+	},
+	"firepledge": {
+		"name": "Fire Pledge",
+		"num": 519,
+		"type": "Fire",
+		"category": "Special",
+		"basePower": 80,
+		"accuracy": 100,
+		"pp": 10,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"nonsky": 1,
+			"metronome": 1
+		},
+		"desc": "If one of the user's allies chose to use Grass Pledge or Water Pledge this turn and has not moved yet, it takes its turn immediately after the user and the user's move does nothing. If combined with Grass Pledge, the ally uses Fire Pledge with 150 power and a sea of fire appears on the target's side for 4 turns, which causes damage to non-Fire types equal to 1/8 of their maximum HP, rounded down, at the end of each turn during effect, including the last turn. If combined with Water Pledge, the ally uses Water Pledge with 150 power and a rainbow appears on the user's side for 4 turns, which doubles secondary effect chances and stacks with the Serene Grace Ability, except effects that cause flinching can only have their chance doubled once. When used as a combined move, this move gains STAB no matter what the user's type is. This move does not consume the user's Fire Gem.",
+		"shortDesc": "Use with Grass or Water Pledge for added effect."
+	},
+	"fissure": {
+		"name": "Fissure",
+		"num": 90,
+		"type": "Ground",
+		"category": "Physical",
+		"basePower": 0,
+		"accuracy": 30,
+		"pp": 5,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"nonsky": 1,
+			"metronome": 1
+		},
+		"desc": "Deals damage to the target equal to the target's maximum HP. Ignores accuracy and evasiveness modifiers. This attack's accuracy is equal to (user's level - target's level + 30)%, and fails if the target is at a higher level. Pokemon with the Sturdy Ability are immune.",
+		"shortDesc": "OHKOs the target. Fails if user is a lower level."
 	},
 	"flipturn": {
 		"name": "Flip Turn",
@@ -26478,6 +30507,56 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"desc": "Power is equal to the base move's Max Move power. This move is Fairy type. If this move is successful, opposing Pokemon have their Attack and Special Attack lowered by 1 stage, and the user and its ally restore 1/8 of their maximum HP.",
 		"shortDesc": "Fairy. Foes: -1 Atk/SpA. User and ally heal 1/8."
 	},
+	"gmaxspiritvolley": {
+		"name": "G-Max Spirit Volley",
+		"num": 1000,
+		"type": "Ghost",
+		"category": "Physical",
+		"basePower": 100,
+		"accuracy": true,
+		"pp": 5,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {},
+		"desc": "Ghost-type, 100 Base Power. Uses the user's higher offensive stat. Hits the selected foe at full power, then makes a separate 50 Base Power Ghost-type hit against one other adjacent foe, if present. The follow-up checks its own type immunity and protection. In a single battle, there is no follow-up.",
+		"shortDesc": "100 BP Ghost to one foe; 50 BP Ghost follow-up to another foe."
+	},
+	"grasspledge": {
+		"name": "Grass Pledge",
+		"num": 520,
+		"type": "Grass",
+		"category": "Special",
+		"basePower": 80,
+		"accuracy": 100,
+		"pp": 10,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"nonsky": 1,
+			"metronome": 1
+		},
+		"desc": "If one of the user's allies chose to use Fire Pledge or Water Pledge this turn and has not moved yet, it takes its turn immediately after the user and the user's move does nothing. If combined with Fire Pledge, the ally uses Fire Pledge with 150 power and a sea of fire appears on the target's side for 4 turns, which causes damage to non-Fire types equal to 1/8 of their maximum HP, rounded down, at the end of each turn during effect, including the last turn. If combined with Water Pledge, the ally uses Grass Pledge with 150 power and a swamp appears on the target's side for 4 turns, which quarters the Speed of each Pokemon on that side. When used as a combined move, this move gains STAB no matter what the user's type is. This move does not consume the user's Grass Gem.",
+		"shortDesc": "Use with Fire or Water Pledge for added effect."
+	},
+	"grassyterrain": {
+		"name": "Grassy Terrain",
+		"num": 580,
+		"type": "Grass",
+		"category": "Status",
+		"basePower": 0,
+		"accuracy": true,
+		"pp": 10,
+		"priority": 0,
+		"target": "all",
+		"flags": {
+			"nonsky": 1,
+			"metronome": 1
+		},
+		"desc": "For 5 turns, the terrain becomes Grassy Terrain. During the effect, the power of Grass-type attacks used by grounded Pokemon is multiplied by 1.3, the power of Bulldoze, Earthquake, and Magnitude used against grounded Pokemon is multiplied by 0.5, and grounded Pokemon have 1/16 of their maximum HP, rounded down, restored at the end of each turn, including the last turn. Camouflage transforms the user into a Grass type, Nature Power becomes Energy Ball, and Secret Power has a 30% chance to cause sleep. Fails if the current terrain is Grassy Terrain.",
+		"shortDesc": "5 turns. Grounded: +Grass power, +1/16 max HP."
+	},
 	"grudge": {
 		"name": "Grudge",
 		"num": 288,
@@ -26511,6 +30590,26 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"desc": "For 5 turns, the weather becomes Hail. At the end of each turn except the last, all active Pokemon lose 1/16 of their maximum HP, rounded down, unless they are an Ice type or have the Ice Body, Magic Guard, Overcoat, or Snow Cloak Abilities. Lasts for 8 turns if the user is holding Icy Rock. Fails if the current weather is Hail.",
 		"shortDesc": "For 5 turns, hail crashes down."
 	},
+	"hurricane": {
+		"name": "Hurricane",
+		"num": 542,
+		"type": "Flying",
+		"category": "Special",
+		"basePower": 110,
+		"accuracy": 70,
+		"pp": 10,
+		"priority": 0,
+		"target": "any",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"distance": 1,
+			"metronome": 1,
+			"wind": 1
+		},
+		"desc": "Has a 30% chance to confuse the target. This move can hit a target using Bounce, Fly, or Sky Drop, or is under the effect of Sky Drop. If the weather is Primordial Sea or Rain Dance, this move does not check accuracy. If the weather is Desolate Land or Sunny Day, this move's accuracy is 50%. If this move is used against a Pokemon holding Utility Umbrella, this move's accuracy remains at 70%.",
+		"shortDesc": "30% chance to confuse target. Can't miss in rain."
+	},
 	"hyperdrill": {
 		"name": "Hyper Drill",
 		"num": 887,
@@ -26528,6 +30627,44 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		},
 		"desc": "Bypasses protection without breaking it.",
 		"shortDesc": "Bypasses protection without breaking it."
+	},
+	"infernalparade": {
+		"name": "Infernal Parade",
+		"num": 844,
+		"type": "Ghost",
+		"category": "Special",
+		"basePower": 65,
+		"accuracy": 100,
+		"pp": 15,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1
+		},
+		"desc": "Has a 30% chance to burn the target. Power doubles if the target has a non-volatile status condition, or if the user has Soul Fire or Sinister Blaze.",
+		"shortDesc": "30% burn. 2x if statused or Soul Fire/Sinister Blaze."
+	},
+	"irontail": {
+		"name": "Iron Tail",
+		"num": 231,
+		"type": "Steel",
+		"category": "Physical",
+		"basePower": 100,
+		"accuracy": 75,
+		"pp": 15,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"tail": 1,
+			"contact": 1,
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1
+		},
+		"desc": "Has a 30% chance to lower the target's Defense by 1 stage.",
+		"shortDesc": "30% chance to lower the target's Defense by 1."
 	},
 	"kingsshield": {
 		"name": "King's Shield",
@@ -26565,6 +30702,20 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		},
 		"desc": "The Pokemon at the user's position steals 1/8 of the target's maximum HP, rounded down, at the end of each turn. If Big Root is held by the recipient, the HP recovered is 1.3x normal, rounded half down. If the target uses Baton Pass, the replacement will continue being leeched. If the target switches out or uses Mortal Spin or Rapid Spin successfully, the effect ends. Grass-type Pokemon are immune to this move on use, but not its effect.",
 		"shortDesc": "1/8 of target's HP is restored to user every turn."
+	},
+	"lightthatburnsthesky": {
+		"name": "Light That Burns the Sky",
+		"num": 723,
+		"type": "Psychic",
+		"category": "Special",
+		"basePower": 200,
+		"accuracy": true,
+		"pp": 1,
+		"priority": 0,
+		"target": "normal",
+		"flags": {},
+		"desc": "This move becomes a physical attack if the user's Attack is greater than its Special Attack, including stat stage changes. This move and its effects ignore the Abilities of other Pokemon.",
+		"shortDesc": "Physical if user's Atk > Sp. Atk. Ignores Abilities."
 	},
 	"magicpowder": {
 		"name": "Magic Powder",
@@ -26643,6 +30794,27 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"desc": "Power is equal to the base move's Max Move power. If this move is successful, the effect of Misty Terrain begins. This effect does not happen if the user is not Dynamaxed. If this move is used as a base move, it deals damage with a power of 0.",
 		"shortDesc": "Base move affects power. Starts Misty Terrain."
 	},
+	"metronome": {
+		"name": "Metronome",
+		"num": 118,
+		"type": "Normal",
+		"category": "Status",
+		"basePower": 0,
+		"accuracy": true,
+		"pp": 10,
+		"priority": 0,
+		"target": "self",
+		"flags": {
+			"failencore": 1,
+			"nosleeptalk": 1,
+			"noassist": 1,
+			"failcopycat": 1,
+			"failmimic": 1,
+			"failinstruct": 1
+		},
+		"desc": "A random move is selected for use.",
+		"shortDesc": "Picks a random move."
+	},
 	"miracleeye": {
 		"name": "Miracle Eye",
 		"num": 357,
@@ -26662,6 +30834,95 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		},
 		"desc": "As long as the target remains active, its positive evasiveness stat stage is ignored and Psychic-type attacks can hit it if it is a Dark type. The user also takes half damage from Ghost-type attacks until it switches out. On Psychic Terrain, Fairy Tale Field, and Holy Field, the user's Special Attack rises by 2 stages. Fails if the target is already affected, or affected by Foresight or Odor Sleuth.",
 		"shortDesc": "Psychic hits Dark; ignores Evasion; user resists Ghost; field +2 SpA."
+	},
+	"mistyexplosion": {
+		"name": "Misty Explosion",
+		"num": 802,
+		"type": "Fairy",
+		"category": "Special",
+		"basePower": 100,
+		"accuracy": 100,
+		"pp": 5,
+		"priority": 0,
+		"target": "allAdjacent",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1
+		},
+		"desc": "If the current terrain is Misty Terrain and the user is grounded, this move's power is multiplied by 1.5. The user faints after using this move, even if this move fails for having no target. This move is prevented from executing if any active Pokemon has the Damp Ability.",
+		"shortDesc": "User faints. User on Misty Terrain: 1.5x power."
+	},
+	"mistyterrain": {
+		"name": "Misty Terrain",
+		"num": 581,
+		"type": "Fairy",
+		"category": "Status",
+		"basePower": 0,
+		"accuracy": true,
+		"pp": 10,
+		"priority": 0,
+		"target": "all",
+		"flags": {
+			"nonsky": 1,
+			"metronome": 1
+		},
+		"desc": "For 5 turns, the terrain becomes Misty Terrain. During the effect, Fairy-type attacks are boosted without requiring the user to be grounded, the power of Dragon-type attacks used against grounded Pokemon is multiplied by 0.5, and grounded Pokemon cannot be inflicted with a non-volatile status condition nor confusion. Grounded Pokemon can become affected by Yawn but cannot fall asleep from its effect. Camouflage transforms the user into a Fairy type, Nature Power becomes Moonblast, and Secret Power has a 30% chance to lower Special Attack by 1 stage. Fails if the current terrain is Misty Terrain.",
+		"shortDesc": "5 turns. Fairy moves boosted; grounded Pokemon resist Dragon/status."
+	},
+	"moonlight": {
+		"name": "Moonlight",
+		"num": 236,
+		"type": "Fairy",
+		"category": "Status",
+		"basePower": 0,
+		"accuracy": true,
+		"pp": 10,
+		"priority": 0,
+		"target": "self",
+		"flags": {
+			"snatch": 1,
+			"heal": 1,
+			"metronome": 1
+		},
+		"desc": "The user restores 1/2 of its maximum HP if Delta Stream or no weather conditions are in effect or if the user is holding Utility Umbrella, 2/3 of its maximum HP if the weather is Desolate Land or Sunny Day, and 1/4 of its maximum HP if the weather is Primordial Sea, Rain Dance, Sandstorm, or Snow, all rounded half down.",
+		"shortDesc": "Heals the user by a weather-dependent amount."
+	},
+	"morningsun": {
+		"name": "Morning Sun",
+		"num": 234,
+		"type": "Normal",
+		"category": "Status",
+		"basePower": 0,
+		"accuracy": true,
+		"pp": 10,
+		"priority": 0,
+		"target": "self",
+		"flags": {
+			"snatch": 1,
+			"heal": 1,
+			"metronome": 1
+		},
+		"desc": "The user restores 1/2 of its maximum HP if Delta Stream or no weather conditions are in effect or if the user is holding Utility Umbrella, 2/3 of its maximum HP if the weather is Desolate Land or Sunny Day, and 1/4 of its maximum HP if the weather is Primordial Sea, Rain Dance, Sandstorm, or Snow, all rounded half down.",
+		"shortDesc": "Heals the user by a weather-dependent amount."
+	},
+	"needlegun": {
+		"name": "Needle Gun",
+		"num": 10000,
+		"type": "Steel",
+		"category": "Physical",
+		"basePower": 30,
+		"accuracy": 100,
+		"pp": 10,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1
+		},
+		"desc": "A 30 Base Power Steel-type attack that hits exactly six times. Its category matches the chosen attacking stat (Physical on a tie). It uses whichever is higher, the user's Attack or Special Attack, against whichever is lower, the target's Defense or Special Defense.",
+		"shortDesc": "Hits 6 times; adaptive category; higher offense vs lower defense."
 	},
 	"odorsleuth": {
 		"name": "Odor Sleuth",
@@ -26684,6 +30945,99 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"desc": "As long as the target remains active, its positive evasiveness stat stage is ignored and Normal- and Fighting-type attacks can hit it if it is a Ghost type. The user also takes half damage from Ghost-type attacks until it switches out. Fails if the target is already affected, or affected by Foresight or Miracle Eye.",
 		"shortDesc": "Normal/Fighting hit Ghost; ignores Evasion; user resists Ghost."
 	},
+	"powertrip": {
+		"name": "Power Trip",
+		"num": 681,
+		"type": "Dark",
+		"category": "Physical",
+		"basePower": 20,
+		"accuracy": 100,
+		"pp": 10,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"contact": 1,
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1
+		},
+		"desc": "Power is equal to 20+(X*20), where X is the user's total stat stage changes that are greater than 0.",
+		"shortDesc": " + 20 power for each of the user's stat boosts."
+	},
+	"protect": {
+		"name": "Protect",
+		"num": 182,
+		"type": "Normal",
+		"category": "Status",
+		"basePower": 0,
+		"accuracy": true,
+		"pp": 10,
+		"priority": 4,
+		"target": "self",
+		"flags": {
+			"noassist": 1,
+			"failcopycat": 1
+		},
+		"desc": "The user is protected from most attacks made by other Pokemon during this turn. This move has a 1/X chance of being successful, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails, if the user's last move used is not Baneful Bunker, Burning Bulwark, Detect, Endure, King's Shield, Max Guard, Obstruct, Protect, Quick Guard, Silk Trap, Spiky Shield, or Wide Guard, or if it was one of those moves and the user's protection was broken. Fails if the user moves last this turn.",
+		"shortDesc": "Prevents moves from affecting the user this turn."
+	},
+	"psyblade": {
+		"name": "Psyblade",
+		"num": 875,
+		"type": "Psychic",
+		"category": "Physical",
+		"basePower": 80,
+		"accuracy": 100,
+		"pp": 15,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"contact": 1,
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1,
+			"slicing": 1
+		},
+		"desc": "If the current terrain is Electric Terrain, this move's power is multiplied by 1.5.",
+		"shortDesc": "During Electric Terrain: 1.5x power."
+	},
+	"psychicterrain": {
+		"name": "Psychic Terrain",
+		"num": 678,
+		"type": "Psychic",
+		"category": "Status",
+		"basePower": 0,
+		"accuracy": true,
+		"pp": 10,
+		"priority": 0,
+		"target": "all",
+		"flags": {
+			"nonsky": 1,
+			"metronome": 1
+		},
+		"desc": "For 5 turns, the terrain becomes Psychic Terrain. During the effect, the power of Psychic-type attacks made by grounded Pokemon is multiplied by 1.3 and grounded Pokemon cannot be hit by moves with priority greater than 0, unless the target is an ally. Camouflage transforms the user into a Psychic type, Nature Power becomes Psychic, and Secret Power has a 30% chance to lower the target's Speed by 1 stage. Fails if the current terrain is Psychic Terrain.",
+		"shortDesc": "5 turns. Grounded: +Psychic power, priority-safe."
+	},
+	"radiantassault": {
+		"name": "Radiant Assault",
+		"num": 10005,
+		"type": "???",
+		"category": "Physical",
+		"basePower": 110,
+		"accuracy": 100,
+		"pp": 10,
+		"priority": 0,
+		"target": "allAdjacentFoes",
+		"flags": {
+			"contact": 1,
+			"recharge": 1,
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1
+		},
+		"desc": "Hits all opposing Pokemon. Uses the user's higher offensive stat, including stat stages and field modifiers. If it does not knock out at least one target, the user must recharge next turn.",
+		"shortDesc": "Hits all foes; uses higher offense; recharges unless it gets a KO."
+	},
 	"rapidspin": {
 		"name": "Rapid Spin",
 		"num": 229,
@@ -26702,6 +31056,42 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		},
 		"desc": "If this move is successful and the user has not fainted, the effects of Leech Seed and binding moves end for the user, and all hazards are removed from the user's side of the field. Has a 100% chance to raise the user's Speed by 1 stage.",
 		"shortDesc": "Free user from hazards/bind/Leech Seed; +1 Spe."
+	},
+	"recover": {
+		"name": "Recover",
+		"num": 105,
+		"type": "Normal",
+		"category": "Status",
+		"basePower": 0,
+		"accuracy": true,
+		"pp": 10,
+		"priority": 0,
+		"target": "self",
+		"flags": {
+			"snatch": 1,
+			"heal": 1,
+			"metronome": 1
+		},
+		"desc": "The user restores 1/2 of its maximum HP, rounded half up.",
+		"shortDesc": "Heals the user by 50% of its max HP."
+	},
+	"risingvoltage": {
+		"name": "Rising Voltage",
+		"num": 804,
+		"type": "Electric",
+		"category": "Special",
+		"basePower": 70,
+		"accuracy": 100,
+		"pp": 20,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1
+		},
+		"desc": "If the current terrain is Electric Terrain and the target is grounded, this move's power is doubled.",
+		"shortDesc": "2x power if target is grounded in Electric Terrain."
 	},
 	"roar": {
 		"name": "Roar",
@@ -26725,6 +31115,26 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		},
 		"desc": "The target is forced to switch out and be replaced with a random unfainted ally. Fails if the target is the last unfainted Pokemon in its party, or if the target used Ingrain previously or has the Suction Cups Ability.",
 		"shortDesc": "Forces the target to switch to a random ally."
+	},
+	"roaroftime": {
+		"name": "Roar of Time",
+		"num": 459,
+		"type": "Dragon",
+		"category": "Special",
+		"basePower": 160,
+		"accuracy": 100,
+		"pp": 5,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"recharge": 1,
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1,
+			"cantusetwice": 1
+		},
+		"desc": "Uses the user's higher offensive stat. When used by Dialga, Fairy-type targets take resisted Dragon damage instead of being immune, the move breaks protection, has +3 priority in Trick Room, and a non-KO hit queues another Roar of Time two turns later. A missed delayed hit is sent further into the future. If Dialga KOs, its recharge is removed.",
+		"shortDesc": "Uses higher offense. Dialga: breaks Protect, future hit, Fairies resist, +3 in Trick Room."
 	},
 	"rockclimb": {
 		"name": "Rock Climb",
@@ -26764,6 +31174,72 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"desc": "Has a 50% chance to lower the target's Defense by 1 stage. If this lowers Defense, the user's next Fighting-, Rock-, or Ground-type move against that target deals 1.3x damage. If the target already has lowered Defense, this move hits twice.",
 		"shortDesc": "50% -1 Def; next hit 1.3x. Hits twice if Def is down."
 	},
+	"selfdestruct": {
+		"name": "Self-Destruct",
+		"num": 120,
+		"type": "Normal",
+		"category": "Physical",
+		"basePower": 200,
+		"accuracy": 100,
+		"pp": 5,
+		"priority": 0,
+		"target": "allAdjacent",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1,
+			"noparentalbond": 1
+		},
+		"desc": "The user faints after using this move, even if this move fails for having no target. This move uses the user's higher attacking stat and halves the matching defensive stat during damage calculation. This move is prevented from executing if any active Pokemon has the Damp Ability.",
+		"shortDesc": "Uses higher Atk/SpA; halves defense; user faints."
+	},
+	"shadowforce": {
+		"name": "Shadow Force",
+		"num": 467,
+		"type": "Ghost",
+		"category": "Physical",
+		"basePower": 120,
+		"accuracy": 100,
+		"pp": 5,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"contact": 1,
+			"charge": 1,
+			"mirror": 1,
+			"metronome": 1,
+			"nosleeptalk": 1,
+			"noassist": 1,
+			"failinstruct": 1
+		},
+		"desc": "Has a higher chance for a critical hit and uses the user's higher offensive stat. The user vanishes on the first turn and attacks on the second, breaking protection. When used by Giratina, a successful hit also makes it take 0.7x damage from all sources next turn. Power Herb makes it attack immediately.",
+		"shortDesc": "High crit; uses higher offense; vanishes, then breaks Protect. Giratina gains 0.7x damage guard."
+	},
+	"skydrop": {
+		"name": "Sky Drop",
+		"num": 507,
+		"type": "Flying",
+		"category": "Physical",
+		"basePower": 60,
+		"accuracy": 100,
+		"pp": 10,
+		"priority": 0,
+		"target": "any",
+		"flags": {
+			"contact": 1,
+			"charge": 1,
+			"protect": 1,
+			"mirror": 1,
+			"gravity": 1,
+			"distance": 1,
+			"metronome": 1,
+			"nosleeptalk": 1,
+			"noassist": 1,
+			"failinstruct": 1
+		},
+		"desc": "This attack takes the target into the air with the user on the first turn and executes on the second. Pokemon weighing 200 kg or more cannot be lifted. On the first turn, the user and the target avoid all attacks other than Gust, Hurricane, Sky Uppercut, Smack Down, Thousand Arrows, Thunder, and Twister. The user and the target cannot make a move between turns, but the target can select a move to use. This move cannot damage Flying-type Pokemon. Fails on the first turn if the target is an ally, if the target has a substitute, or if the target is using Bounce, Dig, Dive, Fly, Phantom Force, Shadow Force, or Sky Drop.",
+		"shortDesc": "User and foe fly up turn 1. Damages on turn 2."
+	},
 	"slackoff": {
 		"name": "Slack Off",
 		"num": 303,
@@ -26781,6 +31257,68 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		},
 		"desc": "The user restores 1/2 of its maximum HP, rounded half up.",
 		"shortDesc": "Heals the user by 50% of its max HP."
+	},
+	"solarbeam": {
+		"name": "Solar Beam",
+		"num": 76,
+		"type": "Grass",
+		"category": "Special",
+		"basePower": 120,
+		"accuracy": 100,
+		"pp": 10,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"charge": 1,
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1,
+			"nosleeptalk": 1,
+			"failinstruct": 1
+		},
+		"desc": "This attack charges on the first turn and executes on the second. Power is halved if the weather is Primordial Sea, Rain Dance, Sandstorm, or Snow and the user is not holding Utility Umbrella. If the user is holding a Power Herb or the weather is Desolate Land or Sunny Day, the move completes in one turn. If the user is holding Utility Umbrella and the weather is Desolate Land or Sunny Day, the move still requires a turn to charge.",
+		"shortDesc": "Charges turn 1. Hits turn 2. No charge in sunlight."
+	},
+	"solarblade": {
+		"name": "Solar Blade",
+		"num": 669,
+		"type": "Grass",
+		"category": "Physical",
+		"basePower": 125,
+		"accuracy": 100,
+		"pp": 10,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"contact": 1,
+			"charge": 1,
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1,
+			"nosleeptalk": 1,
+			"failinstruct": 1,
+			"slicing": 1
+		},
+		"desc": "This attack charges on the first turn and executes on the second. Power is halved if the weather is Hail, Primordial Sea, Rain Dance, or Sandstorm and the user is not holding Utility Umbrella. If the user is holding a Power Herb or the weather is Desolate Land or Sunny Day, the move completes in one turn. If the user is holding Utility Umbrella and the weather is Desolate Land or Sunny Day, the move still requires a turn to charge.",
+		"shortDesc": "Charges turn 1. Hits turn 2. No charge in sunlight."
+	},
+	"spacialrend": {
+		"name": "Spacial Rend",
+		"num": 460,
+		"type": "Dragon",
+		"category": "Special",
+		"basePower": 100,
+		"accuracy": 95,
+		"pp": 5,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1
+		},
+		"desc": "Uses the user's higher offensive stat and has a high critical-hit ratio. When used by Palkia, this move never misses, ignores protection, and cannot be redirected.",
+		"shortDesc": "Uses higher offense; high crit. Palkia: never misses; ignores Protect/redirection."
 	},
 	"spikes": {
 		"name": "Spikes",
@@ -26801,6 +31339,24 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"desc": "Sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in, unless it is a Flying-type Pokemon or has the Levitate Ability. Can be used up to three times before failing. Opponents lose 1/8 of their maximum HP with one layer, 1/6 of their maximum HP with two layers, and 1/4 of their maximum HP with three layers, all rounded down. Can be removed from the opposing side if any Pokemon uses Tidy Up, or if any opposing Pokemon uses Mortal Spin, Rapid Spin, or Defog successfully, or is hit by Defog.",
 		"shortDesc": "Hurts grounded foes on switch-in. Max 3 layers."
 	},
+	"stabbyswarm": {
+		"name": "Stabby Swarm",
+		"num": 10025,
+		"type": "Bug",
+		"category": "Physical",
+		"basePower": 75,
+		"accuracy": 100,
+		"pp": 20,
+		"priority": 0,
+		"target": "allAdjacentFoes",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1
+		},
+		"desc": "Traps opposing Pokemon for 4-5 turns and damages them each turn. In Forest Field, power is 1.5x and Defense falls by 1. Grip Claw extends the trap to 7 turns.",
+		"shortDesc": "Traps foes; 1.5x and -1 Def in Forest; Grip Claw extends it."
+	},
 	"stealthrock": {
 		"name": "Stealth Rock",
 		"num": 446,
@@ -26818,6 +31374,26 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		},
 		"desc": "Sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in. Fails if the effect is already active on the opposing side. Foes lose 1/32, 1/16, 1/8, 1/4, or 1/2 of their maximum HP, rounded down, based on their weakness to the Rock type; 0.25x, 0.5x, neutral, 2x, or 4x, respectively. Can be removed from the opposing side if any Pokemon uses Tidy Up, or if any opposing Pokemon uses Mortal Spin, Rapid Spin, or Defog successfully, or is hit by Defog.",
 		"shortDesc": "Hurts foes on switch-in. Factors Rock weakness."
+	},
+	"steelystrike": {
+		"name": "Steely Strike",
+		"num": 10024,
+		"type": "Steel",
+		"category": "Physical",
+		"basePower": 75,
+		"accuracy": 100,
+		"pp": 10,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"contact": 1,
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1,
+			"slicing": 1
+		},
+		"desc": "Ignores and removes Reflect, Light Screen, Aurora Veil, and Arenite Wall from the target's side. 1.5x power in Fairy Tale Field.",
+		"shortDesc": "Removes screens and Arenite Wall; 1.5x in Fairy Tale."
 	},
 	"strengthsap": {
 		"name": "Strength Sap",
@@ -26857,6 +31433,24 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"desc": "Raises the user's Attack by 2 stages.",
 		"shortDesc": "Raises the user's Attack by 2."
 	},
+	"synthesis": {
+		"name": "Synthesis",
+		"num": 235,
+		"type": "Grass",
+		"category": "Status",
+		"basePower": 0,
+		"accuracy": true,
+		"pp": 5,
+		"priority": 0,
+		"target": "self",
+		"flags": {
+			"snatch": 1,
+			"heal": 1,
+			"metronome": 1
+		},
+		"desc": "The user restores 1/2 of its maximum HP if Delta Stream or no weather conditions are in effect or if the user is holding Utility Umbrella, 2/3 of its maximum HP if the weather is Desolate Land or Sunny Day, and 1/4 of its maximum HP if the weather is Primordial Sea, Rain Dance, Sandstorm, or Snow, all rounded half down.",
+		"shortDesc": "Heals the user by a weather-dependent amount."
+	},
 	"taunt": {
 		"name": "Taunt",
 		"num": 269,
@@ -26876,6 +31470,57 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		},
 		"desc": "Prevents the target from using non-damaging moves for its next three turns. Pokemon with the Oblivious Ability or protected by the Aroma Veil Ability are immune.",
 		"shortDesc": "Target can't use status moves its next 3 turns."
+	},
+	"tectonicrage": {
+		"name": "Tectonic Rage",
+		"num": 630,
+		"type": "Ground",
+		"category": "Physical",
+		"basePower": 1,
+		"accuracy": true,
+		"pp": 1,
+		"priority": 0,
+		"target": "normal",
+		"flags": {},
+		"desc": "A one-use Ground-type Z-Move. Its power depends on the damaging Ground-type move selected as its base.",
+		"shortDesc": "Power depends on the base Ground-type move."
+	},
+	"terrainpulse": {
+		"name": "Terrain Pulse",
+		"num": 805,
+		"type": "Normal",
+		"category": "Special",
+		"basePower": 50,
+		"accuracy": 100,
+		"pp": 10,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1,
+			"pulse": 1
+		},
+		"desc": "Power doubles if the user is grounded and a terrain is active, and this move's type changes to match. Electric type during Electric Terrain, Grass type during Grassy Terrain, Fairy type during Misty Terrain, and Psychic type during Psychic Terrain.",
+		"shortDesc": "User on terrain: power doubles, type varies."
+	},
+	"thunder": {
+		"name": "Thunder",
+		"num": 87,
+		"type": "Electric",
+		"category": "Special",
+		"basePower": 110,
+		"accuracy": 70,
+		"pp": 10,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1
+		},
+		"desc": "Has a 30% chance to paralyze the target. This move can hit a target using Bounce, Fly, or Sky Drop, or is under the effect of Sky Drop. If the weather is Primordial Sea or Rain Dance, this move does not check accuracy. If the weather is Desolate Land or Sunny Day, this move's accuracy is 50%. If this move is used against a Pokemon holding Utility Umbrella, this move's accuracy remains at 70%.",
+		"shortDesc": "30% chance to paralyze. Can't miss in rain."
 	},
 	"toxicspikes": {
 		"name": "Toxic Spikes",
@@ -26912,6 +31557,98 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		},
 		"desc": "For 5 turns, the Speed of every Pokemon is recalculated for the purposes of determining turn order. During the effect, each Pokemon's Speed is considered to be (10000 - its normal Speed), and if this value is greater than 8191, 8192 is subtracted from it. If this move is used during the effect, the effect ends.",
 		"shortDesc": "Goes last. For 5 turns, turn order is reversed."
+	},
+	"veeveevolley": {
+		"name": "Veevee Volley",
+		"num": 741,
+		"type": "Normal",
+		"category": "Physical",
+		"basePower": 0,
+		"accuracy": true,
+		"pp": 20,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"contact": 1,
+			"protect": 1,
+			"mirror": 1
+		},
+		"desc": "Power is equal to the greater of (user's Happiness * 2/5), rounded down, or 1. Uses the user's higher offensive stat.",
+		"shortDesc": "Max happiness: 102 power; uses higher Atk or SpA; can't miss."
+	},
+	"venoshock": {
+		"name": "Venoshock",
+		"num": 474,
+		"type": "Poison",
+		"category": "Special",
+		"basePower": 65,
+		"accuracy": 100,
+		"pp": 10,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1
+		},
+		"desc": "Power doubles if the target is poisoned.",
+		"shortDesc": "Power doubles if the target is poisoned."
+	},
+	"volttackle": {
+		"name": "Volt Tackle",
+		"num": 344,
+		"type": "Electric",
+		"category": "Physical",
+		"basePower": 140,
+		"accuracy": 100,
+		"pp": 15,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"contact": 1,
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1
+		},
+		"desc": "Has a 10% chance to paralyze the target. If the target lost HP, the user takes recoil damage equal to 33% the HP lost by the target, rounded half up, but not less than 1 HP.",
+		"shortDesc": "Has 33% recoil. 10% chance to paralyze target."
+	},
+	"waterpledge": {
+		"name": "Water Pledge",
+		"num": 518,
+		"type": "Water",
+		"category": "Special",
+		"basePower": 80,
+		"accuracy": 100,
+		"pp": 10,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"nonsky": 1,
+			"metronome": 1
+		},
+		"desc": "If one of the user's allies chose to use Fire Pledge or Grass Pledge this turn and has not moved yet, it takes its turn immediately after the user and the user's move does nothing. If combined with Fire Pledge, the ally uses Water Pledge with 150 power and a rainbow appears on the user's side for 4 turns, which doubles secondary effect chances and stacks with the Serene Grace Ability, except effects that cause flinching can only have their chance doubled once. If combined with Grass Pledge, the ally uses Grass Pledge with 150 power and a swamp appears on the target's side for 4 turns, which quarters the Speed of each Pokemon on that side. When used as a combined move, this move gains STAB no matter what the user's type is. This move does not consume the user's Water Gem, and cannot be redirected by the Storm Drain Ability.",
+		"shortDesc": "Use with Grass or Fire Pledge for added effect."
+	},
+	"wish": {
+		"name": "Wish",
+		"num": 273,
+		"type": "Normal",
+		"category": "Status",
+		"basePower": 0,
+		"accuracy": true,
+		"pp": 10,
+		"priority": 0,
+		"target": "self",
+		"flags": {
+			"snatch": 1,
+			"heal": 1,
+			"metronome": 1
+		},
+		"desc": "At the end of the next turn, the Pokemon at the user's position has 1/2 of the user's maximum HP restored to it, rounded down. Fails if this move is already in effect for the user's position.",
+		"shortDesc": "Next turn, 50% of the user's max HP is restored."
 	}
 });
 Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
@@ -26929,11 +31666,14 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"sniper",
 		"stalwart"
 	],
+	"accumulation": [],
+	"adaptivecell": [],
 	"adaptivecore": [
 		"download",
 		"defragment",
 		"selfrepair"
 	],
+	"adaptivecycle": [],
 	"adaptivepower": [],
 	"aevianbolt": [
 		"stormpower",
@@ -26978,12 +31718,14 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"strongjaw",
 		"layeredcoat",
 		"furcoat",
-		"overcoat"
+		"overcoat",
+		"merciless"
 	],
 	"aevianwing": [
 		"rockhead",
 		"defiant"
 	],
+	"agonyflame": [],
 	"alchemistsurge": [
 		"psychicsurge",
 		"competitive",
@@ -26997,7 +31739,8 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	],
 	"amethystglow": [],
 	"anchorbridge": [
-		"sturdy"
+		"sturdy",
+		"solidrock"
 	],
 	"anchoredbattery": [
 		"megalauncher",
@@ -27008,6 +31751,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"selfsufficient",
 		"proficient"
 	],
+	"ange": [],
 	"apexarmor": [
 		"bulletproof",
 		"roughskin",
@@ -27045,6 +31789,8 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"serenegrace"
 	],
 	"armoredadvance": [],
+	"armorize": [],
+	"ascendance": [],
 	"asoneglastrier": [],
 	"asonespectrier": [],
 	"astralcore": [
@@ -27059,7 +31805,8 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	],
 	"astralward": [
 		"magicbounce",
-		"telepathy"
+		"telepathy",
+		"anticipation"
 	],
 	"astralwatcher": [
 		"prankster",
@@ -27076,7 +31823,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"unboundblaze",
 		"selfsufficient",
 		"proficient",
-		"levitate"
+		"toughclaws"
 	],
 	"aurainstinct": [
 		"adaptability",
@@ -27103,6 +31850,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"icebody",
 		"raindish"
 	],
+	"backwash": [],
 	"bakedbliss": [
 		"wellbakedbody",
 		"thickfat",
@@ -27116,6 +31864,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"filter",
 		"selfsufficient"
 	],
+	"battlefervor": [],
 	"bedrockclaw": [
 		"toughclaws"
 	],
@@ -27187,7 +31936,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"proficient",
 		"ultraego",
 		"flamebody",
-		"thickfat"
+		"magmaarmor"
 	],
 	"burningrage": [
 		"proficient"
@@ -27198,16 +31947,26 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"magmaarmor",
 		"proficient"
 	],
+	"byxbysiontouch": [],
+	"calculatedshot": [
+		"frisk"
+	],
 	"calderacore": [
 		"magmaarmor",
 		"sheerforce",
 		"drought"
 	],
+	"causticscales": [],
 	"caverndrake": [],
 	"celestialheart": [
 		"soulheart",
 		"friendguard",
 		"serenegrace"
+	],
+	"cinderscales": [
+		"flamebody",
+		"swarm",
+		"shielddust"
 	],
 	"coldlogic": [
 		"toughclaws",
@@ -27215,19 +31974,21 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"aftermath",
 		"forewarn"
 	],
+	"coldopen": [],
 	"completeparasitism": [
 		"parasitism",
 		"dryskin",
 		"filter",
 		"selfrepair"
 	],
+	"conductivity": [],
 	"corneredfang": [
 		"guts"
 	],
 	"corrosiveburn": [
-		"merciless",
-		"regenerator",
-		"corrosion"
+		"corrosion",
+		"oblivious",
+		"venomignition"
 	],
 	"corrosivetouch": [
 		"technician",
@@ -27243,6 +32004,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"infiltrator",
 		"baddreams"
 	],
+	"crumblingshell": [],
 	"crystalresonance": [
 		"amethystglow",
 		"magicbounce"
@@ -27251,20 +32013,32 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"swiftswim"
 	],
 	"cursedarmament": [
-		"filter"
+		"filter",
+		"frisk"
 	],
 	"curseddoll": [
 		"toughclaws",
-		"shadowshield"
+		"shadowshield",
+		"frisk"
+	],
+	"cursedkeepsake": [
+		"frisk"
 	],
 	"cursedmarionette": [
-		"prankster"
+		"prankster",
+		"frisk"
 	],
 	"darkdominion": [
 		"darkaura"
 	],
-	"debilitatingvenom": [],
+	"dawnherald": [
+		"drought",
+		"friendguard"
+	],
+	"deadwater": [],
+	"decoypincers": [],
 	"defeatist": [],
+	"defragment": [],
 	"desertrift": [
 		"sandforce",
 		"sandstream",
@@ -27282,6 +32056,9 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	],
 	"digestivesap": [],
 	"disguise": [],
+	"dishearten": [],
+	"dissonantchime": [],
+	"dissonantecho": [],
 	"divineintervention": [
 		"swornduty",
 		"friendguard",
@@ -27295,7 +32072,8 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	],
 	"doomwarning": [
 		"magicbounce",
-		"magicguard"
+		"magicguard",
+		"anticipation"
 	],
 	"doublestrike": [
 		"ironfist",
@@ -27319,6 +32097,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"frisk",
 		"invigorate"
 	],
+	"dreadpresence": [],
 	"dreamsickness": [
 		"telepathy"
 	],
@@ -27328,6 +32107,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"drizzle": [],
 	"drought": [],
 	"dryskin": [],
+	"dualwield": [],
 	"dunerunner": [
 		"sandrush"
 	],
@@ -27336,7 +32116,12 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"shedskin",
 		"sandspit"
 	],
-	"duskdrive": [],
+	"duskdrive": [
+		"battlefervor",
+		"precision",
+		"opportunist"
+	],
+	"echofiend": [],
 	"echosense": [
 		"echofiend",
 		"frisk",
@@ -27344,6 +32129,8 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"infiltrator"
 	],
 	"eclipse": [],
+	"eclipsevision": [],
+	"elevate": [],
 	"emperorsresolve": [
 		"competitive",
 		"slushrush",
@@ -27357,8 +32144,13 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"enlightenment": [
 		"purepower"
 	],
+	"evaporate": [
+		"dryskin"
+	],
+	"evilsanta": [],
 	"exalt": [
-		"defiant"
+		"defiant",
+		"sharpness"
 	],
 	"execution": [
 		"duskilate"
@@ -27369,17 +32161,26 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"selfsufficient",
 		"proficient"
 	],
+	"falsebouquet": [],
 	"falsedevotion": [
 		"serenegrace",
 		"naturalrecovery",
 		"prankster"
 	],
+	"festivalstep": [],
 	"fightingfiend": [],
+	"finalnote": [],
+	"firemane": [],
 	"flashfire": [],
+	"flintfracture": [],
 	"floehunter": [
 		"slushrush"
 	],
-	"fluffycraft": [],
+	"fluffycraft": [
+		"fluffy",
+		"technician",
+		"naturalcure"
+	],
 	"fluffyevo": [
 		"overcoat"
 	],
@@ -27407,6 +32208,9 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"strongjaw",
 		"levitate"
 	],
+	"freshplumage": [
+		"naturalcure"
+	],
 	"frightfulwings": [
 		"intimidate"
 	],
@@ -27424,6 +32228,11 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"sharpness",
 		"refrigerate"
 	],
+	"frozenfeast": [
+		"strongjaw"
+	],
+	"frozenfortress": [],
+	"funeralchoir": [],
 	"furnaceengine": [
 		"steamengine",
 		"flamebody",
@@ -27442,6 +32251,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"lightningrod",
 		"static"
 	],
+	"gildedgrace": [],
 	"glacialheart": [
 		"thermalexchange",
 		"icebody",
@@ -27457,13 +32267,17 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"sapsipper"
 	],
 	"grandmaster": [],
+	"gravehunger": [
+		"baddreams"
+	],
 	"gravewind": [
 		"sandrush"
 	],
 	"greatmarsh": [
 		"anticipation",
 		"dryskin",
-		"adaptability"
+		"adaptability",
+		"toxicchain"
 	],
 	"gritgrappler": [
 		"guts"
@@ -27520,6 +32334,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"prankster",
 		"cursedbody"
 	],
+	"hiddenscroll": [],
 	"highnoon": [
 		"dualwield",
 		"megalauncher",
@@ -27549,6 +32364,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"hovercannon": [
 		"levitate"
 	],
+	"hydrabond": [],
 	"hydraheart": [
 		"hydrabond",
 		"stamina"
@@ -27560,9 +32376,14 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"hyperdrill": [],
 	"iceface": [],
 	"icemirror": [],
+	"illuminate": [],
 	"imperialmandate": [],
 	"imperialprincess": [],
+	"inexorable": [],
+	"intimidate": [],
 	"intrepidsword": [],
+	"inversion": [],
+	"invigorate": [],
 	"irondominion": [
 		"pressure",
 		"swornduty",
@@ -27594,13 +32415,19 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"violentrush",
 		"vitalspirit"
 	],
+	"keeneye": [],
 	"keenhunt": [],
-	"kickfiend": [],
+	"kickfiend": [
+		"striker",
+		"violentrush",
+		"limber"
+	],
 	"kindledfury": [
 		"fluffy",
 		"guts",
 		"flashfire"
 	],
+	"knightsguard": [],
 	"knuckletide": [
 		"ironfist"
 	],
@@ -27613,6 +32440,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"lastbrood": [
 		"swarm"
 	],
+	"lastlaugh": [],
 	"layeredcoat": [],
 	"layeredshell": [
 		"shellarmor"
@@ -27624,6 +32452,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"propellertail"
 	],
 	"lightningrod": [],
+	"limber": [],
 	"livenet": [
 		"unnerve"
 	],
@@ -27642,15 +32471,23 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"strongjaw"
 	],
 	"longreach": [
-		"superluck"
+		"superluck",
+		"keeneye"
 	],
 	"loyalguard": [],
+	"lunardread": [
+		"dishearten",
+		"insomnia",
+		"pressure"
+	],
+	"lunaridol": [],
 	"lunarorbit": [
 		"magicbounce",
 		"serenegrace",
 		"triage",
 		"magicguard"
 	],
+	"lunarspirit": [],
 	"malicewell": [
 		"flamebody"
 	],
@@ -27663,9 +32500,14 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"mastercourse": [
 		"contrary"
 	],
+	"masterkey": [],
+	"memoryleak": [],
+	"meridianseal": [],
 	"mightyjaw": [
 		"proficient"
 	],
+	"mimecraft": [],
+	"mindfreeze": [],
 	"mirechorus": [
 		"liquidvoice",
 		"poisontouch"
@@ -27692,6 +32534,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"naturalcure"
 	],
 	"motordrive": [],
+	"mountainbreaker": [],
 	"mountainhunger": [
 		"sapsipper",
 		"thickfat",
@@ -27709,6 +32552,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"icebody"
 	],
 	"mourningvessel": [],
+	"mudmeditation": [],
 	"mudtemper": [
 		"battlearmor"
 	],
@@ -27728,16 +32572,20 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"regenerator"
 	],
 	"neutralization": [],
+	"nighthoard": [],
 	"nighthunt": [
 		"strongjaw",
 		"infiltrator",
-		"intimidate"
+		"intimidate",
+		"frisk",
+		"illuminate"
 	],
 	"nightmarepulse": [
 		"pendulumswing",
 		"cursedbody",
 		"baddreams"
 	],
+	"nightrealm": [],
 	"noblearmor": [
 		"prismarmor",
 		"icebody"
@@ -27776,7 +32624,10 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"palmmastery": [
 		"thickfat"
 	],
+	"paradoxengine": [],
 	"paradoxpower": [],
+	"paradoxpull": [],
+	"paradoxwheel": [],
 	"parasitism": [
 		"dryskin"
 	],
@@ -27846,11 +32697,24 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"pollenengine": [
 		"chlorophyll"
 	],
+	"powerdrill": [],
+	"precision": [],
+	"predator": [],
+	"pressurekiln": [],
 	"primalego": [
 		"unaware",
 		"proficient",
 		"ultraego",
 		"moldbreaker"
+	],
+	"primalrhythm": [],
+	"primaltactics": [],
+	"primevalhunger": [
+		"accumulation"
+	],
+	"primevalhunt": [
+		"skilllink",
+		"battlearmor"
 	],
 	"prismscale": [
 		"marvelscale",
@@ -27860,6 +32724,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"prismwings": [
 		"tintedlens"
 	],
+	"proficient": [],
 	"protectiveward": [
 		"liquidvoice",
 		"shellarmor",
@@ -27870,6 +32735,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"pulseeruption": [
 		"sturdy"
 	],
+	"pulsefiltration": [],
 	"pulsetriad": [
 		"hydrabond",
 		"levitate",
@@ -27881,6 +32747,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"regenerator"
 	],
 	"punchfiend": [],
+	"purifyingfrost": [],
 	"quarrycannon": [
 		"solidrock"
 	],
@@ -27928,10 +32795,17 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"rainsovereign": [
 		"drizzle"
 	],
+	"raisedquills": [],
+	"rapidresponse": [],
 	"razorcurrent": [
 		"drizzle",
 		"strongjaw",
 		"speedboost"
+	],
+	"razorreach": [
+		"sharpness",
+		"longreach",
+		"keeneye"
 	],
 	"reapersgrip": [
 		"unaware",
@@ -27942,6 +32816,8 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"rechargerelay": [
 		"battery"
 	],
+	"reflector": [],
+	"reinflate": [],
 	"relentlesshunt": [
 		"levitate"
 	],
@@ -27950,6 +32826,9 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"moldbreaker",
 		"powerdrill"
 	],
+	"relicarmor": [],
+	"relicbeam": [],
+	"relicinstinct": [],
 	"relicmishap": [],
 	"requiem": [
 		"cursedbody"
@@ -27959,7 +32838,9 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"gluttony",
 		"damp"
 	],
+	"resonanceforce": [],
 	"resonantblade": [],
+	"restorativechime": [],
 	"resuscitation": [
 		"selfrepair",
 		"magicguard"
@@ -27972,6 +32853,9 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"accumulation",
 		"sandstream"
 	],
+	"rimebreaker": [
+		"refrigerate"
+	],
 	"rimeclaw": [
 		"toughclaws"
 	],
@@ -27980,6 +32864,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"filter",
 		"icebody"
 	],
+	"rimeplate": [],
 	"ringmaster": [
 		"toughclaws"
 	],
@@ -28003,10 +32888,12 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"rootrenewal": [
 		"regenerator"
 	],
+	"roughscale": [],
 	"royalarmament": [
 		"powerdrill"
 	],
 	"royaldecree": [],
+	"royalhive": [],
 	"royalscales": [
 		"prismscale",
 		"marvelscale",
@@ -28017,7 +32904,9 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	],
 	"royalsun": [
 		"drought",
-		"supremeoverlord"
+		"supremeoverlord",
+		"unnerve",
+		"flamebody"
 	],
 	"royalvoice": [
 		"pixilate",
@@ -28076,6 +32965,9 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"moldbreaker"
 	],
 	"scorchsweep": [],
+	"scrapbreaker": [
+		"moldbreaker"
+	],
 	"seablessing": [
 		"waterveil",
 		"raindish"
@@ -28089,8 +32981,11 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"seasonalstride": [
 		"chlorophyll"
 	],
+	"secondbrew": [],
+	"secondwind": [],
 	"selfrepair": [],
-	"serratedpincers": [],
+	"selfsufficient": [],
+	"setpiece": [],
 	"seviischooling": [
 		"schooling",
 		"hydrabond",
@@ -28111,12 +33006,12 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"infiltrator",
 		"proficient"
 	],
-	"shadowguard": [
-		"elevate",
-		"shadowshield",
-		"temporalshift",
-		"insomnia"
+	"shadowfeint": [],
+	"shadowshield": [],
+	"shattercrust": [
+		"crumblingshell"
 	],
+	"shellcracker": [],
 	"shieldsdown": [
 		"shellarmor",
 		"selfrepair",
@@ -28133,15 +33028,20 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	],
 	"silkshuriken": [],
 	"silksights": [
-		"compoundeyes"
+		"compoundeyes",
+		"keeneye"
 	],
+	"silkward": [],
+	"sinisterblaze": [],
 	"sirius": [
 		"apexvenom",
 		"blackviper",
 		"whiplash"
 	],
+	"skywarden": [],
 	"slipstream": [
-		"levitate"
+		"levitate",
+		"keeneye"
 	],
 	"slowclamp": [
 		"shellarmor",
@@ -28162,12 +33062,16 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"windpower",
 		"selfsufficient"
 	],
+	"solarbloom": [],
+	"solarbud": [],
 	"solarhydra": [
 		"hydrabond",
 		"grassysurge",
 		"solarpower",
 		"solarbud"
 	],
+	"solaridol": [],
+	"solarrecharge": [],
 	"solarrush": [
 		"sandrush",
 		"chlorophyll"
@@ -28187,12 +33091,17 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"malicewell",
 		"flamebody"
 	],
+	"soulfire": [],
+	"soulpyre": [],
 	"soulsiphon": [],
+	"soulstrike": [],
 	"soultag": [
 		"soulfire",
 		"shadowtag",
 		"flamebody"
 	],
+	"sovereignarsenal": [],
+	"spentforce": [],
 	"spinfiend": [],
 	"spiralevolution": [
 		"adaptability",
@@ -28201,11 +33110,16 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"infiltrator",
 		"shielddust"
 	],
+	"sporeshroud": [
+		"effectspore"
+	],
 	"springfur": [
 		"furcoat"
 	],
 	"stancechange": [],
+	"starboxer": [],
 	"steamengine": [],
+	"steelplumage": [],
 	"stillwater": [
 		"waterabsorb"
 	],
@@ -28239,6 +33153,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"stormpower",
 		"lightningrod"
 	],
+	"stormpower": [],
 	"stormsong": [
 		"liquidvoice",
 		"drizzle",
@@ -28253,6 +33168,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"shedskin",
 		"moldbreaker"
 	],
+	"striker": [],
 	"strikerfrenzy": [],
 	"strikersmomentum": [
 		"proficient"
@@ -28299,11 +33215,14 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"powerdrill",
 		"raindish"
 	],
+	"swornduty": [],
+	"tempestfury": [],
 	"templechime": [
 		"elevate",
 		"levitate"
 	],
 	"temporalshift": [],
+	"terastaladaptability": [],
 	"terragift": [
 		"hospitality",
 		"unaware",
@@ -28314,7 +33233,11 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"solidrock",
 		"proficient"
 	],
-	"territorial": [],
+	"territorial": [
+		"unnerve",
+		"stamina",
+		"guarddog"
+	],
 	"thickfat": [],
 	"tidaldominion": [
 		"swiftswim"
@@ -28342,10 +33265,9 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	],
 	"toxicbloom": [
 		"pollenbloom",
-		"selfsufficient",
-		"proficient",
-		"thickfat"
+		"selfsufficient"
 	],
+	"toxiccocoon": [],
 	"toxicevolution": [
 		"corrosion",
 		"dualwield",
@@ -28360,6 +33282,9 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"toxicserenity": [
 		"poisonheal"
 	],
+	"toxicsignature": [
+		"unnerve"
+	],
 	"toxicsink": [
 		"effectspore",
 		"invigorate"
@@ -28370,6 +33295,9 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"merciless"
 	],
 	"trailbreaker": [],
+	"transfixinggaze": [
+		"frisk"
+	],
 	"treasuretitan": [
 		"filter",
 		"eartheater",
@@ -28398,6 +33326,9 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"tundramarch": [
 		"oblivious"
 	],
+	"twilightinstinct": [],
+	"twinblades": [],
+	"twincannons": [],
 	"tyrantdomain": [
 		"relicarmor",
 		"supremeoverlord",
@@ -28405,6 +33336,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"sandstream"
 	],
 	"tyrantstream": [],
+	"ultraego": [],
 	"ultrainstinct": [
 		"moldbreaker",
 		"innerfocus"
@@ -28438,6 +33370,11 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"vanguard": [
 		"intimidate"
 	],
+	"varietyrush": [],
+	"vaultkeeper": [
+		"prankster",
+		"stickyhold"
+	],
 	"vendetta": [
 		"angerpoint",
 		"secondwind",
@@ -28450,7 +33387,10 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"venombastion": [
 		"stamina"
 	],
+	"venomcanticle": [],
 	"venomheal": [],
+	"venomignition": [],
+	"venomspurs": [],
 	"venomveil": [
 		"liquidooze",
 		"corrosion",
@@ -28460,7 +33400,8 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"proficient",
 		"dualwield",
 		"regenerator",
-		"lightningrod"
+		"lightningrod",
+		"limber"
 	],
 	"verdantedge": [
 		"chlorophyll",
@@ -28476,12 +33417,22 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"hospitality",
 		"friendguard"
 	],
+	"violentrush": [],
+	"vitalcircuit": [],
+	"voidcraft": [
+		"elevate",
+		"shadowshield",
+		"temporalshift",
+		"insomnia"
+	],
 	"voidveil": [
 		"levitate",
 		"magicguard",
 		"insomnia"
 	],
 	"voltabsorb": [],
+	"voltagevolley": [],
+	"wailingsnow": [],
 	"warpath": [],
 	"warship": [
 		"swiftswim",
@@ -28496,12 +33447,18 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"waterbubble": [
 		"waterveil"
 	],
+	"webassassin": [],
+	"whiplash": [],
 	"wickedcommand": [],
 	"wickedsnare": [
 		"stakeout",
 		"tanglinghair",
 		"prankster"
 	],
+	"wickedweave": [
+		"prankster"
+	],
+	"wildspirit": [],
 	"windchime": [
 		"armorize",
 		"punkrock",
@@ -28516,6 +33473,10 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"crumblingshell",
 		"naturalrecovery",
 		"sturdy"
+	],
+	"witheringtouch": [
+		"poisontouch",
+		"corrosion"
 	],
 	"wonderguard": [],
 	"woolyconductor": [
@@ -28957,7 +33918,8 @@ const DOCUMENT_LEARNSET_ADDITIONS: {[id: string]: {[id: string]: string[]}} = {
 	staraptor: {blazekick: ["9M"], bodypress: ["9M"], brickbreak: ["9M"], bulkup: ["9M"], knockoff: ["9M"], lowsweep: ["9M"], outrage: ["9M"]},
 	starmie: {ancientpower: ["9M"], aquajet: ["9M"], bulkup: ["9M"], chargebeam: ["9M"], healblock: ["9M"], liquidation: ["9M"], reflecttype: ["9L1"], safeguard: ["9M"], selfdestruct: ["9M"], tripleaxel: ["9M"], zenheadbutt: ["9M"]},
 	steelix: {bide: ["9M"], fissure: ["9M"], skullbash: ["9M"], takedown: ["9M"]},
-	stunfisk: {crunch: ["9M"], fakeout: ["9M"], flashcannon: ["9M"], icefang: ["9M"], irondefense: ["9M"], magnetbomb: ["9M"]},
+	stunfiskgalar: {recover: ["9L1"]},
+	stunfisk: {recover: ["9L1"], crunch: ["9M"], fakeout: ["9M"], flashcannon: ["9M"], icefang: ["9M"], irondefense: ["9M"], magnetbomb: ["9M"]},
 	sudowoodo: {fakeout: ["9M"]},
 	sunflora: {bide: ["9M"], charm: ["9M"], leafblade: ["9M"], pollenpuff: ["9M"], solarblade: ["9M"]},
 	swalot: {corrosivegas: ["9M"], crunch: ["9M"], powerswap: ["9M"], terrainpulse: ["9M"]},
@@ -29383,7 +34345,8 @@ Object.assign(CUSTOM_ITEM_UPDATES, {
 			"Avalugg": "Avalugg-Pulse",
 			"Avalugg-Hisui": "Avalugg-Pulse",
 			"Magnezone": "Magnezone-Pulse",
-			"Mr. Mime": "Mr. Mime-Pulse"
+			"Mr. Mime": "Mr. Mime-Pulse",
+			"Mr. Mime-Galar": "Mr. Mime-Pulse"
 		},
 		"itemUser": [
 			"Camerupt",
@@ -29398,7 +34361,8 @@ Object.assign(CUSTOM_ITEM_UPDATES, {
 			"Avalugg",
 			"Avalugg-Hisui",
 			"Magnezone",
-			"Mr. Mime"
+			"Mr. Mime",
+			"Mr. Mime-Galar"
 		],
 		"fling": {
 			"basePower": 80
@@ -29435,6 +34399,17 @@ Object.assign(CUSTOM_ITEM_UPDATES, {
 		"isNonstandard": null,
 		"fling": {
 			"basePower": 10
+		}
+	},
+	"metronome": {
+		"name": "Metronome",
+		"num": 277,
+		"desc": "Damage of moves used on consecutive turns is increased. Max 2x after 5 turns.",
+		"shortDesc": "Damage of moves used on consecutive turns is increased. Max 2x after 5 turns.",
+		"gen": 4,
+		"isNonstandard": null,
+		"fling": {
+			"basePower": 30
 		}
 	}
 });
@@ -29838,6 +34813,10 @@ function ensureCustomDataPatches() {
 		window.BattleAliases.amuletcoin = 'Star Sweet';
 		window.BattleAliases.richard = 'Jellicent-Azzy';
 		window.BattleAliases.venomrush = 'Venom Armor';
+		window.BattleAliases.shadowguard = 'Voidcraft';
+		window.BattleAliases.serratedpincers = 'Razor Reach';
+		window.BattleAliases.debilitatingvenom = 'Withering Touch';
+		window.BattleAliases.dreadfulpresence = 'Dishearten';
 		window.BattleAliases.ironclad = 'Armorize';
 		window.BattleAliases.hydrabreaker = 'Divine Mockery';
 		window.BattleAliases.corsolareborn = 'Corsola-Alt';
@@ -31652,6 +36631,7 @@ const Dex = new class implements ModdedDex {
 
 	getAbilityEffects(abilityId: ID, visiting = new Set<ID>(), dex: ModdedDex = this): ReadonlySet<ID> {
 		ensureCustomDataPatches();
+		abilityId = dex.abilities.get(abilityId).id;
 		if (this.abilityEffectDataTable !== window.BattleAbilities) {
 			this.abilityEffectDataTable = window.BattleAbilities;
 			this.abilityEffectCache = {};
@@ -32176,7 +37156,8 @@ const Dex = new class implements ModdedDex {
 		}
 		if (options.teamPreview && !isDynamax) {
 			// Preview animations are independent of the custom battle sprite selection.
-			const previewName = CUSTOM_SPECIES[customSpriteSpeciesId]?.data?.spriteid ||
+			const previewName = options.teamPreview && !isFront && customSpriteSpeciesId === 'primarinaalt' ? 'primarina' :
+				CUSTOM_SPECIES[customSpriteSpeciesId]?.data?.spriteid ||
 				CUSTOM_SPECIES_UPDATES[customSpriteSpeciesId]?.spriteid || species.spriteid;
 			const previewNames = options.gender === 'F' ? [previewName + '-f', previewName] : [previewName];
 			const previewAnimationNames = [...previewNames];

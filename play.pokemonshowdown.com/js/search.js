@@ -69,7 +69,7 @@
 		this.exactMatch = this.engine.exactMatch;
 		this.q = this.engine.query;
 		this.resultSet = this.engine.results;
-		if (firstElem) {
+		if (firstElem && (this.engine.typedSearch.searchType !== 'pokemon' || this.engine.pickerMatches(firstElem))) {
 			this.resultSet = [[this.engine.typedSearch.searchType, firstElem]].concat(this.resultSet);
 			if (this.resultSet.length > 1 && ['sortpokemon', 'sortmove'].includes(this.resultSet[1][0])) {
 				var sortRow = this.resultSet[1];

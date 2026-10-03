@@ -3432,3 +3432,70 @@ a.ilink.yours {
 .calculator-workspace.custom-calculator {color:#243344; font:13px/1.45 Arial,Helvetica,sans-serif;}
 .calculator-workspace [hidden] {display:none !important;}
 @media(max-width:627px){.calculator-workspace.custom-calculator input,.calculator-workspace.custom-calculator select,.calculator-workspace.custom-calculator button {min-height:44px;font-size:16px;} }
+
+
+/* Pokemon picker view filters; no changes to team or format legality. */
+.pokemon-picker-filters { padding: 6px 8px; color: #25394b; background: #edf3f8; border-bottom: 1px solid #bdccda; }
+.pokemon-picker-filters[hidden] { display: none; }
+.pokemon-picker-filters fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+.pokemon-picker-filters legend { font-weight: bold; padding: 2px 0 5px; }
+.picker-filter-options { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 14px; }
+.picker-filter-options label { display: inline-flex; align-items: center; gap: 5px; min-height: 30px; }
+.picker-filter-options input { margin: 0; }
+.picker-filter-options select { max-width: 100%; }
+.picker-filter-help { margin: 5px 0; font-size: 11px; }
+.picker-filter-help summary { cursor: pointer; }
+.picker-filter-help p { max-width: 65em; margin: 5px 0; line-height: 1.4; }
+.picker-filter-status { margin: 5px 0 0; font-size: 11px; line-height: 1.4; }
+.pokemon-picker-filters :focus-visible { outline: 2px solid #176ba0; outline-offset: 3px; }
+.dark .pokemon-picker-filters { background: #22303d; color: #e2edf7; border-color: #4e6579; }
+@media (max-width: 639px) {
+ .picker-filter-options { gap: 4px 12px; }
+ .picker-filter-options label { min-height: 44px; }
+ .picker-filter-options input[type=checkbox] { width: 20px; height: 20px; }
+ .picker-filter-options select { min-width: 0; max-width: 220px; }
+ .picker-filter-status, .picker-filter-help { font-size: 12px; }
+}
+
+/* Reserve a mobile chat header so sticky gimmick counters cannot cover its close control. */
+.small-layout .battle-chat-toggle {
+	z-index: 4;
+	box-sizing: border-box;
+	min-width: 44px;
+	min-height: 44px;
+	top: calc(4px + env(safe-area-inset-top, 0px));
+}
+.small-layout .battle-chat-toggle[name=showChat],
+.small-layout.showing-chat .battle-chat-toggle {
+	left: auto;
+	right: calc(6px + env(safe-area-inset-right, 0px));
+}
+.small-layout.showing-chat .battle-log,
+.small-layout.showing-chat .battle-userlist {
+	top: calc(56px + env(safe-area-inset-top, 0px));
+}
+.small-layout.showing-chat .battle-log {
+	left: env(safe-area-inset-left, 0px);
+	right: env(safe-area-inset-right, 0px);
+}
+.small-layout .battle-chat-toggle:focus-visible { outline: 2px solid #176ba0; outline-offset: 2px; }
+
+/* Labels retain the account username and wrap without hiding identity on mobile. */
+.account-display-name { overflow-wrap: anywhere; }
+.userlist .userbutton:has(.account-display-name) { height: auto; min-height: 20px; white-space: normal; }
+.display-nickname-settings input { max-width: 100%; box-sizing: border-box; }
+.username-color-settings p { overflow-wrap: anywhere; }
+
+
+
+/* LOCAL TEAMBUILDER TOOLS */
+.local-set-tools { clear: both; padding: 8px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.local-set-tools select { max-width: 100%; }
+.local-tools-manager textarea { display: block; width: 100%; box-sizing: border-box; margin: 8px 0; }
+.local-tools-manager label { display: inline-block; margin: 5px; max-width: 100%; }
+.local-tools-manager select { max-width: 100%; }
+.editing-set .teamchartbox.individual { position: relative; top: auto; left: auto; right: auto; bottom: auto; margin-top: 45px; }
+.editing-set .teambuilder-results { position: relative; top: auto; bottom: auto; overflow: visible; min-width: 0; }
+.ps-room.editing-set { overflow-y: auto; }
+.item-picker-tools { display: flex; flex-wrap: wrap; gap: 6px; }
+@media (max-width: 640px) { .editing-set .teamchartbox.individual { margin-top: 0; } .local-set-tools { max-width: 100%; } .local-set-tools label { max-width: 100%; } .local-tools-manager button, .local-tools-manager select { min-height: 44px; } }
