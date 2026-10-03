@@ -746,7 +746,8 @@ License: GPLv2
 }
 
 .hauntedterrainweather {
-    background: #CCAAEE url(../fx/weather-hauntedterrain.png) no-repeat scroll left top;
+    background: #CCAAEE url(../fx/weather-hauntedterrain.png) no-repeat center center;
+    background-size: 100% 100%;
     color: #441155;
 }
 
@@ -1100,4 +1101,22 @@ License: GPLv2
     background: #001b29 url(../fx/weather-midnightzoneterrain.png) no-repeat center center;
     background-size: 100% 100%;
     color: #d9f6ff;
+}
+
+/* Preserve crisp pixels on these supplied back sprites at fractional device scale. */
+.battle img.pixelated[src*="/gen5-back"][src*="/lopunny-mega.png"],
+.battle img.pixelated[src*="/gen5ani-back"][src*="/electivire.gif"] {
+ image-rendering: pixelated;
+}
+
+/* Keep narration off the arena while preserving keyboard-scrollable detail. */
+.messagebar-heading { font-size: 10px; line-height: 16px; color: #ddd; }
+.messagebar-toggle { float: right; color: white; background: transparent; border: 1px solid #999; border-radius: 3px; font: inherit; cursor: pointer; }
+.messagebar-content { max-height: 3.6em; overflow-y: auto; overflow-wrap: anywhere; line-height: 1.2; scrollbar-width: thin; }
+.messagebar.expanded .messagebar-content { max-height: 10.8em; }
+.messagebar-content:focus-visible, .messagebar-toggle:focus-visible { outline: 2px solid #8ddcff; outline-offset: -2px; }
+
+/* Keep preview pixel art crisp, including fractional Windows display scaling. */
+.battle img.team-preview-sprite.pixelated {
+	image-rendering: pixelated;
 }

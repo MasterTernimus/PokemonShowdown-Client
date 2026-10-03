@@ -1789,7 +1789,7 @@
 			if (pm) {
 				var pmuserid = toUserid(pm);
 				var oName = pmuserid === app.user.get('userid') ? name : pm;
-				var clickableName = '<span class="username" data-name="' + BattleLog.escapeHTML(name) + '">' + BattleLog.escapeHTML(name.substr(1)) + '</span>';
+				var clickableName = '<span class="username" data-name="' + BattleLog.escapeHTML(name) + '">' + BattleLog.accountName(name.substr(1)) + '</span>';
 				this.$chat.append(
 					'<div class="chat chatmessage-' + toID(name) + '">' + ChatRoom.getTimestamp('lobby', msgTime) +
 					'<strong style="' + BattleLog.hashColor(userid) + '">' + clickableName + ':</strong>' +
@@ -1975,11 +1975,11 @@
 			var color = user.away ? 'color:#888;' : BattleLog.hashColor(userid);
 			text += '<em class="group' + (details.group === 2 ? ' staffgroup' : '') + '">' + BattleLog.escapeHTML(group) + '</em>';
 			if (details.type === 'leadership') {
-				text += '<strong><em style="' + color + '">' + BattleLog.escapeHTML(user.name) + '</em></strong>';
+				text += '<strong><em style="' + color + '">' + BattleLog.accountName(user.name) + '</em></strong>';
 			} else if (details.type === 'staff') {
-				text += '<strong style="' + color + '">' + BattleLog.escapeHTML(user.name) + '</strong>';
+				text += '<strong style="' + color + '">' + BattleLog.accountName(user.name) + '</strong>';
 			} else {
-				text += '<span style="' + color + '">' + BattleLog.escapeHTML(user.name) + '</span>';
+				text += '<span style="' + color + '">' + BattleLog.accountName(user.name) + '</span>';
 			}
 			text += '</button>';
 			text += '</li>';

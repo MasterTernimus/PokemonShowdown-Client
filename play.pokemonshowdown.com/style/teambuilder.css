@@ -271,3 +271,12 @@
 	left: 10px;
 	right: 10px;
 }
+
+
+
+/* LOCAL TEAMBUILDER TOOLS */
+.local-set-tools { clear: both; padding: 8px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.local-set-tools select { max-width: 100%; }
+.local-tools-manager textarea { display: block; width: 100%; box-sizing: border-box; margin: 8px 0; }
+.local-tools-manager label { display: inline-block; margin: 5px; max-width: 100%; }
+.local-tools-manager select { max-width: 100%; }

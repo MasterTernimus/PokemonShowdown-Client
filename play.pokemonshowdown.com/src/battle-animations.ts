@@ -38,7 +38,7 @@ This license DOES NOT extend to any other files in this repository.
 
 // Cropped back sprites must meet the foreground edge in every battle slot.
 function isBottomAlignedBackSprite(url: string) {
- return /\/gen5-back(?:-shiny)?\/(?:alakazam-alt|alakazam-mega-alt|sharpedo-megay|gardevoir-void|tentacruel-alt|wishiwashi-school|wishiwashi-seviischooling|wishiwashi-sevii-schooling)\.png(?:\?|$)/.test(url);
+	return /\/gen5-back(?:-shiny)?\/(?:alakazam-alt|alakazam-mega-alt|sharpedo-megay|tentacruel-alt|wishiwashi-seviischooling|wishiwashi-sevii-schooling)\.png(?:\?|$)/.test(url);
 }
 
 export class BattleScene implements BattleSceneStub {
@@ -85,6 +85,7 @@ export class BattleScene implements BattleSceneStub {
 	preloadCache: {[url: string]: HTMLImageElement} = {};
 
 	messagebarOpen = false;
+	messagebarBanners: string[] = [];
 	customControls = false;
 	interruptionCount = 1;
 	curWeather = '';
@@ -174,6 +175,11 @@ export class BattleScene implements BattleSceneStub {
 		this.$rightbar = $('<div class="rightbar" role="complementary" aria-label="Opponent\'s Team"></div>');
 		this.$turn = $('<div></div>');
 		this.$messagebar = $('<div class="messagebar message"></div>');
+		this.$messagebar.on('click', '.messagebar-toggle', event => {
+			const expanded = !this.$messagebar.hasClass('expanded');
+			this.$messagebar.toggleClass('expanded', expanded);
+			$(event.currentTarget).attr('aria-expanded', String(expanded)).text(expanded ? 'Less' : 'More');
+		});
 		this.$delay = $('<div></div>');
 		this.$hiddenMessage = $('<div class="message" style="position:absolute;display:block;visibility:hidden"></div>');
 		this.$tooltips = $('<div class="tooltips"></div>');
@@ -198,6 +204,7 @@ export class BattleScene implements BattleSceneStub {
 		}
 
 		this.messagebarOpen = false;
+		this.messagebarBanners = [];
 		this.timeOffset = 0;
 		this.pokemonTimeOffset = 0;
 		this.curTerrain = '';
@@ -474,9 +481,15 @@ export class BattleScene implements BattleSceneStub {
 	}
 	message(message: string) {
 		if (!this.messagebarOpen) {
+			this.messagebarBanners = [];
 			this.log.addSpacer();
 			if (this.animating) {
-				this.$messagebar.empty();
+				this.$messagebar.removeClass('expanded').html(
+					'<div class="messagebar-heading">Battle narration <button type="button" class="messagebar-toggle" ' +
+					'aria-expanded="false" aria-label="Expand or collapse battle narration">More</button></div>' +
+					'<div class="messagebar-content" tabindex="0" role="log" aria-live="polite" ' +
+					'aria-label="Current battle narration. Scroll for more; complete history is in the battle log."></div>'
+				);
 				this.$messagebar.css({
 					display: 'block',
 					opacity: 0,
@@ -490,6 +503,13 @@ export class BattleScene implements BattleSceneStub {
 		if (this.battle.hardcoreMode && message.slice(0, 8) === '<small>(') {
 			message = '';
 		}
+		// Collapse only identical holder/ability banners in this visual group; BattleLog retains every line.
+		message = message.split('<br />').filter(line => {
+			if (!/^\[[^\n]*(?:'|’|&#x27;|&#39;|&apos;)s [^\n]+\]$/.test(line.trim())) return true;
+			if (this.messagebarBanners.includes(line)) return false;
+			this.messagebarBanners.push(line);
+			return true;
+		}).join('<br />');
 		if (message && this.animating) {
 			this.$hiddenMessage.append('<p></p>');
 			let $message = this.$hiddenMessage.children().last();
@@ -501,12 +521,16 @@ export class BattleScene implements BattleSceneStub {
 			$message.animate({
 				height: 'hide',
 			}, 1, () => {
-				$message.appendTo(this.$messagebar);
+				$message.appendTo(this.$messagebar.find('.messagebar-content'));
+
 				$message.animate({
 					height: 'show',
 					'padding-bottom': 4,
 					opacity: 1,
-				}, this.battle.messageFadeTime / this.acceleration);
+				}, this.battle.messageFadeTime / this.acceleration, () => {
+					const content = this.$messagebar.find('.messagebar-content')[0];
+					if (content) content.scrollTop = content.scrollHeight;
+				});
 			});
 			this.waitFor($message);
 		}
@@ -523,6 +547,7 @@ export class BattleScene implements BattleSceneStub {
 	closeMessagebar() {
 		if (this.messagebarOpen) {
 			this.messagebarOpen = false;
+			this.messagebarBanners = [];
 			if (this.animating) {
 				this.$messagebar.delay(this.battle.messageShownTime / this.acceleration).animate({
 					opacity: 0,
@@ -705,7 +730,7 @@ export class BattleScene implements BattleSceneStub {
 		pokemonhtml = '<div class="teamicons">' + pokemonhtml + '</div>';
 		const ratinghtml = side.rating ? ` title="Rating: ${BattleLog.escapeHTML(side.rating)}"` : ``;
 		const faded = side.name ? `` : ` style="opacity: 0.4"`;
-		return `<div class="trainer trainer-${posStr}"${faded}><strong${window.app && this.battle.id.startsWith('battle-') ? ` style="color:${BattleLog.usernameColor(toID(side.name))};background:var(--username-bg-${toID(side.name)}, transparent)"` : ''}>${BattleLog.escapeHTML(side.name)}</strong><div class="trainersprite"${ratinghtml} style="background-image:url(${Dex.resolveAvatar(side.avatar)})"></div>${pokemonhtml}</div>`;
+		return `<div class="trainer trainer-${posStr}"${faded}><strong${window.app && this.battle.id.startsWith('battle-') ? ` style="color:${BattleLog.usernameColor(toID(side.name))};background:var(--username-bg-${toID(side.name)}, transparent)"` : ''}>${window.app && this.battle.id.startsWith('battle-') ? BattleLog.accountName(side.name) : BattleLog.escapeHTML(side.name)}</strong><div class="trainersprite"${ratinghtml} style="background-image:url(${Dex.resolveAvatar(side.avatar)})"></div>${pokemonhtml}</div>`;
 	}
 	updateSidebar(side: Side) {
 		if (this.battle.gameType === 'freeforall') {
@@ -846,7 +871,7 @@ export class BattleScene implements BattleSceneStub {
 				textBuf += pokemon.speciesForme;
 				let url = spriteData.url;
 				// if (this.paused) url.replace('/xyani', '/xy').replace('.gif', '.png');
-				buf += '<img src="' + url + '" width="' + spriteData.w + '" height="' + spriteData.h + '" style="position:absolute;top:' + Math.floor(y - spriteData.h / 2) + 'px;left:' + Math.floor(x - spriteData.w / 2) + 'px" />';
+				buf += '<img src="' + url + '" class="team-preview-sprite' + (spriteData.pixelated ? ' pixelated' : '') + '" width="' + spriteData.w + '" height="' + spriteData.h + '" style="position:absolute;top:' + Math.floor(y - spriteData.h / 2) + 'px;left:' + Math.floor(x - spriteData.w / 2) + 'px" />';
 				buf2 += '<div style="position:absolute;top:' + (y + 45) + 'px;left:' + (x - 40) + 'px;width:80px;font-size:10px;text-align:center;color:#FFF;">';
 				const gender = pokemon.gender;
 				if (gender === 'M' || gender === 'F') {
@@ -1843,7 +1868,6 @@ export class PokemonSprite extends Sprite {
 		trapped: null, // linked volatiles are not implemented yet
 		throatchop: ['Throat Chop', 'bad'],
 		meridianseal: ['Meridian Seal', 'bad'],
-		lunardread: ['Lunar Dread', 'bad'],
 		confusion: ['Confused', 'bad'],
 		healblock: ['Heal Block', 'bad'],
 		yawn: ['Drowsy', 'bad'],
@@ -2881,6 +2905,13 @@ export class PokemonSprite extends Sprite {
 			}
 		}
 
+		if (pokemon.adaptation) {
+			const count = Object.values(pokemon.adaptation.types || {}).filter(x => x.stage >= 3).length +
+				Object.values(pokemon.adaptation.opponents || {}).filter(x => x.complete).length;
+			status += '<span class="' + (pokemon.adaptation.active ? 'good' : 'neutral') +
+				' has-tooltip" tabindex="0" data-tooltip="pokemon|' + pokemon.side.n + '|' + pokemon.side.pokemon.indexOf(pokemon) +
+				'"><span aria-hidden="true">&#8635;</span> Adapted:&nbsp;' + count + (pokemon.adaptation.active ? '' : '&nbsp;(paused)') + '</span> ';
+		}
 		for (let i in pokemon.volatiles) {
 			status += PokemonSprite.getEffectTag(i);
 		}

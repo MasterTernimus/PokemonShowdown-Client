@@ -16,7 +16,7 @@
 
 			this.isSideRoom = Dex.prefs('rightpanelbattles');
 
-			this.$el.addClass('ps-room-opaque').html('<div class="battle">Battle is here</div><div class="foehint"></div><div class="battle-log" aria-label="Battle Log" role="complementary"></div><div class="battle-log-add">Connecting...</div><ul class="battle-userlist userlist userlist-minimized"></ul><div class="battle-controls" role="complementary" aria-label="Battle Controls"></div><button class="battle-chat-toggle button" name="showChat"><i class="fa fa-caret-left"></i> Chat</button>');
+			this.$el.addClass('ps-room-opaque').html('<div class="battle">Battle is here</div><div class="foehint"></div><div class="battle-log" aria-label="Battle Log" role="complementary"></div><div class="battle-log-add">Connecting...</div><ul class="battle-userlist userlist userlist-minimized"></ul><div class="battle-controls" role="complementary" aria-label="Battle Controls"></div><button class="battle-chat-toggle button" name="showChat" aria-expanded="false" aria-label="Open battle chat"><i class="fa fa-caret-left"></i> Chat</button>');
 
 			this.$battle = this.$el.find('.battle');
 			this.$controls = this.$el.find('.battle-controls');
@@ -64,11 +64,11 @@
 			app.send('/join ' + this.id);
 		},
 		showChat: function () {
-			this.$('.battle-chat-toggle').attr('name', 'hideChat').html('Battle <i class="fa fa-caret-right"></i>');
+			this.$('.battle-chat-toggle').attr({name: 'hideChat', 'aria-expanded': 'true', 'aria-label': 'Close battle chat'}).html('Close chat <i class="fa fa-caret-right" aria-hidden="true"></i>');
 			this.$el.addClass('showing-chat');
 		},
 		hideChat: function () {
-			this.$('.battle-chat-toggle').attr('name', 'showChat').html('<i class="fa fa-caret-left"></i> Chat');
+			this.$('.battle-chat-toggle').attr({name: 'showChat', 'aria-expanded': 'false', 'aria-label': 'Open battle chat'}).html('<i class="fa fa-caret-left" aria-hidden="true"></i> Chat');
 			this.$el.removeClass('showing-chat');
 		},
 		leave: function () {

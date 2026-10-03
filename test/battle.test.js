@@ -801,9 +801,12 @@ describe('Team Builder sprites', () => {
 
 	it('shows the added composite ability effects', () => {
 		assert.match(Dex.abilities.get('Pollen Bloom').desc, /Unaware/);
-		assert.match(Dex.abilities.get('Territorial').desc, /next Ground attack.*heal 1\/8/);
-		assert.match(Dex.abilities.get('Lunar Dread').desc, /mark foes for 2 turns/);
-		assert.match(Dex.abilities.get('Atrocity').desc, /Unbound Blaze.*Levitate.*Proficient/);
+		assert.match(Dex.abilities.get('Territorial').desc, /Full Unnerve, Stamina and Guard Dog.*physical or special.*heals 1.16.*immediately raises Defense by 1/);
+		assert.match(Dex.abilities.get('Lunar Dread').desc, /Dishearten \+ Insomnia \+ Pressure/);
+		assert(Dex.abilities.get('Dishearten').exists);
+		assert.equal(Dex.abilities.get('Dishearten').num, 11234);
+		for (const part of ['dishearten', 'insomnia', 'pressure']) assert(Dex.getAbilityEffects('lunardread').has(part));
+		assert.match(Dex.abilities.get('Atrocity').desc, /Unbound Blaze.*Tough Claws.*Proficient/);
 		assert(!Dex.getAbilityEffects('atrocity').has('moldbreaker'));
 		assert.match(Dex.abilities.get('Ancient Bloom').desc, /Pollen Bloom/);
 		assert.match(Dex.abilities.get('Fortress Shell').desc, /Water Barrage/);
@@ -819,7 +822,9 @@ describe('Team Builder sprites', () => {
 		assert(!Dex.getAbilityEffects('omenedge').has('toughclaws'));
 		assert(Dex.getAbilityEffects('fortressshell').has('waterbarrage'));
 		assert(!Dex.getAbilityEffects('lunardread').has('unaware'));
-		assert(!Dex.getAbilityEffects('territorial').has('unnerve'));
+		assert(Dex.getAbilityEffects('territorial').has('unnerve'));
+		assert(Dex.getAbilityEffects('territorial').has('guarddog'));
+		assert(Dex.getAbilityEffects('territorial').has('stamina'));
 		assert(!Dex.getAbilityEffects('territorial').has('unaware'));
 		assert(!Dex.getAbilityEffects('territorial').has('toughclaws'));
 		assert(!Dex.getAbilityEffects('territorial').has('intimidate'));

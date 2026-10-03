@@ -10,12 +10,20 @@ const ts = require('typescript');
 const root = path.resolve(__dirname, '..');
 if (!process.env.PS_SERVER_SOURCE) throw new Error('Set PS_SERVER_SOURCE to the approved, freshly built server checkout.');
 const server = fs.realpathSync(process.env.PS_SERVER_SOURCE);
-const base = process.env.PS_SERVER_BASE || 'HEAD';
+const manifestPath = path.join(root, 'server-data-sync-manifest.json');
+const previous = fs.existsSync(manifestPath) ? JSON.parse(fs.readFileSync(manifestPath, 'utf8')) : {};
+const base = process.env.PS_SERVER_BASE || previous.base || 'HEAD';
 const git = args => cp.execFileSync('git', args, {cwd: server, encoding: 'utf8', maxBuffer: 32 * 1024 * 1024});
 const {Dex} = require(path.join(server, 'dist/sim/dex'));
 Dex.includeData();
 const groups = {species: new Set(), abilities: new Set(), moves: new Set(), items: new Set()};
 const tables = {species: Dex.data.Pokedex, abilities: Dex.data.Abilities, moves: Dex.data.Moves, items: Dex.data.Items};
+// Refresh prior overrides too: a newer Git base must not erase already-synced work.
+for (const key of Object.keys(groups)) {
+	for (const id of Object.keys(previous.snapshot?.[key] || {})) {
+		if (Object.prototype.hasOwnProperty.call(tables[key], id)) groups[key].add(id);
+	}
+}
 const changed = [...new Set((git(['diff', '--name-only', base, '--', 'data']) + '\n' +
 	git(['ls-files', '--others', '--exclude-standard', '--', 'data'])).trim().split('\n').filter(Boolean))];
 for (const file of changed) {
@@ -42,7 +50,7 @@ if (!Object.values(groups).some(ids => ids.size)) throw new Error('No changed en
 // Include their effective Dex values so older client overrides cannot mask them.
 const {getAbilityDisplayComponents} = require(path.join(server, 'dist/data/ability-display'));
 for (const id of Object.keys(tables.abilities)) {
-	if (getAbilityDisplayComponents(id).length) groups.abilities.add(id);
+	if (Dex.abilities.get(id).num >= 10000 || getAbilityDisplayComponents(id).length) groups.abilities.add(id);
 }
 const select = (entry, keys) => Object.fromEntries(keys.map(key => [key, entry[key]]).filter(([, value]) => value !== undefined));
 const snapshot = {species: {}, abilities: {}, moves: {}, items: {}, components: {}};

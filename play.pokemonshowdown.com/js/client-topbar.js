@@ -452,6 +452,7 @@
 		},
 		events: {
 			'input input[name=usernamecolor]': 'previewUsernameColor',
+			'input input[name=displaynickname]': 'previewUsernameColor',
 			'change input[name=noanim]': 'setNoanim',
 			'change input[name=nogif]': 'setNogif',
 			'change input[name=bwgfx]': 'setBwgfx',
@@ -483,6 +484,7 @@
 			buf += '<p><button class="button" name="avatars">Avatar...</button></p>';
 			var account = app.usernameColorAccount;
 			var signedIn = account && account.userid === app.user.get('userid') && account.registered;
+			buf += '<fieldset class="display-nickname-settings"><legend>Display nickname</legend><label>Nickname <input class="textbox" name="displaynickname" maxlength="48" value="' + BattleLog.escapeHTML(account && account.nickname || '') + '" /></label> <button class="button" name="saveDisplayNickname"' + (signedIn ? '' : ' disabled') + '>Save nickname</button> <button class="button" name="resetDisplayNickname"' + (signedIn ? '' : ' disabled') + '>Reset nickname</button><p><small>Up to 24 characters. Your account stays @' + BattleLog.escapeHTML(name) + '; login, rank and messages use that username.</small></p></fieldset>';
 			buf += '<fieldset class="username-color-settings"><legend>Username color</legend><label>Color <input type="color" name="usernamecolor" value="' + (account && account.color || '#148a99') + '" /></label> <button class="button" name="saveUsernameColor"' + (signedIn ? '' : ' disabled') + '>Save</button> <button class="button" name="resetUsernameColor"' + (signedIn ? '' : ' disabled') + '>Reset</button><p><span class="username-color-light" style="background:#eef2ef;padding:6px">' + BattleLog.escapeHTML(name) + '</span> <span class="username-color-dark" style="background:#303e40;padding:6px">' + BattleLog.escapeHTML(name) + '</span></p><small>Shared on this server. Brightness adjusts for readability.</small><p class="username-color-status" role="status">' + (signedIn ? 'Saved to your signed-in account.' : 'Sign in to save a color. Server support is required.') + '</p></fieldset>';
 
 			if (app.user.get('named')) {
@@ -597,9 +599,20 @@
 		},
 		previewUsernameColor: function () {
 			var color = this.$('input[name=usernamecolor]').val();
+			var nickname = String(this.$('input[name=displaynickname]').val() || '').trim();
+			var name = app.user.get('name');
+			this.$('.username-color-light, .username-color-dark').text(nickname ? nickname + ' (@' + name + ')' : name);
 			if (!/^#[0-9a-f]{6}$/i.test(color || '')) return;
 			this.$('.username-color-light').css('color', BattleLog.readableUsernameColor(color, false));
 			this.$('.username-color-dark').css('color', BattleLog.readableUsernameColor(color, true));
+		},
+		saveDisplayNickname: function () {
+			app.send('/displaynickname ' + JSON.stringify(String(this.$('input[name=displaynickname]').val() || '')));
+			this.$('.username-color-status').text('Saving nickname...');
+		},
+		resetDisplayNickname: function () {
+			app.send('/displaynickname reset');
+			this.$('.username-color-status').text('Resetting nickname...');
 		},
 		saveUsernameColor: function () {
 			app.send('/usernamecolor ' + this.$('input[name=usernamecolor]').val());
@@ -611,8 +624,9 @@
 		},
 		usernameColorResponse: function (data) {
 			var account = app.usernameColorAccount;
-			this.$('[name=saveUsernameColor], [name=resetUsernameColor]').prop('disabled', !account || !account.registered);
+			this.$('[name=saveUsernameColor], [name=resetUsernameColor], [name=saveDisplayNickname], [name=resetDisplayNickname]').prop('disabled', !account || !account.registered);
 			if (!data.error && account && Object.prototype.hasOwnProperty.call(data.colors, account.userid)) {
+				this.$('input[name=displaynickname]').val(account.nickname || '');
 				this.$('input[name=usernamecolor]').val(account.color || BattleLog.defaultUsernameColor(account.userid));
 				this.previewUsernameColor();
 			}

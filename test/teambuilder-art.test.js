@@ -52,15 +52,15 @@ describe('Native Team Builder artwork coverage', () => {
 			assert(sprite.url.includes('gen5') && sprite.url.includes('-shiny') && sprite.url.includes('.png'), sprite.url);
 		}
 	});
-	it('preserves the Gardevoir-Void sprite only on the regular Mega branch', () => {
+	it('preserves legacy Mega artwork independently of the new Void shiny', () => {
 		for (const shiny of [false, true]) {
 			for (const side of [true, false]) {
 				const original = Dex.getSpriteData('Gardevoir-Void', side, {gen: 9, shiny});
 				const mega = Dex.getSpriteData('Gardevoir-Mega-Alt', side, {gen: 9, shiny});
-				assert.equal(mega.url, original.url);
+				assert.notEqual(mega.url, original.url);
 				for (const species of ['Gardevoir-Mega-Z', 'Gardevoir-Void-Mega']) assert.notEqual(Dex.getSpriteData(species, side, {gen: 9, shiny}).url, original.url);
 			}
-			assert.equal(Dex.getTeambuilderSpriteData({species: 'Gardevoir-Mega-Alt', shiny}, 9).spriteid, 'gardevoir-void');
+			assert.equal(Dex.getTeambuilderSpriteData({species: 'Gardevoir-Mega-Alt', shiny}, 9).spriteid, 'gardevoir-mega-alt');
 		}
 		assert.deepEqual(Dex.species.get('Gardevoir-Mega-Alt').baseStats, Dex.species.get('Gardevoir-Mega').baseStats);
 	});
@@ -108,11 +108,15 @@ describe('Supplied Silvally artwork', () => { for (const row of rows.filter(row 
 
 const sprites = path.resolve(__dirname, '../play.pokemonshowdown.com/sprites');
 const approved = {
+ "gen5/gardevoir-mega-alt.png": "4fa6dca4b6e676e5e425868e2baf787471a6a6fe27c2edaf6e3cbe0260fd84ab",
+ "gen5-back/gardevoir-mega-alt.png": "c4b572fb245d497b182ce0c3163406a68308bed7e4cc1416ccc62761feb42f43",
+ "gen5-shiny/gardevoir-mega-alt.png": "09493aa59f37f817e45575579b25d8779d09a04c2f212d8b9a29581b8aff0fdf",
+ "gen5-back-shiny/gardevoir-mega-alt.png": "3f0716e51e760c492c1b09e2db2277084b3f432283423b1fdff4222a22bd8526",
  'gen5/mrmime-pulse.png': '4e2e7b8b5e6cd6249e62a3e7978bc519e0202452bdf25665134163118bca596c',
  'gen5-back/mrmime-pulse.png': '52776ee03c66fd50c634954156db5dc35a5c2c68b117004d9931b74dc286b08c',
- 'gen5-shiny/gardevoir-void.png': '09493aa59f37f817e45575579b25d8779d09a04c2f212d8b9a29581b8aff0fdf',
+ 'gen5-shiny/gardevoir-void.png': '9a0955ba7fe2a14c2b8d8fb4ce7a2dc2ad7a49d74dc740029a2b4a69ae8ed0d0',
  'gen5-back/gardevoir-void.png': 'c4b572fb245d497b182ce0c3163406a68308bed7e4cc1416ccc62761feb42f43',
- 'gen5-back-shiny/gardevoir-void.png': '3f0716e51e760c492c1b09e2db2277084b3f432283423b1fdff4222a22bd8526',
+ 'gen5-back-shiny/gardevoir-void.png': '1123d62b775e0be1e2b61bd5a19594d3e2cc6376edc97c31f31bff70d3039889',
  'gen5-back/arcanine-alt.png': '397965ca2d6eb89b52d4ca24489559dffaf8180685804407c64fc676b56ec89d',
  'gen5-back-shiny/arcanine-alt.png': 'f0cd112ddddd67c15abbe94788bae1aa7cbdb507d50f67d1f11f6607c0b02745',
  'gen5-back/torterra-rift.png': '1d2970a170a2d5227d99cbbc0163b4963d3edf7e20daa24401cfaaa7e1f61a63',
@@ -153,8 +157,9 @@ describe('Approved October sprite installation', () => {
    }
   }
   for (const shiny of [false, true]) for (const front of [false, true]) {
-   assert.equal(Dex.getSpriteData('Gardevoir-Mega-Alt', front, {gen: 9, shiny}).url,
+   assert.notEqual(Dex.getSpriteData('Gardevoir-Mega-Alt', front, {gen: 9, shiny}).url,
     Dex.getSpriteData('Gardevoir-Void', front, {gen: 9, shiny}).url);
+   assert.equal(selected('Gardevoir-Mega-Alt', front, shiny), `gen5${front ? '' : '-back'}${shiny ? '-shiny' : ''}/gardevoir-mega-alt.png`);
   }
  });
  it('uses approved Pulse artwork and only the supplied shiny variants', () => {

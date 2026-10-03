@@ -162,9 +162,13 @@ function isCAPSpecies(id: string) {
 	return Dex.species.get(id).isNonstandard === 'CAP';
 }
 
+function isTotemSpecies(species?: { isTotem?: boolean, forme?: string }) {
+	return !!species && (species.isTotem || (species.forme || '').toLowerCase().split('-').includes('totem'));
+}
+
 function isHiddenTeamBuilderSpecies(id: string, includeSawsbuckBase = false) {
 	const speciesId = toID(id);
-	if (isCAPSpecies(speciesId) || isHiddenFakeSpecies(speciesId)) return true;
+	if (isCAPSpecies(speciesId) || isHiddenFakeSpecies(speciesId) || isTotemSpecies(window.BattlePokedex?.[speciesId])) return true;
 	if (isBattleOnlyVisualSpecies(speciesId)) return true;
 	if (HIDDEN_TEAMBUILDER_SPECIES.has(speciesId)) return true;
 	if (isVariantSelectorOnlySpecies(Dex.species.get(speciesId))) return true;
@@ -178,7 +182,7 @@ function isHiddenTeamBuilderSpecies(id: string, includeSawsbuckBase = false) {
 function isExcludedFromCustomSearch(id: string) {
 	const speciesId = toID(id);
 	// Balance-patched official records are not additional custom forms.
-	return ['unfezant', 'xerneasneutral'].includes(speciesId) ||
+	return isTotemSpecies(window.BattlePokedex?.[speciesId]) || ['unfezant', 'xerneasneutral'].includes(speciesId) ||
 		isHiddenFakeSpecies(speciesId) || speciesId.startsWith('deerling') ||
 		speciesId.startsWith('sawsbuck') || ZA_MEGA_SPECIES.has(speciesId as ID);
 }
@@ -231,6 +235,7 @@ const CUSTOM_CAN_LEARN_OVERRIDES: {[speciesid: string]: {[moveid: string]: true}
 class DexSearch {
 	prependResults: SearchRow[] | null = null;
 	query = '';
+	itemToolFilter = 'all';
 
 	/**
 	 * Dex for the mod/generation to search.
@@ -297,7 +302,93 @@ class DexSearch {
 		return null;
 	}
 
+	pickerOptions: { hideMegas?: boolean, hideGimmicks?: boolean, customOnly?: boolean, group?: string } = {};
+
+	static pokemonPickerTraits(species: Species) {
+		const raw = window.BattlePokedex?.[species.id] || {};
+		const forms = (species.forme || '').toLowerCase().split('-');
+		const pulse = forms.includes('pulse');
+		const rift = forms.includes('rift');
+		const mega = !pulse && !rift && (species.isMega || !!raw.isMega || forms.some(f => /^mega[xyz]?$/.test(f)));
+		const core = species.requiredItems?.some(item => toID(item) === 'anomalycore');
+		return {
+			mega, pulse, rift, totem: isTotemSpecies(species),
+			gimmick: mega || species.isPrimal || forms.includes('primal') || forms.includes('gmax') ||
+				!!species.battleOnly || !!raw.battleOnly || !!core,
+			regional: forms.some(f => ['alola', 'galar', 'hisui', 'paldea', 'aevian'].includes(f)),
+			custom: !isExcludedFromCustomSearch(species.id) && isCustomSearchVisualForm(species),
+		};
+	}
+
+	pickerMatches(id: string) {
+		const species = this.dex.species.get(id);
+		const traits = DexSearch.pokemonPickerTraits(species);
+		const options = this.pickerOptions;
+		return species.exists && !traits.totem && !(options.hideMegas && traits.mega) && !(options.hideGimmicks && traits.gimmick) &&
+			!(options.customOnly && !traits.custom) &&
+			(!options.group || options.group === 'all' || !!traits[options.group as 'pulse' | 'rift' | 'regional']);
+	}
+
+	filterPokemonPicker(rows: SearchRow[]): SearchRow[] {
+		rows = rows.filter(row => row[0] !== 'pokemon' || !isTotemSpecies(window.BattlePokedex?.[row[1]]));
+		if (this.typedSearch?.searchType !== 'pokemon') return rows;
+		const options = this.pickerOptions;
+		if (!options.hideMegas && !options.hideGimmicks && !options.customOnly && (!options.group || options.group === 'all')) return rows;
+		const catalog = options.customOnly || (options.group && options.group !== 'all');
+		if (catalog && !['type', 'ability'].includes(this.sortCol || '')) {
+			// Explicit catalog browsing may reveal custom entries, just like -custom. Legality labels are unchanged.
+			const query = this.query === '-custom' ? '' : this.query;
+			const present = new Set(rows.filter(row => row[0] === 'pokemon').map(row => row[1]));
+			const extra: SearchRow[] = [];
+			for (const id of Object.keys(window.BattlePokedex || {})) {
+				if (present.has(id) || isHiddenFakeSpecies(id)) continue;
+				const species = this.dex.species.get(id);
+				if (!this.pickerMatches(id) || (query && !toID(species.name).includes(query))) continue;
+				if (this.query === '-custom' && !DexSearch.pokemonPickerTraits(species).custom) continue;
+				const row: SearchRow = ['pokemon', id as ID];
+				if (this.typedSearch.filter(row, this.filters || [])) extra.push(row);
+			}
+			rows = rows.concat(extra);
+		}
+		rows = dedupeSearchResults(rows.filter(row => row[0] !== 'pokemon' || this.pickerMatches(row[1])));
+		if (this.sortCol && !['type', 'ability'].includes(this.sortCol)) {
+			const pokemon = this.typedSearch.sort(rows.filter(row => row[0] === 'pokemon'), this.sortCol, this.reverseSort);
+			rows = rows.filter(row => row[0] !== 'pokemon' && row[0] !== 'header').concat(pokemon);
+		}
+		return rows.filter((row, index) => {
+			if (row[0] !== 'header') return true;
+			for (let i = index + 1; i < rows.length && rows[i][0] !== 'header'; i++) {
+				if (!['html', 'sortpokemon'].includes(rows[i][0])) return true;
+			}
+			return false;
+		});
+	}
+
 	find(query: string) {
+		const itemTools = (window as any).TeambuilderTools;
+		if (this.typedSearch?.searchType === 'item' && itemTools) {
+			const prefs = itemTools.itemData();
+			const selected: string[] | null = this.itemToolFilter === 'favorites' ? prefs.favorites :
+				this.itemToolFilter === 'recent' ? prefs.recent : null;
+			this.query = query;
+			this.results = this.typedSearch.getResults(this.filters, this.sortCol, this.reverseSort).filter(row =>
+				row[0] !== 'item' ? row[0] === 'header' :
+				(!selected || selected.includes(row[1])) && itemTools.itemMatches(row[1], query, this.dex));
+			if (this.itemToolFilter === 'recent' && selected) {
+				// Keep legality/category sections, ordering each section by last selection.
+				for (let start = 0; start < this.results.length;) {
+					if (this.results[start][0] !== 'item') { start++; continue; }
+					let end = start + 1;
+					while (end < this.results.length && this.results[end][0] === 'item') end++;
+					const recentRows = this.results.slice(start, end).sort((a, b) =>
+						selected.indexOf(a[1]) - selected.indexOf(b[1]));
+					this.results.splice(start, end - start, ...recentRows);
+					start = end;
+				}
+			}
+			this.exactMatch = !!this.dex.items.get(query).exists;
+			return true;
+		}
 		query = query.trim().toLowerCase() === '-custom' ? '-custom' : toID(query);
 		if (this.query === query && this.results) {
 			return false;
@@ -308,6 +399,7 @@ class DexSearch {
 		} else {
 			this.results = this.textSearch(query);
 		}
+		this.results = this.filterPokemonPicker(this.results);
 		return true;
 	}
 
