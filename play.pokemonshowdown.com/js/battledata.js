@@ -26929,7 +26929,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "name":"Dual Wield",
 "num":10284,
 "gen":9,
-"desc":"",
+"desc":"Eligible slicing, pulse, bullet, horn, drill, and Arrow moves hit twice at 60% power, with an independent accuracy check for each hit. When combined with Sharpness, Mega Launcher, or Power Drill, the first hit receives that boost and the second hit deals 15% of the move's unboosted power. In Free-for-All, both hits use full power: the first hits the selected foe and the second targets another random living foe when possible. Existing multi-hit moves are not given an additional Dual Wield pair.",
 "shortDesc":"Two 60% independent rolls; boosting pairs: full +15%; FFA: two full-power targets.",
 "rating":4,
 "flags":{},
