@@ -868,7 +868,7 @@ class BattleTooltips {
 		});
 		for (const record of Object.values(memory.opponents || {})) {
 			text += '<b>' + esc(record.label) + ':</b> ' + progress(record.points, 4) +
-				(record.complete ? ' &mdash; Ability adapted' : '') + '<br />';
+				(record.complete ? ' &mdash; Ability adapted; incoming attacks resisted, outgoing attacks super effective and bypass type immunities (defender adaptation wins)' : '') + '<br />';
 			text += 'Observed: ' + (record.moves.map(id => esc(Dex.moves.get(id).name)).join(', ') || 'none') + '<br />';
 			text += 'Setup: ' + progress(record.setup.stage, 2) + '; bypass counters: ' + esc(record.bypass.length) +
 				'; reduction counters: ' + esc(record.defenses.length) + '<br />';
@@ -1328,7 +1328,8 @@ class BattleTooltips {
 					// Pokemon with Hisui evolutions
 					evoSpecies.isNonstandard === "Unobtainable";
 		});
-		if (item === 'eviolite' && (isNFE || this.battle.dex.species.get(serverPokemon.speciesForme).id === 'dipplin')) {
+		if ((item === 'eviolite' && (isNFE || this.battle.dex.species.get(serverPokemon.speciesForme).id === 'dipplin')) ||
+			(item === 'eeviumz' && ['eevee', 'eeveestarter', 'eeveestarteralt', 'eeveegmax'].includes(toID(serverPokemon.speciesForme)))) {
 			stats.def = Math.floor(stats.def * 1.5);
 			stats.spd = Math.floor(stats.spd * 1.5);
 		}
@@ -2758,7 +2759,7 @@ class BattleStatGuesser {
 			physicalBulk *= 1.4;
 			specialBulk *= 1.4;
 		}
-		if (itemid === 'eviolite') {
+		if (itemid === 'eviolite' || (itemid === 'eeviumz' && ['eevee', 'eeveestarter', 'eeveestarteralt', 'eeveegmax'].includes(species.id))) {
 			physicalBulk *= 1.5;
 			specialBulk *= 1.5;
 		}

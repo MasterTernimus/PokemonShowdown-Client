@@ -2225,6 +2225,10 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 		if (species.id === 'umbreon' && !isUmbreonAscendance) {
 			moves = moves.filter(id => id !== 'radiantassault');
 		}
+		if (isEeveeStarter && !isHackmons) {
+			const removed = Dex.getCustomMoveRemovals(species.id);
+			moves = moves.filter(id => !removed.includes(id));
+		}
 		if (isEeveeStarter) {
 			const priority = new Map(eeveeStarterMoveOrder.map((id, index) => [id, index]));
 			moves.sort((a, b) => {
