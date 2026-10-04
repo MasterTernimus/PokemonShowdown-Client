@@ -125,12 +125,13 @@
 		var windowHeight = $(window).height();
 		var i = this.renderedIndex;
 		var finalIndex = Math.floor(bottom / 33) + 1;
-		if (!forceAdd && finalIndex <= i) return;
+		if (!this.renderAll && !forceAdd && finalIndex <= i) return;
 		if (finalIndex < i + 20) finalIndex = i + 20;
 		if (bottom - top > windowHeight && !i) finalIndex = 20;
 		if (forceAdd && finalIndex > i + 40) finalIndex = i + 40;
 
 		var resultSet = this.resultSet;
+		if (this.renderAll) finalIndex = resultSet.length + 1;
 		var buf = '';
 		while (i < finalIndex) {
 			if (!resultSet[i]) {
@@ -158,7 +159,7 @@
 			i++;
 		}
 		if (!this.renderedIndex) {
-			this.el.innerHTML = '<ul class="utilichart" style="height:' + (resultSet.length * 33) + 'px">' + buf + (!this.renderingDone ? '<li class="result more"><p><button class="button big">More</button></p></li>' : '') + '</ul>';
+			this.el.innerHTML = '<ul class="utilichart"' + (this.renderAll ? '' : ' style="height:' + (resultSet.length * 33) + 'px"') + '>' + buf + (!this.renderingDone ? '<li class="result more"><p><button class="button big">More</button></p></li>' : '') + '</ul>';
 			this.moreVisible = true;
 		} else {
 			if (this.moreVisible) {

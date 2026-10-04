@@ -323,7 +323,7 @@ const expected = {
   },
   "pulsewaste": {
     "shortDesc": "Protean + Poison Touch + Regenerator; 5-turn Murkwater Surface on entry.",
-    "desc": "On entry, summons Murkwater Surface for 5 turns, subject to field-generation blockers. This Pokemon has Protean, Poison Touch, and Regenerator's effects."
+    "desc": "On entry, summons Murkwater Surface for 5 turns, subject to field-generation blockers. This Pokemon has Protean, Poison Touch, and Regenerator's effects. Field creation or refresh is attempted only once per battle per holder, even if blocked; switching, suppression, revival, or ability changes never reset this use."
   },
   "royalsun": {
     "shortDesc": "Drought + Supreme Overlord + Unnerve + Flame Body.",

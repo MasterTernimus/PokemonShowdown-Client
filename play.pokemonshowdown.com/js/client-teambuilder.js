@@ -2189,6 +2189,8 @@
 			if ($(window).width() < 640) this.show();
 			this.$chart = this.$('.roster-search-results');
 			this.search = new BattleSearch(this.$chart, this.$('.teambuilder-results'));
+			// These lists scroll with the room rather than an internal results viewport.
+			this.search.renderAll = true;
 			this.search.engine.pickerOptions = this.pokemonPickerOptions();
 			var room = this;
 			this.search.rosterFilter = function (rows) {

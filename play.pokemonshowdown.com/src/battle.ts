@@ -1815,6 +1815,14 @@ export class Battle {
 				case 'wish':
 					this.scene.runResidualAnim('wish' as ID, poke);
 					break;
+				case 'mountainrift':
+					// Lethal damage reports `0 fnt` before Mountain Rift cancels the faint.
+					// Restoring the numeric HP alone does not clear the client's fainted flag.
+					if (poke.hp > 0 && this.dex.species.get(poke.speciesForme).id === 'torterrariftshatter') {
+						poke.fainted = false;
+						this.scene.updateSidebar(poke.side);
+					}
+					break;
 				case 'revivalblessing':
 					this.scene.runResidualAnim('wish' as ID, poke);
 					const {siden} = this.parsePokemonId(args[1]);
