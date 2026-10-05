@@ -47145,8 +47145,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Exalt",
 		"num": 10350,
 		"gen": 9,
-		"desc": "It has Defiant: opposing stat drops raise its Attack by 2 stages. It cannot flinch. Its slicing moves and Steel Wing have 1.5x power, except on Cold Eclipse, as with Sharpness. Intimidate still lowers its Attack and triggers Defiant. Flinch protection can be bypassed by Mold Breaker; ability suppression disables all effects.",
-		"shortDesc": "Foe stat drops give +2 Attack; cannot flinch; slicing moves and Steel Wing have 1.5x power except on Cold Eclipse.",
+		"desc": "Mold Breaker: moves ignore bypassable opposing abilities. It has Defiant: opposing stat drops raise its Attack by 2 stages. It cannot flinch. Its slicing moves and Steel Wing have 1.5x power, except on Cold Eclipse, as with Sharpness. Intimidate still lowers its Attack and triggers Defiant. Flinch protection can be bypassed by Mold Breaker; ability suppression disables all effects.",
+		"shortDesc": "Mold Breaker; Foe stat drops give +2 Attack; cannot flinch; slicing moves and Steel Wing have 1.5x power except on Cold Eclipse.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null
@@ -54633,8 +54633,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "War Path",
 		"num": 10125,
 		"gen": 9,
-		"desc": "It is immune to powder moves, hail damage, sandstorm damage, and flinching. Its moves have 1.3x accuracy and damaging moves have 1.3x power. Its Attack is 1.5x while statused; burn still reduces its physical damage normally. It takes 25% less damage from attacks. Its Rock-, Fighting-, and Ground-type moves and drill or horn moves bypass screens and Substitute and ignore defensive stat stages. When attacking, it ignores the target's Defense, Sp. Def, and evasion stages; when defending, it ignores the attacker's Attack, Sp. Atk, and accuracy stages.",
-		"shortDesc": "Powder/weather/flinch immunity; accuracy/power 1.3x; status Atk 1.5x; attacks deal 25% less; stage/bypass effects.",
+		"desc": "Mold Breaker: moves ignore bypassable opposing abilities. It is immune to powder moves, hail damage, sandstorm damage, and flinching. Its moves have 1.3x accuracy and damaging moves have 1.3x power. Its Attack is 1.5x while statused; burn still reduces its physical damage normally. It takes 25% less damage from attacks. Its Rock-, Fighting-, and Ground-type moves and drill or horn moves bypass screens and Substitute and ignore defensive stat stages. When attacking, it ignores the target's Defense, Sp. Def, and evasion stages; when defending, it ignores the attacker's Attack, Sp. Atk, and accuracy stages.",
+		"shortDesc": "Mold Breaker; Powder/weather/flinch immunity; accuracy/power 1.3x; status Atk 1.5x; attacks deal 25% less; stage/bypass effects.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null
@@ -74302,7 +74302,8 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"evilsanta": [],
 	"exalt": [
 		"defiant",
-		"sharpness"
+		"sharpness",
+		"moldbreaker"
 	],
 	"execution": [
 		"duskilate",
@@ -75967,7 +75968,9 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"voltagevolley": [],
 	"wailingsnow": [],
 	"wanderingspirit": [],
-	"warpath": [],
+	"warpath": [
+		"moldbreaker"
+	],
 	"warship": [
 		"swiftswim",
 		"solidrock",
