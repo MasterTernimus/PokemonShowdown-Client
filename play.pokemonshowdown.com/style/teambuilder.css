@@ -315,3 +315,18 @@
 .saved-build-entry { padding: 8px 0; border-bottom: 1px solid #617383; }
 .ability-picker-details { margin: 4px 12px 8px 140px; white-space: normal; }
 .ability-picker-details summary { cursor: pointer; }
+
+/* Profile actions stay below navigation and wrap within the team content. */
+.teamchartbox > .team-profile-toolbar { position: static; box-sizing: border-box; margin: 8px 4px 16px; padding: 10px; border: 1px solid #617383; border-radius: 6px; max-width: 100%; }
+.team-profile-toolbar .team-profile-help { flex-basis: 100%; font-size: 12px; color: #d2dee6; }
+.team-profile-toolbar label { min-width: 0; }
+.team-profile-toolbar select { max-width: 100%; }
+.local-tools-manager .tools-intro { max-width: 65ch; line-height: 1.5; }
+@media (max-width: 640px) {
+ .teamchartbox > .team-profile-toolbar { margin: 8px; }
+ .team-profile-toolbar > label { flex-basis: 100%; }
+ .team-profile-toolbar .button { white-space: normal; }
+}
+
+.picker-return-bar { position: sticky; top: 0; z-index: 5; display: flex; justify-content: flex-end; padding: 5px 8px; background: #253643; border-bottom: 1px solid #617383; }
+.picker-return-bar .button { margin: 0; }
