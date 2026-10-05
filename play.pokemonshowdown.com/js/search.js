@@ -131,7 +131,8 @@
 		if (forceAdd && finalIndex > i + 40) finalIndex = i + 40;
 
 		var resultSet = this.resultSet;
-		if (this.renderAll) finalIndex = resultSet.length + 1;
+		// Yield between batches so changing fields/profiles does not build thousands of rows in one task.
+		if (this.renderAll) finalIndex = Math.min(i + 60, resultSet.length + 1);
 		var buf = '';
 		while (i < finalIndex) {
 			if (!resultSet[i]) {
@@ -159,16 +160,25 @@
 			i++;
 		}
 		if (!this.renderedIndex) {
-			this.el.innerHTML = '<ul class="utilichart"' + (this.renderAll ? '' : ' style="height:' + (resultSet.length * 33) + 'px"') + '>' + buf + (!this.renderingDone ? '<li class="result more"><p><button class="button big">More</button></p></li>' : '') + '</ul>';
-			this.moreVisible = true;
+			this.el.innerHTML = '<ul class="utilichart"' + (this.renderAll ? '' : ' style="height:' + (resultSet.length * 33) + 'px"') + '>' + buf + (!this.renderAll && !this.renderingDone ? '<li class="result more"><p><button class="button big">More</button></p></li>' : '') + '</ul>';
+			this.moreVisible = !this.renderAll && !this.renderingDone;
 		} else {
 			if (this.moreVisible) {
 				this.$el.find('.more').remove();
 				if (!forceAdd) this.moreVisible = false;
 			}
-			$(this.el.firstChild).append(buf + (forceAdd && !this.renderingDone ? '<li class="result more"><p><button class="button big">More</button></p></li>' : ''));
+			$(this.el.firstChild).append(buf + (!this.renderAll && forceAdd && !this.renderingDone ? '<li class="result more"><p><button class="button big">More</button></p></li>' : ''));
 		}
 		this.renderedIndex = i;
+		if (this.renderAll && !this.renderingDone && this.renderBatchResults !== resultSet) {
+			var self = this;
+			this.renderBatchResults = resultSet;
+			window.requestAnimationFrame(function () {
+				if (self.renderBatchResults !== resultSet) return;
+				self.renderBatchResults = null;
+				if (self.resultSet === resultSet) self.updateScroll();
+			});
+		}
 	};
 	Search.prototype.setType = function (qType, format, set, cur) {
 		this.engine.setType(qType, format, set);

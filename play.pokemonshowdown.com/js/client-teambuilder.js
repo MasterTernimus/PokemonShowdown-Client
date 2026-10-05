@@ -1607,6 +1607,7 @@
 			}});
 		},
 		changeFormat: function (format) {
+			if (this.curTeam.format === format) return;
 			this.curTeam.format = format;
 			this.curTeam.gen = this.getGen(this.curTeam.format);
 			this.curTeam.dex = Dex.forGen(this.curTeam.gen);
@@ -4032,6 +4033,7 @@
 	T.teamSignature = function (team) { return JSON.stringify([team.name, team.format, team.folder, team.team]); };
 	T.teamKey = function (team) {
 		if (!team) return '';
+		if (team.toolsKey) return team.toolsKey;
 		var records = Storage.prefs('teamtoolbindings') || [], used = {};
 		(Storage.teams || [team]).forEach(function (entry) { if (entry.toolsKey) used[entry.toolsKey] = true; });
 		(Storage.teams || [team]).forEach(function (entry) {
@@ -4042,9 +4044,9 @@
 		if (!team.toolsKey) team.toolsKey = T.uid();
 		return team.toolsKey;
 	};
-	proto.toolsData = function () {
+	proto.toolsData = function (readOnly) {
 		var stored = Storage.prefs('pokemontools');
-		var data = stored && stored.version === 1 && Array.isArray(stored.builds) && Array.isArray(stored.nicknames) ? T.clone(stored) : T.empty();
+		var data = stored && stored.version === 1 && Array.isArray(stored.builds) && Array.isArray(stored.nicknames) ? (readOnly ? Object.assign({}, stored) : T.clone(stored)) : T.empty();
 		var key = T.teamKey(this.curTeam), settings = data.teamProfiles && data.teamProfiles[key];
 		if (key) { data.selectedNickname = settings ? settings.id : ''; data.autoNickname = settings ? settings.auto : false; }
 		return data;
@@ -4059,9 +4061,11 @@
 		this.saveTeamToolBindings();
 	};
 	proto.saveTeamToolBindings = function () {
-		var records = (Storage.prefs('teamtoolbindings') || []).filter(function (record) { return !(Storage.teams || []).some(function (team) { return team.toolsKey === record.id; }); });
+		var previous = Storage.prefs('teamtoolbindings') || [];
+		var liveKeys = new Set((Storage.teams || []).map(function (team) { return team.toolsKey; }));
+		var records = previous.filter(function (record) { return !liveKeys.has(record.id); });
 		(Storage.teams || []).forEach(function (team) { if (team.toolsKey) records.push({id: team.toolsKey, signature: T.teamSignature(team)}); });
-		Storage.prefs('teamtoolbindings', records);
+		if (JSON.stringify(previous) !== JSON.stringify(records)) Storage.prefs('teamtoolbindings', records);
 	};
 	var saveWithBindings = proto.save;
 	proto.save = function () { var result = saveWithBindings.apply(this, arguments); this.saveTeamToolBindings(); return result; };
@@ -4076,7 +4080,7 @@
 	proto.renderSet = function (set, index) {
 		var html = renderSet.call(this, set, index);
 		if (!set.species) return html;
-		var data = this.toolsData(), self = this;
+		var data = this.toolsData(true), self = this;
 		var builds = data.builds.filter(function (b) { return T.id(b.set.species) === T.id(set.species); });
 		var open = this.openSetTools && this.openSetTools.has(set);
 		var box = '<details class="set-tools-panel"' + (open ? ' open' : '') + '><summary>Build &amp; form options<span class="set-tools-state"></span></summary><div class="set-tools-content"><div class="set-tools-row"><span class="set-tools-label">Saved build</span><div class="set-tools-controls"><select class="saved-build-choice" aria-label="Saved build for ' + escape(set.species) + '"><option value="">Choose a build</option>';
@@ -4418,7 +4422,7 @@
 	};
 	var profiles = proto.renderRosterProfiles;
 	proto.renderRosterProfiles = function () {
-		var html = profiles.apply(this, arguments), data = this.toolsData();
+		var html = profiles.apply(this, arguments), data = this.toolsData(true);
 		var active = data.nicknames.find(function (p) { return p.id === data.selectedNickname; });
 		html = html.replace(/<button[^>]*name="showRosterProfiles"[^>]*>Profiles<\/button>/, '');
 		html = html.replace(/<\/div>$/, '<span class="active-name-profile">Names: ' + escape(active ? active.name : 'None') + '</span></div>');
@@ -4429,7 +4433,7 @@
 		if (this.toolsView) return this.showToolsManager();
 		var result = update.apply(this, arguments);
 		if (this.curTeam && !this.profilesView && !this.validationView) {
-			var data = this.toolsData();
+			var data = this.toolsData(true);
 			var html = '<div class="pad team-profile-toolbar"><label>Team profile <select class="team-profile-choice"><option value="">None</option>';
 			data.nicknames.forEach(function (p) { html += '<option value="' + escape(p.id) + '"' + (data.selectedNickname === p.id ? ' selected' : '') + '>' + escape(p.name) + '</option>'; });
 			html += '</select></label> ' + button('showToolsManager', 'Profiles & builds') + button('applyNicknameToTeam', 'Apply to whole team') + '</div>';
@@ -4437,7 +4441,14 @@
 		}
 		return result;
 	};
-	proto.events['change .team-profile-choice'] = function (event) { var data = this.toolsData(); data.selectedNickname = event.currentTarget.value; this.saveToolsData(data); this.update(); };
+	proto.changeTeamNicknameProfile = function (event) {
+		var data = this.toolsData(), id = event.currentTarget.value;
+		if (data.selectedNickname === id) return;
+		data.selectedNickname = id; this.saveToolsData(data);
+		var profile = data.nicknames.find(function (entry) { return entry.id === id; });
+		this.$('.active-name-profile').text('Names: ' + (profile ? profile.name : 'None'));
+	};
+	proto.events['change .team-profile-choice'] = 'changeTeamNicknameProfile';
 	var back = proto.back;
 	proto.back = function () { if (this.toolsView) { if (!this.saveNicknameMappings()) return; this.toolsView = false; return this.update(); } return back.apply(this, arguments); };
 	proto.events['change .nickname-profile-choice'] = 'nicknameSettingsChange';

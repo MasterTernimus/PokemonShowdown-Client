@@ -220,3 +220,21 @@ describe('Quality of life navigation', () => {
   assert.equal(room.curSetList[0].moves[0],'Thunderbolt');
  });
  });
+
+describe('Team Builder profile performance', () => {
+ it('reads library data without copying all builds, while editable reads remain isolated', () => {
+  const room=new Room();room.curTeam={toolsKey:'perf'};
+  prefs.pokemontools={version:1,builds:[{id:'b',set:{species:'Mew'}}],nicknames:[],teamProfiles:{perf:{id:'p',auto:true}}};
+  const view=room.toolsData(true);assert.equal(view.builds,prefs.pokemontools.builds);
+  assert.equal(view.selectedNickname,'p');assert.equal(prefs.pokemontools.selectedNickname,undefined);
+  const editable=room.toolsData();editable.builds[0].set.species='Pikachu';assert.equal(prefs.pokemontools.builds[0].set.species,'Mew');
+ });
+ it('switches a team nickname profile without rebuilding the editor or search', () => {
+  const room=new Room();let saves=0,label='';
+  room.toolsData=()=>({selectedNickname:'old',nicknames:[{id:'new',name:'Stars'}]});
+  room.saveToolsData=data=>{saves++;assert.equal(data.selectedNickname,'new');};
+  room.$=()=>({text:value=>{label=value;}});room.update=()=>{throw Error('Unnecessary editor rebuild');};
+  room.changeTeamNicknameProfile({currentTarget:{value:'new'}});
+  assert.equal(saves,1);assert.equal(label,'Names: Stars');
+ });
+});
