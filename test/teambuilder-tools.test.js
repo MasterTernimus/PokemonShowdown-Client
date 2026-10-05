@@ -238,3 +238,16 @@ describe('Team Builder profile performance', () => {
   assert.equal(saves,1);assert.equal(label,'Names: Stars');
  });
 });
+
+describe('Team Builder navigation placement', () => {
+ it('mounts profile controls in the content rather than above the List/Team navigation', () => {
+  assert(source.includes("this.$('.teamchartbox').first().prepend(html)"));
+  assert(!source.includes("this.$('.team-profile-toolbar').remove(); this.$el.prepend(html)"));
+ });
+ it('returns to the editor without rebuilding results or changing the set', () => {
+  const room=new Room();let scrolled=false;room.curSet={species:'Mew'};
+  room.$=()=>[{scrollIntoView:options=>{scrolled=true;assert.equal(options.block,'start');}}];
+  room.update=()=>{throw Error('Must preserve current search');};room.returnToPokemonEditor();
+  assert(scrolled);assert.equal(room.curSet.species,'Mew');
+ });
+});

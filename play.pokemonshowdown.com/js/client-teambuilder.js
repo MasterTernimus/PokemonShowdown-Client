@@ -2177,7 +2177,7 @@
 
 			// results
 			this.chartPrevSearch = '[init]';
-			buf += '<div class="teambuilder-results">' + this.renderRosterProfiles() + this.renderPokemonPickerFilters() + '<div class="roster-search-results"></div></div>';
+			buf += '<div class="teambuilder-results"><div class="picker-return-bar"><button type="button" class="button" name="returnToPokemonEditor">↑ Back to Pokémon</button></div>' + this.renderRosterProfiles() + this.renderPokemonPickerFilters() + '<div class="roster-search-results"></div></div>';
 
 			// import/export
 			buf += '<div class="teambuilder-pokemon-import">';
@@ -4083,11 +4083,11 @@
 		var data = this.toolsData(true), self = this;
 		var builds = data.builds.filter(function (b) { return T.id(b.set.species) === T.id(set.species); });
 		var open = this.openSetTools && this.openSetTools.has(set);
-		var box = '<details class="set-tools-panel"' + (open ? ' open' : '') + '><summary>Build &amp; form options<span class="set-tools-state"></span></summary><div class="set-tools-content"><div class="set-tools-row"><span class="set-tools-label">Saved build</span><div class="set-tools-controls"><select class="saved-build-choice" aria-label="Saved build for ' + escape(set.species) + '"><option value="">Choose a build</option>';
+		var box = '<details class="set-tools-panel"' + (open ? ' open' : '') + '><summary>Set &amp; form options<span class="set-tools-state"></span></summary><div class="set-tools-content"><div class="set-tools-row"><span class="set-tools-label">Saved set</span><div class="set-tools-controls"><select class="saved-build-choice" aria-label="Saved build for ' + escape(set.species) + '"><option value="">Load a saved set…</option>';
 		builds.forEach(function (b) {
 			box += '<option value="' + escape(b.id) + '">' + escape(b.name) + ' — ' + escape(T.compatibility(b, set, self.curTeam.format, self.curTeam.dex)) + '</option>';
 		});
-		box += '</select>' + button('saveNamedBuild', 'Save as named build') + button('updateSavedBuild', 'Update selected');
+		box += '</select>' + button('saveNamedBuild', 'Save this Pokémon…') + button('updateSavedBuild', 'Overwrite saved set');
 		if (this.buildUndo && this.buildUndo.team === this.curTeam && this.buildUndo.applied === set) box += button('undoSavedBuild', 'Undo apply');
 		box += '</div></div><!-- SET FORM PREVIEW --></div></details>';
 		return html.replace(/<\/li>$/, box + '</li>');
@@ -4180,14 +4180,14 @@
 	};
 	proto.showToolsManager = function () {
 		this.toolsView = true;
-		var data = this.toolsData(), html = '<div class="pad local-tools-manager">' + button('back', 'Back to Teambuilder') + '<h2>Profiles & saved sets</h2><p><button class="button" name="openRosterManager">Roster filters</button></p><p class="tools-note">Saved in this browser. Use Backup below to keep a copy.</p><details class="tools-panel"><summary>Saved builds</summary><input class="textbox build-library-search" aria-label="Search saved builds" placeholder="Search Pokémon, build, ability or moves" />';
+		var data = this.toolsData(), html = '<div class="pad local-tools-manager">' + button('back', 'Back to Teambuilder') + '<h2>Nicknames & saved sets</h2><p class="tools-intro">Save names and appearance rules in a nickname profile. Save moves, items, abilities and stats as reusable Pokémon sets.</p><p><button class="button" name="openRosterManager">Roster filters</button></p><p class="tools-note">Saved in this browser. Export a backup below to move your library to another device.</p><details class="tools-panel"><summary>Saved Pokémon sets</summary><p class="tools-note">Save a Pokémon from its Set &amp; form options in the Team Builder, or import sets here. Add a saved set to your team or replace the selected Pokémon.</p><input class="textbox build-library-search" aria-label="Search saved builds" placeholder="Search Pokémon, build, ability or moves" />';
 		data.builds.forEach(function (b) {
 			html += '<div class="saved-build-entry" data-search="' + escape([b.name, b.set.species, b.set.ability, (b.set.moves || []).join(' ')].join(' ').toLowerCase()) + '"><p><strong>' + escape(b.name) + '</strong> — ' + escape(b.set.species) + ' (' + escape(b.format || 'no format') + ') ' + button('renameToolEntry', 'Rename', 'build:' + b.id) + button('duplicateToolEntry', 'Duplicate', 'build:' + b.id) + button('deleteToolEntry', 'Delete', 'build:' + b.id) + button('addLibraryBuild', 'Add to team', b.id) + button('replaceLibraryBuild', 'Replace selected set', b.id) + '</p><small>' + escape([b.set.ability, b.set.item, b.set.nature, (b.set.moves || []).join(' / ')].filter(Boolean).join(' · ')) + '</small></div>';
 		});
 		html += '<details><summary>Import named sets</summary><label>Build name / group <input class="textbox imported-build-name" placeholder="e.g. Rain offense" maxlength="80" /></label><textarea class="textbox imported-build-sets" rows="6" aria-label="Showdown sets to save" placeholder="Paste one or more Showdown sets"></textarea>' + button('saveImportedBuilds', 'Save sets to library') + '</details>';
-		html += '</details><section class="tools-panel"><h3>Nickname profile</h3><label>Profile <select class="nickname-profile-choice"><option value="">None</option>';
+		html += '</details><section class="tools-panel"><h3>Pokémon nicknames &amp; appearance</h3><p class="tools-note">1. Create or choose a profile. 2. Add Pokémon and names, then Save profile. 3. Preview and apply it to your team.</p><label>Profile <select class="nickname-profile-choice"><option value="">None</option>';
 		data.nicknames.forEach(function (p) { html += '<option value="' + escape(p.id) + '"' + (data.selectedNickname === p.id ? ' selected' : '') + '>' + escape(p.name) + '</option>'; });
-		html += '</select></label> <label><input type="checkbox" class="auto-nickname"' + (data.autoNickname ? ' checked' : '') + ' /> Auto-apply when adding a Pokémon</label><p>' + button('newNicknameProfile', 'New nickname profile') + '</p>';
+		html += '</select></label> <label><input type="checkbox" class="auto-nickname"' + (data.autoNickname ? ' checked' : '') + ' /> Use this profile for newly added Pokémon</label><p>' + button('newNicknameProfile', 'Create nickname profile') + '</p>';
 		var profile = data.nicknames.find(function (p) { return p.id === data.selectedNickname; });
 		if (profile) {
 			var draft = (Storage.prefs('nicknamedrafts') || {})[profile.id];
@@ -4203,13 +4203,13 @@
 
 			html += T.nicknameRow('', '') + '</div><datalist id="nickname-species-options">';
 			Object.keys(window.BattlePokedex || {}).forEach(function (id) { html += '<option value="' + escape(Dex.species.get(id).name) + '"></option>'; });
-			html += '</datalist><p>' + button('addNicknameRow', 'Add Pokémon') + ' ' + button('saveNicknameMappings', 'Save nicknames') + ' <span class="nickname-save-status" role="status">' + (draft ? 'Recovered unsaved draft' : 'Saved') + '</span></p>';
+			html += '</datalist><p>' + button('addNicknameRow', 'Add Pokémon') + ' ' + button('saveNicknameMappings', 'Save profile') + ' <span class="nickname-save-status" role="status">' + (draft ? 'Recovered unsaved draft' : 'Saved') + '</span></p>';
 			html += '<p><label>Shiny <select class="nickname-shiny"><option value="">Keep unchanged</option><option value="yes"' + (profile.shiny === 'yes' ? ' selected' : '') + '>Always shiny</option><option value="no"' + (profile.shiny === 'no' ? ' selected' : '') + '>Never shiny</option></select></label><label><input type="checkbox" class="nickname-gendered"' + (profile.gendered ? ' checked' : '') + ' /> Use gender-specific nicknames</label></p><p class="tools-note">Default names apply to any gender. Gender rows override them when enabled; an unspecified gender uses the default name.</p>';
 			html += '<label><input type="checkbox" class="nickname-fallback"' + (profile.fallback ? ' checked' : '') + ' /> Use the base Pokémon’s name for forms without an entry</label>';
 			html += '<details><summary>Paste a list</summary><p>One Pokémon = nickname per line. Dashes (— or –) also work.</p><textarea class="textbox nickname-paste" rows="5" aria-label="Paste nickname list" placeholder="Togekiss = Deneb"></textarea>' + button('pasteNicknameRows', 'Add pasted names') + '</details>';
 
 		}
-		html += '<label><input type="checkbox" class="nickname-replace" /> Replace existing nicknames when applying</label><p>' + button('applyNicknameToTeam', 'Apply profile to whole team') + '</p></section><details class="tools-panel"><summary>Backup / import library</summary><p>Import adds copies without replacing saved profiles.</p><textarea class="textbox tools-transfer" rows="8" aria-label="Build and nickname library JSON">' + escape(JSON.stringify(data, null, 2)) + '</textarea><p>' + button('exportToolsLibrary', 'Refresh export') + button('importToolsLibrary', 'Import library') + '</p></details></div>';
+		html += '<label><input type="checkbox" class="nickname-replace" /> Replace existing nicknames when applying</label><p>' + button('applyNicknameToTeam', 'Preview changes for this team') + '</p></section><details class="tools-panel"><summary>Export backup / import library</summary><p>Import adds copies without replacing saved profiles.</p><textarea class="textbox tools-transfer" rows="8" aria-label="Build and nickname library JSON">' + escape(JSON.stringify(data, null, 2)) + '</textarea><p>' + button('exportToolsLibrary', 'Refresh export') + button('importToolsLibrary', 'Import library') + '</p></details></div>';
 		this.$el.html(html);
 	};
 	proto.exportToolsLibrary = function () { if (!this.saveNicknameMappings()) return; this.$('.tools-transfer').val(JSON.stringify(this.toolsData(), null, 2)).focus().select(); };
@@ -4330,7 +4330,7 @@
 		var names = after.filter(function (set, i) { return set.name !== before[i].name; }).length;
 		var shiny = after.filter(function (set, i) { return !!set.shiny !== !!before[i].shiny; }).length;
 		this.$('.profile-apply-preview').remove();
-		this.$el.prepend('<div class="pad profile-apply-preview" role="status"><b>' + escape(profile.name) + '</b>: ' + names + ' nickname changes, ' + shiny + ' shiny changes. ' + button('confirmProfileApply', 'Apply changes') + button('cancelProfileApply', 'Cancel') + '</div>');
+		this.$el.prepend('<div class="pad profile-apply-preview" role="status"><b>' + escape(profile.name) + '</b>: ' + names + ' nickname changes, ' + shiny + ' shiny changes. ' + button('confirmProfileApply', 'Apply to whole team') + button('cancelProfileApply', 'Cancel') + '</div>');
 	};
 	proto.confirmProfileApply = function () {
 		var pending = this.pendingProfileApply;
@@ -4432,14 +4432,20 @@
 	proto.update = function () {
 		if (this.toolsView) return this.showToolsManager();
 		var result = update.apply(this, arguments);
-		if (this.curTeam && !this.profilesView && !this.validationView) {
+		if (this.curTeam && !this.profilesView && !this.validationView && !this.exportMode) {
 			var data = this.toolsData(true);
-			var html = '<div class="pad team-profile-toolbar"><label>Team profile <select class="team-profile-choice"><option value="">None</option>';
+			var html = '<div class="pad team-profile-toolbar"><label>Nickname profile <select class="team-profile-choice"><option value="">None</option>';
 			data.nicknames.forEach(function (p) { html += '<option value="' + escape(p.id) + '"' + (data.selectedNickname === p.id ? ' selected' : '') + '>' + escape(p.name) + '</option>'; });
-			html += '</select></label> ' + button('showToolsManager', 'Profiles & builds') + button('applyNicknameToTeam', 'Apply to whole team') + '</div>';
-			this.$('.team-profile-toolbar').remove(); this.$el.prepend(html);
+			html += '</select></label> ' + button('showToolsManager', 'Manage nicknames & sets') + button('applyNicknameToTeam', 'Preview team changes') + '<small class="team-profile-help">Choose saved names and shiny settings, then preview before applying.</small></div>';
+			this.$('.team-profile-toolbar').remove();
+			// Keep List/Team and the Pokémon tabs first; tools belong in the content flow.
+			this.$('.teamchartbox').first().prepend(html);
 		}
 		return result;
+	};
+	proto.returnToPokemonEditor = function () {
+		var editor = this.$('.teamchartbox.individual')[0];
+		if (editor) editor.scrollIntoView({block: 'start', behavior: 'auto'});
 	};
 	proto.changeTeamNicknameProfile = function (event) {
 		var data = this.toolsData(), id = event.currentTarget.value;
