@@ -1120,3 +1120,6 @@ License: GPLv2
 .battle img.team-preview-sprite.pixelated {
 	image-rendering: pixelated;
 }
+
+.messagebar-latest { float: right; margin-left: 6px; color: white; background: transparent; border: 1px solid #999; border-radius: 3px; font: inherit; cursor: pointer; }
+.messagebar-content { scrollbar-gutter: stable; }

@@ -85,6 +85,7 @@ export class BattleScene implements BattleSceneStub {
 	preloadCache: {[url: string]: HTMLImageElement} = {};
 
 	messagebarOpen = false;
+	messagebarExpanded = false;
 	messagebarBanners: string[] = [];
 	customControls = false;
 	interruptionCount = 1;
@@ -177,8 +178,13 @@ export class BattleScene implements BattleSceneStub {
 		this.$messagebar = $('<div class="messagebar message"></div>');
 		this.$messagebar.on('click', '.messagebar-toggle', event => {
 			const expanded = !this.$messagebar.hasClass('expanded');
+			this.messagebarExpanded = expanded;
 			this.$messagebar.toggleClass('expanded', expanded);
-			$(event.currentTarget).attr('aria-expanded', String(expanded)).text(expanded ? 'Less' : 'More');
+			$(event.currentTarget).attr('aria-expanded', String(expanded)).text(expanded ? 'Compact' : 'Expand');
+		});
+		this.$messagebar.on('click', '.messagebar-latest', () => {
+			const content = this.$messagebar.find('.messagebar-content')[0];
+			if (content) content.scrollTop = content.scrollHeight;
 		});
 		this.$delay = $('<div></div>');
 		this.$hiddenMessage = $('<div class="message" style="position:absolute;display:block;visibility:hidden"></div>');
@@ -484,9 +490,9 @@ export class BattleScene implements BattleSceneStub {
 			this.messagebarBanners = [];
 			this.log.addSpacer();
 			if (this.animating) {
-				this.$messagebar.removeClass('expanded').html(
-					'<div class="messagebar-heading">Battle narration <button type="button" class="messagebar-toggle" ' +
-					'aria-expanded="false" aria-label="Expand or collapse battle narration">More</button></div>' +
+				this.$messagebar.toggleClass('expanded', this.messagebarExpanded).html(
+					'<div class="messagebar-heading">Battle report <button type="button" class="messagebar-latest" aria-label="Scroll battle report to latest message">Latest</button> <button type="button" class="messagebar-toggle" ' +
+					'aria-expanded="' + this.messagebarExpanded + '" aria-label="Expand or collapse battle narration">' + (this.messagebarExpanded ? 'Compact' : 'Expand') + '</button></div>' +
 					'<div class="messagebar-content" tabindex="0" role="log" aria-live="polite" ' +
 					'aria-label="Current battle narration. Scroll for more; complete history is in the battle log."></div>'
 				);
@@ -521,6 +527,8 @@ export class BattleScene implements BattleSceneStub {
 			$message.animate({
 				height: 'hide',
 			}, 1, () => {
+				const contentBefore = this.$messagebar.find('.messagebar-content')[0];
+				const followLatest = !contentBefore || contentBefore.scrollHeight - contentBefore.scrollTop - contentBefore.clientHeight < 20;
 				$message.appendTo(this.$messagebar.find('.messagebar-content'));
 
 				$message.animate({
@@ -529,7 +537,7 @@ export class BattleScene implements BattleSceneStub {
 					opacity: 1,
 				}, this.battle.messageFadeTime / this.acceleration, () => {
 					const content = this.$messagebar.find('.messagebar-content')[0];
-					if (content) content.scrollTop = content.scrollHeight;
+					if (content && followLatest) content.scrollTop = content.scrollHeight;
 				});
 			});
 			this.waitFor($message);
@@ -890,7 +898,7 @@ export class BattleScene implements BattleSceneStub {
 			side.totalPokemon = side.pokemon.length;
 			if (textBuf) {
 				this.log.addDiv('chat battle-history',
-					'<strong>' + BattleLog.escapeHTML(side.name) + '\'s team:</strong> <em style="color:#445566;display:block;">' + BattleLog.escapeHTML(textBuf) + '</em>'
+					'<strong>' + BattleLog.accountName(side.name) + '\'s team:</strong> <em style="color:#445566;display:block;">' + BattleLog.escapeHTML(textBuf) + '</em>'
 				);
 			}
 			this.$sprites[spriteIndex].html(buf + buf2);

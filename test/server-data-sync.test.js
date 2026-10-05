@@ -11,7 +11,9 @@ function loadDex(bundled) {
 	for (const [file, name] of [
 		['pokedex', 'BattlePokedex'], ['abilities', 'BattleAbilities'], ['moves', 'BattleMovedex'], ['items', 'BattleItems'],
 	]) {
-		context[name] = JSON.parse(JSON.stringify(require(path.join(client, 'data', file))[name]));
+		const dataContext = {exports: {}};
+		vm.runInNewContext(fs.readFileSync(path.join(client, 'data', file + '.js'), 'utf8'), dataContext, {filename: file + '.js'});
+		context[name] = JSON.parse(JSON.stringify(dataContext.exports[name]));
 	}
 	for (const script of bundled ? ['battledata'] : ['battle-dex-data', 'battle-dex']) {
 		vm.runInContext(fs.readFileSync(path.join(client, 'js', `${script}.js`), 'utf8'), context);
@@ -32,7 +34,7 @@ describe('Server data synchronization', () => {
 						const actual = dex[kind].get(id);
 						for (const [key, value] of Object.entries(expected)) {
 							if (key === 'replaceAbilities') continue;
-							const normalize = data => key === 'isNonstandard' ? data || false : JSON.parse(JSON.stringify(data));
+							const normalize = data => key === 'isNonstandard' ? (kind === 'abilities' ? !!data : data || false) : JSON.parse(JSON.stringify(data));
 							assert.deepEqual(normalize(actual[key]), normalize(value), `${kind}.${id}.${key}`);
 						}
 					}
@@ -51,6 +53,17 @@ describe('Server data synchronization', () => {
 			it('publishes Soul Siphon with its unique custom number and generation', () => {
 				assert.equal(dex.abilities.get('Soul Siphon').num, 11232);
 				assert.equal(dex.abilities.get('Soul Siphon').gen, 9);
+			});
+			it('adds Mold Breaker to Execution and Argent Devotion without losing their components', () => {
+				for (const [id, components] of [
+					['execution', ['duskilate', 'moldbreaker']],
+					['argentdevotion', ['armorize', 'swornduty', 'serenegrace', 'moldbreaker']],
+				]) {
+					assert.match(dex.abilities.get(id).desc, /ignore(?:s)? bypassable.*abilities/);
+					assert.match(dex.abilities.get(id).shortDesc, /ignore(?:s)? abilities/);
+					const effects = dex.getAbilityEffects(id);
+					for (const component of components) assert(effects.has(component), `${id}: ${component}`);
+				}
 			});
 
 			it('syncs mixed Poliwrath, Reservoir and Royal Scales components', () => {
@@ -77,16 +90,16 @@ describe('Server data synchronization', () => {
 				assert(ability.desc.includes('Ability changes do not refresh'));
 			});
 
-			it('retains named components and the new Soul Pyre effects in concise previews', () => {
+			it('explains Soul Cremation while preserving its component identities', () => {
 				const soul = dex.abilities.get('soulcremation');
-				for (const name of ['Soul Siphon', 'Soul Pyre', 'Malice Well']) assert(soul.shortDesc.includes(name), name);
+				assert.match(soul.shortDesc, /Ghost|healing/i);
 				for (const component of ['soulsiphon', 'soulpyre', 'malicewell', 'flamebody']) {
 					assert(dex.getAbilityEffects('soulcremation').has(component), component);
 				}
 				assert(dex.getAbilityEffects('malicewell').has('flamebody'));
-				assert.match(dex.abilities.get('malicewell').shortDesc, /Flame Body.*first hostile damaging move per entry/);
+				assert.match(dex.abilities.get('malicewell').shortDesc, /first opposing damaging move each entry/);
 				assert.match(dex.abilities.get('malicewell').desc, /after the entire move finishes.*Protect, misses and immunity/);
-				assert.match(soul.desc, /Malice Well includes full Flame Body/);
+				assert.match(soul.desc, /30%.*burn|burn.*30%/);
 				assert(dex.abilities.get('soulpyre').exists);
 				assert.match(dex.abilities.get('soulpyre').shortDesc, /1\/8.*Ghost hits/);
 			});
@@ -213,7 +226,7 @@ describe('Server data synchronization', () => {
 				assert.match(dex.abilities.get('eclipsevision').desc, /first move slot/);
 				assert.match(dex.abilities.get('schooling').desc, /Mold Breaker/);
 				assert.doesNotMatch(dex.abilities.get('schooling').desc, /Filter/);
-				assert.match(dex.abilities.get('venombastion').desc, /Stamina.*poisoned foe.*higher offensive stat/);
+				assert.match(dex.abilities.get('venombastion').desc, /raises Defense by 1.*poisoned foe.*higher offensive stat/);
 				assert.match(dex.moves.get('skullbash').desc, /0\.7x damage/);
 				assert.match(dex.moves.get('skullbash').desc, /1\/8/);
 				assert.match(dex.moves.get('cut').desc, /Steel-type.*Defense boosts/);

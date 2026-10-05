@@ -2225,7 +2225,7 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 		if (species.id === 'umbreon' && !isUmbreonAscendance) {
 			moves = moves.filter(id => id !== 'radiantassault');
 		}
-		if (isEeveeStarter && !isHackmons) {
+		if (isEeveeStarter && !isHackmons && !['sinisterblaze', 'ascendance'].includes(toID(this.set?.ability))) {
 			const removed = Dex.getCustomMoveRemovals(species.id);
 			moves = moves.filter(id => !removed.includes(id));
 		}
@@ -2246,6 +2246,11 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 		}
 		if (isUmbreonAscendance) {
 			moves = ['radiantassault', ...moves.filter(id => id !== 'radiantassault')];
+		}
+		const pulseMoves = Dex.getPulseFixedMoves(species.id);
+		if (pulseMoves) {
+			moves = [...pulseMoves];
+			sketchMoves = [];
 		}
 		sketchMoves.sort();
 

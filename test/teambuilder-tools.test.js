@@ -9,8 +9,11 @@ const prefs = {};
 function Room() {}
 Room.prototype.events = {};
 for (const id of ['initialize', 'renderSet', 'renderRosterProfiles', 'update', 'back', 'setPokemon', 'chartSet', 'updateChart', 'getStat']) Room.prototype[id] = function () {};
+const statStart = source.indexOf('getStat: function (');
+const statEnd = source.indexOf('\n\t\t},', statStart);
+Room.prototype.getStat = new Function('Dex', 'BattleNatures', 'return (' + source.slice(statStart + 'getStat: '.length, statEnd) + '\n});')(Dex, {Adamant: {plus: 'atk', minus: 'spa'}});
 const host = {TeambuilderRoom: Room};
-new Function('window', 'jQuery', 'Storage', 'BattleLog', 'Dex', 'app', code)(host, {}, {prefs(key, value) {if (value !== undefined) prefs[key] = value; return prefs[key];}}, {escapeHTML: x => x}, Dex, {});
+new Function('window', 'jQuery', 'Storage', 'BattleLog', 'Dex', 'app', code)(host, {}, {prefs(key, value) {if (value !== undefined) prefs[key] = value; return prefs[key];}}, {escapeHTML: x => x}, Dex, {addPopupMessage() {}});
 const T = host.TeambuilderTools;
 describe('Local teambuilder tools', () => {
  const build = {id: 'original', name: 'TR', format: 'gen9nofieldsinglesgame', set: {species: 'Armarouge', item: 'Weakness Policy', ability: 'Flash Fire', moves: ['Trick Room'], nature: 'Quiet', ivs: {spe: 0}, evs: {spa: 252}, level: 50, teraType: 'Grass'}};
@@ -88,21 +91,132 @@ describe('Local teambuilder tools', () => {
  it('never overwrites the next Pokemon when the applied set was deleted', () => {
   const room=new Room(), applied={species:'Kecleon',item:'Leftovers'}, next={species:'Poliwrath',item:'Life Orb'};
   room.curTeam={}; room.curSetList=[applied,next];
-  room.buildUndo={team:room.curTeam,index:0,applied,set:{species:'Kecleon',item:'Focus Sash'}};
+  room.buildUndo={team:room.curTeam,index:0,applied,snapshot:T.clone(applied),set:{species:'Kecleon',item:'Focus Sash'}};
   let saved=false; room.toolsCommit=()=>{saved=true;}; room.curSetList.splice(0,1);
   room.undoSavedBuild(); assert.deepEqual(room.curSetList,[next]); assert(!saved); assert.equal(room.buildUndo,null);
  });
  it('follows the applied set when reordered without touching the other set', () => {
   const room=new Room(), applied={species:'Kecleon',item:'Leftovers'}, next={species:'Poliwrath',item:'Life Orb'};
   room.curTeam={}; room.curSetList=[next,applied]; room.curSetLoc=1; room.curSet=applied;
-  room.buildUndo={team:room.curTeam,index:0,applied,set:{species:'Kecleon',item:'Focus Sash'}};
+  room.buildUndo={team:room.curTeam,index:0,applied,snapshot:T.clone(applied),set:{species:'Kecleon',item:'Focus Sash'}};
   room.toolsCommit=()=>{};room.undoSavedBuild();
   assert.equal(room.curSetList[0],next);assert.equal(room.curSetList[1].item,'Focus Sash');assert.equal(room.curSet,room.curSetList[1]);
  });
  it('does not restore an undo over an imported replacement set of the same species', () => {
   const room=new Room(), applied={species:'Kecleon',item:'Leftovers'}, imported={species:'Kecleon',item:'Life Orb'};
-  room.curTeam={};room.curSetList=[imported];room.buildUndo={team:room.curTeam,index:0,applied,set:{species:'Kecleon',item:'Focus Sash'}};
+  room.curTeam={};room.curSetList=[imported];room.buildUndo={team:room.curTeam,index:0,applied,snapshot:T.clone(applied),set:{species:'Kecleon',item:'Focus Sash'}};
   room.toolsCommit=()=>{throw Error('Must not save');};room.undoSavedBuild();assert.equal(room.curSetList[0],imported);
  });
 
 });
+
+
+describe('Nickname row editor', () => {
+ it('accepts pasted equals and dashes without breaking hyphenated forms', () => {
+  const rows = T.nicknameList('Typhlosion-Hisui — Rigel\nTogekiss = Deneb\nAmpharos – Electra');
+  assert.deepEqual(T.nicknameEntries(rows), {typhlosionhisui: 'Rigel', togekiss: 'Deneb', ampharos: 'Electra'});
+ });
+ it('ignores blank add rows but rejects incomplete, duplicate and unsafe entries', () => {
+  assert.deepEqual(T.nicknameEntries([['', ''], ['Togekiss', 'Deneb']]), {togekiss: 'Deneb'});
+  assert.throws(() => T.nicknameEntries([['Togekiss', '']]));
+  assert.throws(() => T.nicknameEntries([['missingpokemon', 'Name']]));
+  assert.throws(() => T.nicknameEntries([['Togekiss', 'A'], ['togekiss', 'B']]), /Duplicate/);
+  assert.throws(() => T.nicknameEntries([['Togekiss', 'a|b']]));
+ });
+ it('persists edited entries through export/import and applies them to team sets', () => {
+  const data = T.empty();
+  data.nicknames = [{name: 'Stars', entries: T.nicknameEntries([['Togekiss', 'Deneb']]), fallback: false}];
+  const profile = T.parse(JSON.stringify(data)).nicknames[0];
+  const set = {species: 'Togekiss', name: ''};
+  T.applyNickname(set, profile, Dex, false);
+  assert.equal(set.name, 'Deneb');
+ });
+});
+
+
+describe('Profile appearance and reusable builds', () => {
+ it('uses optional gender names with a default for unspecified genders', () => {
+  const mapped = T.nicknameMappings([['Togekiss', 'Star', ''], ['Togekiss', 'Rigel', 'M'], ['Togekiss', 'Vega', 'F']]);
+  const profile = {...mapped, gendered: true};
+  assert.equal(T.nickname({species: 'Togekiss', gender: 'F'}, profile, Dex), 'Vega');
+  assert.equal(T.nickname({species: 'Togekiss', gender: 'M'}, profile, Dex), 'Rigel');
+  assert.equal(T.nickname({species: 'Togekiss'}, profile, Dex), 'Star');
+  profile.gendered = false;
+  assert.equal(T.nickname({species: 'Togekiss', gender: 'F'}, profile, Dex), 'Star');
+  assert.throws(() => T.nicknameMappings([['Togekiss', 'A', 'F'], ['Togekiss', 'B', 'F']]), /Duplicate/);
+ });
+ it('applies shiny choices even without a nickname and round-trips options', () => {
+  const data = T.empty();
+  data.nicknames = [{name: 'Stars', entries: {}, shiny: 'yes', gendered: true, genderEntries: {togekiss: {F: 'Vega'}}}];
+  const profile = T.parse(JSON.stringify(data)).nicknames[0];
+  assert.equal(profile.genderEntries.togekiss.F, 'Vega');
+  const set = {species: 'Mew', name: 'Manual'};
+  T.applyNickname(set, profile, Dex, false); assert.equal(set.shiny, true); assert.equal(set.name, 'Manual');
+  profile.shiny = 'no'; T.applyNickname(set, profile, Dex, false); assert.equal(set.shiny, false);
+  profile.shiny = ''; set.shiny = true; T.applyNickname(set, profile, Dex, false); assert.equal(set.shiny, true);
+ });
+ it('stores independent named builds and rejects empty or unknown imports', () => {
+  const set = {species: 'Togekiss', moves: ['Air Slash'], evs: {spa: 252}};
+  const builds = T.namedBuilds([set], 'Air support', 'gen9ou');
+  assert.equal(builds[0].name, 'Air support');
+  set.evs.spa = 0; assert.equal(builds[0].set.evs.spa, 252);
+  assert.throws(() => T.namedBuilds([], '', ''));
+  assert.throws(() => T.namedBuilds([{species: 'notapokemon'}], '', ''));
+ });
+});
+
+
+describe('Form stat comparison and item icons', () => {
+ it('compares actual Mega stats with the base set without selecting a different saved species', () => {
+  const room = new Room(); room.curTeam = {dex: Dex, gen: 9, format: 'gen9ou'};
+  const set = {species: 'Banette', ability: 'Cursed Keepsake', nature: 'Adamant', level: 100, evs: {atk:252}, ivs: {atk:31}};
+  const form = {name: 'Banette-Mega-Z', ability: Dex.species.get('Banette-Mega-Z').abilities['0']};
+  const html = room.renderFormStatComparison(set, form);
+  assert(html.includes('Form base')); assert(html.includes('Change'));
+  assert(!html.includes('NaN')); assert(!html.includes('undefined'));
+  assert.equal(set.species, 'Banette');
+ });
+ it('routes Amulet Coin and its legacy item ID to a real PNG', () => {
+  assert(Dex.getItemIcon('amuletcoin').includes('amulet-coin.png'));
+  assert(Dex.getItemIcon('starsweet').includes('amulet-coin.png'));
+  const png = fs.readFileSync(path.join(__dirname, '../play.pokemonshowdown.com/sprites/itemicons/amulet-coin.png'));
+  assert.equal(png.subarray(1,4).toString(), 'PNG'); assert(png.length > 100);
+ });
+});
+
+
+describe('Quality of life navigation', () => {
+ it('locates a validation error at the named move and does not guess ambiguous slots', () => {
+  const sets = [{species:'Pikachu', ability:'Static', item:'Light Ball', moves:['Surf']}];
+  assert.deepEqual(T.problemLocation('Pikachu cannot learn Surf.', sets), {index:0, field:'move1'});
+  assert.equal(T.problemLocation('The team exceeds the budget.', sets), null);
+  assert.equal(T.problemLocation('Pikachu cannot learn Surf.', sets.concat(sets)), null);
+ });
+ it('maintains a stable team key through edits within the session', () => {
+  const team = {name:'Stars', format:'gen9ou', team:'packed'};
+  const key = T.teamKey(team); team.name = 'Renamed'; team.team = 'changed';
+  assert.equal(T.teamKey(team), key);
+ });
+});
+
+ describe('Audited team tools boundaries', () => {
+ it('does not inherit another team profile or auto-apply preference', () => {
+  const room = new Room(); room.curTeam = {name:'A',team:'a'};
+  const data=T.empty(); data.selectedNickname='stars'; data.autoNickname=true;
+  room.saveToolsData(data); room.curTeam={name:'B',team:'b'};
+  assert.equal(room.toolsData().selectedNickname,''); assert.equal(room.toolsData().autoNickname,false);
+ });
+ it('refuses saved builds beyond capacity but fills an empty slot', () => {
+  const room=new Room();room.curTeam={dex:Dex,capacity:6};room.curSetList=Array.from({length:6},()=>({species:'Mew'}));
+  room.saveNicknameMappings=()=>true;room.toolsData=()=>({builds:[{id:'b',set:{species:'Mew',moves:['Surf']}}]});
+  let commits=0;room.toolsCommit=()=>commits++;
+  room.addLibraryBuild('b');assert.equal(room.curSetList.length,6);assert.equal(commits,0);
+  room.curSetList[2]={species:''};room.addLibraryBuild('b');assert.equal(commits,1);assert.equal(room.curSetList[2].species,'Mew');
+ });
+ it('does not undo over later move edits', () => {
+  const room=new Room(),applied={species:'Mew',moves:['Surf']};room.curTeam={};room.curSetList=[applied];
+  room.buildUndo={team:room.curTeam,applied,snapshot:T.clone(applied),set:{species:'Mew',moves:['Psychic']}};
+  applied.moves[0]='Thunderbolt';room.toolsCommit=()=>{throw Error('Must not overwrite');};room.undoSavedBuild();
+  assert.equal(room.curSetList[0].moves[0],'Thunderbolt');
+ });
+ });

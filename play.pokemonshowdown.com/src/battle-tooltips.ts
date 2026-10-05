@@ -859,30 +859,49 @@ class BattleTooltips {
 	 */
 	renderAdaptation(memory: NonNullable<Pokemon['adaptation']>) {
 		const esc = (value: any) => BattleLog.escapeHTML(String(value));
-		const progress = (value: number, total: number) => value >= total ? 'complete' : value + '/' + total;
-		let text = '<div class="tooltip-section"><strong>&#8635; Adapted:</strong>' + (memory.active ? '' : ' paused') + '<br />';
+		const progress = (value: number, total: number) => value >= total ? 'Ready' : value + '/' + total;
+		const names: {[id: string]: string} = {
+			brn: 'Burn', psn: 'Poison', tox: 'Poison', par: 'Paralysis', slp: 'Sleep', frz: 'Freeze',
+			sunnyday: 'Sun', desolateland: 'Harsh sun', raindance: 'Rain', primordialsea: 'Heavy rain',
+			sandstorm: 'Sandstorm', hail: 'Hail', flowergarden: 'Flower Garden',
+			murkwatersurfaceterrain: 'Murkwater Surface', watersurfaceterrain: 'Water Surface',
+			underwaterterrain: 'Underwater', factoryterrain: 'Factory',
+		};
+		const name = (id: string) => names[id] ||
+			(window as any).BattleFieldRules?.find((field: any) => field.id === id)?.name ||
+			(Dex.moves.get(id).exists ? Dex.moves.get(id).name : id.replace(/terrain$/, '').replace(/^./, c => c.toUpperCase()));
+		let text = '<div class="tooltip-section"><strong>Adaptive Cycle' + (memory.active ? '' : ' (paused)') + '</strong><br />';
 		[true, false].forEach(active => {
 			const rows = Object.entries(memory.types || {}).filter(([type]) => memory.activeTypes.includes(type) === active);
-			text += '<b>' + (active ? 'Active types' : 'Stored types') + ':</b> ' + (rows.map(([type, record]) =>
-				esc(type) + ' ' + [0, 20, 35, 50][record.stage] + '%').join(', ') || 'none') + '<br />';
+			if (rows.length) text += '<b>' + (active ? 'Damage reduced' : 'Stored types') + ':</b> ' + rows.map(([type, record]) =>
+				esc(type) + ' ' + [0, 20, 35, 50][record.stage] + '%').join(', ') + '<br />';
 		});
 		for (const record of Object.values(memory.opponents || {})) {
-			text += '<b>' + esc(record.label) + ':</b> ' + progress(record.points, 4) +
-				(record.complete ? ' &mdash; Ability adapted; incoming attacks resisted, outgoing attacks super effective and bypass type immunities (defender adaptation wins)' : '') + '<br />';
-			text += 'Observed: ' + (record.moves.map(id => esc(Dex.moves.get(id).name)).join(', ') || 'none') + '<br />';
-			text += 'Setup: ' + progress(record.setup.stage, 2) + '; bypass counters: ' + esc(record.bypass.length) +
-				'; reduction counters: ' + esc(record.defenses.length) + '<br />';
+			text += '<b>' + esc(record.label.replace(/^p[1-4][a-z]?:\s*/, '')) + ':</b> ' +
+				(record.complete ? 'Adapted' : record.points + '/4') + '<br />';
+			const notes: string[] = [];
+			if (record.moves.length) notes.push('Seen: ' + record.moves.map(id => esc(Dex.moves.get(id).name)).join(', '));
+			if (record.setup.stage) notes.push(record.setup.stage >= 2 ? 'Stat boosts countered' : 'Stat boosts: ' + record.setup.stage + '/2');
+			if (!record.complete && record.bypass.length) notes.push('Bypass learned: ' + record.bypass.length);
+			if (!record.complete && record.defenses.length) notes.push('Defenses learned: ' + record.defenses.length);
+			if (notes.length) text += '<small>' + notes.join(' · ') + '</small><br />';
+		}
+		if (Object.values(memory.opponents || {}).some(record => record.complete)) {
+			text += '<small>Adapted foes: attacks resisted; your hits super effective; ability and type immunities ignored. Defender adaptation wins.</small><br />';
 		}
 		([
-			['Status', memory.statuses, 2], ['Hazard / chip', memory.chip, 2],
+			['Status', memory.statuses, 2], ['Residual damage', memory.chip, 2],
 			['Fields', memory.fields, 3], ['Weather', memory.weather, 3],
 		] as [string, {[id: string]: {stage: number}}, number][]).forEach(([label, table, total]) => {
-			text += '<b>' + label + ':</b> ' + (Object.entries(table || {}).map(([id, record]) =>
-				esc(id) + (id === memory.field || id === memory.currentWeather ? ' (current)' : '') + ': ' + progress(record.stage, total)
-			).join('; ') || 'not yet encountered') + '<br />';
+			const rows = Object.entries(table || {});
+			if (!rows.length) return;
+			text += '<b>' + label + ':</b> ' + rows.map(([id, record]) =>
+				esc(name(id)) + (id === memory.field || id === memory.currentWeather ? ' (active)' : '') + ' ' + progress(record.stage, total)
+			).join(', ') + '<br />';
 		});
 		return text + '</div>';
 	}
+
 	showPokemonTooltip(
 		clientPokemon: Pokemon | null, serverPokemon?: ServerPokemon | null, isActive?: boolean, illusionIndex?: number
 	) {

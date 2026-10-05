@@ -42,7 +42,8 @@ describe('Approved ability client metadata',()=>{
   assert.equal(Dex.abilities.get('Shadow Guard').id,'voidcraft');assert.equal(Dex.species.get('mismagiusmega').abilities[0],'Voidcraft');
   assert.match(Dex.abilities.get('shadowshield').desc,/0.8x.*0.75x/);assert.match(Dex.abilities.get('spentforce').desc,/next two complete turns/);
   assert(Dex.getAbilityEffects('exalt').has('sharpness'));assert(!Dex.getAbilityEffects('exalt').has('innerfocus'));
-  for(const id of ['pulsewaste','pulsefiltration'])assert.match(Dex.abilities.get(id).desc,/Murkwater Surface for 5 turns/);
+  assert.match(Dex.abilities.get('pulsewaste').desc,/Swamp Field for 5 turns/);
+  assert.match(Dex.abilities.get('pulsefiltration').desc,/5-turn Murkwater Surface/);
   assert.equal(Dex.items.get('anomalycore').megaStone['Mr. Mime-Galar'],'Mr. Mime-Pulse');
  });
 });

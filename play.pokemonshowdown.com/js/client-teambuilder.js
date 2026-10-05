@@ -395,7 +395,7 @@
 			var buf = '';
 
 			// teampane
-			buf += '<p><button class="button big" name="showRosterProfiles">Profiles</button></p>';
+			buf += '<p><button class="button big" name="showToolsManager">Profiles &amp; builds</button></p>';
 			buf += this.clipboardHTML();
 
 			var filterFormat = '';
@@ -2500,11 +2500,13 @@
 		updateStatForm: function (setGuessed) {
 			var buf = '';
 			var set = this.curSet;
+			var selectedForm = this.currentFormPreview && this.currentFormPreview(set);
+			if (selectedForm) { set = Object.assign({}, set, {species: selectedForm.name, ability: selectedForm.ability}); }
 			var species = Dex.getAbilityFormPreview(set, this.curTeam.dex).species;
 
 			var baseStats = Dex.getAbilityFormPreview(set, this.curTeam.dex).baseStats;
 
-			buf += '<div class="resultheader"><h3>EVs</h3></div>';
+			buf += '<div class="resultheader"><h3>EVs' + (selectedForm ? ' — Preview: ' + BattleLog.escapeHTML(selectedForm.name) : '') + '</h3></div>';
 			buf += '<div class="statform">';
 			var guess = new BattleStatGuesser(this.curTeam.format).guess(set);
 			var role = guess.role;
@@ -3988,16 +3990,32 @@
 				if (entries[id]) throw new Error('Duplicate species mapping: ' + species);
 				entries[id] = nickname.trim().slice(0, 24);
 			});
-			return {id: T.uid(), name: p.name.trim().slice(0, 80), entries: entries, fallback: !!p.fallback};
+			var genderEntries = {};
+			Object.keys(p.genderEntries || {}).forEach(function (id) {
+				var species = Dex.species.get(id);
+				if (!species.exists) throw new Error('Invalid gender nickname species.');
+				genderEntries[species.id] = {};
+				Object.keys(p.genderEntries[id]).forEach(function (gender) {
+					var value = p.genderEntries[id][gender];
+					if (!['M', 'F', 'N'].includes(gender) || typeof value !== 'string' || !value.trim() || Array.from(value).length > 24 || /[\x00-\x1f|\[\]]/.test(value)) throw new Error('Invalid gender nickname.');
+					genderEntries[species.id][gender] = value.trim();
+				});
+			});
+			return {id: T.uid(), name: p.name.trim().slice(0, 80), entries: entries, fallback: !!p.fallback, shiny: ['yes', 'no'].includes(p.shiny) ? p.shiny : '', gendered: !!p.gendered, genderEntries: genderEntries};
 		});
 		return result;
 	};
 	T.nickname = function (set, profile, dex) {
 		if (!profile) return '';
-		var species = dex.species.get(set.species);
-		return profile.entries[T.id(set.species)] || (profile.fallback ? profile.entries[T.id(species.baseSpecies)] : '') || '';
+		var species = dex.species.get(set.species), gender = set.gender || species.gender;
+		var find = function (id) {
+			return (profile.gendered && gender && profile.genderEntries && profile.genderEntries[id] && profile.genderEntries[id][gender]) || profile.entries[id] || '';
+		};
+		return find(T.id(set.species)) || (profile.fallback ? find(T.id(species.baseSpecies)) : '') || '';
 	};
 	T.applyNickname = function (set, profile, dex, replace) {
+		if (profile && profile.shiny === 'yes') set.shiny = true;
+		if (profile && profile.shiny === 'no') set.shiny = false;
 		var name = T.nickname(set, profile, dex);
 		if (name && (replace || !set.name || T.id(set.name) === T.id(set.species))) set.name = name;
 		return set;
@@ -4011,11 +4029,42 @@
 	var proto = exports.TeambuilderRoom.prototype;
 	var escape = function (text) { return BattleLog.escapeHTML(String(text || '')); };
 	var button = function (name, text, value) { return '<button class="button" name="' + name + '" value="' + escape(value) + '">' + escape(text) + '</button> '; };
-	proto.toolsData = function () {
-		var data = Storage.prefs('pokemontools');
-		return data && data.version === 1 && Array.isArray(data.builds) && Array.isArray(data.nicknames) ? T.clone(data) : T.empty();
+	T.teamSignature = function (team) { return JSON.stringify([team.name, team.format, team.folder, team.team]); };
+	T.teamKey = function (team) {
+		if (!team) return '';
+		var records = Storage.prefs('teamtoolbindings') || [], used = {};
+		(Storage.teams || [team]).forEach(function (entry) { if (entry.toolsKey) used[entry.toolsKey] = true; });
+		(Storage.teams || [team]).forEach(function (entry) {
+			if (entry.toolsKey) return;
+			var signature = T.teamSignature(entry), record = records.find(function (r) { return r.signature === signature && !used[r.id]; });
+			entry.toolsKey = record ? record.id : T.uid(); used[entry.toolsKey] = true;
+		});
+		if (!team.toolsKey) team.toolsKey = T.uid();
+		return team.toolsKey;
 	};
-	proto.saveToolsData = function (data) { Storage.prefs('pokemontools', T.clone(data)); };
+	proto.toolsData = function () {
+		var stored = Storage.prefs('pokemontools');
+		var data = stored && stored.version === 1 && Array.isArray(stored.builds) && Array.isArray(stored.nicknames) ? T.clone(stored) : T.empty();
+		var key = T.teamKey(this.curTeam), settings = data.teamProfiles && data.teamProfiles[key];
+		if (key) { data.selectedNickname = settings ? settings.id : ''; data.autoNickname = settings ? settings.auto : false; }
+		return data;
+	};
+	proto.saveToolsData = function (data) {
+		var key = T.teamKey(this.curTeam);
+		if (key) {
+			data.teamProfiles = data.teamProfiles || {};
+			data.teamProfiles[key] = {id: data.selectedNickname, auto: data.autoNickname};
+		}
+		Storage.prefs('pokemontools', T.clone(data));
+		this.saveTeamToolBindings();
+	};
+	proto.saveTeamToolBindings = function () {
+		var records = (Storage.prefs('teamtoolbindings') || []).filter(function (record) { return !(Storage.teams || []).some(function (team) { return team.toolsKey === record.id; }); });
+		(Storage.teams || []).forEach(function (team) { if (team.toolsKey) records.push({id: team.toolsKey, signature: T.teamSignature(team)}); });
+		Storage.prefs('teamtoolbindings', records);
+	};
+	var saveWithBindings = proto.save;
+	proto.save = function () { var result = saveWithBindings.apply(this, arguments); this.saveTeamToolBindings(); return result; };
 	proto.toolsCommit = function () {
 		this.curTeam.team = Storage.packTeam(this.curSetList);
 		this.curTeam.iconCache = '';
@@ -4034,9 +4083,9 @@
 		builds.forEach(function (b) {
 			box += '<option value="' + escape(b.id) + '">' + escape(b.name) + ' — ' + escape(T.compatibility(b, set, self.curTeam.format, self.curTeam.dex)) + '</option>';
 		});
-		box += '</select>' + button('applySavedBuild', 'Apply') + button('saveNamedBuild', 'Save new') + button('updateSavedBuild', 'Update selected');
+		box += '</select>' + button('saveNamedBuild', 'Save as named build') + button('updateSavedBuild', 'Update selected');
 		if (this.buildUndo && this.buildUndo.team === this.curTeam && this.buildUndo.applied === set) box += button('undoSavedBuild', 'Undo apply');
-		box += '</div></div><div class="set-tools-row"><span class="set-tools-label">Nickname</span><div class="set-tools-controls">' + button('applyNicknameProfile', 'Apply profile', index) + button('showToolsManager', 'Manage library') + '</div></div><!-- SET FORM PREVIEW --></div></details>';
+		box += '</div></div><!-- SET FORM PREVIEW --></div></details>';
 		return html.replace(/<\/li>$/, box + '</li>');
 	};
 	proto.toggleSetTools = function (event) {
@@ -4068,9 +4117,11 @@
 		this.buildUndo = {team: this.curTeam, index: index, set: T.clone(this.curSetList[index])};
 		this.curSetList[index] = T.cleanSet(build.set);
 		this.buildUndo.applied = this.curSetList[index];
+		this.buildUndo.snapshot = T.clone(this.curSetList[index]);
 		if (this.openSetTools) this.openSetTools.add(this.curSetList[index]);
 		if (this.curSetLoc === index) this.curSet = this.curSetList[index];
 		this.toolsCommit();
+		this.buildUndo.snapshot = T.clone(this.buildUndo.applied);
 	};
 	proto.updateSavedBuild = function (value, btn) {
 		var index = this.toolsSetIndex(btn), id = $(btn).closest('li').find('.saved-build-choice').val();
@@ -4086,31 +4137,80 @@
 		if (!undo || undo.team !== this.curTeam) return;
 		const index = this.curSetList.indexOf(undo.applied);
 		if (index < 0) { this.buildUndo = null; return; }
+		if (!undo.snapshot || JSON.stringify(undo.snapshot) !== JSON.stringify(undo.applied)) return app.addPopupMessage('This set changed after applying the build. Undo would overwrite those edits.');
 		this.curSetList[index] = T.clone(undo.set);
 		if (this.openSetTools) this.openSetTools.add(this.curSetList[index]);
 		if (this.curSetLoc === index) this.curSet = this.curSetList[index];
 		this.buildUndo = null;
 		this.toolsCommit();
 	};
+	T.namedBuilds = function (sets, name, format) {
+		if (!sets || !sets.length) throw new Error('Paste at least one Showdown set.');
+		return sets.map(function (set) {
+			if (!Dex.species.get(set.species).exists) throw new Error('Unknown Pokémon: ' + set.species);
+			return {id: T.uid(), name: (name ? name + (sets.length > 1 ? ' — ' + set.species : '') : set.name || set.species).slice(0, 80), format: format || '', set: T.cleanSet(set)};
+		});
+	};
+	proto.saveImportedBuilds = function () {
+		if (!this.saveNicknameMappings()) return;
+		try {
+			var builds = T.namedBuilds(Storage.importTeam(String(this.$('.imported-build-sets').val())), String(this.$('.imported-build-name').val()).trim(), this.curTeam && this.curTeam.format);
+			var data = this.toolsData(); data.builds = data.builds.concat(builds);
+			this.saveToolsData(data); this.showToolsManager();
+		} catch (err) { app.addPopupMessage(err.message); }
+	};
+	proto.addLibraryBuild = function (id) {
+		if (!this.saveNicknameMappings()) return;
+		if (!this.curTeam || !this.curSetList) return app.addPopupMessage('Open the team you want to add this build to first.');
+		var data = this.toolsData(), build = data.builds.find(function (b) { return b.id === id; });
+		if (!build) return;
+		if (!this.curTeam.dex.species.get(build.set.species).exists) return app.addPopupMessage('This Pokémon is unavailable in the selected format.');
+		var set = T.cleanSet(build.set);
+		if (data.autoNickname) T.applyNickname(set, data.nicknames.find(function (p) { return p.id === data.selectedNickname; }), this.curTeam.dex, false);
+		var index = this.curSetList.findIndex(function (entry) { return !entry.species; });
+		if (index < 0) index = this.curSetList.length;
+		if (index >= (this.curTeam.capacity || 6)) return app.addPopupMessage('This team is full. Select a Pokémon slot and use Replace selected set instead.');
+		this.curSetList[index] = set;
+		this.curSet = null; this.curSetLoc = -1; this.toolsView = false; this.profilesView = false;
+		this.toolsCommit();
+	};
 	proto.showToolsManager = function () {
 		this.toolsView = true;
-		var data = this.toolsData(), html = '<div class="pad local-tools-manager">' + button('back', 'Back to Teambuilder') + '<h2>Builds & Pokémon nicknames</h2><p>Saved in this browser, not synced across accounts or devices. Applied builds are independent copies. Export this library to back it up.</p><h3>Saved builds</h3>';
+		var data = this.toolsData(), html = '<div class="pad local-tools-manager">' + button('back', 'Back to Teambuilder') + '<h2>Profiles & saved sets</h2><p><button class="button" name="openRosterManager">Roster filters</button></p><p class="tools-note">Saved in this browser. Use Backup below to keep a copy.</p><details class="tools-panel"><summary>Saved builds</summary><input class="textbox build-library-search" aria-label="Search saved builds" placeholder="Search Pokémon, build, ability or moves" />';
 		data.builds.forEach(function (b) {
-			html += '<p><strong>' + escape(b.name) + '</strong> — ' + escape(b.set.species) + ' (' + escape(b.format || 'no format') + ') ' + button('renameToolEntry', 'Rename', 'build:' + b.id) + button('duplicateToolEntry', 'Duplicate', 'build:' + b.id) + button('deleteToolEntry', 'Delete', 'build:' + b.id) + '</p>';
+			html += '<div class="saved-build-entry" data-search="' + escape([b.name, b.set.species, b.set.ability, (b.set.moves || []).join(' ')].join(' ').toLowerCase()) + '"><p><strong>' + escape(b.name) + '</strong> — ' + escape(b.set.species) + ' (' + escape(b.format || 'no format') + ') ' + button('renameToolEntry', 'Rename', 'build:' + b.id) + button('duplicateToolEntry', 'Duplicate', 'build:' + b.id) + button('deleteToolEntry', 'Delete', 'build:' + b.id) + button('addLibraryBuild', 'Add to team', b.id) + button('replaceLibraryBuild', 'Replace selected set', b.id) + '</p><small>' + escape([b.set.ability, b.set.item, b.set.nature, (b.set.moves || []).join(' / ')].filter(Boolean).join(' · ')) + '</small></div>';
 		});
-		html += '<h3>Nickname profiles</h3><p>These name Pokémon, not your account. Manual nicknames remain unless “Replace existing” is checked.</p><label>Selected profile <select class="nickname-profile-choice"><option value="">None</option>';
+		html += '<details><summary>Import named sets</summary><label>Build name / group <input class="textbox imported-build-name" placeholder="e.g. Rain offense" maxlength="80" /></label><textarea class="textbox imported-build-sets" rows="6" aria-label="Showdown sets to save" placeholder="Paste one or more Showdown sets"></textarea>' + button('saveImportedBuilds', 'Save sets to library') + '</details>';
+		html += '</details><section class="tools-panel"><h3>Nickname profile</h3><label>Profile <select class="nickname-profile-choice"><option value="">None</option>';
 		data.nicknames.forEach(function (p) { html += '<option value="' + escape(p.id) + '"' + (data.selectedNickname === p.id ? ' selected' : '') + '>' + escape(p.name) + '</option>'; });
 		html += '</select></label> <label><input type="checkbox" class="auto-nickname"' + (data.autoNickname ? ' checked' : '') + ' /> Auto-apply when adding a Pokémon</label><p>' + button('newNicknameProfile', 'New nickname profile') + '</p>';
 		var profile = data.nicknames.find(function (p) { return p.id === data.selectedNickname; });
 		if (profile) {
-			var lines = Object.keys(profile.entries).map(function (id) { return Dex.species.get(id).name + ' = ' + profile.entries[id]; }).join('\n');
-			html += '<p>' + button('renameToolEntry', 'Rename', 'nickname:' + profile.id) + button('duplicateToolEntry', 'Duplicate', 'nickname:' + profile.id) + button('deleteToolEntry', 'Delete', 'nickname:' + profile.id) + '</p><label>One species or form = nickname per line<textarea class="textbox nickname-mappings" rows="7">' + escape(lines) + '</textarea></label><label><input type="checkbox" class="nickname-fallback"' + (profile.fallback ? ' checked' : '') + ' /> Use a base-species nickname when this form has no entry</label><p>' + button('saveNicknameMappings', 'Save mappings') + '</p>';
+			var draft = (Storage.prefs('nicknamedrafts') || {})[profile.id];
+			html += '<p>' + button('renameToolEntry', 'Rename', 'nickname:' + profile.id) + button('duplicateToolEntry', 'Duplicate', 'nickname:' + profile.id) + button('deleteToolEntry', 'Delete', 'nickname:' + profile.id) + '</p>';
+			html += '<div class="nickname-rows"><div class="nickname-row nickname-head"><span>Pokémon / form</span><span>Gender</span><span>Nickname</span><span></span></div>';
+			if (draft) {
+				draft.rows.forEach(function (row) { html += T.nicknameRow(row[0], row[1], row[2]); });
+				profile.shiny = draft.shiny; profile.gendered = draft.gendered; profile.fallback = draft.fallback;
+			} else {
+				Object.keys(profile.entries).sort().forEach(function (id) { html += T.nicknameRow(Dex.species.get(id).name, profile.entries[id]); });
+				Object.keys(profile.genderEntries || {}).sort().forEach(function (id) { Object.keys(profile.genderEntries[id]).forEach(function (gender) { html += T.nicknameRow(Dex.species.get(id).name, profile.genderEntries[id][gender], gender); }); });
+			}
+
+			html += T.nicknameRow('', '') + '</div><datalist id="nickname-species-options">';
+			Object.keys(window.BattlePokedex || {}).forEach(function (id) { html += '<option value="' + escape(Dex.species.get(id).name) + '"></option>'; });
+			html += '</datalist><p>' + button('addNicknameRow', 'Add Pokémon') + ' ' + button('saveNicknameMappings', 'Save nicknames') + ' <span class="nickname-save-status" role="status">' + (draft ? 'Recovered unsaved draft' : 'Saved') + '</span></p>';
+			html += '<p><label>Shiny <select class="nickname-shiny"><option value="">Keep unchanged</option><option value="yes"' + (profile.shiny === 'yes' ? ' selected' : '') + '>Always shiny</option><option value="no"' + (profile.shiny === 'no' ? ' selected' : '') + '>Never shiny</option></select></label><label><input type="checkbox" class="nickname-gendered"' + (profile.gendered ? ' checked' : '') + ' /> Use gender-specific nicknames</label></p><p class="tools-note">Default names apply to any gender. Gender rows override them when enabled; an unspecified gender uses the default name.</p>';
+			html += '<label><input type="checkbox" class="nickname-fallback"' + (profile.fallback ? ' checked' : '') + ' /> Use the base Pokémon’s name for forms without an entry</label>';
+			html += '<details><summary>Paste a list</summary><p>One Pokémon = nickname per line. Dashes (— or –) also work.</p><textarea class="textbox nickname-paste" rows="5" aria-label="Paste nickname list" placeholder="Togekiss = Deneb"></textarea>' + button('pasteNicknameRows', 'Add pasted names') + '</details>';
+
 		}
-		html += '<label><input type="checkbox" class="nickname-replace" /> Replace existing nicknames when applying</label><p>' + button('applyNicknameToTeam', 'Apply to current team') + '</p><h3>Import / export</h3><p>Import adds independent entries; existing entries are preserved.</p><textarea class="textbox tools-transfer" rows="8" aria-label="Build and nickname library JSON">' + escape(JSON.stringify(data, null, 2)) + '</textarea><p>' + button('exportToolsLibrary', 'Refresh export') + button('importToolsLibrary', 'Import library') + '</p></div>';
+		html += '<label><input type="checkbox" class="nickname-replace" /> Replace existing nicknames when applying</label><p>' + button('applyNicknameToTeam', 'Apply profile to whole team') + '</p></section><details class="tools-panel"><summary>Backup / import library</summary><p>Import adds copies without replacing saved profiles.</p><textarea class="textbox tools-transfer" rows="8" aria-label="Build and nickname library JSON">' + escape(JSON.stringify(data, null, 2)) + '</textarea><p>' + button('exportToolsLibrary', 'Refresh export') + button('importToolsLibrary', 'Import library') + '</p></details></div>';
 		this.$el.html(html);
 	};
-	proto.exportToolsLibrary = function () { this.$('.tools-transfer').val(JSON.stringify(this.toolsData(), null, 2)).focus().select(); };
+	proto.exportToolsLibrary = function () { if (!this.saveNicknameMappings()) return; this.$('.tools-transfer').val(JSON.stringify(this.toolsData(), null, 2)).focus().select(); };
 	proto.importToolsLibrary = function () {
+		if (!this.saveNicknameMappings()) return;
 		try {
 			var incoming = T.parse(this.$('.tools-transfer').val()), data = this.toolsData();
 			data.builds = data.builds.concat(incoming.builds);
@@ -4120,6 +4220,7 @@
 		} catch (err) { app.addPopupMessage(err.message); }
 	};
 	proto.newNicknameProfile = function () {
+		if (!this.saveNicknameMappings()) return;
 		var self = this;
 		app.addPopupPrompt('Profile name:', 'Create nickname profile', function (name) {
 			if (!name || !name.trim()) return;
@@ -4130,24 +4231,76 @@
 			self.showToolsManager();
 		});
 	};
-	proto.saveNicknameMappings = function () {
-		var data = this.toolsData(), profile = data.nicknames.find(function (p) { return p.id === data.selectedNickname; });
-		if (!profile) return;
-		var entries = {}, error = '';
-		String(this.$('.nickname-mappings').val()).split(/\r?\n/).forEach(function (line) {
-			if (!line.trim()) return;
-			var split = line.indexOf('='), species = Dex.species.get(line.slice(0, split).trim()), name = line.slice(split + 1).trim();
-			if (split < 1 || !species.exists || !name || /[\x00-\x1f|\[\]]/.test(name) || Array.from(name).length > 24) error = 'Use valid species = nickname entries (maximum 24 characters).';
-			else if (entries[species.id]) error = 'Duplicate mapping for ' + species.name;
-			else entries[species.id] = name;
+	T.nicknameRow = function (species, name, gender) {
+		var choices = '<select class="nickname-gender" aria-label="Nickname gender">' + [['', 'Default'], ['M', 'Male'], ['F', 'Female'], ['N', 'Genderless']].map(function (option) { return '<option value="' + option[0] + '"' + (gender === option[0] ? ' selected' : '') + '>' + option[1] + '</option>'; }).join('') + '</select>';
+		return '<div class="nickname-row"><input class="textbox nickname-species" list="nickname-species-options" aria-label="Pokémon or form" placeholder="Pokémon or form" value="' + escape(species) + '" />' + choices + '<input class="textbox nickname-value" aria-label="Nickname" placeholder="Nickname" value="' + escape(name) + '" />' + button('removeNicknameRow', 'Remove') + '</div>';
+	};
+	T.nicknameEntries = function (rows) {
+		var entries = {};
+		rows.forEach(function (row, index) {
+			var raw = row[0].trim(), name = row[1].trim(), species = Dex.species.get(raw);
+			if (!raw && !name) return;
+			if (!species.exists) throw new Error('Row ' + (index + 1) + ': choose a valid Pokémon or form.');
+			if (!name || /[\x00-\x1f|\[\]]/.test(name) || Array.from(name).length > 24) throw new Error(species.name + ': enter a nickname of 1–24 characters, without | or brackets.');
+			if (entries[species.id]) throw new Error('Duplicate Pokémon: ' + species.name);
+			entries[species.id] = name;
 		});
-		if (error) return app.addPopupMessage(error);
-		profile.entries = entries;
+		return entries;
+	};
+	T.nicknameMappings = function (rows) {
+		var result = {entries: {}, genderEntries: {}};
+		rows.forEach(function (row) {
+			var parsed = T.nicknameEntries([row]);
+			Object.keys(parsed).forEach(function (id) {
+				var gender = row[2] || '';
+				if (gender && !['M', 'F', 'N'].includes(gender)) throw new Error('Invalid gender.');
+				var dest = gender ? (result.genderEntries[id] || (result.genderEntries[id] = {})) : result.entries;
+				var key = gender || id;
+				if (dest[key]) throw new Error('Duplicate Pokémon / gender: ' + row[0]);
+				dest[key] = parsed[id];
+			});
+		});
+		return result;
+	};
+	T.nicknameList = function (text) {
+		return text.split(/\r?\n/).filter(function (line) { return line.trim(); }).map(function (line) {
+			var match = line.match(/^(.*?)\s*(?:=|—|–|\s-\s)\s*(.+)$/);
+			if (!match) throw new Error('Use Pokémon = nickname on each line.');
+			return [match[1], match[2]];
+		});
+	};
+	proto.addNicknameRow = function () { this.$('.nickname-rows').append(T.nicknameRow('', '')); this.$('.nickname-species').last().focus(); };
+	proto.removeNicknameRow = function (value, btn) { $(btn).closest('.nickname-row').remove(); this.saveNicknameDraft(); };
+	proto.pasteNicknameRows = function () {
+		try {
+			var rows = T.nicknameList(String(this.$('.nickname-paste').val()));
+			T.nicknameEntries(rows);
+			var self = this;
+			rows.forEach(function (row) { self.$('.nickname-rows').append(T.nicknameRow(row[0], row[1])); });
+			this.$('.nickname-paste').val('');
+			this.saveNicknameDraft();
+		} catch (err) { app.addPopupMessage(err.message); }
+	};
+	proto.saveNicknameMappings = function () {
+		if (!this.toolsView) return true;
+		var data = this.toolsData(), profile = data.nicknames.find(function (p) { return p.id === data.selectedNickname; });
+		if (!profile) return true;
+		var rows = [];
+		this.$('.nickname-row').not('.nickname-head').each(function () { rows.push([String($(this).find('.nickname-species').val()), String($(this).find('.nickname-value').val()), String($(this).find('.nickname-gender').val() || '')]); });
+		try {
+			var mapped = T.nicknameMappings(rows);
+			profile.entries = mapped.entries; profile.genderEntries = mapped.genderEntries;
+		} catch (err) { app.addPopupMessage(err.message); return false; }
 		profile.fallback = !!this.$('.nickname-fallback').prop('checked');
+		profile.shiny = this.$('.nickname-shiny').val() || '';
+		profile.gendered = !!this.$('.nickname-gendered').prop('checked');
 		this.saveToolsData(data);
-		this.showToolsManager();
+		var drafts = Storage.prefs('nicknamedrafts') || {}; delete drafts[profile.id]; Storage.prefs('nicknamedrafts', drafts);
+		this.$('.nickname-save-status').text('Saved');
+		return true;
 	};
 	proto.nicknameSettingsChange = function () {
+		if (!this.saveNicknameMappings()) { this.$('.nickname-profile-choice').val(this.toolsData().selectedNickname); return; }
 		var data = this.toolsData();
 		data.selectedNickname = this.$('.nickname-profile-choice').val() || '';
 		data.autoNickname = !!this.$('.auto-nickname').prop('checked');
@@ -4162,14 +4315,66 @@
 		this.toolsCommit();
 	};
 	proto.applyNicknameToTeam = function () {
+		if (!this.saveNicknameMappings()) return;
 		if (!this.curTeam || !this.curSetList) return app.addPopupMessage('Open a team first.');
 		var data = this.toolsData(), profile = data.nicknames.find(function (p) { return p.id === data.selectedNickname; });
-		if (!profile) return;
+		if (!profile) return app.addPopupMessage('Choose a nickname profile first.');
 		var replace = !!this.$('.nickname-replace').prop('checked'), dex = this.curTeam.dex;
-		this.curSetList.forEach(function (set) { T.applyNickname(set, profile, dex, replace); });
-		this.toolsCommit();
+		var before = T.clone(this.curSetList), after = T.clone(before);
+		after.forEach(function (set) { T.applyNickname(set, profile, dex, replace); });
+		this.pendingProfileApply = {team: this.curTeam, before: before, after: after};
+		var names = after.filter(function (set, i) { return set.name !== before[i].name; }).length;
+		var shiny = after.filter(function (set, i) { return !!set.shiny !== !!before[i].shiny; }).length;
+		this.$('.profile-apply-preview').remove();
+		this.$el.prepend('<div class="pad profile-apply-preview" role="status"><b>' + escape(profile.name) + '</b>: ' + names + ' nickname changes, ' + shiny + ' shiny changes. ' + button('confirmProfileApply', 'Apply changes') + button('cancelProfileApply', 'Cancel') + '</div>');
+	};
+	proto.confirmProfileApply = function () {
+		var pending = this.pendingProfileApply;
+		if (!pending || pending.team !== this.curTeam || JSON.stringify(pending.before) !== JSON.stringify(this.curSetList)) return app.addPopupMessage('The team changed. Preview these changes again.');
+		this.profileApplyUndo = pending;
+		this.curSetList = T.clone(pending.after); Storage.activeSetList = this.curSetList;
+		if (this.curSetLoc >= 0) this.curSet = this.curSetList[this.curSetLoc];
+		this.pendingProfileApply = null; this.toolsCommit();
+		this.profileApplyUndo.after = T.clone(this.curSetList);
+		this.$el.prepend('<div class="pad profile-apply-preview">Profile applied. ' + button('undoProfileApply', 'Undo profile changes') + '</div>');
+	};
+	proto.cancelProfileApply = function () { this.pendingProfileApply = null; this.$('.profile-apply-preview').remove(); };
+	proto.undoProfileApply = function () {
+		var undo = this.profileApplyUndo;
+		if (!undo || undo.team !== this.curTeam || JSON.stringify(undo.after) !== JSON.stringify(this.curSetList)) return app.addPopupMessage('The team changed after applying. Undo would overwrite those edits.');
+		this.curSetList = T.clone(undo.before); Storage.activeSetList = this.curSetList;
+		if (this.curSetLoc >= 0) this.curSet = this.curSetList[this.curSetLoc];
+		this.profileApplyUndo = null; this.toolsCommit();
+	};
+	var originalRosterManager = proto.showRosterProfiles;
+	proto.openRosterManager = function () { if (!this.saveNicknameMappings()) return; this.toolsView = false; originalRosterManager.call(this); };
+	proto.filterSavedBuilds = function (event) {
+		var query = event.currentTarget.value.toLowerCase().trim();
+		this.$('.saved-build-entry').each(function () { $(this).toggle($(this).attr('data-search').includes(query)); });
+	};
+	proto.replaceLibraryBuild = function (id) {
+		if (!this.saveNicknameMappings()) return;
+		if (!this.curTeam || !this.curSet) return app.addPopupMessage('Select the Pokémon slot to replace first.');
+		var build = this.toolsData().builds.find(function (b) { return b.id === id; });
+		if (!build || !this.curTeam.dex.species.get(build.set.species).exists) return;
+		var index = this.curSetList.indexOf(this.curSet); if (index < 0) return;
+		this.buildUndo = {team: this.curTeam, set: T.clone(this.curSet)};
+		this.curSetList[index] = T.cleanSet(build.set); this.curSet = this.curSetList[index];
+		this.buildUndo.applied = this.curSet;
+		this.buildUndo.snapshot = T.clone(this.curSet);
+		this.openSetTools = this.openSetTools || new WeakSet(); this.openSetTools.add(this.curSet);
+		this.toolsView = false; this.profilesView = false; this.toolsCommit();
+		this.buildUndo.snapshot = T.clone(this.buildUndo.applied);
+	};
+	proto.saveNicknameDraft = function () {
+		var id = this.toolsData().selectedNickname; if (!id || !this.toolsView) return;
+		var rows = []; this.$('.nickname-row').not('.nickname-head').each(function () { rows.push([String($(this).find('.nickname-species').val()), String($(this).find('.nickname-value').val()), String($(this).find('.nickname-gender').val() || '')]); });
+		var drafts = Storage.prefs('nicknamedrafts') || {};
+		drafts[id] = {rows: rows, shiny: this.$('.nickname-shiny').val() || '', gendered: !!this.$('.nickname-gendered').prop('checked'), fallback: !!this.$('.nickname-fallback').prop('checked')};
+		Storage.prefs('nicknamedrafts', drafts); this.$('.nickname-save-status').text('Draft saved — apply or save to finish');
 	};
 	proto.renameToolEntry = function (key) {
+		if (!this.saveNicknameMappings()) return;
 		var self = this, parts = key.split(':'), field = parts[0] === 'build' ? 'builds' : 'nicknames';
 		app.addPopupPrompt('New name:', 'Rename', function (name) {
 			if (!name || !name.trim()) return;
@@ -4181,6 +4386,7 @@
 		});
 	};
 	proto.duplicateToolEntry = function (key) {
+		if (!this.saveNicknameMappings()) return;
 		var parts = key.split(':'), field = parts[0] === 'build' ? 'builds' : 'nicknames', data = this.toolsData();
 		var entry = data[field].find(function (x) { return x.id === parts[1]; });
 		if (!entry) return;
@@ -4212,16 +4418,33 @@
 	};
 	var profiles = proto.renderRosterProfiles;
 	proto.renderRosterProfiles = function () {
-		var html = profiles.apply(this, arguments);
-		if (this.profilesView) return html;
-		return html.replace(/<\/div>$/, button('showToolsManager', 'Builds & nicknames') + '</div>');
+		var html = profiles.apply(this, arguments), data = this.toolsData();
+		var active = data.nicknames.find(function (p) { return p.id === data.selectedNickname; });
+		html = html.replace(/<button[^>]*name="showRosterProfiles"[^>]*>Profiles<\/button>/, '');
+		html = html.replace(/<\/div>$/, '<span class="active-name-profile">Names: ' + escape(active ? active.name : 'None') + '</span></div>');
+		return html;
 	};
 	var update = proto.update;
-	proto.update = function () { if (this.toolsView) return this.showToolsManager(); return update.apply(this, arguments); };
+	proto.update = function () {
+		if (this.toolsView) return this.showToolsManager();
+		var result = update.apply(this, arguments);
+		if (this.curTeam && !this.profilesView && !this.validationView) {
+			var data = this.toolsData();
+			var html = '<div class="pad team-profile-toolbar"><label>Team profile <select class="team-profile-choice"><option value="">None</option>';
+			data.nicknames.forEach(function (p) { html += '<option value="' + escape(p.id) + '"' + (data.selectedNickname === p.id ? ' selected' : '') + '>' + escape(p.name) + '</option>'; });
+			html += '</select></label> ' + button('showToolsManager', 'Profiles & builds') + button('applyNicknameToTeam', 'Apply to whole team') + '</div>';
+			this.$('.team-profile-toolbar').remove(); this.$el.prepend(html);
+		}
+		return result;
+	};
+	proto.events['change .team-profile-choice'] = function (event) { var data = this.toolsData(); data.selectedNickname = event.currentTarget.value; this.saveToolsData(data); this.update(); };
 	var back = proto.back;
-	proto.back = function () { if (this.toolsView) { this.toolsView = false; return this.update(); } return back.apply(this, arguments); };
+	proto.back = function () { if (this.toolsView) { if (!this.saveNicknameMappings()) return; this.toolsView = false; return this.update(); } return back.apply(this, arguments); };
 	proto.events['change .nickname-profile-choice'] = 'nicknameSettingsChange';
 	proto.events['change .auto-nickname'] = 'nicknameSettingsChange';
+	proto.events['input .nickname-row input'] = 'saveNicknameDraft';
+	proto.events['change .nickname-gender, .nickname-shiny, .nickname-gendered, .nickname-fallback'] = 'saveNicknameDraft';
+	proto.events['input .build-library-search'] = 'filterSavedBuilds';
 	// Item search uses descriptions and activation data exported from this server checkout.
 	T.itemMetadata = {"parasectite":{"text":"Allows Parasect, including its Rejuv or Parasite form, to Mega Evolve.", "tags":["mega evolution transformation", "evolution"]}, "anomalycore":{"text":"If held by a designated Pulse or Rift Pokemon, this Anomaly Core allows it to undergo its Pulse or Rift Evolution in battle.", "tags":["mega evolution transformation", "evolution"]}, "belliboltite":{"text":"If held by a Bellibolt, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "sunflorite":{"text":"If held by a Sunflora, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "claydolite":{"text":"If held by a Claydol, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "abilityshield":{"text":"Holder's Ability cannot be changed, suppressed, or ignored by any effect.", "tags":[]}, "abomasite":{"text":"If held by an Abomasnow, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "absolite":{"text":"If held by an Absol, this item allows it to Mega Evolve into Mega Absol in battle.", "tags":["mega evolution transformation", "evolution"]}, "absolitez":{"text":"If held by an Absol, this item allows it to Mega Evolve into Mega Absol Z in battle.", "tags":["mega evolution transformation", "evolution"]}, "absorbbulb":{"text":"Raises Sp. Atk by 1 if hit by Water or on Misty/Water Surface/Underwater. Single use.", "tags":[]}, "adamantcrystal":{"text":"If held by a Dialga, its Steel- and Dragon-type attacks have 1.2x power.", "tags":[]}, "adamantorb":{"text":"If held by a Dialga, its Steel- and Dragon-type attacks have 1.2x power.", "tags":[]}, "adrenalineorb":{"text":"Raises holder's Speed by 1 stage if it gets affected by Intimidate. Single use.", "tags":[]}, "aerodactylite":{"text":"If held by an Aerodactyl, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "aggronite":{"text":"If held by an Aggron, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "aguavberry":{"text":"Restores 1/2 max HP at 1/4 max HP or less; confuses if -SpD Nature. Single use.", "tags":["healing recovery", "low HP pinch healing"], "threshold":0.25}, "airballoon":{"text":"Holder is immune to Ground-type attacks. Pops when holder is hit.", "tags":[]}, "alakazite":{"text":"If held by an Alakazam, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "aloraichiumz":{"text":"Alolan Raichu with Thunderbolt can use Stoked Sparksurfer once per battle.", "tags":[]}, "altarianite":{"text":"If held by an Altaria, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "ampharosite":{"text":"If held by an Ampharos, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "amplifieldrock":{"text":"Extends temporary terrains and room effects created by the holder, usually by 3 turns.", "tags":[]}, "apicotberry":{"text":"Raises holder's Sp. Def by 1 stage when at 1/4 max HP or less. Single use.", "tags":["low HP pinch stat boost", "offense offensive boost"], "threshold":0.25}, "armorfossil":{"text":"Can be revived into Shieldon.", "tags":[]}, "aspearberry":{"text":"Holder is cured if it is frozen. Single use.", "tags":["status cure"]}, "assaultvest":{"text":"Holder's Sp. Def is 1.5x, but it can only select damaging moves.", "tags":["defense defensive boost"]}, "audinite":{"text":"If held by an Audino, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "auspiciousarmor":{"text":"Evolves Charcadet into Armarouge when used.", "tags":["evolution"]}, "babiriberry":{"text":"Halves damage taken from a supereffective Steel-type attack. Single use.", "tags":["resistance resist berry defensive"]}, "banettite":{"text":"If held by a Banette, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "barbaracite":{"text":"If held by a Barbaracle, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "baxcalibrite":{"text":"If held by a Baxcalibur, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "beastball":{"text":"A special Poke Ball designed to catch Ultra Beasts.", "tags":[]}, "beedrillite":{"text":"If held by a Beedrill, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "berryjuice":{"text":"Restores 20 HP when at 1/2 max HP or less. Single use.", "tags":["healing recovery", "low HP pinch healing"], "threshold":0.5}, "berrysweet":{"text":"Evolves Milcery into Alcremie when held and spun around.", "tags":["evolution"]}, "bignugget":{"text":"A big nugget of pure gold that gives off a lustrous gleam.", "tags":[]}, "bigroot":{"text":"Holder gains 1.3x HP from draining/Aqua Ring/Ingrain/Leech Seed/Strength Sap.", "tags":[]}, "bindingband":{"text":"Holder's partial-trapping moves deal 1/6 max HP per turn instead of 1/8.", "tags":[]}, "blackbelt":{"text":"Holder's Fighting-type attacks have 1.2x power.", "tags":[]}, "blackglasses":{"text":"Holder's Dark-type attacks have 1.2x power.", "tags":[]}, "blacksludge":{"text":"Each turn, Poison types or Parasitism holders heal 1/16 max HP; others lose 1/8.", "tags":["healing recovery"]}, "blastoisinite":{"text":"If held by a Blastoise, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "blazikenite":{"text":"If held by a Blaziken, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "blueorb":{"text":"If held by a Kyogre, this item triggers its Primal Reversion in battle.", "tags":[]}, "blunderpolicy":{"text":"If the holder misses due to accuracy, its Speed is raised by 2 stages. Single use.", "tags":[]}, "boosterenergy":{"text":"Activates the Protosynthesis or Quark Drive Abilities. Single use.", "tags":[]}, "bottlecap":{"text":"Used for Hyper Training. One of a Pokemon's stats is calculated with an IV of 31.", "tags":[]}, "brightpowder":{"text":"The accuracy of attacks against the holder is 0.9x.", "tags":[]}, "buggem":{"text":"Holder's first successful Bug-type attack will have 1.3x power. Single use.", "tags":[]}, "buginiumz":{"text":"Once per battle, converts a damaging Bug-type move into Savage Spin-Out, or gives a Bug-type status move its Z-effect.", "tags":[]}, "bugmemory":{"text":"Holder's Multi-Attack is Bug type. RKS System gives Tinted Lens and Shield Dust.", "tags":[]}, "burndrive":{"text":"Holder's Techno Blast is Fire type.", "tags":[]}, "cameruptite":{"text":"If held by a Camerupt, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "cellbattery":{"text":"Raises holder's Attack by 1 if hit by an Electric-type attack. Single use.", "tags":[]}, "chandelurite":{"text":"If held by a Chandelure, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "charcoal":{"text":"Holder's Fire-type attacks have 1.2x power.", "tags":[]}, "charizarditex":{"text":"If held by a Charizard, this item allows it to Mega Evolve into either Mega Charizard X or Mega Charizard Y.", "tags":["mega evolution transformation", "evolution"]}, "charizarditey":{"text":"If held by a Charizard, this item allows it to Mega Evolve into either Mega Charizard X or Mega Charizard Y.", "tags":["mega evolution transformation", "evolution"]}, "chartiberry":{"text":"Halves damage taken from a supereffective Rock-type attack. Single use.", "tags":["resistance resist berry defensive"]}, "cheriberry":{"text":"Holder cures itself if it is paralyzed. Single use.", "tags":["status cure"]}, "cherishball":{"text":"A rare Poke Ball that has been crafted to commemorate an occasion.", "tags":[]}, "chesnaughtite":{"text":"If held by a Chesnaught, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "chestoberry":{"text":"Holder wakes up if it is asleep. Single use.", "tags":["status cure"]}, "chilanberry":{"text":"Halves damage taken from a Normal-type attack. Single use.", "tags":["resistance resist berry defensive"]}, "chilldrive":{"text":"Holder's Techno Blast is Ice type.", "tags":[]}, "chimechite":{"text":"If held by a Chimecho, this item allows it to Mega Evolve into either Chimecho-Mega or Chimecho-Mega-Y in battle.", "tags":["mega evolution transformation", "evolution"]}, "chippedpot":{"text":"Evolves Sinistea-Antique into Polteageist-Antique when used.", "tags":["evolution"]}, "choiceband":{"text":"Holder's Attack is 1.5x, but it can only select the first move it executes.", "tags":["offense offensive boost"]}, "choicescarf":{"text":"Holder's Speed is 1.5x, but it can only select the first move it executes.", "tags":[]}, "choicespecs":{"text":"Holder's Sp. Atk is 1.5x, but it can only select the first move it executes.", "tags":["offense offensive boost"]}, "chopleberry":{"text":"Halves damage taken from a supereffective Fighting-type attack. Single use.", "tags":["resistance resist berry defensive"]}, "clawfossil":{"text":"Can be revived into Anorith.", "tags":[]}, "clearamulet":{"text":"Prevents other Pokemon from lowering the holder's stat stages.", "tags":[]}, "clefablite":{"text":"If held by a Clefable, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "haxorite":{"text":"If held by a Haxorus, this item allows it to Mega Evolve into Haxorus-Mega in battle.", "tags":["mega evolution transformation", "evolution"]}, "arbokite":{"text":"If held by an Arbok, this item allows it to Mega Evolve into either Arbok-Mega-X or Arbok-Mega-Y in battle.", "tags":["mega evolution transformation", "evolution"]}, "cinderite":{"text":"", "tags":["mega evolution transformation"]}, "ledianite":{"text":"", "tags":["mega evolution transformation"]}, "aridiate":{"text":"", "tags":["mega evolution transformation"]}, "clawitzerite":{"text":"", "tags":["mega evolution transformation"]}, "zangoosite":{"text":"", "tags":["mega evolution transformation"]}, "sevipite":{"text":"", "tags":["mega evolution transformation"]}, "salazzite":{"text":"", "tags":["mega evolution transformation"]}, "arbolivite":{"text":"", "tags":["mega evolution transformation"]}, "tyrantrumite":{"text":"", "tags":["mega evolution transformation"]}, "torterranite":{"text":"", "tags":["mega evolution transformation"]}, "infernite":{"text":"", "tags":["mega evolution transformation"]}, "empoleonite":{"text":"", "tags":["mega evolution transformation"]}, "aurorite":{"text":"", "tags":["mega evolution transformation"]}, "miloticide":{"text":"", "tags":["mega evolution transformation"]}, "cloversweet":{"text":"Evolves Milcery into Alcremie when held and spun around.", "tags":["evolution"]}, "cobaberry":{"text":"Halves damage taken from a supereffective Flying-type attack. Single use.", "tags":["resistance resist berry defensive"]}, "colburberry":{"text":"Halves damage taken from a supereffective Dark-type attack. Single use.", "tags":["resistance resist berry defensive"]}, "cornerstonemask":{"text":"Ogerpon-Cornerstone: 1.2x power attacks; Terastallize to gain Embody Aspect.", "tags":[]}, "coverfossil":{"text":"Can be revived into Tirtouga.", "tags":[]}, "covertcloak":{"text":"The holder is not affected by the secondary effect of another Pokemon's attack. Attacks with secondary effects that are prevented include those with a chance (even 100%) to paralyze, sleep, freeze, burn, poison, confuse, cause the holder to flinch, cause the holder's stat stages to be lowered, as well as Anchor Shot, Eerie Spell, Fling, Psychic Noise, Salt Cure, Spirit Shackle, Syrup Bomb, and Throat Chop. The effect of Sparkling Aria is prevented if the holder is the only target. Secondary effects added by King's Rock, Razor Fang, and the Poison Touch, Stench, and Toxic Chain Abilities are also prevented against the holder.", "tags":[]}, "crabominite":{"text":"If held by a Crabominable, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "crackedpot":{"text":"Evolves Sinistea into Polteageist when used.", "tags":["evolution"]}, "custapberry":{"text":"Holder moves first in its priority bracket when at 1/4 max HP or less. Single use.", "tags":[]}, "damprock":{"text":"Holder's use of Rain Dance lasts 8 turns instead of 5.", "tags":[]}, "darkgem":{"text":"Holder's first successful Dark-type attack will have 1.3x power. Single use.", "tags":[]}, "darkiniumz":{"text":"Once per battle, converts a damaging Dark-type move into Black Hole Eclipse, or gives a Dark-type status move its Z-effect.", "tags":[]}, "darkmemory":{"text":"Holder's Multi-Attack is Dark type. RKS System gives Pressure and Intimidate.", "tags":[]}, "darkranite":{"text":"If held by a Darkrai, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "dawnstone":{"text":"Evolves male Kirlia into Gallade and female Snorunt into Froslass when used.", "tags":["mega evolution transformation", "evolution"]}, "decidiumz":{"text":"Decidueye with Spirit Shackle can use Sinister Arrow Raid once per battle.", "tags":[]}, "deepseascale":{"text":"If held by a Clamperl, its Sp. Def is doubled. Evolves Clamperl into Gorebyss when traded.", "tags":["defense defensive boost", "evolution"]}, "deepseatooth":{"text":"If held by a Clamperl, its Sp. Atk is doubled. Evolves Clamperl into Huntail when traded.", "tags":["offense offensive boost", "evolution"]}, "delphoxite":{"text":"If held by a Delphox, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "destinyknot":{"text":"If holder becomes infatuated, the other Pokemon also becomes infatuated.", "tags":[]}, "diancite":{"text":"If held by a Diancie, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "diveball":{"text":"A Poke Ball that works especially well on Pokemon that live underwater.", "tags":[]}, "domefossil":{"text":"Can be revived into Kabuto.", "tags":[]}, "dousedrive":{"text":"Holder's Techno Blast is Water type.", "tags":[]}, "dracoplate":{"text":"Holder's Dragon-type attacks have 1.2x power. Judgment is Dragon type.", "tags":[]}, "dragalgite":{"text":"If held by a Dragalge, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "dragonfang":{"text":"Holder's Dragon-type attacks have 1.2x power.", "tags":[]}, "dragongem":{"text":"Holder's first successful Dragon-type attack will have 1.3x power. Single use.", "tags":[]}, "dragoninite":{"text":"If held by a Dragonite, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "dragoniumz":{"text":"Once per battle, converts a damaging Dragon-type move into Devastating Drake, or gives a Dragon-type status move its Z-effect.", "tags":[]}, "dragonmemory":{"text":"Holder's Multi-Attack is Dragon type. RKS System gives Marvel Scale and Tough Claws.", "tags":[]}, "dragonscale":{"text":"Evolves Seadra into Kingdra when traded.", "tags":["evolution"]}, "drampanite":{"text":"If held by a Drampa, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "dreadplate":{"text":"Holder's Dark-type attacks have 1.2x power. Judgment is Dark type.", "tags":[]}, "dreamball":{"text":"A Poke Ball that makes it easier to catch wild Pokémon while they're asleep.", "tags":[]}, "dubiousdisc":{"text":"Evolves Porygon2 into Porygon-Z when traded.", "tags":["evolution"]}, "duskball":{"text":"A Poke Ball that makes it easier to catch wild Pokemon at night or in caves.", "tags":[]}, "duskstone":{"text":"Evolves Murkrow into Honchkrow, Misdreavus into Mismagius, Lampent into Chandelure, and Doublade into Aegislash when used.", "tags":["mega evolution transformation", "evolution"]}, "earthplate":{"text":"Holder's Ground-type attacks have 1.2x power. Judgment is Ground type.", "tags":[]}, "eelektrossite":{"text":"If held by an Eelektross, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "eeviumz":{"text":"Eevee forms: heals 1/16 max HP each turn; Extreme Evoboost via Last Resort or Veevee Volley.", "tags":["healing recovery"]}, "ejectbutton":{"text":"If holder survives a hit, it immediately switches out to a chosen ally. Single use.", "tags":[]}, "ejectpack":{"text":"If the holder's stat stages are lowered, it switches to a chosen ally. Single use.", "tags":[]}, "electirizer":{"text":"Evolves Electabuzz into Electivire when traded.", "tags":["evolution"]}, "electricgem":{"text":"Holder's first successful Electric-type attack will have 1.3x power. Single use.", "tags":[]}, "electricmemory":{"text":"Holder's Multi-Attack is Electric type. RKS System gives Transistor and Lightning Rod.", "tags":[]}, "electriumz":{"text":"Once per battle, converts a damaging Electric-type move into Gigavolt Havoc, or gives a Electric-type status move its Z-effect.", "tags":[]}, "emboarite":{"text":"", "tags":["mega evolution transformation"]}, "elementalseed":{"text":"If the terrain is a Elemental Terrain, boosts the holder in a unique way. Single use.", "tags":["offense offensive boost"]}, "enigmaberry":{"text":"Restores 1/4 max HP after holder is hit by a supereffective move. Single use.", "tags":["healing recovery"]}, "eviolite":{"text":"If holder's species can evolve, its Defense and Sp. Def are 1.5x.", "tags":["defense defensive boost", "evolution"]}, "excadrite":{"text":"If held by an Excadrill, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "expertbelt":{"text":"Holder's attacks that are super effective against the target do 1.2x damage.", "tags":[]}, "fairiumz":{"text":"Once per battle, converts a damaging Fairy-type move into Twinkle Tackle, or gives a Fairy-type status move its Z-effect.", "tags":[]}, "fairyfeather":{"text":"Holder's Fairy-type attacks have 1.2x power.", "tags":[]}, "fairygem":{"text":"Holder's first successful Fairy-type attack will have 1.3x power. Single use.", "tags":[]}, "fairymemory":{"text":"Holder's Multi-Attack is Fairy type. RKS System gives Invigorate and Friend Guard.", "tags":[]}, "falinksite":{"text":"If held by a Falinks, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "fastball":{"text":"A Poke Ball that makes it easier to catch Pokemon which are quick to run away.", "tags":[]}, "feraligite":{"text":"If held by a Feraligatr, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "fightinggem":{"text":"Holder's first successful Fighting-type attack will have 1.3x power. Single use.", "tags":[]}, "fightingmemory":{"text":"Holder's Multi-Attack is Fighting type. RKS System gives Inner Focus and Sheer Force.", "tags":[]}, "fightiniumz":{"text":"Once per battle, converts a damaging Fighting-type move into All-Out Pummeling, or gives a Fighting-type status move its Z-effect.", "tags":[]}, "figyberry":{"text":"Restores 1/2 max HP at 1/4 max HP or less; confuses if -Atk Nature. Single use.", "tags":["healing recovery", "low HP pinch healing"], "threshold":0.25}, "firegem":{"text":"Holder's first successful Fire-type attack will have 1.3x power. Single use.", "tags":[]}, "firememory":{"text":"Holder's Multi-Attack is Fire type. RKS System gives Soul Fire and Flame Body.", "tags":[]}, "firestone":{"text":"Evolves Vulpix into Ninetales, Growlithe into Arcanine, Eevee into Flareon, and Pansear into Simisear when used.", "tags":["evolution"]}, "firiumz":{"text":"Once per battle, converts a damaging Fire-type move into Inferno Overdrive, or gives a Fire-type status move its Z-effect.", "tags":[]}, "fistplate":{"text":"Holder's Fighting-type attacks have 1.2x power. Judgment is Fighting type.", "tags":[]}, "flameorb":{"text":"At the end of every turn, this item attempts to burn the holder.", "tags":[]}, "flameplate":{"text":"Holder's Fire-type attacks have 1.2x power. Judgment is Fire type.", "tags":[]}, "floatstone":{"text":"Holder's weight is halved.", "tags":[]}, "floettite":{"text":"If held by an Eternal Flower Floette, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "flowersweet":{"text":"Evolves Milcery into Alcremie when held and spun around.", "tags":["evolution"]}, "flyinggem":{"text":"Holder's first successful Flying-type attack will have 1.3x power. Single use.", "tags":[]}, "flyingmemory":{"text":"Holder's Multi-Attack is Flying type. RKS System gives Gale Wings and Air Lock.", "tags":[]}, "flygonite":{"text":"Allows Flygon to Mega Evolve into Flygon-Mega or Flygon-Mega-Z.", "tags":["mega evolution transformation", "evolution"]}, "flyiniumz":{"text":"Once per battle, converts a damaging Flying-type move into Supersonic Skystrike, or gives a Flying-type status move its Z-effect.", "tags":[]}, "focusband":{"text":"Holder has a 10% chance to survive an attack that would KO it with 1 HP.", "tags":[]}, "focussash":{"text":"If holder's HP is full, will survive an attack that would KO it with 1 HP. Single use.", "tags":[]}, "fossilizedbird":{"text":"Can revive into Dracozolt with Fossilized Drake or Arctozolt with Fossilized Dino.", "tags":[]}, "fossilizeddino":{"text":"Can revive into Arctovish with Fossilized Fish or Arctozolt with Fossilized Bird.", "tags":[]}, "fossilizeddrake":{"text":"Can revive into Dracozolt with Fossilized Bird or Dracovish with Fossilized Fish.", "tags":[]}, "fossilizedfish":{"text":"Can revive into Dracovish with Fossilized Drake or Arctovish with Fossilized Dino.", "tags":[]}, "friendball":{"text":"A Poke Ball that makes caught Pokemon more friendly.", "tags":[]}, "froslassite":{"text":"If held by a Froslass, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "fullincense":{"text":"Holder moves last in its priority bracket.", "tags":[]}, "galaricacuff":{"text":"Evolves Galarian Slowpoke into Galarian Slowbro when used.", "tags":["evolution"]}, "galaricawreath":{"text":"Evolves Galarian Slowpoke into Galarian Slowking when used.", "tags":["evolution"]}, "galladite":{"text":"If held by a Gallade, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "ganlonberry":{"text":"Raises holder's Defense by 1 stage when at 1/4 max HP or less. Single use.", "tags":["low HP pinch stat boost", "offense offensive boost"], "threshold":0.25}, "garchompite":{"text":"If held by a Garchomp, this item allows it to Mega Evolve into Mega Garchomp.", "tags":["mega evolution transformation", "evolution"]}, "garchompitez":{"text":"If held by a Garchomp, this item allows it to Mega Evolve into Mega Garchomp Z.", "tags":["mega evolution transformation", "evolution"]}, "gardevoirite":{"text":"If held by a Gardevoir, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "gengarite":{"text":"If held by a Gengar, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "ghostgem":{"text":"Holder's first successful Ghost-type attack will have 1.3x power. Single use.", "tags":[]}, "ghostiumz":{"text":"Once per battle, converts a damaging Ghost-type move into Never-Ending Nightmare, or gives a Ghost-type status move its Z-effect.", "tags":[]}, "ghostmemory":{"text":"Holder's Multi-Attack is Ghost type. RKS System gives Soul Fire and Cursed Body.", "tags":[]}, "glalitite":{"text":"If held by a Glalie, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "glimmoranite":{"text":"If held by a Glimmora, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "goldbottlecap":{"text":"Used for Hyper Training. All of a Pokemon's stats are calculated with an IV of 31.", "tags":[]}, "golisopite":{"text":"Allows Golisopod or Golisopod-Aevian to Mega Evolve into its own Mega form.", "tags":["mega evolution transformation", "evolution"]}, "megagolisopite":{"text":"If held by a regular Golisopod, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "golurkite":{"text":"If held by a Golurk, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "grassgem":{"text":"Holder's first successful Grass-type attack will have 1.3x power. Single use.", "tags":[]}, "grassiumz":{"text":"Once per battle, converts a damaging Grass-type move into Bloom Doom, or gives a Grass-type status move its Z-effect.", "tags":[]}, "grassmemory":{"text":"Holder's Multi-Attack is Grass type. RKS System gives Hospitality and Chlorophyll.", "tags":[]}, "greatball":{"text":"A high-performance Ball that provides a higher catch rate than a Poke Ball.", "tags":[]}, "greninjite":{"text":"If held by a Greninja, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "gripclaw":{"text":"Holder's partial-trapping moves always last 7 turns.", "tags":[]}, "griseouscore":{"text":"If held by a Giratina, its Ghost- and Dragon-type attacks have 1.2x power.", "tags":[]}, "griseousorb":{"text":"If held by a Giratina, its Ghost- and Dragon-type attacks have 1.2x power.", "tags":[]}, "groundgem":{"text":"Holder's first successful Ground-type attack will have 1.3x power. Single use.", "tags":[]}, "groundiumz":{"text":"Once per battle, converts a damaging Ground-type move into Tectonic Rage, or gives a Ground-type status move its Z-effect.", "tags":[]}, "groundmemory":{"text":"Holder's Multi-Attack is Ground type. RKS System gives Sand Rush and Stamina.", "tags":[]}, "gyaradosite":{"text":"If held by a Gyarados, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "habanberry":{"text":"Halves damage taken from a supereffective Dragon-type attack. Single use.", "tags":["resistance resist berry defensive"]}, "hardstone":{"text":"Holder's Rock-type attacks have 1.2x power.", "tags":[]}, "hawluchanite":{"text":"If held by a Hawlucha, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "healball":{"text":"A remedial Poke Ball that restores the caught Pokemon's HP and status problem.", "tags":[]}, "hearthflamemask":{"text":"Ogerpon-Hearthflame: 1.2x power attacks; Terastallize to gain Embody Aspect.", "tags":[]}, "heatranite":{"text":"If held by a Heatran, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "heatrock":{"text":"Holder's use of Sunny Day lasts 8 turns instead of 5.", "tags":[]}, "heavyball":{"text":"A Poke Ball for catching very heavy Pokemon.", "tags":[]}, "heavydutyboots":{"text":"When switching in, the holder is unaffected by hazards on its side of the field.", "tags":[]}, "helixfossil":{"text":"Can be revived into Omanyte.", "tags":[]}, "heracronite":{"text":"If held by a Heracross, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "houndoominite":{"text":"If held by a Houndoom, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "iapapaberry":{"text":"Restores 1/2 max HP at 1/4 max HP or less; confuses if -Def Nature. Single use.", "tags":["healing recovery", "low HP pinch healing"], "threshold":0.25}, "icegem":{"text":"Holder's first successful Ice-type attack will have 1.3x power. Single use.", "tags":[]}, "icememory":{"text":"Holder's Multi-Attack is Ice type. RKS System gives Ice Body and Slush Rush.", "tags":[]}, "icestone":{"text":"Evolves Alolan Sandshrew into Alolan Sandslash, Alolan Vulpix into Alolan Ninetales, Eevee into Glaceon, and Galarian Darumaka into Galarian Darmanitan when used.", "tags":["evolution"]}, "icicleplate":{"text":"Holder's Ice-type attacks have 1.2x power. Judgment is Ice type.", "tags":[]}, "iciumz":{"text":"Once per battle, converts a damaging Ice-type move into Subzero Slammer, or gives a Ice-type status move its Z-effect.", "tags":[]}, "icyrock":{"text":"Holder's use of Snowscape lasts 8 turns instead of 5.", "tags":[]}, "inciniumz":{"text":"Incineroar with Darkest Lariat can use Malicious Moonsault once per battle.", "tags":[]}, "insectplate":{"text":"Holder's Bug-type attacks have 1.2x power. Judgment is Bug type.", "tags":[]}, "ironball":{"text":"Holder is grounded, Speed halved. If Flying type, takes neutral Ground damage.", "tags":[]}, "ironplate":{"text":"Holder's Steel-type attacks have 1.2x power. Judgment is Steel type.", "tags":[]}, "jabocaberry":{"text":"If holder is hit by a physical move, attacker loses 1/8 of its max HP. Single use.", "tags":[]}, "jawfossil":{"text":"Can be revived into Tyrunt.", "tags":[]}, "kangaskhanite":{"text":"If held by a Kangaskhan, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "kasibberry":{"text":"Halves damage taken from a supereffective Ghost-type attack. Single use.", "tags":["resistance resist berry defensive"]}, "kebiaberry":{"text":"Halves damage taken from a supereffective Poison-type attack. Single use.", "tags":["resistance resist berry defensive"]}, "keeberry":{"text":"Raises holder's Defense by 1 stage after it is hit by a physical attack. Single use.", "tags":["offense offensive boost"]}, "kingsrock":{"text":"Holder's attacks without a chance to make the target flinch gain a 10% chance to make the target flinch. Evolves Poliwhirl into Politoed and Slowpoke into Slowking when traded.", "tags":["evolution"]}, "kommoniumz":{"text":"Kommo-o with Clanging Scales can use Clangorous Soulblaze once per battle.", "tags":[]}, "laggingtail":{"text":"Holder moves last in its priority bracket.", "tags":[]}, "lansatberry":{"text":"Holder gains the Focus Energy effect when at 1/4 max HP or less. Single use.", "tags":["low HP pinch stat boost"], "threshold":0.25}, "latiasite":{"text":"If held by a Latias, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "latiosite":{"text":"If held by a Latios, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "laxincense":{"text":"The accuracy of attacks against the holder is 0.9x.", "tags":[]}, "leafstone":{"text":"Evolves Gloom into Vileplume, Weepinbell into Victreebel, Exeggcute into Exeggutor or Alolan Exeggutor, Eevee into Leafeon, Nuzleaf into Shiftry, and Pansage into Simisage when used.", "tags":["evolution"]}, "leek":{"text":"If held by a Farfetch’d or Sirfetch’d, its critical hit ratio is raised by 2 stages.", "tags":[]}, "leftovers":{"text":"At the end of every turn, holder restores 1/16 of its max HP.", "tags":["healing recovery"]}, "leppaberry":{"text":"Restores 10 PP to the first of the holder's moves to reach 0 PP. Single use.", "tags":[]}, "levelball":{"text":"A Poke Ball for catching Pokemon that are a lower level than your own.", "tags":[]}, "liechiberry":{"text":"Raises holder's Attack by 1 stage when at 1/4 max HP or less. Single use.", "tags":["low HP pinch stat boost", "offense offensive boost"], "threshold":0.25}, "lifeorb":{"text":"Holder's attacks do 1.3x damage, and it loses 1/10 its max HP after the attack.", "tags":[]}, "lightball":{"text":"Pikachu forms: Atk/SpA 2x, Def/SpD 1.5x; heals 1/16 each turn.", "tags":["healing recovery", "offense offensive boost", "defense defensive boost"]}, "lightclay":{"text":"Holder's use of Aurora Veil, Light Screen, or Reflect lasts 8 turns instead of 5.", "tags":[]}, "loadeddice":{"text":"The holder's multi-hit moves hit 5 or 6 times when possible. If the first hit is successful, the holder's use of Triple Kick or Triple Axel hits 3 times.", "tags":[]}, "lopunnite":{"text":"If held by a Lopunny, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "loveball":{"text":"Poke Ball for catching Pokemon that are the opposite gender of your Pokemon.", "tags":[]}, "lovesweet":{"text":"Evolves Milcery into Alcremie when held and spun around.", "tags":["evolution"]}, "lucarionite":{"text":"If held by a Lucario, this item allows it to Mega Evolve into Mega Lucario in battle.", "tags":["mega evolution transformation", "evolution"]}, "lucarionitez":{"text":"If held by a Lucario, this item allows it to Mega Evolve into Mega Lucario Z in battle.", "tags":["mega evolution transformation", "evolution"]}, "luckypunch":{"text":"If held by a Chansey, its critical hit ratio is raised by 2 stages.", "tags":[]}, "lumberry":{"text":"Holder cures itself if it has a non-volatile status or is confused. Single use.", "tags":["status cure"]}, "luminousmoss":{"text":"Raises holder's Sp. Def by 1 stage if hit by a Water-type attack. Single use.", "tags":[]}, "lunaliumz":{"text":"Lunala or Dawn Wings Necrozma with Moongeist Beam can use Menacing Moonraze Maelstrom once per battle.", "tags":[]}, "lureball":{"text":"A Poke Ball for catching Pokemon hooked by a Rod when fishing.", "tags":[]}, "lustrousglobe":{"text":"If held by a Palkia, its Water- and Dragon-type attacks have 1.2x power.", "tags":[]}, "lustrousorb":{"text":"If held by a Palkia, its Water- and Dragon-type attacks have 1.2x power.", "tags":[]}, "luxuryball":{"text":"A comfortable Poke Ball that makes a caught wild Pokemon quickly grow friendly.", "tags":[]}, "lycaniumz":{"text":"Any Lycanroc form with Stone Edge can use Splintered Stormshards once per battle.", "tags":[]}, "machobrace":{"text":"Holder's Speed is halved. The Klutz Ability does not ignore this effect.", "tags":[]}, "magicalseed":{"text":"If the terrain is a Magical Terrain, boosts the holder in a unique way. Single use.", "tags":["offense offensive boost"]}, "magearnite":{"text":"If held by a Magearna, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "magmarizer":{"text":"Evolves Magmar into Magmortar when traded.", "tags":["evolution"]}, "magnet":{"text":"Holder's Electric-type attacks have 1.2x power.", "tags":[]}, "magoberry":{"text":"Restores 1/2 max HP at 1/4 max HP or less; confuses if -Spe Nature. Single use.", "tags":["healing recovery", "low HP pinch healing"], "threshold":0.25}, "mail":{"text":"Cannot be given to or taken from a Pokemon, except by Covet/Knock Off/Thief.", "tags":[]}, "malamarite":{"text":"If held by a Malamar, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "maliciousarmor":{"text":"Evolves Charcadet into Ceruledge when used.", "tags":["evolution"]}, "manectite":{"text":"If held by a Manectric, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "marangaberry":{"text":"Raises holder's Sp. Def by 1 stage after it is hit by a special attack. Single use.", "tags":["offense offensive boost"]}, "marshadiumz":{"text":"Marshadow with Spectral Thief can use Soul-Stealing 7-Star Strike once per battle.", "tags":[]}, "masterball":{"text":"The best Ball with the ultimate performance. It will catch any wild Pokemon.", "tags":[]}, "masterpieceteacup":{"text":"Evolves Poltchageist-Artisan into Sinistcha-Masterpiece when used.", "tags":["evolution"]}, "mawilite":{"text":"If held by a Mawile, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "meadowplate":{"text":"Holder's Grass-type attacks have 1.2x power. Judgment is Grass type.", "tags":[]}, "medichamite":{"text":"If held by a Medicham, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "meganiumite":{"text":"If held by a Meganium, this item allows it to Mega Evolve into either Meganium-Mega or Meganium-Mega-Y in battle.", "tags":["mega evolution transformation", "evolution"]}, "mentalherb":{"text":"Cures holder of Attract, Disable, Encore, Heal Block, Taunt, Torment. Single use.", "tags":[]}, "meowsticite":{"text":"If held by a Meowstic, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "reuniclusite":{"text":"Allows Reuniclus to Mega Evolve into Mega Reuniclus in battle.", "tags":["mega evolution transformation", "evolution"]}, "metagrossite":{"text":"If held by a Metagross, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "metalalloy":{"text":"Evolves Duraludon into Archaludon when used.", "tags":["evolution"]}, "metalcoat":{"text":"Holder's Steel-type attacks have 1.2x power. Evolves Onix into Steelix and Scyther into Scizor when traded.", "tags":["evolution"]}, "metalpowder":{"text":"If held by a Ditto that hasn't Transformed, its Defense is doubled.", "tags":["defense defensive boost"]}, "metronome":{"text":"Damage of moves used on consecutive turns is increased. Max 2x after 5 turns.", "tags":[]}, "mewniumz":{"text":"Mew with Psychic can use Genesis Supernova once per battle.", "tags":[]}, "mewtwonitex":{"text":"If held by a Mewtwo, this item allows it to Mega Evolve into Mega Mewtwo X in battle.", "tags":["mega evolution transformation", "evolution"]}, "mewtwonitey":{"text":"If held by a Mewtwo, this item allows it to Mega Evolve into Mega Mewtwo Y in battle.", "tags":["mega evolution transformation", "evolution"]}, "micleberry":{"text":"Holder's next move has 1.2x accuracy when at 1/4 max HP or less. Single use.", "tags":[]}, "mimikiumz":{"text":"Mimikyu with Play Rough can use Let's Snuggle Forever once per battle.", "tags":[]}, "mindplate":{"text":"Holder's Psychic-type attacks have 1.2x power. Judgment is Psychic type.", "tags":[]}, "miracleseed":{"text":"Holder's Grass-type attacks have 1.2x power.", "tags":[]}, "mirrorherb":{"text":"When an opposing Pokemon raises a stat stage, the holder copies it. Single use.", "tags":["offense offensive boost"]}, "moonball":{"text":"A Poke Ball for catching Pokemon that evolve using the Moon Stone.", "tags":["evolution"]}, "moonstone":{"text":"Evolves Nidorina into Nidoqueen, Nidorino into Nidoking, Clefairy into Clefable, Jigglypuff into Wigglytuff, Skitty into Delcatty, and Munna into Musharna when used.", "tags":["evolution"]}, "muscleband":{"text":"Holder's physical attacks have 1.1x power.", "tags":[]}, "mysticwater":{"text":"Holder's Water-type attacks have 1.2x power.", "tags":[]}, "nestball":{"text":"A Poke Ball that works especially well on weaker Pokemon in the wild.", "tags":[]}, "netball":{"text":"A Poke Ball that works especially well on Water- and Bug-type Pokemon.", "tags":[]}, "nevermeltice":{"text":"Holder's Ice-type attacks have 1.2x power.", "tags":[]}, "normalgem":{"text":"Holder's first successful Normal-type attack will have 1.3x power. Single use.", "tags":[]}, "normaliumz":{"text":"Once per battle, converts a damaging Normal-type move into Breakneck Blitz, or gives a Normal-type status move its Z-effect.", "tags":[]}, "occaberry":{"text":"Halves damage taken from a supereffective Fire-type attack. Single use.", "tags":["resistance resist berry defensive"]}, "oddincense":{"text":"Holder's Psychic-type attacks have 1.2x power.", "tags":[]}, "oldamber":{"text":"Can be revived into Aerodactyl.", "tags":[]}, "oranberry":{"text":"Restores 10 HP when at 1/2 max HP or less. Single use.", "tags":["healing recovery", "low HP pinch healing"], "threshold":0.5}, "ovalstone":{"text":"Evolves Happiny into Chansey when held and leveled up during the day.", "tags":["evolution"]}, "parkball":{"text":"A special Poke Ball for the Pal Park.", "tags":[]}, "passhoberry":{"text":"Halves damage taken from a supereffective Water-type attack. Single use.", "tags":["resistance resist berry defensive"]}, "payapaberry":{"text":"Halves damage taken from a supereffective Psychic-type attack. Single use.", "tags":["resistance resist berry defensive"]}, "pechaberry":{"text":"Holder is cured if it is poisoned. Single use.", "tags":["status cure"]}, "persimberry":{"text":"Holder is cured if it is confused. Single use.", "tags":["status cure"]}, "petayaberry":{"text":"Raises holder's Sp. Atk by 1 stage when at 1/4 max HP or less. Single use.", "tags":["low HP pinch stat boost", "offense offensive boost"], "threshold":0.25}, "pidgeotite":{"text":"If held by a Pidgeot, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "pikaniumz":{"text":"Pikachu with Volt Tackle can use Catastropika once per battle.", "tags":["defense defensive boost"]}, "pikashuniumz":{"text":"Cap Pikachu with Thunderbolt can use 10,000,000 Volt Thunderbolt once per battle.", "tags":[]}, "pinsirite":{"text":"If held by a Pinsir, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "pixieplate":{"text":"Holder's Fairy-type attacks have 1.2x power. Judgment is Fairy type.", "tags":[]}, "plumefossil":{"text":"Can be revived into Archen.", "tags":[]}, "poisonbarb":{"text":"Holder's Poison-type attacks have 1.2x power.", "tags":[]}, "poisongem":{"text":"Holder's first successful Poison-type attack will have 1.3x power. Single use.", "tags":[]}, "poisoniumz":{"text":"Once per battle, converts a damaging Poison-type move into Acid Downpour, or gives a Poison-type status move its Z-effect.", "tags":[]}, "poisonmemory":{"text":"Holder's Multi-Attack is Poison type. RKS System gives Regenerator and Corrosion.", "tags":[]}, "pokeball":{"text":"A device for catching wild Pokemon. It is designed as a capsule system.", "tags":[]}, "poweranklet":{"text":"Holder's Speed is halved. The Klutz Ability does not ignore this effect.", "tags":[]}, "powerband":{"text":"Holder's Speed is halved. The Klutz Ability does not ignore this effect.", "tags":[]}, "powerbelt":{"text":"Holder's Speed is halved. The Klutz Ability does not ignore this effect.", "tags":[]}, "powerbracer":{"text":"Holder's Speed is halved. The Klutz Ability does not ignore this effect.", "tags":[]}, "powerherb":{"text":"Holder's two-turn moves complete in one turn (except Sky Drop). Single use.", "tags":[]}, "powerlens":{"text":"Holder's Speed is halved. The Klutz Ability does not ignore this effect.", "tags":[]}, "powerweight":{"text":"Holder's Speed is halved. The Klutz Ability does not ignore this effect.", "tags":[]}, "premierball":{"text":"A rare Poke Ball that has been crafted to commemorate an event.", "tags":[]}, "prettyfeather":{"text":"Though this feather is beautiful, it's just a regular feather and has no effect.", "tags":[]}, "primariumz":{"text":"Primarina with Sparkling Aria can use Oceanic Operetta once per battle.", "tags":[]}, "prismscale":{"text":"Evolves Feebas into Milotic when traded.", "tags":["evolution"]}, "protectivepads":{"text":"Holder's moves are protected from adverse contact effects, except Pickpocket.", "tags":[]}, "protector":{"text":"Evolves Rhydon into Rhyperior when traded.", "tags":["evolution"]}, "psychicgem":{"text":"Holder's first successful Psychic-type attack will have 1.3x power. Single use.", "tags":[]}, "psychicmemory":{"text":"Holder's Multi-Attack is Psychic type. RKS System gives Magic Bounce and Magic Guard.", "tags":[]}, "psychiumz":{"text":"Once per battle, converts a damaging Psychic-type move into Shattered Psyche, or gives a Psychic-type status move its Z-effect.", "tags":[]}, "punchingglove":{"text":"Holder's punch-based attacks have 1.4x power and do not make contact.", "tags":[]}, "pyroarite":{"text":"If held by a Pyroar, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "quickball":{"text":"A Poke Ball that provides a better catch rate at the start of a wild encounter.", "tags":[]}, "quickclaw":{"text":"Each turn, holder has a 20% chance to move first in its priority bracket.", "tags":[]}, "quickpowder":{"text":"If held by a Ditto that hasn't Transformed, its Speed is doubled.", "tags":[]}, "raichunitex":{"text":"If held by a Raichu, this item allows it to Mega Evolve into Mega Raichu X in battle.", "tags":["mega evolution transformation", "evolution"]}, "raichunitey":{"text":"If held by a Raichu, this item allows it to Mega Evolve into Mega Raichu Y in battle.", "tags":["mega evolution transformation", "evolution"]}, "rarebone":{"text":"No competitive use other than when used with Fling.", "tags":[]}, "rawstberry":{"text":"Holder is cured if it is burned. Single use.", "tags":["status cure"]}, "razorclaw":{"text":"Holder's critical hit ratio is raised by 1 stage. Evolves Sneasel into Weavile when held and leveled up during the night.", "tags":["evolution"]}, "razorfang":{"text":"Holder's attacks without a chance to make the target flinch gain a 10% chance to make the target flinch. Evolves Gligar into Gliscor when held and leveled up during the night.", "tags":["evolution"]}, "reapercloth":{"text":"Evolves Dusclops into Dusknoir when traded.", "tags":["evolution"]}, "redcard":{"text":"If holder survives a hit, attacker is forced to switch to a random ally. Single use.", "tags":[]}, "redorb":{"text":"If held by a Groudon, this item triggers its Primal Reversion in battle.", "tags":[]}, "repeatball":{"text":"A Poke Ball that works well on Pokemon species that were previously caught.", "tags":[]}, "ribbonsweet":{"text":"Evolves Milcery into Alcremie when held and spun around.", "tags":["evolution"]}, "rindoberry":{"text":"Halves damage taken from a supereffective Grass-type attack. Single use.", "tags":["resistance resist berry defensive"]}, "ringtarget":{"text":"The holder's type immunities granted solely by its typing are negated.", "tags":[]}, "rockgem":{"text":"Holder's first successful Rock-type attack will have 1.3x power. Single use.", "tags":[]}, "rockincense":{"text":"Holder's Rock-type attacks have 1.2x power.", "tags":[]}, "rockiumz":{"text":"Once per battle, converts a damaging Rock-type move into Continental Crush, or gives a Rock-type status move its Z-effect.", "tags":[]}, "rockmemory":{"text":"Holder's Multi-Attack is Rock type. RKS System gives Purifying Salt and Solid Rock.", "tags":[]}, "rockyhelmet":{"text":"If holder is hit by a contact move, the attacker loses 1/6 of its max HP.", "tags":[]}, "roomservice":{"text":"If Trick Room is active, the holder's Speed is lowered by 1 stage. Single use.", "tags":[]}, "rootfossil":{"text":"Can be revived into Lileep.", "tags":[]}, "roseincense":{"text":"Holder's Grass-type attacks have 1.2x power.", "tags":[]}, "roseliberry":{"text":"Halves damage taken from a supereffective Fairy-type attack. Single use.", "tags":["resistance resist berry defensive"]}, "roseradite":{"text":"", "tags":["mega evolution transformation"]}, "rowapberry":{"text":"If holder is hit by a special move, attacker loses 1/8 of its max HP. Single use.", "tags":[]}, "rustedshield":{"text":"If held by a Zamazenta, this item changes its forme to Crowned Shield.", "tags":[]}, "rustedsword":{"text":"If held by a Zacian, this item changes its forme to Crowned Sword.", "tags":[]}, "sablenite":{"text":"If held by a Sableye, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "sachet":{"text":"Evolves Spritzee into Aromatisse when traded.", "tags":["evolution"]}, "safariball":{"text":"A special Poke Ball that is used only in the Safari Zone and Great Marsh.", "tags":[]}, "safetygoggles":{"text":"Holder is immune to powder moves and damage from Sandstorm or Hail.", "tags":[]}, "sailfossil":{"text":"Can be revived into Amaura.", "tags":[]}, "salacberry":{"text":"Raises holder's Speed by 1 stage when at 1/4 max HP or less. Single use.", "tags":["low HP pinch stat boost", "offense offensive boost"], "threshold":0.25}, "salamencite":{"text":"If held by a Salamence, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "sceptilite":{"text":"If held by a Sceptile, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "scizorite":{"text":"If held by a Scizor, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "scolipite":{"text":"If held by a Scolipede, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "scopelens":{"text":"Holder's critical hit ratio is raised by 1 stage.", "tags":[]}, "scovillainite":{"text":"If held by a Scovillain, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "scraftinite":{"text":"If held by a Scrafty, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "seaincense":{"text":"Holder's Water-type attacks have 1.2x power.", "tags":[]}, "sharpbeak":{"text":"Holder's Flying-type attacks have 1.2x power.", "tags":[]}, "bronzongite":{"text":"Allows Bronzong to Mega Evolve into Mega Bronzong.", "tags":["mega evolution transformation", "evolution"]}, "noivernite":{"text":"Allows Noivern to Mega Evolve into Mega Noivern.", "tags":["mega evolution transformation", "evolution"]}, "weavilite":{"text":"Allows Weavile to Mega Evolve into Mega Weavile.", "tags":["mega evolution transformation", "evolution"]}, "dusknoirite":{"text":"Allows Dusknoir to Mega Evolve into Mega Dusknoir.", "tags":["mega evolution transformation", "evolution"]}, "noctowlite":{"text":"Allows Noctowl to Mega Evolve into Mega Noctowl.", "tags":["mega evolution transformation", "evolution"]}, "luxranite":{"text":"Allows Luxray to Mega Evolve into Mega Luxray.", "tags":["mega evolution transformation", "evolution"]}, "breloomite":{"text":"Allows Breloom and Breloom-Rejuv to Mega Evolve into Mega Breloom.", "tags":["mega evolution transformation", "evolution"]}, "sharpedonite":{"text":"If held by a Sharpedo, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "shedshell":{"text":"Holder cannot be prevented from choosing to switch out by any effect.", "tags":[]}, "shellbell":{"text":"After an attack, holder gains 1/8 of the damage in HP dealt to other Pokemon.", "tags":["healing recovery"]}, "shinystone":{"text":"Evolves Togetic into Togekiss, Roselia into Roserade, Minccino into Cinccino, and Floette into Florges when used.", "tags":["mega evolution transformation", "evolution"]}, "shockdrive":{"text":"Holder's Techno Blast is Electric type.", "tags":[]}, "shucaberry":{"text":"Halves damage taken from a supereffective Ground-type attack. Single use.", "tags":["resistance resist berry defensive"]}, "silkscarf":{"text":"Holder's Normal-type attacks have 1.2x power.", "tags":[]}, "silverpowder":{"text":"Holder's Bug-type attacks have 1.2x power.", "tags":[]}, "sitrusberry":{"text":"Restores 1/4 max HP when at 1/2 max HP or less. Single use.", "tags":["healing recovery", "low HP pinch healing"], "threshold":0.5}, "skarmorite":{"text":"If held by a Skarmory, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "skullfossil":{"text":"Can be revived into Cranidos.", "tags":[]}, "skyplate":{"text":"Holder's Flying-type attacks have 1.2x power. Judgment is Flying type.", "tags":[]}, "slowbronite":{"text":"If held by a Slowbro, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "smoothrock":{"text":"Holder's use of Sandstorm lasts 8 turns instead of 5.", "tags":[]}, "snorliumz":{"text":"Snorlax with Giga Impact can use Pulverizing Pancake once per battle.", "tags":[]}, "snowball":{"text":"Raises holder's Attack by 1 if hit by an Ice-type attack. Single use.", "tags":[]}, "softsand":{"text":"Holder's Ground-type attacks have 1.2x power.", "tags":[]}, "solganiumz":{"text":"Solgaleo or Dusk Mane Necrozma with Sunsteel Strike can use Searing Sunraze Smash once per battle.", "tags":[]}, "souldew":{"text":"If held by a Latias/Latios, its Dragon- and Psychic-type moves have 1.2x power.", "tags":[]}, "spelltag":{"text":"Holder's Ghost-type attacks have 1.2x power.", "tags":[]}, "splashplate":{"text":"Holder's Water-type attacks have 1.2x power. Judgment is Water type.", "tags":[]}, "spookyplate":{"text":"Holder's Ghost-type attacks have 1.2x power. Judgment is Ghost type.", "tags":[]}, "sportball":{"text":"A special Poke Ball for the Bug-Catching Contest.", "tags":[]}, "staraptite":{"text":"If held by a Staraptor, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "starfberry":{"text":"Raises a random stat by 2 when at 1/4 max HP or less (not acc/eva). Single use.", "tags":["low HP pinch stat boost", "offense offensive boost"], "threshold":0.25}, "starminite":{"text":"If held by a Starmie, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "amuletcoin":{"text":"In Dragon's Den, the holder cannot be afflicted with a status condition.", "tags":[]}, "steelgem":{"text":"Holder's first successful Steel-type attack will have 1.3x power. Single use.", "tags":[]}, "steeliumz":{"text":"Once per battle, converts a damaging Steel-type move into Corkscrew Crash, or gives a Steel-type status move its Z-effect.", "tags":[]}, "steelixite":{"text":"If held by a Steelix, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "steelmemory":{"text":"Holder's Multi-Attack is Steel type. RKS System gives Sworn Duty and Mirror Armor.", "tags":[]}, "stick":{"text":"If held by a Farfetch’d, its critical hit ratio is raised by 2 stages.", "tags":[]}, "stickybarb":{"text":"Each turn, holder loses 1/8 max HP. An attacker making contact can receive it.", "tags":[]}, "stoneplate":{"text":"Holder's Rock-type attacks have 1.2x power. Judgment is Rock type.", "tags":[]}, "strangeball":{"text":"Placeholder if caught in Poke Ball not in current game.", "tags":[]}, "strawberrysweet":{"text":"Evolves Milcery into Alcremie when held and spun around.", "tags":["evolution"]}, "sunstone":{"text":"Evolves Gloom into Bellossom, Sunkern into Sunflora, Cottonee into Whimsicott, Petilil into Lilligant, and Helioptile into Heliolisk when used.", "tags":["evolution"]}, "swampertite":{"text":"If held by a Swampert, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "sweetapple":{"text":"Evolves Applin into Appletun when used.", "tags":["evolution"]}, "syntheticseed":{"text":"If the terrain is a Synthetic Terrain, boosts the holder in a unique way. Single use.", "tags":["offense offensive boost"]}, "syrupyapple":{"text":"Evolves Applin into Dipplin when used.", "tags":["evolution"]}, "tangaberry":{"text":"Halves damage taken from a supereffective Bug-type attack. Single use.", "tags":["resistance resist berry defensive"]}, "tapuniumz":{"text":"A Tapu with Nature's Madness can use Guardian of Alola once per battle.", "tags":[]}, "tartapple":{"text":"Evolves Applin into Flapple when used.", "tags":["evolution"]}, "tatsugirinite":{"text":"If held by a Tatsugiri, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "telluricseed":{"text":"If the terrain is a Telluric Terrain, boosts the holder in a unique way. Single use.", "tags":["offense offensive boost"]}, "thickclub":{"text":"If held by a Cubone or a Marowak, its Attack is doubled.", "tags":["offense offensive boost"]}, "throatspray":{"text":"Raises holder's Special Attack by 1 stage after it uses a sound move. Single use.", "tags":[]}, "thunderstone":{"text":"Evolves Pikachu into Raichu or Alolan Raichu, Eevee into Jolteon, Eelektrik into Eelektross, and Charjabug into Vikavolt when used.", "tags":["mega evolution transformation", "evolution"]}, "timerball":{"text":"A Poke Ball that becomes better the more turns there are in a battle.", "tags":[]}, "toxicorb":{"text":"At the end of every turn, this item attempts to badly poison the holder.", "tags":[]}, "toxicplate":{"text":"Holder's Poison-type attacks have 1.2x power. Judgment is Poison type.", "tags":[]}, "tr00":{"text":"Teaches certain Pokemon the move Swords Dance. One use.", "tags":[]}, "tr01":{"text":"Teaches certain Pokemon the move Body Slam. One use.", "tags":[]}, "tr02":{"text":"Teaches certain Pokemon the move Flamethrower. One use.", "tags":[]}, "tr03":{"text":"Teaches certain Pokemon the move Hydro Pump. One use.", "tags":[]}, "tr04":{"text":"Teaches certain Pokemon the move Surf. One use.", "tags":[]}, "tr05":{"text":"Teaches certain Pokemon the move Ice Beam. One use.", "tags":[]}, "tr06":{"text":"Teaches certain Pokemon the move Blizzard. One use.", "tags":[]}, "tr07":{"text":"Teaches certain Pokemon the move Low Kick. One use.", "tags":[]}, "tr08":{"text":"Teaches certain Pokemon the move Thunderbolt. One use.", "tags":[]}, "tr09":{"text":"Teaches certain Pokemon the move Thunder. One use.", "tags":[]}, "tr10":{"text":"Teaches certain Pokemon the move Earthquake. One use.", "tags":[]}, "tr11":{"text":"Teaches certain Pokemon the move Psychic. One use.", "tags":[]}, "tr12":{"text":"Teaches certain Pokemon the move Agility. One use.", "tags":[]}, "tr13":{"text":"Teaches certain Pokemon the move Focus Energy. One use.", "tags":[]}, "tr14":{"text":"Teaches certain Pokemon the move Metronome. One use.", "tags":[]}, "tr15":{"text":"Teaches certain Pokemon the move Fire Blast. One use.", "tags":[]}, "tr16":{"text":"Teaches certain Pokemon the move Waterfall. One use.", "tags":[]}, "tr17":{"text":"Teaches certain Pokemon the move Amnesia. One use.", "tags":[]}, "tr18":{"text":"Teaches certain Pokemon the move Leech Life. One use.", "tags":[]}, "tr19":{"text":"Teaches certain Pokemon the move Tri Attack. One use.", "tags":[]}, "tr20":{"text":"Teaches certain Pokemon the move Substitute. One use.", "tags":[]}, "tr21":{"text":"Teaches certain Pokemon the move Reversal. One use.", "tags":[]}, "tr22":{"text":"Teaches certain Pokemon the move Sludge Bomb. One use.", "tags":[]}, "tr23":{"text":"Teaches certain Pokemon the move Spikes. One use.", "tags":[]}, "tr24":{"text":"Teaches certain Pokemon the move Outrage. One use.", "tags":[]}, "tr25":{"text":"Teaches certain Pokemon the move Psyshock. One use.", "tags":[]}, "tr26":{"text":"Teaches certain Pokemon the move Endure. One use.", "tags":[]}, "tr27":{"text":"Teaches certain Pokemon the move Sleep Talk. One use.", "tags":[]}, "tr28":{"text":"Teaches certain Pokemon the move Megahorn. One use.", "tags":[]}, "tr29":{"text":"Teaches certain Pokemon the move Baton Pass. One use.", "tags":[]}, "tr30":{"text":"Teaches certain Pokemon the move Encore. One use.", "tags":[]}, "tr31":{"text":"Teaches certain Pokemon the move Iron Tail. One use.", "tags":[]}, "tr32":{"text":"Teaches certain Pokemon the move Crunch. One use.", "tags":[]}, "tr33":{"text":"Teaches certain Pokemon the move Shadow Ball. One use.", "tags":[]}, "tr34":{"text":"Teaches certain Pokemon the move Future Sight. One use.", "tags":[]}, "tr35":{"text":"Teaches certain Pokemon the move Uproar. One use.", "tags":[]}, "tr36":{"text":"Teaches certain Pokemon the move Heat Wave. One use.", "tags":[]}, "tr37":{"text":"Teaches certain Pokemon the move Taunt. One use.", "tags":[]}, "tr38":{"text":"Teaches certain Pokemon the move Trick. One use.", "tags":[]}, "tr39":{"text":"Teaches certain Pokemon the move Superpower. One use.", "tags":[]}, "tr40":{"text":"Teaches certain Pokemon the move Skill Swap. One use.", "tags":[]}, "tr41":{"text":"Teaches certain Pokemon the move Blaze Kick. One use.", "tags":[]}, "tr42":{"text":"Teaches certain Pokemon the move Hyper Voice. One use.", "tags":[]}, "tr43":{"text":"Teaches certain Pokemon the move Overheat. One use.", "tags":[]}, "tr44":{"text":"Teaches certain Pokemon the move Cosmic Power. One use.", "tags":[]}, "tr45":{"text":"Teaches certain Pokemon the move Muddy Water. One use.", "tags":[]}, "tr46":{"text":"Teaches certain Pokemon the move Iron Defense. One use.", "tags":[]}, "tr47":{"text":"Teaches certain Pokemon the move Dragon Claw. One use.", "tags":[]}, "tr48":{"text":"Teaches certain Pokemon the move Bulk Up. One use.", "tags":[]}, "tr49":{"text":"Teaches certain Pokemon the move Calm Mind. One use.", "tags":[]}, "tr50":{"text":"Teaches certain Pokemon the move Leaf Blade. One use.", "tags":[]}, "tr51":{"text":"Teaches certain Pokemon the move Dragon Dance. One use.", "tags":[]}, "tr52":{"text":"Teaches certain Pokemon the move Gyro Ball. One use.", "tags":[]}, "tr53":{"text":"Teaches certain Pokemon the move Close Combat. One use.", "tags":[]}, "tr54":{"text":"Teaches certain Pokemon the move Toxic Spikes. One use.", "tags":[]}, "tr55":{"text":"Teaches certain Pokemon the move Flare Blitz. One use.", "tags":[]}, "tr56":{"text":"Teaches certain Pokemon the move Aura Sphere. One use.", "tags":[]}, "tr57":{"text":"Teaches certain Pokemon the move Poison Jab. One use.", "tags":[]}, "tr58":{"text":"Teaches certain Pokemon the move Dark Pulse. One use.", "tags":[]}, "tr59":{"text":"Teaches certain Pokemon the move Seed Bomb. One use.", "tags":[]}, "tr60":{"text":"Teaches certain Pokemon the move X-Scissor. One use.", "tags":[]}, "tr61":{"text":"Teaches certain Pokemon the move Bug Buzz. One use.", "tags":[]}, "tr62":{"text":"Teaches certain Pokemon the move Dragon Pulse. One use.", "tags":[]}, "tr63":{"text":"Teaches certain Pokemon the move Power Gem. One use.", "tags":[]}, "tr64":{"text":"Teaches certain Pokemon the move Focus Blast. One use.", "tags":[]}, "tr65":{"text":"Teaches certain Pokemon the move Energy Ball. One use.", "tags":[]}, "tr66":{"text":"Teaches certain Pokemon the move Brave Bird. One use.", "tags":[]}, "tr67":{"text":"Teaches certain Pokemon the move Earth Power. One use.", "tags":[]}, "tr68":{"text":"Teaches certain Pokemon the move Nasty Plot. One use.", "tags":[]}, "tr69":{"text":"Teaches certain Pokemon the move Zen Headbutt. One use.", "tags":[]}, "tr70":{"text":"Teaches certain Pokemon the move Flash Cannon. One use.", "tags":[]}, "tr71":{"text":"Teaches certain Pokemon the move Leaf Storm. One use.", "tags":[]}, "tr72":{"text":"Teaches certain Pokemon the move Power Whip. One use.", "tags":[]}, "tr73":{"text":"Teaches certain Pokemon the move Gunk Shot. One use.", "tags":[]}, "tr74":{"text":"Teaches certain Pokemon the move Iron Head. One use.", "tags":[]}, "tr75":{"text":"Teaches certain Pokemon the move Stone Edge. One use.", "tags":[]}, "tr76":{"text":"Teaches certain Pokemon the move Stealth Rock. One use.", "tags":[]}, "tr77":{"text":"Teaches certain Pokemon the move Grass Knot. One use.", "tags":[]}, "tr78":{"text":"Teaches certain Pokemon the move Sludge Wave. One use.", "tags":[]}, "tr79":{"text":"Teaches certain Pokemon the move Heavy Slam. One use.", "tags":[]}, "tr80":{"text":"Teaches certain Pokemon the move Electro Ball. One use.", "tags":[]}, "tr81":{"text":"Teaches certain Pokemon the move Foul Play. One use.", "tags":[]}, "tr82":{"text":"Teaches certain Pokemon the move Stored Power. One use.", "tags":[]}, "tr83":{"text":"Teaches certain Pokemon the move Ally Switch. One use.", "tags":[]}, "tr84":{"text":"Teaches certain Pokemon the move Scald. One use.", "tags":[]}, "tr85":{"text":"Teaches certain Pokemon the move Work Up. One use.", "tags":[]}, "tr86":{"text":"Teaches certain Pokemon the move Wild Charge. One use.", "tags":[]}, "tr87":{"text":"Teaches certain Pokemon the move Drill Run. One use.", "tags":[]}, "tr88":{"text":"Teaches certain Pokemon the move Heat Crash. One use.", "tags":[]}, "tr89":{"text":"Teaches certain Pokemon the move Hurricane. One use.", "tags":[]}, "tr90":{"text":"Teaches certain Pokemon the move Play Rough. One use.", "tags":[]}, "tr91":{"text":"Teaches certain Pokemon the move Venom Drench. One use.", "tags":[]}, "tr92":{"text":"Teaches certain Pokemon the move Dazzling Gleam. One use.", "tags":[]}, "tr93":{"text":"Teaches certain Pokemon the move Darkest Lariat. One use.", "tags":[]}, "tr94":{"text":"Teaches certain Pokemon the move High Horsepower. One use.", "tags":[]}, "tr95":{"text":"Teaches certain Pokemon the move Throat Chop. One use.", "tags":[]}, "tr96":{"text":"Teaches certain Pokemon the move Pollen Puff. One use.", "tags":[]}, "tr97":{"text":"Teaches certain Pokemon the move Psychic Fangs. One use.", "tags":[]}, "tr98":{"text":"Teaches certain Pokemon the move Liquidation. One use.", "tags":[]}, "tr99":{"text":"Teaches certain Pokemon the move Body Press. One use.", "tags":[]}, "twistedspoon":{"text":"Holder's Psychic-type attacks have 1.2x power.", "tags":[]}, "tyranitarite":{"text":"If held by a Tyranitar, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "typhlosionite":{"text":"Allows Typhlosion and Typhlosion-Hisui to Mega Evolve.", "tags":["mega evolution transformation", "evolution"]}, "ultraball":{"text":"An ultra-performance Ball that provides a higher catch rate than a Great Ball.", "tags":[]}, "ultranecroziumz":{"text":"Dusk Mane or Dawn Wings Necrozma can Ultra Burst; with Photon Geyser, it can use Light That Burns the Sky once per battle.", "tags":[]}, "unremarkableteacup":{"text":"Evolves Poltchageist into Sinistcha when used.", "tags":["evolution"]}, "upgrade":{"text":"Evolves Porygon into Porygon2 when traded.", "tags":["evolution"]}, "utilityumbrella":{"text":"The holder ignores rain- and sun-based effects, including those of its Ability unless it is Orichalcum Pulse or Protosynthesis. Damage and accuracy calculations from attacks used by the holder are affected by rain and sun, but not attacks used against the holder.", "tags":[]}, "venusaurite":{"text":"If held by a Venusaur, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "victreebelite":{"text":"If held by a Victreebel, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "wacanberry":{"text":"Halves damage taken from a supereffective Electric-type attack. Single use.", "tags":["resistance resist berry defensive"]}, "watergem":{"text":"Holder's first successful Water-type attack will have 1.3x power. Single use.", "tags":[]}, "wateriumz":{"text":"Once per battle, converts a damaging Water-type move into Hydro Vortex, or gives a Water-type status move its Z-effect.", "tags":[]}, "watermemory":{"text":"Holder's Multi-Attack is Water type. RKS System gives Swift Swim and Water Veil.", "tags":[]}, "waterstone":{"text":"Evolves Poliwhirl into Poliwrath, Shellder into Cloyster, Staryu into Starmie, Eevee into Vaporeon, Lombre into Ludicolo, and Panpour into Simipour when used.", "tags":["evolution"]}, "waveincense":{"text":"Holder's Water-type attacks have 1.2x power.", "tags":[]}, "weaknesspolicy":{"text":"If holder is hit super effectively, raises Attack, Sp. Atk by 2 stages. Single use.", "tags":[]}, "wellspringmask":{"text":"Ogerpon-Wellspring: 1.2x power attacks; Terastallize to gain Embody Aspect.", "tags":[]}, "whippeddream":{"text":"Evolves Swirlix into Slurpuff when traded.", "tags":["evolution"]}, "whiteherb":{"text":"Restores all lowered stat stages to 0 when one is less than 0. Single use.", "tags":[]}, "widelens":{"text":"The accuracy of attacks by the holder is 1.1x.", "tags":[]}, "wikiberry":{"text":"Restores 1/2 max HP at 1/4 max HP or less; confuses if -SpA Nature. Single use.", "tags":["healing recovery", "low HP pinch healing"], "threshold":0.25}, "wiseglasses":{"text":"Holder's special attacks have 1.1x power.", "tags":[]}, "yacheberry":{"text":"Halves damage taken from a supereffective Ice-type attack. Single use.", "tags":["resistance resist berry defensive"]}, "zapplate":{"text":"Holder's Electric-type attacks have 1.2x power. Judgment is Electric type.", "tags":[]}, "zeraorite":{"text":"If held by a Zeraora, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "zoomlens":{"text":"The accuracy of attacks by the holder is 1.2x if it moves after its target.", "tags":[]}, "zygardite":{"text":"If held by a Zygarde in Complete Forme, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "pinkbow":{"text":"(Gen 2) Holder's Normal-type attacks have 1.1x power.", "tags":[]}, "polkadotbow":{"text":"(Gen 2) Holder's Normal-type attacks have 1.1x power.", "tags":[]}, "crucibellite":{"text":"If held by a Crucibelle, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "vilevial":{"text":"If held by a Venomicon, its Poison- and Flying-type attacks have 1.2x power.", "tags":[]}};
 	T.itemData = function () {
@@ -4255,7 +4478,7 @@
 		var data = T.itemData(), id = T.id(this.curSet.item), filter = this.search.engine.itemToolFilter || 'all';
 		var html = '<div class="item-picker-tools pad"><label>Items <select class="item-tool-filter">';
 		['all', 'favorites', 'recent'].forEach(function (mode) { html += '<option value="' + mode + '"' + (mode === filter ? ' selected' : '') + '>' + mode + '</option>'; });
-		html += '</select></label> ' + button('starCurrentItem', (data.favorites.includes(id) ? '★ Unstar ' : '☆ Star ') + (this.curSet.item || 'selected item')) + '<small>Search names, types or effects: Electric, Poison, pinch healing, stat boost. Stars are manual.</small></div>';
+		html += '</select></label> ' + button('starCurrentItem', (data.favorites.includes(id) ? '★ Unstar ' : '☆ Star ') + (this.curSet.item || 'selected item')) + '<small>Search names, types or effects: Electric, Poison, pinch healing, stat boost. Click ☆ beside any item to favorite it.</small></div>';
 		this.$chart.before(html);
 		return result;
 	};
@@ -4265,6 +4488,13 @@
 		this.search.engine.results = null;
 		this.$('input[name=item]').val('');
 		this.search.find('');
+	};
+	proto.starListedItem = function (id) {
+		if (!this.curTeam || !this.curTeam.dex.items.get(id).exists || !this.search) return;
+		Storage.prefs('itempickertools', T.starItem(T.itemData(), id));
+		this.search.engine.results = null;
+		this.updateChart();
+		this.search.find(this.$('input[name=item]').val() || '');
 	};
 	proto.starCurrentItem = function () {
 		if (!this.curSet || !this.curTeam.dex.items.get(this.curSet.item).exists) return;
@@ -4332,7 +4562,14 @@
 			if (selected) {
 				var view = T.clone(set);
 				view.species = selected.name;
-				box += '<div class="form-preview-result"><span class="form-preview-sprite" style="display:inline-block;width:100px;height:100px;' + Dex.getTeambuilderSprite(view, this.curTeam.gen) + '"></span><strong>Preview: ' + escape(selected.name) + '</strong><span>' + escape(selected.types.join(' / ')) + ' · ' + escape(selected.ability) + '</span></div>';
+				var ability = this.curTeam.dex.abilities.get(selected.ability);
+				box += '<div class="form-preview-result"><span class="form-preview-sprite" style="display:inline-block;width:100px;height:100px;' + Dex.getTeambuilderSprite(view, this.curTeam.gen) + '"></span><strong>Preview: ' + escape(selected.name) + '</strong><span>' + escape(selected.types.join(' / ')) + '</span><span><b>Ability: ' + escape(selected.ability) + '</b> — ' + escape(ability.shortDesc || ability.desc || 'No description available.') + '</span></div>';
+				var components = Array.from(this.curTeam.dex.getAbilityEffects(toID(selected.ability))).filter(function (id) { return id !== toID(selected.ability); });
+				if (components.length) box += '<p class="form-preview-notice"><b>Includes:</b> ' + components.map(function (id) { return escape(Dex.abilities.get(id).name); }).join(' · ') + '</p>';
+				if (ability.desc && ability.desc !== ability.shortDesc) box += '<details class="form-preview-help"><summary>Full ability effect</summary><p>' + escape(ability.desc) + '</p></details>';
+				box += this.renderFormStatComparison(set, selected);
+				box += '<p class="form-preview-notice">Preview only. EVs and IVs edit your saved base set; shown stats use this form.</p>';
+
 			}
 			if (preview.error || !preview.options.length) box += '<p class="form-preview-notice" role="status">' + escape(preview.error || (preview.note === 'Loading from server…' ? preview.note : 'No eligible forms for this set and format.')) + '</p>';
 			else box += '<details class="form-preview-help"><summary>Preview details</summary><p>' + escape(preview.note || 'Uses this set’s EVs, IVs and nature. Your saved set stays unchanged.') + '</p></details>';
@@ -4342,6 +4579,17 @@
 		if (this.buildUndo && this.buildUndo.team === this.curTeam && this.buildUndo.applied === set) state += ' · Undo available';
 		return html.replace('<span class="set-tools-state"></span>', '<span class="set-tools-state">' + state + '</span>')
 			.replace('<!-- SET FORM PREVIEW -->', box + '</div>');
+	};
+	proto.renderFormStatComparison = function (set, selected) {
+		var previewSet = T.clone(set); previewSet.species = selected.name; previewSet.ability = selected.ability;
+		var baseStats = Dex.getAbilityFormPreview(previewSet, this.curTeam.dex).baseStats;
+		var labels = {hp: 'HP', atk: 'Atk', def: 'Def', spa: 'SpA', spd: 'SpD', spe: 'Spe'};
+		var self = this, html = '<table class="form-stat-comparison"><caption>Stats with current EVs, IVs and nature</caption><thead><tr><th>Stat</th><th>Form base</th><th>Base set</th><th>Preview</th><th>Change</th></tr></thead><tbody>';
+		Object.keys(labels).forEach(function (stat) {
+			var before = getStat.call(self, stat, set), after = getStat.call(self, stat, previewSet), delta = after - before;
+			html += '<tr><th>' + labels[stat] + '</th><td>' + baseStats[stat] + '</td><td>' + before + '</td><td><b>' + after + '</b></td><td>' + (delta > 0 ? '+' : '') + delta + '</td></tr>';
+		});
+		return html + '</tbody></table>';
 	};
 	proto.loadFormPreviews = function (index) {
 		var self = this, set = this.curSetList[Number(index)], team = this.curTeam;
@@ -4373,6 +4621,7 @@
 		return getStat.call(this, stat, previewSet, ev, nature);
 	};
 	proto.events['change .form-preview-choice'] = 'formPreviewChange';
+	proto.events['change .saved-build-choice'] = function (event) { if (event.currentTarget.value) this.applySavedBuild('', event.currentTarget); };
 	proto.validate = function () {
 		if (!this.curTeam) return;
 		if (this.curTeam.teamid && !this.curTeam.loaded) return app.loadTeam(this.curTeam, this.validate.bind(this));
@@ -4383,7 +4632,7 @@
 	};
 	proto.showTeamValidation = function () {
 		this.validationView = true;
-		var html = '<div class="pad team-validation"><h2>Validate saved teams</h2><p>Each team is checked independently against its own selected format on the connected server. Choose up to 12 teams. Cross-team league budgets are not checked. No sets will be changed.</p>' + button('back', 'Back') + '<div class="validation-choices">';
+		var self = this, html = '<div class="pad team-validation"><h2>Validate saved teams</h2><p>Each team is checked independently against its own selected format on the connected server. Choose up to 12 teams. Cross-team league budgets are not checked. No sets will be changed.</p>' + button('back', 'Back') + '<div class="validation-choices">';
 		Storage.teams.forEach(function (team, index) {
 			var format = window.BattleFormats && BattleFormats[team.format];
 			html += '<p><label><input type="checkbox" class="validate-team-choice" value="' + index + '" /> ' + escape(team.name) + ' — ' + escape(format ? format.name : team.format || 'No format: not checked') + '</label></p>';
@@ -4391,10 +4640,10 @@
 		html += '</div>' + button('validateSelectedTeams', 'Validate selected teams') + '<div class="validation-results" aria-live="polite">';
 		if (this.validationPending) html += '<p>Checking with server…</p>';
 		if (this.validationError) html += '<p>' + escape(this.validationError) + '</p>';
-		if (this.validationResults) this.validationResults.forEach(function (result) {
+		if (this.validationResults) this.validationResults.forEach(function (result, resultIndex) {
 			html += '<section><h3>' + escape(result.name) + ' — ' + escape(result.format || 'No format') + '</h3><p><strong>' + escape(result.status === 'valid' ? 'Passes selected format' : result.status) + '</strong></p>';
 			if (result.permissive) html += '<p>Permissive Custom Game rules: this is not proof of league legality.</p>';
-			(result.problems || []).forEach(function (problem) { html += '<p>' + escape(problem) + '</p>'; });
+			(result.problems || []).forEach(function (problem, problemIndex) { html += '<p>' + escape(problem) + ' ' + button('jumpValidationProblem', 'Review in team', resultIndex + ':' + problemIndex) + '</p>'; });
 			(result.suggestions || []).forEach(function (suggestion) { html += '<p>Suggestion: ' + escape(suggestion) + '</p>'; });
 			html += '<p>' + escape(result.matchup) + '</p></section>';
 		});
@@ -4405,11 +4654,34 @@
 		var self = this, selected = [];
 		this.$('.validate-team-choice:checked').each(function () {
 			var team = Storage.teams[Number(this.value)];
-			selected.push({name: team.name, format: team.format, team: team === self.curTeam && self.curSetList ? Storage.packTeam(T.clone(self.curSetList)) : team.team});
+			selected.push({localTeam: team, name: team.name, format: team.format, team: team === self.curTeam && self.curSetList ? Storage.packTeam(T.clone(self.curSetList)) : team.team});
 		});
 		if (!selected.length || selected.length > 12) return app.addPopupMessage('Select 1–12 teams.');
 		this.validationSelection = selected;
 		this.runSavedTeamValidation();
+	};
+	T.problemLocation = function (problem, sets) {
+		var matches = sets.map(function (set, index) { return {set: set, index: index}; }).filter(function (row) {
+			return [row.set.name, row.set.species].filter(Boolean).some(function (name) { return problem.startsWith(name + ' ') || problem.startsWith(name + "'") || problem.startsWith(name + ':'); });
+		});
+		if (matches.length !== 1) return null;
+		var row = matches[0], field = 'pokemon';
+		if (row.set.ability && problem.includes(row.set.ability)) field = 'ability';
+		if (row.set.item && problem.includes(row.set.item)) field = 'item';
+		(row.set.moves || []).forEach(function (move, index) { if (problem.includes(move)) field = 'move' + (index + 1); });
+		return {index: row.index, field: field};
+	};
+	proto.jumpValidationProblem = function (key) {
+		var parts = key.split(':').map(Number), selection = this.validationSelection && this.validationSelection[parts[0]];
+		var result = this.validationResults && this.validationResults[parts[0]];
+		if (!selection || !result) return;
+		var teamIndex = Storage.teams.indexOf(selection.localTeam);
+		if (teamIndex < 0) return app.addPopupMessage('This team has been removed.');
+		var problem = result.problems[parts[1]], sets = Storage.unpackTeam(selection.localTeam.team);
+		var location = T.problemLocation(problem, sets);
+		this.validationView = false; this.toolsView = false; this.profilesView = false; this.edit(teamIndex);
+		if (location) { this.selectPokemon(location.index); this.$('input[name="' + location.field + '"]').focus(); }
+		this.$el.prepend('<div class="pad validation-issue" role="status">' + escape(problem) + '</div>');
 	};
 	proto.runSavedTeamValidation = function () {
 		var self = this, token = T.uid();
@@ -4418,7 +4690,7 @@
 		this.validationResults = null;
 		this.validationError = '';
 		this.showTeamValidation();
-		this.requestTeamTools({action: 'validate', teams: this.validationSelection}, function (response) {
+		this.requestTeamTools({action: 'validate', teams: this.validationSelection.map(function (entry) { return {name: entry.name, format: entry.format, team: entry.team}; })}, function (response) {
 			if (self.validationToken !== token) return;
 			self.validationPending = false;
 			self.validationResults = response.results || null;

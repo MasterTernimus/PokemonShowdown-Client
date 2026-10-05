@@ -1,0 +1,7 @@
+'use strict';const assert=require('assert').strict;require('./battle.test');
+describe('Twenty-three family approved metadata',()=>{
+ const rows=[['masquerain','1','scaleshelter'],['mrrime','H','stagesweep'],['crabominable','0','icebreaker'],['maractus','1','cactuschorus'],['drapion','H','crushingvenom'],['electivire','1','crosswire'],['walrein','1','deepchill'],['excadrill','1','tunnelclearance'],['gigalith','0','crystalbastion'],['sandaconda','0','buriedcoil'],['arctozolt','1','staticreserve'],['pinsir','0','lockinggrip'],['comfey','0','garlandgift'],['obstagoon','H','riotstance']];
+ for(const[species,slot,id]of rows)it(species+' assigned slot and full descriptions',()=>{const a=Dex.abilities.get(id);assert.equal(Dex.species.get(species).abilities[slot],a.name);assert(a.desc.length>30);assert(a.shortDesc.length<160);});
+ for(const form of ['castform','castformsunny','castformrainy','castformsnowy','castformsandy','castformwindy'])it(form+' retains all three choices',()=>{assert.deepEqual(Dex.species.get(form).abilities,{0:'Forecast',1:'Memory Leak',H:'Climate Reserve'});assert(!Dex.getAbilityEffects('climatereserve').has('forecast'));});
+ it('exports selected balance numbers and exceptions',()=>{assert.equal(Dex.species.get('delibird').baseStats.spe,126);assert.match(Dex.abilities.get('rimeknuckle').desc,/20% chance.*40%/);assert.match(Dex.abilities.get('perishbody').desc,/Cursola and its forms never shorten/);assert.match(Dex.abilities.get('verdanthospitality').desc,/heals itself by 1\/16/);});
+});

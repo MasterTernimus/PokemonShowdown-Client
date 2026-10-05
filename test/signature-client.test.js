@@ -19,7 +19,7 @@ describe('Approved signature client parity', () => {
 		assert(!Dex.getAbilityEffects('atrocity').has('levitate'));
 		for (const id of ['battlefervor', 'precision', 'opportunist']) assert(Dex.getAbilityEffects('duskdrive').has(id));
 		assert.equal(Dex.moves.get('doubleshock').flags.punch, 1);
-		assert.match(Dex.abilities.get('gravehunger').desc, /1\/8 maximum HP per turn/);
+		assert.match(Dex.abilities.get('gravehunger').desc, /1\/8 max HP per turn/);
 	});
 	it('previews Frozen Feast, Atrocity contact power and Rimebreaker conversion without double counting', () => {
 		const battle = new Battle({debug: true, log: ['|init|battle', '|gen|9', '|gametype|singles',
