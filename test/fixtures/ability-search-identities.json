@@ -1,0 +1,4067 @@
+{
+  "adaptivecycle": [
+    "adaptivecycle"
+  ],
+  "noability": [
+    "noability"
+  ],
+  "selfsufficient": [
+    "selfsufficient"
+  ],
+  "selfrepair": [
+    "naturalcure",
+    "selfrepair",
+    "selfsufficient"
+  ],
+  "naturalrecovery": [
+    "naturalcure",
+    "naturalrecovery",
+    "regenerator"
+  ],
+  "purifyingfrost": [
+    "purifyingfrost"
+  ],
+  "smolderingshroud": [
+    "smolderingshroud",
+    "whitesmoke"
+  ],
+  "springfur": [
+    "furcoat",
+    "springfur"
+  ],
+  "varietyrush": [
+    "varietyrush"
+  ],
+  "knuckletide": [
+    "ironfist",
+    "knuckletide"
+  ],
+  "reservoir": [
+    "damp",
+    "gluttony",
+    "reservoir",
+    "waterabsorb"
+  ],
+  "crosscurrent": [
+    "crosscurrent",
+    "swiftswim"
+  ],
+  "pearlcurrent": [
+    "pearlcurrent",
+    "waterabsorb"
+  ],
+  "slipstream": [
+    "keeneye",
+    "levitate",
+    "slipstream"
+  ],
+  "mimecraft": [
+    "mimecraft"
+  ],
+  "apexflytrap": [
+    "apexflytrap",
+    "levitate"
+  ],
+  "forgegrit": [
+    "forgegrit",
+    "guts"
+  ],
+  "masonsfist": [
+    "ironfist",
+    "masonsfist"
+  ],
+  "marshconduit": [
+    "marshconduit",
+    "waterabsorb"
+  ],
+  "silkward": [
+    "silkward"
+  ],
+  "swarmdrive": [
+    "swarm",
+    "swarmdrive"
+  ],
+  "mirechorus": [
+    "liquidvoice",
+    "mirechorus",
+    "poisontouch"
+  ],
+  "boretunnel": [
+    "boretunnel",
+    "eartheater"
+  ],
+  "mossarmor": [
+    "levitate",
+    "mossarmor",
+    "naturalcure",
+    "stamina"
+  ],
+  "stormpower": [
+    "stormpower"
+  ],
+  "stormcalling": [
+    "dissonantecho",
+    "drizzle",
+    "liquidvoice",
+    "stormcalling"
+  ],
+  "unstableevo": [
+    "filter",
+    "selfsufficient",
+    "unstableevo"
+  ],
+  "hisuianpath": [
+    "fluffy",
+    "hisuianpath",
+    "innerfocus",
+    "sapsipper"
+  ],
+  "scarecrow": [
+    "scarecrow",
+    "stakeout",
+    "steelworker",
+    "windrider"
+  ],
+  "bruteforce": [
+    "bruteforce",
+    "reckless",
+    "rockhead"
+  ],
+  "gigavolt": [
+    "gigavolt",
+    "lightningrod",
+    "moldbreaker",
+    "static"
+  ],
+  "verdantedge": [
+    "chlorophyll",
+    "grasspelt",
+    "sharpness",
+    "verdantedge"
+  ],
+  "permafrost": [
+    "icebody",
+    "icescales",
+    "permafrost",
+    "refrigerate"
+  ],
+  "glacialheart": [
+    "glacialheart",
+    "icebody",
+    "stalwart",
+    "thermalexchange"
+  ],
+  "moonveil": [
+    "mistysurge",
+    "moonveil",
+    "pastelveil"
+  ],
+  "tidalwave": [
+    "hydration",
+    "raindish",
+    "tidalwave",
+    "waterabsorb"
+  ],
+  "livewire": [
+    "ironbarbs",
+    "livewire",
+    "quickfeet",
+    "transistor",
+    "voltabsorb"
+  ],
+  "kindledfury": [
+    "flashfire",
+    "fluffy",
+    "guts",
+    "kindledfury"
+  ],
+  "burningrage": [
+    "bruteforce",
+    "burningrage",
+    "ironfist",
+    "proficient",
+    "reckless",
+    "rockhead",
+    "turboblaze"
+  ],
+  "exalt": [
+    "defiant",
+    "exalt",
+    "sharpness"
+  ],
+  "fightingfiend": [
+    "fightingfiend",
+    "multiscale",
+    "noguard",
+    "vitalspirit"
+  ],
+  "kickfiend": [
+    "kickfiend",
+    "limber",
+    "striker",
+    "violentrush"
+  ],
+  "wreckingball": [
+    "crumblingshell",
+    "selfsufficient",
+    "sturdy",
+    "wreckingball"
+  ],
+  "swiftdrill": [
+    "powerdrill",
+    "raindish",
+    "swiftdrill",
+    "swiftswim"
+  ],
+  "lifeguard": [
+    "friendguard",
+    "lifeguard",
+    "propellertail",
+    "swornduty"
+  ],
+  "zen": [
+    "damp",
+    "unaware",
+    "waterabsorb",
+    "zen"
+  ],
+  "stormsong": [
+    "drizzle",
+    "liquidvoice",
+    "soundproof",
+    "stormsong"
+  ],
+  "astralward": [
+    "anticipation",
+    "astralward",
+    "magicbounce",
+    "telepathy"
+  ],
+  "moonlightvigil": [
+    "illuminate",
+    "innerfocus",
+    "moonlightvigil",
+    "pressure"
+  ],
+  "neurotoxin": [
+    "hydrabond",
+    "neurotoxin",
+    "regenerator",
+    "shedskin"
+  ],
+  "punchfiend": [
+    "innerfocus",
+    "ironfist",
+    "punchfiend",
+    "unseenfist"
+  ],
+  "doublestrike": [
+    "doublestrike",
+    "ironfist",
+    "skilllink",
+    "technician"
+  ],
+  "spinfiend": [
+    "spinfiend",
+    "technician",
+    "vitalspirit"
+  ],
+  "terragift": [
+    "hospitality",
+    "proficient",
+    "terragift",
+    "unaware"
+  ],
+  "precision": [
+    "precision"
+  ],
+  "secondwind": [
+    "secondwind"
+  ],
+  "rapidresponse": [
+    "rapidresponse"
+  ],
+  "seafiend": [
+    "seafiend",
+    "toxicdebris",
+    "waterbubble",
+    "waterveil"
+  ],
+  "hisuianoath": [
+    "corrosion",
+    "hisuianoath",
+    "swornduty",
+    "toughclaws"
+  ],
+  "aevianoath": [
+    "aevianoath",
+    "battlearmor",
+    "dualwield",
+    "swornduty"
+  ],
+  "hisuianvanguard": [
+    "hisuianvanguard",
+    "rapidresponse",
+    "windpower"
+  ],
+  "unovavanguard": [
+    "unovavanguard",
+    "violentrush",
+    "windrider"
+  ],
+  "unovawing": [
+    "competitive",
+    "superluck",
+    "unovawing"
+  ],
+  "aevianwing": [
+    "aevianwing",
+    "defiant",
+    "rockhead"
+  ],
+  "aeviandream": [
+    "aeviandream",
+    "baddreams",
+    "shedskin",
+    "toughclaws"
+  ],
+  "aevianfrost": [
+    "aevianfrost",
+    "guts",
+    "icebody"
+  ],
+  "aeviantoxin": [
+    "aeviantoxin",
+    "furcoat",
+    "layeredcoat",
+    "merciless",
+    "overcoat",
+    "strongjaw"
+  ],
+  "aevianspark": [
+    "aevianspark",
+    "earlybird",
+    "static",
+    "technician"
+  ],
+  "aeviangrief": [
+    "aeviangrief",
+    "cursedbody",
+    "levitate",
+    "magicguard",
+    "wonderskin"
+  ],
+  "aevianrocket": [
+    "aevianrocket",
+    "bruteforce",
+    "moldbreaker",
+    "reckless",
+    "regenerator",
+    "rockhead",
+    "swiftswim"
+  ],
+  "adaptivecore": [
+    "adaptivecore",
+    "defragment",
+    "download",
+    "naturalcure",
+    "noguard",
+    "selfrepair",
+    "selfsufficient"
+  ],
+  "aevianglacier": [
+    "aevianglacier",
+    "icebody",
+    "refrigerate",
+    "snowwarning"
+  ],
+  "aevianbolt": [
+    "aevianbolt",
+    "static",
+    "stormpower",
+    "voltabsorb"
+  ],
+  "ascendance": [
+    "ascendance"
+  ],
+  "hisuianresolve": [
+    "bruteforce",
+    "hisuianresolve",
+    "magmaarmor",
+    "reckless",
+    "rockhead"
+  ],
+  "nobleconduit": [
+    "aftermath",
+    "battery",
+    "nobleconduit",
+    "solarpower"
+  ],
+  "nobledance": [
+    "dancer",
+    "hospitality",
+    "nobledance",
+    "owntempo"
+  ],
+  "noblearmor": [
+    "icebody",
+    "noblearmor",
+    "prismarmor"
+  ],
+  "noblerider": [
+    "moldbreaker",
+    "noblerider",
+    "swiftswim"
+  ],
+  "celestialheart": [
+    "celestialheart",
+    "friendguard",
+    "serenegrace",
+    "soulheart"
+  ],
+  "crueltag": [
+    "baddreams",
+    "crueltag",
+    "infiltrator",
+    "shadowtag"
+  ],
+  "cruelshell": [
+    "angershell",
+    "cruelshell",
+    "hypercutter",
+    "shellarmor"
+  ],
+  "adaptability": [
+    "adaptability"
+  ],
+  "spiralevolution": [
+    "adaptability",
+    "dualwield",
+    "infiltrator",
+    "levitate",
+    "moldbreaker",
+    "shielddust",
+    "spiralevolution"
+  ],
+  "alchemistsurge": [
+    "alchemistsurge",
+    "competitive",
+    "hydrabond",
+    "prankster",
+    "psychicsurge"
+  ],
+  "guidingomen": [
+    "friendguard",
+    "guidingomen",
+    "moldbreaker",
+    "serenegrace"
+  ],
+  "greatmarsh": [
+    "adaptability",
+    "anticipation",
+    "dryskin",
+    "greatmarsh",
+    "toxicchain"
+  ],
+  "phalanxform": [
+    "battlearmor",
+    "friendguard",
+    "hydrabond",
+    "phalanxform"
+  ],
+  "windchime": [
+    "armorize",
+    "levitate",
+    "punkrock",
+    "windchime"
+  ],
+  "hauntedchime": [
+    "cursedbody",
+    "elevate",
+    "hauntedchime",
+    "windpower"
+  ],
+  "auramaster": [
+    "auramaster",
+    "dualwield",
+    "innerfocus",
+    "technician"
+  ],
+  "patternshift": [
+    "patternshift",
+    "protean",
+    "shedskin",
+    "unaware"
+  ],
+  "bonewarrior": [
+    "battlearmor",
+    "bonewarrior",
+    "selfsufficient"
+  ],
+  "ironvise": [
+    "battlearmor",
+    "intimidate",
+    "ironvise",
+    "lightmetal",
+    "toughclaws"
+  ],
+  "dualwield": [
+    "dualwield"
+  ],
+  "apexvenom": [
+    "apexvenom",
+    "shedskin",
+    "strongjaw"
+  ],
+  "sirius": [
+    "apexvenom",
+    "blackviper",
+    "shedskin",
+    "sirius",
+    "strongjaw",
+    "whiplash"
+  ],
+  "apexpredator": [
+    "apexpredator",
+    "dragonize",
+    "relicarmor",
+    "selfsufficient",
+    "windrider"
+  ],
+  "violentrush": [
+    "violentrush"
+  ],
+  "bullrush": [
+    "bullrush",
+    "intimidate",
+    "violentrush"
+  ],
+  "unleashedego": [
+    "battlearmor",
+    "levitate",
+    "moldbreaker",
+    "ragingstorm",
+    "ultraego",
+    "unleashedego"
+  ],
+  "joyride": [
+    "aerilate",
+    "joyride",
+    "violentrush",
+    "vitalspirit"
+  ],
+  "aerilate": [
+    "aerilate"
+  ],
+  "aftermath": [
+    "aftermath"
+  ],
+  "airlock": [
+    "airlock"
+  ],
+  "analytic": [
+    "analytic"
+  ],
+  "inexorable": [
+    "inexorable"
+  ],
+  "wildspirit": [
+    "wildspirit"
+  ],
+  "angerpoint": [
+    "angerpoint"
+  ],
+  "angershell": [
+    "angershell"
+  ],
+  "anticipation": [
+    "anticipation"
+  ],
+  "arenatrap": [
+    "arenatrap"
+  ],
+  "armortail": [
+    "armortail"
+  ],
+  "aromaveil": [
+    "aromaveil"
+  ],
+  "asoneglastrier": [
+    "asoneglastrier"
+  ],
+  "asonespectrier": [
+    "asonespectrier"
+  ],
+  "aquashell": [
+    "aquashell",
+    "innerfocus",
+    "toughclaws",
+    "waterveil"
+  ],
+  "aurabreak": [
+    "aurabreak"
+  ],
+  "baddreams": [
+    "baddreams"
+  ],
+  "ballfetch": [
+    "ballfetch"
+  ],
+  "battery": [
+    "battery"
+  ],
+  "battlearmor": [
+    "battlearmor"
+  ],
+  "battlefervor": [
+    "battlefervor"
+  ],
+  "battlebond": [
+    "battlebond",
+    "filter",
+    "selfsufficient"
+  ],
+  "shadowbond": [
+    "battlebond",
+    "filter",
+    "infiltrator",
+    "proficient",
+    "selfsufficient",
+    "shadowbond"
+  ],
+  "apexbond": [
+    "apexbond",
+    "battlebond",
+    "filter",
+    "innerfocus",
+    "roughskin",
+    "selfsufficient",
+    "supremeoverlord"
+  ],
+  "sacredbond": [
+    "battlebond",
+    "filter",
+    "flashfire",
+    "intimidate",
+    "magmaarmor",
+    "sacredbond",
+    "selfsufficient"
+  ],
+  "beadsofruin": [
+    "beadsofruin"
+  ],
+  "beastboost": [
+    "beastboost"
+  ],
+  "berserk": [
+    "berserk"
+  ],
+  "bigpecks": [
+    "bigpecks"
+  ],
+  "blaze": [
+    "blaze"
+  ],
+  "apexarmor": [
+    "apexarmor",
+    "bulletproof",
+    "roughskin",
+    "selfsufficient",
+    "stalwart"
+  ],
+  "hardyskin": [
+    "dryskin",
+    "hardyskin",
+    "moxie",
+    "vitalspirit"
+  ],
+  "bulletproof": [
+    "bulletproof"
+  ],
+  "cheekpouch": [
+    "cheekpouch"
+  ],
+  "chillingneigh": [
+    "chillingneigh"
+  ],
+  "chlorophyll": [
+    "chlorophyll"
+  ],
+  "solarhydra": [
+    "grassysurge",
+    "hydrabond",
+    "solarbud",
+    "solarhydra",
+    "solarpower"
+  ],
+  "astralengine": [
+    "analytic",
+    "astralengine",
+    "elevate",
+    "powerspot"
+  ],
+  "elevate": [
+    "elevate"
+  ],
+  "clearbody": [
+    "clearbody"
+  ],
+  "cloudnine": [
+    "cloudnine"
+  ],
+  "colorchange": [
+    "colorchange"
+  ],
+  "comatose": [
+    "comatose"
+  ],
+  "conductivity": [
+    "conductivity"
+  ],
+  "commander": [
+    "commander"
+  ],
+  "competitive": [
+    "competitive"
+  ],
+  "compoundeyes": [
+    "compoundeyes"
+  ],
+  "contrary": [
+    "contrary"
+  ],
+  "queensguard": [
+    "contrary",
+    "infiltrator",
+    "intimidate",
+    "proficient",
+    "queensguard",
+    "shedskin"
+  ],
+  "corrosivetouch": [
+    "corrosion",
+    "corrosivetouch",
+    "poisontouch",
+    "technician"
+  ],
+  "corrosion": [
+    "corrosion"
+  ],
+  "costar": [
+    "costar"
+  ],
+  "cottondown": [
+    "cottondown"
+  ],
+  "crumblingshell": [
+    "crumblingshell"
+  ],
+  "witheringshell": [
+    "crumblingshell",
+    "naturalcure",
+    "naturalrecovery",
+    "regenerator",
+    "sturdy",
+    "witheringshell"
+  ],
+  "cudchew": [
+    "cudchew"
+  ],
+  "curiousmedicine": [
+    "curiousmedicine"
+  ],
+  "cursedbody": [
+    "cursedbody"
+  ],
+  "cutecharm": [
+    "cutecharm"
+  ],
+  "damp": [
+    "damp"
+  ],
+  "dancer": [
+    "dancer"
+  ],
+  "darkaura": [
+    "darkaura"
+  ],
+  "dauntlessshield": [
+    "dauntlessshield"
+  ],
+  "dazzling": [
+    "dazzling"
+  ],
+  "defeatist": [
+    "defeatist"
+  ],
+  "relicinstinct": [
+    "relicinstinct"
+  ],
+  "fossilfrenzy": [
+    "fossilfrenzy",
+    "klutz"
+  ],
+  "defiant": [
+    "defiant"
+  ],
+  "deltastream": [
+    "deltastream"
+  ],
+  "desolateland": [
+    "desolateland"
+  ],
+  "disguise": [
+    "disguise"
+  ],
+  "download": [
+    "download"
+  ],
+  "dragonize": [
+    "dragonize"
+  ],
+  "draconicforce": [
+    "draconicforce",
+    "dragonize",
+    "moldbreaker",
+    "proficient",
+    "strongjaw"
+  ],
+  "dragonsmaw": [
+    "dragonsmaw"
+  ],
+  "drizzle": [
+    "drizzle"
+  ],
+  "drought": [
+    "drought"
+  ],
+  "sunsovereign": [
+    "dragonize",
+    "drought",
+    "magmaarmor",
+    "moldbreaker",
+    "proficient",
+    "selfsufficient",
+    "sunsovereign",
+    "unboundblaze"
+  ],
+  "burningspirit": [
+    "burningspirit",
+    "magmaarmor",
+    "opportunist",
+    "proficient",
+    "selfsufficient"
+  ],
+  "emperorsresolve": [
+    "competitive",
+    "emperorsresolve",
+    "proficient",
+    "slushrush",
+    "swiftswim"
+  ],
+  "terraresolve": [
+    "proficient",
+    "solidrock",
+    "stamina",
+    "terraresolve"
+  ],
+  "primalego": [
+    "moldbreaker",
+    "primalego",
+    "proficient",
+    "ultraego",
+    "unaware"
+  ],
+  "eclipsevision": [
+    "eclipsevision"
+  ],
+  "venomarmor": [
+    "dualwield",
+    "poisonheal",
+    "venomarmor"
+  ],
+  "toxicarmor": [
+    "dualwield",
+    "poisonheal",
+    "toxicarmor",
+    "venomarmor",
+    "violentrush"
+  ],
+  "corrosiveburn": [
+    "corrosion",
+    "corrosiveburn",
+    "oblivious",
+    "venomignition"
+  ],
+  "noseformation": [
+    "elevate",
+    "filter",
+    "noseformation"
+  ],
+  "mourningvessel": [
+    "magicguard",
+    "mourningvessel",
+    "prankster"
+  ],
+  "fallenstar": [
+    "dualwield",
+    "fallenstar",
+    "moldbreaker",
+    "proficient",
+    "selfsufficient"
+  ],
+  "eclipse": [
+    "eclipse"
+  ],
+  "ragingstorm": [
+    "battlearmor",
+    "moldbreaker",
+    "ragingstorm"
+  ],
+  "ragingoverlord": [
+    "battlearmor",
+    "innerfocus",
+    "moldbreaker",
+    "ragingoverlord",
+    "ragingstorm",
+    "supremeoverlord"
+  ],
+  "voltagevolley": [
+    "voltagevolley"
+  ],
+  "vanguard": [
+    "intimidate",
+    "vanguard"
+  ],
+  "apexcleave": [
+    "apexcleave",
+    "dualwield",
+    "moxie",
+    "sharpness"
+  ],
+  "aurainstinct": [
+    "adaptability",
+    "aurainstinct",
+    "dualwield",
+    "secondwind"
+  ],
+  "abysssniper": [
+    "abysssniper",
+    "sniper",
+    "stalwart"
+  ],
+  "grandmaster": [
+    "grandmaster"
+  ],
+  "warpath": [
+    "warpath"
+  ],
+  "atrocity": [
+    "atrocity",
+    "dragonize",
+    "magmaarmor",
+    "moldbreaker",
+    "proficient",
+    "selfsufficient",
+    "toughclaws",
+    "unboundblaze"
+  ],
+  "wickedsnare": [
+    "prankster",
+    "stakeout",
+    "tanglinghair",
+    "wickedsnare"
+  ],
+  "wickedcommand": [
+    "insomnia",
+    "superluck",
+    "wickedcommand"
+  ],
+  "bewitchingmajesty": [
+    "bewitchingmajesty",
+    "magicbounce",
+    "queenlymajesty"
+  ],
+  "mythicscale": [
+    "compoundeyes",
+    "levitate",
+    "marvelscale",
+    "mythicscale",
+    "shielddust"
+  ],
+  "toxicevolution": [
+    "corrosion",
+    "dualwield",
+    "levitate",
+    "moldbreaker",
+    "shielddust",
+    "toxicevolution"
+  ],
+  "soulstrike": [
+    "noguard",
+    "soulstrike"
+  ],
+  "auroraresonance": [
+    "auroraresonance",
+    "icebody",
+    "liquidvoice",
+    "raindish",
+    "waterabsorb"
+  ],
+  "auroracurrent": [
+    "auroracurrent",
+    "snowwarning"
+  ],
+  "alloycore": [
+    "alloycore",
+    "magicguard",
+    "selfsufficient",
+    "stalwart"
+  ],
+  "hellfireeclipse": [
+    "darkaura",
+    "flashfire",
+    "hellfireeclipse",
+    "solarpower"
+  ],
+  "sacrededge": [
+    "dualwield",
+    "sacrededge",
+    "sharpness",
+    "swornduty"
+  ],
+  "omenedge": [
+    "dualwield",
+    "omenedge",
+    "pressure",
+    "sharpness"
+  ],
+  "dreadmaw": [
+    "dreadmaw",
+    "frisk",
+    "hugepower",
+    "invigorate"
+  ],
+  "cursedkeepsake": [
+    "cursedkeepsake",
+    "frisk"
+  ],
+  "curseddoll": [
+    "curseddoll",
+    "frisk",
+    "shadowshield",
+    "toughclaws"
+  ],
+  "cursedmarionette": [
+    "cursedmarionette",
+    "frisk",
+    "prankster"
+  ],
+  "sandsovereign": [
+    "dauntlessshield",
+    "sandsovereign",
+    "sandstream",
+    "solidrock"
+  ],
+  "tyrantstream": [
+    "bruteforce",
+    "reckless",
+    "rockhead",
+    "sandstream",
+    "strongjaw",
+    "tyrantstream"
+  ],
+  "frostsovereign": [
+    "filter",
+    "frostsovereign",
+    "icebody",
+    "snowwarning"
+  ],
+  "freezerburn": [
+    "freezerburn",
+    "levitate",
+    "refrigerate",
+    "slushrush",
+    "strongjaw"
+  ],
+  "stormfright": [
+    "intimidate",
+    "lightningrod",
+    "stormfright",
+    "stormpower"
+  ],
+  "enlightenment": [
+    "enlightenment",
+    "innerfocus",
+    "purepower",
+    "technician"
+  ],
+  "relentlesslink": [
+    "moldbreaker",
+    "powerdrill",
+    "relentlesslink",
+    "skilllink"
+  ],
+  "mirrorgreed": [
+    "analytic",
+    "filter",
+    "magicbounce",
+    "mirrorgreed"
+  ],
+  "uncheckedassault": [
+    "limber",
+    "opportunist",
+    "scrappy",
+    "striker",
+    "uncheckedassault"
+  ],
+  "royalvoice": [
+    "dreamsickness",
+    "pixilate",
+    "queenlymajesty",
+    "royalvoice",
+    "telepathy"
+  ],
+  "memoryleak": [
+    "memoryleak"
+  ],
+  "defragment": [
+    "defragment",
+    "noguard"
+  ],
+  "temporalshift": [
+    "temporalshift"
+  ],
+  "dreamsickness": [
+    "dreamsickness",
+    "telepathy"
+  ],
+  "voidveil": [
+    "insomnia",
+    "levitate",
+    "magicguard",
+    "voidveil"
+  ],
+  "accumulation": [
+    "accumulation",
+    "thickfat"
+  ],
+  "rifteater": [
+    "accumulation",
+    "rifteater",
+    "sandstream",
+    "thickfat"
+  ],
+  "mountainrift": [
+    "mountainrift",
+    "selfsufficient",
+    "shellarmor"
+  ],
+  "desertrift": [
+    "desertrift",
+    "heavymetal",
+    "sandforce",
+    "sandstream"
+  ],
+  "adaptivecell": [
+    "adaptivecell",
+    "overcoat"
+  ],
+  "adaptivepower": [
+    "adaptivepower",
+    "hugepower",
+    "magicguard",
+    "regenerator"
+  ],
+  "relicbeam": [
+    "relicbeam"
+  ],
+  "perfectforesight": [
+    "insomnia",
+    "perfectforesight",
+    "trace"
+  ],
+  "doomwarning": [
+    "anticipation",
+    "doomwarning",
+    "magicbounce",
+    "magicguard"
+  ],
+  "perfectego": [
+    "noguard",
+    "perfectego",
+    "ultraego"
+  ],
+  "heavenlychorus": [
+    "cloudnine",
+    "fluffy",
+    "heavenlychorus",
+    "pixilate"
+  ],
+  "mourningsnow": [
+    "icebody",
+    "mourningsnow",
+    "snowwarning"
+  ],
+  "venombastion": [
+    "stamina",
+    "venombastion"
+  ],
+  "rimeknuckle": [
+    "filter",
+    "icebody",
+    "ironfist",
+    "rimeknuckle"
+  ],
+  "streettyrant": [
+    "intimidate",
+    "moldbreaker",
+    "shedskin",
+    "streettyrant"
+  ],
+  "divineintervention": [
+    "divineintervention",
+    "fluffy",
+    "friendguard",
+    "regenerator",
+    "swornduty"
+  ],
+  "mountainhunger": [
+    "earlybird",
+    "mountainhunger",
+    "sapsipper",
+    "thickfat"
+  ],
+  "irondominion": [
+    "irondominion",
+    "mirrorarmor",
+    "pressure",
+    "swornduty"
+  ],
+  "astralwatcher": [
+    "astralwatcher",
+    "defragment",
+    "frisk",
+    "noguard",
+    "prankster"
+  ],
+  "treasuretitan": [
+    "eartheater",
+    "filter",
+    "heavymetal",
+    "intimidate",
+    "treasuretitan"
+  ],
+  "ragingfists": [
+    "hydrabond",
+    "ragingfists",
+    "scrappy"
+  ],
+  "warship": [
+    "solidrock",
+    "strongjaw",
+    "swiftswim",
+    "warship"
+  ],
+  "furnaceengine": [
+    "flamebody",
+    "furnaceengine",
+    "magmaarmor",
+    "selfsufficient",
+    "solidrock",
+    "steamengine"
+  ],
+  "duneterror": [
+    "duneterror",
+    "sandspit",
+    "sandstream",
+    "shedskin"
+  ],
+  "heatcoil": [
+    "flamebody",
+    "heatcoil",
+    "magmaarmor",
+    "speedboost"
+  ],
+  "sweetdecay": [
+    "corrosion",
+    "gluttony",
+    "hustle",
+    "sweetdecay",
+    "sweetveil"
+  ],
+  "bakedbliss": [
+    "bakedbliss",
+    "gluttony",
+    "sweetveil",
+    "thickfat",
+    "wellbakedbody"
+  ],
+  "sweetsanctuary": [
+    "aromaveil",
+    "friendguard",
+    "pastelveil",
+    "sweetsanctuary",
+    "sweetveil"
+  ],
+  "riptideclaws": [
+    "moldbreaker",
+    "riptideclaws",
+    "shellarmor",
+    "swiftswim",
+    "toughclaws"
+  ],
+  "tidaljaw": [
+    "filter",
+    "proficient",
+    "strongjaw",
+    "swiftswim",
+    "tidaljaw"
+  ],
+  "dryskin": [
+    "dryskin"
+  ],
+  "sacredpower": [
+    "duskilate",
+    "insomnia",
+    "magicguard",
+    "sacredpower"
+  ],
+  "duskilate": [
+    "duskilate"
+  ],
+  "execution": [
+    "duskilate",
+    "execution",
+    "moldbreaker"
+  ],
+  "earlybird": [
+    "earlybird"
+  ],
+  "eartheater": [
+    "eartheater"
+  ],
+  "caverndrake": [
+    "caverndrake",
+    "eartheater",
+    "moldbreaker",
+    "solidrock"
+  ],
+  "echofiend": [
+    "echofiend"
+  ],
+  "effectspore": [
+    "effectspore"
+  ],
+  "electricsurge": [
+    "electricsurge"
+  ],
+  "electromorphosis": [
+    "electromorphosis"
+  ],
+  "embodyaspectcornerstone": [
+    "embodyaspectcornerstone"
+  ],
+  "embodyaspecthearthflame": [
+    "embodyaspecthearthflame"
+  ],
+  "embodyaspectteal": [
+    "embodyaspectteal"
+  ],
+  "embodyaspectwellspring": [
+    "embodyaspectwellspring"
+  ],
+  "emergencyexit": [
+    "emergencyexit"
+  ],
+  "eternalflower": [
+    "eternalflower",
+    "moldbreaker"
+  ],
+  "ange": [
+    "ange",
+    "eternalflower",
+    "fairyaura",
+    "magicguard",
+    "moldbreaker"
+  ],
+  "fairyaura": [
+    "fairyaura"
+  ],
+  "filter": [
+    "filter"
+  ],
+  "byxbysiontouch": [
+    "byxbysiontouch",
+    "poisontouch"
+  ],
+  "fluffyevo": [
+    "fluffyevo",
+    "overcoat"
+  ],
+  "mindfreeze": [
+    "icebody",
+    "mindfreeze"
+  ],
+  "riotamp": [
+    "galvanize",
+    "resonanceforce",
+    "riotamp",
+    "voltabsorb"
+  ],
+  "relicarmor": [
+    "relicarmor",
+    "selfsufficient"
+  ],
+  "tyrantdomain": [
+    "innerfocus",
+    "relicarmor",
+    "sandstream",
+    "selfsufficient",
+    "supremeoverlord",
+    "tyrantdomain"
+  ],
+  "auroradomain": [
+    "auroradomain",
+    "refrigerate",
+    "relicarmor",
+    "selfsufficient",
+    "snowwarning"
+  ],
+  "royalscales": [
+    "dragonize",
+    "marvelscale",
+    "oblivious",
+    "prismscale",
+    "royalscales",
+    "selfsufficient",
+    "swiftswim"
+  ],
+  "relicmishap": [
+    "relicmishap",
+    "selfsufficient"
+  ],
+  "windysurge": [
+    "windysurge"
+  ],
+  "flamebody": [
+    "flamebody"
+  ],
+  "flareboost": [
+    "flareboost"
+  ],
+  "falsedevotion": [
+    "falsedevotion",
+    "naturalcure",
+    "naturalrecovery",
+    "prankster",
+    "regenerator",
+    "serenegrace"
+  ],
+  "truedevotion": [
+    "falsedevotion",
+    "naturalcure",
+    "naturalrecovery",
+    "prankster",
+    "regenerator",
+    "serenegrace",
+    "technician",
+    "truedevotion"
+  ],
+  "ancientbloom": [
+    "ancientbloom",
+    "effectspore",
+    "pollenbloom",
+    "proficient",
+    "selfsufficient",
+    "thickfat",
+    "unaware"
+  ],
+  "pollenbloom": [
+    "pollenbloom",
+    "proficient",
+    "thickfat",
+    "unaware"
+  ],
+  "firemane": [
+    "firemane"
+  ],
+  "blazingmane": [
+    "blazingmane",
+    "proficient"
+  ],
+  "plasmaeruption": [
+    "flamebody",
+    "plasmaeruption",
+    "proficient",
+    "static"
+  ],
+  "fortressshell": [
+    "dualwield",
+    "fortressshell",
+    "proficient",
+    "shellarmor",
+    "waterbarrage"
+  ],
+  "waterbarrage": [
+    "dualwield",
+    "proficient",
+    "waterbarrage"
+  ],
+  "livinglegend": [
+    "download",
+    "flashfire",
+    "livinglegend",
+    "sheerforce"
+  ],
+  "flashfire": [
+    "flashfire"
+  ],
+  "flowergift": [
+    "flowergift"
+  ],
+  "flowerveil": [
+    "flowerveil"
+  ],
+  "fluffy": [
+    "fluffy"
+  ],
+  "forecast": [
+    "forecast"
+  ],
+  "forewarn": [
+    "forewarn"
+  ],
+  "searescuer": [
+    "searescuer"
+  ],
+  "holycow": [
+    "holycow"
+  ],
+  "dreepyvanguard": [
+    "dreepyvanguard",
+    "stalwart"
+  ],
+  "groundingtail": [
+    "groundingtail"
+  ],
+  "steelplumage": [
+    "steelplumage"
+  ],
+  "venomcanticle": [
+    "venomcanticle"
+  ],
+  "solarbud": [
+    "solarbud"
+  ],
+  "dissonantecho": [
+    "dissonantecho"
+  ],
+  "templechime": [
+    "elevate",
+    "levitate",
+    "templechime"
+  ],
+  "soothingpresence": [
+    "aromaveil",
+    "friendguard",
+    "soothingpresence"
+  ],
+  "friendguard": [
+    "friendguard"
+  ],
+  "verdanthospitality": [
+    "friendguard",
+    "proficient",
+    "verdanthospitality"
+  ],
+  "verdantsanctuary": [
+    "friendguard",
+    "grassysurge",
+    "hospitality",
+    "invigorate",
+    "verdantsanctuary"
+  ],
+  "echosense": [
+    "echofiend",
+    "echosense",
+    "frisk",
+    "infiltrator",
+    "telepathy"
+  ],
+  "frisk": [
+    "frisk"
+  ],
+  "fullmetalbody": [
+    "fullmetalbody"
+  ],
+  "furcoat": [
+    "furcoat"
+  ],
+  "galewings": [
+    "galewings"
+  ],
+  "wingedwraith": [
+    "galewings",
+    "infiltrator",
+    "wingedwraith"
+  ],
+  "galvanize": [
+    "galvanize"
+  ],
+  "gluttony": [
+    "gluttony"
+  ],
+  "goodasgold": [
+    "goodasgold"
+  ],
+  "gooey": [
+    "gooey",
+    "hydration",
+    "sapsipper"
+  ],
+  "gorillatactics": [
+    "gorillatactics"
+  ],
+  "primaltactics": [
+    "primaltactics"
+  ],
+  "grasspelt": [
+    "grasspelt"
+  ],
+  "grassysurge": [
+    "grassysurge"
+  ],
+  "grimneigh": [
+    "grimneigh"
+  ],
+  "guarddog": [
+    "guarddog"
+  ],
+  "gulpmissile": [
+    "gulpmissile"
+  ],
+  "guts": [
+    "guts"
+  ],
+  "hadronengine": [
+    "hadronengine"
+  ],
+  "harvest": [
+    "harvest"
+  ],
+  "healer": [
+    "healer"
+  ],
+  "invigorate": [
+    "invigorate"
+  ],
+  "swornduty": [
+    "swornduty"
+  ],
+  "heatproof": [
+    "heatproof"
+  ],
+  "heavymetal": [
+    "heavymetal"
+  ],
+  "hyperdrill": [
+    "dualwield",
+    "hyperdrill",
+    "powerdrill"
+  ],
+  "honeygather": [
+    "honeygather"
+  ],
+  "hospitality": [
+    "hospitality"
+  ],
+  "hugepower": [
+    "hugepower"
+  ],
+  "hungerswitch": [
+    "hungerswitch"
+  ],
+  "hustle": [
+    "hustle"
+  ],
+  "hydrabond": [
+    "hydrabond"
+  ],
+  "hydraheart": [
+    "hydrabond",
+    "hydraheart",
+    "stamina"
+  ],
+  "sweetresonance": [
+    "hydrabond",
+    "selfsufficient",
+    "stickyhold",
+    "supersweetsyrup",
+    "sweetresonance"
+  ],
+  "imperialmandate": [
+    "imperialmandate"
+  ],
+  "phantombarrage": [
+    "clearbody",
+    "hydrabond",
+    "infiltrator",
+    "levitate",
+    "phantombarrage"
+  ],
+  "astralcore": [
+    "astralcore",
+    "illuminate",
+    "naturalcure",
+    "purepower"
+  ],
+  "divinemockery": [
+    "divinemockery",
+    "hydrabond",
+    "moldbreaker",
+    "sniper"
+  ],
+  "truehydra": [
+    "hydrabond",
+    "regenerator",
+    "selfsufficient",
+    "shedskin",
+    "truehydra"
+  ],
+  "desertspirit": [
+    "desertspirit",
+    "levitate",
+    "sandstream",
+    "tintedlens"
+  ],
+  "desertshell": [
+    "desertshell",
+    "heatproof",
+    "sandstream",
+    "skilllink"
+  ],
+  "hydratyrant": [
+    "berserk",
+    "hydrabond",
+    "hydratyrant"
+  ],
+  "orchardbond": [
+    "harvest",
+    "hydrabond",
+    "orchardbond"
+  ],
+  "hydration": [
+    "hydration"
+  ],
+  "hypercutter": [
+    "hypercutter"
+  ],
+  "iceabsorb": [
+    "iceabsorb"
+  ],
+  "icebody": [
+    "icebody"
+  ],
+  "iceface": [
+    "iceface"
+  ],
+  "icescales": [
+    "icescales"
+  ],
+  "illuminate": [
+    "illuminate"
+  ],
+  "illusion": [
+    "illusion"
+  ],
+  "immunity": [
+    "immunity"
+  ],
+  "imposter": [
+    "imposter"
+  ],
+  "infiltrator": [
+    "infiltrator"
+  ],
+  "burningcrown": [
+    "burningcrown",
+    "dragonize",
+    "filter",
+    "intimidate",
+    "magmaarmor",
+    "moldbreaker",
+    "proficient",
+    "selfsufficient",
+    "unboundblaze",
+    "whitesmoke"
+  ],
+  "unboundblaze": [
+    "dragonize",
+    "magmaarmor",
+    "proficient",
+    "unboundblaze"
+  ],
+  "innardsout": [
+    "innardsout"
+  ],
+  "innerfocus": [
+    "innerfocus"
+  ],
+  "insomnia": [
+    "insomnia"
+  ],
+  "frightfulwings": [
+    "frightfulwings",
+    "intimidate"
+  ],
+  "intimidate": [
+    "intimidate"
+  ],
+  "intrepidsword": [
+    "intrepidsword"
+  ],
+  "inversion": [
+    "inversion"
+  ],
+  "ironbarbs": [
+    "ironbarbs"
+  ],
+  "armorize": [
+    "armorize"
+  ],
+  "argentdevotion": [
+    "argentdevotion",
+    "armorize",
+    "moldbreaker",
+    "serenegrace",
+    "swornduty"
+  ],
+  "ironfist": [
+    "ironfist"
+  ],
+  "justified": [
+    "justified"
+  ],
+  "knightsguard": [
+    "knightsguard"
+  ],
+  "lancepoint": [
+    "keeneye",
+    "lancepoint"
+  ],
+  "keeneye": [
+    "keeneye"
+  ],
+  "klutz": [
+    "klutz"
+  ],
+  "leafguard": [
+    "leafguard"
+  ],
+  "levitate": [
+    "levitate"
+  ],
+  "libero": [
+    "libero"
+  ],
+  "lightmetal": [
+    "lightmetal"
+  ],
+  "lightningrod": [
+    "lightningrod"
+  ],
+  "limber": [
+    "limber"
+  ],
+  "lingeringaroma": [
+    "lingeringaroma"
+  ],
+  "liquidooze": [
+    "liquidooze"
+  ],
+  "liquidvoice": [
+    "liquidvoice"
+  ],
+  "longreach": [
+    "keeneye",
+    "longreach",
+    "superluck"
+  ],
+  "magicbounce": [
+    "magicbounce"
+  ],
+  "lunarorbit": [
+    "lunarorbit",
+    "magicbounce",
+    "magicguard",
+    "serenegrace",
+    "triage"
+  ],
+  "magicguard": [
+    "magicguard"
+  ],
+  "magician": [
+    "magician"
+  ],
+  "magmaarmor": [
+    "magmaarmor"
+  ],
+  "magnetpull": [
+    "magnetpull"
+  ],
+  "marvelscale": [
+    "marvelscale"
+  ],
+  "prismscale": [
+    "marvelscale",
+    "oblivious",
+    "prismscale",
+    "swiftswim"
+  ],
+  "anchoredbattery": [
+    "anchoredbattery",
+    "megalauncher",
+    "suctioncups"
+  ],
+  "megalauncher": [
+    "megalauncher"
+  ],
+  "heavyartillery": [
+    "heavyartillery",
+    "shellarmor",
+    "unaware"
+  ],
+  "megasol": [
+    "megasol"
+  ],
+  "bloomingsun": [
+    "bloomingsun",
+    "invigorate",
+    "megasol",
+    "naturalcure",
+    "proficient"
+  ],
+  "merciless": [
+    "merciless"
+  ],
+  "mimicry": [
+    "mimicry"
+  ],
+  "mindseye": [
+    "mindseye",
+    "selfsufficient"
+  ],
+  "minus": [
+    "minus"
+  ],
+  "stormbell": [
+    "drizzle",
+    "elevate",
+    "mirrorarmor",
+    "stormbell"
+  ],
+  "mirrorarmor": [
+    "mirrorarmor"
+  ],
+  "mistysurge": [
+    "mistysurge"
+  ],
+  "moldbreaker": [
+    "moldbreaker"
+  ],
+  "moody": [
+    "moody"
+  ],
+  "motordrive": [
+    "motordrive"
+  ],
+  "moxie": [
+    "moxie"
+  ],
+  "requiem": [
+    "cursedbody",
+    "requiem"
+  ],
+  "reapersgrip": [
+    "darkaura",
+    "reapersgrip",
+    "selfsufficient",
+    "unaware"
+  ],
+  "moonlitwings": [
+    "moonlitwings",
+    "serenegrace"
+  ],
+  "terastaladaptability": [
+    "terastaladaptability"
+  ],
+  "frozenfortress": [
+    "crumblingshell",
+    "frozenfortress",
+    "icebody",
+    "shellarmor"
+  ],
+  "paradoxwheel": [
+    "paradoxwheel"
+  ],
+  "paradoxpower": [
+    "paradoxpower",
+    "sheerforce"
+  ],
+  "paradoxpull": [
+    "magnetpull",
+    "paradoxpull"
+  ],
+  "multiscale": [
+    "multiscale"
+  ],
+  "multitype": [
+    "multitype"
+  ],
+  "mummy": [
+    "mummy"
+  ],
+  "myceliummight": [
+    "myceliummight"
+  ],
+  "naturalcure": [
+    "naturalcure"
+  ],
+  "neuroforce": [
+    "neuroforce"
+  ],
+  "neutralization": [
+    "neutralization"
+  ],
+  "neutralizinggas": [
+    "neutralizinggas"
+  ],
+  "noguard": [
+    "noguard"
+  ],
+  "normalize": [
+    "normalize"
+  ],
+  "oblivious": [
+    "oblivious"
+  ],
+  "opportunist": [
+    "opportunist"
+  ],
+  "orichalcumpulse": [
+    "orichalcumpulse"
+  ],
+  "overcoat": [
+    "overcoat"
+  ],
+  "overgrow": [
+    "overgrow"
+  ],
+  "owntempo": [
+    "owntempo"
+  ],
+  "parentalbond": [
+    "friendguard",
+    "moldbreaker",
+    "parentalbond",
+    "scrappy",
+    "toughclaws"
+  ],
+  "pastelveil": [
+    "pastelveil"
+  ],
+  "perishbody": [
+    "perishbody"
+  ],
+  "pickpocket": [
+    "pickpocket"
+  ],
+  "pickup": [
+    "pickup"
+  ],
+  "piercingdrill": [
+    "moldbreaker",
+    "piercingdrill"
+  ],
+  "pixilate": [
+    "pixilate"
+  ],
+  "plus": [
+    "plus"
+  ],
+  "poisonheal": [
+    "poisonheal"
+  ],
+  "poisonpoint": [
+    "poisonpoint"
+  ],
+  "poisonpuppeteer": [
+    "poisonpuppeteer"
+  ],
+  "poisontouch": [
+    "poisontouch"
+  ],
+  "powerconstruct": [
+    "powerconstruct"
+  ],
+  "powerdrill": [
+    "powerdrill"
+  ],
+  "powerofalchemy": [
+    "powerofalchemy",
+    "regenerator",
+    "selfsufficient"
+  ],
+  "powerspot": [
+    "powerspot"
+  ],
+  "prankster": [
+    "prankster"
+  ],
+  "predator": [
+    "predator"
+  ],
+  "royalarmament": [
+    "powerdrill",
+    "royalarmament"
+  ],
+  "pressure": [
+    "pressure"
+  ],
+  "primordialsea": [
+    "primordialsea"
+  ],
+  "prismarmor": [
+    "prismarmor"
+  ],
+  "ironwill": [
+    "ironwill",
+    "prismarmor",
+    "secondwind",
+    "selfsufficient",
+    "whiplash"
+  ],
+  "proficient": [
+    "proficient"
+  ],
+  "propellertail": [
+    "propellertail"
+  ],
+  "breakwater": [
+    "breakwater",
+    "propellertail"
+  ],
+  "protean": [
+    "protean"
+  ],
+  "zprotean": [
+    "zprotean"
+  ],
+  "protosynthesis": [
+    "protosynthesis"
+  ],
+  "psychicsurge": [
+    "psychicsurge"
+  ],
+  "punkrock": [
+    "punkrock"
+  ],
+  "purepower": [
+    "purepower"
+  ],
+  "purifyingsalt": [
+    "purifyingsalt"
+  ],
+  "paradoxengine": [
+    "paradoxengine"
+  ],
+  "quarkdrive": [
+    "quarkdrive"
+  ],
+  "queenlymajesty": [
+    "queenlymajesty"
+  ],
+  "quickdraw": [
+    "quickdraw"
+  ],
+  "quickfeet": [
+    "quickfeet"
+  ],
+  "raindish": [
+    "raindish"
+  ],
+  "rattled": [
+    "rattled"
+  ],
+  "receiver": [
+    "receiver"
+  ],
+  "reckless": [
+    "reckless"
+  ],
+  "refrigerate": [
+    "refrigerate"
+  ],
+  "regenerator": [
+    "regenerator"
+  ],
+  "relentlesshunt": [
+    "levitate",
+    "relentlesshunt"
+  ],
+  "ripen": [
+    "ripen"
+  ],
+  "rivalry": [
+    "rivalry"
+  ],
+  "rkssystem": [
+    "rkssystem"
+  ],
+  "rockhead": [
+    "rockhead"
+  ],
+  "rockypayload": [
+    "rockypayload"
+  ],
+  "roughskin": [
+    "roughskin"
+  ],
+  "roughscale": [
+    "roughscale",
+    "roughskin",
+    "toughclaws"
+  ],
+  "runaway": [
+    "runaway"
+  ],
+  "sandforce": [
+    "sandforce"
+  ],
+  "sandrush": [
+    "sandrush"
+  ],
+  "solarrush": [
+    "chlorophyll",
+    "sandrush",
+    "solarrush"
+  ],
+  "sandspit": [
+    "sandspit"
+  ],
+  "sandstream": [
+    "sandstream"
+  ],
+  "sandveil": [
+    "sandveil"
+  ],
+  "safeharbor": [
+    "hydration",
+    "icebody",
+    "safeharbor",
+    "waterabsorb"
+  ],
+  "seablessing": [
+    "raindish",
+    "seablessing",
+    "waterveil"
+  ],
+  "sapsipper": [
+    "sapsipper"
+  ],
+  "schooling": [
+    "hydrabond",
+    "moldbreaker",
+    "naturalcure",
+    "schooling",
+    "selfrepair",
+    "selfsufficient"
+  ],
+  "seviischooling": [
+    "hydrabond",
+    "moldbreaker",
+    "naturalcure",
+    "schooling",
+    "selfrepair",
+    "selfsufficient",
+    "seviischooling"
+  ],
+  "scrappy": [
+    "scrappy"
+  ],
+  "screencleaner": [
+    "screencleaner"
+  ],
+  "seedsower": [
+    "seedsower"
+  ],
+  "serenegrace": [
+    "serenegrace"
+  ],
+  "seasonalstride": [
+    "chlorophyll",
+    "seasonalstride"
+  ],
+  "shadowshield": [
+    "shadowshield"
+  ],
+  "voidcraft": [
+    "elevate",
+    "insomnia",
+    "shadowshield",
+    "temporalshift",
+    "voidcraft"
+  ],
+  "shadowtag": [
+    "shadowtag"
+  ],
+  "hexbound": [
+    "cursedbody",
+    "hexbound",
+    "prankster"
+  ],
+  "sharpness": [
+    "sharpness"
+  ],
+  "blademastery": [
+    "blademastery",
+    "sharpness",
+    "superluck"
+  ],
+  "goldentalons": [
+    "goldentalons",
+    "goodasgold",
+    "sharpness",
+    "stalwart"
+  ],
+  "starboxer": [
+    "starboxer"
+  ],
+  "silkendecoy": [
+    "insomnia",
+    "selfsufficient",
+    "silkendecoy",
+    "swarm"
+  ],
+  "cursedarmament": [
+    "cursedarmament",
+    "filter",
+    "frisk"
+  ],
+  "shedskin": [
+    "shedskin"
+  ],
+  "sheerforce": [
+    "sheerforce"
+  ],
+  "shellarmor": [
+    "shellarmor"
+  ],
+  "slowclamp": [
+    "analytic",
+    "owntempo",
+    "shellarmor",
+    "slowclamp",
+    "sweetveil"
+  ],
+  "shielddust": [
+    "shielddust"
+  ],
+  "shieldsdown": [
+    "crumblingshell",
+    "naturalcure",
+    "selfrepair",
+    "selfsufficient",
+    "shellarmor",
+    "shieldsdown"
+  ],
+  "simple": [
+    "simple"
+  ],
+  "skilllink": [
+    "skilllink"
+  ],
+  "slowstart": [
+    "slowstart"
+  ],
+  "slushrush": [
+    "slushrush"
+  ],
+  "sniper": [
+    "sniper"
+  ],
+  "webassassin": [
+    "sniper",
+    "webassassin"
+  ],
+  "snowcloak": [
+    "snowcloak"
+  ],
+  "snowwarning": [
+    "snowwarning"
+  ],
+  "solarpower": [
+    "solarpower"
+  ],
+  "solarrecharge": [
+    "solarrecharge"
+  ],
+  "solidrock": [
+    "solidrock"
+  ],
+  "sinisterblaze": [
+    "sinisterblaze"
+  ],
+  "soulfire": [
+    "soulfire"
+  ],
+  "soulsiphon": [
+    "flashfire",
+    "soulsiphon"
+  ],
+  "malicewell": [
+    "flamebody",
+    "malicewell"
+  ],
+  "soulcremation": [
+    "flamebody",
+    "flashfire",
+    "malicewell",
+    "soulcremation",
+    "soulpyre",
+    "soulsiphon"
+  ],
+  "soultag": [
+    "flamebody",
+    "shadowtag",
+    "soulfire",
+    "soultag"
+  ],
+  "soulheart": [
+    "soulheart"
+  ],
+  "highnoon": [
+    "dualwield",
+    "highnoon",
+    "megalauncher",
+    "proficient"
+  ],
+  "soundproof": [
+    "soundproof"
+  ],
+  "solaridol": [
+    "levitate",
+    "solaridol"
+  ],
+  "forestsurge": [
+    "forestsurge",
+    "proficient"
+  ],
+  "lunaridol": [
+    "levitate",
+    "lunaridol"
+  ],
+  "parasitism": [
+    "dryskin",
+    "parasitism"
+  ],
+  "completeparasitism": [
+    "completeparasitism",
+    "dryskin",
+    "filter",
+    "naturalcure",
+    "parasitism",
+    "selfrepair",
+    "selfsufficient"
+  ],
+  "venomheal": [
+    "hypercutter",
+    "poisonheal",
+    "poisonpoint",
+    "venomheal"
+  ],
+  "resuscitation": [
+    "magicguard",
+    "naturalcure",
+    "resuscitation",
+    "selfrepair",
+    "selfsufficient"
+  ],
+  "pendulumswing": [
+    "filter",
+    "insomnia",
+    "noguard",
+    "pendulumswing"
+  ],
+  "nightrealm": [
+    "nightrealm"
+  ],
+  "nightmarepulse": [
+    "baddreams",
+    "cursedbody",
+    "filter",
+    "insomnia",
+    "nightmarepulse",
+    "noguard",
+    "pendulumswing"
+  ],
+  "pulsewaste": [
+    "poisontouch",
+    "protean",
+    "pulsewaste",
+    "regenerator"
+  ],
+  "glacialmass": [
+    "glacialmass",
+    "heavymetal",
+    "thickfat"
+  ],
+  "riftdancer": [
+    "chlorophyll",
+    "dancer",
+    "overgrow",
+    "riftdancer"
+  ],
+  "lunarspirit": [
+    "lunarspirit"
+  ],
+  "royaldecree": [
+    "royaldecree"
+  ],
+  "royalhive": [
+    "royalhive"
+  ],
+  "royalsun": [
+    "drought",
+    "flamebody",
+    "innerfocus",
+    "royalsun",
+    "supremeoverlord",
+    "unnerve"
+  ],
+  "tremor": [
+    "levitate",
+    "resonanceforce",
+    "sandforce",
+    "tremor"
+  ],
+  "resonanceforce": [
+    "resonanceforce"
+  ],
+  "verdantdrake": [
+    "dualwield",
+    "lightningrod",
+    "limber",
+    "proficient",
+    "regenerator",
+    "verdantdrake"
+  ],
+  "solarbloom": [
+    "solarbloom"
+  ],
+  "wrathshield": [
+    "bulletproof",
+    "dauntlessshield",
+    "naturalcure",
+    "proficient",
+    "selfrepair",
+    "selfsufficient",
+    "wrathshield"
+  ],
+  "shadowcurrent": [
+    "anticipation",
+    "infiltrator",
+    "proficient",
+    "protean",
+    "shadowcurrent",
+    "technician"
+  ],
+  "astralwitchcraft": [
+    "astralwitchcraft",
+    "levitate",
+    "magicbounce",
+    "magicguard",
+    "proficient"
+  ],
+  "blazingtempo": [
+    "blazingtempo",
+    "keeneye",
+    "magmaarmor",
+    "proficient",
+    "speedboost",
+    "striker"
+  ],
+  "ragingcurrent": [
+    "damp",
+    "dryskin",
+    "proficient",
+    "ragingcurrent",
+    "stamina",
+    "swiftswim"
+  ],
+  "toxicbloom": [
+    "pollenbloom",
+    "proficient",
+    "selfsufficient",
+    "thickfat",
+    "toxicbloom",
+    "unaware"
+  ],
+  "siegelauncher": [
+    "dualwield",
+    "megalauncher",
+    "proficient",
+    "selfsufficient",
+    "siegelauncher",
+    "stalwart",
+    "waterbarrage"
+  ],
+  "calderacore": [
+    "calderacore",
+    "drought",
+    "magmaarmor",
+    "sheerforce"
+  ],
+  "speedboost": [
+    "speedboost"
+  ],
+  "spicyspray": [
+    "selfsufficient",
+    "spicyspray"
+  ],
+  "froststalker": [
+    "froststalker",
+    "refrigerate",
+    "sharpness",
+    "stakeout"
+  ],
+  "stakeout": [
+    "stakeout"
+  ],
+  "stall": [
+    "stall"
+  ],
+  "stalwart": [
+    "stalwart"
+  ],
+  "stamina": [
+    "stamina"
+  ],
+  "stancechange": [
+    "dualwield",
+    "stancechange"
+  ],
+  "static": [
+    "static"
+  ],
+  "steadfast": [
+    "steadfast"
+  ],
+  "steamengine": [
+    "magmaarmor",
+    "steamengine"
+  ],
+  "steelworker": [
+    "steelworker"
+  ],
+  "steelyspirit": [
+    "steelyspirit"
+  ],
+  "stench": [
+    "stench"
+  ],
+  "stickyhold": [
+    "stickyhold"
+  ],
+  "stormdrain": [
+    "stormdrain"
+  ],
+  "striker": [
+    "striker"
+  ],
+  "perfectstriker": [
+    "libero",
+    "noguard",
+    "perfectstriker",
+    "proficient",
+    "striker"
+  ],
+  "strikersmomentum": [
+    "defiant",
+    "libero",
+    "noguard",
+    "proficient",
+    "striker",
+    "strikersmomentum"
+  ],
+  "nighthunt": [
+    "frisk",
+    "illuminate",
+    "infiltrator",
+    "intimidate",
+    "nighthunt",
+    "strongjaw"
+  ],
+  "strongjaw": [
+    "strongjaw"
+  ],
+  "blackfang": [
+    "blackfang",
+    "insomnia",
+    "moxie",
+    "strongjaw"
+  ],
+  "fluffycraft": [
+    "fluffy",
+    "fluffycraft",
+    "naturalcure",
+    "technician"
+  ],
+  "mightyjaw": [
+    "intimidate",
+    "mightyjaw",
+    "proficient",
+    "strongjaw"
+  ],
+  "sturdy": [
+    "sturdy"
+  ],
+  "suctioncups": [
+    "suctioncups"
+  ],
+  "superluck": [
+    "superluck"
+  ],
+  "supersweetsyrup": [
+    "stickyhold",
+    "supersweetsyrup"
+  ],
+  "supremeoverlord": [
+    "innerfocus",
+    "supremeoverlord"
+  ],
+  "surgesurfer": [
+    "surgesurfer"
+  ],
+  "swarm": [
+    "swarm"
+  ],
+  "sweetveil": [
+    "sweetveil"
+  ],
+  "swiftswim": [
+    "swiftswim"
+  ],
+  "swordofruin": [
+    "swordofruin"
+  ],
+  "symbiosis": [
+    "symbiosis"
+  ],
+  "synchronize": [
+    "synchronize"
+  ],
+  "tabletsofruin": [
+    "tabletsofruin"
+  ],
+  "tangledfeet": [
+    "tangledfeet"
+  ],
+  "tanglinghair": [
+    "tanglinghair"
+  ],
+  "technician": [
+    "technician"
+  ],
+  "telepathy": [
+    "telepathy"
+  ],
+  "teraformzero": [
+    "teraformzero"
+  ],
+  "terashell": [
+    "terashell"
+  ],
+  "terashift": [
+    "terashift"
+  ],
+  "teravolt": [
+    "teravolt"
+  ],
+  "thermalexchange": [
+    "thermalexchange"
+  ],
+  "thickfat": [
+    "thickfat"
+  ],
+  "tintedlens": [
+    "tintedlens"
+  ],
+  "torrent": [
+    "torrent"
+  ],
+  "toughclaws": [
+    "toughclaws"
+  ],
+  "toxicboost": [
+    "toxicboost"
+  ],
+  "toxicchain": [
+    "toxicchain"
+  ],
+  "toxicdebris": [
+    "toxicdebris"
+  ],
+  "trace": [
+    "trace"
+  ],
+  "transistor": [
+    "transistor"
+  ],
+  "railguncircuit": [
+    "lightningrod",
+    "railguncircuit"
+  ],
+  "razorcurrent": [
+    "drizzle",
+    "razorcurrent",
+    "speedboost",
+    "strongjaw"
+  ],
+  "rainsovereign": [
+    "drizzle",
+    "rainsovereign"
+  ],
+  "toxicrenewal": [
+    "adaptability",
+    "poisontouch",
+    "regenerator",
+    "toxicrenewal"
+  ],
+  "stormcircuit": [
+    "currentcoil",
+    "electricsurge",
+    "elevate",
+    "stormcircuit",
+    "swiftswim"
+  ],
+  "ironmountain": [
+    "filter",
+    "heavymetal",
+    "ironmountain",
+    "stamina"
+  ],
+  "woolyconductor": [
+    "fluffy",
+    "moldbreaker",
+    "static",
+    "woolyconductor"
+  ],
+  "absolutezero": [
+    "absolutezero",
+    "filter",
+    "moldbreaker",
+    "snowwarning"
+  ],
+  "surgeconduit": [
+    "bruteforce",
+    "electricsurge",
+    "lightningrod",
+    "reckless",
+    "rockhead",
+    "shadowshield",
+    "surgeconduit"
+  ],
+  "digestivesap": [
+    "digestivesap"
+  ],
+  "solartrap": [
+    "accumulation",
+    "digestivesap",
+    "liquidooze",
+    "solartrap",
+    "thickfat"
+  ],
+  "pulseblockade": [
+    "pulseblockade"
+  ],
+  "pulsetriad": [
+    "clearbody",
+    "hydrabond",
+    "levitate",
+    "pulsetriad"
+  ],
+  "razorreach": [
+    "keeneye",
+    "longreach",
+    "razorreach",
+    "sharpness",
+    "superluck"
+  ],
+  "witheringtouch": [
+    "corrosion",
+    "poisontouch",
+    "witheringtouch"
+  ],
+  "pulsebulwark": [
+    "pulsebulwark"
+  ],
+  "soaringspirit": [
+    "selfsufficient",
+    "soaringspirit",
+    "windpower"
+  ],
+  "vendetta": [
+    "angerpoint",
+    "secondwind",
+    "selfsufficient",
+    "vendetta"
+  ],
+  "triage": [
+    "triage"
+  ],
+  "truant": [
+    "truant"
+  ],
+  "turboblaze": [
+    "turboblaze"
+  ],
+  "unaware": [
+    "unaware"
+  ],
+  "unburden": [
+    "unburden"
+  ],
+  "evilsanta": [
+    "evilsanta"
+  ],
+  "unnerve": [
+    "unnerve"
+  ],
+  "unseenfist": [
+    "unseenfist"
+  ],
+  "phantomfist": [
+    "aftermath",
+    "naturalcure",
+    "noguard",
+    "phantomfist",
+    "selfrepair",
+    "selfsufficient",
+    "shadowshield",
+    "unseenfist"
+  ],
+  "ultraego": [
+    "ultraego"
+  ],
+  "territorial": [
+    "guarddog",
+    "stamina",
+    "territorial",
+    "unnerve"
+  ],
+  "dishearten": [
+    "dishearten"
+  ],
+  "lunardread": [
+    "dishearten",
+    "insomnia",
+    "lunardread",
+    "pressure"
+  ],
+  "stillwaters": [
+    "cloudnine",
+    "magicguard",
+    "stillwaters",
+    "unaware"
+  ],
+  "ragingbeast": [
+    "guts",
+    "moldbreaker",
+    "ragingbeast"
+  ],
+  "scavenger": [
+    "bigpecks",
+    "overcoat",
+    "regenerator",
+    "scavenger"
+  ],
+  "ultrainstinct": [
+    "innerfocus",
+    "moldbreaker",
+    "ultrainstinct"
+  ],
+  "duskdrive": [
+    "battlefervor",
+    "duskdrive",
+    "opportunist",
+    "precision"
+  ],
+  "burningego": [
+    "burningego",
+    "flamebody",
+    "magmaarmor",
+    "proficient",
+    "ultraego"
+  ],
+  "vesselofruin": [
+    "vesselofruin"
+  ],
+  "victorystar": [
+    "victorystar"
+  ],
+  "vitalspirit": [
+    "vitalspirit"
+  ],
+  "voltabsorb": [
+    "voltabsorb"
+  ],
+  "wanderingspirit": [
+    "wanderingspirit"
+  ],
+  "wastingsurge": [
+    "byxbysiontouch",
+    "poisontouch",
+    "wastingsurge"
+  ],
+  "waterabsorb": [
+    "waterabsorb"
+  ],
+  "waterbubble": [
+    "waterbubble",
+    "waterveil"
+  ],
+  "watercompaction": [
+    "watercompaction"
+  ],
+  "waterveil": [
+    "waterveil"
+  ],
+  "weakarmor": [
+    "weakarmor"
+  ],
+  "wellbakedbody": [
+    "wellbakedbody"
+  ],
+  "stormsovereign": [
+    "galewings",
+    "keeneye",
+    "noguard",
+    "stormsovereign"
+  ],
+  "coldlogic": [
+    "aftermath",
+    "coldlogic",
+    "forewarn",
+    "prismarmor",
+    "toughclaws"
+  ],
+  "whitesmoke": [
+    "whitesmoke"
+  ],
+  "whiplash": [
+    "whiplash"
+  ],
+  "wimpout": [
+    "wimpout"
+  ],
+  "windpower": [
+    "windpower"
+  ],
+  "windrider": [
+    "windrider"
+  ],
+  "wonderguard": [
+    "wonderguard"
+  ],
+  "wonderskin": [
+    "wonderskin"
+  ],
+  "zenmode": [
+    "zenmode"
+  ],
+  "zerotohero": [
+    "zerotohero"
+  ],
+  "mountaineer": [
+    "mountaineer"
+  ],
+  "rebound": [
+    "rebound"
+  ],
+  "persistent": [
+    "persistent"
+  ],
+  "layeredcoat": [
+    "furcoat",
+    "layeredcoat",
+    "overcoat"
+  ],
+  "empress": [
+    "empress",
+    "queenlymajesty",
+    "royaldecree"
+  ],
+  "imperialprincess": [
+    "imperialprincess",
+    "moxie",
+    "striker",
+    "vitalspirit"
+  ],
+  "loyalguard": [
+    "friendguard",
+    "guarddog",
+    "intimidate",
+    "loyalguard"
+  ],
+  "abysslure": [
+    "abysslure",
+    "illuminate",
+    "voltabsorb",
+    "waterabsorb"
+  ],
+  "bogbody": [
+    "bogbody",
+    "dryskin",
+    "levitate",
+    "thickfat"
+  ],
+  "toxicsink": [
+    "effectspore",
+    "invigorate",
+    "toxicsink"
+  ],
+  "frostsiren": [
+    "dryskin",
+    "forewarn",
+    "frostsiren",
+    "refrigerate"
+  ],
+  "protectiveward": [
+    "liquidvoice",
+    "protectiveward",
+    "shellarmor",
+    "waterabsorb"
+  ],
+  "amethystglow": [
+    "amethystglow",
+    "icebody",
+    "noguard",
+    "refrigerate"
+  ],
+  "crystalresonance": [
+    "amethystglow",
+    "crystalresonance",
+    "icebody",
+    "magicbounce",
+    "noguard",
+    "refrigerate"
+  ],
+  "islandcurrent": [
+    "islandcurrent",
+    "swiftswim",
+    "windrider"
+  ],
+  "oceanicwings": [
+    "friendguard",
+    "hydration",
+    "oceanicwings",
+    "waterabsorb"
+  ],
+  "ruinjaw": [
+    "eartheater",
+    "ruinjaw",
+    "strongjaw"
+  ],
+  "triplethreat": [
+    "bigpecks",
+    "hydrabond",
+    "keeneye",
+    "limber",
+    "tangledfeet",
+    "triplethreat"
+  ],
+  "strikerfrenzy": [
+    "striker",
+    "strikerfrenzy",
+    "vitalspirit"
+  ],
+  "venomveil": [
+    "corrosion",
+    "liquidooze",
+    "venomveil",
+    "waterveil"
+  ],
+  "reflector": [
+    "reflector"
+  ],
+  "rebornflower": [
+    "flowerveil",
+    "invigorate",
+    "rebornflower"
+  ],
+  "toxicspines": [
+    "corrosion",
+    "merciless",
+    "toxicdebris",
+    "toxicspines"
+  ],
+  "helios": [
+    "berserk",
+    "drought",
+    "helios",
+    "moldbreaker",
+    "swiftswim"
+  ],
+  "updraft": [
+    "updraft"
+  ],
+  "corneredfang": [
+    "corneredfang",
+    "guts"
+  ],
+  "nighthoard": [
+    "nighthoard"
+  ],
+  "dunerunner": [
+    "dunerunner",
+    "sandrush"
+  ],
+  "frostrunner": [
+    "frostrunner",
+    "slushrush"
+  ],
+  "bedrockclaw": [
+    "bedrockclaw",
+    "toughclaws"
+  ],
+  "rimeclaw": [
+    "rimeclaw",
+    "toughclaws"
+  ],
+  "broodguard": [
+    "broodguard",
+    "friendguard",
+    "thickfat"
+  ],
+  "suncharm": [
+    "drought",
+    "suncharm"
+  ],
+  "causticscales": [
+    "causticscales"
+  ],
+  "prismwings": [
+    "prismwings",
+    "tintedlens"
+  ],
+  "oneiricdust": [
+    "oneiricdust",
+    "psychicsurge"
+  ],
+  "pincercrush": [
+    "pincercrush",
+    "toughclaws"
+  ],
+  "decoypincers": [
+    "decoypincers"
+  ],
+  "toxiccocoon": [
+    "toxiccocoon"
+  ],
+  "galebloom": [
+    "galebloom"
+  ],
+  "gemeye": [
+    "gemeye",
+    "keeneye"
+  ],
+  "lastlaugh": [
+    "lastlaugh"
+  ],
+  "openingoverture": [
+    "openingoverture"
+  ],
+  "resonantblade": [
+    "resonantblade"
+  ],
+  "finalnote": [
+    "finalnote"
+  ],
+  "livingtangle": [
+    "livingtangle",
+    "stamina",
+    "tanglinghair"
+  ],
+  "rootrenewal": [
+    "regenerator",
+    "rootrenewal"
+  ],
+  "fortunatewing": [
+    "fortunatewing",
+    "superluck"
+  ],
+  "snowpack": [
+    "icebody",
+    "snowpack",
+    "thickfat",
+    "toughclaws"
+  ],
+  "icemirror": [
+    "icemirror"
+  ],
+  "wailingsnow": [
+    "wailingsnow"
+  ],
+  "stonewall": [
+    "stonewall",
+    "sturdy"
+  ],
+  "saltbastion": [
+    "saltbastion",
+    "sturdy"
+  ],
+  "anchorbridge": [
+    "anchorbridge",
+    "solidrock",
+    "sturdy"
+  ],
+  "layeredshell": [
+    "layeredshell",
+    "shellarmor"
+  ],
+  "breakaway": [
+    "breakaway"
+  ],
+  "fossilram": [
+    "fossilram",
+    "rockhead"
+  ],
+  "rootediron": [
+    "rootediron",
+    "stamina"
+  ],
+  "encorearia": [
+    "encorearia",
+    "serenegrace"
+  ],
+  "peppersting": [
+    "insomnia",
+    "peppersting"
+  ],
+  "sushitrick": [
+    "hospitality",
+    "sushitrick"
+  ],
+  "mastercourse": [
+    "contrary",
+    "mastercourse"
+  ],
+  "secondbrew": [
+    "secondbrew"
+  ],
+  "railsight": [
+    "railsight",
+    "stalwart"
+  ],
+  "sovereignarsenal": [
+    "sovereignarsenal"
+  ],
+  "pollenengine": [
+    "chlorophyll",
+    "pollenengine"
+  ],
+  "titanpincer": [
+    "hypercutter",
+    "titanpincer"
+  ],
+  "shellcracker": [
+    "shellcracker"
+  ],
+  "tidaldominion": [
+    "swiftswim",
+    "tidaldominion"
+  ],
+  "tempestfury": [
+    "tempestfury"
+  ],
+  "ironlash": [
+    "ironlash",
+    "whiplash"
+  ],
+  "trailbreaker": [
+    "trailbreaker"
+  ],
+  "armoredadvance": [
+    "armoredadvance"
+  ],
+  "gritgrappler": [
+    "gritgrappler",
+    "guts"
+  ],
+  "dreadjaw": [
+    "dreadjaw",
+    "moxie"
+  ],
+  "floehunter": [
+    "floehunter",
+    "slushrush"
+  ],
+  "lanceguard": [
+    "lanceguard",
+    "shellarmor"
+  ],
+  "headlongresolve": [
+    "headlongresolve"
+  ],
+  "herdshelter": [
+    "herdshelter",
+    "soundproof"
+  ],
+  "scorchsweep": [
+    "scorchsweep"
+  ],
+  "opensky": [
+    "opensky"
+  ],
+  "tidalvoice": [
+    "liquidvoice",
+    "tidalvoice"
+  ],
+  "rechargerelay": [
+    "battery",
+    "rechargerelay"
+  ],
+  "hovercannon": [
+    "hovercannon",
+    "levitate"
+  ],
+  "keenhunt": [
+    "keenhunt"
+  ],
+  "bloodchallenge": [
+    "bloodchallenge"
+  ],
+  "twilightinstinct": [
+    "twilightinstinct"
+  ],
+  "twincannons": [
+    "twincannons"
+  ],
+  "twinblades": [
+    "twinblades"
+  ],
+  "heatreservoir": [
+    "flashfire",
+    "heatreservoir"
+  ],
+  "mourningcoat": [
+    "fluffy",
+    "mourningcoat"
+  ],
+  "gravewind": [
+    "gravewind",
+    "sandrush"
+  ],
+  "dozinggiant": [
+    "dozinggiant",
+    "oblivious"
+  ],
+  "quillreservoir": [
+    "quillreservoir",
+    "waterabsorb"
+  ],
+  "raisedquills": [
+    "raisedquills"
+  ],
+  "mountainbreaker": [
+    "mountainbreaker"
+  ],
+  "dreadpresence": [
+    "dreadpresence"
+  ],
+  "palmmastery": [
+    "palmmastery",
+    "thickfat"
+  ],
+  "galvanicspirit": [
+    "galvanicspirit",
+    "vitalspirit"
+  ],
+  "blastchamber": [
+    "blastchamber",
+    "vitalspirit"
+  ],
+  "venomspurs": [
+    "venomspurs"
+  ],
+  "lastbrood": [
+    "lastbrood",
+    "swarm"
+  ],
+  "shadowfeint": [
+    "shadowfeint"
+  ],
+  "silksights": [
+    "compoundeyes",
+    "keeneye",
+    "silksights"
+  ],
+  "livenet": [
+    "livenet",
+    "unnerve"
+  ],
+  "barbharvest": [
+    "barbharvest",
+    "ironbarbs"
+  ],
+  "currentcoil": [
+    "currentcoil",
+    "swiftswim"
+  ],
+  "soulpyre": [
+    "soulpyre"
+  ],
+  "blackviper": [
+    "blackviper",
+    "whiplash"
+  ],
+  "silkshuriken": [
+    "silkshuriken"
+  ],
+  "hiddenscroll": [
+    "hiddenscroll"
+  ],
+  "toxicserenity": [
+    "poisonheal",
+    "toxicserenity"
+  ],
+  "mudtemper": [
+    "battlearmor",
+    "mudtemper"
+  ],
+  "skywarden": [
+    "skywarden"
+  ],
+  "lockjaw": [
+    "lockjaw",
+    "strongjaw"
+  ],
+  "rivershell": [
+    "rivershell",
+    "shellarmor"
+  ],
+  "funeralchoir": [
+    "funeralchoir"
+  ],
+  "festivalstep": [
+    "festivalstep"
+  ],
+  "saltcrust": [
+    "clearbody",
+    "saltcrust"
+  ],
+  "beyondfear": [
+    "beyondfear",
+    "innerfocus"
+  ],
+  "stillwater": [
+    "stillwater",
+    "waterabsorb"
+  ],
+  "mudmeditation": [
+    "mudmeditation"
+  ],
+  "coldopen": [
+    "coldopen"
+  ],
+  "quarrycannon": [
+    "quarrycannon",
+    "solidrock"
+  ],
+  "tundramarch": [
+    "oblivious",
+    "tundramarch"
+  ],
+  "undertow": [
+    "undertow",
+    "waterabsorb"
+  ],
+  "deadwater": [
+    "deadwater"
+  ],
+  "vitalcircuit": [
+    "vitalcircuit"
+  ],
+  "ringmaster": [
+    "ringmaster",
+    "toughclaws"
+  ],
+  "unyielding": [
+    "stamina",
+    "unyielding"
+  ],
+  "primalrhythm": [
+    "primalrhythm"
+  ],
+  "setpiece": [
+    "setpiece"
+  ],
+  "calculatedshot": [
+    "calculatedshot",
+    "frisk"
+  ],
+  "falsebouquet": [
+    "falsebouquet",
+    "magician"
+  ],
+  "meridianseal": [
+    "meridianseal"
+  ],
+  "rimeplate": [
+    "rimeplate"
+  ],
+  "darkdominion": [
+    "darkaura",
+    "darkdominion"
+  ],
+  "reinflate": [
+    "reinflate"
+  ],
+  "savageresolve": [
+    "guts",
+    "savageresolve"
+  ],
+  "gildedgrace": [
+    "gildedgrace"
+  ],
+  "backwash": [
+    "backwash"
+  ],
+  "spentforce": [
+    "spentforce"
+  ],
+  "pulsefiltration": [
+    "liquidooze",
+    "pulsefiltration",
+    "waterabsorb"
+  ],
+  "agonyflame": [
+    "agonyflame"
+  ],
+  "pulseeruption": [
+    "pulseeruption",
+    "sturdy"
+  ],
+  "scrapbreaker": [
+    "moldbreaker",
+    "scrapbreaker"
+  ],
+  "toxicsignature": [
+    "toxicsignature",
+    "unnerve"
+  ],
+  "wickedweave": [
+    "prankster",
+    "wickedweave"
+  ],
+  "vaultkeeper": [
+    "prankster",
+    "stickyhold",
+    "vaultkeeper"
+  ],
+  "masterkey": [
+    "masterkey"
+  ],
+  "flintfracture": [
+    "flintfracture"
+  ],
+  "frozenfeast": [
+    "frozenfeast",
+    "strongjaw"
+  ],
+  "cinderscales": [
+    "cinderscales",
+    "flamebody",
+    "shielddust",
+    "swarm"
+  ],
+  "sporeshroud": [
+    "effectspore",
+    "sporeshroud"
+  ],
+  "primevalhunt": [
+    "battlearmor",
+    "primevalhunt",
+    "skilllink"
+  ],
+  "rimebreaker": [
+    "refrigerate",
+    "rimebreaker"
+  ],
+  "evaporate": [
+    "dryskin",
+    "evaporate"
+  ],
+  "pressurekiln": [
+    "pressurekiln"
+  ],
+  "shattercrust": [
+    "crumblingshell",
+    "shattercrust"
+  ],
+  "restorativechime": [
+    "restorativechime"
+  ],
+  "dissonantchime": [
+    "dissonantchime"
+  ],
+  "gravehunger": [
+    "baddreams",
+    "gravehunger"
+  ],
+  "primevalhunger": [
+    "accumulation",
+    "primevalhunger",
+    "thickfat"
+  ],
+  "dawnherald": [
+    "dawnherald",
+    "drought",
+    "friendguard"
+  ],
+  "venomignition": [
+    "venomignition"
+  ],
+  "transfixinggaze": [
+    "frisk",
+    "transfixinggaze"
+  ],
+  "freshplumage": [
+    "freshplumage",
+    "naturalcure"
+  ],
+  "moonlithide": [
+    "magicguard",
+    "moonlithide",
+    "shadowshield"
+  ],
+  "conquerorswill": [
+    "conquerorswill",
+    "innerfocus",
+    "supremeoverlord",
+    "unnerve"
+  ],
+  "nightwatch": [
+    "insomnia",
+    "keeneye",
+    "nightwatch"
+  ],
+  "fruitfulbough": [
+    "fruitfulbough",
+    "harvest"
+  ],
+  "soulanchor": [
+    "soulanchor",
+    "steelworker"
+  ],
+  "guidinglight": [
+    "dazzling",
+    "guidinglight",
+    "illuminate"
+  ],
+  "royalescort": [
+    "pressure",
+    "royalescort",
+    "sweetveil"
+  ],
+  "liquidarsenal": [
+    "liquidarsenal",
+    "technician"
+  ],
+  "knightsreprisal": [
+    "bulletproof",
+    "knightsreprisal"
+  ],
+  "aurorasanctum": [
+    "aurorasanctum",
+    "snowwarning"
+  ],
+  "chargedtail": [
+    "chargedtail",
+    "static"
+  ],
+  "eldritchremedy": [
+    "curiousmedicine",
+    "eldritchremedy",
+    "owntempo"
+  ],
+  "infernaldominion": [
+    "infernaldominion",
+    "intimidate"
+  ],
+  "hydraulicarmor": [
+    "hydraulicarmor",
+    "stamina"
+  ],
+  "hauntingpresence": [
+    "hauntingpresence",
+    "levitate"
+  ],
+  "slumberinggiant": [
+    "comatose",
+    "slumberinggiant",
+    "thickfat"
+  ],
+  "oceanlullaby": [
+    "oceanlullaby",
+    "shellarmor"
+  ],
+  "shadowscreen": [
+    "infiltrator",
+    "shadowscreen"
+  ],
+  "moonlitpromise": [
+    "moonlitpromise",
+    "unaware"
+  ],
+  "sandshroud": [
+    "levitate",
+    "overcoat",
+    "sandshroud"
+  ],
+  "arcanepilfer": [
+    "arcanepilfer",
+    "magician"
+  ],
+  "faultline": [
+    "faultline",
+    "moldbreaker"
+  ],
+  "creepingbloom": [
+    "creepingbloom",
+    "infiltrator"
+  ],
+  "dreadwings": [
+    "dreadwings",
+    "levitate",
+    "unnerve"
+  ],
+  "causticchamber": [
+    "causticchamber",
+    "owntempo"
+  ],
+  "demolitiontrunk": [
+    "demolitiontrunk",
+    "sheerforce"
+  ],
+  "deepresonance": [
+    "deepresonance",
+    "soundproof"
+  ],
+  "siegemagnet": [
+    "magnetpull",
+    "siegemagnet"
+  ],
+  "patientmarksman": [
+    "patientmarksman",
+    "sniper"
+  ],
+  "cradleward": [
+    "cradleward",
+    "sweetveil"
+  ],
+  "sunreserve": [
+    "flashfire",
+    "sunreserve"
+  ],
+  "silentreprisal": [
+    "anticipation",
+    "silentreprisal",
+    "soundproof"
+  ],
+  "dreamrefuge": [
+    "dreamrefuge",
+    "telepathy"
+  ],
+  "closedcircuit": [
+    "clearbody",
+    "closedcircuit"
+  ],
+  "pridecall": [
+    "competitive",
+    "pridecall",
+    "unnerve"
+  ],
+  "hydroelectric": [
+    "dryskin",
+    "hydroelectric"
+  ],
+  "solarstride": [
+    "chlorophyll",
+    "solarstride"
+  ],
+  "frillflash": [
+    "dazzling",
+    "frillflash"
+  ],
+  "stokebelly": [
+    "gluttony",
+    "stokebelly"
+  ],
+  "invisiblewall": [
+    "invisiblewall",
+    "soundproof"
+  ],
+  "pursuitwake": [
+    "infiltrator",
+    "pursuitwake"
+  ],
+  "sentinelfist": [
+    "ironfist",
+    "sentinelfist"
+  ],
+  "gentlegiant": [
+    "cloudnine",
+    "gentlegiant"
+  ],
+  "rousingfeast": [
+    "gluttony",
+    "rousingfeast"
+  ],
+  "ringcraft": [
+    "limber",
+    "ringcraft"
+  ],
+  "constrictingheat": [
+    "constrictingheat",
+    "whitesmoke"
+  ],
+  "gritreprisal": [
+    "gritreprisal",
+    "guts"
+  ],
+  "wreckingcrew": [
+    "ironfist",
+    "wreckingcrew"
+  ],
+  "evergreen": [
+    "evergreen",
+    "overcoat",
+    "ripen"
+  ],
+  "battlegrip": [
+    "battlegrip",
+    "moxie"
+  ],
+  "scentscout": [
+    "frisk",
+    "scentscout"
+  ],
+  "surefoot": [
+    "innerfocus",
+    "surefoot"
+  ],
+  "baitedbloom": [
+    "baitedbloom",
+    "gluttony",
+    "stickyhold"
+  ],
+  "guidinggallop": [
+    "guidinggallop",
+    "pastelveil"
+  ],
+  "carrionwatch": [
+    "carrionwatch",
+    "frisk",
+    "unnerve"
+  ],
+  "scaleshelter": [
+    "overcoat",
+    "scaleshelter",
+    "shielddust"
+  ],
+  "stagesweep": [
+    "screencleaner",
+    "stagesweep"
+  ],
+  "icebreaker": [
+    "hypercutter",
+    "icebreaker"
+  ],
+  "cactuschorus": [
+    "cactuschorus",
+    "waterabsorb"
+  ],
+  "crushingvenom": [
+    "crushingvenom",
+    "strongjaw"
+  ],
+  "crosswire": [
+    "crosswire",
+    "ironfist"
+  ],
+  "deepchill": [
+    "deepchill",
+    "oblivious"
+  ],
+  "climatereserve": [
+    "climatereserve"
+  ],
+  "tunnelclearance": [
+    "hypercutter",
+    "tunnelclearance"
+  ],
+  "crystalbastion": [
+    "crystalbastion",
+    "sturdy"
+  ],
+  "buriedcoil": [
+    "buriedcoil",
+    "sandspit"
+  ],
+  "staticreserve": [
+    "static",
+    "staticreserve"
+  ],
+  "lockinggrip": [
+    "hypercutter",
+    "lockinggrip"
+  ],
+  "garlandgift": [
+    "flowerveil",
+    "garlandgift"
+  ],
+  "riotstance": [
+    "defiant",
+    "riotstance"
+  ],
+  "drumguard": [
+    "drumguard",
+    "soundproof"
+  ],
+  "measuredcounsel": [
+    "measuredcounsel",
+    "owntempo"
+  ],
+  "tacticalretreat": [
+    "tacticalretreat"
+  ],
+  "raincourier": [
+    "raincourier",
+    "raindish"
+  ],
+  "disorientingmind": [
+    "disorientingmind",
+    "infiltrator"
+  ],
+  "wisecounsel": [
+    "innerfocus",
+    "wisecounsel"
+  ],
+  "mindcurrent": [
+    "innerfocus",
+    "mindcurrent"
+  ]
+}

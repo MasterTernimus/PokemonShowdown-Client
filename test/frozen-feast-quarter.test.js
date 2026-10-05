@@ -1,0 +1,1 @@
+'use strict';const assert=require('assert').strict;require('./battle.test');describe('Frozen Feast quarter drain',()=>{it('publishes quarter healing and retains Strong Jaw identity',()=>{const a=Dex.abilities.get('frozenfeast');assert.match(a.desc,/one quarter/);assert.match(a.shortDesc,/25%/);assert(Dex.getAbilityEffects('frozenfeast').has('strongjaw'));});});

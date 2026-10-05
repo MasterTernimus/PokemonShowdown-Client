@@ -486,7 +486,12 @@
 		if (!item) return '<li class="result">Unrecognized item</li>';
 		var id = toID(item.name);
 		if (Search.urlRoot) attrs += ' href="' + Search.urlRoot + 'items/' + id + '" data-target="push"';
-		var buf = '<li class="result"><a' + attrs + ' data-entry="item|' + BattleLog.escapeHTML(item.name) + '">';
+		var favorite = '';
+		if (this.renderAll && window.TeambuilderTools) {
+			var starred = window.TeambuilderTools.itemData().favorites.includes(id);
+			favorite = '<button type="button" class="item-favorite-toggle" name="starListedItem" value="' + id + '" aria-pressed="' + starred + '" aria-label="' + (starred ? 'Remove ' : 'Favorite ') + BattleLog.escapeHTML(item.name) + (starred ? ' from favorites' : '') + '" title="Toggle favorite">' + (starred ? '★' : '☆') + '</button>';
+		}
+		var buf = '<li class="result' + (favorite ? ' item-with-favorite' : '') + '">' + favorite + '<a' + attrs + ' data-entry="item|' + BattleLog.escapeHTML(item.name) + '">';
 
 		// icon
 		buf += '<span class="col itemiconcol">';
@@ -534,6 +539,11 @@
 		}
 
 		buf += '<span class="col abilitydesccol" title="' + BattleLog.escapeHTML(ability.desc || ability.shortDesc) + '">' + BattleLog.escapeHTML(ability.shortDesc) + '</span> ';
+		if (this.renderAll && ability.desc) {
+			var components = Array.from(Dex.getAbilityEffects(toID(ability.name))).filter(function (id) { return id !== toID(ability.name); });
+			buf += '</a><details class="ability-picker-details"><summary>Ability details</summary>' + (components.length ? '<p><b>Includes:</b> ' + components.map(function (id) { return BattleLog.escapeHTML(Dex.abilities.get(id).name); }).join(' · ') + '</p>' : '') + '<p>' + BattleLog.escapeHTML(ability.desc) + '</p></details></li>';
+			return buf;
+		}
 
 		buf += '</a></li>';
 

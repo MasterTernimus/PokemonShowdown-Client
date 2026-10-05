@@ -620,6 +620,27 @@ export class BattleLog {
 		return str.replace(/&quot;/g, '"').replace(/&gt;/g, '>').replace(/&lt;/g, '<').replace(/&amp;/g, '&');
 	}
 
+	static accountNameText(name: string): string {
+		const id = toID(name);
+		const liveApp = window.app as {
+			watchUsernameColor?: (id: string) => void, displayNicknames?: { [id: string]: string },
+		} | undefined;
+		if (!liveApp?.watchUsernameColor || !/^[a-z0-9]{1,18}$/.test(id)) return name;
+		liveApp.watchUsernameColor(id);
+		return liveApp.displayNicknames?.[id] || name;
+	}
+
+	/** Render battle titles without changing the canonical room title or player identities. */
+	static battleTitle(title: string, plainText = false): string {
+		const players = title.split(/ (?:vs\.|v\.) /);
+		if (players.length !== 2) return plainText ? title : this.escapeHTML(title);
+		const teamBattle = players.every(player => player.startsWith('Team '));
+		return players.map(player => {
+			const name = teamBattle ? player.slice(5) : player;
+			return (teamBattle ? 'Team ' : '') + (plainText ? this.accountNameText(name) : this.accountName(name));
+		}).join(' vs. ');
+	}
+
 	static accountName(name: string): string {
 		const id = toID(name);
 		const liveApp = window.app as {
@@ -627,8 +648,7 @@ export class BattleLog {
 		} | undefined;
 		if (!liveApp?.watchUsernameColor || !/^[a-z0-9]{1,18}$/.test(id)) return this.escapeHTML(name);
 		liveApp.watchUsernameColor(id);
-		const nickname = liveApp.displayNicknames?.[id];
-		const label = nickname ? nickname + ' (@' + name + ')' : name;
+		const label = liveApp.displayNicknames?.[id] || name;
 		return '<span class="account-display-name" data-account-id="' + id + '" data-account-name="' +
 			this.escapeHTML(name) + '" title="Account: @' + this.escapeHTML(name) + '">' + this.escapeHTML(label) + '</span>';
 	}

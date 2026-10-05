@@ -530,10 +530,10 @@ describe('Team Builder sprites', () => {
 			0: 'Wrath Shield',
 		});
 		assert.deepEqual(Dex.species.get('Greninja').abilities, {
-			0: 'Technician', 1: 'Protean', H: 'Battle Bond',
+			0: 'Liquid Arsenal', 1: 'Protean', H: 'Shadow Screen', S: 'Battle Bond',
 		});
 		assert.deepEqual(Dex.species.get('Delphox').abilities, {
-			0: 'Sworn Duty', 1: 'Magic Guard', H: 'Magician',
+			0: 'Sworn Duty', 1: 'Magic Guard', H: 'Arcane Pilfer',
 		});
 	});
 
@@ -633,6 +633,7 @@ describe('Team Builder sprites', () => {
 	});
 
 	it('registers the supplied Venusaur, Mega Venusaur, and G-Max Venusaur sprites', () => {
+		const {Dex} = require('./helpers/isolated-dex.cjs')();
 		const expected = {
 			Venusaur: {filename: 'venusaur.png', front: {w: 152, h: 136}, back: {w: 162, h: 126}},
 			'Venusaur-Mega': {filename: 'venusaur-mega.png', front: {w: 188, h: 148}, back: {w: 186, h: 144}},
@@ -645,7 +646,7 @@ describe('Team Builder sprites', () => {
 						const sprite = Dex.getSpriteData(species, front, {gen: 9, gender, shiny, noScale: true});
 						const directory = `${species === 'Venusaur' && !shiny ? 'gen5ani' : 'gen5'}${front ? '' : '-back'}${shiny ? '-shiny' : ''}`;
 						let filename = gender === 'F' ? data.filename.replace('.png', '-f.png') : data.filename;
-						if (species === 'Venusaur' && !shiny) filename = 'venusaur.gif';
+						if (species === 'Venusaur' && !shiny) filename = gender === 'F' ? 'venusaur-f.gif' : 'venusaur.gif';
 						const actual = require('image-size')(path.join(__dirname, '../play.pokemonshowdown.com/sprites', directory, filename));
 						const dimensions = {w: actual.width, h: actual.height};
 						assert(sprite.url.split('?')[0].endsWith(`/sprites/${directory}/${filename}`), `${species} ${gender || 'M'} should use its supplied sprite`);
@@ -800,23 +801,24 @@ describe('Team Builder sprites', () => {
 	});
 
 	it('shows the added composite ability effects', () => {
-		assert.match(Dex.abilities.get('Pollen Bloom').desc, /Unaware/);
-		assert.match(Dex.abilities.get('Territorial').desc, /Full Unnerve, Stamina and Guard Dog.*physical or special.*heals 1.16.*immediately raises Defense by 1/);
-		assert.match(Dex.abilities.get('Lunar Dread').desc, /Dishearten \+ Insomnia \+ Pressure/);
+		assert.match(Dex.abilities.get('Pollen Bloom').desc, /ignores the target's Defense/);
+		assert(Dex.getAbilityEffects('pollenbloom').has('unaware'));
+		assert.match(Dex.abilities.get('Territorial').desc, /physical or special.*heals 1.16.*immediately raises Defense by 1/);
+		assert.match(Dex.abilities.get('Lunar Dread').desc, /sleep/i);
 		assert(Dex.abilities.get('Dishearten').exists);
 		assert.equal(Dex.abilities.get('Dishearten').num, 11234);
 		for (const part of ['dishearten', 'insomnia', 'pressure']) assert(Dex.getAbilityEffects('lunardread').has(part));
-		assert.match(Dex.abilities.get('Atrocity').desc, /Unbound Blaze.*Tough Claws.*Proficient/);
-		assert(!Dex.getAbilityEffects('atrocity').has('moldbreaker'));
-		assert.match(Dex.abilities.get('Ancient Bloom').desc, /Pollen Bloom/);
-		assert.match(Dex.abilities.get('Fortress Shell').desc, /Water Barrage/);
-		assert.match(Dex.abilities.get('Fortress Shell').desc, /Friend Guard/);
+		assert.match(Dex.abilities.get('Atrocity').desc, /Normal moves become Dragon.*Same-type moves have 1\.3x power.*Contact moves have 1\.3x power/);
+		assert(Dex.getAbilityEffects('atrocity').has('moldbreaker'));
+		assert(Dex.getAbilityEffects('ancientbloom').has('pollenbloom'));
+		assert.match(Dex.abilities.get('Fortress Shell').desc, /cycling Water damage/);
+		assert.match(Dex.abilities.get('Fortress Shell').desc, /Allies take 25% less/);
 		assert.doesNotMatch(Dex.abilities.get('Fortress Shell').shortDesc, /Friend Guard|Dual Wield/);
-		assert.match(Dex.abilities.get('Burning Crown').desc, /Unbound Blaze/);
-		assert.match(Dex.abilities.get('Burning Crown').desc, /20% less damage/);
+		assert.match(Dex.abilities.get('Burning Crown').desc, /Normal moves become Dragon/);
+		assert.match(Dex.abilities.get('Burning Crown').desc, /20% less attack damage/);
 		assert.doesNotMatch(Dex.abilities.get('Burning Crown').desc, /Filter/);
 		assert.doesNotMatch(Dex.abilities.get('Burning Crown').shortDesc, /Filter/);
-		assert.match(Dex.abilities.get('Omen Edge').desc, /Pressure/);
+		assert.match(Dex.abilities.get('Omen Edge').desc, /spend 1 extra PP/);
 		assert.doesNotMatch(Dex.abilities.get('Omen Edge').desc, /Tough Claws/);
 		assert(Dex.getAbilityEffects('omenedge').has('pressure'));
 		assert(!Dex.getAbilityEffects('omenedge').has('toughclaws'));
@@ -828,7 +830,7 @@ describe('Team Builder sprites', () => {
 		assert(!Dex.getAbilityEffects('territorial').has('unaware'));
 		assert(!Dex.getAbilityEffects('territorial').has('toughclaws'));
 		assert(!Dex.getAbilityEffects('territorial').has('intimidate'));
-		assert.match(Dex.abilities.get('Still Waters').desc, /Cloud Nine/);
+		assert.match(Dex.abilities.get('Still Waters').desc, /Suppresses weather effects/);
 		assert(Dex.getAbilityEffects('stillwaters').has('cloudnine'));
 		assert(Dex.getAbilityEffects('stillwaters').has('magicguard'));
 		assert(Dex.getAbilityEffects('stillwaters').has('unaware'));

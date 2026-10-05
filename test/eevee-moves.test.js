@@ -7,7 +7,7 @@ global.BattleTeambuilderTable = require('../play.pokemonshowdown.com/data/teambu
 const {DexSearch} = new Function(fs.readFileSync('play.pokemonshowdown.com/js/battle-dex-search.js', 'utf8') + '\nreturn {DexSearch};')();
 describe('Eevee removed move batch', () => {
  for (const species of ['Eevee-Starter', 'Eevee-Starter-Alt', 'Divineon']) {
-  for (const ability of ['Z Protean', 'Sinister Blaze', 'Ascendance']) {
+  for (const ability of ['Z Protean']) {
    it(species + ' / ' + ability + ' excludes all 57 removed moves', () => {
     const search = new DexSearch();
     search.setType('move', 'gen9nofieldsinglesgame', {species, ability, moves: []});
@@ -19,5 +19,16 @@ describe('Eevee removed move batch', () => {
     assert(moves.includes('lastresort'));
    });
   }
+ }
+});
+
+describe("Starter Eevee ability pool exceptions", () => {
+ const pools = {"sinisterblaze": ["strengthsap", "pursuit", "poisonfang", "punishment", "spiritbreak", "bittermalice", "infernalparade", "destinybond", "dreameater", "eeriespell", "perishsong", "blueflare", "doomdesire", "hex", "icefang", "nightshade", "ominouswind"], "ascendance": ["punishment", "spiritbreak", "extremespeed", "crunch", "defog", "dragonpulse", "hurricane", "playrough", "tailwind", "thunderfang", "triattack"]};
+ for (const species of ["Eevee-Starter", "Eevee-Starter-Alt", "Divineon"]) for (const [ability, moves] of Object.entries(pools)) {
+ it(species + "/" + ability + " restores its dedicated moves only", () => {
+ const search = new DexSearch(); search.setType("move", "gen9nofieldsinglesgame", {species, ability, moves: []}); search.find("");
+ const found = search.results.filter(row => row[0] === "move").map(row => row[1]);
+ for (const move of moves) assert(found.includes(move), move); assert(!found.includes("victorydance"));
+ });
  }
 });

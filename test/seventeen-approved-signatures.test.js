@@ -1,0 +1,10 @@
+'use strict';
+const assert=require('assert').strict;require('./battle.test');
+describe('Seventeen approved signature metadata',()=>{
+ for(const[species,slot,id,components]of [
+ ['slowbrogalar','1','causticchamber',['owntempo']],['copperajah','0','demolitiontrunk',['sheerforce']],['wailord','H','deepresonance',['soundproof']],['golemalola','0','siegemagnet',['magnetpull']],['inteleon','1','patientmarksman',['sniper']],['rabsca','0','cradleward',['sweetveil']],['sunflora','0','sunreserve',['flashfire']],['hatterene','1','silentreprisal',['soundproof','anticipation']],['musharna','1','dreamrefuge',['telepathy']],['klinklang','0','closedcircuit',['clearbody']],['pyroar','H','pridecall',['competitive','unnerve']],['heliolisk','0','hydroelectric',['dryskin']],['heliolisk','1','solarstride',['chlorophyll']],['heliolisk','H','frillflash',['dazzling']]
+ ])it(species+' slot '+slot+' components and descriptions',()=>{const a=Dex.abilities.get(id);assert.equal(Dex.species.get(species).abilities[slot],a.name);for(const component of components)assert(Dex.getAbilityEffects(id).has(component));assert(a.desc.length>40);assert(a.shortDesc.length<160);});
+ it('Ninetales alternate form matches Sun Charm without changing other slots',()=>{assert.deepEqual(Dex.species.get('ninetalesalt').abilities,{0:'Sun Charm',1:'Serene Grace',H:'Soul Fire'});});
+ it('keeps all ordinary Tatsugiri shapes and updated solo description',()=>{for(const id of ['tatsugiri','tatsugiridroopy','tatsugiristretchy'])assert.deepEqual(Dex.species.get(id).abilities,{0:'Commander',1:'Sushi Trick',H:'Storm Drain'});assert(Dex.abilities.get('sushitrick').desc.includes('without self-healing'));});
+ it('describes execution-only Set Piece, sleeping phazing protection and non-contact quills',()=>{assert(Dex.abilities.get('setpiece').desc.includes('only when that attack executes'));assert(Dex.abilities.get('dozinggiant').desc.includes('Voluntary switching'));assert(Dex.abilities.get('raisedquills').desc.includes('whether or not'));});
+});

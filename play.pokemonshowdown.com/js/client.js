@@ -1014,9 +1014,11 @@ function toId() {
 				else delete self.displayNicknames[id];
 				document.querySelectorAll('[data-account-id="' + id + '"]').forEach(function (element) {
 					var name = element.getAttribute('data-account-name');
-					element.textContent = nickname ? nickname + ' (@' + name + ')' : name;
+					element.textContent = nickname || name;
 				});
 			});
+			var titleRoom = this.rooms[this.fragment] || this.curRoom;
+			if (titleRoom) this.updateTitle(titleRoom);
 			var light = '', dark = '';
 			Object.keys(this.usernameColors).forEach(function (id) {
 				light += '--username-bg-' + id + ':#eef2ef;--username-' + id + ':' + BattleLog.readableUsernameColor(self.usernameColors[id], false) + ';';
@@ -1163,6 +1165,8 @@ function toId() {
 				document.querySelectorAll('[data-account-id]').forEach(function (element) { element.textContent = element.getAttribute('data-account-name'); });
 				this.usernameColorWatches = null;
 				this.usernameColorAccount = null;
+				var titleRoom = this.rooms[this.fragment] || this.curRoom;
+				if (titleRoom) this.updateTitle(titleRoom);
 				$('#account-username-colors').remove();
 				if (parts[2]) {
 					this.user.receiveChallstr(parts[1] + '|' + parts[2]);
@@ -2093,7 +2097,8 @@ function toId() {
 			if (room.id === this.fragment) this.updateTitle(room);
 		},
 		updateTitle: function (room) {
-			document.title = room.title ? room.title + " - Showdown!" : "Showdown!";
+			var title = room.type === 'battle' ? BattleLog.battleTitle(room.title, true) : room.title;
+			document.title = title ? title + " - Showdown!" : "Showdown!";
 		},
 		updateAutojoin: function () {
 			if (!Config.server.registered) return;

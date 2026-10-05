@@ -36,7 +36,7 @@
 			if (!app.user.loaded) {
 				buf = '<button disabled class="button">Loading...</button>';
 			} else if (app.user.get('named')) {
-				buf = '<span class="username" data-name="' + BattleLog.escapeHTML(name) + '"' + (away ? ' data-away="true"' : '') + (status ? 'data-status="' + BattleLog.escapeHTML(status) + '"' : '') + ' style="' + color + '"><i class="fa fa-user" style="color:' + (away ? '#888;' : '#779EC5') + '"></i> <span class="usernametext">' + BattleLog.escapeHTML(name) + '</span></span>';
+				buf = '<span class="username" data-name="' + BattleLog.escapeHTML(name) + '"' + (away ? ' data-away="true"' : '') + (status ? 'data-status="' + BattleLog.escapeHTML(status) + '"' : '') + ' style="' + color + '"><i class="fa fa-user" style="color:' + (away ? '#888;' : '#779EC5') + '"></i> <span class="usernametext">' + BattleLog.accountName(name.substr(1)) + '</span></span>';
 			} else {
 				buf = '<button name="login" class="button">Choose name</button>';
 			}
@@ -91,7 +91,7 @@
 			case 'rooms':
 				return buf + ' aria-label="Join chatroom"><i class="fa fa-plus" style="margin:7px auto -6px auto"></i> <span>&nbsp;</span></a></li>';
 			case 'battle':
-				var name = BattleLog.escapeHTML(room.title);
+				var name = BattleLog.battleTitle(room.title);
 				var offset = id.startsWith('game-') ? 5 : 7;
 				var idChunks = id.substr(offset).split('-');
 				var formatid;
@@ -104,9 +104,9 @@
 					var p1 = (room.battle && room.battle.p1 && room.battle.p1.name) || '';
 					var p2 = (room.battle && room.battle.p2 && room.battle.p2.name) || '';
 					if (p1 && p2) {
-						name = '' + BattleLog.escapeHTML(p1) + ' v. ' + BattleLog.escapeHTML(p2);
+						name = '' + BattleLog.accountName(p1) + ' vs. ' + BattleLog.accountName(p2);
 					} else if (p1 || p2) {
-						name = '' + BattleLog.escapeHTML(p1) + BattleLog.escapeHTML(p2);
+						name = '' + BattleLog.accountName(p1) + BattleLog.accountName(p2);
 					} else {
 						name = '(empty room)';
 					}

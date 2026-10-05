@@ -4,16 +4,7 @@ const path = require('path');
 const sizeOf = require('image-size');
 const {GifReader} = require('omggif');
 const root = path.resolve(__dirname, '../play.pokemonshowdown.com');
-global.window = global;
-global.BattlePokedex = require('../play.pokemonshowdown.com/data/pokedex').BattlePokedex;
-for (const file of ['pokedex-mini', 'pokedex-mini-bw']) {
-	Object.assign(global, require(path.join(root, 'data', file + '.js')));
-}
-require('../play.pokemonshowdown.com/js/battle-dex-data');
-require('../play.pokemonshowdown.com/js/battle-dex');
-require('../play.pokemonshowdown.com/js/battle-scene-stub');
-require('../play.pokemonshowdown.com/js/battle-text-parser');
-require('../play.pokemonshowdown.com/js/battle');
+const {Dex, BattlePokedex} = require('./helpers/isolated-dex.cjs')();
 
 function localFile(url) {
 	return path.join(root, 'sprites', url.split('sprites/')[1].split('?')[0]);
@@ -41,9 +32,9 @@ function assertBWPreview(data, species, front, shiny) {
 describe('Sprite rendering regressions', () => {
 	it('uses the renamed Parasect profile and a compact shiny Jolteon', () => {
 		assert.equal(Dex.species.get('Parasect-Aevian').id, 'parasectrejuv');
-		assert.deepEqual(Dex.species.get('Parasect-Parasite').types, ['Ghost', 'Grass']);
+		assert.deepEqual(Array.from(Dex.species.get('Parasect-Parasite').types), ['Ghost', 'Grass']);
 		for (const name of ['Parasect', 'Parasect-Rejuv', 'Parasect-Mega']) {
-			assert.deepEqual(Dex.species.get(name).types, ['Ghost', 'Bug']);
+			assert.deepEqual(Array.from(Dex.species.get(name).types), ['Ghost', 'Bug']);
 		}
 		for (const front of [false, true]) {
 			const shiny = Dex.getSpriteData('Jolteon', front, {gen: 5, shiny: true});
@@ -92,11 +83,7 @@ describe('Sprite rendering regressions', () => {
 			}
 		}
 	});
-	before(() => {
-		for (const file of ['pokedex-mini', 'pokedex-mini-bw']) {
-			Object.assign(global, JSON.parse(JSON.stringify(require(path.join(root, 'data', file + '.js')))));
-		}
-	});
+
 	it('uses animations for normal previews and supplied static shiny artwork', () => {
 		for (const species of ['Clefable', 'Gengar', 'Hydreigon', 'Banette', 'Scizor', 'Rillaboom', 'Corviknight']) {
 			for (const shiny of [false, true]) for (const front of [false, true]) {

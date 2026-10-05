@@ -273,12 +273,12 @@
 				formatBuf += '<small style="float:right">(' + (typeof roomData.minElo === 'number' ? 'rated: ' : '') + BattleLog.escapeHTML('' + roomData.minElo) + ')</small>';
 			}
 			formatBuf += (format ? '<small>[' + BattleLog.escapeFormat(format) + ']</small><br />' : '');
-			var roomDesc = formatBuf + '<em class="p1">' + BattleLog.escapeHTML(roomData.p1) + '</em> <small class="vs">vs.</small> <em class="p2">' + BattleLog.escapeHTML(roomData.p2) + '</em>';
+			var roomDesc = formatBuf + '<em class="p1">' + BattleLog.accountName(roomData.p1) + '</em> <small class="vs">vs.</small> <em class="p2">' + BattleLog.accountName(roomData.p2) + '</em>';
 			if (!roomData.p1) {
 				matches = id.match(/[^0-9]([0-9]*)$/);
 				roomDesc = formatBuf + 'empty room ' + matches[1];
 			} else if (!roomData.p2) {
-				roomDesc = formatBuf + '<em class="p1">' + BattleLog.escapeHTML(roomData.p1) + '</em>';
+				roomDesc = formatBuf + '<em class="p1">' + BattleLog.accountName(roomData.p1) + '</em>';
 			}
 			return '<div><a href="' + app.root + id + '" class="blocklink">' + roomDesc + '</a></div>';
 		},

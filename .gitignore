@@ -31,3 +31,7 @@ caches/PokemonShowdown-Reborn/
 
 # Keep regression tests versioned despite the generated-JavaScript rule.
 !test/**/*.js
+
+# Reviewed ability display data and search identities
+!test/fixtures/ability-description-audit.json
+!test/fixtures/ability-search-identities.json
