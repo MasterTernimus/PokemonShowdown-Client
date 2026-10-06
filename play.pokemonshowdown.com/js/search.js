@@ -548,14 +548,15 @@
 			return buf;
 		}
 
-		buf += '<span class="col abilitydesccol" title="' + BattleLog.escapeHTML(ability.desc || ability.shortDesc) + '">' + BattleLog.escapeHTML(ability.shortDesc) + '</span> ';
+		var fullDescription = ability.desc || ability.shortDesc;
 		if (this.renderAll && ability.desc) {
-			var components = Array.from(Dex.getAbilityEffects(toID(ability.name))).filter(function (id) { return id !== toID(ability.name); });
-			buf += '</a><details class="ability-picker-details"><summary>Ability details</summary>' + (components.length ? '<p><b>Includes:</b> ' + components.map(function (id) { return BattleLog.escapeHTML(Dex.abilities.get(id).name); }).join(' · ') + '</p>' : '') + '<p>' + BattleLog.escapeHTML(ability.desc) + '</p></details></li>';
-			return buf;
+			var components = Dex.getAbilityDisplayComponents(toID(ability.name));
+			if (components.length) fullDescription = 'Includes: ' + components.map(function (id) { return Dex.abilities.get(id).name; }).join(' · ') + '\n\n' + fullDescription;
 		}
-
-		buf += '</a></li>';
+		buf += '<span class="col abilitydesccol" title="' + BattleLog.escapeHTML(fullDescription) + '">' + BattleLog.escapeHTML(ability.shortDesc) + '</span> ';
+		buf += '</a>';
+		if (this.renderAll) buf += '<button type="button" class="ability-picker-info" aria-label="Full details for ' + BattleLog.escapeHTML(ability.name) + '" data-description="' + BattleLog.escapeHTML(fullDescription) + '">ⓘ</button>';
+		buf += '</li>';
 
 		return buf;
 	};

@@ -260,7 +260,18 @@
 		 * Battle stuff
 		 *********************************************************/
 
+		fieldReference: function (kind) {
+			if (kind !== 'field' && kind !== 'aura') return;
+			this.send('/' + kind); this.showChat();
+		},
 		updateControls: function () {
+			if (this.battle) {
+				var field = '', aura = '', self = this;
+				(this.battle.pseudoWeather || []).forEach(function (state) { if (/aura$/i.test(toID(state[0]))) aura = state[0]; else if (self.battle.getTerrainId(state[0])) field = state[0]; });
+				this.$('.battle-field-reference').remove();
+				if (field || aura) this.$foeHint.html('<div class="battle-field-reference">' + (field ? '<button class="button small" name="fieldReference" value="field" title="Current field rules and duration">' + BattleLog.escapeHTML(Dex.getEffect(field).name || field) + '</button>' : '') + (aura ? '<button class="button small" name="fieldReference" value="aura" title="Current Aura rules and duration">' + BattleLog.escapeHTML(Dex.getEffect(aura).name || aura) + '</button>' : '') + '</div>');
+			}
+
 			this.updateControlsInner();
 			this.updateMobileGimmickCounters();
 		},

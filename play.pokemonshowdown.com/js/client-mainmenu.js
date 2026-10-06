@@ -1675,19 +1675,19 @@
 	var CustomCalculatorPopup = this.CustomCalculatorPopup = Popup.extend({
 		type: 'modal',
 		className: 'ps-popup custom-calculator',
-		events: {'input input': 'scenarioEdited', 'change select': 'scenarioEdited', 'change input': 'scenarioEdited', 'input [name=species]': 'searchSpecies', 'input [name=calc-field-search]': 'searchFields', 'change [name=calc-mode]': 'changeMode'},
+		events: {'input input': 'scenarioEdited', 'change select': 'scenarioEdited', 'change input': 'scenarioEdited', 'input [name=species]': 'searchSpecies', 'input [name=calc-field-search]': 'searchFields', 'change [name=calc-mode]': 'changeMode', 'change .calc-saved-set': 'loadCalcSavedSet'},
 		initialize: function () {
 			this.scenarioRevision = 0;
 			this.pendingScenario = null;
 			this.$el.attr({'role': 'dialog', 'aria-label': 'Custom battle calculator'}).css({width: 'min(1000px, 92vw)', maxHeight: '86vh', overflow: 'auto'});
 			this.listenTo(app, 'response:customcalc', this.receiveCalculator);
-			this.$el.html('<h2>Custom battle calculator</h2><p class="calc-status" role="status">Loading the connected server\'s engine...</p><button name="close" class="button">Close</button>');
+			this.$el.html('<h2>Custom battle calculator</h2><p class="calc-status" role="status">Loading the connected server\'s engine...</p><button name="retryCalculator" class="button">Retry connection</button> <button name="close" class="button">Close</button>');
 			this.requestCalculator('');
 		},
 		requestCalculator: function (payload) {
 			var self = this;
 			clearTimeout(this.calcTimer);
-			this.calcTimer = setTimeout(function () { self.$('.calc-status').text('No response. Connect to a server with the custom calculator installed, then reopen this window.'); self.$('button[name=calculate]').prop('disabled', false); self.$el.attr('aria-busy', 'false'); self.$('.calc-status').addClass('calc-error'); }, 18000);
+			this.calcTimer = setTimeout(function () { self.$('.calc-status').text('No response. Connect to a server with the custom calculator installed, then use Retry connection.'); self.$('button[name=calculate]').prop('disabled', false); self.$el.attr('aria-busy', 'false'); self.$('.calc-status').addClass('calc-error'); }, 18000);
 			this.requestId = Date.now().toString(36) + Math.random().toString(36).slice(2);
 			app.send('/cmd customcalc ' + this.requestId + (payload ? ' ' + payload : ''));
 		},
@@ -1706,6 +1706,7 @@
 			this.$('.calc-results').empty();
 			this.$('.calc-status').removeClass('calc-error').text('Settings changed. Calculate again.');
 			this.refreshActors();
+			this.refreshCalcMoves();
 		},
 		refreshActors: function () {
 			var self = this;
@@ -1720,6 +1721,8 @@
 				var slots = '';
 				Object.keys(info ? info.abilities : {}).forEach(function (slot) { var name = info.abilities[slot]; slots += '<button type="button" class="button" name="chooseAbility" value="' + $actor.attr('data-slot') + ':' + self.escape(name) + '">' + self.escape(slot === 'H' ? 'Hidden' : slot === 'S' ? 'Special' : 'Slot ' + (Number(slot) + 1)) + ': ' + self.escape(name) + '</button> '; });
 				$actor.find('.calc-ability-slots').html(slots);
+				$actor.find('.calc-passives').remove();
+				if (info && info.passives && info.passives.length) $actor.find('.calc-identity').append('<div class="calc-passives"><b>Passives:</b> ' + info.passives.map(function (id) { return self.escape(Dex.abilities.get(id).name); }).join(' · ') + '</div>');
 				var parts = (self.metadata.abilityComponents || {})[toID($actor.find('[name=ability]').val())] || [];
 				$actor.find('.calc-component-details').toggle(!!parts.length);
 				$actor.find('.calc-components').text(parts.length ? 'Components: ' + parts.join(' · ') + '. Each effect has its own conditions.' : 'No composite components listed.');
@@ -1756,6 +1759,69 @@
 		chooseAbility: function (value) {
 			var parts = value.split(':'); this.$('.calc-actor[data-slot=' + parts[0] + '] [name=ability]').val(parts[1]); this.scenarioEdited();
 		},
+
+		retryCalculator: function () { this.pendingScenario = null; this.$('.calc-status').removeClass('calc-error').text('Connecting…'); this.requestCalculator(''); },
+
+		acceptTeamBuilderSet: function () {
+			var pending = app.pendingCalculatorSet; if (!pending) return;
+			try { this.writeActor(pending.slot, pending.set); if (pending.slot === 0 && pending.set.moves && pending.set.moves.length) this.$('[name=calc-move]').val(pending.set.moves[0]); this.scenarioEdited(); app.pendingCalculatorSet = null; this.$('.calc-status').text('Loaded ' + pending.set.species + ' from Team Builder. Choose the matchup and calculate.'); }
+			catch (err) { this.$('.calc-status').addClass('calc-error').text(err.message); }
+		},
+		renderResolvedSummary: function (resolved) {
+			if (!resolved) return '';
+			var self = this, html = '<div class="calc-resolved"><strong>Engine setup · first sample, before the attack</strong><p>';
+			[['Field', resolved.field], ['Aura', resolved.aura], ['Weather', resolved.weather]].forEach(function (entry) {
+				var value = entry[1], list = entry[0] === 'Field' ? self.metadata.fields : entry[0] === 'Aura' ? self.metadata.auras : [];
+				var named = (list || []).find(function (x) { return x.id === value; }); html += self.escape(entry[0]) + ': ' + self.escape(named ? named.name : value || 'None') + ' · ';
+			});
+			html += '</p><ul>'; (resolved.actors || []).slice(0, 2).forEach(function (actor, index) { html += '<li>' + (index ? 'Defender' : 'Attacker') + ': <b>' + self.escape(actor.species) + '</b> · ' + self.escape(actor.ability) + (actor.passives && actor.passives.length ? '<br />Passives: ' + actor.passives.map(function (id) { return self.escape(Dex.abilities.get(id).name); }).join(' · ') : '') + (actor.item ? ' · ' + self.escape(actor.item) : '') + '</li>'; }); return html + '</ul></div>';
+		},
+		populateCalcSets: function () {
+			var self = this; this.savedCalcSets = [];
+			(Storage.teams || []).forEach(function (team) {
+				if (team.teamid && !team.loaded) return;
+				(Storage.unpackTeam(team.team) || []).forEach(function (set) { self.savedCalcSets.push({name: team.name + ' — ' + (set.name || set.species), set: set}); });
+			});
+			var library = Storage.prefs('pokemontools') || {};
+			(library.builds || []).forEach(function (build) { self.savedCalcSets.push({name: 'Saved set: ' + build.name + ' — ' + build.set.species, set: build.set}); });
+			var html = '<option value="">Choose a saved Pokémon…</option>';
+			this.savedCalcSets.forEach(function (entry, i) { html += '<option value="' + i + '">' + self.escape(entry.name) + '</option>'; });
+			this.$('.calc-saved-set').html(html).prop('disabled', !this.savedCalcSets.length);
+		},
+		loadCalcSavedSet: function (event) {
+			if (event.currentTarget.value === '') return;
+			var entry = this.savedCalcSets[Number(event.currentTarget.value)], slot = Number($(event.currentTarget).attr('data-slot'));
+			if (!entry) return;
+			try { this.writeActor(slot, entry.set); if (slot === 0 && entry.set.moves && entry.set.moves.length) this.$('[name=calc-move]').val(entry.set.moves[0]); this.scenarioEdited(); }
+			catch (err) { this.$('.calc-status').addClass('calc-error').text(err.message); }
+		},
+		refreshCalcMoves: function () {
+			var self = this, actor = this.readActor(0), moves = actor.moves || [];
+			this.$('.calc-move-shortcuts').html(moves.map(function (move) { return '<button class="button" name="chooseCalcMove" value="' + self.escape(move) + '">' + self.escape(move) + '</button>'; }).join(' '));
+		},
+		chooseCalcMove: function (move) { this.$('[name=calc-move]').val(move); this.scenarioEdited(); },
+		swapCalcActors: function () {
+			try {
+				var attacker = this.readActor(0), defender = this.readActor(1);
+				this.validateActorImport(0, defender); this.validateActorImport(1, attacker);
+				this.writeActor(0, defender); this.writeActor(1, attacker);
+				this.$('[name=calc-move]').val(defender.moves && defender.moves[0] || '');
+				this.$('.calc-saved-set').val('');
+				this.$('[name=reflect], [name=lightscreen], [name=auroraveil]').prop('checked', false);
+				this.scenarioEdited(); this.$('.calc-status').text('Sides swapped. Defender screens cleared; choose the new attacker’s move.');
+			} catch (err) { this.$('.calc-status').addClass('calc-error').text(err.message); }
+		},
+		validateCalcInputs: function () {
+			var mode = this.$('[name=calc-mode]').val(), count = mode === 'singles' ? 2 : 4;
+			for (var i = 0; i < count; i++) {
+				var actor = this.readActor(i), label = i === 0 ? 'Attacker' : i === 1 ? 'Defender' : 'Slot ' + (i + 1);
+				this.validateActorImport(i, actor);
+				if (!Dex.species.get(actor.species).exists) throw new Error(label + ': choose a valid Pokémon.');
+				if (actor.ability && !Dex.abilities.get(actor.ability).exists) throw new Error(label + ': choose a valid ability.');
+				if (actor.item && !Dex.items.get(actor.item).exists) throw new Error(label + ': choose a valid item.');
+			}
+			if (!Dex.moves.get(this.$('[name=calc-move]').val()).exists) throw new Error('Choose a valid attack before calculating.');
+		},
 		actorHTML: function (index, label) {
 			var buf = '<fieldset class="calc-actor" data-slot="' + index + '"><legend>' + label + '</legend><div class="calc-identity"></div><div class="calc-species-results" aria-live="polite"></div><div class="calc-ability-slots" aria-label="Species ability slots"></div><details class="calc-component-details"><summary>Ability details</summary><p class="calc-components"></p></details><div class="calc-fields">';
 			[['species', 'Pokémon', 'Mew'], ['ability', 'Ability', 'No Ability'], ['item', 'Item', ''], ['nature', 'Nature', 'Serious'], ['level', 'Level', '100'], ['hpPercent', 'Current HP %', '100']].forEach(function (f) {
@@ -1778,7 +1844,7 @@
 		},
 		renderCalculator: function () {
 			var self = this;
-			var buf = '<header class="calc-header"><div><span class="calc-eyebrow">REBORN · BATTLE TOOLS</span><h2>Damage calculator</h2></div><button name="close" class="button" aria-label="Close calculator">Close</button></header><p class="calc-intro">Try one attack from a fresh battle. <strong>Sampled results, not guaranteed limits.</strong></p><section class="calc-conditions" aria-label="Battle conditions"><h3>Battle conditions</h3><div class="calc-condition-grid">';
+			var buf = '<header class="calc-header"><div><span class="calc-eyebrow">REBORN · BATTLE TOOLS</span><h2>Damage calculator</h2></div><button name="close" class="button" aria-label="Close calculator">Close</button></header><p class="calc-intro">1. Choose two Pokémon or load saved sets. 2. Choose a move. 3. Calculate. <strong>Sampled results, not guaranteed limits.</strong></p><section class="calc-conditions" aria-label="Battle conditions"><h3>Battle conditions</h3><div class="calc-condition-grid">';
 			buf += '<label hidden><span hidden>Engine rules<select name="calc-format">';
 			this.metadata.formats.forEach(function (f) { buf += '<option value="' + self.escape(f.id) + '"' + (f.id === 'gen9nofieldsinglesgame' ? ' selected' : '') + '>' + self.escape(f.name) + '</option>'; });
 			buf += '</select></span></label><label>Battle mode<select name="calc-mode"><option value="singles">Singles</option><option value="doubles">Doubles</option><option value="freeforall">FFA · 4 trainers</option></select></label><label>Find a field<input class="textbox" name="calc-field-search" placeholder="Search all fields" autocomplete="off" /></label><label>Starting field<select name="calc-field">';
@@ -1789,7 +1855,7 @@
 			buf += '<p class="calc-screens"><strong>Defender screens</strong> <label><input type="checkbox" name="reflect" /> Reflect</label> <label><input type="checkbox" name="lightscreen" /> Light Screen</label> <label><input type="checkbox" name="auroraveil" /> Aurora Veil</label></p></section>';
 			buf += '<div class="calc-matchup">' + this.actorHTML(0, 'Attacker') + this.actorHTML(1, 'Defender') + '</div>';
 			buf += '<details><summary>Allies / other players</summary><p>Doubles: attacker ally and defender ally. FFA: two other foes. Defaults are Mew with No Ability.</p><div class="calc-matchup">' + this.actorHTML(2, 'Slot 3') + this.actorHTML(3, 'Slot 4') + '</div></details>';
-			buf += '<section class="calc-action" aria-label="Attack and sampling"><div class="calc-action-fields"><label>Move <input class="textbox" list="calc-list-move" autocomplete="off" name="calc-move" value="Psychic" /></label> <label>Powered move <select name="calc-powered"><option value="">Normal</option><option value="z">Z-move</option><option value="max">Max move (activate Gmax)</option></select></label><label>Samples <select name="calc-samples"><option>8</option><option selected>32</option><option>64</option></select></label> <label>Seed <input name="calc-seed" type="number" min="1" max="2147483647" value="1"  /></label> </div><button type="button" class="button calc-primary" name="calculate"><strong>Calculate damage</strong></button></section><p class="calc-status" role="status">Choose Pokémon and a move, then calculate.</p><div class="calc-results" aria-live="polite"></div>';
+			buf += '<section class="calc-action" aria-label="Attack and sampling"><div class="calc-action-fields"><label>Move <input class="textbox" list="calc-list-move" autocomplete="off" name="calc-move" value="Psychic" /></label> <label>Powered move <select name="calc-powered"><option value="">Normal</option><option value="z">Z-move</option><option value="max">Max move (activate Gmax)</option></select></label><details class="calc-sampling"><summary>Advanced sampling</summary><label>Samples <select name="calc-samples"><option>8</option><option selected>32</option><option>64</option></select></label> <label>Seed <input name="calc-seed" type="number" min="1" max="2147483647" value="1"  /></label></details> </div><button type="button" class="button calc-primary" name="calculate"><strong>Calculate damage</strong></button></section><p class="calc-status" role="status">Choose Pokémon and a move, then calculate.</p><div class="calc-results" aria-live="polite"></div>';
 			buf += '<details><summary>Save / load setup</summary><textarea name="calc-json" rows="5" style="width:98%" aria-label="Scenario JSON"></textarea><br /><button type="button" name="exportScenario" class="button">Export scenario</button> <button type="button" name="importScenario" class="button">Import scenario</button></details><details><summary>How results work</summary><ul>';
 			this.metadata.assumptions.forEach(function (a) { buf += '<li>' + self.escape(a) + '</li>'; });
 			buf += '</ul><p>Custom type rules apply (including this engine\'s Stellar Tera behavior). These are hypothetical sets; this tool does not validate team legality. Delayed and charging moves can show zero damage for this action. Engine log and resolved forms are shown below each result.</p></details>';
@@ -1800,24 +1866,35 @@
 				buf += '</datalist>';
 			});
 			this.$el.html(buf).css({position: 'fixed', left: '50%', right: 'auto', top: '3vh', bottom: 'auto', transform: 'translateX(-50%)', width: 'min(1000px, 96vw)', maxWidth: '96vw', maxHeight: '90vh', margin: 0});
+			this.$('.calc-action').insertAfter(this.$('.calc-matchup').first());
+			this.$('.calc-status, .calc-results').insertAfter(this.$('.calc-action'));
+			this.$('.calc-action-fields').before('<div class="calc-move-shortcuts" aria-label="Moves from attacker set"></div>');
+			this.$('.calc-matchup').first().before('<p>' + '<button class="button" name="swapCalcActors">Swap attacker / defender</button></p>');
+			this.$('.calc-actor').each(function () {
+				var slot = $(this).attr('data-slot');
+				$(this).find('.calc-identity').after('<div class="calc-load-set"><label>Load saved Pokémon <select class="calc-saved-set" data-slot="' + slot + '"><option value="">Choose from your teams or saved sets…</option></select></label></div>');
+			});
+			this.populateCalcSets();
 			this.refreshActors();
+			this.refreshCalcMoves();
 			if (this.workspace) {
 				this.$el.removeAttr('style');
 				var draft = app.calculatorDraft;
 				if (draft) { this.$('[name=calc-json]').val(draft); this.importScenario(); }
 				if (app.calculatorInputs) {
 					this.$('input,select,textarea').each(function (i) { var saved = app.calculatorInputs[i]; if (saved && saved.name === this.name) { this.value = saved.value; this.checked = saved.checked; } });
-					this.refreshActors();
+					this.refreshActors(); this.refreshCalcMoves();
 					this.$('.calc-status').text('Draft restored. Calculate when ready.');
 				}
 			}
+			this.acceptTeamBuilderSet();
 			this.$('.calc-version').text('Engine build ' + this.metadata.version.engine + ' — ' + this.metadata.version.builtAt);
 		},
 		readActor: function (index) {
 			var $actor = this.$('.calc-actor[data-slot=' + index + ']');
 			var result = {evs: {}, ivs: {}, boosts: {}};
 			$actor.find('input,select').each(function () {
-				var key = this.name;
+				var key = this.name; if (!key) return;
 				if (key.indexOf('-') >= 0) { var parts = key.split('-'); result[parts[0]][parts[1]] = Number(this.value); } else if (key === 'level' || key === 'hpPercent') result[key] = Number(this.value);
 				else if (key === 'moves') { if (this.value.trim()) result.moves = this.value.split(',').map(function (m) { return m.trim(); }); } else result[key] = this.value;
 			});
@@ -1852,7 +1929,7 @@
 			this.validateActorImport(index, actor);
 			var $actor = this.$('.calc-actor[data-slot=' + index + ']');
 			$actor.find('input,select').each(function () {
-				var key = this.name;
+				var key = this.name; if (!key) return;
 				if (key.indexOf('-') >= 0) { var parts = key.split('-'); this.value = actor[parts[0]] && actor[parts[0]][parts[1]] !== undefined ? actor[parts[0]][parts[1]] : parts[0] === 'ivs' ? 31 : 0; } else if (key === 'moves') this.value = (actor.moves || []).join(', ');
 				else this.value = actor[key] === undefined ? key === 'level' || key === 'hpPercent' ? 100 : key === 'nature' ? 'Serious' : key === 'teraType' ? 'Stellar' : '' : actor[key];
 			});
@@ -1863,6 +1940,7 @@
 			return {format: this.$('[name=calc-format]').val(), field: this.$('[name=calc-field]').val(), move: this.$('[name=calc-move]').val(), aura: this.$('[name=calc-aura]').val(), weather: this.$('[name=calc-weather]').val(), attackMode: this.$('[name=calc-powered]').val(), samples: Number(this.$('[name=calc-samples]').val()), seed: Number(this.$('[name=calc-seed]').val()), actors: [0, 1, 2, 3].map(function (i) { return self.readActor(i); }), screens: ['reflect', 'lightscreen', 'auroraveil'].filter(function (s) { return self.$('[name=' + s + ']').is(':checked'); })};
 		},
 		calculate: function () {
+			try { this.validateCalcInputs(); } catch (err) { this.$('.calc-status').addClass('calc-error').text(err.message); return; }
 			this.$('.calc-status').removeClass('calc-error').text('Calculating…');
 			this.$el.attr('aria-busy', 'true');
 			this.$('.calc-results').empty();
@@ -1878,6 +1956,7 @@
 				if (!sets || sets.length !== 1) throw new Error('Paste exactly one team set.');
 				this.writeActor(index, sets[0]);
 				if (Number(index) === 0 && sets[0].moves.length) this.$('[name=calc-move]').val(sets[0].moves[0]);
+				this.scenarioEdited();
 			} catch (e) { this.$('.calc-status').text(e.message); }
 		},
 		exportCalcSet: function (index) {
@@ -1933,7 +2012,8 @@
 			var html = '<div class="calc-result-card"><span class="calc-eyebrow">DEFENDER · SAMPLED DAMAGE</span><div class="calc-result-head"><h3>' + this.escape(data.move) + '</h3><strong>' + main.minPercent.toFixed(1) + '–' + main.maxPercent.toFixed(1) + '%</strong></div><p>' + main.min + '–' + main.max + ' HP removed · KOs: ' + main.kos + '/' + data.samples + ' samples</p><div class="calc-damage-bar" role="img" aria-label="Observed damage ' + main.minPercent.toFixed(1) + ' to ' + main.maxPercent.toFixed(1) + ' percent of maximum HP"><span style="width:' + Math.min(100, main.maxPercent) + '%"></span><b style="width:' + Math.min(100, main.minPercent) + '%"></b></div><small>Percent of max HP lost in these samples.</small></div><h3>' + this.escape(data.move) + ' — observed damage</h3><div style="overflow:auto"><table class="calc-result-table"><tr><th>Slot</th><th>HP removed</th><th>% max HP</th><th>Net HP loss</th><th>Sample KOs</th></tr>';
 			data.results.forEach(function (r) { html += '<tr><th>' + self.escape(r.label) + '</th><td>' + r.min + '–' + r.max + '</td><td>' + r.minPercent.toFixed(1) + '–' + r.maxPercent.toFixed(1) + '%</td><td>' + r.minNetLoss + '–' + r.maxNetLoss + '</td><td>' + r.kos + '/' + data.samples + ' (' + (100 * r.kos / data.samples).toFixed(1) + '%)</td></tr>'; });
 			html += '</table></div><p>Samples do not guarantee a KO.</p><details><summary>Battle details</summary><pre style="white-space:pre-wrap">' + this.escape(JSON.stringify(data.resolved, null, 2)) + '\n' + this.escape(data.exampleLog.join('\n')) + '</pre></details>';
-			this.$('.calc-results').html(html);
+			this.$('.calc-results').html(this.renderResolvedSummary(data.resolved) + html);
+			this.$('.calc-results')[0].scrollIntoView({block: 'nearest'});
 		}
 	});
 	var CustomCalculatorRoom = this.CustomCalculatorRoom = Room.extend($.extend({}, CustomCalculatorPopup.prototype, {

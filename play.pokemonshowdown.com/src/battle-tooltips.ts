@@ -1025,6 +1025,14 @@ class BattleTooltips {
 			text += '</p>';
 		}
 
+
+		// Owner-only request data is authoritative. Opponents use only their publicly displayed form.
+		const passives = serverPokemon?.passives ?? (clientPokemon ? clientPokemon.getSpecies().passives : []);
+		if (passives.length && !(illusionIndex && illusionIndex > 1)) {
+			text += '<p class="pokemon-passives"><small>Passives:</small> ' + passives.map(id =>
+				'<strong>' + BattleLog.escapeHTML(Dex.abilities.get(id).name) + '</strong>'
+			).join(' · ') + '<br /><small>Species traits — remain active when Ability is suppressed.</small></p>';
+		}
 		if (clientPokemon?.adaptation) text += this.renderAdaptation(clientPokemon.adaptation);
 		text += this.renderStats(clientPokemon, serverPokemon, !isActive);
 
@@ -2228,6 +2236,11 @@ class BattleTooltips {
 			}
 		}
 
+		const passives = serverPokemon.passives ?? pokemon.getSpecies(serverPokemon).passives;
+		if (move.category !== 'Status' && passives.includes('proficient') && pokemon.getTypeList(serverPokemon).includes(moveType)) {
+			value.modify(1.3, 'Proficient passive');
+		}
+
 		// Terrain
 		if (!fieldPower) {
 			if ((this.battle.hasPseudoWeather('Electric Terrain') && moveType === 'Electric') ||
@@ -2509,6 +2522,13 @@ class BattleTooltips {
 				const baseAbilityName = Dex.abilities.get(abilityData.baseAbility).name;
 				if (baseAbilityName && baseAbilityName !== abilityName) text += ' (base: ' + baseAbilityName + ')';
 			}
+		}
+		const knownAbility = isActive ? abilityData.ability : (abilityData.baseAbility || abilityData.ability);
+		if (knownAbility) {
+			const shown = this.battle.dex.abilities.get(knownAbility);
+			const parts = Dex.getAbilityDisplayComponents(shown.id, this.battle.dex);
+			text += '<br /><small>' + BattleLog.escapeHTML(shown.shortDesc) + '</small>';
+			if (parts.length) text += '<br /><small>Includes: ' + parts.map(id => BattleLog.escapeHTML(Dex.abilities.get(id).name)).join(' · ') + '</small>';
 		}
 		const tier = this.battle.tier;
 		if (!text && abilityData.possibilities.length && !hidePossible &&

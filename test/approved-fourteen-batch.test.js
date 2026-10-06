@@ -10,10 +10,10 @@ describe('Approved October batch metadata',()=>{
  ['snorlax','1','slumberinggiant',['thickfat','comatose']],
  ['lapras','1','oceanlullaby',['shellarmor']],
  ['greninja','H','shadowscreen',['infiltrator']],
- ['clefable','H','moonlitpromise',['unaware']],
- ['flygon','0','sandshroud',['levitate','overcoat']],
- ['delphox','H','arcanepilfer',['magician']],
- ['garchomp','H','faultline',['moldbreaker']],
+ ['clefable','H','voidpromise',['unaware']],
+ ['flygon','0','voiddrift',['levitate','overcoat']],
+ ['delphox','H','voidguile',['magician']],
+ ['garchomp','H','voidwrath',['moldbreaker']],
  ['venusaur','1','creepingbloom',['infiltrator']],
  ])it(species+' distribution, components and descriptions',()=>{
  const a=Dex.abilities.get(id);assert.equal(Dex.species.get(species).abilities[slot],a.name);

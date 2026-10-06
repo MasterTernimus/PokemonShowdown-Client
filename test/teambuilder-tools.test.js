@@ -234,7 +234,8 @@ describe('Team Builder profile performance', () => {
   room.toolsData=()=>({selectedNickname:'old',nicknames:[{id:'new',name:'Stars'}]});
   room.saveToolsData=data=>{saves++;assert.equal(data.selectedNickname,'new');};
   room.$=()=>({text:value=>{label=value;}});room.update=()=>{throw Error('Unnecessary editor rebuild');};
-  room.changeTeamNicknameProfile({currentTarget:{value:'new'}});
+  let refreshed = false; room.refreshLibraryControls = () => {refreshed = true;};
+  room.changeTeamNicknameProfile({currentTarget:{value:'new'}}); assert.equal(refreshed, true);
   assert.equal(saves,1);assert.equal(label,'Names: Stars');
  });
 });
@@ -249,5 +250,101 @@ describe('Team Builder navigation placement', () => {
   room.$=()=>[{scrollIntoView:options=>{scrolled=true;assert.equal(options.block,'start');}}];
   room.update=()=>{throw Error('Must preserve current search');};room.returnToPokemonEditor();
   assert(scrolled);assert.equal(room.curSet.species,'Mew');
+ });
+});
+
+describe('Library workflow safety', () => {
+ it('previews nickname changes, preserved names, missing mappings and team-wide shiny changes', () => {
+  const profile = {entries: {pikachu: 'Spark', eevee: 'Fluff'}, shiny: 'yes'};
+  const before = [{species: 'Pikachu'}, {species: 'Eevee', name: 'Manual'}, {species: 'Venusaur'}];
+  const after = before.map(s => T.applyNickname({...s}, profile, Dex, false));
+  const html = T.profileChanges(before, after, profile, Dex);
+  assert.ok(html.includes('Name updated'));
+  assert.ok(html.includes('Existing nickname kept'));
+  assert.ok(html.includes('No matching nickname'));
+  assert.equal((html.match(/No → Yes/g) || []).length, 3);
+  assert.equal(before[0].shiny, undefined);
+ });
+ it('restores a deleted profile with its original identity and selection', () => {
+  const room = new Room();
+  const profile = {id: 'saved-profile', name: 'Stars', entries: {pikachu: 'Spark'}};
+  let data = {nicknames: [], builds: [], selectedNickname: ''};
+  room.libraryUndo = {field: 'nicknames', entry: profile, selected: profile.id};
+  room.toolsData = () => data; room.saveToolsData = value => {data = value;}; room.update = () => {};
+  room.undoLibraryChange();
+  assert.deepEqual(data.nicknames, [profile]); assert.equal(data.selectedNickname, profile.id);
+  assert.equal(room.libraryUndo, null);
+ });
+ it('undoes an overwrite without creating a duplicate saved set', () => {
+  const room = new Room();
+  let data = {builds: [{id: 'set', name: 'New', set: {species: 'Pikachu'}}]};
+  const original = {id: 'set', name: 'Old', set: {species: 'Eevee'}};
+  room.libraryUndo = {field: 'builds', entry: original, overwrite: true, after: JSON.parse(JSON.stringify(data.builds[0]))};
+  room.toolsData = () => data; room.saveToolsData = value => {data = value;}; room.update = () => {};
+  room.undoLibraryChange();
+  assert.deepEqual(data.builds, [original]);
+ });
+ it('returns a battle-form preview to the base without modifying the saved set', () => {
+  const room = new Room(); let selection;
+  room.curSet = {species: 'Charizard', item: 'Charizardite X'};
+  room.formPreviewChange = event => {selection = event.currentTarget.value;};
+  room.returnBasePreview(); assert.equal(selection, ''); assert.equal(room.curSet.species, 'Charizard');
+ });
+});
+
+ describe('Library audit regressions', () => {
+ it('drops only completely empty draft rows', () => {
+  assert.deepEqual(T.nonemptyNicknameRows([['',''],['Eevee',''],['','Name'],['  ',' ']]), [['Eevee',''],['','Name']]);
+ });
+ it('refuses undo after a later edit or recreated entry', () => {
+  const current = {id:'x',name:'new'};
+  assert.equal(T.canUndoLibrary({overwrite:true,after:{id:'x',name:'old'}},current),false);
+  assert.equal(T.canUndoLibrary({overwrite:true,after:current},current),true);
+  assert.equal(T.canUndoLibrary({overwrite:false},current),false);
+  assert.equal(T.canUndoLibrary({overwrite:false},null),true);
+ });
+});
+
+describe('Reviewed saved-set loading', () => {
+ function setup() {
+  const room=new Room();
+  const current={species:'Venusaur',item:'Leftovers',name:'Bloom',shiny:true,gender:'F'};
+  const build={id:'a',name:'Mega',set:{species:'Venusaur',item:'Venusaurite',gigantamax:true,name:'Saved',shiny:false}};
+  room.curTeam={dex:{species:{get(){return {exists:true};}}}};
+  room.curSetList=[current];room.curSet=current;room.curSetLoc=0;
+  room.toolsData=()=>({builds:[build]});room.toolsCommit=()=>{};
+  room.$=()=>({prop:()=>true,remove(){},focus(){}});
+  room.$el={append(){}};room.saveNicknameDraft=()=>{};
+  return {room,current,build};
+ }
+ it('compares every persisted field, including Gmax and happiness', () => {
+  const before={species:'Venusaur',gigantamax:false,happiness:0,dynamaxLevel:0};
+  const after={species:'Venusaur',gigantamax:true,happiness:255,dynamaxLevel:10,hpType:'Ice',pokeball:'Poke Ball'};
+  assert.deepEqual(T.setDifference(before,after).map(r=>r.key).sort(),['gigantamax','happiness','dynamaxLevel','hpType','pokeball'].sort());
+ });
+ it('previews the effective appearance and loads the captured build without a dropdown read', () => {
+  const {room,current,build}=setup();
+  room.openBuildComparison(0,build);
+  assert.deepEqual(T.setDifference(current,T.buildResult(current,build.set,true)).map(r=>r.key),['item','gigantamax']);
+  room.confirmBuildComparison();
+  assert.equal(room.curSet.item,'Venusaurite');assert.equal(room.curSet.gigantamax,true);
+  assert.equal(room.curSet.name,'Bloom');assert.equal(room.curSet.shiny,true);
+  room.undoSavedBuild();assert.deepEqual(room.curSet,current);
+ });
+ it('rejects a replaced slot or edited saved build after preview', () => {
+  const {room,current,build}=setup();room.openBuildComparison(0,build);
+  room.curSetList[0]={...current};room.confirmBuildComparison();
+  assert.equal(room.curSetList[0].item,'Leftovers');
+  room.curSetList[0]=current;build.set.item='Life Orb';room.confirmBuildComparison();
+  assert.equal(room.curSetList[0].item,'Leftovers');
+ });
+ it('library replacement reviews before loading, supports other species and cancel', () => {
+  const {room,current,build}=setup();build.set.species='Jellicent';room.toolsView=true;
+  room.replaceLibraryBuild('a');assert.equal(room.curSet,current);
+  room.cancelBuildComparison();assert.equal(room.curSet,current);
+  room.replaceLibraryBuild('a');room.$=()=>({prop:()=>false,remove(){},focus(){}});
+  room.confirmBuildComparison();assert.equal(room.curSet.species,'Jellicent');
+  assert.equal(room.curSet.name,'Saved');assert.equal(room.curSet.shiny,false);
+  assert.equal(room.toolsView,false);
  });
 });

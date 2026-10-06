@@ -1476,6 +1476,7 @@ class Species implements Effect {
 	// basic data
 	readonly num: number;
 	readonly types: ReadonlyArray<TypeName>;
+	readonly passives: readonly string[];
 	readonly abilities: Readonly<{
 		0: string, 1?: string, H?: string, S?: string, F?: string, E?: string, G?: string,
 	}>;
@@ -1544,6 +1545,7 @@ class Species implements Effect {
 		this.num = data.num || 0;
 		this.types = data.types || ['???'];
 		this.abilities = data.abilities || {0: "No Ability"};
+		this.passives = data.passives || [];
 		this.baseStats = data.baseStats || {hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0};
 		this.bst = this.baseStats.hp + this.baseStats.atk + this.baseStats.def +
 			this.baseStats.spa + this.baseStats.spd + this.baseStats.spe;

@@ -533,7 +533,7 @@ describe('Team Builder sprites', () => {
 			0: 'Liquid Arsenal', 1: 'Protean', H: 'Shadow Screen', S: 'Battle Bond',
 		});
 		assert.deepEqual(Dex.species.get('Delphox').abilities, {
-			0: 'Sworn Duty', 1: 'Magic Guard', H: 'Arcane Pilfer',
+			0: 'Sworn Duty', 1: 'Magic Guard', H: 'Void Guile',
 		});
 	});
 
