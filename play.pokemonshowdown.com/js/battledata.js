@@ -4232,7 +4232,7 @@ abilities:{0:'Moss Armor'},requiredItem:'Glalitite',battleOnly:'Glalie-Aevian',
 changesFrom:'Glalie-Aevian',isMega:true,gen:9,isNonstandard:'Custom',tier:'Illegal'
 }
 },
-gardevoirmegaalt:{base:'gardevoirmega',data:{name:'Gardevoir-Mega-Alt',baseSpecies:'Gardevoir',forme:'Mega-Alt',spriteid:'gardevoir-mega-alt',abilities:{0:'Royal Voice'},requiredItem:'Gardevoirite',battleOnly:'Gardevoir-Void',isNonstandard:'Custom'}},
+gardevoirmegaalt:{base:'gardevoirmega',data:{name:'Gardevoir-Mega-Alt',baseSpecies:'Gardevoir',forme:'Mega-Alt',spriteid:'gardevoir-mega-alt',abilities:{0:'Void Voice'},requiredItem:'Gardevoirite',battleOnly:'Gardevoir-Void',isNonstandard:'Custom'}},
 breloommega:{"base":"breloom","data":{"num":286,"name":"Breloom-Mega","baseSpecies":"Breloom","forme":"Mega","types":["Poison","Fighting"],"baseStats":{"hp":80,"atk":160,"def":90,"spa":55,"spd":105,"spe":110},"abilities":{"0":"Corrosive Touch"},"heightm":1.2,"weightkg":39.2,"color":"Purple","eggGroups":["Fairy","Grass"],"requiredItem":"Breloomite","battleOnly":"Breloom","isNonstandard":"Custom","spriteid":"breloom-mega","tier":"OU","gen":9}},
 luxraymega:{"base":"luxray","data":{"num":405,"name":"Luxray-Mega","baseSpecies":"Luxray","forme":"Mega","types":["Electric","Dark"],"baseStats":{"hp":85,"atk":160,"def":91,"spa":90,"spd":104,"spe":105},"abilities":{"0":"Night Hunt"},"heightm":1.4,"weightkg":42,"color":"Blue","eggGroups":["Field"],"requiredItem":"Luxranite","battleOnly":"Luxray","isNonstandard":"Custom","spriteid":"luxray-mega","tier":"OU","gen":9}},
 gardevoirvoid:{"base":"gardevoir","data":{"name":"Gardevoir-Void","baseSpecies":"Gardevoir","forme":"Void","spriteid":"gardevoir-void","changesFrom":"Gardevoir","isNonstandard":"Custom"}},
@@ -11416,7 +11416,7 @@ formeOrder:['Luxray','Luxray-Mega']
 },
 victreebel:{abilities:{0:'Chlorophyll',1:'Arena Trap',H:'Gluttony'}},
 mismagius:{
-abilities:{0:'Void Veil',1:'Temporal Shift',H:'Hex Bound'}
+abilities:{0:'Void Veil',1:'Temporal Shift',H:'Void Hex'}
 },
 lucario:{
 abilities:{0:"Mind's Eye",1:'Sworn Duty',H:'Armorize'}
@@ -11707,7 +11707,7 @@ baseStats:{hp:105,atk:105,def:135,spa:40,spd:90,spe:95},
 abilities:{0:'Venom Heal',1:'Toxic Boost',H:'Wind Rider'}
 },
 hydreigon:{
-abilities:{0:'Levitate',1:'Dark Aura',H:'Hydra Tyrant'},
+abilities:{0:'Levitate',1:'Dark Aura',H:'Void Tyrant'},
 otherFormes:['Hydreigon-Mega-X'],formeOrder:['Hydreigon','Hydreigon-Mega-X']
 },
 skarmory:{
@@ -12225,7 +12225,7 @@ gallademega:{
 abilities:{0:'Sacred Edge'}
 },
 gardevoirmega:{
-abilities:{0:'Royal Voice'}
+abilities:{0:'Void Voice'}
 },
 vibrava:{
 abilities:{0:'Levitate',1:'Dragonize',H:'Sand Stream'}
@@ -12494,7 +12494,7 @@ abilities:{0:'Battle Fervor',1:'Corrosion',H:'Great Marsh'}
 alakazam:{baseStats:{hp:80,atk:50,def:50,spa:135,spd:95,spe:120}},
 alakazammega:{types:['Psychic','Dark'],baseStats:{hp:80,atk:55,def:60,spa:175,spd:105,spe:155}},
 dodrio:{baseStats:{hp:90,atk:115,def:85,spa:40,spd:75,spe:120},abilities:{0:'Triple Threat',1:'Speed Boost',H:'Striker Frenzy'}},
-honchkrow:{baseStats:{hp:100,atk:135,def:72,spa:71,spd:72,spe:90},abilities:{0:'Pressure',1:'Wicked Command',H:'Supreme Overlord'}},
+honchkrow:{baseStats:{hp:100,atk:135,def:72,spa:71,spd:72,spe:90},abilities:{0:'Pressure',1:'Void Command',H:'Supreme Overlord'}},
 flamigo:{baseStats:{hp:82,atk:125,def:80,spa:75,spd:70,spe:105}},
 flapple:{
 baseStats:{hp:80,atk:115,def:85,spa:95,spd:60,spe:90},
@@ -13177,7 +13177,7 @@ name:"Sacred Edge",
 desc:"This Pokemon has Sharpness, Dual Wield, and Sworn Duty's effects. Its slicing moves have 1.5x power. When Dual Wield applies to one of those slicing moves, the first hit keeps the 1.5x Sharpness boost and the second hit has 20% of the move's unboosted power. On switch-in or Mega Evolution, it heals its ally by 1/4 max HP, or 1/3 on Fairy Tale Field.",
 shortDesc:"Sharpness + Dual Wield + Sworn Duty."
 },
-royalvoice:{"name":"Royal Voice","desc":"Pixilate + Queenly Majesty + Dream Sickness, plus Perfect Foresight's ability copying. Normal moves become Fairy and receive Pixilate power boosts. Blocks opposing priority moves targeting its side. Includes Dream Sickness's ally protection, stat-drop protection, and 1/16 end-turn healing for itself and allies. On activation, copies an opposing Pokemon's Ability, prioritizing an active Speed Ability; otherwise it selects the foe with the higher Attack or Special Attack. The copied Ability's effects apply until this Pokemon leaves battle or loses Royal Voice.","shortDesc":"Pixilate + Queenly Majesty + Dream Sickness; copies a foe's Ability."},
+voidvoice:{"name":"Void Voice","desc":"Pixilate + Queenly Majesty + Dream Sickness, plus Perfect Foresight's ability copying. Normal moves become Fairy and receive Pixilate power boosts. Blocks opposing priority moves targeting its side. Includes Dream Sickness's ally protection, stat-drop protection, and 1/16 end-turn healing for itself and allies. On activation, copies an opposing Pokemon's Ability, prioritizing an active Speed Ability; otherwise it selects the foe with the higher Attack or Special Attack. The copied Ability's effects apply until this Pokemon leaves battle or loses Void Voice.","shortDesc":"Pixilate + Queenly Majesty + Dream Sickness; copies a foe's Ability."},
 fallenstar:{
 "name":"Fallen Star",
 "desc":"Mold Breaker: moves ignore bypassable opposing abilities. Designated arrow moves gain +1 priority at half HP or less and 1.3x power against trapped foes: Spirit Shackle, Thousand Arrows, Triple Arrows, Snipe Shot, Razor Leaf, Magical Leaf, Spike Cannon, Pin Missile, Icicle Spear, Rock Blast, Bullet Seed, Scale Shot, Psycho Cut and Ceaseless Edge. Retains its arrow follow-up and protective effects.",
@@ -13471,8 +13471,8 @@ shortDesc:"Entry defensive boost based on foes' offenses; moves cannot miss."
 },
 divineintervention:{
 name:"Divine Intervention",
-desc:"This Pokemon has Sworn Duty, Friend Guard, Regenerator, and Fluffy's effects.",
-shortDesc:"Sworn Duty + Friend Guard + Regenerator + Fluffy."
+desc:"This Pokemon has Vital Signs, Triage, Regenerator, and Friend Guard's effects.",
+shortDesc:"Vital Signs + Triage + Regenerator + Friend Guard."
 },
 doomwarning:{
 name:"Doom Warning",
@@ -13634,8 +13634,8 @@ name:"Divine Mockery",
 desc:"This Pokemon has Hydra Bond, Mold Breaker, and Sniper's effects. Eligible attacks gain Hydra Bond's extra hits and ignore opposing Abilities. It gains +1 accuracy on entry and its critical hits deal more damage. Water attacks receive STAB even without Water typing.",
 shortDesc:"Hydra Bond + Mold Breaker + Sniper; Water STAB."
 },
-hydratyrant:{
-name:"Hydra Tyrant",
+voidtyrant:{
+name:"Void Tyrant",
 desc:"This Pokemon has Hydra Bond, Berserk, and Self Sufficient's effects.",
 shortDesc:"Hydra Bond + Berserk + Self Sufficient."
 },
@@ -13985,8 +13985,8 @@ name:"Shadow Current",
 desc:"This Pokemon has Protean, Technician, Infiltrator, and Anticipation's effects. Before using a move, it becomes that move's type.",
 shortDesc:"Protean + Technician + Infiltrator + Anticipation."
 },
-guidingomen:{
-"name":"Guiding Omen",
+voidomen:{
+"name":"Void Omen",
 "desc":"Mold Breaker: moves ignore bypassable opposing abilities. Allies take 25% less attack damage; this does not protect the holder. Doubles move secondary-effect chances and removes charging turns. Once per switch-in, successfully applying a move secondary effect creates a ward that blocks the next opposing stat-drop event against an adjacent ally.",
 "shortDesc":"Mold Breaker; allies take 25% less damage; doubles secondaries, skips charging; first secondary wards an ally."
 },
@@ -14010,8 +14010,8 @@ name:"Shadow Tag",
 desc:"Prevents opposing Pokemon from choosing to switch out, unless they are holding a Shed Shell, are a Ghost type, or also have this Ability. This Pokemon takes 0.75x damage from attacks. On Haunted Field, it reveals foes' held items on entry. This Ability cannot be suppressed.",
 shortDesc:"Traps foes; takes 0.75x damage from attacks."
 },
-hexbound:{
-name:"Hex Bound",
+voidhex:{
+name:"Void Hex",
 desc:"Shadow Tag + Prankster. Traps adjacent foes that lack Shadow Tag, unless they are Ghost types or hold Shed Shell. This Pokemon takes 0.75x damage from attacks. Its status moves gain +1 priority, and opposing Dark types block those boosted moves outside Bewitched Woods. On Haunted Field, it reveals foes' held items on entry. It does not create Haunted Field on faint.",
 shortDesc:"Shadow Tag + Prankster; traps foes, takes 0.75x damage, and gives status moves +1 priority."
 },
@@ -14316,8 +14316,8 @@ name:"Wicked Snare",
 desc:"This Pokemon has Stakeout, Tangling Hair, and Prankster's effects.",
 shortDesc:"Stakeout + Tangling Hair + Prankster."
 },
-wickedcommand:{
-name:'Wicked Command',
+voidcommand:{
+name:'Void Command',
 desc:"This Pokemon has Insomnia and Super Luck's effects and takes 20% less damage from other Pokemon's damaging moves. If this Pokemon knocks out an enemy with a move, its higher attacking stat is raised by 1 stage, with Attack chosen on a tie.",
 shortDesc:'Insomnia + Super Luck; move KOs boost the higher attacking stat.'
 },
@@ -17922,7 +17922,7 @@ Object.entries({
 "abilities":{
 "0":"Levitate",
 "1":"Dark Dominion",
-"H":"Hydra Tyrant"
+"H":"Void Tyrant"
 },
 "replaceAbilities":true
 },
@@ -17938,7 +17938,7 @@ Object.entries({
 "abilities":{
 "0":"Mind's Eye",
 "1":"Lunar Dread",
-"H":"Shadow Shield"
+"H":"Moonlit Hide"
 },
 "replaceAbilities":true
 },
@@ -18906,7 +18906,7 @@ Object.entries({
 "spe":80
 },
 "abilities":{
-"0":"Guiding Omen",
+"0":"Void Omen",
 "1":"Pixilate",
 "H":"Fortunate Wing"
 },
@@ -19698,11 +19698,11 @@ Object.entries({
 "H":"Regenerator"
 },
 "baseStats":{
-"hp":114,
+"hp":120,
 "atk":105,
-"def":70,
+"def":80,
 "spa":75,
-"spd":80,
+"spd":90,
 "spe":30
 },
 "types":[
@@ -19888,6 +19888,7 @@ Object.entries({
 "types":[
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "abomasnow":{
@@ -19908,6 +19909,7 @@ Object.entries({
 "Grass",
 "Ice"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "abra":{
@@ -19928,6 +19930,7 @@ Object.entries({
 "Psychic",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "absol":{
@@ -19948,6 +19951,7 @@ Object.entries({
 "Dark",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "accelgor":{
@@ -19968,6 +19972,7 @@ Object.entries({
 "Bug",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "aegislash":{
@@ -19986,6 +19991,7 @@ Object.entries({
 "Steel",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "aerodactyl":{
@@ -20006,6 +20012,7 @@ Object.entries({
 "Rock",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "aggron":{
@@ -20026,6 +20033,7 @@ Object.entries({
 "Steel",
 "Rock"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "aipom":{
@@ -20045,6 +20053,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "alakazam":{
@@ -20065,6 +20074,7 @@ Object.entries({
 "Psychic",
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "alcremie":{
@@ -20083,6 +20093,7 @@ Object.entries({
 "types":[
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "alomomola":{
@@ -20102,6 +20113,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "altaria":{
@@ -20123,6 +20135,7 @@ Object.entries({
 "Dragon",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "amaura":{
@@ -20142,6 +20155,7 @@ Object.entries({
 "Rock",
 "Ice"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "ambipom":{
@@ -20162,6 +20176,7 @@ Object.entries({
 "Normal",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "amoonguss":{
@@ -20171,17 +20186,18 @@ Object.entries({
 "H":"Regenerator"
 },
 "baseStats":{
-"hp":114,
+"hp":120,
 "atk":105,
-"def":70,
+"def":80,
 "spa":75,
-"spd":80,
+"spd":90,
 "spe":30
 },
 "types":[
 "Grass",
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "ampharos":{
@@ -20201,6 +20217,7 @@ Object.entries({
 "types":[
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "ampharosmega":{
@@ -20219,6 +20236,7 @@ Object.entries({
 "Electric",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "annihilape":{
@@ -20239,6 +20257,7 @@ Object.entries({
 "Fighting",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "anorith":{
@@ -20259,6 +20278,7 @@ Object.entries({
 "Rock",
 "Bug"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "appletun":{
@@ -20279,6 +20299,7 @@ Object.entries({
 "Grass",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "applin":{
@@ -20299,6 +20320,7 @@ Object.entries({
 "Grass",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "araquanid":{
@@ -20319,6 +20341,7 @@ Object.entries({
 "Water",
 "Bug"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "araquanidtotem":{
@@ -20337,6 +20360,7 @@ Object.entries({
 "Water",
 "Bug"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "arbok":{
@@ -20356,6 +20380,7 @@ Object.entries({
 "types":[
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "arboliva":{
@@ -20376,6 +20401,7 @@ Object.entries({
 "Grass",
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "arcanine":{
@@ -20396,6 +20422,7 @@ Object.entries({
 "types":[
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "arcaninealt":{
@@ -20416,6 +20443,7 @@ Object.entries({
 "types":[
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "arcaninehisui":{
@@ -20437,6 +20465,7 @@ Object.entries({
 "Fire",
 "Rock"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "arceus":{
@@ -20454,6 +20483,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "arceusbug":{
@@ -20471,6 +20501,7 @@ Object.entries({
 "types":[
 "Bug"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "arceusdark":{
@@ -20488,6 +20519,7 @@ Object.entries({
 "types":[
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "arceusdragon":{
@@ -20505,6 +20537,7 @@ Object.entries({
 "types":[
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "arceuselectric":{
@@ -20522,6 +20555,7 @@ Object.entries({
 "types":[
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "arceusfairy":{
@@ -20539,6 +20573,7 @@ Object.entries({
 "types":[
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "arceusfighting":{
@@ -20556,6 +20591,7 @@ Object.entries({
 "types":[
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "arceusfire":{
@@ -20573,6 +20609,7 @@ Object.entries({
 "types":[
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "arceusflying":{
@@ -20590,6 +20627,7 @@ Object.entries({
 "types":[
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "arceusghost":{
@@ -20607,6 +20645,7 @@ Object.entries({
 "types":[
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "arceusgrass":{
@@ -20624,6 +20663,7 @@ Object.entries({
 "types":[
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "arceusground":{
@@ -20641,6 +20681,7 @@ Object.entries({
 "types":[
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "arceusice":{
@@ -20658,6 +20699,7 @@ Object.entries({
 "types":[
 "Ice"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "arceuspoison":{
@@ -20675,6 +20717,7 @@ Object.entries({
 "types":[
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "arceuspsychic":{
@@ -20692,6 +20735,7 @@ Object.entries({
 "types":[
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "arceusrock":{
@@ -20709,6 +20753,7 @@ Object.entries({
 "types":[
 "Rock"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "arceussteel":{
@@ -20726,6 +20771,7 @@ Object.entries({
 "types":[
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "arceuswater":{
@@ -20743,6 +20789,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "archaludon":{
@@ -20763,6 +20810,7 @@ Object.entries({
 "Steel",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "archen":{
@@ -20781,6 +20829,7 @@ Object.entries({
 "Rock",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "archeops":{
@@ -20801,6 +20850,7 @@ Object.entries({
 "Rock",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "arctibax":{
@@ -20820,6 +20870,7 @@ Object.entries({
 "Dragon",
 "Ice"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "arctovish":{
@@ -20840,6 +20891,7 @@ Object.entries({
 "Water",
 "Ice"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "arctozolt":{
@@ -20860,6 +20912,7 @@ Object.entries({
 "Electric",
 "Ice"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "argalis":{
@@ -20880,6 +20933,7 @@ Object.entries({
 "Bug",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "arghonaut":{
@@ -20899,6 +20953,7 @@ Object.entries({
 "Water",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "ariados":{
@@ -20919,6 +20974,7 @@ Object.entries({
 "Bug",
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "armaldo":{
@@ -20939,6 +20995,7 @@ Object.entries({
 "Rock",
 "Bug"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "armarouge":{
@@ -20959,6 +21016,7 @@ Object.entries({
 "Fire",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "aromatisse":{
@@ -20978,6 +21036,7 @@ Object.entries({
 "types":[
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "aron":{
@@ -20998,6 +21057,7 @@ Object.entries({
 "Steel",
 "Rock"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "arrokuda":{
@@ -21016,6 +21076,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "articuno":{
@@ -21035,6 +21096,7 @@ Object.entries({
 "Ice",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "articunogalar":{
@@ -21053,6 +21115,7 @@ Object.entries({
 "Psychic",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "astrolotl":{
@@ -21073,11 +21136,12 @@ Object.entries({
 "Fire",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "audino":{
 "abilities":{
-"0":"Invigorate",
+"0":"Vital Signs",
 "1":"Regenerator",
 "H":"Triage"
 },
@@ -21093,6 +21157,7 @@ Object.entries({
 "Normal",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "aurorus":{
@@ -21113,6 +21178,7 @@ Object.entries({
 "Rock",
 "Ice"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "aurumoth":{
@@ -21133,6 +21199,7 @@ Object.entries({
 "Bug",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "avalugg":{
@@ -21152,6 +21219,7 @@ Object.entries({
 "types":[
 "Ice"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "avalugghisui":{
@@ -21172,6 +21240,7 @@ Object.entries({
 "Ice",
 "Rock"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "avaluggpulse":{
@@ -21189,6 +21258,7 @@ Object.entries({
 "types":[
 "Ice"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "axew":{
@@ -21208,6 +21278,7 @@ Object.entries({
 "types":[
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "azelf":{
@@ -21225,6 +21296,7 @@ Object.entries({
 "types":[
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "azumarill":{
@@ -21245,6 +21317,7 @@ Object.entries({
 "Water",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "azurill":{
@@ -21265,6 +21338,7 @@ Object.entries({
 "Normal",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "bagon":{
@@ -21283,6 +21357,7 @@ Object.entries({
 "types":[
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "baltoy":{
@@ -21301,6 +21376,7 @@ Object.entries({
 "Ground",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "banette":{
@@ -21321,6 +21397,7 @@ Object.entries({
 "Ghost",
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "barbaracle":{
@@ -21341,6 +21418,7 @@ Object.entries({
 "Rock",
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "barboach":{
@@ -21361,6 +21439,7 @@ Object.entries({
 "Water",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "barraskewda":{
@@ -21380,6 +21459,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "basculegion":{
@@ -21400,6 +21480,7 @@ Object.entries({
 "Water",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "basculegionf":{
@@ -21420,6 +21501,7 @@ Object.entries({
 "Water",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "basculin":{
@@ -21439,6 +21521,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "basculinwhitestriped":{
@@ -21458,6 +21541,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "bastiodon":{
@@ -21478,6 +21562,7 @@ Object.entries({
 "Rock",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "baxcalibur":{
@@ -21498,6 +21583,7 @@ Object.entries({
 "Dragon",
 "Ice"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "bayleef":{
@@ -21516,6 +21602,7 @@ Object.entries({
 "types":[
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "beartic":{
@@ -21536,6 +21623,7 @@ Object.entries({
 "Ice",
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "beautifly":{
@@ -21556,6 +21644,7 @@ Object.entries({
 "Psychic",
 "Bug"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "beedrill":{
@@ -21576,6 +21665,7 @@ Object.entries({
 "Bug",
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "beheeyem":{
@@ -21596,6 +21686,7 @@ Object.entries({
 "Psychic",
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "beldum":{
@@ -21615,6 +21706,7 @@ Object.entries({
 "Steel",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "bellibolt":{
@@ -21634,6 +21726,7 @@ Object.entries({
 "types":[
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "bellossom":{
@@ -21653,6 +21746,7 @@ Object.entries({
 "types":[
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "bellsprout":{
@@ -21672,6 +21766,7 @@ Object.entries({
 "Grass",
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "bergmite":{
@@ -21691,6 +21786,7 @@ Object.entries({
 "types":[
 "Ice"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "bewear":{
@@ -21711,6 +21807,7 @@ Object.entries({
 "Normal",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "bibarel":{
@@ -21731,6 +21828,7 @@ Object.entries({
 "Normal",
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "bidoof":{
@@ -21750,6 +21848,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "binacle":{
@@ -21770,6 +21869,7 @@ Object.entries({
 "Rock",
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "bisharp":{
@@ -21790,6 +21890,7 @@ Object.entries({
 "Dark",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "blacephalon":{
@@ -21808,6 +21909,7 @@ Object.entries({
 "Fire",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "blastoise":{
@@ -21827,6 +21929,49 @@ Object.entries({
 "types":[
 "Water",
 "Steel"],
+
+"passives":[],
+"replaceAbilities":true
+},
+"blastoisegmax":{
+"abilities":{
+"0":"Fortress Shell"
+},
+"baseStats":{
+"hp":145,
+"atk":80,
+"def":95,
+"spa":100,
+"spd":108,
+"spe":78
+},
+"types":[
+"Water",
+"Steel"],
+
+"passives":[
+"proficient"],
+
+"replaceAbilities":true
+},
+"blastoisemega":{
+"abilities":{
+"0":"Siege Launcher"
+},
+"baseStats":{
+"hp":89,
+"atk":90,
+"def":135,
+"spa":135,
+"spd":123,
+"spe":78
+},
+"types":[
+"Water",
+"Steel"],
+
+"passives":[
+"proficient"],
 
 "replaceAbilities":true
 },
@@ -21848,6 +21993,28 @@ Object.entries({
 "Fire",
 "Fighting"],
 
+"passives":[],
+"replaceAbilities":true
+},
+"blazikenmega":{
+"abilities":{
+"0":"Blazing Tempo"
+},
+"baseStats":{
+"hp":80,
+"atk":160,
+"def":80,
+"spa":130,
+"spd":80,
+"spe":100
+},
+"types":[
+"Fire",
+"Fighting"],
+
+"passives":[
+"proficient"],
+
 "replaceAbilities":true
 },
 "blipbug":{
@@ -21867,6 +22034,7 @@ Object.entries({
 "types":[
 "Bug"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "blissey":{
@@ -21886,6 +22054,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "boltund":{
@@ -21906,6 +22075,7 @@ Object.entries({
 "Electric",
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "bombirdier":{
@@ -21926,6 +22096,7 @@ Object.entries({
 "Flying",
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "bonsly":{
@@ -21945,6 +22116,7 @@ Object.entries({
 "types":[
 "Rock"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "bouffalant":{
@@ -21964,6 +22136,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "bounsweet":{
@@ -21983,6 +22156,7 @@ Object.entries({
 "types":[
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "braixen":{
@@ -22001,6 +22175,7 @@ Object.entries({
 "types":[
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "brambleghast":{
@@ -22021,6 +22196,7 @@ Object.entries({
 "Grass",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "bramblin":{
@@ -22041,6 +22217,7 @@ Object.entries({
 "Grass",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "brattler":{
@@ -22061,6 +22238,7 @@ Object.entries({
 "Dark",
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "braviary":{
@@ -22081,6 +22259,7 @@ Object.entries({
 "Fighting",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "braviaryhisui":{
@@ -22101,6 +22280,7 @@ Object.entries({
 "Psychic",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "breezi":{
@@ -22121,6 +22301,7 @@ Object.entries({
 "Poison",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "breloom":{
@@ -22142,6 +22323,7 @@ Object.entries({
 "Grass",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "brionne":{
@@ -22160,6 +22342,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "bronzong":{
@@ -22180,6 +22363,7 @@ Object.entries({
 "Steel",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "bronzor":{
@@ -22200,6 +22384,7 @@ Object.entries({
 "Steel",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "brutebonnet":{
@@ -22218,6 +22403,7 @@ Object.entries({
 "Grass",
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "bruxish":{
@@ -22238,6 +22424,7 @@ Object.entries({
 "Water",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "budew":{
@@ -22258,6 +22445,7 @@ Object.entries({
 "Grass",
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "buizel":{
@@ -22276,6 +22464,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "bulbasaur":{
@@ -22295,6 +22484,7 @@ Object.entries({
 "Grass",
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "buneary":{
@@ -22314,6 +22504,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "bunnelby":{
@@ -22333,6 +22524,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "burmy":{
@@ -22351,6 +22543,7 @@ Object.entries({
 "types":[
 "Bug"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "butterfree":{
@@ -22371,6 +22564,7 @@ Object.entries({
 "Bug",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "buzzwole":{
@@ -22389,6 +22583,7 @@ Object.entries({
 "Bug",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "cacnea":{
@@ -22407,6 +22602,7 @@ Object.entries({
 "types":[
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "cacturne":{
@@ -22427,6 +22623,7 @@ Object.entries({
 "Grass",
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "caimanoe":{
@@ -22447,6 +22644,7 @@ Object.entries({
 "Water",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "calyrex":{
@@ -22465,6 +22663,7 @@ Object.entries({
 "Psychic",
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "calyrexice":{
@@ -22483,6 +22682,7 @@ Object.entries({
 "Psychic",
 "Ice"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "calyrexshadow":{
@@ -22501,6 +22701,7 @@ Object.entries({
 "Psychic",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "camerupt":{
@@ -22521,6 +22722,7 @@ Object.entries({
 "Fire",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "cameruptpulse":{
@@ -22539,6 +22741,7 @@ Object.entries({
 "Fire",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "capsakid":{
@@ -22558,6 +22761,7 @@ Object.entries({
 "types":[
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "carbink":{
@@ -22577,6 +22781,7 @@ Object.entries({
 "Rock",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "caribolt":{
@@ -22596,6 +22801,7 @@ Object.entries({
 "Grass",
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "carkol":{
@@ -22616,6 +22822,7 @@ Object.entries({
 "Rock",
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "carnivine":{
@@ -22636,6 +22843,7 @@ Object.entries({
 "Grass",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "carracosta":{
@@ -22656,6 +22864,7 @@ Object.entries({
 "Water",
 "Rock"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "carvanha":{
@@ -22675,6 +22884,7 @@ Object.entries({
 "Water",
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "cascoon":{
@@ -22692,6 +22902,7 @@ Object.entries({
 "types":[
 "Bug"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "castform":{
@@ -22711,6 +22922,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "caterpie":{
@@ -22729,6 +22941,7 @@ Object.entries({
 "types":[
 "Bug"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "cawdet":{
@@ -22749,6 +22962,7 @@ Object.entries({
 "Steel",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "cawmodore":{
@@ -22769,6 +22983,7 @@ Object.entries({
 "Steel",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "celebi":{
@@ -22787,6 +23002,7 @@ Object.entries({
 "Psychic",
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "celesteela":{
@@ -22805,6 +23021,7 @@ Object.entries({
 "Steel",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "centiskorch":{
@@ -22825,6 +23042,7 @@ Object.entries({
 "Fire",
 "Bug"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "ceruledge":{
@@ -22845,6 +23063,7 @@ Object.entries({
 "Fire",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "cetitan":{
@@ -22865,6 +23084,7 @@ Object.entries({
 "Ice",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "cetoddle":{
@@ -22884,6 +23104,7 @@ Object.entries({
 "types":[
 "Ice"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "chandelure":{
@@ -22905,6 +23126,7 @@ Object.entries({
 "Ghost",
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "chansey":{
@@ -22924,6 +23146,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "charcadet":{
@@ -22942,6 +23165,7 @@ Object.entries({
 "types":[
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "charizard":{
@@ -22962,6 +23186,7 @@ Object.entries({
 "Fire",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "charizardalt":{
@@ -22982,6 +23207,91 @@ Object.entries({
 "Fire",
 "Flying"],
 
+"passives":[],
+"replaceAbilities":true
+},
+"charizardgmax":{
+"abilities":{
+"0":"Burning Crown"
+},
+"baseStats":{
+"hp":133,
+"atk":109,
+"def":75,
+"spa":114,
+"spd":78,
+"spe":100
+},
+"types":[
+"Fire",
+"Dragon"],
+
+"passives":[
+"proficient"],
+
+"replaceAbilities":true
+},
+"charizardmegax":{
+"abilities":{
+"0":"Atrocity"
+},
+"baseStats":{
+"hp":78,
+"atk":130,
+"def":110,
+"spa":125,
+"spd":106,
+"spe":105
+},
+"types":[
+"Fire",
+"Dragon"],
+
+"passives":[
+"proficient"],
+
+"replaceAbilities":true
+},
+"charizardmegaxalt":{
+"abilities":{
+"0":"Atrocity"
+},
+"baseStats":{
+"hp":78,
+"atk":130,
+"def":110,
+"spa":125,
+"spd":106,
+"spe":105
+},
+"types":[
+"Fire",
+"Dragon"],
+
+"passives":[
+"proficient"],
+
+"replaceAbilities":true
+},
+"charizardmegay":{
+"abilities":{
+"0":"Sun Sovereign"
+},
+"baseStats":{
+"hp":78,
+"atk":90,
+"def":100,
+"spa":160,
+"spd":116,
+"spe":110
+},
+"types":[
+"Fire",
+"Flying"],
+
+"passives":[
+"proficient"],
+
 "replaceAbilities":true
 },
 "charjabug":{
@@ -23000,6 +23310,7 @@ Object.entries({
 "Bug",
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "charmander":{
@@ -23018,6 +23329,7 @@ Object.entries({
 "types":[
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "charmeleon":{
@@ -23036,6 +23348,7 @@ Object.entries({
 "types":[
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "chatot":{
@@ -23056,6 +23369,7 @@ Object.entries({
 "Normal",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "cherrim":{
@@ -23076,6 +23390,7 @@ Object.entries({
 "Grass",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "cherubi":{
@@ -23093,6 +23408,7 @@ Object.entries({
 "types":[
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "chesnaught":{
@@ -23113,6 +23429,28 @@ Object.entries({
 "Grass",
 "Fighting"],
 
+"passives":[],
+"replaceAbilities":true
+},
+"chesnaughtmega":{
+"abilities":{
+"0":"Wrath Shield"
+},
+"baseStats":{
+"hp":88,
+"atk":137,
+"def":172,
+"spa":74,
+"spd":115,
+"spe":44
+},
+"types":[
+"Grass",
+"Fighting"],
+
+"passives":[
+"proficient"],
+
 "replaceAbilities":true
 },
 "chespin":{
@@ -23131,6 +23469,7 @@ Object.entries({
 "types":[
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "chewtle":{
@@ -23150,6 +23489,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "chienpao":{
@@ -23168,6 +23508,7 @@ Object.entries({
 "Dark",
 "Ice"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "chikorita":{
@@ -23186,6 +23527,7 @@ Object.entries({
 "types":[
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "chimchar":{
@@ -23204,6 +23546,7 @@ Object.entries({
 "types":[
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "chimecho":{
@@ -23223,6 +23566,7 @@ Object.entries({
 "types":[
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "chinchou":{
@@ -23243,6 +23587,7 @@ Object.entries({
 "Water",
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "chingling":{
@@ -23260,6 +23605,7 @@ Object.entries({
 "types":[
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "chiyu":{
@@ -23278,6 +23624,7 @@ Object.entries({
 "Dark",
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "chromera":{
@@ -23296,6 +23643,7 @@ Object.entries({
 "Dark",
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "cinccino":{
@@ -23316,6 +23664,7 @@ Object.entries({
 "Normal",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "cinderace":{
@@ -23335,6 +23684,48 @@ Object.entries({
 "types":[
 "Fire"],
 
+"passives":[],
+"replaceAbilities":true
+},
+"cinderacegmax":{
+"abilities":{
+"0":"Striker's Momentum"
+},
+"baseStats":{
+"hp":136,
+"atk":116,
+"def":75,
+"spa":65,
+"spd":75,
+"spe":119
+},
+"types":[
+"Fire"],
+
+"passives":[
+"proficient"],
+
+"replaceAbilities":true
+},
+"cinderacemega":{
+"abilities":{
+"0":"Perfect Striker"
+},
+"baseStats":{
+"hp":80,
+"atk":146,
+"def":95,
+"spa":75,
+"spd":85,
+"spe":149
+},
+"types":[
+"Fire",
+"Normal"],
+
+"passives":[
+"proficient"],
+
 "replaceAbilities":true
 },
 "clamperl":{
@@ -23353,6 +23744,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "clauncher":{
@@ -23372,6 +23764,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "clawitzer":{
@@ -23392,6 +23785,7 @@ Object.entries({
 "Water",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "claydol":{
@@ -23412,13 +23806,14 @@ Object.entries({
 "Ground",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "clefable":{
 "abilities":{
 "0":"Moon Veil",
 "1":"Magic Guard",
-"H":"Moonlit Promise"
+"H":"Void Promise"
 },
 "baseStats":{
 "hp":100,
@@ -23431,6 +23826,7 @@ Object.entries({
 "types":[
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "clefairy":{
@@ -23450,6 +23846,7 @@ Object.entries({
 "types":[
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "cleffa":{
@@ -23469,6 +23866,7 @@ Object.entries({
 "types":[
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "clobbopus":{
@@ -23487,6 +23885,7 @@ Object.entries({
 "types":[
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "clodsire":{
@@ -23507,6 +23906,7 @@ Object.entries({
 "Poison",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "cloyster":{
@@ -23527,6 +23927,7 @@ Object.entries({
 "Water",
 "Ice"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "coalossal":{
@@ -23547,6 +23948,7 @@ Object.entries({
 "Rock",
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "cobalion":{
@@ -23566,6 +23968,7 @@ Object.entries({
 "Steel",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "cofagrigus":{
@@ -23586,6 +23989,7 @@ Object.entries({
 "Ghost",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "colossoil":{
@@ -23606,6 +24010,7 @@ Object.entries({
 "Ground",
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "combee":{
@@ -23625,6 +24030,7 @@ Object.entries({
 "Bug",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "combusken":{
@@ -23644,6 +24050,7 @@ Object.entries({
 "Fire",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "comfey":{
@@ -23663,11 +24070,12 @@ Object.entries({
 "types":[
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "conkeldurr":{
 "abilities":{
-"0":"Grit Reprisal",
+"0":"Void Reprisal",
 "1":"Stamina",
 "H":"Wrecking Crew"
 },
@@ -23682,6 +24090,7 @@ Object.entries({
 "types":[
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "copperajah":{
@@ -23701,6 +24110,7 @@ Object.entries({
 "types":[
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "coribalis":{
@@ -23720,6 +24130,7 @@ Object.entries({
 "Water",
 "Bug"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "corphish":{
@@ -23739,6 +24150,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "corsola":{
@@ -23759,6 +24171,7 @@ Object.entries({
 "Water",
 "Rock"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "corsolaalt":{
@@ -23779,6 +24192,7 @@ Object.entries({
 "Water",
 "Rock"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "corsolagalar":{
@@ -23797,6 +24211,7 @@ Object.entries({
 "types":[
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "corviknight":{
@@ -23817,6 +24232,7 @@ Object.entries({
 "Flying",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "corvisquire":{
@@ -23836,6 +24252,7 @@ Object.entries({
 "types":[
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "cosmoem":{
@@ -23853,6 +24270,7 @@ Object.entries({
 "types":[
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "cosmog":{
@@ -23870,6 +24288,7 @@ Object.entries({
 "types":[
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "cottonee":{
@@ -23890,6 +24309,7 @@ Object.entries({
 "Grass",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "crabominable":{
@@ -23910,6 +24330,7 @@ Object.entries({
 "Fighting",
 "Ice"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "crabrawler":{
@@ -23929,6 +24350,7 @@ Object.entries({
 "types":[
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "cradily":{
@@ -23949,6 +24371,7 @@ Object.entries({
 "Rock",
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "cramorant":{
@@ -23967,6 +24390,7 @@ Object.entries({
 "Flying",
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "cranidos":{
@@ -23985,6 +24409,7 @@ Object.entries({
 "types":[
 "Rock"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "crawdaunt":{
@@ -24005,6 +24430,7 @@ Object.entries({
 "Water",
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "cresceidon":{
@@ -24025,6 +24451,7 @@ Object.entries({
 "Water",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "cresselia":{
@@ -24042,6 +24469,7 @@ Object.entries({
 "types":[
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "croagunk":{
@@ -24062,6 +24490,7 @@ Object.entries({
 "Poison",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "crobat":{
@@ -24082,6 +24511,7 @@ Object.entries({
 "Poison",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "crocalor":{
@@ -24100,6 +24530,7 @@ Object.entries({
 "types":[
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "croconaw":{
@@ -24118,6 +24549,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "crucibelle":{
@@ -24138,6 +24570,7 @@ Object.entries({
 "Rock",
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "crustle":{
@@ -24158,6 +24591,7 @@ Object.entries({
 "Bug",
 "Rock"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "cryogonal":{
@@ -24178,6 +24612,7 @@ Object.entries({
 "Ice",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "cubchoo":{
@@ -24197,6 +24632,7 @@ Object.entries({
 "types":[
 "Ice"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "cubone":{
@@ -24216,6 +24652,7 @@ Object.entries({
 "types":[
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "cufant":{
@@ -24234,6 +24671,7 @@ Object.entries({
 "types":[
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "cupra":{
@@ -24254,6 +24692,7 @@ Object.entries({
 "Bug",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "cursola":{
@@ -24273,6 +24712,7 @@ Object.entries({
 "types":[
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "cutiefly":{
@@ -24293,6 +24733,7 @@ Object.entries({
 "Bug",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "cyclizar":{
@@ -24313,6 +24754,7 @@ Object.entries({
 "Dragon",
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "cyclohm":{
@@ -24333,6 +24775,7 @@ Object.entries({
 "Electric",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "cyndaquil":{
@@ -24351,6 +24794,7 @@ Object.entries({
 "types":[
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "dachsbun":{
@@ -24370,6 +24814,7 @@ Object.entries({
 "types":[
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "darkrai":{
@@ -24387,6 +24832,7 @@ Object.entries({
 "types":[
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "darmanitan":{
@@ -24406,6 +24852,7 @@ Object.entries({
 "types":[
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "darmanitangalar":{
@@ -24424,6 +24871,7 @@ Object.entries({
 "types":[
 "Ice"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "dartrix":{
@@ -24443,6 +24891,7 @@ Object.entries({
 "Grass",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "darumaka":{
@@ -24461,6 +24910,7 @@ Object.entries({
 "types":[
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "darumakagalar":{
@@ -24479,6 +24929,7 @@ Object.entries({
 "types":[
 "Ice"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "decidueye":{
@@ -24499,6 +24950,7 @@ Object.entries({
 "Grass",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "decidueyealt":{
@@ -24519,6 +24971,7 @@ Object.entries({
 "Grass",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "decidueyehisui":{
@@ -24539,6 +24992,7 @@ Object.entries({
 "Grass",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "decidueyehisuialt":{
@@ -24559,6 +25013,7 @@ Object.entries({
 "Grass",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "dedenne":{
@@ -24579,6 +25034,7 @@ Object.entries({
 "Electric",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "deerling":{
@@ -24599,6 +25055,7 @@ Object.entries({
 "Normal",
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "deino":{
@@ -24618,6 +25075,7 @@ Object.entries({
 "Dark",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "delcatty":{
@@ -24637,6 +25095,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "delibird":{
@@ -24657,13 +25116,14 @@ Object.entries({
 "Ice",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "delphox":{
 "abilities":{
 "0":"Sworn Duty",
 "1":"Magic Guard",
-"H":"Arcane Pilfer"
+"H":"Void Guile"
 },
 "baseStats":{
 "hp":75,
@@ -24676,6 +25136,28 @@ Object.entries({
 "types":[
 "Fire",
 "Psychic"],
+
+"passives":[],
+"replaceAbilities":true
+},
+"delphoxmega":{
+"abilities":{
+"0":"Astral Witchcraft"
+},
+"baseStats":{
+"hp":75,
+"atk":69,
+"def":72,
+"spa":159,
+"spd":125,
+"spe":134
+},
+"types":[
+"Fire",
+"Psychic"],
+
+"passives":[
+"proficient"],
 
 "replaceAbilities":true
 },
@@ -24694,6 +25176,7 @@ Object.entries({
 "types":[
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "deoxysattack":{
@@ -24711,6 +25194,7 @@ Object.entries({
 "types":[
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "deoxysdefense":{
@@ -24728,6 +25212,7 @@ Object.entries({
 "types":[
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "deoxysspeed":{
@@ -24745,6 +25230,7 @@ Object.entries({
 "types":[
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "dewgong":{
@@ -24765,6 +25251,7 @@ Object.entries({
 "Water",
 "Ice"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "dewott":{
@@ -24783,6 +25270,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "dewpider":{
@@ -24802,6 +25290,7 @@ Object.entries({
 "Water",
 "Bug"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "dhelmise":{
@@ -24822,6 +25311,7 @@ Object.entries({
 "Ghost",
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "dialga":{
@@ -24841,6 +25331,7 @@ Object.entries({
 "Steel",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "dialgaorigin":{
@@ -24860,6 +25351,7 @@ Object.entries({
 "Steel",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "diancie":{
@@ -24878,6 +25370,7 @@ Object.entries({
 "Rock",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "diggersby":{
@@ -24898,6 +25391,7 @@ Object.entries({
 "Normal",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "diglett":{
@@ -24917,6 +25411,7 @@ Object.entries({
 "types":[
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "diglettalola":{
@@ -24937,6 +25432,7 @@ Object.entries({
 "Ground",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "dipplin":{
@@ -24957,6 +25453,7 @@ Object.entries({
 "Grass",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "ditto":{
@@ -24975,6 +25472,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "dodrio":{
@@ -24995,6 +25493,7 @@ Object.entries({
 "Ground",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "doduo":{
@@ -25015,6 +25514,7 @@ Object.entries({
 "Normal",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "dolliv":{
@@ -25034,6 +25534,7 @@ Object.entries({
 "Grass",
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "dondozo":{
@@ -25053,6 +25554,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "donphan":{
@@ -25073,6 +25575,7 @@ Object.entries({
 "Ground",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "dorsoil":{
@@ -25092,6 +25595,7 @@ Object.entries({
 "types":[
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "dottler":{
@@ -25112,6 +25616,7 @@ Object.entries({
 "Bug",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "doublade":{
@@ -25132,6 +25637,7 @@ Object.entries({
 "Steel",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "dracovish":{
@@ -25152,6 +25658,7 @@ Object.entries({
 "Water",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "dracozolt":{
@@ -25172,6 +25679,7 @@ Object.entries({
 "Electric",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "dragalge":{
@@ -25192,6 +25700,7 @@ Object.entries({
 "Poison",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "dragapult":{
@@ -25212,6 +25721,7 @@ Object.entries({
 "Dragon",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "dragonair":{
@@ -25232,6 +25742,7 @@ Object.entries({
 "Dragon",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "dragonite":{
@@ -25252,6 +25763,7 @@ Object.entries({
 "Dragon",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "drakloak":{
@@ -25272,6 +25784,7 @@ Object.entries({
 "Dragon",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "drampa":{
@@ -25292,6 +25805,7 @@ Object.entries({
 "Normal",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "drapion":{
@@ -25313,6 +25827,7 @@ Object.entries({
 "Poison",
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "drapionrejuv":{
@@ -25331,6 +25846,7 @@ Object.entries({
 "Poison",
 "Ice"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "dratini":{
@@ -25351,6 +25867,7 @@ Object.entries({
 "Dragon",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "drednaw":{
@@ -25371,6 +25888,7 @@ Object.entries({
 "Water",
 "Rock"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "dreepy":{
@@ -25391,6 +25909,7 @@ Object.entries({
 "Dragon",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "drifblim":{
@@ -25411,6 +25930,7 @@ Object.entries({
 "Ghost",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "drifloon":{
@@ -25431,6 +25951,7 @@ Object.entries({
 "Ghost",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "drizzile":{
@@ -25449,6 +25970,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "drowzee":{
@@ -25468,6 +25990,7 @@ Object.entries({
 "types":[
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "druddigon":{
@@ -25489,6 +26012,7 @@ Object.entries({
 "Dragon",
 "Rock"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "dubwool":{
@@ -25508,6 +26032,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "ducklett":{
@@ -25528,6 +26053,7 @@ Object.entries({
 "Water",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "dudunsparce":{
@@ -25547,6 +26073,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "dugtrio":{
@@ -25566,6 +26093,7 @@ Object.entries({
 "types":[
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "dugtrioalola":{
@@ -25586,6 +26114,7 @@ Object.entries({
 "Ground",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "dunsparce":{
@@ -25605,6 +26134,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "duohm":{
@@ -25625,6 +26155,7 @@ Object.entries({
 "Electric",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "duosion":{
@@ -25644,6 +26175,7 @@ Object.entries({
 "types":[
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "duraludon":{
@@ -25664,6 +26196,7 @@ Object.entries({
 "Steel",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "durant":{
@@ -25684,6 +26217,7 @@ Object.entries({
 "Bug",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "dusclops":{
@@ -25702,6 +26236,7 @@ Object.entries({
 "types":[
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "dusknoir":{
@@ -25722,6 +26257,7 @@ Object.entries({
 "Ghost",
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "duskull":{
@@ -25740,6 +26276,7 @@ Object.entries({
 "types":[
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "dustox":{
@@ -25760,6 +26297,7 @@ Object.entries({
 "Bug",
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "dwebble":{
@@ -25780,6 +26318,7 @@ Object.entries({
 "Bug",
 "Rock"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "eelektrik":{
@@ -25797,6 +26336,7 @@ Object.entries({
 "types":[
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "eelektross":{
@@ -25816,6 +26356,7 @@ Object.entries({
 "types":[
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "eevee":{
@@ -25835,6 +26376,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "eeveestarter":{
@@ -25858,6 +26400,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "eiscue":{
@@ -25875,6 +26418,7 @@ Object.entries({
 "types":[
 "Ice"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "ekans":{
@@ -25894,6 +26438,7 @@ Object.entries({
 "types":[
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "eldegoss":{
@@ -25914,6 +26459,7 @@ Object.entries({
 "Normal",
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "electabuzz":{
@@ -25933,6 +26479,7 @@ Object.entries({
 "types":[
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "electivire":{
@@ -25953,6 +26500,7 @@ Object.entries({
 "Electric",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "electrelk":{
@@ -25972,6 +26520,7 @@ Object.entries({
 "Grass",
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "electrike":{
@@ -25991,6 +26540,7 @@ Object.entries({
 "types":[
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "electrode":{
@@ -26011,6 +26561,7 @@ Object.entries({
 "Electric",
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "electrodehisui":{
@@ -26031,6 +26582,7 @@ Object.entries({
 "Electric",
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "elekid":{
@@ -26049,6 +26601,7 @@ Object.entries({
 "types":[
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "elgyem":{
@@ -26068,6 +26621,7 @@ Object.entries({
 "types":[
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "embirch":{
@@ -26088,6 +26642,7 @@ Object.entries({
 "Fire",
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "emboar":{
@@ -26108,6 +26663,7 @@ Object.entries({
 "Fire",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "emboaralt":{
@@ -26127,6 +26683,49 @@ Object.entries({
 "types":[
 "Fire",
 "Fighting"],
+
+"passives":[],
+"replaceAbilities":true
+},
+"emboarmega":{
+"abilities":{
+"0":"Burning Ego"
+},
+"baseStats":{
+"hp":110,
+"atk":150,
+"def":93,
+"spa":85,
+"spd":115,
+"spe":75
+},
+"types":[
+"Fire",
+"Fighting"],
+
+"passives":[
+"proficient"],
+
+"replaceAbilities":true
+},
+"emboarmegareborn":{
+"abilities":{
+"0":"Burning Ego"
+},
+"baseStats":{
+"hp":110,
+"atk":150,
+"def":93,
+"spa":85,
+"spd":115,
+"spe":75
+},
+"types":[
+"Fire",
+"Fighting"],
+
+"passives":[
+"proficient"],
 
 "replaceAbilities":true
 },
@@ -26148,6 +26747,7 @@ Object.entries({
 "Electric",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "empoleon":{
@@ -26168,6 +26768,28 @@ Object.entries({
 "Water",
 "Steel"],
 
+"passives":[],
+"replaceAbilities":true
+},
+"empoleonmega":{
+"abilities":{
+"0":"Emperor's Resolve"
+},
+"baseStats":{
+"hp":84,
+"atk":116,
+"def":118,
+"spa":126,
+"spd":121,
+"spe":70
+},
+"types":[
+"Water",
+"Steel"],
+
+"passives":[
+"proficient"],
+
 "replaceAbilities":true
 },
 "enamorus":{
@@ -26187,6 +26809,7 @@ Object.entries({
 "Fairy",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "enamorustherian":{
@@ -26205,6 +26828,7 @@ Object.entries({
 "Fairy",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "entei":{
@@ -26223,6 +26847,7 @@ Object.entries({
 "types":[
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "equilibra":{
@@ -26243,6 +26868,7 @@ Object.entries({
 "Steel",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "escavalier":{
@@ -26263,6 +26889,7 @@ Object.entries({
 "Bug",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "espathra":{
@@ -26282,6 +26909,7 @@ Object.entries({
 "types":[
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "espeon":{
@@ -26303,6 +26931,7 @@ Object.entries({
 "types":[
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "espurr":{
@@ -26322,6 +26951,7 @@ Object.entries({
 "types":[
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "eternatus":{
@@ -26340,6 +26970,7 @@ Object.entries({
 "Poison",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "excadrill":{
@@ -26360,6 +26991,7 @@ Object.entries({
 "Ground",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "exeggcute":{
@@ -26379,6 +27011,7 @@ Object.entries({
 "Grass",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "exeggutor":{
@@ -26399,6 +27032,7 @@ Object.entries({
 "Grass",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "exeggutoralola":{
@@ -26419,6 +27053,7 @@ Object.entries({
 "Grass",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "exploud":{
@@ -26439,6 +27074,7 @@ Object.entries({
 "Normal",
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "falinks":{
@@ -26458,6 +27094,7 @@ Object.entries({
 "types":[
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "farfetchd":{
@@ -26478,6 +27115,7 @@ Object.entries({
 "Normal",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "farfetchdgalar":{
@@ -26496,6 +27134,7 @@ Object.entries({
 "types":[
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "farigiraf":{
@@ -26516,6 +27155,7 @@ Object.entries({
 "Normal",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "fawnifer":{
@@ -26534,6 +27174,7 @@ Object.entries({
 "types":[
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "fearow":{
@@ -26553,6 +27194,7 @@ Object.entries({
 "Normal",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "feebas":{
@@ -26572,6 +27214,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "fennekin":{
@@ -26590,6 +27233,7 @@ Object.entries({
 "types":[
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "feraligatr":{
@@ -26608,7 +27252,50 @@ Object.entries({
 },
 "types":[
 "Water",
+"Dark"],
+
+"passives":[],
+"replaceAbilities":true
+},
+"feraligatrgmax":{
+"abilities":{
+"0":"Tidal Jaw"
+},
+"baseStats":{
+"hp":150,
+"atk":109,
+"def":100,
+"spa":59,
+"spd":93,
+"spe":78
+},
+"types":[
+"Water",
+"Dark"],
+
+"passives":[
+"proficient"],
+
+"replaceAbilities":true
+},
+"feraligatrmega":{
+"abilities":{
+"0":"Draconic Force"
+},
+"baseStats":{
+"hp":100,
+"atk":164,
+"def":125,
+"spa":59,
+"spd":108,
+"spe":83
+},
+"types":[
+"Water",
 "Dragon"],
+
+"passives":[
+"proficient"],
 
 "replaceAbilities":true
 },
@@ -26628,6 +27315,7 @@ Object.entries({
 "Grass",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "ferrothorn":{
@@ -26648,6 +27336,7 @@ Object.entries({
 "Grass",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "fezandipiti":{
@@ -26667,6 +27356,7 @@ Object.entries({
 "Poison",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "fidgit":{
@@ -26687,6 +27377,7 @@ Object.entries({
 "Poison",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "fidough":{
@@ -26705,6 +27396,7 @@ Object.entries({
 "types":[
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "finizen":{
@@ -26722,6 +27414,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "finneon":{
@@ -26741,6 +27434,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "flaaffy":{
@@ -26760,6 +27454,7 @@ Object.entries({
 "types":[
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "flabebe":{
@@ -26778,6 +27473,7 @@ Object.entries({
 "types":[
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "flamigo":{
@@ -26798,6 +27494,7 @@ Object.entries({
 "Flying",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "flapple":{
@@ -26818,6 +27515,7 @@ Object.entries({
 "Grass",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "flarelm":{
@@ -26838,6 +27536,7 @@ Object.entries({
 "Fire",
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "flareon":{
@@ -26857,6 +27556,7 @@ Object.entries({
 "types":[
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "fletchinder":{
@@ -26876,6 +27576,7 @@ Object.entries({
 "Fire",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "fletchling":{
@@ -26895,6 +27596,7 @@ Object.entries({
 "Normal",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "flittle":{
@@ -26914,6 +27616,7 @@ Object.entries({
 "types":[
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "floatoy":{
@@ -26933,6 +27636,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "floatzel":{
@@ -26953,6 +27657,7 @@ Object.entries({
 "Water",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "floette":{
@@ -26971,6 +27676,7 @@ Object.entries({
 "types":[
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "floetteeternal":{
@@ -26990,6 +27696,7 @@ Object.entries({
 "types":[
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "floragato":{
@@ -27008,6 +27715,7 @@ Object.entries({
 "types":[
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "florges":{
@@ -27027,6 +27735,7 @@ Object.entries({
 "types":[
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "fluttermane":{
@@ -27045,11 +27754,12 @@ Object.entries({
 "Ghost",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "flygon":{
 "abilities":{
-"0":"Sandshroud",
+"0":"Void Drift",
 "1":"Resonance Force",
 "H":"Sandstream"
 },
@@ -27065,6 +27775,7 @@ Object.entries({
 "Ground",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "fomantis":{
@@ -27083,6 +27794,7 @@ Object.entries({
 "types":[
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "foongus":{
@@ -27102,6 +27814,7 @@ Object.entries({
 "Grass",
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "forretress":{
@@ -27122,6 +27835,7 @@ Object.entries({
 "Bug",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "fraxure":{
@@ -27141,6 +27855,7 @@ Object.entries({
 "types":[
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "frigibax":{
@@ -27160,6 +27875,7 @@ Object.entries({
 "Dragon",
 "Ice"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "frillish":{
@@ -27180,6 +27896,7 @@ Object.entries({
 "Water",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "froakie":{
@@ -27198,6 +27915,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "frogadier":{
@@ -27216,6 +27934,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "froslass":{
@@ -27236,6 +27955,7 @@ Object.entries({
 "Ice",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "frosmoth":{
@@ -27256,6 +27976,7 @@ Object.entries({
 "Ice",
 "Bug"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "fuecoco":{
@@ -27274,6 +27995,7 @@ Object.entries({
 "types":[
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "furfrou":{
@@ -27293,6 +28015,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "furret":{
@@ -27312,6 +28035,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "gabite":{
@@ -27331,6 +28055,7 @@ Object.entries({
 "Dragon",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "gallade":{
@@ -27351,6 +28076,7 @@ Object.entries({
 "Psychic",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "galvantula":{
@@ -27371,6 +28097,7 @@ Object.entries({
 "Bug",
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "garbodor":{
@@ -27391,13 +28118,14 @@ Object.entries({
 "Poison",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "garchomp":{
 "abilities":{
 "0":"Rough Skin",
 "1":"Supreme Overlord",
-"H":"Faultline",
+"H":"Void Wrath",
 "S":"Battle Bond"
 },
 "baseStats":{
@@ -27412,6 +28140,7 @@ Object.entries({
 "Dragon",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "gardevoir":{
@@ -27432,6 +28161,26 @@ Object.entries({
 "Psychic",
 "Fairy"],
 
+"passives":[],
+"replaceAbilities":true
+},
+"gardevoirmega":{
+"abilities":{
+"0":"Void Voice"
+},
+"baseStats":{
+"hp":75,
+"atk":75,
+"def":80,
+"spa":165,
+"spd":135,
+"spe":110
+},
+"types":[
+"Psychic",
+"Fairy"],
+
+"passives":[],
 "replaceAbilities":true
 },
 "garganacl":{
@@ -27451,6 +28200,7 @@ Object.entries({
 "types":[
 "Rock"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "gastly":{
@@ -27471,6 +28221,7 @@ Object.entries({
 "Ghost",
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "gastrodon":{
@@ -27491,6 +28242,7 @@ Object.entries({
 "Water",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "gastrodonaevian":{
@@ -27511,6 +28263,7 @@ Object.entries({
 "Ground",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "gastrodoneast":{
@@ -27531,6 +28284,7 @@ Object.entries({
 "Water",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "gastrodoneastaevian":{
@@ -27551,6 +28305,7 @@ Object.entries({
 "Ground",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "genesect":{
@@ -27569,6 +28324,7 @@ Object.entries({
 "Bug",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "genesectburn":{
@@ -27587,6 +28343,7 @@ Object.entries({
 "Bug",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "genesectchill":{
@@ -27605,6 +28362,7 @@ Object.entries({
 "Bug",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "genesectdouse":{
@@ -27623,6 +28381,7 @@ Object.entries({
 "Bug",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "genesectshock":{
@@ -27641,6 +28400,7 @@ Object.entries({
 "Bug",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "gengar":{
@@ -27661,6 +28421,7 @@ Object.entries({
 "Ghost",
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "geodude":{
@@ -27681,6 +28442,7 @@ Object.entries({
 "Rock",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "geodudealola":{
@@ -27701,6 +28463,7 @@ Object.entries({
 "Rock",
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "gholdengo":{
@@ -27719,6 +28482,7 @@ Object.entries({
 "Steel",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "gible":{
@@ -27738,6 +28502,7 @@ Object.entries({
 "Dragon",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "gimmighoul":{
@@ -27755,6 +28520,7 @@ Object.entries({
 "types":[
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "girafarig":{
@@ -27775,6 +28541,7 @@ Object.entries({
 "Normal",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "giratina":{
@@ -27794,6 +28561,7 @@ Object.entries({
 "Ghost",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "giratinaorigin":{
@@ -27812,6 +28580,7 @@ Object.entries({
 "Ghost",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "glaceon":{
@@ -27832,6 +28601,7 @@ Object.entries({
 "types":[
 "Ice"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "glalie":{
@@ -27852,6 +28622,7 @@ Object.entries({
 "Ice",
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "glameow":{
@@ -27871,6 +28642,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "glastrier":{
@@ -27888,6 +28660,7 @@ Object.entries({
 "types":[
 "Ice"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "gligar":{
@@ -27908,6 +28681,7 @@ Object.entries({
 "Ground",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "glimmet":{
@@ -27928,6 +28702,7 @@ Object.entries({
 "Rock",
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "glimmora":{
@@ -27947,6 +28722,7 @@ Object.entries({
 "Rock",
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "glimmoraaevian":{
@@ -27967,6 +28743,7 @@ Object.entries({
 "Steel",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "gliscor":{
@@ -27987,6 +28764,7 @@ Object.entries({
 "Ground",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "gloom":{
@@ -28006,6 +28784,7 @@ Object.entries({
 "Grass",
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "gogoat":{
@@ -28026,6 +28805,7 @@ Object.entries({
 "Grass",
 "Rock"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "golbat":{
@@ -28045,6 +28825,7 @@ Object.entries({
 "Poison",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "goldeen":{
@@ -28064,6 +28845,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "golduck":{
@@ -28084,6 +28866,7 @@ Object.entries({
 "Water",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "golem":{
@@ -28104,6 +28887,7 @@ Object.entries({
 "Rock",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "golemalola":{
@@ -28124,6 +28908,7 @@ Object.entries({
 "Rock",
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "golett":{
@@ -28144,6 +28929,7 @@ Object.entries({
 "Ground",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "golisopod":{
@@ -28164,6 +28950,7 @@ Object.entries({
 "Bug",
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "golisopodaevian":{
@@ -28184,6 +28971,7 @@ Object.entries({
 "Bug",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "golurk":{
@@ -28204,6 +28992,7 @@ Object.entries({
 "Ground",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "goodra":{
@@ -28224,6 +29013,7 @@ Object.entries({
 "Dragon",
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "goodrahisui":{
@@ -28244,6 +29034,7 @@ Object.entries({
 "Steel",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "goomy":{
@@ -28263,6 +29054,7 @@ Object.entries({
 "types":[
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "gorebyss":{
@@ -28283,6 +29075,7 @@ Object.entries({
 "Water",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "gossifleur":{
@@ -28302,6 +29095,7 @@ Object.entries({
 "types":[
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "gothita":{
@@ -28321,6 +29115,7 @@ Object.entries({
 "types":[
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "gothitelle":{
@@ -28340,6 +29135,7 @@ Object.entries({
 "types":[
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "gothorita":{
@@ -28359,6 +29155,7 @@ Object.entries({
 "types":[
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "gougingfire":{
@@ -28377,6 +29174,7 @@ Object.entries({
 "Fire",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "gourgeist":{
@@ -28397,6 +29195,7 @@ Object.entries({
 "Ghost",
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "grafaiai":{
@@ -28417,6 +29216,7 @@ Object.entries({
 "Poison",
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "granbull":{
@@ -28437,6 +29237,7 @@ Object.entries({
 "Fairy",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "grapploct":{
@@ -28457,6 +29258,7 @@ Object.entries({
 "Fighting",
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "graveler":{
@@ -28477,6 +29279,7 @@ Object.entries({
 "Rock",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "graveleralola":{
@@ -28497,6 +29300,7 @@ Object.entries({
 "Rock",
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "greattusk":{
@@ -28515,6 +29319,7 @@ Object.entries({
 "Ground",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "greavard":{
@@ -28533,6 +29338,7 @@ Object.entries({
 "types":[
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "greedent":{
@@ -28552,6 +29358,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "greninja":{
@@ -28573,6 +29380,28 @@ Object.entries({
 "Water",
 "Dark"],
 
+"passives":[],
+"replaceAbilities":true
+},
+"greninjaash":{
+"abilities":{
+"0":"Shadow Bond"
+},
+"baseStats":{
+"hp":72,
+"atk":150,
+"def":67,
+"spa":153,
+"spd":71,
+"spe":132
+},
+"types":[
+"Water",
+"Dark"],
+
+"passives":[
+"proficient"],
+
 "replaceAbilities":true
 },
 "greninjabond":{
@@ -28590,6 +29419,28 @@ Object.entries({
 "types":[
 "Water",
 "Dark"],
+
+"passives":[],
+"replaceAbilities":true
+},
+"greninjamega":{
+"abilities":{
+"0":"Shadow Current"
+},
+"baseStats":{
+"hp":72,
+"atk":130,
+"def":77,
+"spa":133,
+"spd":81,
+"spe":142
+},
+"types":[
+"Water",
+"Dark"],
+
+"passives":[
+"proficient"],
 
 "replaceAbilities":true
 },
@@ -28610,6 +29461,7 @@ Object.entries({
 "types":[
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "grimeralola":{
@@ -28630,6 +29482,7 @@ Object.entries({
 "Poison",
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "grimmsnarl":{
@@ -28650,6 +29503,7 @@ Object.entries({
 "Dark",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "grookey":{
@@ -28668,6 +29522,7 @@ Object.entries({
 "types":[
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "grotle":{
@@ -28686,6 +29541,7 @@ Object.entries({
 "types":[
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "groudon":{
@@ -28703,6 +29559,7 @@ Object.entries({
 "types":[
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "grovyle":{
@@ -28721,6 +29578,7 @@ Object.entries({
 "types":[
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "growlithe":{
@@ -28740,6 +29598,7 @@ Object.entries({
 "types":[
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "growlithehisui":{
@@ -28760,6 +29619,7 @@ Object.entries({
 "Fire",
 "Rock"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "grubbin":{
@@ -28777,6 +29637,7 @@ Object.entries({
 "types":[
 "Bug"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "grumpig":{
@@ -28796,6 +29657,7 @@ Object.entries({
 "types":[
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "gulpin":{
@@ -28815,6 +29677,7 @@ Object.entries({
 "types":[
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "gumshoos":{
@@ -28834,6 +29697,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "gumshoostotem":{
@@ -28851,6 +29715,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "guzzlord":{
@@ -28869,6 +29734,7 @@ Object.entries({
 "Dark",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "gyarados":{
@@ -28889,6 +29755,7 @@ Object.entries({
 "Water",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "hakamoo":{
@@ -28909,6 +29776,7 @@ Object.entries({
 "Dragon",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "happiny":{
@@ -28928,6 +29796,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "hariyama":{
@@ -28947,6 +29816,7 @@ Object.entries({
 "types":[
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "hatenna":{
@@ -28966,6 +29836,7 @@ Object.entries({
 "types":[
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "hatterene":{
@@ -28986,6 +29857,7 @@ Object.entries({
 "Psychic",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "hattrem":{
@@ -29005,6 +29877,7 @@ Object.entries({
 "types":[
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "haunter":{
@@ -29025,6 +29898,7 @@ Object.entries({
 "Ghost",
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "hawlucha":{
@@ -29045,6 +29919,7 @@ Object.entries({
 "Fighting",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "haxorus":{
@@ -29065,6 +29940,7 @@ Object.entries({
 "Dragon",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "heatmor":{
@@ -29085,6 +29961,7 @@ Object.entries({
 "Fire",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "heatran":{
@@ -29104,6 +29981,7 @@ Object.entries({
 "Fire",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "heliolisk":{
@@ -29124,6 +30002,7 @@ Object.entries({
 "Electric",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "helioptile":{
@@ -29144,6 +30023,7 @@ Object.entries({
 "Electric",
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "hemogoblin":{
@@ -29164,6 +30044,7 @@ Object.entries({
 "Fairy",
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "heracross":{
@@ -29184,6 +30065,7 @@ Object.entries({
 "Bug",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "herdier":{
@@ -29203,6 +30085,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "hippopotas":{
@@ -29222,6 +30105,7 @@ Object.entries({
 "types":[
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "hippowdon":{
@@ -29241,6 +30125,7 @@ Object.entries({
 "types":[
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "hitmonchan":{
@@ -29261,6 +30146,7 @@ Object.entries({
 "Fighting",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "hitmonlee":{
@@ -29281,6 +30167,7 @@ Object.entries({
 "Fighting",
 "Rock"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "hitmontop":{
@@ -29301,12 +30188,13 @@ Object.entries({
 "Fighting",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "honchkrow":{
 "abilities":{
 "0":"Pressure",
-"1":"Wicked Command",
+"1":"Void Command",
 "H":"Supreme Overlord"
 },
 "baseStats":{
@@ -29321,6 +30209,7 @@ Object.entries({
 "Dark",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "honedge":{
@@ -29339,6 +30228,7 @@ Object.entries({
 "Steel",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "hooh":{
@@ -29358,6 +30248,7 @@ Object.entries({
 "Fire",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "hoopa":{
@@ -29376,6 +30267,7 @@ Object.entries({
 "Psychic",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "hoopaunbound":{
@@ -29394,6 +30286,7 @@ Object.entries({
 "Psychic",
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "hoothoot":{
@@ -29414,6 +30307,7 @@ Object.entries({
 "Normal",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "hoppip":{
@@ -29434,6 +30328,7 @@ Object.entries({
 "Grass",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "horsea":{
@@ -29453,6 +30348,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "houndoom":{
@@ -29473,6 +30369,7 @@ Object.entries({
 "Dark",
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "houndoommega":{
@@ -29491,6 +30388,7 @@ Object.entries({
 "Dark",
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "houndour":{
@@ -29511,6 +30409,7 @@ Object.entries({
 "Dark",
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "houndstone":{
@@ -29531,6 +30430,7 @@ Object.entries({
 "Ghost",
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "huntail":{
@@ -29551,6 +30451,7 @@ Object.entries({
 "Water",
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "hydrapple":{
@@ -29571,13 +30472,14 @@ Object.entries({
 "Grass",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "hydreigon":{
 "abilities":{
 "0":"Dread Wings",
 "1":"Dark Dominion",
-"H":"Hydra Tyrant"
+"H":"Void Tyrant"
 },
 "baseStats":{
 "hp":92,
@@ -29591,6 +30493,7 @@ Object.entries({
 "Dark",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "hypno":{
@@ -29611,6 +30514,7 @@ Object.entries({
 "Psychic",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "igglybuff":{
@@ -29631,6 +30535,7 @@ Object.entries({
 "Normal",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "illumise":{
@@ -29651,6 +30556,7 @@ Object.entries({
 "Bug",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "impidimp":{
@@ -29671,6 +30577,7 @@ Object.entries({
 "Dark",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "incineroar":{
@@ -29691,6 +30598,28 @@ Object.entries({
 "Fire",
 "Dark"],
 
+"passives":[],
+"replaceAbilities":true
+},
+"incineroaralt":{
+"abilities":{
+"0":"Ultra Ego",
+"1":"Ringmaster",
+"H":"Intimidate"
+},
+"baseStats":{
+"hp":95,
+"atk":115,
+"def":90,
+"spa":85,
+"spd":90,
+"spe":60
+},
+"types":[
+"Fire",
+"Dark"],
+
+"passives":[],
 "replaceAbilities":true
 },
 "indeedee":{
@@ -29711,6 +30640,7 @@ Object.entries({
 "Psychic",
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "indeedeef":{
@@ -29731,6 +30661,7 @@ Object.entries({
 "Psychic",
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "infernape":{
@@ -29750,6 +30681,28 @@ Object.entries({
 "types":[
 "Fire",
 "Fighting"],
+
+"passives":[],
+"replaceAbilities":true
+},
+"infernapemega":{
+"abilities":{
+"0":"Burning Spirit"
+},
+"baseStats":{
+"hp":77,
+"atk":134,
+"def":91,
+"spa":124,
+"spd":81,
+"spe":128
+},
+"types":[
+"Fire",
+"Fighting"],
+
+"passives":[
+"proficient"],
 
 "replaceAbilities":true
 },
@@ -29771,6 +30724,7 @@ Object.entries({
 "Dark",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "inteleon":{
@@ -29790,6 +30744,27 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
+"replaceAbilities":true
+},
+"inteleongmax":{
+"abilities":{
+"0":"High Noon"
+},
+"baseStats":{
+"hp":105,
+"atk":85,
+"def":65,
+"spa":125,
+"spd":65,
+"spe":120
+},
+"types":[
+"Water"],
+
+"passives":[
+"proficient"],
+
 "replaceAbilities":true
 },
 "ironboulder":{
@@ -29808,6 +30783,7 @@ Object.entries({
 "Rock",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "ironbundle":{
@@ -29826,6 +30802,7 @@ Object.entries({
 "Ice",
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "ironcrown":{
@@ -29844,6 +30821,7 @@ Object.entries({
 "Steel",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "ironhands":{
@@ -29862,6 +30840,7 @@ Object.entries({
 "Fighting",
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "ironjugulis":{
@@ -29880,6 +30859,7 @@ Object.entries({
 "Dark",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "ironleaves":{
@@ -29898,6 +30878,7 @@ Object.entries({
 "Grass",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "ironmoth":{
@@ -29916,6 +30897,7 @@ Object.entries({
 "Fire",
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "ironthorns":{
@@ -29934,6 +30916,7 @@ Object.entries({
 "Rock",
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "irontreads":{
@@ -29952,6 +30935,7 @@ Object.entries({
 "Ground",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "ironvaliant":{
@@ -29970,6 +30954,7 @@ Object.entries({
 "Fairy",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "ivysaur":{
@@ -29989,6 +30974,7 @@ Object.entries({
 "Grass",
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "jangmoo":{
@@ -30008,6 +30994,7 @@ Object.entries({
 "types":[
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "jellicent":{
@@ -30028,6 +31015,7 @@ Object.entries({
 "Water",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "jigglypuff":{
@@ -30048,6 +31036,7 @@ Object.entries({
 "Normal",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "jirachi":{
@@ -30066,6 +31055,7 @@ Object.entries({
 "Steel",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "jolteon":{
@@ -30085,6 +31075,7 @@ Object.entries({
 "types":[
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "joltik":{
@@ -30105,6 +31096,7 @@ Object.entries({
 "Bug",
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "jumbao":{
@@ -30125,6 +31117,7 @@ Object.entries({
 "Grass",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "jumpluff":{
@@ -30145,6 +31138,7 @@ Object.entries({
 "Grass",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "justyke":{
@@ -30165,6 +31159,7 @@ Object.entries({
 "Steel",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "jynx":{
@@ -30185,6 +31180,7 @@ Object.entries({
 "Ice",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "kabuto":{
@@ -30205,6 +31201,7 @@ Object.entries({
 "Rock",
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "kabutops":{
@@ -30225,6 +31222,7 @@ Object.entries({
 "Rock",
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "kadabra":{
@@ -30245,6 +31243,7 @@ Object.entries({
 "Psychic",
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "kakuna":{
@@ -30263,6 +31262,7 @@ Object.entries({
 "Bug",
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "kangaskhan":{
@@ -30282,6 +31282,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "karrablast":{
@@ -30301,6 +31302,7 @@ Object.entries({
 "types":[
 "Bug"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "kartana":{
@@ -30319,6 +31321,7 @@ Object.entries({
 "Grass",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "kecleon":{
@@ -30339,6 +31342,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "keldeo":{
@@ -30358,6 +31362,7 @@ Object.entries({
 "Water",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "keldeoresolute":{
@@ -30376,6 +31381,7 @@ Object.entries({
 "Water",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "kerfluffle":{
@@ -30396,6 +31402,7 @@ Object.entries({
 "Fairy",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "kilowattrel":{
@@ -30416,6 +31423,7 @@ Object.entries({
 "Electric",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "kingambit":{
@@ -30436,6 +31444,7 @@ Object.entries({
 "Dark",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "kingdra":{
@@ -30456,6 +31465,7 @@ Object.entries({
 "Water",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "kingler":{
@@ -30476,6 +31486,7 @@ Object.entries({
 "Water",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "kirlia":{
@@ -30496,6 +31507,7 @@ Object.entries({
 "Psychic",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "kitsunoh":{
@@ -30516,6 +31528,7 @@ Object.entries({
 "Ghost",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "klang":{
@@ -30535,6 +31548,7 @@ Object.entries({
 "types":[
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "klawf":{
@@ -30554,6 +31568,7 @@ Object.entries({
 "types":[
 "Rock"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "kleavor":{
@@ -30574,6 +31589,7 @@ Object.entries({
 "Bug",
 "Rock"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "klefki":{
@@ -30594,6 +31610,7 @@ Object.entries({
 "Steel",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "klink":{
@@ -30613,6 +31630,7 @@ Object.entries({
 "types":[
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "klinklang":{
@@ -30633,6 +31651,7 @@ Object.entries({
 "Steel",
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "koffing":{
@@ -30652,6 +31671,7 @@ Object.entries({
 "types":[
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "komala":{
@@ -30669,6 +31689,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "kommoo":{
@@ -30689,6 +31710,7 @@ Object.entries({
 "Dragon",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "kommoototem":{
@@ -30707,6 +31729,7 @@ Object.entries({
 "Dragon",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "koraidon":{
@@ -30725,6 +31748,7 @@ Object.entries({
 "Fighting",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "krabby":{
@@ -30744,6 +31768,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "kricketot":{
@@ -30762,6 +31787,7 @@ Object.entries({
 "types":[
 "Bug"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "kricketune":{
@@ -30781,6 +31807,7 @@ Object.entries({
 "types":[
 "Bug"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "krilowatt":{
@@ -30801,6 +31828,7 @@ Object.entries({
 "Electric",
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "krokorok":{
@@ -30821,6 +31849,7 @@ Object.entries({
 "Ground",
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "krookodile":{
@@ -30841,6 +31870,7 @@ Object.entries({
 "Ground",
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "kubfu":{
@@ -30858,6 +31888,7 @@ Object.entries({
 "types":[
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "kyogre":{
@@ -30875,6 +31906,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "kyurem":{
@@ -30893,6 +31925,7 @@ Object.entries({
 "Dragon",
 "Ice"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "kyuremblack":{
@@ -30911,6 +31944,7 @@ Object.entries({
 "Dragon",
 "Ice"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "kyuremwhite":{
@@ -30929,6 +31963,7 @@ Object.entries({
 "Dragon",
 "Ice"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "lairon":{
@@ -30949,6 +31984,7 @@ Object.entries({
 "Steel",
 "Rock"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "lampent":{
@@ -30969,6 +32005,7 @@ Object.entries({
 "Ghost",
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "landorus":{
@@ -30989,6 +32026,7 @@ Object.entries({
 "Ground",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "landorustherian":{
@@ -31007,6 +32045,7 @@ Object.entries({
 "Ground",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "lanturn":{
@@ -31027,6 +32066,7 @@ Object.entries({
 "Water",
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "lapras":{
@@ -31047,6 +32087,7 @@ Object.entries({
 "Water",
 "Ice"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "laprasaevian":{
@@ -31067,6 +32108,7 @@ Object.entries({
 "Rock",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "larvesta":{
@@ -31086,6 +32128,7 @@ Object.entries({
 "Bug",
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "larvitar":{
@@ -31105,6 +32148,7 @@ Object.entries({
 "Rock",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "latias":{
@@ -31123,6 +32167,7 @@ Object.entries({
 "Dragon",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "latios":{
@@ -31141,6 +32186,7 @@ Object.entries({
 "Dragon",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "leafeon":{
@@ -31160,6 +32206,7 @@ Object.entries({
 "types":[
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "leavanny":{
@@ -31180,6 +32227,7 @@ Object.entries({
 "Bug",
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "lechonk":{
@@ -31199,6 +32247,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "ledian":{
@@ -31219,6 +32268,7 @@ Object.entries({
 "Bug",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "ledyba":{
@@ -31239,6 +32289,7 @@ Object.entries({
 "Bug",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "lickilicky":{
@@ -31258,6 +32309,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "lickitung":{
@@ -31277,6 +32329,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "liepard":{
@@ -31296,6 +32349,7 @@ Object.entries({
 "types":[
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "lileep":{
@@ -31315,6 +32369,7 @@ Object.entries({
 "Rock",
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "lilligant":{
@@ -31335,6 +32390,7 @@ Object.entries({
 "Grass",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "lilliganthisui":{
@@ -31355,6 +32411,7 @@ Object.entries({
 "Grass",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "lillipup":{
@@ -31374,6 +32431,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "linoone":{
@@ -31393,6 +32451,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "linoonegalar":{
@@ -31413,6 +32472,7 @@ Object.entries({
 "Dark",
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "litleo":{
@@ -31433,6 +32493,7 @@ Object.entries({
 "Fire",
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "litten":{
@@ -31451,6 +32512,7 @@ Object.entries({
 "types":[
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "litwick":{
@@ -31471,6 +32533,7 @@ Object.entries({
 "Ghost",
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "lokix":{
@@ -31491,6 +32554,7 @@ Object.entries({
 "Bug",
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "lombre":{
@@ -31511,6 +32575,7 @@ Object.entries({
 "Water",
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "lopunny":{
@@ -31530,6 +32595,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "lotad":{
@@ -31550,6 +32616,7 @@ Object.entries({
 "Water",
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "loudred":{
@@ -31569,6 +32636,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "lucario":{
@@ -31589,6 +32657,7 @@ Object.entries({
 "Fighting",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "ludicolo":{
@@ -31609,6 +32678,7 @@ Object.entries({
 "Water",
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "lugia":{
@@ -31628,6 +32698,7 @@ Object.entries({
 "Psychic",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "lumineon":{
@@ -31648,6 +32719,7 @@ Object.entries({
 "Water",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "lunala":{
@@ -31666,6 +32738,7 @@ Object.entries({
 "Psychic",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "lunatone":{
@@ -31686,6 +32759,7 @@ Object.entries({
 "Rock",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "lurantis":{
@@ -31706,6 +32780,7 @@ Object.entries({
 "Grass",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "lurantistotem":{
@@ -31723,6 +32798,7 @@ Object.entries({
 "types":[
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "luvdisc":{
@@ -31743,6 +32819,7 @@ Object.entries({
 "Water",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "luxio":{
@@ -31762,6 +32839,7 @@ Object.entries({
 "types":[
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "luxray":{
@@ -31782,6 +32860,7 @@ Object.entries({
 "Electric",
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "lycanroc":{
@@ -31802,6 +32881,7 @@ Object.entries({
 "Rock",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "lycanrocdusk":{
@@ -31822,6 +32902,7 @@ Object.entries({
 "Rock",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "lycanrocmidnight":{
@@ -31842,6 +32923,7 @@ Object.entries({
 "Rock",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "mabosstiff":{
@@ -31862,6 +32944,7 @@ Object.entries({
 "Dark",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "machamp":{
@@ -31882,6 +32965,7 @@ Object.entries({
 "Fighting",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "machoke":{
@@ -31901,6 +32985,7 @@ Object.entries({
 "types":[
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "machop":{
@@ -31920,6 +33005,7 @@ Object.entries({
 "types":[
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "magby":{
@@ -31939,6 +33025,7 @@ Object.entries({
 "types":[
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "magcargo":{
@@ -31959,6 +33046,7 @@ Object.entries({
 "Fire",
 "Rock"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "magearna":{
@@ -31977,6 +33065,7 @@ Object.entries({
 "Steel",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "magearnaoriginal":{
@@ -31995,6 +33084,7 @@ Object.entries({
 "Steel",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "magikarp":{
@@ -32013,6 +33103,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "magmar":{
@@ -32032,6 +33123,7 @@ Object.entries({
 "types":[
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "magmortar":{
@@ -32052,6 +33144,7 @@ Object.entries({
 "Fire",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "magnemite":{
@@ -32072,6 +33165,7 @@ Object.entries({
 "Electric",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "magneton":{
@@ -32092,6 +33186,7 @@ Object.entries({
 "Electric",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "magnezone":{
@@ -32112,6 +33207,7 @@ Object.entries({
 "Electric",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "magnezonepulse":{
@@ -32130,6 +33226,7 @@ Object.entries({
 "Electric",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "makuhita":{
@@ -32149,6 +33246,7 @@ Object.entries({
 "types":[
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "malaconda":{
@@ -32169,6 +33267,7 @@ Object.entries({
 "Dark",
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "malamar":{
@@ -32189,6 +33288,7 @@ Object.entries({
 "Dark",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "mamoswine":{
@@ -32209,6 +33309,7 @@ Object.entries({
 "Ice",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "manaphy":{
@@ -32226,6 +33327,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "mandibuzz":{
@@ -32246,6 +33348,7 @@ Object.entries({
 "Dark",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "manectric":{
@@ -32265,6 +33368,7 @@ Object.entries({
 "types":[
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "mankey":{
@@ -32284,6 +33388,7 @@ Object.entries({
 "types":[
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "mantine":{
@@ -32304,6 +33409,7 @@ Object.entries({
 "Water",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "mantyke":{
@@ -32324,6 +33430,7 @@ Object.entries({
 "Water",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "maractus":{
@@ -32344,6 +33451,7 @@ Object.entries({
 "Grass",
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "mareanie":{
@@ -32364,6 +33472,7 @@ Object.entries({
 "Poison",
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "mareep":{
@@ -32383,6 +33492,7 @@ Object.entries({
 "types":[
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "marill":{
@@ -32403,6 +33513,7 @@ Object.entries({
 "Water",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "marowak":{
@@ -32423,6 +33534,7 @@ Object.entries({
 "Ground",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "marowakalola":{
@@ -32443,6 +33555,7 @@ Object.entries({
 "Fire",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "marowakalolatotem":{
@@ -32461,6 +33574,7 @@ Object.entries({
 "Fire",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "marshadow":{
@@ -32479,6 +33593,7 @@ Object.entries({
 "Fighting",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "marshtomp":{
@@ -32498,6 +33613,7 @@ Object.entries({
 "Water",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "maschiff":{
@@ -32517,6 +33633,7 @@ Object.entries({
 "types":[
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "masquerain":{
@@ -32537,6 +33654,7 @@ Object.entries({
 "Bug",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "maushold":{
@@ -32556,6 +33674,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "mawile":{
@@ -32576,6 +33695,7 @@ Object.entries({
 "Steel",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "medicham":{
@@ -32596,6 +33716,7 @@ Object.entries({
 "Fighting",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "meditite":{
@@ -32615,6 +33736,7 @@ Object.entries({
 "Fighting",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "meganium":{
@@ -32635,6 +33757,49 @@ Object.entries({
 "Grass",
 "Fairy"],
 
+"passives":[],
+"replaceAbilities":true
+},
+"meganiummega":{
+"abilities":{
+"0":"Blooming Sun"
+},
+"baseStats":{
+"hp":80,
+"atk":92,
+"def":115,
+"spa":143,
+"spd":115,
+"spe":80
+},
+"types":[
+"Grass",
+"Fairy"],
+
+"passives":[
+"proficient"],
+
+"replaceAbilities":true
+},
+"meganiummegay":{
+"abilities":{
+"0":"Blooming Sun"
+},
+"baseStats":{
+"hp":80,
+"atk":82,
+"def":130,
+"spa":113,
+"spd":130,
+"spe":90
+},
+"types":[
+"Grass",
+"Fire"],
+
+"passives":[
+"proficient"],
+
 "replaceAbilities":true
 },
 "melmetal":{
@@ -32652,6 +33817,7 @@ Object.entries({
 "types":[
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "meloetta":{
@@ -32670,6 +33836,7 @@ Object.entries({
 "Normal",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "meltan":{
@@ -32687,6 +33854,7 @@ Object.entries({
 "types":[
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "meowscarada":{
@@ -32707,6 +33875,7 @@ Object.entries({
 "Grass",
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "meowstic":{
@@ -32727,6 +33896,7 @@ Object.entries({
 "Psychic",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "meowsticf":{
@@ -32747,6 +33917,7 @@ Object.entries({
 "Psychic",
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "meowth":{
@@ -32766,6 +33937,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "meowthalola":{
@@ -32785,6 +33957,7 @@ Object.entries({
 "types":[
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "meowthgalar":{
@@ -32804,6 +33977,7 @@ Object.entries({
 "types":[
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "mesprit":{
@@ -32821,6 +33995,7 @@ Object.entries({
 "types":[
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "metagross":{
@@ -32841,6 +34016,7 @@ Object.entries({
 "Steel",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "metang":{
@@ -32860,6 +34036,7 @@ Object.entries({
 "Steel",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "metapod":{
@@ -32877,6 +34054,7 @@ Object.entries({
 "types":[
 "Bug"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "mew":{
@@ -32894,6 +34072,7 @@ Object.entries({
 "types":[
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "mewtwo":{
@@ -32912,6 +34091,7 @@ Object.entries({
 "types":[
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "miasmaw":{
@@ -32932,6 +34112,7 @@ Object.entries({
 "Bug",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "miasmite":{
@@ -32952,6 +34133,7 @@ Object.entries({
 "Bug",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "mienfoo":{
@@ -32971,6 +34153,7 @@ Object.entries({
 "types":[
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "mienshao":{
@@ -32990,6 +34173,7 @@ Object.entries({
 "types":[
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "mightyena":{
@@ -33010,6 +34194,7 @@ Object.entries({
 "Dark",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "milcery":{
@@ -33028,6 +34213,7 @@ Object.entries({
 "types":[
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "milotic":{
@@ -33048,6 +34234,7 @@ Object.entries({
 "Water",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "miloticaevian":{
@@ -33068,6 +34255,7 @@ Object.entries({
 "Poison",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "miltank":{
@@ -33088,6 +34276,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "mimejr":{
@@ -33108,6 +34297,7 @@ Object.entries({
 "Psychic",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "mimikyu":{
@@ -33126,6 +34316,7 @@ Object.entries({
 "Ghost",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "mimikyutotem":{
@@ -33144,6 +34335,7 @@ Object.entries({
 "Ghost",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "minccino":{
@@ -33163,6 +34355,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "minior":{
@@ -33181,6 +34374,7 @@ Object.entries({
 "Rock",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "minun":{
@@ -33201,6 +34395,7 @@ Object.entries({
 "Electric",
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "miraidon":{
@@ -33219,6 +34414,7 @@ Object.entries({
 "Electric",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "misdreavus":{
@@ -33239,13 +34435,14 @@ Object.entries({
 "Ghost",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "mismagius":{
 "abilities":{
-"0":"Void Veil",
+"0":"Void Crossing",
 "1":"Temporal Shift",
-"H":"Hex Bound"
+"H":"Void Hex"
 },
 "baseStats":{
 "hp":60,
@@ -33259,6 +34456,7 @@ Object.entries({
 "Ghost",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "mismagiusaevian":{
@@ -33279,6 +34477,7 @@ Object.entries({
 "Ghost",
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "mismagiusmega":{
@@ -33297,6 +34496,7 @@ Object.entries({
 "Ghost",
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "missingno":{
@@ -33315,6 +34515,7 @@ Object.entries({
 "Bird",
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "mollux":{
@@ -33334,6 +34535,7 @@ Object.entries({
 "Fire",
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "moltres":{
@@ -33353,6 +34555,7 @@ Object.entries({
 "Fire",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "moltresgalar":{
@@ -33371,6 +34574,7 @@ Object.entries({
 "Dark",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "monferno":{
@@ -33390,6 +34594,7 @@ Object.entries({
 "Fire",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "monohm":{
@@ -33409,6 +34614,7 @@ Object.entries({
 "types":[
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "morelull":{
@@ -33429,6 +34635,7 @@ Object.entries({
 "Grass",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "morgrem":{
@@ -33449,6 +34656,7 @@ Object.entries({
 "Dark",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "morpeko":{
@@ -33467,6 +34675,7 @@ Object.entries({
 "Electric",
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "mothim":{
@@ -33487,6 +34696,7 @@ Object.entries({
 "Bug",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "mrmime":{
@@ -33507,6 +34717,7 @@ Object.entries({
 "Psychic",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "mrmimegalar":{
@@ -33527,6 +34738,7 @@ Object.entries({
 "Ice",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "mrmimepulse":{
@@ -33545,6 +34757,7 @@ Object.entries({
 "Ghost",
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "mrrime":{
@@ -33565,6 +34778,7 @@ Object.entries({
 "Ice",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "mudbray":{
@@ -33584,6 +34798,7 @@ Object.entries({
 "types":[
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "mudkip":{
@@ -33602,6 +34817,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "mudsdale":{
@@ -33622,6 +34838,7 @@ Object.entries({
 "Ground",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "muk":{
@@ -33642,6 +34859,7 @@ Object.entries({
 "Poison",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "mukalola":{
@@ -33662,6 +34880,7 @@ Object.entries({
 "Poison",
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "mukpulse":{
@@ -33679,6 +34898,7 @@ Object.entries({
 "types":[
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "mumbao":{
@@ -33699,6 +34919,7 @@ Object.entries({
 "Grass",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "munchlax":{
@@ -33718,6 +34939,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "munkidori":{
@@ -33737,6 +34959,7 @@ Object.entries({
 "Poison",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "murkrow":{
@@ -33757,6 +34980,7 @@ Object.entries({
 "Dark",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "musharna":{
@@ -33777,6 +35001,7 @@ Object.entries({
 "Psychic",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "nacli":{
@@ -33796,6 +35021,7 @@ Object.entries({
 "types":[
 "Rock"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "naclstack":{
@@ -33815,6 +35041,7 @@ Object.entries({
 "types":[
 "Rock"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "naganadel":{
@@ -33833,6 +35060,7 @@ Object.entries({
 "Poison",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "natu":{
@@ -33853,6 +35081,7 @@ Object.entries({
 "Psychic",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "naviathan":{
@@ -33873,6 +35102,7 @@ Object.entries({
 "Water",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "necrozma":{
@@ -33890,6 +35120,7 @@ Object.entries({
 "types":[
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "necrozmadawnwings":{
@@ -33908,6 +35139,7 @@ Object.entries({
 "Psychic",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "necrozmaduskmane":{
@@ -33926,6 +35158,7 @@ Object.entries({
 "Psychic",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "necrozmaultra":{
@@ -33944,6 +35177,7 @@ Object.entries({
 "Psychic",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "necturine":{
@@ -33963,6 +35197,7 @@ Object.entries({
 "Grass",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "necturna":{
@@ -33982,6 +35217,7 @@ Object.entries({
 "Grass",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "nickit":{
@@ -34001,6 +35237,7 @@ Object.entries({
 "types":[
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "nidoking":{
@@ -34021,6 +35258,7 @@ Object.entries({
 "Poison",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "nidoqueen":{
@@ -34041,6 +35279,7 @@ Object.entries({
 "Poison",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "nidoranf":{
@@ -34060,6 +35299,7 @@ Object.entries({
 "types":[
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "nidoranm":{
@@ -34079,6 +35319,7 @@ Object.entries({
 "types":[
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "nidorina":{
@@ -34098,6 +35339,7 @@ Object.entries({
 "types":[
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "nidorino":{
@@ -34117,6 +35359,7 @@ Object.entries({
 "types":[
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "nihilego":{
@@ -34135,6 +35378,7 @@ Object.entries({
 "Rock",
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "nincada":{
@@ -34154,6 +35398,7 @@ Object.entries({
 "Bug",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "ninetales":{
@@ -34174,13 +35419,14 @@ Object.entries({
 "Fire",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "ninetalesalola":{
 "abilities":{
 "0":"Magic Bounce",
 "1":"Serene Grace",
-"H":"Aurora Sanctum"
+"H":"Void Sanctum"
 },
 "baseStats":{
 "hp":73,
@@ -34194,6 +35440,7 @@ Object.entries({
 "Ice",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "ninjask":{
@@ -34213,6 +35460,7 @@ Object.entries({
 "Bug",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "noctowl":{
@@ -34233,6 +35481,7 @@ Object.entries({
 "Dark",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "nohface":{
@@ -34252,6 +35501,7 @@ Object.entries({
 "types":[
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "noibat":{
@@ -34272,6 +35522,7 @@ Object.entries({
 "Flying",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "noivern":{
@@ -34292,6 +35543,7 @@ Object.entries({
 "Flying",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "nosepass":{
@@ -34311,6 +35563,7 @@ Object.entries({
 "types":[
 "Rock"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "numel":{
@@ -34331,6 +35584,7 @@ Object.entries({
 "Fire",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "nuzleaf":{
@@ -34351,6 +35605,7 @@ Object.entries({
 "Grass",
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "nymble":{
@@ -34369,6 +35624,7 @@ Object.entries({
 "types":[
 "Bug"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "obstagoon":{
@@ -34389,6 +35645,7 @@ Object.entries({
 "Dark",
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "octillery":{
@@ -34409,6 +35666,7 @@ Object.entries({
 "Water",
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "oddish":{
@@ -34428,6 +35686,7 @@ Object.entries({
 "Grass",
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "ogerpon":{
@@ -34445,6 +35704,7 @@ Object.entries({
 "types":[
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "ogerponcornerstone":{
@@ -34463,6 +35723,7 @@ Object.entries({
 "Grass",
 "Rock"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "ogerponhearthflame":{
@@ -34481,6 +35742,7 @@ Object.entries({
 "Grass",
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "ogerponwellspring":{
@@ -34499,6 +35761,7 @@ Object.entries({
 "Grass",
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "oinkologne":{
@@ -34518,6 +35781,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "oinkolognef":{
@@ -34537,6 +35801,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "okidogi":{
@@ -34556,6 +35821,7 @@ Object.entries({
 "Poison",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "omanyte":{
@@ -34576,6 +35842,7 @@ Object.entries({
 "Rock",
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "omastar":{
@@ -34596,6 +35863,7 @@ Object.entries({
 "Rock",
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "onix":{
@@ -34616,6 +35884,7 @@ Object.entries({
 "Rock",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "oranguru":{
@@ -34636,6 +35905,7 @@ Object.entries({
 "Normal",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "orbeetle":{
@@ -34656,6 +35926,7 @@ Object.entries({
 "Bug",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "oricorio":{
@@ -34676,6 +35947,7 @@ Object.entries({
 "Fire",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "orthworm":{
@@ -34695,6 +35967,7 @@ Object.entries({
 "types":[
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "oshawott":{
@@ -34713,6 +35986,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "overqwil":{
@@ -34733,6 +36007,7 @@ Object.entries({
 "Dark",
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pachirisu":{
@@ -34752,6 +36027,7 @@ Object.entries({
 "types":[
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pajantom":{
@@ -34770,6 +36046,7 @@ Object.entries({
 "Dragon",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "palafin":{
@@ -34787,6 +36064,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "palkia":{
@@ -34806,6 +36084,7 @@ Object.entries({
 "Water",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "palkiaorigin":{
@@ -34825,6 +36104,7 @@ Object.entries({
 "Water",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "palossand":{
@@ -34845,6 +36125,7 @@ Object.entries({
 "Ghost",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pancham":{
@@ -34864,6 +36145,7 @@ Object.entries({
 "types":[
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pangoro":{
@@ -34884,6 +36166,7 @@ Object.entries({
 "Fighting",
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "panpour":{
@@ -34902,6 +36185,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pansage":{
@@ -34920,6 +36204,7 @@ Object.entries({
 "types":[
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pansear":{
@@ -34938,6 +36223,7 @@ Object.entries({
 "types":[
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "paras":{
@@ -34958,6 +36244,7 @@ Object.entries({
 "Bug",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "parasect":{
@@ -34978,6 +36265,7 @@ Object.entries({
 "Ghost",
 "Bug"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "parasectparasite":{
@@ -34996,6 +36284,7 @@ Object.entries({
 "Ghost",
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "parasectrejuv":{
@@ -35014,6 +36303,7 @@ Object.entries({
 "Ghost",
 "Bug"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "passimian":{
@@ -35032,6 +36322,7 @@ Object.entries({
 "types":[
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "patrat":{
@@ -35051,6 +36342,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pawmi":{
@@ -35070,6 +36362,7 @@ Object.entries({
 "types":[
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pawmo":{
@@ -35090,6 +36383,7 @@ Object.entries({
 "Electric",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pawmot":{
@@ -35110,6 +36404,7 @@ Object.entries({
 "Electric",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pawniard":{
@@ -35130,6 +36425,7 @@ Object.entries({
 "Dark",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pecharunt":{
@@ -35148,6 +36444,7 @@ Object.entries({
 "Poison",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pelipper":{
@@ -35168,6 +36465,7 @@ Object.entries({
 "Water",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "perrserker":{
@@ -35187,6 +36485,7 @@ Object.entries({
 "types":[
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "persian":{
@@ -35207,6 +36506,7 @@ Object.entries({
 "Normal",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "persianalola":{
@@ -35227,6 +36527,7 @@ Object.entries({
 "Dark",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "petilil":{
@@ -35246,6 +36547,7 @@ Object.entries({
 "types":[
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "phanpy":{
@@ -35264,6 +36566,7 @@ Object.entries({
 "types":[
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "phantump":{
@@ -35284,6 +36587,7 @@ Object.entries({
 "Ghost",
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pheromosa":{
@@ -35302,6 +36606,7 @@ Object.entries({
 "Bug",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "phione":{
@@ -35319,6 +36624,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pichu":{
@@ -35337,6 +36643,7 @@ Object.entries({
 "types":[
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pichuspikyeared":{
@@ -35354,6 +36661,7 @@ Object.entries({
 "types":[
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pidgeot":{
@@ -35374,6 +36682,7 @@ Object.entries({
 "Normal",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pidgeotto":{
@@ -35394,6 +36703,7 @@ Object.entries({
 "Normal",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pidgey":{
@@ -35414,6 +36724,7 @@ Object.entries({
 "Normal",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pignite":{
@@ -35433,6 +36744,7 @@ Object.entries({
 "Fire",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pikachu":{
@@ -35451,6 +36763,7 @@ Object.entries({
 "types":[
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pikachualola":{
@@ -35469,6 +36782,7 @@ Object.entries({
 "types":[
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pikachubelle":{
@@ -35487,6 +36801,7 @@ Object.entries({
 "Electric",
 "Ice"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pikachucosplay":{
@@ -35505,6 +36820,7 @@ Object.entries({
 "Electric",
 "Ice"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pikachuhoenn":{
@@ -35523,6 +36839,7 @@ Object.entries({
 "types":[
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pikachukalos":{
@@ -35541,6 +36858,7 @@ Object.entries({
 "types":[
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pikachulibre":{
@@ -35559,6 +36877,7 @@ Object.entries({
 "Electric",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pikachuoriginal":{
@@ -35577,6 +36896,7 @@ Object.entries({
 "types":[
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pikachupartner":{
@@ -35594,6 +36914,7 @@ Object.entries({
 "types":[
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pikachuphd":{
@@ -35612,6 +36933,7 @@ Object.entries({
 "Electric",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pikachupopstar":{
@@ -35630,6 +36952,7 @@ Object.entries({
 "Electric",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pikachurockstar":{
@@ -35648,6 +36971,7 @@ Object.entries({
 "Electric",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pikachusinnoh":{
@@ -35666,6 +36990,7 @@ Object.entries({
 "types":[
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pikachustarter":{
@@ -35683,6 +37008,7 @@ Object.entries({
 "types":[
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pikachuunova":{
@@ -35701,6 +37027,7 @@ Object.entries({
 "types":[
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pikachuworld":{
@@ -35719,6 +37046,7 @@ Object.entries({
 "types":[
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pikipek":{
@@ -35739,6 +37067,7 @@ Object.entries({
 "Normal",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "piloswine":{
@@ -35759,6 +37088,7 @@ Object.entries({
 "Ice",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pincurchin":{
@@ -35777,6 +37107,7 @@ Object.entries({
 "types":[
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pineco":{
@@ -35795,6 +37126,7 @@ Object.entries({
 "types":[
 "Bug"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pinsir":{
@@ -35815,6 +37147,7 @@ Object.entries({
 "Bug",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "piplup":{
@@ -35833,6 +37166,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "plasmanta":{
@@ -35853,6 +37187,7 @@ Object.entries({
 "Electric",
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pluffle":{
@@ -35872,6 +37207,7 @@ Object.entries({
 "types":[
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "plusle":{
@@ -35892,6 +37228,7 @@ Object.entries({
 "Electric",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "poipole":{
@@ -35909,6 +37246,7 @@ Object.entries({
 "types":[
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pokestarblackbelt":{
@@ -35926,6 +37264,7 @@ Object.entries({
 "types":[
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pokestarblackdoor":{
@@ -35943,6 +37282,7 @@ Object.entries({
 "types":[
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pokestarbrycenman":{
@@ -35961,6 +37301,7 @@ Object.entries({
 "Dark",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pokestarf00":{
@@ -35979,6 +37320,7 @@ Object.entries({
 "Steel",
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pokestarf002":{
@@ -35997,6 +37339,7 @@ Object.entries({
 "Steel",
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pokestargiant":{
@@ -36014,6 +37357,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pokestarhumanoid":{
@@ -36031,6 +37375,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pokestarmonster":{
@@ -36048,6 +37393,7 @@ Object.entries({
 "types":[
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pokestarmt":{
@@ -36065,6 +37411,7 @@ Object.entries({
 "types":[
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pokestarmt2":{
@@ -36083,6 +37430,7 @@ Object.entries({
 "Steel",
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pokestarsmeargle":{
@@ -36102,6 +37450,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pokestarspirit":{
@@ -36120,6 +37469,7 @@ Object.entries({
 "Dark",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pokestartransport":{
@@ -36137,6 +37487,7 @@ Object.entries({
 "types":[
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pokestarufo":{
@@ -36155,6 +37506,7 @@ Object.entries({
 "Flying",
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pokestarufo2":{
@@ -36173,6 +37525,7 @@ Object.entries({
 "Psychic",
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pokestarufopropu2":{
@@ -36191,6 +37544,7 @@ Object.entries({
 "Psychic",
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pokestarwhitedoor":{
@@ -36208,6 +37562,7 @@ Object.entries({
 "types":[
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "politoed":{
@@ -36227,6 +37582,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "poliwag":{
@@ -36246,6 +37602,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "poliwhirl":{
@@ -36265,6 +37622,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "poliwrath":{
@@ -36285,6 +37643,7 @@ Object.entries({
 "Water",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "poltchageist":{
@@ -36304,6 +37663,7 @@ Object.entries({
 "Grass",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "poltchageistartisan":{
@@ -36323,6 +37683,7 @@ Object.entries({
 "Grass",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "polteageist":{
@@ -36343,6 +37704,7 @@ Object.entries({
 "Ghost",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "polteageistantique":{
@@ -36362,6 +37724,7 @@ Object.entries({
 "Ghost",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "ponyta":{
@@ -36381,6 +37744,7 @@ Object.entries({
 "types":[
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "ponytagalar":{
@@ -36400,6 +37764,7 @@ Object.entries({
 "types":[
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "poochyena":{
@@ -36419,6 +37784,7 @@ Object.entries({
 "types":[
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "popplio":{
@@ -36437,6 +37803,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "porygon":{
@@ -36456,6 +37823,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "porygon2":{
@@ -36475,6 +37843,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "porygonz":{
@@ -36494,6 +37863,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "primarina":{
@@ -36514,6 +37884,28 @@ Object.entries({
 "Water",
 "Fairy"],
 
+"passives":[],
+"replaceAbilities":true
+},
+"primarinaalt":{
+"abilities":{
+"0":"Encore Aria",
+"1":"Marvel Scale",
+"H":"Tidal Voice"
+},
+"baseStats":{
+"hp":80,
+"atk":74,
+"def":74,
+"spa":126,
+"spd":116,
+"spe":65
+},
+"types":[
+"Water",
+"Fairy"],
+
+"passives":[],
 "replaceAbilities":true
 },
 "primeape":{
@@ -36533,6 +37925,7 @@ Object.entries({
 "types":[
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "prinplup":{
@@ -36551,6 +37944,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "privatyke":{
@@ -36570,6 +37964,7 @@ Object.entries({
 "Water",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "probopass":{
@@ -36590,6 +37985,7 @@ Object.entries({
 "Rock",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "protowatt":{
@@ -36610,6 +38006,7 @@ Object.entries({
 "Electric",
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "psyduck":{
@@ -36629,6 +38026,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pumpkaboo":{
@@ -36649,6 +38047,7 @@ Object.entries({
 "Ghost",
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pumpkaboosuper":{
@@ -36669,6 +38068,7 @@ Object.entries({
 "Ghost",
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pupitar":{
@@ -36687,6 +38087,7 @@ Object.entries({
 "Rock",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "purrloin":{
@@ -36706,6 +38107,7 @@ Object.entries({
 "types":[
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "purugly":{
@@ -36725,6 +38127,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pyroak":{
@@ -36745,6 +38148,7 @@ Object.entries({
 "Fire",
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pyroar":{
@@ -36765,6 +38169,7 @@ Object.entries({
 "Fire",
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "pyukumuku":{
@@ -36783,6 +38188,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "quagsire":{
@@ -36803,6 +38209,7 @@ Object.entries({
 "Water",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "quaquaval":{
@@ -36823,6 +38230,7 @@ Object.entries({
 "Water",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "quaxly":{
@@ -36841,6 +38249,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "quaxwell":{
@@ -36859,6 +38268,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "quilava":{
@@ -36877,6 +38287,7 @@ Object.entries({
 "types":[
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "quilladin":{
@@ -36895,6 +38306,7 @@ Object.entries({
 "types":[
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "qwilfish":{
@@ -36915,6 +38327,7 @@ Object.entries({
 "Water",
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "qwilfishhisui":{
@@ -36935,6 +38348,7 @@ Object.entries({
 "Dark",
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "raboot":{
@@ -36953,6 +38367,7 @@ Object.entries({
 "types":[
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "rabsca":{
@@ -36973,6 +38388,7 @@ Object.entries({
 "Bug",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "ragingbolt":{
@@ -36991,6 +38407,7 @@ Object.entries({
 "Electric",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "raichu":{
@@ -37010,6 +38427,7 @@ Object.entries({
 "types":[
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "raichualola":{
@@ -37030,6 +38448,7 @@ Object.entries({
 "Electric",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "raikou":{
@@ -37048,6 +38467,7 @@ Object.entries({
 "types":[
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "ralts":{
@@ -37068,6 +38488,7 @@ Object.entries({
 "Psychic",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "rampardos":{
@@ -37088,6 +38509,7 @@ Object.entries({
 "Rock",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "rapidash":{
@@ -37108,6 +38530,7 @@ Object.entries({
 "Fire",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "rapidashgalar":{
@@ -37128,6 +38551,7 @@ Object.entries({
 "Psychic",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "raticate":{
@@ -37147,6 +38571,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "raticatealola":{
@@ -37167,6 +38592,7 @@ Object.entries({
 "Dark",
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "raticatealolatotem":{
@@ -37185,6 +38611,7 @@ Object.entries({
 "Dark",
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "rattata":{
@@ -37204,6 +38631,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "rattataalola":{
@@ -37224,6 +38652,7 @@ Object.entries({
 "Dark",
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "rayquaza":{
@@ -37242,6 +38671,7 @@ Object.entries({
 "Dragon",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "rebble":{
@@ -37261,6 +38691,7 @@ Object.entries({
 "types":[
 "Rock"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "regice":{
@@ -37279,6 +38710,7 @@ Object.entries({
 "types":[
 "Ice"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "regidrago":{
@@ -37297,6 +38729,7 @@ Object.entries({
 "types":[
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "regieleki":{
@@ -37315,6 +38748,7 @@ Object.entries({
 "types":[
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "regigigas":{
@@ -37332,6 +38766,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "regirock":{
@@ -37351,6 +38786,7 @@ Object.entries({
 "types":[
 "Rock"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "registeel":{
@@ -37370,6 +38806,7 @@ Object.entries({
 "types":[
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "relicanth":{
@@ -37390,6 +38827,7 @@ Object.entries({
 "Water",
 "Rock"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "rellor":{
@@ -37408,6 +38846,7 @@ Object.entries({
 "types":[
 "Bug"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "remoraid":{
@@ -37427,6 +38866,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "reshiram":{
@@ -37445,6 +38885,7 @@ Object.entries({
 "Dragon",
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "reuniclus":{
@@ -37464,6 +38905,7 @@ Object.entries({
 "types":[
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "revavroom":{
@@ -37483,6 +38925,7 @@ Object.entries({
 "Steel",
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "revenankh":{
@@ -37503,6 +38946,7 @@ Object.entries({
 "Ghost",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "rhydon":{
@@ -37523,6 +38967,7 @@ Object.entries({
 "Ground",
 "Rock"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "rhyhorn":{
@@ -37543,6 +38988,7 @@ Object.entries({
 "Ground",
 "Rock"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "rhyperior":{
@@ -37563,6 +39009,7 @@ Object.entries({
 "Ground",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "ribombee":{
@@ -37583,6 +39030,7 @@ Object.entries({
 "Bug",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "ribombeetotem":{
@@ -37601,6 +39049,7 @@ Object.entries({
 "Bug",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "rillaboom":{
@@ -37619,6 +39068,27 @@ Object.entries({
 },
 "types":[
 "Grass"],
+
+"passives":[],
+"replaceAbilities":true
+},
+"rillaboomgmax":{
+"abilities":{
+"0":"Forest Surge"
+},
+"baseStats":{
+"hp":150,
+"atk":125,
+"def":90,
+"spa":60,
+"spd":70,
+"spe":85
+},
+"types":[
+"Grass"],
+
+"passives":[
+"proficient"],
 
 "replaceAbilities":true
 },
@@ -37639,6 +39109,7 @@ Object.entries({
 "types":[
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "roaringmoon":{
@@ -37657,6 +39128,7 @@ Object.entries({
 "Dragon",
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "rockruff":{
@@ -37677,6 +39149,7 @@ Object.entries({
 "types":[
 "Rock"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "rockruffdusk":{
@@ -37694,6 +39167,7 @@ Object.entries({
 "types":[
 "Rock"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "rolycoly":{
@@ -37713,6 +39187,7 @@ Object.entries({
 "types":[
 "Rock"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "rookidee":{
@@ -37732,6 +39207,7 @@ Object.entries({
 "types":[
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "roselia":{
@@ -37752,6 +39228,7 @@ Object.entries({
 "Grass",
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "roserade":{
@@ -37772,6 +39249,7 @@ Object.entries({
 "Grass",
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "rotom":{
@@ -37792,6 +39270,7 @@ Object.entries({
 "Electric",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "rotomfan":{
@@ -37813,6 +39292,7 @@ Object.entries({
 "Electric",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "rotomfrost":{
@@ -37833,6 +39313,7 @@ Object.entries({
 "Electric",
 "Ice"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "rotomheat":{
@@ -37853,6 +39334,7 @@ Object.entries({
 "Electric",
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "rotommow":{
@@ -37873,6 +39355,7 @@ Object.entries({
 "Electric",
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "rotomwash":{
@@ -37893,6 +39376,7 @@ Object.entries({
 "Electric",
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "rowlet":{
@@ -37912,6 +39396,7 @@ Object.entries({
 "Grass",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "rufflet":{
@@ -37932,6 +39417,7 @@ Object.entries({
 "Normal",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "runerigus":{
@@ -37952,6 +39438,7 @@ Object.entries({
 "Ground",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "sableye":{
@@ -37972,6 +39459,7 @@ Object.entries({
 "Dark",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "saharaja":{
@@ -37991,6 +39479,7 @@ Object.entries({
 "types":[
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "saharascal":{
@@ -38010,6 +39499,7 @@ Object.entries({
 "types":[
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "salamence":{
@@ -38030,6 +39520,7 @@ Object.entries({
 "Dragon",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "salandit":{
@@ -38049,6 +39540,7 @@ Object.entries({
 "Poison",
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "salazzle":{
@@ -38069,6 +39561,7 @@ Object.entries({
 "Poison",
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "salazzletotem":{
@@ -38087,6 +39580,7 @@ Object.entries({
 "Poison",
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "samurott":{
@@ -38107,6 +39601,28 @@ Object.entries({
 "Water",
 "Fighting"],
 
+"passives":[],
+"replaceAbilities":true
+},
+"samurottalt":{
+"abilities":{
+"0":"Swift Swim",
+"1":"Blade Mastery",
+"H":"Shell Armor"
+},
+"baseStats":{
+"hp":90,
+"atk":105,
+"def":85,
+"spa":115,
+"spd":80,
+"spe":75
+},
+"types":[
+"Water",
+"Fighting"],
+
+"passives":[],
 "replaceAbilities":true
 },
 "samurotthisui":{
@@ -38127,6 +39643,28 @@ Object.entries({
 "Water",
 "Dark"],
 
+"passives":[],
+"replaceAbilities":true
+},
+"samurotthisuialt":{
+"abilities":{
+"0":"Lightning Rod",
+"1":"Blade Mastery",
+"H":"Swift Swim"
+},
+"baseStats":{
+"hp":90,
+"atk":115,
+"def":80,
+"spa":105,
+"spd":65,
+"spe":95
+},
+"types":[
+"Water",
+"Dark"],
+
+"passives":[],
 "replaceAbilities":true
 },
 "sandaconda":{
@@ -38146,6 +39684,7 @@ Object.entries({
 "types":[
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "sandile":{
@@ -38166,6 +39705,7 @@ Object.entries({
 "Ground",
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "sandshrew":{
@@ -38184,6 +39724,7 @@ Object.entries({
 "types":[
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "sandshrewalola":{
@@ -38203,6 +39744,7 @@ Object.entries({
 "Ice",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "sandslash":{
@@ -38223,6 +39765,7 @@ Object.entries({
 "Ground",
 "Bug"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "sandslashalola":{
@@ -38243,6 +39786,7 @@ Object.entries({
 "Ice",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "sandslashalt":{
@@ -38263,6 +39807,7 @@ Object.entries({
 "Ground",
 "Bug"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "sandygast":{
@@ -38282,6 +39827,7 @@ Object.entries({
 "Ghost",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "sandyshocks":{
@@ -38300,6 +39846,7 @@ Object.entries({
 "Electric",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "sawk":{
@@ -38319,6 +39866,7 @@ Object.entries({
 "types":[
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "sawsbuck":{
@@ -38339,6 +39887,7 @@ Object.entries({
 "Water",
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "scatterbug":{
@@ -38358,6 +39907,7 @@ Object.entries({
 "types":[
 "Bug"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "scattervein":{
@@ -38377,6 +39927,7 @@ Object.entries({
 "types":[
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "sceptile":{
@@ -38396,6 +39947,28 @@ Object.entries({
 "types":[
 "Grass",
 "Dragon"],
+
+"passives":[],
+"replaceAbilities":true
+},
+"sceptilemega":{
+"abilities":{
+"0":"Verdant Drake"
+},
+"baseStats":{
+"hp":70,
+"atk":130,
+"def":70,
+"spa":145,
+"spd":70,
+"spe":145
+},
+"types":[
+"Grass",
+"Dragon"],
+
+"passives":[
+"proficient"],
 
 "replaceAbilities":true
 },
@@ -38417,6 +39990,7 @@ Object.entries({
 "Bug",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "scolipede":{
@@ -38437,6 +40011,7 @@ Object.entries({
 "Bug",
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "scorbunny":{
@@ -38455,6 +40030,7 @@ Object.entries({
 "types":[
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "scovillain":{
@@ -38475,6 +40051,7 @@ Object.entries({
 "Grass",
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "scrafty":{
@@ -38495,6 +40072,7 @@ Object.entries({
 "Dark",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "scraggy":{
@@ -38515,6 +40093,7 @@ Object.entries({
 "Dark",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "scratchet":{
@@ -38535,6 +40114,7 @@ Object.entries({
 "Normal",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "screamtail":{
@@ -38553,6 +40133,7 @@ Object.entries({
 "Fairy",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "scyther":{
@@ -38573,6 +40154,7 @@ Object.entries({
 "Bug",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "seadra":{
@@ -38592,6 +40174,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "seaking":{
@@ -38612,6 +40195,7 @@ Object.entries({
 "Water",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "sealeo":{
@@ -38632,6 +40216,7 @@ Object.entries({
 "Ice",
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "seedot":{
@@ -38651,6 +40236,7 @@ Object.entries({
 "types":[
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "seel":{
@@ -38670,6 +40256,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "seismitoad":{
@@ -38690,6 +40277,7 @@ Object.entries({
 "Water",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "sentret":{
@@ -38709,6 +40297,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "serperior":{
@@ -38729,6 +40318,49 @@ Object.entries({
 "Grass",
 "Dragon"],
 
+"passives":[],
+"replaceAbilities":true
+},
+"serperiorazzy":{
+"abilities":{
+"0":"Multiscale",
+"1":"Royal Decree",
+"H":"Contrary"
+},
+"baseStats":{
+"hp":75,
+"atk":75,
+"def":95,
+"spa":75,
+"spd":95,
+"spe":113
+},
+"types":[
+"Grass",
+"Dragon"],
+
+"passives":[],
+"replaceAbilities":true
+},
+"serperiormega":{
+"abilities":{
+"0":"Queen's Guard"
+},
+"baseStats":{
+"hp":75,
+"atk":95,
+"def":115,
+"spa":95,
+"spd":115,
+"spe":133
+},
+"types":[
+"Grass",
+"Dragon"],
+
+"passives":[
+"proficient"],
+
 "replaceAbilities":true
 },
 "servine":{
@@ -38747,6 +40379,7 @@ Object.entries({
 "types":[
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "seviper":{
@@ -38767,6 +40400,7 @@ Object.entries({
 "Poison",
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "sharpedo":{
@@ -38787,6 +40421,7 @@ Object.entries({
 "Water",
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "shaymin":{
@@ -38805,6 +40440,7 @@ Object.entries({
 "types":[
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "shayminsky":{
@@ -38823,6 +40459,7 @@ Object.entries({
 "Grass",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "shedinja":{
@@ -38841,6 +40478,7 @@ Object.entries({
 "Bug",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "shelgon":{
@@ -38859,6 +40497,7 @@ Object.entries({
 "types":[
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "shellder":{
@@ -38878,6 +40517,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "shellos":{
@@ -38897,6 +40537,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "shelmet":{
@@ -38916,6 +40557,7 @@ Object.entries({
 "types":[
 "Bug"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "shieldon":{
@@ -38935,6 +40577,7 @@ Object.entries({
 "Rock",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "shiftry":{
@@ -38955,6 +40598,7 @@ Object.entries({
 "Grass",
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "shiinotic":{
@@ -38975,6 +40619,7 @@ Object.entries({
 "Grass",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "shinx":{
@@ -38994,6 +40639,7 @@ Object.entries({
 "types":[
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "shroodle":{
@@ -39014,6 +40660,7 @@ Object.entries({
 "Poison",
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "shroomish":{
@@ -39033,6 +40680,7 @@ Object.entries({
 "types":[
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "shuckle":{
@@ -39053,6 +40701,7 @@ Object.entries({
 "Bug",
 "Rock"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "shuppet":{
@@ -39072,6 +40721,7 @@ Object.entries({
 "types":[
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "sigilyph":{
@@ -39093,6 +40743,7 @@ Object.entries({
 "Psychic",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "silcoon":{
@@ -39110,6 +40761,7 @@ Object.entries({
 "types":[
 "Bug"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "silicobra":{
@@ -39129,6 +40781,7 @@ Object.entries({
 "types":[
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "silvally":{
@@ -39149,6 +40802,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "simipour":{
@@ -39169,6 +40823,7 @@ Object.entries({
 "Water",
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "simisage":{
@@ -39189,6 +40844,7 @@ Object.entries({
 "Grass",
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "simisear":{
@@ -39209,6 +40865,7 @@ Object.entries({
 "Fire",
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "sinistcha":{
@@ -39229,6 +40886,7 @@ Object.entries({
 "Grass",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "sinistchamasterpiece":{
@@ -39249,6 +40907,7 @@ Object.entries({
 "Grass",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "sinistea":{
@@ -39267,6 +40926,7 @@ Object.entries({
 "types":[
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "sinisteaantique":{
@@ -39285,6 +40945,7 @@ Object.entries({
 "types":[
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "sirfetchd":{
@@ -39304,6 +40965,7 @@ Object.entries({
 "types":[
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "sizzlipede":{
@@ -39324,6 +40986,7 @@ Object.entries({
 "Fire",
 "Bug"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "skarmory":{
@@ -39344,6 +41007,7 @@ Object.entries({
 "Steel",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "skeledirge":{
@@ -39364,6 +41028,7 @@ Object.entries({
 "Fire",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "skeledirgeaevian":{
@@ -39384,6 +41049,28 @@ Object.entries({
 "Fairy",
 "Poison"],
 
+"passives":[],
+"replaceAbilities":true
+},
+"skeledirgealt":{
+"abilities":{
+"0":"Soul Fire",
+"1":"Funeral Choir",
+"H":"Unaware"
+},
+"baseStats":{
+"hp":104,
+"atk":75,
+"def":100,
+"spa":110,
+"spd":75,
+"spe":66
+},
+"types":[
+"Fire",
+"Ghost"],
+
+"passives":[],
 "replaceAbilities":true
 },
 "skiddo":{
@@ -39402,6 +41089,7 @@ Object.entries({
 "types":[
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "skiploom":{
@@ -39422,6 +41110,7 @@ Object.entries({
 "Grass",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "skitty":{
@@ -39441,6 +41130,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "skorupi":{
@@ -39461,6 +41151,7 @@ Object.entries({
 "Poison",
 "Bug"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "skrelp":{
@@ -39481,6 +41172,7 @@ Object.entries({
 "Poison",
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "skuntank":{
@@ -39501,6 +41193,7 @@ Object.entries({
 "Poison",
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "skwovet":{
@@ -39519,6 +41212,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "slaking":{
@@ -39538,6 +41232,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "slakoth":{
@@ -39555,6 +41250,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "sliggoo":{
@@ -39574,6 +41270,7 @@ Object.entries({
 "types":[
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "sliggoohisui":{
@@ -39594,6 +41291,7 @@ Object.entries({
 "Steel",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "slitherwing":{
@@ -39612,6 +41310,7 @@ Object.entries({
 "Bug",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "slowbro":{
@@ -39632,6 +41331,7 @@ Object.entries({
 "Water",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "slowbrogalar":{
@@ -39652,6 +41352,7 @@ Object.entries({
 "Poison",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "slowking":{
@@ -39672,6 +41373,7 @@ Object.entries({
 "Water",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "slowkinggalar":{
@@ -39692,6 +41394,7 @@ Object.entries({
 "Poison",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "slowpoke":{
@@ -39712,6 +41415,7 @@ Object.entries({
 "Water",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "slowpokegalar":{
@@ -39731,6 +41435,7 @@ Object.entries({
 "types":[
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "slugma":{
@@ -39750,6 +41455,7 @@ Object.entries({
 "types":[
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "slurpuff":{
@@ -39770,6 +41476,7 @@ Object.entries({
 "Fairy",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "smeargle":{
@@ -39789,6 +41496,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "smogecko":{
@@ -39807,6 +41515,7 @@ Object.entries({
 "types":[
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "smoguana":{
@@ -39826,6 +41535,7 @@ Object.entries({
 "Fire",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "smokomodo":{
@@ -39845,6 +41555,7 @@ Object.entries({
 "Fire",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "smoliv":{
@@ -39864,6 +41575,7 @@ Object.entries({
 "Grass",
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "smoochum":{
@@ -39884,6 +41596,7 @@ Object.entries({
 "Ice",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "snaelstrom":{
@@ -39903,6 +41616,7 @@ Object.entries({
 "Water",
 "Bug"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "sneasel":{
@@ -39923,6 +41637,7 @@ Object.entries({
 "Dark",
 "Ice"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "sneaselhisui":{
@@ -39943,6 +41658,7 @@ Object.entries({
 "Fighting",
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "sneasler":{
@@ -39963,6 +41679,7 @@ Object.entries({
 "Fighting",
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "sneasleraevian":{
@@ -39983,6 +41700,7 @@ Object.entries({
 "Fighting",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "snivy":{
@@ -40001,6 +41719,7 @@ Object.entries({
 "types":[
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "snom":{
@@ -40020,6 +41739,7 @@ Object.entries({
 "Ice",
 "Bug"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "snorlax":{
@@ -40039,6 +41759,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "snorunt":{
@@ -40058,6 +41779,7 @@ Object.entries({
 "types":[
 "Ice"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "snover":{
@@ -40077,6 +41799,7 @@ Object.entries({
 "Grass",
 "Ice"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "snubbull":{
@@ -40096,6 +41819,7 @@ Object.entries({
 "types":[
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "snugglow":{
@@ -40116,6 +41840,7 @@ Object.entries({
 "Electric",
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "sobble":{
@@ -40134,6 +41859,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "solgaleo":{
@@ -40152,6 +41878,7 @@ Object.entries({
 "Psychic",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "solosis":{
@@ -40171,6 +41898,7 @@ Object.entries({
 "types":[
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "solotl":{
@@ -40191,6 +41919,7 @@ Object.entries({
 "Fire",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "solrock":{
@@ -40211,6 +41940,7 @@ Object.entries({
 "Rock",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "spearow":{
@@ -40230,6 +41960,7 @@ Object.entries({
 "Normal",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "spectrier":{
@@ -40247,6 +41978,7 @@ Object.entries({
 "types":[
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "spewpa":{
@@ -40265,6 +41997,7 @@ Object.entries({
 "types":[
 "Bug"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "spheal":{
@@ -40285,6 +42018,7 @@ Object.entries({
 "Ice",
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "spidops":{
@@ -40303,6 +42037,7 @@ Object.entries({
 "types":[
 "Bug"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "spinarak":{
@@ -40323,6 +42058,7 @@ Object.entries({
 "Bug",
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "spinda":{
@@ -40342,6 +42078,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "spiritomb":{
@@ -40362,6 +42099,7 @@ Object.entries({
 "Ghost",
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "spoink":{
@@ -40381,6 +42119,7 @@ Object.entries({
 "types":[
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "sprigatito":{
@@ -40399,6 +42138,7 @@ Object.entries({
 "types":[
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "spritzee":{
@@ -40418,6 +42158,7 @@ Object.entries({
 "types":[
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "squawkabilly":{
@@ -40438,6 +42179,7 @@ Object.entries({
 "Normal",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "squirtle":{
@@ -40456,6 +42198,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "stakataka":{
@@ -40474,6 +42217,7 @@ Object.entries({
 "Rock",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "stantler":{
@@ -40493,6 +42237,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "staraptor":{
@@ -40513,6 +42258,7 @@ Object.entries({
 "Normal",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "staravia":{
@@ -40532,6 +42278,7 @@ Object.entries({
 "Normal",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "starly":{
@@ -40551,6 +42298,7 @@ Object.entries({
 "Normal",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "starmie":{
@@ -40571,6 +42319,7 @@ Object.entries({
 "Water",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "staryu":{
@@ -40590,6 +42339,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "steelix":{
@@ -40610,6 +42360,7 @@ Object.entries({
 "Steel",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "steenee":{
@@ -40629,6 +42380,7 @@ Object.entries({
 "types":[
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "stonjourner":{
@@ -40646,6 +42398,7 @@ Object.entries({
 "types":[
 "Rock"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "stoutland":{
@@ -40666,6 +42419,7 @@ Object.entries({
 "Normal",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "stratagem":{
@@ -40685,6 +42439,7 @@ Object.entries({
 "types":[
 "Rock"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "stufful":{
@@ -40705,6 +42460,7 @@ Object.entries({
 "Normal",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "stunfisk":{
@@ -40726,6 +42482,7 @@ Object.entries({
 "Ground",
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "stunfiskgalar":{
@@ -40745,6 +42502,7 @@ Object.entries({
 "Ground",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "stunky":{
@@ -40765,6 +42523,7 @@ Object.entries({
 "Poison",
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "sudowoodo":{
@@ -40785,6 +42544,7 @@ Object.entries({
 "Rock",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "suicune":{
@@ -40803,6 +42563,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "sunflora":{
@@ -40823,6 +42584,7 @@ Object.entries({
 "Grass",
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "sunkern":{
@@ -40842,6 +42604,7 @@ Object.entries({
 "types":[
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "surskit":{
@@ -40861,6 +42624,7 @@ Object.entries({
 "Bug",
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "swablu":{
@@ -40880,6 +42644,7 @@ Object.entries({
 "Normal",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "swalot":{
@@ -40900,6 +42665,7 @@ Object.entries({
 "Water",
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "swalotpulse":{
@@ -40918,6 +42684,7 @@ Object.entries({
 "Water",
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "swampert":{
@@ -40937,6 +42704,28 @@ Object.entries({
 "types":[
 "Water",
 "Ground"],
+
+"passives":[],
+"replaceAbilities":true
+},
+"swampertmega":{
+"abilities":{
+"0":"Raging Current"
+},
+"baseStats":{
+"hp":100,
+"atk":150,
+"def":120,
+"spa":65,
+"spd":120,
+"spe":80
+},
+"types":[
+"Water",
+"Ground"],
+
+"passives":[
+"proficient"],
 
 "replaceAbilities":true
 },
@@ -40958,6 +42747,7 @@ Object.entries({
 "Water",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "swellow":{
@@ -40978,6 +42768,7 @@ Object.entries({
 "Normal",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "swinub":{
@@ -40998,6 +42789,7 @@ Object.entries({
 "Ice",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "swirlix":{
@@ -41016,6 +42808,7 @@ Object.entries({
 "types":[
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "swirlpool":{
@@ -41034,6 +42827,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "swoobat":{
@@ -41054,6 +42848,7 @@ Object.entries({
 "Psychic",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "syclant":{
@@ -41074,6 +42869,7 @@ Object.entries({
 "Ice",
 "Bug"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "syclar":{
@@ -41094,6 +42890,7 @@ Object.entries({
 "Ice",
 "Bug"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "sylveon":{
@@ -41113,6 +42910,7 @@ Object.entries({
 "types":[
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "tactite":{
@@ -41132,6 +42930,7 @@ Object.entries({
 "types":[
 "Rock"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "tadbulb":{
@@ -41151,6 +42950,7 @@ Object.entries({
 "types":[
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "taillow":{
@@ -41170,6 +42970,7 @@ Object.entries({
 "Normal",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "talonflame":{
@@ -41190,6 +42991,7 @@ Object.entries({
 "Fire",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "tandemaus":{
@@ -41209,6 +43011,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "tangela":{
@@ -41228,6 +43031,7 @@ Object.entries({
 "types":[
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "tangrowth":{
@@ -41247,6 +43051,7 @@ Object.entries({
 "types":[
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "tapubulu":{
@@ -41266,6 +43071,7 @@ Object.entries({
 "Grass",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "tapufini":{
@@ -41285,6 +43091,7 @@ Object.entries({
 "Water",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "tapukoko":{
@@ -41304,6 +43111,7 @@ Object.entries({
 "Electric",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "tapulele":{
@@ -41323,6 +43131,7 @@ Object.entries({
 "Psychic",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "tarountula":{
@@ -41341,6 +43150,7 @@ Object.entries({
 "types":[
 "Bug"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "tatsugiri":{
@@ -41361,6 +43171,7 @@ Object.entries({
 "Dragon",
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "tatsugiristretchy":{
@@ -41381,6 +43192,7 @@ Object.entries({
 "Dragon",
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "tauros":{
@@ -41400,6 +43212,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "taurospaldeaaqua":{
@@ -41420,6 +43233,7 @@ Object.entries({
 "Fighting",
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "taurospaldeablaze":{
@@ -41440,6 +43254,7 @@ Object.entries({
 "Fighting",
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "taurospaldeacombat":{
@@ -41459,6 +43274,7 @@ Object.entries({
 "types":[
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "teddiursa":{
@@ -41478,6 +43294,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "tentacool":{
@@ -41498,6 +43315,7 @@ Object.entries({
 "Water",
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "tentacruel":{
@@ -41518,6 +43336,7 @@ Object.entries({
 "Water",
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "tepig":{
@@ -41536,6 +43355,7 @@ Object.entries({
 "types":[
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "terapagos":{
@@ -41553,6 +43373,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "terrakion":{
@@ -41572,6 +43393,7 @@ Object.entries({
 "Rock",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "thievul":{
@@ -41592,6 +43414,7 @@ Object.entries({
 "Normal",
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "throh":{
@@ -41611,6 +43434,7 @@ Object.entries({
 "types":[
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "thundurus":{
@@ -41631,6 +43455,7 @@ Object.entries({
 "Electric",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "thundurustherian":{
@@ -41649,6 +43474,7 @@ Object.entries({
 "Electric",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "thwackey":{
@@ -41667,6 +43493,7 @@ Object.entries({
 "types":[
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "tinglu":{
@@ -41685,6 +43512,7 @@ Object.entries({
 "Dark",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "tinkatink":{
@@ -41705,6 +43533,7 @@ Object.entries({
 "Fairy",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "tinkaton":{
@@ -41725,6 +43554,7 @@ Object.entries({
 "Fairy",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "tinkatuff":{
@@ -41745,6 +43575,7 @@ Object.entries({
 "Fairy",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "tirtouga":{
@@ -41765,6 +43596,7 @@ Object.entries({
 "Water",
 "Rock"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "toedscool":{
@@ -41783,6 +43615,7 @@ Object.entries({
 "Ground",
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "toedscruel":{
@@ -41803,6 +43636,7 @@ Object.entries({
 "Ground",
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "togedemaru":{
@@ -41823,6 +43657,7 @@ Object.entries({
 "Electric",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "togedemarutotem":{
@@ -41841,11 +43676,12 @@ Object.entries({
 "Electric",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "togekiss":{
 "abilities":{
-"0":"Guiding Omen",
+"0":"Void Omen",
 "1":"Pixilate",
 "H":"Fortunate Wing"
 },
@@ -41861,11 +43697,12 @@ Object.entries({
 "Fairy",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "togekissalde":{
 "abilities":{
-"0":"Guiding Omen",
+"0":"Void Omen",
 "1":"Pixilate",
 "H":"Fortunate Wing"
 },
@@ -41881,6 +43718,7 @@ Object.entries({
 "Fairy",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "togepi":{
@@ -41900,6 +43738,7 @@ Object.entries({
 "types":[
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "togetic":{
@@ -41920,6 +43759,7 @@ Object.entries({
 "Fairy",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "tomohawk":{
@@ -41940,6 +43780,7 @@ Object.entries({
 "Flying",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "torchic":{
@@ -41958,6 +43799,7 @@ Object.entries({
 "types":[
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "torkoal":{
@@ -41977,6 +43819,7 @@ Object.entries({
 "types":[
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "tornadus":{
@@ -41996,6 +43839,7 @@ Object.entries({
 "types":[
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "tornadustherian":{
@@ -42013,6 +43857,7 @@ Object.entries({
 "types":[
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "torracat":{
@@ -42031,6 +43876,7 @@ Object.entries({
 "types":[
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "torterra":{
@@ -42051,6 +43897,87 @@ Object.entries({
 "Grass",
 "Ground"],
 
+"passives":[],
+"replaceAbilities":true
+},
+"torterramegax":{
+"abilities":{
+"0":"Primal Ego"
+},
+"baseStats":{
+"hp":95,
+"atk":139,
+"def":135,
+"spa":75,
+"spd":105,
+"spe":86
+},
+"types":[
+"Grass",
+"Ground"],
+
+"passives":[
+"proficient"],
+
+"replaceAbilities":true
+},
+"torterramegay":{
+"abilities":{
+"0":"Terra Resolve"
+},
+"baseStats":{
+"hp":95,
+"atk":95,
+"def":135,
+"spa":159,
+"spd":105,
+"spe":46
+},
+"types":[
+"Grass",
+"Rock"],
+
+"passives":[
+"proficient"],
+
+"replaceAbilities":true
+},
+"torterrarift":{
+"abilities":{
+"0":"Mountain Rift"
+},
+"baseStats":{
+"hp":150,
+"atk":80,
+"def":100,
+"spa":70,
+"spd":110,
+"spe":40
+},
+"types":[
+"Ground",
+"Ice"],
+
+"passives":[],
+"replaceAbilities":true
+},
+"torterrariftshatter":{
+"abilities":{
+"0":"Desert Rift"
+},
+"baseStats":{
+"hp":180,
+"atk":120,
+"def":100,
+"spa":40,
+"spd":100,
+"spe":50
+},
+"types":[
+"Grass",
+"Fire"],
+
+"passives":[],
 "replaceAbilities":true
 },
 "totodile":{
@@ -42069,6 +43996,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "toucannon":{
@@ -42089,6 +44017,7 @@ Object.entries({
 "Flying",
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "toxapex":{
@@ -42109,6 +44038,7 @@ Object.entries({
 "Poison",
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "toxel":{
@@ -42129,6 +44059,7 @@ Object.entries({
 "Electric",
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "toxicroak":{
@@ -42149,6 +44080,7 @@ Object.entries({
 "Poison",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "toxtricity":{
@@ -42169,6 +44101,7 @@ Object.entries({
 "Electric",
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "toxtricitylowkey":{
@@ -42189,6 +44122,7 @@ Object.entries({
 "Dark",
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "trapinch":{
@@ -42208,6 +44142,7 @@ Object.entries({
 "types":[
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "treecko":{
@@ -42226,6 +44161,7 @@ Object.entries({
 "types":[
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "trevenant":{
@@ -42246,6 +44182,7 @@ Object.entries({
 "Ghost",
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "tropius":{
@@ -42266,6 +44203,7 @@ Object.entries({
 "Grass",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "trubbish":{
@@ -42285,6 +44223,7 @@ Object.entries({
 "types":[
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "trumbeak":{
@@ -42305,6 +44244,7 @@ Object.entries({
 "Normal",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "tsareena":{
@@ -42325,6 +44265,7 @@ Object.entries({
 "Grass",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "turtonator":{
@@ -42346,6 +44287,7 @@ Object.entries({
 "Fire",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "turtwig":{
@@ -42364,6 +44306,7 @@ Object.entries({
 "types":[
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "tynamo":{
@@ -42381,6 +44324,7 @@ Object.entries({
 "types":[
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "typenull":{
@@ -42398,6 +44342,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "typhlosion":{
@@ -42418,6 +44363,28 @@ Object.entries({
 "Fire",
 "Ground"],
 
+"passives":[],
+"replaceAbilities":true
+},
+"typhlosionalt":{
+"abilities":{
+"0":"Blazing Mane",
+"1":"Drought",
+"H":"Sand Rush"
+},
+"baseStats":{
+"hp":83,
+"atk":95,
+"def":85,
+"spa":112,
+"spd":70,
+"spe":100
+},
+"types":[
+"Fire",
+"Ground"],
+
+"passives":[],
 "replaceAbilities":true
 },
 "typhlosionhisui":{
@@ -42437,6 +44404,28 @@ Object.entries({
 "types":[
 "Fire",
 "Ghost"],
+
+"passives":[],
+"replaceAbilities":true
+},
+"typhlosionmega":{
+"abilities":{
+"0":"Plasma Eruption"
+},
+"baseStats":{
+"hp":83,
+"atk":138,
+"def":85,
+"spa":139,
+"spd":70,
+"spe":130
+},
+"types":[
+"Fire",
+"Electric"],
+
+"passives":[
+"proficient"],
 
 "replaceAbilities":true
 },
@@ -42458,6 +44447,7 @@ Object.entries({
 "Rock",
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "tyrantrum":{
@@ -42478,6 +44468,7 @@ Object.entries({
 "Rock",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "tyrogue":{
@@ -42497,6 +44488,7 @@ Object.entries({
 "types":[
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "tyrunt":{
@@ -42516,6 +44508,7 @@ Object.entries({
 "Rock",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "umbreon":{
@@ -42537,6 +44530,7 @@ Object.entries({
 "types":[
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "unown":{
@@ -42554,12 +44548,13 @@ Object.entries({
 "types":[
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "ursaluna":{
 "abilities":{
 "0":"Raging Beast",
-"1":"Moonlit Hide",
+"1":"Bulletproof",
 "H":"Territorial"
 },
 "baseStats":{
@@ -42574,13 +44569,14 @@ Object.entries({
 "Ground",
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "ursalunabloodmoon":{
 "abilities":{
 "0":"Mind's Eye",
 "1":"Lunar Dread",
-"H":"Shadow Shield"
+"H":"Moonlit Hide"
 },
 "baseStats":{
 "hp":133,
@@ -42594,6 +44590,7 @@ Object.entries({
 "Ground",
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "ursaring":{
@@ -42613,6 +44610,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "urshifu":{
@@ -42631,6 +44629,7 @@ Object.entries({
 "Fighting",
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "urshifurapidstrike":{
@@ -42649,6 +44648,7 @@ Object.entries({
 "Fighting",
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "uxie":{
@@ -42666,6 +44666,7 @@ Object.entries({
 "types":[
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "vanillish":{
@@ -42685,6 +44686,7 @@ Object.entries({
 "types":[
 "Ice"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "vanillite":{
@@ -42704,6 +44706,7 @@ Object.entries({
 "types":[
 "Ice"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "vanilluxe":{
@@ -42724,6 +44727,7 @@ Object.entries({
 "Ice",
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "vaporeon":{
@@ -42743,6 +44747,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "varoom":{
@@ -42762,6 +44767,7 @@ Object.entries({
 "Steel",
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "veluza":{
@@ -42783,6 +44789,7 @@ Object.entries({
 "Water",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "venomicon":{
@@ -42802,6 +44809,7 @@ Object.entries({
 "Poison",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "venomoth":{
@@ -42822,6 +44830,7 @@ Object.entries({
 "Poison",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "venonat":{
@@ -42842,6 +44851,7 @@ Object.entries({
 "Bug",
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "venusaur":{
@@ -42861,6 +44871,49 @@ Object.entries({
 "types":[
 "Grass",
 "Poison"],
+
+"passives":[],
+"replaceAbilities":true
+},
+"venusaurgmax":{
+"abilities":{
+"0":"Ancient Bloom"
+},
+"baseStats":{
+"hp":136,
+"atk":82,
+"def":83,
+"spa":100,
+"spd":100,
+"spe":80
+},
+"types":[
+"Grass",
+"Poison"],
+
+"passives":[
+"proficient"],
+
+"replaceAbilities":true
+},
+"venusaurmega":{
+"abilities":{
+"0":"Toxic Bloom"
+},
+"baseStats":{
+"hp":80,
+"atk":60,
+"def":143,
+"spa":122,
+"spd":140,
+"spe":80
+},
+"types":[
+"Grass",
+"Poison"],
+
+"passives":[
+"proficient"],
 
 "replaceAbilities":true
 },
@@ -42882,6 +44935,7 @@ Object.entries({
 "Bug",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "vibrava":{
@@ -42902,6 +44956,7 @@ Object.entries({
 "Ground",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "victini":{
@@ -42920,6 +44975,7 @@ Object.entries({
 "Psychic",
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "victreebel":{
@@ -42940,6 +44996,7 @@ Object.entries({
 "Grass",
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "vigoroth":{
@@ -42958,6 +45015,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "vikavolt":{
@@ -42978,6 +45036,7 @@ Object.entries({
 "Bug",
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "vikavolttotem":{
@@ -42996,6 +45055,7 @@ Object.entries({
 "Bug",
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "vileplume":{
@@ -43016,6 +45076,7 @@ Object.entries({
 "Grass",
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "virizion":{
@@ -43035,6 +45096,7 @@ Object.entries({
 "Grass",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "vivillon":{
@@ -43055,6 +45117,7 @@ Object.entries({
 "Bug",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "vivillonfancy":{
@@ -43075,6 +45138,7 @@ Object.entries({
 "Bug",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "vivillonpokeball":{
@@ -43095,6 +45159,7 @@ Object.entries({
 "Bug",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "volbeat":{
@@ -43115,6 +45180,7 @@ Object.entries({
 "Bug",
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "volcanion":{
@@ -43133,6 +45199,7 @@ Object.entries({
 "Fire",
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "volcarona":{
@@ -43153,6 +45220,7 @@ Object.entries({
 "Bug",
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "volcaronaaevian":{
@@ -43172,6 +45240,7 @@ Object.entries({
 "types":[
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "volkraken":{
@@ -43192,6 +45261,7 @@ Object.entries({
 "Water",
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "volkritter":{
@@ -43212,6 +45282,7 @@ Object.entries({
 "Water",
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "voltorb":{
@@ -43231,6 +45302,7 @@ Object.entries({
 "types":[
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "voltorbhisui":{
@@ -43251,6 +45323,7 @@ Object.entries({
 "Electric",
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "voodoll":{
@@ -43271,6 +45344,7 @@ Object.entries({
 "Normal",
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "voodoom":{
@@ -43291,6 +45365,7 @@ Object.entries({
 "Fighting",
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "vullaby":{
@@ -43311,6 +45386,7 @@ Object.entries({
 "Dark",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "vulpix":{
@@ -43329,6 +45405,7 @@ Object.entries({
 "types":[
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "vulpixalola":{
@@ -43347,6 +45424,7 @@ Object.entries({
 "types":[
 "Ice"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "wailmer":{
@@ -43366,6 +45444,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "wailord":{
@@ -43386,6 +45465,7 @@ Object.entries({
 "Water",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "walkingwake":{
@@ -43404,6 +45484,7 @@ Object.entries({
 "Water",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "walrein":{
@@ -43424,6 +45505,7 @@ Object.entries({
 "Ice",
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "wartortle":{
@@ -43442,6 +45524,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "watchog":{
@@ -43461,6 +45544,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "wattrel":{
@@ -43481,6 +45565,7 @@ Object.entries({
 "Electric",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "weavile":{
@@ -43501,6 +45586,7 @@ Object.entries({
 "Dark",
 "Ice"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "weedle":{
@@ -43520,6 +45606,7 @@ Object.entries({
 "Bug",
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "weepinbell":{
@@ -43539,6 +45626,7 @@ Object.entries({
 "Grass",
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "weezing":{
@@ -43558,6 +45646,7 @@ Object.entries({
 "types":[
 "Poison"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "weezinggalar":{
@@ -43578,6 +45667,7 @@ Object.entries({
 "Poison",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "whimsicott":{
@@ -43598,6 +45688,7 @@ Object.entries({
 "Grass",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "whiscash":{
@@ -43618,6 +45709,7 @@ Object.entries({
 "Water",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "whismur":{
@@ -43637,6 +45729,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "wigglytuff":{
@@ -43657,6 +45750,7 @@ Object.entries({
 "Normal",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "wiglett":{
@@ -43676,6 +45770,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "wimpod":{
@@ -43696,6 +45791,7 @@ Object.entries({
 "Bug",
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "wingull":{
@@ -43716,6 +45812,7 @@ Object.entries({
 "Water",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "wishiwashi":{
@@ -43734,6 +45831,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "wobbuffet":{
@@ -43752,6 +45850,7 @@ Object.entries({
 "types":[
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "wochien":{
@@ -43770,6 +45869,7 @@ Object.entries({
 "Dark",
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "wooloo":{
@@ -43789,6 +45889,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "wooper":{
@@ -43809,6 +45910,7 @@ Object.entries({
 "Water",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "wooperpaldea":{
@@ -43829,6 +45931,7 @@ Object.entries({
 "Poison",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "wormadam":{
@@ -43848,6 +45951,7 @@ Object.entries({
 "Bug",
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "wormadamsandy":{
@@ -43867,6 +45971,7 @@ Object.entries({
 "Bug",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "wormadamtrash":{
@@ -43886,6 +45991,7 @@ Object.entries({
 "Bug",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "wugtrio":{
@@ -43905,6 +46011,7 @@ Object.entries({
 "types":[
 "Water"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "wurmple":{
@@ -43923,6 +46030,7 @@ Object.entries({
 "types":[
 "Bug"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "wynaut":{
@@ -43941,6 +46049,7 @@ Object.entries({
 "types":[
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "wyrdeer":{
@@ -43961,6 +46070,7 @@ Object.entries({
 "Normal",
 "Psychic"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "xatu":{
@@ -43981,6 +46091,7 @@ Object.entries({
 "Psychic",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "xerneas":{
@@ -43998,6 +46109,7 @@ Object.entries({
 "types":[
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "xurkitree":{
@@ -44015,6 +46127,7 @@ Object.entries({
 "types":[
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "yamask":{
@@ -44032,6 +46145,7 @@ Object.entries({
 "types":[
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "yamaskgalar":{
@@ -44050,6 +46164,7 @@ Object.entries({
 "Ground",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "yamper":{
@@ -44068,6 +46183,7 @@ Object.entries({
 "types":[
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "yanma":{
@@ -44088,6 +46204,7 @@ Object.entries({
 "Bug",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "yanmega":{
@@ -44108,6 +46225,7 @@ Object.entries({
 "Bug",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "yungoos":{
@@ -44127,6 +46245,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "yveltal":{
@@ -44145,6 +46264,7 @@ Object.entries({
 "Dark",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "zacian":{
@@ -44162,6 +46282,7 @@ Object.entries({
 "types":[
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "zaciancrowned":{
@@ -44180,6 +46301,7 @@ Object.entries({
 "Fairy",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "zamazenta":{
@@ -44197,6 +46319,7 @@ Object.entries({
 "types":[
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "zamazentacrowned":{
@@ -44215,6 +46338,7 @@ Object.entries({
 "Fighting",
 "Steel"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "zangoose":{
@@ -44235,6 +46359,7 @@ Object.entries({
 "Normal",
 "Fighting"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "zapdos":{
@@ -44254,6 +46379,7 @@ Object.entries({
 "Electric",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "zapdosgalar":{
@@ -44272,6 +46398,7 @@ Object.entries({
 "Fighting",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "zarude":{
@@ -44290,6 +46417,7 @@ Object.entries({
 "Dark",
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "zarudedada":{
@@ -44308,6 +46436,7 @@ Object.entries({
 "Dark",
 "Grass"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "zebstrika":{
@@ -44328,6 +46457,7 @@ Object.entries({
 "Electric",
 "Fire"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "zekrom":{
@@ -44346,6 +46476,7 @@ Object.entries({
 "Dragon",
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "zeraora":{
@@ -44363,6 +46494,7 @@ Object.entries({
 "types":[
 "Electric"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "zigzagoon":{
@@ -44382,6 +46514,7 @@ Object.entries({
 "types":[
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "zigzagoongalar":{
@@ -44402,6 +46535,7 @@ Object.entries({
 "Dark",
 "Normal"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "zoroark":{
@@ -44422,6 +46556,7 @@ Object.entries({
 "Dark",
 "Fairy"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "zoroarkhisui":{
@@ -44442,6 +46577,7 @@ Object.entries({
 "Normal",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "zorua":{
@@ -44460,6 +46596,7 @@ Object.entries({
 "types":[
 "Dark"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "zoruahisui":{
@@ -44479,6 +46616,7 @@ Object.entries({
 "Normal",
 "Ghost"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "zubat":{
@@ -44498,6 +46636,7 @@ Object.entries({
 "Poison",
 "Flying"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "zweilous":{
@@ -44518,6 +46657,7 @@ Object.entries({
 "Dark",
 "Dragon"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "zygarde":{
@@ -44537,6 +46677,7 @@ Object.entries({
 "Dragon",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 },
 "zygarde10":{
@@ -44556,6 +46697,7 @@ Object.entries({
 "Dragon",
 "Ground"],
 
+"passives":[],
 "replaceAbilities":true
 }
 });_i18<_Object$entries12.length;_i18++){var _ref9=_Object$entries12[_i18];var _id8=_ref9[0];var _update4=_ref9[1];
@@ -45895,8 +48037,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "desc":"Regenerator. Switching out restores 1/3 maximum HP and cures one adjacent active ally's major status condition.",
 "shortDesc":"Regenerator. Switching out restores 1/3 HP and cures one adjacent active ally's major status condition."
 },
-guidingomen:{
-"name":"Guiding Omen",
+voidomen:{
+"name":"Void Omen",
 "desc":"Mold Breaker: moves ignore bypassable opposing abilities. Allies take 25% less attack damage; this does not protect the holder. Doubles move secondary-effect chances and removes charging turns. Once per switch-in, successfully applying a move secondary effect creates a ward that blocks the next opposing stat-drop event against an adjacent ally.",
 "shortDesc":"Mold Breaker; allies take 25% less damage; doubles secondaries, skips charging; first secondary wards an ally."
 },
@@ -46596,8 +48738,8 @@ guidingomen:{
 "desc":"Its first damaging Flower Trick against a surviving foe each entry also attempts to plant Leech Seed. Grass-type immunity and Substitute still apply.",
 "shortDesc":"First Flower Trick hit each entry also plants Leech Seed."
 },
-"hydratyrant":{
-"name":"Hydra Tyrant",
+"voidtyrant":{
+"name":"Void Tyrant",
 "num":10179,
 "rating":5,
 "desc":"Hydra Bond + Berserk. Once per battle, after Draco Meteor applies its Sp. Atk drops, restores all negative stat stages to zero after the entire attack finishes. Positive stages remain. No Self Sufficient healing or immunity.",
@@ -46814,8 +48956,8 @@ mythicscale:{
 "desc":"Slush Rush + Refrigerate + Strong Jaw + Levitate. Speed rises in snow; eligible Normal moves become Ice, biting moves gain power, and this Pokemon is airborne.",
 "shortDesc":"Slush Rush + Refrigerate + Strong Jaw + Levitate."
 },
-"royalvoice":{
-"name":"Royal Voice",
+"voidvoice":{
+"name":"Void Voice",
 "num":10113,
 "gen":9,
 "desc":"Pixilate + Queenly Majesty + Dream Sickness. Normal moves become Fairy and receive Pixilate power boosts. Blocks opposing priority moves targeting its side. Includes Telepathy and its field effects, 1/16 end-turn healing for itself and allies, and a once-per-switch-in rescue that leaves an ally at 1 HP and costs the holder 1/4 max HP.",
@@ -48418,13 +50560,2473 @@ sunsovereign:{
 
 
 
+var CUSTOM_ABILITY_DISPLAY_COMPONENTS={
+"adaptivecycle":[],
+"noability":[],
+"selfsufficient":[],
+"selfrepair":[
+"naturalcure",
+"selfsufficient"],
+
+"naturalrecovery":[
+"naturalcure",
+"regenerator"],
+
+"purifyingfrost":[],
+"smolderingshroud":[
+"whitesmoke"],
+
+"springfur":[
+"furcoat"],
+
+"varietyrush":[],
+"knuckletide":[
+"ironfist"],
+
+"reservoir":[
+"waterabsorb",
+"gluttony",
+"damp"],
+
+"crosscurrent":[
+"swiftswim"],
+
+"pearlcurrent":[
+"waterabsorb"],
+
+"slipstream":[
+"levitate",
+"keeneye"],
+
+"mimecraft":[],
+"apexflytrap":[
+"levitate"],
+
+"forgegrit":[
+"guts"],
+
+"masonsfist":[
+"ironfist"],
+
+"marshconduit":[
+"waterabsorb"],
+
+"silkward":[],
+"swarmdrive":[
+"swarm"],
+
+"mirechorus":[
+"liquidvoice",
+"poisontouch"],
+
+"boretunnel":[
+"eartheater"],
+
+"mossarmor":[
+"levitate",
+"stamina",
+"naturalcure"],
+
+"stormpower":[],
+"stormcalling":[
+"drizzle",
+"liquidvoice",
+"dissonantecho"],
+
+"unstableevo":[],
+"hisuianpath":[
+"sapsipper",
+"innerfocus",
+"fluffy"],
+
+"scarecrow":[
+"windrider",
+"steelworker",
+"stakeout"],
+
+"bruteforce":[
+"reckless",
+"rockhead"],
+
+"gigavolt":[
+"moldbreaker",
+"lightningrod",
+"static"],
+
+"verdantedge":[
+"chlorophyll",
+"grasspelt",
+"sharpness"],
+
+"permafrost":[
+"icebody",
+"icescales",
+"refrigerate"],
+
+"glacialheart":[
+"thermalexchange",
+"icebody",
+"stalwart"],
+
+"moonveil":[
+"pastelveil",
+"mistysurge"],
+
+"tidalwave":[
+"waterabsorb",
+"hydration",
+"raindish"],
+
+"livewire":[
+"transistor",
+"voltabsorb",
+"quickfeet",
+"ironbarbs"],
+
+"kindledfury":[
+"fluffy",
+"guts",
+"flashfire"],
+
+"burningrage":[],
+"exalt":[
+"defiant",
+"sharpness",
+"moldbreaker"],
+
+"fightingfiend":[
+"vitalspirit",
+"multiscale"],
+
+"kickfiend":[
+"striker",
+"violentrush",
+"limber"],
+
+"wreckingball":[
+"sturdy",
+"selfsufficient",
+"crumblingshell"],
+
+"swiftdrill":[
+"swiftswim",
+"powerdrill",
+"raindish"],
+
+"lifeguard":[
+"friendguard",
+"swornduty",
+"propellertail"],
+
+"zen":[
+"waterabsorb",
+"unaware",
+"damp"],
+
+"stormsong":[
+"liquidvoice",
+"drizzle",
+"soundproof"],
+
+"astralward":[
+"magicbounce",
+"telepathy",
+"anticipation"],
+
+"moonlightvigil":[
+"innerfocus",
+"pressure",
+"illuminate"],
+
+"neurotoxin":[
+"hydrabond",
+"shedskin",
+"regenerator"],
+
+"punchfiend":[
+"ironfist",
+"innerfocus",
+"unseenfist"],
+
+"doublestrike":[
+"ironfist",
+"technician",
+"skilllink"],
+
+"spinfiend":[
+"technician",
+"vitalspirit"],
+
+"terragift":[
+"hospitality",
+"unaware"],
+
+"precision":[],
+"secondwind":[],
+"rapidresponse":[],
+"seafiend":[
+"toxicdebris",
+"waterbubble"],
+
+"hisuianoath":[
+"swornduty",
+"toughclaws",
+"corrosion"],
+
+"aevianoath":[
+"swornduty",
+"dualwield",
+"battlearmor"],
+
+"hisuianvanguard":[
+"rapidresponse",
+"windpower"],
+
+"unovavanguard":[
+"violentrush",
+"windrider"],
+
+"unovawing":[
+"superluck",
+"competitive"],
+
+"aevianwing":[
+"rockhead",
+"defiant"],
+
+"aeviandream":[
+"baddreams",
+"shedskin",
+"toughclaws"],
+
+"aevianfrost":[
+"icebody",
+"guts"],
+
+"aeviantoxin":[
+"strongjaw",
+"layeredcoat",
+"merciless"],
+
+"aevianspark":[
+"technician",
+"static",
+"earlybird"],
+
+"aeviangrief":[
+"magicguard",
+"cursedbody",
+"wonderskin",
+"levitate"],
+
+"aevianrocket":[
+"bruteforce",
+"regenerator",
+"moldbreaker",
+"swiftswim"],
+
+"adaptivecore":[
+"download",
+"defragment",
+"selfrepair"],
+
+"aevianglacier":[
+"snowwarning",
+"icebody",
+"refrigerate"],
+
+"aevianbolt":[
+"stormpower",
+"static",
+"voltabsorb"],
+
+"ascendance":[],
+"hisuianresolve":[
+"bruteforce",
+"magmaarmor"],
+
+"nobleconduit":[
+"battery",
+"solarpower",
+"aftermath"],
+
+"nobledance":[
+"dancer",
+"hospitality",
+"owntempo"],
+
+"noblearmor":[
+"prismarmor",
+"icebody"],
+
+"noblerider":[
+"swiftswim",
+"moldbreaker"],
+
+"celestialheart":[
+"soulheart",
+"friendguard",
+"serenegrace"],
+
+"crueltag":[
+"shadowtag",
+"infiltrator",
+"baddreams"],
+
+"cruelshell":[
+"hypercutter",
+"shellarmor",
+"angershell"],
+
+"adaptability":[],
+"spiralevolution":[
+"moldbreaker",
+"adaptability",
+"levitate",
+"dualwield",
+"infiltrator",
+"shielddust"],
+
+"alchemistsurge":[
+"psychicsurge",
+"competitive",
+"hydrabond",
+"prankster"],
+
+"voidomen":[
+"friendguard",
+"serenegrace",
+"moldbreaker"],
+
+"greatmarsh":[
+"anticipation",
+"dryskin",
+"adaptability",
+"toxicchain"],
+
+"phalanxform":[
+"hydrabond",
+"friendguard",
+"battlearmor"],
+
+"windchime":[
+"armorize",
+"punkrock",
+"levitate"],
+
+"hauntedchime":[
+"elevate",
+"windpower",
+"cursedbody"],
+
+"auramaster":[
+"dualwield",
+"innerfocus",
+"technician"],
+
+"patternshift":[
+"protean",
+"shedskin",
+"unaware"],
+
+"bonewarrior":[
+"battlearmor",
+"selfsufficient"],
+
+"ironvise":[
+"toughclaws",
+"battlearmor",
+"lightmetal",
+"intimidate"],
+
+"dualwield":[],
+"apexvenom":[
+"strongjaw",
+"shedskin"],
+
+"sirius":[
+"apexvenom",
+"blackviper"],
+
+"apexpredator":[
+"relicarmor",
+"dragonize",
+"windrider"],
+
+"violentrush":[],
+"bullrush":[
+"violentrush",
+"intimidate"],
+
+"unleashedego":[
+"ultraego",
+"levitate",
+"ragingstorm"],
+
+"joyride":[
+"aerilate",
+"violentrush",
+"vitalspirit"],
+
+"aerilate":[],
+"aftermath":[],
+"airlock":[],
+"analytic":[],
+"inexorable":[],
+"wildspirit":[],
+"angerpoint":[],
+"angershell":[],
+"anticipation":[],
+"arenatrap":[],
+"armortail":[],
+"aromaveil":[],
+"asoneglastrier":[
+"unnerve",
+"chillingneigh"],
+
+"asonespectrier":[
+"unnerve",
+"grimneigh"],
+
+"aquashell":[
+"waterveil",
+"toughclaws",
+"innerfocus"],
+
+"aurabreak":[],
+"baddreams":[],
+"ballfetch":[],
+"battery":[],
+"battlearmor":[],
+"battlefervor":[],
+"battlebond":[
+"filter",
+"selfsufficient"],
+
+"shadowbond":[
+"battlebond",
+"infiltrator"],
+
+"apexbond":[
+"battlebond",
+"supremeoverlord",
+"roughskin"],
+
+"sacredbond":[
+"battlebond",
+"magmaarmor",
+"intimidate",
+"flashfire"],
+
+"beadsofruin":[],
+"beastboost":[],
+"berserk":[],
+"bigpecks":[],
+"blaze":[],
+"apexarmor":[
+"bulletproof",
+"roughskin",
+"stalwart",
+"selfsufficient"],
+
+"hardyskin":[
+"dryskin",
+"vitalspirit",
+"moxie"],
+
+"bulletproof":[],
+"cheekpouch":[],
+"chillingneigh":[],
+"chlorophyll":[],
+"solarhydra":[
+"hydrabond",
+"grassysurge",
+"solarpower",
+"solarbud"],
+
+"astralengine":[
+"elevate",
+"powerspot",
+"analytic"],
+
+"elevate":[],
+"clearbody":[],
+"cloudnine":[],
+"colorchange":[],
+"comatose":[],
+"conductivity":[],
+"commander":[],
+"competitive":[],
+"compoundeyes":[],
+"contrary":[],
+"queensguard":[
+"contrary",
+"shedskin",
+"intimidate",
+"infiltrator"],
+
+"corrosivetouch":[
+"technician",
+"poisontouch",
+"corrosion"],
+
+"corrosion":[],
+"costar":[],
+"cottondown":[],
+"crumblingshell":[],
+"witheringshell":[
+"crumblingshell",
+"naturalrecovery",
+"sturdy"],
+
+"cudchew":[],
+"curiousmedicine":[],
+"cursedbody":[],
+"cutecharm":[],
+"damp":[],
+"dancer":[],
+"darkaura":[],
+"dauntlessshield":[],
+"dazzling":[],
+"defeatist":[],
+"relicinstinct":[],
+"fossilfrenzy":[
+"klutz"],
+
+"defiant":[],
+"deltastream":[],
+"desolateland":[],
+"disguise":[],
+"download":[],
+"dragonize":[],
+"draconicforce":[
+"dragonize",
+"strongjaw",
+"moldbreaker"],
+
+"dragonsmaw":[],
+"drizzle":[],
+"drought":[],
+"sunsovereign":[
+"moldbreaker",
+"drought",
+"unboundblaze",
+"selfsufficient"],
+
+"burningspirit":[
+"selfsufficient",
+"opportunist",
+"magmaarmor"],
+
+"emperorsresolve":[
+"competitive",
+"slushrush",
+"swiftswim"],
+
+"terraresolve":[
+"stamina",
+"solidrock"],
+
+"primalego":[
+"unaware",
+"ultraego",
+"moldbreaker"],
+
+"eclipsevision":[],
+"venomarmor":[
+"poisonheal",
+"dualwield"],
+
+"toxicarmor":[
+"venomarmor",
+"violentrush"],
+
+"corrosiveburn":[
+"corrosion",
+"oblivious",
+"venomignition"],
+
+"noseformation":[
+"filter",
+"elevate"],
+
+"mourningvessel":[
+"prankster",
+"magicguard"],
+
+"fallenstar":[
+"moldbreaker",
+"dualwield",
+"selfsufficient"],
+
+"eclipse":[],
+"ragingstorm":[
+"moldbreaker",
+"battlearmor"],
+
+"ragingoverlord":[
+"ragingstorm",
+"supremeoverlord"],
+
+"voltagevolley":[],
+"vanguard":[
+"intimidate"],
+
+"apexcleave":[
+"sharpness",
+"dualwield",
+"moxie"],
+
+"aurainstinct":[
+"adaptability",
+"dualwield",
+"secondwind"],
+
+"abysssniper":[
+"sniper",
+"stalwart"],
+
+"grandmaster":[],
+"warpath":[
+"moldbreaker"],
+
+"atrocity":[
+"moldbreaker",
+"unboundblaze",
+"selfsufficient",
+"toughclaws"],
+
+"wickedsnare":[
+"stakeout",
+"tanglinghair",
+"prankster"],
+
+"voidcommand":[
+"insomnia",
+"superluck"],
+
+"bewitchingmajesty":[
+"magicbounce",
+"queenlymajesty"],
+
+"mythicscale":[
+"marvelscale",
+"levitate",
+"compoundeyes",
+"shielddust"],
+
+"toxicevolution":[
+"moldbreaker",
+"corrosion",
+"dualwield",
+"shielddust",
+"levitate"],
+
+"soulstrike":[],
+"auroraresonance":[
+"liquidvoice",
+"waterabsorb",
+"icebody",
+"raindish"],
+
+"auroracurrent":[
+"snowwarning"],
+
+"alloycore":[
+"magicguard",
+"selfsufficient",
+"stalwart"],
+
+"hellfireeclipse":[
+"solarpower",
+"darkaura"],
+
+"sacrededge":[
+"sharpness",
+"swornduty"],
+
+"omenedge":[
+"sharpness",
+"dualwield",
+"pressure"],
+
+"dreadmaw":[
+"hugepower",
+"frisk",
+"invigorate"],
+
+"cursedkeepsake":[
+"frisk"],
+
+"curseddoll":[
+"toughclaws",
+"shadowshield",
+"frisk"],
+
+"cursedmarionette":[
+"prankster",
+"frisk"],
+
+"sandsovereign":[
+"sandstream",
+"dauntlessshield",
+"solidrock"],
+
+"tyrantstream":[
+"sandstream",
+"bruteforce"],
+
+"frostsovereign":[
+"snowwarning",
+"icebody",
+"filter"],
+
+"freezerburn":[
+"slushrush",
+"refrigerate",
+"strongjaw",
+"levitate"],
+
+"stormfright":[
+"intimidate",
+"stormpower",
+"lightningrod"],
+
+"enlightenment":[
+"purepower"],
+
+"relentlesslink":[
+"skilllink",
+"moldbreaker",
+"powerdrill"],
+
+"mirrorgreed":[
+"magicbounce",
+"analytic"],
+
+"uncheckedassault":[
+"scrappy",
+"striker",
+"opportunist",
+"limber"],
+
+"voidvoice":[
+"pixilate",
+"queenlymajesty",
+"dreamsickness"],
+
+"memoryleak":[],
+"defragment":[],
+"temporalshift":[],
+"dreamsickness":[
+"telepathy"],
+
+"voidveil":[
+"levitate",
+"magicguard",
+"insomnia"],
+
+"accumulation":[],
+"rifteater":[
+"accumulation",
+"sandstream"],
+
+"mountainrift":[
+"shellarmor",
+"selfsufficient"],
+
+"desertrift":[
+"sandforce",
+"sandstream",
+"heavymetal"],
+
+"adaptivecell":[],
+"adaptivepower":[
+"hugepower",
+"magicguard",
+"regenerator"],
+
+"relicbeam":[],
+"perfectforesight":[
+"trace",
+"insomnia"],
+
+"doomwarning":[
+"magicbounce",
+"magicguard",
+"anticipation"],
+
+"perfectego":[
+"ultraego"],
+
+"heavenlychorus":[
+"pixilate",
+"cloudnine",
+"fluffy"],
+
+"mourningsnow":[
+"snowwarning",
+"icebody"],
+
+"venombastion":[
+"stamina"],
+
+"rimeknuckle":[
+"ironfist",
+"filter",
+"icebody"],
+
+"streettyrant":[
+"intimidate",
+"shedskin",
+"moldbreaker"],
+
+"vitalsigns":[
+"invigorate"],
+
+"divineintervention":[
+"vitalsigns",
+"triage",
+"regenerator",
+"friendguard"],
+
+"mountainhunger":[
+"sapsipper",
+"thickfat",
+"earlybird"],
+
+"irondominion":[
+"pressure",
+"swornduty",
+"mirrorarmor"],
+
+"astralwatcher":[
+"prankster",
+"defragment",
+"frisk"],
+
+"treasuretitan":[
+"filter",
+"eartheater",
+"heavymetal",
+"intimidate"],
+
+"ragingfists":[
+"hydrabond",
+"scrappy"],
+
+"warship":[
+"swiftswim",
+"solidrock",
+"strongjaw"],
+
+"furnaceengine":[
+"steamengine",
+"flamebody",
+"selfsufficient",
+"solidrock"],
+
+"duneterror":[
+"sandstream",
+"shedskin",
+"sandspit"],
+
+"heatcoil":[
+"speedboost",
+"magmaarmor",
+"flamebody"],
+
+"sweetdecay":[
+"hustle",
+"gluttony",
+"sweetveil",
+"corrosion"],
+
+"bakedbliss":[
+"wellbakedbody",
+"thickfat",
+"sweetveil",
+"gluttony"],
+
+"sweetsanctuary":[
+"friendguard",
+"sweetveil",
+"aromaveil",
+"pastelveil"],
+
+"riptideclaws":[
+"swiftswim",
+"toughclaws",
+"shellarmor",
+"moldbreaker"],
+
+"tidaljaw":[
+"strongjaw",
+"swiftswim",
+"filter"],
+
+"dryskin":[],
+"sacredpower":[
+"duskilate",
+"insomnia",
+"magicguard"],
+
+"duskilate":[],
+"execution":[
+"duskilate",
+"moldbreaker"],
+
+"earlybird":[],
+"eartheater":[],
+"caverndrake":[
+"eartheater",
+"solidrock",
+"moldbreaker"],
+
+"echofiend":[],
+"effectspore":[],
+"electricsurge":[],
+"electromorphosis":[],
+"embodyaspectcornerstone":[],
+"embodyaspecthearthflame":[],
+"embodyaspectteal":[],
+"embodyaspectwellspring":[],
+"emergencyexit":[],
+"eternalflower":[
+"moldbreaker"],
+
+"ange":[
+"moldbreaker"],
+
+"fairyaura":[],
+"filter":[],
+"byxbysiontouch":[],
+"fluffyevo":[
+"overcoat"],
+
+"mindfreeze":[],
+"riotamp":[
+"galvanize",
+"resonanceforce",
+"voltabsorb"],
+
+"relicarmor":[],
+"tyrantdomain":[
+"relicarmor",
+"supremeoverlord",
+"selfsufficient",
+"sandstream"],
+
+"auroradomain":[
+"relicarmor",
+"refrigerate",
+"selfsufficient",
+"snowwarning"],
+
+"royalscales":[
+"prismscale",
+"dragonize",
+"selfsufficient"],
+
+"relicmishap":[],
+"windysurge":[],
+"flamebody":[],
+"flareboost":[],
+"falsedevotion":[
+"serenegrace",
+"naturalrecovery",
+"prankster"],
+
+"truedevotion":[
+"falsedevotion",
+"technician"],
+
+"ancientbloom":[
+"effectspore",
+"selfsufficient"],
+
+"pollenbloom":[
+"thickfat"],
+
+"firemane":[],
+"blazingmane":[],
+"plasmaeruption":[
+"static",
+"flamebody"],
+
+"fortressshell":[],
+"waterbarrage":[],
+"livinglegend":[],
+"flashfire":[],
+"flowergift":[],
+"flowerveil":[],
+"fluffy":[],
+"forecast":[],
+"forewarn":[],
+"searescuer":[],
+"holycow":[],
+"dreepyvanguard":[
+"stalwart"],
+
+"groundingtail":[],
+"steelplumage":[],
+"venomcanticle":[],
+"solarbud":[],
+"dissonantecho":[],
+"templechime":[
+"elevate",
+"levitate"],
+
+"soothingpresence":[
+"friendguard",
+"aromaveil"],
+
+"friendguard":[],
+"verdanthospitality":[],
+"verdantsanctuary":[
+"grassysurge",
+"invigorate",
+"hospitality",
+"friendguard"],
+
+"echosense":[
+"echofiend",
+"frisk",
+"telepathy",
+"infiltrator"],
+
+"frisk":[],
+"fullmetalbody":[],
+"furcoat":[],
+"galewings":[],
+"wingedwraith":[
+"infiltrator",
+"galewings"],
+
+"galvanize":[],
+"gluttony":[],
+"goodasgold":[],
+"gooey":[
+"hydration",
+"sapsipper"],
+
+"gorillatactics":[],
+"primaltactics":[],
+"grasspelt":[],
+"grassysurge":[],
+"grimneigh":[],
+"guarddog":[],
+"gulpmissile":[],
+"guts":[],
+"hadronengine":[],
+"harvest":[],
+"healer":[],
+"invigorate":[],
+"swornduty":[],
+"heatproof":[],
+"heavymetal":[],
+"hyperdrill":[],
+"honeygather":[],
+"hospitality":[],
+"hugepower":[],
+"hungerswitch":[],
+"hustle":[],
+"hydrabond":[],
+"hydraheart":[
+"hydrabond",
+"stamina"],
+
+"sweetresonance":[
+"supersweetsyrup",
+"selfsufficient",
+"hydrabond"],
+
+"imperialmandate":[],
+"phantombarrage":[
+"clearbody",
+"infiltrator",
+"levitate",
+"hydrabond"],
+
+"astralcore":[
+"purepower",
+"naturalcure",
+"illuminate"],
+
+"divinemockery":[
+"hydrabond",
+"moldbreaker",
+"sniper"],
+
+"truehydra":[
+"hydrabond",
+"regenerator",
+"shedskin",
+"selfsufficient"],
+
+"desertspirit":[
+"levitate",
+"sandstream",
+"tintedlens"],
+
+"desertshell":[
+"skilllink",
+"heatproof",
+"sandstream"],
+
+"voidtyrant":[
+"hydrabond",
+"berserk"],
+
+"orchardbond":[
+"hydrabond",
+"harvest"],
+
+"hydration":[],
+"hypercutter":[],
+"iceabsorb":[],
+"icebody":[],
+"iceface":[],
+"icescales":[],
+"illuminate":[],
+"illusion":[],
+"immunity":[],
+"imposter":[],
+"infiltrator":[],
+"burningcrown":[
+"intimidate",
+"whitesmoke",
+"moldbreaker",
+"unboundblaze",
+"selfsufficient"],
+
+"unboundblaze":[
+"dragonize",
+"magmaarmor"],
+
+"innardsout":[],
+"innerfocus":[],
+"insomnia":[],
+"frightfulwings":[
+"intimidate"],
+
+"intimidate":[],
+"intrepidsword":[],
+"inversion":[],
+"ironbarbs":[],
+"armorize":[],
+"argentdevotion":[
+"armorize",
+"swornduty",
+"serenegrace",
+"moldbreaker"],
+
+"ironfist":[],
+"justified":[],
+"knightsguard":[],
+"lancepoint":[
+"keeneye"],
+
+"keeneye":[],
+"klutz":[],
+"leafguard":[],
+"levitate":[],
+"libero":[],
+"lightmetal":[],
+"lightningrod":[],
+"limber":[],
+"lingeringaroma":[],
+"liquidooze":[],
+"liquidvoice":[],
+"longreach":[
+"superluck",
+"keeneye"],
+
+"magicbounce":[],
+"lunarorbit":[
+"magicbounce",
+"serenegrace",
+"triage",
+"magicguard"],
+
+"magicguard":[],
+"magician":[],
+"magmaarmor":[],
+"magnetpull":[],
+"marvelscale":[],
+"prismscale":[
+"marvelscale",
+"oblivious",
+"swiftswim"],
+
+"anchoredbattery":[
+"megalauncher",
+"suctioncups"],
+
+"megalauncher":[],
+"heavyartillery":[
+"unaware",
+"shellarmor"],
+
+"megasol":[],
+"bloomingsun":[
+"megasol",
+"invigorate",
+"naturalcure"],
+
+"merciless":[],
+"mimicry":[],
+"mindseye":[],
+"minus":[],
+"stormbell":[
+"mirrorarmor",
+"drizzle",
+"elevate"],
+
+"mirrorarmor":[],
+"mistysurge":[],
+"moldbreaker":[],
+"moody":[],
+"motordrive":[],
+"moxie":[],
+"requiem":[
+"cursedbody"],
+
+"reapersgrip":[
+"unaware",
+"darkaura",
+"selfsufficient"],
+
+"moonlitwings":[
+"serenegrace"],
+
+"terastaladaptability":[],
+"frozenfortress":[],
+"paradoxwheel":[],
+"paradoxpower":[],
+"paradoxpull":[],
+"multiscale":[],
+"multitype":[],
+"mummy":[],
+"myceliummight":[],
+"naturalcure":[],
+"neuroforce":[],
+"neutralization":[],
+"neutralizinggas":[],
+"noguard":[],
+"normalize":[],
+"oblivious":[],
+"opportunist":[],
+"orichalcumpulse":[],
+"overcoat":[],
+"overgrow":[],
+"owntempo":[],
+"parentalbond":[
+"moldbreaker"],
+
+"pastelveil":[],
+"perishbody":[],
+"pickpocket":[],
+"pickup":[],
+"piercingdrill":[],
+"pixilate":[],
+"plus":[],
+"poisonheal":[],
+"poisonpoint":[],
+"poisonpuppeteer":[],
+"poisontouch":[],
+"powerconstruct":[],
+"powerdrill":[],
+"powerofalchemy":[],
+"powerspot":[],
+"prankster":[],
+"predator":[],
+"royalarmament":[
+"powerdrill"],
+
+"pressure":[],
+"primordialsea":[],
+"prismarmor":[],
+"ironwill":[
+"prismarmor",
+"secondwind",
+"selfsufficient",
+"whiplash"],
+
+"proficient":[],
+"propellertail":[],
+"breakwater":[
+"propellertail"],
+
+"protean":[],
+"zprotean":[],
+"protosynthesis":[],
+"psychicsurge":[],
+"punkrock":[],
+"purepower":[],
+"purifyingsalt":[],
+"paradoxengine":[],
+"quarkdrive":[],
+"queenlymajesty":[],
+"quickdraw":[],
+"quickfeet":[],
+"raindish":[],
+"rattled":[],
+"receiver":[],
+"reckless":[],
+"refrigerate":[],
+"regenerator":[],
+"relentlesshunt":[
+"levitate"],
+
+"ripen":[],
+"rivalry":[],
+"rkssystem":[],
+"rockhead":[],
+"rockypayload":[],
+"roughskin":[],
+"roughscale":[],
+"runaway":[],
+"sandforce":[],
+"sandrush":[],
+"solarrush":[
+"sandrush",
+"chlorophyll"],
+
+"sandspit":[],
+"sandstream":[],
+"sandveil":[],
+"safeharbor":[
+"icebody",
+"waterabsorb",
+"hydration"],
+
+"seablessing":[
+"waterveil",
+"raindish"],
+
+"sapsipper":[],
+"schooling":[
+"hydrabond",
+"selfrepair",
+"moldbreaker"],
+
+"seviischooling":[
+"schooling"],
+
+"scrappy":[],
+"screencleaner":[],
+"seedsower":[],
+"serenegrace":[],
+"seasonalstride":[
+"chlorophyll"],
+
+"shadowshield":[],
+"voidcraft":[
+"elevate",
+"shadowshield",
+"temporalshift",
+"insomnia"],
+
+"shadowtag":[],
+"voidhex":[
+"prankster",
+"cursedbody"],
+
+"sharpness":[],
+"blademastery":[
+"sharpness",
+"superluck"],
+
+"goldentalons":[
+"stalwart",
+"goodasgold",
+"sharpness"],
+
+"starboxer":[],
+"silkendecoy":[
+"insomnia",
+"selfsufficient",
+"swarm"],
+
+"cursedarmament":[
+"filter",
+"frisk"],
+
+"shedskin":[],
+"sheerforce":[],
+"shellarmor":[],
+"slowclamp":[
+"shellarmor",
+"owntempo",
+"analytic",
+"sweetveil"],
+
+"shielddust":[],
+"shieldsdown":[
+"shellarmor",
+"selfrepair",
+"crumblingshell"],
+
+"simple":[],
+"skilllink":[],
+"slowstart":[],
+"slushrush":[],
+"sniper":[],
+"webassassin":[],
+"snowcloak":[],
+"snowwarning":[],
+"solarpower":[],
+"solarrecharge":[],
+"solidrock":[],
+"sinisterblaze":[],
+"soulfire":[],
+"soulsiphon":[
+"flashfire"],
+
+"malicewell":[
+"flamebody"],
+
+"soulcremation":[
+"soulsiphon",
+"soulpyre",
+"malicewell"],
+
+"soultag":[
+"soulfire",
+"shadowtag",
+"flamebody"],
+
+"soulheart":[],
+"highnoon":[
+"dualwield",
+"megalauncher"],
+
+"soundproof":[],
+"solaridol":[],
+"forestsurge":[],
+"lunaridol":[],
+"parasitism":[
+"dryskin"],
+
+"completeparasitism":[
+"parasitism",
+"filter",
+"selfrepair"],
+
+"venomheal":[
+"hypercutter",
+"poisonheal",
+"poisonpoint"],
+
+"resuscitation":[
+"selfrepair",
+"magicguard"],
+
+"pendulumswing":[
+"insomnia",
+"filter"],
+
+"nightrealm":[],
+"nightmarepulse":[
+"pendulumswing",
+"cursedbody",
+"baddreams"],
+
+"pulsewaste":[
+"protean",
+"poisontouch",
+"regenerator"],
+
+"glacialmass":[
+"heavymetal",
+"thickfat"],
+
+"riftdancer":[
+"chlorophyll",
+"dancer",
+"overgrow"],
+
+"lunarspirit":[],
+"royaldecree":[],
+"royalhive":[],
+"royalsun":[
+"drought",
+"supremeoverlord",
+"unnerve",
+"flamebody"],
+
+"tremor":[
+"levitate",
+"resonanceforce",
+"sandforce"],
+
+"resonanceforce":[],
+"verdantdrake":[
+"dualwield",
+"regenerator",
+"lightningrod",
+"limber"],
+
+"solarbloom":[],
+"wrathshield":[
+"bulletproof",
+"dauntlessshield",
+"selfrepair"],
+
+"shadowcurrent":[
+"protean",
+"technician",
+"anticipation",
+"infiltrator"],
+
+"astralwitchcraft":[
+"levitate",
+"magicguard",
+"magicbounce"],
+
+"blazingtempo":[
+"speedboost",
+"striker",
+"magmaarmor",
+"keeneye"],
+
+"ragingcurrent":[
+"swiftswim",
+"damp",
+"dryskin",
+"stamina"],
+
+"toxicbloom":[
+"pollenbloom",
+"selfsufficient"],
+
+"siegelauncher":[
+"stalwart"],
+
+"calderacore":[
+"magmaarmor",
+"sheerforce",
+"drought"],
+
+"speedboost":[],
+"spicyspray":[],
+"froststalker":[
+"stakeout",
+"sharpness",
+"refrigerate"],
+
+"stakeout":[],
+"stall":[],
+"stalwart":[],
+"stamina":[],
+"stancechange":[],
+"static":[],
+"steadfast":[],
+"steamengine":[],
+"steelworker":[],
+"steelyspirit":[],
+"stench":[],
+"stickyhold":[],
+"stormdrain":[],
+"striker":[],
+"perfectstriker":[
+"striker",
+"noguard",
+"libero"],
+
+"strikersmomentum":[],
+"nighthunt":[
+"strongjaw",
+"infiltrator",
+"intimidate",
+"frisk",
+"illuminate"],
+
+"strongjaw":[],
+"blackfang":[
+"strongjaw",
+"insomnia",
+"moxie"],
+
+"fluffycraft":[
+"fluffy",
+"technician",
+"naturalcure"],
+
+"mightyjaw":[],
+"sturdy":[],
+"suctioncups":[],
+"superluck":[],
+"supersweetsyrup":[
+"stickyhold"],
+
+"supremeoverlord":[],
+"surgesurfer":[],
+"swarm":[],
+"sweetveil":[],
+"swiftswim":[],
+"swordofruin":[],
+"symbiosis":[],
+"synchronize":[],
+"tabletsofruin":[],
+"tangledfeet":[],
+"tanglinghair":[],
+"technician":[],
+"telepathy":[],
+"teraformzero":[],
+"terashell":[],
+"terashift":[],
+"teravolt":[],
+"thermalexchange":[],
+"thickfat":[],
+"tintedlens":[],
+"torrent":[],
+"toughclaws":[],
+"toxicboost":[],
+"toxicchain":[],
+"toxicdebris":[],
+"trace":[],
+"transistor":[],
+"railguncircuit":[
+"lightningrod"],
+
+"razorcurrent":[
+"drizzle",
+"strongjaw",
+"speedboost"],
+
+"rainsovereign":[
+"drizzle"],
+
+"toxicrenewal":[
+"adaptability",
+"regenerator",
+"poisontouch"],
+
+"stormcircuit":[
+"electricsurge",
+"elevate",
+"currentcoil"],
+
+"ironmountain":[
+"filter",
+"stamina",
+"heavymetal"],
+
+"woolyconductor":[
+"fluffy",
+"moldbreaker",
+"static"],
+
+"absolutezero":[
+"snowwarning",
+"moldbreaker",
+"filter"],
+
+"surgeconduit":[
+"bruteforce",
+"shadowshield"],
+
+"digestivesap":[],
+"solartrap":[
+"accumulation",
+"digestivesap",
+"liquidooze"],
+
+"pulseblockade":[],
+"pulsetriad":[
+"hydrabond",
+"levitate",
+"clearbody"],
+
+"razorreach":[
+"sharpness",
+"longreach"],
+
+"witheringtouch":[
+"poisontouch",
+"corrosion"],
+
+"pulsebulwark":[],
+"soaringspirit":[
+"windpower",
+"selfsufficient"],
+
+"vendetta":[
+"angerpoint",
+"secondwind",
+"selfsufficient"],
+
+"triage":[],
+"truant":[],
+"turboblaze":[],
+"unaware":[],
+"unburden":[],
+"evilsanta":[],
+"unnerve":[],
+"unseenfist":[],
+"phantomfist":[
+"unseenfist",
+"selfrepair",
+"shadowshield",
+"aftermath"],
+
+"ultraego":[],
+"territorial":[
+"unnerve",
+"stamina",
+"guarddog"],
+
+"dishearten":[],
+"lunardread":[
+"dishearten",
+"insomnia",
+"pressure"],
+
+"stillwaters":[
+"cloudnine",
+"magicguard",
+"unaware"],
+
+"ragingbeast":[
+"guts",
+"moldbreaker"],
+
+"scavenger":[
+"overcoat",
+"bigpecks",
+"regenerator"],
+
+"ultrainstinct":[
+"moldbreaker",
+"innerfocus"],
+
+"duskdrive":[
+"battlefervor",
+"precision",
+"opportunist"],
+
+"burningego":[
+"ultraego",
+"flamebody",
+"magmaarmor"],
+
+"vesselofruin":[],
+"victorystar":[],
+"vitalspirit":[],
+"voltabsorb":[],
+"wanderingspirit":[],
+"wastingsurge":[],
+"waterabsorb":[],
+"waterbubble":[
+"waterveil"],
+
+"watercompaction":[],
+"waterveil":[],
+"weakarmor":[],
+"wellbakedbody":[],
+"stormsovereign":[
+"galewings",
+"keeneye"],
+
+"coldlogic":[
+"toughclaws",
+"prismarmor",
+"aftermath",
+"forewarn"],
+
+"whitesmoke":[],
+"whiplash":[],
+"wimpout":[],
+"windpower":[],
+"windrider":[],
+"wonderguard":[],
+"wonderskin":[],
+"zenmode":[],
+"zerotohero":[],
+"mountaineer":[],
+"rebound":[],
+"persistent":[],
+"layeredcoat":[
+"furcoat",
+"overcoat"],
+
+"empress":[
+"queenlymajesty",
+"royaldecree"],
+
+"imperialprincess":[
+"striker",
+"vitalspirit",
+"moxie"],
+
+"loyalguard":[
+"friendguard",
+"guarddog",
+"intimidate"],
+
+"abysslure":[
+"voltabsorb",
+"waterabsorb",
+"illuminate"],
+
+"bogbody":[
+"thickfat",
+"levitate",
+"dryskin"],
+
+"toxicsink":[
+"effectspore",
+"invigorate"],
+
+"frostsiren":[
+"refrigerate",
+"forewarn",
+"dryskin"],
+
+"protectiveward":[
+"liquidvoice",
+"shellarmor",
+"waterabsorb"],
+
+"amethystglow":[
+"icebody",
+"refrigerate"],
+
+"crystalresonance":[
+"amethystglow",
+"magicbounce"],
+
+"islandcurrent":[
+"swiftswim",
+"windrider"],
+
+"oceanicwings":[
+"waterabsorb",
+"hydration",
+"friendguard"],
+
+"ruinjaw":[
+"strongjaw",
+"eartheater"],
+
+"triplethreat":[
+"hydrabond",
+"tangledfeet",
+"keeneye",
+"bigpecks",
+"limber"],
+
+"strikerfrenzy":[
+"striker",
+"vitalspirit"],
+
+"venomveil":[
+"liquidooze",
+"corrosion",
+"waterveil"],
+
+"reflector":[],
+"rebornflower":[
+"invigorate",
+"flowerveil"],
+
+"toxicspines":[
+"toxicdebris",
+"corrosion",
+"merciless"],
+
+"helios":[
+"drought",
+"moldbreaker",
+"berserk",
+"swiftswim"],
+
+"updraft":[],
+"corneredfang":[
+"guts"],
+
+"nighthoard":[],
+"dunerunner":[
+"sandrush"],
+
+"frostrunner":[
+"slushrush"],
+
+"bedrockclaw":[
+"toughclaws"],
+
+"rimeclaw":[
+"toughclaws"],
+
+"broodguard":[
+"thickfat",
+"friendguard"],
+
+"suncharm":[
+"drought"],
+
+"causticscales":[],
+"prismwings":[
+"tintedlens"],
+
+"oneiricdust":[
+"psychicsurge"],
+
+"pincercrush":[
+"toughclaws"],
+
+"decoypincers":[],
+"toxiccocoon":[],
+"galebloom":[],
+"gemeye":[
+"keeneye"],
+
+"lastlaugh":[],
+"openingoverture":[],
+"resonantblade":[],
+"finalnote":[],
+"livingtangle":[
+"tanglinghair",
+"stamina"],
+
+"rootrenewal":[
+"regenerator"],
+
+"fortunatewing":[
+"superluck"],
+
+"snowpack":[
+"thickfat",
+"icebody",
+"toughclaws"],
+
+"icemirror":[],
+"wailingsnow":[],
+"stonewall":[
+"sturdy"],
+
+"saltbastion":[
+"sturdy"],
+
+"anchorbridge":[
+"sturdy",
+"solidrock"],
+
+"layeredshell":[
+"shellarmor"],
+
+"breakaway":[],
+"fossilram":[
+"rockhead"],
+
+"rootediron":[
+"stamina"],
+
+"encorearia":[
+"serenegrace"],
+
+"peppersting":[
+"insomnia"],
+
+"sushitrick":[
+"hospitality"],
+
+"mastercourse":[
+"contrary"],
+
+"secondbrew":[],
+"railsight":[
+"stalwart"],
+
+"sovereignarsenal":[],
+"pollenengine":[
+"chlorophyll"],
+
+"titanpincer":[
+"hypercutter"],
+
+"shellcracker":[],
+"tidaldominion":[
+"swiftswim"],
+
+"tempestfury":[],
+"ironlash":[
+"whiplash"],
+
+"trailbreaker":[],
+"armoredadvance":[],
+"gritgrappler":[
+"guts"],
+
+"dreadjaw":[
+"moxie"],
+
+"floehunter":[
+"slushrush"],
+
+"lanceguard":[
+"shellarmor"],
+
+"headlongresolve":[],
+"herdshelter":[
+"soundproof"],
+
+"scorchsweep":[],
+"opensky":[],
+"tidalvoice":[
+"liquidvoice"],
+
+"rechargerelay":[
+"battery"],
+
+"hovercannon":[
+"levitate"],
+
+"keenhunt":[],
+"bloodchallenge":[],
+"twilightinstinct":[],
+"twincannons":[],
+"twinblades":[],
+"heatreservoir":[
+"flashfire"],
+
+"mourningcoat":[
+"fluffy"],
+
+"gravewind":[
+"sandrush"],
+
+"dozinggiant":[
+"oblivious"],
+
+"quillreservoir":[
+"waterabsorb"],
+
+"raisedquills":[],
+"mountainbreaker":[],
+"dreadpresence":[],
+"palmmastery":[
+"thickfat"],
+
+"galvanicspirit":[
+"vitalspirit"],
+
+"blastchamber":[
+"vitalspirit"],
+
+"venomspurs":[],
+"lastbrood":[
+"swarm"],
+
+"shadowfeint":[],
+"silksights":[
+"compoundeyes",
+"keeneye"],
+
+"livenet":[
+"unnerve"],
+
+"barbharvest":[
+"ironbarbs"],
+
+"currentcoil":[
+"swiftswim"],
+
+"soulpyre":[],
+"blackviper":[
+"whiplash"],
+
+"silkshuriken":[],
+"hiddenscroll":[],
+"toxicserenity":[
+"poisonheal"],
+
+"mudtemper":[
+"battlearmor"],
+
+"skywarden":[],
+"lockjaw":[
+"strongjaw"],
+
+"rivershell":[
+"shellarmor"],
+
+"funeralchoir":[],
+"festivalstep":[],
+"saltcrust":[
+"clearbody"],
+
+"beyondfear":[
+"innerfocus"],
+
+"stillwater":[
+"waterabsorb"],
+
+"mudmeditation":[],
+"coldopen":[],
+"quarrycannon":[
+"solidrock"],
+
+"tundramarch":[
+"oblivious"],
+
+"undertow":[
+"waterabsorb"],
+
+"deadwater":[],
+"vitalcircuit":[],
+"ringmaster":[
+"toughclaws"],
+
+"unyielding":[
+"stamina"],
+
+"primalrhythm":[],
+"setpiece":[],
+"calculatedshot":[
+"frisk"],
+
+"falsebouquet":[
+"magician"],
+
+"meridianseal":[],
+"rimeplate":[],
+"darkdominion":[
+"darkaura"],
+
+"reinflate":[],
+"savageresolve":[
+"guts"],
+
+"gildedgrace":[],
+"backwash":[],
+"spentforce":[],
+"pulsefiltration":[
+"waterabsorb",
+"liquidooze"],
+
+"agonyflame":[],
+"pulseeruption":[
+"sturdy"],
+
+"scrapbreaker":[
+"moldbreaker"],
+
+"toxicsignature":[
+"unnerve"],
+
+"wickedweave":[
+"prankster"],
+
+"vaultkeeper":[
+"prankster",
+"stickyhold"],
+
+"masterkey":[],
+"flintfracture":[],
+"frozenfeast":[
+"strongjaw"],
+
+"cinderscales":[
+"flamebody",
+"swarm",
+"shielddust"],
+
+"sporeshroud":[
+"effectspore"],
+
+"primevalhunt":[
+"skilllink",
+"battlearmor"],
+
+"rimebreaker":[
+"refrigerate"],
+
+"evaporate":[
+"dryskin"],
+
+"pressurekiln":[],
+"shattercrust":[
+"crumblingshell"],
+
+"restorativechime":[],
+"dissonantchime":[],
+"gravehunger":[
+"baddreams"],
+
+"primevalhunger":[
+"accumulation"],
+
+"dawnherald":[
+"drought",
+"friendguard"],
+
+"venomignition":[],
+"transfixinggaze":[
+"frisk"],
+
+"freshplumage":[
+"naturalcure"],
+
+"moonlithide":[
+"shadowshield",
+"magicguard"],
+
+"conquerorswill":[
+"supremeoverlord",
+"unnerve"],
+
+"nightwatch":[
+"keeneye",
+"insomnia"],
+
+"fruitfulbough":[
+"harvest"],
+
+"soulanchor":[
+"steelworker"],
+
+"guidinglight":[
+"dazzling",
+"illuminate"],
+
+"royalescort":[
+"pressure",
+"sweetveil"],
+
+"liquidarsenal":[
+"technician"],
+
+"knightsreprisal":[
+"bulletproof"],
+
+"voidsanctum":[
+"snowwarning"],
+
+"chargedtail":[
+"static"],
+
+"eldritchremedy":[
+"owntempo",
+"curiousmedicine"],
+
+"infernaldominion":[
+"intimidate"],
+
+"hydraulicarmor":[
+"stamina"],
+
+"hauntingpresence":[
+"levitate"],
+
+"slumberinggiant":[
+"comatose",
+"thickfat"],
+
+"oceanlullaby":[
+"shellarmor"],
+
+"shadowscreen":[
+"infiltrator"],
+
+"voidpromise":[
+"unaware"],
+
+"voiddrift":[
+"levitate",
+"overcoat"],
+
+"voidguile":[
+"magician",
+"infiltrator"],
+
+"voidwrath":[
+"moldbreaker"],
+
+"creepingbloom":[
+"infiltrator"],
+
+"dreadwings":[
+"levitate",
+"unnerve"],
+
+"causticchamber":[
+"owntempo"],
+
+"demolitiontrunk":[
+"sheerforce"],
+
+"deepresonance":[
+"soundproof"],
+
+"siegemagnet":[
+"magnetpull"],
+
+"patientmarksman":[
+"sniper"],
+
+"cradleward":[
+"sweetveil"],
+
+"sunreserve":[
+"flashfire"],
+
+"silentreprisal":[
+"soundproof",
+"anticipation"],
+
+"dreamrefuge":[
+"telepathy"],
+
+"closedcircuit":[
+"clearbody"],
+
+"pridecall":[
+"competitive",
+"unnerve"],
+
+"hydroelectric":[
+"dryskin"],
+
+"solarstride":[
+"chlorophyll"],
+
+"frillflash":[
+"dazzling"],
+
+"stokebelly":[
+"gluttony"],
+
+"rousingfeast":[
+"gluttony"],
+
+"invisiblewall":[
+"soundproof"],
+
+"sentinelfist":[
+"ironfist"],
+
+"pursuitwake":[
+"infiltrator"],
+
+"gentlegiant":[
+"cloudnine"],
+
+"ringcraft":[
+"limber"],
+
+"constrictingheat":[
+"whitesmoke"],
+
+"voidreprisal":[
+"guts"],
+
+"wreckingcrew":[
+"ironfist"],
+
+"evergreen":[
+"overcoat",
+"ripen"],
+
+"battlegrip":[
+"moxie"],
+
+"scentscout":[
+"frisk"],
+
+"surefoot":[
+"innerfocus"],
+
+"baitedbloom":[
+"gluttony",
+"stickyhold"],
+
+"guidinggallop":[
+"pastelveil"],
+
+"carrionwatch":[
+"frisk",
+"unnerve"],
+
+"scaleshelter":[
+"shielddust",
+"overcoat"],
+
+"stagesweep":[
+"screencleaner"],
+
+"icebreaker":[
+"hypercutter"],
+
+"cactuschorus":[
+"waterabsorb"],
+
+"crushingvenom":[
+"strongjaw"],
+
+"crosswire":[
+"ironfist"],
+
+"deepchill":[
+"oblivious"],
+
+"climatereserve":[],
+"tunnelclearance":[
+"hypercutter"],
+
+"crystalbastion":[
+"sturdy"],
+
+"buriedcoil":[
+"sandspit"],
+
+"staticreserve":[
+"static"],
+
+"lockinggrip":[
+"hypercutter"],
+
+"garlandgift":[
+"flowerveil"],
+
+"riotstance":[
+"defiant"],
+
+"drumguard":[
+"soundproof"],
+
+"measuredcounsel":[
+"owntempo"],
+
+"tacticalretreat":[],
+"raincourier":[
+"raindish"],
+
+"disorientingmind":[
+"infiltrator"],
+
+"wisecounsel":[
+"innerfocus"],
+
+"mindcurrent":[
+"innerfocus"],
+
+"voidcrossing":[
+"levitate",
+"magicguard"]
+
+};
+
+
 Object.assign(CUSTOM_ABILITY_UPDATES,{
 "absolutezero":{
 "name":"Absolute Zero",
 "num":10397,
 "gen":9,
 "desc":"On entry, it summons Snow. Moves ignore bypassable opposing abilities. Takes 20% less attack damage, or 40% less from super-effective attacks.",
-"shortDesc":"On entry, it summons Snow; Moves ignore bypassable abilities; 20% less attack damage; 40% less if super effective.",
+"shortDesc":"On entry, it summons Snow; Moves ignore bypassable abilities; 40% less if super effective.",
 "rating":5,
 "flags":{
 "breakable":1
@@ -48448,7 +53050,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10123,
 "gen":9,
 "desc":"It gains 1 Accuracy on entry. Its critical hits deal 2.25x damage instead of 1.5x. Moves cannot be redirected. On New World, Starlight Arena, Fairy Tale and Chessboard entry, gains +1 Sp. Atk. Its critical hits deal increased damage, and its moves cannot be redirected.",
-"shortDesc":"+1 Accuracy on entry; critical hits deal 2.25x damage; Ignores redirection; +1 Sp. Atk on specified fields.",
+"shortDesc":"Critical hits deal 2.25x damage; +1 Sp. Atk on specified fields.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -48492,7 +53094,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10417,
 "gen":9,
 "desc":"On entry, it compares the opposing side's combined Defense and Special Defense. If Defense is lower, its Attack rises; otherwise its Special Attack rises. Its first damaging move after switching in is a critical hit. On entry, it compares the opposing side's combined Attack and Special Attack. If Attack is higher or tied, its Defense rises; otherwise its Special Defense rises. Its moves cannot miss. Heals 1/16 max HP each turn and ignores sandstorm and hail damage. Switching out cures major status and heals 1/3 max HP only if a status was cured. Bewitched Woods cures status at turn end without this extra heal.",
-"shortDesc":"Boosts the offense targeting foes' weaker defense; first damaging move crits; Entry defensive boost based on foes' offenses; moves cannot miss; Heals 1/16 HP per turn; switching cures status and heals 1/3 HP if cured.",
+"shortDesc":"First damaging move crits; moves cannot miss.",
 "rating":5,
 "flags":{
 "breakable":1
@@ -48538,7 +53140,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10394,
 "gen":9,
 "desc":"On entry, Druddigon permanently transforms into Druddigon-Rejuv. If Rain Dance or Primordial Sea is active, its Special Attack is multiplied by 1.5 and it loses 1/8 of its max HP at turn end. Contact attackers have a 30% paralysis chance, or 60% on Electric Terrain and Short-Circuit. Absorbs other Pokemon's Electric moves, healing 1/4 max HP instead of being hit. Heals 1/16 max HP each turn on Electric Terrain and Short-Circuit. If this Ability is suppressed, its Rejuv form reverts to the normal species until it switches out, even if suppression ends earlier.",
-"shortDesc":"Transforms Druddigon; stronger Sp. Atk with HP cost in rain; contact paralysis; absorbs Electric.",
+"shortDesc":"Transforms Druddigon on entry.",
 "rating":5,
 "flags":{
 "breakable":1
@@ -48550,7 +53152,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10377,
 "gen":9,
 "desc":"Sleeping foes, including Comatose users, lose 1/8 max HP each turn. Disabled on Rainbow Field. At turn end, if statused, affected by a listed ailment, negatively boosted or at half HP or less, has a 50% chance to heal 1/4 max HP, cure status, clear negative stages and remove Attract, confusion, Curse, Disable, Encore, Heal Block, Leech Seed, Nightmare, Perish Song, Taunt, Torment and Yawn. On Dragon's Den, activation is guaranteed but only cures status and heals, then raises its higher attacking stat by 1 and lowers both defenses by 1. Contact moves have 1.3x power. When it enters battle as Musharna, it transforms into Musharna-Rejuv. If this Ability is suppressed, its Rejuv form reverts to the normal species until it switches out, even if suppression ends earlier.",
-"shortDesc":"Sleeping foes lose 1/8 HP per turn, except on Rainbow; 50% end-turn cure/reset and 1/4 heal; Dragon's Den changes the effect; Contact moves have 1.3x power — transforms Musharna into Musharna-Rejuv.",
+"shortDesc":"Transforms Musharna into Musharna-Rejuv.",
 "rating":5,
 "flags":{
 "breakable":1
@@ -48562,7 +53164,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10395,
 "gen":9,
 "desc":"Contact attackers have a 30% chance of frostbite. Heals 1/16 max HP each turn in hail or snow, or on Icy, Snowy Mountain and Cold Eclipse without those weathers; hail on Cold Eclipse heals 1/8 instead. Immune to hail damage. Attack is 1.5x while statused, and burn does not weaken physical attacks.",
-"shortDesc":"30% contact frostbite; heals in icy weather/fields; no hail damage; 1.5x Attack while statused; ignores burn attack penalty.",
+"shortDesc":"No hail damage; ignores burn attack penalty.",
 "rating":5,
 "flags":{
 "breakable":1
@@ -48574,7 +53176,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10393,
 "gen":9,
 "desc":"On entry, Turtonator permanently transforms into Turtonator-Rejuv. Summons hail. On Cold Eclipse, damaging attacks disable their user unless already disabled; excludes Max moves, delayed attacks and Struggle. Contact attackers have a 30% chance of frostbite. Heals 1/16 max HP each turn in hail or snow, or on Icy, Snowy Mountain and Cold Eclipse without those weathers; hail on Cold Eclipse heals 1/8 instead. Eligible Normal moves become Ice and have 1.2x power, or 1.5x on Icy and Snowy Mountain. Excludes moves whose type is set by their own effect, damaging Z-Moves and Terastallized Tera Blast. If this Ability is suppressed, its Rejuv form reverts to the normal species until it switches out, even if suppression ends earlier.",
-"shortDesc":"Transforms Turtonator; summons hail; contact frostbite; icy-field healing; Normal moves become Ice.",
+"shortDesc":"Transforms Turtonator on entry.",
 "rating":5,
 "flags":{},
 "isNonstandard":null
@@ -48584,7 +53186,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10415,
 "gen":9,
 "desc":"Opposing status moves that check accuracy have 50% base accuracy. On Rainbow Field, opposing status moves fail their accuracy check. Airborne: immune to Ground attacks, Spikes, Toxic Spikes, Sticky Web and Arena Trap unless grounded. Thousand Arrows can still hit. Prevents indirect damage; HP costs, Pain Split, confusion and Struggle recoil still apply. Fairy Tale entry gives +1 Sp. Def. Damaging attacks have a 30% chance to be disabled, guaranteed on Haunted and disabled on Holy Field. Excludes Max moves, delayed attacks and Struggle. On fainting, curses all active foes.",
-"shortDesc":"Status moves have 50% base accuracy; fail on Rainbow; Airborne; immune to Ground attacks unless grounded; Prevents indirect damage; Fairy Tale entry gives +1 Sp. Def; 30% chance to disable attacks; curses foes on faint.",
+"shortDesc":"Combines the listed abilities.",
 "rating":5,
 "flags":{
 "breakable":1
@@ -48596,7 +53198,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10363,
 "gen":9,
 "desc":"On entry, heals each adjacent ally by 1/4 max HP, or 1/3 on Fairy Tale. Eligible slicing, pulse, bullet, horn, drill, and Arrow moves hit twice at 60% power, with an independent accuracy check for each hit. When combined with Sharpness, Mega Launcher, or Power Drill, the first hit receives that boost and the second hit deals 15% of the move's unboosted power. In Free-for-All, both hits use full power: the first hits the selected foe and the second targets another random living foe when possible. Existing multi-hit moves are not given an additional Dual Wield pair. Prevents critical hits and takes 20% less attack damage. Gains +1 Defense on Fairy Tale entry and +2 Defense when a foe lowers its stats.",
-"shortDesc":"Entry heals adjacent allies by 1/4 HP (1/3 on Fairy Tale); Two 60% independent rolls; boosting pairs: full +15%; FFA: two full-power targets; No critical hits; 20% less damage; foe stat drops give +2 Defense.",
+"shortDesc":"Combines the listed abilities.",
 "rating":5,
 "flags":{
 "breakable":1
@@ -48620,7 +53222,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10414,
 "gen":9,
 "desc":"Moves with effective power of 60 or less have 1.5x power; the threshold is 80 on Factory Field. Contact attackers have a 30% paralysis chance, or 60% on Electric Terrain and Short-Circuit. Sleep lasts half as long, rounded down. Breloom becomes Breloom-Rejuv on entry.",
-"shortDesc":"1.5x weak-move power; contact paralysis; shorter sleep; transforms Breloom on entry.",
+"shortDesc":"Transforms Breloom on entry.",
 "rating":5,
 "flags":{
 "breakable":1
@@ -48632,7 +53234,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10411,
 "gen":9,
 "desc":"Biting moves have 1.5x power. Doubles Defense; immune to powder effects, sandstorm and hail damage. Attacks always critically hit poisoned foes or on Corrosive, Corrosive Mist, Murkwater Surface and Wasteland, unless critical hits are blocked. On Chessboard, gains one critical-hit stage per 20% of the target's missing base max HP, up to three. Drapion becomes Drapion-Rejuv on entry.",
-"shortDesc":"1.5x biting power; double Defense; weather/powder immunity; critical hits against poisoned foes.",
+"shortDesc":"Combines the listed abilities.",
 "rating":5,
 "flags":{
 "breakable":1
@@ -48644,7 +53246,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10365,
 "gen":9,
 "desc":"Prevents move recoil except Struggle. Crash and Life Orb damage still apply. Gains +2 Attack when a foe lowers its stats. Unfezant becomes Unfezant-Rejuv on entry.",
-"shortDesc":"No move recoil except Struggle; foe stat drops give +2 Attack; transforms Unfezant on entry.",
+"shortDesc":"Transforms Unfezant on entry.",
 "rating":5,
 "flags":{
 "failroleplay":1,
@@ -48691,7 +53293,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10255,
 "gen":9,
 "desc":"On entry, creates Psychic Terrain for 5 turns, or 8 with Amplifield Rock, subject to field and Aura rules. Foe stat drops give +2 Sp. Atk, except on Chessboard. On Chessboard, move power instead rises with missing HP, from 1x at full HP to 2x at 20% HP or less. Eligible single-target damaging moves hit three times; existing multi-hit moves, spread moves outside Free-for-All, charging moves, delayed attacks, Z/Max moves and moves barred from extra hits are excluded. The second and third hits deal 30% damage and retarget the foe's ally if the first target fainted. In Free-for-All battles, single-target moves hit all foes once at 1.3x power; spread moves hit all foes three times, with later hits at 30% power, and full-power spread moves stay full power. Moves have 1.2x power on Dragon's Den. Status moves gain +1 priority. Opposing Dark types block these moves except on Bewitched Woods. Psychic Surge follows the existing field/Aura rules: it can create Psychic Terrain on an empty field or Psychic Aura over a compatible field. No Neuroforce.",
-"shortDesc":"Creates Psychic Terrain on entry; Foe stat drops give +2 Sp. Atk; Chessboard boosts power instead; Damaging moves hit 3x; hits 2/3 at 30%; FFA singles hit all foes at 1.3x; Status moves gain +1 priority.",
+"shortDesc":"Combines the listed abilities.",
 "rating":5,
 "flags":{},
 "isNonstandard":null
@@ -48735,7 +53337,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10466,
 "gen":9,
 "desc":"Immune to OHKO moves; at full HP survives an otherwise fatal direct hit with 1 HP. Takes 0.8x attack damage, or 0.6x from super-effective attacks. Normal ability suppression and Mold Breaker rules apply. Does not create Light Screen.",
-"shortDesc":"Survives a hit at full HP; immune to OHKO moves; 20% less attack damage; 40% less if super effective — 20% less attack damage, 40% less if super effective.",
+"shortDesc":"20% less attack damage, 40% less if super effective.",
 "rating":3,
 "flags":{
 "breakable":1
@@ -48759,7 +53361,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10024,
 "gen":9,
 "desc":"Damaging hits have separate 10% chances to inflict sleep, paralysis or poison on the attacker; powder immunity blocks this. If Sleep Clause blocks sleep, a further roll can inflict paralysis or poison instead. Same-type moves have 1.3x power. Incoming Fire and Ice attacks use half the attacker's offensive stat. Immune to hail damage. When attacking, ignores the target's Defense, Sp. Def and evasion stages. When defending, ignores the attacker's Attack, Defense, Sp. Atk and accuracy stages. Reveals opposing Illusions on entry. At turn end, opposing non-Grass Pokemon take Grass-type damage equal to 1/16 max HP, blocked by Grass immunities; it heals the damage dealt by that chip. Only in Free-for-All does Grass type effectiveness scale this chip.",
-"shortDesc":"Damaging attackers may sleep, be paralyzed or poisoned; Same-type moves have 1.3x power; Half Fire/Ice attacking stats; immune to hail damage; Ignores opposing combat/accuracy stages; reveals Illusions; field boosts.",
+"shortDesc":"Same-type moves gain 1.3x power; end-turn Grass damage to foes restores its HP.",
 "rating":4.5,
 "flags":{
 "breakable":1
@@ -48811,7 +53413,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11090,
 "gen":9,
 "desc":"It is immune to bullet, pulse, and all Mega Launcher-boosted moves and takes 20% less damage from attacks. Contact attackers lose 1/8 of their max HP. Moves cannot be redirected. On New World, Starlight Arena, Fairy Tale and Chessboard entry, gains +1 Sp. Atk. Heals 1/16 max HP each turn. Immune to sandstorm and hail damage. Blocks bullet/pulse moves, reduces attack damage by 20%, damages contact attackers by 1/8 max HP, and ignores redirection. Restores 1/16 max HP each turn and prevents hail and sandstorm damage.",
-"shortDesc":"Immune to bullet/pulse/Mega Launcher moves; takes 0.8x damage; Contact attackers lose 1/8 HP; Ignores redirection; +1 Sp. Atk on specified fields; Heals 1/16 HP each turn; immune to sandstorm and hail damage.",
+"shortDesc":"Combines the listed abilities.",
 "rating":4.5,
 "flags":{
 "breakable":1
@@ -48823,7 +53425,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10409,
 "gen":9,
 "desc":"Battle Bond's shared effects plus Supreme Overlord and Rough Skin. Garchomp-Battle-Bond's Dual Chop never misses and always critically hits. Effective fallen count is capped at 5 after Free-for-All doubling, for a maximum 1.5x Supreme Overlord power multiplier; unlocks at 2/4/5 are unchanged.",
-"shortDesc":"Dual Chop never misses and always critical. Supreme Overlord caps at 5 effective faints (1.5x power).",
+"shortDesc":"Dual Chop cannot miss and always critically hits.",
 "rating":4,
 "flags":{
 "failroleplay":1,
@@ -48850,7 +53452,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10425,
 "gen":9,
 "desc":"The holder is airborne, as with Levitate. Once per switch-in, a foe that damages it with a contact move is trapped through the following turn while the holder remains active.",
-"shortDesc":"Airborne; once per entry, traps a contact attacker through the following turn.",
+"shortDesc":"Once per entry, traps a contact attacker through the following turn.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -48862,7 +53464,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10285,
 "gen":9,
 "desc":"Prevents critical hits and takes 20% less attack damage. Its Rock typing adds no Fighting, Ground, Steel, Water or Grass weakness. Immune to sandstorm and hail damage. Gains +1 Defense and Sp. Def when a foe lowers its stats, and on entry on Desert, Fairy Tale, Cave, Crystal Cavern, New World or Volcanic. Eligible Normal moves become Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Dragon moves receive STAB. Absorbs wind moves for +1 Attack. Gains +1 Attack when Tailwind starts on its side or it enters during Tailwind. Strong Winds gives +1 Attack each turn, plus +1 Sp. Atk on Mountain or Snowy Mountain.",
-"shortDesc":"Rock weaknesses neutralized; critical-hit/weather protection; stronger Dragon moves; wind boosts Attack.",
+"shortDesc":"Combines the listed abilities.",
 "rating":5,
 "flags":{},
 "isNonstandard":null
@@ -48872,7 +53474,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10361,
 "gen":9,
 "desc":"Biting moves have 1.5x power. At turn end, if statused, affected by a listed ailment, negatively boosted or at half HP or less, has a 50% chance to heal 1/4 max HP, cure status, clear negative stages and remove Attract, confusion, Curse, Disable, Encore, Heal Block, Leech Seed, Nightmare, Perish Song, Taunt, Torment and Yawn. On Dragon's Den, activation is guaranteed but only cures status and heals, then raises its higher attacking stat by 1 and lowers both defenses by 1. Poison moves, including Poison Fang, are super effective against Poison- and Steel-type Pokemon. Poison Fang has 1.5x power. Biting moves bypass protection and have a 30% chance to badly poison the target.",
-"shortDesc":"Bites have 1.5x power; 50% end-turn cure/reset and 1/4 heal; Dragon's Den changes the effect — Poison hits Poison/Steel; Poison Fang is 1.5x; bites bypass protection and badly poison 30%.",
+"shortDesc":"Poison hits Poison/Steel; Poison Fang is 1.5x; bites bypass protection and badly poison 30%.",
 "rating":5,
 "flags":{
 "breakable":1
@@ -48884,21 +53486,11 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10180,
 "gen":9,
 "desc":"Prevents and cures burns; immune to sandstorm and hail damage. Gains Aqua Ring on entry. Cures status each turn on Water Surface and Underwater. Contact moves have 1.3x power. Prevents flinching and Intimidate's Attack drop. Prevents and cures burns, grants Aqua Ring on entry, prevents hail and sandstorm damage, and cures status at turn end on Water Surface and Underwater fields.",
-"shortDesc":"No burn or weather damage; Aqua Ring; water-field status cure; Contact moves have 1.3x power; Cannot flinch; blocks Intimidate.",
+"shortDesc":"Water-field status cure; Contact moves have 1.3x power; blocks Intimidate.",
 "rating":5,
 "flags":{
 "breakable":1
 },
-"isNonstandard":null
-},
-"arcanepilfer":{
-"name":"Arcane Pilfer",
-"num":11256,
-"gen":9,
-"desc":"Full local Magician: while itemless, steals a removable item after eligible damaging moves. Fairy Tale, Bewitched Woods, Haunted, Misty and New World entry grant +1 Sp. Atk; Psychic Terrain limits incoming numeric-accuracy status moves to 50 accuracy. A successful Mystical Fire also applies Embargo for the rest of this turn and the following turn, respecting normal volatile-status rules and existing Embargo duration.",
-"shortDesc":"Magician; successful Mystical Fire also applies two-turn Embargo.",
-"rating":4,
-"flags":{},
 "isNonstandard":null
 },
 "arenatrap":{
@@ -48916,7 +53508,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10199,
 "gen":9,
 "desc":"Eligible Normal moves become Steel with 1.2x power, or 1.5x on Factory, Short-Circuit, Fairy Tale, Dragon's Den, Starlight Arena, New World and Holy Field. Immune to hail damage on Cold Eclipse. On entry, heals each adjacent ally by 1/4 max HP, or 1/3 on Fairy Tale. Doubles move secondary-effect chances and removes charging turns. Moves ignore bypassable opposing abilities.",
-"shortDesc":"Normal moves become Steel; entry heals allies; doubled secondary chances; moves ignore abilities.",
+"shortDesc":"Combines the listed abilities.",
 "rating":4.5,
 "flags":{
 "breakable":1
@@ -48983,8 +53575,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "name":"As One (Glastrier)",
 "num":266,
 "gen":8,
-"desc":"Combination of the Unnerve and Chilling Neigh Abilities.",
-"shortDesc":"Combination of the Unnerve and Chilling Neigh Abilities.",
+"desc":"Combines the listed abilities.",
+"shortDesc":"Combines the listed abilities.",
 "rating":3.5,
 "flags":{
 "failroleplay":1,
@@ -49000,8 +53592,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "name":"As One (Spectrier)",
 "num":267,
 "gen":8,
-"desc":"Combination of the Unnerve and Grim Neigh Abilities.",
-"shortDesc":"Combination of the Unnerve and Grim Neigh Abilities.",
+"desc":"Combines the listed abilities.",
+"shortDesc":"Combines the listed abilities.",
 "rating":3.5,
 "flags":{
 "failroleplay":1,
@@ -49018,7 +53610,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10261,
 "gen":9,
 "desc":"Doubles Attack, or Sp. Atk instead on Psychic Terrain. Switching out cures major status and heals 1/3 max HP only if a status was cured. Bewitched Woods cures status at turn end without this heal. Prevents other Pokemon's accuracy drops and ignores evasion boosts. Reveals opposing Illusions on activation. Mirror Arena entry lowers foes' accuracy by 1. Starlight Arena entry gives +2 Sp. Atk and puts Spotlight on its first adjacent ally.",
-"shortDesc":"Doubles Attack; Psychic Terrain doubles Sp. Atk instead; Switching cures status and heals 1/3 HP if cured; Woods cures status each turn; No opposing accuracy drops; ignores evasion; reveals Illusions.",
+"shortDesc":"Psychic Terrain doubles Sp. Atk instead; Woods cures status each turn; reveals Illusions.",
 "rating":5,
 "flags":{},
 "isNonstandard":null
@@ -49028,7 +53620,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10386,
 "gen":9,
 "desc":"Airborne: immune to Ground attacks and grounded hazards unless grounded. Move KOs raise its highest stat by 1, ignoring stat stages when choosing the stat. Moves have 1.3x power if no other active Pokemon has a move left to use that turn. Allies' moves have 1.3x power, or 1.5x on Haunted, Bewitched Woods, Holy and Psychic fields.",
-"shortDesc":"Airborne; move KOs raise its highest stat; 1.3x power when no other active Pokemon has a move left; Allies' moves have 1.3x power (1.5x on specified fields).",
+"shortDesc":"Combines the listed abilities.",
 "rating":5,
 "flags":{
 "breakable":1
@@ -49040,7 +53632,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11145,
 "gen":9,
 "desc":"Reflects eligible status moves and hazards once. On Mirror Arena, reflecting a directly targeted move gives its original user +1 evasion. Avoids allied damaging moves. Speed doubles on Psychic Terrain or Psychic Aura. On entry, reveals opposing Illusions and alerts to an opposing super-effective or OHKO move. If no threat is found, Psychic Terrain grants +2 Sp. Atk.",
-"shortDesc":"Reflects status moves; avoids allied attacks; Psychic-field Speed boost; reveals threats and Illusions.",
+"shortDesc":"Reflects status moves; Psychic-field Speed boost; reveals threats and Illusions.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -49062,7 +53654,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10034,
 "gen":9,
 "desc":"Same-type moves have 1.3x power. Airborne: immune to Ground attacks, Spikes, Toxic Spikes, Sticky Web and Arena Trap unless grounded. Thousand Arrows can still hit. Prevents indirect damage; HP costs, Pain Split, confusion and Struggle recoil still apply. Reflects eligible status moves and entry hazards once; reflected moves cannot bounce again. Fairy Tale entry gives +1 Sp. Def; Mirror Arena entry gives +1 evasion. On Mirror Arena, reflecting a directly targeted move also gives its original user +1 evasion. Fairy Tale and New World entry also give +1 Sp. Atk and Sp. Def.",
-"shortDesc":"1.3x same-type power; airborne; no indirect damage; reflects status moves; field entry boosts.",
+"shortDesc":"1.3x same-type power; no indirect damage; reflects status moves; field entry boosts.",
 "rating":5,
 "flags":{
 "breakable":1
@@ -49074,7 +53666,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10126,
 "gen":9,
 "desc":"Mold Breaker: moves ignore bypassable opposing abilities. Eligible Normal moves become Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Dragon moves receive STAB. Prevents freezing outside Cold Eclipse and cures existing freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den blocks Fire moves. On Dragon's Den, Volcanic or Cold Eclipse entry, gains +1 Defense and Sp. Def. Same-type moves have 1.3x power. Immune to hail damage. At turn end, deals Fire-type damage to foes equal to 1/16 max HP, doubled if the foe is burned or the holder used a Fire or Dragon move that turn. Fire immunities block this damage; type effectiveness scales it only in Free-for-All. Contact moves have 1.3x power. Heals 1/16 max HP each turn. Damaging moves have a further 1.3x power, plus another 1.3x on Cold Eclipse. Critical-hit ratio rises by 1. Dragon Rush cannot miss and has a further 1.5x power. Defense and Sp. Def are 1.3x, or 1.5x on Cold Eclipse. While Royal Decree or Empress is active without Neutralization, move power gains another 1.3x and incoming attack damage falls by 30%. Cannot be suppressed.",
-"shortDesc":"Mold Breaker; stronger attacks and defenses; healing, Fire chip and never-miss Dragon Rush.",
+"shortDesc":"Stronger attacks and defenses, extra critical-hit chance, and a stronger Dragon Rush that cannot miss.",
 "rating":5,
 "flags":{
 "cantsuppress":1
@@ -49108,7 +53700,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10280,
 "gen":9,
 "desc":"Takes half contact damage. Prevents flinching and Intimidate's Attack drop. Moves with effective power of 60 or less have 1.5x power; the threshold is 80 on Factory Field. Eligible slicing, pulse, bullet, horn, drill, and Arrow moves hit twice at 60% power, with an independent accuracy check for each hit. When combined with Sharpness, Mega Launcher, or Power Drill, the first hit receives that boost and the second hit deals 15% of the move's unboosted power. In Free-for-All, both hits use full power: the first hits the selected foe and the second targets another random living foe when possible. Existing multi-hit moves are not given an additional Dual Wield pair. When the weak-move bonus applies to a paired move, its second hit has 15% unboosted power outside Free-for-All.",
-"shortDesc":"Half contact damage; no flinch/Intimidate drop; stronger weak moves; eligible moves hit twice.",
+"shortDesc":"Takes half damage from contact moves.",
 "rating":4.5,
 "flags":{},
 "isNonstandard":null
@@ -49128,7 +53720,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11121,
 "gen":9,
 "desc":"Summons hail on entry. Damaging attacks disable their user on Cold Eclipse, except Max moves, delayed attacks and Struggle; an existing Disable is not replaced. Prevents critical hits and takes 20% less attack damage. Its Rock typing adds no Fighting, Ground, Steel, Water or Grass weakness. Immune to sandstorm and hail damage. Gains +1 Defense and Sp. Def when a foe lowers its stats, and on entry on Desert, Fairy Tale, Cave, Crystal Cavern, New World or Volcanic. Eligible Normal moves become Ice and have 1.2x power, or 1.5x on Icy and Snowy Mountain. Excludes moves whose type is set by their own effect, damaging Z-Moves and Terastallized Tera Blast. Heals 1/16 max HP each turn. On fainting, creates Fairy Tale and sets or refreshes its side's Aurora Veil for 5 turns. Does not set Aurora Veil on entry.",
-"shortDesc":"Summons hail; Rock/critical-hit protection; 20% less damage; stronger Ice moves; field and Veil on fainting.",
+"shortDesc":"Summons hail; Rock/critical-hit protection; stronger Ice moves; field and Veil on fainting.",
 "rating":5,
 "flags":{},
 "isNonstandard":null
@@ -49138,21 +53730,11 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10049,
 "gen":9,
 "desc":"Sound moves become Water-type, or Ice-type on Icy Field, and have 1.2x power. Absorbs other Pokemon's Water moves, healing 1/4 max HP instead of being hit. Heals 1/16 max HP each turn on Underwater, grounded on Water Surface, or grounded and Poison-type on Murkwater Surface. Contact attackers have a 30% chance of frostbite. Heals 1/16 max HP each turn in hail or snow, or on Icy, Snowy Mountain and Cold Eclipse without those weathers; hail on Cold Eclipse heals 1/8 instead. Immune to hail damage. Heals 1/16 max HP each turn in effective rain. Sound moves become Water type, Water attacks are absorbed, and the holder heals in rain and snow. Does not add Ice typing.",
-"shortDesc":"Sound moves: Water (Ice on Icy Field), 1.2x power; Absorbs Water for 1/4 HP; water-field healing; 30% contact frostbite; heals in icy weather/fields; no hail damage; Heals 1/16 HP each turn in rain.",
+"shortDesc":"Combines the listed abilities.",
 "rating":4,
 "flags":{
 "breakable":1
 },
-"isNonstandard":null
-},
-"aurorasanctum":{
-"name":"Aurora Sanctum",
-"num":11244,
-"gen":9,
-"desc":"Snow Warning: summons hail on entry; on Cold Eclipse, damaging hits Disable the attacker's move under the usual local restrictions. While Aurora Veil is active on its side, opposing Pokemon cannot lower the holder's or its active allies' stats. Self-inflicted drops remain. This protection ends with Aurora Veil or ability suppression and adds no damage reduction.",
-"shortDesc":"Snow Warning; while its side has Aurora Veil, blocks opposing stat drops for itself and allies.",
-"rating":4,
-"flags":{},
 "isNonstandard":null
 },
 "backwash":{
@@ -49180,7 +53762,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11289,
 "gen":9,
 "desc":"Full Gluttony + Sticky Hold: qualifying low-HP Berries activate at half HP; other Pokemon cannot remove its item while it survives, retaining the Sticky Barb exception.",
-"shortDesc":"Gluttony + Sticky Hold.",
+"shortDesc":"Combines the listed abilities.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -49192,7 +53774,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10062,
 "gen":9,
 "desc":"Absorbs Fire moves for +2 Defense. Gains +1 Defense each turn on Burning, Superheated, Dragon's Den and Volcanic. Incoming Fire and Ice attacks use half the attacker's offensive stat. Immune to hail damage. Prevents sleep and Yawn for itself and allies, including Rest. Does not cure existing sleep. Berries normally eaten at 1/4 HP activate at 1/2 HP instead.",
-"shortDesc":"Absorbs Fire for +2 Defense; hot fields raise Defense; Half Fire/Ice attacking stats; immune to hail damage; Prevents sleep and Yawn for itself and allies; Low-HP Berries activate at half HP.",
+"shortDesc":"Combines the listed abilities.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -49214,7 +53796,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10550,
 "gen":9,
 "desc":"Contact attackers lose 1/8 of their max HP. After taking three opposing contact moves, restores its consumed Berry once per battle, if its item slot is empty. Multi-hit attacks count as one move; progress persists through switching.",
-"shortDesc":"Contact attackers lose 1/8 HP — restores its used Berry after three opposing contact attacks, once per battle.",
+"shortDesc":"Restores its used Berry after three opposing contact attacks, once per battle.",
 "rating":2.5,
 "flags":{},
 "isNonstandard":null
@@ -49246,7 +53828,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":210,
 "gen":7,
 "desc":"A KO can trigger a Bond form; no lethal-hit survival. Eligible Arcanine, Garchomp, and Greninja forms transform after a KO. It no longer leaves the holder at 1 HP from a lethal hit.",
-"shortDesc":"Filter + Self Sufficient; A KO can trigger a Bond form; no lethal-hit survival.",
+"shortDesc":"A KO can trigger a Bond form; no lethal-hit survival.",
 "rating":3.5,
 "flags":{
 "failroleplay":1,
@@ -49273,7 +53855,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11286,
 "gen":9,
 "desc":"Full Moxie grants +1 Attack for each Pokemon knocked out by its move. Knocking out an opponent with a move also clears its confusion and negative accuracy stages, preserving positive accuracy.",
-"shortDesc":"Moxie; move KOs against opponents also clear its confusion and negative accuracy.",
+"shortDesc":"Move KOs against opponents also clear its confusion and negative accuracy.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -49303,7 +53885,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10442,
 "gen":9,
 "desc":"Contact moves have 1.3x power. The first Ground-type contact attack to damage a foe each switch-in removes one opposing screen after damage.",
-"shortDesc":"Contact moves have 1.3x power — first Ground contact hit per entry breaks a screen.",
+"shortDesc":"First Ground contact hit per entry breaks a screen.",
 "rating":3.5,
 "flags":{},
 "isNonstandard":null
@@ -49335,7 +53917,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10564,
 "gen":9,
 "desc":"Prevents flinching and Intimidate's Attack drop. Once per switch-in, an opposing Attack increase grants +1 Defense, or an opposing Sp. Atk increase grants +1 Sp. Def. A move raising both grants both, consuming the one activation.",
-"shortDesc":"Cannot flinch; blocks Intimidate — an opposing offensive boost grants a matching defensive boost once per entry.",
+"shortDesc":"An opposing offensive boost grants a matching defensive boost once per entry.",
 "rating":1,
 "flags":{
 "breakable":1
@@ -49379,7 +53961,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10165,
 "gen":9,
 "desc":"Slicing moves have 1.5x power, except on Cold Eclipse. Raises critical-hit rate by one stage. Below half HP, its slicing moves have +1 priority.",
-"shortDesc":"Slicing moves have 1.5x power except on Cold Eclipse; +1 critical-hit stage — below half HP, slicing moves gain +1 priority.",
+"shortDesc":"Below half HP, slicing moves gain +1 priority.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -49421,7 +54003,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10035,
 "gen":9,
 "desc":"Gains +1 Speed at the end of each full turn it spends active. Same-type moves have 1.3x power. Kicking moves have 1.4x power. Prevents freezing outside Cold Eclipse and cures existing freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den blocks Fire moves. On Dragon's Den, Volcanic or Cold Eclipse entry, gains +1 Defense and Sp. Def. Prevents other Pokemon's accuracy drops and ignores evasion boosts. Reveals opposing Illusions on activation. Mirror Arena entry gives +1 accuracy and Laser Focus. Gains +1 Speed at the end of each eligible turn; same-type moves have 1.3x power and kicking moves have 1.4x power. Prevents freezing and Accuracy drops, and ignores the target's evasiveness. Magma Armor and Keen Eye also retain their field effects.",
-"shortDesc":"+1 Speed after each full active turn; Same-type moves have 1.3x power; Kicks have 1.4x power; Halves Water/Ice attacking stats; prevents freeze; field defenses; No opposing accuracy drops; ignores evasion; reveals Illusions.",
+"shortDesc":"+1 Speed after each full active turn; Same-type moves have 1.3x power; Kicks have 1.4x power; field defenses; reveals Illusions.",
 "rating":4.5,
 "flags":{},
 "isNonstandard":null
@@ -49441,7 +54023,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10182,
 "gen":9,
 "desc":"Its moves are used as if the effects of Sunny Day were active. Healing received by it and its allies is multiplied by 1.3. At turn end, it has a 50% chance to cure each adjacent ally's status condition. Switching out cures major status and heals 1/3 max HP only if a status was cured. Bewitched Woods cures status at turn end without this heal.",
-"shortDesc":"Its moves are used as if the effects of Sunny Day were active; User/allies receive 1.3x healing; 50% to cure ally status each turn; Switching cures status and heals 1/3 HP if cured; Woods cures status each turn.",
+"shortDesc":"Combines the listed abilities.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -49453,7 +54035,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10315,
 "gen":9,
 "desc":"Airborne: immune to Ground attacks, Spikes, Toxic Spikes, Sticky Web and Arena Trap unless grounded. Thousand Arrows can still hit. Absorbs Water moves for 1/4 max HP; incoming Fire moves have 1.25x power. Effective rain heals 1/8 HP per turn; sun costs 1/8. Field healing per turn: 1/16 on Underwater, Swamp, Misty or grounded Water Surface; 1/8 when grounded and Poison-type on Murkwater. Corrosive Mist heals Poison types by 1/8 but damages non-Steel others by 1/8. Desert costs 1/8 HP per turn. Incoming Fire and Ice attacks also use half the attacker's offensive stat.",
-"shortDesc":"Airborne; absorbs Water; rain/field healing; Fire/Ice protection with Dry Skin's Fire penalty.",
+"shortDesc":"Rain/field healing; Fire/Ice protection with Dry Skin's Fire penalty.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -49465,7 +54047,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10282,
 "gen":9,
 "desc":"Prevents critical hits and takes 20% less attack damage. Gains +1 Defense on Fairy Tale entry and +2 Defense when a foe lowers its stats. Heals 1/16 max HP each turn. Immune to sandstorm and hail damage.",
-"shortDesc":"No critical hits; 20% less damage; foe stat drops give +2 Defense; Heals 1/16 HP each turn; immune to sandstorm and hail damage.",
+"shortDesc":"Foe stat drops give +2 Defense; immune to sandstorm and hail damage.",
 "rating":4.5,
 "flags":{
 "breakable":1
@@ -49477,7 +54059,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10427,
 "gen":9,
 "desc":"Absorbs other Pokemon's Ground moves, healing 1/4 max HP instead of being hit. Heals 1/16 max HP each turn on Cave and Desert. The first Ground-type move it absorbs each switch-in also removes Spikes, Toxic Spikes, Stealth Rock, Sticky Web, and G-Max Steelsurge from its own side.",
-"shortDesc":"Absorbs Ground for 1/4 HP; heals on Cave/Desert — first Ground absorption each switch-in clears own-side hazards.",
+"shortDesc":"First Ground absorption each switch-in clears own-side hazards.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -49499,7 +54081,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10620,
 "gen":9,
 "desc":"Full Propeller Tail: moves cannot be redirected and Speed doubles on Water Surface, Underwater and Midnight Zone. Once per switch-in, a directly selected non-pivot physical Water move that deals opposing HP damage clears entry hazards from its side. Flip Turn, substitutes, misses, protection, called and future attacks do not trigger it. The allowance is spent only when hazards are cleared.",
-"shortDesc":"Ignores redirection; water-field Speed boost; first qualifying physical Water hit clears own hazards.",
+"shortDesc":"Water-field Speed boost; first qualifying physical Water hit clears own hazards.",
 "rating":3,
 "flags":{},
 "isNonstandard":null
@@ -49509,7 +54091,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10444,
 "gen":9,
 "desc":"Incoming Fire and Ice attacks use half the attacker's offensive stat. Immune to hail damage. Allies take 25% less attack damage; this does not protect the holder. Once per switch-in, when an adjacent ally survives an opposing hit that takes it from above half HP to half or less, it gains +1 Defense.",
-"shortDesc":"Half Fire/Ice attacking stats; immune to hail damage; Allies take 25% less attack damage — an ally dropping below half HP grants +1 Defense.",
+"shortDesc":"An ally dropping below half HP grants +1 Defense.",
 "rating":0,
 "flags":{
 "breakable":1
@@ -49521,7 +54103,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10289,
 "gen":9,
 "desc":"Recoil and crash moves, Explosion, Self-Destruct and Misty Explosion have 1.2x power; Struggle is excluded. On Chessboard, all moves gain a further 1.2x power. Prevents move recoil except Struggle. Crash and Life Orb damage still apply.",
-"shortDesc":"Recoil/crash and explosion moves have 1.2x power; no move recoil except Struggle.",
+"shortDesc":"Combines the listed abilities.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -49553,7 +54135,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11302,
 "gen":9,
 "desc":"Full Sand Spit summons sandstorm when hit by an attack. Once per entry, successfully using Coil clears its confusion and negative accuracy stages, preserving positive accuracy.",
-"shortDesc":"Sand Spit; first successful Coil each entry clears confusion and negative accuracy.",
+"shortDesc":"First successful Coil each entry clears confusion and negative accuracy.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -49563,7 +54145,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10023,
 "gen":9,
 "desc":"On entry, lowers adjacent foes' Attack by 1. Substitute and Intimidate protections still apply. Other Pokemon cannot lower its stat stages. Gains +1 Attack and Sp. Atk on Volcanic entry. Moves ignore bypassable opposing abilities. Eligible Normal moves become Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Dragon moves receive STAB. Prevents freezing outside Cold Eclipse and cures existing freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den blocks Fire moves. On Dragon's Den, Volcanic or Cold Eclipse entry, gains +1 Defense and Sp. Def. Same-type moves have 1.3x power. At turn end, deals Fire-type damage to foes equal to 1/16 max HP, doubled if the foe is burned or the holder used a Fire or Dragon move that turn. Fire immunities block this damage; type effectiveness scales it only in Free-for-All. Heals 1/16 max HP each turn. Immune to sandstorm and hail damage. Takes 20% less attack damage. Moves have a further 1.5x power on New World, Cold Eclipse and Starlight Arena. Faints grant no stat boosts.",
-"shortDesc":"Lowers foe Attack; prevents foe stat drops; stronger Dragon moves; heals each turn; 20% less attack damage.",
+"shortDesc":"Takes 20% less attack damage; same-type moves gain 1.3x power.",
 "rating":4.5,
 "flags":{
 "breakable":1
@@ -49575,7 +54157,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10256,
 "gen":9,
 "desc":"Same-type moves have 1.3x power. Contact attackers have a 30% burn chance, or 60% on Volcanic. On Cold Eclipse, gains +1 Defense and Sp. Def on entry instead and cannot burn through contact. Prevents freezing outside Cold Eclipse and cures existing freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den blocks Fire moves. On Dragon's Den, Volcanic or Cold Eclipse entry, gains +1 Defense and Sp. Def. Moves ignore bypassable abilities. After dealing HP damage, heals 1/16 max HP once per turn. The first opposing HP hit gives +1 Attack and Sp. Atk and heals 1/16 max HP; later hits heal 1/20 until it completes a damaging move and resets this trigger. On Ashen Beach, New World, Starlight Arena, Cold Eclipse and Fairy Tale, the first qualifying physical and special hits also give +1 Defense and Sp. Def respectively. In those fields, a qualifying hit at half HP or less instead heals 1/4 max HP once per activation; blocked healing does not spend it. These effects stop on Bewitched Woods, Haunted and Holy Field. While Royal Decree or Empress is active without Neutralization, takes 30% less attack damage and has 1.3x move power, except against Battle Bond. On Cold Eclipse, the two entry effects together give +2 Defense and Sp. Def.",
-"shortDesc":"Stronger same-type moves; healing and combat boosts; contact burns; Water/Ice and freeze protection.",
+"shortDesc":"Combines the listed abilities.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -49585,7 +54167,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10349,
 "gen":9,
 "desc":"Recoil and crash moves, Explosion, Self-Destruct and Misty Explosion have 1.2x power; Struggle is excluded. On Chessboard, all moves gain a further 1.2x power. Prevents move recoil except Struggle. Crash and Life Orb damage still apply. Punching moves have 1.4x power. Moves ignore bypassable opposing abilities.",
-"shortDesc":"Recoil/crash and explosion moves have 1.2x power; No move recoil except Struggle; Punches have 1.4x power; Moves ignore bypassable abilities — Proficient.",
+"shortDesc":"Recoil/explosion and punching power; no move recoil; ignores abilities; same-type moves gain 1.3x power.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -49595,7 +54177,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10040,
 "gen":9,
 "desc":"Heals 1/16 max HP each turn. Copies foes' positive stat changes after their move, entry or transformation, and at turn end. Copied changes do not loop between users. Prevents freezing outside Cold Eclipse and cures existing freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den blocks Fire moves. On Dragon's Den, Volcanic or Cold Eclipse entry, gains +1 Defense and Sp. Def. Same-type moves have 1.3x power.",
-"shortDesc":"Heals 1/16 HP per turn; copies foe boosts; stronger same-type moves; Water/Ice and freeze protection.",
+"shortDesc":"Same-type moves gain 1.3x power.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -49619,7 +54201,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11295,
 "gen":9,
 "desc":"Full local Water Absorb: absorbs Water moves for 1/4 max HP and retains its field healing. A successful Helping Hand also clears the recipient ally's confusion.",
-"shortDesc":"Water Absorb; successful Helping Hand clears the recipient ally's confusion.",
+"shortDesc":"Successful Helping Hand clears the recipient ally's confusion.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -49641,7 +54223,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10039,
 "gen":9,
 "desc":"Its attacks with secondary effects have their power multiplied by 1.3, but the secondary effects are removed. If a secondary effect was removed, it also removes the user's Life Orb recoil and Shell Bell recovery, and prevents the target's Anger Shell, Berserk, Color Change, Emergency Exit, Pickpocket, Wimp Out, Red Card, Eject Button, Kee Berry, and Maranga Berry from activating. On entry, summons sun for 5 turns, or 8 with Heat Rock. Prevents freezing outside Cold Eclipse and cures existing freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den blocks Fire moves. On Dragon's Den, Volcanic or Cold Eclipse entry, gains +1 Defense and Sp. Def.",
-"shortDesc":"Its attacks with secondary effects have 1.3x power; nullifies the effects; Summons sun on entry; Halves Water/Ice attacking stats; prevents freeze; field defenses.",
+"shortDesc":"Nullifies the effects; Summons sun on entry; field defenses.",
 "rating":4.5,
 "flags":{
 "breakable":1
@@ -49653,7 +54235,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11291,
 "gen":9,
 "desc":"Full local Frisk + Unnerve. Entry reveals opposing active Illusions and held items, with each item holder independently having a 30% chance of five-turn Embargo. Foes cannot eat Berries or use field seeds while Unnerve is active; retains its Cold Eclipse entry Speed drops.",
-"shortDesc":"Frisk + Unnerve, including their local entry and field effects.",
+"shortDesc":"Combines the listed abilities.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -49663,7 +54245,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11261,
 "gen":9,
 "desc":"Own Tempo prevents and cures confusion and blocks Intimidate Attack drops. Shell Side Arm ignores positive Defense or Sp. Def stages for damage, while retaining its normal Physical/Special selection, negative stages and all other effects.",
-"shortDesc":"Own Tempo; Shell Side Arm ignores positive defensive stages without changing its category selection.",
+"shortDesc":"Shell Side Arm ignores positive defensive stages without changing its category selection.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -49685,7 +54267,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10366,
 "gen":9,
 "desc":"Absorbs other Pokemon's Ground moves, healing 1/4 max HP instead of being hit. Heals 1/16 max HP each turn on Cave and Desert. Takes 20% less attack damage, or 40% less from super-effective attacks. Moves ignore bypassable opposing abilities.",
-"shortDesc":"Absorbs Ground for 1/4 HP; heals on Cave/Desert; 20% less attack damage; 40% less if super effective; Moves ignore bypassable abilities.",
+"shortDesc":"Heals on Cave/Desert; 40% less if super effective; Moves ignore bypassable abilities.",
 "rating":4.5,
 "flags":{
 "breakable":1
@@ -49697,7 +54279,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10293,
 "gen":9,
 "desc":"Gains +1 Sp. Atk when any Pokemon faints, plus +2 Sp. Def on Misty or Rainbow Field. Allies take 25% less attack damage; this does not protect the holder. Doubles move secondary-effect chances and removes charging turns.",
-"shortDesc":"Faints give +1 Sp. Atk; Misty/Rainbow also give +2 Sp. Def; Allies take 25% less attack damage; Double secondary-effect chances; no charging turns.",
+"shortDesc":"Misty/Rainbow also give +2 Sp. Def; Allies take 25% less attack damage; no charging turns.",
 "rating":4.5,
 "flags":{},
 "isNonstandard":null
@@ -49707,7 +54289,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11245,
 "gen":9,
 "desc":"Static: contact attackers have a 30% chance to be paralyzed, or 60% on Electric Terrain or Short-Circuit. Successfully paralyzing a Pokemon with its own Nuzzle grants normal Charge after Nuzzle finishes, doubling its next Electric attack. Charge does not stack; failed paralysis grants nothing.",
-"shortDesc":"Static; successful Nuzzle paralysis grants Charge for the next Electric attack.",
+"shortDesc":"Successful Nuzzle paralysis grants Charge for the next Electric attack.",
 "rating":3.5,
 "flags":{},
 "isNonstandard":null
@@ -49747,7 +54329,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11242,
 "gen":9,
 "desc":"Full Flame Body, Swarm and Shield Dust, including their existing field effects.",
-"shortDesc":"Full Flame Body, Swarm and Shield Dust, including their existing field effects.",
+"shortDesc":"Combines the listed abilities.",
 "rating":2,
 "flags":{},
 "isNonstandard":null
@@ -49784,7 +54366,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11270,
 "gen":9,
 "desc":"Full Clear Body prevents other Pokemon from lowering its stat stages. If both Gear Grind hits damage the target, heals 1/16 maximum HP after the move, once per use. No healing if either hit misses, is blocked, hits only Substitute, or the first hit ends the attack. Normal healing restrictions apply.",
-"shortDesc":"Clear Body; heals 1/16 HP after Gear Grind if both hits damage the target.",
+"shortDesc":"Heals 1/16 HP after Gear Grind if both hits damage the target.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -49806,7 +54388,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10128,
 "gen":9,
 "desc":"Contact moves have 1.3x power. Takes 20% less attack damage, plus a further 25% reduction against super-effective attacks or on Crystal Cavern and Dark Crystal Cavern (40% total). Defense and Sp. Def are 4/3x on Cold Eclipse, Dark Crystal Cavern and Rainbow. Immune to hail damage on Cold Eclipse. A contact attacker that knocks it out loses 1/4 max HP, or 1/2 on Corrosive Mist. Damp prevents this damage. On entry, it reveals a strongest move known by an opposing Pokemon and removes foe Illusions. In Psychic Terrain, it gains 2 Sp. Atk and takes 0.8x damage from moves. Cold Logic applies Forewarn's additional 0.8x attack-damage factor only when the effective base field is Psychic Terrain; a Psychic aura alone does not qualify. Global Forewarn and all other Cold Logic effects are unchanged.",
-"shortDesc":"Tough Claws + Prism Armor + Aftermath + Forewarn; extra Forewarn reduction only on Psychic Terrain.",
+"shortDesc":"Extra Forewarn reduction only on Psychic Terrain.",
 "rating":4.5,
 "flags":{
 "breakable":1
@@ -49881,7 +54463,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10401,
 "gen":9,
 "desc":"Absorbs Water moves for 1/4 max HP; incoming Fire moves have 1.25x power. Effective rain heals 1/8 HP per turn; sun costs 1/8. Field healing per turn: 1/16 on Underwater, Swamp, Misty or grounded Water Surface; 1/8 when grounded and Poison-type on Murkwater. Corrosive Mist heals Poison types by 1/8 but damages non-Steel others by 1/8. Desert costs 1/8 HP per turn. While above 50% HP, its weaknesses are neutralized, Magic Guard is active, opposing status moves fail, and opposing attack secondary effects are blocked. The first time Parasect would faint, it fake-faints at 1 HP, then becomes Parasect-Parasite at the end of the turn and revives at full HP. This Ability cannot be suppressed and is immune to Neutralization. Takes 20% less attack damage, or 40% less from super-effective attacks. Heals 1/16 max HP each turn and ignores sandstorm and hail damage. Switching out cures major status and heals 1/3 max HP only if a status was cured. Bewitched Woods cures status at turn end without this extra heal. A lethal hit triggers a full-HP revival as Parasect-Parasite at the end of the turn, even if Parasitism was used before Mega Evolution.",
-"shortDesc":"Absorbs Water; rain/water fields heal; Fire, sun and Desert hurt; above half: defensive protection; first KO triggers Resuscitation; 20% less attack damage; 40% less if super effective; Heals 1/16 HP per turn.",
+"shortDesc":"First KO triggers Resuscitation; 40% less if super effective.",
 "rating":5,
 "flags":{
 "cantsuppress":1
@@ -49915,7 +54497,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11236,
 "gen":9,
 "desc":"Supreme Overlord + Unnerve. Move power gains 10% per fallen ally, including an allied side, capped at 5 after Free-for-All doubles the count. At 2 fallen, moves bypass screens and Substitute; at 4, cannot flinch; at 5, gains +1 Attack and Sp. Atk once per entry and immunity to indirect damage. Faints update these effects while active. Opponents cannot eat Berries or use field Seeds. On Cold Eclipse entry, lowers each foe's Speed one stage unless behind Substitute. Kowtow Cleave removes opposing Reflect, Light Screen and Aurora Veil before damage, even through Substitute; protection, a miss or immunity prevents removal. Suppression disables this ability. Effective fallen count is capped at 5 after Free-for-All doubling, for a maximum 1.5x Supreme Overlord power multiplier; unlocks at 2/4/5 are unchanged.",
-"shortDesc":"Grows stronger as allies fall. Opponents cannot eat Berries. Kowtow Cleave breaks their screens. Supreme Overlord caps at 5 effective faints (1.5x power).",
+"shortDesc":"Kowtow Cleave breaks opposing screens.",
 "rating":4.5,
 "flags":{},
 "isNonstandard":null
@@ -49925,7 +54507,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11282,
 "gen":9,
 "desc":"Full White Smoke prevents other Pokemon from lowering its stats and grants +1 Attack and Sp. Atk on Volcanic entry. Fire Lash damage partially traps a surviving foe as Fire Spin for this turn end and the next. Only one ability trap per holder; a new trapped foe releases the previous one. No stacking with existing partial traps. Traps end when the holder leaves, loses the ability or Dynamaxes/Gigantamaxes. Normal escape, protection and residual-damage rules apply.",
-"shortDesc":"White Smoke; damaging Fire Lash binds one foe for two turns. Switching or Dynamax/Gigantamax ends it.",
+"shortDesc":"Damaging Fire Lash binds one foe for two turns. Switching or Dynamax/Gigantamax ends it.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -49949,7 +54531,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10438,
 "gen":9,
 "desc":"Attack is 1.5x while statused, and burn does not weaken physical attacks. Once per switch-in, the first biting move selected while at half HP or less has +1 priority. Using that move spends the priority effect even if it misses or is blocked.",
-"shortDesc":"1.5x Attack while statused; ignores burn attack penalty — at half HP, the first biting move each entry gains +1 priority.",
+"shortDesc":"At half HP, the first biting move each entry gains +1 priority.",
 "rating":3.5,
 "flags":{},
 "isNonstandard":null
@@ -49969,7 +54551,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10406,
 "gen":9,
 "desc":"Corrosion allows poisoning Poison/Steel types and Poison attacks to hit Steel; newly poisoned foes lose 1 Defense and Sp. Def stage, with existing field effects retained. Oblivious blocks and cures attraction/Taunt, blocks Captivate and prevents Intimidate. Fire damaging attacks deal 1.2x damage if the target is poisoned or badly poisoned when damage is calculated, once per hit. No poison consumption or additional burn/residual effect; no Merciless or Regenerator.",
-"shortDesc":"Poison bypasses type immunity; poisoned foes lose defenses; No attraction/Taunt, Captivate or Intimidate Attack drop; Fire attacks deal 1.2x damage against poisoned targets — Fire damage 1.2x against poisoned targets.",
+"shortDesc":"Fire damage 1.2x against poisoned targets.",
 "rating":5,
 "flags":{
 "breakable":1
@@ -49981,7 +54563,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11103,
 "gen":9,
 "desc":"Moves with effective power of 60 or less have 1.5x power; the threshold is 80 on Factory Field. Contact hits have a 30% chance to poison the target. Shield Dust and Covert Cloak block this effect. Can poison Poison and Steel types; Poison moves bypass Steel immunity. Newly poisoned foes lose 1 Defense and Sp. Def. On Wasteland, move secondary effects become separate 2.5% frostbite, burn, paralysis and poison chances. On Corrosive and Corrosive Mist, incoming damage is multiplied by 1.5. Grass attacks receive a 1.5x same-type attack bonus.",
-"shortDesc":"1.5x power for moves at 60 power or less (80 on Factory); Contact hits have a 30% poison chance; Poison bypasses type immunity; poisoned foes lose defenses — Grass STAB.",
+"shortDesc":"Grass STAB.",
 "rating":4.5,
 "flags":{},
 "isNonstandard":null
@@ -50011,7 +54593,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11266,
 "gen":9,
 "desc":"Full Sweet Veil prevents sleep and Yawn for itself and allies, including Rest, without curing existing sleep. Successfully setting Trick Room also sets normal five-turn Safeguard on its own side. Turning Trick Room off does not count.",
-"shortDesc":"Sweet Veil; setting Trick Room also sets five-turn Safeguard on its side.",
+"shortDesc":"Setting Trick Room also sets five-turn Safeguard on its side.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -50023,7 +54605,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11258,
 "gen":9,
 "desc":"Infiltrator: moves bypass Substitute, Reflect, Light Screen, Aurora Veil, Safeguard and Mist. Once per entry, the first Poison attack to damage a foe also attempts regular poison on each opposing target damaged by that same move, once per target. Damage spends the charge even if poison is blocked or the foe already has status; misses, protection and damage immunity do not. Bonus ability poison respects normal poison immunities, Safeguard and status protection. Allies are never poisoned by this bonus, and normal move secondaries are unchanged.",
-"shortDesc":"Infiltrator; first Poison attack to damage a foe each entry also attempts poison on all foes it damages.",
+"shortDesc":"First Poison attack to damage a foe each entry also attempts poison on all foes it damages.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -50033,7 +54615,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10433,
 "gen":9,
 "desc":"Doubles Speed in rain or on Water Surface, Murkwater Surface, Underwater and Midnight Zone. After it damages a foe, its next damaging move has 1.3x power if it uses the opposite category, Physical or Special. Misses and status moves do not change the last landed category. This bonus does not stack with itself.",
-"shortDesc":"Double Speed in rain/water fields; alternating landed physical and special attacks gain 1.3x power.",
+"shortDesc":"Alternating damaging physical and special attacks gain 1.3x power.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -50043,7 +54625,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11297,
 "gen":9,
 "desc":"Full local Iron Fist gives punches 1.4x power. A damaging punch against a foe stores one charge. Its next special Electric attack ignores positive Sp. Def stages when Sp. Def is used for damage. Successful HP or Substitute damage consumes the charge; misses, protection and immunity preserve it. A physical Electric punch cannot consume its newly gained charge. No extra damage multiplier; switching clears the charge.",
-"shortDesc":"Iron Fist; a damaging punch charges the next special Electric attack to ignore positive Sp. Def.",
+"shortDesc":"A damaging punch charges the next special Electric attack to ignore positive Sp. Def.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -50053,7 +54635,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10345,
 "gen":9,
 "desc":"Other Pokemon cannot lower its Attack. Prevents critical hits and takes 20% less attack damage. Gains +1 Defense on Fairy Tale or Dragon's Den entry and +2 Sp. Def when a foe lowers its stats. When it has more than 1/2 its max HP and takes damage from an attack bringing it to 1/2 or less of its max HP, its Attack, Special Attack, and Speed are raised by 1 stage, and its Defense and Special Defense are lowered by 1 stage. This effect applies after all hits from a multi-hit move. This effect is prevented if the move had a secondary effect removed by the Sheer Force Ability.",
-"shortDesc":"Other Pokemon cannot lower its Attack; No critical hits; 20% less damage; foe stat drops give +2 Sp. Def; At 1/2 or less of its max HP: +1 Atk, Sp. Atk, Spe, and -1 Def, Sp. Def.",
+"shortDesc":"Combines the listed abilities.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -50065,7 +54647,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10294,
 "gen":9,
 "desc":"Prevents opposing Pokemon from choosing to switch out, unless they are holding a Shed Shell, are a Ghost type, or also have this Ability. It takes 0.75x damage from attacks. On Haunted Field, it reveals foes' held items on entry. This Ability cannot be suppressed. Moves bypass Substitute, Reflect, Light Screen, Aurora Veil, Safeguard and Mist. Sleeping foes, including Comatose users, lose 1/8 max HP each turn. Disabled on Rainbow Field.",
-"shortDesc":"Traps foes; takes 0.75x damage from attacks; Moves bypass Substitute and opposing screens; Sleeping foes lose 1/8 HP per turn, except on Rainbow.",
+"shortDesc":"Combines the listed abilities.",
 "rating":5,
 "flags":{},
 "isNonstandard":null
@@ -50085,7 +54667,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11296,
 "gen":9,
 "desc":"Full Strong Jaw gives biting moves 1.5x power. Once per entry, its first damaging bite against a foe applies two-turn Heal Block after HP damage. A hit absorbed by Substitute spends the use without affecting its holder; misses, protection and immunity do not spend it.",
-"shortDesc":"Strong Jaw; first damaging bite each entry applies two-turn Heal Block after damage.",
+"shortDesc":"First damaging bite each entry applies two-turn Heal Block after damage.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -50095,7 +54677,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11301,
 "gen":9,
 "desc":"Full Sturdy. Once per entry, its own Wide Guard actually blocking an opposing damaging attack clears only its negative Defense and Sp. Def stages. Positive stages remain.",
-"shortDesc":"Sturdy; first own Wide Guard block each entry clears negative Defense and Sp. Def.",
+"shortDesc":"First own Wide Guard block each entry clears negative Defense and Sp. Def.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -50107,7 +54689,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10388,
 "gen":9,
 "desc":"Contact attackers have a 30% chance of frostbite. Heals 1/16 max HP each turn in hail or snow, or on Icy, Snowy Mountain and Cold Eclipse without those weathers; hail on Cold Eclipse heals 1/8 instead. Immune to hail damage. Eligible Normal moves become Ice and have 1.2x power, or 1.5x on Icy and Snowy Mountain. Excludes moves whose type is set by their own effect, damaging Z-Moves and Terastallized Tera Blast. Moves cannot miss. Adds Ice typing in hail or snow and on Icy, Snowy Mountain and Cold Eclipse. Reflects eligible status moves and entry hazards once; reflected moves cannot bounce again. Fairy Tale entry gives +1 Sp. Def; Mirror Arena entry gives +1 evasion. On Mirror Arena, reflecting a directly targeted move also gives its original user +1 evasion.",
-"shortDesc":"Moves never miss; stronger Ice moves; Ice healing/protection; reflects status moves.",
+"shortDesc":"Stronger Ice moves; Ice healing/protection; reflects status moves.",
 "rating":5,
 "flags":{
 "breakable":1
@@ -50149,7 +54731,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10122,
 "gen":9,
 "desc":"Takes 20% less attack damage, or 40% less from super-effective attacks. Curse used by it becomes a 100 BP physical or special Ghost-type attack using its higher Attack or Special Attack, with 100% accuracy, that hits all adjacent foes and curses each target. Curse from it deals 1/8 max HP each turn. It restores 1/4 of the damage dealt by its attacks and by Curse damage it caused. When it reaches half HP or faints, it creates Haunted Field for 5 turns. Frisk breaks all opposing active Illusions on entry, reveals their held items, and independently has a 30% chance to Embargo each item holder for 5 turns.",
-"shortDesc":"20% less attack damage; 40% less if super effective — Curse becomes a 100 BP spread Ghost attack using the higher Attack or Sp. Atk; curses foes; heals 1/4 damage; half HP/faint sets Haunted Field.",
+"shortDesc":"Curse becomes a 100 BP spread Ghost attack using the higher Attack or Sp. Atk; curses foes; heals 1/4 damage; half HP/faint sets Haunted Field.",
 "rating":4.5,
 "flags":{
 "breakable":1
@@ -50171,7 +54753,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10362,
 "gen":9,
 "desc":"Contact moves have 1.3x power. Takes 0.8x attack damage at any HP; super-effective attacks deal a further 0.75x damage (0.6x total). Ability-ignoring moves cannot bypass these reductions, but suppression disables them. Immune to hail damage on Cold Eclipse. Its damaging moves curse the foes they hurt. When it faints, it creates Haunted Field for 5 turns. Frisk breaks all opposing active Illusions on entry, reveals their held items, and independently has a 30% chance to Embargo each item holder for 5 turns.",
-"shortDesc":"Contact moves have 1.3x power; 20% less attack damage at any HP; 40% less if super effective — damaging moves curse; faint sets Haunted.",
+"shortDesc":"Damaging moves curse; faint sets Haunted.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -50247,7 +54829,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10594,
 "gen":9,
 "desc":"All damaging Dark moves have 4/3x power, or 0.75x with Aura Break. Multiple users do not stack. Immune to hail damage on Cold Eclipse. Damaging Dark hits inflict Heal Block on surviving foes for 2 turns, including the current turn. Respects protection and Substitute; does not shorten a longer existing Heal Block.",
-"shortDesc":"Boosts everyone's Dark moves; Aura Break reverses it — Dark hits Heal Block surviving foes for 2 turns.",
+"shortDesc":"Dark hits Heal Block surviving foes for 2 turns.",
 "rating":3,
 "flags":{},
 "isNonstandard":null
@@ -50311,7 +54893,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11298,
 "gen":9,
 "desc":"Full local Oblivious. Once per entry, its first damaging Ice attack against a foe applies Torment after HP damage. A hit absorbed by Substitute spends the use without affecting its holder; misses, protection and immunity do not spend it.",
-"shortDesc":"Oblivious; first damaging Ice attack each entry applies Torment after damage.",
+"shortDesc":"First damaging Ice attack each entry applies Torment after damage.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -50323,7 +54905,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11263,
 "gen":9,
 "desc":"Full Soundproof. Psychic Noise that damages a surviving foe also lowers that foe's Attack by one stage, once per target per move. Normal stat-drop protection applies; Psychic Noise retains its existing effects.",
-"shortDesc":"Soundproof; Psychic Noise damage lowers surviving foes' Attack once per target per move.",
+"shortDesc":"Psychic Noise damage lowers surviving foes' Attack once per target per move.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -50377,7 +54959,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11262,
 "gen":9,
 "desc":"Full Sheer Force. Once per entry, the first Heavy Slam or Heat Crash to damage a foe removes Reflect, Light Screen and Aurora Veil from that foe's side after damage. Both moves share one charge; misses, protection and hits only on Substitute do not spend it.",
-"shortDesc":"Sheer Force; first Heavy Slam or Heat Crash damage each entry clears the foe side's screens after damage.",
+"shortDesc":"First Heavy Slam or Heat Crash damage each entry clears the foe side's screens after damage.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -50387,7 +54969,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10146,
 "gen":9,
 "desc":"Rock, Ground and Steel moves have 1.3x power in sandstorm or on Desert and Ashen Beach. Immune to sandstorm damage. On entry, summons sandstorm for 5 turns, or 8 with Smooth Rock. Doubles weight and halves physical attack damage. Factory entry gives +1 Defense and -1 Speed. On entry, summons a sandstorm and creates Desert Field for 5 turns. Rock-, Ground-, and Steel-type attacks gain 30% power during sandstorm or Desert Field. It is immune to sandstorm damage, has doubled weight, and takes half damage from physical moves. Its four moves are always Heat Crash, Heavy Slam, Earthquake, and Stone Edge. Its Desert Field creation or refresh is attempted once per battle; switching or ability changes do not reset it. Mountain Rift retains its explicit field-transition exceptions.",
-"shortDesc":"1.3x Rock/Ground/Steel power in sand or sandy fields; Summons sandstorm on entry; Double weight; half physical damage; Factory stat changes — 5-turn Desert Field; fixed four-move set.",
+"shortDesc":"5-turn Desert Field; fixed four-move set.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -50399,7 +54981,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10267,
 "gen":9,
 "desc":"Multi-hit moves always use their maximum hit count and have 1.5x power. Moves that normally check accuracy per hit check only once. Incoming Fire attacks use half the attacker's offensive stat. Burn damage is halved. On entry, summons sandstorm for 5 turns, or 8 with Smooth Rock. Multi-hit moves always hit the maximum number of times and have 1.5x power. Damage from Fire-type moves and burns is halved. Summons sandstorm on entry.",
-"shortDesc":"Maximum multi-hit count; 1.5x multi-hit power; Half Fire attacking stats and burn damage; Summons sandstorm on entry.",
+"shortDesc":"1.5x multi-hit power; Half Fire attacking stats and burn damage; Summons sandstorm on entry.",
 "rating":5,
 "flags":{
 "breakable":1
@@ -50411,7 +54993,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10148,
 "gen":9,
 "desc":"Airborne: immune to Ground attacks, Spikes, Toxic Spikes, Sticky Web and Arena Trap unless grounded. Thousand Arrows can still hit. On entry, summons sandstorm for 5 turns, or 8 with Smooth Rock. Resisted attacks deal double damage. It is airborne, summons sandstorm on entry, and deals double damage with resisted attacks. Its Ground-type attacks receive STAB even though it is not Ground-type.",
-"shortDesc":"Airborne; immune to Ground attacks unless grounded; Summons sandstorm on entry; Resisted attacks deal double damage — Ground moves get STAB.",
+"shortDesc":"Ground moves get STAB.",
 "rating":5,
 "flags":{
 "breakable":1
@@ -50472,7 +55054,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11311,
 "gen":9,
 "desc":"Full Infiltrator bypasses Substitute and opposing protective screens. Once per entry, its first damaging Psychic attack dealing opposing HP damage applies Torment after damage, subject to normal eligibility. Misses, Protect and immunity do not spend the use.",
-"shortDesc":"Infiltrator; first damaging Psychic hit each entry applies Torment after damage.",
+"shortDesc":"First damaging Psychic hit each entry applies Torment after damage.",
 "rating":3.5,
 "flags":{},
 "isNonstandard":null
@@ -50503,8 +55085,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "name":"Divine Intervention",
 "num":10120,
 "gen":9,
-"desc":"On entry, heals each adjacent ally by 1/4 max HP, or 1/3 on Fairy Tale. Allies take 25% less attack damage; this does not protect the holder. Heals 1/3 max HP on switching out. Takes half damage from contact attacks and double damage from Fire attacks; contact Fire attacks deal normal damage.",
-"shortDesc":"Entry heals allies; allies take 25% less damage; switching heals 1/3 HP; half contact damage, double Fire damage.",
+"desc":"Includes Invigorate: healing received by the holder and its allies is multiplied by 1.3, each adjacent ally has a 50% chance to have its major status cured at turn end, and Safeguard lasts 5 turns. After an opposing damaging move finishes, each active teammate, including the holder, that lost HP to that move, survived, and is at half HP or less is healed by 1/4 max HP and cured of major status. Invigorate normally increases this healing to 32.5%. Each recipient can receive this emergency treatment only once per battle, even after switching, changing abilities or being revived. Healing obeys normal restrictions; the allowance is spent only if healing or curing succeeds. Allied, residual and Substitute-only damage do not trigger it. Healing moves, including draining attacks, and supported status-cleansing moves gain +3 priority; Wish remains delayed. Heals 1/3 max HP on switching out. Other allies take 25% less attack damage; the holder is not protected by this reduction.",
+"shortDesc":"Emergency team healing and cleansing with priority recovery and ally protection.",
 "rating":5,
 "flags":{
 "breakable":1
@@ -50516,7 +55098,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10147,
 "gen":9,
 "desc":"Eligible single-target damaging moves hit three times; existing multi-hit moves, spread moves outside Free-for-All, charging moves, delayed attacks, Z/Max moves and moves barred from extra hits are excluded. The second and third hits deal 30% damage and retarget the foe's ally if the first target fainted. In Free-for-All battles, single-target moves hit all foes once at 1.3x power; spread moves hit all foes three times, with later hits at 30% power, and full-power spread moves stay full power. Moves have 1.2x power on Dragon's Den. Moves ignore bypassable opposing abilities. It gains 1 Accuracy on entry. Its critical hits deal 2.25x damage instead of 1.5x. Eligible attacks gain Hydra Bond's extra hits and ignore opposing Abilities. It gains +1 accuracy on entry and its critical hits deal more damage. Water attacks receive STAB even without Water typing.",
-"shortDesc":"Damaging moves hit 3x; hits 2/3 at 30%; FFA singles hit all foes at 1.3x; Moves ignore bypassable abilities; +1 Accuracy on entry; critical hits deal 2.25x damage — Water STAB.",
+"shortDesc":"Water STAB.",
 "rating":5,
 "flags":{
 "breakable":1
@@ -50562,7 +55144,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10528,
 "gen":9,
 "desc":"Full Oblivious. While actually asleep, takes 25% less Special attack damage and opponents cannot force it to switch. Voluntary switching still works. Sleep Talk cannot select Rest.",
-"shortDesc":"Oblivious; while asleep, 25% less Special damage and cannot be forced out. Sleep Talk excludes Rest.",
+"shortDesc":"While asleep, takes 25% less special damage and cannot be forced out; Sleep Talk excludes Rest.",
 "rating":1.5,
 "flags":{
 "breakable":1
@@ -50574,7 +55156,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10177,
 "gen":9,
 "desc":"Eligible Normal moves become Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Dragon moves receive STAB. Same-type moves have 1.3x power. Biting moves have 1.5x power. Moves ignore bypassable opposing abilities.",
-"shortDesc":"Normal moves become Dragon; Dragon STAB; 1.3x same-type and 1.5x biting power; ignores abilities.",
+"shortDesc":"Same-type moves gain 1.3x power.",
 "rating":4.5,
 "flags":{},
 "isNonstandard":null
@@ -50604,7 +55186,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10510,
 "gen":9,
 "desc":"Gains +1 Attack for each Pokemon knocked out by its move. A move KO also stores one charge that lowers the next opposing entrant's Attack by 1 stage. Charges do not stack and end when the holder leaves.",
-"shortDesc":"Move KOs give +1 Attack — a move KO lowers the next opposing entrant's Attack.",
+"shortDesc":"A move KO lowers the next opposing entrant's Attack.",
 "rating":3,
 "flags":{},
 "isNonstandard":null
@@ -50614,7 +55196,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10103,
 "gen":9,
 "desc":"Doubles Attack. On entry, reveals all opposing active Illusions and held items. Each item holder independently has a 30% chance to be Embargoed for 5 turns. Healing received by it and its allies is multiplied by 1.3. At turn end, it has a 50% chance to cure each adjacent ally's status condition. Doubles Attack, reveals opposing held items on entry, and improves healing.",
-"shortDesc":"Doubles Attack; Reveals foe Illusions/items; 30% chance of 5-turn Embargo; User/allies receive 1.3x healing; 50% to cure ally status each turn.",
+"shortDesc":"Doubles Attack; 30% chance of 5-turn Embargo; 50% to cure ally status each turn.",
 "rating":5,
 "flags":{
 "breakable":1
@@ -50636,7 +55218,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11248,
 "gen":9,
 "desc":"Levitate + full local Unnerve: airborne with normal Ground and grounded-hazard immunity; foes cannot eat Berries or use field seeds while Unnerve is active. On Cold Eclipse entry, lowers opposing Speed one stage unless protected by Substitute. A Dark Pulse that damages a surviving foe also applies Torment under normal volatile-status rules, preventing consecutive use of the same move. Existing Torment does not stack.",
-"shortDesc":"Levitate + Unnerve; Dark Pulse damage also applies Torment to surviving foes.",
+"shortDesc":"Dark Pulse damage also applies Torment to surviving foes.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -50648,7 +55230,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11269,
 "gen":9,
 "desc":"Full Telepathy: immune to allied damaging moves and doubles Speed on Psychic Terrain or its aura. Once per entry, its first successful Moonlight also cures one active ally's major status, choosing the affected ally with the lowest HP percentage. No bonus self-cure; ordinary Moonlight healing and failure rules apply.",
-"shortDesc":"Telepathy; first successful Moonlight each entry cures the statused active ally with lowest HP percentage.",
+"shortDesc":"First successful Moonlight each entry cures the statused active ally with lowest HP percentage.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -50660,7 +55242,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10262,
 "gen":9,
 "desc":"Avoids allied damaging moves. Speed doubles on Psychic Terrain or Psychic Aura. At turn end, it and its active allies each heal 1/16 max HP. Once per switch-in, if an opposing move would knock out an ally, that ally survives at 1 HP and it loses 1/4 max HP, provided it has more HP than the cost.",
-"shortDesc":"Avoids allied attacks; heals its side 1/16 each turn; once per entry saves an ally at a 1/4 HP cost.",
+"shortDesc":"Heals its side 1/16 each turn; once per entry saves an ally at a 1/4 HP cost.",
 "rating":4.5,
 "flags":{
 "breakable":1
@@ -50672,7 +55254,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11207,
 "gen":9,
 "desc":"Moves cannot be redirected. On New World, Starlight Arena, Fairy Tale and Chessboard entry, gains +1 Sp. Atk. Once per entry, the first Dragon Darts dealing opposing HP damage removes Reflect if Physical or Light Screen if Special from each opposing side it damaged, after both darts finish. Uses Dragon Darts' actual higher-offense category. Ability changes do not refresh this effect.",
-"shortDesc":"Stalwart. Once per entry, Dragon Darts damage breaks the matching screen.",
+"shortDesc":"Once per entry, Dragon Darts damage breaks the matching screen.",
 "rating":3,
 "flags":{},
 "isNonstandard":null
@@ -50702,7 +55284,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11307,
 "gen":9,
 "desc":"Full Soundproof. Once per entry, Drum Beating successfully lowering an opposing Pokemon's Speed clears only the user's negative Defense and Sp. Def stages. Positive stages remain. Misses, immunity and blocked Speed drops do not trigger or spend the use.",
-"shortDesc":"Soundproof; first successful Drum Beating Speed drop each entry clears own negative Defense and Sp. Def.",
+"shortDesc":"First successful Drum Beating Speed drop each entry clears own negative Defense and Sp. Def.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -50736,7 +55318,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10440,
 "gen":9,
 "desc":"Doubles Speed in sandstorm or on Desert and Ashen Beach. Immune to sandstorm damage. Once per switch-in, being active in sandstorm clears entry hazards from its side.",
-"shortDesc":"Double Speed in sand or sandy fields; no sand damage — entering during sand clears its side's hazards once.",
+"shortDesc":"Entering during sand clears its side's hazards once.",
 "rating":3,
 "flags":{},
 "isNonstandard":null
@@ -50746,7 +55328,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10057,
 "gen":9,
 "desc":"On entry, summons sandstorm for 5 turns, or 8 with Smooth Rock. At turn end, if statused, affected by a listed ailment, negatively boosted or at half HP or less, has a 50% chance to heal 1/4 max HP, cure status, clear negative stages and remove Attract, confusion, Curse, Disable, Encore, Heal Block, Leech Seed, Nightmare, Perish Song, Taunt, Torment and Yawn. On Dragon's Den, activation is guaranteed but only cures status and heals, then raises its higher attacking stat by 1 and lowers both defenses by 1. When it is hit by an attack, the effect of Sandstorm begins. Summons sand on entry and when hit; during Sandstorm, opposing Pokemon take Ground-type damage equal to 1/16 max HP, blocked by Ground immunities. On fainting, creates Desert Field for 5 turns.",
-"shortDesc":"Summons sandstorm on entry; 50% end-turn cure/reset and 1/4 heal; Dragon's Den changes the effect; When it is hit by an attack, the effect of Sandstorm begins — Desert Field for 5 turns on faint.",
+"shortDesc":"Desert Field for 5 turns on faint.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -50758,7 +55340,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10166,
 "gen":9,
 "desc":"Full Battle Fervor, Precision and Opportunist, including their field effects, entry behavior, item blocking, damage modifiers and boost-copy timing.",
-"shortDesc":"Full Battle Fervor, Precision and Opportunist, including their field effects, entry behavior, item blocking, damage modifiers and boost-copy timing.",
+"shortDesc":"Combines the listed abilities.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -50812,7 +55394,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11094,
 "gen":9,
 "desc":"It is immune to sound moves, and this immunity cannot be suppressed. Its sound moves become Flying type and have 1.5x power. Its side is immune to its own damaging sound-based moves. On entry, reveals all opposing active Illusions and held items. Each item holder independently has a 30% chance to be Embargoed for 5 turns. Avoids allied damaging moves. Speed doubles on Psychic Terrain or Psychic Aura. Moves bypass Substitute, Reflect, Light Screen, Aurora Veil, Safeguard and Mist.",
-"shortDesc":"Unsuppressible sound immunity; sound -> Flying 1.5x; allies avoid own sound damage; Reveals foe Illusions/items; 30% chance of 5-turn Embargo; Avoids allied attacks; double Speed on Psychic field/aura.",
+"shortDesc":"Allies avoid own sound damage; 30% chance of 5-turn Embargo; double Speed on Psychic field/aura.",
 "rating":5,
 "flags":{
 "cantsuppress":1
@@ -50859,7 +55441,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11246,
 "gen":9,
 "desc":"Own Tempo + Curious Medicine: prevents confusion and Intimidate Attack drops. On entry, clears negative stages and confusion from self and active allies, keeping positive stages; each Pokemon cleansed heals 1/8 maximum HP. Once per turn, a damaging Eerie Spell cures one major status: the holder first, otherwise the statused active ally with lowest HP percentage. Does not affect the bench.",
-"shortDesc":"Own Tempo + Curious Medicine; Eerie Spell cures one major status on self or an active ally once/turn.",
+"shortDesc":"Eerie Spell cures one major status on self or an active ally once/turn.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -50981,7 +55563,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10041,
 "gen":9,
 "desc":"Opposing stat drops give +2 Sp. Atk. Doubles Speed in hail, snow or on Icy, Snowy Mountain and Cold Eclipse. Doubles Speed in rain or on Water Surface, Murkwater Surface, Underwater and Midnight Zone. Same-type moves have 1.3x power. The two Speed boosts do not stack.",
-"shortDesc":"Foe stat drops give +2 Sp. Atk; double Speed in rain/snow and supported fields; 1.3x same-type power.",
+"shortDesc":"Same-type moves gain 1.3x power.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -51003,7 +55585,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10471,
 "gen":9,
 "desc":"Doubles move secondary-effect chances and removes charging turns. Once per switch-in, successfully applying a move secondary effect creates Safeguard for 5 turns. A blocked secondary does not trigger this effect.",
-"shortDesc":"Double secondary-effect chances; no charging turns — the first secondary effect each entry sets 5-turn Safeguard.",
+"shortDesc":"The first secondary effect each entry sets 5-turn Safeguard.",
 "rating":3.5,
 "flags":{},
 "isNonstandard":null
@@ -51013,7 +55595,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10108,
 "gen":9,
 "desc":"Doubles Attack, or Sp. Atk instead on Psychic Terrain. Prevents flinching and Intimidate's Attack drop. Moves with effective power of 60 or less have 1.5x power; the threshold is 80 on Factory Field.",
-"shortDesc":"Doubles Attack; Psychic Terrain doubles Sp. Atk instead; Cannot flinch; blocks Intimidate; 1.5x power for moves at 60 power or less (80 on Factory).",
+"shortDesc":"Combines the listed abilities.",
 "rating":5,
 "flags":{
 "breakable":1
@@ -51025,7 +55607,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":276,
 "gen":9,
 "desc":"Includes Mold Breaker. Its attacks deal 2x damage to all Pulse forms. This Pokemon's Grass-type moves use 1.5x Attack and Special Attack. Opposing Mega, G-Max, Terastallized, Stellar, and Ultra Beast Pokemon have Attack, Defense, Special Attack, Special Defense, and Speed reduced to 0.7x while this Pokemon is active. This debuff does not affect allies. When this Pokemon faints, it creates Bewitched Woods for 5 turns.",
-"shortDesc":"Mold Breaker; 2x damage to Pulse; Grass offenses 1.5x; weakens opposing gimmicks.",
+"shortDesc":"2x damage to Pulse; Grass offenses 1.5x; weakens opposing gimmicks.",
 "rating":3.5,
 "flags":{},
 "isNonstandard":null
@@ -51035,7 +55617,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11246,
 "gen":9,
 "desc":"Absorbs Water moves for 1/4 max HP; incoming Fire moves have 1.25x power. Effective rain heals 1/8 HP per turn; sun costs 1/8. Field healing per turn: 1/16 on Underwater, Swamp, Misty or grounded Water Surface; 1/8 when grounded and Poison-type on Murkwater. Corrosive Mist heals Poison types by 1/8 but damages non-Steel others by 1/8. Desert costs 1/8 HP per turn. On entry, ends ordinary rain but not Primordial Sea. Once per stay, ending rain or absorbing Water grants one Steam Veil; the next damaging special HP hit deals 0.75x damage and consumes it. It cannot stack or refresh within that stay.",
-"shortDesc":"Absorbs Water; ends ordinary rain; once per stay, ending rain or absorbing Water gives a special-hit veil.",
+"shortDesc":"Ends ordinary rain; once per stay, ending rain or absorbing Water gives a special-hit veil.",
 "rating":3,
 "flags":{
 "breakable":1
@@ -51047,7 +55629,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11285,
 "gen":9,
 "desc":"Full Overcoat + Ripen: immune to powder moves and sandstorm/hail damage; applicable Berry effects are doubled, including local Ripen behavior. No additional effect.",
-"shortDesc":"Overcoat + Ripen.",
+"shortDesc":"Combines the listed abilities.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -51069,7 +55651,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10350,
 "gen":9,
 "desc":"Mold Breaker: moves ignore bypassable opposing abilities. It has Defiant: opposing stat drops raise its Attack by 2 stages. It cannot flinch. Its slicing moves and Steel Wing have 1.5x power, except on Cold Eclipse, as with Sharpness. Intimidate still lowers its Attack and triggers Defiant. Flinch protection can be bypassed by Mold Breaker; ability suppression disables all effects.",
-"shortDesc":"Mold Breaker; Foe stat drops give +2 Attack; cannot flinch; slicing moves and Steel Wing have 1.5x power except on Cold Eclipse.",
+"shortDesc":"Cannot flinch; Steel Wing also receives the slicing-move power boost.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -51101,7 +55683,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10043,
 "gen":9,
 "desc":"Mold Breaker: moves ignore bypassable opposing abilities. Designated arrow moves gain +1 priority at half HP or less and 1.3x power against trapped foes: Spirit Shackle, Thousand Arrows, Triple Arrows, Snipe Shot, Razor Leaf, Magical Leaf, Spike Cannon, Pin Missile, Icicle Spear, Rock Blast, Bullet Seed, Scale Shot, Psycho Cut and Ceaseless Edge. Retains its arrow follow-up and protective effects.",
-"shortDesc":"Mold Breaker; arrow moves: +1 priority at half HP or less; 1.3x power against trapped foes.",
+"shortDesc":"Arrow moves gain +1 priority at half HP or less; 1.3x power against trapped foes and for same-type moves.",
 "rating":3.5,
 "flags":{
 "breakable":1,
@@ -51114,7 +55696,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10591,
 "gen":9,
 "desc":"Its first damaging Flower Trick against a surviving foe each entry attempts Leech Seed; Grass immunity and Substitute still apply. Includes full local Magician: when itemless, steals a removable item after an eligible damaging move, respecting normal theft restrictions. Fairy Tale, Bewitched Woods, Haunted, Misty and New World entry grant +1 Sp. Atk; on Psychic Terrain, incoming status moves with numeric accuracy use 50 accuracy.",
-"shortDesc":"Magician; first Flower Trick hit each entry attempts Leech Seed.",
+"shortDesc":"First Flower Trick hit each entry attempts Leech Seed.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -51124,17 +55706,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10185,
 "gen":9,
 "desc":"Status moves gain +1 priority. Doubles move secondary-effect chances. Switching out cures major status and heals 1/3 max HP, plus another 1/3 if a status was cured.",
-"shortDesc":"+1 status priority; double secondary-effect chances; switching cures status and heals HP.",
-"rating":4,
-"flags":{},
-"isNonstandard":null
-},
-"faultline":{
-"name":"Faultline",
-"num":11257,
-"gen":9,
-"desc":"Full local Mold Breaker: moves ignore bypassable opposing abilities. Once per entry, the first Sand Tomb that successfully applies its binding effect adds one Spikes layer to the target's side, up to the normal three-layer cap. Misses, protection, immunity and Substitute preventing binding give no layer. Spikes causes no immediate damage to the trapped target.",
-"shortDesc":"Mold Breaker; first successful Sand Tomb bind each entry adds one Spikes layer to the foe's side.",
+"shortDesc":"+1 status priority; switching cures status and heals HP.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -51154,7 +55726,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10351,
 "gen":9,
 "desc":"Moves cannot miss. Prevents and cures sleep and blocks Yawn. Fighting attacks use 1.3x Attack or Sp. Atk. Takes 20% less attack damage, with a further 50% reduction at full HP (60% total).",
-"shortDesc":"Moves never miss; no sleep/Yawn; stronger Fighting attacks; 20% less damage, 60% at full HP.",
+"shortDesc":"Moves never miss; stronger Fighting attacks; 20% less damage, 60% at full HP.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -51240,7 +55812,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10511,
 "gen":9,
 "desc":"Doubles Speed in hail, snow or on Icy, Snowy Mountain and Cold Eclipse. In snow or hail, biting moves always critically hit slower targets, unless critical hits are prevented.",
-"shortDesc":"Double Speed in hail, snow and icy fields — bites always crit slower foes in snow or hail, unless blocked.",
+"shortDesc":"Bites always crit slower foes in snow or hail, unless blocked.",
 "rating":3,
 "flags":{},
 "isNonstandard":null
@@ -51290,7 +55862,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10310,
 "gen":9,
 "desc":"Contact attacks deal half damage; Fire attacks deal double damage (contact Fire attacks are neutral). Moves of 60 power or less gain 1.5x power, with the existing Factory Field threshold of 80. Switching out cures major status and, only when a status was cured, heals 1/3 max HP. Bewitched Woods also cures status at turn end without this switch-out heal. Normal ability suppression applies.",
-"shortDesc":"Half contact damage; double Fire damage; 1.5x power for moves at 60 power or less (80 on Factory); Switching cures status and heals 1/3 HP if cured; Woods cures status each turn.",
+"shortDesc":"Combines the listed abilities.",
 "rating":3.5,
 "flags":{},
 "isNonstandard":null
@@ -51347,7 +55919,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10420,
 "gen":9,
 "desc":"Attack is 1.5x while statused, and burn does not weaken physical attacks. Once per switch-in, the first damaging move it takes from a foe while statused raises its Defense by one stage.",
-"shortDesc":"1.5x Attack while statused; the first foe HP hit while statused each entry gives +1 Defense.",
+"shortDesc":"First opposing HP hit while statused each entry gives +1 Defense.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -51369,7 +55941,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10460,
 "gen":9,
 "desc":"Raises critical-hit rate by one stage. Once per entry, its first critical hit dealing opposing HP damage sets 5-turn Safeguard and cures confusion on active allies. Does not shorten a longer Safeguard or repeat the reward.",
-"shortDesc":"+1 crit stage; first damaging critical hit each entry sets Safeguard and cures active allies' confusion.",
+"shortDesc":"First damaging critical hit each entry sets Safeguard and cures active allies’ confusion.",
 "rating":1.5,
 "flags":{},
 "isNonstandard":null
@@ -51379,7 +55951,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10065,
 "gen":9,
 "desc":"Once per opposing damaging move it survives, after the entire move finishes, gains +1 Attack and Speed and attempts confusion. Allied, self and indirect damage do not trigger it. Retains Klutz item suppression and its exceptions, Fling failure and local Chess Board move restrictions. While confused, incoming attack damage is 1.25x; hurting itself in confusion also costs 1/8 maximum HP.",
-"shortDesc":"After each opposing damaging move it survives: +1 Attack/Speed and confusion. Retains Klutz and confusion damage costs.",
+"shortDesc":"After each opposing damaging move it survives: +1 Attack/Speed and confusion. Confusion can still hurt it.",
 "rating":3.5,
 "flags":{
 "breakable":1
@@ -51391,7 +55963,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10469,
 "gen":9,
 "desc":"Prevents move recoil except Struggle. Crash and Life Orb damage still apply. Once per turn, damaging a foe with a recoil move lowers its Speed by 1 stage. Struggle recoil is not prevented.",
-"shortDesc":"No move recoil except Struggle — once per turn, recoil-move damage lowers the foe’s Speed.",
+"shortDesc":"Once per turn, recoil-move damage lowers the foe’s Speed.",
 "rating":3,
 "flags":{},
 "isNonstandard":null
@@ -51401,7 +55973,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10181,
 "gen":9,
 "desc":"Doubles Speed in hail, snow or on Icy, Snowy Mountain and Cold Eclipse. Biting moves have 1.5x power. Airborne: immune to Ground attacks, Spikes, Toxic Spikes, Sticky Web and Arena Trap unless grounded. Thousand Arrows can still hit. Eligible Normal moves become Ice with 1.2x power.",
-"shortDesc":"Double Speed in snow and supported fields; stronger biting moves; airborne; Normal moves become Ice.",
+"shortDesc":"Double Speed in snow and supported fields; stronger biting moves; Normal moves become Ice.",
 "rating":5,
 "flags":{},
 "isNonstandard":null
@@ -51411,7 +55983,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11256,
 "gen":9,
 "desc":"Full local Natural Cure: switching cures status and heals 1/3 maximum HP only when curing status; Bewitched Woods cures status at turn end without that heal. Its first successful Flying attack each entry deals 1.2x damage across all hits, including Substitute damage. Misses, Protect and immunity preserve the charge. A successful Roost can restore a spent charge once per entry, allowing at most two boosted Flying attacks. Roost before spending the initial charge does not grant or store another charge.",
-"shortDesc":"Natural Cure; first Flying attack is 1.2x. Successful Roost restores a spent charge once per entry.",
+"shortDesc":"First Flying attack has 1.2x power; successful Roost restores the charge once per entry.",
 "rating":2.5,
 "flags":{},
 "isNonstandard":null
@@ -51443,7 +56015,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11274,
 "gen":9,
 "desc":"Full Dazzling. When its Electrify actually converts an opposing move from another type to Electric, attempts to Disable that converted move after it finishes, through the end of the following turn. Normal Disable eligibility and protection apply. No bonus for failed Electrify, inability to act, an already-Electric move, or an allied move.",
-"shortDesc":"Dazzling; its Electrify conversion Disables the opposing move after execution through next turn.",
+"shortDesc":"Its Electrify conversion Disables the opposing move after execution through next turn.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -51475,7 +56047,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10316,
 "gen":9,
 "desc":"Eligible Normal moves become Ice and have 1.2x power, or 1.5x on Icy and Snowy Mountain. Excludes moves whose type is set by their own effect, damaging Z-Moves and Terastallized Tera Blast. On entry, it reveals a strongest move known by an opposing Pokemon and removes foe Illusions. In Psychic Terrain, it gains 2 Sp. Atk and takes 0.8x damage from moves. Absorbs Water moves for 1/4 max HP; incoming Fire moves have 1.25x power. Effective rain heals 1/8 HP per turn; sun costs 1/8. Field healing per turn: 1/16 on Underwater, Swamp, Misty or grounded Water Surface; 1/8 when grounded and Poison-type on Murkwater. Corrosive Mist heals Poison types by 1/8 but damages non-Steel others by 1/8. Desert costs 1/8 HP per turn.",
-"shortDesc":"Normal moves become Ice with 1.2x power; icy-field boost; Reveals strongest foe move; removes Illusions; Psychic Terrain +2 SpA; takes 0.8x damage; Absorbs Water; rain/water fields heal; Fire, sun and Desert hurt.",
+"shortDesc":"Icy-field boost; takes 0.8x damage; Fire, sun and Desert hurt.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -51499,7 +56071,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11096,
 "gen":9,
 "desc":"Attacks use double the offensive stat against targets that entered this turn. Slicing moves have 1.5x power, except on Cold Eclipse. Eligible Normal moves become Ice and have 1.2x power, or 1.5x on Icy and Snowy Mountain. Excludes moves whose type is set by their own effect, damaging Z-Moves and Terastallized Tera Blast. Doubles attacking stats against foes that just entered battle. Slicing moves have 1.5x power except on Cold Eclipse. Eligible Normal moves become Ice with 1.2x power, or 1.5x on Icy and Snowy Mountain fields.",
-"shortDesc":"Double attacking stats against newly entered targets; Slicing moves have 1.5x power except on Cold Eclipse; Normal moves become Ice with 1.2x power; icy-field boost.",
+"shortDesc":"Combines the listed abilities.",
 "rating":5,
 "flags":{},
 "isNonstandard":null
@@ -51509,7 +56081,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11241,
 "gen":9,
 "desc":"Biting moves have 1.5x power. Ice moves dealing opposing HP damage lower each surviving target's Speed by 1 after the whole move, once per target, unless that move already successfully lowered its Speed. Biting attacks drain one quarter of their actual opposing HP damage if that target had negative Speed stages before the attack began. Normal draining interactions apply.",
-"shortDesc":"Bites have 1.5x power — Ice HP hits lower Speed once; bites drain 25% against already-slowed foes.",
+"shortDesc":"Ice HP hits lower Speed once; bites drain 25% against already-slowed foes.",
 "rating":3.5,
 "flags":{},
 "isNonstandard":null
@@ -51529,7 +56101,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11238,
 "gen":9,
 "desc":"Harvest: at each turn end, has a 50% chance to restore its last consumed Berry or eligible field seed if it has no item; always restores in sun, Grassy Terrain or Flower Garden 2. Consuming its own Berry heals each active ally by 1/8 of that ally's maximum HP once per turn. The holder receives only the Berry's normal benefit. Removed, stolen or restored items and consumed seeds do not trigger ally healing.",
-"shortDesc":"Harvest; consuming its own Berry heals active allies 1/8 HP once/turn, excluding itself.",
+"shortDesc":"Consuming its own Berry heals active allies 1/8 HP once/turn, excluding itself.",
 "rating":3.5,
 "flags":{},
 "isNonstandard":null
@@ -51625,7 +56197,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11305,
 "gen":9,
 "desc":"Full local Flower Veil, including its field effects. Once per entry, successful Floral Healing also clears the recipient's confusion and negative accuracy stages. Positive accuracy remains; failed healing does not spend the use.",
-"shortDesc":"Flower Veil; first successful Floral Healing each entry clears recipient confusion and negative accuracy.",
+"shortDesc":"First successful Floral Healing each entry clears recipient confusion and negative accuracy.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -51637,7 +56209,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10453,
 "gen":9,
 "desc":"Prevents other Pokemon's accuracy drops and ignores evasion boosts. Reveals opposing Illusions on activation. Mirror Arena entry gives +1 accuracy and Laser Focus. Once per switch-in, reflects the first reflectable opposing status move aimed directly at it. Side-targeting hazards do not use this reflection.",
-"shortDesc":"No opposing accuracy drops; ignores evasion; reveals Illusions — reflects the first direct opposing status move each entry.",
+"shortDesc":"Reflects the first direct opposing status move each entry.",
 "rating":0.5,
 "flags":{
 "breakable":1
@@ -51649,7 +56221,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11280,
 "gen":9,
 "desc":"Full Cloud Nine suppresses weather effects and retains its Rainbow Field random stat boost. Once per entry, gains one Sp. Atk stage when an adjacent ally survives an opposing attack that takes it from above half HP to half HP or less. No trigger from self-damage, allied attacks, indirect damage, or a KO. Normal boost rules apply.",
-"shortDesc":"Cloud Nine; once per entry, +1 Sp. Atk when an adjacent ally survives a foe hit crossing half HP.",
+"shortDesc":"Once per entry, +1 Sp. Atk when an adjacent ally survives a foe hit crossing half HP.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -51659,7 +56231,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11126,
 "gen":9,
 "desc":"Moves ignore bypassable opposing abilities. Redirects single-target Electric moves to itself and absorbs Electric moves for +1 Attack and Sp. Atk. Electric Terrain entry also grants both boosts. Contact attackers have a 30% paralysis chance, or 60% on Electric Terrain and Short-Circuit.",
-"shortDesc":"Moves ignore bypassable abilities; Redirects/absorbs Electric for +1 Attack and Sp. Atk; 30% contact paralysis; 60% on electric fields.",
+"shortDesc":"Combines the listed abilities.",
 "rating":5,
 "flags":{
 "breakable":1
@@ -51681,7 +56253,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11129,
 "gen":9,
 "desc":"Fire hits give +1 Attack. Prevents and cures burns. Gains +1 Attack each turn on Superheated, Dragon's Den, Burning and Volcanic. Contact attackers have a 30% chance of frostbite. Heals 1/16 max HP each turn in hail or snow, or on Icy, Snowy Mountain and Cold Eclipse without those weathers; hail on Cold Eclipse heals 1/8 instead. Immune to hail damage. Moves cannot be redirected. On New World, Starlight Arena, Fairy Tale and Chessboard entry, gains +1 Sp. Atk.",
-"shortDesc":"Fire hits/hot fields give +1 Attack; no burns; 30% contact frostbite; heals in icy weather/fields; no hail damage; Ignores redirection; +1 Sp. Atk on specified fields.",
+"shortDesc":"Combines the listed abilities.",
 "rating":5,
 "flags":{
 "breakable":1
@@ -51693,7 +56265,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10388,
 "gen":9,
 "desc":"Heavy Metal + Thick Fat: doubles weight, halves physical attack damage, and halves the attacking stat of Fire- and Ice-type moves. Immune to hail damage. On entry to Factory Field, Defense rises one stage and Speed falls one stage. On Cold Eclipse, Defense and Sp. Def are 1.5x, the field Speed penalty is ignored, and hail heals 1/10 max HP each turn.",
-"shortDesc":"Double weight; halves physical and Fire/Ice damage; hail immunity.",
+"shortDesc":"Halves physical and Fire/Ice damage; hail immunity.",
 "rating":4.5,
 "flags":{
 "breakable":1
@@ -51715,7 +56287,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10368,
 "gen":9,
 "desc":"Moves cannot be redirected. On New World, Starlight Arena, Fairy Tale and Chessboard entry, gains +1 Sp. Atk. It is immune to Status moves. Slicing moves have 1.5x power, except on Cold Eclipse.",
-"shortDesc":"Ignores redirection; +1 Sp. Atk on specified fields; It is immune to Status moves; Slicing moves have 1.5x power except on Cold Eclipse.",
+"shortDesc":"Combines the listed abilities.",
 "rating":5,
 "flags":{
 "breakable":1
@@ -51739,7 +56311,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":183,
 "gen":6,
 "desc":"When this Pokemon is hit by an opposing damaging move, once per attacking move, the attacker's Speed is lowered by 2 stages, or 4 stages on Murkwater Surface. This Pokemon also has Hydration and Sap Sipper's effects.",
-"shortDesc":"Hydration + Sap Sipper; Damaging hit: attacker -2 Spe (-4 on Murkwater).",
+"shortDesc":"Damaging hit: attacker -2 Spe (-4 on Murkwater).",
 "rating":2,
 "flags":{
 "breakable":1
@@ -51795,7 +56367,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11251,
 "gen":9,
 "desc":"Sleeping foes, including Comatose users, lose 1/8 max HP each turn. Disabled on Rainbow Field. Ghost attacks drain 25% of actual opposing HP damage, without adding drain to moves that already drain. While active, halves opposing active Pokemon's healing and gains the HP actually prevented. Combined new healing is capped at 1/8 max HP per turn; opposing healing stays reduced when it is full or capped. Bench healing and switching-out Regenerator are unaffected. Normal healing blockers and drain interactions apply.",
-"shortDesc":"Sleeping foes lose 1/8 HP per turn, except on Rainbow — Ghost HP hits drain 25%; halves foe healing and takes prevented HP (combined cap 1/8 per turn).",
+"shortDesc":"Ghost HP hits drain 25%; halves foe healing and takes prevented HP (combined cap 1/8 per turn).",
 "rating":1.5,
 "flags":{},
 "isNonstandard":null
@@ -51805,7 +56377,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10527,
 "gen":9,
 "desc":"Doubles Speed in sandstorm or on Desert and Ashen Beach. Immune to sandstorm damage. Entering directly into a fainted teammate's slot summons sandstorm for 3 turns. Does not shorten or refresh an existing sandstorm.",
-"shortDesc":"Double Speed in sand or sandy fields; no sand damage — entering a fainted ally's slot summons sand for 3 turns.",
+"shortDesc":"Entering a fainted ally's slot summons sand for 3 turns.",
 "rating":3,
 "flags":{},
 "isNonstandard":null
@@ -51815,7 +56387,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10335,
 "gen":9,
 "desc":"On entry, reveals opposing Illusions and alerts to an opposing super-effective or OHKO move. If no threat is found, Psychic Terrain grants +2 Sp. Atk. Absorbs Water moves for 1/4 max HP; incoming Fire moves have 1.25x power. Effective rain heals 1/8 HP per turn; sun costs 1/8. Field healing per turn: 1/16 on Underwater, Swamp, Misty or grounded Water Surface; 1/8 when grounded and Poison-type on Murkwater. Corrosive Mist heals Poison types by 1/8 but damages non-Steel others by 1/8. Desert costs 1/8 HP per turn. Same-type attack bonus becomes 2x instead of 1.5x, or 2.25x instead of an existing 2x bonus. Its attacks have a 30% chance of badly poisoning. This effect comes before a move's inherent secondary effect chance.",
-"shortDesc":"Reveals threats; absorbs Water; rain/field healing; stronger STAB; hits may badly poison.",
+"shortDesc":"Reveals threats; rain/field healing; stronger STAB; hits may badly poison.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -51835,18 +56407,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10509,
 "gen":9,
 "desc":"Attack is 1.5x while statused, and burn does not weaken physical attacks. While statused, damaging a foe with a Fighting move restores 1/16 max HP once per turn.",
-"shortDesc":"1.5x Attack while statused; ignores burn attack penalty.",
+"shortDesc":"While statused, damaging Fighting hits heal 1/16 HP once per turn.",
 "rating":3.5,
-"flags":{},
-"isNonstandard":null
-},
-"gritreprisal":{
-"name":"Grit Reprisal",
-"num":11283,
-"gen":9,
-"desc":"Full Guts: Attack is 1.5x while statused and burn does not weaken physical attacks. Surviving an opposing damaging hit stores one charge. Its next damaging punching move ignores positive stages of the defense used for that hit, retaining its normal category and defensive-stat choice. Successful punch damage spends the charge; failed or blocked hits preserve it. Switching clears it. No extra power, healing or Defense boost.",
-"shortDesc":"Guts; surviving a foe hit primes the next damaging punch to ignore positive defensive stages.",
-"rating":4,
 "flags":{},
 "isNonstandard":null
 },
@@ -51877,7 +56439,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11290,
 "gen":9,
 "desc":"Full local Pastel Veil, including poison prevention/cures for itself and allies, opposing Poison-move Attack/Sp. Atk drops and field effects. A successful status move directly targeting another ally also clears that ally's negative Speed stages, preserving positive Speed. Self-targeting and side-wide or field moves do not trigger it.",
-"shortDesc":"Pastel Veil; successful status moves directly targeting an ally clear that ally's negative Speed.",
+"shortDesc":"Successful status moves directly targeting an ally clear that ally's negative Speed.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -51889,21 +56451,11 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11240,
 "gen":9,
 "desc":"Dazzling + Illuminate: blocks opposing priority moves aimed at its side; reveals Illusions, ignores evasion and prevents opposing accuracy drops. Mirror Arena entry lowers opposing accuracy; Starlight Arena entry grants +2 Sp. Atk and spotlights a partner. Successfully using Spotlight on an ally makes that ally take 20% less attack damage for the rest of the turn. Does not stack or change Spotlight redirection rules.",
-"shortDesc":"Dazzling + Illuminate; successful Spotlight on an ally reduces its attack damage taken 20% this turn.",
+"shortDesc":"Successful Spotlight on an ally reduces its attack damage taken 20% this turn.",
 "rating":4,
 "flags":{
 "breakable":1
 },
-"isNonstandard":null
-},
-"guidingomen":{
-"name":"Guiding Omen",
-"num":10283,
-"gen":9,
-"desc":"Mold Breaker: moves ignore bypassable opposing abilities. Allies take 25% less attack damage; this does not protect the holder. Doubles move secondary-effect chances and removes charging turns. Once per switch-in, successfully applying a move secondary effect creates a ward that blocks the next opposing stat-drop event against an adjacent ally.",
-"shortDesc":"Mold Breaker; allies take 25% less damage; doubles secondaries, skips charging; first secondary wards an ally.",
-"rating":4.5,
-"flags":{},
 "isNonstandard":null
 },
 "gulpmissile":{
@@ -51964,7 +56516,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10286,
 "gen":9,
 "desc":"Airborne: immune to Ground attacks and grounded hazards unless grounded. Move KOs raise its highest stat by 1, ignoring stat stages when choosing the stat. Absorbs wind moves for +1 Sp. Atk. Gains +1 Sp. Atk when Tailwind starts on its side or it enters during Tailwind. Strong Winds gives +1 Sp. Atk each turn, plus +1 Attack on Mountain or Snowy Mountain. Damaging attacks have a 30% chance to be disabled, guaranteed on Haunted and disabled on Holy Field. Excludes Max moves, delayed attacks and Struggle. On fainting, curses all active foes.",
-"shortDesc":"Airborne; move KOs raise its highest stat; Absorbs wind; Tailwind/Strong Winds raise Sp. Atk; 30% chance to disable attacks; curses foes on faint.",
+"shortDesc":"Combines the listed abilities.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -51974,7 +56526,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11250,
 "gen":9,
 "desc":"Levitate: airborne with normal Ground and grounded-hazard immunity. Hex doubles its power against major status or Comatose, or if the target has Taunt, Encore, Disable or Heal Block. These conditions grant only one doubling.",
-"shortDesc":"Levitate; Hex also doubles against Taunt, Encore, Disable or Heal Block, without stacking.",
+"shortDesc":"Hex also doubles against Taunt, Encore, Disable or Heal Block, without stacking.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -52006,7 +56558,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10058,
 "gen":9,
 "desc":"Gains +1 Speed at the end of each full turn it spends active. Contact attackers have a 30% burn chance, or 60% on Volcanic. On Cold Eclipse, gains +1 Defense and Sp. Def on entry instead and cannot burn through contact. Cures existing freeze. Incoming Water and Ice attacks use half the attacker's offensive stat.",
-"shortDesc":"Speed rises each full turn; contact may burn; cures freeze; halves Water/Ice attacking stats.",
+"shortDesc":"Speed rises each full turn; contact may burn; cures freeze.",
 "rating":3.5,
 "flags":{
 "breakable":1
@@ -52030,7 +56582,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10525,
 "gen":9,
 "desc":"Absorbs Fire moves and gains a 1.5x Fire boost until switching out or losing the ability. Burning Field or grounded Volcanic Field also grants the boost. On Cold Eclipse, Fire absorption is disabled and entry gives +1 Defense and Sp. Def. After a boosted Armor Cannon deals damage, consumes the Flash Fire charge to prevent Armor Cannon's own Defense and Sp. Def drops.",
-"shortDesc":"Absorbs Fire for a 1.5x Fire boost; Cold Eclipse gives defenses instead — a boosted Armor Cannon avoids its own defensive drops.",
+"shortDesc":"A boosted Armor Cannon avoids its own defensive drops.",
 "rating":3.5,
 "flags":{
 "breakable":1
@@ -52042,7 +56594,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10115,
 "gen":9,
 "desc":"Eligible Normal moves become Fairy with 1.2x power. Suppresses weather effects while active. On Rainbow Field, gains one random non-maxed stat stage other than evasion each turn. Takes half damage from contact attacks and double damage from Fire attacks; contact Fire attacks deal normal damage.",
-"shortDesc":"Normal moves become Fairy with 1.2x power; suppresses weather; half contact damage, double Fire damage.",
+"shortDesc":"Half contact damage, double Fire damage.",
 "rating":5,
 "flags":{
 "breakable":1
@@ -52100,21 +56652,11 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10514,
 "gen":9,
 "desc":"Immune to other Pokemon's sound moves. Adjacent allies are also immune to opposing damaging sound moves.",
-"shortDesc":"Immune to others' sound moves.",
+"shortDesc":"Adjacent allies are immune to opposing damaging sound moves.",
 "rating":2,
 "flags":{
 "breakable":1
 },
-"isNonstandard":null
-},
-"hexbound":{
-"name":"Hex Bound",
-"num":10410,
-"gen":9,
-"desc":"Status moves gain +1 priority. Opposing Dark types block these moves except on Bewitched Woods. Damaging attacks have a 30% chance to be disabled, guaranteed on Haunted and disabled on Holy Field. Excludes Max moves, delayed attacks and Struggle. On fainting, curses all active foes. Once per switch-in, a directly selected damaging Ghost move that removes HP from a surviving opponent traps that opponent through the following turn. Later hits do not refresh the trap; it ends when it leaves. Ghost types, Shed Shell and normal pivot escapes still work. Misses, protection, substitutes, spread, called, future and residual damage do not trigger the trap. Cursed Body can disable incoming attacks (guaranteed on Haunted Field, disabled on Holy Field) and curses all foes when it faints. No Shadow Tag trapping, damage reduction or item reveal.",
-"shortDesc":"Status moves gain +1 priority; Dark foes usually block them; 30% chance to disable attacks; curses foes on faint — once per entry, a Ghost HP hit traps one foe through next turn.",
-"rating":5,
-"flags":{},
 "isNonstandard":null
 },
 "hiddenscroll":{
@@ -52144,7 +56686,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10337,
 "gen":9,
 "desc":"On entry, heals each adjacent ally by 1/4 max HP, or 1/3 on Fairy Tale. Contact moves have 1.3x power. Can poison Poison and Steel types; Poison moves bypass Steel immunity. Newly poisoned foes lose 1 Defense and Sp. Def. On Wasteland, move secondary effects become separate 2.5% frostbite, burn, paralysis and poison chances. On Corrosive and Corrosive Mist, incoming damage is multiplied by 1.5.",
-"shortDesc":"Entry heals adjacent allies by 1/4 HP (1/3 on Fairy Tale); Contact moves have 1.3x power; Poison bypasses type immunity; poisoned foes lose defenses.",
+"shortDesc":"Combines the listed abilities.",
 "rating":5,
 "flags":{
 "breakable":1
@@ -52156,7 +56698,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10358,
 "gen":9,
 "desc":"Absorbs Grass moves for +1 Attack and Sp. Atk; allied Grass moves also grant both boosts. Heals 1/8 max HP each turn on Forest and 1/16 on Grassy Field. Prevents flinching and Intimidate's Attack drop. Takes half damage from contact attacks and double damage from Fire attacks; contact Fire attacks deal normal damage.",
-"shortDesc":"Absorbs Grass for +1 Attack/Sp. Atk; grassy-field healing; Cannot flinch; blocks Intimidate; Half contact damage; double Fire damage.",
+"shortDesc":"Combines the listed abilities.",
 "rating":4.5,
 "flags":{
 "breakable":1
@@ -52168,7 +56710,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10340,
 "gen":9,
 "desc":"Recoil and crash moves, Explosion, Self-Destruct and Misty Explosion have 1.2x power; Struggle is excluded. On Chessboard, all moves gain a further 1.2x power. Prevents move recoil except Struggle. Crash and Life Orb damage still apply. Prevents freezing outside Cold Eclipse and cures existing freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den blocks Fire moves. On Dragon's Den, Volcanic or Cold Eclipse entry, gains +1 Defense and Sp. Def.",
-"shortDesc":"Recoil/crash and explosion moves have 1.2x power; No move recoil except Struggle; Halves Water/Ice attacking stats; prevents freeze; field defenses.",
+"shortDesc":"No move recoil except Struggle; field defenses.",
 "rating":5,
 "flags":{
 "breakable":1
@@ -52180,7 +56722,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10338,
 "gen":9,
 "desc":"On its first active turn, its Speed is 1.5x and its Sp. Atk is 1.2x. Absorbs wind moves for +1 Sp. Atk. Gains +1 Sp. Atk when Tailwind starts on its side or it enters during Tailwind. Strong Winds gives +1 Sp. Atk each turn, plus +1 Attack on Mountain or Snowy Mountain.",
-"shortDesc":"First active turn: 1.5x Spe and 1.2x Sp. Atk; Absorbs wind; Tailwind/Strong Winds raise Sp. Atk.",
+"shortDesc":"Combines the listed abilities.",
 "rating":5,
 "flags":{
 "breakable":1
@@ -52222,7 +56764,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10519,
 "gen":9,
 "desc":"Airborne: immune to Ground attacks, Spikes, Toxic Spikes, Sticky Web and Arena Trap unless grounded. Thousand Arrows can still hit. Above half HP, damaging Electric moves cannot miss or be redirected. Type and ability immunities still apply.",
-"shortDesc":"Airborne; immune to Ground attacks unless grounded — above half HP, Electric attacks cannot miss or be redirected.",
+"shortDesc":"Above half HP, Electric attacks cannot miss or be redirected.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -52279,7 +56821,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10063,
 "gen":9,
 "desc":"Eligible single-target damaging moves hit three times; existing multi-hit moves, spread moves outside Free-for-All, charging moves, delayed attacks, Z/Max moves and moves barred from extra hits are excluded. The second and third hits deal 30% damage and retarget the foe's ally if the first target fainted. In Free-for-All battles, single-target moves hit all foes once at 1.3x power; spread moves hit all foes three times, with later hits at 30% power, and full-power spread moves stay full power. Moves have 1.2x power on Dragon's Den. Each opposing attack hit that damages HP heals 1/16 max HP. The first such hit each turn also raises Defense by 1, before later hits of a multi-hit move.",
-"shortDesc":"Damaging moves hit 3x; hits 2/3 at 30%; FFA singles hit all foes at 1.3x; Opposing HP hits heal 1/16; +1 Defense once per turn.",
+"shortDesc":"FFA singles hit all foes at 1.3x; +1 Defense once per turn.",
 "rating":4.5,
 "flags":{
 "breakable":1
@@ -52296,22 +56838,12 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "flags":{},
 "isNonstandard":null
 },
-"hydratyrant":{
-"name":"Hydra Tyrant",
-"num":10179,
-"gen":9,
-"desc":"Eligible single-target damaging moves hit three times; existing multi-hit moves, spread moves outside Free-for-All, charging moves, delayed attacks, Z/Max moves and moves barred from extra hits are excluded. The second and third hits deal 30% damage and retarget the foe's ally if the first target fainted. In Free-for-All battles, single-target moves hit all foes once at 1.3x power; spread moves hit all foes three times, with later hits at 30% power, and full-power spread moves stay full power. Moves have 1.2x power on Dragon's Den. When an attack takes it from above half HP to half or less, gains +1 Attack and Sp. Atk after the move. Dragon's Den entry gives +2 Attack and Sp. Atk. Once per battle, after Draco Meteor applies its Sp. Atk drops, restores all negative stat stages to zero after the entire attack finishes. Positive stages remain. No Self Sufficient healing or immunity.",
-"shortDesc":"Damaging moves hit 3x; hits 2/3 at 30%; FFA singles hit all foes at 1.3x; Crossing half HP from an attack gives +1 Attack/Sp. Atk — once per battle, Draco Meteor clears its negative stat stages.",
-"rating":5,
-"flags":{},
-"isNonstandard":null
-},
 "hydraulicarmor":{
 "name":"Hydraulic Armor",
 "num":11249,
 "gen":9,
 "desc":"Stamina: damaging enemy hits heal 1/16 maximum HP each hit and grant +1 Defense at most once per turn. Water Pulse and Hydro Pump use Defense if its boosted value exceeds Sp. Atk, following local higher-stat move rules; ties keep Sp. Atk. They remain Special, use normal Special attack modifiers, and target Sp. Def.",
-"shortDesc":"Stamina; Water Pulse and Hydro Pump use the higher boosted Defense or Sp. Atk, remaining Special.",
+"shortDesc":"Water Pulse and Hydro Pump use the higher boosted Defense or Sp. Atk, remaining Special.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -52321,7 +56853,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11272,
 "gen":9,
 "desc":"Full local Dry Skin, including Water absorption, Fire vulnerability, weather healing/damage and field effects. Dealing damage with a Water move additionally heals 1/8 maximum HP once per turn, without stacking across hits or targets. Normal healing restrictions apply.",
-"shortDesc":"Dry Skin; damaging Water moves also heal 1/8 HP once per turn.",
+"shortDesc":"Damaging Water moves also heal 1/8 HP once per turn.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -52377,7 +56909,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11294,
 "gen":9,
 "desc":"Full Hyper Cutter prevents other Pokemon from lowering its Attack. Ice Hammer removes opposing Reflect before damage, including through Substitute, but not on protection, a miss or immunity. Its Speed drop is unchanged.",
-"shortDesc":"Hyper Cutter; Ice Hammer breaks Reflect before damage and keeps its Speed drop.",
+"shortDesc":"Ice Hammer breaks Reflect before damage and keeps its Speed drop.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -52515,7 +57047,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11247,
 "gen":9,
 "desc":"Intimidate. A successful Fire attack partially traps one foe as Fire Spin, with residual damage at this turn end and the next. A new ability trap releases its previous target; existing partial traps do not stack. The trap ends when the holder leaves, loses the ability or Mega Evolves. Normal partial-trapping escape, damage and item rules apply.",
-"shortDesc":"Intimidate; Fire hits partially trap one foe for two turns. Switching or Mega Evolution ends it.",
+"shortDesc":"Fire hits partially trap one foe for two turns. Switching or Mega Evolution ends it.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -52611,7 +57143,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11277,
 "gen":9,
 "desc":"Full Soundproof. Once per entry, when its Wide Guard actually blocks an opposing damaging attack, sets five-turn Safeguard on its own side. Using Wide Guard without blocking an attack gives no reward.",
-"shortDesc":"Soundproof; its first Wide Guard block each entry sets five-turn Safeguard.",
+"shortDesc":"Its first Wide Guard block each entry sets five-turn Safeguard.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -52633,7 +57165,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10051,
 "gen":9,
 "desc":"On entry or G-Max activation, it activates Pressure and Mirror Armor's effects and heals its ally like Sworn Duty.",
-"shortDesc":"On entry or G-Max activation, it activates Pressure and Mirror Armor's effects and heals its ally like Sworn Duty.",
+"shortDesc":"Entry and Gigantamax activation trigger its stat effects and ally healing.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -52655,7 +57187,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10506,
 "gen":9,
 "desc":"On entry, it gains +1 accuracy. Its Tail moves have their power multiplied by 1.5. Gains +1 accuracy on entry and tail moves have 1.5x power. Once per turn, damaging a foe with a tail move also raises its Sp. Def by 1 stage.",
-"shortDesc":"On entry: +1 accuracy. Tail moves have 1.5x power — tail hits raise Sp. Def once per turn.",
+"shortDesc":"Tail hits raise Sp. Def once per turn.",
 "rating":3.5,
 "flags":{},
 "isNonstandard":null
@@ -52665,7 +57197,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10191,
 "gen":9,
 "desc":"Takes 25% less damage from super-effective attacks. Once per turn, an opposing HP hit gives +1 Defense and heals 1/16 max HP. Doubles weight, halves physical damage, and gains +1 Defense and -1 Speed on Factory entry.",
-"shortDesc":"25% less super-effective damage; once/turn +1 Defense and 1/16 heal when hit; double weight, half physical damage.",
+"shortDesc":"Combines the listed abilities.",
 "rating":4.5,
 "flags":{
 "breakable":1
@@ -52677,7 +57209,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10283,
 "gen":9,
 "desc":"Contact moves have 1.3x power. Prevents critical hits and takes 20% less attack damage. Gains +1 Defense on Fairy Tale entry and +2 Defense when a foe lowers its stats. Halves weight. Speed is 1.25x while free of major status. Factory entry gives +1 Speed. On entry, lowers adjacent foes' Attack by 1. Substitute and Intimidate protections still apply.",
-"shortDesc":"Contact moves have 1.3x power; No critical hits; 20% less damage; foe stat drops give +2 Defense; Half weight; 1.25x Speed without status; Factory entry +1 Speed; Entry lowers adjacent foes' Attack by 1.",
+"shortDesc":"Combines the listed abilities.",
 "rating":4.5,
 "flags":{},
 "isNonstandard":null
@@ -52697,7 +57229,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10220,
 "gen":9,
 "desc":"Doubles Speed in rain or on Water Surface, Murkwater Surface, Underwater and Midnight Zone. Absorbs wind moves for +1 Attack. Gains +1 Attack when Tailwind starts on its side or it enters during Tailwind. Strong Winds gives +1 Attack each turn, plus +1 Sp. Atk on Mountain or Snowy Mountain.",
-"shortDesc":"Double Speed in rain and water fields; Absorbs wind; Tailwind/Strong Winds raise Attack.",
+"shortDesc":"Double Speed in rain and water fields; Tailwind/Strong Winds raise Attack.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -52709,7 +57241,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10257,
 "gen":9,
 "desc":"Its Normal-type moves become Flying-type moves and have their power multiplied by 1.2. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects. On its first active turn, its Speed is 1.5x and its Attack is 1.2x. Prevents and cures sleep and blocks Yawn. Fighting attacks use 1.3x Attack or Sp. Atk. Takes 20% less attack damage.",
-"shortDesc":"Its Normal-type moves become Flying type and have 1.2x power; First active turn: 1.5x Spe and 1.2x Atk; No sleep/Yawn; 1.3x Fighting attacking stats; 20% less damage.",
+"shortDesc":"Combines the listed abilities.",
 "rating":4.5,
 "flags":{},
 "isNonstandard":null
@@ -52751,7 +57283,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10352,
 "gen":9,
 "desc":"Kicking moves have 1.4x power. On its first active turn, its Speed is 1.5x and its Attack is 1.2x. Prevents and cures paralysis. Other Pokemon and field effects cannot lower its Speed; self-inflicted costs and item slowdowns still apply. Does not alter Trick Room or prevent removing Speed boosts or Tailwind.",
-"shortDesc":"Kicks have 1.4x power; First active turn: 1.5x Spe and 1.2x Atk; No paralysis or opposing/field Speed reductions.",
+"shortDesc":"Combines the listed abilities.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -52761,7 +57293,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11125,
 "gen":9,
 "desc":"Takes half damage from contact attacks and double damage from Fire attacks; contact Fire attacks deal normal damage. Attack is 1.5x while statused, and burn does not weaken physical attacks. Absorbs Fire moves and gains a 1.5x Fire boost until switching out or losing the ability. Burning Field or grounded Volcanic Field also grants the boost. On Cold Eclipse, Fire absorption is disabled and entry gives +1 Defense and Sp. Def.",
-"shortDesc":"Half contact damage; double Fire damage; 1.5x Attack while statused; ignores burn attack penalty; Absorbs Fire for a 1.5x Fire boost; Cold Eclipse gives defenses instead.",
+"shortDesc":"Combines the listed abilities.",
 "rating":5,
 "flags":{
 "breakable":1
@@ -52795,7 +57327,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11243,
 "gen":9,
 "desc":"Bulletproof: immune to bullet and pulse moves; takes 20% less attack damage. Successfully blocking an opposing damaging move with Spiky Shield stores one nonstacking charge: the next damaging move gains +1 priority. Using that move or switching consumes the charge. Normal priority blockers apply.",
-"shortDesc":"Bulletproof; blocking an attack with Spiky Shield grants the next damaging move +1 priority.",
+"shortDesc":"Blocking an attack with Spiky Shield grants the next damaging move +1 priority.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -52807,7 +57339,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10432,
 "gen":9,
 "desc":"Punching moves have 1.4x power. After a punch damages a foe, the next physical or special Water-type attack to damage a foe ignores positive Defense or Sp. Def stat stages, respectively. A miss or Water-type status move does not spend the charge.",
-"shortDesc":"1.4x punching power; a landed punch lets the next Water hit ignore positive defensive stages.",
+"shortDesc":"A damaging punch lets the next Water hit ignore positive defensive stages.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -52817,7 +57349,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10512,
 "gen":9,
 "desc":"Prevents critical hits and takes 20% less attack damage. Gains +1 Defense on Fairy Tale or Dragon's Den entry and +2 Sp. Def when a foe lowers its stats. Blocking a contact move with Protect lowers the attacker's Defense by 1 stage.",
-"shortDesc":"Critical-hit protection; 20% less attack damage; blocking contact with Protect lowers foe Defense by 1.",
+"shortDesc":"Blocking contact with Protect lowers the attacker’s Defense by 1.",
 "rating":1,
 "flags":{
 "breakable":1
@@ -52841,7 +57373,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10546,
 "gen":9,
 "desc":"When it has 1/3 or less of its max HP, rounded down, its offensive stat is multiplied by 1.5 while using a Bug-type attack. Once per battle, surviving an opposing hit that crosses from above half HP to half or less creates a Substitute with 1/8 max HP, at no HP cost. Cannot replace an existing Substitute.",
-"shortDesc":"At 1/3 or less of its max HP, its offensive stat is 1.5x with Bug attacks — once per battle, crossing half HP creates a 1/8-HP Substitute.",
+"shortDesc":"Once per battle, crossing half HP creates a 1/8-HP Substitute.",
 "rating":2,
 "flags":{},
 "isNonstandard":null
@@ -52873,7 +57405,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10467,
 "gen":9,
 "desc":"Prevents critical hits and takes 20% less attack damage. Gains +1 Defense on Fairy Tale or Dragon's Den entry and +2 Sp. Def when a foe lowers its stats. Once per switch-in, its first opposing special hit deals a further 25% less damage.",
-"shortDesc":"No critical hits; 20% less damage; foe stat drops give +2 Sp. Def — the first special hit each entry deals 25% less damage.",
+"shortDesc":"The first special hit each entry deals 25% less damage.",
 "rating":1,
 "flags":{
 "breakable":1
@@ -52919,7 +57451,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11142,
 "gen":9,
 "desc":"Allies take 25% less attack damage; this does not protect the holder. On entry, heals each adjacent ally by 1/4 max HP, or 1/3 on Fairy Tale. Moves cannot be redirected. Speed doubles on Water Surface, Underwater and Midnight Zone. In Free-for-All only, successfully blocking an opposing damaging move with a protection move earns a guard that reduces the next opposing damaging hit by 25%, through the end of the following turn. It does not stack or refresh while active, is consumed by only one hit, and clears on switching. Merely using protection, blocking status moves or residual damage does not earn or consume it.",
-"shortDesc":"Allies take 25% less attack damage; Entry heals adjacent allies by 1/4 HP (1/3 on Fairy Tale); Ignores redirection; double Speed on water fields — FFA successful protection earns one 25% guard.",
+"shortDesc":"Successful protection in Free-for-All earns one 25% damage guard.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -52975,7 +57507,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11242,
 "gen":9,
 "desc":"Technician: moves with effective power 60 or less gain 1.5x power (80 or less on Factory). Water attacks use the lower of the target's current, fully modified Defense and Sp. Def while keeping their category and normal attacking stat. Ties keep the normal defense. Explicit defensive-stat overrides and fixed-damage rules retain precedence.",
-"shortDesc":"Technician; Water attacks use the target's lower Defense or Sp. Def without changing category.",
+"shortDesc":"Water attacks use the target's lower Defense or Sp. Def without changing category.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -53005,7 +57537,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10549,
 "gen":9,
 "desc":"While it is active, it prevents opposing Pokemon from using their Berries. This Ability activates before hazards and other Abilities take effect. While active, Sticky Web placed by it also deals 1/16 max HP of Electric damage to grounded entrants. Heavy-Duty Boots, hazard immunity and Electric immunity prevent the added damage.",
-"shortDesc":"While it is active, it prevents opposing Pokemon from using their Berries — its Sticky Web also chips grounded entrants with Electric damage.",
+"shortDesc":"Its Sticky Web also chips grounded entrants with Electric damage.",
 "rating":1,
 "flags":{},
 "isNonstandard":null
@@ -53015,7 +57547,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11124,
 "gen":9,
 "desc":"Electric attacks use 1.3x Attack or Sp. Atk, or 2x on Electric and Factory fields. On Electric Terrain, incoming Ground attacks use half the attacker's offensive stat. Absorbs other Pokemon's Electric moves, healing 1/4 max HP instead of being hit. Heals 1/16 max HP each turn on Electric Terrain and Short-Circuit. Speed is 1.5x while statused, or 2x on Electric Terrain. Ignores paralysis's Speed penalty. Contact attackers lose 1/8 of their max HP.",
-"shortDesc":"Boosts Electric attacking stats; Electric Terrain weakens Ground; Absorbs Electric for 1/4 HP; electric-field healing; 1.5x Speed while statused; 2x on Electric Terrain; Contact attackers lose 1/8 HP.",
+"shortDesc":"Combines the listed abilities.",
 "rating":5,
 "flags":{
 "breakable":1
@@ -53039,7 +57571,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10458,
 "gen":9,
 "desc":"Contact attackers lose 1 Speed stage. Each opposing attack hit that damages HP heals 1/16 max HP. The first such hit each turn also raises Defense by 1, before later hits of a multi-hit move.",
-"shortDesc":"Contact attackers lose 1 Speed; Opposing HP hits heal 1/16; +1 Defense once per turn — contact slows foes while opposing hits raise Defense and heal.",
+"shortDesc":"Contact slows foes while opposing hits raise Defense and heal.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -53049,7 +57581,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11304,
 "gen":9,
 "desc":"Full Hyper Cutter. Once per entry, its first damaging Bug attack against a foe applies Torment after HP damage. A hit absorbed by Substitute spends the use without affecting its holder; misses, protection and immunity do not spend it.",
-"shortDesc":"Hyper Cutter; first damaging Bug attack each entry applies Torment after damage.",
+"shortDesc":"First damaging Bug attack each entry applies Torment after damage.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -53083,7 +57615,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10313,
 "gen":9,
 "desc":"Allies take 25% less attack damage; this does not protect the holder. Cannot be forced out by opposing moves or items. Intimidate raises Attack by 1 instead of lowering it. On entry, lowers adjacent foes' Attack by 1. Substitute and Intimidate protections still apply.",
-"shortDesc":"Allies take 25% less attack damage; Blocks forced switching; Intimidate gives +1 Attack; Entry lowers adjacent foes' Attack by 1.",
+"shortDesc":"Combines the listed abilities.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -53093,7 +57625,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10265,
 "gen":9,
 "desc":"On entry, lowers adjacent foes Sp. Atk by 1 stage, blocked by Substitute and normal stat-drop protection. Prevents sleep and Yawn; Dark and Ghost attacks have 1.3x power. Retains local Pressure: lowers foes Defense and Sp. Def by 1 stage on entry (2 on Cold Eclipse), costs foes 1 extra PP (2 on Midnight Zone), and changes Underwater to Midnight Zone. No mark, damage-reduction or Ground critical-hit effects.",
-"shortDesc":"On entry, lowers adjacent foes Sp. Atk by 1 stage; No sleep or Yawn; 1.3x Dark/Ghost power; Entry lowers foe defenses; opposing moves spend extra PP — retains their local field effects.",
+"shortDesc":"Retains their local field effects.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -53203,7 +57735,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10422,
 "gen":9,
 "desc":"Full Water Absorb: absorbs other Pokemon's Water moves to heal 1/4 maximum HP and retains local field healing. Its first absorption each entry also lowers all active foes' Speed one stage and clears its own confusion and negative accuracy stages, preserving positive accuracy. Later absorptions retain normal healing only.",
-"shortDesc":"Water Absorb; first absorption each entry slows foes and clears own confusion and negative accuracy.",
+"shortDesc":"First Water absorption each entry slows foes and clears confusion and negative accuracy.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -53227,7 +57759,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10421,
 "gen":9,
 "desc":"Punching moves have 1.4x power. When a punching move damages a foe, it removes Reflect, Light Screen, Aurora Veil, Arenite Wall, and Atlantis Wall from that foe's side.",
-"shortDesc":"Punches have 1.4x power — punches that damage a foe break that side's screens.",
+"shortDesc":"Punches that damage a foe break that side's screens.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -53237,7 +57769,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10474,
 "gen":9,
 "desc":"Reverses received stat-stage changes, except Z-Power changes. Once per turn, damaging a foe with a Water or Dragon attack gives an adjacent ally +1 critical-hit stage for its next damaging move. The charge does not stack and ends on switching out.",
-"shortDesc":"Reverses stat changes except Z-Power — Water or Dragon hits grant an adjacent ally +1 critical-hit stage.",
+"shortDesc":"Water or Dragon hits grant an adjacent ally +1 critical-hit stage.",
 "rating":4.5,
 "flags":{
 "breakable":1
@@ -53259,7 +57791,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11308,
 "gen":9,
 "desc":"Full Own Tempo prevents and cures confusion and blocks Intimidate's Attack drop. Successfully scheduling Future Sight also clears its confusion and negative Sp. Atk stages, preserving positive Sp. Atk. An occupied Future Sight slot does not trigger this effect.",
-"shortDesc":"Own Tempo; successful Future Sight clears own confusion and negative Sp. Atk.",
+"shortDesc":"Successful Future Sight clears own confusion and negative Sp. Atk.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -53323,7 +57855,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10308,
 "gen":9,
 "desc":"Biting moves have 1.5x power. On entry, lowers adjacent foes' Attack by 1. Substitute and Intimidate protections still apply. On its first action after switching in, its biting moves have 2 higher priority.",
-"shortDesc":"Bites have 1.5x power; Entry lowers adjacent foes' Attack by 1 — Proficient; biting moves gain +2 priority on first action.",
+"shortDesc":"Biting moves gain +2 priority on first action.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -53353,7 +57885,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11313,
 "gen":9,
 "desc":"Full Inner Focus blocks flinching and Intimidate's Attack drop. Once per entry, a damaging Psychic move dealing damage to a foe or its Substitute grants Charge after the move finishes. The triggering move cannot consume the new Charge. Misses, Protect and immunity do not spend the use.",
-"shortDesc":"Inner Focus; first damaging Psychic move each entry grants Charge after the move completes.",
+"shortDesc":"First damaging Psychic move each entry grants Charge after the move completes.",
 "rating":3.5,
 "flags":{
 "breakable":1
@@ -53399,7 +57931,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10426,
 "gen":9,
 "desc":"Sound moves become Water-type, or Ice-type on Icy Field, and have 1.2x power. Contact hits have a 30% chance to poison the target. Shield Dust and Covert Cloak block this effect. Each foe damaged by a noncontact sound move also has an independent 20% chance to be poisoned. Shield Dust and Covert Cloak block this added poison chance.",
-"shortDesc":"Sound moves: Water (Ice on Icy Field), 1.2x power; Contact hits have a 30% poison chance — noncontact sound hits have a 20% poison chance.",
+"shortDesc":"Noncontact sound hits have a 20% poison chance.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -53421,7 +57953,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10111,
 "gen":9,
 "desc":"Reflects eligible status moves and entry hazards once; reflected moves cannot bounce again. Fairy Tale entry gives +1 Sp. Def; Mirror Arena entry gives +1 evasion. Moves have 1.3x power if no other active Pokemon has a move left to use that turn. Takes 20% less attack damage, or 40% less from super-effective attacks.",
-"shortDesc":"Reflects status moves; 1.3x power when moving last; 20% less attack damage, 40% if super effective.",
+"shortDesc":"Combines the listed abilities.",
 "rating":5,
 "flags":{
 "breakable":1
@@ -53463,7 +57995,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11146,
 "gen":9,
 "desc":"Prevents flinching and Intimidate's Attack drop. On entry, lowers foes' Defense and Sp. Def by 1 (2 on Cold Eclipse) and changes Underwater to Midnight Zone. Foes targeting it spend 1 extra PP, or 2 on Midnight Zone. Prevents other Pokemon's accuracy drops and ignores evasion boosts. Reveals opposing Illusions on activation. Mirror Arena entry lowers foes' accuracy by 1. Starlight Arena entry gives +2 Sp. Atk and puts Spotlight on its first adjacent ally.",
-"shortDesc":"Cannot flinch; blocks Intimidate; Entry lowers foe defenses; opposing moves spend extra PP; No opposing accuracy drops; ignores evasion; reveals Illusions.",
+"shortDesc":"Blocks Intimidate; opposing moves spend extra PP; reveals Illusions.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -53478,24 +58010,12 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "flags":{},
 "isNonstandard":null
 },
-"moonlitpromise":{
-"name":"Moonlit Promise",
-"num":11254,
-"gen":9,
-"desc":"Unaware. Wishes created while this ability is active also clear the eventual recipient's negative stat stages when they resolve, preserving positive stages and normal Wish healing. The stored bonus follows the Wish even if the user switches out.",
-"shortDesc":"Unaware; its Wish clears the recipient's negative stat stages when it resolves.",
-"rating":4,
-"flags":{
-"breakable":1
-},
-"isNonstandard":null
-},
 "moonlitwings":{
 "name":"Moonlit Wings",
 "num":10209,
 "gen":9,
 "desc":"It has Serene Grace and gains STAB on Fairy-type moves.",
-"shortDesc":"Serene Grace + Fairy STAB.",
+"shortDesc":"Fairy STAB.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -53505,7 +58025,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11130,
 "gen":9,
 "desc":"It and its allies cannot be poisoned. Gaining this Ability while it or its ally is poisoned cures them. Before an opposing Pokemon uses a Poison-type move, that Pokemon's Attack and Special Attack are lowered by 1 stage. On entry, creates Misty Terrain for 5 turns, or 8 with Amplifield Rock, subject to field and Aura rules.",
-"shortDesc":"Prevents poison; opposing Poison move users lose Atk/SpA; Creates Misty Terrain on entry.",
+"shortDesc":"Combines the listed abilities.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -53517,7 +58037,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10390,
 "gen":9,
 "desc":"Airborne: immune to Ground attacks, Spikes, Toxic Spikes, Sticky Web and Arena Trap unless grounded. Thousand Arrows can still hit. Each opposing attack hit that damages HP heals 1/16 max HP. The first such hit each turn also raises Defense by 1, before later hits of a multi-hit move. Switching out cures major status and heals 1/3 max HP only if a status was cured. Bewitched Woods cures status at turn end without this heal. switching out heals 1/8 max HP only after a Grass attack dealt opposing HP damage on the current or immediately preceding turn, with no intervening action.",
-"shortDesc":"Airborne; immune to Ground attacks unless grounded; Opposing HP hits heal 1/16; +1 Defense once per turn; Switching cures status and heals 1/3 HP if cured; Woods cures status each turn.",
+"shortDesc":"Combines the listed abilities.",
 "rating":5,
 "flags":{},
 "isNonstandard":null
@@ -53561,7 +58081,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10050,
 "gen":9,
 "desc":"Absorbs Grass moves for +1 Attack and Sp. Atk; allied Grass moves also grant both boosts. Heals 1/8 max HP each turn on Forest and 1/16 on Grassy Field. Incoming Fire and Ice attacks use half the attacker's offensive stat. Immune to hail damage. Sleep lasts half as long, rounded down.",
-"shortDesc":"Absorbs Grass for attacking boosts; half Fire/Ice attacking stats; no hail damage; shorter sleep.",
+"shortDesc":"Absorbs Grass for attacking boosts; no hail damage; shorter sleep.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -53573,7 +58093,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10145,
 "gen":9,
 "desc":"Prevents critical hits and takes 20% less attack damage. Gains +1 Defense on Fairy Tale or Dragon's Den entry and +2 Sp. Def when a foe lowers its stats. Heals 1/16 max HP each turn. Immune to sandstorm and hail damage. It cannot be critically hit, takes 0.8x damage, gains 2 Sp. Def when a foe lowers its stats, heals 1/16 max HP each turn, and ignores sandstorm and hail damage. On entry, it creates Mountain Field for 5 turns. Once at half HP or less, it starts Gravity and resets Mountain Field to 5 turns. Its four moves are always Earthquake, Sand Tomb, Mountain Gale, and Stone Edge. The first time it would faint, it instead revives at full HP as Torterra-Rift-Shatter, clearing its status, boosts, and volatile conditions.",
-"shortDesc":"No critical hits; 20% less damage; foe stat drops give +2 Sp. Def; Heals 1/16 HP each turn; immune to sandstorm and hail damage — 5-turn Mountain; half HP: Gravity + Mountain reset; first faint: full reset into Shatter.",
+"shortDesc":"5-turn Mountain; half HP: Gravity + Mountain reset; first faint: full reset into Shatter.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -53585,7 +58105,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10526,
 "gen":9,
 "desc":"Takes half contact damage. Fire moves deal double damage until a teammate has fainted; afterward the extra Fire weakness stays removed for the battle.",
-"shortDesc":"Half contact damage; double Fire damage until a teammate has fainted.",
+"shortDesc":"Double Fire damage until a teammate has fainted.",
 "rating":3.5,
 "flags":{
 "breakable":1
@@ -53609,7 +58129,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10157,
 "gen":9,
 "desc":"Prevents indirect damage; HP costs, Pain Split, confusion and Struggle recoil still apply. Status moves gain +1 priority. Damaging moves gain 20% power per fainted ally, capped at double power. At turn end, heals 5% max HP per fainted foe, counting all opposing sides in Free-for-All.",
-"shortDesc":"No indirect damage; +1 status priority; up to double power from fainted allies; fainted foes give healing.",
+"shortDesc":"Fainted allies increase power up to 2x; fainted foes restore HP.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -53641,7 +58161,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10557,
 "gen":9,
 "desc":"Prevents critical hits and takes 20% less attack damage. Gains +1 Defense on Fairy Tale entry and +2 Defense when a foe lowers its stats. Surviving an opposing Fire or Water hit raises Sp. Def by 1 stage once per turn.",
-"shortDesc":"Critical-hit protection; 20% less attack damage; surviving Fire/Water hits gives +1 Sp. Def once per turn.",
+"shortDesc":"Surviving Fire or Water hits gives +1 Sp. Def once per turn.",
 "rating":1,
 "flags":{
 "breakable":1
@@ -53702,7 +58222,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10046,
 "gen":9,
 "desc":"Defense is 1.5x while statused or on Misty, Rainbow, Fairy Tale, Dragon's Den and Starlight Arena. Airborne: immune to Ground attacks, Spikes, Toxic Spikes, Sticky Web and Arena Trap unless grounded. Thousand Arrows can still hit. Moves have 1.3x accuracy. Mirror Arena entry gives +1 accuracy and Laser Focus. Blocks secondary effects of other Pokemon's attacks that affect it; effects on the attacker still work.  Called or reflected moves do not trigger this bonus. Once per entry, the first foe successfully statused by its directly selected powder move or directly executed G-Max Befuddle grants it +1 Defense and its active allies +1 Sp. Def. These moves share one activation; the holder does not gain Sp. Def.",
-"shortDesc":"Marvel Scale + Levitate + Compound Eyes + Shield Dust; powder/Befuddle status: +1 Def, allies +1 SpD once/entry.",
+"shortDesc":"Powder/Befuddle status: +1 Def, allies +1 SpD once/entry.",
 "rating":3.5,
 "flags":{
 "breakable":1
@@ -53724,7 +58244,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10389,
 "gen":9,
 "desc":"Switching out cures major status and restores 1/3 max HP, plus another 1/3 if a status was cured. Bewitched Woods cures status at turn end without healing.",
-"shortDesc":"Switching cures status and heals 1/3 HP, plus 1/3 if cured; Woods cures status each turn.",
+"shortDesc":"Switching out heals an extra 1/3 HP if a major status was cured.",
 "rating":4.5,
 "flags":{},
 "isNonstandard":null
@@ -53744,7 +58264,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10353,
 "gen":9,
 "desc":"Eligible single-target damaging moves hit three times; existing multi-hit moves, spread moves outside Free-for-All, charging moves, delayed attacks, Z/Max moves and moves barred from extra hits are excluded. The second and third hits deal 30% damage and retarget the foe's ally if the first target fainted. In Free-for-All battles, single-target moves hit all foes once at 1.3x power; spread moves hit all foes three times, with later hits at 30% power, and full-power spread moves stay full power. Moves have 1.2x power on Dragon's Den. At turn end, if statused, affected by a listed ailment, negatively boosted or at half HP or less, has a 50% chance to heal 1/4 max HP, cure status, clear negative stages and remove Attract, confusion, Curse, Disable, Encore, Heal Block, Leech Seed, Nightmare, Perish Song, Taunt, Torment and Yawn. On Dragon's Den, activation is guaranteed but only cures status and heals, then raises its higher attacking stat by 1 and lowers both defenses by 1. Heals 1/3 max HP on switching out.",
-"shortDesc":"Damaging moves hit 3x; hits 2/3 at 30%; FFA singles hit all foes at 1.3x; 50% end-turn cure/reset and 1/4 heal; Dragon's Den changes the effect; Heals 1/3 HP on switching out.",
+"shortDesc":"Combines the listed abilities.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -53793,7 +58313,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11101,
 "gen":9,
 "desc":"Biting moves have 1.5x power. Moves bypass Substitute, Reflect, Light Screen, Aurora Veil, Safeguard and Mist. On entry, lowers adjacent foes' Attack by 1. Substitute and Intimidate protections still apply. On entry, reveals all opposing active Illusions and held items. Each item holder independently has a 30% chance to be Embargoed for 5 turns. Prevents other Pokemon's accuracy drops and ignores evasion boosts. Reveals opposing Illusions on activation. Mirror Arena entry lowers foes' accuracy by 1. Starlight Arena entry gives +2 Sp. Atk and puts Spotlight on its first adjacent ally. Shared Illusion reveals occur once.",
-"shortDesc":"1.5x biting power; bypasses screens/Substitute; lowers foe Attack; reveals items/Illusions; accuracy protection.",
+"shortDesc":"Combines the listed abilities.",
 "rating":4.5,
 "flags":{
 "breakable":1
@@ -53805,7 +58325,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11257,
 "gen":9,
 "desc":"Prevents and cures sleep, blocks Yawn, and gives Dark and Ghost attacks 1.3x power. Takes 20% less attack damage, or 40% less from super-effective attacks. Its moves cannot miss. Damaging attacks have a 30% chance to be disabled, guaranteed on Haunted and disabled on Holy Field. Excludes Max moves, delayed attacks and Struggle. On fainting, curses all active foes. Sleeping foes, including Comatose users, lose 1/8 max HP each turn. Disabled on Rainbow Field. On entry, sets Haunted Field for 5 turns if field rules allow. Retains sleep immunity, accurate moves, damage reduction, disabling attackers, and damage to sleeping foes. Does not bypass screens or Substitute. Field creation or refresh is attempted only once per battle per holder, even if blocked; switching, suppression, revival, or ability changes never reset this use.",
-"shortDesc":"No sleep or Yawn; 1.3x Dark/Ghost power; 20% less attack damage; 40% less if super effective; moves cannot miss; 30% chance to disable attacks; curses foes on faint; Sleeping foes lose 1/8 HP per turn, except on Rainbow.",
+"shortDesc":"Moves cannot miss; curses foes on faint; Sleeping foes lose 1/8 HP per turn, except on Rainbow.",
 "rating":4.5,
 "flags":{},
 "isNonstandard":null
@@ -53825,7 +58345,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11237,
 "gen":9,
 "desc":"Keen Eye + Insomnia: reveals opposing Illusions; ignores evasion and prevents opposing accuracy drops. Mirror Arena entry grants +1 accuracy and Laser Focus. Prevents sleep and Yawn; Dark and Ghost attacks have 1.3x power. Once per entry, after observing the same foe execute the same directly selected status move on consecutive turns, attempts normal Disable after its second use. Observations reset when either Pokemon leaves; called, reflected and allied moves do not count.",
-"shortDesc":"Keen Eye + Insomnia; once/entry, Disables a foe repeating its status move on consecutive turns.",
+"shortDesc":"Once/entry, Disables a foe repeating its status move on consecutive turns.",
 "rating":3.5,
 "flags":{
 "breakable":1
@@ -53847,7 +58367,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10343,
 "gen":9,
 "desc":"Takes 20% less attack damage, plus a further 25% reduction against super-effective attacks or on Crystal Cavern and Dark Crystal Cavern (40% total). Defense and Sp. Def are 4/3x on Cold Eclipse, Dark Crystal Cavern and Rainbow. Contact attackers have a 30% chance of frostbite. Heals 1/16 max HP each turn in hail or snow, or on Icy, Snowy Mountain and Cold Eclipse without those weathers; hail on Cold Eclipse heals 1/8 instead. Immune to hail damage.",
-"shortDesc":"20% less attack damage; 40% less if super effective; field defenses; 30% contact frostbite; heals in icy weather/fields; no hail damage.",
+"shortDesc":"Field defenses; no hail damage.",
 "rating":5,
 "flags":{
 "breakable":1
@@ -53859,7 +58379,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10341,
 "gen":9,
 "desc":"Special moves have 1.3x power, with a further 1.5x boost on Electric Terrain. Allies' special moves have 1.3x power. In effective sun, Sp. Atk is 1.5x and it loses 1/8 max HP each turn. Cold Eclipse disables both effects. A contact attacker that knocks it out loses 1/4 max HP, or 1/2 on Corrosive Mist. Damp prevents this damage.",
-"shortDesc":"Boosts its own and allies' special moves; Sun: 1.5x Sp. Atk, loses 1/8 HP per turn; disabled on Cold Eclipse; Contact KO costs attacker 1/4 HP (1/2 on Corrosive Mist).",
+"shortDesc":"Combines the listed abilities.",
 "rating":5,
 "flags":{
 "breakable":1
@@ -53871,7 +58391,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10342,
 "gen":9,
 "desc":"After another Pokemon uses a dance move, it uses the same move. The copied move is subject to all effects that can prevent a move from being executed. A move used through this Ability cannot be copied again by other Pokemon with this Ability. On entry, heals each adjacent ally by 1/4 of that ally's max HP. Prevents and cures confusion and blocks Intimidate's Attack drop.",
-"shortDesc":"After another Pokemon uses a dance move, it uses the same move; Entry heals adjacent allies by 1/4 HP; No confusion or Intimidate Attack drop.",
+"shortDesc":"Entry heals adjacent allies by 1/4 HP; No confusion or Intimidate Attack drop.",
 "rating":4.5,
 "flags":{
 "breakable":1
@@ -53915,7 +58435,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10156,
 "gen":9,
 "desc":"Takes 20% less attack damage, or 40% less from super-effective attacks. Airborne: immune to Ground attacks and grounded hazards unless grounded. Move KOs raise its highest stat by 1, ignoring stat stages when choosing the stat. After it hits, three 20 BP special Mini-Noses each select the strongest of Steel, Electric, or Rock against their current target. They chain to another valid foe after a KO, and their KOs trigger Elevate.",
-"shortDesc":"20% less attack damage; 40% less if super effective; Airborne; move KOs raise its highest stat — three adaptive 20 BP Mini-Noses chain after KOs and trigger Elevate.",
+"shortDesc":"Three adaptive 20 BP Mini-Noses chain after KOs and trigger Elevate.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -53939,7 +58459,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10221,
 "gen":9,
 "desc":"Absorbs other Pokemon's Water moves, healing 1/4 max HP instead of being hit. Cures major status at turn end in effective rain or on Water Surface, Underwater and Midnight Zone. Allies take 25% less attack damage; this does not protect the holder.",
-"shortDesc":"Absorbs Water for 1/4 HP; Cures status each turn in rain or water fields; Allies take 25% less attack damage.",
+"shortDesc":"Cures status each turn in rain or water fields; Allies take 25% less attack damage.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -53951,7 +58471,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11252,
 "gen":9,
 "desc":"Shell Armor prevents critical hits. Once per turn, a successful damaging sound move clears confusion and negative accuracy stages from the holder and active allies. Other stages and positive accuracy remain; the bench is unaffected. Does not change Sing accuracy.",
-"shortDesc":"Shell Armor; damaging sound hits clear self/allies' confusion and negative accuracy once/turn.",
+"shortDesc":"Damaging sound hits clear self/allies' confusion and negative accuracy once/turn.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -53975,7 +58495,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10448,
 "gen":9,
 "desc":"On entry, creates Psychic Terrain for 5 turns, or 8 with Amplifield Rock, subject to field and Aura rules. Once per switch-in, its first powder move that successfully hits a foe also lowers that foe's Sp. Def by 1 stage. Misses, immunity and protection do not spend the effect.",
-"shortDesc":"Creates Psychic Terrain on entry — the first landed powder move each entry lowers Sp. Def.",
+"shortDesc":"The first landed powder move each entry lowers Sp. Def.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -54015,7 +58535,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10152,
 "gen":9,
 "desc":"Eligible single-target damaging moves hit three times; existing multi-hit moves, spread moves outside Free-for-All, charging moves, delayed attacks, Z/Max moves and moves barred from extra hits are excluded. The second and third hits deal 30% damage and retarget the foe's ally if the first target fainted. In Free-for-All battles, single-target moves hit all foes once at 1.3x power; spread moves hit all foes three times, with later hits at 30% power, and full-power spread moves stay full power. Moves have 1.2x power on Dragon's Den. At turn end with an empty item slot, has a 50% chance to restore its last consumed Berry or field seed. Guaranteed in sun or on Grassy Field and Stage 2 Flower Garden.",
-"shortDesc":"Damaging moves hit 3x; hits 2/3 at 30%; FFA singles hit all foes at 1.3x; 50% chance to restore a consumed Berry/seed each turn.",
+"shortDesc":"FFA singles hit all foes at 1.3x; 50% chance to restore a consumed Berry/seed each turn.",
 "rating":4.5,
 "flags":{},
 "isNonstandard":null
@@ -54069,7 +58589,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10542,
 "gen":9,
 "desc":"Incoming Fire and Ice attacks use half the attacker's offensive stat. Immune to hail damage. Force Palm always inflicts paralysis when it lands, subject to status immunities. Its paralysis becomes a primary effect rather than a secondary roll.",
-"shortDesc":"Half Fire/Ice attacking stats; immune to hail damage — Force Palm always paralyzes when it lands.",
+"shortDesc":"Force Palm always paralyzes when it lands.",
 "rating":3.5,
 "flags":{
 "breakable":1
@@ -54121,7 +58641,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10021,
 "gen":9,
 "desc":"Absorbs Water moves for 1/4 max HP; incoming Fire moves have 1.25x power. Effective rain heals 1/8 HP per turn; sun costs 1/8. Field healing per turn: 1/16 on Underwater, Swamp, Misty or grounded Water Surface; 1/8 when grounded and Poison-type on Murkwater. Corrosive Mist heals Poison types by 1/8 but damages non-Steel others by 1/8. Desert costs 1/8 HP per turn. While above 50% HP, its weaknesses are neutralized, Magic Guard is active, opposing status moves fail, and opposing attack secondary effects are blocked. The first time Parasect would faint, it fake-faints at 1 HP, then becomes Parasect-Parasite at the end of the turn and revives at full HP. This Ability cannot be suppressed and is immune to Neutralization.",
-"shortDesc":"Absorbs Water; rain/water fields heal; Fire, sun and Desert hurt — above half: defensive protection; first KO triggers Resuscitation.",
+"shortDesc":"Above half: defensive protection; first KO triggers Resuscitation.",
 "rating":4,
 "flags":{
 "cantsuppress":1
@@ -54133,7 +58653,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":185,
 "gen":6,
 "desc":"Mold Breaker: moves ignore bypassable opposing abilities. Eligible attacks hit twice; the second hit deals 80% damage. Existing multi-hit moves, spread hits, charging or delayed attacks, Z/Max moves and moves barred from extra hits are excluded. Contact moves have 1.3x power. Normal- and Fighting-type moves can hit Ghosts. Allies take 25% less attack damage; this does not protect the holder. Cannot be suppressed.",
-"shortDesc":"Mold Breaker; attacks hit twice (second hit 80%); stronger contact moves; protects allies.",
+"shortDesc":"Attacks hit twice (second hit 80%); stronger contact moves; protects allies.",
 "rating":4.5,
 "flags":{
 "cantsuppress":1
@@ -54157,7 +58677,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11265,
 "gen":9,
 "desc":"Full local Sniper: gains one accuracy stage on entry and retains its critical-damage modifier. Successfully using Focus Energy also clears its confusion and negative accuracy stages, preserving positive accuracy and other stages. Failed Focus Energy grants no cleanse.",
-"shortDesc":"Sniper; successful Focus Energy clears its confusion and negative accuracy.",
+"shortDesc":"Successful Focus Energy clears its confusion and negative accuracy.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -54167,7 +58687,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10281,
 "gen":9,
 "desc":"Before using a move, changes to that move's type. Excludes reflected, delayed, Snatched and move-calling attacks; type-change restrictions still apply. At turn end, if statused, affected by a listed ailment, negatively boosted or at half HP or less, has a 50% chance to heal 1/4 max HP, cure status, clear negative stages and remove Attract, confusion, Curse, Disable, Encore, Heal Block, Leech Seed, Nightmare, Perish Song, Taunt, Torment and Yawn. On Dragon's Den, activation is guaranteed but only cures status and heals, then raises its higher attacking stat by 1 and lowers both defenses by 1. When attacking, ignores the target's Defense, Sp. Def and evasion stages. When defending, ignores the attacker's Attack, Defense, Sp. Atk and accuracy stages. Reveals opposing Illusions on entry.",
-"shortDesc":"Changes type to match each eligible move; 50% end-turn cure/reset and 1/4 heal; Dragon's Den changes the effect; Ignores opposing combat/accuracy stages; reveals Illusions.",
+"shortDesc":"Changes type to match each eligible move; Dragon's Den changes the effect; reveals Illusions.",
 "rating":4.5,
 "flags":{
 "breakable":1
@@ -54179,7 +58699,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10434,
 "gen":9,
 "desc":"Absorbs other Pokemon's Water moves, healing 1/4 max HP instead of being hit. Heals 1/16 max HP each turn on Underwater, grounded on Water Surface, or grounded and Poison-type on Murkwater Surface. The first Water-type move absorbed each switch-in also heals its lowest-HP active ally by 1/8 of that ally's max HP.",
-"shortDesc":"Absorbs Water for 1/4 HP; the first absorption each entry also heals an ally by 1/8 HP.",
+"shortDesc":"First Water absorption each entry also heals an ally by 1/8 HP.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -54191,7 +58711,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10256,
 "gen":9,
 "desc":"Prevents and cures sleep, blocks Yawn, and gives Dark and Ghost attacks 1.3x power. Takes 20% less attack damage, or 40% less from super-effective attacks. Its moves cannot miss.",
-"shortDesc":"No sleep or Yawn; 1.3x Dark/Ghost power; 20% less attack damage; 40% less if super effective — moves cannot miss.",
+"shortDesc":"Moves cannot miss.",
 "rating":4.5,
 "flags":{},
 "isNonstandard":null
@@ -54201,7 +58721,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10472,
 "gen":9,
 "desc":"Prevents and cures sleep, blocks Yawn, and gives Dark and Ghost attacks 1.3x power. After using a Fire move, its first Grass attack to damage a foe each switch-in lowers that foe's Speed and Sp. Def by 1 stage.",
-"shortDesc":"No sleep or Yawn; 1.3x Dark/Ghost power — a Fire move primes the next Grass hit to lower Speed and Sp. Def.",
+"shortDesc":"A Fire move primes the next Grass hit to lower Speed and Sp. Def.",
 "rating":1.5,
 "flags":{
 "breakable":1
@@ -54213,7 +58733,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10116,
 "gen":9,
 "desc":"Moves ignore bypassable abilities. After dealing HP damage, heals 1/16 max HP once per turn. The first opposing HP hit gives +1 Attack and Sp. Atk and heals 1/16 max HP; later hits heal 1/20 until it completes a damaging move and resets this trigger. On Ashen Beach, New World, Starlight Arena, Cold Eclipse and Fairy Tale, the first qualifying physical and special hits also give +1 Defense and Sp. Def respectively. In those fields, a qualifying hit at half HP or less instead heals 1/4 max HP once per activation; blocked healing does not spend it. These effects stop on Bewitched Woods, Haunted and Holy Field. While Royal Decree or Empress is active without Neutralization, takes 30% less attack damage and has 1.3x move power, except against Battle Bond. Moves cannot miss, including on the suppressing fields. When the Royal Decree power bonus does not apply, attacks have 1.2x power against a foe that has not moved or just switched in, except against Battle Bond.",
-"shortDesc":"Never misses; ignores abilities; heals and gains stats in combat; stronger attacks before foes move.",
+"shortDesc":"Never misses; heals and gains stats in combat; stronger attacks before foes move.",
 "rating":5,
 "flags":{},
 "isNonstandard":null
@@ -54223,7 +58743,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10114,
 "gen":9,
 "desc":"Includes Insomnia and retains its opposing-ability copying. Automatically applies target-specific Miracle Eye before a direct damaging Psychic move. Direct single-target HP damage stores a 90 BP Psychic special attack; opposing special HP damage stores a 90 BP special attack of the incoming type. Shares one pending attack per opposing trainer (one in singles, up to three in Free-for-All), released one per turn beginning next turn. Snapshots its own level, Special Attack, stages and typing, without copied offensive abilities or items. Queues survive switching/fainting and coexist with ordinary Future Sight; normal live defenses apply. Once per battle when Alakazam Mega Evolves, sets real Reflect and Light Screen for 5 turns without shortening longer screens.",
-"shortDesc":"Insomnia + ability copy; Miracle Eye; stored attacks; once-per-battle Mega screens.",
+"shortDesc":"Ability copy; Miracle Eye; stored attacks; once-per-battle Mega screens.",
 "rating":5,
 "flags":{
 "breakable":1
@@ -54255,7 +58775,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11128,
 "gen":9,
 "desc":"Contact attackers have a 30% chance of frostbite. Heals 1/16 max HP each turn in hail or snow, or on Icy, Snowy Mountain and Cold Eclipse without those weathers; hail on Cold Eclipse heals 1/8 instead. Immune to hail damage. Takes half damage from special attacks and is immune to hail damage. Mirror Arena entry gives +2 evasion. Icy and Snowy Mountain neutralize weaknesses from its Ice typing. Cold Eclipse doubles Defense. Eligible Normal moves become Ice and have 1.2x power, or 1.5x on Icy and Snowy Mountain. Excludes moves whose type is set by their own effect, damaging Z-Moves and Terastallized Tera Blast.",
-"shortDesc":"30% contact frostbite; heals in icy weather/fields; no hail damage; Half special damage; no hail damage; icy-field defenses; Normal moves become Ice with 1.2x power; icy-field boost.",
+"shortDesc":"Combines the listed abilities.",
 "rating":5,
 "flags":{
 "breakable":1
@@ -54277,7 +58797,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10284,
 "gen":9,
 "desc":"Eligible single-target damaging moves hit three times; existing multi-hit moves, spread moves outside Free-for-All, charging moves, delayed attacks, Z/Max moves and moves barred from extra hits are excluded. The second and third hits deal 30% damage and retarget the foe's ally if the first target fainted. In Free-for-All battles, single-target moves hit all foes once at 1.3x power; spread moves hit all foes three times, with later hits at 30% power, and full-power spread moves stay full power. Moves have 1.2x power on Dragon's Den. Allies take 25% less attack damage; this does not protect the holder. Prevents critical hits and takes 20% less attack damage. Gains +1 Defense on Fairy Tale entry and +2 Defense when a foe lowers its stats. Steel attacks receive STAB. Cannot be trapped.",
-"shortDesc":"Eligible moves hit three times; supports allies; armor protection; Steel STAB; cannot be trapped.",
+"shortDesc":"Gains Steel STAB and cannot be trapped.",
 "rating":4.5,
 "flags":{},
 "isNonstandard":null
@@ -54287,7 +58807,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10259,
 "gen":9,
 "desc":"Other Pokemon cannot lower its stat stages. Moves bypass Substitute, Reflect, Light Screen, Aurora Veil, Safeguard and Mist. Airborne: immune to Ground attacks, Spikes, Toxic Spikes, Sticky Web and Arena Trap unless grounded. Thousand Arrows can still hit. Eligible single-target damaging moves hit three times; existing multi-hit moves, spread moves outside Free-for-All, charging moves, delayed attacks, Z/Max moves and moves barred from extra hits are excluded. The second and third hits deal 30% damage and retarget the foe's ally if the first target fainted. In Free-for-All battles, single-target moves hit all foes once at 1.3x power; spread moves hit all foes three times, with later hits at 30% power, and full-power spread moves stay full power. Moves have 1.2x power on Dragon's Den. Dragon Darts and G-Max Spirit Volley use its higher offensive stat and gain 20% power from Hydra Bond instead of extra hits. Dragon Darts keeps its two-hit pattern; Spirit Volley keeps its full-power hit and weaker follow-up against another foe. In Free-for-All battles, Dragon Darts hits all opposing Pokemon twice.",
-"shortDesc":"Airborne; blocks foe stat drops; bypasses screens/Substitute; extra hits, or 1.2x power for signature moves.",
+"shortDesc":"Blocks foe stat drops; bypasses screens/Substitute; extra hits, or 1.2x power for signature moves.",
 "rating":5,
 "flags":{},
 "isNonstandard":null
@@ -54297,7 +58817,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10193,
 "gen":9,
 "desc":"Contact moves bypass protection except Max Guard. Punching moves have 1.4x power. Heals 1/16 max HP each turn and ignores sandstorm and hail damage. Switching out cures major status and heals 1/3 max HP only if a status was cured. Bewitched Woods cures status at turn end without this extra heal. Takes 0.8x attack damage at any HP; super-effective attacks deal a further 0.75x damage (0.6x total). Ability-ignoring moves cannot bypass these reductions, but suppression disables them. Immune to hail damage on Cold Eclipse. A contact attacker that knocks it out loses 1/4 max HP, or 1/2 on Corrosive Mist. Damp prevents this damage. Its moves cannot miss, contact moves bypass Protect, it repairs itself, takes 0.8x attack damage at any HP (0.6x total from super-effective attacks), and damages contact attackers that knock it out.",
-"shortDesc":"Contact bypasses protection; punches have 1.4x power; Heals 1/16 HP per turn; switching cures status and heals 1/3 HP if cured; no weather damage; 20% less attack damage at any HP; 40% less if super effective.",
+"shortDesc":"Punches have 1.4x power; no weather damage; 40% less if super effective.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -54337,7 +58857,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10449,
 "gen":9,
 "desc":"Contact moves have 1.3x power. Once per switch-in, its first Steel-type contact attack to damage a foe lowers the foe's Defense by 1 stage.",
-"shortDesc":"Contact moves have 1.3x power — first Steel contact hit per entry lowers the foe’s Defense.",
+"shortDesc":"First Steel contact hit per entry lowers the foe’s Defense.",
 "rating":3.5,
 "flags":{},
 "isNonstandard":null
@@ -54423,7 +58943,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10137,
 "gen":9,
 "desc":"Same-type moves have 1.3x power. Incoming Fire and Ice attacks use half the attacker's offensive stat. Immune to hail damage. When attacking, ignores the target's Defense, Sp. Def and evasion stages. When defending, ignores the attacker's Attack, Defense, Sp. Atk and accuracy stages. Reveals opposing Illusions on entry. At turn end, opposing non-Grass Pokemon take Grass-type damage equal to 1/16 max HP, blocked by Grass immunities; it heals the damage dealt by that chip. Only in Free-for-All does Grass type effectiveness scale this chip.",
-"shortDesc":"Same-type moves have 1.3x power; Half Fire/Ice attacking stats; immune to hail damage; Ignores opposing combat/accuracy stages; reveals Illusions — healing Grass chip scales by type in FFA.",
+"shortDesc":"Healing Grass chip scales by type in FFA.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -54435,7 +58955,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10501,
 "gen":9,
 "desc":"Doubles Speed in sun or Stage 4 Flower Garden. Once per turn, successfully hitting a foe with a powder move or damaging Grass move heals itself and adjacent allies by 1/16 max HP, or 1/8 in sunlight.",
-"shortDesc":"Double Speed in sun or Stage 4 Flower Garden — Grass or powder hits heal it and its allies, more in sun.",
+"shortDesc":"Grass or powder hits heal it and its allies, more in sun.",
 "rating":3,
 "flags":{},
 "isNonstandard":null
@@ -54547,7 +59067,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11271,
 "gen":9,
 "desc":"Full local Competitive + Unnerve. Opposing stat drops grant +2 Sp. Atk outside Chess Board; on Chess Board, retains Competitive's missing-HP power boost instead. Foes cannot eat Berries or use field seeds while Unnerve is active; retains its Cold Eclipse entry Speed drops.",
-"shortDesc":"Competitive + Unnerve, including their local field effects.",
+"shortDesc":"Combines the listed abilities.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -54557,7 +59077,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10419,
 "gen":9,
 "desc":"When attacking, ignores the target's Defense, Sp. Def and evasion stages. When defending, ignores the attacker's Attack, Defense, Sp. Atk and accuracy stages. Reveals opposing Illusions on entry. Same-type moves have 1.3x power. Moves ignore bypassable abilities. After dealing HP damage, heals 1/16 max HP once per turn. The first opposing HP hit gives +1 Attack and Sp. Atk and heals 1/16 max HP; later hits heal 1/20 until it completes a damaging move and resets this trigger. On Ashen Beach, New World, Starlight Arena, Cold Eclipse and Fairy Tale, the first qualifying physical and special hits also give +1 Defense and Sp. Def respectively. In those fields, a qualifying hit at half HP or less instead heals 1/4 max HP once per activation; blocked healing does not spend it. These effects stop on Bewitched Woods, Haunted and Holy Field. While Royal Decree or Empress is active without Neutralization, takes 30% less attack damage and has 1.3x move power, except against Battle Bond.",
-"shortDesc":"Ignores foe stages and abilities; stronger same-type moves; heals and gains stats in combat.",
+"shortDesc":"Same-type moves gain 1.3x power.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -54587,7 +59107,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11252,
 "gen":9,
 "desc":"Incoming Fire and Ice attacks use half the attacker's offensive stat. Immune to sandstorm and hail damage. It can use Belch without eating a Berry and automatically gains one Stockpile each turn. After reaching 3 Stockpiles, it waits one full turn before randomly choosing Belch or Spit Up with equal odds, then can release every other turn. Its established Spit Up and Swallow combinations still apply. Draining attacks that damage a foe's HP inflict Heal Block through the end of the following turn. After the whole move, lower one positive Attack or Sp. Atk stage of each damaged foe, choosing the more boosted stat and Sp. Atk on ties. Never lowers an unboosted stat or grants the user a boost. Substitute-only damage does not trigger these effects; normal stat-drop protections apply.",
-"shortDesc":"Fire/Ice protection; automatic Stockpiles/releases; drain hits block healing and lower a positive attacking stage.",
+"shortDesc":"Automatic Stockpiles/releases; drain hits block healing and lower a positive attacking stage.",
 "rating":3,
 "flags":{
 "breakable":1
@@ -54599,7 +59119,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11244,
 "gen":9,
 "desc":"Multi-hit moves always use their maximum hit count and have 1.5x power. Moves that normally check accuracy per hit check only once. Prevents critical hits and takes 20% less attack damage. Gains +1 Defense on Fairy Tale entry and +2 Defense when a foe lowers its stats. The final scheduled hit of a move with at least three hits is a guaranteed critical hit unless critical-hit immunity prevents it. Earlier hits retain normal critical chances; interruption does not promote an earlier hit.",
-"shortDesc":"Maximum multi-hit count; 1.5x multi-hit power; No critical hits; 20% less damage; foe stat drops give +2 Defense — final scheduled hit of 3+ hit moves critically hits.",
+"shortDesc":"Final scheduled hit of 3+ hit moves critically hits.",
 "rating":1,
 "flags":{
 "breakable":1
@@ -54631,7 +59151,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10257,
 "gen":9,
 "desc":"Marvel Scale boosts Defense while statused or on supported fields. Oblivious blocks Attract, Captivate, Taunt, and Intimidate's Attack drop. Swift Swim boosts Speed in rain and supported water fields.",
-"shortDesc":"Marvel Scale boosts Defense while statused or on supported fields. Oblivious blocks Attract, Captivate, Taunt, and Intimidate's Attack drop.",
+"shortDesc":"Combines the listed abilities.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -54683,7 +59203,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10250,
 "gen":9,
 "desc":"Sound moves become Water-type, or Ice-type on Icy Field, and have 1.2x power. Prevents critical hits and takes 20% less attack damage. Gains +1 Defense on Fairy Tale or Dragon's Den entry and +2 Sp. Def when a foe lowers its stats. Absorbs other Pokemon's Water moves, healing 1/4 max HP instead of being hit. Heals 1/16 max HP each turn on Underwater, grounded on Water Surface, or grounded and Poison-type on Murkwater Surface. It can use Arenite Wall and Aurora Veil regardless of weather or field.",
-"shortDesc":"Sound moves: Water (Ice on Icy Field), 1.2x power; No critical hits; 20% less damage; foe stat drops give +2 Sp. Def; Absorbs Water for 1/4 HP; water-field healing — ignores wall conditions.",
+"shortDesc":"Ignores wall conditions.",
 "rating":3.5,
 "flags":{
 "breakable":1
@@ -54757,7 +59277,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11220,
 "gen":9,
 "desc":"Water Absorb and Liquid Ooze, plus Poison-move absorption: Water or Poison moves from another Pokemon heal 1/4 max HP once instead of hitting, even if healing fails. Water Absorb also heals 1/16 on its supported water fields; Liquid Ooze reverses drain, Leech Seed and Strength Sap recovery, doubled on Murkwater Surface or Wasteland. On entry, attempts 5-turn Murkwater Surface. While Swalot-Pulse is active, Underwater immediately becomes 5-turn Murkwater Surface, including after its entry field use is spent; field blockers and suppression still apply. This does not refresh an existing Murkwater Surface. Swalot-Pulse always uses Sludge Wave, Recover, Infestation, and Discharge. Field creation or refresh is attempted only once per battle per holder, even if blocked; switching, suppression, revival, or ability changes never reset this use.",
-"shortDesc":"Absorbs Water/Poison for 1/4 HP; drain harms foes; Swalot-Pulse changes Underwater to Murkwater.",
+"shortDesc":"Also absorbs Poison moves; transforms Underwater into Murkwater.",
 "rating":3.5,
 "flags":{
 "breakable":1
@@ -54769,7 +59289,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11228,
 "gen":9,
 "desc":"Eligible single-target damaging moves hit three times; existing multi-hit moves, spread moves outside Free-for-All, charging moves, delayed attacks, Z/Max moves and moves barred from extra hits are excluded. The second and third hits deal 30% damage and retarget the foe's ally if the first target fainted. In Free-for-All battles, single-target moves hit all foes once at 1.3x power; spread moves hit all foes three times, with later hits at 30% power, and full-power spread moves stay full power. Moves have 1.2x power on Dragon's Den. Airborne: immune to Ground attacks, Spikes, Toxic Spikes, Sticky Web and Arena Trap unless grounded. Thousand Arrows can still hit. Other Pokemon cannot lower its stat stages. On entry, sets Factory Field for 5 turns. Eligible single-target attacks hit three times, it is ungrounded, and opponents cannot lower its stats. Field creation or refresh is attempted only once per battle per holder, even if blocked; switching, suppression, revival, or ability changes never reset this use. Magnezone-Pulse automatically receives Flash Cannon, Discharge, Recover, and Autotomize in that order.",
-"shortDesc":"Damaging moves hit 3x; hits 2/3 at 30%; FFA singles hit all foes at 1.3x; Airborne; immune to Ground attacks unless grounded; Other Pokemon cannot lower its stats — 5-turn Factory Field on entry.",
+"shortDesc":"5-turn Factory Field on entry.",
 "rating":5,
 "flags":{
 "breakable":1
@@ -54781,7 +59301,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10353,
 "gen":9,
 "desc":"Muk-Pulse summons Swamp Field for 5 turns, subject to field-generation blockers. Before using a move, changes to that move's type. Excludes reflected, delayed, Snatched and move-calling attacks; type-change restrictions still apply. Contact hits have a 30% chance to poison the target. Shield Dust and Covert Cloak block this effect. Heals 1/3 max HP on switching out. Muk-Pulse always uses Sludge Wave, Earth Power, Muddy Water, and Discharge. Field creation or refresh is attempted only once per battle per holder, even if blocked; switching, suppression, revival, or ability changes never reset this use.",
-"shortDesc":"Muk-Pulse: one Swamp attempt per battle; changes type before moving; contact poison; switch-out healing.",
+"shortDesc":"Once per battle, attempts to set 5-turn Swamp Field; uses a fixed moveset.",
 "rating":4.5,
 "flags":{},
 "isNonstandard":null
@@ -54791,7 +59311,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10354,
 "gen":9,
 "desc":"Punching moves have 1.4x power. Contact moves bypass protection except Max Guard. Prevents flinching and Intimidate's Attack drop.",
-"shortDesc":"1.4x punching power; contact bypasses protection; no flinching or Intimidate Attack drop.",
+"shortDesc":"1.4x punching power; no flinching or Intimidate Attack drop.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -54847,7 +59367,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11279,
 "gen":9,
 "desc":"Full Infiltrator. Aqua Jet that deals damage clears its negative Speed stages, preserving positive Speed. Misses, protection and damage immunity give no cleanse.",
-"shortDesc":"Infiltrator; damaging Aqua Jet clears its negative Speed stages.",
+"shortDesc":"Damaging Aqua Jet clears its negative Speed stages.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -54898,7 +59418,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10120,
 "gen":9,
 "desc":"Reverses received stat-stage changes, except Z-Power changes. At turn end, if statused, affected by a listed ailment, negatively boosted or at half HP or less, has a 50% chance to heal 1/4 max HP, cure status, clear negative stages and remove Attract, confusion, Curse, Disable, Encore, Heal Block, Leech Seed, Nightmare, Perish Song, Taunt, Torment and Yawn. On Dragon's Den, activation is guaranteed but only cures status and heals, then raises its higher attacking stat by 1 and lowers both defenses by 1. On entry, lowers adjacent foes' Attack by 1. Substitute and Intimidate protections still apply. Moves bypass Substitute, Reflect, Light Screen, Aurora Veil, Safeguard and Mist. Same-type moves have 1.3x power.",
-"shortDesc":"Reverses stat changes except Z-Power; 50% end-turn cure/reset and 1/4 heal; Dragon's Den changes the effect; Entry lowers adjacent foes' Attack by 1; Moves bypass Substitute and opposing screens; Same-type moves have 1.3x power.",
+"shortDesc":"Same-type moves gain 1.3x power.",
 "rating":4.5,
 "flags":{
 "breakable":1
@@ -54930,7 +59450,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10529,
 "gen":9,
 "desc":"Absorbs other Pokemon's Water moves, healing 1/4 max HP instead of being hit. Heals 1/16 max HP each turn on Underwater, grounded on Water Surface, or grounded and Poison-type on Murkwater Surface. Absorbing a Water move primes its next landed damaging Poison move to poison the target. The charge does not stack; normal status immunities apply.",
-"shortDesc":"Absorbs Water for 1/4 HP; after absorbing Water, its next landed Poison attack poisons the foe.",
+"shortDesc":"After absorbing Water, its next landed Poison attack poisons the foe.",
 "rating":3.5,
 "flags":{
 "breakable":1
@@ -54942,7 +59462,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10374,
 "gen":9,
 "desc":"Attack is 1.5x while statused, and burn does not weaken physical attacks. Moves ignore bypassable opposing abilities.",
-"shortDesc":"1.5x Attack while statused; ignores burn attack penalty; Moves ignore bypassable abilities.",
+"shortDesc":"Ignores burn attack penalty; Moves ignore bypassable abilities.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -54952,7 +59472,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10036,
 "gen":9,
 "desc":"Doubles Speed in rain or on Water Surface, Murkwater Surface, Underwater and Midnight Zone. Prevents Explosion, Self-Destruct, Mind Blown, Misty Explosion and Aftermath damage. Incoming Fire attacks use half the attacker's offensive stat. On Corrosive Mist, also prevents Eruption, Fire Pledge, Flame Burst, Heat Wave, Incinerate, Lava Plume, Searing Shot and Inferno Overdrive. Absorbs Water moves for 1/4 max HP; incoming Fire moves have 1.25x power. Effective rain heals 1/8 HP per turn; sun costs 1/8. Field healing per turn: 1/16 on Underwater, Swamp, Misty or grounded Water Surface; 1/8 when grounded and Poison-type on Murkwater. Corrosive Mist heals Poison types by 1/8 but damages non-Steel others by 1/8. Desert costs 1/8 HP per turn. Each opposing attack hit that damages HP heals 1/16 max HP. The first such hit each turn also raises Defense by 1, before later hits of a multi-hit move. Same-type moves have 1.3x power. Water Veil and its burn immunity are removed.",
-"shortDesc":"Double Speed in rain and water fields; Blocks explosions/Aftermath; halves incoming Fire attacking stats; Absorbs Water; rain/water fields heal; Fire, sun and Desert hurt; Opposing HP hits heal 1/16.",
+"shortDesc":"Combines the listed abilities.",
 "rating":4.5,
 "flags":{
 "breakable":1
@@ -54976,7 +59496,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10385,
 "gen":9,
 "desc":"Moves ignore bypassable opposing abilities. Prevents critical hits and takes 20% less attack damage. Gains +1 Defense on Fairy Tale entry and +2 Defense when a foe lowers its stats. Attacks bypass Substitute, screens and defensive stat stages and gain +1 critical-hit stage. Takes half damage from priority attacks, in addition to its armor reduction. Immune to hail damage. Move KOs damage remaining foes by 60% of the last damage dealt; if there is no valid target or no damage is dealt, gains +1 Attack instead. Magic Guard prevents this splash damage. Cannot be suppressed. Each fainted ally adds 10% move damage; in Free-for-All, allies count twice. At 2+ fallen allies it gains Infiltrator; 4+, flinch immunity from Inner Focus; 5+, indirect-damage immunity and a one-time +1 Attack and Sp. Atk. It does not block stat drops. Effective fallen count is capped at 5 after Free-for-All doubling, for a maximum 1.5x Supreme Overlord power multiplier; unlocks at 2/4/5 are unchanged.",
-"shortDesc":"Ignores abilities/screens/defensive stages; armor protection; KO splash damage; fallen allies grant bonuses. Supreme Overlord caps at 5 effective faints (1.5x power).",
+"shortDesc":"Combines the listed abilities.",
 "rating":5,
 "flags":{
 "cantsuppress":1
@@ -54988,7 +59508,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10121,
 "gen":9,
 "desc":"Moves ignore bypassable opposing abilities. Prevents critical hits and takes 20% less attack damage. Gains +1 Defense on Fairy Tale entry and +2 Defense when a foe lowers its stats. Attacks bypass Substitute, screens and defensive stat stages and gain +1 critical-hit stage. Takes half damage from priority attacks, in addition to its armor reduction. Immune to hail damage. Move KOs damage remaining foes by 60% of the last damage dealt; if there is no valid target or no damage is dealt, gains +1 Attack instead. Magic Guard prevents this splash damage. Cannot be suppressed.",
-"shortDesc":"Ignores abilities/screens/defensive stages; armor protection; half priority damage; KO splash damage.",
+"shortDesc":"Bypasses screens and defensive stages; halves priority damage; KOs damage other foes.",
 "rating":4.5,
 "flags":{
 "cantsuppress":1
@@ -55000,7 +59520,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10141,
 "gen":9,
 "desc":"Redirects single-target Electric moves to itself and absorbs Electric moves for +1 Attack and Sp. Atk. Electric Terrain entry also grants both boosts. never misses; boosts Electric attacks. Redirects and absorbs Electric moves, raising Attack and Special Attack. Electric moves are strengthened; Ground damage is reduced on Electric Terrain.",
-"shortDesc":"Redirects/absorbs Electric for +1 Attack and Sp. Atk — never misses; boosts Electric attacks.",
+"shortDesc":"Never misses; boosts Electric attacks.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -55010,7 +59530,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10476,
 "gen":9,
 "desc":"Moves cannot be redirected. On New World, Starlight Arena, Fairy Tale and Chessboard entry, gains +1 Sp. Atk. Once per switch-in, surviving a whole opposing damaging move that hits HP stores a non-stacking 1.5x boost for the next Electric attack. Consumed when that attack executes, including misses, Protect or immunity; charge-only and interrupted turns do not consume it. Switching clears it. Does not skip Electro Shot charging, grant an extra Sp. Atk boost or ignore screens.",
-"shortDesc":"Ignores redirection; surviving a foe HP-damaging move once per entry powers the next Electric attack by 1.5x.",
+"shortDesc":"Surviving a foe HP-damaging move once per entry powers the next Electric attack by 1.5x.",
 "rating":0,
 "flags":{},
 "isNonstandard":null
@@ -55020,7 +59540,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11310,
 "gen":9,
 "desc":"Full Rain Dish: restores 1/16 max HP in effective rain. Once per entry, successfully establishing Tailwind removes entry hazards from its own side. Failed Tailwind while already active does not trigger or spend the use.",
-"shortDesc":"Rain Dish; once per entry, successfully setting Tailwind clears own-side entry hazards.",
+"shortDesc":"Once per entry, successfully setting Tailwind clears own-side entry hazards.",
 "rating":3,
 "flags":{},
 "isNonstandard":null
@@ -55090,7 +59610,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11229,
 "gen":9,
 "desc":"Slicing moves have 1.5x power, except on Cold Eclipse. Removes contact and raises critical-hit rate by one stage. Also raises Accuracy on entry and retains field bonuses. No triple critical-hit damage. Keen Eye prevents opposing accuracy drops, ignores evasion boosts and reveals opposing Illusions on activation. Mirror Arena grants +1 accuracy and Laser Focus; shared accuracy entry rewards apply once. Slicing moves have 1.5x power (except on Cold Eclipse), all attacks are non-contact, and entry grants +1 accuracy. Retains local Long Reach critical-hit and field effects: 0.9x move accuracy on Rocky/Grassy Field and 1.5x power on Mountain/Snowy Mountain. Replaces the former 1.3x slicing boost; no stacking with it.",
-"shortDesc":"Slicing moves have 1.5x power except on Cold Eclipse; Removes contact and raises critical-hit rate by one stage — all attacks non-contact; +1 accuracy on entry.",
+"shortDesc":"All attacks non-contact; +1 accuracy on entry.",
 "rating":3.5,
 "flags":{
 "breakable":1
@@ -55153,7 +59673,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10518,
 "gen":9,
 "desc":"Battery, including its existing Electric Terrain effect. Switching with Volt Switch restores 1/8 of the incoming teammate's max HP.",
-"shortDesc":"Battery, including its existing Electric Terrain effect. Switching with Volt Switch restores 1/8 of the incoming teammate's HP.",
+"shortDesc":"Volt Switch heals the incoming teammate by 1/8 HP.",
 "rating":0,
 "flags":{},
 "isNonstandard":null
@@ -55215,7 +59735,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10003,
 "gen":9,
 "desc":"Airborne: immune to Ground attacks, Spikes, Toxic Spikes, Sticky Web and Arena Trap unless grounded. Thousand Arrows can still hit. Its moves with 60 or less Base Power gain +1 priority. In Fairy Tale, Big Top, Dragon's Den, Mountain, Snowy Mountain, or Cold Eclipse, its damaging moves deal 2x damage. In Desert, Rocky, Forest, Burning, Superheated, Ashen Beach, Water Surface, Cave, Starlight Arena, or New World, its damaging moves deal 1.5x damage.",
-"shortDesc":"Airborne; immune to Ground attacks unless grounded — moves <=60 BP gain +1 priority; boosted fields give 1.5x or 2x damage.",
+"shortDesc":"Moves <=60 BP gain +1 priority; boosted fields give 1.5x or 2x damage.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -55225,7 +59745,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10109,
 "gen":9,
 "desc":"Multi-hit moves always use their maximum hit count and have 1.5x power. Moves that normally check accuracy per hit check only once. Moves ignore bypassable opposing abilities. Drill and horn moves have 1.5x power, or 2x on Rocky, Mountain, Snowy Mountain, Cave and Volcanic, where they also bypass protection. Drill and horn moves gain Power Drill effects. Guts and Battle Armor are removed.",
-"shortDesc":"Maximum multi-hit count; 1.5x multi-hit power; Moves ignore bypassable abilities; Drill/horn moves have 1.5x power; 2x and pierce protection on rocky fields.",
+"shortDesc":"Combines the listed abilities.",
 "rating":4.5,
 "flags":{
 "breakable":1
@@ -55295,7 +59815,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11233,
 "gen":9,
 "desc":"Absorbs other Pokemon's Water moves, healing 1/4 max HP instead of being hit. Heals 1/16 max HP each turn on Underwater, grounded on Water Surface, or grounded and Poison-type on Murkwater Surface. Berries normally eaten at 1/4 HP activate at 1/2 HP instead. Prevents Explosion, Self-Destruct, Mind Blown, Misty Explosion and Aftermath damage. Incoming Fire attacks use half the attacker's offensive stat. On Corrosive Mist, also prevents Eruption, Fire Pledge, Flame Burst, Heat Wave, Incinerate, Lava Plume, Searing Shot and Inferno Overdrive.",
-"shortDesc":"Absorbs Water for 1/4 HP; water-field healing; Low-HP Berries activate at half HP; Blocks explosions/Aftermath; halves incoming Fire attacking stats.",
+"shortDesc":"Water-field healing; Low-HP Berries activate at half HP; halves incoming Fire attacking stats.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -55381,7 +59901,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10443,
 "gen":9,
 "desc":"Contact moves have 1.3x power. The first Ice-type contact attack to damage a foe each switch-in removes one opposing screen after damage.",
-"shortDesc":"Contact moves have 1.3x power — first Ice contact hit per entry breaks a screen.",
+"shortDesc":"First Ice contact hit per entry breaks a screen.",
 "rating":3.5,
 "flags":{},
 "isNonstandard":null
@@ -55391,7 +59911,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10118,
 "gen":9,
 "desc":"Takes 20% less attack damage, or 40% less from super-effective attacks. Punching moves have 1.4x power. Contact attackers have a 30% chance of frostbite. Heals 1/16 max HP each turn in hail or snow, or on Icy, Snowy Mountain and Cold Eclipse without those weathers; hail on Cold Eclipse heals 1/8 instead. Immune to hail damage. Damaging moves have a 20% chance to cause frostbite (40% on Icy Field). KOs restore 1/8 max HP, or 1/4 against Mega, G-Max, Terastallized, Stellar or Z-Move item targets. Ice Body adds a 30% chance to frostbite contact attackers, hail immunity, and healing in hail/snow or on Icy, Snowy Mountain and Cold Eclipse fields. Healing is 1/16 max HP, or 1/8 in hail on Cold Eclipse.",
-"shortDesc":"20% less attack damage; 20% less if super effective; Punches have 1.4x power; 30% contact frostbite; heals in icy weather/fields; no hail damage — frostbite chance; KO healing.",
+"shortDesc":"Frostbite chance; KO healing.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -55413,7 +59933,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11281,
 "gen":9,
 "desc":"Full local Limber prevents and cures paralysis and blocks opposing and field Speed reductions. The first damaging Flying Press hit against a foe each entry attempts two-turn Taunt after damage, under normal Taunt protection. Misses, Protect and Substitute preserve the charge; existing Taunt is not shortened.",
-"shortDesc":"Limber; first Flying Press damage each entry attempts two-turn Taunt after the hit.",
+"shortDesc":"First Flying Press damage each entry attempts two-turn Taunt after the hit.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -55425,7 +59945,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10586,
 "gen":9,
 "desc":"Contact moves have 1.3x power. Its first damaging Dark hit against a surviving foe each entry attempts to inflict Taunt for 2 turns. Normal Taunt immunities apply; no Fake Out requirement.",
-"shortDesc":"Contact moves have 1.3x power — first Dark hit each entry Taunts the foe for 2 turns.",
+"shortDesc":"First Dark hit each entry Taunts the foe for 2 turns.",
 "rating":3.5,
 "flags":{},
 "isNonstandard":null
@@ -55435,7 +59955,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10133,
 "gen":9,
 "desc":"Eligible Normal moves become Electric with 1.2x power. Its side's sound moves have 1.5x power and cannot damage allies; its sound moves use its higher attacking stat. Absorbs other Pokemon's Electric moves, healing 1/4 max HP instead of being hit. Heals 1/16 max HP each turn on Electric Terrain and Short-Circuit.",
-"shortDesc":"Normal moves become Electric; stronger sound moves spare allies; absorbs Electric for 1/4 HP.",
+"shortDesc":"Normal moves become Electric; stronger sound moves spare allies.",
 "rating":5,
 "flags":{},
 "isNonstandard":null
@@ -55445,7 +59965,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11306,
 "gen":9,
 "desc":"Full Defiant. Once per entry, successfully blocking an opposing damaging attack with Obstruct stores one charge. Its next damaging Dark move gains +1 priority and consumes the charge when actually attempted, not during priority previews. Switching clears the charge; subsequent blocks cannot rearm it that entry. Sucker Punch still requires its usual success condition.",
-"shortDesc":"Defiant; first damaging Obstruct block each entry grants +1 priority to its next damaging Dark move.",
+"shortDesc":"First damaging Obstruct block each entry grants +1 priority to its next damaging Dark move.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -55536,7 +60056,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10470,
 "gen":9,
 "desc":"Each opposing attack hit that damages HP heals 1/16 max HP. The first such hit each turn also raises Defense by 1, before later hits of a multi-hit move. At the end of turns in which it did not attempt a damaging move, it restores 1/16 max HP. Also retains this server's Stamina on-hit Defense gain and healing.",
-"shortDesc":"Opposing HP hits heal 1/16; +1 Defense once per turn — heals 1/16 HP on turns when it does not attack.",
+"shortDesc":"Heals 1/16 HP on turns when it does not attack.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -55546,7 +60066,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10459,
 "gen":9,
 "desc":"Heals 1/3 max HP on switching out. Switching out also cures one adjacent active ally's major status condition.",
-"shortDesc":"Heals 1/3 HP on switching out.",
+"shortDesc":"Switching out also cures one adjacent active ally’s major status.",
 "rating":4.5,
 "flags":{},
 "isNonstandard":null
@@ -55578,7 +60098,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11276,
 "gen":9,
 "desc":"Full Gluttony. Consuming a Berry clears its negative Attack and Speed stages, preserving positive stages and all other stats.",
-"shortDesc":"Gluttony; eating a Berry clears its negative Attack and Speed stages.",
+"shortDesc":"Eating a Berry clears its negative Attack and Speed stages.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -55608,7 +60128,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11241,
 "gen":9,
 "desc":"Pressure + Sweet Veil: opposing moves targeting it cost 1 extra PP (2 in Midnight Zone); prevents sleep and Yawn for its side. Entry lowers opposing Defense and Sp. Def by 1 (2 on Cold Eclipse); Underwater becomes Midnight Zone. Once per entry, the first qualifying Order grants one reward: Attack Order damaging a foe lowers that foe's Attack by 1; successful Defend Order shields active allies against their next damaging hit by 25%, until the end of the following turn; Heal Order actually healing the holder heals active allies by 1/8 maximum HP. All three share one budget; failures do not spend it. The holder receives no extra ally shield or heal. Shields do not stack.",
-"shortDesc":"Pressure + Sweet Veil; once/entry, one successful Order weakens a foe, shields allies or heals allies.",
+"shortDesc":"Once/entry, one successful Order weakens a foe, shields allies or heals allies.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -55630,7 +60150,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11122,
 "gen":9,
 "desc":"Marvel Scale boosts Defense while statused or on supported fields. Oblivious blocks Attract, Captivate, Taunt, and Intimidate's Attack drop. Swift Swim boosts Speed in rain and supported water fields. Its Normal-type moves become Dragon-type moves and have their power multiplied by 1.2. It gains STAB on Dragon-type moves. Heals 1/16 max HP each turn. Immune to sandstorm and hail damage.",
-"shortDesc":"Normal moves become Dragon type; Dragon STAB; converted moves 1.2x; Heals 1/16 HP each turn; immune to sandstorm and hail damage — heals 1/16 each turn; immune to Sandstorm and Hail.",
+"shortDesc":"Heals 1/16 each turn; immune to Sandstorm and Hail.",
 "rating":5,
 "flags":{
 "breakable":1
@@ -55642,21 +60162,9 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10142,
 "gen":9,
 "desc":"On entry, summons sun for 5 turns, or 8 with Heat Rock. Each fainted ally adds 10% move damage; in Free-for-All, allies count twice. At 2+ fallen allies it gains Infiltrator; 4+, flinch immunity from Inner Focus; 5+, indirect-damage immunity and a one-time +1 Attack and Sp. Atk. It does not block stat drops. While it is active, it prevents opposing Pokemon from using their Berries. This Ability activates before hazards and other Abilities take effect. Contact attackers have a 30% burn chance, or 60% on Volcanic. On Cold Eclipse, gains +1 Defense and Sp. Def on entry instead and cannot burn through contact. Summons sun for the usual Drought duration. Move power gains 10% per fainted ally; at 2 fallen allies, gains Infiltrator; at 4, flinch immunity; at 5, Magic Guard and a one-time +1 Attack and Special Attack. Opponents cannot eat Berries or use field seeds. Contact has a 30% burn chance, or 60% on Volcanic Field. On Cold Eclipse, lowers opposing Speed by 1 on entry (blocked by Substitute), raises its Defense and Special Defense by 1, and cannot burn through contact. Effective fallen count is capped at 5 after Free-for-All doubling, for a maximum 1.5x Supreme Overlord power multiplier; unlocks at 2/4/5 are unchanged.",
-"shortDesc":"Summons sun on entry; Fallen allies add 10% damage each; 2+ Infiltrator, 4+ Inner Focus; While it is active, it prevents opposing Pokemon from using their Berries; 30% contact burn (60% Volcanic). Supreme Overlord caps at 5 effective faints (1.5x power).",
+"shortDesc":"Summons sun and gains fallen-ally effects up to the five-faint cap.",
 "rating":4.5,
 "flags":{},
-"isNonstandard":null
-},
-"royalvoice":{
-"name":"Royal Voice",
-"num":10113,
-"gen":9,
-"desc":"Eligible Normal moves become Fairy and have 1.2x power, or 1.5x on Misty Terrain. Excludes moves whose type is set by their own effect, damaging Z-Moves and Terastallized Tera Blast. Blocks opposing priority moves aimed at it or its allies. Attacks deal 1.5x damage on Fairy Tale, or on Chessboard unless it has the Queen role. Retains Telepathy, including avoiding allied damaging moves and doubled Speed in Psychic Terrain or Psychic Aura. At turn end, it and its active allies each heal 1/16 max HP. Once per switch-in, if an opposing move would knock out an ally, that ally survives at 1 HP and it loses 1/4 max HP, provided it has more HP than the cost.",
-"shortDesc":"Normal moves become Fairy; blocks foe priority; avoids allied attacks; heals allies and can save one.",
-"rating":5,
-"flags":{
-"breakable":1
-},
 "isNonstandard":null
 },
 "ruinjaw":{
@@ -55664,7 +60172,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10222,
 "gen":9,
 "desc":"Biting moves have 1.5x power. Absorbs other Pokemon's Ground moves, healing 1/4 max HP instead of being hit.",
-"shortDesc":"Bites have 1.5x power; Absorbs Ground for 1/4 HP.",
+"shortDesc":"Bites have 1.5x power.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -55686,7 +60194,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10410,
 "gen":9,
 "desc":"Battle Bond's shared effects plus Magma Armor, Intimidate, and Flash Fire. Arcanine-Battle-Bond's Extreme Speed has 1.5x power and always critically hits.",
-"shortDesc":"Extreme Speed is 1.5x power and always critical.",
+"shortDesc":"Extreme Speed has 1.5x power and always critically hits.",
 "rating":4,
 "flags":{
 "failroleplay":1,
@@ -55703,7 +60211,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10101,
 "gen":9,
 "desc":"Slicing moves have 1.5x power, except on Cold Eclipse. Eligible slicing, pulse, bullet, horn, drill, and Arrow moves hit twice at 60% power, with an independent accuracy check for each hit. When combined with Sharpness, Mega Launcher, or Power Drill, the first hit receives that boost and the second hit deals 15% of the move's unboosted power. In Free-for-All, both hits use full power: the first hits the selected foe and the second targets another random living foe when possible. Existing multi-hit moves are not given an additional Dual Wield pair. On entry or Mega Evolution, heals adjacent allies by 1/4 max HP, or 1/3 on Fairy Tale.",
-"shortDesc":"Stronger slicing moves; eligible moves hit twice; entry heals allies by 1/4 HP, or 1/3 on Fairy Tale.",
+"shortDesc":"Combines the listed abilities.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -55715,7 +60223,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11099,
 "gen":9,
 "desc":"Its Normal-type moves become Dark-type moves and have their power multiplied by 1.3. Prevents and cures sleep, blocks Yawn, and gives Dark and Ghost attacks 1.3x power. Prevents indirect damage; HP costs, Pain Split, confusion and Struggle recoil still apply. Fairy Tale entry gives +1 Sp. Def.",
-"shortDesc":"Normal moves become Dark type and have 1.3x power; No sleep or Yawn; 1.3x Dark/Ghost power; Prevents indirect damage; Fairy Tale entry gives +1 Sp. Def.",
+"shortDesc":"Normal moves become Dark type and have 1.3x power; 1.3x Dark/Ghost power; Fairy Tale entry gives +1 Sp. Def.",
 "rating":5,
 "flags":{},
 "isNonstandard":null
@@ -55725,7 +60233,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10196,
 "gen":9,
 "desc":"Contact attackers have a 30% chance of frostbite. Heals 1/16 max HP each turn in hail or snow, or on Icy, Snowy Mountain and Cold Eclipse without those weathers; hail on Cold Eclipse heals 1/8 instead. Immune to hail damage. Absorbs other Pokemon's Water moves, healing 1/4 max HP instead of being hit. Heals 1/16 max HP each turn on Underwater, grounded on Water Surface, or grounded and Poison-type on Murkwater Surface. Cures major status at turn end in effective rain or on Water Surface, Underwater and Midnight Zone.",
-"shortDesc":"30% contact frostbite; heals in icy weather/fields; no hail damage; Absorbs Water for 1/4 HP; water-field healing; Cures status each turn in rain or water fields.",
+"shortDesc":"No hail damage; water-field healing; Cures status each turn in rain or water fields.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -55737,7 +60245,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10465,
 "gen":9,
 "desc":"Prevents OHKO moves. At full HP, survives an otherwise fatal attack hit with 1 HP. When Sturdy saves it from a direct hit, its side gains Safeguard for 5 turns.",
-"shortDesc":"Survives a hit at full HP; immune to OHKO moves.",
+"shortDesc":"When Sturdy saves it, sets 5-turn Safeguard for its side.",
 "rating":3,
 "flags":{
 "breakable":1
@@ -55749,7 +60257,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10563,
 "gen":9,
 "desc":"Other Pokemon cannot lower its stat stages. While Defense is positively boosted, opponents cannot remove its held item. Does not prevent its boosts being reset, stolen or ignored.",
-"shortDesc":"Other Pokemon cannot lower its stats — while Defense is boosted, its held item cannot be removed.",
+"shortDesc":"While Defense is boosted, its held item cannot be removed.",
 "rating":2,
 "flags":{
 "breakable":1
@@ -55774,18 +60282,6 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "shortDesc":"Double Speed in sand or sandy fields; no sand damage.",
 "rating":3,
 "flags":{},
-"isNonstandard":null
-},
-"sandshroud":{
-"name":"Sandshroud",
-"num":11255,
-"gen":9,
-"desc":"Levitate + Overcoat: airborne, immune to powder moves and sandstorm/hail damage under normal rules. Recovers 1/16 maximum HP at turn end during sandstorm. Has no evasion effect.",
-"shortDesc":"Levitate + Overcoat; heals 1/16 maximum HP each turn during sandstorm.",
-"rating":4,
-"flags":{
-"breakable":1
-},
 "isNonstandard":null
 },
 "sandsovereign":{
@@ -55849,7 +60345,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11214,
 "gen":9,
 "desc":"Full Guts: Attack is multiplied by 1.5 while statused, and burn does not halve physical damage. Once per actual entry, after surviving an entire opposing damaging move that dealt actual HP damage while it was already statused, it gains one Speed stage if still active. Status inflicted after a hit does not make that hit qualify. All hits and opponents share one activation. Substitute-only, ally, self, residual and delayed damage do not qualify. Switching resets usage; ability replacement and suppression do not. Suppression disables the effect. The Speed boost is an ordinary stat stage and does not remove paralysis's Speed penalty.",
-"shortDesc":"1.5x Attack while statused; surviving a qualifying foe move while statused gives +1 Speed once per entry.",
+"shortDesc":"Surviving a qualifying foe move while statused gives +1 Speed once per entry.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -55859,7 +60355,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11292,
 "gen":9,
 "desc":"Full local Shield Dust + Overcoat: blocks opposing secondary effects, powder moves and sandstorm/hail damage.",
-"shortDesc":"Shield Dust + Overcoat.",
+"shortDesc":"Combines the listed abilities.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -55871,7 +60367,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10345,
 "gen":9,
 "desc":"Absorbs wind moves for +1 Attack. Gains +1 Attack when Tailwind starts on its side or it enters during Tailwind. Strong Winds gives +1 Attack each turn, plus +1 Sp. Atk on Mountain or Snowy Mountain. Steel moves receive STAB and use 1.5x Attack or Sp. Atk (2x on Factory). On Short-Circuit, Steel moves also gain Electric typing. Adds Steel resistances and Poison immunity without Steel weaknesses. Attacks use double the offensive stat against targets that entered this turn.",
-"shortDesc":"Wind/Tailwind boosts Attack; Steel offense/resistances; double attacking stats against new entrants.",
+"shortDesc":"Combines the listed abilities.",
 "rating":5,
 "flags":{
 "breakable":1
@@ -55883,7 +60379,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10375,
 "gen":9,
 "desc":"Immune to powder moves, Rage Powder, Effect Spore, sandstorm damage and hail damage. Other Pokemon cannot lower its Defense. Heals 1/3 max HP on switching out.",
-"shortDesc":"Immune to powder effects, sandstorm and hail damage; Other Pokemon cannot lower its Defense; Heals 1/3 HP on switching out.",
+"shortDesc":"Combines the listed abilities.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -55895,7 +60391,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11287,
 "gen":9,
 "desc":"Full local Frisk on entry reveals opposing active Illusions and held items; each item holder independently has a 30% chance of five-turn Embargo. Once per holder entry, the first opponent switching in while this Pokemon is already active also has its held item revealed. This extra observation only reveals the item and never repeats Frisk's other effects; an empty item slot still spends it.",
-"shortDesc":"Frisk; once per entry, reveals the first incoming opponent's item while already active.",
+"shortDesc":"Once per entry, reveals the first incoming opponent's item while already active.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -55905,7 +60401,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":208,
 "gen":7,
 "desc":"A level 20 or higher Wishiwashi changes to School Form above 1/4 maximum HP. Underwater and Midnight Zone force School Form; Water Surface and Murkwater force it while grounded. It returns to Solo Form at or below 1/4 maximum HP otherwise. While in School Form, it has Hydra Bond, Self Repair, and Mold Breaker's effects.",
-"shortDesc":"Changes form by HP and water terrain; School: Hydra Bond + Self Repair + Mold Breaker.",
+"shortDesc":"Changes form with HP and water fields; its School form gains the listed components.",
 "rating":3,
 "flags":{
 "failroleplay":1,
@@ -55974,7 +60470,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10336,
 "gen":9,
 "desc":"Physical HP hits set Toxic Spikes on the attacker's side, up to two layers; allied hits use the opposing side. Contact attackers lose 1/6 max HP. Water moves use double Attack or Sp. Atk; incoming Fire attacks use half the attacker's offensive stat. Prevents and cures burns, ignores hail and sandstorm damage, and gains Aqua Ring on entry. Does not grant Water STAB; natural STAB is unchanged.",
-"shortDesc":"Physical hits set Toxic Spikes; contact damage; doubled Water attacking stats; Fire/burn/weather protection.",
+"shortDesc":"Contact damage; doubled Water attacking stats; Fire/burn/weather protection.",
 "rating":5,
 "flags":{
 "breakable":1
@@ -56036,7 +60532,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10346,
 "gen":9,
 "desc":"Heals 1/16 max HP each turn and ignores sandstorm and hail damage. Switching out cures major status and heals 1/3 max HP only if a status was cured. Bewitched Woods cures status at turn end without this extra heal.",
-"shortDesc":"Heals 1/16 HP per turn; switching cures status and heals 1/3 HP if cured; no weather damage.",
+"shortDesc":"Combines the listed abilities.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -56056,7 +60552,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11278,
 "gen":9,
 "desc":"Full local Iron Fist gives punching moves 1.4x power. Once per entry, when its Wide Guard actually blocks an opposing damaging attack, restores 1/8 maximum HP under normal healing restrictions. No reward for using Wide Guard without blocking an attack.",
-"shortDesc":"Iron Fist; its first Wide Guard block each entry heals 1/8 maximum HP.",
+"shortDesc":"Its first Wide Guard block each entry heals 1/8 maximum HP.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -56086,7 +60582,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":-9001,
 "gen":0,
 "desc":"Changes Wishiwashi into its Ghost-type Sevii form, or Ghost/Dragon Sevii Schooling form at level 20 or higher above 1/4 maximum HP. Underwater and Midnight Zone force School Form; Water Surface and Murkwater force it while grounded. The School Form has Hydra Bond, Self Repair, and Mold Breaker's effects.",
-"shortDesc":"Schooling; Changes Wishiwashi to Sevii form; School: Hydra Bond + Self Repair + Mold Breaker.",
+"shortDesc":"Changes Wishiwashi to Sevii form; School: Hydra Bond + Self Repair + Mold Breaker.",
 "rating":3,
 "flags":{
 "failroleplay":1,
@@ -56103,7 +60599,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10408,
 "gen":9,
 "desc":"Battle Bond's shared effects plus Proficient and Infiltrator. Ash-Greninja's Water Shuriken hits three times at 30 base power per hit and always critically hits.",
-"shortDesc":"Water Shuriken is 3 hits at 30 power, always critical.",
+"shortDesc":"Water Shuriken hits 3 times at 30 power and always critically hits; 1.3x same-type move power.",
 "rating":4,
 "flags":{
 "failroleplay":1,
@@ -56120,7 +60616,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10033,
 "gen":9,
 "desc":"Before an eligible damaging move, changes to its type; status, reflected, delayed, Snatched and move-calling moves do not trigger this. Moves with effective power of 60 or less have 1.5x power; the threshold is 80 on Factory Field. Same-type moves have 1.3x power. Moves bypass Substitute, Reflect, Light Screen, Aurora Veil, Safeguard and Mist. On entry, reveals opposing Illusions and alerts to an opposing super-effective or OHKO move. If no threat is found, Psychic Terrain grants +2 Sp. Atk.",
-"shortDesc":"Changes type before attacks; boosts weak/same-type moves; bypasses screens/Substitute; scouts threats.",
+"shortDesc":"Combines the listed abilities.",
 "rating":4.5,
 "flags":{},
 "isNonstandard":null
@@ -56140,7 +60636,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11253,
 "gen":9,
 "desc":"Infiltrator: moves bypass Substitute, Reflect, Light Screen, Aurora Veil, Safeguard and Mist. Mat Block can be used after the first turn, but shares the normal Protect-style consecutive-use failure counter. Grants no additional priority; Mat Block keeps its current local move priority.",
-"shortDesc":"Infiltrator; Mat Block works after turn one but uses the normal consecutive-protection failure counter.",
+"shortDesc":"Mat Block works after turn one but uses the normal consecutive-protection failure counter.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -56182,7 +60678,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11248,
 "gen":9,
 "desc":"Full Crumbling Shell: physical HP hits set Stealth Rock on the attacker's side if absent (an allied attacker instead selects the opposing side), except on Water Surface, Underwater, Murkwater Surface and Swamp. Additionally, the first opposing physical HP hit each stay deals half damage; if it survives it, adds one Spikes layer to the attacker's side.",
-"shortDesc":"Physical hits set Stealth Rock; first opposing physical HP hit each stay deals half damage and adds Spikes.",
+"shortDesc":"First opposing physical HP hit each stay deals half damage and adds Spikes.",
 "rating":2,
 "flags":{},
 "isNonstandard":null
@@ -56246,7 +60742,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":197,
 "gen":7,
 "desc":"If this Pokemon is a Minior, it changes to its Core forme if it has 1/2 or less of its maximum HP, and changes to Meteor Form if it has more than 1/2 its maximum HP. This check is done on switch-in and at the end of each turn. While in its Meteor Form, it cannot become affected by a non-volatile status condition or Yawn. This Pokemon also has Shell Armor, Self Repair, and Crumbling Shell's effects.",
-"shortDesc":"Shell Armor + Self Repair + Crumbling Shell; Form changes at 1/2 HP.",
+"shortDesc":"Form changes at 1/2 HP.",
 "rating":3,
 "flags":{
 "failroleplay":1,
@@ -56263,7 +60759,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10038,
 "gen":9,
 "desc":"Same-type moves have 1.3x power. Eligible slicing, pulse, bullet, horn, drill, and Arrow moves hit twice at 60% power, with an independent accuracy check for each hit. When combined with Sharpness, Mega Launcher, or Power Drill, the first hit receives that boost and the second hit deals 15% of the move's unboosted power. In Free-for-All, both hits use full power: the first hits the selected foe and the second targets another random living foe when possible. Existing multi-hit moves are not given an additional Dual Wield pair. Pulse and bullet moves have 1.5x power; their second paired hit has 15% unboosted power outside Free-for-All. Moves ignore redirection. Heals 1/16 max HP each turn. Foes take cycling Water damage of 1/16, 2/16, then 3/16 max HP; Water immunities block it, and type effectiveness scales it only in Free-for-All.",
-"shortDesc":"Stronger pulse/bullet moves; eligible moves hit twice; ignores redirection; heals and damages foes each turn.",
+"shortDesc":"Stronger pulse/bullet moves; eligible moves hit twice; heals and damages foes each turn.",
 "rating":4.5,
 "flags":{},
 "isNonstandard":null
@@ -56273,7 +60769,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11264,
 "gen":9,
 "desc":"Full Magnet Pull. Once per entry, the first Electric attack to damage a foe also attempts Heal Block on that foe for this turn and the following turn. Normal volatile-status protection applies; existing Heal Block is not shortened. Misses, protection and Substitute-only hits preserve the charge. No power boost.",
-"shortDesc":"Magnet Pull; first Electric attack damage each entry applies two-turn Heal Block.",
+"shortDesc":"First Electric attack damage each entry applies two-turn Heal Block.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -56283,7 +60779,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11268,
 "gen":9,
 "desc":"Full Soundproof + full local Anticipation. Immune to other Pokemon's sound moves. On entry, exposes opposing Illusion and checks for super-effective attacks or OHKO moves; if none trigger its warning, gains two Sp. Atk stages on Psychic Terrain, matching local Anticipation.",
-"shortDesc":"Soundproof + local Anticipation, including Illusion detection and its conditional Psychic Terrain boost.",
+"shortDesc":"Combines the listed abilities.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -56317,7 +60813,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10548,
 "gen":9,
 "desc":"Moves have 1.3x accuracy and ignore evasion boosts. Prevents opposing accuracy drops and reveals opposing Illusions on entry. Mirror Arena entry gives +1 accuracy and Laser Focus, once per activation. Electric moves ignore positive defensive stages against foes with lowered Speed.",
-"shortDesc":"1.3x accuracy; ignores evasion; no foe accuracy drops; Electric moves bypass boosts on slowed foes.",
+"shortDesc":"No foe accuracy drops; Electric moves bypass boosts on slowed foes.",
 "rating":3,
 "flags":{
 "breakable":1
@@ -56369,7 +60865,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10404,
 "gen":9,
 "desc":"Biting moves have 1.5x power. At turn end, if statused, affected by a listed ailment, negatively boosted or at half HP or less, has a 50% chance to heal 1/4 max HP, cure status, clear negative stages and remove Attract, confusion, Curse, Disable, Encore, Heal Block, Leech Seed, Nightmare, Perish Song, Taunt, Torment and Yawn. On Dragon's Den, activation is guaranteed but only cures status and heals, then raises its higher attacking stat by 1 and lowers both defenses by 1. Poison moves, including Poison Fang, are super effective against Poison- and Steel-type Pokemon. Poison Fang has 1.5x power. Biting moves bypass protection and have a 30% chance to badly poison the target. Whiplash: +1 accuracy on entry and 1.5x tail-move power. Its first tail hit against a foe each entry badly poisons that target, subject to normal status immunities. Retains Apex Venom, Dragon-type Poison Fang, +1 accuracy on entry and 1.5x tail power. Its first tail hit against a foe each entry also badly poisons it, subject to status immunities.",
-"shortDesc":"Bites have 1.5x power; 50% end-turn cure/reset and 1/4 heal; Dragon's Den changes the effect; Poison hits Poison/Steel; Poison Fang is 1.5x; bites bypass protection and badly poison 30%.",
+"shortDesc":"Bites bypass protection and badly poison 30%.",
 "rating":5,
 "flags":{
 "breakable":1
@@ -56401,7 +60897,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10435,
 "gen":9,
 "desc":"Airborne: immune to Ground attacks, Spikes, Toxic Spikes, Sticky Web and Arena Trap unless grounded. Thousand Arrows can still hit. Once per switch-in, its first Flying-type attack to damage a foe sets Tailwind on its side for 3 turns. If Tailwind is already active, its duration is refreshed to 3 turns. Keen Eye prevents opposing accuracy drops, ignores evasion boosts and reveals opposing Illusions on activation. Mirror Arena grants +1 accuracy and Laser Focus; shared accuracy entry rewards apply once.",
-"shortDesc":"Airborne; immune to Ground attacks unless grounded — first landed Flying attack each switch-in sets 3-turn Tailwind.",
+"shortDesc":"First landed Flying attack each switch-in sets 3-turn Tailwind.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -56413,7 +60909,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10407,
 "gen":9,
 "desc":"Prevents critical hits and takes 20% less attack damage. Gains +1 Defense on Fairy Tale or Dragon's Den entry and +2 Sp. Def when a foe lowers its stats. Prevents and cures confusion and blocks Intimidate's Attack drop. Moves have 1.3x power if no other active Pokemon has a move left to use that turn. Prevents sleep and Yawn for itself and allies, including Rest. Does not cure existing sleep.",
-"shortDesc":"No critical hits; 20% less damage; foe stat drops give +2 Sp. Def; No confusion or Intimidate Attack drop; 1.3x power when no other active Pokemon has a move left; Prevents sleep and Yawn for itself and allies.",
+"shortDesc":"Combines the listed abilities.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -56435,7 +60931,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11251,
 "gen":9,
 "desc":"Comatose + Thick Fat: always considered asleep for relevant moves and fields while able to act normally; cannot receive major status or Yawn. Fire and Ice attacks use half offensive power against it, and hail cannot damage it. Retains Comatose's suppression and ability-replacement restrictions.",
-"shortDesc":"Comatose + Thick Fat: always treated as asleep; immune to status; halves Fire/Ice attack power.",
+"shortDesc":"Combines the listed abilities.",
 "rating":4,
 "flags":{
 "failroleplay":1,
@@ -56462,7 +60958,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10429,
 "gen":9,
 "desc":"Other Pokemon cannot lower its stat stages. Gains +1 Attack and Sp. Atk on Volcanic entry. The first foe-caused stat drop it prevents each switch-in also raises its Sp. Atk by one stage.",
-"shortDesc":"Prevents foe stat drops; the first blocked drop each entry gives +1 Sp. Atk.",
+"shortDesc":"First blocked opposing stat drop each entry raises Sp. Atk by 1.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -56496,7 +60992,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10461,
 "gen":9,
 "desc":"Incoming Fire and Ice attacks use half the attacker's offensive stat. Immune to hail damage. Contact attackers have a 30% chance of frostbite. Heals 1/16 max HP each turn in hail or snow, or on Icy, Snowy Mountain and Cold Eclipse without those weathers; hail on Cold Eclipse heals 1/8 instead. Contact moves have 1.3x power.",
-"shortDesc":"Half Fire/Ice attacking stats; immune to hail damage; 30% contact frostbite; heals in icy weather/fields; no hail damage; Contact moves have 1.3x power.",
+"shortDesc":"Immune to hail damage; no hail damage; Contact moves have 1.3x power.",
 "rating":3.5,
 "flags":{},
 "isNonstandard":null
@@ -56516,7 +61012,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10159,
 "gen":9,
 "desc":"Absorbs wind moves for +1 Sp. Atk. Gains +1 Sp. Atk when Tailwind starts on its side or it enters during Tailwind. Strong Winds gives +1 Sp. Atk each turn, plus +1 Attack on Mountain or Snowy Mountain. Heals 1/16 max HP each turn. Immune to sandstorm and hail damage.",
-"shortDesc":"Absorbs wind; Tailwind/Strong Winds raise Sp. Atk; Heals 1/16 HP each turn; immune to sandstorm and hail damage.",
+"shortDesc":"Absorbs wind; Tailwind/Strong Winds raise Sp. Atk; immune to sandstorm and hail damage.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -56546,7 +61042,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10387,
 "gen":9,
 "desc":"Eligible single-target damaging moves hit three times; existing multi-hit moves, spread moves outside Free-for-All, charging moves, delayed attacks, Z/Max moves and moves barred from extra hits are excluded. The second and third hits deal 30% damage and retarget the foe's ally if the first target fainted. In Free-for-All battles, single-target moves hit all foes once at 1.3x power; spread moves hit all foes three times, with later hits at 30% power, and full-power spread moves stay full power. Moves have 1.2x power on Dragon's Den. On entry, creates Grassy Terrain for 5 turns, or 8 with Amplifield Rock, subject to field and Aura rules. In effective sun, Sp. Atk is 1.5x and it loses 1/8 max HP each turn. Cold Eclipse disables both effects. Once per entry, finishing a turn in effective sun stores one bud. The next Grass attack dealing HP damage to a foe consumes it to cure status and restore 1/8 max HP. Once per entry, finishing a turn in effective sun stores a bud; the next Grass attack dealing opposing HP damage consumes it to cure status and heal 1/8 max HP. Solar Power's HP cost and field effects remain. No Self Repair.",
-"shortDesc":"Damaging moves hit 3x; hits 2/3 at 30%; FFA singles hit all foes at 1.3x; Creates Grassy Terrain on entry; Sun: 1.5x Sp. Atk, loses 1/8 HP per turn; disabled on Cold Eclipse; Once/entry: sun stores a bud.",
+"shortDesc":"FFA singles hit all foes at 1.3x; Creates Grassy Terrain on entry; disabled on Cold Eclipse.",
 "rating":5,
 "flags":{},
 "isNonstandard":null
@@ -56590,7 +61086,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10405,
 "gen":9,
 "desc":"Doubles Speed in sandstorm or on Desert and Ashen Beach. Immune to sandstorm damage. Doubles Speed in sun or Stage 4 Flower Garden.",
-"shortDesc":"Double Speed in sand or sandy fields; no sand damage; Double Speed in sun or Stage 4 Flower Garden.",
+"shortDesc":"No sand damage; Double Speed in sun or Stage 4 Flower Garden.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -56600,7 +61096,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11273,
 "gen":9,
 "desc":"Full Chlorophyll, including the Flower Garden stage-four Speed boost. While sunlight is effective, damaging Electric attacks remove opposing Reflect, Light Screen and Aurora Veil before damage using normal screen-breaking rules. Does not bypass Protect or immunities, and grants no extra damage multiplier.",
-"shortDesc":"Chlorophyll; in effective sun, Electric attacks break opposing screens before damage.",
+"shortDesc":"In effective sun, Electric attacks break opposing screens before damage.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -56610,7 +61106,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11258,
 "gen":9,
 "desc":"It has Thick Fat and is immune to sandstorm and hail damage. It can use Belch without eating a Berry and automatically gains one Stockpile each turn. After reaching 3 Stockpiles, it waits one full turn before randomly choosing Belch or Spit Up with equal odds, then can release every other turn. Its established Spit Up and Swallow combinations still apply. Direct Poison-type attacks heal it for 1/3 of actual opposing HP damage, capped at 1/8 of its max HP per turn across all hits and targets. Native draining moves do not receive additional healing. Does not drain substitutes, allies, or delayed attacks; normal healing prevention and Liquid Ooze apply. Draining moves, Leech Seed and Strength Sap damage their user by the HP they would restore. This damage doubles on Murkwater Surface and Wasteland. Poison attacks heal 1/3 of actual damage dealt to foes, capped at 1/8 max HP per turn; draining moves used on it hurt the user instead.",
-"shortDesc":"Fire/Ice protection; automatic Stockpiles/releases; Poison drain; draining moves hurt their user.",
+"shortDesc":"Automatic Stockpiles/releases; Poison drain; draining moves hurt their user.",
 "rating":4.5,
 "flags":{},
 "isNonstandard":null
@@ -56632,7 +61128,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11200,
 "gen":9,
 "desc":"Allies take 25% less attack damage; this does not protect the holder. Protects itself and allies from Attract, Disable, Encore, Heal Block, Taunt and Torment. Other allies take 25% less attack damage; this does not reduce the holder's damage taken. The holder and its allies are protected from Attract, Disable, Encore, Heal Block, Taunt, and Torment.",
-"shortDesc":"Allies take 25% less attack damage; Team protection from attraction and move restrictions — Other allies take 25% less attack damage. Holder and allies have Aroma Veil protection.",
+"shortDesc":"Combines the listed abilities.",
 "rating":3.5,
 "flags":{
 "breakable":1
@@ -56644,7 +61140,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11239,
 "gen":9,
 "desc":"Steelworker: Steel attacks gain STAB and 1.5x Attack or Sp. Atk (2x on Factory); on Short-Circuit they also become Electric-type. Immune to Poison attacks; resists Normal, Flying, Rock, Bug, Steel, Grass, Psychic, Ice, Dragon and Fairy attacks. A foe successfully trapped by its Anchor Shot loses 1/16 maximum HP each turn end; the holder heals by actual damage dealt. Only one tether per holder; a new tether replaces the old, and either Pokemon leaving ends it. Trap immunity, escape, indirect-damage immunity, suppression and healing restrictions apply.",
-"shortDesc":"Steelworker; its Anchor Shot tethers one trapped foe, draining 1/16 HP each turn.",
+"shortDesc":"Its Anchor Shot tethers one trapped foe, draining 1/16 HP each turn.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -56654,7 +61150,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11259,
 "gen":9,
 "desc":"Direct Fire/Ghost attacks heal 1/3 of actual opposing HP damage, capped at 1/6 max HP per turn, and block surviving targets' healing through the following turn. Switching clears the block; repeated hits refresh it. Native draining moves, substitutes, allies, residual and delayed damage do not grant this drain. Once per turn, a Ghost hit on an already-burned surviving foe also attempts -1 Sp. Def. At turn end, heals 1/8 max HP if any foe actually took burn damage; this is separate from the drain cap. Once per actual entry, the first executed opposing damaging move targeting it grants +1 Sp. Atk after the entire move if it survives and remains active, even after misses, protection or immunity. This use is spent at +6 and is not reset by ability changes or suppression; switching resets it. Contact attackers have a 30% burn chance (60% on Volcanic). Absorbs Fire for a 1.5x Fire boost; Burning or grounded Volcanic also grants the boost. On Cold Eclipse, Fire absorption and contact burns stop, and entry gives +2 Defense and Sp. Def total. Normal healing blockers and drain interactions apply; suppression disables these effects.",
-"shortDesc":"Fire/Ghost drain and healing block; burn-based healing; one entry Sp. Atk boost; Fire absorption/contact burns.",
+"shortDesc":"Combines the listed abilities.",
 "rating":5,
 "flags":{
 "breakable":1
@@ -56722,7 +61218,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10029,
 "gen":9,
 "desc":"Traps adjacent foes, subject to Ghost-type and Shed Shell escape. Takes 25% less attack damage from other Pokemon. Redirects Fire and Ghost moves and absorbs them and Will-O-Wisp for +1 Attack and Sp. Atk. Fire attacks bypass abilities, type immunities and resistances; Ghost attacks are neutral against non-Normal types but cannot hit Normal. Immune to sandstorm and hail damage. Haunted entry reveals foe items. Haunted and Cold Eclipse entry give +1 Defense and Sp. Def. Haunted, Burning, Volcanic and Bewitched Woods give +1 Attack and Sp. Atk each turn. Contact attackers have a 30% burn chance, or 60% on Volcanic. On Cold Eclipse, gains +1 Defense and Sp. Def on entry instead and cannot burn through contact.",
-"shortDesc":"Traps foes; 25% less damage; absorbs Fire/Ghost for attacking boosts; contact burns and field bonuses.",
+"shortDesc":"25% less damage; absorbs Fire/Ghost for attacking boosts; contact burns and field bonuses.",
 "rating":5,
 "flags":{
 "breakable":1
@@ -56798,7 +61294,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10206,
 "gen":9,
 "desc":"Mold Breaker: moves ignore bypassable opposing abilities. Same-type attack bonus becomes 2x instead of 1.5x, or 2.25x instead of an existing 2x bonus. Airborne: immune to Ground attacks, Spikes, Toxic Spikes, Sticky Web and Arena Trap unless grounded. Thousand Arrows can still hit. Eligible slicing, pulse, bullet, horn, drill, and Arrow moves hit twice at 60% power, with an independent accuracy check for each hit. When combined with Sharpness, Mega Launcher, or Power Drill, the first hit receives that boost and the second hit deals 15% of the move's unboosted power. In Free-for-All, both hits use full power: the first hits the selected foe and the second targets another random living foe when possible. Existing multi-hit moves are not given an additional Dual Wield pair. Moves bypass Substitute, Reflect, Light Screen, Aurora Veil, Safeguard and Mist. Blocks secondary effects of other Pokemon's attacks that affect it; effects on the attacker still work. Damaging moves pierce protection at half power. Normal-priority moves act first in Trick Room without gaining priority. Ignores field Speed penalties and takes 20% less attack damage. Twineedle has double power.",
-"shortDesc":"Mold Breaker; stronger STAB; airborne; Dual Wield; bypasses screens/Substitute; 20% less damage.",
+"shortDesc":"Combines the listed abilities.",
 "rating":5,
 "flags":{},
 "isNonstandard":null
@@ -56808,7 +61304,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11243,
 "gen":9,
 "desc":"Damaging hits have separate 10% chances to inflict sleep, paralysis or poison on the attacker; powder immunity blocks this. If Sleep Clause blocks sleep, a further roll can inflict paralysis or poison instead. Contact attacks deal 0.75x damage; non-contact physical attacks are unaffected.",
-"shortDesc":"Damaging attackers may sleep, be paralyzed or poisoned — takes 25% less damage from contact attacks.",
+"shortDesc":"Takes 25% less damage from contact attacks.",
 "rating":2,
 "flags":{},
 "isNonstandard":null
@@ -56818,7 +61314,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10430,
 "gen":9,
 "desc":"Doubles Defense. Once per switch-in, surviving the first damaging physical move from a foe raises its Attack by one stage.",
-"shortDesc":"Double Defense; surviving the first foe physical move each entry gives +1 Attack.",
+"shortDesc":"Surviving the first opposing physical move each entry gives +1 Attack.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -56830,7 +61326,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11293,
 "gen":9,
 "desc":"Full Screen Cleaner removes screens from both sides on entry. When its Rapid Spin successfully removes at least one hazard, clears only its negative Defense and Sp. Def stages; positive stages remain.",
-"shortDesc":"Screen Cleaner; removing hazards with Rapid Spin clears its negative Defense and Sp. Def.",
+"shortDesc":"Removing hazards with Rapid Spin clears its negative Defense and Sp. Def.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -56917,7 +61413,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11303,
 "gen":9,
 "desc":"Full Static: contact attackers have a 30% paralysis chance, or 60% on Electric Terrain and Short-Circuit. Once per entry, successfully causing paralysis with Static grants Charge. Failed status attempts do not spend the use.",
-"shortDesc":"Static; its first successful Static paralysis each entry grants Charge.",
+"shortDesc":"Its first successful Static paralysis each entry grants Charge.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -57011,7 +61507,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10266,
 "gen":9,
 "desc":"Suppresses weather effects while active. On Rainbow Field, gains one random non-maxed stat stage other than evasion each turn. Prevents indirect damage; HP costs, Pain Split, confusion and Struggle recoil still apply. Fairy Tale entry gives +1 Sp. Def. When attacking, ignores the target's Defense, Sp. Def and evasion stages. When defending, ignores the attacker's Attack, Defense, Sp. Atk and accuracy stages. Reveals opposing Illusions on entry.",
-"shortDesc":"Suppresses weather; Rainbow gives a random stat boost each turn; Prevents indirect damage; Fairy Tale entry gives +1 Sp. Def; Ignores opposing combat/accuracy stages; reveals Illusions.",
+"shortDesc":"Combines the listed abilities.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -57023,7 +61519,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11275,
 "gen":9,
 "desc":"Full Gluttony. Consuming a Berry clears its negative Attack stages, preserving positive Attack and other stages.",
-"shortDesc":"Gluttony; eating a Berry clears its negative Attack stages.",
+"shortDesc":"Eating a Berry clears its negative Attack stages.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -57033,7 +61529,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10464,
 "gen":9,
 "desc":"Prevents OHKO moves. At full HP, survives an otherwise fatal attack hit with 1 HP. When Sturdy saves it from a direct hit, it sets one layer of Spikes on the opposing side.",
-"shortDesc":"Survives a hit at full HP; immune to OHKO moves.",
+"shortDesc":"When Sturdy saves it, sets one Spikes layer on the opposing side.",
 "rating":3,
 "flags":{
 "breakable":1
@@ -57045,7 +61541,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11092,
 "gen":9,
 "desc":"When another Pokemon would lower its stat stages, those stat drops are reflected onto that Pokemon instead. It also takes 20% less damage from attacks. On entry, summons rain for 5 turns, or 8 with Damp Rock. Airborne: immune to Ground attacks and grounded hazards unless grounded. Move KOs raise its highest stat by 1, ignoring stat stages when choosing the stat. Starts rain, reflects opposing stat drops, reduces attack damage by 20%, is airborne, and boosts its best stat after a move KO. Retains Mirror Armor field effects, including +1 Defense and Sp. Def on Fairy Tale entry.",
-"shortDesc":"Reflects opposing stat drops; takes 0.8x damage from attacks; Summons rain on entry; Airborne; move KOs raise its highest stat.",
+"shortDesc":"Takes 0.8x damage from attacks; Summons rain on entry; move KOs raise its highest stat.",
 "rating":5,
 "flags":{
 "breakable":1
@@ -57057,7 +61553,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10392,
 "gen":9,
 "desc":"On entry, summons rain for 5 turns, or 8 with Damp Rock. Sound moves become Water-type, or Ice-type on Icy Field, and have 1.2x power. Once per entry, the first resisted sound attack dealing opposing HP damage marks one foe after the attack. The next sound attack against that foe, through the end of the next turn, consumes the mark on attempt and treats resistance as neutral. Does not bypass immunity. Switching clears the mark. Spread attacks mark only their eligible primary foe, otherwise the first eligible foe in side order. Sound moves become Water-type (Ice on Icy Field) and gain 1.2x power. Once per entry a resisted sound attack dealing opposing HP damage marks one foe; the next sound attack against it through next turn consumes the mark on attempt and ignores resistance, not immunity. Target switching clears the mark.",
-"shortDesc":"Summons rain on entry; Sound moves: Water (Ice on Icy Field), 1.2x power; Once/entry: resisted sound hit marks one foe; next sound attempt ignores its resistance.",
+"shortDesc":"Combines the listed abilities.",
 "rating":5,
 "flags":{
 "breakable":1
@@ -57069,7 +61565,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10156,
 "gen":9,
 "desc":"On entry, creates Electric Terrain or Electric Aura for 5 turns, or 8 with Amplifield Rock, subject to field rules. Airborne: immune to Ground attacks and grounded hazards unless grounded. Move KOs raise its highest stat by 1, ignoring stat stages when choosing the stat. Doubles Speed in rain or on Water Surface, Murkwater Surface, Underwater and Midnight Zone. Coil also gives +1 Sp. Atk.",
-"shortDesc":"Summons Electric aura; KOs boost highest stat; double Speed in rain/water fields; Coil also gives +1 Sp. Atk.",
+"shortDesc":"Combines the listed abilities.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -57091,7 +61587,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10107,
 "gen":9,
 "desc":"On entry, lowers adjacent foes' Attack by 1. Substitute and Intimidate protections still apply. If Rain Dance or Primordial Sea is active, its Special Attack is multiplied by 1.5 and it loses 1/8 of its max HP at turn end. Redirects single-target Electric moves to itself and absorbs Electric moves for +1 Attack and Sp. Atk. Electric Terrain entry also grants both boosts. On entry, lowers adjacent foes' Attack by 1 stage. Draws in and absorbs Electric moves, raising Attack and Special Attack by 1 stage; Electric Terrain also grants these boosts on entry. In rain, Special Attack is multiplied by 1.5, but it loses 1/8 of its max HP each turn.",
-"shortDesc":"Entry lowers adjacent foes' Attack by 1; In rain, 1.5x Sp. Atk and loses 1/8 max HP each turn; Redirects/absorbs Electric for +1 Attack and Sp. Atk.",
+"shortDesc":"Combines the listed abilities.",
 "rating":4.5,
 "flags":{
 "breakable":1
@@ -57113,7 +61609,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11144,
 "gen":9,
 "desc":"Sound moves become Water-type, or Ice-type on Icy Field, and have 1.2x power. On entry, summons rain for 5 turns, or 8 with Damp Rock. Immune to other Pokemon's sound moves.",
-"shortDesc":"Sound moves: Water (Ice on Icy Field), 1.2x power; Summons rain on entry; Immune to others' sound moves.",
+"shortDesc":"Combines the listed abilities.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -57135,7 +61631,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10119,
 "gen":9,
 "desc":"On entry, lowers all active foes' Attack by 1. Damaging moves ignore bypassable abilities. At turn end, if statused, affected by a listed ailment, negatively boosted or at half HP or less, has a 50% chance to heal 1/4 max HP, cure status, clear negative stages and remove Attract, confusion, Curse, Disable, Encore, Heal Block, Leech Seed, Nightmare, Perish Song, Taunt, Torment and Yawn. On Dragon's Den, activation is guaranteed but only cures status and heals, then raises its higher attacking stat by 1 and lowers both defenses by 1. On Scrafty with Shed Skin or Street Tyrant, recovery is 1/8 max HP in both ordinary conditions and Dragon's Den; other users and composites retain 1/4.",
-"shortDesc":"Entry lowers foes' Attack; attacks ignore abilities; end-turn status cure, stat reset and healing chance. Mega Scrafty heals 1/8.",
+"shortDesc":"End-turn status cure and stat reset can restore HP; Mega form heals 1/8.",
 "rating":4.5,
 "flags":{
 "breakable":1
@@ -57221,7 +61717,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11267,
 "gen":9,
 "desc":"Full local Flash Fire, including its Fire power boost and field effects. Absorbing a Fire attack additionally heals 1/8 maximum HP at most once per turn, subject to healing restrictions. Cold Eclipse retains Flash Fire's entry Defense/Sp. Def boosts and disables Fire absorption, so no absorption heal occurs there. Field-granted Flash Fire boosts do not trigger healing.",
-"shortDesc":"Flash Fire; absorbing a Fire attack also heals 1/8 HP once per turn.",
+"shortDesc":"Absorbing a Fire attack also heals 1/8 HP once per turn.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -57233,7 +61729,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10039,
 "gen":9,
 "desc":"Mold Breaker: moves ignore bypassable opposing abilities. Summons sun for 8 turns on entry. Eligible Normal moves become Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Dragon moves receive STAB. Prevents freezing outside Cold Eclipse and cures existing freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den blocks Fire moves. On Dragon's Den, Volcanic or Cold Eclipse entry, gains +1 Defense and Sp. Def. Same-type moves have 1.3x power. Immune to hail damage. At turn end, deals Fire-type damage to foes equal to 1/16 max HP, doubled if the foe is burned or the holder used a Fire or Dragon move that turn. Fire immunities block this damage; type effectiveness scales it only in Free-for-All. Heals 1/16 max HP at turn end.",
-"shortDesc":"Mold Breaker; 8-turn sun, stronger Dragon moves, healing and Fire chip.",
+"shortDesc":"Summons 8-turn sunlight on entry.",
 "rating":4.5,
 "flags":{
 "breakable":1
@@ -57255,7 +61751,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":306,
 "gen":9,
 "desc":"On switch-in, this Pokemon lowers the evasiveness of adjacent opposing Pokemon by 1 stage every time it switches in. This Pokemon has Sticky Hold. When this Pokemon is hit by an attack, the attacker is Embargoed for 5 turns.",
-"shortDesc":"Sticky Hold; On switch-in, lowers adjacent foes' evasiveness 1 stage; attackers are Embargoed for 5 turns.",
+"shortDesc":"On switch-in, lowers adjacent foes' evasiveness 1 stage; attackers are Embargoed for 5 turns.",
 "rating":1.5,
 "flags":{},
 "isNonstandard":null
@@ -57275,7 +61771,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11288,
 "gen":9,
 "desc":"Full Inner Focus prevents flinching and Intimidate Attack drops. Ground attacks ignore the target's positive Defense stages only when Defense is the stat used for damage. Does not ignore positive Sp. Def, abilities or screens, or change attack category.",
-"shortDesc":"Inner Focus; Ground attacks ignore positive Defense stages when using Defense for damage.",
+"shortDesc":"Ground attacks ignore positive Defense stages when using Defense for damage.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -57327,7 +61823,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10424,
 "gen":9,
 "desc":"When it has 1/3 or less of its max HP, rounded down, its offensive stat is multiplied by 1.5 while using a Bug-type attack. Once per switch-in, knocking out a foe with a Bug-type move that does not switch the user out raises its Speed by one stage. U-turn and other pivot moves cannot trigger the Speed boost.",
-"shortDesc":"At 1/3 or less of its max HP, its offensive stat is 1.5x with Bug attacks — first non-pivot Bug-move KO each switch-in raises Speed by 1.",
+"shortDesc":"First non-pivot Bug-move KO each switch-in raises Speed by 1.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -57337,7 +61833,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10061,
 "gen":9,
 "desc":"Attack is 1.5x, but physical moves have 0.8x accuracy. Berries normally eaten at 1/4 HP activate at 1/2 HP instead. Prevents sleep and Yawn for itself and allies, including Rest. Does not cure existing sleep. Can poison Poison and Steel types; Poison moves bypass Steel immunity. Newly poisoned foes lose 1 Defense and Sp. Def. On Wasteland, move secondary effects become separate 2.5% frostbite, burn, paralysis and poison chances. On Corrosive and Corrosive Mist, incoming damage is multiplied by 1.5.",
-"shortDesc":"1.5x Attack; 0.8x physical accuracy; Low-HP Berries activate at half HP; Prevents sleep and Yawn for itself and allies; Poison bypasses type immunity; poisoned foes lose defenses.",
+"shortDesc":"Combines the listed abilities.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -57361,7 +61857,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10059,
 "gen":9,
 "desc":"Allies take 25% less attack damage. Its side is protected from sleep, Yawn, attraction, Disable, Encore, Heal Block, Taunt and Torment. Prevents and cures poison for itself and allies. Before a foe uses a Poison move, lowers that foe's Attack and Sp. Atk by 1. Its own and allies' Poison attacks deal half damage on Misty and Rainbow. On Fairy Tale, gains +1 Sp. Def on entry and whenever a Pokemon enters. On Bewitched Woods, its Fairy typing adds no weakness.",
-"shortDesc":"Protects its side from sleep, poison and disruptive effects; allies take 25% less damage; weakens Poison attackers.",
+"shortDesc":"Combines the listed abilities.",
 "rating":3.5,
 "flags":{
 "breakable":1
@@ -57385,7 +61881,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11141,
 "gen":9,
 "desc":"Doubles Speed in rain or on Water Surface, Murkwater Surface, Underwater and Midnight Zone. Drill and horn moves have 1.5x power, or 2x on Rocky, Mountain, Snowy Mountain, Cave and Volcanic, where they also bypass protection. Heals 1/16 max HP each turn in effective rain.",
-"shortDesc":"Double Speed in rain and water fields; Drill/horn moves have 1.5x power; 2x and pierce protection on rocky fields; Heals 1/16 HP each turn in rain.",
+"shortDesc":"Combines the listed abilities.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -57521,7 +62017,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11205,
 "gen":9,
 "desc":"Airborne: immune to Ground attacks and grounded hazards unless grounded. Move KOs raise its highest stat by 1, ignoring stat stages when choosing the stat. Once per entry, Heal Bell actually curing at least one status also resets only the user's negative Special Defense stages. No additional healing.",
-"shortDesc":"Airborne; move KOs boost highest stat; once per entry, Heal Bell curing status clears negative Sp. Def.",
+"shortDesc":"Move KOs boost highest stat; once per entry, Heal Bell curing status clears negative Sp. Def.",
 "rating":3.5,
 "flags":{
 "breakable":1
@@ -57616,7 +62112,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10356,
 "gen":9,
 "desc":"On entry, heals each adjacent ally by 1/4 of that ally's max HP. When attacking, ignores the target's Defense, Sp. Def and evasion stages. When defending, ignores the attacker's Attack, Defense, Sp. Atk and accuracy stages. Reveals opposing Illusions on entry. Same-type moves have 1.3x power.",
-"shortDesc":"Entry heals allies and reveals Illusions; ignores foe stat changes; 1.3x same-type power.",
+"shortDesc":"Same-type moves gain 1.3x power.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -57628,7 +62124,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10042,
 "gen":9,
 "desc":"Each opposing attack hit that damages HP heals 1/16 max HP. The first such hit each turn also raises Defense by 1, before later hits of a multi-hit move. Takes 20% less attack damage, or 40% less from super-effective attacks. Same-type moves have 1.3x power.",
-"shortDesc":"Opposing HP hits heal 1/16; +1 Defense once per turn; 20% less attack damage; 40% less if super effective; Same-type moves have 1.3x power.",
+"shortDesc":"Same-type moves gain 1.3x power.",
 "rating":3.5,
 "flags":{
 "breakable":1
@@ -57676,7 +62172,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10504,
 "gen":9,
 "desc":"Doubles Speed in rain or on Water Surface, Murkwater Surface, Underwater and Midnight Zone. Opponents with a lowered Speed stage cannot hit it or its allies with priority moves. Pairs with G-Max Foam Burst's existing Speed drops.",
-"shortDesc":"Double Speed in rain and water fields — foes with lowered Speed cannot use priority against its side.",
+"shortDesc":"Foes with lowered Speed cannot use priority against its side.",
 "rating":3,
 "flags":{},
 "isNonstandard":null
@@ -57708,7 +62204,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11123,
 "gen":9,
 "desc":"Absorbs other Pokemon's Water moves, healing 1/4 max HP instead of being hit. Heals 1/16 max HP each turn on Underwater, grounded on Water Surface, or grounded and Poison-type on Murkwater Surface. Cures major status at turn end in effective rain or on Water Surface, Underwater and Midnight Zone. Heals 1/16 max HP each turn in effective rain.",
-"shortDesc":"Absorbs Water for 1/4 HP; water-field healing; Cures status each turn in rain or water fields; Heals 1/16 HP each turn in rain.",
+"shortDesc":"Combines the listed abilities.",
 "rating":5,
 "flags":{
 "breakable":1
@@ -57730,7 +62226,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10502,
 "gen":9,
 "desc":"Other Pokemon cannot lower its Attack. Crabhammer and physical Steel-type moves use its Defense instead of Attack when its Defense is higher.",
-"shortDesc":"Other Pokemon cannot lower its Attack.",
+"shortDesc":"Crabhammer and physical Steel moves use Defense when higher than Attack.",
 "rating":1.5,
 "flags":{
 "breakable":1
@@ -57762,7 +62258,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10403,
 "gen":9,
 "desc":"On entry, it becomes poisoned if it has no status, even if it is Steel-type. Poison damage instead heals 1/8 max HP. Also heals 1/8 each turn on Corrosive Mist and Murkwater Surface, or while grounded on Corrosive and Wasteland. Eligible slicing, pulse, bullet, horn, drill, and Arrow moves hit twice at 60% power, with an independent accuracy check for each hit. When combined with Sharpness, Mega Launcher, or Power Drill, the first hit receives that boost and the second hit deals 15% of the move's unboosted power. In Free-for-All, both hits use full power: the first hits the selected foe and the second targets another random living foe when possible. Existing multi-hit moves are not given an additional Dual Wield pair. While it has a major status, its physical damage is multiplied by 1.3. Metal Claw has 1.5x power. On its first active turn, its Speed is 1.5x and its Attack is 1.2x.",
-"shortDesc":"Poison heals; eligible moves hit twice; stronger physical moves with status; first-turn Attack/Speed boosts.",
+"shortDesc":"Combines the listed abilities.",
 "rating":5,
 "flags":{
 "breakable":1
@@ -57826,7 +62322,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10047,
 "gen":9,
 "desc":"Mold Breaker: moves ignore bypassable opposing abilities. Can poison Poison and Steel types; Poison moves bypass Steel immunity. Newly poisoned foes lose 1 Defense and Sp. Def. On Wasteland, move secondary effects become separate 2.5% frostbite, burn, paralysis and poison chances. On Corrosive and Corrosive Mist, incoming damage is multiplied by 1.5. Eligible slicing, pulse, bullet, horn, drill, and Arrow moves hit twice at 60% power, with an independent accuracy check for each hit. When combined with Sharpness, Mega Launcher, or Power Drill, the first hit receives that boost and the second hit deals 15% of the move's unboosted power. In Free-for-All, both hits use full power: the first hits the selected foe and the second targets another random living foe when possible. Existing multi-hit moves are not given an additional Dual Wield pair. Blocks secondary effects of other Pokemon's attacks that affect it; effects on the attacker still work. Airborne: immune to Ground attacks, Spikes, Toxic Spikes, Sticky Web and Arena Trap unless grounded. Thousand Arrows can still hit. Poisoned foes may be confused, attackers may be poisoned, and Ground moves do not affect the holder. Once per turn, successfully poisoning a foe with its own move or poison retaliation restores 1/8 of its maximum HP.",
-"shortDesc":"Mold Breaker; Corrosion + Dual Wield + Shield Dust + Levitate; own poison heals 1/8 HP once/turn.",
+"shortDesc":"Own poison heals 1/8 HP once/turn.",
 "rating":3,
 "flags":{
 "breakable":1
@@ -57848,7 +62344,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10556,
 "gen":9,
 "desc":"Poison damage instead heals 1/8 max HP. Also heals 1/8 each turn on Corrosive Mist and Murkwater Surface, or while grounded on Corrosive and Wasteland. While poisoned or badly poisoned, Dragon moves cannot miss.",
-"shortDesc":"Poison heals 1/8 HP; healing on corrosive fields — Dragon moves cannot miss while poisoned.",
+"shortDesc":"Dragon moves cannot miss while poisoned.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -57868,7 +62364,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10371,
 "gen":9,
 "desc":"Damaging hits have separate 10% chances to inflict sleep, paralysis or poison on the attacker; powder immunity blocks this. If Sleep Clause blocks sleep, a further roll can inflict paralysis or poison instead. Healing received by it and its allies is multiplied by 1.3. At turn end, it has a 50% chance to cure each adjacent ally's status condition. It redirects and absorbs Poison-type moves, raising its Attack and Special Attack by 1.",
-"shortDesc":"Damaging attackers may sleep, be paralyzed or poisoned; User/allies receive 1.3x healing; 50% to cure ally status each turn — absorbs Poison moves for +1 Atk/SpA.",
+"shortDesc":"Absorbs Poison moves for +1 Atk/SpA.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -57880,7 +62376,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10376,
 "gen":9,
 "desc":"Physical HP hits set one Toxic Spikes layer on the attacker's side, up to two; allied attacks use the opposing side. Contact attackers also lose 1/6 max HP. Can poison Poison and Steel types; Poison moves bypass Steel immunity. Newly poisoned foes lose 1 Defense and Sp. Def. On Wasteland, move secondary effects become separate 2.5% frostbite, burn, paralysis and poison chances. On Corrosive and Corrosive Mist, incoming damage is multiplied by 1.5. Attacks always critically hit poisoned targets and on Corrosive, Corrosive Mist, Murkwater Surface and Wasteland, unless critical hits are blocked. On Chessboard, gains one critical-hit stage per 20% of the target's missing base max HP, up to three.",
-"shortDesc":"Physical hits set Toxic Spikes; contact attackers lose 1/6 HP; Poison bypasses type immunity; poisoned foes lose defenses; Critical hits against poisoned foes or on corrosive fields.",
+"shortDesc":"Combines the listed abilities.",
 "rating":5,
 "flags":{},
 "isNonstandard":null
@@ -57915,7 +62411,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11255,
 "gen":9,
 "desc":"Frisk: removes opposing Illusions, reveals their held items, and each revealed item holder has a 30% chance of Embargo. While it remains active with its ability functioning, opposing moves cannot switch their user out. Damage, stat changes and other move effects still occur. Manual switching, forced switching and item-triggered switches remain allowed. If it faints, leaves or loses its ability before the move finishes, the pivot succeeds. No lingering mark.",
-"shortDesc":"Reveals items/Illusions; item holders may receive Embargo; opposing moves cannot pivot while it stays active.",
+"shortDesc":"Opposing moves cannot pivot while it stays active.",
 "rating":1.5,
 "flags":{},
 "isNonstandard":null
@@ -57935,7 +62431,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10053,
 "gen":9,
 "desc":"Doubles weight and halves physical attack damage. Factory entry gives +1 Defense and -1 Speed. On entry, lowers adjacent foes' Attack by 1. Substitute and Intimidate protections still apply. Takes 25% less super-effective attack damage. Absorbs Ground moves from other Pokemon and heals 1/4 max HP. Copperajah-Gmax's weight-based moves have at least 120 power.",
-"shortDesc":"Double weight; half physical damage; lowers foes' Attack; absorbs Ground; 25% less super-effective damage.",
+"shortDesc":"Lowers foes' Attack; absorbs Ground; 25% less super-effective damage.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -57947,7 +62443,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10017,
 "gen":9,
 "desc":"Immune to Ground moves. Its Bug-type attacks receive STAB. Damaging sound moves used by it or its allies have 1.5x power; its sound moves use its higher offensive stat, and allies are protected from allied sound moves. In Sandstorm, Desert Terrain, or Ashen Beach Terrain, its Rock-, Ground-, and Steel-type attacks have 1.3x power. It is immune to sandstorm damage.",
-"shortDesc":"Airborne; Bug STAB; stronger allied sound moves; stronger Rock/Ground/Steel moves in sand fields.",
+"shortDesc":"Bug STAB; stronger allied sound moves; stronger Rock/Ground/Steel moves in sand fields.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -57967,7 +62463,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10300,
 "gen":9,
 "desc":"Hydra Bond + Tangled Feet + Keen Eye + Big Pecks + Limber. Eligible single-target attacks hit three times, with later hits at 30% damage. Existing multihit, charging, delayed, Z/Max and extra-hit-barred moves are excluded; spread moves are excluded outside Free-for-All. In Free-for-All, single-target attacks hit all foes once at 1.3x power; eligible spread attacks hit three times. Dragon's Den gives 1.2x power. Confusion halves incoming accuracy and adds one critical-hit stage. Mirror Arena or Big Top entry gives +1 evasion; Mirror Arena also gives +1 accuracy and Laser Focus. Reveals opposing Illusions, ignores evasion, and prevents other Pokemon's accuracy and Defense drops. Prevents and cures paralysis; blocks opposing and field Speed reductions. Self-inflicted Speed costs and item slowdowns still apply.",
-"shortDesc":"Three-hit attacks; confusion boosts evasion/crit rate. No paralysis or opposing/field Speed drops; Keen Eye + Big Pecks.",
+"shortDesc":"Combines the listed abilities.",
 "rating":5,
 "flags":{},
 "isNonstandard":null
@@ -57997,7 +62493,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10413,
 "gen":9,
 "desc":"Eligible single-target damaging moves hit three times; existing multi-hit moves, spread moves outside Free-for-All, charging moves, delayed attacks, Z/Max moves and moves barred from extra hits are excluded. The second and third hits deal 30% damage and retarget the foe's ally if the first target fainted. In Free-for-All battles, single-target moves hit all foes once at 1.3x power; spread moves hit all foes three times, with later hits at 30% power, and full-power spread moves stay full power. Moves have 1.2x power on Dragon's Den. Heals 1/3 max HP on switching out. At turn end, if statused, affected by a listed ailment, negatively boosted or at half HP or less, has a 50% chance to heal 1/4 max HP, cure status, clear negative stages and remove Attract, confusion, Curse, Disable, Encore, Heal Block, Leech Seed, Nightmare, Perish Song, Taunt, Torment and Yawn. On Dragon's Den, activation is guaranteed but only cures status and heals, then raises its higher attacking stat by 1 and lowers both defenses by 1. Heals 1/16 max HP each turn. Immune to sandstorm and hail damage. Eligible damaging moves hit three times, with the second and third hits at 30% damage. It heals 1/3 of its max HP on switching out, may shed status and other ailments at the end of a turn, heals 1/16 of its max HP each turn, and is immune to Sandstorm and Hail damage.",
-"shortDesc":"Damaging moves hit 3x; hits 2/3 at 30%; FFA singles hit all foes at 1.3x; Heals 1/3 HP on switching out; 50% end-turn cure/reset and 1/4 heal; Dragon's Den changes the effect; Heals 1/16 HP each turn.",
+"shortDesc":"Combines the listed abilities.",
 "rating":4.5,
 "flags":{
 "breakable":1
@@ -58009,7 +62505,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10582,
 "gen":9,
 "desc":"Prevents and cures attraction and Taunt. Blocks Captivate and Intimidate's Attack drop. Landing a Ground attack on a foe removes Spikes, Toxic Spikes and Sticky Web from its own side. Ground immunity, Protect and Substitute prevent this activation. Stealth Rock remains.",
-"shortDesc":"No attraction/Taunt, Captivate or Intimidate Attack drop — Ground hits remove Spikes, Toxic Spikes, and Sticky Web.",
+"shortDesc":"Ground hits remove Spikes, Toxic Spikes, and Sticky Web.",
 "rating":1.5,
 "flags":{
 "breakable":1
@@ -58021,7 +62517,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11300,
 "gen":9,
 "desc":"Full Hyper Cutter. Successful Rapid Spin damage removes opposing Reflect and Light Screen after damage, including when hitting Substitute. Does not remove Aurora Veil or other walls.",
-"shortDesc":"Hyper Cutter; damaging Rapid Spin removes opposing Reflect and Light Screen after damage.",
+"shortDesc":"Damaging Rapid Spin removes opposing Reflect and Light Screen after damage.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -58075,7 +62571,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11120,
 "gen":9,
 "desc":"On entry, summons sandstorm for 5 turns, or 8 with Smooth Rock. Prevents critical hits and takes 20% less attack damage. Its Rock typing adds no Fighting, Ground, Steel, Water or Grass weakness. Immune to sandstorm and hail damage. Gains +1 Defense and Sp. Def when a foe lowers its stats, and on entry on Desert, Fairy Tale, Cave, Crystal Cavern, New World or Volcanic. Each fainted ally adds 10% move damage; in Free-for-All, allies count twice. At 2+ fallen allies it gains Infiltrator; 4+, flinch immunity from Inner Focus; 5+, indirect-damage immunity and a one-time +1 Attack and Sp. Atk. It does not block stat drops. Heals 1/16 max HP each turn. On fainting, creates Dragon's Den for 5 turns. Effective fallen count is capped at 5 after Free-for-All doubling, for a maximum 1.5x Supreme Overlord power multiplier; unlocks at 2/4/5 are unchanged.",
-"shortDesc":"Summons sand; Rock/critical-hit protection; 20% less damage; fallen allies boost power; heals each turn. Supreme Overlord caps at 5 effective faints (1.5x power).",
+"shortDesc":"Combines the listed abilities.",
 "rating":5,
 "flags":{},
 "isNonstandard":null
@@ -58085,7 +62581,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10184,
 "gen":9,
 "desc":"Recoil and crash moves, Explosion, Self-Destruct and Misty Explosion have 1.2x power; Struggle is excluded. On Chessboard, all moves gain a further 1.2x power. Prevents move recoil except Struggle. Crash and Life Orb damage still apply. On entry, summons sandstorm for 5 turns, or 8 with Smooth Rock. Biting moves have 1.5x power.",
-"shortDesc":"Summons sandstorm; stronger recoil/crash/explosion and biting moves; no move recoil except Struggle.",
+"shortDesc":"Biting moves have 1.5x power.",
 "rating":4.5,
 "flags":{
 "breakable":1
@@ -58107,7 +62603,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10013,
 "gen":9,
 "desc":"Moves ignore bypassable opposing abilities. Prevents flinching and Intimidate's Attack drop. Attacks deal 2x damage through screens or 1.5x damage when the target has yet to move or has just switched in. On Ashen Beach, New World, Starlight Arena, or Cold Eclipse, it gains 1 Accuracy on entry, deals 1.5x damage, and takes 50% less damage. Otherwise it takes 70% less damage if the attacker has not yet moved. Bewitched Woods, Haunted, and Holy Field suppress these effects.",
-"shortDesc":"Moves ignore bypassable abilities; Cannot flinch; blocks Intimidate — screen and timing boosts; field defenses.",
+"shortDesc":"Screen and timing boosts; field defenses.",
 "rating":3,
 "flags":{},
 "isNonstandard":null
@@ -58129,7 +62625,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10139,
 "gen":9,
 "desc":"Eligible Normal moves become Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Dragon moves receive STAB. Prevents freezing outside Cold Eclipse and cures existing freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den blocks Fire moves. On Dragon's Den, Volcanic or Cold Eclipse entry, gains +1 Defense and Sp. Def. Same-type moves have 1.3x power. Immune to hail damage. At turn end, deals Fire-type damage to foes equal to 1/16 max HP, doubled if the foe is burned or the holder used a Fire or Dragon move that turn. Fire immunities block this damage; type effectiveness scales it only in Free-for-All.",
-"shortDesc":"Stronger Dragon/same-type moves; Fire absorption; Water/Ice protection; end-turn Fire damage to foes.",
+"shortDesc":"Same-type moves gain 1.3x power; deals Fire damage to foes each turn, doubled after Fire/Dragon moves or against burns.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -58151,7 +62647,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10112,
 "gen":9,
 "desc":"Normal and Fighting moves bypass type immunity. Kicking moves have 1.4x power. Prevents and cures paralysis. Other Pokemon and field effects cannot lower its Speed; self-inflicted costs and item slowdowns still apply. Does not alter Trick Room or prevent removing Speed boosts or Tailwind. Copies foes' positive stat changes after moves, entries, transformations and at turn end.",
-"shortDesc":"Normal/Fighting hit Ghosts; 1.4x kicks; copies foe boosts; no paralysis or opposing Speed drops.",
+"shortDesc":"Combines the listed abilities.",
 "rating":4.5,
 "flags":{
 "breakable":1
@@ -58175,7 +62671,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10287,
 "gen":9,
 "desc":"Ultra Ego + Levitate + Raging Storm. Airborne unless grounded. Damaging hits from foes raise Attack and Sp. Atk once until it uses an attack; heals 1/16 max HP on that hit and 1/20 on further hits. Dealing attack damage heals 1/16 once per turn. Ashen Beach, New World, Starlight Arena, Cold Eclipse and Fairy Tale add once-per-entry Defense/Sp. Def boosts for physical/special hits and a one-use 1/4-HP pinch heal. Royal Decree or Empress enables 1.3x power (except against Battle Bond) and 0.7x incoming damage unless Neutralization is active. Bewitched Woods, Haunted and Holy fields disable Ultra Ego effects. Raging Storm bypasses abilities, screens, Substitute and defensive stat stages; +1 critical-hit ratio. Attack KOs splash 60% of the recorded hit damage onto remaining foes, or grant +1 Attack if no splash damage is dealt. Battle Armor prevents critical hits, gives 0.8x incoming damage, +2 Defense after opposing stat drops, and +1 Defense on Fairy Tale entry. Incoming priority damage is further halved. Immune to hail; cannot be suppressed.",
-"shortDesc":"Ultra Ego boosts/healing; airborne; bypasses defenses; KO splash; armor.",
+"shortDesc":"Combines the listed abilities.",
 "rating":5,
 "flags":{
 "cantsuppress":1
@@ -58197,7 +62693,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10339,
 "gen":9,
 "desc":"On its first active turn, its Speed is 1.5x and its Attack is 1.2x. Absorbs wind moves for +1 Attack. Gains +1 Attack when Tailwind starts on its side or it enters during Tailwind. Strong Winds gives +1 Attack each turn, plus +1 Sp. Atk on Mountain or Snowy Mountain.",
-"shortDesc":"First active turn: 1.5x Spe and 1.2x Atk; Absorbs wind; Tailwind/Strong Winds raise Attack.",
+"shortDesc":"First active turn: 1.5x Spe and 1.2x Atk; Tailwind/Strong Winds raise Attack.",
 "rating":5,
 "flags":{
 "breakable":1
@@ -58209,7 +62705,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10364,
 "gen":9,
 "desc":"Critical-hit and Competitive effects; no Unburden. Stat drops can raise Special Attack, but item use or loss no longer doubles Speed.",
-"shortDesc":"Critical-hit and Competitive effects; no Unburden.",
+"shortDesc":"Combines the listed abilities.",
 "rating":5,
 "flags":{
 "failroleplay":1,
@@ -58252,7 +62748,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10587,
 "gen":9,
 "desc":"Each opposing attack hit that damages HP heals 1/16 max HP. The first such hit each turn also raises Defense by 1, before later hits of a multi-hit move. While its Defense stage is positive, opponents cannot force it to switch. Normal switching and stat resets still work.",
-"shortDesc":"HP hits heal 1/16 and give +1 Defense once per turn; raised Defense blocks opposing forced switching.",
+"shortDesc":"Raised Defense prevents opposing forced switching.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -58272,7 +62768,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10122,
 "gen":9,
 "desc":"On entry, lowers adjacent foes' Attack by 1. Substitute and Intimidate protections still apply. Extreme Speed has 1.5x power and becomes Fire when its matchup is better, including against Normal immunity. Direct single-target opposing HP damage grants one 50% guard against the next damaging hit from that opponent that turn. After a successful attack, lethal damage can trigger a once-per-battle final stand: all direct and residual damage leaves at least 1 HP for the rest of that turn. Does not prevent non-damage faint effects. No extra critical-hit reward, permanent indirect immunity or stat-drop protection.",
-"shortDesc":"Entry lowers adjacent foes' Attack by 1 — enhanced Extreme Speed; one-foe guard and once-per-battle final stand.",
+"shortDesc":"Enhanced Extreme Speed; single-foe protection and a once-battle final stand.",
 "rating":4.5,
 "flags":{
 "breakable":1
@@ -58294,7 +62790,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11238,
 "gen":9,
 "desc":"Status moves gain +1 priority. Opposing Dark types block these moves except on Bewitched Woods. Other Pokemon cannot remove its item while it survives. Sticky Barb can still transfer. While active, opposing moves cannot remove this side's Reflect, Light Screen or Aurora Veil. Normal expiration and damage bypass still work; applicable Mold Breaker effects bypass the protection.",
-"shortDesc":"Status moves gain +1 priority; Dark foes usually block them; Protects its item while it survives — protects this side's screens from opposing removal.",
+"shortDesc":"Protects this side's screens from opposing removal.",
 "rating":1.5,
 "flags":{
 "breakable":1
@@ -58306,7 +62802,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10160,
 "gen":9,
 "desc":"The first damaging hit it takes raises its Attack by 1 stage. A critical hit raises its Attack by 12 stages. The first otherwise lethal attack has a 50% chance to leave it at 1 HP. This Ability rolls only once per battle, even if the roll fails or it switches out. Heals 1/16 max HP each turn. Immune to sandstorm and hail damage.",
-"shortDesc":"First damaging hit: +1 Attack; critical hits: +12 Attack; 50% chance to survive the first lethal attack at 1 HP; one roll per battle; Heals 1/16 HP each turn; immune to sandstorm and hail damage.",
+"shortDesc":"Critical hits: +12 Attack; one roll per battle; immune to sandstorm and hail damage.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -58316,7 +62812,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10154,
 "gen":9,
 "desc":"On entry, it becomes poisoned if it has no status, even if it is Steel-type. Poison damage instead heals 1/8 max HP. Also heals 1/8 each turn on Corrosive Mist and Murkwater Surface, or while grounded on Corrosive and Wasteland. Eligible slicing, pulse, bullet, horn, drill, and Arrow moves hit twice at 60% power, with an independent accuracy check for each hit. When combined with Sharpness, Mega Launcher, or Power Drill, the first hit receives that boost and the second hit deals 15% of the move's unboosted power. In Free-for-All, both hits use full power: the first hits the selected foe and the second targets another random living foe when possible. Existing multi-hit moves are not given an additional Dual Wield pair. While it has a major status, its physical damage is multiplied by 1.3. Metal Claw has 1.5x power.",
-"shortDesc":"Poisons itself; poison heals; eligible moves hit twice; 1.3x physical damage with status; stronger Metal Claw.",
+"shortDesc":"Poisons itself; status gives physical moves 1.3x power; boosts Metal Claw.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -58348,7 +62844,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10367,
 "gen":9,
 "desc":"Other Pokemon cannot lower its Attack. Poison damage instead heals 1/8 max HP. Also heals 1/8 each turn on Corrosive Mist and Murkwater Surface, or while grounded on Corrosive and Wasteland. Contact attackers have a 30% poison chance, or 60% on Wasteland. Its Poison-type moves have 1.5x STAB.",
-"shortDesc":"Other Pokemon cannot lower its Attack; Poison heals 1/8 HP; healing on corrosive fields; 30% contact poison; 60% on Wasteland — Poison moves get 1.5x STAB.",
+"shortDesc":"Poison moves get 1.5x STAB.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -58390,7 +62886,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10030,
 "gen":9,
 "desc":"Same-type moves have 1.3x power. Eligible slicing, pulse, bullet, horn, drill, and Arrow moves hit twice at 60% power, with an independent accuracy check for each hit. When combined with Sharpness, Mega Launcher, or Power Drill, the first hit receives that boost and the second hit deals 15% of the move's unboosted power. In Free-for-All, both hits use full power: the first hits the selected foe and the second targets another random living foe when possible. Existing multi-hit moves are not given an additional Dual Wield pair. Heals 1/3 max HP on switching out. Prevents and cures paralysis. Other Pokemon and field effects cannot lower its Speed; self-inflicted costs and item slowdowns still apply. Does not alter Trick Room or prevent removing Speed boosts or Tailwind. Redirects single-target Electric moves to itself and absorbs Electric moves for +1 Attack and Sp. Atk. Electric Terrain entry also grants both boosts.",
-"shortDesc":"1.3x same-type power; eligible moves hit twice; switching heals; absorbs Electric; no paralysis or foe Speed drops.",
+"shortDesc":"Combines the listed abilities.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -58402,7 +62898,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11127,
 "gen":9,
 "desc":"Doubles Speed in sun or Stage 4 Flower Garden. Slicing moves have 1.5x power, except on Cold Eclipse. Defense is 1.5x on Grassy and Forest fields. On Corrosive, loses 1/8 max HP each turn unless Poison- or Steel-type.",
-"shortDesc":"Double Speed in sun or Stage 4 Flower Garden; Slicing moves have 1.5x power except on Cold Eclipse; 1.5x Defense on Grassy/Forest; Corrosive damages non-Poison/Steel.",
+"shortDesc":"Combines the listed abilities.",
 "rating":5,
 "flags":{
 "breakable":1
@@ -58473,6 +62969,18 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "flags":{},
 "isNonstandard":null
 },
+"vitalsigns":{
+"name":"Vital Signs",
+"num":11315,
+"gen":9,
+"desc":"Includes Invigorate: healing received by the holder and its allies is multiplied by 1.3, each adjacent ally has a 50% chance to have its major status cured at turn end, and Safeguard lasts 5 turns. After an opposing damaging move finishes, each active teammate, including the holder, that lost HP to that move, survived, and is at half HP or less is healed by 1/4 max HP and cured of major status. Invigorate normally increases this healing to 32.5%. Each recipient can receive this emergency treatment only once per battle, even after switching, changing abilities or being revived. Healing obeys normal restrictions; the allowance is spent only if healing or curing succeeds. Allied, residual and Substitute-only damage do not trigger it.",
+"shortDesc":"Heals and cures each teammate once when an attack leaves it at half HP or less.",
+"rating":4.5,
+"flags":{
+"breakable":1
+},
+"isNonstandard":null
+},
 "vitalspirit":{
 "name":"Vital Spirit",
 "num":72,
@@ -58485,12 +62993,24 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 },
 "isNonstandard":null
 },
+"voidcommand":{
+"name":"Void Command",
+"num":10045,
+"gen":9,
+"desc":"Insomnia + Super Luck. Takes 20% less attack damage from other Pokemon. Each move KO raises its higher attacking stat by 1, choosing Attack on a tie. Once per battle, successfully executing any Z-Move also grants this boost after the move, including status Z-Moves. A Z-Move KO receives the ordinary per-KO boost without an additional Z-use boost. Damaging Z-Moves that deal reduced damage through Protect count; misses, immunity and failed base moves do not. A status Z bonus alone does not count when its base move fails.",
+"shortDesc":"20% less attack damage; KOs boost higher offense. First successful Z-Move also boosts it, without doubling a KO reward.",
+"rating":4,
+"flags":{
+"breakable":1
+},
+"isNonstandard":null
+},
 "voidcraft":{
 "name":"Voidcraft",
 "num":10121,
 "gen":9,
 "desc":"Airborne. Takes 20% less attack damage at any HP, or 40% less from super-effective attacks. These reductions cannot be bypassed by ability-ignoring moves; its other protections can. Cannot sleep or be affected by Yawn, and foes cannot lower its stats. Dark and Ghost attacks have 1.3x power. Move KOs raise its highest stat by 1. Starting on Mega Evolution, queues a 120 BP Ghost Future Sight every other turn; each strikes two turns later. Immune to hail damage on Cold Eclipse. Ability suppression disables these effects.",
-"shortDesc":"Airborne; 20% less attack damage (40% if super effective); no sleep/stat drops; recurring Ghost Future Sight.",
+"shortDesc":"20% less attack damage (40% if super effective); no sleep/stat drops; recurring Ghost Future Sight.",
 "rating":4,
 "flags":{
 "breakable":1,
@@ -58498,16 +63018,132 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 },
 "isNonstandard":null
 },
+"voidcrossing":{
+"name":"Void Crossing",
+"num":11314,
+"gen":9,
+"desc":"Levitate + Magic Guard. Its first executed damaging Ghost move or Power Gem each entry bypasses opposing screens and Substitute. Misses, protection and immunity still spend the bypass; being prevented from acting does not. Switching restores the use. Includes the components’ normal effects and field interactions.",
+"shortDesc":"Its first Ghost attack or Power Gem bypasses screens and Substitute.",
+"rating":4,
+"flags":{},
+"isNonstandard":null
+},
+"voiddrift":{
+"name":"Void Drift",
+"num":11255,
+"gen":9,
+"desc":"Levitate + Overcoat. Restores 1/16 of its base maximum HP each turn during sand. While airborne on effective New World, its special Ground moves ignore its negative Sp. Atk stages for damage calculation. Positive stages and other modifiers remain; its actual stages are unchanged.",
+"shortDesc":"On New World, its special Ground moves ignore lowered Sp. Atk while airborne.",
+"rating":4,
+"flags":{
+"breakable":1
+},
+"isNonstandard":null
+},
+"voidguile":{
+"name":"Void Guile",
+"num":11256,
+"gen":9,
+"desc":"Magician + Infiltrator, including all local field effects, entry boosts and normal item-theft rules. Its moves bypass opposing screens, Substitute and Safeguard as usual for Infiltrator.",
+"shortDesc":"Combines the listed abilities.",
+"rating":4,
+"flags":{},
+"isNonstandard":null
+},
+"voidhex":{
+"name":"Void Hex",
+"num":10410,
+"gen":9,
+"desc":"Prankster + Cursed Body. Any directly executed damaging move that deals opposing HP damage traps each surviving target through the following turn. Called and spread attacks qualify. Repeated hits refresh the same-source trap to two turns without stacking duration; another source cannot steal a live trap. The trap deals no damage and ends when its source leaves or faints. Ghost types, Shed Shell and normal pivot escapes remain valid. Substitute, immunity, protection, delayed attacks and residual damage do not trigger it.",
+"shortDesc":"Direct damaging hits trap surviving foes through the next turn; further hits refresh the trap.",
+"rating":5,
+"flags":{},
+"isNonstandard":null
+},
+"voidomen":{
+"name":"Void Omen",
+"num":10283,
+"gen":9,
+"desc":"Mold Breaker + Friend Guard + Serene Grace. Once per entry, actually applying a move secondary effect creates a ward that blocks the next opposing stat-drop event against the holder or an adjacent active ally. Positive changes and self-inflicted drops remain. The ward lasts until used or the holder leaves; further secondary effects do not refresh the spent entry reward.",
+"shortDesc":"First applied secondary each entry wards the holder or an ally against one opposing stat-drop event.",
+"rating":4.5,
+"flags":{},
+"isNonstandard":null
+},
+"voidpromise":{
+"name":"Void Promise",
+"num":11254,
+"gen":9,
+"desc":"Unaware. Its Wish clears the eventual recipient’s negative stat stages when it resolves, even after the user switches out. Successful Moonlight healing also clears the holder’s negative stages. Positive stages are preserved; Moonlight that restores no HP grants no cleanup.",
+"shortDesc":"Wish clears its recipient’s negative stages; actual Moonlight healing clears its own.",
+"rating":4,
+"flags":{
+"breakable":1
+},
+"isNonstandard":null
+},
+"voidreprisal":{
+"name":"Void Reprisal",
+"num":11283,
+"gen":9,
+"desc":"Guts. Surviving opposing HP damage or actual burn residual HP damage stores one punch charge. Its next damaging punch ignores positive stages of the defense used for that hit, without changing category or defensive-stat choice. Successful punch damage spends the charge; misses and blocked attacks preserve it. Charges do not stack and switching clears them. Applying burn without HP damage does not charge it.",
+"shortDesc":"Surviving foe hits or burn damage charges a punch to ignore positive defensive stages.",
+"rating":4,
+"flags":{},
+"isNonstandard":null
+},
+"voidsanctum":{
+"name":"Void Sanctum",
+"num":11244,
+"gen":9,
+"desc":"Snow Warning. While its side has Aurora Veil, blocks opposing stat drops for itself and active allies; self-inflicted drops remain. Once per battle, its first switch-out with an active Aurora Veil extends that existing Veil by one turn. Normal switching and Eject Button qualify; fainting does not. Adds no entry cleanse or extra damage reduction.",
+"shortDesc":"Aurora Veil blocks foe stat drops for its side; first exit under Veil extends it 1 turn, once per battle.",
+"rating":4,
+"flags":{},
+"isNonstandard":null
+},
+"voidtyrant":{
+"name":"Void Tyrant",
+"num":10179,
+"gen":9,
+"desc":"Eligible single-target damaging moves hit three times; existing multi-hit moves, spread moves outside Free-for-All, charging moves, delayed attacks, Z/Max moves and moves barred from extra hits are excluded. The second and third hits deal 30% damage and retarget the foe's ally if the first target fainted. In Free-for-All battles, single-target moves hit all foes once at 1.3x power; spread moves hit all foes three times, with later hits at 30% power, and full-power spread moves stay full power. Moves have 1.2x power on Dragon's Den. When an attack takes it from above half HP to half or less, gains +1 Attack and Sp. Atk after the move. Dragon's Den entry gives +2 Attack and Sp. Atk. Once per battle, after Draco Meteor applies its Sp. Atk drops, restores all negative stat stages to zero after the entire attack finishes. Positive stages remain. No Self Sufficient healing or immunity.",
+"shortDesc":"Once per battle, Draco Meteor clears its negative stages before White Herb is needed.",
+"rating":5,
+"flags":{},
+"isNonstandard":null
+},
 "voidveil":{
 "name":"Void Veil",
 "num":10167,
 "gen":9,
 "desc":"Airborne: immune to Ground attacks, Spikes, Toxic Spikes, Sticky Web and Arena Trap unless grounded. Thousand Arrows can still hit. Prevents indirect damage; HP costs, Pain Split, confusion and Struggle recoil still apply. Fairy Tale entry gives +1 Sp. Def. Prevents and cures sleep, blocks Yawn, and gives Dark and Ghost attacks 1.3x power. Immune to Ground moves, indirect damage, sleep, and Yawn; Dark- and Ghost-type moves have 1.3x power. In Fairy Tale, raises Sp. Def by 1 on entry. Its first Dark- or Ghost-type attack each switch-in bypasses Substitute and screens. It does not heal or shelter allies. Ordinary Gardevoir with this ability ignores only New World's airborne Defense and Sp. Def penalties; other users do not. Gravity still grounds it, and other field effects remain.",
-"shortDesc":"Levitate + Magic Guard + Insomnia; first Dark/Ghost hit bypasses barriers; Gardevoir ignores New World defense penalties.",
+"shortDesc":"First Dark/Ghost hit bypasses barriers; Gardevoir ignores New World defense penalties.",
 "rating":4,
 "flags":{
 "breakable":1
 },
+"isNonstandard":null
+},
+"voidvoice":{
+"name":"Void Voice",
+"num":10113,
+"gen":9,
+"desc":"Eligible Normal moves become Fairy and have 1.2x power, or 1.5x on Misty Terrain. Excludes moves whose type is set by their own effect, damaging Z-Moves and Terastallized Tera Blast. Blocks opposing priority moves aimed at it or its allies. Attacks deal 1.5x damage on Fairy Tale, or on Chessboard unless it has the Queen role. Retains Telepathy, including avoiding allied damaging moves and doubled Speed in Psychic Terrain or Psychic Aura. At turn end, it and its active allies each heal 1/16 max HP. Once per switch-in, if an opposing move would knock out an ally, that ally survives at 1 HP and it loses 1/4 max HP, provided it has more HP than the cost.",
+"shortDesc":"Normal moves become Fairy; blocks foe priority; heals allies and can save one.",
+"rating":5,
+"flags":{
+"breakable":1
+},
+"isNonstandard":null
+},
+"voidwrath":{
+"name":"Void Wrath",
+"num":11257,
+"gen":9,
+"desc":"Mold Breaker. Outrage does not lock this Pokemon into successive turns or cause rampage confusion. Choice items retain their normal move lock. Other moves retain their normal behavior.",
+"shortDesc":"Outrage lasts one turn and does not cause confusion.",
+"rating":4,
+"flags":{},
 "isNonstandard":null
 },
 "voltabsorb":{
@@ -58557,7 +63193,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10125,
 "gen":9,
 "desc":"Mold Breaker: moves ignore bypassable opposing abilities. It is immune to powder moves, hail damage, sandstorm damage, and flinching. Its moves have 1.3x accuracy and damaging moves have 1.3x power. Its Attack is 1.5x while statused; burn still reduces its physical damage normally. It takes 25% less damage from attacks. Its Rock-, Fighting-, and Ground-type moves and drill or horn moves bypass screens and Substitute and ignore defensive stat stages. When attacking, it ignores the target's Defense, Sp. Def, and evasion stages; when defending, it ignores the attacker's Attack, Sp. Atk, and accuracy stages.",
-"shortDesc":"Mold Breaker; Powder/weather/flinch immunity; accuracy/power 1.3x; status Atk 1.5x; attacks deal 25% less; stage/bypass effects.",
+"shortDesc":"Powder/weather/flinch immunity; accuracy/power 1.3x; status Atk 1.5x; attacks deal 25% less; stage/bypass effects.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -58567,7 +63203,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10055,
 "gen":9,
 "desc":"Doubles Speed in rain or on Water Surface, Murkwater Surface, Underwater and Midnight Zone. Takes 20% less attack damage, or 40% less from super-effective attacks. Biting moves have 1.5x power.",
-"shortDesc":"Double Speed in rain and water fields; 20% less attack damage; 40% less if super effective; Bites have 1.5x power.",
+"shortDesc":"Double Speed in rain and water fields; 40% less if super effective; Bites have 1.5x power.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -58613,7 +63249,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":199,
 "gen":7,
 "desc":"This Pokemon's offensive stat is doubled while using Water attacks. Fire attacks against it use half the attacker's offensive stat. It also has Water Veil's effects. Does not grant Water STAB; natural STAB is unchanged.",
-"shortDesc":"Water Veil; doubles Water attacking stats; halves incoming Fire attacking stats.",
+"shortDesc":"Doubles Water attacking stats; halves incoming Fire attacking stats.",
 "rating":4.5,
 "flags":{
 "breakable":1
@@ -58696,24 +63332,12 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 },
 "isNonstandard":null
 },
-"wickedcommand":{
-"name":"Wicked Command",
-"num":10045,
-"gen":9,
-"desc":"Prevents and cures sleep, blocks Yawn, and gains +1 critical-hit stage. Takes 20% less attack damage from other Pokemon. A move KO boosts its higher attacking stat by 1, choosing Attack on a tie.",
-"shortDesc":"No sleep/Yawn; +1 critical-hit stage; 20% less damage; KOs boost higher attacking stat.",
-"rating":4,
-"flags":{
-"breakable":1
-},
-"isNonstandard":null
-},
 "wickedsnare":{
 "name":"Wicked Snare",
 "num":10044,
 "gen":9,
 "desc":"Attacks use double the offensive stat against targets that entered this turn. Contact attackers lose 1 Speed stage. Status moves gain +1 priority. Opposing Dark types block these moves except on Bewitched Woods.",
-"shortDesc":"Double attacking stats against newly entered targets; Contact attackers lose 1 Speed; Status moves gain +1 priority; Dark foes usually block them.",
+"shortDesc":"Combines the listed abilities.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -58725,7 +63349,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11237,
 "gen":9,
 "desc":"Status moves gain +1 priority. Opposing Dark types block these moves except on Bewitched Woods. A successful status move readies the next contact attack to lower a foe's Speed by 1 after actual HP damage. The charge does not stack, is consumed by a qualifying hit, and expires at the end of the following turn.",
-"shortDesc":"Status moves gain +1 priority; Dark foes usually block them — successful status moves ready a contact-hit Speed drop through the next turn.",
+"shortDesc":"Successful status moves ready a contact-hit Speed drop through the next turn.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -58757,7 +63381,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10285,
 "gen":9,
 "desc":"Eligible Normal moves become Steel with 1.2x power, or 1.5x on Factory, Short-Circuit, Fairy Tale, Dragon's Den, Starlight Arena, New World and Holy Field. Sound moves have 1.3x power, or 1.5x on Big Top and Cave. Takes half damage from sound moves. Airborne: immune to Ground attacks, Spikes, Toxic Spikes, Sticky Web and Arena Trap unless grounded. Thousand Arrows can still hit.",
-"shortDesc":"Normal moves become Steel; boosted sound moves; half sound damage; airborne.",
+"shortDesc":"Normal moves become Steel; boosted sound moves; half sound damage.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -58809,7 +63433,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11312,
 "gen":9,
 "desc":"Full Inner Focus blocks flinching and Intimidate's Attack drop. Once per entry, successfully using Instruct on an active ally cures that ally's confusion before its ordinary repeated action. Failed Instruct and non-ally targets do not trigger or spend the use.",
-"shortDesc":"Inner Focus; first successful ally Instruct each entry cures confusion before the repeated action.",
+"shortDesc":"First successful ally Instruct each entry cures confusion before the repeated action.",
 "rating":3.5,
 "flags":{
 "breakable":1
@@ -58821,7 +63445,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10369,
 "gen":9,
 "desc":"Physical hits set Stealth Rock on the attacker's side except in water fields. It cures status and restores exactly 1/3 max HP when switching out, with no extra healing for curing status. If it is at full HP, it survives one hit with at least 1 HP, and OHKO moves fail.",
-"shortDesc":"Physical hits set Stealth Rock on the attacker's side except in water fields. It cures status and restores exactly 1/3 max HP when switching out, with no extra healing for curing status.",
+"shortDesc":"Switching out cures status and heals exactly 1/3 HP, with no additional cure bonus.",
 "rating":4.5,
 "flags":{},
 "isNonstandard":null
@@ -58831,7 +63455,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11230,
 "gen":9,
 "desc":"Contact hits have a 30% chance to poison the target. Shield Dust and Covert Cloak block this effect. Can poison Poison and Steel types; Poison moves bypass Steel immunity. Newly poisoned foes lose 1 Defense and Sp. Def. On Wasteland, move secondary effects become separate 2.5% frostbite, burn, paralysis and poison chances. On Corrosive and Corrosive Mist, incoming damage is multiplied by 1.5. Poison attacks that damage a foe already poisoned before that hit lower its Attack by 1, once per target per turn. Poison caused by that same hit does not qualify; Substitute-only and residual damage do not count.",
-"shortDesc":"Contact hits have a 30% poison chance; Poison bypasses type immunity; poisoned foes lose defenses — Poison HP hits on already-poisoned foes lower Attack once/turn.",
+"shortDesc":"Poison HP hits on already-poisoned foes lower Attack once/turn.",
 "rating":2.5,
 "flags":{},
 "isNonstandard":null
@@ -58893,7 +63517,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11140,
 "gen":9,
 "desc":"Prevents OHKO moves. At full HP, survives an otherwise fatal attack hit with 1 HP. Heals 1/16 max HP each turn. Immune to sandstorm and hail damage. When it is hit by a Physical attack, Stealth Rock is set on the attacker's side unless a water field is active or that side already has Stealth Rock.",
-"shortDesc":"Survives a hit at full HP; immune to OHKO moves; Heals 1/16 HP each turn; immune to sandstorm and hail damage; Physical hits set Stealth Rock, except in water fields.",
+"shortDesc":"Combines the listed abilities.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -58903,7 +63527,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11284,
 "gen":9,
 "desc":"Full local Iron Fist gives punching moves 1.4x power. Damaging punches remove opposing Reflect, Light Screen, Aurora Veil, Arenite Wall and Atlantis Wall before damage, under normal screen-breaking rules. Does not bypass protection, immunity or Substitute and grants no extra attacks.",
-"shortDesc":"Iron Fist; damaging punches break opposing screens and custom walls before damage.",
+"shortDesc":"Damaging punches break opposing screens and custom walls before damage.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -58913,7 +63537,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":11143,
 "gen":9,
 "desc":"Absorbs other Pokemon's Water moves, healing 1/4 max HP instead of being hit. Heals 1/16 max HP each turn on Underwater, grounded on Water Surface, or grounded and Poison-type on Murkwater Surface. When attacking, ignores the target's Defense, Sp. Def and evasion stages. When defending, ignores the attacker's Attack, Defense, Sp. Atk and accuracy stages. Reveals opposing Illusions on entry. Prevents Explosion, Self-Destruct, Mind Blown, Misty Explosion and Aftermath damage. Incoming Fire attacks use half the attacker's offensive stat. On Corrosive Mist, also prevents Eruption, Fire Pledge, Flame Burst, Heat Wave, Incinerate, Lava Plume, Searing Shot and Inferno Overdrive.",
-"shortDesc":"Absorbs Water for 1/4 HP; water-field healing; Ignores opposing combat/accuracy stages; reveals Illusions; Blocks explosions/Aftermath; halves incoming Fire attacking stats.",
+"shortDesc":"Water-field healing; reveals Illusions; halves incoming Fire attacking stats.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -59031,7 +63655,7 @@ hardyskin:['dryskin','vitalspirit','moxie'],
 joyride:['aerilate','violentrush','vitalspirit'],
 nighthunt:['strongjaw','infiltrator','intimidate'],
 rimeknuckle:['filter','ironfist','icebody'],
-royalvoice:['pixilate','queenlymajesty','dreamsickness'],
+voidvoice:['pixilate','queenlymajesty','dreamsickness'],
 aquashell:["waterveil","toughclaws","innerfocus"],
 
 sacredpower:['duskilate','insomnia','magicguard'],
@@ -59117,7 +63741,7 @@ toxicarmor:['venomarmor','violentrush'],
 corrosiveburn:['merciless','regenerator','corrosion'],
 curseddoll:['toughclaws','shadowshield'],
 voidveil:['levitate','magicguard','insomnia'],
-hexbound:['shadowtag','prankster'],
+voidhex:['shadowtag','prankster'],
 voidcraft:['elevate','shadowshield','temporalshift','insomnia'],
 sandsovereign:['dauntlessshield','solidrock'],
 alloycore:['magicguard','selfsufficient','stalwart'],
@@ -59130,7 +63754,7 @@ sweetdecay:['hustle','gluttony','sweetveil','corrosion'],
 sweetsanctuary:['friendguard','sweetveil','aromaveil','pastelveil'],
 heatcoil:['speedboost','magmaarmor','flamebody'],
 wickedsnare:['stakeout','tanglinghair','prankster'],
-wickedcommand:['insomnia','superluck'],
+voidcommand:['insomnia','superluck'],
 ancientbloom:['effectspore','pollenbloom','proficient'],
 fortressshell:['shellarmor','waterbarrage','proficient'],
 astralcore:['purepower','naturalcure','illuminate'],
@@ -59176,7 +63800,7 @@ punchfiend:['ironfist','innerfocus','unseenfist'],
 spinfiend:['technician','vitalspirit'],
 ultrainstinct:['moldbreaker','innerfocus'],
 hisuianpath:['sapsipper','innerfocus','fluffy'],
-hydratyrant:['hydrabond','berserk','selfsufficient'],
+voidtyrant:['hydrabond','berserk','selfsufficient'],
 blademastery:['sharpness','superluck'],
 goldentalons:['stalwart','goodasgold','sharpness'],
 
@@ -60144,7 +64768,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES,{
 "opportunist",
 "limber"],
 
-"royalvoice":[
+"voidvoice":[
 "pixilate",
 "queenlymajesty",
 "dreamsickness",
@@ -60181,7 +64805,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES,{
 "springfur":[
 "furcoat"],
 
-"hexbound":[
+"voidhex":[
 "shadowtag",
 "prankster"],
 
@@ -60190,7 +64814,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES,{
 "moldbreaker",
 "sniper"],
 
-"hydratyrant":[
+"voidtyrant":[
 "hydrabond",
 "berserk"],
 
@@ -60210,7 +64834,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES,{
 "cloudnine",
 "fluffy"],
 
-"guidingomen":[
+"voidomen":[
 "friendguard",
 "serenegrace"],
 
@@ -77714,9 +82338,6 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES,{
 "toughclaws",
 "innerfocus"],
 
-"arcanepilfer":[
-"magician"],
-
 "arenatrap":[],
 "argentdevotion":[
 "armorize",
@@ -77789,9 +82410,6 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES,{
 "waterabsorb",
 "icebody",
 "raindish"],
-
-"aurorasanctum":[
-"snowwarning"],
 
 "backwash":[],
 "baddreams":[],
@@ -78100,10 +82718,10 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES,{
 "dissonantchime":[],
 "dissonantecho":[],
 "divineintervention":[
-"swornduty",
-"friendguard",
+"vitalsigns",
+"triage",
 "regenerator",
-"fluffy"],
+"friendguard"],
 
 "divinemockery":[
 "hydrabond",
@@ -78246,9 +82864,6 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES,{
 "serenegrace",
 "naturalrecovery",
 "prankster"],
-
-"faultline":[
-"moldbreaker"],
 
 "festivalstep":[],
 "fightingfiend":[],
@@ -78397,9 +83012,6 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES,{
 "gritgrappler":[
 "guts"],
 
-"gritreprisal":[
-"guts"],
-
 "groundingtail":[],
 "guarddog":[],
 "guidinggallop":[
@@ -78408,11 +83020,6 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES,{
 "guidinglight":[
 "dazzling",
 "illuminate"],
-
-"guidingomen":[
-"friendguard",
-"serenegrace",
-"moldbreaker"],
 
 "gulpmissile":[],
 "guts":[],
@@ -78465,10 +83072,6 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES,{
 "herdshelter":[
 "soundproof"],
 
-"hexbound":[
-"prankster",
-"cursedbody"],
-
 "hiddenscroll":[],
 "highnoon":[
 "dualwield",
@@ -78510,10 +83113,6 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES,{
 "stamina"],
 
 "hydration":[],
-"hydratyrant":[
-"hydrabond",
-"berserk"],
-
 "hydraulicarmor":[
 "stamina"],
 
@@ -78732,9 +83331,6 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES,{
 "moonlithide":[
 "shadowshield",
 "magicguard"],
-
-"moonlitpromise":[
-"unaware"],
 
 "moonlitwings":[
 "serenegrace"],
@@ -79222,12 +83818,6 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES,{
 "unnerve",
 "flamebody"],
 
-"royalvoice":[
-"pixilate",
-"queenlymajesty",
-"dreamsickness",
-"telepathy"],
-
 "ruinjaw":[],
 "runaway":[],
 "sacredbond":[
@@ -79260,10 +83850,6 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES,{
 
 "sandforce":[],
 "sandrush":[],
-"sandshroud":[
-"levitate",
-"overcoat"],
-
 "sandsovereign":[
 "sandstream",
 "dauntlessshield",
@@ -79875,17 +84461,64 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES,{
 "victorystar":[],
 "violentrush":[],
 "vitalcircuit":[],
+"vitalsigns":[
+"invigorate"],
+
 "vitalspirit":[],
+"voidcommand":[],
 "voidcraft":[
 "elevate",
 "shadowshield",
 "temporalshift",
 "insomnia"],
 
+"voidcrossing":[
+"levitate",
+"magicguard"],
+
+"voiddrift":[
+"levitate",
+"overcoat"],
+
+"voidguile":[
+"magician",
+"infiltrator"],
+
+"voidhex":[
+"prankster",
+"cursedbody"],
+
+"voidomen":[
+"friendguard",
+"serenegrace",
+"moldbreaker"],
+
+"voidpromise":[
+"unaware"],
+
+"voidreprisal":[
+"guts"],
+
+"voidsanctum":[
+"snowwarning"],
+
+"voidtyrant":[
+"hydrabond",
+"berserk"],
+
 "voidveil":[
 "levitate",
 "magicguard",
 "insomnia"],
+
+"voidvoice":[
+"pixilate",
+"queenlymajesty",
+"dreamsickness",
+"telepathy"],
+
+"voidwrath":[
+"moldbreaker"],
 
 "voltabsorb":[],
 "voltagevolley":[],
@@ -79914,7 +84547,6 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES,{
 "wellbakedbody":[],
 "whiplash":[],
 "whitesmoke":[],
-"wickedcommand":[],
 "wickedsnare":[
 "stakeout",
 "tanglinghair",
@@ -83142,7 +87774,7 @@ return(window.BattleTypeChart||{}).hasOwnProperty(id);
 hasAbility=function hasAbility(species,ability){
 for(var i in species.abilities){
 
-if(toID(ability)===toID(species.abilities[i]))return true;
+if(this.abilities.get(ability).id===this.abilities.get(species.abilities[i]).id)return true;
 }
 return false;
 };_proto2.
@@ -83150,7 +87782,7 @@ return false;
 
 hasAbilityEffect=function hasAbilityEffect(species,ability){
 ensureCustomDataPatches();
-var effectId=toID(ability);
+var effectId=this.abilities.get(ability).id;
 if(!effectId)return false;
 for(var slot in species.abilities){
 
@@ -83158,6 +87790,15 @@ var abilityId=toID(species.abilities[slot]);
 if(this.getAbilityEffects(abilityId).has(effectId))return true;
 }
 return false;
+};_proto2.
+
+
+getAbilityDisplayComponents=function getAbilityDisplayComponents(abilityId){var dex=arguments.length>1&&arguments[1]!==undefined?arguments[1]:this;
+ensureCustomDataPatches();
+var ability=dex.abilities.get(abilityId);
+var base=this.abilities.get(ability.id);
+if(dex!==this&&(ability.desc!==base.desc||ability.shortDesc!==base.shortDesc))return[];
+return CUSTOM_ABILITY_DISPLAY_COMPONENTS[ability.id]||[];
 };_proto2.
 
 getAbilityEffects=function getAbilityEffects(abilityId){var _window$BattleAbiliti;var visiting=arguments.length>1&&arguments[1]!==undefined?arguments[1]:new Set();var dex=arguments.length>2&&arguments[2]!==undefined?arguments[2]:this;
@@ -84960,7 +89601,7 @@ var AUDITED_DESCRIPTION_COMPONENTS={
 "prankster",
 "psychicsurge"],
 
-"guidingomen":[
+"voidomen":[
 "friendguard",
 "serenegrace"],
 
@@ -85263,7 +89904,7 @@ var AUDITED_DESCRIPTION_COMPONENTS={
 "stakeout",
 "tanglinghair"],
 
-"wickedcommand":[
+"voidcommand":[
 "insomnia",
 "superluck"],
 
@@ -85379,7 +90020,7 @@ var AUDITED_DESCRIPTION_COMPONENTS={
 "scrappy",
 "striker"],
 
-"royalvoice":[
+"voidvoice":[
 "dreamsickness",
 "pixilate",
 "queenlymajesty"],
@@ -85457,12 +90098,7 @@ var AUDITED_DESCRIPTION_COMPONENTS={
 "moldbreaker",
 "shedskin"],
 
-"divineintervention":[
-"fluffy",
-"friendguard",
-"swornduty",
-"regenerator"],
-
+"divineintervention":["vitalsigns","triage","regenerator","friendguard"],
 "mountainhunger":[
 "earlybird",
 "sapsipper",
@@ -85781,7 +90417,7 @@ var AUDITED_DESCRIPTION_COMPONENTS={
 "sandstream",
 "skilllink"],
 
-"hydratyrant":[
+"voidtyrant":[
 "berserk",
 "hydrabond"],
 
@@ -86060,7 +90696,7 @@ var AUDITED_DESCRIPTION_COMPONENTS={
 "shadowshield"],
 
 "shadowtag":[],
-"hexbound":[
+"voidhex":[
 "cursedbody",
 "prankster"],
 
@@ -88459,7 +93095,8 @@ Species=
 
 
 
-function Species(id,name,data){this.effectType='Species';this.id=void 0;this.name=void 0;this.gen=void 0;this.exists=void 0;this.baseSpecies=void 0;this.forme=void 0;this.formeid=void 0;this.spriteid=void 0;this.standalone=void 0;this.baseForme=void 0;this.num=void 0;this.types=void 0;this.abilities=void 0;this.baseStats=void 0;this.bst=void 0;this.weightkg=void 0;this.heightm=void 0;this.gender=void 0;this.color=void 0;this.genderRatio=void 0;this.eggGroups=void 0;this.tags=void 0;this.otherFormes=void 0;this.cosmeticFormes=void 0;this.evos=void 0;this.prevo=void 0;this.evoType=void 0;this.evoLevel=void 0;this.evoMove=void 0;this.evoItem=void 0;this.evoCondition=void 0;this.requiredItems=void 0;this.requiredTeraType=void 0;this.tier=void 0;this.isTotem=void 0;this.isMega=void 0;this.isPrimal=void 0;this.canGigantamax=void 0;this.cannotDynamax=void 0;this.forceTeraType=void 0;this.battleOnly=void 0;this.isNonstandard=void 0;this.unreleasedHidden=void 0;this.changesFrom=void 0;
+
+function Species(id,name,data){this.effectType='Species';this.id=void 0;this.name=void 0;this.gen=void 0;this.exists=void 0;this.baseSpecies=void 0;this.forme=void 0;this.formeid=void 0;this.spriteid=void 0;this.standalone=void 0;this.baseForme=void 0;this.num=void 0;this.types=void 0;this.passives=void 0;this.abilities=void 0;this.baseStats=void 0;this.bst=void 0;this.weightkg=void 0;this.heightm=void 0;this.gender=void 0;this.color=void 0;this.genderRatio=void 0;this.eggGroups=void 0;this.tags=void 0;this.otherFormes=void 0;this.cosmeticFormes=void 0;this.evos=void 0;this.prevo=void 0;this.evoType=void 0;this.evoLevel=void 0;this.evoMove=void 0;this.evoItem=void 0;this.evoCondition=void 0;this.requiredItems=void 0;this.requiredTeraType=void 0;this.tier=void 0;this.isTotem=void 0;this.isMega=void 0;this.isPrimal=void 0;this.canGigantamax=void 0;this.cannotDynamax=void 0;this.forceTeraType=void 0;this.battleOnly=void 0;this.isNonstandard=void 0;this.unreleasedHidden=void 0;this.changesFrom=void 0;
 if(!data||typeof data!=='object')data={};
 if(data.name)name=data.name;
 this.name=Dex.sanitizeName(name);
@@ -88486,6 +93123,7 @@ this.standalone=!!data.standalone;
 this.num=data.num||0;
 this.types=data.types||['???'];
 this.abilities=data.abilities||{0:"No Ability"};
+this.passives=data.passives||[];
 this.baseStats=data.baseStats||{hp:0,atk:0,def:0,spa:0,spd:0,spe:0};
 this.bst=this.baseStats.hp+this.baseStats.atk+this.baseStats.def+
 this.baseStats.spa+this.baseStats.spd+this.baseStats.spe;

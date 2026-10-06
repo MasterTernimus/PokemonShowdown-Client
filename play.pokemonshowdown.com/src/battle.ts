@@ -981,6 +981,7 @@ export interface PokemonHealth {
 	fainted?: boolean;
 }
 export interface ServerPokemon extends PokemonDetails, PokemonHealth {
+	passives?: readonly string[];
 	ident: string;
 	details: string;
 	condition: string;

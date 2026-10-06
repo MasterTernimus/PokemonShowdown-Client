@@ -60,7 +60,7 @@ describe('Server data synchronization', () => {
 					['argentdevotion', ['armorize', 'swornduty', 'serenegrace', 'moldbreaker']],
 				]) {
 					assert.match(dex.abilities.get(id).desc, /ignore(?:s)? bypassable.*abilities/);
-					assert.match(dex.abilities.get(id).shortDesc, /ignore(?:s)? abilities/);
+					assert(dex.getAbilityDisplayComponents(id).includes('moldbreaker'));
 					const effects = dex.getAbilityEffects(id);
 					for (const component of components) assert(effects.has(component), `${id}: ${component}`);
 				}
@@ -85,14 +85,14 @@ describe('Server data synchronization', () => {
 					assert.notEqual(ability.shortDesc, ability.desc, id);
 				}
 				const ability = dex.abilities.get('dreepyvanguard');
-				assert.equal(ability.shortDesc, 'Stalwart. Once per entry, Dragon Darts damage breaks the matching screen.');
+				assert.equal(ability.shortDesc, 'Once per entry, Dragon Darts damage breaks the matching screen.');
 				assert(ability.desc.includes('after both darts finish'));
 				assert(ability.desc.includes('Ability changes do not refresh'));
 			});
 
 			it('explains Soul Cremation while preserving its component identities', () => {
 				const soul = dex.abilities.get('soulcremation');
-				assert.match(soul.shortDesc, /Ghost|healing/i);
+				assert.equal(soul.shortDesc, 'Combines the listed abilities.'); assert(dex.getAbilityDisplayComponents('soulcremation').includes('soulsiphon'));
 				for (const component of ['soulsiphon', 'soulpyre', 'malicewell', 'flamebody']) {
 					assert(dex.getAbilityEffects('soulcremation').has(component), component);
 				}

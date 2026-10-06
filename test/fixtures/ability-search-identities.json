@@ -451,11 +451,11 @@
     "prankster",
     "psychicsurge"
   ],
-  "guidingomen": [
+  "voidomen": [
     "friendguard",
-    "guidingomen",
     "moldbreaker",
-    "serenegrace"
+    "serenegrace",
+    "voidomen"
   ],
   "greatmarsh": [
     "adaptability",
@@ -974,10 +974,10 @@
     "tanglinghair",
     "wickedsnare"
   ],
-  "wickedcommand": [
+  "voidcommand": [
     "insomnia",
     "superluck",
-    "wickedcommand"
+    "voidcommand"
   ],
   "bewitchingmajesty": [
     "bewitchingmajesty",
@@ -1117,12 +1117,12 @@
     "striker",
     "uncheckedassault"
   ],
-  "royalvoice": [
+  "voidvoice": [
     "dreamsickness",
     "pixilate",
     "queenlymajesty",
-    "royalvoice",
-    "telepathy"
+    "telepathy",
+    "voidvoice"
   ],
   "memoryleak": [
     "memoryleak"
@@ -1223,10 +1223,11 @@
   ],
   "divineintervention": [
     "divineintervention",
-    "fluffy",
     "friendguard",
+    "invigorate",
     "regenerator",
-    "swornduty"
+    "triage",
+    "vitalsigns"
   ],
   "mountainhunger": [
     "earlybird",
@@ -1743,10 +1744,10 @@
     "sandstream",
     "skilllink"
   ],
-  "hydratyrant": [
+  "voidtyrant": [
     "berserk",
     "hydrabond",
-    "hydratyrant"
+    "voidtyrant"
   ],
   "orchardbond": [
     "harvest",
@@ -2318,10 +2319,10 @@
   "shadowtag": [
     "shadowtag"
   ],
-  "hexbound": [
+  "voidhex": [
     "cursedbody",
-    "hexbound",
-    "prankster"
+    "prankster",
+    "voidhex"
   ],
   "sharpness": [
     "sharpness"
@@ -3786,9 +3787,9 @@
     "bulletproof",
     "knightsreprisal"
   ],
-  "aurorasanctum": [
-    "aurorasanctum",
-    "snowwarning"
+  "voidsanctum": [
+    "snowwarning",
+    "voidsanctum"
   ],
   "chargedtail": [
     "chargedtail",
@@ -3824,22 +3825,23 @@
     "infiltrator",
     "shadowscreen"
   ],
-  "moonlitpromise": [
-    "moonlitpromise",
-    "unaware"
+  "voidpromise": [
+    "unaware",
+    "voidpromise"
   ],
-  "sandshroud": [
+  "voiddrift": [
     "levitate",
     "overcoat",
-    "sandshroud"
+    "voiddrift"
   ],
-  "arcanepilfer": [
-    "arcanepilfer",
-    "magician"
+  "voidguile": [
+    "infiltrator",
+    "magician",
+    "voidguile"
   ],
-  "faultline": [
-    "faultline",
-    "moldbreaker"
+  "voidwrath": [
+    "moldbreaker",
+    "voidwrath"
   ],
   "creepingbloom": [
     "creepingbloom",
@@ -3940,9 +3942,9 @@
     "constrictingheat",
     "whitesmoke"
   ],
-  "gritreprisal": [
-    "gritreprisal",
-    "guts"
+  "voidreprisal": [
+    "guts",
+    "voidreprisal"
   ],
   "wreckingcrew": [
     "ironfist",
@@ -4065,5 +4067,10 @@
   "mindcurrent": [
     "innerfocus",
     "mindcurrent"
+  ],
+  "voidcrossing": [
+    "levitate",
+    "magicguard",
+    "voidcrossing"
   ]
 }

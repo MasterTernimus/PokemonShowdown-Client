@@ -3608,3 +3608,57 @@ a.ilink.yours {
 
 .picker-return-bar { position: sticky; top: 0; z-index: 5; display: flex; justify-content: flex-end; padding: 5px 8px; background: #253643; border-bottom: 1px solid #617383; }
 .picker-return-bar .button { margin: 0; }
+
+/* Keep profile confirmation visible from any scroll position. */
+.profile-apply-preview[role="dialog"] { position: fixed; z-index: 100; top: 15%; left: 5%; width: min(760px, 85vw); max-height: 70vh; overflow: auto; background: #253643; color: #fff; border: 2px solid #91adc2; border-radius: 8px; box-shadow: 0 8px 40px #0009; }
+.profile-change-table { width: 100%; margin: 12px 0; border-collapse: collapse; }
+.profile-change-table th, .profile-change-table td { padding: 8px; text-align: left; border-bottom: 1px solid #617383; }
+.library-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+.library-tabs [aria-pressed="true"] { outline: 2px solid #6aa7d2; }
+.nickname-search { max-width: 100%; }
+.library-backup input[type="file"] { max-width: 210px; }
+
+.profile-confirm-actions { position: sticky; bottom: -10px; padding: 10px 0; background: #253643; display: flex; gap: 8px; }
+.local-tools-manager .nickname-rows { max-height: 36vh; overflow-y: auto; }
+.local-tools-manager .nickname-head { position: sticky; top: 0; background: #253643; color: #fff; z-index: 1; }
+
+.teambuilder-results .result { position: relative; }
+.ability-picker-info { position: absolute; right: 2px; top: 2px; border: 0; border-radius: 4px; cursor: pointer; background: #253643; color: white; padding: 3px 6px; }
+.teambuilder-results .abilitydesccol { padding-right: 28px; box-sizing: border-box; }
+.ability-picker-info:focus-visible { outline: 2px solid #6aa7d2; }
+
+.calc-load-set { margin: 8px 0; }
+.calc-load-set select { width: 100%; max-width: 100%; }
+.calc-move-shortcuts { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+.calc-sampling { flex-basis: 100%; }
+
+.team-search-controls { display:block; padding:8px; }
+.current-team-search { width:min(400px,90%); }
+.selection-undo,.calc-resolved { padding:8px; margin:6px 0; border:1px solid #617383; border-radius:6px; }
+.battle-field-reference { display:flex; gap:4px; justify-content:center; pointer-events:auto; }
+
+/* Compact item picker: keep each description beside its item, even with favorites. */
+.teambuilder-results .item-with-favorite { padding-left: 0; }
+.teambuilder-results .utilichart .item-with-favorite > a {
+ display: grid; grid-template-columns: 24px 112px minmax(0, 1fr); gap: 4px;
+ align-items: center; margin-left: 28px; padding: 3px 4px; min-height: 28px;
+}
+.teambuilder-results .item-with-favorite > a > .col {
+ float: none; width: auto; min-width: 0; height: auto; min-height: 0; padding: 0;
+ white-space: normal; box-sizing: border-box;
+}
+.teambuilder-results .item-with-favorite .itemdesccol { line-height: 1.3; }
+.teambuilder-results.compact-item-picker > .roster-profiles { display: none; }
+.compact-item-picker .item-picker-tools { padding: 4px 8px; margin: 0; }
+.compact-item-picker .item-picker-tools small { display: inline; margin-left: 8px; }
+.teamchartbox > .team-profile-toolbar { padding: 6px 8px; margin-bottom: 8px; gap: 4px; }
+.team-profile-toolbar .team-profile-help { margin: 0; }
+.picker-return-bar { padding: 2px 8px; }
+@media (max-width: 420px) {
+ .teambuilder-results .utilichart .item-with-favorite > a { grid-template-columns: 24px 88px minmax(0, 1fr); }
+}
+
+/* Species passive rows */
+.starter-passives{margin-top:7px;line-height:1.6}.starter-passives label{display:block;font-size:11px;color:#687a81}.starter-passives .passive-chip{display:inline-block;padding:1px 7px;border:1px solid #83aaa0;border-radius:10px;background:#edf7f2;color:#245b49;font-size:11px;font-weight:600}.form-preview-tools .starter-passives{margin:8px 0}.setchart:has(.starter-passives){height:190px}@media(max-width:700px){.editing-set .setchart:has(.starter-passives){height:auto}}
+
+.form-preview-result .form-preview-sprite{grid-row:1 / span 3}.form-preview-result > strong,.form-preview-result > span:not(.form-preview-sprite){grid-column:2}.form-preview-tools > .starter-passives{margin-left:94px}@media(max-width:700px){.form-preview-tools > .starter-passives{margin-left:0}}
