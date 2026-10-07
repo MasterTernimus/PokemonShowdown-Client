@@ -315,7 +315,7 @@ class BattleTextParser {
 		if (!effect) return '';
 		if (effect.startsWith('item:') || effect.startsWith('move:')) {
 			effect = effect.slice(5);
-		} else if (effect.startsWith('ability:')) {
+		} else if (effect.startsWith('ability:') || effect.startsWith('passive:')) {
 			effect = effect.slice(8);
 		}
 		return toID(effect);
@@ -325,7 +325,7 @@ class BattleTextParser {
 		if (!effect) return '';
 		if (effect.startsWith('item:') || effect.startsWith('move:')) {
 			effect = effect.slice(5);
-		} else if (effect.startsWith('ability:')) {
+		} else if (effect.startsWith('ability:') || effect.startsWith('passive:')) {
 			effect = effect.slice(8);
 		}
 		return effect.trim();
@@ -354,6 +354,7 @@ class BattleTextParser {
 
 	maybeAbility(effect: string | undefined, holder: string) {
 		if (!effect) return '';
+		if (effect.startsWith('passive:')) return this.ability(effect.slice(8).trim() + ' (passive)', holder);
 		if (!effect.startsWith('ability:')) return '';
 		return this.ability(effect.slice(8).trim(), holder);
 	}

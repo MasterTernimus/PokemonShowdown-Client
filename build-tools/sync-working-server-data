@@ -52,7 +52,14 @@ const {getAbilityDisplayComponents} = require(path.join(server, 'dist/data/abili
 for (const id of Object.keys(tables.abilities)) {
 	if (Dex.abilities.get(id).num > 310 || getAbilityDisplayComponents(id).length) groups.abilities.add(id);
 }
-for (const species of Dex.species.all()) if (species.passives.length) groups.species.add(species.id);
+for (const species of Dex.species.all()) {
+	// Explicit empty rows prevent combat variants inheriting the base species' passives in client fallbacks.
+	if (species.passives.length || Dex.species.get(species.baseSpecies).passives.length) groups.species.add(species.id);
+}
+for (const id of Object.keys(Dex.data.Pokedex)) {
+	const species = Dex.species.get(id);
+	if (species.passives.length || Dex.species.get(species.baseSpecies).passives.length) groups.species.add(id);
+}
 const select = (entry, keys) => Object.fromEntries(keys.map(key => [key, entry[key]]).filter(([, value]) => value !== undefined));
 const snapshot = {species: {}, abilities: {}, moves: {}, items: {}, components: {}};
 const {AbilityComponents} = require(path.join(server, 'dist/data/ability-components'));

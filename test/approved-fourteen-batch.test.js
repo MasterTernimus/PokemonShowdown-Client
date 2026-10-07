@@ -2,7 +2,7 @@
 const assert=require('assert').strict;require('./battle.test');
 describe('Approved October batch metadata',()=>{
  for(const [species,slot,id,components] of [
- ['hydreigon','0','dreadwings',['levitate','unnerve']],
+ ['hydreigon','0','dreadwings',['intimidate','unnerve']],
  ['slowkinggalar','1','eldritchremedy',['owntempo','curiousmedicine']],
  ['charizard','1','infernaldominion',['intimidate']],
  ['blastoise','H','hydraulicarmor',['stamina']],

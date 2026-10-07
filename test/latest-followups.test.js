@@ -14,10 +14,18 @@ describe('Latest appearance and ability metadata', () => {
  });
  it('keeps exact form-specific sprite size and other Lucario forms unchanged', () => {
   for (const shiny of [false, true]) {
-   assert.equal(Dex.getSpriteData('Lucario-Mega-Z', false, {gen: 9, shiny}).h, 68);
-   assert.equal(Dex.getSpriteData('Lopunny-Mega', false, {gen: 9, shiny}).h, 68);
-   assert.equal(Dex.getSpriteData('Lopunny', true, {gen: 9, shiny}).h, 64);
+   assert.equal(staticSpriteData('Lucario-Mega-Z', false, {gen: 9, shiny}).h, 68);
+   assert.equal(staticSpriteData('Lopunny-Mega', false, {gen: 9, shiny}).h, 68);
+   assert.equal(staticSpriteData('Lopunny', true, {gen: 9, shiny}).h, 64);
   }
-  assert.equal(Dex.getSpriteData('Lucario-Mega-Z', true, {gen: 9}).h, 82);
+  assert.equal(staticSpriteData('Lucario-Mega-Z', true, {gen: 9}).h, 82);
  });
 });
+
+
+// Verify approved static artwork independently of the normal BW animation route.
+function staticSpriteData(...args) {
+ const prefs = Dex.prefs;
+ Dex.prefs = key => key === 'nogif' ? true : prefs.call(Dex, key);
+ try { return Dex.getSpriteData(...args); } finally { Dex.prefs = prefs; }
+}

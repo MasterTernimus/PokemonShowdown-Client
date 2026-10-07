@@ -1,6 +1,13 @@
 const assert = require('assert').strict;
 const fs = require('fs');
 const path = require('path');
+// These asset tests exercise the custom static fallback. Animated routing is
+// tested separately, so neither branch masks a regression in the other.
+function staticSpriteData(...args) {
+ const prefs = Dex.prefs;
+ Dex.prefs = key => key === 'nogif' ? true : prefs.call(Dex, key);
+ try { return Dex.getSpriteData(...args); } finally { Dex.prefs = prefs; }
+}
 
 window = global;
 
@@ -107,10 +114,10 @@ describe('Battle', () => {
 	it('uses matching front and back BW sprites for custom Furfrou trims', () => {
 		for (const trim of ['Heart', 'Star', 'Diamond', 'Debutante', 'Matron', 'Dandy', 'La Reine', 'Kabuki', 'Pharaoh']) {
 			const id = trim === 'La Reine' ? 'furfroulareine' : `furfrou${trim.toLowerCase()}`;
-			const front = Dex.getSpriteData(`Furfrou-${trim}`, true, {gen: 9});
+			const front = staticSpriteData(`Furfrou-${trim}`, true, {gen: 9});
 			assert(front.url.includes(`/sprites/gen5/furfrou-${id.slice(7)}.png`), front.url);
 			assert(fs.existsSync(path.join(__dirname, '../play.pokemonshowdown.com/sprites/gen5', `furfrou-${id.slice(7)}.png`)));
-			const back = Dex.getSpriteData(`Furfrou-${trim}`, false, {gen: 9});
+			const back = staticSpriteData(`Furfrou-${trim}`, false, {gen: 9});
 			assert(back.url.includes(`/sprites/gen5-back/furfrou-${id.slice(7)}.png`), back.url);
 		}
 	});
@@ -302,8 +309,8 @@ describe('Team Builder sprites', () => {
 		const animationData = require('../play.pokemonshowdown.com/data/pokedex-mini.js').BattlePokemonSprites.sylveon;
 		global.BattlePokemonSprites.sylveon = animationData;
 		try {
-			assert(Dex.getSpriteData('Sylveon', true, {gen: 9}).url.endsWith('/sprites/ani/sylveon.gif'));
-			assert(Dex.getSpriteData('Sylveon', false, {gen: 9}).url.endsWith('/sprites/ani-back/sylveon.gif'));
+			assert(Dex.getSpriteData('Sylveon', true, {gen: 9}).url.endsWith('/sprites/gen5ani/sylveon.gif'));
+			assert(Dex.getSpriteData('Sylveon', false, {gen: 9}).url.endsWith('/sprites/gen5ani-back/sylveon.gif'));
 			assert(Dex.getSpriteData('Sylveon', true, {gen: 9, shiny: true}).url.endsWith('/sprites/gen5-shiny/sylveon.png'));
 			assert(Dex.getSpriteData('Sylveon', false, {gen: 9, shiny: true}).url.endsWith('/sprites/gen5-back-shiny/sylveon.png'));
 		} finally {
@@ -327,7 +334,7 @@ describe('Team Builder sprites', () => {
 		for (const species of ['Froslass', 'Abysseon', 'Divineon']) {
 			for (const front of [true, false]) {
 				for (const shiny of [false, true]) {
-					const sprite = Dex.getSpriteData(species, front, {gen: 9, shiny, noScale: true});
+					const sprite = staticSpriteData(species, front, {gen: 9, shiny, noScale: true});
 					const directory = front ? (shiny ? 'gen5-shiny' : 'gen5') : (shiny ? 'gen5-back-shiny' : 'gen5-back');
 					assert(sprite.url.split('?')[0].endsWith(`/sprites/${directory}/${species.toLowerCase()}.png`), sprite.url);
 					assert.equal(sprite.w, 192);
@@ -371,7 +378,7 @@ describe('Team Builder sprites', () => {
 		]) {
 			for (const front of [true, false]) {
 				for (const shiny of [false, true]) {
-					const sprite = Dex.getSpriteData(species, front, {gen: 9, shiny, noScale: true});
+					const sprite = staticSpriteData(species, front, {gen: 9, shiny, noScale: true});
 					const directory = front ? (shiny ? 'gen5-shiny' : 'gen5') : (shiny ? 'gen5-back-shiny' : 'gen5-back');
 					assert(sprite.url.split('?')[0].endsWith(`/sprites/${directory}/${filename}`), sprite.url);
 					assert.equal(sprite.w, 192);
@@ -446,7 +453,7 @@ describe('Team Builder sprites', () => {
 	it('uses all supplied Tyrantrum normal and shiny sprites', () => {
 		for (const front of [true, false]) {
 			for (const shiny of [false, true]) {
-				const sprite = Dex.getSpriteData('Tyrantrum', front, {gen: 9, shiny, noScale: true});
+				const sprite = staticSpriteData('Tyrantrum', front, {gen: 9, shiny, noScale: true});
 				const directory = front ? (shiny ? 'gen5-shiny' : 'gen5') : (shiny ? 'gen5-back-shiny' : 'gen5-back');
 				assert(sprite.url.split('?')[0].endsWith(`/sprites/${directory}/tyrantrum.png`));
 				assert.equal(sprite.w, front ? 140 : 158);
@@ -465,7 +472,7 @@ describe('Team Builder sprites', () => {
 				const filename = gender === 'F' ? femaleFile : maleFile;
 				for (const front of [true, false]) {
 					for (const shiny of [false, true]) {
-						const sprite = Dex.getSpriteData(species, front, {gen: 9, gender, shiny, noScale: true});
+						const sprite = staticSpriteData(species, front, {gen: 9, gender, shiny, noScale: true});
 						const directory = front ? (shiny ? 'gen5-shiny' : 'gen5') : (shiny ? 'gen5-back-shiny' : 'gen5-back');
 						assert(sprite.url.split('?')[0].endsWith(`/sprites/${directory}/${filename}`));
 						assert.equal(sprite.w, front ? frontWidth : backWidth);
@@ -502,7 +509,7 @@ describe('Team Builder sprites', () => {
 				const filename = gender === 'F' ? femaleFile : maleFile;
 				for (const front of [true, false]) {
 					for (const shiny of [false, true]) {
-						const sprite = Dex.getSpriteData(species, front, {gen: 9, gender, shiny});
+						const sprite = staticSpriteData(species, front, {gen: 9, gender, shiny});
 						const directory = front ? (shiny ? 'gen5-shiny' : 'gen5') : (shiny ? 'gen5-back-shiny' : 'gen5-back');
 						assert(sprite.url.split('?')[0].endsWith(`/sprites/${directory}/${filename}`));
 					}
@@ -602,7 +609,7 @@ describe('Team Builder sprites', () => {
 			const filename = species === 'Clefable-Mega' ? 'clefable-mega.png' : 'clefable.png';
 			for (const shiny of [false, true]) {
 				for (const front of [false, true]) {
-					const sprite = Dex.getSpriteData(species, front, {gen: 9, shiny});
+					const sprite = staticSpriteData(species, front, {gen: 9, shiny});
 					const dir = `gen5${front ? '' : '-back'}${shiny ? '-shiny' : ''}`;
 					assert(sprite.url.includes(`/sprites/${dir}/${filename}`), `${species} should use its supplied sprite`);
 					assert(fs.existsSync(path.join(__dirname, '../play.pokemonshowdown.com/sprites', dir, filename)));
@@ -619,7 +626,7 @@ describe('Team Builder sprites', () => {
 		for (const [species, data] of Object.entries(expected)) {
 			for (const shiny of [false, true]) {
 				for (const front of [false, true]) {
-					const sprite = Dex.getSpriteData(species, front, {gen: 9, shiny, noScale: true});
+					const sprite = staticSpriteData(species, front, {gen: 9, shiny, noScale: true});
 					const directory = `gen5${front ? '' : '-back'}${shiny ? '-shiny' : ''}`;
 					const actual = require('image-size')(fs.readFileSync(path.join(__dirname, '../play.pokemonshowdown.com/sprites', directory, data.filename)));
 					const dimensions = {w: actual.width, h: actual.height};
@@ -667,7 +674,7 @@ describe('Team Builder sprites', () => {
 		for (const [species, data] of Object.entries(expected)) {
 			for (const shiny of [false, true]) {
 				for (const front of [false, true]) {
-					const sprite = Dex.getSpriteData(species, front, {gen: 9, shiny, noScale: true});
+					const sprite = staticSpriteData(species, front, {gen: 9, shiny, noScale: true});
 					const directory = `gen5${front ? '' : '-back'}${shiny ? '-shiny' : ''}`;
 					assert(sprite.url.split('?')[0].endsWith(`/sprites/${directory}/${data.filename}`), `${species} should use its supplied sprite`);
 					assert.equal(sprite.w, front ? data.front.w : data.back.w);
@@ -727,7 +734,7 @@ describe('Team Builder sprites', () => {
 			assert.deepEqual(Dex.species.get(species).baseStats, {hp: 79, atk: 80, def: 75, spa: 98, spd: 75, spe: 93});
 			for (const shiny of [false, true]) {
 				for (const front of [false, true]) {
-					const sprite = Dex.getSpriteData(species, front, {gen: 9, shiny, noScale: true});
+					const sprite = staticSpriteData(species, front, {gen: 9, shiny, noScale: true});
 					const directory = `gen5${front ? '' : '-back'}${shiny ? '-shiny' : ''}`;
 					const dimensions = front ? data.front : data.back;
 					assert(sprite.url.split('?')[0].endsWith(`/sprites/${directory}/${data.id}.png`), `${species} should use its supplied sprite`);
@@ -748,7 +755,7 @@ describe('Team Builder sprites', () => {
 			for (const gender of [undefined, 'F']) {
 				for (const shiny of [false, true]) {
 					for (const front of [false, true]) {
-						const sprite = Dex.getSpriteData(species, front, {gen: 9, gender, shiny, noScale: true});
+						const sprite = staticSpriteData(species, front, {gen: 9, gender, shiny, noScale: true});
 						const directory = `gen5${front ? '' : '-back'}${shiny ? '-shiny' : ''}`;
 						const dimensions = front ? (shiny ? data.shinyFront : data.front) : (shiny ? data.shinyBack : data.back);
 						const filename = `${data.id}${gender === 'F' ? '-f' : ''}.png`;
@@ -767,7 +774,7 @@ describe('Team Builder sprites', () => {
 		for (const gender of [undefined, 'F']) {
 			for (const shiny of [false, true]) {
 				for (const front of [false, true]) {
-					const sprite = Dex.getSpriteData('Volcarona', front, {gen: 9, gender, shiny, noScale: true});
+					const sprite = staticSpriteData('Volcarona', front, {gen: 9, gender, shiny, noScale: true});
 					const directory = `gen5${front ? '' : '-back'}${shiny ? '-shiny' : ''}`;
 					const dimensions = front ? data.front : data.back;
 					const filename = `${data.id}${gender === 'F' ? '-f' : ''}.png`;
@@ -788,7 +795,7 @@ describe('Team Builder sprites', () => {
 		for (const [species, data] of Object.entries(expected)) {
 			for (const shiny of [false, true]) {
 				for (const front of [false, true]) {
-					const sprite = Dex.getSpriteData(species, front, {gen: 9, shiny, noScale: true});
+					const sprite = staticSpriteData(species, front, {gen: 9, shiny, noScale: true});
 					const directory = `gen5${front ? '' : '-back'}${shiny ? '-shiny' : ''}`;
 					const dimensions = front ? data.front : data.back;
 					assert(sprite.url.split('?')[0].endsWith(`/sprites/${directory}/${data.filename}`), `${species} should use its supplied sprite`);
@@ -801,7 +808,7 @@ describe('Team Builder sprites', () => {
 	});
 
 	it('shows the added composite ability effects', () => {
-		assert.match(Dex.abilities.get('Pollen Bloom').desc, /ignores the target's Defense/);
+		assert.match(Dex.abilities.get('Pollen Bloom').desc, /Ignores the foe's Defense/);
 		assert(Dex.getAbilityEffects('pollenbloom').has('unaware'));
 		assert.match(Dex.abilities.get('Territorial').desc, /physical or special.*heals 1.16.*immediately raises Defense by 1/);
 		assert.match(Dex.abilities.get('Lunar Dread').desc, /sleep/i);

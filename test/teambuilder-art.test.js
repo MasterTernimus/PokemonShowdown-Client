@@ -195,8 +195,8 @@ describe('Supplied Glaceon shiny artwork', () => {
   }
   for (const shiny of [false, true]) {
    for (const front of [false, true]) {
-    const animated = !shiny && !!global.BattlePokemonSprites.glaceon;
-    const expected = animated ? `ani${front ? '' : '-back'}/glaceon.gif` : `gen5${front ? '' : '-back'}${shiny ? '-shiny' : ''}/glaceon.png`;
+    const animated = !shiny;
+    const expected = animated ? `gen5ani${front ? '' : '-back'}/glaceon.gif` : `gen5${front ? '' : '-back'}${shiny ? '-shiny' : ''}/glaceon.png`;
     assert.equal(selected('Glaceon', front, shiny), expected);
    }
    const builder = Dex.getTeambuilderSpriteData({species: 'Glaceon', shiny}, 9);
