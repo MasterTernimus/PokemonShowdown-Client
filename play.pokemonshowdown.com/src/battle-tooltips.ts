@@ -1292,7 +1292,7 @@ class BattleTooltips {
 		if (!fieldAbilityEffects.has('limber' as ID)) {
 			const types = clientPokemon ? clientPokemon.getTypes(serverPokemon)[0] :
 				this.battle.dex.species.get(serverPokemon.speciesForme).types;
-			const airborneAbility = ['levitate', 'elevate', 'solaridol', 'lunaridol', 'burningcrown',
+			const airborneAbility = (serverPokemon.passives ?? this.battle.dex.species.get(serverPokemon.speciesForme).passives).includes('levitate') || ['levitate', 'elevate', 'solaridol', 'lunaridol', 'burningcrown',
 				'astralwitchcraft', 'voidcraft', 'phantombarrage'].some(id => fieldAbilityEffects.has(id as ID));
 			const grounded = clientPokemon ? clientPokemon.isGrounded(serverPokemon) :
 				this.battle.hasPseudoWeather('Gravity') || item === 'ironball' ||
@@ -2526,7 +2526,8 @@ class BattleTooltips {
 		const knownAbility = isActive ? abilityData.ability : (abilityData.baseAbility || abilityData.ability);
 		if (knownAbility) {
 			const shown = this.battle.dex.abilities.get(knownAbility);
-			const parts = Dex.getAbilityDisplayComponents(shown.id, this.battle.dex);
+			const passives = serverPokemon?.passives ?? clientPokemon?.getSpecies().passives ?? [];
+			const parts = Dex.getAbilityDisplayComponents(shown.id, this.battle.dex, passives);
 			text += '<br /><small>' + BattleLog.escapeHTML(shown.shortDesc) + '</small>';
 			if (parts.length) text += '<br /><small>Includes: ' + parts.map(id => BattleLog.escapeHTML(Dex.abilities.get(id).name)).join(' · ') + '</small>';
 		}

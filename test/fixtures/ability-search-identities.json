@@ -3849,7 +3849,7 @@
   ],
   "dreadwings": [
     "dreadwings",
-    "levitate",
+    "intimidate",
     "unnerve"
   ],
   "causticchamber": [
@@ -4069,7 +4069,7 @@
     "mindcurrent"
   ],
   "voidcrossing": [
-    "levitate",
+    "infiltrator",
     "magicguard",
     "voidcrossing"
   ]

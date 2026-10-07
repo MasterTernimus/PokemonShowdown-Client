@@ -1,7 +1,7 @@
 {
-	"sourceHead": "eb995f0bb8a7900c08b799ab163e78588ed3ea3e",
+	"sourceHead": "91c93fdabd9e958e6fff83d942d88473bf32d56e",
 	"base": "eb4df7b2171223918cc79aecd6674292a887aa7c",
-	"sourceDataSHA256": "25ab4c0991026ac7273a82192fa04c162fa79349f73333218187c3766d3867b4",
+	"sourceDataSHA256": "cce6deeed13a396a0741b73512efdf30917a9176bc13d67e2663d124bc06e600",
 	"files": [
 		"data/abilities.ts",
 		"data/ability-components.ts",
@@ -40,6 +40,7 @@
 		"data/roster-expansion-wave3.ts",
 		"data/roster-expansion-wave4.ts",
 		"data/roster-expansion.ts",
+		"data/species-passives.ts",
 		"data/starter-passives.ts",
 		"data/terrains.ts",
 		"data/text/abilities.ts",
@@ -271,7 +272,195 @@
 				"types": [
 					"Fairy"
 				],
+				"passives": [
+					"sweetveil"
+				],
+				"replaceAbilities": true
+			},
+			"alcremiecaramelswirl": {
+				"abilities": {
+					"0": "Sweet Veil",
+					"H": "Aroma Veil"
+				},
+				"baseStats": {
+					"hp": 65,
+					"atk": 60,
+					"def": 75,
+					"spa": 110,
+					"spd": 121,
+					"spe": 64
+				},
+				"types": [
+					"Fairy"
+				],
+				"passives": [
+					"sweetveil"
+				],
+				"replaceAbilities": true
+			},
+			"alcremiegmax": {
+				"abilities": {
+					"0": "Sweet Sanctuary"
+				},
+				"baseStats": {
+					"hp": 130,
+					"atk": 60,
+					"def": 75,
+					"spa": 110,
+					"spd": 121,
+					"spe": 64
+				},
+				"types": [
+					"Fairy"
+				],
 				"passives": [],
+				"replaceAbilities": true
+			},
+			"alcremielemoncream": {
+				"abilities": {
+					"0": "Sweet Veil",
+					"H": "Aroma Veil"
+				},
+				"baseStats": {
+					"hp": 65,
+					"atk": 60,
+					"def": 75,
+					"spa": 110,
+					"spd": 121,
+					"spe": 64
+				},
+				"types": [
+					"Fairy"
+				],
+				"passives": [
+					"sweetveil"
+				],
+				"replaceAbilities": true
+			},
+			"alcremiematchacream": {
+				"abilities": {
+					"0": "Sweet Veil",
+					"H": "Aroma Veil"
+				},
+				"baseStats": {
+					"hp": 65,
+					"atk": 60,
+					"def": 75,
+					"spa": 110,
+					"spd": 121,
+					"spe": 64
+				},
+				"types": [
+					"Fairy"
+				],
+				"passives": [
+					"sweetveil"
+				],
+				"replaceAbilities": true
+			},
+			"alcremiemintcream": {
+				"abilities": {
+					"0": "Sweet Veil",
+					"H": "Aroma Veil"
+				},
+				"baseStats": {
+					"hp": 65,
+					"atk": 60,
+					"def": 75,
+					"spa": 110,
+					"spd": 121,
+					"spe": 64
+				},
+				"types": [
+					"Fairy"
+				],
+				"passives": [
+					"sweetveil"
+				],
+				"replaceAbilities": true
+			},
+			"alcremierainbowswirl": {
+				"abilities": {
+					"0": "Sweet Veil",
+					"H": "Aroma Veil"
+				},
+				"baseStats": {
+					"hp": 65,
+					"atk": 60,
+					"def": 75,
+					"spa": 110,
+					"spd": 121,
+					"spe": 64
+				},
+				"types": [
+					"Fairy"
+				],
+				"passives": [
+					"sweetveil"
+				],
+				"replaceAbilities": true
+			},
+			"alcremierubycream": {
+				"abilities": {
+					"0": "Sweet Veil",
+					"H": "Aroma Veil"
+				},
+				"baseStats": {
+					"hp": 65,
+					"atk": 60,
+					"def": 75,
+					"spa": 110,
+					"spd": 121,
+					"spe": 64
+				},
+				"types": [
+					"Fairy"
+				],
+				"passives": [
+					"sweetveil"
+				],
+				"replaceAbilities": true
+			},
+			"alcremierubyswirl": {
+				"abilities": {
+					"0": "Sweet Veil",
+					"H": "Aroma Veil"
+				},
+				"baseStats": {
+					"hp": 65,
+					"atk": 60,
+					"def": 75,
+					"spa": 110,
+					"spd": 121,
+					"spe": 64
+				},
+				"types": [
+					"Fairy"
+				],
+				"passives": [
+					"sweetveil"
+				],
+				"replaceAbilities": true
+			},
+			"alcremiesaltedcream": {
+				"abilities": {
+					"0": "Sweet Veil",
+					"H": "Aroma Veil"
+				},
+				"baseStats": {
+					"hp": 65,
+					"atk": 60,
+					"def": 75,
+					"spa": 110,
+					"spd": 121,
+					"spe": 64
+				},
+				"types": [
+					"Fairy"
+				],
+				"passives": [
+					"sweetveil"
+				],
 				"replaceAbilities": true
 			},
 			"alomomola": {
@@ -1338,6 +1527,25 @@
 				"passives": [],
 				"replaceAbilities": true
 			},
+			"auroreon": {
+				"abilities": {
+					"0": "Mind Freeze"
+				},
+				"baseStats": {
+					"hp": 60,
+					"atk": 60,
+					"def": 95,
+					"spa": 130,
+					"spd": 95,
+					"spe": 110
+				},
+				"types": [
+					"Ice",
+					"Psychic"
+				],
+				"passives": [],
+				"replaceAbilities": true
+			},
 			"aurorus": {
 				"abilities": {
 					"0": "Refrigerate",
@@ -1540,7 +1748,7 @@
 			},
 			"baltoy": {
 				"abilities": {
-					"0": "Levitate"
+					"0": "Own Tempo"
 				},
 				"baseStats": {
 					"hp": 40,
@@ -1554,7 +1762,9 @@
 					"Ground",
 					"Psychic"
 				],
-				"passives": [],
+				"passives": [
+					"levitate"
+				],
 				"replaceAbilities": true
 			},
 			"banette": {
@@ -2108,7 +2318,9 @@
 					"Water",
 					"Steel"
 				],
-				"passives": [],
+				"passives": [
+					"torrent"
+				],
 				"replaceAbilities": true
 			},
 			"blastoisegmax": {
@@ -2128,6 +2340,7 @@
 					"Steel"
 				],
 				"passives": [
+					"torrent",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -2149,6 +2362,7 @@
 					"Steel"
 				],
 				"passives": [
+					"torrent",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -2171,7 +2385,9 @@
 					"Fire",
 					"Fighting"
 				],
-				"passives": [],
+				"passives": [
+					"blaze"
+				],
 				"replaceAbilities": true
 			},
 			"blazikenmega": {
@@ -2191,6 +2407,7 @@
 					"Fighting"
 				],
 				"passives": [
+					"blaze",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -2742,6 +2959,46 @@
 					"Bug",
 					"Flying"
 				],
+				"passives": [
+					"shielddust"
+				],
+				"replaceAbilities": true
+			},
+			"butterfreegmax": {
+				"abilities": {
+					"0": "Mythic Scale"
+				},
+				"baseStats": {
+					"hp": 112,
+					"atk": 38,
+					"def": 71,
+					"spa": 108,
+					"spd": 93,
+					"spe": 90
+				},
+				"types": [
+					"Bug",
+					"Fairy"
+				],
+				"passives": [],
+				"replaceAbilities": true
+			},
+			"butterfreemega": {
+				"abilities": {
+					"0": "Toxic Evolution"
+				},
+				"baseStats": {
+					"hp": 75,
+					"atk": 30,
+					"def": 115,
+					"spa": 137,
+					"spd": 115,
+					"spe": 103
+				},
+				"types": [
+					"Bug",
+					"Poison"
+				],
 				"passives": [],
 				"replaceAbilities": true
 			},
@@ -2780,7 +3037,9 @@
 				"types": [
 					"Grass"
 				],
-				"passives": [],
+				"passives": [
+					"overcoat"
+				],
 				"replaceAbilities": true
 			},
 			"cacturne": {
@@ -2794,6 +3053,29 @@
 					"atk": 160,
 					"def": 70,
 					"spa": 90,
+					"spd": 70,
+					"spe": 90
+				},
+				"types": [
+					"Grass",
+					"Dark"
+				],
+				"passives": [
+					"overcoat"
+				],
+				"replaceAbilities": true
+			},
+			"cacturnealt": {
+				"abilities": {
+					"0": "Scarecrow",
+					"1": "Solar Rush",
+					"H": "Storm Drain"
+				},
+				"baseStats": {
+					"hp": 75,
+					"atk": 160,
+					"def": 70,
+					"spa": 105,
 					"spd": 70,
 					"spe": 90
 				},
@@ -3364,7 +3646,9 @@
 					"Fire",
 					"Flying"
 				],
-				"passives": [],
+				"passives": [
+					"blaze"
+				],
 				"replaceAbilities": true
 			},
 			"charizardalt": {
@@ -3385,7 +3669,9 @@
 					"Fire",
 					"Flying"
 				],
-				"passives": [],
+				"passives": [
+					"blaze"
+				],
 				"replaceAbilities": true
 			},
 			"charizardgmax": {
@@ -3405,6 +3691,7 @@
 					"Dragon"
 				],
 				"passives": [
+					"blaze",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -3426,6 +3713,7 @@
 					"Dragon"
 				],
 				"passives": [
+					"blaze",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -3447,6 +3735,7 @@
 					"Dragon"
 				],
 				"passives": [
+					"blaze",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -3468,6 +3757,7 @@
 					"Flying"
 				],
 				"passives": [
+					"blaze",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -3607,7 +3897,9 @@
 					"Grass",
 					"Fighting"
 				],
-				"passives": [],
+				"passives": [
+					"overgrow"
+				],
 				"replaceAbilities": true
 			},
 			"chesnaughtmega": {
@@ -3627,6 +3919,7 @@
 					"Fighting"
 				],
 				"passives": [
+					"overgrow",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -3743,6 +4036,46 @@
 				},
 				"types": [
 					"Psychic"
+				],
+				"passives": [
+					"levitate"
+				],
+				"replaceAbilities": true
+			},
+			"chimechomega": {
+				"abilities": {
+					"0": "Wind Chime"
+				},
+				"baseStats": {
+					"hp": 75,
+					"atk": 50,
+					"def": 110,
+					"spa": 135,
+					"spd": 120,
+					"spe": 65
+				},
+				"types": [
+					"Psychic",
+					"Steel"
+				],
+				"passives": [],
+				"replaceAbilities": true
+			},
+			"chimechomegay": {
+				"abilities": {
+					"0": "Haunted Chime"
+				},
+				"baseStats": {
+					"hp": 75,
+					"atk": 50,
+					"def": 80,
+					"spa": 145,
+					"spd": 100,
+					"spe": 105
+				},
+				"types": [
+					"Psychic",
+					"Ghost"
 				],
 				"passives": [],
 				"replaceAbilities": true
@@ -3862,7 +4195,9 @@
 				"types": [
 					"Fire"
 				],
-				"passives": [],
+				"passives": [
+					"blaze"
+				],
 				"replaceAbilities": true
 			},
 			"cinderacegmax": {
@@ -3881,6 +4216,7 @@
 					"Fire"
 				],
 				"passives": [
+					"blaze",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -3902,6 +4238,7 @@
 					"Normal"
 				],
 				"passives": [
+					"blaze",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -3968,7 +4305,7 @@
 			},
 			"claydol": {
 				"abilities": {
-					"0": "Levitate",
+					"0": "Clear Body",
 					"1": "Relic Beam",
 					"H": "Defragment"
 				},
@@ -3983,6 +4320,27 @@
 				"types": [
 					"Ground",
 					"Fairy"
+				],
+				"passives": [
+					"levitate"
+				],
+				"replaceAbilities": true
+			},
+			"claydolmega": {
+				"abilities": {
+					"0": "Astral Engine"
+				},
+				"baseStats": {
+					"hp": 60,
+					"atk": 70,
+					"def": 135,
+					"spa": 130,
+					"spd": 150,
+					"spe": 55
+				},
+				"types": [
+					"Ground",
+					"Psychic"
 				],
 				"passives": [],
 				"replaceAbilities": true
@@ -4208,7 +4566,9 @@
 					"Bug",
 					"Flying"
 				],
-				"passives": [],
+				"passives": [
+					"sweetveil"
+				],
 				"replaceAbilities": true
 			},
 			"combusken": {
@@ -4608,7 +4968,9 @@
 					"Water",
 					"Dark"
 				],
-				"passives": [],
+				"passives": [
+					"hypercutter"
+				],
 				"replaceAbilities": true
 			},
 			"cresceidon": {
@@ -4774,7 +5136,7 @@
 			},
 			"cryogonal": {
 				"abilities": {
-					"0": "Levitate",
+					"0": "Ice Body",
 					"1": "Mirror Armor",
 					"H": "Purifying Frost"
 				},
@@ -4790,7 +5152,9 @@
 					"Ice",
 					"Ghost"
 				],
-				"passives": [],
+				"passives": [
+					"levitate"
+				],
 				"replaceAbilities": true
 			},
 			"cubchoo": {
@@ -5128,7 +5492,9 @@
 					"Grass",
 					"Ghost"
 				],
-				"passives": [],
+				"passives": [
+					"overgrow"
+				],
 				"replaceAbilities": true
 			},
 			"decidueyealt": {
@@ -5149,7 +5515,9 @@
 					"Grass",
 					"Ghost"
 				],
-				"passives": [],
+				"passives": [
+					"overgrow"
+				],
 				"replaceAbilities": true
 			},
 			"decidueyehisui": {
@@ -5170,7 +5538,9 @@
 					"Grass",
 					"Fighting"
 				],
-				"passives": [],
+				"passives": [
+					"overgrow"
+				],
 				"replaceAbilities": true
 			},
 			"decidueyehisuialt": {
@@ -5191,7 +5561,9 @@
 					"Grass",
 					"Fighting"
 				],
-				"passives": [],
+				"passives": [
+					"overgrow"
+				],
 				"replaceAbilities": true
 			},
 			"dedenne": {
@@ -5315,7 +5687,9 @@
 					"Fire",
 					"Psychic"
 				],
-				"passives": [],
+				"passives": [
+					"blaze"
+				],
 				"replaceAbilities": true
 			},
 			"delphoxmega": {
@@ -5335,6 +5709,7 @@
 					"Psychic"
 				],
 				"passives": [
+					"blaze",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -6435,12 +6810,33 @@
 					"Ghost",
 					"Dark"
 				],
+				"passives": [
+					"levitate"
+				],
+				"replaceAbilities": true
+			},
+			"dusknoirmega": {
+				"abilities": {
+					"0": "Reaper's Grip"
+				},
+				"baseStats": {
+					"hp": 65,
+					"atk": 180,
+					"def": 155,
+					"spa": 70,
+					"spd": 155,
+					"spe": 45
+				},
+				"types": [
+					"Ghost",
+					"Dark"
+				],
 				"passives": [],
 				"replaceAbilities": true
 			},
 			"duskull": {
 				"abilities": {
-					"0": "Levitate",
+					"0": "Infiltrator",
 					"H": "Frisk"
 				},
 				"baseStats": {
@@ -6454,7 +6850,9 @@
 				"types": [
 					"Ghost"
 				],
-				"passives": [],
+				"passives": [
+					"levitate"
+				],
 				"replaceAbilities": true
 			},
 			"dustox": {
@@ -6475,7 +6873,9 @@
 					"Bug",
 					"Poison"
 				],
-				"passives": [],
+				"passives": [
+					"shielddust"
+				],
 				"replaceAbilities": true
 			},
 			"dwebble": {
@@ -6501,7 +6901,7 @@
 			},
 			"eelektrik": {
 				"abilities": {
-					"0": "Levitate"
+					"0": "Static"
 				},
 				"baseStats": {
 					"hp": 65,
@@ -6514,7 +6914,9 @@
 				"types": [
 					"Electric"
 				],
-				"passives": [],
+				"passives": [
+					"levitate"
+				],
 				"replaceAbilities": true
 			},
 			"eelektross": {
@@ -6530,6 +6932,26 @@
 					"spa": 105,
 					"spd": 90,
 					"spe": 50
+				},
+				"types": [
+					"Electric"
+				],
+				"passives": [
+					"levitate"
+				],
+				"replaceAbilities": true
+			},
+			"eelektrossmega": {
+				"abilities": {
+					"0": "Storm Circuit"
+				},
+				"baseStats": {
+					"hp": 85,
+					"atk": 145,
+					"def": 90,
+					"spa": 135,
+					"spd": 100,
+					"spe": 80
 				},
 				"types": [
 					"Electric"
@@ -6550,6 +6972,26 @@
 					"spa": 45,
 					"spd": 65,
 					"spe": 55
+				},
+				"types": [
+					"Normal"
+				],
+				"passives": [
+					"runaway"
+				],
+				"replaceAbilities": true
+			},
+			"eeveegmax": {
+				"abilities": {
+					"0": "Fluffy Evo"
+				},
+				"baseStats": {
+					"hp": 150,
+					"atk": 75,
+					"def": 70,
+					"spa": 65,
+					"spd": 85,
+					"spe": 75
 				},
 				"types": [
 					"Normal"
@@ -6841,7 +7283,9 @@
 					"Fire",
 					"Fighting"
 				],
-				"passives": [],
+				"passives": [
+					"blaze"
+				],
 				"replaceAbilities": true
 			},
 			"emboaralt": {
@@ -6862,7 +7306,9 @@
 					"Fire",
 					"Fighting"
 				],
-				"passives": [],
+				"passives": [
+					"blaze"
+				],
 				"replaceAbilities": true
 			},
 			"emboarmega": {
@@ -6882,6 +7328,29 @@
 					"Fighting"
 				],
 				"passives": [
+					"blaze",
+					"proficient"
+				],
+				"replaceAbilities": true
+			},
+			"emboarmegaalt": {
+				"abilities": {
+					"0": "Burning Ego"
+				},
+				"baseStats": {
+					"hp": 110,
+					"atk": 150,
+					"def": 93,
+					"spa": 85,
+					"spd": 115,
+					"spe": 75
+				},
+				"types": [
+					"Fire",
+					"Fighting"
+				],
+				"passives": [
+					"blaze",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -6903,7 +7372,31 @@
 					"Fighting"
 				],
 				"passives": [
+					"blaze",
 					"proficient"
+				],
+				"replaceAbilities": true
+			},
+			"emboarreborn": {
+				"abilities": {
+					"0": "Gluttony",
+					"1": "Thick Fat",
+					"H": "Brute Force"
+				},
+				"baseStats": {
+					"hp": 110,
+					"atk": 123,
+					"def": 75,
+					"spa": 80,
+					"spd": 75,
+					"spe": 65
+				},
+				"types": [
+					"Fire",
+					"Fighting"
+				],
+				"passives": [
+					"blaze"
 				],
 				"replaceAbilities": true
 			},
@@ -6946,7 +7439,9 @@
 					"Water",
 					"Steel"
 				],
-				"passives": [],
+				"passives": [
+					"torrent"
+				],
 				"replaceAbilities": true
 			},
 			"empoleonmega": {
@@ -6966,6 +7461,7 @@
 					"Steel"
 				],
 				"passives": [
+					"torrent",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -7109,7 +7605,9 @@
 				"types": [
 					"Psychic"
 				],
-				"passives": [],
+				"passives": [
+					"runaway"
+				],
 				"replaceAbilities": true
 			},
 			"espurr": {
@@ -7372,7 +7870,9 @@
 					"Normal",
 					"Flying"
 				],
-				"passives": [],
+				"passives": [
+					"keeneye"
+				],
 				"replaceAbilities": true
 			},
 			"feebas": {
@@ -7432,7 +7932,9 @@
 					"Water",
 					"Dark"
 				],
-				"passives": [],
+				"passives": [
+					"torrent"
+				],
 				"replaceAbilities": true
 			},
 			"feraligatrgmax": {
@@ -7452,6 +7954,7 @@
 					"Dark"
 				],
 				"passives": [
+					"torrent",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -7473,6 +7976,7 @@
 					"Dragon"
 				],
 				"passives": [
+					"torrent",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -7734,7 +8238,9 @@
 				"types": [
 					"Fire"
 				],
-				"passives": [],
+				"passives": [
+					"runaway"
+				],
 				"replaceAbilities": true
 			},
 			"fletchinder": {
@@ -7948,6 +8454,46 @@
 					"spa": 80,
 					"spd": 80,
 					"spe": 100
+				},
+				"types": [
+					"Ground",
+					"Dragon"
+				],
+				"passives": [
+					"levitate"
+				],
+				"replaceAbilities": true
+			},
+			"flygonmega": {
+				"abilities": {
+					"0": "Desert Spirit"
+				},
+				"baseStats": {
+					"hp": 80,
+					"atk": 100,
+					"def": 85,
+					"spa": 135,
+					"spd": 85,
+					"spe": 135
+				},
+				"types": [
+					"Dragon",
+					"Bug"
+				],
+				"passives": [],
+				"replaceAbilities": true
+			},
+			"flygonmegaz": {
+				"abilities": {
+					"0": "Tremor"
+				},
+				"baseStats": {
+					"hp": 80,
+					"atk": 149,
+					"def": 80,
+					"spa": 80,
+					"spd": 80,
+					"spe": 151
 				},
 				"types": [
 					"Ground",
@@ -8213,7 +8759,9 @@
 				"types": [
 					"Normal"
 				],
-				"passives": [],
+				"passives": [
+					"keeneye"
+				],
 				"replaceAbilities": true
 			},
 			"gabite": {
@@ -8779,7 +9327,9 @@
 				"types": [
 					"Ice"
 				],
-				"passives": [],
+				"passives": [
+					"runaway"
+				],
 				"replaceAbilities": true
 			},
 			"glalie": {
@@ -8925,6 +9475,29 @@
 				"replaceAbilities": true
 			},
 			"gliscor": {
+				"abilities": {
+					"0": "Venom Heal",
+					"1": "Toxic Boost",
+					"H": "Wind Rider"
+				},
+				"baseStats": {
+					"hp": 105,
+					"atk": 105,
+					"def": 135,
+					"spa": 40,
+					"spd": 90,
+					"spe": 95
+				},
+				"types": [
+					"Ground",
+					"Flying"
+				],
+				"passives": [
+					"hypercutter"
+				],
+				"replaceAbilities": true
+			},
+			"gliscoralt": {
 				"abilities": {
 					"0": "Venom Heal",
 					"1": "Toxic Boost",
@@ -9558,7 +10131,9 @@
 					"Water",
 					"Dark"
 				],
-				"passives": [],
+				"passives": [
+					"torrent"
+				],
 				"replaceAbilities": true
 			},
 			"greninjaash": {
@@ -9578,6 +10153,7 @@
 					"Dark"
 				],
 				"passives": [
+					"torrent",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -9598,7 +10174,9 @@
 					"Water",
 					"Dark"
 				],
-				"passives": [],
+				"passives": [
+					"torrent"
+				],
 				"replaceAbilities": true
 			},
 			"greninjamega": {
@@ -9618,6 +10196,7 @@
 					"Dark"
 				],
 				"passives": [
+					"torrent",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -9639,7 +10218,9 @@
 				"types": [
 					"Poison"
 				],
-				"passives": [],
+				"passives": [
+					"liquidooze"
+				],
 				"replaceAbilities": true
 			},
 			"grimeralola": {
@@ -9855,7 +10436,9 @@
 				"types": [
 					"Poison"
 				],
-				"passives": [],
+				"passives": [
+					"liquidooze"
+				],
 				"replaceAbilities": true
 			},
 			"gumshoos": {
@@ -10671,7 +11254,9 @@
 					"Dark",
 					"Dragon"
 				],
-				"passives": [],
+				"passives": [
+					"levitate"
+				],
 				"replaceAbilities": true
 			},
 			"hypno": {
@@ -10776,7 +11361,9 @@
 					"Fire",
 					"Dark"
 				],
-				"passives": [],
+				"passives": [
+					"blaze"
+				],
 				"replaceAbilities": true
 			},
 			"incineroaralt": {
@@ -10797,7 +11384,9 @@
 					"Fire",
 					"Dark"
 				],
-				"passives": [],
+				"passives": [
+					"blaze"
+				],
 				"replaceAbilities": true
 			},
 			"indeedee": {
@@ -10860,7 +11449,9 @@
 					"Fire",
 					"Fighting"
 				],
-				"passives": [],
+				"passives": [
+					"blaze"
+				],
 				"replaceAbilities": true
 			},
 			"infernapemega": {
@@ -10880,6 +11471,7 @@
 					"Fighting"
 				],
 				"passives": [
+					"blaze",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -10922,7 +11514,9 @@
 				"types": [
 					"Water"
 				],
-				"passives": [],
+				"passives": [
+					"torrent"
+				],
 				"replaceAbilities": true
 			},
 			"inteleongmax": {
@@ -10941,6 +11535,7 @@
 					"Water"
 				],
 				"passives": [
+					"torrent",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -11253,7 +11848,9 @@
 				"types": [
 					"Electric"
 				],
-				"passives": [],
+				"passives": [
+					"runaway"
+				],
 				"replaceAbilities": true
 			},
 			"joltik": {
@@ -11664,6 +12261,27 @@
 					"Water",
 					"Steel"
 				],
+				"passives": [
+					"hypercutter"
+				],
+				"replaceAbilities": true
+			},
+			"kinglergmax": {
+				"abilities": {
+					"0": "Tidal Dominion"
+				},
+				"baseStats": {
+					"hp": 120,
+					"atk": 135,
+					"def": 115,
+					"spa": 60,
+					"spd": 80,
+					"spe": 75
+				},
+				"types": [
+					"Water",
+					"Bug"
+				],
 				"passives": [],
 				"replaceAbilities": true
 			},
@@ -11834,7 +12452,7 @@
 			},
 			"koffing": {
 				"abilities": {
-					"0": "Levitate",
+					"0": "Aftermath",
 					"1": "Neutralizing Gas",
 					"H": "Stench"
 				},
@@ -11849,7 +12467,9 @@
 				"types": [
 					"Poison"
 				],
-				"passives": [],
+				"passives": [
+					"levitate"
+				],
 				"replaceAbilities": true
 			},
 			"komala": {
@@ -12384,7 +13004,9 @@
 				"types": [
 					"Grass"
 				],
-				"passives": [],
+				"passives": [
+					"runaway"
+				],
 				"replaceAbilities": true
 			},
 			"leavanny": {
@@ -12937,7 +13559,9 @@
 					"Rock",
 					"Ghost"
 				],
-				"passives": [],
+				"passives": [
+					"levitate"
+				],
 				"replaceAbilities": true
 			},
 			"lurantis": {
@@ -13629,7 +14253,9 @@
 					"Grass",
 					"Fire"
 				],
-				"passives": [],
+				"passives": [
+					"overcoat"
+				],
 				"replaceAbilities": true
 			},
 			"mareanie": {
@@ -13832,7 +14458,9 @@
 					"Bug",
 					"Flying"
 				],
-				"passives": [],
+				"passives": [
+					"shielddust"
+				],
 				"replaceAbilities": true
 			},
 			"maushold": {
@@ -13935,7 +14563,9 @@
 					"Grass",
 					"Fairy"
 				],
-				"passives": [],
+				"passives": [
+					"overgrow"
+				],
 				"replaceAbilities": true
 			},
 			"meganiummega": {
@@ -13955,6 +14585,7 @@
 					"Fairy"
 				],
 				"passives": [
+					"overgrow",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -13976,6 +14607,7 @@
 					"Fire"
 				],
 				"passives": [
+					"overgrow",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -14053,7 +14685,9 @@
 					"Grass",
 					"Dark"
 				],
-				"passives": [],
+				"passives": [
+					"overgrow"
+				],
 				"replaceAbilities": true
 			},
 			"meowstic": {
@@ -14391,7 +15025,9 @@
 				"types": [
 					"Fairy"
 				],
-				"passives": [],
+				"passives": [
+					"sweetveil"
+				],
 				"replaceAbilities": true
 			},
 			"milotic": {
@@ -14597,7 +15233,7 @@
 			},
 			"misdreavus": {
 				"abilities": {
-					"0": "Levitate",
+					"0": "Infiltrator",
 					"1": "Prankster",
 					"H": "Perish Body"
 				},
@@ -14613,7 +15249,9 @@
 					"Ghost",
 					"Fairy"
 				],
-				"passives": [],
+				"passives": [
+					"levitate"
+				],
 				"replaceAbilities": true
 			},
 			"mismagius": {
@@ -14634,7 +15272,9 @@
 					"Ghost",
 					"Fairy"
 				],
-				"passives": [],
+				"passives": [
+					"levitate"
+				],
 				"replaceAbilities": true
 			},
 			"mismagiusaevian": {
@@ -14874,7 +15514,9 @@
 					"Bug",
 					"Flying"
 				],
-				"passives": [],
+				"passives": [
+					"shielddust"
+				],
 				"replaceAbilities": true
 			},
 			"mrmime": {
@@ -15037,7 +15679,9 @@
 					"Poison",
 					"Ghost"
 				],
-				"passives": [],
+				"passives": [
+					"liquidooze"
+				],
 				"replaceAbilities": true
 			},
 			"mukalola": {
@@ -15654,6 +16298,27 @@
 					"spa": 96,
 					"spd": 106,
 					"spe": 80
+				},
+				"types": [
+					"Dark",
+					"Flying"
+				],
+				"passives": [
+					"keeneye"
+				],
+				"replaceAbilities": true
+			},
+			"noctowlmega": {
+				"abilities": {
+					"0": "Sacred Power"
+				},
+				"baseStats": {
+					"hp": 100,
+					"atk": 65,
+					"def": 98,
+					"spa": 106,
+					"spd": 141,
+					"spe": 100
 				},
 				"types": [
 					"Dark",
@@ -17325,6 +17990,27 @@
 					"Bug",
 					"Ground"
 				],
+				"passives": [
+					"hypercutter"
+				],
+				"replaceAbilities": true
+			},
+			"pinsirmega": {
+				"abilities": {
+					"0": "Joyride"
+				},
+				"baseStats": {
+					"hp": 65,
+					"atk": 155,
+					"def": 120,
+					"spa": 65,
+					"spd": 90,
+					"spe": 105
+				},
+				"types": [
+					"Bug",
+					"Flying"
+				],
 				"passives": [],
 				"replaceAbilities": true
 			},
@@ -18062,7 +18748,9 @@
 					"Water",
 					"Fairy"
 				],
-				"passives": [],
+				"passives": [
+					"torrent"
+				],
 				"replaceAbilities": true
 			},
 			"primarinaalt": {
@@ -18083,7 +18771,9 @@
 					"Water",
 					"Fairy"
 				],
-				"passives": [],
+				"passives": [
+					"torrent"
+				],
 				"replaceAbilities": true
 			},
 			"primeape": {
@@ -18408,7 +19098,9 @@
 					"Water",
 					"Fighting"
 				],
-				"passives": [],
+				"passives": [
+					"torrent"
+				],
 				"replaceAbilities": true
 			},
 			"quaxly": {
@@ -19247,7 +19939,9 @@
 				"types": [
 					"Grass"
 				],
-				"passives": [],
+				"passives": [
+					"overgrow"
+				],
 				"replaceAbilities": true
 			},
 			"rillaboomgmax": {
@@ -19266,6 +19960,7 @@
 					"Grass"
 				],
 				"passives": [
+					"overgrow",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -19432,7 +20127,7 @@
 			},
 			"rotom": {
 				"abilities": {
-					"0": "Levitate",
+					"0": "Infiltrator",
 					"1": "Electromorphosis",
 					"H": "Defragment"
 				},
@@ -19448,7 +20143,9 @@
 					"Electric",
 					"Ghost"
 				],
-				"passives": [],
+				"passives": [
+					"levitate"
+				],
 				"replaceAbilities": true
 			},
 			"rotomfan": {
@@ -19456,7 +20153,7 @@
 					"0": "Wind Power",
 					"1": "Windy Surge",
 					"H": "Air Lock",
-					"S": "Levitate"
+					"S": "Soundproof"
 				},
 				"baseStats": {
 					"hp": 60,
@@ -19470,12 +20167,14 @@
 					"Electric",
 					"Flying"
 				],
-				"passives": [],
+				"passives": [
+					"levitate"
+				],
 				"replaceAbilities": true
 			},
 			"rotomfrost": {
 				"abilities": {
-					"0": "Levitate",
+					"0": "Clear Body",
 					"1": "Refrigerate",
 					"H": "Snow Warning"
 				},
@@ -19491,12 +20190,14 @@
 					"Electric",
 					"Ice"
 				],
-				"passives": [],
+				"passives": [
+					"levitate"
+				],
 				"replaceAbilities": true
 			},
 			"rotomheat": {
 				"abilities": {
-					"0": "Levitate",
+					"0": "White Smoke",
 					"1": "Drought",
 					"H": "Flame Body"
 				},
@@ -19512,12 +20213,14 @@
 					"Electric",
 					"Fire"
 				],
-				"passives": [],
+				"passives": [
+					"levitate"
+				],
 				"replaceAbilities": true
 			},
 			"rotommow": {
 				"abilities": {
-					"0": "Levitate",
+					"0": "Leaf Guard",
 					"1": "Grassy Surge",
 					"H": "Seed Sower"
 				},
@@ -19533,12 +20236,14 @@
 					"Electric",
 					"Grass"
 				],
-				"passives": [],
+				"passives": [
+					"levitate"
+				],
 				"replaceAbilities": true
 			},
 			"rotomwash": {
 				"abilities": {
-					"0": "Levitate",
+					"0": "Hydration",
 					"1": "Storm Drain",
 					"H": "Drizzle"
 				},
@@ -19554,7 +20259,9 @@
 					"Electric",
 					"Water"
 				],
-				"passives": [],
+				"passives": [
+					"levitate"
+				],
 				"replaceAbilities": true
 			},
 			"rowlet": {
@@ -19779,7 +20486,9 @@
 					"Water",
 					"Fighting"
 				],
-				"passives": [],
+				"passives": [
+					"torrent"
+				],
 				"replaceAbilities": true
 			},
 			"samurottalt": {
@@ -19800,7 +20509,9 @@
 					"Water",
 					"Fighting"
 				],
-				"passives": [],
+				"passives": [
+					"torrent"
+				],
 				"replaceAbilities": true
 			},
 			"samurotthisui": {
@@ -19821,7 +20532,9 @@
 					"Water",
 					"Dark"
 				],
-				"passives": [],
+				"passives": [
+					"torrent"
+				],
 				"replaceAbilities": true
 			},
 			"samurotthisuialt": {
@@ -19842,7 +20555,9 @@
 					"Water",
 					"Dark"
 				],
-				"passives": [],
+				"passives": [
+					"torrent"
+				],
 				"replaceAbilities": true
 			},
 			"sandaconda": {
@@ -20126,7 +20841,9 @@
 					"Grass",
 					"Dragon"
 				],
-				"passives": [],
+				"passives": [
+					"overgrow"
+				],
 				"replaceAbilities": true
 			},
 			"sceptilemega": {
@@ -20146,6 +20863,7 @@
 					"Dragon"
 				],
 				"passives": [
+					"overgrow",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -20496,7 +21214,9 @@
 					"Grass",
 					"Dragon"
 				],
-				"passives": [],
+				"passives": [
+					"overgrow"
+				],
 				"replaceAbilities": true
 			},
 			"serperiorazzy": {
@@ -20517,7 +21237,9 @@
 					"Grass",
 					"Dragon"
 				],
-				"passives": [],
+				"passives": [
+					"overgrow"
+				],
 				"replaceAbilities": true
 			},
 			"serperiormega": {
@@ -20537,6 +21259,7 @@
 					"Dragon"
 				],
 				"passives": [
+					"overgrow",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -21206,7 +21929,9 @@
 					"Fire",
 					"Ghost"
 				],
-				"passives": [],
+				"passives": [
+					"blaze"
+				],
 				"replaceAbilities": true
 			},
 			"skeledirgeaevian": {
@@ -21227,7 +21952,9 @@
 					"Fairy",
 					"Poison"
 				],
-				"passives": [],
+				"passives": [
+					"blaze"
+				],
 				"replaceAbilities": true
 			},
 			"skeledirgealt": {
@@ -21248,7 +21975,9 @@
 					"Fire",
 					"Ghost"
 				],
-				"passives": [],
+				"passives": [
+					"blaze"
+				],
 				"replaceAbilities": true
 			},
 			"skiddo": {
@@ -21654,7 +22383,9 @@
 					"Fairy",
 					"Fighting"
 				],
-				"passives": [],
+				"passives": [
+					"sweetveil"
+				],
 				"replaceAbilities": true
 			},
 			"smeargle": {
@@ -22117,6 +22848,27 @@
 				"types": [
 					"Rock",
 					"Steel"
+				],
+				"passives": [
+					"levitate"
+				],
+				"replaceAbilities": true
+			},
+			"soluneon": {
+				"abilities": {
+					"0": "Eclipse"
+				},
+				"baseStats": {
+					"hp": 80,
+					"atk": 60,
+					"def": 110,
+					"spa": 95,
+					"spd": 110,
+					"spe": 95
+				},
+				"types": [
+					"Dark",
+					"Psychic"
 				],
 				"passives": [],
 				"replaceAbilities": true
@@ -22843,7 +23595,9 @@
 					"Water",
 					"Poison"
 				],
-				"passives": [],
+				"passives": [
+					"liquidooze"
+				],
 				"replaceAbilities": true
 			},
 			"swalotpulse": {
@@ -22883,7 +23637,9 @@
 					"Water",
 					"Ground"
 				],
-				"passives": [],
+				"passives": [
+					"torrent"
+				],
 				"replaceAbilities": true
 			},
 			"swampertmega": {
@@ -22903,6 +23659,7 @@
 					"Ground"
 				],
 				"passives": [
+					"torrent",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -22986,7 +23743,9 @@
 				"types": [
 					"Fairy"
 				],
-				"passives": [],
+				"passives": [
+					"sweetveil"
+				],
 				"replaceAbilities": true
 			},
 			"swirlpool": {
@@ -23088,7 +23847,9 @@
 				"types": [
 					"Fairy"
 				],
-				"passives": [],
+				"passives": [
+					"runaway"
+				],
 				"replaceAbilities": true
 			},
 			"tactite": {
@@ -23493,10 +24254,56 @@
 					"Water",
 					"Poison"
 				],
-				"passives": [],
+				"passives": [
+					"liquidooze"
+				],
 				"replaceAbilities": true
 			},
 			"tentacruel": {
+				"abilities": {
+					"0": "Venom Veil",
+					"1": "Regenerator",
+					"H": "Water Absorb"
+				},
+				"baseStats": {
+					"hp": 80,
+					"atk": 70,
+					"def": 85,
+					"spa": 100,
+					"spd": 135,
+					"spe": 100
+				},
+				"types": [
+					"Water",
+					"Poison"
+				],
+				"passives": [
+					"liquidooze"
+				],
+				"replaceAbilities": true
+			},
+			"tentacruelalt": {
+				"abilities": {
+					"0": "Venom Veil",
+					"1": "Regenerator",
+					"H": "Water Absorb"
+				},
+				"baseStats": {
+					"hp": 80,
+					"atk": 70,
+					"def": 85,
+					"spa": 100,
+					"spd": 135,
+					"spe": 100
+				},
+				"types": [
+					"Water",
+					"Poison"
+				],
+				"passives": [],
+				"replaceAbilities": true
+			},
+			"tentacruelreborn": {
 				"abilities": {
 					"0": "Venom Veil",
 					"1": "Regenerator",
@@ -24075,7 +24882,9 @@
 					"Grass",
 					"Ground"
 				],
-				"passives": [],
+				"passives": [
+					"overgrow"
+				],
 				"replaceAbilities": true
 			},
 			"torterramegax": {
@@ -24095,6 +24904,7 @@
 					"Ground"
 				],
 				"passives": [
+					"overgrow",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -24116,6 +24926,7 @@
 					"Rock"
 				],
 				"passives": [
+					"overgrow",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -24136,7 +24947,9 @@
 					"Ground",
 					"Ice"
 				],
-				"passives": [],
+				"passives": [
+					"overgrow"
+				],
 				"replaceAbilities": true
 			},
 			"torterrariftshatter": {
@@ -24155,7 +24968,9 @@
 					"Grass",
 					"Fire"
 				],
-				"passives": [],
+				"passives": [
+					"overgrow"
+				],
 				"replaceAbilities": true
 			},
 			"totodile": {
@@ -24489,7 +25304,7 @@
 			},
 			"tynamo": {
 				"abilities": {
-					"0": "Levitate"
+					"0": "Static"
 				},
 				"baseStats": {
 					"hp": 35,
@@ -24502,7 +25317,9 @@
 				"types": [
 					"Electric"
 				],
-				"passives": [],
+				"passives": [
+					"levitate"
+				],
 				"replaceAbilities": true
 			},
 			"typenull": {
@@ -24541,7 +25358,9 @@
 					"Fire",
 					"Ground"
 				],
-				"passives": [],
+				"passives": [
+					"blaze"
+				],
 				"replaceAbilities": true
 			},
 			"typhlosionalt": {
@@ -24562,7 +25381,9 @@
 					"Fire",
 					"Ground"
 				],
-				"passives": [],
+				"passives": [
+					"blaze"
+				],
 				"replaceAbilities": true
 			},
 			"typhlosionhisui": {
@@ -24583,7 +25404,9 @@
 					"Fire",
 					"Ghost"
 				],
-				"passives": [],
+				"passives": [
+					"blaze"
+				],
 				"replaceAbilities": true
 			},
 			"typhlosionmega": {
@@ -24603,6 +25426,7 @@
 					"Electric"
 				],
 				"passives": [
+					"blaze",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -24690,6 +25514,30 @@
 				"replaceAbilities": true
 			},
 			"umbreon": {
+				"abilities": {
+					"0": "Poison Heal",
+					"1": "Moonlight Vigil",
+					"H": "Dark Aura",
+					"S": "Eclipse",
+					"G": "Ascendance"
+				},
+				"baseStats": {
+					"hp": 95,
+					"atk": 65,
+					"def": 110,
+					"spa": 60,
+					"spd": 130,
+					"spe": 65
+				},
+				"types": [
+					"Dark"
+				],
+				"passives": [
+					"runaway"
+				],
+				"replaceAbilities": true
+			},
+			"umbreonperfect": {
 				"abilities": {
 					"0": "Poison Heal",
 					"1": "Moonlight Vigil",
@@ -24925,7 +25773,9 @@
 				"types": [
 					"Water"
 				],
-				"passives": [],
+				"passives": [
+					"runaway"
+				],
 				"replaceAbilities": true
 			},
 			"varoom": {
@@ -25050,7 +25900,9 @@
 					"Grass",
 					"Poison"
 				],
-				"passives": [],
+				"passives": [
+					"overgrow"
+				],
 				"replaceAbilities": true
 			},
 			"venusaurgmax": {
@@ -25070,6 +25922,7 @@
 					"Poison"
 				],
 				"passives": [
+					"overgrow",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -25091,6 +25944,7 @@
 					"Poison"
 				],
 				"passives": [
+					"overgrow",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -25113,7 +25967,9 @@
 					"Bug",
 					"Flying"
 				],
-				"passives": [],
+				"passives": [
+					"sweetveil"
+				],
 				"replaceAbilities": true
 			},
 			"vibrava": {
@@ -25295,7 +26151,78 @@
 					"Bug",
 					"Flying"
 				],
-				"passives": [],
+				"passives": [
+					"shielddust"
+				],
+				"replaceAbilities": true
+			},
+			"vivillonarchipelago": {
+				"abilities": {
+					"0": "Shield Dust",
+					"1": "Compound Eyes",
+					"H": "Friend Guard"
+				},
+				"baseStats": {
+					"hp": 80,
+					"atk": 52,
+					"def": 50,
+					"spa": 90,
+					"spd": 50,
+					"spe": 89
+				},
+				"types": [
+					"Bug",
+					"Flying"
+				],
+				"passives": [
+					"shielddust"
+				],
+				"replaceAbilities": true
+			},
+			"vivilloncontinental": {
+				"abilities": {
+					"0": "Shield Dust",
+					"1": "Compound Eyes",
+					"H": "Friend Guard"
+				},
+				"baseStats": {
+					"hp": 80,
+					"atk": 52,
+					"def": 50,
+					"spa": 90,
+					"spd": 50,
+					"spe": 89
+				},
+				"types": [
+					"Bug",
+					"Flying"
+				],
+				"passives": [
+					"shielddust"
+				],
+				"replaceAbilities": true
+			},
+			"vivillonelegant": {
+				"abilities": {
+					"0": "Shield Dust",
+					"1": "Compound Eyes",
+					"H": "Friend Guard"
+				},
+				"baseStats": {
+					"hp": 80,
+					"atk": 52,
+					"def": 50,
+					"spa": 90,
+					"spd": 50,
+					"spe": 89
+				},
+				"types": [
+					"Bug",
+					"Flying"
+				],
+				"passives": [
+					"shielddust"
+				],
 				"replaceAbilities": true
 			},
 			"vivillonfancy": {
@@ -25316,7 +26243,193 @@
 					"Bug",
 					"Flying"
 				],
-				"passives": [],
+				"passives": [
+					"shielddust"
+				],
+				"replaceAbilities": true
+			},
+			"vivillongarden": {
+				"abilities": {
+					"0": "Shield Dust",
+					"1": "Compound Eyes",
+					"H": "Friend Guard"
+				},
+				"baseStats": {
+					"hp": 80,
+					"atk": 52,
+					"def": 50,
+					"spa": 90,
+					"spd": 50,
+					"spe": 89
+				},
+				"types": [
+					"Bug",
+					"Flying"
+				],
+				"passives": [
+					"shielddust"
+				],
+				"replaceAbilities": true
+			},
+			"vivillonhighplains": {
+				"abilities": {
+					"0": "Shield Dust",
+					"1": "Compound Eyes",
+					"H": "Friend Guard"
+				},
+				"baseStats": {
+					"hp": 80,
+					"atk": 52,
+					"def": 50,
+					"spa": 90,
+					"spd": 50,
+					"spe": 89
+				},
+				"types": [
+					"Bug",
+					"Flying"
+				],
+				"passives": [
+					"shielddust"
+				],
+				"replaceAbilities": true
+			},
+			"vivillonicysnow": {
+				"abilities": {
+					"0": "Shield Dust",
+					"1": "Compound Eyes",
+					"H": "Friend Guard"
+				},
+				"baseStats": {
+					"hp": 80,
+					"atk": 52,
+					"def": 50,
+					"spa": 90,
+					"spd": 50,
+					"spe": 89
+				},
+				"types": [
+					"Bug",
+					"Flying"
+				],
+				"passives": [
+					"shielddust"
+				],
+				"replaceAbilities": true
+			},
+			"vivillonjungle": {
+				"abilities": {
+					"0": "Shield Dust",
+					"1": "Compound Eyes",
+					"H": "Friend Guard"
+				},
+				"baseStats": {
+					"hp": 80,
+					"atk": 52,
+					"def": 50,
+					"spa": 90,
+					"spd": 50,
+					"spe": 89
+				},
+				"types": [
+					"Bug",
+					"Flying"
+				],
+				"passives": [
+					"shielddust"
+				],
+				"replaceAbilities": true
+			},
+			"vivillonmarine": {
+				"abilities": {
+					"0": "Shield Dust",
+					"1": "Compound Eyes",
+					"H": "Friend Guard"
+				},
+				"baseStats": {
+					"hp": 80,
+					"atk": 52,
+					"def": 50,
+					"spa": 90,
+					"spd": 50,
+					"spe": 89
+				},
+				"types": [
+					"Bug",
+					"Flying"
+				],
+				"passives": [
+					"shielddust"
+				],
+				"replaceAbilities": true
+			},
+			"vivillonmodern": {
+				"abilities": {
+					"0": "Shield Dust",
+					"1": "Compound Eyes",
+					"H": "Friend Guard"
+				},
+				"baseStats": {
+					"hp": 80,
+					"atk": 52,
+					"def": 50,
+					"spa": 90,
+					"spd": 50,
+					"spe": 89
+				},
+				"types": [
+					"Bug",
+					"Flying"
+				],
+				"passives": [
+					"shielddust"
+				],
+				"replaceAbilities": true
+			},
+			"vivillonmonsoon": {
+				"abilities": {
+					"0": "Shield Dust",
+					"1": "Compound Eyes",
+					"H": "Friend Guard"
+				},
+				"baseStats": {
+					"hp": 80,
+					"atk": 52,
+					"def": 50,
+					"spa": 90,
+					"spd": 50,
+					"spe": 89
+				},
+				"types": [
+					"Bug",
+					"Flying"
+				],
+				"passives": [
+					"shielddust"
+				],
+				"replaceAbilities": true
+			},
+			"vivillonocean": {
+				"abilities": {
+					"0": "Shield Dust",
+					"1": "Compound Eyes",
+					"H": "Friend Guard"
+				},
+				"baseStats": {
+					"hp": 80,
+					"atk": 52,
+					"def": 50,
+					"spa": 90,
+					"spd": 50,
+					"spe": 89
+				},
+				"types": [
+					"Bug",
+					"Flying"
+				],
+				"passives": [
+					"shielddust"
+				],
 				"replaceAbilities": true
 			},
 			"vivillonpokeball": {
@@ -25337,7 +26450,147 @@
 					"Bug",
 					"Flying"
 				],
-				"passives": [],
+				"passives": [
+					"shielddust"
+				],
+				"replaceAbilities": true
+			},
+			"vivillonpolar": {
+				"abilities": {
+					"0": "Shield Dust",
+					"1": "Compound Eyes",
+					"H": "Friend Guard"
+				},
+				"baseStats": {
+					"hp": 80,
+					"atk": 52,
+					"def": 50,
+					"spa": 90,
+					"spd": 50,
+					"spe": 89
+				},
+				"types": [
+					"Bug",
+					"Flying"
+				],
+				"passives": [
+					"shielddust"
+				],
+				"replaceAbilities": true
+			},
+			"vivillonriver": {
+				"abilities": {
+					"0": "Shield Dust",
+					"1": "Compound Eyes",
+					"H": "Friend Guard"
+				},
+				"baseStats": {
+					"hp": 80,
+					"atk": 52,
+					"def": 50,
+					"spa": 90,
+					"spd": 50,
+					"spe": 89
+				},
+				"types": [
+					"Bug",
+					"Flying"
+				],
+				"passives": [
+					"shielddust"
+				],
+				"replaceAbilities": true
+			},
+			"vivillonsandstorm": {
+				"abilities": {
+					"0": "Shield Dust",
+					"1": "Compound Eyes",
+					"H": "Friend Guard"
+				},
+				"baseStats": {
+					"hp": 80,
+					"atk": 52,
+					"def": 50,
+					"spa": 90,
+					"spd": 50,
+					"spe": 89
+				},
+				"types": [
+					"Bug",
+					"Flying"
+				],
+				"passives": [
+					"shielddust"
+				],
+				"replaceAbilities": true
+			},
+			"vivillonsavanna": {
+				"abilities": {
+					"0": "Shield Dust",
+					"1": "Compound Eyes",
+					"H": "Friend Guard"
+				},
+				"baseStats": {
+					"hp": 80,
+					"atk": 52,
+					"def": 50,
+					"spa": 90,
+					"spd": 50,
+					"spe": 89
+				},
+				"types": [
+					"Bug",
+					"Flying"
+				],
+				"passives": [
+					"shielddust"
+				],
+				"replaceAbilities": true
+			},
+			"vivillonsun": {
+				"abilities": {
+					"0": "Shield Dust",
+					"1": "Compound Eyes",
+					"H": "Friend Guard"
+				},
+				"baseStats": {
+					"hp": 80,
+					"atk": 52,
+					"def": 50,
+					"spa": 90,
+					"spd": 50,
+					"spe": 89
+				},
+				"types": [
+					"Bug",
+					"Flying"
+				],
+				"passives": [
+					"shielddust"
+				],
+				"replaceAbilities": true
+			},
+			"vivillontundra": {
+				"abilities": {
+					"0": "Shield Dust",
+					"1": "Compound Eyes",
+					"H": "Friend Guard"
+				},
+				"baseStats": {
+					"hp": 80,
+					"atk": 52,
+					"def": 50,
+					"spa": 90,
+					"spd": 50,
+					"spe": 89
+				},
+				"types": [
+					"Bug",
+					"Flying"
+				],
+				"passives": [
+					"shielddust"
+				],
 				"replaceAbilities": true
 			},
 			"volbeat": {
@@ -25722,7 +26975,9 @@
 				"types": [
 					"Normal"
 				],
-				"passives": [],
+				"passives": [
+					"keeneye"
+				],
 				"replaceAbilities": true
 			},
 			"wattrel": {
@@ -25824,7 +27079,9 @@
 				"types": [
 					"Poison"
 				],
-				"passives": [],
+				"passives": [
+					"levitate"
+				],
 				"replaceAbilities": true
 			},
 			"weezinggalar": {
@@ -25845,7 +27102,9 @@
 					"Poison",
 					"Fairy"
 				],
-				"passives": [],
+				"passives": [
+					"levitate"
+				],
 				"replaceAbilities": true
 			},
 			"whimsicott": {
@@ -27524,8 +28783,8 @@
 				"name": "Atrocity",
 				"num": 10126,
 				"gen": 9,
-				"desc": "Mold Breaker: moves ignore bypassable opposing abilities. Eligible Normal moves become Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Dragon moves receive STAB. Prevents freezing outside Cold Eclipse and cures existing freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den blocks Fire moves. On Dragon's Den, Volcanic or Cold Eclipse entry, gains +1 Defense and Sp. Def. Same-type moves have 1.3x power. Immune to hail damage. At turn end, deals Fire-type damage to foes equal to 1/16 max HP, doubled if the foe is burned or the holder used a Fire or Dragon move that turn. Fire immunities block this damage; type effectiveness scales it only in Free-for-All. Contact moves have 1.3x power. Heals 1/16 max HP each turn. Damaging moves have a further 1.3x power, plus another 1.3x on Cold Eclipse. Critical-hit ratio rises by 1. Dragon Rush cannot miss and has a further 1.5x power. Defense and Sp. Def are 1.3x, or 1.5x on Cold Eclipse. While Royal Decree or Empress is active without Neutralization, move power gains another 1.3x and incoming attack damage falls by 30%. Cannot be suppressed.",
-				"shortDesc": "Stronger attacks and defenses, extra critical-hit chance, and a stronger Dragon Rush that cannot miss.",
+				"desc": "Mold Breaker: moves ignore bypassable opposing abilities. Eligible Normal moves become Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Dragon moves receive STAB. Prevents freezing outside Cold Eclipse and cures existing freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den blocks Fire moves. On Dragon's Den, Volcanic or Cold Eclipse entry, gains +1 Defense and Sp. Def. Same-type moves have 1.3x power. Immune to hail damage. At turn end, deals Fire-type damage to foes equal to 1/16 max HP, doubled if the foe is burned or the holder used a Fire or Dragon move that turn. Fire immunities block this damage; type effectiveness scales it only in Free-for-All. Contact moves have 1.3x power. Heals 1/16 max HP each turn. Damaging moves have a further 1.3x power, plus another 1.3x on Cold Eclipse. Defense and Sp. Def are 1.3x, or 1.5x on Cold Eclipse. While Royal Decree or Empress is active without Neutralization, move power gains another 1.3x and incoming attack damage falls by 30%. Cannot be suppressed.",
+				"shortDesc": "Stronger attacks and defenses; ignores bypassable abilities; heals 1/16 HP each turn.",
 				"rating": 5,
 				"flags": {
 					"cantsuppress": 1
@@ -29076,8 +30335,8 @@
 				"name": "Dread Wings",
 				"num": 11248,
 				"gen": 9,
-				"desc": "Levitate + full local Unnerve: airborne with normal Ground and grounded-hazard immunity; foes cannot eat Berries or use field seeds while Unnerve is active. On Cold Eclipse entry, lowers opposing Speed one stage unless protected by Substitute. A Dark Pulse that damages a surviving foe also applies Torment under normal volatile-status rules, preventing consecutive use of the same move. Existing Torment does not stack.",
-				"shortDesc": "Dark Pulse damage also applies Torment to surviving foes.",
+				"desc": "Full local Intimidate and Unnerve: on entry, lowers adjacent foes' Attack one stage under normal Intimidate protections; foes cannot eat Berries or use field seeds while Unnerve is active. On Cold Eclipse entry, lowers opposing Speed one stage unless protected by Substitute. A Dark Pulse that damages a surviving foe also applies Torment under normal volatile-status rules, preventing consecutive use of the same move. Existing Torment does not stack.",
+				"shortDesc": "Weakens foes on entry; Dark Pulse damage applies Torment to surviving foes.",
 				"rating": 4,
 				"flags": {
 					"breakable": 1
@@ -32801,8 +34060,8 @@
 				"name": "Pollen Bloom",
 				"num": 10137,
 				"gen": 9,
-				"desc": "Same-type moves have 1.3x power. Incoming Fire and Ice attacks use half the attacker's offensive stat. Immune to hail damage. When attacking, ignores the target's Defense, Sp. Def and evasion stages. When defending, ignores the attacker's Attack, Defense, Sp. Atk and accuracy stages. Reveals opposing Illusions on entry. At turn end, opposing non-Grass Pokemon take Grass-type damage equal to 1/16 max HP, blocked by Grass immunities; it heals the damage dealt by that chip. Only in Free-for-All does Grass type effectiveness scale this chip.",
-				"shortDesc": "Healing Grass chip scales by type in FFA.",
+				"desc": "Thick Fat + Unaware. Same-type attacks gain 30% power. Fire and Ice attacks use half the attacker's attacking stat; hail causes no damage. Ignores the foe's Defense, Sp. Def and evasion changes when attacking, and their Attack, Defense, Sp. Atk and accuracy changes when defending. Reveals opposing Illusions on entry. At each turn's end, drains 1/16 of each foe's base maximum HP and heals by the HP actually drained. Grass types and Grass-immune foes are unaffected. In Free-for-All only, Grass weaknesses and resistances change the drain amount.",
+				"shortDesc": "Same-type attacks gain 30% power. Each turn, drains 1/16 HP from eligible foes and heals that amount; Grass matchups scale the drain only in FFA.",
 				"rating": 4,
 				"flags": {
 					"breakable": 1
@@ -36881,8 +38140,8 @@
 				"name": "Void Crossing",
 				"num": 11314,
 				"gen": 9,
-				"desc": "Levitate + Magic Guard. Its first executed damaging Ghost move or Power Gem each entry bypasses opposing screens and Substitute. Misses, protection and immunity still spend the bypass; being prevented from acting does not. Switching restores the use. Includes the components’ normal effects and field interactions.",
-				"shortDesc": "Its first Ghost attack or Power Gem bypasses screens and Substitute.",
+				"desc": "Magic Guard + Infiltrator. After a damaging Ghost move or Power Gem hits an opponent, curses it through the end of the following turn. Its next damaging move deals 20% less damage across all hits and targets, then consumes the curse. Status moves do not consume it. Reapplying refreshes the duration without stacking; switching removes it.",
+				"shortDesc": "Ghost hits or Power Gem curse foes: their next attack deals 20% less damage.",
 				"rating": 4,
 				"flags": {},
 				"isNonstandard": null
@@ -40303,7 +41562,7 @@
 				"type": "Dark",
 				"category": "Status",
 				"basePower": 0,
-				"accuracy": 80,
+				"accuracy": 70,
 				"pp": 10,
 				"priority": 0,
 				"target": "allAdjacentFoes",
@@ -40313,8 +41572,8 @@
 					"mirror": 1,
 					"metronome": 1
 				},
-				"desc": "Has 80% accuracy and causes the target to fall asleep. If used by Mega Banette with its custom Ability, this move has 90% accuracy.",
-				"shortDesc": "80% sleep; Mega Banette custom Ability: 90%."
+				"desc": "Has 70% accuracy. Puts adjacent opposing Pokemon to sleep.",
+				"shortDesc": "Puts adjacent foes to sleep."
 			},
 			"dazzlinggleam": {
 				"name": "Dazzling Gleam",
@@ -40419,8 +41678,8 @@
 					"protect": 1,
 					"mirror": 1
 				},
-				"desc": "",
-				"shortDesc": ""
+				"desc": "Usually moves after other attacks (-4 priority). Power doubles from 65 to 130 if the target already damaged the user this turn.",
+				"shortDesc": "Moves late. 2x power if the target hurt the user this turn."
 			},
 			"destinybond": {
 				"name": "Destiny Bond",
@@ -43269,6 +44528,20 @@
 				"flags": {},
 				"desc": "Ghost-type, 100 Base Power. Uses the user's higher offensive stat. Hits the selected foe at full power, then makes a separate 50 Base Power Ghost-type hit against one other adjacent foe, if present. The follow-up checks its own type immunity and protection. In a single battle, there is no follow-up.",
 				"shortDesc": "100 BP Ghost to one foe; 50 BP Ghost follow-up to another foe."
+			},
+			"gmaxsteelsurge": {
+				"name": "G-Max Steelsurge",
+				"num": 1000,
+				"type": "Steel",
+				"category": "Physical",
+				"basePower": 10,
+				"accuracy": true,
+				"pp": 5,
+				"priority": 0,
+				"target": "adjacentFoe",
+				"flags": {},
+				"desc": "Power is equal to the base move's Max Move power. If this move is successful, it sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in. Foes lose 1/32, 1/16, 1/8, 1/4, or 1/2 of their maximum HP, rounded down, based on their weakness to the Steel type; 0.25x, 0.5x, neutral, 2x, or 4x, respectively. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin or Defog successfully, or is hit by Defog.",
+				"shortDesc": "Base move affects power. Foes: Steel hazard."
 			},
 			"grassknot": {
 				"name": "Grass Knot",
@@ -50239,8 +51512,8 @@
 					"nosleeptalk": 1,
 					"failinstruct": 1
 				},
-				"desc": "This attack charges with +4 priority on its actual charge turn and executes at normal priority on the second turn. Raises the user's Attack, Defense, and Special Defense by 1 stage each on the first turn. While charging, the user takes 0.7x damage from attacks. After a successful hit, the user restores 1/8 of its maximum HP. If the charge is skipped, including by Power Herb, it executes without the charge-turn priority.",
-				"shortDesc": "+4 charge: +Atk/Def/SpD, 0.7x damage. Hit heals 1/8."
+				"desc": "Charges with +2 priority, raising the user's Attack, Defense, and Special Defense by 1 stage each. While charging, the user takes 20% less damage from attacks. Attacks at normal priority on the next turn. After dealing damage, restores 10% of the user's base maximum HP. Skipping the charge, such as with Power Herb, keeps the stat boosts but does not grant charge-turn priority or the charging damage reduction.",
+				"shortDesc": "+2 charge: +1 Atk/Def/SpD, 20% less damage. Hit heals 10%."
 			},
 			"skyattack": {
 				"name": "Sky Attack",
@@ -54746,7 +56019,7 @@
 			],
 			"dreadpresence": [],
 			"dreadwings": [
-				"levitate",
+				"intimidate",
 				"unnerve"
 			],
 			"dreamrefuge": [
@@ -56459,8 +57732,8 @@
 				"insomnia"
 			],
 			"voidcrossing": [
-				"levitate",
-				"magicguard"
+				"magicguard",
+				"infiltrator"
 			],
 			"voiddrift": [
 				"levitate",
@@ -57228,9 +58501,7 @@
 				"moldbreaker"
 			],
 			"atrocity": [
-				"moldbreaker",
 				"unboundblaze",
-				"selfsufficient",
 				"toughclaws"
 			],
 			"wickedsnare": [
@@ -57583,7 +58854,8 @@
 				"selfsufficient"
 			],
 			"pollenbloom": [
-				"thickfat"
+				"thickfat",
+				"unaware"
 			],
 			"firemane": [],
 			"blazingmane": [],
@@ -58886,7 +60158,7 @@
 				"infiltrator"
 			],
 			"dreadwings": [
-				"levitate",
+				"intimidate",
 				"unnerve"
 			],
 			"causticchamber": [
@@ -59051,8 +60323,8 @@
 				"innerfocus"
 			],
 			"voidcrossing": [
-				"levitate",
-				"magicguard"
+				"magicguard",
+				"infiltrator"
 			]
 		}
 	}

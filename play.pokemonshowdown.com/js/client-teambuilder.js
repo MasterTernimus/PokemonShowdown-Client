@@ -4085,7 +4085,7 @@
 		var builds = data.builds.filter(function (b) { return T.id(b.set.species) === T.id(set.species); });
 		var open = this.openSetTools && this.openSetTools.has(set);
 		var selectedBuild = this.selectedSavedSets && this.selectedSavedSets.get(set);
-		var box = '<details class="set-tools-panel"' + (open ? ' open' : '') + '><summary>Set &amp; form options<span class="set-tools-state"></span></summary><div class="set-tools-content"><div class="set-tools-row"><span class="set-tools-label">Saved set</span><div class="set-tools-controls"><select class="saved-build-choice" aria-label="Saved build for ' + escape(set.species) + '"><option value="">Load a saved set…</option>';
+		var box = '<details class="set-tools-panel set-tools-compact"' + (open ? ' open' : '') + '><summary title="Saved sets, battle forms and calculator">Set &amp; form</summary><div class="set-tools-content"><span class="set-tools-state"></span><div class="set-tools-row"><span class="set-tools-label">Saved set</span><div class="set-tools-controls"><select class="saved-build-choice" aria-label="Saved build for ' + escape(set.species) + '"><option value="">Load a saved set…</option>';
 		builds.forEach(function (b) {
 			box += '<option value="' + escape(b.id) + '"' + (selectedBuild === b.id ? ' selected' : '') + '>' + escape(b.name) + ' — ' + escape(T.compatibility(b, set, self.curTeam.format, self.curTeam.dex)) + '</option>';
 		});
@@ -4595,9 +4595,9 @@
 				var ability = this.curTeam.dex.abilities.get(selected.ability);
 				box += '<div class="form-preview-result"><span class="form-preview-sprite" style="display:inline-block;width:100px;height:100px;' + Dex.getTeambuilderSprite(view, this.curTeam.gen) + '"></span><strong>Preview: ' + escape(selected.name) + '</strong><span>' + escape(selected.types.join(' / ')) + '</span><span><b>Ability: ' + escape(selected.ability) + '</b> — ' + escape(ability.shortDesc || ability.desc || 'No description available.') + '</span></div>';
 				box += renderStarterPassives(this.curTeam.dex.species.get(selected.species || selected.name));
-				var components = Dex.getAbilityDisplayComponents(toID(selected.ability), this.curTeam.dex);
+				var components = Dex.getAbilityDisplayComponents(toID(selected.ability), this.curTeam.dex, this.curTeam.dex.species.get(selected.species || selected.name).passives);
 				if (components.length) box += '<p class="form-preview-notice"><b>Includes:</b> ' + components.map(function (id) { return escape(Dex.abilities.get(id).name); }).join(' · ') + '</p>';
-				if (ability.desc && ability.desc !== ability.shortDesc) box += '<details class="form-preview-help"><summary>Full ability effect</summary><p>' + escape(ability.desc) + '</p></details>';
+				if (ability.desc && ability.desc !== ability.shortDesc) box += '<details class="form-preview-help"><summary>Full ability effect</summary><p>' + Dex.getAbilityDescriptionLines(ability.desc).map(function (line) { return escape(line); }).join('</p><p>') + '</p></details>';
 				box += this.renderFormStatComparison(set, selected);
 				box += '<p class="form-preview-notice">PREVIEW STATS — saved Pokémon unchanged. EVs and IVs edit your saved base set; shown stats use this form.</p>';
 
@@ -4994,9 +4994,9 @@
 
 // Species passives are informational; they are not saved in the team's ability slot.
 function renderStarterPassives(species) {
- if (!species || !species.passives || !species.passives.length) return '';
- return '<div class="starter-passives"><label>Passives</label>' + species.passives.map(function (id) {
-  var ability = Dex.abilities.get(id);
-  return '<span class="passive-chip" title="' + BattleLog.escapeHTML(ability.shortDesc || ability.desc) + '">' + BattleLog.escapeHTML(ability.name) + '</span>';
- }).join(' ') + '</div>';
+	if (!species || !species.passives || !species.passives.length) return '';
+	return '<div class="starter-passives"><label>Passives</label>' + species.passives.map(function (id) {
+		var ability = Dex.abilities.get(id);
+		return '<span class="passive-chip" title="' + BattleLog.escapeHTML(ability.shortDesc || ability.desc) + '">' + BattleLog.escapeHTML(ability.name) + '</span>';
+	}).join(' ') + '</div>';
 }

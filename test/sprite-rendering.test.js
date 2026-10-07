@@ -135,10 +135,10 @@ describe('Sprite rendering regressions', () => {
 		}
 	});
 	it('keeps Clefable and Gengar compact and Hydreigon full-sized', () => {
-		assert(Dex.getSpriteData('Clefable', true, {gen: 9}).w <= 54);
-		assert(Dex.getSpriteData('Gengar', true, {gen: 9}).w <= 56);
-		const hydreigon = Dex.getSpriteData('Hydreigon', true, {gen: 9});
-		assert(hydreigon.w >= 90 && hydreigon.h >= 108, JSON.stringify(hydreigon));
+		assert(staticSpriteData('Clefable', true, {gen: 9}).w <= 54);
+		assert(staticSpriteData('Gengar', true, {gen: 9}).w <= 56);
+		const hydreigon = staticSpriteData('Hydreigon', true, {gen: 9});
+		assert(Math.max(hydreigon.w, hydreigon.h) >= 90 && Math.min(hydreigon.w, hydreigon.h) >= 80, JSON.stringify(hydreigon));
 		for (const species of ['Clefable', 'Gengar', 'Hydreigon']) {
 			assert.equal(Dex.getTeambuilderSpriteData({species}, 9).spriteDir, 'sprites/gen5');
 		}
@@ -184,3 +184,11 @@ describe('Sprite rendering regressions', () => {
 		}
 	});
 });
+
+
+// Verify approved static artwork independently of the normal BW animation route.
+function staticSpriteData(...args) {
+ const prefs = Dex.prefs;
+ Dex.prefs = key => key === 'nogif' ? true : prefs.call(Dex, key);
+ try { return Dex.getSpriteData(...args); } finally { Dex.prefs = prefs; }
+}

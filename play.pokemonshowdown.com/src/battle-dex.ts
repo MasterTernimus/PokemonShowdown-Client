@@ -15946,6 +15946,7 @@ for (const [id, update] of Object.entries({
 
 
 
+
 // BEGIN SERVER WORKING SYNC SPECIES
 for (const [id, update] of Object.entries({
 	"ababo": {
@@ -16170,7 +16171,195 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Fairy"
 		],
+		"passives": [
+			"sweetveil"
+		],
+		"replaceAbilities": true
+	},
+	"alcremiecaramelswirl": {
+		"abilities": {
+			"0": "Sweet Veil",
+			"H": "Aroma Veil"
+		},
+		"baseStats": {
+			"hp": 65,
+			"atk": 60,
+			"def": 75,
+			"spa": 110,
+			"spd": 121,
+			"spe": 64
+		},
+		"types": [
+			"Fairy"
+		],
+		"passives": [
+			"sweetveil"
+		],
+		"replaceAbilities": true
+	},
+	"alcremiegmax": {
+		"abilities": {
+			"0": "Sweet Sanctuary"
+		},
+		"baseStats": {
+			"hp": 130,
+			"atk": 60,
+			"def": 75,
+			"spa": 110,
+			"spd": 121,
+			"spe": 64
+		},
+		"types": [
+			"Fairy"
+		],
 		"passives": [],
+		"replaceAbilities": true
+	},
+	"alcremielemoncream": {
+		"abilities": {
+			"0": "Sweet Veil",
+			"H": "Aroma Veil"
+		},
+		"baseStats": {
+			"hp": 65,
+			"atk": 60,
+			"def": 75,
+			"spa": 110,
+			"spd": 121,
+			"spe": 64
+		},
+		"types": [
+			"Fairy"
+		],
+		"passives": [
+			"sweetveil"
+		],
+		"replaceAbilities": true
+	},
+	"alcremiematchacream": {
+		"abilities": {
+			"0": "Sweet Veil",
+			"H": "Aroma Veil"
+		},
+		"baseStats": {
+			"hp": 65,
+			"atk": 60,
+			"def": 75,
+			"spa": 110,
+			"spd": 121,
+			"spe": 64
+		},
+		"types": [
+			"Fairy"
+		],
+		"passives": [
+			"sweetveil"
+		],
+		"replaceAbilities": true
+	},
+	"alcremiemintcream": {
+		"abilities": {
+			"0": "Sweet Veil",
+			"H": "Aroma Veil"
+		},
+		"baseStats": {
+			"hp": 65,
+			"atk": 60,
+			"def": 75,
+			"spa": 110,
+			"spd": 121,
+			"spe": 64
+		},
+		"types": [
+			"Fairy"
+		],
+		"passives": [
+			"sweetveil"
+		],
+		"replaceAbilities": true
+	},
+	"alcremierainbowswirl": {
+		"abilities": {
+			"0": "Sweet Veil",
+			"H": "Aroma Veil"
+		},
+		"baseStats": {
+			"hp": 65,
+			"atk": 60,
+			"def": 75,
+			"spa": 110,
+			"spd": 121,
+			"spe": 64
+		},
+		"types": [
+			"Fairy"
+		],
+		"passives": [
+			"sweetveil"
+		],
+		"replaceAbilities": true
+	},
+	"alcremierubycream": {
+		"abilities": {
+			"0": "Sweet Veil",
+			"H": "Aroma Veil"
+		},
+		"baseStats": {
+			"hp": 65,
+			"atk": 60,
+			"def": 75,
+			"spa": 110,
+			"spd": 121,
+			"spe": 64
+		},
+		"types": [
+			"Fairy"
+		],
+		"passives": [
+			"sweetveil"
+		],
+		"replaceAbilities": true
+	},
+	"alcremierubyswirl": {
+		"abilities": {
+			"0": "Sweet Veil",
+			"H": "Aroma Veil"
+		},
+		"baseStats": {
+			"hp": 65,
+			"atk": 60,
+			"def": 75,
+			"spa": 110,
+			"spd": 121,
+			"spe": 64
+		},
+		"types": [
+			"Fairy"
+		],
+		"passives": [
+			"sweetveil"
+		],
+		"replaceAbilities": true
+	},
+	"alcremiesaltedcream": {
+		"abilities": {
+			"0": "Sweet Veil",
+			"H": "Aroma Veil"
+		},
+		"baseStats": {
+			"hp": 65,
+			"atk": 60,
+			"def": 75,
+			"spa": 110,
+			"spd": 121,
+			"spe": 64
+		},
+		"types": [
+			"Fairy"
+		],
+		"passives": [
+			"sweetveil"
+		],
 		"replaceAbilities": true
 	},
 	"alomomola": {
@@ -17237,6 +17426,25 @@ for (const [id, update] of Object.entries({
 		"passives": [],
 		"replaceAbilities": true
 	},
+	"auroreon": {
+		"abilities": {
+			"0": "Mind Freeze"
+		},
+		"baseStats": {
+			"hp": 60,
+			"atk": 60,
+			"def": 95,
+			"spa": 130,
+			"spd": 95,
+			"spe": 110
+		},
+		"types": [
+			"Ice",
+			"Psychic"
+		],
+		"passives": [],
+		"replaceAbilities": true
+	},
 	"aurorus": {
 		"abilities": {
 			"0": "Refrigerate",
@@ -17439,7 +17647,7 @@ for (const [id, update] of Object.entries({
 	},
 	"baltoy": {
 		"abilities": {
-			"0": "Levitate"
+			"0": "Own Tempo"
 		},
 		"baseStats": {
 			"hp": 40,
@@ -17453,7 +17661,9 @@ for (const [id, update] of Object.entries({
 			"Ground",
 			"Psychic"
 		],
-		"passives": [],
+		"passives": [
+			"levitate"
+		],
 		"replaceAbilities": true
 	},
 	"banette": {
@@ -18007,7 +18217,9 @@ for (const [id, update] of Object.entries({
 			"Water",
 			"Steel"
 		],
-		"passives": [],
+		"passives": [
+			"torrent"
+		],
 		"replaceAbilities": true
 	},
 	"blastoisegmax": {
@@ -18027,6 +18239,7 @@ for (const [id, update] of Object.entries({
 			"Steel"
 		],
 		"passives": [
+			"torrent",
 			"proficient"
 		],
 		"replaceAbilities": true
@@ -18048,6 +18261,7 @@ for (const [id, update] of Object.entries({
 			"Steel"
 		],
 		"passives": [
+			"torrent",
 			"proficient"
 		],
 		"replaceAbilities": true
@@ -18070,7 +18284,9 @@ for (const [id, update] of Object.entries({
 			"Fire",
 			"Fighting"
 		],
-		"passives": [],
+		"passives": [
+			"blaze"
+		],
 		"replaceAbilities": true
 	},
 	"blazikenmega": {
@@ -18090,6 +18306,7 @@ for (const [id, update] of Object.entries({
 			"Fighting"
 		],
 		"passives": [
+			"blaze",
 			"proficient"
 		],
 		"replaceAbilities": true
@@ -18641,6 +18858,46 @@ for (const [id, update] of Object.entries({
 			"Bug",
 			"Flying"
 		],
+		"passives": [
+			"shielddust"
+		],
+		"replaceAbilities": true
+	},
+	"butterfreegmax": {
+		"abilities": {
+			"0": "Mythic Scale"
+		},
+		"baseStats": {
+			"hp": 112,
+			"atk": 38,
+			"def": 71,
+			"spa": 108,
+			"spd": 93,
+			"spe": 90
+		},
+		"types": [
+			"Bug",
+			"Fairy"
+		],
+		"passives": [],
+		"replaceAbilities": true
+	},
+	"butterfreemega": {
+		"abilities": {
+			"0": "Toxic Evolution"
+		},
+		"baseStats": {
+			"hp": 75,
+			"atk": 30,
+			"def": 115,
+			"spa": 137,
+			"spd": 115,
+			"spe": 103
+		},
+		"types": [
+			"Bug",
+			"Poison"
+		],
 		"passives": [],
 		"replaceAbilities": true
 	},
@@ -18679,7 +18936,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Grass"
 		],
-		"passives": [],
+		"passives": [
+			"overcoat"
+		],
 		"replaceAbilities": true
 	},
 	"cacturne": {
@@ -18693,6 +18952,29 @@ for (const [id, update] of Object.entries({
 			"atk": 160,
 			"def": 70,
 			"spa": 90,
+			"spd": 70,
+			"spe": 90
+		},
+		"types": [
+			"Grass",
+			"Dark"
+		],
+		"passives": [
+			"overcoat"
+		],
+		"replaceAbilities": true
+	},
+	"cacturnealt": {
+		"abilities": {
+			"0": "Scarecrow",
+			"1": "Solar Rush",
+			"H": "Storm Drain"
+		},
+		"baseStats": {
+			"hp": 75,
+			"atk": 160,
+			"def": 70,
+			"spa": 105,
 			"spd": 70,
 			"spe": 90
 		},
@@ -19263,7 +19545,9 @@ for (const [id, update] of Object.entries({
 			"Fire",
 			"Flying"
 		],
-		"passives": [],
+		"passives": [
+			"blaze"
+		],
 		"replaceAbilities": true
 	},
 	"charizardalt": {
@@ -19284,7 +19568,9 @@ for (const [id, update] of Object.entries({
 			"Fire",
 			"Flying"
 		],
-		"passives": [],
+		"passives": [
+			"blaze"
+		],
 		"replaceAbilities": true
 	},
 	"charizardgmax": {
@@ -19304,6 +19590,7 @@ for (const [id, update] of Object.entries({
 			"Dragon"
 		],
 		"passives": [
+			"blaze",
 			"proficient"
 		],
 		"replaceAbilities": true
@@ -19325,6 +19612,7 @@ for (const [id, update] of Object.entries({
 			"Dragon"
 		],
 		"passives": [
+			"blaze",
 			"proficient"
 		],
 		"replaceAbilities": true
@@ -19346,6 +19634,7 @@ for (const [id, update] of Object.entries({
 			"Dragon"
 		],
 		"passives": [
+			"blaze",
 			"proficient"
 		],
 		"replaceAbilities": true
@@ -19367,6 +19656,7 @@ for (const [id, update] of Object.entries({
 			"Flying"
 		],
 		"passives": [
+			"blaze",
 			"proficient"
 		],
 		"replaceAbilities": true
@@ -19506,7 +19796,9 @@ for (const [id, update] of Object.entries({
 			"Grass",
 			"Fighting"
 		],
-		"passives": [],
+		"passives": [
+			"overgrow"
+		],
 		"replaceAbilities": true
 	},
 	"chesnaughtmega": {
@@ -19526,6 +19818,7 @@ for (const [id, update] of Object.entries({
 			"Fighting"
 		],
 		"passives": [
+			"overgrow",
 			"proficient"
 		],
 		"replaceAbilities": true
@@ -19642,6 +19935,46 @@ for (const [id, update] of Object.entries({
 		},
 		"types": [
 			"Psychic"
+		],
+		"passives": [
+			"levitate"
+		],
+		"replaceAbilities": true
+	},
+	"chimechomega": {
+		"abilities": {
+			"0": "Wind Chime"
+		},
+		"baseStats": {
+			"hp": 75,
+			"atk": 50,
+			"def": 110,
+			"spa": 135,
+			"spd": 120,
+			"spe": 65
+		},
+		"types": [
+			"Psychic",
+			"Steel"
+		],
+		"passives": [],
+		"replaceAbilities": true
+	},
+	"chimechomegay": {
+		"abilities": {
+			"0": "Haunted Chime"
+		},
+		"baseStats": {
+			"hp": 75,
+			"atk": 50,
+			"def": 80,
+			"spa": 145,
+			"spd": 100,
+			"spe": 105
+		},
+		"types": [
+			"Psychic",
+			"Ghost"
 		],
 		"passives": [],
 		"replaceAbilities": true
@@ -19761,7 +20094,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Fire"
 		],
-		"passives": [],
+		"passives": [
+			"blaze"
+		],
 		"replaceAbilities": true
 	},
 	"cinderacegmax": {
@@ -19780,6 +20115,7 @@ for (const [id, update] of Object.entries({
 			"Fire"
 		],
 		"passives": [
+			"blaze",
 			"proficient"
 		],
 		"replaceAbilities": true
@@ -19801,6 +20137,7 @@ for (const [id, update] of Object.entries({
 			"Normal"
 		],
 		"passives": [
+			"blaze",
 			"proficient"
 		],
 		"replaceAbilities": true
@@ -19867,7 +20204,7 @@ for (const [id, update] of Object.entries({
 	},
 	"claydol": {
 		"abilities": {
-			"0": "Levitate",
+			"0": "Clear Body",
 			"1": "Relic Beam",
 			"H": "Defragment"
 		},
@@ -19882,6 +20219,27 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Ground",
 			"Fairy"
+		],
+		"passives": [
+			"levitate"
+		],
+		"replaceAbilities": true
+	},
+	"claydolmega": {
+		"abilities": {
+			"0": "Astral Engine"
+		},
+		"baseStats": {
+			"hp": 60,
+			"atk": 70,
+			"def": 135,
+			"spa": 130,
+			"spd": 150,
+			"spe": 55
+		},
+		"types": [
+			"Ground",
+			"Psychic"
 		],
 		"passives": [],
 		"replaceAbilities": true
@@ -20107,7 +20465,9 @@ for (const [id, update] of Object.entries({
 			"Bug",
 			"Flying"
 		],
-		"passives": [],
+		"passives": [
+			"sweetveil"
+		],
 		"replaceAbilities": true
 	},
 	"combusken": {
@@ -20507,7 +20867,9 @@ for (const [id, update] of Object.entries({
 			"Water",
 			"Dark"
 		],
-		"passives": [],
+		"passives": [
+			"hypercutter"
+		],
 		"replaceAbilities": true
 	},
 	"cresceidon": {
@@ -20673,7 +21035,7 @@ for (const [id, update] of Object.entries({
 	},
 	"cryogonal": {
 		"abilities": {
-			"0": "Levitate",
+			"0": "Ice Body",
 			"1": "Mirror Armor",
 			"H": "Purifying Frost"
 		},
@@ -20689,7 +21051,9 @@ for (const [id, update] of Object.entries({
 			"Ice",
 			"Ghost"
 		],
-		"passives": [],
+		"passives": [
+			"levitate"
+		],
 		"replaceAbilities": true
 	},
 	"cubchoo": {
@@ -21027,7 +21391,9 @@ for (const [id, update] of Object.entries({
 			"Grass",
 			"Ghost"
 		],
-		"passives": [],
+		"passives": [
+			"overgrow"
+		],
 		"replaceAbilities": true
 	},
 	"decidueyealt": {
@@ -21048,7 +21414,9 @@ for (const [id, update] of Object.entries({
 			"Grass",
 			"Ghost"
 		],
-		"passives": [],
+		"passives": [
+			"overgrow"
+		],
 		"replaceAbilities": true
 	},
 	"decidueyehisui": {
@@ -21069,7 +21437,9 @@ for (const [id, update] of Object.entries({
 			"Grass",
 			"Fighting"
 		],
-		"passives": [],
+		"passives": [
+			"overgrow"
+		],
 		"replaceAbilities": true
 	},
 	"decidueyehisuialt": {
@@ -21090,7 +21460,9 @@ for (const [id, update] of Object.entries({
 			"Grass",
 			"Fighting"
 		],
-		"passives": [],
+		"passives": [
+			"overgrow"
+		],
 		"replaceAbilities": true
 	},
 	"dedenne": {
@@ -21214,7 +21586,9 @@ for (const [id, update] of Object.entries({
 			"Fire",
 			"Psychic"
 		],
-		"passives": [],
+		"passives": [
+			"blaze"
+		],
 		"replaceAbilities": true
 	},
 	"delphoxmega": {
@@ -21234,6 +21608,7 @@ for (const [id, update] of Object.entries({
 			"Psychic"
 		],
 		"passives": [
+			"blaze",
 			"proficient"
 		],
 		"replaceAbilities": true
@@ -22334,12 +22709,33 @@ for (const [id, update] of Object.entries({
 			"Ghost",
 			"Dark"
 		],
+		"passives": [
+			"levitate"
+		],
+		"replaceAbilities": true
+	},
+	"dusknoirmega": {
+		"abilities": {
+			"0": "Reaper's Grip"
+		},
+		"baseStats": {
+			"hp": 65,
+			"atk": 180,
+			"def": 155,
+			"spa": 70,
+			"spd": 155,
+			"spe": 45
+		},
+		"types": [
+			"Ghost",
+			"Dark"
+		],
 		"passives": [],
 		"replaceAbilities": true
 	},
 	"duskull": {
 		"abilities": {
-			"0": "Levitate",
+			"0": "Infiltrator",
 			"H": "Frisk"
 		},
 		"baseStats": {
@@ -22353,7 +22749,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Ghost"
 		],
-		"passives": [],
+		"passives": [
+			"levitate"
+		],
 		"replaceAbilities": true
 	},
 	"dustox": {
@@ -22374,7 +22772,9 @@ for (const [id, update] of Object.entries({
 			"Bug",
 			"Poison"
 		],
-		"passives": [],
+		"passives": [
+			"shielddust"
+		],
 		"replaceAbilities": true
 	},
 	"dwebble": {
@@ -22400,7 +22800,7 @@ for (const [id, update] of Object.entries({
 	},
 	"eelektrik": {
 		"abilities": {
-			"0": "Levitate"
+			"0": "Static"
 		},
 		"baseStats": {
 			"hp": 65,
@@ -22413,7 +22813,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Electric"
 		],
-		"passives": [],
+		"passives": [
+			"levitate"
+		],
 		"replaceAbilities": true
 	},
 	"eelektross": {
@@ -22429,6 +22831,26 @@ for (const [id, update] of Object.entries({
 			"spa": 105,
 			"spd": 90,
 			"spe": 50
+		},
+		"types": [
+			"Electric"
+		],
+		"passives": [
+			"levitate"
+		],
+		"replaceAbilities": true
+	},
+	"eelektrossmega": {
+		"abilities": {
+			"0": "Storm Circuit"
+		},
+		"baseStats": {
+			"hp": 85,
+			"atk": 145,
+			"def": 90,
+			"spa": 135,
+			"spd": 100,
+			"spe": 80
 		},
 		"types": [
 			"Electric"
@@ -22449,6 +22871,26 @@ for (const [id, update] of Object.entries({
 			"spa": 45,
 			"spd": 65,
 			"spe": 55
+		},
+		"types": [
+			"Normal"
+		],
+		"passives": [
+			"runaway"
+		],
+		"replaceAbilities": true
+	},
+	"eeveegmax": {
+		"abilities": {
+			"0": "Fluffy Evo"
+		},
+		"baseStats": {
+			"hp": 150,
+			"atk": 75,
+			"def": 70,
+			"spa": 65,
+			"spd": 85,
+			"spe": 75
 		},
 		"types": [
 			"Normal"
@@ -22740,7 +23182,9 @@ for (const [id, update] of Object.entries({
 			"Fire",
 			"Fighting"
 		],
-		"passives": [],
+		"passives": [
+			"blaze"
+		],
 		"replaceAbilities": true
 	},
 	"emboaralt": {
@@ -22761,7 +23205,9 @@ for (const [id, update] of Object.entries({
 			"Fire",
 			"Fighting"
 		],
-		"passives": [],
+		"passives": [
+			"blaze"
+		],
 		"replaceAbilities": true
 	},
 	"emboarmega": {
@@ -22781,6 +23227,29 @@ for (const [id, update] of Object.entries({
 			"Fighting"
 		],
 		"passives": [
+			"blaze",
+			"proficient"
+		],
+		"replaceAbilities": true
+	},
+	"emboarmegaalt": {
+		"abilities": {
+			"0": "Burning Ego"
+		},
+		"baseStats": {
+			"hp": 110,
+			"atk": 150,
+			"def": 93,
+			"spa": 85,
+			"spd": 115,
+			"spe": 75
+		},
+		"types": [
+			"Fire",
+			"Fighting"
+		],
+		"passives": [
+			"blaze",
 			"proficient"
 		],
 		"replaceAbilities": true
@@ -22802,7 +23271,31 @@ for (const [id, update] of Object.entries({
 			"Fighting"
 		],
 		"passives": [
+			"blaze",
 			"proficient"
+		],
+		"replaceAbilities": true
+	},
+	"emboarreborn": {
+		"abilities": {
+			"0": "Gluttony",
+			"1": "Thick Fat",
+			"H": "Brute Force"
+		},
+		"baseStats": {
+			"hp": 110,
+			"atk": 123,
+			"def": 75,
+			"spa": 80,
+			"spd": 75,
+			"spe": 65
+		},
+		"types": [
+			"Fire",
+			"Fighting"
+		],
+		"passives": [
+			"blaze"
 		],
 		"replaceAbilities": true
 	},
@@ -22845,7 +23338,9 @@ for (const [id, update] of Object.entries({
 			"Water",
 			"Steel"
 		],
-		"passives": [],
+		"passives": [
+			"torrent"
+		],
 		"replaceAbilities": true
 	},
 	"empoleonmega": {
@@ -22865,6 +23360,7 @@ for (const [id, update] of Object.entries({
 			"Steel"
 		],
 		"passives": [
+			"torrent",
 			"proficient"
 		],
 		"replaceAbilities": true
@@ -23008,7 +23504,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Psychic"
 		],
-		"passives": [],
+		"passives": [
+			"runaway"
+		],
 		"replaceAbilities": true
 	},
 	"espurr": {
@@ -23271,7 +23769,9 @@ for (const [id, update] of Object.entries({
 			"Normal",
 			"Flying"
 		],
-		"passives": [],
+		"passives": [
+			"keeneye"
+		],
 		"replaceAbilities": true
 	},
 	"feebas": {
@@ -23331,7 +23831,9 @@ for (const [id, update] of Object.entries({
 			"Water",
 			"Dark"
 		],
-		"passives": [],
+		"passives": [
+			"torrent"
+		],
 		"replaceAbilities": true
 	},
 	"feraligatrgmax": {
@@ -23351,6 +23853,7 @@ for (const [id, update] of Object.entries({
 			"Dark"
 		],
 		"passives": [
+			"torrent",
 			"proficient"
 		],
 		"replaceAbilities": true
@@ -23372,6 +23875,7 @@ for (const [id, update] of Object.entries({
 			"Dragon"
 		],
 		"passives": [
+			"torrent",
 			"proficient"
 		],
 		"replaceAbilities": true
@@ -23633,7 +24137,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Fire"
 		],
-		"passives": [],
+		"passives": [
+			"runaway"
+		],
 		"replaceAbilities": true
 	},
 	"fletchinder": {
@@ -23847,6 +24353,46 @@ for (const [id, update] of Object.entries({
 			"spa": 80,
 			"spd": 80,
 			"spe": 100
+		},
+		"types": [
+			"Ground",
+			"Dragon"
+		],
+		"passives": [
+			"levitate"
+		],
+		"replaceAbilities": true
+	},
+	"flygonmega": {
+		"abilities": {
+			"0": "Desert Spirit"
+		},
+		"baseStats": {
+			"hp": 80,
+			"atk": 100,
+			"def": 85,
+			"spa": 135,
+			"spd": 85,
+			"spe": 135
+		},
+		"types": [
+			"Dragon",
+			"Bug"
+		],
+		"passives": [],
+		"replaceAbilities": true
+	},
+	"flygonmegaz": {
+		"abilities": {
+			"0": "Tremor"
+		},
+		"baseStats": {
+			"hp": 80,
+			"atk": 149,
+			"def": 80,
+			"spa": 80,
+			"spd": 80,
+			"spe": 151
 		},
 		"types": [
 			"Ground",
@@ -24112,7 +24658,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Normal"
 		],
-		"passives": [],
+		"passives": [
+			"keeneye"
+		],
 		"replaceAbilities": true
 	},
 	"gabite": {
@@ -24678,7 +25226,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Ice"
 		],
-		"passives": [],
+		"passives": [
+			"runaway"
+		],
 		"replaceAbilities": true
 	},
 	"glalie": {
@@ -24824,6 +25374,29 @@ for (const [id, update] of Object.entries({
 		"replaceAbilities": true
 	},
 	"gliscor": {
+		"abilities": {
+			"0": "Venom Heal",
+			"1": "Toxic Boost",
+			"H": "Wind Rider"
+		},
+		"baseStats": {
+			"hp": 105,
+			"atk": 105,
+			"def": 135,
+			"spa": 40,
+			"spd": 90,
+			"spe": 95
+		},
+		"types": [
+			"Ground",
+			"Flying"
+		],
+		"passives": [
+			"hypercutter"
+		],
+		"replaceAbilities": true
+	},
+	"gliscoralt": {
 		"abilities": {
 			"0": "Venom Heal",
 			"1": "Toxic Boost",
@@ -25457,7 +26030,9 @@ for (const [id, update] of Object.entries({
 			"Water",
 			"Dark"
 		],
-		"passives": [],
+		"passives": [
+			"torrent"
+		],
 		"replaceAbilities": true
 	},
 	"greninjaash": {
@@ -25477,6 +26052,7 @@ for (const [id, update] of Object.entries({
 			"Dark"
 		],
 		"passives": [
+			"torrent",
 			"proficient"
 		],
 		"replaceAbilities": true
@@ -25497,7 +26073,9 @@ for (const [id, update] of Object.entries({
 			"Water",
 			"Dark"
 		],
-		"passives": [],
+		"passives": [
+			"torrent"
+		],
 		"replaceAbilities": true
 	},
 	"greninjamega": {
@@ -25517,6 +26095,7 @@ for (const [id, update] of Object.entries({
 			"Dark"
 		],
 		"passives": [
+			"torrent",
 			"proficient"
 		],
 		"replaceAbilities": true
@@ -25538,7 +26117,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Poison"
 		],
-		"passives": [],
+		"passives": [
+			"liquidooze"
+		],
 		"replaceAbilities": true
 	},
 	"grimeralola": {
@@ -25754,7 +26335,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Poison"
 		],
-		"passives": [],
+		"passives": [
+			"liquidooze"
+		],
 		"replaceAbilities": true
 	},
 	"gumshoos": {
@@ -26570,7 +27153,9 @@ for (const [id, update] of Object.entries({
 			"Dark",
 			"Dragon"
 		],
-		"passives": [],
+		"passives": [
+			"levitate"
+		],
 		"replaceAbilities": true
 	},
 	"hypno": {
@@ -26675,7 +27260,9 @@ for (const [id, update] of Object.entries({
 			"Fire",
 			"Dark"
 		],
-		"passives": [],
+		"passives": [
+			"blaze"
+		],
 		"replaceAbilities": true
 	},
 	"incineroaralt": {
@@ -26696,7 +27283,9 @@ for (const [id, update] of Object.entries({
 			"Fire",
 			"Dark"
 		],
-		"passives": [],
+		"passives": [
+			"blaze"
+		],
 		"replaceAbilities": true
 	},
 	"indeedee": {
@@ -26759,7 +27348,9 @@ for (const [id, update] of Object.entries({
 			"Fire",
 			"Fighting"
 		],
-		"passives": [],
+		"passives": [
+			"blaze"
+		],
 		"replaceAbilities": true
 	},
 	"infernapemega": {
@@ -26779,6 +27370,7 @@ for (const [id, update] of Object.entries({
 			"Fighting"
 		],
 		"passives": [
+			"blaze",
 			"proficient"
 		],
 		"replaceAbilities": true
@@ -26821,7 +27413,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Water"
 		],
-		"passives": [],
+		"passives": [
+			"torrent"
+		],
 		"replaceAbilities": true
 	},
 	"inteleongmax": {
@@ -26840,6 +27434,7 @@ for (const [id, update] of Object.entries({
 			"Water"
 		],
 		"passives": [
+			"torrent",
 			"proficient"
 		],
 		"replaceAbilities": true
@@ -27152,7 +27747,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Electric"
 		],
-		"passives": [],
+		"passives": [
+			"runaway"
+		],
 		"replaceAbilities": true
 	},
 	"joltik": {
@@ -27563,6 +28160,27 @@ for (const [id, update] of Object.entries({
 			"Water",
 			"Steel"
 		],
+		"passives": [
+			"hypercutter"
+		],
+		"replaceAbilities": true
+	},
+	"kinglergmax": {
+		"abilities": {
+			"0": "Tidal Dominion"
+		},
+		"baseStats": {
+			"hp": 120,
+			"atk": 135,
+			"def": 115,
+			"spa": 60,
+			"spd": 80,
+			"spe": 75
+		},
+		"types": [
+			"Water",
+			"Bug"
+		],
 		"passives": [],
 		"replaceAbilities": true
 	},
@@ -27733,7 +28351,7 @@ for (const [id, update] of Object.entries({
 	},
 	"koffing": {
 		"abilities": {
-			"0": "Levitate",
+			"0": "Aftermath",
 			"1": "Neutralizing Gas",
 			"H": "Stench"
 		},
@@ -27748,7 +28366,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Poison"
 		],
-		"passives": [],
+		"passives": [
+			"levitate"
+		],
 		"replaceAbilities": true
 	},
 	"komala": {
@@ -28283,7 +28903,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Grass"
 		],
-		"passives": [],
+		"passives": [
+			"runaway"
+		],
 		"replaceAbilities": true
 	},
 	"leavanny": {
@@ -28836,7 +29458,9 @@ for (const [id, update] of Object.entries({
 			"Rock",
 			"Ghost"
 		],
-		"passives": [],
+		"passives": [
+			"levitate"
+		],
 		"replaceAbilities": true
 	},
 	"lurantis": {
@@ -29528,7 +30152,9 @@ for (const [id, update] of Object.entries({
 			"Grass",
 			"Fire"
 		],
-		"passives": [],
+		"passives": [
+			"overcoat"
+		],
 		"replaceAbilities": true
 	},
 	"mareanie": {
@@ -29731,7 +30357,9 @@ for (const [id, update] of Object.entries({
 			"Bug",
 			"Flying"
 		],
-		"passives": [],
+		"passives": [
+			"shielddust"
+		],
 		"replaceAbilities": true
 	},
 	"maushold": {
@@ -29834,7 +30462,9 @@ for (const [id, update] of Object.entries({
 			"Grass",
 			"Fairy"
 		],
-		"passives": [],
+		"passives": [
+			"overgrow"
+		],
 		"replaceAbilities": true
 	},
 	"meganiummega": {
@@ -29854,6 +30484,7 @@ for (const [id, update] of Object.entries({
 			"Fairy"
 		],
 		"passives": [
+			"overgrow",
 			"proficient"
 		],
 		"replaceAbilities": true
@@ -29875,6 +30506,7 @@ for (const [id, update] of Object.entries({
 			"Fire"
 		],
 		"passives": [
+			"overgrow",
 			"proficient"
 		],
 		"replaceAbilities": true
@@ -29952,7 +30584,9 @@ for (const [id, update] of Object.entries({
 			"Grass",
 			"Dark"
 		],
-		"passives": [],
+		"passives": [
+			"overgrow"
+		],
 		"replaceAbilities": true
 	},
 	"meowstic": {
@@ -30290,7 +30924,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Fairy"
 		],
-		"passives": [],
+		"passives": [
+			"sweetveil"
+		],
 		"replaceAbilities": true
 	},
 	"milotic": {
@@ -30496,7 +31132,7 @@ for (const [id, update] of Object.entries({
 	},
 	"misdreavus": {
 		"abilities": {
-			"0": "Levitate",
+			"0": "Infiltrator",
 			"1": "Prankster",
 			"H": "Perish Body"
 		},
@@ -30512,7 +31148,9 @@ for (const [id, update] of Object.entries({
 			"Ghost",
 			"Fairy"
 		],
-		"passives": [],
+		"passives": [
+			"levitate"
+		],
 		"replaceAbilities": true
 	},
 	"mismagius": {
@@ -30533,7 +31171,9 @@ for (const [id, update] of Object.entries({
 			"Ghost",
 			"Fairy"
 		],
-		"passives": [],
+		"passives": [
+			"levitate"
+		],
 		"replaceAbilities": true
 	},
 	"mismagiusaevian": {
@@ -30773,7 +31413,9 @@ for (const [id, update] of Object.entries({
 			"Bug",
 			"Flying"
 		],
-		"passives": [],
+		"passives": [
+			"shielddust"
+		],
 		"replaceAbilities": true
 	},
 	"mrmime": {
@@ -30936,7 +31578,9 @@ for (const [id, update] of Object.entries({
 			"Poison",
 			"Ghost"
 		],
-		"passives": [],
+		"passives": [
+			"liquidooze"
+		],
 		"replaceAbilities": true
 	},
 	"mukalola": {
@@ -31553,6 +32197,27 @@ for (const [id, update] of Object.entries({
 			"spa": 96,
 			"spd": 106,
 			"spe": 80
+		},
+		"types": [
+			"Dark",
+			"Flying"
+		],
+		"passives": [
+			"keeneye"
+		],
+		"replaceAbilities": true
+	},
+	"noctowlmega": {
+		"abilities": {
+			"0": "Sacred Power"
+		},
+		"baseStats": {
+			"hp": 100,
+			"atk": 65,
+			"def": 98,
+			"spa": 106,
+			"spd": 141,
+			"spe": 100
 		},
 		"types": [
 			"Dark",
@@ -33224,6 +33889,27 @@ for (const [id, update] of Object.entries({
 			"Bug",
 			"Ground"
 		],
+		"passives": [
+			"hypercutter"
+		],
+		"replaceAbilities": true
+	},
+	"pinsirmega": {
+		"abilities": {
+			"0": "Joyride"
+		},
+		"baseStats": {
+			"hp": 65,
+			"atk": 155,
+			"def": 120,
+			"spa": 65,
+			"spd": 90,
+			"spe": 105
+		},
+		"types": [
+			"Bug",
+			"Flying"
+		],
 		"passives": [],
 		"replaceAbilities": true
 	},
@@ -33961,7 +34647,9 @@ for (const [id, update] of Object.entries({
 			"Water",
 			"Fairy"
 		],
-		"passives": [],
+		"passives": [
+			"torrent"
+		],
 		"replaceAbilities": true
 	},
 	"primarinaalt": {
@@ -33982,7 +34670,9 @@ for (const [id, update] of Object.entries({
 			"Water",
 			"Fairy"
 		],
-		"passives": [],
+		"passives": [
+			"torrent"
+		],
 		"replaceAbilities": true
 	},
 	"primeape": {
@@ -34307,7 +34997,9 @@ for (const [id, update] of Object.entries({
 			"Water",
 			"Fighting"
 		],
-		"passives": [],
+		"passives": [
+			"torrent"
+		],
 		"replaceAbilities": true
 	},
 	"quaxly": {
@@ -35146,7 +35838,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Grass"
 		],
-		"passives": [],
+		"passives": [
+			"overgrow"
+		],
 		"replaceAbilities": true
 	},
 	"rillaboomgmax": {
@@ -35165,6 +35859,7 @@ for (const [id, update] of Object.entries({
 			"Grass"
 		],
 		"passives": [
+			"overgrow",
 			"proficient"
 		],
 		"replaceAbilities": true
@@ -35331,7 +36026,7 @@ for (const [id, update] of Object.entries({
 	},
 	"rotom": {
 		"abilities": {
-			"0": "Levitate",
+			"0": "Infiltrator",
 			"1": "Electromorphosis",
 			"H": "Defragment"
 		},
@@ -35347,7 +36042,9 @@ for (const [id, update] of Object.entries({
 			"Electric",
 			"Ghost"
 		],
-		"passives": [],
+		"passives": [
+			"levitate"
+		],
 		"replaceAbilities": true
 	},
 	"rotomfan": {
@@ -35355,7 +36052,7 @@ for (const [id, update] of Object.entries({
 			"0": "Wind Power",
 			"1": "Windy Surge",
 			"H": "Air Lock",
-			"S": "Levitate"
+			"S": "Soundproof"
 		},
 		"baseStats": {
 			"hp": 60,
@@ -35369,12 +36066,14 @@ for (const [id, update] of Object.entries({
 			"Electric",
 			"Flying"
 		],
-		"passives": [],
+		"passives": [
+			"levitate"
+		],
 		"replaceAbilities": true
 	},
 	"rotomfrost": {
 		"abilities": {
-			"0": "Levitate",
+			"0": "Clear Body",
 			"1": "Refrigerate",
 			"H": "Snow Warning"
 		},
@@ -35390,12 +36089,14 @@ for (const [id, update] of Object.entries({
 			"Electric",
 			"Ice"
 		],
-		"passives": [],
+		"passives": [
+			"levitate"
+		],
 		"replaceAbilities": true
 	},
 	"rotomheat": {
 		"abilities": {
-			"0": "Levitate",
+			"0": "White Smoke",
 			"1": "Drought",
 			"H": "Flame Body"
 		},
@@ -35411,12 +36112,14 @@ for (const [id, update] of Object.entries({
 			"Electric",
 			"Fire"
 		],
-		"passives": [],
+		"passives": [
+			"levitate"
+		],
 		"replaceAbilities": true
 	},
 	"rotommow": {
 		"abilities": {
-			"0": "Levitate",
+			"0": "Leaf Guard",
 			"1": "Grassy Surge",
 			"H": "Seed Sower"
 		},
@@ -35432,12 +36135,14 @@ for (const [id, update] of Object.entries({
 			"Electric",
 			"Grass"
 		],
-		"passives": [],
+		"passives": [
+			"levitate"
+		],
 		"replaceAbilities": true
 	},
 	"rotomwash": {
 		"abilities": {
-			"0": "Levitate",
+			"0": "Hydration",
 			"1": "Storm Drain",
 			"H": "Drizzle"
 		},
@@ -35453,7 +36158,9 @@ for (const [id, update] of Object.entries({
 			"Electric",
 			"Water"
 		],
-		"passives": [],
+		"passives": [
+			"levitate"
+		],
 		"replaceAbilities": true
 	},
 	"rowlet": {
@@ -35678,7 +36385,9 @@ for (const [id, update] of Object.entries({
 			"Water",
 			"Fighting"
 		],
-		"passives": [],
+		"passives": [
+			"torrent"
+		],
 		"replaceAbilities": true
 	},
 	"samurottalt": {
@@ -35699,7 +36408,9 @@ for (const [id, update] of Object.entries({
 			"Water",
 			"Fighting"
 		],
-		"passives": [],
+		"passives": [
+			"torrent"
+		],
 		"replaceAbilities": true
 	},
 	"samurotthisui": {
@@ -35720,7 +36431,9 @@ for (const [id, update] of Object.entries({
 			"Water",
 			"Dark"
 		],
-		"passives": [],
+		"passives": [
+			"torrent"
+		],
 		"replaceAbilities": true
 	},
 	"samurotthisuialt": {
@@ -35741,7 +36454,9 @@ for (const [id, update] of Object.entries({
 			"Water",
 			"Dark"
 		],
-		"passives": [],
+		"passives": [
+			"torrent"
+		],
 		"replaceAbilities": true
 	},
 	"sandaconda": {
@@ -36025,7 +36740,9 @@ for (const [id, update] of Object.entries({
 			"Grass",
 			"Dragon"
 		],
-		"passives": [],
+		"passives": [
+			"overgrow"
+		],
 		"replaceAbilities": true
 	},
 	"sceptilemega": {
@@ -36045,6 +36762,7 @@ for (const [id, update] of Object.entries({
 			"Dragon"
 		],
 		"passives": [
+			"overgrow",
 			"proficient"
 		],
 		"replaceAbilities": true
@@ -36395,7 +37113,9 @@ for (const [id, update] of Object.entries({
 			"Grass",
 			"Dragon"
 		],
-		"passives": [],
+		"passives": [
+			"overgrow"
+		],
 		"replaceAbilities": true
 	},
 	"serperiorazzy": {
@@ -36416,7 +37136,9 @@ for (const [id, update] of Object.entries({
 			"Grass",
 			"Dragon"
 		],
-		"passives": [],
+		"passives": [
+			"overgrow"
+		],
 		"replaceAbilities": true
 	},
 	"serperiormega": {
@@ -36436,6 +37158,7 @@ for (const [id, update] of Object.entries({
 			"Dragon"
 		],
 		"passives": [
+			"overgrow",
 			"proficient"
 		],
 		"replaceAbilities": true
@@ -37105,7 +37828,9 @@ for (const [id, update] of Object.entries({
 			"Fire",
 			"Ghost"
 		],
-		"passives": [],
+		"passives": [
+			"blaze"
+		],
 		"replaceAbilities": true
 	},
 	"skeledirgeaevian": {
@@ -37126,7 +37851,9 @@ for (const [id, update] of Object.entries({
 			"Fairy",
 			"Poison"
 		],
-		"passives": [],
+		"passives": [
+			"blaze"
+		],
 		"replaceAbilities": true
 	},
 	"skeledirgealt": {
@@ -37147,7 +37874,9 @@ for (const [id, update] of Object.entries({
 			"Fire",
 			"Ghost"
 		],
-		"passives": [],
+		"passives": [
+			"blaze"
+		],
 		"replaceAbilities": true
 	},
 	"skiddo": {
@@ -37553,7 +38282,9 @@ for (const [id, update] of Object.entries({
 			"Fairy",
 			"Fighting"
 		],
-		"passives": [],
+		"passives": [
+			"sweetveil"
+		],
 		"replaceAbilities": true
 	},
 	"smeargle": {
@@ -38016,6 +38747,27 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Rock",
 			"Steel"
+		],
+		"passives": [
+			"levitate"
+		],
+		"replaceAbilities": true
+	},
+	"soluneon": {
+		"abilities": {
+			"0": "Eclipse"
+		},
+		"baseStats": {
+			"hp": 80,
+			"atk": 60,
+			"def": 110,
+			"spa": 95,
+			"spd": 110,
+			"spe": 95
+		},
+		"types": [
+			"Dark",
+			"Psychic"
 		],
 		"passives": [],
 		"replaceAbilities": true
@@ -38742,7 +39494,9 @@ for (const [id, update] of Object.entries({
 			"Water",
 			"Poison"
 		],
-		"passives": [],
+		"passives": [
+			"liquidooze"
+		],
 		"replaceAbilities": true
 	},
 	"swalotpulse": {
@@ -38782,7 +39536,9 @@ for (const [id, update] of Object.entries({
 			"Water",
 			"Ground"
 		],
-		"passives": [],
+		"passives": [
+			"torrent"
+		],
 		"replaceAbilities": true
 	},
 	"swampertmega": {
@@ -38802,6 +39558,7 @@ for (const [id, update] of Object.entries({
 			"Ground"
 		],
 		"passives": [
+			"torrent",
 			"proficient"
 		],
 		"replaceAbilities": true
@@ -38885,7 +39642,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Fairy"
 		],
-		"passives": [],
+		"passives": [
+			"sweetveil"
+		],
 		"replaceAbilities": true
 	},
 	"swirlpool": {
@@ -38987,7 +39746,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Fairy"
 		],
-		"passives": [],
+		"passives": [
+			"runaway"
+		],
 		"replaceAbilities": true
 	},
 	"tactite": {
@@ -39392,10 +40153,56 @@ for (const [id, update] of Object.entries({
 			"Water",
 			"Poison"
 		],
-		"passives": [],
+		"passives": [
+			"liquidooze"
+		],
 		"replaceAbilities": true
 	},
 	"tentacruel": {
+		"abilities": {
+			"0": "Venom Veil",
+			"1": "Regenerator",
+			"H": "Water Absorb"
+		},
+		"baseStats": {
+			"hp": 80,
+			"atk": 70,
+			"def": 85,
+			"spa": 100,
+			"spd": 135,
+			"spe": 100
+		},
+		"types": [
+			"Water",
+			"Poison"
+		],
+		"passives": [
+			"liquidooze"
+		],
+		"replaceAbilities": true
+	},
+	"tentacruelalt": {
+		"abilities": {
+			"0": "Venom Veil",
+			"1": "Regenerator",
+			"H": "Water Absorb"
+		},
+		"baseStats": {
+			"hp": 80,
+			"atk": 70,
+			"def": 85,
+			"spa": 100,
+			"spd": 135,
+			"spe": 100
+		},
+		"types": [
+			"Water",
+			"Poison"
+		],
+		"passives": [],
+		"replaceAbilities": true
+	},
+	"tentacruelreborn": {
 		"abilities": {
 			"0": "Venom Veil",
 			"1": "Regenerator",
@@ -39974,7 +40781,9 @@ for (const [id, update] of Object.entries({
 			"Grass",
 			"Ground"
 		],
-		"passives": [],
+		"passives": [
+			"overgrow"
+		],
 		"replaceAbilities": true
 	},
 	"torterramegax": {
@@ -39994,6 +40803,7 @@ for (const [id, update] of Object.entries({
 			"Ground"
 		],
 		"passives": [
+			"overgrow",
 			"proficient"
 		],
 		"replaceAbilities": true
@@ -40015,6 +40825,7 @@ for (const [id, update] of Object.entries({
 			"Rock"
 		],
 		"passives": [
+			"overgrow",
 			"proficient"
 		],
 		"replaceAbilities": true
@@ -40035,7 +40846,9 @@ for (const [id, update] of Object.entries({
 			"Ground",
 			"Ice"
 		],
-		"passives": [],
+		"passives": [
+			"overgrow"
+		],
 		"replaceAbilities": true
 	},
 	"torterrariftshatter": {
@@ -40054,7 +40867,9 @@ for (const [id, update] of Object.entries({
 			"Grass",
 			"Fire"
 		],
-		"passives": [],
+		"passives": [
+			"overgrow"
+		],
 		"replaceAbilities": true
 	},
 	"totodile": {
@@ -40388,7 +41203,7 @@ for (const [id, update] of Object.entries({
 	},
 	"tynamo": {
 		"abilities": {
-			"0": "Levitate"
+			"0": "Static"
 		},
 		"baseStats": {
 			"hp": 35,
@@ -40401,7 +41216,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Electric"
 		],
-		"passives": [],
+		"passives": [
+			"levitate"
+		],
 		"replaceAbilities": true
 	},
 	"typenull": {
@@ -40440,7 +41257,9 @@ for (const [id, update] of Object.entries({
 			"Fire",
 			"Ground"
 		],
-		"passives": [],
+		"passives": [
+			"blaze"
+		],
 		"replaceAbilities": true
 	},
 	"typhlosionalt": {
@@ -40461,7 +41280,9 @@ for (const [id, update] of Object.entries({
 			"Fire",
 			"Ground"
 		],
-		"passives": [],
+		"passives": [
+			"blaze"
+		],
 		"replaceAbilities": true
 	},
 	"typhlosionhisui": {
@@ -40482,7 +41303,9 @@ for (const [id, update] of Object.entries({
 			"Fire",
 			"Ghost"
 		],
-		"passives": [],
+		"passives": [
+			"blaze"
+		],
 		"replaceAbilities": true
 	},
 	"typhlosionmega": {
@@ -40502,6 +41325,7 @@ for (const [id, update] of Object.entries({
 			"Electric"
 		],
 		"passives": [
+			"blaze",
 			"proficient"
 		],
 		"replaceAbilities": true
@@ -40589,6 +41413,30 @@ for (const [id, update] of Object.entries({
 		"replaceAbilities": true
 	},
 	"umbreon": {
+		"abilities": {
+			"0": "Poison Heal",
+			"1": "Moonlight Vigil",
+			"H": "Dark Aura",
+			"S": "Eclipse",
+			"G": "Ascendance"
+		},
+		"baseStats": {
+			"hp": 95,
+			"atk": 65,
+			"def": 110,
+			"spa": 60,
+			"spd": 130,
+			"spe": 65
+		},
+		"types": [
+			"Dark"
+		],
+		"passives": [
+			"runaway"
+		],
+		"replaceAbilities": true
+	},
+	"umbreonperfect": {
 		"abilities": {
 			"0": "Poison Heal",
 			"1": "Moonlight Vigil",
@@ -40824,7 +41672,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Water"
 		],
-		"passives": [],
+		"passives": [
+			"runaway"
+		],
 		"replaceAbilities": true
 	},
 	"varoom": {
@@ -40949,7 +41799,9 @@ for (const [id, update] of Object.entries({
 			"Grass",
 			"Poison"
 		],
-		"passives": [],
+		"passives": [
+			"overgrow"
+		],
 		"replaceAbilities": true
 	},
 	"venusaurgmax": {
@@ -40969,6 +41821,7 @@ for (const [id, update] of Object.entries({
 			"Poison"
 		],
 		"passives": [
+			"overgrow",
 			"proficient"
 		],
 		"replaceAbilities": true
@@ -40990,6 +41843,7 @@ for (const [id, update] of Object.entries({
 			"Poison"
 		],
 		"passives": [
+			"overgrow",
 			"proficient"
 		],
 		"replaceAbilities": true
@@ -41012,7 +41866,9 @@ for (const [id, update] of Object.entries({
 			"Bug",
 			"Flying"
 		],
-		"passives": [],
+		"passives": [
+			"sweetveil"
+		],
 		"replaceAbilities": true
 	},
 	"vibrava": {
@@ -41194,7 +42050,78 @@ for (const [id, update] of Object.entries({
 			"Bug",
 			"Flying"
 		],
-		"passives": [],
+		"passives": [
+			"shielddust"
+		],
+		"replaceAbilities": true
+	},
+	"vivillonarchipelago": {
+		"abilities": {
+			"0": "Shield Dust",
+			"1": "Compound Eyes",
+			"H": "Friend Guard"
+		},
+		"baseStats": {
+			"hp": 80,
+			"atk": 52,
+			"def": 50,
+			"spa": 90,
+			"spd": 50,
+			"spe": 89
+		},
+		"types": [
+			"Bug",
+			"Flying"
+		],
+		"passives": [
+			"shielddust"
+		],
+		"replaceAbilities": true
+	},
+	"vivilloncontinental": {
+		"abilities": {
+			"0": "Shield Dust",
+			"1": "Compound Eyes",
+			"H": "Friend Guard"
+		},
+		"baseStats": {
+			"hp": 80,
+			"atk": 52,
+			"def": 50,
+			"spa": 90,
+			"spd": 50,
+			"spe": 89
+		},
+		"types": [
+			"Bug",
+			"Flying"
+		],
+		"passives": [
+			"shielddust"
+		],
+		"replaceAbilities": true
+	},
+	"vivillonelegant": {
+		"abilities": {
+			"0": "Shield Dust",
+			"1": "Compound Eyes",
+			"H": "Friend Guard"
+		},
+		"baseStats": {
+			"hp": 80,
+			"atk": 52,
+			"def": 50,
+			"spa": 90,
+			"spd": 50,
+			"spe": 89
+		},
+		"types": [
+			"Bug",
+			"Flying"
+		],
+		"passives": [
+			"shielddust"
+		],
 		"replaceAbilities": true
 	},
 	"vivillonfancy": {
@@ -41215,7 +42142,193 @@ for (const [id, update] of Object.entries({
 			"Bug",
 			"Flying"
 		],
-		"passives": [],
+		"passives": [
+			"shielddust"
+		],
+		"replaceAbilities": true
+	},
+	"vivillongarden": {
+		"abilities": {
+			"0": "Shield Dust",
+			"1": "Compound Eyes",
+			"H": "Friend Guard"
+		},
+		"baseStats": {
+			"hp": 80,
+			"atk": 52,
+			"def": 50,
+			"spa": 90,
+			"spd": 50,
+			"spe": 89
+		},
+		"types": [
+			"Bug",
+			"Flying"
+		],
+		"passives": [
+			"shielddust"
+		],
+		"replaceAbilities": true
+	},
+	"vivillonhighplains": {
+		"abilities": {
+			"0": "Shield Dust",
+			"1": "Compound Eyes",
+			"H": "Friend Guard"
+		},
+		"baseStats": {
+			"hp": 80,
+			"atk": 52,
+			"def": 50,
+			"spa": 90,
+			"spd": 50,
+			"spe": 89
+		},
+		"types": [
+			"Bug",
+			"Flying"
+		],
+		"passives": [
+			"shielddust"
+		],
+		"replaceAbilities": true
+	},
+	"vivillonicysnow": {
+		"abilities": {
+			"0": "Shield Dust",
+			"1": "Compound Eyes",
+			"H": "Friend Guard"
+		},
+		"baseStats": {
+			"hp": 80,
+			"atk": 52,
+			"def": 50,
+			"spa": 90,
+			"spd": 50,
+			"spe": 89
+		},
+		"types": [
+			"Bug",
+			"Flying"
+		],
+		"passives": [
+			"shielddust"
+		],
+		"replaceAbilities": true
+	},
+	"vivillonjungle": {
+		"abilities": {
+			"0": "Shield Dust",
+			"1": "Compound Eyes",
+			"H": "Friend Guard"
+		},
+		"baseStats": {
+			"hp": 80,
+			"atk": 52,
+			"def": 50,
+			"spa": 90,
+			"spd": 50,
+			"spe": 89
+		},
+		"types": [
+			"Bug",
+			"Flying"
+		],
+		"passives": [
+			"shielddust"
+		],
+		"replaceAbilities": true
+	},
+	"vivillonmarine": {
+		"abilities": {
+			"0": "Shield Dust",
+			"1": "Compound Eyes",
+			"H": "Friend Guard"
+		},
+		"baseStats": {
+			"hp": 80,
+			"atk": 52,
+			"def": 50,
+			"spa": 90,
+			"spd": 50,
+			"spe": 89
+		},
+		"types": [
+			"Bug",
+			"Flying"
+		],
+		"passives": [
+			"shielddust"
+		],
+		"replaceAbilities": true
+	},
+	"vivillonmodern": {
+		"abilities": {
+			"0": "Shield Dust",
+			"1": "Compound Eyes",
+			"H": "Friend Guard"
+		},
+		"baseStats": {
+			"hp": 80,
+			"atk": 52,
+			"def": 50,
+			"spa": 90,
+			"spd": 50,
+			"spe": 89
+		},
+		"types": [
+			"Bug",
+			"Flying"
+		],
+		"passives": [
+			"shielddust"
+		],
+		"replaceAbilities": true
+	},
+	"vivillonmonsoon": {
+		"abilities": {
+			"0": "Shield Dust",
+			"1": "Compound Eyes",
+			"H": "Friend Guard"
+		},
+		"baseStats": {
+			"hp": 80,
+			"atk": 52,
+			"def": 50,
+			"spa": 90,
+			"spd": 50,
+			"spe": 89
+		},
+		"types": [
+			"Bug",
+			"Flying"
+		],
+		"passives": [
+			"shielddust"
+		],
+		"replaceAbilities": true
+	},
+	"vivillonocean": {
+		"abilities": {
+			"0": "Shield Dust",
+			"1": "Compound Eyes",
+			"H": "Friend Guard"
+		},
+		"baseStats": {
+			"hp": 80,
+			"atk": 52,
+			"def": 50,
+			"spa": 90,
+			"spd": 50,
+			"spe": 89
+		},
+		"types": [
+			"Bug",
+			"Flying"
+		],
+		"passives": [
+			"shielddust"
+		],
 		"replaceAbilities": true
 	},
 	"vivillonpokeball": {
@@ -41236,7 +42349,147 @@ for (const [id, update] of Object.entries({
 			"Bug",
 			"Flying"
 		],
-		"passives": [],
+		"passives": [
+			"shielddust"
+		],
+		"replaceAbilities": true
+	},
+	"vivillonpolar": {
+		"abilities": {
+			"0": "Shield Dust",
+			"1": "Compound Eyes",
+			"H": "Friend Guard"
+		},
+		"baseStats": {
+			"hp": 80,
+			"atk": 52,
+			"def": 50,
+			"spa": 90,
+			"spd": 50,
+			"spe": 89
+		},
+		"types": [
+			"Bug",
+			"Flying"
+		],
+		"passives": [
+			"shielddust"
+		],
+		"replaceAbilities": true
+	},
+	"vivillonriver": {
+		"abilities": {
+			"0": "Shield Dust",
+			"1": "Compound Eyes",
+			"H": "Friend Guard"
+		},
+		"baseStats": {
+			"hp": 80,
+			"atk": 52,
+			"def": 50,
+			"spa": 90,
+			"spd": 50,
+			"spe": 89
+		},
+		"types": [
+			"Bug",
+			"Flying"
+		],
+		"passives": [
+			"shielddust"
+		],
+		"replaceAbilities": true
+	},
+	"vivillonsandstorm": {
+		"abilities": {
+			"0": "Shield Dust",
+			"1": "Compound Eyes",
+			"H": "Friend Guard"
+		},
+		"baseStats": {
+			"hp": 80,
+			"atk": 52,
+			"def": 50,
+			"spa": 90,
+			"spd": 50,
+			"spe": 89
+		},
+		"types": [
+			"Bug",
+			"Flying"
+		],
+		"passives": [
+			"shielddust"
+		],
+		"replaceAbilities": true
+	},
+	"vivillonsavanna": {
+		"abilities": {
+			"0": "Shield Dust",
+			"1": "Compound Eyes",
+			"H": "Friend Guard"
+		},
+		"baseStats": {
+			"hp": 80,
+			"atk": 52,
+			"def": 50,
+			"spa": 90,
+			"spd": 50,
+			"spe": 89
+		},
+		"types": [
+			"Bug",
+			"Flying"
+		],
+		"passives": [
+			"shielddust"
+		],
+		"replaceAbilities": true
+	},
+	"vivillonsun": {
+		"abilities": {
+			"0": "Shield Dust",
+			"1": "Compound Eyes",
+			"H": "Friend Guard"
+		},
+		"baseStats": {
+			"hp": 80,
+			"atk": 52,
+			"def": 50,
+			"spa": 90,
+			"spd": 50,
+			"spe": 89
+		},
+		"types": [
+			"Bug",
+			"Flying"
+		],
+		"passives": [
+			"shielddust"
+		],
+		"replaceAbilities": true
+	},
+	"vivillontundra": {
+		"abilities": {
+			"0": "Shield Dust",
+			"1": "Compound Eyes",
+			"H": "Friend Guard"
+		},
+		"baseStats": {
+			"hp": 80,
+			"atk": 52,
+			"def": 50,
+			"spa": 90,
+			"spd": 50,
+			"spe": 89
+		},
+		"types": [
+			"Bug",
+			"Flying"
+		],
+		"passives": [
+			"shielddust"
+		],
 		"replaceAbilities": true
 	},
 	"volbeat": {
@@ -41621,7 +42874,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Normal"
 		],
-		"passives": [],
+		"passives": [
+			"keeneye"
+		],
 		"replaceAbilities": true
 	},
 	"wattrel": {
@@ -41723,7 +42978,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Poison"
 		],
-		"passives": [],
+		"passives": [
+			"levitate"
+		],
 		"replaceAbilities": true
 	},
 	"weezinggalar": {
@@ -41744,7 +43001,9 @@ for (const [id, update] of Object.entries({
 			"Poison",
 			"Fairy"
 		],
-		"passives": [],
+		"passives": [
+			"levitate"
+		],
 		"replaceAbilities": true
 	},
 	"whimsicott": {
@@ -46636,6 +47895,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 
 
 
+
+
 // BEGIN SERVER WORKING SYNC DISPLAY COMPONENTS
 const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	"adaptivecycle": [],
@@ -47268,9 +48529,7 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 		"moldbreaker"
 	],
 	"atrocity": [
-		"moldbreaker",
 		"unboundblaze",
-		"selfsufficient",
 		"toughclaws"
 	],
 	"wickedsnare": [
@@ -47623,7 +48882,8 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 		"selfsufficient"
 	],
 	"pollenbloom": [
-		"thickfat"
+		"thickfat",
+		"unaware"
 	],
 	"firemane": [],
 	"blazingmane": [],
@@ -48926,7 +50186,7 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 		"infiltrator"
 	],
 	"dreadwings": [
-		"levitate",
+		"intimidate",
 		"unnerve"
 	],
 	"causticchamber": [
@@ -49091,8 +50351,8 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 		"innerfocus"
 	],
 	"voidcrossing": [
-		"levitate",
-		"magicguard"
+		"magicguard",
+		"infiltrator"
 	]
 };
 // END SERVER WORKING SYNC DISPLAY COMPONENTS
@@ -49742,8 +51002,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Atrocity",
 		"num": 10126,
 		"gen": 9,
-		"desc": "Mold Breaker: moves ignore bypassable opposing abilities. Eligible Normal moves become Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Dragon moves receive STAB. Prevents freezing outside Cold Eclipse and cures existing freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den blocks Fire moves. On Dragon's Den, Volcanic or Cold Eclipse entry, gains +1 Defense and Sp. Def. Same-type moves have 1.3x power. Immune to hail damage. At turn end, deals Fire-type damage to foes equal to 1/16 max HP, doubled if the foe is burned or the holder used a Fire or Dragon move that turn. Fire immunities block this damage; type effectiveness scales it only in Free-for-All. Contact moves have 1.3x power. Heals 1/16 max HP each turn. Damaging moves have a further 1.3x power, plus another 1.3x on Cold Eclipse. Critical-hit ratio rises by 1. Dragon Rush cannot miss and has a further 1.5x power. Defense and Sp. Def are 1.3x, or 1.5x on Cold Eclipse. While Royal Decree or Empress is active without Neutralization, move power gains another 1.3x and incoming attack damage falls by 30%. Cannot be suppressed.",
-		"shortDesc": "Stronger attacks and defenses, extra critical-hit chance, and a stronger Dragon Rush that cannot miss.",
+		"desc": "Mold Breaker: moves ignore bypassable opposing abilities. Eligible Normal moves become Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Dragon moves receive STAB. Prevents freezing outside Cold Eclipse and cures existing freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den blocks Fire moves. On Dragon's Den, Volcanic or Cold Eclipse entry, gains +1 Defense and Sp. Def. Same-type moves have 1.3x power. Immune to hail damage. At turn end, deals Fire-type damage to foes equal to 1/16 max HP, doubled if the foe is burned or the holder used a Fire or Dragon move that turn. Fire immunities block this damage; type effectiveness scales it only in Free-for-All. Contact moves have 1.3x power. Heals 1/16 max HP each turn. Damaging moves have a further 1.3x power, plus another 1.3x on Cold Eclipse. Defense and Sp. Def are 1.3x, or 1.5x on Cold Eclipse. While Royal Decree or Empress is active without Neutralization, move power gains another 1.3x and incoming attack damage falls by 30%. Cannot be suppressed.",
+		"shortDesc": "Stronger attacks and defenses; ignores bypassable abilities; heals 1/16 HP each turn.",
 		"rating": 5,
 		"flags": {
 			"cantsuppress": 1
@@ -51294,8 +52554,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Dread Wings",
 		"num": 11248,
 		"gen": 9,
-		"desc": "Levitate + full local Unnerve: airborne with normal Ground and grounded-hazard immunity; foes cannot eat Berries or use field seeds while Unnerve is active. On Cold Eclipse entry, lowers opposing Speed one stage unless protected by Substitute. A Dark Pulse that damages a surviving foe also applies Torment under normal volatile-status rules, preventing consecutive use of the same move. Existing Torment does not stack.",
-		"shortDesc": "Dark Pulse damage also applies Torment to surviving foes.",
+		"desc": "Full local Intimidate and Unnerve: on entry, lowers adjacent foes' Attack one stage under normal Intimidate protections; foes cannot eat Berries or use field seeds while Unnerve is active. On Cold Eclipse entry, lowers opposing Speed one stage unless protected by Substitute. A Dark Pulse that damages a surviving foe also applies Torment under normal volatile-status rules, preventing consecutive use of the same move. Existing Torment does not stack.",
+		"shortDesc": "Weakens foes on entry; Dark Pulse damage applies Torment to surviving foes.",
 		"rating": 4,
 		"flags": {
 			"breakable": 1
@@ -55019,8 +56279,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Pollen Bloom",
 		"num": 10137,
 		"gen": 9,
-		"desc": "Same-type moves have 1.3x power. Incoming Fire and Ice attacks use half the attacker's offensive stat. Immune to hail damage. When attacking, ignores the target's Defense, Sp. Def and evasion stages. When defending, ignores the attacker's Attack, Defense, Sp. Atk and accuracy stages. Reveals opposing Illusions on entry. At turn end, opposing non-Grass Pokemon take Grass-type damage equal to 1/16 max HP, blocked by Grass immunities; it heals the damage dealt by that chip. Only in Free-for-All does Grass type effectiveness scale this chip.",
-		"shortDesc": "Healing Grass chip scales by type in FFA.",
+		"desc": "Thick Fat + Unaware. Same-type attacks gain 30% power. Fire and Ice attacks use half the attacker's attacking stat; hail causes no damage. Ignores the foe's Defense, Sp. Def and evasion changes when attacking, and their Attack, Defense, Sp. Atk and accuracy changes when defending. Reveals opposing Illusions on entry. At each turn's end, drains 1/16 of each foe's base maximum HP and heals by the HP actually drained. Grass types and Grass-immune foes are unaffected. In Free-for-All only, Grass weaknesses and resistances change the drain amount.",
+		"shortDesc": "Same-type attacks gain 30% power. Each turn, drains 1/16 HP from eligible foes and heals that amount; Grass matchups scale the drain only in FFA.",
 		"rating": 4,
 		"flags": {
 			"breakable": 1
@@ -59099,8 +60359,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Void Crossing",
 		"num": 11314,
 		"gen": 9,
-		"desc": "Levitate + Magic Guard. Its first executed damaging Ghost move or Power Gem each entry bypasses opposing screens and Substitute. Misses, protection and immunity still spend the bypass; being prevented from acting does not. Switching restores the use. Includes the components’ normal effects and field interactions.",
-		"shortDesc": "Its first Ghost attack or Power Gem bypasses screens and Substitute.",
+		"desc": "Magic Guard + Infiltrator. After a damaging Ghost move or Power Gem hits an opponent, curses it through the end of the following turn. Its next damaging move deals 20% less damage across all hits and targets, then consumes the curse. Status moves do not consume it. Reapplying refreshes the duration without stacking; switching removes it.",
+		"shortDesc": "Ghost hits or Power Gem curse foes: their next attack deals 20% less damage.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null
@@ -61656,6 +62916,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"ultraego": []
 });
 // END APPROVED ROSTER COMPONENTS
+
 
 
 
@@ -64521,7 +65782,7 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"type": "Dark",
 		"category": "Status",
 		"basePower": 0,
-		"accuracy": 80,
+		"accuracy": 70,
 		"pp": 10,
 		"priority": 0,
 		"target": "allAdjacentFoes",
@@ -64531,8 +65792,8 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"mirror": 1,
 			"metronome": 1
 		},
-		"desc": "Has 80% accuracy and causes the target to fall asleep. If used by Mega Banette with its custom Ability, this move has 90% accuracy.",
-		"shortDesc": "80% sleep; Mega Banette custom Ability: 90%."
+		"desc": "Has 70% accuracy. Puts adjacent opposing Pokemon to sleep.",
+		"shortDesc": "Puts adjacent foes to sleep."
 	},
 	"dazzlinggleam": {
 		"name": "Dazzling Gleam",
@@ -64637,8 +65898,8 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"protect": 1,
 			"mirror": 1
 		},
-		"desc": "",
-		"shortDesc": ""
+		"desc": "Usually moves after other attacks (-4 priority). Power doubles from 65 to 130 if the target already damaged the user this turn.",
+		"shortDesc": "Moves late. 2x power if the target hurt the user this turn."
 	},
 	"destinybond": {
 		"name": "Destiny Bond",
@@ -67487,6 +68748,20 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"flags": {},
 		"desc": "Ghost-type, 100 Base Power. Uses the user's higher offensive stat. Hits the selected foe at full power, then makes a separate 50 Base Power Ghost-type hit against one other adjacent foe, if present. The follow-up checks its own type immunity and protection. In a single battle, there is no follow-up.",
 		"shortDesc": "100 BP Ghost to one foe; 50 BP Ghost follow-up to another foe."
+	},
+	"gmaxsteelsurge": {
+		"name": "G-Max Steelsurge",
+		"num": 1000,
+		"type": "Steel",
+		"category": "Physical",
+		"basePower": 10,
+		"accuracy": true,
+		"pp": 5,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {},
+		"desc": "Power is equal to the base move's Max Move power. If this move is successful, it sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in. Foes lose 1/32, 1/16, 1/8, 1/4, or 1/2 of their maximum HP, rounded down, based on their weakness to the Steel type; 0.25x, 0.5x, neutral, 2x, or 4x, respectively. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin or Defog successfully, or is hit by Defog.",
+		"shortDesc": "Base move affects power. Foes: Steel hazard."
 	},
 	"grassknot": {
 		"name": "Grass Knot",
@@ -74457,8 +75732,8 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"nosleeptalk": 1,
 			"failinstruct": 1
 		},
-		"desc": "This attack charges with +4 priority on its actual charge turn and executes at normal priority on the second turn. Raises the user's Attack, Defense, and Special Defense by 1 stage each on the first turn. While charging, the user takes 0.7x damage from attacks. After a successful hit, the user restores 1/8 of its maximum HP. If the charge is skipped, including by Power Herb, it executes without the charge-turn priority.",
-		"shortDesc": "+4 charge: +Atk/Def/SpD, 0.7x damage. Hit heals 1/8."
+		"desc": "Charges with +2 priority, raising the user's Attack, Defense, and Special Defense by 1 stage each. While charging, the user takes 20% less damage from attacks. Attacks at normal priority on the next turn. After dealing damage, restores 10% of the user's base maximum HP. Skipping the charge, such as with Power Herb, keeps the stat boosts but does not grant charge-turn priority or the charging damage reduction.",
+		"shortDesc": "+2 charge: +1 Atk/Def/SpD, 20% less damage. Hit heals 10%."
 	},
 	"skyattack": {
 		"name": "Sky Attack",
@@ -78837,7 +80112,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	],
 	"dreadpresence": [],
 	"dreadwings": [
-		"levitate",
+		"intimidate",
 		"unnerve"
 	],
 	"dreamrefuge": [
@@ -80550,8 +81825,8 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"insomnia"
 	],
 	"voidcrossing": [
-		"levitate",
-		"magicguard"
+		"magicguard",
+		"infiltrator"
 	],
 	"voiddrift": [
 		"levitate",
@@ -81512,6 +82787,7 @@ for (const [id, update] of Object.entries({
 } as {[id: string]: AnyObject})) {
 	CUSTOM_ITEM_UPDATES[id] = {...CUSTOM_ITEM_UPDATES[id], ...update};
 }
+
 
 
 
@@ -83632,6 +84908,10 @@ const Dex = new class implements ModdedDex {
 	}
 
 	getEffect(name: string | null | undefined): PureEffect | Item | Ability | Move {
+		if (name?.trim().startsWith('passive:')) {
+			const ability = Dex.abilities.get(name.trim().slice(8).trim());
+			return new PureEffect(ability.id, ability.name + ' (passive)');
+		}
 		name = (name || '').trim();
 		if (name.substr(0, 5) === 'item:') {
 			return Dex.items.get(name.substr(5).trim());
@@ -83856,7 +85136,7 @@ const Dex = new class implements ModdedDex {
 		return false;
 	}
 
-	/** Includes genuine composite components, not incidental description mentions. */
+	/** Includes resolved species passives and genuine composite components, not description mentions. */
 	hasAbilityEffect(species: Species, ability: string) {
 		ensureCustomDataPatches();
 		const effectId = this.abilities.get(ability).id;
@@ -83866,16 +85146,25 @@ const Dex = new class implements ModdedDex {
 			const abilityId = toID(species.abilities[slot]);
 			if (this.getAbilityEffects(abilityId).has(effectId)) return true;
 		}
+		for (const passive of species.passives || []) {
+			if (this.getAbilityEffects(toID(passive)).has(effectId)) return true;
+		}
 		return false;
 	}
 
 	/** Presentation only; mechanical closure and search identities stay in getAbilityEffects. */
-	getAbilityDisplayComponents(abilityId: ID, dex: ModdedDex = this): readonly ID[] {
+	getAbilityDescriptionLines(description: string): string[] {
+		return description.replace(/\b(Sp|No|Mr|Mrs)\.\s/g, '$1\u0001 ')
+			.split(/\.\s+(?=[A-Z0-9])|;\s+/)
+			.map(line => line.replace(/\u0001/g, '.').trim()).filter(Boolean);
+	}
+
+	getAbilityDisplayComponents(abilityId: ID, dex: ModdedDex = this, passives: readonly string[] = []): readonly ID[] {
 		ensureCustomDataPatches();
 		const ability = dex.abilities.get(abilityId);
 		const base = this.abilities.get(ability.id);
 		if (dex !== this && (ability.desc !== base.desc || ability.shortDesc !== base.shortDesc)) return [];
-		return (CUSTOM_ABILITY_DISPLAY_COMPONENTS[ability.id] || []) as ID[];
+		return (CUSTOM_ABILITY_DISPLAY_COMPONENTS[ability.id] || []).filter(id => !passives.includes(id)) as ID[];
 	}
 
 	getAbilityEffects(abilityId: ID, visiting = new Set<ID>(), dex: ModdedDex = this): ReadonlySet<ID> {
@@ -84245,6 +85534,17 @@ const Dex = new class implements ModdedDex {
 			spriteData.url = Dex.resourcePrefix + 'sprites/' + dir + '/houndoom-mega.' + (options.shiny ? 'png' : 'gif');
 			spriteData.pixelated = true;
 		}
+		// Prefer installed BW animations for non-shiny forms, using the exact facing.
+		// Shiny artwork keeps its custom selection; absent animations retain the fallback.
+		if (!options.shiny && !Dex.prefs('noanim') && !Dex.prefs('nogif')) {
+			const animationNames = options.gender === 'F' ? [name.endsWith('-f') ? name : name + '-f', name] : [name];
+			const bwPath = animationNames.map(candidate => 'gen5ani' + (isFront ? '' : '-back') + '/' + candidate + '.gif')
+				.find(path => !!TEAM_PREVIEW_ANIMATIONS[path]);
+			if (bwPath) {
+				spriteData.url = Dex.resourcePrefix + 'sprites/' + bwPath;
+				spriteData.pixelated = true;
+			}
+		}
 		let assetPath = spriteData.url.slice((Dex.resourcePrefix + 'sprites/').length).split('?')[0];
 		if (spriteData.gen >= 5 && !SPRITE_ASSET_DIMENSIONS[assetPath]) {
 			const ungenderedPath = assetPath.replace(/-f\.(gif|png)$/, '.$1');
@@ -84442,7 +85742,7 @@ const Dex = new class implements ModdedDex {
 			spriteData.h = staticDimensions[1];
 			spriteData.pixelated = true;
 			let previewAnimationFound = false;
-			if (!forceStaticShiny && !speciesid.startsWith('furfrou')) for (const style of ['gen5ani']) {
+			if (!Dex.prefs('noanim') && !Dex.prefs('nogif') && !forceStaticShiny && (!options.shiny || !speciesid.startsWith('furfrou'))) for (const style of ['gen5ani']) {
 				for (const candidate of previewAnimationNames) {
 					const path = style + (isFront ? '' : '-back') + (options.shiny ? '-shiny' : '') + '/' + candidate + '.gif';
 					const dimensions = TEAM_PREVIEW_ANIMATIONS[path];

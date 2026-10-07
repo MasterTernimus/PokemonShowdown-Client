@@ -386,3 +386,28 @@
 .starter-passives{margin-top:7px;line-height:1.6}.starter-passives label{display:block;font-size:11px;color:#687a81}.starter-passives .passive-chip{display:inline-block;padding:1px 7px;border:1px solid #83aaa0;border-radius:10px;background:#edf7f2;color:#245b49;font-size:11px;font-weight:600}.form-preview-tools .starter-passives{margin:8px 0}.setchart:has(.starter-passives){height:190px}@media(max-width:700px){.editing-set .setchart:has(.starter-passives){height:auto}}
 
 .form-preview-result .form-preview-sprite{grid-row:1 / span 3}.form-preview-result > strong,.form-preview-result > span:not(.form-preview-sprite){grid-column:2}.form-preview-tools > .starter-passives{margin-left:94px}@media(max-width:700px){.form-preview-tools > .starter-passives{margin-left:0}}
+
+/* Composite identities stay visible alongside their additional effects. */
+.teambuilder-results .ability-components, .teambuilder-results .ability-extra-effects { display: block; white-space: normal; }
+.teambuilder-results .ability-components { margin-bottom: 2px; }
+
+/* Keep the closed set tools in the unused nickname/action header space. */
+.teamchart .set-tools-compact { margin: 0; border: 0; border-radius: 0; background: transparent; }
+.teamchart .set-tools-compact > summary {
+ position: absolute; top: 5px; left: 116px; z-index: 1;
+ width: auto; max-width: 155px; padding: 3px 7px; min-height: 0;
+ box-sizing: border-box; border: 1px solid #8296a5; border-radius: 4px;
+ background: #edf2f6; color: #293d4e; font-size: 11px; white-space: nowrap;
+}
+.teamchart .set-tools-compact[open] { margin-top: 4px; border: 1px solid #b2bfcc; border-radius: 5px; background: #edf2f6; }
+.teamchart .set-tools-compact .set-tools-state:empty { display: none; }
+.teamchart .set-tools-compact .set-tools-state { margin-left: 0; }
+.dark .teamchart .set-tools-compact > summary,
+.dark .teamchart .set-tools-compact[open] { background: #263440; color: #e2edf7; border-color: #617b8c; }
+.teamchart .set-tools-compact > summary:hover { background: #d9e7ef; }
+.dark .teamchart .set-tools-compact > summary:hover { background: #354b5a; }
+@media (max-width: 639px) {
+ /* The mobile editor stacks its nickname and action rows; retain a touch-sized toggle. */
+ .editing-set .teamchart .set-tools-compact > summary { position: static; width: fit-content; max-width: 100%; min-height: 44px; padding: 11px 9px; margin-top: 4px; }
+ .editing-set .teamchart .set-tools-compact[open] > summary { margin-top: 0; }
+}

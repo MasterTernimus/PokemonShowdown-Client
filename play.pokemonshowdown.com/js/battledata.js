@@ -19870,6 +19870,7 @@ if(CUSTOM_SPECIES[_id7])Object.assign(CUSTOM_SPECIES[_id7].data,_update3);
 
 
 
+
 Object.entries({
 "ababo":{
 "abilities":{
@@ -20093,7 +20094,195 @@ Object.entries({
 "types":[
 "Fairy"],
 
+"passives":[
+"sweetveil"],
+
+"replaceAbilities":true
+},
+"alcremiecaramelswirl":{
+"abilities":{
+"0":"Sweet Veil",
+"H":"Aroma Veil"
+},
+"baseStats":{
+"hp":65,
+"atk":60,
+"def":75,
+"spa":110,
+"spd":121,
+"spe":64
+},
+"types":[
+"Fairy"],
+
+"passives":[
+"sweetveil"],
+
+"replaceAbilities":true
+},
+"alcremiegmax":{
+"abilities":{
+"0":"Sweet Sanctuary"
+},
+"baseStats":{
+"hp":130,
+"atk":60,
+"def":75,
+"spa":110,
+"spd":121,
+"spe":64
+},
+"types":[
+"Fairy"],
+
 "passives":[],
+"replaceAbilities":true
+},
+"alcremielemoncream":{
+"abilities":{
+"0":"Sweet Veil",
+"H":"Aroma Veil"
+},
+"baseStats":{
+"hp":65,
+"atk":60,
+"def":75,
+"spa":110,
+"spd":121,
+"spe":64
+},
+"types":[
+"Fairy"],
+
+"passives":[
+"sweetveil"],
+
+"replaceAbilities":true
+},
+"alcremiematchacream":{
+"abilities":{
+"0":"Sweet Veil",
+"H":"Aroma Veil"
+},
+"baseStats":{
+"hp":65,
+"atk":60,
+"def":75,
+"spa":110,
+"spd":121,
+"spe":64
+},
+"types":[
+"Fairy"],
+
+"passives":[
+"sweetveil"],
+
+"replaceAbilities":true
+},
+"alcremiemintcream":{
+"abilities":{
+"0":"Sweet Veil",
+"H":"Aroma Veil"
+},
+"baseStats":{
+"hp":65,
+"atk":60,
+"def":75,
+"spa":110,
+"spd":121,
+"spe":64
+},
+"types":[
+"Fairy"],
+
+"passives":[
+"sweetveil"],
+
+"replaceAbilities":true
+},
+"alcremierainbowswirl":{
+"abilities":{
+"0":"Sweet Veil",
+"H":"Aroma Veil"
+},
+"baseStats":{
+"hp":65,
+"atk":60,
+"def":75,
+"spa":110,
+"spd":121,
+"spe":64
+},
+"types":[
+"Fairy"],
+
+"passives":[
+"sweetveil"],
+
+"replaceAbilities":true
+},
+"alcremierubycream":{
+"abilities":{
+"0":"Sweet Veil",
+"H":"Aroma Veil"
+},
+"baseStats":{
+"hp":65,
+"atk":60,
+"def":75,
+"spa":110,
+"spd":121,
+"spe":64
+},
+"types":[
+"Fairy"],
+
+"passives":[
+"sweetveil"],
+
+"replaceAbilities":true
+},
+"alcremierubyswirl":{
+"abilities":{
+"0":"Sweet Veil",
+"H":"Aroma Veil"
+},
+"baseStats":{
+"hp":65,
+"atk":60,
+"def":75,
+"spa":110,
+"spd":121,
+"spe":64
+},
+"types":[
+"Fairy"],
+
+"passives":[
+"sweetveil"],
+
+"replaceAbilities":true
+},
+"alcremiesaltedcream":{
+"abilities":{
+"0":"Sweet Veil",
+"H":"Aroma Veil"
+},
+"baseStats":{
+"hp":65,
+"atk":60,
+"def":75,
+"spa":110,
+"spd":121,
+"spe":64
+},
+"types":[
+"Fairy"],
+
+"passives":[
+"sweetveil"],
+
 "replaceAbilities":true
 },
 "alomomola":{
@@ -21160,6 +21349,25 @@ Object.entries({
 "passives":[],
 "replaceAbilities":true
 },
+"auroreon":{
+"abilities":{
+"0":"Mind Freeze"
+},
+"baseStats":{
+"hp":60,
+"atk":60,
+"def":95,
+"spa":130,
+"spd":95,
+"spe":110
+},
+"types":[
+"Ice",
+"Psychic"],
+
+"passives":[],
+"replaceAbilities":true
+},
 "aurorus":{
 "abilities":{
 "0":"Refrigerate",
@@ -21362,7 +21570,7 @@ Object.entries({
 },
 "baltoy":{
 "abilities":{
-"0":"Levitate"
+"0":"Own Tempo"
 },
 "baseStats":{
 "hp":40,
@@ -21376,7 +21584,9 @@ Object.entries({
 "Ground",
 "Psychic"],
 
-"passives":[],
+"passives":[
+"levitate"],
+
 "replaceAbilities":true
 },
 "banette":{
@@ -21930,7 +22140,9 @@ Object.entries({
 "Water",
 "Steel"],
 
-"passives":[],
+"passives":[
+"torrent"],
+
 "replaceAbilities":true
 },
 "blastoisegmax":{
@@ -21950,6 +22162,7 @@ Object.entries({
 "Steel"],
 
 "passives":[
+"torrent",
 "proficient"],
 
 "replaceAbilities":true
@@ -21971,6 +22184,7 @@ Object.entries({
 "Steel"],
 
 "passives":[
+"torrent",
 "proficient"],
 
 "replaceAbilities":true
@@ -21993,7 +22207,9 @@ Object.entries({
 "Fire",
 "Fighting"],
 
-"passives":[],
+"passives":[
+"blaze"],
+
 "replaceAbilities":true
 },
 "blazikenmega":{
@@ -22013,6 +22229,7 @@ Object.entries({
 "Fighting"],
 
 "passives":[
+"blaze",
 "proficient"],
 
 "replaceAbilities":true
@@ -22564,6 +22781,46 @@ Object.entries({
 "Bug",
 "Flying"],
 
+"passives":[
+"shielddust"],
+
+"replaceAbilities":true
+},
+"butterfreegmax":{
+"abilities":{
+"0":"Mythic Scale"
+},
+"baseStats":{
+"hp":112,
+"atk":38,
+"def":71,
+"spa":108,
+"spd":93,
+"spe":90
+},
+"types":[
+"Bug",
+"Fairy"],
+
+"passives":[],
+"replaceAbilities":true
+},
+"butterfreemega":{
+"abilities":{
+"0":"Toxic Evolution"
+},
+"baseStats":{
+"hp":75,
+"atk":30,
+"def":115,
+"spa":137,
+"spd":115,
+"spe":103
+},
+"types":[
+"Bug",
+"Poison"],
+
 "passives":[],
 "replaceAbilities":true
 },
@@ -22602,7 +22859,9 @@ Object.entries({
 "types":[
 "Grass"],
 
-"passives":[],
+"passives":[
+"overcoat"],
+
 "replaceAbilities":true
 },
 "cacturne":{
@@ -22616,6 +22875,29 @@ Object.entries({
 "atk":160,
 "def":70,
 "spa":90,
+"spd":70,
+"spe":90
+},
+"types":[
+"Grass",
+"Dark"],
+
+"passives":[
+"overcoat"],
+
+"replaceAbilities":true
+},
+"cacturnealt":{
+"abilities":{
+"0":"Scarecrow",
+"1":"Solar Rush",
+"H":"Storm Drain"
+},
+"baseStats":{
+"hp":75,
+"atk":160,
+"def":70,
+"spa":105,
 "spd":70,
 "spe":90
 },
@@ -23186,7 +23468,9 @@ Object.entries({
 "Fire",
 "Flying"],
 
-"passives":[],
+"passives":[
+"blaze"],
+
 "replaceAbilities":true
 },
 "charizardalt":{
@@ -23207,7 +23491,9 @@ Object.entries({
 "Fire",
 "Flying"],
 
-"passives":[],
+"passives":[
+"blaze"],
+
 "replaceAbilities":true
 },
 "charizardgmax":{
@@ -23227,6 +23513,7 @@ Object.entries({
 "Dragon"],
 
 "passives":[
+"blaze",
 "proficient"],
 
 "replaceAbilities":true
@@ -23248,6 +23535,7 @@ Object.entries({
 "Dragon"],
 
 "passives":[
+"blaze",
 "proficient"],
 
 "replaceAbilities":true
@@ -23269,6 +23557,7 @@ Object.entries({
 "Dragon"],
 
 "passives":[
+"blaze",
 "proficient"],
 
 "replaceAbilities":true
@@ -23290,6 +23579,7 @@ Object.entries({
 "Flying"],
 
 "passives":[
+"blaze",
 "proficient"],
 
 "replaceAbilities":true
@@ -23429,7 +23719,9 @@ Object.entries({
 "Grass",
 "Fighting"],
 
-"passives":[],
+"passives":[
+"overgrow"],
+
 "replaceAbilities":true
 },
 "chesnaughtmega":{
@@ -23449,6 +23741,7 @@ Object.entries({
 "Fighting"],
 
 "passives":[
+"overgrow",
 "proficient"],
 
 "replaceAbilities":true
@@ -23565,6 +23858,46 @@ Object.entries({
 },
 "types":[
 "Psychic"],
+
+"passives":[
+"levitate"],
+
+"replaceAbilities":true
+},
+"chimechomega":{
+"abilities":{
+"0":"Wind Chime"
+},
+"baseStats":{
+"hp":75,
+"atk":50,
+"def":110,
+"spa":135,
+"spd":120,
+"spe":65
+},
+"types":[
+"Psychic",
+"Steel"],
+
+"passives":[],
+"replaceAbilities":true
+},
+"chimechomegay":{
+"abilities":{
+"0":"Haunted Chime"
+},
+"baseStats":{
+"hp":75,
+"atk":50,
+"def":80,
+"spa":145,
+"spd":100,
+"spe":105
+},
+"types":[
+"Psychic",
+"Ghost"],
 
 "passives":[],
 "replaceAbilities":true
@@ -23684,7 +24017,9 @@ Object.entries({
 "types":[
 "Fire"],
 
-"passives":[],
+"passives":[
+"blaze"],
+
 "replaceAbilities":true
 },
 "cinderacegmax":{
@@ -23703,6 +24038,7 @@ Object.entries({
 "Fire"],
 
 "passives":[
+"blaze",
 "proficient"],
 
 "replaceAbilities":true
@@ -23724,6 +24060,7 @@ Object.entries({
 "Normal"],
 
 "passives":[
+"blaze",
 "proficient"],
 
 "replaceAbilities":true
@@ -23790,7 +24127,7 @@ Object.entries({
 },
 "claydol":{
 "abilities":{
-"0":"Levitate",
+"0":"Clear Body",
 "1":"Relic Beam",
 "H":"Defragment"
 },
@@ -23805,6 +24142,27 @@ Object.entries({
 "types":[
 "Ground",
 "Fairy"],
+
+"passives":[
+"levitate"],
+
+"replaceAbilities":true
+},
+"claydolmega":{
+"abilities":{
+"0":"Astral Engine"
+},
+"baseStats":{
+"hp":60,
+"atk":70,
+"def":135,
+"spa":130,
+"spd":150,
+"spe":55
+},
+"types":[
+"Ground",
+"Psychic"],
 
 "passives":[],
 "replaceAbilities":true
@@ -24030,7 +24388,9 @@ Object.entries({
 "Bug",
 "Flying"],
 
-"passives":[],
+"passives":[
+"sweetveil"],
+
 "replaceAbilities":true
 },
 "combusken":{
@@ -24430,7 +24790,9 @@ Object.entries({
 "Water",
 "Dark"],
 
-"passives":[],
+"passives":[
+"hypercutter"],
+
 "replaceAbilities":true
 },
 "cresceidon":{
@@ -24596,7 +24958,7 @@ Object.entries({
 },
 "cryogonal":{
 "abilities":{
-"0":"Levitate",
+"0":"Ice Body",
 "1":"Mirror Armor",
 "H":"Purifying Frost"
 },
@@ -24612,7 +24974,9 @@ Object.entries({
 "Ice",
 "Ghost"],
 
-"passives":[],
+"passives":[
+"levitate"],
+
 "replaceAbilities":true
 },
 "cubchoo":{
@@ -24950,7 +25314,9 @@ Object.entries({
 "Grass",
 "Ghost"],
 
-"passives":[],
+"passives":[
+"overgrow"],
+
 "replaceAbilities":true
 },
 "decidueyealt":{
@@ -24971,7 +25337,9 @@ Object.entries({
 "Grass",
 "Ghost"],
 
-"passives":[],
+"passives":[
+"overgrow"],
+
 "replaceAbilities":true
 },
 "decidueyehisui":{
@@ -24992,7 +25360,9 @@ Object.entries({
 "Grass",
 "Fighting"],
 
-"passives":[],
+"passives":[
+"overgrow"],
+
 "replaceAbilities":true
 },
 "decidueyehisuialt":{
@@ -25013,7 +25383,9 @@ Object.entries({
 "Grass",
 "Fighting"],
 
-"passives":[],
+"passives":[
+"overgrow"],
+
 "replaceAbilities":true
 },
 "dedenne":{
@@ -25137,7 +25509,9 @@ Object.entries({
 "Fire",
 "Psychic"],
 
-"passives":[],
+"passives":[
+"blaze"],
+
 "replaceAbilities":true
 },
 "delphoxmega":{
@@ -25157,6 +25531,7 @@ Object.entries({
 "Psychic"],
 
 "passives":[
+"blaze",
 "proficient"],
 
 "replaceAbilities":true
@@ -26257,12 +26632,33 @@ Object.entries({
 "Ghost",
 "Dark"],
 
+"passives":[
+"levitate"],
+
+"replaceAbilities":true
+},
+"dusknoirmega":{
+"abilities":{
+"0":"Reaper's Grip"
+},
+"baseStats":{
+"hp":65,
+"atk":180,
+"def":155,
+"spa":70,
+"spd":155,
+"spe":45
+},
+"types":[
+"Ghost",
+"Dark"],
+
 "passives":[],
 "replaceAbilities":true
 },
 "duskull":{
 "abilities":{
-"0":"Levitate",
+"0":"Infiltrator",
 "H":"Frisk"
 },
 "baseStats":{
@@ -26276,7 +26672,9 @@ Object.entries({
 "types":[
 "Ghost"],
 
-"passives":[],
+"passives":[
+"levitate"],
+
 "replaceAbilities":true
 },
 "dustox":{
@@ -26297,7 +26695,9 @@ Object.entries({
 "Bug",
 "Poison"],
 
-"passives":[],
+"passives":[
+"shielddust"],
+
 "replaceAbilities":true
 },
 "dwebble":{
@@ -26323,7 +26723,7 @@ Object.entries({
 },
 "eelektrik":{
 "abilities":{
-"0":"Levitate"
+"0":"Static"
 },
 "baseStats":{
 "hp":65,
@@ -26336,7 +26736,9 @@ Object.entries({
 "types":[
 "Electric"],
 
-"passives":[],
+"passives":[
+"levitate"],
+
 "replaceAbilities":true
 },
 "eelektross":{
@@ -26352,6 +26754,26 @@ Object.entries({
 "spa":105,
 "spd":90,
 "spe":50
+},
+"types":[
+"Electric"],
+
+"passives":[
+"levitate"],
+
+"replaceAbilities":true
+},
+"eelektrossmega":{
+"abilities":{
+"0":"Storm Circuit"
+},
+"baseStats":{
+"hp":85,
+"atk":145,
+"def":90,
+"spa":135,
+"spd":100,
+"spe":80
 },
 "types":[
 "Electric"],
@@ -26372,6 +26794,26 @@ Object.entries({
 "spa":45,
 "spd":65,
 "spe":55
+},
+"types":[
+"Normal"],
+
+"passives":[
+"runaway"],
+
+"replaceAbilities":true
+},
+"eeveegmax":{
+"abilities":{
+"0":"Fluffy Evo"
+},
+"baseStats":{
+"hp":150,
+"atk":75,
+"def":70,
+"spa":65,
+"spd":85,
+"spe":75
 },
 "types":[
 "Normal"],
@@ -26663,7 +27105,9 @@ Object.entries({
 "Fire",
 "Fighting"],
 
-"passives":[],
+"passives":[
+"blaze"],
+
 "replaceAbilities":true
 },
 "emboaralt":{
@@ -26684,7 +27128,9 @@ Object.entries({
 "Fire",
 "Fighting"],
 
-"passives":[],
+"passives":[
+"blaze"],
+
 "replaceAbilities":true
 },
 "emboarmega":{
@@ -26704,6 +27150,29 @@ Object.entries({
 "Fighting"],
 
 "passives":[
+"blaze",
+"proficient"],
+
+"replaceAbilities":true
+},
+"emboarmegaalt":{
+"abilities":{
+"0":"Burning Ego"
+},
+"baseStats":{
+"hp":110,
+"atk":150,
+"def":93,
+"spa":85,
+"spd":115,
+"spe":75
+},
+"types":[
+"Fire",
+"Fighting"],
+
+"passives":[
+"blaze",
 "proficient"],
 
 "replaceAbilities":true
@@ -26725,7 +27194,31 @@ Object.entries({
 "Fighting"],
 
 "passives":[
+"blaze",
 "proficient"],
+
+"replaceAbilities":true
+},
+"emboarreborn":{
+"abilities":{
+"0":"Gluttony",
+"1":"Thick Fat",
+"H":"Brute Force"
+},
+"baseStats":{
+"hp":110,
+"atk":123,
+"def":75,
+"spa":80,
+"spd":75,
+"spe":65
+},
+"types":[
+"Fire",
+"Fighting"],
+
+"passives":[
+"blaze"],
 
 "replaceAbilities":true
 },
@@ -26768,7 +27261,9 @@ Object.entries({
 "Water",
 "Steel"],
 
-"passives":[],
+"passives":[
+"torrent"],
+
 "replaceAbilities":true
 },
 "empoleonmega":{
@@ -26788,6 +27283,7 @@ Object.entries({
 "Steel"],
 
 "passives":[
+"torrent",
 "proficient"],
 
 "replaceAbilities":true
@@ -26931,7 +27427,9 @@ Object.entries({
 "types":[
 "Psychic"],
 
-"passives":[],
+"passives":[
+"runaway"],
+
 "replaceAbilities":true
 },
 "espurr":{
@@ -27194,7 +27692,9 @@ Object.entries({
 "Normal",
 "Flying"],
 
-"passives":[],
+"passives":[
+"keeneye"],
+
 "replaceAbilities":true
 },
 "feebas":{
@@ -27254,7 +27754,9 @@ Object.entries({
 "Water",
 "Dark"],
 
-"passives":[],
+"passives":[
+"torrent"],
+
 "replaceAbilities":true
 },
 "feraligatrgmax":{
@@ -27274,6 +27776,7 @@ Object.entries({
 "Dark"],
 
 "passives":[
+"torrent",
 "proficient"],
 
 "replaceAbilities":true
@@ -27295,6 +27798,7 @@ Object.entries({
 "Dragon"],
 
 "passives":[
+"torrent",
 "proficient"],
 
 "replaceAbilities":true
@@ -27556,7 +28060,9 @@ Object.entries({
 "types":[
 "Fire"],
 
-"passives":[],
+"passives":[
+"runaway"],
+
 "replaceAbilities":true
 },
 "fletchinder":{
@@ -27770,6 +28276,46 @@ Object.entries({
 "spa":80,
 "spd":80,
 "spe":100
+},
+"types":[
+"Ground",
+"Dragon"],
+
+"passives":[
+"levitate"],
+
+"replaceAbilities":true
+},
+"flygonmega":{
+"abilities":{
+"0":"Desert Spirit"
+},
+"baseStats":{
+"hp":80,
+"atk":100,
+"def":85,
+"spa":135,
+"spd":85,
+"spe":135
+},
+"types":[
+"Dragon",
+"Bug"],
+
+"passives":[],
+"replaceAbilities":true
+},
+"flygonmegaz":{
+"abilities":{
+"0":"Tremor"
+},
+"baseStats":{
+"hp":80,
+"atk":149,
+"def":80,
+"spa":80,
+"spd":80,
+"spe":151
 },
 "types":[
 "Ground",
@@ -28035,7 +28581,9 @@ Object.entries({
 "types":[
 "Normal"],
 
-"passives":[],
+"passives":[
+"keeneye"],
+
 "replaceAbilities":true
 },
 "gabite":{
@@ -28601,7 +29149,9 @@ Object.entries({
 "types":[
 "Ice"],
 
-"passives":[],
+"passives":[
+"runaway"],
+
 "replaceAbilities":true
 },
 "glalie":{
@@ -28747,6 +29297,29 @@ Object.entries({
 "replaceAbilities":true
 },
 "gliscor":{
+"abilities":{
+"0":"Venom Heal",
+"1":"Toxic Boost",
+"H":"Wind Rider"
+},
+"baseStats":{
+"hp":105,
+"atk":105,
+"def":135,
+"spa":40,
+"spd":90,
+"spe":95
+},
+"types":[
+"Ground",
+"Flying"],
+
+"passives":[
+"hypercutter"],
+
+"replaceAbilities":true
+},
+"gliscoralt":{
 "abilities":{
 "0":"Venom Heal",
 "1":"Toxic Boost",
@@ -29380,7 +29953,9 @@ Object.entries({
 "Water",
 "Dark"],
 
-"passives":[],
+"passives":[
+"torrent"],
+
 "replaceAbilities":true
 },
 "greninjaash":{
@@ -29400,6 +29975,7 @@ Object.entries({
 "Dark"],
 
 "passives":[
+"torrent",
 "proficient"],
 
 "replaceAbilities":true
@@ -29420,7 +29996,9 @@ Object.entries({
 "Water",
 "Dark"],
 
-"passives":[],
+"passives":[
+"torrent"],
+
 "replaceAbilities":true
 },
 "greninjamega":{
@@ -29440,6 +30018,7 @@ Object.entries({
 "Dark"],
 
 "passives":[
+"torrent",
 "proficient"],
 
 "replaceAbilities":true
@@ -29461,7 +30040,9 @@ Object.entries({
 "types":[
 "Poison"],
 
-"passives":[],
+"passives":[
+"liquidooze"],
+
 "replaceAbilities":true
 },
 "grimeralola":{
@@ -29677,7 +30258,9 @@ Object.entries({
 "types":[
 "Poison"],
 
-"passives":[],
+"passives":[
+"liquidooze"],
+
 "replaceAbilities":true
 },
 "gumshoos":{
@@ -30493,7 +31076,9 @@ Object.entries({
 "Dark",
 "Dragon"],
 
-"passives":[],
+"passives":[
+"levitate"],
+
 "replaceAbilities":true
 },
 "hypno":{
@@ -30598,7 +31183,9 @@ Object.entries({
 "Fire",
 "Dark"],
 
-"passives":[],
+"passives":[
+"blaze"],
+
 "replaceAbilities":true
 },
 "incineroaralt":{
@@ -30619,7 +31206,9 @@ Object.entries({
 "Fire",
 "Dark"],
 
-"passives":[],
+"passives":[
+"blaze"],
+
 "replaceAbilities":true
 },
 "indeedee":{
@@ -30682,7 +31271,9 @@ Object.entries({
 "Fire",
 "Fighting"],
 
-"passives":[],
+"passives":[
+"blaze"],
+
 "replaceAbilities":true
 },
 "infernapemega":{
@@ -30702,6 +31293,7 @@ Object.entries({
 "Fighting"],
 
 "passives":[
+"blaze",
 "proficient"],
 
 "replaceAbilities":true
@@ -30744,7 +31336,9 @@ Object.entries({
 "types":[
 "Water"],
 
-"passives":[],
+"passives":[
+"torrent"],
+
 "replaceAbilities":true
 },
 "inteleongmax":{
@@ -30763,6 +31357,7 @@ Object.entries({
 "Water"],
 
 "passives":[
+"torrent",
 "proficient"],
 
 "replaceAbilities":true
@@ -31075,7 +31670,9 @@ Object.entries({
 "types":[
 "Electric"],
 
-"passives":[],
+"passives":[
+"runaway"],
+
 "replaceAbilities":true
 },
 "joltik":{
@@ -31486,6 +32083,27 @@ Object.entries({
 "Water",
 "Steel"],
 
+"passives":[
+"hypercutter"],
+
+"replaceAbilities":true
+},
+"kinglergmax":{
+"abilities":{
+"0":"Tidal Dominion"
+},
+"baseStats":{
+"hp":120,
+"atk":135,
+"def":115,
+"spa":60,
+"spd":80,
+"spe":75
+},
+"types":[
+"Water",
+"Bug"],
+
 "passives":[],
 "replaceAbilities":true
 },
@@ -31656,7 +32274,7 @@ Object.entries({
 },
 "koffing":{
 "abilities":{
-"0":"Levitate",
+"0":"Aftermath",
 "1":"Neutralizing Gas",
 "H":"Stench"
 },
@@ -31671,7 +32289,9 @@ Object.entries({
 "types":[
 "Poison"],
 
-"passives":[],
+"passives":[
+"levitate"],
+
 "replaceAbilities":true
 },
 "komala":{
@@ -32206,7 +32826,9 @@ Object.entries({
 "types":[
 "Grass"],
 
-"passives":[],
+"passives":[
+"runaway"],
+
 "replaceAbilities":true
 },
 "leavanny":{
@@ -32759,7 +33381,9 @@ Object.entries({
 "Rock",
 "Ghost"],
 
-"passives":[],
+"passives":[
+"levitate"],
+
 "replaceAbilities":true
 },
 "lurantis":{
@@ -33451,7 +34075,9 @@ Object.entries({
 "Grass",
 "Fire"],
 
-"passives":[],
+"passives":[
+"overcoat"],
+
 "replaceAbilities":true
 },
 "mareanie":{
@@ -33654,7 +34280,9 @@ Object.entries({
 "Bug",
 "Flying"],
 
-"passives":[],
+"passives":[
+"shielddust"],
+
 "replaceAbilities":true
 },
 "maushold":{
@@ -33757,7 +34385,9 @@ Object.entries({
 "Grass",
 "Fairy"],
 
-"passives":[],
+"passives":[
+"overgrow"],
+
 "replaceAbilities":true
 },
 "meganiummega":{
@@ -33777,6 +34407,7 @@ Object.entries({
 "Fairy"],
 
 "passives":[
+"overgrow",
 "proficient"],
 
 "replaceAbilities":true
@@ -33798,6 +34429,7 @@ Object.entries({
 "Fire"],
 
 "passives":[
+"overgrow",
 "proficient"],
 
 "replaceAbilities":true
@@ -33875,7 +34507,9 @@ Object.entries({
 "Grass",
 "Dark"],
 
-"passives":[],
+"passives":[
+"overgrow"],
+
 "replaceAbilities":true
 },
 "meowstic":{
@@ -34213,7 +34847,9 @@ Object.entries({
 "types":[
 "Fairy"],
 
-"passives":[],
+"passives":[
+"sweetveil"],
+
 "replaceAbilities":true
 },
 "milotic":{
@@ -34419,7 +35055,7 @@ Object.entries({
 },
 "misdreavus":{
 "abilities":{
-"0":"Levitate",
+"0":"Infiltrator",
 "1":"Prankster",
 "H":"Perish Body"
 },
@@ -34435,7 +35071,9 @@ Object.entries({
 "Ghost",
 "Fairy"],
 
-"passives":[],
+"passives":[
+"levitate"],
+
 "replaceAbilities":true
 },
 "mismagius":{
@@ -34456,7 +35094,9 @@ Object.entries({
 "Ghost",
 "Fairy"],
 
-"passives":[],
+"passives":[
+"levitate"],
+
 "replaceAbilities":true
 },
 "mismagiusaevian":{
@@ -34696,7 +35336,9 @@ Object.entries({
 "Bug",
 "Flying"],
 
-"passives":[],
+"passives":[
+"shielddust"],
+
 "replaceAbilities":true
 },
 "mrmime":{
@@ -34859,7 +35501,9 @@ Object.entries({
 "Poison",
 "Ghost"],
 
-"passives":[],
+"passives":[
+"liquidooze"],
+
 "replaceAbilities":true
 },
 "mukalola":{
@@ -35476,6 +36120,27 @@ Object.entries({
 "spa":96,
 "spd":106,
 "spe":80
+},
+"types":[
+"Dark",
+"Flying"],
+
+"passives":[
+"keeneye"],
+
+"replaceAbilities":true
+},
+"noctowlmega":{
+"abilities":{
+"0":"Sacred Power"
+},
+"baseStats":{
+"hp":100,
+"atk":65,
+"def":98,
+"spa":106,
+"spd":141,
+"spe":100
 },
 "types":[
 "Dark",
@@ -37147,6 +37812,27 @@ Object.entries({
 "Bug",
 "Ground"],
 
+"passives":[
+"hypercutter"],
+
+"replaceAbilities":true
+},
+"pinsirmega":{
+"abilities":{
+"0":"Joyride"
+},
+"baseStats":{
+"hp":65,
+"atk":155,
+"def":120,
+"spa":65,
+"spd":90,
+"spe":105
+},
+"types":[
+"Bug",
+"Flying"],
+
 "passives":[],
 "replaceAbilities":true
 },
@@ -37884,7 +38570,9 @@ Object.entries({
 "Water",
 "Fairy"],
 
-"passives":[],
+"passives":[
+"torrent"],
+
 "replaceAbilities":true
 },
 "primarinaalt":{
@@ -37905,7 +38593,9 @@ Object.entries({
 "Water",
 "Fairy"],
 
-"passives":[],
+"passives":[
+"torrent"],
+
 "replaceAbilities":true
 },
 "primeape":{
@@ -38230,7 +38920,9 @@ Object.entries({
 "Water",
 "Fighting"],
 
-"passives":[],
+"passives":[
+"torrent"],
+
 "replaceAbilities":true
 },
 "quaxly":{
@@ -39069,7 +39761,9 @@ Object.entries({
 "types":[
 "Grass"],
 
-"passives":[],
+"passives":[
+"overgrow"],
+
 "replaceAbilities":true
 },
 "rillaboomgmax":{
@@ -39088,6 +39782,7 @@ Object.entries({
 "Grass"],
 
 "passives":[
+"overgrow",
 "proficient"],
 
 "replaceAbilities":true
@@ -39254,7 +39949,7 @@ Object.entries({
 },
 "rotom":{
 "abilities":{
-"0":"Levitate",
+"0":"Infiltrator",
 "1":"Electromorphosis",
 "H":"Defragment"
 },
@@ -39270,7 +39965,9 @@ Object.entries({
 "Electric",
 "Ghost"],
 
-"passives":[],
+"passives":[
+"levitate"],
+
 "replaceAbilities":true
 },
 "rotomfan":{
@@ -39278,7 +39975,7 @@ Object.entries({
 "0":"Wind Power",
 "1":"Windy Surge",
 "H":"Air Lock",
-"S":"Levitate"
+"S":"Soundproof"
 },
 "baseStats":{
 "hp":60,
@@ -39292,12 +39989,14 @@ Object.entries({
 "Electric",
 "Flying"],
 
-"passives":[],
+"passives":[
+"levitate"],
+
 "replaceAbilities":true
 },
 "rotomfrost":{
 "abilities":{
-"0":"Levitate",
+"0":"Clear Body",
 "1":"Refrigerate",
 "H":"Snow Warning"
 },
@@ -39313,12 +40012,14 @@ Object.entries({
 "Electric",
 "Ice"],
 
-"passives":[],
+"passives":[
+"levitate"],
+
 "replaceAbilities":true
 },
 "rotomheat":{
 "abilities":{
-"0":"Levitate",
+"0":"White Smoke",
 "1":"Drought",
 "H":"Flame Body"
 },
@@ -39334,12 +40035,14 @@ Object.entries({
 "Electric",
 "Fire"],
 
-"passives":[],
+"passives":[
+"levitate"],
+
 "replaceAbilities":true
 },
 "rotommow":{
 "abilities":{
-"0":"Levitate",
+"0":"Leaf Guard",
 "1":"Grassy Surge",
 "H":"Seed Sower"
 },
@@ -39355,12 +40058,14 @@ Object.entries({
 "Electric",
 "Grass"],
 
-"passives":[],
+"passives":[
+"levitate"],
+
 "replaceAbilities":true
 },
 "rotomwash":{
 "abilities":{
-"0":"Levitate",
+"0":"Hydration",
 "1":"Storm Drain",
 "H":"Drizzle"
 },
@@ -39376,7 +40081,9 @@ Object.entries({
 "Electric",
 "Water"],
 
-"passives":[],
+"passives":[
+"levitate"],
+
 "replaceAbilities":true
 },
 "rowlet":{
@@ -39601,7 +40308,9 @@ Object.entries({
 "Water",
 "Fighting"],
 
-"passives":[],
+"passives":[
+"torrent"],
+
 "replaceAbilities":true
 },
 "samurottalt":{
@@ -39622,7 +40331,9 @@ Object.entries({
 "Water",
 "Fighting"],
 
-"passives":[],
+"passives":[
+"torrent"],
+
 "replaceAbilities":true
 },
 "samurotthisui":{
@@ -39643,7 +40354,9 @@ Object.entries({
 "Water",
 "Dark"],
 
-"passives":[],
+"passives":[
+"torrent"],
+
 "replaceAbilities":true
 },
 "samurotthisuialt":{
@@ -39664,7 +40377,9 @@ Object.entries({
 "Water",
 "Dark"],
 
-"passives":[],
+"passives":[
+"torrent"],
+
 "replaceAbilities":true
 },
 "sandaconda":{
@@ -39948,7 +40663,9 @@ Object.entries({
 "Grass",
 "Dragon"],
 
-"passives":[],
+"passives":[
+"overgrow"],
+
 "replaceAbilities":true
 },
 "sceptilemega":{
@@ -39968,6 +40685,7 @@ Object.entries({
 "Dragon"],
 
 "passives":[
+"overgrow",
 "proficient"],
 
 "replaceAbilities":true
@@ -40318,7 +41036,9 @@ Object.entries({
 "Grass",
 "Dragon"],
 
-"passives":[],
+"passives":[
+"overgrow"],
+
 "replaceAbilities":true
 },
 "serperiorazzy":{
@@ -40339,7 +41059,9 @@ Object.entries({
 "Grass",
 "Dragon"],
 
-"passives":[],
+"passives":[
+"overgrow"],
+
 "replaceAbilities":true
 },
 "serperiormega":{
@@ -40359,6 +41081,7 @@ Object.entries({
 "Dragon"],
 
 "passives":[
+"overgrow",
 "proficient"],
 
 "replaceAbilities":true
@@ -41028,7 +41751,9 @@ Object.entries({
 "Fire",
 "Ghost"],
 
-"passives":[],
+"passives":[
+"blaze"],
+
 "replaceAbilities":true
 },
 "skeledirgeaevian":{
@@ -41049,7 +41774,9 @@ Object.entries({
 "Fairy",
 "Poison"],
 
-"passives":[],
+"passives":[
+"blaze"],
+
 "replaceAbilities":true
 },
 "skeledirgealt":{
@@ -41070,7 +41797,9 @@ Object.entries({
 "Fire",
 "Ghost"],
 
-"passives":[],
+"passives":[
+"blaze"],
+
 "replaceAbilities":true
 },
 "skiddo":{
@@ -41476,7 +42205,9 @@ Object.entries({
 "Fairy",
 "Fighting"],
 
-"passives":[],
+"passives":[
+"sweetveil"],
+
 "replaceAbilities":true
 },
 "smeargle":{
@@ -41939,6 +42670,27 @@ Object.entries({
 "types":[
 "Rock",
 "Steel"],
+
+"passives":[
+"levitate"],
+
+"replaceAbilities":true
+},
+"soluneon":{
+"abilities":{
+"0":"Eclipse"
+},
+"baseStats":{
+"hp":80,
+"atk":60,
+"def":110,
+"spa":95,
+"spd":110,
+"spe":95
+},
+"types":[
+"Dark",
+"Psychic"],
 
 "passives":[],
 "replaceAbilities":true
@@ -42665,7 +43417,9 @@ Object.entries({
 "Water",
 "Poison"],
 
-"passives":[],
+"passives":[
+"liquidooze"],
+
 "replaceAbilities":true
 },
 "swalotpulse":{
@@ -42705,7 +43459,9 @@ Object.entries({
 "Water",
 "Ground"],
 
-"passives":[],
+"passives":[
+"torrent"],
+
 "replaceAbilities":true
 },
 "swampertmega":{
@@ -42725,6 +43481,7 @@ Object.entries({
 "Ground"],
 
 "passives":[
+"torrent",
 "proficient"],
 
 "replaceAbilities":true
@@ -42808,7 +43565,9 @@ Object.entries({
 "types":[
 "Fairy"],
 
-"passives":[],
+"passives":[
+"sweetveil"],
+
 "replaceAbilities":true
 },
 "swirlpool":{
@@ -42910,7 +43669,9 @@ Object.entries({
 "types":[
 "Fairy"],
 
-"passives":[],
+"passives":[
+"runaway"],
+
 "replaceAbilities":true
 },
 "tactite":{
@@ -43315,10 +44076,56 @@ Object.entries({
 "Water",
 "Poison"],
 
-"passives":[],
+"passives":[
+"liquidooze"],
+
 "replaceAbilities":true
 },
 "tentacruel":{
+"abilities":{
+"0":"Venom Veil",
+"1":"Regenerator",
+"H":"Water Absorb"
+},
+"baseStats":{
+"hp":80,
+"atk":70,
+"def":85,
+"spa":100,
+"spd":135,
+"spe":100
+},
+"types":[
+"Water",
+"Poison"],
+
+"passives":[
+"liquidooze"],
+
+"replaceAbilities":true
+},
+"tentacruelalt":{
+"abilities":{
+"0":"Venom Veil",
+"1":"Regenerator",
+"H":"Water Absorb"
+},
+"baseStats":{
+"hp":80,
+"atk":70,
+"def":85,
+"spa":100,
+"spd":135,
+"spe":100
+},
+"types":[
+"Water",
+"Poison"],
+
+"passives":[],
+"replaceAbilities":true
+},
+"tentacruelreborn":{
 "abilities":{
 "0":"Venom Veil",
 "1":"Regenerator",
@@ -43897,7 +44704,9 @@ Object.entries({
 "Grass",
 "Ground"],
 
-"passives":[],
+"passives":[
+"overgrow"],
+
 "replaceAbilities":true
 },
 "torterramegax":{
@@ -43917,6 +44726,7 @@ Object.entries({
 "Ground"],
 
 "passives":[
+"overgrow",
 "proficient"],
 
 "replaceAbilities":true
@@ -43938,6 +44748,7 @@ Object.entries({
 "Rock"],
 
 "passives":[
+"overgrow",
 "proficient"],
 
 "replaceAbilities":true
@@ -43958,7 +44769,9 @@ Object.entries({
 "Ground",
 "Ice"],
 
-"passives":[],
+"passives":[
+"overgrow"],
+
 "replaceAbilities":true
 },
 "torterrariftshatter":{
@@ -43977,7 +44790,9 @@ Object.entries({
 "Grass",
 "Fire"],
 
-"passives":[],
+"passives":[
+"overgrow"],
+
 "replaceAbilities":true
 },
 "totodile":{
@@ -44311,7 +45126,7 @@ Object.entries({
 },
 "tynamo":{
 "abilities":{
-"0":"Levitate"
+"0":"Static"
 },
 "baseStats":{
 "hp":35,
@@ -44324,7 +45139,9 @@ Object.entries({
 "types":[
 "Electric"],
 
-"passives":[],
+"passives":[
+"levitate"],
+
 "replaceAbilities":true
 },
 "typenull":{
@@ -44363,7 +45180,9 @@ Object.entries({
 "Fire",
 "Ground"],
 
-"passives":[],
+"passives":[
+"blaze"],
+
 "replaceAbilities":true
 },
 "typhlosionalt":{
@@ -44384,7 +45203,9 @@ Object.entries({
 "Fire",
 "Ground"],
 
-"passives":[],
+"passives":[
+"blaze"],
+
 "replaceAbilities":true
 },
 "typhlosionhisui":{
@@ -44405,7 +45226,9 @@ Object.entries({
 "Fire",
 "Ghost"],
 
-"passives":[],
+"passives":[
+"blaze"],
+
 "replaceAbilities":true
 },
 "typhlosionmega":{
@@ -44425,6 +45248,7 @@ Object.entries({
 "Electric"],
 
 "passives":[
+"blaze",
 "proficient"],
 
 "replaceAbilities":true
@@ -44512,6 +45336,30 @@ Object.entries({
 "replaceAbilities":true
 },
 "umbreon":{
+"abilities":{
+"0":"Poison Heal",
+"1":"Moonlight Vigil",
+"H":"Dark Aura",
+"S":"Eclipse",
+"G":"Ascendance"
+},
+"baseStats":{
+"hp":95,
+"atk":65,
+"def":110,
+"spa":60,
+"spd":130,
+"spe":65
+},
+"types":[
+"Dark"],
+
+"passives":[
+"runaway"],
+
+"replaceAbilities":true
+},
+"umbreonperfect":{
 "abilities":{
 "0":"Poison Heal",
 "1":"Moonlight Vigil",
@@ -44747,7 +45595,9 @@ Object.entries({
 "types":[
 "Water"],
 
-"passives":[],
+"passives":[
+"runaway"],
+
 "replaceAbilities":true
 },
 "varoom":{
@@ -44872,7 +45722,9 @@ Object.entries({
 "Grass",
 "Poison"],
 
-"passives":[],
+"passives":[
+"overgrow"],
+
 "replaceAbilities":true
 },
 "venusaurgmax":{
@@ -44892,6 +45744,7 @@ Object.entries({
 "Poison"],
 
 "passives":[
+"overgrow",
 "proficient"],
 
 "replaceAbilities":true
@@ -44913,6 +45766,7 @@ Object.entries({
 "Poison"],
 
 "passives":[
+"overgrow",
 "proficient"],
 
 "replaceAbilities":true
@@ -44935,7 +45789,9 @@ Object.entries({
 "Bug",
 "Flying"],
 
-"passives":[],
+"passives":[
+"sweetveil"],
+
 "replaceAbilities":true
 },
 "vibrava":{
@@ -45117,7 +45973,78 @@ Object.entries({
 "Bug",
 "Flying"],
 
-"passives":[],
+"passives":[
+"shielddust"],
+
+"replaceAbilities":true
+},
+"vivillonarchipelago":{
+"abilities":{
+"0":"Shield Dust",
+"1":"Compound Eyes",
+"H":"Friend Guard"
+},
+"baseStats":{
+"hp":80,
+"atk":52,
+"def":50,
+"spa":90,
+"spd":50,
+"spe":89
+},
+"types":[
+"Bug",
+"Flying"],
+
+"passives":[
+"shielddust"],
+
+"replaceAbilities":true
+},
+"vivilloncontinental":{
+"abilities":{
+"0":"Shield Dust",
+"1":"Compound Eyes",
+"H":"Friend Guard"
+},
+"baseStats":{
+"hp":80,
+"atk":52,
+"def":50,
+"spa":90,
+"spd":50,
+"spe":89
+},
+"types":[
+"Bug",
+"Flying"],
+
+"passives":[
+"shielddust"],
+
+"replaceAbilities":true
+},
+"vivillonelegant":{
+"abilities":{
+"0":"Shield Dust",
+"1":"Compound Eyes",
+"H":"Friend Guard"
+},
+"baseStats":{
+"hp":80,
+"atk":52,
+"def":50,
+"spa":90,
+"spd":50,
+"spe":89
+},
+"types":[
+"Bug",
+"Flying"],
+
+"passives":[
+"shielddust"],
+
 "replaceAbilities":true
 },
 "vivillonfancy":{
@@ -45138,7 +46065,193 @@ Object.entries({
 "Bug",
 "Flying"],
 
-"passives":[],
+"passives":[
+"shielddust"],
+
+"replaceAbilities":true
+},
+"vivillongarden":{
+"abilities":{
+"0":"Shield Dust",
+"1":"Compound Eyes",
+"H":"Friend Guard"
+},
+"baseStats":{
+"hp":80,
+"atk":52,
+"def":50,
+"spa":90,
+"spd":50,
+"spe":89
+},
+"types":[
+"Bug",
+"Flying"],
+
+"passives":[
+"shielddust"],
+
+"replaceAbilities":true
+},
+"vivillonhighplains":{
+"abilities":{
+"0":"Shield Dust",
+"1":"Compound Eyes",
+"H":"Friend Guard"
+},
+"baseStats":{
+"hp":80,
+"atk":52,
+"def":50,
+"spa":90,
+"spd":50,
+"spe":89
+},
+"types":[
+"Bug",
+"Flying"],
+
+"passives":[
+"shielddust"],
+
+"replaceAbilities":true
+},
+"vivillonicysnow":{
+"abilities":{
+"0":"Shield Dust",
+"1":"Compound Eyes",
+"H":"Friend Guard"
+},
+"baseStats":{
+"hp":80,
+"atk":52,
+"def":50,
+"spa":90,
+"spd":50,
+"spe":89
+},
+"types":[
+"Bug",
+"Flying"],
+
+"passives":[
+"shielddust"],
+
+"replaceAbilities":true
+},
+"vivillonjungle":{
+"abilities":{
+"0":"Shield Dust",
+"1":"Compound Eyes",
+"H":"Friend Guard"
+},
+"baseStats":{
+"hp":80,
+"atk":52,
+"def":50,
+"spa":90,
+"spd":50,
+"spe":89
+},
+"types":[
+"Bug",
+"Flying"],
+
+"passives":[
+"shielddust"],
+
+"replaceAbilities":true
+},
+"vivillonmarine":{
+"abilities":{
+"0":"Shield Dust",
+"1":"Compound Eyes",
+"H":"Friend Guard"
+},
+"baseStats":{
+"hp":80,
+"atk":52,
+"def":50,
+"spa":90,
+"spd":50,
+"spe":89
+},
+"types":[
+"Bug",
+"Flying"],
+
+"passives":[
+"shielddust"],
+
+"replaceAbilities":true
+},
+"vivillonmodern":{
+"abilities":{
+"0":"Shield Dust",
+"1":"Compound Eyes",
+"H":"Friend Guard"
+},
+"baseStats":{
+"hp":80,
+"atk":52,
+"def":50,
+"spa":90,
+"spd":50,
+"spe":89
+},
+"types":[
+"Bug",
+"Flying"],
+
+"passives":[
+"shielddust"],
+
+"replaceAbilities":true
+},
+"vivillonmonsoon":{
+"abilities":{
+"0":"Shield Dust",
+"1":"Compound Eyes",
+"H":"Friend Guard"
+},
+"baseStats":{
+"hp":80,
+"atk":52,
+"def":50,
+"spa":90,
+"spd":50,
+"spe":89
+},
+"types":[
+"Bug",
+"Flying"],
+
+"passives":[
+"shielddust"],
+
+"replaceAbilities":true
+},
+"vivillonocean":{
+"abilities":{
+"0":"Shield Dust",
+"1":"Compound Eyes",
+"H":"Friend Guard"
+},
+"baseStats":{
+"hp":80,
+"atk":52,
+"def":50,
+"spa":90,
+"spd":50,
+"spe":89
+},
+"types":[
+"Bug",
+"Flying"],
+
+"passives":[
+"shielddust"],
+
 "replaceAbilities":true
 },
 "vivillonpokeball":{
@@ -45159,7 +46272,147 @@ Object.entries({
 "Bug",
 "Flying"],
 
-"passives":[],
+"passives":[
+"shielddust"],
+
+"replaceAbilities":true
+},
+"vivillonpolar":{
+"abilities":{
+"0":"Shield Dust",
+"1":"Compound Eyes",
+"H":"Friend Guard"
+},
+"baseStats":{
+"hp":80,
+"atk":52,
+"def":50,
+"spa":90,
+"spd":50,
+"spe":89
+},
+"types":[
+"Bug",
+"Flying"],
+
+"passives":[
+"shielddust"],
+
+"replaceAbilities":true
+},
+"vivillonriver":{
+"abilities":{
+"0":"Shield Dust",
+"1":"Compound Eyes",
+"H":"Friend Guard"
+},
+"baseStats":{
+"hp":80,
+"atk":52,
+"def":50,
+"spa":90,
+"spd":50,
+"spe":89
+},
+"types":[
+"Bug",
+"Flying"],
+
+"passives":[
+"shielddust"],
+
+"replaceAbilities":true
+},
+"vivillonsandstorm":{
+"abilities":{
+"0":"Shield Dust",
+"1":"Compound Eyes",
+"H":"Friend Guard"
+},
+"baseStats":{
+"hp":80,
+"atk":52,
+"def":50,
+"spa":90,
+"spd":50,
+"spe":89
+},
+"types":[
+"Bug",
+"Flying"],
+
+"passives":[
+"shielddust"],
+
+"replaceAbilities":true
+},
+"vivillonsavanna":{
+"abilities":{
+"0":"Shield Dust",
+"1":"Compound Eyes",
+"H":"Friend Guard"
+},
+"baseStats":{
+"hp":80,
+"atk":52,
+"def":50,
+"spa":90,
+"spd":50,
+"spe":89
+},
+"types":[
+"Bug",
+"Flying"],
+
+"passives":[
+"shielddust"],
+
+"replaceAbilities":true
+},
+"vivillonsun":{
+"abilities":{
+"0":"Shield Dust",
+"1":"Compound Eyes",
+"H":"Friend Guard"
+},
+"baseStats":{
+"hp":80,
+"atk":52,
+"def":50,
+"spa":90,
+"spd":50,
+"spe":89
+},
+"types":[
+"Bug",
+"Flying"],
+
+"passives":[
+"shielddust"],
+
+"replaceAbilities":true
+},
+"vivillontundra":{
+"abilities":{
+"0":"Shield Dust",
+"1":"Compound Eyes",
+"H":"Friend Guard"
+},
+"baseStats":{
+"hp":80,
+"atk":52,
+"def":50,
+"spa":90,
+"spd":50,
+"spe":89
+},
+"types":[
+"Bug",
+"Flying"],
+
+"passives":[
+"shielddust"],
+
 "replaceAbilities":true
 },
 "volbeat":{
@@ -45544,7 +46797,9 @@ Object.entries({
 "types":[
 "Normal"],
 
-"passives":[],
+"passives":[
+"keeneye"],
+
 "replaceAbilities":true
 },
 "wattrel":{
@@ -45646,7 +46901,9 @@ Object.entries({
 "types":[
 "Poison"],
 
-"passives":[],
+"passives":[
+"levitate"],
+
 "replaceAbilities":true
 },
 "weezinggalar":{
@@ -45667,7 +46924,9 @@ Object.entries({
 "Poison",
 "Fairy"],
 
-"passives":[],
+"passives":[
+"levitate"],
+
 "replaceAbilities":true
 },
 "whimsicott":{
@@ -50560,6 +51819,8 @@ sunsovereign:{
 
 
 
+
+
 var CUSTOM_ABILITY_DISPLAY_COMPONENTS={
 "adaptivecycle":[],
 "noability":[],
@@ -51191,9 +52452,7 @@ var CUSTOM_ABILITY_DISPLAY_COMPONENTS={
 "moldbreaker"],
 
 "atrocity":[
-"moldbreaker",
 "unboundblaze",
-"selfsufficient",
 "toughclaws"],
 
 "wickedsnare":[
@@ -51546,7 +52805,8 @@ var CUSTOM_ABILITY_DISPLAY_COMPONENTS={
 "selfsufficient"],
 
 "pollenbloom":[
-"thickfat"],
+"thickfat",
+"unaware"],
 
 "firemane":[],
 "blazingmane":[],
@@ -52849,7 +54109,7 @@ var CUSTOM_ABILITY_DISPLAY_COMPONENTS={
 "infiltrator"],
 
 "dreadwings":[
-"levitate",
+"intimidate",
 "unnerve"],
 
 "causticchamber":[
@@ -53014,8 +54274,8 @@ var CUSTOM_ABILITY_DISPLAY_COMPONENTS={
 "innerfocus"],
 
 "voidcrossing":[
-"levitate",
-"magicguard"]
+"magicguard",
+"infiltrator"]
 
 };
 
@@ -53665,8 +54925,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "name":"Atrocity",
 "num":10126,
 "gen":9,
-"desc":"Mold Breaker: moves ignore bypassable opposing abilities. Eligible Normal moves become Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Dragon moves receive STAB. Prevents freezing outside Cold Eclipse and cures existing freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den blocks Fire moves. On Dragon's Den, Volcanic or Cold Eclipse entry, gains +1 Defense and Sp. Def. Same-type moves have 1.3x power. Immune to hail damage. At turn end, deals Fire-type damage to foes equal to 1/16 max HP, doubled if the foe is burned or the holder used a Fire or Dragon move that turn. Fire immunities block this damage; type effectiveness scales it only in Free-for-All. Contact moves have 1.3x power. Heals 1/16 max HP each turn. Damaging moves have a further 1.3x power, plus another 1.3x on Cold Eclipse. Critical-hit ratio rises by 1. Dragon Rush cannot miss and has a further 1.5x power. Defense and Sp. Def are 1.3x, or 1.5x on Cold Eclipse. While Royal Decree or Empress is active without Neutralization, move power gains another 1.3x and incoming attack damage falls by 30%. Cannot be suppressed.",
-"shortDesc":"Stronger attacks and defenses, extra critical-hit chance, and a stronger Dragon Rush that cannot miss.",
+"desc":"Mold Breaker: moves ignore bypassable opposing abilities. Eligible Normal moves become Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Dragon moves receive STAB. Prevents freezing outside Cold Eclipse and cures existing freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den blocks Fire moves. On Dragon's Den, Volcanic or Cold Eclipse entry, gains +1 Defense and Sp. Def. Same-type moves have 1.3x power. Immune to hail damage. At turn end, deals Fire-type damage to foes equal to 1/16 max HP, doubled if the foe is burned or the holder used a Fire or Dragon move that turn. Fire immunities block this damage; type effectiveness scales it only in Free-for-All. Contact moves have 1.3x power. Heals 1/16 max HP each turn. Damaging moves have a further 1.3x power, plus another 1.3x on Cold Eclipse. Defense and Sp. Def are 1.3x, or 1.5x on Cold Eclipse. While Royal Decree or Empress is active without Neutralization, move power gains another 1.3x and incoming attack damage falls by 30%. Cannot be suppressed.",
+"shortDesc":"Stronger attacks and defenses; ignores bypassable abilities; heals 1/16 HP each turn.",
 "rating":5,
 "flags":{
 "cantsuppress":1
@@ -55217,8 +56477,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "name":"Dread Wings",
 "num":11248,
 "gen":9,
-"desc":"Levitate + full local Unnerve: airborne with normal Ground and grounded-hazard immunity; foes cannot eat Berries or use field seeds while Unnerve is active. On Cold Eclipse entry, lowers opposing Speed one stage unless protected by Substitute. A Dark Pulse that damages a surviving foe also applies Torment under normal volatile-status rules, preventing consecutive use of the same move. Existing Torment does not stack.",
-"shortDesc":"Dark Pulse damage also applies Torment to surviving foes.",
+"desc":"Full local Intimidate and Unnerve: on entry, lowers adjacent foes' Attack one stage under normal Intimidate protections; foes cannot eat Berries or use field seeds while Unnerve is active. On Cold Eclipse entry, lowers opposing Speed one stage unless protected by Substitute. A Dark Pulse that damages a surviving foe also applies Torment under normal volatile-status rules, preventing consecutive use of the same move. Existing Torment does not stack.",
+"shortDesc":"Weakens foes on entry; Dark Pulse damage applies Torment to surviving foes.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -58942,8 +60202,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "name":"Pollen Bloom",
 "num":10137,
 "gen":9,
-"desc":"Same-type moves have 1.3x power. Incoming Fire and Ice attacks use half the attacker's offensive stat. Immune to hail damage. When attacking, ignores the target's Defense, Sp. Def and evasion stages. When defending, ignores the attacker's Attack, Defense, Sp. Atk and accuracy stages. Reveals opposing Illusions on entry. At turn end, opposing non-Grass Pokemon take Grass-type damage equal to 1/16 max HP, blocked by Grass immunities; it heals the damage dealt by that chip. Only in Free-for-All does Grass type effectiveness scale this chip.",
-"shortDesc":"Healing Grass chip scales by type in FFA.",
+"desc":"Thick Fat + Unaware. Same-type attacks gain 30% power. Fire and Ice attacks use half the attacker's attacking stat; hail causes no damage. Ignores the foe's Defense, Sp. Def and evasion changes when attacking, and their Attack, Defense, Sp. Atk and accuracy changes when defending. Reveals opposing Illusions on entry. At each turn's end, drains 1/16 of each foe's base maximum HP and heals by the HP actually drained. Grass types and Grass-immune foes are unaffected. In Free-for-All only, Grass weaknesses and resistances change the drain amount.",
+"shortDesc":"Same-type attacks gain 30% power. Each turn, drains 1/16 HP from eligible foes and heals that amount; Grass matchups scale the drain only in FFA.",
 "rating":4,
 "flags":{
 "breakable":1
@@ -63022,8 +64282,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "name":"Void Crossing",
 "num":11314,
 "gen":9,
-"desc":"Levitate + Magic Guard. Its first executed damaging Ghost move or Power Gem each entry bypasses opposing screens and Substitute. Misses, protection and immunity still spend the bypass; being prevented from acting does not. Switching restores the use. Includes the components’ normal effects and field interactions.",
-"shortDesc":"Its first Ghost attack or Power Gem bypasses screens and Substitute.",
+"desc":"Magic Guard + Infiltrator. After a damaging Ghost move or Power Gem hits an opponent, curses it through the end of the following turn. Its next damaging move deals 20% less damage across all hits and targets, then consumes the curse. Status moves do not consume it. Reapplying refreshes the duration without stacking; switching removes it.",
+"shortDesc":"Ghost hits or Power Gem curse foes: their next attack deals 20% less damage.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -65578,6 +66838,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES,{
 "keeneye":[],
 "ultraego":[]
 });
+
 
 
 
@@ -68444,7 +69705,7 @@ Object.assign(CUSTOM_MOVE_UPDATES,{
 "type":"Dark",
 "category":"Status",
 "basePower":0,
-"accuracy":80,
+"accuracy":70,
 "pp":10,
 "priority":0,
 "target":"allAdjacentFoes",
@@ -68454,8 +69715,8 @@ Object.assign(CUSTOM_MOVE_UPDATES,{
 "mirror":1,
 "metronome":1
 },
-"desc":"Has 80% accuracy and causes the target to fall asleep. If used by Mega Banette with its custom Ability, this move has 90% accuracy.",
-"shortDesc":"80% sleep; Mega Banette custom Ability: 90%."
+"desc":"Has 70% accuracy. Puts adjacent opposing Pokemon to sleep.",
+"shortDesc":"Puts adjacent foes to sleep."
 },
 "dazzlinggleam":{
 "name":"Dazzling Gleam",
@@ -68560,8 +69821,8 @@ Object.assign(CUSTOM_MOVE_UPDATES,{
 "protect":1,
 "mirror":1
 },
-"desc":"",
-"shortDesc":""
+"desc":"Usually moves after other attacks (-4 priority). Power doubles from 65 to 130 if the target already damaged the user this turn.",
+"shortDesc":"Moves late. 2x power if the target hurt the user this turn."
 },
 "destinybond":{
 "name":"Destiny Bond",
@@ -71410,6 +72671,20 @@ Object.assign(CUSTOM_MOVE_UPDATES,{
 "flags":{},
 "desc":"Ghost-type, 100 Base Power. Uses the user's higher offensive stat. Hits the selected foe at full power, then makes a separate 50 Base Power Ghost-type hit against one other adjacent foe, if present. The follow-up checks its own type immunity and protection. In a single battle, there is no follow-up.",
 "shortDesc":"100 BP Ghost to one foe; 50 BP Ghost follow-up to another foe."
+},
+"gmaxsteelsurge":{
+"name":"G-Max Steelsurge",
+"num":1000,
+"type":"Steel",
+"category":"Physical",
+"basePower":10,
+"accuracy":true,
+"pp":5,
+"priority":0,
+"target":"adjacentFoe",
+"flags":{},
+"desc":"Power is equal to the base move's Max Move power. If this move is successful, it sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in. Foes lose 1/32, 1/16, 1/8, 1/4, or 1/2 of their maximum HP, rounded down, based on their weakness to the Steel type; 0.25x, 0.5x, neutral, 2x, or 4x, respectively. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin or Defog successfully, or is hit by Defog.",
+"shortDesc":"Base move affects power. Foes: Steel hazard."
 },
 "grassknot":{
 "name":"Grass Knot",
@@ -78380,8 +79655,8 @@ Object.assign(CUSTOM_MOVE_UPDATES,{
 "nosleeptalk":1,
 "failinstruct":1
 },
-"desc":"This attack charges with +4 priority on its actual charge turn and executes at normal priority on the second turn. Raises the user's Attack, Defense, and Special Defense by 1 stage each on the first turn. While charging, the user takes 0.7x damage from attacks. After a successful hit, the user restores 1/8 of its maximum HP. If the charge is skipped, including by Power Herb, it executes without the charge-turn priority.",
-"shortDesc":"+4 charge: +Atk/Def/SpD, 0.7x damage. Hit heals 1/8."
+"desc":"Charges with +2 priority, raising the user's Attack, Defense, and Special Defense by 1 stage each. While charging, the user takes 20% less damage from attacks. Attacks at normal priority on the next turn. After dealing damage, restores 10% of the user's base maximum HP. Skipping the charge, such as with Power Herb, keeps the stat boosts but does not grant charge-turn priority or the charging damage reduction.",
+"shortDesc":"+2 charge: +1 Atk/Def/SpD, 20% less damage. Hit heals 10%."
 },
 "skyattack":{
 "name":"Sky Attack",
@@ -82760,7 +84035,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES,{
 
 "dreadpresence":[],
 "dreadwings":[
-"levitate",
+"intimidate",
 "unnerve"],
 
 "dreamrefuge":[
@@ -84473,8 +85748,8 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES,{
 "insomnia"],
 
 "voidcrossing":[
-"levitate",
-"magicguard"],
+"magicguard",
+"infiltrator"],
 
 "voiddrift":[
 "levitate",
@@ -85435,6 +86710,7 @@ golisopite:{"desc":"Allows Golisopod or Golisopod-Aevian to Mega Evolve into its
 });_i74<_Object$entries24.length;_i74++){var _ref36=_Object$entries24[_i74];var _id18=_ref36[0];var _update7=_ref36[1];
 CUSTOM_ITEM_UPDATES[_id18]=Object.assign({},CUSTOM_ITEM_UPDATES[_id18],_update7);
 }
+
 
 
 
@@ -87567,6 +88843,10 @@ abilityEffectCache={};this.
 
 
 
+
+
+
+
 moves={
 get:function(nameOrMove){
 ensureCustomDataPatches();
@@ -87769,7 +89049,7 @@ var id=toID(name);
 if(name!==id.substr(0,1).toUpperCase()+id.substr(1))return false;
 return(window.BattleTypeChart||{}).hasOwnProperty(id);
 }
-};}var _proto2=_class2.prototype;_proto2.getPulseFixedMoves=function getPulseFixedMoves(species){return PULSE_FIXED_MOVES[species];};_proto2.getCustomMoveRemovals=function getCustomMoveRemovals(species){return CUSTOM_LEARNSET_REMOVALS[species]||[];};_proto2.forFormat=function forFormat(format){var _exec;var gen=Number((_exec=/^gen(\d+)/.exec(format))==null?void 0:_exec[1])||9;return this.forGen(gen);};_proto2.mod=function mod(modid){if(modid==='gen9')return this;if(!window.BattleTeambuilderTable)return this;if(modid in this.moddedDexes){return this.moddedDexes[modid];}this.moddedDexes[modid]=new ModdedDex(modid);return this.moddedDexes[modid];};_proto2.forGen=function forGen(gen){if(!gen)return this;return this.mod("gen"+gen);};_proto2.resolveAvatar=function resolveAvatar(avatar){var _window$Config;if(window.BattleAvatarNumbers&&avatar in BattleAvatarNumbers){avatar=BattleAvatarNumbers[avatar];}var avatarid=toID(avatar);if(LOCAL_CUSTOM_AVATAR_IDS.has(avatarid))return"/sprites/trainers/"+avatarid+".png";if(avatar.charAt(0)==='#'){return Dex.resourcePrefix+'sprites/trainers-custom/'+toID(avatar.substr(1))+'.png';}if(avatar.includes('.')&&(_window$Config=window.Config)!=null&&(_window$Config=_window$Config.server)!=null&&_window$Config.registered){var protocol=Config.server.port===443?'https':'http';return protocol+'://'+Config.server.host+':'+Config.server.port+'/avatars/'+encodeURIComponent(avatar).replace(/\%3F/g,'?');}return Dex.resourcePrefix+'sprites/trainers/'+Dex.sanitizeName(avatar||'unknown')+'.png';};_proto2.sanitizeName=function sanitizeName(name){if(!name)return'';return(''+name).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').slice(0,50);};_proto2.prefs=function prefs(prop){var _window$Storage;return window.PS?window.PS.prefs[prop]:(_window$Storage=window.Storage)==null||_window$Storage.prefs==null?void 0:_window$Storage.prefs(prop);};_proto2.getShortName=function getShortName(name){var shortName=name.replace(/[^A-Za-z0-9]+$/,'');if(shortName.indexOf('(')>=0){shortName+=name.slice(shortName.length).replace(/[^\(\)]+/g,'').replace(/\(\)/g,'');}return shortName;};_proto2.getEffect=function getEffect(name){name=(name||'').trim();if(name.substr(0,5)==='item:'){return Dex.items.get(name.substr(5).trim());}else if(name.substr(0,8)==='ability:'){return Dex.abilities.get(name.substr(8).trim());}else if(name.substr(0,5)==='move:'){return Dex.moves.get(name.substr(5).trim());}var id=toID(name);return new PureEffect(id,name);};_proto2.getGen3Category=function getGen3Category(type){return['Fire','Water','Grass','Electric','Ice','Psychic','Dark','Dragon'].includes(type)?'Special':'Physical';};_proto2.
+};}var _proto2=_class2.prototype;_proto2.getPulseFixedMoves=function getPulseFixedMoves(species){return PULSE_FIXED_MOVES[species];};_proto2.getCustomMoveRemovals=function getCustomMoveRemovals(species){return CUSTOM_LEARNSET_REMOVALS[species]||[];};_proto2.forFormat=function forFormat(format){var _exec;var gen=Number((_exec=/^gen(\d+)/.exec(format))==null?void 0:_exec[1])||9;return this.forGen(gen);};_proto2.mod=function mod(modid){if(modid==='gen9')return this;if(!window.BattleTeambuilderTable)return this;if(modid in this.moddedDexes){return this.moddedDexes[modid];}this.moddedDexes[modid]=new ModdedDex(modid);return this.moddedDexes[modid];};_proto2.forGen=function forGen(gen){if(!gen)return this;return this.mod("gen"+gen);};_proto2.resolveAvatar=function resolveAvatar(avatar){var _window$Config;if(window.BattleAvatarNumbers&&avatar in BattleAvatarNumbers){avatar=BattleAvatarNumbers[avatar];}var avatarid=toID(avatar);if(LOCAL_CUSTOM_AVATAR_IDS.has(avatarid))return"/sprites/trainers/"+avatarid+".png";if(avatar.charAt(0)==='#'){return Dex.resourcePrefix+'sprites/trainers-custom/'+toID(avatar.substr(1))+'.png';}if(avatar.includes('.')&&(_window$Config=window.Config)!=null&&(_window$Config=_window$Config.server)!=null&&_window$Config.registered){var protocol=Config.server.port===443?'https':'http';return protocol+'://'+Config.server.host+':'+Config.server.port+'/avatars/'+encodeURIComponent(avatar).replace(/\%3F/g,'?');}return Dex.resourcePrefix+'sprites/trainers/'+Dex.sanitizeName(avatar||'unknown')+'.png';};_proto2.sanitizeName=function sanitizeName(name){if(!name)return'';return(''+name).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').slice(0,50);};_proto2.prefs=function prefs(prop){var _window$Storage;return window.PS?window.PS.prefs[prop]:(_window$Storage=window.Storage)==null||_window$Storage.prefs==null?void 0:_window$Storage.prefs(prop);};_proto2.getShortName=function getShortName(name){var shortName=name.replace(/[^A-Za-z0-9]+$/,'');if(shortName.indexOf('(')>=0){shortName+=name.slice(shortName.length).replace(/[^\(\)]+/g,'').replace(/\(\)/g,'');}return shortName;};_proto2.getEffect=function getEffect(name){var _name2;if((_name2=name)!=null&&_name2.trim().startsWith('passive:')){var ability=Dex.abilities.get(name.trim().slice(8).trim());return new PureEffect(ability.id,ability.name+' (passive)');}name=(name||'').trim();if(name.substr(0,5)==='item:'){return Dex.items.get(name.substr(5).trim());}else if(name.substr(0,8)==='ability:'){return Dex.abilities.get(name.substr(8).trim());}else if(name.substr(0,5)==='move:'){return Dex.moves.get(name.substr(5).trim());}var id=toID(name);return new PureEffect(id,name);};_proto2.getGen3Category=function getGen3Category(type){return['Fire','Water','Grass','Electric','Ice','Psychic','Dark','Dragon'].includes(type)?'Special':'Physical';};_proto2.
 
 hasAbility=function hasAbility(species,ability){
 for(var i in species.abilities){
@@ -87788,17 +89068,26 @@ for(var slot in species.abilities){
 
 var abilityId=toID(species.abilities[slot]);
 if(this.getAbilityEffects(abilityId).has(effectId))return true;
+}for(var _i168=0,_ref60=
+species.passives||[];_i168<_ref60.length;_i168++){var passive=_ref60[_i168];
+if(this.getAbilityEffects(toID(passive)).has(effectId))return true;
 }
 return false;
 };_proto2.
 
 
-getAbilityDisplayComponents=function getAbilityDisplayComponents(abilityId){var dex=arguments.length>1&&arguments[1]!==undefined?arguments[1]:this;
+getAbilityDescriptionLines=function getAbilityDescriptionLines(description){
+return description.replace(/\b(Sp|No|Mr|Mrs)\.\s/g,"$1\x01 ").
+split(/\.\s+(?=[A-Z0-9])|;\s+/).
+map(function(line){return line.replace(/\u0001/g,'.').trim();}).filter(Boolean);
+};_proto2.
+
+getAbilityDisplayComponents=function getAbilityDisplayComponents(abilityId){var dex=arguments.length>1&&arguments[1]!==undefined?arguments[1]:this;var passives=arguments.length>2&&arguments[2]!==undefined?arguments[2]:[];
 ensureCustomDataPatches();
 var ability=dex.abilities.get(abilityId);
 var base=this.abilities.get(ability.id);
 if(dex!==this&&(ability.desc!==base.desc||ability.shortDesc!==base.shortDesc))return[];
-return CUSTOM_ABILITY_DISPLAY_COMPONENTS[ability.id]||[];
+return(CUSTOM_ABILITY_DISPLAY_COMPONENTS[ability.id]||[]).filter(function(id){return!passives.includes(id);});
 };_proto2.
 
 getAbilityEffects=function getAbilityEffects(abilityId){var _window$BattleAbiliti;var visiting=arguments.length>1&&arguments[1]!==undefined?arguments[1]:new Set();var dex=arguments.length>2&&arguments[2]!==undefined?arguments[2]:this;
@@ -87824,8 +89113,8 @@ var nextVisiting=new Set(visiting);
 nextVisiting.add(abilityId);
 var directComponents=new Set((inheritsComponents?CUSTOM_ABILITY_COMPONENT_OVERRIDES[abilityId]||[]:[]).map(toID));
 
-if(inheritsComponents&&AUDITED_DESCRIPTION_COMPONENTS[abilityId]){for(var _i168=0,_AUDITED_DESCRIPTION_2=
-AUDITED_DESCRIPTION_COMPONENTS[abilityId];_i168<_AUDITED_DESCRIPTION_2.length;_i168++){var componentId=_AUDITED_DESCRIPTION_2[_i168];directComponents.add(componentId);}
+if(inheritsComponents&&AUDITED_DESCRIPTION_COMPONENTS[abilityId]){for(var _i170=0,_AUDITED_DESCRIPTION_2=
+AUDITED_DESCRIPTION_COMPONENTS[abilityId];_i170<_AUDITED_DESCRIPTION_2.length;_i170++){var componentId=_AUDITED_DESCRIPTION_2[_i170];directComponents.add(componentId);}
 }else{
 
 
@@ -87839,9 +89128,9 @@ if(
 {
 directComponents.add('noguard');
 }
-var declaredComponents=new Set(_description.split(/[+;.]/).map(function(part){return toID(part.trim());}));for(var _i170=0,_fullDescription$matc2=
-fullDescription.matchAll(/\bhas\s+([^.;]+?)['’]s effects\b/gi);_i170<_fullDescription$matc2.length;_i170++){var match=_fullDescription$matc2[_i170];for(var _i172=0,_match$1$split2=
-match[1].split(/,\s*(?:and\s+)?|\s+and\s+/i);_i172<_match$1$split2.length;_i172++){var part=_match$1$split2[_i172];declaredComponents.add(toID(part.trim()));}
+var declaredComponents=new Set(_description.split(/[+;.]/).map(function(part){return toID(part.trim());}));for(var _i172=0,_fullDescription$matc2=
+fullDescription.matchAll(/\bhas\s+([^.;]+?)['’]s effects\b/gi);_i172<_fullDescription$matc2.length;_i172++){var match=_fullDescription$matc2[_i172];for(var _i174=0,_match$1$split2=
+match[1].split(/,\s*(?:and\s+)?|\s+and\s+/i);_i174<_match$1$split2.length;_i174++){var part=_match$1$split2[_i174];declaredComponents.add(toID(part.trim()));}
 }
 for(var _componentId in window.BattleAbilities||{}){
 if(_componentId===abilityId)continue;
@@ -87852,9 +89141,9 @@ if(declaredComponents.has(toID(componentName))){
 directComponents.add(_componentId);
 }
 }
-}for(var _i174=0,_Array$from2=
-Array.from(directComponents);_i174<_Array$from2.length;_i174++){var _componentId2=_Array$from2[_i174];for(var _i176=0,_Array$from4=
-Array.from(this.getAbilityEffects(_componentId2,nextVisiting,dex));_i176<_Array$from4.length;_i176++){var nestedEffect=_Array$from4[_i176];
+}for(var _i176=0,_Array$from2=
+Array.from(directComponents);_i176<_Array$from2.length;_i176++){var _componentId2=_Array$from2[_i176];for(var _i178=0,_Array$from4=
+Array.from(this.getAbilityEffects(_componentId2,nextVisiting,dex));_i178<_Array$from4.length;_i178++){var nestedEffect=_Array$from4[_i178];
 effects.add(nestedEffect);
 }
 }
@@ -88168,6 +89457,17 @@ var _dir=options.shiny?'gen5'+(isFront?'':'-back')+'-shiny':'ani'+(isFront?'':'-
 spriteData.url=Dex.resourcePrefix+'sprites/'+_dir+'/houndoom-mega.'+(options.shiny?'png':'gif');
 spriteData.pixelated=true;
 }
+
+
+if(!options.shiny&&!Dex.prefs('noanim')&&!Dex.prefs('nogif')){
+var animationNames=options.gender==='F'?[name.endsWith('-f')?name:name+'-f',name]:[name];
+var bwPath=animationNames.map(function(candidate){return'gen5ani'+(isFront?'':'-back')+'/'+candidate+'.gif';}).
+find(function(path){return!!TEAM_PREVIEW_ANIMATIONS[path];});
+if(bwPath){
+spriteData.url=Dex.resourcePrefix+'sprites/'+bwPath;
+spriteData.pixelated=true;
+}
+}
 var assetPath=spriteData.url.slice((Dex.resourcePrefix+'sprites/').length).split('?')[0];
 if(spriteData.gen>=5&&!SPRITE_ASSET_DIMENSIONS[assetPath]){
 var ungenderedPath=assetPath.replace(/-f\.(gif|png)$/,'.$1');
@@ -88365,8 +89665,8 @@ spriteData.w=staticDimensions[0];
 spriteData.h=staticDimensions[1];
 spriteData.pixelated=true;
 var previewAnimationFound=false;
-if(!forceStaticShiny&&!speciesid.startsWith('furfrou'))for(var _i178=0,_ref60=['gen5ani'];_i178<_ref60.length;_i178++){var style=_ref60[_i178];for(var _i180=0;_i180<
-previewAnimationNames.length;_i180++){var candidate=previewAnimationNames[_i180];
+if(!Dex.prefs('noanim')&&!Dex.prefs('nogif')&&!forceStaticShiny&&(!options.shiny||!speciesid.startsWith('furfrou')))for(var _i180=0,_ref62=['gen5ani'];_i180<_ref62.length;_i180++){var style=_ref62[_i180];for(var _i182=0;_i182<
+previewAnimationNames.length;_i182++){var candidate=previewAnimationNames[_i182];
 var path=style+(isFront?'':'-back')+(options.shiny?'-shiny':'')+'/'+candidate+'.gif';
 var _dimensions=TEAM_PREVIEW_ANIMATIONS[path];
 if(!_dimensions)continue;
@@ -88450,7 +89750,7 @@ var _this$getAbilityFormP=this.getAbilityFormPreview(set,dex),visualSpecies=_thi
 return visualSpecies.id===toID(set.species)?set:Object.assign({},set,{species:visualSpecies.name});
 };_proto2.
 
-getPokemonIcon=function getPokemonIcon(pokemon,facingLeft){var _pokemon2,_pokemon3,_pokemon4,_pokemon5,_pokemon9,_pokemon0,_pokemon10,_pokemon11,_ref61,_pokemon14,_pokemon15;
+getPokemonIcon=function getPokemonIcon(pokemon,facingLeft){var _pokemon2,_pokemon3,_pokemon4,_pokemon5,_pokemon9,_pokemon0,_pokemon10,_pokemon11,_ref63,_pokemon14,_pokemon15;
 if(pokemon==='pokeball'){
 return"background:transparent url("+Dex.resourcePrefix+"sprites/pokemonicons-pokeball-sheet.png) no-repeat scroll -0px 4px";
 }else if(pokemon==='pokeball-statused'){
@@ -88523,7 +89823,7 @@ if(OFFICIAL_MENU_ICON_INDEXES[menuId]===undefined&&OFFICIAL_MENU_ICON_INDEXES[sp
 menuId=spriteAlias;
 }
 if(((_pokemon11=pokemon)==null?void 0:_pokemon11.gender)==='F'&&['unfezant','frillish','jellicent','meowstic','pyroar'].includes(menuId))menuId+='f';
-var officialNum=(_ref61=facingLeft?OFFICIAL_MENU_ICON_INDEXES_LEFT[menuId]:undefined)!=null?_ref61:OFFICIAL_MENU_ICON_INDEXES[menuId];
+var officialNum=(_ref63=facingLeft?OFFICIAL_MENU_ICON_INDEXES_LEFT[menuId]:undefined)!=null?_ref63:OFFICIAL_MENU_ICON_INDEXES[menuId];
 if(officialNum!==undefined){var _pokemon12;
 var _top=Math.floor(officialNum/12)*30;
 var _left=officialNum%12*40;
@@ -88803,8 +90103,8 @@ return"<img src=\""+Dex.resourcePrefix+"sprites/categories/"+sanitizedCategory+"
 getPokeballs=function getPokeballs(){
 if(this.pokeballs)return this.pokeballs;
 this.pokeballs=[];
-if(!window.BattleItems)window.BattleItems={};for(var _i182=0,_Object$values8=
-Object.values(window.BattleItems);_i182<_Object$values8.length;_i182++){var data=_Object$values8[_i182];
+if(!window.BattleItems)window.BattleItems={};for(var _i184=0,_Object$values8=
+Object.values(window.BattleItems);_i184<_Object$values8.length;_i184++){var data=_Object$values8[_i184];
 if(!data.isPokeball)continue;
 this.pokeballs.push(data.name);
 }
@@ -88992,8 +90292,8 @@ return data;
 getPokeballs=function getPokeballs(){
 if(this.pokeballs)return this.pokeballs;
 this.pokeballs=[];
-if(!window.BattleItems)window.BattleItems={};for(var _i184=0,_Object$values0=
-Object.values(window.BattleItems);_i184<_Object$values0.length;_i184++){var data=_Object$values0[_i184];
+if(!window.BattleItems)window.BattleItems={};for(var _i186=0,_Object$values0=
+Object.values(window.BattleItems);_i186<_Object$values0.length;_i186++){var data=_Object$values0[_i186];
 if(data.gen&&data.gen>this.gen)continue;
 if(!data.isPokeball)continue;
 this.pokeballs.push(data.name);
@@ -89129,8 +90429,8 @@ if(typeof team==='string'){
 if(team.indexOf('\n')>=0)return team;
 team=this.unpack(team);
 }
-var text='';for(var _i186=0,_team2=
-team;_i186<_team2.length;_i186++){var curSet=_team2[_i186];
+var text='';for(var _i188=0,_team2=
+team;_i188<_team2.length;_i188++){var curSet=_team2[_i188];
 if(isSilvallySpecies(curSet.species))curSet.shiny=true;
 if(curSet.name&&curSet.name!==curSet.species){
 text+=''+curSet.name+' ('+curSet.species+')';
@@ -89195,8 +90495,8 @@ text+=''+curSet.nature+' Nature'+"  \n";
 first=true;
 if(curSet.ivs){
 var defaultIvs=true;
-var hpType='';for(var _i188=0,_curSet$moves2=
-curSet.moves;_i188<_curSet$moves2.length;_i188++){var _move2=_curSet$moves2[_i188];
+var hpType='';for(var _i190=0,_curSet$moves2=
+curSet.moves;_i190<_curSet$moves2.length;_i190++){var _move2=_curSet$moves2[_i190];
 if(_move2.substr(0,13)==='Hidden Power '&&_move2.substr(0,14)!=='Hidden Power ['){
 hpType=_move2.substr(13);
 if(!Dex.types.isName(hpType)){
@@ -89239,8 +90539,8 @@ if(!first){
 text+="  \n";
 }
 }
-if(curSet.moves){for(var _i190=0,_curSet$moves4=
-curSet.moves;_i190<_curSet$moves4.length;_i190++){var _move3=_curSet$moves4[_i190];
+if(curSet.moves){for(var _i192=0,_curSet$moves4=
+curSet.moves;_i192<_curSet$moves4.length;_i192++){var _move3=_curSet$moves4[_i192];
 if(_move3.substr(0,13)==='Hidden Power '){
 _move3=_move3.substr(0,13)+'['+_move3.substr(13)+']';
 }
@@ -95454,7 +96754,7 @@ effectId=function effectId(effect){
 if(!effect)return'';
 if(effect.startsWith('item:')||effect.startsWith('move:')){
 effect=effect.slice(5);
-}else if(effect.startsWith('ability:')){
+}else if(effect.startsWith('ability:')||effect.startsWith('passive:')){
 effect=effect.slice(8);
 }
 return toID(effect);
@@ -95464,7 +96764,7 @@ effect=function effect(_effect){
 if(!_effect)return'';
 if(_effect.startsWith('item:')||_effect.startsWith('move:')){
 _effect=_effect.slice(5);
-}else if(_effect.startsWith('ability:')){
+}else if(_effect.startsWith('ability:')||_effect.startsWith('passive:')){
 _effect=_effect.slice(8);
 }
 return _effect.trim();
@@ -95493,6 +96793,7 @@ return BattleText["default"][type]+'\n';
 
 maybeAbility=function maybeAbility(effect,holder){
 if(!effect)return'';
+if(effect.startsWith('passive:'))return this.ability(effect.slice(8).trim()+' (passive)',holder);
 if(!effect.startsWith('ability:'))return'';
 return this.ability(effect.slice(8).trim(),holder);
 };_proto.

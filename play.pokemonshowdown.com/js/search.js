@@ -548,12 +548,18 @@
 			return buf;
 		}
 
-		var fullDescription = ability.desc || ability.shortDesc;
-		if (this.renderAll && ability.desc) {
-			var components = Dex.getAbilityDisplayComponents(toID(ability.name));
-			if (components.length) fullDescription = 'Includes: ' + components.map(function (id) { return Dex.abilities.get(id).name; }).join(' · ') + '\n\n' + fullDescription;
+		var fullDescription = Dex.getAbilityDescriptionLines(ability.desc || ability.shortDesc).map(function (line) { return '• ' + line; }).join('\n');
+		var summary = ability.shortDesc;
+		var components = this.renderAll ? Dex.getAbilityDisplayComponents(toID(ability.name)) : [];
+		var componentNames = components.map(function (id) { return Dex.abilities.get(id).name; }).join(' + ');
+		if (componentNames) {
+			fullDescription = 'Includes: ' + componentNames + '\n\n' + fullDescription;
+			if (summary === 'Combines the listed abilities.') summary = '';
 		}
-		buf += '<span class="col abilitydesccol" title="' + BattleLog.escapeHTML(fullDescription) + '">' + BattleLog.escapeHTML(ability.shortDesc) + '</span> ';
+		buf += '<span class="col abilitydesccol" title="' + BattleLog.escapeHTML(fullDescription) + '">' +
+			(componentNames ? '<strong class="ability-components">' + BattleLog.escapeHTML(componentNames) + '</strong>' : '') +
+			(summary ? '<span class="ability-extra-effects">' + BattleLog.escapeHTML(summary) + '</span>' : '') + '</span> ';
+
 		buf += '</a>';
 		if (this.renderAll) buf += '<button type="button" class="ability-picker-info" aria-label="Full details for ' + BattleLog.escapeHTML(ability.name) + '" data-description="' + BattleLog.escapeHTML(fullDescription) + '">ⓘ</button>';
 		buf += '</li>';

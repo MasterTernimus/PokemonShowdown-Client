@@ -1890,6 +1890,7 @@ export class PokemonSprite extends Sprite {
 		curse: ['Curse', 'bad'],
 		nightmare: ['Nightmare', 'bad'],
 		attract: ['Infatuation', 'bad'],
+		voidcrossingcurse: ['Cursed: next attack &times;0.8', 'bad'],
 		torment: ['Torment', 'bad'],
 		taunt: ['Taunt', 'bad'],
 		disable: ['Disable', 'bad'],

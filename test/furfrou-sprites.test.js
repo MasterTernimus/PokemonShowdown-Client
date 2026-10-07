@@ -19,11 +19,11 @@ describe('Furfrou sprite and icon agreement', () => {
    const file = 'furfrou' + (trim ? '-' + trim.toLowerCase().replace(/ /g, '') : '') + (gender === 'F' ? '-f' : '');
    const suffix = shiny ? '-shiny' : '';
    for (const front of [true, false]) {
-    const sprite = Dex.getSpriteData(species, front, {gen: 9, gender, shiny, noScale: true});
+    const sprite = staticSpriteData(species, front, {gen: 9, gender, shiny, noScale: true});
     assert(sprite.url.includes(`/sprites/gen5${front ? '' : '-back'}${suffix}/${file}.png`), sprite.url);
     const size = imageSize(local(sprite.url));
     assert.equal(sprite.w, size.width); assert.equal(sprite.h, size.height);
-    const preview = Dex.getSpriteData(species, front, {gen: 9, gender, shiny, noScale: true, teamPreview: true});
+    const preview = staticSpriteData(species, front, {gen: 9, gender, shiny, noScale: true, teamPreview: true});
     assert(preview.url.includes(`/sprites/gen5${front ? '' : '-back'}${suffix}/${file}.png`), preview.url);
     assert(fs.statSync(local(preview.url)).size > 0);
    }
@@ -205,3 +205,11 @@ describe('Reviewed Furfrou artwork identity and fit', () => {
   }
  });
 });
+
+
+// Verify approved static artwork independently of the normal BW animation route.
+function staticSpriteData(...args) {
+ const prefs = Dex.prefs;
+ Dex.prefs = key => key === 'nogif' ? true : prefs.call(Dex, key);
+ try { return Dex.getSpriteData(...args); } finally { Dex.prefs = prefs; }
+}

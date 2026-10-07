@@ -42,3 +42,17 @@ describe('External ability protocol attribution', () => {
   });
  }
 });
+
+describe('Composite absorption identity',()=>{
+ for(const [name,component] of [['Undertow','Water Absorb'],['Reservoir','Water Absorb'],['Lunar Dread','Pressure']])it(name+' survives component activation and replay',()=>{
+  const log=['|init|battle','|gen|9','|gametype|singles','|player|p1|Alice|1','|player|p2|Bob|1','|start','|switch|p1a: Holder|Jellicent, L100|100/100',
+   '|-ability|p1a: Holder|'+name,'|-immune|p1a: Holder|[from] ability: '+component];
+  const battle=new Battle({debug:true,log});battle.seekTurn(Infinity);
+  assert.equal(battle.p1.active[0].ability,name);
+  battle.seekTurn(0);battle.seekTurn(Infinity);assert.equal(battle.p1.active[0].ability,name);battle.destroy();
+ });
+ it('first absorption reveal identifies Undertow without guessing the species ability',()=>{
+  const battle=new Battle({debug:true,log:['|init|battle','|gen|9','|gametype|singles','|start','|switch|p1a: Holder|Jellicent, L100|100/100','|-immune|p1a: Holder|[from] ability: Undertow']});
+  battle.seekTurn(Infinity);assert.equal(battle.p1.active[0].ability,'Undertow');battle.destroy();
+ });
+});
