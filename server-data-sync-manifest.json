@@ -1,7 +1,7 @@
 {
-	"sourceHead": "e5aee33f9addaa28932db17a52bdcaa6e53461cc",
+	"sourceHead": "604fad9944199e09b281f3fc79ecf59d408c77db",
 	"base": "eb4df7b2171223918cc79aecd6674292a887aa7c",
-	"sourceDataSHA256": "11354842a62919ea75e9ba30d12110d642950399069fb64dc934a4de7fad589b",
+	"sourceDataSHA256": "ad302bab39ba062bdef95e13c65ec28f80ca672b8d0a68aed569374c4056464f",
 	"files": [
 		"data/abilities.ts",
 		"data/ability-components.ts",
@@ -2340,7 +2340,6 @@
 					"Steel"
 				],
 				"passives": [
-					"torrent",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -2362,7 +2361,6 @@
 					"Steel"
 				],
 				"passives": [
-					"torrent",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -2407,7 +2405,6 @@
 					"Fighting"
 				],
 				"passives": [
-					"blaze",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -3691,7 +3688,6 @@
 					"Dragon"
 				],
 				"passives": [
-					"blaze",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -3713,7 +3709,6 @@
 					"Dragon"
 				],
 				"passives": [
-					"blaze",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -3735,7 +3730,6 @@
 					"Dragon"
 				],
 				"passives": [
-					"blaze",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -3757,7 +3751,6 @@
 					"Flying"
 				],
 				"passives": [
-					"blaze",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -3919,7 +3912,6 @@
 					"Fighting"
 				],
 				"passives": [
-					"overgrow",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -4216,7 +4208,6 @@
 					"Fire"
 				],
 				"passives": [
-					"blaze",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -4238,7 +4229,6 @@
 					"Normal"
 				],
 				"passives": [
-					"blaze",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -5709,7 +5699,6 @@
 					"Psychic"
 				],
 				"passives": [
-					"blaze",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -7328,7 +7317,6 @@
 					"Fighting"
 				],
 				"passives": [
-					"blaze",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -7350,7 +7338,6 @@
 					"Fighting"
 				],
 				"passives": [
-					"blaze",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -7372,7 +7359,6 @@
 					"Fighting"
 				],
 				"passives": [
-					"blaze",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -7461,7 +7447,6 @@
 					"Steel"
 				],
 				"passives": [
-					"torrent",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -7954,7 +7939,6 @@
 					"Dark"
 				],
 				"passives": [
-					"torrent",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -7976,7 +7960,6 @@
 					"Dragon"
 				],
 				"passives": [
-					"torrent",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -10153,7 +10136,6 @@
 					"Dark"
 				],
 				"passives": [
-					"torrent",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -10196,7 +10178,6 @@
 					"Dark"
 				],
 				"passives": [
-					"torrent",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -11471,7 +11452,6 @@
 					"Fighting"
 				],
 				"passives": [
-					"blaze",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -11535,7 +11515,6 @@
 					"Water"
 				],
 				"passives": [
-					"torrent",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -14585,7 +14564,6 @@
 					"Fairy"
 				],
 				"passives": [
-					"overgrow",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -14607,7 +14585,6 @@
 					"Fire"
 				],
 				"passives": [
-					"overgrow",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -19960,7 +19937,6 @@
 					"Grass"
 				],
 				"passives": [
-					"overgrow",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -20863,7 +20839,6 @@
 					"Dragon"
 				],
 				"passives": [
-					"overgrow",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -21259,7 +21234,6 @@
 					"Dragon"
 				],
 				"passives": [
-					"overgrow",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -23659,7 +23633,6 @@
 					"Ground"
 				],
 				"passives": [
-					"torrent",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -24904,7 +24877,6 @@
 					"Ground"
 				],
 				"passives": [
-					"overgrow",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -24926,7 +24898,6 @@
 					"Rock"
 				],
 				"passives": [
-					"overgrow",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -24947,9 +24918,7 @@
 					"Ground",
 					"Ice"
 				],
-				"passives": [
-					"overgrow"
-				],
+				"passives": [],
 				"replaceAbilities": true
 			},
 			"torterrariftshatter": {
@@ -24968,9 +24937,7 @@
 					"Grass",
 					"Fire"
 				],
-				"passives": [
-					"overgrow"
-				],
+				"passives": [],
 				"replaceAbilities": true
 			},
 			"totodile": {
@@ -25426,7 +25393,6 @@
 					"Electric"
 				],
 				"passives": [
-					"blaze",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -25922,7 +25888,6 @@
 					"Poison"
 				],
 				"passives": [
-					"overgrow",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -25944,7 +25909,6 @@
 					"Poison"
 				],
 				"passives": [
-					"overgrow",
 					"proficient"
 				],
 				"replaceAbilities": true
@@ -29111,7 +29075,7 @@
 				"num": 10158,
 				"gen": 9,
 				"desc": "Fire attacks have 1.5x power and damaging moves hit twice, with the second hit at 30% power. At half HP or less, Fire attacks gain +1 priority. Burning and Volcanic Fields raise its Speed by 1 on entry or when the field starts.",
-				"shortDesc": "Fire 1.5x; second hit 30%; half-HP Fire +1 priority; fire fields +1 Spe.",
+				"shortDesc": "Second hit 30%; Fire +1 priority at half HP; fire fields +1 Spe.",
 				"rating": 4,
 				"flags": {},
 				"isNonstandard": null
@@ -29318,7 +29282,7 @@
 				"name": "Cactus Chorus",
 				"num": 11295,
 				"gen": 9,
-				"desc": "Full local Water Absorb: absorbs Water moves for 1/4 max HP and retains its field healing. A successful Helping Hand also clears the recipient ally's confusion.",
+				"desc": "Water Absorb absorbs Water moves for 1/4 max HP and retains its field healing. Sand Rush doubles Speed in sandstorm, Desert Field, and Ashen Beach, and prevents sandstorm damage. A successful Helping Hand also clears the recipient ally's confusion.",
 				"shortDesc": "Successful Helping Hand clears the recipient ally's confusion.",
 				"rating": 4,
 				"flags": {
@@ -35301,8 +35265,8 @@
 				"name": "Run Away",
 				"num": 50,
 				"gen": 3,
-				"desc": "This Pokemon is ignored by entry hazards when it switches in, including Spikes, Stealth Rock, Sticky Web, Toxic Spikes, and their field variants.",
-				"shortDesc": "Immune to entry-hazard effects on switch-in.",
+				"desc": "This Pokemon can switch out despite trapping moves and abilities. It is also ignored by entry hazards when it switches in, including Spikes, Stealth Rock, Sticky Web, Toxic Spikes, and their field variants.",
+				"shortDesc": "Can escape trapping; immune to entry hazards.",
 				"rating": 0,
 				"flags": {},
 				"isNonstandard": null
@@ -55789,7 +55753,8 @@
 			],
 			"byxbysiontouch": [],
 			"cactuschorus": [
-				"waterabsorb"
+				"waterabsorb",
+				"sandrush"
 			],
 			"calculatedshot": [
 				"frisk"
@@ -58858,7 +58823,9 @@
 				"unaware"
 			],
 			"firemane": [],
-			"blazingmane": [],
+			"blazingmane": [
+				"firemane"
+			],
 			"plasmaeruption": [
 				"static",
 				"flamebody"
@@ -60270,7 +60237,8 @@
 				"hypercutter"
 			],
 			"cactuschorus": [
-				"waterabsorb"
+				"waterabsorb",
+				"sandrush"
 			],
 			"crushingvenom": [
 				"strongjaw"
