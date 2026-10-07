@@ -4997,6 +4997,6 @@ function renderStarterPassives(species) {
 	if (!species || !species.passives || !species.passives.length) return '';
 	return '<div class="starter-passives"><label>Passives</label>' + species.passives.map(function (id) {
 		var ability = Dex.abilities.get(id);
-		return '<span class="passive-chip" title="' + BattleLog.escapeHTML(ability.shortDesc || ability.desc) + '">' + BattleLog.escapeHTML(ability.name) + '</span>';
+		return '<span class="passive-chip" title="' + BattleLog.escapeHTML('Passive: ' + ability.name + ' — ' + (ability.shortDesc || ability.desc)) + '">' + BattleLog.escapeHTML(ability.name) + '</span>';
 	}).join(' ') + '</div>';
 }

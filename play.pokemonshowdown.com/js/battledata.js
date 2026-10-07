@@ -22162,7 +22162,6 @@ Object.entries({
 "Steel"],
 
 "passives":[
-"torrent",
 "proficient"],
 
 "replaceAbilities":true
@@ -22184,7 +22183,6 @@ Object.entries({
 "Steel"],
 
 "passives":[
-"torrent",
 "proficient"],
 
 "replaceAbilities":true
@@ -22229,7 +22227,6 @@ Object.entries({
 "Fighting"],
 
 "passives":[
-"blaze",
 "proficient"],
 
 "replaceAbilities":true
@@ -23513,7 +23510,6 @@ Object.entries({
 "Dragon"],
 
 "passives":[
-"blaze",
 "proficient"],
 
 "replaceAbilities":true
@@ -23535,7 +23531,6 @@ Object.entries({
 "Dragon"],
 
 "passives":[
-"blaze",
 "proficient"],
 
 "replaceAbilities":true
@@ -23557,7 +23552,6 @@ Object.entries({
 "Dragon"],
 
 "passives":[
-"blaze",
 "proficient"],
 
 "replaceAbilities":true
@@ -23579,7 +23573,6 @@ Object.entries({
 "Flying"],
 
 "passives":[
-"blaze",
 "proficient"],
 
 "replaceAbilities":true
@@ -23741,7 +23734,6 @@ Object.entries({
 "Fighting"],
 
 "passives":[
-"overgrow",
 "proficient"],
 
 "replaceAbilities":true
@@ -24038,7 +24030,6 @@ Object.entries({
 "Fire"],
 
 "passives":[
-"blaze",
 "proficient"],
 
 "replaceAbilities":true
@@ -24060,7 +24051,6 @@ Object.entries({
 "Normal"],
 
 "passives":[
-"blaze",
 "proficient"],
 
 "replaceAbilities":true
@@ -25531,7 +25521,6 @@ Object.entries({
 "Psychic"],
 
 "passives":[
-"blaze",
 "proficient"],
 
 "replaceAbilities":true
@@ -27150,7 +27139,6 @@ Object.entries({
 "Fighting"],
 
 "passives":[
-"blaze",
 "proficient"],
 
 "replaceAbilities":true
@@ -27172,7 +27160,6 @@ Object.entries({
 "Fighting"],
 
 "passives":[
-"blaze",
 "proficient"],
 
 "replaceAbilities":true
@@ -27194,7 +27181,6 @@ Object.entries({
 "Fighting"],
 
 "passives":[
-"blaze",
 "proficient"],
 
 "replaceAbilities":true
@@ -27283,7 +27269,6 @@ Object.entries({
 "Steel"],
 
 "passives":[
-"torrent",
 "proficient"],
 
 "replaceAbilities":true
@@ -27776,7 +27761,6 @@ Object.entries({
 "Dark"],
 
 "passives":[
-"torrent",
 "proficient"],
 
 "replaceAbilities":true
@@ -27798,7 +27782,6 @@ Object.entries({
 "Dragon"],
 
 "passives":[
-"torrent",
 "proficient"],
 
 "replaceAbilities":true
@@ -29975,7 +29958,6 @@ Object.entries({
 "Dark"],
 
 "passives":[
-"torrent",
 "proficient"],
 
 "replaceAbilities":true
@@ -30018,7 +30000,6 @@ Object.entries({
 "Dark"],
 
 "passives":[
-"torrent",
 "proficient"],
 
 "replaceAbilities":true
@@ -31293,7 +31274,6 @@ Object.entries({
 "Fighting"],
 
 "passives":[
-"blaze",
 "proficient"],
 
 "replaceAbilities":true
@@ -31357,7 +31337,6 @@ Object.entries({
 "Water"],
 
 "passives":[
-"torrent",
 "proficient"],
 
 "replaceAbilities":true
@@ -34407,7 +34386,6 @@ Object.entries({
 "Fairy"],
 
 "passives":[
-"overgrow",
 "proficient"],
 
 "replaceAbilities":true
@@ -34429,7 +34407,6 @@ Object.entries({
 "Fire"],
 
 "passives":[
-"overgrow",
 "proficient"],
 
 "replaceAbilities":true
@@ -39782,7 +39759,6 @@ Object.entries({
 "Grass"],
 
 "passives":[
-"overgrow",
 "proficient"],
 
 "replaceAbilities":true
@@ -40685,7 +40661,6 @@ Object.entries({
 "Dragon"],
 
 "passives":[
-"overgrow",
 "proficient"],
 
 "replaceAbilities":true
@@ -41081,7 +41056,6 @@ Object.entries({
 "Dragon"],
 
 "passives":[
-"overgrow",
 "proficient"],
 
 "replaceAbilities":true
@@ -43481,7 +43455,6 @@ Object.entries({
 "Ground"],
 
 "passives":[
-"torrent",
 "proficient"],
 
 "replaceAbilities":true
@@ -44726,7 +44699,6 @@ Object.entries({
 "Ground"],
 
 "passives":[
-"overgrow",
 "proficient"],
 
 "replaceAbilities":true
@@ -44748,7 +44720,6 @@ Object.entries({
 "Rock"],
 
 "passives":[
-"overgrow",
 "proficient"],
 
 "replaceAbilities":true
@@ -44769,9 +44740,7 @@ Object.entries({
 "Ground",
 "Ice"],
 
-"passives":[
-"overgrow"],
-
+"passives":[],
 "replaceAbilities":true
 },
 "torterrariftshatter":{
@@ -44790,9 +44759,7 @@ Object.entries({
 "Grass",
 "Fire"],
 
-"passives":[
-"overgrow"],
-
+"passives":[],
 "replaceAbilities":true
 },
 "totodile":{
@@ -45248,7 +45215,6 @@ Object.entries({
 "Electric"],
 
 "passives":[
-"blaze",
 "proficient"],
 
 "replaceAbilities":true
@@ -45744,7 +45710,6 @@ Object.entries({
 "Poison"],
 
 "passives":[
-"overgrow",
 "proficient"],
 
 "replaceAbilities":true
@@ -45766,7 +45731,6 @@ Object.entries({
 "Poison"],
 
 "passives":[
-"overgrow",
 "proficient"],
 
 "replaceAbilities":true
@@ -52809,7 +52773,9 @@ var CUSTOM_ABILITY_DISPLAY_COMPONENTS={
 "unaware"],
 
 "firemane":[],
-"blazingmane":[],
+"blazingmane":[
+"firemane"],
+
 "plasmaeruption":[
 "static",
 "flamebody"],
@@ -54221,7 +54187,8 @@ var CUSTOM_ABILITY_DISPLAY_COMPONENTS={
 "hypercutter"],
 
 "cactuschorus":[
-"waterabsorb"],
+"waterabsorb",
+"sandrush"],
 
 "crushingvenom":[
 "strongjaw"],
@@ -55253,7 +55220,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "num":10158,
 "gen":9,
 "desc":"Fire attacks have 1.5x power and damaging moves hit twice, with the second hit at 30% power. At half HP or less, Fire attacks gain +1 priority. Burning and Volcanic Fields raise its Speed by 1 on entry or when the field starts.",
-"shortDesc":"Fire 1.5x; second hit 30%; half-HP Fire +1 priority; fire fields +1 Spe.",
+"shortDesc":"Second hit 30%; Fire +1 priority at half HP; fire fields +1 Spe.",
 "rating":4,
 "flags":{},
 "isNonstandard":null
@@ -55460,7 +55427,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "name":"Cactus Chorus",
 "num":11295,
 "gen":9,
-"desc":"Full local Water Absorb: absorbs Water moves for 1/4 max HP and retains its field healing. A successful Helping Hand also clears the recipient ally's confusion.",
+"desc":"Water Absorb absorbs Water moves for 1/4 max HP and retains its field healing. Sand Rush doubles Speed in sandstorm, Desert Field, and Ashen Beach, and prevents sandstorm damage. A successful Helping Hand also clears the recipient ally's confusion.",
 "shortDesc":"Successful Helping Hand clears the recipient ally's confusion.",
 "rating":4,
 "flags":{
@@ -61443,8 +61410,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "name":"Run Away",
 "num":50,
 "gen":3,
-"desc":"This Pokemon is ignored by entry hazards when it switches in, including Spikes, Stealth Rock, Sticky Web, Toxic Spikes, and their field variants.",
-"shortDesc":"Immune to entry-hazard effects on switch-in.",
+"desc":"This Pokemon can switch out despite trapping moves and abilities. It is also ignored by entry hazards when it switches in, including Spikes, Stealth Rock, Sticky Web, Toxic Spikes, and their field variants.",
+"shortDesc":"Can escape trapping; immune to entry hazards.",
 "rating":0,
 "flags":{},
 "isNonstandard":null
@@ -83805,7 +83772,8 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES,{
 
 "byxbysiontouch":[],
 "cactuschorus":[
-"waterabsorb"],
+"waterabsorb",
+"sandrush"],
 
 "calculatedshot":[
 "frisk"],

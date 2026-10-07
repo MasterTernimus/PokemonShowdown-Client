@@ -18,6 +18,9 @@ describe('Component-first Team Builder ability rows', () => {
  }
  it('shows named components before the extra effect for Void Crossing', () => {
   const html=visible(Dex.abilities.get('voidcrossing'));
+  assert(html.includes('class="result abilityresult"'));
+  assert(visible(Dex.abilities.get('blazingmane')).includes('Fire Mane'));
+  assert(visible(Dex.abilities.get('cactuschorus')).includes('Water Absorb + Sand Rush'));
   assert(html.includes('Magic Guard + Infiltrator'));
   assert(html.indexOf('Magic Guard + Infiltrator') < html.indexOf('Ghost hits or Power Gem'));
  });

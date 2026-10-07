@@ -3914,25 +3914,25 @@
     "gluttony",
     "stokebelly"
   ],
+  "rousingfeast": [
+    "gluttony",
+    "rousingfeast"
+  ],
   "invisiblewall": [
     "invisiblewall",
     "soundproof"
-  ],
-  "pursuitwake": [
-    "infiltrator",
-    "pursuitwake"
   ],
   "sentinelfist": [
     "ironfist",
     "sentinelfist"
   ],
+  "pursuitwake": [
+    "infiltrator",
+    "pursuitwake"
+  ],
   "gentlegiant": [
     "cloudnine",
     "gentlegiant"
-  ],
-  "rousingfeast": [
-    "gluttony",
-    "rousingfeast"
   ],
   "ringcraft": [
     "limber",
@@ -4068,10 +4068,5 @@
   "mindcurrent": [
     "innerfocus",
     "mindcurrent"
-  ],
-  "voidcrossing": [
-    "infiltrator",
-    "magicguard",
-    "voidcrossing"
   ]
 }

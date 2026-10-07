@@ -1201,14 +1201,14 @@
   },
   "blazingmane": {
     "desc": "Fire attacks have 1.5x power and damaging moves hit twice, with the second hit at 30% power. At half HP or less, Fire attacks gain +1 priority. Burning and Volcanic Fields raise its Speed by 1 on entry or when the field starts.",
-    "shortDesc": "Fire 1.5x; second hit 30%; half-HP Fire +1 priority; fire fields +1 Spe."
+    "shortDesc": "Second hit 30%; Fire +1 priority at half HP; fire fields +1 Spe."
   },
   "plasmaeruption": {
     "desc": "Proficient boosts same-type attacks by 1.3x. Contact attackers have Static's chance to be paralyzed and Flame Body's chance to be burned. Fire moves may become Electric, and Electric moves may become Fire (50% chance each), unless the new type would make the target immune. After Burn Up removes Fire typing, Fire moves always become Electric; after Double Shock removes Electric typing, Electric moves always become Fire. Burn Up and Double Shock themselves keep their original type.",
     "shortDesc": "Fire may turn Electric or vice versa (50%). Type loss forces it unless immune."
   },
   "fortressshell": {
-    "desc": "Prevents critical hits and takes 20% less attack damage. Same-type moves have 1.3x power. Eligible slicing, pulse, bullet, horn, drill, and Arrow moves hit twice at 60% power, with an independent accuracy check for each hit. When combined with Sharpness, Mega Launcher, or Power Drill, the first hit receives that boost and the second hit deals 15% of the move's unboosted power. In Free-for-All, both hits use full power: the first hits the selected foe and the second targets another random living foe when possible. Existing multi-hit moves are not given an additional Dual Wield pair. At turn end, foes take cycling Water damage of 1/16, 2/16, then 3/16 max HP. Water immunities block it; type effectiveness scales it only in Free-for-All. Allies' moves have 1.3x power, or 1.5x on Haunted, Bewitched Woods, Holy and Psychic fields. Allies take 25% less attack damage; this does not protect the holder. Heals 1/16 max HP each turn. On Electric Terrain, Murkwater Surface, Water Surface, Underwater, Midnight Zone, Factory and Short-Circuit, redirects and absorbs Electric moves for +1 Attack and Sp. Atk. Fairy Tale, New World, Cold Eclipse and Starlight Arena give +1 Defense and Sp. Def once per active terrain. New World, Cold Eclipse and Starlight Arena also give 1.5x move power.",
+    "desc": "Prevents critical hits and takes 20% less attack damage. Same-type moves have 1.3x power. Eligible slicing, pulse, bullet, horn, drill, and Arrow moves hit twice at 60% power, with an independent accuracy check for each hit. When combined with Sharpness, Mega Launcher, or Power Drill, the first hit receives that boost and the second hit deals 15% of the move's unboosted power. In Free-for-All, both hits use full power: the first hits the selected foe and the second targets another random living foe when possible. Existing multi-hit moves are not given an additional Dual Wield pair. At turn end, foes take cycling Water damage of 1/16, 2/16, then 3/16 max HP. Water immunities block it; type effectiveness scales it only in Free-for-All. Allies' moves have 1.3x power, or 1.5x on Haunted, Bewitched Woods, Holy and Psychic fields. Allies take 25% less attack damage; this does not protect the holder. Heals 1/16 max HP each turn. During Electric Aura or on Electric Terrain, Murkwater Surface, Water Surface, Underwater, Midnight Zone, Factory and Short-Circuit, redirects and absorbs Electric moves for +1 Attack and Sp. Atk. Fairy Tale, New World, Cold Eclipse and Starlight Arena give +1 Defense and Sp. Def once per active terrain. New World, Cold Eclipse and Starlight Arena also give 1.5x move power.",
     "shortDesc": "Critical-hit protection; 20% less damage; paired moves and Water chip; ally support; field Electric absorption."
   },
   "waterbarrage": {
@@ -2024,8 +2024,8 @@
     "shortDesc": "Contact attackers lose 1/8 HP; Contact moves have 1.3x power."
   },
   "runaway": {
-    "desc": "This Pokemon is ignored by entry hazards when it switches in, including Spikes, Stealth Rock, Sticky Web, Toxic Spikes, and their field variants.",
-    "shortDesc": "Immune to entry-hazard effects on switch-in."
+    "desc": "This Pokemon can switch out despite trapping moves and abilities. It is also ignored by entry hazards when it switches in, including Spikes, Stealth Rock, Sticky Web, Toxic Spikes, and their field variants.",
+    "shortDesc": "Can escape trapping; immune to entry hazards."
   },
   "sandforce": {
     "desc": "Rock, Ground and Steel moves have 1.3x power in sandstorm or on Desert and Ashen Beach. Immune to sandstorm damage.",
@@ -3712,7 +3712,7 @@
     "shortDesc": "Ice Hammer breaks Reflect before damage and keeps its Speed drop."
   },
   "cactuschorus": {
-    "desc": "Full local Water Absorb: absorbs Water moves for 1/4 max HP and retains its field healing. A successful Helping Hand also clears the recipient ally's confusion.",
+    "desc": "Water Absorb absorbs Water moves for 1/4 max HP and retains its field healing. Sand Rush doubles Speed in sandstorm, Desert Field, and Ashen Beach, and prevents sandstorm damage. A successful Helping Hand also clears the recipient ally's confusion.",
     "shortDesc": "Successful Helping Hand clears the recipient ally's confusion."
   },
   "crushingvenom": {
