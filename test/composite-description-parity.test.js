@@ -24,7 +24,7 @@ describe('Composite description client parity', () => {
  it('resolves renamed aliases and nested identities without repeated effects', () => {
   assert.deepEqual([...Dex.getAbilityEffects('shadowguard')].sort(), [...Dex.getAbilityEffects('voidcraft')].sort());
   const effects = [...Dex.getAbilityEffects('toxicbloom')];
-  for (const id of ['pollenbloom', 'thickfat', 'proficient', 'selfsufficient']) assert.equal(effects.filter(x => x === id).length, 1);
+  for (const id of ['pollenbloom', 'thickfat', 'selfsufficient']) assert.equal(effects.filter(x => x === id).length, 1);
   assert(Dex.getAbilityEffects('verdantdrake').has('limber'));
   assert.deepEqual(Dex.species.get('skarmory').abilities, {"0":"Fresh Plumage","1":"Sturdy","H":"Weak Armor"});
   assert.deepEqual(Dex.species.get('espathra').abilities, {"0":"Opportunist","1":"Transfixing Gaze","H":"Speed Boost"});

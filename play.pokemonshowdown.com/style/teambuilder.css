@@ -416,6 +416,9 @@
 .starter-passives label{display:inline;font-size:10px;margin-right:4px}
 .starter-passives .passive-chip{display:inline-block;padding:0 4px;border:1px solid #83aaa0;border-radius:7px;background:#edf7f2;color:#245b49;font-size:10px;font-weight:600;vertical-align:top}
 .setcell-ability{position:relative}
-.setcell-ability>.starter-passives{position:absolute;top:0;right:0;margin:0}
+.setcell-ability>.starter-passives{display:flex;flex-wrap:wrap;gap:2px;max-width:110px;margin:2px 0 0}
+.setcell-ability>.starter-passives .passive-chip{max-width:100%;box-sizing:border-box;overflow-wrap:anywhere;white-space:normal}
+.setchart{height:auto;min-height:127px;display:flow-root}
+.setchart>.setcol-details{height:auto;min-height:127px;padding-bottom:2px}
 .setcell-ability>.starter-passives>label{display:none}
 .form-preview-tools .starter-passives{margin-top:4px}

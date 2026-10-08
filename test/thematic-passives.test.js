@@ -12,13 +12,13 @@ describe('Thematic passive UI and protocol',()=>{
  it('keeps species passives distinct from chosen abilities and excludes unapproved forms',()=>{
   const expected={kingler:'hypercutter',butterfree:'shielddust',cacturne:'overcoat',muk:'liquidooze',fearow:'keeneye',alcremie:'sweetveil',eevee:'runaway',rotomfan:'levitate',weezinggalar:'levitate',alcremiesaltedcream:'sweetveil',vivillonfancy:'shielddust'};
   const snapshot=require('../server-data-sync-manifest.json').snapshot.species;
-  for(const[id,passive]of Object.entries(expected)){assert.deepEqual(Dex.species.get(id).passives,[passive]);assert.deepEqual(Dex.species.get(id).abilities,snapshot[id].abilities);}
-  for(const id of ['mukalola','grimeralola','eeveestarter','alcremiegmax','butterfreegmax','pinsirmega','chingling','dusclops','vibrava'])assert.deepEqual(Dex.species.get(id).passives,[],id);
+  for(const[id,passive]of Object.entries(expected)){assert.deepEqual(Dex.species.get(id).passives,id === 'butterfree' ? ['shielddust'] : id === 'muk' ? ['liquidooze'] : [passive]);assert.deepEqual(Dex.species.get(id).abilities,snapshot[id].abilities);}
+  for(const id of ['eeveestarter','alcremiegmax','pinsirmega','chingling','dusclops','vibrava'])assert.deepEqual(Dex.species.get(id).passives,[],id);
  });
- it('removes only displayed passive components from Includes without changing mechanical search identity',()=>{
+ it('separates removed passive components from selected mechanical and display identities',()=>{
   assert.deepEqual(Dex.getAbilityDisplayComponents('scaleshelter',Dex,['shielddust']),['overcoat']);
-  assert.deepEqual(Dex.getAbilityDisplayComponents('scaleshelter'),['shielddust','overcoat']);
-  assert(Dex.getAbilityEffects('scaleshelter').has('shielddust'));assert(Dex.getAbilityEffects('scaleshelter').has('overcoat'));
+  assert.deepEqual(Dex.getAbilityDisplayComponents('scaleshelter'),['overcoat']);
+  assert(!Dex.getAbilityEffects('scaleshelter').has('shielddust'));assert(Dex.getAbilityEffects('scaleshelter').has('overcoat'));
  });
  it('recognizes passive protocol effects without treating them as selected abilities',()=>{
   for(const name of ['Sweet Veil','Keen Eye','Liquid Ooze','Levitate']){const effect=Dex.getEffect('passive: '+name);assert.notEqual(effect.effectType,'Ability');assert.equal(effect.id,toID(name));assert(effect.name.includes('(passive)'));}

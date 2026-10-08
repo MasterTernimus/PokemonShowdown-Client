@@ -4592,7 +4592,7 @@
 			if (selected) {
 				var view = T.clone(set);
 				view.species = selected.name;
-				var ability = this.curTeam.dex.abilities.get(selected.ability);
+				var ability = Dex.getAbilityDisplayDetails(this.curTeam.dex.abilities.get(selected.ability), this.curTeam.dex.species.get(selected.species || selected.name).passives);
 				box += '<div class="form-preview-result"><span class="form-preview-sprite" style="display:inline-block;width:100px;height:100px;' + Dex.getTeambuilderSprite(view, this.curTeam.gen) + '"></span><strong>Preview: ' + escape(selected.name) + '</strong><span>' + escape(selected.types.join(' / ')) + '</span><span><b>Ability: ' + escape(selected.ability) + '</b> — ' + escape(ability.shortDesc || ability.desc || 'No description available.') + '</span></div>';
 				box += renderStarterPassives(this.curTeam.dex.species.get(selected.species || selected.name));
 				var components = Dex.getAbilityDisplayComponents(toID(selected.ability), this.curTeam.dex, this.curTeam.dex.species.get(selected.species || selected.name).passives);

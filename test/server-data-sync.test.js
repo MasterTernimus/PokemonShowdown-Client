@@ -73,7 +73,7 @@ describe('Server data synchronization', () => {
 				assert.equal(p.baseStats.spa, 95);
 				assert.equal(p.bst, 560);
 				assert(dex.abilities.get('Reservoir').exists);
-				for (const id of ['waterabsorb', 'gluttony', 'damp']) assert(dex.getAbilityEffects('reservoir').has(id), id);
+				for (const id of ['waterabsorb', 'gluttony']) assert(dex.getAbilityEffects('reservoir').has(id), id);
 				assert(dex.getAbilityEffects('royalscales').has('selfsufficient'));
 				assert(dex.abilities.get('Royal Scales').desc.includes('1/16'));
 			});
@@ -133,7 +133,8 @@ describe('Server data synchronization', () => {
 				assert.match(dex.abilities.get('reinflate').desc, /Once per turn.*finishes.*actual HP damage.*remains active and survives/);
 				assert.match(dex.abilities.get('reinflate').shortDesc, /1\/8/);
 				assert.match(dex.abilities.get('titanpincer').desc, /Crabhammer and physical Steel-type moves.*Defense.*higher/);
-				assert(dex.getAbilityEffects('titanpincer').has('hypercutter'));
+				assert(!dex.getAbilityEffects('titanpincer').has('hypercutter'));
+				assert(dex.species.get('kingler').passives.includes('hypercutter'));
 			});
 
 			it('loads real Swalot-Pulse data and Anomaly Core routing', () => {

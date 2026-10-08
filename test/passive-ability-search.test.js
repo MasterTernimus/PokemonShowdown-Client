@@ -11,11 +11,23 @@ const filter = (id, ability, extra = []) => BattlePokemonSearch.prototype.filter
 );
 const instant = ability => DexSearch.prototype.instafilter.call({dex: Dex}, 'pokemon', 'ability', ability);
 describe('Species passive ability search', () => {
+ it('finds Seaking by its confusion-only passive without changing selected abilities', () => {
+  const s = Dex.species.get('seaking');
+  assert.deepEqual(s.passives, ['steadyswimmer']);
+  assert.deepEqual(s.abilities, {0: 'Lightning Rod', 1: 'Swift Drill', H: 'Drizzle'});
+  assert(filter('seaking', 'Steady Swimmer'));
+  assert(!filter('goldeen', 'Steady Swimmer'));
+  assert.equal(instant('steadyswimmer').filter(r => r[0] === 'pokemon' && r[1] === 'seaking').length, 1);
+  assert(!Dex.hasAbility(s, 'Steady Swimmer'));
+  assert(Dex.abilities.get('steadyswimmer').desc.includes('Prevents and cures confusion'));
+ });
  it('finds every explicitly assigned Levitate holder through filtering and instant search', () => {
   const rows = instant('levitate');
   const ids = Object.entries(require('../server-data-sync-manifest.json').snapshot.species)
    .filter(([, s]) => s.passives.includes('levitate')).map(([id]) => id);
-  assert.equal(ids.length, 24);
+  const approved = require('./fixtures/regional-passives-approved.json');
+  const expected = [...Object.entries(approved.previousPassives).filter(([, p]) => p.includes('levitate')).map(([id]) => id), ...approved.groups.levitate, 'probopass'].filter(id => id !== 'butterfree');
+  assert.deepEqual(ids.sort(), expected.sort());
   for (const id of ids) {
    assert(filter(id, 'Levitate'), id);
    assert.equal(rows.filter(r => r[0] === 'pokemon' && r[1] === id).length, 1, id);
@@ -37,13 +49,13 @@ describe('Species passive ability search', () => {
   assert.equal(new Set(rows.map(r => r[1])).size, rows.length);
  });
  it('uses the actual form without inheriting ordinary-species passives', () => {
-  for (const id of ['tentacruelalt', 'tentacruelreborn', 'mukalola']) {
+  for (const id of ['tentacruelalt', 'tentacruelreborn']) {
    assert.deepEqual(Dex.species.get(id).passives, [], id);
    const s = Dex.species.get(id);
    const active = Object.values(s.abilities).some(a => Dex.getAbilityEffects(a).has('liquidooze'));
    assert.equal(filter(id, 'Liquid Ooze'), active, id);
   }
-  for (const id of ['butterfreemega', 'butterfreegmax']) assert.deepEqual(Dex.species.get(id).passives, []);
+  for (const id of ['butterfreemega', 'butterfreegmax']) assert.deepEqual(Dex.species.get(id).passives, ['levitate']);
   assert(!filter('pikachu', 'Levitate'));
  });
  it('uses the same passive-aware matching in reverse Pokemon filters', () => {

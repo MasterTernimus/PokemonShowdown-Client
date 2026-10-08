@@ -42,7 +42,7 @@ describe('Adaptive category client parity', () => {
 
  it('shows Limber field protection for direct and composite holders, including suppression', () => {
   const fields = ['Water Surface Terrain', 'Murkwater Surface Terrain', 'New World Terrain', 'Cold Eclipse Terrain', 'Icy Terrain', 'Snowy Terrain', 'Underwater Terrain', 'Midnight Zone Terrain'];
-  for (const ability of ['Limber', 'Verdant Drake', 'Kick Fiend', 'Unchecked Assault']) {
+  for (const ability of ['Limber', 'Verdant Drake', 'Kick Fiend']) {
    p.ability = ability; own.ability = own.baseAbility = ability;
    for (const field of fields) {
     battle.pseudoWeather = []; const normal = tips.calculateModifiedStats(p, own).spe;
@@ -52,6 +52,19 @@ describe('Adaptive category client parity', () => {
     delete p.volatiles.gastroacid;
    }
   }
+ });
+
+ it('keeps passive Limber field protection under suppression without inflating ordinary stats', () => {
+  p.speciesForme='Lopunny-Mega';own.speciesForme='Lopunny-Mega';p.ability='Unchecked Assault';own.ability=own.baseAbility='Unchecked Assault';
+  const normal=tips.calculateModifiedStats(p,own).spe;assert.equal(normal,100);
+  for(const field of ['Water Surface Terrain','Underwater Terrain','Midnight Zone Terrain']){
+   battle.pseudoWeather=[[field,0,0]];p.volatiles.gastroacid=['gastroacid'];assert.equal(tips.calculateModifiedStats(p,own).spe,normal,field);
+  }
+ });
+ it('applies passive Telepathy Speed only while its Psychic field is active',()=>{
+  p.speciesForme='Slowking-Galar';own.speciesForme='Slowking-Galar';p.ability='No Ability';own.ability=own.baseAbility='No Ability';
+  const normal=tips.calculateModifiedStats(p,own).spe;battle.pseudoWeather=[['Psychic Terrain',0,0]];assert.equal(tips.calculateModifiedStats(p,own).spe,normal*2);
+  battle.pseudoWeather=[];assert.equal(tips.calculateModifiedStats(p,own).spe,normal);
  });
 
 });

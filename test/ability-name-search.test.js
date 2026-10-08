@@ -22,7 +22,8 @@ describe('Listed ability search', () => {
 		const species = Dex.species.get('Charizard-Gmax');
 		assert(Dex.hasAbility(species, 'Burning Crown'));
 		assert(!Dex.hasAbility(species, 'Proficient'));
-		assert(Dex.getAbilityEffects('burningcrown').has('proficient'));
+		assert(!Dex.getAbilityEffects('burningcrown').has('proficient'));
+		assert(Dex.hasAbilityEffect(species, 'proficient'));
 	});
 	it('uses direct abilities for instant Pokemon results too', () => {
 		const rows = DexSearch.prototype.instafilter.call({dex: Dex}, 'pokemon', 'ability', 'intimidate');

@@ -56,12 +56,12 @@ for (const species of Dex.species.all()) {
 	// Explicit empty rows prevent combat variants inheriting the base species' passives in client fallbacks.
 	if (species.passives.length || Dex.species.get(species.baseSpecies).passives.length) groups.species.add(species.id);
 }
-for (const id of Object.keys(Dex.data.Pokedex)) {
-	const species = Dex.species.get(id);
-	if (species.passives.length || Dex.species.get(species.baseSpecies).passives.length) groups.species.add(id);
-}
+// Client visual families can differ from server baseSpecies. Export explicit empty
+// passives for every record so custom-family fallbacks cannot invent a passive.
+for (const id of Object.keys(Dex.data.Pokedex)) groups.species.add(id);
 const select = (entry, keys) => Object.fromEntries(keys.map(key => [key, entry[key]]).filter(([, value]) => value !== undefined));
-const snapshot = {species: {}, abilities: {}, moves: {}, items: {}, components: {}};
+const passiveCleanup = require(path.join(server, 'dist/data/passive-ability-cleanup'));
+const snapshot = {componentExclusions: passiveCleanup.AbilityComponentExclusions, sharedPassiveComponents: passiveCleanup.SharedPassiveComponents, sharedPassiveDescriptions: passiveCleanup.SharedPassiveAbilityDescriptions, sharedPassiveAdditions: passiveCleanup.SharedPassiveComponentAdditions, species: {}, abilities: {}, moves: {}, items: {}, components: {}};
 const {AbilityComponents} = require(path.join(server, 'dist/data/ability-components'));
 for (const id of [...groups.species].sort()) {
 	const data = Dex.species.get(id);
@@ -93,6 +93,7 @@ function block(kind, marker, code) {
 const json = data => JSON.stringify(data, null, '\t');
 block('SPECIES', 'const CUSTOM_SPECIES_UPDATE_IDS =', `for (const [id, update] of Object.entries(${json(snapshot.species)})) {\n\tCUSTOM_SPECIES_UPDATES[id] = {...CUSTOM_SPECIES_UPDATES[id], ...update};\n\tif (CUSTOM_SPECIES[id]) Object.assign(CUSTOM_SPECIES[id].data, update);\n}`);
 block('DISPLAY COMPONENTS', 'const CUSTOM_ABILITY_UPDATE_IDS =', `const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = ${json(snapshot.displayComponents)};`);
+block('PASSIVE COMPONENT EXCLUSIONS', 'const CUSTOM_ABILITY_UPDATE_IDS =', `const CUSTOM_ABILITY_COMPONENT_EXCLUSIONS: {[id: string]: readonly string[]} = ${json(snapshot.componentExclusions)};\nconst CUSTOM_SHARED_PASSIVE_COMPONENTS: {[id: string]: readonly string[]} = ${json(snapshot.sharedPassiveComponents)};\nconst CUSTOM_SHARED_PASSIVE_ADDITIONS: {[id: string]: {passive: string; component: string}} = ${json(snapshot.sharedPassiveAdditions)};\nconst CUSTOM_SHARED_PASSIVE_DESCRIPTIONS: {[id: string]: {passive: string; desc: string; shortDesc: string}} = ${json(snapshot.sharedPassiveDescriptions)};`);
 block('ABILITIES', 'const CUSTOM_ABILITY_UPDATE_IDS =', `Object.assign(CUSTOM_ABILITY_UPDATES, ${json(snapshot.abilities)});`);
 block('MOVES', 'const CUSTOM_MOVE_UPDATE_IDS =', `Object.assign(CUSTOM_MOVE_UPDATES, ${json(snapshot.moves)});\nObject.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, ${json(snapshot.components)});`);
 block('ITEMS', 'const CUSTOM_ITEM_IDS =', `Object.assign(CUSTOM_ITEM_UPDATES, ${json(snapshot.items)});`);

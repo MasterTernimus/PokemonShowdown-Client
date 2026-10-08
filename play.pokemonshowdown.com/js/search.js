@@ -529,8 +529,11 @@
 		return buf;
 	};
 	Search.prototype.renderAbilityRow = function (ability, matchStart, matchLength, errorMessage, attrs) {
+		var species = this.engine && this.engine.typedSearch && this.engine.typedSearch.species;
+		var passives = species ? this.engine.dex.species.get(species).passives : [];
 		if (!attrs) attrs = '';
 		if (!ability) return '<li class="result">Unrecognized ability</li>';
+		ability = Dex.getAbilityDisplayDetails(ability, passives);
 		var id = toID(ability.name);
 		if (Search.urlRoot) attrs += ' href="' + Search.urlRoot + 'abilities/' + id + '" data-target="push"';
 		var buf = '<li class="result abilityresult"><a' + attrs + ' data-entry="ability|' + BattleLog.escapeHTML(ability.name) + '">';
@@ -550,7 +553,7 @@
 
 		var fullDescription = Dex.getAbilityDescriptionLines(ability.desc || ability.shortDesc).map(function (line) { return '• ' + line; }).join('\n');
 		var summary = ability.shortDesc;
-		var components = this.renderAll ? Dex.getAbilityDisplayComponents(toID(ability.name)) : [];
+		var components = this.renderAll ? Dex.getAbilityDisplayComponents(toID(ability.name), Dex, passives) : [];
 		var componentNames = components.map(function (id) { return Dex.abilities.get(id).name; }).join(' + ');
 		if (componentNames) {
 			fullDescription = 'Includes: ' + componentNames + '\n\n' + fullDescription;
