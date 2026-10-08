@@ -11,7 +11,7 @@ describe('Approved October batch metadata',()=>{
  ['lapras','1','oceanlullaby',['shellarmor']],
  ['greninja','H','shadowscreen',['infiltrator']],
  ['clefable','H','voidpromise',['unaware']],
- ['flygon','0','voiddrift',['levitate','overcoat']],
+ ['flygon','0','voiddrift',['overcoat']],
  ['delphox','H','voidguile',['magician']],
  ['garchomp','H','voidwrath',['moldbreaker']],
  ['venusaur','1','creepingbloom',['infiltrator']],

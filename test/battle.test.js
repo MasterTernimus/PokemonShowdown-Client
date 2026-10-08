@@ -540,7 +540,7 @@ describe('Team Builder sprites', () => {
 			0: 'Liquid Arsenal', 1: 'Protean', H: 'Shadow Screen', S: 'Battle Bond',
 		});
 		assert.deepEqual(Dex.species.get('Delphox').abilities, {
-			0: 'Sworn Duty', 1: 'Magic Guard', H: 'Void Guile',
+			0: 'Sworn Duty', 1: 'Magic Guard', H: 'Void Guile', S: 'Pyrokinesis',
 		});
 	});
 
@@ -815,7 +815,7 @@ describe('Team Builder sprites', () => {
 		assert(Dex.abilities.get('Dishearten').exists);
 		assert.equal(Dex.abilities.get('Dishearten').num, 11234);
 		for (const part of ['dishearten', 'insomnia', 'pressure']) assert(Dex.getAbilityEffects('lunardread').has(part));
-		assert.match(Dex.abilities.get('Atrocity').desc, /Normal moves become Dragon.*Same-type moves have 1\.3x power.*Contact moves have 1\.3x power/);
+		assert.match(Dex.abilities.get('Atrocity').desc, /Normal moves become Dragon.*Contact moves have 1\.3x power/);
 		assert(Dex.getAbilityEffects('atrocity').has('moldbreaker'));
 		assert(Dex.getAbilityEffects('ancientbloom').has('pollenbloom'));
 		assert.match(Dex.abilities.get('Fortress Shell').desc, /cycling Water damage/);

@@ -59,6 +59,8 @@ class ModifiableValue {
 		return true;
 	}
 	tryAbility(abilityName: string) {
+		const passives = this.serverPokemon.passives ?? this.battle.dex.species.get(this.serverPokemon.speciesForme).passives;
+		if (passives.some(passive => Dex.getAbilityEffects(toID(passive)).has(toID(abilityName)))) return true;
 		if (abilityName !== this.abilityName &&
 			!(this.abilityName === 'Cinder Scales' && abilityName === 'Swarm')) return false;
 		if (this.pokemon?.volatiles['gastroacid']) {
@@ -1245,9 +1247,6 @@ class BattleTooltips {
 			if (this.pokemonHasType(pokemon, 'Ice') && weather === 'snow') {
 				stats.def = Math.floor(stats.def * 1.5);
 			}
-			if (ability === 'sandrush' && weather === 'sandstorm') {
-				speedModifiers.push(2);
-			}
 			if (ability === 'slushrush' && (weather === 'hail' || weather === 'snow')) {
 				speedModifiers.push(2);
 			}
@@ -1277,8 +1276,14 @@ class BattleTooltips {
 			}
 		}
 		if (this.swiftSwimSpeedBoost(ability, weather, item)) speedModifiers.push(2);
+		const fieldPassives = serverPokemon.passives ?? this.battle.dex.species.get(serverPokemon.speciesForme).passives;
+		const exclusions = Dex.getAbilityComponentExclusions(ability, fieldPassives);
+		const fieldAbilityEffects = new Set(Array.from(Dex.getAbilityEffects(ability)).filter(effect => !exclusions.includes(effect)));
+		for (const passive of fieldPassives) for (const effect of Array.from(Dex.getAbilityEffects(toID(passive)))) fieldAbilityEffects.add(effect);
+		if (fieldAbilityEffects.has(toID('sandrush')) && (weather === 'sandstorm' ||
+			this.battle.hasPseudoWeather('Desert Terrain') || this.battle.hasPseudoWeather('Ashen Beach Terrain'))) speedModifiers.push(2);
 		if ((this.battle.hasPseudoWeather('Psychic Aura') || this.battle.hasPseudoWeather('Psychic Terrain')) &&
-			Dex.getAbilityEffects(ability).has(toID('telepathy'))) {
+			fieldAbilityEffects.has(toID('telepathy'))) {
 			speedModifiers.push(2);
 		}
 		if (this.battle.hasPseudoWeather('Misty Aura') || this.battle.hasPseudoWeather('Misty Terrain')) {
@@ -1286,14 +1291,16 @@ class BattleTooltips {
 			if (types.includes('Fairy')) stats.spd = Math.floor(stats.spd * 1.5);
 		}
 
-		const fieldAbilityEffects = Dex.getAbilityEffects(ability);
 		const fieldAdapted = (name: string) => clientPokemon?.adaptation?.active &&
 			clientPokemon.adaptation.fields[toID(name)]?.stage === 3;
 		if (!fieldAbilityEffects.has('limber' as ID)) {
 			const types = clientPokemon ? clientPokemon.getTypes(serverPokemon)[0] :
 				this.battle.dex.species.get(serverPokemon.speciesForme).types;
-			const airborneAbility = (serverPokemon.passives ?? this.battle.dex.species.get(serverPokemon.speciesForme).passives).includes('levitate') || ['levitate', 'elevate', 'solaridol', 'lunaridol', 'burningcrown',
-				'astralwitchcraft', 'voidcraft', 'phantombarrage'].some(id => fieldAbilityEffects.has(id as ID));
+			const passives = serverPokemon.passives ?? this.battle.dex.species.get(serverPokemon.speciesForme).passives;
+			const airborneAbility = passives.includes('levitate') ||
+				(!Dex.getAbilityComponentExclusions(ability, passives).includes('levitate') &&
+				['levitate', 'elevate', 'solaridol', 'lunaridol', 'burningcrown',
+					'astralwitchcraft', 'voidcraft', 'phantombarrage'].some(id => fieldAbilityEffects.has(id as ID)));
 			const grounded = clientPokemon ? clientPokemon.isGrounded(serverPokemon) :
 				this.battle.hasPseudoWeather('Gravity') || item === 'ironball' ||
 				(!types.includes('Flying') && !airborneAbility && item !== 'airballoon');
@@ -1318,7 +1325,7 @@ class BattleTooltips {
 		if (this.battle.hasPseudoWeather('Midnight Zone Terrain')) {
 			const types = clientPokemon ? clientPokemon.getTypes(serverPokemon)[0] : this.battle.dex.species.get(serverPokemon.speciesForme).types;
 			if (!fieldAdapted('Midnight Zone Terrain') && !types.includes('Water') &&
-				!['steelworker', 'schooling', 'swiftswim', 'limber'].some(id => Dex.getAbilityEffects(ability).has(toID(id)))) {
+				!['steelworker', 'schooling', 'swiftswim', 'limber'].some(id => fieldAbilityEffects.has(toID(id)))) {
 				speedModifiers.push(0.25);
 			}
 			if (ability === 'propellertail') speedModifiers.push(2);
@@ -2525,8 +2532,8 @@ class BattleTooltips {
 		}
 		const knownAbility = isActive ? abilityData.ability : (abilityData.baseAbility || abilityData.ability);
 		if (knownAbility) {
-			const shown = this.battle.dex.abilities.get(knownAbility);
 			const passives = serverPokemon?.passives ?? clientPokemon?.getSpecies().passives ?? [];
+			const shown = Dex.getAbilityDisplayDetails(this.battle.dex.abilities.get(knownAbility), passives);
 			const parts = Dex.getAbilityDisplayComponents(shown.id, this.battle.dex, passives);
 			text += '<br /><small>' + BattleLog.escapeHTML(shown.shortDesc) + '</small>';
 			if (parts.length) text += '<br /><small>Includes: ' + parts.map(id => BattleLog.escapeHTML(Dex.abilities.get(id).name)).join(' · ') + '</small>';

@@ -366,7 +366,8 @@ export class Pokemon implements PokemonDetails, PokemonHealth {
 	rememberAbility(ability: string, isNotBase?: boolean) {
 		ability = Dex.abilities.get(ability).name;
 		// A component reveal must not replace a known composite; explicit replacements still do.
-		if (!isNotBase && this.ability && Dex.getAbilityEffects(toID(this.ability)).has(toID(ability))) return;
+		if (!isNotBase && this.ability && (Dex.getAbilityEffects(toID(this.ability)).has(toID(ability)) ||
+			Dex.getAbilityComponentExclusions(toID(this.ability)).includes(toID(ability)))) return;
 		this.ability = ability;
 		if (!this.baseAbility && !isNotBase) {
 			this.baseAbility = ability;
@@ -522,7 +523,8 @@ export class Pokemon implements PokemonDetails, PokemonHealth {
 		}
 		const passives = serverPokemon?.passives ?? this.getSpecies(serverPokemon).passives;
 		if (passives.includes('levitate')) return false;
-		if (['levitate', 'elevate', 'solaridol', 'lunaridol', 'burningcrown', 'astralwitchcraft',
+		if (!Dex.getAbilityComponentExclusions(ability, passives).includes('levitate') &&
+			['levitate', 'elevate', 'solaridol', 'lunaridol', 'burningcrown', 'astralwitchcraft',
 			'voidcraft', 'phantombarrage'].some(id => Dex.getAbilityEffects(ability).has(id as ID))) {
 			return false;
 		}

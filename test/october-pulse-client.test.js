@@ -25,7 +25,7 @@ describe('October Pulse/Chandelure/bone client parity', () => {
   assert(search.results.some(row => row[0] === 'move' && row[1] === 'recover'));
  });
  it('shows the new Chandelure slots and nested Flash Fire exactly once', () => {
-  assert.deepEqual(Dex.species.get('chandelure').abilities, {0: 'Soul Siphon', 1: 'Soul Pyre', H: 'Malice Well', S: 'Soul Fire'});
+  assert.deepEqual(Dex.species.get('chandelure').abilities, {0: 'Soul Siphon', 1: 'Soul Pyre', H: 'Malice Well', S: 'Soul Fire', E: 'Spectral Scream'});
   assert(Dex.getAbilityEffects('soulsiphon').has('flashfire'));
   const components = Dex.getAbilityEffects('soulcremation');
   for (const id of ['flashfire', 'soulsiphon', 'soulpyre', 'malicewell', 'flamebody']) assert(components.has(id));

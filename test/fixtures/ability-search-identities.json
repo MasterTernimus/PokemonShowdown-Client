@@ -37,7 +37,6 @@
     "knuckletide"
   ],
   "reservoir": [
-    "damp",
     "gluttony",
     "reservoir",
     "waterabsorb"
@@ -229,7 +228,6 @@
   "stormsong": [
     "drizzle",
     "liquidvoice",
-    "soundproof",
     "stormsong"
   ],
   "astralward": [
@@ -401,8 +399,7 @@
   "nobledance": [
     "dancer",
     "hospitality",
-    "nobledance",
-    "owntempo"
+    "nobledance"
   ],
   "noblearmor": [
     "icebody",
@@ -429,7 +426,6 @@
   "cruelshell": [
     "angershell",
     "cruelshell",
-    "hypercutter",
     "shellarmor"
   ],
   "adaptability": [
@@ -438,8 +434,6 @@
   "spiralevolution": [
     "adaptability",
     "dualwield",
-    "infiltrator",
-    "levitate",
     "moldbreaker",
     "shielddust",
     "spiralevolution"
@@ -453,7 +447,6 @@
   ],
   "voidomen": [
     "friendguard",
-    "moldbreaker",
     "serenegrace",
     "voidomen"
   ],
@@ -480,6 +473,7 @@
     "cursedbody",
     "elevate",
     "hauntedchime",
+    "levitate",
     "windpower"
   ],
   "auramaster": [
@@ -525,8 +519,6 @@
   "apexpredator": [
     "apexpredator",
     "dragonize",
-    "relicarmor",
-    "selfsufficient",
     "windrider"
   ],
   "violentrush": [
@@ -626,7 +618,6 @@
     "battlebond",
     "filter",
     "infiltrator",
-    "proficient",
     "selfsufficient",
     "shadowbond"
   ],
@@ -699,10 +690,12 @@
     "analytic",
     "astralengine",
     "elevate",
+    "levitate",
     "powerspot"
   ],
   "elevate": [
-    "elevate"
+    "elevate",
+    "levitate"
   ],
   "clearbody": [
     "clearbody"
@@ -735,7 +728,6 @@
     "contrary",
     "infiltrator",
     "intimidate",
-    "proficient",
     "queensguard",
     "shedskin"
   ],
@@ -824,7 +816,6 @@
     "draconicforce",
     "dragonize",
     "moldbreaker",
-    "proficient",
     "strongjaw"
   ],
   "dragonsmaw": [
@@ -841,7 +832,6 @@
     "drought",
     "magmaarmor",
     "moldbreaker",
-    "proficient",
     "selfsufficient",
     "sunsovereign",
     "unboundblaze"
@@ -850,18 +840,15 @@
     "burningspirit",
     "magmaarmor",
     "opportunist",
-    "proficient",
     "selfsufficient"
   ],
   "emperorsresolve": [
     "competitive",
     "emperorsresolve",
-    "proficient",
     "slushrush",
     "swiftswim"
   ],
   "terraresolve": [
-    "proficient",
     "solidrock",
     "stamina",
     "terraresolve"
@@ -869,7 +856,6 @@
   "primalego": [
     "moldbreaker",
     "primalego",
-    "proficient",
     "ultraego",
     "unaware"
   ],
@@ -897,6 +883,7 @@
   "noseformation": [
     "elevate",
     "filter",
+    "levitate",
     "noseformation"
   ],
   "mourningvessel": [
@@ -963,7 +950,6 @@
     "dragonize",
     "magmaarmor",
     "moldbreaker",
-    "proficient",
     "selfsufficient",
     "toughclaws",
     "unboundblaze"
@@ -986,7 +972,6 @@
   ],
   "mythicscale": [
     "compoundeyes",
-    "levitate",
     "marvelscale",
     "mythicscale",
     "shielddust"
@@ -994,7 +979,6 @@
   "toxicevolution": [
     "corrosion",
     "dualwield",
-    "levitate",
     "moldbreaker",
     "shielddust",
     "toxicevolution"
@@ -1045,18 +1029,15 @@
     "invigorate"
   ],
   "cursedkeepsake": [
-    "cursedkeepsake",
-    "frisk"
+    "cursedkeepsake"
   ],
   "curseddoll": [
     "curseddoll",
-    "frisk",
     "shadowshield",
     "toughclaws"
   ],
   "cursedmarionette": [
     "cursedmarionette",
-    "frisk",
     "prankster"
   ],
   "sandsovereign": [
@@ -1111,7 +1092,6 @@
     "mirrorgreed"
   ],
   "uncheckedassault": [
-    "limber",
     "opportunist",
     "scrappy",
     "striker",
@@ -1316,7 +1296,6 @@
   ],
   "tidaljaw": [
     "filter",
-    "proficient",
     "strongjaw",
     "swiftswim",
     "tidaljaw"
@@ -1418,17 +1397,13 @@
   ],
   "tyrantdomain": [
     "innerfocus",
-    "relicarmor",
     "sandstream",
-    "selfsufficient",
     "supremeoverlord",
     "tyrantdomain"
   ],
   "auroradomain": [
     "auroradomain",
     "refrigerate",
-    "relicarmor",
-    "selfsufficient",
     "snowwarning"
   ],
   "royalscales": [
@@ -1475,7 +1450,6 @@
     "ancientbloom",
     "effectspore",
     "pollenbloom",
-    "proficient",
     "selfsufficient",
     "thickfat",
     "unaware"
@@ -1496,13 +1470,11 @@
   "plasmaeruption": [
     "flamebody",
     "plasmaeruption",
-    "proficient",
     "static"
   ],
   "fortressshell": [
     "dualwield",
     "fortressshell",
-    "proficient",
     "shellarmor",
     "waterbarrage"
   ],
@@ -1562,7 +1534,6 @@
   ],
   "templechime": [
     "elevate",
-    "levitate",
     "templechime"
   ],
   "soothingpresence": [
@@ -1794,7 +1765,6 @@
     "intimidate",
     "magmaarmor",
     "moldbreaker",
-    "proficient",
     "selfsufficient",
     "unboundblaze",
     "whitesmoke"
@@ -1850,7 +1820,6 @@
     "knightsguard"
   ],
   "lancepoint": [
-    "keeneye",
     "lancepoint"
   ],
   "keeneye": [
@@ -1924,8 +1893,7 @@
   ],
   "anchoredbattery": [
     "anchoredbattery",
-    "megalauncher",
-    "suctioncups"
+    "megalauncher"
   ],
   "megalauncher": [
     "megalauncher"
@@ -1942,8 +1910,7 @@
     "bloomingsun",
     "invigorate",
     "megasol",
-    "naturalcure",
-    "proficient"
+    "naturalcure"
   ],
   "merciless": [
     "merciless"
@@ -1961,6 +1928,7 @@
   "stormbell": [
     "drizzle",
     "elevate",
+    "levitate",
     "mirrorarmor",
     "stormbell"
   ],
@@ -2312,6 +2280,7 @@
   "voidcraft": [
     "elevate",
     "insomnia",
+    "levitate",
     "shadowshield",
     "temporalshift",
     "voidcraft"
@@ -2349,8 +2318,7 @@
   ],
   "cursedarmament": [
     "cursedarmament",
-    "filter",
-    "frisk"
+    "filter"
   ],
   "shedskin": [
     "shedskin"
@@ -2447,22 +2415,18 @@
   "highnoon": [
     "dualwield",
     "highnoon",
-    "megalauncher",
-    "proficient"
+    "megalauncher"
   ],
   "soundproof": [
     "soundproof"
   ],
   "solaridol": [
-    "levitate",
     "solaridol"
   ],
   "forestsurge": [
-    "forestsurge",
-    "proficient"
+    "forestsurge"
   ],
   "lunaridol": [
-    "levitate",
     "lunaridol"
   ],
   "parasitism": [
@@ -2556,7 +2520,6 @@
     "dualwield",
     "lightningrod",
     "limber",
-    "proficient",
     "regenerator",
     "verdantdrake"
   ],
@@ -2567,7 +2530,6 @@
     "bulletproof",
     "dauntlessshield",
     "naturalcure",
-    "proficient",
     "selfrepair",
     "selfsufficient",
     "wrathshield"
@@ -2575,7 +2537,7 @@
   "shadowcurrent": [
     "anticipation",
     "infiltrator",
-    "proficient",
+    "moldbreaker",
     "protean",
     "shadowcurrent",
     "technician"
@@ -2584,28 +2546,24 @@
     "astralwitchcraft",
     "levitate",
     "magicbounce",
-    "magicguard",
-    "proficient"
+    "magicguard"
   ],
   "blazingtempo": [
     "blazingtempo",
     "keeneye",
     "magmaarmor",
-    "proficient",
     "speedboost",
     "striker"
   ],
   "ragingcurrent": [
     "damp",
     "dryskin",
-    "proficient",
     "ragingcurrent",
     "stamina",
     "swiftswim"
   ],
   "toxicbloom": [
     "pollenbloom",
-    "proficient",
     "selfsufficient",
     "thickfat",
     "toxicbloom",
@@ -2614,7 +2572,6 @@
   "siegelauncher": [
     "dualwield",
     "megalauncher",
-    "proficient",
     "selfsufficient",
     "siegelauncher",
     "stalwart",
@@ -2687,14 +2644,12 @@
     "libero",
     "noguard",
     "perfectstriker",
-    "proficient",
     "striker"
   ],
   "strikersmomentum": [
     "defiant",
     "libero",
     "noguard",
-    "proficient",
     "striker",
     "strikersmomentum"
   ],
@@ -2846,6 +2801,7 @@
     "currentcoil",
     "electricsurge",
     "elevate",
+    "levitate",
     "stormcircuit",
     "swiftswim"
   ],
@@ -2858,7 +2814,6 @@
   "woolyconductor": [
     "fluffy",
     "moldbreaker",
-    "static",
     "woolyconductor"
   ],
   "absolutezero": [
@@ -3005,7 +2960,6 @@
     "burningego",
     "flamebody",
     "magmaarmor",
-    "proficient",
     "ultraego"
   ],
   "vesselofruin": [
@@ -3376,7 +3330,6 @@
     "pollenengine"
   ],
   "titanpincer": [
-    "hypercutter",
     "titanpincer"
   ],
   "shellcracker": [
@@ -3687,7 +3640,6 @@
   "cinderscales": [
     "cinderscales",
     "flamebody",
-    "shielddust",
     "swarm"
   ],
   "sporeshroud": [
@@ -3758,7 +3710,6 @@
   ],
   "nightwatch": [
     "insomnia",
-    "keeneye",
     "nightwatch"
   ],
   "fruitfulbough": [
@@ -3772,12 +3723,11 @@
   "guidinglight": [
     "dazzling",
     "guidinglight",
-    "illuminate"
+    "healer"
   ],
   "royalescort": [
     "pressure",
-    "royalescort",
-    "sweetveil"
+    "royalescort"
   ],
   "liquidarsenal": [
     "liquidarsenal",
@@ -3792,8 +3742,7 @@
     "voidsanctum"
   ],
   "chargedtail": [
-    "chargedtail",
-    "static"
+    "chargedtail"
   ],
   "eldritchremedy": [
     "curiousmedicine",
@@ -3830,7 +3779,6 @@
     "voidpromise"
   ],
   "voiddrift": [
-    "levitate",
     "overcoat",
     "voiddrift"
   ],
@@ -3915,8 +3863,7 @@
     "stokebelly"
   ],
   "invisiblewall": [
-    "invisiblewall",
-    "soundproof"
+    "invisiblewall"
   ],
   "pursuitwake": [
     "infiltrator",
@@ -3969,8 +3916,7 @@
   ],
   "baitedbloom": [
     "baitedbloom",
-    "gluttony",
-    "stickyhold"
+    "gluttony"
   ],
   "guidinggallop": [
     "guidinggallop",
@@ -3983,8 +3929,7 @@
   ],
   "scaleshelter": [
     "overcoat",
-    "scaleshelter",
-    "shielddust"
+    "scaleshelter"
   ],
   "stagesweep": [
     "screencleaner",
@@ -4031,7 +3976,6 @@
     "staticreserve"
   ],
   "lockinggrip": [
-    "hypercutter",
     "lockinggrip"
   ],
   "garlandgift": [
