@@ -54,11 +54,11 @@ describe('Adaptive category client parity', () => {
   }
  });
 
- it('keeps passive Limber field protection under suppression without inflating ordinary stats', () => {
+ it('suppresses selected Limber field protection without inflating ordinary stats', () => {
   p.speciesForme='Lopunny-Mega';own.speciesForme='Lopunny-Mega';p.ability='Unchecked Assault';own.ability=own.baseAbility='Unchecked Assault';
   const normal=tips.calculateModifiedStats(p,own).spe;assert.equal(normal,100);
   for(const field of ['Water Surface Terrain','Underwater Terrain','Midnight Zone Terrain']){
-   battle.pseudoWeather=[[field,0,0]];p.volatiles.gastroacid=['gastroacid'];assert.equal(tips.calculateModifiedStats(p,own).spe,normal,field);
+   battle.pseudoWeather=[[field,0,0]];delete p.volatiles.gastroacid;assert.equal(tips.calculateModifiedStats(p,own).spe,normal,field);p.volatiles.gastroacid=['gastroacid'];assert(tips.calculateModifiedStats(p,own).spe<normal,field);
   }
  });
  it('applies passive Telepathy Speed only while its Psychic field is active',()=>{

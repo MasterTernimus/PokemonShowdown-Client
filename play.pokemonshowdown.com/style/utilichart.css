@@ -393,3 +393,16 @@
 	padding: 6px 0;
 	overflow-wrap: anywhere;
 }
+
+/* Innate passives sit below names without widening the fixed result columns. */
+.utilichart li.pokemonpassiveresult > a { height: auto; min-height: 38px; display: flow-root; }
+.utilichart .pokemonpassiveresult .pokemonnamecol { height: auto; padding-top: 3px; padding-bottom: 3px; white-space: normal; overflow-wrap: anywhere; }
+.utilichart .pokemon-passive-help { display: block; position: relative; margin-top: 2px; max-width: 123px; }
+.utilichart .pokemon-passive-badge { display: inline-block; max-width: 100%; box-sizing: border-box; padding: 1px 4px; border: 1px solid #71a8a7; border-radius: 5px; background: #e9f5f2; color: #245b54; font: 10px/12px Verdana, sans-serif; text-align: left; white-space: normal; overflow-wrap: anywhere; cursor: help; }
+.dark .utilichart .pokemon-passive-badge { background: #192f34; color: #b8f2ed; border-color: #78b8b8; }
+.utilichart .pokemon-passive-badge:focus-visible { outline: 2px solid #59c8db; outline-offset: 1px; }
+.utilichart .pokemon-passive-tooltip { display: none; position: absolute; z-index: 1000; width: 250px; max-width: 65vw; padding: 8px 10px; border: 1px solid #91aaaa; border-radius: 5px; background: #17252b; color: #f3f7f8; box-shadow: 0 3px 8px #0007; font: 12px/17px Verdana, sans-serif; white-space: normal; pointer-events: none; }
+.utilichart .pokemon-passive-tooltip strong { display: block; margin-bottom: 4px; padding-bottom: 4px; border-bottom: 1px solid #506168; color: #a6eeeb; }
+@media (hover: hover) { .utilichart .pokemon-passive-help:hover .pokemon-passive-tooltip { display: block; } }
+.utilichart .pokemon-passive-badge:focus-visible + .pokemon-passive-tooltip,
+.utilichart .pokemon-passive-badge[aria-expanded="true"] + .pokemon-passive-tooltip { display: block; }

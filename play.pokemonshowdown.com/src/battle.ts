@@ -522,7 +522,7 @@ export class Pokemon implements PokemonDetails, PokemonHealth {
 			return true;
 		}
 		const passives = serverPokemon?.passives ?? this.getSpecies(serverPokemon).passives;
-		if (passives.includes('levitate')) return false;
+		if (passives.includes('levitate') || passives.includes('elevate')) return false;
 		if (!Dex.getAbilityComponentExclusions(ability, passives).includes('levitate') &&
 			['levitate', 'elevate', 'solaridol', 'lunaridol', 'burningcrown', 'astralwitchcraft',
 			'voidcraft', 'phantombarrage'].some(id => Dex.getAbilityEffects(ability).has(id as ID))) {

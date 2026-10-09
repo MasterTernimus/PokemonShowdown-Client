@@ -3,7 +3,7 @@ const assert=require('assert').strict;require('./battle.test');
 const groups=require('./fixtures/regional-passives-approved.json').groups;
 describe('Approved regional passive client metadata',()=>{
  for(const[p,ids]of Object.entries(groups))for(const id of ids)it(id+' displays and searches '+p,()=>{
-  const s=Dex.species.get(id);assert.deepEqual(s.passives,[p]);assert(Dex.hasAbilityEffect(s,p));
+  const s=Dex.species.get(id);const expected=require('./fixtures/mega-approval-overlays').passives(id,[p]);assert.deepEqual(s.passives,expected);for(const passive of expected)assert(Dex.hasAbilityEffect(s,passive));
  });
  it('shows contextual replacement Includes and search without changing shared users',()=>{
   for(const[id,passive,addition]of [['orchardbond','harvest','stickyhold'],['abysslure','illuminate','suctioncups']]){
@@ -15,8 +15,8 @@ describe('Approved regional passive client metadata',()=>{
   assert(!Dex.hasAbilityEffect(Dex.species.get('exeggutoralola'),'stickyhold'));
  });
  it('preserves the approved Froslass slot and selected component replacements',()=>{
-  assert.equal(Dex.species.get('froslass').abilities[0],'Infiltrator');
-  assert(!Dex.getAbilityEffects('uncheckedassault').has('limber'));
+  assert.equal(Dex.species.get('froslass').abilities[0],'Haunting Veil');
+  assert(Dex.getAbilityEffects('uncheckedassault').has('limber'));
   assert(!Dex.getAbilityEffects('cinderscales').has('shielddust'));
  });
 });

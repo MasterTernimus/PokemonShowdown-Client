@@ -1724,6 +1724,9 @@
 				$actor.find('.calc-passives').remove();
 				if (info && info.passives && info.passives.length) $actor.find('.calc-identity').append('<div class="calc-passives"><b>Passives:</b> ' + info.passives.map(function (id) { return self.escape(Dex.abilities.get(id).name); }).join(' · ') + '</div>');
 				var parts = (self.metadata.abilityComponents || {})[toID($actor.find('[name=ability]').val())] || [];
+				if (info && toID(info.name) === 'pidgeotmega' && toID($actor.find('[name=ability]').val()) === 'stormsovereign') {
+					parts = parts.filter(function (part) { return toID(part) !== 'galewings' && toID(part) !== 'noguard'; });
+				}
 				$actor.find('.calc-component-details').toggle(!!parts.length);
 				$actor.find('.calc-components').text(parts.length ? 'Components: ' + parts.join(' · ') + '. Each effect has its own conditions.' : 'No composite components listed.');
 				var spec = self.readActor(Number($actor.attr('data-slot')));

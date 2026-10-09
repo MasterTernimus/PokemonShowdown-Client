@@ -62,7 +62,8 @@ class ModifiableValue {
 		const passives = this.serverPokemon.passives ?? this.battle.dex.species.get(this.serverPokemon.speciesForme).passives;
 		if (passives.some(passive => Dex.getAbilityEffects(toID(passive)).has(toID(abilityName)))) return true;
 		if (abilityName !== this.abilityName &&
-			!(this.abilityName === 'Cinder Scales' && abilityName === 'Swarm')) return false;
+			!(this.abilityName === 'Cinder Scales' && abilityName === 'Swarm') &&
+			!(this.abilityName === 'Aura Precision' && abilityName === 'Technician')) return false;
 		if (this.pokemon?.volatiles['gastroacid']) {
 			this.comment.push(` (${abilityName} suppressed by Gastro Acid)`);
 			return false;
@@ -110,7 +111,7 @@ class ModifiableValue {
 		}
 		if (name) this.comment.push(` (${this.round(factor)}&times; from ${name})`);
 		this.value *= factor;
-		if (!(name === 'Technician' && this.maxValue > 60)) this.maxValue *= factor;
+		if (!(name === 'Technician' && this.maxValue > this.technicianThreshold())) this.maxValue *= factor;
 		return true;
 	}
 	set(value: number, reason?: string) {
@@ -118,6 +119,9 @@ class ModifiableValue {
 		this.value = value;
 		this.maxValue = 0;
 		return true;
+	}
+	technicianThreshold() {
+		return this.battle.pseudoWeather.some(([field]) => this.battle.getTerrainId(field) === 'factoryterrain') ? 80 : 60;
 	}
 	setRange(value: number, maxValue: number, reason?: string) {
 		if (reason) this.comment.push(` (${reason})`);
@@ -668,9 +672,25 @@ class BattleTooltips {
 		}
 
 		text += '<h2>' + move.name + '<br />';
+		const crescentRend = toID(pokemon.effectiveAbility(serverPokemon)) === 'crescentrend' &&
+			category === 'Physical' && moveType === 'Flying';
+		if (crescentRend) {
+			const flags = {...move.flags};
+			delete flags.contact;
+			move = new Move(move.id, move.name, {...move, flags});
+		}
 
 		text += Dex.getTypeIcon(moveType);
 		text += ` ${Dex.getCategoryIcon(category)}</h2>`;
+		if (crescentRend) {
+			text += '<p>Crescent Rend: non-contact; ignores Reflect and Aurora Veil. ' +
+				'Excess damage from breaking a Substitute carries into its owner as part of this hit.</p>';
+		}
+		if (toID(pokemon.effectiveAbility(serverPokemon)) === 'auraconvergence' &&
+			category !== 'Status' && ['Fighting', 'Steel'].includes(moveType) && !move.damage) {
+			text += '<p>Aura Convergence: physical or special is chosen separately for each target from staged stats. ' +
+				'The icon shows the original category; burn and screens apply after the choice.</p>';
+		}
 		if (isZOrMax === 'zmove') {
 			text += '<p>Powered-up Z-Move from ' + baseMove.name + '.</p>';
 			if (zMoveBasePower) text += '<p>Z-Move base power: ' + zMoveBasePower + '</p>';
@@ -1277,7 +1297,7 @@ class BattleTooltips {
 		}
 		if (this.swiftSwimSpeedBoost(ability, weather, item)) speedModifiers.push(2);
 		const fieldPassives = serverPokemon.passives ?? this.battle.dex.species.get(serverPokemon.speciesForme).passives;
-		const exclusions = Dex.getAbilityComponentExclusions(ability, fieldPassives);
+		const exclusions = Dex.getAbilityComponentExclusions(ability, fieldPassives, serverPokemon.speciesForme);
 		const fieldAbilityEffects = new Set(Array.from(Dex.getAbilityEffects(ability)).filter(effect => !exclusions.includes(effect)));
 		for (const passive of fieldPassives) for (const effect of Array.from(Dex.getAbilityEffects(toID(passive)))) fieldAbilityEffects.add(effect);
 		if (fieldAbilityEffects.has(toID('sandrush')) && (weather === 'sandstorm' ||
@@ -1297,7 +1317,7 @@ class BattleTooltips {
 			const types = clientPokemon ? clientPokemon.getTypes(serverPokemon)[0] :
 				this.battle.dex.species.get(serverPokemon.speciesForme).types;
 			const passives = serverPokemon.passives ?? this.battle.dex.species.get(serverPokemon.speciesForme).passives;
-			const airborneAbility = passives.includes('levitate') ||
+			const airborneAbility = passives.includes('levitate') || passives.includes('elevate') ||
 				(!Dex.getAbilityComponentExclusions(ability, passives).includes('levitate') &&
 				['levitate', 'elevate', 'solaridol', 'lunaridol', 'burningcrown',
 					'astralwitchcraft', 'voidcraft', 'phantombarrage'].some(id => fieldAbilityEffects.has(id as ID)));
@@ -2137,7 +2157,7 @@ class BattleTooltips {
 			value.abilityModify(1.5, "Strong Jaw");
 			value.abilityModify(1.5, "Frozen Feast");
 		}
-		if (value.value <= 60) {
+		if (value.value <= value.technicianThreshold()) {
 			value.abilityModify(1.5, "Technician");
 		}
 		if (['psn', 'tox'].includes(pokemon.status) && move.category === 'Physical') {
@@ -2533,8 +2553,9 @@ class BattleTooltips {
 		const knownAbility = isActive ? abilityData.ability : (abilityData.baseAbility || abilityData.ability);
 		if (knownAbility) {
 			const passives = serverPokemon?.passives ?? clientPokemon?.getSpecies().passives ?? [];
-			const shown = Dex.getAbilityDisplayDetails(this.battle.dex.abilities.get(knownAbility), passives);
-			const parts = Dex.getAbilityDisplayComponents(shown.id, this.battle.dex, passives);
+			const species = serverPokemon?.speciesForme || clientPokemon?.getSpecies().id || '';
+			const shown = Dex.getAbilityDisplayDetails(this.battle.dex.abilities.get(knownAbility), passives, species);
+			const parts = Dex.getAbilityDisplayComponents(shown.id, this.battle.dex, passives, species);
 			text += '<br /><small>' + BattleLog.escapeHTML(shown.shortDesc) + '</small>';
 			if (parts.length) text += '<br /><small>Includes: ' + parts.map(id => BattleLog.escapeHTML(Dex.abilities.get(id).name)).join(' · ') + '</small>';
 		}

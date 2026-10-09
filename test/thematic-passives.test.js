@@ -13,7 +13,7 @@ describe('Thematic passive UI and protocol',()=>{
   const expected={kingler:'hypercutter',butterfree:'shielddust',cacturne:'overcoat',muk:'liquidooze',fearow:'keeneye',alcremie:'sweetveil',eevee:'runaway',rotomfan:'levitate',weezinggalar:'levitate',alcremiesaltedcream:'sweetveil',vivillonfancy:'shielddust'};
   const snapshot=require('../server-data-sync-manifest.json').snapshot.species;
   for(const[id,passive]of Object.entries(expected)){assert.deepEqual(Dex.species.get(id).passives,id === 'butterfree' ? ['shielddust'] : id === 'muk' ? ['liquidooze'] : [passive]);assert.deepEqual(Dex.species.get(id).abilities,snapshot[id].abilities);}
-  for(const id of ['eeveestarter','alcremiegmax','pinsirmega','chingling','dusclops','vibrava'])assert.deepEqual(Dex.species.get(id).passives,[],id);
+  for(const id of ['eeveestarter','alcremiegmax','pinsirmega','chingling','dusclops','vibrava'])assert.deepEqual(Dex.species.get(id).passives,require('./fixtures/mega-approval-overlays').passives(id,[]),id);
  });
  it('separates removed passive components from selected mechanical and display identities',()=>{
   assert.deepEqual(Dex.getAbilityDisplayComponents('scaleshelter',Dex,['shielddust']),['overcoat']);

@@ -13,16 +13,29 @@ require('../play.pokemonshowdown.com/js/battle-text-parser');
 require('../play.pokemonshowdown.com/js/battle');
 const rows = require('../teambuilder-audit-before.json');
 const manifest = require('../teambuilder-art-manifest.json');
+// Reviewed supplied artwork; native shiny renders remain the fallback for other forms.
+const customShinies = new Set(require('./fixtures/teambuilder-custom-shiny.json'));
 
 describe('Native Team Builder artwork coverage', () => {
 	for (const row of rows.filter(row => row.available)) {
 		if (['clefable', 'gengar', 'hydreigon', 'rillaboom', 'rillaboom-gmax', 'banette', 'banette-mega'].includes(row.spriteid)) continue;
-		it(`uses verified dedicated art for ${row.name}, normal and shiny`, () => {
+		it(`uses native normal art and supplied shiny art for ${row.name}`, () => {
 			for (const shiny of [false, true]) {
 				if ((row.spriteid === 'archeops' && shiny) || (row.spriteid.startsWith('furfrou') || row.spriteid.startsWith('silvally')) || ['dusknoir', 'reuniclus', 'scizor-mega', 'raichu-alola'].includes(row.spriteid)) continue;
 				if (shiny && ['lilligant', 'aurorus', 'tyrantrum'].includes(row.spriteid)) continue;
 				for (const gen of [0, 9]) {
 					const data = Dex.getTeambuilderSpriteData({species: row.name, shiny}, gen);
+					if (shiny && customShinies.has(row.name)) {
+						assert.equal(data.spriteDir, 'sprites/gen5');
+						assert.equal(data.spriteid, row.spriteid);
+						assert.equal(data.shiny, true);
+						const png = fs.readFileSync(path.join(__dirname, '../play.pokemonshowdown.com/sprites/gen5-shiny', row.spriteid + '.png'));
+						assert.equal(png.subarray(0, 8).toString('hex'), '89504e470d0a1a0a');
+						const width = parseInt(data.backgroundSize);
+						assert(width > 0 && width <= 96, row.name + ' rendered width');
+						assert(width * png.readUInt32BE(20) / png.readUInt32BE(16) <= 97, row.name + ' rendered height');
+						continue;
+					}
 					assert.equal(data.spriteDir, 'sprites/dex');
 					assert.equal(data.spriteid, row.spriteid);
 					assert.equal(data.shiny, shiny && row.shiny);
@@ -87,14 +100,14 @@ describe('Native Team Builder artwork coverage', () => {
 					for (const gen of [0, 9]) {
 						const pokemon = {species, shiny};
 						bw = false;
-						assert.equal(Dex.getTeambuilderSpriteData(pokemon, gen).spriteDir, 'sprites/dex');
+						assert.equal(Dex.getTeambuilderSpriteData(pokemon, gen).spriteDir, shiny ? 'sprites/gen5' : 'sprites/dex');
 						bw = true;
 						const legacy = Dex.getTeambuilderSpriteData(pokemon, 5);
 						assert.deepEqual(Dex.getTeambuilderSpriteData(pokemon, gen), legacy);
 						assert.equal(legacy.spriteDir, 'sprites/gen5');
 						assert.equal(!!legacy.shiny, shiny);
 						bw = false;
-						assert.equal(Dex.getTeambuilderSpriteData(pokemon, gen).spriteDir, 'sprites/dex');
+						assert.equal(Dex.getTeambuilderSpriteData(pokemon, gen).spriteDir, shiny ? 'sprites/gen5' : 'sprites/dex');
 					}
 				}
 			}

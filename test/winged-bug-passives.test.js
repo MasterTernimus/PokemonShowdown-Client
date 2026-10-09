@@ -6,9 +6,9 @@ describe('Five winged bug passive UI records', () => {
   const s = Dex.species.get(id); assert.deepEqual(s.passives, id === 'butterfree' ? ['shielddust'] : ['levitate']);
   const a = Dex.abilities.get(s.abilities[0]);
   if (['spiralevolution', 'toxicevolution', 'mythicscale'].includes(a.id)) {
-   const effects = Dex.getAbilityEffects(a.id); assert(effects.has('shielddust')); assert(!effects.has('levitate'));
+   const effects = Dex.getAbilityEffects(a.id); assert.equal(effects.has('shielddust'),a.id!=='spiralevolution'); assert(!effects.has('levitate'));
    const components = Dex.getAbilityDisplayComponents(a.id, Dex, s.passives);
-   assert(components.includes('shielddust')); assert(!components.includes('levitate'));
+   assert.equal(components.includes('shielddust'),a.id!=='spiralevolution'); assert(!components.includes('levitate'));
    assert(!a.desc.includes('Airborne:')); assert(!a.desc.includes('Blocks secondary effects'));
   }
  });

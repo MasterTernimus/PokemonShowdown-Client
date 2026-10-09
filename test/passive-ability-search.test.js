@@ -26,7 +26,7 @@ describe('Species passive ability search', () => {
   const ids = Object.entries(require('../server-data-sync-manifest.json').snapshot.species)
    .filter(([, s]) => s.passives.includes('levitate')).map(([id]) => id);
   const approved = require('./fixtures/regional-passives-approved.json');
-  const expected = [...Object.entries(approved.previousPassives).filter(([, p]) => p.includes('levitate')).map(([id]) => id), ...approved.groups.levitate, 'probopass'].filter(id => id !== 'butterfree');
+  const expected = [...Object.entries(approved.previousPassives).filter(([, p]) => p.includes('levitate')).map(([id]) => id), ...approved.groups.levitate, 'probopass','froslass','froslassmega','flygonmega','flygonmegaz','claydolmega','chimechomega','chimechomegay','belliboltmega','dragapultgmax'].filter(id => !['butterfree','glaliemega'].includes(id));
   assert.deepEqual(ids.sort(), expected.sort());
   for (const id of ids) {
    assert(filter(id, 'Levitate'), id);
@@ -50,10 +50,10 @@ describe('Species passive ability search', () => {
  });
  it('uses the actual form without inheriting ordinary-species passives', () => {
   for (const id of ['tentacruelalt', 'tentacruelreborn']) {
-   assert.deepEqual(Dex.species.get(id).passives, [], id);
+   assert.deepEqual(Dex.species.get(id).passives, require('./fixtures/mega-approval-overlays').passives(id === 'tentacruelalt' ? 'tentacruelreborn' : id,[]), id);
    const s = Dex.species.get(id);
    const active = Object.values(s.abilities).some(a => Dex.getAbilityEffects(a).has('liquidooze'));
-   assert.equal(filter(id, 'Liquid Ooze'), active, id);
+   assert.equal(filter(id, 'Liquid Ooze'), active || ['tentacruelalt','tentacruelreborn'].includes(id), id);
   }
   for (const id of ['butterfreemega', 'butterfreegmax']) assert.deepEqual(Dex.species.get(id).passives, ['levitate']);
   assert(!filter('pikachu', 'Levitate'));

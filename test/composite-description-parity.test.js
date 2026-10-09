@@ -6,16 +6,16 @@ describe('Composite description client parity', () => {
  it('preserves effect-search identities independently of description wording', () => {
   const expectedEffects = require('./fixtures/ability-search-identities.json');
   for (const [id, effects] of Object.entries(expectedEffects)) {
-   assert.deepEqual([...Dex.getAbilityEffects(id)].sort(), effects, id);
+   assert.deepEqual([...Dex.getAbilityEffects(id)].sort(), require('./fixtures/mega-approval-overlays').effects(id,effects), id);
   }
  });
  let savedAliases;
- beforeEach(() => {savedAliases = global.BattleAliases; global.BattleAliases = {...savedAliases, shadowguard: 'Voidcraft'};});
+ beforeEach(() => {savedAliases = global.BattleAliases; global.BattleAliases = {...savedAliases, shadowguard: 'Void Craft'};});
  afterEach(() => {global.BattleAliases = savedAliases;});
  it('matches all simulator summaries, installed data and manifest', () => {
   const raw = require('../play.pokemonshowdown.com/data/abilities.js').BattleAbilities;
   const snapshot = require('../server-data-sync-manifest.json').snapshot.abilities;
-  for (const [id, text] of Object.entries(expected)) for (const key of ['shortDesc', 'desc']) {
+  for (const [id, text] of Object.entries({...expected,...require('./fixtures/mega-approved-descriptions.json'),...require('./fixtures/selected-simplifications-descriptions.json')})) for (const key of ['shortDesc', 'desc']) {
    assert.equal(Dex.abilities.get(id)[key], text[key], id + ' hover/selector');
    assert.equal(raw[id][key], text[key], id + ' installed');
    assert.equal(snapshot[id][key], text[key], id + ' snapshot');
@@ -24,7 +24,7 @@ describe('Composite description client parity', () => {
  it('resolves renamed aliases and nested identities without repeated effects', () => {
   assert.deepEqual([...Dex.getAbilityEffects('shadowguard')].sort(), [...Dex.getAbilityEffects('voidcraft')].sort());
   const effects = [...Dex.getAbilityEffects('toxicbloom')];
-  for (const id of ['pollenbloom', 'thickfat', 'selfsufficient']) assert.equal(effects.filter(x => x === id).length, 1);
+  for (const id of ['pollenbloom', 'thickfat']) assert.equal(effects.filter(x => x === id).length, 1);
   assert(Dex.getAbilityEffects('verdantdrake').has('limber'));
   assert.deepEqual(Dex.species.get('skarmory').abilities, {"0":"Fresh Plumage","1":"Sturdy","H":"Weak Armor"});
   assert.deepEqual(Dex.species.get('espathra').abilities, {"0":"Opportunist","1":"Transfixing Gaze","H":"Speed Boost"});

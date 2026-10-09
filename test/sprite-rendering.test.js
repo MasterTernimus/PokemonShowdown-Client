@@ -44,7 +44,7 @@ describe('Sprite rendering regressions', () => {
 		}
 	});
 	it('prioritizes supplied custom shinies in battles, previews, and Team Builder', () => {
-		for (const species of ['Lilligant', 'Aurorus', 'Tyrantrum']) {
+		for (const species of ['Basculegion', 'Basculegion-F', 'Lilligant', 'Aurorus', 'Tyrantrum']) {
 			const spriteid = Dex.species.get(species).spriteid;
 			for (const front of [false, true]) for (const gen of [5, 9]) for (const teamPreview of [false, true]) {
 				const data = Dex.getSpriteData(species, front, {gen, shiny: true, teamPreview});
@@ -55,6 +55,15 @@ describe('Sprite rendering regressions', () => {
 			assert.equal(builder.spriteDir, 'sprites/gen5');
 			assert.equal(builder.spriteid, spriteid);
 			assert.equal(builder.shiny, true);
+		}
+	});
+	it('keeps normal Basculegion animated without using those animations for its shiny', () => {
+		for (const species of ['Basculegion', 'Basculegion-F']) for (const front of [true, false]) {
+			const normal = Dex.getSpriteData(species, front, {gen: 9, shiny: false});
+			const shiny = Dex.getSpriteData(species, front, {gen: 9, shiny: true});
+			assert(normal.url.includes('.gif'), normal.url);
+			assert(shiny.url.includes('-shiny/'), shiny.url);
+			assert(shiny.url.includes('.png'), shiny.url);
 		}
 	});
 

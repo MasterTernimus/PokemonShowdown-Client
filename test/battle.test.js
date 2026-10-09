@@ -245,17 +245,17 @@ describe('Team Builder sprites', () => {
 		assert(fs.statSync(path.join(__dirname, '../play.pokemonshowdown.com/sprites/dex-shiny/togekiss.png')).size > 0);
 	});
 
-	it('prefers dedicated native shiny art in modern Team Builder teams', () => {
+	it('prefers supplied custom shiny art in modern Team Builder teams', () => {
 		for (const species of ['Charizard', 'Blastoise', 'Gardevoir', 'Magearna']) {
 			const sprite = Dex.getTeambuilderSprite({species, shiny: true}, 9);
-			assert(sprite.includes('/sprites/dex-shiny/'), `${species} should use dedicated shiny art`);
-			assert(!sprite.includes('/sprites/gen5-shiny/'), `${species} should not use battle art`);
+			assert(sprite.includes('/sprites/gen5-shiny/'), `${species} should use supplied shiny art`);
+			assert(!sprite.includes('/sprites/dex-shiny/'), `${species} should not replace supplied art`);
 		}
 	});
 
-	it('fits Espeon dedicated shiny art inside the Team Builder canvas', () => {
+	it('fits Espeon supplied shiny art inside the Team Builder canvas', () => {
 		const sprite = Dex.getTeambuilderSprite({species: 'Espeon', shiny: true}, 9);
-		assert(sprite.includes('/sprites/dex-shiny/espeon.png'), sprite);
+		assert(sprite.includes('/sprites/gen5-shiny/espeon.png'), sprite);
 		assert(sprite.includes('background-size:96px auto'), sprite);
 	});
 
@@ -816,7 +816,7 @@ describe('Team Builder sprites', () => {
 		assert.equal(Dex.abilities.get('Dishearten').num, 11234);
 		for (const part of ['dishearten', 'insomnia', 'pressure']) assert(Dex.getAbilityEffects('lunardread').has(part));
 		assert.match(Dex.abilities.get('Atrocity').desc, /Normal moves become Dragon.*Contact moves have 1\.3x power/);
-		assert(Dex.getAbilityEffects('atrocity').has('moldbreaker'));
+		assert(!Dex.getAbilityEffects('atrocity').has('moldbreaker'));
 		assert(Dex.getAbilityEffects('ancientbloom').has('pollenbloom'));
 		assert.match(Dex.abilities.get('Fortress Shell').desc, /cycling Water damage/);
 		assert.match(Dex.abilities.get('Fortress Shell').desc, /Allies take 25% less/);
@@ -859,7 +859,7 @@ describe('Team Builder sprites', () => {
 			'Gallade-Mega-Azzy': 'Sacred Edge',
 			'Gardevoir-Void-Mega': 'Execution',
 			'Gardevoir-Mega-Z': 'Argent Devotion',
-			'Lucario-Mega-Z': 'Aura Master',
+			'Lucario-Mega-Z': 'Aura Precision',
 			'Scolipede-Mega-Azzy': 'Venom Bastion',
 			'Chimecho-Mega-Y': 'Haunted Chime',
 			'Meganium-Mega-Y': 'Blooming Sun',
