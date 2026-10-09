@@ -573,8 +573,14 @@
 		},
 		updateMegaChoice: function (e) {
 			var checkbox = e.currentTarget;
-			if (!checkbox.checked) return;
-			this.$('input[name=megaevo], input[name=megaevox], input[name=megaevoy]').not(checkbox).prop('checked', false);
+			if (checkbox.checked) this.$('input[name=megaevo], input[name=megaevox], input[name=megaevoy]').not(checkbox).prop('checked', false);
+			var pos = this.choice.choices.length;
+			var active = this.request.active[pos];
+			if (!active || !active.pulseMoves) return;
+			var selected = checkbox.checked ? checkbox.name : '';
+			this.pulseMovePreview = {request: this.request, pos: pos, selected: selected};
+			this.updateMoveControls(pos ? 'move2' : 'move');
+			if (selected) this.$('input[name=' + selected + ']').prop('checked', true);
 		},
 		updateTimer: function () {
 			this.$('.timerbutton').replaceWith(this.getTimerHTML());
@@ -603,6 +609,11 @@
 
 			var curActive = this.request && this.request.active && this.request.active[pos];
 			if (!curActive) return;
+			var pulsePreview = this.pulseMovePreview;
+			if (pulsePreview && pulsePreview.request === this.request && pulsePreview.pos === pos &&
+				pulsePreview.selected === 'megaevo' && curActive.pulseMoves) {
+				curActive = Object.assign({}, curActive, {moves: curActive.pulseMoves});
+			}
 			var trapped = curActive.trapped;
 			var canMegaEvo = curActive.canMegaEvo || switchables[pos].canMegaEvo;
 			var canZMove = curActive.canZMove || switchables[pos].canZMove;
@@ -799,7 +810,7 @@
 					moveMenu += movebuttons;
 				}
 				if (canMegaEvo) {
-					moveMenu += '<br /><label class="megaevo"><input type="checkbox" name="megaevo" />&nbsp;' + BattleLog.escapeHTML(megaLabel) + '</label>';
+					moveMenu += '<br /><label class="megaevo"><input type="checkbox" name="megaevo"' + (pulsePreview && pulsePreview.request === this.request && pulsePreview.pos === pos && pulsePreview.selected === 'megaevo' ? ' checked' : '') + ' />&nbsp;' + BattleLog.escapeHTML(megaLabel) + '</label>';
 				}
 				if (canMegaEvoX) {
 					moveMenu += '<br /><label class="megaevo"><input type="checkbox" name="megaevox" />&nbsp;' + BattleLog.escapeHTML(megaXLabel) + '</label>';

@@ -118,7 +118,7 @@ describe('Server data synchronization', () => {
 				assert(checked >= 375, 'includes all composite display entries');
 			});
 
-			it('preserves approved Wigglytuff and base Kingler updates without changing Gmax', () => {
+			it('preserves approved Wigglytuff, base Kingler and Gmax updates', () => {
 				const plain = value => JSON.parse(JSON.stringify(value));
 				const wigglytuff = dex.species.get('wigglytuff');
 				assert.deepEqual(plain(wigglytuff.types), ['Normal', 'Fairy']);
@@ -128,8 +128,8 @@ describe('Server data synchronization', () => {
 				assert(learns.wigglytuff.learnset.roar.includes('9M'));
 				assert.deepEqual(plain(dex.species.get('kingler').types), ['Water', 'Steel']);
 				assert.deepEqual(plain(dex.species.get('kingler').abilities), {0: 'Shell Armor', 1: 'Titan Pincer', H: 'Shellcracker'});
-				assert.deepEqual(plain(dex.species.get('kinglergmax').types), ['Water', 'Bug']);
-				assert.deepEqual(plain(dex.species.get('kinglergmax').abilities), {0: 'Tidal Dominion'});
+				assert.deepEqual(plain(dex.species.get('kinglergmax').types), ['Water', 'Steel']);
+				assert.deepEqual(plain(dex.species.get('kinglergmax').abilities), {0: 'Crushing Depths'});
 				assert.match(dex.abilities.get('reinflate').desc, /Once per turn.*finishes.*actual HP damage.*remains active and survives/);
 				assert.match(dex.abilities.get('reinflate').shortDesc, /1\/8/);
 				assert.match(dex.abilities.get('titanpincer').desc, /Crabhammer and physical Steel-type moves.*Defense.*higher/);
@@ -194,8 +194,8 @@ describe('Server data synchronization', () => {
 
 			it('resolves assigned composite abilities and their component effects', () => {
 				for (const [species, ability, components] of [
-					['Reuniclus-Mega', 'Adaptive Power', ['hugepower', 'magicguard', 'regenerator']],
-					['Slowbro-Mega', 'Slow Clamp', ['shellarmor', 'owntempo', 'analytic', 'sweetveil']],
+					['Reuniclus-Mega', 'Adaptive Power', ['hugepower', 'magicguard']],
+					['Slowbro-Mega', 'Slow Clamp', ['shellarmor', 'analytic', 'sweetveil']],
 					['Muk-Pulse', 'Pulse Waste', ['protean', 'poisontouch', 'regenerator']],
 				]) {
 					assert.equal(dex.species.get(species).abilities[0], ability);

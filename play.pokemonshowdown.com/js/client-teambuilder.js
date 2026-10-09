@@ -1232,8 +1232,8 @@
 				if (exports.BattleFormats) {
 					buf += '<li class="format-select">';
 					buf += '<label class="label">Format:</label><button class="select formatselect teambuilderformatselect" name="format" value="' + this.curTeam.format + '">' + (isGenericFormat(this.curTeam.format) ? '<em>Select a format</em>' : BattleLog.escapeFormat(this.curTeam.format)) + '</button>';
-					var btnClass = 'button' + (!this.curSetList.length || app.isDisconnected ? ' disabled' : '');
-					buf += ' <button name="validate" class="' + btnClass + '"><i class="fa fa-check"></i> Validate</button></li>';
+					var btnClass = 'button validation-primary';
+					buf += ' <button name="validate" class="' + btnClass + '"><i class="fa fa-check"></i> Validate team</button></li>';
 				}
 				if (!this.curSetList.length) {
 					buf += '<li><em>you have no pokemon lol</em></li>';
@@ -3250,6 +3250,7 @@
 			details: 'details'
 		},
 		chartClick: function (e) {
+			if ($(e.target).closest('.pokemon-passive-badge').length) return;
 			if (this.search.addFilter(e.currentTarget)) {
 				var curChart = this.$('input[name=' + this.curChartName + ']');
 				// if we were searching for the filter, remove it
@@ -3381,6 +3382,8 @@
 			this.updateChart(false, wasIncomplete);
 		},
 		chartChange: function (e, selectNext) {
+			// Inspecting help must not commit the pending species query on blur.
+			if (e.relatedTarget && $(e.relatedTarget).closest('.pokemon-passive-badge').length) return;
 			var name = e.currentTarget.name;
 			if (this.curChartName !== name) return;
 			var id = toID(e.currentTarget.value);
@@ -4592,10 +4595,10 @@
 			if (selected) {
 				var view = T.clone(set);
 				view.species = selected.name;
-				var ability = Dex.getAbilityDisplayDetails(this.curTeam.dex.abilities.get(selected.ability), this.curTeam.dex.species.get(selected.species || selected.name).passives);
+				var ability = Dex.getAbilityDisplayDetails(this.curTeam.dex.abilities.get(selected.ability), this.curTeam.dex.species.get(selected.species || selected.name).passives, selected.species || selected.name);
 				box += '<div class="form-preview-result"><span class="form-preview-sprite" style="display:inline-block;width:100px;height:100px;' + Dex.getTeambuilderSprite(view, this.curTeam.gen) + '"></span><strong>Preview: ' + escape(selected.name) + '</strong><span>' + escape(selected.types.join(' / ')) + '</span><span><b>Ability: ' + escape(selected.ability) + '</b> — ' + escape(ability.shortDesc || ability.desc || 'No description available.') + '</span></div>';
 				box += renderStarterPassives(this.curTeam.dex.species.get(selected.species || selected.name));
-				var components = Dex.getAbilityDisplayComponents(toID(selected.ability), this.curTeam.dex, this.curTeam.dex.species.get(selected.species || selected.name).passives);
+				var components = Dex.getAbilityDisplayComponents(toID(selected.ability), this.curTeam.dex, this.curTeam.dex.species.get(selected.species || selected.name).passives, selected.species || selected.name);
 				if (components.length) box += '<p class="form-preview-notice"><b>Includes:</b> ' + components.map(function (id) { return escape(Dex.abilities.get(id).name); }).join(' · ') + '</p>';
 				if (ability.desc && ability.desc !== ability.shortDesc) box += '<details class="form-preview-help"><summary>Full ability effect</summary><p>' + Dex.getAbilityDescriptionLines(ability.desc).map(function (line) { return escape(line); }).join('</p><p>') + '</p></details>';
 				box += this.renderFormStatComparison(set, selected);
@@ -4659,34 +4662,46 @@
 		this.refreshSavedSetControls($(event.currentTarget).closest('li'));
 	};
 	proto.validate = function () {
-		if (!this.curTeam) return;
-		if (this.curTeam.teamid && !this.curTeam.loaded) return app.loadTeam(this.curTeam, this.validate.bind(this));
+		if (!this.curTeam || this.validationPending) return;
+		if (this.curTeam.teamid && !this.curTeam.loaded) return app.addPopupMessage('Wait for this team to finish downloading, then validate it.');
+		this.validationMode = 'single';
 		this.validationView = true;
-		this.validationResults = null;
 		this.validationSelection = [{localTeam: this.curTeam, name: this.curTeam.name, format: this.curTeam.format, team: Storage.packTeam(T.clone(this.curSetList))}];
 		this.runSavedTeamValidation();
 	};
 	proto.showTeamValidation = function () {
+		if (!this.validationView) {
+			this.validationMode = 'batch';
+			this.validationResults = null;
+			this.validationError = '';
+		}
 		this.validationView = true;
-		var self = this, html = '<div class="pad team-validation"><h2>Validate saved teams</h2><p>Each team is checked independently against its own selected format on the connected server. Choose up to 12 teams. Cross-team league budgets are not checked. No sets will be changed.</p>' + button('back', 'Back') + '<div class="validation-choices">';
+		var single = this.validationMode === 'single', pending = !!this.validationPending;
+		var selection = this.validationSelection || [];
+		var html = '<div class="pad team-validation">' + button('back', pending ? 'Cancel check and return' : this.curTeam ? 'Back to team' : 'Back to teams') +
+			'<h2>' + (single ? 'Validate team' : 'Validate saved teams') + '</h2><p>' +
+			(single ? 'Check this team against its selected format.' : 'Choose up to 12 teams. Each is checked against its own format.') +
+			' Your team and builds stay unchanged.</p><div class="validation-choices"' + (single ? ' hidden' : '') + '>';
 		Storage.teams.forEach(function (team, index) {
 			var format = window.BattleFormats && BattleFormats[team.format];
-			html += '<p><label><input type="checkbox" class="validate-team-choice" value="' + index + '" /> ' + escape(team.name) + ' — ' + escape(format ? format.name : team.format || 'No format: not checked') + '</label></p>';
+			html += '<p><label><input type="checkbox" class="validate-team-choice" value="' + index + '"' + (selection.some(function (entry) { return entry.localTeam === team; }) ? ' checked' : '') + (pending ? ' disabled' : '') + ' /> ' + escape(team.name) + ' — ' + escape(format ? format.name : team.format || 'Choose a format first') + '</label></p>';
 		});
-		html += '</div>' + button('validateSelectedTeams', 'Validate selected teams') + '<div class="validation-results" aria-live="polite">';
-		if (this.validationPending) html += '<p>Checking with server…</p>';
-		if (this.validationError) html += '<p>' + escape(this.validationError) + '</p>';
+		html += '</div><button class="button validation-primary" name="' + (single ? 'validate' : 'validateSelectedTeams') + '"' + (pending ? ' disabled' : '') + '>' + (pending ? 'Checking…' : single ? 'Check again' : 'Validate selected teams') + '</button><div class="validation-results" role="status" aria-live="polite" aria-busy="' + pending + '">';
+		if (pending) html += '<p>Checking ' + escape(selection.map(function (entry) { return entry.name; }).join(', ')) + ' with the server…</p>';
+		if (this.validationError) html += '<p class="validation-error">' + escape(this.validationError) + '</p>';
 		if (this.validationResults) this.validationResults.forEach(function (result, resultIndex) {
-			html += '<section><h3>' + escape(result.name) + ' — ' + escape(result.format || 'No format') + '</h3><p><strong>' + escape(result.status === 'valid' ? 'Passes selected format' : result.status) + '</strong></p>';
+			var problems = result.problems || [];
+			html += '<section class="validation-result ' + (result.status === 'valid' ? 'validation-pass' : 'validation-error') + '"><h3>' + escape(result.name) + ' — ' + escape(result.format || 'No format selected') + '</h3><p><strong>' + escape(result.status === 'valid' ? '✓ Ready for this format' : result.status === 'invalid' ? problems.length + ' issue' + (problems.length === 1 ? '' : 's') + ' to fix' : 'Not checked') + '</strong></p>';
 			if (result.permissive) html += '<p>Permissive Custom Game rules: this is not proof of league legality.</p>';
-			(result.problems || []).forEach(function (problem, problemIndex) { html += '<p>' + escape(problem) + ' ' + button('jumpValidationProblem', 'Review in team', resultIndex + ':' + problemIndex) + '</p>'; });
-			(result.suggestions || []).forEach(function (suggestion) { html += '<p>Suggestion: ' + escape(suggestion) + '</p>'; });
-			html += '<p>' + escape(result.matchup) + '</p></section>';
+			if (problems.length) html += '<ol class="validation-problems">' + problems.map(function (problem, problemIndex) { return '<li><p>' + escape(problem) + '</p>' + button('jumpValidationProblem', 'Review in team', resultIndex + ':' + problemIndex) + '</li>'; }).join('') + '</ol>';
+			html += '</section>';
 		});
-		html += '<p>Cross-team roster, opponent and matchup/gimmick rules are not checked without their definitions. Hidden opponent information is never assumed.</p></div></div>';
+		html += '</div><p class="validation-scope">Checks the selected format on the connected server. Cross-team budgets and opponent-specific league rules are not checked.</p></div>';
 		this.$el.html(html);
 	};
+
 	proto.validateSelectedTeams = function () {
+		if (this.validationPending) return;
 		var self = this, selected = [];
 		this.$('.validate-team-choice:checked').each(function () {
 			var team = Storage.teams[Number(this.value)];
@@ -4722,6 +4737,7 @@
 		else this.$el.prepend(issue);
 	};
 	proto.runSavedTeamValidation = function () {
+		if (this.validationPending) return;
 		var self = this, token = T.uid();
 		this.validationToken = token;
 		this.validationPending = true;
@@ -4732,7 +4748,7 @@
 			if (self.validationToken !== token) return;
 			self.validationPending = false;
 			self.validationResults = response.results || null;
-			self.validationError = response.error ? 'Not checked: ' + response.error : '';
+			self.validationError = response.error ? 'Could not check this team. ' + response.error.replace(/^Not checked: /, '') : '';
 			if (self.validationView) self.showTeamValidation();
 		});
 	};
@@ -4747,7 +4763,7 @@
 	};
 	var toolsBack = proto.back;
 	proto.back = function () {
-		if (this.validationView) { this.validationView = false; return this.update(); }
+		if (this.validationView) { this.validationToken = null; this.validationPending = false; this.validationView = false; return this.update(); }
 		return toolsBack.apply(this, arguments);
 	};
 
@@ -4989,6 +5005,84 @@
 	proto.focus = function () { var result = easyFocus && easyFocus.apply(this, arguments); if (this.editorScroll !== undefined) this.$el.scrollTop(this.editorScroll); return result; };
 	proto.events['input .current-team-search'] = 'filterCurrentTeam';
 
+	// Direct additions use the existing species-list profiles, not saved builds.
+	proto.addSetToProfile = function (index) {
+		index = Number(index);
+		var set = this.curSetList && this.curSetList[index];
+		if (!this.curTeam || !set || !this.rosterSpeciesID(set.species)) return;
+		this.cancelSetProfile();
+		this.profileAddition = {team: this.curTeam, set: set, species: set.species, index: index};
+		var data = this.rosterData();
+		var html = '<section class="profile-add-panel" aria-label="Add Pokémon to profile"><h3>Add ' + escape(Dex.species.get(set.species).name) + ' to profile</h3>' +
+			'<p>Profiles are Pokémon lists saved in this browser. Includes matching Mega forms. Your build stays in this team.</p>' +
+			'<label>Profile <select class="profile-add-target">' + data.profiles.map(function (profile) {
+			return '<option value="' + escape(profile.id) + '"' + (profile.id === data.selected ? ' selected' : '') + '>' + escape(profile.name) + '</option>';
+		}).join('') + '<option value="">Create a new profile…</option></select></label>' +
+			'<label class="profile-add-name-label">New profile name <input class="textbox profile-add-name" maxlength="80" /></label>' +
+			'<p><button class="button" name="confirmSetProfile">Add to profile</button> ' + button('cancelSetProfile', 'Cancel') + '</p><p class="profile-add-status" role="status" aria-live="polite"></p></section>';
+		this.$('.set-profile-actions[data-index="' + index + '"]').append(html);
+		this.profileTargetChange();
+		this.$('.profile-add-target').focus();
+	};
+	proto.profileTargetChange = function () {
+		this.$('.profile-add-name-label').prop('hidden', !!this.$('.profile-add-target').val());
+		this.$('.profile-add-status').text('');
+	};
+	proto.cancelSetProfile = function () {
+		var draft = this.profileAddition;
+		this.profileAddition = null;
+		this.$('.profile-add-panel').remove();
+		if (draft) this.$('[name=addSetToProfile][value="' + draft.index + '"]').focus();
+	};
+	proto.confirmSetProfile = function () {
+		var draft = this.profileAddition;
+		if (!draft) return;
+		if (this.curTeam !== draft.team || this.curSetList[draft.index] !== draft.set || draft.species !== draft.set.species) return this.cancelSetProfile();
+		var data = T.clone(this.rosterData()), target = this.$('.profile-add-target').val();
+		var profile = data.profiles.find(function (entry) { return entry.id === target; });
+		var status = this.$('.profile-add-status');
+		if (target && !profile) return status.text('This profile was removed. Cancel and choose another profile.');
+		if (!target) {
+			var name = String(this.$('.profile-add-name').val() || '').trim().slice(0, 80);
+			if (!name) { status.text('Enter a name for the new profile.'); this.$('.profile-add-name').focus(); return; }
+			if (data.profiles.some(function (entry) { return entry.name.toLowerCase() === name.toLowerCase(); })) return status.text('That profile name already exists. Choose it from the list or use a different name.');
+			profile = {id: T.uid(), name: name, species: []};
+			data.profiles.push(profile);
+		}
+		var ids = this.rosterExpandedSpecies(this.rosterSpeciesID(draft.species));
+		var added = ids.filter(function (id) { return profile.species.indexOf(id) < 0; });
+		profile.species = profile.species.concat(added);
+		if (added.length) {
+			try {
+				// Commit the existing local preference cache before publishing in memory.
+				// prefs.save otherwise swallows browser quota/permission failures.
+				var prefs = Object.assign({}, Storage.prefs.data, {rosterprofiles: data});
+				window.localStorage.setItem('showdown_prefs', JSON.stringify(prefs));
+				this.saveRosterProfiles(data);
+			} catch (error) { status.text('Could not save in this browser. Free up storage or allow site storage, then try again.'); return; }
+		}
+		var index = draft.index;
+		this.cancelSetProfile();
+		this.$('.set-profile-status[data-index="' + index + '"]').text(added.length ? 'Added to ' + profile.name + '. Team unchanged.' : 'Already in ' + profile.name + '. No duplicate added.');
+	};
+	proto.events['change .profile-add-target'] = 'profileTargetChange';
+	var profileRenderSet = proto.renderSet;
+	proto.renderSet = function (set, index) {
+		var html = profileRenderSet.apply(this, arguments);
+		if (!set.species) return html;
+		var end = html.lastIndexOf('</li>');
+		return html.slice(0, end) + '<div class="set-profile-actions" data-index="' + index + '"><button class="button" name="addSetToProfile" value="' + index + '" aria-label="Add ' + escape(Dex.species.get(set.species).name) + ' to profile">+ Add to profile</button><span class="set-profile-status" data-index="' + index + '" role="status"></span></div>' + html.slice(end);
+	};
+	var profileBack = proto.back;
+	proto.back = function () { this.cancelSetProfile(); return profileBack.apply(this, arguments); };
+	var validationSetView = proto.updateSetView;
+	proto.updateSetView = function () {
+		var result = validationSetView.apply(this, arguments);
+		this.$('.teamwrapper > .pad').first().append(' <button class="button validation-primary" name="validate">Validate team</button>');
+		return result;
+	};
+
+
 })(window, jQuery);
 // END LOCAL TEAMBUILDER TOOLS
 
@@ -5000,3 +5094,80 @@ function renderStarterPassives(species) {
 		return '<span class="passive-chip" title="' + BattleLog.escapeHTML('Passive: ' + ability.name + ' — ' + (ability.shortDesc || ability.desc)) + '">' + BattleLog.escapeHTML(ability.name) + '</span>';
 	}).join(' ') + '</div>';
 }
+
+// Keep a searchable picker beside the results, including on touch screens.
+(function () {
+ if (!window.TeambuilderRoom || !window.TeambuilderRoom.prototype) return;
+ var proto = window.TeambuilderRoom.prototype;
+ var updateSetView = proto.updateSetView;
+ proto.updateSetView = function () {
+  var result = updateSetView.apply(this, arguments);
+  var bar = this.$('.picker-return-bar');
+  bar.prepend('<label class="picker-search"><span class="picker-search-label">Search Pokémon</span><input class="textbox picker-search-input" type="search" placeholder="Search Pokémon" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search" /></label>');
+  var options = $('<div class="picker-options-bar"></div>');
+  bar.after(options);
+  options.append(this.$('.teambuilder-results > .roster-profiles, .teambuilder-results > .pokemon-picker-filters'));
+  this.pickerSearchActive = false;
+  return result;
+ };
+ var updateChart = proto.updateChart;
+ proto.updateChart = function () {
+  var result = updateChart.apply(this, arguments);
+  var searchable = this.curChartType in this.searchChartTypes;
+  var label = {pokemon: 'Pokémon', item: 'items', ability: 'abilities', move: 'moves'}[this.curChartType];
+  this.$('.picker-search').prop('hidden', !searchable);
+  this.$('.picker-options-bar').prop('hidden', this.curChartType !== 'pokemon');
+  if (searchable) {
+   var input = this.$('.picker-search-input');
+   this.$('.picker-search-label').text('Search ' + label);
+   input.attr('placeholder', 'Search ' + label).val(this.$('input[name=' + this.curChartName + ']').val());
+   if (this.pickerSearchActive) this.search.$inputEl = input;
+  }
+  return result;
+ };
+ proto.pickerSearchFocus = function () {
+  this.pickerSearchActive = true;
+  if (this.search) this.search.$inputEl = this.$('.picker-search-input');
+ };
+ proto.pickerSearchInput = function (event) {
+  if (!(this.curChartType in this.searchChartTypes)) return;
+  this.$('input[name=' + this.curChartName + ']').val(event.currentTarget.value);
+  this.updateChart();
+ };
+ proto.pickerSearchKeydown = function (event) {
+  if (!(this.curChartType in this.searchChartTypes)) return;
+  if (event.keyCode !== 13) {
+   if ([38, 40, 27, 8].includes(event.keyCode)) this.chartKeydown(event);
+   return;
+  }
+  event.preventDefault();
+  event.stopPropagation();
+  var first = this.$chart.find('a.hover[data-entry]').first();
+  if (!first.length) first = this.$chart.find('a[data-entry]').first();
+  if (first.length) this.chartClick({currentTarget: first[0], target: first[0]});
+ };
+ var chartFocus = proto.chartFocus;
+ proto.chartFocus = function () {
+  this.pickerSearchActive = false;
+  return chartFocus.apply(this, arguments);
+ };
+ var chartClick = proto.chartClick;
+ proto.chartClick = function (event) {
+  if (this.pickerSearchActive && this.search.addFilter(event.currentTarget)) {
+   if (this.search.q) this.$('input[name=' + this.curChartName + ']').val('');
+   this.$('.picker-search-input').val('').focus();
+   this.search.find('');
+   return;
+  }
+  return chartClick.apply(this, arguments);
+ };
+ proto.returnToPokemonEditor = function () {
+  var input = this.curChartName && this.$('input[name=' + this.curChartName + ']')[0];
+  var editor = this.$('.teamchartbox.individual')[0];
+  if (input) input.focus({preventScroll: true});
+  if (input || editor) (input || editor).scrollIntoView({block: input ? 'center' : 'start', behavior: 'auto'});
+ };
+ proto.events['focus .picker-search-input'] = 'pickerSearchFocus';
+ proto.events['input .picker-search-input'] = 'pickerSearchInput';
+ proto.events['keydown .picker-search-input'] = 'pickerSearchKeydown';
+})();

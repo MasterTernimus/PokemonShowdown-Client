@@ -36,6 +36,42 @@
 		window.search = this;
 
 		var self = this;
+		function positionPassiveHelp(button) {
+			var tooltip = button.nextElementSibling;
+			if (!tooltip) return;
+			var badge = button.getBoundingClientRect();
+			var box = tooltip.getBoundingClientRect();
+			var parent = button.parentElement.getBoundingClientRect();
+			tooltip.style.left = (Math.max(8, Math.min(badge.left, window.innerWidth - box.width - 8)) - parent.left) + 'px';
+			tooltip.style.top = (Math.max(8, badge.bottom + box.height + 8 > window.innerHeight ? badge.top - box.height - 4 : badge.bottom + 4) - parent.top) + 'px';
+		}
+		this.$el.on('mouseenter focusin', '.pokemon-passive-badge', function () {
+			positionPassiveHelp(this);
+		});
+		// Keep pointer help from blurring and committing the species input.
+		this.$el.on('pointerdown', '.pokemon-passive-badge', function (e) {
+			e.preventDefault();
+		});
+		// Opening passive help must never select the surrounding Pokemon result.
+		this.$el.on('click', '.pokemon-passive-badge', function (e) {
+			e.preventDefault();
+			e.stopImmediatePropagation();
+			var open = this.getAttribute('aria-expanded') !== 'true';
+			self.$('.pokemon-passive-badge').attr('aria-expanded', 'false');
+			this.setAttribute('aria-expanded', String(open));
+			positionPassiveHelp(this);
+		});
+		this.$el.on('keydown', '.pokemon-passive-badge', function (e) {
+			e.stopPropagation();
+			if (e.key === 'Escape') {
+				this.setAttribute('aria-expanded', 'false');
+				this.blur();
+			}
+		});
+		this.$el.on('focusout', '.pokemon-passive-badge', function () {
+			this.setAttribute('aria-expanded', 'false');
+		});
+
 		this.$el.on('click', '.more button', function (e) {
 			e.preventDefault();
 			self.updateScroll(true);
@@ -319,7 +355,9 @@
 		if (!pokemon) return '<li class="result">Unrecognized pokemon</li>';
 		var id = toID(pokemon.name);
 		if (Search.urlRoot) attrs += ' href="' + Search.urlRoot + 'pokemon/' + id + '" data-target="push"';
-		var buf = '<li class="result"><a' + attrs + ' data-entry="pokemon|' + BattleLog.escapeHTML(pokemon.name) + '">';
+		var dex = this.engine ? this.engine.dex : Dex;
+		var passives = dex.species.get(id).passives || [];
+		var buf = '<li class="result' + (passives.length ? ' pokemonpassiveresult' : '') + '"><a' + attrs + ' data-entry="pokemon|' + BattleLog.escapeHTML(pokemon.name) + '">';
 
 		// number
 		var tier = this.engine ? this.engine.getTier(pokemon) : pokemon.num;
@@ -349,7 +387,15 @@
 				name += '<small>' + pokemon.name.substr(tagStart) + '</small>';
 			}
 		}
-		buf += '<span class="col pokemonnamecol">' + name + '</span> ';
+		buf += '<span class="col pokemonnamecol">' + name;
+		for (var passive of passives) {
+			var passiveAbility = dex.abilities.get(passive);
+			var passiveName = BattleLog.escapeHTML(passiveAbility.name);
+			var passiveDescription = BattleLog.escapeHTML(passiveAbility.shortDesc || passiveAbility.desc || 'Innate passive for this form.');
+			buf += '<span class="pokemon-passive-help"><button type="button" class="pokemon-passive-badge" aria-expanded="false" aria-label="' + passiveName + ' passive: ' + passiveDescription + '">Passive &middot; ' + passiveName + '</button>';
+			buf += '<span class="pokemon-passive-tooltip" role="tooltip"><strong>' + passiveName + ' &middot; Passive</strong><span>' + passiveDescription + '</span></span></span>';
+		}
+		buf += '</span> ';
 
 		// error
 		if (errorMessage) {
@@ -533,7 +579,7 @@
 		var passives = species ? this.engine.dex.species.get(species).passives : [];
 		if (!attrs) attrs = '';
 		if (!ability) return '<li class="result">Unrecognized ability</li>';
-		ability = Dex.getAbilityDisplayDetails(ability, passives);
+		ability = Dex.getAbilityDisplayDetails(ability, passives, species);
 		var id = toID(ability.name);
 		if (Search.urlRoot) attrs += ' href="' + Search.urlRoot + 'abilities/' + id + '" data-target="push"';
 		var buf = '<li class="result abilityresult"><a' + attrs + ' data-entry="ability|' + BattleLog.escapeHTML(ability.name) + '">';
@@ -553,7 +599,7 @@
 
 		var fullDescription = Dex.getAbilityDescriptionLines(ability.desc || ability.shortDesc).map(function (line) { return '• ' + line; }).join('\n');
 		var summary = ability.shortDesc;
-		var components = this.renderAll ? Dex.getAbilityDisplayComponents(toID(ability.name), Dex, passives) : [];
+		var components = this.renderAll ? Dex.getAbilityDisplayComponents(toID(ability.name), Dex, passives, species) : [];
 		var componentNames = components.map(function (id) { return Dex.abilities.get(id).name; }).join(' + ');
 		if (componentNames) {
 			fullDescription = 'Includes: ' + componentNames + '\n\n' + fullDescription;

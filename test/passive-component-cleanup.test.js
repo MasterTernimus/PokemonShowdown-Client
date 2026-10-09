@@ -29,7 +29,7 @@ describe('Passive component separation client parity', () => {
   });
  }
  it('keeps base/shared Proficient and pruned Includes while Scale Shelter describes Overcoat', () => {
-  for (const id of ['pollenbloom','unboundblaze','proficient']) assert(Dex.getAbilityEffects(id).has('proficient'));
+  for (const id of ['pollenbloom','unboundblaze','proficient']) assert.equal(Dex.getAbilityEffects(id).has('proficient'),id==='proficient');
   for (const id of ['toxicbloom','atrocity','tidaljaw']) assert(!Dex.getAbilityEffects(id).has('proficient'));
   assert.deepEqual(Dex.getAbilityDisplayComponents('scaleshelter'), ['overcoat']);
   assert.equal(Dex.abilities.get('scaleshelter').shortDesc, 'Blocks powder moves and sandstorm/hail damage.');

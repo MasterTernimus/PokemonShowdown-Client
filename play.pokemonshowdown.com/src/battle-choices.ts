@@ -18,6 +18,7 @@ interface BattleRequestSideInfo {
 	pokemon: ServerPokemon[];
 }
 interface BattleRequestActivePokemon {
+	pulseMoves?: BattleRequestActivePokemon['moves'];
 	moves: {
 		name: string,
 		id: ID,
@@ -174,7 +175,8 @@ class BattleChoiceBuilder {
 	}
 	currentMoveRequest() {
 		if (this.request.requestType !== 'move') return null;
-		return this.request.active[this.index()];
+		const active = this.request.active[this.index()];
+		return active?.pulseMoves && this.current.mega ? {...active, moves: active.pulseMoves} : active;
 	}
 
 	addChoice(choiceString: string) {
@@ -270,7 +272,7 @@ class BattleChoiceBuilder {
 		if (choice.max || (activePokemon.maxMoves && !activePokemon.canDynamax)) {
 			return activePokemon.maxMoves![moveIndex];
 		}
-		return activePokemon.moves[moveIndex];
+		return (choice.mega && activePokemon.pulseMoves || activePokemon.moves)[moveIndex];
 	}
 
 	/**
@@ -288,7 +290,7 @@ class BattleChoiceBuilder {
 			if (request.requestType !== 'move') {
 				throw new Error(`You must switch in a Pokémon, not move.`);
 			}
-			const moveRequest = request.active[index]!;
+			let moveRequest = request.active[index]!;
 			choice = choice.slice(5);
 			let current: BattleMoveChoice = {
 				choiceType: 'move',
@@ -343,6 +345,7 @@ class BattleChoiceBuilder {
 				}
 			}
 
+			if (current.mega && moveRequest.pulseMoves) moveRequest = {...moveRequest, moves: moveRequest.pulseMoves};
 			if (/^[0-9]+$/.test(choice)) {
 				// Parse a one-based move index.
 				current.move = parseInt(choice, 10);
@@ -495,7 +498,7 @@ class BattleChoiceBuilder {
 			);
 			for (const active of request.active) {
 				if (!active) continue;
-				for (const move of active.moves) {
+				for (const move of [...active.moves, ...(active.pulseMoves || [])]) {
 					if (move.move) move.name = move.move;
 					move.id = toID(move.name);
 				}

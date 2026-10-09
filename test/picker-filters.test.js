@@ -37,9 +37,9 @@ describe('Pokemon picker view filters',()=>{
  it('does not apply Pokemon filters to moves',()=>{const s=new DexSearch();s.setType('move','gen9nofieldsinglesgame', 'mew');s.pickerOptions={group:'pulse',hideGimmicks:true};s.find('tackle');assert(s.results.some(r=>r[0]==='move'&&r[1]==='tackle'));});
 });
 describe('Approved ability client metadata',()=>{
- let aliases;before(()=>{aliases=global.BattleAliases;global.BattleAliases={shadowguard:'Voidcraft'};});after(()=>{if(aliases===undefined)delete global.BattleAliases;else global.BattleAliases=aliases;});
+ let aliases;before(()=>{aliases=global.BattleAliases;global.BattleAliases={shadowguard:'Void Craft'};});after(()=>{if(aliases===undefined)delete global.BattleAliases;else global.BattleAliases=aliases;});
  it('uses new names, components and descriptions',()=>{
-  assert.equal(Dex.abilities.get('Shadow Guard').id,'voidcraft');assert.equal(Dex.species.get('mismagiusmega').abilities[0],'Voidcraft');
+  assert.equal(Dex.abilities.get('Shadow Guard').id,'voidcraft');assert.equal(Dex.species.get('mismagiusmega').abilities[0],'Void Craft');
   assert.match(Dex.abilities.get('shadowshield').desc,/0.8x.*0.75x/);assert.match(Dex.abilities.get('spentforce').desc,/next two complete turns/);
   assert(Dex.getAbilityEffects('exalt').has('sharpness'));assert(!Dex.getAbilityEffects('exalt').has('innerfocus'));
   assert.match(Dex.abilities.get('pulsewaste').desc,/Swamp Field for 3 turns/);
