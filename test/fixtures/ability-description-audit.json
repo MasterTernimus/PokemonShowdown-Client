@@ -497,7 +497,7 @@
   },
   "shadowbond": {
     "shortDesc": "Water Shuriken hits 3 times at 30 power and always critically hits.",
-    "desc": "Battle Bond's shared effects plus Infiltrator. Ash-Greninja's Water Shuriken hits three times at 30 base power per hit and always critically hits."
+    "desc": "Battle Bond's shared effects plus Infiltrator and Mold Breaker. Moves bypass breakable abilities; Ability Shield still protects them. Ash-Greninja's Water Shuriken hits three times at 30 base power per hit and always critically hits."
   },
   "apexbond": {
     "desc": "Battle Bond's shared effects plus Supreme Overlord and Rough Skin. Garchomp-Battle-Bond's Dual Chop never misses and always critically hits. Effective fallen count is capped at 5 after Free-for-All doubling, for a maximum 1.5x Supreme Overlord power multiplier; unlocks at 2/4/5 are unchanged.",

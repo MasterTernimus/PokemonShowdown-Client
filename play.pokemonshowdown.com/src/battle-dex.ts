@@ -55974,7 +55974,8 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	],
 	"shadowbond": [
 		"battlebond",
-		"infiltrator"
+		"infiltrator",
+		"moldbreaker"
 	],
 	"apexbond": [
 		"battlebond",
@@ -67218,7 +67219,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Shadow Bond",
 		"num": 10408,
 		"gen": 9,
-		"desc": "Battle Bond's shared effects plus Infiltrator. Ash-Greninja's Water Shuriken hits three times at 30 base power per hit and always critically hits.",
+		"desc": "Battle Bond's shared effects plus Infiltrator and Mold Breaker. Moves bypass breakable abilities; Ability Shield still protects them. Ash-Greninja's Water Shuriken hits three times at 30 base power per hit and always critically hits.",
 		"shortDesc": "Water Shuriken hits 3 times at 30 power and always critically hits.",
 		"rating": 4,
 		"flags": {
@@ -91615,7 +91616,8 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"battlebond",
 		"filter",
 		"selfsufficient",
-		"infiltrator"
+		"infiltrator",
+		"moldbreaker"
 	],
 	"shadowcurrent": [
 		"protean",

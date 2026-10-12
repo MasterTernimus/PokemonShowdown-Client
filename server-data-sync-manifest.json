@@ -1,7 +1,7 @@
 {
-	"sourceHead": "d55d00a38c02a9475b53c1bc0b3c7badbe2dd852",
+	"sourceHead": "338226960bb51987c168e65926c973753d82af25",
 	"base": "9a1be465610a9e5dc164cb807c98f28ac2552030",
-	"sourceDataSHA256": "1752e85423dfd003a938730a2eba1563c469f6f573e5a4d93eb9b65acf7926ac",
+	"sourceDataSHA256": "1c076181fe52afb41d46f7ceb23984491f8a8ec6e7799497af657bc806a74fe9",
 	"files": [
 		"data/abilities.ts",
 		"data/ability-components.ts",
@@ -44978,7 +44978,7 @@
 				"name": "Shadow Bond",
 				"num": 10408,
 				"gen": 9,
-				"desc": "Battle Bond's shared effects plus Infiltrator. Ash-Greninja's Water Shuriken hits three times at 30 base power per hit and always critically hits.",
+				"desc": "Battle Bond's shared effects plus Infiltrator and Mold Breaker. Moves bypass breakable abilities; Ability Shield still protects them. Ash-Greninja's Water Shuriken hits three times at 30 base power per hit and always critically hits.",
 				"shortDesc": "Water Shuriken hits 3 times at 30 power and always critically hits.",
 				"rating": 4,
 				"flags": {
@@ -67794,7 +67794,8 @@
 				"battlebond",
 				"filter",
 				"selfsufficient",
-				"infiltrator"
+				"infiltrator",
+				"moldbreaker"
 			],
 			"shadowcurrent": [
 				"protean",
@@ -68912,7 +68913,8 @@
 			],
 			"shadowbond": [
 				"battlebond",
-				"infiltrator"
+				"infiltrator",
+				"moldbreaker"
 			],
 			"apexbond": [
 				"battlebond",
