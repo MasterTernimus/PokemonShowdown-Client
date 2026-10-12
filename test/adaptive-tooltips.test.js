@@ -61,8 +61,8 @@ describe('Adaptive category client parity', () => {
    battle.pseudoWeather=[[field,0,0]];delete p.volatiles.gastroacid;assert.equal(tips.calculateModifiedStats(p,own).spe,normal,field);p.volatiles.gastroacid=['gastroacid'];assert(tips.calculateModifiedStats(p,own).spe<normal,field);
   }
  });
- it('applies passive Telepathy Speed only while its Psychic field is active',()=>{
-  p.speciesForme='Slowking-Galar';own.speciesForme='Slowking-Galar';p.ability='No Ability';own.ability=own.baseAbility='No Ability';
+ it('applies selected Telepathy Speed only while its Psychic field is active',()=>{
+  p.speciesForme='Slowking-Galar';own.speciesForme='Slowking-Galar';p.ability='Telepathy';own.ability=own.baseAbility='Telepathy';
   const normal=tips.calculateModifiedStats(p,own).spe;battle.pseudoWeather=[['Psychic Terrain',0,0]];assert.equal(tips.calculateModifiedStats(p,own).spe,normal*2);
   battle.pseudoWeather=[];assert.equal(tips.calculateModifiedStats(p,own).spe,normal);
  });

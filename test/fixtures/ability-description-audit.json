@@ -1236,8 +1236,8 @@
     "shortDesc": "Half contact damage; double Fire damage."
   },
   "forecast": {
-    "desc": "If this Pokemon is a Castform, its type changes to the current weather condition's type, including Sandstorm. Sunny Form has Solar Power and Flame Body effects. Rainy Form has Dry Skin, Rain Dish, and Hydration effects. Snowy Form has Slush Rush, Ice Body, and hail immunity. Sandy Form has Sand Rush, Earth Eater, and sand immunity. This effect is prevented if this Pokemon is holding a Utility Umbrella and the weather is Rain Dance or Sunny Day.",
-    "shortDesc": "Castform changes form in weather and gains form-based bonus effects."
+    "shortDesc": "Castform changes form with effective weather; no form-specific ability bonuses.",
+    "desc": "Castform changes to Sunny in sun, Rainy in rain, Snowy in hail or snow, Sandy in sandstorm, Windy in Delta Stream, and Normal otherwise. Effective weather and Utility Umbrella apply. Does not transform copied Pokemon or supply any form-specific bonus."
   },
   "forewarn": {
     "desc": "On entry, it reveals a strongest move known by an opposing Pokemon and removes foe Illusions. In Psychic Terrain, it gains 2 Sp. Atk and takes 0.8x damage from moves.",
@@ -1496,8 +1496,8 @@
     "shortDesc": "No opposing accuracy drops; ignores evasion; reveals Illusions."
   },
   "illusion": {
-    "desc": "On switch-in, this Pokemon disguises itself as the ally judged most threatening to the opposing active Pokemon using matchups, Speed, STAB, and damaging moves. It copies that ally's Ability and gains STAB from its types while keeping its own defensive typing. The disguise ends when it takes direct damage.",
-    "shortDesc": "Disguises as the ally with the best matchup; copies its Ability and STAB until directly damaged."
+    "shortDesc": "Disguises itself as the last eligible party member; copies no mechanical traits.",
+    "desc": "On entry, disguises itself as the last eligible non-fainted party member. Direct damaging hits and normal reveal effects break the disguise. Does not copy types, STAB, abilities or species passives, and grants no field bonuses."
   },
   "immunity": {
     "desc": "This Pokemon cannot be poisoned. Gaining this Ability while poisoned cures it.",
@@ -2000,8 +2000,8 @@
     "shortDesc": "When this Pokemon eats certain Berries, the effects are doubled."
   },
   "rivalry": {
-    "desc": "This Pokemon's attacks have their power multiplied by 1.25 against targets of the same gender or multiplied by 0.75 against targets of the opposite gender. There is no modifier if either this Pokemon or the target is genderless.",
-    "shortDesc": "This Pokemon's attacks do 1.25x on same gender targets; 0.75x on opposite gender."
+    "shortDesc": "1.3x power vs same-gender or genderless targets; other allies take 0.75x attack damage. Stacks.",
+    "desc": "Damaging moves have 1.3x power against targets of the same gender or genderless targets. All other matchups retain normal power with no penalty. Other allies take 25% less attack damage, including friendly fire, regardless of gender; the holder does not protect itself. Protection stacks with Friend Guard and with each other Rivalry holder. The same holder's active and passive Rivalry do not duplicate its effects."
   },
   "rkssystem": {
     "desc": "If this Pokemon is Silvally, it gains the custom effects tied to its held Memory, even if its current form does not match that Memory, and restores 1/16 of its maximum HP at the end of each turn. Silvally without a Memory uses Scrappy's effect instead.",
@@ -3728,8 +3728,8 @@
     "desc": "Includes full local Oblivious. Once per turn, after an opposing Physical move finishes dealing actual HP damage, lowers its attacker's Speed by 1. Multihit moves resolve once after the whole attack; allies, Special moves, residual damage and Substitute-only hits do not activate it."
   },
   "climatereserve": {
-    "desc": "Uses Forecast's Castform weather-form changes only, without its weather-dependent ability bonuses. Once per entry, successfully changing weather with its own move raises Sp. Def by 1. Its own Sunny Day, Rain Dance, Sandstorm and Hail weather last one extra turn, added after weather-extending items. Repeated callbacks do not stack; permanent weather and Tailwind are not extended.",
-    "shortDesc": "Forecast form changes only; first own weather change per entry gives +1 Sp. Def; manual weather lasts +1 turn."
+    "shortDesc": "Once per entry, after surviving the first opposing whole HP-damaging attack: +1 Sp. Def.",
+    "desc": "Once per genuine switch-in, after surviving the first opposing damaging move that removes HP, raises Sp. Def by 1 after all its hits. Misses, protection, immunity, Substitute-only damage, residual damage and allied attacks do not qualify. Fainting gives no boost. Ability restarts or changes do not reset the allowance. Normal boost prevention applies. Does not extend weather; Forecast form changes are supplied separately by the species passive."
   },
   "tunnelclearance": {
     "desc": "Full Hyper Cutter. Successful Rapid Spin damage removes opposing Reflect and Light Screen after damage, including when hitting Substitute. Does not remove Aurora Veil or other walls.",
@@ -3794,5 +3794,13 @@
   "vitalsigns": {
     "shortDesc": "Heals and cures each teammate once when an attack leaves it at half HP or less.",
     "desc": "Includes Invigorate: healing received by the holder and its allies is multiplied by 1.3, each adjacent ally has a 50% chance to have its major status cured at turn end, and Safeguard lasts 5 turns. After an opposing damaging move finishes, each active teammate, including the holder, that lost HP to that move, survived, and is at half HP or less is healed by 1/4 max HP and cured of major status. Invigorate normally increases this healing to 32.5%. Each recipient can receive this emergency treatment only once per battle, even after switching, changing abilities or being revived. Healing obeys normal restrictions; the allowance is spent only if healing or curing succeeds. Allied, residual and Substitute-only damage do not trigger it."
+  },
+  "perfectforecast": {
+    "shortDesc": "Forecast form changes plus the current Castform form's named, modified bonus package.",
+    "desc": "Changes Castform with effective weather and supplies only its current form's bonuses. Sunny: modified Solar Power (1.5x Sp. Atk in sun, no HP drain) and Flame Body. Rainy: Water Absorb, Rain Dish plus 1/8 extra rain recovery (3/16 total), and Hydration. Snowy: modified Slush Rush and Ice Body (2x Speed, 1/16 healing, hail immunity in supported conditions). Sandy: Earth Eater and Sand Rush. Normal and Windy have no added bonus. These effects require active Perfect Forecast; the separate Forecast passive only changes forms."
+  },
+  "perfectillusion": {
+    "shortDesc": "Advanced disguise: copies target STAB, eligible ability and passives until revealed.",
+    "desc": "Uses the existing advanced disguise selection: the last healthy party member on first entry, then the best threat-scored healthy teammate when possible. While disguised, copies its target's STAB types, eligible selected ability and species passives. The copied ability activates normally; blacklisted form and copying abilities are not copied. Mirror Arena entry grants +1 evasion; Chessboard grants 1.2x move power while disguised; Cold Eclipse prevents hail damage. Damage or reveal effects end the disguise and copied traits. This selected package is distinct from the ordinary Illusion species passive."
   }
 }

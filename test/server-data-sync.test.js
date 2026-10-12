@@ -127,14 +127,14 @@ describe('Server data synchronization', () => {
 				const learns = require(path.join(client, 'data/learnsets')).BattleLearnsets;
 				assert(learns.wigglytuff.learnset.roar.includes('9M'));
 				assert.deepEqual(plain(dex.species.get('kingler').types), ['Water', 'Steel']);
-				assert.deepEqual(plain(dex.species.get('kingler').abilities), {0: 'Shell Armor', 1: 'Titan Pincer', H: 'Shellcracker'});
+				assert.deepEqual(plain(dex.species.get('kingler').abilities), {0: 'Shell Armor', 1: 'Hyper Cutter', H: 'Shellcracker'});
 				assert.deepEqual(plain(dex.species.get('kinglergmax').types), ['Water', 'Steel']);
 				assert.deepEqual(plain(dex.species.get('kinglergmax').abilities), {0: 'Crushing Depths'});
 				assert.match(dex.abilities.get('reinflate').desc, /Once per turn.*finishes.*actual HP damage.*remains active and survives/);
 				assert.match(dex.abilities.get('reinflate').shortDesc, /1\/8/);
 				assert.match(dex.abilities.get('titanpincer').desc, /Crabhammer and physical Steel-type moves.*Defense.*higher/);
 				assert(!dex.getAbilityEffects('titanpincer').has('hypercutter'));
-				assert(dex.species.get('kingler').passives.includes('hypercutter'));
+				assert(dex.species.get('kingler').passives.includes('titanpincer'));
 			});
 
 			it('loads real Swalot-Pulse data and Anomaly Core routing', () => {
@@ -229,7 +229,7 @@ describe('Server data synchronization', () => {
 				assert.doesNotMatch(dex.abilities.get('schooling').desc, /Filter/);
 				assert.match(dex.abilities.get('venombastion').desc, /raises Defense by 1.*poisoned foe.*higher offensive stat/);
 				assert.match(dex.moves.get('skullbash').desc, /20% less damage/);
-				assert.match(dex.moves.get('skullbash').desc, /restores 10%/);
+				assert.match(dex.moves.get('skullbash').desc, /restores 15%/);
 				assert.match(dex.moves.get('cut').desc, /Steel-type.*Defense boosts/);
 				assert.match(dex.moves.get('lifedew').desc, /Aqua Ring.*full HP/);
 			});

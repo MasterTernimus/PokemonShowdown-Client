@@ -166,11 +166,20 @@ function isTotemSpecies(species?: { isTotem?: boolean, forme?: string }) {
 	return !!species && (species.isTotem || (species.forme || '').toLowerCase().split('-').includes('totem'));
 }
 
+// Hide only the nineteen official pattern skins; retain distinct custom forms and all data.
+const VIVILLON_PATTERN_SPECIES = new Set<string>([
+ 'vivillonarchipelago', 'vivilloncontinental', 'vivillonelegant', 'vivillongarden',
+ 'vivillonhighplains', 'vivillonicysnow', 'vivillonjungle', 'vivillonmarine',
+ 'vivillonmodern', 'vivillonmonsoon', 'vivillonocean', 'vivillonpolar', 'vivillonriver',
+ 'vivillonsandstorm', 'vivillonsavanna', 'vivillonsun', 'vivillontundra',
+ 'vivillonfancy', 'vivillonpokeball',
+]);
+
 function isHiddenTeamBuilderSpecies(id: string, includeSawsbuckBase = false) {
 	const speciesId = toID(id);
 	if (isCAPSpecies(speciesId) || isHiddenFakeSpecies(speciesId) || isTotemSpecies(window.BattlePokedex?.[speciesId])) return true;
 	if (isBattleOnlyVisualSpecies(speciesId)) return true;
-	if (HIDDEN_TEAMBUILDER_SPECIES.has(speciesId)) return true;
+	if (HIDDEN_TEAMBUILDER_SPECIES.has(speciesId) || VIVILLON_PATTERN_SPECIES.has(speciesId)) return true;
 	if (isVariantSelectorOnlySpecies(Dex.species.get(speciesId))) return true;
 	if (speciesId === 'deerling' || speciesId.startsWith('deerling')) return true;
 	if (speciesId.startsWith('sawsbuck') && (speciesId !== 'sawsbuck' || includeSawsbuckBase)) return true;
@@ -182,7 +191,7 @@ function isHiddenTeamBuilderSpecies(id: string, includeSawsbuckBase = false) {
 function isExcludedFromCustomSearch(id: string) {
 	const speciesId = toID(id);
 	// Balance-patched official records are not additional custom forms.
-	return isTotemSpecies(window.BattlePokedex?.[speciesId]) || ['unfezant', 'xerneasneutral'].includes(speciesId) ||
+	return VIVILLON_PATTERN_SPECIES.has(speciesId) || isTotemSpecies(window.BattlePokedex?.[speciesId]) || ['unfezant', 'xerneasneutral'].includes(speciesId) ||
 		isHiddenFakeSpecies(speciesId) || speciesId.startsWith('deerling') ||
 		speciesId.startsWith('sawsbuck') || ZA_MEGA_SPECIES.has(speciesId as ID);
 }
@@ -233,6 +242,10 @@ const CUSTOM_CAN_LEARN_OVERRIDES: {[speciesid: string]: {[moveid: string]: true}
  * Backend for search UIs.
  */
 class DexSearch {
+	static isHiddenCosmeticPattern(id: string) {
+		return VIVILLON_PATTERN_SPECIES.has(toID(id));
+	}
+
 	prependResults: SearchRow[] | null = null;
 	query = '';
 	itemToolFilter = 'all';
@@ -502,6 +515,23 @@ class DexSearch {
 
 		this.exactMatch = false;
 		let searchType: SearchType | '' = this.typedSearch?.searchType || '';
+
+		// Exact normalized character names reveal their credited moves while preserving
+		// the current move filters and the existing per-species legality labels.
+		if (searchType === 'move' && query) {
+			const credited = Object.keys(window.BattleMovedex || {}).filter(id =>
+				(window.BattleMovedex[id] as AnyObject).signatureCharacters?.includes(query)
+			) as ID[];
+			if (credited.length) {
+				this.typedSearch!.getResults(this.filters, this.sortCol, this.reverseSort);
+				const rows = credited.map(id => ['move', id] as SearchRow)
+					.filter(row => this.typedSearch!.filter(row, this.filters || []));
+				rows.sort((a, b) => Number(!!this.illegalLabel(a[1] as ID)) - Number(!!this.illegalLabel(b[1] as ID)) ||
+					this.dex.moves.get(a[1]).name.localeCompare(this.dex.moves.get(b[1]).name));
+				this.exactMatch = true;
+				return this.results = [['header', 'Moves'], ...rows];
+			}
+		}
 		let customVisualSpecies: ID[] = [];
 		if (searchType === 'pokemon') {
 			window.ensureCustomSpecies?.();
@@ -727,7 +757,7 @@ class DexSearch {
 			if (queryAlias === id && query !== id) continue;
 			if (
 				type === 'pokemon' &&
-				(isCAPSpecies(id) || isHiddenFakeSpecies(id) || isBattleOnlyVisualSpecies(id) ||
+				(VIVILLON_PATTERN_SPECIES.has(id) || isCAPSpecies(id) || isHiddenFakeSpecies(id) || isBattleOnlyVisualSpecies(id) ||
 					isVariantSelectorOnlySpecies(this.dex.species.get(id)) ||
 					(isHiddenTeamBuilderSpecies(id) && id !== query &&
 					!(query === 'furfrou' && id.startsWith('furfrou'))))
@@ -1644,7 +1674,11 @@ class BattleAbilitySearch extends BattleTypedSearch<'ability'> {
 		const eventAbilitySlots = ['S', 'E', 'F', 'G'] as const;
 		const eventAbilities = eventAbilitySlots
 			.map(slot => species.abilities[slot])
-			.filter((ability): ability is string => !!ability);
+			.filter((ability): ability is string => !!ability && !(species.id === 'veluza' && toID(ability) === 'unburden'));
+		if (species.id === 'veluza' && species.abilities['E'] === 'Unburden') {
+			abilitySet.push(['header', "Additional Ability"]);
+			abilitySet.push(['ability', toID('Unburden')]);
+		}
 		if (eventAbilities.length) {
 			abilitySet.push(['header', "Special Event Abilities"]);
 			for (const ability of eventAbilities) {

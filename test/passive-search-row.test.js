@@ -20,8 +20,8 @@ describe('Pokemon result passive badges', () => {
   assert(!render('Arcanine-Aevian').includes('pokemon-passive-badge'));
  });
  it('keeps long passive names intact for CSS wrapping and supplies accessible help', () => {
-  const html = render('Conkeldurr');
-  assert(html.includes('Passive &middot; Rocky Payload'));
+  const html = render('Wishiwashi');
+  assert(html.includes('Passive &middot; Friend Guard'));
   assert(html.includes('aria-expanded="false"'));
   assert(html.includes('role="tooltip"'));
  });

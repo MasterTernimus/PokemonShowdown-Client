@@ -1089,6 +1089,7 @@ class Item implements Effect {
 
 	readonly num: number;
 	readonly spritenum: number;
+	readonly isNonstandard: string | null;
 	readonly desc: string;
 	readonly shortDesc: string;
 
@@ -1116,6 +1117,7 @@ class Item implements Effect {
 
 		this.num = data.num || 0;
 		this.spritenum = data.spritenum || 0;
+		this.isNonstandard = data.isNonstandard || null;
 		this.desc = data.desc || data.shortDesc || '';
 		this.shortDesc = data.shortDesc || this.desc;
 
@@ -1218,6 +1220,7 @@ class Move implements Effect {
 	readonly gen: number;
 	readonly exists: boolean;
 
+	readonly signatureCharacters: readonly string[];
 	readonly basePower: number;
 	readonly accuracy: number | true;
 	readonly pp: number;
@@ -1262,6 +1265,7 @@ class Move implements Effect {
 		this.gen = data.gen || 0;
 		this.exists = ('exists' in data ? !!data.exists : true);
 
+		this.signatureCharacters = data.signatureCharacters || [];
 		this.basePower = data.basePower || 0;
 		this.accuracy = data.accuracy || 0;
 		this.pp = data.pp || 1;

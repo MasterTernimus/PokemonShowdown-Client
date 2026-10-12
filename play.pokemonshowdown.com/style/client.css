@@ -3760,3 +3760,36 @@ a.ilink.yours {
 .editing-set > .teambar { position: static; min-width: 0; display: flex; overflow-x: auto; padding: 0 8px; }
 .editing-set > .teambar button { flex: 0 0 80px; float: none; }
 .editing-set .teamchartbox.individual { margin-top: 0; }
+
+/* Fit every navigation slot in the editor; wrap at touch widths. */
+.editing-set > .teambar {
+ display: grid; grid-template-columns: repeat(auto-fit, minmax(92px, 1fr));
+ gap: 6px; width: 100%; max-width: 760px; min-width: 0;
+ box-sizing: border-box; padding: 0 8px 6px; overflow: visible;
+}
+.editing-set > .teambar button {
+ float: none; width: 100%; min-width: 0; height: 52px; min-height: 52px;
+ margin: 0; padding: 2px 4px; border-radius: 5px;
+ white-space: nowrap; text-overflow: ellipsis; font-size: 11px;
+}
+.editing-set > .teambar button[aria-current="true"] { opacity: 1; border-color: #558bb5; box-shadow: inset 0 -3px #558bb5; }
+.editing-set > .teambar button:focus-visible, .setmenu [name="addSetToProfile"]:focus-visible { outline: 2px solid #558bb5; outline-offset: 2px; }
+.set-profile-actions { padding: 0; }
+.set-profile-status:empty { display: none; }
+.set-profile-status:not(:empty) { display: block; margin: 4px 8px; }
+.setmenu [name="addSetToProfile"] { white-space: nowrap; }
+@media (max-width: 639px) {
+ .editing-set .setmenu button { min-height: 44px; }
+}
+
+/* Approved light-touch teambuilder polish. */
+.editing-set>.teambar button[aria-current="true"]{background:#e2eef9;color:#244d70;border-color:#5385ad;box-shadow:inset 0 -3px #5385ad}
+.editing-set .setmenu button{min-height:24px;line-height:18px;padding:2px 4px;border-radius:3px;vertical-align:middle}
+.editing-set .setmenu button:hover{background:#e7f0f7;border-color:#879eaf}
+.editing-set .setchart .textbox{border-color:#9fadb9}
+.editing-set .setcell-ability>.starter-passives{gap:4px;align-items:baseline;margin-top:3px;line-height:16px}
+.editing-set .setcell-ability>.starter-passives>label{display:inline;margin:0;font:11px/16px Verdana;color:#4f6657;font-weight:normal}
+.editing-set .setcell-ability>.starter-passives .passive-chip{font-size:11px;line-height:16px;padding:0 4px;border-radius:4px}
+@media(max-width:639px){.editing-set .setmenu button{min-height:44px;line-height:20px;padding:4px}.editing-set .setcell-ability>.starter-passives{max-width:100%;line-height:18px;gap:5px}.editing-set .setcell-ability>.starter-passives>label{font-size:12px;line-height:18px}.editing-set .setcell-ability>.starter-passives .passive-chip{font-size:12px;line-height:18px}}
+.dark .editing-set .setcell-ability>.starter-passives>label { color: #d0e0d5; }
+.dark .editing-set .setmenu button:hover { background: #304354; border-color: #879eaf; }

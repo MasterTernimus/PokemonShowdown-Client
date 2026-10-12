@@ -14,6 +14,9 @@ const import_adaptive_cycle = {
   return multiplier;
  }
 };
+const import_ground_bone_moves = {isGroundBoneMove: function isGroundBoneMove(move) {
+  return move.type === "Ground" && ["boneclub", "bonerush", "bonemerang"].includes(move.id);
+}};
 const BattleFieldRules = [
 {id: "flowergarden1",
 name: "Flower Garden 1",
@@ -180,7 +183,7 @@ onBasePower(basePower, source, target, move) {
 },
 onAccuracy(accuracy, target, source, move) {
     const noguard = ["owntempo", "purepower", "sandveil", "steadfast"];
-    if (!target.hasAbility("unnerve") && source.hasAbility(noguard)) {
+    if (!target.hasAbilityOrPassive("unnerve") && source.hasAbilityOrPassive(noguard)) {
         return true;
     }
     return accuracy;
@@ -231,7 +234,7 @@ name: "Big Top Terrain",
 notes: ["Physical Fighting attacks and designated striking moves receive a high-striker damage roll: 0.5×, 1×, 1.5×, 2× or 3×. The roll uses the existing Striker Bonus rules. Sound, dance and acrobatic move changes are listed below."],
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
-    const boost = ["acrobatics", "fierydance", "firelash", "firstimpression", "fly", "petaldance", "powerwhip", "revelationdance", "vinewhip"];
+    const boost = ["winddance", "acrobatics", "fierydance", "firelash", "firstimpression", "fly", "petaldance", "powerwhip", "revelationdance", "vinewhip"];
     if (move.id === "payday" || move.id === "makeitrain") {
         modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 2);
     }
@@ -283,7 +286,7 @@ uncertain: false},
 name: "Burning Terrain",
 notes: ["Prevents freezing. Grounded non-Fire Pokémon without a protective ability or Aqua Ring take Fire-effectiveness-scaled residual damage based on 1/8 HP; vulnerable abilities and Tar Shot double it. Hail is removed. Rain/sand can extinguish the field. Blazing Mane grants +1 Speed on entry."],
 onBasePower(basePower, source, target, move) {
-    const terrainEndMoves = ["defog", "gust", "hurricane", "muddywater", "sandtomb", "razorwind", "sludgewave", "sparklingaria", "surf", "waterpledge", "watersport", "waterspout", "hydrovortex", "tailwind", "twister", "whirlwind", "oceanicoperatta", "continentalcrush", "supersonicskystrike", "gmaxwindrage"];
+    const terrainEndMoves = ["defog", "gust", "winddance", "airstreamassault", "hurricane", "muddywater", "sandtomb", "razorwind", "sludgewave", "sparklingaria", "surf", "waterpledge", "watersport", "waterspout", "hydrovortex", "tailwind", "twister", "whirlwind", "oceanicoperatta", "continentalcrush", "supersonicskystrike", "gmaxwindrage"];
     const rockfireMoves = ["rockslide", "smackdown", "thousandarrows"];
     const smogfireMoves = ["smog", "clearsmog"];
     let modifier = 1;
@@ -324,7 +327,7 @@ onBasePower(basePower, source, target, move) {
     let modifier = 1;
     const icy = ["blizzard", "subzeroslammer"];
     const cavern = ["powergem", "diamondstorm"];
-    const burning = ["heatwave", "lavaplume", "overheat", "incinerate", "inferno", "flameburst", "firepledge", "sacredfire"];
+    const burning = ["feverpitch", "heatwave", "lavaplume", "overheat", "incinerate", "inferno", "flameburst", "firepledge", "sacredfire"];
     const explosive = ["blastburn", "eruption", "infernooverdrive", "fusionfame", "mindblown", "searingshot", "burnup"];
     const dragonMove = ["dragonpulse", "dragonenergy"];
     const uberDragon = ["devastatingdrake", "dracometeor", "coreenforcer"];
@@ -367,7 +370,7 @@ name: "Chess Board Terrain",
 notes: ["Roles: King adds +1 move priority. Rook and Queen gain +1 Defense and Special Defense on entry. Bishop gains +1 Attack and Special Attack on entry. A full-HP Pawn survives one otherwise lethal direct attack with 1 HP, then becomes a used Pawn.","Queen attacks gain 1.5× power. Knight attacks against a Queen gain 3×; Knight attacks targeting all adjacent foes gain another 1.25×.","Ancient Power, Barrage, Continental Crush, Psychic, Rock Throw, Secret Power, Shattered Psyche and Strength gain Rock typing and 1.5× power. They gain another 2× against confused targets or targets with Unaware, Simple, Klutz, Oblivious or Defeatist; Adaptability, Synchronize, Anticipation and Telepathy instead halve them. Barrage also gains its own 2× bonus.","Fake Out, Feint, Feint Attack, First Impression, Shadow Sneak, Smart Strike and Sucker Punch gain 1.5×. Stomping Tantrum and Tectonic Rage gain 1.3×. Stomping Tantrum, Outrage and Thrash gain a critical-hit stage. Attacks against Reckless or Gorilla Tactics gain a critical-hit stage.","Accepts Auras, but blocks replacement by other full fields and Aura conversion."],
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
-    const chessMoves = ["ancientpower", "barrage", "continentalcrush", "psychic", "rockthrow", "secretpower", "shatteredpsyche", "strength"];
+    const chessMoves = ["queensgambit", "ancientpower", "barrage", "continentalcrush", "psychic", "rockthrow", "secretpower", "shatteredpsyche", "strength"];
     ;
     const boost = ["fakeout", "feint", "feintattack", "firstimpression", "shadowsneak", "smartstrike", "suckerpunch"];
     const dumbAbilities = ["unaware", "simple", "klutz", "oblivious", "defeatist"];
@@ -377,11 +380,11 @@ onBasePower(basePower, source, target, move) {
         modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 2);
     }
     if (chessMoves.includes(move.id)) {
-        if (target.hasAbility(dumbAbilities) || target.volatiles["confusion"]) {
+        if (target.hasAbilityOrPassive(dumbAbilities) || target.volatiles["confusion"] || move.id === "queensgambit" && target.hasAbilityOrPassive("gorillatactics")) {
             this.add("-message", "The complicated move made the pokemon cross-eyed!");
             modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 2);
         }
-        if (target.hasAbility(smartAbilities)) {
+        if (target.hasAbilityOrPassive(smartAbilities) || move.id === "queensgambit" && target.hasAbilityOrPassive("opportunist")) {
             this.add("-message", "The complicated move was easily analyzed by the pokemon!");
             modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 0.5);
         }
@@ -412,7 +415,7 @@ onBasePower(basePower, source, target, move) {
     return this.chainModify(modifier);
 },
 onModifyMove(move) {
-    const chessMoves = ["ancientpower", "barrage", "continentalcrush", "psychic", "rockthrow", "secretpower", "shatteredpsyche", "strength"];
+    const chessMoves = ["queensgambit", "ancientpower", "barrage", "continentalcrush", "psychic", "rockthrow", "secretpower", "shatteredpsyche", "strength"];
     ;
     const crazyMoves = ["stompingtantrum", "outrage", "thrash"];
     if (chessMoves.includes(move.id)) {
@@ -447,16 +450,16 @@ onBasePower(basePower, source, target, move) {
         modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 0.5);
     }
     if (moveTypes.includes("Fire")) {
-        if (source.hasAbility(["fullmetalbody", "turboblaze", "atrocity"])) {
+        if (source.hasAbilityOrPassive(["fullmetalbody", "turboblaze", "atrocity"])) {
             modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 2);
             this.add("-message", source.name + "'s " + source.ability + " defies the frozen night!");
         }
         else {
             this.add("-message", "The heat was swallowed by the frozen night!");
-            modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, source.hasAbility("soulfire") ? 0.75 : 0.5);
+            modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, source.hasAbilityOrPassive("soulfire") ? 0.75 : 0.5);
         }
     }
-    if (moveTypes.includes("Ghost") && source.hasAbility("soulfire")) {
+    if (moveTypes.includes("Ghost") && source.hasAbilityOrPassive("soulfire")) {
         modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 1.5);
     }
     if (reduced.includes(move.id)) {
@@ -469,15 +472,15 @@ onBasePower(basePower, source, target, move) {
     if (onePointFive.includes(move.id)) {
         modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 1.5);
     }
-    if (source.hasAbility("relentlesshunt")) {
+    if (source.hasAbilityOrPassive("relentlesshunt")) {
         modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 2);
     }
     return this.chainModify(modifier);
 },
 onModifyMove(move, pokemon) {
     const iceSubTypes = ["Rock", "Steel", "Ground", "Water"];
-    const armorizeSteel = pokemon.hasAbility("armorize") && move.type === "Steel";
-    if (iceSubTypes.includes(move.type) && !armorizeSteel && !move.types?.includes("Ice")) {
+    const armorizeSteel = pokemon.hasAbilityOrPassive("armorize") && move.type === "Steel";
+    if (iceSubTypes.includes(move.type) && !(0, import_ground_bone_moves.isGroundBoneMove)(move) && !armorizeSteel && !move.types?.includes("Ice")) {
         move.types = [move.type, "Ice"];
     }
     if (move.id === "freezeshock" || move.id === "iceburn") {
@@ -502,7 +505,7 @@ onAccuracy(accuracy, target, source, move) {
     return accuracy;
 },
 onModifyPriority(priority, pokemon, target, move) {
-    if (pokemon.hasAbility("relentlesshunt") && move.basePower <= 80)
+    if (pokemon.hasAbilityOrPassive("relentlesshunt") && move.basePower <= 80)
         return priority + 1;
 },
 onTryMove(source, target, move) {
@@ -524,8 +527,8 @@ onBasePower(basePower, source, target, move) {
     let modifier = 1;
     const poisonedMoves = ["appleacid", "bubble", "bubblebeam", "sparklingaria"];
     const smogMoves = ["smog", "clearsmog", "acidspray"];
-    const terrainEndMoves = ["defog", "gust", "hurricane", "razorwind", "tailwind", "twister", "whirlwind", "supersonicskystrike", "seedflare", "gmaxwindrage"];
-    const igniteMoves = ["eruption", "explosion", "firepledge", "flameburst", "heatwave", "incinerate", "lavaplume", "mindblown", "searingshot", "selfdestruct", "infernooverdrive"];
+    const terrainEndMoves = ["defog", "gust", "winddance", "airstreamassault", "hurricane", "razorwind", "tailwind", "twister", "whirlwind", "supersonicskystrike", "seedflare", "gmaxwindrage"];
+    const igniteMoves = ["infernalrage", "eruption", "explosion", "firepledge", "flameburst", "heatwave", "incinerate", "lavaplume", "mindblown", "searingshot", "selfdestruct", "infernooverdrive"];
     if (move.type === "Fire") {
         modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 1.5);
     }
@@ -694,7 +697,7 @@ notes: ["Rejects Auras and ordinary field replacement. Dragon Pokémon gain 1.3�
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
     const uberboost = ["smackdown", "thousandarrows", "continentalcrush", "tectonicrage", "dragonascent", "payday", "lusterpurge", "mistball"];
-    const boost = ["lavaplume", "magmastorm", "megakick", "makeitrain", "rockclimb", "strength", "diamondstorm", "makeitrain", "powergem", "shelltrap", "earthpower", "stompingtantrum"];
+    const boost = ["matrixshot", "lavaplume", "magmastorm", "megakick", "makeitrain", "rockclimb", "strength", "diamondstorm", "makeitrain", "powergem", "shelltrap", "earthpower", "stompingtantrum"];
     const terrain_change = ["glaciate", "hydrovortex", "oceanicoperetta", "subzeroslammer", "mistball"];
     const terrain_change1 = ["muddywater", "surf"];
     const change = terrain_change1.includes(move.id) ? 1 : move.id === "sparklingaria" ? 2 : 0;
@@ -760,7 +763,7 @@ onBasePower(basePower, source, target, move) {
     let modifier = 1;
     const quakemoves = ["bulldoze", "fissure", "earthquake", "explosion", "magnitude", "selfdestruct", "tectonicrage", "lightthatburnsthesky", "aurawheel", "discharge", "gigavolthavoc", "iondeluge", "overdrive"];
     const uberboost = ["doubleironbash", "flashcannon", "geargrind", "gyroball", "magnetbomb"];
-    const boost = ["steamroller", "technoblast"];
+    const boost = ["superumdmove", "steamroller", "technoblast"];
     if (move.type === "Electric") {
         modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 1.2);
     }
@@ -771,7 +774,7 @@ onBasePower(basePower, source, target, move) {
     if (boost.includes(move.id)) {
         modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 1.5);
     }
-    if (quakemoves.includes(move.id)) {
+    if (quakemoves.includes(move.id) || move.id === "superumdmove" && move.category === "Physical") {
         modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 1.3);
     }
     return this.chainModify(modifier);
@@ -825,8 +828,8 @@ name: "Forest Terrain",
 notes: ["Grass attacks gain 1.5× power. Cutting, fire and wind move interactions are listed below. Bloom Doom does not replace Forest with Grassy Terrain."],
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
-    const igniteMoves = ["eruption", "firepledge", "flameburst", "heatwave", "incinerate", "lavaplume", "mindblown", "searingshot", "infernooverdrive"];
-    const boosted = ["attackorder", "electroweb", "drumbeating", "skittersmack", "pounce"];
+    const igniteMoves = ["infernalrage", "eruption", "firepledge", "flameburst", "heatwave", "incinerate", "lavaplume", "mindblown", "searingshot", "infernooverdrive"];
+    const boosted = ["galestrike", "attackorder", "electroweb", "drumbeating", "skittersmack", "pounce"];
     const cutMoves = ["aircutter", "airslash", "breakingswipe", "furycutter", "psychocut", "slash"];
     const hauntedMoves = ["ominouswind", "phantomforce", "shadowforce", "spectralscream", "trickortreat"];
     const nerfed = ["muddywater", "surf"];
@@ -870,7 +873,7 @@ onBasePower(basePower, source, target, move) {
     return this.chainModify(modifier);
 },
 onModifyMove(move) {
-    const grassymoves = ["aircutter", "airslash", "breakingswipe", "furycutter", "psychocut", "slash", "cut"];
+    const grassymoves = ["galestrike", "aircutter", "airslash", "breakingswipe", "furycutter", "psychocut", "slash", "cut"];
     if (grassymoves.includes(move.id)) {
         move.types = [move.type, "Grass"];
     }
@@ -943,8 +946,8 @@ name: "Holy Terrain",
 notes: ["Damaging allied attacks are blocked. Normal attacks are super effective against Ghost/Dark typing. Special Fairy/Normal power is 1.5×; Dragon/Psychic power is 1.2×. Ghost and special Dark power is halved."],
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
-    const strong_boost = ["mysticalfire", "magicalleaf", "ancientpower", "judgment", "sacredfire", "extremespeed", "sacredsword", "return"];
-    const boost = ["psystrike", "aeroblast", "originpulse", "doomdesire", "mistball", "crushgrip", "lusterpurge", "secretsword", "psychoboost", "relicsong", "spacialrend", "hyperspacehole", "roaroftime", "landswrath", "precipiceblades", "dragonascent", "moongeistbeam", "sunsteelstrike", "prismaticlaser", "fleurcannon", "diamondstorm", "genesissupernova", "searingsunrazesmash", "menacingmoonrazemaelstrom"];
+    const strong_boost = ["mysticalfire", "magicalleaf", "ancientpower", "judgment", "deiludicium", "sacredfire", "extremespeed", "sacredsword", "return"];
+    const boost = ["multipulse", "psystrike", "aeroblast", "originpulse", "doomdesire", "mistball", "crushgrip", "lusterpurge", "secretsword", "psychoboost", "relicsong", "spacialrend", "hyperspacehole", "roaroftime", "landswrath", "precipiceblades", "dragonascent", "moongeistbeam", "sunsteelstrike", "prismaticlaser", "fleurcannon", "diamondstorm", "genesissupernova", "searingsunrazesmash", "menacingmoonrazemaelstrom"];
     const hauntedMoves = ["ominouswind", "phantomforce", "shadowforce", "spectralscream", "trickortreat"];
     if (move.id === "radiantassault") {
         this.add("-message", "Legendary power accelerated the attack!");
@@ -993,7 +996,7 @@ name: "Icy Terrain",
 notes: ["Grounded non-Ice Pokémon lose 25% Speed unless protected by Snow Cloak, Slush Rush, Ice Body, Refrigerate or Spiral Evolution. Ice Pokémon gain 1.5× Defense in hail. Icy Spikes hurt grounded entrants. Heat and underlying water affect field transitions."],
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
-    const igniteMoves = ["burningjealousy", "eruption", "firepledge", "flameburst", "heatwave", "incinerate", "infernooverdrive", "lavaplume", "magmadrift", "mindblown", "ragingfury", "searingshot"];
+    const igniteMoves = ["infernalrage", "burningjealousy", "eruption", "firepledge", "flameburst", "heatwave", "incinerate", "infernooverdrive", "lavaplume", "magmadrift", "mindblown", "ragingfury", "searingshot"];
     const quakeMoves = ["bulldoze", "earthquake", "fissure", "magnitude", "tectonicrage"];
     const hotWaterMoves = ["scald", "steameruption", "hydrosteam"];
     const hotWaterCount = this.field.terrainState.terrainChanges?.get("icyHotWater") ?? this.field.terrainState.terrainChanges?.get("previousTerrain") ?? 0;
@@ -1192,7 +1195,7 @@ onModifyMove(move) {
     }
 },
 onTryMove(source, target, move) {
-    if (move.type === "Ground" && move.category !== "Status" || move.id === "sandattack") {
+    if (move.type === "Ground" && move.category !== "Status" && !(0, import_ground_bone_moves.isGroundBoneMove)(move) || move.id === "sandattack") {
         this.add("-message", "...But there was no solid ground to attack from!");
         return false;
     }
@@ -1200,10 +1203,10 @@ onTryMove(source, target, move) {
 uncertain: false},
 {id: "newworldterrain",
 name: "New World Terrain",
-notes: ["Rejects weather and Auras. Grounded Pokémon lose 25% Speed unless protected by Limber, Web Assassin or Spiral Evolution; airborne Pokémon lose 10% Defense and Special Defense. Fortress Shell grants +1 Defense and Special Defense once per qualifying field. Terrain Pulse chooses a random type."],
+notes: ["Rejects weather and Auras. Grounded Pokémon lose 25% Speed unless protected by Limber, Web Assassin or Spiral Evolution; airborne Pokémon lose 10% Defense and Special Defense except ordinary Gardevoir with Void Veil. Fortress Shell grants +1 Defense and Special Defense once per qualifying field. Terrain Pulse chooses a random type."],
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
-    const boost = ["aurorabeam", "signalbeam", "flashcannon", "dazzlinggleam", "mirrorshot", "photongeyser", "psystrike", "aeroblast", "sacredfire", "mistball", "lusterpurge", "originpulse", "precipiceblades", "dragonascent", "psychoboost", "roaroftime", "magmastorm", "crushgrip", "judgment", "seedflare", "shadowforce", "searingshot", "vcreate", "secretsword", "sacredsword", "relicsong", "fusionbolt", "fusionflare", "iceburn", "freezeshock", "boltstrike", "blueflare", "technoblast", "oblivionwing", "landswrath", "thousandarrows", "thousandwaves", "diamondstorm", "steameruption", "coreenforcer", "fleurcannon", "prismaticlaser", "sunsteelstrike", "spectralthief", "moongeistbeam", "multiattack", "mindblown", "plasmafists", "earthpower", "powergem", "eruption", "continentalcrush", "genesissupernova", "soulstealing7starstrike", "searingsunrazesmash", "menacingmoonrazemaelstrom", "astralbarrage", "behemothbash", "behemothblade", "collisioncourse", "doubleironbash", "dragonenergy", "dynamaxcannon", "electrodrift", "eternabeam", "fierywrath", "glaciallance", "ruination", "freezingglare", "terastarstorm", "surgingstrikes", "malignantchain", "tachyoncutter", "mightycleave", "hydrosteam", "thunderclap", "ivycudgel", "psyblade", "sandsearstorm", "wildboltstorm", "springtidestorm", "thundercage", "thunderouskick", "wickedblow", "mirrorbeam"];
+    const boost = ["aurorabeam", "signalbeam", "flashcannon", "dazzlinggleam", "mirrorshot", "photongeyser", "psystrike", "aeroblast", "sacredfire", "mistball", "lusterpurge", "originpulse", "precipiceblades", "dragonascent", "psychoboost", "roaroftime", "magmastorm", "crushgrip", "judgment", "deiludicium", "seedflare", "shadowforce", "searingshot", "vcreate", "secretsword", "sacredsword", "relicsong", "fusionbolt", "fusionflare", "iceburn", "freezeshock", "boltstrike", "blueflare", "technoblast", "oblivionwing", "landswrath", "thousandarrows", "thousandwaves", "diamondstorm", "steameruption", "coreenforcer", "fleurcannon", "prismaticlaser", "sunsteelstrike", "spectralthief", "moongeistbeam", "multiattack", "mindblown", "plasmafists", "earthpower", "powergem", "eruption", "continentalcrush", "genesissupernova", "soulstealing7starstrike", "searingsunrazesmash", "menacingmoonrazemaelstrom", "astralbarrage", "behemothbash", "behemothblade", "collisioncourse", "doubleironbash", "dragonenergy", "dynamaxcannon", "electrodrift", "eternabeam", "fierywrath", "glaciallance", "ruination", "freezingglare", "terastarstorm", "surgingstrikes", "malignantchain", "tachyoncutter", "mightycleave", "hydrosteam", "thunderclap", "ivycudgel", "psyblade", "sandsearstorm", "wildboltstorm", "springtidestorm", "thundercage", "thunderouskick", "wickedblow", "mirrorbeam"];
     const strong_boost = ["vacuumwave", "dracometeor", "meteormash", "moonblast", "cometpunch", "swift", "meteorbeam", "hyperspacehole", "spacialrend", "hyperspacefury", "ancientpower", "futuredummy", "blackholeeclipse"];
     const weak_nerf = ["bulldoze", "earthquake", "magnitude"];
     if (move.id === "radiantassault") {
@@ -1218,7 +1221,7 @@ onBasePower(basePower, source, target, move) {
         this.add("-message", "The light shone through the infinite darkness!");
         modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 2);
     }
-    if (move.id === "doomdesire") {
+    if (move.id === "doomdesire" || move.id === "nostraswish") {
         this.add("-message", "A star came crashing down on " + target.name);
         modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 4);
     }
@@ -1238,7 +1241,7 @@ name: "Rainbow Terrain",
 notes: ["Eligible secondary-effect chances double unless the user has Serene Grace. Special Normal attacks gain 1.5× power and a random additional type. Sleeping Pokémon heal 1/16 HP; Comatose also qualifies unless combined with Magic Guard. Hail and sandstorm remove the field."],
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
-    const strengthenedMoves = ["aurorabeam", "dazzlinggleam", "dragonpulse", "firepledge", "fleurcannon", "grasspledge", "heartstamp", "hiddenpower", "judgment", "mirrorbeam", "mistball", "moonblast", "mysticalfire", "oceanicoperetta", "prismaticlaser", "relicsong", "sacredfire", "secretpower", "silverwind", "solarbeam", "solarblade", "sparklingaria", "triattack", "twinkletackle", "waterpledge", "weatherball", "zenheadbutt"];
+    const strengthenedMoves = ["aurorabeam", "dazzlinggleam", "dragonpulse", "firepledge", "fleurcannon", "grasspledge", "heartstamp", "hiddenpower", "judgment", "deiludicium", "mirrorbeam", "mistball", "moonblast", "mysticalfire", "oceanicoperetta", "prismaticlaser", "relicsong", "sacredfire", "secretpower", "silverwind", "solarbeam", "solarblade", "sparklingaria", "triattack", "twinkletackle", "waterpledge", "weatherball", "zenheadbutt"];
     const weakenedMoves = ["darkpulse", "nightdaze", "neverendingnightmare", "shadowball"];
     if (move.type === "Normal" && move.category === "Special") {
         modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 1.5);
@@ -1257,7 +1260,7 @@ onBasePower(basePower, source, target, move) {
     return this.chainModify(modifier);
 },
 onModifyMove(move, pokemon) {
-    if (move.secondaries && move.id !== "secretpower" && !pokemon.hasAbility("serenegrace")) {
+    if (move.secondaries && move.id !== "secretpower" && !pokemon.hasAbilityOrPassive("serenegrace")) {
         this.debug("doubling secondary chance");
         for (const secondary of move.secondaries) {
             if (secondary.chance)
@@ -1308,7 +1311,7 @@ onBasePower(basePower, source, target, move) {
     const multiplier = [0.8, 1.5, 0.5, 1.2, 2];
     const text = ["Bzzt", "Bzzapp!", "Bzt...", "Bzap!", "BZZZAPP!"];
     const electrified = ["geargrind", "gyroball", "hydrovortex", "magnetbomb", "muddywater", "surf", "flashcannon"];
-    const boosted = ["dazzlinggleam", "hydrovortex", "infernalparade"];
+    const boosted = ["superumdmove", "dazzlinggleam", "hydrovortex", "infernalparade"];
     const shadow = ["darkpulse", "nightdaze", "nightslash", "phantomforce", "shadowball", "shadowbone", "shadowclaw", "shadowforce", "shadowpunch", "shadowsneak"];
     const nerfed = ["lightthatburnsthesky"];
     const fieldchange = ["aurawheel", "chargebeam", "discharge", "gigavolthavoc", "iondeluge", "overdrive", "paraboliccharge", "wildcharge", "risingvoltage"];
@@ -1327,7 +1330,7 @@ onBasePower(basePower, source, target, move) {
     if (nerfed.includes(move.id)) {
         modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 0.5);
     }
-    if (fieldchange.includes(move.id)) {
+    if (fieldchange.includes(move.id) || move.id === "superumdmove" && move.category === "Special") {
         modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 1.3);
     }
     if (move.type === "Electric") {
@@ -1368,7 +1371,7 @@ onBasePower(basePower, source, target, move) {
     const boost_types = ["Rock", "Ice", "Flying"];
     const boost = ["vitalthrow", "circlethrow", "stormthrow", "ominouswind", "silverwind", "twister", "razorwind", "fairywind", "avalanche", "powdersnow", "hypervoice", "glaciate", "bittermalice"];
     const wind_boost = ["ominouswind", "icywind", "silverwind", "twister", "razorwind", "fairywind", "gust", "bleakwindstorm", "sandsearstorm", "wildboltstorm"];
-    const igniteMoves = ["eruption", "firepledge", "flameburst", "heatwave", "incinerate", "lavaplume", "mindblown", "searingshot", "infernooverdrive"];
+    const igniteMoves = ["infernalrage", "eruption", "firepledge", "flameburst", "heatwave", "incinerate", "lavaplume", "mindblown", "searingshot", "infernooverdrive"];
     if (boost_types.includes(move.type)) {
         this.add("-message", "The field strengthened the move's " + move.type + " typing");
         modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 1.5);
@@ -1416,7 +1419,7 @@ onBasePower(basePower, source, target, move) {
     const weak = ["scald", "eruption", "hydrosteam"];
     const boost = ["blizzard", "fairywind", "gust", "icywind", "ominouswind", "razorwind", "powdersnow", "silverwind", "twister", "mudslap", "mudshot", "mudbomb", "chillingwater"];
     const secondBoost = ["aeroblast", "aircutter", "airslash", "bleakwindstorm", "chillingwater", "fairywind", "glaciate", "gust", "hurricane", "ominouswind", "razorwind", "silverwind", "twister"];
-    const igniteMoves = ["eruption", "explosion", "firepledge", "flameburst", "heatwave", "incinerate", "lavaplume", "mindblown", "searingshot", "selfdestruct", "infernooverdrive"];
+    const igniteMoves = ["infernalrage", "eruption", "explosion", "firepledge", "flameburst", "heatwave", "incinerate", "lavaplume", "mindblown", "searingshot", "selfdestruct", "infernooverdrive"];
     if (weak.includes(move.id) || move.type === "Fire") {
         this.add("-message", "The fire was doused by the snow!");
         modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 0.5);
@@ -1455,7 +1458,7 @@ onBasePower(basePower, source, target, move) {
         }
         if (move.type === "Fairy") {
             this.add("-message", "Starlight supercharged the attack!");
-            modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 1.3);
+            modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, move.id === "nostraswish" ? 2 : 1.3);
         }
         if (move.id === "doomdesire") {
             this.add("-message", "A star came crashing down!");
@@ -1485,7 +1488,7 @@ onBasePower(basePower, source, target, move) {
     let modifier = 1;
     const scald = ["scald", "steameruption"];
     const steam = ["muddywater", "sparklingaria", "surf", "waterpledge", "waterspout", "hydrovortex", "oceanicoperetta"];
-    const igniteMoves = ["eruption", "explosion", "firepledge", "flameburst", "heatwave", "incinerate", "lavaplume", "mindblown", "searingshot", "selfdestruct", "infernooverdrive"];
+    const igniteMoves = ["infernalrage", "eruption", "explosion", "firepledge", "flameburst", "heatwave", "incinerate", "lavaplume", "mindblown", "searingshot", "selfdestruct", "infernooverdrive"];
     const freeze = ["blizzard", "glaciate", "subzeroslammer"];
     if (move.type === "Fire") {
         this.add("-message", "The attack was super-heated!");
@@ -1521,7 +1524,7 @@ onBasePower(basePower, source, target, move) {
     let modifier = 1;
     const strengthenedMoves = ["thousandarrows", "smackdown", "brine", "gunkshot", "hydrovortex", "mudbarrage", "mudbomb", "mudshot", "mudslap", "muddywater", "savagespinout", "sludgewave"];
     const weakenedMoves = ["bulldoze", "earthquake", "magnitude"];
-    const igniteMoves = ["eruption", "firepledge", "flameburst", "heatwave", "incinerate", "lavaplume", "mindblown", "searingshot", "infernooverdrive"];
+    const igniteMoves = ["infernalrage", "eruption", "firepledge", "flameburst", "heatwave", "incinerate", "lavaplume", "mindblown", "searingshot", "infernooverdrive"];
     if (move.type === "Poison" && target.isGrounded()) {
         modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 1.5);
     }
@@ -1623,7 +1626,7 @@ onBasePower(basePower, source, target, move) {
         modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 0.5);
         this.add("-message", "The light disappeared in the dark...");
     }
-    if (move.category === "Physical" && !source.hasType("Water") && !source.hasAbility(["steelworker", "schooling", "swiftswim"])) {
+    if (move.category === "Physical" && !source.hasType("Water") && !source.hasAbilityOrPassive(["steelworker", "schooling", "swiftswim"])) {
         modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 0.33);
     }
     return this.chainModify(modifier);
@@ -1644,7 +1647,7 @@ onModifyMove(move) {
             };
         }
     }
-    if (move.type === "Ground") {
+    if (move.type === "Ground" && !(0, import_ground_bone_moves.isGroundBoneMove)(move)) {
         move.midnightGround = true;
         move.type = "Water";
         delete move.types;
@@ -1655,7 +1658,7 @@ onModifyMove(move) {
     }
 },
 onAccuracy(accuracy, target, source) {
-    if (source.hasAbility("illuminate"))
+    if (source.hasAbilityOrPassive("illuminate"))
         return true;
 },
 onTryMove(pokemon, target, move) {
@@ -1700,10 +1703,10 @@ onBasePower(basePower, source, target, move) {
     if (move.type === "Water") {
         modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 1.5);
     }
-    if (move.category === "Physical" && move.type !== "Water" && !source.hasType("Water") && !source.hasAbility("steelworker") && !source.hasAbility("elevate") && !source.hasAbility("schooling") && !source.hasAbility("swiftswim")) {
+    if (move.category === "Physical" && move.type !== "Water" && !source.hasType("Water") && !source.hasAbilityOrPassive("steelworker") && !source.hasAbilityOrPassive("elevate") && !source.hasAbilityOrPassive("schooling") && !source.hasAbilityOrPassive("swiftswim")) {
         modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 0.5);
     }
-    if (source.hasAbility("propellertail") && move.priority > 0) {
+    if (source.hasAbilityOrPassive("propellertail") && move.priority > 0) {
         modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 1.5);
     }
     if (change.includes(move.id) || this.field.terrainState.terrainChanges?.get("sludgewave") === 1 && move.id === "sludgewave") {
@@ -1712,7 +1715,7 @@ onBasePower(basePower, source, target, move) {
     return this.chainModify(modifier);
 },
 onModifyMove(move) {
-    if (move.type === "Ground") {
+    if (move.type === "Ground" && !(0, import_ground_bone_moves.isGroundBoneMove)(move)) {
         move.types = [move.type, "Water"];
     }
     if (move.id === "dragondarts" || move.id === "gravapple") {
@@ -1721,7 +1724,7 @@ onModifyMove(move) {
     }
 },
 onAccuracy(accuracy, target, source, move) {
-    if (move.type === "Electric" && typeof move.accuracy === "number") {
+    if (move.type === "Electric" && typeof accuracy === "number") {
         return true;
     }
 },
@@ -1753,7 +1756,7 @@ onBasePower(basePower, source, target, move) {
         this.add("-message", "The volcanic air strengthened the attack!");
         modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 1.5);
     }
-    const caveMoves = ["sandtomb", "scorchingsands", "sandsearstorm", "defog", "gust", "hurricane", "razorwind", "tailwind", "twister", "whirlwind", "muddywater", "sparklingaria", "watersport", "surf", "waterpledge", "sludgewave", "gmaxwindrage"];
+    const caveMoves = ["sandtomb", "scorchingsands", "sandsearstorm", "defog", "gust", "winddance", "airstreamassault", "hurricane", "razorwind", "tailwind", "twister", "whirlwind", "muddywater", "sparklingaria", "watersport", "surf", "waterpledge", "sludgewave", "gmaxwindrage"];
     const caveZMoves = ["continentalcrush", "supersonicskystrike", "hydrovortex", "aciddownpour"];
     const dragonMove = ["dragonpulse", "dragonenergy"];
     const uberDragon = ["devastatingdrake", "dracometeor", "coreenforcer"];
@@ -1865,7 +1868,7 @@ onBasePower(basePower, source, target, move) {
         this.add("-message", "The attack rode the current!");
         modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 2);
     }
-    if (source.hasAbility("propellertail") && move.priority > 0) {
+    if (source.hasAbilityOrPassive("propellertail") && move.priority > 0) {
         modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 1.5);
     }
     if (change.includes(move.id) || this.field.terrainState.terrainChanges?.get("sludgewave") === 1 && move.id === "sludgewave") {
@@ -1874,7 +1877,7 @@ onBasePower(basePower, source, target, move) {
     return this.chainModify(modifier);
 },
 onTryMove(source, target, move) {
-    if (move.type === "Ground" && move.category !== "Status" || move.id === "sandattack") {
+    if (move.type === "Ground" && move.category !== "Status" && !(0, import_ground_bone_moves.isGroundBoneMove)(move) || move.id === "sandattack") {
         this.add("-message", "...But there was no solid ground to attack from!");
         return false;
     }
@@ -2826,7 +2829,7 @@ uncertain: false},
         };
       }
     },
-base: {"self":{"volatileStatus":"lockedmove"},"critRatio":1},
+base: {"self":{"volatileStatus":"lockedmove"},"secondaries":[{"chance":30,"status":"brn"}],"critRatio":1},
 uncertain: false},
 "risingvoltage": {basePowerCallback(source, target, move) {
       if ((0, import_adaptive_cycle.adaptiveEnvironment)(target, "fields") && !this.field.isAura("electricterrain")) return move.basePower;
@@ -3542,11 +3545,63 @@ onBasePower(basePower, source, target) {
       if (this.field.isTerrain("forestterrain")) return this.chainModify(1.5);
     },
 base: {"volatileStatus":"partiallytrapped","critRatio":1},
+uncertain: false},
+"aquabatics": {onModifyMove(move) {
+    if (this.field.isTerrain("bigtopterrain")) move.boosts = { spa: 2, spe: 2 };
+  },
+base: {"boosts":{"spa":1,"spe":1},"critRatio":1},
+uncertain: false},
+"superumdmove": {onModifyMove(move) { move.category = this.sample(['Physical', 'Special']); },
+base: {"critRatio":1},
+uncertain: true},
+"kaboom": {onModifyMove(move) {
+    if (this.field.isTerrainOrAura("electricterrain")) delete move.recoil;
+  },
+base: {"recoil":[1,4],"secondaries":[{"chance":100,"self":{"boosts":{"spa":1}}}],"critRatio":1},
+uncertain: false},
+"cactibash": {onBasePower(bp, source, target) {
+      if (this.field.isTerrain("desertterrain")) return this.chainModify((0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 1.5));
+    },
+base: {"critRatio":1},
+uncertain: false},
+"corrosivestrike": {onBasePower(bp, source, target) {
+      if (this.field.isTerrain("corrosiveterrain")) return this.chainModify((0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 1.5));
+    },
+base: {"volatileStatus":"corrosivestrike","critRatio":1},
+uncertain: false},
+"flutterscales": {onBasePower(bp, source, target) {
+      if (this.field.isTerrainOrAura("rainbowterrain")) return this.chainModify((0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 1.5));
+    },
+base: {"critRatio":1},
+uncertain: false},
+"spiritmend": {onModifyMove(move) {
+    if (this.field.isTerrain(["darkcrystalcavernterrain", "shortcircuitterrain", "newworldterrain"])) move.heal = [66, 100];
+  },
+base: {"boosts":{"spd":1},"heal":[1,2],"critRatio":1},
+uncertain: false},
+"chistrike": {onBasePower(bp, source, target) {
+    if (this.field.isTerrain("ashenbeachterrain")) return this.chainModify((0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 1.3));
+  },
+base: {"critRatio":1},
+uncertain: false},
+"gunkrock": {onBasePower(bp, source, target) {
+    if (this.field.isTerrain("wastelandterrain")) return this.chainModify((0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 1.5));
+  },
+base: {"secondaries":[{"chance":30}],"critRatio":1},
+uncertain: false},
+"queensgambit": {onModifyMove(move, source) { if (this.field.isTerrain('chessboardterrain') && source.Role === 'Queen') move.willCrit = true; },
+base: {"self":{"boosts":{"def":-1,"spd":-1}},"critRatio":1},
+uncertain: false},
+"m3g4qu4k3": {onBasePower(basePower, source, target) {
+      if (this.field.isTerrain("glitchterrain")) return this.chainModify((0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 1.3));
+    },
+base: {"critRatio":1},
 uncertain: false}};
-const BattleAuraRules = {"electricterrain":{"id":"electricterrain","name":"Electric Aura","turns":5,"mimicryType":"Electric","secretPowerMove":"shockwave","naturePowerMove":"thunderbolt","damageMultipliers":{"explosion":1.5,"selfdestruct":1.5,"hurricane":1.5,"surf":1.5,"smackdown":1.5,"muddywater":1.5,"thousandarrows":1.5,"wildboltstorm":1.5,"magnetbomb":2},"secondaryTypeAdditions":{"explosion":"Electric","selfdestruct":"Electric","hurricane":"Electric","surf":"Electric","smackdown":"Electric","muddywater":"Electric","thousandarrows":"Electric"},"typeMultipliers":{"Electric":1.3},"typeCondition":"electric","moveMessages":{"explosion":"The explosion became hyper-charged!","selfdestruct":"The explosion became hyper-charged!","hurricane":"The attack became hyper-charged!","surf":"The attack became hyper-charged!","smackdown":"The attack became hyper-charged!","muddywater":"The attack became hyper-charged!","thousandarrows":"The attack became hyper-charged!","wildboltstorm":"The attack became hyper-charged!","magnetbomb":"The attack powered up!"},"typeMessage":"The Electric Aura strengthened the attack!","endMessage":"The electricity disappeared from the battlefield.","statusBuffs":["magnetrise","risingvoltage","psyblade"],"statusNerfs":[]},"grassyterrain":{"id":"grassyterrain","name":"Grassy Aura","turns":5,"mimicryType":"Grass","secretPowerMove":"seedbomb","naturePowerMove":"energyball","damageMultipliers":{"fairywind":1.5,"silverwind":1.5,"ominouswind":1.5,"icywind":1.5,"razorwind":1.5,"gust":1.5,"twister":1.5},"secondaryTypeAdditions":{},"typeMultipliers":{"Grass":1.3},"typeCondition":"grounded","moveMessages":{"fairywind":"The wind picked up strength from the Aura!","silverwind":"The wind picked up strength from the Aura!","ominouswind":"The wind picked up strength from the Aura!","icywind":"The wind picked up strength from the Aura!","razorwind":"The wind picked up strength from the Aura!","gust":"The wind picked up strength from the Aura!","twister":"The wind picked up strength from the Aura!"},"typeMessage":"The Grassy Aura strengthened the attack!","endMessage":"The grass disappeared from the battlefield.","statusBuffs":["grassyglide"],"statusNerfs":[]},"mistyterrain":{"id":"mistyterrain","name":"Misty Aura","turns":5,"mimicryType":"Fairy","secretPowerMove":"mistball","naturePowerMove":"mistball","damageMultipliers":{"mysticalfire":1.5,"magicalleaf":1.5,"doomdesire":1.5,"icywind":1.5,"mistball":1.5,"aurasphere":1.5,"steameruption":1.5,"silverwind":1.5,"moongeistbeam":1.5,"smog":1.5,"clearsmog":1.5,"strangesteam":1.5,"springtidestorm":1.5,"hydrosteam":1.5},"secondaryTypeAdditions":{},"typeMultipliers":{"Fairy":1.3},"typeCondition":"none","moveMessages":{"mysticalfire":"The mist's energy strengthened the attack!","magicalleaf":"The mist's energy strengthened the attack!","doomdesire":"The mist's energy strengthened the attack!","icywind":"The mist's energy strengthened the attack!","mistball":"The mist's energy strengthened the attack!","aurasphere":"The mist's energy strengthened the attack!","steameruption":"The mist's energy strengthened the attack!","silverwind":"The mist's energy strengthened the attack!","moongeistbeam":"The mist's energy strengthened the attack!","smog":"The mist's energy strengthened the attack!","clearsmog":"The mist's energy strengthened the attack!","strangesteam":"The mist's energy strengthened the attack!","springtidestorm":"The mist's energy strengthened the attack!","hydrosteam":"The mist's energy strengthened the attack!"},"typeMessage":"The Misty Aura strengthened the attack!","endMessage":"The mist disappeared from the battlefield.","statusBuffs":["mistyexplosion"],"statusNerfs":[]},"rainbowterrain":{"id":"rainbowterrain","name":"Rainbow Aura","turns":5,"mimicryType":"Dragon","secretPowerMove":"aurorabeam","naturePowerMove":"aurorabeam","damageMultipliers":{"silverwind":1.5,"mysticalfire":1.5,"dragonpulse":1.5,"triattack":1.5,"sacredfire":1.5,"firepledge":1.5,"waterpledge":1.5,"grasspledge":1.5,"aurorabeam":1.5,"mirrorbeam":1.5,"judgment":1.5,"relicsong":1.5,"hiddenpower":1.5,"secretpower":1.5,"weatherball":1.5,"mistball":1.5,"heartstamp":1.5,"moonblast":1.5,"zenheadbutt":1.5,"sparklingaria":1.5,"fleurcannon":1.5,"prismaticlaser":1.5,"twinkletackle":1.5,"oceanicoperetta":1.5,"solarbeam":1.5,"solarblade":1.5,"dazzlinggleam":1.5,"luminacrash":1.5},"secondaryTypeAdditions":{},"typeMultipliers":{"Normal":1.3},"typeCondition":"special","moveMessages":{"silverwind":"The attack was rainbow-charged!","mysticalfire":"The attack was rainbow-charged!","dragonpulse":"The attack was rainbow-charged!","triattack":"The attack was rainbow-charged!","sacredfire":"The attack was rainbow-charged!","firepledge":"The attack was rainbow-charged!","waterpledge":"The attack was rainbow-charged!","grasspledge":"The attack was rainbow-charged!","aurorabeam":"The attack was rainbow-charged!","mirrorbeam":"The attack was rainbow-charged!","judgment":"The attack was rainbow-charged!","relicsong":"The attack was rainbow-charged!","hiddenpower":"The attack was rainbow-charged!","secretpower":"The attack was rainbow-charged!","weatherball":"The attack was rainbow-charged!","mistball":"The attack was rainbow-charged!","heartstamp":"The attack was rainbow-charged!","moonblast":"The attack was rainbow-charged!","zenheadbutt":"The attack was rainbow-charged!","sparklingaria":"The attack was rainbow-charged!","fleurcannon":"The attack was rainbow-charged!","prismaticlaser":"The attack was rainbow-charged!","twinkletackle":"The attack was rainbow-charged!","oceanicoperetta":"The attack was rainbow-charged!","solarbeam":"The attack was rainbow-charged!","solarblade":"The attack was rainbow-charged!","dazzlinggleam":"The attack was rainbow-charged!","luminacrash":"The attack was rainbow-charged!"},"typeMessage":"The rainbow energized the attack!","endMessage":"The rainbow disappeared.","statusBuffs":[],"statusNerfs":[]},"psychicterrain":{"id":"psychicterrain","name":"Psychic Aura","turns":5,"mimicryType":"Psychic","secretPowerMove":"psychic","naturePowerMove":"psychic","damageMultipliers":{"secretpower":1.5,"hiddenpower":1.5,"hex":1.5,"magicalleaf":1.5,"mysticalfire":1.5,"moonblast":1.5,"aurasphere":1.5,"focusblast":1.5,"mindblown":1.5},"secondaryTypeAdditions":{},"typeMultipliers":{"Psychic":1.3},"typeCondition":"psychic","moveMessages":{"secretpower":"The psychic energy strengthened the attack!","hiddenpower":"The psychic energy strengthened the attack!","hex":"The psychic energy strengthened the attack!","magicalleaf":"The psychic energy strengthened the attack!","mysticalfire":"The psychic energy strengthened the attack!","moonblast":"The psychic energy strengthened the attack!","aurasphere":"The psychic energy strengthened the attack!","focusblast":"The psychic energy strengthened the attack!","mindblown":"The psychic energy strengthened the attack!"},"typeMessage":"The Psychic Aura strengthened the attack!","endMessage":"The psychic energy disappeared from the battlefield.","statusBuffs":["expandingforce"],"statusNerfs":[]}};
+const BattleAuraRules = {"frozenaura":{"id":"frozenaura","name":"Frozen Aura","turns":5,"mimicryType":"Ice","secretPowerMove":"bodyslam","naturePowerMove":"icebeam","damageMultipliers":{},"secondaryTypeAdditions":{},"typeMultipliers":{"Ice":1.2},"typeCondition":"none","moveMessages":{},"typeMessage":"The Frozen Aura strengthened the attack!","endMessage":"The Frozen Aura faded.","statusBuffs":[],"statusNerfs":[]},"electricterrain":{"id":"electricterrain","name":"Electric Aura","turns":5,"mimicryType":"Electric","secretPowerMove":"shockwave","naturePowerMove":"thunderbolt","damageMultipliers":{"explosion":1.5,"selfdestruct":1.5,"hurricane":1.5,"surf":1.5,"smackdown":1.5,"muddywater":1.5,"thousandarrows":1.5,"wildboltstorm":1.5,"magnetbomb":2},"secondaryTypeAdditions":{"explosion":"Electric","selfdestruct":"Electric","hurricane":"Electric","surf":"Electric","smackdown":"Electric","muddywater":"Electric","thousandarrows":"Electric"},"typeMultipliers":{"Electric":1.3},"typeCondition":"electric","moveMessages":{"explosion":"The explosion became hyper-charged!","selfdestruct":"The explosion became hyper-charged!","hurricane":"The attack became hyper-charged!","surf":"The attack became hyper-charged!","smackdown":"The attack became hyper-charged!","muddywater":"The attack became hyper-charged!","thousandarrows":"The attack became hyper-charged!","wildboltstorm":"The attack became hyper-charged!","magnetbomb":"The attack powered up!"},"typeMessage":"The Electric Aura strengthened the attack!","endMessage":"The electricity disappeared from the battlefield.","statusBuffs":["magnetrise","risingvoltage","psyblade"],"statusNerfs":[]},"grassyterrain":{"id":"grassyterrain","name":"Grassy Aura","turns":5,"mimicryType":"Grass","secretPowerMove":"seedbomb","naturePowerMove":"energyball","damageMultipliers":{"fairywind":1.5,"silverwind":1.5,"ominouswind":1.5,"icywind":1.5,"razorwind":1.5,"gust":1.5,"twister":1.5},"secondaryTypeAdditions":{},"typeMultipliers":{"Grass":1.3},"typeCondition":"grounded","moveMessages":{"fairywind":"The wind picked up strength from the Aura!","silverwind":"The wind picked up strength from the Aura!","ominouswind":"The wind picked up strength from the Aura!","icywind":"The wind picked up strength from the Aura!","razorwind":"The wind picked up strength from the Aura!","gust":"The wind picked up strength from the Aura!","twister":"The wind picked up strength from the Aura!"},"typeMessage":"The Grassy Aura strengthened the attack!","endMessage":"The grass disappeared from the battlefield.","statusBuffs":["grassyglide"],"statusNerfs":[]},"mistyterrain":{"id":"mistyterrain","name":"Misty Aura","turns":5,"mimicryType":"Fairy","secretPowerMove":"mistball","naturePowerMove":"mistball","damageMultipliers":{"mysticalfire":1.5,"magicalleaf":1.5,"doomdesire":1.5,"icywind":1.5,"mistball":1.5,"aurasphere":1.5,"steameruption":1.5,"silverwind":1.5,"moongeistbeam":1.5,"smog":1.5,"clearsmog":1.5,"strangesteam":1.5,"springtidestorm":1.5,"hydrosteam":1.5},"secondaryTypeAdditions":{},"typeMultipliers":{"Fairy":1.3},"typeCondition":"none","moveMessages":{"mysticalfire":"The mist's energy strengthened the attack!","magicalleaf":"The mist's energy strengthened the attack!","doomdesire":"The mist's energy strengthened the attack!","icywind":"The mist's energy strengthened the attack!","mistball":"The mist's energy strengthened the attack!","aurasphere":"The mist's energy strengthened the attack!","steameruption":"The mist's energy strengthened the attack!","silverwind":"The mist's energy strengthened the attack!","moongeistbeam":"The mist's energy strengthened the attack!","smog":"The mist's energy strengthened the attack!","clearsmog":"The mist's energy strengthened the attack!","strangesteam":"The mist's energy strengthened the attack!","springtidestorm":"The mist's energy strengthened the attack!","hydrosteam":"The mist's energy strengthened the attack!"},"typeMessage":"The Misty Aura strengthened the attack!","endMessage":"The mist disappeared from the battlefield.","statusBuffs":["mistyexplosion"],"statusNerfs":[]},"rainbowterrain":{"id":"rainbowterrain","name":"Rainbow Aura","turns":5,"mimicryType":"Dragon","secretPowerMove":"aurorabeam","naturePowerMove":"aurorabeam","damageMultipliers":{"silverwind":1.5,"mysticalfire":1.5,"dragonpulse":1.5,"triattack":1.5,"sacredfire":1.5,"firepledge":1.5,"waterpledge":1.5,"grasspledge":1.5,"aurorabeam":1.5,"mirrorbeam":1.5,"judgment":1.5,"deiludicium":1.5,"relicsong":1.5,"hiddenpower":1.5,"secretpower":1.5,"weatherball":1.5,"mistball":1.5,"heartstamp":1.5,"moonblast":1.5,"zenheadbutt":1.5,"sparklingaria":1.5,"fleurcannon":1.5,"prismaticlaser":1.5,"twinkletackle":1.5,"oceanicoperetta":1.5,"solarbeam":1.5,"solarblade":1.5,"dazzlinggleam":1.5,"luminacrash":1.5},"secondaryTypeAdditions":{},"typeMultipliers":{"Normal":1.3},"typeCondition":"special","moveMessages":{"silverwind":"The attack was rainbow-charged!","mysticalfire":"The attack was rainbow-charged!","dragonpulse":"The attack was rainbow-charged!","triattack":"The attack was rainbow-charged!","sacredfire":"The attack was rainbow-charged!","firepledge":"The attack was rainbow-charged!","waterpledge":"The attack was rainbow-charged!","grasspledge":"The attack was rainbow-charged!","aurorabeam":"The attack was rainbow-charged!","mirrorbeam":"The attack was rainbow-charged!","judgment":"The attack was rainbow-charged!","deiludicium":"The attack was rainbow-charged!","relicsong":"The attack was rainbow-charged!","hiddenpower":"The attack was rainbow-charged!","secretpower":"The attack was rainbow-charged!","weatherball":"The attack was rainbow-charged!","mistball":"The attack was rainbow-charged!","heartstamp":"The attack was rainbow-charged!","moonblast":"The attack was rainbow-charged!","zenheadbutt":"The attack was rainbow-charged!","sparklingaria":"The attack was rainbow-charged!","fleurcannon":"The attack was rainbow-charged!","prismaticlaser":"The attack was rainbow-charged!","twinkletackle":"The attack was rainbow-charged!","oceanicoperetta":"The attack was rainbow-charged!","solarbeam":"The attack was rainbow-charged!","solarblade":"The attack was rainbow-charged!","dazzlinggleam":"The attack was rainbow-charged!","luminacrash":"The attack was rainbow-charged!"},"typeMessage":"The rainbow energized the attack!","endMessage":"The rainbow disappeared.","statusBuffs":[],"statusNerfs":[]},"psychicterrain":{"id":"psychicterrain","name":"Psychic Aura","turns":5,"mimicryType":"Psychic","secretPowerMove":"psychic","naturePowerMove":"psychic","damageMultipliers":{"secretpower":1.5,"hiddenpower":1.5,"hex":1.5,"magicalleaf":1.5,"mysticalfire":1.5,"moonblast":1.5,"aurasphere":1.5,"focusblast":1.5,"mindblown":1.5},"secondaryTypeAdditions":{},"typeMultipliers":{"Psychic":1.3},"typeCondition":"psychic","moveMessages":{"secretpower":"The psychic energy strengthened the attack!","hiddenpower":"The psychic energy strengthened the attack!","hex":"The psychic energy strengthened the attack!","magicalleaf":"The psychic energy strengthened the attack!","mysticalfire":"The psychic energy strengthened the attack!","moonblast":"The psychic energy strengthened the attack!","aurasphere":"The psychic energy strengthened the attack!","focusblast":"The psychic energy strengthened the attack!","mindblown":"The psychic energy strengthened the attack!"},"typeMessage":"The Psychic Aura strengthened the attack!","endMessage":"The psychic energy disappeared from the battlefield.","statusBuffs":["expandingforce"],"statusNerfs":[]}};
 const BattleAuraMethods = {baseAuraTypeBoost(move, source, target) {
     if ((0, import_adaptive_cycle.adaptiveEnvironment)(target, "fields")) return 1;
     const type = move.type;
+    if (move.id === "deiludicium" && this.isTerrain("rainbowterrain") && type === "Normal" && move.category === "Special") return 1.5;
     if (this.terrain === "bewitchedwoodsterrain" && type === "Fairy") return 1.5;
     if (this.terrain === "glitchterrain" && type === "Psychic") return 1.2;
     if (this.terrain === "factoryterrain" && type === "Electric") return 1.2;
@@ -3571,6 +3626,7 @@ auraPowerMultiplier(source, target, move) {
     const aura = this.getAura();
     if (!aura || move.category === "Status") return 1;
     let multiplier = aura.damageMultipliers[move.id] || 1;
+    if (move.id === "deiludicium" && this.isAura("rainbowterrain") && this.isTerrain("rainbowterrain")) multiplier = 1;
     if (multiplier !== 1) this.battle.add("-message", aura.moveMessages[move.id]);
     const types = move.types || [move.type];
     const grounded = source.isGrounded() && !source.isSemiInvulnerable();

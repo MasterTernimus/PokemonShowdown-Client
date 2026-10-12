@@ -15,10 +15,10 @@ describe('Composite description client parity', () => {
  it('matches all simulator summaries, installed data and manifest', () => {
   const raw = require('../play.pokemonshowdown.com/data/abilities.js').BattleAbilities;
   const snapshot = require('../server-data-sync-manifest.json').snapshot.abilities;
-  for (const [id, text] of Object.entries({...expected,...require('./fixtures/mega-approved-descriptions.json'),...require('./fixtures/selected-simplifications-descriptions.json')})) for (const key of ['shortDesc', 'desc']) {
-   assert.equal(Dex.abilities.get(id)[key], text[key], id + ' hover/selector');
-   assert.equal(raw[id][key], text[key], id + ' installed');
-   assert.equal(snapshot[id][key], text[key], id + ' snapshot');
+  for (const [id, text] of Object.entries({...expected,...require('./fixtures/mega-approved-descriptions.json'),...require('./fixtures/selected-simplifications-descriptions.json'),...require('./fixtures/grip-pressure-descriptions.json'),...require('./fixtures/shelter-audit-descriptions.json'),...require('./fixtures/shortlist-descriptions.json')})) for (const key of ['shortDesc', 'desc']) {
+   assert.equal(Dex.abilities.get(id)[key], require('./fixtures/mega-approval-overlays').description(id,key,text[key]), id + ' hover/selector');
+   assert.equal(raw[id][key], require('./fixtures/mega-approval-overlays').description(id,key,text[key]), id + ' installed');
+   assert.equal(snapshot[id][key], require('./fixtures/mega-approval-overlays').description(id,key,text[key]), id + ' snapshot');
   }
  });
  it('resolves renamed aliases and nested identities without repeated effects', () => {

@@ -7,6 +7,14 @@ describe('Passive component separation client parity', () => {
   it(row.id + ' slot ' + slot.slot + ' separates selected and passive identities', () => {
    const species = Dex.species.get(row.id);
    for (const component of slot.overlap) {
+    if (row.id === 'gliscor') { assert.deepEqual(species.passives,['poisonheal']); assert(Dex.getAbilityEffects('venompincer').has('hypercutter')); continue; }
+    if (['kingler','fearow','pinsir'].includes(row.id)) {
+     const passive = {kingler:'titanpincer',fearow:'lancepoint',pinsir:'lockinggrip'}[row.id];
+     assert.deepEqual(species.passives,[passive]);
+     assert.equal(Dex.abilities.get(species.abilities[slot.slot]).id,component);
+     assert(!Dex.getAbilityEffects(passive).has(component));
+     continue;
+    }
     assert(species.passives.includes(component));
     const activeId = Dex.abilities.get(species.abilities[slot.slot]).id;
     const excluded = Dex.getAbilityComponentExclusions(activeId, species.passives);
@@ -32,7 +40,7 @@ describe('Passive component separation client parity', () => {
   for (const id of ['pollenbloom','unboundblaze','proficient']) assert.equal(Dex.getAbilityEffects(id).has('proficient'),id==='proficient');
   for (const id of ['toxicbloom','atrocity','tidaljaw']) assert(!Dex.getAbilityEffects(id).has('proficient'));
   assert.deepEqual(Dex.getAbilityDisplayComponents('scaleshelter'), ['overcoat']);
-  assert.equal(Dex.abilities.get('scaleshelter').shortDesc, 'Blocks powder moves and sandstorm/hail damage.');
+  assert.equal(Dex.abilities.get('scaleshelter').shortDesc, 'Overcoat; first selected Quiver Dance each entry grants a 20% whole-attack HP ward.');
  });
  it('uses actual passive Levitate after suppression but removed borrowed immunity stays gone', () => {
   const battle = new Battle({debug:true,log:['|init|battle','|gen|9','|gametype|singles','|switch|p1a: Mew|Mew, L100|100/100','|switch|p2a: Mew|Mew, L100|100/100']});

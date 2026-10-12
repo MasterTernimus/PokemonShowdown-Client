@@ -52,6 +52,8 @@ const {getAbilityDisplayComponents} = require(path.join(server, 'dist/data/abili
 for (const id of Object.keys(tables.abilities)) {
 	if (Dex.abilities.get(id).num > 310 || getAbilityDisplayComponents(id).length) groups.abilities.add(id);
 }
+// Custom moves can be installed by a new untracked module rather than an inline data diff.
+for (const move of Dex.moves.all()) if (move.num > 10000) groups.moves.add(move.id);
 for (const species of Dex.species.all()) {
 	// Explicit empty rows prevent combat variants inheriting the base species' passives in client fallbacks.
 	if (species.passives.length || Dex.species.get(species.baseSpecies).passives.length) groups.species.add(species.id);
@@ -61,7 +63,7 @@ for (const species of Dex.species.all()) {
 for (const id of Object.keys(Dex.data.Pokedex)) groups.species.add(id);
 const select = (entry, keys) => Object.fromEntries(keys.map(key => [key, entry[key]]).filter(([, value]) => value !== undefined));
 const passiveCleanup = require(path.join(server, 'dist/data/passive-ability-cleanup'));
-const snapshot = {componentExclusions: passiveCleanup.AbilityComponentExclusions, sharedPassiveComponents: passiveCleanup.SharedPassiveComponents, sharedPassiveDescriptions: passiveCleanup.SharedPassiveAbilityDescriptions, sharedPassiveAdditions: passiveCleanup.SharedPassiveComponentAdditions, species: {}, abilities: {}, moves: {}, items: {}, components: {}};
+const snapshot = {signaturePassiveDescriptions: passiveCleanup.SignaturePassiveDescriptions || {}, signaturePassiveRemovedComponents: passiveCleanup.SignaturePassiveRemovedComponents || {}, signaturePassiveComponents: passiveCleanup.SignaturePassiveComponents || {}, componentExclusions: passiveCleanup.AbilityComponentExclusions, sharedPassiveComponents: passiveCleanup.SharedPassiveComponents, sharedPassiveDescriptions: passiveCleanup.SharedPassiveAbilityDescriptions, sharedPassiveAdditions: passiveCleanup.SharedPassiveComponentAdditions, species: {}, abilities: {}, moves: {}, items: {}, components: {}};
 const {AbilityComponents} = require(path.join(server, 'dist/data/ability-components'));
 for (const id of [...groups.species].sort()) {
 	const data = Dex.species.get(id);
@@ -72,9 +74,21 @@ for (const id of [...groups.abilities].sort()) {
 	snapshot.abilities[id] = select(data, ['name', 'num', 'gen', 'desc', 'shortDesc', 'rating', 'flags', 'isNonstandard']);
 	snapshot.components[id] = AbilityComponents[id] || [];
 }
+// Character aliases come from the approved credit tables, not prose substring matching.
+const signatureCredits = {
+ ...require(path.join(server, 'dist/data/rejuvenation-signature-moves')).RejuvenationSignatureCredits,
+ ...require(path.join(server, 'dist/data/yang-signature-moves-a')).YangSignatureCreditsA,
+ ...require(path.join(server, 'dist/data/yang-signature-moves-b')).YangSignatureCreditsB,
+};
+function characterAliases(credit) {
+ const names = credit.replace(/\((?:also|through proxies)\s+([^)]*)\)/g, ', $1')
+  .replace(/\([^)]*\)/g, '').replace(/^the\s+/i, '').split(/,|\s+and\s+/i);
+ return [...new Set(names.map(name => name.toLowerCase().replace(/[^a-z0-9]/g, '')).filter(Boolean))];
+}
 for (const id of [...groups.moves].sort()) {
 	const data = Dex.moves.get(id);
 	snapshot.moves[id] = select(data, ['name', 'num', 'type', 'category', 'basePower', 'accuracy', 'pp', 'priority', 'target', 'flags', 'desc', 'shortDesc']);
+	if (signatureCredits[id]) snapshot.moves[id].signatureCharacters = characterAliases(signatureCredits[id]);
 }
 for (const id of [...groups.items].sort()) {
 	const data = Dex.items.get(id);
@@ -92,8 +106,9 @@ function block(kind, marker, code) {
 }
 const json = data => JSON.stringify(data, null, '\t');
 block('SPECIES', 'const CUSTOM_SPECIES_UPDATE_IDS =', `for (const [id, update] of Object.entries(${json(snapshot.species)})) {\n\tCUSTOM_SPECIES_UPDATES[id] = {...CUSTOM_SPECIES_UPDATES[id], ...update};\n\tif (CUSTOM_SPECIES[id]) Object.assign(CUSTOM_SPECIES[id].data, update);\n}`);
+block('PERFECT FORECAST FORMS', 'const CUSTOM_ABILITY_UPDATE_IDS =', `const CUSTOM_PERFECT_FORECAST_FORMS: {[id: string]: {components: string[]; shortDesc: string; desc: string}} = ${json(require(path.join(server, 'dist/data/castform-split')).PerfectForecastForms)};`);
 block('DISPLAY COMPONENTS', 'const CUSTOM_ABILITY_UPDATE_IDS =', `const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = ${json(snapshot.displayComponents)};`);
-block('PASSIVE COMPONENT EXCLUSIONS', 'const CUSTOM_ABILITY_UPDATE_IDS =', `const CUSTOM_ABILITY_COMPONENT_EXCLUSIONS: {[id: string]: readonly string[]} = ${json(snapshot.componentExclusions)};\nconst CUSTOM_SHARED_PASSIVE_COMPONENTS: {[id: string]: readonly string[]} = ${json(snapshot.sharedPassiveComponents)};\nconst CUSTOM_SHARED_PASSIVE_ADDITIONS: {[id: string]: {passive: string; component: string}} = ${json(snapshot.sharedPassiveAdditions)};\nconst CUSTOM_SHARED_PASSIVE_DESCRIPTIONS: {[id: string]: {passive: string; desc: string; shortDesc: string}} = ${json(snapshot.sharedPassiveDescriptions)};`);
+block('PASSIVE COMPONENT EXCLUSIONS', 'const CUSTOM_ABILITY_UPDATE_IDS =', `const CUSTOM_SIGNATURE_PASSIVE_DESCRIPTIONS: {[id: string]: {shortDesc: string; desc: string}} = ${json(snapshot.signaturePassiveDescriptions)};\nconst CUSTOM_SIGNATURE_PASSIVE_REMOVED_COMPONENTS: {[id: string]: readonly string[]} = ${json(snapshot.signaturePassiveRemovedComponents)};\nconst CUSTOM_SIGNATURE_PASSIVE_COMPONENTS: {[id: string]: readonly string[]} = ${json(snapshot.signaturePassiveComponents)};\nconst CUSTOM_ABILITY_COMPONENT_EXCLUSIONS: {[id: string]: readonly string[]} = ${json(snapshot.componentExclusions)};\nconst CUSTOM_SHARED_PASSIVE_COMPONENTS: {[id: string]: readonly string[]} = ${json(snapshot.sharedPassiveComponents)};\nconst CUSTOM_SHARED_PASSIVE_ADDITIONS: {[id: string]: {passive: string; component: string}} = ${json(snapshot.sharedPassiveAdditions)};\nconst CUSTOM_SHARED_PASSIVE_DESCRIPTIONS: {[id: string]: {passive: string; desc: string; shortDesc: string}} = ${json(snapshot.sharedPassiveDescriptions)};`);
 block('ABILITIES', 'const CUSTOM_ABILITY_UPDATE_IDS =', `Object.assign(CUSTOM_ABILITY_UPDATES, ${json(snapshot.abilities)});`);
 block('MOVES', 'const CUSTOM_MOVE_UPDATE_IDS =', `Object.assign(CUSTOM_MOVE_UPDATES, ${json(snapshot.moves)});\nObject.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, ${json(snapshot.components)});`);
 block('ITEMS', 'const CUSTOM_ITEM_IDS =', `Object.assign(CUSTOM_ITEM_UPDATES, ${json(snapshot.items)});`);

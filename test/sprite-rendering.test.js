@@ -30,6 +30,59 @@ function assertBWPreview(data, species, front, shiny) {
 }
 
 describe('Sprite rendering regressions', () => {
+	it('keeps base Ninetales normal and shiny compact in animated and static battle modes', () => {
+		const {Dex: dex} = require('./helpers/isolated-dex.cjs')();
+		for (const mode of ['default', 'bwgfx', 'noanim', 'nogif']) {
+			dex.prefs = key => key === mode;
+			for (const gen of [5, 9]) for (const shiny of [false, true]) for (const front of [false, true]) {
+				const data = dex.getSpriteData('Ninetales', front, {gen, shiny});
+				const raw = dex.getSpriteData('Ninetales', front, {gen, shiny, noScale: true});
+				const max = front ? 64 : 52;
+				assert(data.w <= max && data.h <= max);
+				assert.equal(data.url, raw.url);
+				assert(data.pixelated);
+				assert(fs.existsSync(localFile(data.url)));
+				if (!shiny && mode !== 'noanim' && mode !== 'nogif') {
+					assert(new GifReader(fs.readFileSync(localFile(data.url))).numFrames() > 1);
+				}
+			}
+		}
+	});
+
+	it('uses integer BW projection only for normal Chimecho animated backs', () => {
+		const back = Dex.getSpriteData('Chimecho', false, {gen: 9});
+		assert.equal(back.gen, 5);
+		assert(back.url.includes('/gen5ani-back/chimecho.gif'));
+		assert.equal(back.w, 35);
+		assert.equal(back.h, 66);
+		assert.equal(new GifReader(fs.readFileSync(localFile(back.url))).numFrames(), 83);
+		assert.equal(Dex.getSpriteData('Chimecho', true, {gen: 9}).gen, 9);
+		for (const option of ['shiny', 'noScale', 'teamPreview', 'dynamax']) {
+			assert.equal(Dex.getSpriteData('Chimecho', false, {gen: 9, [option]: true}).gen, 9, option);
+		}
+		for (const form of ['Chimecho-Mega', 'Chimecho-Mega-Y']) {
+			assert.equal(Dex.getSpriteData(form, false, {gen: 9}).gen, 9);
+		}
+	});
+
+	it('keeps Indeedee-F, Slowking forms, and Sinistcha forms compact without changing artwork', () => {
+		for (const name of ['Indeedee-F', 'Slowking', 'Slowking-Galar', 'Sinistcha', 'Sinistcha-Masterpiece']) {
+			for (const gen of [5, 9]) for (const shiny of [false, true]) for (const front of [false, true]) {
+				const data = Dex.getSpriteData(name, front, {gen, shiny});
+				const raw = Dex.getSpriteData(name, front, {gen, shiny, noScale: true});
+				const max = name.startsWith('Sinistcha') ? (front ? 48 : 44) : (front ? 64 : 52);
+				assert(data.w <= max && data.h <= max, name);
+				assert.equal(data.url, raw.url, name);
+				assert.equal(data.pixelated, raw.pixelated, name);
+				assert(fs.existsSync(localFile(data.url)), name);
+			}
+		}
+		assert(Dex.getSpriteData('Indeedee', false, {gen: 9}).h > 52);
+		const chimecho = Dex.getSpriteData('Chimecho', false, {gen: 9});
+		assert(chimecho.pixelated);
+		assert(new GifReader(fs.readFileSync(localFile(chimecho.url))).numFrames() > 1);
+	});
+
 	it('uses the renamed Parasect profile and a compact shiny Jolteon', () => {
 		assert.equal(Dex.species.get('Parasect-Aevian').id, 'parasectrejuv');
 		assert.deepEqual(Array.from(Dex.species.get('Parasect-Parasite').types), ['Ghost', 'Grass']);

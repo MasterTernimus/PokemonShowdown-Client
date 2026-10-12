@@ -17,11 +17,11 @@ describe('Mega Pidgeot No Guard presentation', () => {
   assert(!Dex.getAbilityComponentExclusions(a.id, []).includes('galewings'));
   assert(Dex.getAbilityEffects(a.id).has('galewings'));
   const native = Dex.getAbilityDisplayDetails(a, ['noguard'], 'pidgeotmega');
-  assert.deepEqual(Dex.getAbilityDisplayComponents(a.id, Dex, ['noguard'], 'pidgeotmega'), ['keeneye']);
+  assert.deepEqual(Dex.getAbilityDisplayComponents(a.id, Dex, ['noguard'], 'pidgeotmega'), ['updraft']);
   assert(Dex.getAbilityDisplayComponents(a.id, Dex, ['noguard'], 'raichumegay').includes('galewings'));
-  assert.equal(native.shortDesc, '8-turn Strong Winds and Keen Eye.');
-  assert(native.desc.includes('No Guard is supplied by the species passive'));
-  assert(native.desc.includes('does not gain Gale Wings priority'));
+  assert.equal(native.shortDesc, 'Updraft and eight-turn Strong Winds.');
+  assert(native.desc.includes('No Guard is supplied separately by the species passive'));
+  assert(native.desc.includes('No Keen Eye or Gale Wings'));
   assert(Dex.getAbilityDisplayDetails(a, []).desc.includes('priority'));
  });
 });

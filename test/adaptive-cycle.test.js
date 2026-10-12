@@ -25,7 +25,7 @@ describe('Adaptive Cycle client', () => {
   assert(!text.includes('<script>')); assert(text.includes('&lt;script&gt;'));
  });
  it('offers Adaptive Cycle as an event ability and Recover for both Stunfisks', () => {
-  for (const id of ['silvally', 'kecleon', 'stunfisk', 'stunfiskgalar']) {
+  for (const id of ['kecleon', 'stunfisk', 'stunfiskgalar']) {
    assert.equal(Dex.species.get(id).abilities.S, 'Adaptive Cycle');
    assert(Dex.abilities.get('adaptivecycle').desc.includes('Cannot be suppressed'));
   }

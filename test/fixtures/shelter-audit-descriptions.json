@@ -1,0 +1,18 @@
+{
+  "scaleshelter": {
+    "desc": "Full local Overcoat blocks powder moves and sandstorm/hail damage. The first successful directly selected Quiver Dance per switch-in grants one ward: opposing damaging attacks deal 20% less HP damage until the end of the first such attack to damage HP, including all its hits. Misses, protection, immunity, Substitute-only damage and zero HP damage preserve it. Called moves do not grant it; wards cannot stack.",
+    "shortDesc": "Overcoat; first selected Quiver Dance each entry grants a 20% whole-attack HP ward."
+  },
+  "roughscale": {
+    "desc": "Contact attackers lose 1/8 max HP. Full local Tough Claws gives contact moves 1.3x power. Once per switch-in, after the first resisted opposing attack to damage HP finishes all its hits, raises Defense by 1 if the holder survives and remains active. Normal boost prevention applies. Misses, protection, immunity, Substitute-only damage and zero HP damage do not activate it.",
+    "shortDesc": "Tough Claws; first resisted opposing HP attack each entry grants +1 Defense after the move."
+  },
+  "baitedbloom": {
+    "desc": "Full local Gluttony makes pinch Berries activate at half HP and Leftovers heal 1/8 max HP each turn. Full local Regenerator restores 1/3 base max HP when switching out. Sticky Hold is supplied separately by base Victreebel's species passive. No first-Berry stat reward.",
+    "shortDesc": "Gluttony and Regenerator: early pinch Berries, stronger Leftovers; heals 1/3 on switching."
+  },
+  "slipstream": {
+    "desc": "Airborne: immune to Ground attacks, Spikes, Toxic Spikes, Sticky Web and Arena Trap unless grounded. Thousand Arrows can still hit. Once per switch-in, its first Flying-type attack to damage a foe sets Tailwind on its side for 3 turns. Existing Tailwind is extended to at least 3 turns, never shortened. Keen Eye prevents opposing accuracy drops, ignores evasion boosts and reveals opposing Illusions on activation. Mirror Arena grants +1 accuracy and Laser Focus; shared accuracy entry rewards apply once.",
+    "shortDesc": "Airborne; immune to Ground attacks unless grounded — first landed Flying attack each switch-in sets 3-turn Tailwind."
+  }
+}

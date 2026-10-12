@@ -16,7 +16,8 @@ describe('Approved October batch metadata',()=>{
  ['garchomp','H','voidwrath',['moldbreaker']],
  ['venusaur','1','creepingbloom',['infiltrator']],
  ])it(species+' distribution, components and descriptions',()=>{
- const a=Dex.abilities.get(id);assert.equal(Dex.species.get(species).abilities[slot],a.name);
+ const a=Dex.abilities.get(id);assert.equal(Dex.species.get(species).abilities[slot],species==='slowkinggalar'?'Telepathy':a.name);
+ if(species==='slowkinggalar')assert.deepEqual(Dex.species.get(species).passives,['eldritchremedy']);
  for(const c of components)assert(Dex.getAbilityEffects(id).has(c));
  assert(a.desc.length>40);assert(a.shortDesc.length>10);assert(a.shortDesc.length<200);
  });

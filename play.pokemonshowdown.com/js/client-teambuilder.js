@@ -1311,7 +1311,7 @@
 
 			// icon
 			buf += '<div class="setcol setcol-icon">';
-			if (customFormNames.length > 1 || (species.cosmeticFormes && species.cosmeticFormes.length)) {
+			if (customFormNames.length > 1 || (species.cosmeticFormes && species.cosmeticFormes.some(function (name) { return !DexSearch.isHiddenCosmeticPattern(name); }))) {
 				buf += '<div class="setcell-sprite changeform"><i class="fa fa-caret-down"></i></div>';
 			} else {
 				buf += '<div class="setcell-sprite"></div>';
@@ -2140,7 +2140,7 @@
 			if (query) for (var key in window.BattlePokedex) {
 				if (key.indexOf(query) < 0) continue;
 				var id = this.rosterSpeciesID(key);
-				if (!id || seen[id] || DexSearch.pokemonPickerTraits(Dex.species.get(id)).totem) continue;
+				if (!id || seen[id] || DexSearch.isHiddenCosmeticPattern(id) || DexSearch.pokemonPickerTraits(Dex.species.get(id)).totem) continue;
 				seen[id] = true;
 				var added = profile.species.indexOf(id) >= 0;
 				matches.push('<button class="button" name="addRosterSpecies" value="' + id + '"' + (added ? ' disabled' : '') + '>' + BattleLog.escapeHTML(Dex.species.get(id).name) + (added ? ' — Added' : ' +') + '</button>');
@@ -2245,13 +2245,14 @@
 			for (var i = start; i < end; i++) {
 				var set = this.curSetList[i];
 				var pokemonicon = '<span class="picon pokemonicon-' + i + '" style="' + Dex.getPokemonIcon(Dex.getAbilityFormPreviewSet(set)) + '"></span>';
+				var slotLabel = BattleLog.escapeHTML((i + 1) + ': ' + (set.name ? set.name + ' (' + set.species + ')' : set.species || 'Add Pokemon'));
 				if (!set.species) {
 					buf += '<button disabled class="addpokemon" aria-label="Add Pok&eacute;mon"><i class="fa fa-plus"></i></button> ';
 					isAdd = true;
 				} else if (i == this.curSetLoc) {
-					buf += '<button disabled class="pokemon">' + pokemonicon + BattleLog.escapeHTML(set.name || this.curTeam.dex.species.get(set.species).baseSpecies || '<i class="fa fa-plus"></i>') + '</button> ';
+					buf += '<button disabled class="pokemon" aria-current="true" title="' + slotLabel + '" aria-label="' + slotLabel + '">' + pokemonicon + BattleLog.escapeHTML(set.name || this.curTeam.dex.species.get(set.species).baseSpecies || '<i class="fa fa-plus"></i>') + '</button> ';
 				} else {
-					buf += '<button name="selectPokemon" value="' + i + '" class="pokemon">' + pokemonicon + BattleLog.escapeHTML(set.name || this.curTeam.dex.species.get(set.species).baseSpecies) + '</button> ';
+					buf += '<button name="selectPokemon" value="' + i + '" class="pokemon" title="' + slotLabel + '" aria-label="' + slotLabel + '">' + pokemonicon + BattleLog.escapeHTML(set.name || this.curTeam.dex.species.get(set.species).baseSpecies) + '</button> ';
 				}
 			}
 			if (this.curSetList.length < this.curTeam.capacity && !isAdd) {
@@ -2413,7 +2414,7 @@
 				if (this.curChartType in this.searchChartTypes) {
 					this.update();
 					this.updateChart(true);
-					this.$('input[name=' + this.curChartName + ']').select();
+					this.focusChartInput(this.curChartName, true);
 				} else {
 					this.update();
 					this.updateChart(true);
@@ -3116,7 +3117,7 @@
 			}
 
 			buf += '</form>';
-			if (customFormNames.length > 1 || (species.cosmeticFormes && species.cosmeticFormes.length)) {
+			if (customFormNames.length > 1 || (species.cosmeticFormes && species.cosmeticFormes.some(function (name) { return !DexSearch.isHiddenCosmeticPattern(name); }))) {
 				buf += '<button class="altform button">Change sprite</button>';
 			}
 
@@ -3372,7 +3373,7 @@
 				if (type === 'stats' || type === 'details') {
 					this.$('button[name=' + name + ']').click();
 				} else {
-					this.$('input[name=' + name + ']').select();
+					this.focusChartInput(name, true);
 				}
 				return;
 			}
@@ -3895,7 +3896,7 @@
 				var isListedCustomForm = customFormNames.some(function (formName) {
 					return toID(formName) === formSpecies.id;
 				});
-				if ((!formSpecies.exists && !isListedCustomForm) || seenForms[formSpecies.id]) continue;
+				if ((!formSpecies.exists && !isListedCustomForm) || seenForms[formSpecies.id] || DexSearch.isHiddenCosmeticPattern(formSpecies.id)) continue;
 				seenForms[formSpecies.id] = true;
 				forms.push(formSpecies);
 			}
@@ -5001,8 +5002,22 @@
 		this.showSelectionUndo(); return result;
 	};
 	var easyBlur = proto.blur, easyFocus = proto.focus;
-	proto.blur = function () { this.editorScroll = this.$el.scrollTop(); if (easyBlur) return easyBlur.apply(this, arguments); };
-	proto.focus = function () { var result = easyFocus && easyFocus.apply(this, arguments); if (this.editorScroll !== undefined) this.$el.scrollTop(this.editorScroll); return result; };
+	proto.editorScrollView = function () {
+		return [this.curTeam, this.curSet, this.profilesView, this.librarySection, this.exportMode];
+	};
+	proto.blur = function () {
+		this.editorScroll = this.$el.scrollTop();
+		this.editorScrollContext = this.editorScrollView();
+		if (easyBlur) return easyBlur.apply(this, arguments);
+	};
+	proto.focus = function () {
+		var result = easyFocus && easyFocus.apply(this, arguments);
+		var view = this.editorScrollView();
+		if (this.editorScrollContext && view.every(function (value, index) {
+			return value === this.editorScrollContext[index];
+		}, this)) this.$el.scrollTop(this.editorScroll);
+		return result;
+	};
 	proto.events['input .current-team-search'] = 'filterCurrentTeam';
 
 	// Direct additions use the existing species-list profiles, not saved builds.
@@ -5070,8 +5085,10 @@
 	proto.renderSet = function (set, index) {
 		var html = profileRenderSet.apply(this, arguments);
 		if (!set.species) return html;
+		var control = '<button type="button" name="addSetToProfile" value="' + index + '" aria-label="Add ' + escape(Dex.species.get(set.species).name) + ' to profile" title="Add to profile"><i class="fa fa-plus" aria-hidden="true"></i>Profile</button> ';
+		html = html.replace('<div class="setmenu">', '<div class="setmenu">' + control);
 		var end = html.lastIndexOf('</li>');
-		return html.slice(0, end) + '<div class="set-profile-actions" data-index="' + index + '"><button class="button" name="addSetToProfile" value="' + index + '" aria-label="Add ' + escape(Dex.species.get(set.species).name) + ' to profile">+ Add to profile</button><span class="set-profile-status" data-index="' + index + '" role="status"></span></div>' + html.slice(end);
+		return html.slice(0, end) + '<div class="set-profile-actions" data-index="' + index + '"><span class="set-profile-status" data-index="' + index + '" role="status" aria-live="polite"></span></div>' + html.slice(end);
 	};
 	var profileBack = proto.back;
 	proto.back = function () { this.cancelSetProfile(); return profileBack.apply(this, arguments); };
@@ -5089,8 +5106,8 @@
 // Species passives are informational; they are not saved in the team's ability slot.
 function renderStarterPassives(species) {
 	if (!species || !species.passives || !species.passives.length) return '';
-	return '<div class="starter-passives"><label>Passives</label>' + species.passives.map(function (id) {
-		var ability = Dex.abilities.get(id);
+	return '<div class="starter-passives"><label>Passive</label>' + species.passives.map(function (id) {
+		var ability = Dex.getPassiveAbilityDetails(id);
 		return '<span class="passive-chip" title="' + BattleLog.escapeHTML('Passive: ' + ability.name + ' — ' + (ability.shortDesc || ability.desc)) + '">' + BattleLog.escapeHTML(ability.name) + '</span>';
 	}).join(' ') + '</div>';
 }
@@ -5161,12 +5178,25 @@ function renderStarterPassives(species) {
   }
   return chartClick.apply(this, arguments);
  };
- proto.returnToPokemonEditor = function () {
-  var input = this.curChartName && this.$('input[name=' + this.curChartName + ']')[0];
-  var editor = this.$('.teamchartbox.individual')[0];
-  if (input) input.focus({preventScroll: true});
-  if (input || editor) (input || editor).scrollIntoView({block: input ? 'center' : 'start', behavior: 'auto'});
- };
+	// Replacing an editor must not let native focus drag the room to its moves.
+	proto.focusChartInput = function (name, select) {
+		var input = this.$('input[name=' + name + ']')[0];
+		if (!input) return;
+		input.focus({preventScroll: true});
+		if (select) input.select();
+	};
+	proto.returnToPokemonEditor = function () {
+		var input = this.curChartName && this.$('input[name=' + this.curChartName + ']')[0];
+		var editor = input || this.$('.teamchartbox.individual')[0];
+		if (!editor) return;
+		if (input) input.focus({preventScroll: true});
+		var bounds = editor.getBoundingClientRect();
+		var viewport = this.el.getBoundingClientRect();
+		// An explicit Back action reveals an off-screen field using the smallest scroll.
+		if (bounds.top < viewport.top || bounds.bottom > viewport.bottom) {
+			editor.scrollIntoView({block: 'nearest', behavior: 'auto'});
+		}
+	};
  proto.events['focus .picker-search-input'] = 'pickerSearchFocus';
  proto.events['input .picker-search-input'] = 'pickerSearchInput';
  proto.events['keydown .picker-search-input'] = 'pickerSearchKeydown';

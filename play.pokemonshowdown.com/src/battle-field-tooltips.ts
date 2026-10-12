@@ -39,7 +39,12 @@ const BattleFieldTooltips = {
 	},
 	pokemon(pokemon?: Pokemon | null, server?: ServerPokemon) {
 		const types = pokemon?.getTypes(server)[0] || ['Normal'];
-		const ability = toID(pokemon?.effectiveAbility(server) || server?.ability || '');
+		const ability = toID(pokemon ? pokemon.effectiveAbility(server) : server?.ability || '');
+  const species = toID(server?.speciesForme || pokemon?.speciesForme || '');
+  const passives = server?.passives ?? pokemon?.getSpecies?.(server).passives ?? Dex.species.get(species).passives ?? [];
+  const exclusions = Dex.getAbilityComponentExclusions(ability, passives, species);
+  const passiveEffects = new Set<ID>();
+  for (const passive of passives) for (const id of Array.from(Dex.getPassiveAbilityEffects(toID(passive)))) passiveEffects.add(id);
 		return {
 			name: pokemon?.name || 'Target', types, ability, adaptation: pokemon?.adaptation,
 			item: server?.item || pokemon?.item || '', status: pokemon?.status || server?.status || '',
@@ -51,7 +56,11 @@ const BattleFieldTooltips = {
 			Role: (pokemon as any)?.Role || '',
 			hasType: (type: string | string[]) => (Array.isArray(type) ? type : [type]).some(t => types.includes(t as TypeName)),
 			hasAbility: (ids: string | string[]) => (Array.isArray(ids) ? ids : [ids]).some(id =>
-				Dex.getAbilityEffects(ability).has(toID(id))),
+				Dex.getAbilityEffects(ability).has(toID(id)) && !exclusions.includes(toID(id))),
+   hasAbilityOrPassive(ids: string | string[]) {
+    return this.hasAbility(ids) || (Array.isArray(ids) ? ids : [ids]).some(id => passiveEffects.has(toID(id)));
+   },
+   getPassives: () => passives.slice(),
 			isGrounded: () => pokemon ? pokemon.isGrounded(server) : true,
 			foes: () => pokemon ? pokemon.side.foe.active.filter(Boolean) : [{}],
 		};

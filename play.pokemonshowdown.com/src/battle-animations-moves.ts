@@ -36193,3 +36193,154 @@ BattleMoveAnims['atlantiswall'] = {
 	},
 };
 BattleMoveAnims['deluge'] = {anim: BattleMoveAnims['brine'].anim};
+
+// Rejuvenation gym-signature moves: each ID has deliberate playback, not the generic fallback.
+BattleMoveAnims['multipulse'] = {anim: BattleMoveAnims['aurasphere'].anim};
+BattleMoveAnims['aquabatics'] = {
+ anim(scene, [attacker]) {
+  BattleMoveAnims['quiverdance'].anim(scene, [attacker]);
+  BattleMoveAnims['aquaring'].anim(scene, [attacker]);
+ },
+};
+BattleMoveAnims['feverpitch'] = {
+ anim(scene, [attacker, defender]) {
+  BattleMoveAnims['boomburst'].anim(scene, [attacker, defender]);
+  scene.showEffect('fireball', {x: defender.x, y: defender.y, z: defender.z, scale: 0.3, opacity: 0.9},
+   {scale: 1.8, opacity: 0, time: 650}, 'decel', 'fade');
+ },
+};
+// One impact per server animation event: an early miss must not show nonexistent later hits.
+BattleMoveAnims['thunderraid'] = {anim: BattleMoveAnims['thunderpunch'].anim};
+BattleMoveAnims['desertsmark'] = {anim: BattleMoveAnims['sandtomb'].anim};
+BattleMoveAnims['superumdmove'] = {anim: BattleMoveAnims['flashcannon'].anim};
+BattleMoveAnims['galestrike'] = {anim: BattleMoveAnims['airslash'].anim};
+BattleMoveAnims['spectralscream'] = {
+ anim(scene, [attacker, defender]) {
+  BattleMoveAnims['boomburst'].anim(scene, [attacker, defender]);
+  BattleMoveAnims['shadowball'].anim(scene, [attacker, defender]);
+  BattleMoveAnims['leechlife'].anim(scene, [attacker, defender]);
+ },
+};
+BattleMoveAnims['barbedweb'] = {
+ anim(scene, [attacker, defender]) {
+  BattleMoveAnims['spiderweb'].anim(scene, [attacker, defender]);
+  BattleMoveAnims['infestation'].anim(scene, [attacker, defender]);
+ },
+};
+BattleMoveAnims['coldtruth'] = {anim: BattleMoveAnims['icywind'].anim};
+BattleMoveAnims['bunrakubeatdown'] = {
+ anim(scene, [attacker, defender]) {
+  BattleMoveAnims['psychic'].anim(scene, [attacker, defender]);
+  BattleMoveAnims['beatup'].anim(scene, [attacker, defender]);
+ },
+};
+BattleMoveAnims['matrixshot'] = {anim: BattleMoveAnims['powergem'].anim};
+BattleMoveAnims['pyrokinesis'] = {
+ anim(scene, [attacker, defender]) {
+  BattleMoveAnims['psychic'].anim(scene, [attacker, defender]);
+  scene.showEffect('fireball', {x: defender.x, y: defender.y, z: defender.z, scale: 0.2, opacity: 1},
+   {y: defender.y + 30, scale: 2, opacity: 0, time: 700}, 'accel', 'fade');
+ },
+};
+BattleMoveAnims['venamskiss'] = {anim: BattleMoveAnims['sludgebomb'].anim};
+BattleMoveAnims['heavenlywing'] = {anim: BattleMoveAnims['airslash'].anim};
+BattleMoveAnims['uproot'] = {
+ anim(scene, [attacker, defender]) {
+  BattleMoveAnims['earthpower'].anim(scene, [attacker, defender]);
+  BattleMoveAnims['energyball'].anim(scene, [attacker, defender]);
+ },
+};
+
+// Approved Yang signature moves: explicit elemental playback, with drain only for Crest Cleave.
+BattleMoveAnims['kaboom'] = {anim(scene, sprites) {
+ BattleMoveAnims['thunderbolt'].anim(scene, sprites);
+ BattleMoveAnims['explosion'].anim(scene, sprites);
+}};
+BattleMoveAnims['cactibash'] = {anim(scene, sprites) {
+ BattleMoveAnims['seedbomb'].anim(scene, sprites);
+}};
+BattleMoveAnims['corrosivestrike'] = {anim(scene, sprites) {
+ BattleMoveAnims['poisonjab'].anim(scene, sprites);
+}};
+BattleMoveAnims['toxicvial'] = {anim(scene, sprites) {
+ BattleMoveAnims['toxic'].anim(scene, sprites);
+}};
+BattleMoveAnims['flutterscales'] = {anim(scene, sprites) {
+ BattleMoveAnims['bugbuzz'].anim(scene, sprites);
+}};
+BattleMoveAnims['spiritmend'] = {anim(scene, sprites) {
+ const user = sprites[0];
+ scene.showEffect('shadowball', {x: user.x, y: user.y, z: user.z, scale: 0.2, opacity: 0.8}, {scale: 1.5, opacity: 0, time: 600}, 'decel', 'fade');
+ BattleMoveAnims['recover'].anim(scene, sprites);
+}};
+BattleMoveAnims['chistrike'] = {anim(scene, sprites) {
+ BattleMoveAnims['aurasphere'].anim(scene, sprites);
+ BattleMoveAnims['machpunch'].anim(scene, sprites);
+}};
+BattleMoveAnims['gunkrock'] = {anim(scene, sprites) {
+ BattleMoveAnims['boomburst'].anim(scene, sprites);
+ BattleMoveAnims['sludgebomb'].anim(scene, sprites);
+}};
+BattleMoveAnims['frozenrefractals'] = {anim(scene, sprites) {
+ BattleMoveAnims['icebeam'].anim(scene, sprites);
+}};
+BattleMoveAnims['nomoswish'] = {anim(scene, sprites) {
+ BattleMoveAnims['wish'].anim(scene, sprites);
+ BattleMoveAnims['cosmicpower'].anim(scene, sprites);
+}};
+BattleMoveAnims['queensgambit'] = {anim(scene, sprites) {
+ BattleMoveAnims['psychic'].anim(scene, sprites);
+}};
+BattleMoveAnims['darkclasp'] = {anim(scene, sprites) {
+ BattleMoveAnims['darkpulse'].anim(scene, sprites);
+}};
+BattleMoveAnims['beatdown'] = {anim(scene, sprites) {
+ BattleMoveAnims['closecombat'].anim(scene, sprites);
+}};
+BattleMoveAnims['infernalrage'] = {anim(scene, sprites) {
+ BattleMoveAnims['overheat'].anim(scene, sprites);
+}};
+BattleMoveAnims['m3g4qu4k3'] = {anim(scene, sprites) {
+ BattleMoveAnims['earthquake'].anim(scene, sprites);
+}};
+BattleMoveAnims['winddance'] = {anim(scene, sprites) {
+ BattleMoveAnims['hurricane'].anim(scene, sprites);
+}};
+BattleMoveAnims['timeblade'] = {anim(scene, sprites) {
+ BattleMoveAnims['dazzlinggleam'].anim(scene, sprites);
+ BattleMoveAnims['slash'].anim(scene, sprites);
+}};
+BattleMoveAnims['crestcleave'] = {anim(scene, sprites) {
+ BattleMoveAnims['metalclaw'].anim(scene, sprites);
+ BattleMoveAnims['leechlife'].anim(scene, sprites);
+}};
+BattleMoveAnims['sirensveil'] = {anim(scene, sprites) {
+ BattleMoveAnims['aquaring'].anim(scene, sprites);
+ BattleMoveAnims['reflect'].anim(scene, sprites);
+}};
+BattleMoveAnims['sirenswrath'] = {anim(scene, sprites) {
+ BattleMoveAnims['aquatail'].anim(scene, sprites);
+}};
+BattleMoveAnims['rocknroll'] = {anim(scene, sprites) {
+ BattleMoveAnims['rockpolish'].anim(scene, sprites);
+}};
+BattleMoveAnims['dragonrend'] = {anim(scene, sprites) {
+ BattleMoveAnims['dragonclaw'].anim(scene, sprites);
+}};
+BattleMoveAnims['airstreamassault'] = {anim(scene, sprites) {
+ BattleMoveAnims['bravebird'].anim(scene, sprites);
+ BattleMoveAnims['tailwind'].anim(scene, sprites);
+}};
+BattleMoveAnims['wisteriamaelstrom'] = {anim(scene, sprites) {
+ BattleMoveAnims['petalblizzard'].anim(scene, sprites);
+}};
+BattleMoveAnims['deiludicium'] = {anim(scene, sprites) {
+ BattleMoveAnims['judgment'].anim(scene, sprites);
+}};
+BattleMoveAnims['nostraswish'] = {anim(scene, sprites) {
+ BattleMoveAnims['moonblast'].anim(scene, sprites);
+}};
+BattleMoveAnims['swarmsnare'] = {anim(scene, sprites) {
+ BattleMoveAnims['spiderweb'].anim(scene, sprites);
+ BattleMoveAnims['infestation'].anim(scene, sprites);
+}};

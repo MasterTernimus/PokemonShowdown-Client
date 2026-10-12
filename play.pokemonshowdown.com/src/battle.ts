@@ -808,9 +808,9 @@ export class Side {
 						if (this.active.indexOf(curPoke) >= 0) continue;
 						const baseSpecies = curPoke.getBaseSpecies();
 						const canHaveIllusion = Object.values(baseSpecies.abilities || {}).some(
-							ability => toID(ability) === 'illusion'
+							ability => ['illusion', 'perfectillusion'].includes(toID(ability))
 						);
-						if (canHaveIllusion || toID(curPoke.ability) === 'illusion') {
+						if (canHaveIllusion || baseSpecies.passives.includes('illusion') || ['illusion', 'perfectillusion'].includes(toID(curPoke.ability))) {
 							illusionFound = curPoke;
 							break;
 						}
@@ -1419,7 +1419,9 @@ export class Battle {
 		}
 		if (weather) {
 			let isExtremeWeather = (weather === 'deltastream' || weather === 'desolateland' || weather === 'primordialsea');
-			if (poke) {
+			if (weather === 'deltastream' && ability?.id === 'winddance') {
+				this.weatherTimeLeft = this.weatherMinTimeLeft = 4;
+			} else if (poke) {
 				if (ability) {
 					this.activateAbility(poke, ability.name);
 				}
@@ -1438,7 +1440,7 @@ export class Battle {
 	}
 	swapSideConditions() {
 		const sideConditions = [
-			'mist', 'lightscreen', 'reflect', 'spikes', 'safeguard', 'tailwind', 'toxicspikes', 'stealthrock', 'waterpledge', 'firepledge', 'grasspledge', 'stickyweb', 'auroraveil', 'arenitewall', 'atlantiswall', 'luckychant', 'gmaxsteelsurge', 'gmaxcannonade', 'gmaxvinelash', 'gmaxwildfire', 'gmaxvolcalith',
+			'mist', 'lightscreen', 'reflect', 'spikes', 'safeguard', 'tailwind', 'toxicspikes', 'stealthrock', 'waterpledge', 'firepledge', 'grasspledge', 'stickyweb', 'auroraveil', 'arenitewall', 'atlantiswall', 'luckychant', 'gmaxsteelsurge', 'dragonrend', 'gmaxcannonade', 'gmaxvinelash', 'gmaxwildfire', 'gmaxvolcalith',
 		];
 		if (this.gameType === 'freeforall') {
 			// The client allocates p4 even in three-player battles. Player names distinguish actual sides.
@@ -2862,7 +2864,7 @@ export class Battle {
 						if (effect.name === 'Doom Desire') {
 							this.scene.runOtherAnim('doomdesirehit' as ID, [poke]);
 						}
-						if (effect.name === 'Future Sight') {
+						if (effect.name === 'Future Sight' || effect.name === 'Nostras Wish') {
 							this.scene.runOtherAnim('futuresighthit' as ID, [poke]);
 						}
 					}
@@ -3144,7 +3146,7 @@ export class Battle {
 				minTimeLeft = Math.max(0, Number(kwArgs.aura) || 0);
 				maxTimeLeft = 0;
 				this.pseudoWeather = this.pseudoWeather.filter(state =>
-					!/^(electric|grassy|misty|psychic|rainbow)aura$/.test(toID(state[0])));
+					!/^(electric|grassy|misty|psychic|rainbow|frozen)aura$/.test(toID(state[0])));
 			}
 			if (kwArgs.persistent) minTimeLeft += 2;
 			if (flowerGarden || kwArgs.garden || effect.id === 'midnightzoneterrain') minTimeLeft = maxTimeLeft = 0;

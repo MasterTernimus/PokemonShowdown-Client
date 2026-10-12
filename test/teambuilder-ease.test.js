@@ -116,3 +116,38 @@ describe('Direct team validation and profile additions', () => {
  });
 });
 
+
+describe('Teambuilder focus and scroll', () => {
+ function scrollHarness(bounds = {top: 100, bottom: 130}) {
+  const calls = [], input = {getBoundingClientRect: () => bounds,
+   focus: options => calls.push(['focus', options]), select: () => calls.push(['select']),
+   scrollIntoView: options => calls.push(['scroll', options])};
+  const room = {el: {getBoundingClientRect: () => ({top: 55, bottom: 844})},
+   curChartName: 'move1', $: () => [input]};
+  const start = source.lastIndexOf('proto.focusChartInput =');
+  const end = source.indexOf(" proto.events['focus .picker-search-input']", start);
+  new Function('proto', source.slice(start, end))(room);
+  return {room, calls};
+ }
+ it('keeps an already visible move in place when returning from the picker', () => {
+  const {room, calls} = scrollHarness(); room.returnToPokemonEditor();
+  assert.deepEqual(calls, [['focus', {preventScroll: true}]]);
+ });
+ it('reveals an off-screen move only for the explicit Back action', () => {
+  const {room, calls} = scrollHarness({top: -100, bottom: -70}); room.returnToPokemonEditor();
+  assert.deepEqual(calls, [['focus', {preventScroll: true}], ['scroll', {block: 'nearest', behavior: 'auto'}]]);
+ });
+ it('selects an editor input without automatic scrolling', () => {
+  const {room, calls} = scrollHarness(); room.focusChartInput('move1', true);
+  assert.deepEqual(calls, [['focus', {preventScroll: true}], ['select']]);
+ });
+ it('restores a room position only when reentering the same editor view', () => {
+  let scroll = 450;
+  const room = {curTeam: {}, curSet: {}, $el: {scrollTop(value) { if (value !== undefined) scroll = value; return scroll; }}, blur() {}, focus() {}};
+  const start = source.indexOf('var easyBlur =');
+  const end = source.indexOf('proto.events', start);
+  new Function('proto', source.slice(start, end).trim().replace(/var $/, ''))(room);
+  room.blur(); scroll = 0; room.focus(); assert.equal(scroll, 450);
+  room.curSet = {}; scroll = 0; room.focus(); assert.equal(scroll, 0);
+ });
+});

@@ -10,6 +10,7 @@ function staticSpriteData(...args) {
 }
 
 window = global;
+global.BattleAliases = require('../play.pokemonshowdown.com/data/aliases').BattleAliases;
 
 global.BattlePokedex = require('../play.pokemonshowdown.com/data/pokedex.js').BattlePokedex;
 global.BattleAbilities = require('../play.pokemonshowdown.com/data/abilities.js').BattleAbilities;
@@ -346,7 +347,13 @@ describe('Team Builder sprites', () => {
 
 	it('removes repurposed Alt forms while preserving base and Mega sprites', () => {
 		for (const species of ['Bellibolt-Alt', 'Dusknoir-Alt', 'Luxray-Deso']) {
-			assert.equal(Dex.species.get(species).exists, false, `${species} should be removed`);
+			const id = toID(species);
+			assert(!global.BattlePokedex[id], `${species} must not remain a separate species record`);
+			if (global.BattleAliases[id]) {
+				assert.equal(Dex.species.get(species).id, toID(global.BattleAliases[id]));
+			} else {
+				assert.equal(Dex.species.get(species).exists, false);
+			}
 		}
 		const dusknoirTeamBuilder = Dex.getTeambuilderSpriteData({species: 'Dusknoir'});
 		assert.equal(dusknoirTeamBuilder.spriteDir, 'sprites/gen5');
@@ -525,7 +532,7 @@ describe('Team Builder sprites', () => {
 
 	it('syncs Meowscarada abilities from the server data', () => {
 		assert.deepEqual(Dex.species.get('Meowscarada').abilities, {
-			0: 'False Bouquet', 1: 'Protean', H: 'Illusion',
+			0: 'False Bouquet', 1: 'Protean', H: 'Perfect Illusion',
 		});
 	});
 
@@ -540,7 +547,7 @@ describe('Team Builder sprites', () => {
 			0: 'Liquid Arsenal', 1: 'Protean', H: 'Shadow Screen', S: 'Battle Bond',
 		});
 		assert.deepEqual(Dex.species.get('Delphox').abilities, {
-			0: 'Sworn Duty', 1: 'Magic Guard', H: 'Void Guile', S: 'Pyrokinesis',
+			0: 'Sworn Duty', 1: 'Magic Guard', H: 'Void Guile',
 		});
 	});
 

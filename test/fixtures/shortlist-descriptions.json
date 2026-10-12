@@ -1,0 +1,126 @@
+{
+  "burningrage": {
+    "desc": "Brute Force (Reckless + Rock Head), Iron Fist and Mold Breaker. Proficient: damaging same-type moves have 1.3x power. Brute Force: recoil and crash moves, Explosion, Self-Destruct and Misty Explosion have 1.2x power; Struggle is excluded. On Chessboard, all moves gain a further 1.2x power. Prevents move recoil except Struggle; crash and Life Orb damage still apply. Iron Fist: punching moves have 1.4x power. Mold Breaker: moves ignore bypassable opposing abilities.",
+    "shortDesc": "Brute Force (Reckless + Rock Head), Iron Fist, Mold Breaker and Proficient."
+  },
+  "waterbarrage": {
+    "shortDesc": "Dual Wield + Stalwart; cycling Water chip.",
+    "desc": "Full local Stalwart bypasses redirection and grants +1 Sp. Atk on New World, Starlight Arena, Fairy Tale or Chessboard entry. Eligible slicing, pulse, bullet, horn, drill, and Arrow moves hit twice at 60% power, with an independent accuracy check for each hit. Separate bespoke composites can specify a boosted first hit and a 15% second hit. A literal Mega Launcher + Water Barrage combination instead boosts both eligible pulse/bullet hits by 1.5x: 0.9x each outside Free-for-All, or 1.5x each in Free-for-All. In Free-for-All, both hits use full power: the first hits the selected foe and the second targets another random living foe when possible. Existing multi-hit moves are not given an additional Dual Wield pair. At turn end, foes take cycling Water damage of 1/16, 2/16, then 3/16 max HP. Water immunities block it; type effectiveness scales it only in Free-for-All."
+  },
+  "siegelauncher": {
+    "shortDesc": "Mega Launcher + Stalwart + Water Barrage.",
+    "desc": "Mega Launcher gives pulse and bullet moves 1.5x power. Water Barrage supplies exactly one eligible Dual Wield pair, each hit at 0.6x power outside Free-for-All: pulse/bullet pairs therefore use 0.9x power per hit before STAB and passives. In Free-for-All both hits use full power, with the existing second-target selection. Existing multi-hit, charging, delayed, Z/Max and ineligible moves gain no extra pair. Water Barrage supplies Stalwart exactly once: redirection bypass and +1 Sp. Atk on New World, Starlight Arena, Fairy Tale or Chessboard entry. At turn end, foes take cycling Water damage of 1/16, 2/16, then 3/16 max HP; Water immunities block it and type effectiveness scales it only in Free-for-All. Proficient is a separate species passive."
+  },
+  "sunsovereign": {
+    "desc": "Summons sun for 8 turns on entry. Eligible Normal moves become Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Dragon moves receive STAB. Prevents freezing outside Cold Eclipse and cures existing freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den blocks Fire moves. On Dragon's Den, Volcanic or Cold Eclipse entry, gains +1 Defense and Sp. Def. Immune to hail damage. At turn end, deals Fire-type damage to foes equal to 1/16 max HP, doubled if the foe is burned or the holder used a Fire or Dragon move that turn. Fire immunities block this damage; type effectiveness scales it only in Free-for-All. Full local Intimidate lowers adjacent foes' Attack by 1 on entry, respecting Substitute and normal Intimidate protections. No Infernal Dominion trapping effect is included. Proficient remains a separate species passive.",
+    "shortDesc": "Drought, eight-turn sun, Unbound Blaze and Intimidate."
+  },
+  "stormsovereign": {
+    "desc": "Summons replaceable Strong Winds for 8 turns on entry. Full Updraft: Flying moves ignore evasion boosts. Once per switch-in, the first Flying attack dealing opposing HP damage raises the living adjacent ally with the lowest HP percentage by 1 Speed stage, or the holder if no such ally exists. Only one recipient is boosted; ability restarts and Mega Evolution do not reset the entry allowance. Mega Pidgeot receives No Guard from its species passive and has no Gale Wings priority. Other holders retain their existing full-HP Flying priority and never-miss effect when no No Guard passive is present. Keen Eye is removed.",
+    "shortDesc": "Updraft and eight-turn Strong Winds; no Gale Wings on Mega Pidgeot."
+  },
+  "sandsovereign": {
+    "desc": "Sets or refreshes Sandstorm to 8 turns on entry, with native Sand Stream supplied separately by the species passive. Retains full local Solid Rock. Full Mountainbreaker keeps damaging Rock moves Rock-type with normal Rock STAB, but uses the better overall Rock or Ground type-chart matchup; Ground-immune typings do not replace the Rock matchup. No extra power multiplier or Mold Breaker. Manually used Arenite Wall lasts 8 turns. Each turn, non-immune foes take Rock damage equal to 1/16 max HP; type effectiveness scales this chip only in Free-for-All.",
+    "shortDesc": "Solid Rock + Mountainbreaker; eight-turn sand and Rock chip."
+  },
+  "frostsovereign": {
+    "desc": "Sets or refreshes Snow Warning weather to 8 turns on entry; native Snow Warning is supplied separately by the species passive, retaining its Cold Eclipse behavior. Retains full local Ice Body and Filter, and gains full Soundproof immunity to other Pokemon's sound moves. Manually used Aurora Veil lasts 8 turns. Each turn, non-immune foes take Ice damage equal to 1/16 max HP; type effectiveness scales this chip only in Free-for-All.",
+    "shortDesc": "Ice Body + Filter + Soundproof; eight-turn snow and Ice chip."
+  },
+  "relentlesshunt": {
+    "shortDesc": "Airborne; immune to Ground attacks unless grounded — moves <=60 BP gain +1 priority; boosted fields give 1.5x or 2x damage. Rocky Field gives 2x power.",
+    "desc": "Airborne: immune to Ground attacks, Spikes, Toxic Spikes, Sticky Web and Arena Trap unless grounded. Thousand Arrows can still hit. Its moves with 60 or less Base Power gain +1 priority; Cold Eclipse raises the threshold to 80 without stacking another priority boost. In Rocky, Fairy Tale, Big Top, Dragon's Den, Mountain, Snowy Mountain, or Cold Eclipse, its damaging moves deal 2x damage, applied once. In Desert, Forest, Burning, Superheated, Ashen Beach, Water Surface, Cave, Starlight Arena, or New World, its damaging moves deal 1.5x damage."
+  },
+  "ultrainstinct": {
+    "desc": "Mold Breaker + Inner Focus. Attacks have 1.5x power against an opposing target still queued to move or that switched in this turn, except a target with Battle Bond. Screens give no extra power. The first opposing damaging move to reach its HP each turn deals 25% less damage for the entire move, including all hits. Later moves, allied attacks and indirect damage receive no reduction; Substitute-only damage does not spend the allowance. After a complete damaging move deals opposing HP damage, heals 1/16 max HP once per turn while alive, subject to normal healing restrictions. Multi-hit and spread moves heal only once; a failed heal cannot retry within the same move. On Ashen Beach, New World, Starlight Arena and Cold Eclipse, reduction is 35% and healing is 1/8 instead, without extra power or accuracy/evasion or entry stat boosts. These limits belong to the Pokemon and persist through switching, Mega Evolution, Transform and ability changes within the turn. Bewitched Woods, Haunted and Holy disable Ultra Instinct's effects. Retains the existing Predator interaction.",
+    "shortDesc": "Mold Breaker + Inner Focus; timing power, first-move protection and attack healing."
+  },
+  "burningspirit": {
+    "desc": "Mold Breaker + Inner Focus. Attacks have 1.5x power against an opposing target still queued to move or that switched in this turn, except a target with Battle Bond. Screens give no extra power. The first opposing damaging move to reach its HP each turn deals 25% less damage for the entire move, including all hits. Later moves, allied attacks and indirect damage receive no reduction; Substitute-only damage does not spend the allowance. After a complete damaging move deals opposing HP damage, heals 1/16 max HP once per turn while alive, subject to normal healing restrictions. Multi-hit and spread moves heal only once; a failed heal cannot retry within the same move. On Ashen Beach, New World, Starlight Arena and Cold Eclipse, reduction is 35% and healing is 1/8 instead, without extra power or accuracy/evasion or entry stat boosts. These limits belong to the Pokemon and persist through switching, Mega Evolution, Transform and ability changes within the turn. Bewitched Woods, Haunted and Holy disable Ultra Instinct's effects. Retains the existing Predator interaction. Burning Spirit also retains full local Magma Armor: Water and Ice attacks use half attacking stats; Dragon's Den blocks Fire moves; prevents freeze outside Cold Eclipse and cures existing freeze; Dragon's Den, Volcanic and Cold Eclipse entry grant +1 Defense and Sp. Def. Opportunist copies foes' positive Attack, Defense, Sp. Atk, Sp. Def and Speed changes at the normal move, entry, transformation and residual flushes; it does not copy accuracy or evasion. Copied boosts cannot loop, and each queued gain is applied once. There is no Self Sufficient or passive end-turn healing. Mega Infernape's Proficient is a separate species passive.",
+    "shortDesc": "Ultra Instinct + Opportunist (five combat stats only) + Magma Armor."
+  },
+  "ragingstorm": {
+    "shortDesc": "Ignores abilities/screens/defensive stages; armor protection; half priority damage; KO splash damage. Rampages last one turn without ending confusion.",
+    "desc": "Moves ignore bypassable opposing abilities. Prevents critical hits and takes 20% less attack damage. Gains +1 Defense on Fairy Tale entry and +2 Defense when a foe lowers its stats. Attacks bypass Substitute, screens and defensive stat stages and gain +1 critical-hit stage. Takes half damage from priority attacks, in addition to its armor reduction. Immune to hail damage. Move KOs damage remaining foes by 60% of the last damage dealt; if there is no valid target or no damage is dealt, gains +1 Attack instead. Magic Guard prevents this splash damage. Cannot be suppressed. Outrage, Thrash, Petal Dance and Raging Fury last one turn without rampage-ending confusion. Existing confusion is not cured; this is not general confusion immunity."
+  },
+  "toxicspines": {
+    "shortDesc": "Physical hits set Toxic Spikes; contact attackers lose 1/6 HP; Poison bypasses type immunity; poisoned foes lose defenses; Critical hits against poisoned foes or on corrosive fields. Iron Barbs adds 1/8 contact damage.",
+    "desc": "Physical HP hits set one Toxic Spikes layer on the attacker's side, up to two; allied attacks use the opposing side. Contact attackers also lose 1/6 max HP. Can poison Poison and Steel types; Poison moves bypass Steel immunity. Newly poisoned foes lose 1 Defense and Sp. Def. On Wasteland, move secondary effects become separate 2.5% frostbite, burn, paralysis and poison chances. On Corrosive and Corrosive Mist, incoming damage is multiplied by 1.5. Attacks always critically hit poisoned targets and on Corrosive, Corrosive Mist, Murkwater Surface and Wasteland, unless critical hits are blocked. On Chessboard, gains one critical-hit stage per 20% of the target's missing base max HP, up to three. Full local Iron Barbs additionally deals 1/8 of a contact attacker's base max HP; this is separate from Toxic Debris's existing 1/6 contact damage."
+  },
+  "surgesurfer": {
+    "shortDesc": "Doubles Speed on Electric, Water Surface, Underwater, Murkwater Surface and Short-Circuit fields.",
+    "desc": "The Pokemon's Speed is doubled on Electric Terrain, Water Surface, Underwater, Murkwater Surface and Short-Circuit fields."
+  },
+  "unbridledwrath": {
+    "shortDesc": "Sheer Force + Inner Focus; Intimidate is a separate species passive.",
+    "desc": "Full local Sheer Force removes eligible secondary effects and gives those moves approximately 1.3x power, once. Rampage moves still lock the user and cause their normal ending confusion. Full local Inner Focus prevents flinching and Intimidate Attack drops. Intimidate is supplied separately by ordinary Gyarados's species passive."
+  },
+  "venompincer": {
+    "shortDesc": "Poison Touch + Hyper Cutter; Poison moves receive 1.5x STAB.",
+    "desc": "Full local Poison Touch gives contact attacks a 30% chance to poison the target; Shield Dust, Covert Cloak and normal poison immunities block it. Full local Hyper Cutter prevents opposing Attack drops. Poison moves receive 1.5x STAB, including when the user is already Poison-type; this is not an extra multiplier. Poison Heal is supplied separately by Gliscor's species passive."
+  },
+  "rockypayload": {
+    "shortDesc": "Rock STAB; Rock attacks use 1.5x offense, or 2x on Rocky Field.",
+    "desc": "Rock-type attacks receive STAB. The attacking stat used by a Rock-type attack is multiplied by 1.5, or by 2 on Rocky Field."
+  },
+  "voidomen": {
+    "shortDesc": "Friend Guard; allied Serene Grace; once/entry 3-turn Safeguard and a secondary-triggered stat-drop ward.",
+    "desc": "Full Friend Guard reduces attack damage to other allies by 25%. While active, grants other actual allies full local Serene Grace: doubles secondary-effect chances and skips charging turns. This grant does not stack with their own Serene Grace or multiple providers; it ends when the provider leaves, faints or is suppressed. Once per entry, the first successful damaging-move secondary or successful self-targeted status move sets or refreshes Safeguard to at least 3 turns. Separately, after activation, the first successfully applied secondary effect creates a ward against the next opposing stat-drop event targeting the holder or an adjacent active ally. Positive changes and self-inflicted drops remain. The ward ends when spent or the holder leaves. Serene Grace is supplied separately as a species passive on Togekiss and Togekiss-Alde. No Mold Breaker or Infiltrator."
+  },
+  "inversion": {
+    "shortDesc": "Sets Inverse Field; Infiltrator; Hypnosis bypasses accuracy. Contrary is separate.",
+    "desc": "Sets Inverse Field on entry. Full Infiltrator bypasses Substitute and opposing screens. Hypnosis bypasses accuracy checks while this ability is active; protection and sleep immunities still apply. Contrary is supplied separately by the species passive on Mega Malamar, preserving its Z-Power exception."
+  },
+  "heatcoil": {
+    "shortDesc": "Speed Boost + Long Reach; modified Magma Armor; Flame Body passive is separate.",
+    "desc": "Full local Speed Boost and Long Reach. Long Reach removes contact, grants its existing accuracy/critical-hit and field effects, and includes local Keen Eye. Retains the current modified Magma Armor package: cures freeze, and incoming Water/Ice attacks use half the offensive stat; this is not an upgrade to full Magma Armor. Flame Body is a separate species passive on G-Max Centiskorch. No new binding effect."
+  },
+  "ironmountain": {
+    "shortDesc": "Custom: 25% less super-effective damage; once/turn HP hit gives +1 Def and heals 1/16. Hyper Cutter.",
+    "desc": "Takes 25% less damage from super-effective attacks. Once per turn, an opposing HP hit gives +1 Defense and heals 1/16 max HP. Full Hyper Cutter additionally prevents opposing Attack reductions. Its damage reduction and once-per-turn Defense/healing effects are customized, not full Filter or full Stamina. Soundproof is a separate species passive."
+  },
+  "venombastion": {
+    "shortDesc": "HP hits heal 1/16 and boost Defense once per turn; poisoned attackers lose their higher offense once per turn. Once/entry, Poison/Steel hits on poisoned foes cause brief Heal Block.",
+    "desc": "Each opposing attack hit that damages HP heals 1/16 max HP. The first such hit each turn also raises Defense by 1, before later hits of a multi-hit move. Once per turn, a poisoned foe that damages it loses one stage of its higher offensive stat. No separate Bug power boost, Merciless or Self Sufficient. Once per entry, after a Poison or Steel attack damages the HP of an already-poisoned opposing survivor, applies Heal Block through the end of the following turn. Only successful application consumes the allowance; existing Heal Block is not refreshed. Excludes Substitute-only damage, friendly fire and residual damage; ability restarts do not reset it."
+  },
+  "encorearia": {
+    "shortDesc": "Serene Grace; first successful secondary after activation grants at least 5-turn Safeguard.",
+    "desc": "Full local Serene Grace doubles secondary-effect chances, including chance-based self effects, and removes charge flags. The first successfully applied secondary effect after activation sets or refreshes the user's side's Safeguard to at least 5 turns, preserving longer durations. Blocked secondary effects do not trigger it. Reactivating the ability resets this allowance."
+  },
+  "marvelscale": {
+    "shortDesc": "1.5x Defense while statused or on Misty, Rainbow, Fairy Tale, Dragon’s Den or Starlight fields.",
+    "desc": "Defense is multiplied by 1.5 while statused or on Misty, Rainbow, Fairy Tale, Dragon’s Den or Starlight Arena fields. These conditions do not stack."
+  },
+  "tidalvoice": {
+    "shortDesc": "Modified Liquid Voice: sound gets Water/Ice typing, 1.3x power and spares allies; stat cleanse and Aria healing.",
+    "desc": "Modified Liquid Voice: sound moves become Water-type, or Ice-type on Icy Field, gain 1.3x power and spare allies. The 1.3x replaces Liquid Voice's 1.2x bonus. The first damaging sound hit against an opponent after activation clears the user's negative stat stages; Substitute-only hits do not qualify, and the allowance is spent even if no negative stages exist. Reactivating resets this allowance. After executing Sparkling Aria, each active adjacent ally heals 1/8 maximum HP once per move, even if opponents avoid the attack. This does not heal the user; Heal Block applies."
+  },
+  "empress": {
+    "shortDesc": "Royal Decree + Long Reach; Fairy resists Poison/Steel; Fighting STAB.",
+    "desc": "Preserves full Royal Decree and existing Empress effects: Fairy typing resists Poison and Steel, and Fighting moves receive STAB. Adds full local Long Reach, including contact removal, Keen Eye effects, entry accuracy boost, critical-stage boost and existing field modifiers. Queenly Majesty is supplied separately by Tsareena and Tsareena-Alt’s passive; other users retain the original component."
+  },
+  "bloodmoongaze": {
+    "shortDesc": "Infiltrator + Competitive. Mind’s Eye is a separate passive.",
+    "desc": "Full local Infiltrator bypasses Substitute and opposing screens. Full Competitive grants +2 Sp. Atk when an opposing Pokemon lowers a stat; on Chessboard it instead scales move power up to 2x as HP falls. Mind’s Eye is a separate species passive."
+  },
+  "errorhandler": {
+    "shortDesc": "Aroma Veil + Infiltrator. Download is a separate passive.",
+    "desc": "Full Aroma Veil protects this Pokemon and its allies from Attract, Disable, Encore, Heal Block, Taunt and Torment. Full Infiltrator bypasses Substitute and opposing screens. Download is a separate species passive."
+  },
+  "stillmind": {
+    "shortDesc": "Anticipation + Oblivious. Pure Power is a separate passive.",
+    "desc": "Full local Anticipation reveals opposing Illusions and warns of super-effective or OHKO moves, with its existing Psychic Terrain Sp. Atk boost. Full Oblivious prevents infatuation, Taunt, Captivate and Intimidate Attack drops and cures existing infatuation or Taunt. Pure Power is a separate species passive."
+  },
+  "shellderartillery": {
+    "shortDesc": "Mega Launcher + Oblivious; Quick Draw is a separate passive.",
+    "desc": "Full local Mega Launcher gives pulse and bullet moves 1.5x power. Full local Oblivious prevents infatuation, Captivate, Taunt and Intimidate Attack drops, and cures existing infatuation and Taunt. Quick Draw is supplied separately as a species passive."
+  },
+  "teaceremony": {
+    "shortDesc": "Sticky Hold + Aroma Veil; Hospitality is a separate passive.",
+    "desc": "Full local Sticky Hold protects the held item from removal. Full local Aroma Veil protects the user and allies from infatuation, Disable, Encore, Heal Block, Taunt and Torment. Hospitality is supplied separately as a species passive."
+  },
+  "familyguardian": {
+    "shortDesc": "Friend Guard + Healer; once/entry, rescues self or an adjacent ally crossing half HP with 1/4 healing.",
+    "desc": "Full local Friend Guard reduces damage to other allies by 25%; full local Healer gives each adjacent statused ally a 30% chance to be cured each turn. Once per genuine entry, after the user or an adjacent ally survives an opposing whole damaging attack that takes it from above half HP to half HP or less, it heals 1/4 of its maximum HP after all hits. One shared budget is spent only when healing succeeds. Heal Block prevents healing; residual damage, friendly fire and Substitute-only damage do not qualify. Ability restarts do not refresh the budget. Parental Bond is a separate species passive and retains its local 80% follow-up and exclusions."
+  }
+}

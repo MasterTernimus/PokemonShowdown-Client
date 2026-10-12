@@ -3,6 +3,7 @@ const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
 global.window = global;
+global.BattleAliases = require('../play.pokemonshowdown.com/data/aliases').BattleAliases;
 global.BattlePokedex = require('../play.pokemonshowdown.com/data/pokedex').BattlePokedex;
 global.BattlePokemonSprites = {};
 global.BattlePokemonSpritesBW = {};

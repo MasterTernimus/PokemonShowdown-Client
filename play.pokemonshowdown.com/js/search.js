@@ -389,7 +389,7 @@
 		}
 		buf += '<span class="col pokemonnamecol">' + name;
 		for (var passive of passives) {
-			var passiveAbility = dex.abilities.get(passive);
+			var passiveAbility = Dex.getPassiveAbilityDetails(passive);
 			var passiveName = BattleLog.escapeHTML(passiveAbility.name);
 			var passiveDescription = BattleLog.escapeHTML(passiveAbility.shortDesc || passiveAbility.desc || 'Innate passive for this form.');
 			buf += '<span class="pokemon-passive-help"><button type="button" class="pokemon-passive-badge" aria-expanded="false" aria-label="' + passiveName + ' passive: ' + passiveDescription + '">Passive &middot; ' + passiveName + '</button>';
