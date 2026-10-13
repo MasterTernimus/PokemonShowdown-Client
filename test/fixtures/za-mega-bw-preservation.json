@@ -1,0 +1,6598 @@
+[
+  {
+    "id": "raichu",
+    "shiny": false,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 69,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani-back/raichu.gif?v=bw-shiny-restored-1",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/raichu.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "raichu",
+    "shiny": false,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 75,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani-back/raichu.gif?v=bw-shiny-restored-1",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/raichu.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "raichu",
+    "shiny": false,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 74,
+      "h": 73,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani/raichu.gif?v=bw-shiny-restored-1",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/raichu.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "raichu",
+    "shiny": false,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 71,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani/raichu.gif?v=bw-shiny-restored-1",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/raichu.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "raichu",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/raichu.png?v=bw-shiny-restored-1",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/raichu.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "raichu",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/raichu.png?v=bw-shiny-restored-1",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/raichu.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "raichu",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 80,
+      "h": 80,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/raichu.png?v=bw-shiny-restored-1",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/raichu.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "raichu",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/raichu.png?v=bw-shiny-restored-1",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/raichu.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "raichualola",
+    "shiny": false,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 54,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani-back/raichu-alola.gif?v=raichu-gender-refresh-1",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/raichu.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "raichualola",
+    "shiny": false,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 59,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani-back/raichu-alola.gif?v=raichu-gender-refresh-1",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/raichu.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "raichualola",
+    "shiny": false,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 80,
+      "h": 73,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani/raichu-alola.gif?v=raichu-gender-refresh-1",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/raichu.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "raichualola",
+    "shiny": false,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 66,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani/raichu-alola.gif?v=raichu-gender-refresh-1",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/raichu.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "raichualola",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/raichu-alola.png?v=raichu-gender-refresh-1",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/raichu.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "raichualola",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/raichu-alola.png?v=raichu-gender-refresh-1",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/raichu.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "raichualola",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 80,
+      "h": 80,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/raichu-alola.png?v=raichu-gender-refresh-1",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/raichu.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "raichualola",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/raichu-alola.png?v=raichu-gender-refresh-1",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/raichu.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "raichumegax",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 80,
+      "h": 80,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/raichu-megax.png?v=raichu-gender-refresh-1",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/raichu-megax.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "raichumegax",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 84,
+      "h": 84,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/raichu-megax.png?v=raichu-gender-refresh-1",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/raichu-megax.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "raichumegax",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 76,
+      "h": 76,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/raichu-megax.png?v=raichu-gender-refresh-1",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/raichu-megax.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "raichumegax",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/raichu-megax.png?v=raichu-gender-refresh-1",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/raichu-megax.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "raichumegay",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 80,
+      "h": 80,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/raichu-megay.png?v=raichu-gender-refresh-1",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/raichu-megay.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "raichumegay",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 84,
+      "h": 84,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/raichu-megay.png?v=raichu-gender-refresh-1",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/raichu-megay.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "raichumegay",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 76,
+      "h": 76,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/raichu-megay.png?v=raichu-gender-refresh-1",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/raichu-megay.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "raichumegay",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/raichu-megay.png?v=raichu-gender-refresh-1",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/raichu-megay.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "chimecho",
+    "shiny": false,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 5,
+      "w": 35,
+      "h": 66,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani-back/chimecho.gif",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/chimecho.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "chimecho",
+    "shiny": false,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 35,
+      "h": 66,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani-back/chimecho.gif",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/chimecho.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "chimecho",
+    "shiny": false,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 35,
+      "h": 65,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani/chimecho.gif",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/chimecho.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "chimecho",
+    "shiny": false,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 35,
+      "h": 65,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani/chimecho.gif",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/chimecho.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "chimecho",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/chimecho.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/chimecho.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "chimecho",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/chimecho.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/chimecho.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "chimecho",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 80,
+      "h": 80,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/chimecho.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/chimecho.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "chimecho",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/chimecho.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/chimecho.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "chimechomega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 82,
+      "h": 82,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/chimecho-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/chimecho-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "chimechomega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 84,
+      "h": 84,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/chimecho-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/chimecho-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "chimechomega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 96,
+      "h": 96,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/chimecho-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/chimecho-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "chimechomega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/chimecho-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/chimecho-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "absol",
+    "shiny": false,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 68,
+      "h": 60,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani-back/absol.gif",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/absol.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "absol",
+    "shiny": false,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 68,
+      "h": 60,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani-back/absol.gif",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/absol.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "absol",
+    "shiny": false,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 65,
+      "h": 64,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani/absol.gif",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/absol.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "absol",
+    "shiny": false,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 65,
+      "h": 64,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani/absol.gif",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/absol.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "absol",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/absol.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/absol.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "absol",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/absol.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/absol.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "absol",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 80,
+      "h": 80,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/absol.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/absol.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "absol",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/absol.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/absol.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "absolmega",
+    "shiny": false,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 82,
+      "h": 82,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani-back/absol-mega.gif",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/absol-mega.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "absolmega",
+    "shiny": false,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 84,
+      "h": 84,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani-back/absol-mega.gif",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/absol-mega.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "absolmega",
+    "shiny": false,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 96,
+      "h": 96,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani/absol-mega.gif",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/absol-mega.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "absolmega",
+    "shiny": false,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani/absol-mega.gif",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/absol-mega.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "absolmega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 82,
+      "h": 82,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/absol-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/absol-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "absolmega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 84,
+      "h": 84,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/absol-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/absol-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "absolmega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 96,
+      "h": 96,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/absol-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/absol-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "absolmega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/absol-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/absol-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "absolmegaz",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 82,
+      "h": 82,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/absol-megaz.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/absol-megaz.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "absolmegaz",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 84,
+      "h": 84,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/absol-megaz.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/absol-megaz.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "absolmegaz",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 96,
+      "h": 96,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/absol-megaz.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/absol-megaz.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "absolmegaz",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/absol-megaz.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/absol-megaz.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "staraptormega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 76,
+      "h": 82,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/staraptor-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/staraptor-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "staraptormega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 77,
+      "h": 84,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/staraptor-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/staraptor-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "staraptormega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 96,
+      "h": 89,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/staraptor-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/staraptor-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "staraptormega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 73,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/staraptor-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/staraptor-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "garchomp",
+    "shiny": false,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 5,
+      "w": 72,
+      "h": 67,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani-back/garchomp.gif",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/garchomp.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "garchomp",
+    "shiny": false,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 5,
+      "w": 78,
+      "h": 73,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani-back/garchomp.gif",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/garchomp.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "garchomp",
+    "shiny": false,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 5,
+      "w": 80,
+      "h": 77,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani/garchomp.gif",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/garchomp.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "garchomp",
+    "shiny": false,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 5,
+      "w": 72,
+      "h": 69,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani/garchomp.gif",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/garchomp.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "garchomp",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 69,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/garchomp.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/garchomp.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "garchomp",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 75,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/garchomp.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/garchomp.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "garchomp",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 77,
+      "h": 80,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/garchomp.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/garchomp.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "garchomp",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 69,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/garchomp.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/garchomp.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "garchompmega",
+    "shiny": false,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 5,
+      "w": 82,
+      "h": 82,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani-back/garchomp-mega.gif",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/garchomp-mega.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "garchompmega",
+    "shiny": false,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 5,
+      "w": 84,
+      "h": 84,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani-back/garchomp-mega.gif",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/garchomp-mega.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "garchompmega",
+    "shiny": false,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 5,
+      "w": 96,
+      "h": 96,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani/garchomp-mega.gif",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/garchomp-mega.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "garchompmega",
+    "shiny": false,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 5,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani/garchomp-mega.gif",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/garchomp-mega.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "garchompmega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 82,
+      "h": 82,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/garchomp-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/garchomp-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "garchompmega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 84,
+      "h": 84,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/garchomp-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/garchomp-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "garchompmega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 96,
+      "h": 77,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/garchomp-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/garchomp-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "garchompmega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 63,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/garchomp-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/garchomp-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "garchompmegaz",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 82,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/garchomp-megaz.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/garchomp-megaz.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "garchompmegaz",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 84,
+      "h": 81,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/garchomp-megaz.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/garchomp-megaz.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "garchompmegaz",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 96,
+      "h": 93,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/garchomp-megaz.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/garchomp-megaz.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "garchompmegaz",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 76,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/garchomp-megaz.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/garchomp-megaz.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "garchompbattlebond",
+    "shiny": false,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 58,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back/garchomp-battlebond.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/garchomp.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "garchompbattlebond",
+    "shiny": false,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 84,
+      "h": 68,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back/garchomp-battlebond.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/garchomp.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "garchompbattlebond",
+    "shiny": false,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 80,
+      "h": 73,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5/garchomp-battlebond.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/garchomp.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "garchompbattlebond",
+    "shiny": false,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 71,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5/garchomp-battlebond.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/garchomp.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "garchompbattlebond",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 58,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/garchomp-battlebond.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/garchomp.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "garchompbattlebond",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 84,
+      "h": 68,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/garchomp-battlebond.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/garchomp.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "garchompbattlebond",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 80,
+      "h": 73,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/garchomp-battlebond.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/garchomp.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "garchompbattlebond",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 71,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/garchomp-battlebond.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/garchomp.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "lucario",
+    "shiny": false,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 5,
+      "w": 49,
+      "h": 66,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani-back/lucario.gif",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/lucario.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "lucario",
+    "shiny": false,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 5,
+      "w": 49,
+      "h": 66,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani-back/lucario.gif",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/lucario.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "lucario",
+    "shiny": false,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 47,
+      "h": 63,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani/lucario.gif",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/lucario.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "lucario",
+    "shiny": false,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 47,
+      "h": 63,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani/lucario.gif",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/lucario.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "lucario",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 5,
+      "w": 49,
+      "h": 66,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani-back-shiny/lucario.gif",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/lucario.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "lucario",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 5,
+      "w": 49,
+      "h": 66,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani-back-shiny/lucario.gif",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/lucario.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "lucario",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 43,
+      "h": 80,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/ani-shiny/lucario.gif",
+      "pixelated": false,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/lucario.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "lucario",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 47,
+      "h": 63,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani-shiny/lucario.gif",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/lucario.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "lucariomega",
+    "shiny": false,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 5,
+      "w": 82,
+      "h": 82,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani-back/lucario-mega.gif",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/lucario-mega.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "lucariomega",
+    "shiny": false,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 5,
+      "w": 84,
+      "h": 84,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani-back/lucario-mega.gif",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/lucario-mega.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "lucariomega",
+    "shiny": false,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 5,
+      "w": 96,
+      "h": 96,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani/lucario-mega.gif",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/lucario-mega.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "lucariomega",
+    "shiny": false,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 5,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani/lucario-mega.gif",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/lucario-mega.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "lucariomega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 5,
+      "w": 50,
+      "h": 76,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/lucario-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/lucario-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "lucariomega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 5,
+      "w": 56,
+      "h": 84,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/lucario-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/lucario-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "lucariomega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 66,
+      "h": 74,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/lucario-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/lucario-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "lucariomega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 69,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/lucario-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/lucario-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "lucariomegaz",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 57,
+      "h": 68,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/lucario-megaz.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/lucario-megaz.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "lucariomegaz",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 70,
+      "h": 84,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/lucario-megaz.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/lucario-megaz.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "lucariomegaz",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 82,
+      "h": 82,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/lucario-megaz.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/lucario-megaz.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "lucariomegaz",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 64,
+      "h": 64,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/lucario-megaz.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/lucario-megaz.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "heatranmega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 82,
+      "h": 82,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/heatran-mega.png?v=sprite-audit-20260916",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/heatran-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "heatranmega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 84,
+      "h": 84,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/heatran-mega.png?v=sprite-audit-20260916",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/heatran-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "heatranmega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 96,
+      "h": 96,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/heatran-mega.png?v=sprite-audit-20260916",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/heatran-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "heatranmega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/heatran-mega.png?v=sprite-audit-20260916",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/heatran-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "darkraimega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 82,
+      "h": 82,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/darkrai-mega.png",
+      "pixelated": false,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/darkrai-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "darkraimega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 84,
+      "h": 84,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/darkrai-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/darkrai-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "darkraimega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 96,
+      "h": 96,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/darkrai-mega.png",
+      "pixelated": false,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/darkrai-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "darkraimega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/darkrai-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/darkrai-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "emboar",
+    "shiny": false,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 61,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani-back/emboar.gif",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/emboar.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "emboar",
+    "shiny": false,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 66,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani-back/emboar.gif",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/emboar.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "emboar",
+    "shiny": false,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 80,
+      "h": 66,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani/emboar.gif",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/emboar.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "emboar",
+    "shiny": false,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 59,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani/emboar.gif",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/emboar.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "emboar",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/emboar.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/emboar.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "emboar",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/emboar.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/emboar.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "emboar",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 80,
+      "h": 80,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/emboar.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/emboar.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "emboar",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/emboar.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/emboar.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "emboarmega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 82,
+      "h": 82,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/emboar-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/emboar-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "emboarmega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 84,
+      "h": 84,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/emboar-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/emboar-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "emboarmega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 96,
+      "h": 96,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/emboar-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/emboar-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "emboarmega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/emboar-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/emboar-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "chimechomegay",
+    "shiny": false,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 82,
+      "h": 82,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back/chimecho-mega-y.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/chimecho-megay.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "chimechomegay",
+    "shiny": false,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 84,
+      "h": 84,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back/chimecho-mega-y.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/chimecho-megay.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "chimechomegay",
+    "shiny": false,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 96,
+      "h": 96,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5/chimecho-mega-y.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/chimecho-megay.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "chimechomegay",
+    "shiny": false,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5/chimecho-mega-y.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/chimecho-megay.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "chimechomegay",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 82,
+      "h": 82,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/chimecho-mega-y.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/chimecho-megay.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "chimechomegay",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 84,
+      "h": 84,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/chimecho-mega-y.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/chimecho-megay.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "chimechomegay",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 96,
+      "h": 96,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/chimecho-mega-y.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/chimecho-megay.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "chimechomegay",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/chimecho-mega-y.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/chimecho-megay.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "emboaralt",
+    "shiny": false,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back/emboar-alt.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/emboar.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "emboaralt",
+    "shiny": false,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back/emboar-alt.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/emboar.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "emboaralt",
+    "shiny": false,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 80,
+      "h": 80,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5/emboar-alt.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/emboar.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "emboaralt",
+    "shiny": false,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5/emboar-alt.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/emboar.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "emboaralt",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/emboar-alt.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/emboar.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "emboaralt",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/emboar-alt.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/emboar.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "emboaralt",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 80,
+      "h": 80,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/emboar-alt.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/emboar.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "emboaralt",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/emboar-alt.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/emboar.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "emboarmegaalt",
+    "shiny": false,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 82,
+      "h": 82,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back/emboar-mega-alt.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/emboar.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "emboarmegaalt",
+    "shiny": false,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 84,
+      "h": 84,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back/emboar-mega-alt.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/emboar.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "emboarmegaalt",
+    "shiny": false,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 96,
+      "h": 96,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5/emboar-mega-alt.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/emboar.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "emboarmegaalt",
+    "shiny": false,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5/emboar-mega-alt.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/emboar.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "emboarmegaalt",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 82,
+      "h": 82,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/emboar-mega-alt.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/emboar.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "emboarmegaalt",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 84,
+      "h": 84,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/emboar-mega-alt.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/emboar.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "emboarmegaalt",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 96,
+      "h": 96,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/emboar-mega-alt.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/emboar.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "emboarmegaalt",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/emboar-mega-alt.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/emboar.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "excadrillmega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 74,
+      "h": 74,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/excadrill-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/excadrill-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "excadrillmega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 84,
+      "h": 84,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/excadrill-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/excadrill-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "excadrillmega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 70,
+      "h": 70,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/excadrill-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/excadrill-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "excadrillmega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/excadrill-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/excadrill-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "scolipedemega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 82,
+      "h": 75,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/scolipede-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/scolipede-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "scolipedemega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 84,
+      "h": 77,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/scolipede-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/scolipede-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "scolipedemega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 89,
+      "h": 96,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/scolipede-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/scolipede-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "scolipedemega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/scolipede-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/scolipede-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "scraftymega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 69,
+      "h": 82,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/scrafty-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/scrafty-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "scraftymega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 71,
+      "h": 84,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/scrafty-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/scrafty-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "scraftymega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 96,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/scrafty-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/scrafty-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "scraftymega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 59,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/scrafty-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/scrafty-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "eelektrossmega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 82,
+      "h": 70,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/eelektross-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/eelektross-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "eelektrossmega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 84,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/eelektross-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/eelektross-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "eelektrossmega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 96,
+      "h": 85,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/eelektross-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/eelektross-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "eelektrossmega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 69,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/eelektross-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/eelektross-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "chandeluremega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 82,
+      "h": 82,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/chandelure-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/chandelure-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "chandeluremega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 84,
+      "h": 84,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/chandelure-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/chandelure-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "chandeluremega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 96,
+      "h": 96,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/chandelure-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/chandelure-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "chandeluremega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/chandelure-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/chandelure-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "golurkmega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 82,
+      "h": 82,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/golurk-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/golurk-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "golurkmega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 84,
+      "h": 84,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/golurk-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/golurk-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "golurkmega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 96,
+      "h": 96,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/golurk-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/golurk-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "golurkmega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/golurk-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/golurk-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "chesnaught",
+    "shiny": false,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani-back/chesnaught.gif",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/chesnaught.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "chesnaught",
+    "shiny": false,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani-back/chesnaught.gif",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/chesnaught.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "chesnaught",
+    "shiny": false,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 80,
+      "h": 80,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani/chesnaught.gif",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/chesnaught.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "chesnaught",
+    "shiny": false,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani/chesnaught.gif",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/chesnaught.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "chesnaught",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/chesnaught.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/chesnaught.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "chesnaught",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/chesnaught.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/chesnaught.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "chesnaught",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 80,
+      "h": 80,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/chesnaught.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/chesnaught.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "chesnaught",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/chesnaught.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/chesnaught.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "chesnaughtmega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 82,
+      "h": 82,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/chesnaught-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/chesnaught-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "chesnaughtmega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 84,
+      "h": 84,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/chesnaught-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/chesnaught-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "chesnaughtmega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 96,
+      "h": 96,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/chesnaught-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/chesnaught-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "chesnaughtmega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/chesnaught-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/chesnaught-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "delphox",
+    "shiny": false,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back/delphox.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/delphox.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "delphox",
+    "shiny": false,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back/delphox.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/delphox.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "delphox",
+    "shiny": false,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 80,
+      "h": 80,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5/delphox.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/delphox.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "delphox",
+    "shiny": false,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5/delphox.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/delphox.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "delphox",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/delphox.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/delphox.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "delphox",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/delphox.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/delphox.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "delphox",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 80,
+      "h": 80,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/delphox.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/delphox.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "delphox",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/delphox.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/delphox.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "delphoxmega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 82,
+      "h": 82,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/delphox-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/delphox-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "delphoxmega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 84,
+      "h": 84,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/delphox-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/delphox-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "delphoxmega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 96,
+      "h": 96,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/delphox-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/delphox-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "delphoxmega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/delphox-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/delphox-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "greninja",
+    "shiny": false,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back/greninja.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/greninja.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "greninja",
+    "shiny": false,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back/greninja.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/greninja.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "greninja",
+    "shiny": false,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 80,
+      "h": 80,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani/greninja.gif",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/greninja.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "greninja",
+    "shiny": false,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani/greninja.gif",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/greninja.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "greninja",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/greninja.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/greninja.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "greninja",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/greninja.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/greninja.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "greninja",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 80,
+      "h": 80,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/greninja.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/greninja.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "greninja",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/greninja.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/greninja.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "greninjabond",
+    "shiny": false,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back/greninja.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/greninja.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "greninjabond",
+    "shiny": false,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back/greninja.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/greninja.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "greninjabond",
+    "shiny": false,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 80,
+      "h": 80,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani/greninja.gif",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/greninja.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "greninjabond",
+    "shiny": false,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani/greninja.gif",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/greninja.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "greninjabond",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/greninja.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/greninja.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "greninjabond",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/greninja.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/greninja.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "greninjabond",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 80,
+      "h": 80,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/greninja.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/greninja.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "greninjabond",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/greninja.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/greninja.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "greninjaash",
+    "shiny": false,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 61,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back/greninja-ash.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/greninja.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "greninjaash",
+    "shiny": false,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 65,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back/greninja-ash.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/greninja.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "greninjaash",
+    "shiny": false,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 80,
+      "h": 70,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5/greninja-ash.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/greninja.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "greninjaash",
+    "shiny": false,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 63,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5/greninja-ash.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/greninja.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "greninjaash",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 61,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/greninja-ash.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/greninja.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "greninjaash",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 65,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/greninja-ash.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/greninja.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "greninjaash",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 80,
+      "h": 70,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/greninja-ash.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/greninja.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "greninjaash",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 63,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/greninja-ash.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/greninja.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "greninjamega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 82,
+      "h": 82,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/greninja-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/greninja-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "greninjamega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 84,
+      "h": 84,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/greninja-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/greninja-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "greninjamega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 96,
+      "h": 96,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/greninja-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/greninja-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "greninjamega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/greninja-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/greninja-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "pyroarmega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 82,
+      "h": 82,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/pyroar-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/pyroar-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "pyroarmega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 84,
+      "h": 84,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/pyroar-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/pyroar-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "pyroarmega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 96,
+      "h": 96,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/pyroar-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/pyroar-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "pyroarmega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/pyroar-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/pyroar-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "floettemega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 82,
+      "h": 74,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/floette-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/floette-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "floettemega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 84,
+      "h": 76,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/floette-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/floette-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "floettemega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 96,
+      "h": 75,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/floette-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/floette-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "floettemega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 61,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/floette-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/floette-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "meowstic",
+    "shiny": false,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 66,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/ani-back/meowstic.gif",
+      "pixelated": false,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/meowstic.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "meowstic",
+    "shiny": false,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back/meowstic.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/meowstic.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "meowstic",
+    "shiny": false,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 55,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/ani/meowstic.gif",
+      "pixelated": false,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/meowstic.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "meowstic",
+    "shiny": false,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5/meowstic.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/meowstic.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "meowstic",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 66,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/ani-back-shiny/meowstic.gif",
+      "pixelated": false,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/meowstic.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "meowstic",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/meowstic.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/meowstic.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "meowstic",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 55,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/ani-shiny/meowstic.gif",
+      "pixelated": false,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/meowstic.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "meowstic",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/meowstic.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/meowstic.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "meowsticf",
+    "shiny": false,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 67,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/ani-back/meowstic-f.gif",
+      "pixelated": false,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/meowstic.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "meowsticf",
+    "shiny": false,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back/meowstic-f.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/meowstic.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "meowsticf",
+    "shiny": false,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 64,
+      "h": 73,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/ani/meowstic-f.gif",
+      "pixelated": false,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/meowstic.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "meowsticf",
+    "shiny": false,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5/meowstic-f.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/meowstic.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "meowsticf",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 67,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/ani-back-shiny/meowstic-f.gif",
+      "pixelated": false,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/meowstic.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "meowsticf",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/meowstic-f.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/meowstic.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "meowsticf",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 64,
+      "h": 73,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/ani-shiny/meowstic-f.gif",
+      "pixelated": false,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/meowstic.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "meowsticf",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/meowstic-f.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/meowstic.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "meowsticmmega",
+    "shiny": false,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 48,
+      "h": 82,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back/meowstic-mmega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/meowstic.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "meowsticmmega",
+    "shiny": false,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 49,
+      "h": 84,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back/meowstic-mmega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/meowstic.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "meowsticmmega",
+    "shiny": false,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 45,
+      "h": 96,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5/meowstic-mmega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/meowstic.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "meowsticmmega",
+    "shiny": false,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 37,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5/meowstic-mmega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/meowstic.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "meowsticmmega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 48,
+      "h": 82,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/meowstic-mmega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/meowstic.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "meowsticmmega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 49,
+      "h": 84,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/meowstic-mmega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/meowstic.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "meowsticmmega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 45,
+      "h": 96,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/meowstic-mmega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/meowstic.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "meowsticmmega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 37,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/meowstic-mmega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/meowstic.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "meowsticfmega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 82,
+      "h": 82,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/meowstic-fmega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/meowstic.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "meowsticfmega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 84,
+      "h": 84,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/meowstic-fmega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/meowstic.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "meowsticfmega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 96,
+      "h": 96,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/meowstic-fmega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/meowstic.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "meowsticfmega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/meowstic-fmega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/meowstic.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "malamarmega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 82,
+      "h": 82,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/malamar-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/malamar-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "malamarmega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 84,
+      "h": 84,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/malamar-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/malamar-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "malamarmega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 96,
+      "h": 96,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/malamar-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/malamar-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "malamarmega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/malamar-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/malamar-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "barbaraclemega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 82,
+      "h": 82,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/barbaracle-mega.png?v=sprite-audit-20260916",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/barbaracle-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "barbaraclemega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 84,
+      "h": 84,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/barbaracle-mega.png?v=sprite-audit-20260916",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/barbaracle-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "barbaraclemega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 96,
+      "h": 96,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/barbaracle-mega.png?v=sprite-audit-20260916",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/barbaracle-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "barbaraclemega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/barbaracle-mega.png?v=sprite-audit-20260916",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/barbaracle-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "dragalgemega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 82,
+      "h": 82,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/dragalge-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/dragalge-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "dragalgemega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 84,
+      "h": 84,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/dragalge-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/dragalge-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "dragalgemega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 96,
+      "h": 96,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/dragalge-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/dragalge-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "dragalgemega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/dragalge-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/dragalge-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "hawluchamega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 82,
+      "h": 82,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/hawlucha-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/hawlucha-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "hawluchamega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 84,
+      "h": 84,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/hawlucha-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/hawlucha-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "hawluchamega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 96,
+      "h": 96,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/hawlucha-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/hawlucha-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "hawluchamega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/hawlucha-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/hawlucha-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "zygarde",
+    "shiny": false,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani-back/zygarde.gif",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/zygarde.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "zygarde",
+    "shiny": false,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani-back/zygarde.gif",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/zygarde.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "zygarde",
+    "shiny": false,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 80,
+      "h": 80,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani/zygarde.gif",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/zygarde.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "zygarde",
+    "shiny": false,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani/zygarde.gif",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/zygarde.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "zygarde",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 66,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/ani-back-shiny/zygarde.gif",
+      "pixelated": false,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/zygarde.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "zygarde",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani-back-shiny/zygarde.gif",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/zygarde.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "zygarde",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 80,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/ani-shiny/zygarde.gif",
+      "pixelated": false,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/zygarde.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "zygarde",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani-shiny/zygarde.gif",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/zygarde.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "zygarde10",
+    "shiny": false,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 65,
+      "h": 71,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/ani-back/zygarde-10.gif",
+      "pixelated": false,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/zygarde-10.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "zygarde10",
+    "shiny": false,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back/zygarde-10.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/zygarde-10.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "zygarde10",
+    "shiny": false,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 59,
+      "h": 73,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/ani/zygarde-10.gif",
+      "pixelated": false,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/zygarde-10.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "zygarde10",
+    "shiny": false,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5/zygarde-10.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/zygarde-10.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "zygarde10",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 61,
+      "h": 71,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/ani-back-shiny/zygarde-10.gif",
+      "pixelated": false,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/zygarde-10.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "zygarde10",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/zygarde-10.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/zygarde-10.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "zygarde10",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 59,
+      "h": 73,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/ani-shiny/zygarde-10.gif",
+      "pixelated": false,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/zygarde-10.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "zygarde10",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/zygarde-10.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/zygarde-10.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "zygardecomplete",
+    "shiny": false,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 55,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/ani-back/zygarde-complete.gif",
+      "pixelated": false,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/zygarde-complete.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "zygardecomplete",
+    "shiny": false,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back/zygarde-complete.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/zygarde-complete.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "zygardecomplete",
+    "shiny": false,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 80,
+      "h": 56,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/ani/zygarde-complete.gif",
+      "pixelated": false,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/zygarde-complete.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "zygardecomplete",
+    "shiny": false,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5/zygarde-complete.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/zygarde-complete.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "zygardecomplete",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 55,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/ani-back-shiny/zygarde-complete.gif",
+      "pixelated": false,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/zygarde-complete.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "zygardecomplete",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/zygarde-complete.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/zygarde-complete.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "zygardecomplete",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 80,
+      "h": 56,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/ani-shiny/zygarde-complete.gif",
+      "pixelated": false,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/zygarde-complete.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "zygardecomplete",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/zygarde-complete.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/zygarde-complete.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "zygardemega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 55,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/ani-back-shiny/zygarde-complete.gif",
+      "pixelated": false,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/zygarde-complete.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "zygardemega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/zygarde-complete.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/zygarde-complete.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "zygardemega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 80,
+      "h": 56,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/ani-shiny/zygarde-complete.gif",
+      "pixelated": false,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/zygarde-complete.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "zygardemega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/zygarde-complete.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/zygarde-complete.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "crabominablemega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 82,
+      "h": 82,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/crabominable-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/crabominable-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "crabominablemega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 84,
+      "h": 84,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/crabominable-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/crabominable-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "crabominablemega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 96,
+      "h": 96,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/crabominable-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/crabominable-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "crabominablemega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/crabominable-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/crabominable-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "golisopodmega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 82,
+      "h": 82,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/golisopod-mega.png?v=sprite-frames-20260915",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/golisopod-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "golisopodmega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 84,
+      "h": 84,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/golisopod-mega.png?v=sprite-frames-20260915",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/golisopod-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "golisopodmega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 96,
+      "h": 96,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/golisopod-mega.png?v=sprite-frames-20260915",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/golisopod-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "golisopodmega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/golisopod-mega.png?v=sprite-frames-20260915",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/golisopod-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "drampamega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 61,
+      "h": 82,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/drampa-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/drampa-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "drampamega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 62,
+      "h": 84,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/drampa-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/drampa-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "drampamega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 82,
+      "h": 96,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/drampa-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/drampa-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "drampamega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 67,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/drampa-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/drampa-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "magearnamega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 82,
+      "h": 64,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/magearna-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/magearna-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "magearnamega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 84,
+      "h": 65,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/magearna-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/magearna-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "magearnamega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 96,
+      "h": 89,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/magearna-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/magearna-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "magearnamega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/magearna-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/magearna-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "zeraoramega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 82,
+      "h": 82,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/zeraora-mega.png?v=sprite-audit-20260916",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/zeraora-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "zeraoramega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 84,
+      "h": 84,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/zeraora-mega.png?v=sprite-audit-20260916",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/zeraora-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "zeraoramega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 96,
+      "h": 96,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/zeraora-mega.png?v=sprite-audit-20260916",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/zeraora-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "zeraoramega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/zeraora-mega.png?v=sprite-audit-20260916",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/zeraora-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "falinksmega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 82,
+      "h": 66,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/falinks-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/falinks-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "falinksmega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 84,
+      "h": 67,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/falinks-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/falinks-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "falinksmega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 96,
+      "h": 77,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/falinks-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/falinks-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "falinksmega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 63,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/falinks-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/falinks-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "scovillainmega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 82,
+      "h": 82,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/scovillain-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/scovillain-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "scovillainmega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 84,
+      "h": 84,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/scovillain-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/scovillain-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "scovillainmega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 96,
+      "h": 96,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/scovillain-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/scovillain-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "scovillainmega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/scovillain-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/scovillain-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "glimmoramega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 82,
+      "h": 82,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/glimmora-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/glimmora-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "glimmoramega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 84,
+      "h": 84,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/glimmora-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/glimmora-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "glimmoramega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 96,
+      "h": 96,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/glimmora-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/glimmora-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "glimmoramega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/glimmora-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/glimmora-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "tatsugiri",
+    "shiny": false,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 52,
+      "h": 52,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back/tatsugiri.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/tatsugiri.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "tatsugiri",
+    "shiny": false,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back/tatsugiri.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/tatsugiri.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "tatsugiri",
+    "shiny": false,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 34,
+      "h": 31,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani/tatsugiri.gif",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/tatsugiri.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "tatsugiri",
+    "shiny": false,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 34,
+      "h": 31,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani/tatsugiri.gif",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/tatsugiri.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "tatsugiri",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 52,
+      "h": 52,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/tatsugiri.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/tatsugiri.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "tatsugiri",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/tatsugiri.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/tatsugiri.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "tatsugiri",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 46,
+      "h": 52,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/tatsugiri.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/tatsugiri.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "tatsugiri",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 63,
+      "h": 72,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/tatsugiri.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/tatsugiri.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "tatsugiridroopy",
+    "shiny": false,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 52,
+      "h": 43,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back/tatsugiri-droopy.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/tatsugiri-droopy.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "tatsugiridroopy",
+    "shiny": false,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 64,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back/tatsugiri-droopy.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/tatsugiri-droopy.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "tatsugiridroopy",
+    "shiny": false,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 34,
+      "h": 31,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani/tatsugiri-droopy.gif",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/tatsugiri-droopy.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "tatsugiridroopy",
+    "shiny": false,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 34,
+      "h": 31,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani/tatsugiri-droopy.gif",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/tatsugiri-droopy.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "tatsugiridroopy",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 52,
+      "h": 43,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/tatsugiri-droopy.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/tatsugiri-droopy.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "tatsugiridroopy",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 64,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/tatsugiri-droopy.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/tatsugiri-droopy.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "tatsugiridroopy",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 52,
+      "h": 32,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/tatsugiri-droopy.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/tatsugiri-droopy.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "tatsugiridroopy",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 45,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/tatsugiri-droopy.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/tatsugiri-droopy.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "tatsugiristretchy",
+    "shiny": false,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 52,
+      "h": 33,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back/tatsugiri-stretchy.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/tatsugiri-stretchy.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "tatsugiristretchy",
+    "shiny": false,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 50,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back/tatsugiri-stretchy.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/tatsugiri-stretchy.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "tatsugiristretchy",
+    "shiny": false,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 34,
+      "h": 31,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani/tatsugiri-stretchy.gif",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/tatsugiri-stretchy.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "tatsugiristretchy",
+    "shiny": false,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 34,
+      "h": 31,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani/tatsugiri-stretchy.gif",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/tatsugiri-stretchy.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "tatsugiristretchy",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 52,
+      "h": 33,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/tatsugiri-stretchy.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/tatsugiri-stretchy.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "tatsugiristretchy",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 50,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/tatsugiri-stretchy.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/tatsugiri-stretchy.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "tatsugiristretchy",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 52,
+      "h": 31,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/tatsugiri-stretchy.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/tatsugiri-stretchy.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "tatsugiristretchy",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 72,
+      "h": 44,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/tatsugiri-stretchy.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/tatsugiri-stretchy.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "tatsugiricurlymega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 82,
+      "h": 51,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/tatsugiri-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/tatsugiri-curlymega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "tatsugiricurlymega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 84,
+      "h": 52,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/tatsugiri-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/tatsugiri-curlymega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "tatsugiricurlymega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 96,
+      "h": 63,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/tatsugiri-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/tatsugiri-curlymega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "tatsugiricurlymega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 51,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/tatsugiri-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/tatsugiri-curlymega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "tatsugiridroopymega",
+    "shiny": false,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 49,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back/tatsugiri-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/tatsugiri-droopymega.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "tatsugiridroopymega",
+    "shiny": false,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 84,
+      "h": 52,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back/tatsugiri-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/tatsugiri-droopymega.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "tatsugiridroopymega",
+    "shiny": false,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 51,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5/tatsugiri-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/tatsugiri-droopymega.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "tatsugiridroopymega",
+    "shiny": false,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 51,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5/tatsugiri-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/tatsugiri-droopymega.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "tatsugiridroopymega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 49,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/tatsugiri-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/tatsugiri-droopymega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "tatsugiridroopymega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 84,
+      "h": 52,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/tatsugiri-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/tatsugiri-droopymega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "tatsugiridroopymega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 51,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/tatsugiri-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/tatsugiri-droopymega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "tatsugiridroopymega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 51,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/tatsugiri-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/tatsugiri-droopymega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "tatsugiristretchymega",
+    "shiny": false,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 49,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back/tatsugiri-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/tatsugiri-stretchymega.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "tatsugiristretchymega",
+    "shiny": false,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 84,
+      "h": 52,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back/tatsugiri-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/tatsugiri-stretchymega.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "tatsugiristretchymega",
+    "shiny": false,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 51,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5/tatsugiri-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/tatsugiri-stretchymega.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "tatsugiristretchymega",
+    "shiny": false,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 51,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5/tatsugiri-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/tatsugiri-stretchymega.mp3",
+      "shiny": false
+    }
+  },
+  {
+    "id": "tatsugiristretchymega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 49,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/tatsugiri-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/tatsugiri-stretchymega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "tatsugiristretchymega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 84,
+      "h": 52,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/tatsugiri-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/tatsugiri-stretchymega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "tatsugiristretchymega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 51,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/tatsugiri-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/tatsugiri-stretchymega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "tatsugiristretchymega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 51,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/tatsugiri-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/tatsugiri-stretchymega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "baxcaliburmega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 82,
+      "h": 82,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/baxcalibur-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/baxcalibur-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "baxcaliburmega",
+    "shiny": true,
+    "front": false,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 84,
+      "h": 84,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/baxcalibur-mega.png",
+      "pixelated": true,
+      "isFrontSprite": false,
+      "cryurl": "audio/cries/baxcalibur-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "baxcaliburmega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": false,
+    "data": {
+      "gen": 9,
+      "w": 96,
+      "h": 96,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/baxcalibur-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/baxcalibur-mega.mp3",
+      "shiny": true
+    }
+  },
+  {
+    "id": "baxcaliburmega",
+    "shiny": true,
+    "front": true,
+    "teamPreview": true,
+    "data": {
+      "gen": 9,
+      "w": 78,
+      "h": 78,
+      "y": 0,
+      "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/baxcalibur-mega.png",
+      "pixelated": true,
+      "isFrontSprite": true,
+      "cryurl": "audio/cries/baxcalibur-mega.mp3",
+      "shiny": true
+    }
+  }
+]

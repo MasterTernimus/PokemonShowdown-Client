@@ -16,9 +16,51 @@ const path = require('path');
 const sourceMap = require('source-map');
 
 const VERBOSE = false;
+const transformedFiles = new Map();
+
+// Large generated JSON catalogs contain no executable TypeScript. Keep them out
+// of Babel's AST traversal and source-map generation, then restore their values.
+function transformFile(src, opts) {
+  const options = {...opts};
+  delete options.incremental;
+  delete options.sourceFileName;
+  const input = fs.readFileSync(src, 'utf8');
+  const key = path.resolve(src) + JSON.stringify(options) + input;
+  if (transformedFiles.has(key)) return transformedFiles.get(key);
+  const catalogs = [];
+  const candidates = /^(?:\b(?:const|let|var)\s+[A-Z_][A-Z_0-9]*[^=\r\n]*=\s*|Object\.(?:assign|entries)\(\s*(?:[A-Z_][A-Z_0-9]*\s*,\s*)?)(?=[{\[])/gm;
+  let masked = '', cursor = 0, match;
+  while ((match = candidates.exec(input))) {
+    const start = candidates.lastIndex;
+    let depth = 0, quoted = false, escaped = false, end = start;
+    for (; end < input.length; end++) {
+      const ch = input[end];
+      if (quoted) { if (escaped) escaped = false; else if (ch === '\\') escaped = true; else if (ch === '"') quoted = false; continue; }
+      if (ch === '"') quoted = true;
+      else if (ch === '{' || ch === '[') depth++;
+      else if ((ch === '}' || ch === ']') && --depth === 0) { end++; break; }
+    }
+    const literal = input.slice(start, end);
+    if (literal.length < 16384) continue;
+    try { JSON.parse(literal); } catch { continue; }
+    const token = '__PS_RAW_CATALOG_' + catalogs.length + '__';
+    if (input.includes(token)) throw new Error('Reserved catalog token in ' + src);
+    catalogs.push(literal);
+    masked += input.slice(cursor, start) + token;
+    cursor = end;
+    candidates.lastIndex = end;
+  }
+  const result = catalogs.length ? babel.transformSync(masked + input.slice(cursor), {
+    ...options, filename: src, sourceMaps: false,
+  }) : babel.transformFileSync(src, opts);
+  if (result && catalogs.length) result.code = result.code.replace(/__PS_RAW_CATALOG_(\d+)__/g, (_, i) => catalogs[Number(i)]);
+  transformedFiles.set(key, result);
+  return result;
+}
 
 function outputFileSync(filePath, res, opts) {
   fs.mkdirSync(path.dirname(filePath), {recursive: true});
+  let code = res.code;
 
   // we've requested explicit sourcemaps to be written to disk
   if (
@@ -27,12 +69,12 @@ function outputFileSync(filePath, res, opts) {
     opts.sourceMaps !== "inline"
   ) {
     const mapLoc = filePath + ".map";
-    res.code += "\n//# sourceMappingURL=" + path.basename(mapLoc);
-    res.map.file = path.basename(filePath);
-    fs.writeFileSync(mapLoc, JSON.stringify(res.map));
+    code += "\n//# sourceMappingURL=" + path.basename(mapLoc);
+    const map = {...res.map, file: path.basename(filePath)};
+    fs.writeFileSync(mapLoc, JSON.stringify(map));
   }
 
-  fs.writeFileSync(filePath, res.code);
+  fs.writeFileSync(filePath, code);
 }
 
 function slash(path) {
@@ -90,7 +132,7 @@ async function combineResults(fileResults, sourceMapOptions, opts) {
         }
       }
 
-      offset = code.split("\n").length - 1;
+      if (consumer.destroy) consumer.destroy();
     }
   }
 
@@ -135,7 +177,7 @@ function compileToDir(srcDir, destDir, opts = {}) {
 
     if (incremental && noRebuildNeeded(src, dest)) return 0;
 
-    const res = babel.transformFileSync(src, {
+    const res = transformFile(src, {
       ...opts,
       sourceFileName: slash(path.relative(dest + "/..", src)),
     });
@@ -186,7 +228,7 @@ function compileToDir(srcDir, destDir, opts = {}) {
   return total;
 }
 
-function compileToFile(srcFile, destFile, opts) {
+async function compileToFile(srcFile, destFile, opts) {
   const incremental = opts.incremental;
   delete opts.incremental;
 
@@ -202,14 +244,14 @@ function compileToFile(srcFile, destFile, opts) {
   for (const src of srcFiles) {
     if (!fs.existsSync(src)) continue;
 
-    const res = babel.transformFileSync(src, opts);
+    const res = transformFile(src, opts);
 
     if (res) results.push(res);
 
     if (VERBOSE) console.log(src + " ->");
   }
 
-  combineResults(results, {
+  const combined = await combineResults(results, {
     file: path.basename(destFile),
     sourceRoot: opts.sourceRoot,
   }, opts).then(combined => {

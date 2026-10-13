@@ -18,6 +18,8 @@ const thisDir = __dirname;
 const rootDir = path.resolve(thisDir, '..');
 process.chdir(rootDir);
 
+(async function updateClient() {
+
 const AUTOCONFIG_START = '/*** Begin automatically generated configuration ***/';
 const AUTOCONFIG_END = '/*** End automatically generated configuration ***/';
 
@@ -102,7 +104,7 @@ compiledFiles += compiler.compileToDir(`play.pokemonshowdown.com/src`, `play.pok
 
 compiledFiles += compiler.compileToDir(`replay.pokemonshowdown.com/src`, `replay.pokemonshowdown.com/js`, compileOpts);
 
-compiledFiles += compiler.compileToFile(
+compiledFiles += await compiler.compileToFile(
 	[
 		'play.pokemonshowdown.com/src/battle-field-rules.ts',
 		'play.pokemonshowdown.com/src/battle-field-tooltips.ts',
@@ -119,7 +121,7 @@ compiledFiles += compiler.compileToFile(
 );
 
 if (!compileOpts.ignore) {
-	compiledFiles += compiler.compileToFile(
+	compiledFiles += await compiler.compileToFile(
 		['play.pokemonshowdown.com/src/battle-animations.ts', 'play.pokemonshowdown.com/src/battle-animations-moves.ts'],
 		'play.pokemonshowdown.com/data/graphics.js',
 		compileOpts
@@ -212,3 +214,5 @@ replaysContents = replaysContents.replace(URL_REGEX, addCachebuster);
 fs.writeFileSync('replay.pokemonshowdown.com/index.php', replaysContents);
 
 console.log("DONE");
+
+})().catch(error => { console.error(error); process.exitCode = 1; });

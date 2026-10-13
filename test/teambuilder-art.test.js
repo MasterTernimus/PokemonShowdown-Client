@@ -88,7 +88,8 @@ describe('Native Team Builder artwork coverage', () => {
 	it('keeps explicit Gen 5 artwork and battle rendering separate', () => {
 		for (const species of ['Dragonite-Mega', 'Clefable-Mega', 'Greninja-Mega']) {
 			assert.equal(Dex.getTeambuilderSpriteData({species}, 5).spriteDir, 'sprites/gen5');
-			assert(Dex.getSpriteData(species, true, {gen: 9}).url.includes('/sprites/gen5/'));
+			assert(Dex.getSpriteData(species, true, {gen: 9}).url.includes(species === 'Greninja-Mega' ?
+				'/sprites/gen5ani/za-greninjamega.gif' : '/sprites/gen5/'));
 		}
 	});
 	it('restores original normal and shiny sprites when BW graphics is toggled on', () => {

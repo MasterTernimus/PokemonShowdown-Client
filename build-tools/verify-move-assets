@@ -1,0 +1,26 @@
+#!/usr/bin/env node
+'use strict';
+const assert = require('assert').strict;
+const path = require('path');
+const root = path.resolve(__dirname, '..');
+const data = name => require(path.join(root, 'play.pokemonshowdown.com/data', name + '.js'));
+const moves = data('moves').BattleMovedex;
+const index = new Set(data('search-index').BattleSearchIndex.filter(row => row[1] === 'move').map(row => row[0]));
+const learnsets = data('learnsets').BattleLearnsets;
+const tables = data('teambuilder-tables').BattleTeambuilderTable;
+const snapshot = require(path.join(root, 'server-data-sync-manifest.json')).snapshot;
+for (const id of Object.keys(snapshot.moves)) assert(moves[id], 'Missing released move: ' + id);
+for (const id of Object.keys(moves)) assert(index.has(id), 'Move missing from search index: ' + id);
+// Historical source learnsets contain these undefined legacy IDs. Do not invent moves.
+const legacyAliases = {vicegrip: 'visegrip', hijumpkick: 'highjumpkick'};
+const legacyUndefined = new Set(['esperwings', 'sizzleslide', 'unownpower', 'judgement', 'fireflash', 'stackingshot']);
+let entries = 0;
+for (const [species, row] of Object.entries(learnsets)) {
+ for (const [id, sources] of Object.entries(row.learnset || {})) {
+  if (!sources.some(source => source.startsWith('9'))) continue;
+  assert(moves[id] || moves[legacyAliases[id]] || legacyUndefined.has(id), species + ' learns missing move ' + id);
+  assert(tables.learnsets[species]?.[id]?.includes('9'), species + '/' + id + ' missing from current-generation picker');
+  entries++;
+ }
+}
+console.log('Verified ' + Object.keys(moves).length + ' indexed moves and ' + entries + ' current-generation learnset entries.');

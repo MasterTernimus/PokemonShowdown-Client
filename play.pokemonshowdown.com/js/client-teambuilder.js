@@ -735,14 +735,12 @@
 			var $teamwrapper = this.$('.teamwrapper');
 			var width = $(window).width();
 			if (!$teamwrapper.length) return;
-			if (width < 640 && !this.curSet) {
-				var scale = (width / 640);
-				$teamwrapper.css('transform', 'scale(' + scale + ')');
-				$teamwrapper.addClass('scaled');
-			} else {
-				$teamwrapper.css('transform', 'none');
-				$teamwrapper.removeClass('scaled');
-			}
+			$teamwrapper.css('transform', 'none').removeClass('scaled');
+			if (this.search && this.curChartType in this.searchChartTypes) this.search.updateScroll();
+		},
+		hide: function () {
+			if (this.search) this.search.pauseRendering();
+			Room.prototype.hide.apply(this, arguments);
 		},
 		// button actions
 		revealFolder: function () {
@@ -2190,7 +2188,7 @@
 			this.$el.html('<div class="teamwrapper editing-set">' + buf + '</div>');
 			if ($(window).width() < 640) this.show();
 			this.$chart = this.$('.roster-search-results');
-			this.search = new BattleSearch(this.$chart, this.$('.teambuilder-results'));
+			this.search = new BattleSearch(this.$chart, this.$el);
 			// These lists scroll with the room rather than an internal results viewport.
 			this.search.renderAll = true;
 			this.search.engine.pickerOptions = this.pokemonPickerOptions();
@@ -2216,7 +2214,7 @@
 			var self = this;
 			// fun fact: Backbone DOM events don't support scroll...
 			// I guess scroll doesn't bubble like other events
-			this.$('.teambuilder-results').on('scroll', function () {
+			this.$el.off('scroll.teambuilderSearch').on('scroll.teambuilderSearch', function () {
 				if (self.curChartType in self.searchChartTypes) {
 					self.search.updateScroll();
 				}
@@ -2405,6 +2403,7 @@
 			i = +i;
 			var set = this.curSetList[i];
 			if (set) {
+				if (this.curSet === set) { this.returnToPokemonEditor(); return; }
 				this.curSet = set;
 				this.curSetLoc = i;
 				if (!this.curChartName) {
@@ -2501,6 +2500,7 @@
 			return 'http://smogon.com/dex/' + generation + '/pokemon/' + smogdexid + '/';
 		},
 		updateStatForm: function (setGuessed) {
+			if (this.search) this.search.cancelRendering();
 			var buf = '';
 			var set = this.curSet;
 			var selectedForm = this.currentFormPreview && this.currentFormPreview(set);
@@ -3024,6 +3024,7 @@
 		 *********************************************************/
 
 		updateDetailsForm: function () {
+			if (this.search) this.search.cancelRendering();
 			var buf = '';
 			var set = this.curSet;
 			var isLetsGo = this.curTeam.format.includes('letsgo');
@@ -3326,6 +3327,7 @@
 				e.stopPropagation();
 				var $active = this.$chart.find('a.hover');
 				if (!$active.length) return this.$chart.find('a').first().addClass('hover');
+				if (!$active.parent().nextAll('li.result').length) this.search.updateScroll(true);
 				var $li = $active.parent().next();
 				while ($li[0] && $li[0].firstChild.tagName !== 'A') $li = $li.next();
 				if ($li[0] && $li.children()[0]) {
@@ -4426,20 +4428,30 @@
 	var setPokemon = proto.setPokemon;
 	proto.setPokemon = function (value, next) {
 		var previous = this.curSet, manualName = previous && previous.name && T.id(previous.name) !== T.id(previous.species) ? previous.name : '';
-		var result = setPokemon.call(this, value, next), data = this.toolsData();
+		var previousSpecies = previous && previous.species;
+		var result = setPokemon.call(this, value, false);
+		// Blurring an unchanged species must not replace the input receiving focus.
+		if (!this.curSet || this.curSet.species === previousSpecies) {
+			if (next && this.curSet) this.focusChartInput(this.curSet.item ? 'ability' : 'item', true);
+			return result;
+		}
+		var data = this.toolsData();
 		if (manualName && this.curSet) this.curSet.name = manualName;
 		if (this.curSet && data.autoNickname) {
 			var profile = data.nicknames.find(function (p) { return p.id === data.selectedNickname; });
 			T.applyNickname(this.curSet, profile, this.curTeam.dex, false);
 		}
-		if (this.curSet) this.$('input[name=nickname]').val(this.curSet.name || '');
+		if (this.curSet) {
+			this.updateSetTop(); // Repaint profile-applied gender and shiny settings, not just the nickname.
+			if (next) this.focusChartInput(this.curSet.item ? 'ability' : 'item', true);
+		}
 		return result;
 	};
 	var profiles = proto.renderRosterProfiles;
 	proto.renderRosterProfiles = function () {
 		var html = profiles.apply(this, arguments), data = this.toolsData(true);
 		var active = data.nicknames.find(function (p) { return p.id === data.selectedNickname; });
-		html = html.replace(/<button[^>]*name="showRosterProfiles"[^>]*>(?:Profiles|Pokémon lists)<\/button>/, '');
+		// Keep the Pokémon-list manager reachable while editing a set.
 		html = html.replace(/<\/div>$/, '<span class="active-name-profile">Names: ' + escape(active ? active.name : 'None') + '</span></div>');
 		return html;
 	};
@@ -4979,6 +4991,7 @@
 		if (before && /^(pokemon|move[1-4])$/.test(field) && JSON.stringify(before) !== JSON.stringify(this.curSetList[index])) {
 			this.selectionUndo = {team: team, index: index, before: before, after: T.clone(this.curSetList[index])}; this.showSelectionUndo();
 		}
+		if (field === 'pokemon' && next && this.curSet && this.curSet.species) this.returnToPokemonEditor();
 		return result;
 	};
 	proto.showSelectionUndo = function () {
@@ -5065,9 +5078,11 @@
 			data.profiles.push(profile);
 		}
 		var ids = this.rosterExpandedSpecies(this.rosterSpeciesID(draft.species));
+		var selectedChanged = data.selected !== profile.id;
+		data.selected = profile.id;
 		var added = ids.filter(function (id) { return profile.species.indexOf(id) < 0; });
 		profile.species = profile.species.concat(added);
-		if (added.length) {
+		if (added.length || selectedChanged) {
 			try {
 				// Commit the existing local preference cache before publishing in memory.
 				// prefs.save otherwise swallows browser quota/permission failures.
@@ -5133,7 +5148,7 @@ function renderStarterPassives(species) {
   var searchable = this.curChartType in this.searchChartTypes;
   var label = {pokemon: 'Pokémon', item: 'items', ability: 'abilities', move: 'moves'}[this.curChartType];
   this.$('.picker-search').prop('hidden', !searchable);
-  this.$('.picker-options-bar').prop('hidden', this.curChartType !== 'pokemon');
+  this.$('.picker-options-bar').prop('hidden', false);
   if (searchable) {
    var input = this.$('.picker-search-input');
    this.$('.picker-search-label').text('Search ' + label);
@@ -5187,14 +5202,14 @@ function renderStarterPassives(species) {
 	};
 	proto.returnToPokemonEditor = function () {
 		var input = this.curChartName && this.$('input[name=' + this.curChartName + ']')[0];
-		var editor = input || this.$('.teamchartbox.individual')[0];
+		var editor = this.$('.teamchartbox.individual')[0] || input;
 		if (!editor) return;
 		if (input) input.focus({preventScroll: true});
 		var bounds = editor.getBoundingClientRect();
 		var viewport = this.el.getBoundingClientRect();
 		// An explicit Back action reveals an off-screen field using the smallest scroll.
 		if (bounds.top < viewport.top || bounds.bottom > viewport.bottom) {
-			editor.scrollIntoView({block: 'nearest', behavior: 'auto'});
+			editor.scrollIntoView({block: 'start', behavior: 'auto'});
 		}
 	};
  proto.events['focus .picker-search-input'] = 'pickerSearchFocus';

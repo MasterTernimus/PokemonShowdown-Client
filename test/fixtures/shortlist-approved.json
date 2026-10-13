@@ -58,7 +58,7 @@
       "lockjaw"
     ],
     "mudsdale": [
-      "unyielding"
+      "stamina"
     ],
     "seismitoad": [
       "mirechorus"
@@ -169,7 +169,7 @@
       "mindseye"
     ],
     "archaludon": [
-      "lightningrod"
+      "stalwart"
     ],
     "tsareena": [
       "queenlymajesty"
@@ -252,7 +252,7 @@
       "0": "Strong Jaw"
     },
     "mudsdale": {
-      "0": "Stamina"
+      "0": "Unyielding"
     },
     "seismitoad": {
       "1": "Poison Touch"

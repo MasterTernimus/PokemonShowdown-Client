@@ -3492,10 +3492,6 @@
     "poisonheal",
     "toxicserenity"
   ],
-  "mudtemper": [
-    "battlearmor",
-    "mudtemper"
-  ],
   "skywarden": [
     "skywarden"
   ],
@@ -3554,7 +3550,7 @@
     "toughclaws"
   ],
   "unyielding": [
-    "stamina",
+    "innerfocus",
     "unyielding"
   ],
   "primalrhythm": [
@@ -3910,7 +3906,6 @@
     "scentscout"
   ],
   "surefoot": [
-    "innerfocus",
     "surefoot"
   ],
   "baitedbloom": [

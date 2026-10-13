@@ -101,6 +101,7 @@
 
 	Search.prototype.find = function (query, firstElem) {
 		if (!this.engine.find(query)) return; // nothing changed
+		this.cancelRendering();
 
 		this.exactMatch = this.engine.exactMatch;
 		this.q = this.engine.query;
@@ -154,8 +155,33 @@
 		if (!q) buf += '<small style="color: #888">(backspace = delete filter)</small>';
 		return buf + '</p>';
 	};
+	Search.prototype.pauseRendering = function () {
+		this.renderEpoch = (this.renderEpoch || 0) + 1;
+		this.renderBatchResults = null;
+	};
+	Search.prototype.cancelRendering = function () {
+		this.renderEpoch = (this.renderEpoch || 0) + 1;
+		this.renderBatchResults = null;
+		this.renderingDone = true;
+		this.renderList = null;
+	};
 	Search.prototype.updateScroll = function (forceAdd) {
 		if (this.renderingDone) return;
+		// Hidden rooms stay attached; zero geometry must not drain their whole catalog.
+		if (this.renderAll && this.el.getClientRects && !this.el.getClientRects().length) return;
+		// Stats and Details reuse this container; never append into their markup.
+		if (this.renderedIndex && this.el.firstChild !== this.renderList) {
+			this.cancelRendering();
+			return;
+		}
+		// Continuous teambuilder results grow only when their end approaches the
+		// room viewport, rather than draining the entire catalog every frame.
+		if (this.renderAll && this.renderedIndex && !forceAdd && this.el.getBoundingClientRect) {
+			var bounds = this.el.getBoundingClientRect();
+			var viewport = this.$viewport[0];
+			var viewportBottom = viewport && viewport.getBoundingClientRect ? viewport.getBoundingClientRect().bottom : window.innerHeight;
+			if (bounds.bottom > Math.min(viewportBottom, window.innerHeight) + 300) return;
+		}
 		var top = this.$viewport.scrollTop();
 		var bottom = top + this.$viewport.height();
 		var windowHeight = $(window).height();
@@ -168,7 +194,7 @@
 
 		var resultSet = this.resultSet;
 		// Yield between batches so changing fields/profiles does not build thousands of rows in one task.
-		if (this.renderAll) finalIndex = Math.min(i + 60, resultSet.length + 1);
+		if (this.renderAll) finalIndex = Math.min(i + 30, resultSet.length + 1);
 		var buf = '';
 		while (i < finalIndex) {
 			if (!resultSet[i]) {
@@ -198,6 +224,7 @@
 		if (!this.renderedIndex) {
 			this.el.innerHTML = '<ul class="utilichart"' + (this.renderAll ? '' : ' style="height:' + (resultSet.length * 33) + 'px"') + '>' + buf + (!this.renderAll && !this.renderingDone ? '<li class="result more"><p><button class="button big">More</button></p></li>' : '') + '</ul>';
 			this.moreVisible = !this.renderAll && !this.renderingDone;
+			this.renderList = this.el.firstChild;
 		} else {
 			if (this.moreVisible) {
 				this.$el.find('.more').remove();
@@ -208,9 +235,10 @@
 		this.renderedIndex = i;
 		if (this.renderAll && !this.renderingDone && this.renderBatchResults !== resultSet) {
 			var self = this;
+			var renderEpoch = this.renderEpoch;
 			this.renderBatchResults = resultSet;
 			window.requestAnimationFrame(function () {
-				if (self.renderBatchResults !== resultSet) return;
+				if (self.renderEpoch !== renderEpoch || self.renderBatchResults !== resultSet || self.el.isConnected === false) return;
 				self.renderBatchResults = null;
 				if (self.resultSet === resultSet) self.updateScroll();
 			});

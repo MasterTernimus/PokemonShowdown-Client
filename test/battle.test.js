@@ -712,7 +712,7 @@ describe('Team Builder sprites', () => {
 		for (const [species, data] of Object.entries(expected)) {
 			for (const shiny of [false, true]) {
 				for (const front of [false, true]) {
-					const sprite = Dex.getSpriteData(species, front, {gen: 9, shiny, noScale: true});
+					const sprite = staticSpriteData(species, front, {gen: 9, shiny, noScale: true});
 					const directory = `gen5${front ? '' : '-back'}${shiny ? '-shiny' : ''}`;
 					assert(sprite.url.split('?')[0].endsWith(`/sprites/${directory}/${data.filename}`), `${species} should use its supplied sprite`);
 					assert.equal(sprite.w, front ? data.front.w : data.back.w);

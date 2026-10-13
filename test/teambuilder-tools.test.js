@@ -248,7 +248,7 @@ describe('Team Builder navigation placement', () => {
  it('returns to the editor without rebuilding results or changing the set', () => {
   const room=new Room();let scrolled=false;room.curSet={species:'Mew'};
   room.el={getBoundingClientRect:()=>({top:55,bottom:844})};
-  room.$=()=>[{getBoundingClientRect:()=>({top:-100,bottom:-70}),scrollIntoView:options=>{scrolled=true;assert.equal(options.block,'nearest');}}];
+  room.$=()=>[{getBoundingClientRect:()=>({top:-100,bottom:-70}),scrollIntoView:options=>{scrolled=true;assert.equal(options.block,'start');}}];
   room.update=()=>{throw Error('Must preserve current search');};room.returnToPokemonEditor();
   assert(scrolled);assert.equal(room.curSet.species,'Mew');
  });

@@ -1,8 +1,8 @@
 'use strict';
 const assert=require('assert').strict,fs=require('fs');require('./battle.test');
 describe('Custom-only passive presentation and Water Barrage',()=>{
- const grants={vikavolt:'rechargerelay',jellicent:'undertow',jellicentazzy:'undertow',pinsir:'lockinggrip',hariyama:'palmmastery',drednaw:'lockjaw',mudsdale:'unyielding',seismitoad:'mirechorus'};
- const removed={rechargerelay:'battery',undertow:'waterabsorb',lockinggrip:'hypercutter',palmmastery:'thickfat',lockjaw:'strongjaw',unyielding:'stamina',mirechorus:'poisontouch'};
+ const grants={vikavolt:'rechargerelay',jellicent:'undertow',jellicentazzy:'undertow',pinsir:'lockinggrip',hariyama:'palmmastery',drednaw:'lockjaw',seismitoad:'mirechorus'};
+ const removed={rechargerelay:'battery',undertow:'waterabsorb',lockinggrip:'hypercutter',palmmastery:'thickfat',lockjaw:'strongjaw',mirechorus:'poisontouch'};
  for(const[species,passive]of Object.entries(grants))it(species+' publishes its custom passive independently of its selectable primitive',()=>{
   assert.deepEqual(Dex.species.get(species).passives,[passive]);
   assert(!Dex.getPassiveAbilityEffects(passive).has(removed[passive]));

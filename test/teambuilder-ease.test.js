@@ -133,9 +133,9 @@ describe('Teambuilder focus and scroll', () => {
   const {room, calls} = scrollHarness(); room.returnToPokemonEditor();
   assert.deepEqual(calls, [['focus', {preventScroll: true}]]);
  });
- it('reveals an off-screen move only for the explicit Back action', () => {
+ it('reveals the editor card when returning from the picker', () => {
   const {room, calls} = scrollHarness({top: -100, bottom: -70}); room.returnToPokemonEditor();
-  assert.deepEqual(calls, [['focus', {preventScroll: true}], ['scroll', {block: 'nearest', behavior: 'auto'}]]);
+  assert.deepEqual(calls, [['focus', {preventScroll: true}], ['scroll', {block: 'start', behavior: 'auto'}]]);
  });
  it('selects an editor input without automatic scrolling', () => {
   const {room, calls} = scrollHarness(); room.focusChartInput('move1', true);

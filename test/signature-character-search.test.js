@@ -28,3 +28,9 @@ describe('Signature learner removals',()=>{
  for(const[species,credit,move]of [['noctowl','Ciel','winddance'],['goodrahisui','Saphira','dragonrend']])it(species+' is illegal for '+move,()=>{const s=search(credit,species);assert(ids(s).includes(move));assert(s.illegalLabel(move));assert(!BattleLearnsets[species].learnset[move]);});
  for(const[species,credit,move]of [['altaria','Ciel','winddance'],['dragonite','Saphira','dragonrend'],['goodrahisui','Elias','deiludicium']])it(species+' retains '+move,()=>{assert(!search(credit,species).illegalLabel(move));});
 });
+
+describe('Release move search coverage',()=>{
+ it('finds Aquabatics from Aqua for Primarina as a legal move',()=>{const s=search('Aqua','primarina');assert(ids(s).includes('aquabatics'));assert(!s.illegalLabel('aquabatics'));});
+ it('indexes every released move, including all signature moves',()=>{require('child_process').execFileSync(process.execPath,['build-tools/verify-move-assets'],{cwd:require('path').resolve(__dirname,'..')});});
+ it('finds every signature by its complete move name',()=>{const moves=require('../server-data-sync-manifest.json').snapshot.moves;for(const[id,m]of Object.entries(moves))if(m.signatureCharacters)assert(ids(search(m.name)).includes(id),id);});
+});

@@ -795,6 +795,7 @@ function toId() {
 				}
 			};
 			this.socket = constructSocket();
+			if (!this.socket) return;
 
 			var socketopened = false;
 			var altport = (Config.server.port === Config.server.altport);
@@ -838,6 +839,7 @@ function toId() {
 			};
 			var reconstructSocket = function (socket) {
 				var s = constructSocket();
+				if (!s) return null;
 				s.onopen = socket.onopen;
 				s.onmessage = socket.onmessage;
 				s.onclose = socket.onclose;

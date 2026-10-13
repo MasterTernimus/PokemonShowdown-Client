@@ -18,6 +18,7 @@ function run(file, cwd) { cp.execFileSync(process.execPath, [file], {cwd, env: p
 run('build', source);
 run('build-tools/build-indexes', root);
 run('build-tools/build-learnsets', root);
+run('build-tools/verify-move-assets', root);
 run('build-tools/build-minidex', root);
 for (const file of ['pokedex-mini.js', 'pokedex-mini-bw.js']) {
 	if (!fs.existsSync(path.join(root, 'play.pokemonshowdown.com/data', file))) throw new Error('Sprite metadata missing: ' + file + '. Restore the tracked sprite assets before preparing a release.');

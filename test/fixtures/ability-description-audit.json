@@ -3064,8 +3064,8 @@
     "shortDesc": "Actual positive draining-move healing also heals its lowest-HP adjacent ally by 1/8, once per turn."
   },
   "railsight": {
-    "desc": "Moves cannot be redirected. On New World, Starlight Arena, Fairy Tale and Chessboard entry, gains +1 Sp. Atk. Once per switch-in, surviving a whole opposing damaging move that hits HP stores a non-stacking 1.5x boost for the next Electric attack. Consumed when that attack executes, including misses, Protect or immunity; charge-only and interrupted turns do not consume it. Switching clears it. Does not skip Electro Shot charging, grant an extra Sp. Atk boost or ignore screens.",
-    "shortDesc": "Surviving a foe HP-damaging move once per entry powers the next Electric attack by 1.5x."
+    "desc": "Prevents flinching and Intimidate Attack drops. Stalwart is supplied separately by Archaludon's passive. Once per switch-in, surviving a whole opposing damaging move that hits HP stores a non-stacking 1.5x boost for the next Electric attack. Consumed when that attack executes, including misses, Protect or immunity; charge-only and interrupted turns do not consume it. Switching clears it. Does not skip Electro Shot charging, grant an extra Sp. Atk boost or ignore screens.",
+    "shortDesc": "Inner Focus; surviving a foe HP-damaging move once per entry powers the next Electric attack by 1.5x."
   },
   "sovereignarsenal": {
     "desc": "Poison and Ground attacks choose Physical or Special using the higher Attack/Defense or Sp. Atk/Sp. Def stat ratio, like Shell Side Arm. Horn and tail moves gain +1 critical-hit stage. Contact flags are unchanged.",
@@ -3259,10 +3259,6 @@
     "desc": "Poison damage instead heals 1/8 max HP. Also heals 1/8 each turn on Corrosive Mist and Murkwater Surface, or while grounded on Corrosive and Wasteland. While poisoned or badly poisoned, Dragon moves cannot miss.",
     "shortDesc": "Dragon moves cannot miss while poisoned."
   },
-  "mudtemper": {
-    "desc": "Prevents critical hits and takes 20% less attack damage. Gains +1 Defense on Fairy Tale entry and +2 Defense when a foe lowers its stats. Surviving an opposing Fire or Water hit raises Sp. Def by 1 stage once per turn.",
-    "shortDesc": "Surviving Fire or Water hits gives +1 Sp. Def once per turn."
-  },
   "skywarden": {
     "desc": "After successfully using Defog, creates Mist for its team for 5 turns. The Mist is applied after Defog removes effects; an existing longer Mist is not shortened.",
     "shortDesc": "Defog sets 5-turn Mist for its side."
@@ -3328,8 +3324,8 @@
     "shortDesc": "First Dark hit each entry Taunts the foe for 2 turns."
   },
   "unyielding": {
-    "desc": "Each opposing attack hit that damages HP heals 1/16 max HP. The first such hit each turn also raises Defense by 1, before later hits of a multi-hit move. While its Defense stage is positive, opponents cannot force it to switch. Normal switching and stat resets still work.",
-    "shortDesc": "Raised Defense prevents opposing forced switching."
+    "desc": "Inner Focus prevents flinching and Intimidate Attack drops. Opponents cannot force this Pokemon to switch, regardless of its stat stages. Voluntary switching still works. Stamina is a separate species passive on Mudsdale.",
+    "shortDesc": "Inner Focus; opponents cannot force it to switch."
   },
   "primalrhythm": {
     "desc": "Damaging sound moves become physical and use Attack. These moves spare allies. Retains normal sound interactions, including Soundproof and Throat Chop.",
@@ -3684,8 +3680,8 @@
     "shortDesc": "Once per entry, reveals the first incoming opponent's item while already active."
   },
   "surefoot": {
-    "desc": "Full Inner Focus prevents flinching and Intimidate Attack drops. Ground attacks ignore the target's positive Defense stages only when Defense is the stat used for damage. Does not ignore positive Sp. Def, abilities or screens, or change attack category.",
-    "shortDesc": "Ground attacks ignore positive Defense stages when using Defense for damage."
+    "desc": "Ground-type moves have 1.3x power while its Defense stage is positive. The bonus ends when Defense returns to zero or below. Does not ignore opposing defensive stat stages.",
+    "shortDesc": "Ground moves have 1.3x power while Defense is raised."
   },
   "baitedbloom": {
     "shortDesc": "Combines the listed abilities.",

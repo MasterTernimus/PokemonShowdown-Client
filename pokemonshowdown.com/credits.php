@@ -46,6 +46,11 @@ includeHeader();
 		<div class="main credits">
 			<h1>Credits</h1>
 
+			<h2><span>Reborn sprite contributors</span></h2>
+			<ul>
+				<li><p><a href="https://www.deviantart.com/aronousqui20/gallery" target="_blank" class="subtle"><strong>Aronousqui20</strong></a> <small>&ndash; Animated Z-A Mega sprites: normal front and back artwork, including Mega Emboar.</small></p></li>
+			</ul>
+
 			<h2><span>Owner</span></h2>
 
 			<ul>

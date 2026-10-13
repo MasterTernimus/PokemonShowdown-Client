@@ -3793,3 +3793,36 @@ a.ilink.yours {
 @media(max-width:639px){.editing-set .setmenu button{min-height:44px;line-height:20px;padding:4px}.editing-set .setcell-ability>.starter-passives{max-width:100%;line-height:18px;gap:5px}.editing-set .setcell-ability>.starter-passives>label{font-size:12px;line-height:18px}.editing-set .setcell-ability>.starter-passives .passive-chip{font-size:12px;line-height:18px}}
 .dark .editing-set .setcell-ability>.starter-passives>label { color: #d0e0d5; }
 .dark .editing-set .setmenu button:hover { background: #304354; border-color: #879eaf; }
+
+/* Keep team-list cards readable on phones instead of scaling 640px content. */
+@media (max-width:639px) {
+ .teamwrapper { width:100%; min-width:0; }
+ .teamwrapper .teamchartbox { min-width:0; width:auto; }
+ .teamwrapper .teamchart { padding:8px; }
+ .teamwrapper .teamchart > li { padding:0; }
+ .teamwrapper .setmenu { position:static; width:auto; display:flex; flex-wrap:wrap; gap:4px; justify-content:flex-end; }
+ .teamwrapper .setmenu button { min-height:36px; }
+ .teamwrapper .setchart-nickname { position:static; width:auto; margin-top:6px; padding:6px; }
+ .teamwrapper .setchart { width:auto; height:auto; min-height:0; padding:8px; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:8px; background-image:none !important; }
+ .teamwrapper .setcol, .teamwrapper .setcell { float:none; width:auto; height:auto; min-width:0; }
+ .teamwrapper .setcol-icon, .teamwrapper .setcol-details { grid-column:1/-1; min-height:0; }
+ .teamwrapper .setcell-sprite:not(.changeform) { display:none; }
+ .teamwrapper .setcol-details > .setrow:last-child { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:8px; }
+ .teamwrapper .setrow-icons { display:none; }
+ .teamwrapper .setchart input, .teamwrapper .setchart-nickname input, .teamwrapper .setdetails, .teamwrapper .setstats { width:100%; box-sizing:border-box; }
+ .teamwrapper .setchart input, .teamwrapper .setchart-nickname input { font-size:16px; min-height:36px; }
+ .teamwrapper .setdetails { display:flex; flex-wrap:wrap; padding:6px; }
+ .teamwrapper .detailcell { width:auto; min-width:44px; font-size:12px; }
+ .teamwrapper .setcol-moves .setcell { padding-bottom:6px; }
+ .teamwrapper .setstats .statrow { display:flex; justify-content:space-between; }
+ .teamwrapper .setstats .statgraph { max-width:50px; overflow:hidden; }
+ .teamwrapper .setcell-ability > .starter-passives { max-width:100%; gap:4px; line-height:18px; }
+ .teamwrapper .starter-passives .passive-chip { font-size:12px; line-height:18px; }
+ .teamwrapper .set-tools-compact > summary { position:static; width:fit-content; min-height:36px; margin:4px 0; }
+}
+
+@media (max-width:639px) {
+ .teamwrapper .setcell-sprite.changeform { display:flex; align-items:center; height:auto; min-height:36px; width:auto; padding:6px 28px 6px 8px; box-sizing:border-box; margin-bottom:6px; background:rgba(120,140,155,.16); border:1px solid #81909c; border-radius:4px; }
+ .teamwrapper .setcell-sprite.changeform::before { content:"Change appearance"; font-size:13px; line-height:20px; }
+}
+@media (max-width:639px) { .teamwrapper .setcell-sprite.changeform > i { margin:0 0 0 auto; flex-shrink:0; } }

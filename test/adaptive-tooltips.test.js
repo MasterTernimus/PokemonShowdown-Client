@@ -32,7 +32,7 @@ describe('Adaptive category client parity', () => {
  });
  it('exposes approved Archaludon composites and descriptions', () => {
   for (const id of ['sturdy', 'solidrock']) assert(Dex.getAbilityEffects('anchorbridge').has(id));
-  assert(Dex.getAbilityEffects('railsight').has('stalwart')); assert(Dex.abilities.get('Rail Sight').desc.includes('1.5x'));
+  assert(Dex.getAbilityEffects('railsight').has('innerfocus')); assert(Dex.abilities.get('Rail Sight').desc.includes('1.5x'));
   assert(Dex.moves.get('needlegun').desc.includes('category'));
  });
 	it('exposes the Tidal Voice Aria healing rider without adding an ability component', () => {

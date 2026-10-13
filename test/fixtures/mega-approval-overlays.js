@@ -68,3 +68,13 @@ exports.effects = (id, original) => beforeGreninjaCounterplay(id, original).filt
 
 // Starter G-Max forms retain their normal family passive.
 Object.assign(before, {"charizardgmax":["blaze"],"cinderacegmax":["blaze"],"venusaurgmax":["overgrow"],"rillaboomgmax":["overgrow"],"blastoisegmax":["torrent"],"feraligatrgmax":["torrent"],"inteleongmax":["torrent"]});
+
+// Approved Mudsdale rework and Rhydon passive swap.
+Object.assign(before, {mudsdale:['stamina'],rhydon:['powerdrill']});
+const beforeMudsdaleEffects=exports.effects;
+exports.effects=(id,original)=>id==='unyielding'?['innerfocus','unyielding']:id==='surefoot'?['surefoot']:beforeMudsdaleEffects(id,original);
+
+// Reconcile the already-approved Archaludon/Rail Sight swap.
+before.archaludon=['stalwart'];
+const beforeRailSightEffects=exports.effects;
+exports.effects=(id,original)=>id==='railsight'?['innerfocus','railsight']:beforeRailSightEffects(id,original);

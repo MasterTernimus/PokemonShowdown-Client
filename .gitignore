@@ -35,3 +35,13 @@ caches/PokemonShowdown-Reborn/
 # Reviewed ability display data and search identities
 !test/fixtures/ability-description-audit.json
 !test/fixtures/ability-search-identities.json
+
+# Release move assets must travel with client code, including manual Git deployments.
+!play.pokemonshowdown.com/data/moves.js
+!play.pokemonshowdown.com/data/learnsets.js
+!play.pokemonshowdown.com/data/search-index.js
+!play.pokemonshowdown.com/data/teambuilder-tables.js
+
+# Sprite provenance and regression baseline must ship with the approved animations.
+!play.pokemonshowdown.com/sprites/za-bw-credits.json
+!test/fixtures/za-mega-bw-preservation.json

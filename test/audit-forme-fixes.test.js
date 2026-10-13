@@ -12,7 +12,7 @@ describe('Audited form corrections', () => {
   assert.deepEqual(Dex.species.get('Pikachu-Gmax').abilities, {0: 'Gigavolt'});
  });
  for (const [species, fallback] of [['Zygarde-Mega', 'Zygarde-Complete'], ['Magearna-Original-Mega', 'Magearna-Mega']]) {
-  it(species + ' uses an existing temporary fallback in modern and BW modes', () => {
+  it(species + ' preserves shiny and teambuilder fallbacks with exact normal Mega routing', () => {
    const original = Dex.prefs;
    const set = {species, shiny: false};
    try {
@@ -21,7 +21,14 @@ describe('Audited form corrections', () => {
      for (const shiny of [false, true]) for (const gen of [5, 9]) {
       for (const front of [false, true]) {
        const actual = Dex.getSpriteData(species, front, {shiny, gen});
-       assert.equal(actual.url, Dex.getSpriteData(fallback, front, {shiny, gen}).url);
+       if (shiny) {
+        assert.equal(actual.url, Dex.getSpriteData(fallback, front, {shiny, gen}).url);
+       } else if (species === 'Zygarde-Mega') {
+        assert(actual.url.includes('/gen5ani' + (front ? '' : '-back') + '/za-zygardemega.gif'));
+       } else {
+        // Original Magearna retains its previous artwork, not regular Mega's new animation.
+        assert(actual.url.includes('/gen5' + (front ? '' : '-back') + '/magearna-mega.png'));
+       }
        exists(actual.url);
       }
       const art = Dex.getTeambuilderSpriteData({...set, shiny}, gen);

@@ -183,8 +183,13 @@ describe('Sprite rendering regressions', () => {
 	it('does not select the old static Mega Golisopod GIF during preview', () => {
 		for (const shiny of [false, true]) for (const front of [false, true]) {
 			const data = Dex.getSpriteData('Golisopod-Mega', front, {gen: 9, shiny, teamPreview: true});
-			assert(data.url.includes('.png'), data.url);
-			assert.equal(sizeOf(localFile(data.url)).width, 192);
+			if (shiny) {
+				assert(data.url.includes('.png'), data.url);
+				assert.equal(sizeOf(localFile(data.url)).width, 192);
+			} else {
+				assert(data.url.includes('/za-golisopodmega.gif'), data.url);
+				assert(new GifReader(fs.readFileSync(localFile(data.url))).numFrames() > 1);
+			}
 		}
 	});
 	it('uses distinct front and back assets for base Nidoking and its shiny', () => {

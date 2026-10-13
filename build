@@ -64,6 +64,7 @@ default:
 	break;
 }
 
+execSync(`node ./build-tools/verify-move-assets`, options);
 execSync(`node ./build-tools/update` + full, options);
 
 if (full) {

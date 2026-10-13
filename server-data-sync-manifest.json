@@ -1,7 +1,7 @@
 {
-	"sourceHead": "adf637c2eb17a5850760877efa7a16bba2dc77b2",
+	"sourceHead": "223e75cd5e0de950eb8727be5dcd40b335ddb9bf",
 	"base": "9a1be465610a9e5dc164cb807c98f28ac2552030",
-	"sourceDataSHA256": "3503ebf7616c1dc6bf3568188e26c8c8e22371952dbf6f2f9bf28d28cb086947",
+	"sourceDataSHA256": "2fa71003df705165d646ddd79eebfa50c8c216bd47ca9eb55438d393ec6cab05",
 	"files": [
 		"data/abilities.ts",
 		"data/ability-components.ts",
@@ -108,10 +108,6 @@
 				"shortDesc": "Biting HP hits Torment surviving foes for 2 turns.",
 				"desc": "Biting attacks that deal HP damage apply Torment to surviving foes for 2 turns. Does not prevent switching or bypass Substitute. This passive does not include Strong Jaw."
 			},
-			"unyielding": {
-				"shortDesc": "Positive Defense stages prevent opposing forced switching.",
-				"desc": "While its Defense stage is positive, opponents cannot force it to switch. Normal switching and stat resets still work. This passive does not include Stamina and does not generate Defense boosts or healing."
-			},
 			"mirechorus": {
 				"shortDesc": "Sound becomes Water (Ice on Icy), 1.2x power; noncontact sound can poison.",
 				"desc": "Sound moves become Water-type, or Ice-type on Icy Field, and have 1.2x power. Each foe damaged by a noncontact sound hit has a 20% poison chance. Shield Dust and Covert Cloak prevent this added poison. This passive does not include contact Poison Touch."
@@ -132,9 +128,6 @@
 			],
 			"lockjaw": [
 				"strongjaw"
-			],
-			"unyielding": [
-				"stamina"
 			],
 			"mirechorus": [
 				"poisontouch"
@@ -606,9 +599,6 @@
 			"toxicspines": [
 				"merciless"
 			],
-			"unyielding": [
-				"stamina"
-			],
 			"saltbastion": [
 				"sturdy"
 			],
@@ -1012,11 +1002,6 @@
 				"passive": "merciless",
 				"desc": "Physical HP hits set one Toxic Spikes layer on the attacker's side, up to two; allied attacks use the opposing side. Contact attackers also lose 1/6 max HP. Can poison Poison and Steel types; Poison moves bypass Steel immunity. Newly poisoned foes lose 1 Defense and Sp. Def. On Wasteland, move secondary effects become separate 2.5% frostbite, burn, paralysis and poison chances. On Corrosive and Corrosive Mist, incoming damage is multiplied by 1.5. Full local Iron Barbs additionally deals 1/8 of a contact attacker's base max HP, separate from Toxic Debris contact damage.",
 				"shortDesc": "Combines the listed abilities. Iron Barbs adds 1/8 contact damage."
-			},
-			"unyielding": {
-				"passive": "stamina",
-				"desc": "While its Defense stage is positive, opponents cannot force it to switch. Normal switching and stat resets still work.",
-				"shortDesc": "While its Defense stage is positive, opponents cannot force it to switch. Normal switching and stat resets still work."
 			},
 			"saltbastion": {
 				"passive": "sturdy",
@@ -20897,6 +20882,50 @@
 				],
 				"replaceAbilities": true
 			},
+			"mightyenagrim": {
+				"abilities": {
+					"0": "Intimidate",
+					"1": "Black Fang",
+					"H": "Stakeout"
+				},
+				"baseStats": {
+					"hp": 90,
+					"atk": 125,
+					"def": 90,
+					"spa": 60,
+					"spd": 80,
+					"spe": 125
+				},
+				"types": [
+					"Dark",
+					"Ghost"
+				],
+				"passives": [
+					"infiltrator"
+				],
+				"replaceAbilities": true
+			},
+			"mightyenamega": {
+				"abilities": {
+					"0": "Dread Dominion"
+				},
+				"baseStats": {
+					"hp": 90,
+					"atk": 150,
+					"def": 115,
+					"spa": 85,
+					"spd": 100,
+					"spe": 130
+				},
+				"types": [
+					"Dark",
+					"Ghost"
+				],
+				"passives": [
+					"darkaura"
+				],
+				"replaceAbilities": true
+			},
 			"milcery": {
 				"abilities": {
 					"0": "Ripen",
@@ -21800,8 +21829,8 @@
 			},
 			"mudsdale": {
 				"abilities": {
-					"0": "Stamina",
-					"1": "Mud Temper",
+					"0": "Unyielding",
+					"1": "Battle Armor",
 					"H": "Surefoot"
 				},
 				"baseStats": {
@@ -21817,7 +21846,7 @@
 					"Fighting"
 				],
 				"passives": [
-					"unyielding"
+					"stamina"
 				],
 				"replaceAbilities": true
 			},
@@ -26758,7 +26787,7 @@
 				"abilities": {
 					"0": "Brute Force",
 					"1": "War Path",
-					"H": "Power Drill"
+					"H": "Lightning Rod"
 				},
 				"baseStats": {
 					"hp": 110,
@@ -26773,7 +26802,7 @@
 					"Rock"
 				],
 				"passives": [
-					"lightningrod"
+					"powerdrill"
 				],
 				"replaceAbilities": true
 			},
@@ -39413,6 +39442,16 @@
 				"flags": {},
 				"isNonstandard": null
 			},
+			"dreaddominion": {
+				"name": "Dread Dominion",
+				"num": 11452,
+				"gen": 9,
+				"desc": "Hydra Bond + Moxie. While this ability is active, Dark attacks are neutral against Fairy typing and Dark typing resists Fairy attacks for all Pokemon. Other type matchups still apply. Ends when the holder leaves battle or its ability is suppressed.",
+				"shortDesc": "While active: Dark is neutral vs Fairy; Dark resists Fairy for both sides.",
+				"rating": 5,
+				"flags": {},
+				"isNonstandard": null
+			},
 			"dreadjaw": {
 				"name": "Dread Jaw",
 				"num": 10510,
@@ -42494,18 +42533,6 @@
 				"shortDesc": "25% less special damage while awaiting a status move, and through the turn after successful use.",
 				"rating": 4,
 				"flags": {},
-				"isNonstandard": null
-			},
-			"mudtemper": {
-				"name": "Mud Temper",
-				"num": 10557,
-				"gen": 9,
-				"desc": "Prevents critical hits and takes 20% less attack damage. Gains +1 Defense on Fairy Tale entry and +2 Defense when a foe lowers its stats. Surviving an opposing Fire or Water hit raises Sp. Def by 1 stage once per turn.",
-				"shortDesc": "Surviving Fire or Water hits gives +1 Sp. Def once per turn.",
-				"rating": 1,
-				"flags": {
-					"breakable": 1
-				},
 				"isNonstandard": null
 			},
 			"multiscale": {
@@ -46211,12 +46238,10 @@
 				"name": "Surefoot",
 				"num": 11288,
 				"gen": 9,
-				"desc": "Full Inner Focus prevents flinching and Intimidate Attack drops. Ground attacks ignore the target's positive Defense stages only when Defense is the stat used for damage. Does not ignore positive Sp. Def, abilities or screens, or change attack category.",
-				"shortDesc": "Ground attacks ignore positive Defense stages when using Defense for damage.",
+				"desc": "Ground-type moves have 1.3x power while its Defense stage is positive. The bonus ends when Defense returns to zero or below. Does not ignore opposing defensive stat stages.",
+				"shortDesc": "Ground moves have 1.3x power while Defense is raised.",
 				"rating": 4,
-				"flags": {
-					"breakable": 1
-				},
+				"flags": {},
 				"isNonstandard": null
 			},
 			"surgeconduit": {
@@ -47210,10 +47235,12 @@
 				"name": "Unyielding",
 				"num": 10587,
 				"gen": 9,
-				"desc": "Each opposing attack hit that damages HP heals 1/16 max HP. The first such hit each turn also raises Defense by 1, before later hits of a multi-hit move. While its Defense stage is positive, opponents cannot force it to switch. Normal switching and stat resets still work.",
-				"shortDesc": "Raised Defense prevents opposing forced switching.",
-				"rating": 4,
-				"flags": {},
+				"desc": "Inner Focus prevents flinching and Intimidate Attack drops. Opponents cannot force this Pokemon to switch, regardless of its stat stages. Voluntary switching still works. Stamina is a separate species passive on Mudsdale.",
+				"shortDesc": "Inner Focus; opponents cannot force it to switch.",
+				"rating": 1,
+				"flags": {
+					"breakable": 1
+				},
 				"isNonstandard": null
 			},
 			"updraft": {
@@ -60445,8 +60472,8 @@
 					"bullet": 1,
 					"cantusetwice": 1
 				},
-				"desc": "If this move fails to KO its target, it has a 60% chance to paralyze the target. If successful, the user must recharge on the following turn and cannot select a move.",
-				"shortDesc": "If it fails to KO, 60% chance to paralyze; user must recharge."
+				"desc": "A successful hit has a 60% chance to paralyze the surviving target. Protect, misses, immunity and Substitute prevent paralysis; Shield Dust and Covert Cloak block this secondary effect. The user must recharge after a successful hit unless the target faints.",
+				"shortDesc": "60% paralysis on hit; recharge unless it KOs."
 			},
 			"rockyrampage": {
 				"name": "Rocky Rampage",
@@ -65855,6 +65882,25 @@
 					"type": "Ice"
 				}
 			},
+			"grimyinite": {
+				"name": "Grimyinite",
+				"num": 11111,
+				"desc": "Allows Mightyena, Mightyena-Deso and Mightyena-Grim to Mega Evolve into Mightyena-Mega.",
+				"shortDesc": "Allows Mightyena to Mega Evolve.",
+				"gen": 9,
+				"isNonstandard": "Custom",
+				"megaStone": {
+					"Mightyena": "Mightyena-Mega"
+				},
+				"itemUser": [
+					"Mightyena",
+					"Mightyena-Deso",
+					"Mightyena-Grim"
+				],
+				"fling": {
+					"basePower": 80
+				}
+			},
 			"iapapaberry": {
 				"name": "Iapapa Berry",
 				"num": 163,
@@ -66623,6 +66669,10 @@
 			],
 			"dragonize": [],
 			"dragonsmaw": [],
+			"dreaddominion": [
+				"hydrabond",
+				"moxie"
+			],
 			"dreadjaw": [
 				"moxie"
 			],
@@ -67259,9 +67309,6 @@
 			"mourningvessel": [],
 			"moxie": [],
 			"mudmeditation": [],
-			"mudtemper": [
-				"battlearmor"
-			],
 			"multiscale": [],
 			"multitype": [],
 			"mummy": [],
@@ -68049,9 +68096,7 @@
 				"stickyhold"
 			],
 			"supremeoverlord": [],
-			"surefoot": [
-				"innerfocus"
-			],
+			"surefoot": [],
 			"surgeconduit": [
 				"lightningrod",
 				"rockhead"
@@ -68275,7 +68320,7 @@
 			"unseenfist": [],
 			"unstableevo": [],
 			"unyielding": [
-				"stamina"
+				"innerfocus"
 			],
 			"updraft": [],
 			"vanguard": [
@@ -69519,6 +69564,10 @@
 			"hugepower": [],
 			"hungerswitch": [],
 			"hustle": [],
+			"dreaddominion": [
+				"hydrabond",
+				"moxie"
+			],
 			"hydrabond": [],
 			"hydraheart": [
 				"hydrabond",
@@ -70501,9 +70550,6 @@
 			"toxicserenity": [
 				"poisonheal"
 			],
-			"mudtemper": [
-				"battlearmor"
-			],
 			"skywarden": [],
 			"lockjaw": [
 				"strongjaw"
@@ -70539,7 +70585,7 @@
 				"toughclaws"
 			],
 			"unyielding": [
-				"stamina"
+				"innerfocus"
 			],
 			"primalrhythm": [],
 			"setpiece": [],
@@ -70785,9 +70831,7 @@
 			"scentscout": [
 				"frisk"
 			],
-			"surefoot": [
-				"innerfocus"
-			],
+			"surefoot": [],
 			"baitedbloom": [
 				"gluttony",
 				"regenerator"
