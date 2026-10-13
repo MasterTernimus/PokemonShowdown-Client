@@ -1,7 +1,7 @@
 {
-	"sourceHead": "4eebbcf8c24bba628019fa5c1ed0d0896fcb16f5",
+	"sourceHead": "ca66733c3285345cf0f6acc5ddc2cea5350f9581",
 	"base": "9a1be465610a9e5dc164cb807c98f28ac2552030",
-	"sourceDataSHA256": "0caa26f9cd88fc61767701bafb195c5fc8344243727337ca9492f7ff39d957c7",
+	"sourceDataSHA256": "b85cf1ae398ca73793bbc34198b719888fbd4095567dc739974b32827b206f8b",
 	"files": [
 		"data/abilities.ts",
 		"data/ability-components.ts",
@@ -58752,8 +58752,8 @@
 					"mirror": 1,
 					"punch": 1
 				},
-				"desc": "Has a higher chance for a critical hit. If this move succeeds, it turns Normal-type moves into Electric-type moves for the rest of the turn and creates Electric Aura for 3 turns, or 5 with Amplifield Rock, without replacing the base field. This Aura cannot promote into Electric Terrain, including after refreshes. If Electric Terrain can be set, this move gains 30% power.",
-				"shortDesc": "High crit; electrifies Normal moves; 3-turn Electric Aura (5 with Amp Rock), never Terrain."
+				"desc": "Has a higher chance for a critical hit. If this move succeeds, it turns Normal-type moves into Electric-type moves for the rest of the turn and creates Electric Aura for 3 turns, or 5 with Amplifield Rock, without replacing the base field. Existing Electric Terrain or Electric Aura is left unchanged, including its remaining duration and promotion eligibility. A new Aura created by this move cannot promote into Electric Terrain. If Electric Terrain can be set, this move gains 30% power.",
+				"shortDesc": "High crit; electrifies Normal moves; creates Electric Aura only if no Electric field/Aura exists."
 			},
 			"playnice": {
 				"name": "Play Nice",
