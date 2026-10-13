@@ -18968,7 +18968,7 @@ for (const [id, update] of Object.entries({
 			"Steel"
 		],
 		"passives": [
-			"proficient"
+			"torrent"
 		],
 		"replaceAbilities": true
 	},
@@ -20715,7 +20715,7 @@ for (const [id, update] of Object.entries({
 			"Dragon"
 		],
 		"passives": [
-			"proficient"
+			"blaze"
 		],
 		"replaceAbilities": true
 	},
@@ -21333,7 +21333,7 @@ for (const [id, update] of Object.entries({
 			"Fire"
 		],
 		"passives": [
-			"proficient"
+			"blaze"
 		],
 		"replaceAbilities": true
 	},
@@ -25955,7 +25955,7 @@ for (const [id, update] of Object.entries({
 			"Dark"
 		],
 		"passives": [
-			"proficient"
+			"torrent"
 		],
 		"replaceAbilities": true
 	},
@@ -30966,7 +30966,7 @@ for (const [id, update] of Object.entries({
 			"Water"
 		],
 		"passives": [
-			"proficient"
+			"torrent"
 		],
 		"replaceAbilities": true
 	},
@@ -41353,7 +41353,7 @@ for (const [id, update] of Object.entries({
 			"Grass"
 		],
 		"passives": [
-			"proficient"
+			"overgrow"
 		],
 		"replaceAbilities": true
 	},
@@ -49116,7 +49116,7 @@ for (const [id, update] of Object.entries({
 			"Poison"
 		],
 		"passives": [
-			"proficient"
+			"overgrow"
 		],
 		"replaceAbilities": true
 	},

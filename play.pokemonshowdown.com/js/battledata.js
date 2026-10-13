@@ -22956,7 +22956,7 @@ Object.entries({
 "Steel"],
 
 "passives":[
-"proficient"],
+"torrent"],
 
 "replaceAbilities":true
 },
@@ -24703,7 +24703,7 @@ Object.entries({
 "Dragon"],
 
 "passives":[
-"proficient"],
+"blaze"],
 
 "replaceAbilities":true
 },
@@ -25321,7 +25321,7 @@ Object.entries({
 "Fire"],
 
 "passives":[
-"proficient"],
+"blaze"],
 
 "replaceAbilities":true
 },
@@ -29943,7 +29943,7 @@ Object.entries({
 "Dark"],
 
 "passives":[
-"proficient"],
+"torrent"],
 
 "replaceAbilities":true
 },
@@ -34954,7 +34954,7 @@ Object.entries({
 "Water"],
 
 "passives":[
-"proficient"],
+"torrent"],
 
 "replaceAbilities":true
 },
@@ -45341,7 +45341,7 @@ Object.entries({
 "Grass"],
 
 "passives":[
-"proficient"],
+"overgrow"],
 
 "replaceAbilities":true
 },
@@ -53104,7 +53104,7 @@ Object.entries({
 "Poison"],
 
 "passives":[
-"proficient"],
+"overgrow"],
 
 "replaceAbilities":true
 },

@@ -1,7 +1,7 @@
 {
-	"sourceHead": "e659c5501687e673b4ce1ddde1eec608219ca835",
+	"sourceHead": "33bf8b0beba045adec6bf311ed7748c0dc279650",
 	"base": "9a1be465610a9e5dc164cb807c98f28ac2552030",
-	"sourceDataSHA256": "ea40c5d289801ee3bd9bfe641014ada7d3afb1a6099ee44d0ab4c27dfd3c861f",
+	"sourceDataSHA256": "ea86b88fb72bfb57649719755eaceaf605b06fd0080ba415c950ae18e198a10e",
 	"files": [
 		"data/abilities.ts",
 		"data/ability-components.ts",
@@ -4516,7 +4516,7 @@
 					"Steel"
 				],
 				"passives": [
-					"proficient"
+					"torrent"
 				],
 				"replaceAbilities": true
 			},
@@ -6263,7 +6263,7 @@
 					"Dragon"
 				],
 				"passives": [
-					"proficient"
+					"blaze"
 				],
 				"replaceAbilities": true
 			},
@@ -6881,7 +6881,7 @@
 					"Fire"
 				],
 				"passives": [
-					"proficient"
+					"blaze"
 				],
 				"replaceAbilities": true
 			},
@@ -11503,7 +11503,7 @@
 					"Dark"
 				],
 				"passives": [
-					"proficient"
+					"torrent"
 				],
 				"replaceAbilities": true
 			},
@@ -16514,7 +16514,7 @@
 					"Water"
 				],
 				"passives": [
-					"proficient"
+					"torrent"
 				],
 				"replaceAbilities": true
 			},
@@ -26901,7 +26901,7 @@
 					"Grass"
 				],
 				"passives": [
-					"proficient"
+					"overgrow"
 				],
 				"replaceAbilities": true
 			},
@@ -34664,7 +34664,7 @@
 					"Poison"
 				],
 				"passives": [
-					"proficient"
+					"overgrow"
 				],
 				"replaceAbilities": true
 			},

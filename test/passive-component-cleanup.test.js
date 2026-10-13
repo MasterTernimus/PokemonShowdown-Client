@@ -7,6 +7,10 @@ describe('Passive component separation client parity', () => {
   it(row.id + ' slot ' + slot.slot + ' separates selected and passive identities', () => {
    const species = Dex.species.get(row.id);
    for (const component of slot.overlap) {
+    const starterGmax = {"charizardgmax":["blaze"],"cinderacegmax":["blaze"],"venusaurgmax":["overgrow"],"rillaboomgmax":["overgrow"],"blastoisegmax":["torrent"],"feraligatrgmax":["torrent"],"inteleongmax":["torrent"]};
+    if (component === 'proficient' && starterGmax[row.id]) {
+     assert.deepEqual(species.passives, starterGmax[row.id]);assert(!Dex.hasAbilityEffect(species, 'proficient'));continue;
+    }
     if (row.id === 'gliscor') { assert.deepEqual(species.passives,['poisonheal']); assert(Dex.getAbilityEffects('venompincer').has('hypercutter')); continue; }
     if (['kingler','fearow','pinsir'].includes(row.id)) {
      const passive = {kingler:'titanpincer',fearow:'lancepoint',pinsir:'lockinggrip'}[row.id];

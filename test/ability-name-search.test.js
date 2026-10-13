@@ -23,7 +23,8 @@ describe('Listed ability search', () => {
 		assert(Dex.hasAbility(species, 'Burning Crown'));
 		assert(!Dex.hasAbility(species, 'Proficient'));
 		assert(!Dex.getAbilityEffects('burningcrown').has('proficient'));
-		assert(Dex.hasAbilityEffect(species, 'proficient'));
+		assert(!Dex.hasAbilityEffect(species, 'proficient'));
+		assert(Dex.hasAbilityEffect(species, 'blaze'));
 	});
 	it('uses direct abilities for instant Pokemon results too', () => {
 		const rows = DexSearch.prototype.instafilter.call({dex: Dex}, 'pokemon', 'ability', 'intimidate');

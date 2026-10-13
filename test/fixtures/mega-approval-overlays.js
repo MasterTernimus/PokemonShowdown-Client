@@ -65,3 +65,6 @@ exports.description=(id,key,text)=>id==='desertspirit'&&key==='desc'?'On entry, 
 
 const beforeGreninjaCounterplay = exports.effects;
 exports.effects = (id, original) => beforeGreninjaCounterplay(id, original).filter(part => !(['shadowbond', 'shadowcurrent'].includes(id) && part === 'moldbreaker'));
+
+// Starter G-Max forms retain their normal family passive.
+Object.assign(before, {"charizardgmax":["blaze"],"cinderacegmax":["blaze"],"venusaurgmax":["overgrow"],"rillaboomgmax":["overgrow"],"blastoisegmax":["torrent"],"feraligatrgmax":["torrent"],"inteleongmax":["torrent"]});
