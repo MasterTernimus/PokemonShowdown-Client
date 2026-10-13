@@ -55647,7 +55647,8 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	],
 	"moonveil": [
 		"pastelveil",
-		"mistysurge"
+		"mistysurge",
+		"friendguard"
 	],
 	"tidalwave": [
 		"waterabsorb",
@@ -56256,7 +56257,8 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	],
 	"mirrorgreed": [
 		"magicbounce",
-		"analytic"
+		"analytic",
+		"opportunist"
 	],
 	"uncheckedassault": [
 		"scrappy",
@@ -57399,7 +57401,8 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	"toxiccocoon": [],
 	"galebloom": [],
 	"gemeye": [
-		"keeneye"
+		"keeneye",
+		"magicguard"
 	],
 	"lastlaugh": [],
 	"openingoverture": [],
@@ -62736,8 +62739,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Gem Eye",
 		"num": 10453,
 		"gen": 9,
-		"desc": "Prevents other Pokemon's accuracy drops and ignores evasion boosts. Reveals opposing Illusions on activation. Mirror Arena entry gives +1 accuracy and Laser Focus. Once per switch-in, reflects the first reflectable opposing status move aimed directly at it. Side-targeting hazards do not use this reflection.",
-		"shortDesc": "Reflects the first direct opposing status move each entry.",
+		"desc": "Magic Guard prevents indirect damage and grants +1 Sp. Def on Fairy Tale entry. Prevents opposing accuracy drops, ignores evasion boosts, and reveals opposing Illusions. Mirror Arena entry gives +1 accuracy and Laser Focus. Reflects the first direct opposing status move each entry; side-targeting hazards do not consume this reflection.",
+		"shortDesc": "No indirect damage; reflects the first direct opposing status move each entry.",
 		"rating": 0.5,
 		"flags": {
 			"breakable": 1
@@ -63950,8 +63953,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Last Laugh",
 		"num": 10454,
 		"gen": 9,
-		"desc": "If no other active Pokemon has a move left to use this turn, its damaging attack bypasses Substitute. Damaging a foe with that attack restores 1/8 max HP, once per turn. Once per entry, a damaging attack that hits a foe after that foe has completed its move action this turn applies Torment after damage, subject to normal eligibility. Merely switching in does not qualify.",
-		"shortDesc": "Last-action hits bypass Substitute and heal 1/8; once/entry, hitting an already-acted foe applies Torment.",
+		"desc": "If no other active Pokemon has a move left to use this turn, its damaging attack bypasses Substitute. Damaging a foe with that attack restores 1/8 max HP, once per turn. Once per entry, a damaging attack that hits a foe after that foe has completed its move action this turn applies Torment after damage, subject to normal eligibility. Merely switching in does not qualify. Deals 2x damage to foes already affected by Torment.",
+		"shortDesc": "2x damage to Tormented foes; last-action hits bypass Substitute and heal 1/8; Torment once/entry.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null
@@ -64532,7 +64535,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Mirror Greed",
 		"num": 10111,
 		"gen": 9,
-		"desc": "Reflects eligible status moves and entry hazards once; reflected moves cannot bounce again. Fairy Tale entry gives +1 Sp. Def; Mirror Arena entry gives +1 evasion. Moves have 1.3x power if no other active Pokemon has a move left to use that turn. Takes 20% less attack damage, or 40% less from super-effective attacks.",
+		"desc": "Reflects eligible status moves and entry hazards once; reflected moves cannot bounce again. Fairy Tale entry gives +1 Sp. Def; Mirror Arena entry gives +1 evasion. Moves have 1.3x power if no other active Pokemon has a move left to use that turn. Takes 20% less attack damage, or 40% less from super-effective attacks. Opportunist copies positive stat boosts gained by opposing Pokemon.",
 		"shortDesc": "Combines the listed abilities.",
 		"rating": 5,
 		"flags": {
@@ -64604,7 +64607,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Moon Veil",
 		"num": 11130,
 		"gen": 9,
-		"desc": "It and its allies cannot be poisoned. Gaining this Ability while it or its ally is poisoned cures them. Before an opposing Pokemon uses a Poison-type move, that Pokemon's Attack and Special Attack are lowered by 1 stage. On entry, creates Misty Terrain for 5 turns, or 8 with Amplifield Rock, subject to field and Aura rules.",
+		"desc": "Allies take 25% less damage from attacks. It and its allies cannot be poisoned. Gaining this Ability while it or its ally is poisoned cures them. Before an opposing Pokemon uses a Poison-type move, that Pokemon's Attack and Special Attack are lowered by 1 stage. On entry, creates Misty Terrain for 5 turns, or 8 with Amplifield Rock, subject to field and Aura rules.",
 		"shortDesc": "Combines the listed abilities.",
 		"rating": 4,
 		"flags": {
@@ -65050,8 +65053,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Ocean Lullaby",
 		"num": 11252,
 		"gen": 9,
-		"desc": "Shell Armor prevents critical hits. Once per turn, a successful damaging sound move clears confusion and negative accuracy stages from the holder and active allies. Other stages and positive accuracy remain; the bench is unaffected. Does not change Sing accuracy.",
-		"shortDesc": "Damaging sound hits clear self/allies' confusion and negative accuracy once/turn.",
+		"desc": "Shell Armor. Once per turn, a successful damaging sound hit heals the holder and active allies by 1/16 max HP, clears confusion, and removes negative accuracy stages. Does not affect benched Pokemon, other stat stages, positive accuracy, or Sing accuracy.",
+		"shortDesc": "Sound hits heal self/allies 1/16 and clear confusion/accuracy drops once/turn.",
 		"rating": 4,
 		"flags": {
 			"breakable": 1
@@ -90670,7 +90673,8 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"flowerveil"
 	],
 	"gemeye": [
-		"keeneye"
+		"keeneye",
+		"magicguard"
 	],
 	"gentlegiant": [
 		"cloudnine"
@@ -91029,7 +91033,8 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"mirrorarmor": [],
 	"mirrorgreed": [
 		"magicbounce",
-		"analytic"
+		"analytic",
+		"opportunist"
 	],
 	"mistysurge": [],
 	"moldbreaker": [],
@@ -91048,7 +91053,8 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	],
 	"moonveil": [
 		"pastelveil",
-		"mistysurge"
+		"mistysurge",
+		"friendguard"
 	],
 	"mossarmor": [
 		"levitate",

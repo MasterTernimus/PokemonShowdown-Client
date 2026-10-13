@@ -6,7 +6,7 @@ exports.passives=(id,fallback)=>before[id]||fallback;
 before.lapras=['liquidvoice'];
 before.yanmega=['levitate'];
 for(const[id,p]of Object.entries(require('./gmax-approved.json').passives))before[id]=[p];
-exports.effects=(id,original)=>{const removed={parentalbond:['friendguard'],ironwill:['secondwind'],calderacore:['sheerforce'],razorcurrent:['strongjaw']};const added={cursedmarionette:['frisk'],uncheckedassault:['limber']};return [...new Set([...original.filter(p=>!removed[id]?.includes(p)),...(added[id]||[])])].sort();};
+exports.effects=(id,original)=>{const removed={parentalbond:['friendguard'],ironwill:['secondwind'],calderacore:['sheerforce'],razorcurrent:['strongjaw']};const added={moonveil:['friendguard'],gemeye:['magicguard'],mirrorgreed:['opportunist'],cursedmarionette:['frisk'],uncheckedassault:['limber']};return [...new Set([...original.filter(p=>!removed[id]?.includes(p)),...(added[id]||[])])].sort();};
 
 const previousEffects=exports.effects;
 const approved=require('./selected-simplifications-approved.json');
