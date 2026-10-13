@@ -741,7 +741,8 @@ License: GPLv2
 }
 
 .bewitchedwoodsterrainweather {
-    background: #CCAAEE url(../fx/weather-bewitchedwoodsterrain.png) no-repeat scroll left top;
+    background: #CCAAEE url(../fx/weather-bewitchedwoodsterrain.png) no-repeat center center;
+    background-size: 100% 100%;
     color: #441155;
 }
 
