@@ -62,3 +62,6 @@ const priorDesertEffects=exports.effects;
 exports.effects=(id,original)=>id==='desertspirit'?['desertspirit','levitate','overcoat','sandstream']:priorDesertEffects(id,original);
 const priorDesertDescription=exports.description;
 exports.description=(id,key,text)=>id==='desertspirit'&&key==='desc'?'On entry, summons sandstorm for 5 turns, or 8 with Smooth Rock. Immune to powder effects and sandstorm/hail damage. Ground-type attacks receive STAB. Levitate provides normal airborne protection unless supplied separately by the species passive.':priorDesertDescription(id,key,text);
+
+const beforeGreninjaCounterplay = exports.effects;
+exports.effects = (id, original) => beforeGreninjaCounterplay(id, original).filter(part => !(['shadowbond', 'shadowcurrent'].includes(id) && part === 'moldbreaker'));

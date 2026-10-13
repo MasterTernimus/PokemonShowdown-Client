@@ -440,8 +440,8 @@
     "shortDesc": "At 1/2 or less of its max HP: +1 Atk, Sp. Atk, Spe, and -1 Def, Sp. Def."
   },
   "anticipation": {
-    "desc": "On entry, reveals opposing Illusions and alerts to an opposing super-effective or OHKO move. If no threat is found, Psychic Terrain grants +2 Sp. Atk.",
-    "shortDesc": "Reveals Illusions and dangerous moves; Psychic-field bonus."
+    "desc": "On entry, reveals opposing Illusions and one super-effective damaging move or OHKO threat. Until it switches out, takes 25% less damage from the revealed move used by opponents; OHKO moves are not reduced. This replaces weaker Forewarn damage protection rather than stacking with it. If no threat is found, Psychic Terrain grants +2 Sp. Atk.",
+    "shortDesc": "Warns of danger; 25% less damage from the revealed move until switching."
   },
   "arenatrap": {
     "desc": "Traps adjacent grounded foes; takes 20% less damage from trapped targets. Only the Arena Trap holder receives the damage reduction, and only when attacked by a foe it is trapping.",
@@ -497,7 +497,7 @@
   },
   "shadowbond": {
     "shortDesc": "Water Shuriken hits 3 times at 30 power and always critically hits.",
-    "desc": "Battle Bond's shared effects plus Infiltrator and Mold Breaker. Moves bypass breakable abilities; Ability Shield still protects them. Ash-Greninja's Water Shuriken hits three times at 30 base power per hit and always critically hits."
+    "desc": "Battle Bond's shared effects plus Infiltrator. Ash-Greninja's Water Shuriken hits three times at 30 base power per hit and always critically hits."
   },
   "apexbond": {
     "desc": "Battle Bond's shared effects plus Supreme Overlord and Rough Skin. Garchomp-Battle-Bond's Dual Chop never misses and always critically hits. Effective fallen count is capped at 5 after Free-for-All doubling, for a maximum 1.5x Supreme Overlord power multiplier; unlocks at 2/4/5 are unchanged.",
@@ -1240,8 +1240,8 @@
     "desc": "Castform changes to Sunny in sun, Rainy in rain, Snowy in hail or snow, Sandy in sandstorm, Windy in Delta Stream, and Normal otherwise. Effective weather and Utility Umbrella apply. Does not transform copied Pokemon or supply any form-specific bonus."
   },
   "forewarn": {
-    "desc": "On entry, it reveals a strongest move known by an opposing Pokemon and removes foe Illusions. In Psychic Terrain, it gains 2 Sp. Atk and takes 0.8x damage from moves.",
-    "shortDesc": "Reveals strongest foe move; removes Illusions; Psychic Terrain +2 SpA; takes 0.8x damage."
+    "desc": "On entry, reveals a strongest opposing move and removes foe Illusions. Takes 20% less move damage. Until it switches out, takes 25% less damage from the revealed move used by opponents; OHKO moves are not reduced. This replaces weaker Forewarn damage protection rather than stacking with it. In Psychic Terrain, gains 2 Sp. Atk on a successful reveal.",
+    "shortDesc": "Reveals strongest move; 25% less damage from it, otherwise 20%."
   },
   "searescuer": {
     "desc": "Once per entry, the first Roost that actually restores HP lets the trainer choose a replacement after healing, if one is available. Switching abilities does not refresh this effect.",
@@ -2324,8 +2324,8 @@
     "desc": "It is immune to bullet, pulse, and all Mega Launcher-boosted moves and takes 20% less damage from attacks. Heals 1/16 max HP each turn and ignores sandstorm and hail damage. Switching out cures major status and heals 1/3 max HP only if a status was cured. Bewitched Woods cures status at turn end without this extra heal. On entry, gains +1 Defense, plus +1 Sp. Def on Cold Eclipse, New World, Starlight Arena or Fairy Tale."
   },
   "shadowcurrent": {
-    "shortDesc": "Changes type before attacks; boosts weak moves; bypasses abilities and screens; scouts threats.",
-    "desc": "Before an eligible damaging move, changes to its type; status, reflected, delayed, Snatched and move-calling moves do not trigger this. Moves with effective power of 60 or less have 1.5x power; the threshold is 80 on Factory Field. Moves bypass bypassable opposing Abilities, Substitute, Reflect, Light Screen, Aurora Veil, Safeguard and Mist. On entry, reveals opposing Illusions and alerts to an opposing super-effective or OHKO move. If no threat is found, Psychic Terrain grants +2 Sp. Atk."
+    "shortDesc": "Protean, Technician and Anticipation.",
+    "desc": "Before an eligible damaging move, changes to its type. Technician boosts eligible weak moves. Anticipation reveals a dangerous opposing move and grants 25% damage reduction against that move until switching out; OHKO moves are not reduced. Removes opposing Illusions; if no threat is found, Psychic Terrain grants +2 Sp. Atk."
   },
   "astralwitchcraft": {
     "shortDesc": "No indirect damage; reflects status moves; field entry boosts.",
@@ -2772,8 +2772,8 @@
     "shortDesc": "Summons 8-turn Strong Winds; Flying priority; accuracy protection; moves never miss."
   },
   "coldlogic": {
-    "desc": "Contact moves have 1.3x power. Takes 20% less attack damage, plus a further 25% reduction against super-effective attacks or on Crystal Cavern and Dark Crystal Cavern (40% total). Defense and Sp. Def are 4/3x on Cold Eclipse, Dark Crystal Cavern and Rainbow. Immune to hail damage on Cold Eclipse. A contact attacker that knocks it out loses 1/4 max HP, or 1/2 on Corrosive Mist. Damp prevents this damage. On entry, it reveals a strongest move known by an opposing Pokemon and removes foe Illusions. In Psychic Terrain, it gains 2 Sp. Atk and takes 0.8x damage from moves. Cold Logic applies Forewarn's additional 0.8x attack-damage factor only when the effective base field is Psychic Terrain; a Psychic aura alone does not qualify. Global Forewarn and all other Cold Logic effects are unchanged.",
-    "shortDesc": "Extra Forewarn reduction only on Psychic Terrain."
+    "desc": "Prism Armor + Forewarn + Aftermath. Takes 20% less attack damage, or 40% less against super-effective attacks or on Crystal Cavern and Dark Crystal Cavern. Defense and Sp. Def are 4/3x on Cold Eclipse, Dark Crystal Cavern and Rainbow; immune to hail on Cold Eclipse. Forewarn reveals a strongest opposing move and removes foe Illusions; that move deals 25% less damage until switching out, excluding OHKO moves. Uses the stronger Prism Armor or learned-move reduction, not both. Psychic Terrain grants 2 Sp. Atk on a successful reveal and 20% Forewarn protection against moves, including fixed damage; a Psychic aura alone does not qualify. An opposing move that knocks it out triggers Aftermath even without contact: the attacker loses 1/4 max HP, or 1/2 on Corrosive Mist. Damp prevents this, and indirect-damage protection applies. Tough Claws is supplied separately by Mega Metagross's passive.",
+    "shortDesc": "Prism Armor + Forewarn + Aftermath; Aftermath also triggers on noncontact KOs."
   },
   "whitesmoke": {
     "desc": "Other Pokemon cannot lower its stat stages. Gains +1 Attack and Sp. Atk on Volcanic entry.",

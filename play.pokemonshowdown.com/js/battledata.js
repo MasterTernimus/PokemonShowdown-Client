@@ -59963,8 +59963,7 @@ var CUSTOM_ABILITY_DISPLAY_COMPONENTS={
 
 "shadowbond":[
 "battlebond",
-"infiltrator",
-"moldbreaker"],
+"infiltrator"],
 
 "apexbond":[
 "battlebond",
@@ -60998,8 +60997,7 @@ var CUSTOM_ABILITY_DISPLAY_COMPONENTS={
 "shadowcurrent":[
 "protean",
 "technician",
-"anticipation",
-"moldbreaker"],
+"anticipation"],
 
 "astralwitchcraft":[
 "levitate",
@@ -63045,8 +63043,8 @@ var CUSTOM_SHARED_PASSIVE_DESCRIPTIONS={
 },
 "coldlogic":{
 "passive":"toughclaws",
-"desc":"Contact moves have 1.3x power. Takes 20% less attack damage, plus a further 25% reduction against super-effective attacks or on Crystal Cavern and Dark Crystal Cavern (40% total). Defense and Sp. Def are 4/3x on Cold Eclipse, Dark Crystal Cavern and Rainbow. Immune to hail damage on Cold Eclipse. A contact attacker that knocks it out loses 1/4 max HP, or 1/2 on Corrosive Mist. Damp prevents this damage. On entry, it reveals a strongest move known by an opposing Pokemon and removes foe Illusions. In Psychic Terrain, it gains 2 Sp. Atk and takes 0.8x damage from moves. Native Mega Metagross uses the strongest applicable Forewarn/Prism Armor damage reduction, never their product. Forewarn damage protection still requires Psychic Terrain, a Psychic aura alone does not qualify. Prism Armor field Defense/Sp. Def multipliers, Forewarn reveals and entry Sp. Atk remain unchanged.",
-"shortDesc":"Prism Armor + Aftermath + Forewarn; damage reductions do not stack."
+"desc":"Prism Armor + Forewarn + Aftermath. Takes 20% less attack damage, or 40% less against super-effective attacks or on Crystal Cavern and Dark Crystal Cavern. Defense and Sp. Def are 4/3x on Cold Eclipse, Dark Crystal Cavern and Rainbow; immune to hail on Cold Eclipse. Forewarn reveals a strongest opposing move and removes foe Illusions; that move deals 25% less damage until switching out, excluding OHKO moves. Uses the stronger Prism Armor or learned-move reduction, not both. Psychic Terrain grants 2 Sp. Atk on a successful reveal and 20% Forewarn protection against moves, including fixed damage; a Psychic aura alone does not qualify. An opposing move that knocks it out triggers Aftermath even without contact: the attacker loses 1/4 max HP, or 1/2 on Corrosive Mist. Damp prevents this, and indirect-damage protection applies. Tough Claws is supplied separately by Mega Metagross's passive.",
+"shortDesc":"Prism Armor + Forewarn + Aftermath; Aftermath also triggers on noncontact KOs."
 },
 "uncheckedassault":{
 "passive":"scrappy",
@@ -63793,8 +63791,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "name":"Anticipation",
 "num":107,
 "gen":4,
-"desc":"On entry, reveals opposing Illusions and alerts to an opposing super-effective or OHKO move. If no threat is found, Psychic Terrain grants +2 Sp. Atk.",
-"shortDesc":"Reveals Illusions and dangerous moves; Psychic-field bonus.",
+"desc":"On entry, reveals opposing Illusions and one super-effective damaging move or OHKO threat. Until it switches out, takes 25% less damage from the revealed move used by opponents; OHKO moves are not reduced. This replaces weaker Forewarn damage protection rather than stacking with it. If no threat is found, Psychic Terrain grants +2 Sp. Atk.",
+"shortDesc":"Warns of danger; 25% less damage from the revealed move until switching.",
 "rating":0.5,
 "flags":{},
 "isNonstandard":null
@@ -64820,8 +64818,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "name":"Cold Logic",
 "num":10128,
 "gen":9,
-"desc":"Contact moves have 1.3x power. Takes 20% less attack damage, plus a further 25% reduction against super-effective attacks or on Crystal Cavern and Dark Crystal Cavern (40% total). Defense and Sp. Def are 4/3x on Cold Eclipse, Dark Crystal Cavern and Rainbow. Immune to hail damage on Cold Eclipse. A contact attacker that knocks it out loses 1/4 max HP, or 1/2 on Corrosive Mist. Damp prevents this damage. On entry, it reveals a strongest move known by an opposing Pokemon and removes foe Illusions. In Psychic Terrain, it gains 2 Sp. Atk and takes 0.8x damage from moves. Native Mega Metagross uses the strongest applicable Forewarn/Prism Armor damage reduction, never their product. Forewarn damage protection still requires Psychic Terrain, a Psychic aura alone does not qualify. Prism Armor field Defense/Sp. Def multipliers, Forewarn reveals and entry Sp. Atk remain unchanged.",
-"shortDesc":"Prism Armor + Aftermath + Forewarn; damage reductions do not stack.",
+"desc":"Prism Armor + Forewarn + Aftermath. Takes 20% less attack damage, or 40% less against super-effective attacks or on Crystal Cavern and Dark Crystal Cavern. Defense and Sp. Def are 4/3x on Cold Eclipse, Dark Crystal Cavern and Rainbow; immune to hail on Cold Eclipse. Forewarn reveals a strongest opposing move and removes foe Illusions; that move deals 25% less damage until switching out, excluding OHKO moves. Uses the stronger Prism Armor or learned-move reduction, not both. Psychic Terrain grants 2 Sp. Atk on a successful reveal and 20% Forewarn protection against moves, including fixed damage; a Psychic aura alone does not qualify. An opposing move that knocks it out triggers Aftermath even without contact: the attacker loses 1/4 max HP, or 1/2 on Corrosive Mist. Damp prevents this, and indirect-damage protection applies. Tough Claws is supplied separately by Mega Metagross's passive.",
+"shortDesc":"Prism Armor + Forewarn + Aftermath; Aftermath also triggers on noncontact KOs.",
 "rating":4.5,
 "flags":{
 "breakable":1
@@ -66417,8 +66415,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "name":"Forewarn",
 "num":108,
 "gen":4,
-"desc":"On entry, it reveals a strongest move known by an opposing Pokemon and removes foe Illusions. In Psychic Terrain, it gains 2 Sp. Atk and takes 0.8x damage from moves.",
-"shortDesc":"Reveals strongest foe move; removes Illusions; Psychic Terrain +2 SpA; takes 0.8x damage.",
+"desc":"On entry, reveals a strongest opposing move and removes foe Illusions. Takes 20% less move damage. Until it switches out, takes 25% less damage from the revealed move used by opponents; OHKO moves are not reduced. This replaces weaker Forewarn damage protection rather than stacking with it. In Psychic Terrain, gains 2 Sp. Atk on a successful reveal.",
+"shortDesc":"Reveals strongest move; 25% less damage from it, otherwise 20%.",
 "rating":0.5,
 "flags":{},
 "isNonstandard":null
@@ -71210,7 +71208,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "name":"Shadow Bond",
 "num":10408,
 "gen":9,
-"desc":"Battle Bond's shared effects plus Infiltrator and Mold Breaker. Moves bypass breakable abilities; Ability Shield still protects them. Ash-Greninja's Water Shuriken hits three times at 30 base power per hit and always critically hits.",
+"desc":"Battle Bond's shared effects plus Infiltrator. Ash-Greninja's Water Shuriken hits three times at 30 base power per hit and always critically hits.",
 "shortDesc":"Water Shuriken hits 3 times at 30 power and always critically hits.",
 "rating":4,
 "flags":{
@@ -71227,8 +71225,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "name":"Shadow Current",
 "num":10033,
 "gen":9,
-"desc":"Before an eligible damaging move, changes to its type; status, reflected, delayed, Snatched and move-calling moves do not trigger this. Moves with effective power of 60 or less have 1.5x power; the threshold is 80 on Factory Field. On entry, reveals opposing Illusions and alerts to an opposing super-effective or OHKO move. If no threat is found, Psychic Terrain grants +2 Sp. Atk. Full local Mold Breaker lets its moves bypass breakable abilities; Ability Shield still protects them.",
-"shortDesc":"Protean, Technician, Anticipation and Mold Breaker.",
+"desc":"Before an eligible damaging move, changes to its type. Technician boosts eligible weak moves. Anticipation reveals a dangerous opposing move and grants 25% damage reduction against that move until switching out; OHKO moves are not reduced. Removes opposing Illusions; if no threat is found, Psychic Terrain grants +2 Sp. Atk.",
+"shortDesc":"Protean, Technician and Anticipation.",
 "rating":4.5,
 "flags":{},
 "isNonstandard":null
@@ -74488,7 +74486,7 @@ stormsovereign:['galewings','keeneye'],
 omenedge:['sharpness','dualwield','pressure'],
 
 ragingcurrent:['swiftswim','damp','dryskin','stamina','proficient'],
-shadowcurrent:['protean','technician','infiltrator','anticipation','moldbreaker','proficient'],
+shadowcurrent:['protean','technician','infiltrator','anticipation','proficient'],
 relentlesshunt:['levitate'],
 
 dreadmaw:['hugepower','strongjaw','invigorate'],
@@ -75333,7 +75331,6 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES,{
 "technician",
 "anticipation",
 "infiltrator",
-"moldbreaker",
 "proficient"],
 
 "astralwitchcraft":[
@@ -95610,14 +95607,12 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES,{
 "battlebond",
 "filter",
 "selfsufficient",
-"infiltrator",
-"moldbreaker"],
+"infiltrator"],
 
 "shadowcurrent":[
 "protean",
 "technician",
-"anticipation",
-"moldbreaker"],
+"anticipation"],
 
 "shadowdouble":[],
 "shadowfeint":[],
@@ -102926,7 +102921,6 @@ var AUDITED_DESCRIPTION_COMPONENTS={
 "shadowcurrent":[
 "anticipation",
 "infiltrator",
-"moldbreaker",
 "proficient",
 "protean",
 "technician"],
