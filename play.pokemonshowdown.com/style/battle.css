@@ -1153,3 +1153,19 @@ License: GPLv2
 .statbar .status .ability-active-torrent { color: #174f80; background: #e6f2ff; border-color: #82add3; }
 .statbar .status .ability-active-blaze { color: #883516; background: #fff0e7; border-color: #d8a080; }
 .statbar .status .ability-active-overgrow { color: #285d32; background: #eaf5e9; border-color: #8fb894; }
+
+/* These temporary effects need their own line boxes when status tags wrap. */
+.statbar .status .effect-guard {
+ display: inline-block;
+ margin: 2px 1px 1px 0;
+ padding: 0 4px;
+ border: 1px solid #99aabe;
+ border-radius: 4px;
+ color: #334d6b;
+ background: #eef3fa;
+ font-size: 10px;
+ line-height: 14px;
+ font-weight: 600;
+ vertical-align: middle;
+ white-space: nowrap;
+}

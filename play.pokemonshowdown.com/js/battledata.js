@@ -19938,6 +19938,7 @@ if(CUSTOM_SPECIES[_id7])Object.assign(CUSTOM_SPECIES[_id7].data,_update3);
 
 
 
+
 Object.entries({
 "ababo":{
 "abilities":{
@@ -21524,7 +21525,7 @@ Object.entries({
 "Dragon"],
 
 "passives":[
-"lightningrod"],
+"stalwart"],
 
 "replaceAbilities":true
 },
@@ -45196,7 +45197,7 @@ Object.entries({
 },
 "rhydon":{
 "abilities":{
-"0":"Lightning Rod",
+"0":"Brute Force",
 "1":"War Path",
 "H":"Power Drill"
 },
@@ -45213,7 +45214,7 @@ Object.entries({
 "Rock"],
 
 "passives":[
-"bruteforce"],
+"lightningrod"],
 
 "replaceAbilities":true
 },
@@ -59479,6 +59480,10 @@ sunsovereign:{
 
 
 
+
+
+
+
 var CUSTOM_PERFECT_FORECAST_FORMS={
 "castform":{
 "components":[],
@@ -61445,7 +61450,7 @@ var CUSTOM_ABILITY_DISPLAY_COMPONENTS={
 
 "secondbrew":[],
 "railsight":[
-"stalwart"],
+"innerfocus"],
 
 "sovereignarsenal":[],
 "pollenengine":[
@@ -70139,9 +70144,9 @@ Object.assign(CUSTOM_ABILITY_UPDATES,{
 "name":"Rail Sight",
 "num":10476,
 "gen":9,
-"desc":"Moves cannot be redirected. On New World, Starlight Arena, Fairy Tale and Chessboard entry, gains +1 Sp. Atk. Once per switch-in, surviving a whole opposing damaging move that hits HP stores a non-stacking 1.5x boost for the next Electric attack. Consumed when that attack executes, including misses, Protect or immunity; charge-only and interrupted turns do not consume it. Switching clears it. Does not skip Electro Shot charging, grant an extra Sp. Atk boost or ignore screens.",
-"shortDesc":"Surviving a foe HP-damaging move once per entry powers the next Electric attack by 1.5x.",
-"rating":0,
+"desc":"Prevents flinching and Intimidate Attack drops. Stalwart is supplied separately by Archaludon's passive. Once per switch-in, surviving a whole opposing damaging move that hits HP stores a non-stacking 1.5x boost for the next Electric attack. Consumed when that attack executes, including misses, Protect or immunity; charge-only and interrupted turns do not consume it. Switching clears it. Does not skip Electro Shot charging, grant an extra Sp. Atk boost or ignore screens.",
+"shortDesc":"Inner Focus; surviving a foe HP-damaging move once per entry powers the next Electric attack by 1.5x.",
+"rating":1,
 "flags":{},
 "isNonstandard":null
 },
@@ -76290,6 +76295,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES,{
 "keeneye":[],
 "ultraego":[]
 });
+
 
 
 
@@ -95365,7 +95371,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES,{
 "transistor"],
 
 "railsight":[
-"stalwart"],
+"innerfocus"],
 
 "raincourier":[
 "raindish"],
@@ -97112,6 +97118,7 @@ golisopite:{"desc":"Allows Golisopod or Golisopod-Aevian to Mega Evolve into its
 });_i74<_Object$entries24.length;_i74++){var _ref36=_Object$entries24[_i74];var _id18=_ref36[0];var _update7=_ref36[1];
 CUSTOM_ITEM_UPDATES[_id18]=Object.assign({},CUSTOM_ITEM_UPDATES[_id18],_update7);
 }
+
 
 
 
@@ -103412,7 +103419,7 @@ var AUDITED_DESCRIPTION_COMPONENTS={
 
 "secondbrew":[],
 "railsight":[
-"stalwart"],
+"innerfocus"],
 
 "sovereignarsenal":[],
 "pollenengine":[

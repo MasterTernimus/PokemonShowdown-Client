@@ -8,3 +8,7 @@ describe('Active starter ability badges',()=>{
  it('keeps unrelated effects in their original styles',()=>{assert.equal(PokemonSprite.getEffectTag('confusion'),'<span class="bad">Confused</span> ');assert.equal(PokemonSprite.getEffectTag('flashfire'),'<span class="good">Flash&nbsp;Fire</span> ');assert.equal(PokemonSprite.getEffectTag('typechange'),'');});
 });
 
+
+describe('Named temporary effect badges',()=>{
+ for(const[id,label,hint]of [['shadowforceguard','Shadow Guard','25% less damage'],['skycharged','Sky-Charged','prevents Speed drops']])it(id+' has a readable label and mechanical tooltip',()=>{const tag=PokemonSprite.getEffectTag(id);assert(!tag.includes('[['));assert(tag.includes('effect-guard'));assert(tag.includes('>'+label+'</span>'));assert(tag.includes(hint));assert(tag.includes('aria-label='));});
+});

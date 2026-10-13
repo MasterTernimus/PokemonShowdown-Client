@@ -1882,6 +1882,8 @@ export class PokemonSprite extends Sprite {
 		blazeactive: '<span class="ability-active ability-active-blaze" title="Blaze active" aria-label="Blaze active">Blaze</span> ',
 		torrentactive: '<span class="ability-active ability-active-torrent" title="Torrent active" aria-label="Torrent active">Torrent</span> ',
 		overgrowactive: '<span class="ability-active ability-active-overgrow" title="Overgrow active" aria-label="Overgrow active">Overgrow</span> ',
+		shadowforceguard: '<span class="effect-guard" title="Shadow Force Guard: takes 25% less damage for 2 turns." aria-label="Shadow Force Guard: takes 25% less damage for 2 turns">Shadow Guard</span> ',
+		skycharged: '<span class="effect-guard" title="Sky-Charged: prevents Speed drops; charged Sky Attack ignores evasion, screens and Substitute." aria-label="Sky-Charged: prevents Speed drops; charged Sky Attack ignores evasion, screens and Substitute">Sky-Charged</span> ',
 		flashfire: ['Flash Fire', 'good'],
 		imprison: ['Imprisoning foe', 'good'],
 		autotomize: ['Lightened', 'neutral'],

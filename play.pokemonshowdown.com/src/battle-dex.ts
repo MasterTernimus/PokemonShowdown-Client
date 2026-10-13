@@ -15949,6 +15949,7 @@ for (const [id, update] of Object.entries({
 
 
 
+
 // BEGIN SERVER WORKING SYNC SPECIES
 for (const [id, update] of Object.entries({
 	"ababo": {
@@ -17536,7 +17537,7 @@ for (const [id, update] of Object.entries({
 			"Dragon"
 		],
 		"passives": [
-			"lightningrod"
+			"stalwart"
 		],
 		"replaceAbilities": true
 	},
@@ -41208,7 +41209,7 @@ for (const [id, update] of Object.entries({
 	},
 	"rhydon": {
 		"abilities": {
-			"0": "Lightning Rod",
+			"0": "Brute Force",
 			"1": "War Path",
 			"H": "Power Drill"
 		},
@@ -41225,7 +41226,7 @@ for (const [id, update] of Object.entries({
 			"Rock"
 		],
 		"passives": [
-			"bruteforce"
+			"lightningrod"
 		],
 		"replaceAbilities": true
 	},
@@ -55490,6 +55491,10 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 
 
 
+
+
+
+
 // BEGIN SERVER WORKING SYNC PERFECT FORECAST FORMS
 const CUSTOM_PERFECT_FORECAST_FORMS: {[id: string]: {components: string[]; shortDesc: string; desc: string}} = {
 	"castform": {
@@ -57457,7 +57462,7 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	],
 	"secondbrew": [],
 	"railsight": [
-		"stalwart"
+		"innerfocus"
 	],
 	"sovereignarsenal": [],
 	"pollenengine": [
@@ -66151,9 +66156,9 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Rail Sight",
 		"num": 10476,
 		"gen": 9,
-		"desc": "Moves cannot be redirected. On New World, Starlight Arena, Fairy Tale and Chessboard entry, gains +1 Sp. Atk. Once per switch-in, surviving a whole opposing damaging move that hits HP stores a non-stacking 1.5x boost for the next Electric attack. Consumed when that attack executes, including misses, Protect or immunity; charge-only and interrupted turns do not consume it. Switching clears it. Does not skip Electro Shot charging, grant an extra Sp. Atk boost or ignore screens.",
-		"shortDesc": "Surviving a foe HP-damaging move once per entry powers the next Electric attack by 1.5x.",
-		"rating": 0,
+		"desc": "Prevents flinching and Intimidate Attack drops. Stalwart is supplied separately by Archaludon's passive. Once per switch-in, surviving a whole opposing damaging move that hits HP stores a non-stacking 1.5x boost for the next Electric attack. Consumed when that attack executes, including misses, Protect or immunity; charge-only and interrupted turns do not consume it. Switching clears it. Does not skip Electro Shot charging, grant an extra Sp. Atk boost or ignore screens.",
+		"shortDesc": "Inner Focus; surviving a foe HP-damaging move once per entry powers the next Electric attack by 1.5x.",
+		"rating": 1,
 		"flags": {},
 		"isNonstandard": null
 	},
@@ -72303,6 +72308,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"ultraego": []
 });
 // END APPROVED ROSTER COMPONENTS
+
 
 
 
@@ -91377,7 +91383,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"transistor"
 	],
 	"railsight": [
-		"stalwart"
+		"innerfocus"
 	],
 	"raincourier": [
 		"raindish"
@@ -93124,6 +93130,7 @@ for (const [id, update] of Object.entries({
 } as {[id: string]: AnyObject})) {
 	CUSTOM_ITEM_UPDATES[id] = {...CUSTOM_ITEM_UPDATES[id], ...update};
 }
+
 
 
 
@@ -99424,7 +99431,7 @@ const AUDITED_DESCRIPTION_COMPONENTS: {[id: string]: string[]} = {
 	],
 	"secondbrew": [],
 	"railsight": [
-		"stalwart"
+		"innerfocus"
 	],
 	"sovereignarsenal": [],
 	"pollenengine": [

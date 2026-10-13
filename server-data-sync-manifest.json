@@ -1,7 +1,7 @@
 {
-	"sourceHead": "3f381113928c7bec94fd7b97e6d87c2709b9aa6c",
+	"sourceHead": "adf637c2eb17a5850760877efa7a16bba2dc77b2",
 	"base": "9a1be465610a9e5dc164cb807c98f28ac2552030",
-	"sourceDataSHA256": "2b9db5a0e7df1979ba946d3d4748d48aa9d5eb26772f02368e01ffdf57a23c59",
+	"sourceDataSHA256": "3503ebf7616c1dc6bf3568188e26c8c8e22371952dbf6f2f9bf28d28cb086947",
 	"files": [
 		"data/abilities.ts",
 		"data/ability-components.ts",
@@ -3084,7 +3084,7 @@
 					"Dragon"
 				],
 				"passives": [
-					"lightningrod"
+					"stalwart"
 				],
 				"replaceAbilities": true
 			},
@@ -26756,7 +26756,7 @@
 			},
 			"rhydon": {
 				"abilities": {
-					"0": "Lightning Rod",
+					"0": "Brute Force",
 					"1": "War Path",
 					"H": "Power Drill"
 				},
@@ -26773,7 +26773,7 @@
 					"Rock"
 				],
 				"passives": [
-					"bruteforce"
+					"lightningrod"
 				],
 				"replaceAbilities": true
 			},
@@ -43910,9 +43910,9 @@
 				"name": "Rail Sight",
 				"num": 10476,
 				"gen": 9,
-				"desc": "Moves cannot be redirected. On New World, Starlight Arena, Fairy Tale and Chessboard entry, gains +1 Sp. Atk. Once per switch-in, surviving a whole opposing damaging move that hits HP stores a non-stacking 1.5x boost for the next Electric attack. Consumed when that attack executes, including misses, Protect or immunity; charge-only and interrupted turns do not consume it. Switching clears it. Does not skip Electro Shot charging, grant an extra Sp. Atk boost or ignore screens.",
-				"shortDesc": "Surviving a foe HP-damaging move once per entry powers the next Electric attack by 1.5x.",
-				"rating": 0,
+				"desc": "Prevents flinching and Intimidate Attack drops. Stalwart is supplied separately by Archaludon's passive. Once per switch-in, surviving a whole opposing damaging move that hits HP stores a non-stacking 1.5x boost for the next Electric attack. Consumed when that attack executes, including misses, Protect or immunity; charge-only and interrupted turns do not consume it. Switching clears it. Does not skip Electro Shot charging, grant an extra Sp. Atk boost or ignore screens.",
+				"shortDesc": "Inner Focus; surviving a foe HP-damaging move once per entry powers the next Electric attack by 1.5x.",
+				"rating": 1,
 				"flags": {},
 				"isNonstandard": null
 			},
@@ -67556,7 +67556,7 @@
 				"transistor"
 			],
 			"railsight": [
-				"stalwart"
+				"innerfocus"
 			],
 			"raincourier": [
 				"raindish"
@@ -70398,7 +70398,7 @@
 			],
 			"secondbrew": [],
 			"railsight": [
-				"stalwart"
+				"innerfocus"
 			],
 			"sovereignarsenal": [],
 			"pollenengine": [
