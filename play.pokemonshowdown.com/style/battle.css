@@ -1124,3 +1124,32 @@ License: GPLv2
 
 .messagebar-latest { float: right; margin-left: 6px; color: white; background: transparent; border: 1px solid #999; border-radius: 3px; font: inherit; cursor: pointer; }
 .messagebar-content { scrollbar-gutter: stable; }
+
+/* Active starter boosts: scoped to these indicators, leaving status/boost tags intact. */
+.statbar .status .ability-active {
+ display: inline-block;
+ box-sizing: border-box;
+ max-width: 100%;
+ margin: 2px 1px 1px 0;
+ padding: 0 4px;
+ border: 1px solid;
+ border-radius: 4px;
+ font-size: 10px;
+ font-weight: 600;
+ line-height: 14px;
+ vertical-align: middle;
+ white-space: nowrap;
+}
+.statbar .status .ability-active::before {
+ content: "";
+ display: inline-block;
+ width: 4px;
+ height: 4px;
+ margin-right: 3px;
+ border-radius: 50%;
+ background: currentColor;
+ vertical-align: 1px;
+}
+.statbar .status .ability-active-torrent { color: #174f80; background: #e6f2ff; border-color: #82add3; }
+.statbar .status .ability-active-blaze { color: #883516; background: #fff0e7; border-color: #d8a080; }
+.statbar .status .ability-active-overgrow { color: #285d32; background: #eaf5e9; border-color: #8fb894; }
