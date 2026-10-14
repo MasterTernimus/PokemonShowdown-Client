@@ -196,7 +196,7 @@ onBasePower(basePower, source, target, move) {
     let modifier = 1;
     const boostMoves = ["hex", "mysticalfire", "spiritbreak"];
     const weakerboostMoves = ["aurorabeam", "bubblebeam", "chargebeam", "flashcannon", "hyperbeam", "icebeam", "magicalleaf", "mirrorbeam", "psybeam", "signalbeam"];
-    const weakBoost = ["darkpulse", "moonblast", "nightdaze"];
+    const weakBoost = ["darkpulse", "moonblast", "nightdaze", "vorpalblade"];
     const blessedMoves = ["judgement", "originpulse", "purify", "sacredfire", "dazzlinggleam", "flash"];
     if (move.type === "Fairy") {
         modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 1.5);
@@ -327,7 +327,7 @@ onBasePower(basePower, source, target, move) {
     let modifier = 1;
     const icy = ["blizzard", "subzeroslammer"];
     const cavern = ["powergem", "diamondstorm"];
-    const burning = ["feverpitch", "heatwave", "lavaplume", "overheat", "incinerate", "inferno", "flameburst", "firepledge", "sacredfire"];
+    const burning = ["magmadrift", "feverpitch", "heatwave", "lavaplume", "overheat", "incinerate", "inferno", "flameburst", "firepledge", "sacredfire"];
     const explosive = ["blastburn", "eruption", "infernooverdrive", "fusionfame", "mindblown", "searingshot", "burnup"];
     const dragonMove = ["dragonpulse", "dragonenergy"];
     const uberDragon = ["devastatingdrake", "dracometeor", "coreenforcer"];
@@ -350,7 +350,7 @@ onBasePower(basePower, source, target, move) {
     if (cavern.includes(move.id)) {
         modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 1.3);
     }
-    if (explosive.includes(move.id) || burning.includes(move.id) && this.field.terrainState.terrainChanges?.get("volcanicterrain") === 1) {
+    if ((move.id !== "magmadrift" || !this.field.moveTransitionBlocked(source, move)) && (explosive.includes(move.id) || burning.includes(move.id) && this.field.terrainState.terrainChanges?.get("volcanicterrain") === 1)) {
         modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 1.3);
     }
     if (move.isMax && (move.type === "Dragon" || move.type === "Fire")) {
@@ -697,7 +697,7 @@ notes: ["Rejects Auras and ordinary field replacement. Dragon Pok√©mon gain 1.3√
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
     const uberboost = ["smackdown", "thousandarrows", "continentalcrush", "tectonicrage", "dragonascent", "payday", "lusterpurge", "mistball"];
-    const boost = ["matrixshot", "lavaplume", "magmastorm", "megakick", "makeitrain", "rockclimb", "strength", "diamondstorm", "makeitrain", "powergem", "shelltrap", "earthpower", "stompingtantrum"];
+    const boost = ["magmadrift", "matrixshot", "lavaplume", "magmastorm", "megakick", "makeitrain", "rockclimb", "strength", "diamondstorm", "makeitrain", "powergem", "shelltrap", "earthpower", "stompingtantrum"];
     const terrain_change = ["glaciate", "hydrovortex", "oceanicoperetta", "subzeroslammer", "mistball"];
     const terrain_change1 = ["muddywater", "surf"];
     const change = terrain_change1.includes(move.id) ? 1 : move.id === "sparklingaria" ? 2 : 0;
@@ -1028,7 +1028,7 @@ onBasePower(basePower, source, target, move) {
         modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 2);
     }
     const underlyingTerrain = this.field.terrainState.underlyingTerrain || this.field.terrainStack[1]?.id || this.field.terrainState.prevTerrain;
-    if (igniteMoves.includes(move.id) || underlyingTerrain && quakeMoves.includes(move.id) || move.isMax && move.type === "Fire") {
+    if ((move.id !== "magmadrift" || !this.field.moveTransitionBlocked(source, move)) && (igniteMoves.includes(move.id) || underlyingTerrain && quakeMoves.includes(move.id) || move.isMax && move.type === "Fire")) {
         modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 1.3);
     }
     return this.chainModify(modifier);
@@ -3596,6 +3596,19 @@ uncertain: false},
       if (this.field.isTerrain("glitchterrain")) return this.chainModify((0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 1.3));
     },
 base: {"critRatio":1},
+uncertain: false},
+"vorpalblade": {onModifyMove(move, source) {
+      const probe = this.dex.getActiveMove("secretpower");
+      this.dex.moves.get("secretpower").onModifyMove?.call(this, probe, source, source);
+      move.secondaries = probe.secondaries ? this.dex.deepClone(probe.secondaries) : null;
+      if (this.field.isTerrain("glitchterrain")) {
+        Object.assign(move, { name: "Unown Buster" });
+        move.basePower = 175;
+        move.type = "???";
+        move.fullDamageSpread = true;
+      }
+    },
+base: {"secondaries":[{"chance":30,"status":"par"}],"critRatio":1},
 uncertain: false}};
 const BattleAuraRules = {"frozenaura":{"id":"frozenaura","name":"Frozen Aura","turns":5,"mimicryType":"Ice","secretPowerMove":"bodyslam","naturePowerMove":"icebeam","damageMultipliers":{},"secondaryTypeAdditions":{},"typeMultipliers":{"Ice":1.2},"typeCondition":"none","moveMessages":{},"typeMessage":"The Frozen Aura strengthened the attack!","endMessage":"The Frozen Aura faded.","statusBuffs":[],"statusNerfs":[]},"electricterrain":{"id":"electricterrain","name":"Electric Aura","turns":5,"mimicryType":"Electric","secretPowerMove":"shockwave","naturePowerMove":"thunderbolt","damageMultipliers":{"explosion":1.5,"selfdestruct":1.5,"hurricane":1.5,"surf":1.5,"smackdown":1.5,"muddywater":1.5,"thousandarrows":1.5,"wildboltstorm":1.5,"magnetbomb":2},"secondaryTypeAdditions":{"explosion":"Electric","selfdestruct":"Electric","hurricane":"Electric","surf":"Electric","smackdown":"Electric","muddywater":"Electric","thousandarrows":"Electric"},"typeMultipliers":{"Electric":1.3},"typeCondition":"electric","moveMessages":{"explosion":"The explosion became hyper-charged!","selfdestruct":"The explosion became hyper-charged!","hurricane":"The attack became hyper-charged!","surf":"The attack became hyper-charged!","smackdown":"The attack became hyper-charged!","muddywater":"The attack became hyper-charged!","thousandarrows":"The attack became hyper-charged!","wildboltstorm":"The attack became hyper-charged!","magnetbomb":"The attack powered up!"},"typeMessage":"The Electric Aura strengthened the attack!","endMessage":"The electricity disappeared from the battlefield.","statusBuffs":["magnetrise","risingvoltage","psyblade"],"statusNerfs":[]},"grassyterrain":{"id":"grassyterrain","name":"Grassy Aura","turns":5,"mimicryType":"Grass","secretPowerMove":"seedbomb","naturePowerMove":"energyball","damageMultipliers":{"fairywind":1.5,"silverwind":1.5,"ominouswind":1.5,"icywind":1.5,"razorwind":1.5,"gust":1.5,"twister":1.5},"secondaryTypeAdditions":{},"typeMultipliers":{"Grass":1.3},"typeCondition":"grounded","moveMessages":{"fairywind":"The wind picked up strength from the Aura!","silverwind":"The wind picked up strength from the Aura!","ominouswind":"The wind picked up strength from the Aura!","icywind":"The wind picked up strength from the Aura!","razorwind":"The wind picked up strength from the Aura!","gust":"The wind picked up strength from the Aura!","twister":"The wind picked up strength from the Aura!"},"typeMessage":"The Grassy Aura strengthened the attack!","endMessage":"The grass disappeared from the battlefield.","statusBuffs":["grassyglide"],"statusNerfs":[]},"mistyterrain":{"id":"mistyterrain","name":"Misty Aura","turns":5,"mimicryType":"Fairy","secretPowerMove":"mistball","naturePowerMove":"mistball","damageMultipliers":{"mysticalfire":1.5,"magicalleaf":1.5,"doomdesire":1.5,"icywind":1.5,"mistball":1.5,"aurasphere":1.5,"steameruption":1.5,"silverwind":1.5,"moongeistbeam":1.5,"smog":1.5,"clearsmog":1.5,"strangesteam":1.5,"springtidestorm":1.5,"hydrosteam":1.5},"secondaryTypeAdditions":{},"typeMultipliers":{"Fairy":1.3},"typeCondition":"none","moveMessages":{"mysticalfire":"The mist's energy strengthened the attack!","magicalleaf":"The mist's energy strengthened the attack!","doomdesire":"The mist's energy strengthened the attack!","icywind":"The mist's energy strengthened the attack!","mistball":"The mist's energy strengthened the attack!","aurasphere":"The mist's energy strengthened the attack!","steameruption":"The mist's energy strengthened the attack!","silverwind":"The mist's energy strengthened the attack!","moongeistbeam":"The mist's energy strengthened the attack!","smog":"The mist's energy strengthened the attack!","clearsmog":"The mist's energy strengthened the attack!","strangesteam":"The mist's energy strengthened the attack!","springtidestorm":"The mist's energy strengthened the attack!","hydrosteam":"The mist's energy strengthened the attack!"},"typeMessage":"The Misty Aura strengthened the attack!","endMessage":"The mist disappeared from the battlefield.","statusBuffs":["mistyexplosion"],"statusNerfs":[]},"rainbowterrain":{"id":"rainbowterrain","name":"Rainbow Aura","turns":5,"mimicryType":"Dragon","secretPowerMove":"aurorabeam","naturePowerMove":"aurorabeam","damageMultipliers":{"silverwind":1.5,"mysticalfire":1.5,"dragonpulse":1.5,"triattack":1.5,"sacredfire":1.5,"firepledge":1.5,"waterpledge":1.5,"grasspledge":1.5,"aurorabeam":1.5,"mirrorbeam":1.5,"judgment":1.5,"deiludicium":1.5,"relicsong":1.5,"hiddenpower":1.5,"secretpower":1.5,"weatherball":1.5,"mistball":1.5,"heartstamp":1.5,"moonblast":1.5,"zenheadbutt":1.5,"sparklingaria":1.5,"fleurcannon":1.5,"prismaticlaser":1.5,"twinkletackle":1.5,"oceanicoperetta":1.5,"solarbeam":1.5,"solarblade":1.5,"dazzlinggleam":1.5,"luminacrash":1.5},"secondaryTypeAdditions":{},"typeMultipliers":{"Normal":1.3},"typeCondition":"special","moveMessages":{"silverwind":"The attack was rainbow-charged!","mysticalfire":"The attack was rainbow-charged!","dragonpulse":"The attack was rainbow-charged!","triattack":"The attack was rainbow-charged!","sacredfire":"The attack was rainbow-charged!","firepledge":"The attack was rainbow-charged!","waterpledge":"The attack was rainbow-charged!","grasspledge":"The attack was rainbow-charged!","aurorabeam":"The attack was rainbow-charged!","mirrorbeam":"The attack was rainbow-charged!","judgment":"The attack was rainbow-charged!","deiludicium":"The attack was rainbow-charged!","relicsong":"The attack was rainbow-charged!","hiddenpower":"The attack was rainbow-charged!","secretpower":"The attack was rainbow-charged!","weatherball":"The attack was rainbow-charged!","mistball":"The attack was rainbow-charged!","heartstamp":"The attack was rainbow-charged!","moonblast":"The attack was rainbow-charged!","zenheadbutt":"The attack was rainbow-charged!","sparklingaria":"The attack was rainbow-charged!","fleurcannon":"The attack was rainbow-charged!","prismaticlaser":"The attack was rainbow-charged!","twinkletackle":"The attack was rainbow-charged!","oceanicoperetta":"The attack was rainbow-charged!","solarbeam":"The attack was rainbow-charged!","solarblade":"The attack was rainbow-charged!","dazzlinggleam":"The attack was rainbow-charged!","luminacrash":"The attack was rainbow-charged!"},"typeMessage":"The rainbow energized the attack!","endMessage":"The rainbow disappeared.","statusBuffs":[],"statusNerfs":[]},"psychicterrain":{"id":"psychicterrain","name":"Psychic Aura","turns":5,"mimicryType":"Psychic","secretPowerMove":"psychic","naturePowerMove":"psychic","damageMultipliers":{"secretpower":1.5,"hiddenpower":1.5,"hex":1.5,"magicalleaf":1.5,"mysticalfire":1.5,"moonblast":1.5,"aurasphere":1.5,"focusblast":1.5,"mindblown":1.5},"secondaryTypeAdditions":{},"typeMultipliers":{"Psychic":1.3},"typeCondition":"psychic","moveMessages":{"secretpower":"The psychic energy strengthened the attack!","hiddenpower":"The psychic energy strengthened the attack!","hex":"The psychic energy strengthened the attack!","magicalleaf":"The psychic energy strengthened the attack!","mysticalfire":"The psychic energy strengthened the attack!","moonblast":"The psychic energy strengthened the attack!","aurasphere":"The psychic energy strengthened the attack!","focusblast":"The psychic energy strengthened the attack!","mindblown":"The psychic energy strengthened the attack!"},"typeMessage":"The Psychic Aura strengthened the attack!","endMessage":"The psychic energy disappeared from the battlefield.","statusBuffs":["expandingforce"],"statusNerfs":[]}};
 const BattleAuraMethods = {baseAuraTypeBoost(move, source, target) {

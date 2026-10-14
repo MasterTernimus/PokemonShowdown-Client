@@ -677,7 +677,7 @@ class BattleTooltips {
 			});
 		}
 
-		text += '<h2>' + move.name + '<br />';
+		text += '<h2>' + (move.id === 'vorpalblade' && this.battle.hasPseudoWeather('Glitch Terrain') ? 'Unown Buster (Vorpal Blade)' : move.name) + '<br />';
 		const crescentRend = toID(pokemon.effectiveAbility(serverPokemon || undefined)) === 'crescentrend' &&
 			category === 'Physical' && moveType === 'Flying';
 		if (crescentRend) {
@@ -687,8 +687,8 @@ class BattleTooltips {
 		}
 
 		text += Dex.getTypeIcon(moveType);
-		text += move.id === 'superumdmove' ? ' Physical / Special</h2>' : ` ${Dex.getCategoryIcon(category)}</h2>`;
-		if (move.id === 'superumdmove') text += '<p>Chooses the category dealing greater calculated damage to the actual target; depends on both Pokémon and battle conditions.</p>';
+		text += ['superumdmove', 'beasthunter'].includes(move.id) ? ' Physical / Special</h2>' : ` ${Dex.getCategoryIcon(category)}</h2>`;
+		if (['superumdmove', 'beasthunter'].includes(move.id)) text += '<p>Chooses the category dealing greater calculated damage to the actual target; depends on both Pokémon and battle conditions.</p>';
 		if (move.id === 'thunderraid') text += '<p>Hit power: 20 / 40 / 60. Each hit checks accuracy separately; stops on a miss. Base power below is the first hit.</p>';
 		if (crescentRend) {
 			text += '<p>Crescent Rend: non-contact; ignores Reflect and Aurora Veil. ' +
@@ -1674,6 +1674,11 @@ class BattleTooltips {
 		if (move.id === 'revelationdance') {
 			moveType = pokemonTypes[0];
 		}
+		if (move.id === 'vorpalblade' && this.battle.hasPseudoWeather('Glitch Terrain')) moveType = '???';
+		if (['gildedarrow', 'gildedhelix'].includes(move.id)) {
+			const types = pokemon.getTypes(serverPokemon)[0];
+			moveType = types[1] && !['Fairy', 'Dark'].includes(types[1]) ? types[1] : types[0];
+		}
 		// Moves that require an item to change their type.
 		let item = Dex.items.get(value.itemName);
 		if (move.id === 'multiattack' && item.onMemory) {
@@ -2007,13 +2012,14 @@ class BattleTooltips {
 			else basePower = 20;
 			value.set(basePower);
 		}
-		if (['hex', 'infernalparade'].includes(move.id) && target?.status) {
+		if (['hex', 'infernalparade', 'irritation'].includes(move.id) && target?.status) {
 			value.modify(2, move.name + ' + status');
 		}
 		if (move.id === 'bunrakubeatdown') {
 			value.set(60 + 10 * Math.min(5, pokemon.side.pokemon.filter(p => p.fainted).length));
 		}
 		if (move.id === 'feverpitch') value.setRange(60, 100);
+		if (['furycutter', 'stackingshot'].includes(move.id)) value.setRange(40, 160);
 		if (move.id === 'lastrespects') {
 			value.set(Math.min(50 + 50 * pokemon.side.faintCounter));
 		}
@@ -2228,7 +2234,10 @@ class BattleTooltips {
 			const plate = Dex.items.get(value.itemName);
 			const typedMultipulse = move.id === 'multipulse' && plate.id.endsWith('plate') && plate.onPlate &&
 				plate.onPlate !== 'Normal' && value.tryItem(plate.name);
-			if (move.type === 'Normal' && !typedMultipulse) {
+			const gildedTypes = pokemon.getTypes(serverPokemon)[0];
+			const typedGilded = ['gildedarrow', 'gildedhelix'].includes(move.id) &&
+				(gildedTypes[1] && !['Fairy', 'Dark'].includes(gildedTypes[1]) ? gildedTypes[1] : gildedTypes[0]) !== 'Normal';
+			if (move.type === 'Normal' && !typedMultipulse && !typedGilded) {
 				value.abilityModify(this.battle.gen > 6 ? 1.2 : 1.3, "Aerilate");
 				value.abilityModify(this.battle.gen > 6 ? 1.2 : 1.3, "Galvanize");
 				value.abilityModify(this.battle.gen > 6 ? 1.2 : 1.3, "Pixilate");

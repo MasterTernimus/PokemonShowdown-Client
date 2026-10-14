@@ -36344,3 +36344,15 @@ BattleMoveAnims['swarmsnare'] = {anim(scene, sprites) {
  BattleMoveAnims['spiderweb'].anim(scene, sprites);
  BattleMoveAnims['infestation'].anim(scene, sprites);
 }};
+
+// Approved Rejuvenation advanced move playback.
+BattleMoveAnims['vorpalblade'] = {anim: BattleMoveAnims['dazzlinggleam'].anim};
+BattleMoveAnims['gildedarrow'] = {anim: BattleMoveAnims['flashcannon'].anim};
+BattleMoveAnims['gildedhelix'] = {anim: BattleMoveAnims['twineedle'].anim};
+BattleMoveAnims['beasthunter'] = {anim: BattleMoveAnims['dragonclaw'].anim};
+BattleMoveAnims['poisonsweep'] = {anim: BattleMoveAnims['poisontail'].anim};
+BattleMoveAnims['stackingshot'] = {anim: BattleMoveAnims['poweruppunch'].anim};
+BattleMoveAnims['irritation'] = {anim: BattleMoveAnims['bugbuzz'].anim};
+BattleMoveAnims['slashandburn'] = {anim: BattleMoveAnims['leafblade'].anim};
+BattleMoveAnims['magmadrift'] = {anim: BattleMoveAnims['lavaplume'].anim};
+BattleMoveAnims['unownbuster'] = {anim: BattleMoveAnims['hiddenpower'].anim};

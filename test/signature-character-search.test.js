@@ -9,11 +9,11 @@ const {DexSearch}=new Function(fs.readFileSync('play.pokemonshowdown.com/js/batt
 const search=(query,species='primarina')=>{const s=new DexSearch('move','gen9nationaldex',species);s.find(query);return s;};
 const ids=s=>s.results.filter(r=>r[0]==='move').map(r=>r[1]);
 describe('Credited signature character move search',()=>{
- const cases={Amaria:['sirensveil','sirenswrath'],Julia:['kaboom'],Anna:['nostraswish'],Bennett:['swarmsnare'],Venam:['venamskiss'],Flora:['uproot'],Florin:['uproot'],Keta:['galestrike'],Aelita:['galestrike'],Texen:['galestrike'],Narcissa:['spectralscream'],Spector:['spectralscream'],'Puppet Master':['bunrakubeatdown'],Magenta:['bunrakubeatdown'],Neon:['bunrakubeatdown']};
+ const cases={Allen:['vorpalblade'],Melia:['gildedarrow','gildedhelix'],Damien:['beasthunter'],Amaria:['sirensveil','sirenswrath'],Julia:['kaboom'],Anna:['nostraswish'],Bennett:['swarmsnare'],Venam:['venamskiss'],Flora:['uproot'],Florin:['uproot'],Keta:['galestrike'],Aelita:['galestrike'],Texen:['galestrike'],Narcissa:['spectralscream'],Spector:['spectralscream'],'Puppet Master':['bunrakubeatdown'],Magenta:['bunrakubeatdown'],Neon:['bunrakubeatdown']};
  for(const[name,expected]of Object.entries(cases))for(const query of [name,name.toUpperCase(),name.toLowerCase().split('').join(' . ')])it(query+' finds only credited moves',()=>assert.deepEqual(ids(search(query)).sort(),expected.slice().sort()));
- it('exports searchable credit metadata for all43 signature moves',()=>{
+ it('exports searchable credit metadata for all52 signature moves',()=>{
   const data=require('../server-data-sync-manifest.json').snapshot.moves;const entries=Object.entries(data).filter(([,m])=>m.signatureCharacters);
-  assert.equal(entries.length,43);for(const[id,m]of entries)for(const name of m.signatureCharacters)assert(ids(search(name)).includes(id),id+'/'+name);
+  assert.equal(entries.length,52);for(const[id,m]of entries)for(const name of m.signatureCharacters)assert(ids(search(name)).includes(id),id+'/'+name);
  });
  it('keeps species legality labels and legal-first ordering',()=>{
   const s=search('Amaria','blastoise');assert.deepEqual(ids(s),['sirenswrath','sirensveil']);assert(!s.illegalLabel('sirenswrath'));assert(s.illegalLabel('sirensveil'));

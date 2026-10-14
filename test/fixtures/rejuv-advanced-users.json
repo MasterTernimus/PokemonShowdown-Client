@@ -1,0 +1,75 @@
+{
+  "poisonsweep": [
+    "ariados",
+    "drapion",
+    "scolipede",
+    "toxicroak",
+    "seviper",
+    "garbodor"
+  ],
+  "stackingshot": [
+    "miltank",
+    "heracross",
+    "gallade",
+    "leavanny",
+    "zangoose"
+  ],
+  "irritation": [
+    "vivillon",
+    "venomoth",
+    "galvantula",
+    "masquerain",
+    "beautifly",
+    "mothim"
+  ],
+  "slashandburn": [
+    "kabutops",
+    "scyther",
+    "scizor",
+    "kleavor",
+    "infernape",
+    "ceruledge",
+    "leavanny",
+    "lurantis"
+  ],
+  "magmadrift": [
+    "coalossal",
+    "dragonite",
+    "camerupt",
+    "magcargo",
+    "torkoal",
+    "turtonator"
+  ],
+  "vorpalblade": [
+    "rapidashgalar",
+    "ironvaliant",
+    "miloticaevian",
+    "mawile"
+  ],
+  "gildedarrow": [
+    "zoroark",
+    "togekiss",
+    "hydreigon",
+    "noivern"
+  ],
+  "gildedhelix": [
+    "togekiss",
+    "aegislash",
+    "hydreigon",
+    "clefable",
+    "articunogalar",
+    "kingdra"
+  ],
+  "beasthunter": [
+    "latios",
+    "tyranitar",
+    "dragapult",
+    "hydreigon",
+    "kommooaevian",
+    "gyaradosaevian",
+    "tyrantrum"
+  ],
+  "furycutter": [
+    "miltank"
+  ]
+}

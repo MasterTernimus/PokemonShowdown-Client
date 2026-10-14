@@ -1,7 +1,7 @@
 'use strict';
 const assert = require('assert').strict;
 const fs = require('fs');
-const ids = ['multipulse','aquabatics','feverpitch','thunderraid','desertsmark','superumdmove','galestrike','spectralscream','barbedweb','coldtruth','bunrakubeatdown','matrixshot','pyrokinesis','venamskiss','heavenlywing','uproot'];
+const ids = ['multipulse','aquabatics','feverpitch','thunderraid','desertsmark','superumdmove','galestrike','spectralscream','barbedweb','coldtruth','bunrakubeatdown','matrixshot','pyrokinesis','venamskiss','heavenlywing','uproot',"vorpalblade","gildedarrow","gildedhelix","beasthunter","poisonsweep","stackingshot","irritation","slashandburn","magmadrift","unownbuster"];
 function harness() {
  const calls = [];
  const other = new Proxy({}, {get: (_, id) => ({anim: () => calls.push(['other', id])})});

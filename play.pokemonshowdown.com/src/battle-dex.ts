@@ -16022,6 +16022,7 @@ for (const id of ['mightyena', 'mightyenadeso']) {
   formeOrder: Array.from(new Set([...(previous.formeOrder || ['Mightyena']), 'Mightyena-Deso', 'Mightyena-Grim', 'Mightyena-Mega'])),
  };
 }
+
 // BEGIN SERVER WORKING SYNC SPECIES
 for (const [id, update] of Object.entries({
 	"ababo": {
@@ -55608,6 +55609,10 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 
 
 
+
+
+
+
 // BEGIN SERVER WORKING SYNC PERFECT FORECAST FORMS
 const CUSTOM_PERFECT_FORECAST_FORMS: {[id: string]: {components: string[]; shortDesc: string; desc: string}} = {
 	"castform": {
@@ -72414,6 +72419,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 
 
 
+
 // BEGIN SERVER WORKING SYNC MOVES
 Object.assign(CUSTOM_MOVE_UPDATES, {
 	"absorb": {
@@ -73416,6 +73422,28 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		},
 		"desc": "If the user is hit by a contact move this turn before it can execute this move, the attacker is burned.",
 		"shortDesc": "Burns on contact with the user before it moves."
+	},
+	"beasthunter": {
+		"name": "Beast Hunter",
+		"num": 10465,
+		"type": "Dragon",
+		"category": "Special",
+		"basePower": 95,
+		"accuracy": 100,
+		"pp": 20,
+		"priority": 0,
+		"target": "allAdjacentFoes",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"contact": 1
+		},
+		"desc": "Damien's move. Hits both foes. Independently chooses the Physical or Special category dealing greater calculated damage against each target; ties use Special. Makes contact in either category. Deals 25% damage through protection without removing it. Normal priority.",
+		"shortDesc": "Damien's move. Hits foes; best category per target; 25% through Protect.",
+		"critRatio": 1,
+		"signatureCharacters": [
+			"damien"
+		]
 	},
 	"beatdown": {
 		"name": "Beatdown",
@@ -78466,6 +78494,49 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"desc": "Cannot be selected the turn after it's used.",
 		"shortDesc": "Cannot be selected the turn after it's used."
 	},
+	"gildedarrow": {
+		"name": "Gilded Arrow",
+		"num": 10463,
+		"type": "Normal",
+		"category": "Special",
+		"basePower": 80,
+		"accuracy": 100,
+		"pp": 15,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1
+		},
+		"desc": "Melia's move. High critical-hit ratio. Uses the user's current secondary type unless it is Fairy or Dark; otherwise uses the primary type. Ordinary type, field and aura effects apply.",
+		"shortDesc": "Melia's move. User-dependent type; high critical-hit ratio.",
+		"critRatio": 2,
+		"signatureCharacters": [
+			"melia"
+		]
+	},
+	"gildedhelix": {
+		"name": "Gilded Helix",
+		"num": 10464,
+		"type": "Normal",
+		"category": "Special",
+		"basePower": 50,
+		"accuracy": 100,
+		"pp": 15,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1
+		},
+		"desc": "Melia's move. Hits twice at 50 power each. Each hit has a high critical-hit ratio. Uses the user's current secondary type unless it is Fairy or Dark; otherwise uses the primary type. Ordinary type, field and aura effects apply.",
+		"shortDesc": "Melia's move. Two hits; user-dependent type; high crit rate each hit.",
+		"multihit": 2,
+		"critRatio": 2,
+		"signatureCharacters": [
+			"melia"
+		]
+	},
 	"glaciallance": {
 		"name": "Glacial Lance",
 		"num": 824,
@@ -80296,6 +80367,27 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"desc": "Has a 30% chance to lower the target's Defense by 1 stage.",
 		"shortDesc": "30% chance to lower the target's Defense by 1."
 	},
+	"irritation": {
+		"name": "Irritation",
+		"num": 10468,
+		"type": "Bug",
+		"category": "Special",
+		"basePower": 60,
+		"accuracy": 100,
+		"pp": 10,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1
+		},
+		"desc": "Power doubles from 60 to 120 if the target has a major status condition.",
+		"shortDesc": "Double power against a statused target.",
+		"critRatio": 1,
+		"signatureCharacters": [
+			"rejuvenation"
+		]
+	},
 	"ivycudgel": {
 		"name": "Ivy Cudgel",
 		"num": 904,
@@ -81193,6 +81285,28 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		},
 		"desc": "For 5 turns, the held items of all active Pokemon have no effect. An item's effect of causing forme changes is unaffected, but any other effects from such items are negated. During the effect, Fling and Natural Gift are prevented from being used by all active Pokemon. If this move is used during the effect, the effect ends.",
 		"shortDesc": "For 5 turns, all held items have no effect."
+	},
+	"magmadrift": {
+		"name": "Magma Drift",
+		"num": 10470,
+		"type": "Fire",
+		"category": "Special",
+		"basePower": 90,
+		"accuracy": 100,
+		"pp": 15,
+		"priority": 0,
+		"target": "allAdjacent",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"defrost": 1
+		},
+		"desc": "Hits all adjacent Pokémon, including allies. Thaws the user. Hits targets using Dive for double damage. Does not burn.",
+		"shortDesc": "Hits all adjacent. Thaws user; 2x against Dive.",
+		"critRatio": 1,
+		"signatureCharacters": [
+			"rejuvenation"
+		]
 	},
 	"magmastorm": {
 		"name": "Magma Storm",
@@ -83253,6 +83367,36 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		},
 		"desc": "Has a 30% chance to poison the target.",
 		"shortDesc": "30% chance to poison the target."
+	},
+	"poisonsweep": {
+		"name": "Poison Sweep",
+		"num": 10466,
+		"type": "Poison",
+		"category": "Physical",
+		"basePower": 50,
+		"accuracy": 100,
+		"pp": 10,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"contact": 1,
+			"protect": 1,
+			"mirror": 1
+		},
+		"desc": "Makes contact. Has a 30% chance to lower the target's Speed by 1 stage.",
+		"shortDesc": "30% chance to lower Speed by 1.",
+		"critRatio": 1,
+		"secondaries": [
+			{
+				"chance": 30,
+				"boosts": {
+					"spe": -1
+				}
+			}
+		],
+		"signatureCharacters": [
+			"rejuvenation"
+		]
 	},
 	"poisontail": {
 		"name": "Poison Tail",
@@ -86064,6 +86208,35 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"desc": "Has a higher chance for a critical hit.",
 		"shortDesc": "High critical hit ratio."
 	},
+	"slashandburn": {
+		"name": "Slash and Burn",
+		"num": 10469,
+		"type": "Grass",
+		"category": "Physical",
+		"basePower": 90,
+		"accuracy": 90,
+		"pp": 10,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"contact": 1,
+			"protect": 1,
+			"mirror": 1,
+			"slicing": 1
+		},
+		"desc": "Makes contact and is a slicing move. Has a 10% chance to burn the target.",
+		"shortDesc": "10% chance to burn. Contact; slicing.",
+		"critRatio": 1,
+		"secondaries": [
+			{
+				"chance": 10,
+				"status": "brn"
+			}
+		],
+		"signatureCharacters": [
+			"rejuvenation"
+		]
+	},
 	"sleeppowder": {
 		"name": "Sleep Powder",
 		"num": 79,
@@ -86932,6 +87105,30 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		},
 		"desc": "Traps opposing Pokemon for 4-5 turns and damages them each turn. In Forest Field, power is 1.5x and Defense falls by 1. Grip Claw extends the trap to 7 turns.",
 		"shortDesc": "Traps foes; 1.5x and -1 Def in Forest; Grip Claw extends it."
+	},
+	"stackingshot": {
+		"name": "Stacking Shot",
+		"num": 10467,
+		"type": "Fighting",
+		"category": "Physical",
+		"basePower": 40,
+		"accuracy": 100,
+		"pp": 10,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"contact": 1,
+			"protect": 1,
+			"mirror": 1,
+			"punch": 1,
+			"bullet": 1
+		},
+		"desc": "A contact, punching and bullet move. Shares the successful-use chain with Fury Cutter: 40, 80, then 160 power. Alternating these moves preserves the chain. A miss, failed hit, unrelated move or switch resets it.",
+		"shortDesc": "Shares Fury Cutter's 40/80/160 consecutive-hit chain.",
+		"critRatio": 1,
+		"signatureCharacters": [
+			"rejuvenation"
+		]
 	},
 	"stealthrock": {
 		"name": "Stealth Rock",
@@ -89313,6 +89510,33 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		},
 		"desc": "Has a 10% chance to paralyze the target. If the target lost HP, the user takes recoil damage equal to 33% the HP lost by the target, rounded half up, but not less than 1 HP.",
 		"shortDesc": "Has 33% recoil. 10% chance to paralyze target."
+	},
+	"vorpalblade": {
+		"name": "Vorpal Blade",
+		"num": 10462,
+		"type": "Fairy",
+		"category": "Physical",
+		"basePower": 75,
+		"accuracy": 100,
+		"pp": 20,
+		"priority": 0,
+		"target": "allAdjacentFoes",
+		"flags": {
+			"protect": 1,
+			"mirror": 1
+		},
+		"desc": "Allen's move. Hits both foes. Uses field-selected Secret Power secondary effects, normally a 30% chance. Not a slicing move. Bewitched Woods boosts this move by 1.2x, combining with its Fairy boost for 1.8x. On Glitch, becomes Unown Buster: 175 power, ??? type, super effective against ??? targets, and no spread damage penalty. These changes last only for that use.",
+		"shortDesc": "Allen's move. Hits foes; field-based secondary effects and Glitch form.",
+		"critRatio": 1,
+		"secondaries": [
+			{
+				"chance": 30,
+				"status": "par"
+			}
+		],
+		"signatureCharacters": [
+			"allen"
+		]
 	},
 	"wakeupshock": {
 		"name": "Wake-Up Shock",
@@ -92988,6 +93212,180 @@ for (const id of DELUGE_TM_SPECIES) {
 	const deluge = additions.deluge || [];
 	CUSTOM_LEARNSET_ADDITIONS[id] = {...additions, deluge: deluge.includes('9M') ? deluge : [...deluge, '9M']};
 }
+// BEGIN REJUV ORIGINAL USER LEARNSET ADDITIONS
+for (const [move, species] of Object.entries({
+  "multipulse": [
+    "delcatty",
+    "indeedeef",
+    "cyclizar",
+    "chatot",
+    "wyrdeer"
+  ],
+  "aquabatics": [
+    "lanturn",
+    "octillery"
+  ],
+  "feverpitch": [
+    "camerupt",
+    "blaziken",
+    "gyaradosaevian",
+    "scovillain"
+  ],
+  "thunderraid": [
+    "togedemaru",
+    "electrodehisui",
+    "eelektross",
+    "toxtricity",
+    "toxtricitylowkey"
+  ],
+  "desertsmark": [
+    "gliscor",
+    "dugtrioalola",
+    "runerigus"
+  ],
+  "superumdmove": [
+    "tinkaton",
+    "bastiodon",
+    "durant",
+    "bronzong",
+    "klinklang"
+  ],
+  "galestrike": [
+    "scrafty",
+    "sirfetchd",
+    "machamp",
+    "pawmot",
+    "darmanitan",
+    "emboar",
+    "blaziken"
+  ],
+  "spectralscream": [
+    "drifblim",
+    "sinistcha",
+    "mismagiusaevian",
+    "gengar",
+    "sinistchamasterpiece"
+  ],
+  "barbedweb": [
+    "escavalier"
+  ],
+  "coldtruth": [
+    "ninetalesalola",
+    "glaceon",
+    "jynx",
+    "rotomfrost",
+    "beartic",
+    "kyurem",
+    "kyuremwhite"
+  ],
+  "bunrakubeatdown": [
+    "beheeyem",
+    "hatterene",
+    "delphox",
+    "musharna",
+    "gardevoir",
+    "claydol",
+    "xatu",
+    "rabsca",
+    "mrrime",
+    "slowking",
+    "oranguru"
+  ],
+  "matrixshot": [
+    "tyranitar",
+    "rampardos",
+    "kleavor",
+    "kabutops",
+    "coalossal",
+    "crustle",
+    "golemalola"
+  ],
+  "pyrokinesis": [
+    "espeon",
+    "exeggutor",
+    "slowbrogalar"
+  ],
+  "venamskiss": [
+    "garbodor",
+    "toxicroak",
+    "toxtricity",
+    "toxtricitylowkey",
+    "scolipede",
+    "venusaur"
+  ],
+  "heavenlywing": [
+    "skarmory",
+    "unfezant",
+    "volcaronaaevian",
+    "dragonite"
+  ],
+  "uproot": [
+    "ludicolo",
+    "shiinotic",
+    "rotommow",
+    "froslassaevian",
+    "whimsicott"
+  ]
+})) {
+	for (const id of species) {
+		CUSTOM_LEARNSET_ADDITIONS[id] = {...CUSTOM_LEARNSET_ADDITIONS[id], [move]: ['9L1']};
+	}
+}
+// END REJUV ORIGINAL USER LEARNSET ADDITIONS
+// Approved Rejuvenation advanced move grants survive custom-form overlays.
+CUSTOM_LEARNSET_ADDITIONS['ariados'] = {...CUSTOM_LEARNSET_ADDITIONS['ariados'], poisonsweep: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['drapion'] = {...CUSTOM_LEARNSET_ADDITIONS['drapion'], poisonsweep: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['scolipede'] = {...CUSTOM_LEARNSET_ADDITIONS['scolipede'], poisonsweep: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['toxicroak'] = {...CUSTOM_LEARNSET_ADDITIONS['toxicroak'], poisonsweep: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['seviper'] = {...CUSTOM_LEARNSET_ADDITIONS['seviper'], poisonsweep: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['garbodor'] = {...CUSTOM_LEARNSET_ADDITIONS['garbodor'], poisonsweep: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['miltank'] = {...CUSTOM_LEARNSET_ADDITIONS['miltank'], stackingshot: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['heracross'] = {...CUSTOM_LEARNSET_ADDITIONS['heracross'], stackingshot: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['gallade'] = {...CUSTOM_LEARNSET_ADDITIONS['gallade'], stackingshot: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['leavanny'] = {...CUSTOM_LEARNSET_ADDITIONS['leavanny'], stackingshot: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['zangoose'] = {...CUSTOM_LEARNSET_ADDITIONS['zangoose'], stackingshot: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['vivillon'] = {...CUSTOM_LEARNSET_ADDITIONS['vivillon'], irritation: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['venomoth'] = {...CUSTOM_LEARNSET_ADDITIONS['venomoth'], irritation: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['galvantula'] = {...CUSTOM_LEARNSET_ADDITIONS['galvantula'], irritation: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['masquerain'] = {...CUSTOM_LEARNSET_ADDITIONS['masquerain'], irritation: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['beautifly'] = {...CUSTOM_LEARNSET_ADDITIONS['beautifly'], irritation: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['mothim'] = {...CUSTOM_LEARNSET_ADDITIONS['mothim'], irritation: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['kabutops'] = {...CUSTOM_LEARNSET_ADDITIONS['kabutops'], slashandburn: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['scyther'] = {...CUSTOM_LEARNSET_ADDITIONS['scyther'], slashandburn: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['scizor'] = {...CUSTOM_LEARNSET_ADDITIONS['scizor'], slashandburn: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['kleavor'] = {...CUSTOM_LEARNSET_ADDITIONS['kleavor'], slashandburn: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['infernape'] = {...CUSTOM_LEARNSET_ADDITIONS['infernape'], slashandburn: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['ceruledge'] = {...CUSTOM_LEARNSET_ADDITIONS['ceruledge'], slashandburn: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['leavanny'] = {...CUSTOM_LEARNSET_ADDITIONS['leavanny'], slashandburn: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['lurantis'] = {...CUSTOM_LEARNSET_ADDITIONS['lurantis'], slashandburn: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['coalossal'] = {...CUSTOM_LEARNSET_ADDITIONS['coalossal'], magmadrift: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['dragonite'] = {...CUSTOM_LEARNSET_ADDITIONS['dragonite'], magmadrift: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['camerupt'] = {...CUSTOM_LEARNSET_ADDITIONS['camerupt'], magmadrift: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['magcargo'] = {...CUSTOM_LEARNSET_ADDITIONS['magcargo'], magmadrift: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['torkoal'] = {...CUSTOM_LEARNSET_ADDITIONS['torkoal'], magmadrift: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['turtonator'] = {...CUSTOM_LEARNSET_ADDITIONS['turtonator'], magmadrift: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['rapidashgalar'] = {...CUSTOM_LEARNSET_ADDITIONS['rapidashgalar'], vorpalblade: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['ironvaliant'] = {...CUSTOM_LEARNSET_ADDITIONS['ironvaliant'], vorpalblade: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['miloticaevian'] = {...CUSTOM_LEARNSET_ADDITIONS['miloticaevian'], vorpalblade: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['mawile'] = {...CUSTOM_LEARNSET_ADDITIONS['mawile'], vorpalblade: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['zoroark'] = {...CUSTOM_LEARNSET_ADDITIONS['zoroark'], gildedarrow: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['togekiss'] = {...CUSTOM_LEARNSET_ADDITIONS['togekiss'], gildedarrow: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['hydreigon'] = {...CUSTOM_LEARNSET_ADDITIONS['hydreigon'], gildedarrow: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['noivern'] = {...CUSTOM_LEARNSET_ADDITIONS['noivern'], gildedarrow: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['togekiss'] = {...CUSTOM_LEARNSET_ADDITIONS['togekiss'], gildedhelix: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['aegislash'] = {...CUSTOM_LEARNSET_ADDITIONS['aegislash'], gildedhelix: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['hydreigon'] = {...CUSTOM_LEARNSET_ADDITIONS['hydreigon'], gildedhelix: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['clefable'] = {...CUSTOM_LEARNSET_ADDITIONS['clefable'], gildedhelix: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['articunogalar'] = {...CUSTOM_LEARNSET_ADDITIONS['articunogalar'], gildedhelix: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['kingdra'] = {...CUSTOM_LEARNSET_ADDITIONS['kingdra'], gildedhelix: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['latios'] = {...CUSTOM_LEARNSET_ADDITIONS['latios'], beasthunter: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['tyranitar'] = {...CUSTOM_LEARNSET_ADDITIONS['tyranitar'], beasthunter: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['dragapult'] = {...CUSTOM_LEARNSET_ADDITIONS['dragapult'], beasthunter: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['hydreigon'] = {...CUSTOM_LEARNSET_ADDITIONS['hydreigon'], beasthunter: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['kommooaevian'] = {...CUSTOM_LEARNSET_ADDITIONS['kommooaevian'], beasthunter: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['gyaradosaevian'] = {...CUSTOM_LEARNSET_ADDITIONS['gyaradosaevian'], beasthunter: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['tyrantrum'] = {...CUSTOM_LEARNSET_ADDITIONS['tyrantrum'], beasthunter: ['9L1']};
+CUSTOM_LEARNSET_ADDITIONS['miltank'] = {...CUSTOM_LEARNSET_ADDITIONS['miltank'], furycutter: ['9L1']};
 const CUSTOM_LEARNSET_ADDITION_IDS = Object.keys(CUSTOM_LEARNSET_ADDITIONS);
 CUSTOM_LEARNSET_REMOVALS.arboliva = [...(CUSTOM_LEARNSET_REMOVALS.arboliva || []), 'forestcurse'];
 CUSTOM_LEARNSET_REMOVALS.arbolivamega = [...(CUSTOM_LEARNSET_REMOVALS.arbolivamega || []), 'forestcurse'];
@@ -93224,6 +93622,7 @@ for (const [id, update] of Object.entries({
 } as {[id: string]: AnyObject})) {
 	CUSTOM_ITEM_UPDATES[id] = {...CUSTOM_ITEM_UPDATES[id], ...update};
 }
+
 
 
 

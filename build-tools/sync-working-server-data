@@ -76,6 +76,7 @@ for (const id of [...groups.abilities].sort()) {
 }
 // Character aliases come from the approved credit tables, not prose substring matching.
 const signatureCredits = {
+ ...require(path.join(server, 'dist/data/rejuvenation-advanced-moves')).RejuvenationAdvancedCredits,
  ...require(path.join(server, 'dist/data/rejuvenation-signature-moves')).RejuvenationSignatureCredits,
  ...require(path.join(server, 'dist/data/yang-signature-moves-a')).YangSignatureCreditsA,
  ...require(path.join(server, 'dist/data/yang-signature-moves-b')).YangSignatureCreditsB,
@@ -88,6 +89,7 @@ function characterAliases(credit) {
 for (const id of [...groups.moves].sort()) {
 	const data = Dex.moves.get(id);
 	snapshot.moves[id] = select(data, ['name', 'num', 'type', 'category', 'basePower', 'accuracy', 'pp', 'priority', 'target', 'flags', 'desc', 'shortDesc']);
+	if (require(path.join(server, 'dist/data/rejuvenation-advanced-moves')).RejuvenationAdvancedMoves[id]) Object.assign(snapshot.moves[id], select(data, ['multihit', 'critRatio', 'secondaries']));
 	if (signatureCredits[id]) snapshot.moves[id].signatureCharacters = characterAliases(signatureCredits[id]);
 }
 for (const id of [...groups.items].sort()) {

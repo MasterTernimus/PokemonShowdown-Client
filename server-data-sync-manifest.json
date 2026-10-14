@@ -1,7 +1,7 @@
 {
-	"sourceHead": "223e75cd5e0de950eb8727be5dcd40b335ddb9bf",
+	"sourceHead": "4a7276a6ac27ae81c438512e5c307dc5c86ce3ad",
 	"base": "9a1be465610a9e5dc164cb807c98f28ac2552030",
-	"sourceDataSHA256": "2fa71003df705165d646ddd79eebfa50c8c216bd47ca9eb55438d393ec6cab05",
+	"sourceDataSHA256": "120690cde3ecf177911cc3c2670b51045e844f570122d5800bb788b49409cec7",
 	"files": [
 		"data/abilities.ts",
 		"data/ability-components.ts",
@@ -56,6 +56,7 @@
 		"data/pressure-memory.ts",
 		"data/pulse-fixed-moves.ts",
 		"data/random-teams.ts",
+		"data/rejuvenation-advanced-moves.ts",
 		"data/rejuvenation-event-abilities.ts",
 		"data/rejuvenation-signature-moves.ts",
 		"data/roster-expansion-text.ts",
@@ -49100,6 +49101,28 @@
 				"desc": "If the user is hit by a contact move this turn before it can execute this move, the attacker is burned.",
 				"shortDesc": "Burns on contact with the user before it moves."
 			},
+			"beasthunter": {
+				"name": "Beast Hunter",
+				"num": 10465,
+				"type": "Dragon",
+				"category": "Special",
+				"basePower": 95,
+				"accuracy": 100,
+				"pp": 20,
+				"priority": 0,
+				"target": "allAdjacentFoes",
+				"flags": {
+					"protect": 1,
+					"mirror": 1,
+					"contact": 1
+				},
+				"desc": "Damien's move. Hits both foes. Independently chooses the Physical or Special category dealing greater calculated damage against each target; ties use Special. Makes contact in either category. Deals 25% damage through protection without removing it. Normal priority.",
+				"shortDesc": "Damien's move. Hits foes; best category per target; 25% through Protect.",
+				"critRatio": 1,
+				"signatureCharacters": [
+					"damien"
+				]
+			},
 			"beatdown": {
 				"name": "Beatdown",
 				"num": 10447,
@@ -54149,6 +54172,49 @@
 				"desc": "Cannot be selected the turn after it's used.",
 				"shortDesc": "Cannot be selected the turn after it's used."
 			},
+			"gildedarrow": {
+				"name": "Gilded Arrow",
+				"num": 10463,
+				"type": "Normal",
+				"category": "Special",
+				"basePower": 80,
+				"accuracy": 100,
+				"pp": 15,
+				"priority": 0,
+				"target": "normal",
+				"flags": {
+					"protect": 1,
+					"mirror": 1
+				},
+				"desc": "Melia's move. High critical-hit ratio. Uses the user's current secondary type unless it is Fairy or Dark; otherwise uses the primary type. Ordinary type, field and aura effects apply.",
+				"shortDesc": "Melia's move. User-dependent type; high critical-hit ratio.",
+				"critRatio": 2,
+				"signatureCharacters": [
+					"melia"
+				]
+			},
+			"gildedhelix": {
+				"name": "Gilded Helix",
+				"num": 10464,
+				"type": "Normal",
+				"category": "Special",
+				"basePower": 50,
+				"accuracy": 100,
+				"pp": 15,
+				"priority": 0,
+				"target": "normal",
+				"flags": {
+					"protect": 1,
+					"mirror": 1
+				},
+				"desc": "Melia's move. Hits twice at 50 power each. Each hit has a high critical-hit ratio. Uses the user's current secondary type unless it is Fairy or Dark; otherwise uses the primary type. Ordinary type, field and aura effects apply.",
+				"shortDesc": "Melia's move. Two hits; user-dependent type; high crit rate each hit.",
+				"multihit": 2,
+				"critRatio": 2,
+				"signatureCharacters": [
+					"melia"
+				]
+			},
 			"glaciallance": {
 				"name": "Glacial Lance",
 				"num": 824,
@@ -55979,6 +56045,27 @@
 				"desc": "Has a 30% chance to lower the target's Defense by 1 stage.",
 				"shortDesc": "30% chance to lower the target's Defense by 1."
 			},
+			"irritation": {
+				"name": "Irritation",
+				"num": 10468,
+				"type": "Bug",
+				"category": "Special",
+				"basePower": 60,
+				"accuracy": 100,
+				"pp": 10,
+				"priority": 0,
+				"target": "normal",
+				"flags": {
+					"protect": 1,
+					"mirror": 1
+				},
+				"desc": "Power doubles from 60 to 120 if the target has a major status condition.",
+				"shortDesc": "Double power against a statused target.",
+				"critRatio": 1,
+				"signatureCharacters": [
+					"rejuvenation"
+				]
+			},
 			"ivycudgel": {
 				"name": "Ivy Cudgel",
 				"num": 904,
@@ -56876,6 +56963,28 @@
 				},
 				"desc": "For 5 turns, the held items of all active Pokemon have no effect. An item's effect of causing forme changes is unaffected, but any other effects from such items are negated. During the effect, Fling and Natural Gift are prevented from being used by all active Pokemon. If this move is used during the effect, the effect ends.",
 				"shortDesc": "For 5 turns, all held items have no effect."
+			},
+			"magmadrift": {
+				"name": "Magma Drift",
+				"num": 10470,
+				"type": "Fire",
+				"category": "Special",
+				"basePower": 90,
+				"accuracy": 100,
+				"pp": 15,
+				"priority": 0,
+				"target": "allAdjacent",
+				"flags": {
+					"protect": 1,
+					"mirror": 1,
+					"defrost": 1
+				},
+				"desc": "Hits all adjacent Pokémon, including allies. Thaws the user. Hits targets using Dive for double damage. Does not burn.",
+				"shortDesc": "Hits all adjacent. Thaws user; 2x against Dive.",
+				"critRatio": 1,
+				"signatureCharacters": [
+					"rejuvenation"
+				]
 			},
 			"magmastorm": {
 				"name": "Magma Storm",
@@ -58936,6 +59045,36 @@
 				},
 				"desc": "Has a 30% chance to poison the target.",
 				"shortDesc": "30% chance to poison the target."
+			},
+			"poisonsweep": {
+				"name": "Poison Sweep",
+				"num": 10466,
+				"type": "Poison",
+				"category": "Physical",
+				"basePower": 50,
+				"accuracy": 100,
+				"pp": 10,
+				"priority": 0,
+				"target": "normal",
+				"flags": {
+					"contact": 1,
+					"protect": 1,
+					"mirror": 1
+				},
+				"desc": "Makes contact. Has a 30% chance to lower the target's Speed by 1 stage.",
+				"shortDesc": "30% chance to lower Speed by 1.",
+				"critRatio": 1,
+				"secondaries": [
+					{
+						"chance": 30,
+						"boosts": {
+							"spe": -1
+						}
+					}
+				],
+				"signatureCharacters": [
+					"rejuvenation"
+				]
 			},
 			"poisontail": {
 				"name": "Poison Tail",
@@ -61747,6 +61886,35 @@
 				"desc": "Has a higher chance for a critical hit.",
 				"shortDesc": "High critical hit ratio."
 			},
+			"slashandburn": {
+				"name": "Slash and Burn",
+				"num": 10469,
+				"type": "Grass",
+				"category": "Physical",
+				"basePower": 90,
+				"accuracy": 90,
+				"pp": 10,
+				"priority": 0,
+				"target": "normal",
+				"flags": {
+					"contact": 1,
+					"protect": 1,
+					"mirror": 1,
+					"slicing": 1
+				},
+				"desc": "Makes contact and is a slicing move. Has a 10% chance to burn the target.",
+				"shortDesc": "10% chance to burn. Contact; slicing.",
+				"critRatio": 1,
+				"secondaries": [
+					{
+						"chance": 10,
+						"status": "brn"
+					}
+				],
+				"signatureCharacters": [
+					"rejuvenation"
+				]
+			},
 			"sleeppowder": {
 				"name": "Sleep Powder",
 				"num": 79,
@@ -62615,6 +62783,30 @@
 				},
 				"desc": "Traps opposing Pokemon for 4-5 turns and damages them each turn. In Forest Field, power is 1.5x and Defense falls by 1. Grip Claw extends the trap to 7 turns.",
 				"shortDesc": "Traps foes; 1.5x and -1 Def in Forest; Grip Claw extends it."
+			},
+			"stackingshot": {
+				"name": "Stacking Shot",
+				"num": 10467,
+				"type": "Fighting",
+				"category": "Physical",
+				"basePower": 40,
+				"accuracy": 100,
+				"pp": 10,
+				"priority": 0,
+				"target": "normal",
+				"flags": {
+					"contact": 1,
+					"protect": 1,
+					"mirror": 1,
+					"punch": 1,
+					"bullet": 1
+				},
+				"desc": "A contact, punching and bullet move. Shares the successful-use chain with Fury Cutter: 40, 80, then 160 power. Alternating these moves preserves the chain. A miss, failed hit, unrelated move or switch resets it.",
+				"shortDesc": "Shares Fury Cutter's 40/80/160 consecutive-hit chain.",
+				"critRatio": 1,
+				"signatureCharacters": [
+					"rejuvenation"
+				]
 			},
 			"stealthrock": {
 				"name": "Stealth Rock",
@@ -64996,6 +65188,33 @@
 				},
 				"desc": "Has a 10% chance to paralyze the target. If the target lost HP, the user takes recoil damage equal to 33% the HP lost by the target, rounded half up, but not less than 1 HP.",
 				"shortDesc": "Has 33% recoil. 10% chance to paralyze target."
+			},
+			"vorpalblade": {
+				"name": "Vorpal Blade",
+				"num": 10462,
+				"type": "Fairy",
+				"category": "Physical",
+				"basePower": 75,
+				"accuracy": 100,
+				"pp": 20,
+				"priority": 0,
+				"target": "allAdjacentFoes",
+				"flags": {
+					"protect": 1,
+					"mirror": 1
+				},
+				"desc": "Allen's move. Hits both foes. Uses field-selected Secret Power secondary effects, normally a 30% chance. Not a slicing move. Bewitched Woods boosts this move by 1.2x, combining with its Fairy boost for 1.8x. On Glitch, becomes Unown Buster: 175 power, ??? type, super effective against ??? targets, and no spread damage penalty. These changes last only for that use.",
+				"shortDesc": "Allen's move. Hits foes; field-based secondary effects and Glitch form.",
+				"critRatio": 1,
+				"secondaries": [
+					{
+						"chance": 30,
+						"status": "par"
+					}
+				],
+				"signatureCharacters": [
+					"allen"
+				]
 			},
 			"wakeupshock": {
 				"name": "Wake-Up Shock",

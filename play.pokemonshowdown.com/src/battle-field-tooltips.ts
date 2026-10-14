@@ -86,6 +86,7 @@ const BattleFieldTooltips = {
 				getAura: () => aura, isAura: (id: string) => aura?.id === id,
 				isTerrainOrAura: (id: string) => id === field.id || id === aura?.id,
 				getTerrain: () => field,
+				moveTransitionBlocked: () => !!source.fieldChangeBlocked || [source, target].some(p => p.hasAbilityOrPassive?.(['neutralization', 'pulseblockade'])),
 				isTerrain: (ids: any) => (Array.isArray(ids) ? ids : [ids]).includes(field.id),
 				canSetTerrain: (id: string) => id !== field.id && !field.id.startsWith('flowergarden') &&
 					!['underwaterterrain', 'midnightzoneterrain', 'newworldterrain', 'dragonsdenterrain'].includes(field.id) &&
@@ -96,7 +97,7 @@ const BattleFieldTooltips = {
 			ShortCircuitCounter: variant % 5, CrystalCavernCounter: variant % 4,
 			chainModify: (amount: number | number[]) => { factor *= Array.isArray(amount) ? amount[0] / amount[1] : amount; },
 			add() {}, debug() {}, attrLastMove() {}, hint() {}, gameType: 'singles',
-			dex: {moves: Dex.moves, getActiveMove: (id: string) => this.clone(Dex.moves.get(id))},
+			dex: {deepClone: (value: any) => this.clone(value), moves: {get: (id: string) => ({...Dex.moves.get(id), ...(window as any).BattleFieldMoveRules?.[id]})}, getActiveMove: (id: string) => this.clone({...Dex.moves.get(id), ...(window as any).BattleFieldMoveRules?.[id]?.base})},
 			effectState: {}, sample: (items: any[]) => items[variant % items.length],
 		};
 		Object.assign(context.field, (window as any).BattleAuraMethods || {}, {battle: context});
@@ -155,6 +156,7 @@ const BattleFieldTooltips = {
 		const field = this.active(battle) || (aura ? {id: '', name: 'Base field'} : null);
 		if (!field) return null;
 		const source = this.pokemon(pokemon, server);
+		(source as any).fieldChangeBlocked = battle.sides.some(side => side.active.some(p => p && ['neutralization', 'pulseblockade'].includes(toID(p.effectiveAbility()))));
 		const foe = this.pokemon(target);
 		const variants = this.variantValues(field, move);
 		const results = variants.map(v => this.evaluate(field, move, source, foe, battle.weather, v, aura));
