@@ -26,7 +26,7 @@ describe('Mightyena Grim supplied artwork', () => {
    assert.equal(preview.spriteid,'mightyena-grim');
    assert.equal(preview.spriteDir,'sprites/gen5');
    assert.equal(!!preview.shiny,shiny);
-   assert(Dex.getPokemonIcon({species:'Mightyena-Grim',shiny}).includes((shiny?'gen5-shiny':'gen5')+'/mightyena-grim.png'));
+   assert(Dex.getPokemonIcon({species:'Mightyena-Grim',shiny}).includes('pokemonicons/mightyena-grim'+(shiny?'-shiny':'')+'.png'));
   }
  });
 });

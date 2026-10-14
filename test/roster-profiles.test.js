@@ -23,3 +23,18 @@ describe('Roster list imports', () => {
 		assert.deepEqual(result.species, ['pikachu']);
 	});
 });
+
+describe('Whole roster branch removal', () => {
+ it('includes sibling Megas and G-Max without consuming alternate or regional branches', () => {
+  const ids = roster.rosterBranchSpecies('charizardmegax');
+  for (const id of ['charizard', 'charizardmegax', 'charizardmegay', 'charizardgmax']) assert(ids.includes(id));
+  assert(!ids.includes('charizardalt')); assert(!ids.includes('charizardmegaxalt'));
+  assert(!roster.rosterBranchSpecies('ninetalesalola').includes('ninetales'));
+ });
+ it('resolves a G-Max or Anomaly form back to its matching base branch', () => {
+  assert(roster.rosterBranchSpecies('charizardgmax').includes('charizardmegay'));
+  assert(roster.rosterBranchSpecies('avaluggpulse').includes('avalugg'));
+  assert(roster.rosterBranchSpecies('avalugghisui').includes('avaluggpulse'));
+  assert(!roster.rosterBranchSpecies('avalugghisui').includes('avalugg'));
+ });
+});

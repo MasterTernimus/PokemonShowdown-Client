@@ -1,0 +1,8 @@
+'use strict';
+const assert=require('assert').strict,fs=require('fs');require('./battle.test');global.BattleMovedex=require('../play.pokemonshowdown.com/data/moves.js').BattleMovedex;
+const {BattleTooltips}=new Function(fs.readFileSync('play.pokemonshowdown.com/js/battle-tooltips.js','utf8')+'\nreturn {BattleTooltips};')();
+describe('Approved field move previews',()=>{
+ it('shows escalating Triple Dive and conditional field timing',()=>{const b=new Battle({debug:true,log:['|init|battle','|gen|9','|gametype|singles','|switch|p1a: Mew|Mew, L100|100/100','|switch|p2a: Mew|Mew, L100|100/100']});try{const own={speciesForme:'Mew',ability:'No Ability',baseAbility:'No Ability',item:'',hp:100,maxhp:100,level:100,status:'',stats:{atk:100,def:100,spa:100,spd:100,spe:100}};const text=new BattleTooltips(b).showMoveTooltip(Dex.moves.get('tripledive'),'',b.p1.active[0],own);assert(text.includes('20 / 40 / 60'));assert(text.includes('Starting on Icy'));assert(text.includes('2.25x'));assert.equal(Dex.moves.get('tripledive').accuracy,90);assert(Dex.moves.get('tripledive').desc.includes('checking 90% accuracy for each hit'));}finally{b.destroy();}});
+ it('Shadow Force explains successful-hit field generation',()=>{assert(Dex.moves.get('shadowforce').desc.includes('Midnight Zone'));assert(Dex.moves.get('shadowforce').desc.includes('charge turn does not'));});
+ it('Spectral Scream retains its approved effects at 85 power',()=>{const m=Dex.moves.get('spectralscream');assert.equal(m.basePower,85);assert.equal(m.accuracy,100);assert.equal(m.pp,10);assert.equal(m.target,'adjacentFoe');assert.deepEqual(m.drain,[1,4]);assert(m.flags.sound);});
+});

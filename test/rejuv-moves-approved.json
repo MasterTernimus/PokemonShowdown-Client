@@ -65,7 +65,9 @@
       "pawmot",
       "darmanitan",
       "emboar",
-      "blaziken"
+      "blaziken",
+      "emboarego",
+      "emboarmegaego"
     ],
     "spectralscream": [
       "dusclops",
@@ -267,7 +269,8 @@
     "gallade": {
       "0": "Dual Wield",
       "1": "Knight's Guard",
-      "H": "Inner Focus"
+      "H": "Inner Focus",
+      "S": "Ruptured Heaven"
     },
     "hawlucha": {
       "0": "Ringcraft",
@@ -281,7 +284,7 @@
     "dusknoir": {
       "0": "Requiem",
       "1": "Pressure",
-      "H": "Shadow Tag"
+      "H": "Soul Reaver"
     },
     "mismagius": {
       "0": "Void Crossing",

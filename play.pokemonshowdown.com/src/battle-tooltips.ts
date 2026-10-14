@@ -63,7 +63,7 @@ class ModifiableValue {
 		if (passives.some(passive => Dex.getPassiveAbilityEffects(toID(passive)).has(toID(abilityName)))) return true;
 		const activeId = toID(this.abilityName);
 		const excluded = Dex.getAbilityComponentExclusions(activeId, passives, toID(this.serverPokemon.speciesForme));
-		const hasComponent = ['Guts', 'Rivalry', 'Pure Power'].includes(abilityName) && Dex.getAbilityEffects(activeId).has(toID(abilityName)) && !excluded.includes(toID(abilityName));
+		const hasComponent = ((activeId === 'quarrycannon' && abilityName === 'Mega Launcher') || (['updraft', 'stormsovereign'].includes(activeId) && abilityName === 'Competitive') || ['Guts', 'Rivalry', 'Pure Power'].includes(abilityName) || (activeId === 'rupturedheaven' && abilityName === 'Sharpness') || (activeId === 'wintersmalice' && abilityName === 'Refrigerate')) && Dex.getAbilityEffects(activeId).has(toID(abilityName)) && !excluded.includes(toID(abilityName));
 		if (!hasComponent && abilityName !== this.abilityName &&
 			!(this.abilityName === 'Cinder Scales' && abilityName === 'Swarm') &&
 			!(this.abilityName === 'Aura Precision' && abilityName === 'Technician')) return false;
@@ -603,7 +603,7 @@ class BattleTooltips {
 		let item = this.battle.dex.items.get(serverPokemon.item);
 
 		let value = new ModifiableValue(this.battle, pokemon, serverPokemon);
-		let [moveType, category] = this.getMoveType(move, value, gmaxMove || isZOrMax === 'maxmove');
+		let [moveType, category] = this.getMoveType(move, value, isZOrMax === 'maxmove' ? gmaxMove || true : undefined);
 		let categoryDiff = move.category !== category;
 		move = new Move(move.id, '', { ...move, category });
 
@@ -621,13 +621,12 @@ class BattleTooltips {
 			} else {
 				let moveName = gmaxMove?.isZ ? gmaxMove.name : BattleTooltips.zMoveTable[item.zMoveType as TypeName];
 				let zMove = gmaxMove?.isZ ? gmaxMove : this.battle.dex.moves.get(moveName);
-				let movePower = gmaxMove?.isZ && gmaxMove.basePower > 1 ?
-					gmaxMove.basePower : BattleTooltips.getZMoveBasePower(move);
+				let movePower = BattleTooltips.getZMoveBasePower(move);
 				// the different Hidden Power types don't have a Z power set, fall back on base move
 				if (!movePower && move.id.startsWith('hiddenpower')) {
 					movePower = this.battle.dex.moves.get('hiddenpower').zMove?.basePower || 0;
 				}
-				if (move.id === 'weatherball') {
+				if (move.id === 'weatherball' && !gmaxMove?.isZ) {
 					switch (this.battle.weather) {
 					case 'sunnyday':
 					case 'desolateland':
@@ -648,12 +647,15 @@ class BattleTooltips {
 				}
 				move = new Move(zMove.id, zMove.name, {
 					...zMove,
-					category: move.category,
+					// Server Z conversion uses the base data category before ordinary adaptive callbacks.
+					category: baseMove.category,
 					basePower: movePower,
 				});
 				zMoveBasePower = move.basePower;
 				categoryDiff = false;
 			}
+			[moveType, category] = this.getMoveType(move, value);
+			categoryDiff = false;
 		} else if (isZOrMax === 'maxmove') {
 			if (move.category === 'Status') {
 				move = this.battle.dex.moves.get('Max Guard');
@@ -679,8 +681,9 @@ class BattleTooltips {
 
 		text += '<h2>' + (move.id === 'vorpalblade' && this.battle.hasPseudoWeather('Glitch Terrain') ? 'Unown Buster (Vorpal Blade)' : move.name) + '<br />';
 		const crescentRend = toID(pokemon.effectiveAbility(serverPokemon || undefined)) === 'crescentrend' &&
-			category === 'Physical' && moveType === 'Flying';
-		if (crescentRend) {
+			category !== 'Status' && moveType === 'Flying';
+		const rupturedHeaven = toID(pokemon.effectiveAbility(serverPokemon || undefined)) === 'rupturedheaven' && !!move.flags.slicing;
+		if (crescentRend || rupturedHeaven) {
 			const flags = {...move.flags};
 			delete flags.contact;
 			move = new Move(move.id, move.name, {...move, flags});
@@ -688,10 +691,12 @@ class BattleTooltips {
 
 		text += Dex.getTypeIcon(moveType);
 		text += ['superumdmove', 'beasthunter'].includes(move.id) ? ' Physical / Special</h2>' : ` ${Dex.getCategoryIcon(category)}</h2>`;
+		if (rupturedHeaven) text += '<p>Ruptured Heaven: slicing moves are non-contact and receive Sharpness.</p>';
+		if (toID(pokemon.effectiveAbility(serverPokemon || undefined)) === 'burningquake') text += '<p>Burning Quake: +1 critical-hit ratio; after a move deals critical opposing HP damage, +1 Speed once per turn.</p>';
 		if (['superumdmove', 'beasthunter'].includes(move.id)) text += '<p>Chooses the category dealing greater calculated damage to the actual target; depends on both Pokémon and battle conditions.</p>';
 		if (move.id === 'thunderraid') text += '<p>Hit power: 20 / 40 / 60. Each hit checks accuracy separately; stops on a miss. Base power below is the first hit.</p>';
 		if (crescentRend) {
-			text += '<p>Crescent Rend: non-contact; ignores Reflect and Aurora Veil. ' +
+			text += '<p>Crescent Rend: non-contact; ignores Reflect, Light Screen and Aurora Veil. ' +
 				'Excess damage from breaking a Substitute carries into its owner as part of this hit.</p>';
 		}
 		if (toID(pokemon.effectiveAbility(serverPokemon)) === 'auraconvergence' &&
@@ -712,8 +717,13 @@ class BattleTooltips {
 		}
 
 		// Check if there are more than one active Pokémon to check for multiple possible BPs.
-		let showingMultipleBasePowers = false;
-		if (category !== 'Status' && foeActive.length > 1) {
+		let showingMultipleBasePowers = move.id === 'tripledive';
+		if (move.id === 'tripledive') {
+			text += '<p>Base power per hit: 20 / 40 / 60 before modifiers. Each hit checks accuracy.</p>' +
+				'<p>Successful field transitions apply before that hit: Water Surface, then Underwater. Starting on Icy: Icy, Water Surface, Underwater. Field locks apply.</p>' +
+				'<p>On either water field: 1.5x named boost and the existing Water boost (normally 2.25x total).</p>';
+		}
+		if (category !== 'Status' && foeActive.length > 1 && move.id !== 'tripledive') {
 			// We check if there is a difference in base powers to note it.
 			// Otherwise, it is just shown as in singles.
 			// The trick is that we need to calculate it first for each Pokémon to see if it changes.
@@ -1166,7 +1176,9 @@ class BattleTooltips {
 			if (!clientPokemon) continue;
 
 			const clientStatName = clientPokemon.boosts.spc && (statName === 'spa' || statName === 'spd') ? 'spc' : statName;
-			const boostLevel = clientPokemon.boosts[clientStatName];
+			let boostLevel = clientPokemon.boosts[clientStatName] || 0;
+            if ((clientPokemon.volatiles.artilleryreload || clientPokemon.volatiles.artilleryfired) && ['def', 'spd'].includes(statName) &&
+                toID(clientPokemon.effectiveAbility(serverPokemon)) === 'heavyartillery') boostLevel = Math.max(-6, Math.min(6, boostLevel + (clientPokemon.volatiles.artilleryfired ? -1 : 1)));
 			if (boostLevel) {
 				let boostTable = [1, 1.5, 2, 2.5, 3, 3.5, 4];
 				if (boostLevel > 0) {
@@ -1499,7 +1511,7 @@ class BattleTooltips {
 
 	/** Mirrors verified server Speed hooks, not merely component labels. */
 	swiftSwimSpeedBoost(ability: string, weather: string, item = ''): boolean {
-		const fullSwiftSwim = ['swiftswim', 'islandcurrent', 'noblerider', 'warship', 'aevianrocket',
+		const fullSwiftSwim = ['swiftswim', 'swiftvenom', 'islandcurrent', 'noblerider', 'warship', 'aevianrocket',
 			'swiftdrill', 'emperorsresolve', 'ragingcurrent', 'crosscurrent', 'prismscale', 'royalscales',
 			'tidaljaw', 'helios', 'tidaldominion', 'currentcoil', 'stormcircuit'].includes(ability);
 		const rain = item !== 'utilityumbrella' && ['raindance', 'primordialsea'].includes(weather);
@@ -1802,6 +1814,7 @@ class BattleTooltips {
 			}
 		}
 
+		if (!forMaxMove && !move.isZ && !move.isMax && move.category !== 'Status' && (move.flags.pulse || move.flags.bullet) && value.abilityModify(0, 'Quarry Cannon')) category = 'Physical';
 		const physicalTie = [
 			'needlegun', 'dragondarts', 'gmaxspiritvolley', 'gmaxfinalverdict', 'barrage', 'explosion',
 			'selfdestruct',
@@ -1809,7 +1822,7 @@ class BattleTooltips {
 		const specialTie = [
 			'photongeyser', 'lightthatburnsthesky', 'radiantassault', 'roaroftime', 'spacialrend',
 			'shadowforce', 'veeveevolley', 'blastburn', 'frenzyplant', 'hydrocannon', 'snipeshot',
-			'watershuriken', 'barbedweb', 'bunrakubeatdown', 'queensgambit', 'timeblade', 'swarmsnare', 'wisteriamaelstrom', 'airstreamassault', 'dragonrend', 'sirenswrath',
+			'watershuriken', 'spectralscream', 'barbedweb', 'bunrakubeatdown', 'queensgambit', 'timeblade', 'swarmsnare', 'wisteriamaelstrom', 'airstreamassault', 'dragonrend', 'sirenswrath',
 		].includes(move.id);
 		if (physicalTie || specialTie || move.id === 'terablast' && pokemon.terastallized ||
 			move.id === 'terastarstorm' && pokemon.terastallized && pokemon.speciesForme === 'Terapagos-Stellar') {
@@ -1951,11 +1964,12 @@ class BattleTooltips {
 		const pokemon = value.pokemon!;
 		const serverPokemon = value.serverPokemon;
 
+		if (!move.isZ && !move.isMax && move.category !== 'Status' && (move.flags.pulse || move.flags.bullet) && value.tryAbility('Quarry Cannon')) move = {...move, category: 'Physical'};
 		// apply modifiers for moves that depend on the actual stats
 		const modifiedStats = this.calculateModifiedStats(pokemon, serverPokemon);
 
 		// Adaptive signatures select category from staged stats before field previews.
-		if (['barbedweb', 'bunrakubeatdown', 'queensgambit', 'timeblade', 'swarmsnare',
+		if (['spectralscream', 'barbedweb', 'bunrakubeatdown', 'queensgambit', 'timeblade', 'swarmsnare',
 			'wisteriamaelstrom', 'airstreamassault', 'dragonrend', 'sirenswrath'].includes(move.id)) {
 			const staged = this.calculateModifiedStats(pokemon, serverPokemon, true);
 			move = {...move, category: staged.atk > staged.spa ? 'Physical' : 'Special'};
@@ -2176,10 +2190,13 @@ class BattleTooltips {
 		if (pokemon.status === 'brn' && move.category === 'Special') {
 			value.abilityModify(1.5, "Flare Boost");
 		}
+		if (this.battle.hasPseudoWeather('Chessboard Terrain') && value.tryAbility('Competitive')) {
+			value.abilityModify(Math.max(1, Math.min((1 - serverPokemon.hp / serverPokemon.maxhp) / 0.8 + 1, 2)), 'Competitive');
+		}
 		if (move.flags['punch']) {
 			value.abilityModify(1.2, 'Iron Fist');
 		}
-		if (move.flags['pulse']) {
+		if (move.flags['pulse'] || move.flags['bullet']) {
 			value.abilityModify(1.5, "Mega Launcher");
 		}
 		if (move.flags['bite']) {
@@ -2206,7 +2223,7 @@ class BattleTooltips {
 			value.abilityModify(1.3, "Punk Rock");
 			value.abilityModify(1.3, 'Tidal Voice');
 		}
-		if (move.flags['slicing']) {
+		if (move.flags['slicing'] && (toID(value.abilityName) !== 'rupturedheaven' || !this.battle.hasPseudoWeather('Cold Eclipse Terrain'))) {
 			value.abilityModify(1.5, "Sharpness");
 		}
 		if ((move.flags['slicing'] || move.id === 'steelwing') &&

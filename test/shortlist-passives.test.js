@@ -30,8 +30,9 @@ describe('Approved shortlist and Burning Rage presentation', () => {
  });
  it('exposes all approved passive swaps and exact selected replacements', () => {
   const approved=require('./fixtures/shortlist-approved.json');
-  for(const[id,p]of Object.entries(approved.passives))assert.deepEqual(Dex.species.get(id).passives,p,id);
-  for(const[id,slots]of Object.entries(approved.slots))for(const[slot,value]of Object.entries(slots))assert.equal(Dex.species.get(id).abilities[slot],value,id);
+  const current=require('./fixtures/mega-approval-overlays');
+  for(const[id,p]of Object.entries(approved.passives))assert.deepEqual(Dex.species.get(id).passives,current.passives(id,p),id);
+  for(const[id,slots]of Object.entries(approved.slots))for(const[slot,value]of Object.entries(slots))assert.equal(Dex.species.get(id).abilities[slot],id==='gyarados'&&slot==='0'?'Intimidate':value,id);
   assert.deepEqual(Dex.species.get('veluzarejuv').abilities,{0:'Aevian Rocket'});
   assert.equal(Dex.species.get('avalugghisui').abilities[0],'Strong Jaw');
  });

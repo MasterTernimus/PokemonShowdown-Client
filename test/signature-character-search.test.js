@@ -34,3 +34,28 @@ describe('Release move search coverage',()=>{
  it('indexes every released move, including all signature moves',()=>{require('child_process').execFileSync(process.execPath,['build-tools/verify-move-assets'],{cwd:require('path').resolve(__dirname,'..')});});
  it('finds every signature by its complete move name',()=>{const moves=require('../server-data-sync-manifest.json').snapshot.moves;for(const[id,m]of Object.entries(moves))if(m.signatureCharacters)assert(ids(search(m.name)).includes(id),id);});
 });
+
+describe('Compact signature move rows and default ordering',()=>{
+ it('keeps all signature descriptions short and synced to plain credits',()=>{
+  const moves=require('../server-data-sync-manifest.json').snapshot.moves;
+  for(const[id,raw]of Object.entries(moves))if(raw.signatureCharacters){
+   const move=Dex.moves.get(id);assert(move.shortDesc.length<=90,id);
+   assert.equal(move.shortDesc,raw.shortDesc);assert.equal(move.desc,raw.desc);
+   assert(!/inspired by|custom implementation/i.test(move.desc));
+  }
+ });
+ for(const species of ['crobat','primarina','dusknoir','chandelure','metagross'])it(species+' lists learned signatures first without duplicates',()=>{
+  const s=search('',species),rows=ids(s);assert(rows.length>0);
+  const signatures=rows.filter(id=>BattleMovedex[id].signatureCharacters?.length && !s.illegalLabel(id));
+  assert(signatures.length>0);assert.deepEqual(rows.slice(0,signatures.length),signatures);
+  assert.equal(new Set(rows).size,rows.length);
+  assert(s.results.some(row=>row[0]==='header'&&row[1]==='Signature moves'));
+ });
+ it('does not promote an unlearned signature',()=>{
+  const s=search('','pikachu');assert(!ids(s).slice(0,3).includes('airstreamassault'));
+ });
+ it('preserves explicit power sorting',()=>{
+  const s=search('','chandelure');s.toggleSort('power');s.find('');
+  assert(!s.results.some(row=>row[0]==='header'&&row[1]==='Signature moves'));
+ });
+});

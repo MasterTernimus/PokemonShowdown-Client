@@ -79,7 +79,7 @@
 		this.$el.on('click', '.filter', function (e) {
 			e.preventDefault();
 			self.removeFilter(e);
-			if (self.$inputEl) self.$inputEl.focus();
+			if (self.$inputEl && self.$inputEl[0]) self.$inputEl[0].focus({preventScroll: true});
 		});
 		this.$el.on('click', '.sortcol', function (e) {
 			e.preventDefault();
@@ -648,7 +648,7 @@
 		if (!move) return '<li class="result">Unrecognized move</li>';
 		var id = toID(move.name);
 		if (Search.urlRoot) attrs += ' href="' + Search.urlRoot + 'moves/' + id + '" data-target="push"';
-		var buf = '<li class="result"><a' + attrs + ' data-entry="move|' + BattleLog.escapeHTML(move.name) + '">';
+		var buf = '<li class="result' + (move.signatureCharacters?.length ? ' signaturemoveresult' : '') + '"><a' + attrs + ' data-entry="move|' + BattleLog.escapeHTML(move.name) + '">';
 
 		// name
 		var name = move.name;

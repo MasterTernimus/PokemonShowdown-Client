@@ -550,3 +550,34 @@
  .teamwrapper .setcell-sprite.changeform::before { content:"Change appearance"; font-size:13px; line-height:20px; }
 }
 @media (max-width:639px) { .teamwrapper .setcell-sprite.changeform > i { margin:0 0 0 auto; flex-shrink:0; } }
+
+/* Keep the passive beneath Ability compact in the existing set layout. */
+.setchart .setcell-ability > .starter-passives { gap:2px; align-items:flex-start; margin-top:2px; line-height:14px; }
+.setchart .setcell-ability > .starter-passives > label { display:none; }
+.setchart .setcell-ability > .starter-passives .passive-chip { font-size:10px; line-height:14px; padding:0 4px; border-radius:4px; max-width:100%; white-space:normal; overflow-wrap:anywhere; }
+
+/* Battle-form preview stays outside the saved-set drawer and has an explicit exit. */
+.active-form-preview {clear:both;margin:6px 0;padding:8px;border:1px solid #71838f;border-radius:5px;box-sizing:border-box;}
+.active-form-preview .form-preview-result {min-height:0;}
+.active-form-preview .form-preview-sprite {display:none!important;}
+.active-form-preview .set-tools-controls {display:flex;flex-wrap:wrap;gap:4px;}
+.active-form-preview .form-stat-comparison {width:100%;max-width:540px;}
+.active-form-preview .form-preview-choice {max-width:100%;}
+@media (max-width:640px) {.active-form-preview {padding:5px;} .set-profile-actions .profile-add-panel {max-width:100%;box-sizing:border-box;} }
+
+.set-quick-actions {display:flex;flex-wrap:wrap;gap:5px;margin:5px 0;clear:both;}
+
+.compact-form-selector {display:inline-flex;align-items:center;gap:4px;font-size:11px;min-width:0;}
+.compact-form-selector select {max-width:210px;min-width:0;}
+.compact-form-status {font-size:11px;flex-basis:100%;}
+@media(max-width:640px){.compact-form-selector select{max-width:185px;}}
+
+/* One consistent badge row, including Supreme Overlord and Thermal Exchange. */
+.setchart .setcell-ability { width:110px; }
+.setchart .setcell-ability > .starter-passives { width:110px; max-width:none; flex-wrap:nowrap; margin-top:3px; line-height:18px; }
+.setchart .setcell-ability > .starter-passives .passive-chip { flex:none; width:144px; max-width:none; box-sizing:border-box; padding:0 5px; font-size:11px; line-height:18px; text-align:center; white-space:nowrap; overflow-wrap:normal; border-radius:4px; }
+@media(max-width:639px) {
+ .setchart .setcell-ability { width:auto; }
+ .setchart .setcell-ability > .starter-passives { width:100%; }
+ .setchart .setcell-ability > .starter-passives .passive-chip { width:144px; max-width:100%; }
+}

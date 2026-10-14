@@ -78,3 +78,10 @@ exports.effects=(id,original)=>id==='unyielding'?['innerfocus','unyielding']:id=
 before.archaludon=['stalwart'];
 const beforeRailSightEffects=exports.effects;
 exports.effects=(id,original)=>id==='railsight'?['innerfocus','railsight']:beforeRailSightEffects(id,original);
+
+// Reviewed October support reworks and passive swaps; static expectations.
+const october = require('./october-support-approved.json');
+Object.assign(before, {gyarados:['unbridledwrath'],golisopod:['toughclaws'],corviknight:['mirrorarmor'],dragonitemega:['multiscale'],honchkrow:['stakeout'],beartic:['thickfat'],overqwil:['aftermath']});
+const beforeOctoberEffects=exports.effects, beforeOctoberDescription=exports.description;
+exports.effects=(id,original)=>october.effects[id] || beforeOctoberEffects(id,original);
+exports.description=(id,key,text)=>october.descriptions[id]?.[key] ?? beforeOctoberDescription(id,key,text);

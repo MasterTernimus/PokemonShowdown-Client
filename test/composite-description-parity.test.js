@@ -26,7 +26,7 @@ describe('Composite description client parity', () => {
   const effects = [...Dex.getAbilityEffects('toxicbloom')];
   for (const id of ['pollenbloom', 'thickfat']) assert.equal(effects.filter(x => x === id).length, 1);
   assert(Dex.getAbilityEffects('verdantdrake').has('limber'));
-  assert.deepEqual(Dex.species.get('skarmory').abilities, {"0":"Fresh Plumage","1":"Sturdy","H":"Weak Armor"});
+  assert.deepEqual(Dex.species.get('skarmory').abilities, {"0":"Fresh Plumage","1":"Sturdy","H":"Burning Quake"});
   assert.deepEqual(Dex.species.get('espathra').abilities, {"0":"Opportunist","1":"Transfixing Gaze","H":"Speed Boost"});
   assert.deepEqual(Dex.species.get('ursaluna').abilities, {"0":"Raging Beast","1":"Bulletproof","H":"Territorial"});
   assert.deepEqual(Dex.species.get('emboar').abilities, {"0":"Stoke Belly","1":"Thick Fat","H":"Brute Force"});

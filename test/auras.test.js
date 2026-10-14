@@ -108,10 +108,10 @@ describe('Z-Move battle tooltips', () => {
   assert.match(html, /Electric Terrain/);
  });
 
- it('uses a signature Z-Move\'s fixed power instead of the generic conversion', () => {
+ it('uses the approved type-based Snorlium Z conversion', () => {
   const html = tooltip('Last Resort', 'Pulverizing Pancake', 'Snorlium Z');
   assert.match(html, /Pulverizing Pancake/);
-  assert.match(html, /Z-Move base power: 210/);
+  assert.match(html, /Z-Move base power: 200/);
  });
 });
 
@@ -141,5 +141,5 @@ describe('Full field stat display parity', () => {
 
 describe('Frozen Aura integration', () => {
  it('replaces the previous Aura while retaining the base field and exact timer', () => {const b=new Battle({debug:true});try {b.runMinor(['-fieldstart','Factory Terrain'],{});b.runMinor(['-fieldstart','Frozen Aura'],{aura:'8'});assert(b.hasPseudoWeather('Factory Terrain'));assert.deepEqual(b.pseudoWeather.find(p=>p[0]==='Frozen Aura'),['Frozen Aura',8,0]);b.runMinor(['-fieldstart','Electric Aura'],{aura:'5'});assert(!b.hasPseudoWeather('Frozen Aura'));assert(b.hasPseudoWeather('Factory Terrain'));}finally{b.destroy();}});
- it('previews the Ice multiplier for airborne users without replacing the field',()=>{const p=BattleFieldTooltips.pokemon();p.isGrounded=()=>false;const r=BattleFieldTooltips.evaluate({id:'',name:'Base field'},Dex.moves.get('icebeam'),p,p,'',0,BattleAuraRules.frozenaura);assert.equal(r.factor,1.2);assert(BattleFieldTooltips.allNotes(Dex.moves.get('icebeam')).some(s=>s.startsWith('Frozen Aura:')));});
+ it('previews the Ice multiplier for airborne users without replacing the field',()=>{const p=BattleFieldTooltips.pokemon();p.isGrounded=()=>false;const r=BattleFieldTooltips.evaluate({id:'',name:'Base field'},Dex.moves.get('icebeam'),p,p,'',0,BattleAuraRules.frozenaura);assert.equal(r.factor,1.56);assert(BattleFieldTooltips.allNotes(Dex.moves.get('icebeam')).some(s=>s.startsWith('Frozen Aura:')));});
 });

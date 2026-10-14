@@ -25,3 +25,33 @@ describe('Awaited catalog compilation',()=>{
   } finally {fs.rmSync(dir,{recursive:true,force:true});}
  });
 });
+
+describe('Combined bundle source maps', () => {
+ it('maps later files after mapped code and unmapped large catalogs, including cached rebuilds', async () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'ps-bundle-map-'));
+  try {
+   const inputs = ['first.ts', 'catalog.ts', 'last.ts'].map(name => path.join(dir, name));
+   fs.writeFileSync(inputs[0], 'const first: number = 1;\nglobalThis.first = first;');
+   fs.writeFileSync(inputs[1], 'const CATALOG: any = ' + JSON.stringify({values: Array.from({length: 6000}, (_, i) => i)}) + ';\nglobalThis.catalog = CATALOG;');
+   fs.writeFileSync(inputs[2], 'const last: number = 2;\nglobalThis.last = last;');
+   for (const sourceMaps of [true, 'inline']) for (const filename of ['bundle.js', 'cached.js']) {
+    const output = path.join(dir, filename);
+    await require('../build-tools/compiler').compileToFile(inputs, output, {babelrc: false, plugins: ['@babel/plugin-transform-typescript'], sourceMaps});
+    const built = fs.readFileSync(output, 'utf8');
+    const raw = JSON.parse(sourceMaps === 'inline' ? Buffer.from(built.match(/sourceMappingURL=data:application\/json;charset=utf-8;base64,([^\s]+)/)[1], 'base64').toString() : fs.readFileSync(output + '.map', 'utf8'));
+    assert.equal(raw.version, 3);
+    assert.equal(raw.file, filename);
+    const consumer = await new (require('source-map').SourceMapConsumer)(raw);
+    try {
+     const lines = fs.readFileSync(output, 'utf8').split('\n');
+     for (const [statement, filename] of [['globalThis.first', 'first.ts'], ['globalThis.last', 'last.ts']]) {
+      const line = lines.findIndex(text => text.includes(statement));
+      const original = consumer.originalPositionFor({line: line + 1, column: lines[line].indexOf(statement)});
+      assert(original.source.endsWith(filename), JSON.stringify(original));
+      assert.equal(original.line, 2);
+     }
+    } finally { consumer.destroy?.(); }
+   }
+  } finally { fs.rmSync(dir, {recursive: true, force: true}); }
+ });
+});

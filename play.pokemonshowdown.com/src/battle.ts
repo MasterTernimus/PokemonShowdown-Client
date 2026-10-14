@@ -452,7 +452,7 @@ export class Pokemon implements PokemonDetails, PokemonHealth {
 		// this.lastMove = pokemon.lastMove; // I think
 		if (!copySource) {
 			const volatilesToRemove = [
-				'airballoon', 'attract', 'autotomize', 'disable', 'encore', 'foresight', 'gmaxchistrike', 'imprison', 'laserfocus', 'mimic', 'miracleeye', 'nightmare', 'saltcure', 'smackdown', 'stockpile1', 'stockpile2', 'stockpile3', 'syrupbomb', 'torment', 'triplearrows', 'typeadd', 'typechange', 'yawn',
+				'airballoon', 'attract', 'autotomize', 'disable', 'encore', 'foresight', 'gmaxchistrike', 'imprison', 'laserfocus', 'mimic', 'miracleeye', 'nightmare', 'saltcure', 'smackdown', 'stockpile1', 'stockpile2', 'stockpile3', 'syrupbomb', 'torment', 'triplearrows', 'corrosion', 'glacialheartice', 'glacialheartdragon', 'artilleryreload', 'artilleryfired', 'typeadd', 'typechange', 'yawn',
 			];
 			for (const statName of Dex.statNamesExceptHP) {
 				volatilesToRemove.push('protosynthesis' + statName);
@@ -2768,7 +2768,8 @@ export class Battle {
 				poke.addVolatile(effect.id);
 			}
 			this.scene.updateStatbar(poke);
-			this.log(args, kwArgs);
+			// Only the move's auxiliary startup event is hidden; move and stat-change events remain visible.
+			if (!(effect.id === 'triplearrows' && args[2] === 'move: Triple Arrows')) this.log(args, kwArgs);
 			break;
 		}
 		case '-end': {

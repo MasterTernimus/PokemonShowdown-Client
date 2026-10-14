@@ -5,7 +5,7 @@ describe('Approved Ultra Instinct and Burning Spirit presentation',()=>{
  for(const id of ['hitmonlee','infernape','sawk','lycanroc'])it(id+' retains selected Ultra Instinct and its existing species passive',()=>{
   const s=Dex.species.get(id);assert(Object.values(s.abilities).includes('Ultra Instinct'));assert(s.passives.length);
   const text=Dex.getAbilityDisplayDetails(Dex.abilities.get('ultrainstinct'),s.passives,id).desc;
-  for(const phrase of ['25%','35%','1/16','1/8','queued to move','Screens give no extra power'])assert(text.includes(phrase),phrase);
+  for(const phrase of ['30%','35%','40%','1/16','1/8','queued to move','Screens give no extra power'])assert(text.includes(phrase),phrase);
  });
  it('Mega Infernape displays three selected components with Proficient only as its passive',()=>{
   const s=Dex.species.get('infernapemega');assert.deepEqual(s.passives,['proficient']);assert.deepEqual(s.abilities,{0:'Burning Spirit'});
@@ -17,5 +17,11 @@ describe('Approved Ultra Instinct and Burning Spirit presentation',()=>{
  });
  it('Relentless Hunt explains the single Cold Eclipse bonus and raised priority threshold',()=>{
   const text=Dex.abilities.get('relentlesshunt').desc;assert(text.includes('threshold to 80'));assert(text.includes('applied once'));
+ });
+});
+
+describe('Ultra rivalry descriptions',()=>{
+ for(const id of ["ultrainstinct","burningspirit","ultraego","burningego","perfectego","unleashedego","primalego"])it(id+' describes the approved rivalry',()=>{
+ const a=Dex.abilities.get(id);assert(a.desc.includes('40%'),id);assert(a.desc.includes('negative Attack'),id);
  });
 });

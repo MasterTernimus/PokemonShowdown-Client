@@ -22,13 +22,13 @@ describe('Mega Mightyena client data and supplied art', () => {
   }
   assert(Dex.getItemIcon('Grimyinite').includes('sprites/itemicons/grimyinite.png'));
  });
- it('exposes both components to ability search and display', () => {
+ it('exposes all three components to ability search and display', () => {
   const ability = Dex.abilities.get('Dread Dominion');
   assert(ability.exists);
   const effects = Dex.getAbilityEffects('dreaddominion');
   assert(effects.has('hydrabond') && effects.has('moxie'));
-  assert.equal(JSON.stringify(Dex.getAbilityDisplayComponents('dreaddominion')),JSON.stringify(['hydrabond','moxie']));
-  assert(ability.desc.includes('Fairy') && ability.desc.includes('suppressed'));
+  assert.equal(JSON.stringify(Dex.getAbilityDisplayComponents('dreaddominion')),JSON.stringify(['hydrabond','moxie','intimidate']));
+  assert(ability.desc.includes('Intimidate')); assert(!ability.desc.includes('Dark attacks are neutral against Fairy'));
  });
  it('resolves normal and shiny front/back sprites and teambuilder art', () => {
   for(const gen of [5,9]) for(const shiny of [false,true]) for(const front of [false,true]) {

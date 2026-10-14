@@ -151,3 +151,31 @@ describe('Teambuilder focus and scroll', () => {
   room.curSet = {}; scroll = 0; room.focus(); assert.equal(scroll, 0);
  });
 });
+
+describe('Remove from list inside a team', () => {
+ function draft(h) {
+  h.room.profileAddition = {team: h.room.curTeam, set: h.room.curSetList[0], species: 'Charizard', index: 0};
+  h.values['.profile-add-target'] = 'one';
+ }
+
+ it('removes the complete branch from only the chosen list and leaves the team intact', () => {
+  const h = harness(); draft(h); h.room.profileAddition.remove = true;
+  h.room.rosterBranchSpecies = () => ['charizard', 'charizardmegax', 'charizardmegay', 'charizardgmax'];
+  h.data().profiles[0].species = ['charizard', 'charizardmegax', 'charizardgmax', 'venusaur'];
+  h.data().profiles.push({id: 'two', name: 'Other', species: ['charizard']});
+  const team = JSON.stringify(h.room.curSetList);
+  h.room.confirmSetProfile();
+  assert.deepEqual(h.data().profiles[0].species, ['venusaur']);
+  assert.deepEqual(h.data().profiles[1].species, ['charizard']);
+  assert.equal(JSON.stringify(h.room.curSetList), team);
+  assert.match(h.messages['.set-profile-status[data-index="0"]'], /Removed 3/);
+ });
+ it('does not erase saved entries when browser storage rejects removal', () => {
+  const h = harness(); draft(h); h.room.profileAddition.remove = true;
+  h.room.rosterBranchSpecies = () => ['charizard']; h.data().profiles[0].species = ['charizard'];
+  h.host.localStorage.setItem = () => {throw Error('quota');};
+  h.room.confirmSetProfile();
+  assert.deepEqual(h.data().profiles[0].species, ['charizard']);
+  assert(h.room.profileAddition);
+ });
+});

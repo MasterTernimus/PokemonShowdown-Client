@@ -1,0 +1,143 @@
+{
+  "descriptions": {
+    "glacialheart": {
+      "shortDesc": "Ice Body; alternating Ice/Dragon hits bypass positive defensive stages.",
+      "desc": "Full Ice Body: contact attackers have a 30% frostbite chance; heals 1/16 maximum HP in hail/snow or qualifying cold fields, 1/8 in hail on Cold Eclipse; immune to hail damage. After dealing positive opposing HP damage with an Ice attack, prepares Dragon; Dragon damage prepares Ice. The next successful attack of the prepared type ignores positive Defense or Special Defense stages for its whole move, including every hit; negative stages remain. Preparation updates only after the move finishes, never stacks, and clears on switching. Misses, protection, immunity, Substitute-only damage, status moves and unrelated types do not change preparation. Suppression disables both preparation and its benefit without consuming stored preparation. Thermal Exchange remains a separate species passive. No Speed or raw power boost."
+    },
+    "voidomen": {
+      "shortDesc": "Friend Guard; doubled secondary chances; one charge skip per recipient per stay; Safeguard and stat-drop ward.",
+      "desc": "Full Friend Guard reduces attack damage to other allies by 25%. While active, doubles secondary-effect chances for its holder and actual allies without stacking with Serene Grace or other providers. Void Omen can skip one required charge turn per receiving Pokemon per stay on the field, including its holder. Only that recipient switching resets its allowance; provider switches, ability changes, Transform and multiple providers do not refill it. Field skips, Power Herb and independent Serene Grace do not consume the allowance. Suppression disables the grant. Once per entry, the first successful damaging-move secondary or successful self-targeted status move sets or refreshes Safeguard to at least 3 turns. Separately, after activation, the first successfully applied secondary effect creates a ward against the next opposing stat-drop event targeting the holder or an adjacent active ally. Positive changes and self-inflicted drops remain. The ward ends when spent or the holder leaves. Serene Grace is supplied separately as a species passive on Togekiss and Togekiss-Alde. No Mold Breaker or Infiltrator."
+    },
+    "unleashedego": {
+      "shortDesc": "Ultra Ego boosts/healing; airborne; bypasses defenses; KO splash; armor.",
+      "desc": "Ultra Ego + Levitate + Raging Storm. Airborne unless grounded. Damaging hits from foes raise Attack and Sp. Atk once until it uses an attack; heals 1/16 max HP on that hit and 1/20 on further hits. Dealing attack damage heals 1/16 once per turn. Ashen Beach, New World, Starlight Arena, Cold Eclipse and Fairy Tale add once-per-entry Defense/Sp. Def boosts for physical/special hits and a one-use 1/4-HP pinch heal. Royal Decree or Empress enables 1.3x power (except against Battle Bond) and 0.7x incoming damage unless Neutralization is active. Bewitched Woods, Haunted and Holy fields disable Ultra Ego effects. Raging Storm bypasses abilities, screens, Substitute and defensive stat stages; +1 critical-hit ratio. Attack KOs splash 60% of the recorded hit damage onto remaining foes, or grant +1 Attack if no splash damage is dealt. Battle Armor prevents critical hits, gives 0.8x incoming damage, +2 Defense after opposing stat drops, and +1 Defense on Fairy Tale entry. Incoming priority damage is further halved. Immune to hail; cannot be suppressed. Against an opposing effective Ultra Instinct (including composites), its attacks ignore its own negative Attack and Sp. Atk stages. Ultra Instinct instead reduces its first HP-damaging move each turn by 40% and ignores positive Attack or Sp. Atk stages for that protected move. Stored stages are unchanged; normal +1 retaliation is unchanged. The rivalry is disabled on Bewitched Woods, Haunted and Holy."
+    },
+    "burningspirit": {
+      "shortDesc": "Ultra Instinct + Opportunist (five combat stats only) + Magma Armor.",
+      "desc": "Mold Breaker + Inner Focus. Attacks have 1.3x power against an opposing target still queued to move or that switched in this turn, except a target with Battle Bond. Screens give no extra power. The first opposing damaging move to reach its HP each turn deals 30% less damage for the entire move, including all hits. Later moves, allied attacks and indirect damage receive no reduction; Substitute-only damage does not spend the allowance. After a complete damaging move deals opposing HP damage, heals 1/16 max HP once per turn while alive, subject to normal healing restrictions. Multi-hit and spread moves heal only once; a failed heal cannot retry within the same move. On Ashen Beach, New World, Starlight Arena and Cold Eclipse, reduction is 35% and healing is 1/8 instead, without extra power or accuracy/evasion or entry stat boosts. These limits belong to the Pokemon and persist through switching, Mega Evolution, Transform and ability changes within the turn. Bewitched Woods, Haunted and Holy disable Ultra Instinct's effects. Against an opposing effective Ultra Ego (including composites), this protected move instead deals 40% less damage and ignores the attacker's positive Attack or Sp. Atk stages; later attacks retain their boosts. Ultra Ego ignores its own negative Attack or Sp. Atk stages when attacking Ultra Instinct. Stored stages are not changed. Retains the existing Predator interaction. Burning Spirit also retains full local Magma Armor: Water and Ice attacks use half attacking stats; Dragon's Den blocks Fire moves; prevents freeze outside Cold Eclipse and cures existing freeze; Dragon's Den, Volcanic and Cold Eclipse entry grant +1 Defense and Sp. Def. Opportunist copies foes' positive Attack, Defense, Sp. Atk, Sp. Def and Speed changes at the normal move, entry, transformation and residual flushes; it does not copy accuracy or evasion. Copied boosts cannot loop, and each queued gain is applied once. There is no Self Sufficient or passive end-turn healing. Mega Infernape's Proficient is a separate species passive."
+    },
+    "primalego": {
+      "shortDesc": "Combines the listed abilities.",
+      "desc": "When attacking, ignores the target's Defense, Sp. Def and evasion stages. When defending, ignores the attacker's Attack, Defense, Sp. Atk and accuracy stages. Reveals opposing Illusions on entry. Moves ignore bypassable abilities. After dealing HP damage, heals 1/16 max HP once per turn. The first opposing HP hit gives +1 Attack and Sp. Atk and heals 1/16 max HP; later hits heal 1/20 until it completes a damaging move and resets this trigger. On Ashen Beach, New World, Starlight Arena, Cold Eclipse and Fairy Tale, the first qualifying physical and special hits also give +1 Defense and Sp. Def respectively. In those fields, a qualifying hit at half HP or less instead heals 1/4 max HP once per activation; blocked healing does not spend it. These effects stop on Bewitched Woods, Haunted and Holy Field. Against an opposing effective Ultra Instinct (including composites), its attacks ignore its own negative Attack and Sp. Atk stages. Ultra Instinct instead reduces its first HP-damaging move each turn by 40% and ignores positive Attack or Sp. Atk stages for that protected move. Stored stages are unchanged; normal +1 retaliation is unchanged. The rivalry is disabled on Bewitched Woods, Haunted and Holy."
+    },
+    "wickedsnare": {
+      "shortDesc": "Intimidate; damaging Dark moves lower each damaged foe's Defense after all hits.",
+      "desc": "Full Intimidate lowers adjacent foes' Attack by one stage on entry, respecting its normal protections. After a damaging Dark move finishes all hits, each opponent that took positive HP damage loses one Defense stage, once per target per move. Substitute-only damage, misses, protection and immunity do not trigger this effect. Native effects remain independent: Crunch can also cause its own Defense drop. Prankster remains the species passive."
+    },
+    "perfectego": {
+      "shortDesc": "Never misses; ignores abilities; heals and gains stats in combat.",
+      "desc": "Moves ignore bypassable abilities. After dealing HP damage, heals 1/16 max HP once per turn. The first opposing HP hit gives +1 Attack and Sp. Atk and heals 1/16 max HP; later hits heal 1/20 until it completes a damaging move and resets this trigger. On Ashen Beach, New World, Starlight Arena, Cold Eclipse and Fairy Tale, the first qualifying physical and special hits also give +1 Defense and Sp. Def respectively. In those fields, a qualifying hit at half HP or less instead heals 1/4 max HP once per activation; blocked healing does not spend it. These effects stop on Bewitched Woods, Haunted and Holy Field. Moves cannot miss, including on the suppressing fields. Against an opposing effective Ultra Instinct (including composites), its attacks ignore its own negative Attack and Sp. Atk stages. Ultra Instinct instead reduces its first HP-damaging move each turn by 40% and ignores positive Attack or Sp. Atk stages for that protected move. Stored stages are unchanged; normal +1 retaliation is unchanged. The rivalry is disabled on Bewitched Woods, Haunted and Holy."
+    },
+    "sweetsanctuary": {
+      "shortDesc": "Ripen; successful Decorate heals its boosted target by 1/4 max HP.",
+      "desc": "Full local Ripen doubles HP restored and stat boosts from Berries, and doubles resistance Berries' damage reduction. When Decorate actually raises at least one stat, heals that target by 1/4 of its current maximum HP once after the move. Failed or blocked Decorate, or no actual positive boost, grants no healing. Normal healing restrictions apply. Ripen does not multiply this healing. Friend Guard remains the species passive; G-Max Finale retains its separate 1/6 active-side healing."
+    },
+    "desertspirit": {
+      "shortDesc": "Ground moves get STAB.",
+      "desc": "On entry, summons sandstorm for 5 turns, or 8 with Smooth Rock. Immune to powder effects and sandstorm/hail damage. Ground-type attacks receive STAB. Tinted Lens doubles damage from resisted attacks. Levitate provides normal airborne protection unless supplied separately by the species passive."
+    },
+    "heavyartillery": {
+      "shortDesc": "Unaware and custom pulse/bullet artillery.",
+      "desc": "When attacking, ignores the target's Defense, Sp. Def and evasion stages. When defending, ignores the attacker's Attack, Defense, Sp. Atk and accuracy stages. Reveals opposing Illusions on entry. Damaging pulse and bullet moves have double power and hit all foes in Doubles and Free-for-All. In Free-for-All, the designated primary target takes full damage and other foes take half their otherwise-calculated damage; protection or immunity of the primary does not promote another target. If no valid primary is supplied, the first active foe in side order is selected. Positive opposing pulse/bullet HP damage breaks that side's Reflect, Light Screen, Aurora Veil, Atlantis Wall and Arenite Wall. Starts Neutral with no defensive contribution. At the end of a turn without executing a damaging move, becomes Loaded: +1 effective Defense and Sp. Def stage. Any damaging move reaching execution becomes Fired before hit resolution: -1 effective Defense and Sp. Def stage, including misses, protection and immunity. Each state replaces the previous state and never stacks. Ordinary boosts remain separate; effective stages stay within -6 to +6. Status moves, charging, recharge and inability to act count as idle turns. Switching, Haze, Clear Smog, defensive stage replacement and ability replacement clear the state to Neutral. Simple and Contrary do not alter these contributions. Suppression pauses the contribution and prevents loading; an existing state still becomes Fired when attacking. No screen removal on Substitute-only damage or failed hits."
+    },
+    "bloomingsun": {
+      "shortDesc": "Mega Sol + Flower Veil.",
+      "desc": "Retains the full local effects of Mega Sol and Flower Veil, including their field interactions. Proficient is a separate species passive."
+    },
+    "requiem": {
+      "shortDesc": "Filter; disables attacks, marks foes to perish, heals on foe faint; creates Haunted.",
+      "desc": "Damaging attacks have a 30% chance to be disabled, guaranteed on Haunted and disabled on Holy Field. Excludes Max moves, delayed attacks and Struggle. Its first direct damaging interaction or successful opponent-targeting status move in either direction applies Perish Song to that foe: when the holder affects a foe or a foe affects the holder. Failed, missed, protected, immune, self, ally and field status moves do not trigger punishment. Status moves do not trigger Cursed Body. The mark clears when the marked foe switches out, not when the holder switches; existing Perish Song is not refreshed, and an attempted but blocked countdown still spends the mark. Whenever an opposing Pokemon faints, it restores 1/4 max HP. When it faints, it creates Haunted Field for 5 turns. This Ability cannot be suppressed. Full Filter: takes 20% less attack damage, or 40% less from super-effective attacks. This component follows Requiem's existing unsuppressible, non-breakable ability behavior."
+    },
+    "calderacore": {
+      "shortDesc": "Drought + Magma Armor.",
+      "desc": "Full Drought and Magma Armor. On entry, summons sun for 5 turns, or 8 with Heat Rock. Prevents freezing outside Cold Eclipse and cures existing freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den blocks Fire moves. On Dragon's Den, Volcanic or Cold Eclipse entry, gains +1 Defense and Sp. Def."
+    },
+    "ultraego": {
+      "shortDesc": "Ignores abilities; damage dealt or taken heals; qualifying hits boost attacking stats; field bonuses.",
+      "desc": "Moves ignore bypassable abilities. After dealing HP damage, heals 1/16 max HP once per turn. The first opposing HP hit gives +1 Attack and Sp. Atk and heals 1/16 max HP; later hits heal 1/20 until it completes a damaging move and resets this trigger. On Ashen Beach, New World, Starlight Arena, Cold Eclipse and Fairy Tale, the first qualifying physical and special hits also give +1 Defense and Sp. Def respectively. In those fields, a qualifying hit at half HP or less instead heals 1/4 max HP once per activation; blocked healing does not spend it. These effects stop on Bewitched Woods, Haunted and Holy Field. Against an opposing effective Ultra Instinct (including composites), its attacks ignore its own negative Attack and Sp. Atk stages. Ultra Instinct instead reduces its first HP-damaging move each turn by 40% and ignores positive Attack or Sp. Atk stages for that protected move. Stored stages are unchanged; normal +1 retaliation is unchanged. The rivalry is disabled on Bewitched Woods, Haunted and Holy."
+    },
+    "ultrainstinct": {
+      "shortDesc": "Mold Breaker + Inner Focus; 1.3x timing power; first attack each turn deals 30% less; attack healing.",
+      "desc": "Mold Breaker + Inner Focus. Attacks have 1.3x power against an opposing target still queued to move or that switched in this turn, except a target with Battle Bond. Screens give no extra power. The first opposing damaging move to reach its HP each turn deals 30% less damage for the entire move, including all hits. Later moves, allied attacks and indirect damage receive no reduction; Substitute-only damage does not spend the allowance. After a complete damaging move deals opposing HP damage, heals 1/16 max HP once per turn while alive, subject to normal healing restrictions. Multi-hit and spread moves heal only once; a failed heal cannot retry within the same move. On Ashen Beach, New World, Starlight Arena and Cold Eclipse, reduction is 35% and healing is 1/8 instead, without extra power or accuracy/evasion or entry stat boosts. These limits belong to the Pokemon and persist through switching, Mega Evolution, Transform and ability changes within the turn. Bewitched Woods, Haunted and Holy disable Ultra Instinct's effects. Against an opposing effective Ultra Ego (including composites), this protected move instead deals 40% less damage and ignores the attacker's positive Attack or Sp. Atk stages; later attacks retain their boosts. Ultra Ego ignores its own negative Attack or Sp. Atk stages when attacking Ultra Instinct. Stored stages are not changed. Retains the existing Predator interaction."
+    },
+    "burningego": {
+      "shortDesc": "Combines the listed abilities.",
+      "desc": "Contact attackers have a 30% burn chance, or 60% on Volcanic. On Cold Eclipse, gains +1 Defense and Sp. Def on entry instead and cannot burn through contact. Prevents freezing outside Cold Eclipse and cures existing freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den blocks Fire moves. On Dragon's Den, Volcanic or Cold Eclipse entry, gains +1 Defense and Sp. Def. Moves ignore bypassable abilities. After dealing HP damage, heals 1/16 max HP once per turn. The first opposing HP hit gives +1 Attack and Sp. Atk and heals 1/16 max HP; later hits heal 1/20 until it completes a damaging move and resets this trigger. On Ashen Beach, New World, Starlight Arena, Cold Eclipse and Fairy Tale, the first qualifying physical and special hits also give +1 Defense and Sp. Def respectively. In those fields, a qualifying hit at half HP or less instead heals 1/4 max HP once per activation; blocked healing does not spend it. These effects stop on Bewitched Woods, Haunted and Holy Field. On Cold Eclipse, the two entry effects together give +2 Defense and Sp. Def. Against an opposing effective Ultra Instinct (including composites), its attacks ignore its own negative Attack and Sp. Atk stages. Ultra Instinct instead reduces its first HP-damaging move each turn by 40% and ignores positive Attack or Sp. Atk stages for that protected move. Stored stages are unchanged; normal +1 retaliation is unchanged. The rivalry is disabled on Bewitched Woods, Haunted and Holy."
+    },
+    "stormsovereign": {
+      "shortDesc": "Updraft (Competitive) and eight-turn Strong Winds; no Gale Wings on Mega Pidgeot.",
+      "desc": "Summons replaceable Strong Winds for 8 turns on entry. Full Updraft: Full Competitive: opposing stat drops raise Special Attack by 2 outside Chessboard; on Chessboard, instead boosts damage with missing HP up to 2x at 20% HP. Flying moves ignore evasion boosts. Once per switch-in, the first Flying attack dealing opposing HP damage raises the living adjacent ally with the lowest HP percentage by 1 Speed stage, or the holder if no such ally exists. Only one recipient is boosted; ability restarts and Mega Evolution do not reset the entry allowance. Mega Pidgeot receives No Guard from its species passive and has no Gale Wings priority. Other holders retain their existing full-HP Flying priority and never-miss effect when no No Guard passive is present. Keen Eye is removed."
+    },
+    "updraft": {
+      "shortDesc": "Competitive; Flying ignores evasion; one ally Speed boost per entry.",
+      "desc": "Full Updraft: Full Competitive: opposing stat drops raise Special Attack by 2 outside Chessboard; on Chessboard, instead boosts damage with missing HP up to 2x at 20% HP. Flying moves ignore evasion boosts. Once per switch-in, the first Flying attack dealing opposing HP damage raises the living adjacent ally with the lowest HP percentage by 1 Speed stage, or the holder if no such ally exists. Only one recipient is boosted; ability restarts and Mega Evolution do not reset the entry allowance."
+    },
+    "floehunter": {
+      "shortDesc": "In hail, physical attacks deal 1.5x damage to Water-type foes.",
+      "desc": "Full Slush Rush doubles Speed in hail, snow or on Icy, Snowy Mountain and Cold Eclipse. During effective hail only, physical attacks deal 1.5x damage to opposing Water-type targets, once even for dual types. Frozen Aura alone and snow do not activate the damage bonus; biting moves do not automatically critically hit."
+    },
+    "skywarden": {
+      "shortDesc": "Wind Rider; successful Defog sets Mist and first per entry heals 1/8 HP.",
+      "desc": "Full Wind Rider. After successful Defog clears effects, creates five-turn Mist without shortening longer Mist. The first successful Defog each entry heals 1/8 maximum HP; this allowance is consumed even at full HP. Defog is not a wind move."
+    },
+    "quarrycannon": {
+      "shortDesc": "Mega Launcher; damaging pulse/bullet moves become Physical (except Z/Max).",
+      "desc": "Full Mega Launcher: pulse and bullet moves gain 50% power. Damaging pulse and bullet moves become Physical, using Attack against Defense, except Z/Max moves. Accuracy, secondary effects, hit counts, and recharge rules are unchanged. Solid Rock remains a separate species passive."
+    },
+    "deepchill": {
+      "shortDesc": "Oblivious; surviving a foe's physical HP hit lowers its Speed once per turn.",
+      "desc": "Oblivious prevents and cures attraction and Taunt, and blocks Captivate and Intimidate's Attack drop. Once per turn, after surviving an opposing Physical move that damages its HP, lowers the attacker's Speed by 1 stage after the whole move finishes. No contact is required. Multihit moves trigger only once. Allies, Special moves, residual damage and Substitute-only hits do not trigger it. Normal stat-drop protections apply."
+    },
+    "unbridledwrath": {
+      "shortDesc": "Sheer Force + Inner Focus.",
+      "desc": "Full local Sheer Force removes eligible secondary effects and gives those moves approximately 1.3x power, once. Rampage moves still lock the user and cause their normal ending confusion. Full local Inner Focus prevents flinching and Intimidate Attack drops."
+    }
+  },
+  "effects": {
+    "wickedsnare": [
+      "intimidate",
+      "wickedsnare"
+    ],
+    "sweetsanctuary": [
+      "ripen",
+      "sweetsanctuary"
+    ],
+    "desertspirit": [
+      "desertspirit",
+      "levitate",
+      "overcoat",
+      "sandstream",
+      "tintedlens"
+    ],
+    "bloomingsun": [
+      "bloomingsun",
+      "flowerveil",
+      "invigorate",
+      "megasol"
+    ],
+    "requiem": [
+      "cursedbody",
+      "filter",
+      "requiem"
+    ],
+    "stormsovereign": [
+      "competitive",
+      "galewings",
+      "noguard",
+      "stormsovereign",
+      "updraft"
+    ],
+    "updraft": [
+      "competitive",
+      "updraft"
+    ],
+    "skywarden": [
+      "skywarden",
+      "windrider"
+    ],
+    "quarrycannon": [
+      "megalauncher",
+      "quarrycannon"
+    ]
+  }
+}

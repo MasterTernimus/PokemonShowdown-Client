@@ -1374,7 +1374,7 @@
 			buf += '<div class="setrow">';
 			// if (this.curTeam.gen > 1 && !isLetsGo) buf += '<div class="setcell setcell-item"><label>Item</label><input type="text" name="item" class="textbox chartinput" value="' + BattleLog.escapeHTML(set.item) + '" /></div>';
 			if (this.curTeam.gen > 1) buf += '<div class="setcell setcell-item"><label>Item</label><input type="text" name="item" class="textbox chartinput" value="' + BattleLog.escapeHTML(set.item) + '" autocomplete="off" /></div>';
-			if (this.curTeam.gen > 2 && !isLetsGo) buf += '<div class="setcell setcell-ability"><label>Ability</label><input type="text" name="ability" class="textbox chartinput" value="' + BattleLog.escapeHTML(set.ability) + '" autocomplete="off" />' + renderStarterPassives(this.curTeam.dex.species.get(set.species)) + '</div>';
+			if (this.curTeam.gen > 2 && !isLetsGo) buf += '<div class="setcell setcell-ability"><label>Ability</label><input type="text" name="ability" class="textbox chartinput" value="' + BattleLog.escapeHTML(set.ability) + '" autocomplete="off" />' + '<!-- SET PASSIVES -->' + renderStarterPassives(this.curTeam.dex.species.get(set.species)) + '<!-- END SET PASSIVES --></div>';
 			buf += '</div></div>';
 
 			// moves
@@ -1909,6 +1909,33 @@
 				if ((Array.isArray(source) ? source : [source]).some(function (name) { return toID(name) === id; })) result.push(species.id);
 			}
 			return result.filter(function (value, index) { return result.indexOf(value) === index; });
+		},
+		rosterBranchSpecies: function (id) {
+			var dex = Dex, species = dex.species.get(id), seen = {};
+			while (species.battleOnly || species.isMega || /^Mega(?:-|$)/.test(species.forme) || species.forme === 'Gmax' || species.requiredItems.length) {
+				if (seen[species.id]) break;
+				seen[species.id] = true;
+				var source = species.battleOnly || species.changesFrom || species.baseSpecies;
+				if (Array.isArray(source)) break;
+				species = dex.species.get(source);
+			}
+			var result = [species.id], changed = true;
+			var coreForms = dex.items.get('Anomaly Core').megaStone;
+			if (coreForms && typeof coreForms === 'object' && coreForms[species.name]) result.push(toID(coreForms[species.name]));
+			while (changed) {
+				changed = false;
+				for (var key in window.BattlePokedex) {
+					var form = dex.species.get(key);
+					if (result.indexOf(form.id) >= 0) continue;
+					if (!form.battleOnly && !form.isMega && !/^Mega(?:-|$)/.test(form.forme) && form.forme !== 'Gmax' && !form.requiredItems.length) continue;
+					var parent = form.battleOnly || form.changesFrom;
+					if (!parent && (form.isMega || /^Mega(?:-|$)/.test(form.forme) || form.forme === 'Gmax')) parent = form.baseSpecies;
+					if (parent && (Array.isArray(parent) ? parent : [parent]).some(function (name) { return result.indexOf(toID(name)) >= 0; })) {
+						result.push(form.id); changed = true;
+					}
+				}
+			}
+			return result;
 		},
 		parseRosterImport: function (text) {
 			var result = {name: '', species: [], unknown: []};
@@ -3257,7 +3284,7 @@
 				var curChart = this.$('input[name=' + this.curChartName + ']');
 				// if we were searching for the filter, remove it
 				if (this.search.q) curChart.val('');
-				curChart.select();
+				this.focusChartInput(this.curChartName, true);
 				this.search.find('');
 				return;
 			}
@@ -3280,7 +3307,7 @@
 					this.$('input[name=move2]').val(moves[1] || '');
 					this.$('input[name=move3]').val(moves[2] || '');
 					this.$('input[name=move4]').val(moves[3] || '');
-					this.$('input[name=move' + Math.min(moves.length + 1, 4) + ']').focus();
+					this.focusChartInput('move' + Math.min(moves.length + 1, 4), false);
 					this.curSet.moves = moves;
 					this.search.find('');
 					return;
@@ -3523,20 +3550,20 @@
 			case 'ability':
 				this.curSet.ability = val;
 				this.updatePokemonSprite();
-				if (selectNext) this.$('input[name=move1]').select();
+				if (selectNext) this.focusChartInput('move1', true);
 				break;
 			case 'move1':
 				this.unChooseMove(this.curSet.moves[0]);
 				this.curSet.moves[0] = val;
 				this.chooseMove(val);
-				if (selectNext) this.$('input[name=move2]').select();
+				if (selectNext) this.focusChartInput('move2', true);
 				break;
 			case 'move2':
 				if (!this.curSet.moves[0]) this.curSet.moves[0] = '';
 				this.unChooseMove(this.curSet.moves[1]);
 				this.curSet.moves[1] = val;
 				this.chooseMove(val);
-				if (selectNext) this.$('input[name=move3]').select();
+				if (selectNext) this.focusChartInput('move3', true);
 				break;
 			case 'move3':
 				if (!this.curSet.moves[0]) this.curSet.moves[0] = '';
@@ -3544,7 +3571,7 @@
 				this.unChooseMove(this.curSet.moves[2]);
 				this.curSet.moves[2] = val;
 				this.chooseMove(val);
-				if (selectNext) this.$('input[name=move4]').select();
+				if (selectNext) this.focusChartInput('move4', true);
 				break;
 			case 'move4':
 				if (!this.curSet.moves[0]) this.curSet.moves[0] = '';
@@ -3553,7 +3580,7 @@
 				this.unChooseMove(this.curSet.moves[3]);
 				this.curSet.moves[3] = val;
 				this.chooseMove(val);
-				if (selectNext) {
+				if (selectNext && !this.pointerMoveSelection) {
 					this.stats();
 					this.$('button.setstats').focus();
 				}
@@ -4097,7 +4124,7 @@
 		});
 		box += '</select>' + button('applySavedBuild', 'Load selected set') + button('saveNamedBuild', 'Save this Pokémon…') + button('updateSavedBuild', 'Overwrite saved set');
 		if (this.buildUndo && this.buildUndo.team === this.curTeam && this.buildUndo.applied === set) box += button('undoSavedBuild', 'Undo apply');
-		box += '</div></div><div class="set-tools-row"><span class="set-tools-label">Calculator</span><div class="set-tools-controls">' + button('calculateSetAs', 'As attacker', index + ':0') + button('calculateSetAs', 'As defender', index + ':1') + '</div></div><!-- SET FORM PREVIEW --></div></details>';
+		box += '</div></div>' + button('closeSetTools', 'Close ×', index) + '<div class="set-tools-row"><span class="set-tools-label">Calculator</span><div class="set-tools-controls">' + button('calculateSetAs', 'As attacker', index + ':0') + button('calculateSetAs', 'As defender', index + ':1') + '</div></div><!-- SET PROFILE ACTIONS --><!-- SET FORM PREVIEW --></div></details>';
 		return html.replace(/<\/li>$/, box + '</li>');
 	};
 	proto.toggleSetTools = function (event) {
@@ -4598,34 +4625,32 @@
 		var html = renderBuildSet.call(this, set, index);
 		if (!set.species) return html;
 		this.currentFormPreview(set);
-		var preview = this.formPreview, box = '<div class="form-preview-tools"><div class="set-tools-row"><span class="set-tools-label">Forms</span><div class="set-tools-controls">' + button('loadFormPreviews', preview && preview.set === set ? 'Refresh' : 'Preview battle forms', index);
+		var preview = this.formPreview;
+		var selected = this.currentFormPreview(set);
+		var box = '';
 		if (preview && preview.set === set) {
-			box += button('returnBasePreview', 'Return to base form') + '<select class="form-preview-choice" aria-label="Preview battle form"><option value="">Base set</option>';
-			preview.options.forEach(function (option) { box += '<option value="' + escape(option.id) + '"' + (preview.selected === option.id ? ' selected' : '') + '>' + escape(option.name) + '</option>'; });
-			box += '</select>';
-			var selected = this.currentFormPreview(set);
-			box += '</div></div>';
-			if (selected) {
-				var view = T.clone(set);
-				view.species = selected.name;
-				var ability = Dex.getAbilityDisplayDetails(this.curTeam.dex.abilities.get(selected.ability), this.curTeam.dex.species.get(selected.species || selected.name).passives, selected.species || selected.name);
-				box += '<div class="form-preview-result"><span class="form-preview-sprite" style="display:inline-block;width:100px;height:100px;' + Dex.getTeambuilderSprite(view, this.curTeam.gen) + '"></span><strong>Preview: ' + escape(selected.name) + '</strong><span>' + escape(selected.types.join(' / ')) + '</span><span><b>Ability: ' + escape(selected.ability) + '</b> — ' + escape(ability.shortDesc || ability.desc || 'No description available.') + '</span></div>';
-				box += renderStarterPassives(this.curTeam.dex.species.get(selected.species || selected.name));
-				var components = Dex.getAbilityDisplayComponents(toID(selected.ability), this.curTeam.dex, this.curTeam.dex.species.get(selected.species || selected.name).passives, selected.species || selected.name);
-				if (components.length) box += '<p class="form-preview-notice"><b>Includes:</b> ' + components.map(function (id) { return escape(Dex.abilities.get(id).name); }).join(' · ') + '</p>';
-				if (ability.desc && ability.desc !== ability.shortDesc) box += '<details class="form-preview-help"><summary>Full ability effect</summary><p>' + Dex.getAbilityDescriptionLines(ability.desc).map(function (line) { return escape(line); }).join('</p><p>') + '</p></details>';
-				box += this.renderFormStatComparison(set, selected);
-				box += '<p class="form-preview-notice">PREVIEW STATS — saved Pokémon unchanged. EVs and IVs edit your saved base set; shown stats use this form.</p>';
-
-			}
-			if (preview.error || !preview.options.length) box += '<p class="form-preview-notice" role="status">' + escape(preview.error || (preview.note === 'Loading from server…' ? preview.note : 'No eligible forms for this set and format.')) + '</p>';
-			else box += '<details class="form-preview-help"><summary>Preview details</summary><p>' + escape(preview.note || 'Uses this set’s EVs, IVs and nature. Your saved set stays unchanged.') + '</p></details>';
+			box = '<label class="compact-form-selector" title="Preview only; your saved set stays unchanged">Preview <select class="form-preview-choice" aria-label="Preview battle form"><option value="">Base set</option>';
+			preview.options.forEach(function (option) {
+				box += '<option value="' + escape(option.id) + '"' + (preview.selected === option.id ? ' selected' : '') + '>' + escape(option.name) + '</option>';
+			});
+			box += '</select></label>';
+			if (preview.error || !preview.options.length) box += '<span class="compact-form-status" role="status">' + escape(preview.error || (preview.note === 'Loading from server…' ? preview.note : 'No available battle forms.')) + '</span>';
 		}
-		else box += '</div></div>';
+
 		var state = selected ? ' · ' + escape(selected.name) : '';
 		if (this.buildUndo && this.buildUndo.team === this.curTeam && this.buildUndo.applied === set) state += ' · Undo available';
+		if (selected) {
+			var display = T.clone(set); display.species = selected.name; display.ability = selected.ability;
+			html = html.replace(/(<div class="setchart" style=")[^"]*/, '$1' + Dex.getTeambuilderSprite(display, this.curTeam.gen));
+			html = html.replace(/(<input[^>]*name="ability"[^>]*value=")[^"]*("[^>]*>)/, '$1' + escape(selected.ability) + '$2');
+			var abilityHelp = Dex.getAbilityDisplayDetails(this.curTeam.dex.abilities.get(selected.ability), this.curTeam.dex.species.get(selected.name).passives, selected.name);
+			html = html.replace(/(<input[^>]*name="ability")([^>]*>)/, function (match, head, tail) { return head + ' readonly title="' + escape(selected.ability + ': ' + (abilityHelp.desc || abilityHelp.shortDesc || '') + ' Return to base to edit.') + '"' + tail.replace('chartinput', ''); });
+			html = html.replace(/(<div class="setcell setcell-typeicons">)[\s\S]*?<\/div>/, '$1' + selected.types.map(function (type) { return Dex.getTypeIcon(type); }).join('') + '</div>');
+			html = html.replace(/<!-- SET PASSIVES -->[\s\S]*?<!-- END SET PASSIVES -->/, function () { return '<!-- SET PASSIVES -->' + renderStarterPassives(this.curTeam.dex.species.get(selected.name)) + '<!-- END SET PASSIVES -->'; }.bind(this));
+		}
+		html = html.replace('<!-- SET FORM PREVIEW -->', '');
 		return html.replace('<span class="set-tools-state"></span>', '<span class="set-tools-state">' + state + '</span>')
-			.replace('<!-- SET FORM PREVIEW -->', box + '</div>');
+			.replace(/<\/li>$/, '<!-- COMPACT FORM CONTROL -->' + box + '<!-- END COMPACT FORM CONTROL --></li>');
 	};
 	proto.renderFormStatComparison = function (set, selected) {
 		var previewSet = T.clone(set); previewSet.species = selected.name; previewSet.ability = selected.ability;
@@ -4638,15 +4663,43 @@
 		});
 		return html + '</tbody></table>';
 	};
+	proto.toggleFormPreview = function (index) {
+		var set = this.curSetList[Number(index)];
+		if (!set) return;
+		if (this.formPreview && this.formPreview.set === set) return this.closeFormPreview();
+		var dex = this.curTeam.dex, options = [], branch = this.rosterBranchSpecies(toID(set.species));
+		branch.forEach(function (id) {
+			var species = dex.species.get(id);
+			if (!species.exists || species.id === toID(set.species) || (!species.battleOnly && !species.isMega && !/^Mega(?:-|$)/.test(species.forme) && species.forme !== 'Gmax' && !species.requiredItems.length)) return;
+			options.push({id: species.id, name: species.name, types: species.types, ability: species.abilities['0'], baseStats: species.baseStats});
+		});
+		if (!options.length) return this.loadFormPreviews(index);
+		var stone = dex.items.get(set.item || '').megaStone;
+		if (stone && typeof stone === 'object') stone = stone[set.species];
+		var selected = options.find(function (option) { return option.name === stone; }) || (set.gigantamax && options.find(function (option) { return /-Gmax$/.test(option.name); })) || options.find(function (option) { return /-Mega(?:-|$)/.test(option.name); }) || options[0];
+		this.formPreview = {set: set, key: T.previewKey(set, this.curTeam.format), options: options, selected: selected.id, local: true, note: 'Preview only. Your saved Pokémon and item stay unchanged; this does not check format legality.'};
+		this.update();
+	};
+	proto.closeFormPreview = function () {
+		this.formPreview = null;
+		this.update();
+		if (this.curChartType === 'stats') this.updateStatForm();
+	};
+	proto.closeSetTools = function (index) {
+		var set = this.curSetList[Number(index)];
+		if (this.openSetTools) this.openSetTools.delete(set);
+		this.update();
+	};
 	proto.loadFormPreviews = function (index) {
 		var self = this, set = this.curSetList[Number(index)], team = this.curTeam;
 		if (!set) return;
 		var key = T.previewKey(set, team.format);
 		this.formPreview = {set: set, key: key, options: [], selected: '', note: 'Loading from server…'};
+		var pendingPreview = this.formPreview;
 		this.update();
 		this.requestTeamTools({action: 'preview', format: team.format, team: Storage.packTeam([T.clone(set)])}, function (response) {
-			if (self.curTeam !== team || !self.formPreview || self.formPreview.key !== key || T.previewKey(set, team.format) !== key) return;
-			self.formPreview = {set: set, key: key, options: response.options || [], selected: '', note: response.note, error: response.error};
+			if (self.curTeam !== team || self.formPreview !== pendingPreview || !self.formPreview || self.formPreview.set !== set || self.formPreview.key !== key || T.previewKey(set, team.format) !== key) return;
+			self.formPreview = {set: set, key: key, options: response.options || [], selected: response.options && response.options.length ? response.options[0].id : '', note: response.note, error: response.error};
 			self.update();
 		});
 	};
@@ -4887,7 +4940,7 @@
 		this.saveToolsData(data); this.pendingLibraryImport = null; this.showToolsManager();
 	};
 	proto.cancelLibraryImport = function () { this.libraryImportToken = null; this.pendingLibraryImport = null; this.$('.library-import-preview').remove(); };
-	proto.returnBasePreview = function () { this.formPreviewChange({currentTarget: {value: ''}}); };
+	proto.returnBasePreview = function () { this.closeFormPreview(); };
 	proto.events['input .nickname-search'] = 'filterNicknameRows';
 	proto.events['change .nickname-team-only'] = 'filterNicknameRows';
 	proto.events['change .tools-backup-file'] = 'readToolsBackup';
@@ -5034,12 +5087,13 @@
 	proto.events['input .current-team-search'] = 'filterCurrentTeam';
 
 	// Direct additions use the existing species-list profiles, not saved builds.
-	proto.addSetToProfile = function (index) {
+	proto.removeSetFromProfile = function (index) { this.addSetToProfile(index, true); };
+	proto.addSetToProfile = function (index, remove) {
 		index = Number(index);
 		var set = this.curSetList && this.curSetList[index];
 		if (!this.curTeam || !set || !this.rosterSpeciesID(set.species)) return;
 		this.cancelSetProfile();
-		this.profileAddition = {team: this.curTeam, set: set, species: set.species, index: index};
+		this.profileAddition = {team: this.curTeam, set: set, species: set.species, index: index, remove: !!remove};
 		var data = this.rosterData();
 		var html = '<section class="profile-add-panel" aria-label="Add Pokémon to profile"><h3>Add ' + escape(Dex.species.get(set.species).name) + ' to profile</h3>' +
 			'<p>Profiles are Pokémon lists saved in this browser. Includes matching Mega forms. Your build stays in this team.</p>' +
@@ -5048,6 +5102,11 @@
 		}).join('') + '<option value="">Create a new profile…</option></select></label>' +
 			'<label class="profile-add-name-label">New profile name <input class="textbox profile-add-name" maxlength="80" /></label>' +
 			'<p><button class="button" name="confirmSetProfile">Add to profile</button> ' + button('cancelSetProfile', 'Cancel') + '</p><p class="profile-add-status" role="status" aria-live="polite"></p></section>';
+		if (remove) {
+			html = '<section class="profile-add-panel" aria-label="Remove Pokémon from list"><h3>Remove ' + escape(set.species) + ' from list</h3><p>Includes its matching Mega and battle forms. Your team stays unchanged.</p><label>List <select class="profile-add-target">' + data.profiles.map(function (profile) {
+				return '<option value="' + escape(profile.id) + '"' + (profile.id === data.selected ? ' selected' : '') + '>' + escape(profile.name) + '</option>';
+			}).join('') + '</select></label><p>' + button('confirmSetProfile', 'Remove from list') + button('cancelSetProfile', 'Cancel') + '</p><p class="profile-add-status" role="status" aria-live="polite"></p></section>';
+		}
 		this.$('.set-profile-actions[data-index="' + index + '"]').append(html);
 		this.profileTargetChange();
 		this.$('.profile-add-target').focus();
@@ -5070,6 +5129,7 @@
 		var profile = data.profiles.find(function (entry) { return entry.id === target; });
 		var status = this.$('.profile-add-status');
 		if (target && !profile) return status.text('This profile was removed. Cancel and choose another profile.');
+		if (draft.remove && !profile) return status.text('Choose an existing list first.');
 		if (!target) {
 			var name = String(this.$('.profile-add-name').val() || '').trim().slice(0, 80);
 			if (!name) { status.text('Enter a name for the new profile.'); this.$('.profile-add-name').focus(); return; }
@@ -5077,11 +5137,14 @@
 			profile = {id: T.uid(), name: name, species: []};
 			data.profiles.push(profile);
 		}
-		var ids = this.rosterExpandedSpecies(this.rosterSpeciesID(draft.species));
+		var ids = draft.remove ? this.rosterBranchSpecies(this.rosterSpeciesID(draft.species)) : this.rosterExpandedSpecies(this.rosterSpeciesID(draft.species));
 		var selectedChanged = data.selected !== profile.id;
 		data.selected = profile.id;
 		var added = ids.filter(function (id) { return profile.species.indexOf(id) < 0; });
-		profile.species = profile.species.concat(added);
+		if (draft.remove) {
+			added = profile.species.filter(function (id) { return ids.indexOf(id) >= 0; });
+			profile.species = profile.species.filter(function (id) { return ids.indexOf(id) < 0; });
+		} else profile.species = profile.species.concat(added);
 		if (added.length || selectedChanged) {
 			try {
 				// Commit the existing local preference cache before publishing in memory.
@@ -5093,17 +5156,18 @@
 		}
 		var index = draft.index;
 		this.cancelSetProfile();
-		this.$('.set-profile-status[data-index="' + index + '"]').text(added.length ? 'Added to ' + profile.name + '. Team unchanged.' : 'Already in ' + profile.name + '. No duplicate added.');
+		this.$('.set-profile-status[data-index="' + index + '"]').text(draft.remove ? (added.length ? 'Removed ' + added.length + ' entries from ' + profile.name + '. Team unchanged.' : 'This branch is not in ' + profile.name + '.') : added.length ? 'Added to ' + profile.name + '. Team unchanged.' : 'Already in ' + profile.name + '. No duplicate added.');
 	};
 	proto.events['change .profile-add-target'] = 'profileTargetChange';
 	var profileRenderSet = proto.renderSet;
 	proto.renderSet = function (set, index) {
 		var html = profileRenderSet.apply(this, arguments);
 		if (!set.species) return html;
-		var control = '<button type="button" name="addSetToProfile" value="' + index + '" aria-label="Add ' + escape(Dex.species.get(set.species).name) + ' to profile" title="Add to profile"><i class="fa fa-plus" aria-hidden="true"></i>Profile</button> ';
-		html = html.replace('<div class="setmenu">', '<div class="setmenu">' + control);
-		var end = html.lastIndexOf('</li>');
-		return html.slice(0, end) + '<div class="set-profile-actions" data-index="' + index + '"><span class="set-profile-status" data-index="' + index + '" role="status" aria-live="polite"></span></div>' + html.slice(end);
+		var previewControls = html.match(/<!-- COMPACT FORM CONTROL -->([\s\S]*?)<!-- END COMPACT FORM CONTROL -->/);
+		html = html.replace(/<!-- COMPACT FORM CONTROL -->[\s\S]*?<!-- END COMPACT FORM CONTROL -->/, '');
+		var controls = '<div class="set-profile-actions" data-index="' + index + '"><div class="set-tools-row"><span class="set-tools-label">Roster list</span><div class="set-tools-controls">' + button('addSetToProfile', 'Add to list', index) + button('removeSetFromProfile', 'Remove from list', index) + '</div></div><span class="set-profile-status" data-index="' + index + '" role="status" aria-live="polite"></span></div>';
+		controls += '<div class="set-tools-row"><span class="set-tools-label">Battle form</span><div class="set-tools-controls">' + (previewControls ? previewControls[1] : '') + button('toggleFormPreview', this.formPreview && this.formPreview.set === set ? 'Back to base' : 'Form preview', index) + '</div></div>';
+		return html.replace('<!-- SET PROFILE ACTIONS -->', controls);
 	};
 	var profileBack = proto.back;
 	proto.back = function () { this.cancelSetProfile(); return profileBack.apply(this, arguments); };
@@ -5176,22 +5240,40 @@ function renderStarterPassives(species) {
   event.stopPropagation();
   var first = this.$chart.find('a.hover[data-entry]').first();
   if (!first.length) first = this.$chart.find('a[data-entry]').first();
-  if (first.length) this.chartClick({currentTarget: first[0], target: first[0]});
+  if (first.length) this.chartClick({currentTarget: first[0], target: first[0], keyboard: true});
  };
  var chartFocus = proto.chartFocus;
  proto.chartFocus = function () {
   this.pickerSearchActive = false;
   return chartFocus.apply(this, arguments);
  };
+ proto.moveResultPointerDown = function (event) {
+  if (this.curChartType === 'move' && !$(event.target).closest('.pokemon-passive-badge').length) {
+   // Keep result clicks from blurring/committing the input before chartClick runs.
+   event.preventDefault();
+  }
+ };
+ proto.events['pointerdown .utilichart a'] = 'moveResultPointerDown';
  var chartClick = proto.chartClick;
  proto.chartClick = function (event) {
   if (this.pickerSearchActive && this.search.addFilter(event.currentTarget)) {
    if (this.search.q) this.$('input[name=' + this.curChartName + ']').val('');
-   this.$('.picker-search-input').val('').focus();
+   this.$('.picker-search-input').val('')[0].focus({preventScroll: true});
    this.search.find('');
    return;
   }
-  return chartClick.apply(this, arguments);
+  var pointerMove = this.curChartType === 'move' && !event.keyboard &&
+   !(event.originalEvent && event.originalEvent.detail === 0);
+  if (event.preventDefault) event.preventDefault();
+  if (!pointerMove) return chartClick.apply(this, arguments);
+  var room = this.el, top = room.scrollTop, left = room.scrollLeft;
+  this.pointerMoveSelection = true;
+  try { return chartClick.apply(this, arguments); } finally {
+   this.pointerMoveSelection = false;
+   room.scrollTop = top; room.scrollLeft = left;
+   // Result updates can trigger browser scroll anchoring after focus handlers finish.
+   requestAnimationFrame(function () { room.scrollTop = top; room.scrollLeft = left; });
+  }
  };
 	// Replacing an editor must not let native focus drag the room to its moves.
 	proto.focusChartInput = function (name, select) {

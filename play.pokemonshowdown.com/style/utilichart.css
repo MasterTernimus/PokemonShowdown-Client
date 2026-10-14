@@ -406,3 +406,10 @@
 @media (hover: hover) { .utilichart .pokemon-passive-help:hover .pokemon-passive-tooltip { display: block; } }
 .utilichart .pokemon-passive-badge:focus-visible + .pokemon-passive-tooltip,
 .utilichart .pokemon-passive-badge[aria-expanded="true"] + .pokemon-passive-tooltip { display: block; }
+
+/* Let compact signature text wrap inside its own selectable row. */
+.utilichart li.signaturemoveresult > a {
+	height: auto;
+	min-height: 30px;
+	display: flow-root;
+}

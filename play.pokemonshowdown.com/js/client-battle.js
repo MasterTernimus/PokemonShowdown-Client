@@ -787,11 +787,7 @@
 								// if (specialMove.isMax && specialMove.name !== 'Max Guard' && !specialMove.id.startsWith('gmax')) {
 								// 	specialMove = this.tooltips.getMaxMoveFromType(moveType);
 								// }
-								var tooltipArgs = 'move|' + baseMove.id + '|' + pos;
-								if (specialMove.id.startsWith('gmax')) {
-									tooltipArgs += '|' + specialMove.id;
-									tooltipArgs = classType + tooltipArgs;
-								}
+								var tooltipArgs = classType + 'move|' + baseMove.id + '|' + pos + '|' + specialMove.id;
 								var isDisabled = specialMoves[i].disabled ? 'disabled="disabled"' : '';
 								movebuttons += '<button ' + isDisabled + ' class="type-' + moveType + ' has-tooltip" name="chooseMove" value="' + (i + 1) + '" data-move="' + BattleLog.escapeHTML(specialMoves[i].move) + '" data-target="' + BattleLog.escapeHTML(specialMoves[i].target) + '" data-tooltip="' + BattleLog.escapeHTML(tooltipArgs) + '">';
 								var pp = curActive.moves[i].pp + '/' + curActive.moves[i].maxpp;

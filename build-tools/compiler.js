@@ -70,7 +70,7 @@ function outputFileSync(filePath, res, opts) {
   ) {
     const mapLoc = filePath + ".map";
     code += "\n//# sourceMappingURL=" + path.basename(mapLoc);
-    const map = {...res.map, file: path.basename(filePath)};
+    const map = {...(typeof res.map.toJSON === 'function' ? res.map.toJSON() : res.map), file: path.basename(filePath)};
     fs.writeFileSync(mapLoc, JSON.stringify(map));
   }
 
@@ -134,10 +134,12 @@ async function combineResults(fileResults, sourceMapOptions, opts) {
 
       if (consumer.destroy) consumer.destroy();
     }
+    // Every output contributes lines, including catalog files without maps.
+    offset += result.code.split("\n").length;
   }
 
-  if (opts.sourceMaps === "inline") {
-    const json = JSON.stringify(map);
+  if (opts.sourceMaps === "inline" && map) {
+    const json = JSON.stringify(map.toJSON());
     const base64 = Buffer.from(json, 'utf8').toString('base64');
     code += "\n//# sourceMappingURL=data:application/json;charset=utf-8;base64," + base64;
   }
@@ -244,7 +246,7 @@ async function compileToFile(srcFile, destFile, opts) {
   for (const src of srcFiles) {
     if (!fs.existsSync(src)) continue;
 
-    const res = transformFile(src, opts);
+    const res = transformFile(src, opts.sourceMaps === "inline" ? {...opts, sourceMaps: true} : opts);
 
     if (res) results.push(res);
 

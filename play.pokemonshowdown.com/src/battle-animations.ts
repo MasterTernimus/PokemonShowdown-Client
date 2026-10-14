@@ -1869,6 +1869,13 @@ export class Sprite {
 export class PokemonSprite extends Sprite {
 	// HTML strings are constructed from this table and stored back in it to cache them
 	protected static statusTable: {[id: string]: [string, 'good' | 'bad' | 'neutral'] | null | string} = {
+		// Exact protocol state emitted by Corrosive Strike; independent of the Corrosion ability.
+		corrosion: '<span class="effect-guard effect-corrosive" title="Corrosive Strike: loses 1/16 maximum HP at the end of each turn. Does not stack. Ends on switching; separate from poison." aria-label="Corrosive: residual damage until switching">Corrosive</span> ',
+        glacialheartice: '<span class="good" title="Glacial Heart: prepared Ice attacks ignore positive defensive stages for the whole move. Successful opposing HP damage prepares Dragon afterward. Inactive while the ability is suppressed; clears on switching.">Ice ready</span> ',
+        artilleryreload: '<span class="good" title="Heavy Artillery: Loaded contributes +1 effective Defense and Sp. Def stage. Any damaging attack changes it to Fired (-1). Separate from ordinary boosts, capped at +/-6; inactive under suppression. Switching or stat resets clear it.">Loaded: Def/SpD +1</span> ',
+        artilleryfired: '<span class="bad" title="Heavy Artillery: Fired contributes -1 effective Defense and Sp. Def stage. An idle turn changes it to Loaded (+1). Never stacks or changes ordinary boosts; capped at +/-6 and inactive under suppression. Switching or stat resets clear it.">Fired: Def/SpD -1</span> ',
+        glacialheartdragon: '<span class="good" title="Glacial Heart: prepared Dragon attacks ignore positive defensive stages for the whole move. Successful opposing HP damage prepares Ice afterward. Inactive while the ability is suppressed; clears on switching.">Dragon ready</span> ',
+		triplearrows: null, // Retain the critical-hit layers internally, without the startup label.
 		formechange: null,
 		typechange: null,
 		typeadd: null,

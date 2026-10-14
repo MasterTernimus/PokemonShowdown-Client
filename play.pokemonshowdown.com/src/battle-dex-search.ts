@@ -2288,6 +2288,17 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 		}
 		sketchMoves.sort();
 
+		const signatureMoves: SearchRow[] = [];
+		// Promote only learned Yang/Rejuvenation moves, preserving fixed Pulse pools.
+		if (!isHackmons && !pulseMoves) {
+			moves = moves.filter(id => {
+				if (!(window.BattleMovedex?.[id] as AnyObject)?.signatureCharacters?.length) return true;
+				if (!signatureMoves.length) signatureMoves.push(['header', 'Signature moves']);
+				signatureMoves.push(['move', id as ID]);
+				return false;
+			});
+		}
+
 		let usableMoves: SearchRow[] = [];
 		let uselessMoves: SearchRow[] = [];
 		for (const id of moves) {
@@ -2312,7 +2323,7 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 				uselessMoves.push(['move', id as ID]);
 			}
 		}
-		return [...usableMoves, ...uselessMoves];
+		return [...signatureMoves, ...usableMoves, ...uselessMoves];
 	}
 	filter(row: SearchRow, filters: string[][]) {
 		if (!filters) return true;

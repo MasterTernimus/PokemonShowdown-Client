@@ -19,7 +19,7 @@ describe('Mega Pidgeot No Guard presentation', () => {
   const native = Dex.getAbilityDisplayDetails(a, ['noguard'], 'pidgeotmega');
   assert.deepEqual(Dex.getAbilityDisplayComponents(a.id, Dex, ['noguard'], 'pidgeotmega'), ['updraft']);
   assert(Dex.getAbilityDisplayComponents(a.id, Dex, ['noguard'], 'raichumegay').includes('galewings'));
-  assert.equal(native.shortDesc, 'Updraft and eight-turn Strong Winds.');
+  assert.equal(native.shortDesc, 'Updraft (Competitive) and eight-turn Strong Winds.');
   assert(native.desc.includes('No Guard is supplied separately by the species passive'));
   assert(native.desc.includes('No Keen Eye or Gale Wings'));
   assert(Dex.getAbilityDisplayDetails(a, []).desc.includes('priority'));

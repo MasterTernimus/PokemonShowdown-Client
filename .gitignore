@@ -45,3 +45,6 @@ caches/PokemonShowdown-Reborn/
 # Sprite provenance and regression baseline must ship with the approved animations.
 !play.pokemonshowdown.com/sprites/za-bw-credits.json
 !test/fixtures/za-mega-bw-preservation.json
+
+# Reviewed October support descriptions and component expectations.
+!test/fixtures/october-support-approved.json

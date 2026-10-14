@@ -1169,3 +1169,5 @@ License: GPLv2
  vertical-align: middle;
  white-space: nowrap;
 }
+
+.statbar .status .effect-corrosive { color: #633878; background: #f2e8f7; border-color: #b98fcb; }

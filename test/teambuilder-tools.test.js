@@ -13,7 +13,7 @@ const statStart = source.indexOf('getStat: function (');
 const statEnd = source.indexOf('\n\t\t},', statStart);
 Room.prototype.getStat = new Function('Dex', 'BattleNatures', 'return (' + source.slice(statStart + 'getStat: '.length, statEnd) + '\n});')(Dex, {Adamant: {plus: 'atk', minus: 'spa'}});
 const host = {TeambuilderRoom: Room};
-new Function('window', 'jQuery', 'Storage', 'BattleLog', 'Dex', 'app', code)(host, {}, {prefs(key, value) {if (value !== undefined) prefs[key] = value; return prefs[key];}}, {escapeHTML: x => x}, Dex, {addPopupMessage() {}});
+new Function('window', 'jQuery', 'Storage', 'BattleLog', 'Dex', 'app', 'toID', code)(host, {}, {prefs(key, value) {if (value !== undefined) prefs[key] = value; return prefs[key];}}, {escapeHTML: x => x}, Dex, {addPopupMessage() {}}, toID);
 const T = host.TeambuilderTools;
 describe('Local teambuilder tools', () => {
  const build = {id: 'original', name: 'TR', format: 'gen9nofieldsinglesgame', set: {species: 'Armarouge', item: 'Weakness Policy', ability: 'Flash Fire', moves: ['Trick Room'], nature: 'Quiet', ivs: {spe: 0}, evs: {spa: 252}, level: 50, teraType: 'Grass'}};
@@ -286,10 +286,10 @@ describe('Library workflow safety', () => {
   assert.deepEqual(data.builds, [original]);
  });
  it('returns a battle-form preview to the base without modifying the saved set', () => {
-  const room = new Room(); let selection;
+  const room = new Room(); room.update = () => {};
   room.curSet = {species: 'Charizard', item: 'Charizardite X'};
-  room.formPreviewChange = event => {selection = event.currentTarget.value;};
-  room.returnBasePreview(); assert.equal(selection, ''); assert.equal(room.curSet.species, 'Charizard');
+  room.formPreview = {set: room.curSet, selected: 'charizardmegax'};
+  room.returnBasePreview(); assert.equal(room.formPreview, null); assert.equal(room.curSet.species, 'Charizard');
  });
 });
 
@@ -347,5 +347,22 @@ describe('Reviewed saved-set loading', () => {
   room.confirmBuildComparison();assert.equal(room.curSet.species,'Jellicent');
   assert.equal(room.curSet.name,'Saved');assert.equal(room.curSet.shiny,false);
   assert.equal(room.toolsView,false);
+ });
+});
+
+describe('Direct battle-form toggle', () => {
+ it('previews Mega, G-Max and Anomaly forms locally and closes without changing the set', () => {
+  for (const [species, branch] of [['Charizard', ['charizard', 'charizardmegax', 'charizardmegay', 'charizardgmax']], ['Avalugg', ['avalugg', 'avaluggpulse']]]) {
+   const room = new Room(); room.curTeam = {format: 'gen9nofieldsinglesgame', dex: Dex};
+   room.curSetList = [{species, item: '', ability: 'Blaze', moves: ['Tackle']}];
+   const before = JSON.stringify(room.curSetList);
+   room.rosterBranchSpecies = () => branch;
+   room.update = () => {}; room.loadFormPreviews = () => {throw Error('Unexpected server request');};
+   room.toggleFormPreview(0);
+   assert.equal(room.formPreview.options.length, branch.length - 1);
+   assert(room.currentFormPreview(room.curSetList[0]));
+   room.toggleFormPreview(0); assert.equal(room.formPreview, null);
+   assert.equal(JSON.stringify(room.curSetList), before);
+  }
  });
 });
