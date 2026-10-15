@@ -29,8 +29,7 @@ class ModifiableValue {
 		this.itemName = Dex.items.get(serverPokemon.item).name;
 		const ability = serverPokemon.ability || pokemon?.ability || serverPokemon.baseAbility;
 		this.abilityName = Dex.abilities.get(ability).name;
-		this.weatherName = battle.weather === 'snow' ? 'Snow' : Dex.moves.get(battle.weather).exists ?
-			Dex.moves.get(battle.weather).name : Dex.abilities.get(battle.weather).name;
+		this.weatherName = this.weatherDisplayName(this.effectiveWeather());
 	}
 	reset(value = 0, isAccuracy?: boolean) {
 		this.value = value;
@@ -75,19 +74,32 @@ class ModifiableValue {
 		if (this.pokemon && !this.pokemon.effectiveAbility(this.serverPokemon)) return false;
 		return true;
 	}
-	tryWeather(weatherName?: string) {
-		if (!this.weatherName) return false;
-		if (!weatherName) weatherName = this.weatherName;
-		else if (weatherName !== this.weatherName) return false;
-		for (const side of this.battle.sides) {
-			for (const active of side.active) {
-				if (active && ['Air Lock', 'Cloud Nine'].includes(active.ability)) {
-					this.comment.push(` (${weatherName} suppressed by ${active.ability})`);
-					return false;
-				}
-			}
+	weatherDisplayName(weather: ID) {
+		return !weather ? '' : weather === 'snow' ? 'Snow' : Dex.moves.get(weather).exists ?
+			Dex.moves.get(weather).name : Dex.abilities.get(weather).name;
+	}
+	effectiveWeather(): ID {
+		// Known active components suppress weather; suppressed selected abilities do not.
+		for (const active of this.battle.getAllActive()) {
+			if (active.fainted) continue;
+			const passives = active === this.pokemon ?
+				(this.serverPokemon.passives ?? active.getSpecies().passives) : active.getSpecies().passives;
+			const ability = toID(active.effectiveAbility(active === this.pokemon ? this.serverPokemon : undefined));
+			const excluded = Dex.getAbilityComponentExclusions(ability, passives, toID(active.getSpeciesForme()));
+			const effects = new Set<ID>();
+			for (const effect of Array.from(Dex.getAbilityEffects(ability))) if (!excluded.includes(effect)) effects.add(effect);
+			for (const passive of passives) for (const effect of Array.from(Dex.getPassiveAbilityEffects(toID(passive)))) effects.add(effect);
+			if (effects.has('airlock' as ID) || effects.has('cloudnine' as ID)) return '' as ID;
 		}
-		return true;
+		const umbrella = this.tryItem('Utility Umbrella');
+		if (!umbrella && this.tryAbility('Solar Mimicry')) return 'sunnyday' as ID;
+		const weather = this.battle.weather;
+		if (umbrella && ['sunnyday', 'desolateland', 'raindance', 'primordialsea'].includes(weather)) return '' as ID;
+		return weather;
+	}
+	tryWeather(weatherName?: string) {
+		const current = this.weatherDisplayName(this.effectiveWeather());
+		return !!current && (!weatherName || weatherName === current);
 	}
 	itemModify(factor: number, itemName?: string) {
 		if (!itemName) itemName = this.itemName;
@@ -949,7 +961,7 @@ class BattleTooltips {
 		clientPokemon: Pokemon | null, serverPokemon?: ServerPokemon | null, isActive?: boolean, illusionIndex?: number
 	) {
 		const pokemon = clientPokemon || serverPokemon!;
-		let text = '';
+		let text = clientPokemon?.volatiles.sealing ? '<p><strong>Sealing:</strong> Shared moves are sealed while Keystone Seal is active.</p>' : '';
 		let genderBuf = '';
 		const gender = pokemon.gender;
 		if (gender === 'M' || gender === 'F') {
@@ -1276,10 +1288,7 @@ class BattleTooltips {
 			return stats;
 		}
 
-		let weather = this.battle.weather;
-		if (this.battle.abilityActive(['Air Lock', 'Cloud Nine'])) {
-			weather = '' as ID;
-		}
+		const weather = new ModifiableValue(this.battle, clientPokemon!, serverPokemon).effectiveWeather();
 
 		if (item === 'choiceband' && !clientPokemon?.volatiles['dynamax']) {
 			stats.atk = Math.floor(stats.atk * 1.5);
@@ -1715,16 +1724,15 @@ class BattleTooltips {
 		}
 		// Weather and pseudo-weather type changes.
 		if (move.id === 'weatherball' && value.weatherModify(0)) {
-			if (this.battle.weather === 'deltastream') moveType = 'Flying';
-			switch (this.battle.weather) {
+			const weather = value.effectiveWeather();
+			if (weather === 'deltastream') moveType = 'Flying';
+			switch (weather) {
 			case 'sunnyday':
 			case 'desolateland':
-				if (item.id === 'utilityumbrella') break;
 				moveType = 'Fire';
 				break;
 			case 'raindance':
 			case 'primordialsea':
-				if (item.id === 'utilityumbrella') break;
 				moveType = 'Water';
 				break;
 			case 'sandstorm':
@@ -1835,7 +1843,7 @@ class BattleTooltips {
 		const specialTie = [
 			'photongeyser', 'lightthatburnsthesky', 'radiantassault', 'roaroftime', 'spacialrend',
 			'shadowforce', 'veeveevolley', 'blastburn', 'frenzyplant', 'hydrocannon', 'snipeshot',
-			'watershuriken', 'kaboom', 'spectralscream', 'barbedweb', 'bunrakubeatdown', 'queensgambit', 'timeblade', 'crestcleave', 'swarmsnare', 'wisteriamaelstrom', 'airstreamassault', 'dragonrend', 'sirenswrath',
+			'watershuriken', 'kaboom', 'spectralscream', 'barbedweb', 'bunrakubeatdown', 'lastrespects', 'queensgambit', 'timeblade', 'crestcleave', 'swarmsnare', 'wisteriamaelstrom', 'airstreamassault', 'dragonrend', 'sirenswrath',
 		].includes(move.id);
 		if (physicalTie || specialTie || (move.id === 'aurasphere' && value.tryAbility('Aura Sight')) || move.id === 'terablast' && pokemon.terastallized ||
 			move.id === 'terastarstorm' && pokemon.terastallized && pokemon.speciesForme === 'Terapagos-Stellar') {
@@ -1985,7 +1993,7 @@ class BattleTooltips {
 		const modifiedStats = this.calculateModifiedStats(pokemon, serverPokemon);
 
 		// Adaptive signatures select category from staged stats before field previews.
-		if (['kaboom', 'spectralscream', 'barbedweb', 'bunrakubeatdown', 'queensgambit', 'timeblade', 'crestcleave', 'swarmsnare',
+		if (['kaboom', 'spectralscream', 'barbedweb', 'bunrakubeatdown', 'lastrespects', 'queensgambit', 'timeblade', 'crestcleave', 'swarmsnare',
 			'wisteriamaelstrom', 'airstreamassault', 'dragonrend', 'sirenswrath'].includes(move.id) || (move.id === 'aurasphere' && value.tryAbility('Aura Sight'))) {
 			const staged = this.calculateModifiedStats(pokemon, serverPokemon, true);
 			move = {...move, category: staged.atk > staged.spa ? 'Physical' : 'Special'};
@@ -2047,12 +2055,12 @@ class BattleTooltips {
 		}
 		if (move.id === 'multiattack' && value.tryAbility('Adaptive Arsenal')) value.modify(moveType === '???' ? 1.8 : 1.2, 'Adaptive Arsenal');
 		if (move.id === 'bunrakubeatdown') {
-			value.set(80 + 15 * Math.min(5, pokemon.side.pokemon.filter(p => p.fainted && p !== pokemon).length));
+			value.set(Math.min(140, 80 + 15 * pokemon.side.pokemon.filter(p => p.fainted && p !== pokemon).length));
 		}
 		if (move.id === 'feverpitch') value.setRange(60, 100);
 		if (['furycutter', 'stackingshot'].includes(move.id)) value.setRange(40, 160);
 		if (move.id === 'lastrespects') {
-			value.set(50 + 20 * Math.min(5, pokemon.side.pokemon.filter(p => p.fainted && p !== pokemon).length));
+			value.set(Math.min(140, 50 + 20 * pokemon.side.pokemon.filter(p => p.fainted && p !== pokemon).length));
 		}
 		if (move.id === 'punishment' && target) {
 			let boostCount = 0;

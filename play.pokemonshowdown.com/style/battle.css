@@ -1171,3 +1171,5 @@ License: GPLv2
 }
 
 .statbar .status .effect-corrosive { color: #633878; background: #f2e8f7; border-color: #b98fcb; }
+
+.statbar .status .sealing-status {background:#7136a8;color:#fff;border-color:#c292ff;}

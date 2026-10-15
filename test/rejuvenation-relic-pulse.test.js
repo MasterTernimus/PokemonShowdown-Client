@@ -32,10 +32,10 @@ describe('Approved event, Relic Armor and Pulse client parity', () => {
         it(id + ' excludes migrated components from Includes', () => {
             assert(!Dex.getAbilityDisplayComponents(id).some(p => ['relicarmor', 'selfsufficient'].includes(p)));
         });
-    it('regular Deep Chill keeps Oblivious with the new physical-hit Speed effect', () => {
+    it('regular Deep Chill keeps Oblivious with the new whole-attack Speed effect', () => {
         const a = Dex.abilities.get('deepchill');
         assert(Dex.getAbilityEffects(a.id).has('oblivious'));
-        assert(a.desc.includes('Physical'));
+        assert(a.desc.includes('opposing damaging move'));assert(Dex.getAbilityEffects(a.id).has('intimidate'));
         assert(!a.desc.includes('Torment'));
     });
     for (const id of ['nightmarepulse', 'pulsewaste', 'pulsefiltration', 'pulseblockade', 'pulsetriad', 'pulsebulwark', 'pulseeruption'])

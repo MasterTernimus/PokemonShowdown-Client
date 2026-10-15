@@ -1980,6 +1980,7 @@ export class PokemonSprite extends Sprite {
 		beakblast: ['Beak Blast', 'neutral'],
 		laserfocus: ['Laser Focus', 'good'],
 		moltenguard: ['Molten Guard', 'good'],
+		sealing: '<span class="sealing-status" title="Shared moves are sealed while Keystone Seal is active.">Sealing</span> ',
 		spotlight: ['Spotlight', 'neutral'],
 		itemremoved: null,
 		// partial trapping
@@ -2755,7 +2756,12 @@ export class PokemonSprite extends Sprite {
 			this.scene.$spritesFront[spriten].append(leechseed2.$el!);
 			this.scene.$spritesFront[spriten].append(leechseed3.$el!);
 			this.effects['leechseed'] = [leechseed1, leechseed2, leechseed3];
-		} else if (id === 'protect' || id === 'magiccoat') {
+		} else if (id === 'sealing') {
+ const seal = new Sprite(BattleEffects.protect, {display: 'block', x: this.x, y: this.y, z: this.behind(-15), opacity: .8}, this.scene);
+ seal.$el!.css({background:'transparent',border:'none'}).html('<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160"><ellipse cx="80" cy="100" rx="66" ry="40" fill="none" stroke="#a65aff" stroke-width="4"/><g fill="none" stroke="#d4a0ff" stroke-width="3" transform="rotate(-30 80 80)"><ellipse cx="30" cy="80" rx="14" ry="8"/><ellipse cx="52" cy="80" rx="14" ry="8"/><ellipse cx="74" cy="80" rx="14" ry="8"/><ellipse cx="96" cy="80" rx="14" ry="8"/><ellipse cx="118" cy="80" rx="14" ry="8"/></g></svg>').addClass('keystone-seal-ring');
+ this.scene.$spritesFront[spriten].append(seal.$el!);
+ this.effects[id] = [seal];
+} else if (id === 'protect' || id === 'magiccoat') {
 			const protect = new Sprite(BattleEffects.protect, {
 				display: 'block',
 				x: this.x,

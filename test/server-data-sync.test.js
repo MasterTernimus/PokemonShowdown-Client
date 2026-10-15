@@ -123,15 +123,15 @@ describe('Server data synchronization', () => {
 				const wigglytuff = dex.species.get('wigglytuff');
 				assert.deepEqual(plain(wigglytuff.types), ['Normal', 'Fairy']);
 				assert.deepEqual(plain(wigglytuff.baseStats), {hp: 150, atk: 50, def: 70, spa: 110, spd: 80, spe: 45});
-				assert.deepEqual(plain(wigglytuff.abilities), {0: 'Fluffy', 1: 'Reinflate', H: 'Punk Rock'});
+				assert.deepEqual(plain(wigglytuff.abilities), {0: 'Cushion Chorus', 1: 'Reinflate', H: 'Perfect Apple'});
 				const learns = require(path.join(client, 'data/learnsets')).BattleLearnsets;
 				assert(learns.wigglytuff.learnset.roar.includes('9M'));
 				assert.deepEqual(plain(dex.species.get('kingler').types), ['Water', 'Steel']);
 				assert.deepEqual(plain(dex.species.get('kingler').abilities), {0: 'Shell Armor', 1: 'Hyper Cutter', H: 'Shellcracker'});
 				assert.deepEqual(plain(dex.species.get('kinglergmax').types), ['Water', 'Steel']);
 				assert.deepEqual(plain(dex.species.get('kinglergmax').abilities), {0: 'Crushing Depths'});
-				assert.match(dex.abilities.get('reinflate').desc, /Once per turn.*finishes.*actual HP damage.*remains active and survives/);
-				assert.match(dex.abilities.get('reinflate').shortDesc, /1\/8/);
+				assert.match(dex.abilities.get('reinflate').desc, /Once per turn.*whole sound attack.*opposing HP damage.*1\/4.*alive and active/);
+				assert.match(dex.abilities.get('reinflate').shortDesc, /1\/4/);
 				assert.match(dex.abilities.get('titanpincer').desc, /Crabhammer and physical Steel-type moves.*Defense.*higher/);
 				assert(!dex.getAbilityEffects('titanpincer').has('hypercutter'));
 				assert(dex.species.get('kingler').passives.includes('titanpincer'));

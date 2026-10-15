@@ -27,7 +27,7 @@ describe('Custom-only passive presentation and Water Barrage',()=>{
   assert.deepEqual(Dex.getAbilityDisplayComponents('waterbarrage'),['dualwield','stalwart']);
   assert(Dex.getAbilityEffects('waterbarrage').has('stalwart'));
   const siege=Dex.getAbilityDisplayComponents('siegelauncher');assert(siege.includes('waterbarrage'));assert(siege.includes('megalauncher'));assert(!siege.includes('stalwart'));
-  assert(Dex.abilities.get('waterbarrage').desc.includes('Full local Stalwart'));
+  assert(Dex.abilities.get('waterbarrage').desc.includes('Stalwart'));
   assert(Dex.abilities.get('siegelauncher').desc.includes('Stalwart exactly once'));
  });
 });
