@@ -5056,7 +5056,7 @@
 		if (before && /^(pokemon|move[1-4])$/.test(field) && JSON.stringify(before) !== JSON.stringify(this.curSetList[index])) {
 			this.selectionUndo = {team: team, index: index, before: before, after: T.clone(this.curSetList[index])}; this.showSelectionUndo();
 		}
-		if (field === 'pokemon' && next && this.curSet && this.curSet.species) this.returnToPokemonEditor();
+		if (/^(pokemon|move[1-4])$/.test(field) && next && this.curSet && this.curSet.species) this.returnToPokemonEditor();
 		return result;
 	};
 	proto.showSelectionUndo = function () {
@@ -5279,13 +5279,9 @@ function renderStarterPassives(species) {
    !(event.originalEvent && event.originalEvent.detail === 0);
   if (event.preventDefault) event.preventDefault();
   if (!pointerMove) return chartClick.apply(this, arguments);
-  var room = this.el, top = room.scrollTop, left = room.scrollLeft;
   this.pointerMoveSelection = true;
   try { return chartClick.apply(this, arguments); } finally {
    this.pointerMoveSelection = false;
-   room.scrollTop = top; room.scrollLeft = left;
-   // Result updates can trigger browser scroll anchoring after focus handlers finish.
-   requestAnimationFrame(function () { room.scrollTop = top; room.scrollLeft = left; });
   }
  };
 	// Replacing an editor must not let native focus drag the room to its moves.

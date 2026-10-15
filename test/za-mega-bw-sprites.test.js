@@ -36,6 +36,7 @@ describe('Approved non-shiny Z-A Mega BW animations', () => {
  });
  it('preserves shiny rendering and unmatched family variants exactly', () => {
   for (const r of baseline) {
+   if (r.shiny && ['delphox','delphoxmega','gyarados','gyaradosmega'].includes(r.id)) { const d = Dex.getSpriteData(r.id,r.front,{gen:9,shiny:true}); assert(d.url.includes('shiny-sheets-20261015')); assert.equal(d.w,96); assert.equal(d.h,96); continue; }
    const actual = Dex.getSpriteData(r.id, r.front, {gen: 9, shiny: r.shiny, teamPreview: r.teamPreview});
    assert.deepEqual(JSON.parse(JSON.stringify(actual)), r.data, r.id + ' shiny=' + r.shiny);
   }

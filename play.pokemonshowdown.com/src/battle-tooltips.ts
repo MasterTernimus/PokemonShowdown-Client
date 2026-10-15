@@ -1087,7 +1087,7 @@ class BattleTooltips {
 			text += '<p class="pokemon-passives"><small>Passives:</small> ' + passives.map(id =>
 				'<span class="passive-tooltip-entry"><strong>' + BattleLog.escapeHTML(Dex.abilities.get(id).name) + '</strong>: ' +
 				BattleLog.escapeHTML(Dex.getPassiveAbilityDetails(id).desc) + '</span>'
-			).join(' · ') + '<br /><small>Species traits — remain active when Ability is suppressed.</small></p>';
+			).join(' · ') + '<br /><small>' + (passives.includes('crystalward') ? 'Species traits — Crystal Ward is disabled by suppression.' : 'Species traits — remain active when Ability is suppressed.') + '</small></p>';
 		}
 		if (clientPokemon?.adaptation) text += this.renderAdaptation(clientPokemon.adaptation);
 		text += this.renderStats(clientPokemon, serverPokemon, !isActive);

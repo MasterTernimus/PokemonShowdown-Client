@@ -4,7 +4,7 @@ require('./battle.test');
 global.BattleMovedex=require('../play.pokemonshowdown.com/data/moves.js').BattleMovedex;
 const {BattleTooltips}=new Function(fs.readFileSync(path.join(__dirname,'../play.pokemonshowdown.com/js/battle-tooltips.js'),'utf8')+'\nreturn {BattleTooltips};')();
 describe('Approved Mega and Eevee client integration',()=>{
- for(const[id,passive]of Object.entries({...require('./fixtures/mega-approved-choices.json'),sevipermega:'rivalmalice',haxorusmega:'twinfang'}))it(id+' publishes its exact passive separately from Includes',()=>{
+ for(const[id,passive]of Object.entries({...require('./fixtures/mega-approved-choices.json'),sevipermega:'rivalmalice',haxorusmega:'twinfang',parasectmega:'mycelialbond'}))it(id+' publishes its exact passive separately from Includes',()=>{
   const s=Dex.species.get(id);assert.deepEqual(s.passives,[passive]);
   assert(Dex.hasAbilityEffect(s,passive));
   assert(!Dex.getAbilityDisplayComponents(s.abilities[0],Dex,s.passives).includes(passive));

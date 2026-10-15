@@ -16485,8 +16485,8 @@ for (const [id, update] of Object.entries({
 	},
 	"alcremie": {
 		"abilities": {
-			"0": "Ripen",
-			"H": "Aroma Veil"
+			"0": "Soothing Cream",
+			"H": "Master Pâtissier"
 		},
 		"baseStats": {
 			"hp": 65,
@@ -16506,8 +16506,8 @@ for (const [id, update] of Object.entries({
 	},
 	"alcremiecaramelswirl": {
 		"abilities": {
-			"0": "Ripen",
-			"H": "Aroma Veil"
+			"0": "Soothing Cream",
+			"H": "Master Pâtissier"
 		},
 		"baseStats": {
 			"hp": 65,
@@ -16547,8 +16547,8 @@ for (const [id, update] of Object.entries({
 	},
 	"alcremielemoncream": {
 		"abilities": {
-			"0": "Ripen",
-			"H": "Aroma Veil"
+			"0": "Soothing Cream",
+			"H": "Master Pâtissier"
 		},
 		"baseStats": {
 			"hp": 65,
@@ -16568,8 +16568,8 @@ for (const [id, update] of Object.entries({
 	},
 	"alcremiematchacream": {
 		"abilities": {
-			"0": "Ripen",
-			"H": "Aroma Veil"
+			"0": "Soothing Cream",
+			"H": "Master Pâtissier"
 		},
 		"baseStats": {
 			"hp": 65,
@@ -16589,8 +16589,8 @@ for (const [id, update] of Object.entries({
 	},
 	"alcremiemintcream": {
 		"abilities": {
-			"0": "Ripen",
-			"H": "Aroma Veil"
+			"0": "Soothing Cream",
+			"H": "Master Pâtissier"
 		},
 		"baseStats": {
 			"hp": 65,
@@ -16610,8 +16610,8 @@ for (const [id, update] of Object.entries({
 	},
 	"alcremierainbowswirl": {
 		"abilities": {
-			"0": "Ripen",
-			"H": "Aroma Veil"
+			"0": "Soothing Cream",
+			"H": "Master Pâtissier"
 		},
 		"baseStats": {
 			"hp": 65,
@@ -16631,8 +16631,8 @@ for (const [id, update] of Object.entries({
 	},
 	"alcremierubycream": {
 		"abilities": {
-			"0": "Ripen",
-			"H": "Aroma Veil"
+			"0": "Soothing Cream",
+			"H": "Master Pâtissier"
 		},
 		"baseStats": {
 			"hp": 65,
@@ -16652,8 +16652,8 @@ for (const [id, update] of Object.entries({
 	},
 	"alcremierubyswirl": {
 		"abilities": {
-			"0": "Ripen",
-			"H": "Aroma Veil"
+			"0": "Soothing Cream",
+			"H": "Master Pâtissier"
 		},
 		"baseStats": {
 			"hp": 65,
@@ -16673,8 +16673,8 @@ for (const [id, update] of Object.entries({
 	},
 	"alcremiesaltedcream": {
 		"abilities": {
-			"0": "Ripen",
-			"H": "Aroma Veil"
+			"0": "Soothing Cream",
+			"H": "Master Pâtissier"
 		},
 		"baseStats": {
 			"hp": 65,
@@ -26158,7 +26158,7 @@ for (const [id, update] of Object.entries({
 	},
 	"ferrothorn": {
 		"abilities": {
-			"0": "Barb Harvest",
+			"0": "Mineral Grip",
 			"1": "Filter",
 			"H": "Rooted Iron"
 		},
@@ -26175,7 +26175,7 @@ for (const [id, update] of Object.entries({
 			"Steel"
 		],
 		"passives": [
-			"overcoat"
+			"ironbarbs"
 		],
 		"replaceAbilities": true
 	},
@@ -26977,7 +26977,7 @@ for (const [id, update] of Object.entries({
 			"Ghost"
 		],
 		"passives": [
-			"levitate"
+			"rimeboundspirit"
 		],
 		"replaceAbilities": true
 	},
@@ -28795,7 +28795,7 @@ for (const [id, update] of Object.entries({
 			"Ghost"
 		],
 		"passives": [
-			"soundproof"
+			"aftermath"
 		],
 		"replaceAbilities": true
 	},
@@ -30666,7 +30666,7 @@ for (const [id, update] of Object.entries({
 	"houndoom": {
 		"abilities": {
 			"0": "Flash Fire",
-			"1": "Agony Flame",
+			"1": "Infiltrator",
 			"H": "Battle Fervor"
 		},
 		"baseStats": {
@@ -30682,7 +30682,7 @@ for (const [id, update] of Object.entries({
 			"Fire"
 		],
 		"passives": [
-			"unnerve"
+			"agonyflame"
 		],
 		"replaceAbilities": true
 	},
@@ -30703,7 +30703,7 @@ for (const [id, update] of Object.entries({
 			"Fire"
 		],
 		"passives": [
-			"unnerve"
+			"agonyflame"
 		],
 		"replaceAbilities": true
 	},
@@ -31623,7 +31623,7 @@ for (const [id, update] of Object.entries({
 		"abilities": {
 			"0": "Swift Swim",
 			"1": "Sharpness",
-			"H": "Moxie"
+			"H": "Blood Sickle"
 		},
 		"baseStats": {
 			"hp": 65,
@@ -32602,7 +32602,7 @@ for (const [id, update] of Object.entries({
 		"abilities": {
 			"0": "Abyss Lure",
 			"1": "Drizzle",
-			"H": "Dazzling"
+			"H": "Guiding Light"
 		},
 		"baseStats": {
 			"hp": 125,
@@ -32689,7 +32689,7 @@ for (const [id, update] of Object.entries({
 	"laprasazzy": {
 		"abilities": {
 			"0": "Safe Harbor",
-			"1": "Shell Armor",
+			"1": "Ocean Lullaby",
 			"H": "Ice Scales"
 		},
 		"baseStats": {
@@ -32705,7 +32705,7 @@ for (const [id, update] of Object.entries({
 			"Ice"
 		],
 		"passives": [
-			"hydration"
+			"liquidvoice"
 		],
 		"replaceAbilities": true
 	},
@@ -36952,7 +36952,7 @@ for (const [id, update] of Object.entries({
 		"abilities": {
 			"0": "Royal Decree",
 			"1": "Sheer Force",
-			"H": "Patriarch's Wrath"
+			"H": "Royal Onslaught"
 		},
 		"baseStats": {
 			"hp": 84,
@@ -37155,7 +37155,7 @@ for (const [id, update] of Object.entries({
 			"Fairy"
 		],
 		"passives": [
-			"overcoat"
+			"crystalward"
 		],
 		"replaceAbilities": true
 	},
@@ -37742,7 +37742,7 @@ for (const [id, update] of Object.entries({
 		"abilities": {
 			"0": "Swift Swim",
 			"1": "Mega Launcher",
-			"H": "Compound Eyes"
+			"H": "Grasping Current"
 		},
 		"baseStats": {
 			"hp": 75,
@@ -38394,7 +38394,7 @@ for (const [id, update] of Object.entries({
 			"Bug"
 		],
 		"passives": [
-			"dryskin"
+			"mycelialbond"
 		],
 		"replaceAbilities": true
 	},
@@ -39883,7 +39883,7 @@ for (const [id, update] of Object.entries({
 			"Fighting"
 		],
 		"passives": [
-			"damp"
+			"tirelessmuscle"
 		],
 		"replaceAbilities": true
 	},
@@ -40952,7 +40952,7 @@ for (const [id, update] of Object.entries({
 		"abilities": {
 			"0": "Fire Mane",
 			"1": "Speed Boost",
-			"H": "Guiding Gallop"
+			"H": "Flame Body"
 		},
 		"baseStats": {
 			"hp": 80,
@@ -40967,7 +40967,7 @@ for (const [id, update] of Object.entries({
 			"Fairy"
 		],
 		"passives": [
-			"flamebody"
+			"racingspirit"
 		],
 		"replaceAbilities": true
 	},
@@ -40990,7 +40990,7 @@ for (const [id, update] of Object.entries({
 			"Fairy"
 		],
 		"passives": [
-			"pastelveil"
+			"guidinggallop"
 		],
 		"replaceAbilities": true
 	},
@@ -46183,17 +46183,17 @@ for (const [id, update] of Object.entries({
 	},
 	"stunfisk": {
 		"abilities": {
-			"0": "Static",
-			"1": "Limber",
+			"0": "Livewire Trap",
+			"1": "Mudflat Dynamo",
 			"H": "Earth Eater",
 			"S": "Adaptive Cycle"
 		},
 		"baseStats": {
 			"hp": 109,
 			"atk": 66,
-			"def": 84,
-			"spa": 81,
-			"spd": 99,
+			"def": 99,
+			"spa": 95,
+			"spd": 109,
 			"spe": 32
 		},
 		"types": [
@@ -46207,15 +46207,16 @@ for (const [id, update] of Object.entries({
 	},
 	"stunfiskgalar": {
 		"abilities": {
-			"0": "Mimicry",
+			"0": "Iron Clamp",
+			"1": "Baited Counter",
 			"S": "Adaptive Cycle"
 		},
 		"baseStats": {
 			"hp": 109,
-			"atk": 81,
-			"def": 99,
+			"atk": 95,
+			"def": 109,
 			"spa": 66,
-			"spd": 84,
+			"spd": 99,
 			"spe": 32
 		},
 		"types": [
@@ -49444,7 +49445,7 @@ for (const [id, update] of Object.entries({
 	"victreebel": {
 		"abilities": {
 			"0": "Chlorophyll",
-			"1": "Digestive Sap",
+			"1": "Corrosion",
 			"H": "Baited Bloom"
 		},
 		"baseStats": {
@@ -49460,7 +49461,7 @@ for (const [id, update] of Object.entries({
 			"Poison"
 		],
 		"passives": [
-			"stickyhold"
+			"digestivesap"
 		],
 		"replaceAbilities": true
 	},
@@ -56632,7 +56633,7 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 		"gluttony"
 	],
 	"sweetsanctuary": [
-		"ripen"
+		"stamina"
 	],
 	"riptideclaws": [
 		"swiftswim",
@@ -57785,7 +57786,7 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 		"unnerve"
 	],
 	"barbharvest": [
-		"ironbarbs"
+		"suctioncups"
 	],
 	"currentcoil": [
 		"swiftswim"
@@ -58200,7 +58201,8 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	],
 	"matriarchsvigil": [
 		"thickfat",
-		"aromaveil"
+		"aromaveil",
+		"friendguard"
 	],
 	"bloodmoongaze": [
 		"infiltrator",
@@ -58408,6 +58410,41 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	],
 	"keystoneseal": [
 		"cursedbody"
+	],
+	"racingspirit": [
+		"rockhead",
+		"limber"
+	],
+	"soothingcream": [
+		"ripen"
+	],
+	"masterpatissier": [
+		"aromaveil"
+	],
+	"tirelessmuscle": [
+		"innerfocus"
+	],
+	"bloodsickle": [
+		"hypercutter"
+	],
+	"graspingcurrent": [
+		"suctioncups"
+	],
+	"crystalward": [],
+	"rimeboundspirit": [
+		"heatproof"
+	],
+	"livewiretrap": [
+		"static"
+	],
+	"mudflatdynamo": [
+		"battlearmor"
+	],
+	"ironclamp": [
+		"battlearmor"
+	],
+	"baitedcounter": [
+		"filter"
 	]
 };
 // END SERVER WORKING SYNC DISPLAY COMPONENTS
@@ -58492,6 +58529,19 @@ const CUSTOM_SIGNATURE_PASSIVE_COMPONENTS: {[id: string]: readonly string[]} = {
 	],
 	"beguilingbouquet": [
 		"aromaveil"
+	],
+	"guidinggallop": [
+		"pastelveil"
+	],
+	"racingspirit": [
+		"rockhead",
+		"limber"
+	],
+	"tirelessmuscle": [
+		"innerfocus"
+	],
+	"rimeboundspirit": [
+		"heatproof"
 	],
 	"rivalresolve": [
 		"poisonheal"
@@ -60168,7 +60218,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Agony Flame",
 		"num": 11221,
 		"gen": 9,
-		"desc": "After it finishes a damaging Fire-type move that deals actual HP damage to an opponent, each surviving active opponent damaged by that move is burned if normal status protections allow, and receives Heal Block for 2 turns, including the current turn. Each target is affected once per move. Heal Block can apply even if burn fails, and a longer existing Heal Block is not shortened. If the move already burned a target, the Ability does not attempt to burn it again after a curing Berry. Protected, immune, Substitute-only, ally, self and delayed damage do not qualify. Ability suppression disables these effects.",
+		"desc": "After a damaging Fire move finishes, burns each surviving active opponent that lost HP and applies Heal Block for 2 turns including the current turn. Normal status protections apply. A longer Heal Block is not shortened. A target already burned by the move is not burned again after a curing Berry. Protected, immune, Substitute-only, allied, self and delayed damage do not qualify. As a species passive it remains active under ability suppression.",
 		"shortDesc": "Fire hits burn foes and block healing for 2 turns; requires actual opposing HP damage.",
 		"rating": 4.5,
 		"flags": {},
@@ -60755,8 +60805,20 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Baited Bloom",
 		"num": 11289,
 		"gen": 9,
-		"desc": "Gluttony makes pinch Berries activate at half HP and Leftovers heal 1/8 max HP each turn. Regenerator restores 1/3 base max HP when switching out. Sticky Hold is supplied separately by base Victreebel's species passive. No first-Berry stat reward.",
+		"desc": "Gluttony makes pinch Berries activate at half HP and Leftovers heal 1/8 max HP each turn. Regenerator restores 1/3 base max HP when switching out. Digestive Sap is supplied separately by base Victreebel's species passive. No first-Berry stat reward.",
 		"shortDesc": "Gluttony and Regenerator: early pinch Berries, stronger Leftovers; heals 1/3 on switching.",
+		"rating": 4,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"baitedcounter": {
+		"name": "Baited Counter",
+		"num": 11532,
+		"gen": 9,
+		"desc": "Full local Filter. Its physical attacks have 1.3x power if it has already taken opposing direct damaging-move HP damage during the current turn and entry. Allied, recoil, residual and Substitute-only damage do not qualify.",
+		"shortDesc": "Filter; physical attacks gain 1.3x after opposing attack HP damage that turn.",
 		"rating": 4,
 		"flags": {
 			"breakable": 1
@@ -60786,13 +60848,15 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"isNonstandard": null
 	},
 	"barbharvest": {
-		"name": "Barb Harvest",
-		"num": 10550,
+		"name": "Mineral Grip",
+		"num": 11527,
 		"gen": 9,
-		"desc": "Contact attackers lose 1/8 of their max HP. After taking three opposing contact moves, restores its consumed Berry once per battle, if its item slot is empty. Multi-hit attacks count as one move; progress persists through switching.",
-		"shortDesc": "Restores its used Berry after three opposing contact attacks, once per battle.",
-		"rating": 2.5,
-		"flags": {},
+		"desc": "Full local Suction Cups. On each genuine switch-in, absorbs and removes Stealth Rock from its own side before it causes entry damage. Other hazards remain. No healing, stat boost, berry restoration or embedded Iron Barbs. Ability restarts do not activate it, and suppression prevents removal. Iron Barbs is its separate species passive.",
+		"shortDesc": "Suction Cups; removes own-side Stealth Rock before taking entry damage.",
+		"rating": 4,
+		"flags": {
+			"breakable": 1
+		},
 		"isNonstandard": null
 	},
 	"battery": {
@@ -61042,6 +61106,18 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"shortDesc": "Infiltrator + Competitive. Mind’s Eye is a separate passive.",
 		"rating": 2.5,
 		"flags": {},
+		"isNonstandard": null
+	},
+	"bloodsickle": {
+		"name": "Blood Sickle",
+		"num": 11524,
+		"gen": 9,
+		"desc": "Full local Hyper Cutter. Slicing attacks heal 25% of actual opposing HP damage, capped at 1/8 max HP across the whole move and all targets. Native draining moves do not gain extra drain. Substitute-only, allied and delayed damage do not qualify. Normal healing modifiers, Heal Block and Liquid Ooze apply.",
+		"shortDesc": "Hyper Cutter; slicing hits drain 25%, capped at 1/8 HP per move.",
+		"rating": 4,
+		"flags": {
+			"breakable": 1
+		},
 		"isNonstandard": null
 	},
 	"bloomingsun": {
@@ -61859,6 +61935,18 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"desc": "Contact attackers have a 30% chance of frostbite. Heals 1/16 max HP each turn in hail or snow, or on Icy, Snowy Mountain and Cold Eclipse without those weathers; hail on Cold Eclipse heals 1/8 instead. Immune to hail damage. Eligible Normal moves become Ice and have 1.2x power, or 1.5x on Icy and Snowy Mountain. Excludes moves whose type is set by their own effect, damaging Z-Moves and Terastallized Tera Blast. Moves cannot miss. Adds Ice typing in hail or snow and on Icy, Snowy Mountain and Cold Eclipse. Reflects eligible status moves and entry hazards once; reflected moves cannot bounce again. Fairy Tale entry gives +1 Sp. Def; Mirror Arena entry gives +1 evasion. On Mirror Arena, reflecting a directly targeted move also gives its original user +1 evasion.",
 		"shortDesc": "Stronger Ice moves; Ice healing/protection; reflects status moves.",
 		"rating": 5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"crystalward": {
+		"name": "Crystal Ward",
+		"num": 11526,
+		"gen": 9,
+		"desc": "Opposing ball/bomb moves cannot hit this Pokemon or adjacent active allies. Uses the ball/bomb move classification only, without other Bulletproof effects. Allied Pollen Puff still works. Protection ends when the holder leaves, faints or is suppressed, and respects Mold Breaker and Ability Shield.",
+		"shortDesc": "Blocks opposing ball/bomb moves for itself and adjacent allies.",
+		"rating": 4,
 		"flags": {
 			"breakable": 1
 		},
@@ -63630,6 +63718,18 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		},
 		"isNonstandard": null
 	},
+	"graspingcurrent": {
+		"name": "Grasping Current",
+		"num": 11525,
+		"gen": 9,
+		"desc": "Full local Suction Cups. After a damaging Water move, each surviving opposing target that lost HP has its Speed lowered by 1 once per whole move. Substitute-only damage does not qualify. Normal stat-drop protections apply; this is not a chance secondary.",
+		"shortDesc": "Suction Cups; Water attacks lower damaged foes’ Speed once per move.",
+		"rating": 4,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
 	"grasspelt": {
 		"name": "Grass Pelt",
 		"num": 179,
@@ -64494,6 +64594,18 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {},
 		"isNonstandard": null
 	},
+	"ironclamp": {
+		"name": "Iron Clamp",
+		"num": 11531,
+		"gen": 9,
+		"desc": "Full local Battle Armor. After an opposing contact move damages its HP, lowers the attacker’s Speed by 1 once after the whole move. Normal stat-drop protections apply.",
+		"shortDesc": "Battle Armor; opposing contact HP damage lowers attacker Speed once per move.",
+		"rating": 4,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
 	"irondominion": {
 		"name": "Iron Dominion",
 		"num": 10051,
@@ -64908,6 +65020,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		},
 		"isNonstandard": null
 	},
+	"livewiretrap": {
+		"name": "Livewire Trap",
+		"num": 11529,
+		"gen": 9,
+		"desc": "Full local Static, including its doubled contact paralysis chance on Electric and Short-Circuit fields. Damaging Electric attacks have 1.3x power against opponents with a major status condition.",
+		"shortDesc": "Static; Electric attacks gain 1.3x power against statused foes.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
 	"livinglegend": {
 		"name": "Living Legend",
 		"num": 10311,
@@ -65150,13 +65272,25 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {},
 		"isNonstandard": null
 	},
+	"masterpatissier": {
+		"name": "Master Pâtissier",
+		"num": 11521,
+		"gen": 9,
+		"desc": "Aroma Veil. Its Decorate can target itself or any normally eligible adjacent Pokémon, granting the usual +2 Attack and Sp. Atk.",
+		"shortDesc": "Aroma Veil; Decorate can also target itself.",
+		"rating": 4,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
 	"matriarchsvigil": {
 		"name": "Royal Aegis",
 		"num": 11445,
 		"gen": 9,
-		"desc": "Thick Fat and Aroma Veil. Once per genuine entry, after this Pokemon or an adjacent ally survives an opposing whole damaging move that takes it from above half HP to half HP or less, the injured Pokemon gains +1 Defense and +1 Sp. Def after all hits. One shared activation per entry. Residual damage, friendly fire and Substitute-only damage do not qualify. Ability restarts do not reset the budget. Rivalry is a separate species passive; Friend Guard is not included.",
-		"shortDesc": "Thick Fat + Aroma Veil; once/entry, surviving a hit across half HP gives self or an adjacent ally +1 Def/SpD.",
-		"rating": 2,
+		"desc": "Full local Thick Fat, Aroma Veil and Friend Guard. Once per genuine entry, after this Pokemon or an adjacent ally survives an opposing whole damaging move that takes it from above half HP to half HP or less, the injured Pokemon gains +1 Defense and +1 Sp. Def after all hits. One shared activation per entry. Residual damage, friendly fire and Substitute-only damage do not qualify. Ability restarts do not reset the budget. Friend Guard reduces damage to other allies by 25%, independently stacking with the separate Rivalry passive. Neither ally reduction protects its own holder.",
+		"shortDesc": "Thick Fat + Aroma Veil + Friend Guard; once/entry, surviving a hit across half HP gives self or an adjacent ally +1 Def/SpD.",
+		"rating": 0,
 		"flags": {
 			"breakable": 1
 		},
@@ -65542,6 +65676,18 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"shortDesc": "Move KOs give +1 Attack.",
 		"rating": 3,
 		"flags": {},
+		"isNonstandard": null
+	},
+	"mudflatdynamo": {
+		"name": "Mudflat Dynamo",
+		"num": 11530,
+		"gen": 9,
+		"desc": "Full local Battle Armor, including critical-hit immunity, 20% incoming damage reduction and field callbacks. After surviving an opposing direct HP-damaging move, stores one charge. The next attempted damaging Electric move uses 1.5x power across its whole move and spends the charge, even on a miss, protection or immunity. Electric status moves do not spend it. Charges cannot stack; switching clears them. Allied, recoil, residual and Substitute-only damage do not qualify.",
+		"shortDesc": "Battle Armor; surviving an opposing attack stores one 1.5x Electric attack.",
+		"rating": 4,
+		"flags": {
+			"breakable": 1
+		},
 		"isNonstandard": null
 	},
 	"mudmeditation": {
@@ -66081,7 +66227,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"isNonstandard": null
 	},
 	"patriarchswrath": {
-		"name": "Patriarch's Wrath",
+		"name": "Royal Onslaught",
 		"num": 11444,
 		"gen": 9,
 		"desc": "Power Drill boosts drill and horn moves by 1.5x, or 2x with protection bypass on its supported rocky fields. Whiplash grants +1 accuracy on entry and 1.5x tail-move power. Poison and Ground attacks use the higher Attack/Defense or Sp. Atk/Sp. Def ratio to choose their damage category. Horn and tail moves gain one critical-hit stage. No blanket power multiplier.",
@@ -66966,6 +67112,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		},
 		"isNonstandard": null
 	},
+	"racingspirit": {
+		"name": "Racing Spirit",
+		"num": 11519,
+		"gen": 9,
+		"desc": "Rock Head + Limber: prevents move recoil except Struggle; prevents and cures paralysis and blocks opposing Speed drops. Crash damage, Life Orb and self-inflicted Speed costs still apply.",
+		"shortDesc": "Rock Head + Limber.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
 	"ragingbeast": {
 		"name": "Raging Beast",
 		"num": 10374,
@@ -67423,6 +67579,18 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"shortDesc": "Thick Fat + Ice Body.",
 		"rating": 4,
 		"flags": {},
+		"isNonstandard": null
+	},
+	"rimeboundspirit": {
+		"name": "Rimebound Spirit",
+		"num": 11528,
+		"gen": 9,
+		"desc": "Full local Heatproof halves incoming Fire attack power and burn damage, retaining its field interactions. Immune to wind-flagged moves targeting it, including its part of a spread move. No Attack boosts, Tailwind triggers or Delta Stream boosts. It is grounded without Levitate. As a species passive it persists through selected-ability suppression; Mold Breaker can bypass its breakable effects.",
+		"shortDesc": "Heatproof; immune to wind moves. No Wind Rider boosts.",
+		"rating": 4,
+		"flags": {
+			"breakable": 1
+		},
 		"isNonstandard": null
 	},
 	"rimebreaker": {
@@ -68817,6 +68985,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		},
 		"isNonstandard": null
 	},
+	"soothingcream": {
+		"name": "Soothing Cream",
+		"num": 11520,
+		"gen": 9,
+		"desc": "Full local Ripen. After an opposing contact move damages its HP, lowers the attacker's Attack by 1 once after the whole move.",
+		"shortDesc": "Ripen; contact HP damage lowers attacker Attack once per move.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
 	"soothingpresence": {
 		"name": "Soothing Presence",
 		"num": 11200,
@@ -69604,14 +69782,12 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 	},
 	"sweetsanctuary": {
 		"name": "Sweet Sanctuary",
-		"num": 10059,
+		"num": 11522,
 		"gen": 9,
-		"desc": "Ripen doubles HP restored and stat boosts from Berries, and doubles resistance Berries' damage reduction. When Decorate actually raises at least one stat, heals that target by 1/4 of its current max HP once after the move. Failed or blocked Decorate, or no actual positive boost, grants no healing. Normal healing restrictions apply. Ripen does not multiply this healing. Friend Guard remains the species passive; G-Max Finale retains its separate 1/6 active-side healing.",
-		"shortDesc": "Ripen; successful Decorate heals its boosted target by 1/4 max HP.",
-		"rating": 3.5,
-		"flags": {
-			"breakable": 1
-		},
+		"desc": "Full local Stamina: opposing HP hits heal 1/16 max HP; the first each turn also raises Defense by 1. Protects itself and active allies from opposing Defense/Sp. Def drops. Stat resets and self-inflicted drops still apply.",
+		"shortDesc": "Stamina; protects own and allies' Defense/Sp. Def from opposing drops.",
+		"rating": 4,
+		"flags": {},
 		"isNonstandard": null
 	},
 	"sweetveil": {
@@ -70003,6 +70179,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"gen": 4,
 		"desc": "Resisted attacks deal double damage.",
 		"shortDesc": "Resisted attacks deal double damage.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
+	"tirelessmuscle": {
+		"name": "Tireless Muscle",
+		"num": 11523,
+		"gen": 9,
+		"desc": "Full local Inner Focus prevents flinching and Intimidate Attack drops. At the end of a turn in which it survived opposing direct damaging-move HP damage, heals 1/16 max HP once. Recoil, allied attacks, Substitute-only hits and residual damage do not qualify. Normal healing modifiers and Heal Block apply.",
+		"shortDesc": "Inner Focus; end-turn heals 1/16 HP after surviving opposing attack HP damage.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null
@@ -91500,6 +91686,9 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"gluttony",
 		"regenerator"
 	],
+	"baitedcounter": [
+		"filter"
+	],
 	"bakedbliss": [
 		"wellbakedbody",
 		"thickfat",
@@ -91508,7 +91697,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	],
 	"ballfetch": [],
 	"barbharvest": [
-		"ironbarbs"
+		"suctioncups"
 	],
 	"battery": [],
 	"battlearmor": [],
@@ -91562,6 +91751,9 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"bloodmoongaze": [
 		"infiltrator",
 		"competitive"
+	],
+	"bloodsickle": [
+		"hypercutter"
 	],
 	"bloomingsun": [
 		"megasol",
@@ -91753,6 +91945,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"amethystglow",
 		"magicbounce"
 	],
+	"crystalward": [],
 	"cudchew": [],
 	"curiousmedicine": [],
 	"currentcoil": [
@@ -92130,6 +92323,9 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	],
 	"gorillatactics": [],
 	"grandmaster": [],
+	"graspingcurrent": [
+		"suctioncups"
+	],
 	"grasspelt": [],
 	"grassysurge": [],
 	"gravehunger": [
@@ -92297,6 +92493,9 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"invigorate": [],
 	"invisiblewall": [],
 	"ironbarbs": [],
+	"ironclamp": [
+		"battlearmor"
+	],
 	"irondominion": [
 		"pressure",
 		"swornduty",
@@ -92392,6 +92591,9 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"quickfeet",
 		"ironbarbs"
 	],
+	"livewiretrap": [
+		"static"
+	],
 	"livinglegend": [],
 	"livingtangle": [
 		"tanglinghair",
@@ -92440,9 +92642,13 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"contrary"
 	],
 	"masterkey": [],
+	"masterpatissier": [
+		"aromaveil"
+	],
 	"matriarchsvigil": [
 		"thickfat",
-		"aromaveil"
+		"aromaveil",
+		"friendguard"
 	],
 	"measuredcounsel": [
 		"owntempo"
@@ -92524,6 +92730,9 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	],
 	"mourningvessel": [],
 	"moxie": [],
+	"mudflatdynamo": [
+		"battlearmor"
+	],
 	"mudmeditation": [],
 	"multiscale": [],
 	"multitype": [],
@@ -92822,6 +93031,10 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"quillreservoir": [
 		"waterabsorb"
 	],
+	"racingspirit": [
+		"rockhead",
+		"limber"
+	],
 	"ragingbeast": [
 		"guts",
 		"moldbreaker"
@@ -92932,6 +93145,9 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"rimebark": [
 		"thickfat",
 		"icebody"
+	],
+	"rimeboundspirit": [
+		"heatproof"
 	],
 	"rimebreaker": [
 		"refrigerate"
@@ -93246,6 +93462,9 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"friendguard",
 		"infiltrator"
 	],
+	"soothingcream": [
+		"ripen"
+	],
 	"soothingpresence": [
 		"friendguard",
 		"aromaveil"
@@ -93415,7 +93634,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"hydrabond"
 	],
 	"sweetsanctuary": [
-		"ripen"
+		"stamina"
 	],
 	"sweetveil": [],
 	"swiftdrill": [
@@ -93489,6 +93708,9 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"raindish"
 	],
 	"tintedlens": [],
+	"tirelessmuscle": [
+		"innerfocus"
+	],
 	"titanpincer": [],
 	"torrent": [],
 	"toughclaws": [],
@@ -97758,6 +97980,12 @@ const Dex = new class implements ModdedDex {
 		}
 		// Keep the requested Mega identity before legacy visual fallbacks (notably Zygarde).
 		const requestedMegaBWId = Dex.species.get(pokemon).id;
+		const suppliedShinySheet = ({"delphox":"delphox","delphoxmega":"delphox-mega","gyarados":"gyarados","gyaradosmega":"gyarados-mega"} as {[id:string]:string})[requestedMegaBWId];
+		if (options.shiny && suppliedShinySheet) {
+			const filename = suppliedShinySheet + (requestedMegaBWId === 'gyarados' && options.gender === 'F' ? '-f' : '');
+			const size = isDynamax && !options.noScale ? 192 : 96;
+			return {...this.getSpriteData(pokemon, isFront, {...options, shiny: false, dynamax: isDynamax}),gen:mechanicsGen,w:size,h:size,y:0,url:Dex.resourcePrefix+'sprites/gen5'+(isFront?'':'-back')+'-shiny/'+filename+'.png?v=shiny-sheets-20261015',pixelated:true,isFrontSprite:isFront,shiny:true};
+		}
 		const megaBWAnimation = !options.shiny && APPROVED_MEGA_BW_ANIMATIONS.has(requestedMegaBWId) &&
 			!Dex.prefs('noanim') && !Dex.prefs('nogif') ? requestedMegaBWId : '';
 		pokemon = TEMPORARY_FORME_SPRITE_FALLBACKS[Dex.species.get(pokemon).id] || pokemon;
@@ -98461,6 +98689,9 @@ const Dex = new class implements ModdedDex {
 		if (usesEvilSantaSprite(pokemon)) {
 			return {spriteDir: 'sprites/gen5', spriteid: 'delibird-evilsanta', x: 0, y: 0, backgroundSize: '96px auto', shiny: false};
 		}
+		const shinySheetId = Dex.species.get(pokemon.species).id;
+		const suppliedShinySheet = ({"delphox":"delphox","delphoxmega":"delphox-mega","gyarados":"gyarados","gyaradosmega":"gyarados-mega"} as {[id:string]:string})[shinySheetId];
+		if (pokemon.shiny && suppliedShinySheet) return {spriteDir:'sprites/gen5',spriteid:suppliedShinySheet+(shinySheetId==='gyarados'&&pokemon.gender==='F'?'-f':''),x:0,y:0,backgroundSize:'96px auto',shiny:true};
 		const fallback = TEMPORARY_FORME_SPRITE_FALLBACKS[Dex.species.get(pokemon.species).id];
 		const data = this.getTeambuilderSpriteDataRaw(fallback ? {...pokemon, species: fallback, spriteid: undefined} : pokemon, gen);
 		const suffix = (data.shiny ? '-shiny' : '') + '/' + data.spriteid + '.png';
@@ -101465,3 +101696,8 @@ const AUDITED_DESCRIPTION_COMPONENTS: {[id: string]: string[]} = {
 
 // Selected built-in Insomnia removal does not prevent Perfect Foresight copying actual Insomnia in battle.
 AUDITED_DESCRIPTION_COMPONENTS.perfectforesight = AUDITED_DESCRIPTION_COMPONENTS.perfectforesight.filter(id => id !== 'insomnia');
+
+// Sweet Sanctuary's approved replacement removes the former Ripen package.
+AUDITED_DESCRIPTION_COMPONENTS.sweetsanctuary = ['stamina'];
+
+AUDITED_DESCRIPTION_COMPONENTS.barbharvest = ['suctioncups'];

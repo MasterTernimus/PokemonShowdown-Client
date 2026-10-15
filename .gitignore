@@ -48,3 +48,6 @@ caches/PokemonShowdown-Reborn/
 
 # Reviewed October support descriptions and component expectations.
 !test/fixtures/october-support-approved.json
+
+# Portable baseline for normal sprites preserved by the custom shiny imports.
+!test/fixtures/normal-sprite-hashes.json

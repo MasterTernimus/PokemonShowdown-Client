@@ -126,7 +126,7 @@ describe('Sprite rendering regressions', () => {
 			if (!species.exists || species.isTotem || id.includes('gmax') || id.includes('mega') || id === 'hydreigon' || id === 'feraligatr') continue;
 			for (const gen of [5, 9]) for (const shiny of [false, true]) for (const front of [false, true]) {
 				const data = Dex.getSpriteData(species.name, front, {gen, shiny});
-				const max = id === 'cofagrigus' ? (front ? 96 : 84) : front ? 80 : 72;
+				const max = shiny && ['delphox','gyarados'].includes(id) ? 96 : id === 'cofagrigus' ? (front ? 96 : 84) : front ? 80 : 72;
 				assert(data.w <= max && data.h <= max, `${id}: ${data.w}x${data.h}`);
 			}
 		}

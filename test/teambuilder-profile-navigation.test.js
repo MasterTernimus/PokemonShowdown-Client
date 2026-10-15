@@ -18,12 +18,14 @@ describe('Profile-aware Pokemon selection',()=>{
   new Function('proto','T',source.slice(start,end))(room,{id:s=>s.toLowerCase()});
   room.setPokemon('Primarina',false);
  });
- it('returns after committing a Pokemon selection, without moving after move picks',()=>{
+ it('returns to the editor after committing Pokemon and move selections',()=>{
   const calls=[],room={curTeam:{},curSetLoc:0,curChartName:'pokemon',curSet:{species:''},curSetList:[{species:''}],
    chartSet(value){this.curSet={species:value};this.curSetList[0]=this.curSet;calls.push('set');},showSelectionUndo(){calls.push('undo');},returnToPokemonEditor(){calls.push('return');}};
   const start=source.indexOf('var selectWithUndo = proto.chartSet;'),end=source.indexOf('proto.showSelectionUndo =',start);
   new Function('proto','T',source.slice(start,end))(room,{clone:s=>JSON.parse(JSON.stringify(s))});
   room.chartSet('Primarina',true);assert.deepEqual(calls,['set','undo','return']);
-  calls.length=0;room.curChartName='move1';room.chartSet('Surf',true);assert(!calls.includes('return'));
+  calls.length=0;room.curChartName='move1';room.chartSet('Surf',true);assert(calls.includes('return'));
+  for(const field of ['move2','move3','move4']){calls.length=0;room.curChartName=field;room.chartSet('Protect',true);assert(calls.includes('return'),field);}
+  calls.length=0;room.curChartName='move1';room.chartSet('Surf',false);assert(!calls.includes('return'),'blur must not jump');
  });
 });

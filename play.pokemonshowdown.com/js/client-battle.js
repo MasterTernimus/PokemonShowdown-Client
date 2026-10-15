@@ -696,7 +696,7 @@
 					var disabled = false;
 					if (moveTarget === 'adjacentAlly' || moveTarget === 'adjacentAllyOrSelf') {
 						disabled = true;
-					} else if (moveTarget === 'normal' || moveTarget === 'adjacentFoe') {
+					} else if (moveTarget === 'normal' || moveTarget === 'normalOrSelf' || moveTarget === 'adjacentFoe') {
 						if (Math.abs(farSlot - i) > 1) disabled = true;
 					}
 
@@ -715,10 +715,10 @@
 					var disabled = false;
 					if (moveTarget === 'adjacentFoe') {
 						disabled = true;
-					} else if (moveTarget === 'normal' || moveTarget === 'adjacentAlly' || moveTarget === 'adjacentAllyOrSelf') {
+					} else if (moveTarget === 'normal' || moveTarget === 'normalOrSelf' || moveTarget === 'adjacentAlly' || moveTarget === 'adjacentAllyOrSelf') {
 						if (Math.abs(activePos - i) > 1) disabled = true;
 					}
-					if (moveTarget !== 'adjacentAllyOrSelf' && activePos == i) disabled = true;
+					if (moveTarget !== 'adjacentAllyOrSelf' && moveTarget !== 'normalOrSelf' && activePos == i) disabled = true;
 
 					if (disabled) {
 						targetMenus[1] += '<button disabled style="visibility:hidden"></button> ';
@@ -1339,10 +1339,10 @@
 				var isTerastal = !!(this.$('input[name=terastallize]')[0] || '').checked;
 
 				var target = e.getAttribute('data-target');
-				var choosableTargets = {normal: 1, any: 1, adjacentAlly: 1, adjacentAllyOrSelf: 1, adjacentFoe: 1};
+				var choosableTargets = {normal: 1, normalOrSelf: 1, any: 1, adjacentAlly: 1, adjacentAllyOrSelf: 1, adjacentFoe: 1};
 
 				this.choice.choices.push('move ' + pos + (isMega ? ' mega' : '') + (isMegaX ? ' megax' : '') + (isMegaY ? ' megay' : '') + (isZMove ? ' zmove' : '') + (isUltraBurst ? ' ultra' : '') + (isDynamax ? ' dynamax' : '') + (isTerastal ? ' terastallize' : ''));
-				if (nearActive.length > 1 && target in choosableTargets) {
+				if ((nearActive.length > 1 || target === 'normalOrSelf') && target in choosableTargets) {
 					this.choice.type = 'movetarget';
 					this.choice.moveTarget = target;
 					this.updateControlsForPlayer();

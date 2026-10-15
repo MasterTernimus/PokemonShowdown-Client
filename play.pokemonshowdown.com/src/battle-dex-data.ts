@@ -1207,7 +1207,7 @@ interface MoveFlags {
 	wind?: 1 | 0;
 }
 
-type MoveTarget = 'normal' | 'any' | 'adjacentAlly' | 'adjacentFoe' | 'adjacentAllyOrSelf' | // single-target
+type MoveTarget = 'normal' | 'normalOrSelf' | 'any' | 'adjacentAlly' | 'adjacentFoe' | 'adjacentAllyOrSelf' | // single-target
 	'self' | 'randomNormal' | // single-target, automatic
 	'allAdjacent' | 'allAdjacentFoes' | // spread
 	'allySide' | 'foeSide' | 'all'; // side and field

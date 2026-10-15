@@ -426,7 +426,7 @@ class BattlePanel extends PSRoomPanel<BattleRoom> {
 				let disabled = false;
 				if (moveTarget === 'adjacentAlly' || moveTarget === 'adjacentAllyOrSelf') {
 					disabled = true;
-				} else if (moveTarget === 'normal' || moveTarget === 'adjacentFoe') {
+				} else if (moveTarget === 'normal' || moveTarget === 'normalOrSelf' || moveTarget === 'adjacentFoe') {
 					if (Math.abs(userSlotCross - i) > 1) disabled = true;
 				}
 
@@ -441,10 +441,10 @@ class BattlePanel extends PSRoomPanel<BattleRoom> {
 				let disabled = false;
 				if (moveTarget === 'adjacentFoe') {
 					disabled = true;
-				} else if (moveTarget === 'normal' || moveTarget === 'adjacentAlly' || moveTarget === 'adjacentAllyOrSelf') {
+				} else if (moveTarget === 'normal' || moveTarget === 'normalOrSelf' || moveTarget === 'adjacentAlly' || moveTarget === 'adjacentAllyOrSelf') {
 					if (Math.abs(userSlot - i) > 1) disabled = true;
 				}
-				if (moveTarget !== 'adjacentAllyOrSelf' && userSlot === i) disabled = true;
+				if (moveTarget !== 'adjacentAllyOrSelf' && moveTarget !== 'normalOrSelf' && userSlot === i) disabled = true;
 
 				if (pokemon?.fainted) pokemon = null;
 				return <PokemonButton

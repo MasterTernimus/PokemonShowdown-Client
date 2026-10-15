@@ -182,7 +182,7 @@ function isHiddenTeamBuilderSpecies(id: string, includeSawsbuckBase = false) {
 	if (HIDDEN_TEAMBUILDER_SPECIES.has(speciesId) || VIVILLON_PATTERN_SPECIES.has(speciesId)) return true;
 	if (isVariantSelectorOnlySpecies(Dex.species.get(speciesId))) return true;
 	if (speciesId === 'deerling' || speciesId.startsWith('deerling')) return true;
-	if (speciesId.startsWith('sawsbuck') && (speciesId !== 'sawsbuck' || includeSawsbuckBase)) return true;
+	if (speciesId.startsWith('sawsbuck') && !['sawsbuck', 'sawsbucksummer', 'sawsbuckautumn', 'sawsbuckwinter'].includes(speciesId)) return true;
 	if (speciesId.startsWith('furfrou') && speciesId !== 'furfrou') return true;
 	if (speciesId.startsWith('silvally') && speciesId !== 'silvally') return true;
 	return false;

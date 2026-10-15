@@ -190,9 +190,10 @@ class BattleChoiceBuilder {
 			return "You do not need to manually choose to pass; the client handles it for you automatically";
 		}
 		if (choice.choiceType === 'move') {
-			if (!choice.targetLoc && this.requestLength() > 1) {
-				const choosableTargets = ['normal', 'any', 'adjacentAlly', 'adjacentAllyOrSelf', 'adjacentFoe'];
-				if (choosableTargets.includes(this.getChosenMove(choice, this.index()).target)) {
+			const target = this.getChosenMove(choice, this.index()).target;
+			if (!choice.targetLoc && (this.requestLength() > 1 || target === 'normalOrSelf')) {
+				const choosableTargets = ['normal', 'normalOrSelf', 'any', 'adjacentAlly', 'adjacentAllyOrSelf', 'adjacentFoe'];
+				if (choosableTargets.includes(target)) {
 					this.current.move = choice.move;
 					this.current.mega = choice.mega;
 					this.current.megax = choice.megax;

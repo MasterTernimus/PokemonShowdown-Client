@@ -104,8 +104,8 @@
     "shortDesc": "Speed Boost + Long Reach; modified Magma Armor; Flame Body passive is separate."
   },
   "sweetsanctuary": {
-    "desc": "Ripen doubles HP restored and stat boosts from Berries, and doubles resistance Berries' damage reduction. When Decorate actually raises at least one stat, heals that target by 1/4 of its current max HP once after the move. Failed or blocked Decorate, or no actual positive boost, grants no healing. Normal healing restrictions apply. Ripen does not multiply this healing. Friend Guard remains the species passive; G-Max Finale retains its separate 1/6 active-side healing.",
-    "shortDesc": "Ripen; successful Decorate heals its boosted target by 1/4 max HP."
+    "shortDesc": "Stamina; protects own and allies' Defense/Sp. Def from opposing drops.",
+    "desc": "Full local Stamina: opposing HP hits heal 1/16 max HP; the first each turn also raises Defense by 1. Protects itself and active allies from opposing Defense/Sp. Def drops. Stat resets and self-inflicted drops still apply."
   },
   "emergencyexit": {
     "desc": "When this Pokemon has more than 1/2 its max HP and takes damage bringing it to 1/2 or less of its max HP, it immediately switches out to a chosen ally. This effect applies after all hits from a multi-hit move. This effect is prevented if the move had a secondary effect removed by the Sheer Force Ability. This effect applies to both direct and indirect damage, except Curse and Substitute on use, Belly Drum, Pain Split, and confusion damage.",
@@ -452,8 +452,8 @@
     "shortDesc": "Once per entry, reveals the first incoming opponent's item while already active."
   },
   "baitedbloom": {
-    "desc": "Gluttony makes pinch Berries activate at half HP and Leftovers heal 1/8 max HP each turn. Regenerator restores 1/3 base max HP when switching out. Sticky Hold is supplied separately by base Victreebel's species passive. No first-Berry stat reward.",
-    "shortDesc": "Gluttony and Regenerator: early pinch Berries, stronger Leftovers; heals 1/3 on switching."
+    "shortDesc": "Gluttony and Regenerator: early pinch Berries, stronger Leftovers; heals 1/3 on switching.",
+    "desc": "Gluttony makes pinch Berries activate at half HP and Leftovers heal 1/8 max HP each turn. Regenerator restores 1/3 base max HP when switching out. Digestive Sap is supplied separately by base Victreebel's species passive. No first-Berry stat reward."
   },
   "guidinggallop": {
     "desc": "Pastel Veil, including poison prevention/cures for itself and allies, opposing Poison-move Attack/Sp. Atk drops and field effects. A successful status move directly targeting another ally also clears that ally's negative Speed stages, preserving positive Speed. Self-targeting and side-wide or field moves do not trigger it.",
@@ -552,8 +552,8 @@
     "shortDesc": "Power Drill + Whiplash; adaptive Poison/Ground category; horn/tail +1 critical stage."
   },
   "matriarchsvigil": {
-    "desc": "Thick Fat and Aroma Veil. Once per genuine entry, after this Pokemon or an adjacent ally survives an opposing whole damaging move that takes it from above half HP to half HP or less, the injured Pokemon gains +1 Defense and +1 Sp. Def after all hits. One shared activation per entry. Residual damage, friendly fire and Substitute-only damage do not qualify. Ability restarts do not reset the budget. Rivalry is a separate species passive; Friend Guard is not included.",
-    "shortDesc": "Thick Fat + Aroma Veil; once/entry, surviving a hit across half HP gives self or an adjacent ally +1 Def/SpD."
+    "shortDesc": "Thick Fat + Aroma Veil + Friend Guard; once/entry, surviving a hit across half HP gives self or an adjacent ally +1 Def/SpD.",
+    "desc": "Full local Thick Fat, Aroma Veil and Friend Guard. Once per genuine entry, after this Pokemon or an adjacent ally survives an opposing whole damaging move that takes it from above half HP to half HP or less, the injured Pokemon gains +1 Defense and +1 Sp. Def after all hits. One shared activation per entry. Residual damage, friendly fire and Substitute-only damage do not qualify. Ability restarts do not reset the budget. Friend Guard reduces damage to other allies by 25%, independently stacking with the separate Rivalry passive. Neither ally reduction protects its own holder."
   },
   "bloodmoongaze": {
     "desc": "Infiltrator bypasses Substitute and opposing screens. Competitive grants +2 Sp. Atk when an opposing Pokemon lowers a stat; on Chessboard it instead scales move power up to 2x as HP falls. Mind’s Eye is a separate species passive.",
@@ -861,5 +861,13 @@
     "name": "Last Brood",
     "shortDesc": "Swarm; once/entry, surviving a hit at half HP creates a free Substitute.",
     "desc": "Swarm. Once per entry after surviving a whole opposing attack that deals HP damage, creates a free Substitute with floor(max HP/4) HP if at half HP or below. An existing Substitute preserves the allowance."
+  },
+  "agonyflame": {
+    "shortDesc": "Fire hits burn foes and block healing for 2 turns; requires actual opposing HP damage.",
+    "desc": "After a damaging Fire move finishes, burns each surviving active opponent that lost HP and applies Heal Block for 2 turns including the current turn. Normal status protections apply. A longer Heal Block is not shortened. A target already burned by the move is not burned again after a curing Berry. Protected, immune, Substitute-only, allied, self and delayed damage do not qualify. As a species passive it remains active under ability suppression."
+  },
+  "barbharvest": {
+    "shortDesc": "Suction Cups; removes own-side Stealth Rock before taking entry damage.",
+    "desc": "Full local Suction Cups. On each genuine switch-in, absorbs and removes Stealth Rock from its own side before it causes entry damage. Other hazards remain. No healing, stat boost, berry restoration or embedded Iron Barbs. Ability restarts do not activate it, and suppression prevents removal. Iron Barbs is its separate species passive."
   }
 }

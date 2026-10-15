@@ -123,7 +123,7 @@
       "fairyring"
     ],
     "rapidashgalar": [
-      "pastelveil"
+      "guidinggallop"
     ],
     "alakazam": [
       "revealinggaze"
@@ -238,6 +238,42 @@
     ],
     "scolipedeazzy": [
       "merciless"
+    ],
+    "rapidash": [
+      "racingspirit"
+    ],
+    "parasectmega": [
+      "mycelialbond"
+    ],
+    "victreebel": [
+      "digestivesap"
+    ],
+    "laprasazzy": [
+      "liquidvoice"
+    ],
+    "lanturnalt": [
+      "illuminate"
+    ],
+    "poliwrath": [
+      "tirelessmuscle"
+    ],
+    "ninetalesalola": [
+      "crystalward"
+    ],
+    "houndoom": [
+      "agonyflame"
+    ],
+    "houndoommega": [
+      "agonyflame"
+    ],
+    "golurk": [
+      "aftermath"
+    ],
+    "ferrothorn": [
+      "ironbarbs"
+    ],
+    "froslassmega": [
+      "rimeboundspirit"
     ]
   },
   "slots": {
@@ -494,6 +530,98 @@
       "0": "Fallen Star",
       "1": "Long Reach",
       "H": "Canopy Archer"
+    },
+    "rapidash": {
+      "0": "Fire Mane",
+      "1": "Speed Boost",
+      "H": "Flame Body"
+    },
+    "nidoking": {
+      "0": "Royal Decree",
+      "1": "Sheer Force",
+      "H": "Royal Onslaught"
+    },
+    "victreebel": {
+      "0": "Chlorophyll",
+      "1": "Corrosion",
+      "H": "Baited Bloom"
+    },
+    "alcremie": {
+      "0": "Soothing Cream",
+      "H": "Master Pâtissier"
+    },
+    "laprasazzy": {
+      "0": "Safe Harbor",
+      "1": "Ocean Lullaby",
+      "H": "Ice Scales"
+    },
+    "lanturnalt": {
+      "0": "Abyss Lure",
+      "1": "Drizzle",
+      "H": "Guiding Light"
+    },
+    "alcremierubycream": {
+      "0": "Soothing Cream",
+      "H": "Master Pâtissier"
+    },
+    "alcremiematchacream": {
+      "0": "Soothing Cream",
+      "H": "Master Pâtissier"
+    },
+    "alcremiemintcream": {
+      "0": "Soothing Cream",
+      "H": "Master Pâtissier"
+    },
+    "alcremielemoncream": {
+      "0": "Soothing Cream",
+      "H": "Master Pâtissier"
+    },
+    "alcremiesaltedcream": {
+      "0": "Soothing Cream",
+      "H": "Master Pâtissier"
+    },
+    "alcremierubyswirl": {
+      "0": "Soothing Cream",
+      "H": "Master Pâtissier"
+    },
+    "alcremiecaramelswirl": {
+      "0": "Soothing Cream",
+      "H": "Master Pâtissier"
+    },
+    "alcremierainbowswirl": {
+      "0": "Soothing Cream",
+      "H": "Master Pâtissier"
+    },
+    "kabutops": {
+      "0": "Swift Swim",
+      "1": "Sharpness",
+      "H": "Blood Sickle"
+    },
+    "omastar": {
+      "0": "Swift Swim",
+      "1": "Mega Launcher",
+      "H": "Grasping Current"
+    },
+    "houndoom": {
+      "0": "Flash Fire",
+      "1": "Infiltrator",
+      "H": "Battle Fervor"
+    },
+    "ferrothorn": {
+      "0": "Mineral Grip",
+      "1": "Filter",
+      "H": "Rooted Iron"
+    },
+    "stunfisk": {
+      "0": "Livewire Trap",
+      "1": "Mudflat Dynamo",
+      "H": "Earth Eater",
+      "S": "Adaptive Cycle"
+    },
+    "stunfiskgalar": {
+      "0": "Iron Clamp",
+      "1": "Baited Counter",
+      "S": "Adaptive Cycle"
     }
   },
   "effects": {
@@ -566,6 +694,20 @@
     "grapplingclaws": [
       "abyssalclaws",
       "toughclaws"
+    ],
+    "sweetsanctuary": [
+      "stamina",
+      "sweetsanctuary"
+    ],
+    "matriarchsvigil": [
+      "aromaveil",
+      "friendguard",
+      "matriarchsvigil",
+      "thickfat"
+    ],
+    "barbharvest": [
+      "barbharvest",
+      "suctioncups"
     ]
   },
   "descriptions": {
@@ -708,6 +850,26 @@
     "gulpmissile": {
       "desc": "If this Pokemon is a Cramorant, it changes forme when it hits a target with Surf or uses the first turn of Dive successfully. It becomes Gulping Form with an Arrokuda in its mouth if it has more than 1/2 of its maximum HP remaining, or Gorging Form with a Pikachu in its mouth if it has 1/2 or less of its maximum HP remaining. If Cramorant gets hit in Gulping or Gorging Form, it spits the Arrokuda or Pikachu at its attacker, even if it has no HP remaining. The projectile deals damage equal to 1/4 of the target's maximum HP, rounded down; this damage is blocked by the Magic Guard Ability but not by a substitute. An Arrokuda also lowers the target's Defense by 1 stage, and a Pikachu paralyzes the target. Cramorant will return to normal if it spits out a projectile, switches out, or Dynamaxes. Species passive on all three Cramorant forms, replacing Gluttony; works independently of the selected ability and preserves it through loading and discharge. Water Surface/Underwater force Gulping on entry or terrain change; Electric/Factory/Short-Circuit make Surf load Gorging. Underwater projectile damage is quarter target max HP multiplied by ordinary Water effectiveness (zero if Water-immune); other fields keep the ordinary quarter-HP projectile.",
       "shortDesc": "When hit after Surf/Dive, attacker takes 1/4 max HP and -1 Defense or paralysis."
+    },
+    "sweetsanctuary": {
+      "shortDesc": "Stamina; protects own and allies' Defense/Sp. Def from opposing drops.",
+      "desc": "Full local Stamina: opposing HP hits heal 1/16 max HP; the first each turn also raises Defense by 1. Protects itself and active allies from opposing Defense/Sp. Def drops. Stat resets and self-inflicted drops still apply."
+    },
+    "matriarchsvigil": {
+      "shortDesc": "Thick Fat + Aroma Veil + Friend Guard; once/entry, surviving a hit across half HP gives self or an adjacent ally +1 Def/SpD.",
+      "desc": "Full local Thick Fat, Aroma Veil and Friend Guard. Once per genuine entry, after this Pokemon or an adjacent ally survives an opposing whole damaging move that takes it from above half HP to half HP or less, the injured Pokemon gains +1 Defense and +1 Sp. Def after all hits. One shared activation per entry. Residual damage, friendly fire and Substitute-only damage do not qualify. Ability restarts do not reset the budget. Friend Guard reduces damage to other allies by 25%, independently stacking with the separate Rivalry passive. Neither ally reduction protects its own holder."
+    },
+    "baitedbloom": {
+      "shortDesc": "Gluttony and Regenerator: early pinch Berries, stronger Leftovers; heals 1/3 on switching.",
+      "desc": "Gluttony makes pinch Berries activate at half HP and Leftovers heal 1/8 max HP each turn. Regenerator restores 1/3 base max HP when switching out. Digestive Sap is supplied separately by base Victreebel's species passive. No first-Berry stat reward."
+    },
+    "agonyflame": {
+      "shortDesc": "Fire hits burn foes and block healing for 2 turns; requires actual opposing HP damage.",
+      "desc": "After a damaging Fire move finishes, burns each surviving active opponent that lost HP and applies Heal Block for 2 turns including the current turn. Normal status protections apply. A longer Heal Block is not shortened. A target already burned by the move is not burned again after a curing Berry. Protected, immune, Substitute-only, allied, self and delayed damage do not qualify. As a species passive it remains active under ability suppression."
+    },
+    "barbharvest": {
+      "shortDesc": "Suction Cups; removes own-side Stealth Rock before taking entry damage.",
+      "desc": "Full local Suction Cups. On each genuine switch-in, absorbs and removes Stealth Rock from its own side before it causes entry damage. Other hazards remain. No healing, stat boost, berry restoration or embedded Iron Barbs. Ability restarts do not activate it, and suppression prevents removal. Iron Barbs is its separate species passive."
     }
   }
 }

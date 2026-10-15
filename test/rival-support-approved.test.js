@@ -11,7 +11,7 @@ describe('Rival/support approved client',()=>{
  });
  it('exports exact passives and updated Mega stats',()=>{
   for(const [id,passive]of [['zangoose','rivalresolve'],['sevipermega','rivalmalice'],['parasectparasite','mycelialbond'],['klinklang','aimassist'],['tinkaton','moldbreaker']])assert.deepEqual(Dex.species.get(id).passives,[passive]);
-  assert.equal(Dex.species.get('sevipermega').baseStats.spe,65);assert.deepEqual(Dex.species.get('parasectmega').passives,['dryskin']);
+  assert.equal(Dex.species.get('sevipermega').baseStats.spe,65);assert.deepEqual(Dex.species.get('parasectmega').passives,['mycelialbond']);
  });
  it('keeps separate selected components and passive mechanics',()=>{
   assert(Dex.getAbilityEffects('sirius').has('venamskiss'));assert(Dex.getAbilityEffects('toxicarmor').has('battlearmor'));assert(!Dex.getAbilityEffects('venomarmor').has('poisonheal'));assert(!Dex.getAbilityEffects('scrapbreaker').has('moldbreaker'));
