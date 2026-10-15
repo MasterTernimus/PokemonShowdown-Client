@@ -3,14 +3,14 @@ const assert = require('assert').strict, fs = require('fs'), path = require('pat
 require('./battle.test');
 const {BattleTooltips, ModifiableValue} = new Function(fs.readFileSync(path.join(__dirname, '../play.pokemonshowdown.com/js/battle-tooltips.js'), 'utf8') + '\nreturn {BattleTooltips, ModifiableValue};')();
 describe('Final three Mega designs UI', () => {
- it('publishes only the approved Aura Precision components and Entrenched passive', () => {
+ it('publishes only the approved Aura Precision components and Twin Fang passive', () => {
   const s = Dex.species.get('Lucario-Mega-Z');
   assert.equal(s.abilities[0], 'Aura Precision');
   assert.deepEqual(s.passives, ['auraguard']);
   const effects = Dex.getAbilityEffects('auraprecision');
   assert(effects.has('shielddust') && effects.has('technician'));
   assert(!effects.has('dualwield') && !effects.has('innerfocus'));
-  assert.deepEqual(Dex.species.get('Haxorus-Mega').passives, ['entrenched']);
+  assert.deepEqual(Dex.species.get('Haxorus-Mega').passives, ['twinfang']);
  });
  it('previews Aura Precision Technician once with the Factory threshold and honors suppression', () => {
   const battle = new Battle({debug: true, log: ['|init|battle', '|gen|9', '|gametype|singles', '|switch|p1a: Lucario|Lucario-Mega-Z, L100|100/100', '|switch|p2a: Mew|Mew, L100|100/100']});

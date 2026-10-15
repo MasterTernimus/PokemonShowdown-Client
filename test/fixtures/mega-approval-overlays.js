@@ -85,3 +85,11 @@ Object.assign(before, {gyarados:['unbridledwrath'],golisopod:['toughclaws'],corv
 const beforeOctoberEffects=exports.effects, beforeOctoberDescription=exports.description;
 exports.effects=(id,original)=>october.effects[id] || beforeOctoberEffects(id,original);
 exports.description=(id,key,text)=>october.descriptions[id]?.[key] ?? beforeOctoberDescription(id,key,text);
+
+// Explicit reviewed migrations; evidence is recorded with each static fixture group.
+const finish=require('./starter-finish-reviewed.json');
+Object.assign(before,finish.passives);
+const priorFinishEffects=exports.effects,priorFinishDescription=exports.description;
+exports.effects=(id,original)=>finish.effects[id]||priorFinishEffects(id,original);
+exports.description=(id,key,text)=>finish.descriptions[id]?.[key]??priorFinishDescription(id,key,text);
+exports.abilities=(id,fallback)=>({...fallback,...finish.slots[id]});

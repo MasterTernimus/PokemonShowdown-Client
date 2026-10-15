@@ -572,12 +572,22 @@
 .compact-form-status {font-size:11px;flex-basis:100%;}
 @media(max-width:640px){.compact-form-selector select{max-width:185px;}}
 
-/* One consistent badge row, including Supreme Overlord and Thermal Exchange. */
+/* Uniform passive buttons; descriptions occupy a separate full-width card row. */
 .setchart .setcell-ability { width:110px; }
-.setchart .setcell-ability > .starter-passives { width:110px; max-width:none; flex-wrap:nowrap; margin-top:3px; line-height:18px; }
-.setchart .setcell-ability > .starter-passives .passive-chip { flex:none; width:144px; max-width:none; box-sizing:border-box; padding:0 5px; font-size:11px; line-height:18px; text-align:center; white-space:nowrap; overflow-wrap:normal; border-radius:4px; }
+.setchart .setcell-ability > .starter-passives { width:160px; max-width:none; flex-wrap:nowrap; margin-top:4px; line-height:22px; }
+.setchart .setcell-ability > .starter-passives > label { display:none; }
+.setchart .setcell-ability > .starter-passives .passive-chip { flex:none; width:160px; max-width:100%; box-sizing:border-box; height:24px; padding:0 5px; font:600 11px/22px Verdana,sans-serif; text-align:center; white-space:nowrap; overflow-wrap:normal; border-radius:4px; cursor:pointer; }
+.passive-chip:hover, .passive-chip[aria-expanded="true"] { background:#d3ece2; border-color:#428775; }
+.passive-chip:focus-visible { outline:2px solid #4a9dc4; outline-offset:2px; }
+.setchart .set-passive-description { clear:both; grid-column:1/-1; width:auto; max-width:100%; box-sizing:border-box; margin:8px 4px 4px; padding:8px 10px; font:12px/1.5 Verdana,sans-serif; }
 @media(max-width:639px) {
  .setchart .setcell-ability { width:auto; }
  .setchart .setcell-ability > .starter-passives { width:100%; }
- .setchart .setcell-ability > .starter-passives .passive-chip { width:144px; max-width:100%; }
+ .teamwrapper .setchart .setcell-ability > .starter-passives .passive-chip { width:160px; max-width:100%; height:32px; min-height:32px; padding:0 4px; line-height:30px; }
+ .setchart .set-passive-description { margin:0; }
+}
+
+
+@media(max-width:359px) {
+ .teamwrapper .setchart .setcell-ability > .starter-passives .passive-chip { font-size:10px; }
 }

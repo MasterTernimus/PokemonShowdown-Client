@@ -17,8 +17,8 @@ describe('Composite description client parity', () => {
   const snapshot = require('../server-data-sync-manifest.json').snapshot.abilities;
   for (const [id, text] of Object.entries({...expected,...require('./fixtures/mega-approved-descriptions.json'),...require('./fixtures/selected-simplifications-descriptions.json'),...require('./fixtures/grip-pressure-descriptions.json'),...require('./fixtures/shelter-audit-descriptions.json'),...require('./fixtures/shortlist-descriptions.json')})) for (const key of ['shortDesc', 'desc']) {
    assert.equal(Dex.abilities.get(id)[key], require('./fixtures/mega-approval-overlays').description(id,key,text[key]), id + ' hover/selector');
-   assert.equal(raw[id][key], require('./fixtures/mega-approval-overlays').description(id,key,text[key]), id + ' installed');
-   assert.equal(snapshot[id][key], require('./fixtures/mega-approval-overlays').description(id,key,text[key]), id + ' snapshot');
+   assert.equal(raw[Dex.abilities.get(id).id][key], require('./fixtures/mega-approval-overlays').description(id,key,text[key]), id + ' installed');
+   assert.equal(snapshot[Dex.abilities.get(id).id][key], require('./fixtures/mega-approval-overlays').description(id,key,text[key]), id + ' snapshot');
   }
  });
  it('resolves renamed aliases and nested identities without repeated effects', () => {
@@ -38,7 +38,7 @@ describe('Composite description client parity', () => {
   assert(Dex.getAbilityEffects('aeviantoxin').has('merciless'));
   assert(Dex.getAbilityEffects('verdantdrake').has('regenerator'));
   assert(Dex.getAbilityEffects('greatmarsh').has('toxicchain'));
-  assert(Dex.getAbilityEffects('fluffycraft').has('naturalcure'));
+  assert.equal(Dex.abilities.get('fluffycraft').id,'silkensalvo');assert(!Dex.getAbilityEffects('fluffycraft').has('naturalcure'));
   assert.deepEqual([...Dex.getAbilityEffects('dawnherald')].sort(), ['dawnherald', 'drought', 'friendguard']);
  });
 });

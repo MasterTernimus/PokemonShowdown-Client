@@ -8,11 +8,11 @@ global.BattlePokemonSprites = {};
 global.BattlePokemonSpritesBW = {};
 require('../play.pokemonshowdown.com/js/battle-dex-data');
 require('../play.pokemonshowdown.com/js/battle-dex');
-const context = {window:{Room:{extend: x => x}},Popup:{extend:x=>x},jQuery:{},Dex,toID,PSModel:function(){},preact:require('preact')};
+const context = {window:{Room:{extend: x => {function Room() {} Room.prototype=x; return Room;}}},Popup:{extend:x=>x},jQuery:{},Dex,toID,PSModel:function(){},preact:require('preact')};
 vm.runInNewContext(fs.readFileSync(require.resolve('../play.pokemonshowdown.com/js/battle-dex-data.js'),'utf8'),context);
 vm.runInNewContext(fs.readFileSync(require.resolve('../play.pokemonshowdown.com/js/client-teambuilder.js'),'utf8'),context);
 vm.runInNewContext(fs.readFileSync(require.resolve('../play.pokemonshowdown.com/js/battle-team-editor.js'),'utf8'),context);
-const roomMethods=context.window.TeambuilderRoom;
+const roomMethods=context.window.TeambuilderRoom.prototype;
 const rows = [
  ['Eevee-Starter','Mind Freeze','Auroreon'], ['Eevee-Starter','Eclipse','Soluneon'],
  ['Eevee-Starter','Ascendance','Divineon'], ['Eevee-Starter','Sinister Blaze','Abysseon'],

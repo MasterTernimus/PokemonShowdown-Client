@@ -6,7 +6,7 @@ const before=require('./fixtures/passive-overlap-before.json');
 describe('Approved passive slots and field move UI',()=>{
  for(const r of replacements)it(r.id+' preserves passive and other slots after '+r.after,()=>{
   const old=before.find(s=>s.id===r.id),species=Dex.species.get(r.id),expected=Object.fromEntries(old.slots.map(s=>[s.slot,s.name]));
-  expected[r.slot]=r.after;if(r.id==='butterfree')expected[0]='Gentle Scales';assert.deepEqual(species.abilities,expected);assert.deepEqual(species.passives,r.id === 'butterfree' ? ['shielddust'] : old.passives);
+  expected[r.slot]=r.after;if(r.id==='butterfree')expected[0]='Gentle Scales';assert.deepEqual(species.abilities,require('./fixtures/mega-approval-overlays').abilities(r.id,expected));assert.deepEqual(species.passives,require('./fixtures/mega-approval-overlays').passives(r.id,r.id === 'butterfree' ? ['shielddust'] : old.passives));
  });
  it('describes only Aura creation and the updated Neutralization counterplay',()=>{
   const moves=require('../server-data-sync-manifest.json').snapshot.moves;

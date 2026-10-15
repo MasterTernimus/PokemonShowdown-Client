@@ -1979,6 +1979,7 @@ export class PokemonSprite extends Sprite {
 		instruct: ['Instruct', 'neutral'],
 		beakblast: ['Beak Blast', 'neutral'],
 		laserfocus: ['Laser Focus', 'good'],
+		moltenguard: ['Molten Guard', 'good'],
 		spotlight: ['Spotlight', 'neutral'],
 		itemremoved: null,
 		// partial trapping

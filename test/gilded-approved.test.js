@@ -1,0 +1,11 @@
+'use strict';
+const assert=require('assert').strict,fs=require('fs');require('./battle.test');
+const {BattleTooltips,ModifiableValue}=new Function(fs.readFileSync('play.pokemonshowdown.com/js/battle-tooltips.js','utf8')+'\nreturn {BattleTooltips,ModifiableValue};')();
+require('../play.pokemonshowdown.com/js/battle-field-rules.js');
+new Function(fs.readFileSync('play.pokemonshowdown.com/js/battle-field-tooltips.js','utf8'))();
+describe('Approved Gilded move profiles',()=>{
+ for(const mode of ['singles','doubles','freeforall'])for(const ability of ['No Ability','Hydra Bond','Hydra Heart'])it(mode+' '+ability+' predicts Helix hit count',()=>{const p=Dex.getGildedMoveProfile(Dex.moves.get('gildedhelix'),['Dark','Dragon'],ability,mode);assert.equal(p.hits,ability==='No Ability'?2:3);assert.equal(p.type,'Dragon');assert.equal(p.basePower,50);assert.equal(p.category,'Special');});
+ for(const [types,type]of [[['Normal','Fairy'],'Normal'],[['Ghost','Dark'],'Ghost'],[['Fairy'],'Fairy'],[['Dark'],'Dark']])it('current types '+types,()=>{assert.equal(Dex.getGildedMoveProfile(Dex.moves.get('gildedarrow'),types,'').type,type);});
+ it('keeps ordinary Hydra Arrow reduced hits and FFA single spread',()=>{assert.match(Dex.getGildedMoveProfile(Dex.moves.get('gildedarrow'),['Dragon'],'Hydra Bond').text,/0.3/);const p=Dex.getGildedMoveProfile(Dex.moves.get('gildedarrow'),['Dragon'],'Hydra Bond','freeforall');assert.equal(p.hits,1);assert.match(p.text,/1.3/);});
+ it('uses active ability suppression for hit count and conditional Dragon Den power',()=>{const b=new Battle({debug:true,log:['|init|battle','|gen|9','|gametype|singles','|switch|p1a: Mew|Mew, L100|100/100','|switch|p2a: Mew|Mew, L100|100/100']});try{const p=b.p1.active[0],own={speciesForme:'Mew',ability:'Hydra Heart',baseAbility:'Hydra Heart',passives:[],item:'',hp:100,maxhp:100,level:100,status:'',stats:{atk:100,def:100,spa:100,spd:100,spe:100}},tips=new BattleTooltips(b),m=Dex.moves.get('gildedhelix');b.addPseudoWeather("Dragon's Den Terrain");assert.equal(tips.getMoveBasePower(m,'Dragon',new ModifiableValue(b,p,own),b.p2.active[0]).value,90);p.volatiles.gastroacid=['gastroacid'];assert.equal(Dex.getGildedMoveProfile(m,['Dragon'],p.effectiveAbility(own)).hits,2);assert.equal(tips.getMoveBasePower(m,'Dragon',new ModifiableValue(b,p,own),b.p2.active[0]).value,75);}finally{b.destroy();}});
+});

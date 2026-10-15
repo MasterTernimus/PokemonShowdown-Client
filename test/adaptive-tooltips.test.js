@@ -35,9 +35,9 @@ describe('Adaptive category client parity', () => {
   assert(Dex.getAbilityEffects('railsight').has('innerfocus')); assert(Dex.abilities.get('Rail Sight').desc.includes('1.5x'));
   assert(Dex.moves.get('needlegun').desc.includes('category'));
  });
-	it('exposes the Tidal Voice Aria healing rider without adding an ability component', () => {
-		assert(Dex.abilities.get('Tidal Voice').desc.includes('each active adjacent ally heals 1/8'));
-		assert(Dex.getAbilityEffects('tidalvoice').has('liquidvoice'));
+	it('exposes approved Tidal Voice sound protection and post-attack chance', () => {
+		assert(Dex.abilities.get('Tidal Voice').desc.includes('No negative-stat reset or Sparkling Aria ally healing'));
+		assert(Dex.getAbilityEffects('tidalvoice').has('liquidvoice'));assert(Dex.getAbilityEffects('tidalvoice').has('soundproof'));assert(Dex.abilities.get('tidalvoice').desc.includes('30%'));
 	});
 
  it('shows Limber field protection for direct and composite holders, including suppression', () => {

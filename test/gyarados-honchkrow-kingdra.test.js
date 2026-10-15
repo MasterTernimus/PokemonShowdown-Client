@@ -1,7 +1,7 @@
 'use strict';
 const assert=require('assert').strict;require('./battle.test');
 describe('Gyarados Honchkrow and Kingdra local approved changes',()=>{
- it('Gyarados selectable slots and passive are exact',()=>{const s=Dex.species.get('gyarados');assert.deepEqual(s.abilities,{0:'Intimidate',1:'Tempest Fury',H:'Moxie'});assert.deepEqual(s.passives,['unbridledwrath']);});
+ it('Gyarados selectable slots and passive are exact',()=>{const s=Dex.species.get('gyarados');assert.deepEqual(s.abilities,{0:'Unbridled Wrath',1:'Tempest Fury',H:'Moxie'});assert.deepEqual(s.passives,['intimidate']);});
  it('Wrath exposes both primitive passive components and deduplicates selected Includes',()=>{for(const id of ['sheerforce','innerfocus']){assert(Dex.getPassiveAbilityEffects('unbridledwrath').has(id));assert(Dex.getAbilityComponentExclusions('unbridledwrath',['unbridledwrath']).includes(id));}assert.doesNotMatch(Dex.abilities.get('unbridledwrath').desc,/Intimidate is supplied separately/);});
  it('Honchkrow has Stakeout with original selected slots',()=>{const s=Dex.species.get('honchkrow');assert.deepEqual(s.passives,['stakeout']);assert.deepEqual(s.abilities,{0:'Pressure',1:'Void Command',H:'Supreme Overlord'});});
  for(const[id,passives]of [['gyaradosmega',['defiant']],['gyaradosaevian',[]],['gyaradosaevianmega',[]],['murkrow',['infiltrator']]])it(id+' remains unchanged',()=>assert.deepEqual(Dex.species.get(id).passives,passives));

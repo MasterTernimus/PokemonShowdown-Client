@@ -25,8 +25,8 @@ describe('Credited signature character move search',()=>{
 });
 
 describe('Signature learner removals',()=>{
- for(const[species,credit,move]of [['noctowl','Ciel','winddance'],['goodrahisui','Saphira','dragonrend']])it(species+' is illegal for '+move,()=>{const s=search(credit,species);assert(ids(s).includes(move));assert(s.illegalLabel(move));assert(!BattleLearnsets[species].learnset[move]);});
- for(const[species,credit,move]of [['altaria','Ciel','winddance'],['dragonite','Saphira','dragonrend'],['goodrahisui','Elias','deiludicium']])it(species+' retains '+move,()=>{assert(!search(credit,species).illegalLabel(move));});
+ for(const[species,credit,move]of [['noctowl','Ciel','winddance']])it(species+' is illegal for '+move,()=>{const s=search(credit,species);assert(ids(s).includes(move));assert(s.illegalLabel(move));assert(!BattleLearnsets[species].learnset[move]);});
+ for(const[species,credit,move]of [['goodrahisui','Saphira','dragonrend'],['altaria','Ciel','winddance'],['dragonite','Saphira','dragonrend'],['goodrahisui','Elias','deiludicium']])it(species+' retains '+move,()=>{assert(!search(credit,species).illegalLabel(move));});
 });
 
 describe('Release move search coverage',()=>{

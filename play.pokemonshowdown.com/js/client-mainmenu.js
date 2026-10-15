@@ -1696,7 +1696,8 @@
 			return Popup.prototype.remove.call(this);
 		},
 		escape: function (value) { return BattleLog.escapeHTML('' + value); },
-		scenarioEdited: function () {
+		scenarioEdited: function (event) {
+			if (event && $(event.target).hasClass('calc-form-choice')) return;
 			this.scenarioRevision++;
 			this.pendingScenario = null;
 			this.requestId = null;
@@ -1885,7 +1886,7 @@
 				var draft = app.calculatorDraft;
 				if (draft) { this.$('[name=calc-json]').val(draft); this.importScenario(); }
 				if (app.calculatorInputs) {
-					this.$('input,select,textarea').each(function (i) { var saved = app.calculatorInputs[i]; if (saved && saved.name === this.name) { this.value = saved.value; this.checked = saved.checked; } });
+					this.$('input,select,textarea').each(function (i) { var slot = $(this).closest('.calc-actor').attr('data-slot') || ''; var saved = app.calculatorInputs.find(function (entry) { return entry.name === this.name && entry.slot === slot; }, this); if (saved && this.name) { this.value = saved.value; this.checked = saved.checked; } });
 					this.refreshActors(); this.refreshCalcMoves();
 					this.$('.calc-status').text('Draft restored. Calculate when ready.');
 				}
@@ -2015,8 +2016,12 @@
 			var html = '<div class="calc-result-card"><span class="calc-eyebrow">DEFENDER · SAMPLED DAMAGE</span><div class="calc-result-head"><h3>' + this.escape(data.move) + '</h3><strong>' + main.minPercent.toFixed(1) + '–' + main.maxPercent.toFixed(1) + '%</strong></div><p>' + main.min + '–' + main.max + ' HP removed · KOs: ' + main.kos + '/' + data.samples + ' samples</p><div class="calc-damage-bar" role="img" aria-label="Observed damage ' + main.minPercent.toFixed(1) + ' to ' + main.maxPercent.toFixed(1) + ' percent of maximum HP"><span style="width:' + Math.min(100, main.maxPercent) + '%"></span><b style="width:' + Math.min(100, main.minPercent) + '%"></b></div><small>Percent of max HP lost in these samples.</small></div><h3>' + this.escape(data.move) + ' — observed damage</h3><div style="overflow:auto"><table class="calc-result-table"><tr><th>Slot</th><th>HP removed</th><th>% max HP</th><th>Net HP loss</th><th>Sample KOs</th></tr>';
 			data.results.forEach(function (r) { html += '<tr><th>' + self.escape(r.label) + '</th><td>' + r.min + '–' + r.max + '</td><td>' + r.minPercent.toFixed(1) + '–' + r.maxPercent.toFixed(1) + '%</td><td>' + r.minNetLoss + '–' + r.maxNetLoss + '</td><td>' + r.kos + '/' + data.samples + ' (' + (100 * r.kos / data.samples).toFixed(1) + '%)</td></tr>'; });
 			html += '</table></div><p>Samples do not guarantee a KO.</p><details><summary>Battle details</summary><pre style="white-space:pre-wrap">' + this.escape(JSON.stringify(data.resolved, null, 2)) + '\n' + this.escape(data.exampleLog.join('\n')) + '</pre></details>';
-			this.$('.calc-results').html(this.renderResolvedSummary(data.resolved) + html);
-			this.$('.calc-results')[0].scrollIntoView({block: 'nearest'});
+			this.$('.calc-results').html(html);
+			var card = this.$('.calc-result-card').detach();
+			var detail = $('<details class="calc-result-details"><summary>Damage table &amp; battle details</summary></details>');
+			detail.append(this.renderResolvedSummary(data.resolved), this.$('.calc-results').contents().detach());
+			this.$('.calc-results').append(card, detail);
+			// Results occupy the center panel; retain the user's scroll position.
 		}
 	});
 	var CustomCalculatorRoom = this.CustomCalculatorRoom = Room.extend($.extend({}, CustomCalculatorPopup.prototype, {
@@ -2024,9 +2029,56 @@
 		type: 'calculator', title: 'Calculator', workspace: true, minWidth: 320, maxWidth: 1100,
 		initialize: function () { this.$el.addClass('calculator-workspace custom-calculator'); CustomCalculatorPopup.prototype.initialize.call(this); this.$el.removeAttr('style'); },
 		close: function () { app.leaveRoom(this.id); },
-		remove: function () { if (this.metadata) { app.calculatorDraft = JSON.stringify(this.scenario()); app.calculatorInputs = this.$('input,select,textarea').map(function () { return {name: this.name, value: this.value, checked: this.checked}; }).get(); } clearTimeout(this.calcTimer); return Room.prototype.remove.call(this); },
+		remove: function () { if (this.metadata) { app.calculatorDraft = JSON.stringify(this.scenario()); app.calculatorInputs = this.$('input,select,textarea').map(function () { return {slot: $(this).closest('.calc-actor').attr('data-slot') || '', name: this.name, value: this.value, checked: this.checked}; }).get(); } clearTimeout(this.calcTimer); return Room.prototype.remove.call(this); },
 		destroy: function () { this.remove(); }
 	}));
 
 
 }).call(this, jQuery);
+
+// Keep all calculator inputs and engine requests; reorganize the actual workspace.
+(function () {
+ [window.CustomCalculatorPopup.prototype, window.CustomCalculatorRoom.prototype].forEach(function (p) {
+  p.events = Object.assign({}, p.events, {'change .calc-form-choice': 'changeCalcForm'});
+  p.changeCalcForm = function (e) { this.chooseSpecies($(e.currentTarget).closest('.calc-actor').attr('data-slot') + ':' + e.currentTarget.value); };
+  var render = p.renderCalculator;
+  p.renderCalculator = function () {
+   var result = render.apply(this, arguments), matchup = this.$('.calc-matchup').first().addClass('calc-primary-matchup');
+   var center = $('<section class="calc-center" aria-label="Move and damage result"></section>');
+   center.insertAfter(matchup.children().first());
+   center.append(this.$('.calc-action'), this.$('.calc-status'), this.$('.calc-results'));
+   this.$('[name=swapCalcActors]').parent().prependTo(center);
+   var conditions = this.$('.calc-conditions');
+   var conditionDrawer = $('<details class="calc-battle-options"><summary>Battle conditions · field, weather &amp; screens</summary></details>').insertAfter(matchup);
+   conditionDrawer.append(conditions);
+   this.$('.calc-actor').each(function () {
+    var actor = $(this), fields = actor.children('.calc-fields');
+    var load = actor.find('.calc-load-set');
+    var drawer = $('<details class="calc-load-details"><summary>Load a saved set</summary></details>').insertBefore(load); drawer.append(load);
+    actor.find('.calc-ability-slots').prependTo(actor.find('.calc-component-details'));
+    actor.find('.calc-component-details > summary').prependTo(actor.find('.calc-component-details'));
+    fields.find('[name=nature]').closest('label').prependTo(actor.find('.calc-advanced > .calc-fields'));
+    var options = $('<details class="calc-actor-options"><summary>Level, status &amp; transformation</summary><div class="calc-fields"></div></details>').insertAfter(fields);
+    ['level','gender','status','gimmick'].forEach(function (name) { fields.find('[name=' + name + ']').closest('label').appendTo(options.find('.calc-fields')); });
+    fields.find('[name=species]').closest('label').after('<label class="calc-form-label">Form<select class="calc-form-choice" aria-label="Battle form"></select></label>');
+   });
+   this.refreshActors();
+   return result;
+  };
+  var refresh = p.refreshActors;
+  p.refreshActors = function () {
+   var result = refresh.apply(this, arguments), self = this;
+   this.$('.calc-actor').each(function () {
+    var actor = $(this), species = Dex.species.get(actor.find('[name=species]').val());
+    var family = (self.metadata.species || []).filter(function (entry) { return Dex.species.get(entry.name).baseSpecies === species.baseSpecies; });
+    actor.find('.calc-form-choice').html(family.map(function (entry) { return '<option' + (toID(entry.name) === species.id ? ' selected' : '') + '>' + self.escape(entry.name) + '</option>'; }).join(''));
+    actor.find('.calc-form-label').prop('hidden', family.length < 2);
+    actor.find('.calc-passives').remove();
+    var info = (self.metadata.species || []).find(function (entry) { return toID(entry.name) === species.id; });
+    if (info && info.passives && info.passives.length) actor.find('.calc-identity').after('<div class="calc-passives"><b>Passives</b> ' + info.passives.map(function (id) { var a = Dex.getPassiveAbilityDetails(id); return '<details class="passive-details"><summary>' + self.escape(a.name) + '</summary><div>' + self.escape(a.desc || a.shortDesc) + '</div></details>'; }).join('') + '</div>');
+    actor.find('.calc-component-details').toggle(!!actor.find('.calc-ability-slots button').length || !!actor.find('.calc-components').text().match(/^Components:/));
+   });
+   return result;
+  };
+ });
+})();

@@ -14,7 +14,7 @@ describe('Approved October batch metadata',()=>{
  ['flygon','0','voiddrift',['overcoat']],
  ['delphox','H','voidguile',['magician']],
  ['garchomp','H','voidwrath',['moldbreaker']],
- ['venusaur','1','creepingbloom',['infiltrator']],
+ ['venusaur','1','soothingbouquet',['friendguard','infiltrator']],
  ])it(species+' distribution, components and descriptions',()=>{
  const a=Dex.abilities.get(id);assert.equal(Dex.species.get(species).abilities[slot],species==='slowkinggalar'?'Telepathy':a.name);
  if(species==='slowkinggalar')assert.deepEqual(Dex.species.get(species).passives,['eldritchremedy']);

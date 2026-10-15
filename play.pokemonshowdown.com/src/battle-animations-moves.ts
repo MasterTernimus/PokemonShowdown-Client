@@ -36356,3 +36356,5 @@ BattleMoveAnims['irritation'] = {anim: BattleMoveAnims['bugbuzz'].anim};
 BattleMoveAnims['slashandburn'] = {anim: BattleMoveAnims['leafblade'].anim};
 BattleMoveAnims['magmadrift'] = {anim: BattleMoveAnims['lavaplume'].anim};
 BattleMoveAnims['unownbuster'] = {anim: BattleMoveAnims['hiddenpower'].anim};
+
+BattleMoveAnims['mudbarrage'] = {anim: BattleMoveAnims['mudslap'].anim};

@@ -1,0 +1,671 @@
+{
+  "sources": {
+    "nido": "test/sim/abilities/nido-approved.js:approvedPassives and approvedSlots",
+    "queue": "artifacts/queued-abilities/frozen-final.json and test/sim/abilities/queued-abilities-approved.js",
+    "fairy": "artifacts/fairy-eclipse/verified-batch.json",
+    "rival": "artifacts/rival-support/verified-final.json",
+    "latest": "artifacts/calculated-hydraulic/verified-final.json",
+    "fish": "artifacts/gorebyss-huntail/verified-final.json",
+    "rampage": "test/sim/abilities/rampage-approved.js:ordinary Gyarados",
+    "stats": "test/sim/abilities/roster550.js",
+    "crestWeather": "User approval: base Tyranitar Sand Stream and base Abomasnow Snow Warning"
+  },
+  "passives": {
+    "swalot": [
+      "accumulation"
+    ],
+    "gyarados": [
+      "intimidate"
+    ],
+    "milotic": [
+      "marvelscale"
+    ],
+    "miloticmega": [
+      "marvelscale"
+    ],
+    "seviper": [
+      "rivalmalice"
+    ],
+    "sevipermega": [
+      "rivalmalice"
+    ],
+    "tinkaton": [
+      "moldbreaker"
+    ],
+    "probopass": [
+      "noseformation"
+    ],
+    "haxorus": [
+      "twinfang"
+    ],
+    "haxorusmega": [
+      "twinfang"
+    ],
+    "mightyena": [
+      "rattled"
+    ],
+    "mightyenadeso": [
+      "rattled"
+    ],
+    "cinccino": [
+      "shielddust"
+    ],
+    "cinccinodeso": [
+      "shielddust"
+    ],
+    "clefable": [
+      "magicguard"
+    ],
+    "marowak": [
+      "bonewarrior"
+    ],
+    "marowakalola": [
+      "bonewarrior"
+    ],
+    "parasect": [
+      "mycelialbond"
+    ],
+    "hitmonlee": [
+      "bruteforce"
+    ],
+    "hitmonchan": [
+      "ironfist"
+    ],
+    "hitmontop": [
+      "scrappy"
+    ],
+    "zangoose": [
+      "rivalresolve"
+    ],
+    "zangoosemega": [
+      "rivalresolve"
+    ],
+    "reuniclus": [
+      "adaptivecell"
+    ],
+    "wailord": [
+      "leviathanwake"
+    ],
+    "kecleon": [
+      "protean"
+    ],
+    "klinklang": [
+      "aimassist"
+    ],
+    "gorebyss": [
+      "pixilate"
+    ],
+    "huntail": [
+      "duskilate"
+    ],
+    "drifblim": [
+      "flareboost"
+    ],
+    "sawsbuck": [
+      "seasonalstride"
+    ],
+    "sawsbuckspring": [
+      "seasonalstride"
+    ],
+    "sawsbucksummer": [
+      "seasonalstride"
+    ],
+    "sawsbuckautumn": [
+      "seasonalstride"
+    ],
+    "sawsbuckwinter": [
+      "seasonalstride"
+    ],
+    "mrrime": [
+      "mimecraft"
+    ],
+    "shiinotic": [
+      "fairyring"
+    ],
+    "rapidashgalar": [
+      "pastelveil"
+    ],
+    "alakazam": [
+      "revealinggaze"
+    ],
+    "alakazammega": [
+      "revealinggaze"
+    ],
+    "gothitelle": [
+      "eclipsevision"
+    ],
+    "perrserker": [
+      "battlespoils"
+    ],
+    "arbok": [
+      "constrictingcoils"
+    ],
+    "parasectparasite": [
+      "mycelialbond"
+    ],
+    "parasectrejuv": [
+      "mycelialbond"
+    ],
+    "mrmimegalar": [
+      "mimecraft"
+    ],
+    "furret": [
+      "sheddecoy"
+    ],
+    "masquerain": [
+      "prismskimmer"
+    ],
+    "trapinch": [
+      "arenatrap"
+    ],
+    "miloticterajuma": [
+      "marvelscale"
+    ],
+    "miloticaevian": [
+      "marvelscale"
+    ],
+    "vespiquen": [
+      "royalhive"
+    ],
+    "tauros": [
+      "unbrokencharge"
+    ],
+    "taurospaldeacombat": [
+      "unbrokencharge"
+    ],
+    "taurospaldeablaze": [
+      "unbrokencharge"
+    ],
+    "taurospaldeaaqua": [
+      "unbrokencharge"
+    ],
+    "tyranitar": [
+      "sandstream"
+    ],
+    "abomasnow": [
+      "snowwarning"
+    ],
+    "lucario": [
+      "aurasight"
+    ],
+    "dragonite": [
+      "championscommand"
+    ],
+    "metagross": [
+      "meteorcore"
+    ],
+    "garchomp": [
+      "championspoise"
+    ],
+    "cramorant": [
+      "gulpmissile"
+    ],
+    "cramorantgulping": [
+      "gulpmissile"
+    ],
+    "cramorantgorging": [
+      "gulpmissile"
+    ],
+    "goodra": [
+      "thickfat"
+    ],
+    "kommoo": [
+      "overcoat"
+    ]
+  },
+  "slots": {
+    "swalot": {
+      "0": "Adhesive Armor",
+      "1": "Neutralization",
+      "H": "Caustic Ooze"
+    },
+    "gyarados": {
+      "0": "Unbridled Wrath",
+      "1": "Tempest Fury",
+      "H": "Moxie"
+    },
+    "mrmime": {
+      "0": "Invisible Wall",
+      "1": "Silent Act",
+      "H": "Trick Performer"
+    },
+    "huntail": {
+      "0": "Swift Swim",
+      "1": "Abyssal Fang",
+      "H": "Abyssal Current"
+    },
+    "rapidashgalar": {
+      "0": "Psychic Surge",
+      "1": "Speed Boost",
+      "H": "Rapid Response"
+    },
+    "venusaur": {
+      "0": "Pollen Bloom",
+      "1": "Soothing Bouquet",
+      "H": "Chlorophyll"
+    },
+    "nidoqueen": {
+      "H": "Royal Aegis"
+    },
+    "gorebyss": {
+      "0": "Swift Swim",
+      "1": "Pearl Siphon",
+      "H": "Pearl Tide"
+    },
+    "clefable": {
+      "1": "Friend Guard"
+    },
+    "marowak": {
+      "H": "Cursed Body"
+    },
+    "marowakalola": {
+      "1": "Cursed Body"
+    },
+    "mrmimegalar": {
+      "0": "Invisible Wall"
+    },
+    "trapinch": {
+      "0": "Burrow Ambush",
+      "1": "Huge Power",
+      "H": "Antlion Instinct"
+    },
+    "zangoose": {
+      "1": "Toxic Boost"
+    },
+    "armaldo": {
+      "0": "Abyssal Claws"
+    },
+    "kecleon": {
+      "1": "Pickpocket"
+    },
+    "vespiquen": {
+      "0": "Royal Presence",
+      "1": "Queenly Majesty",
+      "H": "Hive Sanctuary"
+    },
+    "drifblim": {
+      "H": "Aftermath"
+    },
+    "probopass": {
+      "1": "Magnetic Command"
+    },
+    "cinccino": {
+      "0": "Plush Whiplash",
+      "H": "Silken Salvo"
+    },
+    "cinccinodeso": {
+      "H": "Silken Salvo"
+    },
+    "gothitelle": {
+      "H": "Astral Concord"
+    },
+    "reuniclus": {
+      "0": "Cellular Concord"
+    },
+    "sawsbuck": {
+      "0": "Overcoat"
+    },
+    "sawsbuckspring": {
+      "0": "Overcoat"
+    },
+    "sawsbucksummer": {
+      "0": "Overcoat"
+    },
+    "sawsbuckautumn": {
+      "0": "Overcoat"
+    },
+    "sawsbuckwinter": {
+      "0": "Overcoat",
+      "1": "Slush Rush",
+      "H": "Ice Body"
+    },
+    "shiinotic": {
+      "0": "Guiding Glow",
+      "H": "Rainlit Growth"
+    },
+    "mrrime": {
+      "0": "Tap Tempo",
+      "1": "Curtain Call"
+    },
+    "tyranitar": {
+      "0": "Mountain Hide",
+      "1": "Mountainbreaker",
+      "H": "Dread Presence"
+    },
+    "abomasnow": {
+      "0": "Rimebark",
+      "1": "Evergreen",
+      "H": "Soundproof"
+    },
+    "garchomp": {
+      "0": "Pyrous Dominion",
+      "1": "Supreme Overlord",
+      "H": "Void Wrath",
+      "S": "Battle Bond"
+    },
+    "silvally": {
+      "0": "RKS System",
+      "1": "Adaptive Arsenal",
+      "H": "Memory Leak"
+    },
+    "silvallybug": {
+      "0": "RKS System",
+      "1": "Adaptive Arsenal",
+      "H": "Memory Leak"
+    },
+    "silvallydark": {
+      "0": "RKS System",
+      "1": "Adaptive Arsenal",
+      "H": "Memory Leak"
+    },
+    "silvallydragon": {
+      "0": "RKS System",
+      "1": "Adaptive Arsenal",
+      "H": "Memory Leak"
+    },
+    "silvallyelectric": {
+      "0": "RKS System",
+      "1": "Adaptive Arsenal",
+      "H": "Memory Leak"
+    },
+    "silvallyfairy": {
+      "0": "RKS System",
+      "1": "Adaptive Arsenal",
+      "H": "Memory Leak"
+    },
+    "silvallyfighting": {
+      "0": "RKS System",
+      "1": "Adaptive Arsenal",
+      "H": "Memory Leak"
+    },
+    "silvallyfire": {
+      "0": "RKS System",
+      "1": "Adaptive Arsenal",
+      "H": "Memory Leak"
+    },
+    "silvallyflying": {
+      "0": "RKS System",
+      "1": "Adaptive Arsenal",
+      "H": "Memory Leak"
+    },
+    "silvallyghost": {
+      "0": "RKS System",
+      "1": "Adaptive Arsenal",
+      "H": "Memory Leak"
+    },
+    "silvallygrass": {
+      "0": "RKS System",
+      "1": "Adaptive Arsenal",
+      "H": "Memory Leak"
+    },
+    "silvallyground": {
+      "0": "RKS System",
+      "1": "Adaptive Arsenal",
+      "H": "Memory Leak"
+    },
+    "silvallyice": {
+      "0": "RKS System",
+      "1": "Adaptive Arsenal",
+      "H": "Memory Leak"
+    },
+    "silvallypoison": {
+      "0": "RKS System",
+      "1": "Adaptive Arsenal",
+      "H": "Memory Leak"
+    },
+    "silvallypsychic": {
+      "0": "RKS System",
+      "1": "Adaptive Arsenal",
+      "H": "Memory Leak"
+    },
+    "silvallyrock": {
+      "0": "RKS System",
+      "1": "Adaptive Arsenal",
+      "H": "Memory Leak"
+    },
+    "silvallysteel": {
+      "0": "RKS System",
+      "1": "Adaptive Arsenal",
+      "H": "Memory Leak"
+    },
+    "silvallywater": {
+      "0": "RKS System",
+      "1": "Adaptive Arsenal",
+      "H": "Memory Leak"
+    },
+    "kommoo": {
+      "0": "Bulletproof",
+      "1": "Soundproof",
+      "H": "Scale Rhythm"
+    },
+    "cramorant": {
+      "0": "Bottomless Gullet",
+      "1": "Dive Fisher",
+      "H": "Scatterbrain"
+    },
+    "cramorantgulping": {
+      "0": "Bottomless Gullet",
+      "1": "Dive Fisher",
+      "H": "Scatterbrain"
+    },
+    "cramorantgorging": {
+      "0": "Bottomless Gullet",
+      "1": "Dive Fisher",
+      "H": "Scatterbrain"
+    }
+  },
+  "effects": {
+    "punchfiend": [
+      "innerfocus",
+      "keeneye",
+      "punchfiend",
+      "unseenfist"
+    ],
+    "bonewarrior": [
+      "battlearmor",
+      "bonewarrior"
+    ],
+    "sirius": [
+      "apexvenom",
+      "blackviper",
+      "shedskin",
+      "sirius",
+      "strongjaw",
+      "venamskiss",
+      "whiplash"
+    ],
+    "venomarmor": [
+      "battlearmor",
+      "dualwield",
+      "venomarmor"
+    ],
+    "toxicarmor": [
+      "battlearmor",
+      "dualwield",
+      "toxicarmor",
+      "venomarmor",
+      "violentrush"
+    ],
+    "royalscales": [
+      "dragonize",
+      "marvelscale",
+      "royalscales",
+      "selfsufficient",
+      "swiftswim"
+    ],
+    "prismscale": [
+      "friendguard",
+      "oblivious",
+      "prismscale",
+      "swiftswim"
+    ],
+    "tidalvoice": [
+      "liquidvoice",
+      "soundproof",
+      "tidalvoice"
+    ],
+    "scrapbreaker": [
+      "scrapbreaker"
+    ],
+    "royalescort": [
+      "pressure",
+      "royalpresence",
+      "unnerve"
+    ],
+    "stagesweep": [
+      "infiltrator",
+      "screencleaner",
+      "stagesweep"
+    ],
+    "fluffycraft": [
+      "fluffy",
+      "silkensalvo"
+    ],
+    "grapplingclaws": [
+      "abyssalclaws",
+      "toughclaws"
+    ]
+  },
+  "descriptions": {
+    "springfur": {
+      "shortDesc": "Fur Coat; once per entry, a foe breaking its Substitute grants +1 Attack after the move.",
+      "desc": "Full Fur Coat. Once per genuine entry, after an opposing damaging move breaks its Substitute and the whole attack finishes, the living user attempts +1 Attack. Consumed even if blocked or capped. Self-removal, Tidy Up and bypassing the Substitute do not qualify; ability restarts do not reset it."
+    },
+    "varietyrush": {
+      "shortDesc": "First successful opposing attack of each non-Normal type per entry has 1.4x power.",
+      "desc": "Each non-Normal type gets 1.4x power for its first successful attack against an opponent each genuine entry, across the whole move. Substitute damage counts. Misses, protection and immunity preserve the use; ally damage is not boosted. Ability restarts do not reset spent types."
+    },
+    "stormcalling": {
+      "shortDesc": "Drizzle + Liquid Voice + shared Dissonant Echo marks; sound power is 1.2x once.",
+      "desc": "Drizzle summons rain. Liquid Voice changes sound moves to Water, or Ice on Icy Field, with 1.2x power. Dissonant Echo adds repeatable shared marks after the holder or an adjacent ally deals resisted sound HP damage to a foe. The next allied sound attempt against that foe through next turn consumes the mark and ignores resistance, not immunity. One mark per side; no same-attack rearming. Provider suppression/departure or target departure clears it. The two sound power components share a single 1.2x boost, not 1.44x."
+    },
+    "punchfiend": {
+      "shortDesc": "Keen Eye, Unseen Fist and Inner Focus.",
+      "desc": "Full Keen Eye prevents opposing accuracy drops, ignores evasion boosts and reveals opposing Illusions; Mirror Arena entry grants +1 accuracy and Laser Focus. Unseen Fist lets contact moves bypass protection except Max Guard. Inner Focus prevents flinching and Intimidate Attack drops. Hitmonchan receives Iron Fist separately as its species passive."
+    },
+    "bonewarrior": {
+      "shortDesc": "Battle Armor; bone attacks heal 1/8 max HP once per turn after opposing HP damage.",
+      "desc": "Full local Battle Armor, including critical-hit immunity, 0.8x incoming attack damage and field effects. Once per turn after a bone-flag attack damages opposing HP, the living active holder restores 1/8 max HP after the whole attack. Normal healing restrictions apply. No Self Sufficient recovery or weather immunity."
+    },
+    "apexvenom": {
+      "shortDesc": "Strong Jaw 1.5x; Poison Fang gets another 1.5x; retains poison matchups and Shed Skin.",
+      "desc": "Full Strong Jaw gives biting attacks 1.5x power. Poison Fang additionally receives a separate 1.5x signature multiplier, combining to 2.25x before STAB; Z/Max versions do not receive that signature bonus. Retains local Poison/Steel matchup overrides, bite protection bypass and toxic chance, and Shed Skin."
+    },
+    "sirius": {
+      "shortDesc": "Apex Venom + Whiplash + Venam’s Kiss; Poison Fang becomes Drake Fang.",
+      "desc": "Retains full Apex Venom, Whiplash and Venam’s Kiss. Mega Seviper’s Poison Fang slot becomes Drake Fang: 85 BP Dragon Physical, 100 accuracy, 15 PP, bite/contact and inherited poison effects. Current PP and slot persist through switching; actual form reversal restores Poison Fang. Strong Jaw 1.5x and the separate Fang signature 1.5x combine to 2.25x before STAB. Dragon Drake Fang uses ordinary Dragon effectiveness and does not trigger Poison-only Venam effects. Poison HP hits poison eligible Steel/Poison foes; already-poisoned foes can be drained and heal-blocked and have 0.75x Speed. Cannot be suppressed, replaced or bypassed by Mold Breaker."
+    },
+    "sacredbond": {
+      "shortDesc": "Extreme Speed always critically hits.",
+      "desc": "Battle Bond's shared effects plus Magma Armor, Intimidate, and Flash Fire. Arcanine-Battle-Bond's Extreme Speed always critically hits."
+    },
+    "eclipsevision": {
+      "shortDesc": "SpA 1.3x; opening Psychic/Dark type; moves switch type; Psychic heals, Dark drains.",
+      "desc": "Special Attack is multiplied by 1.3. Its first move slot sets its opening type if Psychic or Dark, and later Psychic- or Dark-type moves change it to that type. Psychic typing restores 1/8 base max HP at turn end; Dark typing restores HP equal to 1/4 damage dealt. Species-passive effects remain separate from the selected ability and do not double when copied into that slot."
+    },
+    "venomarmor": {
+      "shortDesc": "Dual Wield + Battle Armor; Metal Claw 1.5x.",
+      "desc": "Full local Dual Wield and Battle Armor. Metal Claw has 1.5x power on both full hits, retaining existing local behavior. Does not automatically poison, heal or grant the former status-based damage boost."
+    },
+    "toxicarmor": {
+      "shortDesc": "Venom Armor + Violent Rush; priority HP hit prepares next-turn Dual Wield priority.",
+      "desc": "Full revised Venom Armor and opening Violent Rush. A native positive-priority damaging attack that damages opposing HP prepares the next eligible Dual Wield attack on the following turn for +1 priority. Consumes on attempt, including miss, protection or immunity; expires at that turn end and clears on switching. No stacking, generated attacks, Z/Max attacks or self-rearming from the granted priority. Cannot be suppressed, replaced or bypassed by Mold Breaker."
+    },
+    "noseformation": {
+      "shortDesc": "Filter + Elevate; successful opposing attacks trigger three 20 BP Special Mini-Noses.",
+      "desc": "Full local Filter reduces neutral attack damage to 0.8x and super-effective damage to 0.6x. Elevate grants airborne status, subject to grounding, and one highest-stat increase per move KO. After a successful opposing attack, fires one trio of 20 BP Special Mini-Noses, choosing Steel, Electric or Rock and retargeting living foes when needed. Each is a normal attack respecting protection, Substitute and immunity. No ally triggers or recursive trios."
+    },
+    "ragingstorm": {
+      "shortDesc": "Full Battle Armor; bypasses screens/defensive stages; priority resistance and KO splash.",
+      "desc": "Full local Battle Armor prevents critical hits, reduces attack damage to 0.8x and retains its local field/stat-drop effects. Moves ignore bypassable abilities, Substitute, screens and defensive stages and gain one critical-hit stage. Incoming priority attack damage is additionally halved. Immune to hail damage. Move KOs retain the existing 60% damage splash or Attack increase. Cannot be suppressed. Battle Armor is no longer Haxorus’s passive."
+    },
+    "venomcanticle": {
+      "shortDesc": "Sound attacks: 1.2x power; Normal sound attacks become Poison.",
+      "desc": "Damaging sound moves have 1.2x power. Damaging Normal-type sound moves become Poison-type. Status moves and targeting are unchanged."
+    },
+    "dissonantecho": {
+      "shortDesc": "Sound attacks: 1.2x power. Allied resisted sound hits mark a foe for shared resistance bypass.",
+      "desc": "The holder's damaging sound moves have 1.2x power. Its or an adjacent ally's resisted sound attack dealing opposing HP damage can mark one foe for its side through the next turn. The next damaging sound attempt by the holder or an adjacent ally against that foe consumes the mark and ignores resistance, not immunity. Marks can be earned again, but not by the consuming attack. One shared mark per side; duplicate holders do not stack it. Provider suppression or departure, target departure and expiry clear the mark. Substitute-only hits and Soundproof do not qualify."
+    },
+    "hydrabond": {
+      "shortDesc": "Damaging moves hit 3x; hits 2/3 at 30%; FFA singles hit all foes at 1.3x.",
+      "desc": "Eligible single-target damaging moves hit three times; existing multi-hit moves, spread moves outside Free-for-All, charging moves, delayed attacks, Z/Max moves and moves barred from extra hits are excluded. The second and third hits deal 30% damage and retarget the foe's ally if the first target fainted. In Free-for-All battles, single-target moves hit all foes once at 1.3x power; spread moves hit all foes three times, with later hits at 30% power, and full-power spread moves stay full power. Moves have 1.2x power on Dragon's Den. Gilded Helix is the exception: three full 50-power hits in every format, with all-foes targeting in Free-for-All; suppression restores its native two hits."
+    },
+    "prismscale": {
+      "shortDesc": "Combines the listed abilities.",
+      "desc": "Friend Guard reduces attack damage to allies by 25%. Oblivious blocks Attract, Captivate, Taunt, and Intimidate's Attack drop. Swift Swim boosts Speed in rain and supported water fields."
+    },
+    "seasonalstride": {
+      "shortDesc": "Normal moves become its primary type at 1.2x; kicks 1.4x; sun Speed 2x; weather changes season.",
+      "desc": "Normal attacks become the current primary type with the existing 1.2x conversion boost; kicking moves have 1.4x power. Speed doubles only in sun. At turn end, rain selects Spring, sun Summer, sand Autumn and hail/snow Winter; no weather retains the current form. The originally selected ability slot maps to the new season. External replacement abilities remain until ordinary restoration; genuine entry restores the selected slot for the current season. Transform does not cycle seasons."
+    },
+    "shadowtag": {
+      "shortDesc": "Traps foes; takes 0.8x damage from attacks.",
+      "desc": "Prevents adjacent opposing Pokemon from choosing to switch out, except Ghost types, Shed Shell holders and other Shadow Tag users. Takes 0.8x incoming attack damage. On Haunted Field, reveals opposing held items on entry. Cannot be suppressed. Other trapping and pivot rules remain unchanged."
+    },
+    "royalhive": {
+      "shortDesc": "Entry raises offenses; alternates attack/defense stances; defensive stance heals 1/16.",
+      "desc": "Genuine entry starts in attack stance with +1 Attack and Sp. Atk. A Status move switches to defensive stance, lowering Attack and Sp. Atk by 1 and raising Defense and Sp. Def by 1. A damaging move switches back with the reverse changes. Repeated moves of the same category do not repeat the changes. Defensive stance heals 1/16 base max HP each turn. Active ability restarts and suppression do not reset the passive stance or grant entry boosts."
+    },
+    "fluffycraft": {
+      "shortDesc": "Fluffy; eligible single-hit attacks hit 2–5 times at 40% power per hit.",
+      "desc": "Full Fluffy. Eligible single-target, single-hit attacks become 2–5 hits at 40% calculated power each, rounded to nearest with ties down before modifiers. Hit distribution is 2, 2, 3, 3, 4, 5; Loaded Dice gives 5 hits for converted attacks only. One initial accuracy check, separate critical rolls and drain each hit; move secondaries run only on the first two hits. Fury Cutter and Stacking Shot advance their shared chain once per move. Native multi-hit moves are unchanged. Fixed-damage, OHKO, charge, recharge, self-KO, delayed, Z/Max moves and Fling, Endeavor, Beat Up, Rollout, Ice Ball and Uproar are excluded. Does not include Technician, Skill Link or Natural Cure."
+    },
+    "encorearia": {
+      "shortDesc": "Full Serene Grace; genuine switch-in grants at least 5-turn team Safeguard.",
+      "desc": "Full local Serene Grace doubles secondary-effect chances, including chance-based self effects, and removes charge flags. On genuine switch-in, grants the team Safeguard for 5 turns, preserving any longer duration. Ending suppression or restarting/copying the ability does not refresh Safeguard."
+    },
+    "tidalvoice": {
+      "shortDesc": "Liquid Voice + Soundproof; sound bypasses ordinary guards; 30% +1 SpA after foe HP damage.",
+      "desc": "Full Liquid Voice changes sound moves to Water, or Ice on Icy Field, with exactly 1.2x power. Soundproof blocks other Pokemon's sound moves. Sound moves spare allies. Damaging sound moves bypass ordinary Protect-family moves and Wide Guard for full damage, but not Max Guard. After a complete sound attack deals opposing HP damage, the living, active user has one 30% chance to gain 1 Special Attack. Spread and multiple hits roll only once; Substitute-only hits, ally damage, misses and immunities do not qualify. This ability chance is unaffected by Serene Grace or Sheer Force. No negative-stat reset or Sparkling Aria ally healing."
+    },
+    "ringmaster": {
+      "shortDesc": "Tough Claws; first Dark attempt +1 priority; Dark HP hits Taunt; switch clears hazards and boosts replacement.",
+      "desc": "Full Tough Claws once. The first damaging Dark move attempted each genuine entry gains +1 priority; misses and protection spend it, but pre-action flinch or paralysis do not. Ability restarts do not reset it. Each successful Dark attack dealing opposing HP damage attempts two-turn Taunt on surviving foes, with ordinary Taunt immunity and reapplication rules. A committed living switch-out, including pivots and forced switches, clears own-side hazards before entry and gives the exact replacement +1 in its highest non-HP stat after entry and Baton Pass transfer. Suppression at departure prevents this benefit; fainting is not a switch-out."
+    },
+    "scrapbreaker": {
+      "shortDesc": "Steel attacks beat Steel typing; damaging Steel foes grants +1 Atk once per turn.",
+      "desc": "Steel attacks treat the target’s Steel typing as super effective while retaining other type contributions. After damaging an opposing Steel-type Pokemon, attempts +1 Attack once per turn. Gigaton Hammer retains screen removal and grounding after HP damage. Mold Breaker is Tinkaton’s separate passive."
+    },
+    "royalescort": {
+      "shortDesc": "Full local Pressure + Unnerve.",
+      "desc": "Full local Pressure and Unnerve. Opposing moves targeting it cost extra PP (2 extra in Midnight Zone); entry lowers opposing Defense and Sp. Def, and Underwater becomes Midnight Zone. Unnerve prevents opposing berry use and retains its field effects. Outside Cold Eclipse, its Defense and Sp. Def drop is attempted only once per opposing Pokemon per battle for each Pressure user. Switching, Transform and ability loss or regain do not reset that allowance; a blocked or reflected attempt spends it. Cold Eclipse retains repeatable -2 drops on entry and neither spends nor resets the ordinary allowance."
+    },
+    "infernaldominion": {
+      "shortDesc": "Intimidate; Fire trap; Rock effectiveness capped at neutral; melts own Stealth Rock damage.",
+      "desc": "Retains Intimidate and the two-turn Fire-hit trap. Incoming Rock attack effectiveness is capped at neutral, preserving stronger resistance or immunity. Prevents only this holder's Stealth Rock damage without removing the hazard. A direct Fire attack dealing opposing HP damage clears Sandstorm and, once per turn regardless of weather, grants Molten Guard until turn end. The guard blocks the next opposing Rock attack against this holder, including all hits, without shielding other spread targets. Generated attacks do not arm it. Leaving, ability loss and Mega Evolution clear the guard."
+    },
+    "hydraulicarmor": {
+      "shortDesc": "Stamina; hit counter boosts SpD; Withdraw/Protect fire Water Pulse; Skull Bash fires Hydro Pump.",
+      "desc": "Full local Stamina. Water Pulse and Hydro Pump use higher boosted Defense or Sp. Atk, remaining Special against Sp. Def. Every second opposing HP hit attempts +1 Sp. Def, at most once per turn. Successful Withdraw/Shelter stores a nonstacking charge so the next qualifying hit counts twice; Skull Bash grants no charge. Counter and charge clear on leaving or ability loss. Successful Withdraw uses one free Water Pulse at the corresponding opposing slot, falling back to the first living legal adjacent foe. Protect fires one Water Pulse at the surviving active attacker after the first opposing damaging attack it fully blocks that turn; no trigger from Z/Max chip or generated attacks. Shelter has no attack. A Skull Bash opposing HP strike uses one Hydro Pump at the same surviving active foe after the whole attack. All follow-ups require a living active holder, use no PP, cannot recurse, and retain normal accuracy, protection, immunity and effects."
+    },
+    "stagesweep": {
+      "shortDesc": "Screen Cleaner; ally Infiltrator; Rapid Spin supports partner and pivots.",
+      "desc": "Full Screen Cleaner. Holder and adjacent active allies have Infiltrator while the holder remains active. A successful Rapid Spin, including Substitute damage, gives ordinary current-turn Helping Hand to an eligible partner and pivots if a legal replacement exists. An already-acted partner is ineligible unless newly switched. Once per entry, actual hazard removal also clears all negative stat stages and heals 1/8 base max HP. No-hazard success can still support/pivot; misses, protection, immunity and contact KO cannot. Ally Infiltrator ends when the holder leaves."
+    },
+    "climatereserve": {
+      "shortDesc": "Entry: held weather rock sets 5-turn weather. Without effective weather, its rock sets Castform's default form.",
+      "desc": "On genuine entry, an active Heat Rock, Damp Rock, Smooth Rock or Icy Rock sets sun, rain, sandstorm or hail for exactly 5 turns; rocks do not extend this weather. Forecast still follows effective external weather. Without effective weather, the current active rock gives Sunny, Rainy, Sandy or Snowy form; no rock gives Normal form. Item loss, replacement or suppression updates this default. Ability suppression disables the default and entry weather, but not the Forecast passive. Ability restarts do not set weather. Grants no Perfect Forecast bonuses or Sp. Def boost."
+    },
+    "perfectforecast": {
+      "shortDesc": "Forecast form changes plus the current Castform form's named, modified bonus package.",
+      "desc": "Changes Castform with effective weather and supplies only its current form's bonuses. Sunny: modified Solar Power (1.5x Sp. Atk in sun, no HP drain) and Flame Body. Rainy: Water Absorb, Rain Dish plus 1/8 extra rain recovery (3/16 total), and Hydration. Snowy: modified Slush Rush and Ice Body (2x Speed, 1/16 healing, hail immunity in supported conditions). Sandy: Earth Eater and Sand Rush. Windy: damaging Flying moves have 1.3x power, without extra Speed or priority. Normal has no added bonus. These effects require active Perfect Forecast; the separate Forecast passive only changes forms."
+    },
+    "grapplingclaws": {
+      "shortDesc": "Tough Claws; Water STAB; halves Fire, Water, Ice and Steel damage.",
+      "desc": "Full local Tough Claws boosts contact moves once. Water attacks receive ordinary 1.5x STAB without adding Water typing or stacking another STAB bonus if already Water-type. Incoming Fire, Water, Ice and Steel attacks receive one extra resistance factor. Does not add Water weaknesses or lower Speed."
+    },
+    "venompincer": {
+      "shortDesc": "Poison Touch; first opposing contact HP hit per entry lowers target Speed.",
+      "desc": "Full Poison Touch: contact attacks have a 30% poison chance, subject to Shield Dust, Covert Cloak and normal poison immunities. The first damaging contact hit dealing opposing HP damage each entry lowers that target's Speed by 1. Switching resets this allowance; ability changes do not. Misses, protection, immunity and Substitute-only damage do not spend it. A knockout spends it without lowering a fainted target's Speed. Poison Heal remains a separate passive. No Hyper Cutter or bonus Poison STAB."
+    },
+    "soulcremation": {
+      "shortDesc": "Combines the listed abilities.",
+      "desc": "Direct Fire/Ghost attacks heal 1/3 of actual opposing HP damage, capped at 1/6 max HP per turn, and block surviving targets' healing through the following turn. Switching clears the block; repeated hits refresh it. Native draining moves, substitutes, allies, residual and delayed damage do not grant this drain. Once per turn, a Ghost hit on an already-burned surviving foe also attempts -1 Sp. Def. At turn end, heals 1/8 max HP if any foe actually took burn damage; this is separate from the drain cap. Once per actual entry, the first executed opposing damaging move targeting it grants +1 Sp. Atk after the entire move if it survives and remains active, even after misses, protection or immunity. This use is spent at +6 and is not reset by ability changes or suppression; switching resets it. Contact attackers have a 30% burn chance (60% on Volcanic). Absorbs Fire for a 1.5x Fire boost; Burning or grounded Volcanic also grants the boost. On Cold Eclipse, Fire absorption and contact burns stop, and entry gives +2 Defense and Sp. Def total. Normal healing blockers and drain interactions apply; suppression disables these effects. Mega Chandelure with active Soul Cremation bypasses Soul Fire's Fire/Ghost attack absorption only. Ordinary type effectiveness and type immunities remain; this grants neither general Mold Breaker nor a damage multiplier. Will-O-Wisp and Soul Fire redirection are unchanged."
+    },
+    "gulpmissile": {
+      "desc": "If this Pokemon is a Cramorant, it changes forme when it hits a target with Surf or uses the first turn of Dive successfully. It becomes Gulping Form with an Arrokuda in its mouth if it has more than 1/2 of its maximum HP remaining, or Gorging Form with a Pikachu in its mouth if it has 1/2 or less of its maximum HP remaining. If Cramorant gets hit in Gulping or Gorging Form, it spits the Arrokuda or Pikachu at its attacker, even if it has no HP remaining. The projectile deals damage equal to 1/4 of the target's maximum HP, rounded down; this damage is blocked by the Magic Guard Ability but not by a substitute. An Arrokuda also lowers the target's Defense by 1 stage, and a Pikachu paralyzes the target. Cramorant will return to normal if it spits out a projectile, switches out, or Dynamaxes. Species passive on all three Cramorant forms, replacing Gluttony; works independently of the selected ability and preserves it through loading and discharge. Water Surface/Underwater force Gulping on entry or terrain change; Electric/Factory/Short-Circuit make Surf load Gorging. Underwater projectile damage is quarter target max HP multiplied by ordinary Water effectiveness (zero if Water-immune); other fields keep the ordinary quarter-HP projectile.",
+      "shortDesc": "When hit after Surf/Dive, attacker takes 1/4 max HP and -1 Defense or paralysis."
+    }
+  }
+}

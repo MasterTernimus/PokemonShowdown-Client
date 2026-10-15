@@ -7,8 +7,8 @@ describe('Mega Mightyena client data and supplied art', () => {
  it('has the approved stats, ability, passive and stone', () => {
   const mon = Dex.species.get('Mightyena-Mega');
   assert(mon.exists && mon.isMega);
-  assert.equal(JSON.stringify(mon.baseStats),JSON.stringify({hp:90,atk:150,def:115,spa:85,spd:100,spe:130}));
-  assert.equal(Object.values(mon.baseStats).reduce((a,b)=>a+b,0),670);
+  assert.equal(JSON.stringify(mon.baseStats),JSON.stringify({hp:90,atk:140,def:105,spa:85,spd:100,spe:130}));
+  assert.equal(Object.values(mon.baseStats).reduce((a,b)=>a+b,0),650);
   assert.equal(JSON.stringify(mon.types),JSON.stringify(['Dark','Ghost']));
   assert.equal(JSON.stringify(mon.abilities),JSON.stringify({0:'Dread Dominion'}));
   assert.equal(JSON.stringify(mon.passives),JSON.stringify(['darkaura']));

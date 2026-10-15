@@ -14,18 +14,18 @@ function setup(ability='No Ability',item=''){
 describe('Rejuvenation signature generated data and move previews',()=>{
  for(const[id,users]of Object.entries(fixture.learnsets))it(id+' has exact metadata and learned distribution',()=>{
   const move=Dex.moves.get(id);assert(move.exists);assert.equal(move.priority,0);assert.equal(move.target,id==='aquabatics'?'self':'adjacentFoe');assert.equal(!!rawMoves[id].drain,id==='spectralscream');assert(move.desc);
-  const actual=Object.keys(learnsets).filter(s=>learnsets[s].learnset?.[id]).sort();assert.deepEqual(actual,[...users].sort());
+  const actual=Object.keys(learnsets).filter(s=>learnsets[s].learnset?.[id]).sort();assert.deepEqual(actual,[...users,...(id==='spectralscream'?['spiritomb','banette','cursola']:[])].sort());
  });
- it('preserves static selected slots for all recipients',()=>{for(const[id,slots]of Object.entries(fixture.slots))assert.deepEqual(Dex.species.get(id).abilities,slots,id);});
+ it('preserves static selected slots for all recipients',()=>{for(const[id,slots]of Object.entries(fixture.slots))assert.deepEqual(Dex.species.get(id).abilities,require('./fixtures/mega-approval-overlays').abilities(id,slots),id);});
  it('removed signatures are absent from all selected ability slots; Mega Seviper retains its passive',()=>{
   const ids=Object.keys(fixture.learnsets);for(const[id,s]of Object.entries(BattlePokedex))for(const ability of Object.values(s.abilities||{}))assert(!ids.includes(toID(ability)),id+'/'+ability);
   for(const id of ids.filter(x=>x!=='venamskiss'))assert(!Dex.abilities.get(id).exists,id);
-  assert(Dex.abilities.get('venamskiss').exists);assert(Dex.species.get('sevipermega').passives.includes('venamskiss'));
+  assert(Dex.abilities.get('venamskiss').exists);assert(Dex.getAbilityEffects('sirius').has('venamskiss'));assert(Dex.species.get('sevipermega').passives.includes('rivalmalice'));
  });
  for(const [ability,item,type]of [['No Ability','Flame Plate','Fire'],['No Ability','Charcoal','Normal'],['Aerilate','','Flying'],['Aerilate','Flame Plate','Fire'],['Klutz','Flame Plate','Normal']])it('Multipulse '+ability+'/'+item,()=>{const h=setup(ability,item);try{assert.equal(h.tips.getMoveType(Dex.moves.get('multipulse'),h.value())[0],type);}finally{h.battle.destroy();}});
  for(const id of ['spectralscream','barbedweb','bunrakubeatdown'])it(id+' uses staged stats with Special ties, ignoring ability stat multipliers',()=>{const h=setup('Huge Power');try{const m=Dex.moves.get(id);assert.equal(h.tips.getMoveType(m,h.value())[1],'Special');h.p.boosts.atk=1;assert.equal(h.tips.getMoveType(m,h.value())[1],'Physical');h.p.boosts.spa=1;assert.equal(h.tips.getMoveType(m,h.value())[1],'Special');}finally{h.battle.destroy();}});
  it('Spectral Scream becomes Physical with much higher staged Attack',()=>{const h=setup();try{h.own.stats.atk=500;h.own.stats.spa=50;h.p.boosts.atk=6;assert.equal(h.tips.getMoveType(Dex.moves.get('spectralscream'),h.value())[1],'Physical');}finally{h.battle.destroy();}});
- it('Bunraku counts currently fainted team members rather than historical faint count',()=>{const h=setup();try{h.p.side.faintCounter=20;const m=Dex.moves.get('bunrakubeatdown');const bp=()=>h.tips.getMoveBasePower(m,m.type,h.value(),h.battle.p2.active[0]).value;assert.equal(bp(),60);const original=h.p.side.pokemon;h.p.side.pokemon=[h.p,...Array.from({length:5},()=>({fainted:true}))];assert.equal(bp(),110);h.p.side.pokemon[1].fainted=false;assert.equal(bp(),100);h.p.side.pokemon=original;}finally{h.battle.destroy();}});
+ it('Bunraku counts currently fainted team members rather than historical faint count',()=>{const h=setup();try{h.p.side.faintCounter=20;const m=Dex.moves.get('bunrakubeatdown');const bp=()=>h.tips.getMoveBasePower(m,m.type,h.value(),h.battle.p2.active[0]).value;assert.equal(bp(),80);const original=h.p.side.pokemon;h.p.side.pokemon=[h.p,...Array.from({length:5},()=>({fainted:true}))];assert.equal(bp(),155);h.p.side.pokemon[1].fainted=false;assert.equal(bp(),140);h.p.side.pokemon=original;}finally{h.battle.destroy();}});
  it('Fever Pitch presents its full random power range and Thunder Raid its first hit',()=>{const h=setup();try{const m=Dex.moves.get('feverpitch'),v=h.tips.getMoveBasePower(m,m.type,h.value());assert.match(String(v),/60.*100/);const raid=Dex.moves.get('thunderraid');assert.equal(h.tips.getMoveBasePower(raid,raid.type,h.value()).value,20);assert.match(raid.desc,/20\/40\/60/);}finally{h.battle.destroy();}});
 });
 

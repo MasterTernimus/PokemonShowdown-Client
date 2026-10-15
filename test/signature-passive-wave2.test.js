@@ -14,7 +14,7 @@ describe('Custom-only passive presentation and Water Barrage',()=>{
   const source=fs.readFileSync('play.pokemonshowdown.com/js/client-teambuilder.js','utf8');
   const fn=source.match(/function renderStarterPassives\(species\) \{[\s\S]*?\n\}/)[0];
   const render=new Function('Dex','BattleLog',fn+'\nreturn renderStarterPassives;')(Dex,{escapeHTML:s=>String(s)});
-  for(const[species,passive]of Object.entries(grants))assert(render(Dex.species.get(species)).includes(Dex.getPassiveAbilityDetails(passive).shortDesc));
+  for(const[species,passive]of Object.entries(grants))assert(render(Dex.species.get(species)).includes(Dex.getPassiveAbilityDetails(passive).desc));
   assert(Dex.getPassiveAbilityDetails('lockinggrip').desc.includes('Substitute damage spends the use'));
   assert(Dex.getPassiveAbilityEffects('mirechorus').has('liquidvoice'));
  });

@@ -764,6 +764,8 @@
 						movebuttons += '<button class="type-' + moveType + ' has-tooltip" name="chooseMove" value="' + (i + 1) + '" data-move="' + BattleLog.escapeHTML(moveData.move) + '" data-target="' + BattleLog.escapeHTML(moveData.target) + '" data-tooltip="' + BattleLog.escapeHTML(tooltipArgs) + '">';
 						hasMoves = true;
 					}
+					var gilded = Dex.getGildedMoveProfile(move, typeValueTracker.pokemon.getTypes(typeValueTracker.serverPokemon)[0], typeValueTracker.pokemon.effectiveAbility(typeValueTracker.serverPokemon), this.battle.gameType);
+					if (gilded) name += '<br /><small class="gilded-battle-profile">' + BattleLog.escapeHTML(gilded.category + ' · ' + gilded.basePower + ' BP · ' + (gilded.hits === 3 && move.id === 'gildedarrow' ? '1 + 0.3 + 0.3 hits' : gilded.hits + ' hits')) + '</small>';
 					movebuttons += name + '<br /><small class="type">' + (moveType ? Dex.types.get(moveType).name : "Unknown") + '</small> <small class="pp">' + pp + '</small>&nbsp;</button> ';
 				}
 				if (!hasMoves) {
@@ -835,6 +837,7 @@
 					'<div class="movecontrols">' +
 					'<div class="moveselect"><button name="selectMove">Attack</button></div>' +
 					'<div class="movemenu">' + moveMenu + '</div>' +
+					(this.battle.myPokemon[pos].passives && this.battle.myPokemon[pos].passives.length ? '<button type="button" class="button battle-passives-button" name="showPassives" value="' + pos + '">Passives: ' + this.battle.myPokemon[pos].passives.map(function (id) { return BattleLog.escapeHTML(Dex.abilities.get(id).name); }).join(' · ') + '</button>' : '') +
 					'</div>'
 				);
 
@@ -1739,3 +1742,12 @@
 	});
 
 }).call(this, jQuery);
+
+// Owner request data only: this control never looks through an opponent's disguise.
+BattleRoom.prototype.showPassives = function (pos) {
+ var pokemon = this.battle.myPokemon && this.battle.myPokemon[Number(pos)];
+ if (!pokemon || !pokemon.passives || !pokemon.passives.length) return;
+ app.addPopupMessage(pokemon.passives.map(function (id) {
+  var a = Dex.getPassiveAbilityDetails(id); return a.name + ': ' + (a.desc || a.shortDesc);
+ }).join('\n\n'));
+};

@@ -4118,21 +4118,30 @@
 		var builds = data.builds.filter(function (b) { return T.id(b.set.species) === T.id(set.species); });
 		var open = this.openSetTools && this.openSetTools.has(set);
 		var selectedBuild = this.selectedSavedSets && this.selectedSavedSets.get(set);
-		var box = '<details class="set-tools-panel set-tools-compact"' + (open ? ' open' : '') + '><summary title="Saved sets, battle forms and calculator">Set &amp; form</summary><div class="set-tools-content"><span class="set-tools-state"></span><div class="set-tools-row"><span class="set-tools-label">Saved set</span><div class="set-tools-controls"><select class="saved-build-choice" aria-label="Saved build for ' + escape(set.species) + '"><option value="">Load a saved set…</option>';
+		var box = '<details class="set-tools-panel set-tools-compact"' + (open ? ' open' : '') + '><summary title="Saved sets, roster lists and battle forms">Set &amp; form</summary><div class="set-tools-content"><span class="set-tools-state"></span><div class="set-tools-row"><span class="set-tools-label">Saved set</span><div class="set-tools-controls"><select class="saved-build-choice" aria-label="Saved build for ' + escape(set.species) + '"><option value="">Load a saved set…</option>';
 		builds.forEach(function (b) {
 			box += '<option value="' + escape(b.id) + '"' + (selectedBuild === b.id ? ' selected' : '') + '>' + escape(b.name) + ' — ' + escape(T.compatibility(b, set, self.curTeam.format, self.curTeam.dex)) + '</option>';
 		});
 		box += '</select>' + button('applySavedBuild', 'Load selected set') + button('saveNamedBuild', 'Save this Pokémon…') + button('updateSavedBuild', 'Overwrite saved set');
 		if (this.buildUndo && this.buildUndo.team === this.curTeam && this.buildUndo.applied === set) box += button('undoSavedBuild', 'Undo apply');
-		box += '</div></div>' + button('closeSetTools', 'Close ×', index) + '<div class="set-tools-row"><span class="set-tools-label">Calculator</span><div class="set-tools-controls">' + button('calculateSetAs', 'As attacker', index + ':0') + button('calculateSetAs', 'As defender', index + ':1') + '</div></div><!-- SET PROFILE ACTIONS --><!-- SET FORM PREVIEW --></div></details>';
+		box += '</div></div><!-- SET PROFILE ACTIONS --><!-- SET FORM PREVIEW --></div></details>';
 		return html.replace(/<\/li>$/, box + '</li>');
 	};
 	proto.toggleSetTools = function (event) {
 		var set = this.curSetList[this.toolsSetIndex(event.currentTarget)];
 		if (!set) return;
 		if (!this.openSetTools) this.openSetTools = new WeakSet();
-		if ($(event.currentTarget).parent().prop('open')) this.openSetTools.delete(set);
-		else this.openSetTools.add(set);
+
+		event.preventDefault();
+		var panel = $(event.currentTarget).parent()[0];
+		panel.open = !panel.open;
+		if (panel.open) this.openSetTools.add(set);
+		else {
+			this.openSetTools.delete(set);
+			this.profileAddition = null;
+			$(panel).find('.profile-add-panel').remove();
+		}
+
 	};
 	proto.events['click .set-tools-panel > summary'] = 'toggleSetTools';
 	proto.events['click .picker-filter-panel > summary'] = 'togglePickerFilters';
@@ -4488,10 +4497,10 @@
 		var result = update.apply(this, arguments);
 		if (this.curTeam && !this.profilesView && !this.validationView && !this.exportMode) {
 			var data = this.toolsData(true);
-			var html = '<div class="pad team-profile-toolbar"><label>Nickname profile <select class="team-profile-choice"><option value="">None</option>';
+			var html = '<details class="team-profile-drawer"><summary>Nickname profiles &amp; saved sets</summary><div class="pad team-profile-toolbar"><label>Nickname profile <select class="team-profile-choice"><option value="">None</option>';
 			data.nicknames.forEach(function (p) { html += '<option value="' + escape(p.id) + '"' + (data.selectedNickname === p.id ? ' selected' : '') + '>' + escape(p.name) + '</option>'; });
-			html += '</select></label> ' + button('showToolsManager', 'Manage nicknames & sets') + button('applyNicknameToTeam', 'Preview team changes') + '<small class="team-profile-help">Choose saved names and shiny settings, then preview before applying.</small></div>';
-			this.$('.team-profile-toolbar').remove();
+			html += '</select></label> ' + button('showToolsManager', 'Manage nicknames & sets') + button('applyNicknameToTeam', 'Preview team changes') + '<small class="team-profile-help">Choose saved names and shiny settings, then preview before applying.</small></div></details>';
+			this.$('.team-profile-drawer, .team-profile-toolbar').remove();
 			// Keep List/Team and the Pokémon tabs first; tools belong in the content flow.
 			this.$('.teamchartbox').first().prepend(html);
 		}
@@ -4688,7 +4697,9 @@
 	proto.closeSetTools = function (index) {
 		var set = this.curSetList[Number(index)];
 		if (this.openSetTools) this.openSetTools.delete(set);
-		this.update();
+		this.profileAddition = null;
+		this.$('.profile-add-panel').remove();
+		this.$('li[value="' + index + '"] .set-tools-panel').prop('open', false);
 	};
 	proto.loadFormPreviews = function (index) {
 		var self = this, set = this.curSetList[Number(index)], team = this.curTeam;
@@ -4708,7 +4719,8 @@
 		this.formPreview.selected = event.currentTarget.value;
 		this.update();
 		if (this.curChartType === 'stats') this.updateStatForm();
-		this.$('.form-preview-choice').focus();
+		var select = this.$('.form-preview-choice:visible')[0];
+		if (select) select.focus({preventScroll: true});
 	};
 	var getStat = proto.getStat;
 	proto.getStat = function (stat, set, ev, nature) {
@@ -5166,8 +5178,9 @@
 		var previewControls = html.match(/<!-- COMPACT FORM CONTROL -->([\s\S]*?)<!-- END COMPACT FORM CONTROL -->/);
 		html = html.replace(/<!-- COMPACT FORM CONTROL -->[\s\S]*?<!-- END COMPACT FORM CONTROL -->/, '');
 		var controls = '<div class="set-profile-actions" data-index="' + index + '"><div class="set-tools-row"><span class="set-tools-label">Roster list</span><div class="set-tools-controls">' + button('addSetToProfile', 'Add to list', index) + button('removeSetFromProfile', 'Remove from list', index) + '</div></div><span class="set-profile-status" data-index="' + index + '" role="status" aria-live="polite"></span></div>';
-		controls += '<div class="set-tools-row"><span class="set-tools-label">Battle form</span><div class="set-tools-controls">' + (previewControls ? previewControls[1] : '') + button('toggleFormPreview', this.formPreview && this.formPreview.set === set ? 'Back to base' : 'Form preview', index) + '</div></div>';
-		return html.replace('<!-- SET PROFILE ACTIONS -->', controls);
+
+		var form = '<div class="ev-form-tools">' + (previewControls && previewControls[1] ? previewControls[1] + button('closeFormPreview', 'Reset preview') : button('toggleFormPreview', 'Preview battle form', index)) + '</div>';
+		return html.replace('<!-- SET PROFILE ACTIONS -->', controls + form);
 	};
 	var profileBack = proto.back;
 	proto.back = function () { this.cancelSetProfile(); return profileBack.apply(this, arguments); };
@@ -5187,7 +5200,7 @@ function renderStarterPassives(species) {
 	if (!species || !species.passives || !species.passives.length) return '';
 	return '<div class="starter-passives"><label>Passive</label>' + species.passives.map(function (id) {
 		var ability = Dex.getPassiveAbilityDetails(id);
-		return '<span class="passive-chip" title="' + BattleLog.escapeHTML('Passive: ' + ability.name + ' — ' + (ability.shortDesc || ability.desc)) + '">' + BattleLog.escapeHTML(ability.name) + '</span>';
+		return '<button type="button" class="passive-chip" aria-expanded="false" title="Passive: ' + BattleLog.escapeHTML(ability.name) + ' (click for details)" data-description="' + BattleLog.escapeHTML(ability.desc || ability.shortDesc) + '">' + BattleLog.escapeHTML(ability.name) + '</button>';
 	}).join(' ') + '</div>';
 }
 
@@ -5297,4 +5310,72 @@ function renderStarterPassives(species) {
  proto.events['focus .picker-search-input'] = 'pickerSearchFocus';
  proto.events['input .picker-search-input'] = 'pickerSearchInput';
  proto.events['keydown .picker-search-input'] = 'pickerSearchKeydown';
+})();
+
+(function () {
+ var p = window.TeambuilderRoom.prototype, render = p.renderSet;
+ p.togglePassiveDetails = function (event) {
+  event.preventDefault();
+  var chip = $(event.currentTarget), card = chip.closest('.setchart');
+  if (!card.length) card = chip.closest('.form-preview-tools');
+  if (!card.length) return;
+  var open = chip.attr('aria-expanded') === 'true';
+  card.find('.set-passive-description').remove();
+  card.find('.passive-chip').attr('aria-expanded', 'false').removeAttr('aria-controls');
+  if (open) return;
+  this.passiveHelpId = (this.passiveHelpId || 0) + 1;
+  var id = 'teambuilder-passive-help-' + this.passiveHelpId;
+  chip.attr({'aria-expanded': 'true', 'aria-controls': id});
+  $('<div class="set-passive-description passive-description" role="note"></div>')
+   .attr('id', id).text(chip.attr('data-description')).appendTo(card);
+ };
+ p.events['click .passive-chip'] = 'togglePassiveDetails';
+ p.renderSet = function (set, index) {
+  var html = render.apply(this, arguments), preview = this.currentFormPreview(set);
+  var display = preview ? Object.assign({}, set, {species: preview.name, ability: preview.ability}) : set;
+  var species = Dex.getAbilityFormPreview(display, this.curTeam.dex).species;
+  html = html.replace('<div class="setcol setcol-icon">', '<div class="setcol setcol-icon"><div class="mobile-form-sprite" role="img" aria-label="' + BattleLog.escapeHTML(species.name) + '" style="' + Dex.getTeambuilderSprite(display, this.curTeam.gen) + '"></div>');
+  var openingType = Dex.getOpeningTypeProfile(display, this.curTeam.dex);
+  if (openingType) html = html.replace(/(<input[^>]*name="move1"[^>]*>)/, '$1<small class="opening-type-profile">' + BattleLog.escapeHTML(openingType) + '</small>');
+  (set.moves || []).forEach(function (name, i) {
+   var profile = Dex.getGildedMoveProfile(Dex.moves.get(name), species.types, display.ability || '') || Dex.getSilkenMoveProfile(Dex.moves.get(name), display.ability || '', display.item || '');
+   if (profile) html = html.replace(new RegExp('(<input[^>]*name="move' + (i + 1) + '"[^>]*>)'), '$1<small class="gilded-move-profile">' + BattleLog.escapeHTML(profile.text) + '</small>');
+  });
+  return html;
+ };
+ var updateStats = p.updateStatForm;
+ p.updateStatForm = function () {
+  var result = updateStats.apply(this, arguments);
+  this.$el.addClass('compact-ev-workflow');
+  this.$('.ev-form-tools').remove();
+  $(this.renderSet(this.curSet, this.curSetLoc)).find('.ev-form-tools').insertBefore(this.$('.statform').first());
+  return result;
+ };
+ var updateChart = p.updateChart;
+ p.updateChart = function () { this.$el.toggleClass('compact-ev-workflow', this.curChartType === 'stats'); return updateChart.apply(this, arguments); };
+ // These actions replace the card. Preserve the room position and restore the EV editor.
+ ['toggleFormPreview', 'closeFormPreview', 'formPreviewChange'].forEach(function (name) {
+  var original = p[name];
+  p[name] = function () {
+   if (!this.el) return original.apply(this, arguments);
+   var top = this.el.scrollTop, left = this.el.scrollLeft, stats = this.curChartType === 'stats';
+   var result = original.apply(this, arguments);
+   if (stats) { this.curChartType = 'stats'; this.updateStatForm(); }
+   this.el.scrollTop = top; this.el.scrollLeft = left;
+   var el = this.el; requestAnimationFrame(function () { el.scrollTop = top; el.scrollLeft = left; });
+   return result;
+  };
+ });
+ var setView = p.updateSetView;
+ p.updateSetView = function () {
+  // A removed editor must not retain a profile transaction for a previous card.
+  this.profileAddition = null;
+  var result = setView.apply(this, arguments);
+  var toolbar = this.$('.team-profile-toolbar');
+  if (toolbar.length && !toolbar.parent().hasClass('team-profile-drawer')) {
+   var drawer = $('<details class="team-profile-drawer"><summary>Nickname profiles &amp; saved sets</summary></details>').insertBefore(toolbar); drawer.append(toolbar);
+  }
+  this.$el.toggleClass('compact-ev-workflow', this.curChartType === 'stats');
+  return result;
+ };
 })();

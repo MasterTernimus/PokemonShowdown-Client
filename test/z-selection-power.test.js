@@ -12,3 +12,5 @@ describe('Z selection uses the resolved move power',()=>{
  it('ordinary move tooltip is unchanged',()=>{const html=tooltip('poisontail','','','move');assert(html.includes('Poison Tail'));assert(html.includes('Base power: 85'));});
  it('ordinary Max and Gmax tooltip paths remain transformed',()=>{assert(tooltip('flamethrower','','maxflare','maxmove').includes('Max Flare'));assert(tooltip('pyroball','','gmaxfireball','maxmove').includes('G-Max Fireball'));});
 });
+
+describe('Rampage 140 ordinary and 200 Z tooltips',()=>{for(const[id,item,z]of [['thrash','normaliumz','breakneckblitz'],['outrage','dragoniumz','devastatingdrake'],['petaldance','grassiumz','bloomdoom'],['ragingfury','firiumz','infernooverdrive']])it(id+' displays current ordinary and derived power',()=>{const m=Dex.moves.get(id);assert.equal(m.basePower,140);assert.equal(m.zMove.basePower,200);assert.equal(m.maxMove.basePower,140);assert(tooltip(id,'','','move').includes('Base power: 140'));assert(tooltip(id,item,z).includes('Z-Move base power: 200'));assert.match(m.shortDesc,/30%.*2-3 turns.*confuses/);});});

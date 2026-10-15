@@ -45,12 +45,12 @@ describe('Approved event, Relic Armor and Pulse client parity', () => {
             assert(!/5 turns|5-turn|five turns/.test(a.desc));
         });
     it('contains settled fossil replacements and Uproot as a Venusaur move', () => {
-        assert.equal(Dex.species.get('armaldo').abilities[0], 'Grappling Claws');
+        assert.equal(Dex.species.get('armaldo').abilities[0], 'Abyssal Claws');
         assert.equal(Dex.species.get('carracosta').abilities[0], 'Dredger');
         assert.equal(Dex.species.get('venusaur').abilities.S,undefined);
         assert(Dex.moves.get('uproot').exists);
         assert.deepEqual(require('../play.pokemonshowdown.com/data/learnsets').BattleLearnsets.venusaur.learnset.uproot, ['9L1']);
         assert(Dex.abilities.get('venamskiss').exists);
-        assert.deepEqual(Dex.species.get('sevipermega').passives, ['venamskiss']);
+        assert.deepEqual(Dex.species.get('sevipermega').passives, ['rivalmalice']);
     });
 });
