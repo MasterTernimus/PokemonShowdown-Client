@@ -83,6 +83,7 @@ let compiledFiles = 0;
 let compileOpts = Object.assign(eval('(' + fs.readFileSync('.babelrc') + ')'), {
 	babelrc: false,
 	incremental: true,
+	fastFiles: ['battle-dex.ts', 'battle-animations-moves.ts'],
 	ignore: ['play.pokemonshowdown.com/src/battle-animations.js', 'play.pokemonshowdown.com/src/battle-animations-moves.js'],
 });
 if (process.argv[2] === 'full') {
@@ -129,8 +130,9 @@ if (!compileOpts.ignore) {
 }
 
 const diff = process.hrtime(compileStartTime);
+const compileStats = compiler.getStats();
 console.log(
-	`(${compiledFiles} ${compiledFiles !== 1 ? "files" : "file"} in ${diff[0] + Math.round(diff[1] / 1e6) / 1e3}s) DONE`
+	`(${compiledFiles} ${compiledFiles !== 1 ? "files" : "file"} in ${diff[0] + Math.round(diff[1] / 1e6) / 1e3}s; ${compileStats.native} native, ${compileStats.babel} Babel, ${compileStats.reused} reused) DONE`
 );
 
 /*********************************************************

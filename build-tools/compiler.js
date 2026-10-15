@@ -17,16 +17,52 @@ const sourceMap = require('source-map');
 
 const VERBOSE = false;
 const transformedFiles = new Map();
+const stats = {native: 0, babel: 0, reused: 0};
+
+
+// Use the native emitter only for the explicitly selected large catalogs.
+// Other files retain Babel's established JSX and class transformations.
+function transformCatalog(input, src, opts) {
+  const swc = require('@swc/core');
+  const program = swc.parseSync(input, {syntax: 'typescript'});
+  // Remove only top-level module syntax, preserving line/column positions.
+  // Passing source text avoids serializing the full catalog AST back to Rust.
+  const bytes = Buffer.from(input);
+  const ranges = program.body.flatMap(node => {
+    if (node.type === 'ExportDeclaration') return [[node.span.start - 1, node.declaration.span.start - 1]];
+    if (node.type === 'ImportDeclaration' || node.type.startsWith('Export')) return [[node.span.start - 1, node.span.end - 1]];
+    return [];
+  }).map(([start, end]) => [bytes.subarray(0, start).toString().length, bytes.subarray(0, end).toString().length]);
+  let script = input;
+  for (const [start, end] of ranges.reverse()) script = script.slice(0, start) + script.slice(start, end).replace(/[^\r\n]/g, ' ') + script.slice(end);
+  const result = swc.transformSync(script, {
+    filename: src, configFile: false, swcrc: false,
+    sourceMaps: !!opts.sourceMaps, minify: !!opts.compact,
+    jsc: {parser: {syntax: 'typescript'}, target: 'es3', loose: true},
+  });
+  const map = result.map ? JSON.parse(result.map) : null;
+  if (map) {
+    map.sources = [opts.sourceFileName || path.basename(src)];
+    map.sourcesContent = [input];
+  }
+  if (map && opts.sourceMaps === 'inline') {
+    result.code += '\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,' + Buffer.from(JSON.stringify(map)).toString('base64');
+    return {code: result.code, map: null};
+  }
+  return {code: result.code, map};
+}
 
 // Large generated JSON catalogs contain no executable TypeScript. Keep them out
 // of Babel's AST traversal and source-map generation, then restore their values.
 function transformFile(src, opts) {
-  const options = {...opts};
+  const {fastFiles, ...transformOptions} = opts;
+  const fast = (fastFiles || []).includes(path.basename(src));
+  const options = {...transformOptions};
   delete options.incremental;
   delete options.sourceFileName;
   const input = fs.readFileSync(src, 'utf8');
-  const key = path.resolve(src) + JSON.stringify(options) + input;
-  if (transformedFiles.has(key)) return transformedFiles.get(key);
+  const key = path.resolve(src) + fast + JSON.stringify(options) + input;
+  if (transformedFiles.has(key)) { stats.reused++; return transformedFiles.get(key); }
   const catalogs = [];
   const candidates = /^(?:\b(?:const|let|var)\s+[A-Z_][A-Z_0-9]*[^=\r\n]*=\s*|Object\.(?:assign|entries)\(\s*(?:[A-Z_][A-Z_0-9]*\s*,\s*)?)(?=[{\[])/gm;
   let masked = '', cursor = 0, match;
@@ -50,9 +86,11 @@ function transformFile(src, opts) {
     cursor = end;
     candidates.lastIndex = end;
   }
-  const result = catalogs.length ? babel.transformSync(masked + input.slice(cursor), {
+  stats[fast ? 'native' : 'babel']++;
+  const transformInput = catalogs.length ? masked + input.slice(cursor) : input;
+  const result = fast ? transformCatalog(transformInput, src, {...transformOptions, sourceMaps: catalogs.length ? false : transformOptions.sourceMaps}) : catalogs.length ? babel.transformSync(transformInput, {
     ...options, filename: src, sourceMaps: false,
-  }) : babel.transformFileSync(src, opts);
+  }) : babel.transformFileSync(src, transformOptions);
   if (result && catalogs.length) result.code = result.code.replace(/__PS_RAW_CATALOG_(\d+)__/g, (_, i) => catalogs[Number(i)]);
   transformedFiles.set(key, result);
   return result;
@@ -155,7 +193,8 @@ function noRebuildNeeded(src, dest) {
     const srcStat = fs.statSync(src, {throwIfNoEntry: false});
     if (!srcStat) return true;
     const destStat = fs.statSync(dest);
-    if (srcStat.ctimeMs < destStat.ctimeMs) return true;
+    const compilerTime = Math.max(fs.statSync(__filename).ctimeMs, fs.statSync(path.join(__dirname, 'update')).ctimeMs);
+    if (Math.max(srcStat.ctimeMs, compilerTime) < destStat.ctimeMs) return true;
   } catch (e) {}
 
   return false;
@@ -268,3 +307,5 @@ async function compileToFile(srcFile, destFile, opts) {
 exports.compileToDir = compileToDir;
 
 exports.compileToFile = compileToFile;
+
+exports.getStats = () => ({...stats});

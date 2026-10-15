@@ -12,6 +12,7 @@ process.chdir(__dirname);
 
 try {
 	require.resolve('@babel/core');
+	require.resolve('@swc/core');
 } catch (e) {
 	console.log('Installing dependencies...');
 	execSync('npm install', {stdio: 'inherit'});
