@@ -9331,8 +9331,8 @@ moonveil: {name: 'Moon Veil', desc: 'Pastel Veil + Misty Surge. On entry, sets M
 	voidvoice: {"name":"Void Voice","desc":"Pixilate + Queenly Majesty + Dream Sickness, plus Perfect Foresight's ability copying. Normal moves become Fairy and receive Pixilate power boosts. Blocks opposing priority moves targeting its side. Includes Dream Sickness's ally protection, stat-drop protection, and 1/16 end-turn healing for itself and allies. On activation, copies an opposing Pokemon's Ability, prioritizing an active Speed Ability; otherwise it selects the foe with the higher Attack or Special Attack. The copied Ability's effects apply until this Pokemon leaves battle or loses Void Voice.","shortDesc":"Pixilate + Queenly Majesty + Dream Sickness; copies a foe's Ability."},
 	fallenstar: {
 		"name": "Fallen Star",
-		"desc": "Mold Breaker: moves ignore bypassable opposing abilities. Designated arrow moves gain +1 priority at half HP or less and 1.3x power against trapped foes: Spirit Shackle, Thousand Arrows, Triple Arrows, Snipe Shot, Razor Leaf, Magical Leaf, Spike Cannon, Pin Missile, Icicle Spear, Rock Blast, Bullet Seed, Scale Shot, Psycho Cut and Ceaseless Edge. Retains its arrow follow-up and protective effects.",
-		"shortDesc": "Mold Breaker; arrow moves: +1 priority at half HP or less; 1.3x power against trapped foes."
+		"desc": "Mold Breaker: moves ignore bypassable opposing abilities. Designated arrow moves gain +1 priority at 1/4 max HP or less and 1.3x power against trapped foes: Spirit Shackle, Thousand Arrows, Triple Arrows, Snipe Shot, Razor Leaf, Magical Leaf, Spike Cannon, Pin Missile, Icicle Spear, Rock Blast, Bullet Seed, Scale Shot, Psycho Cut and Ceaseless Edge. Retains its arrow follow-up and protective effects.",
+		"shortDesc": "Mold Breaker; arrow moves: +1 priority at 1/4 max HP or less; 1.3x power against trapped foes."
 	},
 	ragingstorm: {
 		name: "Raging Storm",
@@ -9374,11 +9374,7 @@ moonveil: {name: 'Moon Veil', desc: 'Pastel Veil + Misty Surge. On entry, sets M
 		desc: "This Pokemon has Pure Power, Natural Cure, and Illuminate's effects.",
 		shortDesc: "Pure Power + Natural Cure + Illuminate.",
 	},
-	lunarorbit: {
-		name: "Lunar Orbit",
-		desc: "This Pokemon has Magic Bounce, Serene Grace, Triage, and Magic Guard. On switch-in or Mega Evolution, it sets Gravity for 5 turns and sinks Water Surface to Underwater, Underwater to Midnight Zone, or Corrosive Mist to Corrosive. These field changes do not occur on New World.",
-		shortDesc: "Magic Bounce + Serene Grace + Triage + Magic Guard; sets Gravity and sinks fields.",
-	},
+	lunarorbit: {"name":"Lunar Orbit","shortDesc":"Magic Guard; entry Gravity; shares secondary boosts and one charge skip per recipient entry.","desc":"Full local Magic Guard prevents indirect damage, retaining its normal exceptions and Fairy Tale entry boost. On entry or Mega Evolution, sets Gravity for 5 turns with its existing field transformations. Magic Bounce remains the species passive. While active, increases move secondary-effect chances for itself and actual allies, capped at 60% while preserving higher native chances and guaranteed effects. Grants one required charge-turn skip per receiving Pokemon per stay, sharing the same allowance as Void Omen. Only that recipient switching resets it; provider switches, ability restarts and Transform do not refill it. Independent field, Power Herb and natural Serene Grace skips do not spend the allowance. Suppression disables the grant."},
 	spiralevolution: {
 		"name": "Spiral Evolution",
 		"desc": "Mold Breaker: moves ignore bypassable opposing abilities. Same-type attack bonus becomes 2x instead of 1.5x, or 2.25x instead of an existing 2x bonus. Airborne: immune to Ground attacks, Spikes, Toxic Spikes, Sticky Web and Arena Trap unless grounded. Thousand Arrows can still hit. Eligible slicing, pulse, bullet, horn, drill, and Arrow moves hit twice at 60% power, with an independent accuracy check for each hit. When combined with Sharpness, Mega Launcher, or Power Drill, the first hit receives that boost and the second hit deals 15% of the move's unboosted power. In Free-for-All, both hits use full power: the first hits the selected foe and the second targets another random living foe when possible. Existing multi-hit moves are not given an additional Dual Wield pair. Moves bypass Substitute, Reflect, Light Screen, Aurora Veil, Safeguard and Mist. Blocks secondary effects of other Pokemon's attacks that affect it; effects on the attacker still work. Damaging moves pierce protection at half power. Normal-priority moves act first in Trick Room without gaining priority. Ignores field Speed penalties and takes 20% less attack damage. Twineedle has double power.",
@@ -9394,11 +9390,7 @@ moonveil: {name: 'Moon Veil', desc: 'Pastel Veil + Misty Surge. On entry, sets M
 		desc: 'Combines Accumulation and Sand Stream. Its fourth move is always Sludge Wave. At half HP or less, it creates Desert Field, becomes Ground/Fire, and changes its fourth move to Heat Wave. If sandstorm has ended, it summons it again at that moment.',
 		shortDesc: 'Accumulation + Sand Stream; at half HP: Desert Field, Ground/Fire, Sludge Wave becomes Heat Wave, restores sand.',
 	},
-	mountainrift: {
-		name: 'Mountain Rift',
-		desc: 'Combines Shell Armor and Self Sufficient. It cannot be critically hit, takes 0.8x damage, gains 2 Sp. Def when a foe lowers its stats, heals 1/16 maximum HP each turn, and ignores sandstorm and hail damage. On entry, it creates Mountain Field for 5 turns. Once at half HP or less, it starts Gravity and resets Mountain Field to 5 turns. Its four moves are always Earthquake, Sand Tomb, Mountain Gale, and Stone Edge. The first time it would faint, it instead revives at full HP as Torterra-Rift-Shatter, clearing its status, boosts, and volatile conditions.',
-		shortDesc: 'Shell Armor + Self Sufficient; 5-turn Mountain; half HP: Gravity + Mountain reset; first faint: full reset into Shatter.',
-	},
+	mountainrift: {"name":"Mountain Rift","shortDesc":"5-turn Mountain; half HP: Gravity + Mountain reset; first faint: full reset into Shatter.","desc":"Prevents critical hits and takes 20% less attack damage. Gains +1 Defense on Fairy Tale or Dragon's Den entry and +2 Sp. Def when a foe lowers its stats. Heals 1/16 max HP each turn. Immune to sandstorm and hail damage. It cannot be critically hit, takes 0.8x damage, gains 2 Sp. Def when a foe lowers its stats, heals 1/16 max HP each turn, and ignores sandstorm and hail damage. On entry, it creates Mountain Field for 5 turns. Once at half HP or less, it starts Gravity and resets Mountain Field to 5 turns. Its four moves are always Earthquake, Desert's Mark, Mountain Gale, and Stone Edge. The first time it would faint, it instead revives at full HP as Torterra-Rift-Shatter, clearing its status, boosts, and volatile conditions."},
 	desertrift: {
 		name: 'Desert Rift',
 		desc: 'Combines Sand Force, Sand Stream, and Heavy Metal. On entry, summons a sandstorm and creates Desert Field for 5 turns. Rock-, Ground-, and Steel-type attacks gain 30% power during sandstorm or Desert Field. It is immune to sandstorm damage, has doubled weight, and takes half damage from physical moves. Its four moves are always Heat Crash, Heavy Slam, Earthquake, and Stone Edge.',
@@ -9419,11 +9411,7 @@ moonveil: {name: 'Moon Veil', desc: 'Pastel Veil + Misty Surge. On entry, sets M
 		desc: "This Pokemon has Effect Spore and Pollen Bloom's effects. Thick Fat applies once through Pollen Bloom: Fire and Ice damage is halved, not quartered. It keeps its field-based Defense, Special Defense, and power boosts.",
 		shortDesc: "Effect Spore + Pollen Bloom; Thick Fat applies once; field boosts.",
 	},
-	ange: {
-		name: "Ange",
-		desc: "This Pokemon has Eternal Flower, Fairy Aura, and Magic Guard's effects. In Fairy Tale or Cold Eclipse, its Attack and Special Attack are multiplied by 2x; in Starlight Arena, New World, or Bewitched, they are multiplied by 1.5x. Grass-type moves use another 1.5x multiplier. Fairy-type moves are boosted, and opposing Mega, G-Max, Terastallized, Stellar, and Ultra Beast Pokemon have their stats reduced to 0.7x. When this Pokemon faints, it creates Bewitched Woods for 5 turns.",
-		shortDesc: "Eternal Flower + Fairy Aura + Magic Guard; weakens opposing gimmicks.",
-	},
+	ange: {"name":"Ange","shortDesc":"Full local Fairy Aura.","desc":"Full local Fairy Aura. Eternal Flower is supplied separately by Floette-Mega's species passive, including its own existing ability-bypass effect."},
 	apexcleave: {
 		name: "Apex Cleave",
 		desc: "This Pokemon has Sharpness, Dual Wield, and Moxie's effects. Slicing moves use a second Dual Wield hit at 20% of their unboosted power.",
@@ -9485,11 +9473,7 @@ moonveil: {name: 'Moon Veil', desc: 'Pastel Veil + Misty Surge. On entry, sets M
 		desc: "On switch-in, this Pokemon creates Bewitched Woods for 5 turns. This Pokemon has Magic Bounce and Queenly Majesty's effects.",
 		shortDesc: "Sets Bewitched Woods for 5 turns. Magic Bounce + Queenly Majesty.",
 	},
-	blademastery: {
-		name: "Blade Mastery",
-		desc: "This Pokemon has Sharpness and Super Luck. Below half HP, its slicing moves gain +1 priority.",
-		shortDesc: "Sharpness + Super Luck; below half HP, slicing moves gain +1 priority.",
-	},
+	blademastery: {"name":"Blade Mastery","shortDesc":"Sharpness; slicing +1 priority at <=1/4 HP; first selected slicing HP hit per entry lowers foe Attack.","desc":"Full local Sharpness. At 1/4 max HP or less, slicing moves gain +1 priority. Once per genuine entry, the first directly selected damaging slicing attack that damages opposing HP attempts to lower that first damaged foe's Attack by 1 after the whole move if it survives. Ordinary stat-drop protections and reflections apply. Substitute-only, ally and generated attacks do not spend the use. The use is spent by a qualifying HP hit even if the target later faints or blocks the drop. Ability restarts do not reset it. Does not include Super Luck."},
 	goldentalons: {
 		name: "Golden Talons",
 		desc: "This Pokemon has Stalwart, Good as Gold, and Sharpness's effects.",
@@ -9497,8 +9481,8 @@ moonveil: {name: 'Moon Veil', desc: 'Pastel Veil + Misty Surge. On entry, sets M
 	},
 	blazingmane: {
 		name: "Blazing Mane",
-		desc: "Fire attacks have 1.5x power and damaging moves hit twice, with the second hit at 30% power. At half HP or less, Fire attacks gain +1 priority. Burning and Volcanic Fields raise its Speed by 1 on entry or when the field starts.",
-		shortDesc: "Fire 1.5x; second hit 30%; half-HP Fire +1 priority; fire fields +1 Spe.",
+		desc: "Fire attacks have 1.5x power and damaging moves hit twice, with the second hit at 30% power. At 1/4 max HP or less, Fire attacks gain +1 priority. Burning and Volcanic Fields raise its Speed by 1 on entry or when the field starts.",
+		shortDesc: "Fire 1.5x; second hit 30%; at most 1/4-HP Fire +1 priority; fire fields +1 Spe.",
 	},
 	blazingtempo: {
 		name: "Blazing Tempo",
@@ -9710,11 +9694,15 @@ moonveil: {name: 'Moon Veil', desc: 'Pastel Veil + Misty Surge. On entry, sets M
 		desc: "This Pokemon has Serene Grace, Natural Recovery, and Prankster's effects.",
 		shortDesc: "Built-in Serene Grace, Natural Recovery, and Prankster.",
 	},
-	firemane: {
-		name: "Fire Mane",
-		desc: "This Pokemon's Fire-type attacks have 1.5x power.",
-		shortDesc: "This Pokemon's Fire-type attacks have 1.5x power.",
-	},
+	desertvigil: {"name":"Desert Vigil","shortDesc":"Overcoat; first selected Dark HP hit per entry Torments its surviving foe after the move.","desc":"Full local Overcoat. Once per genuine entry, the first directly selected damaging Dark attack that damages opposing HP attempts Torment on that first damaged foe after the whole move if it survives. Normal volatile immunities apply. Substitute-only, ally and generated attacks do not spend the use. A qualifying HP hit spends the use even if the target later faints or blocks Torment. Ability restarts do not reset it. No additional damage multiplier."},
+	lastingpromise: {"name":"Lasting Promise","shortDesc":"Friend Guard; its Wish cures a different ally's major status only after successfully healing it.","desc":"Full local Friend Guard. When a Wish cast by this Pokemon while this ability is active successfully restores HP to a different ally, it also cures that recipient's major status. Tracks the original wisher across switching. Does not add HP, cure itself, or cure on failed, blocked or full-HP healing. No once-battle restriction."},
+	galvanicspirit: {"name":"Galvanic Spirit","desc":"Vital Spirit, including this server's sleep immunity, 1.3x Fighting attack-stat boost. Contact Electric hits lower the foe's Sp. Def by 1 stage once per turn.","shortDesc":"Electric contact hits lower Sp. Def once per turn."},
+	blastchamber: {"name":"Blast Chamber","desc":"Vital Spirit, including sleep immunity, 1.3x Fighting attack-stat boost. A landed Fire attack makes its next Fighting attack unable to miss, and a landed Fighting attack does the same for its next Fire attack. Charges end on switching.","shortDesc":"Fire and Fighting hits make the other type's next attack never miss."},
+	beyondfear: {"name":"Beyond Fear","shortDesc":"Immune to flinching and opposing Taunt.","desc":"Immune to flinching and opposing Taunt. Does not prevent Intimidate or other stat drops and does not raise defenses in response. As Annihilape's species passive, remains active through selected-ability suppression."},
+	unboundspirit: {"name":"Unbound Spirit","shortDesc":"Vital Spirit; Ghost attacks ignore Reflect and Light Screen.","desc":"Full revised Vital Spirit prevents and cures sleep, blocks Yawn, and gives Fighting attacks 1.3x Attack or Sp. Atk. Ghost attacks ignore Reflect and Light Screen only. Does not bypass Aurora Veil, Substitute, type immunities or abilities."},
+	ragingheart: {"name":"Raging Heart","shortDesc":"Selected Thrash becomes Ghost and causes no ending confusion.","desc":"Directly selected Thrash becomes Ghost type, retaining its physical category, 140 power, random opposing target, 2–3-turn lock and 30% Defense-drop chance. While this ability is active, that Thrash does not cause its own ending confusion. External confusion and confusion from other moves remain. Normal types remain immune; no extra power multiplier."},
+	serenegrace: {"name":"Serene Grace","shortDesc":"Doubles secondary chances up to 60%; removes charge turns.","desc":"Doubles probabilistic move secondary-effect chances up to 60%, preserving native chances already above 60% and guaranteed effects. Removes charging turns. Does not add another chance multiplier to Lunar Orbit or Void Omen."},
+	firemane: {"name":"Fire Mane","shortDesc":"Moves receiving STAB have 1.5x power, once.","desc":"Damaging moves receiving same-type attack bonus have 1.5x power once, including changed move types, retained original types after Terastallization and explicitly granted STAB. Does not boost non-STAB Fire moves, typeless moves, or Stellar's one-use non-STAB bonus. Separate from Blazing Mane."},
 	forestsurge: {
 		name: "Forest Surge",
 		desc: "On switch-in, this Pokemon sets Forest Terrain and Grassy Aura for 5 turns. It also has Proficient's effect.",
@@ -9825,11 +9813,7 @@ moonveil: {name: 'Moon Veil', desc: 'Pastel Veil + Misty Surge. On entry, sets M
 		desc: "Prism Armor + Second Wind + Self Sufficient + Whiplash. Raises Accuracy by one stage on entry and strengthens tail moves by 50%.",
 		shortDesc: "Prism Armor + Second Wind + Self Sufficient + Whiplash.",
 	},
-	joyride: {
-		name: "Joyride",
-		desc: "Aerilate + Violent Rush + Vital Spirit. On its first active turn, Speed rises 50% and Attack 20%; eligible Normal moves become Flying.",
-		shortDesc: "Aerilate + Violent Rush + Vital Spirit.",
-	},
+	joyride: {"name":"Joyride","desc":"Its Normal-type moves become Flying-type moves and have their power multiplied by 1.2. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects. On its first active turn, its Speed is 1.5x and its Attack is 1.2x. Prevents and cures sleep and blocks Yawn. Fighting attacks use 1.3x Attack or Sp. Atk.","shortDesc":"Combines the listed abilities."},
 	hardyskin: {
 		name: "Hardy Skin",
 		desc: "This Pokemon has Dry Skin, Vital Spirit, and Moxie's effects.",
@@ -9882,8 +9866,8 @@ moonveil: {name: 'Moon Veil', desc: 'Pastel Veil + Misty Surge. On entry, sets M
 	},
 	noseformation: {
 		name: "Nose Formation",
-		desc: "This Pokemon has Filter and Elevate. After it hits, three 20 BP special Mini-Noses each select the strongest of Steel, Electric, or Rock against their current target. They chain to another valid foe after a KO, and their KOs trigger Elevate.",
-		shortDesc: "Filter + Elevate; three adaptive 20 BP Mini-Noses chain after KOs and trigger Elevate.",
+		desc: "This Pokemon has Elevate. After it hits, three 30 BP special Mini-Noses each select the strongest of Steel, Electric, or Rock against their current target. They chain to another valid foe after a KO, and their KOs trigger Elevate.",
+		shortDesc: "Elevate; three adaptive 30 BP Mini-Noses chain after KOs and trigger Elevate.",
 	},
 	omenedge: {
 		name: "Omen Edge",
@@ -9990,11 +9974,7 @@ moonveil: {name: 'Moon Veil', desc: 'Pastel Veil + Misty Surge. On entry, sets M
 		desc: "This Pokemon has Contrary, Shed Skin, Intimidate, Infiltrator, and Proficient's effects. Its stat changes are reversed, it lowers opposing Attack on entry, and Shed Skin can clear ailments and restore HP. Its moves bypass substitutes and opposing screens, and attacks matching its type have 1.3x power.",
 		shortDesc: "Contrary + Shed Skin + Intimidate + Infiltrator + Proficient.",
 	},
-	ragingcurrent: {
-		name: "Raging Current",
-		desc: "Swift Swim + Damp + Dry Skin + Stamina + Proficient. Water Veil and its burn immunity are removed.",
-		shortDesc: "Swift Swim + Damp + Dry Skin + Stamina + Proficient.",
-	},
+	ragingcurrent: {"name":"Raging Current","shortDesc":"Swift Swim + Damp + Dry Skin + Stamina.","desc":"Full local Swift Swim, Damp, Dry Skin and Stamina. Each surviving opposing HP-damaging hit heals 1/16 base max HP; the first qualifying hit each turn also raises Defense by 1. Absorbed Water triggers Dry Skin only. Rain and field healing retain their separate normal effects."},
 	railguncircuit: {
 		name: "Railgun Circuit",
 		desc: "Lightning Rod; never misses; boosts Electric attacks. Redirects and absorbs Electric moves, raising Attack and Special Attack. Electric moves are strengthened; Ground damage is reduced on Electric Terrain.",
@@ -10076,16 +10056,8 @@ moonveil: {name: 'Moon Veil', desc: 'Pastel Veil + Misty Surge. On entry, sets M
 		desc: "On switch-in, all active Pokemon's stat stages are reset to 0, except Pokemon on a side protected by Safeguard, and Reflect, Light Screen, and Aurora Veil are removed from both sides. While this Pokemon is active, Reflect, Light Screen, and Aurora Veil cannot be created, enemy stat boosts fail, and enemy-caused stat drops fail. This Pokemon's own self-inflicted stat drops still work. This Pokemon's charge moves fire immediately without charge turns, but recharge moves still require recharge. Neutralization disables these Royal Decree effects while active. If Neutralization is already active on entry, the stat and screen reset does not happen; it does not happen later when Neutralization leaves.",
 		shortDesc: "Haze/screen clear; Safeguard blocks reset; blocks setup/screens; skips charge turns.",
 	},
-	empress: {
-		name: 'Empress',
-		desc: "This Pokemon has Queenly Majesty and Royal Decree's effects, gains normal STAB on Fighting-type moves, and ignores the Fairy-type component of Poison- and Steel-type weaknesses. Neutralization suppresses only its Royal Decree effects; Queenly Majesty still works.",
-		shortDesc: "Queenly Majesty + Royal Decree; Fighting STAB; ignores Fairy's Poison/Steel weakness.",
-	},
-	imperialprincess: {
-		name: 'Imperial Princess',
-		desc: "This Pokemon has Striker, Vital Spirit, and Moxie's effects, gains normal STAB on Fighting-type moves, and ignores the Fairy-type component of Poison- and Steel-type weaknesses.",
-		shortDesc: "Striker + Vital Spirit + Moxie; Fighting STAB; ignores Fairy's Poison/Steel weakness.",
-	},
+	empress: {"name":"Empress","shortDesc":"Queenly Majesty + Royal Decree; once-battle half-HP rally cures nearby allies and sets 5-turn Safeguard.","desc":"Retains full local Queenly Majesty and Royal Decree, Fighting STAB and protection against Poison/Steel targeting its Fairy type. Once per battle, after surviving a whole opposing damaging move that starts it above half HP and ends at or below half, cures its own and adjacent active allies' major status and confusion, and sets 5-turn Safeguard without shortening a longer existing Safeguard. Switching or restarting the ability does not reset the use. Ally attacks, Substitute-only hits, recoil, residual damage and HP costs do not qualify. No healing or stat changes."},
+	imperialprincess: {"name":"Imperial Princess","shortDesc":"Striker + Vital Spirit; kicks ignore raised Defense; first qualifying kick per entry lowers Defense.","desc":"Full local Striker and Vital Spirit, Fighting STAB and protection against Poison/Steel targeting its Fairy type. Kicks ignore positive Defense stages only when the attack actually uses Defense; negative stages, screens and defensive abilities remain. Once per genuine entry, the first directly selected kick damaging opposing HP lowers that first surviving foe's Defense by 1 after the whole move. Kicks with their own native Defense drop neither trigger nor spend this use. Normal stat-drop protections and reflections apply; a blocked attempt spends the use. Substitute-only, allied and generated attacks do not qualify. No Moxie or extra attacks."},
 	loyalguard: {
 		name: 'Loyal Guard',
 		desc: "This Pokemon has Friend Guard, Guard Dog, and Intimidate's effects.",
@@ -10136,11 +10108,7 @@ moonveil: {name: 'Moon Veil', desc: 'Pastel Veil + Misty Surge. On entry, sets M
 		desc: "This Pokemon has Protean, Technician, Infiltrator, Anticipation, and Mold Breaker's effects. Before using an eligible damaging move, it becomes that move's type.",
 		shortDesc: "Protean + Technician + Infiltrator + Anticipation + Mold Breaker.",
 	},
-	voidomen: {
-		"name": "Void Omen",
-		"desc": "Mold Breaker: moves ignore bypassable opposing abilities. Allies take 25% less attack damage; this does not protect the holder. Doubles move secondary-effect chances and removes charging turns. Once per switch-in, successfully applying a move secondary effect creates a ward that blocks the next opposing stat-drop event against an adjacent ally.",
-		"shortDesc": "Mold Breaker; allies take 25% less damage; doubles secondaries, skips charging; first secondary wards an ally."
-	},
+	voidomen: {"name":"Void Omen","shortDesc":"Friend Guard; shared secondary boosts, limited charge skip, Safeguard and ward.","desc":"Friend Guard reduces attack damage to other allies by 25%. While active, increases move secondary-effect chances for its holder and actual allies, capped at 60% while preserving higher native chances and guaranteed effects. Grants one required charge-turn skip per receiving Pokemon per stay, sharing the same allowance as Lunar Orbit. Only that recipient switching resets it; provider switches, ability changes, Transform and multiple providers do not refill it. Field skips, Power Herb and independent Serene Grace do not consume it. Suppression disables the grant. Once per entry, the first successful damaging-move secondary or successful self-targeted status move sets or refreshes Safeguard to at least 3 turns. Separately, after activation, the first successfully applied secondary effect creates a ward against the next opposing stat-drop event targeting the holder or an adjacent active ally. Positive changes and self-inflicted drops remain. The ward ends when spent or the holder leaves."},
 	phalanxform: {
 		name: "Phalanx Form",
 		desc: "This Pokemon has Hydra Bond, Friend Guard, and Battle Armor's effects, gains STAB on Steel moves, and cannot be trapped.",
@@ -10527,11 +10495,7 @@ moonveil: {name: 'Moon Veil', desc: 'Pastel Veil + Misty Surge. On entry, sets M
 		desc: 'Opposing Pokemon cannot use Berries while this Pokemon is active.',
 		shortDesc: 'Opposing Pokemon cannot use Berries while this Pokemon is active.',
 	},
-	vitalspirit: {
-		name: 'Vital Spirit',
-		desc: 'Cannot sleep; Fighting moves use 1.3x Atk/SpA.',
-		shortDesc: 'Cannot sleep; Fighting moves use 1.3x Atk/SpA.',
-	},
+	vitalspirit: {"name":"Vital Spirit","desc":"Prevents and cures sleep and blocks Yawn. Fighting attacks use 1.3x Attack or Sp. Atk.","shortDesc":"No sleep/Yawn; 1.3x Fighting attacking stats; 20% less damage."},
 	windysurge: {
 		name: "Windy Surge",
 		desc: "On switch-in, this Pokemon sets Tailwind on its side for 2 turns.",
@@ -16910,8 +16874,8 @@ for (const [id, update] of Object.entries({
 	},
 	"annihilape": {
 		"abilities": {
-			"0": "Vital Spirit",
-			"1": "Beyond Fear",
+			"0": "Unbound Spirit",
+			"1": "Raging Heart",
 			"H": "Defiant"
 		},
 		"baseStats": {
@@ -16927,7 +16891,7 @@ for (const [id, update] of Object.entries({
 			"Ghost"
 		],
 		"passives": [
-			"cursedbody"
+			"beyondfear"
 		],
 		"replaceAbilities": true
 	},
@@ -19957,7 +19921,7 @@ for (const [id, update] of Object.entries({
 	},
 	"cacturne": {
 		"abilities": {
-			"0": "Scarecrow",
+			"0": "Desert Vigil",
 			"1": "Solar Rush",
 			"H": "Storm Drain"
 		},
@@ -19974,7 +19938,7 @@ for (const [id, update] of Object.entries({
 			"Dark"
 		],
 		"passives": [
-			"overcoat"
+			"scarecrow"
 		],
 		"replaceAbilities": true
 	},
@@ -26552,7 +26516,7 @@ for (const [id, update] of Object.entries({
 		"abilities": {
 			"0": "Symbiosis",
 			"1": "Magic Guard",
-			"H": "Eternal Flower"
+			"H": "Lasting Promise"
 		},
 		"baseStats": {
 			"hp": 74,
@@ -26565,7 +26529,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Fairy"
 		],
-		"passives": [],
+		"passives": [
+			"eternalflower"
+		],
 		"replaceAbilities": true
 	},
 	"floettemega": {
@@ -26584,7 +26550,7 @@ for (const [id, update] of Object.entries({
 			"Fairy"
 		],
 		"passives": [
-			"fairyaura"
+			"eternalflower"
 		],
 		"replaceAbilities": true
 	},
@@ -40224,13 +40190,13 @@ for (const [id, update] of Object.entries({
 		"abilities": {
 			"0": "Magnet Pull",
 			"1": "Magnetic Command",
-			"H": "Heavy Metal"
+			"H": "Magnetic Bulwark"
 		},
 		"baseStats": {
 			"hp": 75,
-			"atk": 50,
+			"atk": 35,
 			"def": 150,
-			"spa": 95,
+			"spa": 110,
 			"spd": 155,
 			"spe": 25
 		},
@@ -43332,7 +43298,7 @@ for (const [id, update] of Object.entries({
 		"abilities": {
 			"0": "Apex Venom",
 			"1": "Black Viper",
-			"H": "Accumulation"
+			"H": "Venam's Kiss"
 		},
 		"baseStats": {
 			"hp": 75,
@@ -45897,7 +45863,7 @@ for (const [id, update] of Object.entries({
 			"def": 80,
 			"spa": 50,
 			"spd": 70,
-			"spe": 100
+			"spe": 105
 		},
 		"types": [
 			"Normal",
@@ -45918,7 +45884,7 @@ for (const [id, update] of Object.entries({
 			"def": 110,
 			"spa": 60,
 			"spd": 100,
-			"spe": 110
+			"spe": 115
 		},
 		"types": [
 			"Fighting",
@@ -48280,7 +48246,7 @@ for (const [id, update] of Object.entries({
 	"trapinch": {
 		"abilities": {
 			"0": "Burrow Ambush",
-			"1": "Huge Power",
+			"1": "Hyper Cutter",
 			"H": "Antlion Instinct"
 		},
 		"baseStats": {
@@ -52879,8 +52845,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 	},
 	fallenstar: {
 		"name": "Fallen Star",
-		"desc": "Mold Breaker: moves ignore bypassable opposing abilities. Designated arrow moves gain +1 priority at half HP or less and 1.3x power against trapped foes: Spirit Shackle, Thousand Arrows, Triple Arrows, Snipe Shot, Razor Leaf, Magical Leaf, Spike Cannon, Pin Missile, Icicle Spear, Rock Blast, Bullet Seed, Scale Shot, Psycho Cut and Ceaseless Edge. Retains its arrow follow-up and protective effects.",
-		"shortDesc": "Mold Breaker; arrow moves: +1 priority at half HP or less; 1.3x power against trapped foes."
+		"desc": "Mold Breaker: moves ignore bypassable opposing abilities. Designated arrow moves gain +1 priority at 1/4 max HP or less and 1.3x power against trapped foes: Spirit Shackle, Thousand Arrows, Triple Arrows, Snipe Shot, Razor Leaf, Magical Leaf, Spike Cannon, Pin Missile, Icicle Spear, Rock Blast, Bullet Seed, Scale Shot, Psycho Cut and Ceaseless Edge. Retains its arrow follow-up and protective effects.",
+		"shortDesc": "Mold Breaker; arrow moves: +1 priority at 1/4 max HP or less; 1.3x power against trapped foes."
 	},
 	longreach: {
 		name: "Long Reach",
@@ -54873,7 +54839,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Nose Formation",
 		"num": 10156,
 		"gen": 9,
-		"desc": "This Pokemon has Filter and Elevate. After it hits, three 20 BP special Mini-Noses each select the strongest of Steel, Electric, or Rock against their current target. They chain to another valid foe after a KO, and their KOs trigger Elevate.",
+		"desc": "This Pokemon has Elevate. After it hits, three 30 BP special Mini-Noses each select the strongest of Steel, Electric, or Rock against their current target. They chain to another valid foe after a KO, and their KOs trigger Elevate.",
 		"shortDesc": "Filter; three adaptive 20 BP Mini-Noses chain after KOs and trigger Elevate.",
 		"rating": 4,
 		"flags": {
@@ -54883,8 +54849,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 	},
 	"fallenstar": {
 		"name": "Fallen Star",
-		"desc": "Mold Breaker: moves ignore bypassable opposing abilities. Designated arrow moves gain +1 priority at half HP or less and 1.3x power against trapped foes: Spirit Shackle, Thousand Arrows, Triple Arrows, Snipe Shot, Razor Leaf, Magical Leaf, Spike Cannon, Pin Missile, Icicle Spear, Rock Blast, Bullet Seed, Scale Shot, Psycho Cut and Ceaseless Edge. Retains its arrow follow-up and protective effects.",
-		"shortDesc": "Mold Breaker; arrow moves: +1 priority at half HP or less; 1.3x power against trapped foes."
+		"desc": "Mold Breaker: moves ignore bypassable opposing abilities. Designated arrow moves gain +1 priority at 1/4 max HP or less and 1.3x power against trapped foes: Spirit Shackle, Thousand Arrows, Triple Arrows, Snipe Shot, Razor Leaf, Magical Leaf, Spike Cannon, Pin Missile, Icicle Spear, Rock Blast, Bullet Seed, Scale Shot, Psycho Cut and Ceaseless Edge. Retains its arrow follow-up and protective effects.",
+		"shortDesc": "Mold Breaker; arrow moves: +1 priority at 1/4 max HP or less; 1.3x power against trapped foes."
 	},
 	"ragingstorm": {
 		"name": "Raging Storm",
@@ -55088,8 +55054,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Blazing Mane",
 		"num": 10158,
 		"gen": 9,
-		"desc": "Fire attacks have 1.5x power and damaging moves hit twice, with the second hit at 30% power. At half HP or less, Fire attacks gain +1 priority. Burning and Volcanic Fields raise its Speed by 1 on entry or when the field starts.",
-		"shortDesc": "Proficient; Fire 1.5x; second hit 30%; half-HP Fire +1 priority; fire fields +1 Spe.",
+		"desc": "Fire attacks have 1.5x power and damaging moves hit twice, with the second hit at 30% power. At 1/4 max HP or less, Fire attacks gain +1 priority. Burning and Volcanic Fields raise its Speed by 1 on entry or when the field starts.",
+		"shortDesc": "Proficient; Fire 1.5x; second hit 30%; at most 1/4-HP Fire +1 priority; fire fields +1 Spe.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null
@@ -56351,7 +56317,6 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 		"venomignition"
 	],
 	"noseformation": [
-		"filter",
 		"elevate"
 	],
 	"mourningvessel": [],
@@ -56677,7 +56642,7 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 		"moldbreaker"
 	],
 	"ange": [
-		"eternalflower"
+		"fairyaura"
 	],
 	"fairyaura": [],
 	"filter": [],
@@ -57118,8 +57083,7 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	],
 	"sharpness": [],
 	"blademastery": [
-		"sharpness",
-		"superluck"
+		"sharpness"
 	],
 	"goldentalons": [
 		"stalwart",
@@ -57264,7 +57228,8 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	"ragingcurrent": [
 		"swiftswim",
 		"damp",
-		"dryskin"
+		"dryskin",
+		"stamina"
 	],
 	"toxicbloom": [
 		"pollenbloom"
@@ -57510,8 +57475,7 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	],
 	"imperialprincess": [
 		"striker",
-		"vitalspirit",
-		"moxie"
+		"vitalspirit"
 	],
 	"loyalguard": [
 		"friendguard",
@@ -57793,7 +57757,8 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	],
 	"soulpyre": [],
 	"blackviper": [
-		"whiplash"
+		"whiplash",
+		"shedskin"
 	],
 	"silkshuriken": [],
 	"hiddenscroll": [],
@@ -57814,9 +57779,7 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	"saltcrust": [
 		"clearbody"
 	],
-	"beyondfear": [
-		"innerfocus"
-	],
+	"beyondfear": [],
 	"stillwater": [
 		"waterabsorb"
 	],
@@ -58259,6 +58222,9 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	"silenthunter": [
 		"superluck"
 	],
+	"magneticbulwark": [
+		"filter"
+	],
 	"sheddecoy": [],
 	"magneticcommand": [
 		"frisk",
@@ -58445,6 +58411,16 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	],
 	"baitedcounter": [
 		"filter"
+	],
+	"unboundspirit": [
+		"vitalspirit"
+	],
+	"ragingheart": [],
+	"desertvigil": [
+		"overcoat"
+	],
+	"lastingpromise": [
+		"friendguard"
 	]
 };
 // END SERVER WORKING SYNC DISPLAY COMPONENTS
@@ -58497,7 +58473,6 @@ const CUSTOM_SIGNATURE_PASSIVE_REMOVED_COMPONENTS: {[id: string]: readonly strin
 };
 const CUSTOM_SIGNATURE_PASSIVE_COMPONENTS: {[id: string]: readonly string[]} = {
 	"noseformation": [
-		"filter",
 		"elevate"
 	],
 	"unbridledwrath": [
@@ -58696,8 +58671,7 @@ const CUSTOM_ABILITY_COMPONENT_EXCLUSIONS: {[id: string]: readonly string[]} = {
 		"proficient"
 	],
 	"ragingcurrent": [
-		"proficient",
-		"stamina"
+		"proficient"
 	],
 	"emperorsresolve": [
 		"proficient"
@@ -58774,10 +58748,7 @@ const CUSTOM_ABILITY_COMPONENT_EXCLUSIONS: {[id: string]: readonly string[]} = {
 	"streettyrant": [
 		"shedskin"
 	],
-	"ange": [
-		"fairyaura",
-		"magicguard"
-	],
+	"ange": [],
 	"stormfright": [
 		"intimidate",
 		"static"
@@ -58882,6 +58853,9 @@ const CUSTOM_ABILITY_COMPONENT_EXCLUSIONS: {[id: string]: readonly string[]} = {
 	],
 	"heavyartillery": [
 		"shellarmor"
+	],
+	"beyondfear": [
+		"innerfocus"
 	],
 	"astralwatcher": [
 		"defragment"
@@ -59172,9 +59146,6 @@ const CUSTOM_SHARED_PASSIVE_COMPONENTS: {[id: string]: readonly string[]} = {
 	],
 	"royalsun": [
 		"flamebody"
-	],
-	"ange": [
-		"fairyaura"
 	],
 	"inversion": [
 		"contrary"
@@ -59644,7 +59615,7 @@ const CUSTOM_SHARED_PASSIVE_DESCRIPTIONS: {[id: string]: {passive: string; desc:
 	},
 	"sirius": {
 		"passive": "rivalmalice",
-		"desc": "Retains full Apex Venom, Whiplash and Venam’s Kiss. Mega Seviper’s Poison Fang slot becomes Drake Fang: 85 BP Dragon Physical, 100 accuracy, 15 PP, bite/contact and inherited poison effects. Current PP and slot persist through switching; actual form reversal restores Poison Fang. Strong Jaw 1.5x and the separate Fang signature 1.5x combine to 2.25x before STAB. Dragon Drake Fang uses ordinary Dragon effectiveness and does not trigger Poison-only Venam effects. Poison HP hits poison eligible Steel/Poison foes; already-poisoned foes can be drained and heal-blocked and have 0.75x Speed. Cannot be suppressed, replaced or bypassed by Mold Breaker.",
+		"desc": "Retains full Apex Venom, Whiplash, Venam’s Kiss and local Shed Skin (50% end-turn ailment/low-HP recovery; Dragon’s Den guaranteed). Mega Seviper’s Poison Fang slot becomes Drake Fang: 85 BP Dragon Physical, 100 accuracy, 15 PP, bite/contact and inherited poison effects. Current PP and slot persist through switching; actual form reversal restores Poison Fang. Strong Jaw 1.5x and the separate Fang signature 1.5x combine to 2.25x before STAB. Dragon Drake Fang uses ordinary Dragon effectiveness and does not trigger Poison-only Venam effects. Poison HP hits poison eligible Steel/Poison foes; already-poisoned foes can be drained (one-third damage, capped at 1/8 base max HP per turn) and heal-blocked and have 0.75x Speed. Cannot be suppressed, replaced or bypassed by Mold Breaker.",
 		"shortDesc": "Apex Venom + Whiplash + Venam’s Kiss; Poison Fang becomes Drake Fang."
 	},
 	"windchime": {
@@ -59726,11 +59697,6 @@ const CUSTOM_SHARED_PASSIVE_DESCRIPTIONS: {[id: string]: {passive: string; desc:
 		"passive": "flamebody",
 		"shortDesc": "Drought + Supreme Overlord.",
 		"desc": "Summons sun for 5 turns, or 8 with Heat Rock. Each fainted ally adds 10% move power, capped at 5 after Free-for-All doubles the effective count, for at most 1.5x power. At 2 fallen allies, gains Infiltrator; at 4, flinch immunity; at 5, Magic Guard and a one-time +1 Attack and Sp. Atk. Flame Body is supplied separately by the species passive."
-	},
-	"ange": {
-		"passive": "fairyaura",
-		"shortDesc": "Eternal Flower + Mold Breaker.",
-		"desc": "Uses full local Eternal Flower: Grass attacks use 1.5x Attack or Sp. Atk, multiplied by 2 on Fairy Tale or Cold Eclipse and 1.5 on Starlight Arena, New World or Bewitched Woods. Damaging moves deal double damage to Pulse forms. Its existing exact special-form selectors weaken opposing stats to 0.7x. Fainting creates Bewitched Woods for five turns. Moves bypass opposing abilities once. Fairy Aura is supplied separately by the species passive."
 	},
 	"inversion": {
 		"passive": "contrary",
@@ -60328,8 +60294,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Ange",
 		"num": 10130,
 		"gen": 9,
-		"desc": "Uses full local Eternal Flower: Grass attacks use 1.5x Attack or Sp. Atk, multiplied by 2 on Fairy Tale or Cold Eclipse and 1.5 on Starlight Arena, New World or Bewitched Woods. Damaging moves deal double damage to Pulse forms. Its existing exact special-form selectors weaken opposing stats to 0.7x. Fainting creates Bewitched Woods for five turns. Moves bypass opposing abilities once. Fairy Aura is supplied separately by the species passive.",
-		"shortDesc": "Eternal Flower + Mold Breaker.",
+		"desc": "Full local Fairy Aura. Eternal Flower is supplied separately by Floette-Mega's species passive, including its own existing ability-bypass effect.",
+		"shortDesc": "Full local Fairy Aura.",
 		"rating": 5,
 		"flags": {},
 		"isNonstandard": null
@@ -60996,9 +60962,9 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Beyond Fear",
 		"num": 10564,
 		"gen": 9,
-		"desc": "Prevents flinching and Intimidate's Attack drop. Once per switch-in, an opposing Attack increase grants +1 Defense, or an opposing Sp. Atk increase grants +1 Sp. Def. A move raising both grants both, consuming the one activation.",
-		"shortDesc": "An opposing offensive boost grants a matching defensive boost once per entry.",
-		"rating": 1,
+		"desc": "Immune to flinching and opposing Taunt. Does not prevent Intimidate or other stat drops and does not raise defenses in response. As Annihilape's species passive, remains active through selected-ability suppression.",
+		"shortDesc": "Immune to flinching and opposing Taunt.",
+		"rating": 3,
 		"flags": {
 			"breakable": 1
 		},
@@ -61030,7 +60996,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Black Viper",
 		"num": 10553,
 		"gen": 9,
-		"desc": "Whiplash: +1 accuracy on entry and 1.5x tail-move power. Its first tail hit against a foe each entry badly poisons that target, subject to normal status immunities.",
+		"desc": "Full local Whiplash and Shed Skin. Gains +1 accuracy on entry and 1.5x tail-move power; the first opposing HP-damaging tail hit each entry attempts bad poison. Shed Skin has one 50% end-turn activation chance when statused, afflicted, negatively boosted or at half HP or less: heals 1/4 max HP, cures status, removes its listed ailments and clears negative stages. Retains its guaranteed Dragon’s Den behavior. Sirius executes its inherited Shed Skin only once.",
 		"shortDesc": "Entry gives +1 accuracy; 1.5x tail power; first tail hit each entry badly poisons.",
 		"rating": 3.5,
 		"flags": {},
@@ -61040,8 +61006,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Blade Mastery",
 		"num": 10165,
 		"gen": 9,
-		"desc": "Slicing moves have 1.5x power, except on Cold Eclipse. Raises critical-hit rate by one stage. Below half HP, its slicing moves have +1 priority.",
-		"shortDesc": "Below half HP, slicing moves gain +1 priority.",
+		"desc": "Full local Sharpness. At 1/4 max HP or less, slicing moves gain +1 priority. Once per genuine entry, the first directly selected damaging slicing attack that damages opposing HP attempts to lower that first damaged foe's Attack by 1 after the whole move if it survives. Ordinary stat-drop protections and reflections apply. Substitute-only, ally and generated attacks do not spend the use. The use is spent by a qualifying HP hit even if the target later faints or blocks the drop. Ability restarts do not reset it. Does not include Super Luck.",
+		"shortDesc": "Sharpness; slicing +1 priority at <=1/4 HP; first selected slicing HP hit per entry lowers foe Attack.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null
@@ -61050,7 +61016,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Blast Chamber",
 		"num": 10544,
 		"gen": 9,
-		"desc": "Vital Spirit, including sleep immunity, 1.3x Fighting attack-stat boost and 20% direct-damage reduction. A landed Fire attack makes its next Fighting attack unable to miss, and a landed Fighting attack does the same for its next Fire attack. Charges end on switching.",
+		"desc": "Vital Spirit, including sleep immunity, 1.3x Fighting attack-stat boost. A landed Fire attack makes its next Fighting attack unable to miss, and a landed Fighting attack does the same for its next Fire attack. Charges end on switching.",
 		"shortDesc": "Fire and Fighting hits make the other type's next attack never miss.",
 		"rating": 1.5,
 		"flags": {
@@ -61072,8 +61038,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Blazing Mane",
 		"num": 10158,
 		"gen": 9,
-		"desc": "Fire attacks have 1.5x power and damaging moves hit twice, with the second hit at 30% power. At half HP or less, Fire attacks gain +1 priority. Burning and Volcanic Fields raise its Speed by 1 on entry or when the field starts.",
-		"shortDesc": "Second hit 30%; Fire +1 priority at half HP; fire fields +1 Spe.",
+		"desc": "Fire attacks have 1.5x power and damaging moves hit twice, with the second hit at 30% power. At 1/4 max HP or less, Fire attacks gain +1 priority. Burning and Volcanic Fields raise its Speed by 1 on entry or when the field starts.",
+		"shortDesc": "Second hit 30%; Fire +1 priority at 1/4 max HP or less; fire fields +1 Spe.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null
@@ -62280,6 +62246,18 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		},
 		"isNonstandard": null
 	},
+	"desertvigil": {
+		"name": "Desert Vigil",
+		"num": 11692,
+		"gen": 9,
+		"desc": "Full local Overcoat. Once per genuine entry, the first directly selected damaging Dark attack that damages opposing HP attempts Torment on that first damaged foe after the whole move if it survives. Normal volatile immunities apply. Substitute-only, ally and generated attacks do not spend the use. A qualifying HP hit spends the use even if the target later faints or blocks Torment. Ability restarts do not reset it. No additional damage multiplier.",
+		"shortDesc": "Overcoat; first selected Dark HP hit per entry Torments its surviving foe after the move.",
+		"rating": 4,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
 	"desolateland": {
 		"name": "Desolate Land",
 		"num": 190,
@@ -62886,8 +62864,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Empress",
 		"num": 10311,
 		"gen": 9,
-		"desc": "Preserves full Royal Decree and existing Empress effects: Fairy typing resists Poison and Steel, and Fighting moves receive STAB. Adds full local Long Reach, including contact removal, Keen Eye effects, entry accuracy boost, critical-stage boost and existing field modifiers. Queenly Majesty is supplied separately by Tsareena and Tsareena-Alt’s passive; other users retain the original component.",
-		"shortDesc": "Royal Decree + Long Reach; Fairy resists Poison/Steel; Fighting STAB.",
+		"desc": "Retains full local Queenly Majesty and Royal Decree, Fighting STAB and protection against Poison/Steel targeting its Fairy type. Once per battle, after surviving a whole opposing damaging move that starts it above half HP and ends at or below half, cures its own and adjacent active allies' major status and confusion, and sets 5-turn Safeguard without shortening a longer existing Safeguard. Switching or restarting the ability does not reset the use. Ally attacks, Substitute-only hits, recoil, residual damage and HP costs do not qualify. No healing or stat changes.",
+		"shortDesc": "Queenly Majesty + Royal Decree; once-battle half-HP rally cures nearby allies and sets 5-turn Safeguard.",
 		"rating": 5,
 		"flags": {},
 		"isNonstandard": null
@@ -63028,8 +63006,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Fallen Star",
 		"num": 10043,
 		"gen": 9,
-		"desc": "Mold Breaker: moves ignore bypassable opposing abilities. Designated arrow moves gain +1 priority at half HP or less and 1.3x power against trapped foes: Spirit Shackle, Thousand Arrows, Triple Arrows, Snipe Shot, Razor Leaf, Magical Leaf, Spike Cannon, Pin Missile, Icicle Spear, Rock Blast, Bullet Seed, Scale Shot, Psycho Cut and Ceaseless Edge. Retains its arrow follow-up and protective effects.",
-		"shortDesc": "Arrow moves gain +1 priority at half HP or less; 1.3x power against trapped foes and for same-type moves.",
+		"desc": "Mold Breaker: moves ignore bypassable opposing abilities. Designated arrow moves gain +1 priority at 1/4 max HP or less and 1.3x power against trapped foes: Spirit Shackle, Thousand Arrows, Triple Arrows, Snipe Shot, Razor Leaf, Magical Leaf, Spike Cannon, Pin Missile, Icicle Spear, Rock Blast, Bullet Seed, Scale Shot, Psycho Cut and Ceaseless Edge. Retains its arrow follow-up and protective effects.",
+		"shortDesc": "Arrow moves gain +1 priority at 1/4 max HP or less; 1.3x power against trapped foes and for same-type moves.",
 		"rating": 3.5,
 		"flags": {
 			"breakable": 1,
@@ -63117,8 +63095,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Fire Mane",
 		"num": 10022,
 		"gen": 9,
-		"desc": "Its Fire-type attacks have 1.5x power.",
-		"shortDesc": "Its Fire-type attacks have 1.5x power.",
+		"desc": "Damaging moves receiving same-type attack bonus have 1.5x power once, including changed move types, retained original types after Terastallization and explicitly granted STAB. Does not boost non-STAB Fire moves, typeless moves, or Stellar's one-use non-STAB bonus. Separate from Blazing Mane.",
+		"shortDesc": "Moves receiving STAB have 1.5x power, once.",
 		"rating": 3.5,
 		"flags": {},
 		"isNonstandard": null
@@ -63532,7 +63510,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Galvanic Spirit",
 		"num": 10543,
 		"gen": 9,
-		"desc": "Vital Spirit, including this server's sleep immunity, 1.3x Fighting attack-stat boost and 20% direct-damage reduction. Contact Electric hits lower the foe's Sp. Def by 1 stage once per turn.",
+		"desc": "Vital Spirit, including this server's sleep immunity, 1.3x Fighting attack-stat boost. Contact Electric hits lower the foe's Sp. Def by 1 stage once per turn.",
 		"shortDesc": "Electric contact hits lower Sp. Def once per turn.",
 		"rating": 1.5,
 		"flags": {
@@ -64445,8 +64423,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Imperial Princess",
 		"num": 10312,
 		"gen": 9,
-		"desc": "Kicking moves have 1.4x power. Prevents and cures sleep and blocks Yawn. Fighting attacks use 1.3x Attack or Sp. Atk. Takes 20% less attack damage. Gains +1 Attack for each Pokemon knocked out by its move. It gains normal STAB on Fighting-type moves, and ignores the Fairy-type component of Poison- and Steel-type weaknesses.",
-		"shortDesc": "Stronger kicks/Fighting moves; no sleep; 20% less attack damage; KOs boost Attack; Fairy weakness protection.",
+		"desc": "Full local Striker and Vital Spirit, Fighting STAB and protection against Poison/Steel targeting its Fairy type. Kicks ignore positive Defense stages only when the attack actually uses Defense; negative stages, screens and defensive abilities remain. Once per genuine entry, the first directly selected kick damaging opposing HP lowers that first surviving foe's Defense by 1 after the whole move. Kicks with their own native Defense drop neither trigger nor spend this use. Normal stat-drop protections and reflections apply; a blocked attempt spends the use. Substitute-only, allied and generated attacks do not qualify. No Moxie or extra attacks.",
+		"shortDesc": "Striker + Vital Spirit; kicks ignore raised Defense; first qualifying kick per entry lowers Defense.",
 		"rating": 5,
 		"flags": {},
 		"isNonstandard": null
@@ -64686,7 +64664,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Joyride",
 		"num": 10257,
 		"gen": 9,
-		"desc": "Its Normal-type moves become Flying-type moves and have their power multiplied by 1.2. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects. On its first active turn, its Speed is 1.5x and its Attack is 1.2x. Prevents and cures sleep and blocks Yawn. Fighting attacks use 1.3x Attack or Sp. Atk. Takes 20% less attack damage.",
+		"desc": "Its Normal-type moves become Flying-type moves and have their power multiplied by 1.2. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects. On its first active turn, its Speed is 1.5x and its Attack is 1.2x. Prevents and cures sleep and blocks Yawn. Fighting attacks use 1.3x Attack or Sp. Atk.",
 		"shortDesc": "Combines the listed abilities.",
 		"rating": 4.5,
 		"flags": {},
@@ -64832,6 +64810,18 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"shortDesc": "Swarm; once/entry, surviving a hit at half HP creates a free Substitute.",
 		"rating": 4,
 		"flags": {},
+		"isNonstandard": null
+	},
+	"lastingpromise": {
+		"name": "Lasting Promise",
+		"num": 11691,
+		"gen": 9,
+		"desc": "Full local Friend Guard. When a Wish cast by this Pokemon while this ability is active successfully restores HP to a different ally, it also cures that recipient's major status. Tracks the original wisher across switching. Does not add HP, cure itself, or cure on failed, blocked or full-HP healing. No once-battle restriction.",
+		"shortDesc": "Friend Guard; its Wish cures a different ally's major status only after successfully healing it.",
+		"rating": 4,
+		"flags": {
+			"breakable": 1
+		},
 		"isNonstandard": null
 	},
 	"lastlaugh": {
@@ -65124,8 +65114,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Lunar Orbit",
 		"num": 10140,
 		"gen": 9,
-		"desc": "Reflects eligible status moves and hazards once. On Mirror Arena, reflecting a directly targeted move gives its original user +1 evasion. Prevents indirect damage; HP costs, Pain Split, confusion and Struggle recoil still apply. Fairy Tale entry gives +1 Sp. Def. On entry or Mega Evolution, sets Gravity for 5 turns. Water Surface sinks to Underwater, Underwater to Midnight Zone, and Corrosive Mist to Corrosive, except on New World.",
-		"shortDesc": "Magic Guard and five-turn Gravity entry.",
+		"desc": "Full local Magic Guard prevents indirect damage, retaining its normal exceptions and Fairy Tale entry boost. On entry or Mega Evolution, sets Gravity for 5 turns with its existing field transformations. Magic Bounce remains the species passive. While active, increases move secondary-effect chances for itself and actual allies, capped at 60% while preserving higher native chances and guaranteed effects. Grants one required charge-turn skip per receiving Pokemon per stay, sharing the same allowance as Void Omen. Only that recipient switching resets it; provider switches, ability restarts and Transform do not refill it. Independent field, Power Herb and natural Serene Grace skips do not spend the allowance. Suppression disables the grant.",
+		"shortDesc": "Magic Guard; entry Gravity; shares secondary boosts and one charge skip per recipient entry.",
 		"rating": 4.5,
 		"flags": {
 			"breakable": 1
@@ -65181,6 +65171,18 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"desc": "Prevents freezing outside Cold Eclipse and cures existing freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den blocks Fire moves. On Dragon's Den, Volcanic or Cold Eclipse entry, gains +1 Defense and Sp. Def.",
 		"shortDesc": "Halves Water/Ice attacking stats; prevents freeze; field defenses.",
 		"rating": 0.5,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
+	"magneticbulwark": {
+		"name": "Magnetic Bulwark",
+		"num": 11690,
+		"gen": 9,
+		"desc": "Full local Filter reduces attack damage to 0.8x, or 0.6x when super effective. Once per genuine switch-in, its Magnetic Flux can raise its own and adjacent allies Defense and Special Defense by 1 regardless of Plus or Minus, using the normal move action and boost restrictions. This use is spent only if at least one stat boost succeeds. Later uses follow ordinary local Magnetic Flux rules, including field effects. Ability restarts, loss and regain do not reset the use.",
+		"shortDesc": "Full local Filter; once per entry, Magnetic Flux boosts self and adjacent allies without Plus/Minus.",
+		"rating": 4,
 		"flags": {
 			"breakable": 1
 		},
@@ -65624,7 +65626,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Mountain Rift",
 		"num": 10145,
 		"gen": 9,
-		"desc": "Prevents critical hits and takes 20% less attack damage. Gains +1 Defense on Fairy Tale or Dragon's Den entry and +2 Sp. Def when a foe lowers its stats. Heals 1/16 max HP each turn. Immune to sandstorm and hail damage. It cannot be critically hit, takes 0.8x damage, gains 2 Sp. Def when a foe lowers its stats, heals 1/16 max HP each turn, and ignores sandstorm and hail damage. On entry, it creates Mountain Field for 5 turns. Once at half HP or less, it starts Gravity and resets Mountain Field to 5 turns. Its four moves are always Earthquake, Sand Tomb, Mountain Gale, and Stone Edge. The first time it would faint, it instead revives at full HP as Torterra-Rift-Shatter, clearing its status, boosts, and volatile conditions.",
+		"desc": "Prevents critical hits and takes 20% less attack damage. Gains +1 Defense on Fairy Tale or Dragon's Den entry and +2 Sp. Def when a foe lowers its stats. Heals 1/16 max HP each turn. Immune to sandstorm and hail damage. It cannot be critically hit, takes 0.8x damage, gains 2 Sp. Def when a foe lowers its stats, heals 1/16 max HP each turn, and ignores sandstorm and hail damage. On entry, it creates Mountain Field for 5 turns. Once at half HP or less, it starts Gravity and resets Mountain Field to 5 turns. Its four moves are always Earthquake, Desert's Mark, Mountain Gale, and Stone Edge. The first time it would faint, it instead revives at full HP as Torterra-Rift-Shatter, clearing its status, boosts, and volatile conditions.",
 		"shortDesc": "5-turn Mountain; half HP: Gravity + Mountain reset; first faint: full reset into Shatter.",
 		"rating": 4,
 		"flags": {
@@ -65978,8 +65980,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Nose Formation",
 		"num": 10156,
 		"gen": 9,
-		"desc": "Filter reduces neutral attack damage to 0.8x and super-effective damage to 0.6x. Elevate grants airborne status, subject to grounding, and one highest-stat increase per move KO. After a successful opposing attack, fires one trio of 20 BP Special Mini-Noses, choosing Steel, Electric or Rock and retargeting living foes when needed. Each is a normal attack respecting protection, Substitute and immunity. No ally triggers or recursive trios.",
-		"shortDesc": "Filter + Elevate; successful opposing attacks trigger three 20 BP Special Mini-Noses.",
+		"desc": "Elevate grants airborne status, subject to grounding, and one highest-stat increase per move KO, using nature-adjusted stats while ignoring stages and other stat modifiers. After a successful opposing attack, fires one trio of 30 BP Special Mini-Noses, choosing Steel, Electric or Rock and retargeting living foes when needed. Each is a normal attack respecting protection, Substitute and immunity. No ally triggers or recursive trios. Does not include Filter.",
+		"shortDesc": "Elevate; successful opposing attacks trigger three 30 BP Special Mini-Noses.",
 		"rating": 4,
 		"flags": {
 			"breakable": 1
@@ -67136,8 +67138,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Raging Current",
 		"num": 10036,
 		"gen": 9,
-		"desc": "Doubles Speed in rain or on Water Surface, Murkwater Surface, Underwater and Midnight Zone. Prevents Explosion, Self-Destruct, Mind Blown, Misty Explosion and Aftermath damage. Incoming Fire attacks use half the attacker's offensive stat. On Corrosive Mist, also prevents Eruption, Fire Pledge, Flame Burst, Heat Wave, Incinerate, Lava Plume, Searing Shot and Inferno Overdrive. Absorbs Water moves for 1/4 max HP; incoming Fire moves have 1.25x power. Effective rain heals 1/8 HP per turn; sun costs 1/8. Field healing per turn: 1/16 on Underwater, Swamp, Misty or grounded Water Surface; 1/8 when grounded and Poison-type on Murkwater. Corrosive Mist heals Poison types by 1/8 but damages non-Steel others by 1/8. Desert costs 1/8 HP per turn. Water Veil and its burn immunity are removed.",
-		"shortDesc": "Swift Swim + Damp + Dry Skin.",
+		"desc": "Full local Swift Swim, Damp, Dry Skin and Stamina. Each surviving opposing HP-damaging hit heals 1/16 base max HP; the first qualifying hit each turn also raises Defense by 1. Absorbed Water triggers Dry Skin only. Rain and field healing retain their separate normal effects.",
+		"shortDesc": "Swift Swim + Damp + Dry Skin + Stamina.",
 		"rating": 4.5,
 		"flags": {
 			"breakable": 1
@@ -67154,6 +67156,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {
 			"breakable": 1
 		},
+		"isNonstandard": null
+	},
+	"ragingheart": {
+		"name": "Raging Heart",
+		"num": 11694,
+		"gen": 9,
+		"desc": "Directly selected Thrash becomes Ghost type, retaining its physical category, 140 power, random opposing target, 2–3-turn lock and 30% Defense-drop chance. While this ability is active, that Thrash does not cause its own ending confusion. External confusion and confusion from other moves remain. Normal types remain immune; no extra power multiplier.",
+		"shortDesc": "Selected Thrash becomes Ghost and causes no ending confusion.",
+		"rating": 4,
+		"flags": {},
 		"isNonstandard": null
 	},
 	"ragingoverlord": {
@@ -68328,8 +68340,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Serene Grace",
 		"num": 32,
 		"gen": 3,
-		"desc": "Doubles move secondary-effect chances and removes charging turns.",
-		"shortDesc": "Double secondary-effect chances; no charging turns.",
+		"desc": "Doubles probabilistic move secondary-effect chances up to 60%, preserving native chances already above 60% and guaranteed effects. Removes charging turns. Does not add another chance multiplier to Lunar Orbit or Void Omen.",
+		"shortDesc": "Doubles secondary chances up to 60%; removes charge turns.",
 		"rating": 3.5,
 		"flags": {},
 		"isNonstandard": null
@@ -68699,7 +68711,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Sirius",
 		"num": 10404,
 		"gen": 9,
-		"desc": "Retains full Apex Venom, Whiplash and Venam’s Kiss. Mega Seviper’s Poison Fang slot becomes Drake Fang: 85 BP Dragon Physical, 100 accuracy, 15 PP, bite/contact and inherited poison effects. Current PP and slot persist through switching; actual form reversal restores Poison Fang. Strong Jaw 1.5x and the separate Fang signature 1.5x combine to 2.25x before STAB. Dragon Drake Fang uses ordinary Dragon effectiveness and does not trigger Poison-only Venam effects. Poison HP hits poison eligible Steel/Poison foes; already-poisoned foes can be drained and heal-blocked and have 0.75x Speed. Cannot be suppressed, replaced or bypassed by Mold Breaker.",
+		"desc": "Retains full Apex Venom, Whiplash, Venam’s Kiss and local Shed Skin (50% end-turn ailment/low-HP recovery; Dragon’s Den guaranteed). Mega Seviper’s Poison Fang slot becomes Drake Fang: 85 BP Dragon Physical, 100 accuracy, 15 PP, bite/contact and inherited poison effects. Current PP and slot persist through switching; actual form reversal restores Poison Fang. Strong Jaw 1.5x and the separate Fang signature 1.5x combine to 2.25x before STAB. Dragon Drake Fang uses ordinary Dragon effectiveness and does not trigger Poison-only Venam effects. Poison HP hits poison eligible Steel/Poison foes; already-poisoned foes can be drained (one-third damage, capped at 1/8 base max HP per turn) and heal-blocked and have 0.75x Speed. Cannot be suppressed, replaced or bypassed by Mold Breaker.",
 		"shortDesc": "Apex Venom + Whiplash + Venam’s Kiss; Poison Fang becomes Drake Fang.",
 		"rating": 5,
 		"flags": {
@@ -70629,6 +70641,18 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		},
 		"isNonstandard": null
 	},
+	"unboundspirit": {
+		"name": "Unbound Spirit",
+		"num": 11693,
+		"gen": 9,
+		"desc": "Full revised Vital Spirit prevents and cures sleep, blocks Yawn, and gives Fighting attacks 1.3x Attack or Sp. Atk. Ghost attacks ignore Reflect and Light Screen only. Does not bypass Aurora Veil, Substitute, type immunities or abilities.",
+		"shortDesc": "Vital Spirit; Ghost attacks ignore Reflect and Light Screen.",
+		"rating": 4,
+		"flags": {
+			"breakable": 1
+		},
+		"isNonstandard": null
+	},
 	"unbridledwrath": {
 		"name": "Unbridled Wrath",
 		"num": 11441,
@@ -70820,7 +70844,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Venam's Kiss",
 		"num": 11330,
 		"gen": 9,
-		"desc": "Poison attacks treat Steel typing as a weakness, with other typing counted normally, and actual opposing HP damage attempts regular poison even on Steel/Poison types. Against a foe poisoned before the attack, they drain one-third actual HP damage and block healing through the following turn. Ability drain is capped at 1/4 max HP per turn and is not added to existing draining moves; Heal Block and Liquid Ooze apply. Active poisoned foes have 0.75x Speed; multiple holders do not stack.",
+		"desc": "Poison attacks treat Steel typing as a weakness, with other typing counted normally, and actual opposing HP damage attempts regular poison even on Steel/Poison types. Against a foe poisoned before the attack, they drain one-third actual HP damage and block healing through the following turn. Ability drain is capped at 1/8 base max HP per turn and is not added to existing draining moves; Heal Block and Liquid Ooze apply. Active poisoned foes have 0.75x Speed; multiple holders do not stack.",
 		"shortDesc": "Poison hits can poison Steel/Poison; pre-poisoned foes are drained/heal-blocked. Poisoned foes are slower.",
 		"rating": 4.5,
 		"flags": {},
@@ -71024,8 +71048,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Vital Spirit",
 		"num": 72,
 		"gen": 3,
-		"desc": "Prevents and cures sleep and blocks Yawn. Fighting attacks use 1.3x Attack or Sp. Atk. Takes 20% less attack damage.",
-		"shortDesc": "No sleep/Yawn; 1.3x Fighting attacking stats; 20% less damage.",
+		"desc": "Prevents and cures sleep and blocks Yawn. Fighting attacks use 1.3x Attack or Sp. Atk.",
+		"shortDesc": "No sleep/Yawn; 1.3x Fighting attacking stats.",
 		"rating": 1.5,
 		"flags": {
 			"breakable": 1
@@ -71103,8 +71127,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Void Omen",
 		"num": 10283,
 		"gen": 9,
-		"desc": "Friend Guard reduces attack damage to other allies by 25%. While active, doubles secondary-effect chances for its holder and actual allies without stacking with Serene Grace or other providers. Void Omen can skip one required charge turn per receiving Pokemon per stay on the field, including its holder. Only that recipient switching resets its allowance; provider switches, ability changes, Transform and multiple providers do not refill it. Field skips, Power Herb and independent Serene Grace do not consume the allowance. Suppression disables the grant. Once per entry, the first successful damaging-move secondary or successful self-targeted status move sets or refreshes Safeguard to at least 3 turns. Separately, after activation, the first successfully applied secondary effect creates a ward against the next opposing stat-drop event targeting the holder or an adjacent active ally. Positive changes and self-inflicted drops remain. The ward ends when spent or the holder leaves.",
-		"shortDesc": "Friend Guard; doubled secondary chances; one charge skip per recipient per stay; Safeguard and stat-drop ward.",
+		"desc": "Friend Guard reduces attack damage to other allies by 25%. While active, increases move secondary-effect chances for its holder and actual allies, capped at 60% while preserving higher native chances and guaranteed effects. Grants one required charge-turn skip per receiving Pokemon per stay, sharing the same allowance as Lunar Orbit. Only that recipient switching resets it; provider switches, ability changes, Transform and multiple providers do not refill it. Field skips, Power Herb and independent Serene Grace do not consume it. Suppression disables the grant. Once per entry, the first successful damaging-move secondary or successful self-targeted status move sets or refreshes Safeguard to at least 3 turns. Separately, after activation, the first successfully applied secondary effect creates a ward against the next opposing stat-drop event targeting the holder or an adjacent active ally. Positive changes and self-inflicted drops remain. The ward ends when spent or the holder leaves.",
+		"shortDesc": "Friend Guard; shared secondary boosts, limited charge skip, Safeguard and ward.",
 		"rating": 4.5,
 		"flags": {},
 		"isNonstandard": null
@@ -71762,7 +71786,7 @@ moonveil: ['pastelveil' as ID, 'mistysurge' as ID],
 	caverndrake: ['eartheater' as ID, 'solidrock' as ID, 'moldbreaker' as ID],
 	roughscale: ['roughskin' as ID, 'toughclaws' as ID],
 	empress: ['queenlymajesty' as ID, 'royaldecree' as ID],
-	imperialprincess: ['striker' as ID, 'vitalspirit' as ID, 'moxie' as ID],
+	imperialprincess: ['striker' as ID, 'vitalspirit' as ID],
 	loyalguard: ['friendguard' as ID, 'guarddog' as ID, 'intimidate' as ID],
 	abysslure: ['lightningrod' as ID, 'stormdrain' as ID, 'voltabsorb' as ID, 'waterabsorb' as ID, 'illuminate' as ID],
 
@@ -71851,7 +71875,7 @@ moonveil: ['pastelveil' as ID, 'mistysurge' as ID],
 	ultrainstinct: ['moldbreaker' as ID, 'innerfocus' as ID],
 	hisuianpath: ['sapsipper' as ID, 'innerfocus' as ID, 'fluffy' as ID],
 	voidtyrant: ['hydrabond' as ID, 'berserk' as ID, 'selfsufficient' as ID],
-	blademastery: ['sharpness' as ID, 'superluck' as ID],
+	blademastery: ['sharpness' as ID],
 	goldentalons: ['stalwart' as ID, 'goodasgold' as ID, 'sharpness' as ID],
 
 	toxicevolution: ['corrosion' as ID, 'dualwield' as ID, 'shielddust' as ID, 'levitate' as ID],
@@ -72905,7 +72929,6 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"moxie"
 	],
 	"noseformation": [
-		"filter",
 		"elevate"
 	],
 	"perfectego": [
@@ -73465,9 +73488,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"saltcrust": [
 		"clearbody"
 	],
-	"beyondfear": [
-		"innerfocus"
-	],
+	"beyondfear": [],
 	"stillwater": [
 		"waterabsorb"
 	],
@@ -73626,6 +73647,20 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 
 // BEGIN SERVER WORKING SYNC MOVES
 Object.assign(CUSTOM_MOVE_UPDATES, {
+	"10000000voltthunderbolt": {
+		"name": "10,000,000 Volt Thunderbolt",
+		"num": 719,
+		"type": "Electric",
+		"category": "Special",
+		"basePower": 195,
+		"accuracy": true,
+		"pp": 1,
+		"priority": 0,
+		"target": "normal",
+		"flags": {},
+		"desc": "Has a very high chance for a critical hit.",
+		"shortDesc": "Very high critical hit ratio."
+	},
 	"absorb": {
 		"name": "Absorb",
 		"num": 71,
@@ -73698,6 +73733,20 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		},
 		"desc": "Raises the user's Defense by 2 stages.",
 		"shortDesc": "Raises the user's Defense by 2."
+	},
+	"aciddownpour": {
+		"name": "Acid Downpour",
+		"num": 628,
+		"type": "Poison",
+		"category": "Physical",
+		"basePower": 1,
+		"accuracy": true,
+		"pp": 1,
+		"priority": 0,
+		"target": "normal",
+		"flags": {},
+		"desc": "A one-use Poison-type Z-Move. Its power depends on the damaging Poison-type move selected as its base.",
+		"shortDesc": "Power depends on the base Poison-type move."
 	},
 	"acidspray": {
 		"name": "Acid Spray",
@@ -73883,11 +73932,25 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"protect": 1,
 			"mirror": 1
 		},
-		"desc": "Heather's move. Uses higher staged Attack or Sp. Atk with matching defense (Special on ties). After a hit, clears own-side entry hazards and sets Tailwind. Bypasses accuracy checks in Strong Winds. New Tailwind lasts 6 turns on Mountain/Snowy Mountain and uses native Tailwind weather rules; existing Tailwind is not refreshed. Clears fields that existing blowing moves clear.",
+		"desc": "Heather's move. Uses higher staged Attack or Sp. Atk with matching defense (Special on ties). After a hit, clears own-side entry hazards and sets Tailwind. Bypasses accuracy checks in Strong Winds. New Tailwind lasts 6 turns on Mountain/Snowy Mountain and uses native Tailwind weather rules; existing Tailwind is not refreshed. Clears fields that existing blowing moves clear. After successful HP or Substitute damage while the user survives, removes the active Aura once per whole move, preserving the underlying field. With no Aura, retains its normal field eligibility and transformations. Misses, protection and immunity do not clear it. Does not prevent later Auras.",
 		"shortDesc": "Heather's move. Adaptive; clears own hazards; sets Tailwind.",
 		"signatureCharacters": [
 			"heather"
 		]
+	},
+	"alloutpummeling": {
+		"name": "All-Out Pummeling",
+		"num": 624,
+		"type": "Fighting",
+		"category": "Physical",
+		"basePower": 1,
+		"accuracy": true,
+		"pp": 1,
+		"priority": 0,
+		"target": "normal",
+		"flags": {},
+		"desc": "A one-use Fighting-type Z-Move. Its power depends on the damaging Fighting-type move selected as its base.",
+		"shortDesc": "Power depends on the base Fighting-type move."
 	},
 	"alluringvoice": {
 		"name": "Alluring Voice",
@@ -74888,6 +74951,20 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"desc": "Power doubles if the target has a non-volatile status condition. Has a 30% chance to freeze the target. In Haunted Field, this move instead has a 100% chance to lower the target's Special Attack by 1 stage and a 30% chance to freeze.",
 		"shortDesc": "2x if target is statused. 30% freeze."
 	},
+	"blackholeeclipse": {
+		"name": "Black Hole Eclipse",
+		"num": 654,
+		"type": "Dark",
+		"category": "Physical",
+		"basePower": 1,
+		"accuracy": true,
+		"pp": 1,
+		"priority": 0,
+		"target": "normal",
+		"flags": {},
+		"desc": "A one-use Dark-type Z-Move. Its power depends on the damaging Dark-type move selected as its base.",
+		"shortDesc": "Power depends on the base Dark-type move."
+	},
 	"blastburn": {
 		"name": "Blast Burn",
 		"num": 307,
@@ -75026,6 +75103,20 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		},
 		"desc": "Cannot be selected the turn after it's used.",
 		"shortDesc": "Cannot be selected the turn after it's used."
+	},
+	"bloomdoom": {
+		"name": "Bloom Doom",
+		"num": 644,
+		"type": "Grass",
+		"category": "Physical",
+		"basePower": 1,
+		"accuracy": true,
+		"pp": 1,
+		"priority": 0,
+		"target": "normal",
+		"flags": {},
+		"desc": "A one-use Grass-type Z-Move. Its power depends on the damaging Grass-type move selected as its base.",
+		"shortDesc": "Power depends on the base Grass-type move."
 	},
 	"blueflare": {
 		"name": "Blue Flare",
@@ -75298,6 +75389,20 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		},
 		"desc": "Has a 100% chance to lower the target's Attack by 1 stage.",
 		"shortDesc": "100% chance to lower the foe(s) Attack by 1."
+	},
+	"breakneckblitz": {
+		"name": "Breakneck Blitz",
+		"num": 622,
+		"type": "Normal",
+		"category": "Physical",
+		"basePower": 1,
+		"accuracy": true,
+		"pp": 1,
+		"priority": 0,
+		"target": "normal",
+		"flags": {},
+		"desc": "A one-use Normal-type Z-Move. Its power depends on the damaging Normal-type move selected as its base.",
+		"shortDesc": "Power depends on the base Normal-type move."
 	},
 	"brickbreak": {
 		"name": "Brick Break",
@@ -75676,6 +75781,22 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"desc": "Lowers the target's Special Attack by 2 stages. The target is unaffected if both the user and the target are the same gender, or if either is genderless. Pokemon with the Oblivious Ability are immune.",
 		"shortDesc": "Lowers the foe(s) Sp. Atk by 2 if opposite gender."
 	},
+	"catastropika": {
+		"name": "Catastropika",
+		"num": 658,
+		"type": "Electric",
+		"category": "Physical",
+		"basePower": 210,
+		"accuracy": true,
+		"pp": 1,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"contact": 1
+		},
+		"desc": "Pikachu's exclusive Z-Move, used through Volt Tackle. No additional effect.",
+		"shortDesc": "Exclusive Pikachu Z-Move; no additional effect."
+	},
 	"cauterize": {
 		"name": "Cauterize",
 		"num": 10011,
@@ -75985,6 +76106,23 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"desc": "Raises the user's Attack, Defense, Special Attack, Special Defense, and Speed by 1 stage in exchange for the user losing 33% of its maximum HP, rounded down. Fails if the user would faint or if its Attack, Defense, Special Attack, Special Defense, and Speed stat stages would not change.",
 		"shortDesc": "User loses 33% of its max HP. +1 to all stats."
 	},
+	"clangoroussoulblaze": {
+		"name": "Clangorous Soulblaze",
+		"num": 728,
+		"type": "Dragon",
+		"category": "Special",
+		"basePower": 185,
+		"accuracy": true,
+		"pp": 1,
+		"priority": 0,
+		"target": "allAdjacentFoes",
+		"flags": {
+			"sound": 1,
+			"bypasssub": 1
+		},
+		"desc": "Raises the user's Attack, Defense, Special Attack, Special Defense, and Speed by 1 stage.",
+		"shortDesc": "Raises the user's Atk/Def/SpAtk/SpDef/Spe by 1."
+	},
 	"clearsmog": {
 		"name": "Clear Smog",
 		"num": 499,
@@ -76253,6 +76391,20 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"desc": "Has a 10% chance to lower the target's Speed by 1 stage.",
 		"shortDesc": "10% chance to lower the target's Speed by 1."
 	},
+	"continentalcrush": {
+		"name": "Continental Crush",
+		"num": 632,
+		"type": "Rock",
+		"category": "Physical",
+		"basePower": 1,
+		"accuracy": true,
+		"pp": 1,
+		"priority": 0,
+		"target": "normal",
+		"flags": {},
+		"desc": "A one-use Rock-type Z-Move. Its power depends on the damaging Rock-type move selected as its base.",
+		"shortDesc": "Power depends on the base Rock-type move."
+	},
 	"conversion": {
 		"name": "Conversion",
 		"num": 160,
@@ -76325,6 +76477,20 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		},
 		"desc": "If the user moves after the target, the target's Ability is rendered ineffective as long as it remains active. If the target uses Baton Pass, the replacement will remain under this effect. If the target's Ability is As One, Battle Bond, Comatose, Disguise, Gulp Missile, Ice Face, Multitype, Power Construct, RKS System, Schooling, Shields Down, Stance Change, Tera Shift, Zen Mode, or Zero to Hero, this effect does not happen, and receiving the effect through Baton Pass ends the effect immediately.",
 		"shortDesc": "Nullifies the foe(s) Ability if the foe(s) move first."
+	},
+	"corkscrewcrash": {
+		"name": "Corkscrew Crash",
+		"num": 638,
+		"type": "Steel",
+		"category": "Physical",
+		"basePower": 1,
+		"accuracy": true,
+		"pp": 1,
+		"priority": 0,
+		"target": "normal",
+		"flags": {},
+		"desc": "A one-use Steel-type Z-Move. Its power depends on the damaging Steel-type move selected as its base.",
+		"shortDesc": "Power depends on the base Steel-type move."
 	},
 	"corrosivegas": {
 		"name": "Corrosive Gas",
@@ -76928,6 +77094,20 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		},
 		"desc": "The user is protected from most attacks made by other Pokemon during this turn. This move has a 1/X chance of being successful, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails, if the user's last move used is not Baneful Bunker, Burning Bulwark, Detect, Endure, King's Shield, Max Guard, Obstruct, Protect, Quick Guard, Silk Trap, Spiky Shield, or Wide Guard, or if it was one of those moves and the user's protection was broken. Fails if the user moves last this turn.",
 		"shortDesc": "Prevents moves from affecting the user this turn."
+	},
+	"devastatingdrake": {
+		"name": "Devastating Drake",
+		"num": 652,
+		"type": "Dragon",
+		"category": "Physical",
+		"basePower": 1,
+		"accuracy": true,
+		"pp": 1,
+		"priority": 0,
+		"target": "normal",
+		"flags": {},
+		"desc": "A one-use Dragon-type Z-Move. Its power depends on the damaging Dragon-type move selected as its base.",
+		"shortDesc": "Power depends on the base Dragon-type move."
 	},
 	"diamondstorm": {
 		"name": "Diamond Storm",
@@ -78247,6 +78427,20 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"desc": "Has a 10% chance to make the target flinch.",
 		"shortDesc": "10% chance to make the target flinch."
 	},
+	"extremeevoboost": {
+		"name": "Extreme Evoboost",
+		"num": 702,
+		"type": "Normal",
+		"category": "Status",
+		"basePower": 0,
+		"accuracy": true,
+		"pp": 1,
+		"priority": 0,
+		"target": "self",
+		"flags": {},
+		"desc": "Raises the user's Attack, Defense, Special Attack, Special Defense, and Speed by 2 stages.",
+		"shortDesc": "Raises user's Atk, Def, SpA, SpD, and Spe by 2."
+	},
 	"extremespeed": {
 		"name": "Extreme Speed",
 		"num": 245,
@@ -78658,8 +78852,8 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"nonsky": 1,
 			"metronome": 1
 		},
-		"desc": "If one of the user's allies chose to use Grass Pledge or Water Pledge this turn and has not moved yet, it takes its turn immediately after the user and the user's move does nothing. If combined with Grass Pledge, the ally uses Fire Pledge with 150 power and a sea of fire appears on the target's side for 4 turns, which causes damage to non-Fire types equal to 1/8 of their maximum HP, rounded down, at the end of each turn during effect, including the last turn. If combined with Water Pledge, the ally uses Water Pledge with 150 power and a rainbow appears on the user's side for 4 turns, which doubles secondary effect chances and stacks with the Serene Grace Ability, except effects that cause flinching can only have their chance doubled once. When used as a combined move, this move gains STAB no matter what the user's type is. This move does not consume the user's Fire Gem.",
-		"shortDesc": "Use with Grass or Water Pledge for added effect."
+		"desc": "Uses Attack and Defense if the user's stage-adjusted Attack is higher than its Special Attack; otherwise uses Special Attack and Special Defense, including ties. The comparison ignores ability, item and status stat multipliers. Preserves the local Pledge markers, combination power boost and field creation: Fire + Water creates Rainbow Field, Fire + Grass creates Burning Field, and Water + Grass creates Swamp Field. Fields last 4 turns, or 7 with the triggering user's Amplifield Rock; successful hits and Substitute damage retain the existing creation and refresh behavior.",
+		"shortDesc": "Uses higher offensive stat; combines Pledges into fields."
 	},
 	"firepunch": {
 		"name": "Fire Punch",
@@ -79719,6 +79913,20 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"desc": "Cannot be selected the turn after it's used.",
 		"shortDesc": "Cannot be selected the turn after it's used."
 	},
+	"gigavolthavoc": {
+		"name": "Gigavolt Havoc",
+		"num": 646,
+		"type": "Electric",
+		"category": "Physical",
+		"basePower": 1,
+		"accuracy": true,
+		"pp": 1,
+		"priority": 0,
+		"target": "normal",
+		"flags": {},
+		"desc": "A one-use Electric-type Z-Move. Its power depends on the damaging Electric-type move selected as its base.",
+		"shortDesc": "Power depends on the base Electric-type move."
+	},
 	"gildedarrow": {
 		"name": "Gilded Arrow",
 		"num": 10463,
@@ -79882,6 +80090,48 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"desc": "Power is equal to the base move's Max Move power. If this move is successful, each Pokemon on the opposing side either falls asleep, becomes poisoned, or becomes paralyzed, even if they have a substitute.",
 		"shortDesc": "Base move affects power. Foes: slp or psn or par."
 	},
+	"gmaxcannonade": {
+		"name": "G-Max Cannonade",
+		"num": 1000,
+		"type": "Water",
+		"category": "Physical",
+		"basePower": 10,
+		"accuracy": true,
+		"pp": 5,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {},
+		"desc": "Power is equal to the base move's Max Move power. If this move is successful, for 4 turns each non-Water-type Pokemon on the opposing side takes damage equal to 1/6 of its maximum HP, rounded down, at the end of each turn during effect, including the last turn.",
+		"shortDesc": "Base move affects power. Foes: -1/6 HP, 4 turns."
+	},
+	"gmaxcentiferno": {
+		"name": "G-Max Centiferno",
+		"num": 1000,
+		"type": "Fire",
+		"category": "Physical",
+		"basePower": 10,
+		"accuracy": true,
+		"pp": 5,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {},
+		"desc": "Power is equal to the base move's Max Move power. If this move is successful, each Pokemon on the opposing side is prevented from switching for four or five turns (seven turns if the user is holding Grip Claw), even if they have a substitute. Causes damage equal to 1/8 of their maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. They can still switch out if they are holding Shed Shell or use Baton Pass, Flip Turn, Parting Shot, Teleport, U-turn, or Volt Switch. The effect ends for a target if it leaves the field, or if it uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+		"shortDesc": "Base move affects power. Foes: bound 4-5 turns."
+	},
+	"gmaxchistrike": {
+		"name": "G-Max Chi Strike",
+		"num": 1000,
+		"type": "Fighting",
+		"category": "Physical",
+		"basePower": 10,
+		"accuracy": true,
+		"pp": 5,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {},
+		"desc": "Power is equal to the base move's Max Move power. If this move is successful, each Pokemon on the user's side has their critical hit ratio raised by 1 stage, even if they have a substitute.",
+		"shortDesc": "Base move affects power. Allies: Crit Ratio +1."
+	},
 	"gmaxcuddle": {
 		"name": "G-Max Cuddle",
 		"num": 1000,
@@ -79895,6 +80145,304 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"flags": {},
 		"desc": "Power is equal to the base move's Max Move power. This move is Fairy type. If this move is successful, opposing Pokemon have their Attack and Special Attack lowered by 1 stage, and the user and its ally restore 1/8 of their maximum HP.",
 		"shortDesc": "Fairy. Foes: -1 Atk/SpA. User and ally heal 1/8."
+	},
+	"gmaxdeathroll": {
+		"name": "G-Max Death Roll",
+		"num": 1000,
+		"type": "Dark",
+		"category": "Physical",
+		"basePower": 140,
+		"accuracy": true,
+		"pp": 5,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {
+			"contact": 1
+		},
+		"desc": "Dark-type, 140 Base Power. Always hits one selected foe at full power. After a successful hit, each opposing active Pokemon independently has a 30% chance to flinch; the other foes take no damage from this move.",
+		"shortDesc": "140 BP Dark to one foe; 30% flinch chance for each foe."
+	},
+	"gmaxdepletion": {
+		"name": "G-Max Depletion",
+		"num": 1000,
+		"type": "Dragon",
+		"category": "Physical",
+		"basePower": 10,
+		"accuracy": true,
+		"pp": 5,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {},
+		"desc": "Power is equal to the base move's Max Move power. If this move is successful, each Pokemon on the opposing side loses 2 PP from its last move used, even if they have a substitute.",
+		"shortDesc": "Base move affects power. Foes: last move -2 PP."
+	},
+	"gmaxdrumsolo": {
+		"name": "G-Max Drum Solo",
+		"num": 1000,
+		"type": "Grass",
+		"category": "Physical",
+		"basePower": 160,
+		"accuracy": true,
+		"pp": 5,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {},
+		"desc": "Power is 160 regardless of the base move's Max Move power. This move and its effects ignore the Abilities of other Pokemon.",
+		"shortDesc": "Always 160 power. Ignores Abilities."
+	},
+	"gmaxechoresonance": {
+		"name": "G-Max Echo Resonance",
+		"num": 1000,
+		"type": "Psychic",
+		"category": "Physical",
+		"basePower": 10,
+		"accuracy": true,
+		"pp": 5,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {},
+		"desc": "Psychic-type. Sets Aurora Veil on the user's side.",
+		"shortDesc": "Sets Aurora Veil on the user's side."
+	},
+	"gmaxfinale": {
+		"name": "G-Max Finale",
+		"num": 1000,
+		"type": "Fairy",
+		"category": "Physical",
+		"basePower": 10,
+		"accuracy": true,
+		"pp": 5,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {},
+		"desc": "Power is equal to the base move's Max Move power. If this move is successful, each Pokemon on the user's side restores 1/6 of its current maximum HP, even if they have a substitute.",
+		"shortDesc": "Base move affects power. Allies: +1/6 max HP."
+	},
+	"gmaxfinalverdict": {
+		"name": "G-Max Final Verdict",
+		"num": 1000,
+		"type": "Steel",
+		"category": "Physical",
+		"basePower": 130,
+		"accuracy": true,
+		"pp": 5,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {},
+		"desc": "Steel-type, 130 Base Power. This move uses the user's higher offensive stat. After it hits, all opposing Pokemon at or below 20% HP faint.",
+		"shortDesc": "130 BP Steel. Uses higher offense. Then executes foes at 20% HP or less."
+	},
+	"gmaxfireball": {
+		"name": "G-Max Fireball",
+		"num": 1000,
+		"type": "Fire",
+		"category": "Physical",
+		"basePower": 160,
+		"accuracy": true,
+		"pp": 5,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {},
+		"desc": "Power is 160 regardless of the base move's Max Move power. This move and its effects ignore the Abilities of other Pokemon.",
+		"shortDesc": "Always 160 power. Ignores Abilities."
+	},
+	"gmaxflareshock": {
+		"name": "G-Max Flare Shock",
+		"num": 1000,
+		"type": "Fire",
+		"category": "Physical",
+		"basePower": 10,
+		"accuracy": true,
+		"pp": 5,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {},
+		"desc": "Fire-type. Poisons or burns each opposing Pokemon at random.",
+		"shortDesc": "Poisons or burns each foe at random."
+	},
+	"gmaxfoamburst": {
+		"name": "G-Max Foam Burst",
+		"num": 1000,
+		"type": "Water",
+		"category": "Physical",
+		"basePower": 10,
+		"accuracy": true,
+		"pp": 5,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {},
+		"desc": "Power is equal to the base move's Max Move power. If this move is successful, the Speed of each Pokemon on the opposing side is lowered by 2 stages, even if they have a substitute.",
+		"shortDesc": "Base move affects power. Foes: -2 Speed."
+	},
+	"gmaxgoldrush": {
+		"name": "G-Max Gold Rush",
+		"num": 1000,
+		"type": "Normal",
+		"category": "Physical",
+		"basePower": 10,
+		"accuracy": true,
+		"pp": 5,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {},
+		"desc": "Power is equal to the base move's Max Move power. If this move is successful, each Pokemon on the opposing side becomes confused, even if they have a substitute.",
+		"shortDesc": "Base move affects power. Foes: confused."
+	},
+	"gmaxgravitas": {
+		"name": "G-Max Gravitas",
+		"num": 1000,
+		"type": "Psychic",
+		"category": "Physical",
+		"basePower": 10,
+		"accuracy": true,
+		"pp": 5,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {},
+		"desc": "Power is equal to the base move's Max Move power. If this move is successful, Gravity begins. Each successful use sinks Water Surface to Underwater, Underwater to Midnight Zone, or Corrosive Mist to Corrosive, even if Gravity is already active. These field changes do not occur on New World.",
+		"shortDesc": "Base move affects power. Starts Gravity and sinks fields, except New World."
+	},
+	"gmaxhydrosnipe": {
+		"name": "G-Max Hydrosnipe",
+		"num": 1000,
+		"type": "Water",
+		"category": "Physical",
+		"basePower": 160,
+		"accuracy": true,
+		"pp": 5,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {
+			"bullet": 1
+		},
+		"desc": "Power is 160 regardless of the base move's Max Move power. This move and its effects ignore the Abilities of other Pokemon.",
+		"shortDesc": "Always 160 power. Ignores Abilities."
+	},
+	"gmaxmalodor": {
+		"name": "G-Max Malodor",
+		"num": 1000,
+		"type": "Poison",
+		"category": "Physical",
+		"basePower": 10,
+		"accuracy": true,
+		"pp": 5,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {},
+		"desc": "Power is equal to the base move's Max Move power. If this move is successful, each Pokemon on the opposing side becomes poisoned, even if they have a substitute.",
+		"shortDesc": "Base move affects power. Foes: poisoned."
+	},
+	"gmaxmeltdown": {
+		"name": "G-Max Meltdown",
+		"num": 1000,
+		"type": "Steel",
+		"category": "Physical",
+		"basePower": 10,
+		"accuracy": true,
+		"pp": 5,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {},
+		"desc": "Power is equal to the base move's Max Move power. If this move is successful, the effect of Torment begins for each Pokemon on the opposing side, even if they have a substitute.",
+		"shortDesc": "Base move affects power. Foes: Tormented."
+	},
+	"gmaxoneblow": {
+		"name": "G-Max One Blow",
+		"num": 1000,
+		"type": "Dark",
+		"category": "Physical",
+		"basePower": 10,
+		"accuracy": true,
+		"pp": 5,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {},
+		"desc": "Power is equal to the base move's Max Move power. This move bypasses all protection effects, including Max Guard.",
+		"shortDesc": "Base move affects power. Bypasses Max Guard."
+	},
+	"gmaxrapidflow": {
+		"name": "G-Max Rapid Flow",
+		"num": 1000,
+		"type": "Water",
+		"category": "Physical",
+		"basePower": 10,
+		"accuracy": true,
+		"pp": 5,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {},
+		"desc": "Power is equal to the base move's Max Move power. This move bypasses all protection effects, including Max Guard.",
+		"shortDesc": "Base move affects power. Bypasses Max Guard."
+	},
+	"gmaxreplenish": {
+		"name": "G-Max Replenish",
+		"num": 1000,
+		"type": "Normal",
+		"category": "Physical",
+		"basePower": 10,
+		"accuracy": true,
+		"pp": 5,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {},
+		"desc": "Power is equal to the base move's Max Move power. If this move is successful, there is a 50% chance every Pokemon on the user's side has its Berry restored, even if they have a substitute.",
+		"shortDesc": "Base move affects power. 50% restores Berries."
+	},
+	"gmaxresonance": {
+		"name": "G-Max Resonance",
+		"num": 1000,
+		"type": "Ice",
+		"category": "Physical",
+		"basePower": 10,
+		"accuracy": true,
+		"pp": 5,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {},
+		"desc": "Power is equal to the base move's Max Move power. If this move is successful, the effect of Aurora Veil begins on the user's side.",
+		"shortDesc": "Base move affects power. Allies: Aurora Veil."
+	},
+	"gmaxsandblast": {
+		"name": "G-Max Sandblast",
+		"num": 1000,
+		"type": "Ground",
+		"category": "Physical",
+		"basePower": 10,
+		"accuracy": true,
+		"pp": 5,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {},
+		"desc": "Power and category depend on the base move. Traps opposing Pokemon for four or five turns (seven with Grip Claw), dealing 1/8 of their maximum HP each turn (1/6 with Binding Band). The effect ends when the user or target leaves the field, or when the target uses Rapid Spin or Substitute successfully. A trapped Pokemon can still switch with Shed Shell or a switching move. This move does not change terrain.",
+		"shortDesc": "Base move affects power. Traps and damages foes."
+	},
+	"gmaxsmite": {
+		"name": "G-Max Smite",
+		"num": 1000,
+		"type": "Fairy",
+		"category": "Physical",
+		"basePower": 10,
+		"accuracy": true,
+		"pp": 5,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {},
+		"desc": "Power is equal to the base move's Max Move power. If this move is successful, each Pokemon on the opposing side becomes confused, even if they have a substitute.",
+		"shortDesc": "Base move affects power. Foes: confusion."
+	},
+	"gmaxsnooze": {
+		"name": "G-Max Snooze",
+		"num": 1000,
+		"type": "Dark",
+		"category": "Physical",
+		"basePower": 10,
+		"accuracy": true,
+		"pp": 5,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {},
+		"desc": "Power is equal to the base move's Max Move power. If this move is successful, there is a 30% chance the effect of Yawn begins on the target, even if it has a substitute.",
+		"shortDesc": "Base move affects power. Target: 30% Yawn."
 	},
 	"gmaxspiritvolley": {
 		"name": "G-Max Spirit Volley",
@@ -79923,6 +80471,146 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"flags": {},
 		"desc": "Power is equal to the base move's Max Move power. If this move is successful, it sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in. Foes lose 1/32, 1/16, 1/8, 1/4, or 1/2 of their maximum HP, rounded down, based on their weakness to the Steel type; 0.25x, 0.5x, neutral, 2x, or 4x, respectively. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin or Defog successfully, or is hit by Defog.",
 		"shortDesc": "Base move affects power. Foes: Steel hazard."
+	},
+	"gmaxstonesurge": {
+		"name": "G-Max Stonesurge",
+		"num": 1000,
+		"type": "Water",
+		"category": "Physical",
+		"basePower": 10,
+		"accuracy": true,
+		"pp": 5,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {},
+		"desc": "Power is equal to the base move's Max Move power. If this move is successful, it sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in. Foes lose 1/32, 1/16, 1/8, 1/4, or 1/2 of their maximum HP, rounded down, based on their weakness to the Rock type; 0.25x, 0.5x, neutral, 2x, or 4x, respectively. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin or Defog successfully, or is hit by Defog.",
+		"shortDesc": "Base move affects power. Foes: Stealth Rock."
+	},
+	"gmaxstunshock": {
+		"name": "G-Max Stun Shock",
+		"num": 1000,
+		"type": "Electric",
+		"category": "Physical",
+		"basePower": 10,
+		"accuracy": true,
+		"pp": 5,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {},
+		"desc": "Power is equal to the base move's Max Move power. If this move is successful, each Pokemon on the opposing side either becomes poisoned or paralyzed, even if they have a substitute.",
+		"shortDesc": "Base move affects power. Foes: psn or par."
+	},
+	"gmaxsweetness": {
+		"name": "G-Max Sweetness",
+		"num": 1000,
+		"type": "Grass",
+		"category": "Physical",
+		"basePower": 10,
+		"accuracy": true,
+		"pp": 5,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {},
+		"desc": "Power is equal to the base move's Max Move power. If this move is successful, each Pokemon on the user's side has its status condition cured, even if they have a substitute.",
+		"shortDesc": "Base move affects power. Allies: status cured."
+	},
+	"gmaxsyrupfall": {
+		"name": "G-Max Syrupfall",
+		"num": 1000,
+		"type": "Grass",
+		"category": "Special",
+		"basePower": 120,
+		"accuracy": true,
+		"pp": 5,
+		"priority": 0,
+		"target": "allAdjacentFoes",
+		"flags": {},
+		"desc": "This 120 BP Special move deals damage and applies Syrup Bomb's syrup effect to all opposing Pokemon for 4 turns.",
+		"shortDesc": "120 BP Special; all foes get Syrup for 4 turns."
+	},
+	"gmaxtartness": {
+		"name": "G-Max Tartness",
+		"num": 1000,
+		"type": "Grass",
+		"category": "Physical",
+		"basePower": 10,
+		"accuracy": true,
+		"pp": 5,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {},
+		"desc": "Power is equal to the base move's Max Move power. If this move is successful, the evasiveness of each Pokemon on the opposing side is lowered by 1 stage, even if they have a substitute.",
+		"shortDesc": "Base move affects power. Foes: -1 evasiveness."
+	},
+	"gmaxterror": {
+		"name": "G-Max Terror",
+		"num": 1000,
+		"type": "Ghost",
+		"category": "Physical",
+		"basePower": 10,
+		"accuracy": true,
+		"pp": 5,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {},
+		"desc": "Power is equal to the base move's Max Move power. If this move is successful, each Pokemon on the opposing side is prevented from switching out, even if they have a substitute. They can still switch out if they are holding Shed Shell or use Baton Pass, Flip Turn, Parting Shot, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field. If used by a Pokemon with Soul Strike, each opposing Pokemon also becomes cursed.",
+		"shortDesc": "Max BP. Traps foes; creates Haunted Field 3 turns."
+	},
+	"gmaxvinelash": {
+		"name": "G-Max Vine Lash",
+		"num": 1000,
+		"type": "Grass",
+		"category": "Physical",
+		"basePower": 10,
+		"accuracy": true,
+		"pp": 5,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {},
+		"desc": "Power is equal to the base move's Max Move power. If this move is successful, for 4 turns each non-Grass-type Pokemon on the opposing side takes damage equal to 1/6 of its maximum HP, rounded down, at the end of each turn during effect, including the last turn.",
+		"shortDesc": "Base move affects power. Foes: -1/6 HP, 4 turns."
+	},
+	"gmaxvolcalith": {
+		"name": "G-Max Volcalith",
+		"num": 1000,
+		"type": "Rock",
+		"category": "Physical",
+		"basePower": 10,
+		"accuracy": true,
+		"pp": 5,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {},
+		"desc": "Power is equal to the base move's Max Move power. If this move is successful, for 4 turns each non-Rock-type Pokemon on the opposing side takes damage equal to 1/6 of its maximum HP, rounded down, at the end of each turn during effect, including the last turn.",
+		"shortDesc": "Base move affects power. Foes: -1/6 HP, 4 turns."
+	},
+	"gmaxvoltcrash": {
+		"name": "G-Max Volt Crash",
+		"num": 1000,
+		"type": "Electric",
+		"category": "Physical",
+		"basePower": 10,
+		"accuracy": true,
+		"pp": 5,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {},
+		"desc": "Power is equal to the base move's Max Move power. If this move is successful, each Pokemon on the opposing side becomes paralyzed, even if they have a substitute.",
+		"shortDesc": "Base move affects power. Foes: paralyzed."
+	},
+	"gmaxwildfire": {
+		"name": "G-Max Wildfire",
+		"num": 1000,
+		"type": "Fire",
+		"category": "Physical",
+		"basePower": 10,
+		"accuracy": true,
+		"pp": 5,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {},
+		"desc": "Power is equal to the base move's Max Move power. If this move is successful, for 4 turns each non-Fire-type Pokemon on the opposing side takes damage equal to 1/6 of its maximum HP, rounded down, at the end of each turn during effect, including the last turn.",
+		"shortDesc": "Base move affects power. Foes: -1/6 HP, 4 turns."
 	},
 	"gmaxwindrage": {
 		"name": "G-Max Wind Rage",
@@ -79974,8 +80662,8 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"nonsky": 1,
 			"metronome": 1
 		},
-		"desc": "If one of the user's allies chose to use Fire Pledge or Water Pledge this turn and has not moved yet, it takes its turn immediately after the user and the user's move does nothing. If combined with Fire Pledge, the ally uses Fire Pledge with 150 power and a sea of fire appears on the target's side for 4 turns, which causes damage to non-Fire types equal to 1/8 of their maximum HP, rounded down, at the end of each turn during effect, including the last turn. If combined with Water Pledge, the ally uses Grass Pledge with 150 power and a swamp appears on the target's side for 4 turns, which quarters the Speed of each Pokemon on that side. When used as a combined move, this move gains STAB no matter what the user's type is. This move does not consume the user's Grass Gem.",
-		"shortDesc": "Use with Fire or Water Pledge for added effect."
+		"desc": "Uses Attack and Defense if the user's stage-adjusted Attack is higher than its Special Attack; otherwise uses Special Attack and Special Defense, including ties. The comparison ignores ability, item and status stat multipliers. Preserves the local Pledge markers, combination power boost and field creation: Fire + Water creates Rainbow Field, Fire + Grass creates Burning Field, and Water + Grass creates Swamp Field. Fields last 4 turns, or 7 with the triggering user's Amplifield Rock; successful hits and Substitute damage retain the existing creation and refresh behavior.",
+		"shortDesc": "Uses higher offensive stat; combines Pledges into fields."
 	},
 	"grasswhistle": {
 		"name": "Grass Whistle",
@@ -80122,6 +80810,20 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		},
 		"desc": "Until the user's next turn, if an opposing Pokemon's attack knocks the user out, that move loses all its remaining PP.",
 		"shortDesc": "If the user faints, the attack used loses all its PP."
+	},
+	"guardianofalola": {
+		"name": "Guardian of Alola",
+		"num": 698,
+		"type": "Fairy",
+		"category": "Special",
+		"basePower": 0,
+		"accuracy": true,
+		"pp": 1,
+		"priority": 0,
+		"target": "normal",
+		"flags": {},
+		"desc": "Deals damage to the target equal to 3/4 of its current HP, rounded down, but not less than 1 HP.",
+		"shortDesc": "Does damage equal to 3/4 target's current HP."
 	},
 	"guardsplit": {
 		"name": "Guard Split",
@@ -80733,6 +81435,278 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"desc": "This move's type depends on the user's individual values (IVs), and can be any type but Fairy and Normal.",
 		"shortDesc": "Varies in type based on the user's IVs."
 	},
+	"hiddenpowerbug": {
+		"name": "Hidden Power Bug",
+		"num": 237,
+		"type": "Bug",
+		"category": "Special",
+		"basePower": 60,
+		"accuracy": 100,
+		"pp": 15,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1
+		},
+		"desc": "",
+		"shortDesc": ""
+	},
+	"hiddenpowerdark": {
+		"name": "Hidden Power Dark",
+		"num": 237,
+		"type": "Dark",
+		"category": "Special",
+		"basePower": 60,
+		"accuracy": 100,
+		"pp": 15,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1
+		},
+		"desc": "",
+		"shortDesc": ""
+	},
+	"hiddenpowerdragon": {
+		"name": "Hidden Power Dragon",
+		"num": 237,
+		"type": "Dragon",
+		"category": "Special",
+		"basePower": 60,
+		"accuracy": 100,
+		"pp": 15,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1
+		},
+		"desc": "",
+		"shortDesc": ""
+	},
+	"hiddenpowerelectric": {
+		"name": "Hidden Power Electric",
+		"num": 237,
+		"type": "Electric",
+		"category": "Special",
+		"basePower": 60,
+		"accuracy": 100,
+		"pp": 15,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1
+		},
+		"desc": "",
+		"shortDesc": ""
+	},
+	"hiddenpowerfighting": {
+		"name": "Hidden Power Fighting",
+		"num": 237,
+		"type": "Fighting",
+		"category": "Special",
+		"basePower": 60,
+		"accuracy": 100,
+		"pp": 15,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1
+		},
+		"desc": "",
+		"shortDesc": ""
+	},
+	"hiddenpowerfire": {
+		"name": "Hidden Power Fire",
+		"num": 237,
+		"type": "Fire",
+		"category": "Special",
+		"basePower": 60,
+		"accuracy": 100,
+		"pp": 15,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1
+		},
+		"desc": "",
+		"shortDesc": ""
+	},
+	"hiddenpowerflying": {
+		"name": "Hidden Power Flying",
+		"num": 237,
+		"type": "Flying",
+		"category": "Special",
+		"basePower": 60,
+		"accuracy": 100,
+		"pp": 15,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1
+		},
+		"desc": "",
+		"shortDesc": ""
+	},
+	"hiddenpowerghost": {
+		"name": "Hidden Power Ghost",
+		"num": 237,
+		"type": "Ghost",
+		"category": "Special",
+		"basePower": 60,
+		"accuracy": 100,
+		"pp": 15,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1
+		},
+		"desc": "",
+		"shortDesc": ""
+	},
+	"hiddenpowergrass": {
+		"name": "Hidden Power Grass",
+		"num": 237,
+		"type": "Grass",
+		"category": "Special",
+		"basePower": 60,
+		"accuracy": 100,
+		"pp": 15,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1
+		},
+		"desc": "",
+		"shortDesc": ""
+	},
+	"hiddenpowerground": {
+		"name": "Hidden Power Ground",
+		"num": 237,
+		"type": "Ground",
+		"category": "Special",
+		"basePower": 60,
+		"accuracy": 100,
+		"pp": 15,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1
+		},
+		"desc": "",
+		"shortDesc": ""
+	},
+	"hiddenpowerice": {
+		"name": "Hidden Power Ice",
+		"num": 237,
+		"type": "Ice",
+		"category": "Special",
+		"basePower": 60,
+		"accuracy": 100,
+		"pp": 15,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1
+		},
+		"desc": "",
+		"shortDesc": ""
+	},
+	"hiddenpowerpoison": {
+		"name": "Hidden Power Poison",
+		"num": 237,
+		"type": "Poison",
+		"category": "Special",
+		"basePower": 60,
+		"accuracy": 100,
+		"pp": 15,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1
+		},
+		"desc": "",
+		"shortDesc": ""
+	},
+	"hiddenpowerpsychic": {
+		"name": "Hidden Power Psychic",
+		"num": 237,
+		"type": "Psychic",
+		"category": "Special",
+		"basePower": 60,
+		"accuracy": 100,
+		"pp": 15,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1
+		},
+		"desc": "",
+		"shortDesc": ""
+	},
+	"hiddenpowerrock": {
+		"name": "Hidden Power Rock",
+		"num": 237,
+		"type": "Rock",
+		"category": "Special",
+		"basePower": 60,
+		"accuracy": 100,
+		"pp": 15,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1
+		},
+		"desc": "",
+		"shortDesc": ""
+	},
+	"hiddenpowersteel": {
+		"name": "Hidden Power Steel",
+		"num": 237,
+		"type": "Steel",
+		"category": "Special",
+		"basePower": 60,
+		"accuracy": 100,
+		"pp": 15,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1
+		},
+		"desc": "",
+		"shortDesc": ""
+	},
+	"hiddenpowerwater": {
+		"name": "Hidden Power Water",
+		"num": 237,
+		"type": "Water",
+		"category": "Special",
+		"basePower": 60,
+		"accuracy": 100,
+		"pp": 15,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1
+		},
+		"desc": "",
+		"shortDesc": ""
+	},
 	"highhorsepower": {
 		"name": "High Horsepower",
 		"num": 667,
@@ -80988,6 +81962,20 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		},
 		"desc": "If the current weather is Sunny Day and the user is not holding Utility Umbrella, this move's damage is multiplied by 1.5 instead of halved for being Water type.",
 		"shortDesc": "During Sunny Day: 1.5x damage instead of half."
+	},
+	"hydrovortex": {
+		"name": "Hydro Vortex",
+		"num": 642,
+		"type": "Water",
+		"category": "Physical",
+		"basePower": 1,
+		"accuracy": true,
+		"pp": 1,
+		"priority": 0,
+		"target": "normal",
+		"flags": {},
+		"desc": "A one-use Water-type Z-Move. Its power depends on the damaging Water-type move selected as its base.",
+		"shortDesc": "Power depends on the base Water-type move."
 	},
 	"hyperbeam": {
 		"name": "Hyper Beam",
@@ -81422,7 +82410,7 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"mirror": 1,
 			"metronome": 1
 		},
-		"desc": "Charlotte's move. Hits opposing Pokemon and applies Torment to damaged targets. Clears a replaceable field after a hit, respecting field locks. Field effects: Changes Cave to Volcanic. Flower Garden stage 3 or higher loses two stages unless rain or Water Sport prevents it. Uses native Ignite transformations before clearing other replaceable fields.",
+		"desc": "Charlotte's move. Hits opposing Pokemon and applies Torment to damaged targets. Clears a replaceable field after a hit, respecting field locks. Field effects: Changes Cave to Volcanic. Flower Garden stage 3 or higher loses two stages unless rain or Water Sport prevents it. Uses native Ignite transformations before clearing other replaceable fields. After successful HP or Substitute damage while the user survives, removes the active Aura once per whole move, preserving the underlying field. With no Aura, retains its normal field eligibility and transformations. Misses, protection and immunity do not clear it. Does not prevent later Auras.",
 		"shortDesc": "Charlotte's move. Hits foes; Torments; clears or transforms the field.",
 		"signatureCharacters": [
 			"charlotte"
@@ -81445,6 +82433,20 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		},
 		"desc": "Has a 100% chance to burn the target.",
 		"shortDesc": "100% chance to burn the target."
+	},
+	"infernooverdrive": {
+		"name": "Inferno Overdrive",
+		"num": 640,
+		"type": "Fire",
+		"category": "Physical",
+		"basePower": 1,
+		"accuracy": true,
+		"pp": 1,
+		"priority": 0,
+		"target": "normal",
+		"flags": {},
+		"desc": "A one-use Fire-type Z-Move. Its power depends on the damaging Fire-type move selected as its base.",
+		"shortDesc": "Power depends on the base Fire-type move."
 	},
 	"infestation": {
 		"name": "Infestation",
@@ -82086,6 +83088,22 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"desc": "Lowers the target's Defense by 1 stage.",
 		"shortDesc": "Lowers the foe(s) Defense by 1."
 	},
+	"letssnuggleforever": {
+		"name": "Let's Snuggle Forever",
+		"num": 726,
+		"type": "Fairy",
+		"category": "Physical",
+		"basePower": 190,
+		"accuracy": true,
+		"pp": 1,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"contact": 1
+		},
+		"desc": "Mimikyu's exclusive Z-Move, used through Play Rough. No additional effect.",
+		"shortDesc": "Exclusive Mimikyu Z-Move; no additional effect."
+	},
 	"lick": {
 		"name": "Lick",
 		"num": 122,
@@ -82588,7 +83606,7 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"bypasssub": 1,
 			"metronome": 1
 		},
-		"desc": "Raises the Defense and Special Defense of Pokemon on the user's side with the Plus or Minus Abilities by 1 stage.",
+		"desc": "Raises the Defense and Special Defense of allies with Plus or Minus by 1 stage. On the local Electric Field, normally raises both stats of all allies by 2 stages. A user's unspent Magnetic Bulwark instead allows one use per genuine entry to raise both stats of itself and adjacent allies by 1 regardless of Plus or Minus. Normal boost restrictions apply; an entirely failed use does not spend this benefit.",
 		"shortDesc": "Raises Def, Sp. Def of allies with Plus/Minus by 1."
 	},
 	"magnetrise": {
@@ -82644,6 +83662,22 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		},
 		"desc": "Lowers the user's Special Attack by 1 stage.",
 		"shortDesc": "Lowers the user's Sp. Atk by 1. Hits foe(s)."
+	},
+	"maliciousmoonsault": {
+		"name": "Malicious Moonsault",
+		"num": 696,
+		"type": "Dark",
+		"category": "Physical",
+		"basePower": 180,
+		"accuracy": true,
+		"pp": 1,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"contact": 1
+		},
+		"desc": "Damage doubles and no accuracy check is done if the target has used Minimize while active.",
+		"shortDesc": "Damage doubles if the target used Minimize."
 	},
 	"malignantchain": {
 		"name": "Malignant Chain",
@@ -82722,6 +83756,118 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"adam"
 		]
 	},
+	"maxairstream": {
+		"name": "Max Airstream",
+		"num": 766,
+		"type": "Flying",
+		"category": "Physical",
+		"basePower": 10,
+		"accuracy": true,
+		"pp": 10,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {},
+		"desc": "Power is equal to the base move's Max Move power. If this move is successful, the Speed of each Pokemon on the user's side is raised by 1 stage, even if they have a substitute. This effect does not happen if the user is not Dynamaxed. If this move is used as a base move, it deals damage with a power of 0.",
+		"shortDesc": "Base move affects power. Allies: +1 Speed."
+	},
+	"maxdarkness": {
+		"name": "Max Darkness",
+		"num": 772,
+		"type": "Dark",
+		"category": "Physical",
+		"basePower": 10,
+		"accuracy": true,
+		"pp": 10,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {},
+		"desc": "Power is equal to the base move's Max Move power. If this move is successful, the Special Defense of each Pokemon on the opposing side is lowered by 1 stage, even if they have a substitute. This effect does not happen if the user is not Dynamaxed. If this move is used as a base move, it deals damage with a power of 0.",
+		"shortDesc": "Base move affects power. Foes: -1 Sp. Def."
+	},
+	"maxflare": {
+		"name": "Max Flare",
+		"num": 757,
+		"type": "Fire",
+		"category": "Physical",
+		"basePower": 100,
+		"accuracy": true,
+		"pp": 10,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {},
+		"desc": "Power is equal to the base move's Max Move power. If this move is successful, the effect of Sunny Day begins. This effect does not happen if the user is not Dynamaxed. If this move is used as a base move, it deals damage with a power of 0.",
+		"shortDesc": "Base move affects power. Starts Sunny Day."
+	},
+	"maxflutterby": {
+		"name": "Max Flutterby",
+		"num": 758,
+		"type": "Bug",
+		"category": "Physical",
+		"basePower": 10,
+		"accuracy": true,
+		"pp": 10,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {},
+		"desc": "Power is equal to the base move's Max Move power. If this move is successful, the Special Attack of each Pokemon on the opposing side is lowered by 1 stage, even if they have a substitute. This effect does not happen if the user is not Dynamaxed. If this move is used as a base move, it deals damage with a power of 0.",
+		"shortDesc": "Base move affects power. Foes: -1 Sp. Atk."
+	},
+	"maxgeyser": {
+		"name": "Max Geyser",
+		"num": 765,
+		"type": "Water",
+		"category": "Physical",
+		"basePower": 10,
+		"accuracy": true,
+		"pp": 10,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {},
+		"desc": "Power is equal to the base move's Max Move power. If this move is successful, the effect of Rain Dance begins. This effect does not happen if the user is not Dynamaxed. If this move is used as a base move, it deals damage with a power of 0.",
+		"shortDesc": "Base move affects power. Starts Rain Dance."
+	},
+	"maxguard": {
+		"name": "Max Guard",
+		"num": 743,
+		"type": "Normal",
+		"category": "Status",
+		"basePower": 0,
+		"accuracy": true,
+		"pp": 10,
+		"priority": 4,
+		"target": "self",
+		"flags": {},
+		"desc": "The user is protected from nearly all attacks made by other Pokemon during this turn, including Max and G-Max Moves. This move has a 1/X chance of being successful, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails, if the user's last move used is not Baneful Bunker, Detect, Endure, King's Shield, Max Guard, Obstruct, Protect, Quick Guard, Spiky Shield, or Wide Guard, or if it was one of those moves and the user's protection was broken. Fails if the user moves last this turn.",
+		"shortDesc": "Protects user from moves & Max Moves this turn."
+	},
+	"maxhailstorm": {
+		"name": "Max Hailstorm",
+		"num": 763,
+		"type": "Ice",
+		"category": "Physical",
+		"basePower": 10,
+		"accuracy": true,
+		"pp": 10,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {},
+		"desc": "Power is equal to the base move's Max Move power. If this move is successful, the effect of Hail begins. This effect does not happen if the user is not Dynamaxed. If this move is used as a base move, it deals damage with a power of 0.",
+		"shortDesc": "Base move affects power. Starts Hail."
+	},
+	"maxknuckle": {
+		"name": "Max Knuckle",
+		"num": 761,
+		"type": "Fighting",
+		"category": "Physical",
+		"basePower": 10,
+		"accuracy": true,
+		"pp": 10,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {},
+		"desc": "Boosts the user and its allies' Attack by 1 stage. BP scales with the base move's BP. This effect does not happen if the user is not Dynamaxed. If this move is used as a base move, it deals damage with a power of 0.",
+		"shortDesc": "Base move affects power. Allies: +1 Attack."
+	},
 	"maxlightning": {
 		"name": "Max Lightning",
 		"num": 759,
@@ -82750,6 +83896,20 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"desc": "Power is equal to the base move's Max Move power. If this move is successful, the effect of Psychic Terrain begins. This effect does not happen if the user is not Dynamaxed. If this move is used as a base move, it deals damage with a power of 0.",
 		"shortDesc": "Base move affects power. Starts Psychic Terrain."
 	},
+	"maxooze": {
+		"name": "Max Ooze",
+		"num": 764,
+		"type": "Poison",
+		"category": "Physical",
+		"basePower": 10,
+		"accuracy": true,
+		"pp": 10,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {},
+		"desc": "Power is equal to the base move's Max Move power. If this move is successful, the Special Attack of each Pokemon on the user's side is raised by 1 stage, even if they have a substitute. This effect does not happen if the user is not Dynamaxed. If this move is used as a base move, it deals damage with a power of 0.",
+		"shortDesc": "Base move affects power. Allies: +1 Sp. Atk."
+	},
 	"maxovergrowth": {
 		"name": "Max Overgrowth",
 		"num": 773,
@@ -82764,6 +83924,48 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"desc": "Power is equal to the base move's Max Move power. If this move is successful, the effect of Grassy Terrain begins. This effect does not happen if the user is not Dynamaxed. If this move is used as a base move, it deals damage with a power of 0.",
 		"shortDesc": "Base move affects power. Starts Grassy Terrain."
 	},
+	"maxphantasm": {
+		"name": "Max Phantasm",
+		"num": 762,
+		"type": "Ghost",
+		"category": "Physical",
+		"basePower": 10,
+		"accuracy": true,
+		"pp": 10,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {},
+		"desc": "Power is equal to the base move's Max Move power. If this move is successful, the Defense of each Pokemon on the opposing side is lowered by 1 stage, even if they have a substitute. This effect does not happen if the user is not Dynamaxed. If this move is used as a base move, it deals damage with a power of 0.",
+		"shortDesc": "Base move affects power. Foes: -1 Defense."
+	},
+	"maxquake": {
+		"name": "Max Quake",
+		"num": 771,
+		"type": "Ground",
+		"category": "Physical",
+		"basePower": 10,
+		"accuracy": true,
+		"pp": 10,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {},
+		"desc": "Power is equal to the base move's Max Move power. If this move is successful, the Special Defense of each Pokemon on the user's side is raised by 1 stage, even if they have a substitute. This effect does not happen if the user is not Dynamaxed. If this move is used as a base move, it deals damage with a power of 0.",
+		"shortDesc": "Base move affects power. Allies: +1 Sp. Def."
+	},
+	"maxrockfall": {
+		"name": "Max Rockfall",
+		"num": 770,
+		"type": "Rock",
+		"category": "Physical",
+		"basePower": 10,
+		"accuracy": true,
+		"pp": 10,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {},
+		"desc": "Power is equal to the base move's Max Move power. If this move is successful, the effect of Sandstorm begins. This effect does not happen if the user is not Dynamaxed. If this move is used as a base move, it deals damage with a power of 0.",
+		"shortDesc": "Base move affects power. Starts Sandstorm."
+	},
 	"maxstarfall": {
 		"name": "Max Starfall",
 		"num": 767,
@@ -82777,6 +83979,48 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"flags": {},
 		"desc": "Power is equal to the base move's Max Move power. If this move is successful, the effect of Misty Terrain begins. This effect does not happen if the user is not Dynamaxed. If this move is used as a base move, it deals damage with a power of 0.",
 		"shortDesc": "Base move affects power. Starts Misty Terrain."
+	},
+	"maxsteelspike": {
+		"name": "Max Steelspike",
+		"num": 774,
+		"type": "Steel",
+		"category": "Physical",
+		"basePower": 10,
+		"accuracy": true,
+		"pp": 10,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {},
+		"desc": "Power is equal to the base move's Max Move power. If this move is successful, the Defense of each Pokemon on the user's side is raised by 1 stage, even if they have a substitute. This effect does not happen if the user is not Dynamaxed. If this move is used as a base move, it deals damage with a power of 0.",
+		"shortDesc": "Base move affects power. Allies: +1 Defense."
+	},
+	"maxstrike": {
+		"name": "Max Strike",
+		"num": 760,
+		"type": "Normal",
+		"category": "Physical",
+		"basePower": 10,
+		"accuracy": true,
+		"pp": 10,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {},
+		"desc": "Power is equal to the base move's Max Move power. If this move is successful, the Speed of each Pokemon on the opposing side is lowered by 1 stage, even if they have a substitute. This effect does not happen if the user is not Dynamaxed. If this move is used as a base move, it deals damage with a power of 0.",
+		"shortDesc": "Base move affects power. Foes: -1 Speed."
+	},
+	"maxwyrmwind": {
+		"name": "Max Wyrmwind",
+		"num": 768,
+		"type": "Dragon",
+		"category": "Physical",
+		"basePower": 10,
+		"accuracy": true,
+		"pp": 10,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {},
+		"desc": "Power is equal to the base move's Max Move power. If this move is successful, the Attack of each Pokemon on the opposing side is lowered by 1 stage, even if they have a substitute. This effect does not happen if the user is not Dynamaxed. If this move is used as a base move, it deals damage with a power of 0.",
+		"shortDesc": "Base move affects power. Foes: -1 Attack."
 	},
 	"meanlook": {
 		"name": "Mean Look",
@@ -82934,6 +84178,20 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		},
 		"desc": "Lowers the target's Attack and Special Attack by 2 stages. The user faints unless this move misses or there is no target. Fails entirely if this move hits a substitute, but does not fail if the target's stats cannot be changed.",
 		"shortDesc": "Lowers target's Attack, Sp. Atk by 2. User faints."
+	},
+	"menacingmoonrazemaelstrom": {
+		"name": "Menacing Moonraze Maelstrom",
+		"num": 725,
+		"type": "Ghost",
+		"category": "Special",
+		"basePower": 200,
+		"accuracy": true,
+		"pp": 1,
+		"priority": 0,
+		"target": "normal",
+		"flags": {},
+		"desc": "This move and its effects ignore the Abilities of other Pokemon.",
+		"shortDesc": "Ignores the Abilities of other Pokemon."
 	},
 	"metalburst": {
 		"name": "Metal Burst",
@@ -83740,6 +84998,20 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"desc": "A 30 Base Power Steel-type attack that hits exactly six times. Its category matches the chosen attacking stat (Physical on a tie). It uses whichever is higher, the user's Attack or Special Attack, against whichever is lower, the target's Defense or Special Defense.",
 		"shortDesc": "Hits 6 times; adaptive category; higher offense vs lower defense."
 	},
+	"neverendingnightmare": {
+		"name": "Never-Ending Nightmare",
+		"num": 636,
+		"type": "Ghost",
+		"category": "Physical",
+		"basePower": 1,
+		"accuracy": true,
+		"pp": 1,
+		"priority": 0,
+		"target": "normal",
+		"flags": {},
+		"desc": "A one-use Ghost-type Z-Move. Its power depends on the damaging Ghost-type move selected as its base.",
+		"shortDesc": "Power depends on the base Ghost-type move."
+	},
 	"nightdaze": {
 		"name": "Night Daze",
 		"num": 539,
@@ -83813,6 +85085,24 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		},
 		"desc": "Has 80 Base Power and a higher chance for a critical hit.",
 		"shortDesc": "80 BP. High critical hit ratio."
+	},
+	"nihillight": {
+		"name": "Nihil Light",
+		"num": 920,
+		"type": "Dragon",
+		"category": "Special",
+		"basePower": 100,
+		"accuracy": 100,
+		"pp": 10,
+		"priority": 0,
+		"target": "allAdjacentFoes",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1
+		},
+		"desc": "Hits all adjacent foes, ignoring their evasion and defensive stat changes. Fairy-type targets remain immune to this Dragon-type move.",
+		"shortDesc": "Hits adjacent foes; ignores evasion and defensive stat changes."
 	},
 	"nobleroar": {
 		"name": "Noble Roar",
@@ -83970,6 +85260,20 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		},
 		"desc": "The user is protected from most attacks made by other Pokemon during this turn, and Pokemon trying to make contact with the user have their Defense lowered by 2 stages. Non-damaging moves go through this protection. This move has a 1/X chance of being successful, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails, if the user's last move used is not Baneful Bunker, Burning Bulwark, Detect, Endure, King's Shield, Max Guard, Obstruct, Protect, Quick Guard, Silk Trap, Spiky Shield, or Wide Guard, or if it was one of those moves and the user's protection was broken. Fails if the user moves last this turn.",
 		"shortDesc": "Protects from damaging attacks. Contact: -2 Def."
+	},
+	"oceanicoperetta": {
+		"name": "Oceanic Operetta",
+		"num": 697,
+		"type": "Water",
+		"category": "Special",
+		"basePower": 195,
+		"accuracy": true,
+		"pp": 1,
+		"priority": 0,
+		"target": "normal",
+		"flags": {},
+		"desc": "Primarina's exclusive Z-Move, used through Sparkling Aria. No additional effect.",
+		"shortDesc": "Exclusive Primarina Z-Move; no additional effect."
 	},
 	"octazooka": {
 		"name": "Octazooka",
@@ -84626,8 +85930,27 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"slicing": 1,
 			"metronome": 1
 		},
-		"desc": "Has a high critical-hit ratio, a 50% chance to poison the target, and restores 50% of the damage dealt.",
-		"shortDesc": "High critical-hit ratio; 50% chance to poison; heals 1/2 damage dealt."
+		"desc": "Has a high critical-hit ratio and a 50% chance to poison the target.",
+		"shortDesc": "High critical-hit ratio; 50% chance to poison."
+	},
+	"polarflare": {
+		"name": "Polar Flare",
+		"num": -3,
+		"type": "Fire",
+		"category": "Special",
+		"basePower": 75,
+		"accuracy": 100,
+		"pp": 10,
+		"priority": 0,
+		"target": "allAdjacentFoes",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"defrost": 1,
+			"nosketch": 1
+		},
+		"desc": "Has a 10% chance to freeze the target. This move cannot thaw a frozen target. If this move is successful on at least one target and the user is a Ramnarok, it changes to Radiant Forme if it is currently in Dormant Forme, or changes to Dormant Forme if it is currently in Radiant Forme. This forme change does not happen if the Ramnarok has the Sheer Force Ability. The Radiant Forme reverts to Dormant Forme when Ramnarok is not active.",
+		"shortDesc": "10% chance to frz foe(s). Ramnarok transforms."
 	},
 	"pollenpuff": {
 		"name": "Pollen Puff",
@@ -85243,6 +86566,22 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"desc": "Deals damage to the target equal to (user's level) * (X + 50) / 100, where X is a random number from 0 to 100, rounded down, but not less than 1 HP.",
 		"shortDesc": "Random damage equal to 0.5x-1.5x user's level."
 	},
+	"pulverizingpancake": {
+		"name": "Pulverizing Pancake",
+		"num": 701,
+		"type": "Normal",
+		"category": "Physical",
+		"basePower": 210,
+		"accuracy": true,
+		"pp": 1,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"contact": 1
+		},
+		"desc": "Snorlax's exclusive Z-Move, used through Giga Impact. No additional effect.",
+		"shortDesc": "Exclusive Snorlax Z-Move; no additional effect."
+	},
 	"punchypummel": {
 		"name": "Punchy Pummel",
 		"num": 10020,
@@ -85467,8 +86806,8 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"mirror": 1,
 			"metronome": 1
 		},
-		"desc": "Hits all opposing Pokemon. Uses the user's higher offensive stat, including stat stages and field modifiers. If it does not knock out at least one target, the user must recharge next turn.",
-		"shortDesc": "Hits all foes; uses higher offense; recharges unless it gets a KO."
+		"desc": "Hits all opposing Pokemon and uses the higher offensive stat, including stages and field modifiers. Against active Mega, Dynamax/Gmax or Stellar-Terastallized targets, is 2x effective and deals another 1.2x damage, each once even if states overlap. Other Tera types, Primal and Ultra forms do not qualify. Recharges unless it knocks out at least one target.",
+		"shortDesc": "Adaptive spread; 2x effective and 1.2x damage vs Mega/Dynamax/Stellar Tera. Recharges unless KO."
 	},
 	"radiantclaw": {
 		"name": "Radiant Claw",
@@ -85525,8 +86864,8 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"mirror": 1,
 			"punch": 1
 		},
-		"desc": "Power is equal to 50+(X*50), where X is the total number of times the user has been hit by a damaging attack during the battle, even if the user did not lose HP from the attack. X cannot be greater than 6. Switching out halves the accumulated hit count. Each hit of a multi-hit attack is counted, but confusion damage is not counted.",
-		"shortDesc": "+50 BP per hit taken, max 6. Switching halves count."
+		"desc": "Starts at 50 power and gains 20 power per qualifying hit taken, up to 150 after five hits. Switching out halves the accumulated bonus exactly: 150 becomes 100, then 75. New hits add 20 to the remaining bonus, capped at 100 bonus power. Fractional progress is retained; the normal damage engine rounds final power. Retains existing hit eligibility, Transform copying and progress through fainting/revival. In Free-for-All, hits all adjacent foes at full spread power.",
+		"shortDesc": "50 BP +20 per hit taken, max 150; switching halves bonus."
 	},
 	"ragepowder": {
 		"name": "Rage Powder",
@@ -86461,6 +87800,20 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"desc": "This move summons Leech Seed on the foe.",
 		"shortDesc": "Summons Leech Seed."
 	},
+	"savagespinout": {
+		"name": "Savage Spin-Out",
+		"num": 634,
+		"type": "Bug",
+		"category": "Physical",
+		"basePower": 1,
+		"accuracy": true,
+		"pp": 1,
+		"priority": 0,
+		"target": "normal",
+		"flags": {},
+		"desc": "A one-use Bug-type Z-Move. Its power depends on the damaging Bug-type move selected as its base.",
+		"shortDesc": "Power depends on the base Bug-type move."
+	},
 	"scald": {
 		"name": "Scald",
 		"num": 503,
@@ -86615,6 +87968,22 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		},
 		"desc": "Has a 30% chance to burn the target.",
 		"shortDesc": "30% chance to burn adjacent Pokemon."
+	},
+	"searingsunrazesmash": {
+		"name": "Searing Sunraze Smash",
+		"num": 724,
+		"type": "Steel",
+		"category": "Physical",
+		"basePower": 200,
+		"accuracy": true,
+		"pp": 1,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"contact": 1
+		},
+		"desc": "This move and its effects ignore the Abilities of other Pokemon.",
+		"shortDesc": "Ignores the Abilities of other Pokemon."
 	},
 	"searingvoid": {
 		"name": "Searing Void",
@@ -86900,6 +88269,20 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"desc": "Raises the user's Attack by 1 stage.",
 		"shortDesc": "Raises the user's Attack by 1."
 	},
+	"shatteredpsyche": {
+		"name": "Shattered Psyche",
+		"num": 648,
+		"type": "Psychic",
+		"category": "Physical",
+		"basePower": 1,
+		"accuracy": true,
+		"pp": 1,
+		"priority": 0,
+		"target": "normal",
+		"flags": {},
+		"desc": "A one-use Psychic-type Z-Move. Its power depends on the damaging Psychic-type move selected as its base.",
+		"shortDesc": "Power depends on the base Psychic-type move."
+	},
 	"shedtail": {
 		"name": "Shed Tail",
 		"num": 880,
@@ -87148,6 +88531,20 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		},
 		"desc": "Causes the target to fall asleep.",
 		"shortDesc": "Causes the target to fall asleep."
+	},
+	"sinisterarrowraid": {
+		"name": "Sinister Arrow Raid",
+		"num": 695,
+		"type": "Ghost",
+		"category": "Physical",
+		"basePower": 180,
+		"accuracy": true,
+		"pp": 1,
+		"priority": 0,
+		"target": "normal",
+		"flags": {},
+		"desc": "Decidueye's exclusive Z-Move, used through Spirit Shackle. No additional effect.",
+		"shortDesc": "Exclusive Decidueye Z-Move; no additional effect."
 	},
 	"sirensveil": {
 		"name": "Siren's Veil",
@@ -87847,6 +89244,22 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"desc": "Deals 20 HP of damage to the target.",
 		"shortDesc": "Always does 20 HP of damage."
 	},
+	"soulstealing7starstrike": {
+		"name": "Soul-Stealing 7-Star Strike",
+		"num": 699,
+		"type": "Ghost",
+		"category": "Physical",
+		"basePower": 195,
+		"accuracy": true,
+		"pp": 1,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"contact": 1
+		},
+		"desc": "Marshadow's exclusive Z-Move, used through Spectral Thief. No additional effect.",
+		"shortDesc": "Exclusive Marshadow Z-Move; no additional effect."
+	},
 	"spacialrend": {
 		"name": "Spacial Rend",
 		"num": 460,
@@ -88205,6 +89618,20 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"desc": "No competitive use.",
 		"shortDesc": "No competitive use."
 	},
+	"splinteredstormshards": {
+		"name": "Splintered Stormshards",
+		"num": 727,
+		"type": "Rock",
+		"category": "Physical",
+		"basePower": 190,
+		"accuracy": true,
+		"pp": 1,
+		"priority": 0,
+		"target": "normal",
+		"flags": {},
+		"desc": "Ends the effects of Electric Terrain, Grassy Terrain, Misty Terrain, and Psychic Terrain.",
+		"shortDesc": "Ends the effects of terrain."
+	},
 	"splishysplash": {
 		"name": "Splishy Splash",
 		"num": 730,
@@ -88503,6 +89930,20 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		},
 		"desc": "Raises the user's Defense and Special Defense by 1 stage and adds 1 Stockpile count, up to 3. At the end of each turn, the user heals 1/32 max HP for each Stockpile count. The count resets when the user leaves the field.",
 		"shortDesc": "+1 Def/SpD and Stockpile. Heals 1/32 per stack each turn. Max 3."
+	},
+	"stokedsparksurfer": {
+		"name": "Stoked Sparksurfer",
+		"num": 700,
+		"type": "Electric",
+		"category": "Special",
+		"basePower": 175,
+		"accuracy": true,
+		"pp": 1,
+		"priority": 0,
+		"target": "normal",
+		"flags": {},
+		"desc": "Has a 100% chance to paralyze the target.",
+		"shortDesc": "100% chance to paralyze the target."
 	},
 	"stomp": {
 		"name": "Stomp",
@@ -88813,6 +90254,20 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"desc": "The user takes 1/4 of its maximum HP, rounded down, and puts it into a substitute to take its place in battle. The substitute is removed once enough damage is inflicted on it, if the user switches out or faints, or if any Pokemon uses Tidy Up. Baton Pass can be used to transfer the substitute to an ally, and the substitute will keep its remaining HP. Until the substitute is broken, it receives damage from all attacks made by other Pokemon and shields the user from status effects and stat stage changes caused by other Pokemon. Sound-based moves and Pokemon with the Infiltrator Ability ignore substitutes. The user still takes normal damage from weather and status effects while behind its substitute. If the substitute breaks during a multi-hit attack, the user will take damage from any remaining hits. If a substitute is created while the user is trapped by a binding move, the binding effect ends immediately. Fails if the user does not have enough HP remaining to create a substitute without fainting, or if it already has a substitute. Pulse and Rift forms cannot create or retain a substitute; transforming into these forms or receiving a transferred substitute breaks it.",
 		"shortDesc": "User takes 1/4 its max HP to put in a substitute."
 	},
+	"subzeroslammer": {
+		"name": "Subzero Slammer",
+		"num": 650,
+		"type": "Ice",
+		"category": "Physical",
+		"basePower": 1,
+		"accuracy": true,
+		"pp": 1,
+		"priority": 0,
+		"target": "normal",
+		"flags": {},
+		"desc": "A one-use Ice-type Z-Move. Its power depends on the damaging Ice-type move selected as its base.",
+		"shortDesc": "Power depends on the base Ice-type move."
+	},
 	"suckerpunch": {
 		"name": "Sucker Punch",
 		"num": 389,
@@ -88943,6 +90398,20 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		},
 		"desc": "Causes the target to become confused.",
 		"shortDesc": "Causes the target to become confused."
+	},
+	"supersonicskystrike": {
+		"name": "Supersonic Skystrike",
+		"num": 626,
+		"type": "Flying",
+		"category": "Physical",
+		"basePower": 1,
+		"accuracy": true,
+		"pp": 1,
+		"priority": 0,
+		"target": "normal",
+		"flags": {},
+		"desc": "A one-use Flying-type Z-Move. Its power depends on the damaging Flying-type move selected as its base.",
+		"shortDesc": "Power depends on the base Flying-type move."
 	},
 	"superumdmove": {
 		"name": "Super U.M.D. Move",
@@ -90360,6 +91829,20 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"desc": "Hits one target twice. Each hit has a 20% chance to poison the target and a high critical-hit ratio.",
 		"shortDesc": "Hits twice; high critical-hit ratio; 20% poison per hit."
 	},
+	"twinkletackle": {
+		"name": "Twinkle Tackle",
+		"num": 656,
+		"type": "Fairy",
+		"category": "Physical",
+		"basePower": 1,
+		"accuracy": true,
+		"pp": 1,
+		"priority": 0,
+		"target": "normal",
+		"flags": {},
+		"desc": "A one-use Fairy-type Z-Move. Its power depends on the damaging Fairy-type move selected as its base.",
+		"shortDesc": "Power depends on the base Fairy-type move."
+	},
 	"twirlytwister": {
 		"name": "Twirly Twister",
 		"num": 10021,
@@ -90545,10 +92028,12 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"target": "adjacentFoe",
 		"flags": {
 			"protect": 1,
-			"mirror": 1
+			"mirror": 1,
+			"bite": 1,
+			"tail": 1
 		},
 		"desc": "Venam's move. Super effective on Steel; 30% poison, including Steel and Poison types; other protections remain.",
-		"shortDesc": "Venam's move. Super effective on Steel; 30% poison, even Steel/Poison.",
+		"shortDesc": "Venam's move. Bite/tail move; super effective on Steel; 30% poison, even Steel/Poison.",
 		"signatureCharacters": [
 			"venam"
 		]
@@ -90839,8 +92324,8 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"nonsky": 1,
 			"metronome": 1
 		},
-		"desc": "If one of the user's allies chose to use Fire Pledge or Grass Pledge this turn and has not moved yet, it takes its turn immediately after the user and the user's move does nothing. If combined with Fire Pledge, the ally uses Water Pledge with 150 power and a rainbow appears on the user's side for 4 turns, which doubles secondary effect chances and stacks with the Serene Grace Ability, except effects that cause flinching can only have their chance doubled once. If combined with Grass Pledge, the ally uses Grass Pledge with 150 power and a swamp appears on the target's side for 4 turns, which quarters the Speed of each Pokemon on that side. When used as a combined move, this move gains STAB no matter what the user's type is. This move does not consume the user's Water Gem, and cannot be redirected by the Storm Drain Ability.",
-		"shortDesc": "Use with Grass or Fire Pledge for added effect."
+		"desc": "Uses Attack and Defense if the user's stage-adjusted Attack is higher than its Special Attack; otherwise uses Special Attack and Special Defense, including ties. The comparison ignores ability, item and status stat multipliers. Preserves the local Pledge markers, combination power boost and field creation: Fire + Water creates Rainbow Field, Fire + Grass creates Burning Field, and Water + Grass creates Swamp Field. Fields last 4 turns, or 7 with the triggering user's Amplifield Rock; successful hits and Substitute damage retain the existing creation and refresh behavior.",
+		"shortDesc": "Uses higher offensive stat; combines Pledges into fields."
 	},
 	"waterpulse": {
 		"name": "Water Pulse",
@@ -91125,7 +92610,7 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"mirror": 1,
 			"dance": 1
 		},
-		"desc": "Ciel's move. Dance move. After a hit, sets Strong Winds for 4 turns. +1 priority if Strong Winds are already active. Big Top boosts power 1.5x; Mountain and Snowy Mountain retain their normal Flying boost. Clears fields that existing blowing moves clear.",
+		"desc": "Ciel's move. Dance move. After a hit, sets Strong Winds for 4 turns. +1 priority if Strong Winds are already active. Big Top boosts power 1.5x; Mountain and Snowy Mountain retain their normal Flying boost. Clears fields that existing blowing moves clear. After successful HP or Substitute damage while the user survives, removes the active Aura once per whole move, preserving the underlying field. With no Aura, retains its normal field eligibility and transformations. Misses, protection and immunity do not clear it. Does not prevent later Auras.",
 		"shortDesc": "Ciel's move. Sets 4-turn Strong Winds after a hit; +1 priority in them.",
 		"signatureCharacters": [
 			"ciel"
@@ -91558,8 +93043,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"selfsufficient"
 	],
 	"ange": [
-		"eternalflower",
-		"moldbreaker"
+		"fairyaura"
 	],
 	"angerpoint": [],
 	"angershell": [],
@@ -91723,17 +93207,15 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"magicbounce",
 		"queenlymajesty"
 	],
-	"beyondfear": [
-		"innerfocus"
-	],
+	"beyondfear": [],
 	"bigpecks": [],
 	"blackfang": [],
 	"blackviper": [
-		"whiplash"
+		"whiplash",
+		"shedskin"
 	],
 	"blademastery": [
-		"sharpness",
-		"superluck"
+		"sharpness"
 	],
 	"blastchamber": [
 		"vitalspirit"
@@ -92014,6 +93496,9 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"sandstream",
 		"overcoat",
 		"tintedlens"
+	],
+	"desertvigil": [
+		"overcoat"
 	],
 	"desolateland": [],
 	"digestivesap": [],
@@ -92475,7 +93960,10 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"illusion": [],
 	"immunity": [],
 	"imperialmandate": [],
-	"imperialprincess": [],
+	"imperialprincess": [
+		"striker",
+		"vitalspirit"
+	],
 	"imposter": [],
 	"inexorable": [],
 	"infernaldominion": [
@@ -92559,6 +94047,9 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"lastbrood": [
 		"swarm"
 	],
+	"lastingpromise": [
+		"friendguard"
+	],
 	"lastlaugh": [],
 	"layeredcoat": [],
 	"layeredshell": [
@@ -92623,6 +94114,9 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"magicguard": [],
 	"magician": [],
 	"magmaarmor": [],
+	"magneticbulwark": [
+		"filter"
+	],
 	"magneticcommand": [
 		"frisk",
 		"stalwart"
@@ -92794,7 +94288,6 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"noguard": [],
 	"normalize": [],
 	"noseformation": [
-		"filter",
 		"elevate"
 	],
 	"oblivious": [],
@@ -93042,12 +94535,14 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"ragingcurrent": [
 		"swiftswim",
 		"damp",
-		"dryskin"
+		"dryskin",
+		"stamina"
 	],
 	"ragingfists": [
 		"hydrabond",
 		"scrappy"
 	],
+	"ragingheart": [],
 	"ragingoverlord": [
 		"ragingstorm",
 		"supremeoverlord",
@@ -93815,6 +95310,9 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	],
 	"unaware": [],
 	"unboundblaze": [],
+	"unboundspirit": [
+		"vitalspirit"
+	],
 	"unbridledwrath": [
 		"sheerforce",
 		"innerfocus"
@@ -99994,8 +101492,7 @@ const AUDITED_DESCRIPTION_COMPONENTS: {[id: string]: string[]} = {
 		"venomignition"
 	],
 	"noseformation": [
-		"filter"
-	],
+		],
 	"mourningvessel": [
 		"magicguard",
 		"prankster"
@@ -100336,12 +101833,7 @@ const AUDITED_DESCRIPTION_COMPONENTS: {[id: string]: string[]} = {
 	"eternalflower": [
 		"moldbreaker"
 	],
-	"ange": [
-		"eternalflower",
-		"fairyaura",
-		"magicguard",
-		"moldbreaker"
-	],
+	"ange": ["fairyaura"],
 	"fairyaura": [],
 	"filter": [],
 	"byxbysiontouch": [
@@ -100821,10 +102313,7 @@ const AUDITED_DESCRIPTION_COMPONENTS: {[id: string]: string[]} = {
 		"prankster"
 	],
 	"sharpness": [],
-	"blademastery": [
-		"sharpness",
-		"superluck"
-	],
+	"blademastery": ["sharpness"],
 	"goldentalons": [
 		"goodasgold",
 		"sharpness",
@@ -101287,11 +102776,7 @@ const AUDITED_DESCRIPTION_COMPONENTS: {[id: string]: string[]} = {
 		"queenlymajesty",
 		"royaldecree"
 	],
-	"imperialprincess": [
-		"moxie",
-		"striker",
-		"vitalspirit"
-	],
+	"imperialprincess": ["striker", "vitalspirit"],
 	"loyalguard": [
 		"friendguard",
 		"guarddog",
@@ -101582,9 +103067,7 @@ const AUDITED_DESCRIPTION_COMPONENTS: {[id: string]: string[]} = {
 	"saltcrust": [
 		"clearbody"
 	],
-	"beyondfear": [
-		"innerfocus"
-	],
+	"beyondfear": [],
 	"stillwater": [
 		"waterabsorb"
 	],

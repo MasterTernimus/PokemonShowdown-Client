@@ -1,0 +1,10 @@
+{
+  "noseformation": {
+    "desc": "Elevate grants airborne status, subject to grounding, and one highest-stat increase per move KO, using nature-adjusted stats while ignoring stages and other stat modifiers. After a successful opposing attack, fires one trio of 30 BP Special Mini-Noses, choosing Steel, Electric or Rock and retargeting living foes when needed. Each is a normal attack respecting protection, Substitute and immunity. No ally triggers or recursive trios. Does not include Filter.",
+    "shortDesc": "Elevate; successful opposing attacks trigger three 30 BP Special Mini-Noses."
+  },
+  "magneticbulwark": {
+    "desc": "Full local Filter reduces attack damage to 0.8x, or 0.6x when super effective. Once per genuine switch-in, its Magnetic Flux can raise its own and adjacent allies Defense and Special Defense by 1 regardless of Plus or Minus, using the normal move action and boost restrictions. This use is spent only if at least one stat boost succeeds. Later uses follow ordinary local Magnetic Flux rules, including field effects. Ability restarts, loss and regain do not reset the use.",
+    "shortDesc": "Full local Filter; once per entry, Magnetic Flux boosts self and adjacent allies without Plus/Minus."
+  }
+}

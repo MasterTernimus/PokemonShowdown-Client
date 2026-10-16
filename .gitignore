@@ -51,3 +51,9 @@ caches/PokemonShowdown-Reborn/
 
 # Portable baseline for normal sprites preserved by the custom shiny imports.
 !test/fixtures/normal-sprite-hashes.json
+
+# Reviewed lore fixtures and generated release provenance used by parity checks.
+!test/fixtures/probopass-bulwark-descriptions.json
+!test/fixtures/quarter-hp-priority-descriptions.json
+!test/fixtures/lore-entry-descriptions.json
+!client-data-provenance.json

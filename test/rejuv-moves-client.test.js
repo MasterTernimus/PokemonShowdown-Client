@@ -18,7 +18,7 @@ describe('Rejuvenation signature generated data and move previews',()=>{
  });
  it('preserves static selected slots for all recipients',()=>{for(const[id,slots]of Object.entries(fixture.slots))assert.deepEqual(Dex.species.get(id).abilities,require('./fixtures/mega-approval-overlays').abilities(id,slots),id);});
  it('removed signatures are absent from all selected ability slots; Mega Seviper retains its passive',()=>{
-  const ids=Object.keys(fixture.learnsets);for(const[id,s]of Object.entries(BattlePokedex))for(const ability of Object.values(s.abilities||{}))assert(!ids.includes(toID(ability)),id+'/'+ability);
+  const ids=Object.keys(fixture.learnsets);for(const[id,s]of Object.entries(BattlePokedex))for(const ability of Object.values(s.abilities||{}))assert(!ids.includes(toID(ability)) || (id==='seviper' && toID(ability)==='venamskiss'),id+'/'+ability);
   for(const id of ids.filter(x=>x!=='venamskiss'))assert(!Dex.abilities.get(id).exists,id);
   assert(Dex.abilities.get('venamskiss').exists);assert(Dex.getAbilityEffects('sirius').has('venamskiss'));assert(Dex.species.get('sevipermega').passives.includes('rivalmalice'));
  });

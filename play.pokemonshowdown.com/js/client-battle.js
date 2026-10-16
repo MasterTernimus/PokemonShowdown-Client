@@ -571,13 +571,22 @@
 				this.$('.movebuttons-z').hide();
 			}
 		},
+		canPreviewDrakeFang: function (active, pokemon) {
+			if (!active || !pokemon || !active.canMegaEvo) return false;
+			var species = toID((pokemon.speciesForme || pokemon.species || pokemon.details || '').split(',')[0]);
+			var target = active.canMegaEvo;
+			return species === 'seviper' && (toID(target) === 'sevipermega' ||
+				target === true && toID(pokemon.item) === 'sevipite') &&
+				active.moves.some(function (move) { return toID(move.id || move.move) === 'poisonfang'; });
+		},
 		updateMegaChoice: function (e) {
 			var checkbox = e.currentTarget;
 			if (checkbox.checked) this.$('input[name=megaevo], input[name=megaevox], input[name=megaevoy]').not(checkbox).prop('checked', false);
 			var pos = this.choice.choices.length;
 			var active = this.request.active[pos];
-			if (!active || !active.pulseMoves) return;
+			if (!active || !active.pulseMoves && !this.canPreviewDrakeFang(active, this.battle.myPokemon[pos])) return;
 			var selected = checkbox.checked ? checkbox.name : '';
+			this.tooltips.hideTooltip();
 			this.pulseMovePreview = {request: this.request, pos: pos, selected: selected};
 			this.updateMoveControls(pos ? 'move2' : 'move');
 			if (selected) this.$('input[name=' + selected + ']').prop('checked', true);
@@ -613,6 +622,16 @@
 			if (pulsePreview && pulsePreview.request === this.request && pulsePreview.pos === pos &&
 				pulsePreview.selected === 'megaevo' && curActive.pulseMoves) {
 				curActive = Object.assign({}, curActive, {moves: curActive.pulseMoves});
+			}
+			var drakeFangPreview = pulsePreview && pulsePreview.request === this.request &&
+				pulsePreview.pos === pos && pulsePreview.selected === 'megaevo' &&
+				this.canPreviewDrakeFang(curActive, switchables[pos]);
+			if (drakeFangPreview) {
+				// Project only display data; choices still submit the original move slot.
+				curActive = Object.assign({}, curActive, {moves: curActive.moves.map(function (move) {
+					return toID(move.id || move.move) === 'poisonfang' ?
+						Object.assign({}, move, {move: 'Drake Fang', id: 'drakefang'}) : move;
+				})});
 			}
 			var trapped = curActive.trapped;
 			var canMegaEvo = curActive.canMegaEvo || switchables[pos].canMegaEvo;
@@ -757,7 +776,7 @@
 					if (move.id === 'Recharge') move.type = '&ndash;';
 					if (name.substr(0, 12) === 'Hidden Power') name = 'Hidden Power';
 					var moveType = this.tooltips.getMoveType(move, typeValueTracker)[0];
-					var tooltipArgs = 'move|' + moveData.move + '|' + pos;
+					var tooltipArgs = 'move|' + moveData.move + '|' + pos + (drakeFangPreview ? '||sevipermega' : '');
 					if (moveData.disabled) {
 						movebuttons += '<button disabled class="has-tooltip" data-tooltip="' + BattleLog.escapeHTML(tooltipArgs) + '">';
 					} else {
@@ -1156,6 +1175,7 @@
 		},
 		request: null,
 		receiveRequest: function (request, choiceText) {
+			this.pulseMovePreview = null;
 			if (!request) {
 				this.side = '';
 				return;
@@ -1531,6 +1551,7 @@
 			this.clearChoice();
 		},
 		clearChoice: function () {
+			this.pulseMovePreview = null;
 			this.choice = null;
 			this.updateControlsForPlayer();
 		},

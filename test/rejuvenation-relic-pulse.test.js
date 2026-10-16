@@ -13,7 +13,7 @@ describe('Approved event, Relic Armor and Pulse client parity', () => {
             assert.deepEqual(learnsets[id].learnset[ability], ['9L1']);
             if (ability !== 'venamskiss') assert(!Dex.abilities.get(ability).exists);
             const rows = BattleAbilitySearch.prototype.getBaseResults.call({ dex: Dex, species: id, format: 'gen9nofieldsinglesgame' });
-            assert(!rows.some(r => r[0] === 'ability' && r[1] === ability));
+            assert.equal(rows.some(r => r[0] === 'ability' && r[1] === ability), id === 'seviper' && ability === 'venamskiss');
         });
     it('Chandelure keeps Soul Fire while Spectral Scream becomes a move', () => {
         const rows = BattleAbilitySearch.prototype.getBaseResults.call({ dex: Dex, species: 'chandelure', format: 'gen9nofieldsinglesgame' });

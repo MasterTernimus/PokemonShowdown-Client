@@ -114,6 +114,7 @@ export class Pokemon implements PokemonDetails, PokemonHealth {
 	moveTrack: [string, number][] = [];
 	statusData = {sleepTurns: 0, toxicTurns: 0};
 	timesAttacked = 0;
+	rageFistBonus = 0;
 
 	sprite: PokemonSprite;
 
@@ -848,6 +849,7 @@ export class Side {
 		this.lastPokemon = oldpokemon;
 		if (oldpokemon) {
 			this.battle.scene.animDragOut(oldpokemon);
+			oldpokemon.rageFistBonus /= 2;
 			oldpokemon.clearVolatile();
 		}
 		pokemon.clearVolatile();
@@ -865,6 +867,7 @@ export class Side {
 		pokemon.clearVolatile();
 		if (oldpokemon) {
 			pokemon.lastMove = oldpokemon.lastMove;
+			pokemon.rageFistBonus = oldpokemon.rageFistBonus;
 			pokemon.hp = oldpokemon.hp;
 			pokemon.maxhp = oldpokemon.maxhp;
 			pokemon.hpcolor = oldpokemon.hpcolor;
@@ -892,6 +895,7 @@ export class Side {
 		this.battle.scene.animSummon(pokemon, slot, true);
 	}
 	switchOut(pokemon: Pokemon, kwArgs: KWArgs, slot = pokemon.slot) {
+		if (!pokemon.fainted) pokemon.rageFistBonus /= 2;
 		const effect = Dex.getEffect(kwArgs.from);
 		if (!['batonpass', 'zbatonpass', 'shedtail'].includes(effect.id)) {
 			pokemon.clearVolatile();
@@ -986,6 +990,7 @@ export interface PokemonHealth {
 }
 export interface ServerPokemon extends PokemonDetails, PokemonHealth {
 	passives?: readonly string[];
+	rageFistBonus?: number;
 	ident: string;
 	details: string;
 	condition: string;
@@ -1727,6 +1732,15 @@ export class Battle {
 
 		const CONSUMED = ['eaten', 'popped', 'consumed', 'held up'];
 		switch (args[0]) {
+		case '-ragefist': {
+			// Authoritative progress also covers hits absorbed by a breaking Substitute.
+			const bonus = Number(args[2]);
+			if (args[2] && Number.isFinite(bonus) && bonus >= 0 && bonus <= 100) {
+				const pokemon = this.getPokemon(args[1]);
+				if (pokemon) pokemon.rageFistBonus = bonus;
+			}
+			break;
+		}
 		case '-damage': {
 			const quiet = isRoutineResidualEffect(args, kwArgs);
 			let poke = this.getPokemon(args[1])!;
@@ -1773,6 +1787,7 @@ export class Battle {
 			} else {
 				if (this.dex.moves.get(this.lastMove).category !== 'Status') {
 					poke.timesAttacked++;
+					poke.rageFistBonus = Math.min(100, poke.rageFistBonus + 20);
 				}
 				let damageinfo = '' + Pokemon.getFormattedRange(range, damage[1] === 100 ? 0 : 1, '\u2013');
 				if (damage[1] !== 100) {
@@ -2533,6 +2548,7 @@ export class Battle {
 			poke.copyTypesFrom(tpoke, true);
 			poke.ability = tpoke.ability;
 			poke.timesAttacked = tpoke.timesAttacked;
+			poke.rageFistBonus = tpoke.rageFistBonus;
 			const targetForme = tpoke.volatiles.formechange;
 			const speciesForme = (targetForme && !targetForme[1].endsWith('-Gmax')) ? targetForme[1] : tpoke.speciesForme;
 			const pokemon = tpoke;

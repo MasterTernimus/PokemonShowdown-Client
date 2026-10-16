@@ -1,0 +1,14 @@
+{
+  "fallenstar": {
+    "desc": "Mold Breaker: moves ignore bypassable opposing abilities. Designated arrow moves gain +1 priority at 1/4 max HP or less and 1.3x power against trapped foes: Spirit Shackle, Thousand Arrows, Triple Arrows, Snipe Shot, Razor Leaf, Magical Leaf, Spike Cannon, Pin Missile, Icicle Spear, Rock Blast, Bullet Seed, Scale Shot, Psycho Cut and Ceaseless Edge. Retains its arrow follow-up and protective effects.",
+    "shortDesc": "Arrow moves gain +1 priority at 1/4 max HP or less; 1.3x power against trapped foes and for same-type moves."
+  },
+  "blademastery": {
+    "desc": "Slicing moves have 1.5x power, except on Cold Eclipse. Raises critical-hit rate by one stage. At 1/4 max HP or less, its slicing moves have +1 priority.",
+    "shortDesc": "At 1/4 max HP or less, slicing moves gain +1 priority."
+  },
+  "blazingmane": {
+    "desc": "Fire attacks have 1.5x power and damaging moves hit twice, with the second hit at 30% power. At 1/4 max HP or less, Fire attacks gain +1 priority. Burning and Volcanic Fields raise its Speed by 1 on entry or when the field starts.",
+    "shortDesc": "Second hit 30%; Fire +1 priority at 1/4 max HP or less; fire fields +1 Spe."
+  }
+}

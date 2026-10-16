@@ -12,7 +12,7 @@ describe('Decidueye move removals and Fallen Star wording',()=>{
 		const moves=search.results.filter(row=>row[0]==='move').map(row=>row[1]);assert(moves.length>0);assert(!moves.includes('iciclespear'));assert(!moves.includes('spikecannon'));
 	});
 	it('shows priority wording and omits Skill Link and the hidden Triple Arrows effect',()=>{
-		const a=Dex.abilities.get('fallenstar');for(const text of [a.desc,a.shortDesc]){assert(/\+1 priority at half HP or less/.test(text));assert(!/Skill Link/.test(text));}
+		const a=Dex.abilities.get('fallenstar');for(const text of [a.desc,a.shortDesc]){assert(/\+1 priority at 1\/4 max HP or less/.test(text));assert(!/Skill Link/.test(text));}
 		const m=Dex.moves.get('triplearrows');assert(!/Chi Strike|ally crit|raises the critical|user.s side/i.test(m.desc+' '+m.shortDesc));
 	});
 });

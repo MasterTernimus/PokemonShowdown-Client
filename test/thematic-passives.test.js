@@ -10,7 +10,7 @@ describe('Thematic passive UI and protocol',()=>{
   try{const p=battle.p1.active[0],own={speciesForme:'Baltoy',ability:'Own Tempo',baseAbility:'Own Tempo',passives:['levitate'],item:''};p.volatiles.gastroacid=['gastroacid'];assert.equal(p.isGrounded(own),false);p.volatiles.smackdown=['smackdown'];assert.equal(p.isGrounded(own),true);delete p.volatiles.smackdown;own.item='Iron Ball';assert.equal(p.isGrounded(own),true);own.item='';assert.equal(p.isGrounded(own),false);}finally{battle.destroy();}
  });
  it('keeps species passives distinct from chosen abilities and excludes unapproved forms',()=>{
-  const expected={kingler:'titanpincer',butterfree:'shielddust',cacturne:'overcoat',muk:'liquidooze',fearow:'lancepoint',alcremie:'sweetveil',eevee:'runaway',rotomfan:'levitate',weezinggalar:'levitate',alcremiesaltedcream:'sweetveil',vivillonfancy:'shielddust'};
+  const expected={kingler:'titanpincer',butterfree:'shielddust',cacturne:'scarecrow',muk:'liquidooze',fearow:'lancepoint',alcremie:'sweetveil',eevee:'runaway',rotomfan:'levitate',weezinggalar:'levitate',alcremiesaltedcream:'sweetveil',vivillonfancy:'shielddust'};
   const snapshot=require('../server-data-sync-manifest.json').snapshot.species;
   for(const[id,passive]of Object.entries(expected)){assert.deepEqual(Dex.species.get(id).passives,id === 'butterfree' ? ['shielddust'] : id === 'muk' ? ['liquidooze'] : [passive]);assert.deepEqual(Dex.species.get(id).abilities,snapshot[id].abilities);}
   for(const id of ['eeveestarter','alcremiegmax','pinsirmega','chingling','dusclops','vibrava'])assert.deepEqual(Dex.species.get(id).passives,require('./fixtures/mega-approval-overlays').passives(id,[]),id);

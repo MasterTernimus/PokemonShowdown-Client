@@ -96,3 +96,21 @@ exports.abilities=(id,fallback)=>({...fallback,...finish.slots[id]});
 
 const beforeConciseDescription=exports.description;exports.description=(id,key,fallback)=>require('./concise-approved-descriptions.json')[global.Dex?.abilities.get(id).id || id]?.[key]??beforeConciseDescription(id,key,fallback);
 const beforeNewCorrosion=exports.effects;exports.effects=(id,fallback)=>({venomspurs:['corrosion','venomspurs'],reinflate:['punkrock','reinflate'],deepchill:['deepchill','intimidate','oblivious'],accumulation:['accumulation','thickfat']})[id]||beforeNewCorrosion(id,fallback);
+
+const beforeBulwarkEffects=exports.effects,beforeBulwarkDescription=exports.description;
+exports.effects=(id,original)=>id==='noseformation'?['elevate','levitate','noseformation']:beforeBulwarkEffects(id,original);
+exports.description=(id,key,text)=>require('./probopass-bulwark-descriptions.json')[id]?.[key] ?? beforeBulwarkDescription(id,key,text);
+
+const beforeQuarterHPDescription=exports.description;
+exports.description=(id,key,text)=>require('./quarter-hp-priority-descriptions.json')[id]?.[key] ?? beforeQuarterHPDescription(id,key,text);
+
+const priorLoreDescription=exports.description,priorLoreEffects=exports.effects,priorLoreAbilities=exports.abilities;
+exports.description=(id,key,text)=>require('./lore-entry-descriptions.json')[id]?.[key] ?? priorLoreDescription(id,key,text);
+exports.effects=(id,original)=>({blademastery:['blademastery','sharpness'],imperialprincess:['imperialprincess','striker','vitalspirit'],ange:['ange','fairyaura'],lastingpromise:['lastingpromise','friendguard'],desertvigil:['desertvigil','overcoat'],ragingcurrent:['damp','dryskin','ragingcurrent','stamina','swiftswim']})[id] || priorLoreEffects(id,original);
+Object.assign(before,{floetteeternal:['eternalflower'],floettemega:['eternalflower'],cacturne:['scarecrow']});
+exports.abilities=(id,fallback)=>id==='floetteeternal'?{...priorLoreAbilities(id,fallback),H:'Lasting Promise'}:id==='cacturne'?{...priorLoreAbilities(id,fallback),0:'Desert Vigil'}:priorLoreAbilities(id,fallback);
+
+const beforeAnnihilapeEffects=exports.effects,beforeAnnihilapeAbilities=exports.abilities;
+exports.effects=(id,original)=>id==='beyondfear'?['beyondfear']:id==='unboundspirit'?['unboundspirit','vitalspirit']:id==='ragingheart'?['ragingheart']:beforeAnnihilapeEffects(id,original);
+before.annihilape=['beyondfear'];
+exports.abilities=(id,fallback)=>id==='annihilape'?{0:'Unbound Spirit',1:'Raging Heart',H:'Defiant'}:beforeAnnihilapeAbilities(id,fallback);

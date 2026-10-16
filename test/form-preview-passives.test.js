@@ -7,7 +7,7 @@ const helper = source.slice(source.indexOf('function renderStarterPassives('), s
 const wrapper = source.slice(source.indexOf('var renderBuildSet = proto.renderSet;'), source.indexOf('proto.renderFormStatComparison ='));
 
 describe('Form preview passive replacement', () => {
- it('adds a Mega-only passive, restores an empty base and never changes the saved set', () => {
+ it('preserves Eternal Flower in both approved Floette forms without changing the saved set', () => {
   assert(source.includes("'<!-- SET PASSIVES -->' + renderStarterPassives(this.curTeam.dex.species.get(set.species))"));
   const proto = {};
   new Function('proto', 'Dex', 'BattleLog', 'T', 'escape', helper + '\n' +
@@ -18,13 +18,13 @@ describe('Form preview passive replacement', () => {
   const species = Dex.species.get('Floette-Mega');
   let selected = null;
   const room = Object.assign(Object.create(proto), {curTeam: {dex: Dex, gen: 9}, currentFormPreview: () => selected});
-  assert(!room.renderSet(set, 0).includes('passive-chip'));
+  assert(room.renderSet(set, 0).includes('Eternal Flower'));
   selected = {name: species.name, ability: species.abilities[0], types: species.types};
   let html = room.renderSet(set, 0);
-  assert(html.includes('Fairy Aura'));
+  assert(html.includes('Eternal Flower'));
   assert.equal((html.match(/class="passive-chip"/g) || []).length, 1);
   selected = null;
-  assert(!room.renderSet(set, 0).includes('passive-chip'));
+  assert(room.renderSet(set, 0).includes('Eternal Flower'));
   assert.equal(JSON.stringify(set), original);
  });
 });

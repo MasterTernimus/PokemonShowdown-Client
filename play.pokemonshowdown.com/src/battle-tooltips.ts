@@ -326,6 +326,14 @@ class BattleTooltips {
 			let gmaxMove = args[3] ? this.battle.dex.moves.get(args[3]) : undefined;
 			if (!pokemon) return false;
 			let serverPokemon = this.battle.myPokemon![teamIndex];
+			if (type === 'move' && args[4] === 'sevipermega') {
+				// A selection preview must never mutate the live Pokemon or request.
+				const species = this.battle.dex.species.get('Seviper-Mega');
+				serverPokemon = {...serverPokemon, speciesForme: species.name, ability: 'Sirius',
+					baseAbility: 'Sirius', passives: species.passives};
+				pokemon = Object.assign(Object.create(Object.getPrototypeOf(pokemon)), pokemon,
+					{speciesForme: species.name, ability: 'Sirius', baseAbility: 'Sirius'}) as Pokemon;
+			}
 			buf = this.showMoveTooltip(move, type, pokemon, serverPokemon, gmaxMove);
 			break;
 		}
@@ -801,6 +809,9 @@ class BattleTooltips {
 
 		text += '<p>Accuracy: ' + accuracy + '</p>';
 		if (zEffect) text += '<p>Z-Effect: ' + zEffect + '</p>';
+		if (category !== 'Status' && (pokemon.terastallized === 'Stellar' || isZOrMax === 'zmove' || move.isZ)) {
+			text += '<p>Against ???-type targets other than Divineon: 1.5&times; calculated damage. Stellar and Z-Move qualification does not stack; fixed damage is unchanged.</p>';
+		}
 
 		if (this.battle.hardcoreMode) {
 			text += '<p class="tooltip-section">' + move.shortDesc + '</p>';
@@ -1700,6 +1711,7 @@ class BattleTooltips {
 
 		let pokemonTypes = pokemon.getTypeList(serverPokemon);
 		value.reset();
+		if (move.id === 'thrash' && value.tryAbility('Raging Heart')) moveType = 'Ghost';
 		if (move.id === 'revelationdance') {
 			moveType = pokemonTypes[0];
 		}
@@ -1841,6 +1853,7 @@ class BattleTooltips {
 			'selfdestruct',
 		].includes(move.id);
 		const specialTie = [
+			'firepledge', 'waterpledge', 'grasspledge',
 			'photongeyser', 'lightthatburnsthesky', 'radiantassault', 'roaroftime', 'spacialrend',
 			'shadowforce', 'veeveevolley', 'blastburn', 'frenzyplant', 'hydrocannon', 'snipeshot',
 			'watershuriken', 'kaboom', 'spectralscream', 'barbedweb', 'bunrakubeatdown', 'lastrespects', 'queensgambit', 'timeblade', 'crestcleave', 'swarmsnare', 'wisteriamaelstrom', 'airstreamassault', 'dragonrend', 'sirenswrath',
@@ -2197,10 +2210,8 @@ class BattleTooltips {
 		}
 		// Base power based on times hit
 		if (move.id === 'ragefist') {
-			value.set(Math.min(350, 50 + 50 * pokemon.timesAttacked),
-				pokemon.timesAttacked > 0
-					? `Hit ${pokemon.timesAttacked} time${pokemon.timesAttacked > 1 ? 's' : ''}`
-					: undefined);
+			const bonus = serverPokemon.rageFistBonus ?? pokemon.rageFistBonus;
+			value.set(50 + bonus, bonus ? `Accumulated bonus: ${bonus}; halved on switching` : undefined);
 		}
 		if (!value.value) return value;
 
@@ -2353,6 +2364,17 @@ class BattleTooltips {
 		}
 
 		const passives = serverPokemon.passives ?? pokemon.getSpecies(serverPokemon).passives;
+		if (move.category !== 'Status' && moveType !== '???' && value.tryAbility('Fire Mane')) {
+			const native = pokemon.getTypeList(serverPokemon).includes(moveType) || pokemon.getTypeList(serverPokemon, true).includes(moveType);
+			const grants: {[type: string]: string[]} = {
+				Grass: ['Corrosive Touch'], Dragon: ['Dragonize', 'Unbound Blaze', 'Apex Predator', 'Draconic Force', 'Sun Sovereign', 'Atrocity', 'Royal Scales', 'Burning Crown'],
+				Electric: ['Aurora Current'], Water: ['Frightful Wings', 'Abyssal Claws'], Fairy: ["Mind's Eye"], Dark: ["Mind's Eye"],
+				Steel: ['Royal Armament'], Fire: ['Solar Recharge'], Poison: ['Venom Heal'], Bug: ['Tremor', 'Antlion Instinct'], Fighting: ['Zero to Hero', 'Empress', 'Imperial Princess'],
+			};
+			const granted = pokemon.terastallized !== 'Stellar' && (value.tryAbility('Ascendance') || (grants[moveType] || []).some(id => value.tryAbility(id)));
+			if (native || granted) value.modify(1.5, 'Fire Mane');
+		}
+
 		if (move.category !== 'Status' && passives.includes('proficient') && pokemon.getTypeList(serverPokemon).includes(moveType)) {
 			value.modify(1.3, 'Proficient passive');
 		}

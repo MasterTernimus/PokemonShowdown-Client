@@ -1828,7 +1828,7 @@
 		},
 		actorHTML: function (index, label) {
 			var buf = '<fieldset class="calc-actor" data-slot="' + index + '"><legend>' + label + '</legend><div class="calc-identity"></div><div class="calc-species-results" aria-live="polite"></div><div class="calc-ability-slots" aria-label="Species ability slots"></div><details class="calc-component-details"><summary>Ability details</summary><p class="calc-components"></p></details><div class="calc-fields">';
-			[['species', 'Pokémon', 'Mew'], ['ability', 'Ability', 'No Ability'], ['item', 'Item', ''], ['nature', 'Nature', 'Serious'], ['level', 'Level', '100'], ['hpPercent', 'Current HP %', '100']].forEach(function (f) {
+			[['species', 'Pokémon', 'Mew'], ['ability', 'Ability', 'No Ability'], ['item', 'Item', ''], ['nature', 'Nature', 'Serious'], ['level', 'Level', '100'], ['hpPercent', 'Current HP %', '100'], ['rageFistBonus', 'Rage Fist bonus (0–100)', '0']].forEach(function (f) {
 				buf += '<label>' + f[1] + '<input class="textbox" autocomplete="off" list="calc-list-' + f[0] + '" name="' + f[0] + '" value="' + f[2] + '" /></label>';
 			});
 			buf += '<label>Gender<select name="gender"><option value="">Engine default</option><option value="M">Male</option><option value="F">Female</option><option value="N">Genderless</option></select></label>';
@@ -1899,7 +1899,7 @@
 			var result = {evs: {}, ivs: {}, boosts: {}};
 			$actor.find('input,select').each(function () {
 				var key = this.name; if (!key) return;
-				if (key.indexOf('-') >= 0) { var parts = key.split('-'); result[parts[0]][parts[1]] = Number(this.value); } else if (key === 'level' || key === 'hpPercent') result[key] = Number(this.value);
+				if (key.indexOf('-') >= 0) { var parts = key.split('-'); result[parts[0]][parts[1]] = Number(this.value); } else if (key === 'level' || key === 'hpPercent' || key === 'rageFistBonus') result[key] = Number(this.value);
 				else if (key === 'moves') { if (this.value.trim()) result.moves = this.value.split(',').map(function (m) { return m.trim(); }); } else result[key] = this.value;
 			});
 			return result;
@@ -1918,6 +1918,7 @@
 			['level', 'hpPercent'].forEach(function (key) {
 				if (actor[key] !== undefined && (typeof actor[key] !== 'number' || !Number.isInteger(actor[key]) || actor[key] < 1 || actor[key] > 100)) throw new Error('Invalid ' + key + '.');
 			});
+			if (actor.rageFistBonus !== undefined && (typeof actor.rageFistBonus !== 'number' || !Number.isFinite(actor.rageFistBonus) || actor.rageFistBonus < 0 || actor.rageFistBonus > 100)) throw new Error('Invalid Rage Fist bonus.');
 			if (actor.moves !== undefined && (!Array.isArray(actor.moves) || actor.moves.length > 4 || actor.moves.some(function (move) { return typeof move !== 'string'; }))) throw new Error('Invalid moveset.');
 			['evs', 'ivs', 'boosts'].forEach(function (kind) {
 				var values = actor[kind];
@@ -1935,7 +1936,7 @@
 			$actor.find('input,select').each(function () {
 				var key = this.name; if (!key) return;
 				if (key.indexOf('-') >= 0) { var parts = key.split('-'); this.value = actor[parts[0]] && actor[parts[0]][parts[1]] !== undefined ? actor[parts[0]][parts[1]] : parts[0] === 'ivs' ? 31 : 0; } else if (key === 'moves') this.value = (actor.moves || []).join(', ');
-				else this.value = actor[key] === undefined ? key === 'level' || key === 'hpPercent' ? 100 : key === 'nature' ? 'Serious' : key === 'teraType' ? 'Stellar' : '' : actor[key];
+				else this.value = actor[key] === undefined ? key === 'level' || key === 'hpPercent' ? 100 : key === 'rageFistBonus' ? 0 : key === 'nature' ? 'Serious' : key === 'teraType' ? 'Stellar' : '' : actor[key];
 			});
 			this.scenarioEdited();
 		},

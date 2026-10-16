@@ -9,7 +9,7 @@ describe('Adaptive category client parity', () => {
   p = battle.p1.active[0]; own = {speciesForme: 'Mew', ability: 'No Ability', baseAbility: 'No Ability', item: '', hp: 100, maxhp: 100, level: 100, status: '', stats: {atk: 100, def: 100, spa: 100, spd: 100, spe: 100}}; tips = new BattleTooltips(battle);
  });
  afterEach(() => battle.destroy());
- for (const id of ['needlegun', 'dragondarts', 'barrage', 'explosion', 'selfdestruct', 'radiantassault', 'roaroftime', 'spacialrend', 'shadowforce', 'veeveevolley', 'watershuriken']) {
+ for (const id of ['firepledge', 'waterpledge', 'grasspledge', 'needlegun', 'dragondarts', 'barrage', 'explosion', 'selfdestruct', 'radiantassault', 'roaroftime', 'spacialrend', 'shadowforce', 'veeveevolley', 'watershuriken']) {
   it(id + ' follows stat stages, tie rules and preserves Dex data', () => {
    const m = Dex.moves.get(id), original = m.category;
    const category = () => tips.getMoveType(m, new ModifiableValue(battle, p, own))[1];

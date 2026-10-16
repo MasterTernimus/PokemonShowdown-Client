@@ -432,6 +432,7 @@ class BattleTextParser {
 	parseArgsInner(args: Args, kwArgs: KWArgs) {
 		let cmd = args[0];
 		switch (cmd) {
+		case '-ragefist': return ''; // State synchronization; no battle narration.
 		case 'gimmickcount': {
 			const used = Number(args[2]), limit = Number(args[3]);
 			if (!/^p[1-4]$/.test(args[1]) || !Number.isInteger(used) || !Number.isInteger(limit) ||
