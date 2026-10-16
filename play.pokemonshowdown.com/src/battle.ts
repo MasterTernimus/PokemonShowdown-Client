@@ -2794,6 +2794,7 @@ export class Battle {
 			let effect = Dex.getEffect(args[2]);
 			let fromeffect = Dex.getEffect(kwArgs.from);
 			poke.removeVolatile(effect.id);
+			if (effect.id === 'mustrecharge') poke.removeMovestatus(effect.id);
 
 			if (kwArgs.silent) {
 				// do nothing
