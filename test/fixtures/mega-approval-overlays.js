@@ -114,3 +114,8 @@ const beforeAnnihilapeEffects=exports.effects,beforeAnnihilapeAbilities=exports.
 exports.effects=(id,original)=>id==='beyondfear'?['beyondfear']:id==='unboundspirit'?['unboundspirit','vitalspirit']:id==='ragingheart'?['ragingheart']:beforeAnnihilapeEffects(id,original);
 before.annihilape=['beyondfear'];
 exports.abilities=(id,fallback)=>id==='annihilape'?{0:'Unbound Spirit',1:'Raging Heart',H:'Defiant'}:beforeAnnihilapeAbilities(id,fallback);
+
+// Approved Talonflame selected ability/passive swap.
+before.talonflame=['galewings'];
+const beforeTalonflameAbilities=exports.abilities;
+exports.abilities=(id,fallback)=>id==='talonflame'?{...beforeTalonflameAbilities(id,fallback),H:'Flame Body'}:beforeTalonflameAbilities(id,fallback);

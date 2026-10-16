@@ -1,6 +1,6 @@
 {
-  "sourceHead": "91f63c58a1b8703f338d0776f0b10cd963119d94",
-  "sourceDataSHA256": "d58a9f2cb37dd96fda927f0a0122d81e6eb806ea634aa6887a6cb086c9dc93b2",
+  "sourceHead": "d4ed076938dcca848609c5689f0587ff8f479de3",
+  "sourceDataSHA256": "72e562a39118dd1ff66ee0d6601e73063d0ddd750481df9eb4da14872565f80a",
   "outputs": {
     "data/abilities.js": "8fdf0f7f01e073dddb09d018ccae594f3881e6cef47c5e008efda51d36adb299",
     "data/aliases.js": "de7d3853310427611888ea7e89234fe5267bc664fd6bfab7ecb5f88ff3c78ce7",
@@ -8,14 +8,14 @@
     "data/formats.js": "eb109d95a01c0f903211300515d8ee2f0a2b0d59dae5a6574f4b4a34c07122bd",
     "data/graphics.js": "cf184913a7c2446e32a68dab693cf84fa85aeb691f10c5585832311401231fb2",
     "data/items.js": "09dd710f61eeff2f14bc8e415ec5dbb390b151f36b61ce8370275fe06f9516b5",
-    "data/learnsets-g6.js": "c138d93a2734e1f77f5478e7871dd3d109e952d04e259a44a3bf1abcb484faf2",
-    "data/learnsets.js": "e515b4fbb1da9dc15506b37b868cfdc8392a0b6cb7c24c1236a2d6ca076643cf",
+    "data/learnsets-g6.js": "a8ddd15016a390552f961091c38dda1b14e1b364d14e892928555071ae0de6e0",
+    "data/learnsets.js": "9e82b9d12a40f646adc2ee7db9fa3e2051cde3eed351583aaab0e0a7db06c547",
     "data/moves.js": "c2090869a744f57d9eae188ee0c3888e563d5a30f2c1d647bb278968f068f843",
     "data/pokedex-mini-bw.js": "c12fe7a73df3280cfc313dd9e05832cb8d9db1ba47a34d279f87d89386bef921",
     "data/pokedex-mini.js": "67109c76fd5e401621fc85c209d78f36d3a4bc7f1866559d9569ffc2aee38226",
-    "data/pokedex.js": "001f8766392d429a4cd26d3b20a0eae54aa7b03edc8b903bde4c3ea332d8c33f",
+    "data/pokedex.js": "3fb4d06a61be6bf19026e615ab45b1a8915069ab1306e8df92abf556b013da58",
     "data/search-index.js": "90776424e8810c673947073992a53d140fa1656eaa4369e61cd4dd87c437354a",
-    "data/teambuilder-tables.js": "3a3263013f6cf204d134c95899131f7a0e5275043e3552696a35e65f170b4742",
+    "data/teambuilder-tables.js": "a001991ef12a376a83433b2b797b5d0f5e106b91f3ccfc77173ad3d9a8aba7cb",
     "data/text-afd.js": "df22416bd6b7cebefb859532980ba1b9f6e1865cefc974d34dd2a116c0d5ddb4",
     "data/text.js": "dd42a748cfa9e4bd85fe1db98855a3ce04b2fff5417e120b9e65bc7d51eb5037",
     "data/typechart.js": "1f28413cf01f8f52c6ab35b694fafc52a537dfe31e68dcea6b9c97d41c7b9523"

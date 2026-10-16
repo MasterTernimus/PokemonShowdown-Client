@@ -1,7 +1,7 @@
 {
-	"sourceHead": "91f63c58a1b8703f338d0776f0b10cd963119d94",
+	"sourceHead": "d4ed076938dcca848609c5689f0587ff8f479de3",
 	"base": "6592c2cdadcff2e643e59ac9e8f28870fe3d539c",
-	"sourceDataSHA256": "d58a9f2cb37dd96fda927f0a0122d81e6eb806ea634aa6887a6cb086c9dc93b2",
+	"sourceDataSHA256": "72e562a39118dd1ff66ee0d6601e73063d0ddd750481df9eb4da14872565f80a",
 	"files": [
 		"data/abilities.ts",
 		"data/ability-components.ts",
@@ -17,6 +17,7 @@
 		"data/learnsets.ts",
 		"data/lore-entry-approved.ts",
 		"data/lore-screen-rules.ts",
+		"data/move-distribution-approved.ts",
 		"data/moves.ts",
 		"data/nido-approved.ts",
 		"data/passive-ability-cleanup.ts",
@@ -32211,7 +32212,7 @@
 				"abilities": {
 					"0": "Open Sky",
 					"1": "Scorch Sweep",
-					"H": "Gale Wings",
+					"H": "Flame Body",
 					"S": "Burning Quake"
 				},
 				"baseStats": {
@@ -32227,7 +32228,7 @@
 					"Flying"
 				],
 				"passives": [
-					"flamebody"
+					"galewings"
 				],
 				"replaceAbilities": true
 			},

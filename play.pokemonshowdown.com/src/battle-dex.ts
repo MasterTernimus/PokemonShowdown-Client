@@ -46728,7 +46728,7 @@ for (const [id, update] of Object.entries({
 		"abilities": {
 			"0": "Open Sky",
 			"1": "Scorch Sweep",
-			"H": "Gale Wings",
+			"H": "Flame Body",
 			"S": "Burning Quake"
 		},
 		"baseStats": {
@@ -46744,7 +46744,7 @@ for (const [id, update] of Object.entries({
 			"Flying"
 		],
 		"passives": [
-			"flamebody"
+			"galewings"
 		],
 		"replaceAbilities": true
 	},
