@@ -9,7 +9,7 @@ describe('Adaptive category client parity', () => {
   p = battle.p1.active[0]; own = {speciesForme: 'Mew', ability: 'No Ability', baseAbility: 'No Ability', item: '', hp: 100, maxhp: 100, level: 100, status: '', stats: {atk: 100, def: 100, spa: 100, spd: 100, spe: 100}}; tips = new BattleTooltips(battle);
  });
  afterEach(() => battle.destroy());
- for (const id of ['firepledge', 'waterpledge', 'grasspledge', 'needlegun', 'dragondarts', 'barrage', 'explosion', 'selfdestruct', 'radiantassault', 'roaroftime', 'spacialrend', 'shadowforce', 'veeveevolley', 'watershuriken']) {
+ for (const id of ['venamskiss', 'firepledge', 'waterpledge', 'grasspledge', 'needlegun', 'dragondarts', 'barrage', 'explosion', 'selfdestruct', 'radiantassault', 'roaroftime', 'spacialrend', 'shadowforce', 'veeveevolley', 'watershuriken']) {
   it(id + ' follows stat stages, tie rules and preserves Dex data', () => {
    const m = Dex.moves.get(id), original = m.category;
    const category = () => tips.getMoveType(m, new ModifiableValue(battle, p, own))[1];
@@ -19,6 +19,17 @@ describe('Adaptive category client parity', () => {
    p.boosts = {}; own.stats.spa = 101; own.item = 'Choice Band'; assert.equal(category(), 'Special'); assert.equal(m.category, original);
   });
  }
+ it('previews adaptive Venams Kiss using the exact Mega stats without mutating the request', () => {
+  own.speciesForme = p.speciesForme = 'Seviper'; own.stats.atk = 256; own.stats.spa = 279;
+  own.megaStats = {...own.stats, atk: 316, spe: 166}; battle.myPokemon = [own];
+  const before = JSON.stringify(own), move = Dex.moves.get('venamskiss');
+  assert.equal(tips.getMoveType(move, new ModifiableValue(battle,p,own))[1], 'Special');
+  let category;
+  tips.showMoveTooltip = (m, type, preview, server) => {category = tips.getMoveType(m, new ModifiableValue(battle, preview, server))[1]; return '';};
+  tips.placeTooltip = () => {};
+  tips.showTooltip({dataset:{tooltip:'move|Venams Kiss|0||sevipermega'}});
+  assert.equal(category, 'Physical'); assert.equal(JSON.stringify(own), before); assert.equal(p.speciesForme, 'Seviper');
+ });
  it('passes Special Needle Gun to field power and ability previews', () => {
   p.boosts.spa = 1; const previous = window.BattleFieldTooltips, observed = [];
   window.BattleFieldTooltips = {preview(b, move) {observed.push(move.category); return null;}, activeNotes() {return '';}};

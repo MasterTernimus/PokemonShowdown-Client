@@ -991,6 +991,7 @@ export interface PokemonHealth {
 export interface ServerPokemon extends PokemonDetails, PokemonHealth {
 	passives?: readonly string[];
 	rageFistBonus?: number;
+	megaStats?: ServerPokemon['stats'];
 	ident: string;
 	details: string;
 	condition: string;

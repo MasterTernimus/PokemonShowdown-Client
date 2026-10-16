@@ -1,7 +1,7 @@
 {
-	"sourceHead": "b6f83ddee30afc93957093c6d96f05c93c606662",
+	"sourceHead": "aeeeefcf0e19419af731f5682ea7e95c36b6a2c4",
 	"base": "6592c2cdadcff2e643e59ac9e8f28870fe3d539c",
-	"sourceDataSHA256": "90d8483c88df84b7ab70dd66164fa2dc126d7d8f975bd4cabc132637085c0fcc",
+	"sourceDataSHA256": "6990cd6b7ec7a5cc981c3bd475e2c47dfb586de23c38c77f5842494bf33c90db",
 	"files": [
 		"data/abilities.ts",
 		"data/ability-components.ts",
@@ -67478,7 +67478,7 @@
 				"name": "Venam's Kiss",
 				"num": 10432,
 				"type": "Poison",
-				"category": "Physical",
+				"category": "Special",
 				"basePower": 60,
 				"accuracy": 100,
 				"pp": 10,
@@ -67490,8 +67490,8 @@
 					"bite": 1,
 					"tail": 1
 				},
-				"desc": "Venam's move. Super effective on Steel; 30% poison, including Steel and Poison types; other protections remain.",
-				"shortDesc": "Venam's move. Bite/tail move; super effective on Steel; 30% poison, even Steel/Poison.",
+				"desc": "Venam's move. Uses the higher staged Attack or Special Attack, Special on ties. Super effective on Steel; 30% poison, including Steel and Poison types; other protections remain.",
+				"shortDesc": "Venam's move. Adaptive bite/tail; super effective on Steel; 30% poison.",
 				"signatureCharacters": [
 					"venam"
 				]

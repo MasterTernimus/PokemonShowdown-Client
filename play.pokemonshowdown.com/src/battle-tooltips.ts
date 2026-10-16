@@ -329,7 +329,7 @@ class BattleTooltips {
 			if (type === 'move' && args[4] === 'sevipermega') {
 				// A selection preview must never mutate the live Pokemon or request.
 				const species = this.battle.dex.species.get('Seviper-Mega');
-				serverPokemon = {...serverPokemon, speciesForme: species.name, ability: 'Sirius',
+				serverPokemon = {...serverPokemon, stats: serverPokemon.megaStats || serverPokemon.stats, speciesForme: species.name, ability: 'Sirius',
 					baseAbility: 'Sirius', passives: species.passives};
 				pokemon = Object.assign(Object.create(Object.getPrototypeOf(pokemon)), pokemon,
 					{speciesForme: species.name, ability: 'Sirius', baseAbility: 'Sirius'}) as Pokemon;
@@ -1095,10 +1095,10 @@ class BattleTooltips {
 		// Owner-only request data is authoritative. Opponents use only their publicly displayed form.
 		const passives = serverPokemon?.passives ?? (clientPokemon ? clientPokemon.getSpecies().passives : []);
 		if (passives.length && !(illusionIndex && illusionIndex > 1)) {
-			text += '<p class="pokemon-passives"><small>Passives:</small> ' + passives.map(id =>
+			text += '<p class="pokemon-passives"><small>' + (passives.length === 1 ? 'Passive' : 'Passives') + ':</small> ' + passives.map(id =>
 				'<span class="passive-tooltip-entry"><strong>' + BattleLog.escapeHTML(Dex.abilities.get(id).name) + '</strong>: ' +
-				BattleLog.escapeHTML(Dex.getPassiveAbilityDetails(id).desc) + '</span>'
-			).join(' · ') + '<br /><small>' + (passives.includes('crystalward') ? 'Species traits — Crystal Ward is disabled by suppression.' : 'Species traits — remain active when Ability is suppressed.') + '</small></p>';
+				BattleLog.escapeHTML(Dex.getPassiveAbilityDetails(id).shortDesc) + '</span>'
+			).join(' · ') + '<br /><small>' + (passives.includes('crystalward') ? 'Disabled by Ability suppression.' : 'Stays active if Ability is suppressed.') + '</small></p>';
 		}
 		if (clientPokemon?.adaptation) text += this.renderAdaptation(clientPokemon.adaptation);
 		text += this.renderStats(clientPokemon, serverPokemon, !isActive);
@@ -1853,7 +1853,7 @@ class BattleTooltips {
 			'selfdestruct',
 		].includes(move.id);
 		const specialTie = [
-			'firepledge', 'waterpledge', 'grasspledge',
+			'venamskiss', 'firepledge', 'waterpledge', 'grasspledge',
 			'photongeyser', 'lightthatburnsthesky', 'radiantassault', 'roaroftime', 'spacialrend',
 			'shadowforce', 'veeveevolley', 'blastburn', 'frenzyplant', 'hydrocannon', 'snipeshot',
 			'watershuriken', 'kaboom', 'spectralscream', 'barbedweb', 'bunrakubeatdown', 'lastrespects', 'queensgambit', 'timeblade', 'crestcleave', 'swarmsnare', 'wisteriamaelstrom', 'airstreamassault', 'dragonrend', 'sirenswrath',

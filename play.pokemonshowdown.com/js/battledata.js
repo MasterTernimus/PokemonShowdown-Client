@@ -39103,7 +39103,7 @@ function _array_like_to_array(arr,len){if(len==null||len>arr.length)len=arr.leng
 		"name": "Venam's Kiss",
 		"num": 10432,
 		"type": "Poison",
-		"category": "Physical",
+		"category": "Special",
 		"basePower": 60,
 		"accuracy": 100,
 		"pp": 10,
@@ -39115,8 +39115,8 @@ function _array_like_to_array(arr,len){if(len==null||len>arr.length)len=arr.leng
 			"bite": 1,
 			"tail": 1
 		},
-		"desc": "Venam's move. Super effective on Steel; 30% poison, including Steel and Poison types; other protections remain.",
-		"shortDesc": "Venam's move. Bite/tail move; super effective on Steel; 30% poison, even Steel/Poison.",
+		"desc": "Venam's move. Uses the higher staged Attack or Special Attack, Special on ties. Super effective on Steel; 30% poison, including Steel and Poison types; other protections remain.",
+		"shortDesc": "Venam's move. Adaptive bite/tail; super effective on Steel; 30% poison.",
 		"signatureCharacters": [
 			"venam"
 		]
