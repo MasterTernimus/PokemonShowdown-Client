@@ -14,6 +14,10 @@ const babel = require('@babel/core');
 const fs = require('fs');
 const path = require('path');
 const sourceMap = require('source-map');
+const crypto = require('crypto');
+const projectRoot = path.resolve(__dirname, '..');
+const cacheDir = path.join(projectRoot, 'node_modules/.cache/ps-client-compiler');
+let currentBuildContext = '';
 
 const VERBOSE = false;
 const transformedFiles = new Map();
@@ -61,7 +65,7 @@ function transformFile(src, opts) {
   delete options.incremental;
   delete options.sourceFileName;
   const input = fs.readFileSync(src, 'utf8');
-  const key = path.resolve(src) + fast + JSON.stringify(options) + input;
+  const key = currentBuildContext + path.resolve(src) + fast + JSON.stringify(options) + input;
   if (transformedFiles.has(key)) { stats.reused++; return transformedFiles.get(key); }
   const catalogs = [];
   const candidates = /^(?:\b(?:const|let|var)\s+[A-Z_][A-Z_0-9]*[^=\r\n]*=\s*|Object\.(?:assign|entries)\(\s*(?:[A-Z_][A-Z_0-9]*\s*,\s*)?)(?=[{\[])/gm;
@@ -188,21 +192,65 @@ async function combineResults(fileResults, sourceMapOptions, opts) {
   };
 }
 
-function noRebuildNeeded(src, dest) {
+// Cache the complete build contract, not only source timestamps. This also
+// invalidates outputs after configuration, dependency, or input-list changes.
+function buildContext(opts) {
+  const hash = crypto.createHash('sha256');
+  hash.update(JSON.stringify(opts, (_, value) => typeof value === 'function' ? value.toString() : value));
+  for (const file of ['build-tools/compiler.js', 'build-tools/update', '.babelrc', 'babel.config.js',
+    'package.json', 'package-lock.json', 'npm-shrinkwrap.json', 'yarn.lock', 'pnpm-lock.yaml', 'node_modules/.package-lock.json']) {
+    const filename = path.join(projectRoot, file);
+    hash.update(file);
+    hash.update(fs.existsSync(filename) ? fs.readFileSync(filename) : '<missing>');
+  }
+  for (const dependency of ['@babel/core', '@swc/core']) {
+    hash.update(require(dependency + '/package.json').version);
+  }
+  currentBuildContext = hash.digest('hex');
+  return currentBuildContext;
+}
+function requireInputs(inputs) {
+  for (const src of inputs) {
+    if (!fs.existsSync(src)) throw new Error('Missing required compiler input: ' + src);
+  }
+}
+function inputFingerprint(inputs, context) {
+  const hash = crypto.createHash('sha256').update(context);
+  for (const src of inputs) {
+    hash.update(path.resolve(src));
+    hash.update(fs.readFileSync(src));
+  }
+  return hash.digest('hex');
+}
+function cacheFile(dest) {
+  return path.join(cacheDir, crypto.createHash('sha256').update(path.resolve(dest)).digest('hex') + '.json');
+}
+function outputHash(dest) {
+  return crypto.createHash('sha256').update(fs.readFileSync(dest)).digest('hex');
+}
+function noRebuildNeeded(dest, fingerprint) {
   try {
-    const srcStat = fs.statSync(src, {throwIfNoEntry: false});
-    if (!srcStat) return true;
-    const destStat = fs.statSync(dest);
-    const compilerTime = Math.max(fs.statSync(__filename).ctimeMs, fs.statSync(path.join(__dirname, 'update')).ctimeMs);
-    if (Math.max(srcStat.ctimeMs, compilerTime) < destStat.ctimeMs) return true;
-  } catch (e) {}
-
-  return false;
+    const cached = JSON.parse(fs.readFileSync(cacheFile(dest), 'utf8'));
+    return cached.fingerprint === fingerprint && cached.output === outputHash(dest) &&
+      (!cached.map || cached.map === outputHash(dest + '.map'));
+  } catch { return false; }
+}
+function rememberBuild(dest, fingerprint, opts) {
+  const entry = {fingerprint, output: outputHash(dest)};
+  if (opts.sourceMaps && opts.sourceMaps !== 'inline' && fs.existsSync(dest + '.map')) entry.map = outputHash(dest + '.map');
+  // A read-only optional cache must not prevent a successful build.
+  try {
+    fs.mkdirSync(cacheDir, {recursive: true});
+    fs.writeFileSync(cacheFile(dest), JSON.stringify(entry));
+  } catch {}
 }
 
 function compileToDir(srcDir, destDir, opts = {}) {
   const incremental = opts.incremental;
+  opts = {...opts};
   delete opts.incremental;
+
+  const context = buildContext(opts);
 
   function handleFile(src, base) {
     let relative = path.relative(base, src);
@@ -216,7 +264,8 @@ function compileToDir(srcDir, destDir, opts = {}) {
 
     const dest = path.join(destDir, relative);
 
-    if (incremental && noRebuildNeeded(src, dest)) return 0;
+    const fingerprint = inputFingerprint([src], context);
+    if (incremental && noRebuildNeeded(dest, fingerprint)) return 0;
 
     const res = transformFile(src, {
       ...opts,
@@ -227,6 +276,7 @@ function compileToDir(srcDir, destDir, opts = {}) {
 
     outputFileSync(dest, res, opts);
     fs.chmodSync(dest, fs.statSync(src).mode);
+    rememberBuild(dest, fingerprint, opts);
 
     if (VERBOSE) {
       console.log(src + " -> " + dest);
@@ -238,7 +288,7 @@ function compileToDir(srcDir, destDir, opts = {}) {
   function handle(src, base) {
     const stat = fs.statSync(src, {throwIfNoEntry: false});
 
-    if (!stat) return 0;
+    if (!stat) throw new Error('Missing required compiler input: ' + src);
 
     if (stat.isDirectory()) {
       if (!base) base = src;
@@ -262,28 +312,29 @@ function compileToDir(srcDir, destDir, opts = {}) {
   }
 
   let total = 0;
-  fs.mkdirSync(destDir, {recursive: true});
   const srcDirs = typeof srcDir === 'string' ? [srcDir] : srcDir;
+  requireInputs(srcDirs);
+  fs.mkdirSync(destDir, {recursive: true});
   for (const dir of srcDirs) total += handle(dir);
-  if (incremental) opts.incremental = true; // incredibly dumb hack to preserve the option
   return total;
 }
 
-async function compileToFile(srcFile, destFile, opts) {
+async function compileToFile(srcFile, destFile, opts = {}) {
   const incremental = opts.incremental;
+  opts = {...opts};
   delete opts.incremental;
 
   const srcFiles = typeof srcFile === 'string' ? [srcFile] : srcFile;
 
-  if (incremental && srcFiles.every(src => noRebuildNeeded(src, destFile))) {
-    opts.incremental = true; // incredibly dumb hack to preserve the option
+  requireInputs(srcFiles);
+  const fingerprint = inputFingerprint(srcFiles, buildContext(opts));
+  if (incremental && noRebuildNeeded(destFile, fingerprint)) {
     return 0;
   }
 
   const results = [];
 
   for (const src of srcFiles) {
-    if (!fs.existsSync(src)) continue;
 
     const res = transformFile(src, opts.sourceMaps === "inline" ? {...opts, sourceMaps: true} : opts);
 
@@ -297,10 +348,10 @@ async function compileToFile(srcFile, destFile, opts) {
     sourceRoot: opts.sourceRoot,
   }, opts).then(combined => {
     outputFileSync(destFile, combined, opts);
+    rememberBuild(destFile, fingerprint, opts);
   });
 
   if (VERBOSE) console.log("-> " + destFile);
-  if (incremental) opts.incremental = true; // incredibly dumb hack to preserve the option
   return results.length;
 }
 

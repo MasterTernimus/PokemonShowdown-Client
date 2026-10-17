@@ -191,7 +191,7 @@ function isHiddenTeamBuilderSpecies(id: string, includeSawsbuckBase = false) {
 function isExcludedFromCustomSearch(id: string) {
 	const speciesId = toID(id);
 	// Balance-patched official records are not additional custom forms.
-	return VIVILLON_PATTERN_SPECIES.has(speciesId) || isTotemSpecies(window.BattlePokedex?.[speciesId]) || ['unfezant', 'xerneasneutral'].includes(speciesId) ||
+	return speciesId === 'mightyenamega' || VIVILLON_PATTERN_SPECIES.has(speciesId) || isTotemSpecies(window.BattlePokedex?.[speciesId]) || ['unfezant', 'xerneasneutral'].includes(speciesId) ||
 		isHiddenFakeSpecies(speciesId) || speciesId.startsWith('deerling') ||
 		speciesId.startsWith('sawsbuck') || ZA_MEGA_SPECIES.has(speciesId as ID);
 }
@@ -337,13 +337,13 @@ class DexSearch {
 		const species = this.dex.species.get(id);
 		const traits = DexSearch.pokemonPickerTraits(species);
 		const options = this.pickerOptions;
-		return species.exists && !traits.totem && !(options.hideMegas && traits.mega) && !(options.hideGimmicks && traits.gimmick) &&
+		return species.exists && species.id !== 'mightyenamega' && !traits.totem && !(options.hideMegas && traits.mega) && !(options.hideGimmicks && traits.gimmick) &&
 			!(options.customOnly && !traits.custom) &&
 			(!options.group || options.group === 'all' || !!traits[options.group as 'pulse' | 'rift' | 'regional']);
 	}
 
 	filterPokemonPicker(rows: SearchRow[]): SearchRow[] {
-		rows = rows.filter(row => row[0] !== 'pokemon' || !isTotemSpecies(window.BattlePokedex?.[row[1]]));
+		rows = rows.filter(row => row[0] !== 'pokemon' || (this.dex.species.get(row[1]).id !== 'mightyenamega' && !isTotemSpecies(window.BattlePokedex?.[row[1]])));
 		if (this.typedSearch?.searchType !== 'pokemon') return rows;
 		const options = this.pickerOptions;
 		if (!options.hideMegas && !options.hideGimmicks && !options.customOnly && (!options.group || options.group === 'all')) return rows;
@@ -1655,6 +1655,9 @@ class BattleAbilitySearch extends BattleTypedSearch<'ability'> {
 		const dex = this.dex;
 		let species = dex.species.get(this.species);
 		let abilitySet: SearchRow[] = [['header', "Abilities"]];
+        const regionalPair = Dex.getRegionalAbilityPair(species.name, dex);
+        if (regionalPair) species = dex.species.get(regionalPair.base);
+
 
 		if (species.isMega) {
 			const megaAbility = species.abilities['0'];

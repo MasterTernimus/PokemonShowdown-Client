@@ -6155,9 +6155,9 @@
     },
     "rhydon": {
       "abilities": {
-        "0": "Lightning Rod",
-        "1": "War Path",
-        "H": "Power Drill"
+        "0": "Grand Strategy",
+        "1": "Lightning Rod",
+        "H": "Brute Force"
       },
       "baseStats": {
         "hp": 110,

@@ -1,0 +1,2 @@
+const assert=require('assert').strict;require('./battle.test');
+describe('Accumulation alternate-turn metadata',()=>{for(const id of ['accumulation','primevalhunger','rifteater'])it(id+' describes the slower refill without changing release semantics',()=>{const a=Dex.abilities.get(id);assert(a.desc.includes('every second eligible active turn'));assert(a.desc.includes('Manual Stockpile is unchanged'));assert(a.desc.includes('ability restarts do not'));assert(a.desc.includes('waits one full turn'));assert(!a.desc.includes('one Stockpile each turn'));});});

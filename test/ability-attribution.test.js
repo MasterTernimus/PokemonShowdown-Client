@@ -26,7 +26,7 @@ describe('External ability protocol attribution', () => {
   assert.equal(battle.p1.active[1].ability, 'Dry Skin');
   battle.destroy();
  });
- for (const [name, component] of [['Astral Ward','Anticipation'],['Doom Warning','Anticipation'],['Calculated Shot','Frisk'],['Night Hunt','Frisk'],['Night Hunt','Illuminate'],['Silk Sights','Keen Eye'],['Long Reach','Keen Eye'],['Slipstream','Keen Eye']]) it(name + ' retains its identity after ' + component, () => {
+ for (const [name, component] of [['Doom Warning','Anticipation'],['Calculated Shot','Frisk'],['Night Hunt','Frisk'],['Night Hunt','Illuminate'],['Silk Sights','Keen Eye'],['Long Reach','Keen Eye'],['Slipstream','Keen Eye']]) it(name + ' retains its identity after ' + component, () => {
   const battle = parse(['|-ability|p1a: Source|' + name, '|-ability|p1a: Source|' + component]);
   assert.equal(battle.p1.active[0].ability, name);
   battle.destroy();

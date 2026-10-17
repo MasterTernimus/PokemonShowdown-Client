@@ -26,13 +26,13 @@ describe('Species passive ability search', () => {
   const ids = Object.entries(require('../server-data-sync-manifest.json').snapshot.species)
    .filter(([, s]) => s.passives.includes('levitate')).map(([id]) => id);
   const approved = require('./fixtures/regional-passives-approved.json');
-  const expected = [...Object.entries(approved.previousPassives).filter(([, p]) => p.includes('levitate')).map(([id]) => id), ...approved.groups.levitate, 'probopass','froslass','flygonmega','flygonmegaz','claydolmega','chimechomega','chimechomegay','belliboltmega','dragapultgmax','yanmega'].filter(id => !['butterfree','glaliemega','probopass'].includes(id));
+  const expected = [...Object.entries(approved.previousPassives).filter(([, p]) => p.includes('levitate')).map(([id]) => id), ...approved.groups.levitate, 'probopass','froslass','flygonmega','flygonmegaz','claydolmega','chimechomega','chimechomegay','belliboltmega','dragapultgmax','yanmega'].filter(id => !['butterfree','glaliemega','probopass','hydreigon'].includes(id));
   assert.deepEqual(ids.sort(), expected.sort());
   for (const id of ids) {
    assert(filter(id, 'Levitate'), id);
    assert.equal(rows.filter(r => r[0] === 'pokemon' && r[1] === id).length, 1, id);
   }
-  assert(!Dex.hasAbility(Dex.species.get('hydreigon'), 'Levitate'));
+  assert(!Dex.hasAbility(Dex.species.get('hydreigon'), 'Levitate'));assert(filter('hydreigon','Levitate'));assert.equal(rows.filter(r=>r[0]==='pokemon'&&r[1]==='hydreigon').length,1);
  });
  it('finds another passive without requiring a selectable ability slot', () => {
   assert(filter('eevee', 'runaway'));

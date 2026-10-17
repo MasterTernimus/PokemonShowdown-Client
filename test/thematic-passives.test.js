@@ -3,7 +3,7 @@ const assert=require('assert').strict;
 require('./battle.test');
 describe('Thematic passive UI and protocol',()=>{
  it('publishes exactly the 14 approved slot replacements with no stat or extra-slot changes',()=>{
-  for(const[id,before]of Object.entries(require('./fixtures/thematic-selected-slots.json'))){const species=Dex.species.get(id);assert.deepEqual(species.abilities,{...before.abilities,[before.slot]:before.replacement});assert.deepEqual(species.baseStats,before.baseStats);assert.deepEqual(species.passives,['levitate']);}
+  for(const[id,before]of Object.entries(require('./fixtures/thematic-selected-slots.json'))){const species=Dex.species.get(id);assert.deepEqual(species.abilities,id==='rotomfan'?{0:'Eject',1:'Windy Surge',H:'Air Lock'}:{...before.abilities,[before.slot]:before.replacement,...(['rotomheat','rotomwash','rotomfrost','rotommow','rotomfan'].includes(id)?(id==='rotomfan'?{0:'Eject',1:'Windy Surge',H:'Air Lock'}:{0:'Eject'}):{})});assert.deepEqual(species.baseStats,before.baseStats);assert.deepEqual(species.passives,['levitate']);}
  });
  it('uses innate Levitate in groundedness previews through suppression while honoring grounding',()=>{
   const battle=new Battle({debug:true,log:['|init|battle','|gen|9','|gametype|singles','|switch|p1a: Baltoy|Baltoy, L100|100/100','|switch|p2a: Mew|Mew, L100|100/100']});

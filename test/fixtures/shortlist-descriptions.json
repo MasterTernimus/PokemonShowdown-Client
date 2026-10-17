@@ -40,8 +40,8 @@
     "shortDesc": "Ultra Instinct + Opportunist (five combat stats only) + Magma Armor."
   },
   "ragingstorm": {
-    "shortDesc": "Ignores abilities/screens/defensive stages; armor protection; half priority damage; KO splash damage. Rampages last one turn without ending confusion.",
-    "desc": "Moves ignore bypassable opposing abilities. Prevents critical hits and takes 20% less attack damage. Gains +1 Defense on Fairy Tale entry and +2 Defense when a foe lowers its stats. Attacks bypass Substitute, screens and defensive stat stages and gain +1 critical-hit stage. Takes half damage from priority attacks, in addition to its armor reduction. Immune to hail damage. Move KOs damage remaining foes by 60% of the last damage dealt; if there is no valid target or no damage is dealt, gains +1 Attack instead. Magic Guard prevents this splash damage. Cannot be suppressed. Outrage, Thrash, Petal Dance and Raging Fury last one turn without rampage-ending confusion. Existing confusion is not cured; this is not general confusion immunity."
+    "shortDesc": "bypasses screens/defensive stages; priority resistance and KO splash.",
+    "desc": "Moves ignore bypassable abilities, Substitute, screens and defensive stages and gain one critical-hit stage. Incoming priority attack damage is halved. Immune to hail damage. Move KOs retain the existing 60% damage splash or Attack increase. Cannot be suppressed."
   },
   "toxicspines": {
     "shortDesc": "Physical hits set Toxic Spikes; contact attackers lose 1/6 HP; Poison bypasses type immunity; poisoned foes lose defenses; Critical hits against poisoned foes or on corrosive fields. Iron Barbs adds 1/8 contact damage.",

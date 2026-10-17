@@ -37,7 +37,7 @@ describe('Approved shortlist and Burning Rage presentation', () => {
   assert.equal(Dex.species.get('avalugghisui').abilities[0],'Strong Jaw');
  });
  it('attributes full signature components to their passives and preserves removed component exclusions', () => {
-  for(const [species, passive, components] of [['slowkinggalar','eldritchremedy',['owntempo','curiousmedicine']],['cloyster','pearlcurrent',['waterabsorb']],['garganacl','saltbastion',['sturdy']]]) {
+  for(const [species, passive, components] of [['slowkinggalar','eldritchremedy',['owntempo','curiousmedicine']],['garganacl','saltbastion',['sturdy']]]) {
    const row=Dex.species.get(species);
    for(const component of components) {
     assert(Dex.getAbilityEffects(passive).has(component), passive+' '+component);

@@ -1886,6 +1886,8 @@ export class PokemonSprite extends Sprite {
 		confusion: ['Confused', 'bad'],
 		healblock: ['Heal Block', 'bad'],
 		yawn: ['Drowsy', 'bad'],
+		relicarmoractive: '<span class="ability-active" title="Relic Armor active: 10% less attack damage. Rock-typing weaknesses remain on this field." aria-label="Relic Armor active; no field weakness protection">Relic Armor</span> ' ,
+		relicarmorfield: '<span class="ability-active" title="Relic Armor active: 10% less attack damage; Rock typing adds no Fighting, Ground, Steel, Water or Grass weakness on this field." aria-label="Relic Armor active; field weakness protection">Relic Armor: Field</span> ' ,
 		blazeactive: '<span class="ability-active ability-active-blaze" title="Blaze active" aria-label="Blaze active">Blaze</span> ',
 		torrentactive: '<span class="ability-active ability-active-torrent" title="Torrent active" aria-label="Torrent active">Torrent</span> ',
 		overgrowactive: '<span class="ability-active ability-active-overgrow" title="Overgrow active" aria-label="Overgrow active">Overgrow</span> ',
@@ -1926,6 +1928,7 @@ export class PokemonSprite extends Sprite {
 		focusenergy: ['Critical Hit Boost', 'good'],
 		dragoncheer: ['Critical Hit Boost', 'good'],
 		slowstart: ['Slow Start', 'bad'],
+		ejecting: ['Ejecting', 'good'],
 		protosynthesisatk: ['Protosynthesis: Atk', 'good'],
 		protosynthesisdef: ['Protosynthesis: Def', 'good'],
 		protosynthesisspa: ['Protosynthesis: SpA', 'good'],
@@ -2941,6 +2944,11 @@ export class PokemonSprite extends Sprite {
 				'"><span aria-hidden="true">&#8635;</span> Adapted:&nbsp;' + count + (pokemon.adaptation.active ? '' : '&nbsp;(paused)') + '</span> ';
 		}
 		for (let i in pokemon.volatiles) {
+   if (i === 'prepared') {
+    const owners = (pokemon.volatiles.prepared[1] || []) as string[];
+    status += '<span class="bad" title="' + BattleLog.escapeHTML('Prepared for: ' + owners.join(', ') + '. Only its owner can use this opening; ends when this foe switches.') + '">Prepared</span> ';
+    continue;
+   }
 			status += PokemonSprite.getEffectTag(i);
 		}
 		for (let i in pokemon.turnstatuses) {

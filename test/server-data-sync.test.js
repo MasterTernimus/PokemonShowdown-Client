@@ -92,7 +92,7 @@ describe('Server data synchronization', () => {
 
 			it('explains Soul Cremation while preserving its component identities', () => {
 				const soul = dex.abilities.get('soulcremation');
-				assert.equal(soul.shortDesc, 'Combines the listed abilities.'); assert(dex.getAbilityDisplayComponents('soulcremation').includes('soulsiphon'));
+				assert.equal(soul.shortDesc, require('./fixtures/short-description-audit.json').ShortDescriptionAudit.soulcremation); assert(dex.getAbilityDisplayComponents('soulcremation').includes('soulsiphon'));
 				for (const component of ['soulsiphon', 'soulpyre', 'malicewell', 'flamebody']) {
 					assert(dex.getAbilityEffects('soulcremation').has(component), component);
 				}
@@ -227,7 +227,7 @@ describe('Server data synchronization', () => {
 				assert.match(dex.abilities.get('eclipsevision').desc, /first move slot/);
 				assert.match(dex.abilities.get('schooling').desc, /Mold Breaker/);
 				assert.doesNotMatch(dex.abilities.get('schooling').desc, /Filter/);
-				assert.match(dex.abilities.get('venombastion').desc, /raises Defense by 1.*poisoned foe.*higher offensive stat/);
+				assert.match(dex.abilities.get('venombastion').desc, /Stamina.*Bug moves receive STAB.*already-poisoned surviving foe/);
 				assert.match(dex.moves.get('skullbash').desc, /20% less damage/);
 				assert.match(dex.moves.get('skullbash').desc, /restores 15%/);
 				assert.match(dex.moves.get('cut').desc, /Steel-type.*Defense boosts/);

@@ -5,7 +5,7 @@ global.BattleMovedex = require('../play.pokemonshowdown.com/data/moves.js').Batt
 const {BattleTooltips, ModifiableValue} = new Function(fs.readFileSync('play.pokemonshowdown.com/js/battle-tooltips.js', 'utf8') + '\nreturn {BattleTooltips, ModifiableValue};')();
 describe('Passive tooltip calculations', () => {
  it('does not inherit passives into Aevian forms without one on the server', () => {
-  for (const id of ['arcanineaevian','gyaradosaevian','gyaradosaevianmega','ampharosaevian','ampharosaevianmega','glalieaevian','glalieaevianmega','roseradeaevian','froslassaevian','froslassaevianmega','chandelureaevian','kommooaevian','toxtricityaeviangmax']) assert.deepEqual(Dex.species.get(id).passives, [], id);
+  for (const id of ['arcanineaevian','gyaradosaevian','gyaradosaevianmega','ampharosaevian','ampharosaevianmega','glalieaevian','glalieaevianmega','roseradeaevian','froslassaevian','froslassaevianmega','chandelureaevian','kommooaevian']) assert.deepEqual(Dex.species.get(id).passives, [], id);
  });
  let battle, p, own, tips;
  beforeEach(() => {

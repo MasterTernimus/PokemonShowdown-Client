@@ -4,7 +4,7 @@ describe('Mudsdale and Rhydon current setup',()=>{
  it('shows exact passive and selected slots',()=>{
   assert.deepEqual(Dex.species.get('mudsdale').abilities,{0:'Unyielding',1:'Battle Armor',H:'Surefoot'});
   assert.deepEqual(Dex.species.get('mudsdale').passives,['stamina']);
-  assert.deepEqual(Dex.species.get('rhydon').abilities,{0:'Brute Force',1:'War Path',H:'Lightning Rod'});
+  assert.deepEqual(Dex.species.get('rhydon').abilities,{0:'Grand Strategy',1:'Lightning Rod',H:'Brute Force'});
   assert.deepEqual(Dex.species.get('rhydon').passives,['powerdrill']);
  });
  it('removes Mud Temper and displays the new effects',()=>{

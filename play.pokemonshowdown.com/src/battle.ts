@@ -366,6 +366,9 @@ export class Pokemon implements PokemonDetails, PokemonHealth {
 	}
 	rememberAbility(ability: string, isNotBase?: boolean) {
 		ability = Dex.abilities.get(ability).name;
+		// Species passive activations never replace the active ability. Explicit changes still do.
+		if (!isNotBase && this.ability && toID(this.ability) !== toID(ability) &&
+			this.getSpecies().passives?.includes(toID(ability))) return;
 		// A component reveal must not replace a known composite; explicit replacements still do.
 		if (!isNotBase && this.ability && (Dex.getAbilityEffects(toID(this.ability)).has(toID(ability)) ||
 			Dex.getAbilityComponentExclusions(toID(this.ability)).includes(toID(ability)))) return;
@@ -453,7 +456,7 @@ export class Pokemon implements PokemonDetails, PokemonHealth {
 		// this.lastMove = pokemon.lastMove; // I think
 		if (!copySource) {
 			const volatilesToRemove = [
-				'airballoon', 'attract', 'autotomize', 'disable', 'encore', 'foresight', 'gmaxchistrike', 'imprison', 'laserfocus', 'mimic', 'miracleeye', 'nightmare', 'saltcure', 'smackdown', 'stockpile1', 'stockpile2', 'stockpile3', 'syrupbomb', 'torment', 'triplearrows', 'corrosion', 'glacialheartice', 'glacialheartdragon', 'artilleryreload', 'artilleryfired', 'typeadd', 'typechange', 'yawn',
+				'airballoon', 'attract', 'autotomize', 'disable', 'encore', 'foresight', 'gmaxchistrike', 'imprison', 'laserfocus', 'mimic', 'miracleeye', 'nightmare', 'saltcure', 'smackdown', 'stockpile1', 'stockpile2', 'stockpile3', 'syrupbomb', 'torment', 'triplearrows', 'corrosion', 'prepared', 'relicarmoractive', 'relicarmorfield', 'glacialheartice', 'glacialheartdragon', 'artilleryreload', 'artilleryfired', 'typeadd', 'typechange', 'yawn',
 			];
 			for (const statName of Dex.statNamesExceptHP) {
 				volatilesToRemove.push('protosynthesis' + statName);
@@ -2631,6 +2634,14 @@ export class Battle {
 			this.activateAbility(poke, effect);
 			this.activateAbility(ofpoke || poke, fromeffect);
 			switch (effect.id) {
+   case 'prepared': {
+    const owners = (poke.volatiles.prepared?.[1] || []) as string[];
+    const owner = kwArgs.of || 'revealed Grand Strategy holder';
+    if (!owners.includes(owner)) owners.push(owner);
+    poke.addVolatile('prepared' as ID, owners);
+    this.scene.updateStatbar(poke);
+    break;
+   }
 			case 'typechange':
 				if (poke.terastallized) break;
 				if (ofpoke && fromeffect.id === 'reflecttype') {

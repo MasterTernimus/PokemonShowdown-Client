@@ -939,11 +939,8 @@
     "stalwart"
   ],
   "grandmaster": [
-    "grandmaster"
-  ],
-  "warpath": [
-    "moldbreaker",
-    "warpath"
+    "grandmaster",
+    "innerfocus"
   ],
   "atrocity": [
     "atrocity",
@@ -2052,7 +2049,6 @@
     "pickup"
   ],
   "piercingdrill": [
-    "moldbreaker",
     "piercingdrill"
   ],
   "pixilate": [
@@ -3010,7 +3006,6 @@
     "aftermath",
     "coldlogic",
     "forewarn",
-    "prismarmor",
     "toughclaws"
   ],
   "whitesmoke": [
@@ -3642,7 +3637,7 @@
     "sporeshroud"
   ],
   "primevalhunt": [
-    "battlearmor",
+    "owntempo",
     "primevalhunt",
     "skilllink"
   ],
@@ -4006,5 +4001,9 @@
   "mindcurrent": [
     "innerfocus",
     "mindcurrent"
+  ],
+  "grandstrategy": [
+    "moldbreaker",
+    "grandstrategy"
   ]
 }

@@ -1831,6 +1831,9 @@
 			[['species', 'Pokémon', 'Mew'], ['ability', 'Ability', 'No Ability'], ['item', 'Item', ''], ['nature', 'Nature', 'Serious'], ['level', 'Level', '100'], ['hpPercent', 'Current HP %', '100'], ['rageFistBonus', 'Rage Fist bonus (0–100)', '0']].forEach(function (f) {
 				buf += '<label>' + f[1] + '<input class="textbox" autocomplete="off" list="calc-list-' + f[0] + '" name="' + f[0] + '" value="' + f[2] + '" /></label>';
 			});
+            [['threadShelterGuard', 'Thread Shelter guard ready'], ['buriedTrioSpent', 'Buried Trio already used'], ['elasticBellySpent', 'Elastic Belly already used'], ['feedbackMarked', 'Marked by active Feedback foe']].forEach(function (f) {
+                buf += '<label>' + f[1] + '<select name="' + f[0] + '"><option value="false">No</option><option value="true">Yes</option></select></label>';
+            });
 			buf += '<label>Gender<select name="gender"><option value="">Engine default</option><option value="M">Male</option><option value="F">Female</option><option value="N">Genderless</option></select></label>';
 			buf += '<label>Status<select name="status"><option value="">Entry state</option><option value="brn">Burn</option><option value="par">Paralysis</option><option value="psn">Poison</option><option value="tox">Toxic</option><option value="slp">Sleep</option><option value="frz">Freeze</option></select></label>';
 			buf += '<label>Activate<select name="gimmick"><option value="">None</option><option value="mega">Mega / Ultra (requires item)</option><option value="tera">Tera</option><option value="gmax">Gigantamax</option></select></label></div>';
@@ -1900,6 +1903,7 @@
 			$actor.find('input,select').each(function () {
 				var key = this.name; if (!key) return;
 				if (key.indexOf('-') >= 0) { var parts = key.split('-'); result[parts[0]][parts[1]] = Number(this.value); } else if (key === 'level' || key === 'hpPercent' || key === 'rageFistBonus') result[key] = Number(this.value);
+				else if (["threadShelterGuard","buriedTrioSpent","elasticBellySpent","feedbackMarked"].includes(key)) result[key] = this.value === 'true';
 				else if (key === 'moves') { if (this.value.trim()) result.moves = this.value.split(',').map(function (m) { return m.trim(); }); } else result[key] = this.value;
 			});
 			return result;
@@ -1910,6 +1914,7 @@
 			$actor.find('select').each(function () {
 				if (actor[this.name] === undefined) return;
 				var value = actor[this.name];
+                if (['threadShelterGuard', 'buriedTrioSpent', 'elasticBellySpent', 'feedbackMarked'].includes(this.name)) { if (typeof value !== 'boolean') throw new Error('Invalid ' + this.name + '.'); return; }
 				if (typeof value !== 'string' || !Array.from(this.options).some(function (option) { return option.value === value; })) throw new Error('Unsupported ' + this.name + '.');
 			});
 			['species', 'ability', 'item', 'nature', 'teraType'].forEach(function (key) {
@@ -1919,6 +1924,7 @@
 				if (actor[key] !== undefined && (typeof actor[key] !== 'number' || !Number.isInteger(actor[key]) || actor[key] < 1 || actor[key] > 100)) throw new Error('Invalid ' + key + '.');
 			});
 			if (actor.rageFistBonus !== undefined && (typeof actor.rageFistBonus !== 'number' || !Number.isFinite(actor.rageFistBonus) || actor.rageFistBonus < 0 || actor.rageFistBonus > 100)) throw new Error('Invalid Rage Fist bonus.');
+			["threadShelterGuard","buriedTrioSpent","elasticBellySpent","feedbackMarked"].forEach(function (key) { if (actor[key] !== undefined && typeof actor[key] !== 'boolean') throw new Error('Invalid ' + key + '.'); });
 			if (actor.moves !== undefined && (!Array.isArray(actor.moves) || actor.moves.length > 4 || actor.moves.some(function (move) { return typeof move !== 'string'; }))) throw new Error('Invalid moveset.');
 			['evs', 'ivs', 'boosts'].forEach(function (kind) {
 				var values = actor[kind];
@@ -1936,7 +1942,7 @@
 			$actor.find('input,select').each(function () {
 				var key = this.name; if (!key) return;
 				if (key.indexOf('-') >= 0) { var parts = key.split('-'); this.value = actor[parts[0]] && actor[parts[0]][parts[1]] !== undefined ? actor[parts[0]][parts[1]] : parts[0] === 'ivs' ? 31 : 0; } else if (key === 'moves') this.value = (actor.moves || []).join(', ');
-				else this.value = actor[key] === undefined ? key === 'level' || key === 'hpPercent' ? 100 : key === 'rageFistBonus' ? 0 : key === 'nature' ? 'Serious' : key === 'teraType' ? 'Stellar' : '' : actor[key];
+				else this.value = actor[key] === undefined ? key === 'level' || key === 'hpPercent' ? 100 : key === 'rageFistBonus' ? 0 : ['threadShelterGuard', 'buriedTrioSpent', 'elasticBellySpent', 'feedbackMarked'].includes(key) ? 'false' : key === 'nature' ? 'Serious' : key === 'teraType' ? 'Stellar' : '' : actor[key];
 			});
 			this.scenarioEdited();
 		},
@@ -2076,7 +2082,7 @@
     actor.find('.calc-form-label').prop('hidden', family.length < 2);
     actor.find('.calc-passives').remove();
     var info = (self.metadata.species || []).find(function (entry) { return toID(entry.name) === species.id; });
-    if (info && info.passives && info.passives.length) actor.find('.calc-identity').after('<div class="calc-passives"><b>Passives</b> ' + info.passives.map(function (id) { var a = Dex.getPassiveAbilityDetails(id); return '<details class="passive-details"><summary>' + self.escape(a.name) + '</summary><div>' + self.escape(a.desc || a.shortDesc) + '</div></details>'; }).join('') + '</div>');
+    if (info && info.passives && info.passives.length) actor.find('.calc-identity').after('<div class="calc-passives"><b>Passives</b> ' + info.passives.map(function (id) { var a = Dex.getPassiveAbilityDetails(id); return '<details class="passive-details"><summary>' + self.escape(a.name) + ': ' + self.escape(a.shortDesc) + '</summary><div>' + self.escape(a.desc || a.shortDesc) + '</div></details>'; }).join('') + '</div>');
     actor.find('.calc-component-details').toggle(!!actor.find('.calc-ability-slots button').length || !!actor.find('.calc-components').text().match(/^Components:/));
    });
    return result;

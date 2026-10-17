@@ -1,9 +1,9 @@
 'use strict';
 const assert=require('assert').strict;require('./battle.test');
 describe('Hydreigon passive and Dread Wings client parity',()=>{
- it('separates the species Levitate passive from the selected Intimidate/Unnerve package',()=>{
-  assert.deepEqual(Dex.species.get('hydreigon').passives,['levitate']);
-  assert.deepEqual(Object.values(Dex.species.get('hydreigon').abilities),['Dread Wings','Dark Dominion','Void Tyrant']);
+ it('keeps historical Dread Wings while Hydreigon receives the approved new lineup',()=>{
+  assert.deepEqual(Dex.species.get('hydreigon').passives,['hydraflight']);
+  assert.deepEqual(Object.values(Dex.species.get('hydreigon').abilities),['Dark Aura','Worldbreaker','False Liberation']);
   assert.deepEqual(Dex.getAbilityDisplayComponents('dreadwings',Dex,['levitate']),['intimidate','unnerve']);
   assert(Dex.getAbilityEffects('dreadwings').has('intimidate'));assert(Dex.getAbilityEffects('dreadwings').has('unnerve'));assert(!Dex.getAbilityEffects('dreadwings').has('levitate'));
  });

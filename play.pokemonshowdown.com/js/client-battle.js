@@ -784,8 +784,13 @@
 						hasMoves = true;
 					}
 					var gilded = Dex.getGildedMoveProfile(move, typeValueTracker.pokemon.getTypes(typeValueTracker.serverPokemon)[0], typeValueTracker.pokemon.effectiveAbility(typeValueTracker.serverPokemon), this.battle.gameType);
-					if (gilded) name += '<br /><small class="gilded-battle-profile">' + BattleLog.escapeHTML(gilded.category + ' · ' + gilded.basePower + ' BP · ' + (gilded.hits === 3 && move.id === 'gildedarrow' ? '1 + 0.3 + 0.3 hits' : gilded.hits + ' hits')) + '</small>';
-					movebuttons += name + '<br /><small class="type">' + (moveType ? Dex.types.get(moveType).name : "Unknown") + '</small> <small class="pp">' + pp + '</small>&nbsp;</button> ';
+					var metadata = '';
+					if (gilded) metadata = '<small class="gilded-battle-profile">' + BattleLog.escapeHTML(gilded.category + ' · ' + gilded.basePower + ' BP · ' + (gilded.hits === 3 && move.id === 'gildedarrow' ? '1 + 0.3 + 0.3 hits' : gilded.hits + ' hits')) + '</small>';
+     if (!gilded && move.category !== 'Status' && (typeValueTracker.tryAbility('Power Drill') || typeValueTracker.tryAbility('Hyper Drill') || typeValueTracker.tryAbility('Dual Wield'))) {
+      var power = this.tooltips.getMoveBasePower(move, moveType, new ModifiableValue(this.battle, typeValueTracker.pokemon, typeValueTracker.serverPokemon), this.battle.farSide.active[0]);
+      if (power.value) metadata = '<small class="gilded-battle-profile">' + power.round(power.value) + (power.maxValue ? '–' + power.round(power.maxValue) : '') + (power.secondHitPower !== undefined ? ' / ' + power.round(power.secondHitPower) + ' BP per hit' : ' BP') + '</small>';
+     }
+					movebuttons += '<span class="move-name">' + name + '</span><span class="move-metadata">' + metadata + '</span><span class="move-footer"><small class="type">' + (moveType ? Dex.types.get(moveType).name : "Unknown") + '</small> <small class="pp">' + pp + '</small></span></button> ';
 				}
 				if (!hasMoves) {
 					moveMenu += '<button class="movebutton" name="chooseMove" value="0" data-move="Struggle" data-target="randomNormal">Struggle<br /><small class="type">Normal</small> <small class="pp">&ndash;</small>&nbsp;</button> ';
@@ -817,7 +822,7 @@
 								} else if (!curActive.moves[i].maxpp) {
 									pp = '&ndash;';
 								}
-								movebuttons += specialMove.name + '<br /><small class="type">' + (moveType ? Dex.types.get(moveType).name : "Unknown") + '</small> <small class="pp">' + pp + '</small>&nbsp;</button> ';
+								movebuttons += '<span class="move-name">' + BattleLog.escapeHTML(specialMove.name) + '</span><span class="move-metadata"></span><span class="move-footer"><small class="type">' + (moveType ? Dex.types.get(moveType).name : "Unknown") + '</small> <small class="pp">' + pp + '</small></span></button> ';
 							} else {
 								movebuttons += '<button disabled>&nbsp;</button>';
 							}
@@ -1769,6 +1774,12 @@ BattleRoom.prototype.showPassives = function (pos) {
  var pokemon = this.battle.myPokemon && this.battle.myPokemon[Number(pos)];
  if (!pokemon || !pokemon.passives || !pokemon.passives.length) return;
  app.addPopupMessage(pokemon.passives.map(function (id) {
-  var a = Dex.getPassiveAbilityDetails(id); return a.name + ': ' + (a.desc || a.shortDesc);
+  var a = Dex.getPassiveAbilityDetails(id); return a.name + ': ' + a.shortDesc;
  }).join('\n\n'));
+ var popup = app.popups[app.popups.length - 1];
+ if (popup && popup.$el) {
+  var details = $('<details class="passive-full-details"><summary>Full details</summary><div></div></details>');
+  details.find('div').css('white-space', 'pre-wrap').text(pokemon.passives.map(function (id) { var a = Dex.getPassiveAbilityDetails(id); return a.name + ': ' + (a.desc || a.shortDesc); }).join('\n\n'));
+  popup.$el.append(details);
+ }
 };

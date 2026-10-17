@@ -1,0 +1,2 @@
+const assert=require('assert').strict;require('./battle.test');
+describe('Raging Storm without armor metadata',()=>{for(const id of ['ragingstorm','ragingoverlord','unleashedego'])it(id+' removes inherited Battle Armor descriptions',()=>{const a=Dex.abilities.get(id);assert(!/Battle Armor|armor protection|20% less attack damage/.test(a.desc));assert(!/armor/i.test(a.shortDesc));assert(/priority.*halved|half damage from priority/i.test(a.desc));assert(/60%/.test(a.desc));});});

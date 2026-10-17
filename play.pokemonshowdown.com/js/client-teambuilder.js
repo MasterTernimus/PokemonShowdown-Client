@@ -1301,7 +1301,7 @@
 				buf += '</li>';
 				return buf;
 			}
-			buf += '<div class="setmenu"><button name="copySet"><i class="fa fa-files-o"></i>Copy</button> <button name="importSet"><i class="fa fa-upload"></i>Import/Export</button> <button name="moveSet"><i class="fa fa-arrows"></i>Move</button> <button name="deleteSet"><i class="fa fa-trash"></i>Delete</button></div>';
+			buf += '<div class="setmenu"><button name="copySet"><i class="fa fa-files-o"></i>Copy</button> <button name="importSet"><i class="fa fa-upload"></i>Import/Export</button> <button name="moveSet"><i class="fa fa-arrows"></i>Move</button> <button name="deleteSet" class="remove-team-member" title="Remove this Pokémon from the current team; keep saved builds and roster lists"><i class="fa fa-trash"></i> Remove from team</button></div>';
 			buf += '<div class="setchart-nickname">';
 			buf += '<label>Nickname</label><input type="text" name="nickname" class="textbox" value="' + BattleLog.escapeHTML(set.name || '') + '" placeholder="' + BattleLog.escapeHTML(species.baseSpecies) + '" />';
 			buf += '</div>';
@@ -1411,7 +1411,7 @@
 			}
 			buf += '</button></div></div>';
 
-			buf += '</div></li>';
+			buf += '<div class="contextual-move-details"></div></div></li>';
 			return buf;
 		},
 
@@ -1857,35 +1857,74 @@
 			});
 		},
 		deleteSet: function (i, button) {
-			i = +($(button).closest('li').attr('value'));
-			this.deletedSetLoc = i;
-			this.deletedSet = this.curSetList.splice(i, 1)[0];
-			if (this.curSet) {
-				this.addPokemon();
-			} else {
-				this.update();
-			}
-			this.save();
-		},
-		undeleteSet: function () {
-			if (this.deletedSet) {
-				var loc = this.deletedSetLoc;
-				this.curSetList.splice(loc, 0, this.deletedSet);
-				this.deletedSet = null;
-				this.deletedSetLoc = -1;
-				this.save();
-
-				if (this.curSet) {
-					this.curSetLoc = loc;
-					this.curSet = this.curSetList[loc];
-					this.curChartName = '';
-					this.update();
-					this.updateChart();
-				} else {
-					this.update();
-				}
-			}
-		},
+            var row = $(button).closest('li[value]');
+            if (!row.length || !this.el.contains(button)) return;
+            i = Number(row.attr('value'));
+            if (!Number.isInteger(i) || i < 0 || !this.curSetList[i]) return;
+            var scroll = this.$el.scrollTop(), selected = this.curSet;
+            var previous = {index: this.curSetLoc, deleted: this.deletedSet, location: this.deletedSetLoc, packed: this.curTeam.team};
+            if (this.cancelSetProfile) this.cancelSetProfile();
+            this.deletedSetLoc = i;
+            this.deletedSet = this.curSetList.splice(i, 1)[0];
+            this.selectionUndo = null;
+            if (selected) {
+                this.curSetLoc = selected === this.deletedSet ? Math.min(i, this.curSetList.length - 1) : this.curSetList.indexOf(selected);
+                this.curSet = this.curSetList[this.curSetLoc] || null;
+                this.curChartName = '';
+            }
+            this.curTeam.team = Storage.packTeam(this.curSetList);
+            this.curTeam.iconCache = '';
+            try {
+                this.save();
+                if (Storage.cantSave) throw new Error('Storage unavailable');
+            } catch (error) {
+                this.curSetList.splice(i, 0, this.deletedSet);
+                this.curSet = selected; this.curSetLoc = previous.index;
+                this.deletedSet = previous.deleted; this.deletedSetLoc = previous.location;
+                this.curTeam.team = previous.packed;
+                this.update();
+                this.$el.prepend('<p class="set-removal-status" role="alert">Could not save the removal. Your team is unchanged. Allow site storage or free up space and try again.</p>');
+                this.$el.scrollTop(scroll);
+                return;
+            }
+            this.update();
+            var next = this.$('[name=deleteSet]').eq(Math.min(i, this.$('[name=deleteSet]').length - 1))[0] || this.$('[name=undeleteSet]')[0];
+            if (next) next.focus({preventScroll: true});
+            this.$el.scrollTop(scroll);
+        },
+        undeleteSet: function () {
+            if (!this.deletedSet) return;
+            var restored = this.deletedSet, loc = this.deletedSetLoc;
+            var previous = {set: this.curSet, index: this.curSetLoc, packed: this.curTeam.team, icon: this.curTeam.iconCache};
+            var scroll = this.$el.scrollTop();
+            this.curSetList.splice(loc, 0, restored);
+            this.curTeam.team = Storage.packTeam(this.curSetList);
+            this.curTeam.iconCache = '';
+            try {
+                this.save();
+                if (Storage.cantSave) throw new Error('Storage unavailable');
+            } catch (error) {
+                this.curSetList.splice(loc, 1);
+                this.curSet = previous.set;
+                this.curSetLoc = previous.index;
+                this.curTeam.team = previous.packed;
+                this.curTeam.iconCache = previous.icon;
+                this.update();
+                this.$el.prepend('<p class="set-removal-status" role="alert">Could not save Undo. Your team is unchanged. Allow site storage or free up space, then try Undo again.</p>');
+                this.$el.scrollTop(scroll);
+                return;
+            }
+            this.deletedSet = null;
+            this.deletedSetLoc = -1;
+            if (previous.set) {
+                this.curSetLoc = loc;
+                this.curSet = restored;
+                this.curChartName = '';
+            }
+            this.update();
+            if (this.curSet && this.curChartName) this.updateChart();
+            this.$el.scrollTop(scroll);
+        },
 
 		/*********************************************************
 		 * Set view
@@ -2074,7 +2113,7 @@
 				html += '<p>Saved in this browser. True forms have separate entries.</p><div class="roster-chips">';
 				html += profile.species.length ? profile.species.map(function (id) {
 					var name = BattleLog.escapeHTML(Dex.species.get(id).name);
-					return '<button class="button roster-chip" name="removeRosterSpecies" value="' + id + '" aria-label="Remove ' + name + '">' + name + ' ×</button>';
+					return '<button class="button roster-chip" name="removeRosterSpecies" value="' + id + '" title="Remove from this roster; keep team and saved builds" aria-label="Remove ' + name + ' from roster">' + name + ' ×</button>';
 				}).join(' ') : '<p>This roster is empty. Add species below or turn the filter off.</p>';
 				html += '</div><label>Find species or form <input class="textbox roster-species-search" type="search" placeholder="e.g. Raichu or Raichu-Alola" autocomplete="off" /></label>';
 				html += '<div class="roster-species-matches" aria-live="polite">Type a name to add species.</div></details>';
@@ -2082,7 +2121,7 @@
 			if (data.deleted) {
 				html += '<p class="roster-undo" role="status">Deleted “' + BattleLog.escapeHTML(data.deleted.profile.name) + '”. <button class="button" name="undoRosterDelete">Undo delete</button></p>';
 			}
-			return html + '</div>';
+			return html + '<p class="roster-edit-status" role="status" aria-live="polite">' + (this.rosterRemovalUndo && this.rosterRemovalUndo.profile === data.selected ? 'Removed from roster. <button class="button" name="undoRosterSpeciesRemoval">Undo</button>' : '') + '</p></div>';
 		},
 		saveRosterProfiles: function (data) {
 			this.cancelRosterImport();
@@ -2168,28 +2207,65 @@
 				if (!id || seen[id] || DexSearch.isHiddenCosmeticPattern(id) || DexSearch.pokemonPickerTraits(Dex.species.get(id)).totem) continue;
 				seen[id] = true;
 				var added = profile.species.indexOf(id) >= 0;
-				matches.push('<button class="button" name="addRosterSpecies" value="' + id + '"' + (added ? ' disabled' : '') + '>' + BattleLog.escapeHTML(Dex.species.get(id).name) + (added ? ' — Added' : ' +') + '</button>');
+				matches.push('<button class="button roster-species-action" name="' + (added ? 'removeRosterSpecies' : 'addRosterSpecies') + '" value="' + id + '">' + BattleLog.escapeHTML(Dex.species.get(id).name) + (added ? ' — Remove' : ' — Add') + '</button>');
 				if (matches.length === 20) break;
 			}
 			this.$('.roster-species-matches').html(matches.join(' ') || (query ? 'No matching species. Try another name.' : 'Type a name to add species.'));
 		},
 		addRosterSpecies: function (id) { this.editRosterSpecies(id, false); },
 		removeRosterSpecies: function (id) { this.editRosterSpecies(id, true); },
-		editRosterSpecies: function (id, remove) {
-			var data = this.rosterData();
-			var profile = data.profiles.find(function (p) { return p.id === data.selected; });
-			id = this.rosterSpeciesID(id);
-			if (!profile || !id) return;
-			if (remove) profile.species = profile.species.filter(function (species) { return species !== id; });
-			else this.rosterExpandedSpecies(id).forEach(function (entry) { if (profile.species.indexOf(entry) < 0) profile.species.push(entry); });
-			this.saveRosterProfiles(data);
-			this.$('.roster-species-search').focus();
-		},
+        persistRosterChange: function (data) {
+            try {
+                window.localStorage.setItem('showdown_prefs', JSON.stringify(Object.assign({}, Storage.prefs.data, {rosterprofiles: data})));
+            } catch (error) {
+                this.$('.roster-edit-status').text('Could not save this change. Your list is unchanged. Allow site storage or free up space and try again.');
+                return false;
+            }
+            this.saveRosterProfiles(data);
+            return true;
+        },
+        editRosterSpecies: function (id, remove) {
+            var data = JSON.parse(JSON.stringify(this.rosterData()));
+            var profile = data.profiles.find(function (p) { return p.id === data.selected; });
+            id = this.rosterSpeciesID(id);
+            if (!profile || !id) return;
+            var position = profile.species.indexOf(id), scroll = this.$el.scrollTop();
+            if (remove && position < 0) return;
+            if (remove) profile.species.splice(position, 1);
+            else this.rosterExpandedSpecies(id).forEach(function (entry) { if (profile.species.indexOf(entry) < 0) profile.species.push(entry); });
+            if (!this.persistRosterChange(data)) return;
+            if (remove) {
+                this.rosterRemovalUndo = {profile: profile.id, entries: [{id: id, index: position}]};
+                this.showRosterRemovalUndo();
+                var next = this.$('[name=removeRosterSpecies]').eq(Math.min(position, profile.species.length - 1))[0] || this.$('[name=undoRosterSpeciesRemoval]')[0];
+                if (next) next.focus({preventScroll: true});
+            } else {
+                var searchInput = this.$('.roster-species-search')[0];
+                if (searchInput) searchInput.focus({preventScroll:true});
+                this.$('.roster-edit-status').prepend('Added to roster. ');
+            }
+            this.$el.scrollTop(scroll);
+        },
+        showRosterRemovalUndo: function () {
+            this.$('.roster-edit-status').html('Removed from roster. Team and saved builds unchanged. <button class="button small" name="undoRosterSpeciesRemoval">Undo</button>');
+        },
+        undoRosterSpeciesRemoval: function () {
+            var undo = this.rosterRemovalUndo;
+            if (!undo) return;
+            var data = JSON.parse(JSON.stringify(this.rosterData()));
+            var profile = data.profiles.find(function (p) { return p.id === undo.profile; });
+            if (!profile) return this.$('.roster-edit-status').text('That roster no longer exists.');
+            undo.entries.forEach(function (entry) { if (profile.species.indexOf(entry.id) < 0) profile.species.splice(Math.min(entry.index, profile.species.length), 0, entry.id); });
+            if (!this.persistRosterChange(data)) return;
+            this.rosterRemovalUndo = null;
+            this.$('.roster-edit-status, .set-profile-status').text('Restored to roster. Team unchanged.');
+        },
 
 		updateSetView: function () {
 			// pokemon
 			var buf = '<div class="pad">';
 			buf += '<button name="back" class="button"><i class="fa fa-chevron-left"></i> Team</button></div>';
+			if (this.deletedSet) buf += '<p class="set-removal-status" role="status">Removed from team. <button name="undeleteSet" class="button small">Undo</button></p>';
 			buf += '<div class="teambar">';
 			buf += this.renderTeambar();
 			buf += '</div>';
@@ -3548,8 +3624,16 @@
 				if (selectNext) this.$(this.$('input[name=ability]').length ? 'input[name=ability]' : 'input[name=move1]').select();
 				break;
 			case 'ability':
+                var previousSpecies = this.curSet.species;
 				this.curSet.ability = val;
-				this.updatePokemonSprite();
+                this.curSet.species = Dex.getRegionalAbilityForm(this.curSet, this.curTeam.dex);
+                if (this.curSet.species !== previousSpecies) {
+                    var regionalScroll = this.$el.scrollTop();
+                    if (this.curSet.name === previousSpecies) this.curSet.name = this.curSet.species;
+                    this.updateSetTop();
+                    this.updateChart();
+                    this.$el.scrollTop(regionalScroll);
+                } else this.updatePokemonSprite();
 				if (selectNext) this.focusChartInput('move1', true);
 				break;
 			case 'move1':
@@ -5152,6 +5236,7 @@
 		var ids = draft.remove ? this.rosterBranchSpecies(this.rosterSpeciesID(draft.species)) : this.rosterExpandedSpecies(this.rosterSpeciesID(draft.species));
 		var selectedChanged = data.selected !== profile.id;
 		data.selected = profile.id;
+		var removedEntries = profile.species.map(function (id, index) { return {id: id, index: index}; }).filter(function (entry) { return ids.indexOf(entry.id) >= 0; });
 		var added = ids.filter(function (id) { return profile.species.indexOf(id) < 0; });
 		if (draft.remove) {
 			added = profile.species.filter(function (id) { return ids.indexOf(id) >= 0; });
@@ -5167,8 +5252,10 @@
 			} catch (error) { status.text('Could not save in this browser. Free up storage or allow site storage, then try again.'); return; }
 		}
 		var index = draft.index;
+		if (draft.remove && added.length) this.rosterRemovalUndo = {profile: profile.id, entries: removedEntries};
 		this.cancelSetProfile();
 		this.$('.set-profile-status[data-index="' + index + '"]').text(draft.remove ? (added.length ? 'Removed ' + added.length + ' entries from ' + profile.name + '. Team unchanged.' : 'This branch is not in ' + profile.name + '.') : added.length ? 'Added to ' + profile.name + '. Team unchanged.' : 'Already in ' + profile.name + '. No duplicate added.');
+		if (draft.remove && added.length) this.$('.set-profile-status[data-index="' + index + '"]').append(' <button class="button small" name="undoRosterSpeciesRemoval">Undo</button>');
 	};
 	proto.events['change .profile-add-target'] = 'profileTargetChange';
 	var profileRenderSet = proto.renderSet;
@@ -5177,7 +5264,7 @@
 		if (!set.species) return html;
 		var previewControls = html.match(/<!-- COMPACT FORM CONTROL -->([\s\S]*?)<!-- END COMPACT FORM CONTROL -->/);
 		html = html.replace(/<!-- COMPACT FORM CONTROL -->[\s\S]*?<!-- END COMPACT FORM CONTROL -->/, '');
-		var controls = '<div class="set-profile-actions" data-index="' + index + '"><div class="set-tools-row"><span class="set-tools-label">Roster list</span><div class="set-tools-controls">' + button('addSetToProfile', 'Add to list', index) + button('removeSetFromProfile', 'Remove from list', index) + '</div></div><span class="set-profile-status" data-index="' + index + '" role="status" aria-live="polite"></span></div>';
+		var controls = '<div class="set-profile-actions" data-index="' + index + '"><div class="set-tools-row"><span class="set-tools-label">Roster list</span><div class="set-tools-controls">' + button('addSetToProfile', 'Add to list', index) + button('removeSetFromProfile', 'Remove from roster…', index) + '</div></div><span class="set-profile-status" data-index="' + index + '" role="status" aria-live="polite"></span></div>';
 
 		var form = '<div class="ev-form-tools">' + (previewControls && previewControls[1] ? previewControls[1] + button('closeFormPreview', 'Reset preview') : button('toggleFormPreview', 'Preview battle form', index)) + '</div>';
 		return html.replace('<!-- SET PROFILE ACTIONS -->', controls + form);
@@ -5200,7 +5287,7 @@ function renderStarterPassives(species) {
 	if (!species || !species.passives || !species.passives.length) return '';
 	return '<div class="starter-passives"><label>Passive</label>' + species.passives.map(function (id) {
 		var ability = Dex.getPassiveAbilityDetails(id);
-		return '<button type="button" class="passive-chip" aria-expanded="false" title="Passive: ' + BattleLog.escapeHTML(ability.name) + ' (click for details)" data-description="' + BattleLog.escapeHTML(ability.desc || ability.shortDesc) + '">' + BattleLog.escapeHTML(ability.name) + '</button>';
+		return '<button type="button" class="passive-chip" aria-expanded="false" title="Passive: ' + BattleLog.escapeHTML(ability.name) + ' (click for details)" data-description="' + BattleLog.escapeHTML(ability.shortDesc) + '" data-full-description="' + BattleLog.escapeHTML(ability.desc || ability.shortDesc) + '">' + BattleLog.escapeHTML(ability.name) + '</button>';
 	}).join(' ') + '</div>';
 }
 
@@ -5324,6 +5411,10 @@ function renderStarterPassives(species) {
   chip.attr({'aria-expanded': 'true', 'aria-controls': id});
   $('<div class="set-passive-description passive-description" role="note"></div>')
    .attr('id', id).text(chip.attr('data-description')).appendTo(card);
+  var full = chip.attr('data-full-description');
+  if (full && full !== chip.attr('data-description')) {
+   $('<details><summary>Full details</summary><div></div></details>').find('div').text(full).end().appendTo(card.find('#' + id));
+  }
  };
  p.events['click .passive-chip'] = 'togglePassiveDetails';
  p.renderSet = function (set, index) {
@@ -5333,12 +5424,34 @@ function renderStarterPassives(species) {
   html = html.replace('<div class="setcol setcol-icon">', '<div class="setcol setcol-icon"><div class="mobile-form-sprite" role="img" aria-label="' + BattleLog.escapeHTML(species.name) + '" style="' + Dex.getTeambuilderSprite(display, this.curTeam.gen) + '"></div>');
   var openingType = Dex.getOpeningTypeProfile(display, this.curTeam.dex);
   if (openingType) html = html.replace(/(<input[^>]*name="move1"[^>]*>)/, '$1<small class="opening-type-profile">' + BattleLog.escapeHTML(openingType) + '</small>');
-  (set.moves || []).forEach(function (name, i) {
-   var profile = Dex.getGildedMoveProfile(Dex.moves.get(name), species.types, display.ability || '') || Dex.getSilkenMoveProfile(Dex.moves.get(name), display.ability || '', display.item || '');
-   if (profile) html = html.replace(new RegExp('(<input[^>]*name="move' + (i + 1) + '"[^>]*>)'), '$1<small class="gilded-move-profile">' + BattleLog.escapeHTML(profile.text) + '</small>');
+  var details = [];
+  (set.moves || []).forEach(function (name) {
+   var move = Dex.moves.get(name);
+   var effects = new Set(), passives = species.passives || [], excluded = Dex.getAbilityComponentExclusions(toID(display.ability), passives, species.id);
+   Dex.getAbilityEffects(toID(display.ability)).forEach(function (id) { if (excluded.indexOf(id) < 0) effects.add(id); });
+   passives.forEach(function (id) { Dex.getPassiveAbilityEffects(id).forEach(function (part) { effects.add(part); }); });
+   var copies = passives.filter(function (id) { return Dex.getPassiveAbilityEffects(id).has('powerdrill'); }).length +
+    (toID(display.ability) !== 'hyperdrill' && excluded.indexOf('powerdrill') < 0 && Dex.getAbilityEffects(toID(display.ability)).has('powerdrill') ? 1 : 0);
+   var drill = Dex.getDrillPowerProfile(move, function (name) { return effects.has(toID(name)); }, '', 'singles', copies);
+   if (drill) drill.text += '; no field assumed. Field, items and battle conditions can change power.';
+   var profile = Dex.getGildedMoveProfile(move, species.types, display.ability || '') || Dex.getSilkenMoveProfile(move, display.ability || '', display.item || '') || drill;
+   if (profile) details.push('<div class="contextual-move-detail"><strong>' + BattleLog.escapeHTML(move.name) + '</strong><span>' + BattleLog.escapeHTML(profile.text) + '</span></div>');
   });
+  html = html.replace('<div class="contextual-move-details"></div>', '<div class="contextual-move-details" aria-label="Move details">' + details.join('') + '</div>');
   return html;
  };
+ // Update only the details after edits so input focus and picker state stay intact.
+ ['chartSet', 'chartChange'].forEach(function (method) {
+  var original = p[method];
+  p[method] = function () {
+   var result = original.apply(this, arguments);
+   if (this.el && this.curSet && this.curTeam) {
+    var fresh = $(this.renderSet(this.curSet, this.curSetLoc)).find('.contextual-move-details');
+    this.$('.teamchart > li[value="' + this.curSetLoc + '"] .contextual-move-details').replaceWith(fresh);
+   }
+   return result;
+  };
+ });
  var updateStats = p.updateStatForm;
  p.updateStatForm = function () {
   var result = updateStats.apply(this, arguments);
@@ -5375,3 +5488,6 @@ function renderStarterPassives(species) {
   return result;
  };
 })();
+
+(function(){var p=window.TeambuilderRoom.prototype,render=p.renderSet;p.renderSet=function(set,index){var html=render.apply(this,arguments),species=toID(set.species);if(species!=='meloettaencore'&&species!=='meloettapirouette')return html;(set.moves||[]).forEach(function(name,i){if(toID(name)!=='relicsong')return;var label=species==='meloettaencore'?'Encore Aria · Fairy':'Pirouette Dance · Fighting';var pattern=new RegExp('(<input[^>]*name="move'+(i+1)+'"[^>]*>)');html=html.replace(pattern,'$1<small class="meloetta-move-preview" style="display:block;font-size:10px;white-space:nowrap" title="The same Relic Song PP slot uses this form-specific move. Encore Aria selects the stronger physical dance or special sound separately for each foe; Pirouette Dance is special.">'+label+'</small>');});return html;};})();
+

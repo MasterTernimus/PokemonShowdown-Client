@@ -119,3 +119,58 @@ exports.abilities=(id,fallback)=>id==='annihilape'?{0:'Unbound Spirit',1:'Raging
 before.talonflame=['galewings'];
 const beforeTalonflameAbilities=exports.abilities;
 exports.abilities=(id,fallback)=>id==='talonflame'?{...beforeTalonflameAbilities(id,fallback),H:'Flame Body'}:beforeTalonflameAbilities(id,fallback);
+
+Object.assign(before, require('./guard-passives-approved.json'));
+const beforeGuardDescription=exports.description;
+exports.description=(id,key,text)=>require('./guard-passive-descriptions.json')[id]?.[key] ?? beforeGuardDescription(id,key,text);
+
+before.excadrillmega=['piercingdrill'];
+
+// Explicitly approved ability and passive replacements.
+Object.assign(before,{donphan:['battlearmor'],scolipedemega:['merciless'],scolipedemegaazzy:['merciless']});
+const beforeReworkDescription=exports.description;
+exports.description=(id,key,text)=>require('./approved-ability-reworks-descriptions.json')[id]?.[key] ?? beforeReworkDescription(id,key,text);
+const beforeReworkEffects=exports.effects;
+const reworkEffects={trailbreaker:['moldbreaker','siegetusks'],armoredadvance:['rockhead','rollingfortress'],hyperdrill:['hyperdrill','powerdrill'],headlongresolve:['headlongresolve','reckless'],scorchsweep:['rockhead','scorchsweep'],keenhunt:['keeneye','keenhunt'],venombastion:['stamina','venombastion']};
+exports.effects=(id,original)=>reworkEffects[id] || beforeReworkEffects(id,original);
+
+Object.assign(before,{sandslash:['ironbarbs'],sandslashreborn:['ironbarbs'],sandslashalola:['ironbarbs']});
+const beforeClawDesc=exports.description;
+exports.description=(id,key,text)=>require('./sandslash-rework-descriptions.json')[id]?.[key] ?? beforeClawDesc(id,key,text);
+const beforeClawEffects=exports.effects;
+exports.effects=(id,original)=>({bedrockclaw:['duneclaws','toughclaws'],rimeclaw:['glacierclaws','toughclaws'],dunerunner:['sandrush'],frostrunner:['slushrush']})[id]||beforeClawEffects(id,original);
+
+const ec=require('./eeveelution-cloyster.json'),beforeECDesc=exports.description,beforeECEffects=exports.effects;
+Object.assign(before,Object.fromEntries(Object.entries(ec.EeveeCloysterPassives).map(([id,p])=>[id,[p]])));
+exports.description=(id,key,text)=>ec.EeveeCloysterDescriptions[id]?.[key]??beforeECDesc(id,key,text);
+exports.effects=(id,original)=>ec.EeveeCloysterComponents[id]?[id,...ec.EeveeCloysterComponents[id]].sort():beforeECEffects(id,original);
+
+const sda=require('./stance-disguise-aggron.json'),beforeSDADesc=exports.description,beforeSDAEffects=exports.effects;Object.assign(before,Object.fromEntries(Object.entries(sda.StanceDisguisePassives).map(([id,p])=>[id,[p]])));exports.description=(id,key,text)=>sda.StanceDisguiseDescriptions[id]?.[key]??beforeSDADesc(id,key,text);exports.effects=(id,original)=>({ironmountain:['hypercutter','ironmountain','suctioncups'],disguise:['disguise'],stancechange:['stancechange']})[id]||beforeSDAEffects(id,original);
+
+before.hydreigon=['hydraflight'];
+
+const beforeSolarCompact=exports.description;exports.description=(id,key,text)=>id==='solarmimicry'?'Bug STAB and resistances. Always treated as sunny. Solar Blade lowers Speed by 1.':beforeSolarCompact(id,key,text);
+
+for(const id of ['meloetta','meloettapirouette','meloettaencore'])before[id]=['serenegrace'];
+
+const beforeProseAuditDescription=exports.description;
+const proseAudit=require('./ability-prose-audit.json');
+exports.description=(id,key,original)=>proseAudit[id]?.[key]??beforeProseAuditDescription(id,key,original);
+
+for(const id of ['mewtwo','mewtwomegax','mewtwomegay'])before[id]=['absolutepressure'];
+
+Object.assign(before,{zapdos:['springpressure'],moltres:['summerpressure'],articuno:['winterpressure'],jirachi:['serenegrace'],jirachimega:['serenegrace']});
+
+for(const id of ['regirock','regice','registeel','regieleki','regidrago'])before[id]=['selfrepair'];before.regigigas=['slowstart','ancientassembly'];
+
+const beforeReviewedTranche=exports.description;const reviewedTranche=require('./reviewed-description-tranche.json');exports.description=(id,key,text)=>reviewedTranche[id]?.[key]??(id==='dreamsickness'?require('./legendary-approved.json').JirachiDescriptions.dreamsickness[key]:undefined)??beforeReviewedTranche(id,key,text);
+
+const beforeShortAudit=exports.description;const shortAudit=require('./short-description-audit.json');exports.description=(id,key,text)=>key==='shortDesc'&&shortAudit.ShortDescriptionAudit[id]?shortAudit.ShortDescriptionAudit[id]:(['asoneglastrier','asonespectrier'].includes(id)&&key==='desc'?shortAudit.ShortDescriptionAudit[id]:beforeShortAudit(id,key,text));
+
+// Renamed aliases use the reviewed canonical description.
+const beforeReviewedAliasDescription=exports.description;
+exports.description=(id,key,text)=>beforeReviewedAliasDescription(({bedrockclaw:"duneclaws",rimeclaw:"glacierclaws"})[id]||id,key,text);
+
+const beforeRipenSeedsDescription=exports.description;exports.description=(id,key,text)=>require('./ripen-seeds.json')[id]?.[key]??beforeRipenSeedsDescription(id,key,text);
+
+before.regigigasprimordial=['primordialconstruct','ancientassembly'];

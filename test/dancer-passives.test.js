@@ -5,8 +5,8 @@ require('./battle.test');
 const {BattlePokemonSearch} = new Function(fs.readFileSync('play.pokemonshowdown.com/js/battle-dex-search.js', 'utf8') + '\nreturn {BattlePokemonSearch};')();
 describe('Approved dancer Own Tempo UI metadata', () => {
  for (const id of ['ludicolo','oricorio','oricoriopompom','oricoriopau','oricoriosensu','quaquaval','lilligant','lilliganthisui','bellossom','meloetta','meloettapirouette']) it(id + ' exposes only its exact form passives', () => {
-  const s = Dex.species.get(id); assert.deepEqual(s.passives, id === 'quaquaval' ? ['torrent'] : ['owntempo']);
-  assert.equal(!!BattlePokemonSearch.prototype.filter.call({dex: Dex}, ['pokemon',id], [['ability','owntempo']]), id !== 'quaquaval');
+  const s = Dex.species.get(id); assert.deepEqual(s.passives, id.startsWith('meloetta') ? ['serenegrace'] : id === 'quaquaval' ? ['torrent'] : ['owntempo']);
+  assert.equal(!!BattlePokemonSearch.prototype.filter.call({dex: Dex}, ['pokemon',id], [['ability','owntempo']]), id !== 'quaquaval' && !id.startsWith('meloetta'));
  });
  it('publishes Rain Dish and the approved direct-dance ward', () => {
   assert.equal(Dex.species.get('ludicolo').abilities.H, 'Rain Dish');

@@ -36,41 +36,46 @@
 		window.search = this;
 
 		var self = this;
-		function positionPassiveHelp(button) {
-			var tooltip = button.nextElementSibling;
-			if (!tooltip) return;
-			var badge = button.getBoundingClientRect();
-			var box = tooltip.getBoundingClientRect();
-			var parent = button.parentElement.getBoundingClientRect();
-			tooltip.style.left = (Math.max(8, Math.min(badge.left, window.innerWidth - box.width - 8)) - parent.left) + 'px';
-			tooltip.style.top = (Math.max(8, badge.bottom + box.height + 8 > window.innerHeight ? badge.top - box.height - 4 : badge.bottom + 4) - parent.top) + 'px';
-		}
-		this.$el.on('mouseenter focusin', '.pokemon-passive-badge', function () {
-			positionPassiveHelp(this);
-		});
-		// Keep pointer help from blurring and committing the species input.
-		this.$el.on('pointerdown', '.pokemon-passive-badge', function (e) {
-			e.preventDefault();
-		});
-		// Opening passive help must never select the surrounding Pokemon result.
-		this.$el.on('click', '.pokemon-passive-badge', function (e) {
-			e.preventDefault();
-			e.stopImmediatePropagation();
-			var open = this.getAttribute('aria-expanded') !== 'true';
-			self.$('.pokemon-passive-badge').attr('aria-expanded', 'false');
-			this.setAttribute('aria-expanded', String(open));
-			positionPassiveHelp(this);
-		});
-		this.$el.on('keydown', '.pokemon-passive-badge', function (e) {
-			e.stopPropagation();
-			if (e.key === 'Escape') {
-				this.setAttribute('aria-expanded', 'false');
-				this.blur();
-			}
-		});
-		this.$el.on('focusout', '.pokemon-passive-badge', function () {
-			this.setAttribute('aria-expanded', 'false');
-		});
+
+        function closeSpeciesHelp() {
+            self.$('.species-help-open').removeClass('species-help-open');
+            self.$('.species-info-button').attr('aria-expanded', 'false').removeAttr('data-pinned');
+        }
+        function openSpeciesHelp(button) {
+            if (!button) return;
+            closeSpeciesHelp();
+            var row = button.closest('.result'), panel = button.nextElementSibling;
+            row.classList.add('species-help-open');
+            button.setAttribute('aria-expanded', 'true');
+            var box = button.getBoundingClientRect(), height = panel.getBoundingClientRect().height;
+            panel.style.left = Math.max(8, Math.min(box.left, window.innerWidth - panel.offsetWidth - 8)) + 'px';
+            panel.style.top = Math.max(8, Math.min(box.bottom + 5 + height <= window.innerHeight ? box.bottom + 5 : box.top - height - 5, window.innerHeight - height - 8)) + 'px';
+        }
+        this.$el.on('mouseenter', '[data-entry^="pokemon|"]', function () {
+            if (window.matchMedia('(hover: hover)').matches) openSpeciesHelp(this.querySelector('.species-info-button'));
+        });
+        this.$el.on('mouseleave', '[data-entry^="pokemon|"]', function () {
+            if (!this.contains(document.activeElement) && !this.querySelector('[data-pinned="true"]')) closeSpeciesHelp();
+        });
+        this.$el.on('focusin', '.species-info-button', function () { openSpeciesHelp(this); });
+        this.$el.on('pointerdown', '.species-info-button', function (e) { e.preventDefault(); });
+        this.$el.on('click', '.species-info-button', function (e) {
+            e.preventDefault(); e.stopImmediatePropagation();
+            var pinned = this.getAttribute('data-pinned') === 'true';
+            self.$('.species-info-button').removeAttr('data-pinned');
+            if (pinned) closeSpeciesHelp();
+            else { openSpeciesHelp(this); this.setAttribute('data-pinned', 'true'); }
+        });
+        this.$el.on('click pointerdown', '.pokemon-species-tooltip', function (e) { e.preventDefault(); e.stopPropagation(); });
+        this.$el.on('keydown', '.species-info-button', function (e) {
+            if (e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); this.removeAttribute('data-pinned'); closeSpeciesHelp(); }
+        });
+        this.$el.on('focusout', '.species-info-button', function () { this.removeAttribute('data-pinned'); closeSpeciesHelp(); });
+        this.$el.on('click', '[data-entry^="pokemon|"]', function () { closeSpeciesHelp(); });
+        this.$viewport.on('scroll.specieshelp', function () { closeSpeciesHelp(); });
+        this.$viewport.on('pointerdown.specieshelp', function (e) {
+            if (!$(e.target).closest('.species-info-button, .pokemon-species-tooltip').length) closeSpeciesHelp();
+        });
 
 		this.$el.on('click', '.more button', function (e) {
 			e.preventDefault();
@@ -245,6 +250,7 @@
 		}
 	};
 	Search.prototype.setType = function (qType, format, set, cur) {
+		this.moveDisplaySet = qType === 'move' ? set : null;
 		this.engine.setType(qType, format, set);
 		this.filters = this.engine.filters;
 		this.sortCol = this.engine.sortCol;
@@ -416,13 +422,33 @@
 			}
 		}
 		buf += '<span class="col pokemonnamecol">' + name;
-		for (var passive of passives) {
-			var passiveAbility = Dex.getPassiveAbilityDetails(passive);
-			var passiveName = BattleLog.escapeHTML(passiveAbility.name);
-			var passiveDescription = BattleLog.escapeHTML(passiveAbility.shortDesc || passiveAbility.desc || 'Innate passive for this form.');
-			buf += '<span class="pokemon-passive-help"><button type="button" class="pokemon-passive-badge" aria-expanded="false" aria-label="' + passiveName + ' passive: ' + passiveDescription + '">Passive &middot; ' + passiveName + '</button>';
-			buf += '<span class="pokemon-passive-tooltip" role="tooltip"><strong>' + passiveName + ' &middot; Passive</strong><span>' + passiveDescription + '</span></span></span>';
-		}
+
+        var details = '<strong>' + BattleLog.escapeHTML(pokemon.name) + '</strong><span class="species-info-heading">Possible abilities</span>';
+        var seenAbilities = {};
+        function describeAbility(ability, passive) {
+            var entry = '<span class="species-info-entry"><b>' + BattleLog.escapeHTML(ability.name) + '</b> — ' + BattleLog.escapeHTML(ability.shortDesc || ability.desc || 'No additional description.') + '</span>';
+            var components = Dex.getAbilityDisplayComponents(ability.id, dex, passive ? [] : passives, id);
+            if (components.length) entry += '<small class="species-info-components">Includes: ' + components.map(function (component) { return BattleLog.escapeHTML(dex.abilities.get(component).name); }).join(', ') + '</small>';
+            return entry;
+        }
+        for (var slot in pokemon.abilities) {
+            var ability = dex.abilities.get(pokemon.abilities[slot]);
+            if (seenAbilities[ability.id]) continue;
+            seenAbilities[ability.id] = true;
+            details += describeAbility(ability, false);
+        }
+        details += '<span class="species-info-heading">Passives</span>';
+        var passiveNames = [];
+        for (var passive of passives) {
+            var passiveAbility = Dex.getPassiveAbilityDetails(passive);
+            passiveNames.push(BattleLog.escapeHTML(passiveAbility.name));
+            details += describeAbility(passiveAbility, true);
+        }
+        if (!passives.length) details += '<span class="species-info-entry">None for this form.</span>';
+        var infoID = 'species-info-' + id;
+        buf += '<span class="pokemon-passive-help"><button type="button" class="species-info-button' + (passives.length ? ' pokemon-passive-badge' : '') + '" aria-expanded="false" aria-describedby="' + infoID + '" aria-label="Abilities and passives for ' + BattleLog.escapeHTML(pokemon.name) + '">' + (passiveNames.length ? 'Passive &middot; ' + passiveNames.join(', ') : 'Abilities &middot; Info') + '</button>';
+        buf += '<span id="' + infoID + '" class="pokemon-species-tooltip" role="tooltip">' + details + '</span></span>';
+
 		buf += '</span> ';
 
 		// error
@@ -633,7 +659,7 @@
 			fullDescription = 'Includes: ' + componentNames + '\n\n' + fullDescription;
 			if (summary === 'Combines the listed abilities.') summary = '';
 		}
-		buf += '<span class="col abilitydesccol" title="' + BattleLog.escapeHTML(fullDescription) + '">' +
+		buf += '<span class="col abilitydesccol" title="' + BattleLog.escapeHTML((componentNames ? componentNames + ': ' : '') + summary) + '">' +
 			(componentNames ? '<strong class="ability-components">' + BattleLog.escapeHTML(componentNames) + '</strong>' : '') +
 			(summary ? '<span class="ability-extra-effects">' + BattleLog.escapeHTML(summary) + '</span>' : '') + '</span> ';
 
@@ -643,9 +669,21 @@
 
 		return buf;
 	};
+	Search.prototype.contextualMove = function (move) {
+		var set = this.moveDisplaySet;
+		if (!set || !set.species || !move || !['gildedarrow', 'gildedhelix'].includes(move.id)) return move;
+		var dex = this.engine.dex, display = Dex.getAbilityFormPreviewSet(set, dex);
+		var species = dex.species.get(display.species);
+		if (!species.exists) return move;
+		var profile = Dex.getGildedMoveProfile(move, species.types, display.ability || '');
+		var preview = toID(display.species) !== toID(set.species);
+		return Object.assign({}, move, {type: profile.type, shortDesc: profile.text + (preview ? ' (form preview)' : '') + '. Higher critical-hit chance.'});
+	};
+
 	Search.prototype.renderMoveRow = function (move, matchStart, matchLength, errorMessage, attrs) {
 		if (!attrs) attrs = '';
 		if (!move) return '<li class="result">Unrecognized move</li>';
+		if (this.contextualMove) move = this.contextualMove(move);
 		var id = toID(move.name);
 		if (Search.urlRoot) attrs += ' href="' + Search.urlRoot + 'moves/' + id + '" data-target="push"';
 		var buf = '<li class="result' + (move.signatureCharacters?.length ? ' signaturemoveresult' : '') + '"><a' + attrs + ' data-entry="move|' + BattleLog.escapeHTML(move.name) + '">';
@@ -698,6 +736,7 @@
 		return buf;
 	};
 	Search.prototype.renderMoveRowInner = function (move, errorMessage) {
+		if (this.contextualMove) move = this.contextualMove(move);
 		var attrs = '';
 		if (Search.urlRoot) attrs = ' href="' + Search.urlRoot + 'moves/' + toID(move.name) + '" data-target="push"';
 		var buf = '<a' + attrs + ' data-entry="move|' + BattleLog.escapeHTML(move.name) + '">';
