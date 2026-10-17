@@ -385,22 +385,12 @@
 .dexlist .pokemon-passive-badge { display: inline-block; max-width: 100%; box-sizing: border-box; padding: 1px 4px; border: 1px solid #71a8a7; border-radius: 5px; background: #e9f5f2; color: #245b54; font: 10px/12px Verdana, sans-serif; text-align: left; white-space: normal; overflow-wrap: anywhere; cursor: help; }
 .dark .dexlist .pokemon-passive-badge { background: #192f34; color: #b8f2ed; border-color: #78b8b8; }
 .dexlist .pokemon-passive-badge:focus-visible { outline: 2px solid #59c8db; outline-offset: 1px; }
-.dexlist .pokemon-passive-tooltip { display: none; position: absolute; z-index: 1000; width: 250px; max-width: 65vw; padding: 8px 10px; border: 1px solid #91aaaa; border-radius: 5px; background: #17252b; color: #f3f7f8; box-shadow: 0 3px 8px #0007; font: 12px/17px Verdana, sans-serif; white-space: normal; pointer-events: none; }
-.dexlist .pokemon-passive-tooltip strong { display: block; margin-bottom: 4px; padding-bottom: 4px; border-bottom: 1px solid #506168; color: #a6eeeb; }
-@media (hover: hover) { .dexlist .pokemon-passive-help:hover .pokemon-passive-tooltip { display: block; } }
-.dexlist .pokemon-passive-badge:focus-visible + .pokemon-passive-tooltip,
-.dexlist .pokemon-passive-badge[aria-expanded="true"] + .pokemon-passive-tooltip { display: block; }
 
-/* Species detail help stays outside the row's column sizing. */
-.dexlist .species-info-button { display:inline-block; max-width:100%; box-sizing:border-box; padding:3px 5px; border:1px solid #71a8a7; border-radius:5px; background:#e9f5f2; color:#245b54; font:10px/13px Verdana,sans-serif; text-align:left; white-space:normal; cursor:help; }
-.dexlist .species-info-button:focus-visible { outline:2px solid #148aa4; outline-offset:2px; }
-.dexlist .pokemon-species-tooltip { display:none; position:fixed; z-index:5000; width:360px; max-width:calc(100vw - 16px); max-height:min(500px,calc(100vh - 24px)); overflow:auto; overscroll-behavior:contain; box-sizing:border-box; padding:10px 12px; border:1px solid #91aaaa; border-radius:6px; background:#17252b; color:#f3f7f8; box-shadow:0 3px 12px #0007; font:12px/17px Verdana,sans-serif; white-space:normal; text-align:left; cursor:auto; }
-.dexlist .species-help-open .pokemon-species-tooltip { display:block; }
-.dexlist .pokemon-species-tooltip > strong { display:block; color:#a6eeeb; font-size:13px; }
-.dexlist .species-info-heading { display:block; margin-top:9px; padding-top:5px; border-top:1px solid #506168; font-weight:bold; color:#a6eeeb; }
-.dexlist .species-info-entry { display:block; margin-top:5px; }
-.dexlist .species-info-components { display:block; margin:2px 0 5px; color:#c4d6dc; }
-@media (pointer:coarse) { .dexlist .species-info-button { min-height:32px; padding:5px; } }
+/* Passive details are created on demand and never block scrolling. */
 
-.dexlist .pokemon-species-tooltip .species-info-entry { font-weight:normal; }
-.dexlist .pokemon-species-tooltip .species-info-entry b { color:#a6eeeb; text-decoration:none; }
+
+/* Passive help is deliberate, short, and never captures scrolling. */
+.dexlist .pokemon-passive-tooltip { position:fixed; z-index:5000; width:280px; max-width:calc(100vw - 16px); box-sizing:border-box; padding:8px 10px; border:1px solid #91aaaa; border-radius:6px; background:#17252b; color:#f3f7f8; box-shadow:0 3px 8px #0005; font:12px/17px Verdana,sans-serif; white-space:normal; pointer-events:none; }
+.dexlist .pokemon-passive-tooltip[hidden] { display:none; }
+.dexlist .pokemon-passive-tooltip strong { display:block; color:#a6eeeb; margin-bottom:3px; }
+.dexlist .pokemon-passive-badge { cursor:pointer; }

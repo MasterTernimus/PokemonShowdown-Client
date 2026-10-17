@@ -785,7 +785,7 @@
 					}
 					var gilded = Dex.getGildedMoveProfile(move, typeValueTracker.pokemon.getTypes(typeValueTracker.serverPokemon)[0], typeValueTracker.pokemon.effectiveAbility(typeValueTracker.serverPokemon), this.battle.gameType);
 					var metadata = '';
-					if (gilded) metadata = '<small class="gilded-battle-profile">' + BattleLog.escapeHTML(gilded.category + ' · ' + gilded.basePower + ' BP · ' + (gilded.hits === 3 && move.id === 'gildedarrow' ? '1 + 0.3 + 0.3 hits' : gilded.hits + ' hits')) + '</small>';
+
      if (!gilded && move.category !== 'Status' && (typeValueTracker.tryAbility('Power Drill') || typeValueTracker.tryAbility('Hyper Drill') || typeValueTracker.tryAbility('Dual Wield'))) {
       var power = this.tooltips.getMoveBasePower(move, moveType, new ModifiableValue(this.battle, typeValueTracker.pokemon, typeValueTracker.serverPokemon), this.battle.farSide.active[0]);
       if (power.value) metadata = '<small class="gilded-battle-profile">' + power.round(power.value) + (power.maxValue ? '–' + power.round(power.maxValue) : '') + (power.secondHitPower !== undefined ? ' / ' + power.round(power.secondHitPower) + ' BP per hit' : ' BP') + '</small>';
@@ -829,29 +829,31 @@
 						}
 						if (!currentlyDynamaxed) movebuttons += '</div>';
 					}
-					moveMenu += movebuttons;
+					moveMenu += '<div class="battle-move-grid">' + movebuttons + '</div>';
 				}
+                moveMenu += '<div class="battle-move-options">';
 				if (canMegaEvo) {
-					moveMenu += '<br /><label class="megaevo"><input type="checkbox" name="megaevo"' + (pulsePreview && pulsePreview.request === this.request && pulsePreview.pos === pos && pulsePreview.selected === 'megaevo' ? ' checked' : '') + ' />&nbsp;' + BattleLog.escapeHTML(megaLabel) + '</label>';
+					moveMenu += '<label class="megaevo"><input type="checkbox" name="megaevo"' + (pulsePreview && pulsePreview.request === this.request && pulsePreview.pos === pos && pulsePreview.selected === 'megaevo' ? ' checked' : '') + ' />&nbsp;' + BattleLog.escapeHTML(megaLabel) + '</label>';
 				}
 				if (canMegaEvoX) {
-					moveMenu += '<br /><label class="megaevo"><input type="checkbox" name="megaevox" />&nbsp;' + BattleLog.escapeHTML(megaXLabel) + '</label>';
+					moveMenu += '<label class="megaevo"><input type="checkbox" name="megaevox" />&nbsp;' + BattleLog.escapeHTML(megaXLabel) + '</label>';
 				}
 				if (canMegaEvoY) {
-					moveMenu += '<br /><label class="megaevo"><input type="checkbox" name="megaevoy" />&nbsp;' + BattleLog.escapeHTML(megaYLabel) + '</label>';
+					moveMenu += '<label class="megaevo"><input type="checkbox" name="megaevoy" />&nbsp;' + BattleLog.escapeHTML(megaYLabel) + '</label>';
 				}
 				if (canZMove) {
-					moveMenu += '<br /><label class="megaevo"><input type="checkbox" name="zmove" />&nbsp;Z-Power</label>';
+					moveMenu += '<label class="megaevo"><input type="checkbox" name="zmove" />&nbsp;Z-Power</label>';
 				}
 				if (canUltraBurst) {
-					moveMenu += '<br /><label class="megaevo"><input type="checkbox" name="ultraburst" />&nbsp;Ultra Burst</label>';
+					moveMenu += '<label class="megaevo"><input type="checkbox" name="ultraburst" />&nbsp;Ultra Burst</label>';
 				}
 				if (canDynamax) {
-					moveMenu += '<br /><label class="megaevo"><input type="checkbox" name="dynamax" />&nbsp;Dynamax</label>';
+					moveMenu += '<label class="megaevo"><input type="checkbox" name="dynamax" />&nbsp;Dynamax</label>';
 				}
 				if (canTerastallize) {
-					moveMenu += '<br /><label class="megaevo"><input type="checkbox" name="terastallize" />&nbsp;Terastallize<br />' + Dex.getTypeIcon(canTerastallize) + '</label>';
+					moveMenu += '<label class="megaevo"><input type="checkbox" name="terastallize" />&nbsp;Terastallize ' + Dex.getTypeIcon(canTerastallize) + '</label>';
 				}
+                moveMenu += (this.battle.myPokemon[pos].passives && this.battle.myPokemon[pos].passives.length ? '<button type="button" class="button battle-passives-button" name="showPassives" value="' + pos + '">Passives: ' + this.battle.myPokemon[pos].passives.map(function (id) { return BattleLog.escapeHTML(Dex.abilities.get(id).name); }).join(' · ') + '</button>' : '') + '</div>';
 				if (this.finalDecisionMove) {
 					moveMenu += '<em style="display:block;clear:both">You <strong>might</strong> have some moves disabled, so you won\'t be able to cancel an attack!</em><br/>';
 				}
@@ -861,7 +863,6 @@
 					'<div class="movecontrols">' +
 					'<div class="moveselect"><button name="selectMove">Attack</button></div>' +
 					'<div class="movemenu">' + moveMenu + '</div>' +
-					(this.battle.myPokemon[pos].passives && this.battle.myPokemon[pos].passives.length ? '<button type="button" class="button battle-passives-button" name="showPassives" value="' + pos + '">Passives: ' + this.battle.myPokemon[pos].passives.map(function (id) { return BattleLog.escapeHTML(Dex.abilities.get(id).name); }).join(' · ') + '</button>' : '') +
 					'</div>'
 				);
 

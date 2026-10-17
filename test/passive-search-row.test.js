@@ -12,7 +12,9 @@ describe('Pokemon result passive badges', () => {
   assert(html.includes('Passive &middot; Shield Dust'));
   for (const name of ['Gentle Scales', 'Tinted Lens', 'Magic Guard']) assert(html.includes(name));
   assert.equal((html.match(/class="col statcol"/g) || []).length, 6);
-  assert(html.includes('Blocks incoming attack secondary effects.'));
+  assert(!html.includes('Blocks incoming attack secondary effects.'));
+  assert(html.includes('data-passive-species="butterfree"'));
+  assert(html.includes('role="tooltip" hidden')); // Description is populated only when clicked.
  });
  it('uses the actual form passive instead of inheriting its base form badge', () => {
   assert(render('Butterfree-Gmax').includes('Passive &middot; Levitate'));

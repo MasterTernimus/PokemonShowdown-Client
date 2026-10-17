@@ -11298,7 +11298,7 @@ const CUSTOM_MOVE_UPDATES: {[id: string]: AnyObject} = {
 	},
 	focuspunch: {
 		desc: 'If the user is hit by a damaging move before it moves, this move\'s power is reduced to 50. It bypasses Protect at full power.',
-		shortDesc: '50 BP if interrupted; bypasses Protect at full power.',
+		shortDesc: 'Hit first: fails unless Focus Energy; 75 BP through Protect.',
 	},
 	foresight: {
 		desc: "Ignores the target's positive Evasion and lets Normal- and Fighting-type attacks hit Ghost types. The user takes half damage from Ghost-type attacks until it switches out.",
@@ -78899,6 +78899,25 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"desc": "For its next 3 turns, the target is forced to repeat its last move used. If the affected move runs out of PP, the effect ends. Fails if the target is already under this effect, if it has not made a move, if the move has 0 PP, or if the move is Assist, Blazing Torque, Combat Torque, Copycat, Dynamax Cannon, Encore, Magical Torque, Me First, Metronome, Mimic, Mirror Move, Nature Power, Noxious Torque, Sketch, Sleep Talk, Struggle, Transform, or Wicked Torque.",
 		"shortDesc": "Target repeats its last move for its next 3 turns."
 	},
+	"encorearia": {
+		"name": "Encore Aria",
+		"num": 547,
+		"type": "Fairy",
+		"category": "Special",
+		"basePower": 75,
+		"accuracy": 100,
+		"pp": 10,
+		"priority": 0,
+		"target": "allAdjacentFoes",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"sound": 1,
+			"bypasssub": 1
+		},
+		"desc": "Meloetta-Encore's Relic Song. For each foe, compares damage through the battle engine, including immunities, abilities, items and fields. Uses a physical dance or special sound branch, whichever deals more damage; Special wins ties. Each hit has only its chosen branch's flag. Has a 10% chance to put each target to sleep. Does not change form.",
+		"shortDesc": "Fairy; per foe, stronger physical dance or special sound. 10% sleep."
+	},
 	"endeavor": {
 		"name": "Endeavor",
 		"num": 283,
@@ -80054,8 +80073,8 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"failcopycat": 1,
 			"failinstruct": 1
 		},
-		"desc": "If the user is hit by a damaging move before it moves, this move's power is reduced to 50. It bypasses Protect at full power.",
-		"shortDesc": "50 BP if interrupted; bypasses Protect at full power."
+		"desc": "Fails if the user is hit by a damaging move before attacking, unless Focus Energy is active. With Focus Energy, it keeps its full 150 power even when hit first. Hits through Protect and similar guards at half power (75). Works with Parental Bond. Fails on Electric Terrain.",
+		"shortDesc": "Hit first: fails unless Focus Energy; 75 BP through Protect."
 	},
 	"followme": {
 		"name": "Follow Me",
@@ -85369,15 +85388,15 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"accuracy": 100,
 		"pp": 15,
 		"priority": 0,
-		"target": "allAdjacentFoes",
+		"target": "normal",
 		"flags": {
 			"contact": 1,
 			"protect": 1,
 			"mirror": 1,
 			"metronome": 1
 		},
-		"desc": "If this move is successful and the user has not fainted, the effects of Leech Seed and binding moves end for the user, and all hazards are removed from the user's side of the field. Has a 100% chance to poison the target.",
-		"shortDesc": "Poisons foes, frees user from hazards/bind/leech."
+		"desc": "Hits one adjacent target and has a 100% chance to poison it. If this move is successful and the user has not fainted, the effects of Leech Seed and binding moves end for the user, and all hazards are removed from the user's side of the field.",
+		"shortDesc": "Poisons one target; clears user's hazards, bind and Leech Seed."
 	},
 	"mountaingale": {
 		"name": "Mountain Gale",

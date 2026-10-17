@@ -3972,3 +3972,28 @@ a.ilink.yours {
 .roster-chips .roster-chip { margin:0; min-height:36px; }
 .roster-profiles .roster-edit-status { min-height:24px; }
 @media (max-width:600px) { .roster-profiles .roster-chip, .roster-species-matches .roster-species-action, .roster-edit-status button { min-height:44px; padding:7px 10px; } }
+
+/* Battle actions stay inside their column; names and controls wrap instead of clipping. */
+.battle-controls .movemenu, .battle-controls .switchcontrols .switchmenu { margin:0; padding:4px; box-sizing:border-box; }
+.battle-move-grid, .battle-move-grid > div { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:6px; }
+.battle-move-grid > div { grid-column:1/-1; }
+.battle-controls .battle-move-grid button { width:100%; height:auto; min-height:44px; margin:0; padding:3px 6px; float:none; }
+.battle-move-options { display:flex; align-items:center; flex-wrap:wrap; gap:6px; margin-top:7px; }
+.battle-controls .battle-move-options .megaevo { display:inline-flex; align-items:center; justify-content:center; gap:5px; width:auto; min-height:30px; margin:0; padding:3px 8px; top:auto; left:auto; box-sizing:border-box; font-size:12px; }
+.battle-move-options .megaevo input { margin:0; }
+.battle-controls .battle-move-options .battle-passives-button { width:auto; height:auto; min-height:30px; margin:0; padding:4px 8px; float:none; font-size:11px; }
+.battle-controls .switchcontrols .switchmenu { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:5px; }
+.battle-controls .switchcontrols .switchmenu button { width:100%; min-width:0; min-height:38px; margin:0; float:none; white-space:normal; overflow-wrap:anywhere; box-sizing:border-box; padding:5px 5px 9px; }
+.tiny-layout .battle-move-grid, .tiny-layout .battle-move-grid > div { grid-template-columns:repeat(2,minmax(0,1fr)); }
+.tiny-layout .battle-controls .switchcontrols .switchmenu { grid-template-columns:repeat(2,minmax(0,1fr)); }
+@media (max-height:570px) and (min-width:440px) {
+ .battle-controls .switchcontrols .switchmenu { display:none; }
+ .battle-controls .switchcontrols .switchmenu, .battle-controls .movemenu { padding:4px 85px; }
+ .battle-controls .switchcontrols { max-width:none; }
+ .battle-controls .switch-controls .switchcontrols .switchmenu { display:grid; max-width:none; }
+}
+
+.battle-move-grid .move-name { font-size:12px; line-height:14px; min-height:14px; }
+.battle-move-grid .move-metadata:empty { display:none; }
+.battle-move-grid .move-metadata, .battle-move-grid .gilded-battle-profile { min-height:10px; font-size:10px; line-height:10px; }
+.battle-move-grid .move-footer { line-height:12px; }
