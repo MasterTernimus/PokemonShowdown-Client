@@ -5478,3 +5478,26 @@ function renderStarterPassives(species) {
 
 (function(){var p=window.TeambuilderRoom.prototype,render=p.renderSet;p.renderSet=function(set,index){var html=render.apply(this,arguments),species=toID(set.species);if(species!=='meloettaencore'&&species!=='meloettapirouette')return html;(set.moves||[]).forEach(function(name,i){if(toID(name)!=='relicsong')return;var label=species==='meloettaencore'?'Encore Aria · Fairy':'Pirouette Dance · Fighting';var pattern=new RegExp('(<input[^>]*name="move'+(i+1)+'"[^>]*>)');html=html.replace(pattern,'$1<small class="meloetta-move-preview" style="display:block;font-size:10px;white-space:nowrap" title="The same Relic Song PP slot uses this form-specific move. Encore Aria selects the stronger physical dance or special sound separately for each foe; Pirouette Dance is special.">'+label+'</small>');});return html;};})();
 
+
+// Memory combinations follow the current set; never cache them on a species or ability.
+(function () {
+ var p = window.TeambuilderRoom.prototype, render = p.renderSet;
+ p.renderRKSMemory = function (set) {
+  var dex = this.curTeam.dex, species = dex.species.get(set.species);
+  if (species.baseSpecies !== 'Silvally' || toID(set.ability) !== 'rkssystem') return '';
+  var parts = Dex.getAbilityDisplayComponents('rkssystem', dex, species.passives, species.id, set.item || '');
+  return '<small class="rks-memory-components" style="display:block;white-space:normal;width:230px;margin-left:-122px;padding-top:3px">Includes: ' + parts.map(function (id) { return BattleLog.escapeHTML(dex.abilities.get(id).name); }).join(' + ') + '</small>';
+ };
+ p.renderSet = function (set) {
+  return render.apply(this, arguments).replace(/(<input[^>]*name="ability"[^>]*>)/, '$1' + this.renderRKSMemory(set));
+ };
+ var chartSet = p.chartSet;
+ p.chartSet = function () {
+  var result = chartSet.apply(this, arguments);
+  if (this.curSet && this.curTeam.dex.species.get(this.curSet.species).baseSpecies === 'Silvally') {
+   this.$('.rks-memory-components').remove();
+   this.$('input[name=ability]').after(this.renderRKSMemory(this.curSet));
+  }
+  return result;
+ };
+})();

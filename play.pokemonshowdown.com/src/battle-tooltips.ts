@@ -266,6 +266,13 @@ class BattleTooltips {
 	}
 
 	clickTooltipEvent = (e: Event) => {
+		const badge = e.currentTarget as HTMLElement;
+		if (badge.classList.contains('relic-armor-badge')) {
+			e.preventDefault();
+			this.showTooltip(badge);
+			this.lockTooltip();
+			return;
+		}
 		if (BattleTooltips.isLocked) {
 			e.preventDefault();
 			e.stopImmediatePropagation();
@@ -317,6 +324,10 @@ class BattleTooltips {
 
 		let buf: string;
 		switch (type) {
+		case 'relicarmor': {
+			buf = '<div class="tooltip"><h2>Relic Armor</h2><p>10% less attack damage.</p><p>' + (args[1] === 'field' ? 'Field protection active: Rock typing adds no Fighting, Ground, Steel, Water or Grass weakness.' : 'Field protection inactive: Rock-typing weaknesses remain.') + '</p></div>';
+			break;
+		}
 		case 'move':
 		case 'zmove':
 		case 'maxmove': { // move|MOVE|ACTIVEPOKEMON|[GMAXMOVE]
@@ -2685,8 +2696,9 @@ class BattleTooltips {
 		if (knownAbility) {
 			const passives = serverPokemon?.passives ?? clientPokemon?.getSpecies().passives ?? [];
 			const species = clientPokemon?.getSpecies().id || serverPokemon?.speciesForme || '';
-			const shown = Dex.getAbilityDisplayDetails(this.battle.dex.abilities.get(knownAbility), passives, species);
-			const parts = Dex.getAbilityDisplayComponents(shown.id, this.battle.dex, passives, species);
+			const item = serverPokemon ? serverPokemon.item : clientPokemon?.item || (clientPokemon?.prevItem ? '' : undefined);
+			const shown = Dex.getAbilityDisplayDetails(this.battle.dex.abilities.get(knownAbility), passives, species, item);
+			const parts = Dex.getAbilityDisplayComponents(shown.id, this.battle.dex, passives, species, item);
 			const forecastSuppressed = shown.id === 'perfectforecast' && (isActive || clientPokemon?.isActive()) && clientPokemon && !clientPokemon.effectiveAbility(serverPokemon || undefined);
 			text += '<br /><small>' + BattleLog.escapeHTML(forecastSuppressed ? 'Perfect Forecast suppressed: no form bonuses. Passive Forecast still changes form.' : shown.shortDesc) + '</small>';
 			if (parts.length) text += '<br /><small>Includes: ' + parts.map(id => BattleLog.escapeHTML(Dex.abilities.get(id).name)).join(' · ') + '</small>';

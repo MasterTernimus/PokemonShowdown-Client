@@ -15,7 +15,7 @@ describe('Passive component separation client parity', () => {
     if (['kingler','fearow','pinsir'].includes(row.id)) {
      const passive = {kingler:'titanpincer',fearow:'lancepoint',pinsir:'lockinggrip'}[row.id];
      assert.deepEqual(species.passives,[passive]);
-     assert.equal(Dex.abilities.get(species.abilities[slot.slot]).id,component);
+     assert.equal(Dex.abilities.get(species.abilities[slot.slot]).id,row.id === 'fearow' ? 'powerdrill' : component);
      assert(!Dex.getAbilityEffects(passive).has(component));
      continue;
     }

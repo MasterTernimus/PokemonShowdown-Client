@@ -18687,7 +18687,7 @@ for (const [id, update] of Object.entries({
 	"beedrill": {
 		"abilities": {
 			"0": "Hive Courier",
-			"1": "Dual Wield",
+			"1": "Twin Drills",
 			"H": "Sniper"
 		},
 		"baseStats": {
@@ -24509,7 +24509,7 @@ for (const [id, update] of Object.entries({
 			"Normal"
 		],
 		"passives": [
-			"runaway"
+			"powerdrill"
 		],
 		"replaceAbilities": true
 	},
@@ -24531,7 +24531,7 @@ for (const [id, update] of Object.entries({
 			"Normal"
 		],
 		"passives": [
-			"runaway"
+			"powerdrill"
 		],
 		"replaceAbilities": true
 	},
@@ -25982,7 +25982,7 @@ for (const [id, update] of Object.entries({
 	},
 	"fearow": {
 		"abilities": {
-			"0": "Keen Eye",
+			"0": "Power Drill",
 			"H": "Sniper"
 		},
 		"baseStats": {
@@ -40989,7 +40989,7 @@ for (const [id, update] of Object.entries({
 		"abilities": {
 			"0": "Fire Mane",
 			"1": "Speed Boost",
-			"H": "Flame Body"
+			"H": "Power Drill"
 		},
 		"baseStats": {
 			"hp": 80,
@@ -55861,6 +55861,78 @@ const CUSTOM_PERFECT_FORECAST_FORMS: {[id: string]: {components: string[]; short
 	}
 };
 // END SERVER WORKING SYNC PERFECT FORECAST FORMS
+// BEGIN SERVER WORKING SYNC RKS MEMORY COMPONENTS
+const CUSTOM_RKS_MEMORY_COMPONENTS: {[id: string]: string[]} = {
+	"bugmemory": [
+		"tintedlens",
+		"shielddust"
+	],
+	"darkmemory": [
+		"pressure",
+		"intimidate"
+	],
+	"dragonmemory": [
+		"marvelscale",
+		"toughclaws"
+	],
+	"electricmemory": [
+		"transistor",
+		"lightningrod"
+	],
+	"fairymemory": [
+		"invigorate",
+		"friendguard"
+	],
+	"fightingmemory": [
+		"innerfocus",
+		"sheerforce"
+	],
+	"firememory": [
+		"soulfire",
+		"flamebody"
+	],
+	"flyingmemory": [
+		"galewings",
+		"airlock"
+	],
+	"ghostmemory": [
+		"soulfire",
+		"cursedbody"
+	],
+	"grassmemory": [
+		"hospitality",
+		"chlorophyll"
+	],
+	"groundmemory": [
+		"sandrush",
+		"stamina"
+	],
+	"icememory": [
+		"icebody",
+		"slushrush"
+	],
+	"poisonmemory": [
+		"regenerator",
+		"corrosion"
+	],
+	"psychicmemory": [
+		"magicbounce",
+		"magicguard"
+	],
+	"rockmemory": [
+		"purifyingsalt",
+		"solidrock"
+	],
+	"steelmemory": [
+		"swornduty",
+		"mirrorarmor"
+	],
+	"watermemory": [
+		"swiftswim",
+		"waterveil"
+	]
+};
+// END SERVER WORKING SYNC RKS MEMORY COMPONENTS
 // BEGIN SERVER WORKING SYNC DISPLAY COMPONENTS
 const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	"adaptivecycle": [],
@@ -58273,7 +58345,7 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	],
 	"matriarchsvigil": [
 		"thickfat",
-		"aromaveil",
+		"powerdrill",
 		"friendguard"
 	],
 	"bloodmoongaze": [
@@ -58651,7 +58723,11 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	"worldbinder": [
 		"moldbreaker"
 	],
-	"primordialconstruct": []
+	"primordialconstruct": [],
+	"twindrills": [
+		"dualwield",
+		"powerdrill"
+	]
 };
 // END SERVER WORKING SYNC DISPLAY COMPONENTS
 // BEGIN SERVER WORKING SYNC PASSIVE COMPONENT EXCLUSIONS
@@ -59936,7 +60012,7 @@ const CUSTOM_SHARED_PASSIVE_DESCRIPTIONS: {[id: string]: {passive: string; desc:
 	"phantomfist": {
 		"passive": "noguard",
 		"shortDesc": "Unseen Fist + Aftermath + Self Sufficient.",
-		"desc": "Contact moves bypass protection except Max Guard. Punching moves have 1.4x power. Heals 1/16 max HP each turn and ignores sandstorm and hail damage. A contact attacker that knocks it out loses 1/4 max HP, or 1/2 on Corrosive Mist; Damp prevents this damage. No Guard is supplied separately by the species passive."
+		"desc": "Contact moves pierce protection at 1/4 damage (75% less); Max Guard blocks them. Unprotected damage is unchanged. Punching moves have 1.4x power. Heals 1/16 max HP each turn and ignores sandstorm and hail damage. A contact attacker that knocks it out loses 1/4 max HP, or 1/2 on Corrosive Mist; Damp prevents this damage. No Guard is supplied separately by the species passive."
 	},
 	"auramaster": {
 		"passive": "auraguard",
@@ -65698,8 +65774,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Royal Aegis",
 		"num": 11445,
 		"gen": 9,
-		"desc": "Full local Thick Fat, Aroma Veil and Friend Guard. Once per genuine entry, after it or an adjacent ally survives an opposing whole damaging move that takes it from above half HP to half HP or less, the injured Pokemon gains +1 Defense and +1 Sp. Def after all hits. One shared activation per entry. Residual damage, friendly fire and Substitute-only damage do not qualify. Ability restarts do not reset the budget. Friend Guard reduces damage to other allies by 25%, independently stacking with the separate Rivalry passive. Neither ally reduction protects its own holder.",
-		"shortDesc": "Thick Fat + Aroma Veil + Friend Guard; once per entry, crossing half HP grants the injured self/adjacent ally +1 Def/SpD.",
+		"desc": "Full local Thick Fat, Power Drill and Friend Guard. Drill and horn moves have 1.5x power, or 2x on Rocky, Mountain, Snowy Mountain, Cave and Volcanic fields, where they bypass protection. Once per genuine entry, after it or an adjacent ally survives an opposing whole damaging move that takes it from above half HP to half HP or less, the injured Pokemon gains +1 Defense and +1 Sp. Def after all hits. One shared activation per entry. Residual damage, friendly fire and Substitute-only damage do not qualify. Ability restarts do not reset the budget. Friend Guard reduces damage to other allies by 25%, independently stacking with the separate Rivalry passive. Neither ally reduction protects its own holder.",
+		"shortDesc": "Thick Fat + Power Drill + Friend Guard; once/entry, crossing half HP grants Def/SpD.",
 		"rating": 0,
 		"flags": {
 			"breakable": 1
@@ -66871,7 +66947,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Phantom Fist",
 		"num": 10193,
 		"gen": 9,
-		"desc": "Contact moves bypass protection except Max Guard. Punching moves have 1.4x power. Heals 1/16 max HP each turn and ignores sandstorm and hail damage. A contact attacker that knocks it out loses 1/4 max HP, or 1/2 on Corrosive Mist; Damp prevents this damage. No Guard is supplied separately by the species passive.",
+		"desc": "Contact moves pierce protection at 1/4 damage (75% less); Max Guard blocks them. Unprotected damage is unchanged. Punching moves have 1.4x power. Heals 1/16 max HP each turn and ignores sandstorm and hail damage. A contact attacker that knocks it out loses 1/4 max HP, or 1/2 on Corrosive Mist; Damp prevents this damage. No Guard is supplied separately by the species passive.",
 		"shortDesc": "Unseen Fist + Aftermath + Self Sufficient.",
 		"rating": 4,
 		"flags": {},
@@ -66901,7 +66977,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Piercing Drill",
 		"num": 311,
 		"gen": 9,
-		"desc": "Contact moves pierce protection at 1/4 damage. Unprotected targets take normal damage.",
+		"desc": "Contact moves pierce protection at 1/4 damage (75% less). Max Guard blocks them. Unprotected damage is unchanged.",
 		"shortDesc": "Contact moves pierce protection at 1/4 damage.",
 		"rating": 1,
 		"flags": {},
@@ -67427,7 +67503,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Punch Fiend",
 		"num": 10354,
 		"gen": 9,
-		"desc": "Keen Eye prevents opposing accuracy drops, ignores evasion boosts and reveals opposing Illusions; Mirror Arena entry grants +1 accuracy and Laser Focus. Unseen Fist lets contact moves bypass protection except Max Guard. Inner Focus prevents flinching and Intimidate Attack drops. Hitmonchan receives Iron Fist separately as its species passive.",
+		"desc": "Keen Eye prevents opposing accuracy drops, ignores evasion boosts and reveals opposing Illusions; Mirror Arena entry grants +1 accuracy and Laser Focus. Unseen Fist lets contact moves pierce protection at 1/4 damage; Max Guard blocks them. Inner Focus prevents flinching and Intimidate Attack drops. Hitmonchan receives Iron Fist separately as its species passive.",
 		"shortDesc": "Keen Eye, Unseen Fist and Inner Focus.",
 		"rating": 4,
 		"flags": {
@@ -71139,6 +71215,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {},
 		"isNonstandard": null
 	},
+	"twindrills": {
+		"name": "Twin Drills",
+		"num": 11890,
+		"gen": 9,
+		"desc": "Full local Dual Wield and Power Drill. Eligible single-hit moves hit twice at 60% power each with independent accuracy checks. Drill and horn moves gain 1.5x power, or 2x on Rocky, Mountain, Snowy Mountain, Cave and Volcanic fields, where they bypass protection. Each generated drill/horn hit is therefore 0.9x power normally or 1.2x on those fields, before other modifiers. Native multihit moves retain their normal hit counts and receive only the Power Drill boost. Overlapping active/passive components apply once.",
+		"shortDesc": "Dual Wield + Power Drill; two 60% hits with normal drill/horn boosts.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null
+	},
 	"twinfang": {
 		"name": "Twin Fang",
 		"num": 11486,
@@ -71359,8 +71445,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Unseen Fist",
 		"num": 260,
 		"gen": 8,
-		"desc": "Contact moves bypass protection except Max Guard. Punching moves have 1.4x power.",
-		"shortDesc": "Contact bypasses protection; punches have 1.4x power.",
+		"desc": "Contact moves pierce protection at 1/4 damage (75% less); Max Guard blocks them. Unprotected damage is unchanged. Punching moves have 1.4x power.",
+		"shortDesc": "Contact pierces protection at 1/4 damage; punches have 1.4x power.",
 		"rating": 2,
 		"flags": {},
 		"isNonstandard": null
@@ -94866,7 +94952,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	],
 	"matriarchsvigil": [
 		"thickfat",
-		"aromaveil",
+		"powerdrill",
 		"friendguard"
 	],
 	"measuredcounsel": [
@@ -96067,6 +96153,10 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"twilightinstinct": [],
 	"twinblades": [],
 	"twincannons": [],
+	"twindrills": [
+		"dualwield",
+		"powerdrill"
+	],
 	"twinfang": [],
 	"tyrantdomain": [
 		"supremeoverlord",
@@ -100087,7 +100177,12 @@ const Dex = new class implements ModdedDex {
 			...(CUSTOM_SHARED_PASSIVE_COMPONENTS[id] || []).filter(p => passives.includes(p))];
 	}
 
-	getAbilityDisplayDetails(ability: Ability, passives: readonly string[] = [], species = '') {
+	getAbilityDisplayDetails(ability: Ability, passives: readonly string[] = [], species = '', item?: string) {
+		if (ability.id === 'rkssystem' && this.species.get(species).baseSpecies === 'Silvally') {
+			const parts = this.getAbilityDisplayComponents(ability.id, this, passives, species, item);
+			const shortDesc = item === undefined ? 'Changes type and abilities with its held Memory (item unknown).' : 'Memory abilities: ' + parts.map(id => this.abilities.get(id).name).join(' + ') + '.';
+			return {...ability, shortDesc, desc: shortDesc};
+		}
 		if (ability.id === 'perfectforecast') {
 			const details = CUSTOM_PERFECT_FORECAST_FORMS[toID(species)];
 			if (details) return {...ability, shortDesc: details.shortDesc, desc: details.desc};
@@ -100134,11 +100229,14 @@ const Dex = new class implements ModdedDex {
 			.map(line => line.replace(/\u0001/g, '.').trim()).filter(Boolean);
 	}
 
-	getAbilityDisplayComponents(abilityId: ID, dex: ModdedDex = this, passives: readonly string[] = [], species = ''): readonly ID[] {
+	getAbilityDisplayComponents(abilityId: ID, dex: ModdedDex = this, passives: readonly string[] = [], species = '', item?: string): readonly ID[] {
 		ensureCustomDataPatches();
 		const ability = dex.abilities.get(abilityId);
 		const base = this.abilities.get(ability.id);
 		if (dex !== this && (ability.desc !== base.desc || ability.shortDesc !== base.shortDesc)) return [];
+		if (ability.id === 'rkssystem' && dex.species.get(species).baseSpecies === 'Silvally') {
+			return (item === undefined ? [] : CUSTOM_RKS_MEMORY_COMPONENTS[toID(item)] || ['scrappy']) as ID[];
+		}
 		if (ability.id === 'perfectforecast') return (CUSTOM_PERFECT_FORECAST_FORMS[toID(species)]?.components || []) as ID[];
 		const addition = CUSTOM_SHARED_PASSIVE_ADDITIONS[ability.id];
 		const extra = addition && passives.includes(addition.passive) ? [addition.component] : [];

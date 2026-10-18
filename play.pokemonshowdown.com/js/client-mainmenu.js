@@ -1725,6 +1725,10 @@
 				$actor.find('.calc-passives').remove();
 				if (info && info.passives && info.passives.length) $actor.find('.calc-identity').append('<div class="calc-passives"><b>Passives:</b> ' + info.passives.map(function (id) { return self.escape(Dex.abilities.get(id).name); }).join(' · ') + '</div>');
 				var parts = (self.metadata.abilityComponents || {})[toID($actor.find('[name=ability]').val())] || [];
+				if (species.baseSpecies === 'Silvally' && toID($actor.find('[name=ability]').val()) === 'rkssystem') {
+					var memories = self.metadata.rksSystemMemoryAbilities || {};
+					parts = (memories[toID($actor.find('[name=item]').val())] || memories[''] || []).map(function (id) { return Dex.abilities.get(id).name; });
+				}
 				if (info && toID(info.name) === 'pidgeotmega' && toID($actor.find('[name=ability]').val()) === 'stormsovereign') {
 					parts = parts.filter(function (part) { return toID(part) !== 'galewings' && toID(part) !== 'noguard'; });
 				}

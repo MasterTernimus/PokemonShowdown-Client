@@ -1,7 +1,7 @@
 {
 	"sourceHead": "26568256cd1897ffb466f4e50bc4e31b824cbcb3",
 	"base": "6592c2cdadcff2e643e59ac9e8f28870fe3d539c",
-	"sourceDataSHA256": "e238385589e4a9ad0226a9d6aad9d9fae1ba90a816fa24233fee209f1db0bb4d",
+	"sourceDataSHA256": "9dff22efb32e2e22c9713b91cd03b6a4d5b5b0bfeabd9cd895a9d3fbba573875",
 	"files": [
 		"data/abilities.ts",
 		"data/ability-components.ts",
@@ -39,6 +39,7 @@
 		"data/nido-approved.ts",
 		"data/passive-ability-cleanup.ts",
 		"data/pokedex.ts",
+		"data/power-drill-batch.ts",
 		"data/primordial-approved.ts",
 		"data/queued-abilities-approved.ts",
 		"data/regi-approved.ts",
@@ -48,6 +49,7 @@
 		"data/ripen-seeds.ts",
 		"data/rival-support-approved.ts",
 		"data/rival-support-descriptions.ts",
+		"data/rks-system-memory.ts",
 		"data/roster-expansion-text.ts",
 		"data/roster-expansion-wave2.ts",
 		"data/rotom-eject.ts",
@@ -1318,7 +1320,7 @@
 			"phantomfist": {
 				"passive": "noguard",
 				"shortDesc": "Unseen Fist + Aftermath + Self Sufficient.",
-				"desc": "Contact moves bypass protection except Max Guard. Punching moves have 1.4x power. Heals 1/16 max HP each turn and ignores sandstorm and hail damage. A contact attacker that knocks it out loses 1/4 max HP, or 1/2 on Corrosive Mist; Damp prevents this damage. No Guard is supplied separately by the species passive."
+				"desc": "Contact moves pierce protection at 1/4 damage (75% less); Max Guard blocks them. Unprotected damage is unchanged. Punching moves have 1.4x power. Heals 1/16 max HP each turn and ignores sandstorm and hail damage. A contact attacker that knocks it out loses 1/4 max HP, or 1/2 on Corrosive Mist; Damp prevents this damage. No Guard is supplied separately by the species passive."
 			},
 			"auramaster": {
 				"passive": "auraguard",
@@ -4220,7 +4222,7 @@
 			"beedrill": {
 				"abilities": {
 					"0": "Hive Courier",
-					"1": "Dual Wield",
+					"1": "Twin Drills",
 					"H": "Sniper"
 				},
 				"baseStats": {
@@ -10042,7 +10044,7 @@
 					"Normal"
 				],
 				"passives": [
-					"runaway"
+					"powerdrill"
 				],
 				"replaceAbilities": true
 			},
@@ -10064,7 +10066,7 @@
 					"Normal"
 				],
 				"passives": [
-					"runaway"
+					"powerdrill"
 				],
 				"replaceAbilities": true
 			},
@@ -11515,7 +11517,7 @@
 			},
 			"fearow": {
 				"abilities": {
-					"0": "Keen Eye",
+					"0": "Power Drill",
 					"H": "Sniper"
 				},
 				"baseStats": {
@@ -26522,7 +26524,7 @@
 				"abilities": {
 					"0": "Fire Mane",
 					"1": "Speed Boost",
-					"H": "Flame Body"
+					"H": "Power Drill"
 				},
 				"baseStats": {
 					"hp": 80,
@@ -43055,8 +43057,8 @@
 				"name": "Royal Aegis",
 				"num": 11445,
 				"gen": 9,
-				"desc": "Full local Thick Fat, Aroma Veil and Friend Guard. Once per genuine entry, after it or an adjacent ally survives an opposing whole damaging move that takes it from above half HP to half HP or less, the injured Pokemon gains +1 Defense and +1 Sp. Def after all hits. One shared activation per entry. Residual damage, friendly fire and Substitute-only damage do not qualify. Ability restarts do not reset the budget. Friend Guard reduces damage to other allies by 25%, independently stacking with the separate Rivalry passive. Neither ally reduction protects its own holder.",
-				"shortDesc": "Thick Fat + Aroma Veil + Friend Guard; once per entry, crossing half HP grants the injured self/adjacent ally +1 Def/SpD.",
+				"desc": "Full local Thick Fat, Power Drill and Friend Guard. Drill and horn moves have 1.5x power, or 2x on Rocky, Mountain, Snowy Mountain, Cave and Volcanic fields, where they bypass protection. Once per genuine entry, after it or an adjacent ally survives an opposing whole damaging move that takes it from above half HP to half HP or less, the injured Pokemon gains +1 Defense and +1 Sp. Def after all hits. One shared activation per entry. Residual damage, friendly fire and Substitute-only damage do not qualify. Ability restarts do not reset the budget. Friend Guard reduces damage to other allies by 25%, independently stacking with the separate Rivalry passive. Neither ally reduction protects its own holder.",
+				"shortDesc": "Thick Fat + Power Drill + Friend Guard; once/entry, crossing half HP grants Def/SpD.",
 				"rating": 0,
 				"flags": {
 					"breakable": 1
@@ -44228,7 +44230,7 @@
 				"name": "Phantom Fist",
 				"num": 10193,
 				"gen": 9,
-				"desc": "Contact moves bypass protection except Max Guard. Punching moves have 1.4x power. Heals 1/16 max HP each turn and ignores sandstorm and hail damage. A contact attacker that knocks it out loses 1/4 max HP, or 1/2 on Corrosive Mist; Damp prevents this damage. No Guard is supplied separately by the species passive.",
+				"desc": "Contact moves pierce protection at 1/4 damage (75% less); Max Guard blocks them. Unprotected damage is unchanged. Punching moves have 1.4x power. Heals 1/16 max HP each turn and ignores sandstorm and hail damage. A contact attacker that knocks it out loses 1/4 max HP, or 1/2 on Corrosive Mist; Damp prevents this damage. No Guard is supplied separately by the species passive.",
 				"shortDesc": "Unseen Fist + Aftermath + Self Sufficient.",
 				"rating": 4,
 				"flags": {},
@@ -44258,7 +44260,7 @@
 				"name": "Piercing Drill",
 				"num": 311,
 				"gen": 9,
-				"desc": "Contact moves pierce protection at 1/4 damage. Unprotected targets take normal damage.",
+				"desc": "Contact moves pierce protection at 1/4 damage (75% less). Max Guard blocks them. Unprotected damage is unchanged.",
 				"shortDesc": "Contact moves pierce protection at 1/4 damage.",
 				"rating": 1,
 				"flags": {},
@@ -44784,7 +44786,7 @@
 				"name": "Punch Fiend",
 				"num": 10354,
 				"gen": 9,
-				"desc": "Keen Eye prevents opposing accuracy drops, ignores evasion boosts and reveals opposing Illusions; Mirror Arena entry grants +1 accuracy and Laser Focus. Unseen Fist lets contact moves bypass protection except Max Guard. Inner Focus prevents flinching and Intimidate Attack drops. Hitmonchan receives Iron Fist separately as its species passive.",
+				"desc": "Keen Eye prevents opposing accuracy drops, ignores evasion boosts and reveals opposing Illusions; Mirror Arena entry grants +1 accuracy and Laser Focus. Unseen Fist lets contact moves pierce protection at 1/4 damage; Max Guard blocks them. Inner Focus prevents flinching and Intimidate Attack drops. Hitmonchan receives Iron Fist separately as its species passive.",
 				"shortDesc": "Keen Eye, Unseen Fist and Inner Focus.",
 				"rating": 4,
 				"flags": {
@@ -48496,6 +48498,16 @@
 				"flags": {},
 				"isNonstandard": null
 			},
+			"twindrills": {
+				"name": "Twin Drills",
+				"num": 11890,
+				"gen": 9,
+				"desc": "Full local Dual Wield and Power Drill. Eligible single-hit moves hit twice at 60% power each with independent accuracy checks. Drill and horn moves gain 1.5x power, or 2x on Rocky, Mountain, Snowy Mountain, Cave and Volcanic fields, where they bypass protection. Each generated drill/horn hit is therefore 0.9x power normally or 1.2x on those fields, before other modifiers. Native multihit moves retain their normal hit counts and receive only the Power Drill boost. Overlapping active/passive components apply once.",
+				"shortDesc": "Dual Wield + Power Drill; two 60% hits with normal drill/horn boosts.",
+				"rating": 4,
+				"flags": {},
+				"isNonstandard": null
+			},
 			"twinfang": {
 				"name": "Twin Fang",
 				"num": 11486,
@@ -48716,8 +48728,8 @@
 				"name": "Unseen Fist",
 				"num": 260,
 				"gen": 8,
-				"desc": "Contact moves bypass protection except Max Guard. Punching moves have 1.4x power.",
-				"shortDesc": "Contact bypasses protection; punches have 1.4x power.",
+				"desc": "Contact moves pierce protection at 1/4 damage (75% less); Max Guard blocks them. Unprotected damage is unchanged. Punching moves have 1.4x power.",
+				"shortDesc": "Contact pierces protection at 1/4 damage; punches have 1.4x power.",
 				"rating": 2,
 				"flags": {},
 				"isNonstandard": null
@@ -70734,7 +70746,7 @@
 			],
 			"matriarchsvigil": [
 				"thickfat",
-				"aromaveil",
+				"powerdrill",
 				"friendguard"
 			],
 			"measuredcounsel": [
@@ -71935,6 +71947,10 @@
 			"twilightinstinct": [],
 			"twinblades": [],
 			"twincannons": [],
+			"twindrills": [
+				"dualwield",
+				"powerdrill"
+			],
 			"twinfang": [],
 			"tyrantdomain": [
 				"supremeoverlord",
@@ -74630,7 +74646,7 @@
 			],
 			"matriarchsvigil": [
 				"thickfat",
-				"aromaveil",
+				"powerdrill",
 				"friendguard"
 			],
 			"bloodmoongaze": [
@@ -75008,7 +75024,11 @@
 			"worldbinder": [
 				"moldbreaker"
 			],
-			"primordialconstruct": []
+			"primordialconstruct": [],
+			"twindrills": [
+				"dualwield",
+				"powerdrill"
+			]
 		}
 	}
 }

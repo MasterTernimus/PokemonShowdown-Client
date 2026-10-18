@@ -1179,3 +1179,13 @@ License: GPLv2
 .statbar .status .sealing-status {background:#7136a8;color:#fff;border-color:#c292ff;}
 
 .statbar .status .ability-active-cocoon { color: #4b4665; background: #f2eff9; border-color: #aaa0c5; }
+
+/* Relic Armor: compact status badge, with hover and tap details. */
+.statbar .status .relic-armor-badge {
+ display:inline-block; width:auto; max-width:100%; margin:2px 2px 1px 0; padding:0 4px;
+ border:1px solid #778592; border-radius:3px; background:#edf1f4; color:#273844;
+ font:600 10px/14px Verdana,sans-serif; text-shadow:none; white-space:nowrap; vertical-align:middle; cursor:pointer;
+}
+.statbar .status .relic-armor-field { color:#185236; background:#e4f4e9; border-color:#47865e; }
+.statbar .status .relic-armor-badge::before { content:none; }
+.statbar .status .relic-armor-badge:focus-visible { outline:2px solid #186cb0; outline-offset:2px; }

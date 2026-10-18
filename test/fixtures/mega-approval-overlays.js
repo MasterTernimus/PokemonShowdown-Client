@@ -190,3 +190,9 @@ const dualSixtyDescriptions=require('./dual-wield-sixty-descriptions.json');
 exports.description=(id,key,fallback)=>dualSixtyDescriptions[id]?.[key]??beforeDualSixtyDescription(id,key,fallback);
 
 before.gyaradosmega=['tempestfury']; // Approved once-per-battle Mega passive; base active version unchanged.
+
+before.dudunsparce=['powerdrill'];before.dudunsparcethreesegment=['powerdrill'];
+const beforeDrillBatchAbilities=exports.abilities;exports.abilities=(id,original)=>{const slots=beforeDrillBatchAbilities(id,original);return id==='fearow'?{...slots,0:'Power Drill'}:id==='beedrill'?{...slots,1:'Twin Drills'}:id==='rapidash'?{...slots,H:'Power Drill'}:slots;};
+
+// Approved protection damage wording; no component identities change.
+{const prior=exports.description;exports.description=function(id,key,value){const text=prior(id,key,value);return text.replaceAll('Contact moves bypass protection except Max Guard.','Contact moves pierce protection at 1/4 damage (75% less); Max Guard blocks them. Unprotected damage is unchanged.').replaceAll('Contact bypasses protection;','Contact pierces protection at 1/4 damage;').replaceAll('Unseen Fist lets contact moves bypass protection except Max Guard.','Unseen Fist lets contact moves pierce protection at 1/4 damage; Max Guard blocks them.').replaceAll('contact moves bypass Protect,','contact moves pierce Protect at 1/4 damage,').replaceAll('Contact moves pierce protection at 1/4 damage. Unprotected targets take normal damage.','Contact moves pierce protection at 1/4 damage (75% less). Max Guard blocks them. Unprotected damage is unchanged.');};}
