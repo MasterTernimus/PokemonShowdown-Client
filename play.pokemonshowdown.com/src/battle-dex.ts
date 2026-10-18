@@ -9974,7 +9974,7 @@ moonveil: {name: 'Moon Veil', desc: 'Pastel Veil + Misty Surge. On entry, sets M
 		desc: "This Pokemon has Contrary, Shed Skin, Intimidate, Infiltrator, and Proficient's effects. Its stat changes are reversed, it lowers opposing Attack on entry, and Shed Skin can clear ailments and restore HP. Its moves bypass substitutes and opposing screens, and attacks matching its type have 1.3x power.",
 		shortDesc: "Contrary + Shed Skin + Intimidate + Infiltrator + Proficient.",
 	},
-	ragingcurrent: {"name":"Raging Current","shortDesc":"Swift Swim + Damp + Dry Skin + Stamina.","desc":"Full local Swift Swim, Damp, Dry Skin and Stamina. Each surviving opposing HP-damaging hit heals 1/16 base max HP; the first qualifying hit each turn also raises Defense by 1. Absorbed Water triggers Dry Skin only. Rain and field healing retain their separate normal effects."},
+	ragingcurrent: {"name":"Raging Current","shortDesc":"Swift Swim + Dry Skin + Stamina.","desc":"Full local Swift Swim, Dry Skin and Stamina. Each surviving opposing HP-damaging hit heals 1/16 base max HP; the first qualifying hit each turn also raises Defense by 1. Absorbed Water triggers Dry Skin only. Rain and field healing retain their separate normal effects."},
 	railguncircuit: {
 		name: "Railgun Circuit",
 		desc: "Lightning Rod; never misses; boosts Electric attacks. Redirects and absorbs Electric moves, raising Attack and Special Attack. Electric moves are strengthened; Ground damage is reduced on Electric Terrain.",
@@ -52909,8 +52909,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 	},
 	ragingcurrent: {
 		name: "Raging Current",
-		desc: "Swift Swim + Damp + Dry Skin + Stamina + Proficient. Water Veil and its burn immunity are removed.",
-		shortDesc: "Swift Swim + Damp + Dry Skin + Stamina + Proficient.",
+		desc: "Swift Swim + Dry Skin + Stamina + Proficient. Water Veil and its burn immunity are removed.",
+		shortDesc: "Swift Swim + Dry Skin + Stamina + Proficient.",
 	},
 	aevianspark: {
 		name: "Aevian Spark",
@@ -57345,7 +57345,6 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	],
 	"ragingcurrent": [
 		"swiftswim",
-		"damp",
 		"dryskin",
 		"stamina"
 	],
@@ -58556,16 +58555,15 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	],
 	"hydraflight": [
 		"levitate",
-		"hydrabond"
+		"hydrabond",
+		"berserk"
 	],
 	"worldbreaker": [
-		"berserk",
 		"merciless",
 		"duskilate"
 	],
 	"falseliberation": [
-		"moldbreaker",
-		"berserk"
+		"moldbreaker"
 	],
 	"songstress": [],
 	"performer": [
@@ -58756,7 +58754,8 @@ const CUSTOM_SIGNATURE_PASSIVE_COMPONENTS: {[id: string]: readonly string[]} = {
 	],
 	"hydraflight": [
 		"levitate",
-		"hydrabond"
+		"hydrabond",
+		"berserk"
 	],
 	"absolutepressure": [
 		"pressure",
@@ -63396,8 +63395,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "False Liberation",
 		"num": 11723,
 		"gen": 9,
-		"desc": "Mold Breaker + Berserk. Once per entry, Dark damage to a foe’s HP inflicts Torment. Only a newly applied Torment spends the use; existing Torment is not refreshed.",
-		"shortDesc": "Mold Breaker + Berserk; once per entry, a Dark HP hit inflicts Torment.",
+		"desc": "Mold Breaker. Once per entry, Dark damage to a foe’s HP inflicts Torment. Only a newly applied Torment spends the use; existing Torment is not refreshed.",
+		"shortDesc": "Mold Breaker; once per entry, a Dark HP hit inflicts Torment.",
 		"rating": 5,
 		"flags": {},
 		"isNonstandard": null
@@ -64619,8 +64618,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Hydra Flight",
 		"num": 11721,
 		"gen": 9,
-		"desc": "Full local Levitate and Hydra Bond. Ground immunity can be bypassed normally; Hydra Bond remains active. Eligible attacks hit three times with the existing later-hit, spread, Free-for-All and Gilded Helix rules. Retains Dragon’s Den power boost.",
-		"shortDesc": "Levitate + Hydra Bond.",
+		"desc": "Full local Levitate, Hydra Bond and Berserk. Surviving a move that crosses half HP grants +1 Attack and Sp. Atk; Dragon’s Den entry grants +2 to both. Ground immunity can be bypassed normally; Hydra Bond remains active. Eligible attacks hit three times with the existing later-hit, spread, Free-for-All and Gilded Helix rules. Retains Dragon’s Den power boost.",
+		"shortDesc": "Levitate + Hydra Bond + Berserk.",
 		"rating": 5,
 		"flags": {},
 		"isNonstandard": null
@@ -67607,8 +67606,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Raging Current",
 		"num": 10036,
 		"gen": 9,
-		"desc": "Full local Swift Swim, Damp, Dry Skin and Stamina. Each surviving opposing HP-damaging hit heals 1/16 base max HP; the first qualifying hit each turn also raises Defense by 1. Absorbed Water triggers Dry Skin only. Rain and field healing retain their separate normal effects.",
-		"shortDesc": "Swift Swim + Damp + Dry Skin + Stamina.",
+		"desc": "Full local Swift Swim, Dry Skin and Stamina. Each surviving opposing HP-damaging hit heals 1/16 base max HP; the first qualifying hit each turn also raises Defense by 1. Absorbed Water triggers Dry Skin only. Rain and field healing retain their separate normal effects.",
+		"shortDesc": "Swift Swim + Dry Skin + Stamina.",
 		"rating": 4.5,
 		"flags": {
 			"breakable": 1
@@ -72228,8 +72227,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Worldbreaker",
 		"num": 11722,
 		"gen": 9,
-		"desc": "Berserk + Merciless + Duskilate. Each damaging hit independently has a 30% chance to double its base power.",
-		"shortDesc": "Berserk + Merciless + Duskilate; each damaging hit has a 30% chance of double power.",
+		"desc": "Merciless + Duskilate. Each damaging hit independently has a 30% chance to double its base power.",
+		"shortDesc": "Merciless + Duskilate; each damaging hit has a 30% chance of double power.",
 		"rating": 5,
 		"flags": {},
 		"isNonstandard": null
@@ -72528,7 +72527,7 @@ moonveil: ['pastelveil' as ID, 'mistysurge' as ID],
 
 	omenedge: ['sharpness' as ID, 'dualwield' as ID, 'pressure' as ID],
 
-	ragingcurrent: ['swiftswim' as ID, 'damp' as ID, 'dryskin' as ID, 'stamina' as ID, 'proficient' as ID],
+	ragingcurrent: ['swiftswim' as ID, 'dryskin' as ID, 'stamina' as ID, 'proficient' as ID],
 	shadowcurrent: ['protean' as ID, 'technician' as ID, 'infiltrator' as ID, 'anticipation' as ID, 'proficient' as ID],
 	relentlesshunt: ['levitate' as ID],
 
@@ -73373,7 +73372,6 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	],
 	"ragingcurrent": [
 		"swiftswim",
-		"damp",
 		"dryskin",
 		"stamina",
 		"proficient"
@@ -94379,8 +94377,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"prankster"
 	],
 	"falseliberation": [
-		"moldbreaker",
-		"berserk"
+		"moldbreaker"
 	],
 	"familyguardian": [
 		"friendguard",
@@ -94655,7 +94652,8 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"hydrabond": [],
 	"hydraflight": [
 		"levitate",
-		"hydrabond"
+		"hydrabond",
+		"berserk"
 	],
 	"hydraheart": [
 		"hydrabond",
@@ -95280,7 +95278,6 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	],
 	"ragingcurrent": [
 		"swiftswim",
-		"damp",
 		"dryskin",
 		"stamina"
 	],
@@ -96327,7 +96324,6 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"moldbreaker"
 	],
 	"worldbreaker": [
-		"berserk",
 		"merciless",
 		"duskilate"
 	],
@@ -103354,7 +103350,6 @@ const AUDITED_DESCRIPTION_COMPONENTS: {[id: string]: string[]} = {
 		"striker"
 	],
 	"ragingcurrent": [
-		"damp",
 		"dryskin",
 		"proficient",
 		"stamina",
@@ -104064,7 +104059,7 @@ Object.assign(AUDITED_DESCRIPTION_COMPONENTS,{"livewire":["transistor","quickfee
 
 Object.assign(AUDITED_DESCRIPTION_COMPONENTS,{ironmountain:['hypercutter','suctioncups'],disguise:[],stancechange:[]});
 
-Object.assign(AUDITED_DESCRIPTION_COMPONENTS,{hydraflight:['levitate','hydrabond'],worldbreaker:['berserk','merciless','duskilate'],falseliberation:['moldbreaker','berserk']});
+Object.assign(AUDITED_DESCRIPTION_COMPONENTS,{hydraflight:['levitate','hydrabond','berserk'],worldbreaker:['merciless','duskilate'],falseliberation:['moldbreaker']});
 
 CUSTOM_ICON_SPRITES.meloettaencore='meloetta-encore';
 CUSTOM_STATIC_BATTLE_SPRITES.meloettaencore={front:{w:96,h:96},back:{w:96,h:96}};

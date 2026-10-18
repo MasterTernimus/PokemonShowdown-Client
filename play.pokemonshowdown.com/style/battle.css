@@ -1106,7 +1106,8 @@ License: GPLv2
 
 /* Preserve crisp pixels on these supplied back sprites at fractional device scale. */
 .battle img.pixelated[src*="/gen5-back"][src*="/lopunny-mega.png"],
-.battle img.pixelated[src*="/gen5ani-back"][src*="/electivire.gif"] {
+.battle img.pixelated[src*="/gen5ani-back"][src*="/electivire.gif"],
+.battle img.pixelated[src*="/gen5ani-back"][src*="/corviknight.gif"] {
  image-rendering: pixelated;
 }
 

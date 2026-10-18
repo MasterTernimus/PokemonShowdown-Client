@@ -1,7 +1,7 @@
 {
-	"sourceHead": "b84f77a8f0952d36a9e7e62610f8ca8a770005cf",
+	"sourceHead": "8ad1c7a2a2e86777ee7b9b2fac6e553bf80a3a55",
 	"base": "6592c2cdadcff2e643e59ac9e8f28870fe3d539c",
-	"sourceDataSHA256": "4f706ad420cb811e079dbdaa1c0e2502661f6e9b425f43330aa5fab638521211",
+	"sourceDataSHA256": "cd75baa8a1eb8273625a58e14c680a61516c6dc2d3b29cccd08b1561b0ba3c63",
 	"files": [
 		"data/abilities.ts",
 		"data/ability-components.ts",
@@ -170,7 +170,8 @@
 			],
 			"hydraflight": [
 				"levitate",
-				"hydrabond"
+				"hydrabond",
+				"berserk"
 			],
 			"absolutepressure": [
 				"pressure",
@@ -40751,8 +40752,8 @@
 				"name": "False Liberation",
 				"num": 11723,
 				"gen": 9,
-				"desc": "Mold Breaker + Berserk. Once per entry, Dark damage to a foe’s HP inflicts Torment. Only a newly applied Torment spends the use; existing Torment is not refreshed.",
-				"shortDesc": "Mold Breaker + Berserk; once per entry, a Dark HP hit inflicts Torment.",
+				"desc": "Mold Breaker. Once per entry, Dark damage to a foe’s HP inflicts Torment. Only a newly applied Torment spends the use; existing Torment is not refreshed.",
+				"shortDesc": "Mold Breaker; once per entry, a Dark HP hit inflicts Torment.",
 				"rating": 5,
 				"flags": {},
 				"isNonstandard": null
@@ -41974,8 +41975,8 @@
 				"name": "Hydra Flight",
 				"num": 11721,
 				"gen": 9,
-				"desc": "Full local Levitate and Hydra Bond. Ground immunity can be bypassed normally; Hydra Bond remains active. Eligible attacks hit three times with the existing later-hit, spread, Free-for-All and Gilded Helix rules. Retains Dragon’s Den power boost.",
-				"shortDesc": "Levitate + Hydra Bond.",
+				"desc": "Full local Levitate, Hydra Bond and Berserk. Surviving a move that crosses half HP grants +1 Attack and Sp. Atk; Dragon’s Den entry grants +2 to both. Ground immunity can be bypassed normally; Hydra Bond remains active. Eligible attacks hit three times with the existing later-hit, spread, Free-for-All and Gilded Helix rules. Retains Dragon’s Den power boost.",
+				"shortDesc": "Levitate + Hydra Bond + Berserk.",
 				"rating": 5,
 				"flags": {},
 				"isNonstandard": null
@@ -44962,8 +44963,8 @@
 				"name": "Raging Current",
 				"num": 10036,
 				"gen": 9,
-				"desc": "Full local Swift Swim, Damp, Dry Skin and Stamina. Each surviving opposing HP-damaging hit heals 1/16 base max HP; the first qualifying hit each turn also raises Defense by 1. Absorbed Water triggers Dry Skin only. Rain and field healing retain their separate normal effects.",
-				"shortDesc": "Swift Swim + Damp + Dry Skin + Stamina.",
+				"desc": "Full local Swift Swim, Dry Skin and Stamina. Each surviving opposing HP-damaging hit heals 1/16 base max HP; the first qualifying hit each turn also raises Defense by 1. Absorbed Water triggers Dry Skin only. Rain and field healing retain their separate normal effects.",
+				"shortDesc": "Swift Swim + Dry Skin + Stamina.",
 				"rating": 4.5,
 				"flags": {
 					"breakable": 1
@@ -49583,8 +49584,8 @@
 				"name": "Worldbreaker",
 				"num": 11722,
 				"gen": 9,
-				"desc": "Berserk + Merciless + Duskilate. Each damaging hit independently has a 30% chance to double its base power.",
-				"shortDesc": "Berserk + Merciless + Duskilate; each damaging hit has a 30% chance of double power.",
+				"desc": "Merciless + Duskilate. Each damaging hit independently has a 30% chance to double its base power.",
+				"shortDesc": "Merciless + Duskilate; each damaging hit has a 30% chance of double power.",
 				"rating": 5,
 				"flags": {},
 				"isNonstandard": null
@@ -70244,8 +70245,7 @@
 				"prankster"
 			],
 			"falseliberation": [
-				"moldbreaker",
-				"berserk"
+				"moldbreaker"
 			],
 			"familyguardian": [
 				"friendguard",
@@ -70520,7 +70520,8 @@
 			"hydrabond": [],
 			"hydraflight": [
 				"levitate",
-				"hydrabond"
+				"hydrabond",
+				"berserk"
 			],
 			"hydraheart": [
 				"hydrabond",
@@ -71145,7 +71146,6 @@
 			],
 			"ragingcurrent": [
 				"swiftswim",
-				"damp",
 				"dryskin",
 				"stamina"
 			],
@@ -72192,7 +72192,6 @@
 				"moldbreaker"
 			],
 			"worldbreaker": [
-				"berserk",
 				"merciless",
 				"duskilate"
 			],
@@ -73703,7 +73702,6 @@
 			],
 			"ragingcurrent": [
 				"swiftswim",
-				"damp",
 				"dryskin",
 				"stamina"
 			],
@@ -74914,16 +74912,15 @@
 			],
 			"hydraflight": [
 				"levitate",
-				"hydrabond"
+				"hydrabond",
+				"berserk"
 			],
 			"worldbreaker": [
-				"berserk",
 				"merciless",
 				"duskilate"
 			],
 			"falseliberation": [
-				"moldbreaker",
-				"berserk"
+				"moldbreaker"
 			],
 			"songstress": [],
 			"performer": [

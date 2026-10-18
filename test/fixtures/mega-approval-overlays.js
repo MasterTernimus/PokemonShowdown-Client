@@ -106,7 +106,7 @@ exports.description=(id,key,text)=>require('./quarter-hp-priority-descriptions.j
 
 const priorLoreDescription=exports.description,priorLoreEffects=exports.effects,priorLoreAbilities=exports.abilities;
 exports.description=(id,key,text)=>require('./lore-entry-descriptions.json')[id]?.[key] ?? priorLoreDescription(id,key,text);
-exports.effects=(id,original)=>({blademastery:['blademastery','sharpness'],imperialprincess:['imperialprincess','striker','vitalspirit'],ange:['ange','fairyaura'],lastingpromise:['lastingpromise','friendguard'],desertvigil:['desertvigil','overcoat'],ragingcurrent:['damp','dryskin','ragingcurrent','stamina','swiftswim']})[id] || priorLoreEffects(id,original);
+exports.effects=(id,original)=>({blademastery:['blademastery','sharpness'],imperialprincess:['imperialprincess','striker','vitalspirit'],ange:['ange','fairyaura'],lastingpromise:['lastingpromise','friendguard'],desertvigil:['desertvigil','overcoat'],ragingcurrent:['dryskin','ragingcurrent','stamina','swiftswim']})[id] || priorLoreEffects(id,original);
 Object.assign(before,{floetteeternal:['eternalflower'],floettemega:['eternalflower'],cacturne:['scarecrow']});
 exports.abilities=(id,fallback)=>id==='floetteeternal'?{...priorLoreAbilities(id,fallback),H:'Lasting Promise'}:id==='cacturne'?{...priorLoreAbilities(id,fallback),0:'Desert Vigil'}:priorLoreAbilities(id,fallback);
 

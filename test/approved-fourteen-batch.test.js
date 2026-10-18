@@ -2,7 +2,7 @@
 const assert=require('assert').strict;require('./battle.test');
 describe('Approved October batch metadata',()=>{
  for(const [species,slot,id,components] of [
- ['hydreigon','1','worldbreaker',['berserk','merciless','duskilate']],
+ ['hydreigon','1','worldbreaker',['merciless','duskilate']],
  ['slowkinggalar','1','eldritchremedy',['owntempo','curiousmedicine']],
  ['charizard','1','infernaldominion',['intimidate']],
  ['blastoise','H','hydraulicarmor',['stamina']],

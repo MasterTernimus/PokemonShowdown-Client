@@ -1,8 +1,8 @@
 {
-  "sourceHead": "b84f77a8f0952d36a9e7e62610f8ca8a770005cf",
-  "sourceDataSHA256": "4f706ad420cb811e079dbdaa1c0e2502661f6e9b425f43330aa5fab638521211",
+  "sourceHead": "8ad1c7a2a2e86777ee7b9b2fac6e553bf80a3a55",
+  "sourceDataSHA256": "cd75baa8a1eb8273625a58e14c680a61516c6dc2d3b29cccd08b1561b0ba3c63",
   "outputs": {
-    "data/abilities.js": "ef8dcfe62de892518ee97695986aa77507c6962508894315f95fc09806e89782",
+    "data/abilities.js": "c57c46e84821aa9ea1cd35ed7c80d8a83cd959ca33a5549cf1215c1e0e8e3c94",
     "data/aliases.js": "5a741979594b7d0685b8cb5583e538b5094079e969cbe36f38b2785213ee1569",
     "data/formats-data.js": "42aee41642fc39a07142204fe492ef56349911bf71da61df7b5733ea35739614",
     "data/formats.js": "eb109d95a01c0f903211300515d8ee2f0a2b0d59dae5a6574f4b4a34c07122bd",
