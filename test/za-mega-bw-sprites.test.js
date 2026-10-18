@@ -27,7 +27,13 @@ describe('Approved non-shiny Z-A Mega BW animations', () => {
     const data = Dex.getSpriteData(id, a.side === 'front', {gen, teamPreview, gender});
     assert(data.url.includes('/sprites/' + a.installedPath), data.url);
     assert(data.pixelated);
-    assert(data.w > 0 && data.h > 0 && data.w <= 96 && data.h <= 96);
+    const max = teamPreview ? 96 : a.side === 'front' ? 120 : 104;
+    assert(data.w > 0 && data.h > 0 && data.w <= max && data.h <= max);
+    if (!teamPreview) {
+     const scale = Math.min(1, max / a.width, max / a.height);
+     assert.equal(data.w, Math.round(a.width * scale));
+     assert.equal(data.h, Math.round(a.height * scale));
+    }
    }
    const raw = Dex.getSpriteData(id, a.side === 'front', {gen: 9, noScale: true});
    assert.equal(raw.w, a.width);

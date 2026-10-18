@@ -1108,7 +1108,9 @@ License: GPLv2
 .battle img.pixelated[src*="/gen5-back"][src*="/lopunny-mega.png"],
 .battle img.pixelated[src*="/gen5ani-back"][src*="/electivire.gif"],
 .battle img.pixelated[src*="/gen5ani-back"][src*="/corviknight.gif"],
-.battle img.pixelated[src*="/gen5ani-back"][src*="/chesnaught.gif"] {
+.battle img.pixelated[src*="/gen5ani-back"][src*="/chesnaught.gif"],
+.battle img.pixelated[src*="/gen5ani/za-"],
+.battle img.pixelated[src*="/gen5ani-back/za-"] {
  image-rendering: pixelated;
 }
 

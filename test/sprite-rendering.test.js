@@ -237,7 +237,9 @@ describe('Sprite rendering regressions', () => {
 				for (const front of [false, true]) for (const teamPreview of [false, true]) {
 					const sprite = Dex.getSpriteData(species, front, {gen: 9, shiny, teamPreview});
 					assert(fs.statSync(localFile(sprite.url)).size > 0, sprite.url);
-					assert(sprite.w <= 108 && sprite.h <= 112, JSON.stringify(sprite));
+					const animatedMega = !teamPreview && /\/za-[^/]+\.gif/.test(sprite.url);
+					const limit = animatedMega ? (front ? 120 : 104) : 0;
+					assert(sprite.w <= (limit || 108) && sprite.h <= (limit || 112), JSON.stringify(sprite));
 				}
 			}
 		}

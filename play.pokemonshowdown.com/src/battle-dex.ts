@@ -100804,14 +100804,15 @@ const Dex = new class implements ModdedDex {
 
 		// Dedicated filenames prevent shared species aliases from acquiring another form's artwork.
 		// Apply after preview/fallback routing, and never enter this branch for shiny sprites.
+		// Keep Z-A animations readable in battle without enlarging the compact team preview.
 		if (megaBWAnimation) {
 			const path = 'gen5ani' + (isFront ? '' : '-back') + '/za-' + megaBWAnimation + '.gif';
 			const dimensions = TEAM_PREVIEW_ANIMATIONS[path];
 			if (dimensions) {
 				const maxWidth = options.teamPreview ? (isFront ? CUSTOM_TEAM_PREVIEW_FRONT_MEGA_SPRITE_MAX_WIDTH :
-					CUSTOM_TEAM_PREVIEW_BACK_MEGA_SPRITE_MAX_WIDTH) : (isFront ? 96 : 82);
+					CUSTOM_TEAM_PREVIEW_BACK_MEGA_SPRITE_MAX_WIDTH) : (isFront ? 120 : 104);
 				const maxHeight = options.teamPreview ? (isFront ? CUSTOM_TEAM_PREVIEW_FRONT_MEGA_SPRITE_MAX_HEIGHT :
-					CUSTOM_TEAM_PREVIEW_BACK_MEGA_SPRITE_MAX_HEIGHT) : (isFront ? 96 : 82);
+					CUSTOM_TEAM_PREVIEW_BACK_MEGA_SPRITE_MAX_HEIGHT) : (isFront ? 120 : 104);
 				const scale = options.noScale ? 1 : Math.min(1, maxWidth / dimensions[0], maxHeight / dimensions[1]);
 				const dynamaxScale = isDynamax && !options.noScale ? 2 : 1;
 				spriteData.url = Dex.resourcePrefix + 'sprites/' + path;
