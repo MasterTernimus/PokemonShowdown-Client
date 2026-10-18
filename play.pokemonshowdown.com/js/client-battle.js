@@ -783,14 +783,7 @@
 						movebuttons += '<button class="type-' + moveType + ' has-tooltip" name="chooseMove" value="' + (i + 1) + '" data-move="' + BattleLog.escapeHTML(moveData.move) + '" data-target="' + BattleLog.escapeHTML(moveData.target) + '" data-tooltip="' + BattleLog.escapeHTML(tooltipArgs) + '">';
 						hasMoves = true;
 					}
-					var gilded = Dex.getGildedMoveProfile(move, typeValueTracker.pokemon.getTypes(typeValueTracker.serverPokemon)[0], typeValueTracker.pokemon.effectiveAbility(typeValueTracker.serverPokemon), this.battle.gameType);
-					var metadata = '';
-
-     if (!gilded && move.category !== 'Status' && (typeValueTracker.tryAbility('Power Drill') || typeValueTracker.tryAbility('Hyper Drill') || typeValueTracker.tryAbility('Dual Wield'))) {
-      var power = this.tooltips.getMoveBasePower(move, moveType, new ModifiableValue(this.battle, typeValueTracker.pokemon, typeValueTracker.serverPokemon), this.battle.farSide.active[0]);
-      if (power.value) metadata = '<small class="gilded-battle-profile">' + power.round(power.value) + (power.maxValue ? '–' + power.round(power.maxValue) : '') + (power.secondHitPower !== undefined ? ' / ' + power.round(power.secondHitPower) + ' BP per hit' : ' BP') + '</small>';
-     }
-					movebuttons += '<span class="move-name">' + name + '</span><span class="move-metadata">' + metadata + '</span><span class="move-footer"><small class="type">' + (moveType ? Dex.types.get(moveType).name : "Unknown") + '</small> <small class="pp">' + pp + '</small></span></button> ';
+					movebuttons += '<span class="move-name">' + name + '</span><span class="move-footer"><small class="type">' + (moveType ? Dex.types.get(moveType).name : "Unknown") + '</small> <small class="pp">' + pp + '</small></span></button> ';
 				}
 				if (!hasMoves) {
 					moveMenu += '<button class="movebutton" name="chooseMove" value="0" data-move="Struggle" data-target="randomNormal">Struggle<br /><small class="type">Normal</small> <small class="pp">&ndash;</small>&nbsp;</button> ';

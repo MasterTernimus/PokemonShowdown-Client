@@ -43,5 +43,27 @@ const badge=page.locator('.pokemon-passive-badge').first();await badge.hover();a
 await page.mouse.wheel(0,100);await page.waitForFunction(()=>!document.querySelector('.pokemon-passive-badge[aria-expanded="true"]'));
 await badge.focus();await page.keyboard.press('Enter');assert.equal(await page.locator('.pokemon-passive-tooltip:visible').count(),1);await page.keyboard.press('Escape');assert.equal(await page.locator('.pokemon-passive-tooltip:visible').count(),0);
 for(const width of [1280,390]){await page.setViewportSize({width,height:960});await page.locator('.utilichart').last().screenshot({path:output+'/compact-pokemon-list-'+width+'.png'});}
+const lifecycle = await page.evaluate(() => {
+ const r=app.rooms.teambuilder, el=r.el;
+ const count=()=>($._data(el,'events').pointerdown||[]).filter(h=>h.namespace==='passivehelp').length;
+ const before=count(), listeners=new Set(), add=el.addEventListener, remove=el.removeEventListener;
+ el.addEventListener=function(type,callback,...args){if(type==='scroll')listeners.add(callback);return add.call(this,type,callback,...args);};
+ el.removeEventListener=function(type,callback,...args){if(type==='scroll')listeners.delete(callback);return remove.call(this,type,callback,...args);};
+ try {
+  for(let i=0;i<30;i++)r.updateSetView();
+  const after=count(), active=listeners.size;
+  r.updateTeamView();
+  const left=count(), remaining=listeners.size;
+  r.updateSetView();
+  const reopened=count(), exits=[];
+  for(const method of ['showRosterProfiles','showToolsManager','showTeamValidation']) {
+   r[method]();r.updateChart();exits.push([count(),listeners.size]);
+   r.profilesView=false;r.toolsView=false;r.validationView=false;r.updateSetView();
+  }
+  return {before,after,active,left,remaining,reopened,exits};
+ } finally {el.addEventListener=add;el.removeEventListener=remove;}
+});
+assert.deepEqual(lifecycle,{before:1,after:1,active:2,left:0,remaining:0,reopened:1,exits:[[0,0],[0,0],[0,0]]});
+console.log('PASS 30 editor rebuilds and team navigation: search handlers stay bounded and are removed on exit');
 assert.deepEqual(errors,[]);console.log('PASS teambuilder: no eager descriptions, no hover panels, click/keyboard details, scroll closes, no accidental selection');b.destroy();
 }finally{await browser.close();server.close();}})().catch(e=>{console.error(e);server.close();process.exitCode=1;});

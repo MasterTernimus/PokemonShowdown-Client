@@ -1,0 +1,2 @@
+const assert=require('assert').strict;require('./battle.test');
+describe('Approved base Banette back proportions',()=>{for(const c of require('./banette-back-before.json'))it([c.species,c.front?'front':'back',c.shiny?'shiny':'normal'].join(' '),()=>{const d=Dex.getSpriteData(c.species,c.front,{gen:9,shiny:c.shiny});const factor=c.species==='Banette'&&!c.front?0.9:1;assert.equal(d.w,Math.round(c.w*factor));assert.equal(d.h,Math.round(c.h*factor));assert.equal(d.url,c.url);});});

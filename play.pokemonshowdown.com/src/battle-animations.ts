@@ -1869,6 +1869,7 @@ export class Sprite {
 export class PokemonSprite extends Sprite {
 	// HTML strings are constructed from this table and stored back in it to cache them
 	protected static statusTable: {[id: string]: [string, 'good' | 'bad' | 'neutral'] | null | string} = {
+		sirensveil: '<span class="good" title="Siren’s Veil: next damaging move has 1.3x power for all hits and targets. Spent even on miss or protection; status moves retain it. Does not stack; clears on switching.">Veil ready: 1.3x</span> ' ,
 		// Exact protocol state emitted by Corrosive Strike; independent of the Corrosion ability.
 		corrosion: '<span class="effect-guard effect-corrosive" title="Corrosive Strike: loses 1/16 maximum HP at the end of each turn. Does not stack. Ends on switching; separate from poison." aria-label="Corrosive: residual damage until switching">Corrosive</span> ',
         glacialheartice: '<span class="good" title="Glacial Heart: prepared Ice attacks ignore positive defensive stages for the whole move. Successful opposing HP damage prepares Dragon afterward. Inactive while the ability is suppressed; clears on switching.">Ice ready</span> ',

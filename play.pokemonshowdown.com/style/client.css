@@ -3978,7 +3978,7 @@ a.ilink.yours {
 .battle-move-grid, .battle-move-grid > div { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:6px; }
 .battle-move-grid > div { grid-column:1/-1; }
 .battle-controls .battle-move-grid button { width:100%; height:auto; min-height:44px; margin:0; padding:3px 6px; float:none; }
-.battle-move-options { display:flex; align-items:center; flex-wrap:wrap; gap:6px; margin-top:7px; }
+.battle-move-options { display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:8px; margin-top:7px; }
 .battle-controls .battle-move-options .megaevo { display:inline-flex; align-items:center; justify-content:center; gap:5px; width:auto; min-height:30px; margin:0; padding:3px 8px; top:auto; left:auto; box-sizing:border-box; font-size:12px; }
 .battle-move-options .megaevo input { margin:0; }
 .battle-controls .battle-move-options .battle-passives-button { width:auto; height:auto; min-height:30px; margin:0; padding:4px 8px; float:none; font-size:11px; }

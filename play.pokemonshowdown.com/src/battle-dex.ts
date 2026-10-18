@@ -10362,13 +10362,13 @@ moonveil: {name: 'Moon Veil', desc: 'Pastel Veil + Misty Surge. On entry, sets M
 	},
 	venomarmor: {
 		name: "Venom Armor",
-		desc: "On switch-in, this Pokemon becomes poisoned if it has no status, even if it is Steel-type. This Pokemon has Poison Heal and Dual Wield's effects. While poisoned, its physical damage is multiplied by 1.3. Metal Claw has 1.5x power.",
-		shortDesc: "Self-poisons on switch-in; Poison Heal + Dual Wield; poisoned physical damage 1.3x; Metal Claw 1.5x.",
+		desc: "On switch-in, this Pokemon becomes poisoned if it has no status, even if it is Steel-type. This Pokemon has Poison Heal and Dual Wield's effects. While poisoned, its physical damage is multiplied by 1.3. Metal Claw retains two full-power hits.",
+		shortDesc: "Self-poisons on switch-in; Poison Heal + Dual Wield; poisoned physical damage 1.3x; Metal Claw hits twice at full power.",
 	},
 	toxicarmor: {
 		name: "Toxic Armor",
-		desc: "This Pokemon has Venom Armor and Violent Rush's effects.",
-		shortDesc: "Venom Armor + Violent Rush.",
+		desc: "Dual Wield and opening Violent Rush. Metal Claw retains two full-power hits. Native priority HP damage prepares next-turn Dual Wield priority.",
+		shortDesc: "Dual Wield + opening Violent Rush; Metal Claw hits twice at full power.",
 	},
 	corrosiveburn: {
 		name: "Corrosive Burn",
@@ -29889,7 +29889,7 @@ for (const [id, update] of Object.entries({
 			"Dark"
 		],
 		"passives": [
-			"defiant"
+			"tempestfury"
 		],
 		"replaceAbilities": true
 	},
@@ -54941,8 +54941,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Venom Armor",
 		"num": 10154,
 		"gen": 9,
-		"desc": "On switch-in, this Pokemon becomes poisoned if it has no status, even if it is Steel-type. This Pokemon has Poison Heal and Dual Wield's effects. While poisoned, its physical damage is multiplied by 1.3. Metal Claw has 1.5x power.",
-		"shortDesc": "Poison Heal + Dual Wield; Self-poisons on switch-in; poisoned physical damage 1.3x; Metal Claw 1.5x.",
+		"desc": "On switch-in, this Pokemon becomes poisoned if it has no status, even if it is Steel-type. This Pokemon has Poison Heal and Dual Wield's effects. While poisoned, its physical damage is multiplied by 1.3. Metal Claw retains two full-power hits.",
+		"shortDesc": "Poison Heal + Dual Wield; Self-poisons on switch-in; poisoned physical damage 1.3x; Metal Claw hits twice at full power.",
 		"rating": 4,
 		"flags": {
 			"breakable": 1
@@ -56283,7 +56283,6 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	"battlearmor": [],
 	"battlefervor": [],
 	"battlebond": [
-		"filter",
 		"selfsufficient"
 	],
 	"shadowbond": [
@@ -56417,7 +56416,7 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 		"battlearmor"
 	],
 	"toxicarmor": [
-		"venomarmor",
+		"dualwield",
 		"violentrush"
 	],
 	"corrosiveburn": [
@@ -58682,6 +58681,10 @@ const CUSTOM_SIGNATURE_PASSIVE_DESCRIPTIONS: {[id: string]: {shortDesc: string; 
 	"mirechorus": {
 		"shortDesc": "Sound becomes Water (Ice on Icy), 1.2x power; noncontact sound can poison.",
 		"desc": "Sound moves become Water-type, or Ice-type on Icy Field, and have 1.2x power. Each foe damaged by a noncontact sound hit has a 20% poison chance. Shield Dust and Covert Cloak prevent this added poison. This passive does not include contact Poison Touch."
+	},
+	"tempestfury": {
+		"shortDesc": "Once per battle: survive a foe hit to charge a Water critical hit.",
+		"desc": "Once per battle, surviving opposing direct HP damage charges the next damaging Water move to critically hit, subject to normal critical-hit prevention. Opposing HP or Substitute damage spends the charge; misses, protection and immunity preserve it. The charge and spent acquisition persist through switching and form changes. Ordinary Gyarados active Tempest Fury remains repeatable; its charge is separate and does not transfer into this passive."
 	}
 };
 const CUSTOM_SIGNATURE_PASSIVE_REMOVED_COMPONENTS: {[id: string]: readonly string[]} = {
@@ -59119,7 +59122,8 @@ const CUSTOM_ABILITY_COMPONENT_EXCLUSIONS: {[id: string]: readonly string[]} = {
 		"poisonheal"
 	],
 	"toxicarmor": [
-		"poisonheal"
+		"poisonheal",
+		"battlearmor"
 	],
 	"scrapbreaker": [
 		"moldbreaker"
@@ -59862,7 +59866,7 @@ const CUSTOM_SHARED_PASSIVE_DESCRIPTIONS: {[id: string]: {passive: string; desc:
 	},
 	"sirius": {
 		"passive": "rivalmalice",
-		"desc": "Retains full Apex Venom, Whiplash, Venam’s Kiss and local Shed Skin (50% end-turn ailment/low-HP recovery; Dragon’s Den guaranteed). Mega Seviper’s Poison Fang slot becomes Drake Fang: 85 BP Dragon Physical, 100 accuracy, 15 PP, bite/contact and inherited poison effects. Current PP and slot persist through switching; actual form reversal restores Poison Fang. Strong Jaw 1.5x and the separate Fang signature 1.5x combine to 2.25x before STAB. Dragon Drake Fang uses ordinary Dragon effectiveness and does not trigger Poison-only Venam effects. Poison HP hits poison eligible Steel/Poison foes; all foes can be drained (one-third damage, capped at 1/4 base max HP per turn), while already-poisoned foes are heal-blocked and have 0.75x Speed. Cannot be suppressed, replaced or bypassed by Mold Breaker.",
+		"desc": "Retains full Apex Venom, Whiplash, Venam’s Kiss and local Shed Skin (50% end-turn ailment/low-HP recovery; Dragon’s Den guaranteed). Mega Seviper’s Poison Fang slot becomes Drake Fang: 85 BP Dragon Physical, 100 accuracy, 15 PP, bite/contact and inherited poison effects. Current PP and slot persist through switching; actual form reversal restores Poison Fang. Strong Jaw gives Fang attacks 1.5x power before STAB, with no separate signature multiplier. Dragon Drake Fang uses ordinary Dragon effectiveness and does not trigger Poison-only Venam effects. Poison HP hits poison eligible Steel/Poison foes; all foes can be drained (one-third damage, capped at 1/4 base max HP per turn), while already-poisoned foes are heal-blocked and have 0.75x Speed. Cannot be suppressed, replaced or bypassed by Mold Breaker.",
 		"shortDesc": "Apex Venom + Whiplash + Venam’s Kiss; Poison Fang becomes Drake Fang."
 	},
 	"windchime": {
@@ -60356,7 +60360,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Aevian Oath",
 		"num": 10363,
 		"gen": 9,
-		"desc": "On entry, heals each adjacent ally by 1/4 max HP, or 1/3 on Fairy Tale. Eligible slicing, pulse, bullet, horn, drill, and Arrow moves hit twice at 60% power, with an independent accuracy check for each hit. When combined with Sharpness, Mega Launcher, or Power Drill, the first hit receives that boost and the second hit deals 15% of the move's unboosted power. In Free-for-All, both hits use full power: the first hits the selected foe and the second targets another random living foe when possible. Existing multi-hit moves are not given an additional Dual Wield pair. Prevents critical hits and takes 20% less attack damage. Gains +1 Defense on Fairy Tale entry and +2 Defense when a foe lowers its stats.",
+		"desc": "On entry, heals each adjacent ally by 1/4 max HP, or 1/3 on Fairy Tale. Eligible slicing, pulse, bullet, horn, drill, and Arrow moves hit twice at 60% power, with an independent accuracy check for each hit. Separate power boosts apply to both 60%-power hits. In Free-for-All, both hits still use 60% power: the first hits the selected foe and the second targets another random living foe when possible. Existing multi-hit moves are not given an additional Dual Wield pair. Prevents critical hits and takes 20% less attack damage. Gains +1 Defense on Fairy Tale entry and +2 Defense when a foe lowers its stats.",
 		"shortDesc": "On entry, heals each adjacent ally by 1/4 max HP, or 1/3 on Fairy Tale.",
 		"rating": 5,
 		"flags": {
@@ -60640,7 +60644,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Apex Cleave",
 		"num": 10129,
 		"gen": 9,
-		"desc": "Eligible slicing, pulse, bullet, horn, drill, and Arrow moves hit twice at 60% power, with an independent accuracy check for each hit. When combined with Sharpness, Mega Launcher, or Power Drill, the first hit receives that boost and the second hit deals 15% of the move's unboosted power. In Free-for-All, both hits use full power: the first hits the selected foe and the second targets another random living foe when possible. Existing multi-hit moves are not given an additional Dual Wield pair. Gains +1 Attack per move KO. Sand Force is supplied separately by the species passive.",
+		"desc": "Eligible slicing, pulse, bullet, horn, drill, and Arrow moves hit twice at 60% power, with an independent accuracy check for each hit. Separate power boosts apply to both 60%-power hits. In Free-for-All, both hits still use 60% power: the first hits the selected foe and the second targets another random living foe when possible. Existing multi-hit moves are not given an additional Dual Wield pair. Gains +1 Attack per move KO. Sand Force is supplied separately by the species passive.",
 		"shortDesc": "Dual Wield + Moxie.",
 		"rating": 5,
 		"flags": {},
@@ -60672,8 +60676,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Apex Venom",
 		"num": 10361,
 		"gen": 9,
-		"desc": "Strong Jaw gives biting attacks 1.5x power. Poison Fang additionally receives a separate 1.5x signature multiplier, combining to 2.25x before STAB; Z/Max versions do not receive that signature bonus. Retains local Poison/Steel matchup overrides, bite protection bypass and toxic chance, and Shed Skin.",
-		"shortDesc": "Strong Jaw 1.5x; Poison Fang gets another 1.5x; retains poison matchups and Shed Skin.",
+		"desc": "Strong Jaw gives biting attacks 1.5x power. Poison Fang has no separate signature multiplier. Retains local Poison/Steel matchup overrides, bite protection bypass and toxic chance, and Shed Skin.",
+		"shortDesc": "Strong Jaw 1.5x; retains poison matchups and Shed Skin.",
 		"rating": 5,
 		"flags": {
 			"breakable": 1
@@ -60924,7 +60928,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Aura Instinct",
 		"num": 10130,
 		"gen": 9,
-		"desc": "Same-type attack bonus becomes 2x instead of 1.5x, or 2.25x instead of an existing 2x bonus. Eligible slicing, pulse, bullet, horn, drill, and Arrow moves hit twice at 60% power, with an independent accuracy check for each hit. When combined with Sharpness, Mega Launcher, or Power Drill, the first hit receives that boost and the second hit deals 15% of the move's unboosted power. In Free-for-All, both hits use full power: the first hits the selected foe and the second targets another random living foe when possible. Existing multi-hit moves are not given an additional Dual Wield pair. The first otherwise lethal attack has a 50% chance to leave it at 1 HP. This Ability rolls only once per battle, even if the roll fails or it switches out.",
+		"desc": "Same-type attack bonus becomes 2x instead of 1.5x, or 2.25x instead of an existing 2x bonus. Eligible slicing, pulse, bullet, horn, drill, and Arrow moves hit twice at 60% power, with an independent accuracy check for each hit. Separate power boosts apply to both 60%-power hits. In Free-for-All, both hits still use 60% power: the first hits the selected foe and the second targets another random living foe when possible. Existing multi-hit moves are not given an additional Dual Wield pair. The first otherwise lethal attack has a 50% chance to leave it at 1 HP. This Ability rolls only once per battle, even if the roll fails or it switches out.",
 		"shortDesc": "Stronger STAB; eligible moves hit twice; one 50% roll per battle to survive a lethal attack.",
 		"rating": 5,
 		"flags": {},
@@ -60934,7 +60938,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Aura Master",
 		"num": 10280,
 		"gen": 9,
-		"desc": "Takes half contact damage. Prevents flinching and Intimidate's Attack drop. Moves with effective power of 60 or less have 1.5x power; the threshold is 80 on Factory Field. Eligible slicing, pulse, bullet, horn, drill, and Arrow moves hit twice at 60% power, with an independent accuracy check for each hit. When combined with Sharpness, Mega Launcher, or Power Drill, the first hit receives that boost and the second hit deals 15% of the move's unboosted power. In Free-for-All, both hits use full power: the first hits the selected foe and the second targets another random living foe when possible. Existing multi-hit moves are not given an additional Dual Wield pair. When the weak-move bonus applies to a paired move, its second hit has 15% unboosted power outside Free-for-All.",
+		"desc": "Takes half contact damage. Prevents flinching and Intimidate's Attack drop. Moves with effective power of 60 or less have 1.5x power; the threshold is 80 on Factory Field. Eligible slicing, pulse, bullet, horn, drill, and Arrow moves hit twice at 60% power, with an independent accuracy check for each hit. Separate power boosts apply to both 60%-power hits. In Free-for-All, both hits still use 60% power: the first hits the selected foe and the second targets another random living foe when possible. Existing multi-hit moves are not given an additional Dual Wield pair. The weak-move bonus applies to both 60%-power hits.",
 		"shortDesc": "Takes half damage from contact moves.",
 		"rating": 4.5,
 		"flags": {},
@@ -61110,7 +61114,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Battle Bond",
 		"num": 210,
 		"gen": 7,
-		"desc": "A KO can trigger a Bond form; no lethal-hit survival. Eligible Arcanine, Garchomp, and Greninja forms transform after a KO. It no longer leaves the holder at 1 HP from a lethal hit.",
+		"desc": "Eligible Arcanine, Garchomp and Greninja transform after a move KO while another foe remains. Bond forms heal 1/8 base max HP after move KOs. Heals 1/16 base max HP each turn and prevents sandstorm/hail damage. Attack power is 1.3x against Royal Decree, Empress or Neutralization and independently 1.3x on Cold Eclipse. Cannot be suppressed or swapped. No Filter damage reduction or lethal-hit survival.",
 		"shortDesc": "A KO can trigger a Bond form; no lethal-hit survival.",
 		"rating": 3.5,
 		"flags": {
@@ -62918,8 +62922,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Dual Wield",
 		"num": 10284,
 		"gen": 9,
-		"desc": "Eligible slicing, pulse, bullet, horn, drill, and Arrow moves hit twice at 60% power, with an independent accuracy check for each hit. When combined with Sharpness, Mega Launcher, or Power Drill, the first hit receives that boost and the second hit deals 15% of the move's unboosted power. In Free-for-All, both hits use full power: the first hits the selected foe and the second targets another random living foe when possible. Existing multi-hit moves are not given an additional Dual Wield pair.",
-		"shortDesc": "Two 60% independent rolls; boosting pairs: full +15%; FFA: two full-power targets.",
+		"desc": "Eligible slicing, pulse, bullet, horn, drill, and Arrow moves hit twice at 60% power, with an independent accuracy check for each hit. Separate power boosts apply to both 60%-power hits. In Free-for-All, both hits still use 60% power: the first hits the selected foe and the second targets another random living foe when possible. Existing multi-hit moves are not given an additional Dual Wield pair.",
+		"shortDesc": "Two 60% independent rolls; separate boosts apply to both hits; FFA: two 60%-power targets.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null
@@ -63627,7 +63631,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Fortress Shell",
 		"num": 10025,
 		"gen": 9,
-		"desc": "Prevents critical hits and takes 20% less attack damage. Eligible slicing, pulse, bullet, horn, drill, and Arrow moves hit twice at 60% power, with an independent accuracy check for each hit. When combined with Sharpness, Mega Launcher, or Power Drill, the first hit receives that boost and the second hit deals 15% of the move's unboosted power. In Free-for-All, both hits use full power: the first hits the selected foe and the second targets another random living foe when possible. Existing multi-hit moves are not given an additional Dual Wield pair. At turn end, foes take cycling Water damage of 1/16, 2/16, then 3/16 max HP. Water immunities block it; type effectiveness scales it only in Free-for-All. Allies' moves have 1.3x power, or 1.5x on Haunted, Bewitched Woods, Holy and Psychic fields. Allies take 25% less attack damage; this does not protect the holder. Heals 1/16 max HP each turn. During Electric Aura or on Electric Terrain, Murkwater Surface, Water Surface, Underwater, Midnight Zone, Factory and Short-Circuit, redirects and absorbs Electric moves for +1 Attack and Sp. Atk. Fairy Tale, New World, Cold Eclipse and Starlight Arena give +1 Defense and Sp. Def once per active terrain. New World, Cold Eclipse and Starlight Arena also give 1.5x move power.",
+		"desc": "Prevents critical hits and takes 20% less attack damage. Eligible slicing, pulse, bullet, horn, drill, and Arrow moves hit twice at 60% power, with an independent accuracy check for each hit. Separate power boosts apply to both 60%-power hits. In Free-for-All, both hits still use 60% power: the first hits the selected foe and the second targets another random living foe when possible. Existing multi-hit moves are not given an additional Dual Wield pair. At turn end, foes take cycling Water damage of 1/16, 2/16, then 3/16 max HP. Water immunities block it; type effectiveness scales it only in Free-for-All. Allies' moves have 1.3x power, or 1.5x on Haunted, Bewitched Woods, Holy and Psychic fields. Allies take 25% less attack damage; this does not protect the holder. Heals 1/16 max HP each turn. During Electric Aura or on Electric Terrain, Murkwater Surface, Water Surface, Underwater, Midnight Zone, Factory and Short-Circuit, redirects and absorbs Electric moves for +1 Attack and Sp. Atk. Fairy Tale, New World, Cold Eclipse and Starlight Arena give +1 Defense and Sp. Def once per active terrain. New World, Cold Eclipse and Starlight Arena also give 1.5x move power.",
 		"shortDesc": "Critical-hit protection; 20% less damage; paired moves and Water chip; ally support; field Electric absorption.",
 		"rating": 4.5,
 		"flags": {
@@ -64073,8 +64077,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Grand Strategy",
 		"num": 10125,
 		"gen": 9,
-		"desc": "Mold Breaker. Its team’s attacks dealing opposing HP damage prepare that foe for the holder, even while the holder is benched. Its next physical HP-damaging attack consumes the mark after the whole attack, ignoring positive defensive stages and Reflect, Light Screen and Aurora Veil. That attack cannot rearm the mark. Marks do not stack and clear when the foe switches or the holder loses this ability. Once per battle, an end-of-turn major-status cure clears negative accuracy stages and grants Laser Focus through the next turn; switching clears Laser Focus. Suppression delays the cure; other cures do not spend it.",
-		"shortDesc": "Mold Breaker; team hits prepare foes; once-battle status cure grants Laser Focus.",
+		"desc": "Mold Breaker. While the holder is active, its team's attacks dealing opposing HP damage prepare that foe for the holder. Its next physical HP-damaging attack consumes the mark after the whole attack, ignoring positive defensive stages and Reflect, Light Screen and Aurora Veil. That attack cannot rearm the mark. Marks do not stack, survive the holder switching out, and clear when the foe switches or faints, or the holder faints or loses this ability. Once per battle, an end-of-turn major-status cure clears negative accuracy stages and grants Laser Focus through the next turn; switching clears Laser Focus. Suppression delays the cure; other cures do not spend it.",
+		"shortDesc": "Mold Breaker; team hits prepare foes while active; once-battle cure grants Laser Focus.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null
@@ -64446,7 +64450,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "High Noon",
 		"num": 10028,
 		"gen": 9,
-		"desc": "Pulse and bullet moves have 1.5x power. Eligible slicing, pulse, bullet, horn, drill, and Arrow moves hit twice at 60% power, with an independent accuracy check for each hit. When combined with Sharpness, Mega Launcher, or Power Drill, the first hit receives that boost and the second hit deals 15% of the move's unboosted power. In Free-for-All, both hits use full power: the first hits the selected foe and the second targets another random living foe when possible. Existing multi-hit moves are not given an additional Dual Wield pair. Damaging moves cannot miss; Water moves gain another 1.2x power. Gains one critical-hit stage against a newly switched target or one without a successful action this turn.",
+		"desc": "Pulse and bullet moves have 1.5x power. Eligible slicing, pulse, bullet, horn, drill, and Arrow moves hit twice at 60% power, with an independent accuracy check for each hit. Separate power boosts apply to both 60%-power hits. In Free-for-All, both hits still use 60% power: the first hits the selected foe and the second targets another random living foe when possible. Existing multi-hit moves are not given an additional Dual Wield pair. Damaging moves cannot miss; Water moves gain another 1.2x power. Gains one critical-hit stage against a newly switched target or one without a successful action this turn.",
 		"shortDesc": "Accurate attacks; stronger pulse/bullet and Water moves; eligible moves hit twice.",
 		"rating": 4.5,
 		"flags": {
@@ -66443,7 +66447,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Omen Edge",
 		"num": 10102,
 		"gen": 9,
-		"desc": "Slicing moves have 1.5x power, except on Cold Eclipse. Eligible slicing, pulse, bullet, horn, drill, and Arrow moves hit twice at 60% power, with an independent accuracy check for each hit. When combined with Sharpness, Mega Launcher, or Power Drill, the first hit receives that boost and the second hit deals 15% of the move's unboosted power. In Free-for-All, both hits use full power: the first hits the selected foe and the second targets another random living foe when possible. Existing multi-hit moves are not given an additional Dual Wield pair. On entry, lowers foes' Defense and Sp. Def by 1 (2 on Cold Eclipse) and changes Underwater to Midnight Zone. Foes targeting it spend 1 extra PP, or 2 on Midnight Zone. On fainting, schedules a physical, 140-power Steel Doom Desire against each foe. An existing delayed attack is delayed by another 2 turns instead. Outside Cold Eclipse, its Defense and Sp. Def drop is attempted only once per opposing Pokemon per battle for each Pressure user. Switching, Transform and ability loss or regain do not reset that allowance; a blocked or reflected attempt spends it. Cold Eclipse retains repeatable -2 drops on entry and neither spends nor resets the ordinary allowance.",
+		"desc": "Slicing moves have 1.5x power, except on Cold Eclipse. Eligible slicing, pulse, bullet, horn, drill, and Arrow moves hit twice at 60% power, with an independent accuracy check for each hit. Separate power boosts apply to both 60%-power hits. In Free-for-All, both hits still use 60% power: the first hits the selected foe and the second targets another random living foe when possible. Existing multi-hit moves are not given an additional Dual Wield pair. On entry, lowers foes' Defense and Sp. Def by 1 (2 on Cold Eclipse) and changes Underwater to Midnight Zone. Foes targeting it spend 1 extra PP, or 2 on Midnight Zone. On fainting, schedules a physical, 140-power Steel Doom Desire against each foe. An existing delayed attack is delayed by another 2 turns instead. Outside Cold Eclipse, its Defense and Sp. Def drop is attempted only once per opposing Pokemon per battle for each Pressure user. Switching, Transform and ability loss or regain do not reset that allowance; a blocked or reflected attempt spends it. Cold Eclipse retains repeatable -2 drops on entry and neither spends nor resets the ordinary allowance.",
 		"shortDesc": "Stronger slicing moves; eligible moves hit twice; foes spend extra PP; physical Doom Desire on fainting.",
 		"rating": 4,
 		"flags": {
@@ -68442,7 +68446,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Sacred Edge",
 		"num": 10101,
 		"gen": 9,
-		"desc": "Slicing moves have 1.5x power, except on Cold Eclipse. Eligible slicing, pulse, bullet, horn, drill, and Arrow moves hit twice at 60% power, with an independent accuracy check for each hit. When combined with Sharpness, Mega Launcher, or Power Drill, the first hit receives that boost and the second hit deals 15% of the move's unboosted power. In Free-for-All, both hits use full power: the first hits the selected foe and the second targets another random living foe when possible. Existing multi-hit moves are not given an additional Dual Wield pair. On entry or Mega Evolution, heals adjacent allies by 1/4 max HP, or 1/3 on Fairy Tale.",
+		"desc": "Slicing moves have 1.5x power, except on Cold Eclipse. Eligible slicing, pulse, bullet, horn, drill, and Arrow moves hit twice at 60% power, with an independent accuracy check for each hit. Separate power boosts apply to both 60%-power hits. In Free-for-All, both hits still use 60% power: the first hits the selected foe and the second targets another random living foe when possible. Existing multi-hit moves are not given an additional Dual Wield pair. On entry or Mega Evolution, heals adjacent allies by 1/4 max HP, or 1/3 on Fairy Tale.",
 		"shortDesc": "Slicing moves have 1.5x power, except on Cold Eclipse.",
 		"rating": 4,
 		"flags": {
@@ -69196,7 +69200,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Sirius",
 		"num": 10404,
 		"gen": 9,
-		"desc": "Retains full Apex Venom, Whiplash, Venam’s Kiss and local Shed Skin (50% end-turn ailment/low-HP recovery; Dragon’s Den guaranteed). Mega Seviper’s Poison Fang slot becomes Drake Fang: 85 BP Dragon Physical, 100 accuracy, 15 PP, bite/contact and inherited poison effects. Current PP and slot persist through switching; actual form reversal restores Poison Fang. Strong Jaw 1.5x and the separate Fang signature 1.5x combine to 2.25x before STAB. Dragon Drake Fang uses ordinary Dragon effectiveness and does not trigger Poison-only Venam effects. Poison HP hits poison eligible Steel/Poison foes; all foes can be drained (one-third damage, capped at 1/4 base max HP per turn), while already-poisoned foes are heal-blocked and have 0.75x Speed. Cannot be suppressed, replaced or bypassed by Mold Breaker.",
+		"desc": "Retains full Apex Venom, Whiplash, Venam’s Kiss and local Shed Skin (50% end-turn ailment/low-HP recovery; Dragon’s Den guaranteed). Mega Seviper’s Poison Fang slot becomes Drake Fang: 85 BP Dragon Physical, 100 accuracy, 15 PP, bite/contact and inherited poison effects. Current PP and slot persist through switching; actual form reversal restores Poison Fang. Strong Jaw gives Fang attacks 1.5x power before STAB, with no separate signature multiplier. Dragon Drake Fang uses ordinary Dragon effectiveness and does not trigger Poison-only Venam effects. Poison HP hits poison eligible Steel/Poison foes; all foes can be drained (one-third damage, capped at 1/4 base max HP per turn), while already-poisoned foes are heal-blocked and have 0.75x Speed. Cannot be suppressed, replaced or bypassed by Mold Breaker.",
 		"shortDesc": "Apex Venom + Whiplash + Venam’s Kiss; Poison Fang becomes Drake Fang.",
 		"rating": 5,
 		"flags": {
@@ -69682,7 +69686,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Spiral Evolution",
 		"num": 10206,
 		"gen": 9,
-		"desc": "Mold Breaker: moves ignore bypassable opposing abilities. Same-type attack bonus becomes 2x instead of 1.5x, or 2.25x instead of an existing 2x bonus. Eligible slicing, pulse, bullet, horn, drill, and Arrow moves hit twice at 60% power, with an independent accuracy check for each hit. When combined with Sharpness, Mega Launcher, or Power Drill, the first hit receives that boost and the second hit deals 15% of the move's unboosted power. In Free-for-All, both hits use full power: the first hits the selected foe and the second targets another random living foe when possible. Existing multi-hit moves are not given an additional Dual Wield pair. Damaging moves pierce protection at half power. Normal-priority moves act first in Trick Room without gaining priority. Ignores field Speed penalties and takes 20% less attack damage. Twineedle has double power.",
+		"desc": "Mold Breaker: moves ignore bypassable opposing abilities. Same-type attack bonus becomes 2x instead of 1.5x, or 2.25x instead of an existing 2x bonus. Eligible slicing, pulse, bullet, horn, drill, and Arrow moves hit twice at 60% power, with an independent accuracy check for each hit. Separate power boosts apply to both 60%-power hits. In Free-for-All, both hits still use 60% power: the first hits the selected foe and the second targets another random living foe when possible. Existing multi-hit moves are not given an additional Dual Wield pair. Damaging moves pierce protection at half power. Normal-priority moves act first in Trick Room without gaining priority. Ignores field Speed penalties and takes 20% less attack damage. Twineedle has double power.",
 		"shortDesc": "Mold Breaker + Adaptability + Dual Wield; half-power Protect bypass; acts first in Trick Room; 20% less damage; double Twineedle power.",
 		"rating": 5,
 		"flags": {},
@@ -70822,8 +70826,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Toxic Armor",
 		"num": 10403,
 		"gen": 9,
-		"desc": "revised Venom Armor and opening Violent Rush. A native positive-priority damaging attack that damages opposing HP prepares the next eligible Dual Wield attack on the following turn for +1 priority. Consumes on attempt, including miss, protection or immunity; expires at that turn end and clears on switching. No stacking, generated attacks, Z/Max attacks or self-rearming from the granted priority. Cannot be suppressed, replaced or bypassed by Mold Breaker.",
-		"shortDesc": "Venom Armor + Violent Rush; priority HP hit prepares next-turn Dual Wield priority.",
+		"desc": "Full local Dual Wield, Metal Claw with two 60%-power hits, and opening Violent Rush. A native positive-priority damaging attack that damages opposing HP prepares the next eligible Dual Wield attack on the following turn for +1 priority. Consumes on attempt, including miss, protection or immunity; expires at that turn end and clears on switching. No stacking, generated attacks, Z/Max attacks or self-rearming from the granted priority. Cannot be suppressed, replaced or bypassed by Mold Breaker.",
+		"shortDesc": "Dual Wield + opening Violent Rush; priority hits prepare next-turn priority.",
 		"rating": 5,
 		"flags": {
 			"cantsuppress": 1,
@@ -71457,8 +71461,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Venom Armor",
 		"num": 10154,
 		"gen": 9,
-		"desc": "Dual Wield and Battle Armor. Metal Claw has 1.5x power on both full hits, retaining existing local behavior. Does not automatically poison, heal or grant the former status-based damage boost.",
-		"shortDesc": "Dual Wield + Battle Armor; Metal Claw 1.5x.",
+		"desc": "Dual Wield and Battle Armor. Metal Claw retains two 60%-power hits. Does not automatically poison, heal or grant the former status-based damage boost.",
+		"shortDesc": "Dual Wield + Battle Armor.",
 		"rating": 4,
 		"flags": {
 			"breakable": 1
@@ -71892,7 +71896,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Water Barrage",
 		"num": 10138,
 		"gen": 9,
-		"desc": "Stalwart bypasses redirection and grants +1 Sp. Atk on New World, Starlight Arena, Fairy Tale or Chessboard entry. Eligible slicing, pulse, bullet, horn, drill, and Arrow moves hit twice at 60% power, with an independent accuracy check for each hit. Separate bespoke composites can specify a boosted first hit and a 15% second hit. A literal Mega Launcher + Water Barrage combination instead boosts both eligible pulse/bullet hits by 1.5x: 0.9x each outside Free-for-All, or 1.5x each in Free-for-All. In Free-for-All, both hits use full power: the first hits the selected foe and the second targets another random living foe when possible. Existing multi-hit moves are not given an additional Dual Wield pair. At turn end, foes take cycling Water damage of 1/16, 2/16, then 3/16 max HP. Water immunities block it; type effectiveness scales it only in Free-for-All.",
+		"desc": "Stalwart bypasses redirection and grants +1 Sp. Atk on New World, Starlight Arena, Fairy Tale or Chessboard entry. Eligible slicing, pulse, bullet, horn, drill, and Arrow moves hit twice at 60% power, with an independent accuracy check for each hit. A literal Mega Launcher + Water Barrage combination instead boosts both eligible pulse/bullet hits by 1.5x: 0.9x each in every battle format. In Free-for-All, both hits still use 60% power: the first hits the selected foe and the second targets another random living foe when possible. Existing multi-hit moves are not given an additional Dual Wield pair. At turn end, foes take cycling Water damage of 1/16, 2/16, then 3/16 max HP. Water immunities block it; type effectiveness scales it only in Free-for-All.",
 		"shortDesc": "Dual Wield + Stalwart; cycling Water chip.",
 		"rating": 4,
 		"flags": {
@@ -72488,7 +72492,7 @@ moonveil: ['pastelveil' as ID, 'mistysurge' as ID],
 	sirius: ['apexvenom' as ID, 'whiplash' as ID],
 	solarrush: ['sandrush' as ID, 'chlorophyll' as ID],
 	venomarmor: ['poisonheal' as ID, 'dualwield' as ID],
-	toxicarmor: ['venomarmor' as ID, 'violentrush' as ID],
+	toxicarmor: ['dualwield' as ID, 'violentrush' as ID],
 	corrosiveburn: ['merciless' as ID, 'regenerator' as ID, 'corrosion' as ID],
 	curseddoll: ['toughclaws' as ID, 'shadowshield' as ID],
 	voidveil: ['levitate' as ID, 'magicguard' as ID, 'insomnia' as ID],
@@ -72660,28 +72664,24 @@ for (const id of ["aquatail","tailsmash","bodyslam","breakingswipe","brutalswing
 Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"shadowbond": [
 		"battlebond",
-		"filter",
 		"selfsufficient",
 		"proficient",
 		"infiltrator"
 	],
 	"apexbond": [
 		"battlebond",
-		"filter",
 		"selfsufficient",
 		"supremeoverlord",
 		"roughskin"
 	],
 	"sacredbond": [
 		"battlebond",
-		"filter",
 		"selfsufficient",
 		"magmaarmor",
 		"intimidate",
 		"flashfire"
 	],
 	"battlebond": [
-		"filter",
 		"selfsufficient"
 	],
 	"highnoon": [
@@ -73901,10 +73901,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"poisonheal",
 		"dualwield"
 	],
-	"toxicarmor": [
-		"venomarmor",
-		"violentrush"
-	],
+	"toxicarmor": ["dualwield", "violentrush"],
 	"corrosiveburn": [
 		"corrosion",
 		"oblivious",
@@ -75405,8 +75402,8 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"metronome": 1,
 			"contact": 1
 		},
-		"desc": "Samson's move. Hits three times with a separate 95% accuracy check per hit, stopping on a miss. A successful hit applies Taunt once per use.",
-		"shortDesc": "Samson's move. 3 hits; each can miss. Damaging hit Taunts.",
+		"desc": "Samson's move. Hits three times with a separate 95% accuracy check per hit, stopping on a miss. If the first accuracy check misses, raises the user's Attack by 2; later misses, protection and immunity do not grant this boost. A successful hit applies Taunt once per use.",
+		"shortDesc": "Samson's move. 3 hits; first-hit miss: +2 Attack. Damaging hit Taunts.",
 		"signatureCharacters": [
 			"samson"
 		]
@@ -77204,8 +77201,8 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"metronome": 1,
 			"contact": 1
 		},
-		"desc": "Corey's move. Super effective against Steel. Inflicts non-stacking corrosion dealing 1/16 maximum HP each turn until the target switches. Field effects: Corrosive Terrain: 1.5× power.",
-		"shortDesc": "Corey's move. Super effective on Steel; corrosion drains 1/16 HP per turn.",
+		"desc": "Corey's move. Uses higher staged Attack or Special Attack, Special on ties. Super effective against Steel. Inflicts non-stacking corrosion dealing 1/16 maximum HP each turn until the target switches. Field effects: Corrosive Terrain: 1.5× power.",
+		"shortDesc": "Corey's move. Adaptive; Super effective on Steel; corrosion drains 1/16 HP per turn.",
 		"signatureCharacters": [
 			"corey"
 		]
@@ -77525,7 +77522,7 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"mirror": 1,
 			"metronome": 1
 		},
-		"desc": "Luna's move. Uses the user’s Sp. Def instead of Sp. Atk against the target’s Sp. Def. Field effects: Changes Cave or Crystal Cavern to Dark Crystal Cavern, and Factory to Short Circuit, after damage. Field locks apply.",
+		"desc": "Luna's move. Uses the user’s Sp. Def instead of Sp. Atk against the target’s Sp. Def. Field effects: Dark Crystal Cavern: 1.5x power. Changes Cave or Crystal Cavern to Dark Crystal Cavern, and Factory to Short Circuit, after damage. Field locks apply.",
 		"shortDesc": "Luna's move. Uses user's Sp. Def to attack.",
 		"signatureCharacters": [
 			"luna"
@@ -78436,7 +78433,7 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"metronome": 1,
 			"bite": 1
 		},
-		"desc": "85-power physical Dragon-type biting contact attack with 100% accuracy and 15 PP. Has a 50% chance to badly poison the target. Uses ordinary Dragon effectiveness: Fairy immunity and Steel resistance apply. Mega Seviper converts its Poison Fang slot into this move while preserving PP; Sirius supplies its separately described signature and Strong Jaw multipliers.",
+		"desc": "85-power physical Dragon-type biting contact attack with 100% accuracy and 15 PP. Has a 50% chance to badly poison the target. Uses ordinary Dragon effectiveness: Fairy immunity and Steel resistance apply. Mega Seviper converts its Poison Fang slot into this move while preserving PP; Sirius supplies the normal Strong Jaw bite multiplier.",
 		"shortDesc": "Dragon-type biting attack; 50% chance to badly poison."
 	},
 	"dreameater": {
@@ -81150,8 +81147,8 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"priority": 0,
 		"target": "adjacentFoe",
 		"flags": {},
-		"desc": "Ghost-type, 100 Base Power. Uses the user's higher offensive stat. Hits the selected foe at full power, then makes a separate 50 Base Power Ghost-type hit against one other adjacent foe, if present. The follow-up checks its own type immunity and protection. In a single battle, there is no follow-up.",
-		"shortDesc": "100 BP Ghost to one foe; 50 BP Ghost follow-up to another foe."
+		"desc": "Ghost-type, 100 Base Power. Uses the user's higher offensive stat. Hits the selected foe, then makes a separate 50 Base Power Ghost-type hit against another living adjacent foe if present, otherwise the original target if it is still alive. The follow-up checks its own type immunity and protection and cannot trigger another follow-up.",
+		"shortDesc": "100 BP Ghost; 50 BP follow-up to another foe, or the surviving target."
 	},
 	"gmaxsteelsurge": {
 		"name": "G-Max Steelsurge",
@@ -86089,7 +86086,7 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"accuracy": 100,
 		"pp": 10,
 		"priority": 0,
-		"target": "randomNormal",
+		"target": "adjacentFoe",
 		"flags": {
 			"contact": 1,
 			"protect": 1,
@@ -86097,8 +86094,8 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"metronome": 1,
 			"failinstruct": 1
 		},
-		"desc": "Has a 30% chance to lower the target's Defense by 1. Targets a random adjacent opponent. Locks the user into this move for 2-3 turns, then confuses the user if it is not already confused. If the user cannot act, starts a turn asleep, or fails to hit before the final locked turn, the lock ends without confusion. Sleep Talk uses it once without confusion while the user is asleep. Sheer Force removes the 30% effect and gives its normal power boost once; the lock and ending confusion remain. Raging Storm makes it a single-turn attack with no lock or ending confusion; it does not cure existing confusion. On Superheated Field, the lock ends after the attack; ending it early does not cause confusion.",
-		"shortDesc": "30% -1 target Def. Locks 2-3 turns, then confuses user."
+		"desc": "Has a 30% chance to lower the target's Defense by 1. Choose an adjacent opposing Pokemon on the initial turn. Forced continuation turns target an opposing Pokemon at random. Locks the user into this move for 2-3 turns, then confuses the user if it is not already confused. If the user cannot act, starts a turn asleep, or fails to hit before the final locked turn, the lock ends without confusion. Sleep Talk uses it once without confusion while the user is asleep. Sheer Force removes the 30% effect and gives its normal power boost once; the lock and ending confusion remain. Raging Storm makes it a single-turn attack with no lock or ending confusion; it does not cure existing confusion. On Superheated Field, the lock ends after the attack; ending it early does not cause confusion.",
+		"shortDesc": "30% -1 target Def. Locks 2-3 turns, then confuses user. Choose initial foe; later hits random."
 	},
 	"overdrive": {
 		"name": "Overdrive",
@@ -86317,7 +86314,7 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"accuracy": 100,
 		"pp": 10,
 		"priority": 0,
-		"target": "randomNormal",
+		"target": "adjacentFoe",
 		"flags": {
 			"contact": 1,
 			"protect": 1,
@@ -86326,8 +86323,8 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"metronome": 1,
 			"failinstruct": 1
 		},
-		"desc": "Has a 30% chance to lower the target's Sp. Def by 1. Targets a random adjacent opponent. Locks the user into this move for 2-3 turns, then confuses the user if it is not already confused. If the user cannot act, starts a turn asleep, or fails to hit before the final locked turn, the lock ends without confusion. Sleep Talk uses it once without confusion while the user is asleep. Sheer Force removes the 30% effect and gives its normal power boost once; the lock and ending confusion remain. Raging Storm makes it a single-turn attack with no lock or ending confusion; it does not cure existing confusion. On Superheated Field, the lock ends after the attack; ending it early does not cause confusion.",
-		"shortDesc": "30% -1 target SpD. Locks 2-3 turns, then confuses user."
+		"desc": "Has a 30% chance to lower the target's Sp. Def by 1. Choose an adjacent opposing Pokemon on the initial turn. Forced continuation turns target an opposing Pokemon at random. Locks the user into this move for 2-3 turns, then confuses the user if it is not already confused. If the user cannot act, starts a turn asleep, or fails to hit before the final locked turn, the lock ends without confusion. Sleep Talk uses it once without confusion while the user is asleep. Sheer Force removes the 30% effect and gives its normal power boost once; the lock and ending confusion remain. Raging Storm makes it a single-turn attack with no lock or ending confusion; it does not cure existing confusion. On Superheated Field, the lock ends after the attack; ending it early does not cause confusion.",
+		"shortDesc": "30% -1 target SpD. Locks 2-3 turns, then confuses user. Choose initial foe; later hits random."
 	},
 	"phantomforce": {
 		"name": "Phantom Force",
@@ -87607,13 +87604,13 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"accuracy": 100,
 		"pp": 10,
 		"priority": 0,
-		"target": "randomNormal",
+		"target": "adjacentFoe",
 		"flags": {
 			"protect": 1,
 			"mirror": 1
 		},
-		"desc": "Has a 30% chance to burn the target. Targets a random adjacent opponent. Locks the user into this move for 2-3 turns, then confuses the user if it is not already confused. If the user cannot act, starts a turn asleep, or fails to hit before the final locked turn, the lock ends without confusion. Sleep Talk uses it once without confusion while the user is asleep. Sheer Force removes the 30% effect and gives its normal power boost once; the lock and ending confusion remain. Raging Storm makes it a single-turn attack with no lock or ending confusion; it does not cure existing confusion. On Burning or Volcanic Field, ending the rampage does not cause confusion. On Volcanic Field, each use also raises the user's Attack by 1.",
-		"shortDesc": "30% burn. Locks 2-3 turns, then confuses user."
+		"desc": "Has a 30% chance to burn the target. Choose an adjacent opposing Pokemon on the initial turn. Forced continuation turns target an opposing Pokemon at random. Locks the user into this move for 2-3 turns, then confuses the user if it is not already confused. If the user cannot act, starts a turn asleep, or fails to hit before the final locked turn, the lock ends without confusion. Sleep Talk uses it once without confusion while the user is asleep. Sheer Force removes the 30% effect and gives its normal power boost once; the lock and ending confusion remain. Raging Storm makes it a single-turn attack with no lock or ending confusion; it does not cure existing confusion. On Burning or Volcanic Field, ending the rampage does not cause confusion. On Volcanic Field, each use also raises the user's Attack by 1.",
+		"shortDesc": "30% burn. Locks 2-3 turns, then confuses user. Choose initial foe; later hits random."
 	},
 	"raindance": {
 		"name": "Rain Dance",
@@ -89254,8 +89251,8 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"flags": {
 			"snatch": 1
 		},
-		"desc": "Amaria's move. Raises Defense and Sp. Def by 1; suppresses active opposing abilities until they switch. Respects Ability Shield and unsuppressible abilities. On Short Circuit, a working Covert Cloak also prevents suppression.",
-		"shortDesc": "Amaria's move. +1 Defense and Sp. Def; suppresses active foes' abilities.",
+		"desc": "Amaria's move. Raises Defense and Sp. Def by 1; suppresses active opposing abilities until they switch. Also readies 1.3x power for the user's next damaging move, including all hits and targets. This charge does not stack, survives status moves, clears on switching, and is spent on a damaging move attempt even if it misses or is blocked. Respects Ability Shield and unsuppressible abilities. On Short Circuit, a working Covert Cloak also prevents suppression.",
+		"shortDesc": "Amaria's move. +1 Def/SpD; suppresses foes; next damaging move 1.3x.",
 		"signatureCharacters": [
 			"amaria"
 		]
@@ -91847,7 +91844,7 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"accuracy": 100,
 		"pp": 10,
 		"priority": 0,
-		"target": "randomNormal",
+		"target": "adjacentFoe",
 		"flags": {
 			"contact": 1,
 			"protect": 1,
@@ -91855,8 +91852,8 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"metronome": 1,
 			"failinstruct": 1
 		},
-		"desc": "Has a 30% chance to lower the target's Defense by 1. Targets a random adjacent opponent. Locks the user into this move for 2-3 turns, then confuses the user if it is not already confused. If the user cannot act, starts a turn asleep, or fails to hit before the final locked turn, the lock ends without confusion. Sleep Talk uses it once without confusion while the user is asleep. Sheer Force removes the 30% effect and gives its normal power boost once; the lock and ending confusion remain. Raging Storm makes it a single-turn attack with no lock or ending confusion; it does not cure existing confusion. On Superheated Field, the lock ends after the attack; ending it early does not cause confusion.",
-		"shortDesc": "30% -1 target Def. Locks 2-3 turns, then confuses user."
+		"desc": "Has a 30% chance to lower the target's Defense by 1. Choose an adjacent opposing Pokemon on the initial turn. Forced continuation turns target an opposing Pokemon at random. Locks the user into this move for 2-3 turns, then confuses the user if it is not already confused. If the user cannot act, starts a turn asleep, or fails to hit before the final locked turn, the lock ends without confusion. Sleep Talk uses it once without confusion while the user is asleep. Sheer Force removes the 30% effect and gives its normal power boost once; the lock and ending confusion remain. Raging Storm makes it a single-turn attack with no lock or ending confusion; it does not cure existing confusion. On Superheated Field, the lock ends after the attack; ending it early does not cause confusion.",
+		"shortDesc": "30% -1 target Def. Locks 2-3 turns, then confuses user. Choose initial foe; later hits random."
 	},
 	"throatchop": {
 		"name": "Throat Chop",
@@ -92112,8 +92109,8 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"protect": 1,
 			"mirror": 1
 		},
-		"desc": "Adrienn's move. Uses higher staged Attack or Sp. Atk (Special on ties). After damage, applies Encore for 2 turns if eligible.",
-		"shortDesc": "Adrienn's move. Adaptive; damaging hit applies 2-turn Encore.",
+		"desc": "Adrienn's move. Uses higher staged Attack or Sp. Atk (Special on ties). After damage, applies Encore for 2 turns if eligible. After HP or Substitute damage, splashes adjacent allies of the target for 1/16 of their maximum HP, or 1/8 on Fairy Tale, once per whole move. Splash is indirect damage like Flame Burst: it bypasses partner Protect and Substitute, but respects Magic Guard; it does not apply Encore or trigger another splash.",
+		"shortDesc": "Adrienn's move. Adaptive; 2-turn Encore; partner splash 1/16 HP (Fairy Tale: 1/8).",
 		"signatureCharacters": [
 			"adrienn"
 		]
@@ -93761,7 +93758,6 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	],
 	"apexbond": [
 		"battlebond",
-		"filter",
 		"selfsufficient",
 		"supremeoverlord",
 		"roughskin"
@@ -93883,7 +93879,6 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"battery": [],
 	"battlearmor": [],
 	"battlebond": [
-		"filter",
 		"selfsufficient"
 	],
 	"battlefervor": [],
@@ -95476,7 +95471,6 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	],
 	"sacredbond": [
 		"battlebond",
-		"filter",
 		"selfsufficient",
 		"magmaarmor",
 		"intimidate",
@@ -95575,7 +95569,6 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	],
 	"shadowbond": [
 		"battlebond",
-		"filter",
 		"selfsufficient",
 		"infiltrator"
 	],
@@ -95991,7 +95984,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"torrent": [],
 	"toughclaws": [],
 	"toxicarmor": [
-		"venomarmor",
+		"dualwield",
 		"violentrush"
 	],
 	"toxicbloom": [
@@ -100796,11 +100789,12 @@ const Dex = new class implements ModdedDex {
 		// Species-specific display proportions apply to battle and team preview, without resampling art.
 		// Preview scenes request noScale but still use their own display-size policy above.
 		if ((!options.noScale || options.teamPreview) && !isDynamax) {
-			const proportion = speciesid === 'ninetalesalola' ? 0.8 :
+			const proportion = speciesid === 'banette' && !isFront ? 0.9 :
+				speciesid === 'ninetalesalola' ? 0.8 :
 				speciesid === 'ursalunabloodmoon' ? 0.9 :
 				speciesid === 'infernapemega' ? 0.95 :
 				speciesid === 'talonflame' ? 1.45 :
-				(speciesid === 'sinistcha' || speciesid === 'sinistchamasterpiece') ? 0.75 : 1;
+				(speciesid === 'sinistcha' || speciesid === 'sinistchamasterpiece') ? (isFront ? 1 : 0.75) : 1;
 			if (proportion !== 1) {
 				spriteData.w = Math.max(1, Math.round(spriteData.w * proportion));
 				spriteData.h = Math.max(1, Math.round(spriteData.h * proportion));
@@ -100877,14 +100871,15 @@ const Dex = new class implements ModdedDex {
   const arrows = ['spiritshackle','thousandarrows','triplearrows','snipeshot','razorleaf','magicalleaf','spikecannon','pinmissile','iciclespear','rockblast','bulletseed','scaleshot','psychocut','ceaselessedge'];
   const two = dual && !move.multihit && !move.flags.charge && !(move.flags as any).futuremove && !move.isZ && !move.isMax &&
    !!(move.flags.slicing || move.flags.pulse || move.flags.bullet || move.flags.horn || move.flags.drill || arrows.includes(move.id));
-  const full = gameType === 'freeforall';
+
+  const hitScale = gameType === 'freeforall' && has('Siege Launcher') ? 1 : 0.6;
   let hits: number[];
   if (two && sharp) {
    const combined = 1.5 * drillBoost * (launcher ? 1.5 : 1);
-   hits = full ? [combined, combined] : [combined, 0.15];
+   hits = [combined * hitScale, combined * hitScale];
   } else {
    const boost = drillBoost * (sharp ? 1.5 : 1) * (launcher ? 1.5 : 1);
-   hits = two ? [boost * (full ? 1 : 0.6), boost * (full ? 1 : 0.6)] : [boost];
+   hits = two ? [boost * hitScale, boost * hitScale] : [boost];
   }
   // Active and native Power Drill share one component multiplier.
   const labels = [hyper ? 'Hyper Drill' : drillBoost !== 1 ? 'Power Drill' : '', sharp ? 'Sharpness' : '', launcher ? 'Mega Launcher' : '', two ? 'Dual Wield' : ''].filter(Boolean);
@@ -102223,8 +102218,7 @@ const AUDITED_DESCRIPTION_COMPONENTS: {[id: string]: string[]} = {
 	"battlefervor": [],
 	"battlebond": [
 		"selfsufficient",
-		"filter"
-	],
+		],
 	"shadowbond": [
 		"battlebond",
 		"infiltrator",
@@ -102364,10 +102358,7 @@ const AUDITED_DESCRIPTION_COMPONENTS: {[id: string]: string[]} = {
 		"dualwield",
 		"poisonheal"
 	],
-	"toxicarmor": [
-		"violentrush",
-		"venomarmor"
-	],
+	"toxicarmor": ["dualwield", "violentrush"],
 	"corrosiveburn": [
 		"corrosion",
 		"oblivious",

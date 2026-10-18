@@ -72,8 +72,8 @@
     "shortDesc": "Dual Wield + Battle Armor; Metal Claw 1.5x."
   },
   "toxicarmor": {
-    "desc": "revised Venom Armor and opening Violent Rush. A native positive-priority damaging attack that damages opposing HP prepares the next eligible Dual Wield attack on the following turn for +1 priority. Consumes on attempt, including miss, protection or immunity; expires at that turn end and clears on switching. No stacking, generated attacks, Z/Max attacks or self-rearming from the granted priority. Cannot be suppressed, replaced or bypassed by Mold Breaker.",
-    "shortDesc": "Venom Armor + Violent Rush; priority HP hit prepares next-turn Dual Wield priority."
+    "desc": "Full local Dual Wield, Metal Claw with 1.5x power on both full hits, and opening Violent Rush. A native positive-priority damaging attack that damages opposing HP prepares the next eligible Dual Wield attack on the following turn for +1 priority. Consumes on attempt, including miss, protection or immunity; expires at that turn end and clears on switching. No stacking, generated attacks, Z/Max attacks or self-rearming from the granted priority. Cannot be suppressed, replaced or bypassed by Mold Breaker.",
+    "shortDesc": "Dual Wield + opening Violent Rush; Metal Claw 1.5x; priority hits prepare next-turn priority."
   },
   "noseformation": {
     "desc": "Filter reduces neutral attack damage to 0.8x and super-effective damage to 0.6x. Elevate grants airborne status, subject to grounding, and one highest-stat increase per move KO. After a successful opposing attack, fires one trio of 20 BP Special Mini-Noses, choosing Steel, Electric or Rock and retargeting living foes when needed. Each is a normal attack respecting protection, Substitute and immunity. No ally triggers or recursive trios.",

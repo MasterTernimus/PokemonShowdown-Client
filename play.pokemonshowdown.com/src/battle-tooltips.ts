@@ -1862,7 +1862,7 @@ class BattleTooltips {
 			'venamskiss', 'firepledge', 'waterpledge', 'grasspledge',
 			'photongeyser', 'lightthatburnsthesky', 'radiantassault', 'roaroftime', 'spacialrend',
 			'shadowforce', 'veeveevolley', 'blastburn', 'frenzyplant', 'hydrocannon', 'snipeshot',
-			'watershuriken', 'kaboom', 'spectralscream', 'barbedweb', 'bunrakubeatdown', 'lastrespects', 'queensgambit', 'timeblade', 'crestcleave', 'swarmsnare', 'wisteriamaelstrom', 'airstreamassault', 'dragonrend', 'sirenswrath',
+			'watershuriken', 'kaboom', 'corrosivestrike', 'spectralscream', 'barbedweb', 'bunrakubeatdown', 'lastrespects', 'queensgambit', 'timeblade', 'crestcleave', 'swarmsnare', 'wisteriamaelstrom', 'airstreamassault', 'dragonrend', 'sirenswrath',
 		].includes(move.id);
 		if (physicalTie || specialTie || (move.id === 'aurasphere' && value.tryAbility('Aura Sight')) || move.id === 'terablast' && pokemon.terastallized ||
 			move.id === 'terastarstorm' && pokemon.terastallized && pokemon.speciesForme === 'Terapagos-Stellar') {
@@ -2012,7 +2012,7 @@ class BattleTooltips {
 		const modifiedStats = this.calculateModifiedStats(pokemon, serverPokemon);
 
 		// Adaptive signatures select category from staged stats before field previews.
-		if (['kaboom', 'spectralscream', 'barbedweb', 'bunrakubeatdown', 'lastrespects', 'queensgambit', 'timeblade', 'crestcleave', 'swarmsnare',
+		if (['kaboom', 'corrosivestrike', 'spectralscream', 'barbedweb', 'bunrakubeatdown', 'lastrespects', 'queensgambit', 'timeblade', 'crestcleave', 'swarmsnare',
 			'wisteriamaelstrom', 'airstreamassault', 'dragonrend', 'sirenswrath'].includes(move.id) || (move.id === 'aurasphere' && value.tryAbility('Aura Sight'))) {
 			const staged = this.calculateModifiedStats(pokemon, serverPokemon, true);
 			move = {...move, category: staged.atk > staged.spa ? 'Physical' : 'Special'};
@@ -2252,7 +2252,6 @@ class BattleTooltips {
 		if (!drillProfile && (move.flags['pulse'] || move.flags['bullet'])) {
 			value.abilityModify(1.5, "Mega Launcher");
 		}
-		if (['poisonfang','drakefang'].includes(move.id) && !move.isZ && !move.isMax && (value.tryAbility('Apex Venom') || value.tryAbility('Sirius'))) value.modify(1.5, 'Fang signature');
 		if (move.flags['bite']) {
 			value.abilityModify(1.5, "Strong Jaw");
 			value.abilityModify(1.5, "Frozen Feast");
@@ -2458,6 +2457,8 @@ class BattleTooltips {
 				value.modify(fieldPower.min, reason);
 			}
 		}
+
+		if (pokemon.volatiles['sirensveil'] && move.category !== 'Status') value.modify(1.3, 'Siren’s Veil ready');
 
 		// Burn isn't really a base power modifier, so it needs to be applied after the Tera BP floor
 		if (this.battle.gen > 2 && serverPokemon.status === 'brn' && move.id !== 'facade' && move.category === 'Physical') {

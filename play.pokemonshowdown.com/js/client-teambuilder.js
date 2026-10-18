@@ -212,6 +212,7 @@
 		deletedTeam: null,
 		deletedTeamLoc: -1,
 		updateTeamInterface: function () {
+			this.destroySearch();
 			this.deletedSet = null;
 			this.deletedSetLoc = -1;
 
@@ -1200,6 +1201,7 @@
 		 *********************************************************/
 
 		updateTeamView: function () {
+			this.destroySearch();
 			this.curChartName = '';
 			this.curChartType = '';
 
@@ -1411,7 +1413,7 @@
 			}
 			buf += '</button></div></div>';
 
-			buf += '<div class="contextual-move-details"></div></div></li>';
+			buf += '</div></li>';
 			return buf;
 		},
 
@@ -1931,6 +1933,7 @@
 		 *********************************************************/
 
 		showRosterProfiles: function () {
+			this.destroySearch();
 			this.profilesView = true;
 			this.rosterImportPreview = null;
 			this.$el.html('<div class="pad roster-page"><button class="button" name="back">Back to Teambuilder</button><h2>Pokémon lists</h2><p>Save Pokémon lists and use them to filter team selections. Saved in this browser.</p>' + this.renderRosterProfiles() +
@@ -2261,7 +2264,14 @@
             this.$('.roster-edit-status, .set-profile-status').text('Restored to roster. Team unchanged.');
         },
 
+		destroySearch: function () {
+			if (this.search) this.search.destroy();
+			this.search = null;
+			this.$el.off('scroll.teambuilderSearch');
+		},
+
 		updateSetView: function () {
+			this.destroySearch();
 			// pokemon
 			var buf = '<div class="pad">';
 			buf += '<button name="back" class="button"><i class="fa fa-chevron-left"></i> Team</button></div>';
@@ -2456,6 +2466,7 @@
 			item: 'items'
 		},
 		updateChart: function (pokemonChanged, wasIncomplete) {
+			if (!this.search) return;
 			var type = this.curChartType;
 			this.$('.pokemon-picker-filters').prop('hidden', type !== 'pokemon');
 			if (type === 'stats') {
@@ -4308,6 +4319,7 @@
 		this.toolsCommit();
 	};
 	proto.showToolsManager = function () {
+		this.destroySearch();
 		this.toolsView = true;
 		var data = this.toolsData(), html = '<div class="pad local-tools-manager">' + button('back', 'Back to Teambuilder') + '<h2>Team Builder library</h2><nav class="library-tabs" aria-label="Library sections"><button class="button" name="libraryTab" value="names">Nickname profiles</button><button class="button" name="libraryTab" value="sets">Saved sets</button><button class="button" name="libraryTab" value="lists">Pokémon lists</button></nav><p class="tools-intro">Save names and appearance rules in a nickname profile. Save moves, items, abilities and stats as reusable Pokémon sets.</p><p class="tools-note">Saved in this browser. Export a backup below to move your library to another device.</p><details class="tools-panel library-sets"><summary>Saved Pokémon sets</summary><p class="tools-note">Save a Pokémon from its Set &amp; form options in the Team Builder, or import sets here. Add a saved set to your team or replace the selected Pokémon.</p><input class="textbox build-library-search" aria-label="Search saved builds" placeholder="Search Pokémon, build, ability or moves" />';
 		if (!data.builds.length) html += '<p>No saved sets yet. Open a Pokémon and choose “Save this Pokémon…” in Set &amp; form options, or import a set below.</p>';
@@ -4832,6 +4844,7 @@
 		this.runSavedTeamValidation();
 	};
 	proto.showTeamValidation = function () {
+		this.destroySearch();
 		if (!this.validationView) {
 			this.validationMode = 'batch';
 			this.validationResults = null;
@@ -5424,34 +5437,8 @@ function renderStarterPassives(species) {
   html = html.replace('<div class="setcol setcol-icon">', '<div class="setcol setcol-icon"><div class="mobile-form-sprite" role="img" aria-label="' + BattleLog.escapeHTML(species.name) + '" style="' + Dex.getTeambuilderSprite(display, this.curTeam.gen) + '"></div>');
   var openingType = Dex.getOpeningTypeProfile(display, this.curTeam.dex);
   if (openingType) html = html.replace(/(<input[^>]*name="move1"[^>]*>)/, '$1<small class="opening-type-profile">' + BattleLog.escapeHTML(openingType) + '</small>');
-  var details = [];
-  (set.moves || []).forEach(function (name) {
-   var move = Dex.moves.get(name);
-   var effects = new Set(), passives = species.passives || [], excluded = Dex.getAbilityComponentExclusions(toID(display.ability), passives, species.id);
-   Dex.getAbilityEffects(toID(display.ability)).forEach(function (id) { if (excluded.indexOf(id) < 0) effects.add(id); });
-   passives.forEach(function (id) { Dex.getPassiveAbilityEffects(id).forEach(function (part) { effects.add(part); }); });
-   var copies = passives.filter(function (id) { return Dex.getPassiveAbilityEffects(id).has('powerdrill'); }).length +
-    (toID(display.ability) !== 'hyperdrill' && excluded.indexOf('powerdrill') < 0 && Dex.getAbilityEffects(toID(display.ability)).has('powerdrill') ? 1 : 0);
-   var drill = Dex.getDrillPowerProfile(move, function (name) { return effects.has(toID(name)); }, '', 'singles', copies);
-   if (drill) drill.text += '; no field assumed. Field, items and battle conditions can change power.';
-   var profile = Dex.getGildedMoveProfile(move, species.types, display.ability || '') || Dex.getSilkenMoveProfile(move, display.ability || '', display.item || '') || drill;
-   if (profile) details.push('<div class="contextual-move-detail"><strong>' + BattleLog.escapeHTML(move.name) + '</strong><span>' + BattleLog.escapeHTML(profile.text) + '</span></div>');
-  });
-  html = html.replace('<div class="contextual-move-details"></div>', '<div class="contextual-move-details" aria-label="Move details">' + details.join('') + '</div>');
   return html;
  };
- // Update only the details after edits so input focus and picker state stay intact.
- ['chartSet', 'chartChange'].forEach(function (method) {
-  var original = p[method];
-  p[method] = function () {
-   var result = original.apply(this, arguments);
-   if (this.el && this.curSet && this.curTeam) {
-    var fresh = $(this.renderSet(this.curSet, this.curSetLoc)).find('.contextual-move-details');
-    this.$('.teamchart > li[value="' + this.curSetLoc + '"] .contextual-move-details').replaceWith(fresh);
-   }
-   return result;
-  };
- });
  var updateStats = p.updateStatForm;
  p.updateStatForm = function () {
   var result = updateStats.apply(this, arguments);

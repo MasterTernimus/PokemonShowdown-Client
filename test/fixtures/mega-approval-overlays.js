@@ -174,3 +174,19 @@ exports.description=(id,key,text)=>beforeReviewedAliasDescription(({bedrockclaw:
 const beforeRipenSeedsDescription=exports.description;exports.description=(id,key,text)=>require('./ripen-seeds.json')[id]?.[key]??beforeRipenSeedsDescription(id,key,text);
 
 before.regigigasprimordial=['primordialconstruct','ancientassembly'];
+
+// 2026-10-18 approved removal: Toxic Armor no longer inherits Venom Armor/Battle Armor.
+const beforeToxicArmorNerfEffects=exports.effects;exports.effects=(id,expected)=>id==='toxicarmor'?['dualwield','toxicarmor','violentrush']:beforeToxicArmorNerfEffects(id,expected);
+
+// Approved Fang/Metal Claw signature removal and inherited Battle Bond Filter removal.
+const beforeRivalNerfEffects=exports.effects;
+exports.effects=(id,original)=>beforeRivalNerfEffects(id,original).filter(p=>!(['battlebond','shadowbond','apexbond','sacredbond'].includes(id)&&p==='filter'));
+const beforeRivalNerfDescription=exports.description;
+const rivalNerfDescriptions=require('./rival-signature-nerf-descriptions.json');
+exports.description=(id,key,fallback)=>rivalNerfDescriptions[id]?.[key]??beforeRivalNerfDescription(id,key,fallback);
+
+const beforeDualSixtyDescription=exports.description;
+const dualSixtyDescriptions=require('./dual-wield-sixty-descriptions.json');
+exports.description=(id,key,fallback)=>dualSixtyDescriptions[id]?.[key]??beforeDualSixtyDescription(id,key,fallback);
+
+before.gyaradosmega=['tempestfury']; // Approved once-per-battle Mega passive; base active version unchanged.

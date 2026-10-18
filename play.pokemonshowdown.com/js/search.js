@@ -72,13 +72,23 @@
         });
         this.$el.on('focusout', '.pokemon-passive-badge', closePassiveHelp);
         this.$el.on('click', '[data-entry^="pokemon|"]', closePassiveHelp);
-        this.$viewport.on('pointerdown.passivehelp', function (e) {
+        function dismissPassiveHelp(e) {
             if (!$(e.target).closest('.pokemon-passive-badge').length) closePassiveHelp();
-        });
+        }
+        this.$viewport.on('pointerdown.passivehelp', dismissPassiveHelp);
         // Constant work on scroll; the panel never intercepts wheel/touch gestures.
         this.el.addEventListener('wheel', closePassiveHelp, {passive: true});
         this.el.addEventListener('touchmove', closePassiveHelp, {passive: true});
         this.$viewport[0].addEventListener('scroll', closePassiveHelp, {passive: true});
+        this.destroy = function () {
+            this.cancelRendering();
+            closePassiveHelp();
+            this.$viewport.off('pointerdown.passivehelp', dismissPassiveHelp);
+            this.$viewport[0].removeEventListener('scroll', closePassiveHelp);
+            this.el.removeEventListener('wheel', closePassiveHelp);
+            this.el.removeEventListener('touchmove', closePassiveHelp);
+            if (window.search === this) window.search = null;
+        };
 
 		this.$el.on('click', '.more button', function (e) {
 			e.preventDefault();
