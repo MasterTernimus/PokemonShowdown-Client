@@ -35,7 +35,7 @@ describe('Battle', () => {
  it('shows starter boost markers without overwriting the selected composite ability', () => {
   const battle = new Battle({debug: true, log: ['|init|battle', '|gen|9', '|gametype|singles', '|switch|p1a: Bloom|Venusaur, L100|100/100']});
   const pokemon = battle.p1.active[0]; pokemon.ability = 'Pollen Bloom';
-  for (const id of ['overgrowactive', 'blazeactive', 'torrentactive']) {
+  for (const id of ['overgrowactive', 'blazeactive', 'torrentactive', 'cocoonactive']) {
    battle.runMinor(['-start', 'p1a: Bloom', id], {silent: '.'});
    assert(pokemon.volatiles[id]); assert.equal(pokemon.ability, 'Pollen Bloom');
    battle.runMinor(['-end', 'p1a: Bloom', id], {silent: '.'});

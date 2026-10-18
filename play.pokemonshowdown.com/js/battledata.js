@@ -39167,8 +39167,8 @@ function _array_like_to_array(arr,len){if(len==null||len>arr.length)len=arr.leng
 			"mirror": 1,
 			"metronome": 1
 		},
-		"desc": "Poisons all adjacent foes and lowers their Speed by 2 stages.",
-		"shortDesc": "Poisons all adjacent foes and lowers their Speed by 2."
+		"desc": "Poisons all adjacent foes and lowers their Speed by 1 stage.",
+		"shortDesc": "Poisons all adjacent foes and lowers their Speed by 1."
 	},
 	"toxicvial": {
 		"name": "Toxic Vial",

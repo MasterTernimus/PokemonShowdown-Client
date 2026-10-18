@@ -1889,6 +1889,7 @@ export class PokemonSprite extends Sprite {
 		yawn: ['Drowsy', 'bad'],
 		relicarmoractive: '<span class="ability-active" title="Relic Armor active: 10% less attack damage. Rock-typing weaknesses remain on this field." aria-label="Relic Armor active; no field weakness protection">Relic Armor</span> ' ,
 		relicarmorfield: '<span class="ability-active" title="Relic Armor active: 10% less attack damage; Rock typing adds no Fighting, Ground, Steel, Water or Grass weakness on this field." aria-label="Relic Armor active; field weakness protection">Relic Armor: Field</span> ' ,
+		cocoonactive: '<span class="ability-active ability-active-cocoon" title="Cocoon intact: blocks one damaging move, status and secondary effects" aria-label="Cocoon intact">Cocoon</span> ',
 		blazeactive: '<span class="ability-active ability-active-blaze" title="Blaze active" aria-label="Blaze active">Blaze</span> ',
 		torrentactive: '<span class="ability-active ability-active-torrent" title="Torrent active" aria-label="Torrent active">Torrent</span> ',
 		overgrowactive: '<span class="ability-active ability-active-overgrow" title="Overgrow active" aria-label="Overgrow active">Overgrow</span> ',

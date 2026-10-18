@@ -1,7 +1,7 @@
 {
-	"sourceHead": "8ad1c7a2a2e86777ee7b9b2fac6e553bf80a3a55",
+	"sourceHead": "26568256cd1897ffb466f4e50bc4e31b824cbcb3",
 	"base": "6592c2cdadcff2e643e59ac9e8f28870fe3d539c",
-	"sourceDataSHA256": "cd75baa8a1eb8273625a58e14c680a61516c6dc2d3b29cccd08b1561b0ba3c63",
+	"sourceDataSHA256": "e238385589e4a9ad0226a9d6aad9d9fae1ba90a816fa24233fee209f1db0bb4d",
 	"files": [
 		"data/abilities.ts",
 		"data/ability-components.ts",
@@ -67608,8 +67608,8 @@
 					"mirror": 1,
 					"metronome": 1
 				},
-				"desc": "Poisons all adjacent foes and lowers their Speed by 2 stages.",
-				"shortDesc": "Poisons all adjacent foes and lowers their Speed by 2."
+				"desc": "Poisons all adjacent foes and lowers their Speed by 1 stage.",
+				"shortDesc": "Poisons all adjacent foes and lowers their Speed by 1."
 			},
 			"toxicvial": {
 				"name": "Toxic Vial",

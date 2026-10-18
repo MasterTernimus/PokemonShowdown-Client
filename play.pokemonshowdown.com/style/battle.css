@@ -1107,7 +1107,8 @@ License: GPLv2
 /* Preserve crisp pixels on these supplied back sprites at fractional device scale. */
 .battle img.pixelated[src*="/gen5-back"][src*="/lopunny-mega.png"],
 .battle img.pixelated[src*="/gen5ani-back"][src*="/electivire.gif"],
-.battle img.pixelated[src*="/gen5ani-back"][src*="/corviknight.gif"] {
+.battle img.pixelated[src*="/gen5ani-back"][src*="/corviknight.gif"],
+.battle img.pixelated[src*="/gen5ani-back"][src*="/chesnaught.gif"] {
  image-rendering: pixelated;
 }
 
@@ -1174,3 +1175,5 @@ License: GPLv2
 .statbar .status .effect-corrosive { color: #633878; background: #f2e8f7; border-color: #b98fcb; }
 
 .statbar .status .sealing-status {background:#7136a8;color:#fff;border-color:#c292ff;}
+
+.statbar .status .ability-active-cocoon { color: #4b4665; background: #f2eff9; border-color: #aaa0c5; }
