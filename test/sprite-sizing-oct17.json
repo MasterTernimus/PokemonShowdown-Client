@@ -1,0 +1,2450 @@
+[
+  {
+    "species": "Ninetales-Alola",
+    "shiny": false,
+    "front": false,
+    "options": {
+      "gen": 9
+    },
+    "gen": 9,
+    "w": 70,
+    "h": 72,
+    "y": 0,
+    "url": "/sprites/gen5-back/ninetales-alola.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/ninetales.mp3"
+  },
+  {
+    "species": "Ninetales-Alola",
+    "shiny": false,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "teamPreview": true,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 76,
+    "h": 78,
+    "y": 0,
+    "url": "/sprites/gen5-back/ninetales-alola.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/ninetales.mp3"
+  },
+  {
+    "species": "Ninetales-Alola",
+    "shiny": false,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 138,
+    "h": 142,
+    "y": 0,
+    "url": "/sprites/gen5-back/ninetales-alola.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/ninetales.mp3"
+  },
+  {
+    "species": "Ninetales-Alola",
+    "shiny": false,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "dynamax": true
+    },
+    "gen": 9,
+    "w": 276,
+    "h": 284,
+    "y": -22,
+    "url": "/sprites/gen5-back/ninetales-alola.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/ninetales.mp3"
+  },
+  {
+    "species": "Ninetales-Alola",
+    "shiny": false,
+    "front": true,
+    "options": {
+      "gen": 9
+    },
+    "gen": 9,
+    "w": 74,
+    "h": 72,
+    "y": 0,
+    "url": "/sprites/gen5/ninetales-alola.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/ninetales.mp3"
+  },
+  {
+    "species": "Ninetales-Alola",
+    "shiny": false,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "teamPreview": true,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 72,
+    "h": 70,
+    "y": 0,
+    "url": "/sprites/gen5/ninetales-alola.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/ninetales.mp3"
+  },
+  {
+    "species": "Ninetales-Alola",
+    "shiny": false,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 146,
+    "h": 142,
+    "y": 0,
+    "url": "/sprites/gen5/ninetales-alola.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/ninetales.mp3"
+  },
+  {
+    "species": "Ninetales-Alola",
+    "shiny": false,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "dynamax": true
+    },
+    "gen": 9,
+    "w": 292,
+    "h": 284,
+    "y": -22,
+    "url": "/sprites/gen5/ninetales-alola.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/ninetales.mp3"
+  },
+  {
+    "species": "Ninetales-Alola",
+    "shiny": true,
+    "front": false,
+    "options": {
+      "gen": 9
+    },
+    "gen": 9,
+    "w": 70,
+    "h": 72,
+    "y": 0,
+    "url": "/sprites/gen5-back-shiny/ninetales-alola.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/ninetales.mp3"
+  },
+  {
+    "species": "Ninetales-Alola",
+    "shiny": true,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "teamPreview": true,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 76,
+    "h": 78,
+    "y": 0,
+    "url": "/sprites/gen5-back-shiny/ninetales-alola.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/ninetales.mp3"
+  },
+  {
+    "species": "Ninetales-Alola",
+    "shiny": true,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 138,
+    "h": 142,
+    "y": 0,
+    "url": "/sprites/gen5-back-shiny/ninetales-alola.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/ninetales.mp3"
+  },
+  {
+    "species": "Ninetales-Alola",
+    "shiny": true,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "dynamax": true
+    },
+    "gen": 9,
+    "w": 276,
+    "h": 284,
+    "y": -22,
+    "url": "/sprites/gen5-back-shiny/ninetales-alola.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/ninetales.mp3"
+  },
+  {
+    "species": "Ninetales-Alola",
+    "shiny": true,
+    "front": true,
+    "options": {
+      "gen": 9
+    },
+    "gen": 9,
+    "w": 74,
+    "h": 72,
+    "y": 0,
+    "url": "/sprites/gen5-shiny/ninetales-alola.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/ninetales.mp3"
+  },
+  {
+    "species": "Ninetales-Alola",
+    "shiny": true,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "teamPreview": true,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 72,
+    "h": 70,
+    "y": 0,
+    "url": "/sprites/gen5-shiny/ninetales-alola.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/ninetales.mp3"
+  },
+  {
+    "species": "Ninetales-Alola",
+    "shiny": true,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 146,
+    "h": 142,
+    "y": 0,
+    "url": "/sprites/gen5-shiny/ninetales-alola.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/ninetales.mp3"
+  },
+  {
+    "species": "Ninetales-Alola",
+    "shiny": true,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "dynamax": true
+    },
+    "gen": 9,
+    "w": 292,
+    "h": 284,
+    "y": -22,
+    "url": "/sprites/gen5-shiny/ninetales-alola.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/ninetales.mp3"
+  },
+  {
+    "species": "Ursaluna-Bloodmoon",
+    "shiny": false,
+    "front": false,
+    "options": {
+      "gen": 9
+    },
+    "gen": 9,
+    "w": 72,
+    "h": 72,
+    "y": 0,
+    "url": "/sprites/gen5-back/ursaluna-bloodmoon.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/ursaluna.mp3"
+  },
+  {
+    "species": "Ursaluna-Bloodmoon",
+    "shiny": false,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "teamPreview": true,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 78,
+    "h": 78,
+    "y": 0,
+    "url": "/sprites/gen5-back/ursaluna-bloodmoon.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/ursaluna.mp3"
+  },
+  {
+    "species": "Ursaluna-Bloodmoon",
+    "shiny": false,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 156,
+    "h": 156,
+    "y": 0,
+    "url": "/sprites/gen5-back/ursaluna-bloodmoon.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/ursaluna.mp3"
+  },
+  {
+    "species": "Ursaluna-Bloodmoon",
+    "shiny": false,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "dynamax": true
+    },
+    "gen": 9,
+    "w": 312,
+    "h": 312,
+    "y": -22,
+    "url": "/sprites/gen5-back/ursaluna-bloodmoon.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/ursaluna.mp3"
+  },
+  {
+    "species": "Ursaluna-Bloodmoon",
+    "shiny": false,
+    "front": true,
+    "options": {
+      "gen": 9
+    },
+    "gen": 9,
+    "w": 80,
+    "h": 74,
+    "y": 0,
+    "url": "/sprites/gen5/ursaluna-bloodmoon.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/ursaluna.mp3"
+  },
+  {
+    "species": "Ursaluna-Bloodmoon",
+    "shiny": false,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "teamPreview": true,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 72,
+    "h": 67,
+    "y": 0,
+    "url": "/sprites/gen5/ursaluna-bloodmoon.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/ursaluna.mp3"
+  },
+  {
+    "species": "Ursaluna-Bloodmoon",
+    "shiny": false,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 172,
+    "h": 160,
+    "y": 0,
+    "url": "/sprites/gen5/ursaluna-bloodmoon.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/ursaluna.mp3"
+  },
+  {
+    "species": "Ursaluna-Bloodmoon",
+    "shiny": false,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "dynamax": true
+    },
+    "gen": 9,
+    "w": 344,
+    "h": 320,
+    "y": -22,
+    "url": "/sprites/gen5/ursaluna-bloodmoon.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/ursaluna.mp3"
+  },
+  {
+    "species": "Ursaluna-Bloodmoon",
+    "shiny": true,
+    "front": false,
+    "options": {
+      "gen": 9
+    },
+    "gen": 9,
+    "w": 72,
+    "h": 72,
+    "y": 0,
+    "url": "/sprites/gen5-back-shiny/ursaluna-bloodmoon.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/ursaluna.mp3"
+  },
+  {
+    "species": "Ursaluna-Bloodmoon",
+    "shiny": true,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "teamPreview": true,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 78,
+    "h": 78,
+    "y": 0,
+    "url": "/sprites/gen5-back-shiny/ursaluna-bloodmoon.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/ursaluna.mp3"
+  },
+  {
+    "species": "Ursaluna-Bloodmoon",
+    "shiny": true,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 156,
+    "h": 156,
+    "y": 0,
+    "url": "/sprites/gen5-back-shiny/ursaluna-bloodmoon.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/ursaluna.mp3"
+  },
+  {
+    "species": "Ursaluna-Bloodmoon",
+    "shiny": true,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "dynamax": true
+    },
+    "gen": 9,
+    "w": 312,
+    "h": 312,
+    "y": -22,
+    "url": "/sprites/gen5-back-shiny/ursaluna-bloodmoon.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/ursaluna.mp3"
+  },
+  {
+    "species": "Ursaluna-Bloodmoon",
+    "shiny": true,
+    "front": true,
+    "options": {
+      "gen": 9
+    },
+    "gen": 9,
+    "w": 80,
+    "h": 74,
+    "y": 0,
+    "url": "/sprites/gen5-shiny/ursaluna-bloodmoon.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/ursaluna.mp3"
+  },
+  {
+    "species": "Ursaluna-Bloodmoon",
+    "shiny": true,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "teamPreview": true,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 72,
+    "h": 67,
+    "y": 0,
+    "url": "/sprites/gen5-shiny/ursaluna-bloodmoon.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/ursaluna.mp3"
+  },
+  {
+    "species": "Ursaluna-Bloodmoon",
+    "shiny": true,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 172,
+    "h": 160,
+    "y": 0,
+    "url": "/sprites/gen5-shiny/ursaluna-bloodmoon.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/ursaluna.mp3"
+  },
+  {
+    "species": "Ursaluna-Bloodmoon",
+    "shiny": true,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "dynamax": true
+    },
+    "gen": 9,
+    "w": 344,
+    "h": 320,
+    "y": -22,
+    "url": "/sprites/gen5-shiny/ursaluna-bloodmoon.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/ursaluna.mp3"
+  },
+  {
+    "species": "Infernape-Mega",
+    "shiny": false,
+    "front": false,
+    "options": {
+      "gen": 9
+    },
+    "gen": 9,
+    "w": 82,
+    "h": 77,
+    "y": 0,
+    "url": "/sprites/gen5-back/infernape-alt.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/infernape-mega.mp3"
+  },
+  {
+    "species": "Infernape-Mega",
+    "shiny": false,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "teamPreview": true,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 84,
+    "h": 78,
+    "y": 0,
+    "url": "/sprites/gen5-back/infernape-alt.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/infernape-mega.mp3"
+  },
+  {
+    "species": "Infernape-Mega",
+    "shiny": false,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 146,
+    "h": 136,
+    "y": 0,
+    "url": "/sprites/gen5-back/infernape-alt.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/infernape-mega.mp3"
+  },
+  {
+    "species": "Infernape-Mega",
+    "shiny": false,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "dynamax": true
+    },
+    "gen": 9,
+    "w": 292,
+    "h": 272,
+    "y": -22,
+    "url": "/sprites/gen5-back/infernape-alt.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/infernape-mega.mp3"
+  },
+  {
+    "species": "Infernape-Mega",
+    "shiny": false,
+    "front": true,
+    "options": {
+      "gen": 9
+    },
+    "gen": 9,
+    "w": 84,
+    "h": 72,
+    "y": 0,
+    "url": "/sprites/gen5/infernape-alt.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/infernape-mega.mp3"
+  },
+  {
+    "species": "Infernape-Mega",
+    "shiny": false,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "teamPreview": true,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 78,
+    "h": 67,
+    "y": 0,
+    "url": "/sprites/gen5/infernape-alt.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/infernape-mega.mp3"
+  },
+  {
+    "species": "Infernape-Mega",
+    "shiny": false,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 172,
+    "h": 148,
+    "y": 0,
+    "url": "/sprites/gen5/infernape-alt.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/infernape-mega.mp3"
+  },
+  {
+    "species": "Infernape-Mega",
+    "shiny": false,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "dynamax": true
+    },
+    "gen": 9,
+    "w": 344,
+    "h": 296,
+    "y": -22,
+    "url": "/sprites/gen5/infernape-alt.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/infernape-mega.mp3"
+  },
+  {
+    "species": "Infernape-Mega",
+    "shiny": true,
+    "front": false,
+    "options": {
+      "gen": 9
+    },
+    "gen": 9,
+    "w": 82,
+    "h": 77,
+    "y": 0,
+    "url": "/sprites/gen5-back-shiny/infernape-alt.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/infernape-mega.mp3"
+  },
+  {
+    "species": "Infernape-Mega",
+    "shiny": true,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "teamPreview": true,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 84,
+    "h": 78,
+    "y": 0,
+    "url": "/sprites/gen5-back-shiny/infernape-alt.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/infernape-mega.mp3"
+  },
+  {
+    "species": "Infernape-Mega",
+    "shiny": true,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 146,
+    "h": 136,
+    "y": 0,
+    "url": "/sprites/gen5-back-shiny/infernape-alt.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/infernape-mega.mp3"
+  },
+  {
+    "species": "Infernape-Mega",
+    "shiny": true,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "dynamax": true
+    },
+    "gen": 9,
+    "w": 292,
+    "h": 272,
+    "y": -22,
+    "url": "/sprites/gen5-back-shiny/infernape-alt.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/infernape-mega.mp3"
+  },
+  {
+    "species": "Infernape-Mega",
+    "shiny": true,
+    "front": true,
+    "options": {
+      "gen": 9
+    },
+    "gen": 9,
+    "w": 84,
+    "h": 72,
+    "y": 0,
+    "url": "/sprites/gen5-shiny/infernape-alt.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/infernape-mega.mp3"
+  },
+  {
+    "species": "Infernape-Mega",
+    "shiny": true,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "teamPreview": true,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 78,
+    "h": 67,
+    "y": 0,
+    "url": "/sprites/gen5-shiny/infernape-alt.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/infernape-mega.mp3"
+  },
+  {
+    "species": "Infernape-Mega",
+    "shiny": true,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 172,
+    "h": 148,
+    "y": 0,
+    "url": "/sprites/gen5-shiny/infernape-alt.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/infernape-mega.mp3"
+  },
+  {
+    "species": "Infernape-Mega",
+    "shiny": true,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "dynamax": true
+    },
+    "gen": 9,
+    "w": 344,
+    "h": 296,
+    "y": -22,
+    "url": "/sprites/gen5-shiny/infernape-alt.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/infernape-mega.mp3"
+  },
+  {
+    "species": "Ninetales",
+    "shiny": false,
+    "front": false,
+    "options": {
+      "gen": 9
+    },
+    "gen": 5,
+    "w": 52,
+    "h": 43,
+    "y": 0,
+    "url": "/sprites/gen5ani-back/ninetales.gif?v=ninetales-icons-20260919",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/ninetales.mp3"
+  },
+  {
+    "species": "Ninetales",
+    "shiny": false,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "teamPreview": true,
+      "noScale": true
+    },
+    "gen": 5,
+    "w": 78,
+    "h": 65,
+    "y": 0,
+    "url": "/sprites/gen5ani-back/ninetales.gif?v=ninetales-icons-20260919",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/ninetales.mp3"
+  },
+  {
+    "species": "Ninetales",
+    "shiny": false,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "noScale": true
+    },
+    "gen": 5,
+    "w": 79,
+    "h": 66,
+    "y": 0,
+    "url": "/sprites/gen5ani-back/ninetales.gif?v=ninetales-icons-20260919",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/ninetales.mp3"
+  },
+  {
+    "species": "Ninetales",
+    "shiny": false,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "dynamax": true
+    },
+    "gen": 5,
+    "w": 158,
+    "h": 132,
+    "y": -22,
+    "url": "/sprites/gen5ani-back/ninetales.gif?v=ninetales-icons-20260919",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/ninetales.mp3"
+  },
+  {
+    "species": "Ninetales",
+    "shiny": false,
+    "front": true,
+    "options": {
+      "gen": 9
+    },
+    "gen": 5,
+    "w": 64,
+    "h": 63,
+    "y": 0,
+    "url": "/sprites/gen5ani/ninetales.gif?v=ninetales-icons-20260919",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/ninetales.mp3"
+  },
+  {
+    "species": "Ninetales",
+    "shiny": false,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "teamPreview": true,
+      "noScale": true
+    },
+    "gen": 5,
+    "w": 72,
+    "h": 71,
+    "y": 0,
+    "url": "/sprites/gen5ani/ninetales.gif?v=ninetales-icons-20260919",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/ninetales.mp3"
+  },
+  {
+    "species": "Ninetales",
+    "shiny": false,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "noScale": true
+    },
+    "gen": 5,
+    "w": 74,
+    "h": 73,
+    "y": 0,
+    "url": "/sprites/gen5ani/ninetales.gif?v=ninetales-icons-20260919",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/ninetales.mp3"
+  },
+  {
+    "species": "Ninetales",
+    "shiny": false,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "dynamax": true
+    },
+    "gen": 5,
+    "w": 148,
+    "h": 146,
+    "y": -22,
+    "url": "/sprites/gen5ani/ninetales.gif?v=ninetales-icons-20260919",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/ninetales.mp3"
+  },
+  {
+    "species": "Ninetales",
+    "shiny": true,
+    "front": false,
+    "options": {
+      "gen": 9
+    },
+    "gen": 9,
+    "w": 52,
+    "h": 52,
+    "y": 0,
+    "url": "/sprites/gen5-back-shiny/ninetales.png?v=ninetales-icons-20260919",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/ninetales.mp3"
+  },
+  {
+    "species": "Ninetales",
+    "shiny": true,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "teamPreview": true,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 78,
+    "h": 78,
+    "y": 0,
+    "url": "/sprites/gen5-back-shiny/ninetales.png?v=ninetales-icons-20260919",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/ninetales.mp3"
+  },
+  {
+    "species": "Ninetales",
+    "shiny": true,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 192,
+    "h": 192,
+    "y": 0,
+    "url": "/sprites/gen5-back-shiny/ninetales.png?v=ninetales-icons-20260919",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/ninetales.mp3"
+  },
+  {
+    "species": "Ninetales",
+    "shiny": true,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "dynamax": true
+    },
+    "gen": 9,
+    "w": 384,
+    "h": 384,
+    "y": -22,
+    "url": "/sprites/gen5-back-shiny/ninetales.png?v=ninetales-icons-20260919",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/ninetales.mp3"
+  },
+  {
+    "species": "Ninetales",
+    "shiny": true,
+    "front": true,
+    "options": {
+      "gen": 9
+    },
+    "gen": 9,
+    "w": 64,
+    "h": 64,
+    "y": 0,
+    "url": "/sprites/gen5-shiny/ninetales.png?v=ninetales-icons-20260919",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/ninetales.mp3"
+  },
+  {
+    "species": "Ninetales",
+    "shiny": true,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "teamPreview": true,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 72,
+    "h": 72,
+    "y": 0,
+    "url": "/sprites/gen5-shiny/ninetales.png?v=ninetales-icons-20260919",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/ninetales.mp3"
+  },
+  {
+    "species": "Ninetales",
+    "shiny": true,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 192,
+    "h": 192,
+    "y": 0,
+    "url": "/sprites/gen5-shiny/ninetales.png?v=ninetales-icons-20260919",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/ninetales.mp3"
+  },
+  {
+    "species": "Ninetales",
+    "shiny": true,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "dynamax": true
+    },
+    "gen": 9,
+    "w": 384,
+    "h": 384,
+    "y": -22,
+    "url": "/sprites/gen5-shiny/ninetales.png?v=ninetales-icons-20260919",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/ninetales.mp3"
+  },
+  {
+    "species": "Ninetales-Alt",
+    "shiny": false,
+    "front": false,
+    "options": {
+      "gen": 9
+    },
+    "gen": 9,
+    "w": 72,
+    "h": 72,
+    "y": 0,
+    "url": "/sprites/gen5-back/ninetales-alt.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/ninetales.mp3"
+  },
+  {
+    "species": "Ninetales-Alt",
+    "shiny": false,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "teamPreview": true,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 78,
+    "h": 78,
+    "y": 0,
+    "url": "/sprites/gen5-back/ninetales-alt.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/ninetales.mp3"
+  },
+  {
+    "species": "Ninetales-Alt",
+    "shiny": false,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 192,
+    "h": 192,
+    "y": 0,
+    "url": "/sprites/gen5-back/ninetales-alt.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/ninetales.mp3"
+  },
+  {
+    "species": "Ninetales-Alt",
+    "shiny": false,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "dynamax": true
+    },
+    "gen": 9,
+    "w": 384,
+    "h": 384,
+    "y": -22,
+    "url": "/sprites/gen5-back/ninetales-alt.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/ninetales.mp3"
+  },
+  {
+    "species": "Ninetales-Alt",
+    "shiny": false,
+    "front": true,
+    "options": {
+      "gen": 9
+    },
+    "gen": 9,
+    "w": 80,
+    "h": 80,
+    "y": 0,
+    "url": "/sprites/gen5/ninetales-alt.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/ninetales.mp3"
+  },
+  {
+    "species": "Ninetales-Alt",
+    "shiny": false,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "teamPreview": true,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 72,
+    "h": 72,
+    "y": 0,
+    "url": "/sprites/gen5/ninetales-alt.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/ninetales.mp3"
+  },
+  {
+    "species": "Ninetales-Alt",
+    "shiny": false,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 192,
+    "h": 192,
+    "y": 0,
+    "url": "/sprites/gen5/ninetales-alt.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/ninetales.mp3"
+  },
+  {
+    "species": "Ninetales-Alt",
+    "shiny": false,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "dynamax": true
+    },
+    "gen": 9,
+    "w": 384,
+    "h": 384,
+    "y": -22,
+    "url": "/sprites/gen5/ninetales-alt.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/ninetales.mp3"
+  },
+  {
+    "species": "Ninetales-Alt",
+    "shiny": true,
+    "front": false,
+    "options": {
+      "gen": 9
+    },
+    "gen": 9,
+    "w": 72,
+    "h": 72,
+    "y": 0,
+    "url": "/sprites/gen5-back-shiny/ninetales-alt.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/ninetales.mp3"
+  },
+  {
+    "species": "Ninetales-Alt",
+    "shiny": true,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "teamPreview": true,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 78,
+    "h": 78,
+    "y": 0,
+    "url": "/sprites/gen5-back-shiny/ninetales-alt.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/ninetales.mp3"
+  },
+  {
+    "species": "Ninetales-Alt",
+    "shiny": true,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 192,
+    "h": 192,
+    "y": 0,
+    "url": "/sprites/gen5-back-shiny/ninetales-alt.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/ninetales.mp3"
+  },
+  {
+    "species": "Ninetales-Alt",
+    "shiny": true,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "dynamax": true
+    },
+    "gen": 9,
+    "w": 384,
+    "h": 384,
+    "y": -22,
+    "url": "/sprites/gen5-back-shiny/ninetales-alt.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/ninetales.mp3"
+  },
+  {
+    "species": "Ninetales-Alt",
+    "shiny": true,
+    "front": true,
+    "options": {
+      "gen": 9
+    },
+    "gen": 9,
+    "w": 80,
+    "h": 80,
+    "y": 0,
+    "url": "/sprites/gen5-shiny/ninetales-alt.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/ninetales.mp3"
+  },
+  {
+    "species": "Ninetales-Alt",
+    "shiny": true,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "teamPreview": true,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 72,
+    "h": 72,
+    "y": 0,
+    "url": "/sprites/gen5-shiny/ninetales-alt.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/ninetales.mp3"
+  },
+  {
+    "species": "Ninetales-Alt",
+    "shiny": true,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 192,
+    "h": 192,
+    "y": 0,
+    "url": "/sprites/gen5-shiny/ninetales-alt.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/ninetales.mp3"
+  },
+  {
+    "species": "Ninetales-Alt",
+    "shiny": true,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "dynamax": true
+    },
+    "gen": 9,
+    "w": 384,
+    "h": 384,
+    "y": -22,
+    "url": "/sprites/gen5-shiny/ninetales-alt.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/ninetales.mp3"
+  },
+  {
+    "species": "Ursaluna",
+    "shiny": false,
+    "front": false,
+    "options": {
+      "gen": 9
+    },
+    "gen": 9,
+    "w": 72,
+    "h": 60,
+    "y": 0,
+    "url": "/sprites/gen5-back/ursaluna.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/ursaluna.mp3"
+  },
+  {
+    "species": "Ursaluna",
+    "shiny": false,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "teamPreview": true,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 78,
+    "h": 65,
+    "y": 0,
+    "url": "/sprites/gen5-back/ursaluna.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/ursaluna.mp3"
+  },
+  {
+    "species": "Ursaluna",
+    "shiny": false,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 162,
+    "h": 134,
+    "y": 0,
+    "url": "/sprites/gen5-back/ursaluna.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/ursaluna.mp3"
+  },
+  {
+    "species": "Ursaluna",
+    "shiny": false,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "dynamax": true
+    },
+    "gen": 9,
+    "w": 324,
+    "h": 268,
+    "y": -22,
+    "url": "/sprites/gen5-back/ursaluna.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/ursaluna.mp3"
+  },
+  {
+    "species": "Ursaluna",
+    "shiny": false,
+    "front": true,
+    "options": {
+      "gen": 9
+    },
+    "gen": 9,
+    "w": 78,
+    "h": 74,
+    "y": 0,
+    "url": "/sprites/gen5ani/ursaluna.gif",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/ursaluna.mp3"
+  },
+  {
+    "species": "Ursaluna",
+    "shiny": false,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "teamPreview": true,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 72,
+    "h": 68,
+    "y": 0,
+    "url": "/sprites/gen5ani/ursaluna.gif",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/ursaluna.mp3"
+  },
+  {
+    "species": "Ursaluna",
+    "shiny": false,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 78,
+    "h": 74,
+    "y": 0,
+    "url": "/sprites/gen5ani/ursaluna.gif",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/ursaluna.mp3"
+  },
+  {
+    "species": "Ursaluna",
+    "shiny": false,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "dynamax": true
+    },
+    "gen": 9,
+    "w": 156,
+    "h": 148,
+    "y": -22,
+    "url": "/sprites/gen5ani/ursaluna.gif",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/ursaluna.mp3"
+  },
+  {
+    "species": "Ursaluna",
+    "shiny": true,
+    "front": false,
+    "options": {
+      "gen": 9
+    },
+    "gen": 9,
+    "w": 72,
+    "h": 60,
+    "y": 0,
+    "url": "/sprites/gen5-back-shiny/ursaluna.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/ursaluna.mp3"
+  },
+  {
+    "species": "Ursaluna",
+    "shiny": true,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "teamPreview": true,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 78,
+    "h": 65,
+    "y": 0,
+    "url": "/sprites/gen5-back-shiny/ursaluna.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/ursaluna.mp3"
+  },
+  {
+    "species": "Ursaluna",
+    "shiny": true,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 162,
+    "h": 134,
+    "y": 0,
+    "url": "/sprites/gen5-back-shiny/ursaluna.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/ursaluna.mp3"
+  },
+  {
+    "species": "Ursaluna",
+    "shiny": true,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "dynamax": true
+    },
+    "gen": 9,
+    "w": 324,
+    "h": 268,
+    "y": -22,
+    "url": "/sprites/gen5-back-shiny/ursaluna.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/ursaluna.mp3"
+  },
+  {
+    "species": "Ursaluna",
+    "shiny": true,
+    "front": true,
+    "options": {
+      "gen": 9
+    },
+    "gen": 9,
+    "w": 80,
+    "h": 68,
+    "y": 0,
+    "url": "/sprites/gen5-shiny/ursaluna.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/ursaluna.mp3"
+  },
+  {
+    "species": "Ursaluna",
+    "shiny": true,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "teamPreview": true,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 72,
+    "h": 62,
+    "y": 0,
+    "url": "/sprites/gen5-shiny/ursaluna.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/ursaluna.mp3"
+  },
+  {
+    "species": "Ursaluna",
+    "shiny": true,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 152,
+    "h": 130,
+    "y": 0,
+    "url": "/sprites/gen5-shiny/ursaluna.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/ursaluna.mp3"
+  },
+  {
+    "species": "Ursaluna",
+    "shiny": true,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "dynamax": true
+    },
+    "gen": 9,
+    "w": 304,
+    "h": 260,
+    "y": -22,
+    "url": "/sprites/gen5-shiny/ursaluna.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/ursaluna.mp3"
+  },
+  {
+    "species": "Infernape",
+    "shiny": false,
+    "front": false,
+    "options": {
+      "gen": 9
+    },
+    "gen": 5,
+    "w": 72,
+    "h": 68,
+    "y": 0,
+    "url": "/sprites/gen5ani-back/infernape.gif",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/infernape.mp3"
+  },
+  {
+    "species": "Infernape",
+    "shiny": false,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "teamPreview": true,
+      "noScale": true
+    },
+    "gen": 5,
+    "w": 78,
+    "h": 73,
+    "y": 0,
+    "url": "/sprites/gen5ani-back/infernape.gif",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/infernape.mp3"
+  },
+  {
+    "species": "Infernape",
+    "shiny": false,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "noScale": true
+    },
+    "gen": 5,
+    "w": 83,
+    "h": 78,
+    "y": 0,
+    "url": "/sprites/gen5ani-back/infernape.gif",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/infernape.mp3"
+  },
+  {
+    "species": "Infernape",
+    "shiny": false,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "dynamax": true
+    },
+    "gen": 5,
+    "w": 166,
+    "h": 156,
+    "y": -22,
+    "url": "/sprites/gen5ani-back/infernape.gif",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/infernape.mp3"
+  },
+  {
+    "species": "Infernape",
+    "shiny": false,
+    "front": true,
+    "options": {
+      "gen": 9
+    },
+    "gen": 5,
+    "w": 80,
+    "h": 74,
+    "y": 0,
+    "url": "/sprites/gen5ani/infernape.gif",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/infernape.mp3"
+  },
+  {
+    "species": "Infernape",
+    "shiny": false,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "teamPreview": true,
+      "noScale": true
+    },
+    "gen": 5,
+    "w": 72,
+    "h": 67,
+    "y": 0,
+    "url": "/sprites/gen5ani/infernape.gif",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/infernape.mp3"
+  },
+  {
+    "species": "Infernape",
+    "shiny": false,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "noScale": true
+    },
+    "gen": 5,
+    "w": 80,
+    "h": 74,
+    "y": 0,
+    "url": "/sprites/gen5ani/infernape.gif",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/infernape.mp3"
+  },
+  {
+    "species": "Infernape",
+    "shiny": false,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "dynamax": true
+    },
+    "gen": 5,
+    "w": 160,
+    "h": 148,
+    "y": -22,
+    "url": "/sprites/gen5ani/infernape.gif",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/infernape.mp3"
+  },
+  {
+    "species": "Infernape",
+    "shiny": true,
+    "front": false,
+    "options": {
+      "gen": 9
+    },
+    "gen": 9,
+    "w": 72,
+    "h": 68,
+    "y": 0,
+    "url": "/sprites/gen5-back-shiny/infernape.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/infernape.mp3"
+  },
+  {
+    "species": "Infernape",
+    "shiny": true,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "teamPreview": true,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 78,
+    "h": 74,
+    "y": 0,
+    "url": "/sprites/gen5-back-shiny/infernape.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/infernape.mp3"
+  },
+  {
+    "species": "Infernape",
+    "shiny": true,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 144,
+    "h": 136,
+    "y": 0,
+    "url": "/sprites/gen5-back-shiny/infernape.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/infernape.mp3"
+  },
+  {
+    "species": "Infernape",
+    "shiny": true,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "dynamax": true
+    },
+    "gen": 9,
+    "w": 288,
+    "h": 272,
+    "y": -22,
+    "url": "/sprites/gen5-back-shiny/infernape.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/infernape.mp3"
+  },
+  {
+    "species": "Infernape",
+    "shiny": true,
+    "front": true,
+    "options": {
+      "gen": 9
+    },
+    "gen": 9,
+    "w": 80,
+    "h": 60,
+    "y": 0,
+    "url": "/sprites/gen5-shiny/infernape.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/infernape.mp3"
+  },
+  {
+    "species": "Infernape",
+    "shiny": true,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "teamPreview": true,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 72,
+    "h": 54,
+    "y": 0,
+    "url": "/sprites/gen5-shiny/infernape.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/infernape.mp3"
+  },
+  {
+    "species": "Infernape",
+    "shiny": true,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 148,
+    "h": 110,
+    "y": 0,
+    "url": "/sprites/gen5-shiny/infernape.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/infernape.mp3"
+  },
+  {
+    "species": "Infernape",
+    "shiny": true,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "dynamax": true
+    },
+    "gen": 9,
+    "w": 296,
+    "h": 220,
+    "y": -22,
+    "url": "/sprites/gen5-shiny/infernape.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/infernape.mp3"
+  },
+  {
+    "species": "Talonflame",
+    "shiny": false,
+    "front": false,
+    "options": {
+      "gen": 9
+    },
+    "gen": 5,
+    "w": 104,
+    "h": 78,
+    "y": 0,
+    "url": "/sprites/gen5ani-back/talonflame.gif",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/talonflame.mp3"
+  },
+  {
+    "species": "Talonflame",
+    "shiny": false,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "teamPreview": true,
+      "noScale": true
+    },
+    "gen": 5,
+    "w": 113,
+    "h": 86,
+    "y": 0,
+    "url": "/sprites/gen5ani-back/talonflame.gif",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/talonflame.mp3"
+  },
+  {
+    "species": "Talonflame",
+    "shiny": false,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "noScale": true
+    },
+    "gen": 5,
+    "w": 128,
+    "h": 96,
+    "y": 0,
+    "url": "/sprites/gen5ani-back/talonflame.gif",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/talonflame.mp3"
+  },
+  {
+    "species": "Talonflame",
+    "shiny": false,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "dynamax": true
+    },
+    "gen": 5,
+    "w": 256,
+    "h": 192,
+    "y": -22,
+    "url": "/sprites/gen5ani-back/talonflame.gif",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/talonflame.mp3"
+  },
+  {
+    "species": "Talonflame",
+    "shiny": false,
+    "front": true,
+    "options": {
+      "gen": 9
+    },
+    "gen": 5,
+    "w": 116,
+    "h": 87,
+    "y": 0,
+    "url": "/sprites/gen5ani/talonflame.gif",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/talonflame.mp3"
+  },
+  {
+    "species": "Talonflame",
+    "shiny": false,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "teamPreview": true,
+      "noScale": true
+    },
+    "gen": 5,
+    "w": 104,
+    "h": 78,
+    "y": 0,
+    "url": "/sprites/gen5ani/talonflame.gif",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/talonflame.mp3"
+  },
+  {
+    "species": "Talonflame",
+    "shiny": false,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "noScale": true
+    },
+    "gen": 5,
+    "w": 128,
+    "h": 96,
+    "y": 0,
+    "url": "/sprites/gen5ani/talonflame.gif",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/talonflame.mp3"
+  },
+  {
+    "species": "Talonflame",
+    "shiny": false,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "dynamax": true
+    },
+    "gen": 5,
+    "w": 256,
+    "h": 192,
+    "y": -22,
+    "url": "/sprites/gen5ani/talonflame.gif",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/talonflame.mp3"
+  },
+  {
+    "species": "Talonflame",
+    "shiny": true,
+    "front": false,
+    "options": {
+      "gen": 9
+    },
+    "gen": 9,
+    "w": 93,
+    "h": 104,
+    "y": 0,
+    "url": "/sprites/gen5-back-shiny/talonflame.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/talonflame.mp3"
+  },
+  {
+    "species": "Talonflame",
+    "shiny": true,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "teamPreview": true,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 102,
+    "h": 113,
+    "y": 0,
+    "url": "/sprites/gen5-back-shiny/talonflame.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/talonflame.mp3"
+  },
+  {
+    "species": "Talonflame",
+    "shiny": true,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 170,
+    "h": 190,
+    "y": 0,
+    "url": "/sprites/gen5-back-shiny/talonflame.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/talonflame.mp3"
+  },
+  {
+    "species": "Talonflame",
+    "shiny": true,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "dynamax": true
+    },
+    "gen": 9,
+    "w": 340,
+    "h": 380,
+    "y": -22,
+    "url": "/sprites/gen5-back-shiny/talonflame.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/talonflame.mp3"
+  },
+  {
+    "species": "Talonflame",
+    "shiny": true,
+    "front": true,
+    "options": {
+      "gen": 9
+    },
+    "gen": 9,
+    "w": 116,
+    "h": 94,
+    "y": 0,
+    "url": "/sprites/gen5-shiny/talonflame.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/talonflame.mp3"
+  },
+  {
+    "species": "Talonflame",
+    "shiny": true,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "teamPreview": true,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 104,
+    "h": 86,
+    "y": 0,
+    "url": "/sprites/gen5-shiny/talonflame.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/talonflame.mp3"
+  },
+  {
+    "species": "Talonflame",
+    "shiny": true,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 192,
+    "h": 156,
+    "y": 0,
+    "url": "/sprites/gen5-shiny/talonflame.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/talonflame.mp3"
+  },
+  {
+    "species": "Talonflame",
+    "shiny": true,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "dynamax": true
+    },
+    "gen": 9,
+    "w": 384,
+    "h": 312,
+    "y": -22,
+    "url": "/sprites/gen5-shiny/talonflame.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/talonflame.mp3"
+  },
+  {
+    "species": "Sinistcha",
+    "shiny": false,
+    "front": false,
+    "options": {
+      "gen": 9
+    },
+    "gen": 9,
+    "w": 22,
+    "h": 33,
+    "y": 0,
+    "url": "/sprites/gen5-back/sinistcha.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/sinistcha.mp3"
+  },
+  {
+    "species": "Sinistcha",
+    "shiny": false,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "teamPreview": true,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 39,
+    "h": 59,
+    "y": 0,
+    "url": "/sprites/gen5-back/sinistcha.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/sinistcha.mp3"
+  },
+  {
+    "species": "Sinistcha",
+    "shiny": false,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 82,
+    "h": 122,
+    "y": 0,
+    "url": "/sprites/gen5-back/sinistcha.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/sinistcha.mp3"
+  },
+  {
+    "species": "Sinistcha",
+    "shiny": false,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "dynamax": true
+    },
+    "gen": 9,
+    "w": 164,
+    "h": 244,
+    "y": -22,
+    "url": "/sprites/gen5-back/sinistcha.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/sinistcha.mp3"
+  },
+  {
+    "species": "Sinistcha",
+    "shiny": false,
+    "front": true,
+    "options": {
+      "gen": 9
+    },
+    "gen": 9,
+    "w": 23,
+    "h": 36,
+    "y": 0,
+    "url": "/sprites/gen5/sinistcha.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/sinistcha.mp3"
+  },
+  {
+    "species": "Sinistcha",
+    "shiny": false,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "teamPreview": true,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 33,
+    "h": 54,
+    "y": 0,
+    "url": "/sprites/gen5/sinistcha.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/sinistcha.mp3"
+  },
+  {
+    "species": "Sinistcha",
+    "shiny": false,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 76,
+    "h": 124,
+    "y": 0,
+    "url": "/sprites/gen5/sinistcha.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/sinistcha.mp3"
+  },
+  {
+    "species": "Sinistcha",
+    "shiny": false,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "dynamax": true
+    },
+    "gen": 9,
+    "w": 152,
+    "h": 248,
+    "y": -22,
+    "url": "/sprites/gen5/sinistcha.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/sinistcha.mp3"
+  },
+  {
+    "species": "Sinistcha",
+    "shiny": true,
+    "front": false,
+    "options": {
+      "gen": 9
+    },
+    "gen": 9,
+    "w": 22,
+    "h": 33,
+    "y": 0,
+    "url": "/sprites/gen5-back-shiny/sinistcha.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/sinistcha.mp3"
+  },
+  {
+    "species": "Sinistcha",
+    "shiny": true,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "teamPreview": true,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 39,
+    "h": 59,
+    "y": 0,
+    "url": "/sprites/gen5-back-shiny/sinistcha.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/sinistcha.mp3"
+  },
+  {
+    "species": "Sinistcha",
+    "shiny": true,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 82,
+    "h": 122,
+    "y": 0,
+    "url": "/sprites/gen5-back-shiny/sinistcha.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/sinistcha.mp3"
+  },
+  {
+    "species": "Sinistcha",
+    "shiny": true,
+    "front": false,
+    "options": {
+      "gen": 9,
+      "dynamax": true
+    },
+    "gen": 9,
+    "w": 164,
+    "h": 244,
+    "y": -22,
+    "url": "/sprites/gen5-back-shiny/sinistcha.png",
+    "pixelated": true,
+    "isFrontSprite": false,
+    "cryurl": "audio/cries/sinistcha.mp3"
+  },
+  {
+    "species": "Sinistcha",
+    "shiny": true,
+    "front": true,
+    "options": {
+      "gen": 9
+    },
+    "gen": 9,
+    "w": 23,
+    "h": 36,
+    "y": 0,
+    "url": "/sprites/gen5-shiny/sinistcha.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/sinistcha.mp3"
+  },
+  {
+    "species": "Sinistcha",
+    "shiny": true,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "teamPreview": true,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 33,
+    "h": 54,
+    "y": 0,
+    "url": "/sprites/gen5-shiny/sinistcha.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/sinistcha.mp3"
+  },
+  {
+    "species": "Sinistcha",
+    "shiny": true,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "noScale": true
+    },
+    "gen": 9,
+    "w": 76,
+    "h": 124,
+    "y": 0,
+    "url": "/sprites/gen5-shiny/sinistcha.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/sinistcha.mp3"
+  },
+  {
+    "species": "Sinistcha",
+    "shiny": true,
+    "front": true,
+    "options": {
+      "gen": 9,
+      "dynamax": true
+    },
+    "gen": 9,
+    "w": 152,
+    "h": 248,
+    "y": -22,
+    "url": "/sprites/gen5-shiny/sinistcha.png",
+    "pixelated": true,
+    "isFrontSprite": true,
+    "cryurl": "audio/cries/sinistcha.mp3"
+  }
+]

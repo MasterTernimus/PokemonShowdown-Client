@@ -1667,6 +1667,7 @@
 			this.room = data.room;
 			var rightPanelBattlesPossible = (MainMenuRoom.prototype.bestWidth + BattleRoom.prototype.minWidth < $(window).width());
 			var buf = '<p><strong>In this battle</strong></p>';
+			if (this.room.side && !this.battle.ended && this.battle.gameType !== 'multi' && this.battle.gameType !== 'freeforall') buf += '<p><button name="moveSheets" class="button" style="min-height:44px">Open Team Sheet (moves only)</button><br /><small>Requires both players to agree.</small></p>';
 			buf += '<p><label class="checkbox"><input type="checkbox" name="hardcoremode"' + (this.battle.hardcoreMode ? ' checked' : '') + '/> Hardcore mode (hide info not shown in-game)</label></p>';
 			buf += '<p><label class="checkbox"><input type="checkbox" name="ignorespects"' + (this.battle.ignoreSpects ? ' checked' : '') + '/> Ignore spectators</label></p>';
 			buf += '<p><label class="checkbox"><input type="checkbox" name="ignoreopp"' + (this.battle.ignoreOpponent ? ' checked' : '') + '/> Ignore opponent</label></p>';
@@ -1689,6 +1690,7 @@
 			'change input[name=autotimer]': 'toggleAutoTimer',
 			'change input[name=rightpanelbattles]': 'toggleRightPanelBattles'
 		},
+		moveSheets: function () { this.room.send('/movesheets'); this.room.showChat(); this.close(); },
 		toggleHardcoreMode: function (e) {
 			this.room.setHardcoreMode(!!e.currentTarget.checked);
 			if (this.battle.hardcoreMode) {

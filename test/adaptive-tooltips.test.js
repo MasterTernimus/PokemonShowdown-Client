@@ -53,7 +53,7 @@ describe('Adaptive category client parity', () => {
 
  it('shows Limber field protection for direct and composite holders, including suppression', () => {
   const fields = ['Water Surface Terrain', 'Murkwater Surface Terrain', 'New World Terrain', 'Cold Eclipse Terrain', 'Icy Terrain', 'Snowy Terrain', 'Underwater Terrain', 'Midnight Zone Terrain'];
-  for (const ability of ['Limber', 'Verdant Drake', 'Kick Fiend']) {
+  for (const ability of ['Limber', 'Kick Fiend']) {
    p.ability = ability; own.ability = own.baseAbility = ability;
    for (const field of fields) {
     battle.pseudoWeather = []; const normal = tips.calculateModifiedStats(p, own).spe;
@@ -63,6 +63,12 @@ describe('Adaptive category client parity', () => {
     delete p.volatiles.gastroacid;
    }
   }
+ });
+
+ it('applies field Speed penalties to Raging Thicket after Limber removal',()=>{
+  p.ability='Raging Thicket';own.ability=own.baseAbility='Raging Thicket';
+  battle.pseudoWeather=[];const normal=tips.calculateModifiedStats(p,own).spe;
+  battle.pseudoWeather=[['Water Surface Terrain',0,0]];assert(tips.calculateModifiedStats(p,own).spe<normal);
  });
 
  it('suppresses selected Limber field protection without inflating ordinary stats', () => {

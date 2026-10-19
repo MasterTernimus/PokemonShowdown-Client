@@ -1,0 +1,78 @@
+{
+  "absolutepressure": {
+    "shortDesc": "Pressure + Inner Focus + Insomnia + Mold Breaker; 1/3-HP shield; once-battle Mega return.",
+    "desc": "Pressure + Inner Focus + Insomnia + Mold Breaker, including their entry effects and Insomnia’s 1.3x Dark/Ghost power. Entry and Mega Evolution refill an attack shield equal to 1/3 max HP; excess damage reaches HP. Status and indirect damage bypass the shield. Once per battle, a would-be faint as Mega Mewtwo instead restores base Mewtwo at half max HP with its original ability and a fresh shield. Its Mega use stays spent."
+  },
+  "psycheforce": {
+    "shortDesc": "Tough Claws + Iron Fist; contact attacks heal 1/3 of opposing HP damage.",
+    "desc": "Tough Claws + Iron Fist (1.4x punching power). Contact attacks heal 1/3 of opposing HP damage, stacking with move draining."
+  },
+  "psychedominion": {
+    "shortDesc": "Psychic Surge + Dishearten; Psychic attacks use the lower defense.",
+    "desc": "Psychic Surge + Dishearten: entry lowers adjacent foes’ Sp. Atk by 1, respecting Substitute and stat-drop protection. Psychic attacks use the target’s lower effective Defense or Sp. Def, retaining their category and offensive stat."
+  },
+  "mindmirror": {
+    "shortDesc": "Opportunist; entry copies each stat’s highest positive opposing stage.",
+    "desc": "Opportunist. On entry, copies the highest positive opposing stage in each stat, keeping its own higher stages."
+  },
+  "unboundwill": {
+    "shortDesc": "Magic Bounce + Clear Body; blocks Taunt, Encore, Disable and Torment.",
+    "desc": "Magic Bounce + Clear Body. Immune to Taunt, Encore, Disable and Torment, including unreflectable effects."
+  },
+  "duneclaws": {
+    "shortDesc": "Tough Claws; STAB HP hits clear own hazards, Leech Seed and binding.",
+    "desc": "Tough Claws: contact moves have 1.3x power. After a STAB attack damages opposing HP, clears its side’s entry hazards and its own Leech Seed and partial trapping. Cleanup occurs once after the whole attack and can repeat on later attacks; contact is not required."
+  },
+  "venombastion": {
+    "shortDesc": "Stamina + Bug STAB; once per entry, Poison/Steel hits block a poisoned foe’s healing for 2 turns.",
+    "desc": "Stamina: each opposing HP hit heals 1/16 max HP; the first each turn also gives +1 Defense. Bug moves receive STAB, without changing typing or stacking with existing Bug STAB. Once per entry, Poison/Steel HP damage to an already-poisoned surviving foe blocks healing through the next turn. Only a newly applied Heal Block spends the use."
+  },
+  "dreadmaw": {
+    "shortDesc": "Strong Jaw + Invigorate; once per entry, a bite blocks foe healing for 2 turns.",
+    "desc": "Strong Jaw + Invigorate: biting moves have 1.5x power; it and its allies receive 1.3x healing; each adjacent statused ally has a 50% cure chance at turn end. Once per entry, a bite damaging a surviving foe’s HP blocks healing through the next turn. Only a new Heal Block spends the use; existing blocks are not refreshed."
+  },
+  "ironmountain": {
+    "shortDesc": "Hyper Cutter + Suction Cups; entry or Mega Evolution clears own Stealth Rock/Spikes.",
+    "desc": "Hyper Cutter + Suction Cups. Entry clears its side’s Stealth Rock and Spikes after hazards take effect. Mega Evolution also clears them; ability restarts do not."
+  },
+  "worldbreaker": {
+    "shortDesc": "Berserk + Merciless + Duskilate; each damaging hit has a 30% chance of double power.",
+    "desc": "Berserk + Merciless + Duskilate. Each damaging hit independently has a 30% chance to double its base power."
+  },
+  "falseliberation": {
+    "shortDesc": "Mold Breaker + Berserk; once per entry, a Dark HP hit inflicts Torment.",
+    "desc": "Mold Breaker + Berserk. Once per entry, Dark damage to a foe’s HP inflicts Torment. Only a newly applied Torment spends the use; existing Torment is not refreshed."
+  },
+  "astralward": {
+    "shortDesc": "Prevents opposing accuracy drops; ignores opposing evasion boosts.",
+    "desc": "Opponents cannot lower its accuracy. Its moves ignore opposing positive evasion stages."
+  },
+  "crystalward": {
+    "shortDesc": "Blocks opposing ball/bomb moves for itself and adjacent allies.",
+    "desc": "Blocks opposing ball/bomb moves targeting it or adjacent active allies. Allied Pollen Puff still works. Protection ends if it leaves, faints or is suppressed; Mold Breaker and Ability Shield apply normally."
+  },
+  "mindcurrent": {
+    "shortDesc": "Inner Focus; first Psychic damage each entry grants Charge after the move.",
+    "desc": "Inner Focus blocks flinching and Intimidate. Once per entry, Psychic damage to a foe or its Substitute grants Charge after the move ends, so the triggering move cannot consume it."
+  },
+  "disguise": {
+    "shortDesc": "Intact disguise blocks one hit, then costs 1/8 HP and curses an opposing attacker.",
+    "desc": "Intact Mimikyu and Totem Mimikyu block one damaging hit, become busted and lose 1/8 max HP. An opposing attacker is cursed for 1/8 max HP each turn. Confusion can break Disguise; Mold Breaker bypasses it. Transform does not grant protection."
+  },
+  "stancechange": {
+    "shortDesc": "Attacks enter Blade (+20% power); King’s Shield enters Shield (20% less damage).",
+    "desc": "Aegislash enters Blade before damaging moves and Shield before King’s Shield. Blade deals 20% more damage; Shield takes 20% less, plus a further 30% reduction after its first damaging hit each turn in Free-for-All. Fairy Tale and Chessboard stance stat changes apply. Transform and Gmax do not gain these stance changes."
+  },
+  "grandstrategy": {
+    "shortDesc": "Mold Breaker; team hits prepare foes while active; once-battle cure grants Laser Focus.",
+    "desc": "Mold Breaker. While the holder is active, its team's attacks dealing opposing HP damage prepare that foe for the holder. Its next physical HP-damaging attack consumes the mark after the whole attack, ignoring positive defensive stages and Reflect, Light Screen and Aurora Veil. That attack cannot rearm the mark. Marks do not stack, survive the holder switching out, and clear when the foe switches or faints, or the holder faints or loses this ability. Once per battle, an end-of-turn major-status cure clears negative accuracy stages and grants Laser Focus through the next turn; switching clears Laser Focus. Suppression delays the cure; other cures do not spend it."
+  },
+  "glacierclaws": {
+    "shortDesc": "Tough Claws; STAB HP hits clear own hazards, Leech Seed and binding.",
+    "desc": "Tough Claws: contact moves have 1.3x power. After a STAB attack damages opposing HP, clears its side’s entry hazards and its own Leech Seed and partial trapping. Cleanup occurs once after the whole attack and can repeat on later attacks; contact is not required."
+  },
+  "truehydra": {
+    "shortDesc": "Eligible attacks hit three times; switch and turn-end healing; ailment recovery.",
+    "desc": "Eligible single-target attacks hit three times. Excludes native multihit, non-FFA spread, charge, delayed, Z/Max and extra-hit-barred moves. Follow-ups deal 30% damage, retargeting an ally of a fainted target. In FFA, single-target moves hit all foes at 1.3x power; spread moves hit all foes three times with 30% follow-ups. Full-power spread stays full power. Moves have 1.2x power on Dragon's Den. Heals 1/3 max HP on switching out. At turn end, if statused, affected by a listed ailment, negatively boosted or at half HP or less, has a 50% chance to heal 1/4 max HP, cure status, clear negative stages and remove Attract, confusion, Curse, Disable, Encore, Heal Block, Leech Seed, Nightmare, Perish Song, Taunt, Torment and Yawn. On Dragon's Den, activation is guaranteed but only cures status and heals, then raises its higher attacking stat by 1 and lowers both defenses by 1. Heals 1/16 max HP each turn. Immune to sandstorm and hail damage."
+  }
+}

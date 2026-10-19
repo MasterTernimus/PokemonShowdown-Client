@@ -25,11 +25,12 @@ describe('Composite description client parity', () => {
   assert.deepEqual([...Dex.getAbilityEffects('shadowguard')].sort(), [...Dex.getAbilityEffects('voidcraft')].sort());
   const effects = [...Dex.getAbilityEffects('toxicbloom')];
   for (const id of ['pollenbloom', 'thickfat']) assert.equal(effects.filter(x => x === id).length, 1);
-  assert(Dex.getAbilityEffects('verdantdrake').has('limber'));
+  assert(!Dex.getAbilityEffects('verdantdrake').has('limber'));
+  assert(Dex.getAbilityEffects('verdantdrake').has('infiltrator'));
   assert.deepEqual(Dex.species.get('skarmory').abilities, {"0":"Fresh Plumage","1":"Sturdy","H":"Burning Quake"});
   assert.deepEqual(Dex.species.get('espathra').abilities, {"0":"Opportunist","1":"Transfixing Gaze","H":"Speed Boost"});
   assert.deepEqual(Dex.species.get('ursaluna').abilities, {"0":"Raging Beast","1":"Bulletproof","H":"Territorial"});
-  assert.deepEqual(Dex.species.get('emboar').abilities, {"0":"Stoke Belly","1":"Thick Fat","H":"Brute Force"});
+  assert.deepEqual(Dex.species.get('emboar').abilities, {"0":"Controlled Fury","1":"Thick Fat","H":"Brute Force"});
   assert.deepEqual(Dex.species.get('emboaralt').abilities, {"0":"Gluttony","1":"Thick Fat","H":"Brute Force"});
   assert.deepEqual(Dex.species.get('salazzle').abilities, {"0":"Corrosion","1":"Venom Ignition","H":"Aroma Veil"});
   assert.deepEqual(Dex.species.get('volcarona').abilities, {"0":"Cinder Scales","1":"Overcoat","H":"Dawn Herald"});

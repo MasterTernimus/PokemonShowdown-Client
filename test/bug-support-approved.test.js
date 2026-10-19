@@ -11,7 +11,7 @@ describe('Approved bug support ability metadata', () => {
  it('publishes Hive Courier and the two approved evolution enhancements accurately', () => {
   assert.deepEqual(Dex.species.get('beedrill').abilities, {'0': 'Hive Courier', '1': 'Twin Drills', H: 'Sniper'});
   const hive = Dex.abilities.get('hivecourier'); assert.match(hive.desc, /whole damaging move by 25%/); assert.match(hive.desc, /Failed and forced/); assert.match(hive.desc, /following turn/);
-  assert.match(Dex.abilities.get('toxicevolution').desc, /sharing the existing once-per-turn cap/);
+  assert.match(Dex.abilities.get('toxicevolution').desc, /sharing one activation per turn/);
   assert.match(Dex.abilities.get('mythicscale').desc, /first clears negative Defense and Sp. Def/);
  });
 });

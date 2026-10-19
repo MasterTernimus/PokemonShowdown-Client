@@ -178,7 +178,7 @@ class BattleTooltips {
 		if (type === 'Grass' && has('sapsipper')) return 0;
 		let factor = 1;
 		if ((type === 'Fire' || type === 'Ice') && has('thickfat')) factor *= 0.5;
-		if (type === 'Fire' && has('waterbubble')) factor *= 0.5;
+		if (type === 'Fire' && (has('waterbubble') || has('seafiend'))) factor *= 0.5;
 		if (type === 'Fire' && has('heatproof')) factor *= 0.5;
 		if (type === 'Fire' && has('dryskin')) factor *= 1.25;
 		if (type === 'Ghost' && has('purifyingsalt')) factor *= 0.5;
@@ -1341,7 +1341,8 @@ class BattleTooltips {
 					if (ability === 'chlorophyll') {
 						speedModifiers.push(2);
 					}
-					if (ability === 'solarpower') {
+					if (ability === 'solarpower' && !this.battle.pseudoWeather.some(([field]) => this.battle.getTerrainId(field) === 'coldeclipseterrain')) {
+						stats.atk = Math.floor(stats.atk * 1.5);
 						stats.spa = Math.floor(stats.spa * 1.5);
 					}
 					if (ability === 'orichalcumpulse') {

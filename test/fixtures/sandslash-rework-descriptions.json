@@ -1,0 +1,26 @@
+{
+  "duneclaws": {
+    "desc": "Tough Claws: contact moves have 1.3x power. After a STAB attack damages opposing HP, clears its side’s entry hazards and its own Leech Seed and partial trapping. Cleanup occurs once after the whole attack and can repeat on later attacks; contact is not required.",
+    "shortDesc": "Tough Claws; STAB HP hits clear own hazards, Leech Seed and binding."
+  },
+  "glacierclaws": {
+    "desc": "Tough Claws: contact moves have 1.3x power. After a STAB attack damages opposing HP, clears its side’s entry hazards and its own Leech Seed and partial trapping. Cleanup occurs once after the whole attack and can repeat on later attacks; contact is not required.",
+    "shortDesc": "Tough Claws; STAB HP hits clear own hazards, Leech Seed and binding."
+  },
+  "bedrockclaw": {
+    "desc": "Full Tough Claws boosts contact moves by 1.3x. After a damaging attack receives STAB and damages an opposing Pokemon’s HP, clears entry hazards from its own side and removes its own Leech Seed and partial trapping. Resolves once after the whole attack, with no per-entry limit or contact requirement for cleanup. Does not use Rapid Spin, raise Speed, remove opposing screens or escape ability trapping. Misses, immunity, protection, Substitute-only hits and allied damage do not qualify.",
+    "shortDesc": "Tough Claws; STAB HP hits clear own hazards, Leech Seed and binding."
+  },
+  "rimeclaw": {
+    "desc": "Full Tough Claws boosts contact moves by 1.3x. After a damaging attack receives STAB and damages an opposing Pokemon’s HP, clears entry hazards from its own side and removes its own Leech Seed and partial trapping. Resolves once after the whole attack, with no per-entry limit or contact requirement for cleanup. Does not use Rapid Spin, raise Speed, remove opposing screens or escape ability trapping. Misses, immunity, protection, Substitute-only hits and allied damage do not qualify.",
+    "shortDesc": "Tough Claws; STAB HP hits clear own hazards, Leech Seed and binding."
+  },
+  "dunerunner": {
+    "desc": "Doubles Speed in sandstorm or on Desert and Ashen Beach. Immune to sandstorm damage.",
+    "shortDesc": "Double Speed in sand or sandy fields; no sand damage."
+  },
+  "frostrunner": {
+    "desc": "Doubles Speed in hail, snow or on Icy, Snowy Mountain and Cold Eclipse.",
+    "shortDesc": "Double Speed in hail, snow and icy fields."
+  }
+}

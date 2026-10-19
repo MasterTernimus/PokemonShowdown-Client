@@ -26,7 +26,7 @@ describe('Species passive ability search', () => {
   const ids = Object.entries(require('../server-data-sync-manifest.json').snapshot.species)
    .filter(([, s]) => s.passives.includes('levitate')).map(([id]) => id);
   const approved = require('./fixtures/regional-passives-approved.json');
-  const expected = [...Object.entries(approved.previousPassives).filter(([, p]) => p.includes('levitate')).map(([id]) => id), ...approved.groups.levitate, 'probopass','froslass','flygonmega','flygonmegaz','claydolmega','chimechomega','chimechomegay','belliboltmega','dragapultgmax','yanmega'].filter(id => !['butterfree','glaliemega','probopass','hydreigon'].includes(id));
+  const expected = [...Object.entries(approved.previousPassives).filter(([, p]) => p.includes('levitate')).map(([id]) => id), ...approved.groups.levitate, 'probopass','froslass','flygonmega','flygonmegaz','claydolmega','chimechomega','chimechomegay','belliboltmega','dragapultgmax','yanmega','garchompmegaz'].filter(id => !['butterfree','glaliemega','probopass','hydreigon','dusknoir'].includes(id));
   assert.deepEqual(ids.sort(), expected.sort());
   for (const id of ids) {
    assert(filter(id, 'Levitate'), id);

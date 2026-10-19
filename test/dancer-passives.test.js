@@ -8,17 +8,17 @@ describe('Approved dancer Own Tempo UI metadata', () => {
   const s = Dex.species.get(id); assert.deepEqual(s.passives, id.startsWith('meloetta') ? ['serenegrace'] : id === 'quaquaval' ? ['torrent'] : ['owntempo']);
   assert.equal(!!BattlePokemonSearch.prototype.filter.call({dex: Dex}, ['pokemon',id], [['ability','owntempo']]), id !== 'quaquaval' && !id.startsWith('meloetta'));
  });
- it('publishes Rain Dish and the approved direct-dance ward', () => {
+ it('publishes Rain Dish and retained Dancer/Hospitality without a ward', () => {
   assert.equal(Dex.species.get('ludicolo').abilities.H, 'Rain Dish');
-  const a = Dex.abilities.get('nobledance'); assert.match(a.desc, /successful directly selected dance/); assert.match(a.desc, /whole opposing damaging move by 20%/); assert.match(a.desc, /Dancer-copied moves do not trigger/);
+  const a = Dex.abilities.get('nobledance'); assert.match(a.desc, /Dancer and Hospitality/); assert.match(a.desc, /Does not grant a defensive ward/);
  });
  it('Noble Dance retains Dancer and Hospitality without selected Own Tempo', () => {
   assert.deepEqual(Dex.getAbilityDisplayComponents('nobledance', Dex, ['owntempo']), ['dancer','hospitality']);
   assert(!Dex.getAbilityEffects('nobledance').has('owntempo'));
   assert(!Dex.abilities.get('nobledance').desc.includes('confusion'));
  });
- it('describes the approved first-hit Anchored Battery reward without a suction component', () => {
-  const a = Dex.abilities.get('anchoredbattery'); assert.match(a.desc, /Once per entry/); assert.match(a.desc, /actual opposing HP damage/); assert.match(a.desc, /Substitute-only/);
+ it('describes the approved repeatable Anchored Battery reward without a suction component', () => {
+  const a = Dex.abilities.get('anchoredbattery'); assert.match(a.desc, /After each such attack/); assert.match(a.desc, /foe whose HP it damaged/); assert.match(a.desc, /Substitute-only/);
   assert.deepEqual(Dex.getAbilityDisplayComponents('anchoredbattery', Dex, ['suctioncups']), ['megalauncher']);
  });
 });

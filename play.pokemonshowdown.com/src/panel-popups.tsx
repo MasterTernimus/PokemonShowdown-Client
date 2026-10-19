@@ -1726,7 +1726,8 @@ class BattleOptionsPanel extends PSRoomPanel {
 			</p>}
 			<p class="buttonbar">
 				<button data-cmd="/close" class="button">Done</button> {}
-				{battleRoom && <button data-cmd="/closeand /inopener /offertie" class="button" disabled={!canOfferTie}>
+				{battleRoom && isPlayer && !battleRoom.battle.ended && !['multi', 'freeforall'].includes(battleRoom.battle.gameType) && <button data-cmd="/closeand /inopener /movesheets" class="button">Open Team Sheet (moves only)</button>}
+    {battleRoom && <button data-cmd="/closeand /inopener /offertie" class="button" disabled={!canOfferTie}>
 					Offer Tie
 				</button>}
 			</p>

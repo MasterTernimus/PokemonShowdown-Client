@@ -1726,6 +1726,7 @@ type:"checkbox",onChange:this.handleAllSettings}
 ),
 preact.h("p",{"class":"buttonbar"},
 preact.h("button",{"data-cmd":"/close","class":"button"},"Done")," ",
+battleRoom&&isPlayer&&!battleRoom.battle.ended&&!['multi','freeforall'].includes(battleRoom.battle.gameType)&&preact.h("button",{"data-cmd":"/closeand /inopener /movesheets","class":"button"},"Open Team Sheet (moves only)"),
 battleRoom&&preact.h("button",{"data-cmd":"/closeand /inopener /offertie","class":"button",disabled:!canOfferTie},"Offer Tie"
 
 )

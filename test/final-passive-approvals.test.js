@@ -6,7 +6,7 @@ describe('Final approved passive revisions in client data',()=>{
  for(const[id,p]of Object.entries(revision.overrides))it(id+' has the final revised passive split',()=>assert.deepEqual(Dex.species.get(id).passives,p));
  for(const[id,slot,,name]of latest.slots)it(id+' slot '+slot+' is '+name,()=>assert.equal(Dex.species.get(id).abilities[slot],require('./fixtures/mega-approval-overlays').abilities(id,{[slot]:name})[slot]));
  it('has final component identities and event text',()=>{
-  const spiral=Dex.getAbilityEffects('spiralevolution');assert(!spiral.has('shielddust'));assert(!spiral.has('infiltrator'));assert(!spiral.has('powerdrill'));assert(!spiral.has('levitate'));assert(!Dex.moves.get('lunge').flags.drill);
+  const spiral=Dex.getAbilityEffects('spiralevolution');assert(!spiral.has('shielddust'));assert(!spiral.has('infiltrator'));assert(spiral.has('powerdrill'));assert(!spiral.has('moldbreaker'));assert(!spiral.has('levitate'));assert(!Dex.moves.get('lunge').flags.drill);
   assert(!Dex.getAbilityEffects('voidomen').has('moldbreaker'));assert(Dex.getAbilityEffects('voidomen').has('friendguard'));assert.equal(Dex.species.get('venusaur').abilities.S,undefined);assert(Dex.moves.get('uproot').exists);assert(!Dex.abilities.get('uproot').exists);assert(!Object.values(Dex.species.get('venusaurmega').abilities).includes('Uproot'));
   for(const id of ['steadyaim','entrenched','freeflight'])assert(Dex.abilities.get(id).desc.length>30,id);
  });

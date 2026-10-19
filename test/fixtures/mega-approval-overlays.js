@@ -196,3 +196,22 @@ const beforeDrillBatchAbilities=exports.abilities;exports.abilities=(id,original
 
 // Approved protection damage wording; no component identities change.
 {const prior=exports.description;exports.description=function(id,key,value){const text=prior(id,key,value);return text.replaceAll('Contact moves bypass protection except Max Guard.','Contact moves pierce protection at 1/4 damage (75% less); Max Guard blocks them. Unprotected damage is unchanged.').replaceAll('Contact bypasses protection;','Contact pierces protection at 1/4 damage;').replaceAll('Unseen Fist lets contact moves bypass protection except Max Guard.','Unseen Fist lets contact moves pierce protection at 1/4 damage; Max Guard blocks them.').replaceAll('contact moves bypass Protect,','contact moves pierce Protect at 1/4 damage,').replaceAll('Contact moves pierce protection at 1/4 damage. Unprotected targets take normal damage.','Contact moves pierce protection at 1/4 damage (75% less). Max Guard blocks them. Unprotected damage is unchanged.');};}
+
+// Approved audit reductions supersede older component snapshots.
+const cleanup = require('./audit-cleanup-approved.json');
+const beforeCleanupDescription=exports.description, beforeCleanupEffects=exports.effects;
+exports.description=(id,key,text)=>cleanup.descriptions[id]?.[key]??beforeCleanupDescription(id,key,text);
+function cleanupEffects(id, seen=new Set()) {if(seen.has(id))return seen;seen.add(id);if(id==='ancientbloom')cleanupEffects('pollenbloom',seen);if(id==='witheringshell'){seen.add('naturalrecovery');seen.add('naturalcure');} // Generic non-native cure callbacks are preserved; native Natural Cure remains passive.
+for(const part of cleanup.components[id]||({unboundblaze:['dragonize','magmaarmor'],pollenbloom:['thickfat','unaware'],selfrepair:['naturalcure','selfsufficient']}[id])||[])cleanupEffects(part,seen);return seen;}
+exports.effects=(id,original)=>cleanup.components[id]?[...cleanupEffects(id)].sort():beforeCleanupEffects(id,original);
+const beforeFilterAbilities=exports.abilities;exports.abilities=(id,original)=>id==='probopass'?{...beforeFilterAbilities(id,original),H:'Filter'}:beforeFilterAbilities(id,original);
+
+const beforeOrdinarySlots=exports.abilities;exports.abilities=(id,original)=>({...beforeOrdinarySlots(id,original),...{ferrothorn:{H:'Stamina'},seismitoad:{H:'Water Absorb'},klefki:{0:'Prankster'}}[id]});
+
+// October 19 review: current slots, separate passives and retained effects.
+const oct19=require('./oct19-reviewed-contracts.json');
+const beforeOct19={passives:exports.passives,abilities:exports.abilities,effects:exports.effects,description:exports.description};
+exports.passives=(id,fallback)=>oct19.passives[id]||beforeOct19.passives(id,fallback);
+exports.abilities=(id,fallback)=>({...beforeOct19.abilities(id,fallback),...oct19.abilities[id]});
+exports.effects=(id,fallback)=>oct19.effects[id]||beforeOct19.effects(id,fallback);
+exports.description=(id,key,fallback)=>oct19.descriptions[id]?.[key]??beforeOct19.description(id,key,fallback);

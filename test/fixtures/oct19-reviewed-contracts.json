@@ -1,0 +1,546 @@
+{
+  "passives": {
+    "maractus": [
+      "cactuschorus"
+    ],
+    "corsola": [
+      "naturalrecovery"
+    ],
+    "corsolareborn": [
+      "naturalrecovery"
+    ],
+    "electivire": [
+      "static"
+    ],
+    "magmortar": [
+      "flamebody"
+    ],
+    "dusknoir": [
+      "soulescort"
+    ],
+    "garchomp": [
+      "roughskin"
+    ],
+    "garchompmegaz": [
+      "levitate"
+    ],
+    "ninetalesalola": [
+      "cursedbody"
+    ],
+    "grafaiai": [
+      "prankster"
+    ],
+    "jynx": [
+      "icebody"
+    ],
+    "heracross": [
+      "swarm"
+    ],
+    "scolipedemega": [
+      "shellarmor"
+    ],
+    "scolipedemegaazzy": [
+      "shellarmor"
+    ],
+    "krookodile": [
+      "angerpoint"
+    ],
+    "grimmsnarl": [
+      "prankster"
+    ],
+    "raichualola": [
+      "surgesurfer"
+    ],
+    "vanilluxe": [
+      "icebody"
+    ],
+    "skarmory": [
+      "thorntempered"
+    ],
+    "houndoommega": [
+      "solarpower"
+    ],
+    "pelipper": [
+      "drizzle"
+    ],
+    "pidgeot": [
+      "keeneye"
+    ],
+    "tauros": [
+      "controlledfury"
+    ],
+    "taurospaldeacombat": [
+      "controlledfury"
+    ],
+    "taurospaldeablaze": [
+      "controlledfury"
+    ],
+    "taurospaldeaaqua": [
+      "controlledfury"
+    ],
+    "bouffalant": [
+      "controlledfury"
+    ],
+    "hitmonlee": [
+      "limber"
+    ],
+    "mamoswine": [
+      "thickfat"
+    ],
+    "palafin": [
+      "zerotohero"
+    ],
+    "palafinhero": [
+      "zerotohero"
+    ],
+    "hydrapple": [
+      "supersweetsyrup"
+    ]
+  },
+  "abilities": {
+    "maractus": {
+      "1": "Iron Barbs"
+    },
+    "dodrio": {
+      "0": "Triple Threat",
+      "1": "Speed Boost",
+      "H": "Reckless"
+    },
+    "seismitoad": {
+      "H": "Marsh Hide"
+    },
+    "sceptilemega": {
+      "0": "Raging Thicket"
+    },
+    "blazikenmega": {
+      "0": "Raging Flame"
+    },
+    "venusaurgmax": {
+      "0": "Verdant Crown"
+    },
+    "blastoisegmax": {
+      "0": "Tidal Crown"
+    },
+    "venusaurmega": {
+      "0": "Virulence"
+    },
+    "blastoisemega": {
+      "0": "Bombardment"
+    },
+    "magmortar": {
+      "H": "Volcanic Spirit"
+    },
+    "heracross": {
+      "H": "Moxie"
+    },
+    "grafaiai": {
+      "H": "Sticky Hold"
+    },
+    "crustle": {
+      "H": "Weak Armor"
+    },
+    "grimmsnarl": {
+      "0": "Guts"
+    },
+    "raichualola": {
+      "0": "Static",
+      "1": "Telepathy"
+    },
+    "vanilluxe": {
+      "0": "Levitate"
+    },
+    "mienshao": {
+      "H": "Infiltrator"
+    },
+    "pelipper": {
+      "1": "Rain Dish"
+    },
+    "emboar": {
+      "0": "Controlled Fury"
+    },
+    "sylveon": {
+      "H": "Fairy Aura"
+    },
+    "palafin": {
+      "0": "Sworn Duty",
+      "1": "Friend Guard",
+      "H": "Inner Focus"
+    },
+    "palafinhero": {
+      "0": "Sworn Duty",
+      "1": "Friend Guard",
+      "H": "Inner Focus"
+    },
+    "hydrapple": {
+      "0": "Ripen",
+      "1": "Regenerator",
+      "H": "Hydra Heart"
+    },
+    "garchomp": {
+      "0": "Grounded Instinct"
+    }
+  },
+  "effects": {
+    "nobleconduit": [
+      "aftermath",
+      "battery",
+      "nobleconduit",
+      "solarpower"
+    ],
+    "spiralevolution": [
+      "adaptability",
+      "powerdrill",
+      "spiralevolution"
+    ],
+    "witheringshell": [
+      "crumblingshell",
+      "cursedbody",
+      "raindish",
+      "witheringshell"
+    ],
+    "venomarmor": [
+      "dualwield",
+      "venomarmor"
+    ],
+    "toxicarmor": [
+      "dualwield",
+      "toxicarmor",
+      "violentrush"
+    ],
+    "hellfireeclipse": [
+      "agonyflame",
+      "darkaura",
+      "hellfireeclipse",
+      "intimidate"
+    ],
+    "cursedmarionette": [
+      "cursedmarionette",
+      "frisk",
+      "prankster"
+    ],
+    "sandsovereign": [
+      "sandsovereign",
+      "sandstream",
+      "solidrock"
+    ],
+    "ancientbloom": [
+      "ancientbloom",
+      "friendguard",
+      "pollenbloom",
+      "selfsufficient",
+      "thickfat",
+      "unaware"
+    ],
+    "fortressshell": [
+      "fortressshell",
+      "friendguard",
+      "guardianpresence",
+      "powerspot",
+      "selfsufficient",
+      "shellarmor",
+      "stalwart",
+      "waterbarrage"
+    ],
+    "hydraheart": [
+      "hydrabond",
+      "hydraheart",
+      "stamina"
+    ],
+    "burningcrown": [
+      "burningcrown",
+      "dragonize",
+      "intimidate",
+      "levitate",
+      "magmaarmor",
+      "selfsufficient",
+      "unboundblaze"
+    ],
+    "frightfulwings": [
+      "frightfulwings",
+      "intimidate",
+      "owntempo"
+    ],
+    "mindseye": [
+      "mindseye",
+      "selfsufficient"
+    ],
+    "relentlesshunt": [
+      "relentlesshunt",
+      "roughskin"
+    ],
+    "solarpower": [
+      "solarpower"
+    ],
+    "verdantdrake": [
+      "infiltrator",
+      "lightningrod",
+      "regenerator",
+      "verdantdrake"
+    ],
+    "wrathshield": [
+      "bulletproof",
+      "friendguard",
+      "naturalcure",
+      "selfsufficient",
+      "stamina",
+      "wrathshield"
+    ],
+    "astralwitchcraft": [
+      "astralwitchcraft",
+      "infiltrator",
+      "levitate",
+      "magicguard",
+      "magician",
+      "voidguile"
+    ],
+    "blazingtempo": [
+      "blazingtempo",
+      "innerfocus",
+      "magmaarmor",
+      "speedboost"
+    ],
+    "ragingcurrent": [
+      "damp",
+      "dryskin",
+      "ragingcurrent",
+      "swiftswim"
+    ],
+    "supersweetsyrup": [
+      "supersweetsyrup"
+    ],
+    "ironmountain": [
+      "bruteforce",
+      "hypercutter",
+      "ironmountain",
+      "reckless",
+      "rockhead"
+    ],
+    "vendetta": [
+      "angerpoint",
+      "innerfocus",
+      "secondwind",
+      "selfsufficient",
+      "vendetta"
+    ],
+    "lunardread": [
+      "dishearten",
+      "insomnia",
+      "lunardread"
+    ],
+    "zerotohero": [
+      "zerotohero"
+    ],
+    "triplethreat": [
+      "hydrabond",
+      "innerfocus",
+      "keeneye",
+      "owntempo",
+      "triplethreat"
+    ],
+    "snowpack": [
+      "icebody",
+      "snowpack"
+    ],
+    "mountainbreaker": [
+      "battlearmor",
+      "eartheater",
+      "mountainbreaker"
+    ],
+    "dreadpresence": [
+      "darkaura",
+      "dreadpresence",
+      "unnerve"
+    ],
+    "galvanicspirit": [
+      "galvanicspirit",
+      "vitalspirit"
+    ],
+    "blastchamber": [
+      "blastchamber",
+      "vitalspirit"
+    ],
+    "infernaldominion": [
+      "infernaldominion",
+      "intimidate"
+    ],
+    "hydraulicarmor": [
+      "hydraulicarmor",
+      "stamina"
+    ],
+    "voidwrath": [
+      "infiltrator",
+      "moldbreaker",
+      "voidwrath"
+    ],
+    "scaleshelter": [
+      "overcoat",
+      "scaleshelter"
+    ],
+    "crosswire": [
+      "crosswire",
+      "innerfocus",
+      "ironfist"
+    ],
+    "wisecounsel": [
+      "friendguard",
+      "guardianpresence",
+      "innerfocus",
+      "powerspot",
+      "wisecounsel"
+    ]
+  },
+  "descriptions": {
+    "nobleconduit": {
+      "shortDesc": "Special moves have 1.3x power, with a further 1.5x boost on Electric Terrain.",
+      "desc": "Special moves have 1.3x power, with a further 1.5x boost on Electric Terrain. Allies' special moves have 1.3x power. In effective sun, Attack and Sp. Atk are 1.5x and it loses 1/8 max HP each turn. Cold Eclipse disables both effects. A contact attacker that knocks it out loses 1/4 max HP, or 1/2 on Corrosive Mist. Damp prevents this damage."
+    },
+    "spiralevolution": {
+      "shortDesc": "Power Drill + Adaptability; double Twineedle power; protection piercing.",
+      "desc": "Full local Power Drill: drill and horn moves have 1.5x power, or 2x on Rocky, Mountain, Snowy Mountain, Cave and Volcanic, where they bypass protection at full power. Retains Adaptability and double Twineedle power with its native hit count. Other damaging moves pierce protection at half power. Normal-priority moves act first in Trick Room without gaining priority. Ignores field Speed penalties and takes 20% less attack damage. No Mold Breaker or Dual Wield effects. Levitate remains separate."
+    },
+    "witheringshell": {
+      "shortDesc": "Crumbling Shell + Cursed Body + Rain Dish.",
+      "desc": "Physical HP hits set opposing Stealth Rock except on water fields. Damaging attacks have a 30% Disable chance, guaranteed on Haunted and blocked on Holy; normal Cursed Body exclusions apply. Fainting curses active foes. Heals 1/16 max HP in effective rain. Natural Recovery is the separate Corsola and Corsola-Reborn passive."
+    },
+    "venomarmor": {
+      "shortDesc": "Dual Wield; poisoned holder blocks opposing Attack drops.",
+      "desc": "Full local Dual Wield: eligible moves hit twice at 60% power with independent accuracy checks; Metal Claw retains its two 60%-power hits. While poisoned, opposing Pokemon cannot lower its Attack; self-inflicted drops remain. No Battle Armor critical immunity, damage reduction or Defense boosts. Rival Resolve remains separate."
+    },
+    "toxicarmor": {
+      "shortDesc": "Dual Wield + opening Violent Rush; priority hits prepare next-turn priority.",
+      "desc": "Full local Dual Wield, Metal Claw with two 60%-power hits, and opening Violent Rush. While poisoned, opposing Pokemon cannot lower its Attack; self-inflicted drops remain. A native positive-priority damaging attack that damages opposing HP prepares the next eligible Dual Wield attack on the following turn for +1 priority. Consumes on attempt, including miss, protection or immunity; expires at that turn end and clears on switching. No stacking, generated attacks, Z/Max attacks or self-rearming from the granted priority. Cannot be suppressed, replaced or bypassed by Mold Breaker."
+    },
+    "hellfireeclipse": {
+      "shortDesc": "Dark Aura + Agony Flame + Intimidate.",
+      "desc": "On entry, lowers adjacent foes Attack by 1 under normal Intimidate rules. Dark Aura boosts all damaging Dark moves by 4/3, or multiplies them by 0.75 with Aura Break; multiple users do not stack. Immune to hail damage on Cold Eclipse. After a damaging Fire move finishes, Agony Flame burns each surviving active opponent that lost HP and applies Heal Block for 2 turns including the current turn. Normal protections apply; longer Heal Block is preserved and a move burn cured by a Berry is not reapplied. No Fire absorption or automatic sunlight. Solar Power is the separate species passive."
+    },
+    "cursedmarionette": {
+      "shortDesc": "Curses foes; cursed foes deal 20% less damage. No Curse healing.",
+      "desc": "Its attacks and status moves curse opposing targets, and being hit curses the attacker. Cursed foes deal 0.8x damage to it. Its Curse deals 1/8 max HP; it does not heal from Curse damage. When it faints, opposing Pokemon become cursed and it creates Haunted Field for 5 turns, ignoring Neutralization. Ordinary Ghost Curse costs 1/3 max HP; ability-applied curses do not pay this cost. Prankster remains its separate species passive."
+    },
+    "sandsovereign": {
+      "shortDesc": "Solid Rock; better Rock/Ground matchup; eight-turn sand and Rock chip.",
+      "desc": "Sets or refreshes Sandstorm to 8 turns on entry, with native Sand Stream supplied separately by the species passive. Retains full local Solid Rock. Rock moves use the better Rock/Ground matchup keeps damaging Rock moves Rock-type with normal Rock STAB, but uses the better overall Rock or Ground type-chart matchup; Ground-immune typings do not replace the Rock matchup. No extra power multiplier or Mold Breaker. Manually used Arenite Wall lasts 8 turns. Each turn, non-immune foes take Rock damage equal to 1/16 max HP; type effectiveness scales this chip only in Free-for-All."
+    },
+    "ancientbloom": {
+      "shortDesc": "Pollen Bloom + Self-Sufficient + Friend Guard; existing field bonuses.",
+      "desc": "Pollen Bloom supplies Thick Fat and Unaware: Fire and Ice attacks use half the attacking stat; ignores opposing stat stages through local Unaware and reveals Illusions on entry. Each turn, drains 1/16 base max HP from non-Grass foes and heals the damage actually dealt; Grass immunities apply, and type effectiveness scales this only in Free-for-All. Self-Sufficient independently heals 1/16 max HP each turn and prevents sandstorm and hail damage. Friend Guard reduces attack damage to allies by 25%, without protecting the holder. Fairy Tale, New World, Cold Eclipse and Starlight Arena entry grant +1 Defense and Sp. Def; the latter three give 1.5x move power. No Effect Spore retaliation."
+    },
+    "fortressshell": {
+      "shortDesc": "Water Barrage (without Dual Wield), Self-Sufficient, Shell Armor and Guardian Presence.",
+      "desc": "Stalwart bypasses redirection and gives +1 Sp. Atk on New World, Starlight Arena, Fairy Tale or Chessboard entry. No Dual Wield extra hits or power scaling. Water chip cycles 1/16, 2/16, then 3/16 foe base max HP; Water immunities apply, and effectiveness scales chip only in Free-for-All. Self-Sufficient heals 1/16 max HP each turn and prevents sandstorm/hail damage. Shell Armor prevents critical hits and reduces attack damage by 20%; Fairy Tale and Dragon Den entry give +1 Defense, and opposing stat drops trigger +2 Sp. Def. Guardian Presence boosts allies move power by 1.3x, or 1.5x on Haunted, Bewitched Woods, Holy and Psychic fields, and reduces their attack damage by 25%; neither applies to the holder. During Electric Aura or Electric Terrain, Murkwater Surface, Water Surface, Underwater, Midnight Zone, Factory and Short-Circuit, redirects and absorbs Electric moves for +1 Attack and Sp. Atk. Existing Fairy Tale, New World, Cold Eclipse and Starlight Arena entry/terrain bonuses give +1 Defense and Sp. Def; the latter three retain 1.5x move power."
+    },
+    "hydraheart": {
+      "shortDesc": "Stamina + Hydra Bond.",
+      "desc": "Each opposing attack hit that damages HP heals 1/16 base max HP; the first such hit each turn gives +1 Defense. Full local Hydra Bond retains its multihit, Free-for-All and field effects. Sweet Veil remains a separate passive."
+    },
+    "burningcrown": {
+      "shortDesc": "Intimidate + Unbound Blaze + Self-Sufficient + Levitate.",
+      "desc": "On entry, lowers adjacent foes Attack by 1 under normal Intimidate rules. Unbound Blaze converts eligible Normal moves to Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale, and grants Dragon STAB. Prevents freezing outside Cold Eclipse and cures freeze; incoming Water and Ice attacks use half the offensive stat. Dragon's Den blocks Fire moves. Dragon's Den, Volcanic and Cold Eclipse entry give +1 Defense and Sp. Def. At turn end, foes take Fire damage of 1/16 base max HP, doubled if burned or the holder used Fire/Dragon that turn. Fire immunities apply; effectiveness scales chip only in Free-for-All. Self-Sufficient heals 1/16 max HP each turn and prevents sandstorm/hail damage. Levitate grants normal airborne Ground and grounded-hazard protection. Retains one 20% attack-damage reduction. New World, Cold Eclipse and Starlight Arena retain 1.5x move power. No Mold Breaker or White Smoke."
+    },
+    "frightfulwings": {
+      "shortDesc": "Intimidate + Own Tempo.",
+      "desc": "On entry lowers adjacent foes Attack by 1 stage under normal Intimidate rules. Full Own Tempo prevents and cures confusion and blocks Intimidate Attack drops. No added Water STAB; Prism Skimmer supplies that separately."
+    },
+    "mindseye": {
+      "shortDesc": "Self Sufficient; Normal/Fighting hit Ghost; Fairy/Dark STAB; accuracy protection; hit healing.",
+      "desc": "Has Self Sufficient. Normal and Fighting moves can hit Ghost types; gains Fairy and Dark STAB, ignores target evasion boosts, and prevents external accuracy drops. Heals 1/16 maximum HP after its damaging moves hit. No ordinary damage reduction. On Cold Eclipse, retains 30% damage reduction, 1/8 hit healing and 1.3x damaging move power."
+    },
+    "relentlesshunt": {
+      "shortDesc": "Rough Skin; low-power moves gain +1 priority; field damage bonuses.",
+      "desc": "Contact attackers lose 1/8 of their maximum HP through Rough Skin. Moves with 60 or less Base Power gain +1 priority; Cold Eclipse raises the threshold to 80 without stacking another priority boost. Damaging moves deal 2x damage on Rocky, Fairy Tale, Big Top, Dragon Den, Mountain, Snowy Mountain or Cold Eclipse, applied once; 1.5x on Desert, Forest, Burning, Superheated, Ashen Beach, Water Surface, Cave, Starlight Arena or New World. Levitate is the separate Garchomp-Mega-Z species passive."
+    },
+    "solarpower": {
+      "shortDesc": "Sun: 1.5x Attack and Sp. Atk, loses 1/8 HP per turn; disabled on Cold Eclipse.",
+      "desc": "In effective sun, Attack and Sp. Atk are 1.5x and it loses 1/8 max HP each turn. Cold Eclipse disables both effects."
+    },
+    "verdantdrake": {
+      "shortDesc": "Lightning Rod + Regenerator + Infiltrator.",
+      "desc": "Redirects single-target Electric moves and absorbs other Pokemon Electric moves for +1 Attack and Sp. Atk. Electric Terrain entry also grants both boosts. Switching heals 1/3 max HP. Moves bypass Substitute, Reflect, Light Screen, Aurora Veil, Safeguard and Mist. Proficient remains a separate species passive."
+    },
+    "wrathshield": {
+      "shortDesc": "Bulletproof + Stamina + Friend Guard; 20% less attack damage.",
+      "desc": "Immune to bullet, pulse and Mega Launcher-boosted moves; takes 20% less attack damage. Stamina heals 1/16 maximum HP after each opposing damaging hit and raises Defense once per turn on the first such hit. Friend Guard reduces allies attack damage by 25%, not the holder. No Self Repair turn healing, weather protection or status-cure healing. Entry grants +1 Sp. Def on Cold Eclipse, New World, Starlight Arena or Fairy Tale; no entry Defense boost. Proficient remains separate."
+    },
+    "astralwitchcraft": {
+      "shortDesc": "Levitate + Magic Guard + Void Guile (Magician + Infiltrator).",
+      "desc": "Levitate grants Ground immunity and airborne benefits unless grounded. Magic Guard prevents indirect damage under its normal rules. Void Guile provides Magician item theft and Infiltrator screen, Substitute, Safeguard and Mist bypass. Entry grants +1 Sp. Atk on Fairy Tale, Bewitched Woods, Haunted, Misty or New World; on Psychic, incoming status moves with numeric accuracy use 50 accuracy. Its separate Fairy Tale and New World entry bonus grants another +1 Sp. Atk and +1 Sp. Def. No Magic Bounce reflection or entry boosts. Proficient remains a separate passive."
+    },
+    "blazingtempo": {
+      "shortDesc": "Speed Boost + Magma Armor + Inner Focus.",
+      "desc": "Gains +1 Speed after each full active turn. Prevents flinching and Intimidate Attack drops. Prevents freezing outside Cold Eclipse and cures freeze. Incoming Water and Ice attacks use half the offensive stat. Dragon Den blocks Fire moves; Dragon Den, Volcanic and Cold Eclipse entry give +1 Defense and Sp. Def. Proficient remains a separate species passive."
+    },
+    "ragingcurrent": {
+      "shortDesc": "Swift Swim + Dry Skin + Damp.",
+      "desc": "Doubles Speed in rain or on Water Surface, Murkwater Surface, Underwater and Midnight Zone. Absorbs Water for 1/4 max HP. Dry Skin gives incoming Fire moves 1.25x power; Damp independently halves their offensive stat, a combined 0.625x before rounding and other modifiers. Effective rain heals 1/8 HP; sun costs 1/8. Field healing: 1/16 on Underwater, Swamp, Misty or grounded Water Surface; 1/8 when grounded and Poison-type on Murkwater. Corrosive Mist heals Poison types by 1/8 but damages non-Steel others by 1/8; Desert costs 1/8. Damp blocks Explosion, Self-Destruct, Mind Blown, Misty Explosion and Aftermath damage. On Corrosive Mist it also blocks Eruption, Fire Pledge, Flame Burst, Heat Wave, Incinerate, Lava Plume, Searing Shot and Inferno Overdrive. Proficient remains a separate passive."
+    },
+    "supersweetsyrup": {
+      "shortDesc": "On every entry, lowers adjacent foes’ evasiveness 1 stage.",
+      "desc": "On switch-in, it lowers the evasiveness of adjacent opposing Pokemon by 1 stage every time it switches in. Substitute blocks this. Flower Garden stages 3–5 add the existing stat drops; Misty Terrain lowers its accuracy."
+    },
+    "ironmountain": {
+      "shortDesc": "Hyper Cutter + Brute Force; entry or Mega Evolution clears own Stealth Rock/Spikes.",
+      "desc": "Hyper Cutter + Brute Force. Entry clears its side’s Stealth Rock and Spikes after hazards take effect. Mega Evolution also clears them; ability restarts do not."
+    },
+    "vendetta": {
+      "shortDesc": "Inner Focus; once per entry, surviving an opposing hit Taunts its attacker.",
+      "desc": "Full Inner Focus prevents flinching and Intimidate Attack drops. Once per entry, surviving an opposing damaging hit that removes HP attempts to Taunt its living attacker under normal Taunt protections. The attempt spends the use even if blocked; Substitute-only damage does not trigger it. Switching resets the use; ability changes do not. No retaliation mark or trapping."
+    },
+    "lunardread": {
+      "shortDesc": "Dishearten + Insomnia; Dark and Ghost moves have 1.3x power.",
+      "desc": "On entry, lowers adjacent foes Sp. Atk by 1 stage, blocked by Substitute and normal stat-drop protection. Prevents and cures sleep and blocks Yawn. Dark and Ghost attacks have 1.3x power. No Pressure effects."
+    },
+    "zerotohero": {
+      "shortDesc": "Palafin becomes Hero; Fighting STAB; survives one KO in multiplayer battles.",
+      "desc": "Gains Fighting-type STAB. Palafin changes to Hero Form after switching out or entering Water fields. In Doubles, Multi or Free-for-All, survives one KO at 1 HP. Hero Form has no additional healing or ally damage reduction."
+    },
+    "triplethreat": {
+      "shortDesc": "Hydra Bond; Keen Eye, Inner Focus and Own Tempo.",
+      "desc": "Prevents flinching, confusion and Intimidate Attack drops; cures confusion. Retains full local Hydra Bond and Keen Eye: eligible attacks gain Hydra Bond's extra hits and format/field behavior. Prevents opposing accuracy drops, ignores evasion boosts, reveals opposing Illusions on activation, and gains accuracy and Laser Focus on Mirror Arena entry."
+    },
+    "snowpack": {
+      "shortDesc": "Ice Body.",
+      "desc": "Full local Ice Body: immune to hail; contact attackers have a 30% frostbite chance. Heals 1/16 max HP in hail/snow, or on Icy, Snowy Mountain and Cold Eclipse without those weathers; hail on Cold Eclipse heals 1/8. No Fire/Ice reduction or contact power multiplier. Mamoswine supplies Thick Fat separately as its species passive."
+    },
+    "mountainbreaker": {
+      "shortDesc": "Earth Eater + Battle Armor.",
+      "desc": "Full local Earth Eater + Battle Armor: absorbs Ground moves for 1/4 HP; heals 1/16 on Cave and Desert. Prevents critical hits, retains Battle Armor damage reduction, Fairy Tale entry Defense and Defense response to opposing stat drops. No Rock/Ground matchup substitution."
+    },
+    "dreadpresence": {
+      "shortDesc": "Unnerve + Dark Aura.",
+      "desc": "Full local Unnerve + Dark Aura. Blocks opposing Berries and field Seeds; Cold Eclipse entry lowers opposing Speed. Boosts Dark moves on both sides by 4/3, reversed by Aura Break, without stacking. Immune to hail on Cold Eclipse. No punishment for opposing status moves."
+    },
+    "galvanicspirit": {
+      "shortDesc": "Vital Spirit; special Electric moves have 1.3x power.",
+      "desc": "Prevents and cures sleep and blocks Yawn. Fighting attacks use 1.3x Attack or Sp. Atk through full local Vital Spirit. Moves whose actual category is Special and primary type is Electric gain 1.3x power, using ordinary Sp. Atk and Sp. Def. No extra boost to physical Electric moves; no contact Sp. Def drops. Static remains separate."
+    },
+    "blastchamber": {
+      "shortDesc": "Vital Spirit; special Fire moves have 1.3x power.",
+      "desc": "Prevents and cures sleep and blocks Yawn. Fighting attacks use 1.3x Attack or Sp. Atk through full local Vital Spirit. Moves whose actual category is Special and primary type is Fire gain 1.3x power, using ordinary Sp. Atk and Sp. Def. No extra boost to physical Fire moves; no accuracy charges. Flame Body remains separate."
+    },
+    "infernaldominion": {
+      "shortDesc": "Intimidate; Molten Guard; Rock effectiveness capped at neutral; melts own Stealth Rock damage.",
+      "desc": "Retains Intimidate. Does not generate Fire Spin or trap foes. Incoming Rock attack effectiveness is capped at neutral, preserving stronger resistance or immunity. Prevents only this holder's Stealth Rock damage without removing the hazard. A direct Fire attack dealing opposing HP damage clears Sandstorm and, once per turn regardless of weather, grants Molten Guard until turn end. The guard blocks the next opposing Rock attack against this holder, including all hits, without shielding other spread targets. Generated attacks do not arm it. Leaving, ability loss and Mega Evolution clear the guard."
+    },
+    "hydraulicarmor": {
+      "shortDesc": "Stamina; Withdraw/Protect fire Water Pulse; Skull Bash fires Hydro Pump.",
+      "desc": "Stamina. Water Pulse and Hydro Pump use higher boosted Defense or Sp. Atk, remaining Special against Sp. Def. Successful Withdraw uses one free Water Pulse at the corresponding opposing slot, falling back to the first living legal adjacent foe. Protect fires one Water Pulse at the surviving active attacker after the first opposing damaging attack it fully blocks that turn; no trigger from Z/Max chip or generated attacks. Shelter has no attack. A Skull Bash opposing HP strike uses one Hydro Pump at the same surviving active foe after the whole attack. All follow-ups require a living active holder, use no PP, cannot recurse, and retain normal accuracy, protection, immunity and effects."
+    },
+    "voidwrath": {
+      "shortDesc": "Mold Breaker + Infiltrator; Outrage has no rampage lock or confusion.",
+      "desc": "Moves ignore bypassable opposing abilities and bypass Substitute, Reflect, Light Screen, Aurora Veil, Safeguard and Mist. Outrage does not cause a rampage lock or its ending confusion. Other move restrictions, including Choice locks, still apply."
+    },
+    "scaleshelter": {
+      "shortDesc": "Overcoat; blocks opposing accuracy drops.",
+      "desc": "Full local Overcoat prevents powder moves, Rage Powder redirection, Effect Spore, sandstorm damage and hail damage. Opposing Pokemon cannot lower its accuracy. Self and ally accuracy changes remain possible. No full-HP damage reduction or stored ward."
+    },
+    "crosswire": {
+      "shortDesc": "Iron Fist + Inner Focus.",
+      "desc": "Punching moves have 1.4x power. Prevents flinching and Intimidate Attack drops. Does not store charges or bypass positive Sp. Def stages. Static remains the separate Electivire passive."
+    },
+    "wisecounsel": {
+      "shortDesc": "Inner Focus + Guardian Presence; first successful allied Instruct cures confusion.",
+      "desc": "Inner Focus prevents flinching and Intimidate Attack drops. Once per entry, successfully using Instruct on an active ally cures its confusion before the ordinary repeated action; failed Instruct or non-ally targets do not spend the use. Guardian Presence gives allies 1.3x move power, or 1.5x on Haunted, Bewitched Woods, Holy and Psychic fields, and reduces their attack damage by 25%. Neither support effect applies to the holder. Telepathy remains separate."
+    }
+  }
+}

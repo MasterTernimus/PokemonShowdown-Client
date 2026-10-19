@@ -1,0 +1,290 @@
+[
+  {
+    "species": "Sinistcha",
+    "front": false,
+    "shiny": false,
+    "preview": true,
+    "w": 52,
+    "h": 78,
+    "url": "sprites/gen5-back/sinistcha.png"
+  },
+  {
+    "species": "Sinistcha",
+    "front": true,
+    "shiny": false,
+    "preview": true,
+    "w": 44,
+    "h": 72,
+    "url": "sprites/gen5/sinistcha.png"
+  },
+  {
+    "species": "Talonflame",
+    "front": false,
+    "shiny": false,
+    "preview": true,
+    "w": 78,
+    "h": 59,
+    "url": "sprites/gen5ani-back/talonflame.gif"
+  },
+  {
+    "species": "Talonflame",
+    "front": true,
+    "shiny": false,
+    "preview": true,
+    "w": 72,
+    "h": 54,
+    "url": "sprites/gen5ani/talonflame.gif"
+  },
+  {
+    "species": "Sinistcha",
+    "front": false,
+    "shiny": false,
+    "preview": false,
+    "w": 29,
+    "h": 44,
+    "url": "sprites/gen5-back/sinistcha.png"
+  },
+  {
+    "species": "Sinistcha",
+    "front": true,
+    "shiny": false,
+    "preview": false,
+    "w": 30,
+    "h": 48,
+    "url": "sprites/gen5/sinistcha.png"
+  },
+  {
+    "species": "Talonflame",
+    "front": false,
+    "shiny": false,
+    "preview": false,
+    "w": 72,
+    "h": 54,
+    "url": "sprites/gen5ani-back/talonflame.gif"
+  },
+  {
+    "species": "Talonflame",
+    "front": true,
+    "shiny": false,
+    "preview": false,
+    "w": 80,
+    "h": 60,
+    "url": "sprites/gen5ani/talonflame.gif"
+  },
+  {
+    "species": "Sinistcha-Masterpiece",
+    "front": false,
+    "shiny": false,
+    "preview": true,
+    "w": 52,
+    "h": 78,
+    "url": "sprites/gen5-back/sinistcha-masterpiece.png"
+  },
+  {
+    "species": "Sinistcha-Masterpiece",
+    "front": true,
+    "shiny": false,
+    "preview": true,
+    "w": 44,
+    "h": 72,
+    "url": "sprites/gen5/sinistcha-masterpiece.png"
+  },
+  {
+    "species": "Talonflame",
+    "front": false,
+    "shiny": false,
+    "preview": true,
+    "w": 78,
+    "h": 59,
+    "url": "sprites/gen5ani-back/talonflame.gif"
+  },
+  {
+    "species": "Talonflame",
+    "front": true,
+    "shiny": false,
+    "preview": true,
+    "w": 72,
+    "h": 54,
+    "url": "sprites/gen5ani/talonflame.gif"
+  },
+  {
+    "species": "Sinistcha-Masterpiece",
+    "front": false,
+    "shiny": false,
+    "preview": false,
+    "w": 29,
+    "h": 44,
+    "url": "sprites/gen5-back/sinistcha-masterpiece.png"
+  },
+  {
+    "species": "Sinistcha-Masterpiece",
+    "front": true,
+    "shiny": false,
+    "preview": false,
+    "w": 30,
+    "h": 48,
+    "url": "sprites/gen5/sinistcha-masterpiece.png"
+  },
+  {
+    "species": "Talonflame",
+    "front": false,
+    "shiny": false,
+    "preview": false,
+    "w": 72,
+    "h": 54,
+    "url": "sprites/gen5ani-back/talonflame.gif"
+  },
+  {
+    "species": "Talonflame",
+    "front": true,
+    "shiny": false,
+    "preview": false,
+    "w": 80,
+    "h": 60,
+    "url": "sprites/gen5ani/talonflame.gif"
+  },
+  {
+    "species": "Sinistcha",
+    "front": false,
+    "shiny": true,
+    "preview": true,
+    "w": 52,
+    "h": 78,
+    "url": "sprites/gen5-back-shiny/sinistcha.png"
+  },
+  {
+    "species": "Sinistcha",
+    "front": true,
+    "shiny": true,
+    "preview": true,
+    "w": 44,
+    "h": 72,
+    "url": "sprites/gen5-shiny/sinistcha.png"
+  },
+  {
+    "species": "Talonflame",
+    "front": false,
+    "shiny": true,
+    "preview": true,
+    "w": 70,
+    "h": 78,
+    "url": "sprites/gen5-back-shiny/talonflame.png"
+  },
+  {
+    "species": "Talonflame",
+    "front": true,
+    "shiny": true,
+    "preview": true,
+    "w": 72,
+    "h": 59,
+    "url": "sprites/gen5-shiny/talonflame.png"
+  },
+  {
+    "species": "Sinistcha",
+    "front": false,
+    "shiny": true,
+    "preview": false,
+    "w": 29,
+    "h": 44,
+    "url": "sprites/gen5-back-shiny/sinistcha.png"
+  },
+  {
+    "species": "Sinistcha",
+    "front": true,
+    "shiny": true,
+    "preview": false,
+    "w": 30,
+    "h": 48,
+    "url": "sprites/gen5-shiny/sinistcha.png"
+  },
+  {
+    "species": "Talonflame",
+    "front": false,
+    "shiny": true,
+    "preview": false,
+    "w": 64,
+    "h": 72,
+    "url": "sprites/gen5-back-shiny/talonflame.png"
+  },
+  {
+    "species": "Talonflame",
+    "front": true,
+    "shiny": true,
+    "preview": false,
+    "w": 80,
+    "h": 65,
+    "url": "sprites/gen5-shiny/talonflame.png"
+  },
+  {
+    "species": "Sinistcha-Masterpiece",
+    "front": false,
+    "shiny": true,
+    "preview": true,
+    "w": 52,
+    "h": 78,
+    "url": "sprites/gen5-back-shiny/sinistcha-masterpiece.png"
+  },
+  {
+    "species": "Sinistcha-Masterpiece",
+    "front": true,
+    "shiny": true,
+    "preview": true,
+    "w": 44,
+    "h": 72,
+    "url": "sprites/gen5-shiny/sinistcha-masterpiece.png"
+  },
+  {
+    "species": "Talonflame",
+    "front": false,
+    "shiny": true,
+    "preview": true,
+    "w": 70,
+    "h": 78,
+    "url": "sprites/gen5-back-shiny/talonflame.png"
+  },
+  {
+    "species": "Talonflame",
+    "front": true,
+    "shiny": true,
+    "preview": true,
+    "w": 72,
+    "h": 59,
+    "url": "sprites/gen5-shiny/talonflame.png"
+  },
+  {
+    "species": "Sinistcha-Masterpiece",
+    "front": false,
+    "shiny": true,
+    "preview": false,
+    "w": 29,
+    "h": 44,
+    "url": "sprites/gen5-back-shiny/sinistcha-masterpiece.png"
+  },
+  {
+    "species": "Sinistcha-Masterpiece",
+    "front": true,
+    "shiny": true,
+    "preview": false,
+    "w": 30,
+    "h": 48,
+    "url": "sprites/gen5-shiny/sinistcha-masterpiece.png"
+  },
+  {
+    "species": "Talonflame",
+    "front": false,
+    "shiny": true,
+    "preview": false,
+    "w": 64,
+    "h": 72,
+    "url": "sprites/gen5-back-shiny/talonflame.png"
+  },
+  {
+    "species": "Talonflame",
+    "front": true,
+    "shiny": true,
+    "preview": false,
+    "w": 80,
+    "h": 65,
+    "url": "sprites/gen5-shiny/talonflame.png"
+  }
+]

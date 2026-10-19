@@ -5486,7 +5486,7 @@ function renderStarterPassives(species) {
   var dex = this.curTeam.dex, species = dex.species.get(set.species);
   if (species.baseSpecies !== 'Silvally' || toID(set.ability) !== 'rkssystem') return '';
   var parts = Dex.getAbilityDisplayComponents('rkssystem', dex, species.passives, species.id, set.item || '');
-  return '<small class="rks-memory-components" style="display:block;white-space:normal;width:230px;margin-left:-122px;padding-top:3px">Includes: ' + parts.map(function (id) { return BattleLog.escapeHTML(dex.abilities.get(id).name); }).join(' + ') + '</small>';
+  return '<small class="rks-memory-components" style="display:block;white-space:normal;width:230px;margin-left:-122px;padding-top:3px">Heals 1/16 HP each turn. Includes: ' + parts.map(function (id) { return BattleLog.escapeHTML(dex.abilities.get(id).name); }).join(' + ') + '</small>';
  };
  p.renderSet = function (set) {
   return render.apply(this, arguments).replace(/(<input[^>]*name="ability"[^>]*>)/, '$1' + this.renderRKSMemory(set));

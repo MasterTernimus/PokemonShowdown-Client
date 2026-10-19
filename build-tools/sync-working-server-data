@@ -95,6 +95,12 @@ for (const id of [...groups.moves].sort()) {
 for (const id of [...groups.items].sort()) {
 	const data = Dex.items.get(id);
 	snapshot.items[id] = select(data, ['name', 'num', 'desc', 'shortDesc', 'gen', 'isNonstandard', 'megaStone', 'megaEvolves', 'itemUser', 'zMove', 'zMoveType', 'zMoveFrom', 'fling', 'naturalGift']);
+	// Keep Memory help consistent with the existing contextual client item text.
+	if (data.onMemory) {
+		const components = require(path.join(server, 'dist/data/rks-system-memory')).getRKSSystemMemoryAbilities(id).map(id => Dex.abilities.get(id).name);
+		const text = "Holder's Multi-Attack is " + data.onMemory + ' type. RKS System gives ' + components.join(' and ') + '.';
+		snapshot.items[id].desc = snapshot.items[id].shortDesc = text;
+	}
 }
 snapshot.displayComponents = Object.fromEntries(Dex.abilities.all().map(ability => [ability.id, getAbilityDisplayComponents(ability.id)]));
 const target = path.join(root, 'play.pokemonshowdown.com/src/battle-dex.ts');

@@ -1985,6 +1985,7 @@ export class PokemonSprite extends Sprite {
 		beakblast: ['Beak Blast', 'neutral'],
 		laserfocus: ['Laser Focus', 'good'],
 		moltenguard: ['Molten Guard', 'good'],
+		activenoguard: ['Active No Guard', 'good'],
 		sealing: '<span class="sealing-status" title="Shared moves are sealed while Keystone Seal is active.">Sealing</span> ',
 		spotlight: ['Spotlight', 'neutral'],
 		itemremoved: null,
@@ -2951,6 +2952,11 @@ export class PokemonSprite extends Sprite {
     status += '<span class="bad" title="' + BattleLog.escapeHTML('Prepared for: ' + owners.join(', ') + '. Only its owner can use this opening; ends when this foe switches.') + '">Prepared</span> ';
     continue;
    }
+			const expiry = pokemon.volatiles[i]?.[1]?.expiresTurn;
+			if (expiry && ['firespin', 'desertsmark', 'barbedweb', 'swarmsnare'].includes(i)) {
+				status += '<span class="bad" title="Binding ends after turn ' + expiry + '. Normal escape effects still apply.">' + BattleLog.escapeHTML(Dex.moves.get(i).name) + ' (ends T' + expiry + ')</span> ';
+				continue;
+			}
 			status += PokemonSprite.getEffectTag(i);
 		}
 		for (let i in pokemon.turnstatuses) {

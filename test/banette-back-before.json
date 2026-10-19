@@ -1,0 +1,98 @@
+[
+  {
+    "species": "Banette",
+    "front": false,
+    "shiny": false,
+    "w": 55,
+    "h": 52,
+    "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani-back/banette.gif?v=banette-354-2"
+  },
+  {
+    "species": "Banette",
+    "front": false,
+    "shiny": true,
+    "w": 72,
+    "h": 72,
+    "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/banette.png?v=banette-354-2"
+  },
+  {
+    "species": "Banette",
+    "front": true,
+    "shiny": false,
+    "w": 55,
+    "h": 51,
+    "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani/banette.gif?v=banette-354-2"
+  },
+  {
+    "species": "Banette",
+    "front": true,
+    "shiny": true,
+    "w": 80,
+    "h": 80,
+    "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/banette.png?v=banette-354-2"
+  },
+  {
+    "species": "Banette-Mega",
+    "front": false,
+    "shiny": false,
+    "w": 82,
+    "h": 82,
+    "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back/banette-mega.png?v=banette-354-2"
+  },
+  {
+    "species": "Banette-Mega",
+    "front": false,
+    "shiny": true,
+    "w": 82,
+    "h": 82,
+    "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/banette-mega.png?v=banette-354-2"
+  },
+  {
+    "species": "Banette-Mega",
+    "front": true,
+    "shiny": false,
+    "w": 96,
+    "h": 96,
+    "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani/banette-mega.gif?v=banette-354-2"
+  },
+  {
+    "species": "Banette-Mega",
+    "front": true,
+    "shiny": true,
+    "w": 82,
+    "h": 82,
+    "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/banette-mega.png?v=banette-354-2"
+  },
+  {
+    "species": "Scolipede",
+    "front": false,
+    "shiny": false,
+    "w": 72,
+    "h": 64,
+    "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani-back/scolipede.gif"
+  },
+  {
+    "species": "Scolipede",
+    "front": false,
+    "shiny": true,
+    "w": 72,
+    "h": 63,
+    "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-back-shiny/scolipede.png"
+  },
+  {
+    "species": "Scolipede",
+    "front": true,
+    "shiny": false,
+    "w": 80,
+    "h": 71,
+    "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5ani/scolipede.gif"
+  },
+  {
+    "species": "Scolipede",
+    "front": true,
+    "shiny": true,
+    "w": 80,
+    "h": 73,
+    "url": "https://play.pokemonreborn-showdown.xyz/sprites/gen5-shiny/scolipede.png"
+  }
+]

@@ -8,14 +8,14 @@ const {BattleTooltips, ModifiableValue} = new Function(fs.readFileSync(
 	'\nreturn {BattleTooltips, ModifiableValue};')();
 describe('Approved signature client parity', () => {
 	it('exposes approved base slots, stats, components and the punch flag', () => {
-		assert.deepEqual(Dex.species.get('grafaiai').abilities, {0: 'Unburden', 1: 'Toxic Signature', H: 'Prankster'});
-		assert.deepEqual(Dex.species.get('klefki').abilities, {0: 'Vault Keeper', 1: 'Master Key', H: 'Magician'});
+		assert.deepEqual(Dex.species.get('grafaiai').abilities, {0: 'Unburden', 1: 'Toxic Signature', H: 'Sticky Hold'});
+		assert.deepEqual(Dex.species.get('klefki').abilities, {0: 'Prankster', 1: 'Master Key', H: 'Magician'});
 		assert.equal(Dex.species.get('magcargo').bst, 540);
 		for (const id of ['charizardmegax', 'charizardmegaxalt']) {
 			assert.equal(Dex.species.get(id).baseStats.atk, 130);
 			assert.equal(Dex.species.get(id).baseStats.spa, 125);
 		}
-		assert(Dex.getAbilityEffects('atrocity').has('toughclaws'));
+		assert(!Dex.getAbilityEffects('atrocity').has('toughclaws'));
 		assert(!Dex.getAbilityEffects('atrocity').has('levitate'));
 		for (const id of ['battlefervor', 'precision', 'opportunist']) assert(Dex.getAbilityEffects('duskdrive').has(id));
 		assert.equal(Dex.moves.get('doubleshock').flags.punch, 1);

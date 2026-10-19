@@ -46,7 +46,7 @@ describe('Passive component separation client parity', () => {
   for (const id of ['pollenbloom','unboundblaze','proficient']) assert.equal(Dex.getAbilityEffects(id).has('proficient'),id==='proficient');
   for (const id of ['toxicbloom','atrocity','tidaljaw']) assert(!Dex.getAbilityEffects(id).has('proficient'));
   assert.deepEqual(Dex.getAbilityDisplayComponents('scaleshelter'), ['overcoat']);
-  assert.equal(Dex.abilities.get('scaleshelter').shortDesc, 'Overcoat; first selected Quiver Dance each entry grants a 20% whole-attack HP ward.');
+  assert.equal(Dex.abilities.get('scaleshelter').shortDesc, 'Overcoat; blocks opposing accuracy drops.');
  });
  it('uses actual passive Levitate after suppression but removed borrowed immunity stays gone', () => {
   const battle = new Battle({debug:true,log:['|init|battle','|gen|9','|gametype|singles','|switch|p1a: Mew|Mew, L100|100/100','|switch|p2a: Mew|Mew, L100|100/100']});

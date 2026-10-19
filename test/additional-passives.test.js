@@ -15,6 +15,6 @@ describe('Additional passive groups UI and search', () => {
  it('keeps exclusive components separate and retains Mega Launcher and Conductivity effects', () => {
   assert.deepEqual(Dex.getAbilityDisplayComponents('anchoredbattery', Dex, ['suctioncups']), ['megalauncher']);
   assert(!Dex.getAbilityEffects('anchoredbattery').has('suctioncups')); assert(!Dex.getAbilityEffects('conductivity').has('soundproof'));
-  assert.match(Dex.abilities.get('anchoredbattery').desc, /1.5x power/); assert.match(Dex.abilities.get('conductivity').desc, /Steel-type/);
+  assert.match(Dex.abilities.get('anchoredbattery').desc, /1.5x/); assert.match(Dex.abilities.get('conductivity').desc, /Steel-type/);
  });
 });

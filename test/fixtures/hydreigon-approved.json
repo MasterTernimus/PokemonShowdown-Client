@@ -2,13 +2,13 @@
   "HydreigonDescriptions": {
     "hydraflight": {
       "name": "Hydra Flight",
-      "shortDesc": "Levitate + Hydra Bond + Berserk.",
-      "desc": "Full local Levitate, Hydra Bond and Berserk. Surviving a move that crosses half HP grants +1 Attack and Sp. Atk; Dragon’s Den entry grants +2 to both. Ground immunity can be bypassed normally; Hydra Bond remains active. Eligible attacks hit three times with the existing later-hit, spread, Free-for-All and Gilded Helix rules. Retains Dragon’s Den power boost."
+      "shortDesc": "Levitate + Hydra Bond.",
+      "desc": "Full local Levitate and Hydra Bond. Ground immunity can be bypassed normally; Hydra Bond remains active. Eligible attacks retain three hits, 30% follow-ups, spread and Free-for-All rules, the full-power Gilded Helix exception and Dragon Den power boost. No Berserk boosts."
     },
     "worldbreaker": {
       "name": "Worldbreaker",
-      "shortDesc": "Merciless + Duskilate; each damaging hit has a 30% chance of double power.",
-      "desc": "Merciless + Duskilate. Each damaging hit independently has a 30% chance to double its base power."
+      "shortDesc": "Berserk + Duskilate; 30% double power per hit, except Fickle Beam.",
+      "desc": "Full local Berserk and Duskilate. Surviving a move crossing half HP grants +1 Attack and Sp. Atk; Dragon Den entry grants +2 to both. Each damaging hit independently has a 30% chance to double base power, except Fickle Beam uses only its own all-out roll. No Merciless critical-hit bonus."
     },
     "falseliberation": {
       "name": "False Liberation",

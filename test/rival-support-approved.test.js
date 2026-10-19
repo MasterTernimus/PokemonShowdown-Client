@@ -14,7 +14,7 @@ describe('Rival/support approved client',()=>{
   assert.equal(Dex.species.get('sevipermega').baseStats.spe,65);assert.deepEqual(Dex.species.get('parasectmega').passives,['mycelialbond']);
  });
  it('keeps separate selected components and passive mechanics',()=>{
-  assert(Dex.getAbilityEffects('sirius').has('venamskiss'));assert(!Dex.getAbilityEffects('toxicarmor').has('battlearmor'));assert(!Dex.getAbilityEffects('toxicarmor').has('venomarmor'));assert(Dex.getAbilityEffects('venomarmor').has('battlearmor'));assert(!Dex.getAbilityEffects('venomarmor').has('poisonheal'));assert(!Dex.getAbilityEffects('scrapbreaker').has('moldbreaker'));
+  assert(Dex.getAbilityEffects('sirius').has('venamskiss'));assert(!Dex.getAbilityEffects('toxicarmor').has('battlearmor'));assert(!Dex.getAbilityEffects('toxicarmor').has('venomarmor'));assert(!Dex.getAbilityEffects('venomarmor').has('battlearmor'));assert(Dex.getAbilityEffects('venomarmor').has('dualwield')); assert(!Dex.getAbilityEffects('venomarmor').has('poisonheal'));assert(!Dex.getAbilityEffects('scrapbreaker').has('moldbreaker'));
  });
  it('keeps conditional effects out of species base stats',()=>{assert.equal(Dex.species.get('seviper').baseStats.spe,95);assert.equal(Dex.species.get('gothitelle').baseStats.spa,95);});
  it('opening type follows passive and first move',()=>{assert(Dex.getOpeningTypeProfile({species:'Reuniclus',ability:'Cellular Concord',moves:['drainpunch']}).includes('Fighting'));});

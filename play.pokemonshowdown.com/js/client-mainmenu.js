@@ -1734,6 +1734,7 @@
 				}
 				$actor.find('.calc-component-details').toggle(!!parts.length);
 				$actor.find('.calc-components').text(parts.length ? 'Components: ' + parts.join(' · ') + '. Each effect has its own conditions.' : 'No composite components listed.');
+				if (species.baseSpecies === 'Silvally' && toID($actor.find('[name=ability]').val()) === 'rkssystem') $actor.find('.calc-components').append(' Heals 1/16 HP each turn.');
 				var spec = self.readActor(Number($actor.attr('data-slot')));
 				var evTotal = Object.keys(spec.evs).reduce(function (total, stat) { return total + spec.evs[stat]; }, 0);
 				var stages = Object.keys(spec.boosts).filter(function (stat) { return spec.boosts[stat] !== 0; }).length;

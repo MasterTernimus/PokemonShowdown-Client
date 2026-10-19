@@ -1,0 +1,61 @@
+{
+  "MewtwoComponents": {
+    "absolutepressure": [
+      "pressure",
+      "innerfocus",
+      "insomnia",
+      "moldbreaker"
+    ],
+    "perfectedgenome": [
+      "adaptability",
+      "unnerve"
+    ],
+    "mindmirror": [
+      "opportunist"
+    ],
+    "unboundwill": [
+      "magicbounce",
+      "clearbody"
+    ],
+    "psycheforce": [
+      "toughclaws",
+      "ironfist"
+    ],
+    "psychedominion": [
+      "psychicsurge",
+      "dishearten"
+    ]
+  },
+  "MewtwoDescriptions": {
+    "absolutepressure": {
+      "name": "Absolute Pressure",
+      "shortDesc": "Pressure + Inner Focus + Insomnia + Mold Breaker; 1/3-HP shield; once-battle Mega return.",
+      "desc": "Pressure + Inner Focus + Insomnia + Mold Breaker, including their entry effects and Insomnia’s 1.3x Dark/Ghost power. Entry and Mega Evolution refill an attack shield equal to 1/3 max HP; excess damage reaches HP. Status and indirect damage bypass the shield. Once per battle, a would-be faint as Mega Mewtwo instead restores base Mewtwo at half max HP with its original ability and a fresh shield. Its Mega use stays spent."
+    },
+    "perfectedgenome": {
+      "name": "Perfected Genome",
+      "shortDesc": "Adaptability + Unnerve.",
+      "desc": "Adaptability + Unnerve."
+    },
+    "mindmirror": {
+      "name": "Mind Mirror",
+      "shortDesc": "Opportunist; entry copies each stat’s highest positive opposing stage.",
+      "desc": "Opportunist. On entry, copies the highest positive opposing stage in each stat, keeping its own higher stages."
+    },
+    "unboundwill": {
+      "name": "Unbound Will",
+      "shortDesc": "Magic Bounce + Clear Body; blocks Taunt, Encore, Disable and Torment.",
+      "desc": "Magic Bounce + Clear Body. Immune to Taunt, Encore, Disable and Torment, including unreflectable effects."
+    },
+    "psycheforce": {
+      "name": "Psyche Force",
+      "shortDesc": "Tough Claws + Iron Fist; contact attacks heal 1/3 of opposing HP damage.",
+      "desc": "Tough Claws + Iron Fist (1.4x punching power). Contact attacks heal 1/3 of opposing HP damage, stacking with move draining."
+    },
+    "psychedominion": {
+      "name": "Psyche Dominion",
+      "shortDesc": "Psychic Surge + Dishearten; Psychic attacks use the lower defense.",
+      "desc": "Psychic Surge + Dishearten: entry lowers adjacent foes’ Sp. Atk by 1, respecting Substitute and stat-drop protection. Psychic attacks use the target’s lower effective Defense or Sp. Def, retaining their category and offensive stat."
+    }
+  }
+}

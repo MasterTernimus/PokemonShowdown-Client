@@ -1,7 +1,7 @@
 'use strict';
 const assert=require('assert').strict;require('./battle.test');
 describe('Approved passive cleanup display',()=>{
- for(const [id,passive]of Object.entries({milotic:'marvelscale',raichualola:'static',wishiwashisevii:'infiltrator',wishiwashiseviischooling:'infiltrator',gliscor:'poisonheal',gliscoralt:'poisonheal'}))it(id+' displays '+passive,()=>assert.deepEqual(Dex.species.get(id).passives,[passive]));
+ for(const [id,passive]of Object.entries({milotic:'marvelscale',raichualola:'surgesurfer',wishiwashisevii:'infiltrator',wishiwashiseviischooling:'infiltrator',gliscor:'poisonheal',gliscoralt:'poisonheal'}))it(id+' displays '+passive,()=>assert.deepEqual(Dex.species.get(id).passives,[passive]));
  for(const [id,passive,parts]of [['freezerburn','refrigerate',['slushrush','levitate']],['cursedmarionette','prankster',['frisk']],['scaleshelter','shielddust',['overcoat']],['venompincer','poisonheal',['poisontouch']]])it(id+' has unique Includes',()=>assert.deepEqual(Dex.getAbilityDisplayComponents(id,Dex,[passive]),parts));
  it('keeps Mega Milotic and the non-Sevii fish unchanged',()=>{assert.deepEqual(Dex.species.get('miloticmega').passives,['marvelscale']);assert.deepEqual(Dex.species.get('wishiwashi').passives,['friendguard']);assert.deepEqual(Dex.species.get('wishiwashischool').passives,['friendguard']);});
  it('Shadow Current no longer includes Mold Breaker, Infiltrator or Proficient in Includes',()=>{const parts=Dex.getAbilityDisplayComponents('shadowcurrent',Dex,['torrent','proficient']);assert(!parts.includes('moldbreaker'));assert(!parts.includes('infiltrator'));assert(!parts.includes('proficient'));assert.doesNotMatch(Dex.abilities.get('shadowcurrent').desc,/Mold Breaker/);});

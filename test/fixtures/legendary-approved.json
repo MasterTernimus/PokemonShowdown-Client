@@ -1,0 +1,170 @@
+{
+  "SeasonalBirdComponents": {
+    "springpressure": [
+      "static",
+      "pressure"
+    ],
+    "summerpressure": [
+      "flamebody",
+      "pressure"
+    ],
+    "winterpressure": [
+      "icebody",
+      "pressure"
+    ],
+    "springherald": [
+      "drizzle"
+    ],
+    "springtempest": [
+      "lightningrod",
+      "stormpower"
+    ],
+    "summerherald": [
+      "drought"
+    ],
+    "summerrenewal": [
+      "regenerator",
+      "solarpower"
+    ],
+    "winterherald": [
+      "snowwarning"
+    ],
+    "winterrefuge": [
+      "friendguard",
+      "icescales"
+    ]
+  },
+  "SeasonalBirdDescriptions": {
+    "springpressure": {
+      "name": "Spring Pressure",
+      "shortDesc": "Static + Pressure.",
+      "desc": "Full local Static and Pressure, including their field effects. Pressure retains its once-per-opponent entry memory."
+    },
+    "summerpressure": {
+      "name": "Summer Pressure",
+      "shortDesc": "Flame Body + Pressure.",
+      "desc": "Full local Flame Body and Pressure, including their field effects. Pressure retains its once-per-opponent entry memory."
+    },
+    "winterpressure": {
+      "name": "Winter Pressure",
+      "shortDesc": "Ice Body + Pressure.",
+      "desc": "Full local Ice Body and Pressure, including their field effects. Pressure retains its once-per-opponent entry memory."
+    },
+    "springherald": {
+      "name": "Spring Herald",
+      "shortDesc": "Drizzle. Its Electric attacks spare allies.",
+      "desc": "Full local Drizzle. Its damaging Electric moves do not hit allies."
+    },
+    "springtempest": {
+      "name": "Spring Tempest",
+      "shortDesc": "Lightning Rod + Storm Power.",
+      "desc": "Full local Lightning Rod and Storm Power: redirects and absorbs Electric moves; rain boosts Sp. Atk by 1.5x and costs 1/8 max HP each turn."
+    },
+    "summerherald": {
+      "name": "Summer Herald",
+      "shortDesc": "Drought. Fire immunity; opposing Fire heals 1/8 HP once per turn.",
+      "desc": "Full local Drought. Immune to Fire moves. An opposing Fire move heals 1/8 max HP, at most once per turn; allied Fire moves do not heal it."
+    },
+    "summerrenewal": {
+      "name": "Summer Renewal",
+      "shortDesc": "Regenerator + Solar Power.",
+      "desc": "Full local Regenerator and Solar Power, including their field effects and Solar Power HP cost."
+    },
+    "winterherald": {
+      "name": "Winter Herald",
+      "shortDesc": "Snow Warning. In hail/snow, foes cannot lower allied Speed.",
+      "desc": "Full local Snow Warning. While hail or snow is effective, opponents cannot lower its or its active allies' Speed."
+    },
+    "winterrefuge": {
+      "name": "Winter Refuge",
+      "shortDesc": "Friend Guard + Ice Scales.",
+      "desc": "Full local Friend Guard and Ice Scales, including their field effects."
+    }
+  },
+  "SeasonalBirdPassives": {
+    "zapdos": "springpressure",
+    "moltres": "summerpressure",
+    "articuno": "winterpressure"
+  },
+  "JirachiComponents": {
+    "cometheart": [
+      "levitate"
+    ],
+    "wishkeeper": [
+      "magicbounce",
+      "triage"
+    ],
+    "yearningstar": []
+  },
+  "JirachiDescriptions": {
+    "cometheart": {
+      "name": "Comet Heart",
+      "shortDesc": "Levitate. Doom Desire has 1.5x power.",
+      "desc": "Levitate. Its Doom Desire has 1.5x power."
+    },
+    "wishkeeper": {
+      "name": "Wishkeeper",
+      "shortDesc": "Magic Bounce + Triage. Its Wish also cures the receiver's status.",
+      "desc": "Magic Bounce and Triage. When its Wish resolves, it cures the receiver's major status even at full HP."
+    },
+    "yearningstar": {
+      "name": "Yearning Star",
+      "shortDesc": "Charge moves, Wish, Future Sight and Doom Desire resolve immediately.",
+      "desc": "Skips charge turns. Wish, Future Sight and Doom Desire resolve during their use, without leaving a delayed effect. Charge boosts, move costs and recharge turns remain."
+    },
+    "dreamsickness": {
+      "name": "Dream Sickness",
+      "shortDesc": "Telepathy; heals allies each turn; once per entry rescues an ally through one attack.",
+      "desc": "Avoids allied damaging moves; Speed doubles on Psychic Terrain or Psychic Aura. At turn end, it and its active allies heal 1/16 max HP. Once per switch-in, an ally facing a lethal opposing move survives at 1 HP through that entire move, including later hits. It pays 1/4 max HP and must have more HP than the cost. Later attacks and indirect damage can still knock out the ally."
+    }
+  },
+  "LesserRegis": [
+    "regirock",
+    "regice",
+    "registeel",
+    "regieleki",
+    "regidrago"
+  ],
+  "RegiComponents": {
+    "rubblewake": [],
+    "eternalice": [],
+    "temperedalloy": [
+      "filter"
+    ],
+    "unsealedcurrent": [],
+    "crystalfocus": [],
+    "ancientassembly": []
+  },
+  "RegiDescriptions": {
+    "rubblewake": {
+      "name": "Rubblewake",
+      "shortDesc": "Once per entry, surviving a physical hit sets Spikes on the attacker's side.",
+      "desc": "Once per switch-in, after surviving a physical attack that damages its HP, sets one layer of Spikes on the attacker's side."
+    },
+    "eternalice": {
+      "name": "Eternal Ice",
+      "shortDesc": "Immune to Fire and burns; damaging moves cannot lower its stats.",
+      "desc": "Immune to Fire moves and burns. Prevents negative stat changes caused by damaging moves, including its own moves. Status moves can still lower its stats."
+    },
+    "temperedalloy": {
+      "name": "Tempered Alloy",
+      "shortDesc": "Filter. Immune to damaging-move secondary effects.",
+      "desc": "Filter. Blocks secondary effects of damaging moves that would affect it; effects on the attacker still apply."
+    },
+    "unsealedcurrent": {
+      "name": "Unsealed Current",
+      "shortDesc": "Once per battle, a hit crossing half HP raises Sp. Atk by 1.",
+      "desc": "Once per battle, surviving a damaging move that takes it from above half HP to half HP or less raises its Sp. Atk by 1."
+    },
+    "crystalfocus": {
+      "name": "Crystal Focus",
+      "shortDesc": "Dragon attacks ignore positive defensive stages and screens.",
+      "desc": "Its Dragon attacks ignore the target's positive Defense or Sp. Def stages and Reflect, Light Screen and Aurora Veil."
+    },
+    "ancientassembly": {
+      "name": "Ancient Assembly",
+      "shortDesc": "Allied Regis shorten Slow Start; in Primordial form, boost damage.",
+      "desc": "Each different allied Regirock, Regice, Registeel, Regieleki or Regidrago that enters battle shortens its Slow Start by 1 turn, up to 3 turns. In Primordial form, each instead adds 10% damage, up to 30%. Each species counts once per battle."
+    }
+  }
+}

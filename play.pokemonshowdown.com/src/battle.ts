@@ -1811,7 +1811,7 @@ export class Battle {
 		}
 		case '-heal': {
 			const quiet = isRoutineResidualEffect(args, kwArgs);
-			let poke = this.getPokemon(args[1], Dex.getEffect(kwArgs.from).id === 'revivalblessing')!;
+			let poke = this.getPokemon(args[1], ['revivalblessing', 'riftofruin'].includes(Dex.getEffect(kwArgs.from).id))!;
 			let damage = poke.healthParse(args[2], true, true);
 			if (damage === null) break;
 			let range = poke.getDamageRange(damage);
@@ -1849,6 +1849,7 @@ export class Battle {
 						this.scene.updateSidebar(poke.side);
 					}
 					break;
+				case 'riftofruin':
 				case 'revivalblessing':
 					this.scene.runResidualAnim('wish' as ID, poke);
 					const {siden} = this.parsePokemonId(args[1]);
@@ -2794,6 +2795,9 @@ export class Battle {
 			}
 			if (!(effect.id === 'typechange' && poke.terastallized)) {
 				poke.addVolatile(effect.id);
+				if (kwArgs.until && ['firespin', 'desertsmark', 'barbedweb', 'swarmsnare'].includes(effect.id)) {
+					poke.volatiles[effect.id][1] = {expiresTurn: Number(kwArgs.until)};
+				}
 			}
 			this.scene.updateStatbar(poke);
 			// Only the move's auxiliary startup event is hidden; move and stat-change events remain visible.
