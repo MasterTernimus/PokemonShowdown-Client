@@ -4359,7 +4359,7 @@
 		html += '</section>';
 		if (profile) {
 			var appearance = draft || profile;
-			html += '<section class="library-step"><h4><span class="library-step-number">2</span> Add Pokémon &amp; names</h4><div class="library-row-tools"><input type="search" class="textbox nickname-search" aria-label="Find an existing nickname" placeholder="Find an existing entry" /><label><input type="checkbox" class="nickname-team-only" /> Team only</label>' + button('addTeamNicknameRows', 'Add team Pokémon') + '</div><div class="nickname-rows"><div class="nickname-row nickname-head"><span>Pokémon / form</span><span>Nickname</span><span class="nickname-gender-heading">Applies to</span><span></span></div>';
+			html += '<section class="library-step"><h4><span class="library-step-number">2</span> Add Pokémon &amp; names</h4><div class="library-row-tools">' + T.nicknameGroupOptions(this.rosterData ? this.rosterData().profiles : []) + '<input type="search" class="textbox nickname-search" aria-label="Find an existing nickname" placeholder="Find an existing entry" /><label><input type="checkbox" class="nickname-team-only" /> Team only</label>' + button('addTeamNicknameRows', 'Add team Pokémon') + '</div><div class="nickname-rows"><div class="nickname-row nickname-head"><span>Pokémon / form</span><span>Nickname</span><span class="nickname-gender-heading">Applies to</span><span></span></div>';
 			if (!(draft ? draft.rows.length : Object.keys(profile.entries).length + Object.keys(profile.genderEntries || {}).length)) html += '<p class="library-empty nickname-empty-hint">Start with a Pokémon and its nickname below.</p>';
 			if (draft) draft.rows.filter(function (row) {return row[0].trim() || row[1].trim();}).forEach(function (row) {html += T.nicknameRow(row[0], row[1], row[2]);});
 			else {Object.keys(profile.entries).sort().forEach(function (id) {html += T.nicknameRow(Dex.species.get(id).name, profile.entries[id]);}); Object.keys(profile.genderEntries || {}).sort().forEach(function (id) {Object.keys(profile.genderEntries[id]).forEach(function (gender) {html += T.nicknameRow(Dex.species.get(id).name, profile.genderEntries[id][gender], gender);});});}
@@ -4451,7 +4451,12 @@
 		});
 	};
 	proto.addNicknameRow = function () { this.$('.nickname-rows').append(T.nicknameRow('', '')); this.$('.nickname-species').last().focus(); this.saveNicknameDraft(); };
-	proto.removeNicknameRow = function (value, btn) { $(btn).closest('.nickname-row').remove(); this.saveNicknameDraft(); };
+	proto.removeNicknameRow = function (value, btn) {
+		var row = $(btn).closest('.nickname-row');
+		if (row.attr('data-group-entry')) row.find('.nickname-value').val('');
+		else row.remove();
+		this.saveNicknameDraft();
+	};
 	proto.pasteNicknameRows = function () {
 		try {
 			var rows = T.nicknameList(String(this.$('.nickname-paste').val()));
@@ -4466,8 +4471,7 @@
 		if (!this.toolsView) return true;
 		var data = this.toolsData(), profile = data.nicknames.find(function (p) { return p.id === data.selectedNickname; });
 		if (!profile) return true;
-		var rows = [];
-		this.$('.nickname-row').not('.nickname-head').each(function () { rows.push([String($(this).find('.nickname-species').val()), String($(this).find('.nickname-value').val()), String($(this).find('.nickname-gender').val() || '')]); });
+		var rows = T.nicknameEditorRows(this);
 		try {
 			var mapped = T.nicknameMappings(rows);
 			profile.entries = mapped.entries; profile.genderEntries = mapped.genderEntries;
@@ -4546,7 +4550,7 @@
 	proto.saveNicknameDraft = function () {
 		var data = this.toolsData(), id = data.selectedNickname; if (!id || !this.toolsView || !this.$('.nickname-rows').length) return;
 		this.captureLibraryView();
-		var rows = []; this.$('.nickname-row').not('.nickname-head').each(function () {rows.push([String($(this).find('.nickname-species').val()), String($(this).find('.nickname-value').val()), String($(this).find('.nickname-gender').val() || '')]);});
+		var rows = T.nicknameEditorRows(this);
 		var drafts = Storage.prefs('nicknamedrafts') || {}, profile = data.nicknames.find(function (p) {return p.id === id;});
 		var draft = {rows:T.nonemptyNicknameRows(rows), shiny:this.$('.nickname-shiny').val() || '', gendered:!!this.$('.nickname-gendered').prop('checked'), fallback:!!this.$('.nickname-fallback').prop('checked')};
 		var unchanged = false;
@@ -5061,12 +5065,68 @@
 		else {this.profilesView = false; this.librarySection = section; this.showToolsManager();}
 		var tab = this.$('.library-tabs [value="' + section + '"]')[0]; if (tab) tab.focus({preventScroll:true});
 	};
+	// Groups remain live lists; only entered nicknames are saved in the name profile.
+	T.nicknameGroupOptions = function (lists) {
+		if (!lists.length) return '';
+		return '<label class="nickname-group-filter">Group<select class="nickname-group-choice" aria-label="Name Pokémon from a group"><option value="">All entries</option>' + lists.map(function (list) {
+			return '<option value="' + escape(list.id) + '">' + escape(list.name) + '</option>';
+		}).join('') + '</select></label>';
+	};
+	T.nicknameEditorRows = function (room) {
+		var rows = [];
+		room.$('.nickname-row').not('.nickname-head').each(function () {
+			var row = $(this), name = String(row.find('.nickname-value').val());
+			if (this.getAttribute && this.getAttribute('data-group-entry') && !name.trim()) return;
+			rows.push([String(row.find('.nickname-species').val()), name, String(row.find('.nickname-gender').val() || '')]);
+		});
+		return rows;
+	};
+	proto.nicknameGroupProfile = function () {
+		var id = this.$('.nickname-group-choice').val();
+		return this.rosterData ? this.rosterData().profiles.find(function (list) {return list.id === id;}) || null : null;
+	};
+	proto.refreshNicknameGroup = function () {
+		if (!this.$('.nickname-rows').length) return;
+		var group = this.nicknameGroupProfile(), ids = new Set(), defaults = new Set(), self = this;
+		if (!group) this.$('.nickname-group-choice').val('');
+		this.$('.nickname-row[data-group-entry]').each(function () {
+			var row = $(this);
+			if (!String(row.find('.nickname-value').val()).trim()) row.remove();
+			else row.removeAttr('data-group-entry').find('.nickname-species').prop('readOnly', false);
+		});
+		this.$('.nickname-row [name=removeNicknameRow]').text('Remove').removeAttr('title');
+		this.$('.nickname-row').not('.nickname-head').each(function () {
+			var row = $(this);
+			if (!row.find('.nickname-gender').val()) defaults.add(T.id(row.find('.nickname-species').val()));
+		});
+		(group ? group.species : []).forEach(function (id) {
+			var species = Dex.species.get(id);
+			if (!species.exists || ids.has(species.id)) return;
+			ids.add(species.id);
+			if (!defaults.has(species.id)) self.$('.nickname-rows').append(T.nicknameRow(species.name, ''));
+		});
+		this.$('.nickname-row').not('.nickname-head').each(function () {
+			var row = $(this);
+			if (!ids.has(T.id(row.find('.nickname-species').val()))) return;
+			row.attr('data-group-entry', 'true').find('.nickname-species').prop('readOnly', true);
+			row.find('[name=removeNicknameRow]').text('Clear').attr('title', 'Clear this nickname; keep the group');
+		});
+		this.$('.nickname-gender').prop('disabled', !this.$('.nickname-gendered').prop('checked'));
+		this.$('[name=addNicknameRow]').prop('disabled', !!group).attr('title', group ? 'Choose All entries to add another Pokémon' : '');
+		this.$('[name=addTeamNicknameRows]').prop('disabled', !!group || !this.curTeam).attr('title', group ? 'Choose All entries to add team Pokémon' : this.curTeam ? '' : 'Open a team in the builder first');
+		this.filterNicknameRows();
+	};
+	proto.nicknameGroupChange = function () {
+		this.saveNicknameDraft(); this.refreshNicknameGroup(); this.captureLibraryView();
+	};
+	proto.events['change .nickname-group-choice'] = 'nicknameGroupChange';
 	proto.filterNicknameRows = function () {
 		var query = String(this.$('.nickname-search').val() || '').toLowerCase(), teamOnly = this.$('.nickname-team-only').prop('checked');
 		var ids = new Set((this.curSetList || []).map(function (s) { return T.id(s.species); }));
+		var group = this.nicknameGroupProfile ? this.nicknameGroupProfile() : null, members = new Set(group ? group.species.map(T.id) : []);
 		this.$('.nickname-row').not('.nickname-head').each(function () {
 			var row = $(this), species = String(row.find('.nickname-species').val()), name = String(row.find('.nickname-value').val());
-			row.toggle((species + ' ' + name).toLowerCase().includes(query) && (!teamOnly || ids.has(T.id(species))));
+			row.toggle((species + ' ' + name).toLowerCase().includes(query) && (!teamOnly || ids.has(T.id(species))) && (!group || members.has(T.id(species))));
 		});
 	};
 	proto.addTeamNicknameRows = function () {
@@ -5129,7 +5189,7 @@
 		if (this.profilesView) {this.libraryListView = {scroll:this.$el.scrollTop(), name:this.$('.roster-import-name').val(), text:this.$('.roster-import-text').val(), query:this.$('.roster-species-search').val(), importOpen:this.$('.roster-import-section').prop('open')}; return;}
 		if (!this.toolsView || !this.$('.local-tools-manager').length) return;
 		this.libraryViews = this.libraryViews || {};
-		this.libraryViews[this.librarySection || 'names'] = {scroll:this.$el.scrollTop(), search:this.$('.build-library-search').val(), names:this.$('.nickname-search').val(), teamOnly:this.$('.nickname-team-only').prop('checked'), rowsScroll:this.$('.nickname-rows').scrollTop(), replace:this.$('.nickname-replace').prop('checked')};
+		this.libraryViews[this.librarySection || 'names'] = {scroll:this.$el.scrollTop(), search:this.$('.build-library-search').val(), names:this.$('.nickname-search').val(), teamOnly:this.$('.nickname-team-only').prop('checked'), group:this.$('.nickname-group-choice').val() || '', rowsScroll:this.$('.nickname-rows').scrollTop(), replace:this.$('.nickname-replace').prop('checked')};
 		var draft = this.libraryInputDraft || (this.libraryInputDraft = {paste:{}}), id = this.toolsData(true).selectedNickname;
 		draft.importName = this.$('.imported-build-name').val(); draft.importSets = this.$('.imported-build-sets').val();
 		if (this.$('.nickname-paste').length) draft.paste[id] = this.$('.nickname-paste').val();
@@ -5141,9 +5201,12 @@
 		if (this.profilesView) {var list = this.libraryListView; if (!list) return; this.$('.roster-import-name').val(list.name || ''); this.$('.roster-import-text').val(list.text || ''); this.$('.roster-species-search').val(list.query || ''); this.$('.roster-import-section').prop('open', !!list.importOpen); this.searchRosterSpecies(); this.$el.scrollTop(list.scroll || 0); return;}
 		var draft = this.libraryInputDraft, state = this.libraryViews && this.libraryViews[this.librarySection || 'names'];
 		if (draft) {this.$('.imported-build-name').val(draft.importName || ''); this.$('.imported-build-sets').val(draft.importSets || ''); this.$('.nickname-paste').val(draft.paste[this.toolsData(true).selectedNickname] || ''); this.$('.imported-build-sets').closest('details').prop('open', !!draft.importOpen); this.$('.library-backup').prop('open', !!draft.backupOpen); if (draft.transfer !== undefined) {this.$('.tools-transfer').val(draft.transfer); this.libraryTransferDirty = true;}}
-		if (!state) return;
+		if (!state) {if (this.refreshNicknameGroup) this.refreshNicknameGroup(); return;}
 		this.$('.build-library-search').val(state.search || ''); this.filterSavedBuilds({currentTarget:{value:state.search || ''}});
-		this.$('.nickname-search').val(state.names || ''); this.$('.nickname-team-only').prop('checked', !!state.teamOnly); this.filterNicknameRows();
+		this.$('.nickname-search').val(state.names || ''); this.$('.nickname-team-only').prop('checked', !!state.teamOnly);
+		this.$('.nickname-group-choice').val(state.group || '');
+		if (this.refreshNicknameGroup) this.refreshNicknameGroup();
+		this.filterNicknameRows();
 		this.$('.nickname-replace').prop('checked', !!state.replace); this.$('.nickname-rows').scrollTop(state.rowsScroll || 0); this.$el.scrollTop(state.scroll || 0);
 	};
 	proto.showAbilityPickerDetails = function (event) {

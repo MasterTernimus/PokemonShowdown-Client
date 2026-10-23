@@ -125,6 +125,9 @@
 		this.q = this.engine.query;
 		this.resultSet = this.engine.results;
 		if (firstElem && (this.engine.typedSearch.searchType !== 'pokemon' || this.engine.pickerMatches(firstElem))) {
+			if (this.engine.typedSearch.searchType === 'item') {
+				this.resultSet = this.resultSet.filter(function (row) { return row[0] !== 'item' || row[1] !== firstElem; });
+			}
 			this.resultSet = [[this.engine.typedSearch.searchType, firstElem]].concat(this.resultSet);
 			if (this.resultSet.length > 1 && ['sortpokemon', 'sortmove'].includes(this.resultSet[1][0])) {
 				var sortRow = this.resultSet[1];
@@ -513,7 +516,7 @@
 			if (i === 'spd' && gen === 1) continue;
 			bst += stats[i];
 		}
-		buf += '<span class="col bstcol"><em>BST<br />' + bst + '</em></span> ';
+		buf += '<span class="col bstcol"><em>BST</em><br />' + bst + '</span> ';
 
 		buf += '</a></li>';
 
@@ -580,7 +583,7 @@
 		buf += '<span class="col statcol"><em>Spe</em><br />' + pokemon.baseStats.spe + '</span> ';
 		var bst = 0;
 		for (i in pokemon.baseStats) bst += pokemon.baseStats[i];
-		buf += '<span class="col bstcol"><em>BST<br />' + bst + '</em></span> ';
+		buf += '<span class="col bstcol"><em>BST</em><br />' + bst + '</span> ';
 		buf += '</span>';
 
 		buf += '</a>';

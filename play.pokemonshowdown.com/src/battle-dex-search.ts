@@ -250,6 +250,12 @@ const CUSTOM_CAN_LEARN_OVERRIDES: {[speciesid: string]: {[moveid: string]: true}
 /**
  * Backend for search UIs.
  */
+// Verified presentation preference, not a global item alias. The legacy stone
+// shares regular Golisopod's target, but does not support its Aevian form.
+const MEGA_ITEM_PICKER_PREFERENCES: {[id: string]: {canonical: ID, species: ID}} = {
+	megagolisopite: {canonical: 'golisopite' as ID, species: 'golisopod' as ID},
+};
+
 class DexSearch {
 	static isHiddenCosmeticPattern(id: string) {
 		return VIVILLON_PATTERN_SPECIES.has(toID(id));
@@ -386,6 +392,27 @@ class DexSearch {
 		});
 	}
 
+	private dedupeItemResults(results: SearchRow[], query: string, explicitItems: string[] | null = null) {
+		const unique = dedupeSearchResults(results);
+		const offered = new Set(unique.filter(row => row[0] === 'item').map(row => row[1]));
+		const reasons = this.typedSearch?.illegalReasons;
+		const requested = toID(query || (!explicitItems && this.typedSearch?.set?.item) || '');
+		const exact = MEGA_ITEM_PICKER_PREFERENCES[requested];
+		const visible = unique.filter(row => {
+			if (row[0] !== 'item') return true;
+			// Exact legacy lookup keeps that real item, rather than another equivalent suggestion.
+			if (exact?.species === this.typedSearch?.species && row[1] === exact.canonical && offered.has(requested) &&
+				(reasons?.[requested] || '') === (reasons?.[exact.canonical] || '')) return false;
+			const preference = MEGA_ITEM_PICKER_PREFERENCES[row[1]];
+			if (!preference || preference.species !== this.typedSearch?.species || row[1] === requested ||
+				explicitItems?.includes(row[1])) return true;
+			return !offered.has(preference.canonical) ||
+				(reasons?.[row[1]] || '') !== (reasons?.[preference.canonical] || '');
+		});
+		return visible.filter((row, index) => row[0] !== 'header' ||
+			(index + 1 < visible.length && visible[index + 1][0] !== 'header'));
+	}
+
 	find(query: string) {
 		const itemTools = (window as any).TeambuilderTools;
 		if (this.typedSearch?.searchType === 'item' && itemTools) {
@@ -408,6 +435,7 @@ class DexSearch {
 					start = end;
 				}
 			}
+			this.results = this.dedupeItemResults(this.results, query, selected);
 			this.exactMatch = !!this.dex.items.get(query).exists;
 			return true;
 		}
@@ -421,6 +449,7 @@ class DexSearch {
 		} else {
 			this.results = this.textSearch(query);
 		}
+		if (this.typedSearch?.searchType === 'item') this.results = this.dedupeItemResults(this.results, query);
 		this.results = this.filterPokemonPicker(this.results);
 		if (query && ['pokemon', 'move'].includes(this.typedSearch?.searchType || '')) {
 			this.results = this.sortTextResults(this.results);
