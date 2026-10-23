@@ -780,7 +780,7 @@
       "desc": "The holder's damaging sound moves have 1.2x power. Its or an adjacent ally's resisted sound attack dealing opposing HP damage can mark one foe for its side through the next turn. The next damaging sound attempt by the holder or an adjacent ally against that foe consumes the mark and ignores resistance, not immunity. Marks can be earned again, but not by the consuming attack. One shared mark per side; duplicate holders do not stack it. Provider suppression or departure, target departure and expiry clear the mark. Substitute-only hits and Soundproof do not qualify."
     },
     "hydrabond": {
-      "shortDesc": "Damaging moves hit 3x; hits 2/3 at 30%; FFA singles hit all foes at 1.3x.",
+      "shortDesc": "Eligible single hits strike 3x; native variable hits maximize in singles/doubles; remaining hits chain after KO.",
       "desc": "Eligible single-target damaging moves hit three times; existing multi-hit moves, spread moves outside Free-for-All, charging moves, delayed attacks, Z/Max moves and moves barred from extra hits are excluded. The second and third hits deal 30% damage and retarget the foe's ally if the first target fainted. In Free-for-All battles, single-target moves hit all foes once at 1.3x power; spread moves hit all foes three times, with later hits at 30% power, and full-power spread moves stay full power. Moves have 1.2x power on Dragon's Den. Gilded Helix is the exception: three full 50-power hits in every format, with all-foes targeting in Free-for-All; suppression restores its native two hits."
     },
     "prismscale": {

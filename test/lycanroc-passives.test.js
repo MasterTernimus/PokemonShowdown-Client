@@ -18,6 +18,7 @@ describe('Approved three Lycanroc passives',()=>{
    const moves=search.results.filter(row=>row[0]==='move').map(row=>row[1]);assert(moves.length>0);
    rows.push({format,moves,headSmashShown:moves.includes('headsmash'),headSmashIllegalReason:search.illegalLabel('headsmash'),candidateMoves:Object.fromEntries(['accelerock','crunch','psychicfangs','firefang','thunderfang','bite','rocktomb','rockslide','stoneedge'].map(id=>[id,moves.includes(id)]))});
   }
-  fs.writeFileSync('C:/Users/Cynao/Desktop/Showdown/PokemonShowdown-Reborn/artifacts/lycanroc-client-move-audit.json',JSON.stringify(rows,null,2)+'\n');
+  assert.equal(rows.length,2);
+  if(process.env.LYCANROC_MOVE_AUDIT_OUTPUT)fs.writeFileSync(process.env.LYCANROC_MOVE_AUDIT_OUTPUT,JSON.stringify(rows,null,2)+'\n');
  });
 });

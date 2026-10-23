@@ -112,7 +112,7 @@
     "shortDesc": "Combines the listed abilities."
   },
   "scarecrow": {
-    "desc": "Absorbs wind moves for +1 Attack. Gains +1 Attack when Tailwind starts on its side or it enters during Tailwind. Strong Winds gives +1 Attack each turn, plus +1 Sp. Atk on Mountain or Snowy Mountain. Steel moves receive STAB and use 1.5x Attack or Sp. Atk (2x on Factory). On Short-Circuit, Steel moves also gain Electric typing. Adds Steel resistances and Poison immunity without Steel weaknesses. Attacks use double the offensive stat against targets that entered this turn.",
+    "desc": "Absorbs wind moves for +1 Attack. Gains +1 Attack when Tailwind starts on its side or it enters during Tailwind. Strong Winds gives +1 Attack and Sp. Atk each turn. Steel moves receive STAB and use 1.5x Attack or Sp. Atk (2x on Factory). On Short-Circuit, Steel moves also gain Electric typing. Adds Steel resistances and Poison immunity without Steel weaknesses. Attacks use double the offensive stat against targets that entered this turn.",
     "shortDesc": "Combines the listed abilities."
   },
   "bruteforce": {
@@ -240,11 +240,11 @@
     "shortDesc": "Combines the listed abilities."
   },
   "hisuianvanguard": {
-    "desc": "On its first active turn, its Speed is 1.5x and its Sp. Atk is 1.2x. Absorbs wind moves for +1 Sp. Atk. Gains +1 Sp. Atk when Tailwind starts on its side or it enters during Tailwind. Strong Winds gives +1 Sp. Atk each turn, plus +1 Attack on Mountain or Snowy Mountain.",
+    "desc": "On its first active turn, its Speed is 1.5x and its Sp. Atk is 1.2x. Absorbs wind moves for +1 Sp. Atk. Gains +1 Sp. Atk when Tailwind starts on its side or it enters during Tailwind. Strong Winds gives +1 Attack and Sp. Atk each turn.",
     "shortDesc": "Combines the listed abilities."
   },
   "unovavanguard": {
-    "desc": "On its first active turn, its Speed is 1.5x and its Attack is 1.2x. Absorbs wind moves for +1 Attack. Gains +1 Attack when Tailwind starts on its side or it enters during Tailwind. Strong Winds gives +1 Attack each turn, plus +1 Sp. Atk on Mountain or Snowy Mountain.",
+    "desc": "On its first active turn, its Speed is 1.5x and its Attack is 1.2x. Absorbs wind moves for +1 Attack. Gains +1 Attack when Tailwind starts on its side or it enters during Tailwind. Strong Winds gives +1 Attack and Sp. Atk each turn.",
     "shortDesc": "First active turn: 1.5x Spe and 1.2x Atk; Tailwind/Strong Winds raise Attack."
   },
   "unovawing": {
@@ -356,7 +356,7 @@
     "shortDesc": "Normal moves become Steel; boosted sound moves; half sound damage."
   },
   "hauntedchime": {
-    "desc": "Airborne: immune to Ground attacks and grounded hazards unless grounded. Move KOs raise its highest stat by 1, ignoring stat stages when choosing the stat. Absorbs wind moves for +1 Sp. Atk. Gains +1 Sp. Atk when Tailwind starts on its side or it enters during Tailwind. Strong Winds gives +1 Sp. Atk each turn, plus +1 Attack on Mountain or Snowy Mountain. Damaging attacks have a 30% chance to be disabled, guaranteed on Haunted and disabled on Holy Field. Excludes Max moves, delayed attacks and Struggle. On fainting, curses all active foes.",
+    "desc": "Airborne: immune to Ground attacks and grounded hazards unless grounded. Move KOs raise its highest stat by 1, ignoring stat stages when choosing the stat. Absorbs wind moves for +1 Sp. Atk. Gains +1 Sp. Atk when Tailwind starts on its side or it enters during Tailwind. Strong Winds gives +1 Attack and Sp. Atk each turn. Damaging attacks have a 30% chance to be disabled, guaranteed on Haunted and disabled on Holy Field. Excludes Max moves, delayed attacks and Struggle. On fainting, curses all active foes.",
     "shortDesc": "Combines the listed abilities."
   },
   "auramaster": {
@@ -389,7 +389,7 @@
   },
   "apexpredator": {
     "shortDesc": "Dragon conversion/STAB and wind boosts.",
-    "desc": "Eligible Normal moves become Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Dragon moves receive STAB. Absorbs wind moves for +1 Attack. Gains +1 Attack when Tailwind starts on its side or it enters during Tailwind. Strong Winds gives +1 Attack each turn, plus +1 Sp. Atk on Mountain or Snowy Mountain."
+    "desc": "Eligible Normal moves become Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Dragon moves receive STAB. Absorbs wind moves for +1 Attack. Gains +1 Attack when Tailwind starts on its side or it enters during Tailwind. Strong Winds gives +1 Attack and Sp. Atk each turn."
   },
   "violentrush": {
     "desc": "On its first active turn, its Speed is 1.5x and its Attack is 1.2x.",
@@ -1024,8 +1024,8 @@
     "shortDesc": "Desert Field for 5 turns on faint."
   },
   "heatcoil": {
-    "desc": "Gains +1 Speed at the end of each full turn it spends active. Contact attackers have a 30% burn chance, or 60% on Volcanic. On Cold Eclipse, gains +1 Defense and Sp. Def on entry instead and cannot burn through contact. Cures existing freeze. Incoming Water and Ice attacks use half the attacker's offensive stat.",
-    "shortDesc": "Speed rises each full turn; contact may burn; cures freeze."
+    "desc": "Speed Boost and Long Reach. Long Reach removes contact. Retains the current modified Magma Armor package: cures freeze, and incoming Water/Ice attacks use half the offensive stat; this is not an upgrade to full Magma Armor. Flame Body is a separate species passive on G-Max Centiskorch. No new binding effect.",
+    "shortDesc": "Speed Boost + Long Reach; modified Magma Armor; Flame Body passive is separate."
   },
   "sweetdecay": {
     "desc": "Attack is 1.5x, but physical moves have 0.8x accuracy. Berries normally eaten at 1/4 HP activate at 1/2 HP instead. Prevents sleep and Yawn for itself and allies, including Rest. Does not cure existing sleep. Can poison Poison and Steel types; Poison moves bypass Steel immunity. Newly poisoned foes lose 1 Defense and Sp. Def. On Wasteland, move secondary effects become separate 2.5% frostbite, burn, paralysis and poison chances. On Corrosive and Corrosive Mist, incoming damage is multiplied by 1.5.",
@@ -1308,12 +1308,12 @@
     "shortDesc": "Doubles Defense."
   },
   "galewings": {
-    "desc": "If it is at full HP, its Flying-type moves have their priority increased by 1.",
-    "shortDesc": "If it is at full HP, its Flying-type moves have their priority increased by 1."
+    "desc": "Flying moves gain +1 priority at 75% HP or more. During unsuppressed Strong Winds, all moves gain +1 priority at any HP.",
+    "shortDesc": "Flying moves gain +1 priority at 75% HP or more. During unsuppressed Strong Winds, all moves gain +1 priority at any HP."
   },
   "wingedwraith": {
-    "desc": "Moves bypass Substitute, Reflect, Light Screen, Aurora Veil, Safeguard and Mist. If it is at full HP, its Flying-type moves have their priority increased by 1.",
-    "shortDesc": "Moves bypass Substitute and opposing screens; If it is at full HP, its Flying-type moves have their priority increased by 1."
+    "desc": "Moves bypass Substitute, Reflect, Light Screen, Aurora Veil, Safeguard and Mist. Flying moves gain +1 priority at 75% HP or more. During unsuppressed Strong Winds, all moves gain +1 priority at any HP.",
+    "shortDesc": "Moves bypass Substitute and opposing screens; Flying moves gain +1 priority at 75% HP or more. During unsuppressed Strong Winds, all moves gain +1 priority at any HP."
   },
   "galvanize": {
     "desc": "Eligible Normal moves become Electric and have 1.2x power, 1.5x on Factory or Electric Terrain, or 2x on Short-Circuit. Excludes moves whose type is set by their own effect, damaging Z-Moves and Terastallized Tera Blast.",
@@ -1417,7 +1417,7 @@
   },
   "hydrabond": {
     "desc": "Eligible single-target damaging moves hit three times; existing multi-hit moves, spread moves outside Free-for-All, charging moves, delayed attacks, Z/Max moves and moves barred from extra hits are excluded. The second and third hits deal 30% damage and retarget the foe's ally if the first target fainted. In Free-for-All battles, single-target moves hit all foes once at 1.3x power; spread moves hit all foes three times, with later hits at 30% power, and full-power spread moves stay full power. Moves have 1.2x power on Dragon's Den.",
-    "shortDesc": "Damaging moves hit 3x; hits 2/3 at 30%; FFA singles hit all foes at 1.3x."
+    "shortDesc": "Eligible single hits strike 3x; native variable hits maximize in singles/doubles; remaining hits chain after KO."
   },
   "hydraheart": {
     "desc": "Eligible single-target damaging moves hit three times; existing multi-hit moves, spread moves outside Free-for-All, charging moves, delayed attacks, Z/Max moves and moves barred from extra hits are excluded. The second and third hits deal 30% damage and retarget the foe's ally if the first target fainted. In Free-for-All battles, single-target moves hit all foes once at 1.3x power; spread moves hit all foes three times, with later hits at 30% power, and full-power spread moves stay full power. Moves have 1.2x power on Dragon's Den. Each opposing attack hit that damages HP heals 1/16 max HP. The first such hit each turn also raises Defense by 1, before later hits of a multi-hit move.",
@@ -1616,8 +1616,8 @@
     "shortDesc": "Sound moves: Water (Ice on Icy Field), 1.2x power."
   },
   "longreach": {
-    "desc": "Removes contact and raises critical-hit rate by one stage. Also raises Accuracy on entry and retains field bonuses. No triple critical-hit damage. Keen Eye prevents opposing accuracy drops, ignores evasion boosts and reveals opposing Illusions on activation. Mirror Arena grants +1 accuracy and Laser Focus; shared accuracy entry rewards apply once.",
-    "shortDesc": "Removes contact and raises critical-hit rate by one stage."
+    "desc": "Moves used by this Pokemon do not make contact.",
+    "shortDesc": "Moves do not make contact."
   },
   "magicbounce": {
     "desc": "Reflects eligible status moves and entry hazards once; reflected moves cannot bounce again. Fairy Tale entry gives +1 Sp. Def; Mirror Arena entry gives +1 evasion. On Mirror Arena, reflecting a directly targeted move also gives its original user +1 evasion.",
@@ -2620,8 +2620,8 @@
     "desc": "Eligible single-target damaging moves hit three times; existing multi-hit moves, spread moves outside Free-for-All, charging moves, delayed attacks, Z/Max moves and moves barred from extra hits are excluded. The second and third hits deal 30% damage and retarget the foe's ally if the first target fainted. In Free-for-All battles, single-target moves hit all foes once at 1.3x power; spread moves hit all foes three times, with later hits at 30% power, and full-power spread moves stay full power. Moves have 1.2x power on Dragon's Den. Airborne: immune to Ground attacks, Spikes, Toxic Spikes, Sticky Web and Arena Trap unless grounded. Thousand Arrows can still hit. Other Pokemon cannot lower its stat stages. On entry, sets Factory Field for 3 turns. Eligible single-target attacks hit three times, it is ungrounded, and opponents cannot lower its stats. Field creation or refresh is attempted only once per battle per holder, even if blocked; switching, suppression, revival, or ability changes never reset this use. Magnezone-Pulse automatically receives Flash Cannon, Discharge, Recover, and Autotomize in that order. Its field creation, refresh and conversion last exactly 3 turns; Amplifield Rock does not extend them."
   },
   "razorreach": {
-    "desc": "Slicing moves have 1.5x power, except on Cold Eclipse. Removes contact and raises critical-hit rate by one stage. Also raises Accuracy on entry and retains field bonuses. No triple critical-hit damage. Keen Eye prevents opposing accuracy drops, ignores evasion boosts and reveals opposing Illusions on activation. Mirror Arena grants +1 accuracy and Laser Focus; shared accuracy entry rewards apply once. Slicing moves have 1.5x power (except on Cold Eclipse), all attacks are non-contact, and entry grants +1 accuracy. Retains local Long Reach critical-hit and field effects: 0.9x move accuracy on Rocky/Grassy Field and 1.5x power on Mountain/Snowy Mountain. Replaces the former 1.3x slicing boost; no stacking with it.",
-    "shortDesc": "All attacks non-contact; +1 accuracy on entry."
+    "desc": "Slicing moves have 1.5x power except on Cold Eclipse. Moves do not make contact. Keen Eye prevents opposing accuracy drops, ignores evasion boosts and reveals opposing Illusions on activation; Mirror Arena grants one Accuracy stage and Laser Focus.",
+    "shortDesc": "Sharpness + Long Reach + Keen Eye."
   },
   "witheringtouch": {
     "desc": "Contact hits have a 30% chance to poison the target. Shield Dust and Covert Cloak block this effect. Can poison Poison and Steel types; Poison moves bypass Steel immunity. Newly poisoned foes lose 1 Defense and Sp. Def. On Wasteland, move secondary effects become separate 2.5% frostbite, burn, paralysis and poison chances. On Corrosive and Corrosive Mist, incoming damage is multiplied by 1.5. Poison attacks that damage a foe already poisoned before that hit lower its Attack by 1, once per target per turn. Poison caused by that same hit does not qualify; Substitute-only and residual damage do not count.",
@@ -2632,7 +2632,7 @@
     "desc": "Mr. Mime-Pulse automatically receives Light Screen, Reflect, Dazzling Gleam, and Dark Pulse in that order. On entry, sets Short-Circuit Field for 3 turns. Reflect and Light Screen gain +1 priority. Once per actual entry, successfully creating a new one of these screens cures major status on it and its active allies. Ability changes do not reset the cure. Screens retain their normal duration, removal, and bypass rules. Field creation or refresh is attempted only once per battle per holder, even if blocked; switching, suppression, revival, or ability changes never reset this use. Its field creation, refresh and conversion last exactly 3 turns; Amplifield Rock does not extend them."
   },
   "soaringspirit": {
-    "desc": "Absorbs wind moves for +1 Sp. Atk. Gains +1 Sp. Atk when Tailwind starts on its side or it enters during Tailwind. Strong Winds gives +1 Sp. Atk each turn, plus +1 Attack on Mountain or Snowy Mountain. Heals 1/16 max HP each turn. Immune to sandstorm and hail damage.",
+    "desc": "Absorbs wind moves for +1 Sp. Atk. Gains +1 Sp. Atk when Tailwind starts on its side or it enters during Tailwind. Strong Winds gives +1 Attack and Sp. Atk each turn. Heals 1/16 max HP each turn. Immune to sandstorm and hail damage.",
     "shortDesc": "Absorbs wind; Tailwind/Strong Winds raise Sp. Atk; immune to sandstorm and hail damage."
   },
   "vendetta": {
@@ -2764,7 +2764,7 @@
     "shortDesc": "Absorbs Fire for +2 Defense; hot fields raise Defense."
   },
   "stormsovereign": {
-    "desc": "On entry, summons replaceable Strong Winds for 8 turns. If it is at full HP, its Flying-type moves have their priority increased by 1. Prevents other Pokemon's accuracy drops and ignores evasion boosts. Reveals opposing Illusions on activation. Mirror Arena entry gives +1 accuracy and Laser Focus. Moves cannot miss.",
+    "desc": "On entry, summons replaceable Strong Winds for 8 turns. Flying moves gain +1 priority at 75% HP or more. During unsuppressed Strong Winds, all moves gain +1 priority at any HP. Prevents other Pokemon's accuracy drops and ignores evasion boosts. Reveals opposing Illusions on activation. Mirror Arena entry gives +1 accuracy and Laser Focus. Moves cannot miss.",
     "shortDesc": "Summons 8-turn Strong Winds; Flying priority; accuracy protection; moves never miss."
   },
   "coldlogic": {
@@ -2784,11 +2784,11 @@
     "shortDesc": "This Pokemon switches out when it reaches 1/2 or less of its maximum HP."
   },
   "windpower": {
-    "desc": "Absorbs wind moves for +1 Sp. Atk. Gains +1 Sp. Atk when Tailwind starts on its side or it enters during Tailwind. Strong Winds gives +1 Sp. Atk each turn, plus +1 Attack on Mountain or Snowy Mountain. Successfully establishing Tailwind itself also clears its own confusion and negative accuracy stages, preserving positive accuracy.",
+    "desc": "Absorbs wind moves for +1 Sp. Atk. Gains +1 Sp. Atk when Tailwind starts on its side or it enters during Tailwind. Strong Winds gives +1 Attack and Sp. Atk each turn. Successfully establishing Tailwind itself also clears its own confusion and negative accuracy stages, preserving positive accuracy.",
     "shortDesc": "Absorbs wind for Sp. Atk; Tailwind and Strong Winds boost it. Its successful Tailwind also clears confusion/accuracy drops."
   },
   "windrider": {
-    "desc": "Absorbs wind moves for +1 Attack. Gains +1 Attack when Tailwind starts on its side or it enters during Tailwind. Strong Winds gives +1 Attack each turn, plus +1 Sp. Atk on Mountain or Snowy Mountain.",
+    "desc": "Absorbs wind moves for +1 Attack. Gains +1 Attack when Tailwind starts on its side or it enters during Tailwind. Strong Winds gives +1 Attack and Sp. Atk each turn.",
     "shortDesc": "Absorbs wind; Tailwind/Strong Winds raise Attack."
   },
   "wonderguard": {
@@ -2864,7 +2864,7 @@
     "shortDesc": "Stronger Ice moves; Ice healing/protection; reflects status moves."
   },
   "islandcurrent": {
-    "desc": "Doubles Speed in rain or on Water Surface, Murkwater Surface, Underwater and Midnight Zone. Absorbs wind moves for +1 Attack. Gains +1 Attack when Tailwind starts on its side or it enters during Tailwind. Strong Winds gives +1 Attack each turn, plus +1 Sp. Atk on Mountain or Snowy Mountain.",
+    "desc": "Doubles Speed in rain or on Water Surface, Murkwater Surface, Underwater and Midnight Zone. Absorbs wind moves for +1 Attack. Gains +1 Attack when Tailwind starts on its side or it enters during Tailwind. Strong Winds gives +1 Attack and Sp. Atk each turn.",
     "shortDesc": "Double Speed in rain and water fields; Tailwind/Strong Winds raise Attack."
   },
   "oceanicwings": {

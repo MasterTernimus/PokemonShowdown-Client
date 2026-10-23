@@ -1,7 +1,8 @@
 'use strict';
 const assert=require('assert').strict,fs=require('fs');require('./battle.test');
 describe('Custom-only passive presentation and Water Barrage',()=>{
- const grants={vikavolt:'rechargerelay',jellicent:'undertow',jellicentazzy:'undertow',pinsir:'lockinggrip',hariyama:'palmmastery',drednaw:'lockjaw',seismitoad:'mirechorus'};
+ const grants={vikavolt:'rechargerelay',jellicent:'undertow',jellicentazzy:'undertow',pinsir:'lockinggrip',drednaw:'lockjaw',seismitoad:'mirechorus'};
+ it('Hariyama now uses full Thick Fat independently of its selected ability',()=>{assert.deepEqual(Dex.species.get('hariyama').passives,['thickfat']);assert.deepEqual(Dex.species.get('hariyama').abilities,{0:'Grit Grappler',1:'Sheer Force',H:'Stamina'});assert(!Dex.species.get('hariyama').passives.includes('palmmastery'));});
  const removed={rechargerelay:'battery',undertow:'waterabsorb',lockinggrip:'hypercutter',palmmastery:'thickfat',lockjaw:'strongjaw',mirechorus:'poisontouch'};
  for(const[species,passive]of Object.entries(grants))it(species+' publishes its custom passive independently of its selectable primitive',()=>{
   assert.deepEqual(Dex.species.get(species).passives,[passive]);

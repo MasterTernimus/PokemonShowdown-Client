@@ -1210,9 +1210,9 @@
 				buf = '<div class="pad"><button name="back" class="button"><i class="fa fa-chevron-left"></i> List</button> <input class="textbox teamnameedit" type="text" class="teamnameedit" size="30" value="' + BattleLog.escapeHTML(this.curTeam.name) + '" /> <button name="saveImport" class="button"><i class="fa fa-upload"></i> Import/Export</button> <button name="saveImport" class="savebutton button"><i class="fa fa-floppy-o"></i> Save</button></div>';
 				buf += '<div class="teamedit"><textarea class="textbox" rows="17">' + BattleLog.escapeHTML(Storage.exportTeam(this.curSetList, this.curTeam.gen)) + '</textarea></div>';
 			} else {
-				buf = '<div class="pad"><button name="back" class="button"><i class="fa fa-chevron-left"></i> List</button> ';
+				buf = '<div class="pad team-view"><div class="team-editor-header"><button name="back" class="button"><i class="fa fa-chevron-left"></i> List</button> ';
 				buf += '<input class="textbox teamnameedit" type="text" class="teamnameedit" size="30" value="' + BattleLog.escapeHTML(this.curTeam.name) + '" /> ';
-				buf += '<button name="import" class="button"><i class="fa fa-upload"></i> Import/Export</button> ';
+				buf += '<button name="import" class="button"><i class="fa fa-upload"></i> Import/Export</button></div> ';
 				buf += '<div class="teamchartbox">';
 				buf += '<ol class="teamchart">';
 				buf += '<li>' + this.clipboardHTML() + '</li>';
@@ -1303,7 +1303,7 @@
 				buf += '</li>';
 				return buf;
 			}
-			buf += '<div class="setmenu"><button name="copySet"><i class="fa fa-files-o"></i>Copy</button> <button name="importSet"><i class="fa fa-upload"></i>Import/Export</button> <button name="moveSet"><i class="fa fa-arrows"></i>Move</button> <button name="deleteSet" class="remove-team-member" title="Remove this Pokémon from the current team; keep saved builds and roster lists"><i class="fa fa-trash"></i> Remove from team</button></div>';
+			buf += '<div class="setmenu"><button name="copySet"><i class="fa fa-files-o"></i>Copy</button> <button name="importSet"><i class="fa fa-upload"></i>Import/Export</button> <button name="moveSet"><i class="fa fa-arrows"></i>Move</button> <button name="deleteSet" class="remove-team-member" aria-label="Remove this Pokémon from the current team; keep saved builds and roster lists" title="Remove this Pokémon from the current team; keep saved builds and roster lists"><i class="fa fa-trash"></i> Remove</button></div>';
 			buf += '<div class="setchart-nickname">';
 			buf += '<label>Nickname</label><input type="text" name="nickname" class="textbox" value="' + BattleLog.escapeHTML(set.name || '') + '" placeholder="' + BattleLog.escapeHTML(species.baseSpecies) + '" />';
 			buf += '</div>';
@@ -1559,6 +1559,9 @@
 			} else {
 				Storage.saveTeams();
 			}
+		},
+		openTeamClinic: function () {
+			window.openRulesEncyclopedia(Storage.exportTeam(this.curSetList, this.curTeam.gen), this.curTeam.format);
 		},
 		validate: function () {
 			if (this.curTeam.teamid && !this.curTeam.loaded) {
@@ -1859,74 +1862,74 @@
 			});
 		},
 		deleteSet: function (i, button) {
-            var row = $(button).closest('li[value]');
-            if (!row.length || !this.el.contains(button)) return;
-            i = Number(row.attr('value'));
-            if (!Number.isInteger(i) || i < 0 || !this.curSetList[i]) return;
-            var scroll = this.$el.scrollTop(), selected = this.curSet;
-            var previous = {index: this.curSetLoc, deleted: this.deletedSet, location: this.deletedSetLoc, packed: this.curTeam.team};
-            if (this.cancelSetProfile) this.cancelSetProfile();
-            this.deletedSetLoc = i;
-            this.deletedSet = this.curSetList.splice(i, 1)[0];
-            this.selectionUndo = null;
-            if (selected) {
-                this.curSetLoc = selected === this.deletedSet ? Math.min(i, this.curSetList.length - 1) : this.curSetList.indexOf(selected);
-                this.curSet = this.curSetList[this.curSetLoc] || null;
-                this.curChartName = '';
-            }
-            this.curTeam.team = Storage.packTeam(this.curSetList);
-            this.curTeam.iconCache = '';
-            try {
-                this.save();
-                if (Storage.cantSave) throw new Error('Storage unavailable');
-            } catch (error) {
-                this.curSetList.splice(i, 0, this.deletedSet);
-                this.curSet = selected; this.curSetLoc = previous.index;
-                this.deletedSet = previous.deleted; this.deletedSetLoc = previous.location;
-                this.curTeam.team = previous.packed;
-                this.update();
-                this.$el.prepend('<p class="set-removal-status" role="alert">Could not save the removal. Your team is unchanged. Allow site storage or free up space and try again.</p>');
-                this.$el.scrollTop(scroll);
-                return;
-            }
-            this.update();
-            var next = this.$('[name=deleteSet]').eq(Math.min(i, this.$('[name=deleteSet]').length - 1))[0] || this.$('[name=undeleteSet]')[0];
-            if (next) next.focus({preventScroll: true});
-            this.$el.scrollTop(scroll);
-        },
-        undeleteSet: function () {
-            if (!this.deletedSet) return;
-            var restored = this.deletedSet, loc = this.deletedSetLoc;
-            var previous = {set: this.curSet, index: this.curSetLoc, packed: this.curTeam.team, icon: this.curTeam.iconCache};
-            var scroll = this.$el.scrollTop();
-            this.curSetList.splice(loc, 0, restored);
-            this.curTeam.team = Storage.packTeam(this.curSetList);
-            this.curTeam.iconCache = '';
-            try {
-                this.save();
-                if (Storage.cantSave) throw new Error('Storage unavailable');
-            } catch (error) {
-                this.curSetList.splice(loc, 1);
-                this.curSet = previous.set;
-                this.curSetLoc = previous.index;
-                this.curTeam.team = previous.packed;
-                this.curTeam.iconCache = previous.icon;
-                this.update();
-                this.$el.prepend('<p class="set-removal-status" role="alert">Could not save Undo. Your team is unchanged. Allow site storage or free up space, then try Undo again.</p>');
-                this.$el.scrollTop(scroll);
-                return;
-            }
-            this.deletedSet = null;
-            this.deletedSetLoc = -1;
-            if (previous.set) {
-                this.curSetLoc = loc;
-                this.curSet = restored;
-                this.curChartName = '';
-            }
-            this.update();
-            if (this.curSet && this.curChartName) this.updateChart();
-            this.$el.scrollTop(scroll);
-        },
+			var row = $(button).closest('li[value]');
+			if (!row.length || !this.el.contains(button)) return;
+			i = Number(row.attr('value'));
+			if (!Number.isInteger(i) || i < 0 || !this.curSetList[i]) return;
+			var scroll = this.$el.scrollTop(), selected = this.curSet;
+			var previous = {index: this.curSetLoc, deleted: this.deletedSet, location: this.deletedSetLoc, packed: this.curTeam.team};
+			if (this.cancelSetProfile) this.cancelSetProfile();
+			this.deletedSetLoc = i;
+			this.deletedSet = this.curSetList.splice(i, 1)[0];
+			this.selectionUndo = null;
+			if (selected) {
+				this.curSetLoc = selected === this.deletedSet ? Math.min(i, this.curSetList.length - 1) : this.curSetList.indexOf(selected);
+				this.curSet = this.curSetList[this.curSetLoc] || null;
+				this.curChartName = '';
+			}
+			this.curTeam.team = Storage.packTeam(this.curSetList);
+			this.curTeam.iconCache = '';
+			try {
+				this.save();
+				if (Storage.cantSave) throw new Error('Storage unavailable');
+			} catch (error) {
+				this.curSetList.splice(i, 0, this.deletedSet);
+				this.curSet = selected; this.curSetLoc = previous.index;
+				this.deletedSet = previous.deleted; this.deletedSetLoc = previous.location;
+				this.curTeam.team = previous.packed;
+				this.update();
+				this.$el.prepend('<p class="set-removal-status" role="alert">Could not save the removal. Your team is unchanged. Allow site storage or free up space and try again.</p>');
+				this.$el.scrollTop(scroll);
+				return;
+			}
+			this.update();
+			var next = this.$('[name=deleteSet]').eq(Math.min(i, this.$('[name=deleteSet]').length - 1))[0] || this.$('[name=undeleteSet]')[0];
+			if (next) next.focus({preventScroll: true});
+			this.$el.scrollTop(scroll);
+		},
+		undeleteSet: function () {
+			if (!this.deletedSet) return;
+			var restored = this.deletedSet, loc = this.deletedSetLoc;
+			var previous = {set: this.curSet, index: this.curSetLoc, packed: this.curTeam.team, icon: this.curTeam.iconCache};
+			var scroll = this.$el.scrollTop();
+			this.curSetList.splice(loc, 0, restored);
+			this.curTeam.team = Storage.packTeam(this.curSetList);
+			this.curTeam.iconCache = '';
+			try {
+				this.save();
+				if (Storage.cantSave) throw new Error('Storage unavailable');
+			} catch (error) {
+				this.curSetList.splice(loc, 1);
+				this.curSet = previous.set;
+				this.curSetLoc = previous.index;
+				this.curTeam.team = previous.packed;
+				this.curTeam.iconCache = previous.icon;
+				this.update();
+				this.$el.prepend('<p class="set-removal-status" role="alert">Could not save Undo. Your team is unchanged. Allow site storage or free up space, then try Undo again.</p>');
+				this.$el.scrollTop(scroll);
+				return;
+			}
+			this.deletedSet = null;
+			this.deletedSetLoc = -1;
+			if (previous.set) {
+				this.curSetLoc = loc;
+				this.curSet = restored;
+				this.curChartName = '';
+			}
+			this.update();
+			if (this.curSet && this.curChartName) this.updateChart();
+			this.$el.scrollTop(scroll);
+		},
 
 		/*********************************************************
 		 * Set view
@@ -2104,36 +2107,28 @@
 					return '<option value="' + BattleLog.escapeHTML(p.id) + '"' + (data.enabled && p.id === data.selected ? ' selected' : '') + '>' + BattleLog.escapeHTML(p.name) + '</option>';
 				}).join('') + '</select></label> <button class="button small" name="showRosterProfiles">Pokémon lists</button></div>';
 			}
-			var html = '<div class="roster-profiles" style="padding:8px"><label>Pokémon list: <select class="roster-profile-select"><option value="">None</option>';
-			data.profiles.forEach(function (p) {
-				html += '<option value="' + BattleLog.escapeHTML(p.id) + '"' + (p.id === data.selected ? ' selected' : '') + '>' + BattleLog.escapeHTML(p.name) + '</option>';
-			});
-			html += '</select></label> <label><input type="checkbox" class="roster-profile-filter"' + (data.enabled ? ' checked' : '') + (profile ? '' : ' disabled') + ' /> Only this roster</label> ';
-			html += '<button class="button" name="createRosterProfile">New</button> ';
+			var escape = BattleLog.escapeHTML;
+			var html = '<div class="roster-profiles library-list-profile"><section class="library-step"><h4><span class="library-step-number">1</span> Choose a list</h4><div class="library-profile-picker"><label>Pokémon list<select class="roster-profile-select"><option value="">Choose a list…</option>';
+			data.profiles.forEach(function (p) {html += '<option value="' + escape(p.id) + '"' + (p.id === data.selected ? ' selected' : '') + '>' + escape(p.name) + '</option>';});
+			html += '</select></label><button class="button" name="createRosterProfile">New list</button></div>';
+			if (profile) html += '<details class="library-secondary"><summary>Manage list</summary><div class="library-actions"><button class="button" name="renameRosterProfile">Rename</button><button class="button" name="deleteRosterProfile">Delete</button></div></details>';
+			html += '</section>';
 			if (profile) {
-				html += '<button class="button" name="renameRosterProfile">Rename</button> <button class="button" name="deleteRosterProfile">Delete</button> ';
-				html += '<details class="roster-manager"' + (this.profilesView ? ' open' : '') + '><summary>Manage species (' + profile.species.length + ')</summary>';
-				html += '<p>Saved in this browser. True forms have separate entries.</p><div class="roster-chips">';
-				html += profile.species.length ? profile.species.map(function (id) {
-					var name = BattleLog.escapeHTML(Dex.species.get(id).name);
-					return '<button class="button roster-chip" name="removeRosterSpecies" value="' + id + '" title="Remove from this roster; keep team and saved builds" aria-label="Remove ' + name + ' from roster">' + name + ' ×</button>';
-				}).join(' ') : '<p>This roster is empty. Add species below or turn the filter off.</p>';
-				html += '</div><label>Find species or form <input class="textbox roster-species-search" type="search" placeholder="e.g. Raichu or Raichu-Alola" autocomplete="off" /></label>';
-				html += '<div class="roster-species-matches" aria-live="polite">Type a name to add species.</div></details>';
-			}
-			if (data.deleted) {
-				html += '<p class="roster-undo" role="status">Deleted “' + BattleLog.escapeHTML(data.deleted.profile.name) + '”. <button class="button" name="undoRosterDelete">Undo delete</button></p>';
-			}
-			return html + '<p class="roster-edit-status" role="status" aria-live="polite">' + (this.rosterRemovalUndo && this.rosterRemovalUndo.profile === data.selected ? 'Removed from roster. <button class="button" name="undoRosterSpeciesRemoval">Undo</button>' : '') + '</p></div>';
+				html += '<details class="library-step roster-manager" open><summary><span class="library-step-number">2</span> Add Pokémon</summary><label class="library-search-label">Search Pokémon or forms<input class="textbox roster-species-search" type="search" placeholder="e.g. Raichu or Raichu-Alola" autocomplete="off" /></label><div class="roster-species-matches" aria-live="polite">Type a name, then choose Add.</div><details class="roster-members"' + (profile.species.length <= 8 ? ' open' : '') + '><summary>In this list · ' + profile.species.length + ' Pokémon / forms</summary><div class="roster-chips">';
+				html += profile.species.length ? profile.species.map(function (id) {var name = escape(Dex.species.get(id).name); return '<button class="button roster-chip" name="removeRosterSpecies" value="' + id + '" title="Remove from list; keep team and saved sets" aria-label="Remove ' + name + ' from list">' + name + ' <span aria-hidden="true">×</span></button>';}).join(' ') : '<p class="library-empty">This list is empty. Search above to add your first Pokémon.</p>';
+				html += '</div></details><details class="library-help"><summary>Which forms are included?</summary><p>Adding a base species includes its matching Megas. True forms stay separate; remove any entry you do not need.</p></details></details><section class="library-step"><h4><span class="library-step-number">3</span> Use in the builder</h4><label class="library-check"><input type="checkbox" class="roster-profile-filter"' + (data.enabled ? ' checked' : '') + ' /> Filter Pokémon choices to this list</label><p class="tools-note">Your current team stays unchanged.</p></section>';
+			} else html += '<div class="library-empty"><p>Create or choose a list, then search for Pokémon to add. Lists filter choices without changing your team.</p></div>';
+			if (data.deleted) html += '<p class="roster-undo" role="status">Deleted “' + escape(data.deleted.profile.name) + '”. <button class="button" name="undoRosterDelete">Undo delete</button></p>';
+			return html + '<p class="roster-edit-status" role="status" aria-live="polite">' + (this.rosterRemovalUndo && this.rosterRemovalUndo.profile === data.selected ? 'Removed from list. <button class="button" name="undoRosterSpeciesRemoval">Undo</button>' : '') + '</p></div>';
 		},
 		saveRosterProfiles: function (data) {
 			this.cancelRosterImport();
 			Storage.prefs('rosterprofiles', data);
 			this.$('.roster-page [name=previewRosterImport][value=add], .roster-page [name=previewRosterImport][value=replace]').prop('disabled', !data.selected).attr('title', data.selected ? '' : 'Choose a Pokémon list first');
-			var open = this.$('.roster-manager').prop('open');
+			var open = this.$('.roster-manager').prop('open'), membersOpen = this.$('.roster-members').prop('open');
 			var query = this.$('.roster-species-search').val() || '';
 			this.$('.roster-profiles').replaceWith(this.renderRosterProfiles());
-			this.$('.roster-manager').prop('open', open);
+			this.$('.roster-manager').prop('open', open); if (membersOpen !== undefined) this.$('.roster-members').prop('open', membersOpen);
 			this.$('.roster-species-search').val(query);
 			this.searchRosterSpecies();
 			if (this.search && this.curChartType in this.searchChartTypes && this.search.engine.typedSearch) {
@@ -2161,6 +2156,7 @@
 				data.selected = Date.now().toString(36) + Math.random().toString(36).slice(2);
 				data.profiles.push({id: data.selected, name: name, species: []});
 				self.saveRosterProfiles(data);
+				var input = self.profilesView && self.$('.roster-species-search')[0]; if (input) input.focus({preventScroll:true});
 			});
 		},
 		renameRosterProfile: function () {
@@ -2217,52 +2213,52 @@
 		},
 		addRosterSpecies: function (id) { this.editRosterSpecies(id, false); },
 		removeRosterSpecies: function (id) { this.editRosterSpecies(id, true); },
-        persistRosterChange: function (data) {
-            try {
-                window.localStorage.setItem('showdown_prefs', JSON.stringify(Object.assign({}, Storage.prefs.data, {rosterprofiles: data})));
-            } catch (error) {
-                this.$('.roster-edit-status').text('Could not save this change. Your list is unchanged. Allow site storage or free up space and try again.');
-                return false;
-            }
-            this.saveRosterProfiles(data);
-            return true;
-        },
-        editRosterSpecies: function (id, remove) {
-            var data = JSON.parse(JSON.stringify(this.rosterData()));
-            var profile = data.profiles.find(function (p) { return p.id === data.selected; });
-            id = this.rosterSpeciesID(id);
-            if (!profile || !id) return;
-            var position = profile.species.indexOf(id), scroll = this.$el.scrollTop();
-            if (remove && position < 0) return;
-            if (remove) profile.species.splice(position, 1);
-            else this.rosterExpandedSpecies(id).forEach(function (entry) { if (profile.species.indexOf(entry) < 0) profile.species.push(entry); });
-            if (!this.persistRosterChange(data)) return;
-            if (remove) {
-                this.rosterRemovalUndo = {profile: profile.id, entries: [{id: id, index: position}]};
-                this.showRosterRemovalUndo();
-                var next = this.$('[name=removeRosterSpecies]').eq(Math.min(position, profile.species.length - 1))[0] || this.$('[name=undoRosterSpeciesRemoval]')[0];
-                if (next) next.focus({preventScroll: true});
-            } else {
-                var searchInput = this.$('.roster-species-search')[0];
-                if (searchInput) searchInput.focus({preventScroll:true});
-                this.$('.roster-edit-status').prepend('Added to roster. ');
-            }
-            this.$el.scrollTop(scroll);
-        },
-        showRosterRemovalUndo: function () {
-            this.$('.roster-edit-status').html('Removed from roster. Team and saved builds unchanged. <button class="button small" name="undoRosterSpeciesRemoval">Undo</button>');
-        },
-        undoRosterSpeciesRemoval: function () {
-            var undo = this.rosterRemovalUndo;
-            if (!undo) return;
-            var data = JSON.parse(JSON.stringify(this.rosterData()));
-            var profile = data.profiles.find(function (p) { return p.id === undo.profile; });
-            if (!profile) return this.$('.roster-edit-status').text('That roster no longer exists.');
-            undo.entries.forEach(function (entry) { if (profile.species.indexOf(entry.id) < 0) profile.species.splice(Math.min(entry.index, profile.species.length), 0, entry.id); });
-            if (!this.persistRosterChange(data)) return;
-            this.rosterRemovalUndo = null;
-            this.$('.roster-edit-status, .set-profile-status').text('Restored to roster. Team unchanged.');
-        },
+		persistRosterChange: function (data) {
+			try {
+				window.localStorage.setItem('showdown_prefs', JSON.stringify(Object.assign({}, Storage.prefs.data, {rosterprofiles: data})));
+			} catch (error) {
+				this.$('.roster-edit-status').text('Could not save this change. Your list is unchanged. Allow site storage or free up space and try again.');
+				return false;
+			}
+			this.saveRosterProfiles(data);
+			return true;
+		},
+		editRosterSpecies: function (id, remove) {
+			var data = JSON.parse(JSON.stringify(this.rosterData()));
+			var profile = data.profiles.find(function (p) { return p.id === data.selected; });
+			id = this.rosterSpeciesID(id);
+			if (!profile || !id) return;
+			var position = profile.species.indexOf(id), scroll = this.$el.scrollTop();
+			if (remove && position < 0) return;
+			if (remove) profile.species.splice(position, 1);
+			else this.rosterExpandedSpecies(id).forEach(function (entry) { if (profile.species.indexOf(entry) < 0) profile.species.push(entry); });
+			if (!this.persistRosterChange(data)) return;
+			if (remove) {
+				this.rosterRemovalUndo = {profile: profile.id, entries: [{id: id, index: position}]};
+				this.showRosterRemovalUndo();
+				var next = this.$('[name=removeRosterSpecies]').eq(Math.min(position, profile.species.length - 1))[0] || this.$('[name=undoRosterSpeciesRemoval]')[0];
+				if (next) next.focus({preventScroll: true});
+			} else {
+				var searchInput = this.$('.roster-species-search')[0];
+				if (searchInput) searchInput.focus({preventScroll:true});
+				this.$('.roster-edit-status').prepend('Added to roster. ');
+			}
+			this.$el.scrollTop(scroll);
+		},
+		showRosterRemovalUndo: function () {
+			this.$('.roster-edit-status').html('Removed from roster. Team and saved builds unchanged. <button class="button small" name="undoRosterSpeciesRemoval">Undo</button>');
+		},
+		undoRosterSpeciesRemoval: function () {
+			var undo = this.rosterRemovalUndo;
+			if (!undo) return;
+			var data = JSON.parse(JSON.stringify(this.rosterData()));
+			var profile = data.profiles.find(function (p) { return p.id === undo.profile; });
+			if (!profile) return this.$('.roster-edit-status').text('That roster no longer exists.');
+			undo.entries.forEach(function (entry) { if (profile.species.indexOf(entry.id) < 0) profile.species.splice(Math.min(entry.index, profile.species.length), 0, entry.id); });
+			if (!this.persistRosterChange(data)) return;
+			this.rosterRemovalUndo = null;
+			this.$('.roster-edit-status, .set-profile-status').text('Restored to roster. Team unchanged.');
+		},
 
 		destroySearch: function () {
 			if (this.search) this.search.destroy();
@@ -3635,16 +3631,16 @@
 				if (selectNext) this.$(this.$('input[name=ability]').length ? 'input[name=ability]' : 'input[name=move1]').select();
 				break;
 			case 'ability':
-                var previousSpecies = this.curSet.species;
+				var previousSpecies = this.curSet.species;
 				this.curSet.ability = val;
-                this.curSet.species = Dex.getRegionalAbilityForm(this.curSet, this.curTeam.dex);
-                if (this.curSet.species !== previousSpecies) {
-                    var regionalScroll = this.$el.scrollTop();
-                    if (this.curSet.name === previousSpecies) this.curSet.name = this.curSet.species;
-                    this.updateSetTop();
-                    this.updateChart();
-                    this.$el.scrollTop(regionalScroll);
-                } else this.updatePokemonSprite();
+				this.curSet.species = Dex.getRegionalAbilityForm(this.curSet, this.curTeam.dex);
+				if (this.curSet.species !== previousSpecies) {
+					var regionalScroll = this.$el.scrollTop();
+					if (this.curSet.name === previousSpecies) this.curSet.name = this.curSet.species;
+					this.updateSetTop();
+					this.updateChart();
+					this.$el.scrollTop(regionalScroll);
+				} else this.updatePokemonSprite();
 				if (selectNext) this.focusChartInput('move1', true);
 				break;
 			case 'move1':
@@ -4213,7 +4209,7 @@
 		var builds = data.builds.filter(function (b) { return T.id(b.set.species) === T.id(set.species); });
 		var open = this.openSetTools && this.openSetTools.has(set);
 		var selectedBuild = this.selectedSavedSets && this.selectedSavedSets.get(set);
-		var box = '<details class="set-tools-panel set-tools-compact"' + (open ? ' open' : '') + '><summary title="Saved sets, roster lists and battle forms">Set &amp; form</summary><div class="set-tools-content"><span class="set-tools-state"></span><div class="set-tools-row"><span class="set-tools-label">Saved set</span><div class="set-tools-controls"><select class="saved-build-choice" aria-label="Saved build for ' + escape(set.species) + '"><option value="">Load a saved set…</option>';
+		var box = '<details class="set-tools-panel set-tools-compact"' + (open ? ' open' : '') + '><summary title="Saved sets, roster lists and battle forms">Set &amp; form</summary><div class="set-tools-content"><div class="set-tools-header"><button type="button" class="button close-set-tools" name="closeSetTools" value="' + index + '" aria-label="Close saved set and form tools">Close <span aria-hidden="true">&times;</span></button></div><span class="set-tools-state"></span><div class="set-tools-row"><span class="set-tools-label">Saved set</span><div class="set-tools-controls"><select class="saved-build-choice" aria-label="Saved build for ' + escape(set.species) + '"><option value="">Load a saved set…</option>';
 		builds.forEach(function (b) {
 			box += '<option value="' + escape(b.id) + '"' + (selectedBuild === b.id ? ' selected' : '') + '>' + escape(b.name) + ' — ' + escape(T.compatibility(b, set, self.curTeam.format, self.curTeam.dex)) + '</option>';
 		});
@@ -4223,22 +4219,29 @@
 		return html.replace(/<\/li>$/, box + '</li>');
 	};
 	proto.toggleSetTools = function (event) {
-		var set = this.curSetList[this.toolsSetIndex(event.currentTarget)];
+		var index = this.toolsSetIndex(event.currentTarget), set = this.curSetList[index];
 		if (!set) return;
-		if (!this.openSetTools) this.openSetTools = new WeakSet();
-
 		event.preventDefault();
 		var panel = $(event.currentTarget).parent()[0];
-		panel.open = !panel.open;
-		if (panel.open) this.openSetTools.add(set);
-		else {
-			this.openSetTools.delete(set);
-			this.profileAddition = null;
-			$(panel).find('.profile-add-panel').remove();
-		}
-
+		if (panel.open) {this.closeSetTools(index, event.currentTarget); return;}
+		if (!this.openSetTools) this.openSetTools = new WeakMap();
+		panel.open = true;
+		this.openSetTools.set(set, true);
+	};
+	proto.setToolsKeydown = function (event) {
+		if ((event.key !== 'Escape' && event.keyCode !== 27) || event.isComposing || event.defaultPrevented ||
+			(event.isDefaultPrevented && event.isDefaultPrevented())) return;
+		var panel = $(event.target).closest('.set-tools-panel')[0];
+		if (!panel || panel !== event.currentTarget || !panel.open) return;
+		// Native selects, text editing and nested dialogs retain their own Escape behavior.
+		if ($(event.target).closest('select, input, textarea, [contenteditable], [role="combobox"], [role="listbox"], [role="dialog"], .profile-add-panel').length) return;
+		var nested = $(event.target).closest('details')[0];
+		if (nested && nested !== panel) return;
+		event.preventDefault(); event.stopPropagation();
+		this.closeSetTools(this.toolsSetIndex(panel), panel);
 	};
 	proto.events['click .set-tools-panel > summary'] = 'toggleSetTools';
+	proto.events['keydown .set-tools-panel'] = 'setToolsKeydown';
 	proto.events['click .picker-filter-panel > summary'] = 'togglePickerFilters';
 	proto.togglePickerFilters = function (event) { this.pickerFiltersOpen = !$(event.currentTarget).parent().prop('open'); };
 	proto.saveNamedBuild = function (value, btn) {
@@ -4259,7 +4262,7 @@
 		this.curSetList[index] = T.buildResult(current, build.set, keepAppearance);
 		this.buildUndo.applied = this.curSetList[index];
 		this.selectedSavedSets = this.selectedSavedSets || new WeakMap(); this.selectedSavedSets.set(this.curSetList[index], build.id);
-		this.openSetTools = this.openSetTools || new WeakSet(); this.openSetTools.add(this.curSetList[index]);
+		this.openSetTools = this.openSetTools || new WeakMap(); this.openSetTools.set(this.curSetList[index], true);
 		if (this.curSet === current || this.curSetLoc === index) this.curSet = this.curSetList[index];
 		this.toolsView = false; this.profilesView = false;
 		this.toolsCommit();
@@ -4283,7 +4286,7 @@
 		if (index < 0) { this.buildUndo = null; return; }
 		if (!undo.snapshot || JSON.stringify(undo.snapshot) !== JSON.stringify(undo.applied)) return app.addPopupMessage('This set changed after applying the build. Undo would overwrite those edits.');
 		this.curSetList[index] = T.clone(undo.set);
-		if (this.openSetTools) this.openSetTools.add(this.curSetList[index]);
+		if (this.openSetTools) this.openSetTools.set(this.curSetList[index], true);
 		if (this.curSetLoc === index) this.curSet = this.curSetList[index];
 		this.buildUndo = null;
 		this.toolsCommit();
@@ -4300,7 +4303,7 @@
 		try {
 			var builds = T.namedBuilds(Storage.importTeam(String(this.$('.imported-build-sets').val())), String(this.$('.imported-build-name').val()).trim(), this.curTeam && this.curTeam.format);
 			var data = this.toolsData(); data.builds = data.builds.concat(builds);
-			this.saveToolsData(data); this.showToolsManager();
+			this.saveToolsData(data); if (this.libraryInputDraft) {this.libraryInputDraft.importName = ''; this.libraryInputDraft.importSets = '';} this.showToolsManager();
 		} catch (err) { app.addPopupMessage(err.message); }
 	};
 	proto.addLibraryBuild = function (id) {
@@ -4318,70 +4321,100 @@
 		this.curSet = null; this.curSetLoc = -1; this.toolsView = false; this.profilesView = false;
 		this.toolsCommit();
 	};
+	T.libraryTabs = function (active) {
+		return '<nav class="library-tabs" aria-label="Library sections">' + [['names', 'Name profiles'], ['sets', 'Saved sets'], ['lists', 'Pokémon lists']].map(function (tab) { return '<button type="button" class="button" name="libraryTab" value="' + tab[0] + '" aria-pressed="' + (active === tab[0]) + '">' + tab[1] + '</button>'; }).join('') + '</nav>';
+	};
+	T.libraryHeader = function (active) {
+		return '<div class="library-topbar">' + button('back', '← Back to builder') + '<button type="button" class="button" name="back" aria-label="Close library">Close ×</button></div><header class="library-heading"><h2>Team Builder library</h2><button type="button" class="button" name="showLibraryBackup">Backup &amp; restore</button></header>' + T.libraryTabs(active) + '<p class="library-local-note">Saved in this browser only. Keep a backup for another device.</p>';
+	};
+	T.formatLabel = function (id) {
+		var format = window.BattleFormats && window.BattleFormats[id];
+		if (format && format.name) return format.name;
+		if (!id) return 'Any format';
+		return id.replace(/^gen(\d+)/i, 'Gen $1 · ').replace(/(doubles|singles|freeforall|nationaldex|nofield|rockyfield)/gi, function (part) {return ' ' + ({doubles:'Doubles', singles:'Singles', freeforall:'Free-for-all', nationaldex:'National Dex', nofield:'No field', rockyfield:'Rocky Field'})[part.toLowerCase()] + ' ';}).replace(/game$/i, '').replace(/\s+/g, ' ').trim();
+	};
+	T.nicknameState = function (profile) {
+		return JSON.stringify([Object.keys(profile.entries || {}).sort().map(function (id) {return [id, profile.entries[id]];}), Object.keys(profile.genderEntries || {}).sort().map(function (id) {return [id, Object.keys(profile.genderEntries[id]).sort().map(function (gender) {return [gender, profile.genderEntries[id][gender]];})];}), profile.shiny || '', !!profile.gendered, !!profile.fallback]);
+	};
 	proto.showToolsManager = function () {
 		this.destroySearch();
 		this.toolsView = true;
-		var data = this.toolsData(), html = '<div class="pad local-tools-manager">' + button('back', 'Back to Teambuilder') + '<h2>Team Builder library</h2><nav class="library-tabs" aria-label="Library sections"><button class="button" name="libraryTab" value="names">Nickname profiles</button><button class="button" name="libraryTab" value="sets">Saved sets</button><button class="button" name="libraryTab" value="lists">Pokémon lists</button></nav><p class="tools-intro">Save names and appearance rules in a nickname profile. Save moves, items, abilities and stats as reusable Pokémon sets.</p><p class="tools-note">Saved in this browser. Export a backup below to move your library to another device.</p><details class="tools-panel library-sets"><summary>Saved Pokémon sets</summary><p class="tools-note">Save a Pokémon from its Set &amp; form options in the Team Builder, or import sets here. Add a saved set to your team or replace the selected Pokémon.</p><input class="textbox build-library-search" aria-label="Search saved builds" placeholder="Search Pokémon, build, ability or moves" />';
-		if (!data.builds.length) html += '<p>No saved sets yet. Open a Pokémon and choose “Save this Pokémon…” in Set &amp; form options, or import a set below.</p>';
+		this.pendingProfileApply = null;
+		var data = this.toolsData(), section = this.librarySection === 'sets' ? 'sets' : 'names';
+		this.librarySection = section;
+		var html = '<div class="pad local-tools-manager library-clean">' + T.libraryHeader(section);
+		html += '<section class="tools-panel library-sets"><header class="library-section-heading"><div><h3>Saved sets</h3><p>Reuse moves, items, abilities and stats.</p></div></header><p id="library-team-context" class="library-context" role="status"></p><label class="library-search-label">Find a saved set<input type="search" class="textbox build-library-search" aria-label="Search saved sets" placeholder="Pokémon, set name, ability or move" /></label>';
+		if (!data.builds.length) html += '<div class="library-empty"><h4>No saved sets yet</h4><p>In the builder, open <strong>Set &amp; form → Save this Pokémon</strong>, or import a Showdown set below.</p></div>';
 		data.builds.forEach(function (b) {
-			html += '<div class="saved-build-entry" data-search="' + escape([b.name, b.set.species, b.set.ability, (b.set.moves || []).join(' ')].join(' ').toLowerCase()) + '"><p><strong>' + escape(b.name) + '</strong> — ' + escape(b.set.species) + ' (' + escape(b.format || 'no format') + ') ' + button('renameToolEntry', 'Rename', 'build:' + b.id) + button('duplicateToolEntry', 'Duplicate', 'build:' + b.id) + button('deleteToolEntry', 'Delete', 'build:' + b.id) + button('addLibraryBuild', 'Add to team', b.id) + button('replaceLibraryBuild', 'Replace selected set', b.id) + '</p><small>' + escape([b.set.ability, b.set.item, b.set.nature, (b.set.moves || []).join(' / ')].filter(Boolean).join(' · ')) + '</small></div>';
+			html += '<article class="saved-build-entry" data-search="' + escape([b.name, b.set.species, b.set.ability, (b.set.moves || []).join(' ')].join(' ').toLowerCase()) + '"><header><div><h4>' + escape(b.name) + '</h4><span>' + escape(b.set.species) + '</span></div><small class="library-format" title="' + escape(b.format || '') + '">' + escape(T.formatLabel(b.format)) + '</small></header><p class="library-set-summary">' + escape([b.set.ability, b.set.item, b.set.nature].filter(Boolean).join(' · ')) + '<br />' + escape((b.set.moves || []).join(' / ')) + '</p><div class="library-actions library-set-actions">' + button('addLibraryBuild', 'Add to team', b.id) + button('replaceLibraryBuild', 'Preview replacement', b.id) + '</div><details class="library-secondary"><summary>Manage set</summary><div class="library-actions">' + button('renameToolEntry', 'Rename', 'build:' + b.id) + button('duplicateToolEntry', 'Duplicate', 'build:' + b.id) + button('deleteToolEntry', 'Delete', 'build:' + b.id) + '</div></details></article>';
 		});
-		html += '<details><summary>Import named sets</summary><label>Build name / group <input class="textbox imported-build-name" placeholder="e.g. Rain offense" maxlength="80" /></label><textarea class="textbox imported-build-sets" rows="6" aria-label="Showdown sets to save" placeholder="Paste one or more Showdown sets"></textarea>' + button('saveImportedBuilds', 'Save sets to library') + '</details>';
-		html += '</details><section class="tools-panel library-names"><h3>Pokémon nicknames &amp; appearance</h3><p class="tools-note">1. Create or choose a profile. 2. Add Pokémon and names, then Save profile. 3. Preview and apply it to your team.</p><label>Profile <select class="nickname-profile-choice"><option value="">None</option>';
-		data.nicknames.forEach(function (p) { html += '<option value="' + escape(p.id) + '"' + (data.selectedNickname === p.id ? ' selected' : '') + '>' + escape(p.name) + '</option>'; });
-		html += '</select></label> <label><input type="checkbox" class="auto-nickname"' + (data.autoNickname ? ' checked' : '') + ' /> Use this profile for newly added Pokémon</label><p>' + button('newNicknameProfile', 'Create nickname profile') + '</p>';
-		var profile = data.nicknames.find(function (p) { return p.id === data.selectedNickname; });
+		html += '<p class="library-search-empty" hidden>No saved sets match. Try a Pokémon or move name.</p><details class="library-secondary"><summary>Import Showdown sets</summary><label>Set name or group<input class="textbox imported-build-name" placeholder="e.g. Rain offense" maxlength="80" /></label><textarea class="textbox imported-build-sets" rows="6" aria-label="Showdown sets to save" placeholder="Paste one or more Showdown sets"></textarea>' + button('saveImportedBuilds', 'Save imported sets') + '</details></section>';
+		var profile = data.nicknames.find(function (p) {return p.id === data.selectedNickname;});
+		var draft = profile && (Storage.prefs('nicknamedrafts') || {})[profile.id];
+		html += '<section class="tools-panel library-names"><header class="library-section-heading"><div><h3>Name profiles</h3><p>Save nicknames and optional appearance rules.</p></div></header><section class="library-step"><h4><span class="library-step-number">1</span> Choose a profile</h4><div class="library-profile-picker"><label>Name profile<select class="nickname-profile-choice"><option value="">Choose a profile…</option>';
+		data.nicknames.forEach(function (p) {html += '<option value="' + escape(p.id) + '"' + (data.selectedNickname === p.id ? ' selected' : '') + '>' + escape(p.name) + '</option>';});
+		html += '</select></label>' + button('newNicknameProfile', 'New profile') + '</div>';
+		if (profile) html += '<label class="library-check"><input type="checkbox" class="auto-nickname"' + (data.autoNickname ? ' checked' : '') + ' /> Use for newly added Pokémon</label><details class="library-secondary"><summary>Manage profile</summary><div class="library-actions">' + button('renameToolEntry', 'Rename', 'nickname:' + profile.id) + button('duplicateToolEntry', 'Duplicate', 'nickname:' + profile.id) + button('deleteToolEntry', 'Delete', 'nickname:' + profile.id) + '</div></details>';
+		else html += '<div class="library-empty"><p>Create a profile, then add Pokémon and their nicknames. Your team stays unchanged until you preview and apply.</p></div>';
+		html += '</section>';
 		if (profile) {
-			var draft = (Storage.prefs('nicknamedrafts') || {})[profile.id];
-			html += '<p>' + button('renameToolEntry', 'Rename', 'nickname:' + profile.id) + button('duplicateToolEntry', 'Duplicate', 'nickname:' + profile.id) + button('deleteToolEntry', 'Delete', 'nickname:' + profile.id) + '</p>';
-			html += '<p><input class="textbox nickname-search" aria-label="Search nicknames" placeholder="Find Pokémon or nickname" /> <label><input type="checkbox" class="nickname-team-only" /> Current team only</label> ' + button('addTeamNicknameRows', 'Add current team') + '</p><div class="nickname-rows"><div class="nickname-row nickname-head"><span>Pokémon / form</span><span>Gender</span><span>Nickname</span><span></span></div>';
-			if (draft) {
-				draft.rows.filter(function (row) { return row[0].trim() || row[1].trim(); }).forEach(function (row) { html += T.nicknameRow(row[0], row[1], row[2]); });
-				profile.shiny = draft.shiny; profile.gendered = draft.gendered; profile.fallback = draft.fallback;
-			} else {
-				Object.keys(profile.entries).sort().forEach(function (id) { html += T.nicknameRow(Dex.species.get(id).name, profile.entries[id]); });
-				Object.keys(profile.genderEntries || {}).sort().forEach(function (id) { Object.keys(profile.genderEntries[id]).forEach(function (gender) { html += T.nicknameRow(Dex.species.get(id).name, profile.genderEntries[id][gender], gender); }); });
-			}
-
+			var appearance = draft || profile;
+			html += '<section class="library-step"><h4><span class="library-step-number">2</span> Add Pokémon &amp; names</h4><div class="library-row-tools"><input type="search" class="textbox nickname-search" aria-label="Find an existing nickname" placeholder="Find an existing entry" /><label><input type="checkbox" class="nickname-team-only" /> Team only</label>' + button('addTeamNicknameRows', 'Add team Pokémon') + '</div><div class="nickname-rows"><div class="nickname-row nickname-head"><span>Pokémon / form</span><span>Nickname</span><span class="nickname-gender-heading">Applies to</span><span></span></div>';
+			if (!(draft ? draft.rows.length : Object.keys(profile.entries).length + Object.keys(profile.genderEntries || {}).length)) html += '<p class="library-empty nickname-empty-hint">Start with a Pokémon and its nickname below.</p>';
+			if (draft) draft.rows.filter(function (row) {return row[0].trim() || row[1].trim();}).forEach(function (row) {html += T.nicknameRow(row[0], row[1], row[2]);});
+			else {Object.keys(profile.entries).sort().forEach(function (id) {html += T.nicknameRow(Dex.species.get(id).name, profile.entries[id]);}); Object.keys(profile.genderEntries || {}).sort().forEach(function (id) {Object.keys(profile.genderEntries[id]).forEach(function (gender) {html += T.nicknameRow(Dex.species.get(id).name, profile.genderEntries[id][gender], gender);});});}
 			html += T.nicknameRow('', '') + '</div><datalist id="nickname-species-options">';
-			Object.keys(window.BattlePokedex || {}).forEach(function (id) { html += '<option value="' + escape(Dex.species.get(id).name) + '"></option>'; });
-			html += '</datalist><p>' + button('addNicknameRow', 'Add Pokémon') + ' ' + button('saveNicknameMappings', 'Save profile') + ' <span class="nickname-save-status" role="status">' + (draft ? 'Unsaved changes — recovered draft' : 'Profile saved') + '</span></p>';
-			html += '<p><label>Team-wide shiny rule <select class="nickname-shiny"><option value="">Keep unchanged</option><option value="yes"' + (profile.shiny === 'yes' ? ' selected' : '') + '>Always shiny</option><option value="no"' + (profile.shiny === 'no' ? ' selected' : '') + '>Never shiny</option></select></label><label><input type="checkbox" class="nickname-gendered"' + (profile.gendered ? ' checked' : '') + ' /> Use gender-specific nicknames</label></p><p class="tools-note">The shiny rule affects every Pokémon on the team, including those without nickname entries. Default names apply to any gender. Gender rows override them when enabled; an unspecified gender uses the default name.</p>';
-			html += '<label><input type="checkbox" class="nickname-fallback"' + (profile.fallback ? ' checked' : '') + ' /> Use the base Pokémon’s name for forms without an entry</label>';
-			html += '<details><summary>Paste a list</summary><p>One Pokémon = nickname per line. Dashes (— or –) also work.</p><textarea class="textbox nickname-paste" rows="5" aria-label="Paste nickname list" placeholder="Togekiss = Deneb"></textarea>' + button('pasteNicknameRows', 'Add pasted names') + '</details>';
-
+			Object.keys(window.BattlePokedex || {}).forEach(function (id) {html += '<option value="' + escape(Dex.species.get(id).name) + '"></option>';});
+			html += '</datalist><div class="library-actions library-save-actions">' + button('addNicknameRow', 'Add row') + button('saveNicknameMappings', 'Save profile') + '<span class="nickname-save-status" role="status" aria-live="polite">' + (draft ? 'Unsaved changes · draft kept' : 'All changes saved') + '</span></div><details class="library-secondary"><summary>Appearance &amp; name rules</summary><div class="library-rule-grid"><label>Shiny appearance<select class="nickname-shiny"><option value="">Keep current appearance</option><option value="yes"' + (appearance.shiny === 'yes' ? ' selected' : '') + '>Make every Pokémon shiny</option><option value="no"' + (appearance.shiny === 'no' ? ' selected' : '') + '>Make every Pokémon non-shiny</option></select></label><label class="library-check"><input type="checkbox" class="nickname-gendered"' + (appearance.gendered ? ' checked' : '') + ' /> Enable gender-specific names</label><label class="library-check"><input type="checkbox" class="nickname-fallback"' + (appearance.fallback ? ' checked' : '') + ' /> Use base-species names for unlisted forms</label></div><details class="library-help"><summary>How these rules work</summary><p id="nickname-gender-help">Any gender is the default. A matching gender-specific entry overrides it when enabled. An unspecified gender uses the default.</p><p>Shiny rules affect the whole team, even Pokémon without a nickname entry. Form fallback uses the base species only when the form has no entry.</p></details></details><details class="library-secondary"><summary>Paste a nickname list</summary><p class="tools-note">One Pokémon = nickname per line.</p><textarea class="textbox nickname-paste" rows="4" aria-label="Paste nickname list" placeholder="Togekiss = Deneb"></textarea>' + button('pasteNicknameRows', 'Add pasted names') + '</details></section><section class="library-step library-apply-step"><h4><span class="library-step-number">3</span> Preview for your team</h4><label class="library-check"><input type="checkbox" class="nickname-replace" /> Replace existing nicknames</label><p class="tools-note">Leave this off to keep names you already chose. Preview every change before applying.</p><div class="library-actions">' + button('applyNicknameToTeam', 'Preview changes') + '<span class="library-preview-context tools-note"></span></div></section>';
 		}
-		html += '<label><input type="checkbox" class="nickname-replace" /> Replace existing nicknames when applying</label><p>' + button('applyNicknameToTeam', 'Preview changes for this team') + '</p></section><details class="tools-panel library-backup"><summary>Backup nicknames &amp; saved sets</summary><p class="tools-note">Includes saved nickname profiles and Pokémon sets only. Pokémon lists, teams and unfinished drafts are not included. Save nickname drafts before exporting.</p><p><button class="button" name="downloadToolsBackup">Download backup</button> <label class="button">Import backup <input type="file" class="tools-backup-file" accept=".json,application/json" /></label></p><details><summary>Advanced: raw JSON</summary><p>Import adds copies without replacing saved profiles.</p><textarea class="textbox tools-transfer" rows="8" aria-label="Build and nickname library JSON">' + escape(JSON.stringify(data, null, 2)) + '</textarea><p>' + button('exportToolsLibrary', 'Refresh export') + button('importToolsLibrary', 'Import library') + '</p></details></details></div>';
+		html += '</section><details class="tools-panel library-backup"><summary>Backup &amp; restore</summary><p class="tools-note">Includes saved name profiles and sets. Lists, teams and unsaved drafts are not included.</p><p>' + button('downloadToolsBackup', 'Download backup') + '<label class="button">Import backup<input type="file" class="tools-backup-file" accept=".json,application/json" /></label></p><details class="library-secondary"><summary>Advanced: JSON import / export</summary><p class="tools-note">Import adds copies; it does not replace your profiles.</p><textarea class="textbox tools-transfer" rows="6" aria-label="Build and nickname library JSON">' + escape(JSON.stringify(data, null, 2)) + '</textarea><div class="library-actions">' + button('exportToolsLibrary', 'Refresh export') + button('importToolsLibrary', 'Import library') + '</div></details></details></div>';
 		this.$el.html(html);
 		this.refreshLibraryControls();
 		this.restoreLibraryView();
 	};
-	proto.exportToolsLibrary = function () { if (!this.saveNicknameMappings()) return; this.$('.tools-transfer').val(JSON.stringify(this.toolsData(), null, 2)).focus().select(); };
+	proto.libraryKeydown = function (event) {
+		if (event.key !== 'Escape' || event.isComposing || event.defaultPrevented || (event.isDefaultPrevented && event.isDefaultPrevented())) return;
+		if ($(event.target).closest('input,textarea,select,[contenteditable],[role="combobox"],[role="dialog"]').length) return;
+		event.preventDefault(); event.stopPropagation(); this.back();
+	};
+	proto.libraryPreviewKeydown = function (event) {
+		if (event.key !== 'Escape' || event.isComposing || event.defaultPrevented || $(event.target).closest('input,textarea,select').length) return;
+		event.preventDefault(); event.stopPropagation();
+		if ($(event.currentTarget).hasClass('build-comparison')) this.cancelBuildComparison(); else this.cancelProfileApply();
+	};
+	proto.events['keydown .library-clean'] = 'libraryKeydown';
+	proto.events['keydown .profile-apply-preview[role=dialog]'] = 'libraryPreviewKeydown';
+	proto.showLibraryBackup = function () {
+		this.captureLibraryView(); this.saveNicknameDraft(); this.profilesView = false; this.librarySection = 'names'; this.showToolsManager();
+		this.$('.library-backup').prop('open', true); var summary = this.$('.library-backup > summary')[0]; if (summary) {summary.focus(); summary.scrollIntoView({block:'nearest'});}
+	};
+	proto.exportToolsLibrary = function () { if (!this.saveNicknameMappings()) return; this.libraryTransferDirty = false; if (this.libraryInputDraft) delete this.libraryInputDraft.transfer; this.$('.tools-transfer').val(JSON.stringify(this.toolsData(), null, 2)).focus().select(); };
 	proto.importToolsLibrary = function () {
 		this.saveNicknameDraft();
 		try {
 			var incoming = T.parse(this.$('.tools-transfer').val()), data = this.toolsData();
 			data.builds = data.builds.concat(incoming.builds);
 			data.nicknames = data.nicknames.concat(incoming.nicknames);
-			this.saveToolsData(data);
+			this.saveToolsData(data); this.libraryTransferDirty = false; if (this.libraryInputDraft) delete this.libraryInputDraft.transfer;
 			this.showToolsManager();
 		} catch (err) { app.addPopupMessage(err.message); }
 	};
 	proto.newNicknameProfile = function () {
 		this.saveNicknameDraft();
 		var self = this;
-		app.addPopupPrompt('Profile name:', 'Create nickname profile', function (name) {
+		app.addPopupPrompt('Profile name:', 'New name profile', function (name) {
 			if (!name || !name.trim()) return;
 			var data = self.toolsData(), id = T.uid();
 			data.nicknames.push({id: id, name: name.trim().slice(0, 80), entries: {}, fallback: false});
 			data.selectedNickname = id;
 			self.saveToolsData(data);
 			self.showToolsManager();
+			var input = self.$('.nickname-species')[0]; if (input) input.focus();
 		});
 	};
 	T.nicknameRow = function (species, name, gender) {
-		var choices = '<select class="nickname-gender" aria-label="Nickname gender">' + [['', 'Default'], ['M', 'Male'], ['F', 'Female'], ['N', 'Genderless']].map(function (option) { return '<option value="' + option[0] + '"' + (gender === option[0] ? ' selected' : '') + '>' + option[1] + '</option>'; }).join('') + '</select>';
-		return '<div class="nickname-row"><input class="textbox nickname-species" list="nickname-species-options" aria-label="Pokémon or form" placeholder="Pokémon or form" value="' + escape(species) + '" />' + choices + '<input class="textbox nickname-value" aria-label="Nickname" placeholder="Nickname" value="' + escape(name) + '" />' + button('removeNicknameRow', 'Remove') + '</div>';
+		var choices = '<select class="nickname-gender" aria-label="Nickname applies to" aria-describedby="nickname-gender-help">' + [['', 'Any gender (default)'], ['M', 'Male only'], ['F', 'Female only'], ['N', 'Genderless only']].map(function (option) {return '<option value="' + option[0] + '"' + (gender === option[0] ? ' selected' : '') + '>' + option[1] + '</option>';}).join('') + '</select>';
+		return '<div class="nickname-row"><input type="search" class="textbox nickname-species" list="nickname-species-options" aria-label="Pokémon or form" placeholder="Search Pokémon or form" value="' + escape(species) + '" /><input class="textbox nickname-value" aria-label="Nickname" placeholder="Enter nickname" maxlength="24" value="' + escape(name) + '" />' + choices + button('removeNicknameRow', 'Remove') + '</div>';
 	};
 	T.nicknameEntries = function (rows) {
 		var entries = {};
@@ -4444,21 +4477,21 @@
 		profile.gendered = !!this.$('.nickname-gendered').prop('checked');
 		this.saveToolsData(data);
 		var drafts = Storage.prefs('nicknamedrafts') || {}; delete drafts[profile.id]; Storage.prefs('nicknamedrafts', drafts);
-		this.$('.nickname-save-status').text('Profile saved');
+		this.$('.nickname-save-status').text('All changes saved');
 		return true;
 	};
 	proto.nicknameSettingsChange = function () {
-		this.saveNicknameDraft();
-		var data = this.toolsData();
-		data.selectedNickname = this.$('.nickname-profile-choice').val() || '';
-		data.autoNickname = !!this.$('.auto-nickname').prop('checked');
-		this.saveToolsData(data);
-		this.showToolsManager();
+		this.saveNicknameDraft(); this.captureLibraryView();
+		var data = this.toolsData(), selected = this.$('.nickname-profile-choice').val() || '';
+		if (selected !== data.selectedNickname && this.libraryViews && this.libraryViews.names) {this.libraryViews.names.names = ''; this.libraryViews.names.teamOnly = false;}
+		data.selectedNickname = selected; data.autoNickname = !!this.$('.auto-nickname').prop('checked');
+		this.saveToolsData(data); this.showToolsManager();
+		var choice = this.$('.nickname-profile-choice')[0]; if (choice) choice.focus({preventScroll:true});
 	};
 	proto.applyNicknameProfile = function (index) {
 		if (!this.curTeam || !this.curSetList[Number(index)]) return;
 		var data = this.toolsData(), profile = data.nicknames.find(function (p) { return p.id === data.selectedNickname; });
-		if (!profile) return app.addPopupMessage('Select a nickname profile in Builds & nicknames first.');
+		if (!profile) return app.addPopupMessage('Open the library and choose a name profile first.');
 		T.applyNickname(this.curSetList[Number(index)], profile, this.curTeam.dex, false);
 		this.toolsCommit();
 	};
@@ -4466,7 +4499,7 @@
 		if (!this.saveNicknameMappings()) return;
 		if (!this.curTeam || !this.curSetList) return app.addPopupMessage('Open a team first.');
 		var data = this.toolsData(), profile = data.nicknames.find(function (p) { return p.id === data.selectedNickname; });
-		if (!profile) return app.addPopupMessage('Choose a nickname profile first.');
+		if (!profile) return app.addPopupMessage('Choose a name profile first.');
 		var replace = !!this.$('.nickname-replace').prop('checked'), dex = this.curTeam.dex;
 		var before = T.clone(this.curSetList), after = T.clone(before);
 		after.forEach(function (set) { T.applyNickname(set, profile, dex, replace); });
@@ -4487,7 +4520,7 @@
 		this.profileApplyUndo.after = T.clone(this.curSetList);
 		this.$el.prepend('<div class="pad profile-apply-preview">Profile applied. ' + button('undoProfileApply', 'Undo profile changes') + '</div>');
 	};
-	proto.cancelProfileApply = function () { this.pendingProfileApply = null; this.$('.profile-apply-preview').remove(); };
+	proto.cancelProfileApply = function () { this.pendingProfileApply = null; this.$('.profile-apply-preview').not('.build-comparison').remove(); var trigger = this.$('[name=applyNicknameToTeam]:visible')[0]; if (trigger) trigger.focus({preventScroll:true}); };
 	proto.undoProfileApply = function () {
 		var undo = this.profileApplyUndo;
 		if (!undo || undo.team !== this.curTeam || JSON.stringify(undo.after) !== JSON.stringify(this.curSetList)) return app.addPopupMessage('The team changed after applying. Undo would overwrite those edits.');
@@ -4498,8 +4531,9 @@
 	var originalRosterManager = proto.showRosterProfiles;
 	proto.openRosterManager = function () { this.saveNicknameDraft(); this.toolsView = false; originalRosterManager.call(this); };
 	proto.filterSavedBuilds = function (event) {
-		var query = event.currentTarget.value.toLowerCase().trim();
-		this.$('.saved-build-entry').each(function () { $(this).toggle($(this).attr('data-search').includes(query)); });
+		var query = event.currentTarget.value.toLowerCase().trim(), shown = 0;
+		this.$('.saved-build-entry').each(function () {var match = $(this).attr('data-search').includes(query); $(this).toggle(match); if (match) shown++;});
+		this.$('.library-search-empty').prop('hidden', !query || !!shown);
 	};
 	proto.replaceLibraryBuild = function (id) {
 		this.saveNicknameDraft();
@@ -4510,12 +4544,17 @@
 		this.openBuildComparison(index, build);
 	};
 	proto.saveNicknameDraft = function () {
-		var id = this.toolsData().selectedNickname; if (!id || !this.toolsView) return;
-		var rows = []; this.$('.nickname-row').not('.nickname-head').each(function () { rows.push([String($(this).find('.nickname-species').val()), String($(this).find('.nickname-value').val()), String($(this).find('.nickname-gender').val() || '')]); });
-		var drafts = Storage.prefs('nicknamedrafts') || {};
-		rows = T.nonemptyNicknameRows(rows);
-		drafts[id] = {rows: rows, shiny: this.$('.nickname-shiny').val() || '', gendered: !!this.$('.nickname-gendered').prop('checked'), fallback: !!this.$('.nickname-fallback').prop('checked')};
-		Storage.prefs('nicknamedrafts', drafts); this.$('.nickname-save-status').text('Unsaved changes — draft retained');
+		var data = this.toolsData(), id = data.selectedNickname; if (!id || !this.toolsView || !this.$('.nickname-rows').length) return;
+		this.captureLibraryView();
+		var rows = []; this.$('.nickname-row').not('.nickname-head').each(function () {rows.push([String($(this).find('.nickname-species').val()), String($(this).find('.nickname-value').val()), String($(this).find('.nickname-gender').val() || '')]);});
+		var drafts = Storage.prefs('nicknamedrafts') || {}, profile = data.nicknames.find(function (p) {return p.id === id;});
+		var draft = {rows:T.nonemptyNicknameRows(rows), shiny:this.$('.nickname-shiny').val() || '', gendered:!!this.$('.nickname-gendered').prop('checked'), fallback:!!this.$('.nickname-fallback').prop('checked')};
+		var unchanged = false;
+		try {unchanged = !!profile && T.nicknameState(Object.assign({}, T.nicknameMappings(draft.rows), draft)) === T.nicknameState(profile);} catch (error) {}
+		if (unchanged) delete drafts[id]; else drafts[id] = draft;
+		Storage.prefs('nicknamedrafts', drafts);
+		this.$('.nickname-save-status').text(unchanged ? 'All changes saved' : 'Unsaved changes · draft kept');
+		if (this.pendingProfileApply) this.cancelProfileApply();
 	};
 	proto.renameToolEntry = function (key) {
 		this.saveNicknameDraft();
@@ -4538,8 +4577,7 @@
 		if (field === 'nicknames') {
 			var draft = (Storage.prefs('nicknamedrafts') || {})[entry.id];
 			if (draft) {
-				try { Object.assign(copy, T.nicknameMappings(draft.rows), {shiny: draft.shiny, gendered: draft.gendered, fallback: draft.fallback}); }
-				catch (err) { return app.addPopupMessage('Fix the nickname draft before duplicating: ' + err.message); }
+				try { Object.assign(copy, T.nicknameMappings(draft.rows), {shiny: draft.shiny, gendered: draft.gendered, fallback: draft.fallback}); } catch (err) { return app.addPopupMessage('Fix the nickname draft before duplicating: ' + err.message); }
 			}
 		}
 		copy.id = T.uid();
@@ -4582,6 +4620,7 @@
 	var profiles = proto.renderRosterProfiles;
 	proto.renderRosterProfiles = function () {
 		var html = profiles.apply(this, arguments), data = this.toolsData(true);
+		if (this.profilesView) return html;
 		var active = data.nicknames.find(function (p) { return p.id === data.selectedNickname; });
 		// Keep the Pokémon-list manager reachable while editing a set.
 		html = html.replace(/<\/div>$/, '<span class="active-name-profile">Names: ' + escape(active ? active.name : 'None') + '</span></div>');
@@ -4593,9 +4632,9 @@
 		var result = update.apply(this, arguments);
 		if (this.curTeam && !this.profilesView && !this.validationView && !this.exportMode) {
 			var data = this.toolsData(true);
-			var html = '<details class="team-profile-drawer"><summary>Nickname profiles &amp; saved sets</summary><div class="pad team-profile-toolbar"><label>Nickname profile <select class="team-profile-choice"><option value="">None</option>';
+			var html = '<details class="team-profile-drawer"><summary>Names &amp; saved sets</summary><div class="pad team-profile-toolbar"><label>Name profile <select class="team-profile-choice"><option value="">None</option>';
 			data.nicknames.forEach(function (p) { html += '<option value="' + escape(p.id) + '"' + (data.selectedNickname === p.id ? ' selected' : '') + '>' + escape(p.name) + '</option>'; });
-			html += '</select></label> ' + button('showToolsManager', 'Manage nicknames & sets') + button('applyNicknameToTeam', 'Preview team changes') + '<small class="team-profile-help">Choose saved names and shiny settings, then preview before applying.</small></div></details>';
+			html += '</select></label> ' + button('showToolsManager', 'Open library') + button('applyNicknameToTeam', 'Preview changes') + '<small class="team-profile-help">Name profiles save nicknames and appearance; saved sets save moves, items and stats.</small></div></details>';
 			this.$('.team-profile-drawer, .team-profile-toolbar').remove();
 			// Keep List/Team and the Pokémon tabs first; tools belong in the content flow.
 			this.$('.teamchartbox').first().prepend(html);
@@ -4616,12 +4655,22 @@
 	};
 	proto.events['change .team-profile-choice'] = 'changeTeamNicknameProfile';
 	var back = proto.back;
-	proto.back = function () { if (this.toolsView) { this.saveNicknameDraft(); this.toolsView = false; return this.update(); } return back.apply(this, arguments); };
+	proto.back = function () {
+		if (this.toolsView || this.profilesView) {
+			this.captureLibraryView(); this.saveNicknameDraft(); this.toolsView = false; this.profilesView = false;
+			this.pendingProfileApply = null; this.rosterImportPreview = null; this.update();
+			var opener = this.$('[name=showToolsManager]:visible')[0] || this.$('[name=showRosterProfiles]:visible')[0]; if (opener) opener.focus({preventScroll:true});
+			return;
+		}
+		return back.apply(this, arguments);
+	};
 	proto.events['change .nickname-profile-choice'] = 'nicknameSettingsChange';
 	proto.events['change .auto-nickname'] = 'nicknameSettingsChange';
 	proto.events['input .nickname-row input'] = 'saveNicknameDraft';
 	proto.events['change .nickname-gender, .nickname-shiny, .nickname-gendered, .nickname-fallback'] = 'saveNicknameDraft';
 	proto.events['input .build-library-search'] = 'filterSavedBuilds';
+	proto.libraryTransferEdited = function () {this.libraryTransferDirty = true; this.captureLibraryView();};
+	proto.events['input .tools-transfer'] = 'libraryTransferEdited';
 	// Item search uses descriptions and activation data exported from this server checkout.
 	T.itemMetadata = {"parasectite":{"text":"Allows Parasect, including its Rejuv or Parasite form, to Mega Evolve.", "tags":["mega evolution transformation", "evolution"]}, "anomalycore":{"text":"If held by a designated Pulse or Rift Pokemon, this Anomaly Core allows it to undergo its Pulse or Rift Evolution in battle.", "tags":["mega evolution transformation", "evolution"]}, "belliboltite":{"text":"If held by a Bellibolt, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "sunflorite":{"text":"If held by a Sunflora, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "claydolite":{"text":"If held by a Claydol, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "abilityshield":{"text":"Holder's Ability cannot be changed, suppressed, or ignored by any effect.", "tags":[]}, "abomasite":{"text":"If held by an Abomasnow, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "absolite":{"text":"If held by an Absol, this item allows it to Mega Evolve into Mega Absol in battle.", "tags":["mega evolution transformation", "evolution"]}, "absolitez":{"text":"If held by an Absol, this item allows it to Mega Evolve into Mega Absol Z in battle.", "tags":["mega evolution transformation", "evolution"]}, "absorbbulb":{"text":"Raises Sp. Atk by 1 if hit by Water or on Misty/Water Surface/Underwater. Single use.", "tags":[]}, "adamantcrystal":{"text":"If held by a Dialga, its Steel- and Dragon-type attacks have 1.2x power.", "tags":[]}, "adamantorb":{"text":"If held by a Dialga, its Steel- and Dragon-type attacks have 1.2x power.", "tags":[]}, "adrenalineorb":{"text":"Raises holder's Speed by 1 stage if it gets affected by Intimidate. Single use.", "tags":[]}, "aerodactylite":{"text":"If held by an Aerodactyl, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "aggronite":{"text":"If held by an Aggron, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "aguavberry":{"text":"Restores 1/2 max HP at 1/4 max HP or less; confuses if -SpD Nature. Single use.", "tags":["healing recovery", "low HP pinch healing"], "threshold":0.25}, "airballoon":{"text":"Holder is immune to Ground-type attacks. Pops when holder is hit.", "tags":[]}, "alakazite":{"text":"If held by an Alakazam, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "aloraichiumz":{"text":"Alolan Raichu with Thunderbolt can use Stoked Sparksurfer once per battle.", "tags":[]}, "altarianite":{"text":"If held by an Altaria, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "ampharosite":{"text":"If held by an Ampharos, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "amplifieldrock":{"text":"Extends temporary terrains and room effects created by the holder, usually by 3 turns.", "tags":[]}, "apicotberry":{"text":"Raises holder's Sp. Def by 1 stage when at 1/4 max HP or less. Single use.", "tags":["low HP pinch stat boost", "offense offensive boost"], "threshold":0.25}, "armorfossil":{"text":"Can be revived into Shieldon.", "tags":[]}, "aspearberry":{"text":"Holder is cured if it is frozen. Single use.", "tags":["status cure"]}, "assaultvest":{"text":"Holder's Sp. Def is 1.5x, but it can only select damaging moves.", "tags":["defense defensive boost"]}, "audinite":{"text":"If held by an Audino, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "auspiciousarmor":{"text":"Evolves Charcadet into Armarouge when used.", "tags":["evolution"]}, "babiriberry":{"text":"Halves damage taken from a supereffective Steel-type attack. Single use.", "tags":["resistance resist berry defensive"]}, "banettite":{"text":"If held by a Banette, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "barbaracite":{"text":"If held by a Barbaracle, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "baxcalibrite":{"text":"If held by a Baxcalibur, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "beastball":{"text":"A special Poke Ball designed to catch Ultra Beasts.", "tags":[]}, "beedrillite":{"text":"If held by a Beedrill, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "berryjuice":{"text":"Restores 20 HP when at 1/2 max HP or less. Single use.", "tags":["healing recovery", "low HP pinch healing"], "threshold":0.5}, "berrysweet":{"text":"Evolves Milcery into Alcremie when held and spun around.", "tags":["evolution"]}, "bignugget":{"text":"A big nugget of pure gold that gives off a lustrous gleam.", "tags":[]}, "bigroot":{"text":"Holder gains 1.3x HP from draining/Aqua Ring/Ingrain/Leech Seed/Strength Sap.", "tags":[]}, "bindingband":{"text":"Holder's partial-trapping moves deal 1/6 max HP per turn instead of 1/8.", "tags":[]}, "blackbelt":{"text":"Holder's Fighting-type attacks have 1.2x power.", "tags":[]}, "blackglasses":{"text":"Holder's Dark-type attacks have 1.2x power.", "tags":[]}, "blacksludge":{"text":"Each turn, Poison types or Parasitism holders heal 1/16 max HP; others lose 1/8.", "tags":["healing recovery"]}, "blastoisinite":{"text":"If held by a Blastoise, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "blazikenite":{"text":"If held by a Blaziken, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "blueorb":{"text":"If held by a Kyogre, this item triggers its Primal Reversion in battle.", "tags":[]}, "blunderpolicy":{"text":"If the holder misses due to accuracy, its Speed is raised by 2 stages. Single use.", "tags":[]}, "boosterenergy":{"text":"Activates the Protosynthesis or Quark Drive Abilities. Single use.", "tags":[]}, "bottlecap":{"text":"Used for Hyper Training. One of a Pokemon's stats is calculated with an IV of 31.", "tags":[]}, "brightpowder":{"text":"The accuracy of attacks against the holder is 0.9x.", "tags":[]}, "buggem":{"text":"Holder's first successful Bug-type attack will have 1.3x power. Single use.", "tags":[]}, "buginiumz":{"text":"Once per battle, converts a damaging Bug-type move into Savage Spin-Out, or gives a Bug-type status move its Z-effect.", "tags":[]}, "bugmemory":{"text":"Holder's Multi-Attack is Bug type. RKS System gives Tinted Lens and Shield Dust.", "tags":[]}, "burndrive":{"text":"Holder's Techno Blast is Fire type.", "tags":[]}, "cameruptite":{"text":"If held by a Camerupt, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "cellbattery":{"text":"Raises holder's Attack by 1 if hit by an Electric-type attack. Single use.", "tags":[]}, "chandelurite":{"text":"If held by a Chandelure, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "charcoal":{"text":"Holder's Fire-type attacks have 1.2x power.", "tags":[]}, "charizarditex":{"text":"If held by a Charizard, this item allows it to Mega Evolve into either Mega Charizard X or Mega Charizard Y.", "tags":["mega evolution transformation", "evolution"]}, "charizarditey":{"text":"If held by a Charizard, this item allows it to Mega Evolve into either Mega Charizard X or Mega Charizard Y.", "tags":["mega evolution transformation", "evolution"]}, "chartiberry":{"text":"Halves damage taken from a supereffective Rock-type attack. Single use.", "tags":["resistance resist berry defensive"]}, "cheriberry":{"text":"Holder cures itself if it is paralyzed. Single use.", "tags":["status cure"]}, "cherishball":{"text":"A rare Poke Ball that has been crafted to commemorate an occasion.", "tags":[]}, "chesnaughtite":{"text":"If held by a Chesnaught, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "chestoberry":{"text":"Holder wakes up if it is asleep. Single use.", "tags":["status cure"]}, "chilanberry":{"text":"Halves damage taken from a Normal-type attack. Single use.", "tags":["resistance resist berry defensive"]}, "chilldrive":{"text":"Holder's Techno Blast is Ice type.", "tags":[]}, "chimechite":{"text":"If held by a Chimecho, this item allows it to Mega Evolve into either Chimecho-Mega or Chimecho-Mega-Y in battle.", "tags":["mega evolution transformation", "evolution"]}, "chippedpot":{"text":"Evolves Sinistea-Antique into Polteageist-Antique when used.", "tags":["evolution"]}, "choiceband":{"text":"Holder's Attack is 1.5x, but it can only select the first move it executes.", "tags":["offense offensive boost"]}, "choicescarf":{"text":"Holder's Speed is 1.5x, but it can only select the first move it executes.", "tags":[]}, "choicespecs":{"text":"Holder's Sp. Atk is 1.5x, but it can only select the first move it executes.", "tags":["offense offensive boost"]}, "chopleberry":{"text":"Halves damage taken from a supereffective Fighting-type attack. Single use.", "tags":["resistance resist berry defensive"]}, "clawfossil":{"text":"Can be revived into Anorith.", "tags":[]}, "clearamulet":{"text":"Prevents other Pokemon from lowering the holder's stat stages.", "tags":[]}, "clefablite":{"text":"If held by a Clefable, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "haxorite":{"text":"If held by a Haxorus, this item allows it to Mega Evolve into Haxorus-Mega in battle.", "tags":["mega evolution transformation", "evolution"]}, "arbokite":{"text":"If held by an Arbok, this item allows it to Mega Evolve into either Arbok-Mega-X or Arbok-Mega-Y in battle.", "tags":["mega evolution transformation", "evolution"]}, "cinderite":{"text":"", "tags":["mega evolution transformation"]}, "ledianite":{"text":"", "tags":["mega evolution transformation"]}, "aridiate":{"text":"", "tags":["mega evolution transformation"]}, "clawitzerite":{"text":"", "tags":["mega evolution transformation"]}, "zangoosite":{"text":"", "tags":["mega evolution transformation"]}, "sevipite":{"text":"", "tags":["mega evolution transformation"]}, "salazzite":{"text":"", "tags":["mega evolution transformation"]}, "arbolivite":{"text":"", "tags":["mega evolution transformation"]}, "tyrantrumite":{"text":"", "tags":["mega evolution transformation"]}, "torterranite":{"text":"", "tags":["mega evolution transformation"]}, "infernite":{"text":"", "tags":["mega evolution transformation"]}, "empoleonite":{"text":"", "tags":["mega evolution transformation"]}, "aurorite":{"text":"", "tags":["mega evolution transformation"]}, "miloticide":{"text":"", "tags":["mega evolution transformation"]}, "cloversweet":{"text":"Evolves Milcery into Alcremie when held and spun around.", "tags":["evolution"]}, "cobaberry":{"text":"Halves damage taken from a supereffective Flying-type attack. Single use.", "tags":["resistance resist berry defensive"]}, "colburberry":{"text":"Halves damage taken from a supereffective Dark-type attack. Single use.", "tags":["resistance resist berry defensive"]}, "cornerstonemask":{"text":"Ogerpon-Cornerstone: 1.2x power attacks; Terastallize to gain Embody Aspect.", "tags":[]}, "coverfossil":{"text":"Can be revived into Tirtouga.", "tags":[]}, "covertcloak":{"text":"The holder is not affected by the secondary effect of another Pokemon's attack. Attacks with secondary effects that are prevented include those with a chance (even 100%) to paralyze, sleep, freeze, burn, poison, confuse, cause the holder to flinch, cause the holder's stat stages to be lowered, as well as Anchor Shot, Eerie Spell, Fling, Psychic Noise, Salt Cure, Spirit Shackle, Syrup Bomb, and Throat Chop. The effect of Sparkling Aria is prevented if the holder is the only target. Secondary effects added by King's Rock, Razor Fang, and the Poison Touch, Stench, and Toxic Chain Abilities are also prevented against the holder.", "tags":[]}, "crabominite":{"text":"If held by a Crabominable, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "crackedpot":{"text":"Evolves Sinistea into Polteageist when used.", "tags":["evolution"]}, "custapberry":{"text":"Holder moves first in its priority bracket when at 1/4 max HP or less. Single use.", "tags":[]}, "damprock":{"text":"Holder's use of Rain Dance lasts 8 turns instead of 5.", "tags":[]}, "darkgem":{"text":"Holder's first successful Dark-type attack will have 1.3x power. Single use.", "tags":[]}, "darkiniumz":{"text":"Once per battle, converts a damaging Dark-type move into Black Hole Eclipse, or gives a Dark-type status move its Z-effect.", "tags":[]}, "darkmemory":{"text":"Holder's Multi-Attack is Dark type. RKS System gives Pressure and Intimidate.", "tags":[]}, "darkranite":{"text":"If held by a Darkrai, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "dawnstone":{"text":"Evolves male Kirlia into Gallade and female Snorunt into Froslass when used.", "tags":["mega evolution transformation", "evolution"]}, "decidiumz":{"text":"Decidueye with Spirit Shackle can use Sinister Arrow Raid once per battle.", "tags":[]}, "deepseascale":{"text":"If held by a Clamperl, its Sp. Def is doubled. Evolves Clamperl into Gorebyss when traded.", "tags":["defense defensive boost", "evolution"]}, "deepseatooth":{"text":"If held by a Clamperl, its Sp. Atk is doubled. Evolves Clamperl into Huntail when traded.", "tags":["offense offensive boost", "evolution"]}, "delphoxite":{"text":"If held by a Delphox, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "destinyknot":{"text":"If holder becomes infatuated, the other Pokemon also becomes infatuated.", "tags":[]}, "diancite":{"text":"If held by a Diancie, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "diveball":{"text":"A Poke Ball that works especially well on Pokemon that live underwater.", "tags":[]}, "domefossil":{"text":"Can be revived into Kabuto.", "tags":[]}, "dousedrive":{"text":"Holder's Techno Blast is Water type.", "tags":[]}, "dracoplate":{"text":"Holder's Dragon-type attacks have 1.2x power. Judgment is Dragon type.", "tags":[]}, "dragalgite":{"text":"If held by a Dragalge, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "dragonfang":{"text":"Holder's Dragon-type attacks have 1.2x power.", "tags":[]}, "dragongem":{"text":"Holder's first successful Dragon-type attack will have 1.3x power. Single use.", "tags":[]}, "dragoninite":{"text":"If held by a Dragonite, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "dragoniumz":{"text":"Once per battle, converts a damaging Dragon-type move into Devastating Drake, or gives a Dragon-type status move its Z-effect.", "tags":[]}, "dragonmemory":{"text":"Holder's Multi-Attack is Dragon type. RKS System gives Marvel Scale and Tough Claws.", "tags":[]}, "dragonscale":{"text":"Evolves Seadra into Kingdra when traded.", "tags":["evolution"]}, "drampanite":{"text":"If held by a Drampa, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "dreadplate":{"text":"Holder's Dark-type attacks have 1.2x power. Judgment is Dark type.", "tags":[]}, "dreamball":{"text":"A Poke Ball that makes it easier to catch wild Pokémon while they're asleep.", "tags":[]}, "dubiousdisc":{"text":"Evolves Porygon2 into Porygon-Z when traded.", "tags":["evolution"]}, "duskball":{"text":"A Poke Ball that makes it easier to catch wild Pokemon at night or in caves.", "tags":[]}, "duskstone":{"text":"Evolves Murkrow into Honchkrow, Misdreavus into Mismagius, Lampent into Chandelure, and Doublade into Aegislash when used.", "tags":["mega evolution transformation", "evolution"]}, "earthplate":{"text":"Holder's Ground-type attacks have 1.2x power. Judgment is Ground type.", "tags":[]}, "eelektrossite":{"text":"If held by an Eelektross, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "eeviumz":{"text":"Eevee forms: heals 1/16 max HP each turn; Extreme Evoboost via Last Resort or Veevee Volley.", "tags":["healing recovery"]}, "ejectbutton":{"text":"If holder survives a hit, it immediately switches out to a chosen ally. Single use.", "tags":[]}, "ejectpack":{"text":"If the holder's stat stages are lowered, it switches to a chosen ally. Single use.", "tags":[]}, "electirizer":{"text":"Evolves Electabuzz into Electivire when traded.", "tags":["evolution"]}, "electricgem":{"text":"Holder's first successful Electric-type attack will have 1.3x power. Single use.", "tags":[]}, "electricmemory":{"text":"Holder's Multi-Attack is Electric type. RKS System gives Transistor and Lightning Rod.", "tags":[]}, "electriumz":{"text":"Once per battle, converts a damaging Electric-type move into Gigavolt Havoc, or gives a Electric-type status move its Z-effect.", "tags":[]}, "emboarite":{"text":"", "tags":["mega evolution transformation"]}, "elementalseed":{"text":"If the terrain is a Elemental Terrain, boosts the holder in a unique way. Single use.", "tags":["offense offensive boost"]}, "enigmaberry":{"text":"Restores 1/4 max HP after holder is hit by a supereffective move. Single use.", "tags":["healing recovery"]}, "eviolite":{"text":"If holder's species can evolve, its Defense and Sp. Def are 1.5x.", "tags":["defense defensive boost", "evolution"]}, "excadrite":{"text":"If held by an Excadrill, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "expertbelt":{"text":"Holder's attacks that are super effective against the target do 1.2x damage.", "tags":[]}, "fairiumz":{"text":"Once per battle, converts a damaging Fairy-type move into Twinkle Tackle, or gives a Fairy-type status move its Z-effect.", "tags":[]}, "fairyfeather":{"text":"Holder's Fairy-type attacks have 1.2x power.", "tags":[]}, "fairygem":{"text":"Holder's first successful Fairy-type attack will have 1.3x power. Single use.", "tags":[]}, "fairymemory":{"text":"Holder's Multi-Attack is Fairy type. RKS System gives Invigorate and Friend Guard.", "tags":[]}, "falinksite":{"text":"If held by a Falinks, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "fastball":{"text":"A Poke Ball that makes it easier to catch Pokemon which are quick to run away.", "tags":[]}, "feraligite":{"text":"If held by a Feraligatr, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "fightinggem":{"text":"Holder's first successful Fighting-type attack will have 1.3x power. Single use.", "tags":[]}, "fightingmemory":{"text":"Holder's Multi-Attack is Fighting type. RKS System gives Inner Focus and Sheer Force.", "tags":[]}, "fightiniumz":{"text":"Once per battle, converts a damaging Fighting-type move into All-Out Pummeling, or gives a Fighting-type status move its Z-effect.", "tags":[]}, "figyberry":{"text":"Restores 1/2 max HP at 1/4 max HP or less; confuses if -Atk Nature. Single use.", "tags":["healing recovery", "low HP pinch healing"], "threshold":0.25}, "firegem":{"text":"Holder's first successful Fire-type attack will have 1.3x power. Single use.", "tags":[]}, "firememory":{"text":"Holder's Multi-Attack is Fire type. RKS System gives Soul Fire and Flame Body.", "tags":[]}, "firestone":{"text":"Evolves Vulpix into Ninetales, Growlithe into Arcanine, Eevee into Flareon, and Pansear into Simisear when used.", "tags":["evolution"]}, "firiumz":{"text":"Once per battle, converts a damaging Fire-type move into Inferno Overdrive, or gives a Fire-type status move its Z-effect.", "tags":[]}, "fistplate":{"text":"Holder's Fighting-type attacks have 1.2x power. Judgment is Fighting type.", "tags":[]}, "flameorb":{"text":"At the end of every turn, this item attempts to burn the holder.", "tags":[]}, "flameplate":{"text":"Holder's Fire-type attacks have 1.2x power. Judgment is Fire type.", "tags":[]}, "floatstone":{"text":"Holder's weight is halved.", "tags":[]}, "floettite":{"text":"If held by an Eternal Flower Floette, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "flowersweet":{"text":"Evolves Milcery into Alcremie when held and spun around.", "tags":["evolution"]}, "flyinggem":{"text":"Holder's first successful Flying-type attack will have 1.3x power. Single use.", "tags":[]}, "flyingmemory":{"text":"Holder's Multi-Attack is Flying type. RKS System gives Gale Wings and Air Lock.", "tags":[]}, "flygonite":{"text":"Allows Flygon to Mega Evolve into Flygon-Mega or Flygon-Mega-Z.", "tags":["mega evolution transformation", "evolution"]}, "flyiniumz":{"text":"Once per battle, converts a damaging Flying-type move into Supersonic Skystrike, or gives a Flying-type status move its Z-effect.", "tags":[]}, "focusband":{"text":"Holder has a 10% chance to survive an attack that would KO it with 1 HP.", "tags":[]}, "focussash":{"text":"If holder's HP is full, will survive an attack that would KO it with 1 HP. Single use.", "tags":[]}, "fossilizedbird":{"text":"Can revive into Dracozolt with Fossilized Drake or Arctozolt with Fossilized Dino.", "tags":[]}, "fossilizeddino":{"text":"Can revive into Arctovish with Fossilized Fish or Arctozolt with Fossilized Bird.", "tags":[]}, "fossilizeddrake":{"text":"Can revive into Dracozolt with Fossilized Bird or Dracovish with Fossilized Fish.", "tags":[]}, "fossilizedfish":{"text":"Can revive into Dracovish with Fossilized Drake or Arctovish with Fossilized Dino.", "tags":[]}, "friendball":{"text":"A Poke Ball that makes caught Pokemon more friendly.", "tags":[]}, "froslassite":{"text":"If held by a Froslass, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "fullincense":{"text":"Holder moves last in its priority bracket.", "tags":[]}, "galaricacuff":{"text":"Evolves Galarian Slowpoke into Galarian Slowbro when used.", "tags":["evolution"]}, "galaricawreath":{"text":"Evolves Galarian Slowpoke into Galarian Slowking when used.", "tags":["evolution"]}, "galladite":{"text":"If held by a Gallade, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "ganlonberry":{"text":"Raises holder's Defense by 1 stage when at 1/4 max HP or less. Single use.", "tags":["low HP pinch stat boost", "offense offensive boost"], "threshold":0.25}, "garchompite":{"text":"If held by a Garchomp, this item allows it to Mega Evolve into Mega Garchomp.", "tags":["mega evolution transformation", "evolution"]}, "garchompitez":{"text":"If held by a Garchomp, this item allows it to Mega Evolve into Mega Garchomp Z.", "tags":["mega evolution transformation", "evolution"]}, "gardevoirite":{"text":"If held by a Gardevoir, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "gengarite":{"text":"If held by a Gengar, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "ghostgem":{"text":"Holder's first successful Ghost-type attack will have 1.3x power. Single use.", "tags":[]}, "ghostiumz":{"text":"Once per battle, converts a damaging Ghost-type move into Never-Ending Nightmare, or gives a Ghost-type status move its Z-effect.", "tags":[]}, "ghostmemory":{"text":"Holder's Multi-Attack is Ghost type. RKS System gives Soul Fire and Cursed Body.", "tags":[]}, "glalitite":{"text":"If held by a Glalie, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "glimmoranite":{"text":"If held by a Glimmora, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "goldbottlecap":{"text":"Used for Hyper Training. All of a Pokemon's stats are calculated with an IV of 31.", "tags":[]}, "golisopite":{"text":"Allows Golisopod or Golisopod-Aevian to Mega Evolve into its own Mega form.", "tags":["mega evolution transformation", "evolution"]}, "megagolisopite":{"text":"If held by a regular Golisopod, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "golurkite":{"text":"If held by a Golurk, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "grassgem":{"text":"Holder's first successful Grass-type attack will have 1.3x power. Single use.", "tags":[]}, "grassiumz":{"text":"Once per battle, converts a damaging Grass-type move into Bloom Doom, or gives a Grass-type status move its Z-effect.", "tags":[]}, "grassmemory":{"text":"Holder's Multi-Attack is Grass type. RKS System gives Hospitality and Chlorophyll.", "tags":[]}, "greatball":{"text":"A high-performance Ball that provides a higher catch rate than a Poke Ball.", "tags":[]}, "greninjite":{"text":"If held by a Greninja, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "gripclaw":{"text":"Holder's partial-trapping moves always last 7 turns.", "tags":[]}, "griseouscore":{"text":"If held by a Giratina, its Ghost- and Dragon-type attacks have 1.2x power.", "tags":[]}, "griseousorb":{"text":"If held by a Giratina, its Ghost- and Dragon-type attacks have 1.2x power.", "tags":[]}, "groundgem":{"text":"Holder's first successful Ground-type attack will have 1.3x power. Single use.", "tags":[]}, "groundiumz":{"text":"Once per battle, converts a damaging Ground-type move into Tectonic Rage, or gives a Ground-type status move its Z-effect.", "tags":[]}, "groundmemory":{"text":"Holder's Multi-Attack is Ground type. RKS System gives Sand Rush and Stamina.", "tags":[]}, "gyaradosite":{"text":"If held by a Gyarados, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "habanberry":{"text":"Halves damage taken from a supereffective Dragon-type attack. Single use.", "tags":["resistance resist berry defensive"]}, "hardstone":{"text":"Holder's Rock-type attacks have 1.2x power.", "tags":[]}, "hawluchanite":{"text":"If held by a Hawlucha, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "healball":{"text":"A remedial Poke Ball that restores the caught Pokemon's HP and status problem.", "tags":[]}, "hearthflamemask":{"text":"Ogerpon-Hearthflame: 1.2x power attacks; Terastallize to gain Embody Aspect.", "tags":[]}, "heatranite":{"text":"If held by a Heatran, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "heatrock":{"text":"Holder's use of Sunny Day lasts 8 turns instead of 5.", "tags":[]}, "heavyball":{"text":"A Poke Ball for catching very heavy Pokemon.", "tags":[]}, "heavydutyboots":{"text":"When switching in, the holder is unaffected by hazards on its side of the field.", "tags":[]}, "helixfossil":{"text":"Can be revived into Omanyte.", "tags":[]}, "heracronite":{"text":"If held by a Heracross, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "houndoominite":{"text":"If held by a Houndoom, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "iapapaberry":{"text":"Restores 1/2 max HP at 1/4 max HP or less; confuses if -Def Nature. Single use.", "tags":["healing recovery", "low HP pinch healing"], "threshold":0.25}, "icegem":{"text":"Holder's first successful Ice-type attack will have 1.3x power. Single use.", "tags":[]}, "icememory":{"text":"Holder's Multi-Attack is Ice type. RKS System gives Ice Body and Slush Rush.", "tags":[]}, "icestone":{"text":"Evolves Alolan Sandshrew into Alolan Sandslash, Alolan Vulpix into Alolan Ninetales, Eevee into Glaceon, and Galarian Darumaka into Galarian Darmanitan when used.", "tags":["evolution"]}, "icicleplate":{"text":"Holder's Ice-type attacks have 1.2x power. Judgment is Ice type.", "tags":[]}, "iciumz":{"text":"Once per battle, converts a damaging Ice-type move into Subzero Slammer, or gives a Ice-type status move its Z-effect.", "tags":[]}, "icyrock":{"text":"Holder's use of Snowscape lasts 8 turns instead of 5.", "tags":[]}, "inciniumz":{"text":"Incineroar with Darkest Lariat can use Malicious Moonsault once per battle.", "tags":[]}, "insectplate":{"text":"Holder's Bug-type attacks have 1.2x power. Judgment is Bug type.", "tags":[]}, "ironball":{"text":"Holder is grounded, Speed halved. If Flying type, takes neutral Ground damage.", "tags":[]}, "ironplate":{"text":"Holder's Steel-type attacks have 1.2x power. Judgment is Steel type.", "tags":[]}, "jabocaberry":{"text":"If holder is hit by a physical move, attacker loses 1/8 of its max HP. Single use.", "tags":[]}, "jawfossil":{"text":"Can be revived into Tyrunt.", "tags":[]}, "kangaskhanite":{"text":"If held by a Kangaskhan, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "kasibberry":{"text":"Halves damage taken from a supereffective Ghost-type attack. Single use.", "tags":["resistance resist berry defensive"]}, "kebiaberry":{"text":"Halves damage taken from a supereffective Poison-type attack. Single use.", "tags":["resistance resist berry defensive"]}, "keeberry":{"text":"Raises holder's Defense by 1 stage after it is hit by a physical attack. Single use.", "tags":["offense offensive boost"]}, "kingsrock":{"text":"Holder's attacks without a chance to make the target flinch gain a 10% chance to make the target flinch. Evolves Poliwhirl into Politoed and Slowpoke into Slowking when traded.", "tags":["evolution"]}, "kommoniumz":{"text":"Kommo-o with Clanging Scales can use Clangorous Soulblaze once per battle.", "tags":[]}, "laggingtail":{"text":"Holder moves last in its priority bracket.", "tags":[]}, "lansatberry":{"text":"Holder gains the Focus Energy effect when at 1/4 max HP or less. Single use.", "tags":["low HP pinch stat boost"], "threshold":0.25}, "latiasite":{"text":"If held by a Latias, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "latiosite":{"text":"If held by a Latios, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "laxincense":{"text":"The accuracy of attacks against the holder is 0.9x.", "tags":[]}, "leafstone":{"text":"Evolves Gloom into Vileplume, Weepinbell into Victreebel, Exeggcute into Exeggutor or Alolan Exeggutor, Eevee into Leafeon, Nuzleaf into Shiftry, and Pansage into Simisage when used.", "tags":["evolution"]}, "leek":{"text":"If held by a Farfetch’d or Sirfetch’d, its critical hit ratio is raised by 2 stages.", "tags":[]}, "leftovers":{"text":"At the end of every turn, holder restores 1/16 of its max HP.", "tags":["healing recovery"]}, "leppaberry":{"text":"Restores 10 PP to the first of the holder's moves to reach 0 PP. Single use.", "tags":[]}, "levelball":{"text":"A Poke Ball for catching Pokemon that are a lower level than your own.", "tags":[]}, "liechiberry":{"text":"Raises holder's Attack by 1 stage when at 1/4 max HP or less. Single use.", "tags":["low HP pinch stat boost", "offense offensive boost"], "threshold":0.25}, "lifeorb":{"text":"Holder's attacks do 1.3x damage, and it loses 1/10 its max HP after the attack.", "tags":[]}, "lightball":{"text":"Pikachu forms: Atk/SpA 2x, Def/SpD 1.5x; heals 1/16 each turn.", "tags":["healing recovery", "offense offensive boost", "defense defensive boost"]}, "lightclay":{"text":"Holder's use of Aurora Veil, Light Screen, or Reflect lasts 8 turns instead of 5.", "tags":[]}, "loadeddice":{"text":"The holder's multi-hit moves hit 5 or 6 times when possible. If the first hit is successful, the holder's use of Triple Kick or Triple Axel hits 3 times.", "tags":[]}, "lopunnite":{"text":"If held by a Lopunny, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "loveball":{"text":"Poke Ball for catching Pokemon that are the opposite gender of your Pokemon.", "tags":[]}, "lovesweet":{"text":"Evolves Milcery into Alcremie when held and spun around.", "tags":["evolution"]}, "lucarionite":{"text":"If held by a Lucario, this item allows it to Mega Evolve into Mega Lucario in battle.", "tags":["mega evolution transformation", "evolution"]}, "lucarionitez":{"text":"If held by a Lucario, this item allows it to Mega Evolve into Mega Lucario Z in battle.", "tags":["mega evolution transformation", "evolution"]}, "luckypunch":{"text":"If held by a Chansey, its critical hit ratio is raised by 2 stages.", "tags":[]}, "lumberry":{"text":"Holder cures itself if it has a non-volatile status or is confused. Single use.", "tags":["status cure"]}, "luminousmoss":{"text":"Raises holder's Sp. Def by 1 stage if hit by a Water-type attack. Single use.", "tags":[]}, "lunaliumz":{"text":"Lunala or Dawn Wings Necrozma with Moongeist Beam can use Menacing Moonraze Maelstrom once per battle.", "tags":[]}, "lureball":{"text":"A Poke Ball for catching Pokemon hooked by a Rod when fishing.", "tags":[]}, "lustrousglobe":{"text":"If held by a Palkia, its Water- and Dragon-type attacks have 1.2x power.", "tags":[]}, "lustrousorb":{"text":"If held by a Palkia, its Water- and Dragon-type attacks have 1.2x power.", "tags":[]}, "luxuryball":{"text":"A comfortable Poke Ball that makes a caught wild Pokemon quickly grow friendly.", "tags":[]}, "lycaniumz":{"text":"Any Lycanroc form with Stone Edge can use Splintered Stormshards once per battle.", "tags":[]}, "machobrace":{"text":"Holder's Speed is halved. The Klutz Ability does not ignore this effect.", "tags":[]}, "magicalseed":{"text":"If the terrain is a Magical Terrain, boosts the holder in a unique way. Single use.", "tags":["offense offensive boost"]}, "magearnite":{"text":"If held by a Magearna, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "magmarizer":{"text":"Evolves Magmar into Magmortar when traded.", "tags":["evolution"]}, "magnet":{"text":"Holder's Electric-type attacks have 1.2x power.", "tags":[]}, "magoberry":{"text":"Restores 1/2 max HP at 1/4 max HP or less; confuses if -Spe Nature. Single use.", "tags":["healing recovery", "low HP pinch healing"], "threshold":0.25}, "mail":{"text":"Cannot be given to or taken from a Pokemon, except by Covet/Knock Off/Thief.", "tags":[]}, "malamarite":{"text":"If held by a Malamar, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "maliciousarmor":{"text":"Evolves Charcadet into Ceruledge when used.", "tags":["evolution"]}, "manectite":{"text":"If held by a Manectric, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "marangaberry":{"text":"Raises holder's Sp. Def by 1 stage after it is hit by a special attack. Single use.", "tags":["offense offensive boost"]}, "marshadiumz":{"text":"Marshadow with Spectral Thief can use Soul-Stealing 7-Star Strike once per battle.", "tags":[]}, "masterball":{"text":"The best Ball with the ultimate performance. It will catch any wild Pokemon.", "tags":[]}, "masterpieceteacup":{"text":"Evolves Poltchageist-Artisan into Sinistcha-Masterpiece when used.", "tags":["evolution"]}, "mawilite":{"text":"If held by a Mawile, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "meadowplate":{"text":"Holder's Grass-type attacks have 1.2x power. Judgment is Grass type.", "tags":[]}, "medichamite":{"text":"If held by a Medicham, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "meganiumite":{"text":"If held by a Meganium, this item allows it to Mega Evolve into either Meganium-Mega or Meganium-Mega-Y in battle.", "tags":["mega evolution transformation", "evolution"]}, "mentalherb":{"text":"Cures holder of Attract, Disable, Encore, Heal Block, Taunt, Torment. Single use.", "tags":[]}, "meowsticite":{"text":"If held by a Meowstic, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "reuniclusite":{"text":"Allows Reuniclus to Mega Evolve into Mega Reuniclus in battle.", "tags":["mega evolution transformation", "evolution"]}, "metagrossite":{"text":"If held by a Metagross, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "metalalloy":{"text":"Evolves Duraludon into Archaludon when used.", "tags":["evolution"]}, "metalcoat":{"text":"Holder's Steel-type attacks have 1.2x power. Evolves Onix into Steelix and Scyther into Scizor when traded.", "tags":["evolution"]}, "metalpowder":{"text":"If held by a Ditto that hasn't Transformed, its Defense is doubled.", "tags":["defense defensive boost"]}, "metronome":{"text":"Damage of moves used on consecutive turns is increased. Max 2x after 5 turns.", "tags":[]}, "mewniumz":{"text":"Mew with Psychic can use Genesis Supernova once per battle.", "tags":[]}, "mewtwonitex":{"text":"If held by a Mewtwo, this item allows it to Mega Evolve into Mega Mewtwo X in battle.", "tags":["mega evolution transformation", "evolution"]}, "mewtwonitey":{"text":"If held by a Mewtwo, this item allows it to Mega Evolve into Mega Mewtwo Y in battle.", "tags":["mega evolution transformation", "evolution"]}, "micleberry":{"text":"Holder's next move has 1.2x accuracy when at 1/4 max HP or less. Single use.", "tags":[]}, "mimikiumz":{"text":"Mimikyu with Play Rough can use Let's Snuggle Forever once per battle.", "tags":[]}, "mindplate":{"text":"Holder's Psychic-type attacks have 1.2x power. Judgment is Psychic type.", "tags":[]}, "miracleseed":{"text":"Holder's Grass-type attacks have 1.2x power.", "tags":[]}, "mirrorherb":{"text":"When an opposing Pokemon raises a stat stage, the holder copies it. Single use.", "tags":["offense offensive boost"]}, "moonball":{"text":"A Poke Ball for catching Pokemon that evolve using the Moon Stone.", "tags":["evolution"]}, "moonstone":{"text":"Evolves Nidorina into Nidoqueen, Nidorino into Nidoking, Clefairy into Clefable, Jigglypuff into Wigglytuff, Skitty into Delcatty, and Munna into Musharna when used.", "tags":["evolution"]}, "muscleband":{"text":"Holder's physical attacks have 1.1x power.", "tags":[]}, "mysticwater":{"text":"Holder's Water-type attacks have 1.2x power.", "tags":[]}, "nestball":{"text":"A Poke Ball that works especially well on weaker Pokemon in the wild.", "tags":[]}, "netball":{"text":"A Poke Ball that works especially well on Water- and Bug-type Pokemon.", "tags":[]}, "nevermeltice":{"text":"Holder's Ice-type attacks have 1.2x power.", "tags":[]}, "normalgem":{"text":"Holder's first successful Normal-type attack will have 1.3x power. Single use.", "tags":[]}, "normaliumz":{"text":"Once per battle, converts a damaging Normal-type move into Breakneck Blitz, or gives a Normal-type status move its Z-effect.", "tags":[]}, "occaberry":{"text":"Halves damage taken from a supereffective Fire-type attack. Single use.", "tags":["resistance resist berry defensive"]}, "oddincense":{"text":"Holder's Psychic-type attacks have 1.2x power.", "tags":[]}, "oldamber":{"text":"Can be revived into Aerodactyl.", "tags":[]}, "oranberry":{"text":"Restores 10 HP when at 1/2 max HP or less. Single use.", "tags":["healing recovery", "low HP pinch healing"], "threshold":0.5}, "ovalstone":{"text":"Evolves Happiny into Chansey when held and leveled up during the day.", "tags":["evolution"]}, "parkball":{"text":"A special Poke Ball for the Pal Park.", "tags":[]}, "passhoberry":{"text":"Halves damage taken from a supereffective Water-type attack. Single use.", "tags":["resistance resist berry defensive"]}, "payapaberry":{"text":"Halves damage taken from a supereffective Psychic-type attack. Single use.", "tags":["resistance resist berry defensive"]}, "pechaberry":{"text":"Holder is cured if it is poisoned. Single use.", "tags":["status cure"]}, "persimberry":{"text":"Holder is cured if it is confused. Single use.", "tags":["status cure"]}, "petayaberry":{"text":"Raises holder's Sp. Atk by 1 stage when at 1/4 max HP or less. Single use.", "tags":["low HP pinch stat boost", "offense offensive boost"], "threshold":0.25}, "pidgeotite":{"text":"If held by a Pidgeot, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "pikaniumz":{"text":"Pikachu with Volt Tackle can use Catastropika once per battle.", "tags":["defense defensive boost"]}, "pikashuniumz":{"text":"Cap Pikachu with Thunderbolt can use 10,000,000 Volt Thunderbolt once per battle.", "tags":[]}, "pinsirite":{"text":"If held by a Pinsir, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "pixieplate":{"text":"Holder's Fairy-type attacks have 1.2x power. Judgment is Fairy type.", "tags":[]}, "plumefossil":{"text":"Can be revived into Archen.", "tags":[]}, "poisonbarb":{"text":"Holder's Poison-type attacks have 1.2x power.", "tags":[]}, "poisongem":{"text":"Holder's first successful Poison-type attack will have 1.3x power. Single use.", "tags":[]}, "poisoniumz":{"text":"Once per battle, converts a damaging Poison-type move into Acid Downpour, or gives a Poison-type status move its Z-effect.", "tags":[]}, "poisonmemory":{"text":"Holder's Multi-Attack is Poison type. RKS System gives Regenerator and Corrosion.", "tags":[]}, "pokeball":{"text":"A device for catching wild Pokemon. It is designed as a capsule system.", "tags":[]}, "poweranklet":{"text":"Holder's Speed is halved. The Klutz Ability does not ignore this effect.", "tags":[]}, "powerband":{"text":"Holder's Speed is halved. The Klutz Ability does not ignore this effect.", "tags":[]}, "powerbelt":{"text":"Holder's Speed is halved. The Klutz Ability does not ignore this effect.", "tags":[]}, "powerbracer":{"text":"Holder's Speed is halved. The Klutz Ability does not ignore this effect.", "tags":[]}, "powerherb":{"text":"Holder's two-turn moves complete in one turn (except Sky Drop). Single use.", "tags":[]}, "powerlens":{"text":"Holder's Speed is halved. The Klutz Ability does not ignore this effect.", "tags":[]}, "powerweight":{"text":"Holder's Speed is halved. The Klutz Ability does not ignore this effect.", "tags":[]}, "premierball":{"text":"A rare Poke Ball that has been crafted to commemorate an event.", "tags":[]}, "prettyfeather":{"text":"Though this feather is beautiful, it's just a regular feather and has no effect.", "tags":[]}, "primariumz":{"text":"Primarina with Sparkling Aria can use Oceanic Operetta once per battle.", "tags":[]}, "prismscale":{"text":"Evolves Feebas into Milotic when traded.", "tags":["evolution"]}, "protectivepads":{"text":"Holder's moves are protected from adverse contact effects, except Pickpocket.", "tags":[]}, "protector":{"text":"Evolves Rhydon into Rhyperior when traded.", "tags":["evolution"]}, "psychicgem":{"text":"Holder's first successful Psychic-type attack will have 1.3x power. Single use.", "tags":[]}, "psychicmemory":{"text":"Holder's Multi-Attack is Psychic type. RKS System gives Magic Bounce and Magic Guard.", "tags":[]}, "psychiumz":{"text":"Once per battle, converts a damaging Psychic-type move into Shattered Psyche, or gives a Psychic-type status move its Z-effect.", "tags":[]}, "punchingglove":{"text":"Holder's punch-based attacks have 1.4x power and do not make contact.", "tags":[]}, "pyroarite":{"text":"If held by a Pyroar, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "quickball":{"text":"A Poke Ball that provides a better catch rate at the start of a wild encounter.", "tags":[]}, "quickclaw":{"text":"Each turn, holder has a 20% chance to move first in its priority bracket.", "tags":[]}, "quickpowder":{"text":"If held by a Ditto that hasn't Transformed, its Speed is doubled.", "tags":[]}, "raichunitex":{"text":"If held by a Raichu, this item allows it to Mega Evolve into Mega Raichu X in battle.", "tags":["mega evolution transformation", "evolution"]}, "raichunitey":{"text":"If held by a Raichu, this item allows it to Mega Evolve into Mega Raichu Y in battle.", "tags":["mega evolution transformation", "evolution"]}, "rarebone":{"text":"No competitive use other than when used with Fling.", "tags":[]}, "rawstberry":{"text":"Holder is cured if it is burned. Single use.", "tags":["status cure"]}, "razorclaw":{"text":"Holder's critical hit ratio is raised by 1 stage. Evolves Sneasel into Weavile when held and leveled up during the night.", "tags":["evolution"]}, "razorfang":{"text":"Holder's attacks without a chance to make the target flinch gain a 10% chance to make the target flinch. Evolves Gligar into Gliscor when held and leveled up during the night.", "tags":["evolution"]}, "reapercloth":{"text":"Evolves Dusclops into Dusknoir when traded.", "tags":["evolution"]}, "redcard":{"text":"If holder survives a hit, attacker is forced to switch to a random ally. Single use.", "tags":[]}, "redorb":{"text":"If held by a Groudon, this item triggers its Primal Reversion in battle.", "tags":[]}, "repeatball":{"text":"A Poke Ball that works well on Pokemon species that were previously caught.", "tags":[]}, "ribbonsweet":{"text":"Evolves Milcery into Alcremie when held and spun around.", "tags":["evolution"]}, "rindoberry":{"text":"Halves damage taken from a supereffective Grass-type attack. Single use.", "tags":["resistance resist berry defensive"]}, "ringtarget":{"text":"The holder's type immunities granted solely by its typing are negated.", "tags":[]}, "rockgem":{"text":"Holder's first successful Rock-type attack will have 1.3x power. Single use.", "tags":[]}, "rockincense":{"text":"Holder's Rock-type attacks have 1.2x power.", "tags":[]}, "rockiumz":{"text":"Once per battle, converts a damaging Rock-type move into Continental Crush, or gives a Rock-type status move its Z-effect.", "tags":[]}, "rockmemory":{"text":"Holder's Multi-Attack is Rock type. RKS System gives Purifying Salt and Solid Rock.", "tags":[]}, "rockyhelmet":{"text":"If holder is hit by a contact move, the attacker loses 1/6 of its max HP.", "tags":[]}, "roomservice":{"text":"If Trick Room is active, the holder's Speed is lowered by 1 stage. Single use.", "tags":[]}, "rootfossil":{"text":"Can be revived into Lileep.", "tags":[]}, "roseincense":{"text":"Holder's Grass-type attacks have 1.2x power.", "tags":[]}, "roseliberry":{"text":"Halves damage taken from a supereffective Fairy-type attack. Single use.", "tags":["resistance resist berry defensive"]}, "roseradite":{"text":"", "tags":["mega evolution transformation"]}, "rowapberry":{"text":"If holder is hit by a special move, attacker loses 1/8 of its max HP. Single use.", "tags":[]}, "rustedshield":{"text":"If held by a Zamazenta, this item changes its forme to Crowned Shield.", "tags":[]}, "rustedsword":{"text":"If held by a Zacian, this item changes its forme to Crowned Sword.", "tags":[]}, "sablenite":{"text":"If held by a Sableye, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "sachet":{"text":"Evolves Spritzee into Aromatisse when traded.", "tags":["evolution"]}, "safariball":{"text":"A special Poke Ball that is used only in the Safari Zone and Great Marsh.", "tags":[]}, "safetygoggles":{"text":"Holder is immune to powder moves and damage from Sandstorm or Hail.", "tags":[]}, "sailfossil":{"text":"Can be revived into Amaura.", "tags":[]}, "salacberry":{"text":"Raises holder's Speed by 1 stage when at 1/4 max HP or less. Single use.", "tags":["low HP pinch stat boost", "offense offensive boost"], "threshold":0.25}, "salamencite":{"text":"If held by a Salamence, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "sceptilite":{"text":"If held by a Sceptile, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "scizorite":{"text":"If held by a Scizor, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "scolipite":{"text":"If held by a Scolipede, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "scopelens":{"text":"Holder's critical hit ratio is raised by 1 stage.", "tags":[]}, "scovillainite":{"text":"If held by a Scovillain, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "scraftinite":{"text":"If held by a Scrafty, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "seaincense":{"text":"Holder's Water-type attacks have 1.2x power.", "tags":[]}, "sharpbeak":{"text":"Holder's Flying-type attacks have 1.2x power.", "tags":[]}, "bronzongite":{"text":"Allows Bronzong to Mega Evolve into Mega Bronzong.", "tags":["mega evolution transformation", "evolution"]}, "noivernite":{"text":"Allows Noivern to Mega Evolve into Mega Noivern.", "tags":["mega evolution transformation", "evolution"]}, "weavilite":{"text":"Allows Weavile to Mega Evolve into Mega Weavile.", "tags":["mega evolution transformation", "evolution"]}, "dusknoirite":{"text":"Allows Dusknoir to Mega Evolve into Mega Dusknoir.", "tags":["mega evolution transformation", "evolution"]}, "noctowlite":{"text":"Allows Noctowl to Mega Evolve into Mega Noctowl.", "tags":["mega evolution transformation", "evolution"]}, "luxranite":{"text":"Allows Luxray to Mega Evolve into Mega Luxray.", "tags":["mega evolution transformation", "evolution"]}, "breloomite":{"text":"Allows Breloom and Breloom-Rejuv to Mega Evolve into Mega Breloom.", "tags":["mega evolution transformation", "evolution"]}, "sharpedonite":{"text":"If held by a Sharpedo, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "shedshell":{"text":"Holder cannot be prevented from choosing to switch out by any effect.", "tags":[]}, "shellbell":{"text":"After an attack, holder gains 1/8 of the damage in HP dealt to other Pokemon.", "tags":["healing recovery"]}, "shinystone":{"text":"Evolves Togetic into Togekiss, Roselia into Roserade, Minccino into Cinccino, and Floette into Florges when used.", "tags":["mega evolution transformation", "evolution"]}, "shockdrive":{"text":"Holder's Techno Blast is Electric type.", "tags":[]}, "shucaberry":{"text":"Halves damage taken from a supereffective Ground-type attack. Single use.", "tags":["resistance resist berry defensive"]}, "silkscarf":{"text":"Holder's Normal-type attacks have 1.2x power.", "tags":[]}, "silverpowder":{"text":"Holder's Bug-type attacks have 1.2x power.", "tags":[]}, "sitrusberry":{"text":"Restores 1/4 max HP when at 1/2 max HP or less. Single use.", "tags":["healing recovery", "low HP pinch healing"], "threshold":0.5}, "skarmorite":{"text":"If held by a Skarmory, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "skullfossil":{"text":"Can be revived into Cranidos.", "tags":[]}, "skyplate":{"text":"Holder's Flying-type attacks have 1.2x power. Judgment is Flying type.", "tags":[]}, "slowbronite":{"text":"If held by a Slowbro, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "smoothrock":{"text":"Holder's use of Sandstorm lasts 8 turns instead of 5.", "tags":[]}, "snorliumz":{"text":"Snorlax with Giga Impact can use Pulverizing Pancake once per battle.", "tags":[]}, "snowball":{"text":"Raises holder's Attack by 1 if hit by an Ice-type attack. Single use.", "tags":[]}, "softsand":{"text":"Holder's Ground-type attacks have 1.2x power.", "tags":[]}, "solganiumz":{"text":"Solgaleo or Dusk Mane Necrozma with Sunsteel Strike can use Searing Sunraze Smash once per battle.", "tags":[]}, "souldew":{"text":"If held by a Latias/Latios, its Dragon- and Psychic-type moves have 1.2x power.", "tags":[]}, "spelltag":{"text":"Holder's Ghost-type attacks have 1.2x power.", "tags":[]}, "splashplate":{"text":"Holder's Water-type attacks have 1.2x power. Judgment is Water type.", "tags":[]}, "spookyplate":{"text":"Holder's Ghost-type attacks have 1.2x power. Judgment is Ghost type.", "tags":[]}, "sportball":{"text":"A special Poke Ball for the Bug-Catching Contest.", "tags":[]}, "staraptite":{"text":"If held by a Staraptor, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "starfberry":{"text":"Raises a random stat by 2 when at 1/4 max HP or less (not acc/eva). Single use.", "tags":["low HP pinch stat boost", "offense offensive boost"], "threshold":0.25}, "starminite":{"text":"If held by a Starmie, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "amuletcoin":{"text":"In Dragon's Den, the holder cannot be afflicted with a status condition.", "tags":[]}, "steelgem":{"text":"Holder's first successful Steel-type attack will have 1.3x power. Single use.", "tags":[]}, "steeliumz":{"text":"Once per battle, converts a damaging Steel-type move into Corkscrew Crash, or gives a Steel-type status move its Z-effect.", "tags":[]}, "steelixite":{"text":"If held by a Steelix, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "steelmemory":{"text":"Holder's Multi-Attack is Steel type. RKS System gives Sworn Duty and Mirror Armor.", "tags":[]}, "stick":{"text":"If held by a Farfetch’d, its critical hit ratio is raised by 2 stages.", "tags":[]}, "stickybarb":{"text":"Each turn, holder loses 1/8 max HP. An attacker making contact can receive it.", "tags":[]}, "stoneplate":{"text":"Holder's Rock-type attacks have 1.2x power. Judgment is Rock type.", "tags":[]}, "strangeball":{"text":"Placeholder if caught in Poke Ball not in current game.", "tags":[]}, "strawberrysweet":{"text":"Evolves Milcery into Alcremie when held and spun around.", "tags":["evolution"]}, "sunstone":{"text":"Evolves Gloom into Bellossom, Sunkern into Sunflora, Cottonee into Whimsicott, Petilil into Lilligant, and Helioptile into Heliolisk when used.", "tags":["evolution"]}, "swampertite":{"text":"If held by a Swampert, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "sweetapple":{"text":"Evolves Applin into Appletun when used.", "tags":["evolution"]}, "syntheticseed":{"text":"If the terrain is a Synthetic Terrain, boosts the holder in a unique way. Single use.", "tags":["offense offensive boost"]}, "syrupyapple":{"text":"Evolves Applin into Dipplin when used.", "tags":["evolution"]}, "tangaberry":{"text":"Halves damage taken from a supereffective Bug-type attack. Single use.", "tags":["resistance resist berry defensive"]}, "tapuniumz":{"text":"A Tapu with Nature's Madness can use Guardian of Alola once per battle.", "tags":[]}, "tartapple":{"text":"Evolves Applin into Flapple when used.", "tags":["evolution"]}, "tatsugirinite":{"text":"If held by a Tatsugiri, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "telluricseed":{"text":"If the terrain is a Telluric Terrain, boosts the holder in a unique way. Single use.", "tags":["offense offensive boost"]}, "thickclub":{"text":"If held by a Cubone or a Marowak, its Attack is doubled.", "tags":["offense offensive boost"]}, "throatspray":{"text":"Raises holder's Special Attack by 1 stage after it uses a sound move. Single use.", "tags":[]}, "thunderstone":{"text":"Evolves Pikachu into Raichu or Alolan Raichu, Eevee into Jolteon, Eelektrik into Eelektross, and Charjabug into Vikavolt when used.", "tags":["mega evolution transformation", "evolution"]}, "timerball":{"text":"A Poke Ball that becomes better the more turns there are in a battle.", "tags":[]}, "toxicorb":{"text":"At the end of every turn, this item attempts to badly poison the holder.", "tags":[]}, "toxicplate":{"text":"Holder's Poison-type attacks have 1.2x power. Judgment is Poison type.", "tags":[]}, "tr00":{"text":"Teaches certain Pokemon the move Swords Dance. One use.", "tags":[]}, "tr01":{"text":"Teaches certain Pokemon the move Body Slam. One use.", "tags":[]}, "tr02":{"text":"Teaches certain Pokemon the move Flamethrower. One use.", "tags":[]}, "tr03":{"text":"Teaches certain Pokemon the move Hydro Pump. One use.", "tags":[]}, "tr04":{"text":"Teaches certain Pokemon the move Surf. One use.", "tags":[]}, "tr05":{"text":"Teaches certain Pokemon the move Ice Beam. One use.", "tags":[]}, "tr06":{"text":"Teaches certain Pokemon the move Blizzard. One use.", "tags":[]}, "tr07":{"text":"Teaches certain Pokemon the move Low Kick. One use.", "tags":[]}, "tr08":{"text":"Teaches certain Pokemon the move Thunderbolt. One use.", "tags":[]}, "tr09":{"text":"Teaches certain Pokemon the move Thunder. One use.", "tags":[]}, "tr10":{"text":"Teaches certain Pokemon the move Earthquake. One use.", "tags":[]}, "tr11":{"text":"Teaches certain Pokemon the move Psychic. One use.", "tags":[]}, "tr12":{"text":"Teaches certain Pokemon the move Agility. One use.", "tags":[]}, "tr13":{"text":"Teaches certain Pokemon the move Focus Energy. One use.", "tags":[]}, "tr14":{"text":"Teaches certain Pokemon the move Metronome. One use.", "tags":[]}, "tr15":{"text":"Teaches certain Pokemon the move Fire Blast. One use.", "tags":[]}, "tr16":{"text":"Teaches certain Pokemon the move Waterfall. One use.", "tags":[]}, "tr17":{"text":"Teaches certain Pokemon the move Amnesia. One use.", "tags":[]}, "tr18":{"text":"Teaches certain Pokemon the move Leech Life. One use.", "tags":[]}, "tr19":{"text":"Teaches certain Pokemon the move Tri Attack. One use.", "tags":[]}, "tr20":{"text":"Teaches certain Pokemon the move Substitute. One use.", "tags":[]}, "tr21":{"text":"Teaches certain Pokemon the move Reversal. One use.", "tags":[]}, "tr22":{"text":"Teaches certain Pokemon the move Sludge Bomb. One use.", "tags":[]}, "tr23":{"text":"Teaches certain Pokemon the move Spikes. One use.", "tags":[]}, "tr24":{"text":"Teaches certain Pokemon the move Outrage. One use.", "tags":[]}, "tr25":{"text":"Teaches certain Pokemon the move Psyshock. One use.", "tags":[]}, "tr26":{"text":"Teaches certain Pokemon the move Endure. One use.", "tags":[]}, "tr27":{"text":"Teaches certain Pokemon the move Sleep Talk. One use.", "tags":[]}, "tr28":{"text":"Teaches certain Pokemon the move Megahorn. One use.", "tags":[]}, "tr29":{"text":"Teaches certain Pokemon the move Baton Pass. One use.", "tags":[]}, "tr30":{"text":"Teaches certain Pokemon the move Encore. One use.", "tags":[]}, "tr31":{"text":"Teaches certain Pokemon the move Iron Tail. One use.", "tags":[]}, "tr32":{"text":"Teaches certain Pokemon the move Crunch. One use.", "tags":[]}, "tr33":{"text":"Teaches certain Pokemon the move Shadow Ball. One use.", "tags":[]}, "tr34":{"text":"Teaches certain Pokemon the move Future Sight. One use.", "tags":[]}, "tr35":{"text":"Teaches certain Pokemon the move Uproar. One use.", "tags":[]}, "tr36":{"text":"Teaches certain Pokemon the move Heat Wave. One use.", "tags":[]}, "tr37":{"text":"Teaches certain Pokemon the move Taunt. One use.", "tags":[]}, "tr38":{"text":"Teaches certain Pokemon the move Trick. One use.", "tags":[]}, "tr39":{"text":"Teaches certain Pokemon the move Superpower. One use.", "tags":[]}, "tr40":{"text":"Teaches certain Pokemon the move Skill Swap. One use.", "tags":[]}, "tr41":{"text":"Teaches certain Pokemon the move Blaze Kick. One use.", "tags":[]}, "tr42":{"text":"Teaches certain Pokemon the move Hyper Voice. One use.", "tags":[]}, "tr43":{"text":"Teaches certain Pokemon the move Overheat. One use.", "tags":[]}, "tr44":{"text":"Teaches certain Pokemon the move Cosmic Power. One use.", "tags":[]}, "tr45":{"text":"Teaches certain Pokemon the move Muddy Water. One use.", "tags":[]}, "tr46":{"text":"Teaches certain Pokemon the move Iron Defense. One use.", "tags":[]}, "tr47":{"text":"Teaches certain Pokemon the move Dragon Claw. One use.", "tags":[]}, "tr48":{"text":"Teaches certain Pokemon the move Bulk Up. One use.", "tags":[]}, "tr49":{"text":"Teaches certain Pokemon the move Calm Mind. One use.", "tags":[]}, "tr50":{"text":"Teaches certain Pokemon the move Leaf Blade. One use.", "tags":[]}, "tr51":{"text":"Teaches certain Pokemon the move Dragon Dance. One use.", "tags":[]}, "tr52":{"text":"Teaches certain Pokemon the move Gyro Ball. One use.", "tags":[]}, "tr53":{"text":"Teaches certain Pokemon the move Close Combat. One use.", "tags":[]}, "tr54":{"text":"Teaches certain Pokemon the move Toxic Spikes. One use.", "tags":[]}, "tr55":{"text":"Teaches certain Pokemon the move Flare Blitz. One use.", "tags":[]}, "tr56":{"text":"Teaches certain Pokemon the move Aura Sphere. One use.", "tags":[]}, "tr57":{"text":"Teaches certain Pokemon the move Poison Jab. One use.", "tags":[]}, "tr58":{"text":"Teaches certain Pokemon the move Dark Pulse. One use.", "tags":[]}, "tr59":{"text":"Teaches certain Pokemon the move Seed Bomb. One use.", "tags":[]}, "tr60":{"text":"Teaches certain Pokemon the move X-Scissor. One use.", "tags":[]}, "tr61":{"text":"Teaches certain Pokemon the move Bug Buzz. One use.", "tags":[]}, "tr62":{"text":"Teaches certain Pokemon the move Dragon Pulse. One use.", "tags":[]}, "tr63":{"text":"Teaches certain Pokemon the move Power Gem. One use.", "tags":[]}, "tr64":{"text":"Teaches certain Pokemon the move Focus Blast. One use.", "tags":[]}, "tr65":{"text":"Teaches certain Pokemon the move Energy Ball. One use.", "tags":[]}, "tr66":{"text":"Teaches certain Pokemon the move Brave Bird. One use.", "tags":[]}, "tr67":{"text":"Teaches certain Pokemon the move Earth Power. One use.", "tags":[]}, "tr68":{"text":"Teaches certain Pokemon the move Nasty Plot. One use.", "tags":[]}, "tr69":{"text":"Teaches certain Pokemon the move Zen Headbutt. One use.", "tags":[]}, "tr70":{"text":"Teaches certain Pokemon the move Flash Cannon. One use.", "tags":[]}, "tr71":{"text":"Teaches certain Pokemon the move Leaf Storm. One use.", "tags":[]}, "tr72":{"text":"Teaches certain Pokemon the move Power Whip. One use.", "tags":[]}, "tr73":{"text":"Teaches certain Pokemon the move Gunk Shot. One use.", "tags":[]}, "tr74":{"text":"Teaches certain Pokemon the move Iron Head. One use.", "tags":[]}, "tr75":{"text":"Teaches certain Pokemon the move Stone Edge. One use.", "tags":[]}, "tr76":{"text":"Teaches certain Pokemon the move Stealth Rock. One use.", "tags":[]}, "tr77":{"text":"Teaches certain Pokemon the move Grass Knot. One use.", "tags":[]}, "tr78":{"text":"Teaches certain Pokemon the move Sludge Wave. One use.", "tags":[]}, "tr79":{"text":"Teaches certain Pokemon the move Heavy Slam. One use.", "tags":[]}, "tr80":{"text":"Teaches certain Pokemon the move Electro Ball. One use.", "tags":[]}, "tr81":{"text":"Teaches certain Pokemon the move Foul Play. One use.", "tags":[]}, "tr82":{"text":"Teaches certain Pokemon the move Stored Power. One use.", "tags":[]}, "tr83":{"text":"Teaches certain Pokemon the move Ally Switch. One use.", "tags":[]}, "tr84":{"text":"Teaches certain Pokemon the move Scald. One use.", "tags":[]}, "tr85":{"text":"Teaches certain Pokemon the move Work Up. One use.", "tags":[]}, "tr86":{"text":"Teaches certain Pokemon the move Wild Charge. One use.", "tags":[]}, "tr87":{"text":"Teaches certain Pokemon the move Drill Run. One use.", "tags":[]}, "tr88":{"text":"Teaches certain Pokemon the move Heat Crash. One use.", "tags":[]}, "tr89":{"text":"Teaches certain Pokemon the move Hurricane. One use.", "tags":[]}, "tr90":{"text":"Teaches certain Pokemon the move Play Rough. One use.", "tags":[]}, "tr91":{"text":"Teaches certain Pokemon the move Venom Drench. One use.", "tags":[]}, "tr92":{"text":"Teaches certain Pokemon the move Dazzling Gleam. One use.", "tags":[]}, "tr93":{"text":"Teaches certain Pokemon the move Darkest Lariat. One use.", "tags":[]}, "tr94":{"text":"Teaches certain Pokemon the move High Horsepower. One use.", "tags":[]}, "tr95":{"text":"Teaches certain Pokemon the move Throat Chop. One use.", "tags":[]}, "tr96":{"text":"Teaches certain Pokemon the move Pollen Puff. One use.", "tags":[]}, "tr97":{"text":"Teaches certain Pokemon the move Psychic Fangs. One use.", "tags":[]}, "tr98":{"text":"Teaches certain Pokemon the move Liquidation. One use.", "tags":[]}, "tr99":{"text":"Teaches certain Pokemon the move Body Press. One use.", "tags":[]}, "twistedspoon":{"text":"Holder's Psychic-type attacks have 1.2x power.", "tags":[]}, "tyranitarite":{"text":"If held by a Tyranitar, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "typhlosionite":{"text":"Allows Typhlosion and Typhlosion-Hisui to Mega Evolve.", "tags":["mega evolution transformation", "evolution"]}, "ultraball":{"text":"An ultra-performance Ball that provides a higher catch rate than a Great Ball.", "tags":[]}, "ultranecroziumz":{"text":"Dusk Mane or Dawn Wings Necrozma can Ultra Burst; with Photon Geyser, it can use Light That Burns the Sky once per battle.", "tags":[]}, "unremarkableteacup":{"text":"Evolves Poltchageist into Sinistcha when used.", "tags":["evolution"]}, "upgrade":{"text":"Evolves Porygon into Porygon2 when traded.", "tags":["evolution"]}, "utilityumbrella":{"text":"The holder ignores rain- and sun-based effects, including those of its Ability unless it is Orichalcum Pulse or Protosynthesis. Damage and accuracy calculations from attacks used by the holder are affected by rain and sun, but not attacks used against the holder.", "tags":[]}, "venusaurite":{"text":"If held by a Venusaur, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "victreebelite":{"text":"If held by a Victreebel, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "wacanberry":{"text":"Halves damage taken from a supereffective Electric-type attack. Single use.", "tags":["resistance resist berry defensive"]}, "watergem":{"text":"Holder's first successful Water-type attack will have 1.3x power. Single use.", "tags":[]}, "wateriumz":{"text":"Once per battle, converts a damaging Water-type move into Hydro Vortex, or gives a Water-type status move its Z-effect.", "tags":[]}, "watermemory":{"text":"Holder's Multi-Attack is Water type. RKS System gives Swift Swim and Water Veil.", "tags":[]}, "waterstone":{"text":"Evolves Poliwhirl into Poliwrath, Shellder into Cloyster, Staryu into Starmie, Eevee into Vaporeon, Lombre into Ludicolo, and Panpour into Simipour when used.", "tags":["evolution"]}, "waveincense":{"text":"Holder's Water-type attacks have 1.2x power.", "tags":[]}, "weaknesspolicy":{"text":"If holder is hit super effectively, raises Attack, Sp. Atk by 2 stages. Single use.", "tags":[]}, "wellspringmask":{"text":"Ogerpon-Wellspring: 1.2x power attacks; Terastallize to gain Embody Aspect.", "tags":[]}, "whippeddream":{"text":"Evolves Swirlix into Slurpuff when traded.", "tags":["evolution"]}, "whiteherb":{"text":"Restores all lowered stat stages to 0 when one is less than 0. Single use.", "tags":[]}, "widelens":{"text":"The accuracy of attacks by the holder is 1.1x.", "tags":[]}, "wikiberry":{"text":"Restores 1/2 max HP at 1/4 max HP or less; confuses if -SpA Nature. Single use.", "tags":["healing recovery", "low HP pinch healing"], "threshold":0.25}, "wiseglasses":{"text":"Holder's special attacks have 1.1x power.", "tags":[]}, "yacheberry":{"text":"Halves damage taken from a supereffective Ice-type attack. Single use.", "tags":["resistance resist berry defensive"]}, "zapplate":{"text":"Holder's Electric-type attacks have 1.2x power. Judgment is Electric type.", "tags":[]}, "zeraorite":{"text":"If held by a Zeraora, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "zoomlens":{"text":"The accuracy of attacks by the holder is 1.2x if it moves after its target.", "tags":[]}, "zygardite":{"text":"If held by a Zygarde in Complete Forme, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "pinkbow":{"text":"(Gen 2) Holder's Normal-type attacks have 1.1x power.", "tags":[]}, "polkadotbow":{"text":"(Gen 2) Holder's Normal-type attacks have 1.1x power.", "tags":[]}, "crucibellite":{"text":"If held by a Crucibelle, this item allows it to Mega Evolve in battle.", "tags":["mega evolution transformation", "evolution"]}, "vilevial":{"text":"If held by a Venomicon, its Poison- and Flying-type attacks have 1.2x power.", "tags":[]}};
 	T.itemData = function () {
@@ -4790,12 +4839,19 @@
 		this.update();
 		if (this.curChartType === 'stats') this.updateStatForm();
 	};
-	proto.closeSetTools = function (index) {
-		var set = this.curSetList[Number(index)];
+	proto.closeSetTools = function (index, button) {
+		index = Number(index);
+		var set = this.curSetList[index];
+		var panel = button ? $(button).closest('.set-tools-panel')[0] : this.$('li[value="' + index + '"] .set-tools-panel')[0];
+		if (!set || !panel || !this.el.contains(panel)) return;
 		if (this.openSetTools) this.openSetTools.delete(set);
-		this.profileAddition = null;
-		this.$('.profile-add-panel').remove();
-		this.$('li[value="' + index + '"] .set-tools-panel').prop('open', false);
+		if (this.profileAddition && this.profileAddition.set === set) this.profileAddition = null;
+		$(panel).find('.profile-add-panel').remove();
+		// Invalidate this panel's unfinished preview without changing the current set or saved builds.
+		if (this.formPreview && this.formPreview.set === set && !this.formPreview.local && !this.formPreview.options.length) this.formPreview = null;
+		panel.open = false;
+		var opener = $(panel).children('summary')[0];
+		if (opener) opener.focus({preventScroll: true});
 	};
 	proto.loadFormPreviews = function (index) {
 		var self = this, set = this.curSetList[Number(index)], team = this.curTeam;
@@ -4972,12 +5028,17 @@
 	proto.refreshLibraryControls = function () {
 		var data = this.toolsData(true), self = this;
 		this.$('.library-sets').prop('open', this.librarySection === 'sets').toggle(this.librarySection === 'sets');
+		this.$('.local-tools-manager').toggleClass('gender-names-enabled', !!this.$('.nickname-gendered').prop('checked'));
+		var full = this.curTeam && this.curSetList && this.curSetList.filter(function (set) {return set.species;}).length >= (this.curTeam.capacity || 6);
+		this.$('#library-team-context').text(!this.curTeam ? 'Open a team in the builder to add a set or preview a replacement.' : this.curSet ? 'Team: ' + this.curTeam.name + '. Replacement of ' + this.curSet.species + ' always opens a preview.' : full ? 'Team: ' + this.curTeam.name + ' is full. Select a Pokémon in the builder to replace it.' : 'Team: ' + this.curTeam.name + '. Add a set, or select a Pokémon in the builder to replace it.');
+		this.$('.library-preview-context').text(this.curTeam ? 'For ' + this.curTeam.name : 'Open a team in the builder to preview changes.');
 		this.$('.library-names').toggle(this.librarySection !== 'sets');
 		this.$('.library-tabs [value]').attr('aria-pressed', 'false').filter('[value=' + (this.librarySection || 'names') + ']').attr('aria-pressed', 'true');
 		this.$('[name=applyNicknameToTeam]').prop('disabled', !data.selectedNickname || !this.curTeam).attr('title', !this.curTeam ? 'Open a team first' : !data.selectedNickname ? 'Choose a nickname profile first' : '');
-		this.$('[name=addTeamNicknameRows]').prop('disabled', !this.curTeam);
+		this.$('[name=addTeamNicknameRows]').prop('disabled', !this.curTeam).attr('title', this.curTeam ? '' : 'Open a team in the builder first');
 		this.$('[name=addLibraryBuild]').prop('disabled', !this.curTeam || !this.curSetList || this.curSetList.filter(function (s) { return s.species; }).length >= (this.curTeam.capacity || 6)).attr('title', 'Requires an open team with an empty slot');
-		this.$('[name=replaceLibraryBuild]').prop('disabled', !this.curSet).text(this.curSet ? 'Replace ' + this.curSet.species : 'Select a Pokémon to replace');
+		this.$('[name=replaceLibraryBuild]').prop('disabled', !this.curSet).text('Preview replacement').attr('title', this.curSet ? 'Preview changes to ' + this.curSet.species : 'Select a Pokémon in the builder first').attr('aria-describedby', 'library-team-context');
+		this.$('[name=addLibraryBuild]').attr('aria-describedby', 'library-team-context');
 		this.$('.nickname-gender').prop('disabled', !this.$('.nickname-gendered').prop('checked')).attr('title', 'Enable gender-specific nicknames to edit');
 		this.$('.saved-build-choice').each(function () { self.refreshSavedSetControls($(this).closest('li')); });
 		this.$('.library-undo').remove();
@@ -4985,18 +5046,20 @@
 	};
 	var rosterLibraryView = proto.showRosterProfiles;
 	proto.showRosterProfiles = function () {
-		var result = rosterLibraryView.apply(this, arguments);
+		this.destroySearch(); this.toolsView = false; this.profilesView = true; this.librarySection = 'lists'; this.rosterImportPreview = null;
+		this.$el.html('<div class="pad roster-page local-tools-manager library-clean">' + T.libraryHeader('lists') + '<section class="tools-panel library-lists"><header class="library-section-heading"><div><h3>Pokémon lists</h3><p>Keep a shortlist for the Pokémon picker.</p></div><span class="library-saved-badge">Saves automatically</span></header>' + this.renderRosterProfiles() + '<details class="library-secondary roster-import-section"><summary>Import a Pokémon list</summary><p class="tools-note">One Pokémon per line. Base species include their Mega forms.</p><label>New list name<input class="textbox roster-import-name" placeholder="Or use a # header in your list" maxlength="80" /></label><textarea class="textbox roster-import-text" rows="5" aria-label="Pokémon list" placeholder="# My team shortlist&#10;Charizard&#10;Venusaur"></textarea><div class="library-actions">' + button('previewRosterImport', 'Preview new list', 'new') + button('previewRosterImport', 'Preview additions', 'add') + '</div><details class="library-secondary"><summary>Replace this list</summary><p class="tools-note">Review the preview before replacing any entries.</p>' + button('previewRosterImport', 'Preview replacement', 'replace') + '</details><p class="library-list-import-hint tools-note"></p><div class="roster-import-preview" aria-live="polite"></div></details></section></div>');
 		var selected = this.rosterData().selected;
-		this.$('[name=previewRosterImport][value=add], [name=previewRosterImport][value=replace]').prop('disabled', !selected).attr('title', selected ? '' : 'Choose a Pokémon list first');
-		this.$('.roster-page h2').after('<nav class="library-tabs" aria-label="Library sections">' + button('libraryTab', 'Nickname profiles', 'names') + button('libraryTab', 'Saved sets', 'sets') + '<button class="button" disabled>Pokémon lists</button></nav>');
-		return result;
+		this.$('[name=previewRosterImport][value=add], [name=previewRosterImport][value=replace]').prop('disabled', !selected).attr('title', selected ? '' : 'Choose a list first');
+		this.$('.library-list-import-hint').text(selected ? 'Imports only change this list after you confirm the preview.' : 'Choose a list above to add or replace entries; a new list can be created from an import.');
+		this.restoreLibraryView();
 	};
 	proto.openRosterManager = function () { this.saveNicknameDraft(); this.toolsView = false; this.showRosterProfiles(); };
 	proto.libraryTab = function (section) {
-		this.captureLibraryView();
-		this.saveNicknameDraft();
-		if (section === 'lists') return this.openRosterManager();
-		this.profilesView = false; this.librarySection = section; this.showToolsManager();
+		if (!['names', 'sets', 'lists'].includes(section)) return;
+		this.captureLibraryView(); this.saveNicknameDraft(); this.pendingProfileApply = null;
+		if (section === 'lists') this.openRosterManager();
+		else {this.profilesView = false; this.librarySection = section; this.showToolsManager();}
+		var tab = this.$('.library-tabs [value="' + section + '"]')[0]; if (tab) tab.focus({preventScroll:true});
 	};
 	proto.filterNicknameRows = function () {
 		var query = String(this.$('.nickname-search').val() || '').toLowerCase(), teamOnly = this.$('.nickname-team-only').prop('checked');
@@ -5054,7 +5117,7 @@
 	proto.events['change .nickname-team-only'] = 'filterNicknameRows';
 	proto.events['change .tools-backup-file'] = 'readToolsBackup';
 	var saveDraftWithControls = proto.saveNicknameDraft;
-	proto.saveNicknameDraft = function () { var result = saveDraftWithControls.apply(this, arguments); if (this.toolsView) this.$('.nickname-gender').prop('disabled', !this.$('.nickname-gendered').prop('checked')); return result; };
+	proto.saveNicknameDraft = function () { var result = saveDraftWithControls.apply(this, arguments); if (this.toolsView) {this.$('.nickname-gender').prop('disabled', !this.$('.nickname-gendered').prop('checked')); this.$('.local-tools-manager').toggleClass('gender-names-enabled', !!this.$('.nickname-gendered').prop('checked'));} return result; };
 	var updateLibraryControls = proto.update;
 	proto.update = function () { var result = updateLibraryControls.apply(this, arguments); if (!this.toolsView && !this.profilesView) this.refreshLibraryControls(); return result; };
 
@@ -5063,15 +5126,25 @@
 		return undo.overwrite ? !!undo.after && JSON.stringify(current) === JSON.stringify(undo.after) : !current;
 	};
 	proto.captureLibraryView = function () {
-		if (!this.toolsView) return;
+		if (this.profilesView) {this.libraryListView = {scroll:this.$el.scrollTop(), name:this.$('.roster-import-name').val(), text:this.$('.roster-import-text').val(), query:this.$('.roster-species-search').val(), importOpen:this.$('.roster-import-section').prop('open')}; return;}
+		if (!this.toolsView || !this.$('.local-tools-manager').length) return;
 		this.libraryViews = this.libraryViews || {};
-		this.libraryViews[this.librarySection || 'names'] = {scroll: this.$el.scrollTop(), search: this.$('.build-library-search').val(), names: this.$('.nickname-search').val(), teamOnly: this.$('.nickname-team-only').prop('checked'), rowsScroll: this.$('.nickname-rows').scrollTop()};
+		this.libraryViews[this.librarySection || 'names'] = {scroll:this.$el.scrollTop(), search:this.$('.build-library-search').val(), names:this.$('.nickname-search').val(), teamOnly:this.$('.nickname-team-only').prop('checked'), rowsScroll:this.$('.nickname-rows').scrollTop(), replace:this.$('.nickname-replace').prop('checked')};
+		var draft = this.libraryInputDraft || (this.libraryInputDraft = {paste:{}}), id = this.toolsData(true).selectedNickname;
+		draft.importName = this.$('.imported-build-name').val(); draft.importSets = this.$('.imported-build-sets').val();
+		if (this.$('.nickname-paste').length) draft.paste[id] = this.$('.nickname-paste').val();
+		draft.importOpen = this.$('.imported-build-sets').closest('details').prop('open');
+		draft.backupOpen = this.$('.library-backup').prop('open');
+		if (this.libraryTransferDirty) draft.transfer = this.$('.tools-transfer').val();
 	};
 	proto.restoreLibraryView = function () {
-		var state = this.libraryViews && this.libraryViews[this.librarySection || 'names']; if (!state) return;
-		this.$('.build-library-search').val(state.search || ''); this.filterSavedBuilds({currentTarget: {value: state.search || ''}});
+		if (this.profilesView) {var list = this.libraryListView; if (!list) return; this.$('.roster-import-name').val(list.name || ''); this.$('.roster-import-text').val(list.text || ''); this.$('.roster-species-search').val(list.query || ''); this.$('.roster-import-section').prop('open', !!list.importOpen); this.searchRosterSpecies(); this.$el.scrollTop(list.scroll || 0); return;}
+		var draft = this.libraryInputDraft, state = this.libraryViews && this.libraryViews[this.librarySection || 'names'];
+		if (draft) {this.$('.imported-build-name').val(draft.importName || ''); this.$('.imported-build-sets').val(draft.importSets || ''); this.$('.nickname-paste').val(draft.paste[this.toolsData(true).selectedNickname] || ''); this.$('.imported-build-sets').closest('details').prop('open', !!draft.importOpen); this.$('.library-backup').prop('open', !!draft.backupOpen); if (draft.transfer !== undefined) {this.$('.tools-transfer').val(draft.transfer); this.libraryTransferDirty = true;}}
+		if (!state) return;
+		this.$('.build-library-search').val(state.search || ''); this.filterSavedBuilds({currentTarget:{value:state.search || ''}});
 		this.$('.nickname-search').val(state.names || ''); this.$('.nickname-team-only').prop('checked', !!state.teamOnly); this.filterNicknameRows();
-		this.$('.nickname-rows').scrollTop(state.rowsScroll || 0); this.$el.scrollTop(state.scroll || 0);
+		this.$('.nickname-replace').prop('checked', !!state.replace); this.$('.nickname-rows').scrollTop(state.rowsScroll || 0); this.$el.scrollTop(state.scroll || 0);
 	};
 	proto.showAbilityPickerDetails = function (event) {
 		event.preventDefault(); event.stopPropagation();
@@ -5300,90 +5373,90 @@ function renderStarterPassives(species) {
 	if (!species || !species.passives || !species.passives.length) return '';
 	return '<div class="starter-passives"><label>Passive</label>' + species.passives.map(function (id) {
 		var ability = Dex.getPassiveAbilityDetails(id);
-		return '<button type="button" class="passive-chip" aria-expanded="false" title="Passive: ' + BattleLog.escapeHTML(ability.name) + ' (click for details)" data-description="' + BattleLog.escapeHTML(ability.shortDesc) + '" data-full-description="' + BattleLog.escapeHTML(ability.desc || ability.shortDesc) + '">' + BattleLog.escapeHTML(ability.name) + '</button>';
+		return '<button type="button" class="passive-chip" data-passive-id="' + BattleLog.escapeHTML(id) + '" aria-expanded="false" title="Passive: ' + BattleLog.escapeHTML(ability.name) + ' (click for details)" data-description="' + BattleLog.escapeHTML(ability.shortDesc) + '" data-full-description="' + BattleLog.escapeHTML(ability.desc || ability.shortDesc) + '">' + BattleLog.escapeHTML(ability.name) + '</button>';
 	}).join(' ') + '</div>';
 }
 
 // Keep a searchable picker beside the results, including on touch screens.
 (function () {
- if (!window.TeambuilderRoom || !window.TeambuilderRoom.prototype) return;
- var proto = window.TeambuilderRoom.prototype;
- var updateSetView = proto.updateSetView;
- proto.updateSetView = function () {
-  var result = updateSetView.apply(this, arguments);
-  var bar = this.$('.picker-return-bar');
-  bar.prepend('<label class="picker-search"><span class="picker-search-label">Search Pokémon</span><input class="textbox picker-search-input" type="search" placeholder="Search Pokémon" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search" /></label>');
-  var options = $('<div class="picker-options-bar"></div>');
-  bar.after(options);
-  options.append(this.$('.teambuilder-results > .roster-profiles, .teambuilder-results > .pokemon-picker-filters'));
-  this.pickerSearchActive = false;
-  return result;
- };
- var updateChart = proto.updateChart;
- proto.updateChart = function () {
-  var result = updateChart.apply(this, arguments);
-  var searchable = this.curChartType in this.searchChartTypes;
-  var label = {pokemon: 'Pokémon', item: 'items', ability: 'abilities', move: 'moves'}[this.curChartType];
-  this.$('.picker-search').prop('hidden', !searchable);
-  this.$('.picker-options-bar').prop('hidden', false);
-  if (searchable) {
-   var input = this.$('.picker-search-input');
-   this.$('.picker-search-label').text('Search ' + label);
-   input.attr('placeholder', 'Search ' + label).val(this.$('input[name=' + this.curChartName + ']').val());
-   if (this.pickerSearchActive) this.search.$inputEl = input;
-  }
-  return result;
- };
- proto.pickerSearchFocus = function () {
-  this.pickerSearchActive = true;
-  if (this.search) this.search.$inputEl = this.$('.picker-search-input');
- };
- proto.pickerSearchInput = function (event) {
-  if (!(this.curChartType in this.searchChartTypes)) return;
-  this.$('input[name=' + this.curChartName + ']').val(event.currentTarget.value);
-  this.updateChart();
- };
- proto.pickerSearchKeydown = function (event) {
-  if (!(this.curChartType in this.searchChartTypes)) return;
-  if (event.keyCode !== 13) {
-   if ([38, 40, 27, 8].includes(event.keyCode)) this.chartKeydown(event);
-   return;
-  }
-  event.preventDefault();
-  event.stopPropagation();
-  var first = this.$chart.find('a.hover[data-entry]').first();
-  if (!first.length) first = this.$chart.find('a[data-entry]').first();
-  if (first.length) this.chartClick({currentTarget: first[0], target: first[0], keyboard: true});
- };
- var chartFocus = proto.chartFocus;
- proto.chartFocus = function () {
-  this.pickerSearchActive = false;
-  return chartFocus.apply(this, arguments);
- };
- proto.moveResultPointerDown = function (event) {
-  if (this.curChartType === 'move' && !$(event.target).closest('.pokemon-passive-badge').length) {
-   // Keep result clicks from blurring/committing the input before chartClick runs.
-   event.preventDefault();
-  }
- };
- proto.events['pointerdown .utilichart a'] = 'moveResultPointerDown';
- var chartClick = proto.chartClick;
- proto.chartClick = function (event) {
-  if (this.pickerSearchActive && this.search.addFilter(event.currentTarget)) {
-   if (this.search.q) this.$('input[name=' + this.curChartName + ']').val('');
-   this.$('.picker-search-input').val('')[0].focus({preventScroll: true});
-   this.search.find('');
-   return;
-  }
-  var pointerMove = this.curChartType === 'move' && !event.keyboard &&
+	if (!window.TeambuilderRoom || !window.TeambuilderRoom.prototype) return;
+	var proto = window.TeambuilderRoom.prototype;
+	var updateSetView = proto.updateSetView;
+	proto.updateSetView = function () {
+		var result = updateSetView.apply(this, arguments);
+		var bar = this.$('.picker-return-bar');
+		bar.prepend('<label class="picker-search"><span class="picker-search-label">Search Pokémon</span><input class="textbox picker-search-input" type="search" placeholder="Search Pokémon" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search" /></label>');
+		var options = $('<div class="picker-options-bar"></div>');
+		bar.after(options);
+		options.append(this.$('.teambuilder-results > .roster-profiles, .teambuilder-results > .pokemon-picker-filters'));
+		this.pickerSearchActive = false;
+		return result;
+	};
+	var updateChart = proto.updateChart;
+	proto.updateChart = function () {
+		var result = updateChart.apply(this, arguments);
+		var searchable = this.curChartType in this.searchChartTypes;
+		var label = {pokemon: 'Pokémon', item: 'items', ability: 'abilities', move: 'moves'}[this.curChartType];
+		this.$('.picker-search').prop('hidden', !searchable);
+		this.$('.picker-options-bar').prop('hidden', false);
+		if (searchable) {
+			var input = this.$('.picker-search-input');
+			this.$('.picker-search-label').text('Search ' + label);
+			input.attr({'placeholder': 'Search ' + label, 'aria-label': 'Search ' + label}).val(this.$('input[name=' + this.curChartName + ']').val());
+			if (this.pickerSearchActive) this.search.$inputEl = input;
+		}
+		return result;
+	};
+	proto.pickerSearchFocus = function () {
+		this.pickerSearchActive = true;
+		if (this.search) this.search.$inputEl = this.$('.picker-search-input');
+	};
+	proto.pickerSearchInput = function (event) {
+		if (!(this.curChartType in this.searchChartTypes)) return;
+		this.$('input[name=' + this.curChartName + ']').val(event.currentTarget.value);
+		this.updateChart();
+	};
+	proto.pickerSearchKeydown = function (event) {
+		if (!(this.curChartType in this.searchChartTypes)) return;
+		if (event.keyCode !== 13) {
+			if ([38, 40, 27, 8].includes(event.keyCode)) this.chartKeydown(event);
+			return;
+		}
+		event.preventDefault();
+		event.stopPropagation();
+		var first = this.$chart.find('a.hover[data-entry]').first();
+		if (!first.length) first = this.$chart.find('a[data-entry]').first();
+		if (first.length) this.chartClick({currentTarget: first[0], target: first[0], keyboard: true});
+	};
+	var chartFocus = proto.chartFocus;
+	proto.chartFocus = function () {
+		this.pickerSearchActive = false;
+		return chartFocus.apply(this, arguments);
+	};
+	proto.moveResultPointerDown = function (event) {
+		if (this.curChartType === 'move' && !$(event.target).closest('.pokemon-passive-badge').length) {
+			// Keep result clicks from blurring/committing the input before chartClick runs.
+			event.preventDefault();
+		}
+	};
+	proto.events['pointerdown .utilichart a'] = 'moveResultPointerDown';
+	var chartClick = proto.chartClick;
+	proto.chartClick = function (event) {
+		if (this.pickerSearchActive && this.search.addFilter(event.currentTarget)) {
+			if (this.search.q) this.$('input[name=' + this.curChartName + ']').val('');
+			this.$('.picker-search-input').val('')[0].focus({preventScroll: true});
+			this.search.find('');
+			return;
+		}
+		var pointerMove = this.curChartType === 'move' && !event.keyboard &&
    !(event.originalEvent && event.originalEvent.detail === 0);
-  if (event.preventDefault) event.preventDefault();
-  if (!pointerMove) return chartClick.apply(this, arguments);
-  this.pointerMoveSelection = true;
-  try { return chartClick.apply(this, arguments); } finally {
-   this.pointerMoveSelection = false;
-  }
- };
+		if (event.preventDefault) event.preventDefault();
+		if (!pointerMove) return chartClick.apply(this, arguments);
+		this.pointerMoveSelection = true;
+		try { return chartClick.apply(this, arguments); } finally {
+			this.pointerMoveSelection = false;
+		}
+	};
 	// Replacing an editor must not let native focus drag the room to its moves.
 	proto.focusChartInput = function (name, select) {
 		var input = this.$('input[name=' + name + ']')[0];
@@ -5403,101 +5476,170 @@ function renderStarterPassives(species) {
 			editor.scrollIntoView({block: 'start', behavior: 'auto'});
 		}
 	};
- proto.events['focus .picker-search-input'] = 'pickerSearchFocus';
- proto.events['input .picker-search-input'] = 'pickerSearchInput';
- proto.events['keydown .picker-search-input'] = 'pickerSearchKeydown';
+	proto.events['focus .picker-search-input'] = 'pickerSearchFocus';
+	proto.events['input .picker-search-input'] = 'pickerSearchInput';
+	proto.events['keydown .picker-search-input'] = 'pickerSearchKeydown';
 })();
 
 (function () {
- var p = window.TeambuilderRoom.prototype, render = p.renderSet;
- p.togglePassiveDetails = function (event) {
-  event.preventDefault();
-  var chip = $(event.currentTarget), card = chip.closest('.setchart');
-  if (!card.length) card = chip.closest('.form-preview-tools');
-  if (!card.length) return;
-  var open = chip.attr('aria-expanded') === 'true';
-  card.find('.set-passive-description').remove();
-  card.find('.passive-chip').attr('aria-expanded', 'false').removeAttr('aria-controls');
-  if (open) return;
-  this.passiveHelpId = (this.passiveHelpId || 0) + 1;
-  var id = 'teambuilder-passive-help-' + this.passiveHelpId;
-  chip.attr({'aria-expanded': 'true', 'aria-controls': id});
-  $('<div class="set-passive-description passive-description" role="note"></div>')
-   .attr('id', id).text(chip.attr('data-description')).appendTo(card);
-  var full = chip.attr('data-full-description');
-  if (full && full !== chip.attr('data-description')) {
-   $('<details><summary>Full details</summary><div></div></details>').find('div').text(full).end().appendTo(card.find('#' + id));
-  }
- };
- p.events['click .passive-chip'] = 'togglePassiveDetails';
- p.renderSet = function (set, index) {
-  var html = render.apply(this, arguments), preview = this.currentFormPreview(set);
-  var display = preview ? Object.assign({}, set, {species: preview.name, ability: preview.ability}) : set;
-  var species = Dex.getAbilityFormPreview(display, this.curTeam.dex).species;
-  html = html.replace('<div class="setcol setcol-icon">', '<div class="setcol setcol-icon"><div class="mobile-form-sprite" role="img" aria-label="' + BattleLog.escapeHTML(species.name) + '" style="' + Dex.getTeambuilderSprite(display, this.curTeam.gen) + '"></div>');
-  var openingType = Dex.getOpeningTypeProfile(display, this.curTeam.dex);
-  if (openingType) html = html.replace(/(<input[^>]*name="move1"[^>]*>)/, '$1<small class="opening-type-profile">' + BattleLog.escapeHTML(openingType) + '</small>');
-  return html;
- };
- var updateStats = p.updateStatForm;
- p.updateStatForm = function () {
-  var result = updateStats.apply(this, arguments);
-  this.$el.addClass('compact-ev-workflow');
-  this.$('.ev-form-tools').remove();
-  $(this.renderSet(this.curSet, this.curSetLoc)).find('.ev-form-tools').insertBefore(this.$('.statform').first());
-  return result;
- };
- var updateChart = p.updateChart;
- p.updateChart = function () { this.$el.toggleClass('compact-ev-workflow', this.curChartType === 'stats'); return updateChart.apply(this, arguments); };
- // These actions replace the card. Preserve the room position and restore the EV editor.
- ['toggleFormPreview', 'closeFormPreview', 'formPreviewChange'].forEach(function (name) {
-  var original = p[name];
-  p[name] = function () {
-   if (!this.el) return original.apply(this, arguments);
-   var top = this.el.scrollTop, left = this.el.scrollLeft, stats = this.curChartType === 'stats';
-   var result = original.apply(this, arguments);
-   if (stats) { this.curChartType = 'stats'; this.updateStatForm(); }
-   this.el.scrollTop = top; this.el.scrollLeft = left;
-   var el = this.el; requestAnimationFrame(function () { el.scrollTop = top; el.scrollLeft = left; });
-   return result;
-  };
- });
- var setView = p.updateSetView;
- p.updateSetView = function () {
-  // A removed editor must not retain a profile transaction for a previous card.
-  this.profileAddition = null;
-  var result = setView.apply(this, arguments);
-  var toolbar = this.$('.team-profile-toolbar');
-  if (toolbar.length && !toolbar.parent().hasClass('team-profile-drawer')) {
-   var drawer = $('<details class="team-profile-drawer"><summary>Nickname profiles &amp; saved sets</summary></details>').insertBefore(toolbar); drawer.append(toolbar);
-  }
-  this.$el.toggleClass('compact-ev-workflow', this.curChartType === 'stats');
-  return result;
- };
+	var p = window.TeambuilderRoom.prototype, render = p.renderSet;
+	p.togglePassiveDetails = function (event) {
+		event.preventDefault();
+		var chip = $(event.currentTarget), card = chip.closest('.setchart');
+		if (!card.length) card = chip.closest('.form-preview-tools');
+		if (!card.length) return;
+		var open = chip.attr('aria-expanded') === 'true';
+		card.find('.set-passive-description').remove();
+		card.find('.passive-chip').attr('aria-expanded', 'false').removeAttr('aria-controls');
+		if (open) return;
+		this.passiveHelpId = (this.passiveHelpId || 0) + 1;
+		var id = 'teambuilder-passive-help-' + this.passiveHelpId;
+		chip.attr({'aria-expanded': 'true', 'aria-controls': id});
+		$('<div class="set-passive-description passive-description" role="note"></div>')
+			.attr('id', id).text(chip.attr('data-description')).appendTo(card);
+		var opening = chip.attr('data-opening-type-profile');
+		if (opening) $('<p class="passive-context-description"></p>').text(opening).appendTo(card.find('#' + id));
+		var full = chip.attr('data-full-description');
+		if (full && full !== chip.attr('data-description')) {
+			$('<details><summary>Full details</summary><div></div></details>').find('div').text(full).end().appendTo(card.find('#' + id));
+		}
+	};
+	p.events['click .passive-chip'] = 'togglePassiveDetails';
+	p.renderSet = function (set, index) {
+		var html = render.apply(this, arguments), preview = this.currentFormPreview(set);
+		var display = preview ? Object.assign({}, set, {species: preview.name, ability: preview.ability}) : set;
+		var species = Dex.getAbilityFormPreview(display, this.curTeam.dex).species;
+		html = html.replace('<div class="setcol setcol-icon">', '<div class="setcol setcol-icon"><div class="mobile-form-sprite" role="img" aria-label="' + BattleLog.escapeHTML(species.name) + '" style="' + Dex.getTeambuilderSprite(display, this.curTeam.gen) + '"></div>');
+		var openingType = Dex.getOpeningTypeProfile(display, this.curTeam.dex);
+		if (openingType) {
+			var passiveId = openingType.indexOf('Adaptive Cell') >= 0 ? 'adaptivecell' : 'eclipsevision';
+			var attached = false, detail = BattleLog.escapeHTML(openingType);
+			html = html.replace(/<button\b[^>]*class="passive-chip"[^>]*>/g, function (tag) {
+				if (tag.indexOf('data-passive-id="' + passiveId + '"') < 0) return tag;
+				attached = true;
+				return tag.replace(' title="', ' data-opening-type-profile="' + detail + '" title="' + detail + ' ');
+			});
+			if (!attached) html = html.replace(/<input\b[^>]*name="ability"[^>]*>/, function (tag) {
+				return tag.replace(/\s*\/?>$/, ' title="' + detail + '" aria-description="' + detail + '" />');
+			});
+		}
+		return html;
+	};
+	var updateStats = p.updateStatForm;
+	p.updateStatForm = function () {
+		var result = updateStats.apply(this, arguments);
+		this.$el.addClass('compact-ev-workflow');
+		this.$('.ev-form-tools').remove();
+		$(this.renderSet(this.curSet, this.curSetLoc)).find('.ev-form-tools').insertBefore(this.$('.statform').first());
+		return result;
+	};
+	var updateChart = p.updateChart;
+	p.updateChart = function () { this.$el.toggleClass('compact-ev-workflow', this.curChartType === 'stats'); return updateChart.apply(this, arguments); };
+	// These actions replace the card. Preserve the room position and restore the EV editor.
+	['toggleFormPreview', 'closeFormPreview', 'formPreviewChange'].forEach(function (name) {
+		var original = p[name];
+		p[name] = function () {
+			if (!this.el) return original.apply(this, arguments);
+			var top = this.el.scrollTop, left = this.el.scrollLeft, stats = this.curChartType === 'stats';
+			var result = original.apply(this, arguments);
+			if (stats) { this.curChartType = 'stats'; this.updateStatForm(); }
+			this.el.scrollTop = top; this.el.scrollLeft = left;
+			var el = this.el; requestAnimationFrame(function () { el.scrollTop = top; el.scrollLeft = left; });
+			return result;
+		};
+	});
+	var setView = p.updateSetView;
+	p.updateSetView = function () {
+		// A removed editor must not retain a profile transaction for a previous card.
+		this.profileAddition = null;
+		var result = setView.apply(this, arguments);
+		var toolbar = this.$('.team-profile-toolbar');
+		if (toolbar.length && !toolbar.parent().hasClass('team-profile-drawer')) {
+			var drawer = $('<details class="team-profile-drawer"><summary>Names &amp; saved sets</summary></details>').insertBefore(toolbar); drawer.append(toolbar);
+		}
+		this.$el.toggleClass('compact-ev-workflow', this.curChartType === 'stats');
+		return result;
+	};
 })();
 
-(function(){var p=window.TeambuilderRoom.prototype,render=p.renderSet;p.renderSet=function(set,index){var html=render.apply(this,arguments),species=toID(set.species);if(species!=='meloettaencore'&&species!=='meloettapirouette')return html;(set.moves||[]).forEach(function(name,i){if(toID(name)!=='relicsong')return;var label=species==='meloettaencore'?'Encore Aria · Fairy':'Pirouette Dance · Fighting';var pattern=new RegExp('(<input[^>]*name="move'+(i+1)+'"[^>]*>)');html=html.replace(pattern,'$1<small class="meloetta-move-preview" style="display:block;font-size:10px;white-space:nowrap" title="The same Relic Song PP slot uses this form-specific move. Encore Aria selects the stronger physical dance or special sound separately for each foe; Pirouette Dance is special.">'+label+'</small>');});return html;};})();
+(function () {
+	var p = window.TeambuilderRoom.prototype, render = p.renderSet; p.renderSet = function (set, index) {
+		var html = render.apply(this, arguments), species = toID(set.species); if (species !== 'meloettaencore' && species !== 'meloettapirouette')
+			return html; (set.moves || []).forEach(function (name, i) {
+			if (toID(name) !== 'relicsong')
+				return; var label = species === 'meloettaencore' ? 'Encore Aria · Fairy' : 'Pirouette Dance · Fighting'; var pattern = new RegExp('(<input[^>]*name="move' + (i + 1) + '"[^>]*>)'); html = html.replace(pattern, '$1<small class="meloetta-move-preview" style="display:block;font-size:10px;white-space:nowrap" title="The same Relic Song PP slot uses this form-specific move. Encore Aria selects the stronger physical dance or special sound separately for each foe; Pirouette Dance is special.">' + label + '</small>');
+		}); return html;
+	};
+})();
 
 
 // Memory combinations follow the current set; never cache them on a species or ability.
 (function () {
- var p = window.TeambuilderRoom.prototype, render = p.renderSet;
- p.renderRKSMemory = function (set) {
-  var dex = this.curTeam.dex, species = dex.species.get(set.species);
-  if (species.baseSpecies !== 'Silvally' || toID(set.ability) !== 'rkssystem') return '';
-  var parts = Dex.getAbilityDisplayComponents('rkssystem', dex, species.passives, species.id, set.item || '');
-  return '<small class="rks-memory-components" style="display:block;white-space:normal;width:230px;margin-left:-122px;padding-top:3px">Heals 1/16 HP each turn. Includes: ' + parts.map(function (id) { return BattleLog.escapeHTML(dex.abilities.get(id).name); }).join(' + ') + '</small>';
- };
- p.renderSet = function (set) {
-  return render.apply(this, arguments).replace(/(<input[^>]*name="ability"[^>]*>)/, '$1' + this.renderRKSMemory(set));
- };
- var chartSet = p.chartSet;
- p.chartSet = function () {
-  var result = chartSet.apply(this, arguments);
-  if (this.curSet && this.curTeam.dex.species.get(this.curSet.species).baseSpecies === 'Silvally') {
-   this.$('.rks-memory-components').remove();
-   this.$('input[name=ability]').after(this.renderRKSMemory(this.curSet));
-  }
-  return result;
- };
+	var p = window.TeambuilderRoom.prototype, render = p.renderSet;
+	p.renderRKSMemory = function (set) {
+		var dex = this.curTeam.dex, species = dex.species.get(set.species);
+		if (species.baseSpecies !== 'Silvally' || toID(set.ability) !== 'rkssystem') return '';
+		var parts = Dex.getAbilityDisplayComponents('rkssystem', dex, species.passives, species.id, set.item || '');
+		return '<small class="rks-memory-components" style="display:block;white-space:normal;width:230px;margin-left:-122px;padding-top:3px">Heals 1/16 HP each turn. Includes: ' + parts.map(function (id) { return BattleLog.escapeHTML(dex.abilities.get(id).name); }).join(' + ') + '</small>';
+	};
+	p.renderSet = function (set) {
+		return render.apply(this, arguments).replace(/(<input[^>]*name="ability"[^>]*>)/, '$1' + this.renderRKSMemory(set));
+	};
+	var chartSet = p.chartSet;
+	p.chartSet = function () {
+		var result = chartSet.apply(this, arguments);
+		if (this.curSet && this.curTeam.dex.species.get(this.curSet.species).baseSpecies === 'Silvally') {
+			this.$('.rks-memory-components').remove();
+			this.$('input[name=ability]').after(this.renderRKSMemory(this.curSet));
+		}
+		return result;
+	};
+})();
+
+// Generated eligibility IDs from server data/aevian-king-moves.ts.
+(function () {
+	var ids = ["dragoncheer", "purify", "healbell", "dragonbreath", "lifedew", "megahorn", "dragonpulse", "instruct", "fakeout", "recover", "aurasphere", "calmmind", "defog", "dracometeor", "dragonclaw", "naturepower", "outrage", "slackoff", "thunderwave"], proto = window.TeambuilderRoom.prototype;
+	function showEventMoveWarning() {
+		if (!this.curSet || !['politoed', 'politoedrejuv'].includes(toID(this.curSet.species))) return;
+		this.$('.aevian-move-warning').remove();
+		this.$('input[data-aevian-invalid]').removeAttr('aria-invalid data-aevian-invalid');
+		var set = this.curSet; if (!set || !['politoed', 'politoedrejuv'].includes(toID(set.species)) || toID(set.ability) === 'aevianking') return;
+		var invalid = (set.moves || []).filter(function (m) {return ids.includes(toID(m));});
+		if (!invalid.length) return;
+		(set.moves || []).forEach(function (m, i) {if (ids.includes(toID(m))) this.$('input[name=move' + (i + 1) + ']').attr({'aria-invalid':'true', 'data-aevian-invalid':'true'});}, this);
+		this.$('.setchart').first().after('<p class="aevian-move-warning" role="status">Requires Aevian King: ' + invalid.map(BattleLog.escapeHTML).join(', ') + '. These moves remain selected; change the ability or replace them.</p>');
+	}
+	['updateSetTop', 'updateChart', 'chartSet', 'chartChange'].forEach(function (name) {var original = proto[name]; if (!original) return; proto[name] = function () {var result = original.apply(this, arguments); showEventMoveWarning.call(this); return result;};});
+})();
+
+// Generated eligibility IDs from server data/aevian-ascendance-moves.ts.
+(function () {
+	var ids = ["scentedgeyser", "purify", "aurasphere", "healbell", "dragonbreath", "hypervoice", "dragonpulse", "recover", "calmmind", "defog", "dracometeor", "dragoncheer", "outrage"], proto = window.TeambuilderRoom.prototype;
+	function showEventMoveWarning() {
+		if (!this.curSet || !['poliwrath', 'poliwrathrejuv'].includes(toID(this.curSet.species))) return;
+		this.$('.aevian-move-warning').remove();
+		this.$('input[data-aevian-invalid]').removeAttr('aria-invalid data-aevian-invalid');
+		var set = this.curSet; if (!set || !['poliwrath', 'poliwrathrejuv'].includes(toID(set.species)) || toID(set.ability) === 'aevianascendance') return;
+		var invalid = (set.moves || []).filter(function (m) {return ids.includes(toID(m));});
+		if (!invalid.length) return;
+		(set.moves || []).forEach(function (m, i) {if (ids.includes(toID(m))) this.$('input[name=move' + (i + 1) + ']').attr({'aria-invalid':'true', 'data-aevian-invalid':'true'});}, this);
+		this.$('.setchart').first().after('<p class="aevian-move-warning" role="status">Requires Aevian Ascendance: ' + invalid.map(BattleLog.escapeHTML).join(', ') + '. These moves remain selected; change the ability or replace them.</p>');
+	}
+	['updateSetTop', 'updateChart', 'chartSet', 'chartChange'].forEach(function (name) {var original = proto[name]; if (!original) return; proto[name] = function () {var result = original.apply(this, arguments); showEventMoveWarning.call(this); return result;};});
+})();
+
+// Generated eligibility IDs from server data/aevian-web-moves.ts.
+(function () {
+	var ids = ["splinteredweb", "uturn", "glare", "rocksmash", "rockthrow", "rockpolish", "rockblast", "rocktomb", "partingshot", "fling", "stealthrock", "crosschop", "acrobatics", "stoneedge", "knockoff", "finalgambit", "arenitewall", "assurance", "beatup", "brickbreak", "brutalswing", "dig", "irondefense", "lashout", "poisonsweep", "revenge", "rockslide", "slashandburn", "snatch", "spikes", "stackingshot", "stompingtantrum", "strength", "superpower", "trailblaze"], proto = window.TeambuilderRoom.prototype;
+	function showEventMoveWarning() {
+		if (!this.curSet || !['galvantula', 'galvantularejuv'].includes(toID(this.curSet.species))) return;
+		this.$('.aevian-move-warning').remove();
+		this.$('input[data-aevian-invalid]').removeAttr('aria-invalid data-aevian-invalid');
+		var set = this.curSet; if (!set || !['galvantula', 'galvantularejuv'].includes(toID(set.species)) || toID(set.ability) === 'aevianweb') return;
+		var invalid = (set.moves || []).filter(function (m) {return ids.includes(toID(m));});
+		if (!invalid.length) return;
+		(set.moves || []).forEach(function (m, i) {if (ids.includes(toID(m))) this.$('input[name=move' + (i + 1) + ']').attr({'aria-invalid':'true', 'data-aevian-invalid':'true'});}, this);
+		this.$('.setchart').first().after('<p class="aevian-move-warning" role="status">Requires Aevian Web: ' + invalid.map(BattleLog.escapeHTML).join(', ') + '. These moves remain selected; change the ability or replace them.</p>');
+	}
+	['updateSetTop', 'updateChart', 'chartSet', 'chartChange'].forEach(function (name) {var original = proto[name]; if (!original) return; proto[name] = function () {var result = original.apply(this, arguments); showEventMoveWarning.call(this); return result;};});
 })();

@@ -20,6 +20,6 @@ describe('Calculator usability controls', () => {
   const actors=[{species:'Pikachu',moves:['Thunderbolt']},{species:'Mew',moves:['Psychic']}]; const values={};
   const room=Object.assign({},calc,{readActor:i=>actors[i],validateActorImport(){},writeActor(i,a){actors[i]=a;},scenarioEdited(){},$(key){return {val:v=>{values[key]=v;},prop:(k,v)=>{values[key]=v;},text(){}};}});
   room.swapCalcActors(); assert.equal(actors[0].species,'Mew'); assert.equal(actors[1].species,'Pikachu');
-  assert.equal(values['[name=calc-move]'],'Psychic'); assert.equal(values['[name=reflect], [name=lightscreen], [name=auroraveil]'],false);
+  assert.equal(values['[name=calc-move]'],'Psychic'); assert.equal(values['[name=reflect], [name=lightscreen], [name=auroraveil], .calc-side-controls [data-condition=reflect], .calc-side-controls [data-condition=lightscreen], .calc-side-controls [data-condition=auroraveil]'],false);
  });
 });

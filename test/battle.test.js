@@ -294,11 +294,30 @@ describe('Team Builder sprites', () => {
 		for (const avatar of avatars) {
 			assert.equal(Dex.resolveAvatar(avatar), `/sprites/trainers/${avatar}.png`);
 			assert(fs.existsSync(path.join(__dirname, '..', 'play.pokemonshowdown.com', 'sprites', 'trainers', `${avatar}.png`)));
-			assert(avatarPicker.includes(`['${avatar}',`), `${avatar} should be present in the deployed avatar picker`);
+			const canonical = Dex.canonicalRebornAvatar(avatar);
+            if (canonical !== avatar) {
+                assert(Dex.getRebornAvatars().some(row => row.id === canonical));
+                assert(!avatarPicker.includes(`['${avatar}',`), `${avatar} must not duplicate the Reborn choice in Basic`);
+            } else {
+                assert(avatarPicker.includes(`['${avatar}',`), `${avatar} should remain in Basic`);
+            }
 		}
 	});
 
-	it('keeps opponent-facing Rotom sprites readable in battle', () => {
+	it('groups Meteor portraits together and preserves duplicate saved aliases', () => {
+        const rows = Dex.getRebornAvatars();
+        assert.equal(rows.length, 61);
+        assert.equal(new Set(rows.map(row => row.id)).size, 61);
+        for (const id of ['reborn-taka', 'reborn-sirius', 'reborn-sigmund', 'reborn-lin-young', 'reborn-ace-hearts']) {
+            assert.equal(Dex.getRebornAvatarGroup(rows.find(row => row.id === id)), 'meteor');
+        }
+        assert.equal(Dex.canonicalRebornAvatar('taka'), 'reborn-taka');
+        assert.equal(Dex.canonicalRebornAvatar('reborn-taka-vagrant'), 'reborn-taka');
+        assert.equal(Dex.resolveAvatar('reborn-taka-vagrant'), '/sprites/trainers/reborn-taka-vagrant.png');
+        assert.equal(Dex.canonicalRebornAvatar('alainalt'), 'alainalt');
+    });
+
+    it('keeps opponent-facing Rotom sprites readable in battle', () => {
 		const sprite = Dex.getSpriteData('Rotom-Wash', true, {gen: 9});
 		assert.equal(sprite.w, 80);
 		assert.equal(sprite.h, 69);

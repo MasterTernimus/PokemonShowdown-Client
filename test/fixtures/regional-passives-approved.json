@@ -15,8 +15,7 @@
       "wobbuffet",
       "illumise",
       "florges",
-      "aromatisse",
-      "ribombee"
+      "aromatisse"
     ],
     "flamebody": [
       "rapidash",
@@ -44,7 +43,6 @@
       "stoutland"
     ],
     "flowerveil": [
-      "vileplume",
       "sunflora",
       "leavanny"
     ],
@@ -312,6 +310,7 @@
       "pawmot"
     ],
     "sweetveil": [
+      "ribombee",
       "audino",
       "alomomola",
       "furfroudebutante",
@@ -473,7 +472,8 @@
     ],
     "effectspore": [
       "breloom",
-      "toedscruel"
+      "toedscruel",
+      "vileplume"
     ],
     "compoundeyes": [
       "ninjask",
@@ -7003,7 +7003,7 @@
     "ribombee": {
       "abilities": {
         "0": "Shield Dust",
-        "1": "Sweet Veil",
+        "1": "Aroma Veil",
         "H": "Friend Guard"
       },
       "baseStats": {

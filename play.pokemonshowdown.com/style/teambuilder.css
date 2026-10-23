@@ -591,3 +591,19 @@
 @media(max-width:359px) {
  .teamwrapper .setchart .setcell-ability > .starter-passives .passive-chip { font-size:10px; }
 }
+
+/* A wrapped team header must reserve space above the independently scrolling cards. */
+@media (max-width:639px) {
+ .teamwrapper > .team-view { display:flex; flex-direction:column; height:100%; box-sizing:border-box; }
+ .team-view > .team-editor-header { display:flex; flex-wrap:wrap; align-items:center; gap:6px; flex:none; }
+ .team-editor-header > .teamnameedit { flex:1; min-width:120px; width:auto; }
+ .team-view > .teamchartbox { position:relative; top:auto; left:auto; right:auto; bottom:auto; flex:1; min-height:0; margin-top:8px; }
+}
+
+@media(max-width:639px) {
+ .teamwrapper .setchart .setcell-ability > .starter-passives { flex-wrap:wrap; max-width:100%; gap:4px; }
+}
+
+@media(max-width:639px) {
+ .teamwrapper .setchart .setcell-ability > .starter-passives .passive-chip { height:auto; min-height:32px; white-space:normal; overflow-wrap:anywhere; line-height:1.35; padding:4px; }
+}

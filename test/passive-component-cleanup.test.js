@@ -6,6 +6,15 @@ describe('Passive component separation client parity', () => {
  for (const row of before) for (const slot of row.slots.filter(s => s.overlap.length)) {
   it(row.id + ' slot ' + slot.slot + ' separates selected and passive identities', () => {
    const species = Dex.species.get(row.id);
+   if (row.id === 'dustox' && slot.slot === '0') {
+    assert.deepEqual(species.passives, ['rivalry']);
+    assert.equal(species.abilities[0], 'Night Forager');
+    assert.deepEqual([...Dex.getAbilityEffects('nightforager')].sort(), ['nightforager']);
+    assert(!species.passives.includes('shielddust'));
+    assert(Dex.hasAbilityEffect(species, 'shielddust'));
+    assert(Dex.getAbilityEffects('toxiccocoon').has('shielddust'));
+    return;
+   }
    for (const component of slot.overlap) {
     const starterGmax = {"charizardgmax":["blaze"],"cinderacegmax":["blaze"],"venusaurgmax":["overgrow"],"rillaboomgmax":["overgrow"],"blastoisegmax":["torrent"],"feraligatrgmax":["torrent"],"inteleongmax":["torrent"]};
     if (component === 'proficient' && starterGmax[row.id]) {

@@ -960,6 +960,10 @@ class LoginPanel extends PSRoomPanel {
 }
 
 class AvatarsPanel extends PSRoomPanel {
+ avatarTab = Dex.canonicalRebornAvatar(PS.user.avatar).startsWith('reborn-') ? 'reborn' : 'basic';
+ avatarSearch = '';
+ matchesAvatar(label: string) { return label.toLowerCase().includes(this.avatarSearch.toLowerCase().trim()); }
+
 	static readonly id = 'avatars';
 	static readonly routes = ['avatars'];
 	static readonly location = 'semimodal-popup';
@@ -973,21 +977,22 @@ class AvatarsPanel extends PSRoomPanel {
 			avatars.push([i, window.BattleAvatarNumbers?.[i] || `${i}`]);
 		}
 		const customAvatars: [string, string][] = [
-			['adrienn', 'Adrienn'], ['alainalt', 'Alain_alt'], ['amaria', 'Amaria'],
-			['amelia', 'Amelia'], ['asriel', 'Asriel'], ['aurora', 'Aurora'],
-			['charlotte', 'Charlotte'], ['florinia', 'Florinia'], ['geara', 'Geara'],
-			['julia', 'Julia'], ['lin', 'Lin'], ['radomus', 'Radomus'],
-			['saphira', 'Saphira'], ['sirius', 'Sirius'],
-			['shiv', 'Shiv'], ['shivalt', 'Shiv_alt'], ['taka', 'Taka'],
-			['titania', 'Titania'], ['tyrant', 'Tyrant'], ['zetta', 'Zetta'],
+			['alainalt', 'Alain_alt'], ['amelia', 'Amelia'], ['asriel', 'Asriel'], ['aurora', 'Aurora'],
+			['geara', 'Geara'],
+			['shiv', 'Shiv'], ['shivalt', 'Shiv_alt'], ['tyrant', 'Tyrant'], ['zetta', 'Zetta'],
 		];
 
-		return <PSPanelWrapper room={room} width={1210}><div class="pad">
+		return <PSPanelWrapper room={room} width={1210}><div class="pad"><p><label>Search avatars <input class="textbox" type="search" value={this.avatarSearch} onInput={ev => {this.avatarSearch=(ev.currentTarget as HTMLInputElement).value;this.forceUpdate();}} /></label></p>
 			<label class="optlabel"><strong>Choose an avatar or </strong>
 				<button class="button" data-cmd="/close"> Cancel</button>
 			</label>
+
+            <div class="avatar-tabs" role="tablist" aria-label="Avatar collection">{[['basic','Basic'],['reborn','Custom Reborn']].map(([id,label]) => <button class={'button'+(this.avatarTab === id ? ' cur' : '')} role="tab" aria-selected={this.avatarTab === id} tabIndex={this.avatarTab === id ? 0 : -1} id={'avatar-tab-'+id} aria-controls={'avatar-panel-'+id} onClick={() => {this.avatarTab=id;this.forceUpdate();}} onKeyDown={ev => {if (!['ArrowLeft','ArrowRight','Home','End'].includes(ev.key)) return;ev.preventDefault();this.avatarTab=ev.key === 'Home' ? 'basic' : ev.key === 'End' ? 'reborn' : id === 'basic' ? 'reborn' : 'basic';this.forceUpdate();requestAnimationFrame(() => document.getElementById('avatar-tab-'+this.avatarTab)?.focus());}}>{label}</button>)}</div>
+            <div hidden={this.avatarTab !== 'reborn'} id="avatar-panel-reborn" role="tabpanel" aria-labelledby="avatar-tab-reborn">
+            {Object.entries({'gym':'Gym Leaders','elite':'Elite Four','meteor':'Team Meteor','story':'Rivals / Story Characters'}).filter(([group,label]) => Dex.getRebornAvatars().some(row => Dex.getRebornAvatarGroup(row) === group && this.matchesAvatar(row.name + " " + row.id + " " + label))).map(([group,label]) => <section><h3>{label}</h3><div class="avatarlist reborn-avatarlist">{Dex.getRebornAvatars().slice().sort((a,b) => a.name.localeCompare(b.name)).filter(row => Dex.getRebornAvatarGroup(row) === group && this.matchesAvatar(row.name + " " + row.id + " " + label)).map(row => <button class={`option reborn-avatar-option${row.id === Dex.canonicalRebornAvatar(PS.user.avatar) ? ' cur' : ''}`} data-cmd={`/closeand /avatar ${row.id}`} title={row.name} aria-label={row.name}><img src={Dex.resolveAvatar(row.id)} alt="" /><span>{row.name}</span></button>)}</div></section>)}
+            <p style="clear:both"><a href="/sprites/trainers/REBORN-CREDITS.txt" target="_blank" rel="noopener">Reborn artwork credits and sources</a></p></div><div hidden={this.avatarTab !== 'basic'} id="avatar-panel-basic" role="tabpanel" aria-labelledby="avatar-tab-basic"><h3>Basic avatars</h3>
 			<div class="avatarlist">
-				{customAvatars.map(([avatar, label]) => (
+				{customAvatars.filter(([id,label]) => this.matchesAvatar(id + " " + label)).map(([avatar, label]) => (
 					<button
 						data-cmd={`/closeand /avatar ${avatar}`} title={`/avatar ${label}`} aria-label={label}
 						class={`option pixelated${avatar === PS.user.avatar ? ' cur' : ''}`}
@@ -1003,7 +1008,7 @@ class AvatarsPanel extends PSRoomPanel {
 							}} />
 					</button>
 				))}
-				{avatars.map(([i, avatar]) => (
+				{avatars.filter(([id,label]) => this.matchesAvatar(id + " " + label)).map(([i, avatar]) => (
 					<button
 						data-cmd={`/closeand /avatar ${avatar}`} title={`/avatar ${avatar}`}
 						class={`option pixelated${avatar === PS.user.avatar ? ' cur' : ''}`}
@@ -1011,7 +1016,7 @@ class AvatarsPanel extends PSRoomPanel {
 					></button>
 				))}
 			</div>
-			<div style="clear:left"></div>
+			<div style="clear:left"></div></div>
 			<p><button class="button" data-cmd="/close">Cancel</button></p>
 		</div></PSPanelWrapper>;
 	}

@@ -328,7 +328,7 @@ class BattleTextParser {
 		} else if (effect.startsWith('ability:') || effect.startsWith('passive:')) {
 			effect = effect.slice(8);
 		}
-		return effect.trim();
+		return effect.trim() === 'Eldritch Remedy' ? 'Curious Medicine' : effect.trim();
 	}
 
 	template(type: string, ...namespaces: (string | undefined)[]) {

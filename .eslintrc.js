@@ -11,6 +11,7 @@ module.exports = {
 		"browser": true
 	},
 	"globals": {
+		"Set": false, "WeakMap": false,
 		// Libraries
 		"_": false, "$": false, "Backbone": false, "d3": false, "html": false, "html4": false, "jQuery": false, "SockJS": false, "ColorThief": false,
 

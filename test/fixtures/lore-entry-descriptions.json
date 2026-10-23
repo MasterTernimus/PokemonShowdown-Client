@@ -57,7 +57,7 @@
   },
   "ragingheart": {
     "shortDesc": "Selected Thrash becomes Ghost and causes no ending confusion.",
-    "desc": "Directly selected Thrash becomes Ghost type, retaining its physical category, 140 power, random opposing target, 2–3-turn lock and 30% Defense-drop chance. While this ability is active, that Thrash does not cause its own ending confusion. External confusion and confusion from other moves remain. Normal types remain immune; no extra power multiplier."
+    "desc": "Directly selected Thrash becomes Ghost type, retaining its physical category, 140 power, chosen adjacent opposing target, 2–3-turn lock and 30% Defense-drop chance. While this ability is active, that Thrash does not cause its own ending confusion. External confusion and confusion from other moves remain. Normal types remain immune; no extra power multiplier."
   },
   "lunarorbit": {
     "shortDesc": "Magic Guard; entry Gravity; shares secondary boosts and one charge skip per recipient entry.",

@@ -124,9 +124,8 @@ describe('Teambuilder focus and scroll', () => {
    scrollIntoView: options => calls.push(['scroll', options])};
   const room = {el: {getBoundingClientRect: () => ({top: 55, bottom: 844})},
    curChartName: 'move1', $: () => [input]};
-  const start = source.lastIndexOf('proto.focusChartInput =');
-  const end = source.indexOf(" proto.events['focus .picker-search-input']", start);
-  new Function('proto', source.slice(start, end))(room);
+  const assignment = require('./helpers/source-functions').assignment;
+  new Function('proto', 'proto.focusChartInput = '+assignment(source,'proto.focusChartInput')+';proto.returnToPokemonEditor = '+assignment(source,'proto.returnToPokemonEditor'))(room);
   return {room, calls};
  }
  it('keeps an already visible move in place when returning from the picker', () => {

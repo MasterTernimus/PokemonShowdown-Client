@@ -58,6 +58,29 @@ describe('Ability-based Team Builder stat and sprite refresh', () => {
  });
 });
 
+describe('Permanent regional HP preview', () => {
+ it('matches actual Donphan-Rejuv HP for base imports and explicit forms', () => {
+  const room=Object.create(roomMethods);
+  room.curTeam={dex:Dex,gen:9,format:'gen9nofieldsinglesgame'};
+  const modern=Object.create(context.TeamEditorState.prototype);
+  Object.assign(modern,{dex:Dex,gen:9,isLetsGo:false,defaultLevel:100});
+  for(const species of ['Donphan','Donphan-Rejuv']) {
+   const set={species,ability:'Aevian Frost',level:100,nature:'Serious',ivs:{hp:31},evs:{hp:0}};
+   assert.equal(Dex.getAbilityFormPreview(set).species.name,'Donphan-Rejuv');
+   assert.equal(Dex.getAbilityFormPreview(set).baseStats.hp,120);
+   assert.equal(room.getStat('hp',set),381);
+   assert.equal(modern.getStat('hp',set,31),381);
+   assert.equal(set.species,species,'preview must not mutate imported sets');
+  }
+ });
+ it('restores normal HP when switching a regional set to an ordinary ability', () => {
+  const ability=Object.values(Dex.species.get('Donphan').abilities).find(a=>a!=='Aevian Frost');
+  const preview=Dex.getAbilityFormPreview({species:'Donphan-Rejuv',ability});
+  assert.equal(preview.species.name,'Donphan');
+  assert.equal(preview.baseStats.hp,90);
+ });
+});
+
 describe('Decorate availability', () => {
  it('removes stale Decorate entries after custom merges while preserving Alcremie', () => {
   const previous=global.BattleTeambuilderTable;

@@ -36358,3 +36358,10 @@ BattleMoveAnims['magmadrift'] = {anim: BattleMoveAnims['lavaplume'].anim};
 BattleMoveAnims['unownbuster'] = {anim: BattleMoveAnims['hiddenpower'].anim};
 
 BattleMoveAnims['mudbarrage'] = {anim: BattleMoveAnims['mudslap'].anim};
+
+// Signature moves reuse native scene-aware animations and reduced-animation handling.
+BattleMoveAnims['splinteredweb'] = {anim(scene, sprites) {
+ BattleMoveAnims['spiderweb'].anim(scene, sprites);
+ BattleMoveAnims['powergem'].anim(scene, sprites);
+}};
+BattleMoveAnims['scentedgeyser'] = {anim: BattleMoveAnims['waterspout'].anim};

@@ -498,7 +498,7 @@
 
 			buf += '<hr />';
 			buf += '<p><strong>Graphics</strong></p>';
-			var theme = Dex.prefs('theme');
+			var theme = Dex.prefs('theme') || 'dark';
 			var colorSchemeQuerySupported = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').media !== 'not all';
 			buf += '<p><label class="optlabel">Theme: <select name="theme" class="button"><option value="light"' + (!theme || theme === 'light' ? ' selected="selected"' : '') + '>Light</option><option value="dark"' + (theme === 'dark' ? ' selected="selected"' : '') + '>Dark</option>';
 			if (colorSchemeQuerySupported) {
@@ -754,26 +754,37 @@
 	});
 
 	var AvatarsPopup = this.AvatarsPopup = Popup.extend({
+		events: {'input [name=avatarSearch]':'filterAvatars', 'keydown [name=avatarTab]':'avatarTabKey'},
+		avatarTab: function (value) { this.$('[data-avatar-panel]').hide().filter('[data-avatar-panel="' + value + '"]').show(); this.$('[name=avatarTab]').each(function () { var active = this.value === value; $(this).attr({'aria-selected':String(active), tabindex:active ? 0 : -1}).toggleClass('cur', active); }); this.filterAvatars(); },
+		avatarTabKey: function (event) { if (['ArrowLeft', 'ArrowRight', 'Home', 'End'].indexOf(event.key) < 0) return; event.preventDefault(); var value = event.key === 'Home' ? 'basic' : event.key === 'End' ? 'reborn' : event.currentTarget.value === 'basic' ? 'reborn' : 'basic'; this.avatarTab(value); this.$('[name=avatarTab][value="' + value + '"]').focus(); },
+		filterAvatars: function (event) {
+			var query = (this.$('[name=avatarSearch]').val() || '').toLowerCase().trim();
+			this.$('.avatarlist button').each(function () { var text = ((this.title || '') + ' ' + (this.getAttribute('aria-label') || '') + ' ' + (this.getAttribute('data-avatar-search') || '') + ' ' + (this.value || '')).toLowerCase(); this.style.display = text.indexOf(query) >= 0 ? '' : 'none'; });
+			this.$('h3').each(function () { var next = $(this).next('.avatarlist'); if (next.length) $(this).toggle(next.find('button').toArray().some(function (button) { return button.style.display !== 'none'; })); });
+			this.$('.avatar-no-results').toggle(!this.$('[data-avatar-panel]:visible .avatarlist button').toArray().some(function (button) { return button.style.display !== 'none'; }));
+		},
 		type: 'semimodal',
 		initialize: function () {
 			var cur = '' + app.user.get('avatar');
 			var buf = '';
-			buf += '<p>Choose an avatar or <button name="close" class="button">Cancel</button></p>';
+			buf += '<p>Choose an avatar or <button name="close" class="button">Cancel</button></p><p><label>Search avatars <input class="textbox" name="avatarSearch" type="search" placeholder="Name or avatar ID" /></label></p><p class="avatar-no-results" style="display:none" role="status">No matching avatars.</p>';
 
+
+			var rebornGroups = {'gym':'Gym Leaders', 'elite':'Elite Four', 'meteor':'Team Meteor', 'story':'Rivals / Story Characters'};
+			buf += '<div class="avatar-tabs" role="tablist" aria-label="Avatar collection"><button class="button" name="avatarTab" value="basic" role="tab" id="avatar-tab-basic" aria-controls="avatar-panel-basic">Basic</button><button class="button" name="avatarTab" value="reborn" role="tab" id="avatar-tab-reborn" aria-controls="avatar-panel-reborn">Custom Reborn</button></div><div data-avatar-panel="reborn" id="avatar-panel-reborn" role="tabpanel" aria-labelledby="avatar-tab-reborn">';
+			var reborn = Dex.getRebornAvatars().slice().sort(function (a, b) {return a.name.localeCompare(b.name);});
+			for (var group in rebornGroups) {
+				buf += '<h3 style="clear:both">' + rebornGroups[group] + '</h3><div class="avatarlist reborn-avatarlist">';
+				reborn.filter(function (row) { return Dex.getRebornAvatarGroup(row) === group; }).forEach(function (row) {
+					buf += '<button name="setAvatar" value="' + row.id + '" class="option reborn-avatar-option' + (row.id === Dex.canonicalRebornAvatar(cur) ? ' cur' : '') + '" title="' + row.name + '" data-avatar-search="' + rebornGroups[group] + '" aria-label="' + row.name + '"><img src="' + Dex.resolveAvatar(row.id) + '" alt="" /><span>' + row.name + '</span></button>';
+				});
+				buf += '</div>';
+			}
+			buf += '<p style="clear:both"><a href="/sprites/trainers/REBORN-CREDITS.txt" target="_blank" rel="noopener">Reborn artwork credits and sources</a></p></div><div data-avatar-panel="basic" id="avatar-panel-basic" role="tabpanel" aria-labelledby="avatar-tab-basic"><h3>Basic avatars</h3>';
 			buf += '<div class="avatarlist">';
 			var customAvatars = [
-				['adrienn', 'Adrienn'],
-				['amaria', 'Amaria'],
-				['charlotte', 'Charlotte'],
-				['florinia', 'Florinia'],
-				['julia', 'Julia'],
-				['radomus', 'Radomus'],
-				['saphira', 'Saphira'],
-				['titania', 'Titania'],
 				['alainalt', 'Alain Alt'], ['amelia', 'Amelia'], ['asriel', 'Asriel'], ['aurora', 'Aurora'],
-				['geara', 'Geara'], ['lin', 'Lin'], ['sirius', 'Sirius'],
-				['shiv', 'Shiv'], ['shivalt', 'Shiv Alt'], ['taka', 'Taka'],
-				['tyrant', 'Tyrant'], ['zetta', 'Zetta']
+				['geara', 'Geara'], ['shiv', 'Shiv'], ['shivalt', 'Shiv Alt'], ['tyrant', 'Tyrant'], ['zetta', 'Zetta']
 			];
 			for (var j = 0; j < customAvatars.length; j++) {
 				var customAvatar = customAvatars[j][0];
@@ -788,10 +799,11 @@
 				var offset = '-' + (((i - 1) % 16) * 80 + 1) + 'px -' + (Math.floor((i - 1) / 16) * 80 + 1) + 'px';
 				buf += '<button name="setAvatar" value="' + i + '" style="background-position:' + offset + '" class="option pixelated' + ('' + i === cur ? ' cur' : '') + '" title="/avatar ' + i + '"></button>';
 			}
-			buf += '</div><div style="clear:left"></div>';
+			buf += '</div><div style="clear:left"></div></div>';
 
 			buf += '<p><button name="close" class="button">Cancel</button></p>';
 			this.$el.html(buf).css('max-width', 780);
+			this.avatarTab(Dex.canonicalRebornAvatar(cur).indexOf('reborn-') === 0 ? 'reborn' : 'basic');
 		},
 		setAvatar: function (avatar) {
 			// Replace avatar number with name before sending it to the server, only the client knows what to do with the numbers

@@ -57,3 +57,5 @@ caches/PokemonShowdown-Reborn/
 !test/fixtures/quarter-hp-priority-descriptions.json
 !test/fixtures/lore-entry-descriptions.json
 !client-data-provenance.json
+
+!test/warning-entry-descriptions.test.js

@@ -1,0 +1,14 @@
+Pokemon Reborn trainer portraits (v19.16 source assets)
+
+Original game and artwork: Pokemon Reborn team and respective authors.
+Readme general sprite credits: Amethyst, Crim, Jan.
+World, characters and concept: Amethyst. Additional characters: Will Dodge, Ice, Crim.
+Artwork/media remain the property of their respective authors. These credits do not claim per-portrait authorship.
+
+Original Readme mirror: https://github.com/Piloxal-po/Pokemon_reborn_fr/blob/main/Readme.txt
+Official reuse guidance: https://www.rebornevo.com/pr/gamefaq/
+Reborn permits borrowing resources with Readme credits; not for promotion of hate/intolerance. No blanket replacement license is asserted.
+Extraction/source hosting: Andrew Foote, https://andrew-foote.github.io/reborn-db-site/
+Extraction provenance: https://github.com/Andrew-Foote/reborn-db/blob/master/reborndb/extractors/trainertypes.py
+
+Original PNG bytes preserved. Full per-image source URLs and SHA256 checksums: reborn-sources.json

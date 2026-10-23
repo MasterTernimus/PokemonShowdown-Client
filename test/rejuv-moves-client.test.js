@@ -16,7 +16,7 @@ describe('Rejuvenation signature generated data and move previews',()=>{
   const move=Dex.moves.get(id);assert(move.exists);assert.equal(move.priority,0);assert.equal(move.target,id==='aquabatics'?'self':'adjacentFoe');assert.equal(!!rawMoves[id].drain,id==='spectralscream');assert(move.desc);
   const actual=Object.keys(learnsets).filter(s=>learnsets[s].learnset?.[id]).sort();assert.deepEqual(actual,[...users,...(id==='spectralscream'?['spiritomb','banette','cursola']:[])].sort());
  });
- it('preserves static selected slots for all recipients',()=>{for(const[id,slots]of Object.entries(fixture.slots))assert.deepEqual(Dex.species.get(id).abilities,require('./fixtures/mega-approval-overlays').abilities(id,slots),id);});
+ it('preserves static selected slots for all recipients',()=>{for(const[id,slots]of Object.entries(fixture.slots))assert.deepEqual(Dex.species.get(id).abilities,require('./fixtures/mega-approval-overlays').abilities(id,id==='galvantula'?{...slots,S:'Aevian Web'}:slots),id);});
  it('removed signatures are absent from all selected ability slots; Mega Seviper retains its passive',()=>{
   const ids=Object.keys(fixture.learnsets);for(const[id,s]of Object.entries(BattlePokedex))for(const ability of Object.values(s.abilities||{}))assert(!ids.includes(toID(ability)) || (id==='seviper' && toID(ability)==='venamskiss'),id+'/'+ability);
   for(const id of ids.filter(x=>x!=='venamskiss'))assert(!Dex.abilities.get(id).exists,id);

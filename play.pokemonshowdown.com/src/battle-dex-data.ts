@@ -1433,6 +1433,8 @@ class Ability implements Effect {
 	constructor(id: ID, name: string, data: any) {
 		if (!data || typeof data !== 'object') data = {};
 		if (data.name) name = data.name;
+		// Display-only: retain distinct IDs and export names for the Slowking passive.
+		if (id === 'eldritchremedy') name = 'Curious Medicine';
 		this.name = Dex.sanitizeName(name);
 		this.id = id;
 		this.gen = data.gen || 0;

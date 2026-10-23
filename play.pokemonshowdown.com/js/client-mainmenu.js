@@ -2,6 +2,8 @@
 
 	this.MainMenuRoom = this.Room.extend({
 		type: 'mainmenu',
+		openPublicFieldGuide: function () { window.openPublicFieldGuide(); },
+		openRulesEncyclopedia: function () { window.openRulesEncyclopedia(); },
 		customCalculator: function () { if (!app.rooms.calculator) app.addRoom('calculator', CustomCalculatorRoom, true, 'Calculator'); app.focusRoom('calculator'); app.topbar.updateTabbar(); },
 		tinyWidth: 340,
 		bestWidth: 628,
@@ -24,6 +26,8 @@
 			'keyup input': 'selectTeammate'
 		},
 		initialize: function () {
+			this.listenTo(app, 'response:interactiontest', function (data) { if (data && data.open) window.openInteractionTest(); });
+			this.listenTo(app, 'response:customrules', function (data) { if (data && data.open) window.openRulesEncyclopedia(); });
 			this.$el.addClass('scrollable');
 
 			// left menu 2 (high-res: right, low-res: top)
@@ -53,8 +57,8 @@
 
 			buf += '<div class="menugroup">';
 			buf += '<p><button class="button mainmenu2" name="joinRoom" value="teambuilder">Teambuilder</button></p>';
-			buf += '<p><button class="button mainmenu3" name="customCalculator">Custom calculator</button></p>';
-			buf += '<p><button class="button mainmenu3" name="joinRoom" value="ladder">Ladder</button></p>';
+			buf += '<p><button class="button mainmenu3" name="customCalculator">Custom calculator</button></p><p><button class="button mainmenu3" name="openPublicFieldGuide">Field Guide</button></p>';
+
 			buf += '<p><button class="button mainmenu4" name="send" value="/smogtours">Tournaments</button></p>';
 			buf += '</div>';
 
@@ -1685,6 +1689,7 @@
 			this.requestCalculator('');
 		},
 		requestCalculator: function (payload) {
+			this.calculatorLastSentAt = Date.now();
 			var self = this;
 			clearTimeout(this.calcTimer);
 			this.calcTimer = setTimeout(function () { self.$('.calc-status').text('No response. Connect to a server with the custom calculator installed, then use Retry connection.'); self.$('button[name=calculate]').prop('disabled', false); self.$el.attr('aria-busy', 'false'); self.$('.calc-status').addClass('calc-error'); }, 18000);
@@ -1773,8 +1778,7 @@
 
 		acceptTeamBuilderSet: function () {
 			var pending = app.pendingCalculatorSet; if (!pending) return;
-			try { this.writeActor(pending.slot, pending.set); if (pending.slot === 0 && pending.set.moves && pending.set.moves.length) this.$('[name=calc-move]').val(pending.set.moves[0]); this.scenarioEdited(); app.pendingCalculatorSet = null; this.$('.calc-status').text('Loaded ' + pending.set.species + ' from Team Builder. Choose the matchup and calculate.'); }
-			catch (err) { this.$('.calc-status').addClass('calc-error').text(err.message); }
+			try { this.writeActor(pending.slot, pending.set); if (pending.slot === 0 && pending.set.moves && pending.set.moves.length) this.$('[name=calc-move]').val(pending.set.moves[0]); this.scenarioEdited(); app.pendingCalculatorSet = null; this.$('.calc-status').text('Loaded ' + pending.set.species + ' from Team Builder. Choose the matchup and calculate.'); } catch (err) { this.$('.calc-status').addClass('calc-error').text(err.message); }
 		},
 		renderResolvedSummary: function (resolved) {
 			if (!resolved) return '';
@@ -1801,8 +1805,7 @@
 			if (event.currentTarget.value === '') return;
 			var entry = this.savedCalcSets[Number(event.currentTarget.value)], slot = Number($(event.currentTarget).attr('data-slot'));
 			if (!entry) return;
-			try { this.writeActor(slot, entry.set); if (slot === 0 && entry.set.moves && entry.set.moves.length) this.$('[name=calc-move]').val(entry.set.moves[0]); this.scenarioEdited(); }
-			catch (err) { this.$('.calc-status').addClass('calc-error').text(err.message); }
+			try { this.writeActor(slot, entry.set); if (slot === 0 && entry.set.moves && entry.set.moves.length) this.$('[name=calc-move]').val(entry.set.moves[0]); this.scenarioEdited(); } catch (err) { this.$('.calc-status').addClass('calc-error').text(err.message); }
 		},
 		refreshCalcMoves: function () {
 			var self = this, actor = this.readActor(0), moves = actor.moves || [];
@@ -1816,8 +1819,8 @@
 				this.writeActor(0, defender); this.writeActor(1, attacker);
 				this.$('[name=calc-move]').val(defender.moves && defender.moves[0] || '');
 				this.$('.calc-saved-set').val('');
-				this.$('[name=reflect], [name=lightscreen], [name=auroraveil]').prop('checked', false);
-				this.scenarioEdited(); this.$('.calc-status').text('Sides swapped. Defender screens cleared; choose the new attacker’s move.');
+				this.$('[name=reflect], [name=lightscreen], [name=auroraveil], .calc-side-controls [data-condition=reflect], .calc-side-controls [data-condition=lightscreen], .calc-side-controls [data-condition=auroraveil]').prop('checked', false);
+				this.scenarioEdited(); this.$('.calc-status').text('Pokémon swapped. Screens cleared on both sides; other side conditions stay on their field sides. Choose the new attacker’s move.');
 			} catch (err) { this.$('.calc-status').addClass('calc-error').text(err.message); }
 		},
 		validateCalcInputs: function () {
@@ -1836,9 +1839,9 @@
 			[['species', 'Pokémon', 'Mew'], ['ability', 'Ability', 'No Ability'], ['item', 'Item', ''], ['nature', 'Nature', 'Serious'], ['level', 'Level', '100'], ['hpPercent', 'Current HP %', '100'], ['rageFistBonus', 'Rage Fist bonus (0–100)', '0']].forEach(function (f) {
 				buf += '<label>' + f[1] + '<input class="textbox" autocomplete="off" list="calc-list-' + f[0] + '" name="' + f[0] + '" value="' + f[2] + '" /></label>';
 			});
-            [['threadShelterGuard', 'Thread Shelter guard ready'], ['buriedTrioSpent', 'Buried Trio already used'], ['elasticBellySpent', 'Elastic Belly already used'], ['feedbackMarked', 'Marked by active Feedback foe']].forEach(function (f) {
-                buf += '<label>' + f[1] + '<select name="' + f[0] + '"><option value="false">No</option><option value="true">Yes</option></select></label>';
-            });
+			[['threadShelterGuard', 'Thread Shelter guard ready'], ['silentFlightSpent', 'Silent Flight protection already used'], ['buriedTrioSpent', 'Buried Trio already used'], ['elasticBellySpent', 'Elastic Belly already used'], ['feedbackMarked', 'Marked by active Feedback foe']].forEach(function (f) {
+				buf += '<label>' + f[1] + '<select name="' + f[0] + '"><option value="false">No</option><option value="true">Yes</option></select></label>';
+			});
 			buf += '<label>Gender<select name="gender"><option value="">Engine default</option><option value="M">Male</option><option value="F">Female</option><option value="N">Genderless</option></select></label>';
 			buf += '<label>Status<select name="status"><option value="">Entry state</option><option value="brn">Burn</option><option value="par">Paralysis</option><option value="psn">Poison</option><option value="tox">Toxic</option><option value="slp">Sleep</option><option value="frz">Freeze</option></select></label>';
 			buf += '<label>Activate<select name="gimmick"><option value="">None</option><option value="mega">Mega / Ultra (requires item)</option><option value="tera">Tera</option><option value="gmax">Gigantamax</option></select></label></div>';
@@ -1908,7 +1911,7 @@
 			$actor.find('input,select').each(function () {
 				var key = this.name; if (!key) return;
 				if (key.indexOf('-') >= 0) { var parts = key.split('-'); result[parts[0]][parts[1]] = Number(this.value); } else if (key === 'level' || key === 'hpPercent' || key === 'rageFistBonus') result[key] = Number(this.value);
-				else if (["threadShelterGuard","buriedTrioSpent","elasticBellySpent","feedbackMarked"].includes(key)) result[key] = this.value === 'true';
+				else if (["threadShelterGuard", "silentFlightSpent", "buriedTrioSpent", "elasticBellySpent", "feedbackMarked"].includes(key)) result[key] = this.value === 'true';
 				else if (key === 'moves') { if (this.value.trim()) result.moves = this.value.split(',').map(function (m) { return m.trim(); }); } else result[key] = this.value;
 			});
 			return result;
@@ -1919,7 +1922,7 @@
 			$actor.find('select').each(function () {
 				if (actor[this.name] === undefined) return;
 				var value = actor[this.name];
-                if (['threadShelterGuard', 'buriedTrioSpent', 'elasticBellySpent', 'feedbackMarked'].includes(this.name)) { if (typeof value !== 'boolean') throw new Error('Invalid ' + this.name + '.'); return; }
+				if (['threadShelterGuard', 'silentFlightSpent', 'buriedTrioSpent', 'elasticBellySpent', 'feedbackMarked'].includes(this.name)) { if (typeof value !== 'boolean') throw new Error('Invalid ' + this.name + '.'); return; }
 				if (typeof value !== 'string' || !Array.from(this.options).some(function (option) { return option.value === value; })) throw new Error('Unsupported ' + this.name + '.');
 			});
 			['species', 'ability', 'item', 'nature', 'teraType'].forEach(function (key) {
@@ -1929,7 +1932,7 @@
 				if (actor[key] !== undefined && (typeof actor[key] !== 'number' || !Number.isInteger(actor[key]) || actor[key] < 1 || actor[key] > 100)) throw new Error('Invalid ' + key + '.');
 			});
 			if (actor.rageFistBonus !== undefined && (typeof actor.rageFistBonus !== 'number' || !Number.isFinite(actor.rageFistBonus) || actor.rageFistBonus < 0 || actor.rageFistBonus > 100)) throw new Error('Invalid Rage Fist bonus.');
-			["threadShelterGuard","buriedTrioSpent","elasticBellySpent","feedbackMarked"].forEach(function (key) { if (actor[key] !== undefined && typeof actor[key] !== 'boolean') throw new Error('Invalid ' + key + '.'); });
+			["threadShelterGuard", "silentFlightSpent", "buriedTrioSpent", "elasticBellySpent", "feedbackMarked"].forEach(function (key) { if (actor[key] !== undefined && typeof actor[key] !== 'boolean') throw new Error('Invalid ' + key + '.'); });
 			if (actor.moves !== undefined && (!Array.isArray(actor.moves) || actor.moves.length > 4 || actor.moves.some(function (move) { return typeof move !== 'string'; }))) throw new Error('Invalid moveset.');
 			['evs', 'ivs', 'boosts'].forEach(function (kind) {
 				var values = actor[kind];
@@ -1947,7 +1950,7 @@
 			$actor.find('input,select').each(function () {
 				var key = this.name; if (!key) return;
 				if (key.indexOf('-') >= 0) { var parts = key.split('-'); this.value = actor[parts[0]] && actor[parts[0]][parts[1]] !== undefined ? actor[parts[0]][parts[1]] : parts[0] === 'ivs' ? 31 : 0; } else if (key === 'moves') this.value = (actor.moves || []).join(', ');
-				else this.value = actor[key] === undefined ? key === 'level' || key === 'hpPercent' ? 100 : key === 'rageFistBonus' ? 0 : ['threadShelterGuard', 'buriedTrioSpent', 'elasticBellySpent', 'feedbackMarked'].includes(key) ? 'false' : key === 'nature' ? 'Serious' : key === 'teraType' ? 'Stellar' : '' : actor[key];
+				else this.value = actor[key] === undefined ? key === 'level' || key === 'hpPercent' ? 100 : key === 'rageFistBonus' ? 0 : ['threadShelterGuard', 'silentFlightSpent', 'buriedTrioSpent', 'elasticBellySpent', 'feedbackMarked'].includes(key) ? 'false' : key === 'nature' ? 'Serious' : key === 'teraType' ? 'Stellar' : '' : actor[key];
 			});
 			this.scenarioEdited();
 		},
@@ -2029,7 +2032,13 @@
 			data.results.forEach(function (r) { html += '<tr><th>' + self.escape(r.label) + '</th><td>' + r.min + '–' + r.max + '</td><td>' + r.minPercent.toFixed(1) + '–' + r.maxPercent.toFixed(1) + '%</td><td>' + r.minNetLoss + '–' + r.maxNetLoss + '</td><td>' + r.kos + '/' + data.samples + ' (' + (100 * r.kos / data.samples).toFixed(1) + '%)</td></tr>'; });
 			html += '</table></div><p>Samples do not guarantee a KO.</p><details><summary>Battle details</summary><pre style="white-space:pre-wrap">' + this.escape(JSON.stringify(data.resolved, null, 2)) + '\n' + this.escape(data.exampleLog.join('\n')) + '</pre></details>';
 			this.$('.calc-results').html(html);
+			var otherTargets = data.results.slice(2).filter(function (row) {return row.max > 0;});
+			if (otherTargets.length) this.$('.calc-result-card').append($('<p class="calc-other-targets"></p>').text('Other affected targets: ' + otherTargets.map(function (row) {return row.label + ' ' + row.min + '–' + row.max + ' HP';}).join('; ') + '. The headline shows only the selected defender; remaining hits may chain after a KO. See the per-target table.'));
+
+			if (data.powerDistribution) this.$('.calc-result-card').append($('<p class="calc-power-branches"></p>').text('Power outcomes: ' + data.powerDistribution.map(function (branch) { return branch.power + ' BP (' + Math.round(branch.probability * 100) + '%)'; }).join(' / ') + '. Each use rolls once; a sampled range may omit an outcome.'));
+
 			var card = this.$('.calc-result-card').detach();
+			if (data.resolved && data.resolved.actors && data.resolved.actors.length >= 2) card.find('.calc-eyebrow').text(data.resolved.actors[0].species + ' → ' + data.resolved.actors[1].species + ' · SAMPLED');
 			var detail = $('<details class="calc-result-details"><summary>Damage table &amp; battle details</summary></details>');
 			detail.append(this.renderResolvedSummary(data.resolved), this.$('.calc-results').contents().detach());
 			this.$('.calc-results').append(card, detail);
@@ -2050,47 +2059,363 @@
 
 // Keep all calculator inputs and engine requests; reorganize the actual workspace.
 (function () {
- [window.CustomCalculatorPopup.prototype, window.CustomCalculatorRoom.prototype].forEach(function (p) {
-  p.events = Object.assign({}, p.events, {'change .calc-form-choice': 'changeCalcForm'});
-  p.changeCalcForm = function (e) { this.chooseSpecies($(e.currentTarget).closest('.calc-actor').attr('data-slot') + ':' + e.currentTarget.value); };
-  var render = p.renderCalculator;
-  p.renderCalculator = function () {
-   var result = render.apply(this, arguments), matchup = this.$('.calc-matchup').first().addClass('calc-primary-matchup');
-   var center = $('<section class="calc-center" aria-label="Move and damage result"></section>');
-   center.insertAfter(matchup.children().first());
-   center.append(this.$('.calc-action'), this.$('.calc-status'), this.$('.calc-results'));
-   this.$('[name=swapCalcActors]').parent().prependTo(center);
-   var conditions = this.$('.calc-conditions');
-   var conditionDrawer = $('<details class="calc-battle-options"><summary>Battle conditions · field, weather &amp; screens</summary></details>').insertAfter(matchup);
-   conditionDrawer.append(conditions);
-   this.$('.calc-actor').each(function () {
-    var actor = $(this), fields = actor.children('.calc-fields');
-    var load = actor.find('.calc-load-set');
-    var drawer = $('<details class="calc-load-details"><summary>Load a saved set</summary></details>').insertBefore(load); drawer.append(load);
-    actor.find('.calc-ability-slots').prependTo(actor.find('.calc-component-details'));
-    actor.find('.calc-component-details > summary').prependTo(actor.find('.calc-component-details'));
-    fields.find('[name=nature]').closest('label').prependTo(actor.find('.calc-advanced > .calc-fields'));
-    var options = $('<details class="calc-actor-options"><summary>Level, status &amp; transformation</summary><div class="calc-fields"></div></details>').insertAfter(fields);
-    ['level','gender','status','gimmick'].forEach(function (name) { fields.find('[name=' + name + ']').closest('label').appendTo(options.find('.calc-fields')); });
-    fields.find('[name=species]').closest('label').after('<label class="calc-form-label">Form<select class="calc-form-choice" aria-label="Battle form"></select></label>');
-   });
-   this.refreshActors();
-   return result;
-  };
-  var refresh = p.refreshActors;
-  p.refreshActors = function () {
-   var result = refresh.apply(this, arguments), self = this;
-   this.$('.calc-actor').each(function () {
-    var actor = $(this), species = Dex.species.get(actor.find('[name=species]').val());
-    var family = (self.metadata.species || []).filter(function (entry) { return Dex.species.get(entry.name).baseSpecies === species.baseSpecies; });
-    actor.find('.calc-form-choice').html(family.map(function (entry) { return '<option' + (toID(entry.name) === species.id ? ' selected' : '') + '>' + self.escape(entry.name) + '</option>'; }).join(''));
-    actor.find('.calc-form-label').prop('hidden', family.length < 2);
-    actor.find('.calc-passives').remove();
-    var info = (self.metadata.species || []).find(function (entry) { return toID(entry.name) === species.id; });
-    if (info && info.passives && info.passives.length) actor.find('.calc-identity').after('<div class="calc-passives"><b>Passives</b> ' + info.passives.map(function (id) { var a = Dex.getPassiveAbilityDetails(id); return '<details class="passive-details"><summary>' + self.escape(a.name) + ': ' + self.escape(a.shortDesc) + '</summary><div>' + self.escape(a.desc || a.shortDesc) + '</div></details>'; }).join('') + '</div>');
-    actor.find('.calc-component-details').toggle(!!actor.find('.calc-ability-slots button').length || !!actor.find('.calc-components').text().match(/^Components:/));
-   });
-   return result;
-  };
- });
+	[window.CustomCalculatorPopup.prototype, window.CustomCalculatorRoom.prototype].forEach(function (p) {
+		p.events = Object.assign({}, p.events, {'change .calc-form-choice': 'changeCalcForm'});
+		p.changeCalcForm = function (e) { this.chooseSpecies($(e.currentTarget).closest('.calc-actor').attr('data-slot') + ':' + e.currentTarget.value); };
+		var render = p.renderCalculator;
+		p.renderCalculator = function () {
+			var result = render.apply(this, arguments), matchup = this.$('.calc-matchup').first().addClass('calc-primary-matchup');
+			var center = $('<section class="calc-center" aria-label="Move and damage result"></section>');
+			center.insertAfter(matchup.children().first());
+			center.append(this.$('.calc-action'), this.$('.calc-status'), this.$('.calc-results'));
+			this.$('[name=swapCalcActors]').parent().prependTo(center);
+			var conditions = this.$('.calc-conditions');
+			var conditionDrawer = $('<details class="calc-battle-options"><summary>Battle conditions · field, weather &amp; screens</summary></details>').insertAfter(matchup);
+			conditionDrawer.append(conditions);
+			this.$('.calc-actor').each(function () {
+				var actor = $(this), fields = actor.children('.calc-fields');
+				var load = actor.find('.calc-load-set');
+				var drawer = $('<details class="calc-load-details"><summary>Load a saved set</summary></details>').insertBefore(load); drawer.append(load);
+				actor.find('.calc-ability-slots').prependTo(actor.find('.calc-component-details'));
+				actor.find('.calc-component-details > summary').prependTo(actor.find('.calc-component-details'));
+				fields.find('[name=nature]').closest('label').prependTo(actor.find('.calc-advanced > .calc-fields'));
+				var options = $('<details class="calc-actor-options"><summary>Level, status &amp; transformation</summary><div class="calc-fields"></div></details>').insertAfter(fields);
+				['level', 'gender', 'status', 'gimmick'].forEach(function (name) { fields.find('[name=' + name + ']').closest('label').appendTo(options.find('.calc-fields')); });
+				fields.find('[name=species]').closest('label').after('<label class="calc-form-label">Form<select class="calc-form-choice" aria-label="Battle form"></select></label>');
+			});
+			this.refreshActors();
+			return result;
+		};
+		var refresh = p.refreshActors;
+		p.refreshActors = function () {
+			var result = refresh.apply(this, arguments), self = this;
+			this.$('.calc-actor').each(function () {
+				var actor = $(this), species = Dex.species.get(actor.find('[name=species]').val());
+				var family = (self.metadata.species || []).filter(function (entry) { return Dex.species.get(entry.name).baseSpecies === species.baseSpecies; });
+				actor.find('.calc-form-choice').html(family.map(function (entry) { return '<option' + (toID(entry.name) === species.id ? ' selected' : '') + '>' + self.escape(entry.name) + '</option>'; }).join(''));
+				actor.find('.calc-form-label').prop('hidden', family.length < 2);
+				actor.find('.calc-passives').remove();
+				var info = (self.metadata.species || []).find(function (entry) { return toID(entry.name) === species.id; });
+				if (info && info.passives && info.passives.length) actor.find('.calc-identity').after('<div class="calc-passives"><b>Passives</b> ' + info.passives.map(function (id) { var a = Dex.getPassiveAbilityDetails(id); return '<details class="passive-details"><summary>' + self.escape(a.name) + ': ' + self.escape(a.shortDesc) + '</summary><div>' + self.escape(a.desc || a.shortDesc) + '</div></details>'; }).join('') + '</div>');
+				actor.find('.calc-component-details').toggle(!!actor.find('.calc-ability-slots button').length || !!actor.find('.calc-components').text().match(/^Components:/));
+			});
+			return result;
+		};
+	});
+})();
+
+// Compact engine-backed comparison workspace. No independent damage formula.
+(function () {
+	[window.CustomCalculatorPopup.prototype, window.CustomCalculatorRoom.prototype].forEach(function (p) {
+		p.events = Object.assign({}, p.events, {'input .calc-move-entry': 'editComparisonMove'});
+		p.cancelComparison = function () {
+			clearTimeout(this.comparisonTimer); clearTimeout(this.calcTimer);
+			this.comparisonGeneration = (this.comparisonGeneration || 0) + 1;
+			this.comparisonQueue = null; this.comparisonTask = null; this.comparisonRequest = null;
+			this.requestId = null; this.pendingScenario = null;
+		};
+		['calculate', 'retryCalculator', 'remove'].forEach(function (name) {
+			var original = p[name];
+			p[name] = function () {this.cancelComparison(); return original.apply(this, arguments);};
+		});
+		var edited = p.scenarioEdited;
+		p.scenarioEdited = function (event) {
+			if (event && $(event.target).hasClass('calc-move-entry')) {var a = $(event.target).closest('.calc-actor'); a.find('[name=moves]').val(a.find('.calc-move-entry').map(function () {return this.value.trim();}).get().filter(Boolean).join(', '));}
+			this.cancelComparison(); this.comparisonResults = {};
+			var result = edited.apply(this, arguments);
+			this.$('.calc-move-result').text('Not calculated');
+			this.refreshFieldState();
+			return result;
+		};
+		p.editComparisonMove = function (e) {
+			var actor = $(e.target).closest('.calc-actor');
+			actor.find('[name=moves]').val(actor.find('.calc-move-entry').map(function () {return this.value.trim();}).get().filter(Boolean).join(', '));
+			this.scenarioEdited();
+		};
+		var write = p.writeActor;
+		p.writeActor = function (index, actor) {
+			var result = write.apply(this, arguments);
+			this.$('.calc-actor[data-slot=' + index + '] .calc-move-entry').each(function (i) {this.value = (actor.moves || [])[i] || '';});
+			this.refreshActors(); return result;
+		};
+		p.refreshFieldState = function () {
+			var info = (this.metadata.fieldStates || {})[this.$('[name=calc-field]').val()];
+			this.$('.calc-field-state').each(function () {$(this).prop('hidden', !info || $(this).attr('data-state') !== info.key);});
+		};
+		var refresh = p.refreshActors;
+		p.refreshActors = function () {
+			var result = refresh.apply(this, arguments), self = this;
+			var active = this.$('.calc-actor').map(function () {
+				var actor = $(this), species = Dex.species.get(actor.find('[name=species]').val());
+				var info = (self.metadata.species || []).find(function (entry) {return toID(entry.name) === species.id;});
+				return [actor.find('[name=ability]').val()].concat((self.metadata.abilityComponents || {})[toID(actor.find('[name=ability]').val())] || [], info && info.passives || []).map(toID);
+			}).get();
+			this.$('.calc-actor').each(function () {
+				var actor = $(this), species = Dex.species.get(actor.find('[name=species]').val()), ability = toID(actor.find('[name=ability]').val());
+				var info = (self.metadata.species || []).find(function (entry) {return toID(entry.name) === species.id;});
+				var effects = [ability].concat(((self.metadata.abilityComponents || {})[ability] || []).map(toID), info && info.passives || []);
+				var moves = (actor.find('[name=moves]').val() || '').split(',').map(toID);
+				var relevant = {rageFistBonus:moves.includes('ragefist') || toID(self.$('[name=calc-move]').val()) === 'ragefist', threadShelterGuard:effects.includes('threadshelter'), silentFlightSpent:effects.includes('silentflight'), buriedTrioSpent:effects.includes('buriedtrio'), elasticBellySpent:effects.includes('elasticbelly'), feedbackMarked:active.includes('feedback')};
+				Object.keys(relevant).forEach(function (key) {var input = actor.find('[name=' + key + ']'); input.closest('label').prop('hidden', !relevant[key]); if (!relevant[key]) input.val(key === 'rageFistBonus' ? '0' : 'false');});
+				actor.find('.calc-state-options').prop('hidden', !Object.keys(relevant).some(function (k) {return relevant[k];}));
+				actor.find('.calc-passives .passive-details > summary').each(function (i) {$(this).text(Dex.abilities.get((info && info.passives || [])[i]).name);});
+				actor.find('.calc-base-stat').each(function () {$(this).text((info && info.baseStats || species.baseStats || {})[$(this).attr('data-stat')] || '—');});
+				actor.find('.calc-move-entry').each(function (i) {if (document.activeElement !== this) this.value = (actor.find('[name=moves]').val() || '').split(',').map(function (m) {return m.trim();})[i] || '';});
+			});
+			return result;
+		};
+		var scenario = p.scenario;
+		p.scenario = function () {
+			var result = scenario.apply(this, arguments), self = this;
+			if (!this.$('.calc-side-controls').length) return result;
+			result.sideConditions = [0, 1].map(function (i) {return self.$('.calc-side-controls[data-side=' + i + '] input:checked').map(function () {return $(this).attr('data-condition');}).get();});
+			result.screens = [];
+			result.rooms = this.$('.calc-room-controls input:checked').map(function () {return $(this).attr('data-condition');}).get();
+			result.fieldState = {};
+			this.$('.calc-field-state:not([hidden]) select').each(function () {result.fieldState[$(this).attr('data-state')] = Number(this.value);});
+			return result;
+		};
+		// Preserve legacy exported scenarios and round-trip the new explicit state.
+		var importScenario = p.importScenario;
+		p.importScenario = function () {
+			var text = this.$('[name=calc-json]').val(), data;
+			try {
+				data = JSON.parse(text); var clean = Object.assign({}, data); delete clean.sideConditions; delete clean.rooms; delete clean.fieldState;
+				if (data.sideConditions && (!Array.isArray(data.sideConditions) || data.sideConditions.length !== 2 || data.sideConditions.some(function (side) {return !Array.isArray(side) || side.some(function (c) {return !(this.metadata.sideConditions || []).includes(c);}, this);}, this))) throw Error('Unsupported side conditions');
+				if (data.rooms && (!Array.isArray(data.rooms) || data.rooms.some(function (c) {return !(this.metadata.rooms || []).includes(c);}, this))) throw Error('Unsupported rooms');
+				var state = data.fieldState || {}; if (Object.keys(state).some(function (k) {return !['shortCircuit', 'crystalCavern'].includes(k) || !Number.isInteger(state[k]) || state[k] < 0 || state[k] > (k === 'shortCircuit' ? 4 : 3);})) throw Error('Invalid field state');
+				this.$('[name=calc-json]').val(JSON.stringify(clean)); importScenario.call(this);
+				if (this.$('.calc-status').text().indexOf('Invalid scenario:') === 0) return;
+				this.$('.calc-side-controls input,.calc-room-controls input').prop('checked', false);
+				var self = this; (data.sideConditions || [[], data.screens || []]).forEach(function (side, i) {side.forEach(function (c) {self.$('.calc-side-controls[data-side=' + i + '] [data-condition=' + c + ']').prop('checked', true);});});
+				(data.rooms || []).forEach(function (c) {self.$('.calc-room-controls [data-condition=' + c + ']').prop('checked', true);});
+				this.$('.calc-field-state select').each(function () {this.value = state[$(this).attr('data-state')] || 0;}); this.refreshFieldState();
+			} catch (e) {this.$('.calc-status').text('Invalid scenario: ' + e.message);} finally {this.$('[name=calc-json]').val(text);}
+		};
+		p.compareMoves = function (value) {
+			this.cancelComparison();
+			var self = this, base = this.scenario(), tasks = [];
+			[0, 1].forEach(function (side) {
+				(base.actors[side].moves || []).forEach(function (move, index) {
+					if (value && value !== side + ':' + index) return;
+					var task = JSON.parse(JSON.stringify(base)); task.move = move;
+					if (side) {task.actors = [base.actors[1], base.actors[0], base.actors[3], base.actors[2]]; task.sideConditions = [base.sideConditions[1], base.sideConditions[0]];}
+					tasks.push(Object.freeze({side:side, index:index, scenario:task, json:JSON.stringify(task), generation:self.comparisonGeneration}));
+				});
+			});
+			if (!tasks.length) {this.$('.calc-status').text('Enter at least one move in either Pokémon’s four move slots.'); return;}
+			this.comparisonQueue = tasks; this.comparisonSnapshot = JSON.stringify(base); this.comparisonResults = {}; this.nextComparison();
+		};
+		p.nextComparison = function () {
+			if (!this.comparisonQueue) return;
+			var task = this.comparisonQueue.shift();
+			if (!task) {this.comparisonQueue = null; this.$('.calc-status').text('Comparisons complete. Each row is an independent sampled action, not a guaranteed range or KO probability.'); this.$el.attr('aria-busy', 'false'); return;}
+			this.comparisonTask = task; this.$('.calc-status').text('Sampling ' + task.scenario.actors[0].species + ' → ' + task.scenario.actors[1].species + ': ' + task.scenario.move + '…');
+			this.$el.attr('aria-busy', 'true'); var self = this;
+			clearTimeout(this.comparisonTimer); this.comparisonTimer = setTimeout(function () {if (!self.comparisonQueue || task.generation !== self.comparisonGeneration || self.comparisonTask !== task) return; self.comparisonSentAt = Date.now(); self.requestCalculator(task.json); self.comparisonRequest = Object.freeze({id:self.requestId, task:task, generation:task.generation});}, Math.max(0, 1100 - (Date.now() - (this.calculatorLastSentAt || 0))));
+		};
+		var receive = p.receiveCalculator;
+		p.receiveCalculator = function (data) {
+			if (this.comparisonQueue) {
+				var active = this.comparisonRequest;
+				if (!active || active.generation !== this.comparisonGeneration || active.task !== this.comparisonTask || !data || data.requestId !== active.id || this.requestId !== active.id) return;
+				if (this.comparisonSnapshot !== JSON.stringify(this.scenario())) {this.scenarioEdited(); return;}
+				clearTimeout(this.calcTimer); var task = active.task, key = task.side + ':' + task.index;
+				this.comparisonRequest = null;
+				var cell = this.$('.calc-actor[data-slot=' + task.side + '] [data-result=' + task.index + ']');
+				if (data.error) {cell.text(data.error).addClass('calc-error');} else {
+					var r = data.results[1]; cell.removeClass('calc-error').text(r.minPercent.toFixed(1) + '–' + r.maxPercent.toFixed(1) + '% · ' + r.kos + '/' + data.samples + ' sample KOs');
+					if (data.powerDistribution) cell.attr('title', data.powerDistribution.map(function (branch) {return branch.power + ' BP: ' + Math.round(branch.probability * 100) + '%';}).join('; ') + '; sampled range may omit a branch.'); else cell.removeAttr('title');
+					this.comparisonResults[key] = data;
+					this.pendingScenario = {json:JSON.stringify(this.scenario()), revision:this.scenarioRevision}; receive.call(this, data);
+					var resolvedActors = data.resolved && data.resolved.actors || task.scenario.actors;
+					this.$('.calc-result-card .calc-eyebrow').text(resolvedActors[0].species + ' → ' + resolvedActors[1].species + ' · SAMPLED');
+				}
+				this.requestId = null; this.pendingScenario = null;
+				this.nextComparison(); return;
+			}
+			return receive.apply(this, arguments);
+		};
+		var render = p.renderCalculator;
+		p.renderCalculator = function () {
+			var result = render.apply(this, arguments), self = this;
+			this.$el.addClass('calc-compact');
+			this.$('.calc-intro').html('Compare four moves on each side using this server’s custom battle engine. <strong>Observed samples—not guaranteed damage ranges.</strong>');
+			var center = this.$('.calc-center'), conditions = this.$('.calc-conditions'); conditions.prependTo(center); this.$('.calc-battle-options').remove();
+			this.$('.calc-screens').hide();
+			var sideHTML = '<div class="calc-sides">'; [0, 1].forEach(function (i) {sideHTML += '<fieldset class="calc-side-controls" data-side="' + i + '"><legend>' + (i ? 'Right side' : 'Left side') + '</legend>'; (self.metadata.sideConditions || []).forEach(function (id) {sideHTML += '<label><input type="checkbox" data-condition="' + id + '" />' + self.escape(Dex.conditions ? Dex.conditions.get(id).name : ({reflect:'Reflect', lightscreen:'Light Screen', auroraveil:'Aurora Veil', tailwind:'Tailwind', safeguard:'Safeguard', mist:'Mist'})[id]) + '</label>';}); sideHTML += '</fieldset>';}); sideHTML += '</div><div class="calc-room-controls">';
+			(this.metadata.rooms || []).forEach(function (id) {sideHTML += '<label><input type="checkbox" data-condition="' + id + '" />' + self.escape({gravity:'Gravity', magicroom:'Magic Room', wonderroom:'Wonder Room', trickroom:'Trick Room'}[id]) + '</label>';}); conditions.append(sideHTML + '</div>');
+			this.$('[name=calc-weather]').append('<option value="desolateland">Harsh sun</option><option value="primordialsea">Heavy rain</option><option value="deltastream">Strong winds</option>');
+			Object.keys(this.metadata.fieldStates || {}).forEach(function (field) {var def = self.metadata.fieldStates[field]; conditions.find('.calc-condition-grid').append('<label class="calc-field-state" data-state="' + def.key + '" hidden>' + self.escape(def.label) + '<select data-state="' + def.key + '">' + def.options.map(function (label, i) {return '<option value="' + i + '">' + self.escape(label) + '</option>';}).join('') + '</select></label>');});
+			conditions.append('<small>Base fields / terrains and temporary auras are distinct. Flower Garden stages are listed individually. Entry abilities may change the requested field; check resolved setup.</small>');
+			this.$('.calc-action').prepend('<button type="button" class="button calc-compare-all" name="compareMoves">Compare both movesets</button>');
+			this.$('.calc-move-shortcuts').remove(); this.$('.calc-action-fields').wrap('<details class="calc-single-attack"><summary>Single attack / powered move / sampling</summary></details>');
+			this.$('[name=calculate]').appendTo(this.$('.calc-single-attack')).text('Calculate left → right');
+			this.$('.calc-actor').each(function () {
+				var actor = $(this), slot = Number(actor.attr('data-slot')); actor.children('legend').text(slot === 0 ? 'Pokémon 1' : slot === 1 ? 'Pokémon 2' : 'Ally / other foe ' + (slot - 1));
+				var fields = actor.children('.calc-fields'); fields.find('[name=hpPercent]').closest('label').appendTo(actor.find('.calc-actor-options > .calc-fields'));
+				var special = $('<details class="calc-state-options"><summary>Relevant custom state</summary><div class="calc-fields"></div></details>').appendTo(actor);
+				['rageFistBonus', 'threadShelterGuard', 'silentFlightSpent', 'buriedTrioSpent', 'elasticBellySpent', 'feedbackMarked'].forEach(function (key) {actor.find('[name=' + key + ']').closest('label').appendTo(special.find('.calc-fields'));});
+				actor.find('.calc-advanced').prop('open', true); actor.find('[name=moves]').closest('label').hide();
+				actor.find('.calc-stats tr').each(function (i) {if (!i)$(this).children().first().after('<th>Base</th>'); else {var stat = ['hp', 'atk', 'def', 'spa', 'spd', 'spe', 'accuracy', 'evasion'][i - 1]; $(this).children().first().after('<td class="calc-base-stat" data-stat="' + stat + '"></td>');}});
+				if (slot < 2) {var rows = '<section class="calc-comparison-moves"><h3>Moves → ' + (slot ? 'Pokémon 1' : 'Pokémon 2') + '</h3>'; for (var i = 0; i < 4; i++)rows += '<div class="calc-comparison-row"><input class="textbox calc-move-entry" list="calc-list-move" aria-label="Pokémon ' + (slot + 1) + ' move ' + (i + 1) + '" placeholder="Move ' + (i + 1) + '" /><button class="button" name="compareMoves" value="' + slot + ':' + i + '" aria-label="Calculate move ' + (i + 1) + ' from Pokémon ' + (slot + 1) + '">Calc</button><output class="calc-move-result" data-result="' + i + '">Not calculated</output></div>'; actor.find('.calc-advanced').after(rows + '</section>');}
+			});
+			// Explicit defaults make both directions useful, while imported sets keep their moves.
+			[0, 1].forEach(function (i) {var actor = self.$('.calc-actor[data-slot=' + i + ']'); if (!actor.find('[name=moves]').val())actor.find('[name=moves]').val(i ? 'Psychic, Shadow Ball, Aura Sphere, Ice Beam' : 'Psychic, Thunderbolt, Ice Beam, Flamethrower');});
+			if (this.workspace && app.calculatorDraft) {this.$('[name=calc-json]').val(app.calculatorDraft); this.importScenario();} this.refreshActors(); this.refreshFieldState(); return result;
+		};
+	});
+})();
+
+(function () {
+	var escape = BattleLog.escapeHTML;
+	window.openPublicFieldGuide = function (id) {var origin = app.curRoom && app.curRoom.id; if (!app.rooms.fieldguide)app.addRoom('fieldguide', window.FieldGuideRoom, true, 'Field Guide'); var room = app.rooms.fieldguide; if (origin && origin !== 'fieldguide')room.returnRoom = origin; room.selected = id || room.selected || 'hauntedterrain'; if (room.data)room.renderPage(); app.focusRoom('fieldguide'); app.topbar.updateTabbar();};
+	window.FieldGuideRoom = Room.extend({
+		type:'fieldguide', title:'Field Guide', minWidth:320, maxWidth:1200,
+		events:{'input [name=guide-search]':'filterGuide', 'change [name=guide-kind]':'filterGuide'},
+		initialize:function () {this.$el.addClass('field-guide-room'); this.listenTo(app, 'response:fieldguide', this.receiveGuide); this.$el.html('<h2>Field Guide</h2><p role="status">Loading this server’s public field reference…</p><button class="button" name="retryGuide">Retry</button>'); app.send('/fieldguide');},
+		retryGuide:function () {app.send('/fieldguide');},
+		receiveGuide:function (data) {this.data = data; this.$el.html('<header><h2>Field Guide</h2><button class="button" name="close">Close</button></header><p class="guide-notice">' + escape(data.notice) + '</p><div class="guide-layout"><nav aria-label="Fields and auras"><label>Find a field<input class="textbox" name="guide-search" placeholder="Search fields, moves or abilities" /></label><label>Layer<select name="guide-kind"><option value="">All layers</option><option value="field">Full fields / terrains</option><option value="aura">Temporary auras</option></select></label><div class="guide-list"></div></nav><article class="guide-page"></article></div>'); this.filterGuide(); this.renderPage();},
+		filterGuide:function () {var self = this, q = toID(this.$('[name=guide-search]').val()), kind = this.$('[name=guide-kind]').val(); var list = this.data.entries.filter(function (e) {return (!kind || e.kind === kind) && (!q || toID(e.name + ' ' + JSON.stringify(e.sections) + ' ' + JSON.stringify(e.references) + ' ' + JSON.stringify(e.referenceDetails)).includes(q));}); this.$('.guide-list').html(list.map(function (e) {var key = (e.kind === 'aura' ? 'aura/' : '') + e.id; return '<button class="button" name="chooseGuide" value="' + escape(key) + '" aria-pressed="' + (key === self.selected) + '">' + escape(e.name) + '<small>' + (e.kind === 'aura' ? 'Aura' : 'Full field') + '</small></button>';}).join('') || '<p>No matching entries.</p>');},
+		chooseGuide:function (id) {this.selected = id; this.renderPage(); this.filterGuide();},
+		renderPage:function () {
+			if (!this.data) return; var key = this.selected || 'hauntedterrain', aura = key.startsWith('aura/'), id = aura ? key.slice(5) : key, e = this.data.entries.find(function (e) {return e.id === id && e.kind === (aura ? 'aura' : 'field');}); if (!e) {this.$('.guide-page').html('<p>This entry is not registered on the connected server.</p>'); return;}
+			var html = '<header><div><small>' + (aura ? 'TEMPORARY AURA' : 'FULL FIELD / TERRAIN') + '</small><h2>' + escape(e.name) + '</h2></div>' + (!aura ? '<button class="button" name="calculateGuideField" value="' + escape(e.id) + '">Use in calculator</button>' : '') + '</header><p class="guide-review">' + escape(e.review) + '</p>';
+			['Transitions', 'Boosts and general effects', 'Abilities', 'Moves', 'Seeds and other effects', 'Battle messages'].forEach(function (section) {var lines = e.sections[section] || []; html += '<details' + (lines.length ? ' open' : '') + '><summary>' + escape(section) + (lines.length ? '' : ' — documentation pending') + '</summary>' + (lines.length ? '<ul>' + lines.map(function (line) {return '<li>' + escape(line) + '</li>';}).join('') + '</ul>' : '<p>This section has not been reviewed. No claim of “no effects” is made.</p>') + '</details>';});
+			if (e.legacyNotes.length)html += '<details class="guide-unverified"><summary>Older notes — not source-verified for this release</summary><p>These notes may be outdated. They are provided separately from reviewed rules.</p><ul>' + e.legacyNotes.map(function (n) {return '<li>' + escape(n) + '</li>';}).join('') + '</ul></details>';
+			html += '<details class="guide-reference-details" open><summary>Related moves, abilities and items</summary><p>Field-specific effects are shown below. Any remaining unaudited interaction is labeled pending.</p>'; ['moves', 'abilities', 'items'].forEach(function (kind) {var rows = (e.referenceDetails || {})[kind] || []; if (!rows.length) return; html += '<h4>' + escape(kind.charAt(0).toUpperCase() + kind.slice(1)) + '</h4><div class="guide-reference-cards">'; rows.forEach(function (row) {html += '<article class="guide-reference-card"><h5>' + escape(row.name) + '</h5>'; if (row.moveStats) {var m = row.moveStats; html += '<small class="guide-reference-stats">' + escape(m.type + ' · ' + m.category + (m.category === 'Status' ? '' : ' · ' + m.power + ' power') + ' · ' + (m.accuracy === true ? 'Always hits' : m.accuracy + ' accuracy') + ' · ' + m.pp + ' PP') + '</small>';} if (row.fieldEffects.length) {html += '<ul>' + row.fieldEffects.map(function (text) {return '<li>' + escape(text) + '</li>';}).join('') + '</ul>';} else {html += '<p class="guide-pending">Field-specific detail pending review.</p>'; if (row.generalSummary)html += '<p><strong>General effect:</strong> ' + escape(row.generalSummary) + '</p>';}html += '</article>';}); html += '</div>';}); html += '</details>'; this.$('.guide-page').html(html);
+		},
+		calculateGuideField:function (id) {app.pendingCalculatorField = id; app.rooms[''].customCalculator(); var r = app.rooms.calculator; if (r.metadata) {r.$('[name=calc-field]').val(id); r.scenarioEdited(); app.pendingCalculatorField = null;}},
+		close:function () {var origin = this.returnRoom; app.leaveRoom(this.id); if (origin && app.rooms[origin])app.focusRoom(origin);}
+	});
+	[window.CustomCalculatorPopup.prototype, window.CustomCalculatorRoom.prototype].forEach(function (p) {var render = p.renderCalculator; p.renderCalculator = function () {var out = render.apply(this, arguments); this.$('[name=calc-field]').closest('label').append('<button class="button" name="openCalcFieldGuide">Field Guide</button>'); if (app.pendingCalculatorField) {this.$('[name=calc-field]').val(app.pendingCalculatorField); this.scenarioEdited(); app.pendingCalculatorField = null;} return out;}; p.openCalcFieldGuide = function () {window.openPublicFieldGuide(this.$('[name=calc-field]').val());};});
+})();
+
+// Keep the common comparison path visible; rare state remains available on demand.
+(function () {
+	[window.CustomCalculatorPopup.prototype, window.CustomCalculatorRoom.prototype].forEach(function (p) {
+		var edited = p.scenarioEdited;
+		p.scenarioEdited = function () {var result = edited.apply(this, arguments); this.updateConditionSummary(); return result;};
+		p.updateConditionSummary = function () {var active = []; this.$('.calc-extra-conditions input:checked').each(function () {var input = $(this), side = input.closest('fieldset').children('legend').text(); active.push((side ? side + ': ' : '') + input.closest('label').text().trim());}); this.$('.calc-extra-conditions > summary').text(active.length ? active.join(' · ') : 'Screens, team effects and rooms');};
+		var render = p.renderCalculator;
+		p.renderCalculator = function () {
+			var result = render.apply(this, arguments), self = this;
+			this.$el.addClass('calc-simple');
+			this.$('.calc-intro').html('Choose two Pokémon, edit their moves, then <strong>Compare all 8 moves</strong>. Results are sampled, not guaranteed ranges.');
+			this.$('.calc-compare-all').text('Compare all 8 moves');
+			this.$('.calc-actor').each(function () {
+				var actor = $(this), moves = actor.find('.calc-comparison-moves');
+				moves.insertBefore(actor.find('.calc-actor-options'));
+				actor.find('.calc-advanced > summary').text('Stats and stages');
+				actor.find('.calc-advanced').prop('open', true);
+				var extra = $('<details class="calc-accuracy-extra"><summary>Accuracy and evasion stages</summary><table class="calc-stats"></table></details>');
+				actor.find('.calc-stats tr').filter(function () {return $(this).find('[data-stat=accuracy],[data-stat=evasion]').length;}).appendTo(extra.find('table'));
+				actor.find('.calc-advanced').append(extra);
+			});
+			var conditions = this.$('.calc-conditions');
+			var extra = $('<details class="calc-extra-conditions"><summary>Screens, team effects and rooms</summary></details>').appendTo(conditions);
+			conditions.find('.calc-sides,.calc-room-controls').appendTo(extra);
+			this.$('.calc-single-attack > summary .calc-action-fields').appendTo(this.$('.calc-single-attack'));
+			this.$('.calc-single-attack').prop('open', false);
+			this.$('.calc-conditions > small').hide(); this.updateConditionSummary();
+			return result;
+		};
+	});
+})();
+
+// Four seed-family navigation groups; search remains global across every group.
+(function () {
+	var p = window.FieldGuideRoom.prototype, escape = BattleLog.escapeHTML;
+	p.filterGuide = function () {
+		if (!this.data) return;
+		var self = this, q = toID(this.$('[name=guide-search]').val()), kind = this.$('[name=guide-kind]').val();
+		var list = this.data.entries.filter(function (e) {return (!kind || e.kind === kind) && (!q || toID(e.name + ' ' + e.group + ' ' + JSON.stringify(e.sections) + ' ' + JSON.stringify(e.references) + ' ' + JSON.stringify(e.referenceDetails)).includes(q));});
+		var html = ''; ['Elemental', 'Magical', 'Synthetic', 'Telluric'].forEach(function (group) {
+			var entries = list.filter(function (e) {return e.group === group;}).sort(function (a, b) {return a.name.localeCompare(b.name, undefined, {numeric:true});});
+			if (!entries.length) return;
+			html += '<details class="guide-group" open><summary>' + escape(group) + '<span>' + entries.length + '</span></summary><div>';
+			entries.forEach(function (e) {var key = (e.kind === 'aura' ? 'aura/' : '') + e.id, reviewed = Object.keys(e.sections).length > 0; html += '<button class="button" name="chooseGuide" value="' + escape(key) + '" aria-pressed="' + (key === self.selected) + '"><span>' + escape(e.name) + '</span><small>' + (e.kind === 'aura' ? 'Temporary aura' : reviewed ? 'Checked sections' : 'Details pending') + '</small></button>';}); html += '</div></details>';
+		}); this.$('.guide-list').html(html || '<p>No matching fields or interactions.</p>');
+	};
+	var render = p.renderPage; p.renderPage = function () {
+		var out = render.apply(this, arguments); if (!this.data) return out;
+		var key = this.selected || 'hauntedterrain', e = this.data.entries.find(function (e) {return ((e.kind === 'aura' ? 'aura/' : '') + e.id) === key;}); if (!e) return out;
+		this.$el.addClass('guide-organized'); this.$('.guide-page').attr('data-group', e.group);
+		this.$('.guide-page > header small').text(e.group + ' · ' + (e.kind === 'aura' ? 'Temporary aura' : 'Full field'));
+		if (e.groupingNote) this.$('.guide-page > header').after('<p class="guide-group-note">' + escape(e.groupingNote) + '</p>');
+		var titles = {'Transitions':'When the field changes', 'Boosts and general effects':'What the field does', 'Seeds and other effects':'Seeds and other effects', 'Implementation reference index':'Related moves, abilities and items'};
+		this.$('.guide-page > details > summary').each(function () {var text = $(this).text(); Object.keys(titles).forEach(function (from) {if (text.startsWith(from))text = text.replace(from, titles[from]);}); $(this).text(text);});
+		var coverage = this.data.coverage; this.$('.guide-notice').text('Browse by seed family, or search every field, move and ability. ' + coverage.reviewedFields + ' of ' + coverage.fields + ' field pages have checked sections; indexed interactions include source-checked details. Temporary auras are labeled separately.');
+		this.$('.guide-page > details').last().find('p').first().text('These entries explain checked field effects. A general effect is shown separately only when its field-specific detail is still pending.');
+		return out;
+	};
+})();
+
+
+// Unified local species/set picker; changes apply only on explicit selection.
+(function () {
+	[window.CustomCalculatorPopup.prototype, window.CustomCalculatorRoom.prototype].forEach(function (p) {
+		p.events = Object.assign({}, p.events, {'input .calc-pick-query':'filterCalcPicker', 'change .calc-pick-source':'filterCalcPicker', 'keydown .calc-pick-query':'keyCalcPicker', 'change .calc-valid-ability':'selectValidCalcAbility'});
+		var edited = p.scenarioEdited; p.scenarioEdited = function (e) {if (e && $(e.target).is('.calc-pick-query,.calc-pick-source,.calc-valid-ability')) return; return edited.apply(this, arguments);};
+		p.openCalcPicker = function (slot) {this.populateCalcSets(); var a = this.$('.calc-actor[data-slot=' + slot + ']'); var filter = a.find('.calc-pick-source'), selected = filter.val(); filter.find('option[data-profile]').remove(); (Storage.prefs('rosterprofiles') || {profiles:[]}).profiles.forEach(function (profile) {filter.append($('<option>').attr('data-profile', 'true').val('profile:' + profile.id).text('Pokémon list: ' + profile.name));}); filter.val(selected || 'all'); a.find('.calc-picker').prop('hidden', false); a.find('.calc-pick-query').val('').focus(); this.filterCalcPicker({target:a.find('.calc-pick-query')[0]});};
+		p.closeCalcPicker = function (slot) {var a = this.$('.calc-actor[data-slot=' + slot + ']'); a.find('.calc-picker').prop('hidden', true); a.find('[name=openCalcPicker]').focus();};
+		p.keyCalcPicker = function (e) {if (e.key === 'Escape') {e.preventDefault(); this.closeCalcPicker($(e.target).closest('.calc-actor').attr('data-slot'));} if (e.key === 'ArrowDown') {e.preventDefault(); $(e.target).closest('.calc-picker').find('.calc-pick-results button').first().focus();}};
+		p.filterCalcPicker = function (e) {
+			var self = this, a = $(e.target).closest('.calc-actor'), slot = a.attr('data-slot'), q = toID(a.find('.calc-pick-query').val()), source = a.find('.calc-pick-source').val(), rows = [], profile = (Storage.prefs('rosterprofiles') || {profiles:[]}).profiles.find(function (r) {return source === 'profile:' + r.id;});
+			if (source !== 'species' && !profile)(this.savedCalcSets || []).forEach(function (r, i) {if (!q || toID(r.name + ' ' + r.set.species).includes(q))rows.push({name:r.name, species:r.set.species, value:slot + ':set:' + i, kind:'Replace entire set'});});
+			if (source !== 'sets')(this.metadata.species || []).forEach(function (r) {if ((!profile || profile.species.includes(toID(r.name))) && (!q || toID(r.name).includes(q)))rows.push({name:r.name, species:r.name, value:slot + ':species:' + r.name, kind:'Species only; keep moves, item and spread'});});
+			a.find('.calc-pick-count').text(rows.length + ' matches' + (rows.length > 40 ? ' — showing first 40; narrow your search' : '')); a.find('.calc-pick-results').html(rows.slice(0, 40).map(function (r) {var s = Dex.species.get(r.species), icon = Dex.getPokemonIcon(s.name).replace(Dex.resourcePrefix + 'sprites/', '/sprites/'); return '<button type="button" name="applyCalcPick" value="' + self.escape(r.value) + '"><span class="calc-picon" aria-hidden="true" style="' + self.escape(icon) + '"></span><span><strong>' + self.escape(r.name) + '</strong><small>' + self.escape(s.name + ' · ' + s.types.join(' / ')) + '</small><small>' + self.escape(r.kind) + '</small></span></button>';}).join('') || '<p>No matching Pokémon or saved sets.</p>');
+		};
+		p.applyCalcPick = function (value) {var parts = value.split(':'), slot = Number(parts.shift()), kind = parts.shift(), key = parts.join(':'), actor; try {if (kind === 'set') {var r = this.savedCalcSets[Number(key)]; if (!r) return; actor = JSON.parse(JSON.stringify(r.set));} else {var info = this.metadata.species.find(function (s) {return s.name === key;}); if (!info) return; actor = this.readActor(slot); actor.species = info.name; actor.ability = info.abilities[0]; actor.boosts = {}; actor.status = ''; actor.gimmick = ''; actor.hpPercent = 100; ['rageFistBonus', 'threadShelterGuard', 'silentFlightSpent', 'buriedTrioSpent', 'elasticBellySpent', 'feedbackMarked', 'voidCrossingCurse'].forEach(function (k) {actor[k] = k === 'rageFistBonus' ? 0 : false;});} this.writeActor(slot, actor); this.closeCalcPicker(slot); this.$('.calc-status').text(kind === 'set' ? 'Saved set loaded. Battle conditions retained.' : 'Species changed. Moves, item and spread retained; ability and battle state reset. Check move eligibility.');} catch (err) {this.$('.calc-status').addClass('calc-error').text(err.message);}};
+		p.selectValidCalcAbility = function (e) {$(e.target).closest('.calc-actor').find('[name=ability]').val(e.target.value); this.scenarioEdited();};
+		var refresh = p.refreshActors; p.refreshActors = function () {var result = refresh.apply(this, arguments), self = this; this.$('.calc-actor').each(function () {var a = $(this), id = toID(a.find('[name=species]').val()), info = (self.metadata.species || []).find(function (s) {return toID(s.name) === id;}), current = a.find('[name=ability]').val(), choices = Object.values(info && info.abilities || {}); a.find('.calc-valid-ability').html(choices.map(function (name) {var slot = Object.keys(info.abilities).find(function (k) {return info.abilities[k] === name;}); return '<option value="' + self.escape(name) + '">' + self.escape(name + (slot === 'S' ? ' · Event' : slot === 'H' ? ' · Hidden' : '')) + '</option>';}).join('') + (!choices.includes(current) ? '<option value="' + self.escape(current) + '">' + self.escape(current || 'No Ability') + ' · Override</option>' : '')).val(current); var ability = Dex.abilities.get(current); a.find('.calc-ability-summary').text(ability.shortDesc || ability.desc || 'No description available.').attr('title', ability.desc || ability.shortDesc || ''); a.find('.calc-ability-slots,.calc-component-details,.calc-form-label').hide();}); return result;};
+		var render = p.renderCalculator; p.renderCalculator = function () {var result = render.apply(this, arguments); this.$el.addClass('calc-picker-workspace'); this.$('.calc-actor').each(function () {var a = $(this), slot = a.attr('data-slot'); a.find('.calc-identity').before('<button type="button" class="button calc-pick-open" name="openCalcPicker" value="' + slot + '">Choose Pokémon / saved set</button><section class="calc-picker" aria-label="Choose Pokémon or saved set" hidden><div class="calc-picker-heading"><strong>Choose Pokémon / saved set</strong><button class="button" name="closeCalcPicker" value="' + slot + '">Cancel</button></div><label>Search<input class="textbox calc-pick-query" placeholder="Species, form, team or set name" autocomplete="off" /></label><label>Show<select class="calc-pick-source"><option value="all">Pokémon + my saved sets</option><option value="sets">My teams and saved sets</option><option value="species">Pokémon / forms only</option></select></label><small>Uses teams loaded on this device and your local saved builds.</small><p class="calc-pick-count" role="status"></p><div class="calc-pick-results"></div></section>'); a.find('.calc-load-details').hide(); a.find('[name=species]').closest('label').hide(); var label = a.find('[name=ability]').closest('label'), box = $('<div class="calc-ability-picker"><label>Ability<select class="calc-valid-ability" aria-label="Species ability"></select></label><p class="calc-ability-summary"></p><details class="calc-ability-override"><summary>Override ability for a hypothetical matchup</summary></details></div>'); label.before(box); box.find('details').append(label); a.find('.calc-advanced').prop('open', false);}); this.refreshActors(); return result;};
+	});
+})();
+
+// Read-only custom rules and team clinic, backed by the connected server.
+(function () {
+	var esc = BattleLog.escapeHTML;
+	window.openRulesEncyclopedia = function (team, format) {
+		if (!app.rooms.customrules)app.addRoom('customrules', window.CustomRulesRoom, true, 'Custom rules');
+		var r = app.rooms.customrules; if (team !== undefined)r.pendingTeam = {team:team, format:format}; if (r.catalog)r.renderRules();
+		app.focusRoom('customrules'); app.topbar.updateTabbar();
+	};
+	window.CustomRulesRoom = Room.extend({
+		type:'customrules', title:'Custom rules', minWidth:320, maxWidth:1200,
+		events:{'input [name=rules-search]':'filterRules', 'change [name=rules-kind]':'filterRules', 'input [name=clinic-team]':'clinicEdited', 'change .clinic-controls select':'clinicEdited'},
+		initialize:function () {this.$el.addClass('field-guide-room custom-rules-room'); this.listenTo(app, 'response:rulesencyclopedia', this.receiveRules); this.$el.html('<h2>Custom rules</h2><p role="status">Loading connected server data…</p><button class="button" name="retryRules">Retry</button>'); this.retryRules();},
+		retryRules:function () {app.send('/rulesencyclopedia ' + JSON.stringify({action:'catalog'}));},
+		receiveRules:function (response) {if (response.action === 'clinic') {var pending = this.pendingClinic; if (!pending || response.requestId !== pending.id) return; this.pendingClinic = null; if (JSON.stringify(pending.context) !== JSON.stringify(this.readClinicContext())) {this.clinicEdited(); return;} if (response.error) {this.$('.rules-status').text(response.error); return;} this.renderClinic(response.data, pending.context); return;} if (response.error) {this.$('.rules-status').text(response.error); if (!this.catalog) this.$el.append('<p role="alert">' + esc(response.error) + '</p>'); return;} if (response.action === 'catalog') {this.catalog = response.data; this.renderRules();} else if (response.action === 'detail') {this.renderDetail(response.data);} },
+		renderRules:function () {var c = this.catalog, old = this.$('[name=clinic-team]').val(), format = this.$('[name=clinic-format]').val(), field = this.$('[name=clinic-field]').val(), aura = this.$('[name=clinic-aura]').val(); this.$el.html('<header><h2>Custom rules &amp; team clinic</h2><button class="button" name="close">Close</button></header><p>' + esc(c.notice) + '</p><p class="rules-status" role="status" aria-live="polite"></p><div class="guide-layout"><nav><label>Find Pokémon or ability<input class="textbox" name="rules-search" placeholder="Name, form or type" /></label><label>Browse<select name="rules-kind"><option value="species">Pokémon</option><option value="ability">Abilities</option></select></label><div class="rules-list"></div></nav><article class="rules-detail"><p>Select a Pokémon or ability to inspect its current rules.</p></article></div><details class="rules-clinic" open><summary>Team clinic — check an export without changing it</summary><label>Team export<textarea class="textbox" name="clinic-team" rows="7" spellcheck="false"></textarea></label><div class="clinic-controls"><label>Validation format<select name="clinic-format">' + c.formats.map(function (f) {return '<option value="' + esc(f.id) + '">' + esc(f.name) + '</option>';}).join('') + '</select></label><label>Planning field<select name="clinic-field"><option value="">No field</option>' + c.fields.map(function (f) {return '<option value="' + esc(f.id) + '">' + esc(f.name) + '</option>';}).join('') + '</select></label><label>Temporary aura<select name="clinic-aura"><option value="">No aura</option>' + c.auras.map(function (f) {return '<option value="' + esc(f.id) + '">' + esc(f.name) + '</option>';}).join('') + '</select></label></div><button class="button" name="checkClinic">Check team &amp; explain field rules</button> <button class="button" name="clinicGuide">Open chosen Field Guide</button><div class="clinic-results" aria-live="polite"></div></details>'); var pending = this.pendingTeam; this.$('[name=clinic-team]').val(pending ? pending.team : old || ''); this.$('[name=clinic-format]').val((pending && pending.format) || format || 'gen9nofieldsinglesgame'); if (!this.$('[name=clinic-format]').val()) this.$('[name=clinic-format]')[0].selectedIndex = 0; this.$('[name=clinic-field]').val(field || ''); this.$('[name=clinic-aura]').val(aura || ''); this.pendingTeam = null; this.filterRules();},
+		filterRules:function () {var kind = this.$('[name=rules-kind]').val(), q = toID(this.$('[name=rules-search]').val()), rows = this.catalog[kind === 'ability' ? 'abilities' : 'species'].filter(function (r) {return !q || toID(r.name + ' ' + (r.types || []).join(' ')).includes(q);}); this.$('.rules-list').html(rows.slice(0, 80).map(function (r) {return '<button class="button" name="chooseRule" value="' + esc(kind + ':' + r.id) + '">' + esc(r.name) + (r.types ? '<small>' + esc(r.types.join(' / ')) + '</small>' : '') + '</button>';}).join('') + (rows.length > 80 ? '<p>Showing 80 of ' + rows.length + '. Refine your search.</p>' : rows.length ? '' : '<p>No matching entries.</p>'));},
+		chooseRule:function (value) {var parts = value.split(':'); this.$('.rules-status').text('Loading rules…'); app.send('/rulesencyclopedia ' + JSON.stringify({action:'detail', kind:parts[0], query:parts[1]}));},
+		abilityCard:function (a) {return '<article><button class="button" name="chooseRule" value="ability:' + esc(a.id) + '">' + esc(a.name) + '</button><p>' + esc(a.description || 'Description pending.') + '</p>' + (a.identityNote ? '<small>' + esc(a.identityNote) + '</small>' : '') + (a.components && a.components.length ? '<p>Includes: ' + a.components.map(function (c) {return '<button class="button" name="chooseRule" value="ability:' + esc(c.id) + '">' + esc(c.name) + '</button>';}).join(' ') + '</p>' : '') + '</article>';},
+		renderDetail:function (d) {this.$('.rules-status').text(''); var self = this, h = '<h2>' + esc(d.name) + '</h2>'; if (d.kind === 'ability') {h += this.abilityCard(d); h += '<h3>Indexed field interactions</h3>' + ((d.fields || []).map(function (f) {return '<button class="button" name="ruleGuide" value="' + esc(f.id) + '">' + esc(f.name) + '</button>';}).join(' ') || '<p>No direct interaction is indexed. This is not proof of no indirect effects.</p>');} else {h += '<p>' + esc(d.types.join(' / ')) + '</p><dl class="rules-stats">' + Object.keys(d.stats).map(function (k) {return '<div><dt>' + esc(k.toUpperCase()) + '</dt><dd>' + d.stats[k] + '</dd></div>';}).join('') + '</dl><h3>Selectable abilities</h3>' + d.abilities.map(function (a) {return self.abilityCard(a);}).join('') + '<h3>Passive</h3>' + (d.passives.map(function (a) {return self.abilityCard(a);}).join('') || '<p>No registered passive.</p>') + '<h3>Forms</h3>' + d.forms.map(function (f) {return '<button class="button" name="chooseRule" value="species:' + esc(f) + '">' + esc(f) + '</button>';}).join(' '); if (d.event) {h += '<details open><summary>Event option: ' + esc(d.event.ability.name) + '</summary>' + this.abilityCard(d.event.ability) + '<ul>' + d.event.moves.map(function (m) {return '<li>' + esc(m.name) + ' — ' + esc(m.sources.map(function (s) {return /L0$/.test(s) ? 'Evolution' : /L/.test(s) ? 'Level ' + s.split('L')[1] : 'TM / tutor';}).join(', ')) + '; ' + (m.exclusive ? 'requires this event ability' : 'also ordinarily available') + '</li>';}).join('') + '</ul></details>';}} this.$('.rules-detail').html(h);},
+		readClinicContext:function () {return {team:this.$('[name=clinic-team]').val(), format:this.$('[name=clinic-format]').val(), field:this.$('[name=clinic-field]').val(), aura:this.$('[name=clinic-aura]').val()};},
+		clinicEdited:function () {this.pendingClinic = null; this.clinicResult = null; this.clinicContext = null; this.$('.clinic-results').empty(); this.$('.rules-status').text('The team or planning conditions changed. Check again before sending a set.');},
+		checkClinic:function () {var context = Object.freeze(this.readClinicContext()), id = Date.now().toString(36) + '-' + (this.clinicSequence = (this.clinicSequence || 0) + 1); this.clinicResult = null; this.clinicContext = null; this.$('.clinic-results').empty(); this.pendingClinic = Object.freeze({id:id, context:context}); this.$('.rules-status').text('Checking with the server validator…'); app.send('/rulesencyclopedia ' + JSON.stringify(Object.assign({action:'clinic', requestId:id}, context)));},
+		renderClinic:function (d, context) {this.clinicResult = d; this.clinicContext = context; this.$('.rules-status').text(''); var h = '<h3>' + (!d.checked ? 'Check incomplete' : d.errors.length ? 'Validator found issues' : 'Valid for ' + esc(d.format)) + '</h3><ul>' + d.errors.map(function (e) {return '<li>' + esc(e) + '</li>';}).join('') + '</ul>'; if (d.proposals.length)h += '<h4>Corrections you can apply</h4><ul>' + d.proposals.map(function (p) {return '<li>' + esc(p) + '</li>';}).join('') + '</ul>'; h += (d.sets || []).map(function (s, i) {return '<section><h4>' + esc(s.name) + '</h4><button class="button" name="clinicCalculator" value="' + i + '">Inspect this set in calculator</button>' + (s.naturePower ? '<p>Nature Power calls <strong>' + esc(s.naturePower) + '</strong> in these planning conditions.</p>' : '') + (s.interactions || []).map(function (r) {return '<p><strong>' + esc(r.name) + ':</strong> ' + esc(r.effects.join(' ') || 'Interaction detail pending review.') + '</p>';}).join('') + '</section>';}).join(''); h += '<h4>Supported role checks</h4><p>Missing means not found by this check, not that your team needs this role.</p>' + (d.checks || []).map(function (c) {return '<p><strong>' + esc(c.role) + ':</strong> ' + esc(c.missing ? 'Not found' : c.evidence.join(', ')) + '<br><small>' + esc(c.scope) + '</small></p>';}).join(''); if (d.forecast)h += '<details open><summary>Conditional field forecast</summary><p>' + esc(d.forecast.notice) + '</p><ul>' + d.forecast.rules.map(function (r) {return '<li>' + esc(r) + '</li>';}).join('') + '</ul></details>'; this.$('.clinic-results').html(h + '<p>' + esc(d.notice || 'No changes were made.') + '</p>');},
+		clinicCalculator:function (index) {if (!this.clinicResult || !this.clinicContext || JSON.stringify(this.readClinicContext()) !== JSON.stringify(this.clinicContext)) {this.$('.rules-status').text('The team or planning conditions changed. Check again before sending a set.'); return;} var set = this.clinicResult.sets[Number(index)].calculatorSet; app.pendingCalculatorSet = {slot:0, set:JSON.parse(JSON.stringify(set))}; app.pendingClinicConditions = {field:this.clinicContext.field, aura:this.clinicContext.aura}; app.rooms[''].customCalculator(); var r = app.rooms.calculator; if (r.metadata)r.acceptTeamBuilderSet();}, ruleGuide:function (id) {window.openPublicFieldGuide(id);}, clinicGuide:function () {window.openPublicFieldGuide(this.$('[name=clinic-field]').val());},
+		close:function () {app.leaveRoom(this.id);}
+	});
+})();
+
+(function () {[window.CustomCalculatorPopup.prototype, window.CustomCalculatorRoom.prototype].forEach(function (p) {var accept = p.acceptTeamBuilderSet; p.acceptTeamBuilderSet = function () {var out = accept.apply(this, arguments), c = app.pendingClinicConditions; if (c && !app.pendingCalculatorSet) {this.$('[name=calc-field]').val(c.field); this.$('[name=calc-aura]').val(c.aura); this.scenarioEdited(); app.pendingClinicConditions = null; this.$('.calc-status').text('Copied from the clinic. Source team unchanged; passives follow the selected species/form.'); if (!this.$('[name=returnClinic]').length) this.$('.calc-status').after('<button class="button" name="returnClinic">Back to team clinic</button>');} return out;}; p.returnClinic = function () {app.focusRoom('customrules');};});})();
+
+// Command-only single-action sandbox; all execution stays in the validated calculator worker.
+(function () {
+	var base = window.CustomCalculatorRoom.prototype, esc = BattleLog.escapeHTML;
+	window.openInteractionTest = function () {if (!app.rooms.interactiontest)app.addRoom('interactiontest', window.InteractionTestRoom, true, 'Interaction test'); app.focusRoom('interactiontest'); app.topbar.updateTabbar();};
+	window.InteractionTestRoom = window.CustomCalculatorRoom.extend({
+		type:'interactiontest', title:'Interaction test',
+		events:Object.assign({}, base.events, {'change [name=test-sample]':'showInteractionSample'}),
+		initialize:function () {base.initialize.call(this); this.$el.addClass('interaction-test'); this.$el.attr('aria-label', 'Interaction sandbox');},
+		remove:function () {clearTimeout(this.calcTimer); return Room.prototype.remove.call(this);},
+		renderCalculator:function () {base.renderCalculator.call(this); this.$('h2').first().text('Interaction sandbox'); this.$('.calc-intro').text('Choose an engine scenario and run one selected action. Outcomes are sampled, not exact probabilities.'); this.$('.calc-comparison-moves,.calc-compare-all').hide(); this.$('[name=calculate]').text('Run selected action'); this.$('[name=calc-samples]').val('8'); this.$('.calc-center').prepend('<section class="interaction-controls"><h3>One action, observed outcomes</h3><p>Species determine passives. Arbitrary active abilities are hypothetical overrides, not a legality approval. No opponent turn or end-of-turn effects are simulated.</p><label>Move to execute<input class="textbox" name="test-move" list="interaction-moves" value="Tackle"></label><datalist id="interaction-moves">' + (this.metadata.moves || []).map(function (m) {var n = typeof m === 'string' ? m : m.name; return '<option value="' + esc(n) + '">';}).join('') + '</datalist><label>Starting state<select name="test-mode"><option value="fresh-entry">Fresh entry — switch-in effects run</option><option value="public-state">Bounded public state — no entry replay</option></select></label><details><summary>Supported defender state</summary><label><input type="checkbox" name="test-protect"> Protect already active</label><label>Remaining Substitute HP<input type="number" min="0" name="test-substitute" value="0"></label><label><input type="checkbox" name="test-decoy"> Decoy Pincers already consumed</label></details><p class="muted">Public-state mode accepts only the engine’s reviewed abilities/items and statuses. Unknown history, arbitrary suppression inputs and other unlisted state are rejected. Use Gastro Acid to inspect suppression as the executed action.</p></section>'); this.$('[name=calc-move]').closest('label').hide(); this.$('.interaction-controls').append(this.$('[name=calculate]').detach().show()); this.$('.interaction-controls').after(this.$('.calc-results').detach().show()); this.scenarioEdited();},
+		scenario:function () {var s = base.scenario.call(this); s.move = this.$('[name=test-move]').val() || s.move; s.evaluationMode = this.$('[name=test-mode]').val() || 'fresh-entry'; s.actors[0].moves = [s.move]; s.actors[1].protect = this.$('[name=test-protect]').is(':checked'); s.actors[1].substituteHP = Number(this.$('[name=test-substitute]').val() || 0); s.actors[1].decoyPincersSpent = this.$('[name=test-decoy]').is(':checked'); return s;},
+		calculate:function () {var snapshot = JSON.stringify(this.scenario()); this.pendingScenario = {json:snapshot, revision:this.scenarioRevision}; this.$('.calc-status').removeClass('calc-error').text('Executing sampled engine actions…'); this.$('[name=calculate]').prop('disabled', true); this.requestCalculator(snapshot);},
+		receiveCalculator:function (data) {if (!this.requestId || data.requestId !== this.requestId) return; clearTimeout(this.calcTimer); this.$('[name=calculate]').prop('disabled', false); if (data.error) {this.$('.calc-status').addClass('calc-error').text(data.error); return;} if (data.formats) {this.metadata = data; this.renderCalculator(); return;} if (!this.pendingScenario || this.pendingScenario.json !== JSON.stringify(this.scenario())) return; this.interactionResult = data; this.$('.calc-status').text(data.samples + ' sampled executions · seed ' + data.seed + '. Frequencies are not exact probabilities.'); this.$('.calc-results').html('<h3>' + esc(data.move) + '</h3>' + this.renderResolvedSummary(data.resolved) + '<label>Inspect execution<select name="test-sample">' + data.actionOutcomes.map(function (o, i) {return '<option value="' + i + '">Sample ' + (i + 1) + '</option>';}).join('') + '</select></label><div class="interaction-outcome"></div><details><summary>Scope and limitations</summary><ul>' + data.assumptions.map(function (a) {return '<li>' + esc(a) + '</li>';}).join('') + '</ul></details>'); this.showInteractionSample();},
+		showInteractionSample:function () {var r = this.interactionResult; if (!r) return; var o = r.actionOutcomes[Number(this.$('[name=test-sample]').val()) || 0]; var html = '<p>Field: ' + esc(o.before.field || 'none') + ' → ' + esc(o.after.field || 'none') + '<br>Aura: ' + esc(o.before.aura || 'none') + ' → ' + esc(o.after.aura || 'none') + '<br>Weather: ' + esc(o.before.weather || 'none') + ' → ' + esc(o.after.weather || 'none') + '</p>'; o.after.actors.forEach(function (a, i) {var b = o.before.actors[i], changes = Object.keys(a.boosts).filter(function (k) {return a.boosts[k] !== b.boosts[k];}).map(function (k) {return k + ' ' + b.boosts[k] + ' → ' + a.boosts[k];}); html += '<article class="interaction-actor-outcome"><strong>' + esc(r.results[i].label) + '</strong><p>HP ' + b.hp + ' → ' + a.hp + ' / ' + a.maxhp + '; status ' + esc(b.status || 'none') + ' → ' + esc(a.status || 'none') + '; ability suppressed ' + (a.abilitySuppressed ? 'yes' : 'no') + '</p><p>' + esc(changes.join(', ') || 'No stage change.') + ' Substitute ' + b.substituteHP + ' → ' + a.substituteHP + '</p></article>';}); html += '<details open><summary>Actual engine messages for this sample</summary><pre>' + esc((o.log || []).join('\n')) + '</pre></details>'; this.$('.interaction-outcome').html(html);}
+	});
 })();

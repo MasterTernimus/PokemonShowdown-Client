@@ -5,7 +5,7 @@ const baseRules = Object.assign({}, require('./../.eslintrc.js').rules);
 module.exports = {
 	"root": true,
 	"parserOptions": {
-		"ecmaVersion": 6,
+		"ecmaVersion": 2019,
 		"sourceType": "script",
 		"ecmaFeatures": {
 			"globalReturn": true

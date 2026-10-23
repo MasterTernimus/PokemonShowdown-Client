@@ -215,3 +215,68 @@ exports.passives=(id,fallback)=>oct19.passives[id]||beforeOct19.passives(id,fall
 exports.abilities=(id,fallback)=>({...beforeOct19.abilities(id,fallback),...oct19.abilities[id]});
 exports.effects=(id,fallback)=>oct19.effects[id]||beforeOct19.effects(id,fallback);
 exports.description=(id,key,fallback)=>oct19.descriptions[id]?.[key]??beforeOct19.description(id,key,fallback);
+
+// Latest explicitly approved delegated kits supersede the earlier snapshots.
+{const prior={abilities:exports.abilities,passives:exports.passives,effects:exports.effects,description:exports.description};
+exports.abilities=(id,fallback)=>id.startsWith('alcremie')&&!id.includes('gmax')?{0:'Soothing Cream',1:'Sticky Hold',H:'Master Pâtissier'}:id.startsWith('minior')?{0:'Light Metal',1:'Self Repair',H:'Brute Force'}:id==='hariyama'?{0:'Grit Grappler',1:'Sheer Force',H:'Stamina'}:prior.abilities(id,fallback);
+exports.passives=(id,fallback)=>id.startsWith('minior')?['shieldsdown']:id==='hariyama'?['thickfat']:prior.passives(id,fallback);
+exports.effects=(id,fallback)=>id==='ironvise'?['decoypincers','ironvise','toughclaws']:prior.effects(id,fallback);
+exports.description=(id,key,fallback)=>id==='ironvise'?({shortDesc:'Tough Claws + Decoy Pincers.',desc:"Contact moves have 1.3x power. Once per switch-in, the first opposing direct hit deals 25% less damage and lowers the attacker's Attack by 1 stage. Multi-hit moves spend this protection on the first hit. Intimidate is supplied separately by Mega Scizor's passive."})[key]:prior.description(id,key,fallback);
+}
+
+{const prior={passives:exports.passives,effects:exports.effects,description:exports.description};exports.passives=(id,f)=>id==='golisopodmega'?['toughclaws']:prior.passives(id,f);exports.effects=(id,f)=>id==='aquashell'?['aquashell','heatproof','steadfast']:prior.effects(id,f);exports.description=(id,key,f)=>id==='aquashell'?({shortDesc:'Heatproof + Steadfast.',desc:'Full local Heatproof and Steadfast. Incoming Fire attacks use half the attacker’s Attack or Special Attack; burn damage is halved. Flinching raises Speed by one stage but still prevents acting. Electric Terrain entry raises Speed by one stage. Ashen Beach accuracy checks succeed unless the target has Unnerve; Rocky Terrain adds no flinch damage. Tough Claws is a separate species passive. No Water Veil, Inner Focus or Attack-drop protection.'})[key]:prior.description(id,key,f);}
+
+{const prior={effects:exports.effects,description:exports.description};exports.effects=(id,f)=>id==='shieldsdown'?['crumblingshell','shieldsdown']:prior.effects(id,f);exports.description=(id,key,f)=>id==='shieldsdown'?({shortDesc:'HP-based form change; Meteor blocks status. Crumbling Shell.',desc:'Minior changes to Meteor above half HP and its original core at half HP or below, on entry and at turn end. Meteor form blocks major status and Yawn. Retains Crumbling Shell: physical hits place Stealth Rock on the attacker’s side (opposing side for allied hits), except on Water Surface, Underwater, Murkwater Surface or Swamp. No Shell Armor or Self Repair effects.'})[key]:prior.description(id,key,f);}
+
+{const prior=exports.description;exports.description=(id,key,f)=>{const text=prior(id,key,f);if(id!=='stormsovereign')return text;if(key==='shortDesc')return 'Updraft (Competitive), eight-turn Strong Winds and opposing Flying chip.';return text.replace('Summons replaceable Strong Winds for 8 turns on entry. ', 'Summons replaceable Strong Winds for 8 turns on entry. Each turn, non-immune foes take Flying damage equal to 1/16 base maximum HP; type effectiveness scales this chip only in Free-for-All. Flying-type foes are immune. ');};}
+
+// Approved Primeval Hunt replacement: full Skill Link and Steadfast.
+{const prior={effects:exports.effects,description:exports.description};const d={"shortDesc":"Skill Link + Steadfast.","desc":"Multi-hit moves use their maximum hit count, gain 1.5x power and check accuracy once. Flinching raises Speed by one stage but still prevents acting. Electric Terrain entry raises Speed by one stage. Ashen Beach accuracy checks succeed unless the target has Unnerve; Rocky Terrain adds no flinch damage. No confusion immunity, Intimidate protection or guaranteed final-hit critical hit."};exports.effects=(id,f)=>id==='primevalhunt'?['primevalhunt','skilllink','steadfast']:prior.effects(id,f);exports.description=(id,k,f)=>id==='primevalhunt'?d[k]:prior.description(id,k,f);}
+
+// Approved current-effects prose cleanup, independently snapshotted for parity.
+{const prior=exports.description;const cleaned=require('./current-ability-description-cleanup.json');exports.description=(id,key,f)=>cleaned[id]?.[key] ?? prior(id,key,f);}
+
+{const prior=exports.passives;exports.passives=(id,f)=>id==='garchomp'?['serratedscales']:prior(id,f);}
+
+// Approved Ribombee selectable/passive veil swap.
+before.ribombee=['sweetveil'];
+
+// Explicit Toxic Sink simplification and Bombardment Overcoat addition.
+const beforeToxicSinkEffects=exports.effects;exports.effects=(id,original)=>{let values=beforeToxicSinkEffects(id,original);if(id==='toxicsink')values=values.filter(x=>!['effectspore','invigorate','stormdrain'].includes(x));if(id==='toxicbloom')values=[...values.filter(x=>x!=='effectspore'),'toxicsink'];if(id==='siegelauncher')values=[...values,'overcoat'];return [...new Set(values)].sort();};
+
+const beforeVileplumePassive=exports.passives;exports.passives=(id,original)=>id==='vileplume'?['effectspore']:beforeVileplumePassive(id,original);
+
+// Approved per-opponent and repeat-entry sensing descriptions.
+{const prior=exports.description;const warnings=require('./warning-entry-descriptions');exports.description=(id,key,fallback)=>warnings[id]?.[key] ?? prior(id,key,fallback);}
+
+// Klefki's approved Prankster passive and replacement selectable ability.
+{const prior={passives:exports.passives,description:exports.description};
+exports.passives=(id,fallback)=>id==='klefki'?['prankster']:prior.passives(id,fallback);
+exports.description=(id,key,fallback)=>id==='vaultkeeper'&&key==='desc'?'Compatibility name for local Prankster: status moves gain +1 priority; opposing Dark types block them except on Bewitched Woods. Does not prevent screen removal. Klefki receives Prankster as its species passive; this compatibility name retains the same priority effect.':prior.description(id,key,fallback);
+}
+
+// Approved Living Legend reduction and Vanguard display wording.
+{const prior=exports.description;const text={"livinglegend":{"shortDesc":"Flash Fire + Download; stronger Extreme Speed.","desc":"Flash Fire + Download. Extreme Speed has 1.5x power and +2 critical-hit stages."},"vanguard":{"shortDesc":"Enhanced Extreme Speed; single-foe protection.","desc":"On entry, lowers adjacent foes' Attack by 1. Substitute and Intimidate protections still apply. Extreme Speed has 1.5x power and becomes Fire when its matchup is better, including against Normal immunity. Direct single-target opposing HP damage grants one 50% guard against the next damaging hit from that opponent that turn. No extra critical-hit reward, permanent indirect immunity or stat-drop protection."}};exports.description=(id,key,fallback)=>text[id]?.[key]??prior(id,key,fallback);}
+
+// Approved Living Legend removal supersedes pre-display search snapshots.
+{const prior=exports.effects;exports.effects=(id,fallback)=>id==='livinglegend'?['download','flashfire','livinglegend']:prior(id,fallback);}
+
+{const prior={abilities:exports.abilities,passives:exports.passives};
+exports.abilities=(id,f)=>({...prior.abilities(id,f),...({crabominable:{H:'Controlled Fury'},primeape:{1:'Controlled Fury'}}[id]||{})});
+exports.passives=(id,f)=>['krookodile','annihilape'].includes(id)?['controlledfury']:prior.passives(id,f);}
+
+{const prior={effects:exports.effects,description:exports.description};const d={"controlledfury":{"shortDesc":"Anger Point; no rampage lock or ending confusion.","desc":"Full local Anger Point: the first damaging hit after entry raises Attack by 1 stage; surviving a critical hit raises Attack to maximum. Outrage, Thrash, Petal Dance and Raging Fury do not lock the user in or cause ending confusion, including repeated manual uses. Acquiring this effect during a rampage clears only that rampage lock without confusion. Existing confusion, Choice locks, Encore and move field effects remain unchanged."},"ragingheart":{"shortDesc":"Inner Focus; selected Thrash becomes Ghost with no ending confusion.","desc":"Full local Inner Focus prevents flinching and Intimidate Attack drops, subject to normal suppression and ability bypass. Directly selected Thrash becomes Ghost type, retaining its physical category, 140 power, chosen adjacent opposing target and 30% Defense-drop chance, with no extra power multiplier. Without separate Controlled Fury it retains its 2-3-turn rampage lock but does not cause its own ending confusion while Raging Heart is active. External confusion remains. Annihilape supplies Controlled Fury separately as its species passive."}};exports.effects=(id,f)=>id==='controlledfury'?['angerpoint','controlledfury']:id==='ragingheart'?['innerfocus','ragingheart']:prior.effects(id,f);exports.description=(id,key,f)=>d[id]?.[key]??prior.description(id,key,f);}
+
+{const prior=exports.description;exports.description=(id,key,f)=>id==='beyondfear'&&key==='desc'?'Immune to flinching and opposing Taunt. Does not prevent Intimidate or other stat drops and does not raise defenses in response. When supplied as a species passive, remains active through selected-ability suppression.':prior(id,key,f);}
+
+// Approved Slow Clamp component replacement: full Own Tempo replaces Sweet Veil.
+{const prior={effects:exports.effects,description:exports.description};const approved=require('./slow-clamp-approved.json');exports.effects=(id,f)=>id==='slowclamp'?approved.effects:prior.effects(id,f);exports.description=(id,key,f)=>id==='slowclamp'?approved[key]:prior.description(id,key,f);}
+
+// Explicit user-approved follow-up. Static intent expectations, independent of generated outputs.
+{const prior={effects:exports.effects,description:exports.description,passives:exports.passives,abilities:exports.abilities};
+const followup=require('./audit-followup-approved-metadata.json');
+exports.effects=(id,fallback)=>followup.effects[id]??prior.effects(id,fallback);
+exports.description=(id,key,fallback)=>followup.descriptions[id]?.[key]??prior.description(id,key,fallback);
+exports.passives=(id,fallback)=>followup.passives[id]??prior.passives(id,fallback);
+exports.abilities=(id,fallback)=>followup.abilities[id]??prior.abilities(id,fallback);
+}

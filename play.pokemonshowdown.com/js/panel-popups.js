@@ -959,12 +959,16 @@ preact.h("button",{"class":"button",onClick:this.reset},"Try another name")
 };return LoginPanel;}(PSRoomPanel);LoginPanel.id='login';LoginPanel.routes=['login'];LoginPanel.location='semimodal-popup';var
 
 
-AvatarsPanel=function(_PSRoomPanel7){function AvatarsPanel(){return _PSRoomPanel7.apply(this,arguments)||this;}_inheritsLoose(AvatarsPanel,_PSRoomPanel7);var _proto9=AvatarsPanel.prototype;_proto9.
+AvatarsPanel=function(_PSRoomPanel7){function AvatarsPanel(){var _this1;for(var _len6=arguments.length,args=new Array(_len6),_key6=0;_key6<_len6;_key6++){args[_key6]=arguments[_key6];}_this1=_PSRoomPanel7.call.apply(_PSRoomPanel7,[this].concat(args))||this;_this1.
+avatarTab=Dex.canonicalRebornAvatar(PS.user.avatar).startsWith('reborn-')?'reborn':'basic';_this1.
+avatarSearch='';return _this1;}_inheritsLoose(AvatarsPanel,_PSRoomPanel7);var _proto9=AvatarsPanel.prototype;_proto9.
+matchesAvatar=function matchesAvatar(label){return label.toLowerCase().includes(this.avatarSearch.toLowerCase().trim());};_proto9.
 
 
 
 
-render=function render(){
+
+render=function render(){var _this10=this;
 var room=this.props.room;
 
 var avatars=[];
@@ -973,21 +977,22 @@ if(i===162||i===168)continue;
 avatars.push([i,((_window$BattleAvatarN=window.BattleAvatarNumbers)==null?void 0:_window$BattleAvatarN[i])||""+i]);
 }
 var customAvatars=[
-['adrienn','Adrienn'],['alainalt','Alain_alt'],['amaria','Amaria'],
-['amelia','Amelia'],['asriel','Asriel'],['aurora','Aurora'],
-['charlotte','Charlotte'],['florinia','Florinia'],['geara','Geara'],
-['julia','Julia'],['lin','Lin'],['radomus','Radomus'],
-['saphira','Saphira'],['sirius','Sirius'],
-['shiv','Shiv'],['shivalt','Shiv_alt'],['taka','Taka'],
-['titania','Titania'],['tyrant','Tyrant'],['zetta','Zetta']];
+['alainalt','Alain_alt'],['amelia','Amelia'],['asriel','Asriel'],['aurora','Aurora'],
+['geara','Geara'],
+['shiv','Shiv'],['shivalt','Shiv_alt'],['tyrant','Tyrant'],['zetta','Zetta']];
 
 
-return preact.h(PSPanelWrapper,{room:room,width:1210},preact.h("div",{"class":"pad"},
+return preact.h(PSPanelWrapper,{room:room,width:1210},preact.h("div",{"class":"pad"},preact.h("p",null,preact.h("label",null,"Search avatars ",preact.h("input",{"class":"textbox",type:"search",value:this.avatarSearch,onInput:function(ev){_this10.avatarSearch=ev.currentTarget.value;_this10.forceUpdate();}}))),
 preact.h("label",{"class":"optlabel"},preact.h("strong",null,"Choose an avatar or "),
 preact.h("button",{"class":"button","data-cmd":"/close"}," Cancel")
 ),
+
+preact.h("div",{"class":"avatar-tabs",role:"tablist","aria-label":"Avatar collection"},[['basic','Basic'],['reborn','Custom Reborn']].map(function(_ref2){var id=_ref2[0],label=_ref2[1];return preact.h("button",{"class":'button'+(_this10.avatarTab===id?' cur':''),role:"tab","aria-selected":_this10.avatarTab===id,tabIndex:_this10.avatarTab===id?0:-1,id:'avatar-tab-'+id,"aria-controls":'avatar-panel-'+id,onClick:function(){_this10.avatarTab=id;_this10.forceUpdate();},onKeyDown:function(ev){if(!['ArrowLeft','ArrowRight','Home','End'].includes(ev.key))return;ev.preventDefault();_this10.avatarTab=ev.key==='Home'?'basic':ev.key==='End'?'reborn':id==='basic'?'reborn':'basic';_this10.forceUpdate();requestAnimationFrame(function(){var _document$getElementB;return(_document$getElementB=document.getElementById('avatar-tab-'+_this10.avatarTab))==null?void 0:_document$getElementB.focus();});}},label);})),
+preact.h("div",{hidden:this.avatarTab!=='reborn',id:"avatar-panel-reborn",role:"tabpanel","aria-labelledby":"avatar-tab-reborn"},
+Object.entries({'gym':'Gym Leaders','elite':'Elite Four','meteor':'Team Meteor','story':'Rivals / Story Characters'}).filter(function(_ref3){var group=_ref3[0],label=_ref3[1];return Dex.getRebornAvatars().some(function(row){return Dex.getRebornAvatarGroup(row)===group&&_this10.matchesAvatar(row.name+" "+row.id+" "+label);});}).map(function(_ref4){var group=_ref4[0],label=_ref4[1];return preact.h("section",null,preact.h("h3",null,label),preact.h("div",{"class":"avatarlist reborn-avatarlist"},Dex.getRebornAvatars().slice().sort(function(a,b){return a.name.localeCompare(b.name);}).filter(function(row){return Dex.getRebornAvatarGroup(row)===group&&_this10.matchesAvatar(row.name+" "+row.id+" "+label);}).map(function(row){return preact.h("button",{"class":"option reborn-avatar-option"+(row.id===Dex.canonicalRebornAvatar(PS.user.avatar)?' cur':''),"data-cmd":"/closeand /avatar "+row.id,title:row.name,"aria-label":row.name},preact.h("img",{src:Dex.resolveAvatar(row.id),alt:""}),preact.h("span",null,row.name));})));}),
+preact.h("p",{style:"clear:both"},preact.h("a",{href:"/sprites/trainers/REBORN-CREDITS.txt",target:"_blank",rel:"noopener"},"Reborn artwork credits and sources"))),preact.h("div",{hidden:this.avatarTab!=='basic',id:"avatar-panel-basic",role:"tabpanel","aria-labelledby":"avatar-tab-basic"},preact.h("h3",null,"Basic avatars"),
 preact.h("div",{"class":"avatarlist"},
-customAvatars.map(function(_ref2){var avatar=_ref2[0],label=_ref2[1];return(
+customAvatars.filter(function(_ref5){var id=_ref5[0],label=_ref5[1];return _this10.matchesAvatar(id+" "+label);}).map(function(_ref6){var avatar=_ref6[0],label=_ref6[1];return(
 preact.h("button",{
 "data-cmd":"/closeand /avatar "+avatar,title:"/avatar "+label,"aria-label":label,
 "class":"option pixelated"+(avatar===PS.user.avatar?' cur':''),
@@ -1003,7 +1008,7 @@ image.src="/sprites/trainers/"+avatar+".png";
 }})
 ));}
 ),
-avatars.map(function(_ref3){var i=_ref3[0],avatar=_ref3[1];return(
+avatars.filter(function(_ref7){var id=_ref7[0],label=_ref7[1];return _this10.matchesAvatar(id+" "+label);}).map(function(_ref8){var i=_ref8[0],avatar=_ref8[1];return(
 preact.h("button",{
 "data-cmd":"/closeand /avatar "+avatar,title:"/avatar "+avatar,
 "class":"option pixelated"+(avatar===PS.user.avatar?' cur':''),
@@ -1011,7 +1016,7 @@ style:"background-position: -"+((i-1)%16*80+1)+"px -"+(Math.floor((i-1)/16)*80+1
 ));}
 )
 ),
-preact.h("div",{style:"clear:left"}),
+preact.h("div",{style:"clear:left"})),
 preact.h("p",null,preact.h("button",{"class":"button","data-cmd":"/close"},"Cancel"))
 ));
 };return AvatarsPanel;}(PSRoomPanel);AvatarsPanel.id='avatars';AvatarsPanel.routes=['avatars'];AvatarsPanel.location='semimodal-popup';var
@@ -1043,24 +1048,24 @@ preact.h("button",{type:"button","data-cmd":"/close","class":"button"},"Cancel"
 };return BattleForfeitPanel;}(PSRoomPanel);BattleForfeitPanel.id='forfeit';BattleForfeitPanel.routes=['forfeitbattle'];BattleForfeitPanel.location='semimodal-popup';BattleForfeitPanel.noURL=true;var
 
 
-ReplacePlayerPanel=function(_PSRoomPanel9){function ReplacePlayerPanel(){var _this1;for(var _len6=arguments.length,args=new Array(_len6),_key6=0;_key6<_len6;_key6++){args[_key6]=arguments[_key6];}_this1=_PSRoomPanel9.call.apply(_PSRoomPanel9,[this].concat(args))||this;_this1.
+ReplacePlayerPanel=function(_PSRoomPanel9){function ReplacePlayerPanel(){var _this11;for(var _len7=arguments.length,args=new Array(_len7),_key7=0;_key7<_len7;_key7++){args[_key7]=arguments[_key7];}_this11=_PSRoomPanel9.call.apply(_PSRoomPanel9,[this].concat(args))||this;_this11.
 
 
 
 
 
-handleReplacePlayer=function(ev){var _room$getParent,_this1$base;
-var room=_this1.props.room;
+handleReplacePlayer=function(ev){var _room$getParent,_this11$base;
+var room=_this11.props.room;
 var battleRoom=(_room$getParent=room.getParent())==null?void 0:_room$getParent.getParent();
-var newPlayer=(_this1$base=_this1.base)==null||(_this1$base=_this1$base.querySelector("input[name=newplayer]"))==null?void 0:_this1$base.value;
+var newPlayer=(_this11$base=_this11.base)==null||(_this11$base=_this11$base.querySelector("input[name=newplayer]"))==null?void 0:_this11$base.value;
 if(!(newPlayer!=null&&newPlayer.length))return battleRoom.add("|error|Enter player's name");
 if(battleRoom.battle.ended)return battleRoom.add("|error|Cannot replace player, battle has already ended.");
 var playerSlot=battleRoom.battle.p1.id===PS.user.userid?"p1":"p2";
 battleRoom.send('/leavebattle');
 battleRoom.send("/addplayer "+newPlayer+", "+playerSlot);
-_this1.close();
+_this11.close();
 ev.preventDefault();
-};return _this1;}_inheritsLoose(ReplacePlayerPanel,_PSRoomPanel9);var _proto1=ReplacePlayerPanel.prototype;_proto1.
+};return _this11;}_inheritsLoose(ReplacePlayerPanel,_PSRoomPanel9);var _proto1=ReplacePlayerPanel.prototype;_proto1.
 
 render=function render(){
 var room=this.props.room;
@@ -1084,7 +1089,7 @@ preact.h("button",{type:"button","data-cmd":"/close","class":"button"},"Cancel"
 };return ReplacePlayerPanel;}(PSRoomPanel);ReplacePlayerPanel.id='replaceplayer';ReplacePlayerPanel.routes=['replaceplayer'];ReplacePlayerPanel.location='semimodal-popup';ReplacePlayerPanel.noURL=true;var
 
 
-ChangePasswordPanel=function(_PSRoomPanel0){function ChangePasswordPanel(){var _this10;for(var _len7=arguments.length,args=new Array(_len7),_key7=0;_key7<_len7;_key7++){args[_key7]=arguments[_key7];}_this10=_PSRoomPanel0.call.apply(_PSRoomPanel0,[this].concat(args))||this;_this10.
+ChangePasswordPanel=function(_PSRoomPanel0){function ChangePasswordPanel(){var _this12;for(var _len8=arguments.length,args=new Array(_len8),_key8=0;_key8<_len8;_key8++){args[_key8]=arguments[_key8];}_this12=_PSRoomPanel0.call.apply(_PSRoomPanel0,[this].concat(args))||this;_this12.
 
 
 
@@ -1092,30 +1097,30 @@ ChangePasswordPanel=function(_PSRoomPanel0){function ChangePasswordPanel(){var _
 
 
 
-handleChangePassword=function(ev){var _this10$base,_this10$base2,_this10$base3;
+handleChangePassword=function(ev){var _this12$base,_this12$base2,_this12$base3;
 ev.preventDefault();
-var oldpassword=(_this10$base=_this10.base)==null||(_this10$base=_this10$base.querySelector('input[name=oldpassword]'))==null?void 0:_this10$base.value;
-var password=(_this10$base2=_this10.base)==null||(_this10$base2=_this10$base2.querySelector('input[name=password]'))==null?void 0:_this10$base2.value;
-var cpassword=(_this10$base3=_this10.base)==null||(_this10$base3=_this10$base3.querySelector('input[name=cpassword]'))==null?void 0:_this10$base3.value;
+var oldpassword=(_this12$base=_this12.base)==null||(_this12$base=_this12$base.querySelector('input[name=oldpassword]'))==null?void 0:_this12$base.value;
+var password=(_this12$base2=_this12.base)==null||(_this12$base2=_this12$base2.querySelector('input[name=password]'))==null?void 0:_this12$base2.value;
+var cpassword=(_this12$base3=_this12.base)==null||(_this12$base3=_this12$base3.querySelector('input[name=cpassword]'))==null?void 0:_this12$base3.value;
 if(!(oldpassword!=null&&oldpassword.length)||
 !(password!=null&&password.length)||
-!(cpassword!=null&&cpassword.length))return _this10.setState({errorMsg:"All fields are required"});
-if(password!==cpassword)return _this10.setState({errorMsg:'Passwords do not match'});
+!(cpassword!=null&&cpassword.length))return _this12.setState({errorMsg:"All fields are required"});
+if(password!==cpassword)return _this12.setState({errorMsg:'Passwords do not match'});
 PSLoginServer.query("changepassword",{
 oldpassword:oldpassword,
 password:password,
 cpassword:cpassword
 }).then(function(data){
-if(data!=null&&data.actionerror)return _this10.setState({errorMsg:data==null?void 0:data.actionerror});
+if(data!=null&&data.actionerror)return _this12.setState({errorMsg:data==null?void 0:data.actionerror});
 PS.alert("Your password was successfully changed!");
 
 })["catch"](function(err){
 console.error(err);
-_this10.setState({errorMsg:err.message});
+_this12.setState({errorMsg:err.message});
 });
 
-_this10.setState({errorMsg:''});
-};return _this10;}_inheritsLoose(ChangePasswordPanel,_PSRoomPanel0);var _proto10=ChangePasswordPanel.prototype;_proto10.
+_this12.setState({errorMsg:''});
+};return _this12;}_inheritsLoose(ChangePasswordPanel,_PSRoomPanel0);var _proto10=ChangePasswordPanel.prototype;_proto10.
 
 render=function render(){var _this$state$errorMsg;
 var room=this.props.room;
@@ -1162,7 +1167,7 @@ preact.h("button",{type:"button","data-cmd":"/close","class":"button"},"Cancel")
 };return ChangePasswordPanel;}(PSRoomPanel);ChangePasswordPanel.id="changepassword";ChangePasswordPanel.routes=["changepassword"];ChangePasswordPanel.location="semimodal-popup";ChangePasswordPanel.noURL=true;var
 
 
-RegisterPanel=function(_PSRoomPanel1){function RegisterPanel(){var _this11;for(var _len8=arguments.length,args=new Array(_len8),_key8=0;_key8<_len8;_key8++){args[_key8]=arguments[_key8];}_this11=_PSRoomPanel1.call.apply(_PSRoomPanel1,[this].concat(args))||this;_this11.
+RegisterPanel=function(_PSRoomPanel1){function RegisterPanel(){var _this13;for(var _len9=arguments.length,args=new Array(_len9),_key9=0;_key9<_len9;_key9++){args[_key9]=arguments[_key9];}_this13=_PSRoomPanel1.call.apply(_PSRoomPanel1,[this].concat(args))||this;_this13.
 
 
 
@@ -1171,15 +1176,15 @@ RegisterPanel=function(_PSRoomPanel1){function RegisterPanel(){var _this11;for(v
 
 
 
-handleRegisterUser=function(ev){var _this11$base,_this11$base2,_this11$base3;
+handleRegisterUser=function(ev){var _this13$base,_this13$base2,_this13$base3;
 ev.preventDefault();
-var captcha=(_this11$base=_this11.base)==null||(_this11$base=_this11$base.querySelector('input[name=captcha]'))==null?void 0:_this11$base.value;
-var password=(_this11$base2=_this11.base)==null||(_this11$base2=_this11$base2.querySelector('input[name=password]'))==null?void 0:_this11$base2.value;
-var cpassword=(_this11$base3=_this11.base)==null||(_this11$base3=_this11$base3.querySelector('input[name=cpassword]'))==null?void 0:_this11$base3.value;
+var captcha=(_this13$base=_this13.base)==null||(_this13$base=_this13$base.querySelector('input[name=captcha]'))==null?void 0:_this13$base.value;
+var password=(_this13$base2=_this13.base)==null||(_this13$base2=_this13$base2.querySelector('input[name=password]'))==null?void 0:_this13$base2.value;
+var cpassword=(_this13$base3=_this13.base)==null||(_this13$base3=_this13$base3.querySelector('input[name=cpassword]'))==null?void 0:_this13$base3.value;
 if(!(captcha!=null&&captcha.length)||
 !(password!=null&&password.length)||
-!(cpassword!=null&&cpassword.length))return _this11.setState({errorMsg:"All fields are required"});
-if(password!==cpassword)return _this11.setState({errorMsg:'Passwords do not match'});
+!(cpassword!=null&&cpassword.length))return _this13.setState({errorMsg:"All fields are required"});
+if(password!==cpassword)return _this13.setState({errorMsg:'Passwords do not match'});
 PSLoginServer.query("register",{
 captcha:captcha,
 password:password,
@@ -1187,21 +1192,21 @@ cpassword:cpassword,
 username:PS.user.name,
 challstr:PS.user.challstr
 }).then(function(data){var _data$curuser;
-if(data!=null&&data.actionerror)_this11.setState({errorMsg:data==null?void 0:data.actionerror});
+if(data!=null&&data.actionerror)_this13.setState({errorMsg:data==null?void 0:data.actionerror});
 if(data!=null&&(_data$curuser=data.curuser)!=null&&_data$curuser.loggedin){
 var name=data.curuser.username;
 PS.user.registered={name:name,userid:toID(name)};
 if(data!=null&&data.assertion)PS.user.handleAssertion(name,data==null?void 0:data.assertion);
-_this11.close();
+_this13.close();
 PS.alert("You have been successfully registered.");
 }
 })["catch"](function(err){
 console.error(err);
-_this11.setState({errorMsg:err.message});
+_this13.setState({errorMsg:err.message});
 });
 
-_this11.setState({errorMsg:''});
-};return _this11;}_inheritsLoose(RegisterPanel,_PSRoomPanel1);var _proto11=RegisterPanel.prototype;_proto11.
+_this13.setState({errorMsg:''});
+};return _this13;}_inheritsLoose(RegisterPanel,_PSRoomPanel1);var _proto11=RegisterPanel.prototype;_proto11.
 
 render=function render(){var _this$state$errorMsg2;
 var room=this.props.room;
@@ -1253,7 +1258,7 @@ preact.h("button",{type:"button","data-cmd":"/close","class":"button"},"Cancel")
 };return RegisterPanel;}(PSRoomPanel);RegisterPanel.id="register";RegisterPanel.routes=["register"];RegisterPanel.location="semimodal-popup";RegisterPanel.noURL=true;RegisterPanel.rightPopup=true;var
 
 
-BackgroundListPanel=function(_PSRoomPanel10){function BackgroundListPanel(){var _this12;for(var _len9=arguments.length,args=new Array(_len9),_key9=0;_key9<_len9;_key9++){args[_key9]=arguments[_key9];}_this12=_PSRoomPanel10.call.apply(_PSRoomPanel10,[this].concat(args))||this;_this12.
+BackgroundListPanel=function(_PSRoomPanel10){function BackgroundListPanel(){var _this14;for(var _len0=arguments.length,args=new Array(_len0),_key0=0;_key0<_len0;_key0++){args[_key0]=arguments[_key0];}_this14=_PSRoomPanel10.call.apply(_PSRoomPanel10,[this].concat(args))||this;_this14.
 
 
 
@@ -1272,16 +1277,16 @@ BackgroundListPanel=function(_PSRoomPanel10){function BackgroundListPanel(){var 
 setBg=function(ev){
 var curtarget=ev.currentTarget;
 var bg=curtarget.value;
-if(bg==='custom'){var _this12$props$room$ar;
-PSBackground.set(((_this12$props$room$ar=_this12.props.room.args)==null?void 0:_this12$props$room$ar.bgUrl)||'','custom');
-_this12.close();
+if(bg==='custom'){var _this14$props$room$ar;
+PSBackground.set(((_this14$props$room$ar=_this14.props.room.args)==null?void 0:_this14$props$room$ar.bgUrl)||'','custom');
+_this14.close();
 }else{
 PSBackground.set('',bg);
 }
 ev.preventDefault();
 ev.stopImmediatePropagation();
-_this12.forceUpdate();
-};_this12.
+_this14.forceUpdate();
+};_this14.
 
 
 
@@ -1315,13 +1320,13 @@ _this12.forceUpdate();
 
 
 
-uploadBg=function(ev){var _this12$base;
-_this12.setState({status:undefined});
-var input=(_this12$base=_this12.base)==null?void 0:_this12$base.querySelector('input[name=bgfile]');
+uploadBg=function(ev){var _this14$base;
+_this14.setState({status:undefined});
+var input=(_this14$base=_this14.base)==null?void 0:_this14$base.querySelector('input[name=bgfile]');
 BackgroundListPanel.handleUploadedFiles(input==null?void 0:input.files,true);
 ev.preventDefault();
 ev.stopImmediatePropagation();
-};return _this12;}_inheritsLoose(BackgroundListPanel,_PSRoomPanel10);BackgroundListPanel.handleDrop=function handleDrop(ev){var _ev$dataTransfer,_files$;var files=(_ev$dataTransfer=ev.dataTransfer)==null?void 0:_ev$dataTransfer.files;if(files!=null&&(_files$=files[0])!=null&&(_files$=_files$.type)!=null&&_files$.startsWith('image/')){BackgroundListPanel.handleUploadedFiles(files);return true;}};BackgroundListPanel.handleUploadedFiles=function handleUploadedFiles(files,skipConfirm){if(!(files!=null&&files[0]))return;var file=files[0];var reader=new FileReader();reader.onload=function(){var _PS$rooms$changebackg;var bgUrl=reader.result;if(bgUrl.length>4200000){PS.join('changebackground',{args:{error:"Image is too large and can't be saved. It should be under 3.5MB or so."}});return;}if(skipConfirm){PSBackground.set(bgUrl,'custom');}else{PS.join('changebackground',{args:{bgUrl:bgUrl}});}(_PS$rooms$changebackg=PS.rooms['changebackground'])==null||_PS$rooms$changebackg.update(null);};reader.onerror=function(){PS.join('changebackground',{args:{error:"Failed to load background image."}});};reader.readAsDataURL(file);};var _proto12=BackgroundListPanel.prototype;_proto12.
+};return _this14;}_inheritsLoose(BackgroundListPanel,_PSRoomPanel10);BackgroundListPanel.handleDrop=function handleDrop(ev){var _ev$dataTransfer,_files$;var files=(_ev$dataTransfer=ev.dataTransfer)==null?void 0:_ev$dataTransfer.files;if(files!=null&&(_files$=files[0])!=null&&(_files$=_files$.type)!=null&&_files$.startsWith('image/')){BackgroundListPanel.handleUploadedFiles(files);return true;}};BackgroundListPanel.handleUploadedFiles=function handleUploadedFiles(files,skipConfirm){if(!(files!=null&&files[0]))return;var file=files[0];var reader=new FileReader();reader.onload=function(){var _PS$rooms$changebackg;var bgUrl=reader.result;if(bgUrl.length>4200000){PS.join('changebackground',{args:{error:"Image is too large and can't be saved. It should be under 3.5MB or so."}});return;}if(skipConfirm){PSBackground.set(bgUrl,'custom');}else{PS.join('changebackground',{args:{bgUrl:bgUrl}});}(_PS$rooms$changebackg=PS.rooms['changebackground'])==null||_PS$rooms$changebackg.update(null);};reader.onerror=function(){PS.join('changebackground',{args:{error:"Failed to load background image."}});};reader.readAsDataURL(file);};var _proto12=BackgroundListPanel.prototype;_proto12.
 
 renderUpload=function renderUpload(){var _room$args,_room$args2;
 var room=this.props.room;
@@ -1406,7 +1411,7 @@ preact.h("button",{"data-cmd":"/close","class":"button"},preact.h("strong",null,
 };return BackgroundListPanel;}(PSRoomPanel);BackgroundListPanel.id='changebackground';BackgroundListPanel.routes=['changebackground'];BackgroundListPanel.location='semimodal-popup';BackgroundListPanel.noURL=true;var
 
 
-ChatFormattingPanel=function(_PSRoomPanel11){function ChatFormattingPanel(){var _this13;for(var _len0=arguments.length,args=new Array(_len0),_key0=0;_key0<_len0;_key0++){args[_key0]=arguments[_key0];}_this13=_PSRoomPanel11.call.apply(_PSRoomPanel11,[this].concat(args))||this;_this13.
+ChatFormattingPanel=function(_PSRoomPanel11){function ChatFormattingPanel(){var _this15;for(var _len1=arguments.length,args=new Array(_len1),_key1=0;_key1<_len1;_key1++){args[_key1]=arguments[_key1];}_this15=_PSRoomPanel11.call.apply(_PSRoomPanel11,[this].concat(args))||this;_this15.
 
 
 
@@ -1420,7 +1425,7 @@ curPref[setting]=value;
 PS.prefs.set("chatformatting",curPref);
 ev.preventDefault();
 ev.stopImmediatePropagation();
-};return _this13;}_inheritsLoose(ChatFormattingPanel,_PSRoomPanel11);var _proto13=ChatFormattingPanel.prototype;_proto13.
+};return _this15;}_inheritsLoose(ChatFormattingPanel,_PSRoomPanel11);var _proto13=ChatFormattingPanel.prototype;_proto13.
 
 render=function render(){
 var room=this.props.room;
@@ -1513,7 +1518,7 @@ preact.h("button",{"data-cmd":"/close","class":"button"},"Cancel"
 ));
 };return LeaveRoomPanel;}(PSRoomPanel);LeaveRoomPanel.id='confirmleaveroom';LeaveRoomPanel.routes=['confirmleaveroom'];LeaveRoomPanel.location='semimodal-popup';LeaveRoomPanel.noURL=true;var
 
-BattleOptionsPanel=function(_PSRoomPanel13){function BattleOptionsPanel(){var _this14;for(var _len1=arguments.length,args=new Array(_len1),_key1=0;_key1<_len1;_key1++){args[_key1]=arguments[_key1];}_this14=_PSRoomPanel13.call.apply(_PSRoomPanel13,[this].concat(args))||this;_this14.
+BattleOptionsPanel=function(_PSRoomPanel13){function BattleOptionsPanel(){var _this16;for(var _len10=arguments.length,args=new Array(_len10),_key10=0;_key10<_len10;_key10++){args[_key10]=arguments[_key10];}_this16=_PSRoomPanel13.call.apply(_PSRoomPanel13,[this].concat(args))||this;_this16.
 
 
 
@@ -1521,8 +1526,8 @@ BattleOptionsPanel=function(_PSRoomPanel13){function BattleOptionsPanel(){var _t
 
 handleHardcoreMode=function(ev){
 var mode=ev.currentTarget.checked;
-var room=_this14.getBattleRoom();
-if(!room)return _this14.close();
+var room=_this16.getBattleRoom();
+if(!room)return _this16.close();
 
 room.battle.setHardcoreMode(mode);
 if(mode){
@@ -1531,13 +1536,13 @@ room.add("||Hardcore mode ON: Information not available in-game is now hidden.")
 room.add("||Hardcore mode OFF: Information not available in-game is now shown.");
 }
 room.update(null);
-};_this14.
+};_this16.
 handleIgnoreSpectators=function(ev){
 var value=typeof ev==="object"?
 ev.currentTarget.checked:
 ev;
-var room=_this14.getBattleRoom();
-if(!room)return _this14.close();
+var room=_this16.getBattleRoom();
+if(!room)return _this16.close();
 
 room.battle.ignoreSpects=value;
 room.add("||Spectators "+(room.battle.ignoreSpects?'':'no longer ')+"ignored.");
@@ -1553,31 +1558,31 @@ chat.style.display=displaySetting;
 }
 }
 room.battle.scene.log.updateScroll();
-};_this14.
+};_this16.
 handleIgnoreOpponent=function(ev){
 var value=typeof ev==="object"?
 ev.currentTarget.checked:
 ev;
-var room=_this14.getBattleRoom();
-if(!room)return _this14.close();
+var room=_this16.getBattleRoom();
+if(!room)return _this16.close();
 
 room.battle.ignoreOpponent=value;
 room.battle.resetToCurrentTurn();
-};_this14.
+};_this16.
 handleIgnoreNicks=function(ev){
 var value=typeof ev==="object"?
 ev.currentTarget.checked:
 ev;
-var room=_this14.getBattleRoom();
-if(!room)return _this14.close();
+var room=_this16.getBattleRoom();
+if(!room)return _this16.close();
 
 room.battle.ignoreNicks=value;
 room.battle.resetToCurrentTurn();
-};_this14.
+};_this16.
 handleAllSettings=function(ev){
 var setting=ev.currentTarget.name;
 var value=ev.currentTarget.checked;
-var room=_this14.getBattleRoom();
+var room=_this16.getBattleRoom();
 
 switch(setting){
 case'autotimer':{
@@ -1597,17 +1602,17 @@ break;
 }
 case'ignoreopp':{
 PS.prefs.set('ignoreopp',value);
-_this14.handleIgnoreOpponent(value);
+_this16.handleIgnoreOpponent(value);
 break;
 }
 case'ignorespects':{
 PS.prefs.set('ignorespects',value);
-_this14.handleIgnoreSpectators(value);
+_this16.handleIgnoreSpectators(value);
 break;
 }
 case'ignorenicks':{
 PS.prefs.set('ignorenicks',value);
-_this14.handleIgnoreNicks(value);
+_this16.handleIgnoreNicks(value);
 break;
 }
 case'rightpanel':{
@@ -1620,7 +1625,7 @@ PS.mainmenu.disallowSpectators=value;
 break;
 }
 }
-};return _this14;}_inheritsLoose(BattleOptionsPanel,_PSRoomPanel13);var _proto15=BattleOptionsPanel.prototype;_proto15.
+};return _this16;}_inheritsLoose(BattleOptionsPanel,_PSRoomPanel13);var _proto15=BattleOptionsPanel.prototype;_proto15.
 getBattleRoom=function getBattleRoom(){
 var battleRoom=this.props.room.getParent();
 return battleRoom!=null&&battleRoom.battle?battleRoom:null;
@@ -1736,15 +1741,15 @@ battleRoom&&preact.h("button",{"data-cmd":"/closeand /inopener /offertie","class
 };return BattleOptionsPanel;}(PSRoomPanel);BattleOptionsPanel.id='battleoptions';BattleOptionsPanel.routes=['battleoptions'];BattleOptionsPanel.location='semimodal-popup';BattleOptionsPanel.noURL=true;var
 
 
-PopupRoom=function(_PSRoom2){function PopupRoom(){var _this15$args;var _this15;for(var _len10=arguments.length,args=new Array(_len10),_key10=0;_key10<_len10;_key10++){args[_key10]=arguments[_key10];}_this15=_PSRoom2.call.apply(_PSRoom2,[this].concat(args))||this;_this15.
-returnValue=(_this15$args=_this15.args)==null?void 0:_this15$args.cancelValue;return _this15;}_inheritsLoose(PopupRoom,_PSRoom2);var _proto16=PopupRoom.prototype;_proto16.
+PopupRoom=function(_PSRoom2){function PopupRoom(){var _this17$args;var _this17;for(var _len11=arguments.length,args=new Array(_len11),_key11=0;_key11<_len11;_key11++){args[_key11]=arguments[_key11];}_this17=_PSRoom2.call.apply(_PSRoom2,[this].concat(args))||this;_this17.
+returnValue=(_this17$args=_this17.args)==null?void 0:_this17$args.cancelValue;return _this17;}_inheritsLoose(PopupRoom,_PSRoom2);var _proto16=PopupRoom.prototype;_proto16.
 destroy=function destroy(){var _this$args;
 (_this$args=this.args)==null||_this$args.callback==null||_this$args.callback(this.returnValue);
 _PSRoom2.prototype.destroy.call(this);
 };return PopupRoom;}(PSRoom);var
 
 
-PopupPanel=function(_PSRoomPanel14){function PopupPanel(){var _this16;for(var _len11=arguments.length,args=new Array(_len11),_key11=0;_key11<_len11;_key11++){args[_key11]=arguments[_key11];}_this16=_PSRoomPanel14.call.apply(_PSRoomPanel14,[this].concat(args))||this;_this16.
+PopupPanel=function(_PSRoomPanel14){function PopupPanel(){var _this18;for(var _len12=arguments.length,args=new Array(_len12),_key12=0;_key12<_len12;_key12++){args[_key12]=arguments[_key12];}_this18=_PSRoomPanel14.call.apply(_PSRoomPanel14,[this].concat(args))||this;_this18.
 
 
 
@@ -1754,14 +1759,14 @@ PopupPanel=function(_PSRoomPanel14){function PopupPanel(){var _this16;for(var _l
 handleSubmit=function(ev){var _room$args3;
 ev.preventDefault();
 ev.stopImmediatePropagation();
-var room=_this16.props.room;
+var room=_this18.props.room;
 room.returnValue=(_room$args3=room.args)==null?void 0:_room$args3.okValue;
-var textbox=_this16.base.querySelector('input[name=value]');
+var textbox=_this18.base.querySelector('input[name=value]');
 if(textbox){
 room.returnValue=textbox.value;
 }
-_this16.close();
-};return _this16;}_inheritsLoose(PopupPanel,_PSRoomPanel14);var _proto17=PopupPanel.prototype;_proto17.
+_this18.close();
+};return _this18;}_inheritsLoose(PopupPanel,_PSRoomPanel14);var _proto17=PopupPanel.prototype;_proto17.
 componentDidMount=function componentDidMount(){var _this$props$room$args2;
 _PSRoomPanel14.prototype.componentDidMount.call(this);
 var textbox=this.base.querySelector('input[name=value]');
@@ -1809,18 +1814,18 @@ cancelButton
 };return PopupPanel;}(PSRoomPanel);PopupPanel.id='popup';PopupPanel.routes=['popup-*'];PopupPanel.location='semimodal-popup';PopupPanel.noURL=true;PopupPanel.Model=PopupRoom;var
 
 
-RoomTabListPanel=function(_PSRoomPanel15){function RoomTabListPanel(){var _this17;for(var _len12=arguments.length,args=new Array(_len12),_key12=0;_key12<_len12;_key12++){args[_key12]=arguments[_key12];}_this17=_PSRoomPanel15.call.apply(_PSRoomPanel15,[this].concat(args))||this;_this17.
+RoomTabListPanel=function(_PSRoomPanel15){function RoomTabListPanel(){var _this19;for(var _len13=arguments.length,args=new Array(_len13),_key13=0;_key13<_len13;_key13++){args[_key13]=arguments[_key13];}_this19=_PSRoomPanel15.call.apply(_PSRoomPanel15,[this].concat(args))||this;_this19.
 
 
 
 
 
-startingLayout=PS.prefs.onepanel;_this17.
+startingLayout=PS.prefs.onepanel;_this19.
 handleLayoutChange=function(ev){
 var checkbox=ev.currentTarget;
-PS.prefs.onepanel=checkbox.checked?'vertical':_this17.startingLayout;
+PS.prefs.onepanel=checkbox.checked?'vertical':_this19.startingLayout;
 PS.update();
-};return _this17;}_inheritsLoose(RoomTabListPanel,_PSRoomPanel15);var _proto18=RoomTabListPanel.prototype;_proto18.
+};return _this19;}_inheritsLoose(RoomTabListPanel,_PSRoomPanel15);var _proto18=RoomTabListPanel.prototype;_proto18.
 render=function render(){
 var verticalTabs=PS.prefs.onepanel==='vertical';
 return preact.h(PSPanelWrapper,{room:this.props.room},preact.h("div",{"class":"tablist"},
@@ -1863,18 +1868,18 @@ RulesPanel=function(_PSRoomPanel17){function RulesPanel(){return _PSRoomPanel17.
 
 
 
-componentDidMount=function componentDidMount(){var _this18=this;
+componentDidMount=function componentDidMount(){var _this20=this;
 _PSRoomPanel17.prototype.componentDidMount.call(this);
 var args=this.props.room.args;
 var isWarn=(args==null?void 0:args.type)==='warn';
 if(isWarn&&args){
 var timerRef=setInterval(function(){
-var timeLeft=_this18.state.timeLeft||5;
+var timeLeft=_this20.state.timeLeft||5;
 var canClose=timeLeft===1;
-_this18.setState({canClose:canClose,timeLeft:timeLeft-1});
+_this20.setState({canClose:canClose,timeLeft:timeLeft-1});
 if(canClose){
-clearInterval(_this18.state.timerRef);
-_this18.setState({timerRef:null});
+clearInterval(_this20.state.timerRef);
+_this20.setState({timerRef:null});
 }
 },1000);
 if(!this.state.timerRef)this.setState({timerRef:timerRef});

@@ -35,7 +35,7 @@ describe('Server data synchronization', () => {
 						for (const [key, value] of Object.entries(expected)) {
 							if (key === 'replaceAbilities') continue;
 							const normalize = data => key === 'isNonstandard' ? (kind === 'abilities' ? !!data : data || false) : JSON.parse(JSON.stringify(data));
-							assert.deepEqual(normalize(actual[key]), normalize(value), `${kind}.${id}.${key}`);
+							assert.deepEqual(normalize(actual[key]), normalize(kind === 'abilities' && id === 'eldritchremedy' && key === 'name' ? 'Curious Medicine' : value), `${kind}.${id}.${key}`);
 						}
 					}
 				}
@@ -68,7 +68,7 @@ describe('Server data synchronization', () => {
 
 			it('syncs mixed Poliwrath, Reservoir and Royal Scales components', () => {
 				const p = dex.species.get('Poliwrath');
-				assert.deepEqual(JSON.parse(JSON.stringify(p.abilities)), {0: 'Reservoir', 1: 'Knuckle Tide', H: 'Crosscurrent'});
+				assert.deepEqual(JSON.parse(JSON.stringify(p.abilities)), {0: 'Reservoir', 1: 'Knuckle Tide', H: 'Crosscurrent', S: 'Aevian Ascendance'});
 				assert.equal(p.baseStats.atk, 100);
 				assert.equal(p.baseStats.spa, 95);
 				assert.equal(p.bst, 560);
@@ -195,7 +195,7 @@ describe('Server data synchronization', () => {
 			it('resolves assigned composite abilities and their component effects', () => {
 				for (const [species, ability, components] of [
 					['Reuniclus-Mega', 'Adaptive Power', ['hugepower', 'magicguard']],
-					['Slowbro-Mega', 'Slow Clamp', ['shellarmor', 'analytic', 'sweetveil']],
+					['Slowbro-Mega', 'Slow Clamp', ['shellarmor', 'analytic', 'owntempo']],
 					['Muk-Pulse', 'Pulse Waste', ['protean', 'poisontouch', 'regenerator']],
 				]) {
 					assert.equal(dex.species.get(species).abilities[0], ability);
@@ -247,4 +247,14 @@ describe('Server data synchronization', () => {
 			});
 		});
 	}
+});
+
+describe('Iron Vise approved components', () => {
+ for (const bundled of [false, true]) it((bundled ? 'bundle' : 'individual scripts') + ' keeps only Tough Claws and Decoy Pincers active', () => {
+  const dex = loadDex(bundled);
+  assert.deepEqual(Array.from(dex.getAbilityEffects('ironvise')).sort(), ['decoypincers', 'ironvise', 'toughclaws']);
+  assert.deepEqual(Array.from(dex.species.get('Scizor-Mega').passives), ['intimidate']);
+  assert(dex.abilities.get('ironvise').desc.includes('25%'));
+  assert(!/Light Metal|Battle Armor|Factory|Technician/.test(dex.abilities.get('ironvise').desc));
+ });
 });

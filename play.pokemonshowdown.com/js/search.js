@@ -37,58 +37,58 @@
 
 		var self = this;
 
-        var openPassiveButton = null, openPassivePanel = null;
-        function closePassiveHelp() {
-            if (!openPassiveButton) return;
-            openPassiveButton.setAttribute('aria-expanded', 'false');
-            openPassivePanel.hidden = true;
-            openPassiveButton = openPassivePanel = null;
-        }
-        this.$el.on('pointerdown', '.pokemon-passive-badge', function (e) { e.stopPropagation(); });
-        this.$el.on('click', '.pokemon-passive-badge', function (e) {
-            e.preventDefault(); e.stopImmediatePropagation();
-            var closing = openPassiveButton === this;
-            closePassiveHelp();
-            if (closing) return;
-            var panel = this.nextElementSibling;
-            // Build short passive descriptions only when requested, never for every search row.
-            if (!panel.textContent) {
-                var species = (self.engine ? self.engine.dex : Dex).species.get(this.dataset.passiveSpecies);
-                panel.innerHTML = (species.passives || []).map(function (id) {
-                    var passive = Dex.getPassiveAbilityDetails(id);
-                    return '<strong>' + BattleLog.escapeHTML(passive.name) + '</strong><span>' +
+		var openPassiveButton = null, openPassivePanel = null;
+		function closePassiveHelp() {
+			if (!openPassiveButton) return;
+			openPassiveButton.setAttribute('aria-expanded', 'false');
+			openPassivePanel.hidden = true;
+			openPassiveButton = openPassivePanel = null;
+		}
+		this.$el.on('pointerdown', '.pokemon-passive-badge', function (e) { e.stopPropagation(); });
+		this.$el.on('click', '.pokemon-passive-badge', function (e) {
+			e.preventDefault(); e.stopImmediatePropagation();
+			var closing = openPassiveButton === this;
+			closePassiveHelp();
+			if (closing) return;
+			var panel = this.nextElementSibling;
+			// Build short passive descriptions only when requested, never for every search row.
+			if (!panel.textContent) {
+				var species = (self.engine ? self.engine.dex : Dex).species.get(this.dataset.passiveSpecies);
+				panel.innerHTML = (species.passives || []).map(function (id) {
+					var passive = Dex.getPassiveAbilityDetails(id);
+					return '<strong>' + BattleLog.escapeHTML(passive.name) + '</strong><span>' +
                         BattleLog.escapeHTML(passive.shortDesc || 'No additional effect.') + '</span>';
-                }).join('');
-            }
-            panel.hidden = false;
-            this.setAttribute('aria-expanded', 'true');
-            var box = this.getBoundingClientRect(), panelBox = panel.getBoundingClientRect();
-            panel.style.left = Math.max(8, Math.min(box.left, window.innerWidth - panelBox.width - 8)) + 'px';
-            panel.style.top = Math.max(8, Math.min(box.bottom + 5, window.innerHeight - panelBox.height - 8)) + 'px';
-            openPassiveButton = this; openPassivePanel = panel;
-        });
-        this.$el.on('keydown', '.pokemon-passive-badge', function (e) {
-            if (e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); closePassiveHelp(); }
-        });
-        this.$el.on('focusout', '.pokemon-passive-badge', closePassiveHelp);
-        this.$el.on('click', '[data-entry^="pokemon|"]', closePassiveHelp);
-        function dismissPassiveHelp(e) {
-            if (!$(e.target).closest('.pokemon-passive-badge').length) closePassiveHelp();
-        }
-        this.$viewport.on('pointerdown.passivehelp', dismissPassiveHelp);
-        // Constant work on scroll; the panel never intercepts wheel/touch gestures.
-        this.el.addEventListener('wheel', closePassiveHelp, {passive: true});
-        this.el.addEventListener('touchmove', closePassiveHelp, {passive: true});
-        this.$viewport[0].addEventListener('scroll', closePassiveHelp, {passive: true});
-        this.destroy = function () {
-            this.cancelRendering();
-            closePassiveHelp();
-            this.$viewport.off('pointerdown.passivehelp', dismissPassiveHelp);
-            this.$viewport[0].removeEventListener('scroll', closePassiveHelp);
-            this.el.removeEventListener('wheel', closePassiveHelp);
-            this.el.removeEventListener('touchmove', closePassiveHelp);
-            if (window.search === this) window.search = null;
-        };
+				}).join('');
+			}
+			panel.hidden = false;
+			this.setAttribute('aria-expanded', 'true');
+			var box = this.getBoundingClientRect(), panelBox = panel.getBoundingClientRect();
+			panel.style.left = Math.max(8, Math.min(box.left, window.innerWidth - panelBox.width - 8)) + 'px';
+			panel.style.top = Math.max(8, Math.min(box.bottom + 5, window.innerHeight - panelBox.height - 8)) + 'px';
+			openPassiveButton = this; openPassivePanel = panel;
+		});
+		this.$el.on('keydown', '.pokemon-passive-badge', function (e) {
+			if (e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); closePassiveHelp(); }
+		});
+		this.$el.on('focusout', '.pokemon-passive-badge', closePassiveHelp);
+		this.$el.on('click', '[data-entry^="pokemon|"]', closePassiveHelp);
+		function dismissPassiveHelp(e) {
+			if (!$(e.target).closest('.pokemon-passive-badge').length) closePassiveHelp();
+		}
+		this.$viewport.on('pointerdown.passivehelp', dismissPassiveHelp);
+		// Constant work on scroll; the panel never intercepts wheel/touch gestures.
+		this.el.addEventListener('wheel', closePassiveHelp, {passive: true});
+		this.el.addEventListener('touchmove', closePassiveHelp, {passive: true});
+		this.$viewport[0].addEventListener('scroll', closePassiveHelp, {passive: true});
+		this.destroy = function () {
+			this.cancelRendering();
+			closePassiveHelp();
+			this.$viewport.off('pointerdown.passivehelp', dismissPassiveHelp);
+			this.$viewport[0].removeEventListener('scroll', closePassiveHelp);
+			this.el.removeEventListener('wheel', closePassiveHelp);
+			this.el.removeEventListener('touchmove', closePassiveHelp);
+			if (window.search === this) window.search = null;
+		};
 
 		this.$el.on('click', '.more button', function (e) {
 			e.preventDefault();
@@ -105,7 +105,7 @@
 			var sortCol = e.currentTarget.dataset.sort;
 			self.engine.toggleSort(sortCol);
 			self.sortCol = self.engine.sortCol;
-			self.find('');
+			self.find(self.engine.query);
 		});
 	}
 
@@ -436,11 +436,11 @@
 		}
 		buf += '<span class="col pokemonnamecol">' + name;
 
-        if (passives.length) {
-            var passiveNames = passives.map(function (passive) { return BattleLog.escapeHTML(dex.abilities.get(passive).name); });
-            buf += '<span class="pokemon-passive-help"><button type="button" class="pokemon-passive-badge" data-passive-species="' + id + '" aria-expanded="false" aria-label="Passive details for ' + BattleLog.escapeHTML(pokemon.name) + '">Passive &middot; ' + passiveNames.join(', ') + '</button>';
-            buf += '<span class="pokemon-passive-tooltip" role="tooltip" hidden></span></span>';
-        }
+		if (passives.length) {
+			var passiveNames = passives.map(function (passive) { return BattleLog.escapeHTML(dex.abilities.get(passive).name); });
+			buf += '<span class="pokemon-passive-help"><button type="button" class="pokemon-passive-badge" data-passive-species="' + id + '" aria-expanded="false" aria-label="Passive details for ' + BattleLog.escapeHTML(pokemon.name) + '">Passive &middot; ' + passiveNames.join(', ') + '</button>';
+			buf += '<span class="pokemon-passive-tooltip" role="tooltip" hidden></span></span>';
+		}
 
 		buf += '</span> ';
 
@@ -462,29 +462,33 @@
 
 		// abilities
 		if (gen >= 3) {
+			var abilityLabel = function (value) {
+				var label = BattleLog.escapeHTML(value || '');
+				return '<span class="ability-name" title="' + label + '">' + label + '</span>';
+			};
 			var abilities = Dex.forGen(gen).species.get(id).abilities;
 			if (gen >= 5) {
 				if (abilities['1']) {
-					buf += '<span class="col twoabilitycol">' + abilities['0'] + '<br />' +
-						abilities['1'] + '</span>';
+					buf += '<span class="col twoabilitycol">' + abilityLabel(abilities['0']) + '' +
+						abilityLabel(abilities['1']) + '</span>';
 				} else {
-					buf += '<span class="col abilitycol">' + abilities['0'] + '</span>';
+					buf += '<span class="col abilitycol">' + abilityLabel(abilities['0']) + '</span>';
 				}
 				var unreleasedHidden = pokemon.unreleasedHidden;
 				if (unreleasedHidden === 'Past' && (this.mod === 'natdex' || gen < 8)) unreleasedHidden = false;
 				if (abilities['S']) {
 					if (abilities['H']) {
-						buf += '<span class="col twoabilitycol' + (unreleasedHidden ? ' unreleasedhacol' : '') + '">' + (abilities['H'] || '') + '<br />(' + abilities['S'] + ')</span>';
+						buf += '<span class="col twoabilitycol' + (unreleasedHidden ? ' unreleasedhacol' : '') + '">' + abilityLabel(abilities['H']) + '(' + abilityLabel(abilities['S']) + ')</span>';
 					} else {
-						buf += '<span class="col abilitycol">(' + abilities['S'] + ')</span>';
+						buf += '<span class="col abilitycol">(' + abilityLabel(abilities['S']) + ')</span>';
 					}
 				} else if (abilities['H']) {
-					buf += '<span class="col abilitycol' + (unreleasedHidden ? ' unreleasedhacol' : '') + '">' + abilities['H'] + '</span>';
+					buf += '<span class="col abilitycol' + (unreleasedHidden ? ' unreleasedhacol' : '') + '">' + abilityLabel(abilities['H']) + '</span>';
 				} else {
 					buf += '<span class="col abilitycol"></span>';
 				}
 			} else {
-				buf += '<span class="col abilitycol">' + abilities['0'] + '</span>';
+				buf += '<span class="col abilitycol">' + abilityLabel(abilities['0']) + '</span>';
 				buf += '<span class="col abilitycol">' + (abilities['1'] ? abilities['1'] : '') + '</span>';
 			}
 		} else {
@@ -627,9 +631,9 @@
 		if (!attrs) attrs = '';
 		if (!ability) return '<li class="result">Unrecognized ability</li>';
 		ability = Dex.getAbilityDisplayDetails(ability, passives, species);
-		var id = toID(ability.name);
+		var id = ability.id;
 		if (Search.urlRoot) attrs += ' href="' + Search.urlRoot + 'abilities/' + id + '" data-target="push"';
-		var buf = '<li class="result abilityresult"><a' + attrs + ' data-entry="ability|' + BattleLog.escapeHTML(ability.name) + '">';
+		var buf = '<li class="result abilityresult"><a' + attrs + ' data-entry="ability|' + BattleLog.escapeHTML(ability.id === 'eldritchremedy' ? 'Eldritch Remedy' : ability.name) + '">';
 
 		// name
 		var name = ability.name;
@@ -646,11 +650,12 @@
 
 		var fullDescription = Dex.getAbilityDescriptionLines(ability.desc || ability.shortDesc).map(function (line) { return '• ' + line; }).join('\n');
 		var summary = ability.shortDesc;
-		var components = this.renderAll ? Dex.getAbilityDisplayComponents(toID(ability.name), Dex, passives, species) : [];
+		var components = this.renderAll ? Dex.getAbilityDisplayComponents(ability.id, Dex, passives, species) : [];
 		var componentNames = components.map(function (id) { return Dex.abilities.get(id).name; }).join(' + ');
 		if (componentNames) {
 			fullDescription = 'Includes: ' + componentNames + '\n\n' + fullDescription;
-			if (summary === 'Combines the listed abilities.') summary = '';
+			if (summary === 'Combines the listed abilities.' || toID(summary) === toID(componentNames)) summary = '';
+			else if (summary.indexOf(componentNames + '; ') === 0 || summary.indexOf(componentNames + '. ') === 0) summary = summary.slice(componentNames.length + 2);
 		}
 		buf += '<span class="col abilitydesccol" title="' + BattleLog.escapeHTML((componentNames ? componentNames + ': ' : '') + summary) + '">' +
 			(componentNames ? '<strong class="ability-components">' + BattleLog.escapeHTML(componentNames) + '</strong>' : '') +
@@ -679,7 +684,7 @@
 		if (this.contextualMove) move = this.contextualMove(move);
 		var id = toID(move.name);
 		if (Search.urlRoot) attrs += ' href="' + Search.urlRoot + 'moves/' + id + '" data-target="push"';
-		var buf = '<li class="result' + (move.signatureCharacters?.length ? ' signaturemoveresult' : '') + '"><a' + attrs + ' data-entry="move|' + BattleLog.escapeHTML(move.name) + '">';
+		var buf = '<li class="result' + ((move.signatureCharacters && move.signatureCharacters.length) ? ' signaturemoveresult' : '') + '"><a' + attrs + ' data-entry="move|' + BattleLog.escapeHTML(move.name) + '">';
 
 		// name
 		var name = move.name;

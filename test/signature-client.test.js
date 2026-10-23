@@ -9,7 +9,7 @@ const {BattleTooltips, ModifiableValue} = new Function(fs.readFileSync(
 describe('Approved signature client parity', () => {
 	it('exposes approved base slots, stats, components and the punch flag', () => {
 		assert.deepEqual(Dex.species.get('grafaiai').abilities, {0: 'Unburden', 1: 'Toxic Signature', H: 'Sticky Hold'});
-		assert.deepEqual(Dex.species.get('klefki').abilities, {0: 'Prankster', 1: 'Master Key', H: 'Magician'});
+		assert.deepEqual(Dex.species.get('klefki').abilities, {0: 'Adhesive Armor', 1: 'Master Key', H: 'Magician'});
 		assert.equal(Dex.species.get('magcargo').bst, 540);
 		for (const id of ['charizardmegax', 'charizardmegaxalt']) {
 			assert.equal(Dex.species.get(id).baseStats.atk, 130);

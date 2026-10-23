@@ -394,3 +394,14 @@
 .dexlist .pokemon-passive-tooltip[hidden] { display:none; }
 .dexlist .pokemon-passive-tooltip strong { display:block; color:#a6eeeb; margin-bottom:3px; }
 .dexlist .pokemon-passive-badge { cursor:pointer; }
+
+/* Long custom ability names stay inside separate columns, with room to wrap. */
+.dexlist .result > a:has(.abilitycol), .dexlist .result > a:has(.twoabilitycol) {height:auto;min-height:38px;display:flow-root;}
+.dexlist .result > a .abilitycol, .dexlist .result > a .twoabilitycol {box-sizing:border-box;height:auto;min-height:29px;white-space:normal;overflow-wrap:anywhere;line-height:15px;padding:4px 6px;}
+@media(max-width:639px){
+ .dexlist .result > a:has(.abilitycol), .dexlist .result > a:has(.twoabilitycol){display:flex;flex-wrap:wrap;align-items:center;max-width:100%;box-sizing:border-box;}
+ .dexlist .result > a .abilitycol, .dexlist .result > a .twoabilitycol{display:block;flex:0 0 50%;width:50%;min-height:0;padding:7px 6px;text-align:left;border-top:1px solid #d7dee6;}
+ .dexlist .result > a .statcol, .dexlist .result > a .bstcol{display:block;flex:1 0 14%;min-width:0;width:auto;height:auto;padding:4px 0;text-align:center;}
+ .dexlist .result > a .numcol{display:block;width:26px;flex:0 0 26px;}
+ .dexlist .result > a .pokemonnamecol{flex:1;min-width:100px;width:auto;height:auto;white-space:normal;}
+}

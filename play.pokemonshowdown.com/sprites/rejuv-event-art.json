@@ -1,0 +1,276 @@
+{
+  "source": "Rejuvenation LAWDS user-supplied distribution",
+  "attribution": "Original Rejuvenation and LAWDS sprite contributors retain credit; artwork is copied from supplied game sheets without redrawing or recoloring.",
+  "files": [
+    {
+      "file": "sprites/gen5/politoed-rejuv.png",
+      "source": "Graphics/Battlers/186.png",
+      "sourceSHA256": "7757dfa9f14a3e3389cef8dcd3890028cd7589dbf728260d7511e1a8a3df90e8",
+      "preview": "sprite-preview/aevian-politoed-sprites.png",
+      "previewRoundingPixels": 0,
+      "frame": {
+        "x": 0,
+        "y": 384,
+        "width": 192,
+        "height": 192
+      },
+      "rgbaSHA256": "6a9078e1cfd6298f736302e0fa3e20860a1703828f40334fd8eb154eecec37c6",
+      "pngSHA256": "fa374f41b10e97f226afd87cfb3cef5e0c8629d6d9001030688be4ec67d02167"
+    },
+    {
+      "file": "sprites/dex/politoed-rejuv.png",
+      "source": "Graphics/Battlers/186.png",
+      "sourceSHA256": "7757dfa9f14a3e3389cef8dcd3890028cd7589dbf728260d7511e1a8a3df90e8",
+      "preview": "sprite-preview/aevian-politoed-sprites.png",
+      "previewRoundingPixels": 0,
+      "frame": {
+        "x": 0,
+        "y": 384,
+        "width": 192,
+        "height": 192
+      },
+      "rgbaSHA256": "6a9078e1cfd6298f736302e0fa3e20860a1703828f40334fd8eb154eecec37c6",
+      "pngSHA256": "fa374f41b10e97f226afd87cfb3cef5e0c8629d6d9001030688be4ec67d02167"
+    },
+    {
+      "file": "sprites/gen5-shiny/politoed-rejuv.png",
+      "source": "Graphics/Battlers/186.png",
+      "sourceSHA256": "7757dfa9f14a3e3389cef8dcd3890028cd7589dbf728260d7511e1a8a3df90e8",
+      "preview": "sprite-preview/aevian-politoed-sprites.png",
+      "previewRoundingPixels": 0,
+      "frame": {
+        "x": 192,
+        "y": 384,
+        "width": 192,
+        "height": 192
+      },
+      "rgbaSHA256": "d7b4e39a8d6657808ad1cc5253666f2c5df41f0d1b6b226d4d463bf0b6c243e8",
+      "pngSHA256": "94b5aaecde243974966d5c6dbb8d6cb631118b8434a49cae4f32bc942ac447f9"
+    },
+    {
+      "file": "sprites/dex-shiny/politoed-rejuv.png",
+      "source": "Graphics/Battlers/186.png",
+      "sourceSHA256": "7757dfa9f14a3e3389cef8dcd3890028cd7589dbf728260d7511e1a8a3df90e8",
+      "preview": "sprite-preview/aevian-politoed-sprites.png",
+      "previewRoundingPixels": 0,
+      "frame": {
+        "x": 192,
+        "y": 384,
+        "width": 192,
+        "height": 192
+      },
+      "rgbaSHA256": "d7b4e39a8d6657808ad1cc5253666f2c5df41f0d1b6b226d4d463bf0b6c243e8",
+      "pngSHA256": "94b5aaecde243974966d5c6dbb8d6cb631118b8434a49cae4f32bc942ac447f9"
+    },
+    {
+      "file": "sprites/gen5-back/politoed-rejuv.png",
+      "source": "Graphics/Battlers/186.png",
+      "sourceSHA256": "7757dfa9f14a3e3389cef8dcd3890028cd7589dbf728260d7511e1a8a3df90e8",
+      "preview": "sprite-preview/aevian-politoed-back-sprites.png",
+      "previewRoundingPixels": 0,
+      "frame": {
+        "x": 0,
+        "y": 576,
+        "width": 192,
+        "height": 192
+      },
+      "rgbaSHA256": "1bc60180a423ca644436bfd22b2ed6ccd3357779b753f7b856b6c32f0f9da3f3",
+      "pngSHA256": "804f5e14e8625b64656d5b73f27bf9f39e8e054bf74da60d6faacb11bf2cf883"
+    },
+    {
+      "file": "sprites/gen5-back-shiny/politoed-rejuv.png",
+      "source": "Graphics/Battlers/186.png",
+      "sourceSHA256": "7757dfa9f14a3e3389cef8dcd3890028cd7589dbf728260d7511e1a8a3df90e8",
+      "preview": "sprite-preview/aevian-politoed-back-sprites.png",
+      "previewRoundingPixels": 0,
+      "frame": {
+        "x": 192,
+        "y": 576,
+        "width": 192,
+        "height": 192
+      },
+      "rgbaSHA256": "9558b043ecbaa803b7ed1233dfe3e9e4701e14d699b4db44eaf950c3f7020941",
+      "pngSHA256": "263afe039e1fdec82ef3d809c558b1e5bf79876121e6a325cce3680c071b48cb"
+    },
+    {
+      "file": "sprites/gen5/poliwrath-rejuv.png",
+      "source": "Graphics/Battlers/062.png",
+      "sourceSHA256": "6b9f704ca330d54e476cc89e43b4ca41d30b0dcce030f327019f70f25a421e23",
+      "preview": "sprite-preview/aevian-poliwrath-front.png",
+      "previewRoundingPixels": 8,
+      "frame": {
+        "x": 0,
+        "y": 384,
+        "width": 192,
+        "height": 192
+      },
+      "rgbaSHA256": "a9d31cc2b7bfa0cbf800a0f4ce161327931d3fed8941ca6a81dae97d3d9eb829",
+      "pngSHA256": "817697ca5ce28c9cc9014d7f468fa77a4fee7384edc215479c77a0b2ab08366f"
+    },
+    {
+      "file": "sprites/dex/poliwrath-rejuv.png",
+      "source": "Graphics/Battlers/062.png",
+      "sourceSHA256": "6b9f704ca330d54e476cc89e43b4ca41d30b0dcce030f327019f70f25a421e23",
+      "preview": "sprite-preview/aevian-poliwrath-front.png",
+      "previewRoundingPixels": 8,
+      "frame": {
+        "x": 0,
+        "y": 384,
+        "width": 192,
+        "height": 192
+      },
+      "rgbaSHA256": "a9d31cc2b7bfa0cbf800a0f4ce161327931d3fed8941ca6a81dae97d3d9eb829",
+      "pngSHA256": "817697ca5ce28c9cc9014d7f468fa77a4fee7384edc215479c77a0b2ab08366f"
+    },
+    {
+      "file": "sprites/gen5-shiny/poliwrath-rejuv.png",
+      "source": "Graphics/Battlers/062.png",
+      "sourceSHA256": "6b9f704ca330d54e476cc89e43b4ca41d30b0dcce030f327019f70f25a421e23",
+      "preview": "sprite-preview/aevian-poliwrath-front.png",
+      "previewRoundingPixels": 8,
+      "frame": {
+        "x": 192,
+        "y": 384,
+        "width": 192,
+        "height": 192
+      },
+      "rgbaSHA256": "26d935f554385098617c9b61c1407eb05f8e660719c4fadbac5876a11e497ebd",
+      "pngSHA256": "9312595895d13e104356845b9b6e67dd201b5e76295b95ddee467f844a378c44"
+    },
+    {
+      "file": "sprites/dex-shiny/poliwrath-rejuv.png",
+      "source": "Graphics/Battlers/062.png",
+      "sourceSHA256": "6b9f704ca330d54e476cc89e43b4ca41d30b0dcce030f327019f70f25a421e23",
+      "preview": "sprite-preview/aevian-poliwrath-front.png",
+      "previewRoundingPixels": 8,
+      "frame": {
+        "x": 192,
+        "y": 384,
+        "width": 192,
+        "height": 192
+      },
+      "rgbaSHA256": "26d935f554385098617c9b61c1407eb05f8e660719c4fadbac5876a11e497ebd",
+      "pngSHA256": "9312595895d13e104356845b9b6e67dd201b5e76295b95ddee467f844a378c44"
+    },
+    {
+      "file": "sprites/gen5-back/poliwrath-rejuv.png",
+      "source": "Graphics/Battlers/062.png",
+      "sourceSHA256": "6b9f704ca330d54e476cc89e43b4ca41d30b0dcce030f327019f70f25a421e23",
+      "preview": "sprite-preview/aevian-poliwrath-back.png",
+      "previewRoundingPixels": 0,
+      "frame": {
+        "x": 0,
+        "y": 576,
+        "width": 192,
+        "height": 192
+      },
+      "rgbaSHA256": "1c4ee9a9e4b6e47e1926d5fede75766646b5304691c102b3195408a9f181c11f",
+      "pngSHA256": "9d5c2010b2a4169f8b2d4717353feefb56740ae9d2f195166dd8c9ad2f6fbd9d"
+    },
+    {
+      "file": "sprites/gen5-back-shiny/poliwrath-rejuv.png",
+      "source": "Graphics/Battlers/062.png",
+      "sourceSHA256": "6b9f704ca330d54e476cc89e43b4ca41d30b0dcce030f327019f70f25a421e23",
+      "preview": "sprite-preview/aevian-poliwrath-back.png",
+      "previewRoundingPixels": 0,
+      "frame": {
+        "x": 192,
+        "y": 576,
+        "width": 192,
+        "height": 192
+      },
+      "rgbaSHA256": "c66ddd8444516f9b15b66def385947aec2899771160b0e38742693346bd7133e",
+      "pngSHA256": "4f7d0959441019b7c5004f8c893080dac19a56722d00f89c9c33b72c9f59d651"
+    },
+    {
+      "file": "sprites/gen5/galvantula-rejuv.png",
+      "source": "Graphics/Battlers/596.png",
+      "sourceSHA256": "ba62dcfb7a70aa2c926c1c4cd0f1bfe9058ecc82c09fd555fbc771cc58f4e5a4",
+      "preview": "sprite-preview/aevian-galvantula-front.png",
+      "previewRoundingPixels": 0,
+      "frame": {
+        "x": 0,
+        "y": 1152,
+        "width": 192,
+        "height": 192
+      },
+      "rgbaSHA256": "8e0dcb09c7203f887f0bc8eb7432d895b39318ad882f61100a55f979db42a227",
+      "pngSHA256": "43682eecb52c4e40f1a8f8f334565b03e9598ea85117c29230fde9487f5eef8b"
+    },
+    {
+      "file": "sprites/dex/galvantula-rejuv.png",
+      "source": "Graphics/Battlers/596.png",
+      "sourceSHA256": "ba62dcfb7a70aa2c926c1c4cd0f1bfe9058ecc82c09fd555fbc771cc58f4e5a4",
+      "preview": "sprite-preview/aevian-galvantula-front.png",
+      "previewRoundingPixels": 0,
+      "frame": {
+        "x": 0,
+        "y": 1152,
+        "width": 192,
+        "height": 192
+      },
+      "rgbaSHA256": "8e0dcb09c7203f887f0bc8eb7432d895b39318ad882f61100a55f979db42a227",
+      "pngSHA256": "43682eecb52c4e40f1a8f8f334565b03e9598ea85117c29230fde9487f5eef8b"
+    },
+    {
+      "file": "sprites/gen5-shiny/galvantula-rejuv.png",
+      "source": "Graphics/Battlers/596.png",
+      "sourceSHA256": "ba62dcfb7a70aa2c926c1c4cd0f1bfe9058ecc82c09fd555fbc771cc58f4e5a4",
+      "preview": "sprite-preview/aevian-galvantula-front.png",
+      "previewRoundingPixels": 0,
+      "frame": {
+        "x": 192,
+        "y": 1152,
+        "width": 192,
+        "height": 192
+      },
+      "rgbaSHA256": "ed25d6b0ac92179e02d21ea41477c31ea91a6410596c270ea302f9e0bc5d7e3a",
+      "pngSHA256": "db85feae0e6cfe16a8418e66096748aa3a074e8742be7d0eaa6df9b211616acb"
+    },
+    {
+      "file": "sprites/dex-shiny/galvantula-rejuv.png",
+      "source": "Graphics/Battlers/596.png",
+      "sourceSHA256": "ba62dcfb7a70aa2c926c1c4cd0f1bfe9058ecc82c09fd555fbc771cc58f4e5a4",
+      "preview": "sprite-preview/aevian-galvantula-front.png",
+      "previewRoundingPixels": 0,
+      "frame": {
+        "x": 192,
+        "y": 1152,
+        "width": 192,
+        "height": 192
+      },
+      "rgbaSHA256": "ed25d6b0ac92179e02d21ea41477c31ea91a6410596c270ea302f9e0bc5d7e3a",
+      "pngSHA256": "db85feae0e6cfe16a8418e66096748aa3a074e8742be7d0eaa6df9b211616acb"
+    },
+    {
+      "file": "sprites/gen5-back/galvantula-rejuv.png",
+      "source": "Graphics/Battlers/596.png",
+      "sourceSHA256": "ba62dcfb7a70aa2c926c1c4cd0f1bfe9058ecc82c09fd555fbc771cc58f4e5a4",
+      "preview": "sprite-preview/aevian-galvantula-back.png",
+      "previewRoundingPixels": 0,
+      "frame": {
+        "x": 0,
+        "y": 1344,
+        "width": 192,
+        "height": 192
+      },
+      "rgbaSHA256": "374ea6c19b7470f3d801400f6d92e80c77d403b839b505a3f8c2ce289eb91a6f",
+      "pngSHA256": "3fd3600cab0c87c9ab73b33d4864c59200b61207a2325118fc2cc0f9f3e75dc9"
+    },
+    {
+      "file": "sprites/gen5-back-shiny/galvantula-rejuv.png",
+      "source": "Graphics/Battlers/596.png",
+      "sourceSHA256": "ba62dcfb7a70aa2c926c1c4cd0f1bfe9058ecc82c09fd555fbc771cc58f4e5a4",
+      "preview": "sprite-preview/aevian-galvantula-back.png",
+      "previewRoundingPixels": 0,
+      "frame": {
+        "x": 192,
+        "y": 1344,
+        "width": 192,
+        "height": 192
+      },
+      "rgbaSHA256": "92e2463b03e72b74d488e595e0928d107ed37b67025b83ded40ef4fc6310ad01",
+      "pngSHA256": "f41424b37a50c7ebb001b0d576a6f368a6ee535e370c13777665865da0fab42b"
+    }
+  ]
+}

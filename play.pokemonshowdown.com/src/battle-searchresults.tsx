@@ -116,14 +116,14 @@ class PSSearchResults extends preact.Component<{
 			</span>
 
 			{search.dex.gen >= 3 && (pokemon.abilities['1'] ?
-				<span class="col twoabilitycol">{pokemon.abilities['0']}<br />{pokemon.abilities['1']}</span>
+				<span class="col twoabilitycol"><span class="ability-name" title={pokemon.abilities['0']}>{pokemon.abilities['0']}</span><span class="ability-name" title={pokemon.abilities['1']}>{pokemon.abilities['1']}</span></span>
 			:
-				<span class="col abilitycol">{pokemon.abilities['0']}</span>
+				<span class="col abilitycol"><span class="ability-name" title={pokemon.abilities['0']}>{pokemon.abilities['0']}</span></span>
 			)}
 			{search.dex.gen >= 5 && (pokemon.abilities['S'] ?
-				<span class={`col twoabilitycol${pokemon.unreleasedHidden ? ' unreleasedhacol' : ''}`}>{pokemon.abilities['H'] || ''}<br />{pokemon.abilities['S']}</span>
+				<span class={`col twoabilitycol${pokemon.unreleasedHidden ? ' unreleasedhacol' : ''}`}>{pokemon.abilities['H'] || ''}<br /><span class="ability-name" title={pokemon.abilities['S']}>{pokemon.abilities['S']}</span></span>
 			: pokemon.abilities['H'] ?
-				<span class={`col abilitycol${pokemon.unreleasedHidden ? ' unreleasedhacol' : ''}`}>{pokemon.abilities['H']}</span>
+				<span class={`col abilitycol${pokemon.unreleasedHidden ? ' unreleasedhacol' : ''}`}><span class="ability-name" title={pokemon.abilities['H']}>{pokemon.abilities['H']}</span></span>
 			:
 				<span class="col abilitycol"></span>
 			)}

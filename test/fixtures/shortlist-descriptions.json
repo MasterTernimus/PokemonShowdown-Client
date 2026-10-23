@@ -73,7 +73,7 @@
   },
   "heatcoil": {
     "shortDesc": "Speed Boost + Long Reach; modified Magma Armor; Flame Body passive is separate.",
-    "desc": "Full local Speed Boost and Long Reach. Long Reach removes contact, grants its existing accuracy/critical-hit and field effects, and includes local Keen Eye. Retains the current modified Magma Armor package: cures freeze, and incoming Water/Ice attacks use half the offensive stat; this is not an upgrade to full Magma Armor. Flame Body is a separate species passive on G-Max Centiskorch. No new binding effect."
+    "desc": "Speed Boost and Long Reach. Long Reach removes contact. Retains the current modified Magma Armor package: cures freeze, and incoming Water/Ice attacks use half the offensive stat; this is not an upgrade to full Magma Armor. Flame Body is a separate species passive on G-Max Centiskorch. No new binding effect."
   },
   "ironmountain": {
     "shortDesc": "Custom: 25% less super-effective damage; once/turn HP hit gives +1 Def and heals 1/16. Hyper Cutter.",

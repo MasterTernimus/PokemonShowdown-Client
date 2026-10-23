@@ -1,0 +1,245 @@
+{
+  "effects": {
+    "cudchew": [
+      "cudchew"
+    ],
+    "rousingfeast": [
+      "cudchew",
+      "gluttony",
+      "rousingfeast"
+    ],
+    "venamskiss": [
+      "shedskin",
+      "venamskiss"
+    ],
+    "galebloom": [
+      "galebloom",
+      "shielddust"
+    ],
+    "pastelsanctuary": [
+      "pastelsanctuary",
+      "pastelveil"
+    ],
+    "nightforager": [
+      "nightforager"
+    ],
+    "toxiccocoon": [
+      "shielddust",
+      "toxiccocoon"
+    ],
+    "mothborn": [
+      "mothborn",
+      "shielddust"
+    ],
+    "prismwings": [
+      "prismwings",
+      "tintedlens"
+    ],
+    "causticscales": [
+      "causticscales"
+    ],
+    "carrionwatch": [
+      "carrionwatch",
+      "frisk",
+      "overcoat"
+    ],
+    "twinfang": [
+      "rivalry",
+      "twinfang"
+    ],
+    "moonlitprowl": [
+      "infiltrator",
+      "limber",
+      "moonlitprowl"
+    ],
+    "dreaddominion": [
+      "dreaddominion",
+      "hydrabond",
+      "intimidate",
+      "moxie"
+    ]
+  },
+  "descriptions": {
+    "cudchew": {
+      "shortDesc": "Repeats a Berry next turn, then guards the next damaging move by 25%.",
+      "desc": "After eating a Berry, repeats the last eligible Berry once at the end of the next turn. A successful delayed Eat event grants a nonstacking guard that reduces damage to its HP by 25% from the next damaging move that hits it, including all hits of that move. Successful reconsumption grants the guard even if the Berry gives no benefit; a rejected Eat event does not. Protect, misses, immunities, Substitute-only hits, status moves and indirect damage do not spend the guard. Suppression pauses the repeat and guard; switching or losing the ability clears them. Bug Bite and Pluck do not schedule a repeat."
+    },
+    "rousingfeast": {
+      "shortDesc": "Gluttony + Cud Chew guard; eating a Berry clears negative Attack and Speed.",
+      "desc": "Full local Gluttony and Cud Chew. Eating a Berry clears its negative Attack and Speed stages, preserving positive stages and all other stats. After eating a Berry, repeats the last eligible Berry once at the end of the next turn. A successful delayed Eat event grants a nonstacking guard that reduces damage to its HP by 25% from the next damaging move that hits it, including all hits of that move. Successful reconsumption grants the guard even if the Berry gives no benefit; a rejected Eat event does not. Protect, misses, immunities, Substitute-only hits, status moves and indirect damage do not spend the guard. Suppression pauses the repeat and guard; switching or losing the ability clears them. Bug Bite and Pluck do not schedule a repeat."
+    },
+    "venamskiss": {
+      "shortDesc": "Shed Skin; Poison hits drain any foe (up to 1/4 base HP/turn); pre-poisoned foes are heal-blocked. Poisoned foes are slower.",
+      "desc": "Poison attacks treat Steel typing as a weakness, with other typing counted normally, and actual opposing HP damage attempts regular poison even on Steel/Poison types. They drain one-third actual HP damage against any foe, capped at 1/4 base max HP per turn. Foes poisoned before the attack are also heal-blocked through the following turn. Ability drain is not added to existing draining moves; Heal Block and Liquid Ooze apply. Active poisoned foes have 0.75x Speed; multiple holders do not stack. Full local Shed Skin: at turn end, when statused, affected by a listed ailment, negatively boosted or at half HP or less, has a 50% chance to cure status (including frostbite), clear negative stages, remove Attract, confusion, Curse, Disable, Encore, Heal Block, Leech Seed, Nightmare, Perish Song, Taunt, Torment and Yawn, and heal 1/4 max HP. On Dragon's Den, eligible activation is guaranteed; instead it cures status, heals 1/4 max HP, raises its higher staged attacking stat by 1 (Attack on ties), and lowers both defenses by 1 without clearing other ailments or negative stages."
+    },
+    "pastelsanctuary": {
+      "shortDesc": "Pastel Veil; actual entry heals itself and adjacent allies by 1/8 max HP.",
+      "desc": "Full local Pastel Veil, including poison prevention and cures for itself and allies, opposing Poison-move Attack and Sp. Atk drops, and all field effects. Once per actual entry, attempts to heal itself and each adjacent living ally by 1/8 of that target's current maximum HP. Normal healing prevention applies; full HP or a blocked heal still spends the entry activation. Other Pokemon entering, ability acquisition and restarting after suppression do not trigger this heal; an entry while suppressed does not postpone it. Global Pastel Veil is unchanged."
+    },
+    "galebloom": {
+      "shortDesc": "Shield Dust; first Flying foe HP hit each entry gives +1 Speed and boosts an ally's Sp. Atk.",
+      "desc": "Full local Shield Dust blocks incoming move secondary effects on this Pokemon, while retaining effects on the attacker and primary move effects. Shield Dust follows normal ability bypass rules. Once per actual entry, its first Flying attack hit to damage a foe's HP raises its own Speed by 1 stage, even without an ally. Separately, its first such hit with a living adjacent ally raises the lowest HP-percentage adjacent ally's Sp. Atk by 1 stage. Multi-hit and spread moves do not multiply either boost. Misses, immunity, protection, Substitute-only damage, allied hits, status moves and residual damage do not trigger either boost. Suppression disables these effects without renewing spent boosts; ability restarts or reacquisition do not reset them. Actual reentry resets both boosts."
+    },
+    "carrionwatch": {
+      "shortDesc": "Frisk + Overcoat, including their full local entry and protection effects.",
+      "desc": "Full local Frisk + Overcoat. Entry reveals opposing active Illusions and held items, with each item holder independently having a 30% chance of five-turn Embargo. Overcoat prevents powder moves, Rage Powder redirection, Effect Spore, sandstorm damage and hail damage, with its normal ability suppression, bypass and native-passive overlap rules. Carrion Watch no longer includes Unnerve, its Berry and field-seed restrictions, or its Cold Eclipse entry Speed drops. Normal item rules, actual opposing Unnerve, and any Frisk-inflicted Embargo still apply."
+    },
+    "nightforager": {
+      "shortDesc": "First Bug/Poison move dealing foe HP damage each turn heals 1/8 max HP.",
+      "desc": "Once per turn, its first damaging Bug- or Poison-type move to deal actual opposing HP damage attempts to heal 1/8 of its current maximum HP. Each turn has only one activation, including all hits and targets; a blocked heal or being at full HP still spends that activation. Substitute-only damage, misses, protection, immunity, ally damage, status moves and residual damage do not trigger it. Normal ability suppression and healing prevention apply."
+    },
+    "toxiccocoon": {
+      "shortDesc": "Shield Dust; first Special HP attack each entry is halved for all hits; first contact attacker is poisoned.",
+      "desc": "Full local Shield Dust blocks incoming move secondary effects on this Pokemon, while preserving attacker self-effects and primary effects; normal Shield Dust ability bypass applies. Once per actual entry, the first opposing Special attack to damage its HP has its ordinary damage halved for the whole triggering move, including all hits. As before, Special damage to a Substitute can be halved before the charge is spent, but Substitute-only damage does not consume it. Separately, its first opposing contact HP hit each entry attempts to poison the attacker; immunity still spends that attempt. Suppression, ability restarts and reacquisition do not refresh either charge; switching out and actually entering again does."
+    },
+    "mothborn": {
+      "shortDesc": "Bug attacks gain STAB without stacking; Shield Dust.",
+      "desc": "Bug-type damaging moves receive STAB through the normal custom STAB rules, without changing this Pokemon's types or stacking with existing Bug STAB. Adaptability, Terastallization and form changes retain their normal interactions. Full local Shield Dust blocks incoming move secondary effects on this Pokemon, while preserving effects on the attacker and primary move effects. Shield Dust follows normal ability bypass and suppression rules; native Mothborn remains a separate species passive."
+    },
+    "prismwings": {
+      "shortDesc": "Tinted Lens; first resisted foe HP hit after activation gives +1 Speed.",
+      "desc": "Tinted Lens doubles calculated damage from resisted attacks. Its first resisted attack hit that deals positive damage to a foe's HP after ability activation raises its Speed by 1 stage immediately after that hit, once per activation, including only once during a multi-hit move. Misses, protection, immunity, Substitute-only hits and allied hits do not trigger the boost. Selected-ability suppression disables these effects. Entry, acquiring this ability, or restarting it after Neutralizing Gas renews the Speed boost; removing Gastro Acid without restarting the ability does not."
+    },
+    "causticscales": {
+      "shortDesc": "Once per entry, first opposing contact HP hit poisons attacker and lowers Sp. Def.",
+      "desc": "Once per actual switch-in, the first opposing contact attack to damage this Pokemon's HP attempts to poison the attacker and lowers that same attacker's Special Defense by 1 stage. Poison immunity does not prevent the stat drop; stat-drop prevention does not prevent the poison attempt. Normal status immunity, contact protection, stat-drop prevention, reflection and reactions apply. Substitute-only hits, allied hits and noncontact attacks do not spend the effect. Suppression disables it without renewing a spent trigger; losing and reacquiring the ability during the same entry does not renew it. Switching out and back in renews the trigger."
+    },
+    "moonlitprowl": {
+      "shortDesc": "Infiltrator + full local Limber: paralysis immunity/cure and external Speed-drop protection.",
+      "desc": "Full local Infiltrator and Limber. Its moves bypass Substitute, Reflect, Light Screen, Aurora Veil, Safeguard and Mist through the normal Infiltrator rules. Prevents and cures paralysis, and prevents externally caused Speed stage drops, including Terrain effects. Self-inflicted Speed drops and held-item Speed effects retain their normal behavior. Limber follows its normal ability bypass rules; bypassing Limber does not remove Infiltrator. Selected-ability suppression disables both components. Delcatty's Rivalry is supplied independently by its species passive and is not duplicated by this ability."
+    },
+    "crueltag": {
+      "shortDesc": "Traps foes; 20% less damage; Infiltrator; sleeping foes lose 1/8 HP/turn except on Rainbow. Unsuppressible.",
+      "desc": "Prevents opposing Pokemon from choosing to switch out, unless they are holding a Shed Shell, are a Ghost type, or also have this Ability. It takes 0.8x damage from attacks. On Haunted Field, it reveals foes' held items on entry. This Ability cannot be suppressed. Moves bypass Substitute, Reflect, Light Screen, Aurora Veil, Safeguard and Mist. Sleeping foes, including Comatose users, lose 1/8 max HP each turn. Disabled on Rainbow Field."
+    }
+  },
+  "passives": {
+    "luxray": [
+      "rivalry"
+    ],
+    "beautifly": [
+      "rivalry"
+    ],
+    "dustox": [
+      "rivalry"
+    ],
+    "pyroar": [
+      "rivalry"
+    ],
+    "unfezant": [
+      "rivalry"
+    ],
+    "unfezantrejuv": [
+      "rivalry"
+    ],
+    "haxorus": [
+      "rivalry"
+    ],
+    "haxorusmega": [
+      "twinfang"
+    ],
+    "venomoth": [
+      "mothborn"
+    ],
+    "mightyenagrim": [
+      "rivalry"
+    ],
+    "mightyenadeso": [
+      "rivalry"
+    ],
+    "mightyenamega": [
+      "darkaura"
+    ],
+    "braviary": [
+      "rivalry"
+    ],
+    "braviaryhisui": [
+      "rivalry"
+    ],
+    "mandibuzz": [
+      "rivalry"
+    ],
+    "scrafty": [
+      "rivalry"
+    ],
+    "mightyenamegagrim": [
+      "darkaura"
+    ],
+    "delcatty": [
+      "rivalry"
+    ],
+    "mightyena": [
+      "rivalry"
+    ]
+  },
+  "abilities": {
+    "beautifly": {
+      "0": "Windy Surge",
+      "1": "Pastel Sanctuary",
+      "H": "Gale Bloom"
+    },
+    "dustox": {
+      "0": "Night Forager",
+      "1": "Unaware",
+      "H": "Toxic Cocoon"
+    },
+    "haxorus": {
+      "0": "Sharpness",
+      "1": "Raging Storm",
+      "H": "Supreme Overlord"
+    },
+    "haxorusmega": {
+      "0": "Raging Overlord"
+    },
+    "mightyenamega": {
+      "0": "Dread Dominion"
+    },
+    "mightyenamegagrim": {
+      "0": "Dread Dominion"
+    },
+    "delcatty": {
+      "0": "Moonlit Prowl",
+      "1": "Natural Cure",
+      "H": "Wonder Skin"
+    },
+    "mightyena": {
+      "0": "Intimidate",
+      "1": "Black Fang",
+      "H": "Stakeout"
+    },
+    "mightyenagrim": {
+      "0": "Intimidate",
+      "1": "Black Fang",
+      "H": "Stakeout"
+    },
+    "mightyenadeso": {
+      "0": "Intimidate",
+      "1": "Black Fang",
+      "H": "Stakeout"
+    }
+  },
+  "stats": {
+    "beautifly": {
+      "hp": 80,
+      "atk": 50,
+      "def": 85,
+      "spa": 125,
+      "spd": 75,
+      "spe": 115
+    },
+    "delcatty": {
+      "hp": 90,
+      "atk": 70,
+      "def": 75,
+      "spa": 100,
+      "spd": 100,
+      "spe": 115
+    }
+  },
+  "types": {
+    "delcatty": [
+      "Normal",
+      "Ghost"
+    ]
+  }
+}

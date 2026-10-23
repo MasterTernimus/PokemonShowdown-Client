@@ -1,7 +1,7 @@
 'use strict';
 const assert=require('assert').strict,fs=require('fs'),path=require('path');require('./battle.test');
 const {BattleTooltips}=new Function(fs.readFileSync(path.join(__dirname,'../play.pokemonshowdown.com/js/battle-tooltips.js'),'utf8')+'\nreturn {BattleTooltips};')();
-const scope={swellow:'innerfocus',spidops:'threadshelter',wugtrio:'buriedtrio',bellibolt:'elasticbelly',delcatty:'comfortingpresence',purugly:'rattled',ariados:'venomthread',ariadosmega:'venomthread',toxtricity:'feedback',toxtricitylowkey:'feedback',toxtricitygmax:'feedback',toxtricitylowkeygmax:'feedback',toxtricityaevian:'feedback',toxtricityaeviangmax:'feedback'};
+const scope={swellow:'innerfocus',spidops:'threadshelter',wugtrio:'buriedtrio',bellibolt:'elasticbelly',delcatty:'rivalry',purugly:'rattled',ariados:'venomthread',ariadosmega:'venomthread',toxtricity:'feedback',toxtricitylowkey:'feedback',toxtricitygmax:'feedback',toxtricitylowkeygmax:'feedback',toxtricityaevian:'feedback',toxtricityaeviangmax:'feedback'};
 describe('Approved guard passive client data and conditional previews',()=>{
  for(const[id,passive]of Object.entries(scope))it(id+' renders its exact passive',()=>{assert.deepEqual(Dex.species.get(id).passives,[passive]);assert(Dex.abilities.get(passive).exists);assert(Dex.abilities.get(passive).shortDesc.length>10);});
  it('preserves distinct Bellibolt Mega and Chimecho Levitate',()=>{assert.deepEqual(Dex.species.get('belliboltmega').passives,['levitate']);assert.deepEqual(Dex.species.get('chimecho').passives,['levitate']);});

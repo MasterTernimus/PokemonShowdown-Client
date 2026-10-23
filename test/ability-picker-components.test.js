@@ -37,6 +37,10 @@ describe('Component-first Team Builder ability rows', () => {
    if(parts.length) assert(!html.includes('Combines the listed abilities.'),id);
   }
  });
+ it('keeps the renamed Slowking passive separate from canonical Curious Medicine', () => {
+  const a=Dex.abilities.get('eldritchremedy');assert.equal(a.name,'Curious Medicine');assert.equal(a.id,'eldritchremedy');assert.equal(Dex.abilities.get('Curious Medicine').id,'curiousmedicine');
+  const html=search.renderAbilityRow(a,0,0);assert(html.includes('Own Tempo'));assert(html.includes('ability|Eldritch Remedy'));assert(a.desc.includes('Eerie Spell'));
+ });
  it('keeps standalone summaries and non-Team Builder rendering intact', () => {
   const a=Dex.abilities.get('levitate');assert(visible(a).includes(BattleLog.escapeHTML(a.shortDesc)));
   search.renderAll=false;

@@ -471,7 +471,7 @@ function toId() {
 				var muted = Dex.prefs('mute');
 				BattleSound.setMute(muted);
 
-				var theme = Dex.prefs('theme');
+				var theme = Dex.prefs('theme') || 'dark';
 				var colorSchemeQuery = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
 				var dark = theme === 'dark' || (theme === 'system' && colorSchemeQuery && colorSchemeQuery.matches);
 				$('html').toggleClass('dark', dark);

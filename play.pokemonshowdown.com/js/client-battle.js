@@ -724,7 +724,7 @@
 					} else if (!pokemon || pokemon.fainted) {
 						targetMenus[0] += '<button name="chooseMoveTarget" value="' + (i + 1) + '"><span class="picon" style="' + Dex.getPokemonIcon('missingno') + '"></span></button> ';
 					} else {
-						targetMenus[0] += '<button name="chooseMoveTarget" value="' + (i + 1) + '" class="has-tooltip" data-tooltip="' + BattleLog.escapeHTML(tooltipArgs) + '"><span class="picon" style="' + Dex.getPokemonIcon(pokemon) + '"></span>' + (this.battle.ignoreOpponent || this.battle.ignoreNicks ? pokemon.speciesForme : BattleLog.escapeHTML(pokemon.name)) + '<span class="' + pokemon.getHPColorClass() + '"><span style="width:' + (Math.round(pokemon.hp * 92 / pokemon.maxhp) || 1) + 'px"></span></span>' + (pokemon.status ? '<span class="status ' + pokemon.status + '"></span>' : '') + '</button> ';
+						targetMenus[0] += '<button name="chooseMoveTarget" value="' + (i + 1) + '" class="has-tooltip" data-tooltip="' + BattleLog.escapeHTML(tooltipArgs) + '"><span class="picon" style="' + Dex.getPokemonIcon(pokemon) + '"></span>' + (this.battle.ignoreOpponent || this.battle.ignoreNicks ? pokemon.speciesForme : BattleLog.escapeHTML(pokemon.name)) + '<span role="img" aria-label="HP ' + pokemon.hp + ' of ' + pokemon.maxhp + '" class="' + pokemon.getHPColorClass() + '"><span style="width:' + Math.max(1, Math.min(100, 100 * pokemon.hp / pokemon.maxhp)) + '%"></span></span>' + (pokemon.status ? '<span class="status ' + pokemon.status + '"></span>' : '') + '</button> ';
 					}
 				}
 				for (var i = 0; i < nearActive.length; i++) {
@@ -744,7 +744,7 @@
 					} else if (!pokemon || pokemon.fainted) {
 						targetMenus[1] += '<button name="chooseMoveTarget" value="' + (-(i + 1)) + '"><span class="picon" style="' + Dex.getPokemonIcon('missingno') + '"></span></button> ';
 					} else {
-						targetMenus[1] += '<button name="chooseMoveTarget" value="' + (-(i + 1)) + '" class="has-tooltip" data-tooltip="' + BattleLog.escapeHTML(tooltipArgs) + '"><span class="picon" style="' + Dex.getPokemonIcon(pokemon) + '"></span>' + BattleLog.escapeHTML(pokemon.name) + '<span class="' + pokemon.getHPColorClass() + '"><span style="width:' + (Math.round(pokemon.hp * 92 / pokemon.maxhp) || 1) + 'px"></span></span>' + (pokemon.status ? '<span class="status ' + pokemon.status + '"></span>' : '') + '</button> ';
+						targetMenus[1] += '<button name="chooseMoveTarget" value="' + (-(i + 1)) + '" class="has-tooltip" data-tooltip="' + BattleLog.escapeHTML(tooltipArgs) + '"><span class="picon" style="' + Dex.getPokemonIcon(pokemon) + '"></span>' + BattleLog.escapeHTML(pokemon.name) + '<span role="img" aria-label="HP ' + pokemon.hp + ' of ' + pokemon.maxhp + '" class="' + pokemon.getHPColorClass() + '"><span style="width:' + Math.max(1, Math.min(100, 100 * pokemon.hp / pokemon.maxhp)) + '%"></span></span>' + (pokemon.status ? '<span class="status ' + pokemon.status + '"></span>' : '') + '</button> ';
 					}
 				}
 
@@ -824,7 +824,7 @@
 					}
 					moveMenu += '<div class="battle-move-grid">' + movebuttons + '</div>';
 				}
-                moveMenu += '<div class="battle-move-options">';
+				moveMenu += '<div class="battle-move-options">';
 				if (canMegaEvo) {
 					moveMenu += '<label class="megaevo"><input type="checkbox" name="megaevo"' + (pulsePreview && pulsePreview.request === this.request && pulsePreview.pos === pos && pulsePreview.selected === 'megaevo' ? ' checked' : '') + ' />&nbsp;' + BattleLog.escapeHTML(megaLabel) + '</label>';
 				}
@@ -846,7 +846,7 @@
 				if (canTerastallize) {
 					moveMenu += '<label class="megaevo"><input type="checkbox" name="terastallize" />&nbsp;Terastallize ' + Dex.getTypeIcon(canTerastallize) + '</label>';
 				}
-                moveMenu += (this.battle.myPokemon[pos].passives && this.battle.myPokemon[pos].passives.length ? '<button type="button" class="button battle-passives-button" name="showPassives" value="' + pos + '">Passives: ' + this.battle.myPokemon[pos].passives.map(function (id) { return BattleLog.escapeHTML(Dex.abilities.get(id).name); }).join(' · ') + '</button>' : '') + '</div>';
+				moveMenu += (this.battle.myPokemon[pos].passives && this.battle.myPokemon[pos].passives.length ? '<button type="button" class="button battle-passives-button" name="showPassives" value="' + pos + '">Passives: ' + this.battle.myPokemon[pos].passives.map(function (id) { return BattleLog.escapeHTML(Dex.abilities.get(id).name); }).join(' · ') + '</button>' : '') + '</div>';
 				if (this.finalDecisionMove) {
 					moveMenu += '<em style="display:block;clear:both">You <strong>might</strong> have some moves disabled, so you won\'t be able to cancel an attack!</em><br/>';
 				}
@@ -895,9 +895,9 @@
 				pokemon.name = pokemon.ident.substr(4);
 				var tooltipArgs = 'switchpokemon|' + i;
 				if (pokemon.fainted || i < this.battle.pokemonControlled || this.choice.switchFlags[i] || trapped) {
-					party += '<button class="disabled has-tooltip" name="chooseDisabled" value="' + BattleLog.escapeHTML(pokemon.name) + (pokemon.fainted ? ',fainted' : trapped ? ',trapped' : i < this.battle.nearSide.active.length ? ',active' : '') + '" data-tooltip="' + BattleLog.escapeHTML(tooltipArgs) + '"><span class="picon" style="' + Dex.getPokemonIcon(pokemon) + '"></span>' + BattleLog.escapeHTML(pokemon.name) + (pokemon.hp ? '<span class="' + pokemon.getHPColorClass() + '"><span style="width:' + (Math.round(pokemon.hp * 92 / pokemon.maxhp) || 1) + 'px"></span></span>' + (pokemon.status ? '<span class="status ' + pokemon.status + '"></span>' : '') : '') + '</button> ';
+					party += '<button class="disabled has-tooltip" name="chooseDisabled" value="' + BattleLog.escapeHTML(pokemon.name) + (pokemon.fainted ? ',fainted' : trapped ? ',trapped' : i < this.battle.nearSide.active.length ? ',active' : '') + '" data-tooltip="' + BattleLog.escapeHTML(tooltipArgs) + '"><span class="picon" style="' + Dex.getPokemonIcon(pokemon) + '"></span>' + BattleLog.escapeHTML(pokemon.name) + (pokemon.hp ? '<span role="img" aria-label="HP ' + pokemon.hp + ' of ' + pokemon.maxhp + '" class="' + pokemon.getHPColorClass() + '"><span style="width:' + Math.max(1, Math.min(100, 100 * pokemon.hp / pokemon.maxhp)) + '%"></span></span>' + (pokemon.status ? '<span class="status ' + pokemon.status + '"></span>' : '') : '') + '</button> ';
 				} else {
-					party += '<button name="chooseSwitch" value="' + i + '" class="has-tooltip" data-tooltip="' + BattleLog.escapeHTML(tooltipArgs) + '"><span class="picon" style="' + Dex.getPokemonIcon(pokemon) + '"></span>' + BattleLog.escapeHTML(pokemon.name) + '<span class="' + pokemon.getHPColorClass() + '"><span style="width:' + (Math.round(pokemon.hp * 92 / pokemon.maxhp) || 1) + 'px"></span></span>' + (pokemon.status ? '<span class="status ' + pokemon.status + '"></span>' : '') + '</button> ';
+					party += '<button name="chooseSwitch" value="' + i + '" class="has-tooltip" data-tooltip="' + BattleLog.escapeHTML(tooltipArgs) + '"><span class="picon" style="' + Dex.getPokemonIcon(pokemon) + '"></span>' + BattleLog.escapeHTML(pokemon.name) + '<span role="img" aria-label="HP ' + pokemon.hp + ' of ' + pokemon.maxhp + '" class="' + pokemon.getHPColorClass() + '"><span style="width:' + Math.max(1, Math.min(100, 100 * pokemon.hp / pokemon.maxhp)) + '%"></span></span>' + (pokemon.status ? '<span class="status ' + pokemon.status + '"></span>' : '') + '</button> ';
 				}
 			}
 			if (this.battle.mySide.ally) party += this.displayAllyParty();
@@ -911,7 +911,7 @@
 				var pokemon = allyParty[i];
 				pokemon.name = pokemon.ident.substr(4);
 				var tooltipArgs = 'allypokemon|' + i;
-				party += '<button class="disabled has-tooltip" name="chooseDisabled" value="' + BattleLog.escapeHTML(pokemon.name) + ',notMine' + '" data-tooltip="' + BattleLog.escapeHTML(tooltipArgs) + '"><span class="picon" style="' + Dex.getPokemonIcon(pokemon) + '"></span>' + BattleLog.escapeHTML(pokemon.name) + (pokemon.hp ? '<span class="' + pokemon.getHPColorClass() + '"><span style="width:' + (Math.round(pokemon.hp * 92 / pokemon.maxhp) || 1) + 'px"></span></span>' + (pokemon.status ? '<span class="status ' + pokemon.status + '"></span>' : '') : '') + '</button> ';
+				party += '<button class="disabled has-tooltip" name="chooseDisabled" value="' + BattleLog.escapeHTML(pokemon.name) + ',notMine' + '" data-tooltip="' + BattleLog.escapeHTML(tooltipArgs) + '"><span class="picon" style="' + Dex.getPokemonIcon(pokemon) + '"></span>' + BattleLog.escapeHTML(pokemon.name) + (pokemon.hp ? '<span role="img" aria-label="HP ' + pokemon.hp + ' of ' + pokemon.maxhp + '" class="' + pokemon.getHPColorClass() + '"><span style="width:' + Math.max(1, Math.min(100, 100 * pokemon.hp / pokemon.maxhp)) + '%"></span></span>' + (pokemon.status ? '<span class="status ' + pokemon.status + '"></span>' : '') : '') + '</button> ';
 			}
 			return party;
 		},
@@ -952,11 +952,11 @@
 					var pokemon = this.battle.myPokemon[i];
 					var tooltipArgs = 'switchpokemon|' + i;
 					if (pokemon && !pokemon.fainted || this.choice.switchOutFlags[i]) {
-						controls += '<button disabled class="has-tooltip" data-tooltip="' + BattleLog.escapeHTML(tooltipArgs) + '"><span class="picon" style="' + Dex.getPokemonIcon(pokemon) + '"></span>' + BattleLog.escapeHTML(pokemon.name) + (!pokemon.fainted ? '<span class="' + pokemon.getHPColorClass() + '"><span style="width:' + (Math.round(pokemon.hp * 92 / pokemon.maxhp) || 1) + 'px"></span></span>' + (pokemon.status ? '<span class="status ' + pokemon.status + '"></span>' : '') : '') + '</button> ';
+						controls += '<button disabled class="has-tooltip" data-tooltip="' + BattleLog.escapeHTML(tooltipArgs) + '"><span class="picon" style="' + Dex.getPokemonIcon(pokemon) + '"></span>' + BattleLog.escapeHTML(pokemon.name) + (!pokemon.fainted ? '<span role="img" aria-label="HP ' + pokemon.hp + ' of ' + pokemon.maxhp + '" class="' + pokemon.getHPColorClass() + '"><span style="width:' + Math.max(1, Math.min(100, 100 * pokemon.hp / pokemon.maxhp)) + '%"></span></span>' + (pokemon.status ? '<span class="status ' + pokemon.status + '"></span>' : '') : '') + '</button> ';
 					} else if (!pokemon) {
 						controls += '<button disabled></button> ';
 					} else {
-						controls += '<button name="chooseSwitchTarget" value="' + i + '" class="has-tooltip" data-tooltip="' + BattleLog.escapeHTML(tooltipArgs) + '"><span class="picon" style="' + Dex.getPokemonIcon(pokemon) + '"></span>' + BattleLog.escapeHTML(pokemon.name) + '<span class="' + pokemon.getHPColorClass() + '"><span style="width:' + (Math.round(pokemon.hp * 92 / pokemon.maxhp) || 1) + 'px"></span></span>' + (pokemon.status ? '<span class="status ' + pokemon.status + '"></span>' : '') + '</button> ';
+						controls += '<button name="chooseSwitchTarget" value="' + i + '" class="has-tooltip" data-tooltip="' + BattleLog.escapeHTML(tooltipArgs) + '"><span class="picon" style="' + Dex.getPokemonIcon(pokemon) + '"></span>' + BattleLog.escapeHTML(pokemon.name) + '<span role="img" aria-label="HP ' + pokemon.hp + ' of ' + pokemon.maxhp + '" class="' + pokemon.getHPColorClass() + '"><span style="width:' + Math.max(0, Math.min(100, 100 * pokemon.hp / pokemon.maxhp)) + '%"></span></span>' + (pokemon.status ? '<span class="status ' + pokemon.status + '"></span>' : '') + '</button> ';
 					}
 				}
 				controls += '</div>';
@@ -992,7 +992,7 @@
 							switchMenu += '<button name="chooseSwitch" value="' + i + '" class="has-tooltip" data-tooltip="' + BattleLog.escapeHTML(tooltipArgs) + '">';
 						}
 					}
-					switchMenu += '<span class="picon" style="' + Dex.getPokemonIcon(pokemon) + '"></span>' + BattleLog.escapeHTML(pokemon.name) + (!pokemon.fainted ? '<span class="' + pokemon.getHPColorClass() + '"><span style="width:' + (Math.round(pokemon.hp * 92 / pokemon.maxhp) || 1) + 'px"></span></span>' + (pokemon.status ? '<span class="status ' + pokemon.status + '"></span>' : '') : '') + '</button> ';
+					switchMenu += '<span class="picon" style="' + Dex.getPokemonIcon(pokemon) + '"></span>' + BattleLog.escapeHTML(pokemon.name) + (!pokemon.fainted ? '<span role="img" aria-label="HP ' + pokemon.hp + ' of ' + pokemon.maxhp + '" class="' + pokemon.getHPColorClass() + '"><span style="width:' + Math.max(1, Math.min(100, 100 * pokemon.hp / pokemon.maxhp)) + '%"></span></span>' + (pokemon.status ? '<span class="status ' + pokemon.status + '"></span>' : '') : '') + '</button> ';
 				}
 
 				var controls = (
@@ -1767,15 +1767,35 @@
 
 // Owner request data only: this control never looks through an opponent's disguise.
 BattleRoom.prototype.showPassives = function (pos) {
- var pokemon = this.battle.myPokemon && this.battle.myPokemon[Number(pos)];
- if (!pokemon || !pokemon.passives || !pokemon.passives.length) return;
- app.addPopupMessage(pokemon.passives.map(function (id) {
-  var a = Dex.getPassiveAbilityDetails(id); return a.name + ': ' + a.shortDesc;
- }).join('\n\n'));
- var popup = app.popups[app.popups.length - 1];
- if (popup && popup.$el) {
-  var details = $('<details class="passive-full-details"><summary>Full details</summary><div></div></details>');
-  details.find('div').css('white-space', 'pre-wrap').text(pokemon.passives.map(function (id) { var a = Dex.getPassiveAbilityDetails(id); return a.name + ': ' + (a.desc || a.shortDesc); }).join('\n\n'));
-  popup.$el.append(details);
- }
+	var pokemon = this.battle.myPokemon && this.battle.myPokemon[Number(pos)];
+	if (!pokemon || !pokemon.passives || !pokemon.passives.length) return;
+	app.addPopupMessage(pokemon.passives.map(function (id) {
+		var a = Dex.getPassiveAbilityDetails(id); return a.name + ': ' + a.shortDesc;
+	}).join('\n\n'));
+	var popup = app.popups[app.popups.length - 1];
+	if (popup && popup.$el) {
+		var details = $('<details class="passive-full-details"><summary>Full details</summary><div></div></details>');
+		details.find('div').css('white-space', 'pre-wrap').text(pokemon.passives.map(function (id) { var a = Dex.getPassiveAbilityDetails(id); return a.name + ': ' + (a.desc || a.shortDesc); }).join('\n\n'));
+		popup.$el.append(details);
+	}
 };
+
+// The status rail only reads the public battle client model, never hidden server durations.
+(function () {
+	BattleRoom.prototype.openFieldGuide = function (id) {window.openPublicFieldGuide(id);};
+	var update = BattleRoom.prototype.updateControls;
+	BattleRoom.prototype.updateControls = function () {var out = update.apply(this, arguments); this.renderPublicFieldStatus(); return out;};
+	BattleRoom.prototype.renderPublicFieldStatus = function () {
+		var battle = this.battle, scene = battle && battle.scene; if (!scene || !scene.weatherLeft) return;
+		var entries = [], escape = BattleLog.escapeHTML;
+		if (battle.weather) {var hiddenTurns = battle.gen < 7 && battle.hardcoreMode; var suppressed = battle.abilityActive(['Air Lock', 'Cloud Nine']); var times = hiddenTurns ? '' : battle.weatherMinTimeLeft ? battle.weatherMinTimeLeft + ' or ' + battle.weatherTimeLeft + ' turns' : battle.weatherTimeLeft ? battle.weatherTimeLeft + ' turns' : ''; entries.push('<span class="battle-layer weather-layer"><small>Weather</small><b>' + escape(({sunnyday:'Sun', raindance:'Rain', sandstorm:'Sandstorm', hail:'Hail', snow:'Snow', desolateland:'Harsh sun', primordialsea:'Heavy rain', deltastream:'Strong winds'})[battle.weather] || battle.weather) + '</b><span>' + escape(times) + (suppressed ? ' · suppressed' : '') + '</span></span>');}
+		(battle.pseudoWeather || []).forEach(function (state) {
+			var raw = toID(state[0]), id = battle.getTerrainId(state[0]), aura = /aura$/.test(raw), guide = aura ? 'aura/' + (raw === 'frozenaura' ? raw : raw.replace(/aura$/, 'terrain')) : id;
+			var text = scene.pseudoWeatherLeft(state.slice()).replace(/^<br\s*\/?\s*>/, ''); var layer = aura ? 'Aura' : id ? 'Field' : 'Room';
+			entries.push('<' + (guide ? 'button' : 'span') + (guide ? ' type="button" name="openFieldGuide" value="' + escape(guide) + '" title="Open this field’s public rules and transitions"' : '') + ' class="battle-layer ' + (aura ? 'aura-layer' : id ? 'field-layer' : 'room-layer') + '"><small>' + layer + '</small><b>' + text + '</b>' + (guide ? '<span aria-hidden="true">ⓘ</span>' : '') + '</' + (guide ? 'button' : 'span') + '>');
+		});
+		var sideNotes = battle.sides.map(function (side) {return scene.sideConditionsLeft(side);}).join('').replace(/^<br\s*\/?\s*>/, '');
+		this.$('.battle-field-status').remove(); if (entries.length || sideNotes) {this.$('.battle-controls').prepend('<section class="battle-field-status" aria-label="Public battle conditions">' + entries.join('') + (sideNotes ? '<details><summary>Side conditions</summary>' + sideNotes + '</details>' : '') + '</section>'); scene.$frame.addClass('has-field-status');} else scene.$frame.removeClass('has-field-status');
+		this.$('.switchmenu button[name=chooseDisabled]').each(function () {if (this.value.includes(',fainted') && !$(this).find('.hpbar').length)$(this).append('<span class="hpbar hpbar-fainted" aria-label="Fainted"><span style="width:0%"></span></span>');});
+	};
+})();
