@@ -5706,3 +5706,164 @@ function renderStarterPassives(species) {
 	}
 	['updateSetTop', 'updateChart', 'chartSet', 'chartChange'].forEach(function (name) {var original = proto[name]; if (!original) return; proto[name] = function () {var result = original.apply(this, arguments); showEventMoveWarning.call(this); return result;};});
 })();
+
+// Unified Profiles keeps live membership in rosterprofiles and names in pokemontools.
+(function ($) {
+	if (!window.TeambuilderRoom || !window.TeambuilderTools || typeof BattleLog === 'undefined') return;
+	var p = window.TeambuilderRoom.prototype, T = window.TeambuilderTools, esc = BattleLog.escapeHTML;
+	T.libraryTabs = function (active) {
+		return '<nav class="library-tabs" aria-label="Library sections">' + [['names', 'Profiles'], ['sets', 'Saved sets']].map(function (t) {return '<button type="button" class="button" name="libraryTab" value="' + t[0] + '" aria-pressed="' + ((active === 'lists' ? 'names' : active) === t[0]) + '">' + t[1] + '</button>';}).join('') + '</nav>';
+	};
+	T.profileGroup = function (profile, groups) {return profile && groups.find(function (g) {return g.id === profile.rosterProfile;}) || null;};
+	T.unifiedProfileOptions = function (names, groups, selected) {
+		var linked = new Set(names.map(function (n) {return n.rosterProfile;}));
+		return '<option value="">Choose a profile</option>' + names.map(function (n) {var group = T.profileGroup(n, groups); return '<option value="' + esc(n.id) + '"' + (n.id === selected ? ' selected' : '') + '>' + esc(n.name) + (group ? '' : ' (names only)') + '</option>';}).join('') + groups.filter(function (g) {return !linked.has(g.id);}).map(function (g) {return '<option value="group:' + esc(g.id) + '">' + esc(g.name) + ' (group)</option>';}).join('');
+	};
+	var show = p.showToolsManager, refresh = p.refreshNicknameGroup, filter = p.filterNicknameRows;
+	p.showToolsManager = function () {
+		show.apply(this, arguments);
+		if (this.librarySection === 'sets') return;
+		this.$el.addClass('unified-profiles'); this.$('.local-tools-manager').addClass('roster-page');
+		var data = this.toolsData(), groups = this.rosterData(), profile = data.nicknames.find(function (n) {return n.id === data.selectedNickname;}), group = T.profileGroup(profile, groups.profiles);
+		this.$('.library-names > header h3').text('Profiles'); this.$('.library-names > header p').text('Choose Pokémon and give them names.');
+		this.$('.nickname-profile-choice').html(T.unifiedProfileOptions(data.nicknames, groups.profiles, data.selectedNickname)).attr('aria-label', 'Profile');
+		this.$('.nickname-profile-choice').parent().contents().filter(function () {return this.nodeType === 3;}).first().replaceWith('Profile');
+		this.$('[name=newNicknameProfile]').attr('name', 'newUnifiedProfile').text('New profile');
+		this.$('.nickname-group-choice').val(group ? group.id : '');
+		var manager = this.$('.library-names > .library-step').first().find('details.library-secondary').first();
+		if (profile) {
+			if (!manager.length) manager = $('<details class="library-secondary"><summary>Manage profile</summary></details>').appendTo(this.$('.library-names > .library-step').first());
+			var linkage = this.$('.nickname-group-choice').closest('label');
+			if (linkage.length) {linkage.find('select').attr('aria-label', 'Membership group'); linkage.contents().filter(function () {return this.nodeType === 3;}).first().replaceWith('Membership group '); manager.append(linkage);}
+			manager.append('<p class="tools-note">Link an existing group without merging saved names.</p>');
+			if (group) manager.append('<div class="library-actions"><button class="button" name="renameRosterProfile">Rename group</button><button class="button" name="deleteRosterProfile">Delete group</button></div>');
+			this.$('.library-row-tools').prepend('<label>Find Pokémon<input type="search" class="textbox roster-species-search" placeholder="Add a member" aria-label="Find a profile member" /></label><div class="roster-species-matches" aria-live="polite"></div>');
+			this.$('.nickname-search').attr('placeholder', 'Find a member or name');
+			this.$('.library-row-tools').append('<label><input type="checkbox" class="profile-other-names" /> Other saved names</label>');
+			this.$('.nickname-rows').before('<p class="profile-membership-note tools-note"></p><label class="library-check"><input type="checkbox" class="roster-profile-filter"' + (groups.enabled && group && groups.selected === group.id ? ' checked' : '') + ' /> Use this group in the Pokémon picker</label>');
+			this.$('.library-save-actions').after('<p class="roster-edit-status" role="status"></p>');
+			var imports = '<details class="library-secondary roster-import-section"><summary>Import Pokémon members</summary><input class="textbox roster-import-name" placeholder="New profile name" aria-label="Imported group name" maxlength="80" /><textarea class="textbox roster-import-text" rows="4" aria-label="Pokémon list" placeholder="One Pokémon per line"></textarea><div class="library-actions"><button class="button" name="previewRosterImport" value="new">Preview new group</button><button class="button" name="previewRosterImport" value="add">Preview additions</button><button class="button" name="previewRosterImport" value="replace">Preview replacement</button></div><div class="roster-import-preview" aria-live="polite"></div></details>';
+			manager.append(imports);
+		}
+		this.$('.library-backup > p.tools-note').first().text('Includes saved sets, profiles and groups. Teams and unsaved drafts are not included.');
+		if (profile) {
+			var options = $('<details class="library-secondary profile-view-options"><summary>View options</summary></details>');
+			options.append(this.$('.nickname-team-only').closest('label')).append(this.$('.profile-other-names').closest('label'));
+			this.$('.library-row-tools').after(options);
+			this.$('.nickname-search').hide();
+			this.$('[name=addTeamNicknameRows]').attr('name', 'addTeamProfileMembers').text('Add team').prop('disabled', !this.curTeam).attr('title', this.curTeam ? '' : 'Open a team first');
+		}
+		this.refreshNicknameGroup();
+	};
+	p.nicknameGroupProfile = function () {
+		var data = this.toolsData(true), profile = data.nicknames.find(function (n) {return n.id === data.selectedNickname;});
+		return T.profileGroup(profile, this.rosterData().profiles);
+	};
+	p.refreshNicknameGroup = function () {
+		refresh.apply(this, arguments);
+		if (!this.$el.hasClass('unified-profiles')) return;
+		var group = this.nicknameGroupProfile(), self = this;
+		this.$('.profile-member-remove').remove();
+		this.$('.nickname-row[data-group-entry]').each(function () {var row = $(this), id = T.id(row.find('.nickname-species').val()); row.append('<button class="button profile-member-remove" name="removeProfileMember" value="' + esc(id) + '" aria-label="Remove ' + esc(Dex.species.get(id).name) + ' from group">Remove member</button>');});
+		this.$('.profile-membership-note').text(group ? group.species.length + ' members · Removing a member keeps its saved names.' : 'Names only. Add a Pokémon to start a linked group.');
+		this.$('.nickname-empty-hint').toggle(!group || !group.species.length);
+		this.$('.roster-species-search').val(this.profileMemberSearch || '');
+		if (group) {var data = this.rosterData(); data.selected = group.id; Storage.prefs('rosterprofiles', data); this.searchRosterSpecies();}
+		this.$('[name=previewRosterImport][value=add], [name=previewRosterImport][value=replace]').prop('disabled', !group).attr('title', group ? '' : 'Add a member first');
+		this.filterNicknameRows();
+	};
+	p.nicknameSettingsChange = function () {
+		this.saveNicknameDraft(); this.captureLibraryView(); this.rosterImportPreview = null;
+		var data = this.toolsData(), selected = this.$('.nickname-profile-choice').val() || '';
+		if (selected.indexOf('group:') === 0) {
+			var group = this.rosterData().profiles.find(function (g) {return g.id === selected.slice(6);}); if (!group) return;
+			var existing = data.nicknames.find(function (n) {return n.rosterProfile === group.id;});
+			if (!existing) {existing = {id:T.uid(), name:group.name, entries:{}, genderEntries:{}, rosterProfile:group.id}; data.nicknames.push(existing);}
+			selected = existing.id;
+		}
+		this.profileMemberSearch = ''; data.selectedNickname = selected; data.autoNickname = !!this.$('.auto-nickname').prop('checked'); this.saveToolsData(data);
+		if (this.libraryViews && this.libraryViews.names) {this.libraryViews.names.names = ''; this.libraryViews.names.teamOnly = false;}
+		this.showToolsManager(); this.$('.nickname-profile-choice').focus();
+	};
+	p.nicknameGroupChange = function () {
+		this.saveNicknameDraft(); var data = this.toolsData(), profile = data.nicknames.find(function (n) {return n.id === data.selectedNickname;}); if (!profile) return;
+		var id = this.$('.nickname-group-choice').val() || ''; if (id && !this.rosterData().profiles.some(function (g) {return g.id === id;})) return;
+		profile.rosterProfile = id; this.saveToolsData(data); this.showToolsManager();
+	};
+	p.filterNicknameRows = function () {
+		filter.apply(this, arguments);
+		if (!this.$('.profile-other-names').prop('checked')) return;
+		var query = String(this.$('.nickname-search').val() || '').toLowerCase(), teamOnly = this.$('.nickname-team-only').prop('checked'), ids = new Set((this.curSetList || []).map(function (s) {return T.id(s.species);}));
+		this.$('.nickname-row').not('.nickname-head').each(function () {var row = $(this), species = String(row.find('.nickname-species').val()), name = String(row.find('.nickname-value').val()); row.toggle((species + ' ' + name).toLowerCase().includes(query) && (!teamOnly || ids.has(T.id(species))));});
+	};
+	p.newUnifiedProfile = function () {
+		this.saveNicknameDraft(); var self = this; app.addPopupPrompt('Profile name:', 'Create', function (name) {if (!name || !name.trim()) return; name = name.trim().slice(0, 80); var groups = self.rosterData(), group = {id:T.uid(), name:name, species:[]}; groups.profiles.push(group); groups.selected = group.id; Storage.prefs('rosterprofiles', groups); var data = self.toolsData(), profile = {id:T.uid(), name:name, entries:{}, genderEntries:{}, rosterProfile:group.id}; data.nicknames.push(profile); data.selectedNickname = profile.id; self.saveToolsData(data); self.showToolsManager(); self.$('.roster-species-search').focus();});
+	};
+	var edit = p.editRosterSpecies;
+	p.editRosterSpecies = function (id, remove) {
+		if (!this.$el.hasClass('unified-profiles') || !this.toolsView) return edit.apply(this, arguments);
+		this.saveNicknameDraft(); var group = this.nicknameGroupProfile(), data = this.toolsData(), profile = data.nicknames.find(function (n) {return n.id === data.selectedNickname;}); if (!profile) return;
+		var groups = this.rosterData(); if (!group) {group = {id:T.uid(), name:profile.name, species:[]}; groups.profiles.push(group); profile.rosterProfile = group.id; this.saveToolsData(data);}groups.selected = group.id; Storage.prefs('rosterprofiles', groups); this.profileMemberSearch = this.$('.roster-species-search').val() || '';
+		var result = edit.apply(this, arguments); this.showToolsManager(); this.$('.roster-species-search').focus(); return result;
+	};
+	p.removeProfileMember = function (id) {return this.editRosterSpecies(id, true);};
+	p.showRosterProfiles = function () {this.saveNicknameDraft(); this.profilesView = false; this.librarySection = 'names'; this.toolsView = true; this.showToolsManager();};
+	p.openRosterManager = p.showRosterProfiles;
+	p.libraryTab = function (section) {this.captureLibraryView(); this.saveNicknameDraft(); this.profilesView = false; this.librarySection = section === 'sets' ? 'sets' : 'names'; this.showToolsManager();};
+	p.events['change .profile-other-names'] = 'filterNicknameRows';
+
+	var saveRoster = p.saveRosterProfiles;
+	p.saveRosterProfiles = function (data) {
+		var result = saveRoster.apply(this, arguments);
+		if (this.toolsView && this.$el.hasClass('unified-profiles')) {
+			this.$('.nickname-profile-choice').html(T.unifiedProfileOptions(this.toolsData().nicknames, data.profiles, this.toolsData().selectedNickname));
+			this.refreshNicknameGroup();
+			if (data.deleted) this.$('.roster-edit-status').append('<button class="button" name="undoRosterDelete">Undo group deletion</button>');
+		}
+		return result;
+	};
+	var oldRefresh = p.refreshNicknameGroup;
+	p.refreshNicknameGroup = function () {
+		var result = oldRefresh.apply(this, arguments), group = this.nicknameGroupProfile();
+		this.$('.roster-profile-filter').prop('disabled', !group).attr('title', group ? '' : 'Add a member or link a group first');
+		if (group && this.rosterRemovalUndo && this.rosterRemovalUndo.profile === group.id) this.$('.roster-edit-status').html('Member removed. Saved names kept. <button class="button" name="undoRosterSpeciesRemoval">Undo</button>');
+		return result;
+	};
+	T.unifiedBackup = function (names, groups) {var result = T.clone(names); result.profileGroups = T.clone(groups.profiles); return result;};
+	var parseNames = T.parse;
+	T.parse = function (text) {
+		var result = parseNames(text), original = JSON.parse(text), ids = Object.create(null);
+		if (original.profileGroups !== undefined && !Array.isArray(original.profileGroups)) throw new Error('Invalid profile groups.');
+		result.profileGroups = (original.profileGroups || []).map(function (g) {
+			if (!g || typeof g.id !== 'string' || Object.prototype.hasOwnProperty.call(ids, g.id) || typeof g.name !== 'string' || !g.name.trim() || !Array.isArray(g.species)) throw new Error('Invalid profile group.');
+			var id = T.uid(); ids[g.id] = id; var members = [];
+			g.species.forEach(function (raw) {var species = Dex.species.get(raw); if (!species.exists) throw new Error('Unknown group Pokémon.'); if (!members.includes(species.id))members.push(species.id);});
+			return {id:id, name:g.name.trim().slice(0, 80), species:members};
+		});
+		result.nicknames.forEach(function (n, index) {var group = ids[original.nicknames[index].rosterProfile]; if (group)n.rosterProfile = group;});
+		return result;
+	};
+	p.mergeImportedProfileGroups = function (incoming) {
+		if (!(incoming.profileGroups || []).length) return;
+		var data = this.rosterData(); data.profiles = data.profiles.concat(incoming.profileGroups); Storage.prefs('rosterprofiles', data);
+	};
+	var confirmImport = p.confirmLibraryImport;
+	p.confirmLibraryImport = function () {if (this.pendingLibraryImport) this.mergeImportedProfileGroups(this.pendingLibraryImport); return confirmImport.apply(this, arguments);};
+	p.downloadToolsBackup = function () {
+		this.saveNicknameDraft(); var data = T.unifiedBackup(this.toolsData(), this.rosterData());
+		var url = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], {type:'application/json'})), link = document.createElement('a'); link.href = url; link.download = 'teambuilder-library.json'; link.click(); setTimeout(function () {URL.revokeObjectURL(url);}, 1000);
+	};
+	p.exportToolsLibrary = function () {if (!this.saveNicknameMappings()) return; this.libraryTransferDirty = false; if (this.libraryInputDraft) delete this.libraryInputDraft.transfer; this.$('.tools-transfer').val(JSON.stringify(T.unifiedBackup(this.toolsData(), this.rosterData()), null, 2)).focus().select();};
+	p.importToolsLibrary = function () {
+		this.saveNicknameDraft(); try {var incoming = T.parse(this.$('.tools-transfer').val()), data = this.toolsData(); data.builds = data.builds.concat(incoming.builds); data.nicknames = data.nicknames.concat(incoming.nicknames); this.mergeImportedProfileGroups(incoming); this.saveToolsData(data); this.libraryTransferDirty = false; if (this.libraryInputDraft) delete this.libraryInputDraft.transfer; this.showToolsManager();} catch (err) {app.addPopupMessage(err.message);}
+	};
+
+	var searchMembers = p.searchRosterSpecies;
+	p.searchRosterSpecies = function () {var result = searchMembers.apply(this, arguments); if (this.toolsView && this.$el.hasClass('unified-profiles')) {var query = this.$('.roster-species-search').val() || ''; this.$('.nickname-search').val(query); this.filterNicknameRows();} return result;};
+	p.addTeamProfileMembers = function () {
+		if (!this.curTeam || !this.curSetList) return; this.saveNicknameDraft(); var names = this.toolsData(), profile = names.nicknames.find(function (n) {return n.id === names.selectedNickname;}); if (!profile) return;
+		var data = this.rosterData(), group = T.profileGroup(profile, data.profiles), self = this; if (!group) {group = {id:T.uid(), name:profile.name, species:[]}; data.profiles.push(group); profile.rosterProfile = group.id; this.saveToolsData(names);}
+		this.curSetList.forEach(function (set) {var id = self.rosterSpeciesID(set.species); if (id)self.rosterExpandedSpecies(id).forEach(function (form) {if (!group.species.includes(form))group.species.push(form);});});
+		data.selected = group.id; this.saveRosterProfiles(data); this.profileMemberSearch = ''; this.showToolsManager(); this.$('.roster-species-search').focus();
+	};
+})(jQuery);

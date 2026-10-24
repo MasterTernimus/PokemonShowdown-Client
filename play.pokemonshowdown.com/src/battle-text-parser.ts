@@ -328,6 +328,7 @@ class BattleTextParser {
 		} else if (effect.startsWith('ability:') || effect.startsWith('passive:')) {
 			effect = effect.slice(8);
 		}
+		if (effect.trim() === 'Super U.M.D. Move') return 'Super U.M.D';
 		return effect.trim() === 'Eldritch Remedy' ? 'Curious Medicine' : effect.trim();
 	}
 
@@ -560,7 +561,7 @@ class BattleTextParser {
 				line1 = this.template('zEffect').replace('[POKEMON]', this.pokemon(pokemon));
 			}
 			const template = this.template('move', kwArgs.from);
-			return line1 + template.replace('[POKEMON]', this.pokemon(pokemon)).replace('[MOVE]', move);
+			return line1 + template.replace('[POKEMON]', this.pokemon(pokemon)).replace('[MOVE]', this.effect(move));
 		}
 
 		case 'cant': {
@@ -568,7 +569,7 @@ class BattleTextParser {
 			const template = this.template('cant', effect, 'NODEFAULT') ||
 				this.template(move ? 'cant' : 'cantNoMove');
 			const line1 = this.maybeAbility(effect, kwArgs.of || pokemon);
-			return line1 + template.replace('[POKEMON]', this.pokemon(pokemon)).replace('[MOVE]', move);
+			return line1 + template.replace('[POKEMON]', this.pokemon(pokemon)).replace('[MOVE]', this.effect(move));
 		}
 
 		case '-candynamax': {

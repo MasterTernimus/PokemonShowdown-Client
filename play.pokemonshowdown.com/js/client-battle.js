@@ -1780,22 +1780,110 @@ BattleRoom.prototype.showPassives = function (pos) {
 	}
 };
 
-// The status rail only reads the public battle client model, never hidden server durations.
+// The status rail only reads public protocol state, never private items or server timers.
 (function () {
+	function duration(battle, min, max, persistent) {
+		if (battle.gen < 7 && battle.hardcoreMode) return '';
+		if (min && max && min !== max) return min + ' or ' + max + ' turns';
+		if (!min && max) return 'Up to ' + max + ' turn' + (max === 1 ? '' : 's');
+		if (min) return min + ' turn' + (min === 1 ? '' : 's');
+		return persistent ? 'Persistent' : 'Active';
+	}
+	function chip(kind, name, time, guide, id) {
+		var escape = BattleLog.escapeHTML;
+		return '<' + (guide ? 'button type="button" name="openFieldGuide" value="' + escape(guide) + '" title="Open public field rules"' : 'span') +
+			' class="battle-layer ' + kind + '-layer" data-effect="' + escape(id) + '">' +
+			(kind === 'side' ? '' : '<small>' + kind + '</small>') + '<b>' + escape(name) + '</b>' +
+			(time ? '<span class="effect-turns">' + escape(time) + '</span>' : '') + '</' + (guide ? 'button' : 'span') + '>';
+	}
 	BattleRoom.prototype.openFieldGuide = function (id) {window.openPublicFieldGuide(id);};
-	var update = BattleRoom.prototype.updateControls;
-	BattleRoom.prototype.updateControls = function () {var out = update.apply(this, arguments); this.renderPublicFieldStatus(); return out;};
-	BattleRoom.prototype.renderPublicFieldStatus = function () {
-		var battle = this.battle, scene = battle && battle.scene; if (!scene || !scene.weatherLeft) return;
-		var entries = [], escape = BattleLog.escapeHTML;
-		if (battle.weather) {var hiddenTurns = battle.gen < 7 && battle.hardcoreMode; var suppressed = battle.abilityActive(['Air Lock', 'Cloud Nine']); var times = hiddenTurns ? '' : battle.weatherMinTimeLeft ? battle.weatherMinTimeLeft + ' or ' + battle.weatherTimeLeft + ' turns' : battle.weatherTimeLeft ? battle.weatherTimeLeft + ' turns' : ''; entries.push('<span class="battle-layer weather-layer"><small>Weather</small><b>' + escape(({sunnyday:'Sun', raindance:'Rain', sandstorm:'Sandstorm', hail:'Hail', snow:'Snow', desolateland:'Harsh sun', primordialsea:'Heavy rain', deltastream:'Strong winds'})[battle.weather] || battle.weather) + '</b><span>' + escape(times) + (suppressed ? ' · suppressed' : '') + '</span></span>');}
+	BattleRoom.prototype.publicBattleEffectsHTML = function () {
+		var battle = this.battle;
+		if (!battle) return '';
+		var entries = [], hasSideEffects = false, escape = BattleLog.escapeHTML;
+		if (battle.weather) {
+			var names = {sunnyday: 'Sun', raindance: 'Rain', sandstorm: 'Sandstorm', hail: 'Hail', snow: 'Snow', desolateland: 'Harsh sun', primordialsea: 'Heavy rain', deltastream: 'Strong winds'};
+			var time = duration(battle, battle.weatherMinTimeLeft || battle.weatherTimeLeft, battle.weatherMinTimeLeft ? battle.weatherTimeLeft : 0, false);
+			if (battle.abilityActive(['Air Lock', 'Cloud Nine'])) time += (time ? ' · ' : '') + 'Suppressed';
+			entries.push(chip('weather', names[battle.weather] || battle.weather, time, '', battle.weather));
+		}
 		(battle.pseudoWeather || []).forEach(function (state) {
-			var raw = toID(state[0]), id = battle.getTerrainId(state[0]), aura = /aura$/.test(raw), guide = aura ? 'aura/' + (raw === 'frozenaura' ? raw : raw.replace(/aura$/, 'terrain')) : id;
-			var text = scene.pseudoWeatherLeft(state.slice()).replace(/^<br\s*\/?\s*>/, ''); var layer = aura ? 'Aura' : id ? 'Field' : 'Room';
-			entries.push('<' + (guide ? 'button' : 'span') + (guide ? ' type="button" name="openFieldGuide" value="' + escape(guide) + '" title="Open this field’s public rules and transitions"' : '') + ' class="battle-layer ' + (aura ? 'aura-layer' : id ? 'field-layer' : 'room-layer') + '"><small>' + layer + '</small><b>' + text + '</b>' + (guide ? '<span aria-hidden="true">ⓘ</span>' : '') + '</' + (guide ? 'button' : 'span') + '>');
+			var raw = toID(state[0]), field = battle.getTerrainId(state[0]), aura = /aura$/.test(raw);
+			var guide = aura ? 'aura/' + (raw === 'frozenaura' ? raw : raw.replace(/aura$/, 'terrain')) : field;
+			var name = raw === 'midnightzoneterrain' ? 'Midnight Zone' : state[0];
+			var garden = /^flowergarden([1-5])$/.exec(raw);
+			if (garden) name = 'Flower Garden (Stage ' + garden[1] + ')';
+			entries.push(chip(aura ? 'aura' : field ? 'field' : 'room', name, duration(battle, state[1], state[2], !!field || aura), guide, raw));
 		});
-		var sideNotes = battle.sides.map(function (side) {return scene.sideConditionsLeft(side);}).join('').replace(/^<br\s*\/?\s*>/, '');
-		this.$('.battle-field-status').remove(); if (entries.length || sideNotes) {this.$('.battle-controls').prepend('<section class="battle-field-status" aria-label="Public battle conditions">' + entries.join('') + (sideNotes ? '<details><summary>Side conditions</summary>' + sideNotes + '</details>' : '') + '</section>'); scene.$frame.addClass('has-field-status');} else scene.$frame.removeClass('has-field-status');
+		var sides = battle.sides.filter(Boolean).slice().sort(function (a, b) {
+			return Number(a.isFar) - Number(b.isFar) || a.n - b.n;
+		});
+		var sideHTML = sides.map(function (side) {
+			var conditions = side.sideConditions || {}, ids = Object.keys(conditions);
+			var priority = ['reflect', 'lightscreen', 'auroraveil', 'tailwind', 'arenitewall', 'atlantiswall'];
+			ids.sort(function (a, b) {return (priority.includes(a) ? priority.indexOf(a) : 100) - (priority.includes(b) ? priority.indexOf(b) : 100);});
+			if (ids.length) hasSideEffects = true;
+			var label = this.side ? side.sideid === this.side ? 'Your side' : sides.length === 2 ? 'Opponent' : side.name || side.sideid : side.name || (side.isFar ? 'Far side' : 'Near side');
+			var chips = ids.map(function (id) {
+				var state = conditions[id], name = state[0] + (state[1] > 1 ? ' ×' + state[1] : '');
+				return chip('side', name, duration(battle, state[2], state[3], false), '', id);
+			}).join('');
+			return '<div class="battle-effects-side" data-side="' + escape(side.sideid) + '"><strong>' + escape(label) + '</strong><div class="battle-effects-list">' + (chips || '<span class="battle-effects-empty">None</span>') + '</div></div>';
+		}, this).join('');
+		if (!entries.length && !hasSideEffects) return '';
+		return '<section class="battle-field-status" aria-label="Public battle effects" tabindex="0">' +
+			(entries.length ? '<div class="battle-effects-shared">' + entries.join('') + '</div>' : '') +
+			(hasSideEffects ? '<div class="battle-effects-sides">' + sideHTML + '</div>' : '') + '</section>';
+	};
+	BattleRoom.prototype.effectDetailsVisible = function () {
+		return typeof Storage !== 'undefined' && Storage.prefs ? !!Storage.prefs('battleeffectdetails') : !!this.effectDetailsOpen;
+	};
+	BattleRoom.prototype.setEffectDetails = function (open) {
+		this.effectDetailsOpen = !!open;
+		if (typeof Storage !== 'undefined' && Storage.prefs) Storage.prefs('battleeffectdetails', !!open);
+		this.renderPublicFieldStatus();
+		this.$('.battle-effects-toggle').focus();
+	};
+	BattleRoom.prototype.toggleBattleEffects = function () {this.setEffectDetails(!this.effectDetailsVisible());};
+	BattleRoom.prototype.showBattleEffectsDetails = function () {this.setEffectDetails(true);};
+	BattleRoom.prototype.compactBattleEffectsHTML = function (html) {
+		var escape = BattleLog.escapeHTML, holder = $('<div>').html(html);
+		var shared = holder.find('.battle-effects-shared .battle-layer').toArray();
+		var sideEffects = holder.find('.battle-effects-side .battle-layer').toArray();
+		// Keep the arena summary short; every public timer remains in the details view.
+		shared.sort(function (a, b) {return Number($(b).attr('data-effect') === 'trickroom') - Number($(a).attr('data-effect') === 'trickroom');});
+		var visible = shared.slice(0, 3), extra = shared.length - visible.length;
+		visible.sort(function (a, b) {return shared.indexOf(a) - shared.indexOf(b);});
+		var entries = visible.map(function (element) {
+			var node = $(element), name = node.find('b').text(), time = node.find('.effect-turns').text();
+			var title = name + (time ? ', ' + time : '');
+			var compactTime = /^(Persistent|Active)$/.test(time) ? '' : time.replace(/ turns?$/, '').replace(' or ', '–').replace('Up to ', '≤');
+			return '<button type="button" name="showBattleEffectsDetails" data-effect="' + escape(node.attr('data-effect')) + '" class="compact-effect-line" title="' + escape(title) + '" aria-label="' + escape(title) + '"><span>' + escape(name) + '</span>' + (compactTime ? '<small>' + escape(compactTime) + '</small>' : '') + '</button>';
+		}).join('');
+		if (sideEffects.length || extra) {
+			var titles = holder.find('.battle-layer').map(function () {var node = $(this), side = node.closest('.battle-effects-side').children('strong').first().text(); return (side ? side + ': ' : '') + node.find('b').text() + ', ' + node.find('.effect-turns').text();}).get().join('; ');
+			entries += '<button type="button" name="showBattleEffectsDetails" class="compact-effect-more" title="' + escape(titles) + '" aria-label="Show all public effects and side conditions: ' + escape(titles) + '">' + (extra ? 'More effects' : 'Side effects') + ' (' + (extra + sideEffects.length) + ')</button>';
+		}
+		return entries ? '<div class="compact-effect-indicators" role="group" aria-label="Public battle conditions">' + entries + '</div>' : '';
+	};
+	BattleRoom.prototype.renderPublicFieldStatus = function () {
+		var scene = this.battle && this.battle.scene;
+		if (!scene) return;
+		if (!scene.publicEffectsDisplay) {
+			var self = this, weatherUpdate = scene.updateWeather;
+			scene.publicEffectsDisplay = function () {self.renderPublicFieldStatus();};
+			if (weatherUpdate) scene.updateWeather = function () {var out = weatherUpdate.apply(this, arguments); this.publicEffectsDisplay(); return out;};
+		}
+		var html = this.publicBattleEffectsHTML(), open = this.effectDetailsVisible(), id = 'battle-effect-details-' + toID(this.id || 'local');
+		this.$('.battle-field-status, .battle-effects-toggle').remove();
+		if (html) this.$controls.prepend('<button type="button" class="button battle-effects-toggle" name="toggleBattleEffects" aria-controls="' + id + '" aria-expanded="' + open + '">' + (open ? 'Hide effects' : 'Effects') + '</button>' + (open ? html.replace('<section ', '<section id="' + id + '" ') : ''));
+		scene.$frame.toggleClass('has-field-status', false).toggleClass('has-compact-effects', !!html);
+		scene.$frame.children('.compact-effect-indicators').remove();
+		if (html) scene.$frame.append(this.compactBattleEffectsHTML(html));
 		this.$('.switchmenu button[name=chooseDisabled]').each(function () {if (this.value.includes(',fainted') && !$(this).find('.hpbar').length)$(this).append('<span class="hpbar hpbar-fainted" aria-label="Fainted"><span style="width:0%"></span></span>');});
 	};
+	var update = BattleRoom.prototype.updateControls;
+	BattleRoom.prototype.updateControls = function () {var out = update.apply(this, arguments); this.renderPublicFieldStatus(); return out;};
+	var replace = BattleRoom.prototype.setControlsHTML;
+	BattleRoom.prototype.setControlsHTML = function () {var out = replace.apply(this, arguments); this.renderPublicFieldStatus(); return out;};
 })();

@@ -170,6 +170,9 @@
     ],
     "mightyena": [
       "rivalry"
+    ],
+    "gyarados": [
+      "tempestfury"
     ]
   },
   "abilities": {
@@ -216,6 +219,11 @@
       "0": "Intimidate",
       "1": "Black Fang",
       "H": "Stakeout"
+    },
+    "gyarados": {
+      "0": "Unbridled Wrath",
+      "1": "Intimidate",
+      "H": "Moxie"
     }
   },
   "stats": {

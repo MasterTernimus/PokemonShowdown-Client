@@ -1106,9 +1106,11 @@ License: GPLv2
 
 /* Preserve crisp pixels on these supplied back sprites at fractional device scale. */
 .battle img.pixelated[src*="/gen5-back"][src*="/lopunny-mega.png"],
+.battle img.pixelated[src*="/gen5-back-shiny/"][src*="/lopunny.png"],
 .battle img.pixelated[src*="/gen5ani-back"][src*="/electivire.gif"],
 .battle img.pixelated[src*="/gen5ani-back"][src*="/corviknight.gif"],
 .battle img.pixelated[src*="/gen5ani-back"][src*="/chesnaught.gif"],
+.battle img.pixelated[src*="/gen5ani-back"][src*="/sylveon.gif"],
 .battle img.pixelated[src*="/gen5ani/za-"],
 .battle img.pixelated[src*="/gen5ani-back/za-"] {
  image-rendering: pixelated;
@@ -1189,3 +1191,33 @@ License: GPLv2
 .statbar .status .relic-armor-field { color:#185236; background:#e4f4e9; border-color:#47865e; }
 .statbar .status .relic-armor-badge::before { content:none; }
 .statbar .status .relic-armor-badge:focus-visible { outline:2px solid #186cb0; outline-offset:2px; }
+
+/* Doubles HP labels and wrapped badges stay inside their own HUD column. */
+.doubles-statbar strong {
+	box-sizing: border-box;
+	margin: 0;
+	padding-right: 34px;
+	text-align: left;
+	overflow-wrap: anywhere;
+}
+.doubles-statbar .hpbar .hptext {
+	left: auto;
+	right: 0;
+	top: -16px;
+	border-radius: 3px;
+}
+.doubles-statbar .hpbar .hptextborder {
+	display: none;
+}
+.doubles-statbar .status {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: start;
+	gap: 2px;
+	margin-top: 3px;
+}
+.doubles-statbar .status > span {
+	max-width: 100%;
+	box-sizing: border-box;
+	overflow-wrap: anywhere;
+}

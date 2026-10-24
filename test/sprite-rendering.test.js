@@ -30,6 +30,39 @@ function assertBWPreview(data, species, front, shiny) {
 }
 
 describe('Sprite rendering regressions', () => {
+	it('scales only ordinary shiny Lopunny backs while preserving their foot baseline', () => {
+		const {Dex: dex} = require('./helpers/isolated-dex.cjs')();
+		for (const bwgfx of [false, true]) {
+			dex.prefs = key => key === 'bwgfx' && bwgfx;
+			const back = dex.getSpriteData('Lopunny', false, {gen: 9, shiny: true});
+			assert(back.url.includes('/gen5-back-shiny/lopunny.png'));
+			assert.deepEqual([back.w, back.h, back.y], [50, 58, 7]);
+			assert.equal(back.h / 2 + back.y, 72 / 2);
+			const front = dex.getSpriteData('Lopunny', true, {gen: 9, shiny: true});
+			assert.deepEqual([front.w, front.h, front.y], [56, 64, 0]);
+			const normal = dex.getSpriteData('Lopunny', false, {gen: 9});
+			assert(normal.url.includes('/gen5ani-back/lopunny.gif'));
+			assert.deepEqual([normal.w, normal.h, normal.y], [72, 63, 0]);
+			assert.equal(new GifReader(fs.readFileSync(localFile(normal.url))).numFrames(), 58);
+			for (const shiny of [false, true]) {
+				const mega = dex.getSpriteData('Lopunny-Mega', false, {gen: 9, shiny});
+				assert.deepEqual([mega.w, mega.h, mega.y], [53, 68, 0]);
+			}
+		}
+	});
+
+	it('leaves raw artwork, preview and Dynamax Lopunny sizing unchanged', () => {
+		const {Dex: dex} = require('./helpers/isolated-dex.cjs')();
+		for (const [options, expected] of [
+			[{noScale: true}, [106, 122, 0]],
+			[{teamPreview: true}, [68, 78, 0]],
+			[{dynamax: true}, [212, 244, -22]],
+		]) {
+			const data = dex.getSpriteData('Lopunny', false, {gen: 9, shiny: true, ...options});
+			assert.deepEqual([data.w, data.h, data.y], expected);
+		}
+	});
+
 	it('keeps base Ninetales normal and shiny compact in animated and static battle modes', () => {
 		const {Dex: dex} = require('./helpers/isolated-dex.cjs')();
 		for (const mode of ['default', 'bwgfx', 'noanim', 'nogif']) {

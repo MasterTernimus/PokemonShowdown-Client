@@ -240,12 +240,12 @@
     "shortDesc": "Combines the listed abilities."
   },
   "hisuianvanguard": {
-    "desc": "On its first active turn, its Speed is 1.5x and its Sp. Atk is 1.2x. Absorbs wind moves for +1 Sp. Atk. Gains +1 Sp. Atk when Tailwind starts on its side or it enters during Tailwind. Strong Winds gives +1 Attack and Sp. Atk each turn.",
-    "shortDesc": "Combines the listed abilities."
+    "desc": "On its first active turn, its Speed is 1.5x and its Sp. Atk is 1.2x. Prevents flinching and Attack drops from Intimidate.",
+    "shortDesc": "Entry: 1.5x Spe, 1.2x SpA. Inner Focus."
   },
   "unovavanguard": {
-    "desc": "On its first active turn, its Speed is 1.5x and its Attack is 1.2x. Absorbs wind moves for +1 Attack. Gains +1 Attack when Tailwind starts on its side or it enters during Tailwind. Strong Winds gives +1 Attack and Sp. Atk each turn.",
-    "shortDesc": "First active turn: 1.5x Spe and 1.2x Atk; Tailwind/Strong Winds raise Attack."
+    "desc": "On its first active turn, its Speed is 1.5x and its Attack is 1.2x. Prevents flinching and Attack drops from Intimidate.",
+    "shortDesc": "Entry: 1.5x Spe, 1.2x Atk. Inner Focus."
   },
   "unovawing": {
     "desc": "Critical-hit and Competitive effects; no Unburden. Stat drops can raise Special Attack, but item use or loss no longer doubles Speed.",
@@ -3084,8 +3084,8 @@
     "shortDesc": "Foes with lowered Speed cannot use priority against its side."
   },
   "tempestfury": {
-    "desc": "Surviving an opposing direct attack charges its next damaging Water move to critically hit. A landed Water hit spends the non-stacking charge; misses and Protect do not.",
-    "shortDesc": "After surviving a direct hit, its next damaging Water move is a critical hit."
+    "shortDesc": "After surviving a direct hit, next Water move critically hits.",
+    "desc": "Surviving an opposing direct attack charges its next damaging Water move to critically hit. A landed Water hit spends the non-stacking charge; misses and Protect do not. Includes full local Anger Point: the first damaging hit after activation raises Attack by 1, and a surviving critical hit maximizes Attack at the normal +6 cap."
   },
   "ironlash": {
     "desc": "On entry, it gains +1 accuracy. Its Tail moves have their power multiplied by 1.5. Gains +1 accuracy on entry and tail moves have 1.5x power. Once per turn, damaging a foe with a tail move also raises its Sp. Def by 1 stage.",

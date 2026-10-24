@@ -1260,6 +1260,8 @@ class Move implements Effect {
 	constructor(id: ID, name: string, data: any) {
 		if (!data || typeof data !== 'object') data = {};
 		if (data.name) name = data.name;
+		// Display-only abbreviation; packed teams and mechanics retain superumdmove.
+		if (id === 'superumdmove') name = 'Super U.M.D';
 		this.name = Dex.sanitizeName(name);
 		this.id = id;
 		this.gen = data.gen || 0;
@@ -1369,7 +1371,7 @@ class Move implements Effect {
 			} else {
 				this.zMove.basePower = 100;
 			}
-			if (data.zMove && typeof this.multihit !== 'number') this.zMove.basePower = data.zMove.basePower;
+			if (data.zMove && (typeof this.multihit !== 'number' || id === 'beatdown')) this.zMove.basePower = data.zMove.basePower;
 		}
 
 		this.num = data.num || 0;

@@ -29876,7 +29876,7 @@ for (const [id, update] of Object.entries({
 	"gyarados": {
 		"abilities": {
 			"0": "Unbridled Wrath",
-			"1": "Tempest Fury",
+			"1": "Intimidate",
 			"H": "Moxie"
 		},
 		"baseStats": {
@@ -29892,7 +29892,7 @@ for (const [id, update] of Object.entries({
 			"Flying"
 		],
 		"passives": [
-			"intimidate"
+			"tempestfury"
 		],
 		"replaceAbilities": true
 	},
@@ -37451,7 +37451,7 @@ for (const [id, update] of Object.entries({
 	"noivern": {
 		"abilities": {
 			"0": "Dragonize",
-			"1": "Wind Power",
+			"1": "Infiltrator",
 			"H": "Echo Fiend"
 		},
 		"baseStats": {
@@ -49132,11 +49132,11 @@ for (const [id, update] of Object.entries({
 			"H": "Territorial"
 		},
 		"baseStats": {
-			"hp": 150,
-			"atk": 145,
-			"def": 110,
-			"spa": 25,
-			"spd": 120,
+			"hp": 140,
+			"atk": 150,
+			"def": 115,
+			"spa": 45,
+			"spd": 100,
 			"spe": 50
 		},
 		"types": [
@@ -49155,11 +49155,11 @@ for (const [id, update] of Object.entries({
 			"H": "Moonlit Hide"
 		},
 		"baseStats": {
-			"hp": 133,
-			"atk": 40,
+			"hp": 123,
+			"atk": 65,
 			"def": 130,
 			"spa": 135,
-			"spd": 110,
+			"spd": 95,
 			"spe": 52
 		},
 		"types": [
@@ -56288,11 +56288,11 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	],
 	"hisuianvanguard": [
 		"rapidresponse",
-		"windpower"
+		"innerfocus"
 	],
 	"unovavanguard": [
 		"violentrush",
-		"windrider"
+		"innerfocus"
 	],
 	"unovawing": [
 		"superluck",
@@ -57973,7 +57973,9 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	"tidaldominion": [
 		"swiftswim"
 	],
-	"tempestfury": [],
+	"tempestfury": [
+		"angerpoint"
+	],
 	"ironlash": [
 		"whiplash"
 	],
@@ -58947,8 +58949,8 @@ const CUSTOM_SIGNATURE_PASSIVE_DESCRIPTIONS: {[id: string]: {shortDesc: string; 
 		"desc": "Sound moves become Water-type, or Ice-type on Icy Field, and have 1.2x power. Each foe damaged by a noncontact sound hit has a 20% poison chance. Shield Dust and Covert Cloak prevent this added poison. This passive does not include contact Poison Touch."
 	},
 	"tempestfury": {
-		"shortDesc": "Once per battle: survive a foe hit to charge a Water critical hit.",
-		"desc": "Once per battle, surviving opposing direct HP damage charges the next damaging Water move to critically hit, subject to normal critical-hit prevention. Opposing HP or Substitute damage spends the charge; misses, protection and immunity preserve it. The charge and spent acquisition persist through switching and form changes. Ordinary Gyarados active Tempest Fury remains repeatable; its charge is separate and does not transfer into this passive."
+		"shortDesc": "Once per battle: survive a foe hit to charge a Water critical hit. Anger Point.",
+		"desc": "Once per battle, surviving opposing direct HP damage charges the next damaging Water move to critically hit, subject to normal critical-hit prevention. Opposing HP or Substitute damage spends the charge; misses, protection and immunity preserve it. The charge and spent acquisition persist through switching and form changes. Ordinary Gyarados active Tempest Fury remains repeatable; its charge is separate and does not transfer into this passive. Includes full local Anger Point: the first damaging hit after activation raises Attack by 1, and a surviving critical hit maximizes Attack at the normal +6 cap."
 	},
 	"serratedscales": {
 		"shortDesc": "Rough Skin + Limber.",
@@ -59061,6 +59063,9 @@ const CUSTOM_SIGNATURE_PASSIVE_COMPONENTS: {[id: string]: readonly string[]} = {
 		"limber"
 	],
 	"controlledfury": [
+		"angerpoint"
+	],
+	"tempestfury": [
 		"angerpoint"
 	],
 	"rivalresolve": [
@@ -64985,8 +64990,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Hisuian Vanguard",
 		"num": 10338,
 		"gen": 9,
-		"desc": "On its first active turn, its Speed is 1.5x and its Sp. Atk is 1.2x. Absorbs wind moves for +1 Sp. Atk. Gains +1 Sp. Atk when Tailwind starts on its side or it enters during Tailwind. Strong Winds gives +1 Attack and Sp. Atk each turn.",
-		"shortDesc": "On its first active turn, its Speed is 1.5x and its Sp. Atk is 1.2x.",
+		"desc": "On its first active turn, its Speed is 1.5x and its Sp. Atk is 1.2x. Prevents flinching and Attack drops from Intimidate.",
+		"shortDesc": "Entry: 1.5x Spe, 1.2x SpA. Inner Focus.",
 		"rating": 5,
 		"flags": {
 			"breakable": 1
@@ -71138,8 +71143,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Tempest Fury",
 		"num": 10505,
 		"gen": 9,
-		"desc": "Surviving an opposing direct attack charges its next damaging Water move to critically hit. A landed Water hit spends the non-stacking charge; misses and Protect do not.",
-		"shortDesc": "After surviving a direct hit, its next damaging Water move is a critical hit.",
+		"desc": "Surviving an opposing direct attack charges its next damaging Water move to critically hit. A landed Water hit spends the non-stacking charge; misses and Protect do not. Includes full local Anger Point: the first damaging hit after activation raises Attack by 1, and a surviving critical hit maximizes Attack at the normal +6 cap.",
+		"shortDesc": "After surviving a direct hit, next Water move critically hits.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null
@@ -71925,8 +71930,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Unova Vanguard",
 		"num": 10339,
 		"gen": 9,
-		"desc": "On its first active turn, its Speed is 1.5x and its Attack is 1.2x. Absorbs wind moves for +1 Attack. Gains +1 Attack when Tailwind starts on its side or it enters during Tailwind. Strong Winds gives +1 Attack and Sp. Atk each turn.",
-		"shortDesc": "First active turn: 1.5x Spe and 1.2x Atk; Tailwind/Strong Winds raise Attack.",
+		"desc": "On its first active turn, its Speed is 1.5x and its Attack is 1.2x. Prevents flinching and Attack drops from Intimidate.",
+		"shortDesc": "Entry: 1.5x Spe, 1.2x Atk. Inner Focus.",
 		"rating": 5,
 		"flags": {
 			"breakable": 1
@@ -73560,11 +73565,11 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	],
 	"hisuianvanguard": [
 		"rapidresponse",
-		"windpower"
+		"innerfocus"
 	],
 	"unovavanguard": [
 		"violentrush",
-		"windrider"
+		"innerfocus"
 	],
 	"hisuianresolve": [
 		"bruteforce",
@@ -75999,8 +76004,8 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"metronome": 1,
 			"contact": 1
 		},
-		"desc": "Samson's move. Hits three times with a separate 95% accuracy check per hit, stopping on a miss. If the first accuracy check misses, raises the user's Attack by 2; later misses, protection and immunity do not grant this boost. A successful hit applies Taunt once per use.",
-		"shortDesc": "Samson's move. 3 hits; first-hit miss: +2 Attack. Damaging hit Taunts.",
+		"desc": "Samson's move. Hits up to three times with a separate 95% accuracy check per hit, stopping on a miss. The first accuracy miss each switch-in raises the user's Attack by 2, even after earlier hits; the opportunity is spent even at the Attack cap. Direct HP hits Taunt a surviving target for 4 effect-counter turns, without refreshing existing Taunt. Protect, immunity and no target grant no boost. Blunder Policy can activate on a later miss unless the target is semi-invulnerable. Z-Move power: 160.",
+		"shortDesc": "Samson's move. 3 hits; first accuracy miss per entry: +2 Atk. HP hits Taunt (4). Z:160.",
 		"signatureCharacters": [
 			"samson"
 		]
@@ -89992,8 +89997,8 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"nosleeptalk": 1,
 			"failinstruct": 1
 		},
-		"desc": "Charges with +2 priority, raising the user's Attack, Defense, and Special Defense by 1 stage each. While charging, the user takes 20% less damage from attacks. Attacks at normal priority on the next turn. After dealing damage, restores 15% of the user's base maximum HP. Skipping the charge, such as with Power Herb, keeps the stat boosts but does not grant charge-turn priority or the charging damage reduction.",
-		"shortDesc": "+2 charge: +1 Atk/Def/SpD, 20% less damage. Hit heals 15%."
+		"desc": "Charges with +2 priority, raising the user's Attack, Defense, and Special Defense by 1 stage each. While charging, the user takes 20% less damage from attacks. Attacks at normal priority on the next turn. After dealing damage, restores 15% of the user's base maximum HP. Skipping the charge, such as with Power Herb, keeps the stat boosts but does not grant charge-turn priority or the charging damage reduction. Cannot be selected for a fresh use immediately after completing it; the forced second-turn release remains usable.",
+		"shortDesc": "+2 charge: +1 Atk/Def/SpD, 20% less damage. Hit heals 15%. No consecutive fresh uses."
 	},
 	"skyattack": {
 		"name": "Sky Attack",
@@ -95302,7 +95307,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	],
 	"hisuianvanguard": [
 		"rapidresponse",
-		"windpower"
+		"innerfocus"
 	],
 	"hivecourier": [],
 	"hivesanctuary": [
@@ -96615,7 +96620,9 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"temperedalloy": [
 		"filter"
 	],
-	"tempestfury": [],
+	"tempestfury": [
+		"angerpoint"
+	],
 	"templechime": [
 		"elevate"
 	],
@@ -96797,7 +96804,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"unnerve": [],
 	"unovavanguard": [
 		"violentrush",
-		"windrider"
+		"innerfocus"
 	],
 	"unovawing": [
 		"superluck",
@@ -100816,6 +100823,7 @@ const Dex = new class implements ModdedDex {
 			}
 			let name = nameOrMove || '';
 			let id = toID(nameOrMove);
+			if (id === 'superumd') id = 'superumdmove' as ID;
 			if (window.BattleAliases && id in BattleAliases) {
 				name = BattleAliases[id];
 				id = toID(name);
@@ -101757,6 +101765,15 @@ const Dex = new class implements ModdedDex {
 				spriteData.w = Math.max(1, Math.round(spriteData.w * proportion));
 				spriteData.h = Math.max(1, Math.round(spriteData.h * proportion));
 			}
+		}
+
+		// Keep shiny ordinary Lopunny proportionate without moving its feet or changing Mega artwork.
+		if (speciesid === 'lopunny' && assetPath === 'gen5-back-shiny/lopunny.png' &&
+			!isFront && !options.teamPreview && !options.noScale && !isDynamax) {
+			const previousHeight = spriteData.h;
+			spriteData.w = Math.round(spriteData.w * 0.8);
+			spriteData.h = Math.round(spriteData.h * 0.8);
+			spriteData.y += (previousHeight - spriteData.h) / 2;
 		}
 
 		// Keep normal Chimecho's native BW back animation on the integer 2x BW projection.
@@ -102968,11 +102985,11 @@ const AUDITED_DESCRIPTION_COMPONENTS: {[id: string]: string[]} = {
 	],
 	"hisuianvanguard": [
 		"rapidresponse",
-		"windpower"
+		"innerfocus"
 	],
 	"unovavanguard": [
 		"violentrush",
-		"windrider"
+		"innerfocus"
 	],
 	"unovawing": [
 		"superluck"

@@ -37,16 +37,30 @@
 
 		var self = this;
 
-		var openPassiveButton = null, openPassivePanel = null;
+		var openPassiveButton = null, openPassivePanel = null, retargetedPassiveRow = null;
 		function closePassiveHelp() {
 			if (!openPassiveButton) return;
 			openPassiveButton.setAttribute('aria-expanded', 'false');
 			openPassivePanel.hidden = true;
 			openPassiveButton = openPassivePanel = null;
 		}
-		this.$el.on('pointerdown', '.pokemon-passive-badge', function (e) { e.stopPropagation(); });
+		this.$el.on('pointerdown', '.pokemon-passive-badge', function (e) {
+			retargetedPassiveRow = null;
+			if (e.originalEvent && e.originalEvent.pointerType === 'touch') {
+				// Chromium may retarget a name tap to the nearby help button.
+				var hit = document.elementFromPoint(e.clientX, e.clientY);
+				if (!$(hit).closest('.pokemon-passive-badge').length) retargetedPassiveRow = $(hit).closest('a.pokemon-picker-row')[0] || null;
+			}
+			e.stopPropagation();
+		});
 		this.$el.on('click', '.pokemon-passive-badge', function (e) {
 			e.preventDefault(); e.stopImmediatePropagation();
+			var selectedRow = retargetedPassiveRow;
+			retargetedPassiveRow = null;
+			if (selectedRow && e.originalEvent && e.originalEvent.detail > 0) {
+				selectedRow.click();
+				return;
+			}
 			var closing = openPassiveButton === this;
 			closePassiveHelp();
 			if (closing) return;
@@ -137,6 +151,9 @@
 		}
 		if (this.rosterFilter && this.engine.typedSearch && this.engine.typedSearch.searchType === 'pokemon') {
 			this.resultSet = this.rosterFilter(this.resultSet);
+		}
+		if (this.engine.typedSearch && this.engine.typedSearch.searchType === 'pokemon' && this.$el && this.$el.closest && this.$el.closest('.teambuilder-results').length && !this.resultSet.some(function (row) {return row[0] === 'sortpokemon';})) {
+			this.resultSet = [['sortpokemon', '']].concat(this.resultSet);
 		}
 		if (this.filters) {
 			this.resultSet = [['html', this.getFilterText()]].concat(this.resultSet);
@@ -370,7 +387,8 @@
 		return 'Error: not found';
 	};
 	Search.prototype.renderPokemonSortRow = function () {
-		var buf = '<li class="result"><div class="sortrow">';
+		var organized = this.$el && this.$el.closest('.teambuilder-results').length;
+		var buf = '<li class="result"><div class="sortrow' + (organized ? ' pokemon-picker-sort' : '') + '">';
 		buf += '<button class="sortcol numsortcol' + (!this.sortCol ? ' cur' : '') + '">' + (!this.sortCol ? 'Sort: ' : this.engine.firstPokemonColumn) + '</button>';
 		buf += '<button class="sortcol pnamesortcol' + (this.sortCol === 'name' ? ' cur' : '') + '" data-sort="name">Name</button>';
 		buf += '<button class="sortcol typesortcol' + (this.sortCol === 'type' ? ' cur' : '') + '" data-sort="type">Types</button>';
@@ -404,10 +422,11 @@
 		if (!attrs) attrs = '';
 		if (!pokemon) return '<li class="result">Unrecognized pokemon</li>';
 		var id = toID(pokemon.name);
+		var organized = this.$el && this.$el.closest('.teambuilder-results').length;
 		if (Search.urlRoot) attrs += ' href="' + Search.urlRoot + 'pokemon/' + id + '" data-target="push"';
 		var dex = this.engine ? this.engine.dex : Dex;
 		var passives = dex.species.get(id).passives || [];
-		var buf = '<li class="result' + (passives.length ? ' pokemonpassiveresult' : '') + '"><a' + attrs + ' data-entry="pokemon|' + BattleLog.escapeHTML(pokemon.name) + '">';
+		var buf = '<li class="result' + (passives.length ? ' pokemonpassiveresult' : '') + '"><a' + (organized ? ' class="pokemon-picker-row"' : '') + attrs + ' data-entry="pokemon|' + BattleLog.escapeHTML(pokemon.name) + '">';
 
 		// number
 		var tier = this.engine ? this.engine.getTier(pokemon) : pokemon.num;
@@ -465,9 +484,9 @@
 
 		// abilities
 		if (gen >= 3) {
-			var abilityLabel = function (value) {
+			var abilityLabel = function (value, slot) {
 				var label = BattleLog.escapeHTML(value || '');
-				return '<span class="ability-name" title="' + label + '">' + label + '</span>';
+				return '<span class="ability-name" title="' + label + '">' + label + (slot ? '<small class="ability-slot-label" title="Special ability slot">' + slot + '</small>' : '') + '</span>';
 			};
 			var abilities = Dex.forGen(gen).species.get(id).abilities;
 			if (gen >= 5) {
@@ -481,9 +500,9 @@
 				if (unreleasedHidden === 'Past' && (this.mod === 'natdex' || gen < 8)) unreleasedHidden = false;
 				if (abilities['S']) {
 					if (abilities['H']) {
-						buf += '<span class="col twoabilitycol' + (unreleasedHidden ? ' unreleasedhacol' : '') + '">' + abilityLabel(abilities['H']) + '(' + abilityLabel(abilities['S']) + ')</span>';
+						buf += '<span class="col twoabilitycol' + (unreleasedHidden ? ' unreleasedhacol' : '') + '">' + abilityLabel(abilities['H']) + abilityLabel(abilities['S'], 'S') + '</span>';
 					} else {
-						buf += '<span class="col abilitycol">(' + abilityLabel(abilities['S']) + ')</span>';
+						buf += '<span class="col abilitycol">' + abilityLabel(abilities['S'], 'S') + '</span>';
 					}
 				} else if (abilities['H']) {
 					buf += '<span class="col abilitycol' + (unreleasedHidden ? ' unreleasedhacol' : '') + '">' + abilityLabel(abilities['H']) + '</span>';

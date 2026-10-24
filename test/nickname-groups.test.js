@@ -37,7 +37,7 @@ describe('Live groups in the name editor', () => {
  });
  it('uses live membership and stable IDs, including renamed or removed groups', () => {
   const data = {profiles: [{id: 'one', name: 'First', species: ['nidoqueen']}]};
-  const room = {rosterData: () => data, $: () => ({val: () => 'one'})};
+  const room = {toolsData: () => ({selectedNickname:'names',nicknames:[{id:'names',rosterProfile:'one'}]}), rosterData: () => data, $: () => ({val: () => 'one'})};
   const get = () => Room.prototype.nicknameGroupProfile.call(room);
   assert.equal(get(), data.profiles[0]);
   data.profiles[0].name = 'Renamed'; data.profiles[0].species.push('alomomola');

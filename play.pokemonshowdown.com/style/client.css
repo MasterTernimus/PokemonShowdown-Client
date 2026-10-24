@@ -4414,3 +4414,60 @@ a.ilink.yours {
  .teambuilder-results .utilichart .sortrow:has(.pnamesortcol) .sortcol { min-height: 44px; }
  .teambuilder-results .utilichart .result > a:has(.bstcol) .pokemon-passive-badge { min-height: 28px; }
 }
+
+/* Public effects stay below the arena, with visible timers for each side. */
+.battle-controls .battle-field-status {display:grid;gap:5px;max-height:144px;overflow:auto;scrollbar-width:thin;padding:5px;margin-bottom:7px;}
+.battle-effects-shared,.battle-effects-list {display:flex;flex-wrap:wrap;align-items:center;gap:4px;min-width:0;}
+.battle-effects-sides {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;}
+.battle-effects-side {min-width:0;}
+.battle-effects-side > strong {display:block;margin-bottom:3px;font-size:10px;}
+.battle-controls .battle-field-status .battle-layer {flex-wrap:wrap;gap:3px;padding:3px 5px;min-height:22px;box-sizing:border-box;max-width:100%;overflow-wrap:anywhere;}
+.battle-controls .battle-layer .effect-turns {white-space:nowrap;font-size:10px;color:#455c6c;}
+.battle-effects-empty {font-size:10px;color:#617381;}
+.dark .battle-field-status {background:#24313f;color:#edf3fa;border-color:#53697a;}
+.dark .battle-controls .battle-layer {background:#182632;color:#edf3fa;border-color:#657e90;}
+.dark .battle-controls .battle-layer > small,.dark .battle-controls .battle-layer .effect-turns,.dark .battle-effects-empty {color:#c3d4e2;}
+.dark .battle-controls button.battle-layer:hover,.dark .battle-controls button.battle-layer:focus-visible {background:#354d62;}
+@media(max-width:440px){.battle-controls .battle-field-status {font-size:10px;}.battle-effects-sides {gap:5px;}}
+/* Membership actions share the nickname row without crowding narrow screens. */
+.unified-profiles .nickname-row {grid-template-columns:minmax(120px,1fr) minmax(120px,1fr) minmax(110px,.8fr) auto auto;}
+.unified-profiles .nickname-group-choice {max-width:100%;}
+.unified-profiles .library-row-tools {align-items:end;}
+.unified-profiles .roster-species-matches {display:flex;flex-wrap:wrap;gap:4px;width:100%;max-height:130px;overflow:auto;}
+.unified-profiles .profile-member-remove {font-size:11px;}
+@media(max-width:600px){.unified-profiles .nickname-row {grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:5px;}.unified-profiles .nickname-row .nickname-gender {grid-column:1/-1;max-width:100%;}.unified-profiles .nickname-row.nickname-head .nickname-gender-heading {display:none;}}
+/* Native compact picker rows; retain search sorting and readable ability labels. */
+.teambuilder-results .utilichart .result > a.pokemon-picker-row .pokemonnamecol,.teambuilder-results .utilichart .result > a.pokemon-picker-row .pokemonnamecol small {color:#e8edf3;}
+.editing-set .pokemon-picker-sort .abilitysortcol,.editing-set .pokemon-picker-sort .statsortcol {display:block;}
+.teambuilder-results .utilichart .sortrow.pokemon-picker-sort .sortcol {min-width:0;max-width:100%;padding:2px 0;}
+
+.teambuilder-results .utilichart .result > a.pokemon-picker-row {background:rgba(24,36,49,.94);color:#e8edf3;text-decoration:none;border-top:1px solid #3b4c5b;}
+.teambuilder-results .utilichart .result > a.pokemon-picker-row:hover,.teambuilder-results .utilichart .result > a.pokemon-picker-row.cur {background:#2c4359;}
+.teambuilder-results .utilichart .result > a.pokemon-picker-row .pokemonnamecol {font-size:12px;line-height:14px;}
+.teambuilder-results .utilichart .result > a.pokemon-picker-row .pokemon-passive-badge {font:9px/12px Verdana,sans-serif;min-height:18px;padding:0 2px;background:transparent;border:0;color:#c2d9e9;}
+.teambuilder-results .utilichart .result > a.pokemon-picker-row .twoabilitycol {position:relative;}
+.teambuilder-results .utilichart .result > a.pokemon-picker-row .ability-slot-label {position:static;display:inline;margin-left:3px;font:8px/12px Verdana,sans-serif;color:#abc0d4;}
+.teambuilder-results .utilichart .result > a.pokemon-picker-row .statcol,.teambuilder-results .utilichart .result > a.pokemon-picker-row .bstcol {font-size:11px;}
+.teambuilder-results .utilichart .sortrow.pokemon-picker-sort .sortcol {font-size:10px;}
+
+.teambuilder-results .utilichart .result > a.pokemon-picker-row,
+.teambuilder-results .utilichart .sortrow.pokemon-picker-sort {grid-template-columns:16px 30px minmax(92px,1.2fr) 40px minmax(68px,1fr) minmax(68px,1fr) repeat(7,24px);}
+.teambuilder-results .utilichart .result > a.pokemon-picker-row .ability-name {white-space:normal;overflow-wrap:anywhere;line-height:13px;}
+@container pokemon-picker (max-width:579px) {
+ .teambuilder-results .utilichart .result > a.pokemon-picker-row,
+ .teambuilder-results .utilichart .sortrow.pokemon-picker-sort {grid-template-columns:repeat(7,minmax(0,1fr));}
+ .teambuilder-results .utilichart .result > a.pokemon-picker-row {row-gap:2px;padding:3px 4px;}
+ .teambuilder-results .utilichart .result > a.pokemon-picker-row .pokemonnamecol {font:12px/14px Verdana,sans-serif;}
+ .teambuilder-results .utilichart .result > a.pokemon-picker-row .pokemon-passive-badge {font-size:10px;min-height:18px;padding:0 2px;}
+}
+.battle-controls .battle-effects-toggle {float:right;margin:0 0 3px 5px;min-height:26px;padding:3px 7px;font-size:11px;}
+.battle-controls .battle-field-status {clear:both;}
+.battle.has-compact-effects .weather > em {display:none;}
+.battle .compact-effect-indicators {position:absolute;top:40px;left:104px;z-index:25;width:100px;max-height:56px;box-sizing:border-box;padding:0 3px;border-radius:3px;background:linear-gradient(90deg,rgba(20,29,39,.74),rgba(20,29,39,.42));color:#fff;pointer-events:auto;}
+.battle .compact-effect-indicators button {display:flex;align-items:center;justify-content:space-between;gap:3px;width:100%;min-height:14px;margin:0;padding:0;border:0;border-radius:0;background:none;color:inherit;font:12px/14px Arial,sans-serif;text-align:left;text-shadow:0 1px 2px #111;cursor:pointer;}
+.battle .compact-effect-indicators .compact-effect-line > span {overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.battle .compact-effect-indicators button small {flex:none;color:#e1e7ed;font:11px/14px Arial,sans-serif;white-space:nowrap;}
+.battle .compact-effect-indicators .compact-effect-more {color:#d9e7f4;font-size:11px;text-decoration:underline;text-underline-offset:2px;}
+.battle .compact-effect-indicators button:hover {color:#fff6c9;}
+.battle .compact-effect-indicators button:focus-visible {outline:2px solid #ffdc7e;outline-offset:1px;}
+@media(pointer:coarse){.battle-controls .battle-effects-toggle{min-height:44px}}

@@ -300,13 +300,13 @@
   ],
   "hisuianvanguard": [
     "hisuianvanguard",
-    "rapidresponse",
-    "windpower"
+    "innerfocus",
+    "rapidresponse"
   ],
   "unovavanguard": [
+    "innerfocus",
     "unovavanguard",
-    "violentrush",
-    "windrider"
+    "violentrush"
   ],
   "unovawing": [
     "competitive",
@@ -3334,6 +3334,7 @@
     "tidaldominion"
   ],
   "tempestfury": [
+    "angerpoint",
     "tempestfury"
   ],
   "ironlash": [

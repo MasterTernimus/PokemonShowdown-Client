@@ -934,6 +934,7 @@ export class BattleScene implements BattleSceneStub {
 	}
 
 	pseudoWeatherLeft(pWeather: WeatherState) {
+		pWeather = [...pWeather];
 		if (toID(pWeather[0]) === 'midnightzoneterrain') return '<br />Midnight Zone';
 		const garden = /^flowergarden([1-5])$/.exec(toID(pWeather[0]));
 		if (garden) return `<br />Flower Garden (Stage ${garden[1]})`;
@@ -952,6 +953,7 @@ export class BattleScene implements BattleSceneStub {
 		return buf; // weather not found
 	}
 	sideConditionLeft(cond: [string, number, number, number], isFoe: boolean, all?: boolean) {
+		cond = [...cond];
 		if (!cond[2] && !cond[3] && !all) return '';
 		let buf = `<br />${isFoe && !all ? "Foe's " : ""}${Dex.moves.get(cond[0]).name}`;
 		if (this.battle.gen < 7 && this.battle.hardcoreMode) return buf;
@@ -961,7 +963,7 @@ export class BattleScene implements BattleSceneStub {
 			cond[2] = cond[3];
 			cond[3] = 0;
 		}
-		if (!cond[3]) {
+		if (!cond[3] || cond[2] === cond[3]) {
 			return buf + ' <small>(' + cond[2] + ' turn' + (cond[2] === 1 ? '' : 's') + ')</small>';
 		}
 		return buf + ' <small>(' + cond[2] + ' or ' + cond[3] + ' turns)</small>';
@@ -983,7 +985,7 @@ export class BattleScene implements BattleSceneStub {
 				deltastream: 'Strong Winds',
 			};
 			weatherhtml = `${weatherNameTable[this.battle.weather] || this.battle.weather}`;
-			if (this.battle.weatherMinTimeLeft !== 0) {
+			if (this.battle.weatherMinTimeLeft !== 0 && this.battle.weatherMinTimeLeft !== this.battle.weatherTimeLeft) {
 				weatherhtml += ` <small>(${this.battle.weatherMinTimeLeft} or ${this.battle.weatherTimeLeft} turns)</small>`;
 			} else if (this.battle.weatherTimeLeft !== 0) {
 				weatherhtml += ` <small>(${this.battle.weatherTimeLeft} turn${this.battle.weatherTimeLeft === 1 ? '' : 's'})</small>`;
@@ -2346,6 +2348,10 @@ export class PokemonSprite extends Sprite {
 		this.left = pos.left;
 		this.top = pos.top;
 		this.statbarLeft = pos.left - 80;
+		// Separate doubles HUD columns without changing the Pokemon sprite positions.
+		if (this.scene.battle.gameType === 'doubles') {
+			this.statbarLeft = this.isFrontSprite ? 378 - 170 * slot : 102 + 170 * slot;
+		}
 		this.statbarTop = pos.top - 73 - statbarOffset;
 		if (this.statbarTop < -4) this.statbarTop = -4;
 
@@ -2828,7 +2834,8 @@ export class PokemonSprite extends Sprite {
 	}
 
 	getStatbarHTML(pokemon: Pokemon) {
-		let buf = '<div class="statbar' + (this.isFrontSprite ? ' lstatbar' : ' rstatbar') + this.getClassForPosition(pokemon.slot) + '" style="display: none">';
+		const doublesClass = this.scene.battle.gameType === 'doubles' ? ' doubles-statbar' : '';
+		let buf = '<div class="statbar' + (this.isFrontSprite ? ' lstatbar' : ' rstatbar') + this.getClassForPosition(pokemon.slot) + doublesClass + '" style="display: none">';
 		const ignoreNick = this.isFrontSprite && (this.scene.battle.ignoreOpponent || this.scene.battle.ignoreNicks);
 		buf += `<strong>${BattleLog.escapeHTML(ignoreNick ? pokemon.speciesForme : pokemon.name)}`;
 		const gender = pokemon.gender;

@@ -35,7 +35,7 @@ describe('Server data synchronization', () => {
 						for (const [key, value] of Object.entries(expected)) {
 							if (key === 'replaceAbilities') continue;
 							const normalize = data => key === 'isNonstandard' ? (kind === 'abilities' ? !!data : data || false) : JSON.parse(JSON.stringify(data));
-							assert.deepEqual(normalize(actual[key]), normalize(kind === 'abilities' && id === 'eldritchremedy' && key === 'name' ? 'Curious Medicine' : value), `${kind}.${id}.${key}`);
+							assert.deepEqual(normalize(actual[key]), normalize(key === 'name' && kind === 'moves' && id === 'superumdmove' ? 'Super U.M.D' : kind === 'abilities' && id === 'eldritchremedy' && key === 'name' ? 'Curious Medicine' : value), `${kind}.${id}.${key}`);
 						}
 					}
 				}

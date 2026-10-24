@@ -807,6 +807,7 @@ Storage.packTeam = function (team) {
 		buf += '|';
 		if (set.moves) for (var j = 0; j < set.moves.length; j++) {
 			var moveid = toID(set.moves[j]);
+			if (moveid === 'superumd') moveid = 'superumdmove';
 			if (j && !moveid) continue;
 			buf += (j ? ',' : '') + moveid;
 			if (moveid.substr(0, 11) === 'hiddenpower' && moveid.length > 11) hasHP = true;
