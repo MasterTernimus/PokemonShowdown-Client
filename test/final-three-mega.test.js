@@ -8,11 +8,11 @@ describe('Final three Mega designs UI', () => {
   assert.equal(s.abilities[0], 'Aura Precision');
   assert.deepEqual(s.passives, ['auraguard']);
   const effects = Dex.getAbilityEffects('auraprecision');
-  assert(effects.has('shielddust') && effects.has('technician'));
-  assert(!effects.has('dualwield') && !effects.has('innerfocus'));
+  assert(effects.has('shielddust') && effects.has('ultrainstinct') && effects.has('mindseye'));
+  assert(!effects.has('dualwield') && !effects.has('technician') && effects.has('innerfocus'));
   assert.deepEqual(Dex.species.get('Haxorus-Mega').passives, ['twinfang']);
  });
- it('previews Aura Precision Technician once with the Factory threshold and honors suppression', () => {
+ it('does not grant obsolete Technician power and honors suppression', () => {
   const battle = new Battle({debug: true, log: ['|init|battle', '|gen|9', '|gametype|singles', '|switch|p1a: Lucario|Lucario-Mega-Z, L100|100/100', '|switch|p2a: Mew|Mew, L100|100/100']});
   try {
    const p = battle.p1.active[0], q = battle.p2.active[0];
@@ -20,10 +20,10 @@ describe('Final three Mega designs UI', () => {
    p.ability = 'Aura Precision';
    const tips = new BattleTooltips(battle);
    const power = bp => { const v = new ModifiableValue(battle, p, own); tips.getMoveBasePower({...Dex.moves.get('tackle'), basePower: bp}, 'Normal', v, q); return v.value; };
-   assert.equal(power(40), 60);
+   assert.equal(power(40), 40);
    assert.equal(power(70), 70);
    battle.addPseudoWeather('Factory Terrain', 5, 5);
-   assert.equal(power(70), 105);
+   assert.equal(power(70), 70);
    p.volatiles.gastroacid = ['gastroacid'];
    assert.equal(power(70), 70);
    assert.equal(tips.calculateModifiedStats(p, own).atk, 100);

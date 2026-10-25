@@ -66,8 +66,7 @@ class ModifiableValue {
 		const excluded = Dex.getAbilityComponentExclusions(activeId, passives, toID(this.serverPokemon.speciesForme));
 		const hasComponent = ((['plushwhiplash', 'abyssalclaws', 'antlioninstinct', 'tidalvoice', 'apexvenom', 'sirius', 'abyssalfang', 'trickperformer', 'curtaincall', 'cellularconcord', 'mountainhide', 'rimebark', 'bottomlessgullet', 'divefisher', 'scatterbrain'].includes(activeId)) || (activeId === 'quarrycannon' && abilityName === 'Mega Launcher') || (['updraft', 'stormsovereign'].includes(activeId) && abilityName === 'Competitive') || ['Guts', 'Rivalry', 'Pure Power', 'Sharpness', 'Dual Wield', 'Power Drill', 'Mega Launcher', 'Fire Mane'].includes(abilityName) || (['atrocity', 'apexpredator'].includes(activeId) && abilityName === 'Tough Claws') || (activeId === 'rupturedheaven' && abilityName === 'Sharpness') || (activeId === 'wintersmalice' && abilityName === 'Refrigerate')) && Dex.getAbilityEffects(activeId).has(toID(abilityName)) && !excluded.includes(toID(abilityName));
 		if (!hasComponent && abilityName !== this.abilityName &&
-			!(this.abilityName === 'Cinder Scales' && abilityName === 'Swarm') &&
-			!(this.abilityName === 'Aura Precision' && abilityName === 'Technician')) return false;
+			!(this.abilityName === 'Cinder Scales' && abilityName === 'Swarm')) return false;
 		if (this.pokemon?.volatiles['gastroacid']) {
 			this.comment.push(` (${abilityName} suppressed by Gastro Acid)`);
 			return false;

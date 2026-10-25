@@ -301,4 +301,4 @@ exports.effects=(id,f)=>effects[id]??prior.effects(id,f);exports.description=(id
 // Latest approved packages: explicit expected metadata, independent of generated client assets.
 {const latest=require('./latest-local-approved.json'),prior={description:exports.description,effects:exports.effects,passives:exports.passives};exports.description=(id,key,f)=>latest.descriptions[id]?.[key]??prior.description(id,key,f);exports.effects=(id,f)=>latest.effects[id]??prior.effects(id,f);exports.passives=(id,f)=>latest.passives[id]??prior.passives(id,f);}
 
-{const prior=exports.abilities;exports.abilities=(id,f)=>id==='lucario'?{0:'Carry On'}:id==='mamoswine'?{0:'Forsaken Sleeper',1:'Old North',H:'Glacial Prime'}:prior(id,f);}
+{const prior=exports.abilities;exports.abilities=(id,f)=>id==='lucario'?{0:'Carry On',1:'Sworn Duty',H:'Armorize'}:id==='mamoswine'?{0:'Forsaken Sleeper',1:'Old North',H:'Glacial Prime'}:prior(id,f);}

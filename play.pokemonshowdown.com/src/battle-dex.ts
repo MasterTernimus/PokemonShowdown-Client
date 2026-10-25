@@ -33469,6 +33469,8 @@ for (const [id, update] of Object.entries({
 	"lucario": {
 		"abilities": {
 			"0": "Carry On",
+			"1": "Sworn Duty",
+			"H": "Armorize",
 		},
 		"baseStats": {
 			"hp": 80,
@@ -33489,7 +33491,7 @@ for (const [id, update] of Object.entries({
 	},
 	"lucariomega": {
 		"abilities": {
-			"0": "Aura Convergence"
+			"0": "Insight",
 		},
 		"baseStats": {
 			"hp": 80,
@@ -58548,8 +58550,9 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 		"infiltrator"
 	],
 	"auraprecision": [
+		"ultrainstinct",
 		"shielddust",
-		"technician"
+		"mindseye",
 	],
 	"auraguard": [],
 	"shadowdouble": [],
@@ -59009,6 +59012,11 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	"moonlitprowl": [
 		"infiltrator",
 		"limber"
+	],
+	"insight": [
+		"ultraego",
+		"telepathy",
+		"innerfocus",
 	],
 	"forsakensleeper": [
 		"comatose",
@@ -61534,12 +61542,10 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Aura Precision",
 		"num": 11426,
 		"gen": 9,
-		"desc": "Shield Dust blocks secondary effects aimed at it while retaining attacker self-effects. Technician multiplies eligible move power by 1.5 at effective base power 60 or less, or 80 or less on Factory Terrain. Does not add extra hits or Inner Focus. Aura Guard is a separate species passive.",
-		"shortDesc": "Shield Dust and Technician.",
+		"desc": "Full local Ultra Instinct, Shield Dust and Mind's Eye. Ultra Instinct supplies its own whole-attack recovery, first-attack reduction and field interactions. Shield Dust blocks secondary effects aimed at this Pokemon while retaining attacker self-effects. Mind's Eye lets Normal and Fighting moves hit Ghosts, supplies Fairy and Dark STAB, ignores evasion boosts, prevents external accuracy drops, reveals opposing Illusions and applies its Cold Eclipse power and damage reduction. Aura Guard is its separate species passive.",
+		"shortDesc": "Ultra Instinct + Shield Dust + Mind's Eye.",
 		"rating": 4,
-		"flags": {
-			"breakable": 1
-		},
+		"flags": {},
 		"isNonstandard": null
 	},
 	"aurasight": {
@@ -65568,6 +65574,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 			"breakable": 1
 		},
 		"isNonstandard": null
+	},
+	"insight": {
+		"name": "Insight",
+		"num": 11979,
+		"gen": 9,
+		"desc": "Full local Ultra Ego, Telepathy and Inner Focus. Ultra Ego supplies its attack power, whole-attack recovery, defensive triggers and field interactions. Telepathy prevents allied damaging moves and doubles Speed on Psychic Terrain or Psychic Aura. Inner Focus prevents flinching and Intimidate.",
+		"shortDesc": "Ultra Ego + Telepathy + Inner Focus.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null,
 	},
 	"insomnia": {
 		"name": "Insomnia",
@@ -72588,8 +72604,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Void Veil",
 		"num": 10167,
 		"gen": 9,
-		"desc": "Airborne through Levitate; avoids allied damaging moves. Speed doubles under Psychic Terrain or Psychic Aura. Gravity does not ground it, interrupt its airborne moves or disable those moves. Other grounding effects, ability suppression and applicable ability bypass remain effective.",
-		"shortDesc": "Levitate + Telepathy; Gravity does not ground it or disable its airborne moves.",
+		"desc": "Levitate and Telepathy. Ordinary Gardevoir ignores Gravity grounding and airborne-move restrictions and receives beneficial terrain and aura eligibility while airborne: power bonuses, status and priority protection, and Grassy recovery. It remains airborne for Ground immunity and entry hazards. Other grounding effects and ability suppression remain effective. Misty Fairy Special Defense and move bonuses follow the existing field rules.",
+		"shortDesc": "Levitate + Telepathy; Gravity immunity; airborne terrain and aura benefits.",
 		"rating": 4,
 		"flags": {
 			"breakable": 1
@@ -94683,8 +94699,9 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"technician"
 	],
 	"auraprecision": [
+		"ultrainstinct",
 		"shielddust",
-		"technician"
+		"mindseye",
 	],
 	"aurasight": [],
 	"auroracurrent": [
@@ -95582,6 +95599,11 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"infiltrator": [],
 	"innardsout": [],
 	"innerfocus": [],
+	"insight": [
+		"ultraego",
+		"telepathy",
+		"innerfocus",
+	],
 	"insomnia": [],
 	"intimidate": [],
 	"intrepidsword": [],

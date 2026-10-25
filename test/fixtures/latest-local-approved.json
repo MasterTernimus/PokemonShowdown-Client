@@ -1,0 +1,125 @@
+{
+  "descriptions": {
+    "atrocity": {
+      "shortDesc": "Unbound Blaze + Tough Claws + Fire Ward",
+      "desc": "Unbound Blaze + Tough Claws + Fire Ward"
+    },
+    "naturalcure": {
+      "shortDesc": "On switching out, cures status and heals 1/8 max HP if cured.",
+      "desc": "On switching out, cures its major status and heals 1/8 max HP if it had a status to cure. Bewitched Woods also cures its status at turn end."
+    },
+    "naturalrecovery": {
+      "desc": "Switching out cures major status and restores 1/3 max HP, plus another 1/8 if a status was cured. Bewitched Woods cures status at turn end without healing.",
+      "shortDesc": "Switching out heals an extra 1/8 HP if a major status was cured."
+    },
+    "witheringshell": {
+      "desc": "Physical HP hits set opposing Stealth Rock except on water fields. Heals 1/16 max HP in effective rain. Sticky Hold prevents other Pokemon from removing its item under the normal local rules. Natural Recovery is the separate Corsola and Corsola-Reborn passive.",
+      "shortDesc": "Crumbling Shell + Rain Dish + Sticky Hold."
+    },
+    "mindseye": {
+      "desc": "Normal and Fighting moves can hit Ghost types; gains Fairy and Dark STAB, ignores target evasion boosts, and prevents external accuracy drops. On Cold Eclipse, has 30% damage reduction and 1.3x damaging move power. Reveals opposing Illusion and Perfect Illusion on activation and after each opposing entry; does not reveal allies. Suppression disables the selected ability’s reveal effects.",
+      "shortDesc": "Normal/Fighting hit Ghost; Fairy/Dark STAB; accuracy protection. Reveals opposing disguises."
+    },
+    "dreepyvanguard": {
+      "shortDesc": "Stalwart + Technician; first Dragon Darts breaks the matching screen.",
+      "desc": "Full local Stalwart and Technician. Moves cannot be redirected; specified Stalwart field entries raise Sp. Atk. Moves at most 60 effective BP (80 on Factory) receive 1.5x power. Once per entry, the first Dragon Darts dealing opposing HP damage removes Reflect if Physical or Light Screen if Special from each opposing side it damaged after both darts finish. Uses the actual higher-offense category; ability changes do not reset the use."
+    },
+    "duskdrive": {
+      "shortDesc": "Opportunist + Ultra Ego.",
+      "desc": "Full local Opportunist and Ultra Ego. Copies opposing positive stat changes at normal flush events; ability-bypassing attacks, damage-triggered attack boosts and recovery retain Ultra Ego's local field and rivalry rules."
+    },
+    "twilightinstinct": {
+      "shortDesc": "Ultra Instinct + Battle Fervor.",
+      "desc": "Full local Ultra Instinct and Battle Fervor, including their timing power, incoming-damage protection, recovery, first-hit attacking boosts and berry/seed prevention. Has their field suppression and Ultra Ego rivalry rules."
+    },
+    "forsakensleeper": {
+      "shortDesc": "Comatose + Soundproof + Rattled.",
+      "desc": "Full local Comatose, Soundproof and Rattled. Counts as asleep without a normal status and blocks major status; immune to other Pokemon's sound moves; Bug, Dark or Ghost hits and opposing Intimidate can raise Speed."
+    },
+    "coldexpertise": {
+      "shortDesc": "Oblivious + Thick Fat.",
+      "desc": "Full local Oblivious and Thick Fat: prevents and cures attraction and Taunt, blocks Captivate and Intimidate's Attack drop. Fire and Ice attacks use half the attacker's offensive stat; immune to hail damage. Mamoswine's passive."
+    },
+    "oldnorth": {
+      "shortDesc": "Ice Body + Ice Scales + Technician.",
+      "desc": "Full local Ice Body, Ice Scales and Technician. Half special attack damage; hail immunity, contact frostbite and cold-weather/field recovery. Mirror Arena grants +2 evasion; Icy/Snowy Mountain neutralize Ice weaknesses; Cold Eclipse doubles Defense. Moves at most 60 effective BP (80 on Factory) receive Technician's 1.5x boost."
+    },
+    "glacialprime": {
+      "shortDesc": "Slush Rush + Refrigerate.",
+      "desc": "Full local Slush Rush and Refrigerate. Doubles Speed in hail, snow or on Icy, Snowy Mountain and Cold Eclipse. Eligible Normal moves become Ice with 1.2x power, or 1.5x on Icy/Snowy Mountain. Excludes moves with their own type-setting effect, damaging Z-Moves and Terastallized Tera Blast."
+    },
+    "apexpredator": {
+      "shortDesc": "Wind Rider + Tough Claws.",
+      "desc": "Full local Wind Rider and Tough Claws: wind-move immunity and Wind Rider’s Tailwind/field Attack effects; contact moves have 1.3x power."
+    },
+    "knightsguard": {
+      "shortDesc": "Sworn Duty; opposing HP damage earns an adjacent ally a 25% attack guard once per turn.",
+      "desc": "On entry, heals adjacent allies by 1/4 max HP, or 1/3 on Fairy Tale. Once per turn, a damaging move dealing opposing HP damage grants the first living adjacent ally without a guard 25% protection against its next opposing attack, covering all hits. The guard cannot stack and expires at the end of the following turn."
+    },
+    "dreamsickness": {
+      "shortDesc": "Insomnia + Sworn Duty; once per battle rescues an adjacent ally from a lethal attack.",
+      "desc": "Prevents and cures sleep, blocks Yawn and boosts Dark/Ghost attacks by 1.3x. On entry, heals adjacent allies by 1/4 max HP, or 1/3 on Fairy Tale. Once per battle, saves an adjacent ally from a lethal opposing attack at 1 HP through the remainder of that move, paying 1/4 of the holder’s max HP. The holder must have more HP than the cost. Switching does not restore the rescue."
+    },
+    "voidveil": {
+      "desc": "Levitate and Telepathy. Ordinary Gardevoir ignores Gravity grounding and airborne-move restrictions and receives beneficial terrain and aura eligibility while airborne: power bonuses, status and priority protection, and Grassy recovery. It remains airborne for Ground immunity and entry hazards. Other grounding effects and ability suppression remain effective. Misty Fairy Special Defense and move bonuses follow the existing field rules.",
+      "shortDesc": "Levitate + Telepathy; Gravity immunity; airborne terrain and aura benefits."
+    },
+    "auraprecision": {
+      "desc": "Full local Ultra Instinct, Shield Dust and Mind's Eye. Ultra Instinct supplies its own whole-attack recovery, first-attack reduction and field interactions. Shield Dust blocks secondary effects aimed at this Pokemon while retaining attacker self-effects. Mind's Eye lets Normal and Fighting moves hit Ghosts, supplies Fairy and Dark STAB, ignores evasion boosts, prevents external accuracy drops, reveals opposing Illusions and applies its Cold Eclipse power and damage reduction. Aura Guard is its separate species passive.",
+      "shortDesc": "Ultra Instinct + Shield Dust + Mind's Eye."
+    },
+    "insight": {
+      "desc": "Full local Ultra Ego, Telepathy and Inner Focus. Ultra Ego supplies its attack power, whole-attack recovery, defensive triggers and field interactions. Telepathy prevents allied damaging moves and doubles Speed on Psychic Terrain or Psychic Aura. Inner Focus prevents flinching and Intimidate.",
+      "shortDesc": "Ultra Ego + Telepathy + Inner Focus."
+    }
+  },
+  "passives": {
+    "lucario": [
+      "mindseye"
+    ],
+    "mamoswine": [
+      "coldexpertise"
+    ]
+  },
+  "effects": {
+    "apexpredator": [
+      "apexpredator",
+      "toughclaws",
+      "windrider"
+    ],
+    "atrocity": [
+      "atrocity",
+      "dragonize",
+      "fireward",
+      "magmaarmor",
+      "toughclaws",
+      "unboundblaze"
+    ],
+    "witheringshell": [
+      "crumblingshell",
+      "raindish",
+      "stickyhold",
+      "witheringshell"
+    ],
+    "dreepyvanguard": [
+      "dreepyvanguard",
+      "stalwart",
+      "technician"
+    ],
+    "duskdrive": [
+      "duskdrive",
+      "opportunist",
+      "ultraego"
+    ],
+    "twilightinstinct": [
+      "battlefervor",
+      "innerfocus",
+      "moldbreaker",
+      "twilightinstinct",
+      "ultrainstinct"
+    ],
+    "mindseye": [
+      "mindseye"
+    ]
+  }
+}
