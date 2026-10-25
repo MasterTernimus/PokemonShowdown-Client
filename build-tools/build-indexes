@@ -24,7 +24,7 @@ const CompoundWordNames = require(path.join(serverDir, 'dist/data/aliases')).Com
 const toID = Dex.toID;
 process.stdout.write("Loading gen 6 data... ");
 Dex.includeData();
-const ExportLearnsets = structuredClone(Dex.data.Learnsets);
+const ExportLearnsets = JSON.parse(JSON.stringify(Dex.data.Learnsets));
 const exclusions = require(path.join(serverDir, 'dist/sim/dex-species')).Gen9MoveLearnsetExclusions || {};
 for (const id of Object.keys(exclusions)) {
 	if (!ExportLearnsets[id]) ExportLearnsets[id] = {learnset: {}};
