@@ -25,7 +25,7 @@
       "desc": "Levitate grants Ground immunity. A foe that damages it with contact is trapped through the end of the following turn while the holder remains active. Further qualifying hits refresh the short duration. Switching out or fainting releases the trap. Normal trapping immunities and escape effects apply; allied hits and Substitute-only damage do not qualify."
     },
     "toxicbloom": {
-      "shortDesc": "Pollen Bloom; no extra Poison-attack healing.",
+      "shortDesc": "Pollen Bloom.",
       "desc": "Incoming Fire and Ice attacks use half the attacker's offensive stat. Immune to hail damage. Ignores target Defense/Sp. Def/evasion stages when attacking, and attacker Attack/Defense/Sp. Atk/accuracy stages when defending. Reveals opposing Illusions on entry. At turn end, opposing non-Grass Pokemon take Grass-type damage equal to 1/16 max HP, blocked by Grass immunities; it heals the damage dealt by that chip. Only in Free-for-All does Grass type effectiveness scale this chip. Poison attacks do not grant additional healing; native draining moves retain their normal drain."
     },
     "ancientbloom": {
@@ -37,8 +37,8 @@
       "desc": "Eligible Normal moves become Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Dragon moves receive STAB. Prevents freezing outside Cold Eclipse and cures existing freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den blocks Fire moves. On Dragon's Den, Volcanic or Cold Eclipse entry, gains +1 Defense and Sp. Def. Immune to hail damage. At turn end, deals Fire-type damage to foes equal to 1/16 max HP, doubled if the foe is burned or the holder used a Fire or Dragon move that turn. Fire immunities block this damage; type effectiveness scales it only in Free-for-All. Damaging moves have a further 1.3x power, plus another 1.3x on Cold Eclipse. Defense and Sp. Def are 1.3x, or 1.5x on Cold Eclipse. While Royal Decree or Empress is active without Neutralization, move power gains another 1.3x and incoming attack damage falls by 30%. Cannot be suppressed."
     },
     "sunsovereign": {
-      "shortDesc": "Eight-turn sun + Unbound Blaze; no Intimidate entry drop.",
-      "desc": "Summons sun for 8 turns on entry. Eligible Normal moves become Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Dragon moves receive STAB. Prevents freezing outside Cold Eclipse and cures existing freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den blocks Fire moves. On Dragon's Den, Volcanic or Cold Eclipse entry, gains +1 Defense and Sp. Def. Immune to hail damage. At turn end, deals Fire-type damage to foes equal to 1/16 max HP, doubled if the foe is burned or the holder used a Fire or Dragon move that turn. Fire immunities block this damage; type effectiveness scales it only in Free-for-All. No Infernal Dominion trapping effect is included. Proficient remains a separate species passive."
+      "shortDesc": "Eight-turn sun + Unbound Blaze.",
+      "desc": "Summons sun for 8 turns on entry. Eligible Normal moves become Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Dragon moves receive STAB. Prevents freezing outside Cold Eclipse and cures freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den blocks Fire moves. On Dragon's Den, Volcanic or Cold Eclipse entry, gains +1 Defense and Sp. Def. Immune to hail damage. At turn end, deals Fire-type damage to foes equal to 1/16 max HP, doubled if the foe is burned or the holder used a Fire or Dragon move that turn. Fire immunities block this damage; type effectiveness scales it only in Free-for-All. Proficient remains a separate species passive."
     },
     "fortressshell": {
       "shortDesc": "Defensive support and escalating Water chip; no routine regeneration.",
@@ -46,15 +46,15 @@
     },
     "toxicevolution": {
       "shortDesc": "Corrosion + Shield Dust; poison infliction/damage shares one 1/8 heal per turn.",
-      "desc": "Full local Corrosion and Shield Dust. Can poison Poison and Steel types; Poison attacks bypass Steel immunity. Newly poisoned foes lose 1 Defense and Sp. Def. Retains Wasteland secondary replacement and 1.5x incoming damage on Corrosive/Corrosive Mist. Successfully poisoning a foe with its own move, or dealing attack HP damage to a foe poisoned before that hit, can heal 1/8 base max HP, sharing one activation per turn. No poison-triggered confusion, retaliatory poison or generic 20% damage reduction."
+      "desc": "Full local Corrosion and Shield Dust. Can poison Poison and Steel types; Poison attacks bypass Steel immunity. Newly poisoned foes lose 1 Defense and Sp. Def. Has Wasteland secondary replacement and 1.5x incoming damage on Corrosive/Corrosive Mist. Successfully poisoning a foe with its own move, or dealing attack HP damage to a foe poisoned before that hit, can heal 1/8 base max HP, sharing one activation per turn."
     },
     "spiralevolution": {
       "shortDesc": "Mold Breaker + Adaptability; double Twineedle power; no extra Dual Wield hits.",
-      "desc": "Retains Mold Breaker and Adaptability. Twineedle has double power and keeps its native multihit count. No Dual Wield extra hits or power scaling. Damaging moves retain half-power protection piercing. Normal-priority moves act first in Trick Room without gaining priority. Ignores field Speed penalties and takes 20% less attack damage."
+      "desc": "Has Mold Breaker and Adaptability. Twineedle has double power and keeps its native multihit count. Damaging moves retain half-power protection piercing. Normal-priority moves act first in Trick Room without gaining priority. Ignores field Speed penalties and takes 20% less attack damage."
     },
     "completeparasitism": {
       "shortDesc": "Above half HP: neutralizes weaknesses, blocks indirect damage and opposing status moves.",
-      "desc": "While above half HP, weaknesses are neutralized, indirect damage is blocked and opposing status moves fail. Opposing attack secondary effects are no longer blocked. Retains its lethal-hit fake faint and full-HP Parasect-Parasite revival, including the separate Mega revival allowance. Cannot be suppressed and remains immune to Neutralization. Heals 1/16 max HP each turn and ignores sandstorm/hail. Switching cures major status and heals 1/3 max HP only when curing status; Bewitched Woods retains its end-turn cure without that extra heal. Dry Skin remains the separate species passive."
+      "desc": "While above half HP, weaknesses are neutralized, indirect damage is blocked and opposing status moves fail. Opposing attack secondary effects are no longer blocked. Has its lethal-hit fake faint and full-HP Parasect-Parasite revival, including the separate Mega revival allowance. Cannot be suppressed and remains immune to Neutralization. Heals 1/16 max HP each turn and ignores sandstorm/hail. Switching cures major status and heals 1/8 max HP only when curing status; Bewitched Woods has its end-turn cure without that extra heal. Dry Skin remains the separate species passive."
     },
     "joyride": {
       "shortDesc": "Aerilate + Violent Rush; Fighting attacks use 1.3x Attack or Sp. Atk.",
@@ -66,15 +66,15 @@
     },
     "stillwaters": {
       "shortDesc": "Cloud Nine + Unaware; Fairy Tale entry grants +1 Sp. Def.",
-      "desc": "Suppresses weather effects. On Rainbow Field, gains a random eligible stat stage each turn. Ignores opposing stat changes through local Unaware and reveals Illusions on entry. Fairy Tale entry retains +1 Sp. Def. Indirect damage is no longer prevented."
+      "desc": "Suppresses weather effects. On Rainbow Field, gains a random eligible stat stage each turn. Ignores opposing stat changes through local Unaware and reveals Illusions on entry. Fairy Tale entry has +1 Sp. Def. Indirect damage is no longer prevented."
     },
     "shattercrust": {
       "shortDesc": "Physical HP hits set Stealth Rock on the attacker’s side.",
-      "desc": "Retains full local Crumbling Shell: physical HP hits set Stealth Rock on the attacker’s side if absent; allied attackers use the opposing side. Does not activate on Water Surface, Underwater, Murkwater Surface or Swamp. No first-hit damage guard or free Spikes."
+      "desc": "Full local Crumbling Shell: physical HP hits set Stealth Rock on the attacker’s side if absent; allied attackers use the opposing side. Does not activate on Water Surface, Underwater, Murkwater Surface or Swamp. No first-hit damage guard or free Spikes."
     },
     "freshplumage": {
       "shortDesc": "Natural Cure; first successful Flying attack each entry deals 1.2x damage.",
-      "desc": "Local Natural Cure cures status on switching and heals 1/3 max HP only when curing status; Bewitched Woods retains its end-turn cure. First successful Flying attack each entry deals 1.2x damage across all hits, including Substitute damage. Misses, protection and immunity preserve the charge. Roost does not recharge it."
+      "desc": "Local Natural Cure cures status on switching and heals 1/8 max HP only when curing status; Bewitched Woods has its end-turn cure. First successful Flying attack each entry deals 1.2x damage across all hits, including Substitute damage. Misses, protection and immunity preserve the charge. Roost does not recharge it."
     },
     "gemeye": {
       "shortDesc": "Magic Guard + Keen Eye.",
@@ -82,7 +82,7 @@
     },
     "witheringtouch": {
       "shortDesc": "Poison Touch + Corrosion.",
-      "desc": "Contact hits have a 30% poison chance, blocked by Shield Dust and Covert Cloak. Can poison Poison and Steel types; Poison attacks bypass Steel immunity. Newly poisoned foes lose 1 Defense and Sp. Def. Wasteland retains four separate 2.5% frostbite, burn, paralysis and poison secondary chances; incoming damage is 1.5x on Corrosive and Corrosive Mist. No additional Attack drop against already-poisoned foes."
+      "desc": "Contact hits have a 30% poison chance, blocked by Shield Dust and Covert Cloak. Can poison Poison and Steel types; Poison attacks bypass Steel immunity. Newly poisoned foes lose 1 Defense and Sp. Def. Wasteland has four separate 2.5% frostbite, burn, paralysis and poison secondary chances; incoming damage is 1.5x on Corrosive and Corrosive Mist. No additional Attack drop against already-poisoned foes."
     },
     "snowpack": {
       "shortDesc": "Thick Fat + Ice Body.",
@@ -94,15 +94,15 @@
     },
     "rootediron": {
       "shortDesc": "Stamina: each opposing HP hit heals 1/16; first hit each turn gives +1 Defense.",
-      "desc": "Compatibility name for full local Stamina. Each opposing attack hit that damages HP heals 1/16 base max HP. The first such hit each turn gives +1 Defense before later multihit strikes. No additional healing for turns without an attack. Ferrothorn selects Stamina directly and retains Iron Barbs as its passive."
+      "desc": "Compatibility name for full local Stamina. Each opposing attack hit that damages HP heals 1/16 base max HP. The first such hit each turn gives +1 Defense before later multihit strikes. No additional healing for turns without an attack. Ferrothorn selects Stamina directly and has Iron Barbs as its passive."
     },
     "marshconduit": {
       "shortDesc": "Water Absorb.",
-      "desc": "Compatibility name for full local Water Absorb. Absorbs other Pokemon’s Water moves to heal 1/4 max HP. Retains 1/16 field healing on Underwater, grounded Water Surface, and grounded Poison-type Murkwater. No first-absorption Speed drop or cleanse. Seismitoad selects Water Absorb directly."
+      "desc": "Compatibility name for full local Water Absorb. Absorbs other Pokemon’s Water moves to heal 1/4 max HP. Has 1/16 field healing on Underwater, grounded Water Surface, and grounded Poison-type Murkwater. Seismitoad selects Water Absorb directly."
     },
     "nobledance": {
       "shortDesc": "Dancer + Hospitality.",
-      "desc": "Retains full local Dancer and Hospitality: copies eligible dance moves under normal execution and recursion rules, retains Dancer’s local stat rewards and Big Top behavior, and heals adjacent allies on entry. Does not grant a defensive ward after dancing."
+      "desc": "Full local Dancer and Hospitality: copies eligible dance moves under normal execution and recursion rules, has Dancer’s local stat rewards and Big Top behavior, and heals adjacent allies on entry. Does not grant a defensive ward after dancing."
     },
     "rebornflower": {
       "shortDesc": "Reborn form; Flower Veil and a 50% adjacent-ally status cure each turn.",
@@ -122,11 +122,11 @@
     },
     "toxicspines": {
       "shortDesc": "Physical hits set Toxic Spikes; contact retaliates for 1/6 HP; poison bypass.",
-      "desc": "Physical HP hits set one Toxic Spikes layer on the attacker’s side, up to two; allied attackers use the opposing side. Contact attackers lose 1/6 base max HP, without an additional Iron Barbs hit. Can poison Poison and Steel types; Poison attacks bypass Steel immunity. Poisoning does not lower defenses. Wasteland retains four separate 2.5% frostbite, burn, paralysis and poison secondary chances; incoming damage remains 1.5x on Corrosive and Corrosive Mist. Merciless remains Toxapex’s separate passive."
+      "desc": "Physical HP hits set one Toxic Spikes layer on the attacker’s side, up to two; allied attackers use the opposing side. Contact attackers lose 1/6 base max HP, without an additional Iron Barbs hit. Can poison Poison and Steel types; Poison attacks bypass Steel immunity. Poisoning does not lower defenses. Wasteland has four separate 2.5% frostbite, burn, paralysis and poison secondary chances; incoming damage remains 1.5x on Corrosive and Corrosive Mist. Merciless remains Toxapex’s separate passive."
     },
     "seafiend": {
       "shortDesc": "Toxic Debris; Fire resistance, burn/weather protection and Aqua Ring.",
-      "desc": "Physical HP hits set Toxic Spikes on the attacker’s side, up to two; contact attackers lose 1/6 base max HP. Incoming Fire attacks use half the attacker’s offensive stat. Prevents and cures burns, ignores sandstorm/hail damage and gains Aqua Ring on entry with its existing field healing. Does not grant Water STAB, double Water offense or add Water Veil’s field status cure. Aftermath remains separate."
+      "desc": "Physical HP hits set Toxic Spikes on the attacker’s side, up to two; contact attackers lose 1/6 base max HP. Incoming Fire attacks use half the attacker’s offensive stat. Prevents and cures burns, ignores sandstorm/hail damage and gains Aqua Ring on entry with its field healing. Does not grant Water STAB, double Water offense or add Water Veil’s field status cure. Aftermath remains separate."
     },
     "witheringshell": {
       "shortDesc": "Physical hits set Stealth Rock; heals 1/3 HP on switching out.",
@@ -134,7 +134,7 @@
     },
     "relicinstinct": {
       "shortDesc": "Above half HP: ignores abilities. At half HP or less: defensive mode.",
-      "desc": "Above half HP, attacks ignore target abilities. At half HP or less, takes 25% less attack damage, cannot be critically hit, heals 1/16 maximum HP each turn, and halves Attack and Sp. Atk. No emergency heal or stat reset. Rattled remains a separate passive."
+      "desc": "Above half HP, attacks ignore target abilities. At half HP or less, takes 25% less attack damage, cannot be critically hit, heals 1/16 maximum HP each turn, and halves Attack and Sp. Atk. Rattled remains a separate passive."
     },
     "primevalhunt": {
       "shortDesc": "Skill Link + Own Tempo.",
@@ -142,7 +142,7 @@
     },
     "doublestrike": {
       "shortDesc": "Skill Link; moves at 60 effective BP or less gain 1.5x power.",
-      "desc": "Retains local Skill Link multihit and accuracy handling. Moves at 60 effective base power or less gain 1.5x power; the threshold is 80 on Factory Field. Punching moves receive no additional multiplier."
+      "desc": "Local Skill Link multihit and accuracy handling. Moves at 60 effective base power or less gain 1.5x power; the threshold is 80 on Factory Field."
     },
     "webassassin": {
       "shortDesc": "Double Speed; maximum critical-hit ratio against poisoned or slowed foes.",
@@ -170,7 +170,7 @@
     },
     "cactuschorus": {
       "shortDesc": "Water Absorb + Sand Rush.",
-      "desc": "Absorbs Water moves for 1/4 max HP and retains Water Absorb's field healing. Doubles Speed in sandstorm, Desert and Ashen Beach; prevents sandstorm damage."
+      "desc": "Absorbs Water moves for 1/4 max HP and has Water Absorb's field healing. Doubles Speed in sandstorm, Desert and Ashen Beach; prevents sandstorm damage."
     },
     "noblearmor": {
       "shortDesc": "Reduces damage; boosts defenses on certain fields; recovers in cold conditions.",
@@ -178,11 +178,11 @@
     },
     "falsedevotion": {
       "shortDesc": "Prankster + Serene Grace: priority status; capped secondary boosts; skips charge turns.",
-      "desc": "Full local Prankster and Serene Grace. Status moves gain +1 priority with Prankster targeting rules and its existing Bewitched Woods exception. Doubles secondary-effect chances up to 60%, preserving effects already above the cap, including guaranteed effects. Skips move charge turns. Repeated Serene Grace applications do not multiply the same effect again."
+      "desc": "Full local Prankster and Serene Grace. Status moves gain +1 priority with Prankster targeting rules and its Bewitched Woods exception. Doubles secondary-effect chances up to 60%, preserving effects already above the cap, including guaranteed effects. Skips move charge turns. Repeated Serene Grace applications do not multiply the same effect again."
     },
     "truedevotion": {
       "shortDesc": "Prankster + Serene Grace + Technician.",
-      "desc": "Full local Prankster, Serene Grace and Technician. Status moves gain +1 priority with Prankster targeting rules and its existing Bewitched Woods exception. Doubles secondary-effect chances up to 60%, preserving effects already above the cap, including guaranteed effects. Skips move charge turns. Repeated Serene Grace applications do not multiply the same effect again. Moves with 60 or less effective base power (80 on Factory) gain Technician's 1.5x power boost, retaining its existing multi-hit interactions."
+      "desc": "Full local Prankster, Serene Grace and Technician. Status moves gain +1 priority with Prankster targeting rules and its Bewitched Woods exception. Doubles secondary-effect chances up to 60%, preserving effects already above the cap, including guaranteed effects. Skips move charge turns. Repeated Serene Grace applications do not multiply the same effect again. Moves with 60 or less effective base power (80 on Factory) gain Technician's 1.5x power boost, retaining its multi-hit interactions."
     },
     "gooey": {
       "shortDesc": "After an opposing damaging move hits, lowers its user's Speed by 2.",
@@ -198,11 +198,11 @@
     },
     "stormbell": {
       "shortDesc": "Drizzle and Levitate.",
-      "desc": "Sets rain with full local Drizzle and grants Levitate's Ground immunity. Does not raise a stat after a KO. Mega Bronzong retains its separate Mirror Armor passive and its existing field behavior."
+      "desc": "Sets rain with full local Drizzle and grants Levitate's Ground immunity. Does not raise a stat after a KO. Mega Bronzong has its separate Mirror Armor passive and its field behavior."
     },
     "astralengine": {
       "shortDesc": "Power Spot; Levitate is a separate species passive.",
-      "desc": "Allies' moves have 1.3x power, or 1.5x on Haunted, Bewitched Woods, Holy and Psychic fields. Mega Claydol retains its separate Levitate passive. No KO stat boost or additional airborne component."
+      "desc": "Allies' moves have 1.3x power, or 1.5x on Haunted, Bewitched Woods, Holy and Psychic fields. Mega Claydol has its separate Levitate passive."
     },
     "scarecrow": {
       "shortDesc": "Wind Rider and Steelworker.",
@@ -210,15 +210,15 @@
     },
     "kickfiend": {
       "shortDesc": "Striker and Limber.",
-      "desc": "Retains full local Striker and Limber, including existing field behavior. Does not grant Violent Rush's opening Attack or Speed multiplier."
+      "desc": "Full local Striker and Limber, including field behavior. Does not grant Violent Rush's opening Attack or Speed multiplier."
     },
     "cruelshell": {
       "shortDesc": "Prevents critical hits; takes 20% less attack damage. Field effects vary.",
-      "desc": "Retains full local Shell Armor: prevents critical hits and takes 20% less attack damage. Gains +1 Defense on Fairy Tale or Dragon's Den entry and +2 Sp. Def when a foe lowers its stats. Does not trigger Anger Shell."
+      "desc": "Full local Shell Armor: prevents critical hits and takes 20% less attack damage. Gains +1 Defense on Fairy Tale or Dragon's Den entry and +2 Sp. Def when a foe lowers its stats. Does not trigger Anger Shell."
     },
     "sweetresonance": {
       "shortDesc": "Hydra Bond; lowers adjacent foes' evasion on entry. Field effects vary.",
-      "desc": "Retains full local Hydra Bond. On entry, lowers adjacent foes' evasion by 1 unless protected by Substitute. The entry effect retains its Flower Garden and Misty field extensions. Does not protect held items, inflict retaliatory Embargo or automatically grant Dragon Cheer. Dipplin-Gmax retains its separate Self-Sufficient passive."
+      "desc": "Full local Hydra Bond. On entry, lowers adjacent foes' evasion by 1 unless protected by Substitute. The entry effect has its Flower Garden and Misty field extensions. Does not protect held items, inflict retaliatory Embargo or automatically grant Dragon Cheer. Dipplin-Gmax has its separate Self-Sufficient passive."
     },
     "coldopen": {
       "shortDesc": "First successful damaging move each entry ignores boosted defenses and screens.",
@@ -230,7 +230,7 @@
     },
     "primevalhunger": {
       "shortDesc": "Accumulation; draining hits and new seeds lower one positive offensive stage.",
-      "desc": "Incoming Fire and Ice attacks use half the attacker's offensive stat. Immune to sandstorm and hail damage. It can use Belch without eating a Berry and automatically gains one Stockpile every second eligible active turn, first gaining one after two eligible turns. Genuine switching resets this wait; ability restarts do not. Suppressed or otherwise ineligible turns do not advance the counter. Manual Stockpile is unchanged. After reaching 3 Stockpiles, it waits one full turn before randomly choosing Belch or Spit Up with equal odds, then can release every other turn. Its established Spit Up and Swallow combinations still apply. Draining attacks that damage a foe's HP and successful new Leech Seed applications by Leech Seed or Sappy Seed mark affected foes. Failed, existing or reflected seeds and residual seed ticks do not trigger this effect. After the whole move, lower one positive Attack or Sp. Atk stage of each affected foe, choosing the more boosted stat and Sp. Atk on ties. Never lowers an unboosted stat or grants the user a boost. Substitute-only damage does not trigger these effects; normal stat-drop protections apply."
+      "desc": "Incoming Fire and Ice attacks use half the attacker's offensive stat. Immune to sandstorm and hail damage. It can use Belch without eating a Berry and automatically gains one Stockpile every second eligible active turn, first gaining one after two eligible turns. Genuine switching resets this wait; ability restarts do not. Suppressed or otherwise ineligible turns do not advance the counter. Manual Stockpile is unchanged. After reaching 3 Stockpiles, it waits one full turn before randomly choosing Belch or Spit Up with equal odds, then can release every other turn. Its established Spit Up and Swallow combinations still apply. Draining attacks that damage a foe's HP and successful new Leech Seed applications by Leech Seed or Sappy Seed mark affected foes. Failed, or reflected seeds and residual seed ticks do not trigger this effect. After the whole move, lower one positive Attack or Sp. Atk stage of each affected foe, choosing the more boosted stat and Sp. Atk on ties. Never lowers an unboosted stat or grants the user a boost. Substitute-only damage does not trigger these effects; normal stat-drop protections apply."
     }
   },
   "components": {

@@ -19,6 +19,6 @@ describe('Approved final stats and Gyarados distribution', () => {
   assert.equal([...Dex.getAbilityEffects('tempestfury')].filter(x=>x==='angerpoint').length,1);
  });
  it('documents Skull Bash cooldown after completing the move', () => {
-  assert.match(Dex.moves.get('skullbash').desc,/consecutive|next turn|another move/i);
+  assert.match(Dex.moves.get('skullbash').desc,/different damaging move|another damaging move/i);
  });
 });

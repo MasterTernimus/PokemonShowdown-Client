@@ -64,7 +64,7 @@ class ModifiableValue {
 		if (passives.some(passive => Dex.getPassiveAbilityEffects(toID(passive)).has(toID(abilityName)))) return true;
 		const activeId = toID(this.abilityName);
 		const excluded = Dex.getAbilityComponentExclusions(activeId, passives, toID(this.serverPokemon.speciesForme));
-		const hasComponent = ((['plushwhiplash', 'abyssalclaws', 'antlioninstinct', 'tidalvoice', 'apexvenom', 'sirius', 'abyssalfang', 'trickperformer', 'curtaincall', 'cellularconcord', 'mountainhide', 'rimebark', 'bottomlessgullet', 'divefisher', 'scatterbrain'].includes(activeId)) || (activeId === 'quarrycannon' && abilityName === 'Mega Launcher') || (['updraft', 'stormsovereign'].includes(activeId) && abilityName === 'Competitive') || ['Guts', 'Rivalry', 'Pure Power', 'Sharpness', 'Dual Wield', 'Power Drill', 'Mega Launcher'].includes(abilityName) || (activeId === 'rupturedheaven' && abilityName === 'Sharpness') || (activeId === 'wintersmalice' && abilityName === 'Refrigerate')) && Dex.getAbilityEffects(activeId).has(toID(abilityName)) && !excluded.includes(toID(abilityName));
+		const hasComponent = ((['plushwhiplash', 'abyssalclaws', 'antlioninstinct', 'tidalvoice', 'apexvenom', 'sirius', 'abyssalfang', 'trickperformer', 'curtaincall', 'cellularconcord', 'mountainhide', 'rimebark', 'bottomlessgullet', 'divefisher', 'scatterbrain'].includes(activeId)) || (activeId === 'quarrycannon' && abilityName === 'Mega Launcher') || (['updraft', 'stormsovereign'].includes(activeId) && abilityName === 'Competitive') || ['Guts', 'Rivalry', 'Pure Power', 'Sharpness', 'Dual Wield', 'Power Drill', 'Mega Launcher', 'Fire Mane'].includes(abilityName) || (['atrocity','apexpredator'].includes(activeId) && abilityName === 'Tough Claws') || (activeId === 'rupturedheaven' && abilityName === 'Sharpness') || (activeId === 'wintersmalice' && abilityName === 'Refrigerate')) && Dex.getAbilityEffects(activeId).has(toID(abilityName)) && !excluded.includes(toID(abilityName));
 		if (!hasComponent && abilityName !== this.abilityName &&
 			!(this.abilityName === 'Cinder Scales' && abilityName === 'Swarm') &&
 			!(this.abilityName === 'Aura Precision' && abilityName === 'Technician')) return false;
@@ -2286,7 +2286,10 @@ class BattleTooltips {
 		}
 		if (move.flags['contact']) {
 			value.abilityModify(1.3, "Tough Claws");
-			value.abilityModify(1.3, "Atrocity");
+		}
+		if (move.category !== 'Status' && toID(pokemon.effectiveAbility(serverPokemon)) === 'atrocity') {
+			value.modify(1.3, 'Atrocity');
+			if (move.id === 'dragonrush') value.modify(1.5, 'Atrocity');
 		}
 		if (move.category !== 'Status' && moveType === 'Flying' && toID(pokemon.getSpeciesForme()) === 'castformwindy') value.abilityModify(1.3, 'Perfect Forecast');
 		if (this.battle.hasPseudoWeather('Dragon’s Den Terrain') || this.battle.hasPseudoWeather("Dragon's Den Terrain") || this.battle.hasPseudoWeather('Dragons Den Terrain')) {
@@ -2389,15 +2392,8 @@ class BattleTooltips {
 		}
 
 		const passives = serverPokemon.passives ?? pokemon.getSpecies(serverPokemon).passives;
-		if (move.category !== 'Status' && moveType !== '???' && value.tryAbility('Fire Mane')) {
-			const native = pokemon.getTypeList(serverPokemon).includes(moveType) || pokemon.getTypeList(serverPokemon, true).includes(moveType);
-			const grants: {[type: string]: string[]} = {
-				Grass: ['Corrosive Touch'], Dragon: ['Dragonize', 'Unbound Blaze', 'Apex Predator', 'Draconic Force', 'Sun Sovereign', 'Atrocity', 'Royal Scales', 'Burning Crown'],
-				Electric: ['Aurora Current'], Water: ['Frightful Wings', 'Abyssal Claws'], Fairy: ["Mind's Eye"], Dark: ["Mind's Eye"],
-				Steel: ['Royal Armament'], Fire: ['Solar Recharge'], Poison: ['Venom Heal'], Bug: ['Tremor', 'Antlion Instinct'], Fighting: ['Zero to Hero', 'Empress', 'Imperial Princess'],
-			};
-			const granted = pokemon.terastallized !== 'Stellar' && (value.tryAbility('Ascendance') || (grants[moveType] || []).some(id => value.tryAbility(id)));
-			if (native || granted) value.modify(1.5, 'Fire Mane');
+		if (move.category !== 'Status' && moveType === 'Fire' && value.tryAbility('Fire Mane')) {
+			value.modify(1.5, 'Fire Mane');
 		}
 
 		if (move.category !== 'Status' && passives.includes('proficient') && pokemon.getTypeList(serverPokemon).includes(moveType)) {
@@ -2722,6 +2718,7 @@ type StatsTable = {hp: number, atk: number, def: number, spa: number, spd: numbe
  * defaults.
  */
 interface PokemonSet {
+	initialDisguise?: number;
 	/** Defaults to species name (not including forme), like in games */
 	name?: string;
 	species: string;

@@ -15,9 +15,10 @@ describe('Approved signature client parity', () => {
 			assert.equal(Dex.species.get(id).baseStats.atk, 130);
 			assert.equal(Dex.species.get(id).baseStats.spa, 125);
 		}
-		assert(!Dex.getAbilityEffects('atrocity').has('toughclaws'));
+		assert(Dex.getAbilityEffects('atrocity').has('toughclaws'));assert(Dex.getAbilityEffects('atrocity').has('fireward'));
 		assert(!Dex.getAbilityEffects('atrocity').has('levitate'));
-		for (const id of ['battlefervor', 'precision', 'opportunist']) assert(Dex.getAbilityEffects('duskdrive').has(id));
+		for (const id of ['opportunist', 'ultraego']) assert(Dex.getAbilityEffects('duskdrive').has(id));
+		for (const id of ['battlefervor', 'precision']) assert(!Dex.getAbilityEffects('duskdrive').has(id));
 		assert.equal(Dex.moves.get('doubleshock').flags.punch, 1);
 		assert.match(Dex.abilities.get('gravehunger').desc, /1\/8 max HP per turn/);
 	});
@@ -29,13 +30,13 @@ describe('Approved signature client parity', () => {
 			maxhp: 100, level: 100, status: '', stats: {atk: 100, def: 100, spa: 100, spd: 100, spe: 100}};
 		const tips = new BattleTooltips(battle);
 		try {
-			for (const [ability, id, multiplier] of [['Frozen Feast', 'bite', 1.5], ['Atrocity', 'tackle', 1.3]]) {
+			for (const [ability, id, multiplier] of [['Frozen Feast', 'bite', 1.5], ['Atrocity', 'tackle', 1.69]]) {
 				own.ability = ability; own.baseAbility = ability;
 				const move = Dex.moves.get(id);
 				const value = () => tips.getMoveBasePower(move, move.type,
 					new ModifiableValue(battle, pokemon, own), battle.p2.active[0]).value;
-				assert.equal(value(), move.basePower * multiplier);
-				pokemon.volatiles.gastroacid = ['gastroacid']; assert.equal(value(), move.basePower);
+				assert(Math.abs(value() - move.basePower * multiplier) < 1e-9);
+				if (ability !== 'Atrocity') {pokemon.volatiles.gastroacid = ['gastroacid']; assert.equal(value(), move.basePower);} else {assert(Dex.abilities.get('atrocity').flags.cantsuppress);}
 				delete pokemon.volatiles.gastroacid;
 			}
 			own.ability = 'Rimebreaker'; own.baseAbility = 'Rimebreaker';

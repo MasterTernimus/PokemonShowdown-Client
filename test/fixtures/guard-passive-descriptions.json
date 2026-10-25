@@ -5,7 +5,7 @@
   },
   "silkendecoy": {
     "shortDesc": "Protective cocoon + Swarm + Self Sufficient; other faints renew the cocoon.",
-    "desc": "Mega Ariados spins a persistent cocoon, renewed when another Pokemon faints. It blocks status moves and status conditions while intact, and absorbs one damaging move including all its hits and secondary effects. Retains full local Swarm and Self Sufficient exactly once: restores 1/16 base maximum HP each turn and prevents sandstorm and hail damage. Venom Thread is its separate species passive."
+    "desc": "Mega Ariados spins a persistent cocoon, renewed when another Pokemon faints. It blocks status moves and status conditions while intact, and absorbs one damaging move including all its hits and secondary effects. Full local Swarm and Self Sufficient exactly once: restores 1/16 base maximum HP each turn and prevents sandstorm and hail damage. Venom Thread is its separate species passive."
   },
   "restorativechime": {
     "shortDesc": "Successful sound moves heal it and adjacent active allies by 1/8 max HP, once per turn.",

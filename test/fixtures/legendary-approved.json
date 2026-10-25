@@ -38,17 +38,17 @@
     "springpressure": {
       "name": "Spring Pressure",
       "shortDesc": "Static + Pressure.",
-      "desc": "Full local Static and Pressure, including their field effects. Pressure retains its once-per-opponent entry memory."
+      "desc": "Full local Static and Pressure, including their field effects. Pressure has its once-per-opponent entry memory."
     },
     "summerpressure": {
       "name": "Summer Pressure",
       "shortDesc": "Flame Body + Pressure.",
-      "desc": "Full local Flame Body and Pressure, including their field effects. Pressure retains its once-per-opponent entry memory."
+      "desc": "Full local Flame Body and Pressure, including their field effects. Pressure has its once-per-opponent entry memory."
     },
     "winterpressure": {
       "name": "Winter Pressure",
       "shortDesc": "Ice Body + Pressure.",
-      "desc": "Full local Ice Body and Pressure, including their field effects. Pressure retains its once-per-opponent entry memory."
+      "desc": "Full local Ice Body and Pressure, including their field effects. Pressure has its once-per-opponent entry memory."
     },
     "springherald": {
       "name": "Spring Herald",
@@ -113,9 +113,8 @@
       "desc": "Skips charge turns. Wish, Future Sight and Doom Desire resolve during their use, without leaving a delayed effect. Charge boosts, move costs and recharge turns remain."
     },
     "dreamsickness": {
-      "name": "Dream Sickness",
-      "shortDesc": "Telepathy; heals allies each turn; once per entry rescues an ally through one attack.",
-      "desc": "Avoids allied damaging moves; Speed doubles on Psychic Terrain or Psychic Aura. At turn end, it and its active allies heal 1/16 max HP. Once per switch-in, an ally facing a lethal opposing move survives at 1 HP through that entire move, including later hits. It pays 1/4 max HP and must have more HP than the cost. Later attacks and indirect damage can still knock out the ally."
+      "shortDesc": "Insomnia + Sworn Duty; once per battle rescues an adjacent ally from a lethal attack.",
+      "desc": "Prevents and cures sleep, blocks Yawn and boosts Dark/Ghost attacks by 1.3x. On entry, heals adjacent allies by 1/4 max HP, or 1/3 on Fairy Tale. Once per battle, saves an adjacent ally from a lethal opposing attack at 1 HP through the remainder of that move, paying 1/4 of the holder’s max HP. The holder must have more HP than the cost. Switching does not restore the rescue."
     }
   },
   "LesserRegis": [

@@ -4,7 +4,7 @@
     "desc": "On entry, lowers foes' Defense and Sp. Def by 1 (2 on Cold Eclipse) and changes Underwater to Midnight Zone. Foes targeting it spend 1 extra PP, or 2 on Midnight Zone. Outside Cold Eclipse, its Defense and Sp. Def drop is attempted only once per opposing Pokemon per battle for each Pressure user. Switching, Transform and ability loss or regain do not reset that allowance; a blocked or reflected attempt spends it. Cold Eclipse retains repeatable -2 drops on entry and neither spends nor resets the ordinary allowance."
   },
   "lunardread": {
-    "shortDesc": "Retains their local field effects.",
+    "shortDesc": "Has their local field effects.",
     "desc": "On entry, lowers adjacent foes Sp. Atk by 1 stage, blocked by Substitute and normal stat-drop protection. Prevents sleep and Yawn; Dark and Ghost attacks have 1.3x power. Retains local Pressure: lowers foes Defense and Sp. Def by 1 stage on entry (2 on Cold Eclipse), costs foes 1 extra PP (2 on Midnight Zone), and changes Underwater to Midnight Zone. No mark, damage-reduction or Ground critical-hit effects. Outside Cold Eclipse, its Defense and Sp. Def drop is attempted only once per opposing Pokemon per battle for each Pressure user. Switching, Transform and ability loss or regain do not reset that allowance; a blocked or reflected attempt spends it. Cold Eclipse retains repeatable -2 drops on entry and neither spends nor resets the ordinary allowance."
   },
   "moonlightvigil": {

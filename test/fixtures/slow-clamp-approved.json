@@ -6,5 +6,5 @@
     "slowclamp"
   ],
   "shortDesc": "Own Tempo + Analytic; Shell Armor is supplied by the species passive.",
-  "desc": "Full local Own Tempo prevents and cures confusion and blocks Intimidate's Attack drop, subject to normal suppression and ability bypass. Analytic retains its 1.3x power when no other active Pokemon has a move left to use that turn. Shell Armor is supplied separately by Mega Slowbro's species passive, retaining critical-hit protection, 20% attack-damage reduction and its local field/stat-drop effects. Does not grant Sweet Veil or sleep/Yawn protection."
+  "desc": "Full local Own Tempo prevents and cures confusion and blocks Intimidate's Attack drop, subject to normal suppression and ability bypass. Analytic has its 1.3x power when no other active Pokemon has a move left to use that turn. Shell Armor is supplied separately by Mega Slowbro's species passive, retaining critical-hit protection, 20% attack-damage reduction and its local field/stat-drop effects. Does not grant Sweet Veil or sleep/Yawn protection."
 }

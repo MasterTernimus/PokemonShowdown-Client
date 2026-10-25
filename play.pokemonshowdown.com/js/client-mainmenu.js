@@ -1711,8 +1711,30 @@
 			this.$('button[name=calculate]').prop('disabled', false);
 			this.$('.calc-results').empty();
 			this.$('.calc-status').removeClass('calc-error').text('Settings changed. Calculate again.');
-			this.refreshActors();
-			this.refreshCalcMoves();
+			// Stat edits do not change species, forms, ability choices or custom-state eligibility.
+			// Invalidate requests above immediately, without rebuilding those unchanged controls.
+			if (event && /^(evs|ivs|boosts)-/.test(event.target.name)) {
+				this.updateCalcStatSummary($(event.target).closest('.calc-actor'));
+			} else {
+				this.refreshActors();
+				this.refreshCalcMoves();
+			}
+		},
+		koVerdict: function (data, index) {
+			// The native endpoint samples complete actions, including misses and critical hits.
+			// A sampled minimum/maximum cannot prove a guaranteed OHKO or exact probability.
+			var result = data && data.results && data.results[index], total = data && data.samples;
+			if (!result || (data.kind && data.kind !== 'sampled') || !Number.isInteger(total) || total < 1 ||
+				!Number.isInteger(result.kos) || result.kos < 0 || result.kos > total) return 'KO verdict unavailable';
+			if (!result.kos) return 'No KO observed (0/' + total + ' samples)';
+			if (result.kos === total) return 'KO in all ' + total + ' samples (not guaranteed)';
+			return 'KO in ' + result.kos + '/' + total + ' samples (' + (100 * result.kos / total).toFixed(1) + '% observed)';
+		},
+		updateCalcStatSummary: function ($actor) {
+			var spec = this.readActor(Number($actor.attr('data-slot')));
+			var evTotal = Object.keys(spec.evs).reduce(function (total, stat) { return total + spec.evs[stat]; }, 0);
+			var stages = Object.keys(spec.boosts).filter(function (stat) { return spec.boosts[stat] !== 0; }).length;
+			$actor.find('.calc-advanced > summary').text('Stats and stages' + (evTotal ? ' | ' + evTotal + ' EVs' : '') + (stages ? ' | ' + stages + ' changed stages' : ''));
 		},
 		refreshActors: function () {
 			var self = this;
@@ -1740,10 +1762,7 @@
 				$actor.find('.calc-component-details').toggle(!!parts.length);
 				$actor.find('.calc-components').text(parts.length ? 'Components: ' + parts.join(' · ') + '. Each effect has its own conditions.' : 'No composite components listed.');
 				if (species.baseSpecies === 'Silvally' && toID($actor.find('[name=ability]').val()) === 'rkssystem') $actor.find('.calc-components').append(' Heals 1/16 HP each turn.');
-				var spec = self.readActor(Number($actor.attr('data-slot')));
-				var evTotal = Object.keys(spec.evs).reduce(function (total, stat) { return total + spec.evs[stat]; }, 0);
-				var stages = Object.keys(spec.boosts).filter(function (stat) { return spec.boosts[stat] !== 0; }).length;
-				$actor.find('.calc-advanced > summary').text('Stats, stages & moveset' + (evTotal ? ' | ' + evTotal + ' EVs' : '') + (stages ? ' | ' + stages + ' changed stages' : '') + (spec.moves ? ' | ' + spec.moves.length + ' moves' : ''));
+				self.updateCalcStatSummary($actor);
 			});
 		},
 		searchFields: function () {
@@ -2028,7 +2047,7 @@
 			this.$('.calc-status').text(data.samples + ' samples · Seed ' + data.seed + '. Results may vary.');
 			this.$('.calc-version').text('Engine build ' + data.version.engine + ' — ' + data.version.builtAt);
 			var main = data.results[1];
-			var html = '<div class="calc-result-card"><span class="calc-eyebrow">DEFENDER · SAMPLED DAMAGE</span><div class="calc-result-head"><h3>' + this.escape(data.move) + '</h3><strong>' + main.minPercent.toFixed(1) + '–' + main.maxPercent.toFixed(1) + '%</strong></div><p>' + main.min + '–' + main.max + ' HP removed · KOs: ' + main.kos + '/' + data.samples + ' samples</p><div class="calc-damage-bar" role="img" aria-label="Observed damage ' + main.minPercent.toFixed(1) + ' to ' + main.maxPercent.toFixed(1) + ' percent of maximum HP"><span style="width:' + Math.min(100, main.maxPercent) + '%"></span><b style="width:' + Math.min(100, main.minPercent) + '%"></b></div><small>Percent of max HP lost in these samples.</small></div><h3>' + this.escape(data.move) + ' — observed damage</h3><div style="overflow:auto"><table class="calc-result-table"><tr><th>Slot</th><th>HP removed</th><th>% max HP</th><th>Net HP loss</th><th>Sample KOs</th></tr>';
+			var html = '<div class="calc-result-card"><span class="calc-eyebrow">DEFENDER · SAMPLED DAMAGE</span><div class="calc-result-head"><h3>' + this.escape(data.move) + '</h3><strong>' + main.minPercent.toFixed(1) + '–' + main.maxPercent.toFixed(1) + '%</strong></div><p>' + main.min + '–' + main.max + ' HP removed</p><p class="calc-ko-verdict">' + this.escape(this.koVerdict(data, 1)) + '</p><div class="calc-damage-bar" role="img" aria-label="Observed damage ' + main.minPercent.toFixed(1) + ' to ' + main.maxPercent.toFixed(1) + ' percent of maximum HP"><span style="width:' + Math.min(100, main.maxPercent) + '%"></span><b style="width:' + Math.min(100, main.minPercent) + '%"></b></div><small>Percent of max HP lost in these samples.</small></div><h3>' + this.escape(data.move) + ' — observed damage</h3><div style="overflow:auto"><table class="calc-result-table"><tr><th>Slot</th><th>HP removed</th><th>% max HP</th><th>Net HP loss</th><th>Sample KOs</th></tr>';
 			data.results.forEach(function (r) { html += '<tr><th>' + self.escape(r.label) + '</th><td>' + r.min + '–' + r.max + '</td><td>' + r.minPercent.toFixed(1) + '–' + r.maxPercent.toFixed(1) + '%</td><td>' + r.minNetLoss + '–' + r.maxNetLoss + '</td><td>' + r.kos + '/' + data.samples + ' (' + (100 * r.kos / data.samples).toFixed(1) + '%)</td></tr>'; });
 			html += '</table></div><p>Samples do not guarantee a KO.</p><details><summary>Battle details</summary><pre style="white-space:pre-wrap">' + this.escape(JSON.stringify(data.resolved, null, 2)) + '\n' + this.escape(data.exampleLog.join('\n')) + '</pre></details>';
 			this.$('.calc-results').html(html);
@@ -2070,8 +2089,7 @@
 			center.append(this.$('.calc-action'), this.$('.calc-status'), this.$('.calc-results'));
 			this.$('[name=swapCalcActors]').parent().prependTo(center);
 			var conditions = this.$('.calc-conditions');
-			var conditionDrawer = $('<details class="calc-battle-options"><summary>Battle conditions · field, weather &amp; screens</summary></details>').insertAfter(matchup);
-			conditionDrawer.append(conditions);
+			center.prepend(conditions);
 			this.$('.calc-actor').each(function () {
 				var actor = $(this), fields = actor.children('.calc-fields');
 				var load = actor.find('.calc-load-set');
@@ -2123,7 +2141,7 @@
 			if (event && $(event.target).hasClass('calc-move-entry')) {var a = $(event.target).closest('.calc-actor'); a.find('[name=moves]').val(a.find('.calc-move-entry').map(function () {return this.value.trim();}).get().filter(Boolean).join(', '));}
 			this.cancelComparison(); this.comparisonResults = {};
 			var result = edited.apply(this, arguments);
-			this.$('.calc-move-result').text('Not calculated');
+			this.$('.calc-move-result').text('Not calculated').removeAttr('title');
 			this.refreshFieldState();
 			return result;
 		};
@@ -2224,8 +2242,8 @@
 				this.comparisonRequest = null;
 				var cell = this.$('.calc-actor[data-slot=' + task.side + '] [data-result=' + task.index + ']');
 				if (data.error) {cell.text(data.error).addClass('calc-error');} else {
-					var r = data.results[1]; cell.removeClass('calc-error').text(r.minPercent.toFixed(1) + '–' + r.maxPercent.toFixed(1) + '% · ' + r.kos + '/' + data.samples + ' sample KOs');
-					if (data.powerDistribution) cell.attr('title', data.powerDistribution.map(function (branch) {return branch.power + ' BP: ' + Math.round(branch.probability * 100) + '%';}).join('; ') + '; sampled range may omit a branch.'); else cell.removeAttr('title');
+					var r = data.results[1]; cell.removeClass('calc-error').text(r.minPercent.toFixed(1) + '–' + r.maxPercent.toFixed(1) + '% · ' + this.koVerdict(data, 1));
+					cell.attr('title', 'One sampled move execution at configured current HP, including misses, critical hits, multi-hit and survival effects. Not exact KO odds or a second-turn prediction.' + (data.powerDistribution ? ' ' + data.powerDistribution.map(function (branch) {return branch.power + ' BP: ' + Math.round(branch.probability * 100) + '%';}).join('; ') + '; sampled range may omit a branch.' : ''));
 					this.comparisonResults[key] = data;
 					this.pendingScenario = {json:JSON.stringify(this.scenario()), revision:this.scenarioRevision}; receive.call(this, data);
 					var resolvedActors = data.resolved && data.resolved.actors || task.scenario.actors;
@@ -2369,7 +2387,7 @@
 		p.applyCalcPick = function (value) {var parts = value.split(':'), slot = Number(parts.shift()), kind = parts.shift(), key = parts.join(':'), actor; try {if (kind === 'set') {var r = this.savedCalcSets[Number(key)]; if (!r) return; actor = JSON.parse(JSON.stringify(r.set));} else {var info = this.metadata.species.find(function (s) {return s.name === key;}); if (!info) return; actor = this.readActor(slot); actor.species = info.name; actor.ability = info.abilities[0]; actor.boosts = {}; actor.status = ''; actor.gimmick = ''; actor.hpPercent = 100; ['rageFistBonus', 'threadShelterGuard', 'silentFlightSpent', 'buriedTrioSpent', 'elasticBellySpent', 'feedbackMarked', 'voidCrossingCurse'].forEach(function (k) {actor[k] = k === 'rageFistBonus' ? 0 : false;});} this.writeActor(slot, actor); this.closeCalcPicker(slot); this.$('.calc-status').text(kind === 'set' ? 'Saved set loaded. Battle conditions retained.' : 'Species changed. Moves, item and spread retained; ability and battle state reset. Check move eligibility.');} catch (err) {this.$('.calc-status').addClass('calc-error').text(err.message);}};
 		p.selectValidCalcAbility = function (e) {$(e.target).closest('.calc-actor').find('[name=ability]').val(e.target.value); this.scenarioEdited();};
 		var refresh = p.refreshActors; p.refreshActors = function () {var result = refresh.apply(this, arguments), self = this; this.$('.calc-actor').each(function () {var a = $(this), id = toID(a.find('[name=species]').val()), info = (self.metadata.species || []).find(function (s) {return toID(s.name) === id;}), current = a.find('[name=ability]').val(), choices = Object.values(info && info.abilities || {}); a.find('.calc-valid-ability').html(choices.map(function (name) {var slot = Object.keys(info.abilities).find(function (k) {return info.abilities[k] === name;}); return '<option value="' + self.escape(name) + '">' + self.escape(name + (slot === 'S' ? ' · Event' : slot === 'H' ? ' · Hidden' : '')) + '</option>';}).join('') + (!choices.includes(current) ? '<option value="' + self.escape(current) + '">' + self.escape(current || 'No Ability') + ' · Override</option>' : '')).val(current); var ability = Dex.abilities.get(current); a.find('.calc-ability-summary').text(ability.shortDesc || ability.desc || 'No description available.').attr('title', ability.desc || ability.shortDesc || ''); a.find('.calc-ability-slots,.calc-component-details,.calc-form-label').hide();}); return result;};
-		var render = p.renderCalculator; p.renderCalculator = function () {var result = render.apply(this, arguments); this.$el.addClass('calc-picker-workspace'); this.$('.calc-actor').each(function () {var a = $(this), slot = a.attr('data-slot'); a.find('.calc-identity').before('<button type="button" class="button calc-pick-open" name="openCalcPicker" value="' + slot + '">Choose Pokémon / saved set</button><section class="calc-picker" aria-label="Choose Pokémon or saved set" hidden><div class="calc-picker-heading"><strong>Choose Pokémon / saved set</strong><button class="button" name="closeCalcPicker" value="' + slot + '">Cancel</button></div><label>Search<input class="textbox calc-pick-query" placeholder="Species, form, team or set name" autocomplete="off" /></label><label>Show<select class="calc-pick-source"><option value="all">Pokémon + my saved sets</option><option value="sets">My teams and saved sets</option><option value="species">Pokémon / forms only</option></select></label><small>Uses teams loaded on this device and your local saved builds.</small><p class="calc-pick-count" role="status"></p><div class="calc-pick-results"></div></section>'); a.find('.calc-load-details').hide(); a.find('[name=species]').closest('label').hide(); var label = a.find('[name=ability]').closest('label'), box = $('<div class="calc-ability-picker"><label>Ability<select class="calc-valid-ability" aria-label="Species ability"></select></label><p class="calc-ability-summary"></p><details class="calc-ability-override"><summary>Override ability for a hypothetical matchup</summary></details></div>'); label.before(box); box.find('details').append(label); a.find('.calc-advanced').prop('open', false);}); this.refreshActors(); return result;};
+		var render = p.renderCalculator; p.renderCalculator = function () {var result = render.apply(this, arguments); this.$el.addClass('calc-picker-workspace calc-reference'); this.$('.calc-actor').each(function () {var a = $(this), slot = a.attr('data-slot'); a.find('.calc-identity').before('<button type="button" class="button calc-pick-open" name="openCalcPicker" value="' + slot + '">Choose Pokémon / saved set</button><section class="calc-picker" aria-label="Choose Pokémon or saved set" hidden><div class="calc-picker-heading"><strong>Choose Pokémon / saved set</strong><button class="button" name="closeCalcPicker" value="' + slot + '">Cancel</button></div><label>Search<input class="textbox calc-pick-query" placeholder="Species, form, team or set name" autocomplete="off" /></label><label>Show<select class="calc-pick-source"><option value="all">Pokémon + my saved sets</option><option value="sets">My teams and saved sets</option><option value="species">Pokémon / forms only</option></select></label><small>Uses teams loaded on this device and your local saved builds.</small><p class="calc-pick-count" role="status"></p><div class="calc-pick-results"></div></section>'); a.find('.calc-load-details').hide(); a.find('[name=species]').closest('label').hide(); var label = a.find('[name=ability]').closest('label'), box = $('<div class="calc-ability-picker"><label>Ability<select class="calc-valid-ability" aria-label="Species ability"></select></label><p class="calc-ability-summary"></p><details class="calc-ability-override"><summary>Override ability for a hypothetical matchup</summary></details></div>'); label.before(box); box.find('details').append(label); a.find('.calc-advanced').prop('open', true).insertBefore(a.children('.calc-fields')); a.find('.calc-actor-options > summary').text('Gender and transformation'); ['level', 'hpPercent', 'status'].forEach(function (name) {a.find('[name=' + name + ']').closest('label').appendTo(a.children('.calc-fields'));}); a.find('[name=nature]').closest('label').prependTo(a.children('.calc-fields')); a.find('[name=teraType]').closest('label').appendTo(a.find('.calc-actor-options > .calc-fields')); a.find('.calc-accuracy-extra').appendTo(a.find('.calc-actor-options')); a.find('.calc-comparison-moves').insertAfter(a.children('.calc-fields'));}); this.$('.calc-intro').text('Sampled custom-engine results, including misses and critical hits. KO uses current HP; sample frequencies are not exact odds or guarantees.'); this.$('.calc-conditions h3').text('Field'); this.$('.calc-extra-conditions').prop('open', true); this.refreshActors(); return result;};
 	});
 })();
 

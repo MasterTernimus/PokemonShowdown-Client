@@ -994,6 +994,7 @@ export interface PokemonHealth {
 export interface ServerPokemon extends PokemonDetails, PokemonHealth {
 	passives?: readonly string[];
 	rageFistBonus?: number;
+	disguise?: {name: string, species: string, mode: 'illusion' | 'perfectillusion'};
 	megaStats?: ServerPokemon['stats'];
 	ident: string;
 	details: string;
@@ -3736,6 +3737,7 @@ export class Battle {
 			this.endLastTurn();
 			let poke = this.getSwitchedPokemon(args[1], args[2])!;
 			let slot = poke.slot;
+			if (poke.side === this.mySide && this.myPokemon?.[slot]) delete this.myPokemon[slot].disguise;
 			poke.healthParse(args[3]);
 			poke.removeVolatile('itemremoved' as ID);
 			poke.terastallized = args[2].match(/tera:([a-z]+)$/i)?.[1] || '';

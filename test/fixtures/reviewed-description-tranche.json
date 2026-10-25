@@ -25,11 +25,11 @@
   },
   "venombastion": {
     "shortDesc": "Stamina + Bug STAB; once per entry, Poison/Steel hits block a poisoned foe’s healing for 2 turns.",
-    "desc": "Stamina: each opposing HP hit heals 1/16 max HP; the first each turn also gives +1 Defense. Bug moves receive STAB, without changing typing or stacking with existing Bug STAB. Once per entry, Poison/Steel HP damage to an already-poisoned surviving foe blocks healing through the next turn. Only a newly applied Heal Block spends the use."
+    "desc": "Stamina: each opposing HP hit heals 1/16 max HP; the first each turn also gives +1 Defense. Bug moves receive STAB, without changing typing or stacking with Bug STAB. Once per entry, Poison/Steel HP damage to an already-poisoned surviving foe blocks healing through the next turn. Only a newly applied Heal Block spends the use."
   },
   "dreadmaw": {
     "shortDesc": "Strong Jaw + Invigorate; once per entry, a bite blocks foe healing for 2 turns.",
-    "desc": "Strong Jaw + Invigorate: biting moves have 1.5x power; it and its allies receive 1.3x healing; each adjacent statused ally has a 50% cure chance at turn end. Once per entry, a bite damaging a surviving foe’s HP blocks healing through the next turn. Only a new Heal Block spends the use; existing blocks are not refreshed."
+    "desc": "Strong Jaw + Invigorate: biting moves have 1.5x power; it and its allies receive 1.3x healing; each adjacent statused ally has a 50% cure chance at turn end. Once per entry, a bite damaging a surviving foe’s HP blocks healing through the next turn. Only a new Heal Block spends the use; blocks are not refreshed."
   },
   "ironmountain": {
     "shortDesc": "Hyper Cutter + Suction Cups; entry or Mega Evolution clears own Stealth Rock/Spikes.",

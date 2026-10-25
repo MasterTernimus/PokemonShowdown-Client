@@ -8,7 +8,7 @@
     "shortDesc": "Dual Wield + Moxie."
   },
   "aurainstinct": {
-    "desc": "Same-type attack bonus becomes 2x instead of 1.5x, or 2.25x instead of an existing 2x bonus. Eligible slicing, pulse, bullet, horn, drill, and Arrow moves hit twice at 60% power, with an independent accuracy check for each hit. Separate power boosts apply to both 60%-power hits. In Free-for-All, both hits still use 60% power: the first hits the selected foe and the second targets another random living foe when possible. Existing multi-hit moves are not given an additional Dual Wield pair. The first otherwise lethal attack has a 50% chance to leave it at 1 HP. This Ability rolls only once per battle, even if the roll fails or it switches out.",
+    "desc": "Same-type attack bonus becomes 2x instead of 1.5x, or 2.25x instead of a 2x bonus. Eligible slicing, pulse, bullet, horn, drill, and Arrow moves hit twice at 60% power, with an independent accuracy check for each hit. Separate power boosts apply to both 60%-power hits. In Free-for-All, both hits still use 60% power: the first hits the selected foe and the second targets another random living foe when possible. Existing multi-hit moves are not given an additional Dual Wield pair. The first otherwise lethal attack has a 50% chance to leave it at 1 HP. This Ability rolls only once per battle, even if the roll fails or it switches out.",
     "shortDesc": "Stronger STAB; eligible moves hit twice; one 50% roll per battle to survive a lethal attack."
   },
   "auramaster": {
@@ -36,7 +36,7 @@
     "shortDesc": "Slicing moves have 1.5x power, except on Cold Eclipse."
   },
   "spiralevolution": {
-    "desc": "Mold Breaker: moves ignore bypassable opposing abilities. Same-type attack bonus becomes 2x instead of 1.5x, or 2.25x instead of an existing 2x bonus. Eligible slicing, pulse, bullet, horn, drill, and Arrow moves hit twice at 60% power, with an independent accuracy check for each hit. Separate power boosts apply to both 60%-power hits. In Free-for-All, both hits still use 60% power: the first hits the selected foe and the second targets another random living foe when possible. Existing multi-hit moves are not given an additional Dual Wield pair. Damaging moves pierce protection at half power. Normal-priority moves act first in Trick Room without gaining priority. Ignores field Speed penalties and takes 20% less attack damage. Twineedle has double power.",
+    "desc": "Mold Breaker: moves ignore bypassable opposing abilities. Same-type attack bonus becomes 2x instead of 1.5x, or 2.25x instead of a 2x bonus. Eligible slicing, pulse, bullet, horn, drill, and Arrow moves hit twice at 60% power, with an independent accuracy check for each hit. Separate power boosts apply to both 60%-power hits. In Free-for-All, both hits still use 60% power: the first hits the selected foe and the second targets another random living foe when possible. Existing multi-hit moves are not given an additional Dual Wield pair. Damaging moves pierce protection at half power. Normal-priority moves act first in Trick Room without gaining priority. Ignores field Speed penalties and takes 20% less attack damage. Twineedle has double power.",
     "shortDesc": "Mold Breaker + Adaptability + Dual Wield; half-power Protect bypass; acts first in Trick Room; 20% less damage; double Twineedle power."
   },
   "toxicarmor": {
@@ -44,7 +44,7 @@
     "shortDesc": "Dual Wield + opening Violent Rush; priority hits prepare next-turn priority."
   },
   "venomarmor": {
-    "desc": "Dual Wield and Battle Armor. Metal Claw retains two 60%-power hits. Does not automatically poison, heal or grant the former status-based damage boost.",
+    "desc": "Dual Wield and Battle Armor. Metal Claw has two 60%-power hits. Does not automatically poison, heal or grant the former status-based damage boost.",
     "shortDesc": "Dual Wield + Battle Armor."
   },
   "waterbarrage": {

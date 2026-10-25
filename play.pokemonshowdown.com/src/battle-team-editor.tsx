@@ -3028,8 +3028,12 @@ class DetailsForm extends preact.Component<{
 		const previewForm = isTransformation(preview) ? root.name : preview;
 		const forms = Array.from(new Set([previewForm, ...otherFormes.filter(form => !isTransformation(form))]));
 		const selectedForm = forms.includes(this.state.spriteForm) ? this.state.spriteForm : previewForm;
-		const transformations = otherFormes.filter(form =>
+		let transformations = otherFormes.filter(form =>
 			isTransformation(form) && editor.dex.species.get(form).baseSpecies === selectedForm);
+		if (toID(selectedForm) === 'gardevoirvoid') {
+			const routes = Dex.getGardevoirMegaRoutes(selectedForm, 'Gardevoirite', editor.dex);
+			transformations = Object.values(routes || {}).filter(form => !!form && editor.dex.species.get(form).exists);
+		}
 		const transform = this.state.spriteTransform === 'base' ? '' : this.state.spriteTransform || preview;
 		const selected = transformations.includes(transform) ? transform : selectedForm;
 		const gen = this.state.spriteMode === 'bw' ? 5 : editor.gen;

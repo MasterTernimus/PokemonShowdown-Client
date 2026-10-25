@@ -1308,6 +1308,7 @@ abstract class BattleTypedSearch<T extends SearchType> {
 		return '' as ID;
 	}
 	protected canLearn(speciesid: ID, moveid: ID) {
+		if (this.dex.gen >= 9 && Dex.getGen9MoveRemovals(speciesid).includes(moveid)) return false;
 		const move = this.dex.moves.get(moveid);
 		if (['politoed','politoedrejuv'].includes(speciesid) && toID(this.set?.ability) !== 'aevianking' && AEVIAN_KING_MOVE_SOURCES[moveid] && !AEVIAN_KING_ORDINARY_MOVES.includes(moveid)) return false;
 		if (['poliwrath','poliwrathrejuv'].includes(speciesid) && toID(this.set?.ability) !== 'aevianascendance' && AEVIAN_ASCENDANCE_MOVE_SOURCES[moveid] && !AEVIAN_ASCENDANCE_ORDINARY_MOVES.includes(moveid)) return false;
@@ -2265,6 +2266,10 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 					moves.push(move.id);
 				}
 			}
+		}
+		if (dex.gen >= 9 && !isHackmons) {
+			const exclusions = Dex.getGen9MoveRemovals(species.id);
+			moves = moves.filter(id => !exclusions.includes(id));
 		}
 		if (this.formatType === 'metronome') moves = ['metronome'];
 		if (isSTABmons) {

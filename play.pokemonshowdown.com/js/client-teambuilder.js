@@ -10,7 +10,7 @@
 			teams = Storage.teams;
 
 			// left menu
-			this.$el.addClass('ps-room-light').addClass('scrollable');
+			this.$el.addClass('ps-room-light teambuilder-workspace').addClass('scrollable');
 			if (!Storage.whenTeamsLoaded.isLoaded) {
 				Storage.whenTeamsLoaded(this.update, this);
 			}
@@ -3227,6 +3227,17 @@
 				buf += '</div></div>';
 			}
 
+			var disguiseEffects = Dex.getAbilityEffects(toID(set.ability || species.abilities[0]));
+			var disguiseSupported = disguiseEffects.has('illusion') || disguiseEffects.has('perfectillusion') || species.passives.some(function (id) { var effects = Dex.getPassiveAbilityEffects(id); return effects.has('illusion') || effects.has('perfectillusion'); });
+			if (disguiseSupported) {
+				var selectedDisguise = Storage.getInitialDisguiseSlot(set, this.curSetList);
+				var label = function (target, slot) { return '#' + slot + ' ' + (target.name && target.name !== target.species ? target.name + ' (' + target.species + ')' : target.species); };
+				var automatic = '';
+				for (var slot = this.curSetList.length; slot > 0; slot--) if (this.curSetList[slot - 1] !== set) { automatic = label(this.curSetList[slot - 1], slot); break; }
+				buf += '<div class="formrow"><label class="formlabel" for="initial-disguise">Initial disguise:</label><div><select id="initial-disguise" name="initialdisguise" class="button"><option value="">Auto' + (automatic ? ' — ' + BattleLog.escapeHTML(automatic) : ' — no teammate') + '</option>';
+				for (var slot = 1; slot <= this.curSetList.length; slot++) if (this.curSetList[slot - 1] !== set) buf += '<option value="' + slot + '"' + (selectedDisguise === slot ? ' selected' : '') + '>' + BattleLog.escapeHTML(label(this.curSetList[slot - 1], slot)) + '</option>';
+				buf += '</select><small class="formnote">First entry only. Unavailable teammate uses Auto; Auto follows battle order.<br />' + (disguiseEffects.has('perfectillusion') ? 'Perfect Illusion copies STAB, eligible ability and passives until revealed.' : 'Illusion changes appearance only; it copies no traits.') + '</small></div></div>';
+			}
 			buf += '</form>';
 			if (customFormNames.length > 1 || (species.cosmeticFormes && species.cosmeticFormes.some(function (name) { return !DexSearch.isHiddenCosmeticPattern(name); }))) {
 				buf += '<button class="altform button">Change sprite</button>';
@@ -3308,6 +3319,9 @@
 			} else {
 				delete set.teraType;
 			}
+
+			var initialDisguise = this.$chart.find('select[name=initialdisguise]');
+			if (initialDisguise.length) Storage.setInitialDisguise(set, this.curSetList, Number(initialDisguise.val()));
 
 			// update details cell
 			var buf = '';
@@ -5046,7 +5060,7 @@
 		this.$('.nickname-gender').prop('disabled', !this.$('.nickname-gendered').prop('checked')).attr('title', 'Enable gender-specific nicknames to edit');
 		this.$('.saved-build-choice').each(function () { self.refreshSavedSetControls($(this).closest('li')); });
 		this.$('.library-undo').remove();
-		if (this.libraryUndo) this.$el.prepend('<div class="pad library-undo">Saved library changed. ' + button('undoLibraryChange', 'Undo library change') + '</div>');
+		if (this.libraryUndo) this.$('.local-tools-manager').first().prepend('<p class="library-undo" role="status">' + (this.libraryUndo.overwrite ? 'Saved set updated. ' : 'Entry removed. ') + button('undoLibraryChange', 'Undo') + button('dismissLibraryUndo', 'Dismiss') + '</p>');
 	};
 	var rosterLibraryView = proto.showRosterProfiles;
 	proto.showRosterProfiles = function () {
@@ -5710,7 +5724,8 @@ function renderStarterPassives(species) {
 // Unified Profiles keeps live membership in rosterprofiles and names in pokemontools.
 (function ($) {
 	if (!window.TeambuilderRoom || !window.TeambuilderTools || typeof BattleLog === 'undefined') return;
-	var p = window.TeambuilderRoom.prototype, T = window.TeambuilderTools, esc = BattleLog.escapeHTML;
+	var p = window.TeambuilderRoom.prototype, T = window.TeambuilderTools;
+	function esc(value) {return BattleLog.escapeHTML(value);}
 	T.libraryTabs = function (active) {
 		return '<nav class="library-tabs" aria-label="Library sections">' + [['names', 'Profiles'], ['sets', 'Saved sets']].map(function (t) {return '<button type="button" class="button" name="libraryTab" value="' + t[0] + '" aria-pressed="' + ((active === 'lists' ? 'names' : active) === t[0]) + '">' + t[1] + '</button>';}).join('') + '</nav>';
 	};
@@ -5867,3 +5882,221 @@ function renderStarterPassives(species) {
 		data.selected = group.id; this.saveRosterProfiles(data); this.profileMemberSearch = ''; this.showToolsManager(); this.$('.roster-species-search').focus();
 	};
 })(jQuery);
+
+// Phone editing uses the existing picker and forms as a focused, reversible view.
+(function () {
+	var p = window.TeambuilderRoom.prototype;
+	p.mobileBuilderView = function (open) {
+		if (!(window.matchMedia && window.matchMedia('(max-width:639px)').matches)) return;
+		this.$('.editing-set').toggleClass('mobile-picker-open', open);
+		if (open) {if (!this.$('.teambuilder-results .picker-return-bar').length) this.$('.teambuilder-results').prepend('<div class="picker-return-bar"><button type="button" class="button" name="returnToPokemonEditor">Back to Pokémon</button></div>'); this.$('.picker-return-bar').show(); this.$('.teambuilder-results').attr('aria-label', 'Edit ' + (this.curChartType || 'Pokémon')); this.$el.scrollTop(0); var search = this.$('.picker-search-input')[0]; if (search && this.curChartType in this.searchChartTypes) search.focus({preventScroll: true});}
+	};
+	['chartFocus', 'stats', 'details'].forEach(function (name) {
+		var original = p[name];
+		p[name] = function () {var result = original.apply(this, arguments); if (!this.mobileReturning) this.mobileBuilderView(true); return result;};
+	});
+	var back = p.returnToPokemonEditor;
+	p.returnToPokemonEditor = function () {
+		this.mobileReturning = true;
+		try {var wasOpen = this.$('.mobile-picker-open').length; if (wasOpen && this.curSet) {var field = this.curChartName, value = field === 'pokemon' ? this.curSet.species : /^move[1-4]$/.test(field) ? (this.curSet.moves || [])[Number(field.slice(-1)) - 1] : this.curSet[field]; if (field === 'pokemon' || field === 'item' || field === 'ability' || /^move[1-4]$/.test(field)) this.$('input[name=' + field + ']').val(typeof value === 'string' ? value : '');} this.mobileBuilderView(false); var result = back.apply(this, arguments); if (wasOpen && this.curChartName) {var opener = this.$('[name=' + this.curChartName + ']')[0]; if (opener) opener.focus({preventScroll: true});} return result;} finally {this.mobileReturning = false;}
+	};
+	p.mobileBuilderEscape = function (event) {
+		if (!(window.matchMedia && window.matchMedia('(max-width:639px)').matches)) return;
+		if (event.key !== 'Escape' || event.defaultPrevented || event.isComposing || app.popups.length || event.target.tagName === 'SELECT') return;
+		if (!this.$('.mobile-picker-open').length) return;
+		event.preventDefault(); this.returnToPokemonEditor();
+	};
+	var showToolsManager = p.showToolsManager;
+	p.showToolsManager = function () {var entering = !this.toolsView; var result = showToolsManager.apply(this, arguments); if (entering && (window.matchMedia && window.matchMedia('(max-width:639px)').matches)) this.$el.scrollTop(0); return result;};
+	var selectPokemon = p.selectPokemon;
+	p.selectPokemon = function () {
+		if (!(window.matchMedia && window.matchMedia('(max-width:639px)').matches)) return selectPokemon.apply(this, arguments);
+		this.mobileReturning = true;
+		try {var result = selectPokemon.apply(this, arguments); this.mobileBuilderView(false); if (document.activeElement && document.activeElement.classList.contains('chartinput')) document.activeElement.blur(); return result;} finally {this.mobileReturning = false;}
+	};
+	p.events['keydown .teambuilder-results'] = 'mobileBuilderEscape';
+})();
+
+(function () {
+	var p = window.TeambuilderRoom.prototype, original = p.updateTeamView;
+	p.mobileTeamOverview = function () {
+		if (!(window.matchMedia && window.matchMedia('(max-width:639px)').matches) || !this.curTeam || this.curSet) return;
+		var room = this;
+		this.$('.team-view .teamchart > li').each(function () {
+			var row = $(this), input = row.find('input[name=pokemon]');
+			if (!input.length || row.find('.mobile-team-slot').length) return;
+			var index = Number(this.value), set = room.curSetList[index]; if (!set) return;
+			var choice = $('<button type="button" class="button mobile-team-slot" name="selectPokemon"></button>').val(index);
+			choice.append($('<span class="picon" aria-hidden="true"></span>').attr('style', Dex.getPokemonIcon(/^(politoed|poliwrath)(rejuv)?$/.test(toID(set.species)) ? Dex.getAbilityFormPreviewSet(set) : set.species)));
+			choice.append($('<span class="mobile-slot-name"></span>').text((index + 1) + '. ' + (set.name || set.species)));
+			choice.append($('<small></small>').text([set.species, set.item || 'No item'].join(' · ')));
+			choice.attr('aria-label', 'Edit slot ' + (index + 1) + ': ' + (set.name || set.species));
+			row.addClass('mobile-team-summary').prepend(choice);
+		});
+	};
+	p.updateTeamView = function () {var result = original.apply(this, arguments); this.mobileTeamOverview(); return result;};
+	if (window.addEventListener) window.addEventListener('resize', function () {var room = app.rooms.teambuilder; if (room) room.mobileTeamOverview();});
+})();
+
+// Local profile membership batches: previews never edit teams or saved sets.
+(function () {
+	if (!window.TeambuilderRoom || !window.TeambuilderTools || typeof BattleLog === 'undefined') return;
+	var p = window.TeambuilderRoom.prototype, T = window.TeambuilderTools;
+	function esc(value) {return BattleLog.escapeHTML(value);}
+	T.planGroupBatch = function (group, mode, incoming, selected) {
+		if (!group || !['add', 'selected', 'all'].includes(mode)) throw new Error('Choose a group and action.');
+		var original = Array.from(new Set(group.species)), additions = Array.from(new Set(incoming)), chosen = new Set(selected || []);
+		if (mode === 'selected' && (!chosen.size || Array.from(chosen).some(function (id) {return !original.includes(id);}))) throw new Error('Select the members to replace.');
+		var kept = mode === 'all' ? [] : original.filter(function (id) {return mode !== 'selected' || !chosen.has(id);});
+		var next = Array.from(new Set(kept.concat(additions)));
+		return {species:next, added:next.filter(function (id) {return !original.includes(id);}), removed:original.filter(function (id) {return !next.includes(id);})};
+	};
+	T.applyGroupBatch = function (pending, prefs, selectedProfile) {
+		var groups = prefs.rosterprofiles, names = prefs.pokemontools, profile = names && names.nicknames.find(function (n) {return n.id === selectedProfile;});
+		var group = groups && groups.profiles.find(function (g) {return g.id === pending.groupId;});
+		if (!profile || profile.id !== pending.profileId || profile.rosterProfile !== pending.groupId || !group || JSON.stringify(group.species) !== pending.before) throw new Error('This group changed. Preview the batch again.');
+		var next = T.clone(prefs), target = next.rosterprofiles.profiles.find(function (g) {return g.id === pending.groupId;});
+		target.species = pending.plan.species.slice();
+		return next;
+	};
+	p.dismissLibraryUndo = function () {this.libraryUndo = null; this.$('.library-undo').remove();};
+	var undoLibrary = p.undoLibraryChange;
+	p.undoLibraryChange = function () {
+		try {var latest = window.localStorage && JSON.parse(window.localStorage.getItem('showdown_prefs')); if (latest) Storage.prefs.data = latest;} catch (error) {return app.addPopupMessage('Could not check saved data. Nothing was overwritten.');}
+		return undoLibrary.apply(this, arguments);
+	};
+	var show = p.showToolsManager;
+	p.showToolsManager = function () {
+		show.apply(this, arguments); this.groupBatchPreview = null;
+		if (this.librarySection === 'sets' || !this.nicknameGroupProfile()) return;
+		this.$('.profile-membership-note').after('<div class="group-batch-tools"><button type="button" class="button" name="openGroupBatch">Edit members in bulk</button><div class="group-batch-editor" hidden><label>Action <select class="group-batch-mode"><option value="all">Replace whole group</option><option value="selected">Replace selected members</option><option value="add">Add members</option></select></label><fieldset class="group-batch-members" hidden><legend>Members to replace</legend></fieldset><label>Pokémon<textarea class="textbox group-batch-text" rows="5" placeholder="One Pokémon per line"></textarea></label><small>Base species include matching Megas. Saved names are kept by species.</small><p><button type="button" class="button" name="previewGroupBatch">Preview changes</button> <button type="button" class="button" name="cancelGroupBatch">Cancel</button></p><div class="group-batch-preview" aria-live="polite"></div></div></div>');
+	};
+	p.openGroupBatch = function () {
+		this.saveNicknameDraft(); var group = this.nicknameGroupProfile(); if (!group) return;
+		this.$('.group-batch-editor').prop('hidden', false); this.$('.group-batch-text').val(group.species.map(function (id) {return Dex.species.get(id).name;}).join('\n'));
+		this.$('.group-batch-members').html('<legend>Members to replace</legend>' + Array.from(new Set(group.species)).map(function (id) {return '<label class="group-batch-choice"><input type="checkbox" class="group-batch-member" value="' + esc(id) + '" /> ' + esc(Dex.species.get(id).name) + '</label>';}).join(''));
+		this.groupBatchModeChange(); this.$('.group-batch-text').focus();
+	};
+	p.groupBatchModeChange = function () {
+		var mode = this.$('.group-batch-mode').val(); this.$('.group-batch-members').prop('hidden', mode !== 'selected');
+		if (mode !== 'all') this.$('.group-batch-text').val(''); this.groupBatchEdited();
+	};
+	p.groupBatchEdited = function () {this.groupBatchPreview = null; this.$('.group-batch-preview').empty();};
+	p.cancelGroupBatch = function () {
+		this.groupBatchPreview = null; this.$('.group-batch-editor').prop('hidden', true); this.$('.group-batch-choice').remove(); this.$('[name=openGroupBatch]').focus();
+	};
+	p.previewGroupBatch = function () {
+		this.saveNicknameDraft(); this.groupBatchPreview = null;
+		try {
+			var data = this.toolsData(), group = this.nicknameGroupProfile(), text = this.$('.group-batch-text').val() || '', parsed = this.parseRosterImport(text), mode = this.$('.group-batch-mode').val();
+			if (parsed.unknown.length) throw new Error('Unknown Pokémon: ' + parsed.unknown.join(', '));
+			var selected = this.$('.group-batch-member:checked').map(function () {return this.value;}).get(), plan = T.planGroupBatch(group, mode, parsed.species, selected);
+			if (!plan.added.length && !plan.removed.length) throw new Error('No membership changes.');
+			this.groupBatchPreview = {profileId:data.selectedNickname, groupId:group.id, before:JSON.stringify(group.species), plan:plan};
+			var names = function (ids) {return ids.map(function (id) {return esc(Dex.species.get(id).name);}).join(', ') || 'None';};
+			this.$('.group-batch-preview').html('<h4>' + esc(group.name) + ' · ' + plan.species.length + ' members after applying</h4><p><strong>Remove:</strong> ' + names(plan.removed) + '</p><p><strong>Add:</strong> ' + names(plan.added) + '</p><p class="tools-note">Other groups, saved names and teams stay unchanged.</p><button type="button" class="button" name="applyGroupBatch">Apply changes</button>');
+		} catch (error) {this.$('.group-batch-preview').text(error.message);}
+	};
+	p.applyGroupBatch = function () {
+		var pending = this.groupBatchPreview; if (!pending) return;
+		try {
+			var latest = JSON.parse(window.localStorage.getItem('showdown_prefs')) || T.clone(Storage.prefs.data), key = T.teamKey(this.curTeam);
+			var stored = latest.pokemontools, selected = key ? stored && stored.teamProfiles && stored.teamProfiles[key] && stored.teamProfiles[key].id : stored && stored.selectedNickname;
+			var next = T.applyGroupBatch(pending, latest, selected);
+			window.localStorage.setItem('showdown_prefs', JSON.stringify(next)); Storage.prefs.data = next;
+			this.groupBatchPreview = null; this.showToolsManager(); this.$('.roster-edit-status').text('Group updated. Saved names kept.');
+		} catch (error) {if (latest) Storage.prefs.data = latest; this.groupBatchPreview = null; this.$('.group-batch-preview').text(error.message || 'Could not save. No batch changes applied.');}
+	};
+	p.events['change .group-batch-mode'] = 'groupBatchModeChange';
+	p.events['input .group-batch-text'] = 'groupBatchEdited';
+	p.events['change .group-batch-member'] = 'groupBatchEdited';
+})();
+// One local Profiles selection flow for lists, nicknames and team application.
+(function () {
+	'use strict';
+	if (!window.TeambuilderRoom || !window.TeambuilderTools) return;
+	var p = window.TeambuilderRoom.prototype, T = window.TeambuilderTools;
+	function esc(value) {return BattleLog.escapeHTML(value);}
+	T.planProfileTeam = function (group, profile, selected, current, capacity) {
+		if (!group || !profile || profile.rosterProfile !== group.id) throw new Error('Choose a profile first.');
+		var ids = Array.from(new Set(selected || []));
+		if (!ids.length || ids.length > capacity) throw new Error('Select between 1 and ' + capacity + ' members.');
+		return ids.map(function (id) {
+			var species = Dex.species.get(id);
+			if (!species.exists || !group.species.includes(species.id)) throw new Error('The profile changed. Select its current members again.');
+			var existing = current.find(function (set) {return T.id(set.species) === species.id;});
+			var set = existing ? T.clone(existing) : {species:species.name, name:'', ability:Object.values(species.abilities)[0] || '', moves:[]};
+			T.applyNickname(set, profile, Dex, true);
+			return set;
+		});
+	};
+	T.profileTeamRevision = function (group, profile, team) {
+		return JSON.stringify([group.id, group.species, T.nicknameState(profile), team]);
+	};
+	var show = p.showToolsManager, refresh = p.refreshNicknameGroup;
+	p.refreshProfileSelection = function () {
+		this.$('.profile-selection-actions, .profile-team-preview, .profile-roster-state, .profile-select-member, .profile-team-undo').remove();
+		if (!this.toolsView || this.librarySection === 'sets') return;
+		var data = this.toolsData(), profile = data.nicknames.find(function (n) {return n.id === data.selectedNickname;}), group = this.nicknameGroupProfile();
+		if (!profile || !group) return;
+		if (!this.profileSelections) this.profileSelections = Object.create(null);
+		var selected = this.profileSelections[profile.id] || (this.profileSelections[profile.id] = []);
+		selected = this.profileSelections[profile.id] = selected.filter(function (id) {return group.species.includes(id);});
+		this.$('.nickname-row[data-group-entry]').each(function () {
+			var row = $(this), id = T.id(row.find('.nickname-species').val());
+			if (!group.species.includes(id)) return;
+			row.addClass('profile-member-row').prepend('<input type="checkbox" class="profile-select-member" value="' + esc(id) + '" aria-label="Select ' + esc(Dex.species.get(id).name) + ' for team"' + (selected.includes(id) ? ' checked' : '') + ' />');
+		});
+		this.$('.nickname-rows').after('<div class="profile-selection-actions"><span class="profile-selection-count" role="status">' + selected.length + ' selected</span><button type="button" class="button" name="selectAllProfileMembers">Select all</button><button type="button" class="button" name="clearProfileSelection">Clear</button><button type="button" class="button" name="previewSelectedProfileTeam"' + (!this.curTeam || !selected.length ? ' disabled' : '') + '>Preview team</button></div><div class="profile-team-preview" aria-live="polite"></div>');
+		this.$('.profile-member-remove').text('Remove');
+		this.$('.library-local-note').text('Personal names and sets are saved in this browser.');
+		var legacyApply = this.$('.library-apply-step');
+		if (legacyApply.length && !legacyApply.parent().hasClass('profile-rename-existing')) legacyApply.wrap('<details class="library-secondary profile-rename-existing"><summary>Rename the current team only</summary></details>');
+		if (this.profileTeamUndo) this.$('.profile-selection-actions').append('<button type="button" class="button profile-team-undo" name="undoSelectedProfileTeam">Undo team replacement</button>');
+		this.pendingSelectedProfileTeam = null;
+	};
+	p.showToolsManager = function () {var result = show.apply(this, arguments); if (this.librarySection !== 'sets') p.refreshProfileSelection.call(this); return result;};
+	p.refreshNicknameGroup = function () {var result = refresh.apply(this, arguments); p.refreshProfileSelection.call(this); return result;};
+	p.toggleProfileTeamMember = function (event) {
+		var profile = this.toolsData().selectedNickname, ids = this.profileSelections[profile] || [], id = event.currentTarget.value;
+		this.profileSelections[profile] = event.currentTarget.checked ? Array.from(new Set(ids.concat(id))) : ids.filter(function (value) {return value !== id;});
+		this.$('.profile-select-member').filter(function () {return this.value === id;}).prop('checked', event.currentTarget.checked);
+		this.pendingSelectedProfileTeam = null; this.$('.profile-team-preview').empty();
+		this.$('.profile-selection-count').text(this.profileSelections[profile].length + ' selected');
+		this.$('[name=previewSelectedProfileTeam]').prop('disabled', !this.curTeam || !this.profileSelections[profile].length);
+	};
+	p.selectAllProfileMembers = function () {
+		var group = this.nicknameGroupProfile(); if (!group) return;
+		this.profileSelections[this.toolsData().selectedNickname] = group.species.slice(); this.refreshProfileSelection();
+	};
+	p.clearProfileSelection = function () {this.profileSelections[this.toolsData().selectedNickname] = []; this.refreshProfileSelection();};
+	p.previewSelectedProfileTeam = function () {
+		if (!this.curTeam || !this.saveNicknameMappings()) return;
+		var data = this.toolsData(), profile = data.nicknames.find(function (n) {return n.id === data.selectedNickname;}), group = this.nicknameGroupProfile();
+		try {
+			var before = Storage.packTeam(this.curSetList), ids = this.profileSelections[profile.id] || [];
+			var sets = T.planProfileTeam(group, profile, ids, this.curSetList, this.curTeam.capacity || 6);
+			this.pendingSelectedProfileTeam = {profileId:profile.id, team:this.curTeam, savedTeam:this.curTeam.team, before:before, sets:sets, revision:T.profileTeamRevision(group, profile, before)};
+			this.$('.profile-team-preview').html('<p><strong>Replace this team with ' + sets.length + ' selected Pokémon</strong></p><ol>' + sets.map(function (set) {return '<li>' + esc(set.name || set.species) + (set.name && set.name !== set.species ? ' · ' + esc(set.species) : '') + (!(set.moves || []).length ? ' <small>· choose moves</small>' : '') + '</li>';}).join('') + '</ol><p class="tools-note">Matching team builds are kept. Saved sets and other profiles stay unchanged.</p><button type="button" class="button" name="applySelectedProfileTeam">Apply selected team</button> <button type="button" class="button" name="cancelSelectedProfileTeam">Cancel</button>');
+		} catch (error) {this.$('.profile-team-preview').text(error.message);}
+	};
+	p.cancelSelectedProfileTeam = function () {this.pendingSelectedProfileTeam = null; this.$('.profile-team-preview').empty(); this.$('[name=previewSelectedProfileTeam]').focus();};
+	p.applySelectedProfileTeam = function () {
+		var pending = this.pendingSelectedProfileTeam; if (!pending || !this.curTeam) return;
+		try {var latestPrefs = JSON.parse(window.localStorage.getItem('showdown_prefs')); if (latestPrefs) Storage.prefs.data = latestPrefs;} catch (error) {return this.$('.profile-team-preview').text('Could not verify saved data. Nothing changed.');}
+		var data = this.toolsData(), profile = data.nicknames.find(function (n) {return n.id === data.selectedNickname;}), group = this.nicknameGroupProfile();
+		if (!profile || !group || pending.savedTeam !== this.curTeam.team || pending.team !== this.curTeam || pending.profileId !== profile.id || pending.revision !== T.profileTeamRevision(group, profile, Storage.packTeam(this.curSetList))) return this.$('.profile-team-preview').text('The team, names or roster changed. Preview again before applying.');
+		var previous = this.curSetList;
+		try {
+			this.curSetList = T.clone(pending.sets); this.profileTeamUndo = {team:this.curTeam, before:pending.before, after:Storage.packTeam(this.curSetList)};
+			this.curSet = null; this.curSetLoc = -1; this.toolsView = false; this.profilesView = false; this.toolsCommit(); this.pendingSelectedProfileTeam = null;
+		} catch (error) {this.curSetList = previous; this.curTeam.team = pending.before; this.toolsView = true; this.profileTeamUndo = null; app.addPopupMessage('Could not save the team. Your previous team is kept.');}
+	};
+	p.undoSelectedProfileTeam = function () {
+		var undo = this.profileTeamUndo; if (!undo || undo.team !== this.curTeam || Storage.packTeam(this.curSetList) !== undo.after) return app.addPopupMessage('The team changed afterward. Nothing was overwritten.');
+		this.curSetList = Storage.unpackTeam(undo.before); this.profileTeamUndo = null; this.toolsCommit();
+	};
+	var saveDraft = p.saveNicknameDraft;
+	p.saveNicknameDraft = function () {var result = saveDraft.apply(this, arguments); if (this.pendingSelectedProfileTeam) {this.pendingSelectedProfileTeam = null; this.$('.profile-team-preview').empty();} return result;};
+	p.events['change .profile-select-member'] = 'toggleProfileTeamMember';
+})();

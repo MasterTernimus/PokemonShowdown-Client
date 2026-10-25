@@ -781,6 +781,23 @@ Storage.packAllTeams = function (teams) {
 	}).join('\n');
 };
 
+// Runtime references keep a chosen teammate stable while rows move; only its slot is serialized.
+Storage.setInitialDisguise = function (set, team, slot) {
+	var target = Number.isInteger(slot) && slot > 0 ? team[slot - 1] : null;
+	if (target === set) target = null;
+	Object.defineProperty(set, '_initialDisguiseTarget', {value: target || null, writable: true, configurable: true});
+	if (target) set.initialDisguise = slot; else delete set.initialDisguise;
+};
+Storage.getInitialDisguiseSlot = function (set, team) {
+	if (!Object.prototype.hasOwnProperty.call(set, '_initialDisguiseTarget')) Storage.setInitialDisguise(set, team, set.initialDisguise);
+	var index = team.indexOf(set._initialDisguiseTarget);
+	return index >= 0 && team[index] !== set ? index + 1 : undefined;
+};
+Storage.bindInitialDisguises = function (team) {
+	if (team) team.forEach(function (set) { Storage.getInitialDisguiseSlot(set, team); });
+	return team;
+};
+
 Storage.packTeam = function (team) {
 	var buf = '';
 	if (!team) return '';
@@ -868,12 +885,14 @@ Storage.packTeam = function (team) {
 			buf += '|';
 		}
 
-		if (set.pokeball || (set.hpType && !hasHP) || set.gigantamax || (set.dynamaxLevel !== undefined && set.dynamaxLevel !== 10) || set.teraType) {
+		if (set.pokeball || (set.hpType && !hasHP) || set.gigantamax || (set.dynamaxLevel !== undefined && set.dynamaxLevel !== 10) || set.teraType || Storage.getInitialDisguiseSlot(set, team)) {
 			buf += ',' + (set.hpType || '');
 			buf += ',' + toID(set.pokeball);
 			buf += ',' + (set.gigantamax ? 'G' : '');
 			buf += ',' + (set.dynamaxLevel !== undefined && set.dynamaxLevel !== 10 ? set.dynamaxLevel : '');
 			buf += ',' + (set.teraType || '');
+			var disguise = Storage.getInitialDisguiseSlot(set, team);
+			if (disguise) buf += ',' + disguise;
 		}
 	}
 
@@ -978,9 +997,9 @@ Storage.fastUnpackTeam = function (buf) {
 		j = buf.indexOf(']', i);
 		var misc = undefined;
 		if (j < 0) {
-			if (i < buf.length) misc = buf.substring(i).split(',', 6);
+			if (i < buf.length) misc = buf.substring(i).split(',', 7);
 		} else {
-			if (i !== j) misc = buf.substring(i, j).split(',', 6);
+			if (i !== j) misc = buf.substring(i, j).split(',', 7);
 		}
 		if (misc) {
 			set.happiness = (misc[0] ? Number(misc[0]) : 255);
@@ -989,12 +1008,13 @@ Storage.fastUnpackTeam = function (buf) {
 			set.gigantamax = !!misc[3];
 			set.dynamaxLevel = (misc[4] ? Number(misc[4]) : 10);
 			set.teraType = misc[5];
+			if (misc[6]) set.initialDisguise = Number(misc[6]);
 		}
 		if (j < 0) break;
 		i = j + 1;
 	}
 
-	return team;
+	return Storage.bindInitialDisguises(team);
 };
 
 Storage.unpackTeam = function (buf) {
@@ -1096,9 +1116,9 @@ Storage.unpackTeam = function (buf) {
 		j = buf.indexOf(']', i);
 		var misc = undefined;
 		if (j < 0) {
-			if (i < buf.length) misc = buf.substring(i).split(',', 6);
+			if (i < buf.length) misc = buf.substring(i).split(',', 7);
 		} else {
-			if (i !== j) misc = buf.substring(i, j).split(',', 6);
+			if (i !== j) misc = buf.substring(i, j).split(',', 7);
 		}
 		if (misc) {
 			set.happiness = (misc[0] ? Number(misc[0]) : 255);
@@ -1107,12 +1127,13 @@ Storage.unpackTeam = function (buf) {
 			set.gigantamax = !!misc[3];
 			set.dynamaxLevel = (misc[4] ? Number(misc[4]) : 10);
 			set.teraType = misc[5];
+			if (misc[6]) set.initialDisguise = Number(misc[6]);
 		}
 		if (j < 0) break;
 		i = j + 1;
 	}
 
-	return team;
+	return Storage.bindInitialDisguises(team);
 };
 
 Storage.packedTeamNames = function (buf) {
@@ -1144,8 +1165,12 @@ Storage.packedTeamNames = function (buf) {
 Storage.packedTeamIcons = function (buf) {
 	if (!buf) return '<em>(empty team)</em>';
 
-	return this.packedTeamNames(buf).map(function (species) {
-		return '<span class="picon" style="' + Dex.getPokemonIcon(species) + ';float:left;overflow:visible"><span style="font-size:0px">' + toID(species) + '</span></span>';
+	var names = this.packedTeamNames(buf);
+	var poli = function (species) { return /^(politoed|poliwrath)(rejuv)?$/.test(toID(species)); };
+	var sets = names.some(poli) ? this.fastUnpackTeam(buf) : null;
+	return names.map(function (species, index) {
+		var icon = sets && poli(species) && sets[index] ? Dex.getAbilityFormPreviewSet(sets[index]) : species;
+		return '<span class="picon" style="' + Dex.getPokemonIcon(icon) + ';float:left;overflow:visible"><span style="font-size:0px">' + toID(species) + '</span></span>';
 	}).join('');
 };
 
@@ -1286,6 +1311,8 @@ Storage.importTeam = function (buffer, teams) {
 		} else if (line.substr(0, 14) === 'Hidden Power: ') {
 			line = line.substr(14);
 			curSet.hpType = line;
+		} else if (line.substr(0, 18) === 'Initial Disguise: ') {
+			curSet.initialDisguise = Number(line.substr(18));
 		} else if (line.substr(0, 11) === 'Tera Type: ') {
 			line = line.substr(11);
 			curSet.teraType = line;
@@ -1351,7 +1378,7 @@ Storage.importTeam = function (buffer, teams) {
 	if (teams && teams.length && typeof teams[teams.length - 1].team !== 'string') {
 		teams[teams.length - 1].team = Storage.packTeam(teams[teams.length - 1].team);
 	}
-	return team;
+	return Storage.bindInitialDisguises(team);
 };
 Storage.exportAllTeams = function () {
 	var buf = '';
@@ -1407,6 +1434,8 @@ Storage.exportTeam = function (team, gen, hidestats) {
 		if (typeof curSet.happiness === 'number' && curSet.happiness !== 255 && !isNaN(curSet.happiness)) {
 			text += 'Happiness: ' + curSet.happiness + "  \n";
 		}
+		var disguise = Storage.getInitialDisguiseSlot(curSet, team);
+		if (disguise) text += 'Initial Disguise: ' + disguise + '  \n';
 		if (curSet.pokeball) {
 			text += 'Pokeball: ' + curSet.pokeball + "  \n";
 		}

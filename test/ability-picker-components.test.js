@@ -24,9 +24,9 @@ describe('Component-first Team Builder ability rows', () => {
   assert(html.includes('Magic Guard + Infiltrator'));
   assert(html.indexOf('Magic Guard + Infiltrator') < html.indexOf('Ghost hits or Power Gem'));
  });
- it('shows Atrocity without its removed contact package without a redundant Self Sufficient label', () => {
+ it('shows Atrocity with its approved contact and defense packages without a redundant Self Sufficient label', () => {
   const html=visible(Dex.abilities.get('atrocity'));
-  assert(html.includes('Unbound Blaze'));assert(!html.includes('Tough Claws'));
+  assert(html.includes('Unbound Blaze'));assert(html.includes('Tough Claws')); assert(html.includes('Fire Ward'));
   assert(!html.includes('Self Sufficient'));
  });
  it('renders canonical components for every composite and removes filler', () => {

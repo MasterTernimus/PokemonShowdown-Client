@@ -19,7 +19,7 @@ function comparison() {
  const base = {actors:[{species:'Mew',moves:['Tackle','Thunderbolt']},{species:'Pikachu',moves:['Thunder']},{species:'Mew'},{species:'Mew'}],sideConditions:[[],[]]};
  const room = {scenario:() => base, $:chain, $el:chain('root'), scenarioRevision:0, refreshActors() {},refreshCalcMoves() {},refreshFieldState() {},scenarioEdited() {this.cancelComparison();}, requestCalculator(json) {this.requestId='request-'+ ++serial;this.calculatorLastSentAt=Date.now();sent.push({id:this.requestId,json});}};
  const set = fn => {const id=++serial;timers.set(id,fn);return id;}; const clear = id => timers.delete(id);
- for (const name of ['cancelComparison','compareMoves','nextComparison','receiveCalculator']) room[name] = new Function('receive','setTimeout','clearTimeout','return '+method(name,name==='receiveCalculator'?'comparisonRequest':''))(() => {},set,clear);
+ for (const name of ['koVerdict','cancelComparison','compareMoves','nextComparison','receiveCalculator']) room[name] = new Function('receive','setTimeout','clearTimeout','return '+method(name,name==='receiveCalculator'?'comparisonRequest':''))(() => {},set,clear);
  return {room,base,writes,sent,flush() {const entry=timers.entries().next().value;assert(entry,'timer expected');timers.delete(entry[0]);entry[1]();},reply(id,percent=10) {room.receiveCalculator({requestId:id,results:[{}, {minPercent:percent,maxPercent:percent,kos:0}],samples:32});}};
 }
 describe('Calculator comparison request ownership', () => {

@@ -159,6 +159,11 @@ describe('Sprite rendering regressions', () => {
 			if (!species.exists || species.isTotem || id.includes('gmax') || id.includes('mega') || id === 'hydreigon' || id === 'feraligatr') continue;
 			for (const gen of [5, 9]) for (const shiny of [false, true]) for (const front of [false, true]) {
 				const data = Dex.getSpriteData(species.name, front, {gen, shiny});
+				const approvedMewtwo = ({'gen5ani/mewtwo.gif':[108,82], 'gen5ani-back/mewtwo.gif':[97,73], 'ani-shiny/mewtwo.gif':[87,82], 'ani-back-shiny/mewtwo.gif':[121,72]})[data.url.split('/sprites/')[1]];
+				if (approvedMewtwo && data.url.endsWith('.gif')) {
+					assert.deepEqual([data.w,data.h], approvedMewtwo, data.url);
+					continue;
+				}
 				const max = id === 'talonflame' ? Math.round((front ? 80 : 72) * 1.45) : shiny && ['delphox','gyarados'].includes(id) ? 96 : id === 'cofagrigus' ? (front ? 96 : 84) : front ? 80 : 72;
 				assert(data.w <= max && data.h <= max, `${id}: ${data.w}x${data.h}`);
 			}

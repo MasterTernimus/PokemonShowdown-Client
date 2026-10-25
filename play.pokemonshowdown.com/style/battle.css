@@ -740,6 +740,13 @@ License: GPLv2
     color: #441155;
 }
 
+.coldeclipseterrainweather {
+    background: linear-gradient(rgba(18, 15, 45, 0.55), rgba(15, 28, 48, 0.3)),
+        #192336 url(../fx/weather-icyterrain.png) no-repeat center center;
+    background-size: 100% 100%;
+    color: #e4e7ff;
+}
+
 .bewitchedwoodsterrainweather {
     background: #CCAAEE url(../fx/weather-bewitchedwoodsterrain.png) no-repeat center center;
     background-size: 100% 100%;

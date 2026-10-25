@@ -781,7 +781,7 @@
     },
     "hydrabond": {
       "shortDesc": "Eligible single hits strike 3x; native variable hits maximize in singles/doubles; remaining hits chain after KO.",
-      "desc": "Eligible single-target damaging moves hit three times; existing multi-hit moves, spread moves outside Free-for-All, charging moves, delayed attacks, Z/Max moves and moves barred from extra hits are excluded. The second and third hits deal 30% damage and retarget the foe's ally if the first target fainted. In Free-for-All battles, single-target moves hit all foes once at 1.3x power; spread moves hit all foes three times, with later hits at 30% power, and full-power spread moves stay full power. Moves have 1.2x power on Dragon's Den. Gilded Helix is the exception: three full 50-power hits in every format, with all-foes targeting in Free-for-All; suppression restores its native two hits."
+      "desc": "Eligible single-target damaging moves hit three times; multi-hit moves, spread moves outside Free-for-All, charging moves, delayed attacks, Z/Max moves and moves barred from extra hits are excluded. The second and third hits deal 30% damage and retarget the foe's ally if the first target fainted. In Free-for-All battles, single-target moves hit all foes once at 1.3x power; spread moves hit all foes three times, with later hits at 30% power, and full-power spread moves stay full power. Moves have 1.2x power on Dragon's Den. Gilded Helix is the exception: three full 50-power hits in every format, with all-foes targeting in Free-for-All; suppression restores its native two hits."
     },
     "prismscale": {
       "shortDesc": "Combines the listed abilities.",
@@ -789,7 +789,7 @@
     },
     "seasonalstride": {
       "shortDesc": "Normal moves become its primary type at 1.2x; kicks 1.4x; sun Speed 2x; weather changes season.",
-      "desc": "Normal attacks become the current primary type with the existing 1.2x conversion boost; kicking moves have 1.4x power. Speed doubles only in sun. At turn end, rain selects Spring, sun Summer, sand Autumn and hail/snow Winter; no weather retains the current form. The originally selected ability slot maps to the new season. External replacement abilities remain until ordinary restoration; genuine entry restores the selected slot for the current season. Transform does not cycle seasons."
+      "desc": "Normal attacks become the current primary type with the 1.2x conversion boost; kicking moves have 1.4x power. Speed doubles only in sun. At turn end, rain selects Spring, sun Summer, sand Autumn and hail/snow Winter; no weather has the current form. The originally selected ability slot maps to the new season. External replacement abilities remain until ordinary restoration; genuine entry restores the selected slot for the current season. Transform does not cycle seasons."
     },
     "shadowtag": {
       "shortDesc": "Traps foes; takes 0.8x damage from attacks.",
@@ -817,7 +817,7 @@
     },
     "scrapbreaker": {
       "shortDesc": "Steel attacks beat Steel typing; damaging Steel foes grants +1 Atk once per turn.",
-      "desc": "Steel attacks treat the target’s Steel typing as super effective while retaining other type contributions. After damaging an opposing Steel-type Pokemon, attempts +1 Attack once per turn. Gigaton Hammer retains screen removal and grounding after HP damage. Mold Breaker is Tinkaton’s separate passive."
+      "desc": "Steel attacks treat the target’s Steel typing as super effective while retaining other type contributions. After damaging an opposing Steel-type Pokemon, attempts +1 Attack once per turn. Gigaton Hammer has screen removal and grounding after HP damage. Mold Breaker is Tinkaton’s separate passive."
     },
     "royalescort": {
       "shortDesc": "Full local Pressure + Unnerve.",
@@ -880,7 +880,7 @@
       "desc": "Full local Suction Cups. On each genuine switch-in, absorbs and removes Stealth Rock from its own side before it causes entry damage. Other hazards remain. No healing, stat boost, berry restoration or embedded Iron Barbs. Ability restarts do not activate it, and suppression prevents removal. Iron Barbs is its separate species passive."
     },
     "blackviper": {
-      "desc": "Full local Whiplash and Shed Skin. Gains +1 accuracy on entry and 1.5x tail-move power; the first opposing HP-damaging tail hit each entry attempts bad poison. Shed Skin has one 50% end-turn activation chance when statused, afflicted, negatively boosted or at half HP or less: heals 1/4 max HP, cures status, removes its listed ailments and clears negative stages. Retains its guaranteed Dragon’s Den behavior. Sirius executes its inherited Shed Skin only once.",
+      "desc": "Full local Whiplash and Shed Skin. Gains +1 accuracy on entry and 1.5x tail-move power; the first opposing HP-damaging tail hit each entry attempts bad poison. Shed Skin has one 50% end-turn activation chance when statused, afflicted, negatively boosted or at half HP or less: heals 1/4 max HP, cures status, removes its listed ailments and clears negative stages. Has its guaranteed Dragon’s Den behavior. Sirius executes its inherited Shed Skin only once.",
       "shortDesc": "Entry gives +1 accuracy; 1.5x tail power; first tail hit each entry badly poisons."
     },
     "venamskiss": {

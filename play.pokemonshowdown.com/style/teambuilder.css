@@ -607,3 +607,14 @@
 @media(max-width:639px) {
  .teamwrapper .setchart .setcell-ability > .starter-passives .passive-chip { height:auto; min-height:32px; white-space:normal; overflow-wrap:anywhere; line-height:1.35; padding:4px; }
 }
+/* Compact selection stays inside the existing Profiles rows and controls. */
+.local-tools-manager .profile-member-row { position: relative; padding-left: 28px; }
+.local-tools-manager .profile-member-row .profile-select-member { position: absolute; left: 0; top: 8px; width: 20px; height: 20px; margin: 0; }
+.profile-selection-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 8px 0; }
+.profile-team-preview:not(:empty) { margin: 8px 0; padding: 8px 10px; border-left: 3px solid #6c9db9; }
+.profile-team-preview ol { margin: 6px 0; padding-left: 24px; }
+.profile-roster-state { margin: 6px 0; }
+@media (max-width: 480px) { .profile-selection-actions .button { min-height: 36px; } .profile-team-preview { overflow-wrap: anywhere; } }
+.unified-profiles .library-step { margin-top: 0; padding-top: 10px; padding-bottom: 10px; }
+.unified-profiles .profile-member-row .profile-select-member { width: 24px; height: 24px; }
+.unified-profiles .profile-member-row { padding-left: 32px; }

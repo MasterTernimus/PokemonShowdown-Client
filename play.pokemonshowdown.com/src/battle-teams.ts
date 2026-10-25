@@ -44,6 +44,7 @@ export declare namespace ModernTeams {
 		gigantamax?: boolean;
 		/** Defaults to the primary type */
 		teraType?: string;
+		initialDisguise?: number;
 	}
 	export interface PokemonSet extends Partial<FullPokemonSet> {
 		/** Defaults to species name (not including forme), like in games */
@@ -120,12 +121,13 @@ export const ModernTeams = new class {
 			buf += `|${set.happiness !== undefined && set.happiness !== 255 ? set.happiness : ''}`;
 
 			if (set.pokeball || set.hpType || set.gigantamax ||
-				(set.dynamaxLevel !== undefined && set.dynamaxLevel !== 10) || set.teraType) {
+				(set.dynamaxLevel !== undefined && set.dynamaxLevel !== 10) || set.teraType || set.initialDisguise !== undefined) {
 				buf += `,${set.hpType || ''}`;
 				buf += `,${this.packName(set.pokeball || '')}`;
 				buf += `,${set.gigantamax ? 'G' : ''}`;
 				buf += `,${set.dynamaxLevel !== undefined && set.dynamaxLevel !== 10 ? set.dynamaxLevel : ''}`;
 				buf += `,${set.teraType || ''}`;
+				if (set.initialDisguise !== undefined) buf += `,${set.initialDisguise}`;
 			}
 		}
 
@@ -251,9 +253,9 @@ export const ModernTeams = new class {
 			j = buf.indexOf(']', i);
 			let misc;
 			if (j < 0) {
-				if (i < buf.length) misc = buf.substring(i).split(',', 6);
+				if (i < buf.length) misc = buf.substring(i).split(',', 7);
 			} else {
-				if (i !== j) misc = buf.substring(i, j).split(',', 6);
+				if (i !== j) misc = buf.substring(i, j).split(',', 7);
 			}
 			if (misc) {
 				set.happiness = (misc[0] ? Number(misc[0]) : undefined);
@@ -262,6 +264,7 @@ export const ModernTeams = new class {
 				set.gigantamax = !!misc[3] || undefined;
 				set.dynamaxLevel = (misc[4] ? Number(misc[4]) : undefined);
 				set.teraType = misc[5] || undefined;
+				if (misc[6]) set.initialDisguise = Number(misc[6]);
 			}
 			i = j + 1;
 			if (j < 0 || i <= lastI) break;
@@ -394,6 +397,7 @@ export const ModernTeams = new class {
 		if (set.gigantamax) {
 			text += !newFormat ? `Gigantamax: Yes\n` : `Gigantamax\n`;
 		}
+		if (set.initialDisguise !== undefined) text += `Initial Disguise: ${set.initialDisguise}\n`;
 		if (set.teraType) {
 			text += `Tera Type: ${set.teraType}\n`;
 		}
@@ -487,6 +491,8 @@ export const ModernTeams = new class {
 			set.dynamaxLevel = +line.slice(15);
 		} else if (line === 'Gigantamax: Yes' || line === 'Gigantamax') {
 			set.gigantamax = true;
+		} else if (line.startsWith('Initial Disguise: ')) {
+			set.initialDisguise = Number(line.slice(18));
 		} else if (line.startsWith('Tera Type: ')) {
 			set.teraType = line.slice(11);
 		} else if (line.startsWith('EVs: ')) {

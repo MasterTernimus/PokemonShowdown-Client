@@ -4471,3 +4471,142 @@ a.ilink.yours {
 .battle .compact-effect-indicators button:hover {color:#fff6c9;}
 .battle .compact-effect-indicators button:focus-visible {outline:2px solid #ffdc7e;outline-offset:1px;}
 @media(pointer:coarse){.battle-controls .battle-effects-toggle{min-height:44px}}
+
+/* Familiar mirrored calculator: compact sets, shared field, native engine results. */
+.calculator-workspace.calc-reference {padding:10px;font:12px/1.3 Arial,sans-serif;}
+.calc-reference .calc-header h2 {font-size:20px;margin:0;}
+.calc-reference .calc-eyebrow {display:none;}
+.calc-reference .calc-intro {margin:5px 0 12px;font-size:11px;}
+.calc-reference .calc-primary-matchup {display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,.75fr) minmax(0,1fr);gap:8px;align-items:start;}
+.calc-reference .calc-actor {padding:7px;border-radius:0;}
+.calc-reference .calc-actor legend {font-size:13px;text-align:center;}
+.calc-reference .calc-center {min-width:0;}
+.calc-reference .calc-pick-open {min-height:28px;padding:4px 7px;margin-bottom:4px;}
+.calc-reference .calc-actor > .calc-fields,.calc-reference .calc-actor-options > .calc-fields {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 7px;}
+.calc-reference .calc-fields label,.calc-reference .calc-condition-grid label {font-size:11px;font-weight:normal;}
+.calc-reference .calc-identity {min-height:30px;}
+.calc-reference .calc-identity strong {font-size:14px;}
+.calc-reference .calc-ability-picker {grid-column:1/-1;}
+.calc-reference .calc-ability-summary {margin:2px 0;font-size:11px;line-height:1.25;}
+.calc-reference details {padding:3px 0;margin:4px 0;border-radius:0;box-shadow:none;}
+.calc-reference .calc-actor-options,.calc-reference .calc-advanced {border:0;background:transparent;}
+.calc-reference .calc-actor-options > summary,.calc-reference .calc-advanced > summary {font-size:11px;}
+.calc-reference .calc-stats {width:100%;table-layout:fixed;margin:3px 0;border-collapse:collapse;}
+.calc-reference .calc-stats th,.calc-reference .calc-stats td {padding:2px;text-align:right;}
+.calc-reference .calc-stats th:first-child {width:42px;text-align:left;}
+.calc-reference .calc-stats input {width:100%;min-width:0;min-height:24px;height:24px;padding:1px 2px;box-sizing:border-box;}
+.calc-reference .calc-comparison-moves {margin:7px 0 4px;padding-top:3px;}
+.calc-reference .calc-comparison-moves h3 {font-size:12px;margin:3px 0;}
+.calc-reference .calc-comparison-row {grid-template-columns:minmax(0,1fr) auto;gap:2px 4px;padding:2px 0;margin:0;border-bottom:1px solid #8696a644;}
+.calc-reference .calc-comparison-row input {min-height:26px;padding:2px 4px;}
+.calc-reference .calc-comparison-row button {min-height:26px;padding:2px 5px;}
+.calc-reference .calc-move-result {min-height:13px;font-size:11px;}
+.calc-reference .calc-conditions {padding:7px;border-radius:0;}
+.calc-reference .calc-conditions h3 {font-size:13px;margin:0 0 5px;text-align:center;}
+.calc-reference .calc-condition-grid {grid-template-columns:1fr;gap:5px;}
+.calc-reference .calc-sides {gap:4px;}
+.calc-reference .calc-side-controls {padding:3px;}
+.calc-reference .calc-side-controls legend {font-size:11px;}
+.calc-reference .calc-extra-conditions > summary {font-size:11px;}
+.calc-reference .calc-center .calc-action {padding:5px 0;background:transparent;border:0;}
+.calc-reference .calc-compare-all {min-height:30px;padding:5px;}
+.calc-reference .calc-status {font-size:11px;margin:5px 0;}
+.calc-reference .calc-results {padding:5px;}
+.calc-reference .calc-results:empty {display:none;}
+.calc-reference .calc-result-card {padding:6px;}
+.calc-reference .calc-result-head strong {font-size:20px;}
+.calc-reference .calc-ability-override,.calc-reference .calc-set,.calc-reference .calc-single-attack {font-size:11px;}
+@container(max-width:900px){.calc-reference .calc-primary-matchup{grid-template-columns:repeat(2,minmax(0,1fr));}.calc-reference .calc-center{grid-column:1/-1;grid-row:2;}.calc-reference .calc-condition-grid{grid-template-columns:repeat(3,minmax(0,1fr));}}
+@container(max-width:550px){.calc-reference .calc-primary-matchup{display:flex;flex-direction:column;}.calc-reference .calc-primary-matchup>.calc-actor,.calc-reference .calc-center{width:100%;box-sizing:border-box;}.calc-reference .calc-center{order:2;}.calc-reference .calc-condition-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(max-width:600px){.calculator-workspace.calc-reference{padding:7px;}.calc-reference .calc-primary-matchup{display:flex;flex-direction:column;}.calc-reference .calc-primary-matchup>.calc-actor,.calc-reference .calc-center{width:100%;box-sizing:border-box;}.calc-reference .calc-center{order:2;}.calc-reference .calc-condition-grid{grid-template-columns:repeat(2,minmax(0,1fr));}.calculator-workspace.calc-reference input,.calculator-workspace.calc-reference select,.calculator-workspace.calc-reference button{min-height:32px;font-size:13px;}.calc-reference .calc-stats input{height:30px;min-height:30px;}.calc-reference .calc-actor-options>.calc-fields{grid-template-columns:repeat(2,minmax(0,1fr));}}
+
+.calc-reference .calc-species-results:empty {display:none;}
+.calc-reference .calc-actor > .calc-fields {display:block;}
+.calc-reference .calc-actor > .calc-fields > label,.calc-reference .calc-ability-picker > label {display:grid;grid-template-columns:65px minmax(0,1fr);align-items:center;gap:5px;margin:3px 0;}
+.calc-reference .calc-actor > .calc-fields input,.calc-reference .calc-actor > .calc-fields select {width:100%;min-height:26px;}
+.calc-reference .calc-ability-summary {margin-left:70px;}
+.calc-reference .calc-ability-override {margin-left:70px;}
+.calc-reference .calc-advanced {margin:4px 0 6px;}
+.calc-reference .calc-advanced > .calc-fields:empty {display:none;}
+.calc-reference .calc-actor-options {margin-top:6px;}
+@media(max-width:600px){.calc-reference .calc-actor > .calc-fields input,.calc-reference .calc-actor > .calc-fields select{min-height:32px;}}
+
+.calc-reference .calc-ko-verdict {font-size:13px;font-weight:bold;margin:5px 0;overflow-wrap:anywhere;}
+
+/* Compact phone workspace; desktop geometry and stored teams are unchanged. */
+@media(max-width:639px) {
+ .teambuilder-workspace {background:#eef2f5;color:#253747;font:14px/1.4 Arial,sans-serif;}
+ .dark .teambuilder-workspace {background:#202c37;color:#e4edf5;}
+ .teambuilder-workspace .teampane {padding:10px;box-sizing:border-box;}
+ .teambuilder-workspace .teampane .team {max-width:100%;box-sizing:border-box;}
+ .teambuilder-workspace .teamlist {padding-left:0;}
+ .teambuilder-workspace .teampane input,.teambuilder-workspace .teamnameedit {max-width:100%;box-sizing:border-box;font-size:16px;min-height:40px;}
+ .teambuilder-workspace .teamwrapper .button,.teambuilder-workspace .teamwrapper summary {min-height:40px;box-sizing:border-box;}
+ .teambuilder-workspace .editing-set>.pad {padding:5px 8px;background:inherit;}
+ .teambuilder-workspace .editing-set>.teambar {grid-template-columns:repeat(6,minmax(0,1fr));gap:3px;padding:0 6px 6px;}
+ .teambuilder-workspace .editing-set>.teambar button {height:49px;min-height:49px;font-size:10px;padding:1px;overflow:hidden;}
+ .teambuilder-workspace .teamchartbox .teamchart {padding:6px;}
+ .teambuilder-workspace .teamwrapper .setchart {padding:7px;gap:6px;}
+ .teambuilder-workspace .teamwrapper .setchart-nickname {padding:5px;margin-top:4px;}
+ .teambuilder-workspace .teamwrapper .setcol-moves {grid-column:1/-1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;align-items:end;}
+ .teambuilder-workspace .setcol-moves .setcell {padding:0;}
+ .teambuilder-workspace .setcol-stats {grid-column:1/-1;}
+ .teambuilder-workspace .team-profile-toolbar {margin:4px 6px;padding:4px 6px;}
+ .teambuilder-workspace .teamwrapper .setmenu {gap:5px;padding:3px 0;}
+ .teambuilder-workspace .teamwrapper .setmenu button {min-height:36px;}
+ .teambuilder-workspace .editing-set.mobile-picker-open>.pad,.teambuilder-workspace .editing-set.mobile-picker-open>.teambar,.teambuilder-workspace .editing-set.mobile-picker-open>.teamchartbox {display:none;}
+ .teambuilder-workspace .editing-set.mobile-picker-open>.teambuilder-results {display:block;position:relative;top:auto;left:auto;right:auto;width:100%;margin:0;padding:0;box-sizing:border-box;min-height:0;}
+ .teambuilder-workspace .editing-set:not(.mobile-picker-open)>.teambuilder-results {display:none;}
+ .teambuilder-workspace .picker-return-bar {position:sticky;top:0;background:#e5edf3;z-index:10;}
+ .dark .teambuilder-workspace .picker-return-bar {background:#263b4c;}
+ .teambuilder-workspace .picker-search-input {font-size:16px;}
+ .teambuilder-workspace .statform,.teambuilder-workspace .detailsform {max-width:100%;box-sizing:border-box;overflow-x:auto;}
+ .teambuilder-workspace .teambuilder-pokemon-import textarea,.teambuilder-workspace .teamedit textarea {width:100%;max-width:100%;box-sizing:border-box;font:14px/1.4 monospace;}
+ .teambuilder-workspace .local-tools-manager input,.teambuilder-workspace .local-tools-manager select {max-width:100%;box-sizing:border-box;min-height:40px;font-size:16px;}
+ .teambuilder-workspace .library-tabs {gap:4px;}
+}
+
+@media(max-width:639px){.ps-room.teambuilder-workspace{background:#eef2f5!important;}.dark .ps-room.teambuilder-workspace{background:#202c37!important;}.dark .teambuilder-workspace .setchart,.dark .teambuilder-workspace .setchart-nickname{background-color:#2a3a48;border-color:#61778a;}.dark .teambuilder-workspace .setchart label,.dark .teambuilder-workspace .setchart-nickname label{color:#d5e2ed;}}
+
+.mobile-team-slot {display:none;}
+@media(max-width:639px){
+ .teambuilder-workspace .team-view .mobile-team-summary > :not(.mobile-team-slot){display:none;}
+ .teambuilder-workspace .team-view .mobile-team-slot{display:grid;grid-template-columns:42px minmax(0,1fr);align-items:center;gap:2px 6px;width:100%;margin:4px 0;min-height:60px;padding:7px 9px;text-align:left;white-space:normal;}
+ .mobile-team-slot .picon{grid-row:1/span 2;}
+ .mobile-team-slot .mobile-slot-name{font-weight:bold;font-size:15px;overflow-wrap:anywhere;}
+ .mobile-team-slot small{grid-column:2;font-size:12px;}
+ .dark .teambuilder-workspace .mobile-team-slot{background:#2c4051;color:#eff5fa;border-color:#657f94;text-shadow:none;}
+}
+
+/* Local group batches share the compact Profiles layout. */
+.library-undo {display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin:6px 0; color:#69737c; font-size:12px;}
+.group-batch-tools {margin:8px 0;}
+.group-batch-editor {margin-top:8px; max-width:650px;}
+.group-batch-editor[hidden] {display:none;}
+.group-batch-editor > label {display:block; margin:6px 0;}
+.group-batch-editor textarea {display:block; width:100%; box-sizing:border-box; resize:vertical;}
+.group-batch-preview {overflow-wrap:anywhere;}
+.group-batch-choice {display:inline-flex; align-items:center; gap:4px; margin:4px 12px 4px 0;}
+.group-batch-members {max-height:180px; overflow:auto; padding:6px 10px; margin:8px 0; border:1px solid #667e90;}
+.group-batch-members[hidden] {display:none;}
+.group-batch-preview h4 {margin:8px 0;}
+@media(max-width:639px) {.group-batch-editor button {min-height:36px;} .group-batch-choice {min-height:28px;}}
+
+.local-tools-manager label.group-batch-choice {display:inline-flex; flex-direction:row; align-items:center; gap:5px;}
+.local-tools-manager .group-batch-member {width:auto; flex:none; margin:0;}
+
+.detailsform select[name="initialdisguise"] { max-width: 100%; }
+.detailsform select[name="initialdisguise"] + .formnote { display: block; max-width: 28em; margin-top: 4px; line-height: 1.35; }
+.own-disguise { display: block; font-size: 11px; font-weight: normal; line-height: 1.4; }
+
+.battle-controls .whatdo .own-disguise { border: 0; background: transparent; padding: 0; margin: 2px 0; }
+
+/* The legacy client loads client.css rather than the Preact teambuilder stylesheet. */
+.teambuilder-workspace.unified-profiles .local-tools-manager .nickname-row.profile-member-row { position:relative; padding-left:32px; }
+.local-tools-manager .profile-member-row .profile-select-member { position:absolute; left:0; top:8px; width:24px; height:24px; min-height:24px; margin:0; }
+.profile-selection-actions { display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin:8px 0; }
+.profile-team-preview:not(:empty) { margin:8px 0; padding:8px 10px; border-left:3px solid #6c9db9; }
+.profile-team-preview ol { margin:6px 0; padding-left:24px; }
+.profile-roster-state { margin:6px 0; }
+.unified-profiles .library-step { margin-top:0; padding-top:10px; padding-bottom:10px; }
+@media(max-width:480px) { .profile-selection-actions .button { min-height:36px; } .profile-team-preview { overflow-wrap:anywhere; } }

@@ -650,9 +650,7 @@
 			var pokemon = switchables[pos] || {};
 			var speciesid = toID(pokemon.speciesForme || pokemon.species || pokemon.details || pokemon.name);
 			var megaTargetid = toID(canMegaEvo);
-			var isGardevoirVoid = speciesid === 'gardevoirvoid' || (speciesid === 'gardevoir' && curActive.moves.some(function (move) {
-				return toID(move.id || move.move) === 'darkvoid';
-			})) || megaTargetid === 'gardevoirvoidmega';
+			var isGardevoirVoid = speciesid === 'gardevoirvoid';
 			var isGardevoiriteMega = canMegaEvo && (toID(pokemon.item) === 'gardevoirite' || megaTargetid.indexOf('gardevoir') === 0) && (isGardevoirVoid || speciesid === 'gardevoir' || megaTargetid.indexOf('gardevoir') === 0);
 			var canMegaEvoX = curActive.canMegaEvoX || isGardevoiriteMega;
 			var canMegaEvoY = curActive.canMegaEvoY || isGardevoiriteMega;
@@ -676,6 +674,14 @@
 					megaXLabel = 'Gardevoir-Mega-Z';
 					megaYLabel = 'Gardevoir-Void-Mega';
 				}
+			}
+			var gardevoirRoutes = speciesid.indexOf('gardevoir') === 0 ? Dex.getGardevoirMegaRoutes(pokemon.speciesForme || pokemon.species || '', pokemon.item || '') : null;
+			if (gardevoirRoutes) {
+				canMegaEvoX = !!curActive.canMegaEvoX;
+				canMegaEvoY = !!curActive.canMegaEvoY;
+				megaLabel = gardevoirRoutes.mega || 'Mega Evolution';
+				megaXLabel = gardevoirRoutes.megax || 'Mega Evolution X';
+				megaYLabel = gardevoirRoutes.megay || 'Mega Evolution Y';
 			}
 
 			this.finalDecisionMove = curActive.maybeDisabled || false;
@@ -759,6 +765,11 @@
 				// Move chooser
 				var hpBar = '<small class="' + (hpRatio < 0.2 ? 'critical' : hpRatio < 0.5 ? 'weak' : 'healthy') + '">HP ' + switchables[pos].hp + '/' + switchables[pos].maxhp + '</small>';
 				requestTitle += ' What will <strong>' + BattleLog.escapeHTML(switchables[pos].name) + '</strong> do? ' + hpBar;
+				var disguise = this.battle.myPokemon[pos] && this.battle.myPokemon[pos].disguise;
+				if (disguise && this.side && this.request.side.id === this.side && this.battle.nearSide.sideid === this.side && !this.battle.seeking) {
+					var disguiseHelp = 'Actual Pokémon: ' + switchables[pos].name + ' (' + switchables[pos].speciesForme + '). Only you can see this. ' + (disguise.mode === 'perfectillusion' ? 'Perfect Illusion copies STAB, eligible ability and passives.' : 'Illusion copies appearance only.');
+					requestTitle += '<small class="own-disguise" tabindex="0" title="' + BattleLog.escapeHTML(disguiseHelp) + '">Disguised as ' + BattleLog.escapeHTML(disguise.name + ' (' + disguise.species + ')') + '</small>';
+				}
 
 				var hasMoves = false;
 				var moveMenu = '';
@@ -1176,6 +1187,8 @@
 		receiveRequest: function (request, choiceText) {
 			this.pulseMovePreview = null;
 			if (!request) {
+				this.$('.own-disguise').remove();
+				for (var ownPokemon of this.battle.myPokemon || []) delete ownPokemon.disguise;
 				this.side = '';
 				return;
 			}

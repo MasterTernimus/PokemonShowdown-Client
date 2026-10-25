@@ -15,7 +15,7 @@ describe('Super U.M.D display name compatibility', () => {
  });
  it('packs both display names to the server-compatible original ID', () => {
   const source = fs.readFileSync('play.pokemonshowdown.com/js/storage.js', 'utf8');
-  const start = source.indexOf('Storage.packTeam = function (team) {');
+  const start = source.indexOf('Storage.setInitialDisguise = function');
   const end = source.indexOf('Storage.fastUnpackTeam', start);
   const storage = {};
   new Function('Storage', 'Dex', 'toID', source.slice(start, end))(storage, Dex, toID);

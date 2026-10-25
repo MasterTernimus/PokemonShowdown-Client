@@ -588,8 +588,8 @@ class BattlePanel extends PSRoomPanel<BattleRoom> {
 			const isSharedMega = (toID(pokemon.item) === 'sharpedonite' && ['sharpedo', 'sharpedomega', 'sharpedomegay'].includes(speciesid)) || (toID(pokemon.item) === 'meganiumite' && ['meganium', 'meganiummega', 'meganiummegay'].includes(speciesid)) ||
 				(toID(pokemon.item) === 'chimechite' && ['chimecho', 'chimechomega', 'chimechomegay'].includes(speciesid)) ||
 				(toID(pokemon.item) === 'arbokite' && ['arbok', 'arbokmegax', 'arbokmegay'].includes(speciesid));
-			const canMegaEvoX = (moveRequest.canMegaEvoX || isGardevoiriteMega) && !choices.alreadyMega;
-			const canMegaEvoY = (moveRequest.canMegaEvoY || isGardevoiriteMega || isSharedMega) && !choices.alreadyMega;
+			const canMegaEvoX = moveRequest.canMegaEvoX && !choices.alreadyMega;
+			const canMegaEvoY = (moveRequest.canMegaEvoY || isSharedMega) && !choices.alreadyMega;
 			if (speciesid === 'banette' && toID(pokemon.item) === 'banettite') {
 				megaLabel = 'Banette-Mega';
 				megaXLabel = 'Banette-Mega-Z';
@@ -614,6 +614,12 @@ class BattlePanel extends PSRoomPanel<BattleRoom> {
 					megaXLabel = 'Gardevoir-Mega-Z';
 					megaYLabel = 'Gardevoir-Void-Mega';
 				}
+			}
+			const gardevoirRoutes = Dex.getGardevoirMegaRoutes(pokemon.speciesForme, pokemon.item || '');
+			if (gardevoirRoutes) {
+				megaLabel = gardevoirRoutes.mega || megaLabel;
+				megaXLabel = gardevoirRoutes.megax || megaXLabel;
+				megaYLabel = gardevoirRoutes.megay || megaYLabel;
 			}
 
 			if (choices.current.move) {

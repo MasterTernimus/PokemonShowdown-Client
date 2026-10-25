@@ -65,7 +65,7 @@
     "lunarward": {
       "name": "Lunar Ward",
       "shortDesc": "Pressure + Illuminate.",
-      "desc": "Full local Pressure and Illuminate, including field effects. Pressure retains its once-per-opponent battle memory. Inner Focus is a separate species passive."
+      "desc": "Full local Pressure and Illuminate, including field effects. Pressure has its once-per-opponent battle memory. Inner Focus is a separate species passive."
     },
     "frozenfortress": {
       "name": "Frozen Fortress",

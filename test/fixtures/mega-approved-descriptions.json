@@ -16,8 +16,8 @@
     "shortDesc": "Summons rain; gains Speed each full active turn."
   },
   "hauntingveil": {
-    "desc": "Cursed Body + Infiltrator. Damaging hits have a 30% chance to Disable the attacker's move, guaranteed on Haunted Terrain and blocked on Holy Terrain; existing Disable, Max moves, future moves and Struggle are excluded. On fainting, curses each surviving foe. Moves bypass Substitute, Reflect, Light Screen, Aurora Veil, Safeguard and Mist.",
-    "shortDesc": "Cursed Body + Infiltrator; retains local field and fainting effects."
+    "desc": "Cursed Body + Infiltrator. Damaging hits have a 30% chance to Disable the attacker's move, guaranteed on Haunted Terrain and blocked on Holy Terrain; Disable, Max moves, future moves and Struggle are excluded. On fainting, curses each surviving foe. Moves bypass Substitute, Reflect, Light Screen, Aurora Veil, Safeguard and Mist.",
+    "shortDesc": "Cursed Body + Infiltrator; has local field and fainting effects."
   },
   "shadowdouble": {
     "shortDesc": "After a Ghost hit, next opposing attack deals 25% less damage. Once per switch-in.",
@@ -29,11 +29,11 @@
   },
   "solartrap": {
     "shortDesc": "Automatic Stockpiles/releases; draining moves hurt their user.",
-    "desc": "Accumulation and Liquid Ooze. Retains automatic Stockpiles and releases, defensive effects, and damage to draining attackers. Digestive Sap is not part of this ability."
+    "desc": "Accumulation and Liquid Ooze. Has automatic Stockpiles and releases, defensive effects, and damage to draining attackers. Digestive Sap is not part of this ability."
   },
   "predator": {
     "shortDesc": "Extra power against authority and active Ultra abilities, or foes that have not acted.",
-    "desc": "Doubles attack power against active Ultra Ego, Ultra Instinct and composites containing them. In this matchup only, ignores positive Defense and Special Defense stages and those Ultra damage reductions; negative stages, unrelated defenses and post-hit healing remain. This replaces its first-action bonus and is disabled when the Ultra component is suppressed, including Bewitched Woods, Haunted and Holy Terrain. Existing authority bonus remains: 2x against Neutralization, or Royal Decree/Empress without active Neutralization. Otherwise newly switched or pending-action targets take 1.3x power, 2x on Mountain/Snowy Mountain/Rocky, or 1.5x on Fairy Tale/Dragon's Den/Big Top. Retains stat-stage inversion unless Contrary is supplied by its species passive."
+    "desc": "Doubles attack power against active Ultra Ego, Ultra Instinct and composites containing them. In this matchup only, ignores positive Defense and Special Defense stages and those Ultra damage reductions; negative stages, unrelated defenses and post-hit healing remain. This replaces its first-action bonus and is disabled when the Ultra component is suppressed, including Bewitched Woods, Haunted and Holy Terrain. Existing authority bonus remains: 2x against Neutralization, or Royal Decree/Empress without active Neutralization. Otherwise newly switched or pending-action targets take 1.3x power, 2x on Mountain/Snowy Mountain/Rocky, or 1.5x on Fairy Tale/Dragon's Den/Big Top. Has stat-stage inversion unless Contrary is supplied by its species passive."
   },
   "auraprecision": {
     "shortDesc": "Shield Dust and Technician.",
@@ -52,7 +52,7 @@
     "shortDesc": "Combines the listed abilities."
   },
   "burningego": {
-    "desc": "Contact attackers have a 30% burn chance, or 60% on Volcanic. On Cold Eclipse, gains +1 Defense and Sp. Def on entry instead and cannot burn through contact. Prevents freezing outside Cold Eclipse and cures existing freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den blocks Fire moves. On Dragon's Den, Volcanic or Cold Eclipse entry, gains +1 Defense and Sp. Def. Moves ignore bypassable abilities. After dealing HP damage, heals 1/16 max HP once per turn. The first opposing HP hit gives +1 Attack and Sp. Atk and heals 1/16 max HP; later hits heal 1/20 until it completes a damaging move and resets this trigger. On Ashen Beach, New World, Starlight Arena, Cold Eclipse and Fairy Tale, the first qualifying physical and special hits also give +1 Defense and Sp. Def respectively. In those fields, a qualifying hit at half HP or less instead heals 1/4 max HP once per activation; blocked healing does not spend it. These effects stop on Bewitched Woods, Haunted and Holy Field. On Cold Eclipse, the two entry effects together give +2 Defense and Sp. Def.",
+    "desc": "Contact attackers have a 30% burn chance, or 60% on Volcanic. On Cold Eclipse, gains +1 Defense and Sp. Def on entry instead and cannot burn through contact. Prevents freezing outside Cold Eclipse and cures freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den blocks Fire moves. On Dragon's Den, Volcanic or Cold Eclipse entry, gains +1 Defense and Sp. Def. Moves ignore bypassable abilities. After dealing HP damage, heals 1/16 max HP once per turn. The first opposing HP hit gives +1 Attack and Sp. Atk and heals 1/16 max HP; later hits heal 1/20 until it completes a damaging move and resets this trigger. On Ashen Beach, New World, Starlight Arena, Cold Eclipse and Fairy Tale, the first qualifying physical and special hits also give +1 Defense and Sp. Def respectively. In those fields, a qualifying hit at half HP or less instead heals 1/4 max HP once per activation; blocked healing does not spend it. These effects stop on Bewitched Woods, Haunted and Holy Field. On Cold Eclipse, the two entry effects together give +2 Defense and Sp. Def.",
     "shortDesc": "Combines the listed abilities."
   },
   "unleashedego": {
@@ -60,7 +60,7 @@
     "shortDesc": "Ultra Ego boosts/healing; airborne; bypasses defenses; KO splash."
   },
   "divinemockery": {
-    "desc": "Retains full local Hydra Bond, Mold Breaker and extra Water STAB. Does not grant Sniper, entry accuracy or an additional critical-hit multiplier. Mold Breaker is supplied separately on species with that passive.",
+    "desc": "Full local Hydra Bond, Mold Breaker and extra Water STAB. Does not grant Sniper, entry accuracy or an additional critical-hit multiplier. Mold Breaker is supplied separately on species with that passive.",
     "shortDesc": "Water STAB."
   },
   "verdantsanctuary": {

@@ -85,9 +85,9 @@ describe('Server data synchronization', () => {
 					assert.notEqual(ability.shortDesc, ability.desc, id);
 				}
 				const ability = dex.abilities.get('dreepyvanguard');
-				assert.equal(ability.shortDesc, 'Once per entry, Dragon Darts damage breaks the matching screen.');
+				assert.equal(ability.shortDesc, 'Stalwart + Technician; first Dragon Darts breaks the matching screen.');
 				assert(ability.desc.includes('after both darts finish'));
-				assert(ability.desc.includes('Ability changes do not refresh'));
+				assert(/ability changes do not reset the use/i.test(ability.desc));
 			});
 
 			it('explains Soul Cremation while preserving its component identities', () => {
@@ -228,8 +228,8 @@ describe('Server data synchronization', () => {
 				assert.match(dex.abilities.get('schooling').desc, /Mold Breaker/);
 				assert.doesNotMatch(dex.abilities.get('schooling').desc, /Filter/);
 				assert.match(dex.abilities.get('venombastion').desc, /Stamina.*Bug moves receive STAB.*already-poisoned surviving foe/);
-				assert.match(dex.moves.get('skullbash').desc, /20% less damage/);
-				assert.match(dex.moves.get('skullbash').desc, /restores 15%/);
+				assert.match(dex.moves.get('skullbash').desc, /20% less(?: attack)? damage/);
+				assert.match(dex.moves.get('skullbash').desc, /(?:restores|heals the user by) 15%/);
 				assert.match(dex.moves.get('cut').desc, /Steel-type.*Defense boosts/);
 				assert.match(dex.moves.get('lifedew').desc, /Aqua Ring.*full HP/);
 			});

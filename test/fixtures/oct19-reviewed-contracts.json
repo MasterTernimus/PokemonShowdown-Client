@@ -396,7 +396,7 @@
     },
     "spiralevolution": {
       "shortDesc": "Power Drill + Adaptability; double Twineedle power; protection piercing.",
-      "desc": "Full local Power Drill: drill and horn moves have 1.5x power, or 2x on Rocky, Mountain, Snowy Mountain, Cave and Volcanic, where they bypass protection at full power. Retains Adaptability and double Twineedle power with its native hit count. Other damaging moves pierce protection at half power. Normal-priority moves act first in Trick Room without gaining priority. Ignores field Speed penalties and takes 20% less attack damage. No Mold Breaker or Dual Wield effects. Levitate remains separate."
+      "desc": "Full local Power Drill: drill and horn moves have 1.5x power, or 2x on Rocky, Mountain, Snowy Mountain, Cave and Volcanic, where they bypass protection at full power. Has Adaptability and double Twineedle power with its native hit count. Other damaging moves pierce protection at half power. Normal-priority moves act first in Trick Room without gaining priority. Ignores field Speed penalties and takes 20% less attack damage. Levitate remains separate."
     },
     "witheringshell": {
       "shortDesc": "Crumbling Shell + Cursed Body + Rain Dish.",
@@ -404,7 +404,7 @@
     },
     "venomarmor": {
       "shortDesc": "Dual Wield; poisoned holder blocks opposing Attack drops.",
-      "desc": "Full local Dual Wield: eligible moves hit twice at 60% power with independent accuracy checks; Metal Claw retains its two 60%-power hits. While poisoned, opposing Pokemon cannot lower its Attack; self-inflicted drops remain. No Battle Armor critical immunity, damage reduction or Defense boosts. Rival Resolve remains separate."
+      "desc": "Full local Dual Wield: eligible moves hit twice at 60% power with independent accuracy checks; Metal Claw has its two 60%-power hits. While poisoned, opposing Pokemon cannot lower its Attack; self-inflicted drops remain. No Battle Armor critical immunity, damage reduction or Defense boosts. Rival Resolve remains separate."
     },
     "toxicarmor": {
       "shortDesc": "Dual Wield + opening Violent Rush; priority hits prepare next-turn priority.",
@@ -420,23 +420,23 @@
     },
     "sandsovereign": {
       "shortDesc": "Solid Rock; better Rock/Ground matchup; eight-turn sand and Rock chip.",
-      "desc": "Sets or refreshes Sandstorm to 8 turns on entry, with native Sand Stream supplied separately by the species passive. Retains full local Solid Rock. Rock moves use the better Rock/Ground matchup keeps damaging Rock moves Rock-type with normal Rock STAB, but uses the better overall Rock or Ground type-chart matchup; Ground-immune typings do not replace the Rock matchup. No extra power multiplier or Mold Breaker. Manually used Arenite Wall lasts 8 turns. Each turn, non-immune foes take Rock damage equal to 1/16 max HP; type effectiveness scales this chip only in Free-for-All."
+      "desc": "Sets or refreshes Sandstorm to 8 turns on entry, with native Sand Stream supplied separately by the species passive. Full local Solid Rock. Rock moves use the better Rock/Ground matchup keeps damaging Rock moves Rock-type with normal Rock STAB, but uses the better overall Rock or Ground type-chart matchup; Ground-immune typings do not replace the Rock matchup. Manually used Arenite Wall lasts 8 turns. Each turn, non-immune foes take Rock damage equal to 1/16 max HP; type effectiveness scales this chip only in Free-for-All."
     },
     "ancientbloom": {
-      "shortDesc": "Pollen Bloom + Self-Sufficient + Friend Guard; existing field bonuses.",
-      "desc": "Pollen Bloom supplies Thick Fat and Unaware: Fire and Ice attacks use half the attacking stat; ignores opposing stat stages through local Unaware and reveals Illusions on entry. Each turn, drains 1/16 base max HP from non-Grass foes and heals the damage actually dealt; Grass immunities apply, and type effectiveness scales this only in Free-for-All. Self-Sufficient independently heals 1/16 max HP each turn and prevents sandstorm and hail damage. Friend Guard reduces attack damage to allies by 25%, without protecting the holder. Fairy Tale, New World, Cold Eclipse and Starlight Arena entry grant +1 Defense and Sp. Def; the latter three give 1.5x move power. No Effect Spore retaliation."
+      "shortDesc": "Pollen Bloom + Self-Sufficient + Friend Guard; field bonuses.",
+      "desc": "Pollen Bloom supplies Thick Fat and Unaware: Fire and Ice attacks use half the attacking stat; ignores opposing stat stages through local Unaware and reveals Illusions on entry. Each turn, drains 1/16 base max HP from non-Grass foes and heals the damage actually dealt; Grass immunities apply, and type effectiveness scales this only in Free-for-All. Self-Sufficient independently heals 1/16 max HP each turn and prevents sandstorm and hail damage. Friend Guard reduces attack damage to allies by 25%, without protecting the holder. Fairy Tale, New World, Cold Eclipse and Starlight Arena entry grant +1 Defense and Sp. Def; the latter three give 1.5x move power."
     },
     "fortressshell": {
       "shortDesc": "Water Barrage (without Dual Wield), Self-Sufficient, Shell Armor and Guardian Presence.",
-      "desc": "Stalwart bypasses redirection and gives +1 Sp. Atk on New World, Starlight Arena, Fairy Tale or Chessboard entry. No Dual Wield extra hits or power scaling. Water chip cycles 1/16, 2/16, then 3/16 foe base max HP; Water immunities apply, and effectiveness scales chip only in Free-for-All. Self-Sufficient heals 1/16 max HP each turn and prevents sandstorm/hail damage. Shell Armor prevents critical hits and reduces attack damage by 20%; Fairy Tale and Dragon Den entry give +1 Defense, and opposing stat drops trigger +2 Sp. Def. Guardian Presence boosts allies move power by 1.3x, or 1.5x on Haunted, Bewitched Woods, Holy and Psychic fields, and reduces their attack damage by 25%; neither applies to the holder. During Electric Aura or Electric Terrain, Murkwater Surface, Water Surface, Underwater, Midnight Zone, Factory and Short-Circuit, redirects and absorbs Electric moves for +1 Attack and Sp. Atk. Existing Fairy Tale, New World, Cold Eclipse and Starlight Arena entry/terrain bonuses give +1 Defense and Sp. Def; the latter three retain 1.5x move power."
+      "desc": "Stalwart bypasses redirection and gives +1 Sp. Atk on New World, Starlight Arena, Fairy Tale or Chessboard entry. Water chip cycles 1/16, 2/16, then 3/16 foe base max HP; Water immunities apply, and effectiveness scales chip only in Free-for-All. Self-Sufficient heals 1/16 max HP each turn and prevents sandstorm/hail damage. Shell Armor prevents critical hits and reduces attack damage by 20%; Fairy Tale and Dragon Den entry give +1 Defense, and opposing stat drops trigger +2 Sp. Def. Guardian Presence boosts allies move power by 1.3x, or 1.5x on Haunted, Bewitched Woods, Holy and Psychic fields, and reduces their attack damage by 25%; neither applies to the holder. During Electric Aura or Electric Terrain, Murkwater Surface, Water Surface, Underwater, Midnight Zone, Factory and Short-Circuit, redirects and absorbs Electric moves for +1 Attack and Sp. Atk. Existing Fairy Tale, New World, Cold Eclipse and Starlight Arena entry/terrain bonuses give +1 Defense and Sp. Def; the latter three retain 1.5x move power."
     },
     "hydraheart": {
       "shortDesc": "Stamina + Hydra Bond.",
-      "desc": "Each opposing attack hit that damages HP heals 1/16 base max HP; the first such hit each turn gives +1 Defense. Full local Hydra Bond retains its multihit, Free-for-All and field effects. Sweet Veil remains a separate passive."
+      "desc": "Each opposing attack hit that damages HP heals 1/16 base max HP; the first such hit each turn gives +1 Defense. Full local Hydra Bond has its multihit, Free-for-All and field effects. Sweet Veil remains a separate passive."
     },
     "burningcrown": {
       "shortDesc": "Intimidate + Unbound Blaze + Self-Sufficient + Levitate.",
-      "desc": "On entry, lowers adjacent foes Attack by 1 under normal Intimidate rules. Unbound Blaze converts eligible Normal moves to Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale, and grants Dragon STAB. Prevents freezing outside Cold Eclipse and cures freeze; incoming Water and Ice attacks use half the offensive stat. Dragon's Den blocks Fire moves. Dragon's Den, Volcanic and Cold Eclipse entry give +1 Defense and Sp. Def. At turn end, foes take Fire damage of 1/16 base max HP, doubled if burned or the holder used Fire/Dragon that turn. Fire immunities apply; effectiveness scales chip only in Free-for-All. Self-Sufficient heals 1/16 max HP each turn and prevents sandstorm/hail damage. Levitate grants normal airborne Ground and grounded-hazard protection. Retains one 20% attack-damage reduction. New World, Cold Eclipse and Starlight Arena retain 1.5x move power. No Mold Breaker or White Smoke."
+      "desc": "On entry, lowers adjacent foes Attack by 1 under normal Intimidate rules. Unbound Blaze converts eligible Normal moves to Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale, and grants Dragon STAB. Prevents freezing outside Cold Eclipse and cures freeze; incoming Water and Ice attacks use half the offensive stat. Dragon's Den blocks Fire moves. Dragon's Den, Volcanic and Cold Eclipse entry give +1 Defense and Sp. Def. At turn end, foes take Fire damage of 1/16 base max HP, doubled if burned or the holder used Fire/Dragon that turn. Fire immunities apply; effectiveness scales chip only in Free-for-All. Self-Sufficient heals 1/16 max HP each turn and prevents sandstorm/hail damage. Levitate grants normal airborne Ground and grounded-hazard protection. Has one 20% attack-damage reduction. New World, Cold Eclipse and Starlight Arena retain 1.5x move power."
     },
     "frightfulwings": {
       "shortDesc": "Intimidate + Own Tempo.",
@@ -444,7 +444,7 @@
     },
     "mindseye": {
       "shortDesc": "Self Sufficient; Normal/Fighting hit Ghost; Fairy/Dark STAB; accuracy protection; hit healing.",
-      "desc": "Has Self Sufficient. Normal and Fighting moves can hit Ghost types; gains Fairy and Dark STAB, ignores target evasion boosts, and prevents external accuracy drops. Heals 1/16 maximum HP after its damaging moves hit. No ordinary damage reduction. On Cold Eclipse, retains 30% damage reduction, 1/8 hit healing and 1.3x damaging move power."
+      "desc": "Has Self Sufficient. Normal and Fighting moves can hit Ghost types; gains Fairy and Dark STAB, ignores target evasion boosts, and prevents external accuracy drops. Heals 1/16 maximum HP after its damaging moves hit. No ordinary damage reduction. On Cold Eclipse, has 30% damage reduction, 1/8 hit healing and 1.3x damaging move power."
     },
     "relentlesshunt": {
       "shortDesc": "Rough Skin; low-power moves gain +1 priority; field damage bonuses.",
@@ -476,7 +476,7 @@
     },
     "supersweetsyrup": {
       "shortDesc": "On every entry, lowers adjacent foes’ evasiveness 1 stage.",
-      "desc": "On switch-in, it lowers the evasiveness of adjacent opposing Pokemon by 1 stage every time it switches in. Substitute blocks this. Flower Garden stages 3–5 add the existing stat drops; Misty Terrain lowers its accuracy."
+      "desc": "On switch-in, it lowers the evasiveness of adjacent opposing Pokemon by 1 stage every time it switches in. Substitute blocks this. Flower Garden stages 3–5 add the stat drops; Misty Terrain lowers its accuracy."
     },
     "ironmountain": {
       "shortDesc": "Hyper Cutter + Brute Force; entry or Mega Evolution clears own Stealth Rock/Spikes.",
@@ -496,7 +496,7 @@
     },
     "triplethreat": {
       "shortDesc": "Hydra Bond; Keen Eye, Inner Focus and Own Tempo.",
-      "desc": "Prevents flinching, confusion and Intimidate Attack drops; cures confusion. Retains full local Hydra Bond and Keen Eye: eligible attacks gain Hydra Bond's extra hits and format/field behavior. Prevents opposing accuracy drops, ignores evasion boosts, reveals opposing Illusions on activation, and gains accuracy and Laser Focus on Mirror Arena entry."
+      "desc": "Prevents flinching, confusion and Intimidate Attack drops; cures confusion. Full local Hydra Bond and Keen Eye: eligible attacks gain Hydra Bond's extra hits and format/field behavior. Prevents opposing accuracy drops, ignores evasion boosts, reveals opposing Illusions on activation, and gains accuracy and Laser Focus on Mirror Arena entry."
     },
     "snowpack": {
       "shortDesc": "Ice Body.",
@@ -504,7 +504,7 @@
     },
     "mountainbreaker": {
       "shortDesc": "Earth Eater + Battle Armor.",
-      "desc": "Full local Earth Eater + Battle Armor: absorbs Ground moves for 1/4 HP; heals 1/16 on Cave and Desert. Prevents critical hits, retains Battle Armor damage reduction, Fairy Tale entry Defense and Defense response to opposing stat drops. No Rock/Ground matchup substitution."
+      "desc": "Full local Earth Eater + Battle Armor: absorbs Ground moves for 1/4 HP; heals 1/16 on Cave and Desert. Prevents critical hits, has Battle Armor damage reduction, Fairy Tale entry Defense and Defense response to opposing stat drops. No Rock/Ground matchup substitution."
     },
     "dreadpresence": {
       "shortDesc": "Unnerve + Dark Aura.",
@@ -520,7 +520,7 @@
     },
     "infernaldominion": {
       "shortDesc": "Intimidate; Molten Guard; Rock effectiveness capped at neutral; melts own Stealth Rock damage.",
-      "desc": "Retains Intimidate. Does not generate Fire Spin or trap foes. Incoming Rock attack effectiveness is capped at neutral, preserving stronger resistance or immunity. Prevents only this holder's Stealth Rock damage without removing the hazard. A direct Fire attack dealing opposing HP damage clears Sandstorm and, once per turn regardless of weather, grants Molten Guard until turn end. The guard blocks the next opposing Rock attack against this holder, including all hits, without shielding other spread targets. Generated attacks do not arm it. Leaving, ability loss and Mega Evolution clear the guard."
+      "desc": "Has Intimidate. Does not generate Fire Spin or trap foes. Incoming Rock attack effectiveness is capped at neutral, preserving stronger resistance or immunity. Prevents only this holder's Stealth Rock damage without removing the hazard. A direct Fire attack dealing opposing HP damage clears Sandstorm and, once per turn regardless of weather, grants Molten Guard until turn end. The guard blocks the next opposing Rock attack against this holder, including all hits, without shielding other spread targets. Generated attacks do not arm it. Leaving, ability loss and Mega Evolution clear the guard."
     },
     "hydraulicarmor": {
       "shortDesc": "Stamina; Withdraw/Protect fire Water Pulse; Skull Bash fires Hydro Pump.",

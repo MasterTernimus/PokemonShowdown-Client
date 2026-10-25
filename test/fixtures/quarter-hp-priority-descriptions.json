@@ -1,6 +1,6 @@
 {
   "fallenstar": {
-    "desc": "Mold Breaker: moves ignore bypassable opposing abilities. Designated arrow moves gain +1 priority at 1/4 max HP or less and 1.3x power against trapped foes: Spirit Shackle, Thousand Arrows, Triple Arrows, Snipe Shot, Razor Leaf, Magical Leaf, Spike Cannon, Pin Missile, Icicle Spear, Rock Blast, Bullet Seed, Scale Shot, Psycho Cut and Ceaseless Edge. Retains its arrow follow-up and protective effects.",
+    "desc": "Mold Breaker: moves ignore bypassable opposing abilities. Designated arrow moves gain +1 priority at 1/4 max HP or less and 1.3x power against trapped foes: Spirit Shackle, Thousand Arrows, Triple Arrows, Snipe Shot, Razor Leaf, Magical Leaf, Spike Cannon, Pin Missile, Icicle Spear, Rock Blast, Bullet Seed, Scale Shot, Psycho Cut and Ceaseless Edge. Has its arrow follow-up and protective effects.",
     "shortDesc": "Arrow moves gain +1 priority at 1/4 max HP or less; 1.3x power against trapped foes and for same-type moves."
   },
   "blademastery": {

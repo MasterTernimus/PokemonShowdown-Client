@@ -1163,6 +1163,12 @@ export class BattleScene implements BattleSceneStub {
 			}
 		}
 
+		// Refresh hazards from current state: swaps can reduce layers or reapply an existing hazard.
+		// Destroy the previous sprites first so none become untracked arena artifacts.
+		if (['spikes', 'toxicspikes', 'stealthrock', 'stickyweb', 'gmaxsteelsurge'].includes(id)) {
+			this.removeSideCondition(siden, id);
+		}
+
 		switch (id) {
 		case 'auroraveil':
 			const auroraveil = new Sprite(BattleEffects.auroraveil, {
