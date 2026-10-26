@@ -12,6 +12,12 @@ class ModifiableValue {
 	value = 0;
 	maxValue = 0;
  secondHitPower?: number;
+ dualWieldPower = false;
+ dualWieldHit = 1;
+ dualWieldFull = false;
+ dualWieldBoosted = false;
+ dualWieldPotentialPower = 1;
+ dualWieldPotentialDamage = false;
 	rangeSeparator = ' to ';
 	comment: string[];
 	battle: Battle;
@@ -36,6 +42,10 @@ class ModifiableValue {
 		this.value = value;
 		this.maxValue = 0;
   this.secondHitPower = undefined;
+	 this.dualWieldPower = false;
+	 this.dualWieldBoosted = false;
+	 this.dualWieldPotentialPower = 1;
+	 this.dualWieldPotentialDamage = false;
 		this.rangeSeparator = ' to ';
 		this.isAccuracy = !!isAccuracy;
 		this.comment = [];
@@ -64,7 +74,7 @@ class ModifiableValue {
 		if (passives.some(passive => Dex.getPassiveAbilityEffects(toID(passive)).has(toID(abilityName)))) return true;
 		const activeId = toID(this.abilityName);
 		const excluded = Dex.getAbilityComponentExclusions(activeId, passives, toID(this.serverPokemon.speciesForme));
-		const hasComponent = ((['plushwhiplash', 'abyssalclaws', 'antlioninstinct', 'tidalvoice', 'apexvenom', 'sirius', 'abyssalfang', 'trickperformer', 'curtaincall', 'cellularconcord', 'mountainhide', 'rimebark', 'bottomlessgullet', 'divefisher', 'scatterbrain'].includes(activeId)) || (activeId === 'quarrycannon' && abilityName === 'Mega Launcher') || (['updraft', 'stormsovereign'].includes(activeId) && abilityName === 'Competitive') || ['Guts', 'Rivalry', 'Pure Power', 'Sharpness', 'Dual Wield', 'Power Drill', 'Mega Launcher', 'Fire Mane'].includes(abilityName) || (['atrocity', 'apexpredator'].includes(activeId) && abilityName === 'Tough Claws') || (activeId === 'rupturedheaven' && abilityName === 'Sharpness') || (activeId === 'wintersmalice' && abilityName === 'Refrigerate')) && Dex.getAbilityEffects(activeId).has(toID(abilityName)) && !excluded.includes(toID(abilityName));
+		const hasComponent = ((this.dualWieldPower || ['plushwhiplash', 'abyssalclaws', 'antlioninstinct', 'tidalvoice', 'apexvenom', 'sirius', 'abyssalfang', 'trickperformer', 'curtaincall', 'cellularconcord', 'mountainhide', 'rimebark', 'bottomlessgullet', 'divefisher', 'scatterbrain'].includes(activeId)) || (activeId === 'quarrycannon' && abilityName === 'Mega Launcher') || (['updraft', 'stormsovereign'].includes(activeId) && abilityName === 'Competitive') || ['Guts', 'Rivalry', 'Pure Power', 'Sharpness', 'Dual Wield', 'Power Drill', 'Mega Launcher', 'Fire Mane'].includes(abilityName) || (['atrocity', 'apexpredator'].includes(activeId) && abilityName === 'Tough Claws') || (activeId === 'rupturedheaven' && abilityName === 'Sharpness') || (activeId === 'wintersmalice' && abilityName === 'Refrigerate')) && Dex.getAbilityEffects(activeId).has(toID(abilityName)) && !excluded.includes(toID(abilityName));
 		if (!hasComponent && abilityName !== this.abilityName &&
 			!(this.abilityName === 'Cinder Scales' && abilityName === 'Swarm')) return false;
 		if (this.pokemon?.volatiles['gastroacid']) {
@@ -110,14 +120,25 @@ class ModifiableValue {
 	}
 	abilityModify(factor: number, abilityName: string) {
 		if (!this.tryAbility(abilityName)) return false;
-		return this.modify(factor, abilityName);
+		return this.powerAbilityModify(factor, abilityName);
 	}
 	weatherModify(factor: number, weatherName?: string, name?: string) {
 		if (!weatherName) weatherName = this.weatherName;
 		if (!weatherName) return false;
 		if (!this.tryWeather(weatherName)) return false;
-		return this.modify(factor, name || weatherName);
+		return name && Dex.abilities.get(name).exists && this.tryAbility(name) ?
+			this.powerAbilityModify(factor, name) : this.modify(factor, name || weatherName);
 	}
+ powerAbilityModify(factor: number, name: string) {
+	if (this.dualWieldPower && factor > 1) {
+		this.dualWieldBoosted = true;
+		if (this.dualWieldHit > 1 && !this.dualWieldFull) {
+			this.comment.push(' (' + name + ' boost applies to first hit)');
+			return true;
+		}
+	}
+	return this.modify(factor, name);
+ }
 	modify(factor: number, name?: string) {
 		if (factor === 0) {
 			if (name) this.comment.push(` (${name})`);
@@ -2033,6 +2054,12 @@ class BattleTooltips {
 			pokemon, serverPokemon, target);
 		if (fieldPower) move = {...move, category: fieldPower.result.move.category};
 		value.reset(fieldPower ? fieldPower.result.move.basePower : move.basePower);
+	 const pairPreview = Dex.getDrillPowerProfile(
+			{...move, type: moveType}, name => value.tryAbility(name), '', this.battle.gameType
+		);
+	 value.dualWieldPower = !!pairPreview?.dual;
+	 value.dualWieldHit = hit;
+	 value.dualWieldFull = !!pairPreview?.full;
 
 		if (move.id === 'acrobatics') {
 			if (!serverPokemon.item) {
@@ -2083,7 +2110,9 @@ class BattleTooltips {
 		if (['hex', 'infernalparade', 'irritation'].includes(move.id) && target?.status) {
 			value.modify(2, move.name + ' + status');
 		}
-		if (move.id === 'multiattack' && value.tryAbility('Adaptive Arsenal')) value.modify(moveType === '???' ? 1.8 : 1.2, 'Adaptive Arsenal');
+		if (move.id === 'multiattack' && value.tryAbility('Adaptive Arsenal')) {
+			value.powerAbilityModify(moveType === '???' ? 1.8 : 1.2, 'Adaptive Arsenal');
+		}
 		if (move.id === 'bunrakubeatdown') {
 			value.set(Math.min(140, 80 + 15 * pokemon.side.pokemon.filter(p => p.fainted && p !== pokemon).length));
 		}
@@ -2244,7 +2273,10 @@ class BattleTooltips {
   const drillCopies = drillPassives.filter(id => Dex.getPassiveAbilityEffects(toID(id)).has('powerdrill' as ID)).length +
    (drillActive !== 'hyperdrill' && !drillExcluded.includes('powerdrill' as ID) && Dex.getAbilityEffects(drillActive).has('powerdrill' as ID) ? 1 : 0);
   const drillProfile = Dex.getDrillPowerProfile({...move, type: moveType}, name => value.tryAbility(name), drillField, this.battle.gameType, drillCopies);
-  if (drillProfile) value.modify(drillProfile.hits[hit - 1] ?? drillProfile.hits[0], drillProfile.label);
+	 if (drillProfile) {
+		if (drillProfile.dual) value.powerAbilityModify(drillProfile.boost, drillProfile.label);
+		else value.modify(drillProfile.hits[0], drillProfile.label);
+	}
 		if (moveType === 'Poison') value.abilityModify(1.3, 'Caustic Ooze');
 		if (moveType === 'Grass' && ['raindance','primordialsea'].includes(this.battle.weather) && value.tryWeather()) value.abilityModify(1.3, 'Rainlit Growth');
 		// Other ability boosts
@@ -2280,19 +2312,21 @@ class BattleTooltips {
 		if (['Rock', 'Ground', 'Steel'].includes(moveType) && this.battle.weather === 'sandstorm') {
 			if (value.tryAbility("Sand Force")) value.weatherModify(1.3, "Sandstorm", "Sand Force");
 		}
-		if (move.secondaries) {
+		if (move.secondaries?.length || (move as any).hasSheerForceBoost) {
 			value.abilityModify(1.3, "Sheer Force");
 		}
 		if (move.flags['contact']) {
 			value.abilityModify(1.3, "Tough Claws");
 		}
 		if (move.category !== 'Status' && toID(pokemon.effectiveAbility(serverPokemon)) === 'atrocity') {
-			value.modify(1.3, 'Atrocity');
-			if (move.id === 'dragonrush') value.modify(1.5, 'Atrocity');
+			value.powerAbilityModify(1.3, 'Atrocity');
+			if (move.id === 'dragonrush') value.powerAbilityModify(1.5, 'Atrocity');
 		}
 		if (move.category !== 'Status' && moveType === 'Flying' && toID(pokemon.getSpeciesForme()) === 'castformwindy') value.abilityModify(1.3, 'Perfect Forecast');
 		if (this.battle.hasPseudoWeather('Dragon’s Den Terrain') || this.battle.hasPseudoWeather("Dragon's Den Terrain") || this.battle.hasPseudoWeather('Dragons Den Terrain')) {
-			if (Dex.getAbilityEffects(toID(pokemon.effectiveAbility(serverPokemon))).has('hydrabond' as ID)) value.modify(1.2, 'Hydra Bond');
+			if (Dex.getAbilityEffects(toID(pokemon.effectiveAbility(serverPokemon))).has('hydrabond' as ID)) {
+				value.powerAbilityModify(1.2, 'Hydra Bond');
+			}
 		}
 		if (move.flags['sound']) {
 			value.abilityModify(1.3, "Punk Rock");
@@ -2392,11 +2426,11 @@ class BattleTooltips {
 
 		const passives = serverPokemon.passives ?? pokemon.getSpecies(serverPokemon).passives;
 		if (move.category !== 'Status' && moveType === 'Fire' && value.tryAbility('Fire Mane')) {
-			value.modify(1.5, 'Fire Mane');
+			value.powerAbilityModify(1.5, 'Fire Mane');
 		}
 
 		if (move.category !== 'Status' && passives.includes('proficient') && pokemon.getTypeList(serverPokemon).includes(moveType)) {
-			value.modify(1.3, 'Proficient passive');
+			value.powerAbilityModify(1.3, 'Proficient passive');
 		}
 
 		// Terrain
@@ -2433,6 +2467,29 @@ class BattleTooltips {
 			}
 		}
 
+	 if (value.dualWieldPower) {
+		// These conditions depend on queued actions or private entry budgets, which public tooltips cannot infer.
+		for (const [ability, factor] of [['Analytic', 1.3], ['Last Laugh', 1.3], ['Stakeout', 2]] as const) {
+		if (value.tryAbility(ability)) {value.dualWieldPotentialPower *= factor; value.comment.push(' (' + ability + ': conditional activation)'); }
+		}
+		if (target && ((moveType === 'Fire' && ['psn', 'tox'].includes(target.status) &&
+			(value.tryAbility('Corrosive Burn') || value.tryAbility('Venom Ignition'))) ||
+		(moveType === 'Ice' && target.status === 'brn' && value.tryAbility('Freezer Burn')) ||
+		(moveType === 'Steel' && move.category === 'Physical' && (target.boosts.def || 0) < 0 && value.tryAbility('Crushing Depths')) ||
+		(value.tryAbility('Rival Malice') && target.hp > 0))) value.dualWieldBoosted = true;
+		if ((this.battle.hasPseudoWeather('Fairy Tale Terrain') || this.battle.hasPseudoWeather('Chessboard Terrain')) &&
+		(value.tryAbility('Queenly Majesty') || value.tryAbility('Empress') || value.tryAbility('Void Voice'))) {
+			value.dualWieldPotentialDamage = true;
+		}
+		for (const ability of ['Sniper', 'Abyss Sniper', 'Patient Marksman', 'Neuroforce', 'Tinted Lens', 'Desert Spirit', 'Prism Wings', 'Fresh Plumage', 'Ruined Sky', 'Eternal Flower', 'RKS System']) {
+		if (!value.tryAbility(ability)) continue;
+		if (['Sniper', 'Abyss Sniper', 'Patient Marksman'].includes(ability) && (move as any).willCrit) {
+			value.dualWieldBoosted = true;
+		} else {
+			value.dualWieldPotentialDamage = true;
+		}
+		}
+	}
 		// Item
 		value = this.getItemBoost(move, value, moveType);
 
@@ -2482,9 +2539,19 @@ class BattleTooltips {
 			value.set(0, 'no Terrain');
 		}
 
+	 if (value.dualWieldPower && !value.dualWieldFull) {
+		const conditional = value.dualWieldPotentialPower > 1 || value.dualWieldPotentialDamage;
+		if (conditional) {
+		const low = value.value;
+		const high = value.maxValue || low;
+		if (hit === 1) value.setRange(low * (value.dualWieldBoosted ? 1 : 0.6), high * value.dualWieldPotentialPower, 'conditional offensive ability; damage multipliers apply separately');
+		else value.setRange(low * 0.15, high * (value.dualWieldBoosted ? 0.15 : 0.6), '15% when an offensive ability activates; otherwise 60%');
+		} else value.modify(value.dualWieldBoosted ? hit > 1 ? 0.15 : 1 : 0.6, 'Dual Wield');
+	}
   if (hit === 1 && drillProfile?.hits.length === 2) {
    const second = this.getMoveBasePower(move, moveType, new ModifiableValue(this.battle, pokemon, serverPokemon), target, 2);
    value.secondHitPower = second.value;
+		 if (second.dualWieldPotentialPower > 1 || second.dualWieldPotentialDamage) value.comment.push(' (follow-up is 15% when the offensive ability activates; otherwise 60%)');
    value.comment.push(' (first hit; second hit: ' + second.round(second.value) + (second.maxValue ? ' to ' + second.round(second.maxValue) : '') + ' BP; each hit checks accuracy)');
   }
 		return value;

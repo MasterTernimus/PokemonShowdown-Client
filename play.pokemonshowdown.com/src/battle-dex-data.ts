@@ -1254,6 +1254,7 @@ class Move implements Effect {
 	readonly noPPBoosts: boolean;
 	readonly status: string;
 	readonly secondaries: ReadonlyArray<any> | null;
+	readonly hasSheerForceBoost: boolean;
 	readonly noSketch: boolean;
 	readonly num: number;
 
@@ -1296,6 +1297,7 @@ class Move implements Effect {
 		this.noPPBoosts = data.noPPBoosts || false;
 		this.status = data.status || '';
 		this.secondaries = data.secondaries || (data.secondary ? [data.secondary] : null);
+		this.hasSheerForceBoost = !!data.hasSheerForceBoost;
 		this.noSketch = !!data.noSketch;
 
 		this.isMax = data.isMax || false;

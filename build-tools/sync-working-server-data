@@ -88,7 +88,7 @@ function characterAliases(credit) {
 }
 for (const id of [...groups.moves].sort()) {
 	const data = Dex.moves.get(id);
-	snapshot.moves[id] = select(data, ['name', 'num', 'type', 'category', 'basePower', 'accuracy', 'pp', 'priority', 'target', 'flags', 'desc', 'shortDesc']);
+	snapshot.moves[id] = select(data, ['name', 'num', 'type', 'category', 'basePower', 'accuracy', 'pp', 'priority', 'target', 'flags', 'desc', 'shortDesc', 'secondaries', 'hasSheerForceBoost']);
 	if (require(path.join(server, 'dist/data/rejuvenation-advanced-moves')).RejuvenationAdvancedMoves[id]) Object.assign(snapshot.moves[id], select(data, ['multihit', 'critRatio', 'secondaries']));
 	if (signatureCredits[id]) snapshot.moves[id].signatureCharacters = characterAliases(signatureCredits[id]);
 }
@@ -112,7 +112,7 @@ function block(kind, marker, code) {
 	if (from >= 0) source = source.slice(0, from) + source.slice(source.indexOf(end, from) + end.length + 1);
 	source = source.replace(marker, begin + '\n' + code + '\n' + end + '\n' + marker);
 }
-const json = data => JSON.stringify(data, null, '\t');
+const json = data => JSON.stringify(data, null, '\t').replace(/([^\s,{\[])(?=\n\t*[}\]])/g, '$1,');
 snapshot.learnsetExclusions = require(path.join(server, 'dist/sim/dex-species')).Gen9MoveLearnsetExclusions;
 block('LEARNSET EXCLUSIONS', 'const CUSTOM_LEARNSET_REMOVAL_IDS =', `const SERVER_GEN9_LEARNSET_EXCLUSIONS: {[id: string]: readonly string[]} = ${json(snapshot.learnsetExclusions)};`);
 block('GUARDIAN CONTEXT', 'const CUSTOM_ABILITY_UPDATE_IDS =', `const GUARDIAN_LEGACY_DESCRIPTIONS: {[id: string]: {desc: string; shortDesc: string}} = ${json(require(path.join(server, 'dist/data/base-guardian-reworks')).GuardianLegacyDescriptions)};`);
