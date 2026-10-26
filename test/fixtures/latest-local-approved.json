@@ -71,6 +71,10 @@
     "insight": {
       "desc": "Full local Ultra Ego, Telepathy and Inner Focus. Ultra Ego supplies its attack power, whole-attack recovery, defensive triggers and field interactions. Telepathy prevents allied damaging moves and doubles Speed on Psychic Terrain or Psychic Aura. Inner Focus prevents flinching and Intimidate.",
       "shortDesc": "Ultra Ego + Telepathy + Inner Focus."
+    },
+    "lastlaugh": {
+      "shortDesc": "1.3x after the target acts; last-action attacks bypass Substitute and heal 1/8 once/turn.",
+      "desc": "Moves last within its priority bracket. On Chessboard entry, raises Defense by one stage. Its attacks deal 1.3x damage to a foe that has completed its move action this turn. If no other active Pokemon has a queued move remaining, its damaging move bypasses Substitute; damaging a foe with that move heals 1/8 max HP, once per turn."
     }
   },
   "passives": {
@@ -79,6 +83,9 @@
     ],
     "mamoswine": [
       "coldexpertise"
+    ],
+    "jumpluff": [
+      "windrider"
     ]
   },
   "effects": {
@@ -120,6 +127,10 @@
     ],
     "mindseye": [
       "mindseye"
+    ],
+    "lastlaugh": [
+      "lastlaugh",
+      "stall"
     ]
   }
 }

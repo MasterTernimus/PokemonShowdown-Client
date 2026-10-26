@@ -31579,7 +31579,7 @@ for (const [id, update] of Object.entries({
 	"jumpluff": {
 		"abilities": {
 			"0": "Chlorophyll",
-			"1": "Wind Rider",
+			"1": "Infiltrator",
 			"H": "Windy Surge"
 		},
 		"baseStats": {
@@ -31595,7 +31595,7 @@ for (const [id, update] of Object.entries({
 			"Flying"
 		],
 		"passives": [
-			"leafguard"
+			"windrider"
 		],
 		"replaceAbilities": true
 	},
@@ -33470,7 +33470,7 @@ for (const [id, update] of Object.entries({
 		"abilities": {
 			"0": "Carry On",
 			"1": "Sworn Duty",
-			"H": "Armorize",
+			"H": "Armorize"
 		},
 		"baseStats": {
 			"hp": 80,
@@ -33485,13 +33485,13 @@ for (const [id, update] of Object.entries({
 			"Steel"
 		],
 		"passives": [
-			"mindseye",
+			"mindseye"
 		],
 		"replaceAbilities": true
 	},
 	"lucariomega": {
 		"abilities": {
-			"0": "Insight",
+			"0": "Insight"
 		},
 		"baseStats": {
 			"hp": 80,
@@ -34385,7 +34385,7 @@ for (const [id, update] of Object.entries({
 		"abilities": {
 			"0": "Forsaken Sleeper",
 			"1": "Old North",
-			"H": "Glacial Prime",
+			"H": "Glacial Prime"
 		},
 		"baseStats": {
 			"hp": 120,
@@ -34400,7 +34400,7 @@ for (const [id, update] of Object.entries({
 			"Ground"
 		],
 		"passives": [
-			"coldexpertise",
+			"coldexpertise"
 		],
 		"replaceAbilities": true
 	},
@@ -48876,7 +48876,7 @@ for (const [id, update] of Object.entries({
 	},
 	"typhlosionmega": {
 		"abilities": {
-			"0": "Corona Furnace",
+			"0": "Corona Furnace"
 		},
 		"baseStats": {
 			"hp": 83,
@@ -48888,7 +48888,7 @@ for (const [id, update] of Object.entries({
 		},
 		"types": [
 			"Fire",
-			"Psychic",
+			"Psychic"
 		],
 		"passives": [
 			"proficient"
@@ -52479,6 +52479,8 @@ const CUSTOM_TEAM_PREVIEW_BACK_MEGA_SPRITE_MAX_HEIGHT = 84;
 const CUSTOM_TEAM_PREVIEW_BACK_GMAX_SPRITE_MAX_WIDTH = 96;
 const CUSTOM_TEAM_PREVIEW_BACK_GMAX_SPRITE_MAX_HEIGHT = 96;
 const CUSTOM_TEAM_PREVIEW_FRONT_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: number}} = {
+	sableye: {w: 49, h: 49},
+	sableyemega: {w: 72, h: 72},
 	wishiwashisevii: {w: 32, h: 32},
 	wishiwashiseviischooling: {w: 72, h: 72},
 	beedrillmega: {w: 58, h: 60},
@@ -52491,6 +52493,8 @@ const CUSTOM_TEAM_PREVIEW_FRONT_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number
 	cofagrigus: {w: 88, h: 88},
 };
 const CUSTOM_TEAM_PREVIEW_BACK_SPRITE_SIZE_OVERRIDES: {[id: string]: {w: number, h: number}} = {
+	sableye: {w: 49, h: 49},
+	sableyemega: {w: 64, h: 64},
 	wishiwashisevii: {w: 32, h: 32},
 	wishiwashiseviischooling: {w: 72, h: 72},
 	beedrillmega: {w: 52, h: 55},
@@ -56032,16 +56036,16 @@ for(const id of ['bedrockclaw','rimeclaw','dunerunner','frostrunner'])delete CUS
 const GUARDIAN_LEGACY_DESCRIPTIONS: {[id: string]: {desc: string; shortDesc: string}} = {
 	"dreamsickness": {
 		"desc": "Avoids allied damaging moves; Speed doubles on Psychic Terrain or Psychic Aura. At turn end, it and its active allies heal 1/16 max HP. Once per switch-in, an ally facing a lethal opposing move survives at 1 HP through that entire move, including later hits. It pays 1/4 max HP and must have more HP than the cost. Later attacks and indirect damage can still knock out the ally.",
-		"shortDesc": "Telepathy; heals allies each turn; once per entry rescues an ally through one attack.",
+		"shortDesc": "Telepathy; heals allies each turn; once per entry rescues an ally through one attack."
 	},
 	"voidveil": {
 		"desc": "Airborne: immune to Ground attacks, Spikes, Toxic Spikes, Sticky Web and Arena Trap unless grounded. Thousand Arrows can still hit. Prevents indirect damage; HP costs, Pain Split, confusion and Struggle recoil still apply. Fairy Tale entry gives +1 Sp. Def. Prevents and cures sleep, blocks Yawn, and gives Dark and Ghost attacks 1.3x power. Immune to Ground moves, indirect damage, sleep, and Yawn; Dark- and Ghost-type moves have 1.3x power. In Fairy Tale, raises Sp. Def by 1 on entry. Its first Dark- or Ghost-type attack each switch-in bypasses Substitute and screens. It does not heal or shelter allies. Ordinary Gardevoir with this ability ignores only New World's airborne Defense and Sp. Def penalties; other users do not. Gravity still grounds it, and other field effects remain.",
-		"shortDesc": "First Dark/Ghost hit bypasses barriers; Gardevoir ignores New World defense penalties.",
+		"shortDesc": "First Dark/Ghost hit bypasses barriers; Gardevoir ignores New World defense penalties."
 	},
 	"knightsguard": {
 		"desc": "On entry, heals each adjacent ally by 1/4 max HP, or 1/3 on Fairy Tale. Once per switch-in in doubles, redirects the first single-target damaging attack aimed at an adjacent ally to it. It takes 25% less damage from that attack and, if it survives a hit, gains one Attack stage. Spread moves and status moves are not redirected.",
-		"shortDesc": "Entry heals adjacent allies 1/4 HP (1/3 on Fairy Tale); once per entry, intercepts an ally-targeting attack: 25% less damage, +1 Attack if surviving.",
-	},
+		"shortDesc": "Entry heals adjacent allies 1/4 HP (1/3 on Fairy Tale); once per entry, intercepts an ally-targeting attack: 25% less damage, +1 Attack if surviving."
+	}
 };
 // END SERVER WORKING SYNC GUARDIAN CONTEXT
 // BEGIN SERVER WORKING SYNC PERFECT FORECAST FORMS
@@ -56528,7 +56532,7 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	],
 	"apexpredator": [
 		"windrider",
-		"toughclaws",
+		"toughclaws"
 	],
 	"violentrush": [],
 	"bullrush": [
@@ -56566,7 +56570,7 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	],
 	"aquashell": [
 		"heatproof",
-		"frisk",
+		"frisk"
 	],
 	"aurabreak": [],
 	"baddreams": [],
@@ -56647,7 +56651,7 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	"witheringshell": [
 		"crumblingshell",
 		"raindish",
-		"stickyhold",
+		"stickyhold"
 	],
 	"cudchew": [],
 	"curiousmedicine": [],
@@ -56703,7 +56707,7 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	"eclipsevision": [],
 	"venomarmor": [
 		"dualwield",
-		"runaway",
+		"runaway"
 	],
 	"toxicarmor": [
 		"dualwield",
@@ -56757,7 +56761,7 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	"atrocity": [
 		"unboundblaze",
 		"toughclaws",
-		"fireward",
+		"fireward"
 	],
 	"wickedsnare": [
 		"intimidate"
@@ -56873,11 +56877,11 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	"temporalshift": [],
 	"dreamsickness": [
 		"insomnia",
-		"swornduty",
+		"swornduty"
 	],
 	"voidveil": [
 		"levitate",
-		"telepathy",
+		"telepathy"
 	],
 	"accumulation": [
 		"thickfat"
@@ -57097,7 +57101,7 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 		"firemane"
 	],
 	"coronafurnace": [
-		"flamebody",
+		"flamebody"
 	],
 	"plasmaeruption": [
 		"static",
@@ -57127,7 +57131,7 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	"holycow": [],
 	"dreepyvanguard": [
 		"stalwart",
-		"technician",
+		"technician"
 	],
 	"groundingtail": [],
 	"steelplumage": [],
@@ -57831,7 +57835,7 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	],
 	"duskdrive": [
 		"opportunist",
-		"ultraego",
+		"ultraego"
 	],
 	"burningego": [
 		"ultraego",
@@ -57998,7 +58002,9 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 		"magicguard",
 		"keeneye"
 	],
-	"lastlaugh": [],
+	"lastlaugh": [
+		"stall"
+	],
 	"openingoverture": [],
 	"resonantblade": [],
 	"finalnote": [],
@@ -58106,7 +58112,7 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	"bloodchallenge": [],
 	"twilightinstinct": [
 		"ultrainstinct",
-		"battlefervor",
+		"battlefervor"
 	],
 	"twincannons": [],
 	"twinblades": [],
@@ -58552,7 +58558,7 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	"auraprecision": [
 		"ultrainstinct",
 		"shielddust",
-		"mindseye",
+		"mindseye"
 	],
 	"auraguard": [],
 	"shadowdouble": [],
@@ -59016,30 +59022,30 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	"insight": [
 		"ultraego",
 		"telepathy",
-		"innerfocus",
+		"innerfocus"
 	],
 	"forsakensleeper": [
 		"comatose",
 		"soundproof",
-		"rattled",
+		"rattled"
 	],
 	"coldexpertise": [
 		"oblivious",
-		"thickfat",
+		"thickfat"
 	],
 	"oldnorth": [
 		"icebody",
 		"icescales",
-		"technician",
+		"technician"
 	],
 	"glacialprime": [
 		"slushrush",
-		"refrigerate",
+		"refrigerate"
 	],
 	"fireward": [],
 	"carryon": [
 		"innerfocus",
-		"healer",
+		"healer"
 	]
 };
 // END SERVER WORKING SYNC DISPLAY COMPONENTS
@@ -59059,7 +59065,7 @@ const CUSTOM_SIGNATURE_PASSIVE_DESCRIPTIONS: {[id: string]: {shortDesc: string; 
 	},
 	"palmmastery": {
 		"shortDesc": "Force Palm always paralyzes when it lands, subject to immunity.",
-		"desc": "Force Palm paralysis is a primary move effect rather than a secondary roll. It always paralyzes when it lands, subject to status immunity and status. This passive does not include Thick Fat.",
+		"desc": "Force Palm paralysis is a primary move effect rather than a secondary roll. It always paralyzes when it lands, subject to status immunity and status. This passive does not include Thick Fat."
 	},
 	"lockjaw": {
 		"shortDesc": "Biting HP hits inflict 2-turn Torment on surviving foes.",
@@ -59071,11 +59077,11 @@ const CUSTOM_SIGNATURE_PASSIVE_DESCRIPTIONS: {[id: string]: {shortDesc: string; 
 	},
 	"tempestfury": {
 		"shortDesc": "Once per battle: survive a foe hit to charge a Water critical hit. Anger Point.",
-		"desc": "Once per battle, surviving opposing direct HP damage charges the next damaging Water move to critically hit, subject to normal critical-hit prevention. Opposing HP or Substitute damage spends the charge; misses, protection and immunity preserve it. The charge and spent acquisition persist through switching and form changes. Selected Tempest Fury, when supplied separately, remains repeatable; its charge is separate and does not transfer into this passive. Includes full local Anger Point: the first damaging hit after activation raises Attack by 1, and a surviving critical hit maximizes Attack at the normal +6 cap.",
+		"desc": "Once per battle, surviving opposing direct HP damage charges the next damaging Water move to critically hit, subject to normal critical-hit prevention. Opposing HP or Substitute damage spends the charge; misses, protection and immunity preserve it. The charge and spent acquisition persist through switching and form changes. Selected Tempest Fury, when supplied separately, remains repeatable; its charge is separate and does not transfer into this passive. Includes full local Anger Point: the first damaging hit after activation raises Attack by 1, and a surviving critical hit maximizes Attack at the normal +6 cap."
 	},
 	"serratedscales": {
 		"shortDesc": "Rough Skin + Limber.",
-		"desc": "Contact attackers lose 1/8 base max HP per triggering hit; Thorn Tempered users are exempt. Prevents and cures paralysis. Other Pokemon and field effects cannot lower its Speed; self-inflicted costs and item slowdowns still apply. Trick Room and removal of Speed boosts or Tailwind still work. Limber has its normal ability-bypass rules; Rough Skin retaliation is not bypassed.",
+		"desc": "Contact attackers lose 1/8 base max HP per triggering hit; Thorn Tempered users are exempt. Prevents and cures paralysis. Other Pokemon and field effects cannot lower its Speed; self-inflicted costs and item slowdowns still apply. Trick Room and removal of Speed boosts or Tailwind still work. Limber has its normal ability-bypass rules; Rough Skin retaliation is not bypassed."
 	},
 	"controlledfury": {
 		"shortDesc": "Anger Point; no rampage lock or ending confusion.",
@@ -59310,7 +59316,7 @@ const CUSTOM_ABILITY_COMPONENT_EXCLUSIONS: {[id: string]: readonly string[]} = {
 	"atrocity": [
 		"proficient",
 		"moldbreaker",
-		"selfsufficient",
+		"selfsufficient"
 	],
 	"sunsovereign": [
 		"proficient",
@@ -60125,7 +60131,7 @@ const CUSTOM_SHARED_PASSIVE_DESCRIPTIONS: {[id: string]: {passive: string; desc:
 	"witheringshell": {
 		"passive": "naturalrecovery",
 		"desc": "Physical HP hits set opposing Stealth Rock except on water fields. Heals 1/16 max HP in effective rain. Sticky Hold prevents other Pokemon from removing its item under the normal local rules. Natural Recovery is the separate Corsola and Corsola-Reborn passive.",
-		"shortDesc": "Crumbling Shell + Rain Dish + Sticky Hold.",
+		"shortDesc": "Crumbling Shell + Rain Dish + Sticky Hold."
 	},
 	"razorreach": {
 		"passive": "keeneye",
@@ -60135,7 +60141,7 @@ const CUSTOM_SHARED_PASSIVE_DESCRIPTIONS: {[id: string]: {passive: string; desc:
 	"slipstream": {
 		"passive": "levitate",
 		"shortDesc": "Keen Eye; first Flying HP hit each entry sets three-turn Tailwind.",
-		"desc": "Full local Keen Eye prevents opposing accuracy drops, ignores opposing evasion boosts and reveals opposing Illusions on activation. Mirror Arena entry grants +1 accuracy and Laser Focus, with shared entry rewards applied once. Once per switch-in, its first Flying-type attack to damage opposing HP sets Tailwind on its side for 3 turns; Tailwind is extended to at least 3 turns, never shortened. Levitate is supplied separately by the species passive.",
+		"desc": "Full local Keen Eye prevents opposing accuracy drops, ignores opposing evasion boosts and reveals opposing Illusions on activation. Mirror Arena entry grants +1 accuracy and Laser Focus, with shared entry rewards applied once. Once per switch-in, its first Flying-type attack to damage opposing HP sets Tailwind on its side for 3 turns; Tailwind is extended to at least 3 turns, never shortened. Levitate is supplied separately by the species passive."
 	},
 	"evergreen": {
 		"passive": "overcoat",
@@ -60305,7 +60311,7 @@ const CUSTOM_SHARED_PASSIVE_DESCRIPTIONS: {[id: string]: {passive: string; desc:
 	"voidvoice": {
 		"passive": "pixilate",
 		"desc": "Queenly Majesty and Dream Sickness, retaining its protective and stat-control effects. Pixilate is supplied by the species passive.",
-		"shortDesc": "Queenly Majesty and Dream Sickness, retaining its protective and stat-control effects.",
+		"shortDesc": "Queenly Majesty and Dream Sickness, retaining its protective and stat-control effects."
 	},
 	"mirrorgreed": {
 		"passive": "magicbounce",
@@ -60360,7 +60366,7 @@ const CUSTOM_SHARED_PASSIVE_DESCRIPTIONS: {[id: string]: {passive: string; desc:
 	"neurotoxin": {
 		"passive": "shedskin",
 		"shortDesc": "Hydra Bond + Regenerator.",
-		"desc": "Eligible single-target damaging moves hit three times; multi-hit moves, spread moves outside Free-for-All, charging moves, delayed attacks, Z/Max moves and moves barred from extra hits are excluded. The second and third hits deal 30% damage and retarget the foe's ally if the first target fainted. In Free-for-All battles, single-target moves hit all foes once at 1.3x power; spread moves hit all foes three times, with later hits at 30% power, and full-power spread moves stay full power. Moves have 1.2x power on Dragon's Den. Heals 1/3 max HP on switching out. Shed Skin is supplied separately by the species passive.",
+		"desc": "Eligible single-target damaging moves hit three times; multi-hit moves, spread moves outside Free-for-All, charging moves, delayed attacks, Z/Max moves and moves barred from extra hits are excluded. The second and third hits deal 30% damage and retarget the foe's ally if the first target fainted. In Free-for-All battles, single-target moves hit all foes once at 1.3x power; spread moves hit all foes three times, with later hits at 30% power, and full-power spread moves stay full power. Moves have 1.2x power on Dragon's Den. Heals 1/3 max HP on switching out. Shed Skin is supplied separately by the species passive."
 	},
 	"patternshift": {
 		"passive": "shedskin",
@@ -60380,7 +60386,7 @@ const CUSTOM_SHARED_PASSIVE_DESCRIPTIONS: {[id: string]: {passive: string; desc:
 	"completeparasitism": {
 		"passive": "dryskin",
 		"shortDesc": "Above half HP: neutralizes weaknesses, blocks indirect damage and opposing status moves.",
-		"desc": "While above half HP, weaknesses are neutralized, indirect damage is blocked and opposing status moves fail. Opposing attack secondary effects are no longer blocked. Has its lethal-hit fake faint and full-HP Parasect-Parasite revival, including the separate Mega revival allowance. Cannot be suppressed and remains immune to Neutralization. Heals 1/16 max HP each turn and ignores sandstorm/hail. Switching cures major status and heals 1/8 max HP only when curing status; Bewitched Woods has its end-turn cure without that extra heal. Dry Skin remains the separate species passive.",
+		"desc": "While above half HP, weaknesses are neutralized, indirect damage is blocked and opposing status moves fail. Opposing attack secondary effects are no longer blocked. Has its lethal-hit fake faint and full-HP Parasect-Parasite revival, including the separate Mega revival allowance. Cannot be suppressed and remains immune to Neutralization. Heals 1/16 max HP each turn and ignores sandstorm/hail. Switching cures major status and heals 1/8 max HP only when curing status; Bewitched Woods has its end-turn cure without that extra heal. Dry Skin remains the separate species passive."
 	},
 	"sacredpower": {
 		"passive": "insomnia",
@@ -60390,7 +60396,7 @@ const CUSTOM_SHARED_PASSIVE_DESCRIPTIONS: {[id: string]: {passive: string; desc:
 	"solarhydra": {
 		"passive": "solarbud",
 		"shortDesc": "Hydra Bond + Grassy Surge.",
-		"desc": "Full local Hydra Bond and Grassy Surge. Solar Bud is a separate species passive: after a sunny end turn, the next opposing Grass HP hit cures status and heals 1/8 max HP, once per entry.",
+		"desc": "Full local Hydra Bond and Grassy Surge. Solar Bud is a separate species passive: after a sunny end turn, the next opposing Grass HP hit cures status and heals 1/8 max HP, once per entry."
 	},
 	"goldentalons": {
 		"passive": "stalwart",
@@ -60405,7 +60411,7 @@ const CUSTOM_SHARED_PASSIVE_DESCRIPTIONS: {[id: string]: {passive: string; desc:
 	"execution": {
 		"passive": "duskilate",
 		"shortDesc": "Double power against foes at half HP or less; has offense-drop limits, field Speed protection and KO healing.",
-		"desc": "Has Mold Breaker, double attack power against targets at half HP or less, limits to Attack and Special Attack drops, prevention of Speed drops while a field exists, and 1/8 max HP healing per move KO. Duskilate is supplied by the species passive, retaining its conversion, field power and Cold Eclipse hail immunity.",
+		"desc": "Has Mold Breaker, double attack power against targets at half HP or less, limits to Attack and Special Attack drops, prevention of Speed drops while a field exists, and 1/8 max HP healing per move KO. Duskilate is supplied by the species passive, retaining its conversion, field power and Cold Eclipse hail immunity."
 	},
 	"corrosivetouch": {
 		"passive": "technician",
@@ -60430,12 +60436,12 @@ const CUSTOM_SHARED_PASSIVE_DESCRIPTIONS: {[id: string]: {passive: string; desc:
 	"windchime": {
 		"passive": "levitate",
 		"shortDesc": "Armorize and Punk Rock.",
-		"desc": "Full local Armorize and Punk Rock, including field interactions. The direct Ground immunity is replaced by passive Levitate, which follows normal grounding rules.",
+		"desc": "Full local Armorize and Punk Rock, including field interactions. The direct Ground immunity is replaced by passive Levitate, which follows normal grounding rules."
 	},
 	"astralengine": {
 		"passive": "levitate",
 		"shortDesc": "Power Spot; Levitate is a separate species passive.",
-		"desc": "Allies' moves have 1.3x power, or 1.5x on Haunted, Bewitched Woods, Holy and Psychic fields. Mega Claydol has its separate Levitate passive.",
+		"desc": "Allies' moves have 1.3x power, or 1.5x on Haunted, Bewitched Woods, Holy and Psychic fields. Mega Claydol has its separate Levitate passive."
 	},
 	"hauntedchime": {
 		"passive": "levitate",
@@ -60455,27 +60461,27 @@ const CUSTOM_SHARED_PASSIVE_DESCRIPTIONS: {[id: string]: {passive: string; desc:
 	"voidcraft": {
 		"passive": "elevate",
 		"shortDesc": "Shadow Shield, Temporal Shift and full Insomnia; has its recurring hex.",
-		"desc": "Has Shadow Shield, full Insomnia and its unique Temporal Shift protection and recurring Ghost hex. Entire Elevate is supplied by the species passive: Ground immunity and a highest-stat increase per move KO.",
+		"desc": "Has Shadow Shield, full Insomnia and its unique Temporal Shift protection and recurring Ghost hex. Entire Elevate is supplied by the species passive: Ground immunity and a highest-stat increase per move KO."
 	},
 	"stormbell": {
 		"passive": "mirrorarmor",
 		"shortDesc": "Drizzle and Levitate.",
-		"desc": "Sets rain with full local Drizzle and grants Levitate's Ground immunity. Does not raise a stat after a KO. Mega Bronzong has its separate Mirror Armor passive and its field behavior.",
+		"desc": "Sets rain with full local Drizzle and grants Levitate's Ground immunity. Does not raise a stat after a KO. Mega Bronzong has its separate Mirror Armor passive and its field behavior."
 	},
 	"froststalker": {
 		"passive": "stakeout",
 		"shortDesc": "Sharpness and Refrigerate.",
-		"desc": "Full local Sharpness and Refrigerate. Stakeout is supplied by the species passive and doubles offensive stats against a newly switched target.",
+		"desc": "Full local Sharpness and Refrigerate. Stakeout is supplied by the species passive and doubles offensive stats against a newly switched target."
 	},
 	"reapersgrip": {
 		"passive": "unaware",
 		"shortDesc": "Self Sufficient, Dark Aura and Haunted Terrain reactions.",
-		"desc": "Has Self Sufficient, Dark Aura and its unique Haunted Terrain triggers. Full local Unaware is supplied by the species passive.",
+		"desc": "Has Self Sufficient, Dark Aura and its unique Haunted Terrain triggers. Full local Unaware is supplied by the species passive."
 	},
 	"streettyrant": {
 		"passive": "shedskin",
 		"shortDesc": "Intimidate + Mold Breaker.",
-		"desc": "On entry, lowers adjacent foes' Attack by 1 with normal Substitute and Intimidate protections. Moves ignore bypassable opposing abilities. Shed Skin is supplied separately by the species passive, including its shared 1/4 max HP recovery.",
+		"desc": "On entry, lowers adjacent foes' Attack by 1 with normal Substitute and Intimidate protections. Moves ignore bypassable opposing abilities. Shed Skin is supplied separately by the species passive, including its shared 1/4 max HP recovery."
 	},
 	"adaptivepower": {
 		"passive": "regenerator",
@@ -60485,12 +60491,12 @@ const CUSTOM_SHARED_PASSIVE_DESCRIPTIONS: {[id: string]: {passive: string; desc:
 	"stormcircuit": {
 		"passive": "elevate",
 		"shortDesc": "Electric Surge, rain/water-field Speed and extra Special Attack from Coil.",
-		"desc": "Has Electric Surge, its rain and water-field Speed multiplier, and Coil's additional +1 Special Attack. Entire Elevate is supplied by the species passive: Ground immunity and one highest-stat increase per move KO.",
+		"desc": "Has Electric Surge, its rain and water-field Speed multiplier, and Coil's additional +1 Special Attack. Entire Elevate is supplied by the species passive: Ground immunity and one highest-stat increase per move KO."
 	},
 	"soulcremation": {
 		"passive": "soulpyre",
 		"shortDesc": "Soul Siphon and Malice Well.",
-		"desc": "Has full Soul Siphon and Malice Well, including their field effects. Soul Pyre is supplied by the species passive with its independent burn recovery and Ghost-hit Special Defense drop. Mega Chandelure with active Soul Cremation bypasses Soul Fire's Fire/Ghost attack absorption only. Ordinary type effectiveness and type immunities remain; this grants neither general Mold Breaker nor a damage multiplier. Will-O-Wisp and Soul Fire redirection are unchanged.",
+		"desc": "Has full Soul Siphon and Malice Well, including their field effects. Soul Pyre is supplied by the species passive with its independent burn recovery and Ghost-hit Special Defense drop. Mega Chandelure with active Soul Cremation bypasses Soul Fire's Fire/Ghost attack absorption only. Ordinary type effectiveness and type immunities remain; this grants neither general Mold Breaker nor a damage multiplier. Will-O-Wisp and Soul Fire redirection are unchanged."
 	},
 	"phantomfist": {
 		"passive": "noguard",
@@ -60500,7 +60506,7 @@ const CUSTOM_SHARED_PASSIVE_DESCRIPTIONS: {[id: string]: {passive: string; desc:
 	"auramaster": {
 		"passive": "auraguard",
 		"shortDesc": "Dual Wield, Technician and Inner Focus.",
-		"desc": "Has its paired attacks, Technician power and Inner Focus. Contact damage reduction is supplied once by the Aura Guard species passive.",
+		"desc": "Has its paired attacks, Technician power and Inner Focus. Contact damage reduction is supplied once by the Aura Guard species passive."
 	},
 	"royalsun": {
 		"passive": "flamebody",
@@ -60515,32 +60521,32 @@ const CUSTOM_SHARED_PASSIVE_DESCRIPTIONS: {[id: string]: {passive: string; desc:
 	"divinemockery": {
 		"passive": "moldbreaker",
 		"shortDesc": "Hydra Bond and extra Water STAB.",
-		"desc": "Full local Hydra Bond and extra Water STAB. Mold Breaker is supplied by the species passive. No Sniper entry accuracy or critical-hit multiplier.",
+		"desc": "Full local Hydra Bond and extra Water STAB. Mold Breaker is supplied by the species passive. No Sniper entry accuracy or critical-hit multiplier."
 	},
 	"perfectego": {
 		"passive": "noguard",
 		"shortDesc": "Ability bypass, combat healing and stat gains.",
-		"desc": "Has all Ultra Ego combat healing, offensive and field defensive stat gains, pinch healing, ability bypass and field suppression. Authority damage bonuses and first-strike power are removed. Full No Guard is supplied by the species passive, affecting incoming and outgoing moves and semi-invulnerability. Against an opposing effective Ultra Instinct (including composites), its attacks ignore its own negative Attack and Sp. Atk stages. Ultra Instinct instead reduces its first HP-damaging move each turn by 40% and ignores positive Attack or Sp. Atk stages for that protected move. Stored stages are unchanged; normal +1 retaliation is unchanged. The rivalry is disabled on Bewitched Woods, Haunted and Holy.",
+		"desc": "Has all Ultra Ego combat healing, offensive and field defensive stat gains, pinch healing, ability bypass and field suppression. Authority damage bonuses and first-strike power are removed. Full No Guard is supplied by the species passive, affecting incoming and outgoing moves and semi-invulnerability. Against an opposing effective Ultra Instinct (including composites), its attacks ignore its own negative Attack and Sp. Atk stages. Ultra Instinct instead reduces its first HP-damaging move each turn by 40% and ignores positive Attack or Sp. Atk stages for that protected move. Stored stages are unchanged; normal +1 retaliation is unchanged. The rivalry is disabled on Bewitched Woods, Haunted and Holy."
 	},
 	"echosense": {
 		"passive": "frisk",
 		"shortDesc": "Echo Fiend, Telepathy and Infiltrator.",
-		"desc": "Has full Echo Fiend, Telepathy and Infiltrator with their suppression rules and field effects. Frisk is supplied once by the species passive: reveals opposing Illusions and held items, with one 30% Embargo roll per opposing item holder.",
+		"desc": "Has full Echo Fiend, Telepathy and Infiltrator with their suppression rules and field effects. Frisk is supplied once by the species passive: reveals opposing Illusions and held items, with one 30% Embargo roll per opposing item holder."
 	},
 	"corrosiveburn": {
 		"passive": "oblivious",
 		"shortDesc": "Corrosion and Venom Ignition.",
-		"desc": "Full local Corrosion and Venom Ignition: Fire attacks deal 1.2x damage against poisoned targets without consuming poison. Oblivious is supplied by the species passive, including attraction and Taunt prevention and cure, Captivate immunity and Intimidate protection.",
+		"desc": "Full local Corrosion and Venom Ignition: Fire attacks deal 1.2x damage against poisoned targets without consuming poison. Oblivious is supplied by the species passive, including attraction and Taunt prevention and cure, Captivate immunity and Intimidate protection."
 	},
 	"aquashell": {
 		"passive": "toughclaws",
 		"shortDesc": "Heatproof + Frisk.",
-		"desc": "Full local Heatproof and Frisk. Incoming Fire attacks use half the attacker’s Attack or Special Attack; burn damage is halved. On activation, reveals opposing active Illusions and held items; each opposing item holder independently has a 30% chance of five-turn Embargo. Tough Claws is supplied separately by the species passive.",
+		"desc": "Full local Heatproof and Frisk. Incoming Fire attacks use half the attacker’s Attack or Special Attack; burn damage is halved. On activation, reveals opposing active Illusions and held items; each opposing item holder independently has a 30% chance of five-turn Embargo. Tough Claws is supplied separately by the species passive."
 	},
 	"rainsovereign": {
 		"passive": "drizzle",
 		"shortDesc": "Extends entry rain to 8 turns; Electric/Water/Flying STAB and opposing Water chip.",
-		"desc": "Drizzle supplies entry rain as a species passive. Rain Sovereign extends that rain to eight turns and has Electric, Water and Flying STAB plus opposing Water chip each turn, regardless of weather. Existing immunities and Free-for-All type scaling remain.",
+		"desc": "Drizzle supplies entry rain as a species passive. Rain Sovereign extends that rain to eight turns and has Electric, Water and Flying STAB plus opposing Water chip each turn, regardless of weather. Existing immunities and Free-for-All type scaling remain."
 	},
 	"verdantsanctuary": {
 		"passive": "grassysurge",
@@ -60550,7 +60556,7 @@ const CUSTOM_SHARED_PASSIVE_DESCRIPTIONS: {[id: string]: {passive: string; desc:
 	"bogbody": {
 		"passive": "levitate",
 		"shortDesc": "Thick Fat and Dry Skin.",
-		"desc": "Full local Thick Fat and Dry Skin: Fire and Ice offensive stats are halved, Water absorption, the Fire power penalty, rain healing, sun damage and all field recovery or damage. Levitate is supplied by the species passive and obeys normal grounding rules.",
+		"desc": "Full local Thick Fat and Dry Skin: Fire and Ice offensive stats are halved, Water absorption, the Fire power penalty, rain healing, sun damage and all field recovery or damage. Levitate is supplied by the species passive and obeys normal grounding rules."
 	},
 	"mastercourse": {
 		"passive": "contrary",
@@ -60575,7 +60581,7 @@ const CUSTOM_SHARED_PASSIVE_DESCRIPTIONS: {[id: string]: {passive: string; desc:
 	"toxicrenewal": {
 		"passive": "regenerator",
 		"shortDesc": "Adaptability + Poison Touch.",
-		"desc": "Uses full local Adaptability for same-type moves, including its higher-STAB interaction. Contact hits have a 30% chance to poison; Shield Dust and Covert Cloak block this effect. Regenerator is supplied separately by the species passive.",
+		"desc": "Uses full local Adaptability for same-type moves, including its higher-STAB interaction. Contact hits have a 30% chance to poison; Shield Dust and Covert Cloak block this effect. Regenerator is supplied separately by the species passive."
 	},
 	"gigavolt": {
 		"passive": "static",
@@ -60590,7 +60596,7 @@ const CUSTOM_SHARED_PASSIVE_DESCRIPTIONS: {[id: string]: {passive: string; desc:
 	"irondominion": {
 		"passive": "swornduty",
 		"shortDesc": "Pressure, stat-drop reflection and field bonuses.",
-		"desc": "On entry, lowers adjacent foes' Defense and Sp. Def by 1, or 2 on Cold Eclipse. Pressure increases opposing PP use. Reflects opposing stat drops. Fairy Tale entry grants +1 Defense and Sp. Def; Mirror Arena grants +1 evasion. Has Starlight Arena priority protection. Sworn Duty is supplied separately by the species passive. Outside Cold Eclipse, its Defense and Sp. Def drop is attempted only once per opposing Pokemon per battle for each Pressure user. Switching, Transform and ability loss or regain do not reset that allowance; a blocked or reflected attempt spends it. Cold Eclipse retains repeatable -2 drops on entry and neither spends nor resets the ordinary allowance.",
+		"desc": "On entry, lowers adjacent foes' Defense and Sp. Def by 1, or 2 on Cold Eclipse. Pressure increases opposing PP use. Reflects opposing stat drops. Fairy Tale entry grants +1 Defense and Sp. Def; Mirror Arena grants +1 evasion. Has Starlight Arena priority protection. Sworn Duty is supplied separately by the species passive. Outside Cold Eclipse, its Defense and Sp. Def drop is attempted only once per opposing Pokemon per battle for each Pressure user. Switching, Transform and ability loss or regain do not reset that allowance; a blocked or reflected attempt spends it. Cold Eclipse retains repeatable -2 drops on entry and neither spends nor resets the ordinary allowance."
 	},
 	"astralwatcher": {
 		"passive": "frisk",
@@ -60610,12 +60616,12 @@ const CUSTOM_SHARED_PASSIVE_DESCRIPTIONS: {[id: string]: {passive: string; desc:
 	"sweetdecay": {
 		"passive": "gluttony",
 		"shortDesc": "Hustle, Sweet Veil and Corrosion.",
-		"desc": "Attack is 1.5x, but physical moves have 0.8x accuracy. Prevents sleep and Yawn for itself and allies, including Rest. Does not cure sleep. Can poison Poison and Steel types; Poison moves bypass Steel immunity. Newly poisoned foes lose 1 Defense and Sp. Def. On Wasteland, move secondary effects become separate 2.5% frostbite, burn, paralysis and poison chances. On Corrosive and Corrosive Mist, incoming damage is multiplied by 1.5. Gluttony is supplied separately by the species passive.",
+		"desc": "Attack is 1.5x, but physical moves have 0.8x accuracy. Prevents sleep and Yawn for itself and allies, including Rest. Does not cure sleep. Can poison Poison and Steel types; Poison moves bypass Steel immunity. Newly poisoned foes lose 1 Defense and Sp. Def. On Wasteland, move secondary effects become separate 2.5% frostbite, burn, paralysis and poison chances. On Corrosive and Corrosive Mist, incoming damage is multiplied by 1.5. Gluttony is supplied separately by the species passive."
 	},
 	"bakedbliss": {
 		"passive": "gluttony",
 		"shortDesc": "Well-Baked Body, Thick Fat and Sweet Veil.",
-		"desc": "Absorbs Fire moves for +2 Defense. Gains +1 Defense each turn on Burning, Superheated, Dragon's Den and Volcanic. Incoming Fire and Ice attacks use half the attacker's offensive stat. Immune to hail damage. Prevents sleep and Yawn for itself and allies, including Rest. Does not cure sleep. Gluttony is supplied separately by the species passive.",
+		"desc": "Absorbs Fire moves for +2 Defense. Gains +1 Defense each turn on Burning, Superheated, Dragon's Den and Volcanic. Incoming Fire and Ice attacks use half the attacker's offensive stat. Immune to hail damage. Prevents sleep and Yawn for itself and allies, including Rest. Does not cure sleep. Gluttony is supplied separately by the species passive."
 	},
 	"duneterror": {
 		"passive": "shedskin",
@@ -60630,7 +60636,7 @@ const CUSTOM_SHARED_PASSIVE_DESCRIPTIONS: {[id: string]: {passive: string; desc:
 	"heatcoil": {
 		"passive": "flamebody",
 		"shortDesc": "Speed Boost; freeze cure and Water/Ice damage reduction.",
-		"desc": "Gains +1 Speed at the end of each full turn it spends active. Cures freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Flame Body is supplied separately by the species passive.",
+		"desc": "Gains +1 Speed at the end of each full turn it spends active. Cures freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Flame Body is supplied separately by the species passive."
 	},
 	"wickedsnare": {
 		"passive": "prankster",
@@ -60640,7 +60646,7 @@ const CUSTOM_SHARED_PASSIVE_DESCRIPTIONS: {[id: string]: {passive: string; desc:
 	"sweetsanctuary": {
 		"passive": "friendguard",
 		"shortDesc": "Ripen; successful Decorate heals its boosted target by 1/4 max HP.",
-		"desc": "Full local Ripen doubles HP restored and stat boosts from Berries, and doubles resistance Berries' damage reduction. When Decorate actually raises at least one stat, heals that target by 1/4 of its current maximum HP once after the move. Failed or blocked Decorate, or no actual positive boost, grants no healing. Normal healing restrictions apply. Ripen does not multiply this healing. Friend Guard remains the species passive; G-Max Finale has its separate 1/6 active-side healing.",
+		"desc": "Full local Ripen doubles HP restored and stat boosts from Berries, and doubles resistance Berries' damage reduction. When Decorate actually raises at least one stat, heals that target by 1/4 of its current maximum HP once after the move. Failed or blocked Decorate, or no actual positive boost, grants no healing. Normal healing restrictions apply. Ripen does not multiply this healing. Friend Guard remains the species passive; G-Max Finale has its separate 1/6 active-side healing."
 	},
 	"treasuretitan": {
 		"passive": "heavymetal",
@@ -60655,12 +60661,12 @@ const CUSTOM_SHARED_PASSIVE_DESCRIPTIONS: {[id: string]: {passive: string; desc:
 	"phantombarrage": {
 		"passive": "levitate",
 		"shortDesc": "Hydra Bond, Clear Body and Infiltrator; adaptive Dragon Darts/Spirit Volley.",
-		"desc": "Other Pokemon cannot lower its stat stages. Moves bypass Substitute, Reflect, Light Screen, Aurora Veil, Safeguard and Mist. Eligible single-target damaging moves hit three times; multi-hit moves, spread moves outside Free-for-All, charging moves, delayed attacks, Z/Max moves and moves barred from extra hits are excluded. The second and third hits deal 30% damage and retarget the foe's ally if the first target fainted. In Free-for-All battles, single-target moves hit all foes once at 1.3x power; spread moves hit all foes three times, with later hits at 30% power, and full-power spread moves stay full power. Moves have 1.2x power on Dragon's Den. Dragon Darts and G-Max Spirit Volley use its higher offensive stat and gain 20% power from Hydra Bond instead of extra hits. Dragon Darts keeps its two-hit pattern; Spirit Volley keeps its full-power hit and weaker follow-up against another foe. In Free-for-All battles, Dragon Darts hits all opposing Pokemon twice. Levitate is supplied separately by the species passive.",
+		"desc": "Other Pokemon cannot lower its stat stages. Moves bypass Substitute, Reflect, Light Screen, Aurora Veil, Safeguard and Mist. Eligible single-target damaging moves hit three times; multi-hit moves, spread moves outside Free-for-All, charging moves, delayed attacks, Z/Max moves and moves barred from extra hits are excluded. The second and third hits deal 30% damage and retarget the foe's ally if the first target fainted. In Free-for-All battles, single-target moves hit all foes once at 1.3x power; spread moves hit all foes three times, with later hits at 30% power, and full-power spread moves stay full power. Moves have 1.2x power on Dragon's Den. Dragon Darts and G-Max Spirit Volley use its higher offensive stat and gain 20% power from Hydra Bond instead of extra hits. Dragon Darts keeps its two-hit pattern; Spirit Volley keeps its full-power hit and weaker follow-up against another foe. In Free-for-All battles, Dragon Darts hits all opposing Pokemon twice. Levitate is supplied separately by the species passive."
 	},
 	"sweetresonance": {
 		"passive": "selfsufficient",
 		"shortDesc": "Hydra Bond; lowers adjacent foes' evasion on entry. Field effects vary.",
-		"desc": "Full local Hydra Bond. On entry, lowers adjacent foes' evasion by 1 unless protected by Substitute. The entry effect has its Flower Garden and Misty field extensions. Does not protect held items, inflict retaliatory Embargo or automatically grant Dragon Cheer. Dipplin-Gmax has its separate Self-Sufficient passive.",
+		"desc": "Full local Hydra Bond. On entry, lowers adjacent foes' evasion by 1 unless protected by Substitute. The entry effect has its Flower Garden and Misty field extensions. Does not protect held items, inflict retaliatory Embargo or automatically grant Dragon Cheer. Dipplin-Gmax has its separate Self-Sufficient passive."
 	},
 	"scaleshelter": {
 		"passive": "shielddust",
@@ -62236,9 +62242,9 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 			"failroleplay": 1,
 			"noreceiver": 1,
 			"noentrain": 1,
-			"notrace": 1,
+			"notrace": 1
 		},
-		"isNonstandard": null,
+		"isNonstandard": null
 	},
 	"causticchamber": {
 		"name": "Caustic Chamber",
@@ -62431,7 +62437,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"shortDesc": "Oblivious + Thick Fat.",
 		"rating": 4,
 		"flags": {},
-		"isNonstandard": null,
+		"isNonstandard": null
 	},
 	"coldlogic": {
 		"name": "Cold Logic",
@@ -62656,7 +62662,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"shortDesc": "Flame Body; damaging Fire moves ignore positive defensive stages.",
 		"rating": 4,
 		"flags": {},
-		"isNonstandard": null,
+		"isNonstandard": null
 	},
 	"corrosion": {
 		"name": "Corrosion",
@@ -64123,7 +64129,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"shortDesc": "Defense and Sp. Def 1.3x; 1.5x on Cold Eclipse or Dragon’s Den.",
 		"rating": 3,
 		"flags": {},
-		"isNonstandard": null,
+		"isNonstandard": null
 	},
 	"flamebody": {
 		"name": "Flame Body",
@@ -64287,9 +64293,9 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 			"noentrain": 1,
 			"notrace": 1,
 			"failskillswap": 1,
-			"cantsuppress": 1,
+			"cantsuppress": 1
 		},
-		"isNonstandard": null,
+		"isNonstandard": null
 	},
 	"fortressshell": {
 		"name": "Tidal Crown",
@@ -64657,7 +64663,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"shortDesc": "Slush Rush + Refrigerate.",
 		"rating": 4,
 		"flags": {},
-		"isNonstandard": null,
+		"isNonstandard": null
 	},
 	"glacierbreaker": {
 		"name": "Glacier Breaker",
@@ -65583,7 +65589,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"shortDesc": "Ultra Ego + Telepathy + Inner Focus.",
 		"rating": 4,
 		"flags": {},
-		"isNonstandard": null,
+		"isNonstandard": null
 	},
 	"insomnia": {
 		"name": "Insomnia",
@@ -65919,8 +65925,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Last Laugh",
 		"num": 10454,
 		"gen": 9,
-		"desc": "If no other active Pokemon has a move left to use this turn, its damaging attack bypasses Substitute. Damaging a foe with that attack restores 1/8 max HP, once per turn. Once per entry, a damaging attack that hits a foe after that foe has completed its move action this turn applies Torment after damage, subject to normal eligibility. Merely switching in does not qualify. Deals 2x damage to foes already affected by Torment.",
-		"shortDesc": "2x damage to Tormented foes; last-action hits bypass Substitute and heal 1/8; Torment once/entry.",
+		"desc": "Moves last within its priority bracket. On Chessboard entry, raises Defense by one stage. Its attacks deal 1.3x damage to a foe that has completed its move action this turn. If no other active Pokemon has a queued move remaining, its damaging move bypasses Substitute; damaging a foe with that move heals 1/8 max HP, once per turn.",
+		"shortDesc": "1.3x after the target acts; last-action attacks bypass Substitute and heal 1/8 once/turn.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null
@@ -67185,7 +67191,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"shortDesc": "Ice Body + Ice Scales + Technician.",
 		"rating": 4,
 		"flags": {},
-		"isNonstandard": null,
+		"isNonstandard": null
 	},
 	"omenedge": {
 		"name": "Omen Edge",
@@ -75728,7 +75734,7 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"metronome": 1
 		},
 		"desc": "The user heals 1/8 max HP, or 1/4 total if its own status is cured, starts Safeguard on its side, and cures non-volatile status from its party. Active Pokemon with Sap Sipper are not cured unless they are the user.",
-		"shortDesc": "Heals user 1/8, or 1/4 if cured; Safeguard + party cure.",
+		"shortDesc": "Heals user 1/8, or 1/4 if cured; Safeguard + party cure."
 	},
 	"aromaticmist": {
 		"name": "Aromatic Mist",
@@ -82665,7 +82671,7 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"metronome": 1
 		},
 		"desc": "The user heals 1/8 max HP, or 1/4 total if its own status is cured, starts Safeguard on its side, and cures non-volatile status from its party. Active Pokemon with Soundproof are not cured unless they are the user.",
-		"shortDesc": "Heals user 1/8, or 1/4 if cured; Safeguard + party cure.",
+		"shortDesc": "Heals user 1/8, or 1/4 if cured; Safeguard + party cure."
 	},
 	"healblock": {
 		"name": "Heal Block",
@@ -84230,7 +84236,7 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"allyanim": 1
 		},
 		"desc": "Each affected ally has its major status cured and restores 1/8 max HP, or 1/4 total if a status was actually cured.",
-		"shortDesc": "Allies heal 1/8, or 1/4 total if status is cured.",
+		"shortDesc": "Allies heal 1/8, or 1/4 total if status is cured."
 	},
 	"kaboom": {
 		"name": "KABOOM!!",
@@ -84838,7 +84844,7 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"metronome": 1
 		},
 		"desc": "Each affected ally has its major status cured and restores 1/8 max HP, or 1/4 total if a status was actually cured.",
-		"shortDesc": "Allies heal 1/8, or 1/4 total if status is cured.",
+		"shortDesc": "Allies heal 1/8, or 1/4 total if status is cured."
 	},
 	"lunardance": {
 		"name": "Lunar Dance",
@@ -90206,7 +90212,7 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"failinstruct": 1
 		},
 		"desc": "Charges on the first turn, raising Attack, Defense and Sp. Def by 1, then attacks. While charging, takes 20% less attack damage. Attack damage heals the user by 15% maximum HP. After release, cannot be selected again until it completes a different damaging move or switches out.",
-		"shortDesc": "Charges, attacks; needs another damaging move before reuse.",
+		"shortDesc": "Charges, attacks; needs another damaging move before reuse."
 	},
 	"skyattack": {
 		"name": "Sky Attack",
@@ -94631,7 +94637,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	],
 	"apexpredator": [
 		"windrider",
-		"toughclaws",
+		"toughclaws"
 	],
 	"apexvenom": [
 		"strongjaw",
@@ -94642,7 +94648,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	],
 	"aquashell": [
 		"heatproof",
-		"frisk",
+		"frisk"
 	],
 	"arenatrap": [],
 	"argentdevotion": [
@@ -94683,7 +94689,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"atrocity": [
 		"unboundblaze",
 		"toughclaws",
-		"fireward",
+		"fireward"
 	],
 	"aurabreak": [],
 	"auraconvergence": [],
@@ -94701,7 +94707,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"auraprecision": [
 		"ultrainstinct",
 		"shielddust",
-		"mindseye",
+		"mindseye"
 	],
 	"aurasight": [],
 	"auroracurrent": [
@@ -94772,7 +94778,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	],
 	"blaze": [],
 	"blazingmane": [
-		"firemane",
+		"firemane"
 	],
 	"blazingtempo": [
 		"speedboost",
@@ -94879,7 +94885,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	],
 	"carryon": [
 		"innerfocus",
-		"healer",
+		"healer"
 	],
 	"causticchamber": [
 		"owntempo"
@@ -94918,7 +94924,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"cloudnine": [],
 	"coldexpertise": [
 		"oblivious",
-		"thickfat",
+		"thickfat"
 	],
 	"coldlogic": [
 		"toughclaws",
@@ -94956,7 +94962,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"guts"
 	],
 	"coronafurnace": [
-		"flamebody",
+		"flamebody"
 	],
 	"corrosion": [],
 	"corrosiveburn": [
@@ -95154,7 +95160,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"dredger": [],
 	"dreepyvanguard": [
 		"stalwart",
-		"technician",
+		"technician"
 	],
 	"drizzle": [],
 	"drought": [],
@@ -95173,7 +95179,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	],
 	"duskdrive": [
 		"opportunist",
-		"ultraego",
+		"ultraego"
 	],
 	"duskilate": [],
 	"earlybird": [],
@@ -95298,7 +95304,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"forsakensleeper": [
 		"comatose",
 		"soundproof",
-		"rattled",
+		"rattled"
 	],
 	"fortressshell": [
 		"waterbarrage",
@@ -95399,7 +95405,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	],
 	"glacialprime": [
 		"slushrush",
-		"refrigerate",
+		"refrigerate"
 	],
 	"glacierbreaker": [
 		"moldbreaker"
@@ -95602,7 +95608,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"insight": [
 		"ultraego",
 		"telepathy",
-		"innerfocus",
+		"innerfocus"
 	],
 	"insomnia": [],
 	"intimidate": [],
@@ -95679,7 +95685,9 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"lastingpromise": [
 		"friendguard"
 	],
-	"lastlaugh": [],
+	"lastlaugh": [
+		"stall"
+	],
 	"layeredcoat": [],
 	"layeredshell": [
 		"shellarmor"
@@ -95947,7 +95955,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"oldnorth": [
 		"icebody",
 		"icescales",
-		"technician",
+		"technician"
 	],
 	"omenedge": [
 		"sharpness",
@@ -96996,7 +97004,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"turboblaze": [],
 	"twilightinstinct": [
 		"ultrainstinct",
-		"battlefervor",
+		"battlefervor"
 	],
 	"twinblades": [],
 	"twincannons": [],
@@ -97251,7 +97259,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"witheringshell": [
 		"crumblingshell",
 		"raindish",
-		"stickyhold",
+		"stickyhold"
 	],
 	"witheringtouch": [
 		"poisontouch",
@@ -98061,223 +98069,223 @@ CUSTOM_LEARNSET_REMOVALS.divineon = CUSTOM_LEARNSET_REMOVALS.eeveestarter;
 // BEGIN SERVER WORKING SYNC LEARNSET EXCLUSIONS
 const SERVER_GEN9_LEARNSET_EXCLUSIONS: {[id: string]: readonly string[]} = {
 	"absol": [
-		"tachyoncutter",
+		"tachyoncutter"
 	],
 	"absolmega": [
-		"tachyoncutter",
+		"tachyoncutter"
 	],
 	"absolmegaz": [
-		"tachyoncutter",
+		"tachyoncutter"
 	],
 	"aegislash": [
-		"tachyoncutter",
+		"tachyoncutter"
 	],
 	"aegislashblade": [
-		"tachyoncutter",
+		"tachyoncutter"
 	],
 	"aegislashgmax": [
-		"tachyoncutter",
+		"tachyoncutter"
 	],
 	"altaria": [
-		"bleakwindstorm",
+		"bleakwindstorm"
 	],
 	"altariamega": [
-		"bleakwindstorm",
+		"bleakwindstorm"
 	],
 	"aurorus": [
-		"diamondstorm",
+		"diamondstorm"
 	],
 	"aurorusmega": [
-		"diamondstorm",
+		"diamondstorm"
 	],
 	"banette": [
 		"magicpowder",
-		"spectralthief",
+		"spectralthief"
 	],
 	"banettemega": [
 		"magicpowder",
-		"spectralthief",
+		"spectralthief"
 	],
 	"banettemegaz": [
 		"magicpowder",
-		"spectralthief",
+		"spectralthief"
 	],
 	"beautifly": [
-		"magicpowder",
+		"magicpowder"
 	],
 	"breloom": [
-		"barbbarrage",
+		"barbbarrage"
 	],
 	"breloommega": [
-		"barbbarrage",
+		"barbbarrage"
 	],
 	"delibird": [
-		"bleakwindstorm",
+		"bleakwindstorm"
 	],
 	"doublade": [
-		"tachyoncutter",
+		"tachyoncutter"
 	],
 	"dragalge": [
-		"clangingscales",
+		"clangingscales"
 	],
 	"dragalgemega": [
-		"clangingscales",
+		"clangingscales"
 	],
 	"drapion": [
-		"direclaw",
+		"direclaw"
 	],
 	"dustox": [
-		"magicpowder",
+		"magicpowder"
 	],
 	"feraligatr": [
-		"aquastep",
+		"aquastep"
 	],
 	"feraligatrgmax": [
-		"aquastep",
+		"aquastep"
 	],
 	"feraligatrmega": [
-		"aquastep",
+		"aquastep"
 	],
 	"floatzel": [
-		"aquastep",
+		"aquastep"
 	],
 	"florges": [
-		"magicpowder",
+		"magicpowder"
 	],
 	"florgesblue": [
-		"magicpowder",
+		"magicpowder"
 	],
 	"florgesorange": [
-		"magicpowder",
+		"magicpowder"
 	],
 	"florgeswhite": [
-		"magicpowder",
+		"magicpowder"
 	],
 	"florgesyellow": [
-		"magicpowder",
+		"magicpowder"
 	],
 	"flygon": [
-		"clangingscales",
+		"clangingscales"
 	],
 	"flygonmega": [
-		"clangingscales",
+		"clangingscales"
 	],
 	"flygonmegaz": [
-		"clangingscales",
+		"clangingscales"
 	],
 	"froslass": [
 		"bleakwindstorm",
-		"magicpowder",
+		"magicpowder"
 	],
 	"froslassmega": [
 		"bleakwindstorm",
-		"magicpowder",
+		"magicpowder"
 	],
 	"gardevoir": [
-		"darkvoid",
+		"darkvoid"
 	],
 	"gardevoirmega": [
-		"darkvoid",
+		"darkvoid"
 	],
 	"gardevoirmegaalt": [
-		"darkvoid",
+		"darkvoid"
 	],
 	"gardevoirmegaz": [
-		"darkvoid",
+		"darkvoid"
 	],
 	"gardevoirvoid": [
-		"darkvoid",
+		"darkvoid"
 	],
 	"gardevoirvoidmega": [
-		"darkvoid",
+		"darkvoid"
 	],
 	"gengar": [
-		"spectralthief",
+		"spectralthief"
 	],
 	"gengargmax": [
-		"spectralthief",
+		"spectralthief"
 	],
 	"gengarmega": [
-		"spectralthief",
+		"spectralthief"
 	],
 	"gligar": [
-		"direclaw",
+		"direclaw"
 	],
 	"gligaralt": [
-		"direclaw",
+		"direclaw"
 	],
 	"gliscor": [
-		"direclaw",
+		"direclaw"
 	],
 	"gliscoralt": [
-		"direclaw",
+		"direclaw"
 	],
 	"haxorus": [
-		"mightycleave",
+		"mightycleave"
 	],
 	"haxorusmega": [
-		"mightycleave",
+		"mightycleave"
 	],
 	"meganium": [
-		"magicpowder",
+		"magicpowder"
 	],
 	"meganiummega": [
-		"magicpowder",
+		"magicpowder"
 	],
 	"meganiummegay": [
-		"magicpowder",
+		"magicpowder"
 	],
 	"mimikyu": [
-		"astralbarrage",
+		"astralbarrage"
 	],
 	"mimikyubusted": [
-		"astralbarrage",
+		"astralbarrage"
 	],
 	"mimikyubustedtotem": [
-		"astralbarrage",
+		"astralbarrage"
 	],
 	"mimikyutotem": [
-		"astralbarrage",
+		"astralbarrage"
 	],
 	"ninetales": [
-		"bleakwindstorm",
+		"bleakwindstorm"
 	],
 	"ninetalesalola": [
-		"bleakwindstorm",
+		"bleakwindstorm"
 	],
 	"noivern": [
-		"clangingscales",
+		"clangingscales"
 	],
 	"noivernmega": [
-		"clangingscales",
+		"clangingscales"
 	],
 	"probopass": [
-		"diamondstorm",
+		"diamondstorm"
 	],
 	"typhlosion": [
-		"bitterblade",
+		"bitterblade"
 	],
 	"typhlosionalt": [
-		"bitterblade",
+		"bitterblade"
 	],
 	"typhlosionhisui": [
-		"bitterblade",
+		"bitterblade"
 	],
 	"typhlosionmega": [
-		"bitterblade",
+		"bitterblade"
 	],
 	"venusaur": [
-		"magicpowder",
+		"magicpowder"
 	],
 	"venusaurgmax": [
-		"magicpowder",
+		"magicpowder"
 	],
 	"venusaurmega": [
-		"magicpowder",
+		"magicpowder"
 	],
 	"volcarona": [
-		"blueflare",
-	],
+		"blueflare"
+	]
 };
 // END SERVER WORKING SYNC LEARNSET EXCLUSIONS
 const CUSTOM_LEARNSET_REMOVAL_IDS = Object.keys(CUSTOM_LEARNSET_REMOVALS);
@@ -102158,7 +102166,9 @@ const Dex = new class implements ModdedDex {
 		}
 		if (!options.noScale && !isDynamax && !species.isTotem && speciesid !== 'feraligatr') {
 			// BW foreground projection doubles these dimensions again in BattleScene.pos.
-			const compactSize = (speciesid === 'indeedeef' || speciesid === 'ninetales') ? (isFront ? 64 : 52) :
+			const compactSize = speciesid === 'sableye' ? 49 :
+				speciesid === 'sableyemega' ? (isFront ? 72 : 64) :
+				(speciesid === 'indeedeef' || speciesid === 'ninetales') ? (isFront ? 64 : 52) :
 				(speciesid === 'slowking' || speciesid === 'slowkinggalar') ? (isFront ? 64 : 52) :
 				(speciesid === 'sinistcha' || speciesid === 'sinistchamasterpiece') ? (isFront ? 48 : 44) :
 				speciesid.startsWith('rotom') ? (isFront ? 80 : 44) :
@@ -102349,7 +102359,7 @@ const Dex = new class implements ModdedDex {
   let hits: number[];
   if (two && sharp) {
    const combined = 1.5 * drillBoost * (launcher ? 1.5 : 1);
-   hits = [combined * hitScale, combined * hitScale];
+   hits = gameType === 'freeforall' && has('Siege Launcher') ? [combined, combined] : [combined, 0.15];
   } else {
    const boost = drillBoost * (sharp ? 1.5 : 1) * (launcher ? 1.5 : 1);
    hits = two ? [boost * hitScale, boost * hitScale] : [boost];
