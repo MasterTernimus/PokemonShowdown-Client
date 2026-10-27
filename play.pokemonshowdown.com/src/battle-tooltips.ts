@@ -637,7 +637,21 @@ class BattleTooltips {
 		return Dex.moves.get(BattleTooltips.maxMoveTable[type]);
 	}
 
+	static getNaturePowerMove(battle: Battle): Move {
+		if (battle.gen <= 5) return battle.dex.moves.get(battle.gen <= 3 ? 'swift' : 'earthquake');
+		const data = window as any;
+		if (battle.hasPseudoWeather('Frozen Aura')) {
+			return battle.dex.moves.get(data.BattleAuraRules?.frozenaura?.naturePowerMove || 'icebeam');
+		}
+		const field = data.BattleFieldRules?.find((entry: any) => battle.hasPseudoWeather(entry.name));
+		const mapping = data.BattleNaturePowerMoves || {};
+		const fieldId = field?.id || battle.pseudoWeather.map(([name]) => toID(name)).find(id => mapping[id]) || '';
+		return battle.dex.moves.get(mapping[fieldId] || 'triattack');
+	}
+
 	showMoveTooltip(move: Move, isZOrMax: string, pokemon: Pokemon, serverPokemon: ServerPokemon, gmaxMove?: Move) {
+		const naturePowerPreview = move.id === 'naturepower' && isZOrMax !== 'zmove' && isZOrMax !== 'maxmove';
+		if (naturePowerPreview) move = BattleTooltips.getNaturePowerMove(this.battle);
 		const gardenStage = [1, 2, 3, 4, 5].find(stage => this.battle.hasPseudoWeather(`Flower Garden ${stage}`)) || 0;
 		const gardenSecretPower = move.id === 'secretpower' && isZOrMax !== 'zmove' && isZOrMax !== 'maxmove' && [1, 5].includes(gardenStage);
 		if (gardenSecretPower) move = this.battle.dex.moves.get(gardenStage === 5 ? 'Petal Dance' : 'Sweet Scent');
@@ -732,7 +746,7 @@ class BattleTooltips {
 			});
 		}
 
-		text += '<h2>' + (move.id === 'vorpalblade' && this.battle.hasPseudoWeather('Glitch Terrain') ? 'Unown Buster (Vorpal Blade)' : move.name) + '<br />';
+		text += '<h2>' + (naturePowerPreview ? 'Nature Power &rarr; ' : '') + (move.id === 'vorpalblade' && this.battle.hasPseudoWeather('Glitch Terrain') ? 'Unown Buster (Vorpal Blade)' : move.name) + '<br />';
 		const crescentRend = toID(pokemon.effectiveAbility(serverPokemon || undefined)) === 'crescentrend' &&
 			category !== 'Status' && moveType === 'Flying';
 		const rupturedHeaven = toID(pokemon.effectiveAbility(serverPokemon || undefined)) === 'rupturedheaven' && !!move.flags.slicing;
@@ -744,6 +758,7 @@ class BattleTooltips {
 
 		text += Dex.getTypeIcon(moveType);
 		text += ['superumdmove', 'beasthunter', 'attackorder'].includes(move.id) ? ' Physical / Special</h2>' : ` ${Dex.getCategoryIcon(category)}</h2>`;
+		if (naturePowerPreview) text += '<p>Calls this move in the current environment. Uses Nature Power\'s PP and status-move priority. Details below describe the called move.</p>';
 		if (rupturedHeaven) text += '<p>Ruptured Heaven: slicing moves are non-contact and receive Sharpness.</p>';
 		if (toID(pokemon.effectiveAbility(serverPokemon || undefined)) === 'burningquake') text += '<p>Burning Quake: +1 critical-hit ratio; after a move deals critical opposing HP damage, +1 Speed once per turn.</p>';
 		if (['superumdmove', 'beasthunter', 'attackorder'].includes(move.id)) text += '<p>Chooses the category dealing greater calculated damage to the actual target; depends on both Pokémon and battle conditions.</p>';
@@ -751,6 +766,15 @@ class BattleTooltips {
 		if (crescentRend) {
 			text += '<p>Crescent Rend: non-contact; ignores Reflect, Light Screen and Aurora Veil. ' +
 				'Excess damage from breaking a Substitute carries into its owner as part of this hit.</p>';
+		}
+		if (toID(pokemon.effectiveAbility(serverPokemon || undefined)) === 'exaltedaether' &&
+			category === 'Physical' && ['Dragon', 'Flying'].includes(moveType) &&
+			!move.multihit && !move.flags.noparentalbond && !move.flags.charge && !move.flags.futuremove &&
+			!move.ohko && !move.isZ && !move.isMax &&
+			['normal', 'adjacentFoe', 'any', 'randomNormal'].includes(move.target)) {
+			text += '<p>Exalted Aether: two strikes. First: normal damage, heals 12.5% of opposing HP damage. ' +
+				'Second: 25% damage, ignores positive Defense stages. Defensive screens apply normally to both strikes. ' +
+				'Secondary and user effects occur once. Power below describes the first strike.</p>';
 		}
 		if (toID(pokemon.effectiveAbility(serverPokemon)) === 'auraconvergence' &&
 			category !== 'Status' && ['Fighting', 'Steel'].includes(moveType) && !move.damage) {
@@ -812,32 +836,8 @@ class BattleTooltips {
 
 		// Deal with Nature Power special case, indicating which move it calls.
 		if (move.id === 'naturepower') {
-			let calls;
-			if (this.battle.gen > 5) {
-				if (this.battle.hasPseudoWeather('Flower Garden 1')) {
-					calls = 'Growth';
-				} else if (this.battle.hasPseudoWeather('Flower Garden 5')) {
-					calls = 'Petal Blizzard';
-				} else if (this.battle.hasPseudoWeather('Electric Terrain')) {
-					calls = 'Thunderbolt';
-				} else if (this.battle.hasPseudoWeather('Grassy Terrain')) {
-					calls = 'Energy Ball';
-				} else if (this.battle.hasPseudoWeather('Misty Terrain')) {
-					calls = 'Moonblast';
-				} else if (this.battle.hasPseudoWeather('Psychic Terrain')) {
-					calls = 'Psychic';
-				} else {
-					calls = 'Tri Attack';
-				}
-			} else if (this.battle.gen > 3) {
-				// In gens 4 and 5 it calls Earthquake.
-				calls = 'Earthquake';
-			} else {
-				// In gen 3 it calls Swift, so it retains its normal typing.
-				calls = 'Swift';
-			}
-			let calledMove = this.battle.dex.moves.get(calls);
-			text += 'Calls ' + Dex.getTypeIcon(this.getMoveType(calledMove, value)[0]) + ' ' + calledMove.name;
+			const calledMove = BattleTooltips.getNaturePowerMove(this.battle);
+			text += '<p>Calls ' + Dex.getTypeIcon(this.getMoveType(calledMove, value)[0]) + ' ' + calledMove.name + '</p>';
 		}
 
 		text += '<p>Accuracy: ' + accuracy + '</p>';

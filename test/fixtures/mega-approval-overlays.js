@@ -6,7 +6,7 @@ exports.passives=(id,fallback)=>before[id]||fallback;
 before.lapras=['liquidvoice'];
 before.yanmega=['levitate'];
 for(const[id,p]of Object.entries(require('./gmax-approved.json').passives))before[id]=[p];
-exports.effects=(id,original)=>{const removed={parentalbond:['friendguard'],ironwill:['secondwind'],calderacore:['sheerforce'],razorcurrent:['strongjaw']};const added={moonveil:['friendguard'],gemeye:['magicguard'],mirrorgreed:['opportunist'],cursedmarionette:['frisk'],uncheckedassault:['limber']};return [...new Set([...original.filter(p=>!removed[id]?.includes(p)),...(added[id]||[])])].sort();};
+exports.effects=(id,original)=>{const removed={moonveil:['friendguard'],parentalbond:['friendguard'],ironwill:['secondwind'],calderacore:['sheerforce'],razorcurrent:['strongjaw']};const added={gemeye:['magicguard'],mirrorgreed:['opportunist'],cursedmarionette:['frisk'],uncheckedassault:['limber']};return [...new Set([...original.filter(p=>!removed[id]?.includes(p)),...(added[id]||[])])].sort();};
 
 const previousEffects=exports.effects;
 const approved=require('./selected-simplifications-approved.json');
@@ -302,3 +302,9 @@ exports.effects=(id,f)=>effects[id]??prior.effects(id,f);exports.description=(id
 {const latest=require('./latest-local-approved.json'),prior={description:exports.description,effects:exports.effects,passives:exports.passives};exports.description=(id,key,f)=>latest.descriptions[id]?.[key]??prior.description(id,key,f);exports.effects=(id,f)=>latest.effects[id]??prior.effects(id,f);exports.passives=(id,f)=>latest.passives[id]??prior.passives(id,f);}
 
 {const prior=exports.abilities;exports.abilities=(id,f)=>id==='lucario'?{0:'Carry On',1:'Sworn Duty',H:'Armorize'}:id==='mamoswine'?{0:'Forsaken Sleeper',1:'Old North',H:'Glacial Prime'}:prior(id,f);}
+
+// Retired IDs remain inert lookup placeholders, never composite search matches.
+{const prior=exports.effects;const retired=new Set(['voltagevolley','soaringspirit','backwash','plasmaeruption','soultag']);exports.effects=(id,f)=>retired.has(id)?[id]:prior(id,f);}
+
+// Shellcracker retains the explicitly added Mold Breaker component.
+{const prior=exports.effects;exports.effects=(id,f)=>id==='shellcracker'?['moldbreaker','shellcracker']:prior(id,f);}

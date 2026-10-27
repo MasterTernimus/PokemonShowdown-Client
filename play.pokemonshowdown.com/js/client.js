@@ -326,6 +326,87 @@ function toId() {
 			}), 'text');
 		},
 		challstr: '',
+		upkeepTimeout: 30 * 1000,
+		cancelUpkeep: function () {
+			var request = this.upkeepRequest;
+			this.upkeepRequest = null;
+			if (!request) return;
+			clearTimeout(request.timer);
+			if (request.xhr && typeof request.xhr.abort === 'function') {
+				try { request.xhr.abort(); } catch (e) {} // Invalidated callbacks still cannot apply.
+			}
+		},
+		resetUpkeep: function (disconnected) {
+			this.cancelUpkeep();
+			this.challstr = '';
+			this.loaded = false;
+			this.upkeepError = disconnected ? 'disconnected' : '';
+			if (app.topbar) app.topbar.updateUserbar();
+		},
+		retryUpkeep: function () {
+			if (!this.challstr || this.upkeepRequest || this.loaded) return;
+			var self = this;
+			var request = {challstr: this.challstr};
+			this.upkeepRequest = request;
+			this.upkeepError = '';
+			if (app.topbar) app.topbar.updateUserbar();
+			var isCurrent = function () {
+				return self.upkeepRequest === request && self.challstr === request.challstr;
+			};
+			var fail = function (reason) {
+				if (!isCurrent()) return;
+				self.cancelUpkeep();
+				self.upkeepError = reason;
+				app.topbar.updateUserbar();
+			};
+			request.timer = setTimeout(function () { fail('timeout'); }, this.upkeepTimeout);
+			try {
+				request.xhr = $.post(this.getActionPHP(), {
+					act: 'upkeep',
+					challstr: request.challstr
+				}, function (response) {
+					if (!isCurrent()) return;
+					var data;
+					try {
+						if (typeof response !== 'string' || !response.trim() || response.length > 65536) throw new Error('Invalid response');
+						response = response.trim();
+						if (response.charAt(0) === ']') response = response.substr(1);
+						data = JSON.parse(response);
+						if (!data || typeof data !== 'object' || Array.isArray(data) ||
+							(data.loggedin !== undefined && typeof data.loggedin !== 'boolean')) throw new Error('Invalid response');
+						if (data.username == null && data.loggedin === false) data.username = '';
+						if (typeof data.username !== 'string') throw new Error('Invalid username');
+						data.username = data.username.replace(/[\|,;]+/g, '');
+						if (data.username) {
+							if (!toUserid(data.username) || typeof data.assertion !== 'string' || !data.assertion || /[<>\x00-\x1f]/.test(data.assertion) ||
+								(data.loggedin && data.assertion.charAt(0) === ';')) throw new Error('Invalid assertion');
+						} else if (data.loggedin) {
+							throw new Error('Missing username');
+						}
+					} catch (e) {
+						fail('invalidresponse');
+						return;
+					}
+					clearTimeout(request.timer);
+					self.upkeepRequest = null;
+					self.upkeepError = '';
+					self.loaded = true;
+					self.set('registered', data.loggedin ? {username: data.username, userid: toUserid(data.username)} : false);
+					app.topbar.updateUserbar();
+					if (data.username) self.finishRename(data.username, data.assertion);
+				}, 'text');
+				if (isCurrent() && request.xhr && request.xhr.manual) {
+					// The development client can require human copy/paste, not just a network response.
+					clearTimeout(request.timer);
+					request.timer = setTimeout(function () { fail('timeout'); }, 2 * 60 * 1000);
+				}
+				if (request.xhr && typeof request.xhr.fail === 'function') {
+					request.xhr.fail(function () { fail('network'); });
+				}
+			} catch (e) {
+				fail('network');
+			}
+		},
 		receiveChallstr: function (challstr) {
 			if (challstr) {
 				/**
@@ -339,35 +420,17 @@ function toId() {
 				 *
 				 * See `finishRename` above for a list of events this can emit.
 				 */
+				this.cancelUpkeep();
+				this.loaded = false;
 				this.challstr = challstr;
-				var self = this;
-				$.post(this.getActionPHP(), {
-					act: 'upkeep',
-					challstr: this.challstr
-				}, Storage.safeJSON(function (data) {
-					self.loaded = true;
-					if (!data.username) {
-						app.topbar.updateUserbar();
-						return;
-					}
-
-					// | , ; are not valid characters in names
-					data.username = data.username.replace(/[\|,;]+/g, '');
-
-					if (data.loggedin) {
-						self.set('registered', {
-							username: data.username,
-							userid: toUserid(data.username)
-						});
-					}
-					self.finishRename(data.username, data.assertion);
-				}), 'text');
+				this.retryUpkeep();
 			}
 		},
 		/**
 		 * Log out from the server (but remain connected as a guest).
 		 */
 		logout: function () {
+			this.resetUpkeep(true);
 			$.post(this.getActionPHP(), {
 				act: 'logout',
 				userid: this.get('userid')
@@ -738,6 +801,7 @@ function toId() {
 		 */
 		connect: function () {
 			if (this.down) return;
+			this.user.resetUpkeep();
 
 			if (Config.bannedHosts) {
 				for (var i = 0; i < Config.bannedHosts.length; i++) {
@@ -802,6 +866,7 @@ function toId() {
 			var altprefix = false;
 
 			this.socket.onopen = function () {
+				if (this !== self.socket) return;
 				socketopened = true;
 				if (altport && window.ga) {
 					ga('send', 'event', 'Alt port connection', Config.server.id);
@@ -832,6 +897,7 @@ function toId() {
 				}, 500);
 			};
 			this.socket.onmessage = function (msg) {
+				if (this !== self.socket) return;
 				if (window.console && console.log) {
 					console.log('<< ' + msg.data);
 				}
@@ -846,6 +912,8 @@ function toId() {
 				return s;
 			};
 			this.socket.onclose = function () {
+				if (this !== self.socket) return;
+				self.user.resetUpkeep(true);
 				if (!socketopened) {
 					if (Config.server.altport && !altport) {
 						altport = true;

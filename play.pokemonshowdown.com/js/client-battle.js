@@ -787,6 +787,11 @@
 					if (move.id === 'Recharge') move.type = '&ndash;';
 					if (name.substr(0, 12) === 'Hidden Power') name = 'Hidden Power';
 					var moveType = this.tooltips.getMoveType(move, typeValueTracker)[0];
+					if (move.id === 'naturepower') {
+						var calledMove = BattleTooltips.getNaturePowerMove(this.battle);
+						name = 'Nature Power &rarr; ' + BattleLog.escapeHTML(calledMove.name);
+						moveType = this.tooltips.getMoveType(calledMove, typeValueTracker)[0];
+					}
 					var tooltipArgs = 'move|' + moveData.move + '|' + pos + (drakeFangPreview ? '||sevipermega' : '');
 					if (moveData.disabled) {
 						movebuttons += '<button disabled class="has-tooltip" data-tooltip="' + BattleLog.escapeHTML(tooltipArgs) + '">';

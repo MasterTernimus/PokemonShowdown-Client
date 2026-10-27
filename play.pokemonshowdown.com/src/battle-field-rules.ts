@@ -2523,8 +2523,8 @@ uncertain: false},
 base: {"secondaries":[{"chance":100,"boosts":{"spe":-1}}],"critRatio":1},
 uncertain: false},
 "infernalparade": {basePowerCallback(pokemon, target, move) {
-      if ((0, import_adaptive_cycle.adaptiveEnvironment)(target, "fields") && !target.status && !target.hasAbility("comatose") && !pokemon.hasAbility(["soulfire", "sinisterblaze"])) return move.basePower;
-      if (target.status || target.hasAbility("comatose") || this.field.isTerrain("hauntedterrain") || pokemon.hasAbility(["soulfire", "sinisterblaze"])) return move.basePower * 2;
+      if ((0, import_adaptive_cycle.adaptiveEnvironment)(target, "fields") && !target.status && !target.hasAbility("comatose") && !pokemon.hasAbility("sinisterblaze")) return move.basePower;
+      if (target.status || target.hasAbility("comatose") || this.field.isTerrain("hauntedterrain") || pokemon.hasAbility("sinisterblaze")) return move.basePower * 2;
       return move.basePower;
     },
 base: {"secondaries":[{"chance":30,"status":"brn"}],"critRatio":1},
@@ -3558,9 +3558,7 @@ uncertain: false},
 "superumdmove": {onModifyMove(move) { move.category = this.sample(['Physical', 'Special']); },
 base: {"critRatio":1},
 uncertain: true},
-"kaboom": {onModifyMove(move) {
-    if (this.field.isTerrainOrAura("electricterrain")) delete move.recoil;
-  },
+"kaboom": {onModifyMove(move) { move.secondary = {chance: 100, self: {boosts: {[move.category === 'Physical' ? 'atk' : 'spa']: 1}}}; move.secondaries = [move.secondary]; if (this.field.isTerrainOrAura('electricterrain')) delete move.recoil; },
 base: {"recoil":[1,4],"secondaries":[{"chance":100,"self":{"boosts":{"spa":1}}}],"critRatio":1},
 uncertain: false},
 "cactibash": {onBasePower(bp, source, target) {
@@ -3686,3 +3684,6 @@ if (typeof window !== 'undefined') Object.assign(window, {BattleAuraRules, Battl
 if (typeof window !== 'undefined') (window as any).BattleFieldMoveRules = BattleFieldMoveRules;
 if (typeof window !== 'undefined') (window as any).BattleFieldRules = BattleFieldRules;
 if (typeof require === 'function') (global as any).BattleFieldRules = BattleFieldRules;
+
+const BattleNaturePowerMoves = {"":"triattack","flowergarden1":"growth","flowergarden2":"triattack","flowergarden3":"triattack","flowergarden4":"triattack","flowergarden5":"petalblizzard","ashenbeachterrain":"meditate","bewitchedwoodsterrain":"alluringvoice","bigtopterrain":"acrobatics","burningterrain":"flamethrower","caveterrain":"rocktomb","chessboardterrain":"ancientpower","coldeclipseterrain":"icywind","corrosivemistterrain":"venoshock","corrosiveterrain":"acid","crystalcavernterrain":"powergem","darkcrystalcavernterrain":"darkpulse","desertterrain":"sandtomb","dragonsdenterrain":"dragonpulse","factoryterrain":"geargrind","fairytaleterrain":"secretsword","forestterrain":"woodhammer","glitchterrain":"metronome","hauntedterrain":"phantomforce","holyterrain":"judgment","icyterrain":"icebeam","inverseterrain":"trickroom","mirrorarenaterrain":"mirrorshot","mountainterrain":"rockslide","murkwatersurfaceterrain":"sludgewave","newworldterrain":"spacialrend","rainbowterrain":"aurorabeam","rockyterrain":"rocksmash","shortcircuitterrain":"discharge","snowymountainterrain":"avalanche","snowyterrain":"triattack","starlightarenaterrain":"moonblast","superheatedterrain":"heatwave","swampterrain":"muddywater","midnightzoneterrain":"anchorshot","underwaterterrain":"waterpulse","volcanicterrain":"flamethrower","wastelandterrain":"gunkshot","watersurfaceterrain":"whirlpool","electricterrain":"thunderbolt","grassyterrain":"energyball","mistyterrain":"mistball","psychicterrain":"psychic"};
+if (typeof window !== 'undefined') (window as any).BattleNaturePowerMoves = BattleNaturePowerMoves;

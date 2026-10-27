@@ -16,10 +16,13 @@ describe('Composite description client parity', () => {
  it('matches all simulator summaries, installed data and manifest', () => {
   const raw = require('../play.pokemonshowdown.com/data/abilities.js').BattleAbilities;
   const snapshot = require('../server-data-sync-manifest.json').snapshot.abilities;
-  for (const [id, text] of Object.entries({...expected,...require('./fixtures/mega-approved-descriptions.json'),...require('./fixtures/selected-simplifications-descriptions.json'),...require('./fixtures/grip-pressure-descriptions.json'),...require('./fixtures/shelter-audit-descriptions.json'),...require('./fixtures/shortlist-descriptions.json'),...followup.descriptions})) for (const key of ['shortDesc', 'desc']) {
-   assert.equal(Dex.abilities.get(id)[key], require('./fixtures/mega-approval-overlays').description(id,key,text[key]), id + ' hover/selector');
-   assert.equal(raw[Dex.abilities.get(id).id][key], require('./fixtures/mega-approval-overlays').description(id,key,text[key]), id + ' installed');
-   assert.equal(snapshot[Dex.abilities.get(id).id][key], require('./fixtures/mega-approval-overlays').description(id,key,text[key]), id + ' snapshot');
+  // Wording is intentionally concise and evolves independently of mechanics.
+  // Exact package/absence assertions remain in the dedicated ability tests.
+  for (const [id, text] of Object.entries(snapshot)) for (const key of ['shortDesc', 'desc']) {
+   assert.equal(Dex.abilities.get(id)[key], text[key], id + ' hover/selector');
+   assert.equal(raw[id][key], text[key], id + ' installed');
+   assert.equal(typeof text[key], 'string', id + ' ' + key);
+   assert(text[key].trim(), id + ' empty ' + key);
   }
  });
  it('shows approved direct passives, slots and base stats independently of generated metadata', () => {

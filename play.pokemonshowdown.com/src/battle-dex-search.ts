@@ -186,6 +186,7 @@ const VIVILLON_PATTERN_SPECIES = new Set<string>([
 
 function isHiddenTeamBuilderSpecies(id: string, includeSawsbuckBase = false) {
 	const speciesId = toID(id);
+	if (Dex.isSpeciesHidden(speciesId)) return true;
 	if (isCAPSpecies(speciesId) || isHiddenFakeSpecies(speciesId) || isTotemSpecies(window.BattlePokedex?.[speciesId])) return true;
 	if (isBattleOnlyVisualSpecies(speciesId)) return true;
 	if (HIDDEN_TEAMBUILDER_SPECIES.has(speciesId) || VIVILLON_PATTERN_SPECIES.has(speciesId)) return true;
@@ -200,7 +201,7 @@ function isHiddenTeamBuilderSpecies(id: string, includeSawsbuckBase = false) {
 function isExcludedFromCustomSearch(id: string) {
 	const speciesId = toID(id);
 	// Balance-patched official records are not additional custom forms.
-	return speciesId === 'mightyenamega' || VIVILLON_PATTERN_SPECIES.has(speciesId) || isTotemSpecies(window.BattlePokedex?.[speciesId]) || ['unfezant', 'xerneasneutral'].includes(speciesId) ||
+	return Dex.isSpeciesHidden(speciesId) || VIVILLON_PATTERN_SPECIES.has(speciesId) || isTotemSpecies(window.BattlePokedex?.[speciesId]) || ['unfezant', 'xerneasneutral'].includes(speciesId) ||
 		isHiddenFakeSpecies(speciesId) || speciesId.startsWith('deerling') ||
 		speciesId.startsWith('sawsbuck') || ZA_MEGA_SPECIES.has(speciesId as ID);
 }
@@ -258,7 +259,7 @@ const MEGA_ITEM_PICKER_PREFERENCES: {[id: string]: {canonical: ID, species: ID}}
 
 class DexSearch {
 	static isHiddenCosmeticPattern(id: string) {
-		return VIVILLON_PATTERN_SPECIES.has(toID(id));
+		return Dex.isSpeciesHidden(id) || VIVILLON_PATTERN_SPECIES.has(toID(id));
 	}
 
 	prependResults: SearchRow[] | null = null;
@@ -352,13 +353,14 @@ class DexSearch {
 		const species = this.dex.species.get(id);
 		const traits = DexSearch.pokemonPickerTraits(species);
 		const options = this.pickerOptions;
-		return species.exists && species.id !== 'mightyenamega' && !traits.totem && !(options.hideMegas && traits.mega) && !(options.hideGimmicks && traits.gimmick) &&
+		return species.exists && !Dex.isSpeciesHidden(species.id) && !traits.totem && !(options.hideMegas && traits.mega) && !(options.hideGimmicks && traits.gimmick) &&
 			!(options.customOnly && !traits.custom) &&
 			(!options.group || options.group === 'all' || !!traits[options.group as 'pulse' | 'rift' | 'regional']);
 	}
 
 	filterPokemonPicker(rows: SearchRow[]): SearchRow[] {
-		rows = rows.filter(row => row[0] !== 'pokemon' || (this.dex.species.get(row[1]).id !== 'mightyenamega' && !isTotemSpecies(window.BattlePokedex?.[row[1]])));
+		rows = rows.filter(row => row[0] !== 'item' || row[1] !== 'hydreigonite');
+		rows = rows.filter(row => row[0] !== 'pokemon' || (!Dex.isSpeciesHidden(this.dex.species.get(row[1]).id) && !isTotemSpecies(window.BattlePokedex?.[row[1]])));
 		if (this.typedSearch?.searchType !== 'pokemon') return rows;
 		const options = this.pickerOptions;
 		if (!options.hideMegas && !options.hideGimmicks && !options.customOnly && (!options.group || options.group === 'all')) return rows;
@@ -1887,6 +1889,23 @@ class BattleItemSearch extends BattleTypedSearch<'item'> {
 }
 
 class BattleMoveSearch extends BattleTypedSearch<'move'> {
+	/** Show the source beside its move instead of repeating the entire list in a paragraph. */
+	getExclusiveMoveSource(id: string): string {
+		if (this.dex.gen < 9) return '';
+		const species = toID(this.set?.species), ability = toID(this.set?.ability);
+		let sources: {[id: string]: string[]} | undefined;
+		let ordinary: readonly string[] = [];
+		if (['politoed', 'politoedrejuv'].includes(species) && ability === 'aevianking') {
+			sources = AEVIAN_KING_MOVE_SOURCES; ordinary = AEVIAN_KING_ORDINARY_MOVES;
+		} else if (['poliwrath', 'poliwrathrejuv'].includes(species) && ability === 'aevianascendance') {
+			sources = AEVIAN_ASCENDANCE_MOVE_SOURCES; ordinary = AEVIAN_ASCENDANCE_ORDINARY_MOVES;
+		} else if (['galvantula', 'galvantularejuv'].includes(species) && ability === 'aevianweb') {
+			sources = AEVIAN_WEB_MOVE_SOURCES; ordinary = AEVIAN_WEB_ORDINARY_MOVES;
+		}
+		const source = !ordinary.includes(id) && sources?.[id]?.[0];
+		if (!source) return '';
+		return source === '9L0' ? 'Evolution' : source[1] === 'L' ? `Lv. ${source.slice(2)}` : 'TM / tutor';
+	}
 	sortRow: SearchRow = ['sortmove', ''];
 	getTable() {
 		window.ensureCustomDataPatches?.();
@@ -2385,8 +2404,7 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 			aevianKingMoves.push(['header','Aevian King exclusive moves']);
 			['L','M'].forEach(kind => {
 				const group = extras.filter(id => AEVIAN_KING_MOVE_SOURCES[id][0][1] === kind);
-				const labels = group.map(id => {const source=AEVIAN_KING_MOVE_SOURCES[id][0];return (kind === 'M' ? '' : source === '9L0' ? 'Evolution: ' : 'Lv. '+source.slice(2)+': ') + dex.moves.get(id).name;});
-				aevianKingMoves.push(['html','<p class="aevian-king-sources"><strong>'+(kind === 'L' ? 'Level-up / evolution' : 'TM / tutor')+'</strong>: '+labels.join(' · ')+'</p>']);
+				if (group.length) aevianKingMoves.push(['header', kind === 'L' ? 'Level-up & evolution' : 'TM & tutor']);
 				for (const id of group) aevianKingMoves.push(['move',id as ID]);
 			});
 		}
@@ -2398,8 +2416,7 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 			aevianAscendanceMoves.push(['header','Aevian Ascendance exclusive moves']);
 			['L','M'].forEach(kind => {
 				const group = extras.filter(id => AEVIAN_ASCENDANCE_MOVE_SOURCES[id][0][1] === kind);
-				const labels = group.map(id => {const source=AEVIAN_ASCENDANCE_MOVE_SOURCES[id][0];return (kind === 'M' ? '' : source === '9L0' ? 'Evolution: ' : 'Lv. '+source.slice(2)+': ') + dex.moves.get(id).name;});
-				aevianAscendanceMoves.push(['html','<p class="aevian-king-sources"><strong>'+(kind === 'L' ? 'Level-up / evolution' : 'TM / tutor')+'</strong>: '+labels.join(' · ')+'</p>']);
+				if (group.length) aevianAscendanceMoves.push(['header', kind === 'L' ? 'Level-up & evolution' : 'TM & tutor']);
 				for (const id of group) aevianAscendanceMoves.push(['move',id as ID]);
 			});
 		}
@@ -2411,8 +2428,7 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 			aevianWebMoves.push(['header','Aevian Web exclusive moves']);
 			['L','M'].forEach(kind => {
 				const group = extras.filter(id => AEVIAN_WEB_MOVE_SOURCES[id][0][1] === kind);
-				const labels = group.map(id => {const source=AEVIAN_WEB_MOVE_SOURCES[id][0];return (kind === 'M' ? '' : source === '9L0' ? 'Evolution: ' : 'Lv. '+source.slice(2)+': ') + dex.moves.get(id).name;});
-				aevianWebMoves.push(['html','<p class="aevian-king-sources"><strong>'+(kind === 'L' ? 'Level-up / evolution' : 'TM / tutor')+'</strong>: '+labels.join(' · ')+'</p>']);
+				if (group.length) aevianWebMoves.push(['header', kind === 'L' ? 'Level-up & evolution' : 'TM & tutor']);
 				for (const id of group) aevianWebMoves.push(['move',id as ID]);
 			});
 		}

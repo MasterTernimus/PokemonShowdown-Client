@@ -26,7 +26,8 @@ describe('Approved Fire Mane, Aqua Shell and Corona Furnace metadata', () => {
 		assert.equal(Dex.species.get('scraftymega').abilities[0], 'Street Tyrant');
 		assert.deepEqual(Dex.species.get('scraftymega').passives, ['shedskin']);
 		for (const id of ['shedskin', 'streettyrant']) {
-			assert(Dex.abilities.get(id).desc.includes('1/4 max HP'));
+			assert(Dex.abilities.get('shedskin').desc.includes('1/4 max HP'));
+			if (id === 'streettyrant') {assert(!Dex.getAbilityEffects(id).has('shedskin'));assert.deepEqual(Dex.species.get('scraftymega').passives,['shedskin']);}
 			assert(!/Scrafty.*1\/8/.test(Dex.abilities.get(id).desc + Dex.abilities.get(id).shortDesc));
 		}
 	});

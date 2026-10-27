@@ -676,8 +676,7 @@
 		var componentNames = components.map(function (id) { return Dex.abilities.get(id).name; }).join(' + ');
 		if (componentNames) {
 			fullDescription = 'Includes: ' + componentNames + '\n\n' + fullDescription;
-			if (summary === 'Combines the listed abilities.' || toID(summary) === toID(componentNames)) summary = '';
-			else if (summary.indexOf(componentNames + '; ') === 0 || summary.indexOf(componentNames + '. ') === 0) summary = summary.slice(componentNames.length + 2);
+			summary = Dex.getAbilityExtraSummary(summary, components);
 		}
 		buf += '<span class="col abilitydesccol" title="' + BattleLog.escapeHTML((componentNames ? componentNames + ': ' : '') + summary) + '">' +
 			(componentNames ? '<strong class="ability-components">' + BattleLog.escapeHTML(componentNames) + '</strong>' : '') +
@@ -726,7 +725,9 @@
 				name += '<small>' + move.name.substr(tagStart) + '</small>';
 			}
 		}
-		buf += '<span class="col movenamecol">' + name + '</span> ';
+		var moveSearch = this.engine && this.engine.typedSearch;
+		var sourceLabel = moveSearch && moveSearch.getExclusiveMoveSource ? moveSearch.getExclusiveMoveSource(id) : '';
+		buf += '<span class="col movenamecol">' + name + (sourceLabel ? '<small class="move-source">' + BattleLog.escapeHTML(sourceLabel) + '</small>' : '') + '</span> ';
 
 		// error
 		if (errorMessage) {

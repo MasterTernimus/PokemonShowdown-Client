@@ -480,6 +480,7 @@ Storage.onMessage = function ($e) {
 				var idx = Storage.crossOriginRequestCount++;
 				Storage.crossOriginRequests[idx] = callback;
 				Storage.postCrossOriginMessage('S' + JSON.stringify([uri, data, idx, type]));
+				return {abort: function () { delete Storage.crossOriginRequests[idx]; }};
 			};
 		}
 		break;
@@ -552,7 +553,7 @@ Storage.initTestClient = function () {
 
 			if (sid) {
 				data.sid = sid;
-				post(uri, data, callback, type);
+				return post(uri, data, callback, type);
 			} else {
 				var src = '<!DOCTYPE html><html><body><form action="' + BattleLog.escapeHTML(uri) + '" method="POST">';
 				src += '<input type="hidden" name="testclient">';
@@ -560,7 +561,10 @@ Storage.initTestClient = function () {
 					src += '<input type=hidden name="' + i + '" value="' + BattleLog.escapeHTML(data[i]) + '">';
 				}
 				src += '<input type=submit value="Please click this button first."></form></body></html>';
-				app.addPopup(ProxyPopup, {uri: "data:text/html;charset=UTF-8," + encodeURIComponent(src), callback: callback});
+				var popup = app.addPopup(ProxyPopup, {uri: "data:text/html;charset=UTF-8," + encodeURIComponent(src), callback: callback});
+				return {manual: true, abort: function () {
+					if (popup && app.popups[app.popups.length - 1] === popup) popup.close();
+				}};
 			}
 		};
 		Storage.whenPrefsLoaded.load();

@@ -22,7 +22,7 @@ describe('Approved shortlist and Burning Rage presentation', () => {
   assert.deepEqual(Dex.getAbilityDisplayComponents('burningrage',Dex,['blaze'],'infernape'),['bruteforce','ironfist','moldbreaker']);
   assert.deepEqual(Dex.getAbilityDisplayComponents('burningrage',Dex,['ironfist']),['bruteforce','moldbreaker']);
   const context=Dex.getAbilityDisplayDetails(ability,['proficient'],'infernapemega');
-  assert(!context.shortDesc.includes('Proficient'));assert(context.desc.includes('Proficient is supplied separately'));
+  assert(!context.shortDesc.includes('Proficient'));assert.deepEqual(Dex.species.get('infernapemega').passives,['proficient']);assert(!Dex.getAbilityDisplayComponents(ability.id,Dex,['proficient'],'infernapemega').includes('proficient'));
   assert.deepEqual(Dex.species.get('infernape').passives,['blaze']);
   for(const id of ['proficient','bruteforce','ironfist','moldbreaker'])assert(Dex.getAbilityEffects('burningrage').has(id));
   // Existing client search includes delegated effects; runtime field identity is tested on the server.

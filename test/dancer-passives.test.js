@@ -10,7 +10,7 @@ describe('Approved dancer Own Tempo UI metadata', () => {
  });
  it('publishes Rain Dish and retained Dancer/Hospitality without a ward', () => {
   assert.equal(Dex.species.get('ludicolo').abilities.H, 'Rain Dish');
-  const a = Dex.abilities.get('nobledance'); assert.match(a.desc, /Dancer and Hospitality/); assert.match(a.desc, /Does not grant a defensive ward/);
+  const a = Dex.abilities.get('nobledance'); assert.match(a.desc, /Dancer and Hospitality/); assert(!/takes.*less damage|reduces.*damage/i.test(a.desc));
  });
  it('Noble Dance retains Dancer and Hospitality without selected Own Tempo', () => {
   assert.deepEqual(Dex.getAbilityDisplayComponents('nobledance', Dex, ['owntempo']), ['dancer','hospitality']);

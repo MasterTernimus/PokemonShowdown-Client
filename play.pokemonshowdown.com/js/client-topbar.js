@@ -34,7 +34,16 @@
 			var status = app.user.get('status');
 			var color = away ? 'color:#888;' : BattleLog.hashColor(app.user.get('userid'));
 			if (!app.user.loaded) {
-				buf = '<button disabled class="button">Loading...</button>';
+				if (app.user.upkeepError) {
+					var reason = app.user.upkeepError;
+					var message = reason === 'timeout' ? 'Sign-in check timed out.' :
+						reason === 'invalidresponse' ? 'Invalid sign-in response.' :
+							reason === 'disconnected' ? 'Reconnect to check sign-in.' : 'Sign-in check failed.';
+					buf = '<span role="status"' + (app.user.challstr ? ' class="upkeep-error"' : '') + '>' + message + '</span> ';
+					if (app.user.challstr) buf += '<button name="retryUpkeep" class="button" title="' + message + '">Retry sign-in</button>';
+				} else {
+					buf = '<button disabled class="button">Loading...</button>';
+				}
 			} else if (app.user.get('named')) {
 				buf = '<span class="username" data-name="' + BattleLog.escapeHTML(name) + '"' + (away ? ' data-away="true"' : '') + (status ? 'data-status="' + BattleLog.escapeHTML(status) + '"' : '') + ' style="' + color + '"><i class="fa fa-user" style="color:' + (away ? '#888;' : '#779EC5') + '"></i> <span class="usernametext">' + BattleLog.accountName(name.substr(1)) + '</span></span>';
 			} else {
@@ -45,6 +54,9 @@
 		},
 		login: function () {
 			app.addPopup(LoginPopup);
+		},
+		retryUpkeep: function () {
+			app.user.retryUpkeep();
 		},
 		openSounds: function () {
 			app.addPopup(SoundsPopup);

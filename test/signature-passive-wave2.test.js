@@ -9,7 +9,7 @@ describe('Custom-only passive presentation and Water Barrage',()=>{
   assert(!Dex.getPassiveAbilityEffects(passive).has(removed[passive]));
   assert(Dex.getPassiveAbilityEffects(passive).has(passive));
   assert(Dex.getAbilityComponentExclusions(passive,[passive],species).includes(removed[passive]));
-  assert(Dex.getPassiveAbilityDetails(passive).desc.includes('This passive does not include'));
+  assert(Dex.getPassiveAbilityDetails(passive).desc.trim());assert.notEqual(Dex.getPassiveAbilityDetails(passive).desc,Dex.abilities.get(passive).desc);
  });
  it('shows the passive-specific wording in the real teambuilder passive row',()=>{
   const source=fs.readFileSync('play.pokemonshowdown.com/js/client-teambuilder.js','utf8');

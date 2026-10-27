@@ -1170,6 +1170,10 @@ interface MoveFlags {
 	dance?: 1 | 0;
 	/** Thaws the user if executed successfully while the user is frozen. */
 	defrost?: 1 | 0;
+	/** Delayed attacks do not receive bond follow-ups. */
+	futuremove?: 1 | 0;
+	/** Excluded from bond-style additional strikes. */
+	noparentalbond?: 1 | 0;
 	/** Can target a Pokemon positioned anywhere in a Triple Battle. */
 	distance?: 1 | 0;
 	/** Power Drill and Dual Wield horn classification. */

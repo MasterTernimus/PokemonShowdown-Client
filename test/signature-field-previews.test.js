@@ -55,6 +55,15 @@ describe('Signature move field previews',()=>{
 });
 
 describe('Signature aura preview parity',()=>{
+ for(const category of ['Physical','Special'])for(const electric of [false,true])it('KABOOM previews its matching '+category+' boost; electric='+electric,()=>{
+  const field=electric?BattleFieldRules.find(f=>f.id==='electricterrain'):{id:''};
+  const r=tips.evaluate(field,{...Dex.moves.get('kaboom'),category},actor(),actor());
+  assert.equal(r.move.category,category);
+  assert.deepEqual(r.move.secondaries[0].self.boosts,{[category==='Physical'?'atk':'spa']:1});
+  assert.equal(!!r.move.recoil,!electric);
+  assert(/matching Atk\/SpA/.test(Dex.moves.get('kaboom').shortDesc));
+  assert(/Attack when Physical, Sp. Atk when Special/.test(Dex.moves.get('kaboom').desc));
+ });
  for(const mode of ['neither','terrain','aura','both'])for(const id of ['kaboom','flutterscales','deiludicium'])it(id+' '+mode,()=>{
   const onField=mode==='terrain'||mode==='both',onAura=mode==='aura'||mode==='both',match=id==='kaboom'?'electricterrain':'rainbowterrain';
   const field=onField?BattleFieldRules.find(f=>f.id===match):{id:''};

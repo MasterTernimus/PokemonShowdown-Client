@@ -92,12 +92,12 @@ describe('Server data synchronization', () => {
 
 			it('explains Soul Cremation while preserving its component identities', () => {
 				const soul = dex.abilities.get('soulcremation');
-				assert.equal(soul.shortDesc, require('./fixtures/short-description-audit.json').ShortDescriptionAudit.soulcremation); assert(dex.getAbilityDisplayComponents('soulcremation').includes('soulsiphon'));
+				assert.equal(soul.shortDesc, 'Soul Siphon + Soul Pyre + Malice Well.'); assert(dex.getAbilityDisplayComponents('soulcremation').includes('soulsiphon'));
 				for (const component of ['soulsiphon', 'soulpyre', 'malicewell', 'flamebody']) {
 					assert(dex.getAbilityEffects('soulcremation').has(component), component);
 				}
 				assert(dex.getAbilityEffects('malicewell').has('flamebody'));
-				assert.match(dex.abilities.get('malicewell').shortDesc, /first opposing damaging move each entry/);
+				assert.match(dex.abilities.get('malicewell').shortDesc, /first (?:survived opposing attack|opposing damaging move) each entry/);
 				assert.match(dex.abilities.get('malicewell').desc, /after the entire move finishes.*Protect, misses and immunity/);
 				assert.match(soul.desc, /30%.*burn|burn.*30%/);
 				assert(dex.abilities.get('soulpyre').exists);

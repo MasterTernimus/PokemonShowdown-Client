@@ -407,9 +407,10 @@ class BattlePanel extends PSRoomPanel<BattleRoom> {
 
 		return active.moves.map((moveData, i) => {
 			const move = dex.moves.get(moveData.name);
+			const calledMove = move.id === 'naturepower' ? BattleTooltips.getNaturePowerMove(this.props.room.battle) : null;
 			const tooltip = `move|${moveData.name}|${pokemonIndex}`;
-			return <MoveButton cmd={`/move ${i + 1}`} type={move.type} tooltip={tooltip} moveData={moveData}>
-				{move.name}
+			return <MoveButton cmd={`/move ${i + 1}`} type={calledMove?.type || move.type} tooltip={tooltip} moveData={moveData}>
+				{calledMove ? `Nature Power → ${calledMove.name}` : move.name}
 			</MoveButton>;
 		});
 	}

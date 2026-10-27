@@ -4072,7 +4072,7 @@
 			var isListedCustomForm = customFormNames.some(function (formName) {
 				return toID(formName) === species.id;
 			});
-			if (!species.exists && !isListedCustomForm) return;
+			if ((!species.exists && !isListedCustomForm) || Dex.isSpeciesHidden(species.id)) return;
 			var currentAbilitySlot = Object.keys(currentSpecies.abilities || {}).find(function (slot) {
 				return toID(currentSpecies.abilities[slot]) === toID(this.curSet.ability);
 			}, this);
@@ -5578,7 +5578,11 @@ function renderStarterPassives(species) {
 		if (opening) $('<p class="passive-context-description"></p>').text(opening).appendTo(card.find('#' + id));
 		var full = chip.attr('data-full-description');
 		if (full && full !== chip.attr('data-description')) {
-			$('<details><summary>Full details</summary><div></div></details>').find('div').text(full).end().appendTo(card.find('#' + id));
+			var details = $('<details><summary>Full details</summary><ul></ul></details>');
+			Dex.getAbilityDescriptionLines(full).forEach(function (line) {
+				$('<li></li>').text(line).appendTo(details.find('ul'));
+			});
+			details.appendTo(card.find('#' + id));
 		}
 	};
 	p.events['click .passive-chip'] = 'togglePassiveDetails';

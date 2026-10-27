@@ -87,6 +87,13 @@ select {
 	cursor: pointer;
 }
 @media (max-width: 500px) {
+	.userbar .upkeep-error {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+	}
 	.usernametext {
 		display: none
 	}
@@ -4610,3 +4617,6 @@ a.ilink.yours {
 .profile-roster-state { margin:6px 0; }
 .unified-profiles .library-step { margin-top:0; padding-top:10px; padding-bottom:10px; }
 @media(max-width:480px) { .profile-selection-actions .button { min-height:36px; } .profile-team-preview { overflow-wrap:anywhere; } }
+
+/* Move pickers must fit narrow rooms, including exclusive event move groups. */
+.teambuilder-results:has(a[data-entry^="move|"]) { min-width: 0; }

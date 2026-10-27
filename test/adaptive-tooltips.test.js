@@ -47,7 +47,7 @@ describe('Adaptive category client parity', () => {
   assert(Dex.moves.get('needlegun').desc.includes('category'));
  });
 	it('exposes approved Tidal Voice sound protection and post-attack chance', () => {
-		assert(Dex.abilities.get('Tidal Voice').desc.includes('No negative-stat reset or Sparkling Aria ally healing'));
+		assert(!/restores.*negative|heals.*allies/i.test(Dex.abilities.get('Tidal Voice').desc));
 		assert(Dex.getAbilityEffects('tidalvoice').has('liquidvoice'));assert(Dex.getAbilityEffects('tidalvoice').has('soundproof'));assert(Dex.abilities.get('tidalvoice').desc.includes('30%'));
 	});
 

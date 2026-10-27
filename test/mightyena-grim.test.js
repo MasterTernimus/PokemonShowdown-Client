@@ -4,12 +4,12 @@ const path = require('path');
 const {Dex, getCustomCosmeticFormes} = require('./helpers/isolated-dex.cjs')();
 
 describe('Mightyena Grim supplied artwork', () => {
- it('inherits base stats abilities and passives and is available as alternate artwork', () => {
+ it('retains historical stats and artwork but is absent from selectable variants', () => {
   const base = Dex.species.get('Mightyena'), grim = Dex.species.get('Mightyena-Grim');
   assert(grim.exists && grim.forme === 'Grim');
   for(const key of ['baseStats','types','abilities','passives']) assert.equal(JSON.stringify(grim[key]),JSON.stringify(base[key]),key);
   const choices = getCustomCosmeticFormes(base);
-  assert(choices.includes('Mightyena-Grim'));
+  assert(!choices.includes('Mightyena-Grim'));
   assert(choices.includes('Mightyena-Deso'));
  });
  it('resolves each supplied facing and shiny in battles menus and the teambuilder', () => {

@@ -9,7 +9,7 @@ describe('Approved Mega and Eevee client integration',()=>{
   assert(Dex.hasAbilityEffect(s,passive));
   assert(!Dex.getAbilityDisplayComponents(s.abilities[0],Dex,s.passives).includes(passive));
  });
- for(const[id,ability]of [['gengarmega','Shadow Double'],['scovillainmega','Crossfire'],['lucariomega','Insight'],['salamencemega','Crescent Rend']])it(id+' has its approved selected replacement and complete text',()=>{
+ for(const[id,ability]of [['gengarmega','Shadow Double'],['scovillainmega','Crossfire'],['lucariomega','Insight'],['salamencemega','Exalted Aether']])it(id+' has its approved selected replacement and complete text',()=>{
   assert.equal(Dex.species.get(id).abilities[0],ability);assert(Dex.abilities.get(ability).desc.length>100);
  });
  it('mirrors Eevee Starter Alt without granting Adaptability to evolved forms',()=>{

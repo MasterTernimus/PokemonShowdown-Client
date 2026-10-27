@@ -7,7 +7,7 @@ describe('Connection construction failures',()=>{
   let count=0;const events=[];
   const ctx={location:{host:'example.org'},Config:{server:{host:'example.org',port:443,altport:8000},sockjsprefix:'/showdown'},$: {trim:s=>s.trim()},SockJS:function(){if(failFirst||count++)throw Error('blocked transport');return {};}};
   const connect=vm.runInNewContext('(function(){'+body+'})',ctx);
-  const app={trigger:e=>events.push(e)};assert.doesNotThrow(()=>connect.call(app));
+  const app={user:{resetUpkeep(){}},trigger:e=>events.push(e)};assert.doesNotThrow(()=>connect.call(app));
   if(!failFirst)assert.doesNotThrow(()=>app.socket.onclose());
   assert.deepEqual(events,['init:connectionerror']);assert.equal(app.socket,null);
  });
