@@ -4378,8 +4378,10 @@
 			if (draft) draft.rows.filter(function (row) {return row[0].trim() || row[1].trim();}).forEach(function (row) {html += T.nicknameRow(row[0], row[1], row[2]);});
 			else {Object.keys(profile.entries).sort().forEach(function (id) {html += T.nicknameRow(Dex.species.get(id).name, profile.entries[id]);}); Object.keys(profile.genderEntries || {}).sort().forEach(function (id) {Object.keys(profile.genderEntries[id]).forEach(function (gender) {html += T.nicknameRow(Dex.species.get(id).name, profile.genderEntries[id][gender], gender);});});}
 			html += T.nicknameRow('', '') + '</div><datalist id="nickname-species-options">';
-			Object.keys(window.BattlePokedex || {}).forEach(function (id) {html += '<option value="' + escape(Dex.species.get(id).name) + '"></option>';});
-			html += '</datalist><div class="library-actions library-save-actions">' + button('addNicknameRow', 'Add row') + button('saveNicknameMappings', 'Save profile') + '<span class="nickname-save-status" role="status" aria-live="polite">' + (draft ? 'Unsaved changes · draft kept' : 'All changes saved') + '</span></div><details class="library-secondary"><summary>Appearance &amp; name rules</summary><div class="library-rule-grid"><label>Shiny appearance<select class="nickname-shiny"><option value="">Keep current appearance</option><option value="yes"' + (appearance.shiny === 'yes' ? ' selected' : '') + '>Make every Pokémon shiny</option><option value="no"' + (appearance.shiny === 'no' ? ' selected' : '') + '>Make every Pokémon non-shiny</option></select></label><label class="library-check"><input type="checkbox" class="nickname-gendered"' + (appearance.gendered ? ' checked' : '') + ' /> Enable gender-specific names</label><label class="library-check"><input type="checkbox" class="nickname-fallback"' + (appearance.fallback ? ' checked' : '') + ' /> Use base-species names for unlisted forms</label></div><details class="library-help"><summary>How these rules work</summary><p id="nickname-gender-help">Any gender is the default. A matching gender-specific entry overrides it when enabled. An unspecified gender uses the default.</p><p>Shiny rules affect the whole team, even Pokémon without a nickname entry. Form fallback uses the base species only when the form has no entry.</p></details></details><details class="library-secondary"><summary>Paste a nickname list</summary><p class="tools-note">One Pokémon = nickname per line.</p><textarea class="textbox nickname-paste" rows="4" aria-label="Paste nickname list" placeholder="Togekiss = Deneb"></textarea>' + button('pasteNicknameRows', 'Add pasted names') + '</details></section><section class="library-step library-apply-step"><h4><span class="library-step-number">3</span> Preview for your team</h4><label class="library-check"><input type="checkbox" class="nickname-replace" /> Replace existing nicknames</label><p class="tools-note">Leave this off to keep names you already chose. Preview every change before applying.</p><div class="library-actions">' + button('applyNicknameToTeam', 'Preview changes') + '<span class="library-preview-context tools-note"></span></div></section>';
+			Object.keys(window.BattlePokedex || {}).forEach(function (id) {
+				if (!Dex.isSpeciesHidden(id)) html += '<option value="' + escape(Dex.species.get(id).name) + '"></option>';
+			});
+			html += '</datalist><div class="library-actions library-save-actions">' + button('addNicknameRow', 'Add row') + button('saveNicknameMappings', 'Save profile') + '<span class="nickname-save-status" role="status" aria-live="polite">' + (draft ? 'Unsaved changes · draft kept' : 'All changes saved') + '</span></div><details class="library-secondary"><summary>Appearance &amp; name rules</summary><div class="library-rule-grid"><label>Shiny appearance<select class="nickname-shiny"><option value="">Keep current appearance</option><option value="yes"' + (appearance.shiny === 'yes' ? ' selected' : '') + '>Make every Pokémon shiny</option><option value="no"' + (appearance.shiny === 'no' ? ' selected' : '') + '>Make every Pokémon non-shiny</option></select></label><label class="library-check"><input type="checkbox" class="nickname-gendered"' + (appearance.gendered ? ' checked' : '') + ' /> Enable gender-specific names</label><label class="library-check"><input type="checkbox" class="nickname-fallback"' + (appearance.fallback ? ' checked' : '') + ' /> Use base-species names for unlisted forms</label></div><details class="library-help"><summary>How these rules work</summary><p id="nickname-gender-help">Any gender is the default. A matching gender-specific entry overrides it when enabled. An unspecified gender uses the default.</p><p>Shiny rules affect the whole team, even Pokémon without a nickname entry. Form fallback uses the base species only when the form has no entry.</p></details></details><details class="library-secondary"><summary>Paste a nickname list</summary><p class="tools-note">One Pokémon = nickname per line. Updates existing default names; gender-specific names stay separate.</p><textarea class="textbox nickname-paste" rows="4" aria-label="Paste nickname list" placeholder="Togekiss = Deneb"></textarea>' + button('pasteNicknameRows', 'Apply pasted names') + '</details></section><section class="library-step library-apply-step"><h4><span class="library-step-number">3</span> Preview for your team</h4><label class="library-check"><input type="checkbox" class="nickname-replace" /> Replace existing nicknames</label><p class="tools-note">Leave this off to keep names you already chose. Preview every change before applying.</p><div class="library-actions">' + button('applyNicknameToTeam', 'Preview changes') + '<span class="library-preview-context tools-note"></span></div></section>';
 		}
 		html += '</section><details class="tools-panel library-backup"><summary>Backup &amp; restore</summary><p class="tools-note">Includes saved name profiles and sets. Lists, teams and unsaved drafts are not included.</p><p>' + button('downloadToolsBackup', 'Download backup') + '<label class="button">Import backup<input type="file" class="tools-backup-file" accept=".json,application/json" /></label></p><details class="library-secondary"><summary>Advanced: JSON import / export</summary><p class="tools-note">Import adds copies; it does not replace your profiles.</p><textarea class="textbox tools-transfer" rows="6" aria-label="Build and nickname library JSON">' + escape(JSON.stringify(data, null, 2)) + '</textarea><div class="library-actions">' + button('exportToolsLibrary', 'Refresh export') + button('importToolsLibrary', 'Import library') + '</div></details></details></div>';
 		this.$el.html(html);
@@ -4437,21 +4439,26 @@
 			if (!raw && !name) return;
 			if (!species.exists) throw new Error('Row ' + (index + 1) + ': choose a valid Pokémon or form.');
 			if (!name || /[\x00-\x1f|\[\]]/.test(name) || Array.from(name).length > 24) throw new Error(species.name + ': enter a nickname of 1–24 characters, without | or brackets.');
-			if (entries[species.id]) throw new Error('Duplicate Pokémon: ' + species.name);
+			if (entries[species.id] && entries[species.id] !== name) throw new Error('Conflicting nicknames for ' + species.name + '. Keep one name per Pokémon and gender.');
 			entries[species.id] = name;
 		});
 		return entries;
 	};
 	T.nicknameMappings = function (rows) {
 		var result = {entries: {}, genderEntries: {}};
-		rows.forEach(function (row) {
+		var firstRows = {};
+		rows.forEach(function (row, index) {
 			var parsed = T.nicknameEntries([row]);
 			Object.keys(parsed).forEach(function (id) {
 				var gender = row[2] || '';
 				if (gender && !['M', 'F', 'N'].includes(gender)) throw new Error('Invalid gender.');
 				var dest = gender ? (result.genderEntries[id] || (result.genderEntries[id] = {})) : result.entries;
 				var key = gender || id;
-				if (dest[key]) throw new Error('Duplicate Pokémon / gender: ' + row[0]);
+				var identity = id + ':' + gender;
+				if (dest[key] && dest[key] !== parsed[id]) {
+					throw new Error('Conflicting nicknames for ' + Dex.species.get(id).name + ' (' + (gender || 'any gender') + ') in rows ' + firstRows[identity] + ' and ' + (index + 1) + '. Keep one name or choose different genders.');
+				}
+				firstRows[identity] = firstRows[identity] || index + 1;
 				dest[key] = parsed[id];
 			});
 		});
@@ -4464,7 +4471,7 @@
 			return [match[1], match[2]];
 		});
 	};
-	proto.addNicknameRow = function () { this.$('.nickname-rows').append(T.nicknameRow('', '')); this.$('.nickname-species').last().focus(); this.saveNicknameDraft(); };
+	proto.addNicknameRow = function () { this.$('.nickname-rows').append(T.nicknameRow('', '')); this.$('.nickname-row').last().attr('data-new-member', 'true'); this.$('.nickname-species').last().focus(); this.saveNicknameDraft(); };
 	proto.removeNicknameRow = function (value, btn) {
 		var row = $(btn).closest('.nickname-row');
 		if (row.attr('data-group-entry')) row.find('.nickname-value').val('');
@@ -4476,7 +4483,14 @@
 			var rows = T.nicknameList(String(this.$('.nickname-paste').val()));
 			T.nicknameEntries(rows);
 			var self = this;
-			rows.forEach(function (row) { self.$('.nickname-rows').append(T.nicknameRow(row[0], row[1])); });
+			rows.forEach(function (row) {
+				var id = Dex.species.get(row[0].trim()).id, matches = self.$('.nickname-row').not('.nickname-head').filter(function () {
+					var existing = $(this);
+					return !existing.find('.nickname-gender').val() && Dex.species.get(String(existing.find('.nickname-species').val())).id === id;
+				});
+				if (matches.length) matches.find('.nickname-value').val(row[1].trim());
+				else self.$('.nickname-rows').append(T.nicknameRow(row[0], row[1]));
+			});
 			this.$('.nickname-paste').val('');
 			this.saveNicknameDraft();
 		} catch (err) { app.addPopupMessage(err.message); }
@@ -4488,6 +4502,7 @@
 		var rows = T.nicknameEditorRows(this);
 		try {
 			var mapped = T.nicknameMappings(rows);
+			if (this.$('.nickname-add-members').prop('checked')) this.addNamedProfileMembers(profile, mapped);
 			profile.entries = mapped.entries; profile.genderEntries = mapped.genderEntries;
 		} catch (err) { app.addPopupMessage(err.message); return false; }
 		profile.fallback = !!this.$('.nickname-fallback').prop('checked');
@@ -4496,6 +4511,7 @@
 		this.saveToolsData(data);
 		var drafts = Storage.prefs('nicknamedrafts') || {}; delete drafts[profile.id]; Storage.prefs('nicknamedrafts', drafts);
 		this.$('.nickname-save-status').text('All changes saved');
+		if (this.refreshNicknameGroup) this.refreshNicknameGroup();
 		return true;
 	};
 	proto.nicknameSettingsChange = function () {
@@ -5122,11 +5138,11 @@
 		this.$('.nickname-row').not('.nickname-head').each(function () {
 			var row = $(this);
 			if (!ids.has(T.id(row.find('.nickname-species').val()))) return;
-			row.attr('data-group-entry', 'true').find('.nickname-species').prop('readOnly', true);
+			row.removeAttr('data-new-member').attr('data-group-entry', 'true').find('.nickname-species').prop('readOnly', true);
 			row.find('[name=removeNicknameRow]').text('Clear').attr('title', 'Clear this nickname; keep the group');
 		});
 		this.$('.nickname-gender').prop('disabled', !this.$('.nickname-gendered').prop('checked'));
-		this.$('[name=addNicknameRow]').prop('disabled', !!group).attr('title', group ? 'Choose All entries to add another Pokémon' : '');
+		this.$('[name=addNicknameRow]').prop('disabled', false).attr('title', 'Add a Pokémon and nickname together');
 		this.$('[name=addTeamNicknameRows]').prop('disabled', !!group || !this.curTeam).attr('title', group ? 'Choose All entries to add team Pokémon' : this.curTeam ? '' : 'Open a team in the builder first');
 		this.filterNicknameRows();
 	};
@@ -5140,7 +5156,8 @@
 		var group = this.nicknameGroupProfile ? this.nicknameGroupProfile() : null, members = new Set(group ? group.species.map(T.id) : []);
 		this.$('.nickname-row').not('.nickname-head').each(function () {
 			var row = $(this), species = String(row.find('.nickname-species').val()), name = String(row.find('.nickname-value').val());
-			row.toggle((species + ' ' + name).toLowerCase().includes(query) && (!teamOnly || ids.has(T.id(species))) && (!group || members.has(T.id(species))));
+			var newMember = !species.trim() || row.attr('data-new-member');
+			row.toggle(newMember || ((species + ' ' + name).toLowerCase().includes(query) && (!teamOnly || ids.has(T.id(species))) && (!group || members.has(T.id(species)))));
 		});
 	};
 	proto.addTeamNicknameRows = function () {
@@ -5293,7 +5310,11 @@
 	var pickerStatusWithHint = proto.updatePokemonPickerStatus;
 	proto.updatePokemonPickerStatus = function (rows) {
 		var count = pickerStatusWithHint.call(this, rows); this.$('.picker-empty-hint').remove();
-		if (!count && this.curChartType === 'pokemon') this.$('.pokemon-picker-filters').after('<div class="pad picker-empty-hint">No Pokémon match this search and the active filters. ' + button('clearAllPickerFilters', 'Clear filters') + ' <small>Your search text stays unchanged; format restrictions still apply.</small></div>');
+		if (!count && this.curChartType === 'pokemon') {
+			var lists = this.rosterData(), selected = lists.enabled && lists.profiles.find(function (p) {return p.id === lists.selected;});
+			var emptyGroup = selected && !selected.species.length;
+			this.$('.pokemon-picker-filters').after('<div class="pad picker-empty-hint">' + (emptyGroup ? escape(selected.name) + ' has no Pokémon members yet. Save nicknames with “Add Pokémon” enabled, or add members in Profiles. ' + button('showRosterProfiles', 'Add Pokémon & names') + ' ' : 'No Pokémon match this search and the active filters. ') + button('clearAllPickerFilters', 'Clear filters') + ' <small>Your search text stays unchanged; format restrictions still apply.</small></div>');
+		}
 		return count;
 	};
 	var selectWithUndo = proto.chartSet;
@@ -5760,6 +5781,7 @@ function renderStarterPassives(species) {
 			this.$('.nickname-search').attr('placeholder', 'Find a member or name');
 			this.$('.library-row-tools').append('<label><input type="checkbox" class="profile-other-names" /> Other saved names</label>');
 			this.$('.nickname-rows').before('<p class="profile-membership-note tools-note"></p><label class="library-check"><input type="checkbox" class="roster-profile-filter"' + (groups.enabled && group && groups.selected === group.id ? ' checked' : '') + ' /> Use this group in the Pokémon picker</label>');
+			this.$('.nickname-rows').before('<label class="library-check"><input type="checkbox" class="nickname-add-members" checked /> Add Pokémon when saving new or edited nicknames</label><p class="tools-note">Includes matching Megas. An empty group is filled from your entered names; other saved names stay outside an existing group unless edited.</p>');
 			this.$('.library-save-actions').after('<p class="roster-edit-status" role="status"></p>');
 			var imports = '<details class="library-secondary roster-import-section"><summary>Import Pokémon members</summary><input class="textbox roster-import-name" placeholder="New profile name" aria-label="Imported group name" maxlength="80" /><textarea class="textbox roster-import-text" rows="4" aria-label="Pokémon list" placeholder="One Pokémon per line"></textarea><div class="library-actions"><button class="button" name="previewRosterImport" value="new">Preview new group</button><button class="button" name="previewRosterImport" value="add">Preview additions</button><button class="button" name="previewRosterImport" value="replace">Preview replacement</button></div><div class="roster-import-preview" aria-live="polite"></div></details>';
 			manager.append(imports);
@@ -5817,6 +5839,30 @@ function renderStarterPassives(species) {
 	};
 	p.newUnifiedProfile = function () {
 		this.saveNicknameDraft(); var self = this; app.addPopupPrompt('Profile name:', 'Create', function (name) {if (!name || !name.trim()) return; name = name.trim().slice(0, 80); var groups = self.rosterData(), group = {id:T.uid(), name:name, species:[]}; groups.profiles.push(group); groups.selected = group.id; Storage.prefs('rosterprofiles', groups); var data = self.toolsData(), profile = {id:T.uid(), name:name, entries:{}, genderEntries:{}, rosterProfile:group.id}; data.nicknames.push(profile); data.selectedNickname = profile.id; self.saveToolsData(data); self.showToolsManager(); self.$('.roster-species-search').focus();});
+	};
+	T.namedMemberAdditions = function (profile, mapped, group) {
+		var ids = new Set(), empty = !group || !group.species.length;
+		Object.keys(mapped.entries).forEach(function (id) {
+			if (empty || mapped.entries[id] !== (profile.entries || {})[id]) ids.add(id);
+		});
+		Object.keys(mapped.genderEntries).forEach(function (id) {
+			if (empty || Object.keys(mapped.genderEntries[id]).some(function (gender) {
+				return mapped.genderEntries[id][gender] !== ((profile.genderEntries || {})[id] || {})[gender];
+			})) ids.add(id);
+		});
+		return Array.from(ids);
+	};
+	p.addNamedProfileMembers = function (profile, mapped) {
+		var groups = T.clone(this.rosterData()), group = T.profileGroup(profile, groups.profiles), self = this;
+		var ids = T.namedMemberAdditions(profile, mapped, group);
+		if (!ids.length) return;
+		if (!group) {group = {id:T.uid(), name:profile.name, species:[]}; groups.profiles.push(group);}
+		ids.forEach(function (id) {
+			self.rosterExpandedSpecies(id).forEach(function (form) {if (!group.species.includes(form)) group.species.push(form);});
+		});
+		groups.selected = group.id;
+		Storage.prefs('rosterprofiles', groups);
+		profile.rosterProfile = group.id;
 	};
 	var edit = p.editRosterSpecies;
 	p.editRosterSpecies = function (id, remove) {

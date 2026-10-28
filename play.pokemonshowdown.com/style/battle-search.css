@@ -450,13 +450,13 @@
  .dark .dexlist .result > a[data-entry^="move|"].cur { background: #294457; border-color: #8dc7ed; }
 }
 
-/* Readable move lists over custom wallpapers, including exclusive event moves. */
-.dexlist .result > a[data-entry^="move|"] { background: #f8fafc; color: #202f3b; }
+/* Transparent move lists over custom wallpapers, including exclusive event moves. */
+.dexlist .result > a[data-entry^="move|"] { background: transparent; color: #202f3b; }
 .dexlist .result > a[data-entry^="move|"] > .movenamecol .move-source { display: inline-block; margin-left: 7px; font: 11px/1.4 Verdana, sans-serif; color: #536675; margin-top: 2px; }
-.dark .dexlist .result > a[data-entry^="move|"] { background: #202a33; color: #eef3f7; }
+.dark .dexlist .result > a[data-entry^="move|"] { background: transparent; color: #eef3f7; text-shadow: 0 1px 2px #000; }
 .dark .dexlist .result > a[data-entry^="move|"] > .movenamecol .move-source { color: #b7c8d5; }
-.dexlist .result > a[data-entry^="move|"]:hover, .dexlist .result > a[data-entry^="move|"].cur { background: #e3f1fc; }
-.dark .dexlist .result > a[data-entry^="move|"]:hover, .dark .dexlist .result > a[data-entry^="move|"].cur { background: #294457; }
+.dexlist .result > a[data-entry^="move|"]:hover, .dexlist .result > a[data-entry^="move|"].cur { background: rgba(90, 155, 200, .18); }
+.dark .dexlist .result > a[data-entry^="move|"]:hover, .dark .dexlist .result > a[data-entry^="move|"].cur { background: rgba(110, 180, 225, .2); }
 @media (min-width: 640px) {
  .dexlist .result > a[data-entry^="move|"] { display: grid; grid-template-columns: minmax(140px, 1fr) 72px 62px 90px 52px; gap: 4px 8px; align-items: center; padding: 7px 10px; margin: 0; min-height: 44px; border-bottom: 1px solid #d4dee6; white-space: normal; }
  .dexlist .result > a[data-entry^="move|"] > .col { float: none; width: auto; height: auto; min-width: 0; margin: 0; padding: 0; line-height: 1.4; }
@@ -474,3 +474,9 @@
 
 .teambuilder-results .dexlist:has(a[data-entry^="move|"]) { width: 100%; max-width: 100%; min-width: 0; }
 .dexlist .result > a[data-entry^="move|"] { border-radius: 0; }
+
+/* Pokemon results share the transparent move/ability list treatment. */
+.dexlist .result > a[data-entry^="pokemon|"] { background: transparent; }
+.dexlist .result > a[data-entry^="pokemon|"]:is(:hover, .cur) { background: rgba(90, 155, 200, .18); }
+.dark .dexlist .result > a[data-entry^="pokemon|"] { background: transparent; text-shadow: 0 1px 2px #000; }
+.dark .dexlist .result > a[data-entry^="pokemon|"]:is(:hover, .cur) { background: rgba(110, 180, 225, .2); }

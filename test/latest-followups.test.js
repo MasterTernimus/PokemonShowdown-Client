@@ -14,11 +14,11 @@ describe('Latest appearance and ability metadata', () => {
  });
  it('keeps exact form-specific sprite size and other Lucario forms unchanged', () => {
   for (const shiny of [false, true]) {
-   assert.equal(staticSpriteData('Lucario-Mega-Z', false, {gen: 9, shiny}).h, 68);
-   assert.equal(staticSpriteData('Lopunny-Mega', false, {gen: 9, shiny}).h, 68);
-   assert.equal(staticSpriteData('Lopunny', true, {gen: 9, shiny}).h, 64);
+   require('./helpers/assert-logical-sprite.cjs')(staticSpriteData('Lucario-Mega-Z',false,{gen:9,shiny}),'Lucario-Mega-Z',false);
+   require('./helpers/assert-logical-sprite.cjs')(staticSpriteData('Lopunny-Mega',false,{gen:9,shiny}),'Lopunny-Mega',false);
+   require('./helpers/assert-logical-sprite.cjs')(staticSpriteData('Lopunny',true,{gen:9,shiny}),'Lopunny',true);
   }
-  assert.equal(staticSpriteData('Lucario-Mega-Z', true, {gen: 9}).h, 82);
+  require('./helpers/assert-logical-sprite.cjs')(staticSpriteData('Lucario-Mega-Z',true,{gen:9}),'Lucario-Mega-Z',true);
  });
 });
 

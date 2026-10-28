@@ -33,8 +33,8 @@ describe('Native Team Builder artwork coverage', () => {
 						const png = fs.readFileSync(path.join(__dirname, '../play.pokemonshowdown.com/sprites/gen5-shiny', row.spriteid + '.png'));
 						assert.equal(png.subarray(0, 8).toString('hex'), '89504e470d0a1a0a');
 						const width = parseInt(data.backgroundSize);
-						assert(width > 0 && width <= 96, row.name + ' rendered width');
-						assert(width * png.readUInt32BE(20) / png.readUInt32BE(16) <= 97, row.name + ' rendered height');
+						require('./helpers/assert-logical-sprite.cjs').tile(data);
+
 						continue;
 					}
 					assert.equal(data.spriteDir, 'sprites/dex');
@@ -47,14 +47,7 @@ describe('Native Team Builder artwork coverage', () => {
 					assert.equal(png.readUInt32BE(16), size.w);
 					assert.equal(png.readUInt32BE(20), size.h);
 					const width = parseInt(data.backgroundSize);
-					if (row.spriteid === 'pinsir') {
-						assert.equal(width, 120);
-						assert.equal(data.x, -12);
-						assert.equal(data.y, -12);
-						assert.equal(data.nativeSizeOnly, true);
-					} else {
-						assert(width <= 96 && width * size.h / size.w <= 97);
-					}
+					require('./helpers/assert-logical-sprite.cjs').tile(data);
 				}
 			}
 		});

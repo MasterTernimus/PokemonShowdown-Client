@@ -72,10 +72,10 @@ class ModifiableValue {
 	tryAbility(abilityName: string) {
 		const passives = this.serverPokemon.passives ?? this.battle.dex.species.get(this.serverPokemon.speciesForme).passives;
 		if (passives.some(passive => Dex.getPassiveAbilityEffects(toID(passive)).has(toID(abilityName)))) return true;
-		const activeId = toID(this.abilityName);
+		const activeId = Dex.abilities.get(this.abilityName).id;
 		const excluded = Dex.getAbilityComponentExclusions(activeId, passives, toID(this.serverPokemon.speciesForme));
 		const hasComponent = ((this.dualWieldPower || ['plushwhiplash', 'abyssalclaws', 'antlioninstinct', 'tidalvoice', 'apexvenom', 'sirius', 'abyssalfang', 'trickperformer', 'curtaincall', 'cellularconcord', 'mountainhide', 'rimebark', 'bottomlessgullet', 'divefisher', 'scatterbrain'].includes(activeId)) || (activeId === 'quarrycannon' && abilityName === 'Mega Launcher') || (['updraft', 'stormsovereign'].includes(activeId) && abilityName === 'Competitive') || ['Guts', 'Rivalry', 'Pure Power', 'Sharpness', 'Dual Wield', 'Power Drill', 'Mega Launcher', 'Fire Mane'].includes(abilityName) || (['atrocity', 'apexpredator'].includes(activeId) && abilityName === 'Tough Claws') || (activeId === 'rupturedheaven' && abilityName === 'Sharpness') || (activeId === 'wintersmalice' && abilityName === 'Refrigerate')) && Dex.getAbilityEffects(activeId).has(toID(abilityName)) && !excluded.includes(toID(abilityName));
-		if (!hasComponent && abilityName !== this.abilityName &&
+		if (!hasComponent && Dex.abilities.get(abilityName).id !== activeId &&
 			!(this.abilityName === 'Cinder Scales' && abilityName === 'Swarm')) return false;
 		if (this.pokemon?.volatiles['gastroacid']) {
 			this.comment.push(` (${abilityName} suppressed by Gastro Acid)`);
@@ -650,6 +650,7 @@ class BattleTooltips {
 	}
 
 	showMoveTooltip(move: Move, isZOrMax: string, pokemon: Pokemon, serverPokemon: ServerPokemon, gmaxMove?: Move) {
+		if (move.id === 'wavecrash' && !isZOrMax && new ModifiableValue(this.battle, pokemon, serverPokemon).tryAbility('Monarch of Ice')) move = this.battle.dex.moves.get('royalcollision');
 		const naturePowerPreview = move.id === 'naturepower' && isZOrMax !== 'zmove' && isZOrMax !== 'maxmove';
 		if (naturePowerPreview) move = BattleTooltips.getNaturePowerMove(this.battle);
 		const gardenStage = [1, 2, 3, 4, 5].find(stage => this.battle.hasPseudoWeather(`Flower Garden ${stage}`)) || 0;
@@ -841,6 +842,49 @@ class BattleTooltips {
 		}
 
 		text += '<p>Accuracy: ' + accuracy + '</p>';
+		if (category !== 'Status' && value.tryAbility('Monarch of Ice')) text += '<p>Monarch of Ice: 30% frostbite chance. Critically hits frostbitten foes, then thaws them after the attack. Ice moves receive STAB.</p>';
+		if (category !== 'Status' && moveType === 'Flying' && value.tryAbility("Emperor's Resolve")) text += '<p>Emperor’s Resolve: this move receives Flying STAB.</p>';
+		if (category !== 'Status' && moveType === 'Psychic' && value.tryAbility("Oracle's Refrain")) {
+			text += '<p>Oracle’s Refrain: this move receives Psychic STAB.</p>';
+		}
+		if ((move.flags as any).kick && value.tryAbility('Springheel')) {
+			text += '<p>Springheel: ignores positive defensive stages; no crash damage.</p>';
+		}
+		if (category !== 'Status' && ['Fire', 'Electric'].includes(moveType) && value.tryAbility('Plasma Eruption')) {
+			text += '<p>Plasma Eruption: may switch Fire/Electric typing. Power shown is for the displayed type; conversion can change field and phase bonuses.</p>';
+			text += '<p>Electric burns; Fire paralyzes. Pressure rises once per successful attack.</p>';
+		}
+		if (category !== 'Status' && this.battle.hasPseudoWeather('Wonder Room')) {
+			text += '<p>Wonder Room prevents critical hits.</p>';
+		}
+		if (this.battle.hasPseudoWeather('Gravity')) {
+			text += '<p>Gravity ignores positive evasion stages on affected targets.</p>';
+			if (['dig', 'dive'].includes(move.id)) {
+				text += '<p>Gravity: attacks immediately without consuming Power Herb.</p>';
+			}
+		}
+		if (this.battle.hasPseudoWeather('Magic Room') &&
+			['reflect', 'lightscreen', 'auroraveil', 'arenitewall', 'atlantiswall', 'safeguard', 'mist'].includes(move.id)) {
+			text += '<p>Magic Room: lasts 8 turns if successfully created.</p>';
+		}
+		if (this.battle.hasPseudoWeather('Magic Room')) {
+			if (move.id === 'magiccoat') text += '<p>Magic Room: also shields current active allies for this turn.</p>';
+			if (move.id === 'healpulse') text += '<p>Magic Room: heals 75% max HP; does not stack with Mega Launcher.</p>';
+		}
+		if (this.battle.hasPseudoWeather('Wonder Room')) {
+			const roomNotes: {[id: string]: string} = {
+				guardsplit: 'after averaging defenses, raises both participants\' Defense and Sp. Def by 1.',
+				powersplit: 'after averaging offenses, lowers both participants\' Attack and Sp. Atk by 1.',
+				guardswap: 'after a successful swap, clears the user\'s negative Defense and Sp. Def stages.',
+				powerswap: 'after a successful swap, clears the user\'s negative Attack and Sp. Atk stages.',
+				heartswap: 'after a successful swap, clears the user\'s negative stat stages.',
+				speedswap: 'also swaps Speed stages, then clears the user\'s negative Speed.',
+				painsplit: 'also clears confusion on both participants after a successful split.',
+				powertrick: 'also exchanges Attack and Defense stages when toggled on or off.',
+				powershift: 'activation also swaps Sp. Atk and Sp. Def until toggled off or switched out; Baton Pass transfers it.',
+			};
+			if (roomNotes[move.id]) text += '<p>Wonder Room: ' + roomNotes[move.id] + '</p>';
+		}
 		if (zEffect) text += '<p>Z-Effect: ' + zEffect + '</p>';
 		if (category !== 'Status' && (pokemon.terastallized === 'Stellar' || isZOrMax === 'zmove' || move.isZ)) {
 			text += '<p>Against eligible ???-type targets: 1.5&times; calculated damage. Stellar and Z-Move qualification does not stack; fixed damage is unchanged.</p>';
@@ -1224,14 +1268,19 @@ class BattleTooltips {
 	calculateModifiedStats(clientPokemon: Pokemon | null, serverPokemon: ServerPokemon, statStagesOnly?: boolean) {
 		let stats = {...serverPokemon.stats};
 		let pokemon = clientPokemon || serverPokemon;
-		const isPowerTrick = clientPokemon?.volatiles['powertrick'];
+		const physicalSwap = !!clientPokemon?.volatiles['powertrick'] !== !!clientPokemon?.volatiles['powershift'];
+		const specialSwap = !!clientPokemon?.volatiles['powershift']?.[1];
 		for (const statName of Dex.statNamesExceptHP) {
 			let sourceStatName = statName;
-			if (isPowerTrick) {
+			if (physicalSwap) {
 				if (statName === 'atk') sourceStatName = 'def';
 				if (statName === 'def') sourceStatName = 'atk';
 			}
-			if (statName === 'spa' && new ModifiableValue(this.battle, clientPokemon!, serverPokemon).tryAbility('Twin Fang')) sourceStatName = isPowerTrick ? 'def' : 'atk';
+			if (specialSwap) {
+				if (statName === 'spa') sourceStatName = 'spd';
+				if (statName === 'spd') sourceStatName = 'spa';
+			}
+			if (statName === 'spa' && new ModifiableValue(this.battle, clientPokemon!, serverPokemon).tryAbility('Twin Fang')) sourceStatName = physicalSwap ? 'def' : 'atk';
 			stats[statName] = serverPokemon.stats[sourceStatName];
 			if (!clientPokemon) continue;
 
@@ -1387,6 +1436,15 @@ class BattleTooltips {
 		const exclusions = Dex.getAbilityComponentExclusions(ability, fieldPassives, serverPokemon.speciesForme);
 		const fieldAbilityEffects = new Set(Array.from(Dex.getAbilityEffects(ability)).filter(effect => !exclusions.includes(effect)));
 		for (const passive of fieldPassives) for (const effect of Array.from(Dex.getPassiveAbilityEffects(toID(passive)))) fieldAbilityEffects.add(effect);
+		if (fieldAbilityEffects.has('monarchofice' as ID)) {
+			if (['hail', 'snow', 'snowscape'].includes(weather) ||
+				['Icy Terrain', 'Snowy Mountain Terrain', 'Cold Eclipse Terrain'].some(field => this.battle.hasPseudoWeather(field))) speedModifiers.push(2);
+			if (weather === 'hail') stats.def = Math.floor(stats.def * (this.battle.hasPseudoWeather('Snowy Mountain Terrain') ? 2.25 : 1.5));
+			if (weather === 'snowscape' || weather === 'snow' && !this.pokemonHasType(pokemon, 'Ice')) stats.def = Math.floor(stats.def * 1.5);
+			if (weather === 'hail' && this.battle.hasPseudoWeather('Icy Terrain')) stats.def = Math.floor(stats.def * 1.5);
+			if (weather === 'hail' && this.battle.hasPseudoWeather('Snowy Terrain')) stats.spd = Math.floor(stats.spd * 1.5);
+			if (this.battle.hasPseudoWeather('Cold Eclipse Terrain')) { stats.def = Math.floor(stats.def * 1.5); stats.spd = Math.floor(stats.spd * 1.5); }
+		}
 		if (fieldAbilityEffects.has(toID('sandrush')) && (weather === 'sandstorm' ||
 			this.battle.hasPseudoWeather('Desert Terrain') || this.battle.hasPseudoWeather('Ashen Beach Terrain'))) speedModifiers.push(2);
 		if ((this.battle.hasPseudoWeather('Psychic Aura') || this.battle.hasPseudoWeather('Psychic Terrain')) &&
@@ -1891,7 +1949,7 @@ class BattleTooltips {
 			'selfdestruct',
 		].includes(move.id);
 		const specialTie = [
-			'venamskiss', 'firepledge', 'waterpledge', 'grasspledge',
+			'swift', 'venamskiss', 'firepledge', 'waterpledge', 'grasspledge',
 			'photongeyser', 'lightthatburnsthesky', 'radiantassault', 'roaroftime', 'spacialrend',
 			'shadowforce', 'veeveevolley', 'blastburn', 'frenzyplant', 'hydrocannon', 'snipeshot',
 			'watershuriken', 'kaboom', 'corrosivestrike', 'spectralscream', 'barbedweb', 'bunrakubeatdown', 'lastrespects', 'queensgambit', 'timeblade', 'crestcleave', 'swarmsnare', 'wisteriamaelstrom', 'airstreamassault', 'dragonrend', 'sirenswrath',
@@ -2044,7 +2102,7 @@ class BattleTooltips {
 		const modifiedStats = this.calculateModifiedStats(pokemon, serverPokemon);
 
 		// Adaptive signatures select category from staged stats before field previews.
-		if (['kaboom', 'corrosivestrike', 'spectralscream', 'barbedweb', 'bunrakubeatdown', 'lastrespects', 'queensgambit', 'timeblade', 'crestcleave', 'swarmsnare',
+		if (['swift', 'kaboom', 'corrosivestrike', 'spectralscream', 'barbedweb', 'bunrakubeatdown', 'lastrespects', 'queensgambit', 'timeblade', 'crestcleave', 'swarmsnare',
 			'wisteriamaelstrom', 'airstreamassault', 'dragonrend', 'sirenswrath'].includes(move.id) || (move.id === 'aurasphere' && value.tryAbility('Aura Sight'))) {
 			const staged = this.calculateModifiedStats(pokemon, serverPokemon, true);
 			move = {...move, category: staged.atk > staged.spa ? 'Physical' : 'Special'};
@@ -2217,11 +2275,11 @@ class BattleTooltips {
 		// Moves which have base power changed due to items
 		if (serverPokemon.item) {
 			let item = Dex.items.get(serverPokemon.item);
-			if (move.id === 'fling' && item.fling) {
-				value.itemModify(item.fling.basePower);
+			if (move.id === 'fling' && item.fling && value.tryItem(item.name)) {
+				value.set(item.fling.basePower, item.name);
 			}
-			if (move.id === 'naturalgift') {
-				value.itemModify(item.naturalGift.basePower);
+			if (move.id === 'naturalgift' && item.naturalGift && value.tryItem(item.name)) {
+				value.set(item.naturalGift.basePower, item.name);
 			}
 		}
 		// Moves which have base power changed according to weight
@@ -2302,6 +2360,10 @@ class BattleTooltips {
 		if (value.value <= value.technicianThreshold()) {
 			value.abilityModify(1.5, "Technician");
 		}
+		if ((move.flags as any).kick) value.abilityModify(1.4, 'Striker');
+		if (['rapidspin', 'mortalspin', 'icespinner', 'gyroball', 'tripleaxel'].includes(move.id)) {
+			value.abilityModify(1.2, 'Cyclone Rhythm');
+		}
 		if (move.flags['tail'] || (move.flags as any)['tailmove']) value.abilityModify(1.5, 'Whiplash');
 		if (!move.isZ && !move.isMax && ['bodyslam', 'heavyslam'].includes(move.id)) value.abilityModify(1.5, 'Leviathan Wake');
 		if ((move.flags as any)['kick']) value.abilityModify(1.4, 'Seasonal Stride');
@@ -2339,7 +2401,7 @@ class BattleTooltips {
 		}
 		if ((move.flags['slicing'] || move.id === 'steelwing') && (!move.flags.slicing || !value.tryAbility('Sharpness')) &&
 			!this.battle.hasPseudoWeather('Cold Eclipse Terrain')) {
-			value.abilityModify(1.5, 'Exalt');
+			value.abilityModify(1.5, 'Imperial Edge');
 		}
 		for (let i = 1; i <= 5 && i <= pokemon.side.faintCounter; i++) {
 			if (pokemon.volatiles[`fallen${i}`]) {
@@ -2377,7 +2439,7 @@ class BattleTooltips {
 				value.abilityModify(1.2, "Normalize");
 			}
 		}
-		if (move.recoil || move.hasCrashDamage) {
+		if (move.recoil || move.hasCrashDamage && !((move.flags as any).kick && value.tryAbility('Springheel'))) {
 			value.abilityModify(1.2, 'Reckless');
 		}
 		if (moveType === 'Steel') {
@@ -2388,6 +2450,18 @@ class BattleTooltips {
 		if (move.category !== 'Status') {
 			let auraBoosted = '';
 			let auraBroken = false;
+			if (move.flags.sound) {
+				for (const ally of this.battle.getAllActive()) {
+					if (!ally || ally.fainted || !(ally.side === pokemon.side ||
+						this.battle.gameType === 'multi' && ally.side.n % 2 === pokemon.side.n % 2)) continue;
+					const own = ally === pokemon;
+					const passives = own ? (serverPokemon.passives ?? ally.getSpecies().passives) : ally.getSpecies().passives;
+					const selected = toID(ally.effectiveAbility(own ? serverPokemon : undefined));
+					const resonance = Dex.getAbilityEffects(selected).has('resonanceforce' as ID) ||
+						passives.some(passive => Dex.getPassiveAbilityEffects(toID(passive)).has('resonanceforce' as ID));
+					if (resonance) value.modify(1.5, 'Resonance Force');
+				}
+			}
 			for (const ally of pokemon.side.active) {
 				if (!ally || ally.fainted) continue;
 				let allyAbility = this.getAllyAbility(ally);
@@ -2522,7 +2596,34 @@ class BattleTooltips {
 			}
 		}
 
+		if (!move.isZ && !move.isMax && this.battle.hasPseudoWeather('Gravity')) {
+			if (move.flags.gravityboost) value.modify(5325 / 4096, 'Gravity');
+			if (move.flags.wind) value.modify(0.75, 'Gravity: weakened wind');
+		}
+		if (this.battle.hasPseudoWeather('Magic Room') && ['Psychic', 'Ghost', 'Fairy'].includes(moveType)) {
+			value.modify(4915 / 4096, 'Magic Room');
+		}
+		if (this.battle.hasPseudoWeather('Wonder Room') && !move.isZ && !move.isMax &&
+			move.overrideOffensiveStat && ['def', 'spd'].includes(move.overrideOffensiveStat)) {
+			value.modify(4915 / 4096, 'Wonder Room');
+		}
 		if (pokemon.volatiles['sirensveil'] && move.category !== 'Status') value.modify(1.3, 'Siren’s Veil ready');
+		if (pokemon.volatiles.worldaxis && move.category !== 'Status' && value.tryAbility('World Axis')) {
+			value.modify(1.5, 'World Axis charge');
+		}
+		if (move.category !== 'Status' && ['Fire', 'Electric'].includes(moveType) && value.tryAbility('Plasma Eruption')) {
+			if (pokemon.volatiles.plasmapressure3) value.modify(1.6, 'Plasma Eruption: core ready');
+			if (pokemon.volatiles.plasmaairborne && moveType === 'Electric') value.modify(1.2, 'Plasma Airborne');
+			if (pokemon.volatiles.plasmalanding && moveType === 'Fire') value.modify(1.3, 'Plasma Landing');
+			const fieldIs = (ids: string[]) => ids.some(id => this.battle.hasPseudoWeather(id));
+			let fieldBonus = 1;
+			if (moveType === 'Fire' && fieldIs(['Volcanic Terrain', 'Burning Terrain', 'Superheated Terrain', "Dragon's Den Terrain"])) fieldBonus = 1.15;
+			else if (moveType === 'Electric' && fieldIs(['Electric Terrain', 'Electric Aura', 'Factory Terrain', 'Short-Circuit Terrain'])) fieldBonus = 1.15;
+			else if (fieldIs(['Mountain Terrain', 'Cave Terrain', 'Crystal Cavern Terrain', 'Desert Terrain', 'Ashen Beach Terrain']) ||
+				['sunnyday', 'desolateland'].includes(value.effectiveWeather())) fieldBonus = 1.1;
+			else if (fieldIs(['Haunted Terrain', 'New World Terrain', 'Inverse Terrain', 'Big Top Terrain', 'Fairy Tale Terrain'])) fieldBonus = 1.05;
+			if (fieldBonus !== 1) value.modify(fieldBonus, 'Plasma Eruption: field bonus');
+		}
 
 		// Burn isn't really a base power modifier, so it needs to be applied after the Tera BP floor
 		if (this.battle.gen > 2 && serverPokemon.status === 'brn' && move.id !== 'facade' && move.category === 'Physical') {

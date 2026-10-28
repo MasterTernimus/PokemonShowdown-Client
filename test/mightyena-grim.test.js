@@ -18,7 +18,7 @@ describe('Mightyena Grim supplied artwork', () => {
    const dir='gen5'+(front?'':'-back')+(shiny?'-shiny':'');
    assert(sprite.url.includes('/'+dir+'/mightyena-grim.png'),sprite.url);
    assert(sprite.pixelated);
-   assert(sprite.w>0 && sprite.w<=86 && sprite.h>0 && sprite.h<=86);
+   require('./helpers/assert-logical-sprite.cjs')(sprite,'Mightyena-Grim',front);
    const bytes=fs.readFileSync(path.join(__dirname,'../play.pokemonshowdown.com/sprites',dir,'mightyena-grim.png'));
    assert.equal(bytes.readUInt32BE(16),192);
    assert.equal(bytes.readUInt32BE(20),192);

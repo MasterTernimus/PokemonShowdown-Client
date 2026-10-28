@@ -20,6 +20,7 @@ run('build-tools/build-indexes', root);
 run('build-tools/build-learnsets', root);
 run('build-tools/verify-move-assets', root);
 run('build-tools/build-minidex', root);
+run('build-tools/generate-preview-animations.js', root);
 for (const file of ['pokedex-mini.js', 'pokedex-mini-bw.js']) {
 	if (!fs.existsSync(path.join(root, 'play.pokemonshowdown.com/data', file))) throw new Error('Sprite metadata missing: ' + file + '. Restore the tracked sprite assets before preparing a release.');
 }

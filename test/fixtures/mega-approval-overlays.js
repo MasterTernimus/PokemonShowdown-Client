@@ -308,3 +308,12 @@ exports.effects=(id,f)=>effects[id]??prior.effects(id,f);exports.description=(id
 
 // Shellcracker retains the explicitly added Mold Breaker component.
 {const prior=exports.effects;exports.effects=(id,f)=>id==='shellcracker'?['moldbreaker','shellcracker']:prior(id,f);}
+
+// Reviewed Hitmon, room-setter and Empoleon rename changes. Historical snapshots remain intact.
+{const prior={...exports};const passives={hitmonlee:['kickfiend'],hitmonchan:['punchfiend'],hitmontop:['spinfiend'],politoed:['oraclesrefrain']};const slots={unown:{0:'Lost Epoch'}};
+exports.passives=(id,f)=>passives[id]||prior.passives(id,f);exports.abilities=(id,f)=>({...prior.abilities(id,f),...slots[id]});
+exports.effects=(id,f)=>id==='exalt'?['defiant','imperialedge','moldbreaker','sharpness']:prior.effects(id,f);}
+
+{const prior=exports.effects;exports.effects=(id,f)=>({kickfiend:['kickfiend','limber','serenegrace','striker'],punchfiend:['innerfocus','ironfist','keeneye','punchfiend','serenegrace','unseenfist'],spinfiend:['spinfiend','steadfast','technician','vitalspirit']}[id]||prior(id,f));}
+
+{const prior=exports.effects;exports.effects=(id,f)=>id==='emperorsresolve'?['competitive','emperorsresolve','swiftswim']:prior(id,f);}

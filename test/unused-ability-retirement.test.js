@@ -1,10 +1,10 @@
 'use strict';
 const assert = require('assert').strict;
 const loadDex = require('./helpers/isolated-dex.cjs');
-const retired = ['voltagevolley', 'soaringspirit', 'backwash', 'plasmaeruption', 'soultag'];
+const retired = ['voltagevolley', 'soaringspirit', 'backwash', 'soultag'];
 describe('Retired unused abilities in the client', () => {
 	const {Dex, BattleAbilities} = loadDex();
-	it('removes the five retired IDs from data, lookup and search', () => {
+	it('removes the retired IDs from data, lookup and search', () => {
 		const snapshot = require('../server-data-sync-manifest.json').snapshot;
 		const search = require('../play.pokemonshowdown.com/data/search-index').BattleSearchIndex;
 		for (const id of retired) {

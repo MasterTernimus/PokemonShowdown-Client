@@ -486,13 +486,13 @@
  .dark .utilichart .result > a[data-entry^="move|"].cur { background: #294457; border-color: #8dc7ed; }
 }
 
-/* Readable move lists over custom wallpapers, including exclusive event moves. */
-.utilichart .result > a[data-entry^="move|"] { background: #f8fafc; color: #202f3b; }
+/* Transparent move lists over custom wallpapers, including exclusive event moves. */
+.utilichart .result > a[data-entry^="move|"] { background: transparent; color: #202f3b; }
 .utilichart .result > a[data-entry^="move|"] > .movenamecol .move-source { display: inline-block; margin-left: 7px; font: 11px/1.4 Verdana, sans-serif; color: #536675; margin-top: 2px; }
-.dark .utilichart .result > a[data-entry^="move|"] { background: #202a33; color: #eef3f7; }
+.dark .utilichart .result > a[data-entry^="move|"] { background: transparent; color: #eef3f7; text-shadow: 0 1px 2px #000; }
 .dark .utilichart .result > a[data-entry^="move|"] > .movenamecol .move-source { color: #b7c8d5; }
-.utilichart .result > a[data-entry^="move|"]:hover, .utilichart .result > a[data-entry^="move|"].cur { background: #e3f1fc; }
-.dark .utilichart .result > a[data-entry^="move|"]:hover, .dark .utilichart .result > a[data-entry^="move|"].cur { background: #294457; }
+.utilichart .result > a[data-entry^="move|"]:hover, .utilichart .result > a[data-entry^="move|"].cur { background: rgba(90, 155, 200, .18); }
+.dark .utilichart .result > a[data-entry^="move|"]:hover, .dark .utilichart .result > a[data-entry^="move|"].cur { background: rgba(110, 180, 225, .2); }
 @media (min-width: 640px) {
  .utilichart .result > a[data-entry^="move|"] { display: grid; grid-template-columns: minmax(140px, 1fr) 72px 62px 90px 52px; gap: 4px 8px; align-items: center; padding: 7px 10px; margin: 0; min-height: 44px; border-bottom: 1px solid #d4dee6; white-space: normal; }
  .utilichart .result > a[data-entry^="move|"] > .col { float: none; width: auto; height: auto; min-width: 0; margin: 0; padding: 0; line-height: 1.4; }
@@ -510,3 +510,57 @@
 
 .teambuilder-results .utilichart:has(a[data-entry^="move|"]) { width: 100%; max-width: 100%; min-width: 0; }
 .utilichart .result > a[data-entry^="move|"] { border-radius: 0; }
+
+/* The picker can be narrower than the window (including split-pane desktop). */
+.teambuilder-results { container-type: inline-size; }
+.teambuilder-results .utilichart .result:has(> a[data-entry^="move|"]) { padding: 0; min-height: 0; }
+.teambuilder-results .utilichart .result > a[data-entry^="move|"] {
+ display: grid; grid-template-columns: minmax(0, 1fr) 66px 60px 88px 42px;
+ gap: 1px 6px; align-items: center; min-height: 40px;
+ margin: 0; padding: 3px 6px; border-width: 0 0 1px;
+ white-space: normal; touch-action: pan-y;
+}
+.teambuilder-results .utilichart .result > a[data-entry^="move|"] > .col {
+ float: none; width: auto; height: auto; min-width: 0; min-height: 0;
+ margin: 0; padding: 0; line-height: 16px; box-sizing: border-box;
+}
+.teambuilder-results .utilichart .result > a[data-entry^="move|"] > .movenamecol {
+ grid-column: 1; font-size: 12px; font-weight: 600; overflow-wrap: anywhere;
+}
+.teambuilder-results .utilichart .result > a[data-entry^="move|"] > .typecol {
+ grid-column: 2; display: flex; justify-content: flex-start; gap: 3px;
+}
+.teambuilder-results .utilichart .result > a[data-entry^="move|"] > .typecol img { margin: 0; opacity: 1; }
+.teambuilder-results .utilichart .result > a[data-entry^="move|"] > :is(.labelcol, .widelabelcol, .pplabelcol) {
+ display: flex; flex-wrap: nowrap; gap: 3px; align-items: baseline; font-size: 11px; white-space: nowrap;
+}
+.teambuilder-results .utilichart .result > a[data-entry^="move|"] > :is(.labelcol, .widelabelcol, .pplabelcol) br { display: none; }
+.teambuilder-results .utilichart .result > a[data-entry^="move|"] em { font: normal 10px/16px Verdana, sans-serif; }
+.teambuilder-results .utilichart .result > a[data-entry^="move|"] > .movedesccol {
+ grid-column: 1 / -1; font-size: 11px; line-height: 15px; overflow-wrap: anywhere;
+}
+.teambuilder-results .utilichart .result > a[data-entry^="move|"] > :is(.illegalcol, .filtercol) { grid-column: 2 / -1; }
+.teambuilder-results .utilichart .result > a[data-entry^="move|"]:focus-visible { outline: 2px solid #397ba4; outline-offset: -2px; }
+@container (min-width: 780px) {
+ .teambuilder-results .utilichart .result > a[data-entry^="move|"] {
+  grid-template-columns: 154px 66px 60px 88px 42px minmax(0, 1fr); min-height: 32px;
+ }
+ .teambuilder-results .utilichart .result > a[data-entry^="move|"] > .movedesccol { grid-column: 6; }
+}
+@container (max-width: 439px) {
+ .teambuilder-results .utilichart .result > a[data-entry^="move|"] {
+  grid-template-columns: repeat(3, minmax(0, 1fr)); min-height: 44px; padding: 4px 6px;
+ }
+ .teambuilder-results .utilichart .result > a[data-entry^="move|"] > .movenamecol { grid-column: 1 / 3; }
+ .teambuilder-results .utilichart .result > a[data-entry^="move|"] > .typecol { grid-column: 3; justify-content: flex-end; }
+ .teambuilder-results .utilichart .result > a[data-entry^="move|"] > :is(.illegalcol, .filtercol) { grid-column: 1 / -1; }
+}
+@media (pointer: coarse) {
+ .teambuilder-results .utilichart .result > a[data-entry^="move|"] { min-height: 44px; }
+}
+
+/* Pokemon results share the transparent move/ability list treatment. */
+.utilichart .result > a[data-entry^="pokemon|"] { background: transparent; }
+.utilichart .result > a[data-entry^="pokemon|"]:is(:hover, .cur) { background: rgba(90, 155, 200, .18); }
+.dark .utilichart .result > a[data-entry^="pokemon|"] { background: transparent; text-shadow: 0 1px 2px #000; }
+.dark .utilichart .result > a[data-entry^="pokemon|"]:is(:hover, .cur) { background: rgba(110, 180, 225, .2); }

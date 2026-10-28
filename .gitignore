@@ -59,3 +59,6 @@ caches/PokemonShowdown-Reborn/
 !client-data-provenance.json
 
 !test/warning-entry-descriptions.test.js
+
+# Frozen public Showdown dimensions used by the offline sprite-size generator.
+!build-tools/data/showdown-sprite-reference.json

@@ -16,7 +16,7 @@ describe('Mega Houndoom cropped back positioning', () => {
    assert(sprite.url.includes((shiny ? 'gen5-back-shiny/houndoom-mega.png' : 'ani-back/houndoom-mega.gif')));
    const pos = new PositionTest().pos({x: 0, y: 0, z: 0}, sprite);
    assert.notEqual(pos.top + pos.height, 360);
-   assert(pos.height <= 164);
+   require('./helpers/assert-logical-sprite.cjs')(sprite,'Houndoom-Mega',false);
    assert.equal(new PositionTest().pos({y: 10}, sprite).top, pos.top - 20);
   });
  }

@@ -15,8 +15,8 @@ describe('Approved Fire Mane, Aqua Shell and Corona Furnace metadata', () => {
 		for (const id of ['steadfast', 'waterveil', 'innerfocus']) assert(!effects.has(id), id);
 		assert(Dex.abilities.get('aquashell').desc.includes('30%'));
 	});
-	it('publishes Fire/Psychic Corona Furnace with unchanged Mega stats/passive', () => {
-		const s = Dex.species.get('typhlosionmega'); assert.deepEqual(s.types, ['Fire', 'Psychic']); assert.deepEqual(s.abilities, {0:'Corona Furnace'}); assert.deepEqual(s.passives, ['proficient']);
+	it('publishes Fire/Electric Plasma Eruption with unchanged Mega stats/passive', () => {
+		const s = Dex.species.get('typhlosionmega'); assert.deepEqual(s.types, ['Fire', 'Electric']); assert.deepEqual(s.abilities, {0:'Plasma Eruption'}); assert.deepEqual(s.passives, ['proficient']);
 		assert.deepEqual(s.baseStats, {hp:83, atk:138, def:85, spa:139, spd:70, spe:130});
 		const effects = Dex.getAbilityEffects('coronafurnace'); assert(effects.has('flamebody')); assert(!effects.has('moldbreaker')); assert(Dex.abilities.get('coronafurnace').desc.includes('Negative stages'));
 	});

@@ -1182,6 +1182,8 @@ interface MoveFlags {
 	drill?: 1 | 0;
 	/** Prevented from being executed or selected during Gravity's effect. */
 	gravity?: 1 | 0;
+	/** Falling or crushing move: 1.3x power during Gravity. */
+	gravityboost?: 1 | 0;
 	/** Prevented from being executed or selected during Heal Block's effect. */
 	heal?: 1 | 0;
 	/** Can be copied by Mirror Move. */
@@ -1235,6 +1237,7 @@ class Move implements Effect {
 	readonly pressureTarget: MoveTarget;
 	readonly flags: Readonly<MoveFlags>;
 	readonly critRatio: number;
+	readonly overrideOffensiveStat?: StatName;
 
 	readonly desc: string;
 	readonly shortDesc: string;
@@ -1283,6 +1286,7 @@ class Move implements Effect {
 		this.pressureTarget = data.pressureTarget || this.target;
 		this.flags = data.flags || {};
 		this.critRatio = data.critRatio === 0 ? 0 : (data.critRatio || 1);
+		this.overrideOffensiveStat = data.overrideOffensiveStat;
 
 		// TODO: move to text.js
 		this.desc = data.desc;

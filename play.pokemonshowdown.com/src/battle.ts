@@ -345,6 +345,7 @@ export class Pokemon implements PokemonDetails, PokemonHealth {
 		this.side.battle.scene.clearEffects(this);
 	}
 	rememberMove(moveName: string, pp = 1, recursionSource?: string) {
+ if (toID(moveName) === 'royalcollision') moveName = 'Wave Crash';
 		if (recursionSource === this.ident) return;
 		moveName = Dex.moves.get(moveName).name;
 		if (moveName.charAt(0) === '*') return;
@@ -423,7 +424,11 @@ export class Pokemon implements PokemonDetails, PokemonHealth {
 	}
 	getWeightKg(serverPokemon?: ServerPokemon) {
 		let autotomizeFactor = this.volatiles.autotomize?.[1] * 100 || 0;
-		return Math.max(this.getSpecies(serverPokemon).weightkg - autotomizeFactor, 0.1);
+		let weight = Math.max(this.getSpecies(serverPokemon).weightkg - autotomizeFactor, 0.1);
+		const gravityExempt = this.getSpecies(serverPokemon).id === 'gardevoir' &&
+			toID(this.effectiveAbility(serverPokemon)) === 'voidveil';
+		if (this.side.battle.hasPseudoWeather('Gravity') && !gravityExempt) weight *= 2;
+		return weight;
 	}
 	getBoostType(boostStat: BoostStatName) {
 		if (!this.boosts[boostStat]) return 'neutral';
@@ -532,7 +537,7 @@ export class Pokemon implements PokemonDetails, PokemonHealth {
 			'voidcraft', 'phantombarrage'].some(id => Dex.getAbilityEffects(ability).has(id as ID))) {
 			return false;
 		}
-		if (this.volatiles['magnetrise'] || this.volatiles['telekinesis']) {
+		if (this.volatiles['magnetrise'] || this.volatiles['telekinesis'] || this.volatiles['plasmaairborne']) {
 			return false;
 		}
 		if (item === 'airballoon') {
@@ -2796,6 +2801,7 @@ export class Battle {
 			}
 			if (!(effect.id === 'typechange' && poke.terastallized)) {
 				poke.addVolatile(effect.id);
+				if (effect.id === 'powershift') poke.volatiles[effect.id][1] = !!kwArgs.fullshift;
 				if (kwArgs.until && ['firespin', 'desertsmark', 'barbedweb', 'swarmsnare'].includes(effect.id)) {
 					poke.volatiles[effect.id][1] = {expiresTurn: Number(kwArgs.until)};
 				}
@@ -3034,6 +3040,11 @@ export class Battle {
 				let pp = Number(kwArgs.number);
 				if (isNaN(pp)) pp = 4;
 				poke.rememberMove(move, pp);
+				break;
+			case 'checkhook':
+				// The server reports the actual doubled cost, including redirected Pressure.
+				// Older Check Hook replay messages had no PP cost.
+				if (Number(kwArgs.number) > 0) poke.rememberMove('Sucker Punch', Number(kwArgs.number));
 				break;
 			case 'gravity':
 				poke.removeVolatile('magnetrise' as ID);

@@ -4149,6 +4149,12 @@ a.ilink.yours {
 .field-guide-room .guide-group button small {color: #536b80;}
 .field-guide-room .guide-group button[aria-pressed="true"] {background: #dcecf7; border-color: #4b83a9;}
 
+@media (max-width:650px) {
+	.field-guide-room.guide-organized .guide-list {grid-template-columns:1fr;}
+	.field-guide-room .guide-group[data-group="Rooms & Gravity"] > div {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;}
+	.field-guide-room .guide-group[data-group="Rooms & Gravity"] button {min-height:48px;box-sizing:border-box;}
+}
+
 /* Field-specific reference details, readable in either saved theme. */
 .guide-reference-cards {display:grid;gap:8px;padding:0 12px 12px;}
 .guide-reference-card {padding:10px 12px;border:1px solid #bdcddd;border-radius:4px;background:#f7fafc;overflow-wrap:anywhere;}
@@ -4448,8 +4454,8 @@ a.ilink.yours {
 .editing-set .pokemon-picker-sort .abilitysortcol,.editing-set .pokemon-picker-sort .statsortcol {display:block;}
 .teambuilder-results .utilichart .sortrow.pokemon-picker-sort .sortcol {min-width:0;max-width:100%;padding:2px 0;}
 
-.teambuilder-results .utilichart .result > a.pokemon-picker-row {background:rgba(24,36,49,.94);color:#e8edf3;text-decoration:none;border-top:1px solid #3b4c5b;}
-.teambuilder-results .utilichart .result > a.pokemon-picker-row:hover,.teambuilder-results .utilichart .result > a.pokemon-picker-row.cur {background:#2c4359;}
+.teambuilder-results .utilichart .result > a.pokemon-picker-row {background:transparent;color:#e8edf3;text-decoration:none;border-top:1px solid #3b4c5b;}
+.teambuilder-results .utilichart .result > a.pokemon-picker-row:hover,.teambuilder-results .utilichart .result > a.pokemon-picker-row.cur {background:rgba(110,180,225,.2);}
 .teambuilder-results .utilichart .result > a.pokemon-picker-row .pokemonnamecol {font-size:12px;line-height:14px;}
 .teambuilder-results .utilichart .result > a.pokemon-picker-row .pokemon-passive-badge {font:9px/12px Verdana,sans-serif;min-height:18px;padding:0 2px;background:transparent;border:0;color:#c2d9e9;}
 .teambuilder-results .utilichart .result > a.pokemon-picker-row .twoabilitycol {position:relative;}
@@ -4620,3 +4626,7 @@ a.ilink.yours {
 
 /* Move pickers must fit narrow rooms, including exclusive event move groups. */
 .teambuilder-results:has(a[data-entry^="move|"]) { min-width: 0; }
+
+/* Keep the wallpaper visible behind mobile move and Pokemon result panels too. */
+.teambuilder-results:has(a[data-entry^="move|"], a[data-entry^="pokemon|"]),
+.dark .teambuilder-results:has(a[data-entry^="move|"], a[data-entry^="pokemon|"]) { background: transparent; }

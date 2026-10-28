@@ -36365,3 +36365,5 @@ BattleMoveAnims['splinteredweb'] = {anim(scene, sprites) {
  BattleMoveAnims['powergem'].anim(scene, sprites);
 }};
 BattleMoveAnims['scentedgeyser'] = {anim: BattleMoveAnims['waterspout'].anim};
+
+BattleMoveAnims.royalcollision = BattleMoveAnims.wavecrash;

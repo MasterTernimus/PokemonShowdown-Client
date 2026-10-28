@@ -34,6 +34,8 @@ describe('Server data synchronization', () => {
 						const actual = dex[kind].get(id);
 						for (const [key, value] of Object.entries(expected)) {
 							if (key === 'replaceAbilities') continue;
+							// Item displays intentionally fall back to the full description when no short text exists.
+							if (kind === 'items' && key === 'shortDesc' && !value) {assert.equal(actual[key], expected.desc || '', id);continue;}
 							const normalize = data => key === 'isNonstandard' ? (kind === 'abilities' ? !!data : data || false) : JSON.parse(JSON.stringify(data));
 							assert.deepEqual(normalize(actual[key]), normalize(key === 'name' && kind === 'moves' && id === 'superumdmove' ? 'Super U.M.D' : kind === 'abilities' && id === 'eldritchremedy' && key === 'name' ? 'Curious Medicine' : value), `${kind}.${id}.${key}`);
 						}

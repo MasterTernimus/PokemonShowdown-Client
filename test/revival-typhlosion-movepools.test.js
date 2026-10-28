@@ -7,7 +7,7 @@ function generated(file) {const context = {exports:{}}; vm.runInNewContext(fs.re
 const raw = generated('learnsets.js').BattleLearnsets;
 const encoded = generated('teambuilder-tables.js').BattleTeambuilderTable.learnsets;
 require('./battle.test');
-const removed = ['chargebeam', 'doubleshock', 'electroball', 'risingvoltage', 'shockwave', 'thunder', 'thunderbolt', 'thunderfang'];
+const removed = ['chargebeam', 'doubleshock', 'electroball', 'risingvoltage', 'thunderbolt', 'thunderfang'];
 describe('Revival support and Typhlosion picker pools', () => {
 	it('runtime Dex overlays cannot re-add the deleted Electric pack', () => {
 		for (const id of ['typhlosion', 'typhlosionhisui']) for (const move of removed) assert(!global.BattleTeambuilderTable.learnsets[id][move], id + ': ' + move);
@@ -17,7 +17,7 @@ describe('Revival support and Typhlosion picker pools', () => {
 	});
 	for (const id of ['typhlosion', 'typhlosionhisui']) it(id + ' removes additions and retains original Electric attacks', () => {
 		for (const move of removed) {assert(!raw[id].learnset[move], id + ': ' + move); assert(!encoded[id][move], id + ': ' + move);}
-		for (const move of ['thunderpunch', 'wildcharge']) {assert(raw[id].learnset[move]); assert(encoded[id][move]);}
+		for (const move of ['thunderpunch', 'wildcharge', 'shockwave', 'zapcannon', 'thunder']) {assert(raw[id].learnset[move]); assert(encoded[id][move]);}
 	});
 	it('leaves Aevian Roserade and support pre-evolutions outside the new grant', () => {
 		for (const id of ['roseradeaevian', 'roselia', 'budew', 'espurr']) {assert(!(raw[id] && raw[id].learnset.revivalblessing)); assert(!(encoded[id] && encoded[id].revivalblessing));}

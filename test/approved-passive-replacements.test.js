@@ -13,11 +13,11 @@ describe('Approved passive slots and field move UI',()=>{
   for(const id of ['iondeluge','plasmafists']){assert.match(moves[id].desc,/Electric Aura for 3 turns, or 5 with Amplifield Rock/);assert.match(moves[id].desc,/cannot promote/);assert(!/sets Electric Terrain/.test(moves[id].desc));}
   const a=Dex.abilities.get('neutralization');assert.match(a.desc,/single-target damaging move/);assert.match(a.desc,/can be established afterward/);assert(!a.desc.includes('cannot start'));
  });
- it('keeps all 76 family rows and exactly 27 Proficient records',()=>{
+ it('keeps all 77 family rows and exactly 28 Proficient records',()=>{
   const snapshot=require('../server-data-sync-manifest.json').snapshot.species;
   const canonical=id=>({emboaralt:'emboarreborn',emboarmegaalt:'emboarmegareborn',emboarego:'emboar',emboarmegaego:'emboarmega'}[id]||id);
   const rows=Object.entries(snapshot).filter(([,s])=>s.passives.some(p=>['overgrow','blaze','torrent','proficient'].includes(p)));
-  assert.equal(new Set(rows.map(([id])=>canonical(id))).size,76);
-  assert.equal(new Set(rows.filter(([,s])=>s.passives.includes('proficient')).map(([id])=>canonical(id))).size,27);
+  assert.equal(new Set(rows.map(([id])=>canonical(id))).size,77);
+  assert.equal(new Set(rows.filter(([,s])=>s.passives.includes('proficient')).map(([id])=>canonical(id))).size,28);
  });
 });

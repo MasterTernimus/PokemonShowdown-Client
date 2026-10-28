@@ -26,7 +26,7 @@ describe('Approved Rejuv passive displays', () => {
 		assert(effects.has('naturalcure')); assert(effects.has('healer'));
 	});
 	it('preserves the ordinary forms’ passives', () => {
-		for (const [id, passive] of Object.entries({parasect: 'mycelialbond', poliwrath: 'tirelessmuscle', politoed: 'soundproof', donphan: 'battlearmor', breloom: 'effectspore', bronzong: 'clearbody', drapion: 'keeneye', musharna: 'owntempo', unfezant: 'rivalry', sigilyph: 'anticipation', galvantula: 'compoundeyes', druddigon: 'roughskin', turtonator: 'aftermath', veluza: 'keeneye'})) {
+		for (const [id, passive] of Object.entries({parasect: 'mycelialbond', poliwrath: 'tirelessmuscle', politoed: 'oraclesrefrain', donphan: 'battlearmor', breloom: 'effectspore', bronzong: 'clearbody', drapion: 'keeneye', musharna: 'owntempo', unfezant: 'rivalry', sigilyph: 'anticipation', galvantula: 'compoundeyes', druddigon: 'roughskin', turtonator: 'aftermath', veluza: 'keeneye'})) {
 			assert.deepEqual([...Dex.species.get(id).passives], [passive], id);
 		}
 	});

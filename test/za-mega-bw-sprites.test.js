@@ -1,3 +1,4 @@
+const assertLogicalSize = require('./helpers/assert-logical-sprite.cjs');
 const assert = require('assert').strict;
 const fs = require('fs');
 const path = require('path');
@@ -27,24 +28,21 @@ describe('Approved non-shiny Z-A Mega BW animations', () => {
     const data = Dex.getSpriteData(id, a.side === 'front', {gen, teamPreview, gender});
     assert(data.url.includes('/sprites/' + a.installedPath), data.url);
     assert(data.pixelated);
-    const max = teamPreview ? 96 : a.side === 'front' ? 120 : 104;
-    assert(data.w > 0 && data.h > 0 && data.w <= max && data.h <= max);
-    if (!teamPreview) {
-     const scale = Math.min(1, max / a.width, max / a.height);
-     assert.equal(data.w, Math.round(a.width * scale));
-     assert.equal(data.h, Math.round(a.height * scale));
-    }
+    assertLogicalSize(data, id, a.side === 'front', teamPreview);
    }
    const raw = Dex.getSpriteData(id, a.side === 'front', {gen: 9, noScale: true});
    assert.equal(raw.w, a.width);
    assert.equal(raw.h, a.height);
   }
  });
- it('preserves shiny rendering and unmatched family variants exactly', () => {
+ it('preserves shiny artwork and unmatched family variants while normalizing size', () => {
   for (const r of baseline) {
-   if (r.shiny && ['delphox','delphoxmega','gyarados','gyaradosmega'].includes(r.id)) { const d = Dex.getSpriteData(r.id,r.front,{gen:9,shiny:true}); assert(d.url.includes('shiny-sheets-20261015')); assert.equal(d.w,96); assert.equal(d.h,96); continue; }
+   if (r.shiny && ['delphox','delphoxmega','gyarados','gyaradosmega'].includes(r.id)) { const d = Dex.getSpriteData(r.id,r.front,{gen:9,shiny:true}); assert(d.url.includes('shiny-sheets-20261015')); assertLogicalSize(d,r.id,r.front); continue; }
    const actual = Dex.getSpriteData(r.id, r.front, {gen: 9, shiny: r.shiny, teamPreview: r.teamPreview});
-   assert.deepEqual(JSON.parse(JSON.stringify(actual)), r.data, r.id + ' shiny=' + r.shiny);
+   const {w, h, ...appearance} = JSON.parse(JSON.stringify(actual));
+   const {w: oldW, h: oldH, ...expectedAppearance} = r.data;
+   assert.deepEqual(appearance, expectedAppearance, r.id + ' shiny=' + r.shiny);
+   assertLogicalSize(actual, r.id, r.front, r.teamPreview);
   }
  });
  for (const preference of ['noanim', 'nogif']) it('honors ' + preference + ' with existing fallback sprites', () => {

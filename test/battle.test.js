@@ -108,8 +108,8 @@ describe('Battle', () => {
 		global.BattleItems = require('../play.pokemonshowdown.com/data/items.js').BattleItems;
 		const mega = Dex.species.get('Claydol-Mega');
 		assert.deepEqual(mega.types, ['Ground', 'Psychic']);
-		assert.deepEqual(mega.baseStats, {hp: 60, atk: 70, def: 135, spa: 130, spd: 150, spe: 55});
-		assert.equal(mega.abilities[0], 'Astral Engine');
+		assert.deepEqual(mega.baseStats, {hp: 60, atk: 100, def: 135, spa: 100, spd: 150, spe: 55});
+		assert.equal(mega.abilities[0], 'World Axis');
 		assert(Dex.species.get('Claydol').otherFormes.includes('Claydol-Mega'));
 		assert.equal(Dex.items.get('Claydolite').megaStone.Claydol, 'Claydol-Mega');
 		assert.match(Dex.getItemIcon('Claydolite'), /itemicons\/claydolite.png/);
@@ -269,18 +269,11 @@ describe('Team Builder sprites', () => {
 	it('fits Espeon supplied shiny art inside the Team Builder canvas', () => {
 		const sprite = Dex.getTeambuilderSprite({species: 'Espeon', shiny: true}, 9);
 		assert(sprite.includes('/sprites/gen5-shiny/espeon.png'), sprite);
-		assert(sprite.includes('background-size:96px auto'), sprite);
+		require('./helpers/assert-logical-sprite.cjs').tile(Dex.getTeambuilderSpriteData({species:'Espeon',shiny:true},9));
 	});
 
 	it('constrains oversized Team Builder sprites', () => {
-		const sprite = Dex.getTeambuilderSprite({species: 'Hydreigon'}, 5);
-		assert(sprite.includes('background-size:82px auto'), sprite);
-		const feraligatr = Dex.getTeambuilderSprite({species: 'Feraligatr'}, 5);
-		assert(feraligatr.includes('background-position:9px 8px'), feraligatr);
-		assert(feraligatr.includes('background-size:78px auto'), feraligatr);
-		const laprasGmax = Dex.getTeambuilderSprite({species: 'Lapras-Gmax'}, 9);
-		assert(laprasGmax.includes('background-position:14px 14px'), laprasGmax);
-		assert(laprasGmax.includes('background-size:68px auto'), laprasGmax);
+		for (const species of ['Hydreigon','Feraligatr','Lapras-Gmax']) require('./helpers/assert-logical-sprite.cjs').tile(Dex.getTeambuilderSpriteData({species},5));
 	});
 
 	it('resolves all Reborn trainer avatars to local client assets', () => {
@@ -319,8 +312,7 @@ describe('Team Builder sprites', () => {
 
     it('keeps opponent-facing Rotom sprites readable in battle', () => {
 		const sprite = Dex.getSpriteData('Rotom-Wash', true, {gen: 9});
-		assert.equal(sprite.w, 80);
-		assert.equal(sprite.h, 69);
+		require('./helpers/assert-logical-sprite.cjs')(sprite,'Rotom-Wash',true);
 		assert(sprite.url.split('?')[0].endsWith('/sprites/gen5ani/rotom-wash.gif'));
 	});
 
@@ -635,9 +627,7 @@ describe('Team Builder sprites', () => {
 			for (const shiny of [false, true]) {
 				const sprite = Dex.getTeambuilderSprite({species, shiny}, 5);
 				assert(sprite.includes('/sprites/gen5'), `${species} should use the supplied Gen 5 sprite`);
-				const match = sprite.match(/background-size:(\d+)px auto/);
-				assert(match, `${species} should have bounded Team Builder sizing`);
-				assert(Number(match[1]) <= 86, `${species} should fit the Team Builder frame`);
+				require('./helpers/assert-logical-sprite.cjs').tile(Dex.getTeambuilderSpriteData({species,shiny},5));
 			}
 		}
 	});

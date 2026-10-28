@@ -120,7 +120,7 @@ describe('Nickname row editor', () => {
   assert.deepEqual(T.nicknameEntries([['', ''], ['Togekiss', 'Deneb']]), {togekiss: 'Deneb'});
   assert.throws(() => T.nicknameEntries([['Togekiss', '']]));
   assert.throws(() => T.nicknameEntries([['missingpokemon', 'Name']]));
-  assert.throws(() => T.nicknameEntries([['Togekiss', 'A'], ['togekiss', 'B']]), /Duplicate/);
+  assert.throws(() => T.nicknameEntries([['Togekiss', 'A'], ['togekiss', 'B']]), /Conflicting/);
   assert.throws(() => T.nicknameEntries([['Togekiss', 'a|b']]));
  });
  it('persists edited entries through export/import and applies them to team sets', () => {
@@ -143,7 +143,7 @@ describe('Profile appearance and reusable builds', () => {
   assert.equal(T.nickname({species: 'Togekiss'}, profile, Dex), 'Star');
   profile.gendered = false;
   assert.equal(T.nickname({species: 'Togekiss', gender: 'F'}, profile, Dex), 'Star');
-  assert.throws(() => T.nicknameMappings([['Togekiss', 'A', 'F'], ['Togekiss', 'B', 'F']]), /Duplicate/);
+  assert.throws(() => T.nicknameMappings([['Togekiss', 'A', 'F'], ['Togekiss', 'B', 'F']]), /Conflicting/);
  });
  it('applies shiny choices even without a nickname and round-trips options', () => {
   const data = T.empty();

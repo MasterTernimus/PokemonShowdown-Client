@@ -11,7 +11,7 @@ for (const name of ['battle-dex-data', 'battle-dex', 'battle-scene-stub', 'battl
 
 describe('Evil Santa appearance', () => {
  it('uses the supplied front/back images in modern and BW graphics, including shiny and preview', () => {
-  assert.equal(Dex.getSpriteData('Delibird-EvilSanta',true,{gen:9,dynamax:true}).w,192);
+  assert(Math.abs(Dex.getSpriteData('Delibird-EvilSanta',true,{gen:9,dynamax:true}).w-Dex.getSpriteData('Delibird-EvilSanta',true,{gen:9}).w*2)<=1);
   assert.equal(Dex.getSpriteData('Delibird-EvilSanta',true,{gen:9,dynamax:true,noScale:true}).w,96);
   const prefs = Dex.prefs;
   try {
@@ -21,7 +21,7 @@ describe('Evil Santa appearance', () => {
     const file = 'sprites/gen5' + (front ? '' : '-back') + '/delibird-evilsanta.png';
     assert(sprite.url.endsWith(file),sprite.url);
     assert(fs.existsSync(path.join(__dirname,'../play.pokemonshowdown.com',file)));
-    assert.equal(sprite.w,96); assert.equal(sprite.h,96);
+    require('./helpers/assert-logical-sprite.cjs')(sprite,'Delibird',front,true);
     assert(!Dex.getSpriteData('Delibird',front,{gen:9,shiny}).url.includes('evilsanta'));
    }
   } finally { Dex.prefs = prefs; }

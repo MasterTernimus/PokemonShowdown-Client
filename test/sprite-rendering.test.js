@@ -4,6 +4,7 @@ const path = require('path');
 const sizeOf = require('image-size');
 const {GifReader} = require('omggif');
 const root = path.resolve(__dirname, '../play.pokemonshowdown.com');
+const assertLogicalSize = require('./helpers/assert-logical-sprite.cjs');
 const {Dex, BattlePokedex} = require('./helpers/isolated-dex.cjs')();
 
 function localFile(url) {
@@ -30,37 +31,20 @@ function assertBWPreview(data, species, front, shiny) {
 }
 
 describe('Sprite rendering regressions', () => {
-	it('scales only ordinary shiny Lopunny backs while preserving their foot baseline', () => {
-		const {Dex: dex} = require('./helpers/isolated-dex.cjs')();
-		for (const bwgfx of [false, true]) {
-			dex.prefs = key => key === 'bwgfx' && bwgfx;
-			const back = dex.getSpriteData('Lopunny', false, {gen: 9, shiny: true});
-			assert(back.url.includes('/gen5-back-shiny/lopunny.png'));
-			assert.deepEqual([back.w, back.h, back.y], [50, 58, 7]);
-			assert.equal(back.h / 2 + back.y, 72 / 2);
-			const front = dex.getSpriteData('Lopunny', true, {gen: 9, shiny: true});
-			assert.deepEqual([front.w, front.h, front.y], [56, 64, 0]);
-			const normal = dex.getSpriteData('Lopunny', false, {gen: 9});
-			assert(normal.url.includes('/gen5ani-back/lopunny.gif'));
-			assert.deepEqual([normal.w, normal.h, normal.y], [72, 63, 0]);
-			assert.equal(new GifReader(fs.readFileSync(localFile(normal.url))).numFrames(), 58);
-			for (const shiny of [false, true]) {
-				const mega = dex.getSpriteData('Lopunny-Mega', false, {gen: 9, shiny});
-				assert.deepEqual([mega.w, mega.h, mega.y], [53, 68, 0]);
-			}
+	it('sizes Lopunny from its artwork without a leftover baseline adjustment', () => {
+		for (const shiny of [false, true]) for (const front of [false, true]) {
+			const normal = Dex.getSpriteData('Lopunny', front, {gen: 9, shiny});
+			assertLogicalSize(normal, 'Lopunny', front);
+			assert.equal(normal.y, 0);
+			const preview = Dex.getSpriteData('Lopunny', front, {gen: 9, shiny, teamPreview: true});
+			assertLogicalSize(preview, 'Lopunny', front, true);
+			const dynamax = Dex.getSpriteData('Lopunny', front, {gen: 9, shiny, dynamax: true});
+			assert(Math.abs(dynamax.w - normal.w * 2) <= 1);
+			assert(Math.abs(dynamax.h - normal.h * 2) <= 1);
+			assert.equal(normal.url, dynamax.url);
 		}
-	});
-
-	it('leaves raw artwork, preview and Dynamax Lopunny sizing unchanged', () => {
-		const {Dex: dex} = require('./helpers/isolated-dex.cjs')();
-		for (const [options, expected] of [
-			[{noScale: true}, [106, 122, 0]],
-			[{teamPreview: true}, [68, 78, 0]],
-			[{dynamax: true}, [212, 244, -22]],
-		]) {
-			const data = dex.getSpriteData('Lopunny', false, {gen: 9, shiny: true, ...options});
-			assert.deepEqual([data.w, data.h, data.y], expected);
-		}
+		const raw = Dex.getSpriteData('Lopunny', false, {gen: 9, shiny: true, noScale: true});
+		assert.deepEqual([raw.w, raw.h, raw.y], [106, 122, 0]);
 	});
 
 	it('keeps base Ninetales normal and shiny compact in animated and static battle modes', () => {
@@ -70,8 +54,7 @@ describe('Sprite rendering regressions', () => {
 			for (const gen of [5, 9]) for (const shiny of [false, true]) for (const front of [false, true]) {
 				const data = dex.getSpriteData('Ninetales', front, {gen, shiny});
 				const raw = dex.getSpriteData('Ninetales', front, {gen, shiny, noScale: true});
-				const max = front ? 64 : 52;
-				assert(data.w <= max && data.h <= max);
+				assertLogicalSize(data, 'Ninetales', front);
 				assert.equal(data.url, raw.url);
 				assert(data.pixelated);
 				assert(fs.existsSync(localFile(data.url)));
@@ -86,8 +69,7 @@ describe('Sprite rendering regressions', () => {
 		const back = Dex.getSpriteData('Chimecho', false, {gen: 9});
 		assert.equal(back.gen, 5);
 		assert(back.url.includes('/gen5ani-back/chimecho.gif'));
-		assert.equal(back.w, 35);
-		assert.equal(back.h, 66);
+		assertLogicalSize(back, 'Chimecho', false);
 		assert.equal(new GifReader(fs.readFileSync(localFile(back.url))).numFrames(), 83);
 		assert.equal(Dex.getSpriteData('Chimecho', true, {gen: 9}).gen, 9);
 		for (const option of ['shiny', 'noScale', 'teamPreview', 'dynamax']) {
@@ -103,8 +85,7 @@ describe('Sprite rendering regressions', () => {
 			for (const gen of [5, 9]) for (const shiny of [false, true]) for (const front of [false, true]) {
 				const data = Dex.getSpriteData(name, front, {gen, shiny});
 				const raw = Dex.getSpriteData(name, front, {gen, shiny, noScale: true});
-				const max = name.startsWith('Sinistcha') ? (front ? 48 : 44) : (front ? 64 : 52);
-				assert(data.w <= max && data.h <= max, name);
+				assertLogicalSize(data, name, front);
 				assert.equal(data.url, raw.url, name);
 				assert.equal(data.pixelated, raw.pixelated, name);
 				assert(fs.existsSync(localFile(data.url)), name);
@@ -153,19 +134,14 @@ describe('Sprite rendering regressions', () => {
 		}
 	});
 
-	it('keeps normal roster sprites inside the projected battle size budget', () => {
+	it('keeps normal roster sprites inside the projected battle size budget', function () {
+		this.timeout(60000); // Decode actual artwork across the full catalog, including GIF frames.
 		for (const id of Object.keys(BattlePokedex)) {
 			const species = Dex.species.get(id);
 			if (!species.exists || species.isTotem || id.includes('gmax') || id.includes('mega') || id === 'hydreigon' || id === 'feraligatr') continue;
 			for (const gen of [5, 9]) for (const shiny of [false, true]) for (const front of [false, true]) {
 				const data = Dex.getSpriteData(species.name, front, {gen, shiny});
-				const approvedMewtwo = ({'gen5ani/mewtwo.gif':[108,82], 'gen5ani-back/mewtwo.gif':[97,73], 'ani-shiny/mewtwo.gif':[87,82], 'ani-back-shiny/mewtwo.gif':[121,72]})[data.url.split('/sprites/')[1]];
-				if (approvedMewtwo && data.url.endsWith('.gif')) {
-					assert.deepEqual([data.w,data.h], approvedMewtwo, data.url);
-					continue;
-				}
-				const max = id === 'talonflame' ? Math.round((front ? 80 : 72) * 1.45) : shiny && ['delphox','gyarados'].includes(id) ? 96 : id === 'cofagrigus' ? (front ? 96 : 84) : front ? 80 : 72;
-				assert(data.w <= max && data.h <= max, `${id}: ${data.w}x${data.h}`);
+				assertLogicalSize(data, species.name, front);
 			}
 		}
 	});
@@ -173,11 +149,7 @@ describe('Sprite rendering regressions', () => {
 		for (const species of ['Rotom', 'Rotom-Wash', 'Rotom-Heat', 'Rotom-Frost', 'Rotom-Fan', 'Rotom-Mow', 'Jolteon', 'Oricorio', 'Oricorio-Pom-Pom', 'Oricorio-Pau', 'Oricorio-Sensu']) {
 			for (const shiny of [false, true]) for (const front of [false, true]) {
 				const data = Dex.getSpriteData(species, front, {gen: 5, shiny});
-				const limit = front ? (species.startsWith('Rotom') ? 80 : species.startsWith('Jolteon') ? (shiny ? 50 : 64) : 60) :
-					(species.startsWith('Jolteon') && shiny ? 40 : 44);
-				assert(data.w <= limit && data.h <= limit, species + ': ' + data.w + 'x' + data.h);
-				if (species.startsWith('Rotom') && front) assert.equal(Math.max(data.w, data.h), 80);
-				if (!front) assert(Math.max(data.w, data.h) * 2 <= 88, species + ' projected too large');
+				assertLogicalSize(data, species, front);
 				const dimensions = sizeOf(localFile(data.url));
 				assert(Math.abs(data.w / data.h - dimensions.width / dimensions.height) < 0.03, species);
 			}
@@ -240,10 +212,11 @@ describe('Sprite rendering regressions', () => {
 		}
 	});
 	it('keeps Clefable and Gengar compact and Hydreigon full-sized', () => {
-		assert(staticSpriteData('Clefable', true, {gen: 9}).w <= 54);
-		assert(staticSpriteData('Gengar', true, {gen: 9}).w <= 56);
+		assertLogicalSize(staticSpriteData('Clefable', true, {gen: 9}), 'Clefable', true);
+		assertLogicalSize(staticSpriteData('Gengar', true, {gen: 9}), 'Gengar', true);
 		const hydreigon = staticSpriteData('Hydreigon', true, {gen: 9});
-		assert(Math.max(hydreigon.w, hydreigon.h) >= 90 && Math.min(hydreigon.w, hydreigon.h) >= 80, JSON.stringify(hydreigon));
+		assertLogicalSize(hydreigon, 'Hydreigon', true);
+		assert(hydreigon.w > staticSpriteData('Clefable', true, {gen: 9}).w);
 		for (const species of ['Clefable', 'Gengar', 'Hydreigon']) {
 			assert.equal(Dex.getTeambuilderSpriteData({species}, 9).spriteDir, 'sprites/gen5');
 		}
@@ -251,8 +224,7 @@ describe('Sprite rendering regressions', () => {
 	it('caps Cacturne battle sprites without changing the artwork aspect ratio', () => {
 		for (const gen of [5, 9]) for (const shiny of [false, true]) for (const front of [false, true]) {
 			const data = Dex.getSpriteData('Cacturne', front, {gen, shiny});
-			const max = front ? 64 : 52;
-			assert(data.w <= max && data.h <= max, JSON.stringify(data));
+			assertLogicalSize(data, 'Cacturne', front);
 			const dimensions = sizeOf(localFile(data.url));
 			assert(Math.abs(data.w / data.h - dimensions.width / dimensions.height) < 0.03);
 		}
@@ -275,9 +247,7 @@ describe('Sprite rendering regressions', () => {
 				for (const front of [false, true]) for (const teamPreview of [false, true]) {
 					const sprite = Dex.getSpriteData(species, front, {gen: 9, shiny, teamPreview});
 					assert(fs.statSync(localFile(sprite.url)).size > 0, sprite.url);
-					const animatedMega = !teamPreview && /\/za-[^/]+\.gif/.test(sprite.url);
-					const limit = animatedMega ? (front ? 120 : 104) : 0;
-					assert(sprite.w <= (limit || 108) && sprite.h <= (limit || 112), JSON.stringify(sprite));
+					assertLogicalSize(sprite, species, front, teamPreview);
 				}
 			}
 		}

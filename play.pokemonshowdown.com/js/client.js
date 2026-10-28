@@ -1160,20 +1160,29 @@ function toId() {
 					var replayid = roomid.slice(7);
 					if (Config.server.id !== 'showdown') replayid = Config.server.id + '-' + replayid;
 					var replayLink = 'https://' + Config.routes.replays + '/' + replayid;
-					$.ajax(replayLink + '.json', {dataType: 'json'}).done(function (replay) {
-						if (replay) {
-							var title = replay.players[0] + ' vs. ' + replay.players[1];
-							app.receive('>battle-' + replayid + '\n|init|battle\n|title|' + title + '\n' + replay.log);
-							app.receive('>battle-' + replayid + '\n|expire|<a href=' + replayLink + ' target="_blank" class="no-panel-intercept">Open replay in new tab</a>');
-						} else {
-							errormessage += '\n\nResponse received, but no data.';
-							app.addPopupMessage(errormessage);
-						}
-					}).fail(function () {
-						app.removeRoom(roomid, true);
-						errormessage += "\n\nThe battle you're looking for has expired. Battles expire after 15 minutes of inactivity unless they're saved.\nIn the future, remember to click \"Save replay\" to save a replay permanently.";
-						app.addPopupMessage(errormessage);
-					});
+					var loadReplay = function () {
+						$.ajax(replayLink + '.json', {dataType: 'json', timeout: 15000}).done(function (replay) {
+							if (replay) {
+								var title = replay.players[0] + ' vs. ' + replay.players[1];
+								app.receive('>battle-' + replayid + '\n|init|battle\n|title|' + title + '\n' + replay.log);
+								app.receive('>battle-' + replayid + '\n|expire|<a href=' + replayLink + ' target="_blank" class="no-panel-intercept">Open replay in new tab</a>');
+							} else {
+								app.addPopupMessage(errormessage + '\n\nResponse received, but no data.');
+							}
+						}).fail(function (xhr) {
+							if (xhr && (xhr.status === 404 || xhr.status === 410)) {
+								app.removeRoom(roomid, true);
+								app.addPopupMessage(errormessage + "\n\nNo saved replay was found. Unsaved battles expire after 15 minutes of inactivity.");
+								return;
+							}
+							app.addPopup(Popup, {
+								message: "Couldn't load the saved replay. The connection or replay service may be unavailable. Try again shortly.",
+								buttons: '<button type="submit" class="button autofocus">Retry</button> <button type="button" name="close" class="button">Close</button>',
+								submit: function () { this.close(); loadReplay(); },
+							});
+						});
+					};
+					loadReplay();
 				} else {
 					if (isdeinit) { // deinit
 						if (this.rooms[roomid] && this.rooms[roomid].type === 'chat') {

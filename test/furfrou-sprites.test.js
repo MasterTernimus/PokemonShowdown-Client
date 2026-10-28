@@ -99,11 +99,9 @@ describe('Custom preview sprites and battle sizes', () => {
   }
  });
  it('renders Mega Beedrill, Kilowattrel, and Hawlucha at compact battle sizes', () => {
-  for (const [species, frontLimit, backLimit] of [
-   ['Beedrill-Mega', 68, 59], ['Kilowattrel', 58, 56], ['Hawlucha', 62, 58],
-  ]) for (const front of [true, false]) {
+  for (const species of ['Beedrill-Mega', 'Kilowattrel', 'Hawlucha']) for (const front of [true, false]) {
    const data = Dex.getSpriteData(species, front, {gen: 9});
-   assert(Math.max(data.w, data.h) <= (front ? frontLimit : backLimit), species);
+   require('./helpers/assert-logical-sprite.cjs')(data, species, front);
   }
  });
 });
