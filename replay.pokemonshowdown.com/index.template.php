@@ -27,8 +27,11 @@ if (isset($_REQUEST['manage'])) {
 	header('Cache-Control: max-age=0, no-cache, no-store, must-revalidate');
 }
 
+require_once __DIR__ . '/replay-access.lib.php';
+
 $replay = null;
 $id = $_REQUEST['name'] ?? '';
+if ($id !== '' && !validReplayName($id)) { http_response_code(404); die(); }
 $password = '';
 
 $fullid = $id;
@@ -42,8 +45,8 @@ if (substr($id, -2) === 'pw') {
 // $forcecache = isset($_REQUEST['forcecache8723']);
 $forcecache = false;
 if ($id) {
-	if (file_exists('caches/' . $id . '.inc.php')) {
-		include 'caches/' . $id . '.inc.php';
+	if ($cachePath = replayCachePath($id)) {
+		include $cachePath;
 		$replay['formatid'] = '';
 		$cached = true;
 		$replay['log'] = str_replace("\r","",$replay['log']);
@@ -60,9 +63,9 @@ if ($id) {
 			header('HTTP/1.1 503 Service Unavailable');
 			die();
 		}
-		$replay = $Replays->get($id, $forcecache);
+		$replay = $Replays->get($id, $forcecache, $manage);
 	}
-	if (!$replay) {
+	if (!$replay || (replayIsDeleted($replay) && !$manage)) {
 		header('HTTP/1.1 404 Not Found');
 		include '404.html';
 		die();

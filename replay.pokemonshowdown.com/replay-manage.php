@@ -51,7 +51,7 @@ if (file_exists('caches/' . $id . '.inc.php')) {
 		include '503.php';
 		die();
 	}
-	$replay = $Replays->get($id, $forcecache);
+	$replay = $Replays->get($id, $forcecache, $manage);
 }
 if (!$replay || (@$replay['private'] === 3 && !$manage)) {
 	include '404.php';
@@ -147,6 +147,8 @@ $panels->start();
 <?php
 if ($manage) {
 	if ($csrfOk && isset($_POST['private'])) {
+		// Cached reads do not initialize the database service. Privacy mutations must.
+		require_once __DIR__ . '/replays.lib.php';
 		$replay['private'] = intval($_POST['private']);
 		$Replays->edit($replay);
 		echo '<p>Edited.</p>';

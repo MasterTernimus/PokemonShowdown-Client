@@ -19,11 +19,13 @@ $manage = false;
 
 require_once 'replays.lib.php';
 
+require_once __DIR__ . '/replay-access.lib.php';
+
 $replay = null;
 $id = $_REQUEST['name'] ?? '';
+if ($id !== '' && !validReplayName($id)) { http_response_code(404); die(); }
 $password = '';
 
-$fullid = $id;
 if (substr($id, -2) === 'pw') {
 	$dashpos = strrpos($id, '-');
 	$password = substr($id, $dashpos + 1, -2);
@@ -34,10 +36,9 @@ if (substr($id, -2) === 'pw') {
 // $forcecache = isset($_REQUEST['forcecache8723']);
 $forcecache = false;
 if ($id) {
-	if (file_exists('caches/' . $id . '.inc.php')) {
-		include 'caches/' . $id . '.inc.php';
+	if ($cachePath = replayCachePath($id)) {
+		include $cachePath;
 		$replay['formatid'] = '';
-		$cached = true;
 		$replay['log'] = str_replace("\r","",$replay['log']);
 		$replay['players'] = [$replay['p1'], $replay['p2']];
 		$matchSuccess = preg_match('/\\n\\|tier\\|([^|]*)\\n/', $replay['log'], $matches);
@@ -55,7 +56,7 @@ if ($id) {
 		$replay = $Replays->get($id, $forcecache);
 	}
 }
-if (!$replay) {
+if (!$replay || (replayIsDeleted($replay) && !$manage)) {
 	header('HTTP/1.1 404 Not Found');
 	die();
 }
@@ -85,7 +86,6 @@ if (isset($_REQUEST['json'])) {
 	header('Content-Type: application/json');
 	header('Access-Control-Allow-Origin: *');
 	die(json_encode($replay));
-	die();
 }
 
 if (isset($_REQUEST['inputlog'])) {

@@ -62,3 +62,13 @@ caches/PokemonShowdown-Reborn/
 
 # Frozen public Showdown dimensions used by the offline sprite-size generator.
 !build-tools/data/showdown-sprite-reference.json
+
+# Reviewed build inputs, PHP helpers and reproducible CI dependencies.
+!package-lock.json
+!build-tools/fresh-server-build.js
+!build-tools/build-development.js
+!lib/login-throttle.lib.php
+!lib/customcss-fetch.lib.php
+!replay.pokemonshowdown.com/replay-access.lib.php
+!pokemonshowdown.com/news/format.lib.php
+!test/php-review-regressions.php

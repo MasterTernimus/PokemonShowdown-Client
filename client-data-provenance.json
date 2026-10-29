@@ -1,12 +1,13 @@
 {
-  "sourceHead": "a083a15b6b57ae8dbcdda69071e60df625c6d401",
+  "sourceHead": "e8161a0e7de566af4ed4bc96ff3d0f8a2d0ef484",
   "sourceDataSHA256": "1699c61fc41ba7fd92cda67662da7cf47851765e4f22575db019b7576b90f02f",
+  "builtSourceFingerprint": "50c23d3c82a9cb77e45e37947cdfaa453a3342aa24bff535b324f14b3ee3eb4a",
   "outputs": {
     "data/abilities.js": "74f8a231f6a9b4a9e5437a6caac3b928f7b5578a480ff21c1dc3b615d444cb80",
     "data/aliases.js": "9e4bb011c6514e202a1b9c0b6af6f2265e8719028b4b9989e91c6e23805f5bbd",
     "data/formats-data.js": "42aee41642fc39a07142204fe492ef56349911bf71da61df7b5733ea35739614",
     "data/formats.js": "eb109d95a01c0f903211300515d8ee2f0a2b0d59dae5a6574f4b4a34c07122bd",
-    "data/graphics.js": "aa961ee0126d94e88ce380f728fbdb9fb86ae0369e644272c748e9b0aa295490",
+    "data/graphics.js": "45ccd391adfde543305225bdd503525b064e44033e4eb6a7f700afc24a26bee4",
     "data/items.js": "d28f7c194871cf3a5b0731e604365ccca8ad363c628d0b104e3f3fbb4e435cc0",
     "data/learnsets-g6.js": "8ec92acb1c3b90ca10346d7007c262f727eaa531ffcf3b8cc80844167c0ae9d3",
     "data/learnsets.js": "c2c20adc9ea935dac48cb229e116bd84345f1ba8d164d571e581d8a8f91c1eb5",

@@ -84,7 +84,7 @@ ${AUTOCONFIG_END}`;
 		fastFiles: ['battle-dex.ts', 'battle-animations-moves.ts'],
 		ignore: ['play.pokemonshowdown.com/src/battle-animations.js', 'play.pokemonshowdown.com/src/battle-animations-moves.js'],
 	});
-	if (process.argv[2] === 'full') {
+	if (process.argv[2] === 'full' || !fs.existsSync('play.pokemonshowdown.com/js/server/chat-formatter.js')) {
 		delete compileOpts.ignore;
 		compiler.compileToDir(
 			[path.join(process.env.PS_SERVER_SOURCE || 'caches/PokemonShowdown-Reborn', 'server/chat-formatter.ts')],
@@ -96,7 +96,11 @@ ${AUTOCONFIG_END}`;
 			fs.statSync('play.pokemonshowdown.com/data/graphics.js');
 			// graphics.js exists, recompile it
 			delete compileOpts.ignore;
-		} catch (e) {}
+		} catch (e) {
+			if (e.code !== 'ENOENT') throw e;
+			// A clean checkout must create graphics before fingerprinting templates.
+			delete compileOpts.ignore;
+		}
 	}
 
 	compiledFiles += compiler.compileToDir(`play.pokemonshowdown.com/src`, `play.pokemonshowdown.com/js`, compileOpts);

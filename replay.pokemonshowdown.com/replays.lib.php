@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/replay-access.lib.php';
 
 require __DIR__.'/../config/replay-config.inc.php';
 
@@ -51,6 +52,9 @@ class Replays {
 	}
 
 	function edit($replay) {
+		if ($cache = replayCachePath($replay['id'])) {
+			if (!unlink($cache)) throw new RuntimeException('Could not invalidate replay cache');
+		}
 		if ($replay['private'] === 3) {
 			$replay['private'] = 3;
 			$res = $this->db->prepare("UPDATE replays SET private = 3, password = NULL WHERE id = ? LIMIT 1");
@@ -71,7 +75,7 @@ class Replays {
 		return;
 	}
 
-	function get($id, $force = false) {
+	function get($id, $force = false, $manage = false) {
 		if (!$this->db) {
 			// if (!$force) return false;
 			$this->init();
@@ -81,7 +85,7 @@ class Replays {
 		$res->execute([$id]);
 		if (!$res) return [];
 		$replay = $res->fetch();
-		if (!$replay) return $replay;
+		if (!$replay || (replayIsDeleted($replay) && !$manage)) return false;
 		$replay['players'] = explode(',', $replay['players']);
 		foreach ($replay['players'] as &$player) {
 			if ($player[0] === '!') $player = substr($player, 1);

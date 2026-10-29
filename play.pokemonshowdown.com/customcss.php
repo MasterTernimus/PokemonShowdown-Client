@@ -3,6 +3,7 @@
 ini_set('max_execution_time', 60); // 1 minute
 
 require_once __DIR__ . '/../config/config.inc.php';
+require_once __DIR__ . '/../lib/customcss-fetch.lib.php';
 require_once __DIR__ . '/../config/servers.inc.php';
 
 spl_autoload_register(function ($class) {
@@ -47,51 +48,49 @@ if (!$invalidate && $lastmodified && (($timenow - $lastmodified) < 3600)) {
 	die();
 }
 
-$curl = curl_init($customcssuri);
-if ($lastmodified && !$invalidate) {
-	curl_setopt($curl, CURLOPT_HTTPHEADER, array(
-		'If-Modified-Since: ' . gmdate('D, d M Y H:i:s T', $lastmodified),
-		'User-Agent: PSCustomCSS/0.1 (server=' . $server . ($invalidate ? '; invalidate=1' : '') . ')',
-		// 'X-Forwarded-For: ' . @$_SERVER['HTTP_X_FORWARDED_FOR'],
-	));
+// Coalesce refreshes and rate-limit public forced refreshes across PHP workers.
+$lock = fopen($cssfile . '.lock', 'c+');
+if (!$lock || !flock($lock, LOCK_EX | LOCK_NB)) {
+	http_response_code(429);
+	header('Cache-Control: no-store');
+	header('Retry-After: 60');
+	die('/* Custom CSS refresh in progress. */');
+}
+$lastAttempt = (int)stream_get_contents($lock);
+if ($lastAttempt && $timenow - $lastAttempt < 60) {
+	http_response_code(429);
+	header('Cache-Control: no-store');
+	header('Retry-After: 60');
+	die('/* Please wait before refreshing custom CSS again. */');
+}
+ftruncate($lock, 0); rewind($lock); fwrite($lock, (string)$timenow); fflush($lock);
+$headers = ['User-Agent: PSCustomCSS/0.2 (server=' . $server . ')'];
+if ($lastmodified && !$invalidate) $headers[] = 'If-Modified-Since: ' . gmdate('D, d M Y H:i:s T', $lastmodified);
+$response = fetchCustomCSS($customcssuri, $headers);
+if (!$response['ok'] || !in_array($response['status'], [200, 304], true) || ($response['status'] === 304 && !$lastmodified)) {
+	http_response_code(502);
+	header('Cache-Control: no-store');
+	die('/* Custom CSS could not be refreshed. Try again later. */');
+}
+if ($response['status'] === 304) {
+	touch($cssfile, $timenow);
+	if (!$invalidate) readfile($cssfile);
 } else {
-	curl_setopt($curl, CURLOPT_HTTPHEADER, array(
-		'User-Agent: PSCustomCSS/0.1 (server=' . $server . ($invalidate ? '; invalidate=1' : '') . ')',
-		// 'X-Forwarded-For: ' . @$_SERVER['HTTP_X_FORWARDED_FOR'],
-	));
-}
-curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
-curl_setopt($curl, CURLOPT_MAXREDIRS, 5);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-$curlret = curl_exec($curl);
-if ($curlret) {
-	$code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-	if ($code === 200) {
-		// Sanitise the CSS.
-		// Parse a stylesheet from a string
-		$parser = Parser::newFromString($curlret);
-		$stylesheet = $parser->parseStylesheet();
-
-		// Apply sanitization to the stylehseet
-		$sanitizer = StylesheetSanitizer::newDefault();
-		$newStylesheet = $sanitizer->sanitize( $stylesheet );
-
-		// Convert the sanitized stylesheet back to text
-		$outputcss = Wikimedia\CSS\Util::stringify( $newStylesheet, [ 'minify' => true ] );
-
-		file_put_contents($cssfile, $outputcss);
-		if (!$invalidate) echo $outputcss;
-	} else {
-		// Either no modifications (status: 304) or an error condition.
-		if ($invalidate) die('Error: custom CSS file not found');
-		if ($lastmodified) readfile($cssfile);
+	$parser = Parser::newFromString($response['body']);
+	$stylesheet = $parser->parseStylesheet();
+	$sanitizer = StylesheetSanitizer::newDefault();
+	$newStylesheet = $sanitizer->sanitize($stylesheet);
+	$outputcss = Wikimedia\CSS\Util::stringify($newStylesheet, ['minify' => true]);
+	$temp = tempnam(dirname($cssfile), '.css-');
+	if ($temp === false || file_put_contents($temp, $outputcss) === false || !rename($temp, $cssfile)) {
+		if ($temp !== false && is_file($temp)) unlink($temp);
+		http_response_code(503);
+		header('Cache-Control: no-store');
+		die('/* Custom CSS could not be saved. */');
 	}
-	touch($cssfile, $timenow);	// Don't check again for an hour.
-} else if (file_exists($cssfile)) {
-	if ($invalidate) die('Error: custom CSS file not found');
-	readfile($cssfile);
+	if (!$invalidate) echo $outputcss;
 }
-curl_close($curl);
+flock($lock, LOCK_UN); fclose($lock);
 
 if ($invalidate) {
 ?>

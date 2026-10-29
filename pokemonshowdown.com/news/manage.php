@@ -5,6 +5,7 @@ error_reporting(E_ALL);
 include_once '../../lib/ntbb-session.lib.php';
 include_once __DIR__ . '/../../config/news.inc.php';
 include_once 'include.php';
+require_once __DIR__ . '/format.lib.php';
 
 if (!$users->isLeader()) die('access denied');
 
@@ -60,16 +61,7 @@ includeHeader();
 		$summary = $_POST['summary'];
 		$newsCache[$topic_id]['summary'] = $summary;
 
-		$summary = str_replace("\r", '', $summary);
-		$summary = str_replace("\n\n", '</p><p>', $summary);
-		$summary = str_replace("\n", '<br />', $summary);
-		$summary = str_replace("\n", '<br />', $summary);
-		$summary = preg_replace('/\[url="([^\]]+)"\]/', '<a href="$1" target="_blank">', $summary);
-		$summary = preg_replace('/\[url=([^\]]+)\]/', '<a href="$1" target="_blank">', $summary);
-		$summary = str_replace("[/url]", '</a>', $summary);
-		$summary = str_replace("[b]", '<strong>', $summary);
-		$summary = str_replace("[/b]", '</strong>', $summary);
-		$summary = '<p>'.$summary.'</p>';
+		$summary = formatNewsText($summary);
 
 		$newsCache[$topic_id]['summary_html'] = $summary;
 
@@ -79,16 +71,7 @@ includeHeader();
 
 			if ($details) {
 				$newsCache[$topic_id]['details'] = $details;
-				$details = str_replace("\r", '', $details);
-				$details = str_replace("\n\n", '</p><p>', $details);
-				$details = str_replace("\n", '<br />', $details);
-				$details = str_replace("\n", '<br />', $details);
-				$details = preg_replace('/\[url="([^\]]+)"\]/', '<a href="$1" target="_blank">', $details);
-				$details = preg_replace('/\[url=([^\]]+)\]/', '<a href="$1" target="_blank">', $details);
-				$details = str_replace("[/url]", '</a>', $details);
-				$details = str_replace("[b]", '<strong>', $details);
-				$details = str_replace("[/b]", '</strong>', $details);
-				$details = '<p>'.$details.'</p>';
+				$details = formatNewsText($details);
 				$newsCache[$topic_id]['details_html'] = $details;
 			} else {
 				unset($newsCache[$topic_id]['details']);
@@ -112,17 +95,7 @@ includeHeader();
 		$summary = $_POST['summary'];
 		$pre_summary = $summary;
 
-		$summary = str_replace("\r", '', $summary);
-		$summary = str_replace("\n\n", '</p><p>', $summary);
-		$summary = str_replace("\n", '<br />', $summary);
-		$summary = str_replace("\n", '<br />', $summary);
-		$summary = preg_replace('/\[url=([^\]]+)\]/', '<a href="$1" target="_blank">', $summary);
-		$summary = str_replace("[/url]", '</a>', $summary);
-		$summary = str_replace("[b]", '<strong>', $summary);
-		$summary = str_replace("[/b]", '</strong>', $summary);
-		$summary = str_replace("[i]", '<em>', $summary);
-		$summary = str_replace("[/i]", '</em>', $summary);
-		$summary = '<p>'.$summary.'</p>';
+		$summary = formatNewsText($summary);
 
 		$time = ''.time();
 

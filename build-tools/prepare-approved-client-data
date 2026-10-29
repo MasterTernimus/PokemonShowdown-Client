@@ -14,8 +14,10 @@ if (actualHead !== manifest.sourceHead) throw new Error('Check out the exact app
 const hash = crypto.createHash('sha256');
 for (const file of manifest.files) { hash.update(file); hash.update(fs.readFileSync(path.join(source, file), 'utf8').replace(/\r\n/g, '\n')); }
 if (hash.digest('hex') !== manifest.sourceDataSHA256) throw new Error('Server data differs from the reviewed snapshot. Review and regenerate the snapshot before preparing assets.');
+for (const file of manifest.deletedFiles || []) if (fs.existsSync(path.join(source, file))) throw new Error('A deleted server input has reappeared: ' + file);
 function run(file, cwd) { cp.execFileSync(process.execPath, [file], {cwd, env: process.env, stdio: 'inherit'}); }
-run('build', source);
+// Recreate overrides from the just-built approved source, not the stale exported snapshot.
+run('build-tools/sync-working-server-data', root);
 run('build-tools/build-indexes', root);
 run('build-tools/build-learnsets', root);
 run('build-tools/verify-move-assets', root);
@@ -30,5 +32,8 @@ for (const name of fs.readdirSync(path.join(root, 'play.pokemonshowdown.com/data
 	if (!name.endsWith('.js')) continue;
 	outputs['data/' + name] = crypto.createHash('sha256').update(fs.readFileSync(path.join(root, 'play.pokemonshowdown.com/data', name))).digest('hex');
 }
-fs.writeFileSync(path.join(root, 'client-data-provenance.json'), JSON.stringify({sourceHead: manifest.sourceHead, sourceDataSHA256: manifest.sourceDataSHA256, outputs}, null, 2) + '\n');
+const finalManifest = JSON.parse(fs.readFileSync(path.join(root, 'server-data-sync-manifest.json'), 'utf8'));
+const finalHead = cp.execFileSync('git', ['rev-parse', 'HEAD'], {cwd: source, encoding: 'utf8'}).trim();
+if (finalHead !== actualHead || finalManifest.sourceHead !== finalHead || require('./fresh-server-build').sourceFingerprint(source) !== finalManifest.builtSourceFingerprint) throw new Error('Server changed during client preparation; no verified provenance was written.');
+fs.writeFileSync(path.join(root, 'client-data-provenance.json'), JSON.stringify({sourceHead: finalHead, sourceDataSHA256: finalManifest.sourceDataSHA256, builtSourceFingerprint: finalManifest.builtSourceFingerprint, outputs}, null, 2) + '\n');
 console.log('Prepared local client assets. Nothing has been published.');

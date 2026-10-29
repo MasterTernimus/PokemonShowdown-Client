@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/login-throttle.lib.php';
 
 require_once __DIR__ . '/../config/config.inc.php';
 require_once __DIR__ . '/ntbb-database.lib.php';
@@ -189,18 +190,8 @@ class NTBBSession {
 		);
 		$loginthrottle = null;
 		if ($res) $loginthrottle = $psdb->fetch_assoc($res);
-		if ($loginthrottle) {
-			if ($loginthrottle['count'] > 500) {
-				$loginthrottle['count']++;
-				$psdb->query("UPDATE `{$psdb->prefix}loginthrottle` SET count = ?, lastuserid = ?, `time` = ? WHERE ip = ?", [$loginthrottle['count'], $userid, time(), $ip]);
-				return false;
-			} else if ($loginthrottle['time'] + 24 * 60 * 60 < time()) {
-				$loginthrottle = [
-					'count' => 0,
-					'time' => time(),
-				];
-			}
-		}
+		$loginthrottle = currentLoginThrottle($loginthrottle, time());
+		if ($loginthrottle && $loginthrottle['count'] > 500) return false;
 
 		if (substr(@$user['email'], -1) === '@') {
 			// Forgive me, gods, for I have hardcoded way more than I really should have
@@ -221,7 +212,7 @@ class NTBBSession {
 				// wrong password
 				if ($loginthrottle) {
 					$loginthrottle['count']++;
-					$psdb->query("UPDATE `{$psdb->prefix}loginthrottle` SET count = ?, lastuserid = ?, `time` = ? WHERE ip = ?", [$loginthrottle['count'], $userid, time(), $ip]);
+					$psdb->query("UPDATE `{$psdb->prefix}loginthrottle` SET count = ?, lastuserid = ?, `time` = ? WHERE ip = ?", [$loginthrottle['count'], $userid, $loginthrottle['time'], $ip]);
 				} else {
 					$psdb->query("INSERT INTO `{$psdb->prefix}loginthrottle` (ip, count, lastuserid, `time`) VALUES (?, 1, ?, ?)", [$ip, $userid, time()]);
 				}

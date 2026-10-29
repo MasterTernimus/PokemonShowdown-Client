@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 // Reconcile only data entries touched since the supplied server base revision.
-// No fetch, pull, reset, commit, or mutation of the server checkout occurs here.
+// No fetch, pull, reset or commit. Rebuild the approved server before reading its runtime Dex.
 const fs = require('fs');
 const path = require('path');
 const cp = require('child_process');
@@ -14,6 +14,8 @@ const manifestPath = path.join(root, 'server-data-sync-manifest.json');
 const previous = fs.existsSync(manifestPath) ? JSON.parse(fs.readFileSync(manifestPath, 'utf8')) : {};
 const base = process.env.PS_SERVER_BASE || previous.base || 'HEAD';
 const git = args => cp.execFileSync('git', args, {cwd: server, encoding: 'utf8', maxBuffer: 32 * 1024 * 1024});
+const {freshServerBuild, sourceFingerprint} = require('./fresh-server-build');
+const builtSourceFingerprint = freshServerBuild(server);
 const {Dex} = require(path.join(server, 'dist/sim/dex'));
 Dex.includeData();
 const groups = {species: new Set(), abilities: new Set(), moves: new Set(), items: new Set()};
@@ -104,7 +106,7 @@ for (const id of [...groups.items].sort()) {
 }
 snapshot.displayComponents = Object.fromEntries(Dex.abilities.all().map(ability => [ability.id, getAbilityDisplayComponents(ability.id)]));
 const target = path.join(root, 'play.pokemonshowdown.com/src/battle-dex.ts');
-let source = fs.readFileSync(target, 'utf8');
+let source = fs.readFileSync(target, 'utf8').replace(/\r\n/g, '\n');
 function block(kind, marker, code) {
 	const begin = '// BEGIN SERVER WORKING SYNC ' + kind;
 	const end = '// END SERVER WORKING SYNC ' + kind;
@@ -124,10 +126,13 @@ block('PASSIVE COMPONENT EXCLUSIONS', 'const CUSTOM_ABILITY_UPDATE_IDS =', `cons
 block('ABILITIES', 'const CUSTOM_ABILITY_UPDATE_IDS =', `Object.assign(CUSTOM_ABILITY_UPDATES, ${json(snapshot.abilities)});`);
 block('MOVES', 'const CUSTOM_MOVE_UPDATE_IDS =', `Object.assign(CUSTOM_MOVE_UPDATES, ${json(snapshot.moves)});\nObject.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, ${json(snapshot.components)});`);
 block('ITEMS', 'const CUSTOM_ITEM_IDS =', `Object.assign(CUSTOM_ITEM_UPDATES, ${json(snapshot.items)});`);
-fs.writeFileSync(target, source);
+if (sourceFingerprint(server) !== builtSourceFingerprint) throw new Error('Server source changed during export; retry from a stable checkout.');
 const hash = crypto.createHash('sha256');
 if (!changed.includes('sim/dex-species.ts')) changed.push('sim/dex-species.ts');
-for (const file of changed.sort()) { hash.update(file); hash.update(fs.readFileSync(path.join(server, file), 'utf8').replace(/\r\n/g, '\n')); }
-const manifest = {sourceHead: git(['rev-parse', 'HEAD']).trim(), base, sourceDataSHA256: hash.digest('hex'), files: changed, snapshot};
+const existingFiles = changed.filter(file => fs.existsSync(path.join(server, file))).sort();
+const deletedFiles = changed.filter(file => !fs.existsSync(path.join(server, file))).sort();
+for (const file of existingFiles) { hash.update(file); hash.update(fs.readFileSync(path.join(server, file), 'utf8').replace(/\r\n/g, '\n')); }
+const manifest = {sourceHead: git(['rev-parse', 'HEAD']).trim(), base, builtSourceFingerprint, sourceDataSHA256: hash.digest('hex'), files: existingFiles, deletedFiles, snapshot};
+fs.writeFileSync(target, source);
 fs.writeFileSync(path.join(root, 'server-data-sync-manifest.json'), JSON.stringify(manifest, null, '\t') + '\n');
 console.log(JSON.stringify({species: groups.species.size, abilities: groups.abilities.size, moves: groups.moves.size, items: groups.items.size, sourceHead: manifest.sourceHead, sourceDataSHA256: manifest.sourceDataSHA256}));
