@@ -74,6 +74,15 @@ describe('Client review state boundaries',function(){
   const data={version:1,builds:[{name:'Keep me'}],nicknames:[]};assert.equal(save.call(room,data),false);
   assert.equal(room.toolsPendingData.builds[0].name,'Keep me');assert.equal(Storage.prefs('pokemontools'),undefined);assert.equal(messages.length,1);
  });
+ it('prevents synchronous bulk edits and undo from overwriting an in-flight save',function(){
+  const Storage={prefs:{queue:[{}]}},messages=[],app={addPopupMessage:m=>messages.push(m)};
+  const room={$(){return {text(m){messages.push(m);}};}};
+  for(const lhs of ['proto.confirmSetProfile','p.undoLibraryChange','p.applyGroupBatch','p.applySelectedProfileTeam']) {
+   // Each guard returns before accessing a snapshot, mutating teams or persisting stale preferences.
+   assignment(toolsFile,lhs,{Storage,app}).call(room);
+  }
+  assert.equal(messages.length,4);assert(messages.every(m=>m.includes('current save')));
+ });
 });
 describe('Client review small runtime fixes',function(){
  it('removes global room listeners and refresh timers through the view lifecycle',function(){

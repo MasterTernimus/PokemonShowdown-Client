@@ -2214,6 +2214,7 @@
 		addRosterSpecies: function (id) { this.editRosterSpecies(id, false); },
 		removeRosterSpecies: function (id) { this.editRosterSpecies(id, true); },
 		persistRosterChange: function (data) {
+			if (Storage.prefs.queue && Storage.prefs.queue.length) {this.$('.roster-edit-status').text('Please wait for the current save, then try again.'); return false;}
 			try {
 				window.localStorage.setItem('showdown_prefs', JSON.stringify(Object.assign({}, Storage.prefs.data, {rosterprofiles: data})));
 			} catch (error) {
@@ -5415,6 +5416,7 @@
 		if (draft) this.$('[name=addSetToProfile][value="' + draft.index + '"]').focus();
 	};
 	proto.confirmSetProfile = function () {
+		if (Storage.prefs.queue && Storage.prefs.queue.length) return this.$('.profile-add-status').text('Please wait for the current save, then try again.');
 		var draft = this.profileAddition;
 		if (!draft) return;
 		if (this.curTeam !== draft.team || this.curSetList[draft.index] !== draft.set || draft.species !== draft.set.species) return this.cancelSetProfile();
@@ -6025,6 +6027,7 @@ function renderStarterPassives(species) {
 	p.dismissLibraryUndo = function () {this.libraryUndo = null; this.$('.library-undo').remove();};
 	var undoLibrary = p.undoLibraryChange;
 	p.undoLibraryChange = function () {
+		if (Storage.prefs.queue && Storage.prefs.queue.length) return app.addPopupMessage('Please wait for the current save, then try Undo again.');
 		try {var latest = window.localStorage && JSON.parse(window.localStorage.getItem('showdown_prefs')); if (latest) Storage.prefs.data = latest;} catch (error) {return app.addPopupMessage('Could not check saved data. Nothing was overwritten.');}
 		return undoLibrary.apply(this, arguments);
 	};
@@ -6061,6 +6064,7 @@ function renderStarterPassives(species) {
 		} catch (error) {this.$('.group-batch-preview').text(error.message);}
 	};
 	p.applyGroupBatch = function () {
+		if (Storage.prefs.queue && Storage.prefs.queue.length) return this.$('.group-batch-preview').text('Please wait for the current save, then try again.');
 		var pending = this.groupBatchPreview; if (!pending) return;
 		try {
 			var latest = JSON.parse(window.localStorage.getItem('showdown_prefs')) || T.clone(Storage.prefs.data), key = T.teamKey(this.curTeam);
@@ -6145,6 +6149,7 @@ function renderStarterPassives(species) {
 	};
 	p.cancelSelectedProfileTeam = function () {this.pendingSelectedProfileTeam = null; this.$('.profile-team-preview').empty(); this.$('[name=previewSelectedProfileTeam]').focus();};
 	p.applySelectedProfileTeam = function () {
+		if (Storage.prefs.queue && Storage.prefs.queue.length) return this.$('.profile-team-preview').text('Please wait for the current save, then try again.');
 		var pending = this.pendingSelectedProfileTeam; if (!pending || !this.curTeam) return;
 		try {var latestPrefs = JSON.parse(window.localStorage.getItem('showdown_prefs')); if (latestPrefs) Storage.prefs.data = latestPrefs;} catch (error) {return this.$('.profile-team-preview').text('Could not verify saved data. Nothing changed.');}
 		var data = this.toolsData(), profile = data.nicknames.find(function (n) {return n.id === data.selectedNickname;}), group = this.nicknameGroupProfile();
