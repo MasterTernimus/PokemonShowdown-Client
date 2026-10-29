@@ -396,7 +396,7 @@
 			var buf = '';
 
 			// teampane
-			buf += '<p><button class="button big" name="showToolsManager">Library: names, sets & lists</button></p>';
+			buf += '<p class="team-library-link"><button class="button" name="showToolsManager">Library: names, sets & lists</button></p>';
 			buf += this.clipboardHTML();
 
 			var filterFormat = '';
@@ -406,9 +406,6 @@
 			var filterFolder;
 
 			if (!this.curFolder) {
-				buf += '<h2>Hi</h2>';
-				buf += '<p>Did you have a good day?</p>';
-				buf += '<p><button class="button" name="greeting" value="Y"><i class="fa fa-smile-o"></i> Yes, my day was pretty good</button> <button class="button" name="greeting" value="N"><i class="fa fa-frown-o"></i> No, it wasn\'t great</button></p>';
 				buf += '<h2>All teams <small style="font-weight: normal">(' + teams.length + ')</small></h2>';
 			} else {
 				if (this.curFolder.slice(-1) === '/') {
@@ -432,7 +429,7 @@
 			if (filterFormat && filterFormat !== 'gen9') {
 				newTeamButtonText = "New " + BattleLog.escapeFormat(filterFormat) + " Team";
 			}
-			buf += '<p><button name="newTop" value="team" class="button big"><i class="fa fa-plus-circle"></i> ' + newTeamButtonText + '</button> ' +
+			buf += '<p class="team-list-toolbar"><button name="newTop" value="team" class="button"><i class="fa fa-plus-circle"></i> ' + newTeamButtonText + '</button> ' +
 				'<button name="newTop" value="box" class="button big"><i class="fa fa-archive"></i> New Box</button> ' +
 				'<input type="text" id="teamSearchBar" name="search" class="textbox searchinput" value="' + this.curSearchVal + '" placeholder="search teams"/></p>';
 
@@ -506,7 +503,7 @@
 					// support dragging and dropping buttons.
 					buf += '<li><div name="edit" data-value="' + i + '" class="team';
 					if (team.capacity === 24) buf += ' pc-box';
-					buf += '" draggable="true">' + formatText + '<strong>' + BattleLog.escapeHTML(team.name) + '</strong><br /><small>';
+					buf += '" draggable="true"><span class="team-list-title"><span class="team-list-format">' + BattleLog.escapeHTML(formatText) + '</span><strong>' + BattleLog.escapeHTML(team.name) + '</strong></span><small class="team-list-icons">';
 					buf += Storage.getTeamIcons(team);
 					buf += '</small></div><button name="edit" value="' + i + '"><i class="fa fa-pencil" aria-label="Edit" title="Edit (you can also just click on the team)"></i></button><button name="duplicate" value="' + i + '" title="Duplicate" aria-label="Duplicate"><i class="fa fa-clone"></i></button><button name="delete" value="' + i + '"><i class="fa fa-trash"></i> Delete</button></li>';
 
@@ -5853,7 +5850,7 @@ function renderStarterPassives(species) {
 		this.$('.nickname-row').not('.nickname-head').each(function () {var row = $(this), species = String(row.find('.nickname-species').val()), name = String(row.find('.nickname-value').val()); row.toggle((species + ' ' + name).toLowerCase().includes(query) && (!teamOnly || ids.has(T.id(species))));});
 	};
 	p.newUnifiedProfile = function () {
-		this.saveNicknameDraft(); var self = this; app.addPopupPrompt('Profile name:', 'Create', function (name) {if (!name || !name.trim()) return; name = name.trim().slice(0, 80); var groups = self.rosterData(), group = {id:T.uid(), name:name, species:[]}; groups.profiles.push(group); groups.selected = group.id; Storage.prefs('rosterprofiles', groups); var data = self.toolsData(), profile = {id:T.uid(), name:name, entries:{}, genderEntries:{}, rosterProfile:group.id}; data.nicknames.push(profile); data.selectedNickname = profile.id; self.saveToolsData(data); self.showToolsManager(); self.$('.roster-species-search').focus();});
+		this.saveNicknameDraft(); var self = this; app.addPopupPrompt('Profile name:', 'Create', function (name) {if (!name || !name.trim()) return; name = name.trim().slice(0, 80); var groups = self.rosterData(), group = {id:T.uid(), name:name, species:[]}; groups.profiles.push(group); groups.selected = group.id; Storage.prefs('rosterprofiles', groups); var data = self.toolsData(), profile = {id:T.uid(), name:name, entries:{}, genderEntries:{}, rosterProfile:group.id}; data.nicknames.push(profile); data.selectedNickname = profile.id; self.saveToolsData(data); self.showToolsManager(); self.$('.nickname-species').first().focus();});
 	};
 	T.namedMemberAdditions = function (profile, mapped, group) {
 		var ids = new Set(), empty = !group || !group.species.length;
@@ -6121,8 +6118,55 @@ function renderStarterPassives(species) {
 		if (legacyApply.length && !legacyApply.parent().hasClass('profile-rename-existing')) legacyApply.wrap('<details class="library-secondary profile-rename-existing"><summary>Rename the current team only</summary></details>');
 		if (this.profileTeamUndo) this.$('.profile-selection-actions').append('<button type="button" class="button profile-team-undo" name="undoSelectedProfileTeam">Undo team replacement</button>');
 		this.pendingSelectedProfileTeam = null;
+		if (this.$('.simple-profiles').length) this.simplifyProfileEditor();
 	};
-	p.showToolsManager = function () {var result = show.apply(this, arguments); if (this.librarySection !== 'sets') p.refreshProfileSelection.call(this); return result;};
+	p.showToolsManager = function () {
+		var result = show.apply(this, arguments);
+		if (this.librarySection !== 'sets') {
+			p.refreshProfileSelection.call(this);
+			this.simplifyProfileEditor();
+		}
+		return result;
+	};
+	p.simplifyProfileEditor = function () {
+		var panel = this.$('.library-names');
+		if (!panel.length) return;
+		this.$('.local-tools-manager').addClass('simple-profiles');
+		panel.find('> header h3').text('Nickname profiles');
+		panel.find('> header p, .library-step > h4, .profile-membership-note, .nickname-empty-hint').hide();
+		var picker = panel.find('.library-profile-picker');
+		var editor = panel.find('.nickname-rows').closest('.library-step');
+		if (!editor.length) return;
+		var options = panel.find('.simple-profile-options');
+		if (!options.length) options = $('<details class="library-secondary simple-profile-options"><summary>Profile options</summary></details>').appendTo(panel);
+		// Keep all stored settings and advanced actions, but take them out of the editing path.
+		panel.find('.library-step > details.library-secondary, .profile-view-options').not(options).appendTo(options);
+		panel.find('.auto-nickname, .roster-profile-filter, .nickname-add-members').closest('label').appendTo(options);
+		panel.find('.library-step > .tools-note').appendTo(options);
+		var paste = options.find('details').filter(function () {return $(this).find('.nickname-paste').length;});
+		paste.insertBefore(editor.find('.nickname-rows')).children('summary').text('Paste names');
+		var tools = editor.find('.library-row-tools');
+		tools.find('.roster-species-search').closest('label').appendTo(options);
+		tools.find('.roster-species-matches').appendTo(options);
+		panel.find('.group-batch-tools').appendTo(options);
+		tools.find('.nickname-search').show().attr('placeholder', 'Filter saved Pokémon or nicknames').attr('aria-label', 'Filter profile entries');
+		var save = editor.find('.library-save-actions');
+		save.find('[name=addNicknameRow]').text('Add Pokémon');
+		tools.find('[name=addTeamProfileMembers]').appendTo(save);
+		var apply = panel.find('.library-apply-step');
+		apply.find('.nickname-replace').closest('label').appendTo(options);
+		apply.find('[name=applyNicknameToTeam]').text('Apply to team…').appendTo(save);
+		save.find('.nickname-save-status').appendTo(save);
+		apply.hide();
+		panel.find('.profile-rename-existing').hide();
+		save.insertBefore(editor.find('.library-row-tools'));
+		var build = panel.find('.simple-profile-build');
+		if (!build.length) build = $('<details class="library-secondary simple-profile-build"><summary>Build a team from this profile</summary></details>').appendTo(panel);
+		panel.find('.profile-selection-actions, .profile-team-preview').appendTo(build);
+		picker.find('[name=newUnifiedProfile]').text('New profile');
+		panel.find('.roster-species-search').attr('placeholder', 'Search to add a Pokémon');
+		panel.find('[name=removeNicknameRow], .profile-member-remove').attr('title', function () {return $(this).hasClass('profile-member-remove') ? 'Remove Pokémon from this profile; keep its saved nickname' : 'Clear nickname';});
+	};
 	p.refreshNicknameGroup = function () {var result = refresh.apply(this, arguments); p.refreshProfileSelection.call(this); return result;};
 	p.toggleProfileTeamMember = function (event) {
 		var profile = this.toolsData().selectedNickname, ids = this.profileSelections[profile] || [], id = event.currentTarget.value;

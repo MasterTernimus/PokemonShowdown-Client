@@ -643,6 +643,9 @@ class BattleTooltips {
 		if (battle.hasPseudoWeather('Frozen Aura')) {
 			return battle.dex.moves.get(data.BattleAuraRules?.frozenaura?.naturePowerMove || 'icebeam');
 		}
+		if (battle.hasPseudoWeather('Ashen Aura')) {
+			return battle.dex.moves.get(data.BattleAuraRules?.ashenaura?.naturePowerMove || 'infernalparade');
+		}
 		const field = data.BattleFieldRules?.find((entry: any) => battle.hasPseudoWeather(entry.name));
 		const mapping = data.BattleNaturePowerMoves || {};
 		const fieldId = field?.id || battle.pseudoWeather.map(([name]) => toID(name)).find(id => mapping[id]) || '';
@@ -1952,7 +1955,7 @@ class BattleTooltips {
 			'swift', 'venamskiss', 'firepledge', 'waterpledge', 'grasspledge',
 			'photongeyser', 'lightthatburnsthesky', 'radiantassault', 'roaroftime', 'spacialrend',
 			'shadowforce', 'veeveevolley', 'blastburn', 'frenzyplant', 'hydrocannon', 'snipeshot',
-			'watershuriken', 'kaboom', 'corrosivestrike', 'spectralscream', 'barbedweb', 'bunrakubeatdown', 'lastrespects', 'queensgambit', 'timeblade', 'crestcleave', 'swarmsnare', 'wisteriamaelstrom', 'airstreamassault', 'dragonrend', 'sirenswrath',
+			'watershuriken', 'kaboom', 'corrosivestrike', 'spectralscream', 'barbedweb', 'bunrakubeatdown', 'lastrespects', 'sheercold', 'queensgambit', 'timeblade', 'crestcleave', 'swarmsnare', 'wisteriamaelstrom', 'airstreamassault', 'dragonrend', 'sirenswrath',
 		].includes(move.id);
 		if (physicalTie || specialTie || (move.id === 'aurasphere' && value.tryAbility('Aura Sight')) || move.id === 'terablast' && pokemon.terastallized ||
 			move.id === 'terastarstorm' && pokemon.terastallized && pokemon.speciesForme === 'Terapagos-Stellar') {
@@ -2102,7 +2105,7 @@ class BattleTooltips {
 		const modifiedStats = this.calculateModifiedStats(pokemon, serverPokemon);
 
 		// Adaptive signatures select category from staged stats before field previews.
-		if (['swift', 'kaboom', 'corrosivestrike', 'spectralscream', 'barbedweb', 'bunrakubeatdown', 'lastrespects', 'queensgambit', 'timeblade', 'crestcleave', 'swarmsnare',
+		if (['swift', 'kaboom', 'corrosivestrike', 'spectralscream', 'barbedweb', 'bunrakubeatdown', 'lastrespects', 'sheercold', 'queensgambit', 'timeblade', 'crestcleave', 'swarmsnare',
 			'wisteriamaelstrom', 'airstreamassault', 'dragonrend', 'sirenswrath'].includes(move.id) || (move.id === 'aurasphere' && value.tryAbility('Aura Sight'))) {
 			const staged = this.calculateModifiedStats(pokemon, serverPokemon, true);
 			move = {...move, category: staged.atk > staged.spa ? 'Physical' : 'Special'};

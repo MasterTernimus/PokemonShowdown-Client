@@ -5,7 +5,9 @@ const { BattleAbilitySearch } = new Function(fs.readFileSync(path.join(__dirname
 describe('Approved event, Relic Armor and Pulse client parity', () => {
     for (const [id, slot, ability] of [['bewear', 'S', 'multipulse'], ['primarina', 'S', 'aquabatics'], ['toxtricityaevian', 'S', 'feverpitch'], ['electivire', 'S', 'thunderraid'], ['torterra', 'S', 'desertsmark'], ['metagross', 'S', 'superumdmove'], ['duraludon', 'S', 'superumdmove'], ['lucario', 'S', 'galestrike'], ['dusclops', 'S', 'spectralscream'], ['chandelure', 'E', 'spectralscream'], ['mismagius', 'S', 'spectralscream'], ['araquanid', 'S', 'barbedweb'], ['walrein', 'S', 'coldtruth'], ['medicham', 'S', 'bunrakubeatdown'], ['meowsticf', 'S', 'bunrakubeatdown'], ['aerodactyl', 'S', 'matrixshot'], ['alakazam', 'S', 'pyrokinesis'], ['delphox', 'S', 'pyrokinesis'], ['seviper', 'S', 'venamskiss'], ['pidgeot', 'S', 'heavenlywing']])
         it(id + ' learns its migrated signature without a selectable event duplicate', () => {
-            assert.equal(Dex.species.get(id).abilities[slot], undefined);
+            // Removed signature slots may now hold a separately approved event ability.
+            const replacement = {mismagius: 'Rift Herald', alakazam: 'Aevian Discipline'}[id];
+            assert.equal(Dex.species.get(id).abilities[slot], replacement);
             const move = Dex.moves.get(ability);
             assert(move.exists, ability);
             assert(move.desc, ability);

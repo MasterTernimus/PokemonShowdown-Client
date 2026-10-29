@@ -12,8 +12,8 @@
     },
     "falseliberation": {
       "name": "False Liberation",
-      "shortDesc": "Mold Breaker; once per entry, a Dark HP hit inflicts Torment.",
-      "desc": "Mold Breaker. Once per entry, Dark damage to a foe’s HP inflicts Torment. Only a newly applied Torment spends the use; Torment is not refreshed."
+      "shortDesc": "Mold Breaker; once each switch-in, a Dark hit stops the foe repeating its last move.",
+      "desc": "Has Mold Breaker. Once each switch-in, a Dark attack that damages a foe directly applies Torment if it survives: it cannot use the same move twice in a row. Only successfully applying Torment spends the use. It does not refresh an existing Torment."
     }
   }
 }

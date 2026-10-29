@@ -142,10 +142,38 @@ License: GPLv2
 }
 .statbar strong {
 	margin: 0 -15px;
-	display: block;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 3px;
 	text-align: center;
 	color: #222222;
 	text-shadow: #FFFFFF 1px 1px 0, #FFFFFF 1px -1px 0, #FFFFFF -1px 1px 0, #FFFFFF -1px -1px 0;
+}
+.statbar strong .statbar-name,
+.statbar strong .statbar-details {
+	padding: 0;
+	border: 0;
+	border-radius: 0;
+}
+.statbar strong .statbar-name {
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.statbar strong .statbar-details {
+	display: inline-flex;
+	flex: 0 0 auto;
+	align-items: center;
+	gap: 3px;
+	white-space: nowrap;
+}
+.statbar strong .statbar-details:empty {
+	display: none;
+}
+.statbar strong .statbar-details img {
+	display: block;
 }
 .statbar strong small {
 	font-weight: normal;
@@ -741,8 +769,7 @@ License: GPLv2
 }
 
 .coldeclipseterrainweather {
-    background: linear-gradient(rgba(18, 15, 45, 0.55), rgba(15, 28, 48, 0.3)),
-        #192336 url(../fx/weather-icyterrain.png) no-repeat center center;
+    background: #192336 url(../fx/weather-coldeclipse-provided.png) no-repeat center center;
     background-size: 100% 100%;
     color: #e4e7ff;
 }
@@ -1199,23 +1226,7 @@ License: GPLv2
 .statbar .status .relic-armor-badge::before { content:none; }
 .statbar .status .relic-armor-badge:focus-visible { outline:2px solid #186cb0; outline-offset:2px; }
 
-/* Doubles HP labels and wrapped badges stay inside their own HUD column. */
-.doubles-statbar strong {
-	box-sizing: border-box;
-	margin: 0;
-	padding-right: 34px;
-	text-align: left;
-	overflow-wrap: anywhere;
-}
-.doubles-statbar .hpbar .hptext {
-	left: auto;
-	right: 0;
-	top: -16px;
-	border-radius: 3px;
-}
-.doubles-statbar .hpbar .hptextborder {
-	display: none;
-}
+/* Keep extra effect badges within the sprite-relative doubles nameplate. */
 .doubles-statbar .status {
 	display: flex;
 	flex-wrap: wrap;
@@ -1227,4 +1238,18 @@ License: GPLv2
 	max-width: 100%;
 	box-sizing: border-box;
 	overflow-wrap: anywhere;
+}
+
+/* Eclipse family: user-supplied dimensional backgrounds. */
+.rifteclipseterrainweather {
+ background: #170c29 url(../fx/weather-rifteclipse-provided.png) center / 100% 100% no-repeat;
+ color: #f1ddff;
+}
+.infernaleclipseterrainweather {
+ background: #351015 url(../fx/weather-infernaleclipse-provided.png) center / 100% 100% no-repeat;
+ color: #ffe4c9;
+}
+.snowyterrainweather {
+ background: #dcf7ff url(../fx/weather-snowyterrain.png) center / 100% 100% no-repeat;
+ color: #243a58;
 }

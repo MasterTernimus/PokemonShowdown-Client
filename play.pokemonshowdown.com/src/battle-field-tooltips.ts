@@ -62,6 +62,9 @@ const BattleFieldTooltips = {
    },
    getPassives: () => passives.slice(),
 			isGrounded: () => pokemon ? pokemon.isGrounded(server) : true,
+			canBenefitFromTerrain() {
+				return !!this.isGrounded() || (this.species.id === 'gardevoir' && this.hasAbility('voidveil'));
+			},
 			foes: () => pokemon ? pokemon.side.foe.active.filter(Boolean) : [{}],
 		};
 	},

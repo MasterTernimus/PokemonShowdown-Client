@@ -370,7 +370,9 @@ export class BattleScene implements BattleSceneStub {
 		if (scale < .1) scale = .1;
 		// Cropped custom backs need less magnification than full-body BW sprites.
 		const bottomAlignedBack = isBottomAlignedBackSprite(obj.url || "");
-		const spriteScale = bottomAlignedBack ? scale * 0.75 : scale;
+		// Reduce battle back views without changing scene motion, effects or preview artwork.
+		const backScale = obj.isFrontSprite === false ? 0.85 : 1;
+		const spriteScale = scale * backScale * (bottomAlignedBack ? 0.75 : 1);
 
 		left += (410 - 190) * ((loc.z!) / 200);
 		top += (135 - 245) * ((loc.z!) / 200);
@@ -1891,6 +1893,10 @@ export class PokemonSprite extends Sprite {
 		dynamax: ['Dynamaxed', 'good'],
 		trapped: null, // linked volatiles are not implemented yet
 		throatchop: ['Throat Chop', 'bad'],
+		opencage: '<span class="good" title="Open Cage: can escape trapping through the end of the turn after the song. Ends on switching.">Free to switch</span> ',
+		exposed: '<span class="bad" title="Breaking News: the reporter and nearby allies ignore positive defensive stages. The reporter’s Psychic/Fairy attacks gain 25% power. Lasts through the following turn.">Exposed</span> ',
+		rememberedflame: '<span class="good" title="Remembered Flame: next Fire attack gains 30% power. Expires after the following turn; spent even on a miss or block.">Fire ready</span> ',
+		stormcharge: '<span class="good" title="Storm Memory: next Electric attack gains 50% power and heals for 25% of damage dealt to foes. Spent even on a miss or block.">Electric ready</span> ',
 		meridianseal: ['Meridian Seal', 'bad'],
 		confusion: ['Confused', 'bad'],
 		healblock: ['Heal Block', 'bad'],
@@ -2354,10 +2360,6 @@ export class PokemonSprite extends Sprite {
 		this.left = pos.left;
 		this.top = pos.top;
 		this.statbarLeft = pos.left - 80;
-		// Separate doubles HUD columns without changing the Pokemon sprite positions.
-		if (this.scene.battle.gameType === 'doubles') {
-			this.statbarLeft = this.isFrontSprite ? 378 - 170 * slot : 102 + 170 * slot;
-		}
 		this.statbarTop = pos.top - 73 - statbarOffset;
 		if (this.statbarTop < -4) this.statbarTop = -4;
 
@@ -2843,7 +2845,8 @@ export class PokemonSprite extends Sprite {
 		const doublesClass = this.scene.battle.gameType === 'doubles' ? ' doubles-statbar' : '';
 		let buf = '<div class="statbar' + (this.isFrontSprite ? ' lstatbar' : ' rstatbar') + this.getClassForPosition(pokemon.slot) + doublesClass + '" style="display: none">';
 		const ignoreNick = this.isFrontSprite && (this.scene.battle.ignoreOpponent || this.scene.battle.ignoreNicks);
-		buf += `<strong>${BattleLog.escapeHTML(ignoreNick ? pokemon.speciesForme : pokemon.name)}`;
+		const displayName = BattleLog.escapeHTML(ignoreNick ? pokemon.speciesForme : pokemon.name);
+		buf += `<strong><span class="statbar-name" title="${displayName}">${displayName}</span><span class="statbar-details">`;
 		const gender = pokemon.gender;
 		if (gender === 'M' || gender === 'F') {
 			buf += ` <img src="${Dex.fxPrefix}gender-${gender.toLowerCase()}.png" alt="${gender}" width="7" height="10" class="pixelated" />`;
@@ -2861,7 +2864,7 @@ export class PokemonSprite extends Sprite {
 			buf += ` <img src="${Dex.resourcePrefix}sprites/types/Tera${pokemon.terastallized}.png" alt="Tera-${pokemon.terastallized}" style="vertical-align:text-bottom;" height="16" width="16" />`;
 		}
 
-		buf += `</strong><div class="hpbar"><div class="hptext"></div><div class="hptextborder"></div><div class="prevhp"><div class="hp"></div></div><div class="status"></div>`;
+		buf += `</span></strong><div class="hpbar"><div class="hptext"></div><div class="hptextborder"></div><div class="prevhp"><div class="hp"></div></div><div class="status"></div>`;
 		buf += `</div>`;
 		return buf;
 	}

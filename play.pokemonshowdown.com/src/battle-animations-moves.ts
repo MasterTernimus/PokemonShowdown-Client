@@ -36367,3 +36367,38 @@ BattleMoveAnims['splinteredweb'] = {anim(scene, sprites) {
 BattleMoveAnims['scentedgeyser'] = {anim: BattleMoveAnims['waterspout'].anim};
 
 BattleMoveAnims.royalcollision = BattleMoveAnims.wavecrash;
+
+BattleMoveAnims.riftopening = {anim(scene, [attacker]) {
+	// A field move has no defender: open the rift at the battlefield center.
+	const center = {x: 0, y: 40, z: 100};
+	scene.backgroundEffect('radial-gradient(ellipse at 50% 52%, #610a40 0%, #230d42 35%, #080811 80%)', 1100, 0.65);
+	if (attacker) {
+		attacker.anim({y: attacker.y + 12, time: 220}, 'decel');
+		attacker.anim({time: 260}, 'swing');
+	}
+	// The violet edge and black core widen from a narrow tear, then close together.
+	for (const core of [false, true]) {
+		const width = core ? 0.68 : 1;
+		const height = core ? 1.7 : 2;
+		const css = core ? {filter: 'brightness(0)'} : {filter: 'saturate(1.5)'};
+		scene.showEffect('shadowball', {...center, xscale: 0.04, yscale: 0.3, opacity: 0.2, time: 100},
+			{xscale: width, yscale: height, opacity: 0.95, time: 460}, 'decel', 'fade', css);
+		scene.showEffect('shadowball', {...center, xscale: width, yscale: height, opacity: 0.95, time: 460},
+			{xscale: width * 1.15, yscale: height * 1.1, opacity: 0.95, time: 760}, 'swing', 'fade', css);
+		scene.showEffect('shadowball', {...center, xscale: width * 1.15, yscale: height * 1.1, opacity: 0.95, time: 760},
+			{xscale: 0.02, yscale: 2.4, opacity: 0, time: 1140}, 'accel', undefined, css);
+	}
+	// Dimensional fragments gather first, then a red-violet pulse spreads across the field.
+	for (let i = 0; i < 8; i++) {
+		const angle = i * Math.PI / 4;
+		scene.showEffect('poisonwisp', {
+			x: center.x + Math.cos(angle) * 110, y: center.y + Math.sin(angle) * 65, z: center.z,
+			scale: 0.22, opacity: 0.6, time: i * 25,
+		}, {...center, scale: 0.1, opacity: 0, time: 460 + i * 25}, 'accel');
+		scene.showEffect('poisonwisp', {...center, scale: 0.15, opacity: 0.8, time: 620 + i * 20}, {
+			x: center.x + Math.cos(angle) * 150, y: center.y + Math.sin(angle) * 80,
+			scale: 0.4, opacity: 0, time: 1040 + i * 20,
+		}, 'decel', undefined, {filter: 'hue-rotate(80deg)'});
+	}
+	scene.wait(1350);
+}};

@@ -541,11 +541,25 @@
 }
 .teambuilder-results .utilichart .result > a[data-entry^="move|"] > :is(.illegalcol, .filtercol) { grid-column: 2 / -1; }
 .teambuilder-results .utilichart .result > a[data-entry^="move|"]:focus-visible { outline: 2px solid #397ba4; outline-offset: -2px; }
-@container (min-width: 780px) {
+@container (min-width: 600px) {
+ .teambuilder-results .utilichart .sortrow:has(.movenamesortcol) {
+  display: grid; grid-template-columns: 148px 31px 31px 28px 40px 24px minmax(0, 1fr);
+  gap: 0 4px; margin: 0; padding: 0 6px; height: auto;
+ }
+ .teambuilder-results .utilichart .sortrow:has(.movenamesortcol) .sortcol {
+  width: auto; min-width: 0; padding: 2px 0; font-size: 10px;
+ }
  .teambuilder-results .utilichart .result > a[data-entry^="move|"] {
-  grid-template-columns: 154px 66px 60px 88px 42px minmax(0, 1fr); min-height: 32px;
+  grid-template-columns: 148px 66px 28px 40px 24px minmax(0, 1fr); min-height: 32px;
+  gap: 0 4px; padding: 1px 6px; border-bottom-color: transparent;
  }
  .teambuilder-results .utilichart .result > a[data-entry^="move|"] > .movedesccol { grid-column: 6; }
+ .teambuilder-results .utilichart .result > a[data-entry^="move|"] > :is(.labelcol, .widelabelcol, .pplabelcol) {
+  display: block; text-align: center; line-height: 13px;
+ }
+ .teambuilder-results .utilichart .result > a[data-entry^="move|"] > :is(.labelcol, .widelabelcol, .pplabelcol) br { display: block; }
+ .teambuilder-results .utilichart .result > a[data-entry^="move|"] em { font-size: 9px; line-height: 12px; }
+ .teambuilder-results .utilichart .result > a[data-entry^="move|"].cur { border: 1px solid #a6b4be; border-radius: 4px; }
 }
 @container (max-width: 439px) {
  .teambuilder-results .utilichart .result > a[data-entry^="move|"] {

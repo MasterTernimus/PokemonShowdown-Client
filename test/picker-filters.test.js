@@ -8,6 +8,10 @@ const {DexSearch}=new Function(fs.readFileSync(path.join(__dirname,'../play.poke
 function search(options={},query='',filters=null,sort=null){const s=new DexSearch();s.setType('pokemon','gen9nofieldsinglesgame');s.pickerOptions=options;s.filters=filters;s.sortCol=sort;s.find(query);return s;}
 function ids(s){return s.results.filter(r=>r[0]==='pokemon').map(r=>r[1]);}
 describe('Pokemon picker view filters',()=>{
+	 it('hides the zero-stat placeholder from all picker queries',()=>{
+	  assert(Dex.isSpeciesHidden('0')); assert(Dex.isSpeciesHidden('MissingNo'));
+	  for (const query of ['', '0', 'missingno', '-custom']) assert(!ids(search({},query)).some(id=>id==='0'||id==='missingno'));
+	 });
  let aliases;before(()=>{aliases=global.BattleAliases;global.BattleAliases={};});after(()=>{if(aliases===undefined)delete global.BattleAliases;else global.BattleAliases=aliases;});
  it('distinguishes true Megas, Core forms, temporary forms, and regional/cosmetic forms',()=>{
   const traits=id=>DexSearch.pokemonPickerTraits(Dex.species.get(id));

@@ -1,0 +1,42 @@
+/* Profiles: one editing surface; optional roster/team tools stay collapsed. */
+.unified-profiles .local-tools-manager.simple-profiles { max-width: 960px; margin: 0 auto; }
+.unified-profiles .simple-profiles .library-names { border: 0; box-shadow: none; padding: 0; }
+.unified-profiles .simple-profiles .library-names > header,
+.unified-profiles .simple-profiles .library-local-note { display: none; }
+.unified-profiles .simple-profiles .library-row-tools { margin: 4px 0; padding: 0; }
+.unified-profiles .simple-profiles .nickname-rows { margin-top: 4px; }
+.unified-profiles .simple-profiles .library-step { border: 0; padding: 8px 0; }
+.unified-profiles .simple-profiles .library-profile-picker { display: flex; gap: 8px; align-items: end; flex-wrap: wrap; }
+.unified-profiles .simple-profiles .library-profile-picker > label { flex: 1; min-width: 160px; }
+.unified-profiles .simple-profiles .library-profile-picker select { width: 100%; }
+.unified-profiles .simple-profiles .library-row-tools { display: flex; gap: 8px; flex-wrap: wrap; }
+.unified-profiles .simple-profiles .library-row-tools > label,
+.unified-profiles .simple-profiles .nickname-search { flex: 1; min-width: 160px; }
+.unified-profiles .simple-profiles .roster-species-matches:empty { display: none; }
+.unified-profiles .simple-profiles .library-save-actions { position: sticky; top: 0; z-index: 2; padding: 8px 0; background: #f4f6f8; display: flex; flex-wrap: wrap; gap: 6px; }
+.dark .unified-profiles .simple-profiles .library-save-actions { background: #202a33; }
+.unified-profiles .simple-profiles .nickname-save-status { flex-basis: 100%; font-size: 12px; }
+.unified-profiles .simple-profiles .nickname-rows { max-height: none; overflow: visible; }
+.teambuilder-workspace.unified-profiles .local-tools-manager.simple-profiles .nickname-row,
+.unified-profiles .local-tools-manager.simple-profiles .nickname-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto; padding-left: 0; gap: 8px; }
+.unified-profiles .simple-profiles .profile-select-member { display: none; }
+.unified-profiles .simple-profiles:has(.simple-profile-build[open]) .profile-member-row { padding-left: 32px !important; }
+.unified-profiles .simple-profiles:has(.simple-profile-build[open]) .profile-select-member { display: block; }
+.unified-profiles .simple-profiles .nickname-row[data-group-entry] > [name=removeNicknameRow] { display: none; }
+.unified-profiles .simple-profiles:not(.gender-names-enabled) .nickname-gender,
+.unified-profiles .simple-profiles:not(.gender-names-enabled) .nickname-gender-heading { display: none; }
+.unified-profiles .simple-profiles.gender-names-enabled .nickname-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 120px auto; }
+.unified-profiles .simple-profiles .simple-profile-options,
+.unified-profiles .simple-profiles .simple-profile-build { margin-top: 12px; border-top: 1px solid #73828c; padding-top: 10px; }
+.unified-profiles .simple-profiles .button { min-height: 34px; }
+@media (max-width: 600px) {
+ .unified-profiles .simple-profiles input, .unified-profiles .simple-profiles select { font-size: 16px; min-height: 40px; }
+ .unified-profiles .simple-profiles .button { min-height: 40px; }
+ .teambuilder-workspace.unified-profiles .local-tools-manager.simple-profiles .nickname-row,
+ .unified-profiles .local-tools-manager.simple-profiles .nickname-row { grid-template-columns: minmax(0, 1fr) auto; }
+ .unified-profiles .simple-profiles .nickname-species { grid-column: 1 / -1; }
+ .unified-profiles .simple-profiles .nickname-value { grid-column: 1; grid-row: 2; }
+ .unified-profiles .simple-profiles .nickname-row > .button { grid-column: 2; grid-row: 2; }
+ .unified-profiles .simple-profiles.gender-names-enabled .nickname-gender { grid-column: 1 / -1; grid-row: 3; }
+ .unified-profiles .simple-profiles .nickname-head { display: none; }
+}

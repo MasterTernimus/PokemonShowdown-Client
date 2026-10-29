@@ -132,7 +132,7 @@ describe('Server data synchronization', () => {
 				assert.deepEqual(plain(dex.species.get('kingler').abilities), {0: 'Shell Armor', 1: 'Hyper Cutter', H: 'Shellcracker'});
 				assert.deepEqual(plain(dex.species.get('kinglergmax').types), ['Water', 'Steel']);
 				assert.deepEqual(plain(dex.species.get('kinglergmax').abilities), {0: 'Crushing Depths'});
-				assert.match(dex.abilities.get('reinflate').desc, /Once per turn.*whole sound attack.*opposing HP damage.*1\/4.*alive and active/);
+				assert.match(dex.abilities.get('reinflate').desc, /Once per turn.*1\/4 max HP.*sound attack damages a foe directly.*active and alive/);
 				assert.match(dex.abilities.get('reinflate').shortDesc, /1\/4/);
 				assert.match(dex.abilities.get('titanpincer').desc, /Crabhammer and physical Steel-type moves.*Defense.*higher/);
 				assert(!dex.getAbilityEffects('titanpincer').has('hypercutter'));

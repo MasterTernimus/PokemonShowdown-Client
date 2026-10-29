@@ -1501,8 +1501,22 @@ export class Battle {
 			}
 		}
 	}
-	updateTurnCounters() {
+	updateTurnCounters(roomTurns?: string) {
+		let authoritativeRooms: {[id: string]: number} = {};
+		if (roomTurns) {
+			try {
+				const parsed = JSON.parse(roomTurns);
+				if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) authoritativeRooms = parsed;
+			} catch {} // Older or malformed replays retain the local countdown fallback.
+		}
 		for (const pWeather of this.pseudoWeather) {
+			const id = toID(pWeather[0]);
+			const turns = authoritativeRooms[id];
+			if (['trickroom', 'magicroom', 'wonderroom', 'gravity'].includes(id) && Number.isInteger(turns) && turns >= 0) {
+				pWeather[1] = pWeather[2] = turns;
+				continue;
+			}
+			if (this.pseudoWeather.some(state => this.getTerrainId(state[0]) === 'coldeclipseterrain') && ['trickroom', 'magicroom', 'wonderroom', 'gravity'].includes(toID(pWeather[0]))) continue;
 			if (pWeather[1]) pWeather[1]--;
 			if (pWeather[2]) pWeather[2]--;
 		}
@@ -3192,7 +3206,7 @@ export class Battle {
 				minTimeLeft = Math.max(0, Number(kwArgs.aura) || 0);
 				maxTimeLeft = 0;
 				this.pseudoWeather = this.pseudoWeather.filter(state =>
-					!/^(electric|grassy|misty|psychic|rainbow|frozen)aura$/.test(toID(state[0])));
+					!/^(electric|grassy|misty|psychic|rainbow|frozen|ashen)aura$/.test(toID(state[0])));
 			}
 			if (kwArgs.persistent) minTimeLeft += 2;
 			if (flowerGarden || kwArgs.garden || effect.id === 'midnightzoneterrain') minTimeLeft = maxTimeLeft = 0;
@@ -3505,7 +3519,7 @@ export class Battle {
 		}
 		case 'upkeep': {
 			this.usesUpkeep = true;
-			this.updateTurnCounters();
+			this.updateTurnCounters(kwArgs.roomturns);
 			break;
 		}
 		case 'turn': {

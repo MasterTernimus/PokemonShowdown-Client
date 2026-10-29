@@ -1,8 +1,8 @@
 {
-	"sourceHead": "566869db2b4fd3ee55e97b3a5a269351cb16158f",
+	"sourceHead": "d48a3db20eaefa46e42ea166fc3af0faed41450a",
 	"base": "22049e8bbc3cae437790269b4360f7c8eaf5da22",
-	"builtSourceFingerprint": "50c23d3c82a9cb77e45e37947cdfaa453a3342aa24bff535b324f14b3ee3eb4a",
-	"sourceDataSHA256": "1699c61fc41ba7fd92cda67662da7cf47851765e4f22575db019b7576b90f02f",
+	"builtSourceFingerprint": "9779cf9edeff31f19d260507e33d0d8d5f378b8254f3ca465216e109f8a5c236",
+	"sourceDataSHA256": "8231a78ef2309681e2a6b28b3056b73e8eb84052fdf98ece9214dc03cc0cffbb",
 	"files": [
 		"data/abilities.ts",
 		"data/ability-components.ts",
@@ -10,10 +10,13 @@
 		"data/ability-display-summaries.ts",
 		"data/ability-prose-audit.ts",
 		"data/ability-readability.ts",
+		"data/alakazam-rejuv.ts",
 		"data/aliases.ts",
 		"data/ally-serene-grace.ts",
+		"data/arboliva-aevian-abilities.ts",
 		"data/audit-cleanup-approved.ts",
 		"data/aura-gaze-approved.ts",
+		"data/auras.ts",
 		"data/awakening-dragons.ts",
 		"data/beautifly-carrion-approved.ts",
 		"data/bone-spoils-infernal-approved.ts",
@@ -25,13 +28,21 @@
 		"data/cramorant-goodra-kommo-approved.ts",
 		"data/current-ability-description-cleanup.ts",
 		"data/disabled-species.ts",
+		"data/eclipse-abilities.ts",
+		"data/eclipse-fields.ts",
 		"data/eeveelution-cloyster-approved.ts",
 		"data/empoleon-megas.ts",
 		"data/fairy-eclipse-approved.ts",
 		"data/family-replacements.ts",
+		"data/field-guide-groups.ts",
 		"data/field-guide-index.json",
+		"data/field-guide-reference-details.ts",
 		"data/field-guide-reviewed-reference-data.ts",
+		"data/field-guide.ts",
+		"data/field-message-triggers.ts",
+		"data/field-reference.json",
 		"data/final-passive-migrations.ts",
+		"data/finisher-moves-approved.ts",
 		"data/gmax-passive-data.ts",
 		"data/gmax-passive-descriptions.ts",
 		"data/grace-support.ts",
@@ -44,9 +55,12 @@
 		"data/late-display-clarifications.ts",
 		"data/learnsets.ts",
 		"data/lore-entry-approved.ts",
+		"data/lore-pairs.ts",
 		"data/mega-hydreigon.ts",
 		"data/moves.ts",
+		"data/nature-power.ts",
 		"data/nido-approved.ts",
+		"data/open-cage.ts",
 		"data/oracular-chorus.ts",
 		"data/ordinary-approved-reductions.ts",
 		"data/passive-ability-cleanup.ts",
@@ -55,6 +69,8 @@
 		"data/pokedex.ts",
 		"data/primarina-approved.ts",
 		"data/primeval-fossils.ts",
+		"data/public-field-guide-shared.ts",
+		"data/public-field-guide.ts",
 		"data/queued-abilities-approved.ts",
 		"data/raging-crowns-approved.ts",
 		"data/rejuv-passives.ts",
@@ -68,6 +84,7 @@
 		"data/shelter-audit-reworks.ts",
 		"data/signature-move-summaries.ts",
 		"data/signature-passive-data.ts",
+		"data/snowy-field.ts",
 		"data/sovereign-approved-data.ts",
 		"data/species-passives.ts",
 		"data/starter-passives.ts",
@@ -77,6 +94,8 @@
 		"data/text/default.ts",
 		"data/text/items.ts",
 		"data/text/moves.ts",
+		"data/ultra-instinct-description.ts",
+		"data/warned-moves.ts",
 		"data/weather-choice-approved.ts",
 		"data/world-axis.ts",
 		"data/wraith-procession.ts",
@@ -91,20 +110,20 @@
 				"desc": "Switching with Volt Switch heals the incoming teammate by 1/8 of its base maximum HP."
 			},
 			"undertow": {
-				"shortDesc": "Water HP hits ground surviving foes.",
-				"desc": "Water attacks that deal HP damage ground surviving foes as with Smack Down. Does not trap foes or bypass protection, Substitute or Water immunity."
+				"shortDesc": "Water attacks gain Smack Down's grounding effect.",
+				"desc": "Water attacks gain Smack Down's grounding effect when they damage a foe directly. A surviving airborne foe is grounded until it switches out, allowing Ground moves to hit it. Substitute and Water immunities still block this effect."
 			},
 			"lockinggrip": {
-				"shortDesc": "First damaging Bug attack each entry can inflict Torment; hitting Substitute spends the use.",
-				"desc": "Once per entry, its first damaging Bug attack against a foe applies Torment after HP damage if the foe survives. Substitute damage spends the use without tormenting its holder, including before later hits. Misses, protection and immunity preserve the use. Ability replacement does not reset it; switching does."
+				"shortDesc": "First Bug attack each switch-in applies Torment: the foe cannot repeat its last move.",
+				"desc": "Once each switch-in, the first Bug attack that damages a foe directly applies Torment if it survives: it cannot use the same move twice in a row. Substitute damage spends the use without applying Torment, including before later hits. Misses, protection and immunity preserve the use. Changing abilities does not reset it."
 			},
 			"palmmastery": {
-				"shortDesc": "Force Palm always paralyzes when it lands, subject to immunity.",
-				"desc": "Force Palm paralysis is a primary move effect rather than a secondary roll. It always paralyzes when it lands, subject to status immunity and status."
+				"shortDesc": "Force Palm always paralyzes if the target can be paralyzed.",
+				"desc": "Force Palm always paralyzes when it hits, provided the target can be paralyzed. This is a primary move effect, so Shield Dust and Covert Cloak do not block the paralysis."
 			},
 			"lockjaw": {
-				"shortDesc": "Biting HP hits inflict 2-turn Torment on surviving foes.",
-				"desc": "Biting attacks that deal HP damage apply Torment to surviving foes for 2 turns. Does not prevent switching or bypass Substitute."
+				"shortDesc": "Bites apply 2-turn Torment: the foe cannot repeat its last move.",
+				"desc": "Biting attacks that damage a foe directly apply Torment for 2 turns if it survives, preventing it from using the same move twice in a row. The foe can still switch out. Substitute blocks this effect."
 			},
 			"mirechorus": {
 				"shortDesc": "Sound becomes Water (Ice on Icy), 1.2x power; noncontact sound can poison.",
@@ -144,6 +163,9 @@
 			]
 		},
 		"signaturePassiveComponents": {
+			"breakingnews": [
+				"forewarn"
+			],
 			"punchfiend": [
 				"ironfist",
 				"serenegrace",
@@ -181,6 +203,10 @@
 			"unbridledwrath": [
 				"sheerforce",
 				"innerfocus"
+			],
+			"composed": [
+				"innerfocus",
+				"magicguard"
 			],
 			"eldritchremedy": [
 				"owntempo",
@@ -2112,7 +2138,8 @@
 				"abilities": {
 					"0": "Insomnia",
 					"1": "Grandmaster",
-					"H": "Magic Guard"
+					"H": "Magic Guard",
+					"S": "Aevian Discipline"
 				},
 				"baseStats": {
 					"hp": 80,
@@ -2135,7 +2162,8 @@
 				"abilities": {
 					"0": "Insomnia",
 					"1": "Grandmaster",
-					"H": "Magic Guard"
+					"H": "Magic Guard",
+					"S": "Aevian Discipline"
 				},
 				"baseStats": {
 					"hp": 80,
@@ -2193,6 +2221,26 @@
 				],
 				"passives": [
 					"forewarn"
+				],
+				"replaceAbilities": true
+			},
+			"alakazamrejuv": {
+				"abilities": {
+					"0": "Aevian Discipline"
+				},
+				"baseStats": {
+					"hp": 80,
+					"atk": 130,
+					"def": 100,
+					"spa": 25,
+					"spd": 95,
+					"spe": 128
+				},
+				"types": [
+					"Fighting"
+				],
+				"passives": [
+					"composed"
 				],
 				"replaceAbilities": true
 			},
@@ -2871,9 +2919,9 @@
 			"arbolivaaevian": {
 				"abilities": {
 					"0": "Harvest",
-					"1": "Bad Seeds",
+					"1": "Arena Trap",
 					"H": "Winter's Malice",
-					"S": "Arena Trap"
+					"S": "Bad Seeds"
 				},
 				"baseStats": {
 					"hp": 78,
@@ -2913,7 +2961,7 @@
 			},
 			"arcanine": {
 				"abilities": {
-					"0": "Living Legend",
+					"0": "Remembered Flame",
 					"1": "Vanguard",
 					"H": "Drought",
 					"S": "Battle Bond"
@@ -2957,7 +3005,7 @@
 			},
 			"arcaninealt": {
 				"abilities": {
-					"0": "Living Legend",
+					"0": "Remembered Flame",
 					"1": "Vanguard",
 					"H": "Drought",
 					"S": "Battle Bond"
@@ -5295,7 +5343,8 @@
 				"abilities": {
 					"0": "Elevate",
 					"1": "Defragment",
-					"H": "Reflector"
+					"H": "Reflector",
+					"S": "Rift Herald"
 				},
 				"baseStats": {
 					"hp": 67,
@@ -5810,7 +5859,8 @@
 				"abilities": {
 					"0": "Magma Armor",
 					"1": "Solid Rock",
-					"H": "Sheer Force"
+					"H": "Sheer Force",
+					"S": "Ashen Seeds"
 				},
 				"baseStats": {
 					"hp": 90,
@@ -6690,7 +6740,7 @@
 					"Flying"
 				],
 				"passives": [
-					"earlybird"
+					"opencage"
 				],
 				"replaceAbilities": true
 			},
@@ -9233,7 +9283,7 @@
 			"dhelmise": {
 				"abilities": {
 					"0": "Water Bubble",
-					"1": "Soul Anchor",
+					"1": "Blackwater Anchor",
 					"H": "Rocky Payload"
 				},
 				"baseStats": {
@@ -9717,7 +9767,7 @@
 			"dragalge": {
 				"abilities": {
 					"0": "Poison Point",
-					"1": "Poison Touch",
+					"1": "Blackwater Venom",
 					"H": "Adaptability"
 				},
 				"baseStats": {
@@ -11446,7 +11496,7 @@
 			"espeon": {
 				"abilities": {
 					"0": "Trace",
-					"1": "Astral Ward",
+					"1": "Remembered Step",
 					"H": "Psychic Surge",
 					"S": "Mind Freeze",
 					"E": "Eclipse"
@@ -12449,9 +12499,9 @@
 			},
 			"flygon": {
 				"abilities": {
-					"0": "Void Drift",
+					"0": "Mirage Drift",
 					"1": "Resonance Force",
-					"H": "Sandstream"
+					"H": "Dune Caller"
 				},
 				"baseStats": {
 					"hp": 80,
@@ -12677,7 +12727,8 @@
 				"abilities": {
 					"0": "Haunting Veil",
 					"1": "Ice Mirror",
-					"H": "Wailing Snow"
+					"H": "Wailing Snow",
+					"S": "Bad Seeds"
 				},
 				"baseStats": {
 					"hp": 70,
@@ -13353,7 +13404,7 @@
 					"Fairy"
 				],
 				"passives": [
-					"forewarn"
+					"breakingnews"
 				],
 				"replaceAbilities": true
 			},
@@ -14006,7 +14057,8 @@
 				"abilities": {
 					"0": "Inner Focus",
 					"1": "Frozen Feast",
-					"H": "Intimidate"
+					"H": "Intimidate",
+					"S": "Bad Seeds"
 				},
 				"baseStats": {
 					"hp": 80,
@@ -16364,7 +16416,8 @@
 			},
 			"hoopa": {
 				"abilities": {
-					"0": "Magician"
+					"0": "Magician",
+					"S": "Rift Herald"
 				},
 				"baseStats": {
 					"hp": 80,
@@ -18208,7 +18261,7 @@
 				"abilities": {
 					"0": "Intimidate",
 					"1": "Dread Jaw",
-					"H": "Vendetta"
+					"H": "Dune Hunter"
 				},
 				"baseStats": {
 					"hp": 100,
@@ -18470,7 +18523,7 @@
 				"abilities": {
 					"0": "Safe Harbor",
 					"1": "Ocean Lullaby",
-					"H": "Ice Scales"
+					"H": "Storm Memory"
 				},
 				"baseStats": {
 					"hp": 130,
@@ -18535,7 +18588,7 @@
 				"abilities": {
 					"0": "Safe Harbor",
 					"1": "Ocean Lullaby",
-					"H": "Ice Scales"
+					"H": "Storm Memory"
 				},
 				"baseStats": {
 					"hp": 130,
@@ -21984,7 +22037,8 @@
 				"abilities": {
 					"0": "Void Crossing",
 					"1": "Temporal Shift",
-					"H": "Void Hex"
+					"H": "Void Hex",
+					"S": "Rift Herald"
 				},
 				"baseStats": {
 					"hp": 60,
@@ -23040,7 +23094,8 @@
 				"abilities": {
 					"0": "Sun Charm",
 					"1": "Serene Grace",
-					"H": "Soul Fire"
+					"H": "Soul Fire",
+					"S": "Ashen Seeds"
 				},
 				"baseStats": {
 					"hp": 73,
@@ -32519,7 +32574,7 @@
 			},
 			"swanna": {
 				"abilities": {
-					"0": "Wind Rider",
+					"0": "Jetstream Ballet",
 					"1": "Swift Swim",
 					"H": "Gale Wings"
 				},
@@ -33827,7 +33882,8 @@
 				"abilities": {
 					"0": "Drought",
 					"1": "Smoldering Shroud",
-					"H": "Solid Rock"
+					"H": "Solid Rock",
+					"S": "Ashen Seeds"
 				},
 				"baseStats": {
 					"hp": 100,
@@ -34642,7 +34698,8 @@
 				"abilities": {
 					"0": "Blazing Mane",
 					"1": "Soul Fire",
-					"H": "Wraith Procession"
+					"H": "Wraith Procession",
+					"S": "Ashen Seeds"
 				},
 				"baseStats": {
 					"hp": 83,
@@ -36493,7 +36550,8 @@
 				"abilities": {
 					"0": "Cold Open",
 					"1": "Pressure",
-					"H": "Technician"
+					"H": "Technician",
+					"S": "Bad Seeds"
 				},
 				"baseStats": {
 					"hp": 85,
@@ -38079,7 +38137,7 @@
 				"name": "Aevian Ascendance",
 				"num": 11965,
 				"gen": 9,
-				"desc": "Transforms Poliwrath into Normal/Dragon Poliwrath-Rejuv on entry. Suppresses weather effects; Rainbow Field grants one random non-maxed stat stage other than evasion each turn. Full local Mind's Eye: Normal/Fighting attacks can hit Ghosts, Fairy/Dark moves gain STAB, moves ignore evasion boosts, and external accuracy drops fail. Cold Eclipse gives 30% damage reduction and 1.3x damaging move power. Water moves heal 1/4 base max HP instead of hitting; Water Absorb also heals 1/16 each turn on Underwater, grounded Water Surface, or grounded Poison types on Murkwater.",
+				"desc": "Transforms Poliwrath into Normal/Dragon Poliwrath-Rejuv on entry. Suppresses weather effects; Rainbow Field grants one random non-maxed stat stage other than evasion each turn. Full local Mind's Eye: Normal/Fighting attacks can hit Ghosts, Fairy/Dark moves gain STAB, moves ignore evasion boosts, and external accuracy drops fail. Cold Eclipse gives 20% damage reduction and 1.3x damaging move power. Water moves heal 1/4 base max HP instead of hitting; Water Absorb also heals 1/16 each turn on Underwater, grounded Water Surface, or grounded Poison types on Murkwater.",
 				"shortDesc": "Cloud Nine + Mind's Eye + Water Absorb. Poliwrath becomes Rejuv.",
 				"rating": 4,
 				"flags": {
@@ -38094,6 +38152,18 @@
 				"desc": "On entry, Druddigon permanently transforms into Druddigon-Rejuv. If Rain Dance or Primordial Sea is active, its Special Attack is multiplied by 1.5 and it loses 1/8 of its max HP at turn end. Contact attackers have a 30% paralysis chance, or 60% on Electric Terrain and Short-Circuit. Absorbs other Pokemon's Electric moves, healing 1/4 max HP instead of being hit. Heals 1/16 max HP each turn on Electric Terrain and Short-Circuit. If this Ability is suppressed, its Rejuv form reverts to the normal species until it switches out, even if suppression ends earlier.",
 				"shortDesc": "Transforms Druddigon on entry.",
 				"rating": 5,
+				"flags": {
+					"breakable": 1
+				},
+				"isNonstandard": null
+			},
+			"aeviandiscipline": {
+				"name": "Aevian Discipline",
+				"num": 12060,
+				"gen": 9,
+				"desc": "Alakazam becomes its pure Fighting-type Rejuv form. Includes local Iron Fist and Own Tempo: punching moves have 1.4x power, and the user cannot be confused or affected by Intimidate.",
+				"shortDesc": "Alakazam becomes Rejuv. Iron Fist + Own Tempo.",
+				"rating": 3,
 				"flags": {
 					"breakable": 1
 				},
@@ -38599,6 +38669,18 @@
 				},
 				"isNonstandard": null
 			},
+			"ashenseeds": {
+				"name": "Ashen Seeds",
+				"num": 12030,
+				"gen": 9,
+				"desc": "On entry, creates Ashen Aura for 5 turns, or 8 with Amplifield Rock; on no field or Volcanic Field, instead creates full Infernal Eclipse. Existing Ashen Aura or Infernal Eclipse is not refreshed. Field restrictions apply. Does not summon sun. Ashen Aura preserves the base field: Fire attacks gain 1.3x; Dark Pulse, Snarl, Night Daze, Night Slash, Lash Out, Fiery Wrath, Bitter Blade and Infernal Parade gain 1.5x. A successful Infernal Parade or Eruption by an unsuppressed holder converts Ashen Aura into Infernal Eclipse, consuming the Aura and preserving its remaining turns. The specific Cold Eclipse plus Ashen Aura plus successful Eruption combination can be triggered by any user; it consumes the Aura and preserves the existing field timer instead. Full Infernal Eclipse only: halves damage exploiting the holder’s Fire-type weakness unless bypassed; eligible non-Fire contact attackers acquire Ashen Seeds without entry setup; non-Fire holders lose 1 Attack and Special Attack each turn; active unsuppressed holders lock the field against changes and destruction, but natural expiry remains allowed.",
+				"shortDesc": "Entry: Ashen Aura or Infernal Eclipse. Infernal Parade/Eruption can develop the Aura.",
+				"rating": 4,
+				"flags": {
+					"breakable": 1
+				},
+				"isNonstandard": null
+			},
 			"asoneglastrier": {
 				"name": "As One (Glastrier)",
 				"num": 266,
@@ -38833,7 +38915,7 @@
 				"name": "Bad Seeds",
 				"num": 11457,
 				"gen": 9,
-				"desc": "On entry, creates Frozen Aura for 5 turns, or 8 with Amplifield Rock; on no field, Icy Field or Snowy Mountain, instead attempts full Cold Eclipse for the same duration. Existing Frozen Aura is not refreshed. Field locks apply; fails on Dragon’s Den. Does not summon hail. Frozen Aura preserves the base field and boosts both sides: Ice attacks 1.3x; Ice Beam, Blizzard, Frost Breath and Aurora Beam an additional 1.2x (1.56x total); Dark Pulse, Snarl, Night Daze, Night Slash, Lash Out, Stomping Tantrum, Raging Fury, Thrash, Outrage, Rage, Freezing Glare, Fiery Wrath, Roar of Time, Bitter Blade and Bitter Malice 1.5x; Chilling Water 2x. Freeze Shock and Ice Burn skip charging; Dragon Rage deals 140 fixed damage. Only on full Cold Eclipse: halves damage exploiting the holder’s current Ice-type weakness after field typing effects, unless bypassed; eligible non-Ice contact attackers acquire Bad Seeds without repeating entry setup; non-Ice holders lose 1 Attack and Sp. Atk at turn end. Active unsuppressed holders prevent changing or breaking Cold Eclipse, but normal duration expiry remains allowed.",
+				"desc": "On entry, creates Frozen Aura for 5 turns, or 8 with Amplifield Rock; on no field or Icy Field, instead attempts full Cold Eclipse for the same duration. Existing Frozen Aura is not refreshed. A successful Blizzard, Glaciate or Sheer Cold by an unsuppressed Bad Seeds holder converts Frozen Aura into full Cold Eclipse, consuming the Aura and preserving its remaining turns. Other users, Gravity and hail cannot trigger ordinary seed development. The specific Infernal Eclipse plus Frozen Aura plus successful Glaciate or Sheer Cold combination can instead be triggered by any user; it consumes the Aura and preserves the existing field timer. Field locks apply; fails on Dragon’s Den. Does not summon hail. Frozen Aura preserves the base field and boosts both sides: Ice attacks 1.3x; Ice Beam, Blizzard, Frost Breath and Aurora Beam an additional 1.2x (1.56x total); Dark Pulse, Snarl, Night Daze, Night Slash, Lash Out, Stomping Tantrum, Raging Fury, Thrash, Outrage, Rage, Freezing Glare, Fiery Wrath, Roar of Time, Bitter Blade and Bitter Malice 1.5x; Chilling Water 2x. Freeze Shock and Ice Burn skip charging; Dragon Rage deals 140 fixed damage. Only on full Cold Eclipse: halves damage exploiting the holder’s current Ice-type weakness after field typing effects, unless bypassed; eligible non-Ice contact attackers acquire Bad Seeds without repeating entry setup; non-Ice holders lose 1 Attack and Sp. Atk at turn end. Active unsuppressed holders prevent changing or breaking Cold Eclipse, but normal duration expiry remains allowed.",
 				"shortDesc": "Entry: Frozen Aura or Cold Eclipse for 5/8 turns; extra effects only on Cold Eclipse.",
 				"rating": 4,
 				"flags": {
@@ -38962,8 +39044,8 @@
 				"name": "Battle Spoils",
 				"num": 11492,
 				"gen": 9,
-				"desc": "Once per turn after a contact attack damages opposing HP, the living active holder restores 1/16 max HP after the whole attack. No ally or Substitute-only trigger. Normal healing restrictions apply.",
-				"shortDesc": "Contact attacks heal 1/16 max HP once per turn after opposing HP damage.",
+				"desc": "Once per turn, heals 1/16 max HP after a contact attack damages a foe directly, if still active and alive. Healing happens after the entire attack, even if it hits multiple times. Substitute-only damage does not count, and normal healing restrictions apply.",
+				"shortDesc": "Damaging a foe with a contact attack heals 1/16 HP, once per turn.",
 				"rating": 3,
 				"flags": {},
 				"isNonstandard": null
@@ -39066,6 +39148,26 @@
 				"flags": {},
 				"isNonstandard": null
 			},
+			"blackwateranchor": {
+				"name": "Blackwater Anchor",
+				"num": 12015,
+				"gen": 9,
+				"desc": "Full Steelworker, including Steel STAB, its attacking-stat boost, resistances, Poison immunity and field effects. Grass/Steel hits lower each foe's Speed by 1, once per turn. Anchor Shot tethers one trapped foe, draining 1/16 max HP per turn and healing the user by actual damage dealt. On Water Surface or Underwater, draining a poisoned tethered foe also heals adjacent allies by that amount. Either participant leaving ends the tether; escape, suppression, damage immunity and healing restrictions apply.",
+				"shortDesc": "Steelworker; Grass/Steel hits slow foes. Anchor Shot drains; water fields share poisoned-foe drain.",
+				"rating": 4,
+				"flags": {},
+				"isNonstandard": null
+			},
+			"blackwatervenom": {
+				"name": "Blackwater Venom",
+				"num": 12016,
+				"gen": 9,
+				"desc": "Damaging Poison hits poison foes with negative Speed stages, respecting status protections. Dragon attacks gain 25% power against poisoned or badly poisoned foes. Ignores the Speed penalties of Water Surface and Underwater.",
+				"shortDesc": "Poison hits poison slowed foes; Dragon gains 25% vs poison. Ignores water-field Speed penalties.",
+				"rating": 4,
+				"flags": {},
+				"isNonstandard": null
+			},
 			"blademastery": {
 				"name": "Blade Mastery",
 				"num": 10165,
@@ -39112,7 +39214,7 @@
 				"name": "Raging Flame",
 				"num": 10035,
 				"gen": 9,
-				"desc": "Gains +1 Speed after each full active turn. Prevents flinching and Intimidate Attack drops. Prevents freezing outside Cold Eclipse and cures freeze. Incoming Water and Ice attacks use half the offensive stat. Dragon Den blocks Fire moves; Dragon Den, Volcanic and Cold Eclipse entry give +1 Defense and Sp. Def.",
+				"desc": "Gains +1 Speed after each full active turn. Prevents flinching and Intimidate Attack drops. Prevents freezing outside Cold Eclipse and cures freeze. Incoming Water and Ice attacks use half the offensive stat. Dragon Den and Infernal Eclipse block Fire moves; Dragon Den, Volcanic and Infernal Eclipse entry give +1 Defense and Sp. Def.",
 				"shortDesc": "Speed Boost + Magma Armor + Inner Focus.",
 				"rating": 4.5,
 				"flags": {},
@@ -39228,6 +39330,16 @@
 				"flags": {},
 				"isNonstandard": null
 			},
+			"breakingnews": {
+				"name": "Breaking News",
+				"num": 12014,
+				"gen": 9,
+				"desc": "Forewarn: scans each foe on entry and every opposing switch-in, reveals a strongest attack and removes Illusion. Takes 20% less move damage, or 25% less from the latest warned attack; these reductions do not stack. Successful reveals on Psychic Terrain grant +2 Sp. Atk. Successful opposing status moves expose their user through the following turn. The reporter and adjacent allies ignore exposed foes' positive defensive stages; the reporter's Psychic/Fairy attacks also gain 25% power. An exposed foe switching out clears its mark; leaving ends that reporter's marks.",
+				"shortDesc": "Forewarn; exposes status users: bypass their defensive boosts; Psychic/Fairy gains 25%.",
+				"rating": 4,
+				"flags": {},
+				"isNonstandard": null
+			},
 			"breakwater": {
 				"name": "Breakwater",
 				"num": 10620,
@@ -39306,7 +39418,7 @@
 				"name": "Burning Crown",
 				"num": 10023,
 				"gen": 9,
-				"desc": "On entry, lowers adjacent foes Attack by 1 under normal Intimidate rules. Unbound Blaze converts eligible Normal moves to Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale, and grants Dragon STAB. Prevents freezing outside Cold Eclipse and cures freeze; incoming Water and Ice attacks use half the offensive stat. Dragon's Den blocks Fire moves. Dragon's Den, Volcanic and Cold Eclipse entry give +1 Defense and Sp. Def. At turn end, foes take Fire damage of 1/16 base max HP, doubled if burned or the holder used Fire/Dragon that turn. Fire immunities apply; effectiveness scales chip only in Free-for-All. Self-Sufficient heals 1/16 max HP each turn and prevents sandstorm/hail damage. Levitate grants normal airborne Ground and grounded-hazard protection. Has one 20% attack-damage reduction. New World, Cold Eclipse and Starlight Arena retain 1.5x move power.",
+				"desc": "On entry, lowers adjacent foes Attack by 1 under normal Intimidate rules. Unbound Blaze converts eligible Normal moves to Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale, and grants Dragon STAB. Prevents freezing outside Cold Eclipse and cures freeze; incoming Water and Ice attacks use half the offensive stat. Dragon's Den and Infernal Eclipse block Fire moves. Dragon's Den, Volcanic and Infernal Eclipse entry give +1 Defense and Sp. Def. At turn end, foes take Fire damage of 1/16 base max HP, doubled if burned or the holder used Fire/Dragon that turn. Fire immunities apply; effectiveness scales chip only in Free-for-All. Self-Sufficient heals 1/16 max HP each turn and prevents sandstorm/hail damage. Levitate grants normal airborne Ground and grounded-hazard protection. Has one 20% attack-damage reduction. New World, Cold Eclipse and Starlight Arena retain 1.5x move power.",
 				"shortDesc": "Intimidate + Unbound Blaze + Self-Sufficient + Levitate.",
 				"rating": 4.5,
 				"flags": {
@@ -39318,7 +39430,7 @@
 				"name": "Burning Ego",
 				"num": 10256,
 				"gen": 9,
-				"desc": "Contact attackers have a 30% burn chance, or 60% on Volcanic. On Cold Eclipse, gains +1 Defense and Sp. Def on entry instead and cannot burn through contact. Prevents freezing outside Cold Eclipse and cures freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den blocks Fire moves. On Dragon's Den, Volcanic or Cold Eclipse entry, gains +1 Defense and Sp. Def. Moves ignore bypassable abilities. After dealing HP damage, heals 1/16 max HP once per turn. The first opposing HP hit gives +1 Attack and Sp. Atk and heals 1/16 max HP; later hits heal 1/20 until it completes a damaging move and resets this trigger. On Ashen Beach, New World, Starlight Arena, Cold Eclipse and Fairy Tale, the first qualifying physical and special hits also give +1 Defense and Sp. Def respectively. In those fields, a qualifying hit at half HP or less instead heals 1/4 max HP once per activation; blocked healing does not spend it. These effects stop on Bewitched Woods, Haunted and Holy Field. On Cold Eclipse, the two entry effects together give +2 Defense and Sp. Def. Against an opposing effective Ultra Instinct (including composites), its attacks ignore its own negative Attack and Sp. Atk stages. Ultra Instinct instead reduces its first HP-damaging move each turn by 40% and ignores positive Attack or Sp. Atk stages for that protected move. Stored stages are unchanged; normal +1 retaliation is unchanged. The rivalry is disabled on Bewitched Woods, Haunted and Holy.",
+				"desc": "Contact attackers have a 30% burn chance, or 60% on Volcanic. On Infernal Eclipse, Flame Body grants +1 Defense and Sp. Def on entry; Cold Eclipse disables contact burns. Prevents freezing outside Cold Eclipse and cures freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den and Infernal Eclipse block Fire moves. On Dragon's Den, Volcanic or Infernal Eclipse entry, gains +1 Defense and Sp. Def. Moves ignore bypassable abilities. After dealing HP damage, heals 1/16 max HP once per turn. The first opposing HP hit gives +1 Attack and Sp. Atk and heals 1/16 max HP; later hits heal 1/20 until it completes a damaging move and resets this trigger. On Ashen Beach, New World, Starlight Arena, Cold Eclipse and Fairy Tale, the first qualifying physical and special hits also give +1 Defense and Sp. Def respectively. In those fields, a qualifying hit at half HP or less instead heals 1/4 max HP once per activation; blocked healing does not spend it. These effects stop on Bewitched Woods, Haunted and Holy Field. On Infernal Eclipse, the two entry effects together give +2 Defense and Sp. Def. Against an opposing effective Ultra Instinct (including composites), its attacks ignore its own negative Attack and Sp. Atk stages. Ultra Instinct instead reduces its first HP-damaging move each turn by 40% and ignores positive Attack or Sp. Atk stages for that protected move. Stored stages are unchanged; normal +1 retaliation is unchanged. The rivalry is disabled on Bewitched Woods, Haunted and Holy.",
 				"shortDesc": "Contact attackers have a 30% burn chance, or 60% on Volcanic.",
 				"rating": 4,
 				"flags": {},
@@ -39348,7 +39460,7 @@
 				"name": "Burning Spirit",
 				"num": 10040,
 				"gen": 9,
-				"desc": "Mold Breaker + Inner Focus. Attacks have 1.3x power against an opposing target still queued to move or that switched in this turn, except a target with Battle Bond. The first opposing HP-damaging move each turn deals 30% less damage across all hits. Substitute-only damage preserves the allowance. After a whole attack deals opposing HP damage, heals 1/16 max HP once per turn while alive; healing restrictions apply. Multi-hit and spread moves heal only once; a failed heal cannot retry within the same move. On Ashen Beach, New World, Starlight Arena and Cold Eclipse: 35% reduction and 1/8 healing. The turn allowance persists through switches, form/ability changes and Transform. Bewitched Woods, Haunted and Holy disable Ultra Instinct's effects. Against Ultra Ego or its composites, the protected move deals 40% less damage and ignores positive offensive stages. Ultra Ego ignores its own negative Attack or Sp. Atk stages when attacking Ultra Instinct. Has the Predator interaction. Burning Spirit also has full local Magma Armor: Water and Ice attacks use half attacking stats; Dragon's Den blocks Fire moves; prevents freeze outside Cold Eclipse and cures freeze; Dragon's Den, Volcanic and Cold Eclipse entry grant +1 Defense and Sp. Def. Opportunist copies foes' positive Attack, Defense, Sp. Atk, Sp. Def and Speed changes at the normal move, entry, transformation and residual flushes; it does not copy accuracy or evasion. Copied boosts cannot loop, and each queued gain is applied once.",
+				"desc": "Mold Breaker + Inner Focus. Attacks have 1.3x power against an opposing target still queued to move or that switched in this turn, except a target with Battle Bond. The first opposing HP-damaging move each turn deals 30% less damage across all hits. Substitute-only damage preserves the allowance. After a whole attack deals opposing HP damage, heals 1/16 max HP once per turn while alive; healing restrictions apply. Multi-hit and spread moves heal only once; a failed heal cannot retry within the same move. On Ashen Beach, New World, Starlight Arena and Cold Eclipse: 35% reduction and 1/8 healing. The turn allowance persists through switches, form/ability changes and Transform. Bewitched Woods, Haunted and Holy disable Ultra Instinct's effects. Against Ultra Ego or its composites, the protected move deals 40% less damage and ignores positive offensive stages. Ultra Ego ignores its own negative Attack or Sp. Atk stages when attacking Ultra Instinct. Has the Predator interaction. Burning Spirit also has full local Magma Armor: Water and Ice attacks use half attacking stats; Dragon's Den and Infernal Eclipse block Fire moves; prevents freeze outside Cold Eclipse and cures freeze; Dragon's Den, Volcanic and Infernal Eclipse entry grant +1 Defense and Sp. Def. Opportunist copies foes' positive Attack, Defense, Sp. Atk, Sp. Def and Speed changes at the normal move, entry, transformation and residual flushes; it does not copy accuracy or evasion. Copied boosts cannot loop, and each queued gain is applied once.",
 				"shortDesc": "Ultra Instinct + Opportunist (five combat stats only) + Magma Armor.",
 				"rating": 4,
 				"flags": {},
@@ -39414,7 +39526,7 @@
 				"name": "Caldera Core",
 				"num": 10039,
 				"gen": 9,
-				"desc": "Drought and Magma Armor. On entry, summons sun for 5 turns, or 8 with Heat Rock. Prevents freezing outside Cold Eclipse and cures freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den blocks Fire moves. On Dragon's Den, Volcanic or Cold Eclipse entry, gains +1 Defense and Sp. Def.",
+				"desc": "Drought and Magma Armor. On entry, summons sun for 5 turns, or 8 with Heat Rock. Prevents freezing outside Cold Eclipse and cures freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den and Infernal Eclipse block Fire moves. On Dragon's Den, Volcanic or Infernal Eclipse entry, gains +1 Defense and Sp. Def.",
 				"shortDesc": "Drought + Magma Armor.",
 				"rating": 4.5,
 				"flags": {
@@ -39781,6 +39893,18 @@
 				},
 				"isNonstandard": null
 			},
+			"composed": {
+				"name": "Composed",
+				"num": 12061,
+				"gen": 9,
+				"desc": "Incoming physical attacks deal 20% less damage, whether or not they make contact. Includes Inner Focus and Magic Guard: prevents flinching and Intimidate, and prevents indirect damage. Status conditions can still be inflicted. Special damage is not reduced, and this ability does not boost damage dealt.",
+				"shortDesc": "Physical damage taken: 0.8x. Inner Focus + Magic Guard.",
+				"rating": 3.5,
+				"flags": {
+					"breakable": 1
+				},
+				"isNonstandard": null
+			},
 			"compoundeyes": {
 				"name": "Compound Eyes",
 				"num": 14,
@@ -39881,7 +40005,7 @@
 				"name": "Corona Furnace",
 				"num": 11972,
 				"gen": 9,
-				"desc": "Full local Flame Body: eligible contact attackers have a 30% burn chance, or 60% on Volcanic Field. On Cold Eclipse, ability activation instead grants +1 Defense and Sp. Def and contact burns are disabled. Damaging moves with effective Fire typing ignore only positive defensive stages. Negative stages, screens, type effectiveness and defensive abilities still apply.",
+				"desc": "Full local Flame Body: eligible contact attackers have a 30% burn chance, or 60% on Volcanic Field. On Cold Eclipse, contact burns are disabled. Damaging moves with effective Fire typing ignore only positive defensive stages. Negative stages, screens, type effectiveness and defensive abilities still apply.",
 				"shortDesc": "Flame Body; damaging Fire moves ignore positive defensive stages.",
 				"rating": 4,
 				"flags": {},
@@ -40351,8 +40475,8 @@
 				"name": "Deep Resonance",
 				"num": 11263,
 				"gen": 9,
-				"desc": "Soundproof. Psychic Noise that damages a surviving foe also lowers that foe's Attack by one stage, once per target per move. Normal stat-drop protection applies; Psychic Noise has its effects.",
-				"shortDesc": "Psychic Noise damage lowers surviving foes' Attack once per target per move.",
+				"desc": "Has Soundproof. After Psychic Noise damages a foe directly, lowers its Attack by 1 stage if it survives. Activates once per target per move. Normal stat-drop protection applies, and Psychic Noise keeps its usual effects.",
+				"shortDesc": "Soundproof; Psychic Noise also lowers the foe's Attack by 1 stage.",
 				"rating": 4,
 				"flags": {
 					"breakable": 1
@@ -40512,8 +40636,8 @@
 				"name": "Disorienting Mind",
 				"num": 11311,
 				"gen": 9,
-				"desc": "Full local Infiltrator. Each Psychic attack that damages a surviving foe's HP attempts to inflict Torment, following normal Torment restrictions. Can activate again after Torment ends.",
-				"shortDesc": "Infiltrator; damaging Psychic hits inflict Torment.",
+				"desc": "Has Infiltrator. Psychic attacks that damage a foe directly apply Torment if it survives, preventing it from using the same move twice in a row. Normal Torment protections apply. Can apply Torment again after it ends.",
+				"shortDesc": "Infiltrator; Psychic hits apply Torment: the foe cannot repeat its last move.",
 				"rating": 3.5,
 				"flags": {},
 				"isNonstandard": null
@@ -40734,8 +40858,8 @@
 				"name": "Dredger",
 				"num": 11332,
 				"gen": 9,
-				"desc": "Once per turn after its Ground attack deals opposing HP damage, removes one layer of its side's Spikes, or one Toxic Spikes layer if no Spikes remain. No other hazards are removed. Multihit and spread attacks activate once.",
-				"shortDesc": "First Ground HP hit each turn removes one own Spikes layer, then Toxic Spikes if none remain.",
+				"desc": "Once per turn, a Ground attack that damages a foe directly removes one layer of Spikes from your side. If there are no Spikes, removes one layer of Toxic Spikes instead. Other hazards remain. Multiple hits or targets still remove only one layer.",
+				"shortDesc": "Ground hits clear one Spikes layer, or Toxic Spikes if none remain, once per turn.",
 				"rating": 3,
 				"flags": {},
 				"isNonstandard": null
@@ -40804,6 +40928,16 @@
 				"flags": {},
 				"isNonstandard": null
 			},
+			"dunecaller": {
+				"name": "Dune Caller",
+				"num": 12011,
+				"gen": 9,
+				"desc": "Summons sand for 5 turns on entry, or 8 with Smooth Rock. During effective sand, damaging sound hits lower each foe's Speed by 1 stage, once per target per turn.",
+				"shortDesc": "Summons sand; sound attacks lower foes' Speed during sand.",
+				"rating": 4,
+				"flags": {},
+				"isNonstandard": null
+			},
 			"duneclaws": {
 				"name": "Dune Claws",
 				"num": 10442,
@@ -40811,6 +40945,16 @@
 				"desc": "Tough Claws: contact moves have 1.3x power. After a STAB attack damages opposing HP, clears its side’s entry hazards and its own Leech Seed and partial trapping. Cleanup occurs once after the whole attack and can repeat on later attacks; contact is not required.",
 				"shortDesc": "Tough Claws; STAB HP hits clear own hazards, Leech Seed and binding.",
 				"rating": 3.5,
+				"flags": {},
+				"isNonstandard": null
+			},
+			"dunehunter": {
+				"name": "Dune Hunter",
+				"num": 12013,
+				"gen": 9,
+				"desc": "Inner Focus. Ground and Dark attacks gain 30% power against foes with negative Speed stages. During effective sand, takes 25% less attack damage before acting that turn.",
+				"shortDesc": "Inner Focus; Ground/Dark hit slowed foes harder. Sand reduces damage before it moves.",
+				"rating": 4,
 				"flags": {},
 				"isNonstandard": null
 			},
@@ -41282,8 +41426,8 @@
 				"name": "False Liberation",
 				"num": 11723,
 				"gen": 9,
-				"desc": "Mold Breaker. Once per entry, Dark damage to a foe’s HP inflicts Torment. Only a newly applied Torment spends the use; Torment is not refreshed.",
-				"shortDesc": "Mold Breaker; once per entry, a Dark HP hit inflicts Torment.",
+				"desc": "Has Mold Breaker. Once each switch-in, a Dark attack that damages a foe directly applies Torment if it survives: it cannot use the same move twice in a row. Only successfully applying Torment spends the use. It does not refresh an existing Torment.",
+				"shortDesc": "Mold Breaker; once each switch-in, a Dark hit stops the foe repeating its last move.",
 				"rating": 5,
 				"flags": {},
 				"isNonstandard": null
@@ -41379,7 +41523,7 @@
 				"num": 49,
 				"gen": 3,
 				"desc": "Contact attackers have a 30% burn chance, or 60% on Volcanic. On Cold Eclipse, gains +1 Defense and Sp. Def on entry instead and cannot burn through contact.",
-				"shortDesc": "30% contact burn (60% Volcanic); Cold Eclipse gives defenses instead.",
+				"shortDesc": "30% contact burn (60% Volcanic); Cold Eclipse disables Fire absorption and contact burns.",
 				"rating": 2,
 				"flags": {},
 				"isNonstandard": null
@@ -41398,8 +41542,8 @@
 				"name": "Flash Fire",
 				"num": 18,
 				"gen": 3,
-				"desc": "Absorbs Fire moves and gains a 1.5x Fire boost until switching out or losing the ability. Burning Field or grounded Volcanic Field also grants the boost. On Cold Eclipse, Fire absorption is disabled and entry gives +1 Defense and Sp. Def.",
-				"shortDesc": "Absorbs Fire for a 1.5x Fire boost; Cold Eclipse gives defenses instead.",
+				"desc": "Absorbs Fire moves and gains a 1.5x Fire boost until switching out or losing the ability. Burning Field or grounded Volcanic Field also grants the boost. On Cold Eclipse, Fire absorption is disabled.",
+				"shortDesc": "Absorbs Fire for a 1.5x Fire boost; Cold Eclipse disables Fire absorption and contact burns.",
 				"rating": 3.5,
 				"flags": {
 					"breakable": 1
@@ -41758,7 +41902,7 @@
 				"name": "Furnace Engine",
 				"num": 10056,
 				"gen": 9,
-				"desc": "Fire or Water HP hits give +6 Speed. Entry on Burning, Superheated or Volcanic gives +6 Speed; Dragon's Den, Volcanic and Cold Eclipse give +1 Defense and Sp. Def. Midnight Zone entry makes it Water-type. Water Surface, Underwater and Volcanic give +1 Speed each turn. Contact attackers have a 30% burn chance, or 60% on Volcanic; this cannot burn on Cold Eclipse. Heals 1/16 max HP each turn. Takes 20% less attack damage, or 40% less from super-effective attacks. If it dealt Fire- or Rock-type move damage to opposing HP that turn, at the end of the turn opposing Pokemon take Fire-type damage equal to 1/16 max HP, blocked by Fire immunities. Only in Free-for-All does Fire type effectiveness scale this chip.",
+				"desc": "Fire or Water HP hits give +6 Speed. Entry on Burning, Superheated or Volcanic gives +6 Speed; Dragon's Den, Volcanic and Infernal Eclipse give +1 Defense and Sp. Def. Midnight Zone entry makes it Water-type. Water Surface, Underwater and Volcanic give +1 Speed each turn. Contact attackers have a 30% burn chance, or 60% on Volcanic; this cannot burn on Cold Eclipse. Heals 1/16 max HP each turn. Takes 20% less attack damage, or 40% less from super-effective attacks. If it dealt Fire- or Rock-type move damage to opposing HP that turn, at the end of the turn opposing Pokemon take Fire-type damage equal to 1/16 max HP, blocked by Fire immunities. Only in Free-for-All does Fire type effectiveness scale this chip.",
 				"shortDesc": "Fire/Water hits: +6 Speed. Contact burns, recovery, damage reduction and Fire chip.",
 				"rating": 4,
 				"flags": {
@@ -42301,7 +42445,7 @@
 				"name": "Heat Reservoir",
 				"num": 10525,
 				"gen": 9,
-				"desc": "Absorbs Fire moves and gains a 1.5x Fire boost until switching out or losing the ability. Burning Field or grounded Volcanic Field also grants the boost. On Cold Eclipse, Fire absorption is disabled and entry gives +1 Defense and Sp. Def. After a boosted Armor Cannon deals damage, consumes the Flash Fire charge to prevent Armor Cannon's own Defense and Sp. Def drops.",
+				"desc": "Absorbs Fire moves and gains a 1.5x Fire boost until switching out or losing the ability. Burning Field or grounded Volcanic Field also grants the boost. On Cold Eclipse, Fire absorption is disabled. After a boosted Armor Cannon deals damage, consumes the Flash Fire charge to prevent Armor Cannon's own Defense and Sp. Def drops.",
 				"shortDesc": "A boosted Armor Cannon avoids its own defensive drops.",
 				"rating": 3.5,
 				"flags": {
@@ -42427,7 +42571,7 @@
 				"name": "Hisuian Resolve",
 				"num": 10340,
 				"gen": 9,
-				"desc": "Recoil and crash moves, Explosion, Self-Destruct and Misty Explosion have 1.2x power; Struggle is excluded. On Chessboard, all moves gain a further 1.2x power. Prevents move recoil except Struggle. Crash and Life Orb damage still apply. Prevents freezing outside Cold Eclipse and cures freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den blocks Fire moves. On Dragon's Den, Volcanic or Cold Eclipse entry, gains +1 Defense and Sp. Def.",
+				"desc": "Recoil and crash moves, Explosion, Self-Destruct and Misty Explosion have 1.2x power; Struggle is excluded. On Chessboard, all moves gain a further 1.2x power. Prevents move recoil except Struggle. Crash and Life Orb damage still apply. Prevents freezing outside Cold Eclipse and cures freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den and Infernal Eclipse block Fire moves. On Dragon's Den, Volcanic or Infernal Eclipse entry, gains +1 Defense and Sp. Def.",
 				"shortDesc": "No move recoil except Struggle; field defenses.",
 				"rating": 5,
 				"flags": {
@@ -42699,8 +42843,8 @@
 				"name": "Ice Scales",
 				"num": 246,
 				"gen": 8,
-				"desc": "Takes half damage from special attacks and is immune to hail damage. Mirror Arena entry gives +2 evasion. Icy and Snowy Mountain neutralize weaknesses from its Ice typing. Cold Eclipse doubles Defense.",
-				"shortDesc": "Half special damage; no hail damage; icy-field defenses.",
+				"desc": "Takes half damage from special attacks and is immune to hail damage. Mirror Arena entry gives +2 evasion. Icy and Snowy Mountain neutralize weaknesses from its Ice typing.  On Cold Eclipse and Infernal Eclipse, doubles Defense in addition to its normal special-damage reduction.",
+				"shortDesc": "Halves special damage; Cold/Infernal Eclipse: 2x Defense. Hail immunity.",
 				"rating": 4,
 				"flags": {
 					"breakable": 1
@@ -43016,6 +43160,16 @@
 				"flags": {
 					"breakable": 1
 				},
+				"isNonstandard": null
+			},
+			"jetstreamballet": {
+				"name": "Jetstream Ballet",
+				"num": 12020,
+				"gen": 9,
+				"desc": "Full Wind Rider: absorbs wind moves for +1 Attack, gains +1 Attack on entering or starting Tailwind, and gains +1 Attack/Sp. Atk each turn in Strong Winds. During its side's Tailwind, physical Water attacks gain 20% power and do not make contact.",
+				"shortDesc": "Wind Rider; Tailwind boosts physical Water attacks by 20% and removes contact.",
+				"rating": 4,
+				"flags": {},
 				"isNonstandard": null
 			},
 			"joyride": {
@@ -43406,8 +43560,8 @@
 				"name": "Locking Grip",
 				"num": 11304,
 				"gen": 9,
-				"desc": "Once per entry, its first damaging Bug attack against a foe applies Torment after HP damage. A hit absorbed by Substitute spends the use without affecting its holder; misses, protection and immunity do not spend it.",
-				"shortDesc": "First damaging Bug attack each entry applies Torment after damage.",
+				"desc": "Once each switch-in, the first Bug attack that damages a foe directly applies Torment if it survives: it cannot use the same move twice in a row. Hitting a Substitute spends the use without applying Torment. Misses, protection and immunity preserve the use; changing abilities does not reset it.",
+				"shortDesc": "First Bug attack each switch-in applies Torment: the foe cannot repeat its last move.",
 				"rating": 4,
 				"flags": {
 					"breakable": 1
@@ -43418,8 +43572,8 @@
 				"name": "Lockjaw",
 				"num": 10559,
 				"gen": 9,
-				"desc": "Biting moves have 1.5x power. Biting hits inflict Torment on a surviving foe for 2 turns. Does not prevent switching.",
-				"shortDesc": "Bites have 1.5x power.",
+				"desc": "Biting moves gain 50% power. A bite that damages a foe directly applies Torment for 2 turns if it survives, preventing it from using the same move twice in a row. The foe can still switch out. Substitute blocks this effect.",
+				"shortDesc": "Bites gain 50% power and apply 2-turn Torment: the foe cannot repeat its last move.",
 				"rating": 3.5,
 				"flags": {},
 				"isNonstandard": null
@@ -43553,7 +43707,7 @@
 				"name": "Magma Armor",
 				"num": 40,
 				"gen": 3,
-				"desc": "Prevents freezing outside Cold Eclipse and cures freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den blocks Fire moves. On Dragon's Den, Volcanic or Cold Eclipse entry, gains +1 Defense and Sp. Def.",
+				"desc": "Prevents freezing outside Cold Eclipse and cures freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den and Infernal Eclipse block Fire moves. On Dragon's Den, Volcanic or Infernal Eclipse entry, gains +1 Defense and Sp. Def.",
 				"shortDesc": "Halves Water/Ice attacking stats; prevents freeze; field defenses.",
 				"rating": 0.5,
 				"flags": {
@@ -43597,7 +43751,7 @@
 				"name": "Malice Well",
 				"num": 11209,
 				"gen": 9,
-				"desc": "Flame Body: contact attackers have a 30% burn chance (60% on Volcanic Field); Cold Eclipse instead grants +1 Defense and Sp. Def on entry and disables contact burns. Once per actual entry, the first opposing damaging move that executes against it grants +1 Sp. Atk after the entire move finishes if it remains active and survives, including Protect, misses and immunity. All hits and spread targets share one activation. Ally moves, self damage, residual damage and moves that never execute do not qualify. Ability changes or suppression do not reset usage. The activation is consumed even at +6; switching resets usage and normal stat stages, and Haze removes the boost without refreshing usage.",
+				"desc": "Flame Body: contact attackers have a 30% burn chance (60% on Volcanic Field); Cold Eclipse disables contact burns. Once per actual entry, the first opposing damaging move that executes against it grants +1 Sp. Atk after the entire move finishes if it remains active and survives, including Protect, misses and immunity. All hits and spread targets share one activation. Ally moves, self damage, residual damage and moves that never execute do not qualify. Ability changes or suppression do not reset usage. The activation is consumed even at +6; switching resets usage and normal stat stages, and Haze removes the boost without refreshing usage.",
 				"shortDesc": "Contact may burn; first survived opposing attack each entry: +1 Sp. Atk, even after Protect.",
 				"rating": 3.5,
 				"flags": {},
@@ -43763,8 +43917,8 @@
 				"name": "Meteor Core",
 				"num": 11500,
 				"gen": 9,
-				"desc": "After an ordinary Meteor Mash damages opposing HP, the living active user attempts one +1 Attack boost if that use did not already trigger its Attack boost. Once per entire move, including extra hits. Normal stat-change rules apply.",
-				"shortDesc": "Meteor Mash: +1 Attack after opposing HP damage if its own boost did not trigger.",
+				"desc": "After Meteor Mash damages a foe directly, raises Attack by 1 stage if its usual Attack boost did not trigger. Activates once per attack, if still active and alive. Z-Moves, Max Moves and Substitute-only damage do not count. Normal stat-change rules apply.",
+				"shortDesc": "Meteor Mash raises Attack after damaging a foe, unless its own boost already triggered.",
 				"rating": 3,
 				"flags": {},
 				"isNonstandard": null
@@ -43852,6 +44006,16 @@
 				"desc": "Its Electric- and Steel-type moves use 1.3x Attack and Sp. Atk. In Electric Terrain, its Sp. Atk is multiplied by 1.5.",
 				"shortDesc": "Electric/Steel moves use 1.3x Atk/SpA; Electric Terrain gives 1.5x SpA.",
 				"rating": 0,
+				"flags": {},
+				"isNonstandard": null
+			},
+			"miragedrift": {
+				"name": "Mirage Drift",
+				"num": 12012,
+				"gen": 9,
+				"desc": "Overcoat. During effective sand, heals 1/8 max HP each turn and Ground attacks gain 30% power. Special Ground attacks ignore the user's negative Sp. Atk stages on any field.",
+				"shortDesc": "Overcoat; sand heals 1/8 HP and boosts Ground. Special Ground ignores its Sp. Atk drops.",
+				"rating": 4,
 				"flags": {},
 				"isNonstandard": null
 			},
@@ -44487,7 +44651,7 @@
 				"name": "Old North",
 				"num": 11975,
 				"gen": 9,
-				"desc": "Full local Ice Body, Ice Scales and Technician. Half special attack damage; hail immunity, contact frostbite and cold-weather/field recovery. Mirror Arena grants +2 evasion; Icy/Snowy Mountain neutralize Ice weaknesses; Cold Eclipse doubles Defense. Moves at most 60 effective BP (80 on Factory) receive Technician's 1.5x boost.",
+				"desc": "Full local Ice Body, Ice Scales and Technician. Half special attack damage; hail immunity, contact frostbite and cold-weather/field recovery. Mirror Arena grants +2 evasion; Icy/Snowy Mountain neutralize Ice weaknesses;  Moves at most 60 effective BP (80 on Factory) receive Technician's 1.5x boost.",
 				"shortDesc": "Ice Body + Ice Scales + Technician.",
 				"rating": 4,
 				"flags": {},
@@ -44515,12 +44679,22 @@
 				"flags": {},
 				"isNonstandard": null
 			},
+			"opencage": {
+				"name": "Open Cage",
+				"num": 12010,
+				"gen": 9,
+				"desc": "After a damaging sound move hits an opponent, clears binding, Taunt, Encore, Disable and Torment from the user and adjacent allies. They can escape trapping effects through the end of the following turn. The escape effect ends on switching.",
+				"shortDesc": "Sound attacks free self and nearby allies from move restrictions and trapping.",
+				"rating": 3,
+				"flags": {},
+				"isNonstandard": null
+			},
 			"openingoverture": {
 				"name": "Opening Overture",
 				"num": 10455,
 				"gen": 9,
-				"desc": "Once per switch-in, successfully using a sound move starts Tailwind for 3 turns. An existing longer Tailwind is not shortened.",
-				"shortDesc": "Once per entry, a successful sound move starts 3-turn Tailwind.",
+				"desc": "Once each switch-in, successfully using a sound move starts Tailwind for 3 turns, doubling your side's Speed. It does not shorten an existing longer Tailwind.",
+				"shortDesc": "First successful sound move each switch-in starts 3-turn Tailwind.",
 				"rating": 4,
 				"flags": {},
 				"isNonstandard": null
@@ -44613,8 +44787,8 @@
 				"name": "Palm Mastery",
 				"num": 10542,
 				"gen": 9,
-				"desc": "Incoming Fire and Ice attacks use half the attacker's offensive stat. Immune to hail damage. Force Palm always inflicts paralysis when it lands, subject to status immunities. Its paralysis becomes a primary effect rather than a secondary roll.",
-				"shortDesc": "Force Palm always paralyzes when it lands.",
+				"desc": "Has Thick Fat. Force Palm always paralyzes when it hits, provided the target can be paralyzed. This is a primary move effect, so Shield Dust and Covert Cloak do not block the paralysis.",
+				"shortDesc": "Thick Fat; Force Palm always paralyzes if the target can be paralyzed.",
 				"rating": 3.5,
 				"flags": {
 					"breakable": 1
@@ -45206,8 +45380,8 @@
 				"name": "Pressure Kiln",
 				"num": 11247,
 				"gen": 9,
-				"desc": "Stores half the actual HP damage from opposing direct moves, up to 1/4 max HP. Its next Fire attack dealing opposing HP damage consumes the reservoir and heals the stored amount. Residual, recoil, ally and Substitute-only damage do not fill it. Switching clears storage.",
-				"shortDesc": "Stores half foe move HP damage (cap 1/4 max HP); next Fire HP hit consumes it to heal.",
+				"desc": "Stores half the damage taken from opposing attacks as healing, up to 1/4 max HP. The next Fire attack that damages a foe directly uses all stored healing. This does not reduce incoming damage. Residual, recoil, ally and Substitute-only damage do not fill the reserve. Switching clears it.",
+				"shortDesc": "Stores half the damage taken; the next Fire hit uses it to heal, up to 1/4 HP.",
 				"rating": 4,
 				"flags": {},
 				"isNonstandard": null
@@ -45318,8 +45492,8 @@
 				"name": "Prism Armor",
 				"num": 232,
 				"gen": 7,
-				"desc": "Takes 20% less attack damage, plus a further 25% reduction against super-effective attacks or on Crystal Cavern and Dark Crystal Cavern (40% total). Defense and Sp. Def are 4/3x on Cold Eclipse, Dark Crystal Cavern and Rainbow. Immune to hail damage on Cold Eclipse.",
-				"shortDesc": "20% less attack damage; 40% less if super effective; field defenses.",
+				"desc": "Takes 20% less attack damage, plus a further 25% reduction against super-effective attacks or on Crystal Cavern and Dark Crystal Cavern (40% total). Defense and Sp. Def are 4/3x on Cold Eclipse, Infernal Eclipse, Dark Crystal Cavern and Rainbow. Immune to hail damage on Cold Eclipse.",
+				"shortDesc": "20% less damage; extra 25% vs super effective. Eclipse defenses: 4/3x.",
 				"rating": 3,
 				"flags": {},
 				"isNonstandard": null
@@ -45819,8 +45993,8 @@
 				"name": "Raised Quills",
 				"num": 10530,
 				"gen": 9,
-				"desc": "Successfully using a status move stores one non-stacking retaliation. The next opposing damaging hit spends it and attempts to poison the attacker, whether or not the move makes contact. Normal poison immunities apply. Switching clears preparation.",
-				"shortDesc": "A successful status move primes poison retaliation against the next opposing damaging hit.",
+				"desc": "Successfully using a status move prepares one poison retaliation. The next foe to damage it directly is poisoned if possible, even without contact. That hit spends the retaliation even if poison is blocked. Repeated status moves do not stack it; switching clears it.",
+				"shortDesc": "After using a status move, poisons the next foe that damages it.",
 				"rating": 4,
 				"flags": {},
 				"isNonstandard": null
@@ -45974,8 +46148,8 @@
 				"name": "Reinflate",
 				"num": 11210,
 				"gen": 9,
-				"desc": "Punk Rock: sound power 1.3x (1.5x on Big Top/Cave); incoming sound damage halved. Once per turn after a whole sound attack deals opposing HP damage, heals 1/4 max HP while alive and active. Heal Block applies; switching or changing abilities does not refresh the turn allowance.",
-				"shortDesc": "Punk Rock; sound HP damage heals 1/4 max HP once per turn.",
+				"desc": "Sound attacks gain 30% power (50% on Big Top or Cave), and incoming sound damage is halved. Once per turn, heals 1/4 max HP after a sound attack damages a foe directly, if still active and alive. Heal Block applies. Switching or changing abilities does not reset the turn limit.",
+				"shortDesc": "Punk Rock; damaging a foe with a sound attack heals 1/4 HP, once per turn.",
 				"rating": 3.5,
 				"flags": {},
 				"isNonstandard": null
@@ -46046,6 +46220,26 @@
 				"flags": {
 					"breakable": 1
 				},
+				"isNonstandard": null
+			},
+			"rememberedflame": {
+				"name": "Remembered Flame",
+				"num": 12018,
+				"gen": 9,
+				"desc": "Flash Fire + Download. After Extreme Speed damages a foe, the next damaging Fire move gains 30% power. The charge lasts through the following turn, cannot stack, and is consumed on attempting the Fire attack, even on a miss or block. Switching or losing the ability clears the charge.",
+				"shortDesc": "Flash Fire + Download; landing Extreme Speed strengthens the next Fire attack by 30%.",
+				"rating": 4,
+				"flags": {},
+				"isNonstandard": null
+			},
+			"rememberedstep": {
+				"name": "Remembered Step",
+				"num": 12017,
+				"gen": 9,
+				"desc": "Quick Attack becomes a special Psychic attack, retaining its normal power and priority. It gains 50% power while Reflect protects the user's side. Priority-blocking effects apply normally.",
+				"shortDesc": "Quick Attack becomes special Psychic damage and gains 50% power behind Reflect.",
+				"rating": 4,
+				"flags": {},
 				"isNonstandard": null
 			},
 			"requiem": {
@@ -46146,6 +46340,16 @@
 				},
 				"isNonstandard": null
 			},
+			"riftherald": {
+				"name": "Rift Herald",
+				"num": 11999,
+				"gen": 9,
+				"desc": "On entry, creates Rift Eclipse for 5 turns, or 8 with an active Amplifield Rock. An existing Rift Eclipse is not refreshed. Changing another Eclipse preserves its remaining duration. Field locks still apply. Does not create weather or an Aura.",
+				"shortDesc": "On entry, creates Rift Eclipse for 5 turns (8 with Amplifield Rock).",
+				"rating": 4,
+				"flags": {},
+				"isNonstandard": null
+			},
 			"riftofruin": {
 				"name": "Rift of Ruin",
 				"num": 11896,
@@ -46192,8 +46396,8 @@
 				"name": "Rimebreaker",
 				"num": 11245,
 				"gen": 9,
-				"desc": "Refrigerate, including its field boosts only for converted moves. Once per turn, an Ice move dealing opposing HP damage removes this side's Stealth Rock and one Spikes layer. Toxic Spikes and Sticky Web remain. Natural Ice moves receive no extra ability damage boost.",
-				"shortDesc": "Ice HP hits clear own Stealth Rock and one Spikes layer once per turn.",
+				"desc": "Has Refrigerate, including its field bonuses for converted moves. Once per turn, an Ice attack that damages a foe directly removes Stealth Rock and one layer of Spikes from your side. Toxic Spikes and Sticky Web remain. Naturally Ice-type moves do not gain Refrigerate's power boost.",
+				"shortDesc": "Refrigerate; Ice hits clear your Stealth Rock and one Spikes layer, once per turn.",
 				"rating": 4,
 				"flags": {},
 				"isNonstandard": null
@@ -46202,7 +46406,7 @@
 				"name": "Rime Knuckle",
 				"num": 10118,
 				"gen": 9,
-				"desc": "Takes 20% less attack damage, or 40% less from super-effective attacks. Punching moves have 1.4x power. Contact attackers have a 30% chance of frostbite. Heals 1/16 max HP each turn in hail or snow, or on Icy, Snowy Mountain and Cold Eclipse without those weathers; hail on Cold Eclipse heals 1/8 instead. Immune to hail damage. Damaging moves have a 20% chance to cause frostbite (40% on Icy Field). KOs restore 1/8 max HP, or 1/4 against Mega, G-Max, Terastallized, Stellar or Z-Move item targets. Ice Body adds a 30% chance to frostbite contact attackers, hail immunity, and healing in hail/snow or on Icy, Snowy Mountain and Cold Eclipse fields. Healing is 1/16 max HP, or 1/8 in hail on Cold Eclipse.",
+				"desc": "Takes 20% less attack damage, or 40% less from super-effective attacks. Punching moves have 1.4x power. Contact attackers have a 30% chance of frostbite. Heals 1/16 max HP each turn in hail or snow, or on Icy, Snowy Mountain and Cold Eclipse without those weathers; hail on Cold Eclipse heals 1/8 instead. Immune to hail damage. Damaging moves have a 20% chance to cause frostbite (40% on Icy or Snowy Field). KOs restore 1/8 max HP, or 1/4 against Mega, G-Max, Terastallized, Stellar or Z-Move item targets. Ice Body adds a 30% chance to frostbite contact attackers, hail immunity, and healing in hail/snow or on Icy, Snowy Mountain and Cold Eclipse fields. Healing is 1/16 max HP, or 1/8 in hail on Cold Eclipse.",
 				"shortDesc": "Frostbite chance; KO healing.",
 				"rating": 4,
 				"flags": {
@@ -46714,8 +46918,8 @@
 				"name": "Scale Rhythm",
 				"num": 11507,
 				"gen": 9,
-				"desc": "After a damaging sound move deals opposing HP damage, the living active user gains 1 Defense stage once after the entire move, including spread or multiple hits. This occurs after the ordinary Clanging Scales Defense drop. No boost for misses, protection, immunity or Substitute-only damage; normal stat-change rules apply.",
-				"shortDesc": "+1 Defense once after a damaging sound move deals opposing HP damage.",
+				"desc": "After a sound attack damages a foe directly, raises Defense by 1 stage if still active and alive. Activates once per attack, even with multiple hits or targets. For Clanging Scales, this happens after its Defense drop. Substitute-only damage does not count. Normal stat-change rules apply.",
+				"shortDesc": "Damaging a foe with a sound attack raises Defense by 1 stage after the attack.",
 				"rating": 3,
 				"flags": {},
 				"isNonstandard": null
@@ -47306,8 +47510,8 @@
 				"name": "Silk Ward",
 				"num": 10423,
 				"gen": 9,
-				"desc": "Once per entry, the first super-effective damaging hit deals half damage. After that ward activates, clears its negative Speed stages if it survives, without granting an extra Speed stage. Positive Speed is preserved.",
-				"shortDesc": "First super-effective hit each entry: half damage; surviving clears negative Speed.",
+				"desc": "Once each switch-in, the first super-effective hit deals half damage. After that hit, clears the holder's negative Speed stages if it survives, including when the hit damages its Substitute. Positive Speed stages stay unchanged.",
+				"shortDesc": "Halves the first super-effective hit each switch-in; clears Speed drops if it survives.",
 				"rating": 4,
 				"flags": {
 					"breakable": 1
@@ -47508,8 +47712,8 @@
 				"name": "Solar Bud",
 				"num": 11203,
 				"gen": 9,
-				"desc": "Once per entry, finishing a turn in effective sun stores one bud. The next Grass attack dealing HP damage to a foe consumes it to cure status and restore 1/8 max HP.",
-				"shortDesc": "Once/entry: sun stores a bud; Grass HP damage spends it to cure status/heal 1/8.",
+				"desc": "Once each switch-in, ending a turn in active sun prepares a bud. The next Grass attack that damages a foe directly consumes it, curing the holder's status and restoring 1/8 base max HP. Misses, protection, immunity and Substitute-only damage preserve the bud.",
+				"shortDesc": "End a turn in sun, then damage a foe with Grass to cure status and heal 1/8 HP. Once per switch-in.",
 				"rating": 2,
 				"flags": {},
 				"isNonstandard": null
@@ -47732,7 +47936,7 @@
 				"name": "Soul Siphon",
 				"num": 11232,
 				"gen": 9,
-				"desc": "Direct Fire/Ghost damage to opponents heals one-third of actual HP damage, capped at one-sixth max HP per turn across all hits and targets. Also prevents the damaged target from recovering HP through the end of the following turn; switching clears this effect and repeated hits refresh it. Does not siphon from substitutes, allies, residual or future damage, or moves that already drain. Normal drain interactions apply. Absorbs Fire moves and gains a 1.5x Fire boost until switching out or losing the ability. Burning Field or grounded Volcanic Field also grants the boost. On Cold Eclipse, Fire absorption is disabled and entry gives +1 Defense and Sp. Def.",
+				"desc": "Direct Fire/Ghost damage to opponents heals one-third of actual HP damage, capped at one-sixth max HP per turn across all hits and targets. Also prevents the damaged target from recovering HP through the end of the following turn; switching clears this effect and repeated hits refresh it. Does not siphon from substitutes, allies, residual or future damage, or moves that already drain. Normal drain interactions apply. Absorbs Fire moves and gains a 1.5x Fire boost until switching out or losing the ability. Burning Field or grounded Volcanic Field also grants the boost. On Cold Eclipse, Fire absorption is disabled.",
 				"shortDesc": "Absorbs Fire; Fire/Ghost hits drain 1/3 damage, capped at 1/6 HP per turn, and block healing.",
 				"rating": 4,
 				"flags": {
@@ -48211,6 +48415,18 @@
 				},
 				"isNonstandard": null
 			},
+			"stormmemory": {
+				"name": "Storm Memory",
+				"num": 12019,
+				"gen": 9,
+				"desc": "Once per entry, the first super-effective opposing attack that deals HP damage is weakened by 25% for the whole attack. Surviving stores one Storm Charge: the next damaging Electric move gains 50% power and heals the user for 25% of actual damage dealt to foes. Attempting that Electric attack consumes the charge, even on a miss or block. Switching or losing the ability clears the charge; ability changes do not refresh the guard.",
+				"shortDesc": "First super-effective attack: 25% less damage; surviving empowers a draining Electric attack.",
+				"rating": 4,
+				"flags": {
+					"breakable": 1
+				},
+				"isNonstandard": null
+			},
 			"stormpower": {
 				"name": "Storm Power",
 				"num": 10391,
@@ -48365,7 +48581,7 @@
 				"name": "Sun Reserve",
 				"num": 11267,
 				"gen": 9,
-				"desc": "Flash Fire, including its Fire power boost and field effects. Absorbing a Fire attack additionally heals 1/8 max HP at most once per turn, subject to healing restrictions. Cold Eclipse has Flash Fire's entry Defense/Sp. Def boosts and disables Fire absorption, so no absorption heal occurs there. Field-granted Flash Fire boosts do not trigger healing.",
+				"desc": "Flash Fire, including its Fire power boost and field effects. Absorbing a Fire attack additionally heals 1/8 max HP at most once per turn, subject to healing restrictions. Cold Eclipse disables Flash Fire absorption. Field-granted Flash Fire boosts do not trigger healing.",
 				"shortDesc": "Absorbing a Fire attack also heals 1/8 HP once per turn.",
 				"rating": 4,
 				"flags": {
@@ -48377,7 +48593,7 @@
 				"name": "Sun Sovereign",
 				"num": 10039,
 				"gen": 9,
-				"desc": "Summons sun for 8 turns on entry. Eligible Normal moves become Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Dragon moves receive STAB. Prevents freezing outside Cold Eclipse and cures freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den blocks Fire moves. On Dragon's Den, Volcanic or Cold Eclipse entry, gains +1 Defense and Sp. Def. Immune to hail damage. At turn end, deals Fire-type damage to foes equal to 1/16 max HP, doubled if the foe is burned or the holder used a Fire or Dragon move that turn. Fire immunities block this damage; type effectiveness scales it only in Free-for-All.",
+				"desc": "Summons sun for 8 turns on entry. Eligible Normal moves become Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Dragon moves receive STAB. Prevents freezing outside Cold Eclipse and cures freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den and Infernal Eclipse block Fire moves. On Dragon's Den, Volcanic or Infernal Eclipse entry, gains +1 Defense and Sp. Def. Immune to hail damage. At turn end, deals Fire-type damage to foes equal to 1/16 max HP, doubled if the foe is burned or the holder used a Fire or Dragon move that turn. Fire immunities block this damage; type effectiveness scales it only in Free-for-All.",
 				"shortDesc": "Eight-turn sun + Unbound Blaze.",
 				"rating": 4.5,
 				"flags": {
@@ -49370,7 +49586,7 @@
 				"name": "Unbound Blaze",
 				"num": 10139,
 				"gen": 9,
-				"desc": "Eligible Normal moves become Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Dragon moves receive STAB. Prevents freezing outside Cold Eclipse and cures freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den blocks Fire moves. On Dragon's Den, Volcanic or Cold Eclipse entry, gains +1 Defense and Sp. Def. Immune to hail damage. At turn end, deals Fire-type damage to foes equal to 1/16 max HP, doubled if the foe is burned or the holder used a Fire or Dragon move that turn. Fire immunities block this damage; type effectiveness scales it only in Free-for-All.",
+				"desc": "Eligible Normal moves become Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Dragon moves receive STAB. Prevents freezing outside Cold Eclipse and cures freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den and Infernal Eclipse block Fire moves. On Dragon's Den, Volcanic or Infernal Eclipse entry, gains +1 Defense and Sp. Def. Immune to hail damage. At turn end, deals Fire-type damage to foes equal to 1/16 max HP, doubled if the foe is burned or the holder used a Fire or Dragon move that turn. Fire immunities block this damage; type effectiveness scales it only in Free-for-All.",
 				"shortDesc": "Dragon conversion/STAB, Magma Armor and Fire chip.",
 				"rating": 4,
 				"flags": {
@@ -49448,8 +49664,8 @@
 				"name": "Undertow",
 				"num": 10583,
 				"gen": 9,
-				"desc": "Water Absorb, including its field effects. Damaging Water hits ground surviving foes as with Smack Down. Does not trap them or bypass protection, Substitute or Water immunity.",
-				"shortDesc": "Water hits ground surviving foes.",
+				"desc": "Water attacks gain Smack Down's grounding effect when they damage a foe directly. A surviving airborne foe is grounded until it switches out, allowing Ground moves to hit it. Substitute and Water immunities still block this effect. Also has Water Absorb, including its field healing.",
+				"shortDesc": "Water attacks gain Smack Down's grounding effect. Water Absorb.",
 				"rating": 3.5,
 				"flags": {
 					"breakable": 1
@@ -66821,6 +67037,22 @@
 				"shortDesc": "Revives a fainted Pokemon to 50% HP.",
 				"hasSheerForceBoost": false
 			},
+			"riftopening": {
+				"name": "Rift Opening",
+				"num": 31001,
+				"type": "Dark",
+				"category": "Status",
+				"basePower": 0,
+				"accuracy": true,
+				"critRatio": 1,
+				"pp": 5,
+				"priority": 0,
+				"target": "all",
+				"flags": {},
+				"desc": "Creates Rift Eclipse for 5 turns, or 8 with Amplifield Rock. Changes another eclipse to Rift Eclipse without refreshing its duration. Field locks apply.",
+				"shortDesc": "Creates Rift Eclipse for 5 turns (8 with rock).",
+				"hasSheerForceBoost": false
+			},
 			"risingvoltage": {
 				"name": "Rising Voltage",
 				"num": 804,
@@ -68142,8 +68374,8 @@
 					"mirror": 1,
 					"metronome": 1
 				},
-				"desc": "130-power special Ice attack with 90% accuracy and a 30% chance to inflict frostbite. After the whole attempted move resolves, the user pays 1/4 max HP unless this move directly knocked out an opponent. Misses, protection, immunity and Substitute-only damage still cost HP. This is an HP cost, not recoil.",
-				"shortDesc": "130 BP; 30% frostbite; no opposing KO costs 1/4 HP.",
+				"desc": "130-power Ice attack with 90% accuracy and a 30% chance to inflict frostbite. Uses the higher staged Attack or Sp. Atk (Special on ties), against Defense or Sp. Def respectively. Items, burn, screens and opposing defenses do not affect this category comparison. After the whole attempted move resolves, the user pays 1/4 max HP unless this move directly knocked out an opponent. Misses, protection, immunity and Substitute-only damage still cost HP. This is an HP cost, not recoil.",
+				"shortDesc": "Adaptive; 130 BP; 30% frostbite; no KO costs 1/4 HP.",
 				"secondaries": [
 					{
 						"chance": 30,
@@ -69146,8 +69378,8 @@
 				"priority": 0,
 				"target": "all",
 				"flags": {},
-				"desc": "Creates Frozen Aura for 5 turns, or 8 with Amplifield Rock, preserving weather and the base field. Ice attacks gain 1.3x power; Ice Beam, Blizzard, Frost Breath and Aurora Beam gain an additional 1.2x (1.56x total). Dark Pulse, Snarl, Night Daze, Night Slash, Lash Out, Stomping Tantrum, Raging Fury, Thrash, Outrage, Rage, Freezing Glare, Fiery Wrath, Roar of Time, Bitter Blade and Bitter Malice gain 1.5x; Chilling Water gains 2x. Freeze Shock and Ice Burn skip charging; Dragon Rage deals 140 fixed damage. Existing promotion conditions are unchanged. Does not summon hail.",
-				"shortDesc": "Frozen Aura 5/8 turns: Ice 1.3x, named move boosts; existing Cold Eclipse promotion rules.",
+				"desc": "Creates Snowy Field for 5 turns. Does not summon hail or Frozen Aura. Rain becomes hail at the end of the turn on Snowy Field.",
+				"shortDesc": "Creates Snowy Field for 5 turns. No hail.",
 				"hasSheerForceBoost": false
 			},
 			"soak": {
@@ -81240,6 +81472,10 @@
 				"static",
 				"voltabsorb"
 			],
+			"aeviandiscipline": [
+				"ironfist",
+				"owntempo"
+			],
 			"aeviandream": [
 				"baddreams",
 				"shedskin",
@@ -81383,6 +81619,7 @@
 			"armortail": [],
 			"aromaveil": [],
 			"ascendance": [],
+			"ashenseeds": [],
 			"asoneglastrier": [],
 			"asonespectrier": [],
 			"astralconcord": [
@@ -81491,6 +81728,10 @@
 				"whiplash",
 				"shedskin"
 			],
+			"blackwateranchor": [
+				"steelworker"
+			],
+			"blackwatervenom": [],
 			"blademastery": [
 				"sharpness"
 			],
@@ -81538,6 +81779,9 @@
 				"magicguard"
 			],
 			"breakaway": [],
+			"breakingnews": [
+				"forewarn"
+			],
 			"breakwater": [
 				"propellertail"
 			],
@@ -81668,6 +81912,10 @@
 			"competitive": [],
 			"completeparasitism": [
 				"selfrepair"
+			],
+			"composed": [
+				"innerfocus",
+				"magicguard"
 			],
 			"compoundeyes": [],
 			"conductivity": [],
@@ -81898,8 +82146,14 @@
 			],
 			"dryskin": [],
 			"dualwield": [],
+			"dunecaller": [
+				"sandstream"
+			],
 			"duneclaws": [
 				"toughclaws"
+			],
+			"dunehunter": [
+				"innerfocus"
 			],
 			"duneterror": [
 				"sandstream",
@@ -82382,6 +82636,9 @@
 				"whiplash"
 			],
 			"islandcurrent": [],
+			"jetstreamballet": [
+				"windrider"
+			],
 			"joyride": [
 				"aerilate",
 				"violentrush"
@@ -82549,6 +82806,9 @@
 			],
 			"mindseye": [],
 			"minus": [],
+			"miragedrift": [
+				"overcoat"
+			],
 			"mirechorus": [
 				"liquidvoice",
 				"poisontouch"
@@ -82707,6 +82967,7 @@
 			"oneiricdust": [
 				"psychicsurge"
 			],
+			"opencage": [],
 			"openingoverture": [],
 			"opensky": [],
 			"opportunist": [],
@@ -83040,6 +83301,11 @@
 			"relicbeam": [],
 			"relicinstinct": [],
 			"relicmishap": [],
+			"rememberedflame": [
+				"flashfire",
+				"download"
+			],
+			"rememberedstep": [],
 			"requiem": [
 				"cursedbody",
 				"filter"
@@ -83065,6 +83331,7 @@
 				"accumulation",
 				"sandstream"
 			],
+			"riftherald": [],
 			"riftofruin": [],
 			"rightfulexalt": [
 				"serenegrace",
@@ -83526,6 +83793,7 @@
 				"stormpower",
 				"lightningrod"
 			],
+			"stormmemory": [],
 			"stormpower": [],
 			"stormsong": [
 				"liquidvoice",
@@ -86975,6 +87243,42 @@
 			],
 			"monarchofice": [
 				"slushrush"
+			],
+			"opencage": [],
+			"dunecaller": [
+				"sandstream"
+			],
+			"miragedrift": [
+				"overcoat"
+			],
+			"dunehunter": [
+				"innerfocus"
+			],
+			"breakingnews": [
+				"forewarn"
+			],
+			"blackwateranchor": [
+				"steelworker"
+			],
+			"blackwatervenom": [],
+			"rememberedstep": [],
+			"rememberedflame": [
+				"flashfire",
+				"download"
+			],
+			"stormmemory": [],
+			"jetstreamballet": [
+				"windrider"
+			],
+			"riftherald": [],
+			"ashenseeds": [],
+			"aeviandiscipline": [
+				"ironfist",
+				"owntempo"
+			],
+			"composed": [
+				"innerfocus",
+				"magicguard"
 			]
 		},
 		"learnsetExclusions": {

@@ -4,6 +4,8 @@ for(const[id,p]of Object.entries(require('./mega-approved-choices.json')))before
 for(const[id,normal]of Object.entries(require('./mega-approved-variants.json')))if(before[normal]?.length)before[id]=before[normal];
 exports.passives=(id,fallback)=>before[id]||fallback;
 before.lapras=['liquidvoice'];
+before.chatot=['opencage'];
+before.gardevoir=['breakingnews'];
 before.yanmega=['levitate'];
 for(const[id,p]of Object.entries(require('./gmax-approved.json').passives))before[id]=[p];
 exports.effects=(id,original)=>{const removed={moonveil:['friendguard'],parentalbond:['friendguard'],ironwill:['secondwind'],calderacore:['sheerforce'],razorcurrent:['strongjaw']};const added={gemeye:['magicguard'],mirrorgreed:['opportunist'],cursedmarionette:['frisk'],uncheckedassault:['limber']};return [...new Set([...original.filter(p=>!removed[id]?.includes(p)),...(added[id]||[])])].sort();};
@@ -317,3 +319,10 @@ exports.effects=(id,f)=>id==='exalt'?['defiant','imperialedge','moldbreaker','sh
 {const prior=exports.effects;exports.effects=(id,f)=>({kickfiend:['kickfiend','limber','serenegrace','striker'],punchfiend:['innerfocus','ironfist','keeneye','punchfiend','serenegrace','unseenfist'],spinfiend:['spinfiend','steadfast','technician','vitalspirit']}[id]||prior(id,f));}
 
 {const prior=exports.effects;exports.effects=(id,f)=>id==='emperorsresolve'?['competitive','emperorsresolve','swiftswim']:prior(id,f);}
+
+// Approved lore partnership keeps Swanna's alternate slots.
+{const prior=exports.abilities;exports.abilities=(id,f)=>id==='swanna'?{...prior(id,f),0:'Jetstream Ballet'}:prior(id,f);}
+
+// Approved Eclipse event slots and Aevian Discipline; ordinary choices remain unchanged.
+{const prior=exports.abilities;const events={froslass:'Bad Seeds',glalie:'Bad Seeds',weavile:'Bad Seeds',arbolivaaevian:'Bad Seeds',typhlosionhisui:'Ashen Seeds',ninetales:'Ashen Seeds',camerupt:'Ashen Seeds',torkoal:'Ashen Seeds',hoopa:'Rift Herald',bronzong:'Rift Herald',mismagius:'Rift Herald',alakazam:'Aevian Discipline'};
+exports.abilities=(id,f)=>({...prior(id,f),...(events[id]?{S:events[id]}:{}),...(id==='arbolivaaevian'?{1:'Arena Trap'}:{})});}

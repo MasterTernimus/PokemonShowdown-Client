@@ -126,6 +126,8 @@ block('PASSIVE COMPONENT EXCLUSIONS', 'const CUSTOM_ABILITY_UPDATE_IDS =', `cons
 block('ABILITIES', 'const CUSTOM_ABILITY_UPDATE_IDS =', `Object.assign(CUSTOM_ABILITY_UPDATES, ${json(snapshot.abilities)});`);
 block('MOVES', 'const CUSTOM_MOVE_UPDATE_IDS =', `Object.assign(CUSTOM_MOVE_UPDATES, ${json(snapshot.moves)});\nObject.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, ${json(snapshot.components)});`);
 block('ITEMS', 'const CUSTOM_ITEM_IDS =', `Object.assign(CUSTOM_ITEM_UPDATES, ${json(snapshot.items)});`);
+const disciplineMoves = require(path.join(server, 'dist/data/alakazam-rejuv')).AevianDisciplineMoves;
+block('DISCIPLINE MOVES', 'const CUSTOM_SPECIES:', `const AEVIAN_DISCIPLINE_MOVES: readonly string[] = ${json(disciplineMoves)};`);
 if (sourceFingerprint(server) !== builtSourceFingerprint) throw new Error('Server source changed during export; retry from a stable checkout.');
 const hash = crypto.createHash('sha256');
 if (!changed.includes('sim/dex-species.ts')) changed.push('sim/dex-species.ts');

@@ -12,7 +12,7 @@ describe('Controlled Fury Anger Point client contract',()=>{
  it('retains exact requested slots and avoids distribution to related species',()=>{
   assert.deepEqual(Dex.species.get('crabominable').abilities,{0:'Icebreaker',1:'Iron Fist',H:'Controlled Fury'});
   assert.deepEqual(Dex.species.get('primeape').abilities,{0:'Vital Spirit',1:'Controlled Fury',H:'Defiant'});
-  assert.deepEqual(Dex.species.get('krookodile').abilities,{0:'Intimidate',1:'Dread Jaw',H:'Vendetta'});
+  assert.deepEqual(Dex.species.get('krookodile').abilities,{0:'Intimidate',1:'Dread Jaw',H:'Dune Hunter'});
   for(const id of ['krookodile','annihilape'])assert.deepEqual(Dex.species.get(id).passives,['controlledfury']);
   assert.equal(Dex.species.get('mankey').abilities[1],'Anger Point');
   assert.deepEqual(Dex.species.get('annihilape').abilities,{0:'Unbound Spirit',1:'Raging Heart',H:'Defiant'});

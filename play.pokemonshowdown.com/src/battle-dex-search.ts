@@ -359,7 +359,7 @@ class DexSearch {
 	}
 
 	filterPokemonPicker(rows: SearchRow[]): SearchRow[] {
-		rows = rows.filter(row => row[0] !== 'item' || row[1] !== 'hydreigonite');
+		rows = rows.filter(row => row[0] !== 'item' || !['hydreigonite', 'empoleonitex'].includes(row[1]));
 		rows = rows.filter(row => row[0] !== 'pokemon' || (!Dex.isSpeciesHidden(this.dex.species.get(row[1]).id) && !isTotemSpecies(window.BattlePokedex?.[row[1]])));
 		if (this.typedSearch?.searchType !== 'pokemon') return rows;
 		const options = this.pickerOptions;
@@ -761,11 +761,13 @@ class DexSearch {
 			let type = entry[1];
 
 			if (!id) break;
+			const disciplineSearch = this.typedSearch?.species === 'alakazamrejuv' ||
+				(this.typedSearch?.species === 'alakazam' && toID(this.typedSearch.set?.ability) === 'aeviandiscipline');
 			if (type === 'move' && (
 				id.startsWith('hiddenpower') ||
 				toID(BattleAliases[id] || '').startsWith('hiddenpower') ||
 				query === 'hp' || query.startsWith('hiddenpower')
-			)) continue;
+			) && !disciplineSearch) continue;
 
 			if (passType === 'fuzzy') {
 				// fuzzy match pass; stop after 2 results
@@ -1319,6 +1321,9 @@ abstract class BattleTypedSearch<T extends SearchType> {
 		if (['poliwrath','poliwrathrejuv'].includes(speciesid) && toID(this.set?.ability) === 'aevianascendance' && this.dex.gen >= 9 && AEVIAN_ASCENDANCE_MOVE_SOURCES[moveid]) return true;
 		if (['galvantula','galvantularejuv'].includes(speciesid) && toID(this.set?.ability) === 'aevianweb' && this.dex.gen >= 9 && AEVIAN_WEB_MOVE_SOURCES[moveid]) return true;
 		const species = this.dex.species.get(speciesid);
+		if (species.id === 'alakazamrejuv' || (species.id === 'alakazam' && toID(this.set?.ability) === 'aeviandiscipline')) {
+			return AEVIAN_DISCIPLINE_MOVES.includes(moveid);
+		}
 		if ((species.id === 'sigilyphrejuv' ||
 			(species.id === 'sigilyph' && toID(this.set?.ability) === 'aeviangrief'))) {
 			return AEVIAN_GRIEF_MOVE_IDS.includes(moveid);
@@ -1931,6 +1936,7 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 		const dex = this.dex;
 
 		let abilityid: ID = set ? toID(set.ability) : '' as ID;
+		if ((species.id === 'alakazamrejuv' || (species.id === 'alakazam' && abilityid === 'aeviandiscipline')) && AEVIAN_DISCIPLINE_MOVES.includes(id)) return true;
 		if ((species.id === 'sigilyphrejuv' || (species.id === 'sigilyph' && abilityid === 'aeviangrief')) &&
 			AEVIAN_GRIEF_MOVE_IDS.includes(id)) return true;
 		const itemid: ID = set ? toID(set.item) : '' as ID;
@@ -2362,6 +2368,10 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 		if (species.id === 'sigilyphrejuv' ||
 			(species.id === 'sigilyph' && toID(this.set?.ability) === 'aeviangrief')) {
 			moves = [...AEVIAN_GRIEF_MOVE_IDS];
+			sketchMoves = [];
+		}
+		if (species.id === 'alakazamrejuv' || (species.id === 'alakazam' && toID(this.set?.ability) === 'aeviandiscipline')) {
+			moves = [...AEVIAN_DISCIPLINE_MOVES] as ID[];
 			sketchMoves = [];
 		}
 		if (species.id === 'umbreon' && !isUmbreonAscendance) {

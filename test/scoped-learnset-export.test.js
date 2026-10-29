@@ -17,3 +17,15 @@ describe('Scoped Gen9 movepool removal export and ancestor search',()=>{
   assert(raw.meowsticf.learnset.revivalblessing);
  });
 });
+
+describe('Rift Opening client learnset export',()=>{
+ it('exposes all twenty selected learners in the current-generation move picker',()=>{
+  const learners=['alakazam','gengar','mismagius','claydol','dusknoir','deoxys','bronzong','spiritomb','dialga','palkia','giratina','cresselia','darkrai','gothitelle','beheeyem','hoopa','solgaleo','lunala','necrozma','hatterene'];
+  assert.deepEqual(Object.keys(raw).filter(id=>raw[id].learnset?.riftopening).sort(),learners.slice().sort());
+  for(const id of learners){
+   const search=new BattleMoveSearch('move','gen9doublesrockyfield',{species:id,ability:Object.values(Dex.species.get(id).abilities)[0],moves:[]});
+   assert.equal(search.canLearn(id,'riftopening'),true,id);
+   assert(search.getBaseResults().some(row=>row[0]==='move'&&row[1]==='riftopening'),id+' picker');
+  }
+ });
+});

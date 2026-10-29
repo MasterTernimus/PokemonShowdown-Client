@@ -41,7 +41,7 @@ describe('Aura client support', () => {
   const field = BattleFieldRules.find(f => f.id === 'coldeclipseterrain');
   const result = BattleFieldTooltips.evaluate(field, Dex.moves.get('surf'), source, source, '', 0, BattleAuraRules.electricterrain);
   assert.deepEqual(result.move.types, ['Water', 'Ice', 'Electric']);
-  assert.equal(result.factor, 2.925);
+  assert.equal(result.factor, 2.34);
  });
  it('shows Rainbow Aura Terrain Pulse and retains the base field Dragon boost', () => {
   const source = BattleFieldTooltips.pokemon();

@@ -5,12 +5,12 @@ const path = require('path');
 require('./battle.test');
 
 describe('Cold Eclipse background and custom Gardevoir routes', () => {
-	it('provides a distinct Cold Eclipse style backed by an existing local asset', () => {
+	for (const field of ['coldeclipse', 'rifteclipse', 'infernaleclipse']) it(`provides the ${field} style with its own local background`, () => {
 		const css = fs.readFileSync(path.join(__dirname, '../play.pokemonshowdown.com/style/battle.css'), 'utf8');
-		const rule = css.match(/\.coldeclipseterrainweather\s*\{([^}]+)\}/);
-		assert(rule, 'Cold Eclipse must have a renderer class');
-		assert(rule[1].includes('linear-gradient'));
+		const rule = css.match(new RegExp('\\.' + field + 'terrainweather\\s*\\{([^}]+)\\}'));
+		assert(rule, `${field} must have a renderer class`);
 		const asset = rule[1].match(/url\(\.\.\/([^)]*)\)/)[1];
+		assert(asset.startsWith(`fx/weather-${field}-`), `${field} must use its own background`);
 		assert(fs.statSync(path.join(__dirname, '../play.pokemonshowdown.com', asset)).size > 0);
 	});
 	for (const field of ['Cold Eclipse Terrain', 'coldeclipseterrain', 'Cold Eclipse terrain']) {
