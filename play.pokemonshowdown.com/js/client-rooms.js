@@ -19,17 +19,21 @@
 			buf += '<p><button name="toggleMoreRooms" class="button">Show more rooms</button><p>';
 			buf += '<p><button name="joinRoomPopup" class="button">Join other room</button></p></div>';
 			this.$el.html(buf);
-			app.on('response:rooms', this.update, this);
+			this.listenTo(app, 'response:rooms', this.update);
 			var settings = Dex.prefs('serversettings');
 			if (settings) app.send('/updatesettings ' + JSON.stringify(settings));
 			app.send('/cmd rooms');
-			app.user.on('change:named', this.updateUser, this);
+			this.listenTo(app.user, 'change:named', this.updateUser);
 			this.update();
 			this.chatroomInterval = setInterval(function () {
 				if (app.curSideRoom && app.curSideRoom.id === 'rooms') {
 					app.send('/cmd rooms');
 				}
 			}, 20 * 1000);
+		},
+		remove: function () {
+			clearInterval(this.chatroomInterval);
+			return Room.prototype.remove.call(this);
 		},
 		initSectionSelection: function () {
 			var buf = ['<option value="">(All rooms)</option>'];
@@ -234,7 +238,7 @@
 			this.$refreshButton = this.$('button[name=refresh]');
 
 			this.format = '';
-			app.on('response:roomlist', this.update, this);
+			this.listenTo(app, 'response:roomlist', this.update);
 			app.send('/cmd roomlist');
 			this.update();
 		},

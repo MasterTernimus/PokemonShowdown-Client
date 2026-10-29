@@ -13,7 +13,11 @@ const statStart = source.indexOf('getStat: function (');
 const statEnd = source.indexOf('\n\t\t},', statStart);
 Room.prototype.getStat = new Function('Dex', 'BattleNatures', 'return (' + source.slice(statStart + 'getStat: '.length, statEnd) + '\n});')(Dex, {Adamant: {plus: 'atk', minus: 'spa'}});
 const host = {TeambuilderRoom: Room};
-new Function('window', 'jQuery', 'Storage', 'BattleLog', 'Dex', 'app', 'toID', code)(host, {}, {prefs(key, value) {if (value !== undefined) prefs[key] = value; return prefs[key];}}, {escapeHTML: x => x}, Dex, {addPopupMessage() {}}, toID);
+const storage = {prefs(key, value) {if (value !== undefined) prefs[key] = value; return prefs[key];}};
+storage.prefs.data = prefs;
+storage.prefs.commit = (data, callback) => {Object.assign(prefs, data); if (callback) callback(true); return true;};
+Room.prototype.$ = () => ({text() {}});
+new Function('window', 'jQuery', 'Storage', 'BattleLog', 'Dex', 'app', 'toID', code)(host, {}, storage, {escapeHTML: x => x}, Dex, {addPopupMessage() {}}, toID);
 const T = host.TeambuilderTools;
 describe('Local teambuilder tools', () => {
  const build = {id: 'original', name: 'TR', format: 'gen9nofieldsinglesgame', set: {species: 'Armarouge', item: 'Weakness Policy', ability: 'Flash Fire', moves: ['Trick Room'], nature: 'Quiet', ivs: {spe: 0}, evs: {spa: 252}, level: 50, teraType: 'Grass'}};

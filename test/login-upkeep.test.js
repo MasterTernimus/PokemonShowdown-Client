@@ -263,3 +263,38 @@ describe('Recoverable session upkeep', function () {
 		assert.strictEqual(h.user.loaded, false);
 	});
 });
+
+describe('Recoverable manual sign-in', function () {
+	function manual() {const h = setup(); h.messages = []; h.app.addPopupMessage = message => h.messages.push(message); h.user.challstr = 'A'; return h;}
+	it('invalidates superseded and disconnected assertion requests', function () {
+		const h = manual(); h.user.rename('Alice'); h.user.rename('Bob');
+		assert(h.requests[0].aborted); h.requests[0].callback('old'); assert.equal(h.sent.length, 0);
+		h.requests[1].callback('bob-token'); assert.equal(h.sent[0], '/trn Bob,0,bob-token');
+		h.user.rename('Alice'); h.user.resetUpkeep(true); h.requests[2].callback('late'); assert.equal(h.sent.length, 1);
+	});
+	it('bounds manual requests, reports network failure and allows retry', function () {
+		const h = manual(); h.user.rename('Alice'); h.tick(30000); assert.equal(h.messages.length, 1);
+		h.requests[0].callback('late'); assert.equal(h.sent.length, 0);
+		h.user.rename('Alice'); h.requests[1].error(); assert.equal(h.messages.length, 2);
+		h.user.rename('Alice'); h.requests[2].callback('token'); assert.equal(h.sent.length, 1);
+	});
+	it('rejects invalid password payloads and never registers an expired challenge', function () {
+		for (const payload of ['null', '{}', '[1]', 'not json', '{"curuser":{"loggedin":true}}', '{"curuser":{"loggedin":true},"assertion":";"}']) {
+			const h = manual(); h.user.passwordRename('Alice', 'secret');
+			assert.doesNotThrow(() => h.requests[0].callback(payload)); assert.equal(h.user.get('registered'), false); assert.equal(h.sent.length, 0);
+		}
+		const h = manual(); h.user.passwordRename('Alice', 'secret'); h.user.receiveChallstr('B');
+		h.requests[0].callback('{"curuser":{"loggedin":true},"assertion":"old-token"}'); assert.equal(h.user.get('registered'), false);
+	});
+	it('accepts valid prefixed password responses for the current challenge', function () {
+		const h = manual(); h.user.passwordRename('Alice', 'secret');
+		h.requests[0].callback(']{"curuser":{"loggedin":true,"username":"Alice"},"assertion":"token"}');
+		assert.equal(h.user.get('registered').username, 'Alice'); assert.equal(h.sent[0], '/trn Alice,0,token'); assert.equal(h.timers.size, 0);
+	});
+	it('does not let the background account check overwrite an explicit login', function () {
+		const h = manual(); h.user.retryUpkeep(); h.user.passwordRename('Alice', 'secret'); assert(h.requests[0].aborted);
+		h.requests[1].callback('{"curuser":{"loggedin":true,"username":"Alice"},"assertion":"token"}');
+		h.requests[0].callback('{"username":"Old","loggedin":true,"assertion":"old-token"}');
+		assert.equal(h.user.get('registered').username, 'Alice'); assert.equal(h.sent.length, 1);
+	});
+});

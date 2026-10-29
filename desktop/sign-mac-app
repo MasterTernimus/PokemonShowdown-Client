@@ -16,7 +16,7 @@ const frameworksDir = `${APP}/Contents/Frameworks/nwjs Framework.framework`;
 
 let currentVersionDir;
 for (const dir of fs.readdirSync(`${frameworksDir}/Versions`)) {
-    if (fs.statSync(`${frameworksDir}/Versions/${dir}`).isDirectory) {
+    if (fs.statSync(`${frameworksDir}/Versions/${dir}`).isDirectory()) {
         currentVersionDir = `${frameworksDir}/Versions/${dir}`;
         break;
     }

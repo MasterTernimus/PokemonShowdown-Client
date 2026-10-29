@@ -4184,30 +4184,51 @@
 		return team.toolsKey;
 	};
 	proto.toolsData = function (readOnly) {
-		var stored = Storage.prefs('pokemontools');
+		var stored = this.toolsPendingData || Storage.prefs('pokemontools');
 		var data = stored && stored.version === 1 && Array.isArray(stored.builds) && Array.isArray(stored.nicknames) ? (readOnly ? Object.assign({}, stored) : T.clone(stored)) : T.empty();
 		var key = T.teamKey(this.curTeam), settings = data.teamProfiles && data.teamProfiles[key];
 		if (key) { data.selectedNickname = settings ? settings.id : ''; data.autoNickname = settings ? settings.auto : false; }
 		return data;
 	};
-	proto.saveToolsData = function (data) {
-		var key = T.teamKey(this.curTeam);
-		if (key) {
-			data.teamProfiles = data.teamProfiles || {};
-			data.teamProfiles[key] = {id: data.selectedNickname, auto: data.autoNickname};
-		}
-		Storage.prefs('pokemontools', T.clone(data));
-		this.saveTeamToolBindings();
+	proto.teamToolState = function (data) {
+		var teams = (Storage.teams || []).slice();
+		if (this.deletedTeam && this.deletedTeamLoc >= 0) teams.push(this.deletedTeam);
+		var keys = new Set(), records = [];
+		teams.forEach(function (team) {var key = T.teamKey(team); if (!keys.has(key)) {keys.add(key); records.push({id:key, signature:T.teamSignature(team)});}});
+		if (data.teamProfiles) Object.keys(data.teamProfiles).forEach(function (key) {if (!keys.has(key)) delete data.teamProfiles[key];});
+		return records;
+	};
+	proto.saveToolsData = function (data, callback, savedProfile) {
+		var key = T.teamKey(this.curTeam), self = this, editRevision = this.nicknameEditRevision;
+		if (key) {data.teamProfiles = data.teamProfiles || {}; data.teamProfiles[key] = {id:data.selectedNickname, auto:data.autoNickname};}
+		var next = Object.assign({}, Storage.prefs.pendingData || Storage.prefs.data);
+		next.pokemontools = T.clone(data); next.teamtoolbindings = this.teamToolState(next.pokemontools);
+		if (savedProfile) {next.nicknamedrafts = Object.assign({}, next.nicknamedrafts); delete next.nicknamedrafts[savedProfile];}
+		this.toolsPendingData = next.pokemontools; this.toolsSaveError = ''; this.toolsSaving = true;
+		return Storage.prefs.commit(next, function (ok) {
+			if (self.toolsPendingData === next.pokemontools) {self.toolsSaving = false; if (ok) {self.toolsPendingData = null; self.toolsSaveError = '';}}
+			if (!ok) {
+				self.toolsSaveError = 'Not saved. Your edits are kept here; retry Save or download a backup before closing.';
+				app.addPopupMessage(self.toolsSaveError);
+			}
+			if (!ok || (!self.toolsSaving && editRevision === self.nicknameEditRevision)) self.$('.nickname-save-status').text(ok ? 'All changes saved' : self.toolsSaveError);
+			if (callback) callback(ok);
+		});
 	};
 	proto.saveTeamToolBindings = function () {
-		var previous = Storage.prefs('teamtoolbindings') || [];
-		var liveKeys = new Set((Storage.teams || []).map(function (team) { return team.toolsKey; }));
-		var records = previous.filter(function (record) { return !liveKeys.has(record.id); });
-		(Storage.teams || []).forEach(function (team) { if (team.toolsKey) records.push({id: team.toolsKey, signature: T.teamSignature(team)}); });
-		if (JSON.stringify(previous) !== JSON.stringify(records)) Storage.prefs('teamtoolbindings', records);
+		var next = Object.assign({}, Storage.prefs.pendingData || Storage.prefs.data);
+		var data = T.clone(next.pokemontools || T.empty());
+		next.teamtoolbindings = this.teamToolState(data);
+		if (next.pokemontools) next.pokemontools = data;
+		Storage.prefs.commit(next);
 	};
 	var saveWithBindings = proto.save;
 	proto.save = function () { var result = saveWithBindings.apply(this, arguments); this.saveTeamToolBindings(); return result; };
+	['delete', 'undoDelete', 'saveBackup'].forEach(function (name) {
+		var original = proto[name];
+		if (!original) return;
+		proto[name] = function () {var result = original.apply(this, arguments); this.saveTeamToolBindings(); return result;};
+	});
 	proto.toolsCommit = function () {
 		this.curTeam.team = Storage.packTeam(this.curSetList);
 		this.curTeam.iconCache = '';
@@ -4381,7 +4402,7 @@
 			Object.keys(window.BattlePokedex || {}).forEach(function (id) {
 				if (!Dex.isSpeciesHidden(id)) html += '<option value="' + escape(Dex.species.get(id).name) + '"></option>';
 			});
-			html += '</datalist><div class="library-actions library-save-actions">' + button('addNicknameRow', 'Add row') + button('saveNicknameMappings', 'Save profile') + '<span class="nickname-save-status" role="status" aria-live="polite">' + (draft ? 'Unsaved changes · draft kept' : 'All changes saved') + '</span></div><details class="library-secondary"><summary>Appearance &amp; name rules</summary><div class="library-rule-grid"><label>Shiny appearance<select class="nickname-shiny"><option value="">Keep current appearance</option><option value="yes"' + (appearance.shiny === 'yes' ? ' selected' : '') + '>Make every Pokémon shiny</option><option value="no"' + (appearance.shiny === 'no' ? ' selected' : '') + '>Make every Pokémon non-shiny</option></select></label><label class="library-check"><input type="checkbox" class="nickname-gendered"' + (appearance.gendered ? ' checked' : '') + ' /> Enable gender-specific names</label><label class="library-check"><input type="checkbox" class="nickname-fallback"' + (appearance.fallback ? ' checked' : '') + ' /> Use base-species names for unlisted forms</label></div><details class="library-help"><summary>How these rules work</summary><p id="nickname-gender-help">Any gender is the default. A matching gender-specific entry overrides it when enabled. An unspecified gender uses the default.</p><p>Shiny rules affect the whole team, even Pokémon without a nickname entry. Form fallback uses the base species only when the form has no entry.</p></details></details><details class="library-secondary"><summary>Paste a nickname list</summary><p class="tools-note">One Pokémon = nickname per line. Updates existing default names; gender-specific names stay separate.</p><textarea class="textbox nickname-paste" rows="4" aria-label="Paste nickname list" placeholder="Togekiss = Deneb"></textarea>' + button('pasteNicknameRows', 'Apply pasted names') + '</details></section><section class="library-step library-apply-step"><h4><span class="library-step-number">3</span> Preview for your team</h4><label class="library-check"><input type="checkbox" class="nickname-replace" /> Replace existing nicknames</label><p class="tools-note">Leave this off to keep names you already chose. Preview every change before applying.</p><div class="library-actions">' + button('applyNicknameToTeam', 'Preview changes') + '<span class="library-preview-context tools-note"></span></div></section>';
+			html += '</datalist><div class="library-actions library-save-actions">' + button('addNicknameRow', 'Add row') + button('saveNicknameMappings', 'Save profile') + '<span class="nickname-save-status" role="status" aria-live="polite">' + (this.toolsSaving ? 'Saving…' : this.toolsSaveError || (draft ? 'Unsaved changes · draft kept' : 'All changes saved')) + '</span></div><details class="library-secondary"><summary>Appearance &amp; name rules</summary><div class="library-rule-grid"><label>Shiny appearance<select class="nickname-shiny"><option value="">Keep current appearance</option><option value="yes"' + (appearance.shiny === 'yes' ? ' selected' : '') + '>Make every Pokémon shiny</option><option value="no"' + (appearance.shiny === 'no' ? ' selected' : '') + '>Make every Pokémon non-shiny</option></select></label><label class="library-check"><input type="checkbox" class="nickname-gendered"' + (appearance.gendered ? ' checked' : '') + ' /> Enable gender-specific names</label><label class="library-check"><input type="checkbox" class="nickname-fallback"' + (appearance.fallback ? ' checked' : '') + ' /> Use base-species names for unlisted forms</label></div><details class="library-help"><summary>How these rules work</summary><p id="nickname-gender-help">Any gender is the default. A matching gender-specific entry overrides it when enabled. An unspecified gender uses the default.</p><p>Shiny rules affect the whole team, even Pokémon without a nickname entry. Form fallback uses the base species only when the form has no entry.</p></details></details><details class="library-secondary"><summary>Paste a nickname list</summary><p class="tools-note">One Pokémon = nickname per line. Updates existing default names; gender-specific names stay separate.</p><textarea class="textbox nickname-paste" rows="4" aria-label="Paste nickname list" placeholder="Togekiss = Deneb"></textarea>' + button('pasteNicknameRows', 'Apply pasted names') + '</details></section><section class="library-step library-apply-step"><h4><span class="library-step-number">3</span> Preview for your team</h4><label class="library-check"><input type="checkbox" class="nickname-replace" /> Replace existing nicknames</label><p class="tools-note">Leave this off to keep names you already chose. Preview every change before applying.</p><div class="library-actions">' + button('applyNicknameToTeam', 'Preview changes') + '<span class="library-preview-context tools-note"></span></div></section>';
 		}
 		html += '</section><details class="tools-panel library-backup"><summary>Backup &amp; restore</summary><p class="tools-note">Includes saved name profiles and sets. Lists, teams and unsaved drafts are not included.</p><p>' + button('downloadToolsBackup', 'Download backup') + '<label class="button">Import backup<input type="file" class="tools-backup-file" accept=".json,application/json" /></label></p><details class="library-secondary"><summary>Advanced: JSON import / export</summary><p class="tools-note">Import adds copies; it does not replace your profiles.</p><textarea class="textbox tools-transfer" rows="6" aria-label="Build and nickname library JSON">' + escape(JSON.stringify(data, null, 2)) + '</textarea><div class="library-actions">' + button('exportToolsLibrary', 'Refresh export') + button('importToolsLibrary', 'Import library') + '</div></details></details></div>';
 		this.$el.html(html);
@@ -4404,7 +4425,7 @@
 		this.captureLibraryView(); this.saveNicknameDraft(); this.profilesView = false; this.librarySection = 'names'; this.showToolsManager();
 		this.$('.library-backup').prop('open', true); var summary = this.$('.library-backup > summary')[0]; if (summary) {summary.focus(); summary.scrollIntoView({block:'nearest'});}
 	};
-	proto.exportToolsLibrary = function () { if (!this.saveNicknameMappings()) return; this.libraryTransferDirty = false; if (this.libraryInputDraft) delete this.libraryInputDraft.transfer; this.$('.tools-transfer').val(JSON.stringify(this.toolsData(), null, 2)).focus().select(); };
+	proto.exportToolsLibrary = function () { if (!this.saveNicknameMappings(this.exportToolsLibrary.bind(this))) return; this.libraryTransferDirty = false; if (this.libraryInputDraft) delete this.libraryInputDraft.transfer; this.$('.tools-transfer').val(JSON.stringify(this.toolsData(), null, 2)).focus().select(); };
 	proto.importToolsLibrary = function () {
 		this.saveNicknameDraft();
 		try {
@@ -4495,7 +4516,7 @@
 			this.saveNicknameDraft();
 		} catch (err) { app.addPopupMessage(err.message); }
 	};
-	proto.saveNicknameMappings = function () {
+	proto.saveNicknameMappings = function (completed) {
 		if (!this.toolsView) return true;
 		var data = this.toolsData(), profile = data.nicknames.find(function (p) { return p.id === data.selectedNickname; });
 		if (!profile) return true;
@@ -4508,11 +4529,13 @@
 		profile.fallback = !!this.$('.nickname-fallback').prop('checked');
 		profile.shiny = this.$('.nickname-shiny').val() || '';
 		profile.gendered = !!this.$('.nickname-gendered').prop('checked');
-		this.saveToolsData(data);
-		var drafts = Storage.prefs('nicknamedrafts') || {}; delete drafts[profile.id]; Storage.prefs('nicknamedrafts', drafts);
-		this.$('.nickname-save-status').text('All changes saved');
-		if (this.refreshNicknameGroup) this.refreshNicknameGroup();
-		return true;
+		var self = this, synchronous = true;
+		var result = this.saveToolsData(data, function (ok) {
+			if (ok && self.refreshNicknameGroup) self.refreshNicknameGroup();
+			if (ok && !synchronous && typeof completed === 'function') completed();
+		}, profile.id);
+		synchronous = false;
+		return result === true;
 	};
 	proto.nicknameSettingsChange = function () {
 		this.saveNicknameDraft(); this.captureLibraryView();
@@ -4530,12 +4553,12 @@
 		this.toolsCommit();
 	};
 	proto.applyNicknameToTeam = function () {
-		if (!this.saveNicknameMappings()) return;
+		if (!this.saveNicknameMappings(this.applyNicknameToTeam.bind(this))) return;
 		if (!this.curTeam || !this.curSetList) return app.addPopupMessage('Open a team first.');
 		var data = this.toolsData(), profile = data.nicknames.find(function (p) { return p.id === data.selectedNickname; });
 		if (!profile) return app.addPopupMessage('Choose a name profile first.');
 		var replace = !!this.$('.nickname-replace').prop('checked'), dex = this.curTeam.dex;
-		var before = T.clone(this.curSetList), after = T.clone(before);
+		var before = Storage.cloneTeam(this.curSetList), after = Storage.cloneTeam(before);
 		after.forEach(function (set) { T.applyNickname(set, profile, dex, replace); });
 		this.pendingProfileApply = {team: this.curTeam, before: before, after: after};
 		var names = after.filter(function (set, i) { return set.name !== before[i].name; }).length;
@@ -4546,19 +4569,19 @@
 	};
 	proto.confirmProfileApply = function () {
 		var pending = this.pendingProfileApply;
-		if (!pending || pending.team !== this.curTeam || JSON.stringify(pending.before) !== JSON.stringify(this.curSetList)) return app.addPopupMessage('The team changed. Preview these changes again.');
+		if (!pending || pending.team !== this.curTeam || Storage.packTeam(pending.before) !== Storage.packTeam(this.curSetList)) return app.addPopupMessage('The team changed. Preview these changes again.');
 		this.profileApplyUndo = pending;
-		this.curSetList = T.clone(pending.after); Storage.activeSetList = this.curSetList;
+		this.curSetList = Storage.cloneTeam(pending.after); Storage.activeSetList = this.curSetList;
 		if (this.curSetLoc >= 0) this.curSet = this.curSetList[this.curSetLoc];
 		this.pendingProfileApply = null; this.toolsCommit();
-		this.profileApplyUndo.after = T.clone(this.curSetList);
+		this.profileApplyUndo.after = Storage.cloneTeam(this.curSetList);
 		this.$el.prepend('<div class="pad profile-apply-preview">Profile applied. ' + button('undoProfileApply', 'Undo profile changes') + '</div>');
 	};
 	proto.cancelProfileApply = function () { this.pendingProfileApply = null; this.$('.profile-apply-preview').not('.build-comparison').remove(); var trigger = this.$('[name=applyNicknameToTeam]:visible')[0]; if (trigger) trigger.focus({preventScroll:true}); };
 	proto.undoProfileApply = function () {
 		var undo = this.profileApplyUndo;
-		if (!undo || undo.team !== this.curTeam || JSON.stringify(undo.after) !== JSON.stringify(this.curSetList)) return app.addPopupMessage('The team changed after applying. Undo would overwrite those edits.');
-		this.curSetList = T.clone(undo.before); Storage.activeSetList = this.curSetList;
+		if (!undo || undo.team !== this.curTeam || Storage.packTeam(undo.after) !== Storage.packTeam(this.curSetList)) return app.addPopupMessage('The team changed after applying. Undo would overwrite those edits.');
+		this.curSetList = Storage.cloneTeam(undo.before); Storage.activeSetList = this.curSetList;
 		if (this.curSetLoc >= 0) this.curSet = this.curSetList[this.curSetLoc];
 		this.profileApplyUndo = null; this.toolsCommit();
 	};
@@ -4579,6 +4602,7 @@
 	};
 	proto.saveNicknameDraft = function () {
 		var data = this.toolsData(), id = data.selectedNickname; if (!id || !this.toolsView || !this.$('.nickname-rows').length) return;
+		this.nicknameEditRevision = (this.nicknameEditRevision || 0) + 1;
 		this.captureLibraryView();
 		var rows = T.nicknameEditorRows(this);
 		var drafts = Storage.prefs('nicknamedrafts') || {}, profile = data.nicknames.find(function (p) {return p.id === id;});
@@ -4587,7 +4611,7 @@
 		try {unchanged = !!profile && T.nicknameState(Object.assign({}, T.nicknameMappings(draft.rows), draft)) === T.nicknameState(profile);} catch (error) {}
 		if (unchanged) delete drafts[id]; else drafts[id] = draft;
 		Storage.prefs('nicknamedrafts', drafts);
-		this.$('.nickname-save-status').text(unchanged ? 'All changes saved' : 'Unsaved changes · draft kept');
+		this.$('.nickname-save-status').text(this.toolsSaving ? 'Saving…' : this.toolsSaveError || (unchanged ? 'All changes saved' : 'Unsaved changes · draft kept'));
 		if (this.pendingProfileApply) this.cancelProfileApply();
 	};
 	proto.renameToolEntry = function (key) {
@@ -4674,10 +4698,6 @@
 			this.$('.teamchartbox').first().prepend(html);
 		}
 		return result;
-	};
-	proto.returnToPokemonEditor = function () {
-		var editor = this.$('.teamchartbox.individual')[0];
-		if (editor) editor.scrollIntoView({block: 'start', behavior: 'auto'});
 	};
 	proto.changeTeamNicknameProfile = function (event) {
 		var data = this.toolsData(), id = event.currentTarget.value;
@@ -4930,7 +4950,7 @@
 		if (this.curTeam.teamid && !this.curTeam.loaded) return app.addPopupMessage('Wait for this team to finish downloading, then validate it.');
 		this.validationMode = 'single';
 		this.validationView = true;
-		this.validationSelection = [{localTeam: this.curTeam, name: this.curTeam.name, format: this.curTeam.format, team: Storage.packTeam(T.clone(this.curSetList))}];
+		this.validationSelection = [{localTeam: this.curTeam, name: this.curTeam.name, format: this.curTeam.format, team: Storage.packTeam(Storage.cloneTeam(this.curSetList))}];
 		this.runSavedTeamValidation();
 	};
 	proto.showTeamValidation = function () {
@@ -4970,7 +4990,7 @@
 		var self = this, selected = [];
 		this.$('.validate-team-choice:checked').each(function () {
 			var team = Storage.teams[Number(this.value)];
-			selected.push({localTeam: team, name: team.name, format: team.format, team: team === self.curTeam && self.curSetList ? Storage.packTeam(T.clone(self.curSetList)) : team.team});
+			selected.push({localTeam: team, name: team.name, format: team.format, team: team === self.curTeam && self.curSetList ? Storage.packTeam(Storage.cloneTeam(self.curSetList)) : team.team});
 		});
 		if (!selected.length || selected.length > 12) return app.addPopupMessage('Select 1–12 teams.');
 		this.validationSelection = selected;
@@ -5176,13 +5196,6 @@
 		if (index >= 0) data[undo.field][index] = undo.entry; else data[undo.field].push(undo.entry);
 		if (undo.selected === undo.entry.id) data.selectedNickname = undo.selected;
 		this.saveToolsData(data); this.libraryUndo = null; this.update();
-	};
-	proto.downloadToolsBackup = function () {
-		this.saveNicknameDraft();
-		var data = this.toolsData();
-		var url = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'}));
-		var link = document.createElement('a'); link.href = url; link.download = 'teambuilder-library.json'; link.click();
-		setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
 	};
 	proto.readToolsBackup = function (event) {
 		var file = event.currentTarget.files[0], self = this, token = T.uid();
@@ -5918,7 +5931,7 @@ function renderStarterPassives(species) {
 		this.saveNicknameDraft(); var data = T.unifiedBackup(this.toolsData(), this.rosterData());
 		var url = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], {type:'application/json'})), link = document.createElement('a'); link.href = url; link.download = 'teambuilder-library.json'; link.click(); setTimeout(function () {URL.revokeObjectURL(url);}, 1000);
 	};
-	p.exportToolsLibrary = function () {if (!this.saveNicknameMappings()) return; this.libraryTransferDirty = false; if (this.libraryInputDraft) delete this.libraryInputDraft.transfer; this.$('.tools-transfer').val(JSON.stringify(T.unifiedBackup(this.toolsData(), this.rosterData()), null, 2)).focus().select();};
+	p.exportToolsLibrary = function () {if (!this.saveNicknameMappings(this.exportToolsLibrary.bind(this))) return; this.libraryTransferDirty = false; if (this.libraryInputDraft) delete this.libraryInputDraft.transfer; this.$('.tools-transfer').val(JSON.stringify(T.unifiedBackup(this.toolsData(), this.rosterData()), null, 2)).focus().select();};
 	p.importToolsLibrary = function () {
 		this.saveNicknameDraft(); try {var incoming = T.parse(this.$('.tools-transfer').val()), data = this.toolsData(); data.builds = data.builds.concat(incoming.builds); data.nicknames = data.nicknames.concat(incoming.nicknames); this.mergeImportedProfileGroups(incoming); this.saveToolsData(data); this.libraryTransferDirty = false; if (this.libraryInputDraft) delete this.libraryInputDraft.transfer; this.showToolsManager();} catch (err) {app.addPopupMessage(err.message);}
 	};
@@ -6121,7 +6134,7 @@ function renderStarterPassives(species) {
 	};
 	p.clearProfileSelection = function () {this.profileSelections[this.toolsData().selectedNickname] = []; this.refreshProfileSelection();};
 	p.previewSelectedProfileTeam = function () {
-		if (!this.curTeam || !this.saveNicknameMappings()) return;
+		if (!this.curTeam || !this.saveNicknameMappings(this.previewSelectedProfileTeam.bind(this))) return;
 		var data = this.toolsData(), profile = data.nicknames.find(function (n) {return n.id === data.selectedNickname;}), group = this.nicknameGroupProfile();
 		try {
 			var before = Storage.packTeam(this.curSetList), ids = this.profileSelections[profile.id] || [];
@@ -6138,7 +6151,7 @@ function renderStarterPassives(species) {
 		if (!profile || !group || pending.savedTeam !== this.curTeam.team || pending.team !== this.curTeam || pending.profileId !== profile.id || pending.revision !== T.profileTeamRevision(group, profile, Storage.packTeam(this.curSetList))) return this.$('.profile-team-preview').text('The team, names or roster changed. Preview again before applying.');
 		var previous = this.curSetList;
 		try {
-			this.curSetList = T.clone(pending.sets); this.profileTeamUndo = {team:this.curTeam, before:pending.before, after:Storage.packTeam(this.curSetList)};
+			this.curSetList = Storage.cloneTeam(pending.sets); this.profileTeamUndo = {team:this.curTeam, before:pending.before, after:Storage.packTeam(this.curSetList)};
 			this.curSet = null; this.curSetLoc = -1; this.toolsView = false; this.profilesView = false; this.toolsCommit(); this.pendingSelectedProfileTeam = null;
 		} catch (error) {this.curSetList = previous; this.curTeam.team = pending.before; this.toolsView = true; this.profileTeamUndo = null; app.addPopupMessage('Could not save the team. Your previous team is kept.');}
 	};

@@ -222,35 +222,46 @@ if (!Storage.bg.id) {
 
 Storage.origin = 'https://' + Config.routes.client;
 
-Storage.prefs = function (prop, value, save) {
-	if (value === undefined) {
-		// get preference
-		return this.prefs.data[prop];
-	}
-	// set preference
-	if (value === null) {
-		delete this.prefs.data[prop];
-	} else if (this.prefs.data[prop] === value && typeof value !== 'object') {
-		return false; // no need to save
-	} else {
-		this.prefs.data[prop] = value;
-	}
-	if (save !== false) this.prefs.save();
-	return true;
+Storage.prefs = function (prop, value, save, callback) {
+	// Controls can display the pending choice without claiming it was persisted.
+	if (value === undefined) return (this.prefs.pendingData || this.prefs.data)[prop];
+	var next = Object.assign({}, this.prefs.pendingData || this.prefs.data);
+	if (value === null) delete next[prop]; else next[prop] = value;
+	if (save === false) {this.prefs.data = next; return true;}
+	return this.prefs.commit(next, callback);
 };
-
 Storage.prefs.data = {};
-try {
-	if (window.localStorage) {
-		Storage.prefs.data = JSON.parse(localStorage.getItem('showdown_prefs')) || {};
-	}
-} catch (e) {}
-
-Storage.prefs.save = function () {
-	try {
-		localStorage.setItem('showdown_prefs', JSON.stringify(this.data));
-	} catch (e) {}
+try {Storage.prefs.data = JSON.parse(localStorage.getItem('showdown_prefs')) || {};} catch (e) {}
+Storage.prefs.persisted = JSON.stringify(Storage.prefs.data);
+Storage.prefs.queue = [];
+Storage.prefs.commit = function (data, callback, force) {
+	var prefs = this, serialized;
+	try {serialized = JSON.stringify(data);} catch (e) {if (callback) callback(false); return false;}
+	if (!force && !prefs.queue.length && serialized === prefs.persisted) {if (callback) callback(true); return true;}
+	var entry = {data:JSON.parse(serialized), serialized:serialized, callback:callback, result:null};
+	prefs.queue.push(entry); prefs.pendingData = entry.data;
+	if (!prefs.writing) prefs.flush();
+	return entry.result;
 };
+Storage.prefs.flush = function () {
+	var prefs = this, entry = prefs.queue[0]; if (!entry || prefs.writing) return;
+	prefs.writing = true;
+	var finish = function (ok) {
+		entry.result = ok;
+		if (ok) {prefs.data = entry.data; prefs.persisted = entry.serialized;}
+		prefs.queue.shift();
+		prefs.pendingData = prefs.queue.length ? prefs.queue[prefs.queue.length - 1].data : null;
+		prefs.writing = false;
+		try {if (entry.callback) entry.callback(ok);} finally {if (prefs.queue.length && !prefs.writing) prefs.flush();}
+	};
+	prefs.write(entry.serialized, finish);
+};
+Storage.prefs.write = function (data, callback) {
+	var stored = false;
+	try {localStorage.setItem('showdown_prefs', data); stored = true;} catch (e) {}
+	callback(stored);
+};
+Storage.prefs.save = function (callback) {return this.commit(this.pendingData || this.data, callback, true);};
 
 /**
  * Load trackers are loosely based on Promises, but very simplified.
@@ -410,15 +421,17 @@ Storage.onMessage = function ($e) {
 	case 'p':
 		var newData = JSON.parse(data.substr(1));
 		if (newData) Storage.prefs.data = newData;
-		Storage.prefs.save = function () {
-			var prefData = JSON.stringify(this.data);
-			Storage.postCrossOriginMessage('P' + prefData);
-
-			// in Safari, cross-origin local storage is apparently treated as session
-			// storage, so mirror the storage in the current origin just in case
-			try {
-				localStorage.setItem('showdown_prefs', prefData);
-			} catch (e) {}
+		Storage.prefs.persisted = JSON.stringify(Storage.prefs.data);
+		Storage.prefs.write = function (prefData, callback) {
+			var idx = Storage.crossOriginRequestCount++, done = false;
+			var finish = function (ok) {
+				if (done) return; done = true; clearTimeout(timer); delete Storage.crossOriginRequests[idx];
+				if (ok) {try {localStorage.setItem('showdown_prefs', prefData);} catch (e) {}}
+				callback(ok);
+			};
+			var timer = setTimeout(function () {finish(false);}, 10000);
+			Storage.crossOriginRequests[idx] = function (result) {finish(result === true);};
+			try {Storage.crossOriginFrame.postMessage('Q' + JSON.stringify([idx, prefData]), Storage.origin);} catch (e) {finish(false);}
 		};
 		Storage.whenPrefsLoaded.load();
 		break;
@@ -800,6 +813,16 @@ Storage.getInitialDisguiseSlot = function (set, team) {
 Storage.bindInitialDisguises = function (team) {
 	if (team) team.forEach(function (set) { Storage.getInitialDisguiseSlot(set, team); });
 	return team;
+};
+
+// Clone a whole team through current target slots, never through stale JSON slots.
+Storage.cloneTeam = function (team) {
+	var copy = JSON.parse(JSON.stringify(team));
+	team.forEach(function (set, index) {
+		var slot = Storage.getInitialDisguiseSlot(set, team);
+		Storage.setInitialDisguise(copy[index], copy, slot);
+	});
+	return copy;
 };
 
 Storage.packTeam = function (team) {

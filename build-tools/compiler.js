@@ -343,7 +343,7 @@ async function compileToFile(srcFile, destFile, opts = {}) {
     if (VERBOSE) console.log(src + " ->");
   }
 
-  const combined = await combineResults(results, {
+  await combineResults(results, {
     file: path.basename(destFile),
     sourceRoot: opts.sourceRoot,
   }, opts).then(combined => {

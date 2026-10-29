@@ -5,7 +5,7 @@ require('./battle.test');
 const source = fs.readFileSync('play.pokemonshowdown.com/js/client-teambuilder.js', 'utf8');
 function harness() {
  const values = {}, messages = {}, host = {localStorage: {setItem() {}}};
- const storage = {teams: [], packTeam: sets => JSON.stringify(sets)};
+ const storage = {teams: [], packTeam: sets => JSON.stringify(sets), cloneTeam: sets => JSON.parse(JSON.stringify(sets))};
  storage.prefs = () => {}; storage.prefs.data = {unrelated: true};
  const app = {addPopupMessage(message) { messages.popup = message; }};
  const room = {events: {}, curTeam: {name: 'Team', format: 'gen9ou'}, curSetList: [{species: 'Charizard', moves: ['Flamethrower'], ivs: {spe: 0}}]};

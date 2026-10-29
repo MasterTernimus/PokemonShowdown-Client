@@ -131,8 +131,19 @@ function messageHandler(e) {
 			localStorage.setItem('showdown_prefs', data.substr(1));
 		} catch (e) {}
 		break;
-	case 'R':
-	case 'S':
+	case 'Q':
+  var preferenceRequest, stored = false;
+  try {
+   preferenceRequest = JSON.parse(data.substr(1));
+   if (!Array.isArray(preferenceRequest) || !Number.isInteger(preferenceRequest[0]) || typeof preferenceRequest[1] !== 'string') return;
+   var preferences = JSON.parse(preferenceRequest[1]);
+   if (!preferences || typeof preferences !== 'object' || Array.isArray(preferences)) return;
+   localStorage.setItem('showdown_prefs', preferenceRequest[1]); stored = true;
+  } catch (error) {}
+  if (preferenceRequest) postReply('r' + JSON.stringify([preferenceRequest[0], stored]));
+  break;
+ case 'R':
+ case 'S':
 		var rq = JSON.parse(data.substr(1));
 		$.ajax({
 			type: (data.charAt(0) === 'R' ? 'GET' : 'POST'),

@@ -285,13 +285,15 @@ function toId() {
 				return;
 			}
 
+			this.cancelManualLogin();
 			if (this.get('userid') !== userid) {
 				var self = this;
-				$.post(this.getActionPHP(), {
+				this.requestManualLogin({
 					act: 'getassertion',
 					userid: userid,
 					challstr: this.challstr
 				}, function (data) {
+					if (typeof data !== 'string' || !data.trim()) throw new Error('Invalid assertion');
 					self.finishRename(name, data);
 				});
 			} else {
@@ -300,12 +302,16 @@ function toId() {
 		},
 		passwordRename: function (name, password, special) {
 			var self = this;
-			$.post(this.getActionPHP(), {
+			this.requestManualLogin({
 				act: 'login',
 				name: name,
 				pass: password,
 				challstr: this.challstr
-			}, Storage.safeJSON(function (data) {
+			}, function (response) {
+				var data = JSON.parse(response.charAt(0) === ']' ? response.slice(1) : response);
+				if (!data || typeof data !== 'object' || Array.isArray(data)) throw new Error('Invalid response');
+				if (data.curuser && (typeof data.curuser !== 'object' || Array.isArray(data.curuser) || typeof data.curuser.loggedin !== 'boolean')) throw new Error('Invalid account');
+				if (data.curuser && data.curuser.loggedin && (typeof data.assertion !== 'string' || !data.assertion || /[<>\x00-\x1f]/.test(data.assertion) || data.assertion.charAt(0) === ';')) throw new Error('Invalid assertion');
 				if (data && data.curuser && data.curuser.loggedin) {
 					// success!
 					self.set('registered', data.curuser);
@@ -323,7 +329,43 @@ function toId() {
 						special: special
 					});
 				}
-			}), 'text');
+			});
+		},
+		cancelManualLogin: function () {
+			var request = this.manualLoginRequest;
+			this.manualLoginRequest = null;
+			if (!request) return;
+			clearTimeout(request.timer);
+			if (request.xhr && request.xhr.abort) {try { request.xhr.abort(); } catch (e) {}}
+		},
+		requestManualLogin: function (payload, success) {
+			this.cancelManualLogin();
+			// An explicit sign-in supersedes the background cookie/session check.
+			if (this.upkeepRequest) {
+				this.cancelUpkeep(); this.loaded = true; this.upkeepError = '';
+				if (app.topbar) app.topbar.updateUserbar();
+			}
+			var self = this, request = {challstr:this.challstr};
+			this.manualLoginRequest = request;
+			var current = function () {return self.manualLoginRequest === request && self.challstr === request.challstr;};
+			var fail = function () {
+				if (!current()) return;
+				self.cancelManualLogin();
+				app.addPopupMessage('Sign-in could not be completed. Please try signing in again.');
+			};
+			request.timer = setTimeout(fail, this.upkeepTimeout);
+			try {
+				request.xhr = $.post(this.getActionPHP(), payload, function (response) {
+					if (!current()) return;
+					try {
+						if (typeof response !== 'string' || !response.trim() || response.length > 65536) throw new Error('Invalid response');
+						success(response.trim());
+					} catch (e) {fail(); return;}
+					clearTimeout(request.timer); self.manualLoginRequest = null;
+				}, 'text');
+				if (current() && request.xhr && request.xhr.manual) {clearTimeout(request.timer); request.timer = setTimeout(fail, 120000);}
+				if (request.xhr && request.xhr.fail) request.xhr.fail(fail);
+			} catch (e) {fail();}
 		},
 		challstr: '',
 		upkeepTimeout: 30 * 1000,
@@ -337,6 +379,7 @@ function toId() {
 			}
 		},
 		resetUpkeep: function (disconnected) {
+			this.cancelManualLogin();
 			this.cancelUpkeep();
 			this.challstr = '';
 			this.loaded = false;
@@ -409,6 +452,7 @@ function toId() {
 		},
 		receiveChallstr: function (challstr) {
 			if (challstr) {
+				this.cancelManualLogin();
 				/**
 				 * Rename the user based on the `sid` and `showdown_username` cookies.
 				 * Specifically, if the user has a valid session, the user will be
@@ -2872,7 +2916,7 @@ function toId() {
 			var name = data.name;
 			this.data = data = _.extend(data, UserPopup.dataCache[data.userid]);
 			data.name = name;
-			app.on('response:userdetails', this.update, this);
+			this.listenTo(app, 'response:userdetails', this.update);
 			app.send('/cmd userdetails ' + data.userid);
 			this.update();
 		},

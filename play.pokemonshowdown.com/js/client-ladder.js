@@ -104,9 +104,9 @@
 		title: 'Ladder',
 		initialize: function () {
 			this.$el.addClass('ps-room-light').addClass('scrollable');
-			app.on('init:formats', this.update, this);
+			this.listenTo(app, 'init:formats', this.update);
 			this.update();
-			app.on('response:laddertop', function (data) {
+			this.listenTo(app, 'response:laddertop', function (data) {
 				var buf = '<div class="ladder pad"><p><button name="selectFormat"><i class="fa fa-chevron-left"></i> Format List</button></p>';
 				if (!data) {
 					this.$el.html(buf + '<p>error</p></div>');
@@ -115,7 +115,7 @@
 				if (this.curFormat !== data[0]) return;
 				buf += BattleLog.sanitizeHTML(data[1]) + '</div>';
 				this.$el.html(buf);
-			}, this);
+			});
 		},
 		curFormat: '',
 		curSearchVal: '',

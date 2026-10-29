@@ -2125,7 +2125,6 @@
 // Compact engine-backed comparison workspace. No independent damage formula.
 (function () {
 	[window.CustomCalculatorPopup.prototype, window.CustomCalculatorRoom.prototype].forEach(function (p) {
-		p.events = Object.assign({}, p.events, {'input .calc-move-entry': 'editComparisonMove'});
 		p.cancelComparison = function () {
 			clearTimeout(this.comparisonTimer); clearTimeout(this.calcTimer);
 			this.comparisonGeneration = (this.comparisonGeneration || 0) + 1;
@@ -2144,11 +2143,6 @@
 			this.$('.calc-move-result').text('Not calculated').removeAttr('title');
 			this.refreshFieldState();
 			return result;
-		};
-		p.editComparisonMove = function (e) {
-			var actor = $(e.target).closest('.calc-actor');
-			actor.find('[name=moves]').val(actor.find('.calc-move-entry').map(function () {return this.value.trim();}).get().filter(Boolean).join(', '));
-			this.scenarioEdited();
 		};
 		var write = p.writeActor;
 		p.writeActor = function (index, actor) {

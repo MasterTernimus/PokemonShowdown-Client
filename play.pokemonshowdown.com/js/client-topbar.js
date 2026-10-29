@@ -457,7 +457,7 @@
 
 	var OptionsPopup = this.OptionsPopup = Popup.extend({
 		initialize: function (data) {
-			app.user.on('change', this.update, this);
+			this.listenTo(app.user, 'change', this.update);
 			this.listenTo(app, 'usernamecolor', this.usernameColorResponse);
 			app.send('/cmd userdetails ' + app.user.get('userid'));
 			this.update();

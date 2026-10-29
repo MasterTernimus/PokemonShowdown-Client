@@ -50,7 +50,10 @@ export class BattleBGM {
 
 	actuallyResume() {
 		if (this !== BattleSound.currentBgm()) return;
-		if (this.isActuallyPlaying) return;
+		if (this.isActuallyPlaying) {
+			if (this.sound) this.sound.volume = BattleSound.bgmVolume / 100;
+			return;
+		}
 
 		if (!this.sound) this.sound = BattleSound.getSound(this.url);
 		if (!this.sound) return;
