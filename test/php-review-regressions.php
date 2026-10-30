@@ -54,6 +54,13 @@ verify($replays->get('gen9ou-1')===false,'Deleted replay cannot be fetched publi
 verify(is_array($replays->get('gen9ou-1',false,true)),'Authorized management can fetch deleted replay');
 $replays->db->row['private']=1;
 verify(is_array($replays->get('gen9ou-1')),'Private replay remains available for password check');
+foreach ([0,1,2,3] as $privacy) $replays->edit(['id'=>'gen9ou-1','private'=>$privacy,'password'=>null]);
+$updates=array_values(array_filter($replays->db->queries,fn($sql)=>str_starts_with($sql,'UPDATE')));
+verify(count($updates)===6,'Exercise view increments and each privacy update');
+foreach ($updates as $sql) {
+ verify(!str_contains($sql,'LIMIT'),'Updates use PostgreSQL-compatible syntax');
+ verify(str_ends_with($sql,'WHERE id = ?'),'Updates remain bounded by the unique replay ID');
+}
 // The cache-hit management path must initialize the service before mutation.
 // Run its actual authorized branch with a fixture bootstrap and the real class.
 $manageSource=file_get_contents(__DIR__.'/../replay.pokemonshowdown.com/replay-manage.php');

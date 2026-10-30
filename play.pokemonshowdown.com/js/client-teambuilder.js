@@ -1942,9 +1942,11 @@
 				'<p><button class="button" name="previewRosterImport" value="new">Create list</button> <button class="button" name="previewRosterImport" value="add">Add to selected list</button> <button class="button" name="previewRosterImport" value="replace">Replace selected list</button></p><div class="roster-import-preview" aria-live="polite"></div></div>');
 		},
 		rosterExpandedSpecies: function (id) {
+			if (Dex.isSpeciesHidden(id)) return [];
 			var result = [id];
 			for (var key in window.BattlePokedex) {
 				var species = Dex.species.get(key);
+				if (Dex.isSpeciesHidden(species.id)) continue;
 				// The legacy Dex flag omits custom Mega suffixes such as Mega-X-Alt.
 				if (!species.isMega && !/^Mega(?:-|$)/.test(species.forme)) continue;
 				var source = species.battleOnly || species.changesFrom || species.baseSpecies;
@@ -2034,7 +2036,7 @@
 		},
 		rosterSpeciesID: function (name) {
 			var species = Dex.species.get(name);
-			if (!species.exists) return '';
+			if (!species.exists || Dex.isSpeciesHidden(species.id)) return '';
 			var base = Dex.species.get(species.baseSpecies);
 			// Only explicitly cosmetic forms share an entry. Regional and other true forms stay distinct.
 			if (base.cosmeticFormes && base.cosmeticFormes.indexOf(species.name) >= 0) return base.id;
@@ -2111,8 +2113,9 @@
 			if (profile) html += '<details class="library-secondary"><summary>Manage list</summary><div class="library-actions"><button class="button" name="renameRosterProfile">Rename</button><button class="button" name="deleteRosterProfile">Delete</button></div></details>';
 			html += '</section>';
 			if (profile) {
-				html += '<details class="library-step roster-manager" open><summary><span class="library-step-number">2</span> Add Pokémon</summary><label class="library-search-label">Search Pokémon or forms<input class="textbox roster-species-search" type="search" placeholder="e.g. Raichu or Raichu-Alola" autocomplete="off" /></label><div class="roster-species-matches" aria-live="polite">Type a name, then choose Add.</div><details class="roster-members"' + (profile.species.length <= 8 ? ' open' : '') + '><summary>In this list · ' + profile.species.length + ' Pokémon / forms</summary><div class="roster-chips">';
-				html += profile.species.length ? profile.species.map(function (id) {var name = escape(Dex.species.get(id).name); return '<button class="button roster-chip" name="removeRosterSpecies" value="' + id + '" title="Remove from list; keep team and saved sets" aria-label="Remove ' + name + ' from list">' + name + ' <span aria-hidden="true">×</span></button>';}).join(' ') : '<p class="library-empty">This list is empty. Search above to add your first Pokémon.</p>';
+				var members = profile.species.filter(function (id) {return !Dex.isSpeciesHidden(id);});
+				html += '<details class="library-step roster-manager" open><summary><span class="library-step-number">2</span> Add Pokémon</summary><label class="library-search-label">Search Pokémon or forms<input class="textbox roster-species-search" type="search" placeholder="e.g. Raichu or Raichu-Alola" autocomplete="off" /></label><div class="roster-species-matches" aria-live="polite">Type a name, then choose Add.</div><details class="roster-members"' + (members.length <= 8 ? ' open' : '') + '><summary>In this list · ' + members.length + ' Pokémon / forms</summary><div class="roster-chips">';
+				html += members.length ? members.map(function (id) {var name = escape(Dex.species.get(id).name); return '<button class="button roster-chip" name="removeRosterSpecies" value="' + id + '" title="Remove from list; keep team and saved sets" aria-label="Remove ' + name + ' from list">' + name + ' <span aria-hidden="true">×</span></button>';}).join(' ') : '<p class="library-empty">This list is empty. Search above to add your first Pokémon.</p>';
 				html += '</div></details><details class="library-help"><summary>Which forms are included?</summary><p>Adding a base species includes its matching Megas. True forms stay separate; remove any entry you do not need.</p></details></details><section class="library-step"><h4><span class="library-step-number">3</span> Use in the builder</h4><label class="library-check"><input type="checkbox" class="roster-profile-filter"' + (data.enabled ? ' checked' : '') + ' /> Filter Pokémon choices to this list</label><p class="tools-note">Your current team stays unchanged.</p></section>';
 			} else html += '<div class="library-empty"><p>Create or choose a list, then search for Pokémon to add. Lists filter choices without changing your team.</p></div>';
 			if (data.deleted) html += '<p class="roster-undo" role="status">Deleted “' + escape(data.deleted.profile.name) + '”. <button class="button" name="undoRosterDelete">Undo delete</button></p>';
@@ -4239,7 +4242,7 @@
 		var html = renderSet.call(this, set, index);
 		if (!set.species) return html;
 		var data = this.toolsData(true), self = this;
-		var builds = data.builds.filter(function (b) { return T.id(b.set.species) === T.id(set.species); });
+		var builds = data.builds.filter(function (b) { return !Dex.isSpeciesHidden(b.set.species) && T.id(b.set.species) === T.id(set.species); });
 		var open = this.openSetTools && this.openSetTools.has(set);
 		var selectedBuild = this.selectedSavedSets && this.selectedSavedSets.get(set);
 		var box = '<details class="set-tools-panel set-tools-compact"' + (open ? ' open' : '') + '><summary title="Saved sets, roster lists and battle forms">Set &amp; form</summary><div class="set-tools-content"><div class="set-tools-header"><button type="button" class="button close-set-tools" name="closeSetTools" value="' + index + '" aria-label="Close saved set and form tools">Close <span aria-hidden="true">&times;</span></button></div><span class="set-tools-state"></span><div class="set-tools-row"><span class="set-tools-label">Saved set</span><div class="set-tools-controls"><select class="saved-build-choice" aria-label="Saved build for ' + escape(set.species) + '"><option value="">Load a saved set…</option>';
@@ -4289,7 +4292,7 @@
 		});
 	};
 	proto.loadSavedBuildNow = function (index, build, keepAppearance) {
-		if (!this.curSetList[index] || !this.curTeam.dex.species.get(build.set.species).exists) return app.addPopupMessage('This form is unavailable in the current format.');
+		if (!this.curSetList[index] || !this.curTeam.dex.species.get(build.set.species).exists || Dex.isSpeciesHidden(build.set.species)) return app.addPopupMessage('This form is unavailable in the current format.');
 		this.buildUndo = {team: this.curTeam, index: index, set: T.clone(this.curSetList[index])};
 		var current = this.curSetList[index];
 		this.curSetList[index] = T.buildResult(current, build.set, keepAppearance);
@@ -4344,7 +4347,7 @@
 		if (!this.curTeam || !this.curSetList) return app.addPopupMessage('Open the team you want to add this build to first.');
 		var data = this.toolsData(), build = data.builds.find(function (b) { return b.id === id; });
 		if (!build) return;
-		if (!this.curTeam.dex.species.get(build.set.species).exists) return app.addPopupMessage('This Pokémon is unavailable in the selected format.');
+		if (!this.curTeam.dex.species.get(build.set.species).exists || Dex.isSpeciesHidden(build.set.species)) return app.addPopupMessage('This Pokémon is unavailable in the selected format.');
 		var set = T.cleanSet(build.set);
 		if (data.autoNickname) T.applyNickname(set, data.nicknames.find(function (p) { return p.id === data.selectedNickname; }), this.curTeam.dex, false);
 		var index = this.curSetList.findIndex(function (entry) { return !entry.species; });
@@ -4377,8 +4380,9 @@
 		this.librarySection = section;
 		var html = '<div class="pad local-tools-manager library-clean">' + T.libraryHeader(section);
 		html += '<section class="tools-panel library-sets"><header class="library-section-heading"><div><h3>Saved sets</h3><p>Reuse moves, items, abilities and stats.</p></div></header><p id="library-team-context" class="library-context" role="status"></p><label class="library-search-label">Find a saved set<input type="search" class="textbox build-library-search" aria-label="Search saved sets" placeholder="Pokémon, set name, ability or move" /></label>';
-		if (!data.builds.length) html += '<div class="library-empty"><h4>No saved sets yet</h4><p>In the builder, open <strong>Set &amp; form → Save this Pokémon</strong>, or import a Showdown set below.</p></div>';
+		if (!data.builds.some(function (b) {return !Dex.isSpeciesHidden(b.set.species);})) html += '<div class="library-empty"><h4>No saved sets yet</h4><p>In the builder, open <strong>Set &amp; form → Save this Pokémon</strong>, or import a Showdown set below.</p></div>';
 		data.builds.forEach(function (b) {
+			if (Dex.isSpeciesHidden(b.set.species)) return;
 			html += '<article class="saved-build-entry" data-search="' + escape([b.name, b.set.species, b.set.ability, (b.set.moves || []).join(' ')].join(' ').toLowerCase()) + '"><header><div><h4>' + escape(b.name) + '</h4><span>' + escape(b.set.species) + '</span></div><small class="library-format" title="' + escape(b.format || '') + '">' + escape(T.formatLabel(b.format)) + '</small></header><p class="library-set-summary">' + escape([b.set.ability, b.set.item, b.set.nature].filter(Boolean).join(' · ')) + '<br />' + escape((b.set.moves || []).join(' / ')) + '</p><div class="library-actions library-set-actions">' + button('addLibraryBuild', 'Add to team', b.id) + button('replaceLibraryBuild', 'Preview replacement', b.id) + '</div><details class="library-secondary"><summary>Manage set</summary><div class="library-actions">' + button('renameToolEntry', 'Rename', 'build:' + b.id) + button('duplicateToolEntry', 'Duplicate', 'build:' + b.id) + button('deleteToolEntry', 'Delete', 'build:' + b.id) + '</div></details></article>';
 		});
 		html += '<p class="library-search-empty" hidden>No saved sets match. Try a Pokémon or move name.</p><details class="library-secondary"><summary>Import Showdown sets</summary><label>Set name or group<input class="textbox imported-build-name" placeholder="e.g. Rain offense" maxlength="80" /></label><textarea class="textbox imported-build-sets" rows="6" aria-label="Showdown sets to save" placeholder="Paste one or more Showdown sets"></textarea>' + button('saveImportedBuilds', 'Save imported sets') + '</details></section>';
@@ -4594,7 +4598,7 @@
 		this.saveNicknameDraft();
 		if (!this.curTeam || !this.curSet) return app.addPopupMessage('Select the Pokémon slot to replace first.');
 		var build = this.toolsData().builds.find(function (b) { return b.id === id; });
-		if (!build || !this.curTeam.dex.species.get(build.set.species).exists) return;
+		if (!build || !this.curTeam.dex.species.get(build.set.species).exists || Dex.isSpeciesHidden(build.set.species)) return;
 		var index = this.curSetList.indexOf(this.curSet); if (index < 0) return;
 		this.openBuildComparison(index, build);
 	};
@@ -4876,7 +4880,7 @@
 		var dex = this.curTeam.dex, options = [], branch = this.rosterBranchSpecies(toID(set.species));
 		branch.forEach(function (id) {
 			var species = dex.species.get(id);
-			if (!species.exists || species.id === toID(set.species) || (!species.battleOnly && !species.isMega && !/^Mega(?:-|$)/.test(species.forme) && species.forme !== 'Gmax' && !species.requiredItems.length)) return;
+			if (!species.exists || Dex.isSpeciesHidden(species.id) || species.id === toID(set.species) || (!species.battleOnly && !species.isMega && !/^Mega(?:-|$)/.test(species.forme) && species.forme !== 'Gmax' && !species.requiredItems.length)) return;
 			options.push({id: species.id, name: species.name, types: species.types, ability: species.abilities['0'], baseStats: species.baseStats});
 		});
 		if (!options.length) return this.loadFormPreviews(index);
@@ -4914,7 +4918,8 @@
 		this.update();
 		this.requestTeamTools({action: 'preview', format: team.format, team: Storage.packTeam([T.clone(set)])}, function (response) {
 			if (self.curTeam !== team || self.formPreview !== pendingPreview || !self.formPreview || self.formPreview.set !== set || self.formPreview.key !== key || T.previewKey(set, team.format) !== key) return;
-			self.formPreview = {set: set, key: key, options: response.options || [], selected: response.options && response.options.length ? response.options[0].id : '', note: response.note, error: response.error};
+			var options = (response.options || []).filter(function (option) {return !Dex.isSpeciesHidden(option.id);});
+			self.formPreview = {set: set, key: key, options: options, selected: options.length ? options[0].id : '', note: response.note, error: response.error};
 			self.update();
 		});
 	};
@@ -5149,7 +5154,7 @@
 		});
 		(group ? group.species : []).forEach(function (id) {
 			var species = Dex.species.get(id);
-			if (!species.exists || ids.has(species.id)) return;
+			if (!species.exists || Dex.isSpeciesHidden(species.id) || ids.has(species.id)) return;
 			ids.add(species.id);
 			if (!defaults.has(species.id)) self.$('.nickname-rows').append(T.nicknameRow(species.name, ''));
 		});
@@ -5175,7 +5180,7 @@
 		this.$('.nickname-row').not('.nickname-head').each(function () {
 			var row = $(this), species = String(row.find('.nickname-species').val()), name = String(row.find('.nickname-value').val());
 			var newMember = !species.trim() || row.attr('data-new-member');
-			row.toggle(newMember || ((species + ' ' + name).toLowerCase().includes(query) && (!teamOnly || ids.has(T.id(species))) && (!group || members.has(T.id(species)))));
+			row.toggle(!Dex.isSpeciesHidden(species) && (newMember || ((species + ' ' + name).toLowerCase().includes(query) && (!teamOnly || ids.has(T.id(species))) && (!group || members.has(T.id(species))))));
 		});
 	};
 	proto.addTeamNicknameRows = function () {
@@ -5281,6 +5286,7 @@
 		this.openBuildComparison(index, build);
 	};
 	proto.openBuildComparison = function (index, build) {
+		if (Dex.isSpeciesHidden(build.set.species)) return app.addPopupMessage('This Pokémon is unavailable in the selected format.');
 		var set = this.curSetList[index]; if (!set) return;
 		this.pendingBuildComparison = {team: this.curTeam, index: index, set: set, before: T.clone(set), build: T.clone(build)};
 		this.renderBuildComparison(true);
@@ -6085,14 +6091,20 @@ function renderStarterPassives(species) {
 		if (!group || !profile || profile.rosterProfile !== group.id) throw new Error('Choose a profile first.');
 		var ids = Array.from(new Set(selected || []));
 		if (!ids.length || ids.length > capacity) throw new Error('Select between 1 and ' + capacity + ' members.');
-		return ids.map(function (id) {
+		// Clone together while disguise targets still refer to the original teammates.
+		var copies = Storage.cloneTeam(current);
+		var planned = ids.map(function (id) {
 			var species = Dex.species.get(id);
-			if (!species.exists || !group.species.includes(species.id)) throw new Error('The profile changed. Select its current members again.');
-			var existing = current.find(function (set) {return T.id(set.species) === species.id;});
-			var set = existing ? T.clone(existing) : {species:species.name, name:'', ability:Object.values(species.abilities)[0] || '', moves:[]};
+			if (!species.exists || Dex.isSpeciesHidden(species.id) || !group.species.includes(species.id)) throw new Error('The profile changed. Select its current members again.');
+			var existing = copies.find(function (set) {return T.id(set.species) === species.id;});
+			var set = existing || {species:species.name, name:'', ability:Object.values(species.abilities)[0] || '', moves:[]};
 			T.applyNickname(set, profile, Dex, true);
 			return set;
 		});
+		planned.forEach(function (set) {
+			Storage.setInitialDisguise(set, planned, Storage.getInitialDisguiseSlot(set, planned));
+		});
+		return planned;
 	};
 	T.profileTeamRevision = function (group, profile, team) {
 		return JSON.stringify([group.id, group.species, T.nicknameState(profile), team]);
@@ -6105,10 +6117,10 @@ function renderStarterPassives(species) {
 		if (!profile || !group) return;
 		if (!this.profileSelections) this.profileSelections = Object.create(null);
 		var selected = this.profileSelections[profile.id] || (this.profileSelections[profile.id] = []);
-		selected = this.profileSelections[profile.id] = selected.filter(function (id) {return group.species.includes(id);});
+		selected = this.profileSelections[profile.id] = selected.filter(function (id) {return !Dex.isSpeciesHidden(id) && group.species.includes(id);});
 		this.$('.nickname-row[data-group-entry]').each(function () {
 			var row = $(this), id = T.id(row.find('.nickname-species').val());
-			if (!group.species.includes(id)) return;
+			if (Dex.isSpeciesHidden(id) || !group.species.includes(id)) return;
 			row.addClass('profile-member-row').prepend('<input type="checkbox" class="profile-select-member" value="' + esc(id) + '" aria-label="Select ' + esc(Dex.species.get(id).name) + ' for team"' + (selected.includes(id) ? ' checked' : '') + ' />');
 		});
 		this.$('.nickname-rows').after('<div class="profile-selection-actions"><span class="profile-selection-count" role="status">' + selected.length + ' selected</span><button type="button" class="button" name="selectAllProfileMembers">Select all</button><button type="button" class="button" name="clearProfileSelection">Clear</button><button type="button" class="button" name="previewSelectedProfileTeam"' + (!this.curTeam || !selected.length ? ' disabled' : '') + '>Preview team</button></div><div class="profile-team-preview" aria-live="polite"></div>');

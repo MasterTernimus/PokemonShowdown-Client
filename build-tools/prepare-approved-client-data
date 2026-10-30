@@ -9,12 +9,15 @@ const root = path.resolve(__dirname, '..');
 if (!process.env.PS_SERVER_SOURCE) throw new Error('Set PS_SERVER_SOURCE to the approved server checkout.');
 const source = fs.realpathSync(process.env.PS_SERVER_SOURCE);
 const manifest = require('../server-data-sync-manifest.json');
+const {sourceFingerprint} = require('./fresh-server-build');
+const approvedFingerprint = manifest.builtSourceFingerprint;
 const actualHead = cp.execFileSync('git', ['rev-parse', 'HEAD'], {cwd: source, encoding: 'utf8'}).trim();
 if (actualHead !== manifest.sourceHead) throw new Error('Check out the exact approved server commit: ' + manifest.sourceHead);
 const hash = crypto.createHash('sha256');
 for (const file of manifest.files) { hash.update(file); hash.update(fs.readFileSync(path.join(source, file), 'utf8').replace(/\r\n/g, '\n')); }
 if (hash.digest('hex') !== manifest.sourceDataSHA256) throw new Error('Server data differs from the reviewed snapshot. Review and regenerate the snapshot before preparing assets.');
 for (const file of manifest.deletedFiles || []) if (fs.existsSync(path.join(source, file))) throw new Error('A deleted server input has reappeared: ' + file);
+if (!approvedFingerprint || sourceFingerprint(source) !== approvedFingerprint) throw new Error('Server build inputs differ from the approved snapshot. Review and regenerate the snapshot before preparing assets.');
 function run(file, cwd) { cp.execFileSync(process.execPath, [file], {cwd, env: process.env, stdio: 'inherit'}); }
 // Recreate overrides from the just-built approved source, not the stale exported snapshot.
 run('build-tools/sync-working-server-data', root);
@@ -34,6 +37,6 @@ for (const name of fs.readdirSync(path.join(root, 'play.pokemonshowdown.com/data
 }
 const finalManifest = JSON.parse(fs.readFileSync(path.join(root, 'server-data-sync-manifest.json'), 'utf8'));
 const finalHead = cp.execFileSync('git', ['rev-parse', 'HEAD'], {cwd: source, encoding: 'utf8'}).trim();
-if (finalHead !== actualHead || finalManifest.sourceHead !== finalHead || require('./fresh-server-build').sourceFingerprint(source) !== finalManifest.builtSourceFingerprint) throw new Error('Server changed during client preparation; no verified provenance was written.');
+if (finalHead !== actualHead || finalManifest.sourceHead !== finalHead || finalManifest.builtSourceFingerprint !== approvedFingerprint || sourceFingerprint(source) !== approvedFingerprint) throw new Error('Server changed during client preparation; no verified provenance was written.');
 fs.writeFileSync(path.join(root, 'client-data-provenance.json'), JSON.stringify({sourceHead: finalHead, sourceDataSHA256: finalManifest.sourceDataSHA256, builtSourceFingerprint: finalManifest.builtSourceFingerprint, outputs}, null, 2) + '\n');
 console.log('Prepared local client assets. Nothing has been published.');

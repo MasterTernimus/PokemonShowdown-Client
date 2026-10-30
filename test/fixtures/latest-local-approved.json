@@ -29,8 +29,8 @@
       "desc": "Full local Opportunist and Ultra Ego. Copies opposing positive stat changes at normal flush events; ability-bypassing attacks, damage-triggered attack boosts and recovery retain Ultra Ego's local field and rivalry rules."
     },
     "twilightinstinct": {
-      "shortDesc": "Ultra Instinct + Battle Fervor.",
-      "desc": "Full local Ultra Instinct and Battle Fervor, including their timing power, incoming-damage protection, recovery, first-hit attacking boosts and berry/seed prevention. Has their field suppression and Ultra Ego rivalry rules."
+      "shortDesc": "Ultra Instinct + Keen Eye.",
+      "desc": "Ultra Instinct + Keen Eye. Keeps Ultra Instinct's attack timing bonus, first-attack protection, healing and field/rivalry effects. Prevents opposing accuracy drops, ignores evasion boosts and reveals opposing disguises. Mirror Arena grants +1 accuracy and Laser Focus."
     },
     "forsakensleeper": {
       "shortDesc": "Comatose + Soundproof + Rattled.",
@@ -119,8 +119,8 @@
       "ultraego"
     ],
     "twilightinstinct": [
-      "battlefervor",
       "innerfocus",
+      "keeneye",
       "moldbreaker",
       "twilightinstinct",
       "ultrainstinct"

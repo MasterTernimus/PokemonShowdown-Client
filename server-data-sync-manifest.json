@@ -1,8 +1,8 @@
 {
-	"sourceHead": "d48a3db20eaefa46e42ea166fc3af0faed41450a",
+	"sourceHead": "34bd010ff551fd9873018e14d4832c94c3086fb5",
 	"base": "22049e8bbc3cae437790269b4360f7c8eaf5da22",
-	"builtSourceFingerprint": "9779cf9edeff31f19d260507e33d0d8d5f378b8254f3ca465216e109f8a5c236",
-	"sourceDataSHA256": "8231a78ef2309681e2a6b28b3056b73e8eb84052fdf98ece9214dc03cc0cffbb",
+	"builtSourceFingerprint": "ec864956af5ade515d7ea5a2f199cfc5795312aeab9e0948b78b684ff7a3ca7b",
+	"sourceDataSHA256": "e675445e3934596f65c49df2991a55db8433422945618adb11b3e73d61d592cb",
 	"files": [
 		"data/abilities.ts",
 		"data/ability-components.ts",
@@ -17,6 +17,7 @@
 		"data/audit-cleanup-approved.ts",
 		"data/aura-gaze-approved.ts",
 		"data/auras.ts",
+		"data/authority-clause.ts",
 		"data/awakening-dragons.ts",
 		"data/beautifly-carrion-approved.ts",
 		"data/bone-spoils-infernal-approved.ts",
@@ -80,6 +81,7 @@
 		"data/room-setters.ts",
 		"data/roster-expansion-text.ts",
 		"data/roster-expansion-wave2.ts",
+		"data/rulesets.ts",
 		"data/selected-mega-simplification-data.ts",
 		"data/shelter-audit-reworks.ts",
 		"data/signature-move-summaries.ts",
@@ -89,6 +91,7 @@
 		"data/species-passives.ts",
 		"data/starter-passives.ts",
 		"data/targeted-passive-reworks.ts",
+		"data/terajuma-poise.ts",
 		"data/terrains.ts",
 		"data/text/abilities.ts",
 		"data/text/default.ts",
@@ -19668,7 +19671,7 @@
 				"abilities": {
 					"0": "Scrappy",
 					"1": "Twilight Instinct",
-					"H": "Dusk Drive"
+					"H": "Dusk Ego"
 				},
 				"baseStats": {
 					"hp": 75,
@@ -21608,7 +21611,7 @@
 			"miloticterajuma": {
 				"abilities": {
 					"0": "Prism Scale",
-					"1": "Whiplash",
+					"1": "Tidal Poise",
 					"H": "Queenly Majesty"
 				},
 				"baseStats": {
@@ -40971,7 +40974,7 @@
 				"isNonstandard": null
 			},
 			"duskdrive": {
-				"name": "Dusk Drive",
+				"name": "Dusk Ego",
 				"num": 10166,
 				"gen": 9,
 				"desc": "Full local Opportunist and Ultra Ego. Copies opposing positive stat changes at normal flush events; ability-bypassing attacks, damage-triggered attack boosts and recovery retain Ultra Ego's local field and rivalry rules.",
@@ -49116,6 +49119,18 @@
 				},
 				"isNonstandard": null
 			},
+			"tidalpoise": {
+				"name": "Tidal Poise",
+				"num": 12062,
+				"gen": 9,
+				"desc": "Gains +1 accuracy on entry; tail moves have 1.5x power. Prevents and cures confusion, and blocks Intimidate's Attack drop.",
+				"shortDesc": "Whiplash + Own Tempo.",
+				"rating": 4,
+				"flags": {
+					"breakable": 1
+				},
+				"isNonstandard": null
+			},
 			"tidalvoice": {
 				"name": "Tidal Voice",
 				"num": 10517,
@@ -49482,8 +49497,8 @@
 				"name": "Twilight Instinct",
 				"num": 10522,
 				"gen": 9,
-				"desc": "Full local Ultra Instinct and Battle Fervor, including their timing power, incoming-damage protection, recovery, first-hit attacking boosts and berry/seed prevention. Has their field suppression and Ultra Ego rivalry rules.",
-				"shortDesc": "Ultra Instinct + Battle Fervor.",
+				"desc": "Ultra Instinct + Keen Eye. Keeps Ultra Instinct's attack timing bonus, first-attack protection, healing and field/rivalry effects. Prevents opposing accuracy drops, ignores evasion boosts and reveals opposing disguises. Mirror Arena grants +1 accuracy and Laser Focus.",
+				"shortDesc": "Ultra Instinct + Keen Eye.",
 				"rating": 4,
 				"flags": {},
 				"isNonstandard": null
@@ -83932,6 +83947,10 @@
 				"swiftswim",
 				"filter"
 			],
+			"tidalpoise": [
+				"whiplash",
+				"owntempo"
+			],
 			"tidalvoice": [
 				"liquidvoice",
 				"soundproof"
@@ -84028,7 +84047,7 @@
 			"turboblaze": [],
 			"twilightinstinct": [
 				"ultrainstinct",
-				"battlefervor"
+				"keeneye"
 			],
 			"twinblades": [],
 			"twincannons": [],
@@ -86255,7 +86274,7 @@
 			"bloodchallenge": [],
 			"twilightinstinct": [
 				"ultrainstinct",
-				"battlefervor"
+				"keeneye"
 			],
 			"twincannons": [],
 			"twinblades": [],
@@ -87279,6 +87298,10 @@
 			"composed": [
 				"innerfocus",
 				"magicguard"
+			],
+			"tidalpoise": [
+				"whiplash",
+				"owntempo"
 			]
 		},
 		"learnsetExclusions": {

@@ -1751,17 +1751,17 @@ class BattleAbilitySearch extends BattleTypedSearch<'ability'> {
 		if (species.isMega) {
 			const megaAbility = species.abilities['0'];
 			abilitySet.push(['header', "Mega Ability"]);
-			abilitySet.push(['ability', toID(megaAbility)]);
+			abilitySet.push(['ability', dex.abilities.get(megaAbility).id]);
 			abilitySet.unshift(['html', `Will be <strong>${megaAbility}</strong> after Mega Evolving.`]);
 			species = dex.species.get(species.baseSpecies);
 		}
-		abilitySet.push(['ability', toID(species.abilities['0'])]);
+		abilitySet.push(['ability', dex.abilities.get(species.abilities['0']).id]);
 		if (species.abilities['1']) {
-			abilitySet.push(['ability', toID(species.abilities['1'])]);
+			abilitySet.push(['ability', dex.abilities.get(species.abilities['1']).id]);
 		}
 		if (species.abilities['H']) {
 			abilitySet.push(['header', "Hidden Ability"]);
-			abilitySet.push(['ability', toID(species.abilities['H'])]);
+			abilitySet.push(['ability', dex.abilities.get(species.abilities['H']).id]);
 		}
 		const eventAbilitySlots = ['S', 'E', 'F', 'G'] as const;
 		const eventAbilities = eventAbilitySlots
@@ -1774,7 +1774,7 @@ class BattleAbilitySearch extends BattleTypedSearch<'ability'> {
 		if (eventAbilities.length) {
 			abilitySet.push(['header', "Special Event Abilities"]);
 			for (const ability of eventAbilities) {
-				abilitySet.push(['ability', toID(ability)]);
+				abilitySet.push(['ability', dex.abilities.get(ability).id]);
 			}
 		}
 		if (isAAA || format.includes('metronomebattle') || isHackmons) {

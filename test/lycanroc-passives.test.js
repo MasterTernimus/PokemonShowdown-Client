@@ -10,7 +10,7 @@ describe('Approved three Lycanroc passives',()=>{
  it('replaces only Dusk Tough Claws with Scrappy and preserves all other slots',()=>{
   assert.deepEqual(Dex.species.get('lycanroc').abilities,{0:'Keen Hunt',1:'Sand Rush',H:'Ultra Instinct'});
   assert.deepEqual(Dex.species.get('lycanrocmidnight').abilities,{0:'Ultra Ego',1:'Blood Challenge',H:'No Guard'});
-  assert.deepEqual(Dex.species.get('lycanrocdusk').abilities,{0:'Scrappy',1:'Twilight Instinct',H:'Dusk Drive'});
+  assert.deepEqual(Dex.species.get('lycanrocdusk').abilities,{0:'Scrappy',1:'Twilight Instinct',H:'Dusk Ego'});
  });
  it('records actual local Dusk move-picker availability without granting any move',()=>{
   const rows=[];for(const format of ['gen9nofieldsinglesgame','gen9nofielddoublesbattle']){

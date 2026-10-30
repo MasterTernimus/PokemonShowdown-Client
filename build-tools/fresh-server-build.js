@@ -2,7 +2,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const crypto = require('node:crypto');
 const cp = require('node:child_process');
-const sourcePaths=['data','sim','lib','config/formats.ts','config/custom-formats.ts','build','tools/build-utils.js','tools/build-cache.js','tsconfig.json','package-lock.json'];
+const sourcePaths=['data','sim','lib','server/chat-formatter.ts','config/formats.ts','config/custom-formats.ts','build','tools/build-utils.js','tools/build-cache.js','tsconfig.json','package-lock.json'];
 // Include compiler inputs as well as game data. Never label arbitrary old dist as a new source revision.
 function sourceFingerprint(root) {
  const hash=crypto.createHash('sha256');

@@ -34056,7 +34056,7 @@ for (const [id, update] of Object.entries({
 		"abilities": {
 			"0": "Scrappy",
 			"1": "Twilight Instinct",
-			"H": "Dusk Drive",
+			"H": "Dusk Ego",
 		},
 		"baseStats": {
 			"hp": 75,
@@ -35996,7 +35996,7 @@ for (const [id, update] of Object.entries({
 	"miloticterajuma": {
 		"abilities": {
 			"0": "Prism Scale",
-			"1": "Whiplash",
+			"1": "Tidal Poise",
 			"H": "Queenly Majesty",
 		},
 		"baseStats": {
@@ -58326,7 +58326,7 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	"bloodchallenge": [],
 	"twilightinstinct": [
 		"ultrainstinct",
-		"battlefervor",
+		"keeneye",
 	],
 	"twincannons": [],
 	"twinblades": [],
@@ -59350,6 +59350,10 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	"composed": [
 		"innerfocus",
 		"magicguard",
+	],
+	"tidalpoise": [
+		"whiplash",
+		"owntempo",
 	],
 };
 // END SERVER WORKING SYNC DISPLAY COMPONENTS
@@ -64049,7 +64053,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"isNonstandard": null,
 	},
 	"duskdrive": {
-		"name": "Dusk Drive",
+		"name": "Dusk Ego",
 		"num": 10166,
 		"gen": 9,
 		"desc": "Full local Opportunist and Ultra Ego. Copies opposing positive stat changes at normal flush events; ability-bypassing attacks, damage-triggered attack boosts and recovery retain Ultra Ego's local field and rivalry rules.",
@@ -72194,6 +72198,18 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		},
 		"isNonstandard": null,
 	},
+	"tidalpoise": {
+		"name": "Tidal Poise",
+		"num": 12062,
+		"gen": 9,
+		"desc": "Gains +1 accuracy on entry; tail moves have 1.5x power. Prevents and cures confusion, and blocks Intimidate's Attack drop.",
+		"shortDesc": "Whiplash + Own Tempo.",
+		"rating": 4,
+		"flags": {
+			"breakable": 1,
+		},
+		"isNonstandard": null,
+	},
 	"tidalvoice": {
 		"name": "Tidal Voice",
 		"num": 10517,
@@ -72560,8 +72576,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Twilight Instinct",
 		"num": 10522,
 		"gen": 9,
-		"desc": "Full local Ultra Instinct and Battle Fervor, including their timing power, incoming-damage protection, recovery, first-hit attacking boosts and berry/seed prevention. Has their field suppression and Ultra Ego rivalry rules.",
-		"shortDesc": "Ultra Instinct + Battle Fervor.",
+		"desc": "Ultra Instinct + Keen Eye. Keeps Ultra Instinct's attack timing bonus, first-attack protection, healing and field/rivalry effects. Prevents opposing accuracy drops, ignores evasion boosts and reveals opposing disguises. Mirror Arena grants +1 accuracy and Laser Focus.",
+		"shortDesc": "Ultra Instinct + Keen Eye.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null,
@@ -101406,6 +101422,10 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"swiftswim",
 		"filter",
 	],
+	"tidalpoise": [
+		"whiplash",
+		"owntempo",
+	],
 	"tidalvoice": [
 		"liquidvoice",
 		"soundproof",
@@ -101502,7 +101522,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"turboblaze": [],
 	"twilightinstinct": [
 		"ultrainstinct",
-		"battlefervor",
+		"keeneye",
 	],
 	"twinblades": [],
 	"twincannons": [],
@@ -116705,7 +116725,7 @@ const AUDITED_DESCRIPTION_COMPONENTS: {[id: string]: string[]} = {
 	],
 	"keenhunt": [],
 	"bloodchallenge": [],
-	"twilightinstinct": ["ultrainstinct", "battlefervor"],
+	"twilightinstinct": ["ultrainstinct", "keeneye"],
 	"twincannons": [],
 	"twinblades": [],
 	"heatreservoir": [

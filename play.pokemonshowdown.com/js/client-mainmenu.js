@@ -1751,7 +1751,7 @@
 				$actor.find('.calc-ability-slots').html(slots);
 				$actor.find('.calc-passives').remove();
 				if (info && info.passives && info.passives.length) $actor.find('.calc-identity').append('<div class="calc-passives"><b>Passives:</b> ' + info.passives.map(function (id) { return self.escape(Dex.abilities.get(id).name); }).join(' · ') + '</div>');
-				var parts = (self.metadata.abilityComponents || {})[toID($actor.find('[name=ability]').val())] || [];
+				var parts = (self.metadata.abilityComponents || {})[Dex.abilities.get($actor.find('[name=ability]').val()).id] || [];
 				if (species.baseSpecies === 'Silvally' && toID($actor.find('[name=ability]').val()) === 'rkssystem') {
 					var memories = self.metadata.rksSystemMemoryAbilities || {};
 					parts = (memories[toID($actor.find('[name=item]').val())] || memories[''] || []).map(function (id) { return Dex.abilities.get(id).name; });
@@ -1816,6 +1816,7 @@
 			});
 			var library = Storage.prefs('pokemontools') || {};
 			(library.builds || []).forEach(function (build) { self.savedCalcSets.push({name: 'Saved set: ' + build.name + ' — ' + build.set.species, set: build.set}); });
+			this.savedCalcSets = this.savedCalcSets.filter(function (entry) {return !Dex.isSpeciesHidden(entry.set.species);});
 			var html = '<option value="">Choose a saved Pokémon…</option>';
 			this.savedCalcSets.forEach(function (entry, i) { html += '<option value="' + i + '">' + self.escape(entry.name) + '</option>'; });
 			this.$('.calc-saved-set').html(html).prop('disabled', !this.savedCalcSets.length);
@@ -1937,6 +1938,7 @@
 		},
 		validateActorImport: function (index, actor) {
 			if (!actor || typeof actor !== 'object' || Array.isArray(actor)) throw new Error('Expected an actor object.');
+			if (Dex.isSpeciesHidden(actor.species)) throw new Error('This Pokémon is unavailable in the calculator.');
 			var $actor = this.$('.calc-actor[data-slot=' + index + ']');
 			$actor.find('select').each(function () {
 				if (actor[this.name] === undefined) return;
@@ -2160,10 +2162,11 @@
 			var active = this.$('.calc-actor').map(function () {
 				var actor = $(this), species = Dex.species.get(actor.find('[name=species]').val());
 				var info = (self.metadata.species || []).find(function (entry) {return toID(entry.name) === species.id;});
-				return [actor.find('[name=ability]').val()].concat((self.metadata.abilityComponents || {})[toID(actor.find('[name=ability]').val())] || [], info && info.passives || []).map(toID);
+				var ability = Dex.abilities.get(actor.find('[name=ability]').val()).id;
+				return [ability].concat((self.metadata.abilityComponents || {})[ability] || [], info && info.passives || []).map(toID);
 			}).get();
 			this.$('.calc-actor').each(function () {
-				var actor = $(this), species = Dex.species.get(actor.find('[name=species]').val()), ability = toID(actor.find('[name=ability]').val());
+				var actor = $(this), species = Dex.species.get(actor.find('[name=species]').val()), ability = Dex.abilities.get(actor.find('[name=ability]').val()).id;
 				var info = (self.metadata.species || []).find(function (entry) {return toID(entry.name) === species.id;});
 				var effects = [ability].concat(((self.metadata.abilityComponents || {})[ability] || []).map(toID), info && info.passives || []);
 				var moves = (actor.find('[name=moves]').val() || '').split(',').map(toID);

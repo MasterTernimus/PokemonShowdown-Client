@@ -92,6 +92,10 @@ function requireNoCache(pathSpec) {
 	// generate aliases
 	function generateAlias(id, name, type) {
 		name = compoundTable.get(id) || name;
+		// Display renames can retain a stable ID for saved teams and replays.
+		// Index the full current name so partial searches work before an exact alias match.
+		const displayID = toID(name);
+		if (displayID !== id) index.push(`${displayID} ${type} ${id} 0`);
 		if (type === 'pokemon' && !compoundTable.has(id)) {
 			const species = Dex.species.get(id);
 			const baseid = toID(species.baseSpecies);
