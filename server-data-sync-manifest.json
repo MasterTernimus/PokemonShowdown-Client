@@ -1,8 +1,8 @@
 {
-	"sourceHead": "5c5b25e3adb59ecd21821cc494203f4c98bc345b",
+	"sourceHead": "df86aed4adcd017b5ec446ad37f21b3e3267d5e0",
 	"base": "22049e8bbc3cae437790269b4360f7c8eaf5da22",
-	"builtSourceFingerprint": "b70413e6ad05135f318be5b5ed3ddba0eb61f7cb1b779cad9f7f41d9f01a427f",
-	"sourceDataSHA256": "ead0ba053a14e01df7eb95b9e549a18a31c649e8e6d7a9f5a6da29932ae0337f",
+	"builtSourceFingerprint": "9410ec52fc0e2b81bbb66b7ce347ea0beb3586fd53e3bab385df62d83ae35b76",
+	"sourceDataSHA256": "6d5113d482e8f3cc17ed5cdd25f33357859be3c465e07350e7e70b8eaa8b2650",
 	"files": [
 		"data/abilities.ts",
 		"data/ability-components.ts",
@@ -87675,12 +87675,6 @@
 				"sing"
 			],
 			"pidgeotto": [
-				"sing"
-			],
-			"pidgeot": [
-				"sing"
-			],
-			"pidgeotmega": [
 				"sing"
 			],
 			"raichu": [

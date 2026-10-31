@@ -102953,20 +102953,14 @@ CUSTOM_LEARNSET_REMOVALS.pinsir = [...(CUSTOM_LEARNSET_REMOVALS.pinsir || []), '
 CUSTOM_LEARNSET_REMOVALS.pinsirmega = [...(CUSTOM_LEARNSET_REMOVALS.pinsirmega || []), 'extremespeed'];
 // Approved Raichu Sing removal.
 for (const id of ['raichu','raichualola','raichumegax','raichumegay']) CUSTOM_LEARNSET_REMOVALS[id] = [...(CUSTOM_LEARNSET_REMOVALS[id] || []), 'sing'];
-// Approved Pidgeot Sing removal.
-for (const id of ['pidgey','pidgeotto','pidgeot','pidgeotmega']) CUSTOM_LEARNSET_REMOVALS[id] = [...(CUSTOM_LEARNSET_REMOVALS[id] || []), 'sing'];
+// Sing remains excluded only for Pidgeot's pre-evolutions.
+for (const id of ['pidgey','pidgeotto']) CUSTOM_LEARNSET_REMOVALS[id] = [...(CUSTOM_LEARNSET_REMOVALS[id] || []), 'sing'];
 // BEGIN SERVER WORKING SYNC LEARNSET EXCLUSIONS
 const SERVER_GEN9_LEARNSET_EXCLUSIONS: {[id: string]: readonly string[]} = {
 	"pidgey": [
 		"sing",
 	],
 	"pidgeotto": [
-		"sing",
-	],
-	"pidgeot": [
-		"sing",
-	],
-	"pidgeotmega": [
 		"sing",
 	],
 	"raichu": [

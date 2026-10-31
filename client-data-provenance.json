@@ -1,7 +1,7 @@
 {
-  "sourceHead": "5c5b25e3adb59ecd21821cc494203f4c98bc345b",
-  "sourceDataSHA256": "ead0ba053a14e01df7eb95b9e549a18a31c649e8e6d7a9f5a6da29932ae0337f",
-  "builtSourceFingerprint": "b70413e6ad05135f318be5b5ed3ddba0eb61f7cb1b779cad9f7f41d9f01a427f",
+  "sourceHead": "df86aed4adcd017b5ec446ad37f21b3e3267d5e0",
+  "sourceDataSHA256": "6d5113d482e8f3cc17ed5cdd25f33357859be3c465e07350e7e70b8eaa8b2650",
+  "builtSourceFingerprint": "9410ec52fc0e2b81bbb66b7ce347ea0beb3586fd53e3bab385df62d83ae35b76",
   "outputs": {
     "data/abilities.js": "eb9a827c71c53e4b97b22f541a787e3bacbd2680756e59ad787f96cb45552bd7",
     "data/aliases.js": "13fb4d7e746ded8b484e49098c8dc6cc53249005c602fd1e06c8fcc8625eac39",
@@ -9,14 +9,14 @@
     "data/formats.js": "29976fba3df24e105f0da0002fec246d6abde3444eab8a1bef6ef31a7280a289",
     "data/graphics.js": "45dd8640c7fc0639ae968082dc4e12552b3e77b4eee37030a7d9c182e440f3eb",
     "data/items.js": "f8d95d4be0d2e94e64e166ce21496aa066708d424b784bc7a2989475873fbb11",
-    "data/learnsets-g6.js": "2a7233bd9e423bb8df2257ffb5a6193d1df1783d7d41e58afac92ab1cdf14ca3",
-    "data/learnsets.js": "1a464a01efc471422ded13810b8507c3a84926f9f67ffa47d952c9d53fd595d7",
+    "data/learnsets-g6.js": "f8bc03ff3bbab698db8115f1197e17474067af8b8f72988b5021dab195ef5d01",
+    "data/learnsets.js": "d3077a95490719c89078ffc3be7642e2019fbc6e7a8e7cbb90b1dd941d6259d6",
     "data/moves.js": "1c25c839ff6983a85400fae0b8dd9b6a3f225462bfa8dc73be5eb7963b984fd9",
     "data/pokedex-mini-bw.js": "c12fe7a73df3280cfc313dd9e05832cb8d9db1ba47a34d279f87d89386bef921",
     "data/pokedex-mini.js": "67109c76fd5e401621fc85c209d78f36d3a4bc7f1866559d9569ffc2aee38226",
     "data/pokedex.js": "bffcf9f7dd41b3fd6b2aedcc9fe4d84e800bcbdbaa789557b0593d7b10d7dc4b",
     "data/search-index.js": "0429b0e4f4b6bfd73534c5c1c3eb91a409e5218aeb5a3bb89a65e63f5971de31",
-    "data/teambuilder-tables.js": "f8ca2f0d413c7facb2d2e323dbc488079e6cdd3fb49b015a69d81a3f72cf259a",
+    "data/teambuilder-tables.js": "e29fe78b6830398814a70228f9b22b0591efb7312e731b892caae75a2981d4c4",
     "data/text-afd.js": "df22416bd6b7cebefb859532980ba1b9f6e1865cefc974d34dd2a116c0d5ddb4",
     "data/text.js": "f2c86e896ff32555b97304bcf0d668cc28c3e389a22616ba42c7dae015e4abab",
     "data/typechart.js": "1f28413cf01f8f52c6ab35b694fafc52a537dfe31e68dcea6b9c97d41c7b9523"
