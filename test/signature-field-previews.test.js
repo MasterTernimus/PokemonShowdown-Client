@@ -61,7 +61,7 @@ describe('Signature aura preview parity',()=>{
   assert.equal(r.move.category,category);
   assert.deepEqual(r.move.secondaries[0].self.boosts,{[category==='Physical'?'atk':'spa']:1});
   assert.equal(!!r.move.recoil,!electric);
-  assert(/matching Atk\/SpA/.test(Dex.moves.get('kaboom').shortDesc));
+  assert(/matching offense/.test(Dex.moves.get('kaboom').shortDesc));
   assert(/Attack when Physical, Sp. Atk when Special/.test(Dex.moves.get('kaboom').desc));
  });
  for(const mode of ['neither','terrain','aura','both'])for(const id of ['kaboom','flutterscales','deiludicium'])it(id+' '+mode,()=>{

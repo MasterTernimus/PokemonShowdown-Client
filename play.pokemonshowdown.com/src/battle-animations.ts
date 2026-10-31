@@ -58,6 +58,7 @@ export class BattleScene implements BattleSceneStub {
 	$options: JQuery = null!;
 	log: BattleLog;
 	$terrain: JQuery = null!;
+	$aura: JQuery = null!;
 	$weather: JQuery = null!;
 	$bgEffect: JQuery = null!;
 	$bg: JQuery = null!;
@@ -158,6 +159,7 @@ export class BattleScene implements BattleSceneStub {
 
 		this.$bg = $('<div class="backdrop" style="background-image:url(' + Dex.resourcePrefix + this.backdropImage + ');display:block;opacity:0.8"></div>');
 		this.$terrain = $('<div class="weather"></div>');
+		this.$aura = $('<div class="battle-aura" aria-hidden="true"></div>');
 		this.$weather = $('<div class="weather"></div>');
 		this.$bgEffect = $('<div></div>');
 		this.$sprite = $('<div></div>');
@@ -192,6 +194,7 @@ export class BattleScene implements BattleSceneStub {
 
 		this.$battle.append(this.$bg);
 		this.$battle.append(this.$terrain);
+		this.$battle.append(this.$aura);
 		this.$battle.append(this.$weather);
 		this.$battle.append(this.$bgEffect);
 		this.$battle.append(this.$sprite);
@@ -1019,6 +1022,9 @@ export class BattleScene implements BattleSceneStub {
 	}
 	updateWeather(instant?: boolean) {
 		if (!this.animating) return;
+		const auraID = this.battle.pseudoWeather.map(([name]) => toID(name)).find(id =>
+			/^(electric|grassy|misty|psychic|rainbow|frozen|ashen|rift|haunted|bewitched)aura$/.test(id));
+		this.$aura.attr('class', auraID ? 'battle-aura ' + auraID : 'battle-aura').toggle(!!auraID);
 		let isIntense = false;
 		let weather = this.battle.weather;
 		if (this.battle.abilityActive(['Air Lock', 'Cloud Nine'])) {
@@ -1030,7 +1036,7 @@ export class BattleScene implements BattleSceneStub {
 			const field = this.battle.getTerrainId(pseudoWeatherData[0]);
 			if (field) terrain = field;
 			const id = toID(pseudoWeatherData[0]);
-			if (!/^(electric|grassy|misty|psychic|rainbow)aura$/.test(id)) room = id;
+			if (!/^(electric|grassy|misty|psychic|rainbow|frozen|ashen|rift|haunted|bewitched)aura$/.test(id)) room = id;
 		}
 		if (!terrain) terrain = room;
 		if (weather === 'desolateland' || weather === 'primordialsea' || weather === 'deltastream') {
@@ -1896,7 +1902,7 @@ export class PokemonSprite extends Sprite {
 		opencage: '<span class="good" title="Open Cage: can escape trapping through the end of the turn after the song. Ends on switching.">Free to switch</span> ',
 		exposed: '<span class="bad" title="Breaking News: the reporter and nearby allies ignore positive defensive stages. The reporter’s Psychic/Fairy attacks gain 25% power. Lasts through the following turn.">Exposed</span> ',
 		rememberedflame: '<span class="good" title="Remembered Flame: next Fire attack gains 30% power. Expires after the following turn; spent even on a miss or block.">Fire ready</span> ',
-		stormcharge: '<span class="good" title="Storm Memory: next Electric attack gains 50% power and heals for 25% of damage dealt to foes. Spent even on a miss or block.">Electric ready</span> ',
+		stormcharge: '<span class="good" title="Next Electric attack gains 50% power. Charged Wild Charge is adaptive and recoil-free. Spent on damage to a foe or Substitute.">Electric ready</span> ',
 		meridianseal: ['Meridian Seal', 'bad'],
 		confusion: ['Confused', 'bad'],
 		healblock: ['Heal Block', 'bad'],

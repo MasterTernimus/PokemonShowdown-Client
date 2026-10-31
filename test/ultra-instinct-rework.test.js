@@ -16,7 +16,7 @@ describe('Approved Ultra Instinct and Burning Spirit presentation',()=>{
   const text=Dex.getAbilityDisplayDetails(Dex.abilities.get('burningspirit'),s.passives,s.id).desc;assert(text.includes('does not copy accuracy or evasion'));assert(!parts.includes('proficient'));
  });
  it('Relentless Hunt explains the single Cold Eclipse bonus and raised priority threshold',()=>{
-  const text=Dex.abilities.get('relentlesshunt').desc;assert(text.includes('threshold to 80'));assert(text.includes('applied once'));
+  const text=Dex.abilities.get('relentlesshunt').desc;assert(/up to 80 on Cold Eclipse/.test(text));assert(text.includes('applies once'));
  });
 });
 

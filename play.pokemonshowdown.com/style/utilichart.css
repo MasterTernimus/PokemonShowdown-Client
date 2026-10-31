@@ -441,136 +441,86 @@
 .dark .utilichart .sortrow .sortcol:hover, .dark .utilichart .sortrow .sortcol:focus-visible { background: #496477; color: white; }
 
 .utilichart .ability-name {display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:normal;overflow-wrap:normal;word-break:normal;}
-/* Move picker rows grow with their descriptions instead of overlapping the next result. */
-.utilichart .result > a[data-entry^="move|"] {
- height: auto; min-height: 32px; display: flow-root; box-sizing: border-box;
+/* Move results and their controls share the same columns at every pane width. */
+.utilichart:has(a[data-entry^="move|"]), .utilichart:has(.move-sort-row) {
+ container-type: inline-size; width: 100%; max-width: 100%; min-width: 0;
 }
-@media (max-width: 639px) {
- .utilichart .result > a[data-entry^="move|"] {
-  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 3px 8px; align-items: start; min-height: 44px;
-  margin: 0 6px; padding: 8px 6px; border: 0; border-bottom: 1px solid #d4dee6; border-radius: 0;
-  background: transparent; white-space: normal; touch-action: manipulation;
- }
- .utilichart .result > a[data-entry^="move|"] > .col {
-  float: none; width: auto; height: auto; min-width: 0; min-height: 0;
-  margin: 0; padding: 0; box-sizing: border-box; line-height: 1.4;
- }
- .utilichart .result > a[data-entry^="move|"] > .movenamecol {
-  grid-column: 1 / 3; font-size: 14px; font-weight: 600; overflow-wrap: anywhere;
- }
- .utilichart .result > a[data-entry^="move|"] > .typecol {
-  grid-column: 3; display: flex; justify-content: flex-end; gap: 3px; padding-top: 3px;
- }
- .utilichart .result > a[data-entry^="move|"] > .typecol img { opacity: 1; margin: 0; }
- .utilichart .result > a[data-entry^="move|"] > :is(.labelcol, .widelabelcol, .pplabelcol) {
-  display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 4px;
-  text-align: left; font-size: 12px; padding: 0; border: 0;
- }
- .utilichart .result > a[data-entry^="move|"] > :is(.labelcol, .widelabelcol, .pplabelcol) br { display: none; }
- .utilichart .result > a[data-entry^="move|"] > :is(.labelcol, .widelabelcol, .pplabelcol) em {
-  font-size: 11px; color: #526575; font-style: normal;
- }
- .utilichart .result > a[data-entry^="move|"] > .movedesccol {
-  grid-column: 1 / -1; white-space: normal; overflow-wrap: anywhere;
-  font-size: 13px; line-height: 1.35; color: #344959;
- }
- .utilichart .result > a[data-entry^="move|"] > :is(.illegalcol, .filtercol) { grid-column: 1 / -1; }
- .utilichart .result > a[data-entry^="move|"].cur { border-color: #397ba4; background: #e3f1fc; }
- .utilichart .result > a[data-entry^="move|"]:focus-visible { outline: 3px solid #397ba4; outline-offset: 1px; }
- .dark .utilichart .result > a[data-entry^="move|"] { background: transparent; border-color: #34434e; }
- .dark .utilichart .result > a[data-entry^="move|"] > .col { color: #edf3f8; }
- .dark .utilichart .result > a[data-entry^="move|"] > :is(.labelcol, .widelabelcol, .pplabelcol) { border-color: #3c4c59; }
- .dark .utilichart .result > a[data-entry^="move|"] > :is(.labelcol, .widelabelcol, .pplabelcol) em,
- .dark .utilichart .result > a[data-entry^="move|"] > .movedesccol { color: #c1cfdb; }
- .dark .utilichart .result > a[data-entry^="move|"].cur { background: #294457; border-color: #8dc7ed; }
+.utilichart .result:has(> a[data-entry^="move|"]), .utilichart .move-sort-result {
+ padding: 0; min-height: 0;
 }
-
-/* Transparent move lists over custom wallpapers, including exclusive event moves. */
-.utilichart .result > a[data-entry^="move|"] { background: transparent; color: #202f3b; }
-.utilichart .result > a[data-entry^="move|"] > .movenamecol .move-source { display: inline-block; margin-left: 7px; font: 11px/1.4 Verdana, sans-serif; color: #536675; margin-top: 2px; }
-.dark .utilichart .result > a[data-entry^="move|"] { background: transparent; color: #eef3f7; text-shadow: 0 1px 2px #000; }
-.dark .utilichart .result > a[data-entry^="move|"] > .movenamecol .move-source { color: #b7c8d5; }
-.utilichart .result > a[data-entry^="move|"]:hover, .utilichart .result > a[data-entry^="move|"].cur { background: rgba(90, 155, 200, .18); }
-.dark .utilichart .result > a[data-entry^="move|"]:hover, .dark .utilichart .result > a[data-entry^="move|"].cur { background: rgba(110, 180, 225, .2); }
-@media (min-width: 640px) {
- .utilichart .result > a[data-entry^="move|"] { display: grid; grid-template-columns: minmax(140px, 1fr) 72px 62px 90px 52px; gap: 4px 8px; align-items: center; padding: 7px 10px; margin: 0; min-height: 44px; border-bottom: 1px solid #d4dee6; white-space: normal; }
- .utilichart .result > a[data-entry^="move|"] > .col { float: none; width: auto; height: auto; min-width: 0; margin: 0; padding: 0; line-height: 1.4; }
- .utilichart .result > a[data-entry^="move|"] > .movenamecol { font-size: 14px; font-weight: 600; overflow-wrap: anywhere; }
- .utilichart .result > a[data-entry^="move|"] > .typecol { display: flex; gap: 3px; }
- .utilichart .result > a[data-entry^="move|"] > :is(.labelcol, .widelabelcol, .pplabelcol) { display: flex; flex-wrap: wrap; gap: 4px; font-size: 12px; }
- .utilichart .result > a[data-entry^="move|"] > :is(.labelcol, .widelabelcol, .pplabelcol) br { display: none; }
- .utilichart .result > a[data-entry^="move|"] > :is(.labelcol, .widelabelcol, .pplabelcol) em { font: 11px/1.4 Verdana, sans-serif; color: #526575; }
- .utilichart .result > a[data-entry^="move|"] > .movedesccol { grid-column: 1 / -1; font-size: 13px; color: #344959; white-space: normal; overflow-wrap: anywhere; }
- .utilichart .result > a[data-entry^="move|"] > :is(.illegalcol, .filtercol) { grid-column: 1 / -1; }
- .dark .utilichart .result > a[data-entry^="move|"] { border-color: #3c4c59; }
- .dark .utilichart .result > a[data-entry^="move|"] > .col { color: #edf3f8; }
- .dark .utilichart .result > a[data-entry^="move|"] > .movedesccol, .dark .utilichart .result > a[data-entry^="move|"] em { color: #c1cfdb; }
+.utilichart .result > a[data-entry^="move|"], .utilichart .sortrow.move-sort-row {
+ display: grid; grid-template-columns: minmax(92px, 1fr) 36px 30px 36px 44px 28px;
+ align-items: center; gap: 2px 4px; box-sizing: border-box;
+ margin: 0; padding: 4px 6px; height: auto; min-height: 36px;
+ border: 1px solid transparent; border-bottom-color: rgba(110, 130, 145, .25);
+ border-radius: 0; font: 12px/17px Arial, Helvetica, sans-serif;
+ color: #444; text-shadow: none; white-space: normal; background: transparent;
+ touch-action: pan-y;
 }
-
-.teambuilder-results .utilichart:has(a[data-entry^="move|"]) { width: 100%; max-width: 100%; min-width: 0; }
-.utilichart .result > a[data-entry^="move|"] { border-radius: 0; }
-
-/* The picker can be narrower than the window (including split-pane desktop). */
-.teambuilder-results { container-type: inline-size; }
-.teambuilder-results .utilichart .result:has(> a[data-entry^="move|"]) { padding: 0; min-height: 0; }
-.teambuilder-results .utilichart .result > a[data-entry^="move|"] {
- display: grid; grid-template-columns: minmax(0, 1fr) 66px 60px 88px 42px;
- gap: 1px 6px; align-items: center; min-height: 40px;
- margin: 0; padding: 3px 6px; border-width: 0 0 1px;
- white-space: normal; touch-action: pan-y;
-}
-.teambuilder-results .utilichart .result > a[data-entry^="move|"] > .col {
+.utilichart .result > a[data-entry^="move|"] > .col {
  float: none; width: auto; height: auto; min-width: 0; min-height: 0;
- margin: 0; padding: 0; line-height: 16px; box-sizing: border-box;
+ margin: 0; padding: 0; box-sizing: border-box; font: inherit; color: inherit;
 }
-.teambuilder-results .utilichart .result > a[data-entry^="move|"] > .movenamecol {
- grid-column: 1; font-size: 12px; font-weight: 600; overflow-wrap: anywhere;
+.utilichart .result > a[data-entry^="move|"] > :is(.movenamecol, .shortmovenamecol) {
+ grid-column: 1; grid-row: 1; font-size: 10pt; font-weight: normal; color: #000; overflow-wrap: anywhere;
 }
-.teambuilder-results .utilichart .result > a[data-entry^="move|"] > .typecol {
- grid-column: 2; display: flex; justify-content: flex-start; gap: 3px;
+.utilichart .result > a[data-entry^="move|"] > .typecol { grid-column: 2; grid-row: 1; }
+.utilichart .result > a[data-entry^="move|"] > .movecategorycol { grid-column: 3; grid-row: 1; }
+.utilichart .result > a[data-entry^="move|"] > :is(.typecol, .movecategorycol) {
+ display: flex; justify-content: center; align-items: center;
 }
-.teambuilder-results .utilichart .result > a[data-entry^="move|"] > .typecol img { margin: 0; opacity: 1; }
-.teambuilder-results .utilichart .result > a[data-entry^="move|"] > :is(.labelcol, .widelabelcol, .pplabelcol) {
- display: flex; flex-wrap: nowrap; gap: 3px; align-items: baseline; font-size: 11px; white-space: nowrap;
+.utilichart .result > a[data-entry^="move|"] :is(.typecol, .movecategorycol) img {
+ display: block; margin: 0; opacity: 1;
 }
-.teambuilder-results .utilichart .result > a[data-entry^="move|"] > :is(.labelcol, .widelabelcol, .pplabelcol) br { display: none; }
-.teambuilder-results .utilichart .result > a[data-entry^="move|"] em { font: normal 10px/16px Verdana, sans-serif; }
-.teambuilder-results .utilichart .result > a[data-entry^="move|"] > .movedesccol {
- grid-column: 1 / -1; font-size: 11px; line-height: 15px; overflow-wrap: anywhere;
+.utilichart .result > a[data-entry^="move|"] > .labelcol { grid-column: 4; grid-row: 1; }
+.utilichart .result > a[data-entry^="move|"] > .widelabelcol { grid-column: 5; grid-row: 1; }
+.utilichart .result > a[data-entry^="move|"] > .pplabelcol { grid-column: 6; grid-row: 1; }
+.utilichart .result > a[data-entry^="move|"] > :is(.labelcol, .widelabelcol, .pplabelcol) {
+ text-align: center; font-size: 8pt; font-variant-numeric: tabular-nums; white-space: nowrap;
 }
-.teambuilder-results .utilichart .result > a[data-entry^="move|"] > :is(.illegalcol, .filtercol) { grid-column: 2 / -1; }
-.teambuilder-results .utilichart .result > a[data-entry^="move|"]:focus-visible { outline: 2px solid #397ba4; outline-offset: -2px; }
-@container (min-width: 600px) {
- .teambuilder-results .utilichart .sortrow:has(.movenamesortcol) {
-  display: grid; grid-template-columns: 148px 31px 31px 28px 40px 24px minmax(0, 1fr);
-  gap: 0 4px; margin: 0; padding: 0 6px; height: auto;
+/* Column names are in the header; preserve the per-value labels for screen readers. */
+.utilichart .result > a[data-entry^="move|"] :is(.labelcol, .widelabelcol, .pplabelcol) em {
+ position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap;
+}
+.utilichart .result > a[data-entry^="move|"] :is(.labelcol, .widelabelcol, .pplabelcol) br { display: none; }
+.utilichart .result > a[data-entry^="move|"] > .movedesccol {
+ grid-column: 1 / -1; font-size: 8pt; line-height: 1.3; white-space: normal; overflow-wrap: anywhere;
+}
+.utilichart .result > a[data-entry^="move|"] > :is(.illegalcol, .filtercol) { grid-column: 2 / -1; }
+.utilichart .result > a[data-entry^="move|"] .move-source {
+ display: block; margin: 0; font: 11px/15px Arial, Helvetica, sans-serif; color: #566c7a;
+}
+.utilichart .result > a[data-entry^="move|"] > .tagcol { grid-column: 1; grid-row: 1; width: 32px; }
+.utilichart .result > a[data-entry^="move|"] > .shortmovenamecol { padding-left: 36px; }
+.utilichart .sortrow.move-sort-row { background: #e3e9ee; padding-top: 0; padding-bottom: 0; }
+.utilichart .sortrow.move-sort-row .sortcol {
+ display: block; float: none; width: auto; min-width: 0; height: auto; min-height: 32px;
+ margin: 0; padding: 2px 0; font: 12px/17px Arial, Helvetica, sans-serif;
+ color: inherit; white-space: nowrap; cursor: pointer;
+}
+.utilichart .sortrow.move-sort-row .movenamesortcol { text-align: left; }
+.utilichart .sortrow.move-sort-row .sortcol.cur { background: rgba(70, 130, 175, .18); font-weight: bold; }
+.utilichart .sortrow.move-sort-row .sort-direction { font-size: 10px; margin-left: 1px; }
+.utilichart .sortrow.move-sort-row .move-effect-heading { display: none; }
+.utilichart .result > a[data-entry^="move|"]:is(:hover, .cur) { background: rgba(90, 155, 200, .15); }
+.utilichart .result > a[data-entry^="move|"].cur { border-color: #7599b2; border-radius: 3px; }
+.utilichart .result > a[data-entry^="move|"]:focus-visible,
+.utilichart .move-sort-row .sortcol:focus-visible { outline: 2px solid #397ba4; outline-offset: -2px; }
+/* Match the item list's regular-weight, soft-gray text. */
+.dark .utilichart .result > a[data-entry^="move|"] { color: #ddd; text-shadow: none; }
+.dark .utilichart .result > a[data-entry^="move|"] > :is(.movenamecol, .shortmovenamecol) { color: inherit; }
+.dark .utilichart .result > a[data-entry^="move|"] .move-source { color: #bccbd5; }
+.dark .utilichart .sortrow.move-sort-row { background: rgba(37, 52, 64, .94); color: #ddd; }
+.dark .utilichart .move-sort-row .sortcol:is(:hover, :focus-visible, .cur) { background: rgba(120, 180, 220, .2); }
+@container (min-width: 560px) {
+ .utilichart .result > a[data-entry^="move|"], .utilichart .sortrow.move-sort-row {
+  grid-template-columns: 144px 36px 30px 36px 44px 28px minmax(0, 1fr); min-height: 32px;
  }
- .teambuilder-results .utilichart .sortrow:has(.movenamesortcol) .sortcol {
-  width: auto; min-width: 0; padding: 2px 0; font-size: 10px;
- }
- .teambuilder-results .utilichart .result > a[data-entry^="move|"] {
-  grid-template-columns: 148px 66px 28px 40px 24px minmax(0, 1fr); min-height: 32px;
-  gap: 0 4px; padding: 1px 6px; border-bottom-color: transparent;
- }
- .teambuilder-results .utilichart .result > a[data-entry^="move|"] > .movedesccol { grid-column: 6; }
- .teambuilder-results .utilichart .result > a[data-entry^="move|"] > :is(.labelcol, .widelabelcol, .pplabelcol) {
-  display: block; text-align: center; line-height: 13px;
- }
- .teambuilder-results .utilichart .result > a[data-entry^="move|"] > :is(.labelcol, .widelabelcol, .pplabelcol) br { display: block; }
- .teambuilder-results .utilichart .result > a[data-entry^="move|"] em { font-size: 9px; line-height: 12px; }
- .teambuilder-results .utilichart .result > a[data-entry^="move|"].cur { border: 1px solid #a6b4be; border-radius: 4px; }
-}
-@container (max-width: 439px) {
- .teambuilder-results .utilichart .result > a[data-entry^="move|"] {
-  grid-template-columns: repeat(3, minmax(0, 1fr)); min-height: 44px; padding: 4px 6px;
- }
- .teambuilder-results .utilichart .result > a[data-entry^="move|"] > .movenamecol { grid-column: 1 / 3; }
- .teambuilder-results .utilichart .result > a[data-entry^="move|"] > .typecol { grid-column: 3; justify-content: flex-end; }
- .teambuilder-results .utilichart .result > a[data-entry^="move|"] > :is(.illegalcol, .filtercol) { grid-column: 1 / -1; }
+ .utilichart .result > a[data-entry^="move|"] > .movedesccol { grid-column: 7; grid-row: 1; padding-left: 4px; }
+ .utilichart .sortrow.move-sort-row .move-effect-heading { display: block; padding-left: 4px; }
 }
 @media (pointer: coarse) {
- .teambuilder-results .utilichart .result > a[data-entry^="move|"] { min-height: 44px; }
+ .utilichart .result > a[data-entry^="move|"], .utilichart .move-sort-row .sortcol { min-height: 44px; }
 }
 
 /* Pokemon results share the transparent move/ability list treatment. */

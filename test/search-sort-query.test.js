@@ -6,6 +6,16 @@ const {DexSearch}=new Function(fs.readFileSync('play.pokemonshowdown.com/js/batt
 const make=(type,q)=>{const s=new DexSearch(type,'gen9nationaldex',type==='move'?'mew':'');s.find(q);return s};
 const ids=s=>s.results.filter(r=>r[0]===s.typedSearch.searchType).map(r=>r[1]).sort();
 describe('Sorting during typed picker searches',()=>{
+ it('sorts by displayed maximum PP, including moves that cannot use PP Ups',()=>{
+  const s=make('move',''), search=s.typedSearch;
+  const moves={fixed:{pp:15,noPPBoosts:true},boosted:{pp:10},single:{pp:1},capped:{pp:40},uncapped:{pp:61,noPPBoosts:true}};
+  search.dex={gen:9,moves:{get:id=>moves[id]}};
+  const rows=()=>['fixed','boosted','single'].map(id=>['move',id]);
+  assert.deepEqual(search.sort(rows(),'pp').map(r=>r[1]),['boosted','fixed','single']);
+  assert.deepEqual(search.sort(rows(),'pp',true).map(r=>r[1]),['single','fixed','boosted']);
+  search.dex.gen=2;
+  assert.deepEqual(search.sort([['move','uncapped'],['move','capped']],'pp').map(r=>r[1]),['uncapped','capped']);
+ });
  for(const [type,queries,cols]of [['move',['','psychic','punch'],['name','type','category','power','accuracy','pp']],['pokemon',['','Ground','char'],['name','type','ability','hp','atk','def','spa','spd','spe','bst']]]){
   for(const q of queries)it(type+' query '+JSON.stringify(q)+' retains header and matching rows for every sort',()=>{const s=make(type,q),expected=ids(s),suggestions=s.results.filter(r=>r[0]!==type&&!r[0].startsWith('sort'));
    assert.equal(s.results[0][0],type==='move'?'sortmove':'sortpokemon');

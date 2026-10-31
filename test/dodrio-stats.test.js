@@ -6,6 +6,6 @@ describe('Dodrio approved stat transfer',()=>{
   const p=Dex.species.get('dodrio');
   assert.deepEqual(p.baseStats,{hp:90,atk:106,def:85,spa:50,spd:75,spe:119});assert.equal(p.bst,525);
   assert.deepEqual(p.types,['Ground','Flying']);
-  assert.deepEqual(p.abilities,{0:'Triple Threat',1:'Speed Boost',H:'Reckless'});
+  assert.deepEqual(p.abilities,{0:'Triple Threat',1:'Speed Boost',H:'Long Stride'});
  });
 });

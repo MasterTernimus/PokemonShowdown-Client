@@ -31,6 +31,11 @@ describe('External ability protocol attribution', () => {
   assert.equal(battle.p1.active[0].ability, name);
   battle.destroy();
  });
+ it('still allows an explicit replacement of Cursed Marionette with Frisk', () => {
+  const battle = parse(['|-ability|p1a: Source|Cursed Marionette', '|-ability|p1a: Source|Frisk|[from] move: Skill Swap|[of] p1b: Target']);
+  assert.equal(battle.p1.active[0].ability, 'Frisk');
+  battle.destroy();
+ });
  it('keeps known composites when a nested component activates', () => {
   const battle = parse(['|-ability|p1a: Source|Lunar Dread', '|-ability|p1a: Source|Pressure']);
   assert.equal(battle.p1.active[0].ability, 'Lunar Dread'); battle.destroy();

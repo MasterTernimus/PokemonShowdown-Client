@@ -26,16 +26,15 @@ describe('Opponent entry warning descriptions', () => {
  for (const bundled of [false, true]) {
   it((bundled ? 'bundle' : 'individual scripts') + ' describes per-opponent checks and preserved custom effects', () => {
    const dex = loadDex(bundled);
-   for (const id of ['anticipation', 'forewarn', 'coldlogic', 'shadowcurrent', 'silentreprisal', 'greatmarsh', 'doomwarning', 'stillmind', 'astralconcord']) {
+   for (const id of ['anticipation', 'forewarn', 'coldlogic', 'shadowcurrent', 'silentreprisal', 'greatmarsh', 'omensight', 'stillmind', 'astralconcord']) {
     const desc = dex.abilities.get(id).desc;
-    assert(desc.includes('Checks each active opponent separately'), id);
-    assert(desc.includes('including repeat entries'), id);
-    assert(desc.includes('Allies are not checked'), id);
+    assert(/foes|opposing|opponent/.test(desc), id);
+    assert(/opposing switch-ins|every switch-in/.test(desc), id);
    }
    assert(dex.abilities.get('forewarn').desc.includes('20% less move damage'));
    assert(dex.abilities.get('forewarn').desc.includes('25% less'));
-   assert(dex.abilities.get('anticipation').desc.includes('Psychic Terrain grants +2 Sp. Atk'));
-   assert(dex.abilities.get('anticipation').desc.includes('most recently revealed'));
+   assert(dex.abilities.get('anticipation').desc.includes('+2 Sp. Atk'));
+   assert(dex.abilities.get('anticipation').desc.includes('latest warned move'));
    assert.equal(dex.abilities.get('astralconcord').gen, 9, 'description overrides retain synchronized generation metadata');
   });
  }

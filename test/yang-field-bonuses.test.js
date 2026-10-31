@@ -1,0 +1,12 @@
+'use strict';
+const assert=require('assert').strict,fs=require('fs'),path=require('path'),vm=require('vm');
+const c=require('./helpers/isolated-dex.cjs')();c.BattleText=require('../play.pokemonshowdown.com/data/text').BattleText;
+for(const f of ['battle-scene-stub','battle-text-parser','battle','battle-log'])vm.runInContext(fs.readFileSync(path.join(__dirname,'../play.pokemonshowdown.com/js',f+'.js'),'utf8'),c);
+const {Battle}=vm.runInContext('({Battle})',c),{Dex}=c;
+const serverRoot=path.resolve(process.env.PS_SERVER_SOURCE || path.join(__dirname,'../caches/PokemonShowdown-Reborn'));
+describe('Yang field bonuses and approved Ice/Raichu client data',()=>{
+ it('matches all 27 server move descriptions',()=>{const server=require(path.join(serverRoot,'dist/sim')).Dex;const fields=require(path.join(serverRoot,'dist/data/yang-field-bonuses')).YangBonusFields;for(const id of Object.keys(fields)){assert.equal(Dex.moves.get(id).desc,server.moves.get(id).desc,id);assert.equal(Dex.moves.get(id).shortDesc,server.moves.get(id).shortDesc,id);}});
+ it('matches all three stat spreads',()=>{for(const[id,stats]of [['froslassmega',[70,80,80,140,100,130]],['glalie',[80,80,85,80,85,90]],['glaliemega',[80,120,90,120,90,100]]])assert.deepEqual(Object.values(Dex.species.get(id).baseStats),stats);});
+ it('removes direct Sing and preserves inherited-source exclusions',()=>{const snap=require('../server-data-sync-manifest.json').snapshot,learn=require('../play.pokemonshowdown.com/data/learnsets').BattleLearnsets,table=require('../play.pokemonshowdown.com/data/teambuilder-tables').BattleTeambuilderTable;for(const id of ['raichu','raichualola','raichumegax','raichumegay']){assert(snap.learnsetExclusions[id].includes('sing'));assert(!learn[id]?.learnset?.sing);assert(!table.learnsets[id]?.sing);}assert(learn.pikachu.learnset.sing);});
+ it('shows exact new weather and side-condition timers',()=>{const b=new Battle({debug:true,log:['|init|battle','|gen|9','|gametype|singles','|switch|p1a: Mew|Mew, L100|100/100','|switch|p2a: Mew|Mew, L100|100/100','|-weather|DeltaStream|[from] move: Wind Dance|[of] p1a: Mew|[turns] 5|[silent]','|-sidestart|p1: Local|move: Tailwind|[turns] 3|[silent]','|-sidestart|p1: Local|move: Aurora Veil|[turns] 4|[silent]']});try{b.seekTurn(Infinity);assert.equal(b.weatherTimeLeft,5);assert.equal(b.weatherMinTimeLeft,5);assert.deepEqual(Array.from(b.p1.sideConditions.tailwind.slice(2)),[3,3]);assert.deepEqual(Array.from(b.p1.sideConditions.auroraveil.slice(2)),[4,4]);}finally{b.destroy();}});
+});

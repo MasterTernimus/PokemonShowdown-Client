@@ -2526,9 +2526,14 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 				return (accuracy2 - accuracy1) * sortOrder;
 			});
 		case 'pp':
+			const maxPP = (id: string) => {
+				const move = this.dex.moves.get(id);
+				const pp = move.pp === 1 || move.noPPBoosts ? move.pp : move.pp * 8 / 5;
+				return this.dex.gen < 3 ? Math.min(61, pp) : pp;
+			};
 			return results.sort(([rowType1, id1], [rowType2, id2]) => {
-				let pp1 = this.dex.moves.get(id1).pp || 0;
-				let pp2 = this.dex.moves.get(id2).pp || 0;
+				let pp1 = maxPP(id1);
+				let pp2 = maxPP(id2);
 				return (pp2 - pp1) * sortOrder;
 			});
 		case 'name':

@@ -2284,15 +2284,36 @@
 
 (function () {
 	var escape = BattleLog.escapeHTML;
-	window.openPublicFieldGuide = function (id) {var origin = app.curRoom && app.curRoom.id; if (!app.rooms.fieldguide)app.addRoom('fieldguide', window.FieldGuideRoom, true, 'Field Guide'); var room = app.rooms.fieldguide; if (origin && origin !== 'fieldguide')room.returnRoom = origin; room.selected = id || room.selected || 'hauntedterrain'; if (room.data)room.renderPage(); app.focusRoom('fieldguide'); app.topbar.updateTabbar();};
+	window.openPublicFieldGuide = function (id) {var origin = app.curRoom && app.curRoom.id; if (!app.rooms.fieldguide)app.addRoom('fieldguide', window.FieldGuideRoom, true, 'Field Guide'); var room = app.rooms.fieldguide; if (origin && origin !== 'fieldguide')room.returnRoom = origin; if (id)room.openGuideEntry(id); else if (!room.selected)room.openGuideEntry('hauntedterrain'); app.focusRoom('fieldguide'); app.topbar.updateTabbar();};
 	window.FieldGuideRoom = Room.extend({
 		type:'fieldguide', title:'Field Guide', minWidth:780, bestWidth:1000, maxWidth:1200,
 		events:{'input [name=guide-search]':'filterGuide', 'change [name=guide-kind]':'filterGuide'},
 		initialize:function () {this.$el.addClass('field-guide-room'); this.listenTo(app, 'response:fieldguide', this.receiveGuide); this.$el.html('<h2>Field Guide</h2><p role="status">Loading this server’s public field reference…</p><button class="button" name="retryGuide">Retry</button>'); app.send('/fieldguide');},
 		retryGuide:function () {app.send('/fieldguide');},
-		receiveGuide:function (data) {this.data = data; this.$el.html('<header><h2>Field Guide</h2><button class="button" name="close">Close</button></header><div class="guide-layout"><nav aria-label="Fields, auras, rooms and Gravity"><label>Find a field or effect<input class="textbox" name="guide-search" placeholder="Search fields, rooms, moves or abilities" /></label><label>Layer<select name="guide-kind"><option value="">All layers</option><option value="field">Full fields / terrains</option><option value="aura">Temporary auras</option><option value="effect">Rooms &amp; Gravity</option></select></label><div class="guide-list"></div></nav><article class="guide-page"></article></div>'); this.filterGuide(); this.renderPage();},
+		receiveGuide:function (data) {
+			var query = this.$('[name=guide-search]').val() || '';
+			this.data = data;
+			if (this.guideKind === undefined) this.guideKind = this.guideKeyKind(this.selected || 'hauntedterrain');
+			var tabs = [['', 'All'], ['field', 'Fields'], ['aura', 'Auras'], ['effect', 'Rooms & Gravity']].map(function (tab) {
+				var count = data.entries.filter(function (entry) {return !tab[0] || entry.kind === tab[0];}).length;
+				return '<button type="button" class="button" name="guideLayer" value="' + tab[0] + '" aria-pressed="false">' + tab[1] + ' <span class="guide-layer-count">' + count + '</span></button>';
+			}).join('');
+			this.$el.html('<header><h2>Field Guide</h2><button class="button" name="close">Close</button></header><nav class="guide-layer-tabs" aria-label="Field Guide sections">' + tabs + '</nav><p class="guide-layer-note"></p><div class="guide-layout"><nav aria-label="Fields, auras, rooms and Gravity"><label>Find a field or effect<input class="textbox" name="guide-search" type="search" placeholder="Search names, moves or abilities" /></label><input type="hidden" name="guide-kind" /><p class="guide-match-count" role="status" aria-live="polite"></p><div class="guide-list"></div></nav><article class="guide-page"></article></div>');
+			this.$('[name=guide-kind]').val(this.guideKind); this.$('[name=guide-search]').val(query);
+			this.filterGuide(true); this.renderPage();
+		},
+		guideKeyKind:function (key) {return key && key.startsWith('aura/') ? 'aura' : key && key.startsWith('effect/') ? 'effect' : 'field';},
+		openGuideEntry:function (id) {
+			this.selected = id; this.guideKind = this.guideKeyKind(id);
+			this.$('[name=guide-kind]').val(this.guideKind); this.$('[name=guide-search]').val('');
+			if (this.data) {this.filterGuide(true); this.renderPage();}
+		},
+		guideLayer:function (kind) {
+			if (!['', 'field', 'aura', 'effect'].includes(kind)) return;
+			this.guideKind = kind; this.$('[name=guide-kind]').val(kind); this.filterGuide();
+		},
 		filterGuide:function () {var self = this, q = toID(this.$('[name=guide-search]').val()), kind = this.$('[name=guide-kind]').val(); var list = this.data.entries.filter(function (e) {return (!kind || e.kind === kind) && (!q || toID(e.name + ' ' + JSON.stringify(e.sections) + ' ' + JSON.stringify(e.references) + ' ' + JSON.stringify(e.referenceDetails)).includes(q));}); this.$('.guide-list').html(list.map(function (e) {var key = (e.kind === 'aura' ? 'aura/' : e.kind === 'effect' ? 'effect/' : '') + e.id; return '<button class="button" name="chooseGuide" value="' + escape(key) + '" aria-pressed="' + (key === self.selected) + '">' + escape(e.name) + '<small>' + (e.kind === 'aura' ? 'Aura' : 'Full field') + '</small></button>';}).join('') || '<p>No matching entries.</p>');},
-		chooseGuide:function (id) {this.selected = id; this.renderPage(); this.filterGuide(); if (window.innerWidth <= 650) this.$('.guide-page')[0].scrollIntoView({block:'start'});},
+		chooseGuide:function (id) {this.selected = id; var kind = this.guideKeyKind(id); if (this.guideKind && this.guideKind !== kind) {this.guideKind = kind; this.$('[name=guide-kind]').val(kind); this.$('[name=guide-search]').val('');} this.renderPage(); this.filterGuide(true); if (window.innerWidth <= 650) this.$('.guide-page')[0].scrollIntoView({block:'start'});},
 		renderPage:function () {
 			if (!this.data) return; var key = this.selected || 'hauntedterrain', aura = key.startsWith('aura/'), id = aura ? key.slice(5) : key, e = this.data.entries.find(function (e) {return e.id === id && e.kind === (aura ? 'aura' : 'field');}); if (!e) {this.$('.guide-page').html('<p>This entry is not registered on the connected server.</p>'); return;}
 			var html = '<header><div><small>' + (aura ? 'TEMPORARY AURA' : 'FULL FIELD / TERRAIN') + '</small><h2>' + escape(e.name) + '</h2></div>' + (!aura ? '<button class="button" name="calculateGuideField" value="' + escape(e.id) + '">Use in calculator</button>' : '') + '</header>';
@@ -2358,16 +2379,32 @@
 		});
 		this.$('.guide-page').html(html);
 	};
-	p.filterGuide = function () {
+	p.filterGuide = function (keepSelection) {
 		if (!this.data) return;
 		var self = this, q = toID(this.$('[name=guide-search]').val()), kind = this.$('[name=guide-kind]').val();
+		this.guideKind = kind || '';
 		var list = this.data.entries.filter(function (e) {return (!kind || e.kind === kind) && (!q || toID(e.name + ' ' + e.group + ' ' + JSON.stringify(e.sections) + ' ' + JSON.stringify(e.references) + ' ' + JSON.stringify(e.referenceDetails)).includes(q));});
-		var html = ''; ['Rooms & Gravity', 'Elemental', 'Magical', 'Synthetic', 'Telluric'].forEach(function (group) {
-			var entries = list.filter(function (e) {return e.group === group;}).sort(function (a, b) {return a.name.localeCompare(b.name, undefined, {numeric:true});});
+		function keyFor(entry) {return (entry.kind === 'aura' ? 'aura/' : entry.kind === 'effect' ? 'effect/' : '') + entry.id;}
+		if (keepSelection !== true) {
+			if (list.length) {if (!list.some(function (entry) {return keyFor(entry) === self.selected;})) this.selected = keyFor(list.slice().sort(function (a, b) {return a.name.localeCompare(b.name);})[0]); this.renderPage();}
+			else {this.selected = ''; this.$('.guide-page').removeAttr('data-group').html('<p class="guide-empty">No matching entries in this section. Try another search or section.</p>');}
+		}
+		this.$('[name=guideLayer]').each(function () {$(this).attr('aria-pressed', this.value === (kind || '') ? 'true' : 'false');});
+		var notes = {
+			'': 'Browse fields, temporary auras, rooms and Gravity. Search across every section by name, move or ability.',
+			field: 'Full fields shape the battlefield. Browse by seed family or search for a move or ability.',
+			aura: 'Auras sit over the underlying field and have their own timer. Choose an aura to see its effects, duration and development rules.',
+			effect: 'Rooms and Gravity can coexist with fields and auras. Choose an effect to see its rules and interactions.',
+		};
+		this.$('.guide-layer-note').text(notes[kind || '']);
+		var noun = kind === 'aura' ? (list.length === 1 ? 'aura' : 'auras') : kind === 'field' ? (list.length === 1 ? 'field' : 'fields') : (list.length === 1 ? 'entry' : 'entries');
+		this.$('.guide-match-count').text(list.length + ' ' + noun + (q ? ' matching your search' : ' available'));
+		var html = ''; ['Auras', 'Rooms & Gravity', 'Elemental', 'Magical', 'Synthetic', 'Telluric'].forEach(function (group) {
+			var entries = list.filter(function (e) {return group === 'Auras' ? e.kind === 'aura' : e.kind !== 'aura' && e.group === group;}).sort(function (a, b) {return a.name.localeCompare(b.name, undefined, {numeric:true});});
 			if (!entries.length) return;
 			html += '<details class="guide-group" data-group="' + escape(group) + '" open><summary>' + escape(group) + '<span>' + entries.length + '</span></summary><div>';
 			entries.forEach(function (e) {var key = (e.kind === 'aura' ? 'aura/' : e.kind === 'effect' ? 'effect/' : '') + e.id, reviewed = Object.keys(e.sections).length > 0; html += '<button class="button" name="chooseGuide" value="' + escape(key) + '" aria-pressed="' + (key === self.selected) + '"><span>' + escape(e.name) + '</span><small>' + (e.kind === 'aura' ? 'Temporary aura' : e.kind === 'effect' ? 'Battle effect' : reviewed ? 'Checked sections' : 'Details pending') + '</small></button>';}); html += '</div></details>';
-		}); this.$('.guide-list').html(html || '<p>No matching fields or interactions.</p>');
+		}); this.$('.guide-list').html(html || '<p class="guide-empty">No matching entries.</p>');
 	};
 	var render = p.renderPage; p.renderPage = function () {
 		var out; if (this.selected && this.selected.startsWith('effect/')) this.renderRoomEffect(); else out = render.apply(this, arguments); if (!this.data) return out;

@@ -25,6 +25,7 @@ describe('Field audit preview regressions',()=>{
 
 describe('Eclipse field client integration',()=>{
  for(const field of ['coldeclipseterrain','infernaleclipseterrain'])it(field+' shows the Dragon bonus',()=>{assert.equal(evaluate(field,'dragonpulse').factor,2);});
+ it('full Rift Eclipse halves Fairy power',()=>{assert.equal(evaluate('rifteclipseterrain','moonblast').factor,0.5);});
  it('Cold Eclipse preserves Ice subtyping without the wind bonus',()=>{assert.deepEqual(evaluate('coldeclipseterrain','surf').move.types,['Water','Ice']);assert.equal(evaluate('coldeclipseterrain','gust').factor,1);});
  it('Snowy Field converts the listed attacks to pure Ice',()=>{const r=evaluate('snowyterrain','ironhead');assert.equal(r.move.type,'Ice');assert.deepEqual(r.move.types,['Ice']);assert.equal(r.factor,1.5);});
  for(const name of ['Mud Barrage','Mud-Slap'])it('Snowy Field previews '+name+' as the canonical Ice attack with its field boost',()=>{
@@ -34,7 +35,26 @@ describe('Eclipse field client integration',()=>{
   assert.equal(Dex.moves.get(name).type,'Ground');
  });
  it('Cold Eclipse blocks new Rooms in move previews',()=>{assert(evaluate('coldeclipseterrain','trickroom').failed);});
- it('Rift Opening and Rift Herald are visible with current descriptions',()=>{assert(Dex.moves.get('riftopening').exists);assert.match(Dex.abilities.get('riftherald').desc,/Rift Eclipse/);assert.match(Dex.moves.get('snowscape').desc,/Snowy Field/);});
+ it('Rift Opening advertises Aura setup and development without requiring Rift Herald',()=>{
+  const move=Dex.moves.get('riftopening');assert(move.exists);
+  assert.equal(move.type,'Dark');assert.equal(move.category,'Status');assert.equal(move.pp,5);assert.equal(move.target,'all');
+  assert.match(move.shortDesc,/Rift Aura/);assert.match(move.shortDesc,/develops Rift Eclipse/);
+  assert.match(move.desc,/empty field.*full Rift Eclipse/);
+  assert.match(move.desc,/Over another field, creates Rift Aura.*without replacing the base field/);
+  assert.match(move.desc,/preserving its remaining turns/);
+  assert.match(move.desc,/Rift Herald is not required/);
+  assert.match(move.desc,/Does not refresh an existing full Rift Eclipse/);
+  assert.match(move.desc,/blocked development leaves the Aura intact/);
+ });
+ it('Rift Seeds and the field reference explain that any Rift Opening user can develop the Aura',()=>{
+  const ability=Dex.abilities.get('riftseeds'),notes=BattleFieldRules.find(f=>f.id==='rifteclipseterrain').notes.join(' ');
+  assert.match(ability.desc,/Any user.*successful Rift Opening develops an existing Rift Aura/);
+  assert.match(ability.desc,/remaining turns/);
+  assert.doesNotMatch(ability.desc,/unsuppressed holder|Only the holder/);
+  assert.match(notes,/over another field they create Rift Aura/);
+  assert.match(notes,/Any user can develop an existing Rift Aura/);
+  assert.match(Dex.moves.get('snowscape').desc,/Snowy Field/);
+ });
  it('selected abilities describe both Eclipse fields',()=>{for(const id of ['icescales','prismarmor'])assert.match(Dex.abilities.get(id).desc,/Infernal Eclipse/);});
  it('changing fields preserves Rooms, pauses only their clocks in Cold, and resumes in Rift',()=>{
   for(const name of ['battle-scene-stub','battle-text-parser','battle'])require('../play.pokemonshowdown.com/js/'+name+'.js');
@@ -51,6 +71,60 @@ describe('Eclipse field client integration',()=>{
 });
 
 describe('Seed Aura client integration',()=>{
+
+ it('Rift Aura replaces another Aura and keeps its own timer alongside the field',()=>{
+  for(const name of ['battle-scene-stub','battle-text-parser','battle'])require('../play.pokemonshowdown.com/js/'+name+'.js');
+  const b=new Battle({debug:true});try {
+   b.runMinor(['-fieldstart','Factory Terrain'],{turns:'5'});
+   b.runMinor(['-fieldstart','Frozen Aura'],{aura:'5'});
+   b.runMinor(['-fieldstart','Rift Aura'],{aura:'3'});
+   assert(!b.hasPseudoWeather('Frozen Aura'));assert(b.hasPseudoWeather('Factory Terrain'));
+   assert.deepEqual(b.pseudoWeather.find(x=>x[0]==='Rift Aura'),['Rift Aura',3,0]);
+   b.updateTurnCounters();
+   assert.deepEqual(b.pseudoWeather.find(x=>x[0]==='Rift Aura'),['Rift Aura',2,0]);
+   b.runMinor(['-fieldstart','Ashen Aura'],{aura:'5'});
+   assert(!b.hasPseudoWeather('Rift Aura'));assert(b.hasPseudoWeather('Factory Terrain'));
+  }finally{b.destroy();}
+ });
+ it('previews Rift Aura offense and Fairy weakening without granting the full field Room extension',()=>{
+  const aura=BattleAuraRules.riftaura;assert(aura);
+  const p=actor();p.isGrounded=()=>false;
+  for(const [id,factor] of [['darkpulse',1.3],['shadowball',1.2],['moonblast',0.75],['tackle',1]]) {
+   assert.equal(tips.evaluate({id:''},Dex.moves.get(id),p,p,'',0,aura).factor,factor,id);
+  }
+  assert(tips.allNotes(Dex.moves.get('darkpulse')).some(row=>row.startsWith('Rift Aura:')));
+  assert(tips.allNotes(Dex.moves.get('moonblast')).some(row=>row.startsWith('Rift Aura:') && /0\.75/.test(row)));
+  const b=new Battle({debug:true});try {
+   b.runMinor(['-fieldstart','Rift Aura'],{aura:'5'});
+   b.runMinor(['-fieldstart','Trick Room'],{turns:'5'});
+   assert.deepEqual(b.pseudoWeather.find(x=>x[0]==='Trick Room'),['Trick Room',5,5]);
+  }finally{b.destroy();}
+ });
+ it('does not double matching Rift Aura bonuses over Eclipse fields',()=>{
+  const p=actor();
+  for(const id of ['coldeclipseterrain','infernaleclipseterrain','rifteclipseterrain']) {
+   const field=BattleFieldRules.find(f=>f.id===id);
+   assert.equal(tips.evaluate(field,Dex.moves.get('darkpulse'),p,p,'',0,BattleAuraRules.riftaura).factor,1.5,id);
+  }
+  const rift=BattleFieldRules.find(f=>f.id==='rifteclipseterrain');
+  assert.equal(tips.evaluate(rift,Dex.moves.get('shadowball'),p,p,'',0,BattleAuraRules.riftaura).factor,1.2);
+ });
+ for(const [fieldId,moveId,factor] of [
+  ['rifteclipseterrain','moonblast',0.5], ['infernaleclipseterrain','moonblast',0.5],
+  ['infernaleclipseterrain','spiritbreak',1.125],
+ ])it('retains the stronger Fairy reduction with Rift Aura on '+fieldId+' '+moveId,()=>{
+  const p=actor(),field=BattleFieldRules.find(f=>f.id===fieldId);
+  assert.equal(tips.evaluate(field,Dex.moves.get(moveId),p,p,'',0,BattleAuraRules.riftaura).factor,factor);
+ });
+ for(const [fieldId,moveId,weather,factor] of [
+  ['hauntedterrain','shadowball','',1.5], ['bewitchedwoodsterrain','crunch','',1.3], ['bewitchedwoodsterrain','darkpulse','',1.56],
+  ['starlightarenaterrain','darkpulse','',1.125], ['starlightarenaterrain','darkpulse','raindance',0.975],
+ ])it('merges Rift Aura with '+fieldId+' '+moveId+' '+weather,()=>{
+  const p=actor(),field=BattleFieldRules.find(f=>f.id===fieldId);
+  const result=tips.evaluate(field,Dex.moves.get(moveId),p,p,weather,0,BattleAuraRules.riftaura);
+  assert.equal(result.factor,factor);
+  if(fieldId==='starlightarenaterrain')assert.deepEqual(result.move.types,['Dark','Fairy']);
+ });
  it('Ashen Aura replaces Frozen Aura and can be replaced without stale labels',()=>{
   for(const name of ['battle-scene-stub','battle-text-parser','battle'])require('../play.pokemonshowdown.com/js/'+name+'.js');
   const b=new Battle({debug:true});try {
@@ -77,8 +151,11 @@ describe('Seed Aura client integration',()=>{
    b.gen=9;b.runMinor(['-fieldstart','Ashen Aura'],{aura:'5'});
    assert.equal(BattleTooltips.getNaturePowerMove(b).id,'infernalparade');
    b.runMinor(['-fieldstart','Frozen Aura'],{aura:'5'});assert.equal(BattleTooltips.getNaturePowerMove(b).id,'icebeam');
+   b.runMinor(['-fieldstart','Rift Aura'],{aura:'5'});assert.equal(BattleTooltips.getNaturePowerMove(b).id,'darkpulse');
    assert.match(Dex.abilities.get('ashenseeds').desc,/Eruption/);
    assert.match(Dex.abilities.get('badseeds').desc,/Glaciate/);
+   assert.match(Dex.abilities.get('riftseeds').desc,/Rift Aura/);
+   assert.match(Dex.abilities.get('riftseeds').desc,/Rift Opening/);
   }finally{b.destroy();}
  });
 });

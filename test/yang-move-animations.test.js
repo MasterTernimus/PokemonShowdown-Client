@@ -5,7 +5,7 @@ const selfIds=['spiritmend','nomoswish','sirensveil','rocknroll'];
 function harness() {
  const calls = [];
  const other = new Proxy({}, {get: (_, id) => ({anim: () => calls.push(['other', id])})});
- const animations = new Function('BattleOtherAnims', fs.readFileSync('play.pokemonshowdown.com/js/battle-animations-moves.js', 'utf8') + '\nreturn BattleMoveAnims;')(other);
+ const animations = new Function('BattleOtherAnims', 'Config', fs.readFileSync('play.pokemonshowdown.com/js/battle-animations-moves.js', 'utf8') + '\nreturn BattleMoveAnims;')(other, {routes: {client: 'localhost'}});
  const sprite = (x, z) => { let proxy; return proxy = new Proxy({x, y: 0, z, w: 96, h: 96, isBackSprite: z === 0, statbar: null}, {
   get: (obj, key) => key in obj ? obj[key] : (...args) => {
    calls.push(['sprite', key, ...args]);

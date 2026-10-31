@@ -326,3 +326,18 @@ exports.effects=(id,f)=>id==='exalt'?['defiant','imperialedge','moldbreaker','sh
 // Approved Eclipse event slots and Aevian Discipline; ordinary choices remain unchanged.
 {const prior=exports.abilities;const events={froslass:'Bad Seeds',glalie:'Bad Seeds',weavile:'Bad Seeds',arbolivaaevian:'Bad Seeds',typhlosionhisui:'Ashen Seeds',ninetales:'Ashen Seeds',camerupt:'Ashen Seeds',torkoal:'Ashen Seeds',hoopa:'Rift Herald',bronzong:'Rift Herald',mismagius:'Rift Herald',alakazam:'Aevian Discipline'};
 exports.abilities=(id,f)=>({...prior(id,f),...(events[id]?{S:events[id]}:{}),...(id==='arbolivaaevian'?{1:'Arena Trap'}:{})});}
+
+// Merged middle-stage, armor, Lapras, Absol and Machamp approvals supersede older snapshots.
+{
+ const prior={...exports};
+ const passives={shelgon:['shellarmor'],pupitar:['eartheater'],zweilous:['hydrabond'],dodrio:['hydrabond'],
+  goodra:['gooey'],goodrahisui:['gooey'],goodrahisuialt:['gooey'],armarouge:['soulforgedarmor'],ceruledge:['soulforgedarmor'],
+  absol:['omensight'],absolmega:['omensight'],absolmegaz:['omensight'],garchompmega:['sharpness'],
+  banette:['tatteredmemory'],qwilfish:['spinyhide'],golemalola:['galvanize'],laprasgmax:['liquidvoice'],
+  machamp:['innerfocus'],machampalt:['innerfocus'],machampgmax:['innerfocus'],machampgmaxalt:['innerfocus']};
+ const effects={auroraresonance:['auroraresonance'],cursedmarionette:['cursedmarionette'],
+  reapersgrip:['reapersgrip','selfsufficient'],safeharbor:['hydration','safeharbor','waterabsorb'],
+  triplethreat:['earlybird','innerfocus','keeneye','triplethreat'],oceanlullaby:['icebody','oceanlullaby','shellarmor']};
+ exports.passives=(id,f)=>passives[id]||prior.passives(id,f);
+ exports.effects=(id,f)=>effects[id]||prior.effects(id,f);
+}

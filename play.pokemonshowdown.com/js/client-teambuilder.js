@@ -3511,7 +3511,7 @@
 		},
 		chartChange: function (e, selectNext) {
 			// Inspecting help must not commit the pending species query on blur.
-			if (e.relatedTarget && $(e.relatedTarget).closest('.pokemon-passive-badge').length) return;
+			if (e.relatedTarget && $(e.relatedTarget).closest('.pokemon-passive-badge, .utilichart .sortcol, .utilichart .filter, .utilichart .more button').length) return;
 			var name = e.currentTarget.name;
 			if (this.curChartName !== name) return;
 			var id = toID(e.currentTarget.value);

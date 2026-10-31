@@ -4108,6 +4108,19 @@ a.ilink.yours {
 
 .field-guide-room .guide-list button {color:#243442;background:#f1f4f7;}
 .field-guide-room .guide-list button[aria-pressed=true] {color:#173e5e;background:#dceaf6;}
+.field-guide-room .guide-layer-tabs {display:flex;flex-wrap:wrap;gap:8px;margin:10px 0;}
+.field-guide-room .guide-layer-tabs button {display:flex;align-items:center;justify-content:center;gap:7px;min-height:40px;padding:8px 12px;color:#243442;background:#eef3f8;text-shadow:none;box-shadow:none;}
+.field-guide-room .guide-layer-tabs button[aria-pressed=true] {background:#dceaf6;border-color:#5487ad;color:#173e5e;}
+.field-guide-room .guide-layer-tabs button:focus-visible {outline:3px solid #5487ad;outline-offset:2px;}
+.field-guide-room .guide-layer-count {font-size:11px;border-radius:10px;padding:0 6px;background:#fff;color:#3a5369;}
+.field-guide-room .guide-layer-note {max-width:84ch;margin:12px 0 16px;color:#3e556a;line-height:1.6;}
+.field-guide-room .guide-match-count {min-height:20px;font-size:12px;color:#536b80;margin:8px 0;}
+.field-guide-room .guide-empty {padding:10px;color:inherit;}
+@media(max-width:650px){.field-guide-room .guide-layer-tabs {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;}.field-guide-room .guide-layer-tabs button {width:100%;box-sizing:border-box;white-space:normal;}.field-guide-room .guide-layer-note {margin-bottom:10px;}}
+.dark .field-guide-room .guide-layer-tabs button {background:#2c3b4a;color:#e2eaf2;border-color:#526679;}
+.dark .field-guide-room .guide-layer-tabs button[aria-pressed=true] {background:#345c7c;color:#f0f7ff;border-color:#87b9dd;}
+.dark .field-guide-room .guide-layer-count {background:#1f2e3d;color:#dcebf6;}
+.dark .field-guide-room .guide-layer-note,.dark .field-guide-room .guide-match-count {color:#c0d1e1;}
 .calc-simple details:not([open]) > :not(summary) {display:none !important;}
 .calc-simple .calc-actor {padding:8px;}
 .calc-simple .calc-actor > details {margin:5px 0;padding:5px 0;}
@@ -4205,11 +4218,6 @@ a.ilink.yours {
 .aevian-move-warning {padding:8px;border-left:3px solid #bc7b20;background:#fff0cd;color:#543a16;}
 .dark .aevian-move-warning {background:#423725;color:#ffe5b3;}
 
-@media(max-width:600px){
- .teambuilder-results:has(.aevian-king-sources) .result {height:auto;min-height:58px;}
- .teambuilder-results:has(.aevian-king-sources) .result a {display:flow-root;height:auto;min-height:54px;}
- .teambuilder-results:has(.aevian-king-sources) .movedesccol {display:block;clear:both;float:none;height:auto;min-height:0;white-space:normal;width:auto;max-width:100%;line-height:18px;padding:3px 6px;}
-}
 /* Compact native calculator selection controls. */
 .calc-picker-workspace .calc-pick-open {width:100%;text-align:left;margin:0 0 6px;padding:6px 9px;font-weight:bold}
 .calc-picker-workspace .calc-picker {padding:8px;border:1px solid #8997a4;border-radius:5px;background:#f4f7fa;margin-bottom:8px}
@@ -4718,8 +4726,12 @@ a.ilink.yours {
 }
 .teambuilder-workspace .setchart label, .teambuilder-workspace .setchart-nickname label { color: var(--ps-muted); }
 .teambuilder-workspace .editing-set > .teambar { gap: 3px; }
-.teambuilder-workspace .teambar button { background: var(--ps-inset); color: var(--ps-muted); border-color: var(--ps-line); border-radius: 3px 3px 0 0; }
-.teambuilder-workspace .teambar button[aria-current="true"] { background: var(--ps-selected); color: var(--ps-ink); border-color: #729dbb; box-shadow: inset 0 -3px #729dbb; }
+.teambuilder-workspace .teambar button,
+.dark .teambuilder-workspace .teambar button { background: var(--ps-input); color: var(--ps-ink); border-color: var(--ps-line); border-radius: 3px 3px 0 0; opacity: 1; }
+.teambuilder-workspace .teambar button:hover { background: rgba(224, 237, 247, .96); }
+.dark .teambuilder-workspace .teambar button:hover { background: rgba(40, 58, 73, .96); }
+.teambuilder-workspace .teambar button[aria-current="true"] { background: rgba(204, 225, 242, .96); color: var(--ps-ink); border-color: #729dbb; box-shadow: inset 0 -3px #729dbb; }
+.dark .teambuilder-workspace .teambar button[aria-current="true"] { background: rgba(49, 78, 99, .96); }
 .teambuilder-workspace .picker-return-bar { background: var(--ps-surface); color: var(--ps-ink); border-color: var(--ps-line); }
 .teambuilder-workspace .library-tabs, .teambuilder-workspace .team-profile-toolbar { background: var(--ps-inset); border-color: var(--ps-line); }
 .dark .library-clean .tools-panel, .dark .local-tools-manager .tools-panel { background: var(--ps-inset); border-color: var(--ps-line); }
@@ -4769,7 +4781,7 @@ a.ilink.yours {
 .teambuilder-workspace .utilichart .sortrow, .dark .teambuilder-workspace .utilichart .sortrow { background: #d3d8dc; color: #273442; border-color: #8f969e; text-shadow: none; }
 .dark .teambuilder-workspace .utilichart h3,
 .dark .teambuilder-workspace .teambuilder-results .utilichart .resultheader h3 { background: #626262; color: #fff; }
-.teambuilder-workspace .utilichart .sortrow .sortcol, .dark .teambuilder-workspace .utilichart .sortrow .sortcol { color: #17222b; }
+.teambuilder-workspace .utilichart .sortrow:not(.move-sort-row) .sortcol, .dark .teambuilder-workspace .utilichart .sortrow:not(.move-sort-row) .sortcol { color: #17222b; }
 .teambuilder-workspace .setcell-ability .passive-chip, .dark .teambuilder-workspace .setcell-ability .passive-chip { background: var(--ps-inset); color: var(--ps-ink); border-color: var(--ps-line); }
 .battle-controls .switchcontrols .switchmenu { gap: 5px; }
 .battle-controls .switchcontrols .switchmenu button { border-radius: 4px; font-size: 12px; }

@@ -6,6 +6,7 @@ const vm = require('vm');
 const {measureRGBA, measureImage} = require('../build-tools/sprite-image-metrics.cjs');
 const loadDex = require('./helpers/isolated-dex.cjs');
 const root = path.resolve(__dirname, '../play.pokemonshowdown.com');
+const approvedMegaAnimations = new Set(require('../play.pokemonshowdown.com/sprites/za-bw-credits.json').assets.map(asset => asset.installedPath));
 
 describe('Logical sprite sizing across the roster', function () {
 	this.timeout(60000);
@@ -83,7 +84,8 @@ describe('Logical sprite sizing across the roster', function () {
 						assert(m, id + ': missing nonempty asset metrics ' + asset);
 						assert(data.w > 0 && data.h > 0, id);
 						assert(Math.abs(data.w / m[0] - data.h / m[1]) <= 1 / Math.min(m[0], m[1]), id + ': distorted aspect ratio');
-						const gmax = species.name.endsWith('-Gmax'), large = species.isMega || id.includes('battlebond');
+						const animatedMega = !preview && !shiny && approvedMegaAnimations.has(asset);
+						const gmax = species.name.endsWith('-Gmax'), large = species.isMega || id.includes('battlebond') || animatedMega;
 						const limit = preview ? (gmax ? 96 : large ? 88 : 80) : (gmax ? 160 : large ? 128 : 120) * (species.isTotem ? 1.5 : 1);
 						assert(data.w * m[4] / m[0] <= limit + 1 && data.h * m[5] / m[1] <= limit + 1, id + ': oversized visible art');
 						if (preview) {

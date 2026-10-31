@@ -371,8 +371,10 @@ export class Pokemon implements PokemonDetails, PokemonHealth {
 		if (!isNotBase && this.ability && toID(this.ability) !== toID(ability) &&
 			this.getSpecies().passives?.includes(toID(ability))) return;
 		// A component reveal must not replace a known composite; explicit replacements still do.
+		// Older replays can still announce Frisk from the previous Cursed Marionette package.
+		const historicalComponent = toID(this.ability) === 'cursedmarionette' && toID(ability) === 'frisk';
 		if (!isNotBase && this.ability && (Dex.getAbilityEffects(toID(this.ability)).has(toID(ability)) ||
-			Dex.getAbilityComponentExclusions(toID(this.ability)).includes(toID(ability)))) return;
+			Dex.getAbilityComponentExclusions(toID(this.ability)).includes(toID(ability)) || historicalComponent)) return;
 		this.ability = ability;
 		if (!this.baseAbility && !isNotBase) {
 			this.baseAbility = ability;
@@ -3089,6 +3091,7 @@ export class Battle {
 				poke.addMovestatus('charge' as ID);
 				break;
 			case 'forewarn':
+			case 'omensight':
 				if (target) {
 					target.rememberMove(kwArgs.move, 0);
 				} else {
@@ -3188,6 +3191,10 @@ export class Battle {
 				kwArgs.from = this.weather;
 			}
 			this.changeWeather(effect.name, poke, !!kwArgs.upkeep, ability);
+			const turns = Number(kwArgs.turns);
+			if (this.weather && kwArgs.turns !== undefined && Number.isInteger(turns) && turns >= 0) {
+				this.weatherTimeLeft = this.weatherMinTimeLeft = turns;
+			}
 			this.log(args, kwArgs);
 			break;
 		}
@@ -3206,7 +3213,7 @@ export class Battle {
 				minTimeLeft = Math.max(0, Number(kwArgs.aura) || 0);
 				maxTimeLeft = 0;
 				this.pseudoWeather = this.pseudoWeather.filter(state =>
-					!/^(electric|grassy|misty|psychic|rainbow|frozen|ashen)aura$/.test(toID(state[0])));
+					!/^(electric|grassy|misty|psychic|rainbow|frozen|ashen|rift|haunted|bewitched)aura$/.test(toID(state[0])));
 			}
 			if (kwArgs.persistent) minTimeLeft += 2;
 			if (flowerGarden || kwArgs.garden || effect.id === 'midnightzoneterrain') minTimeLeft = maxTimeLeft = 0;

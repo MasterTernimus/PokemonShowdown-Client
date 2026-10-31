@@ -74,7 +74,7 @@ class ModifiableValue {
 		if (passives.some(passive => Dex.getPassiveAbilityEffects(toID(passive)).has(toID(abilityName)))) return true;
 		const activeId = Dex.abilities.get(this.abilityName).id;
 		const excluded = Dex.getAbilityComponentExclusions(activeId, passives, toID(this.serverPokemon.speciesForme));
-		const hasComponent = ((this.dualWieldPower || ['plushwhiplash', 'tidalpoise', 'abyssalclaws', 'antlioninstinct', 'tidalvoice', 'apexvenom', 'sirius', 'abyssalfang', 'trickperformer', 'curtaincall', 'cellularconcord', 'mountainhide', 'rimebark', 'bottomlessgullet', 'divefisher', 'scatterbrain'].includes(activeId)) || (activeId === 'quarrycannon' && abilityName === 'Mega Launcher') || (['updraft', 'stormsovereign'].includes(activeId) && abilityName === 'Competitive') || ['Guts', 'Rivalry', 'Pure Power', 'Sharpness', 'Dual Wield', 'Power Drill', 'Mega Launcher', 'Fire Mane'].includes(abilityName) || (['atrocity', 'apexpredator'].includes(activeId) && abilityName === 'Tough Claws') || (activeId === 'rupturedheaven' && abilityName === 'Sharpness') || (activeId === 'wintersmalice' && abilityName === 'Refrigerate')) && Dex.getAbilityEffects(activeId).has(toID(abilityName)) && !excluded.includes(toID(abilityName));
+		const hasComponent = ((this.dualWieldPower || ['perfectform', 'titansknuckles', 'blazemastery', 'plushwhiplash', 'tidalpoise', 'abyssalclaws', 'antlioninstinct', 'tidalvoice', 'apexvenom', 'sirius', 'abyssalfang', 'trickperformer', 'curtaincall', 'cellularconcord', 'mountainhide', 'rimebark', 'bottomlessgullet', 'divefisher', 'scatterbrain'].includes(activeId)) || (activeId === 'quarrycannon' && abilityName === 'Mega Launcher') || (['updraft', 'stormsovereign'].includes(activeId) && abilityName === 'Competitive') || ['Guts', 'Rivalry', 'Pure Power', 'Sharpness', 'Dual Wield', 'Power Drill', 'Mega Launcher', 'Fire Mane'].includes(abilityName) || (['atrocity', 'apexpredator'].includes(activeId) && abilityName === 'Tough Claws') || (activeId === 'rupturedheaven' && abilityName === 'Sharpness') || (activeId === 'wintersmalice' && abilityName === 'Refrigerate')) && Dex.getAbilityEffects(activeId).has(toID(abilityName)) && !excluded.includes(toID(abilityName));
 		if (!hasComponent && Dex.abilities.get(abilityName).id !== activeId &&
 			!(this.abilityName === 'Cinder Scales' && abilityName === 'Swarm')) return false;
 		if (this.pokemon?.volatiles['gastroacid']) {
@@ -646,6 +646,9 @@ class BattleTooltips {
 		if (battle.hasPseudoWeather('Ashen Aura')) {
 			return battle.dex.moves.get(data.BattleAuraRules?.ashenaura?.naturePowerMove || 'infernalparade');
 		}
+		if (battle.hasPseudoWeather('Rift Aura')) {
+			return battle.dex.moves.get(data.BattleAuraRules?.riftaura?.naturePowerMove || 'darkpulse');
+		}
 		const field = data.BattleFieldRules?.find((entry: any) => battle.hasPseudoWeather(entry.name));
 		const mapping = data.BattleNaturePowerMoves || {};
 		const fieldId = field?.id || battle.pseudoWeather.map(([name]) => toID(name)).find(id => mapping[id]) || '';
@@ -845,6 +848,7 @@ class BattleTooltips {
 		}
 
 		text += '<p>Accuracy: ' + accuracy + '</p>';
+		if (!isZOrMax && move.id === 'wildcharge' && pokemon.volatiles.stormcharge && value.tryAbility('Storm Memory')) text += '<p>Storm Charge: this Wild Charge uses the stronger offensive stat, gains 50% power and causes no recoil. The charge is spent only on damage to a foe or Substitute.</p>';
 		if (category !== 'Status' && value.tryAbility('Monarch of Ice')) text += '<p>Monarch of Ice: 30% frostbite chance. Critically hits frostbitten foes, then thaws them after the attack. Ice moves receive STAB.</p>';
 		if (category !== 'Status' && moveType === 'Flying' && value.tryAbility("Emperor's Resolve")) text += '<p>Emperor’s Resolve: this move receives Flying STAB.</p>';
 		if (category !== 'Status' && moveType === 'Psychic' && value.tryAbility("Oracle's Refrain")) {
@@ -1951,6 +1955,10 @@ class BattleTooltips {
 			'needlegun', 'dragondarts', 'gmaxspiritvolley', 'gmaxfinalverdict', 'barrage', 'explosion',
 			'selfdestruct',
 		].includes(move.id);
+		if (!forMaxMove && !move.isZ && !move.isMax && move.id === 'wildcharge' && pokemon.volatiles.stormcharge && value.tryAbility('Storm Memory')) {
+			const stats = this.calculateModifiedStats(pokemon, serverPokemon, true);
+			category = stats.atk >= stats.spa ? 'Physical' : 'Special';
+		}
 		const specialTie = [
 			'swift', 'venamskiss', 'firepledge', 'waterpledge', 'grasspledge',
 			'photongeyser', 'lightthatburnsthesky', 'radiantassault', 'roaroftime', 'spacialrend',
@@ -1961,6 +1969,10 @@ class BattleTooltips {
 			move.id === 'terastarstorm' && pokemon.terastallized && pokemon.speciesForme === 'Terapagos-Stellar') {
 			const stats = this.calculateModifiedStats(pokemon, serverPokemon, true);
 			category = stats.atk > stats.spa || (physicalTie && stats.atk === stats.spa) ? 'Physical' : 'Special';
+		}
+		if (moveType === 'Grass' && category !== 'Status' && value.tryAbility('Canopy Mastery')) {
+			const stats = this.calculateModifiedStats(pokemon, serverPokemon, true);
+			category = stats.atk >= stats.spa ? 'Physical' : 'Special';
 		}
 		if (!forMaxMove && move.id === 'dive' && value.tryAbility('Dive Fisher')) category = 'Special';
 		if (!forMaxMove && move.id === 'hyperbeam' && value.tryAbility("Champion's Command")) { moveType = 'Normal'; category = 'Physical'; }
@@ -2363,7 +2375,13 @@ class BattleTooltips {
 		if (value.value <= value.technicianThreshold()) {
 			value.abilityModify(1.5, "Technician");
 		}
-		if ((move.flags as any).kick) value.abilityModify(1.4, 'Striker');
+		if ((move.flags as any).kick && !value.abilityModify(1.4, 'Striker')) value.abilityModify(1.4, 'Long Stride');
+		if (moveType === 'Grass' || move.flags.slicing) value.abilityModify(1.3, 'Canopy Mastery');
+		if ((move.flags as any).kick) value.abilityModify(1.3, 'Blaze Mastery');
+		if (moveType === 'Psychic') value.abilityModify(1.2, 'Linked Minds');
+		if (moveType === 'Electric' && pokemon.volatiles.stormcharge) value.abilityModify(1.5, 'Storm Memory');
+		if (['Water', 'Ice'].includes(moveType) && pokemon.side.sideConditions.auroraveil) value.abilityModify(1.3, 'Aurora Resonance');
+		if (move.id === 'weatherball') value.abilityModify(1.3, 'Weather Weave');
 		if (['rapidspin', 'mortalspin', 'icespinner', 'gyroball', 'tripleaxel'].includes(move.id)) {
 			value.abilityModify(1.2, 'Cyclone Rhythm');
 		}
@@ -2389,7 +2407,7 @@ class BattleTooltips {
 		}
 		if (move.category !== 'Status' && moveType === 'Flying' && toID(pokemon.getSpeciesForme()) === 'castformwindy') value.abilityModify(1.3, 'Perfect Forecast');
 		if (this.battle.hasPseudoWeather('Dragon’s Den Terrain') || this.battle.hasPseudoWeather("Dragon's Den Terrain") || this.battle.hasPseudoWeather('Dragons Den Terrain')) {
-			if (Dex.getAbilityEffects(toID(pokemon.effectiveAbility(serverPokemon))).has('hydrabond' as ID)) {
+			if (value.tryAbility('Hydra Bond') || Dex.getAbilityEffects(toID(pokemon.effectiveAbility(serverPokemon))).has('hydrabond' as ID)) {
 				value.powerAbilityModify(1.2, 'Hydra Bond');
 			}
 		}

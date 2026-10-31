@@ -592,7 +592,7 @@ describe('Team Builder sprites', () => {
 	it('syncs Golduck stats, abilities, and requested moves', () => {
 		assert.deepEqual(Dex.species.get('Golduck').baseStats, {hp: 80, atk: 82, def: 78, spa: 115, spd: 80, spe: 90});
 		assert.equal(Dex.species.get('Golduck').bst, 525);
-		assert.deepEqual(Dex.species.get('Golduck').abilities, {0: 'Swift Swim', 1: 'Still Waters', H: 'Defragment'});
+		assert.deepEqual(Dex.species.get('Golduck').abilities, {0: 'Swift Swim', 1: 'Still Waters', H: 'Cloud Nine'});
 		const learnset = global.BattleTeambuilderTable.learnsets.golduck;
 		for (const move of [
 			'simplebeam', 'weatherball', 'futuresight', 'meditate', 'miracleeye', 'twinbeam', 'barrier', 'kinesis',

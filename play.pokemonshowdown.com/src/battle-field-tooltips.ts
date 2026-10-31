@@ -318,7 +318,7 @@ const BattleFieldTooltips = {
 	teamBuilderContent(move: Move) {
 		const rows = this.allNotes(move);
 		if (!rows.length) return '<p>No direct field modifiers for this move.</p>';
-		return '<p>Conditional effects are shown separately. Aura rules are additional to the base field. Shared type boosts use the stronger value (minimum 1.5x); move-specific bonuses can stack.</p>' +
+		return '<p>Conditional effects are shown separately. Aura rules are additional to the base field. Shared type boosts use the stronger value, with a 1.5x minimum except for Rift Aura. Overlapping type penalties use the stronger reduction; move-specific bonuses can stack.</p>' +
 			rows.map(row => '<p>' + BattleLog.escapeHTML(row) + '</p>').join('');
 	},
 };

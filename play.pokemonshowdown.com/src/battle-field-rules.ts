@@ -492,7 +492,7 @@ onTryMove(source, target, move) {
 uncertain: false},
 {id: "rifteclipseterrain",
 name: "Rift Eclipse Terrain",
-notes: ["Dark attacks gain 1.5x power; Ghost attacks gain 1.2x; Fairy attacks receive 0.75x. Ghost types gain 1.2x defenses. Sleeping Pokemon lose 1/16 HP each turn, subject to indirect-damage immunity.","New Rooms and Gravity last 8 turns. Rattled grants +1 Speed, Berserk +1 Special Attack, and Justified +1 Attack on switch-in. Magical Seed grants +1 Defense and Trick Room.","Rift Opening and the entry ability Rift Herald create the field for 5 turns (8 with Amplifield Rock). Establishing Trick Room and Magic Room on the same field also opens it. Eclipse transformations share the remaining timer.","Two heating points create Infernal Eclipse; two freezing points create Cold Eclipse. Opposing heat and cold cancel progress. Purify or Seed Flare cancels the dimension. Weather and Auras function normally.","Spacial Rend, Roar of Time, Hyperspace Hole/Fury, Shadow Force, Phantom Force, Dynamax Cannon and Eternabeam gain 1.5x. Dark Pulse/Night Daze ignore accuracy checks. Quash gains +1 priority. Nature Power calls Dark Pulse."],
+notes: ["Dark attacks gain 1.5x power; Ghost attacks gain 1.2x; Fairy attacks receive 0.5x. Ghost types gain 1.2x defenses. Sleeping Pokemon lose 1/16 HP each turn, subject to indirect-damage immunity.","New Rooms and Gravity last 8 turns. Rattled grants +1 Speed, Berserk +1 Special Attack, and Justified +1 Attack on switch-in. Magical Seed grants +1 Defense and Trick Room.","Rift Opening and Rift Herald create full Rift Eclipse on an empty field; over another field they create Rift Aura without replacing the base. New effects last 5 turns (8 with Amplifield Rock). Any user can develop an existing Rift Aura with successful Rift Opening, consuming the Aura and keeping its remaining turns. The ability can prepare the Aura for one-use development; repeated ability entry does not develop or refresh it. Full Rift Eclipse is not refreshed. Establishing Trick Room and Magic Room on the same field also opens it. Other Eclipse transformations share the remaining field timer.","Two heating points create Infernal Eclipse; two freezing points create Cold Eclipse. Opposing heat and cold cancel progress. Purify or Seed Flare cancels the dimension. Weather and Auras function normally.","Spacial Rend, Roar of Time, Hyperspace Hole/Fury, Shadow Force, Phantom Force, Dynamax Cannon and Eternabeam gain 1.5x. Dark Pulse/Night Daze ignore accuracy checks. Quash gains +1 priority. Nature Power calls Dark Pulse."],
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
     const types = move.types || [move.type];
@@ -501,7 +501,7 @@ onBasePower(basePower, source, target, move) {
     if (types.includes("Ghost"))
         modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 1.2);
     if (types.includes("Fairy"))
-        modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 0.75);
+        modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 0.5);
     if ([
         "spacialrend",
         "roaroftime",
@@ -965,7 +965,7 @@ onTryMove(target, source, move) {
 uncertain: false},
 {id: "hauntedterrain",
 name: "Haunted Terrain",
-notes: ["Ghost attacks can hit Normal typing. Ghost Pokémon gain 1.3× Defense and Special Defense. Sleeping non-Ghost Pokémon lose 1/16 HP per turn. Accepts all five Auras; full-field replacement remains restricted."],
+notes: ["Ghost attacks can hit Normal typing. Ghost Pokémon gain 1.3× Defense and Special Defense. Sleeping non-Ghost Pokémon lose 1/16 HP per turn. Accepts Auras; full-field replacement remains restricted."],
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
     const wispMoves = ["firespin", "flameburst", "flamecharge", "inferno"];
@@ -3638,46 +3638,1138 @@ uncertain: true},
 "kaboom": {onModifyMove(move) { move.secondary = {chance: 100, self: {boosts: {[move.category === 'Physical' ? 'atk' : 'spa']: 1}}}; move.secondaries = [move.secondary]; if (this.field.isTerrainOrAura('electricterrain')) delete move.recoil; },
 base: {"recoil":[1,4],"secondaries":[{"chance":100,"self":{"boosts":{"spa":1}}}],"critRatio":1},
 uncertain: false},
-"cactibash": {onBasePower(bp, source, target) {
+"cactibash": {function(active, source, target) {
+      const result = modify?.call(this, active, source, target);
+      const move = active;
+      const field = this.field.terrain, aura = this.field.auraField;
+      const full = yangField(id, field);
+      move.yang = { field, aura, startingHP: source.hp, stage: this.field.flowerGardenStage(), full, eligible: full || (YangBonusAuras[id] || []).includes(aura), seen: /* @__PURE__ */ new Set(), hits: /* @__PURE__ */ new Map(), once: false, messages: /* @__PURE__ */ new Set() };
+      if (!move.yang.eligible) return result;
+      switch (id) {
+        case "kaboom":
+          delete move.recoil;
+          break;
+        case "chistrike":
+          move.ignoreNegativeOffensive = true;
+          break;
+        case "gunkrock":
+          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.secondaries = move.secondaries?.map((s) => ({ ...s, chance: 40 }));
+          if (move.secondary) move.secondary = { ...move.secondary, chance: 40 };
+          break;
+        case "queensgambit":
+          move.self = { boosts: move.category === "Physical" ? { def: -1 } : { spd: -1 } };
+          break;
+        case "crestcleave":
+          move.drain = [1, 2];
+          break;
+        case "rocknroll":
+          move.boosts = { def: -2 };
+          break;
+        case "dragonrend":
+          move.ignoreScreens = true;
+          break;
+        case "infernalrage":
+          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangPreserveField = full;
+          move.secondaries = [...move.secondaries || [], { chance: 30, onHit(target2, source2, effect) {
+            const attack = effect;
+            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.has(target2)) return;
+            attack.yang?.seen.add(target2);
+            if (target2.trySetStatus("brn", source2, effect)) message(this, attack, "Charlotte\u2019s inferno left a searing brand!");
+          } }];
+          break;
+      }
+      return result;
+    },
+onBasePower(bp, source, target) {
       if (this.field.isTerrain("desertterrain")) return this.chainModify((0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 1.5));
     },
 base: {"critRatio":1},
 uncertain: false},
-"corrosivestrike": {onBasePower(bp, source, target) {
+"corrosivestrike": {function(active, source, target) {
+      const result = modify?.call(this, active, source, target);
+      const move = active;
+      const field = this.field.terrain, aura = this.field.auraField;
+      const full = yangField(id, field);
+      move.yang = { field, aura, startingHP: source.hp, stage: this.field.flowerGardenStage(), full, eligible: full || (YangBonusAuras[id] || []).includes(aura), seen: /* @__PURE__ */ new Set(), hits: /* @__PURE__ */ new Map(), once: false, messages: /* @__PURE__ */ new Set() };
+      if (!move.yang.eligible) return result;
+      switch (id) {
+        case "kaboom":
+          delete move.recoil;
+          break;
+        case "chistrike":
+          move.ignoreNegativeOffensive = true;
+          break;
+        case "gunkrock":
+          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.secondaries = move.secondaries?.map((s) => ({ ...s, chance: 40 }));
+          if (move.secondary) move.secondary = { ...move.secondary, chance: 40 };
+          break;
+        case "queensgambit":
+          move.self = { boosts: move.category === "Physical" ? { def: -1 } : { spd: -1 } };
+          break;
+        case "crestcleave":
+          move.drain = [1, 2];
+          break;
+        case "rocknroll":
+          move.boosts = { def: -2 };
+          break;
+        case "dragonrend":
+          move.ignoreScreens = true;
+          break;
+        case "infernalrage":
+          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangPreserveField = full;
+          move.secondaries = [...move.secondaries || [], { chance: 30, onHit(target2, source2, effect) {
+            const attack = effect;
+            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.has(target2)) return;
+            attack.yang?.seen.add(target2);
+            if (target2.trySetStatus("brn", source2, effect)) message(this, attack, "Charlotte\u2019s inferno left a searing brand!");
+          } }];
+          break;
+      }
+      return result;
+    },
+onBasePower(bp, source, target) {
       if (this.field.isTerrain("corrosiveterrain")) return this.chainModify((0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 1.5));
     },
 base: {"volatileStatus":"corrosivestrike","critRatio":1},
 uncertain: false},
-"flutterscales": {onBasePower(bp, source, target) {
+"toxicvial": {function(active, source, target) {
+      const result = modify?.call(this, active, source, target);
+      const move = active;
+      const field = this.field.terrain, aura = this.field.auraField;
+      const full = yangField(id, field);
+      move.yang = { field, aura, startingHP: source.hp, stage: this.field.flowerGardenStage(), full, eligible: full || (YangBonusAuras[id] || []).includes(aura), seen: /* @__PURE__ */ new Set(), hits: /* @__PURE__ */ new Map(), once: false, messages: /* @__PURE__ */ new Set() };
+      if (!move.yang.eligible) return result;
+      switch (id) {
+        case "kaboom":
+          delete move.recoil;
+          break;
+        case "chistrike":
+          move.ignoreNegativeOffensive = true;
+          break;
+        case "gunkrock":
+          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.secondaries = move.secondaries?.map((s) => ({ ...s, chance: 40 }));
+          if (move.secondary) move.secondary = { ...move.secondary, chance: 40 };
+          break;
+        case "queensgambit":
+          move.self = { boosts: move.category === "Physical" ? { def: -1 } : { spd: -1 } };
+          break;
+        case "crestcleave":
+          move.drain = [1, 2];
+          break;
+        case "rocknroll":
+          move.boosts = { def: -2 };
+          break;
+        case "dragonrend":
+          move.ignoreScreens = true;
+          break;
+        case "infernalrage":
+          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangPreserveField = full;
+          move.secondaries = [...move.secondaries || [], { chance: 30, onHit(target2, source2, effect) {
+            const attack = effect;
+            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.has(target2)) return;
+            attack.yang?.seen.add(target2);
+            if (target2.trySetStatus("brn", source2, effect)) message(this, attack, "Charlotte\u2019s inferno left a searing brand!");
+          } }];
+          break;
+      }
+      return result;
+    },
+base: {"boosts":{"atk":-1,"spa":-1},"critRatio":1},
+uncertain: false},
+"flutterscales": {function(active, source, target) {
+      const result = modify?.call(this, active, source, target);
+      const move = active;
+      const field = this.field.terrain, aura = this.field.auraField;
+      const full = yangField(id, field);
+      move.yang = { field, aura, startingHP: source.hp, stage: this.field.flowerGardenStage(), full, eligible: full || (YangBonusAuras[id] || []).includes(aura), seen: /* @__PURE__ */ new Set(), hits: /* @__PURE__ */ new Map(), once: false, messages: /* @__PURE__ */ new Set() };
+      if (!move.yang.eligible) return result;
+      switch (id) {
+        case "kaboom":
+          delete move.recoil;
+          break;
+        case "chistrike":
+          move.ignoreNegativeOffensive = true;
+          break;
+        case "gunkrock":
+          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.secondaries = move.secondaries?.map((s) => ({ ...s, chance: 40 }));
+          if (move.secondary) move.secondary = { ...move.secondary, chance: 40 };
+          break;
+        case "queensgambit":
+          move.self = { boosts: move.category === "Physical" ? { def: -1 } : { spd: -1 } };
+          break;
+        case "crestcleave":
+          move.drain = [1, 2];
+          break;
+        case "rocknroll":
+          move.boosts = { def: -2 };
+          break;
+        case "dragonrend":
+          move.ignoreScreens = true;
+          break;
+        case "infernalrage":
+          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangPreserveField = full;
+          move.secondaries = [...move.secondaries || [], { chance: 30, onHit(target2, source2, effect) {
+            const attack = effect;
+            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.has(target2)) return;
+            attack.yang?.seen.add(target2);
+            if (target2.trySetStatus("brn", source2, effect)) message(this, attack, "Charlotte\u2019s inferno left a searing brand!");
+          } }];
+          break;
+      }
+      return result;
+    },
+onBasePower(bp, source, target) {
       if (this.field.isTerrainOrAura("rainbowterrain")) return this.chainModify((0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 1.5));
     },
 base: {"critRatio":1},
 uncertain: false},
-"spiritmend": {onModifyMove(move) {
-    if (this.field.isTerrain(["darkcrystalcavernterrain", "shortcircuitterrain", "newworldterrain"])) move.heal = [66, 100];
+"spiritmend": {function(move, source, target) {
+    const result = spiritModify.call(this, move, source, target);
+    if (this.field.isTerrain("hauntedterrain")) move.heal = [66, 100];
+    return result;
   },
 base: {"heal":[1,2],"critRatio":1},
 uncertain: false},
-"chistrike": {onBasePower(bp, source, target) {
+"chistrike": {function(active, source, target) {
+      const result = modify?.call(this, active, source, target);
+      const move = active;
+      const field = this.field.terrain, aura = this.field.auraField;
+      const full = yangField(id, field);
+      move.yang = { field, aura, startingHP: source.hp, stage: this.field.flowerGardenStage(), full, eligible: full || (YangBonusAuras[id] || []).includes(aura), seen: /* @__PURE__ */ new Set(), hits: /* @__PURE__ */ new Map(), once: false, messages: /* @__PURE__ */ new Set() };
+      if (!move.yang.eligible) return result;
+      switch (id) {
+        case "kaboom":
+          delete move.recoil;
+          break;
+        case "chistrike":
+          move.ignoreNegativeOffensive = true;
+          break;
+        case "gunkrock":
+          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.secondaries = move.secondaries?.map((s) => ({ ...s, chance: 40 }));
+          if (move.secondary) move.secondary = { ...move.secondary, chance: 40 };
+          break;
+        case "queensgambit":
+          move.self = { boosts: move.category === "Physical" ? { def: -1 } : { spd: -1 } };
+          break;
+        case "crestcleave":
+          move.drain = [1, 2];
+          break;
+        case "rocknroll":
+          move.boosts = { def: -2 };
+          break;
+        case "dragonrend":
+          move.ignoreScreens = true;
+          break;
+        case "infernalrage":
+          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangPreserveField = full;
+          move.secondaries = [...move.secondaries || [], { chance: 30, onHit(target2, source2, effect) {
+            const attack = effect;
+            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.has(target2)) return;
+            attack.yang?.seen.add(target2);
+            if (target2.trySetStatus("brn", source2, effect)) message(this, attack, "Charlotte\u2019s inferno left a searing brand!");
+          } }];
+          break;
+      }
+      return result;
+    },
+onBasePower(bp, source, target) {
     if (this.field.isTerrain("ashenbeachterrain")) return this.chainModify((0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 1.3));
   },
 base: {"critRatio":1},
 uncertain: false},
-"gunkrock": {onBasePower(bp, source, target) {
+"gunkrock": {function(active, source, target) {
+      const result = modify?.call(this, active, source, target);
+      const move = active;
+      const field = this.field.terrain, aura = this.field.auraField;
+      const full = yangField(id, field);
+      move.yang = { field, aura, startingHP: source.hp, stage: this.field.flowerGardenStage(), full, eligible: full || (YangBonusAuras[id] || []).includes(aura), seen: /* @__PURE__ */ new Set(), hits: /* @__PURE__ */ new Map(), once: false, messages: /* @__PURE__ */ new Set() };
+      if (!move.yang.eligible) return result;
+      switch (id) {
+        case "kaboom":
+          delete move.recoil;
+          break;
+        case "chistrike":
+          move.ignoreNegativeOffensive = true;
+          break;
+        case "gunkrock":
+          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.secondaries = move.secondaries?.map((s) => ({ ...s, chance: 40 }));
+          if (move.secondary) move.secondary = { ...move.secondary, chance: 40 };
+          break;
+        case "queensgambit":
+          move.self = { boosts: move.category === "Physical" ? { def: -1 } : { spd: -1 } };
+          break;
+        case "crestcleave":
+          move.drain = [1, 2];
+          break;
+        case "rocknroll":
+          move.boosts = { def: -2 };
+          break;
+        case "dragonrend":
+          move.ignoreScreens = true;
+          break;
+        case "infernalrage":
+          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangPreserveField = full;
+          move.secondaries = [...move.secondaries || [], { chance: 30, onHit(target2, source2, effect) {
+            const attack = effect;
+            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.has(target2)) return;
+            attack.yang?.seen.add(target2);
+            if (target2.trySetStatus("brn", source2, effect)) message(this, attack, "Charlotte\u2019s inferno left a searing brand!");
+          } }];
+          break;
+      }
+      return result;
+    },
+onBasePower(bp, source, target) {
     if (this.field.isTerrain("wastelandterrain")) return this.chainModify((0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 1.5));
   },
 base: {"secondaries":[{"chance":30}],"critRatio":1},
 uncertain: false},
+"frozenrefractals": {function(active, source, target) {
+      const result = modify?.call(this, active, source, target);
+      const move = active;
+      const field = this.field.terrain, aura = this.field.auraField;
+      const full = yangField(id, field);
+      move.yang = { field, aura, startingHP: source.hp, stage: this.field.flowerGardenStage(), full, eligible: full || (YangBonusAuras[id] || []).includes(aura), seen: /* @__PURE__ */ new Set(), hits: /* @__PURE__ */ new Map(), once: false, messages: /* @__PURE__ */ new Set() };
+      if (!move.yang.eligible) return result;
+      switch (id) {
+        case "kaboom":
+          delete move.recoil;
+          break;
+        case "chistrike":
+          move.ignoreNegativeOffensive = true;
+          break;
+        case "gunkrock":
+          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.secondaries = move.secondaries?.map((s) => ({ ...s, chance: 40 }));
+          if (move.secondary) move.secondary = { ...move.secondary, chance: 40 };
+          break;
+        case "queensgambit":
+          move.self = { boosts: move.category === "Physical" ? { def: -1 } : { spd: -1 } };
+          break;
+        case "crestcleave":
+          move.drain = [1, 2];
+          break;
+        case "rocknroll":
+          move.boosts = { def: -2 };
+          break;
+        case "dragonrend":
+          move.ignoreScreens = true;
+          break;
+        case "infernalrage":
+          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangPreserveField = full;
+          move.secondaries = [...move.secondaries || [], { chance: 30, onHit(target2, source2, effect) {
+            const attack = effect;
+            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.has(target2)) return;
+            attack.yang?.seen.add(target2);
+            if (target2.trySetStatus("brn", source2, effect)) message(this, attack, "Charlotte\u2019s inferno left a searing brand!");
+          } }];
+          break;
+      }
+      return result;
+    },
+base: {"critRatio":1},
+uncertain: false},
+"nomoswish": {function(active, source, target) {
+      const result = modify?.call(this, active, source, target);
+      const move = active;
+      const field = this.field.terrain, aura = this.field.auraField;
+      const full = yangField(id, field);
+      move.yang = { field, aura, startingHP: source.hp, stage: this.field.flowerGardenStage(), full, eligible: full || (YangBonusAuras[id] || []).includes(aura), seen: /* @__PURE__ */ new Set(), hits: /* @__PURE__ */ new Map(), once: false, messages: /* @__PURE__ */ new Set() };
+      if (!move.yang.eligible) return result;
+      switch (id) {
+        case "kaboom":
+          delete move.recoil;
+          break;
+        case "chistrike":
+          move.ignoreNegativeOffensive = true;
+          break;
+        case "gunkrock":
+          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.secondaries = move.secondaries?.map((s) => ({ ...s, chance: 40 }));
+          if (move.secondary) move.secondary = { ...move.secondary, chance: 40 };
+          break;
+        case "queensgambit":
+          move.self = { boosts: move.category === "Physical" ? { def: -1 } : { spd: -1 } };
+          break;
+        case "crestcleave":
+          move.drain = [1, 2];
+          break;
+        case "rocknroll":
+          move.boosts = { def: -2 };
+          break;
+        case "dragonrend":
+          move.ignoreScreens = true;
+          break;
+        case "infernalrage":
+          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangPreserveField = full;
+          move.secondaries = [...move.secondaries || [], { chance: 30, onHit(target2, source2, effect) {
+            const attack = effect;
+            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.has(target2)) return;
+            attack.yang?.seen.add(target2);
+            if (target2.trySetStatus("brn", source2, effect)) message(this, attack, "Charlotte\u2019s inferno left a searing brand!");
+          } }];
+          break;
+      }
+      return result;
+    },
+base: {"boosts":{"def":1,"spd":1},"critRatio":1},
+uncertain: false},
 "queensgambit": {onModifyMove(move, source) { if (this.field.isTerrain('chessboardterrain') && source.Role === 'Queen') move.willCrit = true; },
 base: {"self":{"boosts":{"def":-1,"spd":-1}},"critRatio":1},
 uncertain: false},
-"darkclasp": {onBasePower(bp, source, target) {
+"darkclasp": {function(active, source, target) {
+      const result = modify?.call(this, active, source, target);
+      const move = active;
+      const field = this.field.terrain, aura = this.field.auraField;
+      const full = yangField(id, field);
+      move.yang = { field, aura, startingHP: source.hp, stage: this.field.flowerGardenStage(), full, eligible: full || (YangBonusAuras[id] || []).includes(aura), seen: /* @__PURE__ */ new Set(), hits: /* @__PURE__ */ new Map(), once: false, messages: /* @__PURE__ */ new Set() };
+      if (!move.yang.eligible) return result;
+      switch (id) {
+        case "kaboom":
+          delete move.recoil;
+          break;
+        case "chistrike":
+          move.ignoreNegativeOffensive = true;
+          break;
+        case "gunkrock":
+          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.secondaries = move.secondaries?.map((s) => ({ ...s, chance: 40 }));
+          if (move.secondary) move.secondary = { ...move.secondary, chance: 40 };
+          break;
+        case "queensgambit":
+          move.self = { boosts: move.category === "Physical" ? { def: -1 } : { spd: -1 } };
+          break;
+        case "crestcleave":
+          move.drain = [1, 2];
+          break;
+        case "rocknroll":
+          move.boosts = { def: -2 };
+          break;
+        case "dragonrend":
+          move.ignoreScreens = true;
+          break;
+        case "infernalrage":
+          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangPreserveField = full;
+          move.secondaries = [...move.secondaries || [], { chance: 30, onHit(target2, source2, effect) {
+            const attack = effect;
+            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.has(target2)) return;
+            attack.yang?.seen.add(target2);
+            if (target2.trySetStatus("brn", source2, effect)) message(this, attack, "Charlotte\u2019s inferno left a searing brand!");
+          } }];
+          break;
+      }
+      return result;
+    },
+onBasePower(bp, source, target) {
     if (this.field.isTerrain("darkcrystalcavernterrain")) return this.chainModify((0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 1.5));
   },
 base: {"critRatio":1},
 uncertain: false},
-"m3g4qu4k3": {onBasePower(basePower, source, target) {
+"beatdown": {function(active, source, target) {
+      const result = modify?.call(this, active, source, target);
+      const move = active;
+      const field = this.field.terrain, aura = this.field.auraField;
+      const full = yangField(id, field);
+      move.yang = { field, aura, startingHP: source.hp, stage: this.field.flowerGardenStage(), full, eligible: full || (YangBonusAuras[id] || []).includes(aura), seen: /* @__PURE__ */ new Set(), hits: /* @__PURE__ */ new Map(), once: false, messages: /* @__PURE__ */ new Set() };
+      if (!move.yang.eligible) return result;
+      switch (id) {
+        case "kaboom":
+          delete move.recoil;
+          break;
+        case "chistrike":
+          move.ignoreNegativeOffensive = true;
+          break;
+        case "gunkrock":
+          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.secondaries = move.secondaries?.map((s) => ({ ...s, chance: 40 }));
+          if (move.secondary) move.secondary = { ...move.secondary, chance: 40 };
+          break;
+        case "queensgambit":
+          move.self = { boosts: move.category === "Physical" ? { def: -1 } : { spd: -1 } };
+          break;
+        case "crestcleave":
+          move.drain = [1, 2];
+          break;
+        case "rocknroll":
+          move.boosts = { def: -2 };
+          break;
+        case "dragonrend":
+          move.ignoreScreens = true;
+          break;
+        case "infernalrage":
+          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangPreserveField = full;
+          move.secondaries = [...move.secondaries || [], { chance: 30, onHit(target2, source2, effect) {
+            const attack = effect;
+            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.has(target2)) return;
+            attack.yang?.seen.add(target2);
+            if (target2.trySetStatus("brn", source2, effect)) message(this, attack, "Charlotte\u2019s inferno left a searing brand!");
+          } }];
+          break;
+      }
+      return result;
+    },
+base: {"critRatio":1},
+uncertain: false},
+"infernalrage": {function(active, source, target) {
+      const result = modify?.call(this, active, source, target);
+      const move = active;
+      const field = this.field.terrain, aura = this.field.auraField;
+      const full = yangField(id, field);
+      move.yang = { field, aura, startingHP: source.hp, stage: this.field.flowerGardenStage(), full, eligible: full || (YangBonusAuras[id] || []).includes(aura), seen: /* @__PURE__ */ new Set(), hits: /* @__PURE__ */ new Map(), once: false, messages: /* @__PURE__ */ new Set() };
+      if (!move.yang.eligible) return result;
+      switch (id) {
+        case "kaboom":
+          delete move.recoil;
+          break;
+        case "chistrike":
+          move.ignoreNegativeOffensive = true;
+          break;
+        case "gunkrock":
+          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.secondaries = move.secondaries?.map((s) => ({ ...s, chance: 40 }));
+          if (move.secondary) move.secondary = { ...move.secondary, chance: 40 };
+          break;
+        case "queensgambit":
+          move.self = { boosts: move.category === "Physical" ? { def: -1 } : { spd: -1 } };
+          break;
+        case "crestcleave":
+          move.drain = [1, 2];
+          break;
+        case "rocknroll":
+          move.boosts = { def: -2 };
+          break;
+        case "dragonrend":
+          move.ignoreScreens = true;
+          break;
+        case "infernalrage":
+          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangPreserveField = full;
+          move.secondaries = [...move.secondaries || [], { chance: 30, onHit(target2, source2, effect) {
+            const attack = effect;
+            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.has(target2)) return;
+            attack.yang?.seen.add(target2);
+            if (target2.trySetStatus("brn", source2, effect)) message(this, attack, "Charlotte\u2019s inferno left a searing brand!");
+          } }];
+          break;
+      }
+      return result;
+    },
+base: {"critRatio":1},
+uncertain: false},
+"m3g4qu4k3": {function(active, source, target) {
+      const result = modify?.call(this, active, source, target);
+      const move = active;
+      const field = this.field.terrain, aura = this.field.auraField;
+      const full = yangField(id, field);
+      move.yang = { field, aura, startingHP: source.hp, stage: this.field.flowerGardenStage(), full, eligible: full || (YangBonusAuras[id] || []).includes(aura), seen: /* @__PURE__ */ new Set(), hits: /* @__PURE__ */ new Map(), once: false, messages: /* @__PURE__ */ new Set() };
+      if (!move.yang.eligible) return result;
+      switch (id) {
+        case "kaboom":
+          delete move.recoil;
+          break;
+        case "chistrike":
+          move.ignoreNegativeOffensive = true;
+          break;
+        case "gunkrock":
+          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.secondaries = move.secondaries?.map((s) => ({ ...s, chance: 40 }));
+          if (move.secondary) move.secondary = { ...move.secondary, chance: 40 };
+          break;
+        case "queensgambit":
+          move.self = { boosts: move.category === "Physical" ? { def: -1 } : { spd: -1 } };
+          break;
+        case "crestcleave":
+          move.drain = [1, 2];
+          break;
+        case "rocknroll":
+          move.boosts = { def: -2 };
+          break;
+        case "dragonrend":
+          move.ignoreScreens = true;
+          break;
+        case "infernalrage":
+          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangPreserveField = full;
+          move.secondaries = [...move.secondaries || [], { chance: 30, onHit(target2, source2, effect) {
+            const attack = effect;
+            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.has(target2)) return;
+            attack.yang?.seen.add(target2);
+            if (target2.trySetStatus("brn", source2, effect)) message(this, attack, "Charlotte\u2019s inferno left a searing brand!");
+          } }];
+          break;
+      }
+      return result;
+    },
+onBasePower(basePower, source, target) {
       if (this.field.isTerrain("glitchterrain")) return this.chainModify((0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 1.3));
+    },
+base: {"critRatio":1},
+uncertain: false},
+"winddance": {function(active, source, target) {
+      const result = modify?.call(this, active, source, target);
+      const move = active;
+      const field = this.field.terrain, aura = this.field.auraField;
+      const full = yangField(id, field);
+      move.yang = { field, aura, startingHP: source.hp, stage: this.field.flowerGardenStage(), full, eligible: full || (YangBonusAuras[id] || []).includes(aura), seen: /* @__PURE__ */ new Set(), hits: /* @__PURE__ */ new Map(), once: false, messages: /* @__PURE__ */ new Set() };
+      if (!move.yang.eligible) return result;
+      switch (id) {
+        case "kaboom":
+          delete move.recoil;
+          break;
+        case "chistrike":
+          move.ignoreNegativeOffensive = true;
+          break;
+        case "gunkrock":
+          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.secondaries = move.secondaries?.map((s) => ({ ...s, chance: 40 }));
+          if (move.secondary) move.secondary = { ...move.secondary, chance: 40 };
+          break;
+        case "queensgambit":
+          move.self = { boosts: move.category === "Physical" ? { def: -1 } : { spd: -1 } };
+          break;
+        case "crestcleave":
+          move.drain = [1, 2];
+          break;
+        case "rocknroll":
+          move.boosts = { def: -2 };
+          break;
+        case "dragonrend":
+          move.ignoreScreens = true;
+          break;
+        case "infernalrage":
+          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangPreserveField = full;
+          move.secondaries = [...move.secondaries || [], { chance: 30, onHit(target2, source2, effect) {
+            const attack = effect;
+            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.has(target2)) return;
+            attack.yang?.seen.add(target2);
+            if (target2.trySetStatus("brn", source2, effect)) message(this, attack, "Charlotte\u2019s inferno left a searing brand!");
+          } }];
+          break;
+      }
+      return result;
+    },
+base: {"critRatio":1},
+uncertain: false},
+"timeblade": {function(active, source, target) {
+      const result = modify?.call(this, active, source, target);
+      const move = active;
+      const field = this.field.terrain, aura = this.field.auraField;
+      const full = yangField(id, field);
+      move.yang = { field, aura, startingHP: source.hp, stage: this.field.flowerGardenStage(), full, eligible: full || (YangBonusAuras[id] || []).includes(aura), seen: /* @__PURE__ */ new Set(), hits: /* @__PURE__ */ new Map(), once: false, messages: /* @__PURE__ */ new Set() };
+      if (!move.yang.eligible) return result;
+      switch (id) {
+        case "kaboom":
+          delete move.recoil;
+          break;
+        case "chistrike":
+          move.ignoreNegativeOffensive = true;
+          break;
+        case "gunkrock":
+          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.secondaries = move.secondaries?.map((s) => ({ ...s, chance: 40 }));
+          if (move.secondary) move.secondary = { ...move.secondary, chance: 40 };
+          break;
+        case "queensgambit":
+          move.self = { boosts: move.category === "Physical" ? { def: -1 } : { spd: -1 } };
+          break;
+        case "crestcleave":
+          move.drain = [1, 2];
+          break;
+        case "rocknroll":
+          move.boosts = { def: -2 };
+          break;
+        case "dragonrend":
+          move.ignoreScreens = true;
+          break;
+        case "infernalrage":
+          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangPreserveField = full;
+          move.secondaries = [...move.secondaries || [], { chance: 30, onHit(target2, source2, effect) {
+            const attack = effect;
+            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.has(target2)) return;
+            attack.yang?.seen.add(target2);
+            if (target2.trySetStatus("brn", source2, effect)) message(this, attack, "Charlotte\u2019s inferno left a searing brand!");
+          } }];
+          break;
+      }
+      return result;
+    },
+base: {"critRatio":1},
+uncertain: false},
+"crestcleave": {function(active, source, target) {
+      const result = modify?.call(this, active, source, target);
+      const move = active;
+      const field = this.field.terrain, aura = this.field.auraField;
+      const full = yangField(id, field);
+      move.yang = { field, aura, startingHP: source.hp, stage: this.field.flowerGardenStage(), full, eligible: full || (YangBonusAuras[id] || []).includes(aura), seen: /* @__PURE__ */ new Set(), hits: /* @__PURE__ */ new Map(), once: false, messages: /* @__PURE__ */ new Set() };
+      if (!move.yang.eligible) return result;
+      switch (id) {
+        case "kaboom":
+          delete move.recoil;
+          break;
+        case "chistrike":
+          move.ignoreNegativeOffensive = true;
+          break;
+        case "gunkrock":
+          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.secondaries = move.secondaries?.map((s) => ({ ...s, chance: 40 }));
+          if (move.secondary) move.secondary = { ...move.secondary, chance: 40 };
+          break;
+        case "queensgambit":
+          move.self = { boosts: move.category === "Physical" ? { def: -1 } : { spd: -1 } };
+          break;
+        case "crestcleave":
+          move.drain = [1, 2];
+          break;
+        case "rocknroll":
+          move.boosts = { def: -2 };
+          break;
+        case "dragonrend":
+          move.ignoreScreens = true;
+          break;
+        case "infernalrage":
+          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangPreserveField = full;
+          move.secondaries = [...move.secondaries || [], { chance: 30, onHit(target2, source2, effect) {
+            const attack = effect;
+            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.has(target2)) return;
+            attack.yang?.seen.add(target2);
+            if (target2.trySetStatus("brn", source2, effect)) message(this, attack, "Charlotte\u2019s inferno left a searing brand!");
+          } }];
+          break;
+      }
+      return result;
+    },
+base: {"drain":[1,3],"critRatio":1},
+uncertain: false},
+"sirensveil": {function(active, source, target) {
+      const result = modify?.call(this, active, source, target);
+      const move = active;
+      const field = this.field.terrain, aura = this.field.auraField;
+      const full = yangField(id, field);
+      move.yang = { field, aura, startingHP: source.hp, stage: this.field.flowerGardenStage(), full, eligible: full || (YangBonusAuras[id] || []).includes(aura), seen: /* @__PURE__ */ new Set(), hits: /* @__PURE__ */ new Map(), once: false, messages: /* @__PURE__ */ new Set() };
+      if (!move.yang.eligible) return result;
+      switch (id) {
+        case "kaboom":
+          delete move.recoil;
+          break;
+        case "chistrike":
+          move.ignoreNegativeOffensive = true;
+          break;
+        case "gunkrock":
+          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.secondaries = move.secondaries?.map((s) => ({ ...s, chance: 40 }));
+          if (move.secondary) move.secondary = { ...move.secondary, chance: 40 };
+          break;
+        case "queensgambit":
+          move.self = { boosts: move.category === "Physical" ? { def: -1 } : { spd: -1 } };
+          break;
+        case "crestcleave":
+          move.drain = [1, 2];
+          break;
+        case "rocknroll":
+          move.boosts = { def: -2 };
+          break;
+        case "dragonrend":
+          move.ignoreScreens = true;
+          break;
+        case "infernalrage":
+          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangPreserveField = full;
+          move.secondaries = [...move.secondaries || [], { chance: 30, onHit(target2, source2, effect) {
+            const attack = effect;
+            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.has(target2)) return;
+            attack.yang?.seen.add(target2);
+            if (target2.trySetStatus("brn", source2, effect)) message(this, attack, "Charlotte\u2019s inferno left a searing brand!");
+          } }];
+          break;
+      }
+      return result;
+    },
+base: {"boosts":{"def":1,"spd":1},"volatileStatus":"sirensveil","critRatio":1},
+uncertain: false},
+"sirenswrath": {function(active, source, target) {
+      const result = modify?.call(this, active, source, target);
+      const move = active;
+      const field = this.field.terrain, aura = this.field.auraField;
+      const full = yangField(id, field);
+      move.yang = { field, aura, startingHP: source.hp, stage: this.field.flowerGardenStage(), full, eligible: full || (YangBonusAuras[id] || []).includes(aura), seen: /* @__PURE__ */ new Set(), hits: /* @__PURE__ */ new Map(), once: false, messages: /* @__PURE__ */ new Set() };
+      if (!move.yang.eligible) return result;
+      switch (id) {
+        case "kaboom":
+          delete move.recoil;
+          break;
+        case "chistrike":
+          move.ignoreNegativeOffensive = true;
+          break;
+        case "gunkrock":
+          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.secondaries = move.secondaries?.map((s) => ({ ...s, chance: 40 }));
+          if (move.secondary) move.secondary = { ...move.secondary, chance: 40 };
+          break;
+        case "queensgambit":
+          move.self = { boosts: move.category === "Physical" ? { def: -1 } : { spd: -1 } };
+          break;
+        case "crestcleave":
+          move.drain = [1, 2];
+          break;
+        case "rocknroll":
+          move.boosts = { def: -2 };
+          break;
+        case "dragonrend":
+          move.ignoreScreens = true;
+          break;
+        case "infernalrage":
+          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangPreserveField = full;
+          move.secondaries = [...move.secondaries || [], { chance: 30, onHit(target2, source2, effect) {
+            const attack = effect;
+            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.has(target2)) return;
+            attack.yang?.seen.add(target2);
+            if (target2.trySetStatus("brn", source2, effect)) message(this, attack, "Charlotte\u2019s inferno left a searing brand!");
+          } }];
+          break;
+      }
+      return result;
+    },
+base: {"critRatio":1},
+uncertain: false},
+"rocknroll": {function(active, source, target) {
+      const result = modify?.call(this, active, source, target);
+      const move = active;
+      const field = this.field.terrain, aura = this.field.auraField;
+      const full = yangField(id, field);
+      move.yang = { field, aura, startingHP: source.hp, stage: this.field.flowerGardenStage(), full, eligible: full || (YangBonusAuras[id] || []).includes(aura), seen: /* @__PURE__ */ new Set(), hits: /* @__PURE__ */ new Map(), once: false, messages: /* @__PURE__ */ new Set() };
+      if (!move.yang.eligible) return result;
+      switch (id) {
+        case "kaboom":
+          delete move.recoil;
+          break;
+        case "chistrike":
+          move.ignoreNegativeOffensive = true;
+          break;
+        case "gunkrock":
+          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.secondaries = move.secondaries?.map((s) => ({ ...s, chance: 40 }));
+          if (move.secondary) move.secondary = { ...move.secondary, chance: 40 };
+          break;
+        case "queensgambit":
+          move.self = { boosts: move.category === "Physical" ? { def: -1 } : { spd: -1 } };
+          break;
+        case "crestcleave":
+          move.drain = [1, 2];
+          break;
+        case "rocknroll":
+          move.boosts = { def: -2 };
+          break;
+        case "dragonrend":
+          move.ignoreScreens = true;
+          break;
+        case "infernalrage":
+          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangPreserveField = full;
+          move.secondaries = [...move.secondaries || [], { chance: 30, onHit(target2, source2, effect) {
+            const attack = effect;
+            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.has(target2)) return;
+            attack.yang?.seen.add(target2);
+            if (target2.trySetStatus("brn", source2, effect)) message(this, attack, "Charlotte\u2019s inferno left a searing brand!");
+          } }];
+          break;
+      }
+      return result;
+    },
+base: {"boosts":{"def":-1},"critRatio":1},
+uncertain: false},
+"dragonrend": {function(active, source, target) {
+      const result = modify?.call(this, active, source, target);
+      const move = active;
+      const field = this.field.terrain, aura = this.field.auraField;
+      const full = yangField(id, field);
+      move.yang = { field, aura, startingHP: source.hp, stage: this.field.flowerGardenStage(), full, eligible: full || (YangBonusAuras[id] || []).includes(aura), seen: /* @__PURE__ */ new Set(), hits: /* @__PURE__ */ new Map(), once: false, messages: /* @__PURE__ */ new Set() };
+      if (!move.yang.eligible) return result;
+      switch (id) {
+        case "kaboom":
+          delete move.recoil;
+          break;
+        case "chistrike":
+          move.ignoreNegativeOffensive = true;
+          break;
+        case "gunkrock":
+          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.secondaries = move.secondaries?.map((s) => ({ ...s, chance: 40 }));
+          if (move.secondary) move.secondary = { ...move.secondary, chance: 40 };
+          break;
+        case "queensgambit":
+          move.self = { boosts: move.category === "Physical" ? { def: -1 } : { spd: -1 } };
+          break;
+        case "crestcleave":
+          move.drain = [1, 2];
+          break;
+        case "rocknroll":
+          move.boosts = { def: -2 };
+          break;
+        case "dragonrend":
+          move.ignoreScreens = true;
+          break;
+        case "infernalrage":
+          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangPreserveField = full;
+          move.secondaries = [...move.secondaries || [], { chance: 30, onHit(target2, source2, effect) {
+            const attack = effect;
+            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.has(target2)) return;
+            attack.yang?.seen.add(target2);
+            if (target2.trySetStatus("brn", source2, effect)) message(this, attack, "Charlotte\u2019s inferno left a searing brand!");
+          } }];
+          break;
+      }
+      return result;
+    },
+base: {"critRatio":1},
+uncertain: false},
+"airstreamassault": {function(active, source, target) {
+      const result = modify?.call(this, active, source, target);
+      const move = active;
+      const field = this.field.terrain, aura = this.field.auraField;
+      const full = yangField(id, field);
+      move.yang = { field, aura, startingHP: source.hp, stage: this.field.flowerGardenStage(), full, eligible: full || (YangBonusAuras[id] || []).includes(aura), seen: /* @__PURE__ */ new Set(), hits: /* @__PURE__ */ new Map(), once: false, messages: /* @__PURE__ */ new Set() };
+      if (!move.yang.eligible) return result;
+      switch (id) {
+        case "kaboom":
+          delete move.recoil;
+          break;
+        case "chistrike":
+          move.ignoreNegativeOffensive = true;
+          break;
+        case "gunkrock":
+          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.secondaries = move.secondaries?.map((s) => ({ ...s, chance: 40 }));
+          if (move.secondary) move.secondary = { ...move.secondary, chance: 40 };
+          break;
+        case "queensgambit":
+          move.self = { boosts: move.category === "Physical" ? { def: -1 } : { spd: -1 } };
+          break;
+        case "crestcleave":
+          move.drain = [1, 2];
+          break;
+        case "rocknroll":
+          move.boosts = { def: -2 };
+          break;
+        case "dragonrend":
+          move.ignoreScreens = true;
+          break;
+        case "infernalrage":
+          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangPreserveField = full;
+          move.secondaries = [...move.secondaries || [], { chance: 30, onHit(target2, source2, effect) {
+            const attack = effect;
+            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.has(target2)) return;
+            attack.yang?.seen.add(target2);
+            if (target2.trySetStatus("brn", source2, effect)) message(this, attack, "Charlotte\u2019s inferno left a searing brand!");
+          } }];
+          break;
+      }
+      return result;
+    },
+base: {"critRatio":1},
+uncertain: false},
+"wisteriamaelstrom": {function(active, source, target) {
+      const result = modify?.call(this, active, source, target);
+      const move = active;
+      const field = this.field.terrain, aura = this.field.auraField;
+      const full = yangField(id, field);
+      move.yang = { field, aura, startingHP: source.hp, stage: this.field.flowerGardenStage(), full, eligible: full || (YangBonusAuras[id] || []).includes(aura), seen: /* @__PURE__ */ new Set(), hits: /* @__PURE__ */ new Map(), once: false, messages: /* @__PURE__ */ new Set() };
+      if (!move.yang.eligible) return result;
+      switch (id) {
+        case "kaboom":
+          delete move.recoil;
+          break;
+        case "chistrike":
+          move.ignoreNegativeOffensive = true;
+          break;
+        case "gunkrock":
+          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.secondaries = move.secondaries?.map((s) => ({ ...s, chance: 40 }));
+          if (move.secondary) move.secondary = { ...move.secondary, chance: 40 };
+          break;
+        case "queensgambit":
+          move.self = { boosts: move.category === "Physical" ? { def: -1 } : { spd: -1 } };
+          break;
+        case "crestcleave":
+          move.drain = [1, 2];
+          break;
+        case "rocknroll":
+          move.boosts = { def: -2 };
+          break;
+        case "dragonrend":
+          move.ignoreScreens = true;
+          break;
+        case "infernalrage":
+          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangPreserveField = full;
+          move.secondaries = [...move.secondaries || [], { chance: 30, onHit(target2, source2, effect) {
+            const attack = effect;
+            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.has(target2)) return;
+            attack.yang?.seen.add(target2);
+            if (target2.trySetStatus("brn", source2, effect)) message(this, attack, "Charlotte\u2019s inferno left a searing brand!");
+          } }];
+          break;
+      }
+      return result;
+    },
+base: {"critRatio":1},
+uncertain: false},
+"deiludicium": {function(active, source, target) {
+      const result = modify?.call(this, active, source, target);
+      const move = active;
+      const field = this.field.terrain, aura = this.field.auraField;
+      const full = yangField(id, field);
+      move.yang = { field, aura, startingHP: source.hp, stage: this.field.flowerGardenStage(), full, eligible: full || (YangBonusAuras[id] || []).includes(aura), seen: /* @__PURE__ */ new Set(), hits: /* @__PURE__ */ new Map(), once: false, messages: /* @__PURE__ */ new Set() };
+      if (!move.yang.eligible) return result;
+      switch (id) {
+        case "kaboom":
+          delete move.recoil;
+          break;
+        case "chistrike":
+          move.ignoreNegativeOffensive = true;
+          break;
+        case "gunkrock":
+          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.secondaries = move.secondaries?.map((s) => ({ ...s, chance: 40 }));
+          if (move.secondary) move.secondary = { ...move.secondary, chance: 40 };
+          break;
+        case "queensgambit":
+          move.self = { boosts: move.category === "Physical" ? { def: -1 } : { spd: -1 } };
+          break;
+        case "crestcleave":
+          move.drain = [1, 2];
+          break;
+        case "rocknroll":
+          move.boosts = { def: -2 };
+          break;
+        case "dragonrend":
+          move.ignoreScreens = true;
+          break;
+        case "infernalrage":
+          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangPreserveField = full;
+          move.secondaries = [...move.secondaries || [], { chance: 30, onHit(target2, source2, effect) {
+            const attack = effect;
+            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.has(target2)) return;
+            attack.yang?.seen.add(target2);
+            if (target2.trySetStatus("brn", source2, effect)) message(this, attack, "Charlotte\u2019s inferno left a searing brand!");
+          } }];
+          break;
+      }
+      return result;
+    },
+base: {"critRatio":1},
+uncertain: false},
+"nostraswish": {function(active, source, target) {
+      const result = modify?.call(this, active, source, target);
+      const move = active;
+      const field = this.field.terrain, aura = this.field.auraField;
+      const full = yangField(id, field);
+      move.yang = { field, aura, startingHP: source.hp, stage: this.field.flowerGardenStage(), full, eligible: full || (YangBonusAuras[id] || []).includes(aura), seen: /* @__PURE__ */ new Set(), hits: /* @__PURE__ */ new Map(), once: false, messages: /* @__PURE__ */ new Set() };
+      if (!move.yang.eligible) return result;
+      switch (id) {
+        case "kaboom":
+          delete move.recoil;
+          break;
+        case "chistrike":
+          move.ignoreNegativeOffensive = true;
+          break;
+        case "gunkrock":
+          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.secondaries = move.secondaries?.map((s) => ({ ...s, chance: 40 }));
+          if (move.secondary) move.secondary = { ...move.secondary, chance: 40 };
+          break;
+        case "queensgambit":
+          move.self = { boosts: move.category === "Physical" ? { def: -1 } : { spd: -1 } };
+          break;
+        case "crestcleave":
+          move.drain = [1, 2];
+          break;
+        case "rocknroll":
+          move.boosts = { def: -2 };
+          break;
+        case "dragonrend":
+          move.ignoreScreens = true;
+          break;
+        case "infernalrage":
+          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangPreserveField = full;
+          move.secondaries = [...move.secondaries || [], { chance: 30, onHit(target2, source2, effect) {
+            const attack = effect;
+            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.has(target2)) return;
+            attack.yang?.seen.add(target2);
+            if (target2.trySetStatus("brn", source2, effect)) message(this, attack, "Charlotte\u2019s inferno left a searing brand!");
+          } }];
+          break;
+      }
+      return result;
+    },
+base: {"critRatio":1},
+uncertain: false},
+"swarmsnare": {function(active, source, target) {
+      const result = modify?.call(this, active, source, target);
+      const move = active;
+      const field = this.field.terrain, aura = this.field.auraField;
+      const full = yangField(id, field);
+      move.yang = { field, aura, startingHP: source.hp, stage: this.field.flowerGardenStage(), full, eligible: full || (YangBonusAuras[id] || []).includes(aura), seen: /* @__PURE__ */ new Set(), hits: /* @__PURE__ */ new Map(), once: false, messages: /* @__PURE__ */ new Set() };
+      if (!move.yang.eligible) return result;
+      switch (id) {
+        case "kaboom":
+          delete move.recoil;
+          break;
+        case "chistrike":
+          move.ignoreNegativeOffensive = true;
+          break;
+        case "gunkrock":
+          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.secondaries = move.secondaries?.map((s) => ({ ...s, chance: 40 }));
+          if (move.secondary) move.secondary = { ...move.secondary, chance: 40 };
+          break;
+        case "queensgambit":
+          move.self = { boosts: move.category === "Physical" ? { def: -1 } : { spd: -1 } };
+          break;
+        case "crestcleave":
+          move.drain = [1, 2];
+          break;
+        case "rocknroll":
+          move.boosts = { def: -2 };
+          break;
+        case "dragonrend":
+          move.ignoreScreens = true;
+          break;
+        case "infernalrage":
+          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangPreserveField = full;
+          move.secondaries = [...move.secondaries || [], { chance: 30, onHit(target2, source2, effect) {
+            const attack = effect;
+            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.has(target2)) return;
+            attack.yang?.seen.add(target2);
+            if (target2.trySetStatus("brn", source2, effect)) message(this, attack, "Charlotte\u2019s inferno left a searing brand!");
+          } }];
+          break;
+      }
+      return result;
     },
 base: {"critRatio":1},
 uncertain: false},
@@ -3701,7 +4793,7 @@ uncertain: false},
     },
 base: {"recoil":[1,10],"critRatio":1},
 uncertain: false}};
-const BattleAuraRules = {"ashenaura":{"id":"ashenaura","name":"Ashen Aura","turns":5,"mimicryType":"Fire","secretPowerMove":"incinerate","naturePowerMove":"infernalparade","damageMultipliers":{"darkpulse":1.5,"snarl":1.5,"nightdaze":1.5,"nightslash":1.5,"lashout":1.5,"fierywrath":1.5,"bitterblade":1.5,"infernalparade":1.5},"secondaryTypeAdditions":{},"typeMultipliers":{"Fire":1.3},"typeCondition":"none","moveMessages":{},"typeMessage":"The Ashen Aura strengthened the attack!","endMessage":"The Ashen Aura faded.","statusBuffs":[],"statusNerfs":[]},"frozenaura":{"id":"frozenaura","name":"Frozen Aura","turns":5,"mimicryType":"Ice","secretPowerMove":"bodyslam","naturePowerMove":"icebeam","damageMultipliers":{"icebeam":1.2,"blizzard":1.2,"frostbreath":1.2,"aurorabeam":1.2,"darkpulse":1.5,"snarl":1.5,"nightdaze":1.5,"nightslash":1.5,"lashout":1.5,"stompingtantrum":1.5,"ragingfury":1.5,"thrash":1.5,"outrage":1.5,"rage":1.5,"freezingglare":1.5,"fierywrath":1.5,"roaroftime":1.5,"bitterblade":1.5,"bittermalice":1.5,"chillingwater":2},"secondaryTypeAdditions":{},"typeMultipliers":{"Ice":1.3},"typeCondition":"none","moveMessages":{},"typeMessage":"The Frozen Aura strengthened the attack!","endMessage":"The Frozen Aura faded.","statusBuffs":[],"statusNerfs":[]},"electricterrain":{"id":"electricterrain","name":"Electric Aura","turns":5,"mimicryType":"Electric","secretPowerMove":"shockwave","naturePowerMove":"thunderbolt","damageMultipliers":{"explosion":1.5,"selfdestruct":1.5,"hurricane":1.5,"surf":1.5,"smackdown":1.5,"muddywater":1.5,"thousandarrows":1.5,"wildboltstorm":1.5,"magnetbomb":2},"secondaryTypeAdditions":{"explosion":"Electric","selfdestruct":"Electric","hurricane":"Electric","surf":"Electric","smackdown":"Electric","muddywater":"Electric","thousandarrows":"Electric"},"typeMultipliers":{"Electric":1.3},"typeCondition":"electric","moveMessages":{"explosion":"The explosion became hyper-charged!","selfdestruct":"The explosion became hyper-charged!","hurricane":"The attack became hyper-charged!","surf":"The attack became hyper-charged!","smackdown":"The attack became hyper-charged!","muddywater":"The attack became hyper-charged!","thousandarrows":"The attack became hyper-charged!","wildboltstorm":"The attack became hyper-charged!","magnetbomb":"The attack powered up!"},"typeMessage":"The Electric Aura strengthened the attack!","endMessage":"The electricity disappeared from the battlefield.","statusBuffs":["magnetrise","risingvoltage","psyblade"],"statusNerfs":[]},"grassyterrain":{"id":"grassyterrain","name":"Grassy Aura","turns":5,"mimicryType":"Grass","secretPowerMove":"seedbomb","naturePowerMove":"energyball","damageMultipliers":{"fairywind":1.5,"silverwind":1.5,"ominouswind":1.5,"icywind":1.5,"razorwind":1.5,"gust":1.5,"twister":1.5},"secondaryTypeAdditions":{},"typeMultipliers":{"Grass":1.3},"typeCondition":"grounded","moveMessages":{"fairywind":"The wind picked up strength from the Aura!","silverwind":"The wind picked up strength from the Aura!","ominouswind":"The wind picked up strength from the Aura!","icywind":"The wind picked up strength from the Aura!","razorwind":"The wind picked up strength from the Aura!","gust":"The wind picked up strength from the Aura!","twister":"The wind picked up strength from the Aura!"},"typeMessage":"The Grassy Aura strengthened the attack!","endMessage":"The grass disappeared from the battlefield.","statusBuffs":["grassyglide"],"statusNerfs":[]},"mistyterrain":{"id":"mistyterrain","name":"Misty Aura","turns":5,"mimicryType":"Fairy","secretPowerMove":"mistball","naturePowerMove":"mistball","damageMultipliers":{"mysticalfire":1.5,"magicalleaf":1.5,"doomdesire":1.5,"icywind":1.5,"mistball":1.5,"aurasphere":1.5,"steameruption":1.5,"silverwind":1.5,"moongeistbeam":1.5,"smog":1.5,"clearsmog":1.5,"strangesteam":1.5,"springtidestorm":1.5,"hydrosteam":1.5},"secondaryTypeAdditions":{},"typeMultipliers":{"Fairy":1.3},"typeCondition":"none","moveMessages":{"mysticalfire":"The mist's energy strengthened the attack!","magicalleaf":"The mist's energy strengthened the attack!","doomdesire":"The mist's energy strengthened the attack!","icywind":"The mist's energy strengthened the attack!","mistball":"The mist's energy strengthened the attack!","aurasphere":"The mist's energy strengthened the attack!","steameruption":"The mist's energy strengthened the attack!","silverwind":"The mist's energy strengthened the attack!","moongeistbeam":"The mist's energy strengthened the attack!","smog":"The mist's energy strengthened the attack!","clearsmog":"The mist's energy strengthened the attack!","strangesteam":"The mist's energy strengthened the attack!","springtidestorm":"The mist's energy strengthened the attack!","hydrosteam":"The mist's energy strengthened the attack!"},"typeMessage":"The Misty Aura strengthened the attack!","endMessage":"The mist disappeared from the battlefield.","statusBuffs":["mistyexplosion"],"statusNerfs":[]},"rainbowterrain":{"id":"rainbowterrain","name":"Rainbow Aura","turns":5,"mimicryType":"Dragon","secretPowerMove":"aurorabeam","naturePowerMove":"aurorabeam","damageMultipliers":{"silverwind":1.5,"mysticalfire":1.5,"dragonpulse":1.5,"triattack":1.5,"sacredfire":1.5,"firepledge":1.5,"waterpledge":1.5,"grasspledge":1.5,"aurorabeam":1.5,"mirrorbeam":1.5,"judgment":1.5,"deiludicium":1.5,"relicsong":1.5,"hiddenpower":1.5,"secretpower":1.5,"weatherball":1.5,"mistball":1.5,"heartstamp":1.5,"moonblast":1.5,"zenheadbutt":1.5,"sparklingaria":1.5,"fleurcannon":1.5,"prismaticlaser":1.5,"twinkletackle":1.5,"oceanicoperetta":1.5,"solarbeam":1.5,"solarblade":1.5,"dazzlinggleam":1.5,"luminacrash":1.5},"secondaryTypeAdditions":{},"typeMultipliers":{"Normal":1.3},"typeCondition":"special","moveMessages":{"silverwind":"The attack was rainbow-charged!","mysticalfire":"The attack was rainbow-charged!","dragonpulse":"The attack was rainbow-charged!","triattack":"The attack was rainbow-charged!","sacredfire":"The attack was rainbow-charged!","firepledge":"The attack was rainbow-charged!","waterpledge":"The attack was rainbow-charged!","grasspledge":"The attack was rainbow-charged!","aurorabeam":"The attack was rainbow-charged!","mirrorbeam":"The attack was rainbow-charged!","judgment":"The attack was rainbow-charged!","deiludicium":"The attack was rainbow-charged!","relicsong":"The attack was rainbow-charged!","hiddenpower":"The attack was rainbow-charged!","secretpower":"The attack was rainbow-charged!","weatherball":"The attack was rainbow-charged!","mistball":"The attack was rainbow-charged!","heartstamp":"The attack was rainbow-charged!","moonblast":"The attack was rainbow-charged!","zenheadbutt":"The attack was rainbow-charged!","sparklingaria":"The attack was rainbow-charged!","fleurcannon":"The attack was rainbow-charged!","prismaticlaser":"The attack was rainbow-charged!","twinkletackle":"The attack was rainbow-charged!","oceanicoperetta":"The attack was rainbow-charged!","solarbeam":"The attack was rainbow-charged!","solarblade":"The attack was rainbow-charged!","dazzlinggleam":"The attack was rainbow-charged!","luminacrash":"The attack was rainbow-charged!"},"typeMessage":"The rainbow energized the attack!","endMessage":"The rainbow disappeared.","statusBuffs":[],"statusNerfs":[]},"psychicterrain":{"id":"psychicterrain","name":"Psychic Aura","turns":5,"mimicryType":"Psychic","secretPowerMove":"psychic","naturePowerMove":"psychic","damageMultipliers":{"secretpower":1.5,"hiddenpower":1.5,"hex":1.5,"magicalleaf":1.5,"mysticalfire":1.5,"moonblast":1.5,"aurasphere":1.5,"focusblast":1.5,"mindblown":1.5},"secondaryTypeAdditions":{},"typeMultipliers":{"Psychic":1.3},"typeCondition":"psychic","moveMessages":{"secretpower":"The psychic energy strengthened the attack!","hiddenpower":"The psychic energy strengthened the attack!","hex":"The psychic energy strengthened the attack!","magicalleaf":"The psychic energy strengthened the attack!","mysticalfire":"The psychic energy strengthened the attack!","moonblast":"The psychic energy strengthened the attack!","aurasphere":"The psychic energy strengthened the attack!","focusblast":"The psychic energy strengthened the attack!","mindblown":"The psychic energy strengthened the attack!"},"typeMessage":"The Psychic Aura strengthened the attack!","endMessage":"The psychic energy disappeared from the battlefield.","statusBuffs":["expandingforce"],"statusNerfs":[]}};
+const BattleAuraRules = {"riftaura":{"id":"riftaura","name":"Rift Aura","turns":5,"mimicryType":"Dark","secretPowerMove":"astonish","naturePowerMove":"darkpulse","damageMultipliers":{},"secondaryTypeAdditions":{},"typeMultipliers":{"Dark":1.3,"Ghost":1.2,"Fairy":0.75},"typeCondition":"none","moveMessages":{},"typeMessage":"The Rift Aura altered the attack's power!","endMessage":"The Rift Aura faded.","statusBuffs":[],"statusNerfs":[]},"ashenaura":{"id":"ashenaura","name":"Ashen Aura","turns":5,"mimicryType":"Fire","secretPowerMove":"incinerate","naturePowerMove":"infernalparade","damageMultipliers":{"darkpulse":1.5,"snarl":1.5,"nightdaze":1.5,"nightslash":1.5,"lashout":1.5,"fierywrath":1.5,"bitterblade":1.5,"infernalparade":1.5},"secondaryTypeAdditions":{},"typeMultipliers":{"Fire":1.3},"typeCondition":"none","moveMessages":{},"typeMessage":"The Ashen Aura strengthened the attack!","endMessage":"The Ashen Aura faded.","statusBuffs":[],"statusNerfs":[]},"frozenaura":{"id":"frozenaura","name":"Frozen Aura","turns":5,"mimicryType":"Ice","secretPowerMove":"bodyslam","naturePowerMove":"icebeam","damageMultipliers":{"icebeam":1.2,"blizzard":1.2,"frostbreath":1.2,"aurorabeam":1.2,"darkpulse":1.5,"snarl":1.5,"nightdaze":1.5,"nightslash":1.5,"lashout":1.5,"stompingtantrum":1.5,"ragingfury":1.5,"thrash":1.5,"outrage":1.5,"rage":1.5,"freezingglare":1.5,"fierywrath":1.5,"roaroftime":1.5,"bitterblade":1.5,"bittermalice":1.5,"chillingwater":2},"secondaryTypeAdditions":{},"typeMultipliers":{"Ice":1.3},"typeCondition":"none","moveMessages":{},"typeMessage":"The Frozen Aura strengthened the attack!","endMessage":"The Frozen Aura faded.","statusBuffs":[],"statusNerfs":[]},"electricterrain":{"id":"electricterrain","name":"Electric Aura","turns":5,"mimicryType":"Electric","secretPowerMove":"shockwave","naturePowerMove":"thunderbolt","damageMultipliers":{"explosion":1.5,"selfdestruct":1.5,"hurricane":1.5,"surf":1.5,"smackdown":1.5,"muddywater":1.5,"thousandarrows":1.5,"wildboltstorm":1.5,"magnetbomb":2},"secondaryTypeAdditions":{"explosion":"Electric","selfdestruct":"Electric","hurricane":"Electric","surf":"Electric","smackdown":"Electric","muddywater":"Electric","thousandarrows":"Electric"},"typeMultipliers":{"Electric":1.3},"typeCondition":"electric","moveMessages":{"explosion":"The explosion became hyper-charged!","selfdestruct":"The explosion became hyper-charged!","hurricane":"The attack became hyper-charged!","surf":"The attack became hyper-charged!","smackdown":"The attack became hyper-charged!","muddywater":"The attack became hyper-charged!","thousandarrows":"The attack became hyper-charged!","wildboltstorm":"The attack became hyper-charged!","magnetbomb":"The attack powered up!"},"typeMessage":"The Electric Aura strengthened the attack!","endMessage":"The electricity disappeared from the battlefield.","statusBuffs":["magnetrise","risingvoltage","psyblade"],"statusNerfs":[]},"grassyterrain":{"id":"grassyterrain","name":"Grassy Aura","turns":5,"mimicryType":"Grass","secretPowerMove":"seedbomb","naturePowerMove":"energyball","damageMultipliers":{"fairywind":1.5,"silverwind":1.5,"ominouswind":1.5,"icywind":1.5,"razorwind":1.5,"gust":1.5,"twister":1.5},"secondaryTypeAdditions":{},"typeMultipliers":{"Grass":1.3},"typeCondition":"grounded","moveMessages":{"fairywind":"The wind picked up strength from the Aura!","silverwind":"The wind picked up strength from the Aura!","ominouswind":"The wind picked up strength from the Aura!","icywind":"The wind picked up strength from the Aura!","razorwind":"The wind picked up strength from the Aura!","gust":"The wind picked up strength from the Aura!","twister":"The wind picked up strength from the Aura!"},"typeMessage":"The Grassy Aura strengthened the attack!","endMessage":"The grass disappeared from the battlefield.","statusBuffs":["grassyglide"],"statusNerfs":[]},"mistyterrain":{"id":"mistyterrain","name":"Misty Aura","turns":5,"mimicryType":"Fairy","secretPowerMove":"mistball","naturePowerMove":"mistball","damageMultipliers":{"mysticalfire":1.5,"magicalleaf":1.5,"doomdesire":1.5,"icywind":1.5,"mistball":1.5,"aurasphere":1.5,"steameruption":1.5,"silverwind":1.5,"moongeistbeam":1.5,"smog":1.5,"clearsmog":1.5,"strangesteam":1.5,"springtidestorm":1.5,"hydrosteam":1.5},"secondaryTypeAdditions":{},"typeMultipliers":{"Fairy":1.3},"typeCondition":"none","moveMessages":{"mysticalfire":"The mist's energy strengthened the attack!","magicalleaf":"The mist's energy strengthened the attack!","doomdesire":"The mist's energy strengthened the attack!","icywind":"The mist's energy strengthened the attack!","mistball":"The mist's energy strengthened the attack!","aurasphere":"The mist's energy strengthened the attack!","steameruption":"The mist's energy strengthened the attack!","silverwind":"The mist's energy strengthened the attack!","moongeistbeam":"The mist's energy strengthened the attack!","smog":"The mist's energy strengthened the attack!","clearsmog":"The mist's energy strengthened the attack!","strangesteam":"The mist's energy strengthened the attack!","springtidestorm":"The mist's energy strengthened the attack!","hydrosteam":"The mist's energy strengthened the attack!"},"typeMessage":"The Misty Aura strengthened the attack!","endMessage":"The mist disappeared from the battlefield.","statusBuffs":["mistyexplosion"],"statusNerfs":[]},"rainbowterrain":{"id":"rainbowterrain","name":"Rainbow Aura","turns":5,"mimicryType":"Dragon","secretPowerMove":"aurorabeam","naturePowerMove":"aurorabeam","damageMultipliers":{"silverwind":1.5,"mysticalfire":1.5,"dragonpulse":1.5,"triattack":1.5,"sacredfire":1.5,"firepledge":1.5,"waterpledge":1.5,"grasspledge":1.5,"aurorabeam":1.5,"mirrorbeam":1.5,"judgment":1.5,"deiludicium":1.5,"relicsong":1.5,"hiddenpower":1.5,"secretpower":1.5,"weatherball":1.5,"mistball":1.5,"heartstamp":1.5,"moonblast":1.5,"zenheadbutt":1.5,"sparklingaria":1.5,"fleurcannon":1.5,"prismaticlaser":1.5,"twinkletackle":1.5,"oceanicoperetta":1.5,"solarbeam":1.5,"solarblade":1.5,"dazzlinggleam":1.5,"luminacrash":1.5},"secondaryTypeAdditions":{},"typeMultipliers":{"Normal":1.3},"typeCondition":"special","moveMessages":{"silverwind":"The attack was rainbow-charged!","mysticalfire":"The attack was rainbow-charged!","dragonpulse":"The attack was rainbow-charged!","triattack":"The attack was rainbow-charged!","sacredfire":"The attack was rainbow-charged!","firepledge":"The attack was rainbow-charged!","waterpledge":"The attack was rainbow-charged!","grasspledge":"The attack was rainbow-charged!","aurorabeam":"The attack was rainbow-charged!","mirrorbeam":"The attack was rainbow-charged!","judgment":"The attack was rainbow-charged!","deiludicium":"The attack was rainbow-charged!","relicsong":"The attack was rainbow-charged!","hiddenpower":"The attack was rainbow-charged!","secretpower":"The attack was rainbow-charged!","weatherball":"The attack was rainbow-charged!","mistball":"The attack was rainbow-charged!","heartstamp":"The attack was rainbow-charged!","moonblast":"The attack was rainbow-charged!","zenheadbutt":"The attack was rainbow-charged!","sparklingaria":"The attack was rainbow-charged!","fleurcannon":"The attack was rainbow-charged!","prismaticlaser":"The attack was rainbow-charged!","twinkletackle":"The attack was rainbow-charged!","oceanicoperetta":"The attack was rainbow-charged!","solarbeam":"The attack was rainbow-charged!","solarblade":"The attack was rainbow-charged!","dazzlinggleam":"The attack was rainbow-charged!","luminacrash":"The attack was rainbow-charged!"},"typeMessage":"The rainbow energized the attack!","endMessage":"The rainbow disappeared.","statusBuffs":[],"statusNerfs":[]},"psychicterrain":{"id":"psychicterrain","name":"Psychic Aura","turns":5,"mimicryType":"Psychic","secretPowerMove":"psychic","naturePowerMove":"psychic","damageMultipliers":{"secretpower":1.5,"hiddenpower":1.5,"hex":1.5,"magicalleaf":1.5,"mysticalfire":1.5,"moonblast":1.5,"aurasphere":1.5,"focusblast":1.5,"mindblown":1.5},"secondaryTypeAdditions":{},"typeMultipliers":{"Psychic":1.3},"typeCondition":"psychic","moveMessages":{"secretpower":"The psychic energy strengthened the attack!","hiddenpower":"The psychic energy strengthened the attack!","hex":"The psychic energy strengthened the attack!","magicalleaf":"The psychic energy strengthened the attack!","mysticalfire":"The psychic energy strengthened the attack!","moonblast":"The psychic energy strengthened the attack!","aurasphere":"The psychic energy strengthened the attack!","focusblast":"The psychic energy strengthened the attack!","mindblown":"The psychic energy strengthened the attack!"},"typeMessage":"The Psychic Aura strengthened the attack!","endMessage":"The psychic energy disappeared from the battlefield.","statusBuffs":["expandingforce"],"statusNerfs":[]},"hauntedaura":{"turns":5,"damageMultipliers":{},"secondaryTypeAdditions":{},"typeCondition":"none","moveMessages":{},"statusBuffs":[],"statusNerfs":[],"id":"hauntedaura","name":"Haunted Aura","mimicryType":"Ghost","secretPowerMove":"astonish","naturePowerMove":"shadowball","typeMultipliers":{"Ghost":1.2},"typeMessage":"Wandering spirits empowered the attack!","endMessage":"The wandering spirits departed."},"bewitchedaura":{"turns":5,"damageMultipliers":{},"secondaryTypeAdditions":{},"typeCondition":"none","moveMessages":{},"statusBuffs":[],"statusNerfs":[],"id":"bewitchedaura","name":"Bewitched Aura","mimicryType":"Fairy","secretPowerMove":"confusion","naturePowerMove":"psychic","typeMultipliers":{"Psychic":1.2,"Fairy":1.2},"typeMessage":"The strange hush empowered the attack!","endMessage":"The bewitching hush faded."}};
 const BattleAuraMethods = {baseAuraTypeBoost(move, source, target) {
     if ((0, import_adaptive_cycle.adaptiveEnvironment)(target, "fields")) return 1;
     const type = move.type;
@@ -3709,6 +4801,9 @@ const BattleAuraMethods = {baseAuraTypeBoost(move, source, target) {
     if (type === "Ice" && this.terrain === "coldeclipseterrain") return 1.2;
     if (type === "Fire" && ["burningterrain", "volcanicterrain", "infernaleclipseterrain"].includes(this.terrain)) return 1.5;
     if (type === "Dark" && ["coldeclipseterrain", "rifteclipseterrain", "infernaleclipseterrain"].includes(this.terrain)) return 1.5;
+    if (type === "Ghost" && this.terrain === "rifteclipseterrain") return 1.2;
+    if (type === "Ghost" && this.terrain === "hauntedterrain") return 1.5;
+    if (type === "Dark" && this.terrain === "bewitchedwoodsterrain") return 1.3;
     if (move.id === "deiludicium" && this.isTerrain("rainbowterrain") && type === "Normal" && move.category === "Special") return 1.5;
     if (this.terrain === "bewitchedwoodsterrain" && ["Fairy", "Grass"].includes(type)) return 1.5;
     if (this.terrain === "glitchterrain" && type === "Psychic") return 1.2;
@@ -3721,7 +4816,7 @@ const BattleAuraMethods = {baseAuraTypeBoost(move, source, target) {
       if (type === "Psychic") return 1.2;
     }
     if (this.terrain === "starlightarenaterrain" && !this.weather) {
-      if (type === "Psychic") return 1.5;
+      if (type === "Psychic" || type === "Dark") return 1.5;
       if (type === "Fairy") return 1.3;
     }
     if (type === "Electric" && target.isGrounded()) {
@@ -3731,6 +4826,15 @@ const BattleAuraMethods = {baseAuraTypeBoost(move, source, target) {
     return 1;
   },
 auraPowerMultiplier(source, target, move) {
+    if (this.isAura("hauntedaura") || this.isAura("bewitchedaura")) {
+      const haunted = this.isAura("hauntedaura");
+      if (this.isTerrain(haunted ? "hauntedterrain" : "bewitchedwoodsterrain")) return 1;
+      if ((move.types || [move.type]).some((type) => (haunted ? ["Ghost"] : ["Psychic", "Fairy"]).includes(type))) {
+        this.battle.add("-message", this.getAura().typeMessage);
+        return 1.2;
+      }
+      return 1;
+    }
     const aura = this.getAura();
     if (!aura || move.category === "Status") return 1;
     let multiplier = aura.damageMultipliers[move.id] || 1;
@@ -3751,12 +4855,22 @@ auraPowerMultiplier(source, target, move) {
     if (!typeAllowed || this.auraField === "electricterrain" && this.terrain === "shortcircuitterrain") return multiplier;
     for (const [type, boost] of Object.entries(aura.typeMultipliers)) {
       if (!types.includes(type)) continue;
+      if (this.isAura("riftaura") && type === "Fairy") {
+        const basePenalty = (0, import_adaptive_cycle.adaptiveEnvironment)(source, "fields") ? 1 : this.terrain === "rifteclipseterrain" ? 0.5 : this.terrain === "infernaleclipseterrain" && move.id !== "spiritbreak" ? 0.5 : 1;
+        multiplier *= Math.min(basePenalty, boost) / basePenalty;
+        this.battle.add("-message", aura.typeMessage);
+        continue;
+      }
       let baseBoost = move.type === type ? this.baseAuraTypeBoost(move, source, target) : 1;
       if (this.isAura("ashenaura") && type === "Fire") baseBoost = this.baseAuraTypeBoost({ ...move, type: "Fire" }, source, target);
       if (this.isAura("frozenaura") && this.terrain === "coldeclipseterrain" && type === "Ice") {
         baseBoost = this.baseAuraTypeBoost({ ...move, type: "Ice" }, source, target);
       }
-      multiplier *= baseBoost > 1 && boost > 1 ? Math.max(1.5, baseBoost, boost) / baseBoost : boost;
+      if (this.isAura("riftaura") && ["coldeclipseterrain", "rifteclipseterrain", "infernaleclipseterrain"].includes(this.terrain)) {
+        baseBoost = this.baseAuraTypeBoost({ ...move, type }, source, target);
+      }
+      const overlapFloor = this.isAura("riftaura") ? 1 : 1.5;
+      multiplier *= baseBoost > 1 && boost > 1 ? Math.max(overlapFloor, baseBoost, boost) / baseBoost : boost;
       this.battle.add("-message", aura.typeMessage);
     }
     return multiplier;
