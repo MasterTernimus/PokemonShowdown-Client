@@ -10511,8 +10511,8 @@ moonveil: {name: 'Moon Veil', desc: 'Pastel Veil + Misty Surge. On entry, sets M
 	},
 	toxicarmor: {
 		name: "Toxic Armor",
-		desc: "Dual Wield and opening Violent Rush. Metal Claw retains two full-power hits. Native priority HP damage prepares next-turn Dual Wield priority.",
-		shortDesc: "Dual Wield + opening Violent Rush; Metal Claw hits twice at full power.",
+		desc: "Dual Wield and opening Violent Rush. Immune to Intimidate regardless of status; other Attack drops still apply. Metal Claw has two 60%-power hits. Native priority HP damage prepares next-turn Dual Wield priority.",
+		shortDesc: "Dual Wield + opening Violent Rush; blocks Intimidate; priority preparation.",
 	},
 	corrosiveburn: {
 		name: "Corrosive Burn",
@@ -72557,8 +72557,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Toxic Armor",
 		"num": 10403,
 		"gen": 9,
-		"desc": "Full local Dual Wield, Metal Claw with two 60%-power hits, and opening Violent Rush. While poisoned, opposing Pokemon cannot lower its Attack; self-inflicted drops remain. A native positive-priority damaging attack that damages opposing HP prepares the next eligible Dual Wield attack on the following turn for +1 priority. Consumes on attempt, including miss, protection or immunity; expires at that turn end and clears on switching. No stacking, generated attacks, Z/Max attacks or self-rearming from the granted priority. Cannot be suppressed, replaced or bypassed by Mold Breaker.",
-		"shortDesc": "Dual Wield + opening Violent Rush; priority hits prepare next-turn priority.",
+		"desc": "Full local Dual Wield, Metal Claw with two 60%-power hits, and opening Violent Rush. Immune to Intimidate regardless of status. Other opposing and self-inflicted Attack drops still apply. A native positive-priority damaging attack that damages opposing HP prepares the next eligible Dual Wield attack on the following turn for +1 priority. Consumes on attempt, including miss, protection or immunity; expires at that turn end and clears on switching. No stacking, generated attacks, Z/Max attacks or self-rearming from the granted priority. Cannot be suppressed, replaced or bypassed by Mold Breaker.",
+		"shortDesc": "Dual Wield + opening Violent Rush; blocks Intimidate; priority preparation.",
 		"rating": 5,
 		"flags": {
 			"cantsuppress": 1,

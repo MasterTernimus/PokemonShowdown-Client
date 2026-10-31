@@ -1,8 +1,8 @@
 {
-	"sourceHead": "7aa9011bf762918b6e347b45bc801c3c1f7375c2",
+	"sourceHead": "5c5b25e3adb59ecd21821cc494203f4c98bc345b",
 	"base": "22049e8bbc3cae437790269b4360f7c8eaf5da22",
-	"builtSourceFingerprint": "e4b593067b349c737d5de7b6060f19662e4f84fdec19c51a45b5a508ce21f6b4",
-	"sourceDataSHA256": "4ec6a82524407aae17830275df7b4dae0fc8dd56f4b5c41b301787ed9c76079f",
+	"builtSourceFingerprint": "b70413e6ad05135f318be5b5ed3ddba0eb61f7cb1b779cad9f7f41d9f01a427f",
+	"sourceDataSHA256": "ead0ba053a14e01df7eb95b9e549a18a31c649e8e6d7a9f5a6da29932ae0337f",
 	"files": [
 		"data/abilities.ts",
 		"data/ability-components.ts",
@@ -49477,8 +49477,8 @@
 				"name": "Toxic Armor",
 				"num": 10403,
 				"gen": 9,
-				"desc": "Full local Dual Wield, Metal Claw with two 60%-power hits, and opening Violent Rush. While poisoned, opposing Pokemon cannot lower its Attack; self-inflicted drops remain. A native positive-priority damaging attack that damages opposing HP prepares the next eligible Dual Wield attack on the following turn for +1 priority. Consumes on attempt, including miss, protection or immunity; expires at that turn end and clears on switching. No stacking, generated attacks, Z/Max attacks or self-rearming from the granted priority. Cannot be suppressed, replaced or bypassed by Mold Breaker.",
-				"shortDesc": "Dual Wield + opening Violent Rush; priority hits prepare next-turn priority.",
+				"desc": "Full local Dual Wield, Metal Claw with two 60%-power hits, and opening Violent Rush. Immune to Intimidate regardless of status. Other opposing and self-inflicted Attack drops still apply. A native positive-priority damaging attack that damages opposing HP prepares the next eligible Dual Wield attack on the following turn for +1 priority. Consumes on attempt, including miss, protection or immunity; expires at that turn end and clears on switching. No stacking, generated attacks, Z/Max attacks or self-rearming from the granted priority. Cannot be suppressed, replaced or bypassed by Mold Breaker.",
+				"shortDesc": "Dual Wield + opening Violent Rush; blocks Intimidate; priority preparation.",
 				"rating": 5,
 				"flags": {
 					"cantsuppress": 1,
