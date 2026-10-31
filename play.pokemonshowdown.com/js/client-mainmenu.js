@@ -2386,8 +2386,7 @@
 		var list = this.data.entries.filter(function (e) {return (!kind || e.kind === kind) && (!q || toID(e.name + ' ' + e.group + ' ' + JSON.stringify(e.sections) + ' ' + JSON.stringify(e.references) + ' ' + JSON.stringify(e.referenceDetails)).includes(q));});
 		function keyFor(entry) {return (entry.kind === 'aura' ? 'aura/' : entry.kind === 'effect' ? 'effect/' : '') + entry.id;}
 		if (keepSelection !== true) {
-			if (list.length) {if (!list.some(function (entry) {return keyFor(entry) === self.selected;})) this.selected = keyFor(list.slice().sort(function (a, b) {return a.name.localeCompare(b.name);})[0]); this.renderPage();}
-			else {this.selected = ''; this.$('.guide-page').removeAttr('data-group').html('<p class="guide-empty">No matching entries in this section. Try another search or section.</p>');}
+			if (list.length) {if (!list.some(function (entry) {return keyFor(entry) === self.selected;})) this.selected = keyFor(list.slice().sort(function (a, b) {return a.name.localeCompare(b.name);})[0]); this.renderPage();} else {this.selected = ''; this.$('.guide-page').removeAttr('data-group').html('<p class="guide-empty">No matching entries in this section. Try another search or section.</p>');}
 		}
 		this.$('[name=guideLayer]').each(function () {$(this).attr('aria-pressed', this.value === (kind || '') ? 'true' : 'false');});
 		var notes = {

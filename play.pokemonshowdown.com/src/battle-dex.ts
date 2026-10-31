@@ -10108,8 +10108,8 @@ moonveil: {name: 'Moon Veil', desc: 'Pastel Veil + Misty Surge. On entry, sets M
 	},
 	predator: {
 		name: "Predator",
-		desc: "Stat changes this Pokemon receives are inverted, except those from Z-Power effects. If the target has not moved yet or just switched in, this Pokemon's attacks deal 1.3x damage. Attacks deal 2x damage to targets with Neutralization or Royal Decree.",
-		shortDesc: "Has Contrary; boosts attacks into slower/new targets; 2x into authority abilities.",
+		desc: "Stat changes this Pokemon receives are inverted, except those from Z-Power effects. Attacks gain 1.5x power against active Ultra Ego, Ultra Instinct, Neutralization or Royal Decree/Empress. Ultra matchups retain their targeted defense bypass. Otherwise newly switched or pending-action targets take 1.5x power on Mountain, Snowy Mountain or Rocky, or 1.3x elsewhere. Predator bonuses do not stack and never exceed 1.5x.",
+		shortDesc: "Contrary; up to 1.5x power against Ultra/authority abilities or foes that have not acted.",
 	},
 	primaltactics: {
 		name: "Primal Tactics",
@@ -35804,9 +35804,9 @@ for (const [id, update] of Object.entries({
 			"hp": 90,
 			"atk": 115,
 			"def": 80,
-			"spa": 60,
+			"spa": 75,
 			"spd": 80,
-			"spe": 125,
+			"spe": 110,
 		},
 		"types": [
 			"Dark",
@@ -35827,9 +35827,9 @@ for (const [id, update] of Object.entries({
 			"hp": 90,
 			"atk": 115,
 			"def": 80,
-			"spa": 60,
+			"spa": 75,
 			"spd": 80,
-			"spe": 125,
+			"spe": 110,
 		},
 		"types": [
 			"Dark",
@@ -35850,9 +35850,9 @@ for (const [id, update] of Object.entries({
 			"hp": 90,
 			"atk": 115,
 			"def": 80,
-			"spa": 60,
+			"spa": 75,
 			"spd": 80,
-			"spe": 125,
+			"spe": 110,
 		},
 		"types": [
 			"Dark",
@@ -60816,8 +60816,8 @@ const CUSTOM_SHARED_PASSIVE_DESCRIPTIONS: {[id: string]: {passive: string; desc:
 	},
 	"predator": {
 		"passive": "contrary",
-		"shortDesc": "2x power and targeted defense bypass against active Ultra abilities; has authority and first-action bonuses.",
-		"desc": "Against active Ultra Ego, Ultra Instinct or composites containing them, attacks have 2x power, ignore positive Defense/Sp. Def stages and bypass only Ultra incoming-damage reductions. This replaces the first-action bonus. Negative defensive stages, unrelated ability effects, screens, Substitute, Protect, type immunities and post-hit healing remain. The matchup is disabled by ordinary component suppression and Bewitched Woods, Haunted or Holy Terrain. Existing authority and ordinary first-action bonuses are unchanged.",
+		"shortDesc": "1.3x timing power; 1.5x on rocky fields or against authority/Ultra abilities; no stacking.",
+		"desc": "Against active Ultra Ego, Ultra Instinct or composites containing them, attacks have 1.5x power, ignore positive Defense/Sp. Def stages and bypass only Ultra incoming-damage reductions. Against Neutralization, or Royal Decree/Empress while no Neutralization is active, attacks have 1.5x power. Otherwise, newly switched or pending-action targets take 1.3x power, or 1.5x on Mountain, Snowy Mountain and Rocky. Fairy Tale, Dragon's Den and Big Top use 1.3x. These bonuses replace one another; Predator never adds more than 1.5x power. Negative defensive stages, unrelated ability effects, screens, Substitute, Protect, type immunities and post-hit healing remain. The Ultra matchup is disabled by ordinary component suppression and Bewitched Woods, Haunted or Holy Terrain.",
 	},
 	"nighthunt": {
 		"passive": "strongjaw",
@@ -68629,8 +68629,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Predator",
 		"num": 10002,
 		"gen": 9,
-		"desc": "Doubles attack power against active Ultra Ego, Ultra Instinct and composites containing them. In this matchup only, ignores positive Defense and Special Defense stages and those Ultra damage reductions; negative stages, unrelated defenses and post-hit healing remain. This replaces its first-action bonus and is disabled when the Ultra component is suppressed, including Bewitched Woods, Haunted and Holy Terrain. Existing authority bonus remains: 2x against Neutralization, or Royal Decree/Empress without active Neutralization. Otherwise newly switched or pending-action targets take 1.3x power, 2x on Mountain/Snowy Mountain/Rocky, or 1.5x on Fairy Tale/Dragon's Den/Big Top. Reverses received stat-stage changes without stacking with Contrary.",
-		"shortDesc": "Extra power against authority and active Ultra abilities, or foes that have not acted.",
+		"desc": "Attacks have 1.5x power against active Ultra Ego, Ultra Instinct and composites containing them. In this matchup only, ignores positive Defense and Special Defense stages and those Ultra damage reductions; negative stages, unrelated defenses and post-hit healing remain. This replaces its first-action bonus and is disabled when the Ultra component is suppressed, including Bewitched Woods, Haunted and Holy Terrain. Against Neutralization, or Royal Decree/Empress without active Neutralization, attacks also have 1.5x power. Otherwise newly switched or pending-action targets take 1.3x power, or 1.5x on Mountain/Snowy Mountain/Rocky. Fairy Tale/Dragon's Den/Big Top use the ordinary 1.3x bonus. Predator's bonuses never stack and never exceed 1.5x. Reverses received stat-stage changes without stacking with Contrary.",
+		"shortDesc": "1.3x timing power, or 1.5x on rocky fields or against authority/Ultra abilities; no stacking.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null,
