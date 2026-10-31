@@ -26,19 +26,21 @@ describe('Approved client preparation source boundary', () => {
   assert(path.basename(root).startsWith('approved-client-'));
   fs.rmSync(root, {recursive:true,force:true});
  });
- function prepare(onSync) {
-  const writes = new Map(), stages = [];
+ function prepare(onSync, onFieldExport) {
+  const writes = new Map(), stages = [], invocations = [];
   const mockFs = {...fs,
    readFileSync(file, ...args) {return writes.has(file) ? writes.get(file) : fs.readFileSync(file,...args);},
    writeFileSync(file, data) {writes.set(file,data);},
   };
-  const cp = {execFileSync(command,args) {
+  const cp = {execFileSync(command,args,options) {
    if(command === 'git')return manifest.sourceHead;
    stages.push(args[0]);
+   invocations.push({args:Array.from(args),cwd:options.cwd});
    if(args[0] === 'build-tools/sync-working-server-data') {
     if(onSync)onSync();
     writes.set(path.join(client,'server-data-sync-manifest.json'),JSON.stringify({...manifest,builtSourceFingerprint:sourceFingerprint(source)}));
    }
+   if(args[0] === 'tools/export-client-field-rules.cjs' && onFieldExport)onFieldExport();
   }};
   let error;
   try {vm.runInNewContext(code,{__dirname:path.join(client,'build-tools'),process:{execPath:process.execPath,env:{PS_SERVER_SOURCE:source}},console:{log(){}},require(id) {
@@ -48,11 +50,19 @@ describe('Approved client preparation source boundary', () => {
    if(id === './fresh-server-build')return {sourceFingerprint};
    return require(id);
   }});} catch (err) {error=err;}
-  return {error,stages,provenance:writes.get(path.join(client,'client-data-provenance.json'))};
+  return {error,stages,invocations,provenance:writes.get(path.join(client,'client-data-provenance.json'))};
  }
  it('allows stable approved inputs and records their original fingerprint', () => {
   const result=prepare();assert.ifError(result.error);
   assert.equal(JSON.parse(result.provenance).builtSourceFingerprint,manifest.builtSourceFingerprint);
+  assert.equal(result.stages[0],'build-tools/sync-working-server-data');
+  assert.deepEqual(result.invocations[1],{args:['tools/export-client-field-rules.cjs',client],cwd:source});
+  assert(result.stages.indexOf('tools/export-client-field-rules.cjs') < result.stages.indexOf('build'));
+ });
+ it('stops before compilation and provenance when field-rule export fails', () => {
+  const result=prepare(undefined,()=>{throw Error('field export failed');});
+  assert.match(result.error.message,/field export failed/); assert.equal(result.provenance,undefined);
+  assert(!result.stages.includes('build'));
  });
  for(const file of ['sim/pokemon.ts','server/chat-formatter.ts']) {
   it('rejects unapproved '+file+' before any build/export stage', () => {

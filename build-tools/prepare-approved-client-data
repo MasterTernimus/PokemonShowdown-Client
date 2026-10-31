@@ -18,9 +18,10 @@ for (const file of manifest.files) { hash.update(file); hash.update(fs.readFileS
 if (hash.digest('hex') !== manifest.sourceDataSHA256) throw new Error('Server data differs from the reviewed snapshot. Review and regenerate the snapshot before preparing assets.');
 for (const file of manifest.deletedFiles || []) if (fs.existsSync(path.join(source, file))) throw new Error('A deleted server input has reappeared: ' + file);
 if (!approvedFingerprint || sourceFingerprint(source) !== approvedFingerprint) throw new Error('Server build inputs differ from the approved snapshot. Review and regenerate the snapshot before preparing assets.');
-function run(file, cwd) { cp.execFileSync(process.execPath, [file], {cwd, env: process.env, stdio: 'inherit'}); }
+function run(file, cwd, args = []) { cp.execFileSync(process.execPath, [file, ...args], {cwd, env: process.env, stdio: 'inherit'}); }
 // Recreate overrides from the just-built approved source, not the stale exported snapshot.
 run('build-tools/sync-working-server-data', root);
+run('tools/export-client-field-rules.cjs', source, [root]);
 run('build-tools/build-indexes', root);
 run('build-tools/build-learnsets', root);
 run('build-tools/verify-move-assets', root);

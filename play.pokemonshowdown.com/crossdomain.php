@@ -131,6 +131,20 @@ function messageHandler(e) {
 			localStorage.setItem('showdown_prefs', data.substr(1));
 		} catch (e) {}
 		break;
+	case 'U':
+		var teamRequest, teamsStored = false;
+		try {
+			teamRequest = JSON.parse(data.substr(1));
+			if (!Array.isArray(teamRequest) || !Number.isInteger(teamRequest[0]) || typeof teamRequest[1] !== 'string' || typeof teamRequest[2] !== 'string') return;
+			var savedTeams = localStorage.getItem('showdown_teams') || '';
+			// tnull can restore a local Safari mirror. Permit that observed empty store
+			// only while it is still empty; never replace newer nonempty teams.
+			if (savedTeams === teamRequest[1] || (teamRequest[3] === true && savedTeams === '')) {
+				localStorage.setItem('showdown_teams', teamRequest[2]); teamsStored = true;
+			}
+		} catch (error) {}
+		if (teamRequest) postReply('r' + JSON.stringify([teamRequest[0], teamsStored]));
+		break;
 	case 'Q':
   var preferenceRequest, stored = false;
   try {

@@ -1,7 +1,7 @@
 'use strict';
 const assert=require('assert').strict,fs=require('fs');
 global.window=global;
-for(const[file,key]of [['pokedex','BattlePokedex'],['abilities','BattleAbilities'],['moves','BattleMovedex'],['typechart','BattleTypeChart']])global[key]=require('../play.pokemonshowdown.com/data/'+file+'.js')[key];
+for(const[file,key]of [['pokedex','BattlePokedex'],['abilities','BattleAbilities'],['moves','BattleMovedex'],['typechart','BattleTypeChart'],['aliases','BattleAliases']])global[key]=require('../play.pokemonshowdown.com/data/'+file+'.js')[key];
 require('../play.pokemonshowdown.com/js/battle-dex-data.js');require('../play.pokemonshowdown.com/js/battle-dex.js');
 require('../play.pokemonshowdown.com/js/battle-field-rules.js');
 const tips=new Function(fs.readFileSync('play.pokemonshowdown.com/js/battle-field-tooltips.js','utf8')+'\nreturn BattleFieldTooltips;')();
@@ -27,6 +27,12 @@ describe('Eclipse field client integration',()=>{
  for(const field of ['coldeclipseterrain','infernaleclipseterrain'])it(field+' shows the Dragon bonus',()=>{assert.equal(evaluate(field,'dragonpulse').factor,2);});
  it('Cold Eclipse preserves Ice subtyping without the wind bonus',()=>{assert.deepEqual(evaluate('coldeclipseterrain','surf').move.types,['Water','Ice']);assert.equal(evaluate('coldeclipseterrain','gust').factor,1);});
  it('Snowy Field converts the listed attacks to pure Ice',()=>{const r=evaluate('snowyterrain','ironhead');assert.equal(r.move.type,'Ice');assert.deepEqual(r.move.types,['Ice']);assert.equal(r.factor,1.5);});
+ for(const name of ['Mud Barrage','Mud-Slap'])it('Snowy Field previews '+name+' as the canonical Ice attack with its field boost',()=>{
+  const move=Dex.moves.get(name);assert.equal(move.id,'mudbarrage');assert.equal(move.type,'Ground');
+  const result=evaluate('snowyterrain',name);
+  assert.equal(result.move.id,'mudbarrage');assert.equal(result.move.type,'Ice');assert.deepEqual(result.move.types,['Ice']);assert.equal(result.factor,1.5);
+  assert.equal(Dex.moves.get(name).type,'Ground');
+ });
  it('Cold Eclipse blocks new Rooms in move previews',()=>{assert(evaluate('coldeclipseterrain','trickroom').failed);});
  it('Rift Opening and Rift Herald are visible with current descriptions',()=>{assert(Dex.moves.get('riftopening').exists);assert.match(Dex.abilities.get('riftherald').desc,/Rift Eclipse/);assert.match(Dex.moves.get('snowscape').desc,/Snowy Field/);});
  it('selected abilities describe both Eclipse fields',()=>{for(const id of ['icescales','prismarmor'])assert.match(Dex.abilities.get(id).desc,/Infernal Eclipse/);});

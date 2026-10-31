@@ -341,7 +341,7 @@ function toId() {
 		requestManualLogin: function (payload, success) {
 			this.cancelManualLogin();
 			// An explicit sign-in supersedes the background cookie/session check.
-			if (this.upkeepRequest) {
+			if (this.upkeepRequest || !this.loaded) {
 				this.cancelUpkeep(); this.loaded = true; this.upkeepError = '';
 				if (app.topbar) app.topbar.updateUserbar();
 			}

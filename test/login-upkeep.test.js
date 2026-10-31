@@ -266,6 +266,20 @@ describe('Recoverable session upkeep', function () {
 
 describe('Recoverable manual sign-in', function () {
 	function manual() {const h = setup(); h.messages = []; h.app.addPopupMessage = message => h.messages.push(message); h.user.challstr = 'A'; return h;}
+	it('clears a failed background check when explicit sign-in takes over', function () {
+		for (const failure of ['timeout', 'network']) {
+			const h = manual(); h.user.receiveChallstr('A');
+			if (failure === 'timeout') h.tick(30000); else h.requests[0].error();
+			assert.equal(h.user.upkeepRequest, null); assert.equal(h.user.loaded, false);
+			h.user.passwordRename('Alice', 'secret');
+			assert.equal(h.user.loaded, true); assert.equal(h.user.upkeepError, '');
+			h.user.retryUpkeep(); assert.equal(h.requests.length, 2);
+			h.requests[1].callback('{"curuser":{"loggedin":true,"username":"Alice"},"assertion":"token"}');
+			h.user.set('name', 'Alice'); h.user.set('userid', 'alice'); h.user.set('named', true); h.app.topbar.updateUserbar();
+			assert(h.html().includes('usernametext')); assert(!h.html().includes('Retry sign-in'));
+			assert.equal(h.sent[0], '/trn Alice,0,token');
+		}
+	});
 	it('invalidates superseded and disconnected assertion requests', function () {
 		const h = manual(); h.user.rename('Alice'); h.user.rename('Bob');
 		assert(h.requests[0].aborted); h.requests[0].callback('old'); assert.equal(h.sent.length, 0);

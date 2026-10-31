@@ -23,6 +23,34 @@ const tools = 'play.pokemonshowdown.com/js/client-teambuilder.js';
 const calculator = 'play.pokemonshowdown.com/js/client-mainmenu.js';
 
 describe('Hidden species at secondary selection boundaries', () => {
+	 it('keeps hidden saved nickname rows hidden after the final Other saved names filter', () => {
+	  const source = fs.readFileSync(tools, 'utf8');
+	  function Room() {} Room.prototype.events = {};
+	  for (const name of ['initialize','renderSet','renderRosterProfiles','update','back','setPokemon','chartSet','updateChart','getStat']) Room.prototype[name] = function () {};
+	  const rows = [{species:'Hydreigon-Mega'}, {species:'Empoleon-Mega-X'}, {species:'Hydreigon'}, {species:'Mew'}];
+	  const jq = row => ({find:selector=>({val:()=>selector === '.nickname-species' ? row.species : 'Saved name'}), attr(){}, toggle:value=>{row.visible=value;}});
+	  const host = {TeambuilderRoom:Room};
+	  new Function('window','jQuery','$','Storage','BattleLog','Dex','app','toID',source.slice(source.indexOf('// BEGIN LOCAL TEAMBUILDER TOOLS')))(host,jq,jq,{prefs(){}},{escapeHTML:String},Dex,{addPopupMessage(){}},toID);
+	  const room = {curSetList:[],nicknameGroupProfile:()=>({species:['mew']}),$(selector) {
+	   if (selector === '.nickname-row') return {not(){return this;},each(callback){rows.forEach(row=>callback.call(row));}};
+	   return {val:()=>'',prop:()=>selector === '.profile-other-names'};
+	  }};
+	  Room.prototype.filterNicknameRows.call(room);
+	  assert.deepEqual(rows.map(row=>row.visible), [false,false,true,true]);
+	 });
+	 it('omits hidden bulk controls and round-trips the default text without changing stored membership', () => {
+	  const group = {species:['hydreigon','hydreigonmega','empoleonmegax','mew']}, before = JSON.stringify(group), controls = {};
+	  const room = {saveNicknameDraft(){},nicknameGroupProfile:()=>group,groupBatchModeChange(){},$(selector){return {
+	   prop(){return this;},val(value){controls[selector]=value;return this;},html(value){controls[selector]=value;return this;},focus(){},
+	  };}};
+	  loadFunction(tools,'p.openGroupBatch',{Dex,esc:String}).call(room);
+	  room.rosterSpeciesID = loadFunction(tools,'rosterSpeciesID',{Dex});
+	  room.rosterExpandedSpecies = loadFunction(tools,'rosterExpandedSpecies',{Dex,toID,window:dexContext});
+	  const parsed = loadFunction(tools,'parseRosterImport',{}).call(room, controls['.group-batch-text']);
+	  assert.deepEqual(parsed.unknown, []); assert.deepEqual(parsed.species, ['hydreigon','mew']);
+	  assert(!controls['.group-batch-members'].includes('Hydreigon-Mega')); assert(!controls['.group-batch-members'].includes('Empoleon-Mega-X'));
+	  assert.equal(JSON.stringify(group), before);
+	 });
  it('expands a base profile member into supported forms only', () => {
   const expand = loadFunction(tools, 'rosterExpandedSpecies', {Dex, toID, window:dexContext});
   assert.deepEqual(expand('hydreigon'), ['hydreigon']);

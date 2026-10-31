@@ -14,6 +14,13 @@ const prefs = () => ({theme:'dark', rosterprofiles:{enabled:false, selected:'g',
 const pending = data => ({profileId:'n', groupId:'g', before:JSON.stringify(data.rosterprofiles.profiles[0].species), plan:T.planGroupBatch(data.rosterprofiles.profiles[0], 'selected', ['slowbro'], ['corsola'])});
 
 describe('Local group batch previews and preservation', () => {
+	it('preserves hidden legacy members during visible whole-group replacement', () => {
+		const group = {species:['hydreigon', 'hydreigonmega', 'empoleonmegax', 'mew']};
+		const before = JSON.stringify(group), plan = T.planGroupBatch(group, 'all', ['hydreigon', 'pikachu'], []);
+		assert.deepEqual(plan.species, ['hydreigonmega', 'empoleonmegax', 'hydreigon', 'pikachu']);
+		assert.deepEqual(plan.removed, ['mew']); assert.deepEqual(plan.added, ['pikachu']);
+		assert.equal(JSON.stringify(group), before);
+	});
 	it('partially replaces selected members, preserving others and deduplicating', () => {
 		assert.deepEqual(T.planGroupBatch({species:['corsola', 'armaldo']}, 'selected', ['slowbro', 'slowbro', 'armaldo'], ['corsola']), {species:['armaldo', 'slowbro'], added:['slowbro'], removed:['corsola']});
 	});

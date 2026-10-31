@@ -1471,7 +1471,7 @@ onModifyMove(move) {
         "steelroller",
         "gyroball",
         "geargrind",
-        "mudslap",
+        "mudbarrage",
         "sandtomb",
         "chillingwater",
         "magnetbomb",
@@ -3753,6 +3753,9 @@ auraPowerMultiplier(source, target, move) {
       if (!types.includes(type)) continue;
       let baseBoost = move.type === type ? this.baseAuraTypeBoost(move, source, target) : 1;
       if (this.isAura("ashenaura") && type === "Fire") baseBoost = this.baseAuraTypeBoost({ ...move, type: "Fire" }, source, target);
+      if (this.isAura("frozenaura") && this.terrain === "coldeclipseterrain" && type === "Ice") {
+        baseBoost = this.baseAuraTypeBoost({ ...move, type: "Ice" }, source, target);
+      }
       multiplier *= baseBoost > 1 && boost > 1 ? Math.max(1.5, baseBoost, boost) / baseBoost : boost;
       this.battle.add("-message", aura.typeMessage);
     }

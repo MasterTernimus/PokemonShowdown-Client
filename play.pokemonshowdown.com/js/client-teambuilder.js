@@ -5853,7 +5853,7 @@ function renderStarterPassives(species) {
 		filter.apply(this, arguments);
 		if (!this.$('.profile-other-names').prop('checked')) return;
 		var query = String(this.$('.nickname-search').val() || '').toLowerCase(), teamOnly = this.$('.nickname-team-only').prop('checked'), ids = new Set((this.curSetList || []).map(function (s) {return T.id(s.species);}));
-		this.$('.nickname-row').not('.nickname-head').each(function () {var row = $(this), species = String(row.find('.nickname-species').val()), name = String(row.find('.nickname-value').val()); row.toggle((species + ' ' + name).toLowerCase().includes(query) && (!teamOnly || ids.has(T.id(species))));});
+		this.$('.nickname-row').not('.nickname-head').each(function () {var row = $(this), species = String(row.find('.nickname-species').val()), name = String(row.find('.nickname-value').val()); row.toggle(!Dex.isSpeciesHidden(species) && (species + ' ' + name).toLowerCase().includes(query) && (!teamOnly || ids.has(T.id(species))));});
 	};
 	p.newUnifiedProfile = function () {
 		this.saveNicknameDraft(); var self = this; app.addPopupPrompt('Profile name:', 'Create', function (name) {if (!name || !name.trim()) return; name = name.trim().slice(0, 80); var groups = self.rosterData(), group = {id:T.uid(), name:name, species:[]}; groups.profiles.push(group); groups.selected = group.id; Storage.prefs('rosterprofiles', groups); var data = self.toolsData(), profile = {id:T.uid(), name:name, entries:{}, genderEntries:{}, rosterProfile:group.id}; data.nicknames.push(profile); data.selectedNickname = profile.id; self.saveToolsData(data); self.showToolsManager(); self.$('.nickname-species').first().focus();});
@@ -6015,7 +6015,7 @@ function renderStarterPassives(species) {
 		if (!group || !['add', 'selected', 'all'].includes(mode)) throw new Error('Choose a group and action.');
 		var original = Array.from(new Set(group.species)), additions = Array.from(new Set(incoming)), chosen = new Set(selected || []);
 		if (mode === 'selected' && (!chosen.size || Array.from(chosen).some(function (id) {return !original.includes(id);}))) throw new Error('Select the members to replace.');
-		var kept = mode === 'all' ? [] : original.filter(function (id) {return mode !== 'selected' || !chosen.has(id);});
+		var kept = original.filter(function (id) {return Dex.isSpeciesHidden(id) || (mode !== 'all' && (mode !== 'selected' || !chosen.has(id)));});
 		var next = Array.from(new Set(kept.concat(additions)));
 		return {species:next, added:next.filter(function (id) {return !original.includes(id);}), removed:original.filter(function (id) {return !next.includes(id);})};
 	};
@@ -6042,8 +6042,9 @@ function renderStarterPassives(species) {
 	};
 	p.openGroupBatch = function () {
 		this.saveNicknameDraft(); var group = this.nicknameGroupProfile(); if (!group) return;
-		this.$('.group-batch-editor').prop('hidden', false); this.$('.group-batch-text').val(group.species.map(function (id) {return Dex.species.get(id).name;}).join('\n'));
-		this.$('.group-batch-members').html('<legend>Members to replace</legend>' + Array.from(new Set(group.species)).map(function (id) {return '<label class="group-batch-choice"><input type="checkbox" class="group-batch-member" value="' + esc(id) + '" /> ' + esc(Dex.species.get(id).name) + '</label>';}).join(''));
+		var members = group.species.filter(function (id) {return !Dex.isSpeciesHidden(id);});
+		this.$('.group-batch-editor').prop('hidden', false); this.$('.group-batch-text').val(members.map(function (id) {return Dex.species.get(id).name;}).join('\n'));
+		this.$('.group-batch-members').html('<legend>Members to replace</legend>' + Array.from(new Set(members)).map(function (id) {return '<label class="group-batch-choice"><input type="checkbox" class="group-batch-member" value="' + esc(id) + '" /> ' + esc(Dex.species.get(id).name) + '</label>';}).join(''));
 		this.groupBatchModeChange(); this.$('.group-batch-text').focus();
 	};
 	p.groupBatchModeChange = function () {
@@ -6063,7 +6064,7 @@ function renderStarterPassives(species) {
 			if (!plan.added.length && !plan.removed.length) throw new Error('No membership changes.');
 			this.groupBatchPreview = {profileId:data.selectedNickname, groupId:group.id, before:JSON.stringify(group.species), plan:plan};
 			var names = function (ids) {return ids.map(function (id) {return esc(Dex.species.get(id).name);}).join(', ') || 'None';};
-			this.$('.group-batch-preview').html('<h4>' + esc(group.name) + ' · ' + plan.species.length + ' members after applying</h4><p><strong>Remove:</strong> ' + names(plan.removed) + '</p><p><strong>Add:</strong> ' + names(plan.added) + '</p><p class="tools-note">Other groups, saved names and teams stay unchanged.</p><button type="button" class="button" name="applyGroupBatch">Apply changes</button>');
+			this.$('.group-batch-preview').html('<h4>' + esc(group.name) + ' · ' + plan.species.filter(function (id) {return !Dex.isSpeciesHidden(id);}).length + ' members after applying</h4><p><strong>Remove:</strong> ' + names(plan.removed) + '</p><p><strong>Add:</strong> ' + names(plan.added) + '</p><p class="tools-note">Other groups, saved names and teams stay unchanged.</p><button type="button" class="button" name="applyGroupBatch">Apply changes</button>');
 		} catch (error) {this.$('.group-batch-preview').text(error.message);}
 	};
 	p.applyGroupBatch = function () {
@@ -6204,21 +6205,43 @@ function renderStarterPassives(species) {
 		} catch (error) {this.$('.profile-team-preview').text(error.message);}
 	};
 	p.cancelSelectedProfileTeam = function () {this.pendingSelectedProfileTeam = null; this.$('.profile-team-preview').empty(); this.$('[name=previewSelectedProfileTeam]').focus();};
+	p.saveProfileTeamSnapshot = function (sets, completed) {
+		if (this.profileTeamSaving) return;
+		var self = this, team = this.curTeam, before = team.team, previous = this.curSetList;
+		var packed = Storage.packTeam(sets), operation = {};
+		this.profileTeamSaving = operation;
+		var controls = this.$('input, select, textarea, button').filter(':enabled').prop('disabled', true);
+		var finish = function (ok) {
+			if (self.profileTeamSaving !== operation) return;
+			self.profileTeamSaving = null; controls.prop('disabled', false);
+			if (!ok) return app.addPopupMessage('The save was not confirmed. Your team and proposed changes are kept here. Allow storage or free up space, then retry. If another tab changed your teams, reload this page first.');
+			// A late acknowledgement must not replace edits made after leaving this view.
+			if (team.team !== before || Storage.teams.indexOf(team) < 0) return;
+			team.team = packed; team.iconCache = '';
+			if (self.curTeam !== team || self.curSetList !== previous) return;
+			Storage.activeSetList = self.curSetList = sets; self.curSet = null; self.curSetLoc = -1;
+			completed(); self.saveFlag = true; self.saveTeamToolBindings(); self.update();
+		};
+		try {Storage.saveTeamSnapshot(team, packed, finish);} catch (error) {finish(false);}
+	};
 	p.applySelectedProfileTeam = function () {
+		if (this.profileTeamSaving) return;
 		if (Storage.prefs.queue && Storage.prefs.queue.length) return this.$('.profile-team-preview').text('Please wait for the current save, then try again.');
 		var pending = this.pendingSelectedProfileTeam; if (!pending || !this.curTeam) return;
 		try {var latestPrefs = JSON.parse(window.localStorage.getItem('showdown_prefs')); if (latestPrefs) Storage.prefs.data = latestPrefs;} catch (error) {return this.$('.profile-team-preview').text('Could not verify saved data. Nothing changed.');}
 		var data = this.toolsData(), profile = data.nicknames.find(function (n) {return n.id === data.selectedNickname;}), group = this.nicknameGroupProfile();
 		if (!profile || !group || pending.savedTeam !== this.curTeam.team || pending.team !== this.curTeam || pending.profileId !== profile.id || pending.revision !== T.profileTeamRevision(group, profile, Storage.packTeam(this.curSetList))) return this.$('.profile-team-preview').text('The team, names or roster changed. Preview again before applying.');
-		var previous = this.curSetList;
-		try {
-			this.curSetList = Storage.cloneTeam(pending.sets); this.profileTeamUndo = {team:this.curTeam, before:pending.before, after:Storage.packTeam(this.curSetList)};
-			this.curSet = null; this.curSetLoc = -1; this.toolsView = false; this.profilesView = false; this.toolsCommit(); this.pendingSelectedProfileTeam = null;
-		} catch (error) {this.curSetList = previous; this.curTeam.team = pending.before; this.toolsView = true; this.profileTeamUndo = null; app.addPopupMessage('Could not save the team. Your previous team is kept.');}
+		var self = this, sets = Storage.cloneTeam(pending.sets);
+		this.saveProfileTeamSnapshot(sets, function () {
+			self.profileTeamUndo = {team:pending.team, before:pending.before, after:Storage.packTeam(sets)};
+			self.toolsView = false; self.profilesView = false; self.pendingSelectedProfileTeam = null;
+		});
 	};
 	p.undoSelectedProfileTeam = function () {
+		if (this.profileTeamSaving) return;
 		var undo = this.profileTeamUndo; if (!undo || undo.team !== this.curTeam || Storage.packTeam(this.curSetList) !== undo.after) return app.addPopupMessage('The team changed afterward. Nothing was overwritten.');
-		this.curSetList = Storage.unpackTeam(undo.before); this.profileTeamUndo = null; this.toolsCommit();
+		var self = this;
+		this.saveProfileTeamSnapshot(Storage.unpackTeam(undo.before), function () {self.profileTeamUndo = null;});
 	};
 	var saveDraft = p.saveNicknameDraft;
 	p.saveNicknameDraft = function () {var result = saveDraft.apply(this, arguments); if (this.pendingSelectedProfileTeam) {this.pendingSelectedProfileTeam = null; this.$('.profile-team-preview').empty();} return result;};

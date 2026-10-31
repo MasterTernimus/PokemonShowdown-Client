@@ -437,6 +437,8 @@ Storage.onMessage = function ($e) {
 		break;
 	case 't':
 		if (window.nodewebkit) return;
+		Storage.teamStorageCrossOrigin = true;
+		Storage.teamStorageRestoredFromEmpty = false;
 		var oldTeams;
 		if (Storage.teams && Storage.teams.length) {
 			// Teams are still stored in the old location; merge them with the
@@ -463,6 +465,7 @@ Storage.onMessage = function ($e) {
 		}
 		if (data === 'tnull' && !Storage.teams.length) {
 			Storage.loadPackedTeams(localStorage.getItem('showdown_teams_local'));
+			Storage.teamStorageRestoredFromEmpty = !!Storage.teams.length;
 		}
 		Storage.whenTeamsLoaded.load();
 		break;
@@ -729,6 +732,51 @@ Storage.saveAllTeams = function () {
 };
 
 Storage.deleteAllTeams = function () {};
+
+// Profile replacements are published in memory only after the selected store accepts them.
+// Compare the existing snapshot so an older tab cannot overwrite newer saved teams.
+Storage.saveTeamSnapshot = function (team, packedTeam, callback) {
+	if (!team || !this.teams || this.teams.indexOf(team) < 0) return callback(false);
+	var copy = Object.assign({}, team, {team: packedTeam, iconCache: ''}), before = team.team, self = this;
+	if (window.nodewebkit && this.saveTeam === this.nwSaveTeam) {
+		var write = function () {
+			self.nwSaveTeam(copy, function (ok) {
+				if (ok) team.filename = copy.filename;
+				callback(ok);
+			});
+		};
+		if (!team.filename) return write();
+		return fs.readFile(this.dir + 'Teams/' + team.filename, 'utf8', function (error, saved) {
+			if (error || team.team !== before || saved.replace(/\r\n/g, '\n') !== Storage.exportTeam(before, team.gen)) return callback(false);
+			write();
+		});
+	}
+	// These strings are explicit snapshots, not requests to repack the active editor.
+	var snapshots = this.teams.map(function (entry) {return Object.assign({}, entry, {iconCache: ''});});
+	var expected = this.packAllTeams(snapshots);
+	snapshots[this.teams.indexOf(team)] = copy;
+	var packed = this.packAllTeams(snapshots);
+	if (this.teamStorageCrossOrigin) {
+		var idx = this.crossOriginRequestCount++, done = false;
+		var finish = function (ok) {
+			if (done) return; done = true;
+			clearTimeout(timer); delete Storage.crossOriginRequests[idx];
+			if (ok) {Storage.cantSave = false; Storage.teamStorageRestoredFromEmpty = false; try {localStorage.setItem('showdown_teams_local', packed);} catch (error) {}}
+			callback(ok);
+		};
+		var timer = setTimeout(function () {finish(false);}, 10000);
+		this.crossOriginRequests[idx] = function (result) {finish(result === true);};
+		try {this.crossOriginFrame.postMessage('U' + JSON.stringify([idx, expected, packed, !!this.teamStorageRestoredFromEmpty]), this.origin);} catch (error) {finish(false);}
+		return;
+	}
+	var stored = false;
+	try {
+		if ((localStorage.getItem('showdown_teams') || '') === expected) {
+			localStorage.setItem('showdown_teams', packed); this.cantSave = false; stored = true;
+		}
+	} catch (error) {}
+	callback(stored);
+};
 
 /*********************************************************
  * Team importing and exporting
@@ -1802,7 +1850,7 @@ Storage.nwDeleteTeamFile = function (filename, callback) {
 	});
 };
 
-Storage.nwSaveTeam = function (team) {
+Storage.nwSaveTeam = function (team, callback) {
 	if (!team) return;
 	var filename = team.name + '.txt';
 	if (team.format) filename = '[' + team.format + (team.capacity === 24 ? '-box] ' : '] ') + filename;
@@ -1816,6 +1864,21 @@ Storage.nwSaveTeam = function (team) {
 	try {
 		fs.mkdirSync(this.dir + 'Teams/' + folder);
 	} catch (e) {}
+	if (callback) {
+		var destination = this.dir + 'Teams/' + filename;
+		var temporary = destination + '.profile-' + Date.now() + '-' + Math.random().toString(36).slice(2) + '.tmp';
+		var self = this;
+		var finish = function (error) {
+			if (error) {fs.unlink(temporary, function () {}); callback(false); return;}
+			if (team.filename && filename.replace(/^\/+/, '') !== team.filename.replace(/^\/+/, '')) self.nwDeleteTeam(team);
+			team.filename = filename; callback(true);
+		};
+		fs.writeFile(temporary, Storage.exportTeam(team.team, team.gen).replace(/\n/g, '\r\n'), function (error) {
+			if (error) return finish(error);
+			fs.rename(temporary, destination, finish);
+		});
+		return;
+	}
 
 	if (team.filename && filename !== team.filename) {
 		this.nwDeleteTeam(team);
