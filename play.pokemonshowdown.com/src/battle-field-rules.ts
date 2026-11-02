@@ -745,7 +745,7 @@ onTryMove(source, target, move) {
 uncertain: false},
 {id: "dragonsdenterrain",
 name: "Dragon's Den Terrain",
-notes: ["Rejects Auras and ordinary field replacement. Dragon Pokémon gain 1.3× Defense. Multiscale removes super-effective bonuses against Dragon typing. Cave transformation progress is affected by Dragon attacks."],
+notes: ["Rejects Auras and ordinary field replacement. Dragon Pokémon gain 1.3× Defense. Multiscale removes super-effective bonuses against Dragon typing. Cooling moves announce progress toward Cave. Hail and snow fail here. Fickle Beam and Worldbreaker have a 50% all-out chance. Dragon Cheer grants Dragon allies +3 crit stages. Scale Shot keeps Defense. Good as Gold neutralizes Steel weaknesses. Tyrant Domain maintains the Den and lowers opposing defenses on entry."],
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
     const uberboost = ["smackdown", "thousandarrows", "continentalcrush", "tectonicrage", "dragonascent", "payday", "lusterpurge", "mistball"];
@@ -757,10 +757,6 @@ onBasePower(basePower, source, target, move) {
     if (move.type === "Dragon" || move.type === "Fire") {
         this.add("-message", "The ambient dragon fire boosted the attack!");
         modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 1.5);
-    }
-    if (move.type === "Rock") {
-        this.add("-message", "The super hot rocks boosted the attack!");
-        modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 1.3);
     }
     if (move.type === "Ice" || move.type === "Water") {
         this.add("-message", "The lava's heat softened the attack...");
@@ -798,6 +794,8 @@ onBasePower(basePower, source, target, move) {
     return this.chainModify(modifier);
 },
 onModifyMove(move) {
+    if (move.id === "scaleshot")
+        move.selfBoost = { boosts: { spe: 1 } };
     const fire_moves = ["smackdown", "thousandarrows", "continentalcrush", "tectonicrage", "rockclimb", "earthquake"];
     if (fire_moves.includes(move.id)) {
         move.types = [move.type, "Fire"];

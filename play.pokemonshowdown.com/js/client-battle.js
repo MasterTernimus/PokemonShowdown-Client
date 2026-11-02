@@ -481,12 +481,12 @@
 					if (this.battle.gameType === 'triples' || this.battle.gameType === 'rotation') {
 						this.choice.count = 3;
 					}
-					// Request full team order if one of our Pokémon has Illusion
-					for (var i = 0; i < switchables.length && i < 6; i++) {
-						if (toID(switchables[i].baseAbility) === 'illusion') {
-							this.choice.count = this.battle.myPokemon.length;
-						}
-					}
+					// Both disguises use the selected party order for their automatic first entry.
+					this.choice.orderForDisguise = switchables.some(function (pokemon) {
+					 var ability = toID(pokemon.baseAbility || pokemon.ability);
+					 return ability === 'illusion' || ability === 'perfectillusion';
+					});
+					if (this.choice.orderForDisguise) this.choice.count = switchables.length;
 					if (this.battle.teamPreviewCount) {
 						var requestCount = parseInt(this.battle.teamPreviewCount, 10);
 						if (requestCount > 0 && requestCount <= switchables.length) {
@@ -1037,6 +1037,7 @@
 				requestTitle = "How will you start the battle?";
 			}
 
+			if (this.choice.orderForDisguise) requestTitle += ' <small>Auto disguise uses your last eligible teammate on first entry.</small>';
 			var switchMenu = '';
 			for (var i = 0; i < maxIndex; i++) {
 				var oIndex = this.choice.teamPreview[i] - 1;

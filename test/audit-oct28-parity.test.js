@@ -30,6 +30,6 @@ describe('October audit runtime parity',()=>{
   const source=fs.readFileSync('play.pokemonshowdown.com/js/client-teambuilder.js','utf8');
   const a=source.indexOf('Object.keys(window.BattlePokedex || {}).forEach'),z=source.indexOf('\n\t\t\thtml +=',a);
   const html=new Function('window','Dex','escape','let html="";'+source.slice(a,z)+';return html;')(context,Dex,String);
-  assert(Dex.species.get('Hydreigon-Mega').exists);assert(html.includes('value="Hydreigon"'));assert(!html.includes('value="Hydreigon-Mega"'));
+  assert(Dex.species.get('Hydreigon-Mega').exists);assert(html.includes('value="Hydreigon"'));assert(html.includes('value="Hydreigon-Mega"'));
  });
 });

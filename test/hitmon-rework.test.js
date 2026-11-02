@@ -45,13 +45,13 @@ describe('Hitmon client parity', () => {
   assert.deepEqual(Array.from(Dex.species.get('politoed').passives),['oraclesrefrain']);
   const ability=Dex.abilities.get('oraclesrefrain');
   assert.equal(ability.name,"Oracle's Refrain");
-  assert.equal(ability.shortDesc,'Psychic STAB + Soundproof + Resonance Force.');
+  assert.equal(ability.shortDesc,'Psychic STAB + Soundproof.');
   assert(!ability.desc.includes('Resists'));
   assert.equal(Dex.abilities.get('Oracular Chorus').id,'oraclesrefrain');
   assert.deepEqual(Array.from(Dex.species.get('politoedrejuv').passives),['royalremedy']);
-  assert.equal(power('boomburst'),210);assert.equal(power('sparklingaria'),135);assert.equal(power('alluringvoice'),120);
+  assert.equal(power('boomburst'),140);assert.equal(power('sparklingaria'),90);assert.equal(power('alluringvoice'),80);
   assert(tips.showMoveTooltip(Dex.moves.get('psychic'),'',p,own).includes('receives Psychic STAB'));
-  p.addVolatile('gastroacid');assert.equal(power('boomburst'),210);
+  p.addVolatile('gastroacid');assert.equal(power('boomburst'),140);
  });
  it('exports the revised PP requirement',()=>{
   const ability=Dex.abilities.get('checkhook');assert(ability.desc.includes('double its usual PP'));assert(ability.desc.includes('in the moveset'));
@@ -69,7 +69,7 @@ describe('Hitmon client parity', () => {
   setup('Politoed','Drizzle','oraclesrefrain','doubles');const ally=battle.p1.active[1];
   const allyOwn={...own,speciesForme:'Mew',ability:'No Ability',baseAbility:'No Ability',passives:[]};
   ally.ability=ally.baseAbility='No Ability';
-  assert.equal(tips.getMoveBasePower(Dex.moves.get('boomburst'),'Normal',new ModifiableValue(battle,ally,allyOwn),q).value,210);
+  assert.equal(tips.getMoveBasePower(Dex.moves.get('boomburst'),'Normal',new ModifiableValue(battle,ally,allyOwn),q).value,140);
   battle.gameType='freeforall';q.ability=q.baseAbility='No Ability';
   assert.equal(tips.getMoveBasePower(Dex.moves.get('boomburst'),'Normal',new ModifiableValue(battle,q,allyOwn),p).value,140);
  });

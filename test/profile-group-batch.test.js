@@ -17,8 +17,8 @@ describe('Local group batch previews and preservation', () => {
 	it('preserves hidden legacy members during visible whole-group replacement', () => {
 		const group = {species:['hydreigon', 'hydreigonmega', 'empoleonmegax', 'mew']};
 		const before = JSON.stringify(group), plan = T.planGroupBatch(group, 'all', ['hydreigon', 'pikachu'], []);
-		assert.deepEqual(plan.species, ['hydreigonmega', 'empoleonmegax', 'hydreigon', 'pikachu']);
-		assert.deepEqual(plan.removed, ['mew']); assert.deepEqual(plan.added, ['pikachu']);
+		assert.deepEqual(plan.species, ['empoleonmegax', 'hydreigon', 'pikachu']);
+		assert.deepEqual(plan.removed, ['hydreigonmega', 'mew']); assert.deepEqual(plan.added, ['pikachu']);
 		assert.equal(JSON.stringify(group), before);
 	});
 	it('partially replaces selected members, preserving others and deduplicating', () => {

@@ -58,6 +58,7 @@ for (const [id, data] of Object.entries(Learnsets)) {
 }
 
 BattleTeambuilderTable.learnsets = encodedLearnsets;
+BattleTeambuilderTable.rebornLearnsets = true;
 const serializedTable = JSON.stringify(BattleTeambuilderTable).replace(/['\\]/g, '\\$&');
 fs.writeFileSync(
 	teambuilderPath,

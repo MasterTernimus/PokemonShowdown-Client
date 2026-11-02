@@ -13,7 +13,7 @@ describe('Omen Sight and concise warning displays', () => {
 		for (const id of ['anticipation', 'forewarn', 'omensight']) {
 			const ability = Dex.abilities.get(id);
 			assert(ability.exists);
-			assert(ability.shortDesc.includes('25%'));
+			assert(ability.shortDesc.includes(id === 'omensight' ? '43.75%' : '25%'));
 			assert(ability.desc.includes('Psychic Terrain'));
 			assert(!/Allies are not checked|initial checks|trigger twice|component:|This replaces/.test(ability.desc));
 			assert(ability.shortDesc.length <= 100);

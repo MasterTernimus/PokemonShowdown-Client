@@ -12,8 +12,8 @@ const group=()=>({id:'g',species:['corsola','armaldo','garchomp','garchompmega']
 describe('Standalone unified profile selection',()=>{
  it('rejects hidden legacy profile members while retaining base species and supported Megas',()=>{
   const g={id:'g',species:['hydreigon','hydreigonmega','empoleon','empoleonmegax','empoleonmegay']};
-  for(const id of ['hydreigonmega','empoleonmegax'])assert.throws(()=>T.planProfileTeam(g,profile(),[id],[],6),/changed/);
-  assert.deepEqual(T.planProfileTeam(g,profile(),['hydreigon','empoleon','empoleonmegay'],[],6).map(s=>s.species),['Hydreigon','Empoleon','Empoleon-Mega-Y']);
+  for(const id of ['empoleonmegax'])assert.throws(()=>T.planProfileTeam(g,profile(),[id],[],6),/changed/);
+  assert.deepEqual(T.planProfileTeam(g,profile(),['hydreigonmega','empoleon','empoleonmegay'],[],6).map(s=>s.species),['Hydreigon-Mega','Empoleon','Empoleon-Mega-Y']);
   assert.equal(g.species.length,5); // Legacy records remain intact.
  });
  it('resets a removed disguise teammate to Auto instead of choosing its old numeric slot',()=>{

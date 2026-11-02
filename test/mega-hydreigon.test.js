@@ -41,17 +41,17 @@ describe('Mega Hydreigon client integration', () => {
 			assert.equal(png.readUInt32BE(20), 192);
 		});
 	}
-	it('hides the Mega from default, custom and direct picker results', () => {
+	it('shows the Mega from default, custom and direct picker results', () => {
 		const source = fs.readFileSync(path.join(__dirname, '../play.pokemonshowdown.com/js/battle-dex-search.js'), 'utf8');
 		const Search = require('vm').runInContext(source + '\nDexSearch;', context);
 		const rows = Search.prototype.filterPokemonPicker.call({dex: Dex, pickerOptions: {}, typedSearch: {searchType: 'pokemon'}}, [['pokemon', 'hydreigonmega']]);
-		assert.equal(rows.length, 0);
+		assert.equal(rows.length, 1);
 		for (const pickerOptions of [{}, {customOnly:true}, {group:'mega'}]) {
-			assert.equal(Search.prototype.pickerMatches.call({dex:Dex,pickerOptions}, 'hydreigonmega'), false);
+			assert.equal(Search.prototype.pickerMatches.call({dex:Dex,pickerOptions}, 'hydreigonmega'), true);
 		}
 		assert.equal(Search.prototype.pickerMatches.call({dex:Dex,pickerOptions:{}}, 'hydreigon'), true);
 		const items=Search.prototype.filterPokemonPicker.call({dex:Dex,pickerOptions:{},typedSearch:{searchType:'item'}}, [['item','hydreigonite'],['item','leftovers']]);
-		assert.deepEqual(items,[['item','leftovers']]);
+		assert.deepEqual(items,[['item','hydreigonite'],['item','leftovers']]);
 	});
 	for (const shiny of [false, true]) it(`uses the new artwork in the builder and party icon (shiny=${shiny})`, () => {
 		const pokemon = {species: 'Hydreigon-Mega', shiny};

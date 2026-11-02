@@ -17,7 +17,7 @@ describe('Approved signature client parity', () => {
 		}
 		assert(Dex.getAbilityEffects('atrocity').has('toughclaws'));assert(Dex.getAbilityEffects('atrocity').has('fireward'));
 		assert(!Dex.getAbilityEffects('atrocity').has('levitate'));
-		for (const id of ['opportunist', 'ultraego']) assert(Dex.getAbilityEffects('duskdrive').has(id));
+		for (const id of ['keeneye', 'ultraego']) assert(Dex.getAbilityEffects('duskdrive').has(id));
 		for (const id of ['battlefervor', 'precision']) assert(!Dex.getAbilityEffects('duskdrive').has(id));
 		assert.equal(Dex.moves.get('doubleshock').flags.punch, 1);
 		assert.match(Dex.abilities.get('gravehunger').desc, /1\/8 max HP per turn/);

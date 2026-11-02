@@ -168,6 +168,9 @@ class BattleChoiceBuilder {
 			return request.forceSwitch.length;
 		case 'team':
 			if (request.maxTeamSize) return request.maxTeamSize;
+			if (request.side.pokemon.some(p => ['illusion', 'perfectillusion'].includes(toID(p.baseAbility || p.ability)))) {
+				return request.side.pokemon.length;
+			}
 			return 1;
 		case 'wait':
 			return 0;

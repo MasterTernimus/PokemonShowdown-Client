@@ -59,12 +59,12 @@ describe('Twilight Instinct and Dusk Ego client compatibility', () => {
 	it('shows the revised components without retaining Battle Fervor on Twilight Instinct', () => {
 		const twilight = Dex.getAbilityEffects('twilightinstinct');
 		assert(twilight.has('ultrainstinct'));
-		assert(twilight.has('keeneye'));
+		assert(twilight.has('opportunist'));
 		assert(!twilight.has('battlefervor'));
 		assert(!Dex.abilities.get('twilightinstinct').desc.includes('Battle Fervor'));
-		assert.deepEqual(Array.from(Dex.getAbilityDisplayComponents('twilightinstinct')), ['ultrainstinct', 'keeneye']);
+		assert.deepEqual(Array.from(Dex.getAbilityDisplayComponents('twilightinstinct')), ['ultrainstinct', 'opportunist']);
 		for (const name of ['Dusk Drive', 'Dusk Ego']) {
-			assert(Dex.getAbilityEffects(name).has('opportunist'));
+			assert(Dex.getAbilityEffects(name).has('keeneye'));
 			assert(Dex.getAbilityEffects(name).has('ultraego'));
 		}
 	});
@@ -90,8 +90,8 @@ describe('Twilight Instinct and Dusk Ego client compatibility', () => {
 		try {
 			const pokemon = b.p1.active[0];
 			for (const [name, components] of [
-				['Dusk Drive', ['Opportunist', 'Ultra Ego']],
-				['Dusk Ego', ['Opportunist', 'Ultra Ego']],
+				['Dusk Drive', ['Keen Eye', 'Ultra Ego']],
+				['Dusk Ego', ['Keen Eye', 'Ultra Ego']],
 				['Tidal Poise', ['Whiplash', 'Own Tempo']],
 			]) {
 				pokemon.ability = ''; pokemon.baseAbility = '';
@@ -123,9 +123,9 @@ describe('Twilight Instinct and Dusk Ego client compatibility', () => {
 			}};
 			const sandbox = vm.createContext({Dex, $: value => value, toID: context.toID});
 			const run = vm.runInContext('(' + refresh + ')', sandbox);
-			run.call({metadata: {abilityComponents: {duskdrive: ['Opportunist', 'Ultra Ego']}},
+			run.call({metadata: {abilityComponents: {duskdrive: ['Keen Eye', 'Ultra Ego']}},
 				$: () => ({each(callback) { callback.call(actor); }}), escape: String, updateCalcStatSummary() {}});
-			assert.equal(outputs['.calc-components'], 'Components: Opportunist · Ultra Ego. Each effect has its own conditions.');
+			assert.equal(outputs['.calc-components'], 'Components: Keen Eye · Ultra Ego. Each effect has its own conditions.');
 		}
 	});
 });

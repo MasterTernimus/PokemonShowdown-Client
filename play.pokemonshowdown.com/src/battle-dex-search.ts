@@ -359,7 +359,7 @@ class DexSearch {
 	}
 
 	filterPokemonPicker(rows: SearchRow[]): SearchRow[] {
-		rows = rows.filter(row => row[0] !== 'item' || !['hydreigonite', 'empoleonitex'].includes(row[1]));
+		rows = rows.filter(row => row[0] !== 'item' || row[1] !== 'empoleonitex');
 		rows = rows.filter(row => row[0] !== 'pokemon' || (!Dex.isSpeciesHidden(this.dex.species.get(row[1]).id) && !isTotemSpecies(window.BattlePokedex?.[row[1]])));
 		if (this.typedSearch?.searchType !== 'pokemon') return rows;
 		const options = this.pickerOptions;
@@ -1312,6 +1312,9 @@ abstract class BattleTypedSearch<T extends SearchType> {
 		return '' as ID;
 	}
 	protected canLearn(speciesid: ID, moveid: ID) {
+		if (this.dex.gen >= 9 && speciesid === 'umbreon' && moveid === 'radiantassault') {
+			return toID(this.set?.ability) === 'ascendance';
+		}
 		if (this.dex.gen >= 9 && Dex.getGen9MoveRemovals(speciesid).includes(moveid)) return false;
 		const move = this.dex.moves.get(moveid);
 		if (['politoed','politoedrejuv'].includes(speciesid) && toID(this.set?.ability) !== 'aevianking' && AEVIAN_KING_MOVE_SOURCES[moveid] && !AEVIAN_KING_ORDINARY_MOVES.includes(moveid)) return false;
@@ -1895,22 +1898,6 @@ class BattleItemSearch extends BattleTypedSearch<'item'> {
 
 class BattleMoveSearch extends BattleTypedSearch<'move'> {
 	/** Show the source beside its move instead of repeating the entire list in a paragraph. */
-	getExclusiveMoveSource(id: string): string {
-		if (this.dex.gen < 9) return '';
-		const species = toID(this.set?.species), ability = toID(this.set?.ability);
-		let sources: {[id: string]: string[]} | undefined;
-		let ordinary: readonly string[] = [];
-		if (['politoed', 'politoedrejuv'].includes(species) && ability === 'aevianking') {
-			sources = AEVIAN_KING_MOVE_SOURCES; ordinary = AEVIAN_KING_ORDINARY_MOVES;
-		} else if (['poliwrath', 'poliwrathrejuv'].includes(species) && ability === 'aevianascendance') {
-			sources = AEVIAN_ASCENDANCE_MOVE_SOURCES; ordinary = AEVIAN_ASCENDANCE_ORDINARY_MOVES;
-		} else if (['galvantula', 'galvantularejuv'].includes(species) && ability === 'aevianweb') {
-			sources = AEVIAN_WEB_MOVE_SOURCES; ordinary = AEVIAN_WEB_ORDINARY_MOVES;
-		}
-		const source = !ordinary.includes(id) && sources?.[id]?.[0];
-		if (!source) return '';
-		return source === '9L0' ? 'Evolution' : source[1] === 'L' ? `Lv. ${source.slice(2)}` : 'TM / tutor';
-	}
 	sortRow: SearchRow = ['sortmove', ''];
 	getTable() {
 		window.ensureCustomDataPatches?.();
@@ -2412,11 +2399,7 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 			const extras = Object.keys(AEVIAN_KING_MOVE_SOURCES).filter(id => !AEVIAN_KING_ORDINARY_MOVES.includes(id));
 			moves = moves.filter(id => !extras.includes(id));
 			aevianKingMoves.push(['header','Aevian King exclusive moves']);
-			['L','M'].forEach(kind => {
-				const group = extras.filter(id => AEVIAN_KING_MOVE_SOURCES[id][0][1] === kind);
-				if (group.length) aevianKingMoves.push(['header', kind === 'L' ? 'Level-up & evolution' : 'TM & tutor']);
-				for (const id of group) aevianKingMoves.push(['move',id as ID]);
-			});
+			for (const id of extras) aevianKingMoves.push(['move', id as ID]);
 		}
 		const aevianAscendanceMoves: SearchRow[] = [];
 		if (['poliwrath','poliwrathrejuv'].includes(species.id) && toID(this.set?.ability) !== 'aevianascendance') moves = moves.filter(id => !AEVIAN_ASCENDANCE_MOVE_SOURCES[id] || AEVIAN_ASCENDANCE_ORDINARY_MOVES.includes(id));
@@ -2424,11 +2407,7 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 			const extras = Object.keys(AEVIAN_ASCENDANCE_MOVE_SOURCES).filter(id => !AEVIAN_ASCENDANCE_ORDINARY_MOVES.includes(id));
 			moves = moves.filter(id => !extras.includes(id));
 			aevianAscendanceMoves.push(['header','Aevian Ascendance exclusive moves']);
-			['L','M'].forEach(kind => {
-				const group = extras.filter(id => AEVIAN_ASCENDANCE_MOVE_SOURCES[id][0][1] === kind);
-				if (group.length) aevianAscendanceMoves.push(['header', kind === 'L' ? 'Level-up & evolution' : 'TM & tutor']);
-				for (const id of group) aevianAscendanceMoves.push(['move',id as ID]);
-			});
+			for (const id of extras) aevianAscendanceMoves.push(['move', id as ID]);
 		}
 		const aevianWebMoves: SearchRow[] = [];
 		if (['galvantula','galvantularejuv'].includes(species.id) && toID(this.set?.ability) !== 'aevianweb') moves = moves.filter(id => !AEVIAN_WEB_MOVE_SOURCES[id] || AEVIAN_WEB_ORDINARY_MOVES.includes(id));
@@ -2436,11 +2415,7 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 			const extras = Object.keys(AEVIAN_WEB_MOVE_SOURCES).filter(id => !AEVIAN_WEB_ORDINARY_MOVES.includes(id));
 			moves = moves.filter(id => !extras.includes(id));
 			aevianWebMoves.push(['header','Aevian Web exclusive moves']);
-			['L','M'].forEach(kind => {
-				const group = extras.filter(id => AEVIAN_WEB_MOVE_SOURCES[id][0][1] === kind);
-				if (group.length) aevianWebMoves.push(['header', kind === 'L' ? 'Level-up & evolution' : 'TM & tutor']);
-				for (const id of group) aevianWebMoves.push(['move',id as ID]);
-			});
+			for (const id of extras) aevianWebMoves.push(['move', id as ID]);
 		}
 		const signatureMoves: SearchRow[] = [];
 		// Promote only learned Yang/Rejuvenation moves, preserving fixed Pulse pools.

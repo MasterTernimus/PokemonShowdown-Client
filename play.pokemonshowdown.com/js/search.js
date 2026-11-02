@@ -113,13 +113,23 @@
 			self.removeFilter(e);
 			if (self.$inputEl && self.$inputEl[0]) self.$inputEl[0].focus({preventScroll: true});
 		});
+		this.$el.on('pointerdown', '.sortcol, .filter, .more button', function (e) {
+			// Keep the editor from committing and replacing the header before the click.
+			e.preventDefault();
+		});
 		this.$el.on('click', '.sortcol', function (e) {
 			e.preventDefault();
 			e.stopPropagation();
 			var sortCol = e.currentTarget.dataset.sort;
+			var keepFocus = e.currentTarget === document.activeElement;
 			self.engine.toggleSort(sortCol);
 			self.sortCol = self.engine.sortCol;
 			self.find(self.engine.query);
+			if (keepFocus) {
+				self.$el.find('.sortcol').filter(function () {
+					return this.dataset.sort === sortCol;
+				}).first().trigger('focus');
+			}
 		});
 	}
 
@@ -408,13 +418,20 @@
 		return buf;
 	};
 	Search.prototype.renderMoveSortRow = function () {
-		var buf = '<li class="result"><div class="sortrow">';
-		buf += '<button class="sortcol movenamesortcol' + (this.sortCol === 'name' ? ' cur' : '') + '" data-sort="name">Name</button>';
-		buf += '<button class="sortcol movetypesortcol' + (this.sortCol === 'type' ? ' cur' : '') + '" data-sort="type">Type</button>';
-		buf += '<button class="sortcol movetypesortcol' + (this.sortCol === 'category' ? ' cur' : '') + '" data-sort="category">Cat</button>';
-		buf += '<button class="sortcol powersortcol' + (this.sortCol === 'power' ? ' cur' : '') + '" data-sort="power">Pow</button>';
-		buf += '<button class="sortcol accuracysortcol' + (this.sortCol === 'accuracy' ? ' cur' : '') + '" data-sort="accuracy">Acc</button>';
-		buf += '<button class="sortcol ppsortcol' + (this.sortCol === 'pp' ? ' cur' : '') + '" data-sort="pp">PP</button>';
+		var buf = '<li class="result move-sort-result"><div class="sortrow move-sort-row">';
+		var columns = [['name', 'Name', 'movename'], ['type', 'Type', 'movetype'], ['category', 'Cat', 'movetype'],
+			['power', 'Pow', 'power'], ['accuracy', 'Acc', 'accuracy'], ['pp', 'PP', 'pp']];
+		for (var i = 0; i < columns.length; i++) {
+			var id = columns[i][0], active = this.sortCol === id;
+			var filter = id === 'type' || id === 'category';
+			var title = filter ? 'Filter by ' + id : 'Sort by ' + ({name: 'name', power: 'power', accuracy: 'accuracy', pp: 'maximum PP'})[id];
+			var ascending = (id === 'name') !== !!(this.engine && this.engine.reverseSort);
+			if (active && !filter) title += ascending ? ' (ascending)' : ' (descending)';
+			buf += '<button type="button" class="sortcol ' + columns[i][2] + 'sortcol' + (active ? ' cur' : '') +
+				'" data-sort="' + id + '" aria-pressed="' + active + '" aria-label="' + title + '" title="' + title + '">' +
+				columns[i][1] + (active && !filter ? '<span class="sort-direction" aria-hidden="true">' + (ascending ? '↑' : '↓') + '</span>' : '') + '</button>';
+		}
+		buf += '<span class="move-effect-heading">Effect</span>';
 		buf += '</div></li>';
 		return buf;
 	};
@@ -725,9 +742,7 @@
 				name += '<small>' + move.name.substr(tagStart) + '</small>';
 			}
 		}
-		var moveSearch = this.engine && this.engine.typedSearch;
-		var sourceLabel = moveSearch && moveSearch.getExclusiveMoveSource ? moveSearch.getExclusiveMoveSource(id) : '';
-		buf += '<span class="col movenamecol">' + name + (sourceLabel ? '<small class="move-source">' + BattleLog.escapeHTML(sourceLabel) + '</small>' : '') + '</span> ';
+		buf += '<span class="col movenamecol">' + name + '</span> ';
 
 		// error
 		if (errorMessage) {
@@ -738,6 +753,7 @@
 		// type
 		buf += '<span class="col typecol">';
 		buf += Dex.getTypeIcon(move.type);
+		buf += '</span><span class="col movecategorycol">';
 		buf += Dex.getCategoryIcon(move.category);
 		buf += '</span> ';
 
@@ -777,6 +793,7 @@
 		// type
 		buf += '<span class="col typecol">';
 		buf += Dex.getTypeIcon(move.type);
+		buf += '</span><span class="col movecategorycol">';
 		buf += Dex.getCategoryIcon(move.category);
 		buf += '</span> ';
 
@@ -816,6 +833,7 @@
 		// type
 		buf += '<span class="col typecol">';
 		buf += Dex.getTypeIcon(move.type);
+		buf += '</span><span class="col movecategorycol">';
 		buf += Dex.getCategoryIcon(move.category);
 		buf += '</span> ';
 
