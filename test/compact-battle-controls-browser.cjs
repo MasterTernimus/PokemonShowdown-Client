@@ -5,12 +5,13 @@ if (!process.env.PS_SERVER_SOURCE) throw Error('PS_SERVER_SOURCE is required');
 const {Battle}=require(path.join(process.env.PS_SERVER_SOURCE,'dist/sim'));
 const output=process.env.UI_ARTIFACT_DIR || require('os').tmpdir();
 const root=path.resolve(__dirname,'../play.pokemonshowdown.com');
-const server=http.createServer((req,res)=>{let file=path.join(root,decodeURIComponent(req.url.split('?')[0]));if(!fs.existsSync(file)&&req.url.startsWith('/config/'))file=path.join(root,'..',req.url.split('?')[0]);try{let body=fs.readFileSync(file);res.setHeader('Content-Type',file.endsWith('.js')?'application/javascript':file.endsWith('.css')?'text/css':file.endsWith('.html')?'text/html':'application/octet-stream');if(file.endsWith('testclient.html'))body=body.toString().replace('<script src="js/client-battle.js">','<script src="js/battle-animations.js"></script><script src="js/client-battle.js">');res.end(body);}catch{res.statusCode=404;res.end();}});
+const server=http.createServer((req,res)=>{let file=path.join(root,decodeURIComponent(req.url.split('?')[0]));if(!fs.existsSync(file)&&req.url.startsWith('/config/'))file=path.join(root,'..',req.url.split('?')[0]);try{let body=fs.readFileSync(file);res.setHeader('Content-Type',file.endsWith('.js')?'application/javascript':file.endsWith('.css')?'text/css':file.endsWith('.html')?'text/html':'application/octet-stream');res.end(body);}catch{res.statusCode=404;res.end();}});
 (async()=>{await new Promise(r=>server.listen(0,'127.0.0.1',r));const base='http://127.0.0.1:'+server.address().port,browser=await chromium.launch({headless:true,...(process.env.BROWSER_CHANNEL ? {channel:process.env.BROWSER_CHANNEL} : {})});try{
-const page=await browser.newPage({viewport:{width:1280,height:960}});const errors=[];page.on('pageerror',e=>{if(e.message!=='Failed to load because no supported source was found.')errors.push(e.message);});
+const page=await browser.newPage({viewport:{width:1280,height:960},hasTouch:true});const errors=[];page.on('pageerror',e=>{if(e.message!=='Failed to load because no supported source was found.')errors.push(e.message);});
 await page.route('**/*',r=>{if(r.request().url().startsWith(base))return r.continue();const file=path.resolve(root,'.'+new URL(r.request().url()).pathname);if(file.startsWith(path.resolve(root)+path.sep)&&/\.(png|gif|svg|webp|jpg)$/.test(file)&&fs.existsSync(file))return r.fulfill({path:file});return r.abort();});
 await page.goto(base+'/testclient.html');await page.waitForFunction(()=>window.app&&window.Storage&&window.Dex);
 await page.evaluate(()=>{document.documentElement.classList.add('dark');Dex.resourcePrefix='/';app.send=()=>{};const add=app.addPopup;app.addPopup=function(t,d){if(d?.cantconnect)return;return add.apply(this,arguments);};while(app.popups.length)app.closePopup();Storage.whenTeamsLoaded.load();BattleSound.setMute(true);app.playNotificationSound=()=>{};});
+if (!await page.evaluate(() => typeof BattleScene === 'function')) await page.addScriptTag({url:base+'/js/battle-animations.js'});
 const team=['Togekiss','Scolipede','Lucario','Banette','Typhlosion','Kangaskhan'].map(species=>({species,ability:species==='Togekiss'?'Serene Grace':'No Ability',teraType:'Stellar',moves:species==='Togekiss'?['gildedarrow','timeblade','protect','ancientpower']:['splash']}));
 const b=new Battle({formatid:'gen9nofieldsinglesgame',challengeOptions:{gimmicks:2},p1:{name:'Preview',team},p2:{name:'Opponent',team:[{species:'Mew',ability:'No Ability',moves:['splash']}]}});b.makeChoices('team','team');
 const roomid='battle-gen9nofieldsinglesgame-1002',request=b.getRequests('move')[0];
@@ -22,10 +23,61 @@ assert.equal(await page.locator('.battle-move-grid [name=chooseMove]:visible').c
 const boxes=await page.locator('.battle-move-grid [name=chooseMove]:visible').evaluateAll(es=>es.map(e=>({x:e.getBoundingClientRect().x,y:e.getBoundingClientRect().y,w:e.clientWidth,sw:e.scrollWidth})));
 assert(boxes.every(b=>b.sw<=b.w+1),'move overflow '+width);assert.equal(new Set(boxes.map(b=>b.y)).size,width===390?2:1);
 const switches=await page.locator('.switchcontrols [name=chooseSwitch]').evaluateAll(es=>es.map(e=>({w:e.clientWidth,sw:e.scrollWidth})));assert(switches.every(b=>b.sw<=b.w+1),'switch overflow');
+if (width === 390) {
+ const controls = page.locator('.battle-controls:visible');
+ assert.equal(await controls.locator('[name=chooseSwitch]:visible').count(), 0);
+ await controls.getByRole('button', {name:'Switch', exact:true}).tap();
+ assert.equal(await controls.locator('[name=chooseSwitch]:visible').count(), 5);
+ await controls.screenshot({path:output+'/mobile-battle-switch.png'});
+ await controls.getByRole('button', {name:'Attack', exact:true}).tap();
+ assert.equal(await controls.locator('[name=chooseMove]:visible').count(), 4);
+}
 await page.locator('.battle-controls').screenshot({path:output+'/compact-battle-controls-'+width+'.png'});
 console.log('PASS battle controls',width);
 }
 await page.setViewportSize({width:1280,height:960});
+// Real requests exercise team ordering and both kinds of switching on a small touch screen.
+await page.setViewportSize({width:320,height:568});
+const controls = page.locator('#room-' + roomid + ' .battle-controls');
+const receive = req => page.evaluate(({id,req}) => {const room=app.rooms[id];room.receiveRequest(req);room.updateControls();}, {id:roomid,req});
+await page.evaluate(id => {const room=app.rooms[id];window.decisions=[];room.sendDecision=value=>window.decisions.push(value);}, roomid);
+await receive(b.getRequests('teampreview')[0]);
+await controls.locator('[name=chooseTeamPreview][value="3"]').tap();
+assert.match(await page.evaluate(()=>window.decisions.at(-1)), /^team 4/);
+await receive(request);
+await controls.getByRole('button',{name:'Switch',exact:true}).tap();
+const gestures = await page.context().newCDPSession(page);
+const bench = controls.locator('[name=chooseSwitch][value="3"]');
+await bench.scrollIntoViewIfNeeded();
+const box = await bench.boundingBox();
+const point = {x:box.x + box.width / 2, y:box.y + box.height / 2};
+const touch = (type, points) => gestures.send('Input.dispatchTouchEvent', {type, touchPoints:points});
+const before = await page.evaluate(()=>window.decisions.length);
+await touch('touchStart',[point]);
+await touch('touchMove',[{x:point.x,y:point.y - 50}]);
+await touch('touchEnd',[]);
+assert.equal(await page.evaluate(()=>window.decisions.length),before,'scroll submitted a switch');
+await bench.scrollIntoViewIfNeeded();
+const held = await bench.boundingBox();
+await touch('touchStart',[{x:held.x + held.width / 2,y:held.y + held.height / 2}]);
+await page.waitForFunction(()=>BattleTooltips.isLocked);
+await touch('touchEnd',[]);
+assert.equal(await page.evaluate(()=>window.decisions.length),before,'inspecting a teammate submitted a switch');
+await controls.locator('[name=chooseSwitch][value="5"]').tap();
+assert.deepEqual(await page.evaluate(()=>window.decisions.at(-1)), ['switch 6']);
+b.p1.active[0].switchFlag=true;
+await receive(b.getRequests('switch')[0]);
+assert.equal(await controls.locator('[name=selectSwitch]:visible').count(),0);
+await controls.locator('[name=chooseSwitch][value="2"]').tap();
+assert.deepEqual(await page.evaluate(()=>window.decisions.at(-1)), ['switch 3']);
+b.p1.active[0].switchFlag=false;
+await page.setViewportSize({width:700,height:360});
+await receive(request);
+await controls.getByRole('button',{name:'Switch',exact:true}).tap();
+await controls.locator('[name=chooseSwitch][value="5"]').tap();
+assert.deepEqual(await page.evaluate(()=>window.decisions.at(-1)), ['switch 6']);
+await page.setViewportSize({width:1280,height:960});
+console.log('PASS touch team preview, voluntary switch, and forced replacement');
 // Exercise optional move menus with the real client request renderer.
 for(const kind of ['z','max']){
 const variant=JSON.parse(JSON.stringify(request));if(kind==='z'){variant.active[0].canZMove=variant.active[0].moves.map(m=>({move:m.move,target:m.target}));delete variant.active[0].canDynamax;}else{delete variant.active[0].canZMove;variant.active[0].canDynamax=true;variant.active[0].maxMoves={maxMoves:variant.active[0].moves.map(m=>({move:'Max Strike',target:'normal'}))};}
@@ -35,7 +87,8 @@ await page.evaluate(({roomid,request})=>app.rooms[roomid].receiveRequest(request
 await page.setViewportSize({width:1280,height:540});await page.evaluate(id=>app.rooms[id].updateLayout(),roomid);await page.locator('[name=selectSwitch]').click();assert.equal(await page.locator('.switchcontrols [name=chooseSwitch]:visible').count(),5);await page.locator('[name=selectMove]').click();assert.equal(await page.locator('.battle-move-grid [name=chooseMove]:visible').count(),4);console.log('PASS Z/Max toggles and short-window Attack/Switch controls');
 await page.setViewportSize({width:1280,height:960});
 const d=new Battle({formatid:'gen9nofielddoublesbattle',p1:{name:'Preview',team:[{species:'Glimmora',ability:'No Ability',moves:['mortalspin']},{species:'Chansey',ability:'No Ability',moves:['splash']}]},p2:{name:'Opponent',team:[{species:'Chansey',ability:'No Ability',moves:['splash']},{species:'Blissey',ability:'No Ability',moves:['splash']}]}});d.makeChoices('team 12','team 12');
-const dr='battle-gen9doublescustomgame-1003';await page.evaluate(({id,log,req})=>{app.receive('>'+id+'\n|init|battle\n'+log);app.focusRoom(id);const r=app.rooms[id];r.battle.seekTurn(Infinity);r.receiveRequest(req);},{id:dr,log:d.log.join('\n'),req:d.getRequests('move')[0]});await page.locator('#room-'+dr+' [name=chooseMove]').first().click();assert.equal(await page.locator('#room-'+dr+' [name=chooseMoveTarget][value="1"]').count(),1);assert.equal(await page.locator('#room-'+dr+' [name=chooseMoveTarget][value="2"]').count(),1);await page.locator('#room-'+dr+' [name=chooseMoveTarget][value="2"]').click();assert.equal(await page.evaluate(id=>app.rooms[id].choice.choices[0],dr),'move 1 2');d.destroy();console.log('PASS Mortal Spin selects one opponent in doubles');
+await page.setViewportSize({width:390,height:680});
+const dr='battle-gen9doublescustomgame-1003';await page.evaluate(({id,log,req})=>{app.receive('>'+id+'\n|init|battle\n'+log);app.focusRoom(id);const r=app.rooms[id];r.battle.seekTurn(Infinity);r.receiveRequest(req);},{id:dr,log:d.log.join('\n'),req:d.getRequests('move')[0]});await page.locator('#room-'+dr+' [name=chooseMove]').first().tap();await page.locator('#room-'+dr+' .battle-controls').screenshot({path:output+'/mobile-battle-targets.png'});assert.equal(await page.locator('#room-'+dr+' [name=chooseMoveTarget][value="1"]').count(),1);assert.equal(await page.locator('#room-'+dr+' [name=chooseMoveTarget][value="2"]').count(),1);await page.locator('#room-'+dr+' [name=chooseMoveTarget][value="2"]').tap();assert.equal(await page.evaluate(id=>app.rooms[id].choice.choices[0],dr),'move 1 2');d.destroy();console.log('PASS Mortal Spin selects one opponent in doubles');
 const cocoonBattle=new Battle({formatid:'gen9nofieldsinglesgame',p1:{name:'Preview',team:[{species:'Ariados',ability:'Insomnia',item:'Aridiate',moves:['splash']}]},p2:{name:'Opponent',team:[{species:'Mew',ability:'No Ability',moves:['splash','tackle']}]}});
 cocoonBattle.makeChoices('team 1','team 1');cocoonBattle.makeChoices('move splash mega','move splash');
 const cocoonRoom='battle-gen9nofieldsinglesgame-1004';
@@ -53,7 +106,7 @@ assert.equal(await page.evaluate(()=>window.passiveLookups),0);
 const badge=page.locator('.pokemon-passive-badge').first();await badge.hover();assert.equal(await page.locator('.pokemon-passive-tooltip:visible').count(),0);await badge.click();assert.equal(await page.locator('.pokemon-passive-tooltip:visible').count(),1);assert.equal(await page.evaluate(()=>app.rooms.teambuilder.curSet.species),'');
 await page.mouse.wheel(0,100);await page.waitForFunction(()=>!document.querySelector('.pokemon-passive-badge[aria-expanded="true"]'));
 await badge.focus();await page.keyboard.press('Enter');assert.equal(await page.locator('.pokemon-passive-tooltip:visible').count(),1);await page.keyboard.press('Escape');assert.equal(await page.locator('.pokemon-passive-tooltip:visible').count(),0);
-for(const width of [1280,390]){await page.setViewportSize({width,height:960});await page.locator('.utilichart').last().screenshot({path:output+'/compact-pokemon-list-'+width+'.png'});}
+for(const width of [1280,390]){await page.setViewportSize({width,height:960});if(width===390)await page.evaluate(()=>app.rooms.teambuilder.mobileBuilderView(true));await page.locator('.teambuilder-results:visible .utilichart:visible').last().screenshot({path:output+'/compact-pokemon-list-'+width+'.png'});}
 const lifecycle = await page.evaluate(() => {
  const r=app.rooms.teambuilder, el=r.el;
  const count=()=>($._data(el,'events').pointerdown||[]).filter(h=>h.namespace==='passivehelp').length;

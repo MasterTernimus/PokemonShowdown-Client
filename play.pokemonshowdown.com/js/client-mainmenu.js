@@ -1720,6 +1720,19 @@
 				this.refreshCalcMoves();
 			}
 		},
+		damageSummary: function (result, rangeOverride) {
+			var measured = typeof result.damagingSamples === 'number';
+			var range = rangeOverride || (measured ? result.moveRange : result);
+			function format(low, high, digits) {
+				var a = low.toFixed(digits), b = high.toFixed(digits);
+				return a === b ? a : a + '–' + b;
+			}
+			return {
+				label: measured ? 'Damage when the move dealt HP damage' : 'HP removed across all samples',
+				percent: range ? format(range.minPercent, range.maxPercent, 1) + '%' : 'No direct HP damage',
+				hp: range && typeof range.min === 'number' ? format(range.min, range.max, 0) + ' HP' : '',
+			};
+		},
 		koVerdict: function (data, index) {
 			// The native endpoint samples complete actions, including misses and critical hits.
 			// A sampled minimum/maximum cannot prove a guaranteed OHKO or exact probability.
@@ -1733,8 +1746,8 @@
 		updateCalcStatSummary: function ($actor) {
 			var spec = this.readActor(Number($actor.attr('data-slot')));
 			var evTotal = Object.keys(spec.evs).reduce(function (total, stat) { return total + spec.evs[stat]; }, 0);
-			var stages = Object.keys(spec.boosts).filter(function (stat) { return spec.boosts[stat] !== 0; }).length;
-			$actor.find('.calc-advanced > summary').text('Stats and stages' + (evTotal ? ' | ' + evTotal + ' EVs' : '') + (stages ? ' | ' + stages + ' changed stages' : ''));
+			var stages = Object.keys(spec.boosts).length;
+			$actor.find('.calc-advanced > summary').text('Stats and stages' + (evTotal ? ' | ' + evTotal + ' EVs' : '') + (stages ? ' | ' + stages + ' stage override' + (stages === 1 ? '' : 's') : ''));
 		},
 		refreshActors: function () {
 			var self = this;
@@ -1870,7 +1883,7 @@
 				buf += '<tr><th>' + stat.toUpperCase() + '</th>';
 				['evs', 'ivs', 'boosts'].forEach(function (kind) {
 					var applicable = kind === 'boosts' ? stat !== 'hp' : stat !== 'accuracy' && stat !== 'evasion';
-					buf += '<td>' + (applicable ? '<input aria-label="' + label + ' ' + stat + ' ' + kind + '" type="number" min="' + (kind === 'boosts' ? -6 : 0) + '" max="' + (kind === 'boosts' ? 6 : kind === 'ivs' ? 31 : 252) + '" name="' + kind + '-' + stat + '" value="' + (kind === 'ivs' ? 31 : 0) + '" />' : '') + '</td>';
+					buf += '<td>' + (applicable ? '<input aria-label="' + label + ' ' + stat + ' ' + kind + '" type="number" min="' + (kind === 'boosts' ? -6 : 0) + '" max="' + (kind === 'boosts' ? 6 : kind === 'ivs' ? 31 : 252) + '" name="' + kind + '-' + stat + '" value="' + (kind === 'ivs' ? 31 : kind === 'boosts' ? '' : 0) + '"' + (kind === 'boosts' ? ' placeholder="Auto" title="Use the stage after entry effects, or enter an override"' : '') + ' />' : '') + '</td>';
 				});
 				buf += '</tr>';
 			});
@@ -1930,7 +1943,7 @@
 			var result = {evs: {}, ivs: {}, boosts: {}};
 			$actor.find('input,select').each(function () {
 				var key = this.name; if (!key) return;
-				if (key.indexOf('-') >= 0) { var parts = key.split('-'); result[parts[0]][parts[1]] = Number(this.value); } else if (key === 'level' || key === 'hpPercent' || key === 'rageFistBonus') result[key] = Number(this.value);
+				if (key.indexOf('-') >= 0) { var parts = key.split('-'); if (parts[0] !== 'boosts' || this.value !== '') result[parts[0]][parts[1]] = Number(this.value); } else if (key === 'level' || key === 'hpPercent' || key === 'rageFistBonus') result[key] = Number(this.value);
 				else if (["threadShelterGuard", "silentFlightSpent", "buriedTrioSpent", "elasticBellySpent", "feedbackMarked"].includes(key)) result[key] = this.value === 'true';
 				else if (key === 'moves') { if (this.value.trim()) result.moves = this.value.split(',').map(function (m) { return m.trim(); }); } else result[key] = this.value;
 			});
@@ -1970,7 +1983,7 @@
 			var $actor = this.$('.calc-actor[data-slot=' + index + ']');
 			$actor.find('input,select').each(function () {
 				var key = this.name; if (!key) return;
-				if (key.indexOf('-') >= 0) { var parts = key.split('-'); this.value = actor[parts[0]] && actor[parts[0]][parts[1]] !== undefined ? actor[parts[0]][parts[1]] : parts[0] === 'ivs' ? 31 : 0; } else if (key === 'moves') this.value = (actor.moves || []).join(', ');
+				if (key.indexOf('-') >= 0) { var parts = key.split('-'); this.value = actor[parts[0]] && actor[parts[0]][parts[1]] !== undefined ? actor[parts[0]][parts[1]] : parts[0] === 'ivs' ? 31 : parts[0] === 'boosts' ? '' : 0; } else if (key === 'moves') this.value = (actor.moves || []).join(', ');
 				else this.value = actor[key] === undefined ? key === 'level' || key === 'hpPercent' ? 100 : key === 'rageFistBonus' ? 0 : ['threadShelterGuard', 'silentFlightSpent', 'buriedTrioSpent', 'elasticBellySpent', 'feedbackMarked'].includes(key) ? 'false' : key === 'nature' ? 'Serious' : key === 'teraType' ? 'Stellar' : '' : actor[key];
 			});
 			this.scenarioEdited();
@@ -2049,7 +2062,20 @@
 			this.$('.calc-status').text(data.samples + ' samples · Seed ' + data.seed + '. Results may vary.');
 			this.$('.calc-version').text('Engine build ' + data.version.engine + ' — ' + data.version.builtAt);
 			var main = data.results[1];
-			var html = '<div class="calc-result-card"><span class="calc-eyebrow">DEFENDER · SAMPLED DAMAGE</span><div class="calc-result-head"><h3>' + this.escape(data.move) + '</h3><strong>' + main.minPercent.toFixed(1) + '–' + main.maxPercent.toFixed(1) + '%</strong></div><p>' + main.min + '–' + main.max + ' HP removed</p><p class="calc-ko-verdict">' + this.escape(this.koVerdict(data, 1)) + '</p><div class="calc-damage-bar" role="img" aria-label="Observed damage ' + main.minPercent.toFixed(1) + ' to ' + main.maxPercent.toFixed(1) + ' percent of maximum HP"><span style="width:' + Math.min(100, main.maxPercent) + '%"></span><b style="width:' + Math.min(100, main.minPercent) + '%"></b></div><small>Percent of max HP lost in these samples.</small></div><h3>' + this.escape(data.move) + ' — observed damage</h3><div style="overflow:auto"><table class="calc-result-table"><tr><th>Slot</th><th>HP removed</th><th>% max HP</th><th>Net HP loss</th><th>Sample KOs</th></tr>';
+			var summary = this.damageSummary(main, main.normalRange || main.criticalRange);
+			var rangeLabel = main.normalRange ? 'Non-critical damage' : main.criticalRange ? 'Damage with a critical hit' : summary.label;
+			var html = '<div class="calc-result-card"><span class="calc-eyebrow">DEFENDER · SAMPLED</span><div class="calc-result-head"><h3>' + this.escape(data.move) + '</h3></div>' +
+				'<p class="calc-range-label">' + rangeLabel + '</p><div class="calc-roll-range"><strong>' + summary.percent + '</strong> ' + summary.hp + '</div>';
+			if (main.normalRange && main.criticalRange) {
+				var critical = this.damageSummary(main, main.criticalRange);
+				html += '<p>With a critical hit: <b>' + critical.percent + '</b> (' + critical.hp + ')</p>';
+			}
+			html += '<p class="calc-ko-verdict">' + this.escape(this.koVerdict(data, 1)) + '</p>';
+			if (typeof main.damagingSamples === 'number') {
+				html += '<p>No direct HP damage in ' + (data.samples - main.damagingSamples) + ' of ' + data.samples + ' uses.</p>';
+				if (main.moveRange) html += '<small>Percent of maximum HP. A KO can roll more damage than the target has left.</small>';
+			}
+			html += '</div><h3>HP changes across all samples</h3><div style="overflow:auto"><table class="calc-result-table"><tr><th>Slot</th><th>HP removed</th><th>% max HP</th><th>Net HP loss</th><th>Sample KOs</th></tr>';
 			data.results.forEach(function (r) { html += '<tr><th>' + self.escape(r.label) + '</th><td>' + r.min + '–' + r.max + '</td><td>' + r.minPercent.toFixed(1) + '–' + r.maxPercent.toFixed(1) + '%</td><td>' + r.minNetLoss + '–' + r.maxNetLoss + '</td><td>' + r.kos + '/' + data.samples + ' (' + (100 * r.kos / data.samples).toFixed(1) + '%)</td></tr>'; });
 			html += '</table></div><p>Samples do not guarantee a KO.</p><details><summary>Battle details</summary><pre style="white-space:pre-wrap">' + this.escape(JSON.stringify(data.resolved, null, 2)) + '\n' + this.escape(data.exampleLog.join('\n')) + '</pre></details>';
 			this.$('.calc-results').html(html);
@@ -2239,7 +2265,9 @@
 				this.comparisonRequest = null;
 				var cell = this.$('.calc-actor[data-slot=' + task.side + '] [data-result=' + task.index + ']');
 				if (data.error) {cell.text(data.error).addClass('calc-error');} else {
-					var r = data.results[1]; cell.removeClass('calc-error').text(r.minPercent.toFixed(1) + '–' + r.maxPercent.toFixed(1) + '% · ' + this.koVerdict(data, 1));
+					var r = data.results[1], summary = this.damageSummary(r, r.normalRange || r.criticalRange);
+					var qualifier = r.normalRange ? ' non-critical' : r.criticalRange ? ' with critical hit' : '';
+					cell.removeClass('calc-error').text(summary.percent + qualifier + ' · ' + this.koVerdict(data, 1));
 					cell.attr('title', 'One sampled move execution at configured current HP, including misses, critical hits, multi-hit and survival effects. Not exact KO odds or a second-turn prediction.' + (data.powerDistribution ? ' ' + data.powerDistribution.map(function (branch) {return branch.power + ' BP: ' + Math.round(branch.probability * 100) + '%';}).join('; ') + '; sampled range may omit a branch.' : ''));
 					this.comparisonResults[key] = data;
 					this.pendingScenario = {json:JSON.stringify(this.scenario()), revision:this.scenarioRevision}; receive.call(this, data);

@@ -701,7 +701,7 @@
 
 			// Target selector
 			if (type === 'movetarget') {
-				requestTitle += 'At who? ';
+				requestTitle += 'Choose a target for <strong>' + BattleLog.escapeHTML(switchables[pos].name) + '</strong>. ';
 
 				var activePos = this.battle.mySide.n > 1 ? pos + this.battle.pokemonControlled : pos;
 
@@ -757,8 +757,8 @@
 				this.setControlsHTML(
 					'<div class="controls">' +
 					'<div class="whatdo">' + requestTitle + this.getTimerHTML() + '</div>' +
-					'<div class="switchmenu" style="display:block">' + targetMenus[0] + '<div style="clear:both"></div> </div>' +
-					'<div class="switchmenu" style="display:block">' + targetMenus[1] + '</div>' +
+					'<div class="switchmenu battle-target-row"><span class="battle-target-label">Opposing side</span>' + targetMenus[0] + '</div>' +
+					'<div class="switchmenu battle-target-row"><span class="battle-target-label">' + (this.battle.gameType === 'freeforall' ? 'Near side' : 'Your side') + '</span>' + targetMenus[1] + '</div>' +
 					'</div>'
 				);
 			} else {
@@ -963,7 +963,7 @@
 			if (type === 'switchposition') {
 				// TODO? hpbar
 				requestTitle += "Which Pokémon will it switch in for?";
-				var controls = '<div class="switchmenu" style="display:block">';
+				var controls = '<div class="switchmenu battle-position-row">';
 				for (var i = 0; i < this.battle.pokemonControlled; i++) {
 					var pokemon = this.battle.myPokemon[i];
 					var tooltipArgs = 'switchpokemon|' + i;
@@ -1032,9 +1032,9 @@
 
 			var requestTitle = "";
 			if (this.choice.done) {
-				requestTitle = '<button name="clearChoice">Back</button> ' + "What about the rest of your team?";
+				requestTitle = '<button name="clearChoice">Back</button> Choose Pokémon for slot ' + (this.choice.done + 1) + '.';
 			} else {
-				requestTitle = "How will you start the battle?";
+				requestTitle = "Choose your lead Pokémon.";
 			}
 
 			if (this.choice.orderForDisguise) requestTitle += ' <small>Auto disguise uses your last eligible teammate on first entry.</small>';

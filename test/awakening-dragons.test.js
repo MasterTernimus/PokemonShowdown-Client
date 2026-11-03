@@ -17,8 +17,8 @@ describe('Approved Awakening dragon client data', () => {
 	});
 	it('shows Exalted Aether and preserves Hydreigon’s existing ability', () => {
 		assert.equal(Dex.species.get('Salamence-Mega').abilities[0], 'Exalted Aether');
-		assert(/12\.5%/.test(Dex.abilities.get('exaltedaether').desc));
-		assert(/25%/.test(Dex.abilities.get('exaltedaether').desc));
+		assert(/heals 25%/.test(Dex.abilities.get('exaltedaether').desc));
+		assert(/second deals 40%/.test(Dex.abilities.get('exaltedaether').desc));
 		assert(/Defensive screens apply normally/.test(Dex.abilities.get('exaltedaether').desc));
 		assert.equal(Dex.species.get('Hydreigon').abilities.H, 'False Liberation');
 		assert.equal(Dex.species.get('Hydreigon-Mega').abilities[0], 'Expiration');

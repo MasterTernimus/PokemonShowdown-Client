@@ -5584,7 +5584,13 @@ function renderStarterPassives(species) {
 		var input = this.curChartName && this.$('input[name=' + this.curChartName + ']')[0];
 		var editor = this.$('.teamchartbox.individual')[0] || input;
 		if (!editor) return;
-		if (input) input.focus({preventScroll: true});
+		if (editor !== input && this.mobileReturning && window.matchMedia && window.matchMedia('(max-width:639px)').matches) {
+			// Returning to the card dismisses the keyboard and lets the same field receive focus on the next tap.
+			editor.tabIndex = -1;
+			editor.focus({preventScroll: true});
+		} else if (input) {
+			input.focus({preventScroll: true});
+		}
 		var bounds = editor.getBoundingClientRect();
 		var viewport = this.el.getBoundingClientRect();
 		// An explicit Back action reveals an off-screen field using the smallest scroll.
@@ -5966,7 +5972,18 @@ function renderStarterPassives(species) {
 	var back = p.returnToPokemonEditor;
 	p.returnToPokemonEditor = function () {
 		this.mobileReturning = true;
-		try {var wasOpen = this.$('.mobile-picker-open').length; if (wasOpen && this.curSet) {var field = this.curChartName, value = field === 'pokemon' ? this.curSet.species : /^move[1-4]$/.test(field) ? (this.curSet.moves || [])[Number(field.slice(-1)) - 1] : this.curSet[field]; if (field === 'pokemon' || field === 'item' || field === 'ability' || /^move[1-4]$/.test(field)) this.$('input[name=' + field + ']').val(typeof value === 'string' ? value : '');} this.mobileBuilderView(false); var result = back.apply(this, arguments); if (wasOpen && this.curChartName) {var opener = this.$('[name=' + this.curChartName + ']')[0]; if (opener) opener.focus({preventScroll: true});} return result;} finally {this.mobileReturning = false;}
+		try {
+			var field = this.curChartName;
+			if (this.$('.mobile-picker-open').length && this.curSet && /^(pokemon|item|ability|move[1-4])$/.test(field)) {
+				var value = field === 'pokemon' ? this.curSet.species : this.curSet[field];
+				if (field.startsWith('move')) value = (this.curSet.moves || [])[Number(field.slice(-1)) - 1];
+				this.$('input[name=' + field + ']').val(value || '');
+			}
+			this.mobileBuilderView(false);
+			return back.apply(this, arguments);
+		} finally {
+			this.mobileReturning = false;
+		}
 	};
 	p.mobileBuilderEscape = function (event) {
 		if (!(window.matchMedia && window.matchMedia('(max-width:639px)').matches)) return;
@@ -6003,7 +6020,13 @@ function renderStarterPassives(species) {
 		});
 	};
 	p.updateTeamView = function () {var result = original.apply(this, arguments); this.mobileTeamOverview(); return result;};
-	if (window.addEventListener) window.addEventListener('resize', function () {var room = app.rooms.teambuilder; if (room) room.mobileTeamOverview();});
+	var phone = window.matchMedia && window.matchMedia('(max-width:639px)');
+	function onWidthChange(event) {
+		var room = app.rooms.teambuilder;
+		if (event.matches && room) room.mobileTeamOverview();
+	}
+	if (phone && phone.addEventListener) phone.addEventListener('change', onWidthChange);
+	else if (phone && phone.addListener) phone.addListener(onWidthChange);
 })();
 
 // Local profile membership batches: previews never edit teams or saved sets.

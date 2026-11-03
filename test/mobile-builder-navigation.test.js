@@ -3,10 +3,10 @@ const assert = require('assert').strict;
 const fs = require('fs');
 const ts = require('typescript');
 const tree = ts.createSourceFile('builder.js', fs.readFileSync('play.pokemonshowdown.com/js/client-teambuilder.js', 'utf8'), ts.ScriptTarget.Latest, true);
-function method(name) {
+function method(name, owner = 'p') {
  let found;
  function visit(node) {
-  if (ts.isBinaryExpression(node) && node.left.getText() === 'p.' + name && ts.isFunctionExpression(node.right)) found = node.right.getText();
+  if (ts.isBinaryExpression(node) && node.left.getText() === owner + '.' + name && ts.isFunctionExpression(node.right)) found = node.right.getText();
   ts.forEachChild(node, visit);
  }
  visit(tree); assert(found, name); return found;
@@ -15,6 +15,20 @@ function escapeHandler(app, phone = true) {
  return new Function('app', 'window', 'return ' + method('mobileBuilderEscape'))(app, {matchMedia:() => ({matches:phone})});
 }
 describe('Phone teambuilder navigation', () => {
+ it('focuses the card on phone return so the same field can receive focus on the next tap', () => {
+  for (const phone of [true, false]) {
+   let focused;
+   const bounds = () => ({top: 0, bottom: 200});
+   const input = {focus() {focused = input;}};
+   const card = {focus() {focused = card;}, getBoundingClientRect: bounds};
+   const room = {mobileReturning: true, curChartName: 'move1', el: card,
+    $(selector) {return [selector === '.teamchartbox.individual' ? card : input];}};
+   const back = new Function('window', 'return ' + method('returnToPokemonEditor', 'proto'))({matchMedia: () => ({matches: phone})});
+   back.call(room);
+   assert.equal(focused, phone ? card : input);
+   if (phone) assert.equal(card.tabIndex, -1);
+  }
+ });
  it('leaves desktop view and selection behavior unchanged', () => {
   const desktop = {matchMedia:() => ({matches:false})};
   const open = new Function('window', 'return ' + method('mobileBuilderView'))(desktop);
@@ -29,7 +43,7 @@ describe('Phone teambuilder navigation', () => {
    const input = {focus() {focused=true;}};
    const room = {curChartName:field,curSet:set,$(selector) {if (selector === '.mobile-picker-open') return {length:1};return {0:input,val(v) {value=v;}};},mobileBuilderView(open) {assert.equal(open,false);}};
    const close = new Function('back', 'return ' + method('returnToPokemonEditor'))(function () {assert.equal(this.mobileReturning,true);return 4;});
-   assert.equal(close.call(room),4); assert.equal(value,expected); assert(focused); assert.equal(room.mobileReturning,false);
+   assert.equal(close.call(room),4); assert.equal(value,expected); assert.equal(focused,false); assert.equal(room.mobileReturning,false);
   });
  }
  it('releases the return guard if the existing return action throws', () => {

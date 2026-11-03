@@ -123,22 +123,22 @@
 						name = '(empty room)';
 					}
 				}
-				return buf + ' draggable="true"><i class="text">' + BattleLog.escapeFormat(formatid) + '</i><span>' + name + '</span></a><button class="closebutton" name="closeRoom" value="' + id + '" aria-label="Close"><i class="fa fa-times-circle"></i></a></li>';
+				return buf + ' draggable="true"><i class="text">' + BattleLog.escapeFormat(formatid) + '</i><span>' + name + '</span></a><button class="closebutton" name="closeRoom" value="' + id + '" aria-label="Close"><i class="fa fa-times-circle"></i></button></li>';
 			case 'chat':
-				return buf + ' draggable="true"><i class="fa fa-comment-o"></i> <span>' + (BattleLog.escapeHTML(room.title) || (id === 'lobby' ? 'Lobby' : id)) + '</span></a><button class="closebutton" name="closeRoom" value="' + id + '" aria-label="Close"><i class="fa fa-times-circle"></i></a></li>';
+				return buf + ' draggable="true"><i class="fa fa-comment-o"></i> <span>' + (BattleLog.escapeHTML(room.title) || (id === 'lobby' ? 'Lobby' : id)) + '</span></a><button class="closebutton" name="closeRoom" value="' + id + '" aria-label="Close"><i class="fa fa-times-circle"></i></button></li>';
 			case 'html':
 			default:
 				if (room.title && room.title.charAt(0) === '[') {
 					var closeBracketIndex = room.title.indexOf(']');
 					if (closeBracketIndex > 0) {
-						return buf + ' draggable="true"><i class="text">' + BattleLog.escapeFormat(room.title.slice(1, closeBracketIndex)) + '</i><span>' + BattleLog.escapeHTML(room.title.slice(closeBracketIndex + 1)) + '</span></a><button class="closebutton" name="closeRoom" value="' + id + '" aria-label="Close"><i class="fa fa-times-circle"></i></a></li>';
+						return buf + ' draggable="true"><i class="text">' + BattleLog.escapeFormat(room.title.slice(1, closeBracketIndex)) + '</i><span>' + BattleLog.escapeHTML(room.title.slice(closeBracketIndex + 1)) + '</span></a><button class="closebutton" name="closeRoom" value="' + id + '" aria-label="Close"><i class="fa fa-times-circle"></i></button></li>';
 					}
 				}
-				return buf + ' draggable="true"><i class="fa fa-file-text-o"></i> <span>' + (BattleLog.escapeHTML(room.title) || id) + '</span></a><button class="closebutton" name="closeRoom" value="' + id + '" aria-label="Close"><i class="fa fa-times-circle"></i></a></li>';
+				return buf + ' draggable="true"><i class="fa fa-file-text-o"></i> <span>' + (BattleLog.escapeHTML(room.title) || id) + '</span></a><button class="closebutton" name="closeRoom" value="' + id + '" aria-label="Close"><i class="fa fa-times-circle"></i></button></li>';
 			}
 		},
 		updateTabbar: function () {
-			if ($(window).width() < 420) return this.updateTabbarMini();
+			if ($(window).width() < 640) return this.updateTabbarMini();
 			this.$('.logo').show();
 			this.$('.maintabbar').removeClass('minitabbar');
 
@@ -199,7 +199,7 @@
 				overflow = offset.left + width + 166 - $(window).width();
 			}
 			if (offset.top >= 37 || overflow > 0) {
-				this.$tabbar.append('<div class="overflow" aria-hidden="true"><button name="tablist" class="button" aria-label="More"><i class="fa fa-caret-down"></i></button></div>');
+				this.$tabbar.append('<div class="overflow"><button name="tablist" class="button" aria-label="Show rooms"><i class="fa fa-caret-down"></i></button></div>');
 			}
 
 			if (app.rooms['']) app.rooms[''].updateRightMenu();
@@ -211,7 +211,7 @@
 			for (var i in app.rooms) {
 				if (app.rooms[i] !== app.curRoom && app.rooms[i].notificationClass === ' notifying') notificationClass = ' notifying';
 			}
-			var buf = '<ul><li><a class="button minilogo' + notificationClass + '" href="' + app.root + '"><img src="' + Dex.resourcePrefix + 'favicon-256.png" width="32" height="32" alt="Pok&eacute;mon Showdown! (beta)" /><i class="fa fa-caret-down" style="display:inline-block"></i></a></li></ul>';
+			var buf = '<ul><li><button name="tablist" class="button room-switcher' + notificationClass + '">Rooms <i class="fa fa-caret-down" aria-hidden="true"></i></button></li></ul>';
 
 			buf += '<ul>' + this.renderRoomTab(app.curRoom) + '</ul>';
 
@@ -235,10 +235,6 @@
 			if (e.cmdKey || e.metaKey || e.ctrlKey) return;
 			e.preventDefault();
 			var $target = $(e.currentTarget);
-			if ($target.hasClass('minilogo')) {
-				app.addPopup(TabListPopup, {sourceEl: e.currentTarget});
-				return;
-			}
 			var id = $target.attr('href');
 			if (id.substr(0, app.root.length) === app.root) {
 				id = id.substr(app.root.length);
@@ -840,10 +836,13 @@
 			var curId = (app.curRoom ? app.curRoom.id : '');
 			var curSideId = (app.curSideRoom ? app.curSideRoom.id : '');
 
-			var buf = '<ul>' + this.renderRooms([app.rooms[''], app.rooms['teambuilder'], app.rooms['ladder']]) + '</ul>';
-			if (app.roomList.length) buf += this.renderRooms(app.roomList);
+			var buf = '<ul>' + this.renderRooms([app.rooms['']]);
+			buf += app.rooms.teambuilder ? this.renderRooms([app.rooms.teambuilder]) :
+				'<li><a class="button" href="' + app.root + 'teambuilder"><i class="fa fa-pencil-square-o"></i> Teambuilder</a></li>';
+			buf += this.renderRooms([app.rooms.ladder]) + '</ul>';
+			if (app.roomList.length) buf += '<ul>' + this.renderRooms(app.roomList) + '</ul>';
 			var sideBuf = this.renderRooms(app.sideRoomList);
-			sideBuf += '<li><a class="button' + (curId === 'rooms' || curSideId === 'rooms' ? ' cur' : '') + '" href="' + app.root + 'rooms"><i class="fa fa-plus"></i> <span>&nbsp;</span></a></li>';
+			sideBuf += '<li><a class="button' + (curId === 'rooms' || curSideId === 'rooms' ? ' cur' : '') + '" href="' + app.root + 'rooms"><i class="fa fa-plus"></i> <span>Find rooms</span></a></li>';
 			if (sideBuf) {
 				buf += '<ul>' + sideBuf + '</ul>';
 			}
@@ -869,7 +868,8 @@
 				this.initialize();
 			} else {
 				this.close();
-				app.focusRoom(id);
+				if (app.rooms[id]) app.focusRoom(id);
+				else app.joinRoom(id);
 			}
 		}
 	});

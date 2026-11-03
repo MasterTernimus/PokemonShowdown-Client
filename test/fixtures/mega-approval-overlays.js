@@ -94,7 +94,7 @@ Object.assign(before,finish.passives);
 const priorFinishEffects=exports.effects,priorFinishDescription=exports.description;
 exports.effects=(id,original)=>finish.effects[id]||priorFinishEffects(id,original);
 exports.description=(id,key,text)=>finish.descriptions[id]?.[key]??priorFinishDescription(id,key,text);
-exports.abilities=(id,fallback)=>({...fallback,...finish.slots[id]});
+exports.abilities=(id,fallback)=>({...fallback,...require('./shortlist-approved.json').slots[id],...finish.slots[id]});
 
 const beforeConciseDescription=exports.description;exports.description=(id,key,fallback)=>require('./concise-approved-descriptions.json')[global.Dex?.abilities.get(id).id || id]?.[key]??beforeConciseDescription(id,key,fallback);
 const beforeNewCorrosion=exports.effects;exports.effects=(id,fallback)=>({venomspurs:['corrosion','venomspurs'],reinflate:['punkrock','reinflate'],deepchill:['deepchill','intimidate','oblivious'],accumulation:['accumulation','thickfat']})[id]||beforeNewCorrosion(id,fallback);

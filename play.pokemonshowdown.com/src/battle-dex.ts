@@ -9461,7 +9461,7 @@ moonveil: {name: 'Moon Veil', desc: 'Pastel Veil + Misty Surge. On entry, sets M
 	},
 	helios: {
 		name: "Helios",
-		desc: "On switch-in, this Pokemon summons harsh sunlight. Its moves ignore opposing Abilities. Berserk raises its Special Attack by one stage when an attack leaves it at half HP or less, and by two stages on entry in Dragon's Den. Swift Swim doubles its Speed in rain, Water Surface, Murkwater Surface, Underwater, or Midnight Zone.",
+		desc: "On switch-in, this Pokemon summons harsh sunlight. Its moves ignore opposing Abilities. Berserk raises Attack and Sp. Atk by 1 when an attack crosses half HP. On Dragon's Den, it instead gains +1 Sp. Atk on entry and +2 Sp. Atk on crossing half HP. Swift Swim doubles its Speed in rain, Water Surface, Murkwater Surface, Underwater, or Midnight Zone.",
 		shortDesc: "Drought + Mold Breaker + Berserk + Swift Swim.",
 	},
 	absolutezero: {
@@ -10381,7 +10381,7 @@ moonveil: {name: 'Moon Veil', desc: 'Pastel Veil + Misty Surge. On entry, sets M
 	},
 	sunsovereign: {
 		"name": "Sun Sovereign",
-		"desc": "Mold Breaker: moves ignore bypassable opposing abilities. Summons sun for 8 turns on entry. Eligible Normal moves become Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Dragon moves receive STAB. Prevents freezing outside Cold Eclipse and cures existing freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den blocks Fire moves. On Dragon's Den, Volcanic or Cold Eclipse entry, gains +1 Defense and Sp. Def. Same-type moves have 1.3x power. Immune to hail damage. At turn end, deals Fire-type damage to foes equal to 1/16 max HP, doubled if the foe is burned or the holder used a Fire or Dragon move that turn. Fire immunities block this damage; type effectiveness scales it only in Free-for-All. Heals 1/16 max HP at turn end.",
+		"desc": "Mold Breaker: moves ignore bypassable opposing abilities. Summons sun for 8 turns on entry. Eligible Normal moves become Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Prevents freezing outside Cold Eclipse and cures existing freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den blocks Fire moves. On Dragon's Den, Volcanic or Cold Eclipse entry, gains +1 Defense and Sp. Def. Same-type moves have 1.3x power. Immune to hail damage. At turn end, deals Fire-type damage to foes equal to 1/16 max HP, doubled if the foe is burned or the holder used a Fire or Dragon move that turn. Fire immunities block this damage; type effectiveness scales it only in Free-for-All. Heals 1/16 max HP at turn end.",
 		"shortDesc": "Mold Breaker; 8-turn sun, stronger Dragon moves, healing and Fire chip."
 	},
 	surgeconduit: {
@@ -10596,8 +10596,8 @@ moonveil: {name: 'Moon Veil', desc: 'Pastel Veil + Misty Surge. On entry, sets M
 	},
 	dragonize: {
 		name: "Dragonize",
-		desc: "This Pokemon's Normal-type moves become Dragon-type moves and have their power multiplied by 1.2. This Pokemon gains STAB on Dragon-type moves.",
-		shortDesc: "Normal moves become Dragon type; Dragon STAB; converted moves 1.2x.",
+		desc: "This Pokemon's Normal-type moves become Dragon-type moves and have their power multiplied by 1.2.",
+		shortDesc: "Normal moves become Dragon type; converted moves 1.2x.",
 	},
 	magmaarmor: {
 		name: "Magma Armor",
@@ -10737,7 +10737,7 @@ moonveil: {name: 'Moon Veil', desc: 'Pastel Veil + Misty Surge. On entry, sets M
 	},
 	atrocity: {
 		"name": "Atrocity",
-		"desc": "Mold Breaker: moves ignore bypassable opposing abilities. Eligible Normal moves become Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Dragon moves receive STAB. Prevents freezing outside Cold Eclipse and cures existing freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den blocks Fire moves. On Dragon's Den, Volcanic or Cold Eclipse entry, gains +1 Defense and Sp. Def. Same-type moves have 1.3x power. Immune to hail damage. At turn end, deals Fire-type damage to foes equal to 1/16 max HP, doubled if the foe is burned or the holder used a Fire or Dragon move that turn. Fire immunities block this damage; type effectiveness scales it only in Free-for-All. Contact moves have 1.3x power. Heals 1/16 max HP each turn. Damaging moves have a further 1.3x power, plus another 1.3x on Cold Eclipse. Critical-hit ratio rises by 1. Dragon Rush cannot miss and has a further 1.5x power. Defense and Sp. Def are 1.3x, or 1.5x on Cold Eclipse. While Royal Decree or Empress is active without Neutralization, move power gains another 1.3x and incoming attack damage falls by 30%. Cannot be suppressed.",
+		"desc": "Mold Breaker: moves ignore bypassable opposing abilities. Eligible Normal moves become Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Prevents freezing outside Cold Eclipse and cures existing freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den blocks Fire moves. On Dragon's Den, Volcanic or Cold Eclipse entry, gains +1 Defense and Sp. Def. Same-type moves have 1.3x power. Immune to hail damage. At turn end, deals Fire-type damage to foes equal to 1/16 max HP, doubled if the foe is burned or the holder used a Fire or Dragon move that turn. Fire immunities block this damage; type effectiveness scales it only in Free-for-All. Contact moves have 1.3x power. Heals 1/16 max HP each turn. Damaging moves have a further 1.3x power, plus another 1.3x on Cold Eclipse. Critical-hit ratio rises by 1. Dragon Rush cannot miss and has a further 1.5x power. Defense and Sp. Def are 1.3x, or 1.5x on Cold Eclipse. While Royal Decree or Empress is active without Neutralization, move power gains another 1.3x and incoming attack damage falls by 30%. Cannot be suppressed.",
 		"shortDesc": "Mold Breaker; stronger attacks and defenses; healing, Fire chip and never-miss Dragon Rush."
 	},
 	ultraego: {
@@ -26183,7 +26183,7 @@ for (const [id, update] of Object.entries({
 	},
 	"farigiraf": {
 		"abilities": {
-			"0": "Gluttony",
+			"0": "Twin Appetite",
 			"1": "Armor Tail",
 			"H": "Royal Decree",
 		},
@@ -26200,7 +26200,7 @@ for (const [id, update] of Object.entries({
 			"Psychic",
 		],
 		"passives": [
-			"earlybird",
+			"gluttony",
 		],
 		"replaceAbilities": true,
 	},
@@ -53258,7 +53258,7 @@ CUSTOM_ABILITY_UPDATES.adaptivecore = {name: 'Adaptive Core', desc: "Download + 
 Object.assign(CUSTOM_ABILITY_UPDATES, {
 	atrocity: {
 		"name": "Atrocity",
-		"desc": "Mold Breaker: moves ignore bypassable opposing abilities. Eligible Normal moves become Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Dragon moves receive STAB. Prevents freezing outside Cold Eclipse and cures existing freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den blocks Fire moves. On Dragon's Den, Volcanic or Cold Eclipse entry, gains +1 Defense and Sp. Def. Same-type moves have 1.3x power. Immune to hail damage. At turn end, deals Fire-type damage to foes equal to 1/16 max HP, doubled if the foe is burned or the holder used a Fire or Dragon move that turn. Fire immunities block this damage; type effectiveness scales it only in Free-for-All. Contact moves have 1.3x power. Heals 1/16 max HP each turn. Damaging moves have a further 1.3x power, plus another 1.3x on Cold Eclipse. Critical-hit ratio rises by 1. Dragon Rush cannot miss and has a further 1.5x power. Defense and Sp. Def are 1.3x, or 1.5x on Cold Eclipse. While Royal Decree or Empress is active without Neutralization, move power gains another 1.3x and incoming attack damage falls by 30%. Cannot be suppressed.",
+		"desc": "Mold Breaker: moves ignore bypassable opposing abilities. Eligible Normal moves become Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Prevents freezing outside Cold Eclipse and cures existing freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den blocks Fire moves. On Dragon's Den, Volcanic or Cold Eclipse entry, gains +1 Defense and Sp. Def. Same-type moves have 1.3x power. Immune to hail damage. At turn end, deals Fire-type damage to foes equal to 1/16 max HP, doubled if the foe is burned or the holder used a Fire or Dragon move that turn. Fire immunities block this damage; type effectiveness scales it only in Free-for-All. Contact moves have 1.3x power. Heals 1/16 max HP each turn. Damaging moves have a further 1.3x power, plus another 1.3x on Cold Eclipse. Critical-hit ratio rises by 1. Dragon Rush cannot miss and has a further 1.5x power. Defense and Sp. Def are 1.3x, or 1.5x on Cold Eclipse. While Royal Decree or Empress is active without Neutralization, move power gains another 1.3x and incoming attack damage falls by 30%. Cannot be suppressed.",
 		"shortDesc": "Mold Breaker; stronger attacks and defenses; healing, Fire chip and never-miss Dragon Rush."
 	},
 	mythicscale: {
@@ -55085,7 +55085,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 	},
 	atrocity: {
 		"name": "Atrocity",
-		"desc": "Mold Breaker: moves ignore bypassable opposing abilities. Eligible Normal moves become Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Dragon moves receive STAB. Prevents freezing outside Cold Eclipse and cures existing freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den blocks Fire moves. On Dragon's Den, Volcanic or Cold Eclipse entry, gains +1 Defense and Sp. Def. Same-type moves have 1.3x power. Immune to hail damage. At turn end, deals Fire-type damage to foes equal to 1/16 max HP, doubled if the foe is burned or the holder used a Fire or Dragon move that turn. Fire immunities block this damage; type effectiveness scales it only in Free-for-All. Contact moves have 1.3x power. Heals 1/16 max HP each turn. Damaging moves have a further 1.3x power, plus another 1.3x on Cold Eclipse. Critical-hit ratio rises by 1. Dragon Rush cannot miss and has a further 1.5x power. Defense and Sp. Def are 1.3x, or 1.5x on Cold Eclipse. While Royal Decree or Empress is active without Neutralization, move power gains another 1.3x and incoming attack damage falls by 30%. Cannot be suppressed.",
+		"desc": "Mold Breaker: moves ignore bypassable opposing abilities. Eligible Normal moves become Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Prevents freezing outside Cold Eclipse and cures existing freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den blocks Fire moves. On Dragon's Den, Volcanic or Cold Eclipse entry, gains +1 Defense and Sp. Def. Same-type moves have 1.3x power. Immune to hail damage. At turn end, deals Fire-type damage to foes equal to 1/16 max HP, doubled if the foe is burned or the holder used a Fire or Dragon move that turn. Fire immunities block this damage; type effectiveness scales it only in Free-for-All. Contact moves have 1.3x power. Heals 1/16 max HP each turn. Damaging moves have a further 1.3x power, plus another 1.3x on Cold Eclipse. Critical-hit ratio rises by 1. Dragon Rush cannot miss and has a further 1.5x power. Defense and Sp. Def are 1.3x, or 1.5x on Cold Eclipse. While Royal Decree or Empress is active without Neutralization, move power gains another 1.3x and incoming attack damage falls by 30%. Cannot be suppressed.",
 		"shortDesc": "Mold Breaker; stronger attacks and defenses; healing, Fire chip and never-miss Dragon Rush."
 	},
 	"primevalhunger": {
@@ -55392,7 +55392,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 	},
 	sunsovereign: {
 		"name": "Sun Sovereign",
-		"desc": "Mold Breaker: moves ignore bypassable opposing abilities. Summons sun for 8 turns on entry. Eligible Normal moves become Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Dragon moves receive STAB. Prevents freezing outside Cold Eclipse and cures existing freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den blocks Fire moves. On Dragon's Den, Volcanic or Cold Eclipse entry, gains +1 Defense and Sp. Def. Same-type moves have 1.3x power. Immune to hail damage. At turn end, deals Fire-type damage to foes equal to 1/16 max HP, doubled if the foe is burned or the holder used a Fire or Dragon move that turn. Fire immunities block this damage; type effectiveness scales it only in Free-for-All. Heals 1/16 max HP at turn end.",
+		"desc": "Mold Breaker: moves ignore bypassable opposing abilities. Summons sun for 8 turns on entry. Eligible Normal moves become Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Prevents freezing outside Cold Eclipse and cures existing freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den blocks Fire moves. On Dragon's Den, Volcanic or Cold Eclipse entry, gains +1 Defense and Sp. Def. Same-type moves have 1.3x power. Immune to hail damage. At turn end, deals Fire-type damage to foes equal to 1/16 max HP, doubled if the foe is burned or the holder used a Fire or Dragon move that turn. Fire immunities block this damage; type effectiveness scales it only in Free-for-All. Heals 1/16 max HP at turn end.",
 		"shortDesc": "Mold Breaker; 8-turn sun, stronger Dragon moves, healing and Fire chip."
 	},
 	"venomarmor": {
@@ -56837,6 +56837,7 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 		"moxie",
 	],
 	"bulletproof": [],
+	"twinappetite": [],
 	"cheekpouch": [],
 	"chillingneigh": [],
 	"chlorophyll": [],
@@ -61107,8 +61108,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Abyssal Rebirth",
 		"num": 11981,
 		"gen": 9,
-		"desc": "Full local Hydra Bond and Levitate, including three-hit, Free-for-All, Gilded Helix and Dragon Den rules. Reawakening: once per battle, an opposing damaging move taking this Pokemon from above half HP to half HP or less restores 1/4 maximum HP after the entire move finishes, if it survives. All hits finish before recovery. Allies, recoil, hazards, weather and status damage cannot trigger it. Switching, form changes and ability restarts do not reset the use. Ability suppression prevents Reawakening without queuing a later heal; Hydra Bond and passive Levitate retain their normal passive rules, including Ground-immunity bypass. Berserk resolves independently before recovery.",
-		"shortDesc": "Hydra Bond + Levitate; once/battle, survive crossing half HP to heal 25%.",
+		"desc": "Full local Hydra Bond and Levitate, including three-hit, Free-for-All, Gilded Helix and Dragon Den rules. Fairy attacks that would be super effective against this Pokemon deal neutral damage instead. Reawakening: once per battle, an opposing damaging move taking this Pokemon from above half HP to half HP or less restores 1/4 maximum HP after the entire move finishes, if it survives. All hits finish before recovery. Allies, recoil, hazards, weather and status damage cannot trigger it. Switching, form changes and ability restarts do not reset the use. Ability suppression prevents Reawakening without queuing a later heal; Hydra Bond and passive Levitate retain their normal passive rules, including Ground-immunity bypass. Berserk resolves independently before recovery.",
+		"shortDesc": "Hydra Bond + Levitate; Fairy weaknesses become neutral; heals 25% once when crossing half HP.",
 		"rating": 5,
 		"flags": {},
 		"isNonstandard": null,
@@ -62190,8 +62191,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Berserk",
 		"num": 201,
 		"gen": 7,
-		"desc": "When an attack takes it from above half HP to half or less, gains +1 Attack and Sp. Atk after the move. On Dragon's Den, this trigger gives +2 Sp. Atk instead.",
-		"shortDesc": "Crossing half HP from an attack gives +1 Attack/Sp. Atk.",
+		"desc": "When an attack takes it from above half HP to half or less, gains +1 Attack and Sp. Atk after the move. On Dragon's Den, entering grants +1 Sp. Atk, and the half-HP trigger gives +2 Sp. Atk instead.",
+		"shortDesc": "Crossing half HP: +1 Atk/Sp. Atk. Dragon’s Den: +1 Sp. Atk on entry, +2 at half HP.",
 		"rating": 2,
 		"flags": {},
 		"isNonstandard": null,
@@ -62534,7 +62535,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Burning Crown",
 		"num": 10023,
 		"gen": 9,
-		"desc": "On entry, lowers adjacent foes Attack by 1 under normal Intimidate rules. Unbound Blaze converts eligible Normal moves to Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale, and grants Dragon STAB. Prevents freezing outside Cold Eclipse and cures freeze; incoming Water and Ice attacks use half the offensive stat. Dragon's Den and Infernal Eclipse block Fire moves. Dragon's Den, Volcanic and Infernal Eclipse entry give +1 Defense and Sp. Def. At turn end, foes take Fire damage of 1/16 base max HP, doubled if burned or the holder used Fire/Dragon that turn. Fire immunities apply; effectiveness scales chip only in Free-for-All. Self-Sufficient heals 1/16 max HP each turn and prevents sandstorm/hail damage. Levitate grants normal airborne Ground and grounded-hazard protection. Has one 20% attack-damage reduction. New World, Cold Eclipse and Starlight Arena retain 1.5x move power.",
+		"desc": "On entry, lowers adjacent foes Attack by 1 under normal Intimidate rules. Unbound Blaze converts eligible Normal moves to Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Prevents freezing outside Cold Eclipse and cures freeze; incoming Water and Ice attacks use half the offensive stat. Dragon's Den and Infernal Eclipse block Fire moves. Dragon's Den, Volcanic and Infernal Eclipse entry give +1 Defense and Sp. Def. At turn end, foes take Fire damage of 1/16 base max HP, doubled if burned or the holder used Fire/Dragon that turn. Fire immunities apply; effectiveness scales chip only in Free-for-All. Self-Sufficient heals 1/16 max HP each turn and prevents sandstorm/hail damage. Levitate grants normal airborne Ground and grounded-hazard protection. Has one 20% attack-damage reduction. New World, Cold Eclipse and Starlight Arena retain 1.5x move power.",
 		"shortDesc": "Intimidate + Unbound Blaze + Self-Sufficient + Levitate.",
 		"rating": 4.5,
 		"flags": {
@@ -63892,7 +63893,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Draconic Force",
 		"num": 10177,
 		"gen": 9,
-		"desc": "Eligible Normal moves become Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Dragon moves receive STAB. Biting moves have 1.5x power. Moves ignore bypassable opposing abilities.",
+		"desc": "Eligible Normal moves become Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Biting moves have 1.5x power. Moves ignore bypassable opposing abilities.",
 		"shortDesc": "Eligible Normal moves become Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale.",
 		"rating": 4.5,
 		"flags": {},
@@ -63902,8 +63903,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Dragonize",
 		"num": 312,
 		"gen": 9,
-		"desc": "Its Normal-type moves become Dragon-type moves and have their power multiplied by 1.2. It gains STAB on Dragon-type moves.",
-		"shortDesc": "Normal moves become Dragon type; Dragon STAB; converted moves 1.2x.",
+		"desc": "Its Normal-type moves become Dragon-type moves and have their power multiplied by 1.2.",
+		"shortDesc": "Normal moves become Dragon type; converted moves 1.2x.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null,
@@ -64507,8 +64508,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Exalted Aether",
 		"num": 11986,
 		"gen": 9,
-		"desc": "Eligible single-target physical Dragon- and Flying-type attacks strike twice, including Aerilate conversions. The first strike deals normal damage and heals 12.5% of actual opposing HP damage dealt, in addition to any native drain. The second deals 25% of normal damage and ignores positive Defense stages. Defensive screens apply normally to both strikes. Target secondary effects and user effects occur only on the first strike. Uses one PP and the ordinary accuracy check. No extra strike for spread, existing multi-hit, charging, delayed, OHKO, Z, Max or bond-excluded moves. Never transfers to another Pokemon. Substitute damage and allied damage do not heal. Normal healing prevention, contact, recoil, abilities and immunities apply. Suppression disables this ability.",
-		"shortDesc": "Physical Dragon/Flying hits twice: 12.5% first-hit healing; 25% follow-up ignores Defense boosts.",
+		"desc": "Eligible single-target physical Dragon- and Flying-type attacks strike twice, including Aerilate conversions. The first strike deals normal damage and heals 25% of actual opposing HP damage dealt, in addition to any native drain. The second deals 40% of normal damage and ignores positive Defense stages. Defensive screens apply normally to both strikes. Target secondary effects and user effects occur only on the first strike. Uses one PP and the ordinary accuracy check. No extra strike for spread, existing multi-hit, charging, delayed, OHKO, Z, Max or bond-excluded moves. Never transfers to another Pokemon. Substitute damage and allied damage do not heal. Normal healing prevention, contact, recoil, abilities and immunities apply. Suppression disables this ability.",
+		"shortDesc": "Physical Dragon/Flying hits twice: 25% first-hit healing; 40% follow-up ignores Defense boosts.",
 		"rating": 4.5,
 		"flags": {},
 		"isNonstandard": null,
@@ -64529,7 +64530,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Expiration",
 		"num": 11980,
 		"gen": 9,
-		"desc": "Full local Worldbreaker and Controlled Fury. Berserk raises Attack and Sp. Atk by 1 after surviving a move crossing half HP, or only Sp. Atk by 2 on Dragon’s Den. Duskilate converts Normal moves to Dark with its normal power and field effects. Each damaging hit independently has a 30% chance (50% on Dragon’s Den) to double base power; Fickle Beam uses only its own all-out roll. The first damaging hit received each entry raises Attack by 1; surviving a critical hit instead maximizes Attack. Outrage, Thrash, Petal Dance and Raging Fury cause no rampage lock or ending confusion. Existing confusion and other move locks remain unchanged.",
+		"desc": "Full local Worldbreaker and Controlled Fury. Berserk raises Attack and Sp. Atk by 1 after surviving a move crossing half HP, or only Sp. Atk by 2 on Dragon’s Den. Entering Dragon’s Den grants +1 Sp. Atk. Duskilate converts Normal moves to Dark with its normal power and field effects. Each damaging hit independently has a 30% chance (50% on Dragon’s Den) to double base power; Fickle Beam uses only its own all-out roll. The first damaging hit received each entry raises Attack by 1; surviving a critical hit instead maximizes Attack. Outrage, Thrash, Petal Dance and Raging Fury cause no rampage lock or ending confusion. Existing confusion and other move locks remain unchanged.",
 		"shortDesc": "Worldbreaker + Controlled Fury.",
 		"rating": 5,
 		"flags": {},
@@ -65691,7 +65692,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Helios",
 		"num": 10402,
 		"gen": 9,
-		"desc": "On entry, it summons harsh sunlight. Its moves ignore opposing Abilities. Berserk raises its Special Attack by one stage when an attack leaves it at half HP or less, and by two stages on entry in Dragon's Den. Swift Swim doubles its Speed in rain, Water Surface, Murkwater Surface, Underwater, or Midnight Zone.",
+		"desc": "On entry, it summons harsh sunlight. Its moves ignore opposing Abilities. Berserk raises Attack and Sp. Atk by 1 when an attack crosses half HP. On Dragon's Den, it instead gains +1 Sp. Atk on entry and +2 Sp. Atk on crossing half HP. Swift Swim doubles its Speed in rain, Water Surface, Murkwater Surface, Underwater, or Midnight Zone.",
 		"shortDesc": "On entry, it summons harsh sunlight. Its moves ignore opposing Abilities.",
 		"rating": 5,
 		"flags": {},
@@ -69969,7 +69970,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Royal Scales",
 		"num": 11122,
 		"gen": 9,
-		"desc": "Marvel Scale boosts Defense while statused or on supported fields. Swift Swim boosts Speed in rain and supported water fields. Its Normal-type moves become Dragon-type moves and have their power multiplied by 1.2. It gains STAB on Dragon-type moves. Heals 1/16 max HP each turn. Immune to sandstorm and hail damage.",
+		"desc": "Marvel Scale boosts Defense while statused or on supported fields. Swift Swim boosts Speed in rain and supported water fields. Its Normal-type moves become Dragon-type moves and have their power multiplied by 1.2. Heals 1/16 max HP each turn. Immune to sandstorm and hail damage.",
 		"shortDesc": "Marvel Scale, Swift Swim, Dragonize and Self Sufficient.",
 		"rating": 5,
 		"flags": {
@@ -71919,7 +71920,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Sun Sovereign",
 		"num": 10039,
 		"gen": 9,
-		"desc": "Summons sun for 8 turns on entry. Eligible Normal moves become Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Dragon moves receive STAB. Prevents freezing outside Cold Eclipse and cures freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den and Infernal Eclipse block Fire moves. On Dragon's Den, Volcanic or Infernal Eclipse entry, gains +1 Defense and Sp. Def. Immune to hail damage. At turn end, deals Fire-type damage to foes equal to 1/16 max HP, doubled if the foe is burned or the holder used a Fire or Dragon move that turn. Fire immunities block this damage; type effectiveness scales it only in Free-for-All.",
+		"desc": "Summons sun for 8 turns on entry. Eligible Normal moves become Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Prevents freezing outside Cold Eclipse and cures freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den and Infernal Eclipse block Fire moves. On Dragon's Den, Volcanic or Infernal Eclipse entry, gains +1 Defense and Sp. Def. Immune to hail damage. At turn end, deals Fire-type damage to foes equal to 1/16 max HP, doubled if the foe is burned or the holder used a Fire or Dragon move that turn. Fire immunities block this damage; type effectiveness scales it only in Free-for-All.",
 		"shortDesc": "Eight-turn sun + Unbound Blaze.",
 		"rating": 4.5,
 		"flags": {
@@ -72858,6 +72859,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {},
 		"isNonstandard": null,
 	},
+	"twinappetite": {
+		"name": "Twin Appetite",
+		"num": 12191,
+		"gen": 9,
+		"desc": "Eating a Berry raises Sp. Atk by 1.",
+		"shortDesc": "Eating a Berry raises Sp. Atk by 1.",
+		"rating": 3,
+		"flags": {},
+		"isNonstandard": null,
+	},
 	"twinblades": {
 		"name": "Twin Blades",
 		"num": 10524,
@@ -72956,8 +72967,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Unbound Blaze",
 		"num": 10139,
 		"gen": 9,
-		"desc": "Eligible Normal moves become Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Dragon moves receive STAB. Prevents freezing outside Cold Eclipse and cures freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den and Infernal Eclipse block Fire moves. On Dragon's Den, Volcanic or Infernal Eclipse entry, gains +1 Defense and Sp. Def. Immune to hail damage. At turn end, deals Fire-type damage to foes equal to 1/16 max HP, doubled if the foe is burned or the holder used a Fire or Dragon move that turn. Fire immunities block this damage; type effectiveness scales it only in Free-for-All.",
-		"shortDesc": "Dragon conversion/STAB, Magma Armor and Fire chip.",
+		"desc": "Eligible Normal moves become Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Prevents freezing outside Cold Eclipse and cures freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den and Infernal Eclipse block Fire moves. On Dragon's Den, Volcanic or Infernal Eclipse entry, gains +1 Defense and Sp. Def. Immune to hail damage. At turn end, deals Fire-type damage to foes equal to 1/16 max HP, doubled if the foe is burned or the holder used a Fire or Dragon move that turn. Fire immunities block this damage; type effectiveness scales it only in Free-for-All.",
+		"shortDesc": "Dragon conversion, Magma Armor and Fire chip.",
 		"rating": 4,
 		"flags": {
 			"breakable": 1,
@@ -73998,7 +74009,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Worldbreaker",
 		"num": 11722,
 		"gen": 9,
-		"desc": "Full local Berserk and Duskilate. Surviving a move crossing half HP grants +1 Attack and Sp. Atk; on Dragon’s Den the threshold grants +2 Sp. Atk instead. Each damaging hit independently has a 30% chance (50% on Dragon’s Den) to double base power, except Fickle Beam uses only its own all-out roll.",
+		"desc": "Full local Berserk and Duskilate. Surviving a move crossing half HP grants +1 Attack and Sp. Atk; on Dragon’s Den, entering grants +1 Sp. Atk and crossing half HP grants +2 Sp. Atk instead. Each damaging hit independently has a 30% chance (50% on Dragon’s Den) to double base power, except Fickle Beam uses only its own all-out roll.",
 		"shortDesc": "Berserk + Duskilate; 30% double power per hit, except Fickle Beam.",
 		"rating": 5,
 		"flags": {},
@@ -77425,8 +77436,8 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"metronome": 1,
 			"contact": 1,
 		},
-		"desc": "Samson's move. Hits up to three times with a separate 95% accuracy check per hit, stopping on a miss. The first accuracy miss each switch-in raises the user's Attack by 2, even after earlier hits; the opportunity is spent even at the Attack cap. Each direct hit inflicts a 4-turn Taunt if the target is not already Taunted. Protect, immunity and no target grant no boost. Blunder Policy can activate on a later miss unless the target is semi-invulnerable. Z-Move power: 160. Additional field effects: Big Top or Rocky: three native hits to the same foe’s HP grant +1 Defense, once per attack.",
-		"shortDesc": "Samson's move. 3 hits. First accuracy miss per entry: +2 Atk. HP hits Taunt for 4 turns.",
+		"desc": "Samson's move. Hits up to three times with a separate 95% accuracy check per hit, stopping on a miss. The first accuracy miss each switch-in raises the user's Attack by 2, even after earlier hits; the opportunity is spent even at the Attack cap. Only the first hit can Taunt, for 4 turns, if it damages the target directly. Protect, immunity and no target grant no boost. Blunder Policy can activate on a later miss unless the target is semi-invulnerable. Z-Move power: 160. Additional field effects: Big Top or Rocky: three native hits to the same foe’s HP grant +1 Defense, once per attack.",
+		"shortDesc": "Samson's move. 3 hits. First miss per entry: +2 Atk. Hit 1 can Taunt for 4 turns.",
 		"hasSheerForceBoost": false,
 		"signatureCharacters": [
 			"samson",
@@ -83344,8 +83355,8 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"mirror": 1,
 			"metronome": 1,
 		},
-		"desc": "Serra's move. Damaging a target or its Substitute sets Aurora Veil, Mist and Safeguard on the user’s side. Veil lasts 3 turns by default. Existing barriers keep their timers. Additional field effects: Mirror Arena, Icy, Snowy or Frozen Aura: newly created Veil lasts 4 turns. No refresh or duration extensions.",
-		"shortDesc": "Damaging hits set Aurora Veil (3–4 turns), Mist and Safeguard.",
+		"desc": "Serra's move. Damaging a target or its Substitute sets Aurora Veil on the user’s side for 3 turns. An existing Veil keeps its timer. Additional field effects: Mirror Arena, Icy, Snowy or Frozen Aura: newly created Veil lasts 4 turns. No refresh or duration extensions.",
+		"shortDesc": "Damaging hits set Aurora Veil for 3–4 turns.",
 		"hasSheerForceBoost": false,
 		"signatureCharacters": [
 			"serra",
@@ -101881,6 +101892,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"ultrainstinct",
 		"opportunist",
 	],
+	"twinappetite": [],
 	"twinblades": [],
 	"twincannons": [],
 	"twindrills": [
@@ -113516,6 +113528,10 @@ const Dex = new class implements ModdedDex {
 		// Apply one final policy to the selected asset, after all animation/form fallbacks.
 		// A cropped 2x sprite has the same logical size as the padded 1x original.
 		let scale = Math.min(1 / pixelScale, visibleLimit / visibleWidth, visibleLimit / visibleHeight);
+		// Ceruledge's custom full-body back has 171 visible pixels and no BW size reference.
+		if (species.id === 'ceruledge' && !isFront && !options.teamPreview && /^gen5-back(?:-shiny)?\/ceruledge\.png$/.test(asset!)) {
+			scale = Math.min(scale, 84 / visibleHeight);
+		}
 		if (!isFront && !options.teamPreview && (species.id === 'tsareena' || species.id === 'tsareenaalt')) {
 			scale = Math.min(scale, 80 / height);
 		}

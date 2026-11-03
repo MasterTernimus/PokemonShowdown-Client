@@ -11,7 +11,7 @@ describe('Exalted Aether move preview', () => {
 			p.ability = 'Exalted Aether'; const tips = new BattleTooltips(battle);
 			const preview = id => tips.showMoveTooltip(Dex.moves.get(id), 'move', p, own);
 			for (const id of ['doubleedge', 'dragonclaw']) {
-				const text = preview(id); assert(text.includes('Exalted Aether: two strikes')); assert(text.includes('25% damage')); assert(text.includes('12.5%')); assert(text.includes('Contact <small>')); assert(text.includes('Defensive screens apply normally to both strikes'));
+				const text = preview(id); assert(text.includes('Exalted Aether: two strikes')); assert(text.includes('40% damage')); assert(text.includes('heals 25%')); assert(text.includes('Contact <small>')); assert(text.includes('Defensive screens apply normally to both strikes'));
 			}
 			for (const id of ['dragonpulse', 'fly', 'scaleshot']) assert(!preview(id).includes('Exalted Aether: two strikes'));
 			p.volatiles.gastroacid = ['gastroacid']; assert(!preview('doubleedge').includes('Exalted Aether: two strikes'));

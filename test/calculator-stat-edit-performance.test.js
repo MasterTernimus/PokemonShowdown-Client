@@ -33,6 +33,6 @@ describe('Calculator stat edit refresh', () => {
   const actor = {attr:() => '1', find:() => ({text(value) {summary=value;}})};
   const room = {readActor(index) {assert.equal(index, 1); return {evs:{hp:252,def:252,spd:4},boosts:{atk:0,def:2}};}};
   const update = new Function('return ' + method('updateCalcStatSummary'))(); update.call(room, actor);
-  assert.match(summary, /508 EVs/); assert.match(summary, /1 changed stages/);
+  assert.match(summary, /508 EVs/); assert.match(summary, /2 stage overrides/);
  });
 });

@@ -8,7 +8,7 @@
     "worldbreaker": {
       "name": "Worldbreaker",
       "shortDesc": "Berserk + Duskilate; 30% double power per hit, except Fickle Beam.",
-      "desc": "Full local Berserk and Duskilate. Surviving a move crossing half HP grants +1 Attack and Sp. Atk; on Dragon’s Den the threshold grants +2 Sp. Atk instead. Each damaging hit independently has a 30% chance (50% on Dragon’s Den) to double base power, except Fickle Beam uses only its own all-out roll."
+      "desc": "Full local Berserk and Duskilate. Surviving a move crossing half HP grants +1 Attack and Sp. Atk; on Dragon’s Den, entering grants +1 Sp. Atk and crossing half HP grants +2 Sp. Atk instead. Each damaging hit independently has a 30% chance (50% on Dragon’s Den) to double base power, except Fickle Beam uses only its own all-out roll."
     },
     "falseliberation": {
       "name": "False Liberation",

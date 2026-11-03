@@ -256,14 +256,41 @@ class BattleTooltips {
 
 	listen(elem: HTMLElement | JQuery<HTMLElement>) {
 		const $elem = $(elem);
-		$elem.on('mouseover', '.has-tooltip', this.showTooltipEvent);
+		const battleControls = $elem.hasClass('battle-controls');
+		const touchGenerated = (e: JQuery.TriggeredEvent) => battleControls && (
+			(e.originalEvent as MouseEvent & {sourceCapabilities?: {firesTouchEvents: boolean}})?.sourceCapabilities?.firesTouchEvents ||
+			window.matchMedia('(hover: none)').matches
+		);
+		$elem.on('mouseover', '.has-tooltip', e => { if (!touchGenerated(e)) this.showTooltipEvent(e); });
 		$elem.on('click', '.has-tooltip', this.clickTooltipEvent);
-		$elem.on('focus', '.has-tooltip', this.showTooltipEvent);
+		$elem.on('focus', '.has-tooltip', e => {
+			if (!touchGenerated(e) || e.currentTarget.matches(':focus-visible')) this.showTooltipEvent(e);
+		});
 		$elem.on('mouseout', '.has-tooltip', BattleTooltips.unshowTooltip);
-		$elem.on('mousedown', '.has-tooltip', this.holdLockTooltipEvent);
+		$elem.on('mousedown', '.has-tooltip', e => { if (!touchGenerated(e)) this.holdLockTooltipEvent(e); });
 		$elem.on('blur', '.has-tooltip', BattleTooltips.unshowTooltip);
 		$elem.on('mouseup', '.has-tooltip', BattleTooltips.unshowTooltip);
 
+		if (battleControls) {
+			// Let the browser distinguish a tap from a scroll. Only a deliberate hold opens details.
+			$elem.on('touchstart', '.has-tooltip', e => {
+				BattleTooltips.hideTooltip();
+				BattleTooltips.cancelLongTap();
+				const target = e.currentTarget as HTMLElement;
+				BattleTooltips.longTapTimeout = setTimeout(() => {
+					BattleTooltips.longTapTimeout = 0;
+					if (!target.isConnected) return;
+					this.showTooltip(target);
+					this.lockTooltip();
+				}, BattleTooltips.LONG_TAP_DELAY);
+			});
+			$elem.on('touchmove touchcancel', '.has-tooltip', BattleTooltips.cancelLongTap);
+			$elem.on('touchend', '.has-tooltip', e => {
+				BattleTooltips.cancelLongTap();
+				if (BattleTooltips.isLocked) e.preventDefault();
+			});
+			return;
+		}
 		$elem.on('touchstart', '.has-tooltip', e => {
 			e.preventDefault();
 			this.holdLockTooltipEvent(e);
@@ -315,7 +342,7 @@ class BattleTooltips {
 		}, BattleTooltips.LONG_TAP_DELAY * factor);
 	};
 
-	showTooltipEvent = (e: Event) => {
+	showTooltipEvent = (e: JQuery.TriggeredEvent) => {
 		if (BattleTooltips.isLocked) return;
 		this.showTooltip(e.currentTarget as HTMLElement);
 	};
@@ -779,8 +806,8 @@ class BattleTooltips {
 			!move.multihit && !move.flags.noparentalbond && !move.flags.charge && !move.flags.futuremove &&
 			!move.ohko && !move.isZ && !move.isMax &&
 			['normal', 'adjacentFoe', 'any', 'randomNormal'].includes(move.target)) {
-			text += '<p>Exalted Aether: two strikes. First: normal damage, heals 12.5% of opposing HP damage. ' +
-				'Second: 25% damage, ignores positive Defense stages. Defensive screens apply normally to both strikes. ' +
+			text += '<p>Exalted Aether: two strikes. First: normal damage, heals 25% of opposing HP damage. ' +
+				'Second: 40% damage, ignores positive Defense stages. Defensive screens apply normally to both strikes. ' +
 				'Secondary and user effects occur once. Power below describes the first strike.</p>';
 		}
 		if (toID(pokemon.effectiveAbility(serverPokemon)) === 'auraconvergence' &&
