@@ -1,7 +1,7 @@
 {
-	"sourceHead": "3884355c0e5bcf0b07ef511e3d438b20bdb3dc18",
+	"sourceHead": "78e0f8e3e87d2558d31702d092289e7b79297148",
 	"base": "22049e8bbc3cae437790269b4360f7c8eaf5da22",
-	"builtSourceFingerprint": "c34d808ffd30fa639fa4820395dd8dec671901b77cde500f6118a7bb4d920b25",
+	"builtSourceFingerprint": "98b1acfe6341833a642a25a0965cc894a9ff6f7ef07b63ebf6cd9a3cb2ba9407",
 	"sourceDataSHA256": "ec051acf622842ebef062d62a75ee2295a39c230ef4ec95931fb6b59fa020d99",
 	"files": [
 		"data/abilities.ts",

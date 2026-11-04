@@ -15,14 +15,21 @@ function method(name, marker = '') {
 }
 function comparison() {
  let serial = 0; const timers = new Map(), writes = {}, sent = [];
- const chain = selector => ({text(v) {writes[selector] = v; return this;}, attr() {return this;}, removeAttr() {return this;}, addClass() {return this;}, removeClass() {return this;}});
+ const rows = [['Tackle','Thunderbolt'], ['Thunder']];
+ const chain = selector => ({each(fn) {rows[Number(selector.match(/data-slot=(\d)/)[1])].forEach((value,i)=>fn.call({value},i));}, text(v) {writes[selector] = v; return this;}, attr() {return this;}, removeAttr() {return this;}, addClass() {return this;}, removeClass() {return this;}});
  const base = {actors:[{species:'Mew',moves:['Tackle','Thunderbolt']},{species:'Pikachu',moves:['Thunder']},{species:'Mew'},{species:'Mew'}],sideConditions:[[],[]]};
  const room = {scenario:() => base, $:chain, $el:chain('root'), scenarioRevision:0, refreshActors() {},refreshCalcMoves() {},refreshFieldState() {},scenarioEdited() {this.cancelComparison();}, requestCalculator(json) {this.requestId='request-'+ ++serial;this.calculatorLastSentAt=Date.now();sent.push({id:this.requestId,json});}};
  const set = fn => {const id=++serial;timers.set(id,fn);return id;}; const clear = id => timers.delete(id);
  for (const name of ['damageSummary','koVerdict','cancelComparison','compareMoves','nextComparison','receiveCalculator']) room[name] = new Function('receive','setTimeout','clearTimeout','return '+method(name,name==='receiveCalculator'?'comparisonRequest':''))(() => {},set,clear);
- return {room,base,writes,sent,flush() {const entry=timers.entries().next().value;assert(entry,'timer expected');timers.delete(entry[0]);entry[1]();},reply(id,percent=10) {room.receiveCalculator({requestId:id,results:[{}, {minPercent:percent,maxPercent:percent,kos:0}],samples:32});}};
+ return {room,base,rows,writes,sent,flush() {const entry=timers.entries().next().value;assert(entry,'timer expected');timers.delete(entry[0]);entry[1]();},reply(id,percent=10) {room.receiveCalculator({requestId:id,results:[{}, {minPercent:percent,maxPercent:percent,kos:0}],samples:32});}};
 }
 describe('Calculator comparison request ownership', () => {
+ it('routes a sparse fourth row to its own result with a compact server moveset', () => {
+  const h=comparison();h.rows[0]=['','','','Blizzard'];h.base.actors[0].moves=['Blizzard'];
+  h.room.compareMoves('0:3');h.flush();const sent=JSON.parse(h.sent[0].json);
+  assert.equal(sent.move,'Blizzard');assert.deepEqual(sent.actors[0].moves,['Blizzard']);
+  h.reply(h.sent[0].id);assert.match(h.writes['.calc-actor[data-slot=0] [data-result=3]'],/^10/);
+ });
  it('ignores a superseded reply before the replacement request is sent', () => {
   const h=comparison();h.room.compareMoves('0:0');h.flush();const old=h.sent[0].id;
   h.room.compareMoves('0:1');h.reply(old);assert.equal(h.writes['.calc-actor[data-slot=0] [data-result=1]'],undefined);

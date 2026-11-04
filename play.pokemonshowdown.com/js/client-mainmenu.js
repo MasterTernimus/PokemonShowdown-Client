@@ -1945,7 +1945,10 @@
 				var key = this.name; if (!key) return;
 				if (key.indexOf('-') >= 0) { var parts = key.split('-'); if (parts[0] !== 'boosts' || this.value !== '') result[parts[0]][parts[1]] = Number(this.value); } else if (key === 'level' || key === 'hpPercent' || key === 'rageFistBonus') result[key] = Number(this.value);
 				else if (["threadShelterGuard", "silentFlightSpent", "buriedTrioSpent", "elasticBellySpent", "feedbackMarked"].includes(key)) result[key] = this.value === 'true';
-				else if (key === 'moves') { if (this.value.trim()) result.moves = this.value.split(',').map(function (m) { return m.trim(); }); } else result[key] = this.value;
+				else if (key === 'moves') {
+					var moves = this.value.split(',').map(function (m) { return m.trim(); }).filter(Boolean);
+					if (moves.length) result.moves = moves;
+				} else result[key] = this.value;
 			});
 			return result;
 		},
@@ -2165,7 +2168,10 @@
 		});
 		var edited = p.scenarioEdited;
 		p.scenarioEdited = function (event) {
-			if (event && $(event.target).hasClass('calc-move-entry')) {var a = $(event.target).closest('.calc-actor'); a.find('[name=moves]').val(a.find('.calc-move-entry').map(function () {return this.value.trim();}).get().filter(Boolean).join(', '));}
+			if (event && $(event.target).hasClass('calc-move-entry')) {
+				var actor = $(event.target).closest('.calc-actor');
+				actor.find('[name=moves]').val(actor.find('.calc-move-entry').map(function () {return this.value.trim();}).get().join(', '));
+			}
 			this.cancelComparison(); this.comparisonResults = {};
 			var result = edited.apply(this, arguments);
 			this.$('.calc-move-result').text('Not calculated').removeAttr('title');
@@ -2222,11 +2228,29 @@
 			var text = this.$('[name=calc-json]').val(), data;
 			try {
 				data = JSON.parse(text); var clean = Object.assign({}, data); delete clean.sideConditions; delete clean.rooms; delete clean.fieldState;
+				var sandbox = this.type === 'interactiontest';
+				if (sandbox) {
+					var mode = data.evaluationMode === undefined ? 'fresh-entry' : data.evaluationMode;
+					if (!['fresh-entry', 'public-state'].includes(mode)) throw Error('Unsupported evaluation mode.');
+					var defender = data.actors && data.actors[1];
+					if (!defender) throw Error('Missing defender.');
+					if (['protect', 'decoyPincersSpent'].some(function (key) {return defender[key] !== undefined && typeof defender[key] !== 'boolean';})) throw Error('Invalid defender state.');
+					var substitute = defender.substituteHP === undefined ? 0 : defender.substituteHP;
+					if (!Number.isInteger(substitute) || substitute < 0 || substitute > 9999) throw Error('Invalid Substitute HP.');
+					delete clean.evaluationMode;
+				}
 				if (data.sideConditions && (!Array.isArray(data.sideConditions) || data.sideConditions.length !== 2 || data.sideConditions.some(function (side) {return !Array.isArray(side) || side.some(function (c) {return !(this.metadata.sideConditions || []).includes(c);}, this);}, this))) throw Error('Unsupported side conditions');
 				if (data.rooms && (!Array.isArray(data.rooms) || data.rooms.some(function (c) {return !(this.metadata.rooms || []).includes(c);}, this))) throw Error('Unsupported rooms');
 				var state = data.fieldState || {}; if (Object.keys(state).some(function (k) {return !['shortCircuit', 'crystalCavern'].includes(k) || !Number.isInteger(state[k]) || state[k] < 0 || state[k] > (k === 'shortCircuit' ? 4 : 3);})) throw Error('Invalid field state');
 				this.$('[name=calc-json]').val(JSON.stringify(clean)); importScenario.call(this);
 				if (this.$('.calc-status').text().indexOf('Invalid scenario:') === 0) return;
+				if (sandbox) {
+					this.$('[name=test-mode]').val(mode);
+					this.$('[name=test-move]').val(data.move);
+					this.$('[name=test-protect]').prop('checked', !!defender.protect);
+					this.$('[name=test-substitute]').val(substitute);
+					this.$('[name=test-decoy]').prop('checked', !!defender.decoyPincersSpent);
+				}
 				this.$('.calc-side-controls input,.calc-room-controls input').prop('checked', false);
 				var self = this; (data.sideConditions || [[], data.screens || []]).forEach(function (side, i) {side.forEach(function (c) {self.$('.calc-side-controls[data-side=' + i + '] [data-condition=' + c + ']').prop('checked', true);});});
 				(data.rooms || []).forEach(function (c) {self.$('.calc-room-controls [data-condition=' + c + ']').prop('checked', true);});
@@ -2237,7 +2261,9 @@
 			this.cancelComparison();
 			var self = this, base = this.scenario(), tasks = [];
 			[0, 1].forEach(function (side) {
-				(base.actors[side].moves || []).forEach(function (move, index) {
+				self.$('.calc-actor[data-slot=' + side + '] .calc-move-entry').each(function (index) {
+					var move = this.value.trim();
+					if (!move) return;
 					if (value && value !== side + ':' + index) return;
 					var task = JSON.parse(JSON.stringify(base)); task.move = move;
 					if (side) {task.actors = [base.actors[1], base.actors[0], base.actors[3], base.actors[2]]; task.sideConditions = [base.sideConditions[1], base.sideConditions[0]];}
