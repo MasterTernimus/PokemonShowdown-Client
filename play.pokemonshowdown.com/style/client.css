@@ -4534,6 +4534,8 @@ a.ilink.yours {
 .battle .compact-effect-indicators .compact-effect-line > span {overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .battle .compact-effect-indicators button small {flex:none;color:#e1e7ed;font:11px/14px Arial,sans-serif;white-space:nowrap;}
 .battle .compact-effect-indicators .compact-effect-more {color:#d9e7f4;font-size:11px;text-decoration:underline;text-underline-offset:2px;}
+.battle .compact-effect-indicators .compact-effect-line[data-effect="wonderroom"] {flex-wrap:wrap;color:#f1d7ff;}
+.battle .compact-effect-line[data-effect="wonderroom"] em {flex-basis:100%;text-align:left;font:11px/12px Arial,sans-serif;}
 .battle .compact-effect-indicators button:hover {color:#fff6c9;}
 .battle .compact-effect-indicators button:focus-visible {outline:2px solid #ffdc7e;outline-offset:1px;}
 @media(pointer:coarse){.battle-controls .battle-effects-toggle{min-height:44px}}

@@ -19,9 +19,9 @@ describe('Adaptive Cycle client', () => {
   assert.deepEqual(p.adaptation, memory); assert.equal(p.ability, 'Adaptive Cycle');
   assert.equal(battle.p2.active[0].ability, 'Ultra Ego');
   const text = new BattleTooltips(battle).renderAdaptation(p.adaptation);
-  assert(text.includes('Fire 35%')); assert(text.includes('Water 50%')); assert(text.includes('Adapted'));
+  assert(text.includes('Fire 35%')); assert(text.includes('Water 50%')); assert(text.includes('Fully adapted')); assert(text.includes('4×'));
   assert(text.includes('Factory (active)')); assert(!text.includes('factoryterrain')); assert(!text.includes('not yet encountered')); assert(!text.includes('bypass counters')); assert(!text.includes('p2a:'));
-  assert(text.includes('Tackle')); assert(text.includes('1/2')); assert(text.includes('2/3'));
+  assert(!text.includes('Tackle')); assert(text.includes('1/2')); assert(text.includes('2/3'));
   assert(!text.includes('<script>')); assert(text.includes('&lt;script&gt;'));
  });
  it('offers Adaptive Cycle as an event ability and Recover for both Stunfisks', () => {

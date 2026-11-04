@@ -16245,7 +16245,7 @@ for (const [id, update] of Object.entries({
 	"absol": {
 		"abilities": {
 			"0": "Pressure",
-			"1": "Sword of Ruin",
+			"1": "Beast Fang",
 			"H": "Magic Bounce",
 		},
 		"baseStats": {
@@ -20144,7 +20144,7 @@ for (const [id, update] of Object.entries({
 	},
 	"cacturnealt": {
 		"abilities": {
-			"0": "Scarecrow",
+			"0": "Desert Vigil",
 			"1": "Solar Rush",
 			"H": "Storm Drain",
 		},
@@ -20152,7 +20152,7 @@ for (const [id, update] of Object.entries({
 			"hp": 75,
 			"atk": 160,
 			"def": 70,
-			"spa": 105,
+			"spa": 90,
 			"spd": 70,
 			"spe": 90,
 		},
@@ -20161,7 +20161,7 @@ for (const [id, update] of Object.entries({
 			"Dark",
 		],
 		"passives": [
-			"overcoat",
+			"scarecrow",
 		],
 		"replaceAbilities": true,
 	},
@@ -30917,7 +30917,7 @@ for (const [id, update] of Object.entries({
 			"def": 60,
 			"spa": 120,
 			"spd": 85,
-			"spe": 110,
+			"spe": 105,
 		},
 		"types": [
 			"Dark",
@@ -30938,7 +30938,7 @@ for (const [id, update] of Object.entries({
 			"def": 100,
 			"spa": 150,
 			"spd": 95,
-			"spe": 130,
+			"spe": 125,
 		},
 		"types": [
 			"Dark",
@@ -31799,7 +31799,7 @@ for (const [id, update] of Object.entries({
 	"jumpluff": {
 		"abilities": {
 			"0": "Chlorophyll",
-			"1": "Infiltrator",
+			"1": "Wind Rider",
 			"H": "Windy Surge",
 		},
 		"baseStats": {
@@ -31815,7 +31815,7 @@ for (const [id, update] of Object.entries({
 			"Flying",
 		],
 		"passives": [
-			"shelteringbreeze",
+			"cottondown",
 		],
 		"replaceAbilities": true,
 	},
@@ -37532,6 +37532,7 @@ for (const [id, update] of Object.entries({
 			"0": "Sun Charm",
 			"1": "Serene Grace",
 			"H": "Soul Fire",
+			"S": "Ashen Seeds",
 		},
 		"baseStats": {
 			"hp": 73,
@@ -37555,6 +37556,7 @@ for (const [id, update] of Object.entries({
 			"0": "Sun Charm",
 			"1": "Serene Grace",
 			"H": "Soul Fire",
+			"S": "Ashen Seeds",
 		},
 		"baseStats": {
 			"hp": 73,
@@ -39325,7 +39327,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Electric",
 		],
-		"passives": [],
+		"passives": [
+			"cheekcapacitor",
+		],
 		"replaceAbilities": true,
 	},
 	"pikachualola": {
@@ -39344,7 +39348,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Electric",
 		],
-		"passives": [],
+		"passives": [
+			"cheekcapacitor",
+		],
 		"replaceAbilities": true,
 	},
 	"pikachubelle": {
@@ -39363,7 +39369,9 @@ for (const [id, update] of Object.entries({
 			"Electric",
 			"Ice",
 		],
-		"passives": [],
+		"passives": [
+			"cheekcapacitor",
+		],
 		"replaceAbilities": true,
 	},
 	"pikachucosplay": {
@@ -39382,7 +39390,9 @@ for (const [id, update] of Object.entries({
 			"Electric",
 			"Ice",
 		],
-		"passives": [],
+		"passives": [
+			"cheekcapacitor",
+		],
 		"replaceAbilities": true,
 	},
 	"pikachugmax": {
@@ -39421,7 +39431,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Electric",
 		],
-		"passives": [],
+		"passives": [
+			"cheekcapacitor",
+		],
 		"replaceAbilities": true,
 	},
 	"pikachukalos": {
@@ -39440,7 +39452,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Electric",
 		],
-		"passives": [],
+		"passives": [
+			"cheekcapacitor",
+		],
 		"replaceAbilities": true,
 	},
 	"pikachulibre": {
@@ -39459,7 +39473,9 @@ for (const [id, update] of Object.entries({
 			"Electric",
 			"Fighting",
 		],
-		"passives": [],
+		"passives": [
+			"cheekcapacitor",
+		],
 		"replaceAbilities": true,
 	},
 	"pikachuoriginal": {
@@ -39478,7 +39494,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Electric",
 		],
-		"passives": [],
+		"passives": [
+			"cheekcapacitor",
+		],
 		"replaceAbilities": true,
 	},
 	"pikachupartner": {
@@ -39496,7 +39514,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Electric",
 		],
-		"passives": [],
+		"passives": [
+			"cheekcapacitor",
+		],
 		"replaceAbilities": true,
 	},
 	"pikachuphd": {
@@ -39515,7 +39535,9 @@ for (const [id, update] of Object.entries({
 			"Electric",
 			"Psychic",
 		],
-		"passives": [],
+		"passives": [
+			"cheekcapacitor",
+		],
 		"replaceAbilities": true,
 	},
 	"pikachupopstar": {
@@ -39534,7 +39556,9 @@ for (const [id, update] of Object.entries({
 			"Electric",
 			"Fairy",
 		],
-		"passives": [],
+		"passives": [
+			"cheekcapacitor",
+		],
 		"replaceAbilities": true,
 	},
 	"pikachurockstar": {
@@ -39553,7 +39577,9 @@ for (const [id, update] of Object.entries({
 			"Electric",
 			"Steel",
 		],
-		"passives": [],
+		"passives": [
+			"cheekcapacitor",
+		],
 		"replaceAbilities": true,
 	},
 	"pikachusinnoh": {
@@ -39572,7 +39598,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Electric",
 		],
-		"passives": [],
+		"passives": [
+			"cheekcapacitor",
+		],
 		"replaceAbilities": true,
 	},
 	"pikachustarter": {
@@ -39590,7 +39618,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Electric",
 		],
-		"passives": [],
+		"passives": [
+			"cheekcapacitor",
+		],
 		"replaceAbilities": true,
 	},
 	"pikachuunova": {
@@ -39609,7 +39639,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Electric",
 		],
-		"passives": [],
+		"passives": [
+			"cheekcapacitor",
+		],
 		"replaceAbilities": true,
 	},
 	"pikachuworld": {
@@ -39628,7 +39660,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Electric",
 		],
-		"passives": [],
+		"passives": [
+			"cheekcapacitor",
+		],
 		"replaceAbilities": true,
 	},
 	"pikipek": {
@@ -42478,7 +42512,7 @@ for (const [id, update] of Object.entries({
 		"abilities": {
 			"0": "Gem Eye",
 			"1": "Last Laugh",
-			"H": "Prankster",
+			"H": "Acquired Taste",
 		},
 		"baseStats": {
 			"hp": 70,
@@ -42493,13 +42527,13 @@ for (const [id, update] of Object.entries({
 			"Ghost",
 		],
 		"passives": [
-			"frisk",
+			"prankster",
 		],
 		"replaceAbilities": true,
 	},
 	"sableyemega": {
 		"abilities": {
-			"0": "Mirror Greed",
+			"0": "Tome of Avarice",
 		},
 		"baseStats": {
 			"hp": 70,
@@ -56922,6 +56956,7 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	"terraresolve": [
 		"stamina",
 		"suctioncups",
+		"solidrock",
 	],
 	"primalego": [
 		"unaware",
@@ -57931,7 +57966,6 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	"transistor": [],
 	"railguncircuit": [
 		"lightningrod",
-		"transistor",
 	],
 	"razorcurrent": [
 		"drizzle",
@@ -58812,9 +58846,8 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	"ruinedsky": [
 		"moldbreaker",
 	],
-	"apocalypticflame": [
-		"owntempo",
-	],
+	"beastfang": [],
+	"apocalypticflame": [],
 	"rupturedheaven": [
 		"sharpness",
 	],
@@ -59217,7 +59250,6 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 		"limber",
 	],
 	"insight": [
-		"ultraego",
 		"telepathy",
 		"innerfocus",
 	],
@@ -59384,6 +59416,11 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 		"friendguard",
 		"windrider",
 	],
+	"cheekcapacitor": [],
+	"acquiredtaste": [
+		"frisk",
+	],
+	"tomeofavarice": [],
 };
 // END SERVER WORKING SYNC DISPLAY COMPONENTS
 // BEGIN SERVER WORKING SYNC PASSIVE COMPONENT EXCLUSIONS
@@ -60748,8 +60785,8 @@ const CUSTOM_SHARED_PASSIVE_DESCRIPTIONS: {[id: string]: {passive: string; desc:
 	},
 	"railguncircuit": {
 		"passive": "noguard",
-		"shortDesc": "Lightning Rod + Transistor.",
-		"desc": "Redirects eligible Electric moves, including allied moves, and absorbs Electric hits for +1 Attack and Sp. Atk. Electric Terrain entry grants both boosts. Electric attacks use 1.3x Attack or Sp. Atk, or 2x on Electric Terrain and Factory.",
+		"shortDesc": "Lightning Rod. Special Electric hits break Light Screen and Aurora Veil.",
+		"desc": "Redirects and absorbs Electric moves for +1 Attack and Sp. Atk. Electric Terrain entry grants both boosts. After a special Electric hit damages a foe’s HP, removes Light Screen and Aurora Veil from its side.",
 	},
 	"completeparasitism": {
 		"passive": "dryskin",
@@ -61148,6 +61185,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		},
 		"isNonstandard": null,
 	},
+	"acquiredtaste": {
+		"name": "Acquired Taste",
+		"num": 12193,
+		"gen": 9,
+		"desc": "Frisk reveals opposing held items and Illusions on entry. Each item holder has a 30% chance of Embargo for 5 turns. Heals 1/8 max HP the first time each foe damages it with an attack. Switching out resets this.",
+		"shortDesc": "Frisk. Once per foe each entry, heals 1/8 HP when that foe hits it.",
+		"rating": 3,
+		"flags": {},
+		"isNonstandard": null,
+	},
 	"adaptability": {
 		"name": "Adaptability",
 		"num": 91,
@@ -61198,8 +61245,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Adaptive Cycle",
 		"num": 11260,
 		"gen": 9,
-		"desc": "Cannot be suppressed by Neutralizing Gas, Gastro Acid or similar effects. Battle-long individual memory pauses while inactive or replaced. After surviving a whole opposing move, its type joins two active memories (oldest archived): active end turns grant 20/35/50% damage reduction. Observed opposing actions grant 1 analysis point per turn (2 with shared typing); 4 points unlock 50% incoming reduction, 1.5x outgoing damage, known harmful move/secondary immunity, interaction-specific negation of that individual's entire ability (including composites) and resistant countertyping. Damaging attacks from that foe are at least resisted; attacks against it bypass type immunities and are at least super effective. Stronger natural effectiveness is retained; completed defender adaptation wins if both have analyzed each other. Fixed-damage and OHKO moves retain their normal damage rules. Type/opponent reductions use the stronger only. Learns each foe's bypass or encountered defensive reduction at turn end. Two observed boosted turns counter positive combat/accuracy stages, not Speed. Status and named chip causes complete in two active end turns, curing/removing the learned condition. Each full field/weather completes in three: ignores personal penalties and incoming direct damage bonuses, retaining benefits, Auras and shared transformations. See the Adapted display for observed progress.",
-		"shortDesc": "Learns foes, two active attack types, status/chip, fields and weather; keeps memory when switching.",
+		"desc": "Damaging Z-Moves have a fixed 4x matchup, even against immune types. Protect, weather and learned resistances cannot reduce them. Cannot be suppressed by Neutralizing Gas, Gastro Acid or similar effects. Battle-long individual memory pauses while inactive or replaced. After surviving a whole opposing move, its type joins two active memories (oldest archived): active end turns grant 20/35/50% damage reduction. Observed opposing actions grant 1 analysis point per turn (2 with shared typing); 4 points unlock 50% incoming reduction, 1.5x outgoing damage, known harmful move/secondary immunity, interaction-specific negation of that individual's entire ability (including composites) and resistant countertyping. Damaging attacks from that foe are at least resisted; attacks against it bypass type immunities and are at least super effective. Stronger natural effectiveness is retained; completed defender adaptation wins if both have analyzed each other. Fixed-damage and OHKO moves retain their normal damage rules. Type/opponent reductions use the stronger only. Learns each foe's bypass or encountered defensive reduction at turn end. Two observed boosted turns counter positive combat/accuracy stages, not Speed. Status and named chip causes complete in two active end turns, curing/removing the learned condition. Each full field/weather completes in three: ignores personal penalties and incoming direct damage bonuses, retaining benefits, Auras and shared transformations. See the Adapted display for observed progress.",
+		"shortDesc": "Learns to resist attacks and battlefield effects. Damaging Z-Moves always have a 4x matchup.",
 		"rating": 5,
 		"flags": {
 			"breakable": 1,
@@ -61435,8 +61482,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Agony Flame",
 		"num": 11221,
 		"gen": 9,
-		"desc": "After a damaging Fire move finishes, burns each surviving active opponent that lost HP and applies Heal Block for 2 turns including the current turn. Normal status protections apply. A longer Heal Block is not shortened. A target already burned by the move is not burned again after a curing Berry. Protected, immune, Substitute-only, allied, self and delayed damage do not qualify. As a species passive it remains active under ability suppression.",
-		"shortDesc": "Fire hits burn foes and block healing for 2 turns; requires actual opposing HP damage.",
+		"desc": "After a Fire move damages a foe directly, blocks healing for 2 turns and has a 30% chance to burn. Rolls once per damaged foe per move.",
+		"shortDesc": "Fire hits block healing for 2 turns and have a 30% chance to burn.",
 		"rating": 4.5,
 		"flags": {},
 		"isNonstandard": null,
@@ -61678,12 +61725,10 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Apocalyptic Flame",
 		"num": 11454,
 		"gen": 9,
-		"desc": "Own Tempo. Once per turn after a physical attack deals opposing HP damage, heals 1/8 max HP and attempts to lower one damaged surviving opponent’s stronger attacking stat by one stage, Attack on ties. Normal healing and stat-drop restrictions apply independently.",
-		"shortDesc": "Own Tempo; physical HP hit heals 1/8 and lowers foe’s stronger attack once per turn.",
+		"desc": "Steel moves deal 1.3x damage to Flying or Dragon targets. A single-target attack that damages a foe weakens its next single-target physical hit by 25%. Gigaton Hammer also lowers the higher of Attack and Sp. Atk by 1 stage (Attack on ties). The mark lasts through the following turn. Spread moves skip the mark.",
+		"shortDesc": "Single-target hits weaken the foe's next physical hit. Steel deals 1.3x to Flying or Dragon foes.",
 		"rating": 3.5,
-		"flags": {
-			"breakable": 1,
-		},
+		"flags": {},
 		"isNonstandard": null,
 	},
 	"aquashell": {
@@ -62100,7 +62145,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Battle Armor",
 		"num": 4,
 		"gen": 3,
-		"desc": "Prevents critical hits and takes 20% less attack damage. Gains +1 Defense on Fairy Tale entry and +2 Defense when a foe lowers its stats.",
+		"desc": "Prevents critical hits and takes 20% less attack damage. Gains +1 Defense on Fairy Tale entry and +2 Defense when a foe lowers its stats. Its damage reduction is inactive on New World, Dragon’s Den, Mountain, Holy, Haunted, Starlight Arena, Snowy Mountain and all Flower Garden stages.",
 		"shortDesc": "No critical hits; 20% less damage; foe stat drops give +2 Defense.",
 		"rating": 1,
 		"flags": {
@@ -62172,6 +62217,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"desc": "Its highest stat is raised by 1 stage if it attacks and knocks out another Pokemon. Stat stage changes are not considered. If multiple stats are tied, Attack, Defense, Special Attack, Special Defense, and Speed are prioritized in that order.",
 		"shortDesc": "Its highest stat is raised by 1 if it attacks and KOes another Pokemon.",
 		"rating": 3.5,
+		"flags": {},
+		"isNonstandard": null,
+	},
+	"beastfang": {
+		"name": "Beast Fang",
+		"num": 12192,
+		"gen": 9,
+		"desc": "Physical biting and slicing moves use the target’s Sp. Def and deal 1.3x damage to Dragon types.",
+		"shortDesc": "Physical bites and slices target Sp. Def; 1.3x damage to Dragons.",
+		"rating": 4,
 		"flags": {},
 		"isNonstandard": null,
 	},
@@ -62257,7 +62312,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Blackwater Anchor",
 		"num": 12015,
 		"gen": 9,
-		"desc": "Full Steelworker, including Steel STAB, its attacking-stat boost, resistances, Poison immunity and field effects. Grass/Steel hits lower each foe's Speed by 1, once per turn. Anchor Shot tethers one trapped foe, draining 1/16 max HP per turn and healing the user by actual damage dealt. On Water Surface or Underwater, draining a poisoned tethered foe also heals adjacent allies by that amount. Either participant leaving ends the tether; escape, suppression, damage immunity and healing restrictions apply.",
+		"desc": "Full Steelworker, including Steel STAB, its attacking-stat boost and field effects. Grass/Steel hits lower each foe's Speed by 1, once per turn. Anchor Shot tethers one trapped foe, draining 1/16 max HP per turn and healing the user by actual damage dealt. On Water Surface or Underwater, draining a poisoned tethered foe also heals adjacent allies by that amount. Either participant leaving ends the tether; escape, suppression, damage immunity and healing restrictions apply.",
 		"shortDesc": "Steelworker; Grass/Steel hits slow foes. Anchor Shot drains; water fields share poisoned-foe drain.",
 		"rating": 4,
 		"flags": {},
@@ -62557,8 +62612,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Burning Quake",
 		"num": 11456,
 		"gen": 9,
-		"desc": "Raises the critical-hit ratio by 1 stage. Once per turn, after a move finishes landing a critical hit that damages an opponent’s HP, raises the user’s Speed by 1 stage. Multi-hit and spread moves trigger once. Ally and Substitute-only damage do not qualify. The user must survive the move.",
-		"shortDesc": "+1 critical-hit ratio; once/turn after a damaging critical hit, +1 Speed.",
+		"desc": "Physical attacks deal 1.3x damage to Dragon types. Raises the critical-hit ratio by 1 stage. Once per turn, after a move finishes landing a critical hit that damages an opponent’s HP, raises the user’s Speed by 1 stage. Multi-hit and spread moves trigger once. Ally and Substitute-only damage do not qualify. The user must survive the move.",
+		"shortDesc": "Physical hits deal 1.3x to Dragons. +1 crit ratio; damaging crits grant +1 Speed once per turn.",
 		"rating": 3.5,
 		"flags": {},
 		"isNonstandard": null,
@@ -62819,6 +62874,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"desc": "Contact moves pierce protection at 1/4 damage, except Max Guard; punches have 1.4x power. Before an opposing damaging attack hits, has a fixed 50% chance to counter with Sucker Punch if it is in the moveset. Costs double its usual PP, including Pressure, and requires the full cost. Uses no normal action. Rolls once per attack; Serene Grace does not affect the chance. Priority blockers apply; counters cannot chain. A KO stops the incoming attack.",
 		"shortDesc": "Unseen Fist; 50% pre-hit Sucker Punch counter if known, at double PP.",
 		"rating": 4,
+		"flags": {},
+		"isNonstandard": null,
+	},
+	"cheekcapacitor": {
+		"name": "Cheek Capacitor",
+		"num": 12195,
+		"gen": 9,
+		"desc": "The first Electric attack each entry that damages an opposing Pokémon raises the user’s Speed by 1 stage.",
+		"shortDesc": "First Electric hit on a foe each entry raises Speed by 1.",
+		"rating": 3,
 		"flags": {},
 		"isNonstandard": null,
 	},
@@ -64647,7 +64712,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Filter",
 		"num": 111,
 		"gen": 4,
-		"desc": "Takes 20% less attack damage, or 40% less from super-effective attacks.",
+		"desc": "Takes 20% less attack damage, or 40% less from super-effective attacks. Its damage reduction is inactive on New World, Dragon’s Den, Mountain, Holy, Haunted, Starlight Arena, Snowy Mountain and all Flower Garden stages. With Solid Rock, Filter or Prism Armor, only the strongest damage cut from abilities, passives, Mist, Safeguard or Lucky Chant applies.",
 		"shortDesc": "20% less attack damage; 40% less if super effective.",
 		"rating": 3,
 		"flags": {
@@ -64941,7 +65006,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Friend Guard",
 		"num": 132,
 		"gen": 5,
-		"desc": "Allies take 25% less attack damage; this does not protect the holder.",
+		"desc": "Allies take 25% less attack damage; this does not protect the holder. With Solid Rock, Filter or Prism Armor, only the strongest damage cut from abilities, passives, Mist, Safeguard or Lucky Chant applies.",
 		"shortDesc": "Allies take 25% less attack damage.",
 		"rating": 0,
 		"flags": {
@@ -65702,7 +65767,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Hellfire Eclipse",
 		"num": 10100,
 		"gen": 9,
-		"desc": "On entry, lowers adjacent foes Attack by 1 under normal Intimidate rules. Dark Aura boosts all damaging Dark moves by 4/3, or multiplies them by 0.75 with Aura Break; multiple users do not stack. Immune to hail damage on Cold Eclipse. After a damaging Fire move finishes, Agony Flame burns each surviving active opponent that lost HP and applies Heal Block for 2 turns including the current turn. Normal protections apply; longer Heal Block is preserved and a move burn cured by a Berry is not reapplied.",
+		"desc": "On entry, lowers adjacent foes Attack by 1 under normal Intimidate rules. Dark Aura boosts all damaging Dark moves by 4/3, or multiplies them by 0.75 with Aura Break; multiple users do not stack. Immune to hail damage on Cold Eclipse. After a Fire move damages a foe directly, blocks healing for 2 turns and has a 30% chance to burn. Rolls once per damaged foe per move.",
 		"shortDesc": "Dark Aura + Agony Flame + Intimidate.",
 		"rating": 4.5,
 		"flags": {},
@@ -66203,8 +66268,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Insight",
 		"num": 11979,
 		"gen": 9,
-		"desc": "Full local Ultra Ego, Telepathy and Inner Focus. Ultra Ego supplies its attack power, whole-attack recovery, defensive triggers and field interactions. Telepathy prevents allied damaging moves and doubles Speed on Psychic Terrain or Psychic Aura. Inner Focus prevents flinching and Intimidate.",
-		"shortDesc": "Ultra Ego + Telepathy + Inner Focus.",
+		"desc": "Telepathy and Inner Focus. After damaging a foe, switch attack categories against it to ignore positive Defense stages on physical hits or positive Sp. Def stages on special hits. Switching either Pokémon clears the read.",
+		"shortDesc": "Telepathy + Inner Focus. Alternating physical and special hits bypasses that foe’s defensive boosts.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null,
@@ -68771,7 +68836,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Prism Armor",
 		"num": 232,
 		"gen": 7,
-		"desc": "Takes 20% less attack damage, plus a further 25% reduction against super-effective attacks or on Crystal Cavern and Dark Crystal Cavern (40% total). Defense and Sp. Def are 4/3x on Cold Eclipse, Infernal Eclipse, Dark Crystal Cavern and Rainbow. Immune to hail damage on Cold Eclipse.",
+		"desc": "Takes 20% less attack damage, plus a further 25% reduction against super-effective attacks or on Crystal Cavern and Dark Crystal Cavern (40% total). Defense and Sp. Def are 4/3x on Cold Eclipse, Infernal Eclipse, Dark Crystal Cavern and Rainbow. Immune to hail damage on Cold Eclipse. With Solid Rock, Filter or Prism Armor, only the strongest damage cut from abilities, passives, Mist, Safeguard or Lucky Chant applies.",
 		"shortDesc": "20% less damage; extra 25% vs super effective. Eclipse defenses: 4/3x.",
 		"rating": 3,
 		"flags": {},
@@ -69212,8 +69277,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Railgun Circuit",
 		"num": 10141,
 		"gen": 9,
-		"desc": "Redirects eligible Electric moves, including allied moves, and absorbs Electric hits for +1 Attack and Sp. Atk. Electric Terrain entry grants both boosts. Electric attacks use 1.3x Attack or Sp. Atk, or 2x on Electric Terrain and Factory.",
-		"shortDesc": "Lightning Rod + Transistor.",
+		"desc": "Redirects and absorbs Electric moves for +1 Attack and Sp. Atk. Electric Terrain entry grants both boosts. After a special Electric hit damages a foe’s HP, removes Light Screen and Aurora Veil from its side.",
+		"shortDesc": "Lightning Rod. Special Electric hits break Light Screen and Aurora Veil.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null,
@@ -69799,7 +69864,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Rivalry",
 		"num": 79,
 		"gen": 4,
-		"desc": "Damaging moves have 1.3x power against targets of the same gender or genderless targets. All other matchups retain normal power with no penalty. Other allies take 25% less attack damage, including friendly fire, regardless of gender; the holder does not protect itself. Protection stacks with Friend Guard and with each other Rivalry holder. The same holder's active and passive Rivalry do not duplicate its effects.",
+		"desc": "Damaging moves have 1.3x power against targets of the same gender or genderless targets. All other matchups retain normal power with no penalty. Other allies take 25% less attack damage, including friendly fire, regardless of gender; the holder does not protect itself. Protection stacks with Friend Guard and with each other Rivalry holder. The same holder's active and passive Rivalry do not duplicate its effects. With Solid Rock, Filter or Prism Armor, only the strongest damage cut from abilities, passives, Mist, Safeguard or Lucky Chant applies.",
 		"shortDesc": "1.3x power vs same-gender or genderless targets; other allies take 0.75x attack damage. Stacks.",
 		"rating": 0,
 		"flags": {},
@@ -70225,7 +70290,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Scarecrow",
 		"num": 10345,
 		"gen": 9,
-		"desc": "Absorbs wind moves for +1 Attack. Gains +1 Attack when Tailwind starts on its side or it enters during Tailwind. Strong Winds gives +1 Attack and Sp. Atk each turn. Steel moves receive STAB and use 1.5x Attack or Sp. Atk (2x on Factory). On Short-Circuit, Steel moves also gain Electric typing. Adds Steel resistances and Poison immunity without Steel weaknesses.",
+		"desc": "Absorbs wind moves for +1 Attack. Gains +1 Attack when Tailwind starts on its side or it enters during Tailwind. Strong Winds gives +1 Attack and Sp. Atk each turn. Steel moves receive STAB and use 1.5x Attack or Sp. Atk (2x on Factory). On Short-Circuit, Steel moves also gain Electric typing.",
 		"shortDesc": "Wind Rider and Steelworker.",
 		"rating": 5,
 		"flags": {
@@ -70610,7 +70675,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Shell Armor",
 		"num": 75,
 		"gen": 3,
-		"desc": "Prevents critical hits and takes 20% less attack damage. Gains +1 Defense on Fairy Tale or Dragon's Den entry and +2 Sp. Def when a foe lowers its stats.",
+		"desc": "Prevents critical hits and takes 20% less attack damage. Gains +1 Defense on Fairy Tale or Dragon's Den entry and +2 Sp. Def when a foe lowers its stats. Its damage reduction is inactive on New World, Dragon’s Den, Mountain, Holy, Haunted, Starlight Arena, Snowy Mountain and all Flower Garden stages.",
 		"shortDesc": "No critical hits; 20% less damage; foe stat drops give +2 Sp. Def.",
 		"rating": 1,
 		"flags": {
@@ -71111,7 +71176,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Solid Rock",
 		"num": 116,
 		"gen": 4,
-		"desc": "Takes 20% less attack damage, or 40% less from super-effective attacks.",
+		"desc": "Takes 20% less attack damage, or 40% less from super-effective attacks. Its damage reduction is inactive on New World, Dragon’s Den, Mountain, Holy, Haunted, Starlight Arena, Snowy Mountain and all Flower Garden stages. With Solid Rock, Filter or Prism Armor, only the strongest damage cut from abilities, passives, Mist, Safeguard or Lucky Chant applies.",
 		"shortDesc": "20% less attack damage; 40% less if super effective.",
 		"rating": 3,
 		"flags": {
@@ -71167,7 +71232,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Soul Anchor",
 		"num": 11239,
 		"gen": 9,
-		"desc": "Steelworker: Steel attacks gain STAB and 1.5x Attack or Sp. Atk (2x on Factory); on Short-Circuit they also become Electric-type. Immune to Poison attacks; resists Normal, Flying, Rock, Bug, Steel, Grass, Psychic, Ice, Dragon and Fairy attacks. A foe successfully trapped by its Anchor Shot loses 1/16 max HP each turn end; the holder heals by actual damage dealt. Only one tether per holder; a new tether replaces the old, and either Pokemon leaving ends it. Trap immunity, escape, indirect-damage immunity, suppression and healing restrictions apply.",
+		"desc": "Steelworker: Steel attacks gain STAB and 1.5x Attack or Sp. Atk (2x on Factory); on Short-Circuit they also become Electric-type. A foe successfully trapped by its Anchor Shot loses 1/16 max HP each turn end; the holder heals by actual damage dealt. Only one tether per holder; a new tether replaces the old, and either Pokemon leaving ends it. Trap immunity, escape, indirect-damage immunity, suppression and healing restrictions apply.",
 		"shortDesc": "Its Anchor Shot tethers one trapped foe, draining 1/16 HP each turn.",
 		"rating": 4,
 		"flags": {},
@@ -71588,8 +71653,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Steelworker",
 		"num": 200,
 		"gen": 7,
-		"desc": "Steel moves receive STAB and use 1.5x Attack or Sp. Atk (2x on Factory). On Short-Circuit, Steel moves also gain Electric typing. Adds Steel resistances and Poison immunity without Steel weaknesses.",
-		"shortDesc": "Steel STAB and attacking boost; Steel resistances without weaknesses.",
+		"desc": "Steel moves receive STAB and use 1.5x Attack or Sp. Atk (2x on Factory). On Short-Circuit, Steel moves also gain Electric typing.",
+		"shortDesc": "Steel moves gain STAB and use 1.5x Attack or Sp. Atk.",
 		"rating": 3.5,
 		"flags": {},
 		"isNonstandard": null,
@@ -72367,8 +72432,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Terra Resolve",
 		"num": 10042,
 		"gen": 9,
-		"desc": "Opposing attacks that damage HP heal 1/16 max HP once per move. The first each turn raises Defense by 1. Prevents forced switching.",
-		"shortDesc": "Stamina + Suction Cups.",
+		"desc": "Opposing attacks that damage HP heal 1/16 max HP once per move. The first each turn raises Defense by 1. Takes 20% less attack damage, or 40% less from super-effective hits. Prevents forced switching. Its damage reduction is inactive on New World, Dragon’s Den, Mountain, Holy, Haunted, Starlight Arena, Snowy Mountain and all Flower Garden stages. With Solid Rock, Filter or Prism Armor, only the strongest damage cut from abilities, passives, Mist, Safeguard or Lucky Chant applies.",
+		"shortDesc": "Stamina + Solid Rock + Suction Cups.",
 		"rating": 3.5,
 		"flags": {
 			"breakable": 1,
@@ -72541,6 +72606,18 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"shortDesc": "Punches: 1.4x power, break screens. Critical hits heal 1/8 HP once per turn.",
 		"rating": 3,
 		"flags": {},
+		"isNonstandard": null,
+	},
+	"tomeofavarice": {
+		"name": "Tome of Avarice",
+		"num": 12194,
+		"gen": 9,
+		"desc": "Remembers opposing moves that damage its HP. Later uses of those moves deal 30% less damage to it until it switches out.",
+		"shortDesc": "Takes 30% less damage from moves that already hurt it this entry.",
+		"rating": 4,
+		"flags": {
+			"breakable": 1,
+		},
 		"isNonstandard": null,
 	},
 	"torrent": {
@@ -99270,6 +99347,9 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"accumulation": [
 		"thickfat",
 	],
+	"acquiredtaste": [
+		"frisk",
+	],
 	"adaptability": [],
 	"adaptivearsenal": [],
 	"adaptivecell": [],
@@ -99425,9 +99505,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"strongjaw",
 		"shedskin",
 	],
-	"apocalypticflame": [
-		"owntempo",
-	],
+	"apocalypticflame": [],
 	"aquashell": [
 		"heatproof",
 		"frisk",
@@ -99533,6 +99611,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"battlespoils": [],
 	"beadsofruin": [],
 	"beastboost": [],
+	"beastfang": [],
 	"beguilingbouquet": [
 		"aromaveil",
 	],
@@ -99706,6 +99785,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"unseenfist",
 		"ironfist",
 	],
+	"cheekcapacitor": [],
 	"cheekpouch": [],
 	"chillingneigh": [],
 	"chlorophyll": [],
@@ -100429,7 +100509,6 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"innardsout": [],
 	"innerfocus": [],
 	"insight": [
-		"ultraego",
 		"telepathy",
 		"innerfocus",
 	],
@@ -101084,7 +101163,6 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	],
 	"railguncircuit": [
 		"lightningrod",
-		"transistor",
 	],
 	"railsight": [
 		"innerfocus",
@@ -101767,6 +101845,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"terraresolve": [
 		"stamina",
 		"suctioncups",
+		"solidrock",
 	],
 	"territorial": [
 		"unnerve",
@@ -101808,6 +101887,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"titansknuckles": [
 		"ironfist",
 	],
+	"tomeofavarice": [],
 	"torrent": [],
 	"toughclaws": [],
 	"toxicarmor": [

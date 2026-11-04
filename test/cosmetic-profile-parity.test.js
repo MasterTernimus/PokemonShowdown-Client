@@ -1,7 +1,7 @@
 'use strict';
 const assert = require('assert').strict;
 const {Dex} = require('./helpers/isolated-dex.cjs')();
-const serverPath = require('path').join(process.env.PS_SERVER_SOURCE || require('path').resolve(__dirname, '../caches/PokemonShowdown-Reborn'), 'dist');
+const serverPath = 'C:/Users/Cynao/Desktop/Showdown/PokemonShowdown-Reborn/dist';
 const server = require(serverPath + '/sim').Dex;
 const {CosmeticBattleCounterparts} = require(serverPath + '/data/cosmetic-counterparts');
 describe('Cosmetic profile parity', () => {

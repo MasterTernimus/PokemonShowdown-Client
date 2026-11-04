@@ -330,12 +330,12 @@ exports.abilities=(id,f)=>({...prior(id,f),...(events[id]?{S:events[id]}:{}),...
 // Merged middle-stage, armor, Lapras, Absol and Machamp approvals supersede older snapshots.
 {
  const prior={...exports};
- const passives={jumpluff:['shelteringbreeze'],jynxalt:['icebody'],shelgon:['shellarmor'],pupitar:['eartheater'],zweilous:['hydrabond'],dodrio:['hydrabond'],
+ const passives={sableye:['prankster'],jumpluff:['cottondown'],jynxalt:['icebody'],shelgon:['shellarmor'],pupitar:['eartheater'],zweilous:['hydrabond'],dodrio:['hydrabond'],
   goodra:['gooey'],goodrahisui:['gooey'],goodrahisuialt:['gooey'],armarouge:['soulforgedarmor'],ceruledge:['soulforgedarmor'],
   absol:['omensight'],absolmega:['omensight'],absolmegaz:['omensight'],garchompmega:['sharpness'],
   banette:['tatteredmemory'],qwilfish:['spinyhide'],golemalola:['galvanize'],laprasgmax:['liquidvoice'],
   machamp:['innerfocus'],machampalt:['innerfocus'],machampgmax:['innerfocus'],machampgmaxalt:['innerfocus']};
- const effects={terraresolve:['stamina','suctioncups','terraresolve'],oraclesrefrain:['oraclesrefrain','soundproof'],mountainhide:['innerfocus','mountainhide'],mountainbreaker:['mountainbreaker'],dreadpresence:['dreadpresence','unnerve'],duskdrive:['duskdrive','keeneye','ultraego'],twilightinstinct:['innerfocus','moldbreaker','opportunist','twilightinstinct','ultrainstinct'],auroraresonance:['auroraresonance'],cursedmarionette:['cursedmarionette'],
+ const effects={apocalypticflame:['apocalypticflame'],railguncircuit:['lightningrod','railguncircuit'],insight:['innerfocus','insight','telepathy'],terraresolve:['solidrock','stamina','suctioncups','terraresolve'],oraclesrefrain:['oraclesrefrain','soundproof'],mountainhide:['innerfocus','mountainhide'],mountainbreaker:['mountainbreaker'],dreadpresence:['dreadpresence','unnerve'],duskdrive:['duskdrive','keeneye','ultraego'],twilightinstinct:['innerfocus','moldbreaker','opportunist','twilightinstinct','ultrainstinct'],auroraresonance:['auroraresonance'],cursedmarionette:['cursedmarionette'],
   reapersgrip:['reapersgrip','selfsufficient'],safeharbor:['hydration','safeharbor','waterabsorb'],
   triplethreat:['earlybird','innerfocus','keeneye','triplethreat'],oceanlullaby:['icebody','oceanlullaby','shellarmor']};
  exports.passives=(id,f)=>passives[id]||prior.passives(id,f);

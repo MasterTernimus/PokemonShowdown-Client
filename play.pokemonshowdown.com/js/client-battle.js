@@ -1813,7 +1813,7 @@ BattleRoom.prototype.showPassives = function (pos) {
 		return '<' + (guide ? 'button type="button" name="openFieldGuide" value="' + escape(guide) + '" title="Open public field rules"' : 'span') +
 			' class="battle-layer ' + kind + '-layer" data-effect="' + escape(id) + '">' +
 			(kind === 'side' ? '' : '<small>' + kind + '</small>') + '<b>' + escape(name) + '</b>' +
-			(time ? '<span class="effect-turns">' + escape(time) + '</span>' : '') + '</' + (guide ? 'button' : 'span') + '>';
+			(time ? '<span class="effect-turns">' + escape(time) + '</span>' : '') + (id === 'wonderroom' ? '<span>Def ↔ SpD</span>' : '') + '</' + (guide ? 'button' : 'span') + '>';
 	}
 	BattleRoom.prototype.openFieldGuide = function (id) {window.openPublicFieldGuide(id);};
 	BattleRoom.prototype.publicBattleEffectsHTML = function () {
@@ -1830,6 +1830,7 @@ BattleRoom.prototype.showPassives = function (pos) {
 			var raw = toID(state[0]), field = battle.getTerrainId(state[0]), aura = /aura$/.test(raw);
 			var guide = aura ? 'aura/' + (raw === 'frozenaura' ? raw : raw.replace(/aura$/, 'terrain')) : field;
 			var name = raw === 'midnightzoneterrain' ? 'Midnight Zone' : state[0];
+			if (raw === 'wonderroom') name = 'Wonder Room';
 			var garden = /^flowergarden([1-5])$/.exec(raw);
 			if (garden) name = 'Flower Garden (Stage ' + garden[1] + ')';
 			entries.push(chip(aura ? 'aura' : field ? 'field' : 'room', name, duration(battle, state[1], state[2], !!field || aura), guide, raw));
@@ -1870,14 +1871,16 @@ BattleRoom.prototype.showPassives = function (pos) {
 		var shared = holder.find('.battle-effects-shared .battle-layer').toArray();
 		var sideEffects = holder.find('.battle-effects-side .battle-layer').toArray();
 		// Keep the arena summary short; every public timer remains in the details view.
-		shared.sort(function (a, b) {return Number($(b).attr('data-effect') === 'trickroom') - Number($(a).attr('data-effect') === 'trickroom');});
+		var roomPriority = {trickroom: 2, wonderroom: 1};
+		shared.sort(function (a, b) {return (roomPriority[$(b).attr('data-effect')] || 0) - (roomPriority[$(a).attr('data-effect')] || 0);});
 		var visible = shared.slice(0, 3), extra = shared.length - visible.length;
 		visible.sort(function (a, b) {return shared.indexOf(a) - shared.indexOf(b);});
 		var entries = visible.map(function (element) {
 			var node = $(element), name = node.find('b').text(), time = node.find('.effect-turns').text();
-			var title = name + (time ? ', ' + time : '');
+			var wonder = node.attr('data-effect') === 'wonderroom';
+			var title = name + (wonder ? ', Defense and Special Defense swapped' : '') + (time ? ', ' + time : '');
 			var compactTime = /^(Persistent|Active)$/.test(time) ? '' : time.replace(/ turns?$/, '').replace(' or ', '–').replace('Up to ', '≤');
-			return '<button type="button" name="showBattleEffectsDetails" data-effect="' + escape(node.attr('data-effect')) + '" class="compact-effect-line" title="' + escape(title) + '" aria-label="' + escape(title) + '"><span>' + escape(name) + '</span>' + (compactTime ? '<small>' + escape(compactTime) + '</small>' : '') + '</button>';
+			return '<button type="button" name="showBattleEffectsDetails" data-effect="' + escape(node.attr('data-effect')) + '" class="compact-effect-line" title="' + escape(title) + '" aria-label="' + escape(title) + '"><span>' + escape(name) + '</span>' + (compactTime ? '<small>' + escape(compactTime) + '</small>' : '') + (wonder ? '<em>Def ↔ SpD</em>' : '') + '</button>';
 		}).join('');
 		if (sideEffects.length || extra) {
 			var titles = holder.find('.battle-layer').map(function () {var node = $(this), side = node.closest('.battle-effects-side').children('strong').first().text(); return (side ? side + ': ' : '') + node.find('b').text() + ', ' + node.find('.effect-turns').text();}).get().join('; ');

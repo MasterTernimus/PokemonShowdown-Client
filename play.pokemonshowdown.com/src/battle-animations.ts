@@ -944,6 +944,7 @@ export class BattleScene implements BattleSceneStub {
 		const garden = /^flowergarden([1-5])$/.exec(toID(pWeather[0]));
 		if (garden) return `<br />Flower Garden (Stage ${garden[1]})`;
 		let buf = '<br />' + Dex.moves.get(pWeather[0]).name;
+		if (toID(pWeather[0]) === 'wonderroom') buf += ' · Def ↔ SpD';
 		if (!pWeather[1] && pWeather[2]) {
 			pWeather[1] = pWeather[2];
 			pWeather[2] = 0;
@@ -1923,7 +1924,7 @@ export class PokemonSprite extends Sprite {
 		telekinesis: ['Telekinesis', 'neutral'],
 		transform: ['Transformed', 'neutral'],
 		powertrick: ['Power Trick', 'neutral'],
-		curse: ['Curse', 'bad'],
+		curse: ['Cursed ↓HP', 'bad'],
 		nightmare: ['Nightmare', 'bad'],
 		attract: ['Infatuation', 'bad'],
 		voidcrossingcurse: ['Cursed: next attack &times;0.8', 'bad'],

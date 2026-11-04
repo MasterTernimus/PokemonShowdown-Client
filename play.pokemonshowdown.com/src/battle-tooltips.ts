@@ -1048,32 +1048,37 @@ class BattleTooltips {
 			(window as any).BattleFieldRules?.find((field: any) => field.id === id)?.name ||
 			(Dex.moves.get(id).exists ? Dex.moves.get(id).name : id.replace(/terrain$/, '').replace(/^./, c => c.toUpperCase()));
 		let text = '<div class="tooltip-section"><strong>Adaptive Cycle' + (memory.active ? '' : ' (paused)') + '</strong><br />';
+		text += '<b>Z-Move weakness:</b> 4× damage through Protect, weather and type immunity.<br />';
 		[true, false].forEach(active => {
-			const rows = Object.entries(memory.types || {}).filter(([type]) => memory.activeTypes.includes(type) === active);
-			if (rows.length) text += '<b>' + (active ? 'Damage reduced' : 'Stored types') + ':</b> ' + rows.map(([type, record]) =>
-				esc(type) + ' ' + [0, 20, 35, 50][record.stage] + '%').join(', ') + '<br />';
+			const types = Object.entries(memory.types || {}).filter(([type]) => memory.activeTypes.includes(type) === active);
+			if (types.length) text += '<b>' + (active ? 'Taking less damage' : 'Stored for later') + ':</b> ' +
+				types.map(([type, record]) => esc(type) + ' ' + [0,20,35,50][record.stage] + '%').join(', ') + '<br />';
 		});
-		for (const record of Object.values(memory.opponents || {})) {
-			text += '<b>' + esc(record.label.replace(/^p[1-4][a-z]?:\s*/, '')) + ':</b> ' +
-				(record.complete ? 'Adapted' : record.points + '/4') + '<br />';
-			const notes: string[] = [];
-			if (record.moves.length) notes.push('Seen: ' + record.moves.map(id => esc(Dex.moves.get(id).name)).join(', '));
-			if (record.setup.stage) notes.push(record.setup.stage >= 2 ? 'Stat boosts countered' : 'Stat boosts: ' + record.setup.stage + '/2');
-			if (!record.complete && record.bypass.length) notes.push('Bypass learned: ' + record.bypass.length);
-			if (!record.complete && record.defenses.length) notes.push('Defenses learned: ' + record.defenses.length);
-			if (notes.length) text += '<small>' + notes.join(' · ') + '</small><br />';
+		const foes = Object.values(memory.opponents || {});
+		const label = (record: typeof foes[number]) => esc(record.label.replace(/^p[1-4][a-z]?:\s*/, ''));
+		const adapted = foes.filter(foe => foe.complete);
+		if (adapted.length) {
+			text += '<b>Fully adapted:</b> ' + adapted.map(label).join(', ') + '<br />';
+			text += '<small>Resists their attacks. Its own attacks hit them super effectively and bypass their immunities.</small><br />';
 		}
-		if (Object.values(memory.opponents || {}).some(record => record.complete)) {
-			text += '<small>Adapted foes: attacks resisted; your hits super effective; ability and type immunities ignored. Defender adaptation wins.</small><br />';
+		for (const foe of foes.filter(record => !record.complete)) {
+			const notes = [];
+			if (foe.moves.length) notes.push(foe.moves.map(id => esc(Dex.moves.get(id).name)).join(', '));
+			if (foe.setup.stage) notes.push(foe.setup.stage >= 2 ? 'counters stat boosts' : 'learning stat boosts');
+			if (foe.bypass.length) notes.push('recognizes ability bypass');
+			if (foe.defenses.length) notes.push('recognizes defensive effects');
+			text += '<b>Learning ' + label(foe) + ':</b> ' + foe.points + '/4' +
+				(notes.length ? ' <small>(' + notes.join(' · ') + ')</small>' : '') + '<br />';
 		}
 		([
-			['Status', memory.statuses, 2], ['Residual damage', memory.chip, 2],
+			['Status', memory.statuses, 2], ['Chip damage', memory.chip, 2],
 			['Fields', memory.fields, 3], ['Weather', memory.weather, 3],
 		] as [string, {[id: string]: {stage: number}}, number][]).forEach(([label, table, total]) => {
 			const rows = Object.entries(table || {});
 			if (!rows.length) return;
 			text += '<b>' + label + ':</b> ' + rows.map(([id, record]) =>
-				esc(name(id)) + (id === memory.field || id === memory.currentWeather ? ' (active)' : '') + ' ' + progress(record.stage, total)
+				esc(name(id)) + (id === memory.field || id === memory.currentWeather ? ' (active)' : '') + ' · ' +
+				(record.stage >= total ? 'adapted' : progress(record.stage, total))
 			).join(', ') + '<br />';
 		});
 		return text + '</div>';
