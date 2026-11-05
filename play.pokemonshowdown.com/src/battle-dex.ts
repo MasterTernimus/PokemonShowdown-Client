@@ -57018,7 +57018,6 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	],
 	"atrocity": [
 		"unboundblaze",
-		"toughclaws",
 		"fireward",
 	],
 	"wickedsnare": [
@@ -61939,8 +61938,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Atrocity",
 		"num": 10126,
 		"gen": 9,
-		"desc": "Unbound Blaze + Tough Claws + Fire Ward",
-		"shortDesc": "Unbound Blaze + Tough Claws + Fire Ward",
+		"desc": "Unbound Blaze + Fire Ward",
+		"shortDesc": "Unbound Blaze + Fire Ward",
 		"rating": 5,
 		"flags": {
 			"cantsuppress": 1,
@@ -99550,7 +99549,6 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	],
 	"atrocity": [
 		"unboundblaze",
-		"toughclaws",
 		"fireward",
 	],
 	"aurabreak": [],
@@ -105926,8 +105924,8 @@ Object.assign(CUSTOM_ITEM_UPDATES, {
 	"garchompite": {
 		"name": "Garchompite",
 		"num": 683,
-		"desc": "If held by a Garchomp, this item allows it to Mega Evolve into Mega Garchomp.",
-		"shortDesc": "If held by a Garchomp, this item allows it to Mega Evolve into Mega Garchomp.",
+		"desc": "Allows Garchomp to Mega Evolve into Garchomp-Mega or Garchomp-Mega-Z.",
+		"shortDesc": "Allows Garchomp to Mega Evolve into Garchomp-Mega or Garchomp-Mega-Z.",
 		"gen": 6,
 		"isNonstandard": "Past",
 		"megaStone": {
@@ -113604,7 +113602,12 @@ const Dex = new class implements ModdedDex {
 		// These full-body Mega animations have their own proportions. A base-species
 		// reference (especially Tatsugiri's tiny front sprite) incorrectly shrinks them.
 		// Keep compact previews and custom shiny/static artwork on their existing policy.
-		const visibleLimit = useMegaAnimationBounds ? limit : Math.min(limit, referenceLimit);
+		// Hydreigon's hovering BW animation has substantial vertical travel space. The
+		// ordinary preview cap shrinks its body along with that space; retain native pixels.
+		const nativeHydreigonPreview = options.teamPreview && species.id === 'hydreigon' &&
+			/^gen5ani(?:-back)?\/hydreigon\.gif$/.test(asset!);
+		const visibleLimit = nativeHydreigonPreview ? Math.max(width, height) / pixelScale :
+			useMegaAnimationBounds ? limit : Math.min(limit, referenceLimit);
 		// Apply one final policy to the selected asset, after all animation/form fallbacks.
 		// A cropped 2x sprite has the same logical size as the padded 1x original.
 		let scale = Math.min(1 / pixelScale, visibleLimit / visibleWidth, visibleLimit / visibleHeight);
@@ -115795,7 +115798,7 @@ const AUDITED_DESCRIPTION_COMPONENTS: {[id: string]: string[]} = {
 	],
 	"grandmaster": [],
 	"warpath": [],
-	"atrocity": ["unboundblaze", "toughclaws", "fireward"],
+	"atrocity": ["unboundblaze", "fireward"],
 	"wickedsnare": ["intimidate"],
 	"voidcommand": [
 		"insomnia",

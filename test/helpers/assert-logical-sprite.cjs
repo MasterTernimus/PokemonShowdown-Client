@@ -15,7 +15,9 @@ module.exports = function assertLogicalSize(data, species, front, preview = fals
 	const ref = table[id]?.[front ? 'front' : 'back'];
 	const max = preview ? (id.includes('gmax') ? 96 : id.includes('mega') || id.includes('battlebond') ? 88 : 80) :
 		id.includes('gmax') ? 160 : id.includes('mega') || id.includes('battlebond') ? 128 : 120;
-	const bound = Math.min(max, ref ? Math.max(...ref) : max);
+	// Approved Hydreigon hover preview preserves its native canvas, including travel space.
+	const nativeHover = preview && id === 'hydreigon' && /^gen5ani(?:-back)?\/hydreigon\.gif$/.test(asset);
+	const bound = nativeHover ? Math.max(m[0], m[1]) / m[6] : Math.min(max, ref ? Math.max(...ref) : max);
 	assert(data.w > 0 && data.h > 0);
 	assert(data.w * m[4] / m[0] <= bound + 1 && data.h * m[5] / m[1] <= bound + 1, species + ': exceeds logical bounds');
 	assert(data.w <= m[0] / m[6] + 1 && data.h <= m[1] / m[6] + 1, species + ': enlarges native pixels');

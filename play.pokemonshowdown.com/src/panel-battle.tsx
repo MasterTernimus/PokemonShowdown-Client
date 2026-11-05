@@ -595,6 +595,10 @@ class BattlePanel extends PSRoomPanel<BattleRoom> {
 				megaLabel = 'Banette-Mega';
 				megaXLabel = 'Banette-Mega-Z';
 			}
+			if (speciesid === 'garchomp' && toID(pokemon.item) === 'garchompite') {
+				megaLabel = 'Garchomp-Mega';
+				megaXLabel = 'Garchomp-Mega-Z';
+			}
 			if (isSharedMega) {
 				const baseName = speciesid.startsWith('sharpedo') ? 'Sharpedo' : speciesid.startsWith('meganium') ? 'Meganium' : speciesid.startsWith('arbok') ? 'Arbok' : 'Chimecho';
 				megaLabel = baseName === 'Arbok' ? 'Arbok-Mega-X' : `${baseName}-Mega`;

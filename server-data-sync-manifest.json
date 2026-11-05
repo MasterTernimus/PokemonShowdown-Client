@@ -1,8 +1,8 @@
 {
-	"sourceHead": "18d174a6bde02f53c5c96e57b32d65b6ad4e2798",
+	"sourceHead": "abb1b2aba72d5d03d5977cb412f7660602649127",
 	"base": "22049e8bbc3cae437790269b4360f7c8eaf5da22",
-	"builtSourceFingerprint": "60fdd4c8b0e0cccff0861a8f4f22cd5319f2e8788244d6545948af8374d84a57",
-	"sourceDataSHA256": "49d5f08020dff89239937852c30d88706e1dbe01715d3807ae77350d5e088ef2",
+	"builtSourceFingerprint": "41386418f2d8c23f69bcaab87dd3e34502cfb67d90750d28230e4d8f357ff89c",
+	"sourceDataSHA256": "65351fe62bba61dfce79ee5c31ac24e90ad2e0fe66f7dc92fc0f808cd1e3be4e",
 	"files": [
 		"data/abilities.ts",
 		"data/ability-components.ts",
@@ -103,6 +103,7 @@
 		"data/selected-mega-simplification-data.ts",
 		"data/selected-mega-simplifications.ts",
 		"data/shelter-audit-reworks.ts",
+		"data/short-description-audit.ts",
 		"data/signature-move-summaries.ts",
 		"data/signature-passive-data.ts",
 		"data/snowy-field.ts",
@@ -38865,8 +38866,8 @@
 				"name": "Atrocity",
 				"num": 10126,
 				"gen": 9,
-				"desc": "Unbound Blaze + Tough Claws + Fire Ward",
-				"shortDesc": "Unbound Blaze + Tough Claws + Fire Ward",
+				"desc": "Unbound Blaze + Fire Ward",
+				"shortDesc": "Unbound Blaze + Fire Ward",
 				"rating": 5,
 				"flags": {
 					"cantsuppress": 1
@@ -76645,8 +76646,8 @@
 			"garchompite": {
 				"name": "Garchompite",
 				"num": 683,
-				"desc": "If held by a Garchomp, this item allows it to Mega Evolve into Mega Garchomp.",
-				"shortDesc": "If held by a Garchomp, this item allows it to Mega Evolve into Mega Garchomp.",
+				"desc": "Allows Garchomp to Mega Evolve into Garchomp-Mega or Garchomp-Mega-Z.",
+				"shortDesc": "Allows Garchomp to Mega Evolve into Garchomp-Mega or Garchomp-Mega-Z.",
 				"gen": 6,
 				"isNonstandard": "Past",
 				"megaStone": {
@@ -82054,7 +82055,6 @@
 			],
 			"atrocity": [
 				"unboundblaze",
-				"toughclaws",
 				"fireward"
 			],
 			"aurabreak": [],
@@ -85369,7 +85369,6 @@
 			],
 			"atrocity": [
 				"unboundblaze",
-				"toughclaws",
 				"fireward"
 			],
 			"wickedsnare": [

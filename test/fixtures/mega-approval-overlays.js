@@ -341,3 +341,6 @@ exports.abilities=(id,f)=>({...prior(id,f),...(events[id]?{S:events[id]}:{}),...
  exports.passives=(id,f)=>passives[id]||prior.passives(id,f);
  exports.effects=(id,f)=>effects[id]||prior.effects(id,f);
 }
+
+// Approved Atrocity nerf removes only its Tough Claws component.
+{const previousEffects=exports.effects;exports.effects=(id,f)=>{const effects=previousEffects(id,f);return id==='atrocity'?effects.filter(part=>part!=='toughclaws'):effects;};}

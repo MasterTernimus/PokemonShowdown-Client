@@ -661,6 +661,10 @@
 				megaLabel = 'Banette-Mega';
 				megaXLabel = 'Banette-Mega-Z';
 			}
+			if (speciesid === 'garchomp' && toID(pokemon.item) === 'garchompite') {
+				megaLabel = 'Garchomp-Mega';
+				megaXLabel = 'Garchomp-Mega-Z';
+			}
 			if (toID(pokemon.item) === 'sharpedonite' && canMegaEvoY) {
 				megaLabel = 'Sharpedo-Mega'; megaYLabel = 'Sharpedo-Mega-Y';
 			}

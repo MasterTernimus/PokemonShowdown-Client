@@ -86,7 +86,9 @@ describe('Logical sprite sizing across the roster', function () {
 						assert(Math.abs(data.w / m[0] - data.h / m[1]) <= 1 / Math.min(m[0], m[1]), id + ': distorted aspect ratio');
 						const animatedMega = !preview && !shiny && approvedMegaAnimations.has(asset);
 						const gmax = species.name.endsWith('-Gmax'), large = species.isMega || id.includes('battlebond') || animatedMega;
-						const limit = preview ? (gmax ? 96 : large ? 88 : 80) : (gmax ? 160 : large ? 128 : 120) * (species.isTotem ? 1.5 : 1);
+						const nativeHover = preview && id === 'hydreigon' && /^gen5ani(?:-back)?\/hydreigon\.gif$/.test(asset);
+						const limit = nativeHover ? (front ? 108 : 112) : preview ? (gmax ? 96 : large ? 88 : 80) :
+							(gmax ? 160 : large ? 128 : 120) * (species.isTotem ? 1.5 : 1);
 						assert(data.w * m[4] / m[0] <= limit + 1 && data.h * m[5] / m[1] <= limit + 1, id + ': oversized visible art');
 						if (preview) {
 							const normalRequest = Dex.getSpriteData(id, front, {gen: 9, shiny, gender, teamPreview: true});

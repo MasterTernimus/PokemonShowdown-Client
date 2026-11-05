@@ -367,9 +367,13 @@ export class Pokemon implements PokemonDetails, PokemonHealth {
 	}
 	rememberAbility(ability: string, isNotBase?: boolean) {
 		ability = Dex.abilities.get(ability).name;
-		// Species passive activations never replace the active ability. Explicit changes still do.
-		if (!isNotBase && this.ability && toID(this.ability) !== toID(ability) &&
-			this.getSpecies().passives?.includes(toID(ability))) return;
+		// Passive components (e.g. Breaking News's Forewarn) are not selected-ability reveals.
+		// Leave an unknown ability unknown; explicit Skill Swap/Trace changes still take effect.
+		// A direct first reveal of the passive name is retained for older replays in
+		// which that ability was selectable (e.g. Undertow). Nested parts are ambiguous.
+		if (!isNotBase && this.getSpecies().passives?.some(passive =>
+			(this.ability || toID(passive) !== toID(ability)) &&
+			Dex.getPassiveAbilityEffects(toID(passive)).has(toID(ability)))) return;
 		// A component reveal must not replace a known composite; explicit replacements still do.
 		// Older replays can still announce Frisk from the previous Cursed Marionette package.
 		const historicalComponent = toID(this.ability) === 'cursedmarionette' && toID(ability) === 'frisk';

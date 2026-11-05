@@ -843,7 +843,7 @@ describe('Team Builder sprites', () => {
 		assert(Dex.abilities.get('Dishearten').exists);
 		assert.equal(Dex.abilities.get('Dishearten').num, 11234);
 		for (const part of ['dishearten', 'insomnia']) assert(Dex.getAbilityEffects('lunardread').has(part));
-		assert.equal(Dex.abilities.get('Atrocity').desc, 'Unbound Blaze + Tough Claws + Fire Ward');
+		assert.equal(Dex.abilities.get('Atrocity').desc, 'Unbound Blaze + Fire Ward');
 		assert(!Dex.getAbilityEffects('atrocity').has('moldbreaker'));
 		assert(Dex.getAbilityEffects('ancientbloom').has('pollenbloom'));
 		assert.match(Dex.abilities.get('Fortress Shell').desc, /Water chip cycles/);
