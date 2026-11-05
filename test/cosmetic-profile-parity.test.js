@@ -1,10 +1,16 @@
 'use strict';
 const assert = require('assert').strict;
+const path = require('path');
 const {Dex} = require('./helpers/isolated-dex.cjs')();
-const serverPath = 'C:/Users/Cynao/Desktop/Showdown/PokemonShowdown-Reborn/dist';
-const server = require(serverPath + '/sim').Dex;
-const {CosmeticBattleCounterparts} = require(serverPath + '/data/cosmetic-counterparts');
+
 describe('Cosmetic profile parity', () => {
+ if (!process.env.PS_SERVER_SOURCE) {
+  it.skip('requires PS_SERVER_SOURCE for server-backed cosmetic comparisons', () => {});
+  return;
+ }
+ const serverPath = path.resolve(process.env.PS_SERVER_SOURCE, 'dist');
+ const server = require(path.join(serverPath, 'sim')).Dex;
+ const {CosmeticBattleCounterparts} = require(path.join(serverPath, 'data/cosmetic-counterparts'));
  for (const [skin, base] of Object.entries(CosmeticBattleCounterparts)) {
   it(skin + ' displays the current ' + base + ' battle profile', () => {
    for (const key of ['abilities', 'passives', 'baseStats', 'types']) {
