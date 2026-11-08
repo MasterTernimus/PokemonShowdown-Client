@@ -19,7 +19,7 @@ describe('Mega Hydreigon client integration', () => {
 		assert(!Dex.species.get('Hydreigon-Mega-X').exists);
 	});
 	it('shows the complete component identities and accurate recovery description', () => {
-		for (const id of ['worldbreaker', 'controlledfury', 'berserk', 'duskilate', 'angerpoint']) {
+		for (const id of ['stringsofruin', 'controlledfury', 'berserk', 'duskilate', 'angerpoint']) {
 			assert(Dex.getAbilityEffects('expiration').has(id), id);
 		}
 		assert.deepEqual([...Dex.getAbilityEffects('abyssalrebirth')].sort(), ['abyssalrebirth', 'hydrabond', 'levitate']);

@@ -17023,7 +17023,9 @@ for (const [id, update] of Object.entries({
 			"Ice",
 			"Electric",
 		],
-		"passives": [],
+		"passives": [
+			"static",
+		],
 		"replaceAbilities": true,
 	},
 	"ampharosaevianmega": {
@@ -17042,7 +17044,9 @@ for (const [id, update] of Object.entries({
 			"Ice",
 			"Electric",
 		],
-		"passives": [],
+		"passives": [
+			"static",
+		],
 		"replaceAbilities": true,
 	},
 	"ampharosmega": {
@@ -17323,7 +17327,9 @@ for (const [id, update] of Object.entries({
 			"Ice",
 			"Dark",
 		],
-		"passives": [],
+		"passives": [
+			"earlybird",
+		],
 		"replaceAbilities": true,
 	},
 	"arbolivamega": {
@@ -17388,7 +17394,9 @@ for (const [id, update] of Object.entries({
 			"Electric",
 			"Flying",
 		],
-		"passives": [],
+		"passives": [
+			"earlybird",
+		],
 		"replaceAbilities": true,
 	},
 	"arcaninealt": {
@@ -19817,7 +19825,9 @@ for (const [id, update] of Object.entries({
 	},
 	"brutebonnet": {
 		"abilities": {
-			"0": "Protosynthesis",
+			"0": "Spore Shroud",
+			"1": "Regenerator",
+			"H": "Strong Jaw",
 		},
 		"baseStats": {
 			"hp": 111,
@@ -19831,7 +19841,9 @@ for (const [id, update] of Object.entries({
 			"Grass",
 			"Dark",
 		],
-		"passives": [],
+		"passives": [
+			"protosynthesis",
+		],
 		"replaceAbilities": true,
 	},
 	"bruxish": {
@@ -20859,7 +20871,9 @@ for (const [id, update] of Object.entries({
 			"Ghost",
 			"Electric",
 		],
-		"passives": [],
+		"passives": [
+			"static",
+		],
 		"replaceAbilities": true,
 	},
 	"chandeluremega": {
@@ -21116,12 +21130,12 @@ for (const [id, update] of Object.entries({
 			"H": "Opportunist",
 		},
 		"baseStats": {
-			"hp": 96,
+			"hp": 86,
 			"atk": 72,
 			"def": 65,
-			"spa": 112,
+			"spa": 107,
 			"spd": 65,
-			"spe": 121,
+			"spe": 116,
 		},
 		"types": [
 			"Normal",
@@ -21587,7 +21601,7 @@ for (const [id, update] of Object.entries({
 	"cinderace": {
 		"abilities": {
 			"0": "Defiant",
-			"1": "Set Piece",
+			"1": "Rising Striker",
 			"H": "Libero",
 		},
 		"baseStats": {
@@ -21608,7 +21622,7 @@ for (const [id, update] of Object.entries({
 	},
 	"cinderacegmax": {
 		"abilities": {
-			"0": "Striker's Momentum",
+			"0": "Grand Striker",
 		},
 		"baseStats": {
 			"hp": 136,
@@ -22096,8 +22110,8 @@ for (const [id, update] of Object.entries({
 	},
 	"conkeldurr": {
 		"abilities": {
-			"0": "Void Reprisal",
-			"1": "Rocky Payload",
+			"0": "Guts",
+			"1": "Stamina",
 			"H": "Wrecking Crew",
 		},
 		"baseStats": {
@@ -22112,7 +22126,7 @@ for (const [id, update] of Object.entries({
 			"Fighting",
 		],
 		"passives": [
-			"stamina",
+			"rockypayload",
 		],
 		"replaceAbilities": true,
 	},
@@ -23026,7 +23040,7 @@ for (const [id, update] of Object.entries({
 	},
 	"dachsbun": {
 		"abilities": {
-			"0": "Well-Baked Body",
+			"0": "Sweet Veil",
 			"1": "Aroma Veil",
 			"H": "Friend Guard",
 		},
@@ -23042,7 +23056,7 @@ for (const [id, update] of Object.entries({
 			"Fairy",
 		],
 		"passives": [
-			"sweetveil",
+			"wellbakedbody",
 		],
 		"replaceAbilities": true,
 	},
@@ -24393,8 +24407,8 @@ for (const [id, update] of Object.entries({
 	},
 	"drapion": {
 		"abilities": {
-			"0": "Razor Reach",
-			"1": "Withering Touch",
+			"0": "Battle Armor",
+			"1": "Sniper",
 			"H": "Crushing Venom",
 			"S": "Aevian Toxin",
 		},
@@ -24411,7 +24425,7 @@ for (const [id, update] of Object.entries({
 			"Dark",
 		],
 		"passives": [
-			"keeneye",
+			"poisontouch",
 		],
 		"replaceAbilities": true,
 	},
@@ -26184,7 +26198,7 @@ for (const [id, update] of Object.entries({
 	"farigiraf": {
 		"abilities": {
 			"0": "Twin Appetite",
-			"1": "Armor Tail",
+			"1": "Twin Focus",
 			"H": "Royal Decree",
 		},
 		"baseStats": {
@@ -26200,7 +26214,7 @@ for (const [id, update] of Object.entries({
 			"Psychic",
 		],
 		"passives": [
-			"gluttony",
+			"armortail",
 		],
 		"replaceAbilities": true,
 	},
@@ -26619,8 +26633,8 @@ for (const [id, update] of Object.entries({
 	"flareon": {
 		"abilities": {
 			"0": "Kindled Fury",
-			"1": "Fire Mane",
-			"H": "Drought",
+			"1": "Flame Body",
+			"H": "Adaptability",
 		},
 		"baseStats": {
 			"hp": 65,
@@ -26763,7 +26777,7 @@ for (const [id, update] of Object.entries({
 	"floetteeternal": {
 		"abilities": {
 			"0": "Symbiosis",
-			"1": "Magic Guard",
+			"1": "Natural Cure",
 			"H": "Lasting Promise",
 		},
 		"baseStats": {
@@ -26868,7 +26882,9 @@ for (const [id, update] of Object.entries({
 	},
 	"fluttermane": {
 		"abilities": {
-			"0": "Protosynthesis",
+			"0": "Infiltrator",
+			"1": "Prankster",
+			"H": "Levitate",
 		},
 		"baseStats": {
 			"hp": 55,
@@ -26882,7 +26898,9 @@ for (const [id, update] of Object.entries({
 			"Ghost",
 			"Fairy",
 		],
-		"passives": [],
+		"passives": [
+			"protosynthesis",
+		],
 		"replaceAbilities": true,
 	},
 	"flygon": {
@@ -27153,7 +27171,9 @@ for (const [id, update] of Object.entries({
 			"Grass",
 			"Water",
 		],
-		"passives": [],
+		"passives": [
+			"owntempo",
+		],
 		"replaceAbilities": true,
 	},
 	"froslassaevianmega": {
@@ -27163,16 +27183,18 @@ for (const [id, update] of Object.entries({
 		"baseStats": {
 			"hp": 70,
 			"atk": 80,
-			"def": 70,
+			"def": 80,
 			"spa": 140,
 			"spd": 100,
-			"spe": 140,
+			"spe": 130,
 		},
 		"types": [
 			"Grass",
 			"Water",
 		],
-		"passives": [],
+		"passives": [
+			"owntempo",
+		],
 		"replaceAbilities": true,
 	},
 	"froslassmega": {
@@ -27964,7 +27986,9 @@ for (const [id, update] of Object.entries({
 			"Ground",
 			"Fairy",
 		],
-		"passives": [],
+		"passives": [
+			"stickyhold",
+		],
 		"replaceAbilities": true,
 	},
 	"gastrodonazzy": {
@@ -28054,7 +28078,9 @@ for (const [id, update] of Object.entries({
 			"Ground",
 			"Fairy",
 		],
-		"passives": [],
+		"passives": [
+			"stickyhold",
+		],
 		"replaceAbilities": true,
 	},
 	"genesect": {
@@ -28422,7 +28448,7 @@ for (const [id, update] of Object.entries({
 		"abilities": {
 			"0": "Permafrost",
 			"1": "Slush Rush",
-			"H": "Snow Warning",
+			"H": "Technician",
 			"S": "Mind Freeze",
 		},
 		"baseStats": {
@@ -28474,16 +28500,18 @@ for (const [id, update] of Object.entries({
 		"baseStats": {
 			"hp": 110,
 			"atk": 110,
-			"def": 100,
+			"def": 105,
 			"spa": 50,
-			"spd": 80,
-			"spe": 50,
+			"spd": 85,
+			"spe": 40,
 		},
 		"types": [
 			"Grass",
 			"Rock",
 		],
-		"passives": [],
+		"passives": [
+			"levitate",
+		],
 		"replaceAbilities": true,
 	},
 	"glalieaevianmega": {
@@ -28492,17 +28520,19 @@ for (const [id, update] of Object.entries({
 		},
 		"baseStats": {
 			"hp": 110,
-			"atk": 155,
-			"def": 115,
-			"spa": 50,
-			"spd": 90,
-			"spe": 85,
+			"atk": 135,
+			"def": 105,
+			"spa": 90,
+			"spd": 85,
+			"spe": 80,
 		},
 		"types": [
 			"Grass",
 			"Rock",
 		],
-		"passives": [],
+		"passives": [
+			"levitate",
+		],
 		"replaceAbilities": true,
 	},
 	"glaliemega": {
@@ -28671,7 +28701,9 @@ for (const [id, update] of Object.entries({
 			"Steel",
 			"Flying",
 		],
-		"passives": [],
+		"passives": [
+			"selfrepair",
+		],
 		"replaceAbilities": true,
 	},
 	"glimmoraaevianmega": {
@@ -28690,7 +28722,9 @@ for (const [id, update] of Object.entries({
 			"Steel",
 			"Flying",
 		],
-		"passives": [],
+		"passives": [
+			"selfrepair",
+		],
 		"replaceAbilities": true,
 	},
 	"glimmoramega": {
@@ -28974,7 +29008,9 @@ for (const [id, update] of Object.entries({
 			"Bug",
 			"Ground",
 		],
-		"passives": [],
+		"passives": [
+			"heatproof",
+		],
 		"replaceAbilities": true,
 	},
 	"golisopodaevianmega": {
@@ -28993,7 +29029,9 @@ for (const [id, update] of Object.entries({
 			"Bug",
 			"Ground",
 		],
-		"passives": [],
+		"passives": [
+			"heatproof",
+		],
 		"replaceAbilities": true,
 	},
 	"golisopodmega": {
@@ -29257,7 +29295,9 @@ for (const [id, update] of Object.entries({
 	},
 	"gougingfire": {
 		"abilities": {
-			"0": "Protosynthesis",
+			"0": "Pressure",
+			"1": "Flash Fire",
+			"H": "Turboblaze",
 		},
 		"baseStats": {
 			"hp": 105,
@@ -29271,7 +29311,9 @@ for (const [id, update] of Object.entries({
 			"Fire",
 			"Dragon",
 		],
-		"passives": [],
+		"passives": [
+			"protosynthesis",
+		],
 		"replaceAbilities": true,
 	},
 	"gourgeist": {
@@ -29525,7 +29567,9 @@ for (const [id, update] of Object.entries({
 	},
 	"greattusk": {
 		"abilities": {
-			"0": "Protosynthesis",
+			"0": "Rolling Fortress",
+			"1": "Siege Tusks",
+			"H": "Battle Armor",
 		},
 		"baseStats": {
 			"hp": 115,
@@ -29539,7 +29583,9 @@ for (const [id, update] of Object.entries({
 			"Ground",
 			"Fighting",
 		],
-		"passives": [],
+		"passives": [
+			"protosynthesis",
+		],
 		"replaceAbilities": true,
 	},
 	"greavard": {
@@ -30120,7 +30166,9 @@ for (const [id, update] of Object.entries({
 			"Fire",
 			"Dragon",
 		],
-		"passives": [],
+		"passives": [
+			"owntempo",
+		],
 		"replaceAbilities": true,
 	},
 	"gyaradosaevianmega": {
@@ -30139,7 +30187,9 @@ for (const [id, update] of Object.entries({
 			"Fire",
 			"Dragon",
 		],
-		"passives": [],
+		"passives": [
+			"owntempo",
+		],
 		"replaceAbilities": true,
 	},
 	"gyaradosmega": {
@@ -30759,7 +30809,7 @@ for (const [id, update] of Object.entries({
 			"Flying",
 		],
 		"passives": [
-			"stakeout",
+			"moxie",
 		],
 		"replaceAbilities": true,
 	},
@@ -31042,7 +31092,7 @@ for (const [id, update] of Object.entries({
 	"hydreigon": {
 		"abilities": {
 			"0": "Dark Aura",
-			"1": "Worldbreaker",
+			"1": "Strings of Ruin",
 			"H": "False Liberation",
 		},
 		"baseStats": {
@@ -31351,8 +31401,8 @@ for (const [id, update] of Object.entries({
 	},
 	"inteleon": {
 		"abilities": {
-			"0": "Dual Wield",
-			"1": "Patient Marksman",
+			"0": "Infiltrator",
+			"1": "Rising Marksman",
 			"H": "Calculated Shot",
 		},
 		"baseStats": {
@@ -31373,7 +31423,7 @@ for (const [id, update] of Object.entries({
 	},
 	"inteleongmax": {
 		"abilities": {
-			"0": "High Noon",
+			"0": "Grand Marksman",
 		},
 		"baseStats": {
 			"hp": 105,
@@ -31393,7 +31443,9 @@ for (const [id, update] of Object.entries({
 	},
 	"ironboulder": {
 		"abilities": {
-			"0": "Quark Drive",
+			"0": "Justified",
+			"1": "Sharpness",
+			"H": "Rock Head",
 		},
 		"baseStats": {
 			"hp": 90,
@@ -31407,12 +31459,16 @@ for (const [id, update] of Object.entries({
 			"Rock",
 			"Psychic",
 		],
-		"passives": [],
+		"passives": [
+			"quarkdrive",
+		],
 		"replaceAbilities": true,
 	},
 	"ironbundle": {
 		"abilities": {
-			"0": "Quark Drive",
+			"0": "Prankster",
+			"1": "Evil Santa",
+			"H": "Slush Rush",
 		},
 		"baseStats": {
 			"hp": 56,
@@ -31426,12 +31482,16 @@ for (const [id, update] of Object.entries({
 			"Ice",
 			"Water",
 		],
-		"passives": [],
+		"passives": [
+			"quarkdrive",
+		],
 		"replaceAbilities": true,
 	},
 	"ironcrown": {
 		"abilities": {
-			"0": "Quark Drive",
+			"0": "Justified",
+			"1": "Sharpness",
+			"H": "Steelworker",
 		},
 		"baseStats": {
 			"hp": 90,
@@ -31445,12 +31505,16 @@ for (const [id, update] of Object.entries({
 			"Steel",
 			"Psychic",
 		],
-		"passives": [],
+		"passives": [
+			"quarkdrive",
+		],
 		"replaceAbilities": true,
 	},
 	"ironhands": {
 		"abilities": {
-			"0": "Quark Drive",
+			"0": "Grit Grappler",
+			"1": "Sheer Force",
+			"H": "Iron Fist",
 		},
 		"baseStats": {
 			"hp": 154,
@@ -31464,12 +31528,16 @@ for (const [id, update] of Object.entries({
 			"Fighting",
 			"Electric",
 		],
-		"passives": [],
+		"passives": [
+			"quarkdrive",
+		],
 		"replaceAbilities": true,
 	},
 	"ironjugulis": {
 		"abilities": {
-			"0": "Quark Drive",
+			"0": "Strings of Ruin",
+			"1": "False Liberation",
+			"H": "Mega Launcher",
 		},
 		"baseStats": {
 			"hp": 94,
@@ -31483,12 +31551,16 @@ for (const [id, update] of Object.entries({
 			"Dark",
 			"Flying",
 		],
-		"passives": [],
+		"passives": [
+			"quarkdrive",
+		],
 		"replaceAbilities": true,
 	},
 	"ironleaves": {
 		"abilities": {
-			"0": "Quark Drive",
+			"0": "Justified",
+			"1": "Sharpness",
+			"H": "Mind's Eye",
 		},
 		"baseStats": {
 			"hp": 90,
@@ -31502,12 +31574,16 @@ for (const [id, update] of Object.entries({
 			"Grass",
 			"Psychic",
 		],
-		"passives": [],
+		"passives": [
+			"quarkdrive",
+		],
 		"replaceAbilities": true,
 	},
 	"ironmoth": {
 		"abilities": {
-			"0": "Quark Drive",
+			"0": "Cinder Scales",
+			"1": "Dawn Herald",
+			"H": "Levitate",
 		},
 		"baseStats": {
 			"hp": 80,
@@ -31521,12 +31597,16 @@ for (const [id, update] of Object.entries({
 			"Fire",
 			"Poison",
 		],
-		"passives": [],
+		"passives": [
+			"quarkdrive",
+		],
 		"replaceAbilities": true,
 	},
 	"ironthorns": {
 		"abilities": {
-			"0": "Quark Drive",
+			"0": "Sand Stream",
+			"1": "Mountain Hide",
+			"H": "Analytic",
 		},
 		"baseStats": {
 			"hp": 100,
@@ -31540,12 +31620,16 @@ for (const [id, update] of Object.entries({
 			"Rock",
 			"Electric",
 		],
-		"passives": [],
+		"passives": [
+			"quarkdrive",
+		],
 		"replaceAbilities": true,
 	},
 	"irontreads": {
 		"abilities": {
-			"0": "Quark Drive",
+			"0": "Rolling Fortress",
+			"1": "Siege Tusks",
+			"H": "Speed Boost",
 		},
 		"baseStats": {
 			"hp": 90,
@@ -31559,12 +31643,16 @@ for (const [id, update] of Object.entries({
 			"Ground",
 			"Steel",
 		],
-		"passives": [],
+		"passives": [
+			"quarkdrive",
+		],
 		"replaceAbilities": true,
 	},
 	"ironvaliant": {
 		"abilities": {
-			"0": "Quark Drive",
+			"0": "Void Veil",
+			"1": "Ruptured Heaven",
+			"H": "Download",
 		},
 		"baseStats": {
 			"hp": 74,
@@ -31578,7 +31666,9 @@ for (const [id, update] of Object.entries({
 			"Fairy",
 			"Fighting",
 		],
-		"passives": [],
+		"passives": [
+			"quarkdrive",
+		],
 		"replaceAbilities": true,
 	},
 	"ivysaur": {
@@ -31736,7 +31826,7 @@ for (const [id, update] of Object.entries({
 		"abilities": {
 			"0": "Livewire",
 			"1": "Battery",
-			"H": "Electric Surge",
+			"H": "Adaptability",
 		},
 		"baseStats": {
 			"hp": 65,
@@ -32182,7 +32272,7 @@ for (const [id, update] of Object.entries({
 	},
 	"kingdra": {
 		"abilities": {
-			"0": "Swift Swim",
+			"0": "Damp",
 			"1": "Abyss Sniper",
 			"H": "Storm Drain",
 		},
@@ -32199,7 +32289,7 @@ for (const [id, update] of Object.entries({
 			"Dragon",
 		],
 		"passives": [
-			"waterveil",
+			"swiftswim",
 		],
 		"replaceAbilities": true,
 	},
@@ -32503,7 +32593,9 @@ for (const [id, update] of Object.entries({
 			"Dragon",
 			"Poison",
 		],
-		"passives": [],
+		"passives": [
+			"owntempo",
+		],
 		"replaceAbilities": true,
 	},
 	"kommoototem": {
@@ -32873,8 +32965,8 @@ for (const [id, update] of Object.entries({
 			"hp": 125,
 			"atk": 58,
 			"def": 88,
-			"spa": 116,
-			"spd": 106,
+			"spa": 106,
+			"spd": 96,
 			"spe": 67,
 		},
 		"types": [
@@ -32896,8 +32988,8 @@ for (const [id, update] of Object.entries({
 			"hp": 125,
 			"atk": 58,
 			"def": 88,
-			"spa": 116,
-			"spd": 106,
+			"spa": 106,
+			"spd": 96,
 			"spe": 67,
 		},
 		"types": [
@@ -32971,7 +33063,9 @@ for (const [id, update] of Object.entries({
 			"Rock",
 			"Psychic",
 		],
-		"passives": [],
+		"passives": [
+			"owntempo",
+		],
 		"replaceAbilities": true,
 	},
 	"laprasazzy": {
@@ -33138,7 +33232,7 @@ for (const [id, update] of Object.entries({
 		"abilities": {
 			"0": "Verdant Edge",
 			"1": "Regenerator",
-			"H": "Grassy Surge",
+			"H": "Technician",
 		},
 		"baseStats": {
 			"hp": 65,
@@ -34455,9 +34549,9 @@ for (const [id, update] of Object.entries({
 	},
 	"magneton": {
 		"abilities": {
-			"0": "Paradox Pull",
+			"0": "Magnet Pull",
 			"1": "Elevate",
-			"H": "Hydra Bond",
+			"H": "Analytic",
 		},
 		"baseStats": {
 			"hp": 70,
@@ -34471,7 +34565,9 @@ for (const [id, update] of Object.entries({
 			"Electric",
 			"Steel",
 		],
-		"passives": [],
+		"passives": [
+			"hydrabond",
+		],
 		"replaceAbilities": true,
 	},
 	"magnezone": {
@@ -35005,9 +35101,9 @@ for (const [id, update] of Object.entries({
 	},
 	"maushold": {
 		"abilities": {
-			"0": "Friend Guard",
+			"0": "Technician",
 			"1": "Cheek Pouch",
-			"H": "Technician",
+			"H": "Hospitality",
 		},
 		"baseStats": {
 			"hp": 74,
@@ -35021,15 +35117,15 @@ for (const [id, update] of Object.entries({
 			"Normal",
 		],
 		"passives": [
-			"runaway",
+			"friendguard",
 		],
 		"replaceAbilities": true,
 	},
 	"mausholdfour": {
 		"abilities": {
-			"0": "Friend Guard",
+			"0": "Technician",
 			"1": "Cheek Pouch",
-			"H": "Technician",
+			"H": "Hospitality",
 		},
 		"baseStats": {
 			"hp": 74,
@@ -35043,7 +35139,7 @@ for (const [id, update] of Object.entries({
 			"Normal",
 		],
 		"passives": [
-			"runaway",
+			"friendguard",
 		],
 		"replaceAbilities": true,
 	},
@@ -36465,7 +36561,9 @@ for (const [id, update] of Object.entries({
 			"Ghost",
 			"Grass",
 		],
-		"passives": [],
+		"passives": [
+			"owntempo",
+		],
 		"replaceAbilities": true,
 	},
 	"mismagiusmega": {
@@ -41178,7 +41276,9 @@ for (const [id, update] of Object.entries({
 	},
 	"ragingbolt": {
 		"abilities": {
-			"0": "Protosynthesis",
+			"0": "Pressure",
+			"1": "Volt Absorb",
+			"H": "Transistor",
 		},
 		"baseStats": {
 			"hp": 125,
@@ -41192,7 +41292,9 @@ for (const [id, update] of Object.entries({
 			"Electric",
 			"Dragon",
 		],
-		"passives": [],
+		"passives": [
+			"protosynthesis",
+		],
 		"replaceAbilities": true,
 	},
 	"raichu": {
@@ -41890,8 +41992,9 @@ for (const [id, update] of Object.entries({
 	},
 	"revavroom": {
 		"abilities": {
-			"0": "Overcoat",
-			"H": "Filter",
+			"0": "Filter",
+			"1": "Motor Drive",
+			"H": "Reckless",
 		},
 		"baseStats": {
 			"hp": 80,
@@ -41906,7 +42009,7 @@ for (const [id, update] of Object.entries({
 			"Poison",
 		],
 		"passives": [
-			"soundproof",
+			"overcoat",
 		],
 		"replaceAbilities": true,
 	},
@@ -41939,11 +42042,11 @@ for (const [id, update] of Object.entries({
 		},
 		"baseStats": {
 			"hp": 110,
-			"atk": 140,
-			"def": 130,
-			"spa": 35,
-			"spd": 75,
-			"spe": 60,
+			"atk": 130,
+			"def": 125,
+			"spa": 45,
+			"spd": 60,
+			"spe": 50,
 		},
 		"types": [
 			"Ground",
@@ -42043,7 +42146,7 @@ for (const [id, update] of Object.entries({
 	"rillaboom": {
 		"abilities": {
 			"0": "Primal Rhythm",
-			"1": "Drum Guard",
+			"1": "Rising Rhythm",
 			"H": "Grassy Surge",
 		},
 		"baseStats": {
@@ -42064,7 +42167,7 @@ for (const [id, update] of Object.entries({
 	},
 	"rillaboomgmax": {
 		"abilities": {
-			"0": "Forest Surge",
+			"0": "Grand Rhythm",
 		},
 		"baseStats": {
 			"hp": 150,
@@ -42104,7 +42207,9 @@ for (const [id, update] of Object.entries({
 	},
 	"roaringmoon": {
 		"abilities": {
-			"0": "Protosynthesis",
+			"0": "Intimidate",
+			"1": "Free Flight",
+			"H": "Strong Jaw",
 		},
 		"baseStats": {
 			"hp": 105,
@@ -42118,7 +42223,9 @@ for (const [id, update] of Object.entries({
 			"Dragon",
 			"Dark",
 		],
-		"passives": [],
+		"passives": [
+			"protosynthesis",
+		],
 		"replaceAbilities": true,
 	},
 	"rockruff": {
@@ -42282,7 +42389,9 @@ for (const [id, update] of Object.entries({
 			"Ground",
 			"Fighting",
 		],
-		"passives": [],
+		"passives": [
+			"poisonpoint",
+		],
 		"replaceAbilities": true,
 	},
 	"roserademega": {
@@ -43027,7 +43136,9 @@ for (const [id, update] of Object.entries({
 	},
 	"sandyshocks": {
 		"abilities": {
-			"0": "Protosynthesis",
+			"0": "Magnet Pull",
+			"1": "Hydra Bond",
+			"H": "Sand Force",
 		},
 		"baseStats": {
 			"hp": 85,
@@ -43041,7 +43152,9 @@ for (const [id, update] of Object.entries({
 			"Electric",
 			"Ground",
 		],
-		"passives": [],
+		"passives": [
+			"protosynthesis",
+		],
 		"replaceAbilities": true,
 	},
 	"sawk": {
@@ -43548,7 +43661,9 @@ for (const [id, update] of Object.entries({
 	},
 	"screamtail": {
 		"abilities": {
-			"0": "Protosynthesis",
+			"0": "Competitive",
+			"1": "Friend Guard",
+			"H": "Intimidate",
 		},
 		"baseStats": {
 			"hp": 115,
@@ -43562,7 +43677,9 @@ for (const [id, update] of Object.entries({
 			"Fairy",
 			"Psychic",
 		],
-		"passives": [],
+		"passives": [
+			"protosynthesis",
+		],
 		"replaceAbilities": true,
 	},
 	"scyther": {
@@ -45283,7 +45400,9 @@ for (const [id, update] of Object.entries({
 	},
 	"slitherwing": {
 		"abilities": {
-			"0": "Protosynthesis",
+			"0": "Cinder Scales",
+			"1": "Overcoat",
+			"H": "Tough Claws",
 		},
 		"baseStats": {
 			"hp": 85,
@@ -45297,7 +45416,9 @@ for (const [id, update] of Object.entries({
 			"Bug",
 			"Fighting",
 		],
-		"passives": [],
+		"passives": [
+			"protosynthesis",
+		],
 		"replaceAbilities": true,
 	},
 	"slowbro": {
@@ -45393,7 +45514,7 @@ for (const [id, update] of Object.entries({
 	"slowkinggalar": {
 		"abilities": {
 			"0": "Neutralization",
-			"1": "Telepathy",
+			"1": "Own Tempo",
 			"H": "Regenerator",
 		},
 		"baseStats": {
@@ -45722,7 +45843,9 @@ for (const [id, update] of Object.entries({
 			"Fighting",
 			"Fairy",
 		],
-		"passives": [],
+		"passives": [
+			"keeneye",
+		],
 		"replaceAbilities": true,
 	},
 	"snivy": {
@@ -46469,7 +46592,7 @@ for (const [id, update] of Object.entries({
 	},
 	"starmie": {
 		"abilities": {
-			"0": "Illuminate",
+			"0": "Cosmic Analysis",
 			"1": "Natural Cure",
 			"H": "Victory Star",
 		},
@@ -46486,7 +46609,7 @@ for (const [id, update] of Object.entries({
 			"Psychic",
 		],
 		"passives": [
-			"analytic",
+			"illuminate",
 		],
 		"replaceAbilities": true,
 	},
@@ -47178,7 +47301,7 @@ for (const [id, update] of Object.entries({
 		"abilities": {
 			"0": "Competitive",
 			"1": "Soothing Presence",
-			"H": "Fairy Aura",
+			"H": "Aroma Veil",
 		},
 		"baseStats": {
 			"hp": 95,
@@ -48600,7 +48723,7 @@ for (const [id, update] of Object.entries({
 			"Fighting",
 		],
 		"passives": [
-			"limber",
+			"anticipation",
 		],
 		"replaceAbilities": true,
 	},
@@ -49171,8 +49294,8 @@ for (const [id, update] of Object.entries({
 	},
 	"tyranitar": {
 		"abilities": {
-			"0": "Mountain Hide",
-			"1": "Mountainbreaker",
+			"0": "Earth Eater",
+			"1": "Battle Armor",
 			"H": "Dread Presence",
 		},
 		"baseStats": {
@@ -49636,7 +49759,7 @@ for (const [id, update] of Object.entries({
 		"abilities": {
 			"0": "Tidal Wave",
 			"1": "Marvel Scale",
-			"H": "Drizzle",
+			"H": "Adaptability",
 		},
 		"baseStats": {
 			"hp": 130,
@@ -50642,7 +50765,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Flying",
 		],
-		"passives": [],
+		"passives": [
+			"bigpecks",
+		],
 		"replaceAbilities": true,
 	},
 	"volkraken": {
@@ -50874,7 +50999,9 @@ for (const [id, update] of Object.entries({
 	},
 	"walkingwake": {
 		"abilities": {
-			"0": "Protosynthesis",
+			"0": "Pressure",
+			"1": "Water Veil",
+			"H": "Swift Swim",
 		},
 		"baseStats": {
 			"hp": 99,
@@ -50888,7 +51015,9 @@ for (const [id, update] of Object.entries({
 			"Water",
 			"Dragon",
 		],
-		"passives": [],
+		"passives": [
+			"protosynthesis",
+		],
 		"replaceAbilities": true,
 	},
 	"walrein": {
@@ -56488,7 +56617,6 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 		"eartheater",
 	],
 	"mossarmor": [
-		"levitate",
 		"stamina",
 		"naturalcure",
 	],
@@ -56557,7 +56685,6 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	"kickfiend": [
 		"striker",
 		"limber",
-		"serenegrace",
 	],
 	"wreckingball": [
 		"sturdy",
@@ -56595,7 +56722,6 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	],
 	"punchfiend": [
 		"ironfist",
-		"serenegrace",
 		"keeneye",
 	],
 	"doublestrike": [
@@ -56604,7 +56730,6 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	],
 	"spinfiend": [
 		"technician",
-		"vitalspirit",
 		"steadfast",
 	],
 	"terragift": [
@@ -56677,7 +56802,6 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	"adaptivecore": [
 		"download",
 		"defragment",
-		"selfrepair",
 	],
 	"aevianglacier": [
 		"snowwarning",
@@ -56735,10 +56859,8 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	],
 	"voidomen": [
 		"friendguard",
-		"serenegrace",
 	],
 	"greatmarsh": [
-		"anticipation",
 		"dryskin",
 		"adaptability",
 		"toxicchain",
@@ -56984,7 +57106,6 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	"fallenstar": [
 		"moldbreaker",
 		"dualwield",
-		"selfsufficient",
 	],
 	"eclipse": [],
 	"ragingstorm": [
@@ -57320,9 +57441,11 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 		"marvelscale",
 		"swiftswim",
 		"dragonize",
-		"selfsufficient",
 	],
-	"relicmishap": [],
+	"relicmishap": [
+		"waterabsorb",
+		"voltabsorb",
+	],
 	"windysurge": [],
 	"flamebody": [],
 	"flareboost": [],
@@ -57337,7 +57460,6 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	],
 	"ancientbloom": [
 		"pollenbloom",
-		"selfsufficient",
 		"friendguard",
 	],
 	"pollenbloom": [
@@ -57353,7 +57475,6 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	],
 	"fortressshell": [
 		"waterbarrage",
-		"selfsufficient",
 		"shellarmor",
 		"guardianpresence",
 	],
@@ -57479,7 +57600,6 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	],
 	"desertshell": [
 		"skilllink",
-		"heatproof",
 		"sandstream",
 	],
 	"voidtyrant": [
@@ -57551,6 +57671,7 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	"magicbounce": [],
 	"lunarorbit": [
 		"magicbounce",
+		"serenegrace",
 		"magicguard",
 	],
 	"magicguard": [],
@@ -57868,7 +57989,7 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	"astralwitchcraft": [
 		"levitate",
 		"magicguard",
-		"voidguile",
+		"serenegrace",
 	],
 	"blazingtempo": [
 		"speedboost",
@@ -58055,11 +58176,7 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 		"guts",
 		"moldbreaker",
 	],
-	"scavenger": [
-		"overcoat",
-		"bigpecks",
-		"regenerator",
-	],
+	"scavenger": [],
 	"ultrainstinct": [
 		"moldbreaker",
 		"innerfocus",
@@ -58366,6 +58483,7 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	"raisedquills": [],
 	"mountainbreaker": [],
 	"dreadpresence": [
+		"darkaura",
 		"unnerve",
 	],
 	"palmmastery": [
@@ -58676,10 +58794,7 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	"wreckingcrew": [
 		"ironfist",
 	],
-	"evergreen": [
-		"overcoat",
-		"ripen",
-	],
+	"evergreen": [],
 	"battlegrip": [
 		"moxie",
 	],
@@ -59104,7 +59219,7 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 		"levitate",
 		"hydrabond",
 	],
-	"worldbreaker": [
+	"stringsofruin": [
 		"berserk",
 		"duskilate",
 	],
@@ -59272,7 +59387,7 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	],
 	"fireward": [],
 	"expiration": [
-		"worldbreaker",
+		"stringsofruin",
 		"controlledfury",
 	],
 	"abyssalrebirth": [
@@ -59420,6 +59535,28 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 		"frisk",
 	],
 	"tomeofavarice": [],
+	"twinfocus": [],
+	"cosmicanalysis": [
+		"analytic",
+		"download",
+	],
+	"risingstriker": [],
+	"risingrhythm": [],
+	"risingmarksman": [],
+	"grandstriker": [
+		"striker",
+		"defiant",
+		"risingstriker",
+	],
+	"grandrhythm": [
+		"forestsurge",
+		"risingrhythm",
+	],
+	"grandmarksman": [
+		"megalauncher",
+		"dualwield",
+		"risingmarksman",
+	],
 };
 // END SERVER WORKING SYNC DISPLAY COMPONENTS
 // BEGIN SERVER WORKING SYNC PASSIVE COMPONENT EXCLUSIONS
@@ -59499,17 +59636,14 @@ const CUSTOM_SIGNATURE_PASSIVE_COMPONENTS: {[id: string]: readonly string[]} = {
 	],
 	"punchfiend": [
 		"ironfist",
-		"serenegrace",
 		"keeneye",
 	],
 	"kickfiend": [
 		"striker",
 		"limber",
-		"serenegrace",
 	],
 	"spinfiend": [
 		"technician",
-		"vitalspirit",
 		"steadfast",
 	],
 	"royalremedy": [
@@ -59929,7 +60063,6 @@ const CUSTOM_ABILITY_COMPONENT_EXCLUSIONS: {[id: string]: readonly string[]} = {
 	],
 	"lunarorbit": [
 		"triage",
-		"serenegrace",
 	],
 	"completeparasitism": [
 		"filter",
@@ -60161,12 +60294,6 @@ const CUSTOM_SHARED_PASSIVE_COMPONENTS: {[id: string]: readonly string[]} = {
 	"slipstream": [
 		"keeneye",
 		"levitate",
-	],
-	"evergreen": [
-		"overcoat",
-	],
-	"scavenger": [
-		"overcoat",
 	],
 	"uncheckedassault": [
 		"limber",
@@ -60557,24 +60684,14 @@ const CUSTOM_SHARED_PASSIVE_DESCRIPTIONS: {[id: string]: {passive: string; desc:
 		"shortDesc": "Keen Eye; first Flying HP hit each entry sets three-turn Tailwind.",
 		"desc": "Full local Keen Eye prevents opposing accuracy drops, ignores opposing evasion boosts and reveals opposing Illusions on activation. Mirror Arena entry grants +1 accuracy and Laser Focus, with shared entry rewards applied once. Once per switch-in, its first Flying-type attack to damage opposing HP sets Tailwind on its side for 3 turns; Tailwind is extended to at least 3 turns, never shortened.",
 	},
-	"evergreen": {
-		"passive": "overcoat",
-		"desc": "Applicable Berry effects are doubled, including the full local Ripen behavior.",
-		"shortDesc": "Full Ripen.",
-	},
-	"scavenger": {
-		"passive": "overcoat",
-		"desc": "Other Pokemon cannot lower its Defense. Heals 1/3 max HP on switching out.",
-		"shortDesc": "Defense-drop protection; heals 1/3 HP on switching out.",
-	},
 	"echofiend": {
 		"passive": "soundproof",
-		"desc": "Sound moves become Flying, Fire on Volcanic Field, or Crystal on Crystal Cavern. Sound moves have 1.5x power, or 2x on Cave, Volcanic and Crystal Cavern. Protects allies from allied damaging sound moves. This selected package cannot be suppressed.",
+		"desc": "Sound moves become Flying, Fire on Volcanic Field, or Crystal on Crystal Cavern. Sound moves have 1.2x power, 1.5x on Mountain, Snowy Mountain, Cave, Volcanic and Crystal Cavern. Protects allies from allied damaging sound moves. This selected package cannot be suppressed.",
 		"shortDesc": "Converts and boosts sound attacks; protects allies from allied sound damage.",
 	},
 	"vaultkeeper": {
 		"passive": "stickyhold",
-		"desc": "Compatibility name for local Prankster: status moves gain +1 priority; opposing Dark types block them except on Bewitched Woods. Does not prevent screen removal. Klefki receives Prankster as its species passive; this compatibility name has the same priority effect.",
+		"desc": "Compatibility name for local Prankster: status moves gain +1 priority; opposing Dark types block them except on Bewitched Woods. Klefki receives Prankster as its species passive; this compatibility name has the same priority effect.",
 		"shortDesc": "Prankster.",
 	},
 	"mourningsnow": {
@@ -60594,7 +60711,7 @@ const CUSTOM_SHARED_PASSIVE_DESCRIPTIONS: {[id: string]: {passive: string; desc:
 	},
 	"glacialmass": {
 		"passive": "thickfat",
-		"desc": "Doubles weight and halves physical attack damage. On entry to Factory Field, Defense rises one stage and Speed falls one stage. On Cold Eclipse, Defense and Sp. Def are 1.5x, the field Speed penalty is ignored, and hail heals 1/10 max HP each turn.",
+		"desc": "Doubles weight and halves physical attack damage. On entry to Factory Field, Defense rises one stage and Speed falls one stage.",
 		"shortDesc": "Double weight and half physical attack damage; field effects.",
 	},
 	"apexarmor": {
@@ -60685,7 +60802,7 @@ const CUSTOM_SHARED_PASSIVE_DESCRIPTIONS: {[id: string]: {passive: string; desc:
 	"stormsovereign": {
 		"passive": "noguard",
 		"shortDesc": "Updraft (Competitive), eight-turn Strong Winds and opposing Flying chip.",
-		"desc": "Summons replaceable Strong Winds for 8 turns on entry. Each turn, non-immune foes take Flying damage equal to 1/16 base maximum HP; type effectiveness scales this chip only in Free-for-All. Flying-type foes are immune. Full Updraft: Full Competitive: opposing stat drops raise Special Attack by 2 outside Chessboard; on Chessboard, instead boosts damage with missing HP up to 2x at 20% HP. Flying moves ignore evasion boosts. Once per switch-in, the first Flying attack dealing opposing HP damage raises the living adjacent ally with the lowest HP percentage by 1 Speed stage, or the holder if no such ally exists. Only one recipient is boosted; ability restarts and Mega Evolution do not reset the entry allowance.",
+		"desc": "Summons replaceable Strong Winds for 8 turns on entry. Each turn, non-immune foes take Flying damage equal to 1/16 base maximum HP; type effectiveness scales this chip only in Free-for-All. Flying-type foes are immune.Full Updraft: Full Competitive: opposing stat drops raise Special Attack by 2 outside Chessboard; on Chessboard, instead boosts damage with missing HP up to 2x at 20% HP. Flying moves ignore evasion boosts. Once per switch-in, the first Flying attack dealing opposing HP damage raises the living adjacent ally with the lowest HP percentage by 1 Speed stage, or the holder if no such ally exists. Only one recipient is boosted; ability restarts and Mega Evolution do not reset the entry allowance.",
 	},
 	"lunarorbit": {
 		"passive": "magicbounce",
@@ -60850,7 +60967,7 @@ const CUSTOM_SHARED_PASSIVE_DESCRIPTIONS: {[id: string]: {passive: string; desc:
 	"hauntedchime": {
 		"passive": "levitate",
 		"shortDesc": "Wind Power + Cursed Body.",
-		"desc": "Airborne: immune to Ground attacks and grounded hazards unless grounded. Absorbs wind moves for +1 Sp. Atk. Gains +1 Sp. Atk when Tailwind starts on its side or it enters during Tailwind. Strong Winds gives +1 Attack and Sp. Atk each turn. Damaging attacks have a 30% chance to be disabled, guaranteed on Haunted and disabled on Holy Field. Excludes Max moves, delayed attacks and Struggle. On fainting, curses all active foes.",
+		"desc": "Airborne: immune to Ground attacks and grounded hazards unless grounded. Absorbs wind moves for +1 Sp. Atk. Gains +1 Sp. Atk when Tailwind starts on its side or it enters during Tailwind. Strong Winds gives +1 Attack and Sp. Atk each turn. Damaging attacks have a 30% chance to be disabled, guaranteed on Haunted and disabled on Holy Field. Excludes Max moves, delayed attacks and Struggle. On fainting, active foes are cursed for two end-of-turn ticks of 1/8 max HP each, then the curse ends.",
 	},
 	"predator": {
 		"passive": "contrary",
@@ -61080,7 +61197,7 @@ const CUSTOM_SHARED_PASSIVE_DESCRIPTIONS: {[id: string]: {passive: string; desc:
 	"burningrage": {
 		"passive": "proficient",
 		"shortDesc": "Brute Force (Reckless + Rock Head), Iron Fist and Mold Breaker.",
-		"desc": "Brute Force (Reckless + Rock Head), Iron Fist and Mold Breaker. Brute Force: recoil and crash moves, Explosion, Self-Destruct and Misty Explosion have 1.2x power; Struggle is excluded. On Chessboard, all moves gain a further 1.2x power. Prevents move recoil except Struggle; crash and Life Orb damage still apply. Iron Fist: punching moves have 1.4x power. Mold Breaker: moves ignore bypassable opposing abilities.",
+		"desc": "Brute Force (Reckless + Rock Head), Iron Fist and Mold Breaker.Brute Force: recoil and crash moves, Explosion, Self-Destruct and Misty Explosion have 1.2x power; Struggle is excluded. On Chessboard, all moves gain a further 1.2x power. Prevents move recoil except Struggle; crash and Life Orb damage still apply. Iron Fist: punching moves have 1.4x power. Mold Breaker: moves ignore bypassable opposing abilities.",
 	},
 };
 // END SERVER WORKING SYNC PASSIVE COMPONENT EXCLUSIONS
@@ -61112,7 +61229,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Abyssal Claws",
 		"num": 11333,
 		"gen": 9,
-		"desc": "Tough Claws boosts contact moves once. Water attacks receive ordinary 1.5x STAB without adding Water typing or stacking another STAB bonus if already Water-type. Incoming Fire, Water, Ice and Steel attacks receive one extra resistance factor. Does not add Water weaknesses or lower Speed.",
+		"desc": "Tough Claws boosts contact moves once. Water attacks receive ordinary 1.5x STAB without adding Water typing or stacking another STAB bonus if already Water-type. Incoming Fire, Water, Ice and Steel attacks receive one extra resistance factor.",
 		"shortDesc": "Tough Claws; Water STAB; halves Fire, Water, Ice and Steel damage.",
 		"rating": 4,
 		"flags": {},
@@ -61232,8 +61349,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Adaptive Core",
 		"num": 10417,
 		"gen": 9,
-		"desc": "On entry, it compares the opposing side's combined Defense and Special Defense. If Defense is lower, its Attack rises; otherwise its Special Attack rises. Its first damaging move after switching in is a critical hit. On entry, it compares the opposing side's combined Attack and Special Attack. If Attack is higher or tied, its Defense rises; otherwise its Special Defense rises. Its moves cannot miss. Heals 1/16 max HP each turn and ignores sandstorm and hail damage. Switching out cures major status and heals 1/8 max HP only if a status was cured. Bewitched Woods cures status at turn end without this extra heal.",
-		"shortDesc": "First damaging move crits; moves cannot miss.",
+		"desc": "Download grants an attacking-stat boost on entry and a critical hit on its first damaging move. Defragment grants a defensive-stat boost on entry and makes its moves unable to miss. Retains their field effects.",
+		"shortDesc": "Download + Defragment.",
 		"rating": 5,
 		"flags": {
 			"breakable": 1,
@@ -61360,7 +61477,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Aevian Grief",
 		"num": 10415,
 		"gen": 9,
-		"desc": "Opposing status moves that check accuracy have 50% base accuracy. On Rainbow Field, opposing status moves fail their accuracy check. Airborne: immune to Ground attacks, Spikes, Toxic Spikes, Sticky Web and Arena Trap unless grounded. Thousand Arrows can still hit. Prevents indirect damage; HP costs, Pain Split, confusion and Struggle recoil still apply. Fairy Tale entry gives +1 Sp. Def. Damaging attacks have a 30% chance to be disabled, guaranteed on Haunted and disabled on Holy Field. Excludes Max moves, delayed attacks and Struggle. On fainting, curses all active foes.",
+		"desc": "Opposing status moves that check accuracy have 50% base accuracy. On Rainbow Field, opposing status moves fail their accuracy check. Airborne: immune to Ground attacks, Spikes, Toxic Spikes, Sticky Web and Arena Trap unless grounded. Thousand Arrows can still hit. Prevents indirect damage; HP costs, Pain Split, confusion and Struggle recoil still apply. Fairy Tale entry gives +1 Sp. Def. Damaging attacks have a 30% chance to be disabled, guaranteed on Haunted and disabled on Holy Field. Excludes Max moves, delayed attacks and Struggle. On fainting, active foes are cursed for two end-of-turn ticks of 1/8 max HP each, then the curse ends.",
 		"shortDesc": "Opposing status moves that check accuracy have 50% base accuracy.",
 		"rating": 5,
 		"flags": {
@@ -61589,8 +61706,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Verdant Crown",
 		"num": 10024,
 		"gen": 9,
-		"desc": "Pollen Bloom supplies Thick Fat and Unaware: Fire and Ice attacks use half the attacking stat; ignores opposing stat stages through local Unaware and reveals Illusions on entry. Each turn, drains 1/16 base max HP from non-Grass foes and heals the damage actually dealt; Grass immunities apply, and type effectiveness scales this only in Free-for-All. Self-Sufficient independently heals 1/16 max HP each turn and prevents sandstorm and hail damage. Friend Guard reduces attack damage to allies by 25%, without protecting the holder. Fairy Tale, New World, Cold Eclipse and Starlight Arena entry grant +1 Defense and Sp. Def; the latter three give 1.5x move power.",
-		"shortDesc": "Pollen Bloom + Self-Sufficient + Friend Guard; field bonuses.",
+		"desc": "Pollen Bloom supplies Thick Fat and Unaware: Fire and Ice attacks use half the attacking stat; ignores opposing stat stages through local Unaware and reveals Illusions on entry. Each turn, drains 1/16 base max HP from non-Grass foes and heals the damage actually dealt; Grass immunities apply, and type effectiveness scales this only in Free-for-All. Friend Guard reduces attack damage to allies by 25%, without protecting the holder. Fairy Tale, New World, Cold Eclipse and Starlight Arena entry grant +1 Defense and Sp. Def; the latter three give 1.5x move power.",
+		"shortDesc": "Pollen Bloom + Friend Guard; field bonuses.",
 		"rating": 4.5,
 		"flags": {
 			"breakable": 1,
@@ -61601,8 +61718,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Ange",
 		"num": 10130,
 		"gen": 9,
-		"desc": "Full local Fairy Aura.",
-		"shortDesc": "Fairy Aura.",
+		"desc": "Full local Fairy Aura. Once per turn, after its single-target Fairy attack damages an opposing Pokemon's HP, its flower strikes the same target at 25% damage. The extra hit does not repeat move secondary effects or user effects. Uses the original accuracy check and one PP. No follow-up for misses, immunity, fully blocked attacks, Substitute-only damage, spread moves, existing multi-hit moves, charging or delayed attacks, OHKO moves, Z/Max moves or moves barred from extra hits. Never transfers to another target. Switching or regaining the ability does not refresh its use within the same turn. Normal recoil, drain and defensive reactions still apply.",
+		"shortDesc": "Fairy Aura. Once per turn, single-target Fairy attacks gain a 25%-power flower strike.",
 		"rating": 5,
 		"flags": {},
 		"isNonstandard": null,
@@ -61641,7 +61758,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Antlion Instinct",
 		"num": 11462,
 		"gen": 9,
-		"desc": "Sheer Force. Bug attacks receive ordinary 1.5x STAB, without stacking extra STAB if already Bug-type. Incoming Grass, Ground and Fighting attacks receive one extra resistance factor, once regardless of defensive typing. No Bug typing or weaknesses are added.",
+		"desc": "Sheer Force. Bug attacks receive ordinary 1.5x STAB, without stacking extra STAB if already Bug-type. Incoming Grass, Ground and Fighting attacks receive one extra resistance factor, once regardless of defensive typing.",
 		"shortDesc": "Sheer Force; Bug STAB; one extra Grass, Ground and Fighting resistance.",
 		"rating": 4,
 		"flags": {},
@@ -61788,8 +61905,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Armor Tail",
 		"num": 296,
 		"gen": 9,
-		"desc": "Priority moves used by opposing Pokemon targeting it or its allies are prevented from having an effect.",
-		"shortDesc": "It and its allies are protected from opposing priority moves.",
+		"desc": "Protects its side from opposing priority moves. Takes 20% less attack damage; only the strongest ability/passive or Mist, Safeguard and Lucky Chant reduction applies. The damage reduction is inactive on New World, Dragon’s Den, Mountain, Holy, Haunted, Starlight Arena, Snowy Mountain and Flower Garden. Fairy Tale entry still raises Defense and Sp. Def by 1.",
+		"shortDesc": "Blocks opposing priority moves for allies; takes 20% less attack damage.",
 		"rating": 2.5,
 		"flags": {
 			"breakable": 1,
@@ -61926,8 +62043,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Astral Witchcraft",
 		"num": 10034,
 		"gen": 9,
-		"desc": "Levitate grants Ground immunity and airborne benefits unless grounded. Magic Guard prevents indirect damage under its normal rules. Void Guile provides Magician item theft and Infiltrator screen, Substitute, Safeguard and Mist bypass. Entry grants +1 Sp. Atk on Fairy Tale, Bewitched Woods, Haunted, Misty or New World; on Psychic, incoming status moves with numeric accuracy use 50 accuracy. Its separate Fairy Tale and New World entry bonus grants another +1 Sp. Atk and +1 Sp. Def.",
-		"shortDesc": "Levitate + Magic Guard + Void Guile (Magician + Infiltrator).",
+		"desc": "Immune to Ground moves while airborne. Prevents indirect damage and doubles secondary-effect chances. Fairy Tale entry raises Sp. Def by 1.",
+		"shortDesc": "Levitate + Magic Guard + Serene Grace.",
 		"rating": 5,
 		"flags": {
 			"breakable": 1,
@@ -62267,7 +62384,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Beyond Fear",
 		"num": 10564,
 		"gen": 9,
-		"desc": "Immune to flinching and opposing Taunt. Does not prevent Intimidate or other stat drops and does not raise defenses in response. When supplied as a species passive, remains active through selected-ability suppression.",
+		"desc": "Immune to flinching and opposing Taunt. Does not prevent Intimidate or other stat drops and does not raise defenses in response.",
 		"shortDesc": "Immune to flinching and opposing Taunt.",
 		"rating": 3,
 		"flags": {
@@ -62505,8 +62622,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Breaking News",
 		"num": 12014,
 		"gen": 9,
-		"desc": "Forewarn: scans each foe on entry and every opposing switch-in, reveals a strongest attack and removes Illusion. Takes 20% less move damage, or 25% less from the latest warned attack; these reductions do not stack. Successful reveals on Psychic Terrain grant +2 Sp. Atk. Successful opposing status moves expose their user through the following turn. The reporter and adjacent allies ignore exposed foes' positive defensive stages; the reporter's Psychic/Fairy attacks also gain 25% power. An exposed foe switching out clears its mark; leaving ends that reporter's marks.",
-		"shortDesc": "Forewarn; exposes status users: bypass their defensive boosts; Psychic/Fairy gains 25%.",
+		"desc": "Forewarn: scans each foe on entry and every opposing switch-in, reveals a strongest attack and removes Illusion. Takes 20% less move damage, or 25% less from the latest warned attack; these reductions do not stack. Successful reveals on Psychic Terrain grant +2 Sp. Atk. Successful opposing status moves expose their user through the following turn. The reporter and adjacent allies ignore exposed foes' positive defensive stages. An exposed foe switching out clears its mark; leaving ends that reporter's marks.",
+		"shortDesc": "Forewarn; exposes status users so it and adjacent allies bypass their defensive boosts.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null,
@@ -62589,8 +62706,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Burning Crown",
 		"num": 10023,
 		"gen": 9,
-		"desc": "On entry, lowers adjacent foes Attack by 1 under normal Intimidate rules. Unbound Blaze converts eligible Normal moves to Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Prevents freezing outside Cold Eclipse and cures freeze; incoming Water and Ice attacks use half the offensive stat. Dragon's Den and Infernal Eclipse block Fire moves. Dragon's Den, Volcanic and Infernal Eclipse entry give +1 Defense and Sp. Def. At turn end, foes take Fire damage of 1/16 base max HP, doubled if burned or the holder used Fire/Dragon that turn. Fire immunities apply; effectiveness scales chip only in Free-for-All. Self-Sufficient heals 1/16 max HP each turn and prevents sandstorm/hail damage. Levitate grants normal airborne Ground and grounded-hazard protection. Has one 20% attack-damage reduction. New World, Cold Eclipse and Starlight Arena retain 1.5x move power.",
-		"shortDesc": "Intimidate + Unbound Blaze + Self-Sufficient + Levitate.",
+		"desc": "On entry, lowers adjacent foes Attack by 1 under normal Intimidate rules. Unbound Blaze converts eligible Normal moves to Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Prevents freezing outside Cold Eclipse and cures freeze; incoming Water and Ice attacks use half the offensive stat. Dragon's Den and Infernal Eclipse block Fire moves. Dragon's Den, Volcanic and Infernal Eclipse entry give +1 Defense and Sp. Def. At turn end, foes take Fire damage of 1/16 base max HP, doubled if burned or the holder used Fire/Dragon that turn. Fire immunities apply; effectiveness scales chip only in Free-for-All. Levitate grants normal airborne Ground and grounded-hazard protection. Has one 20% attack-damage reduction. New World, Cold Eclipse and Starlight Arena retain 1.5x move power.",
+		"shortDesc": "Intimidate + Unbound Blaze + Levitate.",
 		"rating": 4.5,
 		"flags": {
 			"breakable": 1,
@@ -62611,8 +62728,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Burning Quake",
 		"num": 11456,
 		"gen": 9,
-		"desc": "Physical attacks deal 1.3x damage to Dragon types. Raises the critical-hit ratio by 1 stage. Once per turn, after a move finishes landing a critical hit that damages an opponent’s HP, raises the user’s Speed by 1 stage. Multi-hit and spread moves trigger once. Ally and Substitute-only damage do not qualify. The user must survive the move.",
-		"shortDesc": "Physical hits deal 1.3x to Dragons. +1 crit ratio; damaging crits grant +1 Speed once per turn.",
+		"desc": "Raises the critical-hit ratio by 1 stage. Physical attacks deal 1.3× damage to Dragon-type targets.",
+		"shortDesc": "Super Luck; physical attacks deal 1.3× damage to Dragons.",
 		"rating": 3.5,
 		"flags": {},
 		"isNonstandard": null,
@@ -62621,7 +62738,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Burning Rage",
 		"num": 10349,
 		"gen": 9,
-		"desc": "Brute Force (Reckless + Rock Head), Iron Fist and Mold Breaker. Proficient: damaging same-type moves have 1.3x power. Brute Force: recoil and crash moves, Explosion, Self-Destruct and Misty Explosion have 1.2x power; Struggle is excluded. On Chessboard, all moves gain a further 1.2x power. Prevents move recoil except Struggle; crash and Life Orb damage still apply. Iron Fist: punching moves have 1.4x power. Mold Breaker: moves ignore bypassable opposing abilities.",
+		"desc": "Brute Force (Reckless + Rock Head), Iron Fist and Mold Breaker.Proficient: damaging same-type moves have 1.3x power.Brute Force: recoil and crash moves, Explosion, Self-Destruct and Misty Explosion have 1.2x power; Struggle is excluded. On Chessboard, all moves gain a further 1.2x power. Prevents move recoil except Struggle; crash and Life Orb damage still apply. Iron Fist: punching moves have 1.4x power. Mold Breaker: moves ignore bypassable opposing abilities.",
 		"shortDesc": "Brute Force (Reckless + Rock Head), Iron Fist, Mold Breaker and Proficient.",
 		"rating": 4,
 		"flags": {},
@@ -62677,8 +62794,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Calculated Shot",
 		"num": 10590,
 		"gen": 9,
-		"desc": "Damaging Water moves gain +1 critical-hit stage and always use the highest normal damage roll. Does not increase fixed damage or bypass accuracy checks. Frisk reveals opposing Illusions (including itemless foes), reveals held items and independently has a 30% chance to Embargo each opposing item holder for 5 turns.",
-		"shortDesc": "Water attacks gain +1 critical-hit stage and the highest normal damage roll.",
+		"desc": "Frisk reveals opposing Illusions and items and may Embargo item holders. Damaging Water moves gain +1 critical-hit stage and use the highest normal damage roll.",
+		"shortDesc": "Frisk; Water attacks gain +1 critical-hit stage and maximum damage rolls.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null,
@@ -63254,6 +63371,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {},
 		"isNonstandard": null,
 	},
+	"cosmicanalysis": {
+		"name": "Cosmic Analysis",
+		"num": 32502,
+		"gen": 9,
+		"desc": "Attacks gain 30% power after all other active Pokemon have acted. On entry, raises Attack if foes have lower combined Defense, otherwise Sp. Atk. Its first damaging move each entry is a critical hit. Retains Download’s field bonuses.",
+		"shortDesc": "Analytic + Download.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null,
+	},
 	"costar": {
 		"name": "Costar",
 		"num": 294,
@@ -63480,8 +63607,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Cursed Body",
 		"num": 130,
 		"gen": 5,
-		"desc": "Damaging attacks have a 30% chance to be disabled, guaranteed on Haunted and disabled on Holy Field. Excludes Max moves, delayed attacks and Struggle. On fainting, curses all active foes.",
-		"shortDesc": "30% chance to disable attacks; curses foes on faint.",
+		"desc": "Damaging attacks have a 30% chance to be disabled, guaranteed on Haunted and disabled on Holy Field. Excludes Max moves, delayed attacks and Struggle. On fainting, active foes are cursed for two end-of-turn ticks of 1/8 max HP each, then the curse ends.",
+		"shortDesc": "30% chance to disable attacks; on faint, two 1/8-HP curse ticks.",
 		"rating": 2,
 		"flags": {},
 		"isNonstandard": null,
@@ -63500,7 +63627,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Cursed Keepsake",
 		"num": 10131,
 		"gen": 9,
-		"desc": "Once per entry, an opposing attack damaging its HP curses its surviving attacker if not already cursed. Its ability-applied Curse deals 1/8 max HP per turn. Cursed opponents deal 20% less attack damage. While active, heals half the actual damage its own Curse causes. No field creation.",
+		"desc": "Once per entry, an opposing attack damaging its HP curses its surviving attacker if not already cursed. Its ability-applied Curse deals 1/8 max HP per turn. Cursed opponents deal 20% less attack damage. While active, heals half the actual damage its own Curse causes.",
 		"shortDesc": "Once per entry: curses an attacker. Cursed foes deal 20% less; own Curse heals.",
 		"rating": 3,
 		"flags": {},
@@ -63510,7 +63637,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Cursed Marionette",
 		"num": 10104,
 		"gen": 9,
-		"desc": "The first successful status move against each opponent per entry also curses it if not already cursed. Ability-applied Curse deals 1/8 max HP per turn without an HP cost. Attacks have 1.3x power against cursed foes. Failed, reflected, protected and immune status moves do not trigger it. No field creation. Prankster comes from its passive.",
+		"desc": "Once per entry per foe, a successful status move curses that foe. This Curse deals 1/8 max HP each turn. Attacks deal 1.3x damage to cursed foes.",
 		"shortDesc": "First successful status move per foe each entry curses it; 1.3x damage to cursed foes.",
 		"rating": 4,
 		"flags": {},
@@ -63758,8 +63885,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Desert Shell",
 		"num": 10267,
 		"gen": 9,
-		"desc": "Multi-hit moves always use their maximum hit count and have 1.5x power. Moves that normally check accuracy per hit check only once. Incoming Fire attacks use half the attacker's offensive stat. Burn damage is halved. On entry, summons sandstorm for 5 turns, or 8 with Smooth Rock. Multi-hit moves always hit the maximum number of times and have 1.5x power. Damage from Fire-type moves and burns is halved. Summons sandstorm on entry.",
-		"shortDesc": "1.5x multi-hit power; Half Fire attacking stats and burn damage; Summons sandstorm on entry.",
+		"desc": "Combines Skill Link and Sand Stream, including their field effects.",
+		"shortDesc": "Skill Link + Sand Stream.",
 		"rating": 5,
 		"flags": {
 			"breakable": 1,
@@ -63987,7 +64114,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Dread Dominion",
 		"num": 11452,
 		"gen": 9,
-		"desc": "Hydra Bond and Moxie. Intimidate lowers adjacent foes' Attack by 1 on entry, respecting Substitute and normal Intimidate protections. Does not change Dark/Fairy type matchups.",
+		"desc": "Hydra Bond and Moxie. Intimidate lowers adjacent foes' Attack by 1 on entry, respecting Substitute and normal Intimidate protections.",
 		"shortDesc": "Hydra Bond, Moxie and Intimidate.",
 		"rating": 5,
 		"flags": {},
@@ -64019,8 +64146,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Dread Presence",
 		"num": 10541,
 		"gen": 9,
-		"desc": "Blocks opposing Berries and field Seeds. On Cold Eclipse entry, lowers opposing Speed. Its Dark attacks gain 30% power against foes at half HP or less.",
-		"shortDesc": "Unnerve; Dark attacks gain 30% power against foes at half HP or less.",
+		"desc": "Boosts everyone’s Dark attacks with Dark Aura; Aura Break reverses that boost. Prevents opposing Berries and field Seeds from activating. Retains Unnerve’s Cold Eclipse entry effect.",
+		"shortDesc": "Dark Aura + Unnerve.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null,
@@ -64247,8 +64374,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Echo Fiend",
 		"num": 10006,
 		"gen": 9,
-		"desc": "It is immune to sound moves, and this immunity cannot be suppressed. Its sound moves become Flying type and have 1.5x power. Its side is immune to its own damaging sound-based moves.",
-		"shortDesc": "Unsuppressible sound immunity; sound -> Flying 1.5x; allies avoid own sound damage.",
+		"desc": "It is immune to sound moves, and this immunity cannot be suppressed. Its sound moves become Flying type and have 1.2x power (1.5x on Mountain, Snowy Mountain, Cave, Volcanic and Crystal Cavern). Its side is immune to its own damaging sound-based moves.",
+		"shortDesc": "Soundproof; sound attacks change type and gain 1.2x power; protects allies from sound.",
 		"rating": 4,
 		"flags": {
 			"cantsuppress": 1,
@@ -64259,7 +64386,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Echo Sense",
 		"num": 11094,
 		"gen": 9,
-		"desc": "It is immune to sound moves, and this immunity cannot be suppressed. Its sound moves become Flying type and have 1.5x power. Its side is immune to its own damaging sound-based moves. On entry, reveals all opposing active Illusions and held items. Each item holder independently has a 30% chance to be Embargoed for 5 turns. Avoids allied damaging moves. Speed doubles on Psychic Terrain or Psychic Aura. Moves bypass Substitute, Reflect, Light Screen, Aurora Veil, Safeguard and Mist.",
+		"desc": "It is immune to sound moves, and this immunity cannot be suppressed. Its sound moves become Flying type and have 1.2x power (1.5x on Mountain, Snowy Mountain, Cave, Volcanic and Crystal Cavern). Its side is immune to its own damaging sound-based moves. On entry, reveals all opposing active Illusions and held items. Each item holder independently has a 30% chance to be Embargoed for 5 turns. Avoids allied damaging moves. Speed doubles on Psychic Terrain or Psychic Aura. Moves bypass Substitute, Reflect, Light Screen, Aurora Veil, Safeguard and Mist.",
 		"shortDesc": "Allies avoid own sound damage; 30% chance of 5-turn Embargo; double Speed on Psychic field/aura.",
 		"rating": 5,
 		"flags": {
@@ -64284,7 +64411,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Eclipse Vision",
 		"num": 10153,
 		"gen": 9,
-		"desc": "Special Attack is multiplied by 1.3. Its first move slot sets its opening type if Psychic or Dark, and later Psychic- or Dark-type moves change it to that type. Psychic typing restores 1/8 base max HP at turn end; Dark typing restores HP equal to 1/4 damage dealt. Species-passive effects remain separate from the selected ability and do not double when copied into that slot.",
+		"desc": "Special Attack is multiplied by 1.3. Its first move slot sets its opening type if Psychic or Dark, and later Psychic- or Dark-type moves change it to that type. Psychic typing restores 1/8 base max HP at turn end; Dark typing restores HP equal to 1/4 damage dealt.",
 		"shortDesc": "SpA 1.3x; opening Psychic/Dark type; moves switch type; Psychic heals, Dark drains.",
 		"rating": 4,
 		"flags": {
@@ -64448,7 +64575,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Emperor's Resolve",
 		"num": 10041,
 		"gen": 9,
-		"desc": "Includes full local Swift Swim and Competitive. Flying moves receive STAB. Proficient remains its separate species passive.",
+		"desc": "Includes full local Swift Swim and Competitive. Flying moves receive STAB.",
 		"shortDesc": "Swift Swim + Flying STAB + Competitive.",
 		"rating": 4,
 		"flags": {
@@ -64550,12 +64677,10 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Evergreen",
 		"num": 11285,
 		"gen": 9,
-		"desc": "Overcoat + Ripen: immune to powder moves and sandstorm/hail damage; doubles applicable Berry effects and positive held-Seed stat boosts. Seed stat drops and other effects are unchanged.",
-		"shortDesc": "Overcoat + Ripen.",
-		"rating": 4,
-		"flags": {
-			"breakable": 1,
-		},
+		"desc": "At turn end with an empty item slot, has a 50% chance to restore its last consumed Berry or field Seed. Guaranteed in hail or snow instead of sun.",
+		"shortDesc": "Restores a consumed Berry or field Seed: 50% each turn, guaranteed in hail/snow.",
+		"rating": 3,
+		"flags": {},
 		"isNonstandard": null,
 	},
 	"evilsanta": {
@@ -64594,8 +64719,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Expiration",
 		"num": 11980,
 		"gen": 9,
-		"desc": "Full local Worldbreaker and Controlled Fury. Berserk raises Attack and Sp. Atk by 1 after surviving a move crossing half HP, or only Sp. Atk by 2 on Dragon’s Den. Entering Dragon’s Den grants +1 Sp. Atk. Duskilate converts Normal moves to Dark with its normal power and field effects. Each damaging hit independently has a 30% chance (50% on Dragon’s Den) to double base power; Fickle Beam uses only its own all-out roll. The first damaging hit received each entry raises Attack by 1; surviving a critical hit instead maximizes Attack. Outrage, Thrash, Petal Dance and Raging Fury cause no rampage lock or ending confusion. Existing confusion and other move locks remain unchanged.",
-		"shortDesc": "Worldbreaker + Controlled Fury.",
+		"desc": "Full local Strings of Ruin and Controlled Fury. Berserk raises Attack and Sp. Atk by 1 after surviving a move crossing half HP, or only Sp. Atk by 2 on Dragon’s Den. Entering Dragon’s Den grants +1 Sp. Atk. Duskilate converts Normal moves to Dark with its normal power and field effects. Each damaging hit independently has a 30% chance (50% on Dragon’s Den) to double base power; Fickle Beam uses only its own all-out roll. The first damaging hit received each entry raises Attack by 1; surviving a critical hit instead maximizes Attack. Outrage, Thrash, Petal Dance and Raging Fury cause no rampage lock or ending confusion. Existing confusion and other move locks remain unchanged.",
+		"shortDesc": "Strings of Ruin + Controlled Fury.",
 		"rating": 5,
 		"flags": {},
 		"isNonstandard": null,
@@ -64919,8 +65044,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Tidal Crown",
 		"num": 10025,
 		"gen": 9,
-		"desc": "Stalwart bypasses redirection and gives +1 Sp. Atk on New World, Starlight Arena, Fairy Tale or Chessboard entry. Water chip cycles 1/16, 2/16, then 3/16 foe base max HP; Water immunities apply, and effectiveness scales chip only in Free-for-All. Self-Sufficient heals 1/16 max HP each turn and prevents sandstorm/hail damage. Shell Armor prevents critical hits and reduces attack damage by 20%; Fairy Tale and Dragon Den entry give +1 Defense, and opposing stat drops trigger +2 Sp. Def. Guardian Presence boosts allies move power by 1.3x, or 1.5x on Haunted, Bewitched Woods, Holy and Psychic fields, and reduces their attack damage by 25%; neither applies to the holder. During Electric Aura or Electric Terrain, Murkwater Surface, Water Surface, Underwater, Midnight Zone, Factory and Short-Circuit, redirects and absorbs Electric moves for +1 Attack and Sp. Atk. Existing Fairy Tale, New World, Cold Eclipse and Starlight Arena entry/terrain bonuses give +1 Defense and Sp. Def; the latter three retain 1.5x move power.",
-		"shortDesc": "Water Barrage (without Dual Wield), Self-Sufficient, Shell Armor and Guardian Presence.",
+		"desc": "Stalwart bypasses redirection and gives +1 Sp. Atk on New World, Starlight Arena, Fairy Tale or Chessboard entry. Water chip cycles 1/16, 2/16, then 3/16 foe base max HP; Water immunities apply, and effectiveness scales chip only in Free-for-All. Shell Armor prevents critical hits and reduces attack damage by 20%; Fairy Tale and Dragon Den entry give +1 Defense, and opposing stat drops trigger +2 Sp. Def. Guardian Presence boosts allies move power by 1.3x, or 1.5x on Haunted, Bewitched Woods, Holy and Psychic fields, and reduces their attack damage by 25%; neither applies to the holder. During Electric Aura or Electric Terrain, Murkwater Surface, Water Surface, Underwater, Midnight Zone, Factory and Short-Circuit, redirects and absorbs Electric moves for +1 Attack and Sp. Atk. Existing Fairy Tale, New World, Cold Eclipse and Starlight Arena entry/terrain bonuses give +1 Defense and Sp. Def; the latter three retain 1.5x move power.",
+		"shortDesc": "Water Barrage (without Dual Wield), Shell Armor and Guardian Presence.",
 		"rating": 4.5,
 		"flags": {
 			"breakable": 1,
@@ -64995,8 +65120,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Fresh Plumage",
 		"num": 11256,
 		"gen": 9,
-		"desc": "Local Natural Cure cures status on switching and heals 1/8 max HP only when curing status; Bewitched Woods has its end-turn cure. First successful Flying attack each entry deals 1.2x damage across all hits, including Substitute damage. Misses, protection and immunity preserve the charge. Roost does not recharge it.",
-		"shortDesc": "Natural Cure; first successful Flying attack each entry deals 1.2x damage.",
+		"desc": "Local Natural Cure cures status on switching and heals 1/8 max HP only when curing status; Bewitched Woods has its end-turn cure. Prevents accuracy drops caused by opponents. Self-inflicted and allied accuracy drops still apply.",
+		"shortDesc": "Natural Cure; prevents opposing accuracy drops.",
 		"rating": 2.5,
 		"flags": {},
 		"isNonstandard": null,
@@ -65211,7 +65336,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Gem Eye",
 		"num": 10453,
 		"gen": 9,
-		"desc": "Prevents indirect damage. Prevents opposing accuracy drops, ignores evasion boosts and reveals opposing Illusions. Fairy Tale entry grants +1 Sp. Def; Mirror Arena entry grants +1 accuracy and Laser Focus. Does not reflect status moves.",
+		"desc": "Prevents indirect damage. Prevents opposing accuracy drops, ignores evasion boosts and reveals opposing Illusions. Fairy Tale entry grants +1 Sp. Def; Mirror Arena entry grants +1 accuracy and Laser Focus.",
 		"shortDesc": "Magic Guard + Keen Eye.",
 		"rating": 0.5,
 		"flags": {
@@ -65289,7 +65414,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Glacial Mass",
 		"num": 10388,
 		"gen": 9,
-		"desc": "Heavy Metal + Thick Fat: doubles weight, halves physical attack damage, and halves the attacking stat of Fire- and Ice-type moves. Immune to hail damage. On entry to Factory Field, Defense rises one stage and Speed falls one stage. On Cold Eclipse, Defense and Sp. Def are 1.5x, the field Speed penalty is ignored, and hail heals 1/10 max HP each turn.",
+		"desc": "Heavy Metal + Thick Fat: doubles weight, halves physical attack damage, and halves the attacking stat of Fire- and Ice-type moves. Immune to hail damage. On entry to Factory Field, Defense rises one stage and Speed falls one stage.",
 		"shortDesc": "Halves physical and Fire/Ice damage; hail immunity.",
 		"rating": 4.5,
 		"flags": {
@@ -65381,6 +65506,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {},
 		"isNonstandard": null,
 	},
+	"grandmarksman": {
+		"name": "Grand Marksman",
+		"num": 32508,
+		"gen": 9,
+		"desc": "Mega Launcher boosts pulse and bullet moves by 1.5x. Dual Wield grants its usual independent hits and power scaling. Water attacks gain 1.2x power. Once per switch-in, damaging a foe with Water grants +1 critical-hit stage until switching; shared with Rising Marksman.",
+		"shortDesc": "Mega Launcher + Dual Wield + Rising Marksman; Water power 1.2x.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null,
+	},
 	"grandmaster": {
 		"name": "Grandmaster",
 		"num": 10124,
@@ -65393,12 +65528,32 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		},
 		"isNonstandard": null,
 	},
+	"grandrhythm": {
+		"name": "Grand Rhythm",
+		"num": 32507,
+		"gen": 9,
+		"desc": "On entry, sets Forest Field and Grassy Aura for 5 turns, or 8 with Amplifield Rock, following field rules. Once per switch-in, damaging a foe with Grass grants +1 Defense and Sp. Def; shared with Rising Rhythm.",
+		"shortDesc": "Forest Surge + Rising Rhythm.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null,
+	},
 	"grandstrategy": {
 		"name": "Grand Strategy",
 		"num": 10125,
 		"gen": 9,
 		"desc": "Mold Breaker. While the holder is active, its team's attacks dealing opposing HP damage prepare that foe for the holder. Its next physical HP-damaging attack consumes the mark after the whole attack, ignoring positive defensive stages and Reflect, Light Screen and Aurora Veil. That attack cannot rearm the mark. Marks do not stack, survive the holder switching out, and clear when the foe switches or faints, or the holder faints or loses this ability. Once per battle, an end-of-turn major-status cure clears negative accuracy stages and grants Laser Focus through the next turn; switching clears Laser Focus. Suppression delays the cure; other cures do not spend it.",
 		"shortDesc": "Mold Breaker; team hits prepare foes while active; once-battle cure grants Laser Focus.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null,
+	},
+	"grandstriker": {
+		"name": "Grand Striker",
+		"num": 32506,
+		"gen": 9,
+		"desc": "Striker boosts kicks and G-Max Fireball by 1.4x. Defiant grants +2 Attack when an opponent lowers its stats. Once per switch-in, damaging a foe with Fire grants +1 Speed; shared with Rising Striker.",
+		"shortDesc": "Striker + Defiant + Rising Striker; G-Max Fireball also gains 1.4x power.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null,
@@ -65471,8 +65626,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Great Marsh",
 		"num": 10335,
 		"gen": 9,
-		"desc": "On entry, reveals opposing Illusions and alerts to an opposing super-effective or OHKO move. If no threat is found, Psychic Terrain grants +2 Sp. Atk. Absorbs Water moves for 1/4 max HP; incoming Fire moves have 1.25x power. Effective rain heals 1/8 HP per turn; sun costs 1/8. Field healing per turn: 1/16 on Underwater, Swamp, Misty or grounded Water Surface; 1/8 when grounded and Poison-type on Murkwater. Corrosive Mist heals Poison types by 1/8 but damages non-Steel others by 1/8. Desert costs 1/8 HP per turn. Same-type attack bonus becomes 2x instead of 1.5x, or 2.25x instead of a 2x bonus. Its attacks have a 30% chance of badly poisoning. This effect comes before a move's inherent secondary effect chance. Rechecks incoming foes on every switch-in.",
-		"shortDesc": "Reveals threats; rain/field healing; stronger STAB; hits may badly poison.",
+		"desc": "Absorbs Water attacks and heals in rain and supported wet fields; sun and Fire attacks are harmful. Same-type attacks gain Adaptability’s stronger bonus. Attacks have Toxic Chain’s 30% chance to badly poison.",
+		"shortDesc": "Dry Skin + Adaptability + Toxic Chain.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null,
@@ -65632,7 +65787,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Haunted Chime",
 		"num": 10286,
 		"gen": 9,
-		"desc": "Airborne: immune to Ground attacks and grounded hazards unless grounded. Absorbs wind moves for +1 Sp. Atk. Gains +1 Sp. Atk when Tailwind starts on its side or it enters during Tailwind. Strong Winds gives +1 Attack and Sp. Atk each turn. Damaging attacks have a 30% chance to be disabled, guaranteed on Haunted and disabled on Holy Field. Excludes Max moves, delayed attacks and Struggle. On fainting, curses all active foes.",
+		"desc": "Airborne: immune to Ground attacks and grounded hazards unless grounded. Absorbs wind moves for +1 Sp. Atk. Gains +1 Sp. Atk when Tailwind starts on its side or it enters during Tailwind. Strong Winds gives +1 Attack and Sp. Atk each turn. Damaging attacks have a 30% chance to be disabled, guaranteed on Haunted and disabled on Holy Field. Excludes Max moves, delayed attacks and Struggle. On fainting, active foes are cursed for two end-of-turn ticks of 1/8 max HP each, then the curse ends.",
 		"shortDesc": "Wind Power + Cursed Body.",
 		"rating": 4,
 		"flags": {},
@@ -65684,7 +65839,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Heat Coil",
 		"num": 10058,
 		"gen": 9,
-		"desc": "Speed Boost and Long Reach. Long Reach removes contact. Has the current modified Magma Armor package: cures freeze, and incoming Water/Ice attacks use half the offensive stat; this is not an upgrade to full Magma Armor. No new binding effect.",
+		"desc": "Speed Boost and Long Reach. Long Reach removes contact. Has the current modified Magma Armor package: cures freeze, and incoming Water/Ice attacks use half the offensive stat.",
 		"shortDesc": "Speed Boost + Long Reach; modified Magma Armor; Flame Body passive is separate.",
 		"rating": 3.5,
 		"flags": {
@@ -66225,7 +66380,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Infernal Dominion",
 		"num": 11247,
 		"gen": 9,
-		"desc": "Has Intimidate. Does not generate Fire Spin or trap foes. Incoming Rock attack effectiveness is capped at neutral, preserving stronger resistance or immunity. Prevents only this holder's Stealth Rock damage without removing the hazard. A direct Fire attack dealing opposing HP damage clears Sandstorm and, once per turn regardless of weather, grants Molten Guard until turn end. The guard blocks the next opposing Rock attack against this holder, including all hits, without shielding other spread targets. Generated attacks do not arm it. Leaving, ability loss and Mega Evolution clear the guard.",
+		"desc": "Has Intimidate. Incoming Rock attack effectiveness is capped at neutral, preserving stronger resistance or immunity. Prevents only this holder's Stealth Rock damage without removing the hazard. A direct Fire attack dealing opposing HP damage clears Sandstorm and, once per turn regardless of weather, grants Molten Guard until turn end. The guard blocks the next opposing Rock attack against this holder, including all hits, without shielding other spread targets. Generated attacks do not arm it. Leaving, ability loss and Mega Evolution clear the guard.",
 		"shortDesc": "Intimidate; Molten Guard; Rock effectiveness capped at neutral; melts own Stealth Rock damage.",
 		"rating": 4,
 		"flags": {},
@@ -66517,8 +66672,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Kick Fiend",
 		"num": 10352,
 		"gen": 9,
-		"desc": "Kicking moves have 1.4x power. Prevents and cures paralysis and blocks opposing or field-induced Speed drops. Doubles eligible secondary-effect chances.",
-		"shortDesc": "Striker + Limber + Serene Grace.",
+		"desc": "Kicking moves have 1.4x power. Prevents and cures paralysis and blocks opposing or field-induced Speed drops.",
+		"shortDesc": "Striker + Limber.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null,
@@ -66950,8 +67105,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Lunar Orbit",
 		"num": 10140,
 		"gen": 9,
-		"desc": "Magic Guard prevents indirect damage. On entry or Mega Evolution, sets Gravity for 5 turns with its field transformations. The holder and active allies gain Serene Grace; multiple sources do not stack. Grants each recipient one charge-turn skip per stay, shared with Void Omen. Only the recipient switching resets it. Independent field and Power Herb skips do not spend the allowance. Suppression disables the grant.",
-		"shortDesc": "Magic Guard; entry Gravity; shares secondary boosts and one charge skip per recipient entry.",
+		"desc": "Prevents indirect damage. Sets Gravity on entry. Doubles secondary-effect chances for itself and active allies, without stacking with other Serene Grace sources. Grants each ally and itself one charge-turn skip per stay, shared with Void Omen. Fairy Tale entry gives +1 Sp. Def.",
+		"shortDesc": "Magic Guard + Serene Grace; entry Gravity; shares one charge skip per ally entry.",
 		"rating": 4.5,
 		"flags": {
 			"breakable": 1,
@@ -67476,8 +67631,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Moss Armor",
 		"num": 10390,
 		"gen": 9,
-		"desc": "Airborne: immune to Ground attacks, Spikes, Toxic Spikes, Sticky Web and Arena Trap unless grounded. Thousand Arrows can still hit. Each opposing attack that damages HP heals once for 1/16 max HP. The first such hit each turn also raises Defense by 1, before later hits of a multi-hit move. Switching out cures major status and heals 1/8 max HP only if a status was cured. Bewitched Woods cures status at turn end without this heal. switching out heals 1/8 max HP only after a Grass attack dealt opposing HP damage on the current or immediately preceding turn, with no intervening action.",
-		"shortDesc": "Levitate + Stamina + Natural Cure; a Grass HP hit followed by switching adds 1/8 HP healing.",
+		"desc": "Stamina heals 1/16 max HP once per opposing attack and raises Defense once per turn. Natural Cure cures status on switching and heals 1/8 max HP if status was cured. Switching out also heals 1/8 max HP after a Grass attack damaged opposing HP on this or the previous turn, with no intervening action. Retains component field effects.",
+		"shortDesc": "Stamina + Natural Cure; Grass hits can grant switch-out healing.",
 		"rating": 5,
 		"flags": {},
 		"isNonstandard": null,
@@ -67578,8 +67733,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Mourning Snow",
 		"num": 10116,
 		"gen": 9,
-		"desc": "On entry, it summons Hail for 8 turns, and Aurora Veil used by it lasts 8 turns. During Hail or Snow, it heals 1/16 max HP each turn. Its damaging moves of any type gain an additional 30% chance to inflict frostbite, preserving their effects; this does not require weather. It is immune to Hail damage. When another Pokemon faints, it restores 1/8 max HP, or 1/4 if the faint was caused by an Ice move, Hail, Snow, or Curse. When it faints, all opposing Pokemon become cursed. Damaging hits disable the attacker's move when possible.",
-		"shortDesc": "8-turn Hail/Veil; damaging moves add 30% frostbite; faint healing/curse; hit Disable.",
+		"desc": "On entry, it summons Hail for 8 turns, and Aurora Veil used by it lasts 8 turns. During Hail or Snow, it heals 1/16 max HP each turn. Its damaging moves of any type gain an additional 30% chance to inflict frostbite, preserving their effects; this does not require weather. It is immune to Hail damage. When another Pokemon faints, it restores 1/8 max HP, or 1/4 if the faint was caused by an Ice move, Hail, Snow, or Curse. When it faints, active foes are cursed for two end-of-turn ticks of 1/8 max HP each, then the curse ends. Damaging hits disable the attacker's move when possible.",
+		"shortDesc": "8-turn Hail/Veil; 30% frostbite; healing; hit Disable; on faint, two 1/8-HP curse ticks.",
 		"rating": 4.5,
 		"flags": {
 			"breakable": 1,
@@ -67806,9 +67961,9 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 	},
 	"nightmarepulse": {
 		"name": "Nightmare Pulse",
-		"num": 11257,
+		"num": 32511,
 		"gen": 9,
-		"desc": "Prevents and cures sleep, blocks Yawn, and gives Dark and Ghost attacks 1.3x power. Takes 20% less attack damage, or 40% less from super-effective attacks. Its moves cannot miss. Damaging attacks have a 30% chance to be disabled, guaranteed on Haunted and disabled on Holy Field. Excludes Max moves, delayed attacks and Struggle. On fainting, curses all active foes. Sleeping foes, including Comatose users, lose 1/8 max HP each turn. Disabled on Rainbow Field. On entry, sets Haunted Field for 3 turns if field rules allow. Has sleep immunity, accurate moves, damage reduction, disabling attackers, and damage to sleeping foes. Does not bypass screens or Substitute. Field creation or refresh is attempted only once per battle per holder, even if blocked; switching, suppression, revival, or ability changes never reset this use. Its field creation, refresh and conversion last exactly 3 turns; Amplifield Rock does not extend them.",
+		"desc": "Prevents and cures sleep, blocks Yawn, and gives Dark and Ghost attacks 1.3x power. Takes 20% less attack damage, or 40% less from super-effective attacks. Its moves cannot miss. Damaging attacks have a 30% chance to be disabled, guaranteed on Haunted and disabled on Holy Field. Excludes Max moves, delayed attacks and Struggle. On fainting, active foes are cursed for two end-of-turn ticks of 1/8 max HP each, then the curse ends. Sleeping foes, including Comatose users, lose 1/8 max HP each turn. Disabled on Rainbow Field. On entry, sets Haunted Field for 3 turns if field rules allow. Has sleep immunity, accurate moves, damage reduction, disabling attackers, and damage to sleeping foes. Does not bypass screens or Substitute. Field creation or refresh is attempted only once per battle per holder, even if blocked; switching, suppression, revival, or ability changes never reset this use. Its field creation, refresh and conversion last exactly 3 turns; Amplifield Rock does not extend them.",
 		"shortDesc": "Moves cannot miss; curses foes on faint; Sleeping foes lose 1/8 HP per turn, except on Rainbow.",
 		"rating": 4.5,
 		"flags": {},
@@ -69035,8 +69190,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Punch Fiend",
 		"num": 10354,
 		"gen": 9,
-		"desc": "Punching moves have 1.4x power. Doubles eligible secondary-effect chances. Prevents opposing accuracy drops, ignores evasion boosts, and reveals opposing Illusions. Mirror Arena entry grants +1 accuracy and Laser Focus.",
-		"shortDesc": "Iron Fist + Serene Grace + Keen Eye.",
+		"desc": "Punching moves have 1.4x power. Prevents opposing accuracy drops, ignores evasion boosts, and reveals opposing Illusions. Mirror Arena entry grants +1 accuracy and Laser Focus.",
+		"shortDesc": "Iron Fist + Keen Eye.",
 		"rating": 4,
 		"flags": {
 			"breakable": 1,
@@ -69240,7 +69395,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Raging Heart",
 		"num": 11694,
 		"gen": 9,
-		"desc": "Full local Inner Focus prevents flinching and Intimidate Attack drops, subject to normal suppression and ability bypass. Directly selected Thrash becomes Ghost type, retaining its physical category, 140 power, chosen adjacent opposing target and 30% Defense-drop chance, with no extra power multiplier. Without separate Controlled Fury it has its 2-3-turn rampage lock but does not cause its own ending confusion while Raging Heart is active. External confusion remains. Annihilape supplies Controlled Fury separately as its species passive.",
+		"desc": "Full local Inner Focus prevents flinching and Intimidate Attack drops, subject to normal suppression and ability bypass. Directly selected Thrash becomes Ghost type, retaining its physical category, 140 power, chosen adjacent opposing target and 30% Defense-drop chance, with no extra power multiplier. Without separate Controlled Fury it has its 2-3-turn rampage lock but does not cause its own ending confusion while Raging Heart is active. External confusion remains.",
 		"shortDesc": "Inner Focus; selected Thrash becomes Ghost with no ending confusion.",
 		"rating": 4,
 		"flags": {
@@ -69252,7 +69407,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Raging Overlord",
 		"num": 10385,
 		"gen": 9,
-		"desc": "Moves ignore bypassable opposing abilities. Attacks bypass Substitute, screens and defensive stat stages and gain +1 critical-hit stage. Takes half damage from priority attacks. Immune to hail damage. Move KOs damage remaining foes by 60% of the last damage dealt; if there is no valid target or no damage is dealt, gains +1 Attack instead. Magic Guard prevents this splash damage. Cannot be suppressed. Each fainted ally adds 10% move damage; in Free-for-All, allies count twice. At 2+ fallen allies it gains Infiltrator; 4+, flinch immunity from Inner Focus; 5+, indirect-damage immunity and a one-time +1 Attack and Sp. Atk. It does not block stat drops. Effective fallen count is capped at 5 after Free-for-All doubling, for a maximum 1.5x Supreme Overlord power multiplier.",
+		"desc": "Moves ignore bypassable opposing abilities. Attacks bypass Substitute, screens and defensive stat stages and gain +1 critical-hit stage. Takes half damage from priority attacks. Immune to hail damage. Move KOs damage remaining foes by 60% of the last damage dealt; if there is no valid target or no damage is dealt, gains +1 Attack instead. Magic Guard prevents this splash damage. Cannot be suppressed. Each fainted ally adds 10% move damage; in Free-for-All, allies count twice. At 2+ fallen allies it gains Infiltrator; 4+, flinch immunity from Inner Focus; 5+, indirect-damage immunity and a one-time +1 Attack and Sp. Atk. Effective fallen count is capped at 5 after Free-for-All doubling, for a maximum 1.5x Supreme Overlord power multiplier.",
 		"shortDesc": "Moves ignore bypassable opposing abilities.",
 		"rating": 5,
 		"flags": {
@@ -69388,7 +69543,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Reaper's Grip",
 		"num": 10357,
 		"gen": 9,
-		"desc": "Heals 1/16 max HP each turn and ignores sandstorm/hail damage. Entry creates 5-turn Haunted Aura: all Ghost attacks gain 20% power. Its Ghost attacks heal 25% of opposing HP damage dealt. A direct Ghost KO while it survives and Haunted Aura remains attempts to convert the field to Haunted for 5 turns, consuming the Aura only on success. Respects field locks; cannot extend existing Haunted. Later entries can create the Aura again, but ability restarts cannot. Unaware comes from its passive. Suppression stops new triggers and holder benefits; an existing Aura persists.",
+		"desc": "Heals 1/16 max HP each turn and ignores sandstorm/hail damage. Entry creates 5-turn Haunted Aura: all Ghost attacks gain 20% power. Its Ghost attacks heal 25% of opposing HP damage dealt. A direct Ghost KO while it survives and Haunted Aura remains attempts to convert the field to Haunted for 5 turns, consuming the Aura only on success. Respects field locks; cannot extend existing Haunted. Later entries can create the Aura again, but ability restarts cannot. Suppression stops new triggers and holder benefits; an existing Aura persists.",
 		"shortDesc": "Self-Sufficient; 5-turn Haunted Aura on entry; Ghost attacks drain 25%. Ghost KO can create Haunted.",
 		"rating": 5,
 		"flags": {},
@@ -69398,7 +69553,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Reborn Flower",
 		"num": 10304,
 		"gen": 9,
-		"desc": "Changes Florges to Florges-Reborn on entry. Each adjacent ally has a 50% chance to be cured of major status at turn end. Grass allies, including itself, are protected from opposing stat drops, major status and Yawn; Bewitched Woods extends this protection to all types. Does not amplify healing. Aromaveil remains separate.",
+		"desc": "Changes Florges to Florges-Reborn on entry. Each adjacent ally has a 50% chance to be cured of major status at turn end. Grass allies, including itself, are protected from opposing stat drops, major status and Yawn; Bewitched Woods extends this protection to all types.",
 		"shortDesc": "Reborn form; Flower Veil and a 50% adjacent-ally status cure each turn.",
 		"rating": 4,
 		"flags": {
@@ -69705,7 +69860,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Rightful Exalt",
 		"num": 11985,
 		"gen": 9,
-		"desc": "Full local Serene Grace and Inner Focus. Doubles eligible move secondary-effect chances, with Serene Grace's existing exceptions and field interactions. Prevents flinching and Intimidate's Attack drop. Does not increase critical-hit chances.",
+		"desc": "Full local Serene Grace and Inner Focus. Doubles eligible move secondary-effect chances, with Serene Grace's existing exceptions and field interactions. Prevents flinching and Intimidate's Attack drop.",
 		"shortDesc": "Serene Grace + Inner Focus.",
 		"rating": 4,
 		"flags": {},
@@ -69759,7 +69914,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Rimeplate",
 		"num": 10593,
 		"gen": 9,
-		"desc": "Takes 75% less damage from hits after the first hit of a multi-hit attack. The first hit and separate attacks deal normal damage. Does not change Glaive Rush's effects.",
+		"desc": "Takes 75% less damage from hits after the first hit of a multi-hit attack. The first hit and separate attacks deal normal damage.",
 		"shortDesc": "Later hits of a multi-hit move deal 75% less damage.",
 		"rating": 4,
 		"flags": {},
@@ -69827,6 +69982,36 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {
 			"breakable": 1,
 		},
+		"isNonstandard": null,
+	},
+	"risingmarksman": {
+		"name": "Rising Marksman",
+		"num": 32505,
+		"gen": 9,
+		"desc": "Once per switch-in, damaging an opposing Pokemon with a Water attack raises the critical-hit ratio by 1 stage until switching out. Base and Gmax forms share this activation.",
+		"shortDesc": "First Water HP hit each entry: +1 critical-hit stage until switching.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null,
+	},
+	"risingrhythm": {
+		"name": "Rising Rhythm",
+		"num": 32504,
+		"gen": 9,
+		"desc": "Once per switch-in, damaging an opposing Pokemon with a Grass attack raises Defense and Sp. Def by 1. Base and Gmax forms share this activation.",
+		"shortDesc": "First Grass HP hit each entry: +1 Defense and Sp. Def.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null,
+	},
+	"risingstriker": {
+		"name": "Rising Striker",
+		"num": 32503,
+		"gen": 9,
+		"desc": "Once per switch-in, damaging an opposing Pokemon with a Fire attack raises Speed by 1. Base and Gmax forms share this activation.",
+		"shortDesc": "First Fire HP hit each entry: +1 Speed.",
+		"rating": 4,
+		"flags": {},
 		"isNonstandard": null,
 	},
 	"rivalappetites": {
@@ -69932,7 +70117,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Rooted Iron",
 		"num": 10470,
 		"gen": 9,
-		"desc": "Compatibility name for full local Stamina. Each opposing attack that damages HP heals once for 1/16 base max HP. The first such hit each turn gives +1 Defense before later multihit strikes. No additional healing for turns without an attack. Ferrothorn selects Stamina directly and has Iron Barbs as its passive.",
+		"desc": " Each opposing attack that damages HP heals once for 1/16 base max HP. The first such hit each turn gives +1 Defense before later multihit strikes.",
 		"shortDesc": "Stamina: each opposing HP-damaging attack heals once for 1/16; first hit each turn gives +1 Defense.",
 		"rating": 4,
 		"flags": {},
@@ -70034,8 +70219,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Royal Scales",
 		"num": 11122,
 		"gen": 9,
-		"desc": "Marvel Scale boosts Defense while statused or on supported fields. Swift Swim boosts Speed in rain and supported water fields. Its Normal-type moves become Dragon-type moves and have their power multiplied by 1.2. Heals 1/16 max HP each turn. Immune to sandstorm and hail damage.",
-		"shortDesc": "Marvel Scale, Swift Swim, Dragonize and Self Sufficient.",
+		"desc": "Marvel Scale boosts Defense while statused or on supported fields. Swift Swim boosts Speed in rain and supported water fields. Normal moves become Dragon-type with 1.2× power.",
+		"shortDesc": "Marvel Scale + Swift Swim + Dragonize.",
 		"rating": 5,
 		"flags": {
 			"breakable": 1,
@@ -70313,12 +70498,10 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Scavenger",
 		"num": 10375,
 		"gen": 9,
-		"desc": "Immune to powder moves, Rage Powder, Effect Spore, sandstorm damage and hail damage. Other Pokemon cannot lower its Defense. Heals 1/3 max HP on switching out.",
-		"shortDesc": "Immune to powder moves, Rage Powder, Effect Spore, sandstorm damage and hail damage.",
-		"rating": 4,
-		"flags": {
-			"breakable": 1,
-		},
+		"desc": "While active and alive, heals 1/4 base maximum HP when another active Pokemon faints, including allies. At most one successful recovery per turn; switching does not reset that limit.",
+		"shortDesc": "Another active Pokemon faints: heals 1/4 max HP, once per turn.",
+		"rating": 3,
+		"flags": {},
 		"isNonstandard": null,
 	},
 	"scentscout": {
@@ -70767,7 +70950,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Siege Magnet",
 		"num": 11264,
 		"gen": 9,
-		"desc": "Magnet Pull. Once per entry, the first Electric attack to damage a foe also attempts Heal Block on that foe for this turn and the following turn. Normal volatile-status protection applies; Heal Block is not shortened. Misses, protection and Substitute-only hits preserve the charge. No power boost.",
+		"desc": "Magnet Pull. Once per entry, the first Electric attack to damage a foe also attempts Heal Block on that foe for this turn and the following turn. Normal volatile-status protection applies; Heal Block is not shortened. Misses, protection and Substitute-only hits preserve the charge.",
 		"shortDesc": "First Electric attack damage each entry applies two-turn Heal Block.",
 		"rating": 4,
 		"flags": {},
@@ -71051,7 +71234,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Snowpack",
 		"num": 10461,
 		"gen": 9,
-		"desc": "Full local Ice Body: immune to hail; contact attackers have a 30% frostbite chance. Heals 1/16 max HP in hail/snow, or on Icy, Snowy Mountain and Cold Eclipse without those weathers; hail on Cold Eclipse heals 1/8. Mamoswine supplies Thick Fat separately as its species passive.",
+		"desc": "Full local Ice Body: immune to hail; contact attackers have a 30% frostbite chance. Heals 1/16 max HP in hail/snow, or on Icy, Snowy Mountain and Cold Eclipse without those weathers; hail on Cold Eclipse heals 1/8.",
 		"shortDesc": "Ice Body.",
 		"rating": 3.5,
 		"flags": {},
@@ -71163,7 +71346,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 	},
 	"solartrap": {
 		"name": "Solar Trap",
-		"num": 11258,
+		"num": 32512,
 		"gen": 9,
 		"desc": "Accumulation and Liquid Ooze. Has automatic Stockpiles and releases, defensive effects, and damage to draining attackers. Digestive Sap is not part of this ability.",
 		"shortDesc": "Automatic Stockpiles/releases; draining moves hurt their user.",
@@ -71241,7 +71424,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Soul Cremation",
 		"num": 11259,
 		"gen": 9,
-		"desc": "Direct Fire/Ghost attacks heal 1/3 of actual opposing HP damage, capped at 1/6 max HP per turn, and block surviving targets' healing through the following turn. Switching clears the block; repeated hits refresh it. Native draining moves, substitutes, allies, residual and delayed damage do not grant this drain. Once per turn, a Ghost hit on an already-burned surviving foe also attempts -1 Sp. Def. At turn end, heals 1/8 max HP if any foe actually took burn damage; this is separate from the drain cap. Once per actual entry, the first executed opposing damaging move targeting it grants +1 Sp. Atk after the entire move if it survives and remains active, even after misses, protection or immunity. This use is spent at +6 and is not reset by ability changes or suppression; switching resets it. Contact attackers have a 30% burn chance (60% on Volcanic). Absorbs Fire for a 1.5x Fire boost; Burning or grounded Volcanic also grants the boost. On Cold Eclipse, Fire absorption and contact burns stop, and entry gives +2 Defense and Sp. Def total. Normal healing and drain rules apply. Mega Chandelure with active Soul Cremation bypasses Soul Fire's Fire/Ghost attack absorption only. Ordinary type effectiveness and type immunities remain; this grants neither general Mold Breaker nor a damage multiplier. Will-O-Wisp and Soul Fire redirection are unchanged.",
+		"desc": "Direct Fire/Ghost attacks heal 1/3 of actual opposing HP damage, capped at 1/6 max HP per turn, and block surviving targets' healing through the following turn. Switching clears the block; repeated hits refresh it. Native draining moves, substitutes, allies, residual and delayed damage do not grant this drain. Once per turn, a Ghost hit on an already-burned surviving foe also attempts -1 Sp. Def. At turn end, heals 1/8 max HP if any foe actually took burn damage; this is separate from the drain cap. Once per actual entry, the first executed opposing damaging move targeting it grants +1 Sp. Atk after the entire move if it survives and remains active, even after misses, protection or immunity. This use is spent at +6 and is not reset by ability changes or suppression; switching resets it. Contact attackers have a 30% burn chance (60% on Volcanic). Absorbs Fire for a 1.5x Fire boost; Burning or grounded Volcanic also grants the boost. Cold Eclipse stops Fire absorption and contact burns. Infernal Eclipse grants +1 Defense and Sp. Def on entry and activates its Fire power-up. Normal healing and drain rules apply. Mega Chandelure with active Soul Cremation bypasses Soul Fire's Fire/Ghost attack absorption only. Ordinary type effectiveness and type immunities remain; this grants neither general Mold Breaker nor a damage multiplier. Will-O-Wisp and Soul Fire redirection are unchanged.",
 		"shortDesc": "Soul Siphon + Soul Pyre + Malice Well.",
 		"rating": 5,
 		"flags": {
@@ -71305,8 +71488,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 	},
 	"soulreaver": {
 		"name": "Soul Reaver",
-		"num": 0,
-		"gen": 0,
+		"num": 32510,
+		"gen": 9,
 		"desc": "Infiltrator: bypasses opposing Substitute, Reflect, Light Screen, Aurora Veil, Safeguard and Mist. Physical and special Ghost attacks, including Night Shade, restore HP equal to 25% of actual damage dealt. Uses the greater of native drain and 25%, never adds them; Spectral Scream remains 25%. Curse residual damage does not drain. Normal ability suppression disables both effects.",
 		"shortDesc": "Infiltrator; Ghost attacks drain at least 25% of damage dealt.",
 		"rating": 4,
@@ -71393,8 +71576,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Spin Fiend",
 		"num": 10355,
 		"gen": 9,
-		"desc": "Moves with effective power of 60 or less gain 50% power (80 or less on Factory Field). Prevents sleep and Yawn; Fighting attacks use 1.3x Attack or Sp. Atk. Flinching raises Speed by 1; entering Electric Terrain also raises Speed by 1.",
-		"shortDesc": "Technician + Vital Spirit + Steadfast.",
+		"desc": "Moves with effective power of 60 or less gain 50% power (80 or less on Factory Field). Flinching raises Speed by 1; entering Electric Terrain also raises Speed by 1.",
+		"shortDesc": "Technician + Steadfast.",
 		"rating": 4,
 		"flags": {
 			"breakable": 1,
@@ -71892,6 +72075,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {},
 		"isNonstandard": null,
 	},
+	"stringsofruin": {
+		"name": "Strings of Ruin",
+		"num": 11722,
+		"gen": 9,
+		"desc": "Full local Berserk and Duskilate. Surviving a move crossing half HP grants +1 Attack and Sp. Atk; on Dragon’s Den, entering grants +1 Sp. Atk and crossing half HP grants +2 Sp. Atk instead. Each damaging hit independently has a 30% chance (50% on Dragon’s Den) to double base power, except Fickle Beam uses only its own all-out roll.",
+		"shortDesc": "Berserk + Duskilate; 30% double power per hit, except Fickle Beam.",
+		"rating": 5,
+		"flags": {},
+		"isNonstandard": null,
+	},
 	"strongjaw": {
 		"name": "Strong Jaw",
 		"num": 173,
@@ -72016,7 +72209,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Supreme Overlord",
 		"num": 293,
 		"gen": 9,
-		"desc": "Each fainted ally adds 10% move damage; in Free-for-All, allies count twice. At 2+ fallen allies it gains Infiltrator; 4+, flinch immunity from Inner Focus; 5+, indirect-damage immunity and a one-time +1 Attack and Sp. Atk. It does not block stat drops. Effective fallen count is capped at 5 after Free-for-All doubling, for a maximum 1.5x Supreme Overlord power multiplier.",
+		"desc": "Each fainted ally adds 10% move damage; in Free-for-All, allies count twice. At 2+ fallen allies it gains Infiltrator; 4+, flinch immunity from Inner Focus; 5+, indirect-damage immunity and a one-time +1 Attack and Sp. Atk. Effective fallen count is capped at 5 after Free-for-All doubling, for a maximum 1.5x Supreme Overlord power multiplier.",
 		"shortDesc": "10% damage per fallen ally (max 50%); 2+ grants Infiltrator, 4+ Inner Focus.",
 		"rating": 4,
 		"flags": {},
@@ -72026,7 +72219,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Surefoot",
 		"num": 11288,
 		"gen": 9,
-		"desc": "Ground-type moves have 1.3x power while its Defense stage is positive. The bonus ends when Defense returns to zero or below. Does not ignore opposing defensive stat stages.",
+		"desc": "Ground-type moves have 1.3x power while its Defense stage is positive. The bonus ends when Defense returns to zero or below.",
 		"shortDesc": "Ground moves have 1.3x power while Defense is raised.",
 		"rating": 4,
 		"flags": {},
@@ -72150,8 +72343,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 	},
 	"swiftvenom": {
 		"name": "Swift Venom",
-		"num": 0,
-		"gen": 0,
+		"num": 32509,
+		"gen": 9,
 		"desc": "Swift Swim and Merciless. Doubles Speed in effective rain or on Water Surface, Murkwater Surface, Underwater and Midnight Zone. Attacks always critically hit poisoned targets and on Corrosive, Corrosive Mist, Murkwater Surface and Wasteland, unless critical hits are blocked. On Chessboard, gains one critical-hit stage per 20% of the target's missing base max HP, up to three.",
 		"shortDesc": "Swift Swim + Merciless.",
 		"rating": 4,
@@ -72791,7 +72984,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Transfixing Gaze",
 		"num": 11255,
 		"gen": 9,
-		"desc": "Frisk: removes opposing Illusions, reveals their held items, and each revealed item holder has a 30% chance of Embargo. While it remains active with its ability functioning, opposing moves cannot switch their user out. Damage, stat changes and other move effects still occur. Manual switching, forced switching and item-triggered switches remain allowed. If it faints, leaves or loses its ability before the move finishes, the pivot succeeds. No lingering mark.",
+		"desc": "Frisk: removes opposing Illusions, reveals their held items, and each revealed item holder has a 30% chance of Embargo. While it remains active with its ability functioning, opposing moves cannot switch their user out. Damage, stat changes and other move effects still occur. Manual switching, forced switching and item-triggered switches remain allowed. If it faints, leaves or loses its ability before the move finishes, the pivot succeeds.",
 		"shortDesc": "Opposing moves cannot pivot while it stays active.",
 		"rating": 1.5,
 		"flags": {},
@@ -72982,6 +73175,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"desc": "Special Attack uses calculated unboosted Attack, including Attack EVs, IVs and nature, then applies its own Special Attack stages and modifiers. Attack stages and Attack-only multipliers are not copied; species base stats remain unchanged. Normally single-hit contact attacks gain a second hit at 30% calculated damage. No stacking with other extra-hit effects, retargeting after KO, recursive hits, extra secondaries or self-stat rolls. Excludes native multihit, spread, fixed/OHKO, Z/Max, delayed, charge/recharge, self-KO and item-consuming/repeating exceptions. Full local Rivalry gives damaging moves 1.3x power against a same-gender or genderless target, with no opposite-gender penalty. Other active allies take 25% less calculated attack damage, including friendly fire; the holder is not protected by its own Rivalry. Separate holders retain normal stacking. Selected-ability suppression disables these added effects.",
 		"shortDesc": "Rivalry; Sp. Atk copies unboosted Attack; eligible contact attacks gain a 30% second hit.",
 		"rating": 5,
+		"flags": {},
+		"isNonstandard": null,
+	},
+	"twinfocus": {
+		"name": "Twin Focus",
+		"num": 32501,
+		"gen": 9,
+		"desc": "Damaging Psychic moves ignore positive Defense and Sp. Def stages on their target. Negative stages still apply. Other move types are unchanged.",
+		"shortDesc": "Psychic attacks ignore the target’s Defense and Sp. Def boosts.",
+		"rating": 3,
 		"flags": {},
 		"isNonstandard": null,
 	},
@@ -73276,7 +73479,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Vault Keeper",
 		"num": 11238,
 		"gen": 9,
-		"desc": "Compatibility name for local Prankster: status moves gain +1 priority; opposing Dark types block them except on Bewitched Woods. Does not prevent screen removal. Klefki receives Prankster as its species passive; this compatibility name has the same priority effect.",
+		"desc": "Compatibility name for local Prankster: status moves gain +1 priority; opposing Dark types block them except on Bewitched Woods. Klefki receives Prankster as its species passive; this compatibility name has the same priority effect.",
 		"shortDesc": "Prankster.",
 		"rating": 1.5,
 		"flags": {},
@@ -73514,8 +73717,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Void Command",
 		"num": 10045,
 		"gen": 9,
-		"desc": "Insomnia + Super Luck. Takes 20% less attack damage from other Pokemon. Each move KO raises its higher attacking stat by 1, choosing Attack on a tie. Once per battle, successfully executing any Z-Move also grants this boost after the move, including status Z-Moves. A Z-Move KO receives the ordinary per-KO boost without an additional Z-use boost. Damaging Z-Moves that deal reduced damage through Protect count; misses, immunity and failed base moves do not. A status Z bonus alone does not count when its base move fails.",
-		"shortDesc": "20% less damage; KOs boost higher offense; first Z-Move also boosts, without a double KO reward.",
+		"desc": "Insomnia prevents sleep. Super Luck raises the critical-hit ratio by 1. Once per battle, a successful Z-Move raises the higher attacking stat by 1 stage (Attack wins ties), including status Z-Moves and Z-Move KOs. The user must survive. Misses, immunity and failed base moves do not activate it. A status Z bonus alone does not count when the base move fails.",
+		"shortDesc": "Insomnia + Super Luck; first successful Z-Move gives +1 higher offense.",
 		"rating": 4,
 		"flags": {
 			"breakable": 1,
@@ -73581,8 +73784,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Void Omen",
 		"num": 10283,
 		"gen": 9,
-		"desc": "The user has Serene Grace. Allies take 25% less attack damage. The user and active allies cannot become confused. Each Pokemon skips one charge turn per switch-in, shared with Lunar Orbit. Once per user switch-in, a successful attack secondary or self-targeting status move grants at least 3 turns of Safeguard. The first applied secondary also blocks one enemy stat-drop event against the user or an adjacent ally, until used or the user leaves.",
-		"shortDesc": "Serene Grace; ally damage protection and team confusion immunity. Charge skip + wards.",
+		"desc": "Allies take 25% less attack damage. The user and active allies cannot become confused. Each Pokemon skips one charge turn per switch-in, shared with Lunar Orbit. Once per user switch-in, a successful attack secondary or self-targeting status move grants at least 3 turns of Safeguard. The first applied secondary also blocks one enemy stat-drop event against the user or an adjacent ally, until used or the user leaves.",
+		"shortDesc": "Friend Guard; team confusion immunity; one charge skip, Safeguard and stat-drop ward.",
 		"rating": 4.5,
 		"flags": {},
 		"isNonstandard": null,
@@ -74078,16 +74281,6 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"desc": "Mold Breaker. After the whole damaging move, clears positive stat stages of opposing targets whose HP it damaged. Negative stages remain. Misses, protection, immunity and Substitute-only hits do not qualify.",
 		"shortDesc": "Mold Breaker; damaging HP hits clear positive target stages after the attack.",
 		"rating": 3,
-		"flags": {},
-		"isNonstandard": null,
-	},
-	"worldbreaker": {
-		"name": "Worldbreaker",
-		"num": 11722,
-		"gen": 9,
-		"desc": "Full local Berserk and Duskilate. Surviving a move crossing half HP grants +1 Attack and Sp. Atk; on Dragon’s Den, entering grants +1 Sp. Atk and crossing half HP grants +2 Sp. Atk instead. Each damaging hit independently has a 30% chance (50% on Dragon’s Den) to double base power, except Fickle Beam uses only its own all-out roll.",
-		"shortDesc": "Berserk + Duskilate; 30% double power per hit, except Fickle Beam.",
-		"rating": 5,
 		"flags": {},
 		"isNonstandard": null,
 	},
@@ -76591,8 +76784,8 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"flags": {
 			"metronome": 1,
 		},
-		"desc": "The user swaps positions with its ally. Fails if the user is the only Pokemon on its side. This move has a 1/X chance of being successful, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails or if the user's last move used is not Ally Switch.",
-		"shortDesc": "User and ally swap positions; using again can fail.",
+		"desc": "The user switches out for a chosen teammate. Has -6 priority, so it usually acts after other moves. Fails if no teammate can switch in.",
+		"shortDesc": "Switches to a chosen teammate. Priority -6.",
 		"hasSheerForceBoost": false,
 	},
 	"amnesia": {
@@ -81019,8 +81212,8 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"protect": 1,
 			"mirror": 1,
 		},
-		"desc": "Saphira's move. Uses higher staged Attack or Sp. Atk with matching defense (Special on ties). Treats Fairy as neutral while preserving the other defensive type: Fairy/Steel resists and Fairy/Dragon is weak. This exception does not carry to generic Z or Max moves. Turns Volcanic Field or Cave into Dragon's Den after a hit. Does not place an entry hazard. Additional field effects: Dragon’s Den, Mountain, Fairy Tale, Volcanic or New World: ignores Reflect, Light Screen and Aurora Veil for this attack without removing them.",
-		"shortDesc": "Saphira's move. Adaptive; Fairy is neutral; turns Volcanic into Dragon's Den.",
+		"desc": "Saphira's move. Uses higher staged Attack or Sp. Atk with matching defense (Special on ties). Treats Fairy as neutral while preserving the other defensive type: Fairy/Steel resists and Fairy/Dragon is weak. This exception does not carry to generic Z or Max moves. Turns Volcanic Field or Cave into Dragon's Den after a hit. On Dragon’s Den, a successful hit sets Stealth Rock on the opposing side, including hits against Substitute. Additional field effects: Dragon’s Den, Mountain, Fairy Tale, Volcanic or New World: ignores Reflect, Light Screen and Aurora Veil for this attack without removing them.",
+		"shortDesc": "Saphira's move. Adaptive; Fairy neutral; Den rocks; Cave/Volcanic become Dragon's Den.",
 		"hasSheerForceBoost": false,
 		"signatureCharacters": [
 			"saphira",
@@ -87168,8 +87361,8 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"failcopycat": 1,
 			"failinstruct": 1,
 		},
-		"desc": "The user is protected from most attacks made by other Pokemon during this turn, and Pokemon trying to make contact with the user have their Attack lowered by 1 stage. Non-damaging moves go through this protection. This move has a 1/X chance of being successful, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails, if the user's last move used is not Baneful Bunker, Burning Bulwark, Detect, Endure, King's Shield, Max Guard, Obstruct, Protect, Quick Guard, Silk Trap, Spiky Shield, or Wide Guard, or if it was one of those moves and the user's protection was broken. Fails if the user moves last this turn.",
-		"shortDesc": "Protects from damaging attacks. Contact: -1 Atk.",
+		"desc": "The user is protected from most attacks made by other Pokemon during this turn, and Pokemon trying to make contact with the user have their Attack lowered by 2 stages. Non-damaging moves go through this protection. This move has a 1/X chance of being successful, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails, if the user's last move used is not Baneful Bunker, Burning Bulwark, Detect, Endure, King's Shield, Max Guard, Obstruct, Protect, Quick Guard, Silk Trap, Spiky Shield, or Wide Guard, or if it was one of those moves and the user's protection was broken. Fails if the user moves last this turn.",
+		"shortDesc": "Protects from damaging attacks. Contact: -2 Atk.",
 		"hasSheerForceBoost": false,
 	},
 	"knockoff": {
@@ -88293,7 +88486,7 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"protect": 1,
 			"mirror": 1,
 		},
-		"desc": "Adam's move. Uses Attack against the target Sp. Def. Dragon's Den adds a 1.5x named boost alongside its Rock boost.",
+		"desc": "Adam's move. Uses Attack against the target Sp. Def. Dragon's Den boosts this move's power by 1.5x.",
 		"shortDesc": "Adam's move. Uses Attack against Sp. Def.",
 		"hasSheerForceBoost": false,
 		"signatureCharacters": [
@@ -90290,7 +90483,7 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"metronome": 1,
 			"failinstruct": 1,
 		},
-		"desc": "Has a 30% chance to lower the target's Defense by 1. Choose an adjacent opposing Pokemon on the initial turn. Forced continuation turns target an opposing Pokemon at random. Locks the user into this move for 2-3 turns, then confuses the user if it is not already confused. If the user cannot act, starts a turn asleep, or fails to hit before the final locked turn, the lock ends without confusion. Sleep Talk uses it once without confusion while the user is asleep. Sheer Force removes the 30% effect and gives its normal power boost once; the lock and ending confusion remain. Raging Storm makes it a single-turn attack with no lock or ending confusion; it does not cure existing confusion. On Superheated Field, the lock ends after the attack; ending it early does not cause confusion.",
+		"desc": "Has a 30% chance to lower the target's Defense by 1. Choose an adjacent opposing Pokemon on the initial turn. Forced continuation turns target an opposing Pokemon at random.Locks the user into this move for 2-3 turns, then confuses the user if it is not already confused.If the user cannot act, starts a turn asleep, or fails to hit before the final locked turn, the lock ends without confusion. Sleep Talk uses it once without confusion while the user is asleep.Sheer Force removes the 30% effect and gives its normal power boost once; the lock and ending confusion remain.Raging Storm makes it a single-turn attack with no lock or ending confusion; it does not cure existing confusion.On Superheated Field, the lock ends after the attack; ending it early does not cause confusion.",
 		"shortDesc": "30% -1 target Def. Locks 2-3 turns, then confuses user. Choose initial foe; later hits random.",
 		"secondaries": [
 			{
@@ -90559,7 +90752,7 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"metronome": 1,
 			"failinstruct": 1,
 		},
-		"desc": "Has a 30% chance to lower the target's Sp. Def by 1. Choose an adjacent opposing Pokemon on the initial turn. Forced continuation turns target an opposing Pokemon at random. Locks the user into this move for 2-3 turns, then confuses the user if it is not already confused. If the user cannot act, starts a turn asleep, or fails to hit before the final locked turn, the lock ends without confusion. Sleep Talk uses it once without confusion while the user is asleep. Sheer Force removes the 30% effect and gives its normal power boost once; the lock and ending confusion remain. Raging Storm makes it a single-turn attack with no lock or ending confusion; it does not cure existing confusion. On Superheated Field, the lock ends after the attack; ending it early does not cause confusion.",
+		"desc": "Has a 30% chance to lower the target's Sp. Def by 1. Choose an adjacent opposing Pokemon on the initial turn. Forced continuation turns target an opposing Pokemon at random.Locks the user into this move for 2-3 turns, then confuses the user if it is not already confused.If the user cannot act, starts a turn asleep, or fails to hit before the final locked turn, the lock ends without confusion. Sleep Talk uses it once without confusion while the user is asleep.Sheer Force removes the 30% effect and gives its normal power boost once; the lock and ending confusion remain.Raging Storm makes it a single-turn attack with no lock or ending confusion; it does not cure existing confusion.On Superheated Field, the lock ends after the attack; ending it early does not cause confusion.",
 		"shortDesc": "30% -1 target SpD. Locks 2-3 turns, then confuses user. Choose initial foe; later hits random.",
 		"secondaries": [
 			{
@@ -92092,7 +92285,7 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"protect": 1,
 			"mirror": 1,
 		},
-		"desc": "Has a 30% chance to burn the target. Choose an adjacent opposing Pokemon on the initial turn. Forced continuation turns target an opposing Pokemon at random. Locks the user into this move for 2-3 turns, then confuses the user if it is not already confused. If the user cannot act, starts a turn asleep, or fails to hit before the final locked turn, the lock ends without confusion. Sleep Talk uses it once without confusion while the user is asleep. Sheer Force removes the 30% effect and gives its normal power boost once; the lock and ending confusion remain. Raging Storm makes it a single-turn attack with no lock or ending confusion; it does not cure existing confusion. On Burning or Volcanic Field, ending the rampage does not cause confusion. On Volcanic Field, each use also raises the user's Attack by 1.",
+		"desc": "Has a 30% chance to burn the target. Choose an adjacent opposing Pokemon on the initial turn. Forced continuation turns target an opposing Pokemon at random.Locks the user into this move for 2-3 turns, then confuses the user if it is not already confused.If the user cannot act, starts a turn asleep, or fails to hit before the final locked turn, the lock ends without confusion. Sleep Talk uses it once without confusion while the user is asleep.Sheer Force removes the 30% effect and gives its normal power boost once; the lock and ending confusion remain.Raging Storm makes it a single-turn attack with no lock or ending confusion; it does not cure existing confusion.On Burning or Volcanic Field, ending the rampage does not cause confusion. On Volcanic Field, each use also raises the user's Attack by 1.",
 		"shortDesc": "30% burn. Locks 2-3 turns, then confuses user. Choose initial foe; later hits random.",
 		"secondaries": [
 			{
@@ -97194,7 +97387,7 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"metronome": 1,
 			"failinstruct": 1,
 		},
-		"desc": "Has a 30% chance to lower the target's Defense by 1. Choose an adjacent opposing Pokemon on the initial turn. Forced continuation turns target an opposing Pokemon at random. Locks the user into this move for 2-3 turns, then confuses the user if it is not already confused. If the user cannot act, starts a turn asleep, or fails to hit before the final locked turn, the lock ends without confusion. Sleep Talk uses it once without confusion while the user is asleep. Sheer Force removes the 30% effect and gives its normal power boost once; the lock and ending confusion remain. Raging Storm makes it a single-turn attack with no lock or ending confusion; it does not cure existing confusion. On Superheated Field, the lock ends after the attack; ending it early does not cause confusion.",
+		"desc": "Has a 30% chance to lower the target's Defense by 1. Choose an adjacent opposing Pokemon on the initial turn. Forced continuation turns target an opposing Pokemon at random.Locks the user into this move for 2-3 turns, then confuses the user if it is not already confused.If the user cannot act, starts a turn asleep, or fails to hit before the final locked turn, the lock ends without confusion. Sleep Talk uses it once without confusion while the user is asleep.Sheer Force removes the 30% effect and gives its normal power boost once; the lock and ending confusion remain.Raging Storm makes it a single-turn attack with no lock or ending confusion; it does not cure existing confusion.On Superheated Field, the lock ends after the attack; ending it early does not cause confusion.",
 		"shortDesc": "30% -1 target Def. Locks 2-3 turns, then confuses user. Choose initial foe; later hits random.",
 		"secondaries": [
 			{
@@ -99355,7 +99548,6 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"adaptivecore": [
 		"download",
 		"defragment",
-		"selfrepair",
 	],
 	"adaptivecycle": [],
 	"adaptivepower": [
@@ -99465,7 +99657,6 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"ancientassembly": [],
 	"ancientbloom": [
 		"pollenbloom",
-		"selfsufficient",
 		"friendguard",
 	],
 	"ange": [
@@ -99544,8 +99735,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"astralwitchcraft": [
 		"levitate",
 		"magicguard",
-		"voidguile",
-		"proficient",
+		"serenegrace",
 	],
 	"atrocity": [
 		"unboundblaze",
@@ -99702,7 +99892,6 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"burningcrown": [
 		"intimidate",
 		"unboundblaze",
-		"selfsufficient",
 		"levitate",
 	],
 	"burningego": [
@@ -99853,6 +100042,10 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"technician",
 		"poisontouch",
 	],
+	"cosmicanalysis": [
+		"analytic",
+		"download",
+	],
 	"costar": [],
 	"cottondown": [],
 	"cradleward": [
@@ -99956,7 +100149,6 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	],
 	"desertshell": [
 		"skilllink",
-		"heatproof",
 		"sandstream",
 	],
 	"desertspirit": [
@@ -100022,6 +100214,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"invigorate",
 	],
 	"dreadpresence": [
+		"darkaura",
 		"unnerve",
 	],
 	"dreadwings": [
@@ -100123,10 +100316,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"evaporate": [
 		"dryskin",
 	],
-	"evergreen": [
-		"overcoat",
-		"ripen",
-	],
+	"evergreen": [],
 	"evilsanta": [],
 	"exaltedaether": [],
 	"execution": [
@@ -100134,7 +100324,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"moldbreaker",
 	],
 	"expiration": [
-		"worldbreaker",
+		"stringsofruin",
 		"controlledfury",
 	],
 	"fairyaura": [],
@@ -100142,7 +100332,6 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"fallenstar": [
 		"moldbreaker",
 		"dualwield",
-		"selfsufficient",
 		"proficient",
 	],
 	"falsebouquet": [
@@ -100192,7 +100381,6 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	],
 	"fortressshell": [
 		"waterbarrage",
-		"selfsufficient",
 		"shellarmor",
 		"guardianpresence",
 	],
@@ -100313,11 +100501,25 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"goodasgold": [],
 	"gooey": [],
 	"gorillatactics": [],
+	"grandmarksman": [
+		"megalauncher",
+		"dualwield",
+		"risingmarksman",
+	],
 	"grandmaster": [
 		"innerfocus",
 	],
+	"grandrhythm": [
+		"forestsurge",
+		"risingrhythm",
+	],
 	"grandstrategy": [
 		"moldbreaker",
+	],
+	"grandstriker": [
+		"striker",
+		"defiant",
+		"risingstriker",
 	],
 	"graspingcurrent": [
 		"suctioncups",
@@ -100332,7 +100534,6 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	],
 	"gravitywell": [],
 	"greatmarsh": [
-		"anticipation",
 		"dryskin",
 		"adaptability",
 		"toxicchain",
@@ -100564,7 +100765,6 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"kickfiend": [
 		"striker",
 		"limber",
-		"serenegrace",
 	],
 	"kindledfury": [
 		"fluffy",
@@ -100652,6 +100852,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"lunaridol": [],
 	"lunarorbit": [
 		"magicbounce",
+		"serenegrace",
 		"magicguard",
 	],
 	"lunarspirit": [],
@@ -100762,7 +100963,6 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"mistysurge",
 	],
 	"mossarmor": [
-		"levitate",
 		"stamina",
 		"naturalcure",
 	],
@@ -101102,7 +101302,6 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	],
 	"punchfiend": [
 		"ironfist",
-		"serenegrace",
 		"keeneye",
 	],
 	"punkrock": [],
@@ -101216,7 +101415,10 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"relicarmor": [],
 	"relicbeam": [],
 	"relicinstinct": [],
-	"relicmishap": [],
+	"relicmishap": [
+		"waterabsorb",
+		"voltabsorb",
+	],
 	"rememberedflame": [
 		"flashfire",
 		"download",
@@ -101290,6 +101492,9 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"shellarmor",
 		"moldbreaker",
 	],
+	"risingmarksman": [],
+	"risingrhythm": [],
+	"risingstriker": [],
 	"rivalappetites": [],
 	"rivalmalice": [],
 	"rivalresolve": [],
@@ -101332,7 +101537,6 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"marvelscale",
 		"swiftswim",
 		"dragonize",
-		"selfsufficient",
 	],
 	"royalsun": [
 		"supremeoverlord",
@@ -101398,11 +101602,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"oblivious",
 		"unaware",
 	],
-	"scavenger": [
-		"overcoat",
-		"bigpecks",
-		"regenerator",
-	],
+	"scavenger": [],
 	"scentscout": [
 		"frisk",
 	],
@@ -101623,7 +101823,6 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"spicyspray": [],
 	"spinfiend": [
 		"technician",
-		"vitalspirit",
 		"steadfast",
 	],
 	"spinyhide": [
@@ -101735,6 +101934,10 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"striker": [],
 	"strikerfrenzy": [],
 	"strikersmomentum": [],
+	"stringsofruin": [
+		"berserk",
+		"duskilate",
+	],
 	"strongjaw": [],
 	"sturdy": [],
 	"suctioncups": [],
@@ -101980,6 +102183,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"twinfang": [
 		"rivalry",
 	],
+	"twinfocus": [],
 	"tyrantdomain": [
 		"supremeoverlord",
 		"sandstream",
@@ -102123,7 +102327,6 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	],
 	"voidomen": [
 		"friendguard",
-		"serenegrace",
 	],
 	"voidpromise": [
 		"unaware",
@@ -102241,10 +102444,6 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"worldbinder": [
 		"moldbreaker",
 	],
-	"worldbreaker": [
-		"berserk",
-		"duskilate",
-	],
 	"worldforged": [],
 	"wraithprocession": [],
 	"wrathshield": [
@@ -102271,6 +102470,2974 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"zerotohero": [],
 	"zprotean": [],
 });
+const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
+	"absolutepressure": [
+		"pressure",
+		"innerfocus",
+		"insomnia",
+		"moldbreaker",
+	],
+	"absolutezero": [
+		"snowwarning",
+		"moldbreaker",
+		"filter",
+	],
+	"abyssalclaws": [
+		"toughclaws",
+	],
+	"abyssalcurrent": [
+		"waterabsorb",
+	],
+	"abyssalfang": [
+		"strongjaw",
+	],
+	"abyssalrebirth": [
+		"hydrabond",
+		"levitate",
+	],
+	"abysslure": [
+		"voltabsorb",
+		"waterabsorb",
+		"illuminate",
+	],
+	"abysssniper": [
+		"sniper",
+		"stalwart",
+	],
+	"accumulation": [
+		"thickfat",
+	],
+	"acquiredtaste": [
+		"frisk",
+	],
+	"adaptability": [],
+	"adaptivearsenal": [],
+	"adaptivecell": [],
+	"adaptivecore": [
+		"download",
+		"defragment",
+	],
+	"adaptivecycle": [],
+	"adaptivepower": [
+		"magicguard",
+		"hugepower",
+	],
+	"adhesivearmor": [
+		"stickyhold",
+	],
+	"aerilate": [],
+	"aevianascendance": [
+		"cloudnine",
+		"mindseye",
+		"waterabsorb",
+	],
+	"aevianbolt": [
+		"stormpower",
+		"static",
+		"voltabsorb",
+	],
+	"aeviandiscipline": [
+		"ironfist",
+		"owntempo",
+	],
+	"aeviandream": [
+		"baddreams",
+		"shedskin",
+		"toughclaws",
+	],
+	"aevianfrost": [
+		"icebody",
+		"guts",
+	],
+	"aevianglacier": [
+		"snowwarning",
+		"icebody",
+		"refrigerate",
+	],
+	"aeviangrief": [
+		"magicguard",
+		"cursedbody",
+		"wonderskin",
+		"levitate",
+	],
+	"aevianking": [
+		"guardianpresence",
+		"soundproof",
+		"waterabsorb",
+	],
+	"aevianoath": [],
+	"aevianrocket": [
+		"bruteforce",
+		"reckless",
+		"rockhead",
+		"regenerator",
+		"moldbreaker",
+		"swiftswim",
+	],
+	"aevianspark": [
+		"technician",
+		"static",
+		"earlybird",
+	],
+	"aeviantoxin": [
+		"strongjaw",
+		"layeredcoat",
+		"furcoat",
+		"overcoat",
+		"merciless",
+	],
+	"aevianweb": [
+		"guts",
+		"keeneye",
+		"solidrock",
+	],
+	"aevianwing": [
+		"rockhead",
+		"defiant",
+	],
+	"afterlifegate": [
+		"shadowshield",
+	],
+	"aftermath": [],
+	"agonyflame": [],
+	"aimassist": [],
+	"airlock": [],
+	"alchemistsurge": [
+		"psychicsurge",
+		"competitive",
+		"hydrabond",
+		"prankster",
+	],
+	"alloycore": [
+		"magicguard",
+		"selfsufficient",
+		"stalwart",
+	],
+	"amethystglow": [],
+	"analytic": [],
+	"anchorbridge": [
+		"sturdy",
+		"solidrock",
+	],
+	"anchoredbattery": [
+		"megalauncher",
+	],
+	"ancientassembly": [],
+	"ancientbloom": [
+		"pollenbloom",
+		"friendguard",
+	],
+	"ange": [
+		"fairyaura",
+	],
+	"angerpoint": [],
+	"angershell": [],
+	"anticipation": [],
+	"antlioninstinct": [
+		"sheerforce",
+	],
+	"apexarmor": [
+		"bulletproof",
+		"roughskin",
+		"stalwart",
+		"selfsufficient",
+	],
+	"apexbond": [
+		"battlebond",
+		"selfsufficient",
+		"supremeoverlord",
+		"roughskin",
+	],
+	"apexcleave": [
+		"dualwield",
+		"moxie",
+	],
+	"apexflytrap": [
+		"levitate",
+	],
+	"apexpredator": [
+		"windrider",
+		"toughclaws",
+	],
+	"apexvenom": [
+		"strongjaw",
+		"shedskin",
+	],
+	"apocalypticflame": [],
+	"aquashell": [
+		"heatproof",
+		"frisk",
+	],
+	"arcanechamber": [],
+	"arenatrap": [],
+	"argentdevotion": [
+		"armorize",
+		"swornduty",
+		"serenegrace",
+		"moldbreaker",
+	],
+	"armorize": [],
+	"armortail": [],
+	"aromaveil": [],
+	"ascendance": [],
+	"ashenseeds": [],
+	"asoneglastrier": [],
+	"asonespectrier": [],
+	"astralconcord": [
+		"forewarn",
+		"competitive",
+	],
+	"astralcore": [
+		"purepower",
+		"naturalcure",
+		"illuminate",
+	],
+	"astralengine": [
+		"powerspot",
+	],
+	"astralward": [],
+	"astralwatcher": [
+		"prankster",
+		"frisk",
+	],
+	"astralwitchcraft": [
+		"levitate",
+		"magicguard",
+		"serenegrace",
+	],
+	"atrocity": [
+		"unboundblaze",
+		"fireward",
+	],
+	"aurabreak": [],
+	"auraconvergence": [],
+	"auraguard": [],
+	"aurainstinct": [
+		"adaptability",
+		"dualwield",
+		"secondwind",
+	],
+	"auramaster": [
+		"dualwield",
+		"innerfocus",
+		"technician",
+	],
+	"auraprecision": [
+		"ultrainstinct",
+		"shielddust",
+		"mindseye",
+	],
+	"aurasight": [],
+	"auroracurrent": [
+		"snowwarning",
+	],
+	"auroradomain": [
+		"refrigerate",
+		"snowwarning",
+	],
+	"auroraresonance": [],
+	"baddreams": [],
+	"badseeds": [],
+	"baitedbloom": [
+		"gluttony",
+		"regenerator",
+	],
+	"baitedcounter": [
+		"filter",
+	],
+	"bakedbliss": [
+		"wellbakedbody",
+		"thickfat",
+		"sweetveil",
+		"gluttony",
+	],
+	"ballfetch": [],
+	"barbharvest": [
+		"suctioncups",
+	],
+	"battery": [],
+	"battlearmor": [],
+	"battlebond": [
+		"selfsufficient",
+	],
+	"battlefervor": [],
+	"battlegrip": [
+		"moxie",
+	],
+	"battlespoils": [],
+	"beadsofruin": [],
+	"beastboost": [],
+	"beastfang": [],
+	"beguilingbouquet": [
+		"aromaveil",
+	],
+	"berserk": [],
+	"bewitchingmajesty": [
+		"magicbounce",
+		"queenlymajesty",
+	],
+	"beyondfear": [],
+	"bigpecks": [],
+	"blackfang": [],
+	"blackviper": [
+		"whiplash",
+		"shedskin",
+	],
+	"blackwateranchor": [
+		"steelworker",
+	],
+	"blackwatervenom": [],
+	"blademastery": [
+		"sharpness",
+	],
+	"blastchamber": [
+		"vitalspirit",
+	],
+	"blaze": [],
+	"blazemastery": [
+		"striker",
+	],
+	"blazingmane": [
+		"firemane",
+	],
+	"blazingtempo": [
+		"speedboost",
+		"magmaarmor",
+		"innerfocus",
+	],
+	"bloodchallenge": [],
+	"bloodmoongaze": [
+		"infiltrator",
+		"competitive",
+	],
+	"bloodsickle": [
+		"hypercutter",
+	],
+	"bloomingsun": [
+		"megasol",
+		"flowerveil",
+	],
+	"bogbody": [
+		"thickfat",
+		"levitate",
+		"dryskin",
+	],
+	"bonewarrior": [
+		"battlearmor",
+	],
+	"boretunnel": [
+		"eartheater",
+	],
+	"bottomlessgullet": [
+		"gluttony",
+		"cheekpouch",
+	],
+	"boundspirits": [
+		"prankster",
+		"magicguard",
+	],
+	"breakaway": [],
+	"breakingnews": [
+		"forewarn",
+	],
+	"breakwater": [
+		"propellertail",
+	],
+	"broodguard": [
+		"thickfat",
+		"friendguard",
+	],
+	"bruteforce": [],
+	"bulletproof": [],
+	"bullrush": [
+		"violentrush",
+		"intimidate",
+	],
+	"buriedcoil": [
+		"sandspit",
+	],
+	"buriedtrio": [],
+	"burningcrown": [
+		"intimidate",
+		"unboundblaze",
+		"levitate",
+	],
+	"burningego": [
+		"ultraego",
+		"flamebody",
+		"magmaarmor",
+	],
+	"burningquake": [
+		"superluck",
+	],
+	"burningrage": [
+		"proficient",
+		"bruteforce",
+		"ironfist",
+		"moldbreaker",
+	],
+	"burningspirit": [
+		"ultrainstinct",
+		"opportunist",
+		"magmaarmor",
+	],
+	"burrowambush": [
+		"eartheater",
+	],
+	"byxbysiontouch": [],
+	"cactuschorus": [
+		"waterabsorb",
+		"sandrush",
+	],
+	"calculatedshot": [
+		"frisk",
+	],
+	"calculatedtrajectory": [],
+	"calderacore": [
+		"magmaarmor",
+		"drought",
+	],
+	"canopyarcher": [
+		"scrappy",
+		"longreach",
+	],
+	"canopymastery": [
+		"dualwield",
+	],
+	"carrionwatch": [
+		"frisk",
+		"overcoat",
+	],
+	"carryon": [
+		"innerfocus",
+		"healer",
+	],
+	"castoffscales": [],
+	"causticchamber": [
+		"owntempo",
+	],
+	"causticmucus": [],
+	"causticooze": [
+		"liquidooze",
+	],
+	"causticscales": [],
+	"caverndrake": [
+		"eartheater",
+		"solidrock",
+	],
+	"celestialheart": [
+		"soulheart",
+		"friendguard",
+	],
+	"cellularconcord": [
+		"naturalcure",
+		"analytic",
+	],
+	"championscommand": [],
+	"championspoise": [],
+	"chargedtail": [],
+	"checkhook": [
+		"unseenfist",
+		"ironfist",
+	],
+	"cheekcapacitor": [],
+	"cheekpouch": [],
+	"chillingneigh": [],
+	"chlorophyll": [],
+	"cinderscales": [
+		"flamebody",
+		"swarm",
+	],
+	"clearbody": [],
+	"climatereserve": [],
+	"closedcircuit": [
+		"clearbody",
+	],
+	"cloudnine": [],
+	"coldexpertise": [
+		"oblivious",
+		"thickfat",
+	],
+	"coldlogic": [
+		"toughclaws",
+		"aftermath",
+		"forewarn",
+	],
+	"coldopen": [],
+	"colorchange": [],
+	"colossalframe": [],
+	"comatose": [],
+	"cometheart": [
+		"levitate",
+	],
+	"comfortingpresence": [],
+	"commander": [],
+	"competitive": [],
+	"completeparasitism": [
+		"selfrepair",
+	],
+	"composed": [
+		"innerfocus",
+		"magicguard",
+	],
+	"compoundeyes": [],
+	"conductivity": [],
+	"conquerorswill": [
+		"unnerve",
+	],
+	"constrictingcoils": [],
+	"constrictingheat": [
+		"whitesmoke",
+	],
+	"continentalpull": [],
+	"contrary": [],
+	"controlledfury": [
+		"angerpoint",
+	],
+	"corneredfang": [
+		"guts",
+	],
+	"coronafurnace": [
+		"flamebody",
+	],
+	"corrosion": [],
+	"corrosiveburn": [
+		"corrosion",
+		"oblivious",
+		"venomignition",
+	],
+	"corrosivetouch": [
+		"technician",
+		"poisontouch",
+	],
+	"cosmicanalysis": [
+		"analytic",
+		"download",
+	],
+	"costar": [],
+	"cottondown": [],
+	"cradleward": [
+		"sweetveil",
+	],
+	"creepingbloom": [
+		"infiltrator",
+	],
+	"crescentrend": [],
+	"crosscurrent": [
+		"swiftswim",
+	],
+	"crossfire": [],
+	"crosswire": [
+		"ironfist",
+		"innerfocus",
+	],
+	"cruelshell": [
+		"shellarmor",
+	],
+	"crueltag": [
+		"shadowtag",
+		"infiltrator",
+		"baddreams",
+	],
+	"crumblingshell": [],
+	"crushingdepths": [],
+	"crushingvenom": [
+		"strongjaw",
+	],
+	"crystalbastion": [
+		"sturdy",
+	],
+	"crystalfocus": [],
+	"crystalresonance": [
+		"amethystglow",
+		"magicbounce",
+	],
+	"crystalward": [],
+	"cudchew": [],
+	"curiousmedicine": [],
+	"currentcoil": [
+		"swiftswim",
+	],
+	"cursedarmament": [],
+	"cursedbody": [],
+	"curseddoll": [
+		"toughclaws",
+		"shadowshield",
+	],
+	"cursedkeepsake": [],
+	"cursedmarionette": [],
+	"curtaincall": [
+		"icebody",
+		"filter",
+	],
+	"cushionchorus": [
+		"friendguard",
+		"aromaveil",
+	],
+	"cutecharm": [],
+	"cyclonerhythm": [
+		"unseenfist",
+	],
+	"damp": [],
+	"dancer": [],
+	"darkaura": [],
+	"darkdominion": [
+		"darkaura",
+	],
+	"dauntlessshield": [],
+	"dawnherald": [
+		"drought",
+		"friendguard",
+	],
+	"dazzling": [],
+	"deadwater": [],
+	"decoypincers": [],
+	"deepbore": [
+		"moldbreaker",
+		"powerdrill",
+	],
+	"deepchill": [
+		"oblivious",
+		"intimidate",
+	],
+	"deepresonance": [
+		"soundproof",
+	],
+	"defeatist": [],
+	"defiant": [],
+	"defragment": [],
+	"deltastream": [],
+	"demolitiontrunk": [
+		"sheerforce",
+	],
+	"desertrift": [
+		"sandforce",
+		"sandstream",
+		"heavymetal",
+	],
+	"desertshell": [
+		"skilllink",
+		"sandstream",
+	],
+	"desertspirit": [
+		"levitate",
+		"sandstream",
+		"overcoat",
+		"tintedlens",
+	],
+	"desertvigil": [
+		"overcoat",
+	],
+	"desolateland": [],
+	"digestivesap": [],
+	"disguise": [],
+	"dishearten": [],
+	"disorientingmind": [
+		"infiltrator",
+	],
+	"dissonantchime": [],
+	"dissonantecho": [],
+	"divefisher": [
+		"waterveil",
+	],
+	"divineintervention": [
+		"vitalsigns",
+		"triage",
+		"regenerator",
+		"friendguard",
+	],
+	"divinemockery": [
+		"hydrabond",
+		"moldbreaker",
+	],
+	"doomwarning": [
+		"magicbounce",
+		"magicguard",
+	],
+	"doublestrike": [
+		"skilllink",
+		"technician",
+	],
+	"download": [],
+	"dozinggiant": [
+		"oblivious",
+	],
+	"draconicforce": [
+		"dragonize",
+		"strongjaw",
+		"moldbreaker",
+	],
+	"dragonize": [],
+	"dragonsmaw": [],
+	"dreaddominion": [
+		"hydrabond",
+		"moxie",
+		"intimidate",
+	],
+	"dreadjaw": [
+		"moxie",
+	],
+	"dreadmaw": [
+		"hugepower",
+		"invigorate",
+	],
+	"dreadpresence": [
+		"darkaura",
+		"unnerve",
+	],
+	"dreadwings": [
+		"intimidate",
+		"unnerve",
+	],
+	"dreamingshell": [],
+	"dreamrefuge": [
+		"telepathy",
+	],
+	"dreamsickness": [
+		"telepathy",
+	],
+	"dredger": [],
+	"dreepyvanguard": [
+		"stalwart",
+		"technician",
+	],
+	"drizzle": [],
+	"drought": [],
+	"drumguard": [
+		"soundproof",
+	],
+	"dryskin": [],
+	"dualwield": [],
+	"dunecaller": [
+		"sandstream",
+	],
+	"dunecarver": [],
+	"duneclaws": [
+		"toughclaws",
+	],
+	"dunehunter": [
+		"innerfocus",
+	],
+	"duneterror": [
+		"sandstream",
+		"shedskin",
+		"sandspit",
+	],
+	"duskdrive": [
+		"keeneye",
+		"ultraego",
+	],
+	"duskilate": [],
+	"earlybird": [],
+	"eartheater": [],
+	"echofiend": [],
+	"echosense": [
+		"echofiend",
+		"frisk",
+		"telepathy",
+		"infiltrator",
+	],
+	"eclipse": [],
+	"eclipsevision": [],
+	"effectspore": [],
+	"eject": [],
+	"elasticbelly": [],
+	"eldritchremedy": [
+		"owntempo",
+		"curiousmedicine",
+	],
+	"electricsurge": [],
+	"electromorphosis": [],
+	"elevate": [
+		"levitate",
+	],
+	"embodyaspectcornerstone": [],
+	"embodyaspecthearthflame": [],
+	"embodyaspectteal": [],
+	"embodyaspectwellspring": [],
+	"emergencyexit": [],
+	"emperorsresolve": [
+		"swiftswim",
+		"competitive",
+	],
+	"empress": [
+		"queenlymajesty",
+		"royaldecree",
+		"longreach",
+	],
+	"encorearia": [
+		"serenegrace",
+	],
+	"enlightenment": [
+		"innerfocus",
+		"technician",
+	],
+	"entrenched": [],
+	"errorhandler": [
+		"aromaveil",
+		"infiltrator",
+	],
+	"eternalflower": [
+		"moldbreaker",
+	],
+	"eternalice": [],
+	"evaporate": [
+		"dryskin",
+	],
+	"evergreen": [],
+	"evilsanta": [],
+	"exaltedaether": [],
+	"execution": [
+		"duskilate",
+		"moldbreaker",
+	],
+	"expiration": [
+		"stringsofruin",
+		"controlledfury",
+	],
+	"fairyaura": [],
+	"fairyring": [],
+	"fallenstar": [
+		"moldbreaker",
+		"dualwield",
+		"proficient",
+	],
+	"falsebouquet": [
+		"magician",
+	],
+	"falsedevotion": [
+		"prankster",
+		"serenegrace",
+	],
+	"falseliberation": [
+		"moldbreaker",
+	],
+	"familyguardian": [
+		"friendguard",
+		"healer",
+	],
+	"feedback": [],
+	"festivalstep": [],
+	"fightingfiend": [],
+	"filter": [],
+	"finalnote": [],
+	"firemane": [],
+	"fireward": [],
+	"flamebody": [],
+	"flareboost": [],
+	"flashfire": [],
+	"flintfracture": [],
+	"floehunter": [
+		"slushrush",
+	],
+	"flowergift": [],
+	"flowerveil": [],
+	"fluffy": [],
+	"fluffyevo": [
+		"overcoat",
+	],
+	"forecast": [],
+	"forestsurge": [],
+	"forewarn": [],
+	"forgegrit": [
+		"guts",
+	],
+	"forsakensleeper": [
+		"comatose",
+		"soundproof",
+		"rattled",
+	],
+	"fortressshell": [
+		"waterbarrage",
+		"shellarmor",
+		"guardianpresence",
+	],
+	"fortunatewing": [
+		"superluck",
+	],
+	"fossilfrenzy": [
+		"klutz",
+	],
+	"fossilram": [
+		"rockhead",
+	],
+	"fourthholdguard": [],
+	"freeflight": [
+		"windpower",
+		"moxie",
+	],
+	"freezerburn": [
+		"slushrush",
+		"levitate",
+	],
+	"freshplumage": [
+		"naturalcure",
+	],
+	"friendguard": [],
+	"frightfulwings": [
+		"intimidate",
+		"owntempo",
+	],
+	"frillflash": [
+		"dazzling",
+	],
+	"frisk": [],
+	"frostsiren": [],
+	"frostsovereign": [
+		"snowwarning",
+		"icebody",
+		"filter",
+		"soundproof",
+	],
+	"froststalker": [
+		"stakeout",
+		"sharpness",
+		"refrigerate",
+	],
+	"frozenfeast": [
+		"strongjaw",
+	],
+	"frozenfortress": [
+		"icebody",
+		"crumblingshell",
+	],
+	"fruitfulbough": [
+		"harvest",
+	],
+	"fullmetalbody": [],
+	"funeralchoir": [],
+	"furcoat": [],
+	"furnaceengine": [
+		"steamengine",
+		"flamebody",
+		"selfsufficient",
+		"solidrock",
+	],
+	"galebloom": [
+		"shielddust",
+	],
+	"galewings": [],
+	"galvanicspirit": [
+		"vitalspirit",
+	],
+	"galvanize": [],
+	"garlandgift": [
+		"flowerveil",
+	],
+	"gemeye": [
+		"magicguard",
+		"keeneye",
+	],
+	"gentleembrace": [
+		"hydration",
+	],
+	"gentlegiant": [
+		"cloudnine",
+	],
+	"gentlescales": [
+		"compoundeyes",
+	],
+	"gigavolt": [
+		"moldbreaker",
+		"lightningrod",
+		"static",
+	],
+	"gildedgrace": [],
+	"glacialheart": [
+		"icebody",
+	],
+	"glacialmass": [
+		"heavymetal",
+		"thickfat",
+	],
+	"glacialprime": [
+		"slushrush",
+		"refrigerate",
+	],
+	"glacierbreaker": [
+		"moldbreaker",
+	],
+	"glacierclaws": [
+		"toughclaws",
+	],
+	"gluttony": [],
+	"goldentalons": [
+		"stalwart",
+		"goodasgold",
+		"sharpness",
+	],
+	"goodasgold": [],
+	"gooey": [],
+	"gorillatactics": [],
+	"grandmarksman": [
+		"megalauncher",
+		"dualwield",
+		"risingmarksman",
+	],
+	"grandmaster": [
+		"innerfocus",
+	],
+	"grandrhythm": [
+		"forestsurge",
+		"risingrhythm",
+	],
+	"grandstrategy": [
+		"moldbreaker",
+	],
+	"grandstriker": [
+		"striker",
+		"defiant",
+		"risingstriker",
+	],
+	"graspingcurrent": [
+		"suctioncups",
+	],
+	"grasspelt": [],
+	"grassysurge": [],
+	"gravehunger": [
+		"baddreams",
+	],
+	"gravewind": [
+		"sandrush",
+	],
+	"gravitywell": [],
+	"greatmarsh": [
+		"dryskin",
+		"adaptability",
+		"toxicchain",
+	],
+	"grimneigh": [],
+	"gritandglory": [
+		"guts",
+	],
+	"gritgrappler": [
+		"guts",
+	],
+	"groundingtail": [],
+	"guarddog": [],
+	"guardianpresence": [
+		"friendguard",
+		"powerspot",
+	],
+	"guidinggallop": [
+		"pastelveil",
+	],
+	"guidingglow": [
+		"illuminate",
+		"sweetveil",
+	],
+	"guidinglight": [
+		"dazzling",
+		"healer",
+	],
+	"gulpmissile": [],
+	"guts": [],
+	"hadronengine": [],
+	"hardyskin": [
+		"dryskin",
+		"vitalspirit",
+		"moxie",
+	],
+	"harvest": [],
+	"hauntedchime": [
+		"windpower",
+		"cursedbody",
+	],
+	"hauntingpresence": [
+		"levitate",
+	],
+	"hauntingveil": [
+		"cursedbody",
+		"infiltrator",
+	],
+	"headlongresolve": [
+		"reckless",
+	],
+	"healer": [],
+	"heatcoil": [
+		"speedboost",
+		"magmaarmor",
+		"flamebody",
+		"longreach",
+	],
+	"heatproof": [],
+	"heatreservoir": [
+		"flashfire",
+	],
+	"heavenlychorus": [
+		"pixilate",
+		"fluffy",
+	],
+	"heavyartillery": [
+		"unaware",
+	],
+	"heavymetal": [],
+	"helios": [
+		"drought",
+		"moldbreaker",
+		"berserk",
+		"swiftswim",
+	],
+	"hellfireeclipse": [
+		"darkaura",
+		"agonyflame",
+		"intimidate",
+	],
+	"herculeanmight": [],
+	"herdshelter": [
+		"soundproof",
+	],
+	"hiddenscroll": [],
+	"highnoon": [
+		"dualwield",
+		"megalauncher",
+	],
+	"hisuianoath": [
+		"swornduty",
+		"toughclaws",
+		"corrosion",
+	],
+	"hisuianpath": [
+		"sapsipper",
+		"innerfocus",
+		"fluffy",
+	],
+	"hisuianresolve": [
+		"bruteforce",
+		"reckless",
+		"rockhead",
+		"magmaarmor",
+	],
+	"hisuianvanguard": [
+		"rapidresponse",
+		"innerfocus",
+	],
+	"hivecourier": [],
+	"hivesanctuary": [
+		"sweetveil",
+		"friendguard",
+	],
+	"holycow": [],
+	"honeygather": [],
+	"hospitality": [],
+	"hovercannon": [
+		"levitate",
+	],
+	"hugepower": [],
+	"hungerswitch": [],
+	"hustle": [],
+	"hydrabond": [],
+	"hydraflight": [
+		"levitate",
+		"hydrabond",
+	],
+	"hydraheart": [
+		"stamina",
+		"hydrabond",
+	],
+	"hydration": [],
+	"hydraulicarmor": [
+		"stamina",
+	],
+	"hydroelectric": [
+		"dryskin",
+	],
+	"hypercutter": [],
+	"hyperdrill": [
+		"powerdrill",
+	],
+	"iceabsorb": [],
+	"icebody": [],
+	"icebreaker": [
+		"hypercutter",
+	],
+	"iceface": [],
+	"icemirror": [],
+	"icescales": [],
+	"illuminate": [],
+	"illusion": [],
+	"immunity": [],
+	"imperialedge": [
+		"defiant",
+		"sharpness",
+		"moldbreaker",
+	],
+	"imperialmandate": [],
+	"imperialprincess": [
+		"striker",
+		"vitalspirit",
+	],
+	"imposter": [],
+	"inexorable": [],
+	"infernaldominion": [
+		"intimidate",
+	],
+	"infiltrator": [],
+	"innardsout": [],
+	"innerfocus": [],
+	"insight": [
+		"telepathy",
+		"innerfocus",
+	],
+	"insomnia": [],
+	"intimidate": [],
+	"intrepidsword": [],
+	"inversion": [
+		"infiltrator",
+	],
+	"invigorate": [],
+	"invisiblewall": [],
+	"ironbarbs": [],
+	"ironclamp": [
+		"battlearmor",
+	],
+	"irondominion": [
+		"pressure",
+		"swornduty",
+		"mirrorarmor",
+	],
+	"ironfist": [],
+	"ironlash": [
+		"whiplash",
+	],
+	"ironmountain": [
+		"hypercutter",
+		"bruteforce",
+	],
+	"ironsolute": [],
+	"ironvise": [
+		"toughclaws",
+		"decoypincers",
+	],
+	"ironwill": [
+		"prismarmor",
+		"selfsufficient",
+		"whiplash",
+	],
+	"islandcurrent": [],
+	"jetstreamballet": [
+		"windrider",
+	],
+	"joyride": [
+		"aerilate",
+		"violentrush",
+	],
+	"justified": [],
+	"keeneye": [],
+	"keenhunt": [
+		"keeneye",
+	],
+	"keystoneseal": [
+		"cursedbody",
+	],
+	"kickfiend": [
+		"striker",
+		"limber",
+	],
+	"kindledfury": [
+		"fluffy",
+		"guts",
+	],
+	"klutz": [],
+	"knightsguard": [
+		"swornduty",
+	],
+	"knightsreprisal": [
+		"bulletproof",
+	],
+	"knuckletide": [
+		"ironfist",
+	],
+	"lanceguard": [
+		"shellarmor",
+	],
+	"lancepoint": [],
+	"lastbrood": [
+		"swarm",
+	],
+	"lastingpromise": [
+		"friendguard",
+	],
+	"lastlaugh": [
+		"stall",
+	],
+	"layeredcoat": [],
+	"layeredshell": [
+		"shellarmor",
+	],
+	"leafguard": [],
+	"leviathanwake": [],
+	"levitate": [],
+	"libero": [],
+	"lifeguard": [
+		"friendguard",
+		"swornduty",
+		"propellertail",
+	],
+	"lightmetal": [],
+	"lightningrod": [],
+	"limber": [],
+	"lingeringaroma": [],
+	"linkedminds": [],
+	"liquidarsenal": [
+		"technician",
+	],
+	"liquidooze": [],
+	"liquidvoice": [],
+	"livenet": [
+		"unnerve",
+	],
+	"livewire": [
+		"transistor",
+		"quickfeet",
+		"ironbarbs",
+	],
+	"livewiretrap": [
+		"static",
+	],
+	"livinglegend": [
+		"flashfire",
+		"download",
+	],
+	"livingtangle": [
+		"tanglinghair",
+		"stamina",
+	],
+	"lockinggrip": [],
+	"lockjaw": [
+		"strongjaw",
+	],
+	"longreach": [],
+	"longstride": [
+		"striker",
+	],
+	"lostepoch": [],
+	"loyalguard": [],
+	"lunardread": [
+		"dishearten",
+		"insomnia",
+	],
+	"lunaridol": [],
+	"lunarorbit": [
+		"magicbounce",
+		"serenegrace",
+		"magicguard",
+	],
+	"lunarspirit": [],
+	"lunarward": [
+		"pressure",
+		"illuminate",
+	],
+	"magicbounce": [],
+	"magicguard": [],
+	"magician": [],
+	"magmaarmor": [],
+	"magneticbulwark": [
+		"filter",
+	],
+	"magneticcommand": [
+		"frisk",
+		"stalwart",
+	],
+	"magnetpull": [],
+	"malicewell": [
+		"flamebody",
+	],
+	"marshconduit": [
+		"waterabsorb",
+	],
+	"marshhide": [
+		"waterabsorb",
+		"poisonpoint",
+	],
+	"marvelscale": [],
+	"masonsfist": [
+		"ironfist",
+	],
+	"mastercourse": [
+		"contrary",
+	],
+	"masterkey": [],
+	"masterpatissier": [
+		"aromaveil",
+	],
+	"matriarchsvigil": [
+		"thickfat",
+		"powerdrill",
+		"friendguard",
+	],
+	"measuredcounsel": [
+		"owntempo",
+	],
+	"medicinalscales": [],
+	"megalauncher": [],
+	"megasol": [],
+	"memoryleak": [],
+	"merciless": [],
+	"meridianseal": [],
+	"meteorcore": [],
+	"mightyjaw": [
+		"proficient",
+	],
+	"mimecraft": [],
+	"mimicry": [],
+	"mindcurrent": [
+		"innerfocus",
+	],
+	"mindfreeze": [],
+	"mindmirror": [
+		"opportunist",
+	],
+	"mindseye": [],
+	"minus": [],
+	"miragedrift": [
+		"overcoat",
+	],
+	"mirechorus": [
+		"liquidvoice",
+		"poisontouch",
+	],
+	"mirrorarmor": [],
+	"mirrorchamber": [],
+	"mirrorgreed": [
+		"magicbounce",
+		"analytic",
+		"opportunist",
+	],
+	"mistysurge": [],
+	"moldbreaker": [],
+	"monarchofice": [
+		"slushrush",
+	],
+	"moody": [],
+	"moonlightvigil": [
+		"innerfocus",
+		"pressure",
+		"illuminate",
+	],
+	"moonlithide": [
+		"shadowshield",
+		"magicguard",
+	],
+	"moonlitprowl": [
+		"infiltrator",
+		"limber",
+	],
+	"moonlitwings": [
+		"serenegrace",
+	],
+	"moonveil": [
+		"pastelveil",
+		"mistysurge",
+	],
+	"mossarmor": [
+		"stamina",
+		"naturalcure",
+	],
+	"mothborn": [
+		"shielddust",
+	],
+	"motordrive": [],
+	"mountainbreaker": [],
+	"mountaineer": [],
+	"mountainhide": [
+		"innerfocus",
+	],
+	"mountainhunger": [
+		"sapsipper",
+		"thickfat",
+		"earlybird",
+	],
+	"mountainrift": [
+		"shellarmor",
+		"selfsufficient",
+	],
+	"mourningcoat": [
+		"fluffy",
+	],
+	"mourningsnow": [
+		"snowwarning",
+		"icebody",
+	],
+	"mourningvessel": [],
+	"moxie": [],
+	"mudflatdynamo": [
+		"battlearmor",
+	],
+	"mudmeditation": [],
+	"multiscale": [],
+	"multitype": [],
+	"mummy": [],
+	"mycelialbond": [
+		"dryskin",
+	],
+	"myceliummight": [],
+	"mythicscale": [
+		"marvelscale",
+		"compoundeyes",
+		"shielddust",
+	],
+	"naturalcure": [],
+	"naturalrecovery": [
+		"naturalcure",
+		"regenerator",
+	],
+	"neuroforce": [],
+	"neurotoxin": [
+		"hydrabond",
+		"regenerator",
+	],
+	"neutralization": [],
+	"neutralizinggas": [],
+	"nightforager": [],
+	"nighthoard": [],
+	"nighthunt": [
+		"strongjaw",
+		"intimidate",
+		"illuminate",
+	],
+	"nightmarepulse": [
+		"pendulumswing",
+		"filter",
+		"cursedbody",
+		"baddreams",
+	],
+	"nightrealm": [],
+	"nightwatch": [
+		"insomnia",
+	],
+	"noability": [],
+	"noblearmor": [
+		"prismarmor",
+	],
+	"nobleconduit": [
+		"battery",
+		"solarpower",
+		"aftermath",
+	],
+	"nobledance": [
+		"dancer",
+		"hospitality",
+	],
+	"noblerider": [
+		"swiftswim",
+		"moldbreaker",
+	],
+	"noguard": [],
+	"normalize": [],
+	"noseformation": [
+		"elevate",
+	],
+	"oblivious": [],
+	"oceanicwings": [],
+	"oceanlullaby": [
+		"shellarmor",
+		"icebody",
+	],
+	"oldnorth": [
+		"icebody",
+		"icescales",
+		"technician",
+	],
+	"omenedge": [
+		"sharpness",
+		"dualwield",
+		"pressure",
+	],
+	"omensight": [
+		"anticipation",
+		"forewarn",
+	],
+	"oneiricdust": [
+		"psychicsurge",
+	],
+	"opencage": [],
+	"openingoverture": [],
+	"opensky": [],
+	"opportunist": [],
+	"oraclesrefrain": [
+		"soundproof",
+	],
+	"orchardbond": [
+		"hydrabond",
+		"harvest",
+	],
+	"orichalcumpulse": [],
+	"overcoat": [],
+	"overgrow": [],
+	"owntempo": [],
+	"palmmastery": [
+		"thickfat",
+	],
+	"paradoxengine": [],
+	"paradoxpower": [],
+	"paradoxpull": [],
+	"paradoxwheel": [],
+	"parasitism": [
+		"dryskin",
+	],
+	"parentalbond": [],
+	"pastelsanctuary": [
+		"pastelveil",
+	],
+	"pastelveil": [],
+	"patientmarksman": [
+		"sniper",
+	],
+	"patriarchswrath": [
+		"powerdrill",
+		"whiplash",
+	],
+	"patternshift": [
+		"protean",
+		"shedskin",
+		"unaware",
+	],
+	"pearlcurrent": [
+		"waterabsorb",
+	],
+	"pearlsiphon": [
+		"competitive",
+	],
+	"pearltide": [
+		"hydration",
+	],
+	"pendulumswing": [
+		"insomnia",
+	],
+	"peppersting": [
+		"insomnia",
+	],
+	"perfectapple": [
+		"purepower",
+		"selfsufficient",
+		"angershell",
+	],
+	"perfectedgenome": [
+		"adaptability",
+		"unnerve",
+	],
+	"perfectego": [
+		"ultraego",
+	],
+	"perfectforecast": [],
+	"perfectforesight": [
+		"trace",
+	],
+	"perfectform": [
+		"ironfist",
+	],
+	"perfectillusion": [],
+	"perfectstriker": [
+		"striker",
+		"noguard",
+		"libero",
+	],
+	"performer": [
+		"dancer",
+		"songstress",
+	],
+	"perishbody": [],
+	"permafrost": [
+		"icescales",
+		"refrigerate",
+	],
+	"persistent": [],
+	"phalanxform": [
+		"hydrabond",
+		"friendguard",
+		"battlearmor",
+	],
+	"phantombarrage": [
+		"clearbody",
+		"infiltrator",
+		"levitate",
+		"hydrabond",
+	],
+	"phantomfist": [
+		"unseenfist",
+		"aftermath",
+		"selfsufficient",
+	],
+	"pickpocket": [],
+	"pickup": [],
+	"piercingdrill": [],
+	"pincercrush": [
+		"toughclaws",
+	],
+	"pixilate": [],
+	"plasmaeruption": [],
+	"plus": [],
+	"plushwhiplash": [
+		"whiplash",
+		"technician",
+	],
+	"poisonheal": [],
+	"poisonpoint": [],
+	"poisonpuppeteer": [],
+	"poisontouch": [],
+	"polarrest": [
+		"earlybird",
+		"icebody",
+	],
+	"pollenbloom": [
+		"thickfat",
+		"unaware",
+	],
+	"pollenengine": [
+		"chlorophyll",
+	],
+	"powerconstruct": [],
+	"powerdrill": [],
+	"powerofalchemy": [],
+	"powerspot": [],
+	"prankster": [],
+	"precision": [],
+	"predator": [],
+	"pressure": [],
+	"pressurejet": [],
+	"pressurekiln": [],
+	"pridecall": [
+		"competitive",
+		"unnerve",
+	],
+	"primalego": [
+		"unaware",
+		"ultraego",
+		"moldbreaker",
+	],
+	"primalrhythm": [],
+	"primaltactics": [],
+	"primevalhunger": [
+		"accumulation",
+	],
+	"primevalhunt": [
+		"skilllink",
+		"steadfast",
+	],
+	"primevalshield": [],
+	"primevalskull": [
+		"rockhead",
+	],
+	"primordialconstruct": [],
+	"primordialsea": [],
+	"prismarmor": [],
+	"prismscale": [
+		"friendguard",
+		"oblivious",
+		"swiftswim",
+	],
+	"prismskimmer": [],
+	"prismwings": [
+		"tintedlens",
+	],
+	"proficient": [],
+	"propellertail": [],
+	"protean": [],
+	"protectiveward": [
+		"liquidvoice",
+		"shellarmor",
+		"waterabsorb",
+	],
+	"protosynthesis": [],
+	"psychedominion": [
+		"psychicsurge",
+		"dishearten",
+	],
+	"psycheforce": [
+		"toughclaws",
+		"ironfist",
+	],
+	"psychicsurge": [],
+	"pulseblockade": [],
+	"pulsebulwark": [],
+	"pulseeruption": [
+		"sturdy",
+	],
+	"pulsefiltration": [
+		"waterabsorb",
+		"liquidooze",
+	],
+	"pulsetriad": [
+		"hydrabond",
+		"levitate",
+		"clearbody",
+	],
+	"pulsewaste": [
+		"protean",
+		"poisontouch",
+		"regenerator",
+	],
+	"punchfiend": [
+		"ironfist",
+		"keeneye",
+	],
+	"punkrock": [],
+	"purepower": [],
+	"purifyingfrost": [],
+	"purifyingsalt": [],
+	"pursuitwake": [
+		"infiltrator",
+	],
+	"pyrousdominion": [
+		"eartheater",
+		"keeneye",
+	],
+	"quarkdrive": [],
+	"quarrycannon": [
+		"megalauncher",
+	],
+	"queenlymajesty": [],
+	"queensguard": [
+		"contrary",
+		"shedskin",
+		"intimidate",
+	],
+	"quickdraw": [],
+	"quickfeet": [],
+	"quillreservoir": [
+		"waterabsorb",
+	],
+	"racingspirit": [
+		"rockhead",
+		"limber",
+	],
+	"ragingbeast": [
+		"guts",
+		"moldbreaker",
+	],
+	"ragingcurrent": [
+		"swiftswim",
+		"dryskin",
+		"damp",
+	],
+	"ragingfists": [
+		"hydrabond",
+		"scrappy",
+	],
+	"ragingheart": [
+		"innerfocus",
+	],
+	"ragingoverlord": [
+		"ragingstorm",
+		"supremeoverlord",
+		"moldbreaker",
+	],
+	"ragingstorm": [
+		"moldbreaker",
+	],
+	"railguncircuit": [
+		"lightningrod",
+	],
+	"railsight": [
+		"innerfocus",
+	],
+	"raincourier": [
+		"raindish",
+	],
+	"raindish": [],
+	"rainlitgrowth": [
+		"raindish",
+	],
+	"rainsovereign": [
+		"drizzle",
+	],
+	"raisedquills": [],
+	"rapidresponse": [],
+	"rattled": [],
+	"razorcurrent": [
+		"drizzle",
+		"speedboost",
+	],
+	"razorreach": [
+		"sharpness",
+		"longreach",
+		"keeneye",
+	],
+	"reapersgrip": [
+		"selfsufficient",
+	],
+	"rebornflower": [
+		"flowerveil",
+	],
+	"rebound": [],
+	"receiver": [],
+	"rechargerelay": [
+		"battery",
+	],
+	"reckless": [],
+	"reflector": [],
+	"refrigerate": [],
+	"regenerator": [],
+	"reinflate": [
+		"punkrock",
+	],
+	"relentlesshunt": [
+		"roughskin",
+	],
+	"relentlesslink": [
+		"skilllink",
+		"moldbreaker",
+		"powerdrill",
+	],
+	"relicarmor": [],
+	"relicbeam": [],
+	"relicinstinct": [],
+	"relicmishap": [
+		"waterabsorb",
+		"voltabsorb",
+	],
+	"rememberedflame": [
+		"flashfire",
+		"download",
+	],
+	"rememberedstep": [],
+	"requiem": [
+		"cursedbody",
+		"filter",
+	],
+	"reservoir": [
+		"waterabsorb",
+		"gluttony",
+	],
+	"resonanceforce": [],
+	"resonantblade": [],
+	"restorativechime": [],
+	"resuscitation": [
+		"selfrepair",
+		"magicguard",
+	],
+	"revealinggaze": [],
+	"riftdancer": [
+		"chlorophyll",
+		"dancer",
+		"overgrow",
+	],
+	"rifteater": [
+		"accumulation",
+		"sandstream",
+	],
+	"riftherald": [],
+	"riftofruin": [],
+	"rightfulexalt": [
+		"serenegrace",
+		"innerfocus",
+	],
+	"rimebark": [
+		"thickfat",
+		"icebody",
+	],
+	"rimeboundspirit": [
+		"heatproof",
+	],
+	"rimebreaker": [
+		"refrigerate",
+	],
+	"rimeknuckle": [
+		"ironfist",
+		"filter",
+		"icebody",
+	],
+	"rimeplate": [],
+	"ringcraft": [
+		"limber",
+	],
+	"ringmaster": [
+		"toughclaws",
+	],
+	"riotamp": [
+		"galvanize",
+		"resonanceforce",
+		"voltabsorb",
+	],
+	"riotstance": [
+		"defiant",
+	],
+	"ripen": [],
+	"riptideclaws": [
+		"swiftswim",
+		"toughclaws",
+		"shellarmor",
+		"moldbreaker",
+	],
+	"risingmarksman": [],
+	"risingrhythm": [],
+	"risingstriker": [],
+	"rivalappetites": [],
+	"rivalmalice": [],
+	"rivalresolve": [],
+	"rivalry": [],
+	"rivershell": [
+		"shellarmor",
+	],
+	"rkssystem": [],
+	"rockhead": [],
+	"rockypayload": [],
+	"rollingfortress": [
+		"rockhead",
+	],
+	"rootediron": [
+		"stamina",
+	],
+	"rootrenewal": [
+		"regenerator",
+	],
+	"roughscale": [],
+	"roughskin": [],
+	"rousingfeast": [
+		"gluttony",
+		"cudchew",
+	],
+	"royalarmament": [
+		"powerdrill",
+	],
+	"royaldecree": [],
+	"royalhive": [],
+	"royalpresence": [
+		"pressure",
+		"unnerve",
+	],
+	"royalremedy": [
+		"naturalcure",
+		"healer",
+	],
+	"royalscales": [
+		"marvelscale",
+		"swiftswim",
+		"dragonize",
+	],
+	"royalsun": [
+		"supremeoverlord",
+		"drought",
+	],
+	"rubblewake": [],
+	"ruinedsky": [
+		"moldbreaker",
+	],
+	"ruinjaw": [],
+	"runaway": [],
+	"rupturedheaven": [
+		"sharpness",
+	],
+	"sacredbond": [
+		"battlebond",
+		"selfsufficient",
+		"magmaarmor",
+		"intimidate",
+		"flashfire",
+	],
+	"sacrededge": [
+		"sharpness",
+		"swornduty",
+	],
+	"sacredpower": [
+		"duskilate",
+		"insomnia",
+		"magicguard",
+	],
+	"safeharbor": [
+		"waterabsorb",
+		"hydration",
+	],
+	"saltbastion": [
+		"sturdy",
+	],
+	"saltcrust": [
+		"clearbody",
+	],
+	"sandforce": [],
+	"sandrush": [],
+	"sandsovereign": [
+		"sandstream",
+		"solidrock",
+	],
+	"sandspit": [],
+	"sandstream": [],
+	"sandveil": [],
+	"sapsipper": [],
+	"savageresolve": [
+		"guts",
+	],
+	"scalerhythm": [],
+	"scaleshelter": [
+		"overcoat",
+	],
+	"scarecrow": [
+		"windrider",
+		"steelworker",
+	],
+	"scatterbrain": [
+		"oblivious",
+		"unaware",
+	],
+	"scavenger": [],
+	"scentscout": [
+		"frisk",
+	],
+	"schooling": [
+		"hydrabond",
+		"selfrepair",
+		"moldbreaker",
+	],
+	"scorchsweep": [
+		"rockhead",
+	],
+	"scrapbreaker": [],
+	"scrappy": [],
+	"screencleaner": [],
+	"seablessing": [
+		"waterveil",
+		"raindish",
+	],
+	"seafiend": [
+		"toxicdebris",
+	],
+	"searescuer": [],
+	"seasonalstride": [
+		"chlorophyll",
+	],
+	"secondbrew": [],
+	"secondwind": [],
+	"seedsower": [],
+	"selfrepair": [],
+	"selfsufficient": [],
+	"sentinelfist": [
+		"ironfist",
+	],
+	"serenegrace": [],
+	"serratedscales": [
+		"roughskin",
+		"limber",
+	],
+	"setpiece": [],
+	"seviischooling": [
+		"schooling",
+		"hydrabond",
+		"selfrepair",
+		"moldbreaker",
+	],
+	"shadowbond": [
+		"battlebond",
+		"selfsufficient",
+		"infiltrator",
+	],
+	"shadowcurrent": [
+		"protean",
+		"technician",
+		"anticipation",
+	],
+	"shadowdouble": [],
+	"shadowfeint": [],
+	"shadowscreen": [
+		"infiltrator",
+	],
+	"shadowshield": [],
+	"shadowtag": [],
+	"sharpness": [],
+	"shattercrust": [
+		"crumblingshell",
+	],
+	"sheddecoy": [],
+	"shedskin": [],
+	"sheerforce": [],
+	"shellarmor": [],
+	"shellboundfury": [],
+	"shellcracker": [
+		"moldbreaker",
+	],
+	"shellderartillery": [
+		"megalauncher",
+		"oblivious",
+	],
+	"shelteringbreeze": [
+		"friendguard",
+		"windrider",
+	],
+	"shielddust": [],
+	"shieldsdown": [
+		"crumblingshell",
+	],
+	"siegelauncher": [
+		"megalauncher",
+		"waterbarrage",
+		"overcoat",
+	],
+	"siegemagnet": [
+		"magnetpull",
+	],
+	"siegetusks": [
+		"moldbreaker",
+	],
+	"silentact": [
+		"soundproof",
+	],
+	"silentflight": [
+		"levitate",
+	],
+	"silenthunter": [
+		"superluck",
+	],
+	"silentreprisal": [
+		"soundproof",
+		"anticipation",
+	],
+	"silkendecoy": [
+		"selfsufficient",
+		"swarm",
+	],
+	"silkensalvo": [
+		"fluffy",
+	],
+	"silkshuriken": [],
+	"silksights": [
+		"compoundeyes",
+		"keeneye",
+	],
+	"silkward": [],
+	"simple": [],
+	"sinisterblaze": [],
+	"sirius": [
+		"apexvenom",
+		"blackviper",
+		"whiplash",
+		"venamskiss",
+	],
+	"skilllink": [],
+	"skywarden": [
+		"windrider",
+	],
+	"slipstream": [
+		"levitate",
+		"keeneye",
+	],
+	"slowclamp": [
+		"shellarmor",
+		"owntempo",
+		"analytic",
+	],
+	"slowstart": [],
+	"slumberinggiant": [
+		"comatose",
+		"thickfat",
+	],
+	"slushrush": [],
+	"smolderingshroud": [
+		"whitesmoke",
+	],
+	"sniper": [],
+	"snowcloak": [],
+	"snowpack": [
+		"icebody",
+	],
+	"snowwarning": [],
+	"solarbloom": [],
+	"solarbud": [],
+	"solarhydra": [
+		"hydrabond",
+		"grassysurge",
+	],
+	"solaridol": [],
+	"solarmimicry": [],
+	"solarpower": [],
+	"solarrecharge": [],
+	"solarrush": [
+		"sandrush",
+		"chlorophyll",
+	],
+	"solarstride": [
+		"chlorophyll",
+	],
+	"solartrap": [
+		"accumulation",
+		"liquidooze",
+	],
+	"solidrock": [],
+	"songstress": [],
+	"soothingbouquet": [
+		"friendguard",
+		"infiltrator",
+	],
+	"soothingcream": [
+		"ripen",
+	],
+	"soothingpresence": [
+		"friendguard",
+		"aromaveil",
+	],
+	"soulanchor": [
+		"steelworker",
+	],
+	"soulcremation": [
+		"soulsiphon",
+		"soulpyre",
+		"malicewell",
+	],
+	"soulescort": [],
+	"soulfire": [],
+	"soulforgedarmor": [],
+	"soulheart": [],
+	"soulpyre": [],
+	"soulreaver": [
+		"infiltrator",
+	],
+	"soulsiphon": [
+		"flashfire",
+	],
+	"soulstrike": [],
+	"soundproof": [],
+	"sovereignarsenal": [],
+	"speedboost": [],
+	"spentforce": [],
+	"spicyspray": [],
+	"spinfiend": [
+		"technician",
+		"steadfast",
+	],
+	"spinyhide": [
+		"roughskin",
+		"poisonpoint",
+	],
+	"spiralevolution": [
+		"powerdrill",
+		"adaptability",
+	],
+	"sporeshroud": [
+		"effectspore",
+	],
+	"springfur": [
+		"furcoat",
+	],
+	"springheel": [
+		"unseenfist",
+	],
+	"springherald": [
+		"drizzle",
+	],
+	"springpressure": [
+		"static",
+		"pressure",
+	],
+	"springtempest": [
+		"lightningrod",
+		"stormpower",
+	],
+	"stagesweep": [
+		"screencleaner",
+		"infiltrator",
+	],
+	"stakeout": [],
+	"stall": [],
+	"stalwart": [],
+	"stamina": [],
+	"stancechange": [],
+	"starboxer": [],
+	"static": [],
+	"staticreserve": [
+		"static",
+	],
+	"steadfast": [],
+	"steadyaim": [],
+	"steadyswimmer": [],
+	"steamengine": [],
+	"steelplumage": [],
+	"steelwingescort": [
+		"swornduty",
+	],
+	"steelworker": [],
+	"steelyspirit": [],
+	"stench": [],
+	"stickyhold": [],
+	"stillmind": [
+		"anticipation",
+		"oblivious",
+	],
+	"stillwater": [
+		"waterabsorb",
+	],
+	"stillwaters": [
+		"cloudnine",
+		"unaware",
+	],
+	"stokebelly": [
+		"gluttony",
+	],
+	"stonewall": [
+		"sturdy",
+	],
+	"stormbell": [
+		"mirrorarmor",
+		"drizzle",
+		"levitate",
+	],
+	"stormcalling": [
+		"drizzle",
+		"liquidvoice",
+		"dissonantecho",
+	],
+	"stormcircuit": [
+		"electricsurge",
+		"elevate",
+		"currentcoil",
+		"swiftswim",
+	],
+	"stormdrain": [],
+	"stormfright": [
+		"stormpower",
+		"lightningrod",
+	],
+	"stormmemory": [],
+	"stormpower": [],
+	"stormsong": [
+		"liquidvoice",
+		"drizzle",
+	],
+	"stormsovereign": [
+		"galewings",
+		"updraft",
+	],
+	"streettyrant": [
+		"intimidate",
+		"moldbreaker",
+	],
+	"striker": [],
+	"strikerfrenzy": [],
+	"strikersmomentum": [],
+	"stringsofruin": [
+		"berserk",
+		"duskilate",
+	],
+	"strongjaw": [],
+	"sturdy": [],
+	"suctioncups": [],
+	"summerherald": [
+		"drought",
+	],
+	"summerpressure": [
+		"flamebody",
+		"pressure",
+	],
+	"summerrenewal": [
+		"regenerator",
+		"solarpower",
+	],
+	"suncharm": [
+		"drought",
+	],
+	"sunreserve": [
+		"flashfire",
+	],
+	"sunsovereign": [
+		"drought",
+		"unboundblaze",
+	],
+	"superluck": [],
+	"supersweetsyrup": [],
+	"supremeoverlord": [],
+	"surefoot": [],
+	"surgeconduit": [
+		"lightningrod",
+		"rockhead",
+	],
+	"surgesurfer": [],
+	"sushitrick": [
+		"hospitality",
+	],
+	"swarm": [],
+	"swarmdrive": [
+		"swarm",
+	],
+	"sweetdecay": [
+		"hustle",
+		"gluttony",
+		"sweetveil",
+		"corrosion",
+	],
+	"sweetresonance": [
+		"hydrabond",
+		"selfsufficient",
+	],
+	"sweetsanctuary": [
+		"stamina",
+	],
+	"sweetveil": [],
+	"swiftdrill": [
+		"swiftswim",
+		"powerdrill",
+		"raindish",
+	],
+	"swiftswim": [],
+	"swiftvenom": [
+		"swiftswim",
+		"merciless",
+	],
+	"swordofruin": [],
+	"swornduty": [],
+	"symbiosis": [],
+	"synchronize": [],
+	"tabletsofruin": [],
+	"tacticalretreat": [],
+	"tangledfeet": [],
+	"tanglinghair": [],
+	"taptempo": [
+		"owntempo",
+	],
+	"tatteredmemory": [
+		"cursedbody",
+		"frisk",
+	],
+	"teaceremony": [
+		"stickyhold",
+		"aromaveil",
+	],
+	"technician": [],
+	"telepathy": [],
+	"temperedalloy": [
+		"filter",
+	],
+	"tempestfury": [
+		"angerpoint",
+	],
+	"templechime": [
+		"elevate",
+	],
+	"temporalshift": [],
+	"teraformzero": [],
+	"terashell": [],
+	"terashift": [],
+	"terastaladaptability": [],
+	"teravolt": [],
+	"terragift": [
+		"hospitality",
+		"unaware",
+		"proficient",
+	],
+	"terraresolve": [
+		"stamina",
+		"suctioncups",
+		"solidrock",
+	],
+	"territorial": [
+		"unnerve",
+		"stamina",
+		"guarddog",
+	],
+	"thermalexchange": [],
+	"thickfat": [],
+	"thorntempered": [],
+	"threadshelter": [],
+	"tidaldominion": [
+		"swiftswim",
+	],
+	"tidaljaw": [
+		"strongjaw",
+		"swiftswim",
+		"filter",
+	],
+	"tidalmastery": [
+		"damp",
+	],
+	"tidalpoise": [
+		"whiplash",
+		"owntempo",
+	],
+	"tidalvoice": [
+		"liquidvoice",
+		"soundproof",
+	],
+	"tidalwave": [
+		"hydration",
+		"raindish",
+	],
+	"tintedlens": [],
+	"tirelessmuscle": [
+		"innerfocus",
+	],
+	"titanpincer": [],
+	"titansknuckles": [
+		"ironfist",
+	],
+	"tomeofavarice": [],
+	"torrent": [],
+	"toughclaws": [],
+	"toxicarmor": [
+		"dualwield",
+		"violentrush",
+	],
+	"toxicbloom": [
+		"pollenbloom",
+		"toxicsink",
+	],
+	"toxicboost": [],
+	"toxicchain": [],
+	"toxiccocoon": [
+		"shielddust",
+	],
+	"toxicdebris": [],
+	"toxicevolution": [
+		"corrosion",
+		"shielddust",
+	],
+	"toxicrenewal": [
+		"adaptability",
+		"poisontouch",
+	],
+	"toxicserenity": [
+		"poisonheal",
+	],
+	"toxicsignature": [
+		"unnerve",
+	],
+	"toxicsink": [],
+	"toxicspines": [
+		"toxicdebris",
+		"merciless",
+	],
+	"trace": [],
+	"transfixinggaze": [
+		"frisk",
+	],
+	"transistor": [],
+	"treasuretitan": [
+		"filter",
+		"eartheater",
+		"heavymetal",
+		"intimidate",
+	],
+	"tremor": [
+		"levitate",
+		"resonanceforce",
+		"sandforce",
+	],
+	"triage": [],
+	"trickperformer": [
+		"technician",
+		"prankster",
+	],
+	"triplethreat": [
+		"innerfocus",
+		"keeneye",
+		"earlybird",
+	],
+	"truant": [],
+	"truedevotion": [
+		"prankster",
+		"serenegrace",
+		"technician",
+	],
+	"truehydra": [
+		"hydrabond",
+		"regenerator",
+		"shedskin",
+		"selfsufficient",
+	],
+	"tundramarch": [
+		"oblivious",
+	],
+	"tunnelclearance": [
+		"hypercutter",
+	],
+	"turboblaze": [],
+	"twilightinstinct": [
+		"ultrainstinct",
+		"opportunist",
+	],
+	"twinappetite": [],
+	"twinblades": [],
+	"twincannons": [],
+	"twindrills": [
+		"dualwield",
+		"powerdrill",
+	],
+	"twinfang": [
+		"rivalry",
+	],
+	"twinfocus": [],
+	"tyrantdomain": [
+		"supremeoverlord",
+		"sandstream",
+	],
+	"tyrantstream": [],
+	"ultraego": [],
+	"ultrainstinct": [
+		"moldbreaker",
+		"innerfocus",
+	],
+	"unaware": [],
+	"unboundblaze": [],
+	"unboundspirit": [
+		"vitalspirit",
+	],
+	"unboundwill": [
+		"magicbounce",
+		"clearbody",
+	],
+	"unbridledflight": [],
+	"unbridledwrath": [
+		"sheerforce",
+		"innerfocus",
+	],
+	"unbrokencharge": [],
+	"unburden": [],
+	"uncheckedassault": [
+		"scrappy",
+		"opportunist",
+		"limber",
+		"vitalspirit",
+	],
+	"undertow": [
+		"waterabsorb",
+	],
+	"unleashedego": [
+		"ultraego",
+		"levitate",
+		"ragingstorm",
+	],
+	"unnerve": [],
+	"unovavanguard": [
+		"violentrush",
+		"innerfocus",
+	],
+	"unovawing": [
+		"superluck",
+		"competitive",
+	],
+	"unsealedcurrent": [],
+	"unseenfist": [],
+	"unstableevo": [],
+	"unyielding": [
+		"innerfocus",
+	],
+	"updraft": [
+		"competitive",
+	],
+	"vanguard": [
+		"intimidate",
+	],
+	"varietyrush": [],
+	"vaultkeeper": [
+		"prankster",
+	],
+	"venamskiss": [
+		"shedskin",
+	],
+	"vendetta": [
+		"innerfocus",
+	],
+	"venomarmor": [
+		"dualwield",
+	],
+	"venombastion": [
+		"stamina",
+	],
+	"venomcanticle": [],
+	"venomheal": [
+		"hypercutter",
+	],
+	"venomignition": [],
+	"venompincer": [
+		"poisontouch",
+	],
+	"venomspurs": [
+		"corrosion",
+	],
+	"venomthread": [],
+	"venomveil": [
+		"liquidooze",
+		"corrosion",
+		"waterveil",
+	],
+	"verdantdrake": [
+		"lightningrod",
+		"regenerator",
+		"infiltrator",
+	],
+	"verdantedge": [
+		"sharpness",
+		"grasspelt",
+	],
+	"verdanthospitality": [
+		"proficient",
+	],
+	"verdantsanctuary": [
+		"grassysurge",
+		"hospitality",
+		"friendguard",
+	],
+	"vesselofruin": [],
+	"victorystar": [],
+	"violentrush": [],
+	"vitalcircuit": [],
+	"vitalsigns": [
+		"invigorate",
+	],
+	"vitalspirit": [],
+	"voidcommand": [],
+	"voidcraft": [
+		"elevate",
+		"shadowshield",
+		"temporalshift",
+		"insomnia",
+	],
+	"voidcrossing": [
+		"magicguard",
+		"infiltrator",
+	],
+	"voiddrift": [
+		"overcoat",
+	],
+	"voidguile": [
+		"magician",
+		"infiltrator",
+	],
+	"voidhex": [
+		"prankster",
+		"cursedbody",
+	],
+	"voidomen": [
+		"friendguard",
+	],
+	"voidpromise": [
+		"unaware",
+	],
+	"voidreprisal": [
+		"guts",
+	],
+	"voidsanctum": [
+		"snowwarning",
+	],
+	"voidtyrant": [
+		"hydrabond",
+		"berserk",
+	],
+	"voidveil": [
+		"levitate",
+		"magicguard",
+		"insomnia",
+	],
+	"voidvoice": [
+		"pixilate",
+		"queenlymajesty",
+		"dreamsickness",
+		"telepathy",
+	],
+	"voidwrath": [
+		"moldbreaker",
+		"infiltrator",
+	],
+	"voltabsorb": [],
+	"wailingsnow": [],
+	"wanderingspirit": [],
+	"warship": [
+		"swiftswim",
+		"solidrock",
+		"strongjaw",
+	],
+	"wastingsurge": [],
+	"waterabsorb": [],
+	"waterbarrage": [
+		"dualwield",
+		"stalwart",
+	],
+	"waterbubble": [
+		"waterveil",
+	],
+	"watercompaction": [],
+	"waterveil": [],
+	"weakarmor": [],
+	"weatherweave": [],
+	"webassassin": [],
+	"wellbakedbody": [],
+	"whiplash": [],
+	"whitesmoke": [],
+	"wickedsnare": [
+		"intimidate",
+	],
+	"wickedweave": [
+		"prankster",
+	],
+	"wildspirit": [],
+	"wimpout": [],
+	"windchime": [
+		"armorize",
+		"punkrock",
+		"levitate",
+	],
+	"windpower": [],
+	"windrider": [],
+	"windysurge": [],
+	"wingedwraith": [
+		"infiltrator",
+		"galewings",
+	],
+	"winterherald": [
+		"snowwarning",
+	],
+	"winterpressure": [
+		"icebody",
+		"pressure",
+	],
+	"winterrefuge": [
+		"friendguard",
+		"icescales",
+	],
+	"wintersmalice": [
+		"refrigerate",
+		"berserk",
+		"cursedbody",
+	],
+	"wisecounsel": [
+		"innerfocus",
+		"guardianpresence",
+	],
+	"wishkeeper": [
+		"magicbounce",
+		"triage",
+	],
+	"witheringshell": [
+		"crumblingshell",
+		"raindish",
+		"stickyhold",
+	],
+	"witheringtouch": [
+		"poisontouch",
+		"corrosion",
+	],
+	"wonderguard": [],
+	"wonderskin": [],
+	"woolyconductor": [
+		"fluffy",
+		"moldbreaker",
+	],
+	"worldaxis": [],
+	"worldbinder": [
+		"moldbreaker",
+	],
+	"worldforged": [],
+	"wraithprocession": [],
+	"wrathshield": [
+		"bulletproof",
+		"stamina",
+		"friendguard",
+		"proficient",
+	],
+	"wreckingball": [
+		"sturdy",
+		"selfsufficient",
+		"crumblingshell",
+	],
+	"wreckingcrew": [
+		"ironfist",
+	],
+	"yearningstar": [],
+	"zen": [
+		"waterabsorb",
+		"unaware",
+		"damp",
+	],
+	"zenmode": [],
+	"zerotohero": [],
+	"zprotean": [],
+};
 // END SERVER WORKING SYNC MOVES
 const CUSTOM_MOVE_UPDATE_IDS = Object.keys(CUSTOM_MOVE_UPDATES);
 const GLIMMORA_AEVIAN_MOVE_IDS = 'injection curse ancientpower harden tackle magnetbomb gust twister autotomize wonderroom magicroom mirrorshot trickroom paraboliccharge airslash discharge flashcannon disable conversion2 charge workup psyshock toxic lightscreen taunt safeguard hyperbeam smackdown thunderbolt thunder psychic shadowball reflect sludgebomb aerialace overheat energyball chargebeam acrobatics explosion embargo rockpolish flash voltswitch thunderwave psychup zapcannon triattack selfdestruct screech weatherball mudshot electricterrain ironhead bugbuzz powergem metalsound psybeam stealthrock gravity magiccoat recycle shockwave waterpulse roleplay electroweb focusenergy signalbeam laserfocus electroball allyswitch trick helpinghand magnetrise terrainpulse defog hurricane gigadrain earthpower psychicnoise snowscape nastyplot'.split(' ');
@@ -113225,6 +116392,10 @@ const Dex = new class implements ModdedDex {
 			}
 			let name = nameOrAbility || '';
 			let id = toID(nameOrAbility);
+			if (id === 'worldbreaker') {
+				name = 'Strings of Ruin';
+				id = 'stringsofruin' as ID;
+			}
  if (id === 'oracularchorus') {name="Oracle's Refrain";id='oraclesrefrain' as ID;}
  if (id === 'exalt') {name='Imperial Edge';id='imperialedge' as ID;}
    const clawAlias: {[id: string]: string} = {bedrockclaw:'Dune Claws',rimeclaw:'Glacier Claws',dunerunner:'Sand Rush',frostrunner:'Slush Rush'};
@@ -113505,8 +116676,11 @@ const Dex = new class implements ModdedDex {
 		const nextVisiting = new Set(visiting);
 		nextVisiting.add(abilityId);
 		const directComponents = new Set<ID>((inheritsComponents ? CUSTOM_ABILITY_COMPONENT_OVERRIDES[abilityId] || [] : []).map(toID));
-		// Description wording is not component metadata. Preserve previously inferred search identities.
-		if (inheritsComponents && AUDITED_DESCRIPTION_COMPONENTS[abilityId]) {
+		// The current server snapshot overrides legacy prose-derived component identities.
+		if (inheritsComponents && Object.prototype.hasOwnProperty.call(SERVER_ABILITY_COMPONENTS, abilityId)) {
+			directComponents.clear();
+			for (const id of SERVER_ABILITY_COMPONENTS[abilityId]) directComponents.add(toID(id));
+		} else if (inheritsComponents && AUDITED_DESCRIPTION_COMPONENTS[abilityId]) {
 			for (const componentId of AUDITED_DESCRIPTION_COMPONENTS[abilityId]) directComponents.add(componentId as ID);
 		} else {
 			// Compact descriptions are the canonical component summary; long descriptions may
@@ -117425,7 +120599,7 @@ Object.assign(AUDITED_DESCRIPTION_COMPONENTS,{"livewire":["transistor","quickfee
 
 Object.assign(AUDITED_DESCRIPTION_COMPONENTS,{ironmountain:['hypercutter','bruteforce'],disguise:[],stancechange:[]});
 
-Object.assign(AUDITED_DESCRIPTION_COMPONENTS,{hydraflight:['levitate','hydrabond'],worldbreaker:['berserk','duskilate'],falseliberation:['moldbreaker']});
+Object.assign(AUDITED_DESCRIPTION_COMPONENTS,{hydraflight:['levitate','hydrabond'],stringsofruin:['berserk','duskilate'],falseliberation:['moldbreaker']});
 
 CUSTOM_ICON_SPRITES.meloettaencore='meloetta-encore';
 CUSTOM_STATIC_BATTLE_SPRITES.meloettaencore={front:{w:96,h:96},back:{w:96,h:96}};
@@ -117504,7 +120678,7 @@ CUSTOM_PARTY_ICON_SPRITES.hydreigonmega = {
 	normal: 'hydreigon-mega.png', normalFemale: 'hydreigon-mega.png',
 	shiny: 'hydreigon-mega-shiny.png', shinyFemale: 'hydreigon-mega-shiny.png',
 };
-AUDITED_DESCRIPTION_COMPONENTS.expiration = ['worldbreaker', 'controlledfury'];
+AUDITED_DESCRIPTION_COMPONENTS.expiration = ['stringsofruin', 'controlledfury'];
 AUDITED_DESCRIPTION_COMPONENTS.abyssalrebirth = ['hydrabond', 'levitate'];
 AUDITED_DESCRIPTION_COMPONENTS.safeharbor = ['waterabsorb', 'hydration'];
 AUDITED_DESCRIPTION_COMPONENTS.oceanlullaby = ['shellarmor', 'icebody'];

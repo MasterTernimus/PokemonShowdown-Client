@@ -4,8 +4,9 @@ require('./battle.test');
 global.BattleMovedex = require('../play.pokemonshowdown.com/data/moves.js').BattleMovedex;
 const {BattleTooltips, ModifiableValue} = new Function(fs.readFileSync('play.pokemonshowdown.com/js/battle-tooltips.js', 'utf8') + '\nreturn {BattleTooltips, ModifiableValue};')();
 describe('Passive tooltip calculations', () => {
- it('does not inherit passives into Aevian forms without one on the server', () => {
-  for (const id of ['arcanineaevian','gyaradosaevian','gyaradosaevianmega','ampharosaevian','ampharosaevianmega','glalieaevian','glalieaevianmega','roseradeaevian','froslassaevian','froslassaevianmega','chandelureaevian','kommooaevian']) assert.deepEqual(Dex.species.get(id).passives, [], id);
+ it('uses the approved regional passive rather than inheriting the ordinary form', () => {
+  const expected = {arcanineaevian:'earlybird',gyaradosaevian:'owntempo',gyaradosaevianmega:'owntempo',ampharosaevian:'static',ampharosaevianmega:'static',glalieaevian:'levitate',glalieaevianmega:'levitate',roseradeaevian:'poisonpoint',froslassaevian:'owntempo',froslassaevianmega:'owntempo',chandelureaevian:'static',kommooaevian:'owntempo'};
+  for (const [id, passive] of Object.entries(expected)) assert.deepEqual(Dex.species.get(id).passives, [passive], id);
  });
  let battle, p, own, tips;
  beforeEach(() => {

@@ -22,9 +22,9 @@ describe('Hitmon client parity', () => {
    const species=Dex.species.get(id);assert.equal(species.abilities.H,ability);assert.deepEqual(Array.from(species.passives),[passive]);
    assert(Dex.abilities.get(ability).desc.includes('1/4 damage'));
   }
-  assert.equal(Dex.abilities.get('punchfiend').shortDesc,'Iron Fist + Serene Grace + Keen Eye.');
-  assert.equal(Dex.abilities.get('kickfiend').shortDesc,'Striker + Limber + Serene Grace.');
-  assert.equal(Dex.abilities.get('spinfiend').shortDesc,'Technician + Vital Spirit + Steadfast.');
+  assert.equal(Dex.abilities.get('punchfiend').shortDesc,'Iron Fist + Keen Eye.');
+  assert.equal(Dex.abilities.get('kickfiend').shortDesc,'Striker + Limber.');
+  assert.equal(Dex.abilities.get('spinfiend').shortDesc,'Technician + Steadfast.');
  });
  it('applies Iron Fist once with Check Hook and Punch Fiend',()=>{
   setup('Hitmonchan','Check Hook','punchfiend'); assert(Math.abs(power('firepunch')-119)<1e-9);

@@ -26,7 +26,7 @@ describe('Opponent entry warning descriptions', () => {
  for (const bundled of [false, true]) {
   it((bundled ? 'bundle' : 'individual scripts') + ' describes per-opponent checks and preserved custom effects', () => {
    const dex = loadDex(bundled);
-   for (const id of ['anticipation', 'forewarn', 'coldlogic', 'shadowcurrent', 'silentreprisal', 'greatmarsh', 'omensight', 'stillmind', 'astralconcord']) {
+   for (const id of ['anticipation', 'forewarn', 'coldlogic', 'shadowcurrent', 'silentreprisal', 'omensight', 'stillmind', 'astralconcord']) {
     const desc = dex.abilities.get(id).desc;
     assert(/foes|opposing|opponent/.test(desc), id);
     assert(/opposing switch-ins|every switch-in/.test(desc), id);

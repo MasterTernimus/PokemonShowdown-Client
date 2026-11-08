@@ -76,8 +76,8 @@ describe('Server data synchronization', () => {
 				assert.equal(p.bst, 560);
 				assert(dex.abilities.get('Reservoir').exists);
 				for (const id of ['waterabsorb', 'gluttony']) assert(dex.getAbilityEffects('reservoir').has(id), id);
-				assert(dex.getAbilityEffects('royalscales').has('selfsufficient'));
-				assert(dex.abilities.get('Royal Scales').desc.includes('1/16'));
+				assert(!dex.getAbilityEffects('royalscales').has('selfsufficient'));
+				assert(!dex.abilities.get('Royal Scales').desc.includes('1/16'));
 			});
 
 			it('keeps signature selector previews compact without replacing full mechanics', () => {

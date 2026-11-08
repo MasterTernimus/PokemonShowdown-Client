@@ -27,7 +27,8 @@ global.BattleTeambuilderTable = BattleTeambuilderTable;
 require('../play.pokemonshowdown.com/js/battle-dex-data.js');
 require('../play.pokemonshowdown.com/js/battle-dex.js');
 require('../play.pokemonshowdown.com/js/battle-scene-stub.js');
-// global.BattleText = require('../play.pokemonshowdown.com/data/text.js').BattleText;
+global.BattleText = require('../play.pokemonshowdown.com/data/text.js').BattleText;
+global.BattleLog = new Function(require('fs').readFileSync(require('path').join(__dirname, '../play.pokemonshowdown.com/js/battle-log.js'), 'utf8') + '\nreturn BattleLog;')();
 require('../play.pokemonshowdown.com/js/battle-text-parser.js');
 require('../play.pokemonshowdown.com/js/battle.js');
 

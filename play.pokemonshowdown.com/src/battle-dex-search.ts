@@ -453,6 +453,10 @@ class DexSearch {
 		}
 		if (this.typedSearch?.searchType === 'item') this.results = this.dedupeItemResults(this.results, query);
 		this.results = this.filterPokemonPicker(this.results);
+		if (this.typedSearch instanceof BattleMoveSearch) {
+			const search = this.typedSearch;
+			this.results = this.results.filter(row => row[0] !== 'move' || !search.isLevel100RewardHidden(row[1]));
+		}
 		if (query && ['pokemon', 'move'].includes(this.typedSearch?.searchType || '')) {
 			this.results = this.sortTextResults(this.results);
 		}
@@ -1897,6 +1901,22 @@ class BattleItemSearch extends BattleTypedSearch<'item'> {
 }
 
 class BattleMoveSearch extends BattleTypedSearch<'move'> {
+	isLevel100RewardHidden(moveid: string): boolean {
+		if (this.dex.gen !== 9 || !this.set || (this.set.level || 100) >= 100 ||
+			this.format.includes('hackmons') || this.format.endsWith('bh')) return false;
+		const species = this.dex.species.get(this.set.species);
+		let id = this.firstLearnsetid(species.id);
+		let gated = false;
+		while (id) {
+			if (BattleTeambuilderTable.learnsets[id]?.[moveid]?.includes('a')) {
+				if (!BattleTeambuilderTable.level100Moves?.[id]?.includes(moveid)) return false;
+				gated = true;
+			}
+			id = this.nextLearnsetid(id, species.id);
+		}
+		return gated;
+	}
+
 	/** Show the source beside its move instead of repeating the entire list in a paragraph. */
 	sortRow: SearchRow = ['sortmove', ''];
 	getTable() {
@@ -2280,6 +2300,7 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 			}
 		}
 		if (dex.gen >= 9 && !isHackmons) {
+			moves = moves.filter(id => !this.isLevel100RewardHidden(id));
 			const exclusions = Dex.getGen9MoveRemovals(species.id);
 			moves = moves.filter(id => !exclusions.includes(id));
 		}

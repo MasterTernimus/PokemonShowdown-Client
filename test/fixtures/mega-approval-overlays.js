@@ -344,3 +344,15 @@ exports.abilities=(id,f)=>({...prior(id,f),...(events[id]?{S:events[id]}:{}),...
 
 // Approved Atrocity nerf removes only its Tough Claws component.
 {const previousEffects=exports.effects;exports.effects=(id,f)=>{const effects=previousEffects(id,f);return id==='atrocity'?effects.filter(part=>part!=='toughclaws'):effects;};}
+
+// November approved passive migrations supersede the historical roster snapshots.
+{
+ const prior = exports.passives;
+ const passives = {starmie:['illuminate'], honchkrow:['moxie'], revavroom:['overcoat'], kingdra:['swiftswim'],
+  drapion:['poisontouch'], farigiraf:['armortail'], toxicroak:['anticipation'], dachsbun:['wellbakedbody'],
+  maushold:['friendguard'], mausholdfour:['friendguard'], conkeldurr:['rockypayload']};
+ exports.passives = (id, fallback) => passives[id] || prior(id, fallback);
+ const slots = exports.abilities;
+ const revisedSlots = {farigiraf:{1:'Twin Focus'},slowkinggalar:{1:'Own Tempo'},conkeldurr:{0:'Guts',1:'Stamina'}};
+ exports.abilities = (id, fallback) => ({...slots(id, fallback),...revisedSlots[id]});
+}

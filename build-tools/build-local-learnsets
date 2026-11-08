@@ -57,6 +57,17 @@ for (const [id, data] of Object.entries(Learnsets)) {
 	}
 }
 
+// Only gate exclusive level-100 rewards; preserve earlier and non-level access.
+BattleTeambuilderTable.level100Moves = {};
+for (const [id, entry] of Object.entries(Learnsets)) {
+ for (const [move, sources] of Object.entries(entry.learnset || {})) {
+  const current = sources.filter(source => source.startsWith('9'));
+  if (current.length && current.every(source => source === '9L100')) {
+   (BattleTeambuilderTable.level100Moves[id] ||= []).push(move);
+  }
+ }
+}
+
 BattleTeambuilderTable.learnsets = encodedLearnsets;
 BattleTeambuilderTable.rebornLearnsets = true;
 const serializedTable = JSON.stringify(BattleTeambuilderTable).replace(/['\\]/g, '\\$&');

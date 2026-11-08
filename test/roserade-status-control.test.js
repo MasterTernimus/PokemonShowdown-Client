@@ -8,6 +8,6 @@ describe('Roserade status-control metadata',()=>{
  });
  it('retains base, Mega and Aevian slots and passives',()=>{
   assert.equal(Dex.species.get('roserade').abilities[0],'False Devotion');assert.equal(Dex.species.get('roseradeaevian').abilities.H,'False Devotion');assert.equal(Dex.species.get('roserademega').abilities[0],'True Devotion');
-  assert.deepEqual(Dex.species.get('roserade').passives,['beguilingbouquet']);assert.deepEqual(Dex.species.get('roserademega').passives,['beguilingbouquet']);assert.deepEqual(Dex.species.get('roseradeaevian').passives,[]);
+  assert.deepEqual(Dex.species.get('roserade').passives,['beguilingbouquet']);assert.deepEqual(Dex.species.get('roserademega').passives,['beguilingbouquet']);assert.deepEqual(Dex.species.get('roseradeaevian').passives,['poisonpoint']);
  });
 });

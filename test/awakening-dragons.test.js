@@ -7,7 +7,7 @@ describe('Approved Awakening dragon client data', () => {
 		assert.equal(Dex.species.get('Salamence').abilities.H, 'Rightful Exalt');
 		const effects = Dex.getAbilityEffects('rightfulexalt');
 		assert(effects.has('serenegrace')); assert(effects.has('innerfocus'));
-		assert(/critical-hit/.test(Dex.abilities.get('rightfulexalt').desc));
+		assert(/flinching/.test(Dex.abilities.get('rightfulexalt').desc));
 	});
 	it('shows Free Flight as Wind Power and Moxie, including passive component lookup', () => {
 		const effects = Dex.getPassiveAbilityEffects('freeflight');

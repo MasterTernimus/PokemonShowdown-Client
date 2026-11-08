@@ -1,8 +1,8 @@
 {
-	"sourceHead": "abb1b2aba72d5d03d5977cb412f7660602649127",
+	"sourceHead": "fb84e19dee85d99138de1128650c33196937074f",
 	"base": "22049e8bbc3cae437790269b4360f7c8eaf5da22",
-	"builtSourceFingerprint": "41386418f2d8c23f69bcaab87dd3e34502cfb67d90750d28230e4d8f357ff89c",
-	"sourceDataSHA256": "65351fe62bba61dfce79ee5c31ac24e90ad2e0fe66f7dc92fc0f808cd1e3be4e",
+	"builtSourceFingerprint": "c5b44d2cbab285c8d1b46233839db0f6b808e02bf7dacedaec78d52ea8d86d4b",
+	"sourceDataSHA256": "ba8242c9765a77c7bedba2077cdc6debe5f23722d23880d12c7566e9c44272ff",
 	"files": [
 		"data/abilities.ts",
 		"data/ability-components.ts",
@@ -11,11 +11,15 @@
 		"data/ability-display.ts",
 		"data/ability-prose-audit.ts",
 		"data/ability-readability.ts",
+		"data/absorption.ts",
+		"data/aevian-minor-passives.ts",
 		"data/alakazam-rejuv.ts",
 		"data/aliases.ts",
 		"data/ally-serene-grace.ts",
+		"data/ange-flower.ts",
 		"data/approved-ability-reworks.ts",
 		"data/approved-signatures.ts",
+		"data/approved-support-reworks.ts",
 		"data/arboliva-aevian-abilities.ts",
 		"data/armor-reductions.ts",
 		"data/audit-cleanup-approved.ts",
@@ -53,6 +57,8 @@
 		"data/final-passive-migrations.ts",
 		"data/finisher-moves-approved.ts",
 		"data/fire-emblem-signatures.ts",
+		"data/formats-data.ts",
+		"data/galar-rising.ts",
 		"data/gmax-passive-data.ts",
 		"data/gmax-passive-descriptions.ts",
 		"data/goodra-armor-reworks.ts",
@@ -74,9 +80,12 @@
 		"data/mega-hydreigon.ts",
 		"data/mega-passive-abilities.ts",
 		"data/middle-stage-reworks.ts",
+		"data/mods/gen8bdsp/learnsets.ts",
 		"data/moves.ts",
+		"data/natdex-gen8-gen9-learnsets.ts",
 		"data/nature-power.ts",
 		"data/nido-approved.ts",
+		"data/normalize-learnset-moves.ts",
 		"data/open-cage.ts",
 		"data/oracular-chorus.ts",
 		"data/ordinary-approved-reductions.ts",
@@ -86,11 +95,14 @@
 		"data/pokedex.ts",
 		"data/primarina-approved.ts",
 		"data/primeval-fossils.ts",
+		"data/public-field-guide-remaining.ts",
 		"data/public-field-guide-shared.ts",
 		"data/public-field-guide.ts",
 		"data/queued-abilities-approved.ts",
 		"data/raging-crowns-approved.ts",
 		"data/rejuv-passives.ts",
+		"data/rejuvenation-signature-moves.ts",
+		"data/ripen-seeds.ts",
 		"data/rival-support-approved.ts",
 		"data/rival-support-descriptions.ts",
 		"data/rks-system-memory.ts",
@@ -111,6 +123,7 @@
 		"data/species-passives.ts",
 		"data/starter-passives.ts",
 		"data/stat-balance-approved.ts",
+		"data/swalot-vespiquen-approved.ts",
 		"data/targeted-passive-reworks.ts",
 		"data/terajuma-poise.ts",
 		"data/terrains.ts",
@@ -211,17 +224,14 @@
 			],
 			"punchfiend": [
 				"ironfist",
-				"serenegrace",
 				"keeneye"
 			],
 			"kickfiend": [
 				"striker",
-				"limber",
-				"serenegrace"
+				"limber"
 			],
 			"spinfiend": [
 				"technician",
-				"vitalspirit",
 				"steadfast"
 			],
 			"royalremedy": [
@@ -640,8 +650,7 @@
 				"shedskin"
 			],
 			"lunarorbit": [
-				"triage",
-				"serenegrace"
+				"triage"
 			],
 			"completeparasitism": [
 				"filter",
@@ -873,12 +882,6 @@
 			"slipstream": [
 				"keeneye",
 				"levitate"
-			],
-			"evergreen": [
-				"overcoat"
-			],
-			"scavenger": [
-				"overcoat"
 			],
 			"uncheckedassault": [
 				"limber",
@@ -1243,24 +1246,14 @@
 				"shortDesc": "Keen Eye; first Flying HP hit each entry sets three-turn Tailwind.",
 				"desc": "Full local Keen Eye prevents opposing accuracy drops, ignores opposing evasion boosts and reveals opposing Illusions on activation. Mirror Arena entry grants +1 accuracy and Laser Focus, with shared entry rewards applied once. Once per switch-in, its first Flying-type attack to damage opposing HP sets Tailwind on its side for 3 turns; Tailwind is extended to at least 3 turns, never shortened."
 			},
-			"evergreen": {
-				"passive": "overcoat",
-				"desc": "Applicable Berry effects are doubled, including the full local Ripen behavior.",
-				"shortDesc": "Full Ripen."
-			},
-			"scavenger": {
-				"passive": "overcoat",
-				"desc": "Other Pokemon cannot lower its Defense. Heals 1/3 max HP on switching out.",
-				"shortDesc": "Defense-drop protection; heals 1/3 HP on switching out."
-			},
 			"echofiend": {
 				"passive": "soundproof",
-				"desc": "Sound moves become Flying, Fire on Volcanic Field, or Crystal on Crystal Cavern. Sound moves have 1.5x power, or 2x on Cave, Volcanic and Crystal Cavern. Protects allies from allied damaging sound moves. This selected package cannot be suppressed.",
+				"desc": "Sound moves become Flying, Fire on Volcanic Field, or Crystal on Crystal Cavern. Sound moves have 1.2x power, 1.5x on Mountain, Snowy Mountain, Cave, Volcanic and Crystal Cavern. Protects allies from allied damaging sound moves. This selected package cannot be suppressed.",
 				"shortDesc": "Converts and boosts sound attacks; protects allies from allied sound damage."
 			},
 			"vaultkeeper": {
 				"passive": "stickyhold",
-				"desc": "Compatibility name for local Prankster: status moves gain +1 priority; opposing Dark types block them except on Bewitched Woods. Does not prevent screen removal. Klefki receives Prankster as its species passive; this compatibility name has the same priority effect.",
+				"desc": "Compatibility name for local Prankster: status moves gain +1 priority; opposing Dark types block them except on Bewitched Woods. Klefki receives Prankster as its species passive; this compatibility name has the same priority effect.",
 				"shortDesc": "Prankster."
 			},
 			"mourningsnow": {
@@ -1280,7 +1273,7 @@
 			},
 			"glacialmass": {
 				"passive": "thickfat",
-				"desc": "Doubles weight and halves physical attack damage. On entry to Factory Field, Defense rises one stage and Speed falls one stage. On Cold Eclipse, Defense and Sp. Def are 1.5x, the field Speed penalty is ignored, and hail heals 1/10 max HP each turn.",
+				"desc": "Doubles weight and halves physical attack damage. On entry to Factory Field, Defense rises one stage and Speed falls one stage.",
 				"shortDesc": "Double weight and half physical attack damage; field effects."
 			},
 			"apexarmor": {
@@ -1371,7 +1364,7 @@
 			"stormsovereign": {
 				"passive": "noguard",
 				"shortDesc": "Updraft (Competitive), eight-turn Strong Winds and opposing Flying chip.",
-				"desc": "Summons replaceable Strong Winds for 8 turns on entry. Each turn, non-immune foes take Flying damage equal to 1/16 base maximum HP; type effectiveness scales this chip only in Free-for-All. Flying-type foes are immune. Full Updraft: Full Competitive: opposing stat drops raise Special Attack by 2 outside Chessboard; on Chessboard, instead boosts damage with missing HP up to 2x at 20% HP. Flying moves ignore evasion boosts. Once per switch-in, the first Flying attack dealing opposing HP damage raises the living adjacent ally with the lowest HP percentage by 1 Speed stage, or the holder if no such ally exists. Only one recipient is boosted; ability restarts and Mega Evolution do not reset the entry allowance."
+				"desc": "Summons replaceable Strong Winds for 8 turns on entry. Each turn, non-immune foes take Flying damage equal to 1/16 base maximum HP; type effectiveness scales this chip only in Free-for-All. Flying-type foes are immune.Full Updraft: Full Competitive: opposing stat drops raise Special Attack by 2 outside Chessboard; on Chessboard, instead boosts damage with missing HP up to 2x at 20% HP. Flying moves ignore evasion boosts. Once per switch-in, the first Flying attack dealing opposing HP damage raises the living adjacent ally with the lowest HP percentage by 1 Speed stage, or the holder if no such ally exists. Only one recipient is boosted; ability restarts and Mega Evolution do not reset the entry allowance."
 			},
 			"lunarorbit": {
 				"passive": "magicbounce",
@@ -1536,7 +1529,7 @@
 			"hauntedchime": {
 				"passive": "levitate",
 				"shortDesc": "Wind Power + Cursed Body.",
-				"desc": "Airborne: immune to Ground attacks and grounded hazards unless grounded. Absorbs wind moves for +1 Sp. Atk. Gains +1 Sp. Atk when Tailwind starts on its side or it enters during Tailwind. Strong Winds gives +1 Attack and Sp. Atk each turn. Damaging attacks have a 30% chance to be disabled, guaranteed on Haunted and disabled on Holy Field. Excludes Max moves, delayed attacks and Struggle. On fainting, curses all active foes."
+				"desc": "Airborne: immune to Ground attacks and grounded hazards unless grounded. Absorbs wind moves for +1 Sp. Atk. Gains +1 Sp. Atk when Tailwind starts on its side or it enters during Tailwind. Strong Winds gives +1 Attack and Sp. Atk each turn. Damaging attacks have a 30% chance to be disabled, guaranteed on Haunted and disabled on Holy Field. Excludes Max moves, delayed attacks and Struggle. On fainting, active foes are cursed for two end-of-turn ticks of 1/8 max HP each, then the curse ends."
 			},
 			"predator": {
 				"passive": "contrary",
@@ -1766,7 +1759,7 @@
 			"burningrage": {
 				"passive": "proficient",
 				"shortDesc": "Brute Force (Reckless + Rock Head), Iron Fist and Mold Breaker.",
-				"desc": "Brute Force (Reckless + Rock Head), Iron Fist and Mold Breaker. Brute Force: recoil and crash moves, Explosion, Self-Destruct and Misty Explosion have 1.2x power; Struggle is excluded. On Chessboard, all moves gain a further 1.2x power. Prevents move recoil except Struggle; crash and Life Orb damage still apply. Iron Fist: punching moves have 1.4x power. Mold Breaker: moves ignore bypassable opposing abilities."
+				"desc": "Brute Force (Reckless + Rock Head), Iron Fist and Mold Breaker.Brute Force: recoil and crash moves, Explosion, Self-Destruct and Misty Explosion have 1.2x power; Struggle is excluded. On Chessboard, all moves gain a further 1.2x power. Prevents move recoil except Struggle; crash and Life Orb damage still apply. Iron Fist: punching moves have 1.4x power. Mold Breaker: moves ignore bypassable opposing abilities."
 			}
 		},
 		"sharedPassiveAdditions": {
@@ -2662,7 +2655,9 @@
 					"Ice",
 					"Electric"
 				],
-				"passives": [],
+				"passives": [
+					"static"
+				],
 				"replaceAbilities": true
 			},
 			"ampharosaevianmega": {
@@ -2681,7 +2676,9 @@
 					"Ice",
 					"Electric"
 				],
-				"passives": [],
+				"passives": [
+					"static"
+				],
 				"replaceAbilities": true
 			},
 			"ampharosmega": {
@@ -2962,7 +2959,9 @@
 					"Ice",
 					"Dark"
 				],
-				"passives": [],
+				"passives": [
+					"earlybird"
+				],
 				"replaceAbilities": true
 			},
 			"arbolivamega": {
@@ -3027,7 +3026,9 @@
 					"Electric",
 					"Flying"
 				],
-				"passives": [],
+				"passives": [
+					"earlybird"
+				],
 				"replaceAbilities": true
 			},
 			"arcaninealt": {
@@ -5456,7 +5457,9 @@
 			},
 			"brutebonnet": {
 				"abilities": {
-					"0": "Protosynthesis"
+					"0": "Spore Shroud",
+					"1": "Regenerator",
+					"H": "Strong Jaw"
 				},
 				"baseStats": {
 					"hp": 111,
@@ -5470,7 +5473,9 @@
 					"Grass",
 					"Dark"
 				],
-				"passives": [],
+				"passives": [
+					"protosynthesis"
+				],
 				"replaceAbilities": true
 			},
 			"bruxish": {
@@ -6498,7 +6503,9 @@
 					"Ghost",
 					"Electric"
 				],
-				"passives": [],
+				"passives": [
+					"static"
+				],
 				"replaceAbilities": true
 			},
 			"chandeluremega": {
@@ -6755,12 +6762,12 @@
 					"H": "Opportunist"
 				},
 				"baseStats": {
-					"hp": 96,
+					"hp": 86,
 					"atk": 72,
 					"def": 65,
-					"spa": 112,
+					"spa": 107,
 					"spd": 65,
-					"spe": 121
+					"spe": 116
 				},
 				"types": [
 					"Normal",
@@ -7226,7 +7233,7 @@
 			"cinderace": {
 				"abilities": {
 					"0": "Defiant",
-					"1": "Set Piece",
+					"1": "Rising Striker",
 					"H": "Libero"
 				},
 				"baseStats": {
@@ -7247,7 +7254,7 @@
 			},
 			"cinderacegmax": {
 				"abilities": {
-					"0": "Striker's Momentum"
+					"0": "Grand Striker"
 				},
 				"baseStats": {
 					"hp": 136,
@@ -7735,8 +7742,8 @@
 			},
 			"conkeldurr": {
 				"abilities": {
-					"0": "Void Reprisal",
-					"1": "Rocky Payload",
+					"0": "Guts",
+					"1": "Stamina",
 					"H": "Wrecking Crew"
 				},
 				"baseStats": {
@@ -7751,7 +7758,7 @@
 					"Fighting"
 				],
 				"passives": [
-					"stamina"
+					"rockypayload"
 				],
 				"replaceAbilities": true
 			},
@@ -8665,7 +8672,7 @@
 			},
 			"dachsbun": {
 				"abilities": {
-					"0": "Well-Baked Body",
+					"0": "Sweet Veil",
 					"1": "Aroma Veil",
 					"H": "Friend Guard"
 				},
@@ -8681,7 +8688,7 @@
 					"Fairy"
 				],
 				"passives": [
-					"sweetveil"
+					"wellbakedbody"
 				],
 				"replaceAbilities": true
 			},
@@ -10032,8 +10039,8 @@
 			},
 			"drapion": {
 				"abilities": {
-					"0": "Razor Reach",
-					"1": "Withering Touch",
+					"0": "Battle Armor",
+					"1": "Sniper",
 					"H": "Crushing Venom",
 					"S": "Aevian Toxin"
 				},
@@ -10050,7 +10057,7 @@
 					"Dark"
 				],
 				"passives": [
-					"keeneye"
+					"poisontouch"
 				],
 				"replaceAbilities": true
 			},
@@ -11823,7 +11830,7 @@
 			"farigiraf": {
 				"abilities": {
 					"0": "Twin Appetite",
-					"1": "Armor Tail",
+					"1": "Twin Focus",
 					"H": "Royal Decree"
 				},
 				"baseStats": {
@@ -11839,7 +11846,7 @@
 					"Psychic"
 				],
 				"passives": [
-					"gluttony"
+					"armortail"
 				],
 				"replaceAbilities": true
 			},
@@ -12258,8 +12265,8 @@
 			"flareon": {
 				"abilities": {
 					"0": "Kindled Fury",
-					"1": "Fire Mane",
-					"H": "Drought"
+					"1": "Flame Body",
+					"H": "Adaptability"
 				},
 				"baseStats": {
 					"hp": 65,
@@ -12402,7 +12409,7 @@
 			"floetteeternal": {
 				"abilities": {
 					"0": "Symbiosis",
-					"1": "Magic Guard",
+					"1": "Natural Cure",
 					"H": "Lasting Promise"
 				},
 				"baseStats": {
@@ -12507,7 +12514,9 @@
 			},
 			"fluttermane": {
 				"abilities": {
-					"0": "Protosynthesis"
+					"0": "Infiltrator",
+					"1": "Prankster",
+					"H": "Levitate"
 				},
 				"baseStats": {
 					"hp": 55,
@@ -12521,7 +12530,9 @@
 					"Ghost",
 					"Fairy"
 				],
-				"passives": [],
+				"passives": [
+					"protosynthesis"
+				],
 				"replaceAbilities": true
 			},
 			"flygon": {
@@ -12792,7 +12803,9 @@
 					"Grass",
 					"Water"
 				],
-				"passives": [],
+				"passives": [
+					"owntempo"
+				],
 				"replaceAbilities": true
 			},
 			"froslassaevianmega": {
@@ -12802,16 +12815,18 @@
 				"baseStats": {
 					"hp": 70,
 					"atk": 80,
-					"def": 70,
+					"def": 80,
 					"spa": 140,
 					"spd": 100,
-					"spe": 140
+					"spe": 130
 				},
 				"types": [
 					"Grass",
 					"Water"
 				],
-				"passives": [],
+				"passives": [
+					"owntempo"
+				],
 				"replaceAbilities": true
 			},
 			"froslassmega": {
@@ -13603,7 +13618,9 @@
 					"Ground",
 					"Fairy"
 				],
-				"passives": [],
+				"passives": [
+					"stickyhold"
+				],
 				"replaceAbilities": true
 			},
 			"gastrodonazzy": {
@@ -13693,7 +13710,9 @@
 					"Ground",
 					"Fairy"
 				],
-				"passives": [],
+				"passives": [
+					"stickyhold"
+				],
 				"replaceAbilities": true
 			},
 			"genesect": {
@@ -14061,7 +14080,7 @@
 				"abilities": {
 					"0": "Permafrost",
 					"1": "Slush Rush",
-					"H": "Snow Warning",
+					"H": "Technician",
 					"S": "Mind Freeze"
 				},
 				"baseStats": {
@@ -14113,16 +14132,18 @@
 				"baseStats": {
 					"hp": 110,
 					"atk": 110,
-					"def": 100,
+					"def": 105,
 					"spa": 50,
-					"spd": 80,
-					"spe": 50
+					"spd": 85,
+					"spe": 40
 				},
 				"types": [
 					"Grass",
 					"Rock"
 				],
-				"passives": [],
+				"passives": [
+					"levitate"
+				],
 				"replaceAbilities": true
 			},
 			"glalieaevianmega": {
@@ -14131,17 +14152,19 @@
 				},
 				"baseStats": {
 					"hp": 110,
-					"atk": 155,
-					"def": 115,
-					"spa": 50,
-					"spd": 90,
-					"spe": 85
+					"atk": 135,
+					"def": 105,
+					"spa": 90,
+					"spd": 85,
+					"spe": 80
 				},
 				"types": [
 					"Grass",
 					"Rock"
 				],
-				"passives": [],
+				"passives": [
+					"levitate"
+				],
 				"replaceAbilities": true
 			},
 			"glaliemega": {
@@ -14310,7 +14333,9 @@
 					"Steel",
 					"Flying"
 				],
-				"passives": [],
+				"passives": [
+					"selfrepair"
+				],
 				"replaceAbilities": true
 			},
 			"glimmoraaevianmega": {
@@ -14329,7 +14354,9 @@
 					"Steel",
 					"Flying"
 				],
-				"passives": [],
+				"passives": [
+					"selfrepair"
+				],
 				"replaceAbilities": true
 			},
 			"glimmoramega": {
@@ -14613,7 +14640,9 @@
 					"Bug",
 					"Ground"
 				],
-				"passives": [],
+				"passives": [
+					"heatproof"
+				],
 				"replaceAbilities": true
 			},
 			"golisopodaevianmega": {
@@ -14632,7 +14661,9 @@
 					"Bug",
 					"Ground"
 				],
-				"passives": [],
+				"passives": [
+					"heatproof"
+				],
 				"replaceAbilities": true
 			},
 			"golisopodmega": {
@@ -14896,7 +14927,9 @@
 			},
 			"gougingfire": {
 				"abilities": {
-					"0": "Protosynthesis"
+					"0": "Pressure",
+					"1": "Flash Fire",
+					"H": "Turboblaze"
 				},
 				"baseStats": {
 					"hp": 105,
@@ -14910,7 +14943,9 @@
 					"Fire",
 					"Dragon"
 				],
-				"passives": [],
+				"passives": [
+					"protosynthesis"
+				],
 				"replaceAbilities": true
 			},
 			"gourgeist": {
@@ -15164,7 +15199,9 @@
 			},
 			"greattusk": {
 				"abilities": {
-					"0": "Protosynthesis"
+					"0": "Rolling Fortress",
+					"1": "Siege Tusks",
+					"H": "Battle Armor"
 				},
 				"baseStats": {
 					"hp": 115,
@@ -15178,7 +15215,9 @@
 					"Ground",
 					"Fighting"
 				],
-				"passives": [],
+				"passives": [
+					"protosynthesis"
+				],
 				"replaceAbilities": true
 			},
 			"greavard": {
@@ -15759,7 +15798,9 @@
 					"Fire",
 					"Dragon"
 				],
-				"passives": [],
+				"passives": [
+					"owntempo"
+				],
 				"replaceAbilities": true
 			},
 			"gyaradosaevianmega": {
@@ -15778,7 +15819,9 @@
 					"Fire",
 					"Dragon"
 				],
-				"passives": [],
+				"passives": [
+					"owntempo"
+				],
 				"replaceAbilities": true
 			},
 			"gyaradosmega": {
@@ -16398,7 +16441,7 @@
 					"Flying"
 				],
 				"passives": [
-					"stakeout"
+					"moxie"
 				],
 				"replaceAbilities": true
 			},
@@ -16681,7 +16724,7 @@
 			"hydreigon": {
 				"abilities": {
 					"0": "Dark Aura",
-					"1": "Worldbreaker",
+					"1": "Strings of Ruin",
 					"H": "False Liberation"
 				},
 				"baseStats": {
@@ -16990,8 +17033,8 @@
 			},
 			"inteleon": {
 				"abilities": {
-					"0": "Dual Wield",
-					"1": "Patient Marksman",
+					"0": "Infiltrator",
+					"1": "Rising Marksman",
 					"H": "Calculated Shot"
 				},
 				"baseStats": {
@@ -17012,7 +17055,7 @@
 			},
 			"inteleongmax": {
 				"abilities": {
-					"0": "High Noon"
+					"0": "Grand Marksman"
 				},
 				"baseStats": {
 					"hp": 105,
@@ -17032,7 +17075,9 @@
 			},
 			"ironboulder": {
 				"abilities": {
-					"0": "Quark Drive"
+					"0": "Justified",
+					"1": "Sharpness",
+					"H": "Rock Head"
 				},
 				"baseStats": {
 					"hp": 90,
@@ -17046,12 +17091,16 @@
 					"Rock",
 					"Psychic"
 				],
-				"passives": [],
+				"passives": [
+					"quarkdrive"
+				],
 				"replaceAbilities": true
 			},
 			"ironbundle": {
 				"abilities": {
-					"0": "Quark Drive"
+					"0": "Prankster",
+					"1": "Evil Santa",
+					"H": "Slush Rush"
 				},
 				"baseStats": {
 					"hp": 56,
@@ -17065,12 +17114,16 @@
 					"Ice",
 					"Water"
 				],
-				"passives": [],
+				"passives": [
+					"quarkdrive"
+				],
 				"replaceAbilities": true
 			},
 			"ironcrown": {
 				"abilities": {
-					"0": "Quark Drive"
+					"0": "Justified",
+					"1": "Sharpness",
+					"H": "Steelworker"
 				},
 				"baseStats": {
 					"hp": 90,
@@ -17084,12 +17137,16 @@
 					"Steel",
 					"Psychic"
 				],
-				"passives": [],
+				"passives": [
+					"quarkdrive"
+				],
 				"replaceAbilities": true
 			},
 			"ironhands": {
 				"abilities": {
-					"0": "Quark Drive"
+					"0": "Grit Grappler",
+					"1": "Sheer Force",
+					"H": "Iron Fist"
 				},
 				"baseStats": {
 					"hp": 154,
@@ -17103,12 +17160,16 @@
 					"Fighting",
 					"Electric"
 				],
-				"passives": [],
+				"passives": [
+					"quarkdrive"
+				],
 				"replaceAbilities": true
 			},
 			"ironjugulis": {
 				"abilities": {
-					"0": "Quark Drive"
+					"0": "Strings of Ruin",
+					"1": "False Liberation",
+					"H": "Mega Launcher"
 				},
 				"baseStats": {
 					"hp": 94,
@@ -17122,12 +17183,16 @@
 					"Dark",
 					"Flying"
 				],
-				"passives": [],
+				"passives": [
+					"quarkdrive"
+				],
 				"replaceAbilities": true
 			},
 			"ironleaves": {
 				"abilities": {
-					"0": "Quark Drive"
+					"0": "Justified",
+					"1": "Sharpness",
+					"H": "Mind's Eye"
 				},
 				"baseStats": {
 					"hp": 90,
@@ -17141,12 +17206,16 @@
 					"Grass",
 					"Psychic"
 				],
-				"passives": [],
+				"passives": [
+					"quarkdrive"
+				],
 				"replaceAbilities": true
 			},
 			"ironmoth": {
 				"abilities": {
-					"0": "Quark Drive"
+					"0": "Cinder Scales",
+					"1": "Dawn Herald",
+					"H": "Levitate"
 				},
 				"baseStats": {
 					"hp": 80,
@@ -17160,12 +17229,16 @@
 					"Fire",
 					"Poison"
 				],
-				"passives": [],
+				"passives": [
+					"quarkdrive"
+				],
 				"replaceAbilities": true
 			},
 			"ironthorns": {
 				"abilities": {
-					"0": "Quark Drive"
+					"0": "Sand Stream",
+					"1": "Mountain Hide",
+					"H": "Analytic"
 				},
 				"baseStats": {
 					"hp": 100,
@@ -17179,12 +17252,16 @@
 					"Rock",
 					"Electric"
 				],
-				"passives": [],
+				"passives": [
+					"quarkdrive"
+				],
 				"replaceAbilities": true
 			},
 			"irontreads": {
 				"abilities": {
-					"0": "Quark Drive"
+					"0": "Rolling Fortress",
+					"1": "Siege Tusks",
+					"H": "Speed Boost"
 				},
 				"baseStats": {
 					"hp": 90,
@@ -17198,12 +17275,16 @@
 					"Ground",
 					"Steel"
 				],
-				"passives": [],
+				"passives": [
+					"quarkdrive"
+				],
 				"replaceAbilities": true
 			},
 			"ironvaliant": {
 				"abilities": {
-					"0": "Quark Drive"
+					"0": "Void Veil",
+					"1": "Ruptured Heaven",
+					"H": "Download"
 				},
 				"baseStats": {
 					"hp": 74,
@@ -17217,7 +17298,9 @@
 					"Fairy",
 					"Fighting"
 				],
-				"passives": [],
+				"passives": [
+					"quarkdrive"
+				],
 				"replaceAbilities": true
 			},
 			"ivysaur": {
@@ -17375,7 +17458,7 @@
 				"abilities": {
 					"0": "Livewire",
 					"1": "Battery",
-					"H": "Electric Surge"
+					"H": "Adaptability"
 				},
 				"baseStats": {
 					"hp": 65,
@@ -17821,7 +17904,7 @@
 			},
 			"kingdra": {
 				"abilities": {
-					"0": "Swift Swim",
+					"0": "Damp",
 					"1": "Abyss Sniper",
 					"H": "Storm Drain"
 				},
@@ -17838,7 +17921,7 @@
 					"Dragon"
 				],
 				"passives": [
-					"waterveil"
+					"swiftswim"
 				],
 				"replaceAbilities": true
 			},
@@ -18142,7 +18225,9 @@
 					"Dragon",
 					"Poison"
 				],
-				"passives": [],
+				"passives": [
+					"owntempo"
+				],
 				"replaceAbilities": true
 			},
 			"kommoototem": {
@@ -18512,8 +18597,8 @@
 					"hp": 125,
 					"atk": 58,
 					"def": 88,
-					"spa": 116,
-					"spd": 106,
+					"spa": 106,
+					"spd": 96,
 					"spe": 67
 				},
 				"types": [
@@ -18535,8 +18620,8 @@
 					"hp": 125,
 					"atk": 58,
 					"def": 88,
-					"spa": 116,
-					"spd": 106,
+					"spa": 106,
+					"spd": 96,
 					"spe": 67
 				},
 				"types": [
@@ -18610,7 +18695,9 @@
 					"Rock",
 					"Psychic"
 				],
-				"passives": [],
+				"passives": [
+					"owntempo"
+				],
 				"replaceAbilities": true
 			},
 			"laprasazzy": {
@@ -18777,7 +18864,7 @@
 				"abilities": {
 					"0": "Verdant Edge",
 					"1": "Regenerator",
-					"H": "Grassy Surge"
+					"H": "Technician"
 				},
 				"baseStats": {
 					"hp": 65,
@@ -20094,9 +20181,9 @@
 			},
 			"magneton": {
 				"abilities": {
-					"0": "Paradox Pull",
+					"0": "Magnet Pull",
 					"1": "Elevate",
-					"H": "Hydra Bond"
+					"H": "Analytic"
 				},
 				"baseStats": {
 					"hp": 70,
@@ -20110,7 +20197,9 @@
 					"Electric",
 					"Steel"
 				],
-				"passives": [],
+				"passives": [
+					"hydrabond"
+				],
 				"replaceAbilities": true
 			},
 			"magnezone": {
@@ -20644,9 +20733,9 @@
 			},
 			"maushold": {
 				"abilities": {
-					"0": "Friend Guard",
+					"0": "Technician",
 					"1": "Cheek Pouch",
-					"H": "Technician"
+					"H": "Hospitality"
 				},
 				"baseStats": {
 					"hp": 74,
@@ -20660,15 +20749,15 @@
 					"Normal"
 				],
 				"passives": [
-					"runaway"
+					"friendguard"
 				],
 				"replaceAbilities": true
 			},
 			"mausholdfour": {
 				"abilities": {
-					"0": "Friend Guard",
+					"0": "Technician",
 					"1": "Cheek Pouch",
-					"H": "Technician"
+					"H": "Hospitality"
 				},
 				"baseStats": {
 					"hp": 74,
@@ -20682,7 +20771,7 @@
 					"Normal"
 				],
 				"passives": [
-					"runaway"
+					"friendguard"
 				],
 				"replaceAbilities": true
 			},
@@ -22104,7 +22193,9 @@
 					"Ghost",
 					"Grass"
 				],
-				"passives": [],
+				"passives": [
+					"owntempo"
+				],
 				"replaceAbilities": true
 			},
 			"mismagiusmega": {
@@ -26817,7 +26908,9 @@
 			},
 			"ragingbolt": {
 				"abilities": {
-					"0": "Protosynthesis"
+					"0": "Pressure",
+					"1": "Volt Absorb",
+					"H": "Transistor"
 				},
 				"baseStats": {
 					"hp": 125,
@@ -26831,7 +26924,9 @@
 					"Electric",
 					"Dragon"
 				],
-				"passives": [],
+				"passives": [
+					"protosynthesis"
+				],
 				"replaceAbilities": true
 			},
 			"raichu": {
@@ -27529,8 +27624,9 @@
 			},
 			"revavroom": {
 				"abilities": {
-					"0": "Overcoat",
-					"H": "Filter"
+					"0": "Filter",
+					"1": "Motor Drive",
+					"H": "Reckless"
 				},
 				"baseStats": {
 					"hp": 80,
@@ -27545,7 +27641,7 @@
 					"Poison"
 				],
 				"passives": [
-					"soundproof"
+					"overcoat"
 				],
 				"replaceAbilities": true
 			},
@@ -27578,11 +27674,11 @@
 				},
 				"baseStats": {
 					"hp": 110,
-					"atk": 140,
-					"def": 130,
-					"spa": 35,
-					"spd": 75,
-					"spe": 60
+					"atk": 130,
+					"def": 125,
+					"spa": 45,
+					"spd": 60,
+					"spe": 50
 				},
 				"types": [
 					"Ground",
@@ -27682,7 +27778,7 @@
 			"rillaboom": {
 				"abilities": {
 					"0": "Primal Rhythm",
-					"1": "Drum Guard",
+					"1": "Rising Rhythm",
 					"H": "Grassy Surge"
 				},
 				"baseStats": {
@@ -27703,7 +27799,7 @@
 			},
 			"rillaboomgmax": {
 				"abilities": {
-					"0": "Forest Surge"
+					"0": "Grand Rhythm"
 				},
 				"baseStats": {
 					"hp": 150,
@@ -27743,7 +27839,9 @@
 			},
 			"roaringmoon": {
 				"abilities": {
-					"0": "Protosynthesis"
+					"0": "Intimidate",
+					"1": "Free Flight",
+					"H": "Strong Jaw"
 				},
 				"baseStats": {
 					"hp": 105,
@@ -27757,7 +27855,9 @@
 					"Dragon",
 					"Dark"
 				],
-				"passives": [],
+				"passives": [
+					"protosynthesis"
+				],
 				"replaceAbilities": true
 			},
 			"rockruff": {
@@ -27921,7 +28021,9 @@
 					"Ground",
 					"Fighting"
 				],
-				"passives": [],
+				"passives": [
+					"poisonpoint"
+				],
 				"replaceAbilities": true
 			},
 			"roserademega": {
@@ -28666,7 +28768,9 @@
 			},
 			"sandyshocks": {
 				"abilities": {
-					"0": "Protosynthesis"
+					"0": "Magnet Pull",
+					"1": "Hydra Bond",
+					"H": "Sand Force"
 				},
 				"baseStats": {
 					"hp": 85,
@@ -28680,7 +28784,9 @@
 					"Electric",
 					"Ground"
 				],
-				"passives": [],
+				"passives": [
+					"protosynthesis"
+				],
 				"replaceAbilities": true
 			},
 			"sawk": {
@@ -29187,7 +29293,9 @@
 			},
 			"screamtail": {
 				"abilities": {
-					"0": "Protosynthesis"
+					"0": "Competitive",
+					"1": "Friend Guard",
+					"H": "Intimidate"
 				},
 				"baseStats": {
 					"hp": 115,
@@ -29201,7 +29309,9 @@
 					"Fairy",
 					"Psychic"
 				],
-				"passives": [],
+				"passives": [
+					"protosynthesis"
+				],
 				"replaceAbilities": true
 			},
 			"scyther": {
@@ -30922,7 +31032,9 @@
 			},
 			"slitherwing": {
 				"abilities": {
-					"0": "Protosynthesis"
+					"0": "Cinder Scales",
+					"1": "Overcoat",
+					"H": "Tough Claws"
 				},
 				"baseStats": {
 					"hp": 85,
@@ -30936,7 +31048,9 @@
 					"Bug",
 					"Fighting"
 				],
-				"passives": [],
+				"passives": [
+					"protosynthesis"
+				],
 				"replaceAbilities": true
 			},
 			"slowbro": {
@@ -31032,7 +31146,7 @@
 			"slowkinggalar": {
 				"abilities": {
 					"0": "Neutralization",
-					"1": "Telepathy",
+					"1": "Own Tempo",
 					"H": "Regenerator"
 				},
 				"baseStats": {
@@ -31361,7 +31475,9 @@
 					"Fighting",
 					"Fairy"
 				],
-				"passives": [],
+				"passives": [
+					"keeneye"
+				],
 				"replaceAbilities": true
 			},
 			"snivy": {
@@ -32108,7 +32224,7 @@
 			},
 			"starmie": {
 				"abilities": {
-					"0": "Illuminate",
+					"0": "Cosmic Analysis",
 					"1": "Natural Cure",
 					"H": "Victory Star"
 				},
@@ -32125,7 +32241,7 @@
 					"Psychic"
 				],
 				"passives": [
-					"analytic"
+					"illuminate"
 				],
 				"replaceAbilities": true
 			},
@@ -32817,7 +32933,7 @@
 				"abilities": {
 					"0": "Competitive",
 					"1": "Soothing Presence",
-					"H": "Fairy Aura"
+					"H": "Aroma Veil"
 				},
 				"baseStats": {
 					"hp": 95,
@@ -34239,7 +34355,7 @@
 					"Fighting"
 				],
 				"passives": [
-					"limber"
+					"anticipation"
 				],
 				"replaceAbilities": true
 			},
@@ -34810,8 +34926,8 @@
 			},
 			"tyranitar": {
 				"abilities": {
-					"0": "Mountain Hide",
-					"1": "Mountainbreaker",
+					"0": "Earth Eater",
+					"1": "Battle Armor",
 					"H": "Dread Presence"
 				},
 				"baseStats": {
@@ -35275,7 +35391,7 @@
 				"abilities": {
 					"0": "Tidal Wave",
 					"1": "Marvel Scale",
-					"H": "Drizzle"
+					"H": "Adaptability"
 				},
 				"baseStats": {
 					"hp": 130,
@@ -36281,7 +36397,9 @@
 				"types": [
 					"Flying"
 				],
-				"passives": [],
+				"passives": [
+					"bigpecks"
+				],
 				"replaceAbilities": true
 			},
 			"volkraken": {
@@ -36513,7 +36631,9 @@
 			},
 			"walkingwake": {
 				"abilities": {
-					"0": "Protosynthesis"
+					"0": "Pressure",
+					"1": "Water Veil",
+					"H": "Swift Swim"
 				},
 				"baseStats": {
 					"hp": 99,
@@ -36527,7 +36647,9 @@
 					"Water",
 					"Dragon"
 				],
-				"passives": [],
+				"passives": [
+					"protosynthesis"
+				],
 				"replaceAbilities": true
 			},
 			"walrein": {
@@ -38040,7 +38162,7 @@
 				"name": "Abyssal Claws",
 				"num": 11333,
 				"gen": 9,
-				"desc": "Tough Claws boosts contact moves once. Water attacks receive ordinary 1.5x STAB without adding Water typing or stacking another STAB bonus if already Water-type. Incoming Fire, Water, Ice and Steel attacks receive one extra resistance factor. Does not add Water weaknesses or lower Speed.",
+				"desc": "Tough Claws boosts contact moves once. Water attacks receive ordinary 1.5x STAB without adding Water typing or stacking another STAB bonus if already Water-type. Incoming Fire, Water, Ice and Steel attacks receive one extra resistance factor.",
 				"shortDesc": "Tough Claws; Water STAB; halves Fire, Water, Ice and Steel damage.",
 				"rating": 4,
 				"flags": {},
@@ -38160,8 +38282,8 @@
 				"name": "Adaptive Core",
 				"num": 10417,
 				"gen": 9,
-				"desc": "On entry, it compares the opposing side's combined Defense and Special Defense. If Defense is lower, its Attack rises; otherwise its Special Attack rises. Its first damaging move after switching in is a critical hit. On entry, it compares the opposing side's combined Attack and Special Attack. If Attack is higher or tied, its Defense rises; otherwise its Special Defense rises. Its moves cannot miss. Heals 1/16 max HP each turn and ignores sandstorm and hail damage. Switching out cures major status and heals 1/8 max HP only if a status was cured. Bewitched Woods cures status at turn end without this extra heal.",
-				"shortDesc": "First damaging move crits; moves cannot miss.",
+				"desc": "Download grants an attacking-stat boost on entry and a critical hit on its first damaging move. Defragment grants a defensive-stat boost on entry and makes its moves unable to miss. Retains their field effects.",
+				"shortDesc": "Download + Defragment.",
 				"rating": 5,
 				"flags": {
 					"breakable": 1
@@ -38288,7 +38410,7 @@
 				"name": "Aevian Grief",
 				"num": 10415,
 				"gen": 9,
-				"desc": "Opposing status moves that check accuracy have 50% base accuracy. On Rainbow Field, opposing status moves fail their accuracy check. Airborne: immune to Ground attacks, Spikes, Toxic Spikes, Sticky Web and Arena Trap unless grounded. Thousand Arrows can still hit. Prevents indirect damage; HP costs, Pain Split, confusion and Struggle recoil still apply. Fairy Tale entry gives +1 Sp. Def. Damaging attacks have a 30% chance to be disabled, guaranteed on Haunted and disabled on Holy Field. Excludes Max moves, delayed attacks and Struggle. On fainting, curses all active foes.",
+				"desc": "Opposing status moves that check accuracy have 50% base accuracy. On Rainbow Field, opposing status moves fail their accuracy check. Airborne: immune to Ground attacks, Spikes, Toxic Spikes, Sticky Web and Arena Trap unless grounded. Thousand Arrows can still hit. Prevents indirect damage; HP costs, Pain Split, confusion and Struggle recoil still apply. Fairy Tale entry gives +1 Sp. Def. Damaging attacks have a 30% chance to be disabled, guaranteed on Haunted and disabled on Holy Field. Excludes Max moves, delayed attacks and Struggle. On fainting, active foes are cursed for two end-of-turn ticks of 1/8 max HP each, then the curse ends.",
 				"shortDesc": "Opposing status moves that check accuracy have 50% base accuracy.",
 				"rating": 5,
 				"flags": {
@@ -38517,8 +38639,8 @@
 				"name": "Verdant Crown",
 				"num": 10024,
 				"gen": 9,
-				"desc": "Pollen Bloom supplies Thick Fat and Unaware: Fire and Ice attacks use half the attacking stat; ignores opposing stat stages through local Unaware and reveals Illusions on entry. Each turn, drains 1/16 base max HP from non-Grass foes and heals the damage actually dealt; Grass immunities apply, and type effectiveness scales this only in Free-for-All. Self-Sufficient independently heals 1/16 max HP each turn and prevents sandstorm and hail damage. Friend Guard reduces attack damage to allies by 25%, without protecting the holder. Fairy Tale, New World, Cold Eclipse and Starlight Arena entry grant +1 Defense and Sp. Def; the latter three give 1.5x move power.",
-				"shortDesc": "Pollen Bloom + Self-Sufficient + Friend Guard; field bonuses.",
+				"desc": "Pollen Bloom supplies Thick Fat and Unaware: Fire and Ice attacks use half the attacking stat; ignores opposing stat stages through local Unaware and reveals Illusions on entry. Each turn, drains 1/16 base max HP from non-Grass foes and heals the damage actually dealt; Grass immunities apply, and type effectiveness scales this only in Free-for-All. Friend Guard reduces attack damage to allies by 25%, without protecting the holder. Fairy Tale, New World, Cold Eclipse and Starlight Arena entry grant +1 Defense and Sp. Def; the latter three give 1.5x move power.",
+				"shortDesc": "Pollen Bloom + Friend Guard; field bonuses.",
 				"rating": 4.5,
 				"flags": {
 					"breakable": 1
@@ -38529,8 +38651,8 @@
 				"name": "Ange",
 				"num": 10130,
 				"gen": 9,
-				"desc": "Full local Fairy Aura.",
-				"shortDesc": "Fairy Aura.",
+				"desc": "Full local Fairy Aura. Once per turn, after its single-target Fairy attack damages an opposing Pokemon's HP, its flower strikes the same target at 25% damage. The extra hit does not repeat move secondary effects or user effects. Uses the original accuracy check and one PP. No follow-up for misses, immunity, fully blocked attacks, Substitute-only damage, spread moves, existing multi-hit moves, charging or delayed attacks, OHKO moves, Z/Max moves or moves barred from extra hits. Never transfers to another target. Switching or regaining the ability does not refresh its use within the same turn. Normal recoil, drain and defensive reactions still apply.",
+				"shortDesc": "Fairy Aura. Once per turn, single-target Fairy attacks gain a 25%-power flower strike.",
 				"rating": 5,
 				"flags": {},
 				"isNonstandard": null
@@ -38569,7 +38691,7 @@
 				"name": "Antlion Instinct",
 				"num": 11462,
 				"gen": 9,
-				"desc": "Sheer Force. Bug attacks receive ordinary 1.5x STAB, without stacking extra STAB if already Bug-type. Incoming Grass, Ground and Fighting attacks receive one extra resistance factor, once regardless of defensive typing. No Bug typing or weaknesses are added.",
+				"desc": "Sheer Force. Bug attacks receive ordinary 1.5x STAB, without stacking extra STAB if already Bug-type. Incoming Grass, Ground and Fighting attacks receive one extra resistance factor, once regardless of defensive typing.",
 				"shortDesc": "Sheer Force; Bug STAB; one extra Grass, Ground and Fighting resistance.",
 				"rating": 4,
 				"flags": {},
@@ -38716,8 +38838,8 @@
 				"name": "Armor Tail",
 				"num": 296,
 				"gen": 9,
-				"desc": "Priority moves used by opposing Pokemon targeting it or its allies are prevented from having an effect.",
-				"shortDesc": "It and its allies are protected from opposing priority moves.",
+				"desc": "Protects its side from opposing priority moves. Takes 20% less attack damage; only the strongest ability/passive or Mist, Safeguard and Lucky Chant reduction applies. The damage reduction is inactive on New World, Dragon’s Den, Mountain, Holy, Haunted, Starlight Arena, Snowy Mountain and Flower Garden. Fairy Tale entry still raises Defense and Sp. Def by 1.",
+				"shortDesc": "Blocks opposing priority moves for allies; takes 20% less attack damage.",
 				"rating": 2.5,
 				"flags": {
 					"breakable": 1
@@ -38854,8 +38976,8 @@
 				"name": "Astral Witchcraft",
 				"num": 10034,
 				"gen": 9,
-				"desc": "Levitate grants Ground immunity and airborne benefits unless grounded. Magic Guard prevents indirect damage under its normal rules. Void Guile provides Magician item theft and Infiltrator screen, Substitute, Safeguard and Mist bypass. Entry grants +1 Sp. Atk on Fairy Tale, Bewitched Woods, Haunted, Misty or New World; on Psychic, incoming status moves with numeric accuracy use 50 accuracy. Its separate Fairy Tale and New World entry bonus grants another +1 Sp. Atk and +1 Sp. Def.",
-				"shortDesc": "Levitate + Magic Guard + Void Guile (Magician + Infiltrator).",
+				"desc": "Immune to Ground moves while airborne. Prevents indirect damage and doubles secondary-effect chances. Fairy Tale entry raises Sp. Def by 1.",
+				"shortDesc": "Levitate + Magic Guard + Serene Grace.",
 				"rating": 5,
 				"flags": {
 					"breakable": 1
@@ -39195,7 +39317,7 @@
 				"name": "Beyond Fear",
 				"num": 10564,
 				"gen": 9,
-				"desc": "Immune to flinching and opposing Taunt. Does not prevent Intimidate or other stat drops and does not raise defenses in response. When supplied as a species passive, remains active through selected-ability suppression.",
+				"desc": "Immune to flinching and opposing Taunt. Does not prevent Intimidate or other stat drops and does not raise defenses in response.",
 				"shortDesc": "Immune to flinching and opposing Taunt.",
 				"rating": 3,
 				"flags": {
@@ -39433,8 +39555,8 @@
 				"name": "Breaking News",
 				"num": 12014,
 				"gen": 9,
-				"desc": "Forewarn: scans each foe on entry and every opposing switch-in, reveals a strongest attack and removes Illusion. Takes 20% less move damage, or 25% less from the latest warned attack; these reductions do not stack. Successful reveals on Psychic Terrain grant +2 Sp. Atk. Successful opposing status moves expose their user through the following turn. The reporter and adjacent allies ignore exposed foes' positive defensive stages; the reporter's Psychic/Fairy attacks also gain 25% power. An exposed foe switching out clears its mark; leaving ends that reporter's marks.",
-				"shortDesc": "Forewarn; exposes status users: bypass their defensive boosts; Psychic/Fairy gains 25%.",
+				"desc": "Forewarn: scans each foe on entry and every opposing switch-in, reveals a strongest attack and removes Illusion. Takes 20% less move damage, or 25% less from the latest warned attack; these reductions do not stack. Successful reveals on Psychic Terrain grant +2 Sp. Atk. Successful opposing status moves expose their user through the following turn. The reporter and adjacent allies ignore exposed foes' positive defensive stages. An exposed foe switching out clears its mark; leaving ends that reporter's marks.",
+				"shortDesc": "Forewarn; exposes status users so it and adjacent allies bypass their defensive boosts.",
 				"rating": 4,
 				"flags": {},
 				"isNonstandard": null
@@ -39517,8 +39639,8 @@
 				"name": "Burning Crown",
 				"num": 10023,
 				"gen": 9,
-				"desc": "On entry, lowers adjacent foes Attack by 1 under normal Intimidate rules. Unbound Blaze converts eligible Normal moves to Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Prevents freezing outside Cold Eclipse and cures freeze; incoming Water and Ice attacks use half the offensive stat. Dragon's Den and Infernal Eclipse block Fire moves. Dragon's Den, Volcanic and Infernal Eclipse entry give +1 Defense and Sp. Def. At turn end, foes take Fire damage of 1/16 base max HP, doubled if burned or the holder used Fire/Dragon that turn. Fire immunities apply; effectiveness scales chip only in Free-for-All. Self-Sufficient heals 1/16 max HP each turn and prevents sandstorm/hail damage. Levitate grants normal airborne Ground and grounded-hazard protection. Has one 20% attack-damage reduction. New World, Cold Eclipse and Starlight Arena retain 1.5x move power.",
-				"shortDesc": "Intimidate + Unbound Blaze + Self-Sufficient + Levitate.",
+				"desc": "On entry, lowers adjacent foes Attack by 1 under normal Intimidate rules. Unbound Blaze converts eligible Normal moves to Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Prevents freezing outside Cold Eclipse and cures freeze; incoming Water and Ice attacks use half the offensive stat. Dragon's Den and Infernal Eclipse block Fire moves. Dragon's Den, Volcanic and Infernal Eclipse entry give +1 Defense and Sp. Def. At turn end, foes take Fire damage of 1/16 base max HP, doubled if burned or the holder used Fire/Dragon that turn. Fire immunities apply; effectiveness scales chip only in Free-for-All. Levitate grants normal airborne Ground and grounded-hazard protection. Has one 20% attack-damage reduction. New World, Cold Eclipse and Starlight Arena retain 1.5x move power.",
+				"shortDesc": "Intimidate + Unbound Blaze + Levitate.",
 				"rating": 4.5,
 				"flags": {
 					"breakable": 1
@@ -39539,8 +39661,8 @@
 				"name": "Burning Quake",
 				"num": 11456,
 				"gen": 9,
-				"desc": "Physical attacks deal 1.3x damage to Dragon types. Raises the critical-hit ratio by 1 stage. Once per turn, after a move finishes landing a critical hit that damages an opponent’s HP, raises the user’s Speed by 1 stage. Multi-hit and spread moves trigger once. Ally and Substitute-only damage do not qualify. The user must survive the move.",
-				"shortDesc": "Physical hits deal 1.3x to Dragons. +1 crit ratio; damaging crits grant +1 Speed once per turn.",
+				"desc": "Raises the critical-hit ratio by 1 stage. Physical attacks deal 1.3× damage to Dragon-type targets.",
+				"shortDesc": "Super Luck; physical attacks deal 1.3× damage to Dragons.",
 				"rating": 3.5,
 				"flags": {},
 				"isNonstandard": null
@@ -39549,7 +39671,7 @@
 				"name": "Burning Rage",
 				"num": 10349,
 				"gen": 9,
-				"desc": "Brute Force (Reckless + Rock Head), Iron Fist and Mold Breaker. Proficient: damaging same-type moves have 1.3x power. Brute Force: recoil and crash moves, Explosion, Self-Destruct and Misty Explosion have 1.2x power; Struggle is excluded. On Chessboard, all moves gain a further 1.2x power. Prevents move recoil except Struggle; crash and Life Orb damage still apply. Iron Fist: punching moves have 1.4x power. Mold Breaker: moves ignore bypassable opposing abilities.",
+				"desc": "Brute Force (Reckless + Rock Head), Iron Fist and Mold Breaker.Proficient: damaging same-type moves have 1.3x power.Brute Force: recoil and crash moves, Explosion, Self-Destruct and Misty Explosion have 1.2x power; Struggle is excluded. On Chessboard, all moves gain a further 1.2x power. Prevents move recoil except Struggle; crash and Life Orb damage still apply. Iron Fist: punching moves have 1.4x power. Mold Breaker: moves ignore bypassable opposing abilities.",
 				"shortDesc": "Brute Force (Reckless + Rock Head), Iron Fist, Mold Breaker and Proficient.",
 				"rating": 4,
 				"flags": {},
@@ -39605,8 +39727,8 @@
 				"name": "Calculated Shot",
 				"num": 10590,
 				"gen": 9,
-				"desc": "Damaging Water moves gain +1 critical-hit stage and always use the highest normal damage roll. Does not increase fixed damage or bypass accuracy checks. Frisk reveals opposing Illusions (including itemless foes), reveals held items and independently has a 30% chance to Embargo each opposing item holder for 5 turns.",
-				"shortDesc": "Water attacks gain +1 critical-hit stage and the highest normal damage roll.",
+				"desc": "Frisk reveals opposing Illusions and items and may Embargo item holders. Damaging Water moves gain +1 critical-hit stage and use the highest normal damage roll.",
+				"shortDesc": "Frisk; Water attacks gain +1 critical-hit stage and maximum damage rolls.",
 				"rating": 4,
 				"flags": {},
 				"isNonstandard": null
@@ -40182,6 +40304,16 @@
 				"flags": {},
 				"isNonstandard": null
 			},
+			"cosmicanalysis": {
+				"name": "Cosmic Analysis",
+				"num": 32502,
+				"gen": 9,
+				"desc": "Attacks gain 30% power after all other active Pokemon have acted. On entry, raises Attack if foes have lower combined Defense, otherwise Sp. Atk. Its first damaging move each entry is a critical hit. Retains Download’s field bonuses.",
+				"shortDesc": "Analytic + Download.",
+				"rating": 4,
+				"flags": {},
+				"isNonstandard": null
+			},
 			"costar": {
 				"name": "Costar",
 				"num": 294,
@@ -40408,8 +40540,8 @@
 				"name": "Cursed Body",
 				"num": 130,
 				"gen": 5,
-				"desc": "Damaging attacks have a 30% chance to be disabled, guaranteed on Haunted and disabled on Holy Field. Excludes Max moves, delayed attacks and Struggle. On fainting, curses all active foes.",
-				"shortDesc": "30% chance to disable attacks; curses foes on faint.",
+				"desc": "Damaging attacks have a 30% chance to be disabled, guaranteed on Haunted and disabled on Holy Field. Excludes Max moves, delayed attacks and Struggle. On fainting, active foes are cursed for two end-of-turn ticks of 1/8 max HP each, then the curse ends.",
+				"shortDesc": "30% chance to disable attacks; on faint, two 1/8-HP curse ticks.",
 				"rating": 2,
 				"flags": {},
 				"isNonstandard": null
@@ -40428,7 +40560,7 @@
 				"name": "Cursed Keepsake",
 				"num": 10131,
 				"gen": 9,
-				"desc": "Once per entry, an opposing attack damaging its HP curses its surviving attacker if not already cursed. Its ability-applied Curse deals 1/8 max HP per turn. Cursed opponents deal 20% less attack damage. While active, heals half the actual damage its own Curse causes. No field creation.",
+				"desc": "Once per entry, an opposing attack damaging its HP curses its surviving attacker if not already cursed. Its ability-applied Curse deals 1/8 max HP per turn. Cursed opponents deal 20% less attack damage. While active, heals half the actual damage its own Curse causes.",
 				"shortDesc": "Once per entry: curses an attacker. Cursed foes deal 20% less; own Curse heals.",
 				"rating": 3,
 				"flags": {},
@@ -40438,7 +40570,7 @@
 				"name": "Cursed Marionette",
 				"num": 10104,
 				"gen": 9,
-				"desc": "The first successful status move against each opponent per entry also curses it if not already cursed. Ability-applied Curse deals 1/8 max HP per turn without an HP cost. Attacks have 1.3x power against cursed foes. Failed, reflected, protected and immune status moves do not trigger it. No field creation. Prankster comes from its passive.",
+				"desc": "Once per entry per foe, a successful status move curses that foe. This Curse deals 1/8 max HP each turn. Attacks deal 1.3x damage to cursed foes.",
 				"shortDesc": "First successful status move per foe each entry curses it; 1.3x damage to cursed foes.",
 				"rating": 4,
 				"flags": {},
@@ -40686,8 +40818,8 @@
 				"name": "Desert Shell",
 				"num": 10267,
 				"gen": 9,
-				"desc": "Multi-hit moves always use their maximum hit count and have 1.5x power. Moves that normally check accuracy per hit check only once. Incoming Fire attacks use half the attacker's offensive stat. Burn damage is halved. On entry, summons sandstorm for 5 turns, or 8 with Smooth Rock. Multi-hit moves always hit the maximum number of times and have 1.5x power. Damage from Fire-type moves and burns is halved. Summons sandstorm on entry.",
-				"shortDesc": "1.5x multi-hit power; Half Fire attacking stats and burn damage; Summons sandstorm on entry.",
+				"desc": "Combines Skill Link and Sand Stream, including their field effects.",
+				"shortDesc": "Skill Link + Sand Stream.",
 				"rating": 5,
 				"flags": {
 					"breakable": 1
@@ -40915,7 +41047,7 @@
 				"name": "Dread Dominion",
 				"num": 11452,
 				"gen": 9,
-				"desc": "Hydra Bond and Moxie. Intimidate lowers adjacent foes' Attack by 1 on entry, respecting Substitute and normal Intimidate protections. Does not change Dark/Fairy type matchups.",
+				"desc": "Hydra Bond and Moxie. Intimidate lowers adjacent foes' Attack by 1 on entry, respecting Substitute and normal Intimidate protections.",
 				"shortDesc": "Hydra Bond, Moxie and Intimidate.",
 				"rating": 5,
 				"flags": {},
@@ -40947,8 +41079,8 @@
 				"name": "Dread Presence",
 				"num": 10541,
 				"gen": 9,
-				"desc": "Blocks opposing Berries and field Seeds. On Cold Eclipse entry, lowers opposing Speed. Its Dark attacks gain 30% power against foes at half HP or less.",
-				"shortDesc": "Unnerve; Dark attacks gain 30% power against foes at half HP or less.",
+				"desc": "Boosts everyone’s Dark attacks with Dark Aura; Aura Break reverses that boost. Prevents opposing Berries and field Seeds from activating. Retains Unnerve’s Cold Eclipse entry effect.",
+				"shortDesc": "Dark Aura + Unnerve.",
 				"rating": 4,
 				"flags": {},
 				"isNonstandard": null
@@ -41175,8 +41307,8 @@
 				"name": "Echo Fiend",
 				"num": 10006,
 				"gen": 9,
-				"desc": "It is immune to sound moves, and this immunity cannot be suppressed. Its sound moves become Flying type and have 1.5x power. Its side is immune to its own damaging sound-based moves.",
-				"shortDesc": "Unsuppressible sound immunity; sound -> Flying 1.5x; allies avoid own sound damage.",
+				"desc": "It is immune to sound moves, and this immunity cannot be suppressed. Its sound moves become Flying type and have 1.2x power (1.5x on Mountain, Snowy Mountain, Cave, Volcanic and Crystal Cavern). Its side is immune to its own damaging sound-based moves.",
+				"shortDesc": "Soundproof; sound attacks change type and gain 1.2x power; protects allies from sound.",
 				"rating": 4,
 				"flags": {
 					"cantsuppress": 1
@@ -41187,7 +41319,7 @@
 				"name": "Echo Sense",
 				"num": 11094,
 				"gen": 9,
-				"desc": "It is immune to sound moves, and this immunity cannot be suppressed. Its sound moves become Flying type and have 1.5x power. Its side is immune to its own damaging sound-based moves. On entry, reveals all opposing active Illusions and held items. Each item holder independently has a 30% chance to be Embargoed for 5 turns. Avoids allied damaging moves. Speed doubles on Psychic Terrain or Psychic Aura. Moves bypass Substitute, Reflect, Light Screen, Aurora Veil, Safeguard and Mist.",
+				"desc": "It is immune to sound moves, and this immunity cannot be suppressed. Its sound moves become Flying type and have 1.2x power (1.5x on Mountain, Snowy Mountain, Cave, Volcanic and Crystal Cavern). Its side is immune to its own damaging sound-based moves. On entry, reveals all opposing active Illusions and held items. Each item holder independently has a 30% chance to be Embargoed for 5 turns. Avoids allied damaging moves. Speed doubles on Psychic Terrain or Psychic Aura. Moves bypass Substitute, Reflect, Light Screen, Aurora Veil, Safeguard and Mist.",
 				"shortDesc": "Allies avoid own sound damage; 30% chance of 5-turn Embargo; double Speed on Psychic field/aura.",
 				"rating": 5,
 				"flags": {
@@ -41212,7 +41344,7 @@
 				"name": "Eclipse Vision",
 				"num": 10153,
 				"gen": 9,
-				"desc": "Special Attack is multiplied by 1.3. Its first move slot sets its opening type if Psychic or Dark, and later Psychic- or Dark-type moves change it to that type. Psychic typing restores 1/8 base max HP at turn end; Dark typing restores HP equal to 1/4 damage dealt. Species-passive effects remain separate from the selected ability and do not double when copied into that slot.",
+				"desc": "Special Attack is multiplied by 1.3. Its first move slot sets its opening type if Psychic or Dark, and later Psychic- or Dark-type moves change it to that type. Psychic typing restores 1/8 base max HP at turn end; Dark typing restores HP equal to 1/4 damage dealt.",
 				"shortDesc": "SpA 1.3x; opening Psychic/Dark type; moves switch type; Psychic heals, Dark drains.",
 				"rating": 4,
 				"flags": {
@@ -41376,7 +41508,7 @@
 				"name": "Emperor's Resolve",
 				"num": 10041,
 				"gen": 9,
-				"desc": "Includes full local Swift Swim and Competitive. Flying moves receive STAB. Proficient remains its separate species passive.",
+				"desc": "Includes full local Swift Swim and Competitive. Flying moves receive STAB.",
 				"shortDesc": "Swift Swim + Flying STAB + Competitive.",
 				"rating": 4,
 				"flags": {
@@ -41478,12 +41610,10 @@
 				"name": "Evergreen",
 				"num": 11285,
 				"gen": 9,
-				"desc": "Overcoat + Ripen: immune to powder moves and sandstorm/hail damage; doubles applicable Berry effects and positive held-Seed stat boosts. Seed stat drops and other effects are unchanged.",
-				"shortDesc": "Overcoat + Ripen.",
-				"rating": 4,
-				"flags": {
-					"breakable": 1
-				},
+				"desc": "At turn end with an empty item slot, has a 50% chance to restore its last consumed Berry or field Seed. Guaranteed in hail or snow instead of sun.",
+				"shortDesc": "Restores a consumed Berry or field Seed: 50% each turn, guaranteed in hail/snow.",
+				"rating": 3,
+				"flags": {},
 				"isNonstandard": null
 			},
 			"evilsanta": {
@@ -41522,8 +41652,8 @@
 				"name": "Expiration",
 				"num": 11980,
 				"gen": 9,
-				"desc": "Full local Worldbreaker and Controlled Fury. Berserk raises Attack and Sp. Atk by 1 after surviving a move crossing half HP, or only Sp. Atk by 2 on Dragon’s Den. Entering Dragon’s Den grants +1 Sp. Atk. Duskilate converts Normal moves to Dark with its normal power and field effects. Each damaging hit independently has a 30% chance (50% on Dragon’s Den) to double base power; Fickle Beam uses only its own all-out roll. The first damaging hit received each entry raises Attack by 1; surviving a critical hit instead maximizes Attack. Outrage, Thrash, Petal Dance and Raging Fury cause no rampage lock or ending confusion. Existing confusion and other move locks remain unchanged.",
-				"shortDesc": "Worldbreaker + Controlled Fury.",
+				"desc": "Full local Strings of Ruin and Controlled Fury. Berserk raises Attack and Sp. Atk by 1 after surviving a move crossing half HP, or only Sp. Atk by 2 on Dragon’s Den. Entering Dragon’s Den grants +1 Sp. Atk. Duskilate converts Normal moves to Dark with its normal power and field effects. Each damaging hit independently has a 30% chance (50% on Dragon’s Den) to double base power; Fickle Beam uses only its own all-out roll. The first damaging hit received each entry raises Attack by 1; surviving a critical hit instead maximizes Attack. Outrage, Thrash, Petal Dance and Raging Fury cause no rampage lock or ending confusion. Existing confusion and other move locks remain unchanged.",
+				"shortDesc": "Strings of Ruin + Controlled Fury.",
 				"rating": 5,
 				"flags": {},
 				"isNonstandard": null
@@ -41847,8 +41977,8 @@
 				"name": "Tidal Crown",
 				"num": 10025,
 				"gen": 9,
-				"desc": "Stalwart bypasses redirection and gives +1 Sp. Atk on New World, Starlight Arena, Fairy Tale or Chessboard entry. Water chip cycles 1/16, 2/16, then 3/16 foe base max HP; Water immunities apply, and effectiveness scales chip only in Free-for-All. Self-Sufficient heals 1/16 max HP each turn and prevents sandstorm/hail damage. Shell Armor prevents critical hits and reduces attack damage by 20%; Fairy Tale and Dragon Den entry give +1 Defense, and opposing stat drops trigger +2 Sp. Def. Guardian Presence boosts allies move power by 1.3x, or 1.5x on Haunted, Bewitched Woods, Holy and Psychic fields, and reduces their attack damage by 25%; neither applies to the holder. During Electric Aura or Electric Terrain, Murkwater Surface, Water Surface, Underwater, Midnight Zone, Factory and Short-Circuit, redirects and absorbs Electric moves for +1 Attack and Sp. Atk. Existing Fairy Tale, New World, Cold Eclipse and Starlight Arena entry/terrain bonuses give +1 Defense and Sp. Def; the latter three retain 1.5x move power.",
-				"shortDesc": "Water Barrage (without Dual Wield), Self-Sufficient, Shell Armor and Guardian Presence.",
+				"desc": "Stalwart bypasses redirection and gives +1 Sp. Atk on New World, Starlight Arena, Fairy Tale or Chessboard entry. Water chip cycles 1/16, 2/16, then 3/16 foe base max HP; Water immunities apply, and effectiveness scales chip only in Free-for-All. Shell Armor prevents critical hits and reduces attack damage by 20%; Fairy Tale and Dragon Den entry give +1 Defense, and opposing stat drops trigger +2 Sp. Def. Guardian Presence boosts allies move power by 1.3x, or 1.5x on Haunted, Bewitched Woods, Holy and Psychic fields, and reduces their attack damage by 25%; neither applies to the holder. During Electric Aura or Electric Terrain, Murkwater Surface, Water Surface, Underwater, Midnight Zone, Factory and Short-Circuit, redirects and absorbs Electric moves for +1 Attack and Sp. Atk. Existing Fairy Tale, New World, Cold Eclipse and Starlight Arena entry/terrain bonuses give +1 Defense and Sp. Def; the latter three retain 1.5x move power.",
+				"shortDesc": "Water Barrage (without Dual Wield), Shell Armor and Guardian Presence.",
 				"rating": 4.5,
 				"flags": {
 					"breakable": 1
@@ -41923,8 +42053,8 @@
 				"name": "Fresh Plumage",
 				"num": 11256,
 				"gen": 9,
-				"desc": "Local Natural Cure cures status on switching and heals 1/8 max HP only when curing status; Bewitched Woods has its end-turn cure. First successful Flying attack each entry deals 1.2x damage across all hits, including Substitute damage. Misses, protection and immunity preserve the charge. Roost does not recharge it.",
-				"shortDesc": "Natural Cure; first successful Flying attack each entry deals 1.2x damage.",
+				"desc": "Local Natural Cure cures status on switching and heals 1/8 max HP only when curing status; Bewitched Woods has its end-turn cure. Prevents accuracy drops caused by opponents. Self-inflicted and allied accuracy drops still apply.",
+				"shortDesc": "Natural Cure; prevents opposing accuracy drops.",
 				"rating": 2.5,
 				"flags": {},
 				"isNonstandard": null
@@ -42139,7 +42269,7 @@
 				"name": "Gem Eye",
 				"num": 10453,
 				"gen": 9,
-				"desc": "Prevents indirect damage. Prevents opposing accuracy drops, ignores evasion boosts and reveals opposing Illusions. Fairy Tale entry grants +1 Sp. Def; Mirror Arena entry grants +1 accuracy and Laser Focus. Does not reflect status moves.",
+				"desc": "Prevents indirect damage. Prevents opposing accuracy drops, ignores evasion boosts and reveals opposing Illusions. Fairy Tale entry grants +1 Sp. Def; Mirror Arena entry grants +1 accuracy and Laser Focus.",
 				"shortDesc": "Magic Guard + Keen Eye.",
 				"rating": 0.5,
 				"flags": {
@@ -42217,7 +42347,7 @@
 				"name": "Glacial Mass",
 				"num": 10388,
 				"gen": 9,
-				"desc": "Heavy Metal + Thick Fat: doubles weight, halves physical attack damage, and halves the attacking stat of Fire- and Ice-type moves. Immune to hail damage. On entry to Factory Field, Defense rises one stage and Speed falls one stage. On Cold Eclipse, Defense and Sp. Def are 1.5x, the field Speed penalty is ignored, and hail heals 1/10 max HP each turn.",
+				"desc": "Heavy Metal + Thick Fat: doubles weight, halves physical attack damage, and halves the attacking stat of Fire- and Ice-type moves. Immune to hail damage. On entry to Factory Field, Defense rises one stage and Speed falls one stage.",
 				"shortDesc": "Halves physical and Fire/Ice damage; hail immunity.",
 				"rating": 4.5,
 				"flags": {
@@ -42309,6 +42439,16 @@
 				"flags": {},
 				"isNonstandard": null
 			},
+			"grandmarksman": {
+				"name": "Grand Marksman",
+				"num": 32508,
+				"gen": 9,
+				"desc": "Mega Launcher boosts pulse and bullet moves by 1.5x. Dual Wield grants its usual independent hits and power scaling. Water attacks gain 1.2x power. Once per switch-in, damaging a foe with Water grants +1 critical-hit stage until switching; shared with Rising Marksman.",
+				"shortDesc": "Mega Launcher + Dual Wield + Rising Marksman; Water power 1.2x.",
+				"rating": 4,
+				"flags": {},
+				"isNonstandard": null
+			},
 			"grandmaster": {
 				"name": "Grandmaster",
 				"num": 10124,
@@ -42321,12 +42461,32 @@
 				},
 				"isNonstandard": null
 			},
+			"grandrhythm": {
+				"name": "Grand Rhythm",
+				"num": 32507,
+				"gen": 9,
+				"desc": "On entry, sets Forest Field and Grassy Aura for 5 turns, or 8 with Amplifield Rock, following field rules. Once per switch-in, damaging a foe with Grass grants +1 Defense and Sp. Def; shared with Rising Rhythm.",
+				"shortDesc": "Forest Surge + Rising Rhythm.",
+				"rating": 4,
+				"flags": {},
+				"isNonstandard": null
+			},
 			"grandstrategy": {
 				"name": "Grand Strategy",
 				"num": 10125,
 				"gen": 9,
 				"desc": "Mold Breaker. While the holder is active, its team's attacks dealing opposing HP damage prepare that foe for the holder. Its next physical HP-damaging attack consumes the mark after the whole attack, ignoring positive defensive stages and Reflect, Light Screen and Aurora Veil. That attack cannot rearm the mark. Marks do not stack, survive the holder switching out, and clear when the foe switches or faints, or the holder faints or loses this ability. Once per battle, an end-of-turn major-status cure clears negative accuracy stages and grants Laser Focus through the next turn; switching clears Laser Focus. Suppression delays the cure; other cures do not spend it.",
 				"shortDesc": "Mold Breaker; team hits prepare foes while active; once-battle cure grants Laser Focus.",
+				"rating": 4,
+				"flags": {},
+				"isNonstandard": null
+			},
+			"grandstriker": {
+				"name": "Grand Striker",
+				"num": 32506,
+				"gen": 9,
+				"desc": "Striker boosts kicks and G-Max Fireball by 1.4x. Defiant grants +2 Attack when an opponent lowers its stats. Once per switch-in, damaging a foe with Fire grants +1 Speed; shared with Rising Striker.",
+				"shortDesc": "Striker + Defiant + Rising Striker; G-Max Fireball also gains 1.4x power.",
 				"rating": 4,
 				"flags": {},
 				"isNonstandard": null
@@ -42399,8 +42559,8 @@
 				"name": "Great Marsh",
 				"num": 10335,
 				"gen": 9,
-				"desc": "On entry, reveals opposing Illusions and alerts to an opposing super-effective or OHKO move. If no threat is found, Psychic Terrain grants +2 Sp. Atk. Absorbs Water moves for 1/4 max HP; incoming Fire moves have 1.25x power. Effective rain heals 1/8 HP per turn; sun costs 1/8. Field healing per turn: 1/16 on Underwater, Swamp, Misty or grounded Water Surface; 1/8 when grounded and Poison-type on Murkwater. Corrosive Mist heals Poison types by 1/8 but damages non-Steel others by 1/8. Desert costs 1/8 HP per turn. Same-type attack bonus becomes 2x instead of 1.5x, or 2.25x instead of a 2x bonus. Its attacks have a 30% chance of badly poisoning. This effect comes before a move's inherent secondary effect chance. Rechecks incoming foes on every switch-in.",
-				"shortDesc": "Reveals threats; rain/field healing; stronger STAB; hits may badly poison.",
+				"desc": "Absorbs Water attacks and heals in rain and supported wet fields; sun and Fire attacks are harmful. Same-type attacks gain Adaptability’s stronger bonus. Attacks have Toxic Chain’s 30% chance to badly poison.",
+				"shortDesc": "Dry Skin + Adaptability + Toxic Chain.",
 				"rating": 4,
 				"flags": {},
 				"isNonstandard": null
@@ -42560,7 +42720,7 @@
 				"name": "Haunted Chime",
 				"num": 10286,
 				"gen": 9,
-				"desc": "Airborne: immune to Ground attacks and grounded hazards unless grounded. Absorbs wind moves for +1 Sp. Atk. Gains +1 Sp. Atk when Tailwind starts on its side or it enters during Tailwind. Strong Winds gives +1 Attack and Sp. Atk each turn. Damaging attacks have a 30% chance to be disabled, guaranteed on Haunted and disabled on Holy Field. Excludes Max moves, delayed attacks and Struggle. On fainting, curses all active foes.",
+				"desc": "Airborne: immune to Ground attacks and grounded hazards unless grounded. Absorbs wind moves for +1 Sp. Atk. Gains +1 Sp. Atk when Tailwind starts on its side or it enters during Tailwind. Strong Winds gives +1 Attack and Sp. Atk each turn. Damaging attacks have a 30% chance to be disabled, guaranteed on Haunted and disabled on Holy Field. Excludes Max moves, delayed attacks and Struggle. On fainting, active foes are cursed for two end-of-turn ticks of 1/8 max HP each, then the curse ends.",
 				"shortDesc": "Wind Power + Cursed Body.",
 				"rating": 4,
 				"flags": {},
@@ -42612,7 +42772,7 @@
 				"name": "Heat Coil",
 				"num": 10058,
 				"gen": 9,
-				"desc": "Speed Boost and Long Reach. Long Reach removes contact. Has the current modified Magma Armor package: cures freeze, and incoming Water/Ice attacks use half the offensive stat; this is not an upgrade to full Magma Armor. No new binding effect.",
+				"desc": "Speed Boost and Long Reach. Long Reach removes contact. Has the current modified Magma Armor package: cures freeze, and incoming Water/Ice attacks use half the offensive stat.",
 				"shortDesc": "Speed Boost + Long Reach; modified Magma Armor; Flame Body passive is separate.",
 				"rating": 3.5,
 				"flags": {
@@ -43153,7 +43313,7 @@
 				"name": "Infernal Dominion",
 				"num": 11247,
 				"gen": 9,
-				"desc": "Has Intimidate. Does not generate Fire Spin or trap foes. Incoming Rock attack effectiveness is capped at neutral, preserving stronger resistance or immunity. Prevents only this holder's Stealth Rock damage without removing the hazard. A direct Fire attack dealing opposing HP damage clears Sandstorm and, once per turn regardless of weather, grants Molten Guard until turn end. The guard blocks the next opposing Rock attack against this holder, including all hits, without shielding other spread targets. Generated attacks do not arm it. Leaving, ability loss and Mega Evolution clear the guard.",
+				"desc": "Has Intimidate. Incoming Rock attack effectiveness is capped at neutral, preserving stronger resistance or immunity. Prevents only this holder's Stealth Rock damage without removing the hazard. A direct Fire attack dealing opposing HP damage clears Sandstorm and, once per turn regardless of weather, grants Molten Guard until turn end. The guard blocks the next opposing Rock attack against this holder, including all hits, without shielding other spread targets. Generated attacks do not arm it. Leaving, ability loss and Mega Evolution clear the guard.",
 				"shortDesc": "Intimidate; Molten Guard; Rock effectiveness capped at neutral; melts own Stealth Rock damage.",
 				"rating": 4,
 				"flags": {},
@@ -43445,8 +43605,8 @@
 				"name": "Kick Fiend",
 				"num": 10352,
 				"gen": 9,
-				"desc": "Kicking moves have 1.4x power. Prevents and cures paralysis and blocks opposing or field-induced Speed drops. Doubles eligible secondary-effect chances.",
-				"shortDesc": "Striker + Limber + Serene Grace.",
+				"desc": "Kicking moves have 1.4x power. Prevents and cures paralysis and blocks opposing or field-induced Speed drops.",
+				"shortDesc": "Striker + Limber.",
 				"rating": 4,
 				"flags": {},
 				"isNonstandard": null
@@ -43878,8 +44038,8 @@
 				"name": "Lunar Orbit",
 				"num": 10140,
 				"gen": 9,
-				"desc": "Magic Guard prevents indirect damage. On entry or Mega Evolution, sets Gravity for 5 turns with its field transformations. The holder and active allies gain Serene Grace; multiple sources do not stack. Grants each recipient one charge-turn skip per stay, shared with Void Omen. Only the recipient switching resets it. Independent field and Power Herb skips do not spend the allowance. Suppression disables the grant.",
-				"shortDesc": "Magic Guard; entry Gravity; shares secondary boosts and one charge skip per recipient entry.",
+				"desc": "Prevents indirect damage. Sets Gravity on entry. Doubles secondary-effect chances for itself and active allies, without stacking with other Serene Grace sources. Grants each ally and itself one charge-turn skip per stay, shared with Void Omen. Fairy Tale entry gives +1 Sp. Def.",
+				"shortDesc": "Magic Guard + Serene Grace; entry Gravity; shares one charge skip per ally entry.",
 				"rating": 4.5,
 				"flags": {
 					"breakable": 1
@@ -44404,8 +44564,8 @@
 				"name": "Moss Armor",
 				"num": 10390,
 				"gen": 9,
-				"desc": "Airborne: immune to Ground attacks, Spikes, Toxic Spikes, Sticky Web and Arena Trap unless grounded. Thousand Arrows can still hit. Each opposing attack that damages HP heals once for 1/16 max HP. The first such hit each turn also raises Defense by 1, before later hits of a multi-hit move. Switching out cures major status and heals 1/8 max HP only if a status was cured. Bewitched Woods cures status at turn end without this heal. switching out heals 1/8 max HP only after a Grass attack dealt opposing HP damage on the current or immediately preceding turn, with no intervening action.",
-				"shortDesc": "Levitate + Stamina + Natural Cure; a Grass HP hit followed by switching adds 1/8 HP healing.",
+				"desc": "Stamina heals 1/16 max HP once per opposing attack and raises Defense once per turn. Natural Cure cures status on switching and heals 1/8 max HP if status was cured. Switching out also heals 1/8 max HP after a Grass attack damaged opposing HP on this or the previous turn, with no intervening action. Retains component field effects.",
+				"shortDesc": "Stamina + Natural Cure; Grass hits can grant switch-out healing.",
 				"rating": 5,
 				"flags": {},
 				"isNonstandard": null
@@ -44506,8 +44666,8 @@
 				"name": "Mourning Snow",
 				"num": 10116,
 				"gen": 9,
-				"desc": "On entry, it summons Hail for 8 turns, and Aurora Veil used by it lasts 8 turns. During Hail or Snow, it heals 1/16 max HP each turn. Its damaging moves of any type gain an additional 30% chance to inflict frostbite, preserving their effects; this does not require weather. It is immune to Hail damage. When another Pokemon faints, it restores 1/8 max HP, or 1/4 if the faint was caused by an Ice move, Hail, Snow, or Curse. When it faints, all opposing Pokemon become cursed. Damaging hits disable the attacker's move when possible.",
-				"shortDesc": "8-turn Hail/Veil; damaging moves add 30% frostbite; faint healing/curse; hit Disable.",
+				"desc": "On entry, it summons Hail for 8 turns, and Aurora Veil used by it lasts 8 turns. During Hail or Snow, it heals 1/16 max HP each turn. Its damaging moves of any type gain an additional 30% chance to inflict frostbite, preserving their effects; this does not require weather. It is immune to Hail damage. When another Pokemon faints, it restores 1/8 max HP, or 1/4 if the faint was caused by an Ice move, Hail, Snow, or Curse. When it faints, active foes are cursed for two end-of-turn ticks of 1/8 max HP each, then the curse ends. Damaging hits disable the attacker's move when possible.",
+				"shortDesc": "8-turn Hail/Veil; 30% frostbite; healing; hit Disable; on faint, two 1/8-HP curse ticks.",
 				"rating": 4.5,
 				"flags": {
 					"breakable": 1
@@ -44734,9 +44894,9 @@
 			},
 			"nightmarepulse": {
 				"name": "Nightmare Pulse",
-				"num": 11257,
+				"num": 32511,
 				"gen": 9,
-				"desc": "Prevents and cures sleep, blocks Yawn, and gives Dark and Ghost attacks 1.3x power. Takes 20% less attack damage, or 40% less from super-effective attacks. Its moves cannot miss. Damaging attacks have a 30% chance to be disabled, guaranteed on Haunted and disabled on Holy Field. Excludes Max moves, delayed attacks and Struggle. On fainting, curses all active foes. Sleeping foes, including Comatose users, lose 1/8 max HP each turn. Disabled on Rainbow Field. On entry, sets Haunted Field for 3 turns if field rules allow. Has sleep immunity, accurate moves, damage reduction, disabling attackers, and damage to sleeping foes. Does not bypass screens or Substitute. Field creation or refresh is attempted only once per battle per holder, even if blocked; switching, suppression, revival, or ability changes never reset this use. Its field creation, refresh and conversion last exactly 3 turns; Amplifield Rock does not extend them.",
+				"desc": "Prevents and cures sleep, blocks Yawn, and gives Dark and Ghost attacks 1.3x power. Takes 20% less attack damage, or 40% less from super-effective attacks. Its moves cannot miss. Damaging attacks have a 30% chance to be disabled, guaranteed on Haunted and disabled on Holy Field. Excludes Max moves, delayed attacks and Struggle. On fainting, active foes are cursed for two end-of-turn ticks of 1/8 max HP each, then the curse ends. Sleeping foes, including Comatose users, lose 1/8 max HP each turn. Disabled on Rainbow Field. On entry, sets Haunted Field for 3 turns if field rules allow. Has sleep immunity, accurate moves, damage reduction, disabling attackers, and damage to sleeping foes. Does not bypass screens or Substitute. Field creation or refresh is attempted only once per battle per holder, even if blocked; switching, suppression, revival, or ability changes never reset this use. Its field creation, refresh and conversion last exactly 3 turns; Amplifield Rock does not extend them.",
 				"shortDesc": "Moves cannot miss; curses foes on faint; Sleeping foes lose 1/8 HP per turn, except on Rainbow.",
 				"rating": 4.5,
 				"flags": {},
@@ -45963,8 +46123,8 @@
 				"name": "Punch Fiend",
 				"num": 10354,
 				"gen": 9,
-				"desc": "Punching moves have 1.4x power. Doubles eligible secondary-effect chances. Prevents opposing accuracy drops, ignores evasion boosts, and reveals opposing Illusions. Mirror Arena entry grants +1 accuracy and Laser Focus.",
-				"shortDesc": "Iron Fist + Serene Grace + Keen Eye.",
+				"desc": "Punching moves have 1.4x power. Prevents opposing accuracy drops, ignores evasion boosts, and reveals opposing Illusions. Mirror Arena entry grants +1 accuracy and Laser Focus.",
+				"shortDesc": "Iron Fist + Keen Eye.",
 				"rating": 4,
 				"flags": {
 					"breakable": 1
@@ -46168,7 +46328,7 @@
 				"name": "Raging Heart",
 				"num": 11694,
 				"gen": 9,
-				"desc": "Full local Inner Focus prevents flinching and Intimidate Attack drops, subject to normal suppression and ability bypass. Directly selected Thrash becomes Ghost type, retaining its physical category, 140 power, chosen adjacent opposing target and 30% Defense-drop chance, with no extra power multiplier. Without separate Controlled Fury it has its 2-3-turn rampage lock but does not cause its own ending confusion while Raging Heart is active. External confusion remains. Annihilape supplies Controlled Fury separately as its species passive.",
+				"desc": "Full local Inner Focus prevents flinching and Intimidate Attack drops, subject to normal suppression and ability bypass. Directly selected Thrash becomes Ghost type, retaining its physical category, 140 power, chosen adjacent opposing target and 30% Defense-drop chance, with no extra power multiplier. Without separate Controlled Fury it has its 2-3-turn rampage lock but does not cause its own ending confusion while Raging Heart is active. External confusion remains.",
 				"shortDesc": "Inner Focus; selected Thrash becomes Ghost with no ending confusion.",
 				"rating": 4,
 				"flags": {
@@ -46180,7 +46340,7 @@
 				"name": "Raging Overlord",
 				"num": 10385,
 				"gen": 9,
-				"desc": "Moves ignore bypassable opposing abilities. Attacks bypass Substitute, screens and defensive stat stages and gain +1 critical-hit stage. Takes half damage from priority attacks. Immune to hail damage. Move KOs damage remaining foes by 60% of the last damage dealt; if there is no valid target or no damage is dealt, gains +1 Attack instead. Magic Guard prevents this splash damage. Cannot be suppressed. Each fainted ally adds 10% move damage; in Free-for-All, allies count twice. At 2+ fallen allies it gains Infiltrator; 4+, flinch immunity from Inner Focus; 5+, indirect-damage immunity and a one-time +1 Attack and Sp. Atk. It does not block stat drops. Effective fallen count is capped at 5 after Free-for-All doubling, for a maximum 1.5x Supreme Overlord power multiplier.",
+				"desc": "Moves ignore bypassable opposing abilities. Attacks bypass Substitute, screens and defensive stat stages and gain +1 critical-hit stage. Takes half damage from priority attacks. Immune to hail damage. Move KOs damage remaining foes by 60% of the last damage dealt; if there is no valid target or no damage is dealt, gains +1 Attack instead. Magic Guard prevents this splash damage. Cannot be suppressed. Each fainted ally adds 10% move damage; in Free-for-All, allies count twice. At 2+ fallen allies it gains Infiltrator; 4+, flinch immunity from Inner Focus; 5+, indirect-damage immunity and a one-time +1 Attack and Sp. Atk. Effective fallen count is capped at 5 after Free-for-All doubling, for a maximum 1.5x Supreme Overlord power multiplier.",
 				"shortDesc": "Moves ignore bypassable opposing abilities.",
 				"rating": 5,
 				"flags": {
@@ -46316,7 +46476,7 @@
 				"name": "Reaper's Grip",
 				"num": 10357,
 				"gen": 9,
-				"desc": "Heals 1/16 max HP each turn and ignores sandstorm/hail damage. Entry creates 5-turn Haunted Aura: all Ghost attacks gain 20% power. Its Ghost attacks heal 25% of opposing HP damage dealt. A direct Ghost KO while it survives and Haunted Aura remains attempts to convert the field to Haunted for 5 turns, consuming the Aura only on success. Respects field locks; cannot extend existing Haunted. Later entries can create the Aura again, but ability restarts cannot. Unaware comes from its passive. Suppression stops new triggers and holder benefits; an existing Aura persists.",
+				"desc": "Heals 1/16 max HP each turn and ignores sandstorm/hail damage. Entry creates 5-turn Haunted Aura: all Ghost attacks gain 20% power. Its Ghost attacks heal 25% of opposing HP damage dealt. A direct Ghost KO while it survives and Haunted Aura remains attempts to convert the field to Haunted for 5 turns, consuming the Aura only on success. Respects field locks; cannot extend existing Haunted. Later entries can create the Aura again, but ability restarts cannot. Suppression stops new triggers and holder benefits; an existing Aura persists.",
 				"shortDesc": "Self-Sufficient; 5-turn Haunted Aura on entry; Ghost attacks drain 25%. Ghost KO can create Haunted.",
 				"rating": 5,
 				"flags": {},
@@ -46326,7 +46486,7 @@
 				"name": "Reborn Flower",
 				"num": 10304,
 				"gen": 9,
-				"desc": "Changes Florges to Florges-Reborn on entry. Each adjacent ally has a 50% chance to be cured of major status at turn end. Grass allies, including itself, are protected from opposing stat drops, major status and Yawn; Bewitched Woods extends this protection to all types. Does not amplify healing. Aromaveil remains separate.",
+				"desc": "Changes Florges to Florges-Reborn on entry. Each adjacent ally has a 50% chance to be cured of major status at turn end. Grass allies, including itself, are protected from opposing stat drops, major status and Yawn; Bewitched Woods extends this protection to all types.",
 				"shortDesc": "Reborn form; Flower Veil and a 50% adjacent-ally status cure each turn.",
 				"rating": 4,
 				"flags": {
@@ -46633,7 +46793,7 @@
 				"name": "Rightful Exalt",
 				"num": 11985,
 				"gen": 9,
-				"desc": "Full local Serene Grace and Inner Focus. Doubles eligible move secondary-effect chances, with Serene Grace's existing exceptions and field interactions. Prevents flinching and Intimidate's Attack drop. Does not increase critical-hit chances.",
+				"desc": "Full local Serene Grace and Inner Focus. Doubles eligible move secondary-effect chances, with Serene Grace's existing exceptions and field interactions. Prevents flinching and Intimidate's Attack drop.",
 				"shortDesc": "Serene Grace + Inner Focus.",
 				"rating": 4,
 				"flags": {},
@@ -46687,7 +46847,7 @@
 				"name": "Rimeplate",
 				"num": 10593,
 				"gen": 9,
-				"desc": "Takes 75% less damage from hits after the first hit of a multi-hit attack. The first hit and separate attacks deal normal damage. Does not change Glaive Rush's effects.",
+				"desc": "Takes 75% less damage from hits after the first hit of a multi-hit attack. The first hit and separate attacks deal normal damage.",
 				"shortDesc": "Later hits of a multi-hit move deal 75% less damage.",
 				"rating": 4,
 				"flags": {},
@@ -46755,6 +46915,36 @@
 				"flags": {
 					"breakable": 1
 				},
+				"isNonstandard": null
+			},
+			"risingmarksman": {
+				"name": "Rising Marksman",
+				"num": 32505,
+				"gen": 9,
+				"desc": "Once per switch-in, damaging an opposing Pokemon with a Water attack raises the critical-hit ratio by 1 stage until switching out. Base and Gmax forms share this activation.",
+				"shortDesc": "First Water HP hit each entry: +1 critical-hit stage until switching.",
+				"rating": 4,
+				"flags": {},
+				"isNonstandard": null
+			},
+			"risingrhythm": {
+				"name": "Rising Rhythm",
+				"num": 32504,
+				"gen": 9,
+				"desc": "Once per switch-in, damaging an opposing Pokemon with a Grass attack raises Defense and Sp. Def by 1. Base and Gmax forms share this activation.",
+				"shortDesc": "First Grass HP hit each entry: +1 Defense and Sp. Def.",
+				"rating": 4,
+				"flags": {},
+				"isNonstandard": null
+			},
+			"risingstriker": {
+				"name": "Rising Striker",
+				"num": 32503,
+				"gen": 9,
+				"desc": "Once per switch-in, damaging an opposing Pokemon with a Fire attack raises Speed by 1. Base and Gmax forms share this activation.",
+				"shortDesc": "First Fire HP hit each entry: +1 Speed.",
+				"rating": 4,
+				"flags": {},
 				"isNonstandard": null
 			},
 			"rivalappetites": {
@@ -46860,7 +47050,7 @@
 				"name": "Rooted Iron",
 				"num": 10470,
 				"gen": 9,
-				"desc": "Compatibility name for full local Stamina. Each opposing attack that damages HP heals once for 1/16 base max HP. The first such hit each turn gives +1 Defense before later multihit strikes. No additional healing for turns without an attack. Ferrothorn selects Stamina directly and has Iron Barbs as its passive.",
+				"desc": " Each opposing attack that damages HP heals once for 1/16 base max HP. The first such hit each turn gives +1 Defense before later multihit strikes.",
 				"shortDesc": "Stamina: each opposing HP-damaging attack heals once for 1/16; first hit each turn gives +1 Defense.",
 				"rating": 4,
 				"flags": {},
@@ -46962,8 +47152,8 @@
 				"name": "Royal Scales",
 				"num": 11122,
 				"gen": 9,
-				"desc": "Marvel Scale boosts Defense while statused or on supported fields. Swift Swim boosts Speed in rain and supported water fields. Its Normal-type moves become Dragon-type moves and have their power multiplied by 1.2. Heals 1/16 max HP each turn. Immune to sandstorm and hail damage.",
-				"shortDesc": "Marvel Scale, Swift Swim, Dragonize and Self Sufficient.",
+				"desc": "Marvel Scale boosts Defense while statused or on supported fields. Swift Swim boosts Speed in rain and supported water fields. Normal moves become Dragon-type with 1.2× power.",
+				"shortDesc": "Marvel Scale + Swift Swim + Dragonize.",
 				"rating": 5,
 				"flags": {
 					"breakable": 1
@@ -47241,12 +47431,10 @@
 				"name": "Scavenger",
 				"num": 10375,
 				"gen": 9,
-				"desc": "Immune to powder moves, Rage Powder, Effect Spore, sandstorm damage and hail damage. Other Pokemon cannot lower its Defense. Heals 1/3 max HP on switching out.",
-				"shortDesc": "Immune to powder moves, Rage Powder, Effect Spore, sandstorm damage and hail damage.",
-				"rating": 4,
-				"flags": {
-					"breakable": 1
-				},
+				"desc": "While active and alive, heals 1/4 base maximum HP when another active Pokemon faints, including allies. At most one successful recovery per turn; switching does not reset that limit.",
+				"shortDesc": "Another active Pokemon faints: heals 1/4 max HP, once per turn.",
+				"rating": 3,
+				"flags": {},
 				"isNonstandard": null
 			},
 			"scentscout": {
@@ -47695,7 +47883,7 @@
 				"name": "Siege Magnet",
 				"num": 11264,
 				"gen": 9,
-				"desc": "Magnet Pull. Once per entry, the first Electric attack to damage a foe also attempts Heal Block on that foe for this turn and the following turn. Normal volatile-status protection applies; Heal Block is not shortened. Misses, protection and Substitute-only hits preserve the charge. No power boost.",
+				"desc": "Magnet Pull. Once per entry, the first Electric attack to damage a foe also attempts Heal Block on that foe for this turn and the following turn. Normal volatile-status protection applies; Heal Block is not shortened. Misses, protection and Substitute-only hits preserve the charge.",
 				"shortDesc": "First Electric attack damage each entry applies two-turn Heal Block.",
 				"rating": 4,
 				"flags": {},
@@ -47979,7 +48167,7 @@
 				"name": "Snowpack",
 				"num": 10461,
 				"gen": 9,
-				"desc": "Full local Ice Body: immune to hail; contact attackers have a 30% frostbite chance. Heals 1/16 max HP in hail/snow, or on Icy, Snowy Mountain and Cold Eclipse without those weathers; hail on Cold Eclipse heals 1/8. Mamoswine supplies Thick Fat separately as its species passive.",
+				"desc": "Full local Ice Body: immune to hail; contact attackers have a 30% frostbite chance. Heals 1/16 max HP in hail/snow, or on Icy, Snowy Mountain and Cold Eclipse without those weathers; hail on Cold Eclipse heals 1/8.",
 				"shortDesc": "Ice Body.",
 				"rating": 3.5,
 				"flags": {},
@@ -48091,7 +48279,7 @@
 			},
 			"solartrap": {
 				"name": "Solar Trap",
-				"num": 11258,
+				"num": 32512,
 				"gen": 9,
 				"desc": "Accumulation and Liquid Ooze. Has automatic Stockpiles and releases, defensive effects, and damage to draining attackers. Digestive Sap is not part of this ability.",
 				"shortDesc": "Automatic Stockpiles/releases; draining moves hurt their user.",
@@ -48169,7 +48357,7 @@
 				"name": "Soul Cremation",
 				"num": 11259,
 				"gen": 9,
-				"desc": "Direct Fire/Ghost attacks heal 1/3 of actual opposing HP damage, capped at 1/6 max HP per turn, and block surviving targets' healing through the following turn. Switching clears the block; repeated hits refresh it. Native draining moves, substitutes, allies, residual and delayed damage do not grant this drain. Once per turn, a Ghost hit on an already-burned surviving foe also attempts -1 Sp. Def. At turn end, heals 1/8 max HP if any foe actually took burn damage; this is separate from the drain cap. Once per actual entry, the first executed opposing damaging move targeting it grants +1 Sp. Atk after the entire move if it survives and remains active, even after misses, protection or immunity. This use is spent at +6 and is not reset by ability changes or suppression; switching resets it. Contact attackers have a 30% burn chance (60% on Volcanic). Absorbs Fire for a 1.5x Fire boost; Burning or grounded Volcanic also grants the boost. On Cold Eclipse, Fire absorption and contact burns stop, and entry gives +2 Defense and Sp. Def total. Normal healing and drain rules apply. Mega Chandelure with active Soul Cremation bypasses Soul Fire's Fire/Ghost attack absorption only. Ordinary type effectiveness and type immunities remain; this grants neither general Mold Breaker nor a damage multiplier. Will-O-Wisp and Soul Fire redirection are unchanged.",
+				"desc": "Direct Fire/Ghost attacks heal 1/3 of actual opposing HP damage, capped at 1/6 max HP per turn, and block surviving targets' healing through the following turn. Switching clears the block; repeated hits refresh it. Native draining moves, substitutes, allies, residual and delayed damage do not grant this drain. Once per turn, a Ghost hit on an already-burned surviving foe also attempts -1 Sp. Def. At turn end, heals 1/8 max HP if any foe actually took burn damage; this is separate from the drain cap. Once per actual entry, the first executed opposing damaging move targeting it grants +1 Sp. Atk after the entire move if it survives and remains active, even after misses, protection or immunity. This use is spent at +6 and is not reset by ability changes or suppression; switching resets it. Contact attackers have a 30% burn chance (60% on Volcanic). Absorbs Fire for a 1.5x Fire boost; Burning or grounded Volcanic also grants the boost. Cold Eclipse stops Fire absorption and contact burns. Infernal Eclipse grants +1 Defense and Sp. Def on entry and activates its Fire power-up. Normal healing and drain rules apply. Mega Chandelure with active Soul Cremation bypasses Soul Fire's Fire/Ghost attack absorption only. Ordinary type effectiveness and type immunities remain; this grants neither general Mold Breaker nor a damage multiplier. Will-O-Wisp and Soul Fire redirection are unchanged.",
 				"shortDesc": "Soul Siphon + Soul Pyre + Malice Well.",
 				"rating": 5,
 				"flags": {
@@ -48233,8 +48421,8 @@
 			},
 			"soulreaver": {
 				"name": "Soul Reaver",
-				"num": 0,
-				"gen": 0,
+				"num": 32510,
+				"gen": 9,
 				"desc": "Infiltrator: bypasses opposing Substitute, Reflect, Light Screen, Aurora Veil, Safeguard and Mist. Physical and special Ghost attacks, including Night Shade, restore HP equal to 25% of actual damage dealt. Uses the greater of native drain and 25%, never adds them; Spectral Scream remains 25%. Curse residual damage does not drain. Normal ability suppression disables both effects.",
 				"shortDesc": "Infiltrator; Ghost attacks drain at least 25% of damage dealt.",
 				"rating": 4,
@@ -48321,8 +48509,8 @@
 				"name": "Spin Fiend",
 				"num": 10355,
 				"gen": 9,
-				"desc": "Moves with effective power of 60 or less gain 50% power (80 or less on Factory Field). Prevents sleep and Yawn; Fighting attacks use 1.3x Attack or Sp. Atk. Flinching raises Speed by 1; entering Electric Terrain also raises Speed by 1.",
-				"shortDesc": "Technician + Vital Spirit + Steadfast.",
+				"desc": "Moves with effective power of 60 or less gain 50% power (80 or less on Factory Field). Flinching raises Speed by 1; entering Electric Terrain also raises Speed by 1.",
+				"shortDesc": "Technician + Steadfast.",
 				"rating": 4,
 				"flags": {
 					"breakable": 1
@@ -48820,6 +49008,16 @@
 				"flags": {},
 				"isNonstandard": null
 			},
+			"stringsofruin": {
+				"name": "Strings of Ruin",
+				"num": 11722,
+				"gen": 9,
+				"desc": "Full local Berserk and Duskilate. Surviving a move crossing half HP grants +1 Attack and Sp. Atk; on Dragon’s Den, entering grants +1 Sp. Atk and crossing half HP grants +2 Sp. Atk instead. Each damaging hit independently has a 30% chance (50% on Dragon’s Den) to double base power, except Fickle Beam uses only its own all-out roll.",
+				"shortDesc": "Berserk + Duskilate; 30% double power per hit, except Fickle Beam.",
+				"rating": 5,
+				"flags": {},
+				"isNonstandard": null
+			},
 			"strongjaw": {
 				"name": "Strong Jaw",
 				"num": 173,
@@ -48944,7 +49142,7 @@
 				"name": "Supreme Overlord",
 				"num": 293,
 				"gen": 9,
-				"desc": "Each fainted ally adds 10% move damage; in Free-for-All, allies count twice. At 2+ fallen allies it gains Infiltrator; 4+, flinch immunity from Inner Focus; 5+, indirect-damage immunity and a one-time +1 Attack and Sp. Atk. It does not block stat drops. Effective fallen count is capped at 5 after Free-for-All doubling, for a maximum 1.5x Supreme Overlord power multiplier.",
+				"desc": "Each fainted ally adds 10% move damage; in Free-for-All, allies count twice. At 2+ fallen allies it gains Infiltrator; 4+, flinch immunity from Inner Focus; 5+, indirect-damage immunity and a one-time +1 Attack and Sp. Atk. Effective fallen count is capped at 5 after Free-for-All doubling, for a maximum 1.5x Supreme Overlord power multiplier.",
 				"shortDesc": "10% damage per fallen ally (max 50%); 2+ grants Infiltrator, 4+ Inner Focus.",
 				"rating": 4,
 				"flags": {},
@@ -48954,7 +49152,7 @@
 				"name": "Surefoot",
 				"num": 11288,
 				"gen": 9,
-				"desc": "Ground-type moves have 1.3x power while its Defense stage is positive. The bonus ends when Defense returns to zero or below. Does not ignore opposing defensive stat stages.",
+				"desc": "Ground-type moves have 1.3x power while its Defense stage is positive. The bonus ends when Defense returns to zero or below.",
 				"shortDesc": "Ground moves have 1.3x power while Defense is raised.",
 				"rating": 4,
 				"flags": {},
@@ -49078,8 +49276,8 @@
 			},
 			"swiftvenom": {
 				"name": "Swift Venom",
-				"num": 0,
-				"gen": 0,
+				"num": 32509,
+				"gen": 9,
 				"desc": "Swift Swim and Merciless. Doubles Speed in effective rain or on Water Surface, Murkwater Surface, Underwater and Midnight Zone. Attacks always critically hit poisoned targets and on Corrosive, Corrosive Mist, Murkwater Surface and Wasteland, unless critical hits are blocked. On Chessboard, gains one critical-hit stage per 20% of the target's missing base max HP, up to three.",
 				"shortDesc": "Swift Swim + Merciless.",
 				"rating": 4,
@@ -49719,7 +49917,7 @@
 				"name": "Transfixing Gaze",
 				"num": 11255,
 				"gen": 9,
-				"desc": "Frisk: removes opposing Illusions, reveals their held items, and each revealed item holder has a 30% chance of Embargo. While it remains active with its ability functioning, opposing moves cannot switch their user out. Damage, stat changes and other move effects still occur. Manual switching, forced switching and item-triggered switches remain allowed. If it faints, leaves or loses its ability before the move finishes, the pivot succeeds. No lingering mark.",
+				"desc": "Frisk: removes opposing Illusions, reveals their held items, and each revealed item holder has a 30% chance of Embargo. While it remains active with its ability functioning, opposing moves cannot switch their user out. Damage, stat changes and other move effects still occur. Manual switching, forced switching and item-triggered switches remain allowed. If it faints, leaves or loses its ability before the move finishes, the pivot succeeds.",
 				"shortDesc": "Opposing moves cannot pivot while it stays active.",
 				"rating": 1.5,
 				"flags": {},
@@ -49910,6 +50108,16 @@
 				"desc": "Special Attack uses calculated unboosted Attack, including Attack EVs, IVs and nature, then applies its own Special Attack stages and modifiers. Attack stages and Attack-only multipliers are not copied; species base stats remain unchanged. Normally single-hit contact attacks gain a second hit at 30% calculated damage. No stacking with other extra-hit effects, retargeting after KO, recursive hits, extra secondaries or self-stat rolls. Excludes native multihit, spread, fixed/OHKO, Z/Max, delayed, charge/recharge, self-KO and item-consuming/repeating exceptions. Full local Rivalry gives damaging moves 1.3x power against a same-gender or genderless target, with no opposite-gender penalty. Other active allies take 25% less calculated attack damage, including friendly fire; the holder is not protected by its own Rivalry. Separate holders retain normal stacking. Selected-ability suppression disables these added effects.",
 				"shortDesc": "Rivalry; Sp. Atk copies unboosted Attack; eligible contact attacks gain a 30% second hit.",
 				"rating": 5,
+				"flags": {},
+				"isNonstandard": null
+			},
+			"twinfocus": {
+				"name": "Twin Focus",
+				"num": 32501,
+				"gen": 9,
+				"desc": "Damaging Psychic moves ignore positive Defense and Sp. Def stages on their target. Negative stages still apply. Other move types are unchanged.",
+				"shortDesc": "Psychic attacks ignore the target’s Defense and Sp. Def boosts.",
+				"rating": 3,
 				"flags": {},
 				"isNonstandard": null
 			},
@@ -50204,7 +50412,7 @@
 				"name": "Vault Keeper",
 				"num": 11238,
 				"gen": 9,
-				"desc": "Compatibility name for local Prankster: status moves gain +1 priority; opposing Dark types block them except on Bewitched Woods. Does not prevent screen removal. Klefki receives Prankster as its species passive; this compatibility name has the same priority effect.",
+				"desc": "Compatibility name for local Prankster: status moves gain +1 priority; opposing Dark types block them except on Bewitched Woods. Klefki receives Prankster as its species passive; this compatibility name has the same priority effect.",
 				"shortDesc": "Prankster.",
 				"rating": 1.5,
 				"flags": {},
@@ -50442,8 +50650,8 @@
 				"name": "Void Command",
 				"num": 10045,
 				"gen": 9,
-				"desc": "Insomnia + Super Luck. Takes 20% less attack damage from other Pokemon. Each move KO raises its higher attacking stat by 1, choosing Attack on a tie. Once per battle, successfully executing any Z-Move also grants this boost after the move, including status Z-Moves. A Z-Move KO receives the ordinary per-KO boost without an additional Z-use boost. Damaging Z-Moves that deal reduced damage through Protect count; misses, immunity and failed base moves do not. A status Z bonus alone does not count when its base move fails.",
-				"shortDesc": "20% less damage; KOs boost higher offense; first Z-Move also boosts, without a double KO reward.",
+				"desc": "Insomnia prevents sleep. Super Luck raises the critical-hit ratio by 1. Once per battle, a successful Z-Move raises the higher attacking stat by 1 stage (Attack wins ties), including status Z-Moves and Z-Move KOs. The user must survive. Misses, immunity and failed base moves do not activate it. A status Z bonus alone does not count when the base move fails.",
+				"shortDesc": "Insomnia + Super Luck; first successful Z-Move gives +1 higher offense.",
 				"rating": 4,
 				"flags": {
 					"breakable": 1
@@ -50509,8 +50717,8 @@
 				"name": "Void Omen",
 				"num": 10283,
 				"gen": 9,
-				"desc": "The user has Serene Grace. Allies take 25% less attack damage. The user and active allies cannot become confused. Each Pokemon skips one charge turn per switch-in, shared with Lunar Orbit. Once per user switch-in, a successful attack secondary or self-targeting status move grants at least 3 turns of Safeguard. The first applied secondary also blocks one enemy stat-drop event against the user or an adjacent ally, until used or the user leaves.",
-				"shortDesc": "Serene Grace; ally damage protection and team confusion immunity. Charge skip + wards.",
+				"desc": "Allies take 25% less attack damage. The user and active allies cannot become confused. Each Pokemon skips one charge turn per switch-in, shared with Lunar Orbit. Once per user switch-in, a successful attack secondary or self-targeting status move grants at least 3 turns of Safeguard. The first applied secondary also blocks one enemy stat-drop event against the user or an adjacent ally, until used or the user leaves.",
+				"shortDesc": "Friend Guard; team confusion immunity; one charge skip, Safeguard and stat-drop ward.",
 				"rating": 4.5,
 				"flags": {},
 				"isNonstandard": null
@@ -51006,16 +51214,6 @@
 				"desc": "Mold Breaker. After the whole damaging move, clears positive stat stages of opposing targets whose HP it damaged. Negative stages remain. Misses, protection, immunity and Substitute-only hits do not qualify.",
 				"shortDesc": "Mold Breaker; damaging HP hits clear positive target stages after the attack.",
 				"rating": 3,
-				"flags": {},
-				"isNonstandard": null
-			},
-			"worldbreaker": {
-				"name": "Worldbreaker",
-				"num": 11722,
-				"gen": 9,
-				"desc": "Full local Berserk and Duskilate. Surviving a move crossing half HP grants +1 Attack and Sp. Atk; on Dragon’s Den, entering grants +1 Sp. Atk and crossing half HP grants +2 Sp. Atk instead. Each damaging hit independently has a 30% chance (50% on Dragon’s Den) to double base power, except Fickle Beam uses only its own all-out roll.",
-				"shortDesc": "Berserk + Duskilate; 30% double power per hit, except Fickle Beam.",
-				"rating": 5,
 				"flags": {},
 				"isNonstandard": null
 			},
@@ -51540,8 +51738,8 @@
 				"flags": {
 					"metronome": 1
 				},
-				"desc": "The user swaps positions with its ally. Fails if the user is the only Pokemon on its side. This move has a 1/X chance of being successful, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails or if the user's last move used is not Ally Switch.",
-				"shortDesc": "User and ally swap positions; using again can fail.",
+				"desc": "The user switches out for a chosen teammate. Has -6 priority, so it usually acts after other moves. Fails if no teammate can switch in.",
+				"shortDesc": "Switches to a chosen teammate. Priority -6.",
 				"hasSheerForceBoost": false
 			},
 			"amnesia": {
@@ -55968,8 +56166,8 @@
 					"protect": 1,
 					"mirror": 1
 				},
-				"desc": "Saphira's move. Uses higher staged Attack or Sp. Atk with matching defense (Special on ties). Treats Fairy as neutral while preserving the other defensive type: Fairy/Steel resists and Fairy/Dragon is weak. This exception does not carry to generic Z or Max moves. Turns Volcanic Field or Cave into Dragon's Den after a hit. Does not place an entry hazard. Additional field effects: Dragon’s Den, Mountain, Fairy Tale, Volcanic or New World: ignores Reflect, Light Screen and Aurora Veil for this attack without removing them.",
-				"shortDesc": "Saphira's move. Adaptive; Fairy is neutral; turns Volcanic into Dragon's Den.",
+				"desc": "Saphira's move. Uses higher staged Attack or Sp. Atk with matching defense (Special on ties). Treats Fairy as neutral while preserving the other defensive type: Fairy/Steel resists and Fairy/Dragon is weak. This exception does not carry to generic Z or Max moves. Turns Volcanic Field or Cave into Dragon's Den after a hit. On Dragon’s Den, a successful hit sets Stealth Rock on the opposing side, including hits against Substitute. Additional field effects: Dragon’s Den, Mountain, Fairy Tale, Volcanic or New World: ignores Reflect, Light Screen and Aurora Veil for this attack without removing them.",
+				"shortDesc": "Saphira's move. Adaptive; Fairy neutral; Den rocks; Cave/Volcanic become Dragon's Den.",
 				"hasSheerForceBoost": false,
 				"signatureCharacters": [
 					"saphira"
@@ -62117,8 +62315,8 @@
 					"failcopycat": 1,
 					"failinstruct": 1
 				},
-				"desc": "The user is protected from most attacks made by other Pokemon during this turn, and Pokemon trying to make contact with the user have their Attack lowered by 1 stage. Non-damaging moves go through this protection. This move has a 1/X chance of being successful, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails, if the user's last move used is not Baneful Bunker, Burning Bulwark, Detect, Endure, King's Shield, Max Guard, Obstruct, Protect, Quick Guard, Silk Trap, Spiky Shield, or Wide Guard, or if it was one of those moves and the user's protection was broken. Fails if the user moves last this turn.",
-				"shortDesc": "Protects from damaging attacks. Contact: -1 Atk.",
+				"desc": "The user is protected from most attacks made by other Pokemon during this turn, and Pokemon trying to make contact with the user have their Attack lowered by 2 stages. Non-damaging moves go through this protection. This move has a 1/X chance of being successful, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails, if the user's last move used is not Baneful Bunker, Burning Bulwark, Detect, Endure, King's Shield, Max Guard, Obstruct, Protect, Quick Guard, Silk Trap, Spiky Shield, or Wide Guard, or if it was one of those moves and the user's protection was broken. Fails if the user moves last this turn.",
+				"shortDesc": "Protects from damaging attacks. Contact: -2 Atk.",
 				"hasSheerForceBoost": false
 			},
 			"knockoff": {
@@ -63242,7 +63440,7 @@
 					"protect": 1,
 					"mirror": 1
 				},
-				"desc": "Adam's move. Uses Attack against the target Sp. Def. Dragon's Den adds a 1.5x named boost alongside its Rock boost.",
+				"desc": "Adam's move. Uses Attack against the target Sp. Def. Dragon's Den boosts this move's power by 1.5x.",
 				"shortDesc": "Adam's move. Uses Attack against Sp. Def.",
 				"hasSheerForceBoost": false,
 				"signatureCharacters": [
@@ -65239,7 +65437,7 @@
 					"metronome": 1,
 					"failinstruct": 1
 				},
-				"desc": "Has a 30% chance to lower the target's Defense by 1. Choose an adjacent opposing Pokemon on the initial turn. Forced continuation turns target an opposing Pokemon at random. Locks the user into this move for 2-3 turns, then confuses the user if it is not already confused. If the user cannot act, starts a turn asleep, or fails to hit before the final locked turn, the lock ends without confusion. Sleep Talk uses it once without confusion while the user is asleep. Sheer Force removes the 30% effect and gives its normal power boost once; the lock and ending confusion remain. Raging Storm makes it a single-turn attack with no lock or ending confusion; it does not cure existing confusion. On Superheated Field, the lock ends after the attack; ending it early does not cause confusion.",
+				"desc": "Has a 30% chance to lower the target's Defense by 1. Choose an adjacent opposing Pokemon on the initial turn. Forced continuation turns target an opposing Pokemon at random.Locks the user into this move for 2-3 turns, then confuses the user if it is not already confused.If the user cannot act, starts a turn asleep, or fails to hit before the final locked turn, the lock ends without confusion. Sleep Talk uses it once without confusion while the user is asleep.Sheer Force removes the 30% effect and gives its normal power boost once; the lock and ending confusion remain.Raging Storm makes it a single-turn attack with no lock or ending confusion; it does not cure existing confusion.On Superheated Field, the lock ends after the attack; ending it early does not cause confusion.",
 				"shortDesc": "30% -1 target Def. Locks 2-3 turns, then confuses user. Choose initial foe; later hits random.",
 				"secondaries": [
 					{
@@ -65508,7 +65706,7 @@
 					"metronome": 1,
 					"failinstruct": 1
 				},
-				"desc": "Has a 30% chance to lower the target's Sp. Def by 1. Choose an adjacent opposing Pokemon on the initial turn. Forced continuation turns target an opposing Pokemon at random. Locks the user into this move for 2-3 turns, then confuses the user if it is not already confused. If the user cannot act, starts a turn asleep, or fails to hit before the final locked turn, the lock ends without confusion. Sleep Talk uses it once without confusion while the user is asleep. Sheer Force removes the 30% effect and gives its normal power boost once; the lock and ending confusion remain. Raging Storm makes it a single-turn attack with no lock or ending confusion; it does not cure existing confusion. On Superheated Field, the lock ends after the attack; ending it early does not cause confusion.",
+				"desc": "Has a 30% chance to lower the target's Sp. Def by 1. Choose an adjacent opposing Pokemon on the initial turn. Forced continuation turns target an opposing Pokemon at random.Locks the user into this move for 2-3 turns, then confuses the user if it is not already confused.If the user cannot act, starts a turn asleep, or fails to hit before the final locked turn, the lock ends without confusion. Sleep Talk uses it once without confusion while the user is asleep.Sheer Force removes the 30% effect and gives its normal power boost once; the lock and ending confusion remain.Raging Storm makes it a single-turn attack with no lock or ending confusion; it does not cure existing confusion.On Superheated Field, the lock ends after the attack; ending it early does not cause confusion.",
 				"shortDesc": "30% -1 target SpD. Locks 2-3 turns, then confuses user. Choose initial foe; later hits random.",
 				"secondaries": [
 					{
@@ -67041,7 +67239,7 @@
 					"protect": 1,
 					"mirror": 1
 				},
-				"desc": "Has a 30% chance to burn the target. Choose an adjacent opposing Pokemon on the initial turn. Forced continuation turns target an opposing Pokemon at random. Locks the user into this move for 2-3 turns, then confuses the user if it is not already confused. If the user cannot act, starts a turn asleep, or fails to hit before the final locked turn, the lock ends without confusion. Sleep Talk uses it once without confusion while the user is asleep. Sheer Force removes the 30% effect and gives its normal power boost once; the lock and ending confusion remain. Raging Storm makes it a single-turn attack with no lock or ending confusion; it does not cure existing confusion. On Burning or Volcanic Field, ending the rampage does not cause confusion. On Volcanic Field, each use also raises the user's Attack by 1.",
+				"desc": "Has a 30% chance to burn the target. Choose an adjacent opposing Pokemon on the initial turn. Forced continuation turns target an opposing Pokemon at random.Locks the user into this move for 2-3 turns, then confuses the user if it is not already confused.If the user cannot act, starts a turn asleep, or fails to hit before the final locked turn, the lock ends without confusion. Sleep Talk uses it once without confusion while the user is asleep.Sheer Force removes the 30% effect and gives its normal power boost once; the lock and ending confusion remain.Raging Storm makes it a single-turn attack with no lock or ending confusion; it does not cure existing confusion.On Burning or Volcanic Field, ending the rampage does not cause confusion. On Volcanic Field, each use also raises the user's Attack by 1.",
 				"shortDesc": "30% burn. Locks 2-3 turns, then confuses user. Choose initial foe; later hits random.",
 				"secondaries": [
 					{
@@ -72143,7 +72341,7 @@
 					"metronome": 1,
 					"failinstruct": 1
 				},
-				"desc": "Has a 30% chance to lower the target's Defense by 1. Choose an adjacent opposing Pokemon on the initial turn. Forced continuation turns target an opposing Pokemon at random. Locks the user into this move for 2-3 turns, then confuses the user if it is not already confused. If the user cannot act, starts a turn asleep, or fails to hit before the final locked turn, the lock ends without confusion. Sleep Talk uses it once without confusion while the user is asleep. Sheer Force removes the 30% effect and gives its normal power boost once; the lock and ending confusion remain. Raging Storm makes it a single-turn attack with no lock or ending confusion; it does not cure existing confusion. On Superheated Field, the lock ends after the attack; ending it early does not cause confusion.",
+				"desc": "Has a 30% chance to lower the target's Defense by 1. Choose an adjacent opposing Pokemon on the initial turn. Forced continuation turns target an opposing Pokemon at random.Locks the user into this move for 2-3 turns, then confuses the user if it is not already confused.If the user cannot act, starts a turn asleep, or fails to hit before the final locked turn, the lock ends without confusion. Sleep Talk uses it once without confusion while the user is asleep.Sheer Force removes the 30% effect and gives its normal power boost once; the lock and ending confusion remain.Raging Storm makes it a single-turn attack with no lock or ending confusion; it does not cure existing confusion.On Superheated Field, the lock ends after the attack; ending it early does not cause confusion.",
 				"shortDesc": "30% -1 target Def. Locks 2-3 turns, then confuses user. Choose initial foe; later hits random.",
 				"secondaries": [
 					{
@@ -81860,8 +82058,7 @@
 			"adaptivecell": [],
 			"adaptivecore": [
 				"download",
-				"defragment",
-				"selfrepair"
+				"defragment"
 			],
 			"adaptivecycle": [],
 			"adaptivepower": [
@@ -81971,7 +82168,6 @@
 			"ancientassembly": [],
 			"ancientbloom": [
 				"pollenbloom",
-				"selfsufficient",
 				"friendguard"
 			],
 			"ange": [
@@ -82050,8 +82246,7 @@
 			"astralwitchcraft": [
 				"levitate",
 				"magicguard",
-				"voidguile",
-				"proficient"
+				"serenegrace"
 			],
 			"atrocity": [
 				"unboundblaze",
@@ -82208,7 +82403,6 @@
 			"burningcrown": [
 				"intimidate",
 				"unboundblaze",
-				"selfsufficient",
 				"levitate"
 			],
 			"burningego": [
@@ -82359,6 +82553,10 @@
 				"technician",
 				"poisontouch"
 			],
+			"cosmicanalysis": [
+				"analytic",
+				"download"
+			],
 			"costar": [],
 			"cottondown": [],
 			"cradleward": [
@@ -82462,7 +82660,6 @@
 			],
 			"desertshell": [
 				"skilllink",
-				"heatproof",
 				"sandstream"
 			],
 			"desertspirit": [
@@ -82528,6 +82725,7 @@
 				"invigorate"
 			],
 			"dreadpresence": [
+				"darkaura",
 				"unnerve"
 			],
 			"dreadwings": [
@@ -82629,10 +82827,7 @@
 			"evaporate": [
 				"dryskin"
 			],
-			"evergreen": [
-				"overcoat",
-				"ripen"
-			],
+			"evergreen": [],
 			"evilsanta": [],
 			"exaltedaether": [],
 			"execution": [
@@ -82640,7 +82835,7 @@
 				"moldbreaker"
 			],
 			"expiration": [
-				"worldbreaker",
+				"stringsofruin",
 				"controlledfury"
 			],
 			"fairyaura": [],
@@ -82648,7 +82843,6 @@
 			"fallenstar": [
 				"moldbreaker",
 				"dualwield",
-				"selfsufficient",
 				"proficient"
 			],
 			"falsebouquet": [
@@ -82698,7 +82892,6 @@
 			],
 			"fortressshell": [
 				"waterbarrage",
-				"selfsufficient",
 				"shellarmor",
 				"guardianpresence"
 			],
@@ -82819,11 +83012,25 @@
 			"goodasgold": [],
 			"gooey": [],
 			"gorillatactics": [],
+			"grandmarksman": [
+				"megalauncher",
+				"dualwield",
+				"risingmarksman"
+			],
 			"grandmaster": [
 				"innerfocus"
 			],
+			"grandrhythm": [
+				"forestsurge",
+				"risingrhythm"
+			],
 			"grandstrategy": [
 				"moldbreaker"
+			],
+			"grandstriker": [
+				"striker",
+				"defiant",
+				"risingstriker"
 			],
 			"graspingcurrent": [
 				"suctioncups"
@@ -82838,7 +83045,6 @@
 			],
 			"gravitywell": [],
 			"greatmarsh": [
-				"anticipation",
 				"dryskin",
 				"adaptability",
 				"toxicchain"
@@ -83069,8 +83275,7 @@
 			],
 			"kickfiend": [
 				"striker",
-				"limber",
-				"serenegrace"
+				"limber"
 			],
 			"kindledfury": [
 				"fluffy",
@@ -83158,6 +83363,7 @@
 			"lunaridol": [],
 			"lunarorbit": [
 				"magicbounce",
+				"serenegrace",
 				"magicguard"
 			],
 			"lunarspirit": [],
@@ -83268,7 +83474,6 @@
 				"mistysurge"
 			],
 			"mossarmor": [
-				"levitate",
 				"stamina",
 				"naturalcure"
 			],
@@ -83608,7 +83813,6 @@
 			],
 			"punchfiend": [
 				"ironfist",
-				"serenegrace",
 				"keeneye"
 			],
 			"punkrock": [],
@@ -83722,7 +83926,10 @@
 			"relicarmor": [],
 			"relicbeam": [],
 			"relicinstinct": [],
-			"relicmishap": [],
+			"relicmishap": [
+				"waterabsorb",
+				"voltabsorb"
+			],
 			"rememberedflame": [
 				"flashfire",
 				"download"
@@ -83796,6 +84003,9 @@
 				"shellarmor",
 				"moldbreaker"
 			],
+			"risingmarksman": [],
+			"risingrhythm": [],
+			"risingstriker": [],
 			"rivalappetites": [],
 			"rivalmalice": [],
 			"rivalresolve": [],
@@ -83837,8 +84047,7 @@
 			"royalscales": [
 				"marvelscale",
 				"swiftswim",
-				"dragonize",
-				"selfsufficient"
+				"dragonize"
 			],
 			"royalsun": [
 				"supremeoverlord",
@@ -83904,11 +84113,7 @@
 				"oblivious",
 				"unaware"
 			],
-			"scavenger": [
-				"overcoat",
-				"bigpecks",
-				"regenerator"
-			],
+			"scavenger": [],
 			"scentscout": [
 				"frisk"
 			],
@@ -84129,7 +84334,6 @@
 			"spicyspray": [],
 			"spinfiend": [
 				"technician",
-				"vitalspirit",
 				"steadfast"
 			],
 			"spinyhide": [
@@ -84241,6 +84445,10 @@
 			"striker": [],
 			"strikerfrenzy": [],
 			"strikersmomentum": [],
+			"stringsofruin": [
+				"berserk",
+				"duskilate"
+			],
 			"strongjaw": [],
 			"sturdy": [],
 			"suctioncups": [],
@@ -84486,6 +84694,7 @@
 			"twinfang": [
 				"rivalry"
 			],
+			"twinfocus": [],
 			"tyrantdomain": [
 				"supremeoverlord",
 				"sandstream"
@@ -84628,8 +84837,7 @@
 				"cursedbody"
 			],
 			"voidomen": [
-				"friendguard",
-				"serenegrace"
+				"friendguard"
 			],
 			"voidpromise": [
 				"unaware"
@@ -84747,10 +84955,6 @@
 			"worldbinder": [
 				"moldbreaker"
 			],
-			"worldbreaker": [
-				"berserk",
-				"duskilate"
-			],
 			"worldforged": [],
 			"wraithprocession": [],
 			"wrathshield": [
@@ -84839,7 +85043,6 @@
 				"eartheater"
 			],
 			"mossarmor": [
-				"levitate",
 				"stamina",
 				"naturalcure"
 			],
@@ -84907,8 +85110,7 @@
 			],
 			"kickfiend": [
 				"striker",
-				"limber",
-				"serenegrace"
+				"limber"
 			],
 			"wreckingball": [
 				"sturdy",
@@ -84946,7 +85148,6 @@
 			],
 			"punchfiend": [
 				"ironfist",
-				"serenegrace",
 				"keeneye"
 			],
 			"doublestrike": [
@@ -84955,7 +85156,6 @@
 			],
 			"spinfiend": [
 				"technician",
-				"vitalspirit",
 				"steadfast"
 			],
 			"terragift": [
@@ -85027,8 +85227,7 @@
 			],
 			"adaptivecore": [
 				"download",
-				"defragment",
-				"selfrepair"
+				"defragment"
 			],
 			"aevianglacier": [
 				"snowwarning",
@@ -85085,11 +85284,9 @@
 				"prankster"
 			],
 			"voidomen": [
-				"friendguard",
-				"serenegrace"
+				"friendguard"
 			],
 			"greatmarsh": [
-				"anticipation",
 				"dryskin",
 				"adaptability",
 				"toxicchain"
@@ -85334,8 +85531,7 @@
 			"mourningvessel": [],
 			"fallenstar": [
 				"moldbreaker",
-				"dualwield",
-				"selfsufficient"
+				"dualwield"
 			],
 			"eclipse": [],
 			"ragingstorm": [
@@ -85670,10 +85866,12 @@
 			"royalscales": [
 				"marvelscale",
 				"swiftswim",
-				"dragonize",
-				"selfsufficient"
+				"dragonize"
 			],
-			"relicmishap": [],
+			"relicmishap": [
+				"waterabsorb",
+				"voltabsorb"
+			],
 			"windysurge": [],
 			"flamebody": [],
 			"flareboost": [],
@@ -85688,7 +85886,6 @@
 			],
 			"ancientbloom": [
 				"pollenbloom",
-				"selfsufficient",
 				"friendguard"
 			],
 			"pollenbloom": [
@@ -85704,7 +85901,6 @@
 			],
 			"fortressshell": [
 				"waterbarrage",
-				"selfsufficient",
 				"shellarmor",
 				"guardianpresence"
 			],
@@ -85830,7 +86026,6 @@
 			],
 			"desertshell": [
 				"skilllink",
-				"heatproof",
 				"sandstream"
 			],
 			"voidtyrant": [
@@ -85902,6 +86097,7 @@
 			"magicbounce": [],
 			"lunarorbit": [
 				"magicbounce",
+				"serenegrace",
 				"magicguard"
 			],
 			"magicguard": [],
@@ -86219,7 +86415,7 @@
 			"astralwitchcraft": [
 				"levitate",
 				"magicguard",
-				"voidguile"
+				"serenegrace"
 			],
 			"blazingtempo": [
 				"speedboost",
@@ -86406,11 +86602,7 @@
 				"guts",
 				"moldbreaker"
 			],
-			"scavenger": [
-				"overcoat",
-				"bigpecks",
-				"regenerator"
-			],
+			"scavenger": [],
 			"ultrainstinct": [
 				"moldbreaker",
 				"innerfocus"
@@ -86717,6 +86909,7 @@
 			"raisedquills": [],
 			"mountainbreaker": [],
 			"dreadpresence": [
+				"darkaura",
 				"unnerve"
 			],
 			"palmmastery": [
@@ -87027,10 +87220,7 @@
 			"wreckingcrew": [
 				"ironfist"
 			],
-			"evergreen": [
-				"overcoat",
-				"ripen"
-			],
+			"evergreen": [],
 			"battlegrip": [
 				"moxie"
 			],
@@ -87455,7 +87645,7 @@
 				"levitate",
 				"hydrabond"
 			],
-			"worldbreaker": [
+			"stringsofruin": [
 				"berserk",
 				"duskilate"
 			],
@@ -87623,7 +87813,7 @@
 			],
 			"fireward": [],
 			"expiration": [
-				"worldbreaker",
+				"stringsofruin",
 				"controlledfury"
 			],
 			"abyssalrebirth": [
@@ -87770,7 +87960,29 @@
 			"acquiredtaste": [
 				"frisk"
 			],
-			"tomeofavarice": []
+			"tomeofavarice": [],
+			"twinfocus": [],
+			"cosmicanalysis": [
+				"analytic",
+				"download"
+			],
+			"risingstriker": [],
+			"risingrhythm": [],
+			"risingmarksman": [],
+			"grandstriker": [
+				"striker",
+				"defiant",
+				"risingstriker"
+			],
+			"grandrhythm": [
+				"forestsurge",
+				"risingrhythm"
+			],
+			"grandmarksman": [
+				"megalauncher",
+				"dualwield",
+				"risingmarksman"
+			]
 		},
 		"learnsetExclusions": {
 			"bronzong": [

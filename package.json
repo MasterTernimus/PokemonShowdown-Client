@@ -16,6 +16,7 @@
     "build-full": "node build full",
     "typecheck": "tsc --noEmit",
     "test:unit": "mocha test/*.js",
+    "test:sharded": "node build-tools/test-shards.cjs",
     "test:php": "php test/php-review-regressions.php",
     "build:dev": "node build-tools/build-development.js",
     "verify:production-news": "node -e \"require('./build-tools/production-news')()\""

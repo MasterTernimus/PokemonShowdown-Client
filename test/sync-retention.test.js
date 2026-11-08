@@ -35,8 +35,8 @@ describe('Incremental server snapshot retention', () => {
    for (const id of Object.keys(current.snapshot[group])) assert(result.snapshot[group][id], group + '.' + id);
   }
   assert.equal(result.snapshot.species.poliwrath.abilities[0], 'Reservoir');
-  assert.equal(result.snapshot.abilities.nightmarepulse.num, 11257);
-  assert.equal(result.snapshot.abilities.solartrap.num, 11258);
+  assert.equal(result.snapshot.abilities.nightmarepulse.num, 32511);
+  assert.equal(result.snapshot.abilities.solartrap.num, 32512);
   assert(result.snapshot.abilities.venomignition);
  });
 });

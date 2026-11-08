@@ -26,7 +26,7 @@ describe('Approved shortlist and Burning Rage presentation', () => {
   assert.deepEqual(Dex.species.get('infernape').passives,['blaze']);
   for(const id of ['proficient','bruteforce','ironfist','moldbreaker'])assert(Dex.getAbilityEffects('burningrage').has(id));
   // Existing client search includes delegated effects; runtime field identity is tested on the server.
-  for(const id of ['reckless','rockhead'])assert(Dex.getAbilityEffects('burningrage').has(id));
+  for(const id of ['reckless','rockhead'])assert(!Dex.getAbilityEffects('burningrage').has(id));
  });
  it('exposes all approved passive swaps and exact selected replacements', () => {
   const approved=require('./fixtures/shortlist-approved.json');

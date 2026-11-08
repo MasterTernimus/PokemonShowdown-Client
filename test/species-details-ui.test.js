@@ -10,7 +10,7 @@ describe('Lightweight species search rows', () => {
   assert(!html.includes('species-info-button')); assert(!html.includes('Possible abilities'));
  });
  it('does not add a placeholder button for species without passives', () => {
-  const html = render('Arcanine-Aevian');
+  const html = render('Abra');
   assert(!html.includes('species-info-button')); assert(!html.includes('pokemon-passive-badge'));
  });
  it('does not calculate descriptions or component lists while rendering results', () => {

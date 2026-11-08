@@ -18,7 +18,9 @@ describe('Grace support descriptions', () => {
 	it('shows Void Omen confusion immunity and its separate charge allowance', () => {
 		const ability = Dex.abilities.get('voidomen');
 		assert(ability.desc.includes('cannot become confused'));
-		assert(ability.desc.includes('The user has Serene Grace.'));
+		assert(!ability.desc.includes('Serene Grace'));
+		assert(Dex.getAbilityEffects('voidomen').has('friendguard'));
+		assert(!Dex.getAbilityEffects('voidomen').has('serenegrace'));
 		assert(!ability.desc.includes('allies gain Serene Grace'));
 		assert(!ability.shortDesc.includes('shares Serene Grace'));
 		assert(ability.desc.includes('one charge turn per switch-in'));

@@ -700,6 +700,18 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 		}
 	}
 
+	// Only gate exclusive level-100 rewards; preserve earlier and non-level access.
+	BattleTeambuilderTable.level100Moves = {};
+	for (const [id, entry] of Object.entries(ExportLearnsets)) {
+		for (const [move, sources] of Object.entries(entry.learnset || {})) {
+			const current = sources.filter(source => source.startsWith('9'));
+			if (current.length && current.every(source => source === '9L100')) {
+				if (!BattleTeambuilderTable.level100Moves[id]) BattleTeambuilderTable.level100Moves[id] = [];
+				BattleTeambuilderTable.level100Moves[id].push(move);
+			}
+		}
+	}
+
 	// Client relevant data that should be overriden by past gens and mods
 	const overrideSpeciesKeys = ['passives', 'abilities', 'baseStats', 'cosmeticFormes', 'isNonstandard', 'requiredItems', 'types', 'unreleasedHidden'];
 	const overrideMoveKeys = ['accuracy', 'basePower', 'category', 'desc', 'flags', 'isNonstandard', 'noSketch', 'pp', 'priority', 'shortDesc', 'target', 'type'];

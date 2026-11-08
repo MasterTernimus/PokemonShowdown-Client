@@ -4,10 +4,10 @@ const expected = require('./fixtures/ability-description-audit.json');
 const followup = require('./fixtures/audit-followup-approved-metadata.json');
 
 describe('Composite description client parity', () => {
- it('preserves effect-search identities independently of description wording', () => {
-  const expectedEffects = require('./fixtures/ability-search-identities.json');
-  for (const [id, effects] of Object.entries({...expectedEffects, ...followup.effects})) {
-   assert.deepEqual([...Dex.getAbilityEffects(id)].sort(), require('./fixtures/mega-approval-overlays').effects(id,effects), id);
+ it('matches current server effect-search identities independently of description wording', () => {
+  const expected = require('./helpers/server-component-expectations.cjs');
+  for (const id of Object.keys(expected.snapshot.components)) {
+   assert.deepEqual([...Dex.getAbilityEffects(id)].sort(), expected.effects(id), id);
   }
  });
  let savedAliases;

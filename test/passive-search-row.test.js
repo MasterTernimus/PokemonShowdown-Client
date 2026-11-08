@@ -19,7 +19,7 @@ describe('Pokemon result passive badges', () => {
  it('uses the actual form passive instead of inheriting its base form badge', () => {
   assert(render('Butterfree-Gmax').includes('Passive &middot; Levitate'));
   assert(!render('Butterfree-Gmax').includes('Passive &middot; Shield Dust'));
-  assert(!render('Arcanine-Aevian').includes('pokemon-passive-badge'));
+  assert(render('Arcanine-Aevian').includes('Passive &middot; Early Bird'));
  });
  it('keeps long passive names intact for CSS wrapping and supplies accessible help', () => {
   const html = render('Wishiwashi');

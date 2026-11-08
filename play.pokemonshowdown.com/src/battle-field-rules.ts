@@ -17,6 +17,14 @@ const import_adaptive_cycle = {
 const import_ground_bone_moves = {isGroundBoneMove: function isGroundBoneMove(move) {
   return move.type === "Ground" && ["boneclub", "bonerush", "bonemerang"].includes(move.id);
 }};
+const denCooling = {
+	"surf": 1,
+	"muddywater": 1,
+	"glaciate": 2,
+	"hydrovortex": 2,
+	"oceanicoperetta": 2,
+	"subzeroslammer": 2,
+};
 const BattleFieldRules = [
 {id: "flowergarden1",
 name: "Flower Garden 1",
@@ -745,14 +753,12 @@ onTryMove(source, target, move) {
 uncertain: false},
 {id: "dragonsdenterrain",
 name: "Dragon's Den Terrain",
-notes: ["Rejects Auras and ordinary field replacement. Dragon Pokémon gain 1.3× Defense. Multiscale removes super-effective bonuses against Dragon typing. Cooling moves announce progress toward Cave. Hail and snow fail here. Fickle Beam and Worldbreaker have a 50% all-out chance. Dragon Cheer grants Dragon allies +3 crit stages. Scale Shot keeps Defense. Good as Gold neutralizes Steel weaknesses. Tyrant Domain maintains the Den and lowers opposing defenses on entry."],
+notes: ["Rejects Auras and ordinary field replacement. Dragon Pokémon gain 1.3× Defense and Sp. Def. Dragon Rend sets Stealth Rock after hitting a foe in this field. Multiscale removes super-effective bonuses against Dragon typing. Hail and snow fail here. Fickle Beam and Strings of Ruin have a 50% all-out chance. Dragon Cheer grants Dragon allies +3 crit stages. Scale Shot keeps Defense. Good as Gold neutralizes Steel weaknesses. Tyrant Domain maintains the Den and lowers opposing defenses on entry."],
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
     const uberboost = ["smackdown", "thousandarrows", "continentalcrush", "tectonicrage", "dragonascent", "payday", "lusterpurge", "mistball"];
     const boost = ["magmadrift", "matrixshot", "lavaplume", "magmastorm", "megakick", "makeitrain", "rockclimb", "strength", "diamondstorm", "makeitrain", "powergem", "shelltrap", "earthpower", "stompingtantrum"];
-    const terrain_change = ["glaciate", "hydrovortex", "oceanicoperetta", "subzeroslammer", "mistball"];
-    const terrain_change1 = ["muddywater", "surf"];
-    const change = terrain_change1.includes(move.id) ? 1 : move.id === "sparklingaria" ? 2 : 0;
+    const change = denCooling[move.id] || 0;
     const current = this.field.terrainState.terrainChanges?.get("caveterrain") ?? 0;
     if (move.type === "Dragon" || move.type === "Fire") {
         this.add("-message", "The ambient dragon fire boosted the attack!");
@@ -769,7 +775,7 @@ onBasePower(basePower, source, target, move) {
         this.add("-message", "The draconic energy boosted the attack!");
         modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 2);
     }
-    if (terrain_change.includes(move.id) || current + change >= 3) {
+    if (["mistball", "sparklingaria"].includes(move.id) || change > 0 && current + change >= 2) {
         modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 1.3);
     }
     const moveMessages = /* @__PURE__ */ new Map([
@@ -1445,7 +1451,7 @@ onModifyMove(move) {
 uncertain: false},
 {id: "snowyterrain",
 name: "Snowy Terrain",
-notes: ["Snowscape creates Snowy Field for 5 turns without hail or Frozen Aura. Ice power is 1.5x and Fire power 0.5x. Grounded non-Ice Pokemon lose 25% Speed except Slush Rush, Ice Body, Snow Cloak and Refrigerate. Ice types gain 1.5x Special Defense in hail. Rain becomes hail at turn end; hail lasts 8 turns. Elemental Seed grants +1 Special Defense, Wish and five-turn Safeguard. Aurora Veil works here. Heating attacks clear the field."],
+notes: ["Snowscape creates Snowy Field for 5 turns without hail or Frozen Aura. Ice power is 1.5x and Fire power 0.5x. Grounded non-Ice Pokemon lose 25% Speed except Limber, Slush Rush, Ice Body, Snow Cloak and Refrigerate. Ice types gain 1.5x Special Defense in hail. Rain becomes hail at turn end; hail lasts 8 turns. Elemental Seed grants +1 Special Defense, Wish and five-turn Safeguard. Aurora Veil works here. Heating attacks clear the field."],
 onBasePower(basePower, source, target, move) {
     let modifier = 1;
     const types = move.types || [move.type];
@@ -3513,10 +3519,6 @@ base: {"boosts":{"atk":1,"def":1,"spe":1},"critRatio":1},
 uncertain: false},
 "volttackle": {onModifyMove(move) {
       if (this.field.isTerrain("electricterrain")) delete move.recoil;
-    },
-onBasePower(basePower, source, target) {
-      if ((0, import_adaptive_cycle.adaptiveEnvironment)(target, "fields")) return;
-      if (this.field.isTerrain("electricterrain")) return this.chainModify(1.5);
     },
 base: {"recoil":[33,100],"secondaries":[{"chance":10,"status":"par"}],"critRatio":1},
 uncertain: false},

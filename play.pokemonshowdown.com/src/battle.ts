@@ -376,7 +376,11 @@ export class Pokemon implements PokemonDetails, PokemonHealth {
 			Dex.getPassiveAbilityEffects(toID(passive)).has(toID(ability)))) return;
 		// A component reveal must not replace a known composite; explicit replacements still do.
 		// Older replays can still announce Frisk from the previous Cursed Marionette package.
-		const historicalComponent = toID(this.ability) === 'cursedmarionette' && toID(ability) === 'frisk';
+		const historicalComponents: {[id: string]: readonly string[]} = {
+			cursedmarionette: ['frisk'], doomwarning: ['anticipation'], longreach: ['keeneye'],
+			astralwitchcraft: ['voidguile', 'magician', 'infiltrator'],
+		};
+		const historicalComponent = historicalComponents[toID(this.ability)]?.includes(toID(ability));
 		if (!isNotBase && this.ability && (Dex.getAbilityEffects(toID(this.ability)).has(toID(ability)) ||
 			Dex.getAbilityComponentExclusions(toID(this.ability)).includes(toID(ability)) || historicalComponent)) return;
 		this.ability = ability;
@@ -2837,6 +2841,12 @@ export class Battle {
 			let fromeffect = Dex.getEffect(kwArgs.from);
 			poke.removeVolatile(effect.id);
 			if (effect.id === 'mustrecharge') poke.removeMovestatus(effect.id);
+			if (effect.id === 'perishsong') {
+				// Cleansing ends every displayed count, including silent end messages.
+				for (const count of ['perish0', 'perish1', 'perish2', 'perish3']) {
+					poke.removeVolatile(count as ID);
+				}
+			}
 
 			if (kwArgs.silent) {
 				// do nothing
@@ -2890,13 +2900,11 @@ export class Battle {
 					break;
 				case 'illusion':
 					this.scene.resultAnim(poke, 'Illusion ended', 'bad');
-					poke.rememberAbility('Illusion');
+					// A disguise can come from a passive or Perfect Illusion; this is
+					// not evidence of the selected ability. Preserve any known ability.
 					break;
 				case 'slowstart':
 					this.scene.resultAnim(poke, 'Slow Start ended', 'good');
-					break;
-				case 'perishsong': // for backwards compatibility
-					poke.removeVolatile('perish3' as ID);
 					break;
 				case 'substitute':
 					this.scene.resultAnim(poke, 'Faded', 'bad');
