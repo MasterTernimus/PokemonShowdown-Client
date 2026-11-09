@@ -3643,7 +3643,18 @@ uncertain: false},
       const move = active;
       const field = this.field.terrain, aura = this.field.auraField;
       const full = yangField(id, field);
-      move.yang = { field, aura, startingHP: source.hp, stage: this.field.flowerGardenStage(), full, eligible: full || (YangBonusAuras[id] || []).includes(aura), seen: /* @__PURE__ */ new Set(), hits: /* @__PURE__ */ new Map(), once: false, messages: /* @__PURE__ */ new Set() };
+      move.yang = {
+        field,
+        aura,
+        startingHP: source.hp,
+        stage: this.field.flowerGardenStage(),
+        full,
+        eligible: full || (YangBonusAuras[id] || []).includes(aura),
+        seen: [],
+        hits: [],
+        once: false,
+        messages: []
+      };
       if (!move.yang.eligible) return result;
       switch (id) {
         case "kaboom":
@@ -3653,7 +3664,7 @@ uncertain: false},
           move.ignoreNegativeOffensive = true;
           break;
         case "gunkrock":
-          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangSecondaryTargets = [];
           move.secondaries = move.secondaries?.map((s) => ({ ...s, chance: 40 }));
           if (move.secondary) move.secondary = { ...move.secondary, chance: 40 };
           break;
@@ -3670,12 +3681,12 @@ uncertain: false},
           move.ignoreScreens = true;
           break;
         case "infernalrage":
-          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangSecondaryTargets = [];
           move.yangPreserveField = full;
           move.secondaries = [...move.secondaries || [], { chance: 30, onHit(target2, source2, effect) {
             const attack = effect;
-            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.has(target2)) return;
-            attack.yang?.seen.add(target2);
+            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.includes(target2)) return;
+            attack.yang?.seen.push(target2);
             if (target2.trySetStatus("brn", source2, effect)) message(this, attack, "Charlotte\u2019s inferno left a searing brand!");
           } }];
           break;
@@ -3692,7 +3703,18 @@ uncertain: false},
       const move = active;
       const field = this.field.terrain, aura = this.field.auraField;
       const full = yangField(id, field);
-      move.yang = { field, aura, startingHP: source.hp, stage: this.field.flowerGardenStage(), full, eligible: full || (YangBonusAuras[id] || []).includes(aura), seen: /* @__PURE__ */ new Set(), hits: /* @__PURE__ */ new Map(), once: false, messages: /* @__PURE__ */ new Set() };
+      move.yang = {
+        field,
+        aura,
+        startingHP: source.hp,
+        stage: this.field.flowerGardenStage(),
+        full,
+        eligible: full || (YangBonusAuras[id] || []).includes(aura),
+        seen: [],
+        hits: [],
+        once: false,
+        messages: []
+      };
       if (!move.yang.eligible) return result;
       switch (id) {
         case "kaboom":
@@ -3702,7 +3724,7 @@ uncertain: false},
           move.ignoreNegativeOffensive = true;
           break;
         case "gunkrock":
-          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangSecondaryTargets = [];
           move.secondaries = move.secondaries?.map((s) => ({ ...s, chance: 40 }));
           if (move.secondary) move.secondary = { ...move.secondary, chance: 40 };
           break;
@@ -3719,12 +3741,12 @@ uncertain: false},
           move.ignoreScreens = true;
           break;
         case "infernalrage":
-          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangSecondaryTargets = [];
           move.yangPreserveField = full;
           move.secondaries = [...move.secondaries || [], { chance: 30, onHit(target2, source2, effect) {
             const attack = effect;
-            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.has(target2)) return;
-            attack.yang?.seen.add(target2);
+            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.includes(target2)) return;
+            attack.yang?.seen.push(target2);
             if (target2.trySetStatus("brn", source2, effect)) message(this, attack, "Charlotte\u2019s inferno left a searing brand!");
           } }];
           break;
@@ -3741,7 +3763,18 @@ uncertain: false},
       const move = active;
       const field = this.field.terrain, aura = this.field.auraField;
       const full = yangField(id, field);
-      move.yang = { field, aura, startingHP: source.hp, stage: this.field.flowerGardenStage(), full, eligible: full || (YangBonusAuras[id] || []).includes(aura), seen: /* @__PURE__ */ new Set(), hits: /* @__PURE__ */ new Map(), once: false, messages: /* @__PURE__ */ new Set() };
+      move.yang = {
+        field,
+        aura,
+        startingHP: source.hp,
+        stage: this.field.flowerGardenStage(),
+        full,
+        eligible: full || (YangBonusAuras[id] || []).includes(aura),
+        seen: [],
+        hits: [],
+        once: false,
+        messages: []
+      };
       if (!move.yang.eligible) return result;
       switch (id) {
         case "kaboom":
@@ -3751,7 +3784,7 @@ uncertain: false},
           move.ignoreNegativeOffensive = true;
           break;
         case "gunkrock":
-          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangSecondaryTargets = [];
           move.secondaries = move.secondaries?.map((s) => ({ ...s, chance: 40 }));
           if (move.secondary) move.secondary = { ...move.secondary, chance: 40 };
           break;
@@ -3768,12 +3801,12 @@ uncertain: false},
           move.ignoreScreens = true;
           break;
         case "infernalrage":
-          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangSecondaryTargets = [];
           move.yangPreserveField = full;
           move.secondaries = [...move.secondaries || [], { chance: 30, onHit(target2, source2, effect) {
             const attack = effect;
-            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.has(target2)) return;
-            attack.yang?.seen.add(target2);
+            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.includes(target2)) return;
+            attack.yang?.seen.push(target2);
             if (target2.trySetStatus("brn", source2, effect)) message(this, attack, "Charlotte\u2019s inferno left a searing brand!");
           } }];
           break;
@@ -3787,7 +3820,18 @@ uncertain: false},
       const move = active;
       const field = this.field.terrain, aura = this.field.auraField;
       const full = yangField(id, field);
-      move.yang = { field, aura, startingHP: source.hp, stage: this.field.flowerGardenStage(), full, eligible: full || (YangBonusAuras[id] || []).includes(aura), seen: /* @__PURE__ */ new Set(), hits: /* @__PURE__ */ new Map(), once: false, messages: /* @__PURE__ */ new Set() };
+      move.yang = {
+        field,
+        aura,
+        startingHP: source.hp,
+        stage: this.field.flowerGardenStage(),
+        full,
+        eligible: full || (YangBonusAuras[id] || []).includes(aura),
+        seen: [],
+        hits: [],
+        once: false,
+        messages: []
+      };
       if (!move.yang.eligible) return result;
       switch (id) {
         case "kaboom":
@@ -3797,7 +3841,7 @@ uncertain: false},
           move.ignoreNegativeOffensive = true;
           break;
         case "gunkrock":
-          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangSecondaryTargets = [];
           move.secondaries = move.secondaries?.map((s) => ({ ...s, chance: 40 }));
           if (move.secondary) move.secondary = { ...move.secondary, chance: 40 };
           break;
@@ -3814,12 +3858,12 @@ uncertain: false},
           move.ignoreScreens = true;
           break;
         case "infernalrage":
-          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangSecondaryTargets = [];
           move.yangPreserveField = full;
           move.secondaries = [...move.secondaries || [], { chance: 30, onHit(target2, source2, effect) {
             const attack = effect;
-            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.has(target2)) return;
-            attack.yang?.seen.add(target2);
+            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.includes(target2)) return;
+            attack.yang?.seen.push(target2);
             if (target2.trySetStatus("brn", source2, effect)) message(this, attack, "Charlotte\u2019s inferno left a searing brand!");
           } }];
           break;
@@ -3843,7 +3887,18 @@ uncertain: false},
       const move = active;
       const field = this.field.terrain, aura = this.field.auraField;
       const full = yangField(id, field);
-      move.yang = { field, aura, startingHP: source.hp, stage: this.field.flowerGardenStage(), full, eligible: full || (YangBonusAuras[id] || []).includes(aura), seen: /* @__PURE__ */ new Set(), hits: /* @__PURE__ */ new Map(), once: false, messages: /* @__PURE__ */ new Set() };
+      move.yang = {
+        field,
+        aura,
+        startingHP: source.hp,
+        stage: this.field.flowerGardenStage(),
+        full,
+        eligible: full || (YangBonusAuras[id] || []).includes(aura),
+        seen: [],
+        hits: [],
+        once: false,
+        messages: []
+      };
       if (!move.yang.eligible) return result;
       switch (id) {
         case "kaboom":
@@ -3853,7 +3908,7 @@ uncertain: false},
           move.ignoreNegativeOffensive = true;
           break;
         case "gunkrock":
-          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangSecondaryTargets = [];
           move.secondaries = move.secondaries?.map((s) => ({ ...s, chance: 40 }));
           if (move.secondary) move.secondary = { ...move.secondary, chance: 40 };
           break;
@@ -3870,12 +3925,12 @@ uncertain: false},
           move.ignoreScreens = true;
           break;
         case "infernalrage":
-          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangSecondaryTargets = [];
           move.yangPreserveField = full;
           move.secondaries = [...move.secondaries || [], { chance: 30, onHit(target2, source2, effect) {
             const attack = effect;
-            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.has(target2)) return;
-            attack.yang?.seen.add(target2);
+            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.includes(target2)) return;
+            attack.yang?.seen.push(target2);
             if (target2.trySetStatus("brn", source2, effect)) message(this, attack, "Charlotte\u2019s inferno left a searing brand!");
           } }];
           break;
@@ -3892,7 +3947,18 @@ uncertain: false},
       const move = active;
       const field = this.field.terrain, aura = this.field.auraField;
       const full = yangField(id, field);
-      move.yang = { field, aura, startingHP: source.hp, stage: this.field.flowerGardenStage(), full, eligible: full || (YangBonusAuras[id] || []).includes(aura), seen: /* @__PURE__ */ new Set(), hits: /* @__PURE__ */ new Map(), once: false, messages: /* @__PURE__ */ new Set() };
+      move.yang = {
+        field,
+        aura,
+        startingHP: source.hp,
+        stage: this.field.flowerGardenStage(),
+        full,
+        eligible: full || (YangBonusAuras[id] || []).includes(aura),
+        seen: [],
+        hits: [],
+        once: false,
+        messages: []
+      };
       if (!move.yang.eligible) return result;
       switch (id) {
         case "kaboom":
@@ -3902,7 +3968,7 @@ uncertain: false},
           move.ignoreNegativeOffensive = true;
           break;
         case "gunkrock":
-          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangSecondaryTargets = [];
           move.secondaries = move.secondaries?.map((s) => ({ ...s, chance: 40 }));
           if (move.secondary) move.secondary = { ...move.secondary, chance: 40 };
           break;
@@ -3919,12 +3985,12 @@ uncertain: false},
           move.ignoreScreens = true;
           break;
         case "infernalrage":
-          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangSecondaryTargets = [];
           move.yangPreserveField = full;
           move.secondaries = [...move.secondaries || [], { chance: 30, onHit(target2, source2, effect) {
             const attack = effect;
-            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.has(target2)) return;
-            attack.yang?.seen.add(target2);
+            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.includes(target2)) return;
+            attack.yang?.seen.push(target2);
             if (target2.trySetStatus("brn", source2, effect)) message(this, attack, "Charlotte\u2019s inferno left a searing brand!");
           } }];
           break;
@@ -3941,7 +4007,18 @@ uncertain: false},
       const move = active;
       const field = this.field.terrain, aura = this.field.auraField;
       const full = yangField(id, field);
-      move.yang = { field, aura, startingHP: source.hp, stage: this.field.flowerGardenStage(), full, eligible: full || (YangBonusAuras[id] || []).includes(aura), seen: /* @__PURE__ */ new Set(), hits: /* @__PURE__ */ new Map(), once: false, messages: /* @__PURE__ */ new Set() };
+      move.yang = {
+        field,
+        aura,
+        startingHP: source.hp,
+        stage: this.field.flowerGardenStage(),
+        full,
+        eligible: full || (YangBonusAuras[id] || []).includes(aura),
+        seen: [],
+        hits: [],
+        once: false,
+        messages: []
+      };
       if (!move.yang.eligible) return result;
       switch (id) {
         case "kaboom":
@@ -3951,7 +4028,7 @@ uncertain: false},
           move.ignoreNegativeOffensive = true;
           break;
         case "gunkrock":
-          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangSecondaryTargets = [];
           move.secondaries = move.secondaries?.map((s) => ({ ...s, chance: 40 }));
           if (move.secondary) move.secondary = { ...move.secondary, chance: 40 };
           break;
@@ -3968,12 +4045,12 @@ uncertain: false},
           move.ignoreScreens = true;
           break;
         case "infernalrage":
-          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangSecondaryTargets = [];
           move.yangPreserveField = full;
           move.secondaries = [...move.secondaries || [], { chance: 30, onHit(target2, source2, effect) {
             const attack = effect;
-            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.has(target2)) return;
-            attack.yang?.seen.add(target2);
+            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.includes(target2)) return;
+            attack.yang?.seen.push(target2);
             if (target2.trySetStatus("brn", source2, effect)) message(this, attack, "Charlotte\u2019s inferno left a searing brand!");
           } }];
           break;
@@ -3987,7 +4064,18 @@ uncertain: false},
       const move = active;
       const field = this.field.terrain, aura = this.field.auraField;
       const full = yangField(id, field);
-      move.yang = { field, aura, startingHP: source.hp, stage: this.field.flowerGardenStage(), full, eligible: full || (YangBonusAuras[id] || []).includes(aura), seen: /* @__PURE__ */ new Set(), hits: /* @__PURE__ */ new Map(), once: false, messages: /* @__PURE__ */ new Set() };
+      move.yang = {
+        field,
+        aura,
+        startingHP: source.hp,
+        stage: this.field.flowerGardenStage(),
+        full,
+        eligible: full || (YangBonusAuras[id] || []).includes(aura),
+        seen: [],
+        hits: [],
+        once: false,
+        messages: []
+      };
       if (!move.yang.eligible) return result;
       switch (id) {
         case "kaboom":
@@ -3997,7 +4085,7 @@ uncertain: false},
           move.ignoreNegativeOffensive = true;
           break;
         case "gunkrock":
-          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangSecondaryTargets = [];
           move.secondaries = move.secondaries?.map((s) => ({ ...s, chance: 40 }));
           if (move.secondary) move.secondary = { ...move.secondary, chance: 40 };
           break;
@@ -4014,12 +4102,12 @@ uncertain: false},
           move.ignoreScreens = true;
           break;
         case "infernalrage":
-          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangSecondaryTargets = [];
           move.yangPreserveField = full;
           move.secondaries = [...move.secondaries || [], { chance: 30, onHit(target2, source2, effect) {
             const attack = effect;
-            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.has(target2)) return;
-            attack.yang?.seen.add(target2);
+            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.includes(target2)) return;
+            attack.yang?.seen.push(target2);
             if (target2.trySetStatus("brn", source2, effect)) message(this, attack, "Charlotte\u2019s inferno left a searing brand!");
           } }];
           break;
@@ -4036,7 +4124,18 @@ uncertain: false},
       const move = active;
       const field = this.field.terrain, aura = this.field.auraField;
       const full = yangField(id, field);
-      move.yang = { field, aura, startingHP: source.hp, stage: this.field.flowerGardenStage(), full, eligible: full || (YangBonusAuras[id] || []).includes(aura), seen: /* @__PURE__ */ new Set(), hits: /* @__PURE__ */ new Map(), once: false, messages: /* @__PURE__ */ new Set() };
+      move.yang = {
+        field,
+        aura,
+        startingHP: source.hp,
+        stage: this.field.flowerGardenStage(),
+        full,
+        eligible: full || (YangBonusAuras[id] || []).includes(aura),
+        seen: [],
+        hits: [],
+        once: false,
+        messages: []
+      };
       if (!move.yang.eligible) return result;
       switch (id) {
         case "kaboom":
@@ -4046,7 +4145,7 @@ uncertain: false},
           move.ignoreNegativeOffensive = true;
           break;
         case "gunkrock":
-          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangSecondaryTargets = [];
           move.secondaries = move.secondaries?.map((s) => ({ ...s, chance: 40 }));
           if (move.secondary) move.secondary = { ...move.secondary, chance: 40 };
           break;
@@ -4063,12 +4162,12 @@ uncertain: false},
           move.ignoreScreens = true;
           break;
         case "infernalrage":
-          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangSecondaryTargets = [];
           move.yangPreserveField = full;
           move.secondaries = [...move.secondaries || [], { chance: 30, onHit(target2, source2, effect) {
             const attack = effect;
-            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.has(target2)) return;
-            attack.yang?.seen.add(target2);
+            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.includes(target2)) return;
+            attack.yang?.seen.push(target2);
             if (target2.trySetStatus("brn", source2, effect)) message(this, attack, "Charlotte\u2019s inferno left a searing brand!");
           } }];
           break;
@@ -4085,7 +4184,18 @@ uncertain: false},
       const move = active;
       const field = this.field.terrain, aura = this.field.auraField;
       const full = yangField(id, field);
-      move.yang = { field, aura, startingHP: source.hp, stage: this.field.flowerGardenStage(), full, eligible: full || (YangBonusAuras[id] || []).includes(aura), seen: /* @__PURE__ */ new Set(), hits: /* @__PURE__ */ new Map(), once: false, messages: /* @__PURE__ */ new Set() };
+      move.yang = {
+        field,
+        aura,
+        startingHP: source.hp,
+        stage: this.field.flowerGardenStage(),
+        full,
+        eligible: full || (YangBonusAuras[id] || []).includes(aura),
+        seen: [],
+        hits: [],
+        once: false,
+        messages: []
+      };
       if (!move.yang.eligible) return result;
       switch (id) {
         case "kaboom":
@@ -4095,7 +4205,7 @@ uncertain: false},
           move.ignoreNegativeOffensive = true;
           break;
         case "gunkrock":
-          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangSecondaryTargets = [];
           move.secondaries = move.secondaries?.map((s) => ({ ...s, chance: 40 }));
           if (move.secondary) move.secondary = { ...move.secondary, chance: 40 };
           break;
@@ -4112,12 +4222,12 @@ uncertain: false},
           move.ignoreScreens = true;
           break;
         case "infernalrage":
-          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangSecondaryTargets = [];
           move.yangPreserveField = full;
           move.secondaries = [...move.secondaries || [], { chance: 30, onHit(target2, source2, effect) {
             const attack = effect;
-            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.has(target2)) return;
-            attack.yang?.seen.add(target2);
+            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.includes(target2)) return;
+            attack.yang?.seen.push(target2);
             if (target2.trySetStatus("brn", source2, effect)) message(this, attack, "Charlotte\u2019s inferno left a searing brand!");
           } }];
           break;
@@ -4131,7 +4241,18 @@ uncertain: false},
       const move = active;
       const field = this.field.terrain, aura = this.field.auraField;
       const full = yangField(id, field);
-      move.yang = { field, aura, startingHP: source.hp, stage: this.field.flowerGardenStage(), full, eligible: full || (YangBonusAuras[id] || []).includes(aura), seen: /* @__PURE__ */ new Set(), hits: /* @__PURE__ */ new Map(), once: false, messages: /* @__PURE__ */ new Set() };
+      move.yang = {
+        field,
+        aura,
+        startingHP: source.hp,
+        stage: this.field.flowerGardenStage(),
+        full,
+        eligible: full || (YangBonusAuras[id] || []).includes(aura),
+        seen: [],
+        hits: [],
+        once: false,
+        messages: []
+      };
       if (!move.yang.eligible) return result;
       switch (id) {
         case "kaboom":
@@ -4141,7 +4262,7 @@ uncertain: false},
           move.ignoreNegativeOffensive = true;
           break;
         case "gunkrock":
-          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangSecondaryTargets = [];
           move.secondaries = move.secondaries?.map((s) => ({ ...s, chance: 40 }));
           if (move.secondary) move.secondary = { ...move.secondary, chance: 40 };
           break;
@@ -4158,12 +4279,12 @@ uncertain: false},
           move.ignoreScreens = true;
           break;
         case "infernalrage":
-          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangSecondaryTargets = [];
           move.yangPreserveField = full;
           move.secondaries = [...move.secondaries || [], { chance: 30, onHit(target2, source2, effect) {
             const attack = effect;
-            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.has(target2)) return;
-            attack.yang?.seen.add(target2);
+            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.includes(target2)) return;
+            attack.yang?.seen.push(target2);
             if (target2.trySetStatus("brn", source2, effect)) message(this, attack, "Charlotte\u2019s inferno left a searing brand!");
           } }];
           break;
@@ -4177,7 +4298,18 @@ uncertain: false},
       const move = active;
       const field = this.field.terrain, aura = this.field.auraField;
       const full = yangField(id, field);
-      move.yang = { field, aura, startingHP: source.hp, stage: this.field.flowerGardenStage(), full, eligible: full || (YangBonusAuras[id] || []).includes(aura), seen: /* @__PURE__ */ new Set(), hits: /* @__PURE__ */ new Map(), once: false, messages: /* @__PURE__ */ new Set() };
+      move.yang = {
+        field,
+        aura,
+        startingHP: source.hp,
+        stage: this.field.flowerGardenStage(),
+        full,
+        eligible: full || (YangBonusAuras[id] || []).includes(aura),
+        seen: [],
+        hits: [],
+        once: false,
+        messages: []
+      };
       if (!move.yang.eligible) return result;
       switch (id) {
         case "kaboom":
@@ -4187,7 +4319,7 @@ uncertain: false},
           move.ignoreNegativeOffensive = true;
           break;
         case "gunkrock":
-          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangSecondaryTargets = [];
           move.secondaries = move.secondaries?.map((s) => ({ ...s, chance: 40 }));
           if (move.secondary) move.secondary = { ...move.secondary, chance: 40 };
           break;
@@ -4204,12 +4336,12 @@ uncertain: false},
           move.ignoreScreens = true;
           break;
         case "infernalrage":
-          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangSecondaryTargets = [];
           move.yangPreserveField = full;
           move.secondaries = [...move.secondaries || [], { chance: 30, onHit(target2, source2, effect) {
             const attack = effect;
-            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.has(target2)) return;
-            attack.yang?.seen.add(target2);
+            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.includes(target2)) return;
+            attack.yang?.seen.push(target2);
             if (target2.trySetStatus("brn", source2, effect)) message(this, attack, "Charlotte\u2019s inferno left a searing brand!");
           } }];
           break;
@@ -4226,7 +4358,18 @@ uncertain: false},
       const move = active;
       const field = this.field.terrain, aura = this.field.auraField;
       const full = yangField(id, field);
-      move.yang = { field, aura, startingHP: source.hp, stage: this.field.flowerGardenStage(), full, eligible: full || (YangBonusAuras[id] || []).includes(aura), seen: /* @__PURE__ */ new Set(), hits: /* @__PURE__ */ new Map(), once: false, messages: /* @__PURE__ */ new Set() };
+      move.yang = {
+        field,
+        aura,
+        startingHP: source.hp,
+        stage: this.field.flowerGardenStage(),
+        full,
+        eligible: full || (YangBonusAuras[id] || []).includes(aura),
+        seen: [],
+        hits: [],
+        once: false,
+        messages: []
+      };
       if (!move.yang.eligible) return result;
       switch (id) {
         case "kaboom":
@@ -4236,7 +4379,7 @@ uncertain: false},
           move.ignoreNegativeOffensive = true;
           break;
         case "gunkrock":
-          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangSecondaryTargets = [];
           move.secondaries = move.secondaries?.map((s) => ({ ...s, chance: 40 }));
           if (move.secondary) move.secondary = { ...move.secondary, chance: 40 };
           break;
@@ -4253,12 +4396,12 @@ uncertain: false},
           move.ignoreScreens = true;
           break;
         case "infernalrage":
-          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangSecondaryTargets = [];
           move.yangPreserveField = full;
           move.secondaries = [...move.secondaries || [], { chance: 30, onHit(target2, source2, effect) {
             const attack = effect;
-            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.has(target2)) return;
-            attack.yang?.seen.add(target2);
+            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.includes(target2)) return;
+            attack.yang?.seen.push(target2);
             if (target2.trySetStatus("brn", source2, effect)) message(this, attack, "Charlotte\u2019s inferno left a searing brand!");
           } }];
           break;
@@ -4272,7 +4415,18 @@ uncertain: false},
       const move = active;
       const field = this.field.terrain, aura = this.field.auraField;
       const full = yangField(id, field);
-      move.yang = { field, aura, startingHP: source.hp, stage: this.field.flowerGardenStage(), full, eligible: full || (YangBonusAuras[id] || []).includes(aura), seen: /* @__PURE__ */ new Set(), hits: /* @__PURE__ */ new Map(), once: false, messages: /* @__PURE__ */ new Set() };
+      move.yang = {
+        field,
+        aura,
+        startingHP: source.hp,
+        stage: this.field.flowerGardenStage(),
+        full,
+        eligible: full || (YangBonusAuras[id] || []).includes(aura),
+        seen: [],
+        hits: [],
+        once: false,
+        messages: []
+      };
       if (!move.yang.eligible) return result;
       switch (id) {
         case "kaboom":
@@ -4282,7 +4436,7 @@ uncertain: false},
           move.ignoreNegativeOffensive = true;
           break;
         case "gunkrock":
-          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangSecondaryTargets = [];
           move.secondaries = move.secondaries?.map((s) => ({ ...s, chance: 40 }));
           if (move.secondary) move.secondary = { ...move.secondary, chance: 40 };
           break;
@@ -4299,12 +4453,12 @@ uncertain: false},
           move.ignoreScreens = true;
           break;
         case "infernalrage":
-          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangSecondaryTargets = [];
           move.yangPreserveField = full;
           move.secondaries = [...move.secondaries || [], { chance: 30, onHit(target2, source2, effect) {
             const attack = effect;
-            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.has(target2)) return;
-            attack.yang?.seen.add(target2);
+            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.includes(target2)) return;
+            attack.yang?.seen.push(target2);
             if (target2.trySetStatus("brn", source2, effect)) message(this, attack, "Charlotte\u2019s inferno left a searing brand!");
           } }];
           break;
@@ -4318,7 +4472,18 @@ uncertain: false},
       const move = active;
       const field = this.field.terrain, aura = this.field.auraField;
       const full = yangField(id, field);
-      move.yang = { field, aura, startingHP: source.hp, stage: this.field.flowerGardenStage(), full, eligible: full || (YangBonusAuras[id] || []).includes(aura), seen: /* @__PURE__ */ new Set(), hits: /* @__PURE__ */ new Map(), once: false, messages: /* @__PURE__ */ new Set() };
+      move.yang = {
+        field,
+        aura,
+        startingHP: source.hp,
+        stage: this.field.flowerGardenStage(),
+        full,
+        eligible: full || (YangBonusAuras[id] || []).includes(aura),
+        seen: [],
+        hits: [],
+        once: false,
+        messages: []
+      };
       if (!move.yang.eligible) return result;
       switch (id) {
         case "kaboom":
@@ -4328,7 +4493,7 @@ uncertain: false},
           move.ignoreNegativeOffensive = true;
           break;
         case "gunkrock":
-          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangSecondaryTargets = [];
           move.secondaries = move.secondaries?.map((s) => ({ ...s, chance: 40 }));
           if (move.secondary) move.secondary = { ...move.secondary, chance: 40 };
           break;
@@ -4345,12 +4510,12 @@ uncertain: false},
           move.ignoreScreens = true;
           break;
         case "infernalrage":
-          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangSecondaryTargets = [];
           move.yangPreserveField = full;
           move.secondaries = [...move.secondaries || [], { chance: 30, onHit(target2, source2, effect) {
             const attack = effect;
-            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.has(target2)) return;
-            attack.yang?.seen.add(target2);
+            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.includes(target2)) return;
+            attack.yang?.seen.push(target2);
             if (target2.trySetStatus("brn", source2, effect)) message(this, attack, "Charlotte\u2019s inferno left a searing brand!");
           } }];
           break;
@@ -4364,7 +4529,18 @@ uncertain: false},
       const move = active;
       const field = this.field.terrain, aura = this.field.auraField;
       const full = yangField(id, field);
-      move.yang = { field, aura, startingHP: source.hp, stage: this.field.flowerGardenStage(), full, eligible: full || (YangBonusAuras[id] || []).includes(aura), seen: /* @__PURE__ */ new Set(), hits: /* @__PURE__ */ new Map(), once: false, messages: /* @__PURE__ */ new Set() };
+      move.yang = {
+        field,
+        aura,
+        startingHP: source.hp,
+        stage: this.field.flowerGardenStage(),
+        full,
+        eligible: full || (YangBonusAuras[id] || []).includes(aura),
+        seen: [],
+        hits: [],
+        once: false,
+        messages: []
+      };
       if (!move.yang.eligible) return result;
       switch (id) {
         case "kaboom":
@@ -4374,7 +4550,7 @@ uncertain: false},
           move.ignoreNegativeOffensive = true;
           break;
         case "gunkrock":
-          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangSecondaryTargets = [];
           move.secondaries = move.secondaries?.map((s) => ({ ...s, chance: 40 }));
           if (move.secondary) move.secondary = { ...move.secondary, chance: 40 };
           break;
@@ -4391,12 +4567,12 @@ uncertain: false},
           move.ignoreScreens = true;
           break;
         case "infernalrage":
-          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangSecondaryTargets = [];
           move.yangPreserveField = full;
           move.secondaries = [...move.secondaries || [], { chance: 30, onHit(target2, source2, effect) {
             const attack = effect;
-            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.has(target2)) return;
-            attack.yang?.seen.add(target2);
+            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.includes(target2)) return;
+            attack.yang?.seen.push(target2);
             if (target2.trySetStatus("brn", source2, effect)) message(this, attack, "Charlotte\u2019s inferno left a searing brand!");
           } }];
           break;
@@ -4410,7 +4586,18 @@ uncertain: false},
       const move = active;
       const field = this.field.terrain, aura = this.field.auraField;
       const full = yangField(id, field);
-      move.yang = { field, aura, startingHP: source.hp, stage: this.field.flowerGardenStage(), full, eligible: full || (YangBonusAuras[id] || []).includes(aura), seen: /* @__PURE__ */ new Set(), hits: /* @__PURE__ */ new Map(), once: false, messages: /* @__PURE__ */ new Set() };
+      move.yang = {
+        field,
+        aura,
+        startingHP: source.hp,
+        stage: this.field.flowerGardenStage(),
+        full,
+        eligible: full || (YangBonusAuras[id] || []).includes(aura),
+        seen: [],
+        hits: [],
+        once: false,
+        messages: []
+      };
       if (!move.yang.eligible) return result;
       switch (id) {
         case "kaboom":
@@ -4420,7 +4607,7 @@ uncertain: false},
           move.ignoreNegativeOffensive = true;
           break;
         case "gunkrock":
-          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangSecondaryTargets = [];
           move.secondaries = move.secondaries?.map((s) => ({ ...s, chance: 40 }));
           if (move.secondary) move.secondary = { ...move.secondary, chance: 40 };
           break;
@@ -4437,12 +4624,12 @@ uncertain: false},
           move.ignoreScreens = true;
           break;
         case "infernalrage":
-          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangSecondaryTargets = [];
           move.yangPreserveField = full;
           move.secondaries = [...move.secondaries || [], { chance: 30, onHit(target2, source2, effect) {
             const attack = effect;
-            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.has(target2)) return;
-            attack.yang?.seen.add(target2);
+            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.includes(target2)) return;
+            attack.yang?.seen.push(target2);
             if (target2.trySetStatus("brn", source2, effect)) message(this, attack, "Charlotte\u2019s inferno left a searing brand!");
           } }];
           break;
@@ -4456,7 +4643,18 @@ uncertain: false},
       const move = active;
       const field = this.field.terrain, aura = this.field.auraField;
       const full = yangField(id, field);
-      move.yang = { field, aura, startingHP: source.hp, stage: this.field.flowerGardenStage(), full, eligible: full || (YangBonusAuras[id] || []).includes(aura), seen: /* @__PURE__ */ new Set(), hits: /* @__PURE__ */ new Map(), once: false, messages: /* @__PURE__ */ new Set() };
+      move.yang = {
+        field,
+        aura,
+        startingHP: source.hp,
+        stage: this.field.flowerGardenStage(),
+        full,
+        eligible: full || (YangBonusAuras[id] || []).includes(aura),
+        seen: [],
+        hits: [],
+        once: false,
+        messages: []
+      };
       if (!move.yang.eligible) return result;
       switch (id) {
         case "kaboom":
@@ -4466,7 +4664,7 @@ uncertain: false},
           move.ignoreNegativeOffensive = true;
           break;
         case "gunkrock":
-          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangSecondaryTargets = [];
           move.secondaries = move.secondaries?.map((s) => ({ ...s, chance: 40 }));
           if (move.secondary) move.secondary = { ...move.secondary, chance: 40 };
           break;
@@ -4483,12 +4681,12 @@ uncertain: false},
           move.ignoreScreens = true;
           break;
         case "infernalrage":
-          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangSecondaryTargets = [];
           move.yangPreserveField = full;
           move.secondaries = [...move.secondaries || [], { chance: 30, onHit(target2, source2, effect) {
             const attack = effect;
-            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.has(target2)) return;
-            attack.yang?.seen.add(target2);
+            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.includes(target2)) return;
+            attack.yang?.seen.push(target2);
             if (target2.trySetStatus("brn", source2, effect)) message(this, attack, "Charlotte\u2019s inferno left a searing brand!");
           } }];
           break;
@@ -4502,7 +4700,18 @@ uncertain: false},
       const move = active;
       const field = this.field.terrain, aura = this.field.auraField;
       const full = yangField(id, field);
-      move.yang = { field, aura, startingHP: source.hp, stage: this.field.flowerGardenStage(), full, eligible: full || (YangBonusAuras[id] || []).includes(aura), seen: /* @__PURE__ */ new Set(), hits: /* @__PURE__ */ new Map(), once: false, messages: /* @__PURE__ */ new Set() };
+      move.yang = {
+        field,
+        aura,
+        startingHP: source.hp,
+        stage: this.field.flowerGardenStage(),
+        full,
+        eligible: full || (YangBonusAuras[id] || []).includes(aura),
+        seen: [],
+        hits: [],
+        once: false,
+        messages: []
+      };
       if (!move.yang.eligible) return result;
       switch (id) {
         case "kaboom":
@@ -4512,7 +4721,7 @@ uncertain: false},
           move.ignoreNegativeOffensive = true;
           break;
         case "gunkrock":
-          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangSecondaryTargets = [];
           move.secondaries = move.secondaries?.map((s) => ({ ...s, chance: 40 }));
           if (move.secondary) move.secondary = { ...move.secondary, chance: 40 };
           break;
@@ -4529,12 +4738,12 @@ uncertain: false},
           move.ignoreScreens = true;
           break;
         case "infernalrage":
-          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangSecondaryTargets = [];
           move.yangPreserveField = full;
           move.secondaries = [...move.secondaries || [], { chance: 30, onHit(target2, source2, effect) {
             const attack = effect;
-            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.has(target2)) return;
-            attack.yang?.seen.add(target2);
+            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.includes(target2)) return;
+            attack.yang?.seen.push(target2);
             if (target2.trySetStatus("brn", source2, effect)) message(this, attack, "Charlotte\u2019s inferno left a searing brand!");
           } }];
           break;
@@ -4548,7 +4757,18 @@ uncertain: false},
       const move = active;
       const field = this.field.terrain, aura = this.field.auraField;
       const full = yangField(id, field);
-      move.yang = { field, aura, startingHP: source.hp, stage: this.field.flowerGardenStage(), full, eligible: full || (YangBonusAuras[id] || []).includes(aura), seen: /* @__PURE__ */ new Set(), hits: /* @__PURE__ */ new Map(), once: false, messages: /* @__PURE__ */ new Set() };
+      move.yang = {
+        field,
+        aura,
+        startingHP: source.hp,
+        stage: this.field.flowerGardenStage(),
+        full,
+        eligible: full || (YangBonusAuras[id] || []).includes(aura),
+        seen: [],
+        hits: [],
+        once: false,
+        messages: []
+      };
       if (!move.yang.eligible) return result;
       switch (id) {
         case "kaboom":
@@ -4558,7 +4778,7 @@ uncertain: false},
           move.ignoreNegativeOffensive = true;
           break;
         case "gunkrock":
-          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangSecondaryTargets = [];
           move.secondaries = move.secondaries?.map((s) => ({ ...s, chance: 40 }));
           if (move.secondary) move.secondary = { ...move.secondary, chance: 40 };
           break;
@@ -4575,12 +4795,12 @@ uncertain: false},
           move.ignoreScreens = true;
           break;
         case "infernalrage":
-          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangSecondaryTargets = [];
           move.yangPreserveField = full;
           move.secondaries = [...move.secondaries || [], { chance: 30, onHit(target2, source2, effect) {
             const attack = effect;
-            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.has(target2)) return;
-            attack.yang?.seen.add(target2);
+            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.includes(target2)) return;
+            attack.yang?.seen.push(target2);
             if (target2.trySetStatus("brn", source2, effect)) message(this, attack, "Charlotte\u2019s inferno left a searing brand!");
           } }];
           break;
@@ -4594,7 +4814,18 @@ uncertain: false},
       const move = active;
       const field = this.field.terrain, aura = this.field.auraField;
       const full = yangField(id, field);
-      move.yang = { field, aura, startingHP: source.hp, stage: this.field.flowerGardenStage(), full, eligible: full || (YangBonusAuras[id] || []).includes(aura), seen: /* @__PURE__ */ new Set(), hits: /* @__PURE__ */ new Map(), once: false, messages: /* @__PURE__ */ new Set() };
+      move.yang = {
+        field,
+        aura,
+        startingHP: source.hp,
+        stage: this.field.flowerGardenStage(),
+        full,
+        eligible: full || (YangBonusAuras[id] || []).includes(aura),
+        seen: [],
+        hits: [],
+        once: false,
+        messages: []
+      };
       if (!move.yang.eligible) return result;
       switch (id) {
         case "kaboom":
@@ -4604,7 +4835,7 @@ uncertain: false},
           move.ignoreNegativeOffensive = true;
           break;
         case "gunkrock":
-          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangSecondaryTargets = [];
           move.secondaries = move.secondaries?.map((s) => ({ ...s, chance: 40 }));
           if (move.secondary) move.secondary = { ...move.secondary, chance: 40 };
           break;
@@ -4621,12 +4852,12 @@ uncertain: false},
           move.ignoreScreens = true;
           break;
         case "infernalrage":
-          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangSecondaryTargets = [];
           move.yangPreserveField = full;
           move.secondaries = [...move.secondaries || [], { chance: 30, onHit(target2, source2, effect) {
             const attack = effect;
-            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.has(target2)) return;
-            attack.yang?.seen.add(target2);
+            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.includes(target2)) return;
+            attack.yang?.seen.push(target2);
             if (target2.trySetStatus("brn", source2, effect)) message(this, attack, "Charlotte\u2019s inferno left a searing brand!");
           } }];
           break;
@@ -4640,7 +4871,18 @@ uncertain: false},
       const move = active;
       const field = this.field.terrain, aura = this.field.auraField;
       const full = yangField(id, field);
-      move.yang = { field, aura, startingHP: source.hp, stage: this.field.flowerGardenStage(), full, eligible: full || (YangBonusAuras[id] || []).includes(aura), seen: /* @__PURE__ */ new Set(), hits: /* @__PURE__ */ new Map(), once: false, messages: /* @__PURE__ */ new Set() };
+      move.yang = {
+        field,
+        aura,
+        startingHP: source.hp,
+        stage: this.field.flowerGardenStage(),
+        full,
+        eligible: full || (YangBonusAuras[id] || []).includes(aura),
+        seen: [],
+        hits: [],
+        once: false,
+        messages: []
+      };
       if (!move.yang.eligible) return result;
       switch (id) {
         case "kaboom":
@@ -4650,7 +4892,7 @@ uncertain: false},
           move.ignoreNegativeOffensive = true;
           break;
         case "gunkrock":
-          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangSecondaryTargets = [];
           move.secondaries = move.secondaries?.map((s) => ({ ...s, chance: 40 }));
           if (move.secondary) move.secondary = { ...move.secondary, chance: 40 };
           break;
@@ -4667,12 +4909,12 @@ uncertain: false},
           move.ignoreScreens = true;
           break;
         case "infernalrage":
-          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangSecondaryTargets = [];
           move.yangPreserveField = full;
           move.secondaries = [...move.secondaries || [], { chance: 30, onHit(target2, source2, effect) {
             const attack = effect;
-            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.has(target2)) return;
-            attack.yang?.seen.add(target2);
+            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.includes(target2)) return;
+            attack.yang?.seen.push(target2);
             if (target2.trySetStatus("brn", source2, effect)) message(this, attack, "Charlotte\u2019s inferno left a searing brand!");
           } }];
           break;
@@ -4686,7 +4928,18 @@ uncertain: false},
       const move = active;
       const field = this.field.terrain, aura = this.field.auraField;
       const full = yangField(id, field);
-      move.yang = { field, aura, startingHP: source.hp, stage: this.field.flowerGardenStage(), full, eligible: full || (YangBonusAuras[id] || []).includes(aura), seen: /* @__PURE__ */ new Set(), hits: /* @__PURE__ */ new Map(), once: false, messages: /* @__PURE__ */ new Set() };
+      move.yang = {
+        field,
+        aura,
+        startingHP: source.hp,
+        stage: this.field.flowerGardenStage(),
+        full,
+        eligible: full || (YangBonusAuras[id] || []).includes(aura),
+        seen: [],
+        hits: [],
+        once: false,
+        messages: []
+      };
       if (!move.yang.eligible) return result;
       switch (id) {
         case "kaboom":
@@ -4696,7 +4949,7 @@ uncertain: false},
           move.ignoreNegativeOffensive = true;
           break;
         case "gunkrock":
-          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangSecondaryTargets = [];
           move.secondaries = move.secondaries?.map((s) => ({ ...s, chance: 40 }));
           if (move.secondary) move.secondary = { ...move.secondary, chance: 40 };
           break;
@@ -4713,12 +4966,12 @@ uncertain: false},
           move.ignoreScreens = true;
           break;
         case "infernalrage":
-          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangSecondaryTargets = [];
           move.yangPreserveField = full;
           move.secondaries = [...move.secondaries || [], { chance: 30, onHit(target2, source2, effect) {
             const attack = effect;
-            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.has(target2)) return;
-            attack.yang?.seen.add(target2);
+            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.includes(target2)) return;
+            attack.yang?.seen.push(target2);
             if (target2.trySetStatus("brn", source2, effect)) message(this, attack, "Charlotte\u2019s inferno left a searing brand!");
           } }];
           break;
@@ -4732,7 +4985,18 @@ uncertain: false},
       const move = active;
       const field = this.field.terrain, aura = this.field.auraField;
       const full = yangField(id, field);
-      move.yang = { field, aura, startingHP: source.hp, stage: this.field.flowerGardenStage(), full, eligible: full || (YangBonusAuras[id] || []).includes(aura), seen: /* @__PURE__ */ new Set(), hits: /* @__PURE__ */ new Map(), once: false, messages: /* @__PURE__ */ new Set() };
+      move.yang = {
+        field,
+        aura,
+        startingHP: source.hp,
+        stage: this.field.flowerGardenStage(),
+        full,
+        eligible: full || (YangBonusAuras[id] || []).includes(aura),
+        seen: [],
+        hits: [],
+        once: false,
+        messages: []
+      };
       if (!move.yang.eligible) return result;
       switch (id) {
         case "kaboom":
@@ -4742,7 +5006,7 @@ uncertain: false},
           move.ignoreNegativeOffensive = true;
           break;
         case "gunkrock":
-          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangSecondaryTargets = [];
           move.secondaries = move.secondaries?.map((s) => ({ ...s, chance: 40 }));
           if (move.secondary) move.secondary = { ...move.secondary, chance: 40 };
           break;
@@ -4759,12 +5023,12 @@ uncertain: false},
           move.ignoreScreens = true;
           break;
         case "infernalrage":
-          move.yangSecondaryTargets = /* @__PURE__ */ new Set();
+          move.yangSecondaryTargets = [];
           move.yangPreserveField = full;
           move.secondaries = [...move.secondaries || [], { chance: 30, onHit(target2, source2, effect) {
             const attack = effect;
-            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.has(target2)) return;
-            attack.yang?.seen.add(target2);
+            if (target2.isAlly(source2) || (target2.getMoveHitData(effect).damage || 0) <= 0 || attack.yang?.seen.includes(target2)) return;
+            attack.yang?.seen.push(target2);
             if (target2.trySetStatus("brn", source2, effect)) message(this, attack, "Charlotte\u2019s inferno left a searing brand!");
           } }];
           break;

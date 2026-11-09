@@ -19202,7 +19202,7 @@ for (const [id, update] of Object.entries({
 	},
 	"blastoise": {
 		"abilities": {
-			"0": "Water Barrage",
+			"0": "Tidal Monarch",
 			"1": "Bulletproof",
 			"H": "Hydraulic Armor",
 		},
@@ -20938,7 +20938,7 @@ for (const [id, update] of Object.entries({
 	},
 	"charizard": {
 		"abilities": {
-			"0": "Unbound Blaze",
+			"0": "Blazing Monarch",
 			"1": "Infernal Dominion",
 			"H": "Solar Power",
 		},
@@ -20961,7 +20961,7 @@ for (const [id, update] of Object.entries({
 	},
 	"charizardalt": {
 		"abilities": {
-			"0": "Unbound Blaze",
+			"0": "Blazing Monarch",
 			"1": "Infernal Dominion",
 			"H": "Solar Power",
 		},
@@ -49949,7 +49949,7 @@ for (const [id, update] of Object.entries({
 	},
 	"venusaur": {
 		"abilities": {
-			"0": "Pollen Bloom",
+			"0": "Verdant Monarch",
 			"1": "Soothing Bouquet",
 			"H": "Chlorophyll",
 		},
@@ -57140,6 +57140,7 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	"atrocity": [
 		"unboundblaze",
 		"fireward",
+		"toughclaws",
 	],
 	"wickedsnare": [
 		"intimidate",
@@ -58682,6 +58683,7 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	],
 	"infernaldominion": [
 		"intimidate",
+		"fireward",
 	],
 	"hydraulicarmor": [
 		"stamina",
@@ -60801,8 +60803,8 @@ const CUSTOM_SHARED_PASSIVE_DESCRIPTIONS: {[id: string]: {passive: string; desc:
 	},
 	"stormsovereign": {
 		"passive": "noguard",
-		"shortDesc": "Updraft (Competitive), eight-turn Strong Winds and opposing Flying chip.",
-		"desc": "Summons replaceable Strong Winds for 8 turns on entry. Each turn, non-immune foes take Flying damage equal to 1/16 base maximum HP; type effectiveness scales this chip only in Free-for-All. Flying-type foes are immune.Full Updraft: Full Competitive: opposing stat drops raise Special Attack by 2 outside Chessboard; on Chessboard, instead boosts damage with missing HP up to 2x at 20% HP. Flying moves ignore evasion boosts. Once per switch-in, the first Flying attack dealing opposing HP damage raises the living adjacent ally with the lowest HP percentage by 1 Speed stage, or the holder if no such ally exists. Only one recipient is boosted; ability restarts and Mega Evolution do not reset the entry allowance.",
+		"shortDesc": "Updraft (Competitive); eight-turn Strong Winds; Flying attacks bypass Substitute.",
+		"desc": "Summons replaceable Strong Winds for 8 turns on entry. Damaging Flying moves bypass Substitute. Full Updraft: Full Competitive: opposing stat drops raise Special Attack by 2 outside Chessboard; on Chessboard, instead boosts damage with missing HP up to 2x at 20% HP. Flying moves ignore evasion boosts. Once per switch-in, the first Flying attack dealing opposing HP damage raises the living adjacent ally with the lowest HP percentage by 1 Speed stage, or the holder if no such ally exists. Only one recipient is boosted; ability restarts and Mega Evolution do not reset the entry allowance.",
 	},
 	"lunarorbit": {
 		"passive": "magicbounce",
@@ -60826,8 +60828,8 @@ const CUSTOM_SHARED_PASSIVE_DESCRIPTIONS: {[id: string]: {passive: string; desc:
 	},
 	"sandsovereign": {
 		"passive": "sandstream",
-		"desc": "Sets or refreshes Sandstorm to 8 turns on entry. Full local Solid Rock. Its retained matchup effect keeps damaging Rock moves Rock-type with normal Rock STAB, but uses the better overall Rock or Ground type-chart matchup; Ground-immune typings do not replace the Rock matchup. Manually used Arenite Wall lasts 8 turns. Each turn, non-immune foes take Rock damage equal to 1/16 max HP; type effectiveness scales this chip only in Free-for-All.",
-		"shortDesc": "Solid Rock; better Rock/Ground matchup; eight-turn sand and Rock chip.",
+		"desc": "Sets or refreshes Sandstorm for 8 turns. Includes Solid Rock. Damaging Rock moves use the better Rock or Ground type-chart matchup while remaining Rock-type; Ground-immune typings do not replace the Rock matchup. Manually used Arenite Wall lasts 8 turns. After a Rock or Dark attack damages opposing HP, removes Reflect and Light Screen from that side.",
+		"shortDesc": "Solid Rock; eight-turn sand; Rock/Ground matchup; Rock/Dark hits break screens.",
 	},
 	"ironvise": {
 		"passive": "intimidate",
@@ -60871,8 +60873,8 @@ const CUSTOM_SHARED_PASSIVE_DESCRIPTIONS: {[id: string]: {passive: string; desc:
 	},
 	"frostsovereign": {
 		"passive": "snowwarning",
-		"desc": "Sets or refreshes Snow Warning weather to 8 turns on entry. Full local Ice Body and Filter, and gains full Soundproof immunity to other Pokemon's sound moves. Manually used Aurora Veil lasts 8 turns. Each turn, non-immune foes take Ice damage equal to 1/16 max HP; type effectiveness scales this chip only in Free-for-All.",
-		"shortDesc": "Ice Body + Filter + Soundproof; eight-turn snow and Ice chip.",
+		"desc": "Sets Hail for 8 turns on entry. Includes Ice Body, Filter and Soundproof. Manually used Aurora Veil lasts 8 turns. Once per switch-in, its first Ice attack to damage opposing HP lowers each damaged foe's Speed by 1 stage, once per target. Normal stat-drop protections apply.",
+		"shortDesc": "Ice Body + Filter + Soundproof; eight-turn hail; first Ice attack lowers foe Speed.",
 	},
 	"sacrededge": {
 		"passive": "sharpness",
@@ -61066,8 +61068,8 @@ const CUSTOM_SHARED_PASSIVE_DESCRIPTIONS: {[id: string]: {passive: string; desc:
 	},
 	"rainsovereign": {
 		"passive": "drizzle",
-		"shortDesc": "Extends entry rain to 8 turns; Electric/Water/Flying STAB and opposing Water chip.",
-		"desc": "Rain Sovereign extends that rain to eight turns and has Electric, Water and Flying STAB plus opposing Water chip each turn, regardless of weather. Existing immunities and Free-for-All type scaling remain.",
+		"shortDesc": "Eight-turn Rain; Electric/Water/Flying STAB; matching hits heal an ally once per turn.",
+		"desc": "Sets Rain for 8 turns on entry. Electric, Water and Flying moves receive STAB. Once per turn, after one of those moves damages opposing HP, heals the living active ally with the lowest HP percentage by 1/16 max HP. Heals itself when no living active ally exists.",
 	},
 	"verdantsanctuary": {
 		"passive": "grassysurge",
@@ -61706,8 +61708,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Verdant Crown",
 		"num": 10024,
 		"gen": 9,
-		"desc": "Pollen Bloom supplies Thick Fat and Unaware: Fire and Ice attacks use half the attacking stat; ignores opposing stat stages through local Unaware and reveals Illusions on entry. Each turn, drains 1/16 base max HP from non-Grass foes and heals the damage actually dealt; Grass immunities apply, and type effectiveness scales this only in Free-for-All. Friend Guard reduces attack damage to allies by 25%, without protecting the holder. Fairy Tale, New World, Cold Eclipse and Starlight Arena entry grant +1 Defense and Sp. Def; the latter three give 1.5x move power.",
-		"shortDesc": "Pollen Bloom + Friend Guard; field bonuses.",
+		"desc": "Verdant Monarch supplies Thick Fat and Unaware: Fire and Ice attacks use half the attacking stat; ignores opposing stat stages through local Unaware and reveals Illusions on entry. Friend Guard reduces attack damage to allies by 25%, without protecting the holder. Fairy Tale, New World, Cold Eclipse and Starlight Arena entry grant +1 Defense and Sp. Def; the latter three give 1.5x move power. All moves have 1.1x accuracy.",
+		"shortDesc": "Verdant Monarch + Friend Guard; field bonuses; all moves have 1.1x accuracy.",
 		"rating": 4.5,
 		"flags": {
 			"breakable": 1,
@@ -62055,8 +62057,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Atrocity",
 		"num": 10126,
 		"gen": 9,
-		"desc": "Unbound Blaze + Fire Ward",
-		"shortDesc": "Unbound Blaze + Fire Ward",
+		"desc": "Blazing Monarch + Fire Ward + Tough Claws. All moves have 1.1x accuracy.",
+		"shortDesc": "Blazing Monarch + Fire Ward + Tough Claws; all moves have 1.1x accuracy.",
 		"rating": 5,
 		"flags": {
 			"cantsuppress": 1,
@@ -62706,8 +62708,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Burning Crown",
 		"num": 10023,
 		"gen": 9,
-		"desc": "On entry, lowers adjacent foes Attack by 1 under normal Intimidate rules. Unbound Blaze converts eligible Normal moves to Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Prevents freezing outside Cold Eclipse and cures freeze; incoming Water and Ice attacks use half the offensive stat. Dragon's Den and Infernal Eclipse block Fire moves. Dragon's Den, Volcanic and Infernal Eclipse entry give +1 Defense and Sp. Def. At turn end, foes take Fire damage of 1/16 base max HP, doubled if burned or the holder used Fire/Dragon that turn. Fire immunities apply; effectiveness scales chip only in Free-for-All. Levitate grants normal airborne Ground and grounded-hazard protection. Has one 20% attack-damage reduction. New World, Cold Eclipse and Starlight Arena retain 1.5x move power.",
-		"shortDesc": "Intimidate + Unbound Blaze + Levitate.",
+		"desc": "On entry, lowers adjacent foes Attack by 1 under normal Intimidate rules. Blazing Monarch converts eligible Normal moves to Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Prevents freezing outside Cold Eclipse and cures freeze; incoming Water and Ice attacks use half the offensive stat. Dragon's Den and Infernal Eclipse block Fire moves. Dragon's Den, Volcanic and Infernal Eclipse entry give +1 Defense and Sp. Def. Levitate grants normal airborne Ground and grounded-hazard protection. Has one 20% attack-damage reduction. New World, Cold Eclipse and Starlight Arena retain 1.5x move power. All moves have 1.1x accuracy.",
+		"shortDesc": "Intimidate + Blazing Monarch + Levitate; all moves have 1.1x accuracy.",
 		"rating": 4.5,
 		"flags": {
 			"breakable": 1,
@@ -65044,8 +65046,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Tidal Crown",
 		"num": 10025,
 		"gen": 9,
-		"desc": "Stalwart bypasses redirection and gives +1 Sp. Atk on New World, Starlight Arena, Fairy Tale or Chessboard entry. Water chip cycles 1/16, 2/16, then 3/16 foe base max HP; Water immunities apply, and effectiveness scales chip only in Free-for-All. Shell Armor prevents critical hits and reduces attack damage by 20%; Fairy Tale and Dragon Den entry give +1 Defense, and opposing stat drops trigger +2 Sp. Def. Guardian Presence boosts allies move power by 1.3x, or 1.5x on Haunted, Bewitched Woods, Holy and Psychic fields, and reduces their attack damage by 25%; neither applies to the holder. During Electric Aura or Electric Terrain, Murkwater Surface, Water Surface, Underwater, Midnight Zone, Factory and Short-Circuit, redirects and absorbs Electric moves for +1 Attack and Sp. Atk. Existing Fairy Tale, New World, Cold Eclipse and Starlight Arena entry/terrain bonuses give +1 Defense and Sp. Def; the latter three retain 1.5x move power.",
-		"shortDesc": "Water Barrage (without Dual Wield), Shell Armor and Guardian Presence.",
+		"desc": "Stalwart bypasses redirection and gives +1 Sp. Atk on New World, Starlight Arena, Fairy Tale or Chessboard entry. Shell Armor prevents critical hits and reduces attack damage by 20%; Fairy Tale and Dragon Den entry give +1 Defense, and opposing stat drops trigger +2 Sp. Def. Guardian Presence boosts allies move power by 1.3x, or 1.5x on Haunted, Bewitched Woods, Holy and Psychic fields, and reduces their attack damage by 25%; neither applies to the holder. During Electric Aura or Electric Terrain, Murkwater Surface, Water Surface, Underwater, Midnight Zone, Factory and Short-Circuit, redirects and absorbs Electric moves for +1 Attack and Sp. Atk. Existing Fairy Tale, New World, Cold Eclipse and Starlight Arena entry/terrain bonuses give +1 Defense and Sp. Def; the latter three retain 1.5x move power. All moves have 1.1x accuracy.",
+		"shortDesc": "Tidal Monarch (without Dual Wield), Shell Armor and Guardian Presence; all moves have 1.1x accuracy.",
 		"rating": 4.5,
 		"flags": {
 			"breakable": 1,
@@ -65186,8 +65188,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Frost Sovereign",
 		"num": 10106,
 		"gen": 9,
-		"desc": "Sets or refreshes Snow Warning weather to 8 turns on entry. Full local Ice Body and Filter, and gains full Soundproof immunity to other Pokemon's sound moves. Manually used Aurora Veil lasts 8 turns. Each turn, non-immune foes take Ice damage equal to 1/16 max HP; type effectiveness scales this chip only in Free-for-All.",
-		"shortDesc": "Ice Body + Filter + Soundproof; eight-turn snow and Ice chip.",
+		"desc": "Sets Hail for 8 turns on entry. Includes Ice Body, Filter and Soundproof. Manually used Aurora Veil lasts 8 turns. Once per switch-in, its first Ice attack to damage opposing HP lowers each damaged foe's Speed by 1 stage, once per target. Normal stat-drop protections apply.",
+		"shortDesc": "Ice Body + Filter + Soundproof; eight-turn hail; first Ice attack lowers foe Speed.",
 		"rating": 5,
 		"flags": {
 			"breakable": 1,
@@ -66380,8 +66382,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Infernal Dominion",
 		"num": 11247,
 		"gen": 9,
-		"desc": "Has Intimidate. Incoming Rock attack effectiveness is capped at neutral, preserving stronger resistance or immunity. Prevents only this holder's Stealth Rock damage without removing the hazard. A direct Fire attack dealing opposing HP damage clears Sandstorm and, once per turn regardless of weather, grants Molten Guard until turn end. The guard blocks the next opposing Rock attack against this holder, including all hits, without shielding other spread targets. Generated attacks do not arm it. Leaving, ability loss and Mega Evolution clear the guard.",
-		"shortDesc": "Intimidate; Molten Guard; Rock effectiveness capped at neutral; melts own Stealth Rock damage.",
+		"desc": "Has Intimidate. Incoming Rock attack effectiveness is capped at neutral, preserving stronger resistance or immunity. Prevents only this holder's Stealth Rock damage without removing the hazard. A direct Fire attack dealing opposing HP damage clears Sandstorm and, once per turn regardless of weather, grants Molten Guard until turn end. The guard blocks the next opposing Rock attack against this holder, including all hits, without shielding other spread targets. Generated attacks do not arm it. Leaving, ability loss and Mega Evolution clear the guard. Fire Ward multiplies Defense and Sp. Def by 1.3, or 1.5 on Dragon's Den.",
+		"shortDesc": "Intimidate + Fire Ward; Molten Guard; Rock hits capped at neutral; ignores Stealth Rock damage.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null,
@@ -68751,11 +68753,11 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"isNonstandard": null,
 	},
 	"pollenbloom": {
-		"name": "Pollen Bloom",
+		"name": "Verdant Monarch",
 		"num": 10137,
 		"gen": 9,
-		"desc": "Thick Fat + Unaware. Fire and Ice attacks use half the attacker's attacking stat; hail causes no damage. Ignores the foe's Defense, Sp. Def and evasion changes when attacking, and their Attack, Defense, Sp. Atk and accuracy changes when defending. Reveals opposing Illusions on entry. At each turn's end, drains 1/16 of each foe's base max HP and heals by the HP actually drained. Grass types and Grass-immune foes are unaffected. In Free-for-All only, Grass weaknesses and resistances change the drain amount.",
-		"shortDesc": "Thick Fat, Unaware and Grass chip recovery.",
+		"desc": "Thick Fat + Unaware. Fire and Ice attacks use half the attacker's attacking stat; hail causes no damage. Ignores the foe's Defense, Sp. Def and evasion changes when attacking, and their Attack, Defense, Sp. Atk and accuracy changes when defending. Reveals opposing Illusions on entry. All moves have 1.1x accuracy.",
+		"shortDesc": "Thick Fat, Unaware; all moves have 1.1x accuracy.",
 		"rating": 4,
 		"flags": {
 			"breakable": 1,
@@ -69481,8 +69483,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Rain Sovereign",
 		"num": 10154,
 		"gen": 9,
-		"desc": "On entry, it sets Rain for 8 turns. Its Electric-, Water-, and Flying-type moves receive STAB. Each turn, non-immune foes take Water damage equal to 1/16 max HP. Only in Free-for-All does Water type effectiveness scale this chip.",
-		"shortDesc": "8-turn Rain; Electric/Water/Flying STAB; Water chip scales by type in FFA.",
+		"desc": "Sets Rain for 8 turns on entry. Electric, Water and Flying moves receive STAB. Once per turn, after one of those moves damages opposing HP, heals the living active ally with the lowest HP percentage by 1/16 max HP. Heals itself when no living active ally exists.",
+		"shortDesc": "Eight-turn Rain; Electric/Water/Flying STAB; matching hits heal an ally once per turn.",
 		"rating": 4.5,
 		"flags": {},
 		"isNonstandard": null,
@@ -70386,8 +70388,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Sand Sovereign",
 		"num": 10105,
 		"gen": 9,
-		"desc": "Sets or refreshes Sandstorm to 8 turns on entry. Full local Solid Rock. Rock moves use the better Rock/Ground matchup keeps damaging Rock moves Rock-type with normal Rock STAB, but uses the better overall Rock or Ground type-chart matchup; Ground-immune typings do not replace the Rock matchup. Manually used Arenite Wall lasts 8 turns. Each turn, non-immune foes take Rock damage equal to 1/16 max HP; type effectiveness scales this chip only in Free-for-All.",
-		"shortDesc": "Solid Rock; better Rock/Ground matchup; eight-turn sand and Rock chip.",
+		"desc": "Sets or refreshes Sandstorm for 8 turns. Includes Solid Rock. Damaging Rock moves use the better Rock or Ground type-chart matchup while remaining Rock-type; Ground-immune typings do not replace the Rock matchup. Manually used Arenite Wall lasts 8 turns. After a Rock or Dark attack damages opposing HP, removes Reflect and Light Screen from that side.",
+		"shortDesc": "Solid Rock; eight-turn sand; Rock/Ground matchup; Rock/Dark hits break screens.",
 		"rating": 5,
 		"flags": {
 			"breakable": 1,
@@ -70940,8 +70942,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Bombardment",
 		"num": 10038,
 		"gen": 9,
-		"desc": "Mega Launcher gives pulse and bullet moves 1.5x power. Water Barrage supplies exactly one eligible Dual Wield pair, each hit at 0.6x power outside Free-for-All: pulse/bullet pairs therefore use 0.9x power per hit before STAB and passives. In Free-for-All both hits use full power, with the second-target selection. Existing multi-hit, charging, delayed, Z/Max and ineligible moves gain no extra pair. Water Barrage supplies Stalwart exactly once: redirection bypass and +1 Sp. Atk on New World, Starlight Arena, Fairy Tale or Chessboard entry. At turn end, foes take cycling Water damage of 1/16, 2/16, then 3/16 max HP; Water immunities block it and type effectiveness scales it only in Free-for-All.",
-		"shortDesc": "Mega Launcher + Stalwart + Water Barrage.",
+		"desc": "Mega Launcher gives pulse and bullet moves 1.5x power. Tidal Monarch supplies exactly one eligible Dual Wield pair, each hit at 0.6x power outside Free-for-All: pulse/bullet pairs therefore use 0.9x power per hit before STAB and passives. In Free-for-All both hits use full power, with the second-target selection. Existing multi-hit, charging, delayed, Z/Max and ineligible moves gain no extra pair. Tidal Monarch supplies Stalwart exactly once: redirection bypass and +1 Sp. Atk on New World, Starlight Arena, Fairy Tale or Chessboard entry. All moves have 1.1x accuracy.",
+		"shortDesc": "Mega Launcher + Stalwart + Tidal Monarch; all moves have 1.1x accuracy.",
 		"rating": 4.5,
 		"flags": {},
 		"isNonstandard": null,
@@ -72025,8 +72027,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Storm Sovereign",
 		"num": 10127,
 		"gen": 9,
-		"desc": "Summons replaceable Strong Winds for 8 turns on entry. Each turn, non-immune foes take Flying damage equal to 1/16 base maximum HP; type effectiveness scales this chip only in Free-for-All. Flying-type foes are immune. Updraft: Competitive: opposing stat drops raise Special Attack by 2 outside Chessboard; on Chessboard, instead boosts damage with missing HP up to 2x at 20% HP. Flying moves ignore evasion boosts. Once per switch-in, the first Flying attack dealing opposing HP damage raises the living adjacent ally with the lowest HP percentage by 1 Speed stage, or the holder if no such ally exists. Only one recipient is boosted; ability restarts and Mega Evolution do not reset the entry allowance. Mega Pidgeot receives No Guard from its species passive and has no Gale Wings priority. Other holders retain their full-HP Flying priority and never-miss effect when no No Guard passive is present.",
-		"shortDesc": "Updraft (Competitive), eight-turn Strong Winds and opposing Flying chip.",
+		"desc": "Summons replaceable Strong Winds for 8 turns on entry. Damaging Flying moves bypass Substitute. Updraft: Competitive: opposing stat drops raise Special Attack by 2 outside Chessboard; on Chessboard, instead boosts damage with missing HP up to 2x at 20% HP. Flying moves ignore evasion boosts. Once per switch-in, the first Flying attack dealing opposing HP damage raises the living adjacent ally with the lowest HP percentage by 1 Speed stage, or the holder if no such ally exists. Only one recipient is boosted; ability restarts and Mega Evolution do not reset the entry allowance. Mega Pidgeot receives No Guard from its species passive and has no Gale Wings priority. Other holders retain their full-HP Flying priority and never-miss effect when no No Guard passive is present.",
+		"shortDesc": "Updraft (Competitive); eight-turn Strong Winds; Flying attacks bypass Substitute.",
 		"rating": 4.5,
 		"flags": {
 			"breakable": 1,
@@ -72177,8 +72179,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Sun Sovereign",
 		"num": 10039,
 		"gen": 9,
-		"desc": "Summons sun for 8 turns on entry. Eligible Normal moves become Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Prevents freezing outside Cold Eclipse and cures freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den and Infernal Eclipse block Fire moves. On Dragon's Den, Volcanic or Infernal Eclipse entry, gains +1 Defense and Sp. Def. Immune to hail damage. At turn end, deals Fire-type damage to foes equal to 1/16 max HP, doubled if the foe is burned or the holder used a Fire or Dragon move that turn. Fire immunities block this damage; type effectiveness scales it only in Free-for-All.",
-		"shortDesc": "Eight-turn sun + Unbound Blaze.",
+		"desc": "Summons sun for 8 turns on entry. Eligible Normal moves become Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Prevents freezing outside Cold Eclipse and cures freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den and Infernal Eclipse block Fire moves. On Dragon's Den, Volcanic or Infernal Eclipse entry, gains +1 Defense and Sp. Def. Immune to hail damage. All moves have 1.1x accuracy.",
+		"shortDesc": "Eight-turn sun + Blazing Monarch; all moves have 1.1x accuracy.",
 		"rating": 4.5,
 		"flags": {
 			"breakable": 1,
@@ -72853,8 +72855,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Virulence",
 		"num": 10037,
 		"gen": 9,
-		"desc": "Incoming Fire and Ice attacks use half the attacker's offensive stat. Immune to hail damage. Ignores target Defense/Sp. Def/evasion stages when attacking, and attacker Attack/Defense/Sp. Atk/accuracy stages when defending. Reveals opposing Illusions on entry. At turn end, opposing non-Grass Pokemon take Grass-type damage equal to 1/16 max HP, blocked by Grass immunities; it heals the damage dealt by that chip. Only in Free-for-All does Grass type effectiveness scale this chip.",
-		"shortDesc": "Pollen Bloom.",
+		"desc": "Incoming Fire and Ice attacks use half the attacker's offensive stat. Immune to hail damage. Ignores target Defense/Sp. Def/evasion stages when attacking, and attacker Attack/Defense/Sp. Atk/accuracy stages when defending. Reveals opposing Illusions on entry. All moves have 1.1x accuracy.",
+		"shortDesc": "Verdant Monarch; all moves have 1.1x accuracy.",
 		"rating": 4.5,
 		"flags": {
 			"breakable": 1,
@@ -73243,11 +73245,11 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"isNonstandard": null,
 	},
 	"unboundblaze": {
-		"name": "Unbound Blaze",
+		"name": "Blazing Monarch",
 		"num": 10139,
 		"gen": 9,
-		"desc": "Eligible Normal moves become Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Prevents freezing outside Cold Eclipse and cures freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den and Infernal Eclipse block Fire moves. On Dragon's Den, Volcanic or Infernal Eclipse entry, gains +1 Defense and Sp. Def. Immune to hail damage. At turn end, deals Fire-type damage to foes equal to 1/16 max HP, doubled if the foe is burned or the holder used a Fire or Dragon move that turn. Fire immunities block this damage; type effectiveness scales it only in Free-for-All.",
-		"shortDesc": "Dragon conversion, Magma Armor and Fire chip.",
+		"desc": "Eligible Normal moves become Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Prevents freezing outside Cold Eclipse and cures freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den and Infernal Eclipse block Fire moves. On Dragon's Den, Volcanic or Infernal Eclipse entry, gains +1 Defense and Sp. Def. Immune to hail damage. All moves have 1.1x accuracy.",
+		"shortDesc": "Dragon conversion, Magma Armor; all moves have 1.1x accuracy.",
 		"rating": 4,
 		"flags": {
 			"breakable": 1,
@@ -73933,11 +73935,11 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"isNonstandard": null,
 	},
 	"waterbarrage": {
-		"name": "Water Barrage",
+		"name": "Tidal Monarch",
 		"num": 10138,
 		"gen": 9,
-		"desc": "Stalwart bypasses redirection and grants +1 Sp. Atk on New World, Starlight Arena, Fairy Tale or Chessboard entry. Eligible slicing, pulse, bullet, horn, drill, and Arrow moves hit twice at 60% power, with an independent accuracy check for each hit. A literal Mega Launcher + Water Barrage combination instead boosts both eligible pulse/bullet hits by 1.5x: 0.9x each in every battle format. In Free-for-All, both hits still use 60% power: the first hits the selected foe and the second targets another random living foe when possible. Existing multi-hit moves are not given an additional Dual Wield pair. At turn end, foes take cycling Water damage of 1/16, 2/16, then 3/16 max HP. Water immunities block it; type effectiveness scales it only in Free-for-All.",
-		"shortDesc": "Dual Wield + Stalwart; cycling Water chip.",
+		"desc": "Stalwart bypasses redirection and grants +1 Sp. Atk on New World, Starlight Arena, Fairy Tale or Chessboard entry. Eligible slicing, pulse, bullet, horn, drill, and Arrow moves hit twice at 60% power, with an independent accuracy check for each hit. A literal Mega Launcher + Tidal Monarch combination instead boosts both eligible pulse/bullet hits by 1.5x: 0.9x each in every battle format. In Free-for-All, both hits still use 60% power: the first hits the selected foe and the second targets another random living foe when possible. Existing multi-hit moves are not given an additional Dual Wield pair. All moves have 1.1x accuracy.",
+		"shortDesc": "Dual Wield + Stalwart; all moves have 1.1x accuracy.",
 		"rating": 4,
 		"flags": {
 			"breakable": 1,
@@ -99740,6 +99742,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"atrocity": [
 		"unboundblaze",
 		"fireward",
+		"toughclaws",
 	],
 	"aurabreak": [],
 	"auraconvergence": [],
@@ -100703,6 +100706,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"inexorable": [],
 	"infernaldominion": [
 		"intimidate",
+		"fireward",
 	],
 	"infiltrator": [],
 	"innardsout": [],
@@ -102708,6 +102712,7 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 	"atrocity": [
 		"unboundblaze",
 		"fireward",
+		"toughclaws",
 	],
 	"aurabreak": [],
 	"auraconvergence": [],
@@ -103671,6 +103676,7 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 	"inexorable": [],
 	"infernaldominion": [
 		"intimidate",
+		"fireward",
 	],
 	"infiltrator": [],
 	"innardsout": [],

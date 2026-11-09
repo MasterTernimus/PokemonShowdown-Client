@@ -24,9 +24,9 @@ describe('Component-first Team Builder ability rows', () => {
   assert(html.includes('Magic Guard + Infiltrator'));
   assert(html.indexOf('Magic Guard + Infiltrator') < html.indexOf('Ghost hits or Power Gem'));
  });
- it('shows Atrocity with its approved Unbound Blaze and Fire Ward packages without a redundant Self Sufficient label', () => {
+ it('shows Atrocity with its approved Blazing Monarch and Fire Ward packages without a redundant Self Sufficient label', () => {
   const html=visible(Dex.abilities.get('atrocity'));
-  assert(html.includes('Unbound Blaze'));assert(!html.includes('Tough Claws')); assert(html.includes('Fire Ward'));
+  assert(html.includes('Blazing Monarch'));assert(html.includes('Tough Claws')); assert(html.includes('Fire Ward'));
   assert(!html.includes('Self Sufficient'));
  });
  it('renders canonical components for every composite and removes filler', () => {
@@ -56,9 +56,9 @@ describe('Readable full ability descriptions', () => {
    'Raises Sp. Atk by 1', 'Moves gain 1.3x power', 'misses do not spend the use', 'Switching resets it.',
   ]);
  });
- it('shows both real Pollen Bloom components and retains its drain details', () => {
+ it('shows Pollen Bloom components and attack accuracy without obsolete drain', () => {
   assert.deepEqual(Dex.getAbilityDisplayComponents('pollenbloom'), ['thickfat', 'unaware']);
   const text = Dex.abilities.get('pollenbloom').desc;
-  assert(text.includes('1/16')); assert(text.includes('HP actually drained')); assert(text.includes('Free-for-All'));
+  assert(text.includes('All moves have 1.1x accuracy')); assert(!/drain|chip/i.test(text));
  });
 });

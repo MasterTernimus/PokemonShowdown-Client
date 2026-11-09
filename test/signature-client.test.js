@@ -15,7 +15,7 @@ describe('Approved signature client parity', () => {
 			assert.equal(Dex.species.get(id).baseStats.atk, 130);
 			assert.equal(Dex.species.get(id).baseStats.spa, 125);
 		}
-		assert(!Dex.getAbilityEffects('atrocity').has('toughclaws'));assert(Dex.getAbilityEffects('atrocity').has('fireward'));
+		assert(Dex.getAbilityEffects('atrocity').has('toughclaws'));assert(Dex.getAbilityEffects('atrocity').has('fireward'));
 		assert(!Dex.getAbilityEffects('atrocity').has('levitate'));
 		for (const id of ['keeneye', 'ultraego']) assert(Dex.getAbilityEffects('duskdrive').has(id));
 		for (const id of ['battlefervor', 'precision']) assert(!Dex.getAbilityEffects('duskdrive').has(id));
@@ -30,7 +30,7 @@ describe('Approved signature client parity', () => {
 			maxhp: 100, level: 100, status: '', stats: {atk: 100, def: 100, spa: 100, spd: 100, spe: 100}};
 		const tips = new BattleTooltips(battle);
 		try {
-			for (const [ability, id, multiplier] of [['Frozen Feast', 'bite', 1.5], ['Atrocity', 'tackle', 1.3]]) {
+			for (const [ability, id, multiplier] of [['Frozen Feast', 'bite', 1.5], ['Atrocity', 'tackle', 1.69]]) {
 				own.ability = ability; own.baseAbility = ability;
 				const move = Dex.moves.get(id);
 				const value = () => tips.getMoveBasePower(move, move.type,
