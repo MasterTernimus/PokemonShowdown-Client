@@ -19,7 +19,7 @@ describe('Empoleon X/Y client parity',()=>{
   assert.deepEqual(Array.from(Dex.species.get('empoleon').otherFormes),['Empoleon-Mega-X','Empoleon-Mega-Y']);
   assert.equal(Dex.species.get('Empoleon-Mega').id,'empoleonmegay');assert.equal(Dex.items.get('Empoleonite').megaStone.Empoleon,'Empoleon-Mega-Y');
   assert.equal(Dex.items.get('Empoleonite X').megaStone.Empoleon,'Empoleon-Mega-X');assert.equal(Dex.items.get('Empoleonite Y').megaStone.Empoleon,'Empoleon-Mega-Y');
-  assert.equal(Dex.abilities.get('Exalt').name,'Imperial Edge');assert.equal(Dex.abilities.get('Imperial Edge').exists,true);
+  assert.equal(Dex.abilities.get('Exalt').name,'Imperial Legacy');assert.equal(Dex.abilities.get('Imperial Edge').exists,true);
   for(const id of ['empoleonmegax','empoleonmegay'])assert.deepEqual(Array.from(Dex.species.get(id).passives),['proficient']);
  });
  it('uses X artwork in all four views and preserves Y artwork',()=>{

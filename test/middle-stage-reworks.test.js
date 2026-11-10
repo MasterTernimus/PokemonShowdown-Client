@@ -14,7 +14,7 @@ describe('Dodrio and middle-stage client data',()=>{
    }
    if(id!=='dodrio') {const bst=Object.values(Dex.species.get(id).baseStats).reduce((a,b)=>a+b,0);assert(bst>=480&&bst<=500);}
   }
-  assert.deepEqual(Dex.species.get('dodrio').passives,['hydrabond']);
+  assert.deepEqual(Dex.species.get('dodrio').passives,['triplethreat']);
   assert.deepEqual(Dex.species.get('shelgon').passives,['shellarmor']);
   assert.deepEqual(Dex.species.get('pupitar').passives,['eartheater']);
   assert.deepEqual(Dex.species.get('zweilous').passives,['hydrabond']);

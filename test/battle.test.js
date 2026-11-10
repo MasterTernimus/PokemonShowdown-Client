@@ -556,7 +556,7 @@ describe('Team Builder sprites', () => {
 
 	it('syncs Meowscarada abilities from the server data', () => {
 		assert.deepEqual(Dex.species.get('Meowscarada').abilities, {
-			0: 'False Bouquet', 1: 'Protean', H: 'Perfect Illusion',
+			0: 'Masquerade Bloom', 1: 'Protean', H: 'Perfect Illusion',
 		});
 	});
 
@@ -565,13 +565,13 @@ describe('Team Builder sprites', () => {
 			0: 'Raging Current',
 		});
 		assert.deepEqual(Dex.species.get('Chesnaught-Mega').abilities, {
-			0: 'Wrath Shield',
+			0: 'Aegis Shield',
 		});
 		assert.deepEqual(Dex.species.get('Greninja').abilities, {
-			0: 'Liquid Arsenal', 1: 'Protean', H: 'Shadow Screen', S: 'Battle Bond',
+			0: 'Guardian Tide', 1: 'Protean', H: 'Shadow Screen', S: 'Battle Bond',
 		});
 		assert.deepEqual(Dex.species.get('Delphox').abilities, {
-			0: 'Sworn Duty', 1: 'Magic Guard', H: 'Void Guile',
+			0: 'Guardian Flame', 1: 'Magic Guard', H: 'Void Guile',
 		});
 	});
 
@@ -839,7 +839,7 @@ describe('Team Builder sprites', () => {
 	it('shows the added composite ability effects', () => {
 		assert.match(Dex.abilities.get('Pollen Bloom').desc, /Ignores the foe's Defense/);
 		assert(Dex.getAbilityEffects('pollenbloom').has('unaware'));
-		assert.match(Dex.abilities.get('Territorial').desc, /physical or special.*heals 1.16.*immediately raises Defense by 1/);
+		assert.match(Dex.abilities.get('Territorial').desc, /Opposing hits heal 1.16 HP; the first each turn raises Defense/);
 		assert.match(Dex.abilities.get('Lunar Dread').desc, /sleep/i);
 		assert(Dex.abilities.get('Dishearten').exists);
 		assert.equal(Dex.abilities.get('Dishearten').num, 11234);
@@ -860,7 +860,7 @@ describe('Team Builder sprites', () => {
 		assert(!Dex.getAbilityEffects('omenedge').has('toughclaws'));
 		assert(Dex.getAbilityEffects('fortressshell').has('waterbarrage'));
 		assert(!Dex.getAbilityEffects('lunardread').has('unaware'));
-		assert(Dex.getAbilityEffects('territorial').has('unnerve'));
+		assert(!Dex.getAbilityEffects('territorial').has('unnerve'));
 		assert(Dex.getAbilityEffects('territorial').has('guarddog'));
 		assert(Dex.getAbilityEffects('territorial').has('stamina'));
 		assert(!Dex.getAbilityEffects('territorial').has('unaware'));

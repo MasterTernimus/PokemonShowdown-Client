@@ -5,7 +5,7 @@ describe('Approved Rejuv passive displays', () => {
 	const {Dex} = loadDex();
 	const expected = {
 		parasectrejuv: 'mycelialbond', poliwrathrejuv: 'innerfocus', politoedrejuv: 'royalremedy',
-		donphanrejuv: 'heatproof', breloomrejuv: 'owntempo', bronzongrejuv: 'clearbody',
+		donphanrejuv: 'heatproof', breloomrejuv: 'owntempo', bronzongrejuv: 'heatproof',
 		drapionrejuv: 'stickyhold', musharnarejuv: 'synchronize', unfezantrejuv: 'rivalry',
 		sigilyphrejuv: 'frisk', galvantularejuv: 'compoundeyes', druddigonrejuv: 'raindish',
 		turtonatorrejuv: 'oblivious', veluzarejuv: 'unnerve',
@@ -26,7 +26,7 @@ describe('Approved Rejuv passive displays', () => {
 		assert(effects.has('naturalcure')); assert(effects.has('healer'));
 	});
 	it('preserves the ordinary forms’ passives', () => {
-		for (const [id, passive] of Object.entries({parasect: 'mycelialbond', poliwrath: 'tirelessmuscle', politoed: 'oraclesrefrain', donphan: 'battlearmor', breloom: 'effectspore', bronzong: 'clearbody', drapion: 'poisontouch', musharna: 'owntempo', unfezant: 'rivalry', sigilyph: 'anticipation', galvantula: 'compoundeyes', druddigon: 'roughskin', turtonator: 'aftermath', veluza: 'keeneye'})) {
+		for (const [id, passive] of Object.entries({parasect: 'mycelialbond', poliwrath: 'tirelessmuscle', politoed: 'oraclesrefrain', donphan: 'battlearmor', breloom: 'effectspore', bronzong: 'heatproof', drapion: 'poisontouch', musharna: 'owntempo', unfezant: 'rivalry', sigilyph: 'anticipation', galvantula: 'compoundeyes', druddigon: 'roughskin', turtonator: 'aftermath', veluza: 'keeneye'})) {
 			assert.deepEqual([...Dex.species.get(id).passives], [passive], id);
 		}
 	});

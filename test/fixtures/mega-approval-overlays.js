@@ -359,3 +359,10 @@ exports.abilities=(id,f)=>({...prior(id,f),...(events[id]?{S:events[id]}:{}),...
 
 // Original starter names remain aliases; current rosters show the Monarch names.
 { const previous = exports.abilities; const names = {'Pollen Bloom':'Verdant Monarch', 'Water Barrage':'Tidal Monarch', 'Unbound Blaze':'Blazing Monarch'}; exports.abilities = (id, original) => Object.fromEntries(Object.entries(previous(id, original)).map(([slot, name]) => [slot, names[name] || name])); }
+
+// Approved November roster changes supersede older snapshots.
+{ const reviewed=require('./november-10-roster-expectations.json'); const prior={passives:exports.passives,abilities:exports.abilities};
+ exports.passives=(id,f)=>reviewed.passives[id]||prior.passives(id,f);
+ exports.abilities=(id,f)=>Object.fromEntries(Object.entries({...prior.abilities(id,f),...reviewed.slots[id]}).map(([slot,name])=>[slot,reviewed.names[name]||name]));
+ const desc=exports.description;exports.description=(id,key,f)=>id==='ironmountain'&&key==='shortDesc'?'Stamina + Brute Force; entry or Mega Evolution clears own Stealth Rock/Spikes.':desc(id,key,f);
+}

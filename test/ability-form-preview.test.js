@@ -43,7 +43,7 @@ describe('Ability-based Team Builder stat and sprite refresh', () => {
   assert.equal(room.getStat('hp',room.curSet),original[0]);
   assert.deepEqual(stats().slice(1),['atk','def','spa','spd','spe'].map(stat=>room.getStat(stat,{...room.curSet,species:form,ability:''})));
   assert.equal(Dex.getAbilityFormPreview(room.curSet).baseStats.hp,Dex.species.get(species).baseStats.hp);
-  if(species==='Eevee-Starter'&&ability==='Mind Freeze')assert.equal(room.getStat('hp',room.curSet),401);
+  if(species==='Eevee-Starter'&&ability==='Mind Freeze')assert.equal(room.getStat('hp',room.curSet),341);
   assert.notDeepEqual(stats(),original);
   const modern=Object.create(context.TeamEditorState.prototype);
   Object.assign(modern,{dex:Dex,gen:9,isLetsGo:false,defaultLevel:100});

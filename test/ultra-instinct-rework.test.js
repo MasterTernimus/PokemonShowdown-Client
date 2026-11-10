@@ -1,14 +1,14 @@
 'use strict';
 const assert=require('assert').strict;
 require('./battle.test');
-describe('Approved Ultra Instinct and Burning Spirit presentation',()=>{
+describe('Approved Ultra Instinct and Inferno Ascendant presentation',()=>{
  for(const id of ['hitmonlee','infernape','sawk','lycanroc'])it(id+' retains selected Ultra Instinct and its existing species passive',()=>{
   const s=Dex.species.get(id);assert(Object.values(s.abilities).includes('Ultra Instinct'));assert(s.passives.length);
   const text=Dex.getAbilityDisplayDetails(Dex.abilities.get('ultrainstinct'),s.passives,id).desc;
   for(const phrase of ['30%','35%','40%','1/16','1/8','queued to move'])assert(text.includes(phrase),phrase);
  });
  it('Mega Infernape displays three selected components with Proficient only as its passive',()=>{
-  const s=Dex.species.get('infernapemega');assert.deepEqual(s.passives,['proficient']);assert.deepEqual(s.abilities,{0:'Burning Spirit'});
+  const s=Dex.species.get('infernapemega');assert.deepEqual(s.passives,['proficient']);assert.deepEqual(s.abilities,{0:'Inferno Ascendant'});
   const parts=Dex.getAbilityDisplayComponents('burningspirit',Dex,s.passives,s.id);
   assert.deepEqual(parts,['ultrainstinct','opportunist','magmaarmor']);
   const effects=Dex.getAbilityEffects('burningspirit');for(const id of ['ultrainstinct','opportunist','magmaarmor','moldbreaker','innerfocus'])assert(effects.has(id),id);

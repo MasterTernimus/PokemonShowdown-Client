@@ -31,9 +31,18 @@ describe('Lore partnership client metadata', () => {
 				assert(dex.hasAbilityEffect(species, component), id + ': ' + component);
 				assert(dex.abilities.get(ability).shortDesc.length <= 100);
 			}
-			const gardevoir = dex.species.get('gardevoir');
+			const dhelmise = dex.species.get('dhelmise');
+            assert.deepEqual(Array.from(dhelmise.passives), ['steelworker']);
+            assert(!dex.getAbilityDisplayComponents('blackwateranchor', dex).includes('steelworker'));
+            assert(dex.abilities.get('blackwateranchor').desc.includes('1/16'));
+            assert(!dex.abilities.get('blackwateranchor').desc.includes('tether'));
+            const porygon = dex.species.get('porygonz');
+            assert.equal(porygon.baseStats.hp, 95); assert.equal(porygon.baseStats.spa, 140);
+            assert.equal(porygon.abilities[1], 'Adaptability');
+            assert(dex.abilities.get('defragment').desc.includes('first move aimed at a foe'));
+            const gardevoir = dex.species.get('gardevoir');
 			assert.deepEqual(Array.from(gardevoir.passives), ['breakingnews']);
-			assert.deepEqual(JSON.parse(JSON.stringify(gardevoir.abilities)), {0: 'Trace', 1: 'Dream Sickness', H: 'Void Veil'});
+			assert.deepEqual(JSON.parse(JSON.stringify(gardevoir.abilities)), {0: 'Trace', 1: 'Dream Guardian', H: 'Void Veil'});
 			assert(dex.hasAbilityEffect(gardevoir, 'forewarn'));
 			assert(!dex.hasAbility(gardevoir, 'breakingnews'));
 			assert(dex.abilities.get('breakingnews').desc.includes('opposing switch-in'));

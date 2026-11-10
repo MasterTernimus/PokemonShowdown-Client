@@ -22,5 +22,5 @@ describe('Approved October batch metadata',()=>{
  assert(a.desc.length>40);assert(a.shortDesc.length>10);assert(a.shortDesc.length<200);
  });
  it('retains Battle Bond in approved event slots',()=>{for(const id of ['greninja','garchomp'])assert.equal(Dex.species.get(id).abilities.S,'Battle Bond');});
- it('retains ordinary Gardevoir abilities',()=>assert.deepEqual(Dex.species.get('gardevoir').abilities,{0:'Trace',1:'Dream Sickness',H:'Void Veil'}));
+ it('retains ordinary Gardevoir abilities',()=>assert.deepEqual(Dex.species.get('gardevoir').abilities,{0:'Trace',1:'Dream Guardian',H:'Void Veil'}));
 });
