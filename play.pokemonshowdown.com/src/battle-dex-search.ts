@@ -1101,6 +1101,7 @@ abstract class BattleTypedSearch<T extends SearchType> {
 
 	constructor(searchType: T, format = '' as ID, speciesOrSet: ID | PokemonSet = '' as ID) {
 		this.searchType = searchType;
+		const registeredRebornFormat = BattleTeambuilderTable.rebornFormats?.includes(format.split('@@@')[0]);
 
 		this.baseResults = null;
 		this.baseIllegalResults = null;
@@ -1165,8 +1166,7 @@ abstract class BattleTypedSearch<T extends SearchType> {
 			this.formatType = 'letsgo';
 			this.dex = Dex.mod('gen7letsgo' as ID);
 		}
-		this.isFieldFormat = format.includes('field') || format.includes('arena') || format.includes('board') ||
-			format.includes('terrain') || format.includes('cavern') || format.includes('surface') || format.includes('underwater') || format.includes('midnightzone');
+		this.isFieldFormat = !!registeredRebornFormat;
 		if (format.includes('nationaldex') || format.startsWith('nd') || format.includes('natdex') || this.isFieldFormat){
 			format = 'natdex' as ID;
 			this.formatType = 'natdex';

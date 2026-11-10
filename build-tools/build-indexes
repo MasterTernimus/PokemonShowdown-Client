@@ -654,6 +654,11 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 	const learnsets = {};
 	BattleTeambuilderTable.learnsets = learnsets;
 	BattleTeambuilderTable.rebornLearnsets = true;
+	// Use registered server formats, not English field-name fragments.
+	BattleTeambuilderTable.rebornFormats = Dex.formats.all()
+		.filter(format => format.mod === 'gen9' && format.ruleset.includes('+Past') &&
+			format.ruleset.includes('+Unobtainable'))
+		.map(format => format.id);
 	for (const id in ExportLearnsets) {
 		const learnset = ExportLearnsets[id].learnset;
 		if (!learnset) continue;
