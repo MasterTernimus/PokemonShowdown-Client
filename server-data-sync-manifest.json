@@ -1,8 +1,8 @@
 {
-	"sourceHead": "b75def378fef7e9f77a282f4423fd1c73c94782b",
+	"sourceHead": "99e81fd7a15a05c83610811decac11d9654dc37d",
 	"base": "22049e8bbc3cae437790269b4360f7c8eaf5da22",
-	"builtSourceFingerprint": "47bc815899a46f4b3d5b0af9d348c7daa71d14c68658e648ed96b09bf682ecf5",
-	"sourceDataSHA256": "a6f51365dd1bb33edff16d0680d270375dbbc6557b258bc64b321e3676d523bf",
+	"builtSourceFingerprint": "257a273afa1a607296ca0e773fc081df0a7290ba7c530de7abd78ec02334c354",
+	"sourceDataSHA256": "cfae9f4d360f2b4772ab51441ff64d1037480cdb42f3a27819023fa1c33f4e09",
 	"files": [
 		"data/abilities.ts",
 		"data/ability-components.ts",
@@ -105,6 +105,7 @@
 		"data/raging-crowns-approved.ts",
 		"data/rejuv-passives.ts",
 		"data/rejuvenation-signature-moves.ts",
+		"data/relic-armor.ts",
 		"data/ripen-seeds.ts",
 		"data/rival-support-approved.ts",
 		"data/rival-support-descriptions.ts",
