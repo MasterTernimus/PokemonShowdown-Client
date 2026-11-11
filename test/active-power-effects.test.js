@@ -93,11 +93,16 @@ describe('Active aura and team power displays', () => {
 		assert.equal(power().value, 156);
 		own.ability = 'No Ability'; battle.p1.active[1].ability = 'Battery';
 		assert.equal(power().value, 104, 'Electric Terrain enhances Battery only for its holder');
-		battle.p1.active[1].ability = 'Power Spot'; battle.pseudoWeather = [['Holy Terrain', 5, 5]];
-		assert.equal(power().value, 120);
-		battle.p1.active[1].ability = 'No Ability'; own.ability = 'Steely Spirit';
+		battle.p1.active[1].ability = 'No Ability'; battle.pseudoWeather = [['Holy Terrain', 5, 5]];
+		// Compare on the same field: Holy Terrain separately halves Dark move power.
+		const holyBaseline = power().value;
+		battle.p1.active[1].ability = 'Power Spot';
+		assert.equal(power().value, holyBaseline * 1.5);
+		battle.p1.active[1].ability = 'No Ability'; own.ability = 'No Ability';
 		battle.pseudoWeather = [['Fairy Tale Terrain', 5, 5]];
-		assert.equal(power('Steel').value, 160);
+		const fairyTaleBaseline = power('Steel').value;
+		own.ability = 'Steely Spirit';
+		assert.equal(power('Steel').value, fairyTaleBaseline * 2);
 	});
 	it('Resonance Force boosts sound moves only, once per holder', () => {
 		own.ability = 'Resonance Force'; own.passives = ['resonanceforce'];
