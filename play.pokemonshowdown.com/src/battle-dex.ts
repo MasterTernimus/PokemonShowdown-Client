@@ -60802,7 +60802,7 @@ const CUSTOM_SHARED_PASSIVE_DESCRIPTIONS: {[id: string]: {passive: string; desc:
 	},
 	"smolderingshroud": {
 		"passive": "whitesmoke",
-		"desc": "The first foe-caused stat-drop event prevented each entry raises Special Attack by 1. Shares White Smoke protection and Volcanic entry boosts with its passive without doubling them.",
+		"desc": "The first foe-caused stat-drop event prevented each entry raises Special Attack by 1. Shares White Smoke protection and Volcanic/Dragon's Den entry boosts with its passive without doubling them.",
 		"shortDesc": "First blocked opposing stat drop each entry raises Sp. Atk by 1.",
 	},
 	"silksights": {
@@ -63360,7 +63360,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Constricting Heat",
 		"num": 11282,
 		"gen": 9,
-		"desc": "White Smoke prevents other Pokemon from lowering its stats and grants +1 Attack and Sp. Atk on Volcanic entry. Fire Lash damage partially traps a surviving foe as Fire Spin for this turn end and the next. Only one ability trap per holder; a new trapped foe releases the previous one. No stacking with partial traps. Traps end when the holder leaves, loses the ability or Dynamaxes/Gigantamaxes. Normal escape, protection and residual-damage rules apply.",
+		"desc": "White Smoke prevents other Pokemon from lowering its stats and grants +1 Attack and Sp. Atk on Volcanic or Dragon's Den entry. Fire Lash damage partially traps a surviving foe as Fire Spin for this turn end and the next. Only one ability trap per holder; a new trapped foe releases the previous one. No stacking with partial traps. Traps end when the holder leaves, loses the ability or Dynamaxes/Gigantamaxes. Normal escape, protection and residual-damage rules apply.",
 		"shortDesc": "Damaging Fire Lash binds one foe for two turns. Switching or Dynamax/Gigantamax ends it.",
 		"rating": 4,
 		"flags": {
@@ -71433,7 +71433,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Smoldering Shroud",
 		"num": 10429,
 		"gen": 9,
-		"desc": "Prevents opposing stat drops. Gains +1 Attack and Sp. Atk on Volcanic entry. The first foe-caused stat drop it prevents each switch-in also raises its Sp. Atk by one stage.",
+		"desc": "Prevents opposing stat drops. Gains +1 Attack and Sp. Atk on Volcanic or Dragon's Den entry. The first foe-caused stat drop it prevents each switch-in also raises its Sp. Atk by one stage.",
 		"shortDesc": "First blocked opposing stat drop each entry raises Sp. Atk by 1.",
 		"rating": 4,
 		"flags": {
@@ -74277,8 +74277,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "White Smoke",
 		"num": 73,
 		"gen": 3,
-		"desc": "Prevents opposing stat drops. Gains +1 Attack and Sp. Atk on Volcanic entry.",
-		"shortDesc": "Blocks other Pokemon's stat drops; Volcanic entry boosts attacks.",
+		"desc": "Prevents opposing stat drops. Gains +1 Attack and Sp. Atk on Volcanic or Dragon's Den entry.",
+		"shortDesc": "Blocks other Pokemon's stat drops; Volcanic/Dragon's Den entry boosts attacks.",
 		"rating": 2,
 		"flags": {
 			"breakable": 1,

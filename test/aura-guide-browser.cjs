@@ -101,6 +101,38 @@ async function noOverflow(page, label) {
 			assert.equal(await page.locator('.field-guide-room [name=guideLayer][value="field"]').getAttribute('aria-pressed'), 'true');
 			assert.match(await page.locator('.guide-page').innerText(), /Fairy[^\n.]*0\.5|0\.5[^\n]*Fairy/);
 			await noOverflow(page, 'full-rift-detail/' + label);
+			for (const entry of guide.entries.filter(e => e.kind === 'field')) {
+				await page.evaluate(id => openPublicFieldGuide(id), entry.id);
+				const transitions = page.locator('.guide-page [data-section="Transitions"]');
+				assert(await transitions.isVisible(), 'Visible transitions: ' + entry.id);
+				assert(await transitions.locator('li').count(), 'Nonempty transitions: ' + entry.id);
+				await noOverflow(page, entry.id + '/' + label);
+			}
+			await page.evaluate(() => openPublicFieldGuide('dragonsdenterrain'));
+			const routes = page.locator('.guide-transitions');
+			assert.match(await routes.innerText(), /Where this field can go/);
+			assert.match(await routes.innerText(), /How to create this field/);
+			assert.match(await routes.innerText(), /Cave/);
+			assert.match(await routes.innerText(), /Dragon Pulse/);
+			assert.match(await routes.innerText(), /2 uses total/);
+			await routes.locator('[name=followGuideRoute][value=caveterrain]').first().click();
+			assert.equal(await page.locator('.guide-page h2').innerText(), 'Cave Terrain');
+			await page.evaluate(() => openPublicFieldGuide('dragonsdenterrain'));
+			const abilities = page.locator('.guide-page [data-section="Abilities"]');
+			const names = await abilities.locator('tbody th').allTextContents();
+			assert(names.includes('Magma Armor'));
+			assert(names.includes('Dragonize'));
+			assert(!names.includes('Atrocity'));
+			assert(!names.includes('Blazing Monarch'));
+			assert(!names.includes('Unbound Blaze'));
+			assert.equal(names.filter(name => name === 'White Smoke').length, 1);
+			await page.locator('.guide-page').scrollIntoViewIfNeeded();
+			await painted(page);
+			await page.screenshot({path:path.join(output, 'dragon-den-notes-' + label + '.png')});
+			await page.locator('.guide-transitions').evaluate(el => el.scrollIntoView({block:'start'}));
+			await page.screenshot({path:path.join(output, 'field-transitions-' + label + '.png')});
+			await abilities.scrollIntoViewIfNeeded();
+			await page.screenshot({path:path.join(output, 'field-components-' + label + '.png')});
 			checked++;
 		}
 		assert.deepEqual(errors, [], 'Browser JavaScript errors');

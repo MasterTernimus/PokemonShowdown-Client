@@ -1,8 +1,8 @@
 {
-	"sourceHead": "99e81fd7a15a05c83610811decac11d9654dc37d",
+	"sourceHead": "9c15c909f07240c6d749e7a9a34b216e0fc39997",
 	"base": "22049e8bbc3cae437790269b4360f7c8eaf5da22",
-	"builtSourceFingerprint": "257a273afa1a607296ca0e773fc081df0a7290ba7c530de7abd78ec02334c354",
-	"sourceDataSHA256": "cfae9f4d360f2b4772ab51441ff64d1037480cdb42f3a27819023fa1c33f4e09",
+	"builtSourceFingerprint": "e63be332bfc6005696b4803c3db40a5221a9c2c089b5e43b7256d182b747c0d2",
+	"sourceDataSHA256": "2be0d6d831ed1a41a5b9848f04c0b1305b7676f93849b261a6ff781d04bc1139",
 	"files": [
 		"data/abilities.ts",
 		"data/ability-components.ts",
@@ -46,12 +46,15 @@
 		"data/empoleon-megas.ts",
 		"data/fairy-eclipse-approved.ts",
 		"data/family-replacements.ts",
+		"data/field-cooling.ts",
 		"data/field-guide-groups.ts",
 		"data/field-guide-index.json",
+		"data/field-guide-presentation.ts",
 		"data/field-guide-reference-details.ts",
 		"data/field-guide-reviewed-reference-data.ts",
 		"data/field-guide.ts",
 		"data/field-message-triggers.ts",
+		"data/field-messages.ts",
 		"data/field-reference.json",
 		"data/field-setter-reductions.ts",
 		"data/final-passive-migrations.ts",
@@ -1304,7 +1307,7 @@
 			},
 			"smolderingshroud": {
 				"passive": "whitesmoke",
-				"desc": "The first foe-caused stat-drop event prevented each entry raises Special Attack by 1. Shares White Smoke protection and Volcanic entry boosts with its passive without doubling them.",
+				"desc": "The first foe-caused stat-drop event prevented each entry raises Special Attack by 1. Shares White Smoke protection and Volcanic/Dragon's Den entry boosts with its passive without doubling them.",
 				"shortDesc": "First blocked opposing stat drop each entry raises Sp. Atk by 1."
 			},
 			"silksights": {
@@ -40279,7 +40282,7 @@
 				"name": "Constricting Heat",
 				"num": 11282,
 				"gen": 9,
-				"desc": "White Smoke prevents other Pokemon from lowering its stats and grants +1 Attack and Sp. Atk on Volcanic entry. Fire Lash damage partially traps a surviving foe as Fire Spin for this turn end and the next. Only one ability trap per holder; a new trapped foe releases the previous one. No stacking with partial traps. Traps end when the holder leaves, loses the ability or Dynamaxes/Gigantamaxes. Normal escape, protection and residual-damage rules apply.",
+				"desc": "White Smoke prevents other Pokemon from lowering its stats and grants +1 Attack and Sp. Atk on Volcanic or Dragon's Den entry. Fire Lash damage partially traps a surviving foe as Fire Spin for this turn end and the next. Only one ability trap per holder; a new trapped foe releases the previous one. No stacking with partial traps. Traps end when the holder leaves, loses the ability or Dynamaxes/Gigantamaxes. Normal escape, protection and residual-damage rules apply.",
 				"shortDesc": "Damaging Fire Lash binds one foe for two turns. Switching or Dynamax/Gigantamax ends it.",
 				"rating": 4,
 				"flags": {
@@ -48352,7 +48355,7 @@
 				"name": "Smoldering Shroud",
 				"num": 10429,
 				"gen": 9,
-				"desc": "Prevents opposing stat drops. Gains +1 Attack and Sp. Atk on Volcanic entry. The first foe-caused stat drop it prevents each switch-in also raises its Sp. Atk by one stage.",
+				"desc": "Prevents opposing stat drops. Gains +1 Attack and Sp. Atk on Volcanic or Dragon's Den entry. The first foe-caused stat drop it prevents each switch-in also raises its Sp. Atk by one stage.",
 				"shortDesc": "First blocked opposing stat drop each entry raises Sp. Atk by 1.",
 				"rating": 4,
 				"flags": {
@@ -51196,8 +51199,8 @@
 				"name": "White Smoke",
 				"num": 73,
 				"gen": 3,
-				"desc": "Prevents opposing stat drops. Gains +1 Attack and Sp. Atk on Volcanic entry.",
-				"shortDesc": "Blocks other Pokemon's stat drops; Volcanic entry boosts attacks.",
+				"desc": "Prevents opposing stat drops. Gains +1 Attack and Sp. Atk on Volcanic or Dragon's Den entry.",
+				"shortDesc": "Blocks other Pokemon's stat drops; Volcanic/Dragon's Den entry boosts attacks.",
 				"rating": 2,
 				"flags": {
 					"breakable": 1

@@ -20,7 +20,11 @@ const import_ground_bone_moves = {isGroundBoneMove: function isGroundBoneMove(mo
 const denCooling = {
 	"surf": 1,
 	"muddywater": 1,
+	"blizzard": 1,
+	"sparklingaria": 1,
+	"waterpledge": 1,
 	"glaciate": 2,
+	"waterspout": 2,
 	"hydrovortex": 2,
 	"oceanicoperetta": 2,
 	"subzeroslammer": 2,
@@ -784,8 +788,10 @@ onBasePower(basePower, source, target, move) {
         ["lavaplume", "The lava strengthened the attack!"],
         ["shelltrap", "The lava strengthened the attack!"],
         ["earthpower", "The lava strengthened the attack!"],
-        ["payday", "money money money money money mothafucka"],
-        ["makeitrain", "money money money money money mothafucka"],
+        ["payday", "Coins glittered among the dragon's hoard!"],
+        ["magmadrift", "The attack rode a surge of molten rock!"],
+        ["matrixshot", "Draconic energy surged through the shot!"],
+        ["rockclimb", "The climb shook loose the dragon's hoard!"],
         ["stompingtantrum", "Wrath of the Dragon!!!"],
         ["diamondstorm", "Sparkling treasure!"],
         ["makeitrain", "Sparkling treasure!"],
@@ -828,6 +834,7 @@ onBasePower(basePower, source, target, move) {
         modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 2);
     }
     if (boost.includes(move.id)) {
+        this.add("-message", "The factory machinery powered up the attack!");
         modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 1.5);
     }
     if (quakemoves.includes(move.id) || move.id === "superumdmove" && move.category === "Physical") {
@@ -896,12 +903,14 @@ onBasePower(basePower, source, target, move) {
         modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 1.5);
     }
     if (boosted.includes(move.id)) {
+        this.add("-message", "The forest stirred with the rhythm of the attack!");
         modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 1.5);
     }
     if (move.isMax && move.type === "Water") {
         modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 1.3);
     }
     if (nerfed.includes(move.id)) {
+        this.add("-message", "The tangled roots broke the force of the flood!");
         modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 0.5);
         const marshCounter = move.id === "surf" ? 1 : 2;
         const currentCounter = this.field.terrainState.terrainChanges?.get("swampterrain") ?? 0;
@@ -1332,7 +1341,7 @@ onBasePower(basePower, source, target, move) {
         modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 1.5);
     }
     if (move.id === "rocksmash") {
-        this.add("-message", "SMASH'D!");
+        this.add("-message", "The shattered rocks struck with crushing force!");
         modifier *= (0, import_adaptive_cycle.adaptiveFieldMultiplier)(this, source, target, 2);
     }
     if (rockymoves.includes(move.id)) {

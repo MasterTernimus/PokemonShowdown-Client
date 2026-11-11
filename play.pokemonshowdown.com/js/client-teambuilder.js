@@ -6175,7 +6175,7 @@ function renderStarterPassives(species) {
 		var editor = panel.find('.nickname-rows').closest('.library-step');
 		if (!editor.length) return;
 		var options = panel.find('.simple-profile-options');
-		if (!options.length) options = $('<details class="library-secondary simple-profile-options"><summary>Profile options</summary></details>').appendTo(panel);
+		if (!options.length) options = $('<details class="library-secondary simple-profile-options"><summary>More options &amp; imports</summary></details>').appendTo(panel);
 		// Keep all stored settings and advanced actions, but take them out of the editing path.
 		panel.find('.library-step > details.library-secondary, .profile-view-options').not(options).appendTo(options);
 		panel.find('.auto-nickname, .roster-profile-filter, .nickname-add-members').closest('label').appendTo(options);
@@ -6188,11 +6188,13 @@ function renderStarterPassives(species) {
 		panel.find('.group-batch-tools').appendTo(options);
 		tools.find('.nickname-search').show().attr('placeholder', 'Filter saved Pokémon or nicknames').attr('aria-label', 'Filter profile entries');
 		var save = editor.find('.library-save-actions');
-		save.find('[name=addNicknameRow]').text('Add Pokémon');
-		tools.find('[name=addTeamProfileMembers]').appendTo(save);
+		save.find('[name=addNicknameRow]').text('Add Pokémon').appendTo(tools);
+		panel.find('[name=addTeamProfileMembers]').text('Add team Pokémon').appendTo(tools);
 		var apply = panel.find('.library-apply-step');
 		apply.find('.nickname-replace').closest('label').appendTo(options);
-		apply.find('[name=applyNicknameToTeam]').text('Apply to team…').appendTo(save);
+		apply.find('[name=applyNicknameToTeam]').appendTo(save);
+		save.find('[name=saveNicknameMappings]').text('Save profile');
+		save.find('[name=applyNicknameToTeam]').text('Save & preview team').addClass('button-primary').attr('title', this.curTeam ? 'Save this profile, then review names and appearance for the whole team' : 'Open a team to apply this profile');
 		save.find('.nickname-save-status').appendTo(save);
 		apply.hide();
 		panel.find('.profile-rename-existing').hide();
@@ -6201,6 +6203,19 @@ function renderStarterPassives(species) {
 		if (!build.length) build = $('<details class="library-secondary simple-profile-build"><summary>Build a team from this profile</summary></details>').appendTo(panel);
 		panel.find('.profile-selection-actions, .profile-team-preview').appendTo(build);
 		picker.find('[name=newUnifiedProfile]').text('New profile');
+		// Common settings belong beside the names, not inside nested menus.
+		var settings = panel.find('.simple-profile-settings');
+		if (!settings.length) settings = $('<div class="simple-profile-settings"></div>').insertAfter(picker);
+		panel.find('.nickname-shiny, .nickname-gendered, .auto-nickname, .nickname-replace').closest('label').appendTo(settings);
+		panel.find('.nickname-shiny option[value=""]').text('Keep current');
+		panel.find('.nickname-shiny option[value="yes"]').text('All shiny');
+		panel.find('.nickname-shiny option[value="no"]').text('All non-shiny');
+		panel.find('.nickname-gender option[value=""]').text('Any gender');
+		var rename = panel.find('[name=renameToolEntry]').filter(function () {return this.value.indexOf('nickname:') === 0;});
+		rename.appendTo(picker);
+		var context = panel.find('.simple-profile-context');
+		if (!context.length) context = $('<p class="simple-profile-context tools-note"></p>').insertBefore(save);
+		context.text(this.curTeam ? 'Editing saved names · Apply to “' + this.curTeam.name + '” after preview.' : 'Editing saved names · Open a team to apply them.');
 		panel.find('.roster-species-search').attr('placeholder', 'Search to add a Pokémon');
 		panel.find('[name=removeNicknameRow], .profile-member-remove').attr('title', function () {return $(this).hasClass('profile-member-remove') ? 'Remove Pokémon from this profile; keep its saved nickname' : 'Clear nickname';});
 	};

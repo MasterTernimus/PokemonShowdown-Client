@@ -4219,6 +4219,48 @@ a.ilink.yours {
 .guide-reference-card li {margin:4px 0;}
 .guide-reference-card p {margin:5px 0;}
 .guide-reference-stats {display:block;color:#536b80;}
+.guide-effects-table {width:100%;border-collapse:collapse;font-size:13px;table-layout:fixed;}
+.guide-effects-table th,.guide-effects-table td {padding:7px 10px;text-align:left;vertical-align:top;border-bottom:1px solid #c6d3df;overflow-wrap:anywhere;}
+.guide-effects-table th:first-child {width:25%;}
+.guide-effects-table thead {background:#edf3f8;color:#264860;}
+.guide-organized .guide-page .guide-effects-table ul {margin:0;padding:0;list-style:none;line-height:1.45;}
+.guide-organized .guide-page .guide-effects-table li {margin:0 0 5px;}
+.guide-organized .guide-page .guide-effects-table li:last-child {margin:0;}
+.guide-organized .guide-page > .guide-section > ul {max-width:none;line-height:1.5;margin:10px 0;padding-left:30px;}
+.guide-organized .guide-page > .guide-section > ul > li {margin:5px 0;}
+.guide-component-note,.guide-transition-note {font-size:12px;line-height:1.5;}
+.guide-transition-table {width:100%;border-collapse:collapse;font-size:13px;table-layout:fixed;}
+.guide-transition-table th,.guide-transition-table td {padding:9px 10px;text-align:left;vertical-align:top;border-bottom:1px solid #c6d3df;overflow-wrap:anywhere;}
+.guide-transition-table th:first-child {width:25%;}
+.guide-transition-table th:last-child {width:21%;}
+.guide-transition-table thead {background:#edf3f8;color:#264860;}
+.guide-route-link {background:none;border:0;color:#185a85;text-decoration:underline;cursor:pointer;padding:0;font:inherit;font-weight:bold;text-align:left;}
+.guide-route-link:focus-visible {outline:2px solid #5487ad;outline-offset:2px;}
+.guide-route-arrow {display:block;margin:3px 0;color:#536b80;}
+.guide-route-trigger small {display:block;margin-top:6px;line-height:1.4;}
+.guide-route-uses span {display:inline-block;padding:3px 6px;border-radius:4px;background:#e8f2e8;color:#29572f;font-weight:bold;}
+.guide-transition-table .guide-route-uses {overflow-wrap:normal;}
+.guide-transition-extra {padding:12px;}
+.guide-transition-extra summary {cursor:pointer;font-weight:bold;}
+.dark .guide-transition-table th,.dark .guide-transition-table td {border-color:#506376;}
+.dark .guide-transition-table thead {background:#324659;color:#ecf3fa;}
+.dark .guide-route-link {color:#9cd6ff;}
+.dark .guide-route-arrow {color:#c0d1e1;}
+.dark .guide-route-uses span {background:#274f42;color:#c9f3de;}
+@media(max-width:650px){
+ .guide-transition-table,.guide-transition-table tbody {display:block;}
+ .guide-transition-table thead {display:none;}
+ .guide-transition-table tr {display:grid;grid-template-columns:1fr auto;padding:10px 12px;border-bottom:1px solid #c6d3df;gap:7px;}
+ .guide-transition-table td {display:block;border:0;padding:0;}
+ .guide-transition-table .guide-route-path {grid-column:1;grid-row:1;}
+ .guide-transition-table .guide-route-uses {grid-column:2;grid-row:1;max-width:110px;text-align:right;}
+ .guide-transition-table .guide-route-trigger {grid-column:1 / -1;grid-row:2;}
+ .guide-route-arrow {display:inline;}
+ .dark .guide-transition-table tr {border-color:#506376;}
+}
+.dark .guide-effects-table thead {background:#324659;color:#ecf3fa;}
+.dark .guide-effects-table th,.dark .guide-effects-table td {border-color:#506376;}
+@media(max-width:650px){.guide-effects-table th,.guide-effects-table td {padding:7px 6px;}.guide-effects-table th:first-child {width:29%;}}
 .dark .field-guide-room {background:#202b37;color:#e2eaf2;}
 .dark .field-guide-room .guide-page {background:#263442;color:#e2eaf2;border-color:#506376;}
 .dark .field-guide-room .guide-page > details {background:#263442;border-color:#506376;}

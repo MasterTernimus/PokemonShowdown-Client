@@ -2366,20 +2366,58 @@
 			if (!['', 'field', 'aura', 'effect'].includes(kind)) return;
 			this.guideKind = kind; this.$('[name=guide-kind]').val(kind); this.filterGuide();
 		},
-		filterGuide:function () {var self = this, q = toID(this.$('[name=guide-search]').val()), kind = this.$('[name=guide-kind]').val(); var list = this.data.entries.filter(function (e) {return (!kind || e.kind === kind) && (!q || toID(e.name + ' ' + JSON.stringify(e.sections) + ' ' + JSON.stringify(e.references) + ' ' + JSON.stringify(e.referenceDetails)).includes(q));}); this.$('.guide-list').html(list.map(function (e) {var key = (e.kind === 'aura' ? 'aura/' : e.kind === 'effect' ? 'effect/' : '') + e.id; return '<button class="button" name="chooseGuide" value="' + escape(key) + '" aria-pressed="' + (key === self.selected) + '">' + escape(e.name) + '<small>' + (e.kind === 'aura' ? 'Aura' : 'Full field') + '</small></button>';}).join('') || '<p>No matching entries.</p>');},
+		filterGuide:function () {var self = this, q = toID(this.$('[name=guide-search]').val()), kind = this.$('[name=guide-kind]').val(); var list = this.data.entries.filter(function (e) {return (!kind || e.kind === kind) && (!q || toID(e.name + ' ' + JSON.stringify(e.sections) + ' ' + JSON.stringify(e.references) + ' ' + JSON.stringify(e.referenceDetails) + ' ' + JSON.stringify(e.transitions)).includes(q));}); this.$('.guide-list').html(list.map(function (e) {var key = (e.kind === 'aura' ? 'aura/' : e.kind === 'effect' ? 'effect/' : '') + e.id; return '<button class="button" name="chooseGuide" value="' + escape(key) + '" aria-pressed="' + (key === self.selected) + '">' + escape(e.name) + '<small>' + (e.kind === 'aura' ? 'Aura' : 'Full field') + '</small></button>';}).join('') || '<p>No matching entries.</p>');},
 		chooseGuide:function (id) {this.selected = id; var kind = this.guideKeyKind(id); if (this.guideKind && this.guideKind !== kind) {this.guideKind = kind; this.$('[name=guide-kind]').val(kind); this.$('[name=guide-search]').val('');} this.renderPage(); this.filterGuide(true); if (window.innerWidth <= 650) this.$('.guide-page')[0].scrollIntoView({block:'start'});},
+		followGuideRoute:function (id) {this.openGuideEntry(id); this.$('.guide-page')[0].scrollIntoView({block:'start'});},
 		renderPage:function () {
 			if (!this.data) return; var key = this.selected || 'hauntedterrain', aura = key.startsWith('aura/'), id = aura ? key.slice(5) : key, e = this.data.entries.find(function (e) {return e.id === id && e.kind === (aura ? 'aura' : 'field');}); if (!e) {this.$('.guide-page').html('<p>This entry is not registered on the connected server.</p>'); return;}
 			var html = '<header><div><small>' + (aura ? 'TEMPORARY AURA' : 'FULL FIELD / TERRAIN') + '</small><h2>' + escape(e.name) + '</h2></div>' + (!aura ? '<button class="button" name="calculateGuideField" value="' + escape(e.id) + '">Use in calculator</button>' : '') + '</header>';
-			var sections = e.sections || {}, order = ['Boosts and general effects', 'Duration', 'Weather, rooms and Gravity', 'End-of-turn damage', 'Transitions', 'Moves', 'Abilities', 'Seeds and other effects', 'Shared rules and limitations', 'Battle messages'];
-			order.concat(Object.keys(sections).filter(function (section) {return !order.includes(section);})).forEach(function (section) {
-				var lines = sections[section] || []; if (!lines.length) return;
-				html += '<details' + (section === 'Battle messages' ? '' : ' open') + '><summary>' + escape(section) + '</summary><ul>' + lines.map(function (line) {return '<li>' + escape(line) + '</li>';}).join('') + '</ul></details>';
-			});
-			if (e.legacyNotes.length)html += '<details class="guide-unverified"><summary>Older notes — not source-verified for this release</summary><p>These notes may be outdated. They are provided separately from reviewed rules.</p><ul>' + e.legacyNotes.map(function (n) {return '<li>' + escape(n) + '</li>';}).join('') + '</ul></details>';
-			if (Object.values(e.referenceDetails || {}).some(function (rows) {return rows.length;})) {
-				html += '<details class="guide-reference-details"><summary>Related moves, abilities and items</summary>'; ['moves', 'abilities', 'items'].forEach(function (kind) {var rows = (e.referenceDetails || {})[kind] || []; if (!rows.length) return; html += '<h4>' + escape(kind.charAt(0).toUpperCase() + kind.slice(1)) + '</h4><div class="guide-reference-cards">'; rows.forEach(function (row) {html += '<article class="guide-reference-card"><h5>' + escape(row.name) + '</h5>'; if (row.moveStats) {var m = row.moveStats; html += '<small class="guide-reference-stats">' + escape(m.type + ' · ' + m.category + (m.category === 'Status' ? '' : ' · ' + m.power + ' power') + ' · ' + (m.accuracy === true ? 'Always hits' : m.accuracy + ' accuracy') + ' · ' + m.pp + ' PP') + '</small>';} if (row.fieldEffects.length) {html += '<ul>' + row.fieldEffects.map(function (text) {return '<li>' + escape(text) + '</li>';}).join('') + '</ul>';} else {html += '<p class="guide-pending">Field-specific detail pending review.</p>'; if (row.generalSummary)html += '<p><strong>General effect:</strong> ' + escape(row.generalSummary) + '</p>';}html += '</article>';}); html += '</div>';}); html += '</details>';
+
+			var sections = e.sections || {}, order = ['Boosts and general effects', 'Transitions', 'Moves', 'Abilities', 'Seeds and other effects', 'Shared move and ability mappings', 'Duration', 'Weather, rooms and Gravity', 'End-of-turn damage', 'Shared rules and limitations', 'Battle messages'];
+			var labels = {'Boosts and general effects':'General effects', 'Transitions':'Field transitions', 'Moves':'Affected moves', 'Abilities':'Affected abilities', 'Seeds and other effects':'Seeds and items', 'Shared move and ability mappings':'Nature Power & type changes', 'Shared rules and limitations':'Other rules'};
+			function bullets(lines) {return '<ul>' + lines.map(function (line) {return '<li>' + escape(line) + '</li>';}).join('') + '</ul>';}
+			function references(kind, rows) {
+				if (!rows.length) return '';
+				return '<table class="guide-effects-table"><thead><tr><th>' + (kind === 'abilities' ? 'Ability / component' : kind === 'items' ? 'Item' : 'Move') + '</th><th>Field effect</th></tr></thead><tbody>' + rows.map(function (row) {
+					return '<tr><th scope="row">' + escape(row.name) + '</th><td>' + bullets(row.fieldEffects) + '</td></tr>';
+				}).join('') + '</tbody></table>';
 			}
+
+			var guideEntries = this.data.entries;
+			function fieldLink(id) {
+				if (id === 'previous') return '<span>Field underneath <small>(see condition)</small></span>';
+				var field = guideEntries.find(function (entry) {return entry.kind === 'field' && entry.id === id;});
+				return field ? '<button class="guide-route-link" name="followGuideRoute" value="' + escape(id) + '">' + escape(field.name.replace(/ Terrain$/, '')) + '</button>' : escape(id);
+			}
+			function routeList(title, rows, direction) {
+				var content = '<h4>' + title + '</h4>';
+				if (!rows.length) return content + '<p class="guide-route-empty">No special ' + direction + ' move or weather route is listed.</p>';
+				content += '<table class="guide-transition-table"><thead><tr><th>From → To</th><th>Move or condition</th><th>Uses needed</th></tr></thead><tbody>';
+				rows.forEach(function (route) {
+					content += '<tr><td class="guide-route-path">' + fieldLink(route.from) + '<span class="guide-route-arrow" aria-label="becomes"> → </span>' + fieldLink(route.to) + '</td><td class="guide-route-trigger">' + escape(route.trigger) + (route.note ? '<small>' + escape(route.note) + '</small>' : '') + '</td><td class="guide-route-uses"><span>' + escape(route.uses) + '</span></td></tr>';
+				});
+				return content + '</tbody></table>';
+			}
+			order.concat(Object.keys(sections).filter(function (section) {return !order.includes(section);})).forEach(function (section) {
+
+				if (section === 'Transitions' && e.transitions) {
+					html += '<details class="guide-section guide-transitions" data-section="Transitions" open><summary>Field transitions</summary>';
+					html += routeList('Where this field can go', e.transitions.outgoing, 'outgoing');
+					html += routeList('How to create this field', e.transitions.incoming, 'incoming');
+					html += '<details class="guide-transition-extra"><summary>Conditions and other transition rules</summary>' + bullets(sections.Transitions || []) + '</details></details>';
+					return;
+				}
+				var lines = sections[section] || [], kind = section === 'Moves' ? 'moves' : section === 'Abilities' ? 'abilities' : section === 'Seeds and other effects' ? 'items' : '';
+				var rows = ((e.referenceDetails || {})[kind] || []).filter(function (row) {return row.reviewed && row.fieldEffects.length;});
+				if (!lines.length && !rows.length) return;
+				var open = !['Battle messages', 'Shared rules and limitations'].includes(section);
+				html += '<details class="guide-section" data-section="' + escape(section) + '"' + (open ? ' open' : '') + '><summary>' + escape(labels[section] || section) + '</summary>';
+				if (kind === 'abilities') html += '<p class="guide-component-note">Shared effects are listed under their component. They also apply inside combined abilities.</p>';
+				html += (lines.length ? bullets(lines) : '');
+				if (rows.length) html += kind === 'moves' && lines.length ? '<details class="guide-move-details"><summary>Individual move effects</summary>' + references(kind, rows) + '</details>' : references(kind, rows);
+				html += '</details>';
+			});
+			if (!aura) html += '<p class="guide-transition-note">Field locks can prevent changes. Clearing a field reveals the layer beneath it. Auras have their own timer and do not replace the main field.</p>';
 			this.$('.guide-page').html(html);
 		},
 		calculateGuideField:function (id) {app.pendingCalculatorField = id; app.rooms[''].customCalculator(); var r = app.rooms.calculator; if (r.metadata) {r.$('[name=calc-field]').val(id); r.scenarioEdited(); app.pendingCalculatorField = null;}},
@@ -2437,7 +2475,7 @@
 		if (!this.data) return;
 		var self = this, q = toID(this.$('[name=guide-search]').val()), kind = this.$('[name=guide-kind]').val();
 		this.guideKind = kind || '';
-		var list = this.data.entries.filter(function (e) {return (!kind || e.kind === kind) && (!q || toID(e.name + ' ' + e.group + ' ' + JSON.stringify(e.sections) + ' ' + JSON.stringify(e.references) + ' ' + JSON.stringify(e.referenceDetails)).includes(q));});
+		var list = this.data.entries.filter(function (e) {return (!kind || e.kind === kind) && (!q || toID(e.name + ' ' + e.group + ' ' + JSON.stringify(e.sections) + ' ' + JSON.stringify(e.references) + ' ' + JSON.stringify(e.referenceDetails) + ' ' + JSON.stringify(e.transitions)).includes(q));});
 		function keyFor(entry) {return (entry.kind === 'aura' ? 'aura/' : entry.kind === 'effect' ? 'effect/' : '') + entry.id;}
 		if (keepSelection !== true) {
 			if (list.length) {if (!list.some(function (entry) {return keyFor(entry) === self.selected;})) this.selected = keyFor(list.slice().sort(function (a, b) {return a.name.localeCompare(b.name);})[0]); this.renderPage();} else {this.selected = ''; this.$('.guide-page').removeAttr('data-group').html('<p class="guide-empty">No matching entries in this section. Try another search or section.</p>');}
