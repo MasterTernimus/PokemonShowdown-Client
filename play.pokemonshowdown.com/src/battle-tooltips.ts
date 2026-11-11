@@ -2419,8 +2419,15 @@ class BattleTooltips {
 		}
 		if (move.flags['tail'] || (move.flags as any)['tailmove']) value.abilityModify(1.5, 'Whiplash');
 		if (!move.isZ && !move.isMax && ['bodyslam', 'heavyslam'].includes(move.id)) value.abilityModify(1.5, 'Leviathan Wake');
-		if ((move.flags as any)['kick']) value.abilityModify(1.4, 'Seasonal Stride');
-		if (move.type === 'Normal' && moveType !== 'Normal') value.abilityModify(1.2, 'Seasonal Stride');
+		if (move.type === 'Normal' && moveType !== 'Normal') value.abilityModify(1.5, 'Seasonal Stride');
+		if (move.category !== 'Status' && value.tryAbility('Relentless Hunt')) {
+			const huntPower = ['dragonsdenterrain', 'fairytaleterrain'].includes(drillField) ? 2 :
+				['rockyterrain', 'bigtopterrain', 'mountainterrain', 'snowymountainterrain', 'coldeclipseterrain']
+					.includes(drillField) ? 1.5 :
+				['desertterrain', 'forestterrain', 'burningterrain', 'superheatedterrain', 'ashenbeachterrain',
+					'watersurfaceterrain', 'caveterrain', 'starlightarenaterrain', 'newworldterrain'].includes(drillField) ? 1.3 : 1;
+			if (huntPower !== 1) value.abilityModify(huntPower, 'Relentless Hunt');
+		}
 		if (['psn', 'tox'].includes(pokemon.status) && move.category === 'Physical') {
 			value.abilityModify(1.5, "Toxic Boost");
 		}
@@ -2503,50 +2510,43 @@ class BattleTooltips {
 		if (move.category !== 'Status') {
 			let auraBoosted = '';
 			let auraBroken = false;
-			if (move.flags.sound) {
-				for (const ally of this.battle.getAllActive()) {
-					if (!ally || ally.fainted || !(ally.side === pokemon.side ||
-						this.battle.gameType === 'multi' && ally.side.n % 2 === pokemon.side.n % 2)) continue;
-					const own = ally === pokemon;
-					const passives = own ? (serverPokemon.passives ?? ally.getSpecies().passives) : ally.getSpecies().passives;
-					const selected = toID(ally.effectiveAbility(own ? serverPokemon : undefined));
-					const resonance = Dex.getAbilityEffects(selected).has('resonanceforce' as ID) ||
-						passives.some(passive => Dex.getPassiveAbilityEffects(toID(passive)).has('resonanceforce' as ID));
-					if (resonance) value.modify(1.5, 'Resonance Force');
-				}
-			}
-			for (const ally of pokemon.side.active) {
-				if (!ally || ally.fainted) continue;
-				let allyAbility = this.getAllyAbility(ally);
-				if (moveType === 'Fairy' && allyAbility === 'Fairy Aura') {
+			let ownAura = false;
+			const applyPower = (factor: number, name: string, holder: Pokemon) => holder === pokemon ?
+				value.powerAbilityModify(factor, name) : value.modify(factor, name);
+			for (const active of this.battle.getAllActive()) {
+				if (!active || active.fainted) continue;
+				const effects = this.getActivePowerEffects(active, pokemon, serverPokemon);
+				if (moveType === 'Fairy' && effects.has('fairyaura' as ID)) {
+					if (!auraBoosted) ownAura = active === pokemon;
 					auraBoosted = 'Fairy Aura';
-				} else if (moveType === 'Dark' && allyAbility === 'Dark Aura') {
+				} else if (moveType === 'Dark' && effects.has('darkaura' as ID)) {
+					if (!auraBoosted) ownAura = active === pokemon;
 					auraBoosted = 'Dark Aura';
-				} else if (allyAbility === 'Aura Break') {
-					auraBroken = true;
-				} else if (allyAbility === 'Battery' && ally !== pokemon && move.category === 'Special') {
-					value.modify(1.3, 'Battery');
-				} else if (allyAbility === 'Power Spot' && ally !== pokemon) {
-					value.modify(1.3, 'Power Spot');
-				} else if (allyAbility === 'Steely Spirit' && moveType === 'Steel') {
-					value.modify(1.5, allyAbility);
 				}
-			}
-			for (const foe of pokemon.side.foe.active) {
-				if (!foe || foe.fainted) continue;
-				if (foe.ability === 'Fairy Aura' && moveType === 'Fairy') {
-					auraBoosted = 'Fairy Aura';
-				} else if (foe.ability === 'Dark Aura' && moveType === 'Dark') {
-					auraBoosted = 'Dark Aura';
-				} else if (foe.ability === 'Aura Break') {
-					auraBroken = true;
+				if (effects.has('aurabreak' as ID)) auraBroken = true;
+				const allied = active.side === pokemon.side || this.battle.gameType === 'multi' &&
+					active.side.n % 2 === pokemon.side.n % 2;
+				if (!allied) continue;
+				if (move.flags.sound && effects.has('resonanceforce' as ID)) applyPower(1.5, 'Resonance Force', active);
+				if (move.category === 'Special' && effects.has('battery' as ID)) {
+					const self = active === pokemon;
+					applyPower(self && this.battle.hasPseudoWeather('Electric Terrain') ? 1.95 : 1.3, 'Battery', active);
+				}
+				if (active !== pokemon && effects.has('powerspot' as ID)) {
+					const boosted = ['Haunted Terrain', 'Bewitched Woods Terrain', 'Holy Terrain', 'Psychic Terrain']
+						.some(field => this.battle.hasPseudoWeather(field));
+					value.modify(boosted ? 1.5 : 1.3, 'Power Spot');
+				}
+				if (moveType === 'Steel' && effects.has('steelyspirit' as ID)) {
+					applyPower(this.battle.hasPseudoWeather('Fairy Tale Terrain') ? 2 : 1.5, 'Steely Spirit', active);
 				}
 			}
 			if (auraBoosted) {
 				if (auraBroken) {
 					value.modify(0.75, auraBoosted + ' + Aura Break');
 				} else {
-					value.modify(1.33, auraBoosted);
+					if (ownAura) value.powerAbilityModify(5448 / 4096, auraBoosted);
+					else value.modify(5448 / 4096, auraBoosted);
 				}
 			}
 		}
@@ -2838,6 +2838,20 @@ class BattleTooltips {
 			if (curType === type) return true;
 		}
 		return false;
+	}
+	/** Resolve only known active abilities, plus persistent species passives. */
+	getActivePowerEffects(active: Pokemon, pokemon: Pokemon, serverPokemon: ServerPokemon): Set<ID> {
+		const ownData = active === pokemon ? serverPokemon :
+			[...(this.battle.myPokemon || []), ...(this.battle.myAllyPokemon || [])]
+				.find(data => this.battle.findCorrespondingPokemon(data) === active);
+		const passives = ownData?.passives ?? active.getSpecies(ownData).passives;
+		const ability = toID(active.effectiveAbility(ownData));
+		const excluded = Dex.getAbilityComponentExclusions(ability, passives, toID(active.getSpeciesForme(ownData)));
+		const effects = new Set(Array.from(Dex.getAbilityEffects(ability)).filter(id => !excluded.includes(id)));
+		for (const passive of passives) {
+			for (const effect of Array.from(Dex.getPassiveAbilityEffects(toID(passive)))) effects.add(effect);
+		}
+		return effects;
 	}
 	getAllyAbility(ally: Pokemon) {
 		// this will only be available if the ability announced itself in some way

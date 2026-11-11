@@ -4001,6 +4001,7 @@ a.ilink.yours {
 .movemenu .gilded-battle-profile {display:block;font-size:10px;line-height:12px;}
 .movemenu .move-footer {display:flex;justify-content:space-between;gap:4px;line-height:14px;}
 .movemenu button .move-footer small {float:none;padding:0;white-space:nowrap;}
+.movemenu button .move-footer .nature-power-marker {font-size:9px;font-weight:700;letter-spacing:.3px;}
 
 /* Contextual move notes occupy one full-width row after the card columns. */
 .setchart .contextual-move-details {clear:both;grid-column:1/-1;max-width:100%;box-sizing:border-box;padding:4px 4px 0;font-size:11px;line-height:1.4;white-space:normal;}
@@ -4229,6 +4230,19 @@ a.ilink.yours {
 .guide-organized .guide-page > .guide-section > ul {max-width:none;line-height:1.5;margin:10px 0;padding-left:30px;}
 .guide-organized .guide-page > .guide-section > ul > li {margin:5px 0;}
 .guide-component-note,.guide-transition-note {font-size:12px;line-height:1.5;}
+.field-guide-room .guide-page {font-family:Arial,Helvetica,sans-serif;line-height:1.5;}
+.guide-effect-name {display:block;margin-bottom:4px;}
+.guide-shared-rules {margin:8px 16px;font-size:13px;max-width:900px;}
+.guide-shared-rules summary,.guide-incoming > summary {cursor:pointer;font-weight:bold;padding:8px;}
+.guide-shared-rules li {margin:5px 0;}
+.guide-incoming {margin:8px;}
+.guide-route-condition {margin-top:5px;font-size:12px;}
+.guide-route-condition summary {cursor:pointer;color:#185a85;}
+.guide-route-condition p {margin:5px 0;}
+.guide-long-list {list-style:none;}
+.guide-long-list summary {cursor:pointer;font-weight:600;}
+.guide-long-list p {margin:6px 0;line-height:1.6;}
+.dark .guide-route-condition summary {color:#9cd6ff;}
 .guide-transition-table {width:100%;border-collapse:collapse;font-size:13px;table-layout:fixed;}
 .guide-transition-table th,.guide-transition-table td {padding:9px 10px;text-align:left;vertical-align:top;border-bottom:1px solid #c6d3df;overflow-wrap:anywhere;}
 .guide-transition-table th:first-child {width:25%;}

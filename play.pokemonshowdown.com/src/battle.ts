@@ -2550,8 +2550,11 @@ export class Battle {
 			}
 			let species = this.dex.species.get(newSpeciesForme);
 			if (nextArgs) {
-				if (nextArgs[0] === '-mega') {
-					species = this.dex.species.get(this.dex.items.get(nextArgs[3]).megaStone);
+				if (nextArgs[0] === '-mega' && !species.isMega) {
+					// detailschange identifies the chosen branch; a shared stone may map to another Mega.
+					const stone = this.dex.items.get(nextArgs[3]).megaStone as string | {[species: string]: string};
+					const mega = this.dex.species.get(typeof stone === 'string' ? stone : stone[species.baseSpecies]);
+					if (mega.exists) species = mega;
 				} else if (nextArgs[0] === '-primal' && nextArgs.length > 2) {
 					if (nextArgs[2] === 'Red Orb') species = this.dex.species.get('Groudon-Primal');
 					if (nextArgs[2] === 'Blue Orb') species = this.dex.species.get('Kyogre-Primal');

@@ -1515,6 +1515,7 @@ class Species implements Effect {
 	// format data
 	readonly otherFormes: ReadonlyArray<string> | null;
 	readonly cosmeticFormes: ReadonlyArray<string> | null;
+	readonly isCosmeticForme: boolean;
 	readonly evos: ReadonlyArray<string> | null;
 	readonly prevo: string;
 	readonly evoType: 'trade' | 'useItem' | 'levelMove' | 'levelExtra' | 'levelFriendship' | 'levelHold' | 'other' | '';
@@ -1578,6 +1579,7 @@ class Species implements Effect {
 
 		this.otherFormes = data.otherFormes || null;
 		this.cosmeticFormes = data.cosmeticFormes || null;
+		this.isCosmeticForme = !!data.isCosmeticForme;
 		this.evos = data.evos || null;
 		this.prevo = data.prevo || '';
 		this.evoType = data.evoType || '';

@@ -1864,12 +1864,15 @@ class BattleItemSearch extends BattleTypedSearch<'item'> {
 	}
 	getBaseResults(): SearchRow[] {
 		if (!this.species) return this.getDefaultResults();
-		const speciesName = this.dex.species.get(this.species).name;
+		const species = this.dex.species.get(this.species);
+		const speciesName = species.name;
 		const results = this.getDefaultResults();
 		const speciesSpecific: SearchRow[] = [];
 		for (const row of results) {
 			if (row[0] !== 'item') continue;
-			if (this.dex.items.get(row[1]).itemUser?.includes(speciesName)) {
+			const item = this.dex.items.get(row[1]);
+			if (item.itemUser?.includes(speciesName) || (item.zMove &&
+				species.isCosmeticForme && item.itemUser?.includes(species.baseSpecies))) {
 				speciesSpecific.push(row);
 			}
 		}

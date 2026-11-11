@@ -48,8 +48,15 @@ describe('Nature Power live client display', () => {
 		const start = source.indexOf('var moveData = curActive.moves[i];');
 		const end = source.indexOf('\n\t\t\t\t}', start);
 		const render = new Function('BattleTooltips', 'ModifiableValue', 'Dex', 'BattleLog', 'curActive', 'typeValueTracker', 'i', 'pos', 'drakeFangPreview', 'var movebuttons="",hasMoves=false;'+source.slice(start,end)+';return movebuttons;');
-		battle.pseudoWeather = [['Misty Terrain', 0, 0]];
-		const html = render.call({battle, tooltips: new BattleTooltips(battle)}, BattleTooltips, ModifiableValue, Dex, {escapeHTML: s => s}, {moves: [{move:'Nature Power',pp:12,maxpp:32,target:'normal'}]}, new ModifiableValue(battle,battle.p1.active[0],{ability:'No Ability',item:'',speciesForme:'Mew'}),0,0,false);
-		assert(html.includes('Nature Power &rarr; Mist Ball')); assert(html.includes('data-move="Nature Power"')); assert(html.includes('12/32')); assert(html.includes('value="1"')); assert(html.includes('type-Psychic'));
+		for (const field of BattleFieldRules) {
+			battle.pseudoWeather = [[field.name, 0, 0]];
+			const called = BattleTooltips.getNaturePowerMove(battle);
+			const html = render.call({battle, tooltips: new BattleTooltips(battle)}, BattleTooltips, ModifiableValue, Dex, {escapeHTML: s => s}, {moves: [{move:'Nature Power',pp:12,maxpp:32,target:'normal'}]}, new ModifiableValue(battle,battle.p1.active[0],{ability:'No Ability',item:'',speciesForme:'Mew',hp:100,maxhp:100,level:100,stats:{atk:100,def:100,spa:100,spd:100,spe:100}}),0,0,false);
+			assert(html.includes('<span class="move-name">' + called.name + '</span>'), field.name);
+			assert(html.includes('aria-label="Nature Power">NP</small>'));
+			assert(html.includes('data-tooltip="move|Nature Power|0"'));
+			assert(!html.includes('Nature Power &rarr;'));
+			assert(html.includes('data-move="Nature Power"')); assert(html.includes('12/32')); assert(html.includes('value="1"'));
+		}
 	});
 });

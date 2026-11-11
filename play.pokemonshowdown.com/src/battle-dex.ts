@@ -20733,8 +20733,8 @@ for (const [id, update] of Object.entries({
 	},
 	"centiskorch": {
 		"abilities": {
-			"0": "Flash Fire",
-			"1": "Constricting Heat",
+			"0": "Coil Up",
+			"1": "White Smoke",
 			"H": "Flame Body",
 		},
 		"baseStats": {
@@ -20750,7 +20750,7 @@ for (const [id, update] of Object.entries({
 			"Bug",
 		],
 		"passives": [
-			"stickyhold",
+			"flashfire",
 		],
 		"replaceAbilities": true,
 	},
@@ -21589,16 +21589,16 @@ for (const [id, update] of Object.entries({
 	},
 	"cinccinodeso": {
 		"abilities": {
-			"0": "Pixilate",
+			"0": "Plush Whiplash",
 			"1": "Skill Link",
 			"H": "Silken Salvo",
 		},
 		"baseStats": {
 			"hp": 75,
 			"atk": 110,
-			"def": 90,
-			"spa": 60,
-			"spd": 90,
+			"def": 85,
+			"spa": 70,
+			"spd": 85,
 			"spe": 125,
 		},
 		"types": [
@@ -33915,7 +33915,7 @@ for (const [id, update] of Object.entries({
 	"lumineon": {
 		"abilities": {
 			"0": "Protean",
-			"1": "Storm Drain",
+			"1": "Swift Swim",
 			"H": "Drizzle",
 		},
 		"baseStats": {
@@ -33931,14 +33931,14 @@ for (const [id, update] of Object.entries({
 			"Fairy",
 		],
 		"passives": [
-			"swiftswim",
+			"stormdrain",
 		],
 		"replaceAbilities": true,
 	},
 	"lumineonalt": {
 		"abilities": {
 			"0": "Protean",
-			"1": "Storm Drain",
+			"1": "Swift Swim",
 			"H": "Drizzle",
 		},
 		"baseStats": {
@@ -33954,7 +33954,7 @@ for (const [id, update] of Object.entries({
 			"Fairy",
 		],
 		"passives": [
-			"swiftswim",
+			"stormdrain",
 		],
 		"replaceAbilities": true,
 	},
@@ -57398,8 +57398,10 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 		"shedskin",
 		"sandspit",
 	],
+	"coilup": [],
 	"heatcoil": [
 		"speedboost",
+		"magmaarmor",
 		"flamebody",
 		"longreach",
 	],
@@ -63173,6 +63175,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {},
 		"isNonstandard": null,
 	},
+	"coilup": {
+		"name": "Coil Up",
+		"num": 32550,
+		"gen": 9,
+		"desc": "After surviving an opposing contact hit that damages its HP, raises Defense by 1. Once per switch-in.",
+		"shortDesc": "Surviving an opposing contact hit gives +1 Defense, once per entry.",
+		"rating": 2,
+		"flags": {},
+		"isNonstandard": null,
+	},
 	"coldexpertise": {
 		"name": "Cold Expertise",
 		"num": 11974,
@@ -65960,8 +65972,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Heat Coil",
 		"num": 10058,
 		"gen": 9,
-		"desc": "Speed Boost and Long Reach. Long Reach removes contact. Has the current modified Magma Armor package: cures freeze, and incoming Water/Ice attacks use half the offensive stat.",
-		"shortDesc": "Speed Boost + Long Reach; modified Magma Armor; Flame Body passive is separate.",
+		"desc": "Speed Boost, Long Reach and Magma Armor. Gains Speed each full turn and attacks without contact. Prevents and cures freeze; halves incoming Water/Ice attack power. On entry in Dragon’s Den, Volcanic or Infernal Eclipse, gains +1 Defense and Sp. Def. Immune to Fire moves in Dragon’s Den and Infernal Eclipse. Cold Eclipse allows frostbite, which is then cured.",
+		"shortDesc": "Speed Boost + Long Reach + Magma Armor.",
 		"rating": 3.5,
 		"flags": {
 			"breakable": 1,
@@ -69877,8 +69889,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Relentless Hunt",
 		"num": 10003,
 		"gen": 9,
-		"desc": "Rough Skin. Damaging moves up to 60 base power gain +1 priority, or up to 80 on Cold Eclipse. Attacks have 1.5x power on Rocky, Fairy Tale, Big Top, Dragon’s Den, Mountain, Snowy Mountain and Cold Eclipse; 1.3x on Desert, Forest, Burning, Superheated, Ashen Beach, Water Surface, Cave, Starlight Arena and New World. Each ability bonus applies once.",
-		"shortDesc": "Rough Skin; low-power attacks gain +1 priority; field bonuses cap at 1.5x/1.3x.",
+		"desc": "Rough Skin. Damaging moves up to 60 base power gain +1 priority, or up to 80 on Cold Eclipse. Attacks have 2x power on Dragon’s Den and Fairy Tale; 1.5x on Rocky, Big Top, Mountain, Snowy Mountain and Cold Eclipse; 1.3x on Desert, Forest, Burning, Superheated, Ashen Beach, Water Surface, Cave, Starlight Arena and New World. Each ability bonus applies once.",
+		"shortDesc": "Rough Skin; weak attacks gain priority; field power 1.3x–2x.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null,
@@ -70832,8 +70844,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Seasonal Stride",
 		"num": 10202,
 		"gen": 9,
-		"desc": "Normal attacks become the current primary type with the 1.2x conversion boost; kicking moves have 1.4x power. Speed doubles only in sun. At turn end, rain selects Spring, sun Summer, sand Autumn and hail/snow Winter; no weather has the current form. The originally selected ability slot maps to the new season. External replacement abilities remain until ordinary restoration; genuine entry restores the selected slot for the current season. Transform does not cycle seasons.",
-		"shortDesc": "Normal moves become its primary type at 1.2x; kicks 1.4x; sun Speed 2x; weather changes season.",
+		"desc": "Normal attacks become the current primary type with the 1.5x conversion boost. Speed doubles only in sun. At turn end, rain selects Spring, sun Summer, sand Autumn and hail/snow Winter; no weather has the current form. The originally selected ability slot maps to the new season. External replacement abilities remain until ordinary restoration; genuine entry restores the selected slot for the current season. Transform does not cycle seasons.",
+		"shortDesc": "Normal moves become its primary type at 1.5x; sun Speed 2x; weather changes season.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null,
@@ -87138,7 +87150,7 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"mirror": 1,
 			"metronome": 1,
 		},
-		"desc": "Charlotte's move. Hits opposing Pokemon and applies Torment to damaged targets. Clears a replaceable field after a hit, respecting field locks. Field effects: Changes Cave to Volcanic. Flower Garden stage 3 or higher loses two stages unless rain or Water Sport prevents it. Uses native Ignite transformations before clearing other replaceable fields. Does not clear Burning Field established by a Z-Move. After successful HP or Substitute damage while the user survives, removes the active Aura once per whole move, preserving the underlying field. With no Aura, retains its normal field eligibility and transformations. Misses, protection and immunity do not clear it. Does not prevent later Auras. Additional field effects: Haunted, Superheated, Burning, Volcanic, Dragon’s Den or Ashen Aura: 30% burn chance once per damaged foe per attack, with normal secondary modifiers. Preserves these five fields; still removes an active Aura first.",
+		"desc": "Charlotte's move. Hits opposing Pokemon and applies Torment to damaged targets. Clears an Aura or separately placed field after a hit, respecting field locks. Natural field transitions stay in place. Field effects: Changes Cave to Volcanic. Flower Garden stage 3 or higher loses two stages unless rain or Water Sport prevents it. Uses native Ignite transformations before clearing other replaceable fields. Does not clear Burning Field established by a Z-Move. After successful HP or Substitute damage while the user survives, removes the active Aura once per whole move, preserving the underlying field. With no Aura, retains its normal field eligibility and transformations. Misses, protection and immunity do not clear it. Does not prevent later Auras. Additional field effects: Haunted, Superheated, Burning, Volcanic, Dragon’s Den or Ashen Aura: 30% burn chance once per damaged foe per attack, with normal secondary modifiers. Preserves these five fields; still removes an active Aura first.",
 		"shortDesc": "Charlotte's move. Hits foes; Torments; clears or transforms the field.",
 		"hasSheerForceBoost": false,
 		"signatureCharacters": [
@@ -92927,8 +92939,8 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"heal": 1,
 			"nosketch": 1,
 		},
-		"desc": "A fainted party member is selected and revived with 1/2 its max HP, rounded down. Fails if there are no fainted party members.",
-		"shortDesc": "Revives a fainted Pokemon to 50% HP.",
+		"desc": "Revives a fainted party member with half its max HP, rounded down. Keeps its Mega, Gmax or Battle Bond form. Fails if no party member has fainted.",
+		"shortDesc": "Revives an ally to 50% HP; keeps Mega/Gmax/Battle Bond form.",
 		"hasSheerForceBoost": false,
 	},
 	"riftopening": {
@@ -100225,6 +100237,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"clearbody",
 	],
 	"cloudnine": [],
+	"coilup": [],
 	"coldexpertise": [
 		"oblivious",
 		"thickfat",
@@ -103214,6 +103227,7 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 		"clearbody",
 	],
 	"cloudnine": [],
+	"coilup": [],
 	"coldexpertise": [
 		"oblivious",
 		"thickfat",

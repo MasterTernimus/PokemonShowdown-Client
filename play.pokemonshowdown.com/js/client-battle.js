@@ -791,9 +791,11 @@
 					if (move.id === 'Recharge') move.type = '&ndash;';
 					if (name.substr(0, 12) === 'Hidden Power') name = 'Hidden Power';
 					var moveType = this.tooltips.getMoveType(move, typeValueTracker)[0];
+					var moveOrigin = '';
 					if (move.id === 'naturepower') {
 						var calledMove = BattleTooltips.getNaturePowerMove(this.battle);
-						name = 'Nature Power &rarr; ' + BattleLog.escapeHTML(calledMove.name);
+						name = BattleLog.escapeHTML(calledMove.name);
+						moveOrigin = '<small class="nature-power-marker" title="Nature Power" aria-label="Nature Power">NP</small>';
 						moveType = this.tooltips.getMoveType(calledMove, typeValueTracker)[0];
 					}
 					var tooltipArgs = 'move|' + moveData.move + '|' + pos + (drakeFangPreview ? '||sevipermega' : '');
@@ -803,7 +805,7 @@
 						movebuttons += '<button class="type-' + moveType + ' has-tooltip" name="chooseMove" value="' + (i + 1) + '" data-move="' + BattleLog.escapeHTML(moveData.move) + '" data-target="' + BattleLog.escapeHTML(moveData.target) + '" data-tooltip="' + BattleLog.escapeHTML(tooltipArgs) + '">';
 						hasMoves = true;
 					}
-					movebuttons += '<span class="move-name">' + name + '</span><span class="move-footer"><small class="type">' + (moveType ? Dex.types.get(moveType).name : "Unknown") + '</small> <small class="pp">' + pp + '</small></span></button> ';
+					movebuttons += '<span class="move-name">' + name + '</span><span class="move-footer"><small class="type">' + (moveType ? Dex.types.get(moveType).name : "Unknown") + '</small>' + moveOrigin + '<small class="pp">' + pp + '</small></span></button> ';
 				}
 				if (!hasMoves) {
 					moveMenu += '<button class="movebutton" name="chooseMove" value="0" data-move="Struggle" data-target="randomNormal">Struggle<br /><small class="type">Normal</small> <small class="pp">&ndash;</small>&nbsp;</button> ';

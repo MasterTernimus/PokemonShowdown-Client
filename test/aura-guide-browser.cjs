@@ -105,11 +105,17 @@ async function noOverflow(page, label) {
 				await page.evaluate(id => openPublicFieldGuide(id), entry.id);
 				const transitions = page.locator('.guide-page [data-section="Transitions"]');
 				assert(await transitions.isVisible(), 'Visible transitions: ' + entry.id);
-				assert(await transitions.locator('li').count(), 'Nonempty transitions: ' + entry.id);
+				assert(await transitions.locator('table, .guide-route-empty').count(), 'Transition routes or explicit empty state: ' + entry.id);
 				await noOverflow(page, entry.id + '/' + label);
 			}
 			await page.evaluate(() => openPublicFieldGuide('dragonsdenterrain'));
 			const routes = page.locator('.guide-transitions');
+			assert.equal(await routes.evaluate(el => el.open), false, 'Transition tables start collapsed');
+			assert.equal(await page.locator('.guide-page [data-section="Moves"]').evaluate(el => el.open), false);
+			assert.equal(await page.locator('.guide-page [data-section="Abilities"]').evaluate(el => el.open), false);
+			assert.equal(await page.locator('.guide-shared-rules').count(), 1);
+			await routes.locator('> summary').click();
+			await routes.locator('.guide-incoming > summary').click();
 			assert.match(await routes.innerText(), /Where this field can go/);
 			assert.match(await routes.innerText(), /How to create this field/);
 			assert.match(await routes.innerText(), /Cave/);
@@ -119,7 +125,7 @@ async function noOverflow(page, label) {
 			assert.equal(await page.locator('.guide-page h2').innerText(), 'Cave Terrain');
 			await page.evaluate(() => openPublicFieldGuide('dragonsdenterrain'));
 			const abilities = page.locator('.guide-page [data-section="Abilities"]');
-			const names = await abilities.locator('tbody th').allTextContents();
+			const names = await abilities.locator('.guide-effect-name').allTextContents();
 			assert(names.includes('Magma Armor'));
 			assert(names.includes('Dragonize'));
 			assert(!names.includes('Atrocity'));
@@ -129,10 +135,20 @@ async function noOverflow(page, label) {
 			await page.locator('.guide-page').scrollIntoViewIfNeeded();
 			await painted(page);
 			await page.screenshot({path:path.join(output, 'dragon-den-notes-' + label + '.png')});
+			await page.locator('.guide-transitions > summary').click();
 			await page.locator('.guide-transitions').evaluate(el => el.scrollIntoView({block:'start'}));
 			await page.screenshot({path:path.join(output, 'field-transitions-' + label + '.png')});
+			await abilities.locator('> summary').click();
 			await abilities.scrollIntoViewIfNeeded();
 			await page.screenshot({path:path.join(output, 'field-components-' + label + '.png')});
+			await page.locator('.field-guide-room [name=guide-search]').fill('Magma Armor');
+			assert.equal(await page.locator('.guide-page [data-section="Abilities"]').evaluate(el => el.open), true, 'Search reveals ability effects');
+			await page.evaluate(() => openPublicFieldGuide('newworldterrain'));
+			assert(await page.locator('.guide-long-list').count(), 'Large move lists are expandable');
+			for (const effect of guide.entries.filter(e => e.kind === 'effect')) {
+				await page.evaluate(id => openPublicFieldGuide('effect/' + id), effect.id);
+				await noOverflow(page, effect.id + '/' + label);
+			}
 			checked++;
 		}
 		assert.deepEqual(errors, [], 'Browser JavaScript errors');
