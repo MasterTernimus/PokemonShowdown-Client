@@ -891,7 +891,7 @@ describe('Team Builder sprites', () => {
 			'Lucario-Mega-Z': 'Aura Precision',
 			'Scolipede-Mega-Azzy': 'Venom Bastion',
 			'Chimecho-Mega-Y': 'Haunted Chime',
-			'Meganium-Mega-Y': 'Blooming Sun',
+			'Meganium-Mega-Y': 'Solar Eruption',
 			'Charizard-Mega-X-Alt': 'Atrocity',
 			'Alakazam-Mega-Alt': 'Perfect Foresight',
 			'Ledian-Mega': 'Star Boxer',
