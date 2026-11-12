@@ -1937,7 +1937,7 @@
 			this.profilesView = true;
 			this.rosterImportPreview = null;
 			this.$el.html('<div class="pad roster-page"><button class="button" name="back">Back to Teambuilder</button><h2>Pokémon lists</h2><p>Save Pokémon lists and use them to filter team selections. Saved in this browser.</p>' + this.renderRosterProfiles() +
-				'<h3>Import a list</h3><p>One Pokémon name per line. A # header may name the profile. Base species include their Mega forms; remove any entry afterward.</p>' +
+				'<h3>Import a list</h3><p>One Pokémon name per line. A # header may name the profile. Base species include their Mega and Gmax forms; remove any entry afterward.</p>' +
 				'<label>New profile name <input class="textbox roster-import-name" placeholder="Leave blank to use the # header" maxlength="80" /></label><p><textarea class="textbox roster-import-text" rows="7" style="width:100%;box-sizing:border-box" aria-label="Pokémon list" placeholder="# My locks&#10;Charizard&#10;Venusaur"></textarea></p>' +
 				'<p><button class="button" name="previewRosterImport" value="new">Create list</button> <button class="button" name="previewRosterImport" value="add">Add to selected list</button> <button class="button" name="previewRosterImport" value="replace">Replace selected list</button></p><div class="roster-import-preview" aria-live="polite"></div></div>');
 		},
@@ -1948,7 +1948,7 @@
 				var species = Dex.species.get(key);
 				if (Dex.isSpeciesHidden(species.id)) continue;
 				// The legacy Dex flag omits custom Mega suffixes such as Mega-X-Alt.
-				if (!species.isMega && !/^Mega(?:-|$)/.test(species.forme)) continue;
+				if (!species.exists || (!species.isMega && !/^Mega(?:-|$)/.test(species.forme) && species.forme !== 'Gmax')) continue;
 				var source = species.battleOnly || species.changesFrom || species.baseSpecies;
 				if ((Array.isArray(source) ? source : [source]).some(function (name) { return toID(name) === id; })) result.push(species.id);
 			}
@@ -5105,7 +5105,7 @@
 	var rosterLibraryView = proto.showRosterProfiles;
 	proto.showRosterProfiles = function () {
 		this.destroySearch(); this.toolsView = false; this.profilesView = true; this.librarySection = 'lists'; this.rosterImportPreview = null;
-		this.$el.html('<div class="pad roster-page local-tools-manager library-clean">' + T.libraryHeader('lists') + '<section class="tools-panel library-lists"><header class="library-section-heading"><div><h3>Pokémon lists</h3><p>Keep a shortlist for the Pokémon picker.</p></div><span class="library-saved-badge">Saves automatically</span></header>' + this.renderRosterProfiles() + '<details class="library-secondary roster-import-section"><summary>Import a Pokémon list</summary><p class="tools-note">One Pokémon per line. Base species include their Mega forms.</p><label>New list name<input class="textbox roster-import-name" placeholder="Or use a # header in your list" maxlength="80" /></label><textarea class="textbox roster-import-text" rows="5" aria-label="Pokémon list" placeholder="# My team shortlist&#10;Charizard&#10;Venusaur"></textarea><div class="library-actions">' + button('previewRosterImport', 'Preview new list', 'new') + button('previewRosterImport', 'Preview additions', 'add') + '</div><details class="library-secondary"><summary>Replace this list</summary><p class="tools-note">Review the preview before replacing any entries.</p>' + button('previewRosterImport', 'Preview replacement', 'replace') + '</details><p class="library-list-import-hint tools-note"></p><div class="roster-import-preview" aria-live="polite"></div></details></section></div>');
+		this.$el.html('<div class="pad roster-page local-tools-manager library-clean">' + T.libraryHeader('lists') + '<section class="tools-panel library-lists"><header class="library-section-heading"><div><h3>Pokémon lists</h3><p>Keep a shortlist for the Pokémon picker.</p></div><span class="library-saved-badge">Saves automatically</span></header>' + this.renderRosterProfiles() + '<details class="library-secondary roster-import-section"><summary>Import a Pokémon list</summary><p class="tools-note">One Pokémon per line. Base species include their Mega and Gmax forms.</p><label>New list name<input class="textbox roster-import-name" placeholder="Or use a # header in your list" maxlength="80" /></label><textarea class="textbox roster-import-text" rows="5" aria-label="Pokémon list" placeholder="# My team shortlist&#10;Charizard&#10;Venusaur"></textarea><div class="library-actions">' + button('previewRosterImport', 'Preview new list', 'new') + button('previewRosterImport', 'Preview additions', 'add') + '</div><details class="library-secondary"><summary>Replace this list</summary><p class="tools-note">Review the preview before replacing any entries.</p>' + button('previewRosterImport', 'Preview replacement', 'replace') + '</details><p class="library-list-import-hint tools-note"></p><div class="roster-import-preview" aria-live="polite"></div></details></section></div>');
 		var selected = this.rosterData().selected;
 		this.$('[name=previewRosterImport][value=add], [name=previewRosterImport][value=replace]').prop('disabled', !selected).attr('title', selected ? '' : 'Choose a list first');
 		this.$('.library-list-import-hint').text(selected ? 'Imports only change this list after you confirm the preview.' : 'Choose a list above to add or replace entries; a new list can be created from an import.');
@@ -5394,7 +5394,7 @@
 		this.profileAddition = {team: this.curTeam, set: set, species: set.species, index: index, remove: !!remove};
 		var data = this.rosterData();
 		var html = '<section class="profile-add-panel" aria-label="Add Pokémon to profile"><h3>Add ' + escape(Dex.species.get(set.species).name) + ' to profile</h3>' +
-			'<p>Profiles are Pokémon lists saved in this browser. Includes matching Mega forms. Your build stays in this team.</p>' +
+			'<p>Profiles are Pokémon lists saved in this browser. Includes matching Mega and Gmax forms. Your build stays in this team.</p>' +
 			'<label>Profile <select class="profile-add-target">' + data.profiles.map(function (profile) {
 			return '<option value="' + escape(profile.id) + '"' + (profile.id === data.selected ? ' selected' : '') + '>' + escape(profile.name) + '</option>';
 		}).join('') + '<option value="">Create a new profile…</option></select></label>' +
@@ -5806,7 +5806,7 @@ function renderStarterPassives(species) {
 			this.$('.nickname-search').attr('placeholder', 'Find a member or name');
 			this.$('.library-row-tools').append('<label><input type="checkbox" class="profile-other-names" /> Other saved names</label>');
 			this.$('.nickname-rows').before('<p class="profile-membership-note tools-note"></p><label class="library-check"><input type="checkbox" class="roster-profile-filter"' + (groups.enabled && group && groups.selected === group.id ? ' checked' : '') + ' /> Use this group in the Pokémon picker</label>');
-			this.$('.nickname-rows').before('<label class="library-check"><input type="checkbox" class="nickname-add-members" checked /> Add Pokémon when saving new or edited nicknames</label><p class="tools-note">Includes matching Megas. An empty group is filled from your entered names; other saved names stay outside an existing group unless edited.</p>');
+			this.$('.nickname-rows').before('<label class="library-check"><input type="checkbox" class="nickname-add-members" checked /> Add Pokémon when saving new or edited nicknames</label><p class="tools-note">Includes matching Megas and Gmax forms. An empty group is filled from your entered names; other saved names stay outside an existing group unless edited.</p>');
 			this.$('.library-save-actions').after('<p class="roster-edit-status" role="status"></p>');
 			var imports = '<details class="library-secondary roster-import-section"><summary>Import Pokémon members</summary><input class="textbox roster-import-name" placeholder="New profile name" aria-label="Imported group name" maxlength="80" /><textarea class="textbox roster-import-text" rows="4" aria-label="Pokémon list" placeholder="One Pokémon per line"></textarea><div class="library-actions"><button class="button" name="previewRosterImport" value="new">Preview new group</button><button class="button" name="previewRosterImport" value="add">Preview additions</button><button class="button" name="previewRosterImport" value="replace">Preview replacement</button></div><div class="roster-import-preview" aria-live="polite"></div></details>';
 			manager.append(imports);
@@ -6036,11 +6036,11 @@ function renderStarterPassives(species) {
 	var p = window.TeambuilderRoom.prototype, T = window.TeambuilderTools;
 	function esc(value) {return BattleLog.escapeHTML(value);}
 	T.planGroupBatch = function (group, mode, incoming, selected) {
-		if (!group || !['add', 'selected', 'all'].includes(mode)) throw new Error('Choose a group and action.');
+		if (!group || !['add', 'selected', 'all', 'remove'].includes(mode)) throw new Error('Choose a group and action.');
 		var original = Array.from(new Set(group.species)), additions = Array.from(new Set(incoming)), chosen = new Set(selected || []);
 		if (mode === 'selected' && (!chosen.size || Array.from(chosen).some(function (id) {return !original.includes(id);}))) throw new Error('Select the members to replace.');
-		var kept = original.filter(function (id) {return Dex.isSpeciesHidden(id) || (mode !== 'all' && (mode !== 'selected' || !chosen.has(id)));});
-		var next = Array.from(new Set(kept.concat(additions)));
+		var kept = original.filter(function (id) {return Dex.isSpeciesHidden(id) || (mode === 'remove' ? !additions.includes(id) : mode !== 'all' && (mode !== 'selected' || !chosen.has(id)));});
+		var next = Array.from(new Set(kept.concat(mode === 'remove' ? [] : additions)));
 		return {species:next, added:next.filter(function (id) {return !original.includes(id);}), removed:original.filter(function (id) {return !next.includes(id);})};
 	};
 	T.applyGroupBatch = function (pending, prefs, selectedProfile) {
@@ -6062,7 +6062,7 @@ function renderStarterPassives(species) {
 	p.showToolsManager = function () {
 		show.apply(this, arguments); this.groupBatchPreview = null;
 		if (this.librarySection === 'sets' || !this.nicknameGroupProfile()) return;
-		this.$('.profile-membership-note').after('<div class="group-batch-tools"><button type="button" class="button" name="openGroupBatch">Edit members in bulk</button><div class="group-batch-editor" hidden><label>Action <select class="group-batch-mode"><option value="all">Replace whole group</option><option value="selected">Replace selected members</option><option value="add">Add members</option></select></label><fieldset class="group-batch-members" hidden><legend>Members to replace</legend></fieldset><label>Pokémon<textarea class="textbox group-batch-text" rows="5" placeholder="One Pokémon per line"></textarea></label><small>Base species include matching Megas. Saved names are kept by species.</small><p><button type="button" class="button" name="previewGroupBatch">Preview changes</button> <button type="button" class="button" name="cancelGroupBatch">Cancel</button></p><div class="group-batch-preview" aria-live="polite"></div></div></div>');
+		this.$('.profile-membership-note').after('<div class="group-batch-tools"><button type="button" class="button" name="openGroupBatch">Edit whole list / bulk changes</button><div class="group-batch-editor" hidden><label>Action <select class="group-batch-mode"><option value="all">Replace whole group</option><option value="selected">Replace selected members</option><option value="add">Add members</option><option value="remove">Remove members</option></select></label><fieldset class="group-batch-members" hidden><legend>Members to replace</legend></fieldset><label>Pokémon<textarea class="textbox group-batch-text" rows="12" placeholder="One Pokémon per line"></textarea></label><small>Base species include matching Megas and Gmax forms. Saved names are kept by species.</small><p><button type="button" class="button" name="previewGroupBatch">Preview changes</button> <button type="button" class="button" name="cancelGroupBatch">Cancel</button></p><div class="group-batch-preview" aria-live="polite"></div></div></div>');
 	};
 	p.openGroupBatch = function () {
 		this.saveNicknameDraft(); var group = this.nicknameGroupProfile(); if (!group) return;

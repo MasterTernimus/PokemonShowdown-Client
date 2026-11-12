@@ -30,6 +30,9 @@ describe('Local group batch previews and preservation', () => {
 		assert.deepEqual(T.planGroupBatch(g, 'all', ['slowbro'], []).removed, g.species);
 		assert.deepEqual(T.planGroupBatch(g, 'add', ['armaldo', 'mew'], []).species, ['corsola', 'armaldo', 'mew']);
 	});
+	it('removes a bulk list without changing remaining order', () => {
+		assert.deepEqual(T.planGroupBatch({species:['corsola','armaldo','mew']}, 'remove', ['corsola','mew'], []).species,['armaldo']);
+	});
 	it('rejects missing or stale selection and invalid modes', () => {
 		for (const ids of [[], ['mew']]) assert.throws(() => T.planGroupBatch({species:['corsola']}, 'selected', [], ids), /Select/);
 		assert.throws(() => T.planGroupBatch({species:[]}, 'bad', [], []), /Choose/);

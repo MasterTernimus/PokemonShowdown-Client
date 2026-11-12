@@ -75,6 +75,22 @@
     "lastlaugh": {
       "shortDesc": "1.3x after the target acts; last-action attacks bypass Substitute and heal 1/8 once/turn.",
       "desc": "Moves last within its priority bracket. On Chessboard entry, raises Defense by one stage. Its attacks deal 1.3x damage to a foe that has completed its move action this turn. If no other active Pokemon has a queued move remaining, its damaging move bypasses Substitute; damaging a foe with that move heals 1/8 max HP, once per turn."
+    },
+    "siegelauncher": {
+      "desc": "Mega Launcher gives pulse and bullet moves 1.5x power. Water Barrage supplies exactly one eligible Dual Wield pair, each hit at 0.6x power outside Free-for-All: pulse/bullet pairs therefore use 0.9x power per hit before STAB and passives. In Free-for-All both hits use full power, with the second-target selection. Existing multi-hit, charging, delayed, Z/Max and ineligible moves gain no extra pair. Water Barrage supplies Stalwart exactly once: redirection bypass and +1 Sp. Atk on New World, Starlight Arena, Fairy Tale or Chessboard entry. At turn end, foes take cycling Water damage of 1/16, 2/16, then 3/16 max HP; Water immunities block it and type effectiveness scales it only in Free-for-All. Shell Armor prevents critical hits.",
+      "shortDesc": "Mega Launcher + Water Barrage + Shell Armor."
+    },
+    "expiration": {
+      "desc": "Strings of Ruin grants Berserk and Duskilate, plus a 30% double-power chance per hit (50% on Dragon’s Den; excludes Fickle Beam). Fairy attacks deal neutral damage.",
+      "shortDesc": "Strings of Ruin; Fairy attacks deal neutral damage."
+    },
+    "abyssalrebirth": {
+      "desc": "Hydra Bond adds its follow-up hits. Levitate grants Ground immunity.",
+      "shortDesc": "Hydra Bond + Levitate."
+    },
+    "worldbreaker": {
+      "desc": "Full local Berserk and Duskilate. Surviving a move crossing half HP grants +1 Attack and Sp. Atk; on Dragon’s Den the threshold grants +2 Sp. Atk instead. Each damaging hit independently has a 30% chance (50% on Dragon’s Den) to double base power, except Fickle Beam uses only its own all-out roll.",
+      "shortDesc": "Berserk + Duskilate; 30% double power per hit, except Fickle Beam."
     }
   },
   "passives": {
@@ -86,6 +102,9 @@
     ],
     "jumpluff": [
       "windrider"
+    ],
+    "hydreigonmega": [
+      "hydraflight"
     ]
   },
   "effects": {
@@ -131,6 +150,20 @@
     "lastlaugh": [
       "lastlaugh",
       "stall"
+    ],
+    "siegelauncher": [
+      "dualwield",
+      "megalauncher",
+      "shellarmor",
+      "siegelauncher",
+      "stalwart",
+      "waterbarrage"
+    ],
+    "expiration": [
+      "berserk",
+      "duskilate",
+      "expiration",
+      "worldbreaker"
     ]
   }
 }

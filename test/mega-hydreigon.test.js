@@ -12,23 +12,22 @@ describe('Mega Hydreigon client integration', () => {
 		assert.deepEqual({...species.baseStats}, {hp: 92, atk: 110, def: 125, spa: 130, spd: 125, spe: 118});
 		assert.equal(species.bst, 700);
 		assert.equal(species.abilities[0], 'Expiration');
-		assert.deepEqual([...species.passives], ['abyssalrebirth']);
+		assert.deepEqual([...species.passives], ['hydraflight']);
 		assert(Dex.species.get('Hydreigon').otherFormes.includes(species.name));
 		assert.equal(Dex.items.get('Hydreigonite').megaStone.Hydreigon, species.name);
 		assert(!Dex.items.get('Hydreigonite').shortDesc.includes('Mega-X'));
 		assert(!Dex.species.get('Hydreigon-Mega-X').exists);
 	});
-	it('shows the complete component identities and accurate recovery description', () => {
-		for (const id of ['stringsofruin', 'controlledfury', 'berserk', 'duskilate', 'angerpoint']) {
+	it('shows the current components and Fairy-neutrality description', () => {
+		for (const id of ['stringsofruin', 'berserk', 'duskilate']) {
 			assert(Dex.getAbilityEffects('expiration').has(id), id);
 		}
 		assert.deepEqual([...Dex.getAbilityEffects('abyssalrebirth')].sort(), ['abyssalrebirth', 'hydrabond', 'levitate']);
 		const ability = Dex.abilities.get('Abyssal Rebirth');
 		assert.equal(ability.name, 'Abyssal Rebirth');
-		assert(/once per battle/.test(ability.desc));
-		assert(/after the entire move finishes/.test(ability.desc));
-		assert(/suppression prevents Reawakening/.test(ability.desc));
-		assert(!/Fell|Serene Grace/.test(ability.name + ability.desc));
+		assert(!/heals|Reawakening/.test(ability.desc));
+		assert(!Dex.getAbilityEffects('expiration').has('controlledfury'));
+		assert(/Fairy attacks deal neutral damage/.test(Dex.abilities.get('expiration').desc));
 	});
 	for (const shiny of [false, true]) for (const front of [false, true]) {
 		it(`resolves the supplied ${shiny ? 'shiny' : 'normal'} ${front ? 'front' : 'back'} sprite`, () => {

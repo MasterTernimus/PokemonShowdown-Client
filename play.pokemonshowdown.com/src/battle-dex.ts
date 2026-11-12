@@ -18412,10 +18412,10 @@ for (const [id, update] of Object.entries({
 		},
 		"baseStats": {
 			"hp": 100,
-			"atk": 70,
-			"def": 115,
-			"spa": 100,
-			"spd": 115,
+			"atk": 60,
+			"def": 105,
+			"spa": 90,
+			"spd": 105,
 			"spe": 60,
 		},
 		"types": [
@@ -27205,7 +27205,7 @@ for (const [id, update] of Object.entries({
 			"Water",
 		],
 		"passives": [
-			"waterveil",
+			"hydration",
 		],
 		"replaceAbilities": true,
 	},
@@ -31147,7 +31147,7 @@ for (const [id, update] of Object.entries({
 			"Dragon",
 		],
 		"passives": [
-			"abyssalrebirth",
+			"hydraflight",
 		],
 		"replaceAbilities": true,
 	},
@@ -58055,7 +58055,7 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	"siegelauncher": [
 		"megalauncher",
 		"waterbarrage",
-		"overcoat",
+		"shellarmor",
 	],
 	"calderacore": [
 		"magmaarmor",
@@ -59436,7 +59436,6 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	"fireward": [],
 	"expiration": [
 		"stringsofruin",
-		"controlledfury",
 	],
 	"abyssalrebirth": [
 		"hydrabond",
@@ -61344,8 +61343,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Abyssal Rebirth",
 		"num": 11981,
 		"gen": 9,
-		"desc": "Full local Hydra Bond and Levitate, including three-hit, Free-for-All, Gilded Helix and Dragon Den rules. Fairy attacks that would be super effective against this Pokemon deal neutral damage instead. Reawakening: once per battle, an opposing damaging move taking this Pokemon from above half HP to half HP or less restores 1/4 maximum HP after the entire move finishes, if it survives. All hits finish before recovery. Allies, recoil, hazards, weather and status damage cannot trigger it. Switching, form changes and ability restarts do not reset the use. Ability suppression prevents Reawakening without queuing a later heal; Hydra Bond and passive Levitate retain their normal passive rules, including Ground-immunity bypass. Berserk resolves independently before recovery.",
-		"shortDesc": "Hydra Bond + Levitate; Fairy weaknesses become neutral; heals 25% once when crossing half HP.",
+		"desc": "Hydra Bond adds its follow-up hits. Levitate grants Ground immunity.",
+		"shortDesc": "Hydra Bond + Levitate.",
 		"rating": 5,
 		"flags": {},
 		"isNonstandard": null,
@@ -64822,8 +64821,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Expiration",
 		"num": 11980,
 		"gen": 9,
-		"desc": "Full local Strings of Ruin and Controlled Fury. Berserk raises Attack and Sp. Atk by 1 after surviving a move crossing half HP, or only Sp. Atk by 2 on Dragon’s Den. Entering Dragon’s Den grants +1 Sp. Atk. Duskilate converts Normal moves to Dark with its normal power and field effects. Each damaging hit independently has a 30% chance (50% on Dragon’s Den) to double base power; Fickle Beam uses only its own all-out roll. The first damaging hit received each entry raises Attack by 1; surviving a critical hit instead maximizes Attack. Outrage, Thrash, Petal Dance and Raging Fury cause no rampage lock or ending confusion. Existing confusion and other move locks remain unchanged.",
-		"shortDesc": "Strings of Ruin + Controlled Fury.",
+		"desc": "Strings of Ruin grants Berserk and Duskilate, plus a 30% double-power chance per hit (50% on Dragon’s Den; excludes Fickle Beam). Fairy attacks deal neutral damage.",
+		"shortDesc": "Strings of Ruin; Fairy attacks deal neutral damage.",
 		"rating": 5,
 		"flags": {},
 		"isNonstandard": null,
@@ -64971,8 +64970,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Fire Ward",
 		"num": 11977,
 		"gen": 9,
-		"desc": "Defense and Sp. Def are multiplied by 1.3, or 1.5 on Cold Eclipse or Dragon’s Den.",
-		"shortDesc": "Defense and Sp. Def 1.3x; 1.5x on Cold Eclipse or Dragon’s Den.",
+		"desc": "Defense and Sp. Def are multiplied by 1.3.",
+		"shortDesc": "Defense and Sp. Def 1.3x.",
 		"rating": 3,
 		"flags": {},
 		"isNonstandard": null,
@@ -71175,8 +71174,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Bombardment",
 		"num": 10038,
 		"gen": 9,
-		"desc": "Mega Launcher gives pulse and bullet moves 1.5x power. Tidal Monarch supplies exactly one eligible Dual Wield pair, each hit at 0.6x power outside Free-for-All: pulse/bullet pairs therefore use 0.9x power per hit before STAB and passives. In Free-for-All both hits use full power, with the second-target selection. Existing multi-hit, charging, delayed, Z/Max and ineligible moves gain no extra pair. Tidal Monarch supplies Stalwart exactly once: redirection bypass and +1 Sp. Atk on New World, Starlight Arena, Fairy Tale or Chessboard entry. All moves have 1.1x accuracy.",
-		"shortDesc": "Mega Launcher + Stalwart + Tidal Monarch; all moves have 1.1x accuracy.",
+		"desc": "Mega Launcher gives pulse and bullet moves 1.5x power. Tidal Monarch supplies exactly one eligible Dual Wield pair, each hit at 0.6x power outside Free-for-All: pulse/bullet pairs therefore use 0.9x power per hit before STAB and passives. In Free-for-All both hits use full power, with the second-target selection. Existing multi-hit, charging, delayed, Z/Max and ineligible moves gain no extra pair. Tidal Monarch supplies Stalwart exactly once: redirection bypass and +1 Sp. Atk on New World, Starlight Arena, Fairy Tale or Chessboard entry. All moves have 1.1x accuracy. Also has Shell Armor.",
+		"shortDesc": "Mega Launcher + Tidal Monarch + Shell Armor; 1.1x accuracy.",
 		"rating": 4.5,
 		"flags": {},
 		"isNonstandard": null,
@@ -100578,7 +100577,6 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	],
 	"expiration": [
 		"stringsofruin",
-		"controlledfury",
 	],
 	"fairyaura": [],
 	"fairyring": [],
@@ -101968,7 +101966,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"siegelauncher": [
 		"megalauncher",
 		"waterbarrage",
-		"overcoat",
+		"shellarmor",
 	],
 	"siegemagnet": [
 		"magnetpull",
@@ -103568,7 +103566,6 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 	],
 	"expiration": [
 		"stringsofruin",
-		"controlledfury",
 	],
 	"fairyaura": [],
 	"fairyring": [],
@@ -104958,7 +104955,7 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 	"siegelauncher": [
 		"megalauncher",
 		"waterbarrage",
-		"overcoat",
+		"shellarmor",
 	],
 	"siegemagnet": [
 		"magnetpull",
