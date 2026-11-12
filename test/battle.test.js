@@ -844,7 +844,8 @@ describe('Team Builder sprites', () => {
 		assert(Dex.abilities.get('Dishearten').exists);
 		assert.equal(Dex.abilities.get('Dishearten').num, 11234);
 		for (const part of ['dishearten', 'insomnia']) assert(Dex.getAbilityEffects('lunardread').has(part));
-		assert.equal(Dex.abilities.get('Atrocity').desc, 'Blazing Monarch + Fire Ward + Tough Claws. All moves have 1.1x accuracy.');
+		assert.equal(Dex.abilities.get('Atrocity').desc, 'Blazing Monarch + Fire Ward. All moves have 1.1x accuracy.');
+		assert(!Dex.getAbilityEffects('atrocity').has('toughclaws'));
 		assert(!Dex.getAbilityEffects('atrocity').has('moldbreaker'));
 		assert(Dex.getAbilityEffects('ancientbloom').has('pollenbloom'));
 		assert.match(Dex.abilities.get('Fortress Shell').desc, /All moves have 1\.1x accuracy/);

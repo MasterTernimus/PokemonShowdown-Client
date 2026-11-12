@@ -57186,7 +57186,6 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	"atrocity": [
 		"unboundblaze",
 		"fireward",
-		"toughclaws",
 	],
 	"wickedsnare": [
 		"intimidate",
@@ -62142,8 +62141,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Atrocity",
 		"num": 10126,
 		"gen": 9,
-		"desc": "Blazing Monarch + Fire Ward + Tough Claws. All moves have 1.1x accuracy.",
-		"shortDesc": "Blazing Monarch + Fire Ward + Tough Claws; all moves have 1.1x accuracy.",
+		"desc": "Blazing Monarch + Fire Ward. All moves have 1.1x accuracy.",
+		"shortDesc": "Blazing Monarch + Fire Ward; all moves have 1.1x accuracy.",
 		"rating": 5,
 		"flags": {
 			"cantsuppress": 1,
@@ -100009,7 +100008,6 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"atrocity": [
 		"unboundblaze",
 		"fireward",
-		"toughclaws",
 	],
 	"aurabreak": [],
 	"auraconvergence": [],
@@ -103002,7 +103000,6 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 	"atrocity": [
 		"unboundblaze",
 		"fireward",
-		"toughclaws",
 	],
 	"aurabreak": [],
 	"auraconvergence": [],

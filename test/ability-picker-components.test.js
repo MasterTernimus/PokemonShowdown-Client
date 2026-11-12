@@ -26,7 +26,7 @@ describe('Component-first Team Builder ability rows', () => {
  });
  it('shows Atrocity with its approved Blazing Monarch and Fire Ward packages without a redundant Self Sufficient label', () => {
   const html=visible(Dex.abilities.get('atrocity'));
-  assert(html.includes('Blazing Monarch'));assert(html.includes('Tough Claws')); assert(html.includes('Fire Ward'));
+  assert(html.includes('Blazing Monarch'));assert(!html.includes('Tough Claws')); assert(html.includes('Fire Ward'));
   assert(!html.includes('Self Sufficient'));
  });
  it('renders canonical components for every composite and removes filler', () => {

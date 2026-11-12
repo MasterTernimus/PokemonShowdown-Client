@@ -14,7 +14,7 @@ describe('Monarch and Sovereign presentation', () => {
 		assert.match(Dex.abilities.get(name).desc, /All moves have 1.1x accuracy/);
 	});
 	it('shows the added components and replacement effects', () => {
-		assert(Dex.getAbilityDisplayComponents('atrocity').includes('toughclaws'));
+		assert(!Dex.getAbilityDisplayComponents('atrocity').includes('toughclaws'));
 		assert(Dex.getAbilityDisplayComponents('infernaldominion').includes('fireward'));
 		for (const id of ['sunsovereign', 'sandsovereign', 'rainsovereign', 'frostsovereign', 'stormsovereign']) {
 			assert(!/chip/i.test(Dex.abilities.get(id).desc), id);
