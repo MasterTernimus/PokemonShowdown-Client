@@ -19,7 +19,7 @@ describe('Retired unused abilities in the client', () => {
 		assert.equal(Dex.species.get('Salamence-Mega').abilities[0], 'Exalted Aether');
 		assert.deepEqual([...Dex.species.get('Salamence-Mega').passives], ['aerilate']);
 		assert.deepEqual([...Dex.species.get('Hydreigon').passives], ['hydraflight']);
-		assert.deepEqual([...Dex.species.get('Hydreigon-Mega').passives], ['abyssalrebirth']);
+		assert.deepEqual([...Dex.species.get('Hydreigon-Mega').passives], ['hydraflight']);
 		assert.equal(Dex.species.get('Hydreigon-Mega').abilities[0], 'Expiration');
 		assert(!Dex.species.get('Hydreigon-Mega-X').exists);
 	});

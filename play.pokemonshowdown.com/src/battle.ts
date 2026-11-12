@@ -1291,7 +1291,9 @@ export class Battle {
 		this.resetStep();
 		this.subscription?.('paused');
 	}
+	crystalCavernType: string = '';
 	resetStep() {
+		this.crystalCavernType = '';
 		// Keep protocol availability, but rebuild values from the replay position.
 		if (this.gimmickCounters) this.gimmickCounters = {};
 		// battle state
@@ -3214,6 +3216,7 @@ export class Battle {
 			break;
 		}
 		case '-fieldstart': {
+			if (['Fire','Water','Grass','Psychic'].includes(kwArgs.crystal)) this.crystalCavernType = kwArgs.crystal;
 			let effect = Dex.getEffect(args[1]);
 			let poke = this.getPokemon(kwArgs.of);
 			let fromeffect = Dex.getEffect(kwArgs.from);
@@ -3257,6 +3260,9 @@ export class Battle {
 			break;
 		}
 		case '-fieldactivate': {
+			if (['Fire','Water','Grass','Psychic'].includes(kwArgs.crystal)) {
+				this.crystalCavernType = kwArgs.crystal; this.scene.updateWeather(); break;
+			}
 			let effect = Dex.getEffect(args[1]);
 			switch (effect.id) {
 			case 'perishsong':

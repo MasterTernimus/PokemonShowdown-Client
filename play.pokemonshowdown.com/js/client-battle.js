@@ -798,6 +798,7 @@
 						moveOrigin = '<small class="nature-power-marker" title="Nature Power" aria-label="Nature Power">NP</small>';
 						moveType = this.tooltips.getMoveType(calledMove, typeValueTracker)[0];
 					}
+					var crystalType = this.battle.hasPseudoWeather('Crystal Cavern Terrain') && this.battle.crystalCavernType && move.category !== 'Status' && (moveType === 'Rock' || ['judgement', 'multiattack', 'rockclimb', 'strength', 'prismaticlaser'].includes(move.id)) ? this.battle.crystalCavernType : '';
 					var tooltipArgs = 'move|' + moveData.move + '|' + pos + (drakeFangPreview ? '||sevipermega' : '');
 					if (moveData.disabled) {
 						movebuttons += '<button disabled class="has-tooltip" data-tooltip="' + BattleLog.escapeHTML(tooltipArgs) + '">';

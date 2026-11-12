@@ -1,7 +1,7 @@
 {
   "adaptivecycle": {
-    "desc": "Cannot be suppressed by Neutralizing Gas, Gastro Acid or similar effects. Battle-long individual memory pauses while inactive or replaced. After surviving a whole opposing move, its type joins two active memories (oldest archived): active end turns grant 20/35/50% damage reduction. Observed opposing actions grant 1 analysis point per turn (2 with shared typing); 4 points unlock 50% incoming reduction, 1.5x outgoing damage, known harmful move/secondary immunity, interaction-specific negation of that individual's entire ability (including composites) and resistant countertyping. Damaging attacks from that foe are at least resisted; attacks against it bypass type immunities and are at least super effective. Stronger natural effectiveness is retained; completed defender adaptation wins if both have analyzed each other. Fixed-damage and OHKO moves retain their normal damage rules. Type/opponent reductions use the stronger only. Learns each foe's bypass or encountered defensive reduction at turn end. Two observed boosted turns counter positive combat/accuracy stages, not Speed. Status and named chip causes complete in two active end turns, curing/removing the learned condition. Each full field/weather completes in three: ignores personal penalties and incoming direct damage bonuses, retaining benefits, Auras and shared transformations. See the Adapted display for observed progress.",
-    "shortDesc": "Learns foes, two active attack types, status/chip, fields and weather; keeps memory when switching."
+    "desc": "Damaging Z-Moves have a fixed 4x matchup, even against immune types. Protect, weather and learned resistances cannot reduce them. Cannot be suppressed by Neutralizing Gas, Gastro Acid or similar effects. Battle-long individual memory pauses while inactive or replaced. After surviving a whole opposing move, its type joins two active memories (oldest archived): active end turns grant 20/35/50% damage reduction. Observed opposing actions grant 1 analysis point per turn (2 with shared typing); 4 points unlock 50% incoming reduction, 1.5x outgoing damage, known harmful move/secondary immunity, interaction-specific negation of that individual's entire ability (including composites) and resistant countertyping. Damaging attacks from that foe are at least resisted; attacks against it bypass type immunities and are at least super effective. Stronger natural effectiveness is retained; completed defender adaptation wins if both have analyzed each other. Fixed-damage and OHKO moves retain their normal damage rules. Type/opponent reductions use the stronger only. Learns each foe's bypass or encountered defensive reduction at turn end. Two observed boosted turns counter positive combat/accuracy stages, not Speed. Status and named chip causes complete in two active end turns, curing/removing the learned condition. Each full field/weather completes in three: ignores personal penalties and incoming direct damage bonuses, retaining benefits, Auras and shared transformations. See the Adapted display for observed progress.",
+    "shortDesc": "Learns to resist attacks and battlefield effects. Damaging Z-Moves always have a 4x matchup."
   },
   "noability": {
     "desc": "Does nothing.",
@@ -112,7 +112,7 @@
     "shortDesc": "Combines the listed abilities."
   },
   "scarecrow": {
-    "desc": "Absorbs wind moves for +1 Attack. Gains +1 Attack when Tailwind starts on its side or it enters during Tailwind. Strong Winds gives +1 Attack and Sp. Atk each turn. Steel moves receive STAB and use 1.5x Attack or Sp. Atk (2x on Factory). On Short-Circuit, Steel moves also gain Electric typing. Adds Steel resistances and Poison immunity without Steel weaknesses. Attacks use double the offensive stat against targets that entered this turn.",
+    "desc": "Absorbs wind moves for +1 Attack. Gains +1 Attack when Tailwind starts on its side or it enters during Tailwind. Strong Winds gives +1 Attack and Sp. Atk each turn. Steel moves receive STAB and use 1.5x Attack or Sp. Atk (2x on Factory). On Short-Circuit, Steel moves also gain Electric typing. Attacks use double the offensive stat against targets that entered this turn.",
     "shortDesc": "Combines the listed abilities."
   },
   "bruteforce": {
@@ -2392,8 +2392,8 @@
     "shortDesc": "Magma Armor; Fire/Water hits raise Speed by 6; certain fields also activate it."
   },
   "steelworker": {
-    "desc": "Steel moves receive STAB and use 1.5x Attack or Sp. Atk (2x on Factory). On Short-Circuit, Steel moves also gain Electric typing. Adds Steel resistances and Poison immunity without Steel weaknesses.",
-    "shortDesc": "Steel STAB and attacking boost; Steel resistances without weaknesses."
+    "desc": "Steel moves receive STAB and use 1.5x Attack or Sp. Atk (2x on Factory). On Short-Circuit, Steel moves also gain Electric typing.",
+    "shortDesc": "Steel moves gain STAB and use 1.5x Attack or Sp. Atk."
   },
   "steelyspirit": {
     "desc": "This Pokemon and its allies' Steel-type moves have their power multiplied by 1.5. This affects Doom Desire even if the user is not on the field.",
@@ -2568,8 +2568,8 @@
     "shortDesc": "Boosts Electric attacking stats; Electric Terrain weakens Ground."
   },
   "railguncircuit": {
-    "desc": "Redirects single-target Electric moves to itself and absorbs Electric moves for +1 Attack and Sp. Atk. Electric Terrain entry also grants both boosts. never misses; boosts Electric attacks. Redirects and absorbs Electric moves, raising Attack and Special Attack. Electric moves are strengthened; Ground damage is reduced on Electric Terrain.",
-    "shortDesc": "Never misses; boosts Electric attacks."
+    "desc": "Redirects and absorbs Electric moves for +1 Attack and Sp. Atk. Electric Terrain entry grants both boosts. After a special Electric hit damages a foe’s HP, removes Light Screen and Aurora Veil from its side.",
+    "shortDesc": "Lightning Rod. Special Electric hits break Light Screen and Aurora Veil."
   },
   "razorcurrent": {
     "desc": "On entry, summons rain for 5 turns, or 8 with Damp Rock. Biting moves have 1.5x power. Gains +1 Speed at the end of each full turn it spends active.",
@@ -3376,8 +3376,8 @@
     "desc": "Water Absorb and Liquid Ooze, plus Poison-move absorption: Water or Poison moves from another Pokemon heal 1/4 max HP once instead of hitting, even if healing fails. Water Absorb also heals 1/16 on its supported water fields; Liquid Ooze reverses drain, Leech Seed and Strength Sap recovery, doubled on Murkwater Surface or Wasteland. On entry, attempts 3-turn Murkwater Surface. While Swalot-Pulse is active, Underwater immediately becomes 3-turn Murkwater Surface, including after its entry field use is spent; field blockers and suppression still apply. This does not refresh an existing Murkwater Surface. Swalot-Pulse always uses Sludge Wave, Recover, Infestation, and Discharge. Field creation or refresh is attempted only once per battle per holder, even if blocked; switching, suppression, revival, or ability changes never reset this use. Its field creation, refresh and conversion last exactly 3 turns; Amplifield Rock does not extend them."
   },
   "agonyflame": {
-    "desc": "After it finishes a damaging Fire-type move that deals actual HP damage to an opponent, each surviving active opponent damaged by that move is burned if normal status protections allow, and receives Heal Block for 2 turns, including the current turn. Each target is affected once per move. Heal Block can apply even if burn fails, and a longer Heal Block is not shortened. If the move already burned a target, the Ability does not attempt to burn it again after a curing Berry. Protected, immune, Substitute-only, ally, self and delayed damage do not qualify. Ability suppression disables these effects.",
-    "shortDesc": "Fire hits burn foes and block healing for 2 turns; requires actual opposing HP damage."
+    "desc": "After a Fire move damages a foe directly, blocks healing for 2 turns and has a 30% chance to burn. Rolls once per damaged foe per move.",
+    "shortDesc": "Fire hits block healing for 2 turns and have a 30% chance to burn."
   },
   "pulseeruption": {
     "shortDesc": "5-turn Super-Heated field on entry; no Skill Swap.",
@@ -3488,7 +3488,7 @@
     "shortDesc": "Consuming its own Berry heals active allies 1/8 HP once/turn, excluding itself."
   },
   "soulanchor": {
-    "desc": "Steelworker: Steel attacks gain STAB and 1.5x Attack or Sp. Atk (2x on Factory); on Short-Circuit they also become Electric-type. Immune to Poison attacks; resists Normal, Flying, Rock, Bug, Steel, Grass, Psychic, Ice, Dragon and Fairy attacks. A foe successfully trapped by its Anchor Shot loses 1/16 maximum HP each turn end; the holder heals by actual damage dealt. Only one tether per holder; a new tether replaces the old, and either Pokemon leaving ends it. Trap immunity, escape, indirect-damage immunity, suppression and healing restrictions apply.",
+    "desc": "Steelworker: Steel attacks gain STAB and 1.5x Attack or Sp. Atk (2x on Factory); on Short-Circuit they also become Electric-type. A foe successfully trapped by its Anchor Shot loses 1/16 maximum HP each turn end; the holder heals by actual damage dealt. Only one tether per holder; a new tether replaces the old, and either Pokemon leaving ends it. Trap immunity, escape, indirect-damage immunity, suppression and healing restrictions apply.",
     "shortDesc": "Its Anchor Shot tethers one trapped foe, draining 1/16 HP each turn."
   },
   "guidinglight": {

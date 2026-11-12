@@ -161,7 +161,8 @@ const BattleFieldTooltips = {
 		const source = this.pokemon(pokemon, server);
 		(source as any).fieldChangeBlocked = battle.sides.some(side => side.active.some(p => p && ['neutralization', 'pulseblockade'].includes(toID(p.effectiveAbility()))));
 		const foe = this.pokemon(target);
-		const variants = this.variantValues(field, move);
+		const crystal = ['Fire','Water','Grass','Psychic'].indexOf(battle.crystalCavernType);
+		const variants = field.id === 'crystalcavernterrain' && crystal >= 0 ? [crystal] : this.variantValues(field, move);
 		const results = variants.map(v => this.evaluate(field, move, source, foe, battle.weather, v, aura));
 		if (field.id === 'chessboardterrain' && !source.Role) {
 			results.push(this.evaluate(field, move, {...source, Role: 'Queen'}, foe, battle.weather));
@@ -246,7 +247,7 @@ const BattleFieldTooltips = {
 			const index = notes.findIndex(n => n.startsWith('dual typing:'));
 			if (index >= 0) notes[index] = 'gains a random secondary type';
 		}
-		if (preview.field.id === 'crystalcavernterrain' && notes.some(n => n.startsWith('dual typing:'))) {
+		if (!battle.crystalCavernType && preview.field.id === 'crystalcavernterrain' && notes.some(n => n.startsWith('dual typing:'))) {
 			return `${preview.field.name}: ${notes.filter(n => !n.startsWith('dual typing:')).join('; ')}; Rock + Fire/Water/Grass/Psychic, depending on the crystal cycle.`;
 		}
 		return notes.length ? `${preview.field.name}${preview.aura ? ' + ' + preview.aura.name : ''}: ${notes.join('; ')}.` : '';
