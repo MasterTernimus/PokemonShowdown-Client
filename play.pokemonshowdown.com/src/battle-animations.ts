@@ -1906,6 +1906,7 @@ export class PokemonSprite extends Sprite {
 		stormcharge: '<span class="good" title="Next Electric attack gains 50% power. Charged Wild Charge is adaptive and recoil-free. Spent on damage to a foe or Substitute.">Electric ready</span> ',
 		meridianseal: ['Meridian Seal', 'bad'],
 		confusion: ['Confused', 'bad'],
+		jackpot: '<span class="good" title="Jackpot: 20% less attack damage; heals 1/4 HP and clears harmful conditions each turn. Lasts four turns, including activation.">Jackpot</span> ',
 		healblock: ['Heal Block', 'bad'],
 		yawn: ['Drowsy', 'bad'],
 		relicarmoractive: '<button type="button" class="relic-armor-badge has-tooltip" data-tooltip="relicarmor|normal" data-ownheight="1" aria-label="Relic Armor: normal defense; tap for details">Relic Armor</button> ',

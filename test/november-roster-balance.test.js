@@ -3,7 +3,7 @@ const assert=require('assert').strict;
 const {Dex}=require('./helpers/isolated-dex.cjs')();
 describe('November roster client data',()=>{
  it('shows the approved passive swaps',()=>{
-  const passives={magneton:'hydrabond',kingdra:'swiftswim',honchkrow:'moxie',drapion:'poisontouch',toxicroak:'anticipation',conkeldurr:'rockypayload',maushold:'friendguard',mausholdfour:'friendguard',dachsbun:'wellbakedbody',starmie:'illuminate',revavroom:'overcoat',farigiraf:'armortail',greattusk:'protosynthesis',ironbundle:'quarkdrive'};
+  const passives={magneton:'hydrabond',kingdra:'swiftswim',honchkrow:'moxie',drapion:'poisontouch',toxicroak:'anticipation',conkeldurr:'rockypayload',maushold:'friendguard',mausholdfour:'friendguard',dachsbun:'wellbakedbody',starmie:'malignantlight',revavroom:'overcoat',farigiraf:'armortail',greattusk:'protosynthesis',ironbundle:'quarkdrive'};
   for(const[id,passive]of Object.entries(passives))assert.deepEqual(Array.from(Dex.species.get(id).passives),[passive],id);
  });
  it('shows the grouped Eeveelution choices and Flame Body',()=>{

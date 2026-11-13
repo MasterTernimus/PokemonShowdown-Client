@@ -10,9 +10,9 @@ describe('Audino support metadata', () => {
   assert.equal(Dex.species.get('audinomega').abilities[0], 'Divine Intervention');
  });
  it('prunes nested Invigorate from Divine Includes and describes the emergency', () => {
-  assert.deepEqual(Dex.getAbilityDisplayComponents('divineintervention'), ['vitalsigns','triage','regenerator','friendguard']);
+  assert.deepEqual(Dex.getAbilityDisplayComponents('divineintervention'), ['vitalsigns','falsesalvation','regenerator']);
   assert.deepEqual(Dex.getAbilityDisplayComponents('vitalsigns'), ['invigorate']);
-  assert.deepEqual([...Dex.getAbilityEffects('divineintervention')].sort(), ['divineintervention','friendguard','invigorate','regenerator','triage','vitalsigns']);
+  assert.deepEqual([...Dex.getAbilityEffects('divineintervention')].sort(), ['divineintervention','falsesalvation','invigorate','regenerator','telepathy','vitalsigns']);
   assert.equal(Dex.abilities.get('vitalsigns').shortDesc, 'Heals and cures each teammate once when an attack leaves it at half HP or less.');
   assert(!/Fluffy|Sworn Duty/.test(Dex.abilities.get('divineintervention').desc));
  });

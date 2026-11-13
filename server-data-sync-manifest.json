@@ -1,30 +1,9 @@
 {
-	"sourceHead": "5bdf011188920003cf6b5fa2e28da75a0b58329a",
-	"base": "f1c4c3901cef5aa576439ebfb69c8e8ff10f1615",
-	"builtSourceFingerprint": "c503fdb7198887eaadf61e7feb00ddbb28838c3a3a9c22fbc6d844658dc580cf",
-	"sourceDataSHA256": "617b8e311f76addb7c78543257d1800515f1d28d70220893549475195ff61cae",
+	"sourceHead": "9f9b01c401438bd81d9a293c128c2aea78b1b803",
+	"base": "9f9b01c40",
+	"builtSourceFingerprint": "1fa978065a0bf3145834fc366df99639dd13c3eec82192187f8f766f9f82cd02",
+	"sourceDataSHA256": "350c729bc0143d03bebfa350d241bcba9ac43dec84a0933a36cdcd68198a0d24",
 	"files": [
-		"data/abilities.ts",
-		"data/ability-components.ts",
-		"data/ability-descriptions.ts",
-		"data/ability-display-summaries.ts",
-		"data/ability-display.ts",
-		"data/aliases.ts",
-		"data/concise-ability-descriptions.ts",
-		"data/field-guide.ts",
-		"data/field-reference.json",
-		"data/johto-eruptions.ts",
-		"data/learnsets.ts",
-		"data/mega-hydreigon.ts",
-		"data/ordinary-approved-reductions.ts",
-		"data/pokedex.ts",
-		"data/public-field-guide.ts",
-		"data/room-reference.ts",
-		"data/selected-mega-simplification-data.ts",
-		"data/selected-mega-simplifications.ts",
-		"data/species-passives.ts",
-		"data/terrains.ts",
-		"data/text/abilities.ts",
 		"sim/dex-species.ts"
 	],
 	"deletedFiles": [],
@@ -236,6 +215,13 @@
 			"healingmirror": [
 				"magicbounce",
 				"healer"
+			],
+			"frameperfect": [
+				"innerfocus"
+			],
+			"malignantlight": [
+				"illuminate",
+				"relicbeam"
 			],
 			"rivalresolve": [
 				"poisonheal"
@@ -905,9 +891,6 @@
 			"sacrededge": [
 				"sharpness"
 			],
-			"divineintervention": [
-				"invigorate"
-			],
 			"vitalsigns": [
 				"invigorate"
 			],
@@ -1267,8 +1250,8 @@
 			},
 			"astralcore": {
 				"passive": "purepower",
-				"desc": "Natural Cure and Illuminate.",
-				"shortDesc": "Natural Cure and Illuminate."
+				"desc": "On switching out, cures its major status and heals 1/8 max HP if it had a status to cure. Bewitched Woods also cures its status at turn end. Prevents other Pokemon's accuracy drops and ignores evasion boosts. Reveals opposing Illusions on activation. Mirror Arena entry lowers foes' accuracy by 1. Starlight Arena entry gives +2 Sp. Atk and puts Spotlight on its first adjacent ally. Sp. Atk uses the holder’s Defense and Defense stages instead of Sp. Atk and its stages. Named beam moves, pulse moves and bullet moves gain 50% power. Use /relicbeam to see the complete move list.",
+				"shortDesc": "Natural Cure + Malignant Light."
 			},
 			"woolyconductor": {
 				"passive": "moldbreaker",
@@ -1312,8 +1295,8 @@
 			},
 			"coldlogic": {
 				"passive": "toughclaws",
-				"desc": "Forewarn reveals a strongest opposing move and removes foe Illusions on entry. Takes 20% less move damage, or 25% less from the revealed move until switching out; these reductions do not stack, and OHKO moves are excluded from learned-move protection. A successful reveal on Psychic Terrain grants +2 Sp. Atk. Opponents cannot lower its accuracy stages. An opposing move that knocks it out triggers Aftermath even without contact: the attacker loses 1/4 max HP, or 1/2 on Corrosive Mist. Damp prevents this, and indirect-damage protection applies.",
-				"shortDesc": "Forewarn + Aftermath; opposing accuracy-drop immunity; noncontact KO retaliation."
+				"desc": "Forewarn reveals a strongest opposing move and removes foe Illusions on entry. Takes 20% less move damage, or 25% less from the revealed move until switching out; these reductions do not stack, and OHKO moves are excluded from learned-move protection. A successful reveal on Psychic Terrain grants +2 Sp. Atk. Opponents cannot lower its accuracy stages. An opposing move that knocks it out triggers Aftermath even without contact: the attacker loses 1/4 max HP, or 1/2 on Corrosive Mist. Damp prevents this, and indirect-damage protection applies. Rechecks incoming foes on every switch-in. Prevents other Pokemon's accuracy drops and ignores evasion boosts. Reveals opposing Illusions on activation. Mirror Arena entry gives +1 accuracy and Laser Focus. Includes Keen Eye. Land a physical and a special attack in either order to charge the next attack: 1.2× damage, ignoring each type resistance and screens while retaining weaknesses and immunities. Each move grants one charge. The charged attack consumes both charges even on a miss or block and earns no charge. Switching clears charges.",
+				"shortDesc": "Forewarn + Aftermath + Convergence; accuracy-drop protection and noncontact KO retaliation."
 			},
 			"uncheckedassault": {
 				"passive": "scrappy",
@@ -1334,11 +1317,6 @@
 				"passive": "sharpness",
 				"desc": "Dual Wield and entry healing for adjacent allies, including the Fairy Tale bonus.",
 				"shortDesc": "Dual Wield and entry healing for adjacent allies, including the Fairy Tale bonus."
-			},
-			"divineintervention": {
-				"passive": "invigorate",
-				"desc": "Vital Signs emergency treatment, Triage, Regenerator and Friend Guard. The emergency treatment allowance remains once per recipient per battle.",
-				"shortDesc": "Vital Signs emergency treatment, Triage, Regenerator and Friend Guard."
 			},
 			"neurotoxin": {
 				"passive": "shedskin",
@@ -1870,7 +1848,7 @@
 					"Ghost"
 				],
 				"passives": [
-					"innerfocus"
+					"frameperfect"
 				],
 				"replaceAbilities": true
 			},
@@ -2511,7 +2489,7 @@
 			},
 			"ampharos": {
 				"abilities": {
-					"0": "Cotton Down",
+					"0": "Malignant Light",
 					"1": "Fluffy",
 					"H": "Electromorphosis"
 				},
@@ -3741,7 +3719,7 @@
 					"Fairy"
 				],
 				"passives": [
-					"invigorate"
+					"friendguard"
 				],
 				"replaceAbilities": true
 			},
@@ -5269,8 +5247,8 @@
 				"abilities": {
 					"0": "Elevate",
 					"1": "Defragment",
-					"H": "Reflector",
-					"S": "Rift Herald"
+					"H": "Misaligned Stars",
+					"S": "Reflector"
 				},
 				"baseStats": {
 					"hp": 67,
@@ -7284,7 +7262,7 @@
 			},
 			"claydol": {
 				"abilities": {
-					"0": "Clear Body",
+					"0": "Misaligned Stars",
 					"1": "Relic Beam",
 					"H": "Defragment"
 				},
@@ -10506,7 +10484,7 @@
 			"dusknoir": {
 				"abilities": {
 					"0": "Requiem",
-					"1": "Frisk",
+					"1": "Misaligned Stars",
 					"H": "Soul Reaver"
 				},
 				"baseStats": {
@@ -13288,7 +13266,7 @@
 					"Ground"
 				],
 				"passives": [
-					"roughskin"
+					"serratedscales"
 				],
 				"replaceAbilities": true
 			},
@@ -19331,7 +19309,7 @@
 			"lucario": {
 				"abilities": {
 					"0": "Carry On",
-					"1": "Sworn Duty",
+					"1": "Convergence",
 					"H": "Armorize"
 				},
 				"baseStats": {
@@ -21193,7 +21171,7 @@
 			},
 			"metagross": {
 				"abilities": {
-					"0": "Clear Body",
+					"0": "Convergence",
 					"1": "Defragment",
 					"H": "Light Metal"
 				},
@@ -21210,7 +21188,7 @@
 					"Psychic"
 				],
 				"passives": [
-					"meteorcore"
+					"clearbody"
 				],
 				"replaceAbilities": true
 			},
@@ -21420,7 +21398,7 @@
 			},
 			"mienshao": {
 				"abilities": {
-					"0": "Inner Focus",
+					"0": "Frame Perfect",
 					"1": "Regenerator",
 					"H": "Infiltrator"
 				},
@@ -22685,7 +22663,8 @@
 				"abilities": {
 					"0": "Neutralization",
 					"1": "Dream Refuge",
-					"H": "Aevian Dream"
+					"H": "False Salvation",
+					"S": "Aevian Dream"
 				},
 				"baseStats": {
 					"hp": 120,
@@ -22832,7 +22811,8 @@
 			},
 			"necrozma": {
 				"abilities": {
-					"0": "Prism Armor"
+					"0": "Prism Armor",
+					"1": "Malignant Light"
 				},
 				"baseStats": {
 					"hp": 97,
@@ -23232,6 +23212,7 @@
 			"ninjask": {
 				"abilities": {
 					"0": "Speed Boost",
+					"1": "Frame Perfect",
 					"H": "Infiltrator"
 				},
 				"baseStats": {
@@ -24283,7 +24264,7 @@
 			},
 			"pangoro": {
 				"abilities": {
-					"0": "Iron Fist",
+					"0": "Hot Streak",
 					"1": "Raging Beast",
 					"H": "Scrappy"
 				},
@@ -25407,8 +25388,8 @@
 			},
 			"pinsir": {
 				"abilities": {
-					"0": "Hyper Cutter",
-					"1": "Hardy Skin",
+					"0": "Siege Grip",
+					"1": "Iron Maiden",
 					"H": "Violent Rush"
 				},
 				"baseStats": {
@@ -25424,7 +25405,7 @@
 					"Ground"
 				],
 				"passives": [
-					"lockinggrip"
+					"hypercutter"
 				],
 				"replaceAbilities": true
 			},
@@ -32177,7 +32158,7 @@
 					"Psychic"
 				],
 				"passives": [
-					"illuminate"
+					"malignantlight"
 				],
 				"replaceAbilities": true
 			},
@@ -38870,8 +38851,8 @@
 				"name": "Astral Core",
 				"num": 10261,
 				"gen": 9,
-				"desc": "Doubles Attack, or Sp. Atk instead on Psychic Terrain. Switching out cures major status and heals 1/8 max HP only if a status was cured. Bewitched Woods cures status at turn end without this heal. Prevents other Pokemon's accuracy drops and ignores evasion boosts. Reveals opposing Illusions on activation. Mirror Arena entry lowers foes' accuracy by 1. Starlight Arena entry gives +2 Sp. Atk and puts Spotlight on its first adjacent ally.",
-				"shortDesc": "Psychic Terrain doubles Sp. Atk instead; Woods cures status each turn; reveals Illusions.",
+				"desc": "Doubles Attack, or Sp. Atk instead on Psychic Terrain. On switching out, cures its major status and heals 1/8 max HP if it had a status to cure. Bewitched Woods also cures its status at turn end. Prevents other Pokemon's accuracy drops and ignores evasion boosts. Reveals opposing Illusions on activation. Mirror Arena entry lowers foes' accuracy by 1. Starlight Arena entry gives +2 Sp. Atk and puts Spotlight on its first adjacent ally. Sp. Atk uses the holder’s Defense and Defense stages instead of Sp. Atk and its stages. Named beam moves, pulse moves and bullet moves gain 50% power. Use /relicbeam to see the complete move list.",
+				"shortDesc": "Pure Power + Natural Cure + Malignant Light.",
 				"rating": 5,
 				"flags": {},
 				"isNonstandard": null
@@ -39146,8 +39127,8 @@
 				"name": "Battle Bond",
 				"num": 210,
 				"gen": 7,
-				"desc": "Eligible Arcanine, Garchomp and Greninja transform after a move KO while another foe remains. Bond forms heal 1/8 base max HP after move KOs. Heals 1/16 base max HP each turn and prevents sandstorm/hail damage. Attack power is 1.3x against Royal Decree, Empress or Neutralization and independently 1.3x on Cold Eclipse. Cannot be suppressed or swapped.",
-				"shortDesc": "A move KO triggers a Bond form; heals each turn and after Bond-form KOs.",
+				"desc": "Eligible Arcanine, Garchomp and Greninja transform after a move KO while another foe remains. Heals 1/16 base max HP each turn and prevents sandstorm/hail damage. Attack power is 1.3x against Royal Decree, Empress or Neutralization and independently 1.3x on Cold Eclipse. Cannot be suppressed or swapped.",
+				"shortDesc": "A move KO triggers a Bond form; heals 1/16 HP each turn.",
 				"rating": 3.5,
 				"flags": {
 					"failroleplay": 1,
@@ -39989,8 +39970,8 @@
 				"name": "Cold Logic",
 				"num": 10128,
 				"gen": 9,
-				"desc": "Forewarn reveals a strongest opposing move and removes foe Illusions on entry. Takes 20% less move damage, or 25% less from the revealed move until switching out; these reductions do not stack, and OHKO moves are excluded from learned-move protection. A successful reveal on Psychic Terrain grants +2 Sp. Atk. Opponents cannot lower its accuracy stages. An opposing move that knocks it out triggers Aftermath even without contact: the attacker loses 1/4 max HP, or 1/2 on Corrosive Mist. Damp prevents this, and indirect-damage protection applies. Rechecks incoming foes on every switch-in.",
-				"shortDesc": "Forewarn + Aftermath; opposing accuracy-drop immunity; noncontact KO retaliation.",
+				"desc": "Forewarn reveals a strongest opposing move and removes foe Illusions on entry. Takes 20% less move damage, or 25% less from the revealed move until switching out; these reductions do not stack, and OHKO moves are excluded from learned-move protection. A successful reveal on Psychic Terrain grants +2 Sp. Atk. Opponents cannot lower its accuracy stages. An opposing move that knocks it out triggers Aftermath even without contact: the attacker loses 1/4 max HP, or 1/2 on Corrosive Mist. Damp prevents this, and indirect-damage protection applies. Rechecks incoming foes on every switch-in. Prevents other Pokemon's accuracy drops and ignores evasion boosts. Reveals opposing Illusions on activation. Mirror Arena entry gives +1 accuracy and Laser Focus. Includes Keen Eye. Land a physical and a special attack in either order to charge the next attack: 1.2× damage, ignoring each type resistance and screens while retaining weaknesses and immunities. Each move grants one charge. The charged attack consumes both charges even on a miss or block and earns no charge. Switching clears charges.",
+				"shortDesc": "Forewarn + Aftermath + Convergence; accuracy-drop protection and noncontact KO retaliation.",
 				"rating": 4.5,
 				"flags": {},
 				"isNonstandard": null
@@ -40199,6 +40180,16 @@
 				"desc": "Full local Anger Point: the first damaging hit after entry raises Attack by 1 stage; surviving a critical hit raises Attack to maximum. Outrage, Thrash, Petal Dance and Raging Fury do not lock the user in or cause ending confusion, including repeated manual uses. Acquiring this effect during a rampage clears only that rampage lock without confusion. Existing confusion, Choice locks, Encore and move field effects remain unchanged.",
 				"shortDesc": "Anger Point; no rampage lock or ending confusion.",
 				"rating": 3,
+				"flags": {},
+				"isNonstandard": null
+			},
+			"convergence": {
+				"name": "Convergence",
+				"num": 32593,
+				"gen": 9,
+				"desc": "Prevents other Pokemon's accuracy drops and ignores evasion boosts. Reveals opposing Illusions on activation. Mirror Arena entry gives +1 accuracy and Laser Focus. Includes Keen Eye. Land a physical and a special attack in either order to charge the next attack: 1.2× damage, ignoring each type resistance and screens while retaining weaknesses and immunities. Each move grants one charge. The charged attack consumes both charges even on a miss or block and earns no charge. Switching clears charges.",
+				"shortDesc": "Keen Eye; a physical and special hit charge a 1.2× attack that bypasses resistances and screens.",
+				"rating": 4,
 				"flags": {},
 				"isNonstandard": null
 			},
@@ -40897,8 +40888,8 @@
 				"name": "Divine Intervention",
 				"num": 10120,
 				"gen": 9,
-				"desc": "Includes Invigorate: healing received by the holder and its allies is multiplied by 1.3, each adjacent ally has a 50% chance to have its major status cured at turn end, and Safeguard lasts 5 turns. After an opposing damaging move finishes, each active teammate, including the holder, that lost HP to that move, survived, and is at half HP or less is healed by 1/4 max HP and cured of major status. Invigorate normally increases this healing to 32.5%. Each recipient can receive this emergency treatment only once per battle, even after switching, changing abilities or being revived. Healing obeys normal restrictions; the allowance is spent only if healing or curing succeeds. Allied, residual and Substitute-only damage do not trigger it. Healing moves, including draining attacks, and supported status-cleansing moves gain +3 priority; Wish remains delayed. Heals 1/3 max HP on switching out. Other allies take 25% less attack damage; the holder is not protected by this reduction.",
-				"shortDesc": "Emergency team healing and cleansing with priority recovery and ally protection.",
+				"desc": "Includes Invigorate: healing received by the holder and its allies is multiplied by 1.3, each adjacent ally has a 50% chance to have its major status cured at turn end, and Safeguard lasts 5 turns. After an opposing damaging move finishes, each active teammate, including the holder, that lost HP to that move, survived, and is at half HP or less is healed by 1/4 max HP and cured of major status. Invigorate normally increases this healing to 32.5%. Each recipient can receive this emergency treatment only once per battle, even after switching, changing abilities or being revived. Healing obeys normal restrictions; the allowance is spent only if healing or curing succeeds. Allied, residual and Substitute-only damage do not trigger it. Includes Telepathy: avoids allied damaging moves and doubles Speed on Psychic Terrain or Psychic Aura. Once per opposing Pokemon per entry, replaces the positive stat stages from its own successful status move with one heal of 1/4 max HP. At full HP the boosts are still removed. Preserves stat decreases and other move effects. The foe switching does not reset this; the holder switching does. Attacks, items, abilities and boosts from allies are unaffected. Heals 1/3 max HP on switching out.",
+				"shortDesc": "Vital Signs + False Salvation (Telepathy) + Regenerator.",
 				"rating": 5,
 				"flags": {
 					"breakable": 1
@@ -41681,6 +41672,18 @@
 				"flags": {},
 				"isNonstandard": null
 			},
+			"falsesalvation": {
+				"name": "False Salvation",
+				"num": 32592,
+				"gen": 9,
+				"desc": "Includes Telepathy: avoids allied damaging moves and doubles Speed on Psychic Terrain or Psychic Aura. Once per opposing Pokemon per entry, replaces the positive stat stages from its own successful status move with one heal of 1/4 max HP. At full HP the boosts are still removed. Preserves stat decreases and other move effects. The foe switching does not reset this; the holder switching does. Attacks, items, abilities and boosts from allies are unaffected.",
+				"shortDesc": "Telepathy; once per foe each entry, replaces its status-move self boosts with 1/4 HP healing.",
+				"rating": 4,
+				"flags": {
+					"breakable": 1
+				},
+				"isNonstandard": null
+			},
 			"familyguardian": {
 				"name": "Family Guardian",
 				"num": 11451,
@@ -41987,6 +41990,16 @@
 				"flags": {
 					"breakable": 1
 				},
+				"isNonstandard": null
+			},
+			"frameperfect": {
+				"name": "Frame Perfect",
+				"num": 32595,
+				"gen": 9,
+				"desc": "Prevents flinching and Intimidate's Attack drop. Includes Inner Focus. Each successful opposing hit adds one momentum after the move finishes, up to 10. Each point grants 5% Speed, 3% damage and 1% less attack damage. Multihits count separately; spread targets count once per hit. Speed changes take effect next turn. Changing attacks starts a fresh sequence; status moves, complete misses or blocks, inability to act and switching clear momentum. Stacks normally with Metronome.",
+				"shortDesc": "Inner Focus; repeated attacks build up to +50% Speed, +30% damage and 10% attack protection.",
+				"rating": 4,
+				"flags": {},
 				"isNonstandard": null
 			},
 			"freeflight": {
@@ -42996,6 +43009,16 @@
 				"flags": {},
 				"isNonstandard": null
 			},
+			"hotstreak": {
+				"name": "Hot Streak",
+				"num": 32591,
+				"gen": 9,
+				"desc": "Super Luck raises critical-hit rate by one stage. After damaging a foe, rolls a separate 20% Jackpot chance once per turn. Jackpot cures major status and harmful conditions on activation and at each turn end, and heals 1/4 max HP at each turn end. It reduces attack damage by 20% and lasts four turns including activation. It cannot refresh and ends on switching. Cleanses Attract, confusion, Curse, Void Crossing curse, Disable, Encore, Embargo, Gastro Acid, Heal Block, Leech Seed, Nightmare, Perish Song, Taunt, Torment, Yawn, trapping, Octolock, Powder, Tar Shot, Salt Cure and Syrup Bomb. Beneficial effects remain. It does not prevent fainting.",
+				"shortDesc": "Super Luck; damaging a foe can trigger four turns of Jackpot healing, cleansing and protection.",
+				"rating": 4,
+				"flags": {},
+				"isNonstandard": null
+			},
 			"hovercannon": {
 				"name": "Hover Cannon",
 				"num": 10519,
@@ -43355,8 +43378,8 @@
 				"name": "Insight",
 				"num": 11979,
 				"gen": 9,
-				"desc": "Telepathy and Inner Focus. After damaging a foe, switch attack categories against it to ignore positive Defense stages on physical hits or positive Sp. Def stages on special hits. Switching either Pokémon clears the read.",
-				"shortDesc": "Telepathy + Inner Focus. Alternating physical and special hits bypasses that foe’s defensive boosts.",
+				"desc": "Convergence and Inner Focus. After damaging a foe, switch attack categories against it to ignore positive Defense stages on physical hits or positive Sp. Def stages on special hits. Switching either Pokémon clears the read. Prevents other Pokemon's accuracy drops and ignores evasion boosts. Reveals opposing Illusions on activation. Mirror Arena entry gives +1 accuracy and Laser Focus. Includes Keen Eye. Land a physical and a special attack in either order to charge the next attack: 1.2× damage, ignoring each type resistance and screens while retaining weaknesses and immunities. Each move grants one charge. The charged attack consumes both charges even on a miss or block and earns no charge. Switching clears charges.",
+				"shortDesc": "Convergence + Inner Focus; alternating attack categories bypasses that foe’s defensive boosts.",
 				"rating": 4,
 				"flags": {},
 				"isNonstandard": null
@@ -43477,6 +43500,16 @@
 				"gen": 9,
 				"desc": "On entry, it gains +1 accuracy. Its Tail moves have their power multiplied by 1.5. Gains +1 accuracy on entry and tail moves have 1.5x power. Once per turn, damaging a foe with a tail move also raises its Sp. Def by 1 stage.",
 				"shortDesc": "Tail hits raise Sp. Def once per turn.",
+				"rating": 3.5,
+				"flags": {},
+				"isNonstandard": null
+			},
+			"ironmaiden": {
+				"name": "Iron Maiden",
+				"num": 32597,
+				"gen": 9,
+				"desc": "Gains +1 Attack for each Pokemon knocked out by its move. Includes Moxie. When an opposing contact move hits the holder, the attacker loses 1/8 of its maximum HP, once per attacking move. Multihits trigger one retaliation. Works on the hit that knocks the holder out. Normal contact and indirect-damage protection apply.",
+				"shortDesc": "Moxie; opposing contact attackers lose 1/8 max HP once per move.",
 				"rating": 3.5,
 				"flags": {},
 				"isNonstandard": null
@@ -44202,6 +44235,16 @@
 				"flags": {},
 				"isNonstandard": null
 			},
+			"malignantlight": {
+				"name": "Malignant Light",
+				"num": 32596,
+				"gen": 9,
+				"desc": "Prevents other Pokemon's accuracy drops and ignores evasion boosts. Reveals opposing Illusions on activation. Mirror Arena entry lowers foes' accuracy by 1. Starlight Arena entry gives +2 Sp. Atk and puts Spotlight on its first adjacent ally. Sp. Atk uses the holder’s Defense and Defense stages instead of Sp. Atk and its stages. Named beam moves, pulse moves and bullet moves gain 50% power. Use /relicbeam to see the complete move list.",
+				"shortDesc": "Illuminate + Relic Beam: uses Defense for Sp. Atk; beams, pulses and bullets gain 50% power.",
+				"rating": 4,
+				"flags": {},
+				"isNonstandard": null
+			},
 			"marshconduit": {
 				"name": "Marsh Conduit",
 				"num": 10422,
@@ -44516,6 +44559,16 @@
 				"flags": {
 					"breakable": 1
 				},
+				"isNonstandard": null
+			},
+			"misalignedstars": {
+				"name": "Misaligned Stars",
+				"num": 32594,
+				"gen": 9,
+				"desc": "On entry and opposing switch-ins, reveals foes' Illusions and a super-effective or OHKO move. Takes 25% less damage from the latest warned move until switching out, excluding OHKO moves. On Psychic Terrain, gains +2 Sp. Atk for each foe with no threat. Includes Anticipation. After surviving the first opposing damaging move that hits it, blocks the next use of that move against it, from any foe. All hits of the original move finish normally. One recorded move and one block per entry; switching resets both.",
+				"shortDesc": "Anticipation; records the first attack survived each entry; blocks its next use on the holder.",
+				"rating": 4,
+				"flags": {},
 				"isNonstandard": null
 			},
 			"mistysurge": {
@@ -46711,8 +46764,8 @@
 				"name": "Relic Beam",
 				"num": 10164,
 				"gen": 9,
-				"desc": "Its Sp. Atk becomes equal to its Defense, and Special Attack stat stages use Defense stages instead. Beam moves and moves boosted by Mega Launcher have 1.5x power.",
-				"shortDesc": "SpA equals Defense using Def stages; beam/Mega Launcher moves have 1.5x power.",
+				"desc": "Sp. Atk uses the holder’s Defense and Defense stages instead of Sp. Atk and its stages. Named beam moves, pulse moves and bullet moves gain 50% power. Use /relicbeam to see the complete move list.",
+				"shortDesc": "Uses Defense for Sp. Atk; beam, pulse and bullet moves gain 50% power.",
 				"rating": 4,
 				"flags": {
 					"breakable": 1
@@ -47959,6 +48012,16 @@
 					"failskillswap": 1,
 					"cantsuppress": 1
 				},
+				"isNonstandard": null
+			},
+			"siegegrip": {
+				"name": "Siege Grip",
+				"num": 32598,
+				"gen": 9,
+				"desc": "Moves ignore bypassable opposing abilities. Includes Mold Breaker. A physical contact hit removes Reflect, Light Screen and Aurora Veil from that opponent’s side before damage. Misses, immunities and protection that stops the hit leave screens intact. Spread attacks check each opposing side separately.",
+				"shortDesc": "Mold Breaker; landed physical contact attacks break the target side’s screens before damage.",
+				"rating": 4,
+				"flags": {},
 				"isNonstandard": null
 			},
 			"siegelauncher": {
@@ -82355,7 +82418,7 @@
 			"astralcore": [
 				"purepower",
 				"naturalcure",
-				"illuminate"
+				"malignantlight"
 			],
 			"astralengine": [
 				"powerspot"
@@ -82622,7 +82685,8 @@
 			"coldlogic": [
 				"toughclaws",
 				"aftermath",
-				"forewarn"
+				"forewarn",
+				"convergence"
 			],
 			"coldopen": [],
 			"colorchange": [],
@@ -82654,6 +82718,9 @@
 			"contrary": [],
 			"controlledfury": [
 				"angerpoint"
+			],
+			"convergence": [
+				"keeneye"
 			],
 			"corneredfang": [
 				"guts"
@@ -82803,9 +82870,8 @@
 			],
 			"divineintervention": [
 				"vitalsigns",
-				"triage",
-				"regenerator",
-				"friendguard"
+				"falsesalvation",
+				"regenerator"
 			],
 			"divinemockery": [
 				"hydrabond",
@@ -82973,6 +83039,9 @@
 			"falseliberation": [
 				"moldbreaker"
 			],
+			"falsesalvation": [
+				"telepathy"
+			],
 			"familyguardian": [
 				"friendguard",
 				"healer"
@@ -83023,6 +83092,9 @@
 				"rockhead"
 			],
 			"fourthholdguard": [],
+			"frameperfect": [
+				"innerfocus"
+			],
 			"freeflight": [
 				"windpower",
 				"moxie"
@@ -83289,6 +83361,9 @@
 			"holycow": [],
 			"honeygather": [],
 			"hospitality": [],
+			"hotstreak": [
+				"superluck"
+			],
 			"hovercannon": [
 				"levitate"
 			],
@@ -83347,7 +83422,7 @@
 			"innardsout": [],
 			"innerfocus": [],
 			"insight": [
-				"telepathy",
+				"convergence",
 				"innerfocus"
 			],
 			"insomnia": [],
@@ -83370,6 +83445,9 @@
 			"ironfist": [],
 			"ironlash": [
 				"whiplash"
+			],
+			"ironmaiden": [
+				"moxie"
 			],
 			"ironmountain": [
 				"stamina",
@@ -83522,6 +83600,10 @@
 			"malicewell": [
 				"flamebody"
 			],
+			"malignantlight": [
+				"illuminate",
+				"relicbeam"
+			],
 			"marshconduit": [
 				"waterabsorb"
 			],
@@ -83582,6 +83664,9 @@
 				"magicbounce",
 				"analytic",
 				"opportunist"
+			],
+			"misalignedstars": [
+				"anticipation"
 			],
 			"mistysurge": [],
 			"moldbreaker": [],
@@ -84340,6 +84425,9 @@
 			"shielddust": [],
 			"shieldsdown": [
 				"crumblingshell"
+			],
+			"siegegrip": [
+				"moldbreaker"
 			],
 			"siegelauncher": [
 				"megalauncher",
@@ -85880,9 +85968,8 @@
 			],
 			"divineintervention": [
 				"vitalsigns",
-				"triage",
-				"regenerator",
-				"friendguard"
+				"falsesalvation",
+				"regenerator"
 			],
 			"mountainhunger": [
 				"sapsipper",
@@ -86152,7 +86239,7 @@
 			"astralcore": [
 				"purepower",
 				"naturalcure",
-				"illuminate"
+				"malignantlight"
 			],
 			"divinemockery": [
 				"hydrabond",
@@ -86782,7 +86869,8 @@
 			"coldlogic": [
 				"toughclaws",
 				"aftermath",
-				"forewarn"
+				"forewarn",
+				"convergence"
 			],
 			"whitesmoke": [],
 			"whiplash": [],
@@ -87937,7 +88025,7 @@
 				"limber"
 			],
 			"insight": [
-				"telepathy",
+				"convergence",
 				"innerfocus"
 			],
 			"forsakensleeper": [
@@ -88154,6 +88242,31 @@
 			"solareruption": [
 				"megasol",
 				"flamebody"
+			],
+			"hotstreak": [
+				"superluck"
+			],
+			"falsesalvation": [
+				"telepathy"
+			],
+			"convergence": [
+				"keeneye"
+			],
+			"misalignedstars": [
+				"anticipation"
+			],
+			"frameperfect": [
+				"innerfocus"
+			],
+			"malignantlight": [
+				"illuminate",
+				"relicbeam"
+			],
+			"ironmaiden": [
+				"moxie"
+			],
+			"siegegrip": [
+				"moldbreaker"
 			]
 		},
 		"learnsetExclusions": {

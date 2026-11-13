@@ -366,3 +366,28 @@ exports.abilities=(id,f)=>({...prior(id,f),...(events[id]?{S:events[id]}:{}),...
  exports.abilities=(id,f)=>Object.fromEntries(Object.entries({...prior.abilities(id,f),...reviewed.slots[id]}).map(([slot,name])=>[slot,reviewed.names[name]||name]));
  const desc=exports.description;exports.description=(id,key,f)=>id==='ironmountain'&&key==='shortDesc'?'Stamina + Brute Force; entry or Mega Evolution clears own Stealth Rock/Spikes.':desc(id,key,f);
 }
+
+// Approved Jackpot and False Salvation roster changes.
+{
+ const prior = {passives: exports.passives, abilities: exports.abilities};
+ exports.passives = (id, fallback) => id === 'audinomega' ? ['friendguard'] : prior.passives(id, fallback);
+ const slots = {pangoro: {0: 'Hot Streak'}, musharna: {H: 'False Salvation', S: 'Aevian Dream'}};
+ exports.abilities = (id, fallback) => ({...prior.abilities(id, fallback), ...slots[id]});
+}
+
+// Combat-sequence approvals.
+{
+ const prior = {passives: exports.passives, abilities: exports.abilities};
+ const passives = {metagross:['clearbody'],accelgor:['frameperfect']};
+ const slots = {lucario:{1:'Convergence'},metagross:{0:'Convergence'},bronzong:{H:'Misaligned Stars',S:'Reflector'},claydol:{0:'Misaligned Stars'},dusknoir:{1:'Misaligned Stars'},mienshao:{0:'Frame Perfect'},ninjask:{1:'Frame Perfect'}};
+ exports.passives = (id, fallback) => passives[id] || prior.passives(id, fallback);
+ exports.abilities = (id, fallback) => ({...prior.abilities(id, fallback),...slots[id]});
+}
+
+// Approved Malignant Light and base Pinsir assignments.
+{const prior={abilities:exports.abilities,passives:exports.passives};const slots={ampharos:{0:'Malignant Light'},necrozma:{1:'Malignant Light'},pinsir:{0:'Siege Grip',1:'Iron Maiden'}};const passives={starmie:['malignantlight'],pinsir:['hypercutter']};
+exports.abilities=(id,f)=>({...prior.abilities(id,f),...slots[id]});
+exports.passives=(id,f)=>passives[id]||prior.passives(id,f);}
+
+// Battle Bond Garchomp shares base Garchomp's Serrated Scales passive.
+{const prior=exports.passives;exports.passives=(id,f)=>id==='garchompbattlebond'?['serratedscales']:prior(id,f);}

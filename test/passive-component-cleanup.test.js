@@ -21,7 +21,8 @@ describe('Passive component separation client parity', () => {
      assert.deepEqual(species.passives, starterGmax[row.id]);assert(!Dex.hasAbilityEffect(species, 'proficient'));continue;
     }
     if (row.id === 'gliscor') { assert.deepEqual(species.passives,['poisonheal']); assert(!Dex.getAbilityEffects('venompincer').has('hypercutter')); continue; }
-    if (['kingler','fearow','pinsir'].includes(row.id)) {
+    if (row.id === 'pinsir') { assert.deepEqual(species.passives,['hypercutter']); assert.equal(species.abilities[0],'Siege Grip'); assert(!Dex.getAbilityEffects('siegegrip').has('hypercutter')); continue; }
+    if (['kingler','fearow'].includes(row.id)) {
      const passive = {kingler:'titanpincer',fearow:'lancepoint',pinsir:'lockinggrip'}[row.id];
      assert.deepEqual(species.passives,[passive]);
      assert.equal(Dex.abilities.get(species.abilities[slot.slot]).id,row.id === 'fearow' ? 'powerdrill' : component);

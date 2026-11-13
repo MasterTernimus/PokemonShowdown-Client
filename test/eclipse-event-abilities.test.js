@@ -5,7 +5,7 @@ const {BattleAbilitySearch} = new Function(fs.readFileSync('play.pokemonshowdown
 const events = [
  ['froslass','badseeds'], ['glalie','badseeds'], ['weavile','badseeds'], ['arbolivaaevian','badseeds'],
  ['typhlosionhisui','ashenseeds'], ['ninetales','ashenseeds'], ['camerupt','ashenseeds'], ['torkoal','ashenseeds'],
- ['hoopa','riftherald'], ['bronzong','riftherald'], ['mismagius','riftherald'],
+ ['hoopa','riftherald'], ['bronzong','reflector'], ['mismagius','riftherald'],
 ];
 function rows(species) {return BattleAbilitySearch.prototype.getBaseResults.call({dex:Dex, species, format:'gen9nofieldsinglesgame'});}
 function checkEvent(species, ability) {
