@@ -53,7 +53,12 @@ function requireNoCache(pathSpec) {
 
 	let index = [];
 
-	index = index.concat(Object.keys(Dex.data.Pokedex).map(x => x + ' pokemon'));
+	const indexedSpecies = new Set(Object.keys(Dex.data.Pokedex).filter(id => {
+		const species = Dex.species.get(id);
+		// Client records keep their data key when a display name is renamed.
+		return species.exists && species.bst > 0;
+	}));
+	index = index.concat([...indexedSpecies].map(x => x + ' pokemon'));
 	index = index.concat(Object.keys(Dex.data.Moves).map(x => x + ' move'));
 	index = index.concat(Object.keys(Dex.data.Items).map(x => x + ' item'));
 	index = index.concat(Object.keys(Dex.data.Abilities).map(x => x + ' ability'));
@@ -136,6 +141,7 @@ function requireNoCache(pathSpec) {
 	for (const id in Dex.data.Pokedex) {
 		const name = Dex.data.Pokedex[id].name;
 		if (Dex.data.Pokedex[id].isCosmeticForme) continue;
+		if (!indexedSpecies.has(id)) continue;
 		generateAlias(id, name, 'pokemon');
 	}
 	for (const id in Dex.data.Moves) {
@@ -197,7 +203,9 @@ function requireNoCache(pathSpec) {
 		x = x.split(' ');
 		if (x.length > 3) {
 			x[3] = Number(x[3]);
-			x[2] = index.indexOf(x[2] + ' ' + x[1]);
+			const target = index.indexOf(x[2] + ' ' + x[1]);
+			if (target < 0) throw new Error(`Search alias ${x[0]} has no ${x[1]} target: ${x[2]}`);
+			x[2] = target;
 		}
 		return x;
 	});
@@ -284,10 +292,8 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 		const metagameBans = {};
 		const ubersUUBans = {};
 		const ndDoublesBans = {};
-		const nonstandardMoves = [];
 		for (const id of pokemon) {
 			const species = Dex.mod(gen).species.get(id);
-			const baseSpecies = Dex.mod(gen).species.get(species.baseSpecies);
 			if (species.gen > genNum) continue;
 			const speciesTier = (() => {
 				if (species.tier === 'CAP' || species.tier === 'CAP NFE' || species.tier === 'CAP LC') {
@@ -716,15 +722,6 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 			}
 		}
 	}
-
-	// Client relevant data that should be overriden by past gens and mods
-	const overrideSpeciesKeys = ['passives', 'abilities', 'baseStats', 'cosmeticFormes', 'isNonstandard', 'requiredItems', 'types', 'unreleasedHidden'];
-	const overrideMoveKeys = ['accuracy', 'basePower', 'category', 'desc', 'flags', 'isNonstandard', 'noSketch', 'pp', 'priority', 'shortDesc', 'target', 'type'];
-	const overrideAbilityKeys = ['desc', 'flags', 'isNonstandard', 'rating', 'shortDesc'];
-
-	//
-	// Mods
-	//
 
 	buf += `exports.BattleTeambuilderTable = JSON.parse('${JSON.stringify(BattleTeambuilderTable).replace(/['\\]/g, "\\$&")}');\n\n`;
 

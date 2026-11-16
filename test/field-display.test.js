@@ -130,6 +130,23 @@ describe('Field display transitions', () => {
 	});
 });
 
+describe('Active field background coverage', () => {
+	const css = fs.readFileSync(path.join(__dirname, '../play.pokemonshowdown.com/style/battle.css'), 'utf8')
+		.replace(/\/\*[\s\S]*?\*\//g, '');
+	const rules = [...css.matchAll(/([^{}]+)\{([^{}]*)\}/g)];
+	for (const field of BattleFieldRules) {
+		// Adrienn is a format preset: its actual layers are Misty and Fairy Tale.
+		if (field.id === 'adriennterrain') continue;
+		it(field.id + ' has a matching renderer style and local artwork', () => {
+			const matching = rules.filter(rule => rule[1].split(',').some(selector => selector.trim() === '.' + field.id + 'weather'));
+			assert(matching.length, field.id + ' is missing its canonical renderer style');
+			const images = matching.flatMap(rule => [...rule[2].matchAll(/url\(['"]?([^)'"\s]+)['"]?\)/g)]);
+			assert(images.length, field.id + ' has no artwork');
+			for (const [, asset] of images) assert(fs.statSync(path.resolve(__dirname, '../play.pokemonshowdown.com/style', asset)).size > 0, asset);
+		});
+	}
+});
+
 describe('Aura overlay rendering', () => {
 	let battle;
 	beforeEach(() => { battle = new Battle({debug: true, log: ['|gen|9']}); });
@@ -149,6 +166,31 @@ describe('Aura overlay rendering', () => {
 		Object.assign(scene, {battle, animating: true, acceleration: 1, curWeather: '', curTerrain: '', terrainAnimationToken: 0,
 			$terrain: element(), $aura: element(), $weather: element()});
 		return scene;
+	}
+	for (const mode of ['normal', 'instant', 'fast']) {
+		it(`renders Starlight Arena after Cold Eclipse with Hail during ${mode} playback`, () => {
+			const scene = renderer();
+			if (mode === 'fast') scene.acceleration = 3;
+			const update = () => scene.updateWeather(mode === 'instant');
+			battle.weather = 'hail';
+			battle.runMinor(['-fieldstart', 'Cold Eclipse Terrain'], {});
+			update();
+			assert.equal(scene.$terrain.attributes.class, 'weather coldeclipseterrainweather');
+			battle.runMinor(['-fieldend', 'Cold Eclipse Terrain'], {});
+			battle.runMinor(['-fieldstart', 'Starlight Arena Terrain'], {});
+			update();
+			assert.equal(scene.$terrain.attributes.class, 'weather starlightarenaterrainweather');
+			assert.equal(scene.$weather.attributes.class, 'weather hailweather');
+			assert(scene.$weather.text.includes('Starlight Arena'));
+			assert(!scene.$weather.text.includes('Cold Eclipse'));
+			const css = fs.readFileSync(path.join(__dirname, '../play.pokemonshowdown.com/style/battle.css'), 'utf8');
+			const rule = css.match(/\.starlightarenaterrainweather\s*\{([^}]+)\}/);
+			assert(rule, 'The renderer’s canonical field class must have artwork');
+			assert(rule[1].includes('background-size: 100% 100%'));
+			const asset = rule[1].match(/url\(\.\.\/([^)]*)\)/)[1];
+			assert.equal(asset, 'fx/weather-starlightterrain.png');
+			assert(fs.statSync(path.join(__dirname, '../play.pokemonshowdown.com', asset)).size > 0);
+		});
 	}
 	for (const aura of Object.values(BattleAuraRules)) {
 		for (const mode of ['normal', 'instant', 'fast']) {

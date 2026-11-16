@@ -1238,6 +1238,7 @@ class Move implements Effect {
 	readonly flags: Readonly<MoveFlags>;
 	readonly critRatio: number;
 	readonly overrideOffensiveStat?: StatName;
+	readonly overrideOffensivePokemon?: 'target' | 'source';
 
 	readonly desc: string;
 	readonly shortDesc: string;
@@ -1287,6 +1288,7 @@ class Move implements Effect {
 		this.flags = data.flags || {};
 		this.critRatio = data.critRatio === 0 ? 0 : (data.critRatio || 1);
 		this.overrideOffensiveStat = data.overrideOffensiveStat;
+		this.overrideOffensivePokemon = data.overrideOffensivePokemon;
 
 		// TODO: move to text.js
 		this.desc = data.desc;
@@ -1306,7 +1308,7 @@ class Move implements Effect {
 		this.status = data.status || '';
 		this.secondaries = data.secondaries || (data.secondary ? [data.secondary] : null);
 		this.hasSheerForceBoost = !!data.hasSheerForceBoost;
-		this.noSketch = !!data.noSketch;
+		this.noSketch = !!data.noSketch || !!data.flags?.nosketch;
 
 		this.isMax = data.isMax || false;
 		this.maxMove = data.maxMove || {basePower: 0};

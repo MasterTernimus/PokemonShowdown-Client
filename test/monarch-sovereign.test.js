@@ -15,7 +15,7 @@ describe('Monarch and Sovereign presentation', () => {
 	});
 	it('shows the added components and replacement effects', () => {
 		assert(!Dex.getAbilityDisplayComponents('atrocity').includes('toughclaws'));
-		assert(Dex.getAbilityDisplayComponents('infernaldominion').includes('fireward'));
+		assert(!Dex.getAbilityDisplayComponents('infernaldominion').includes('fireward'));
 		for (const id of ['sunsovereign', 'sandsovereign', 'rainsovereign', 'frostsovereign', 'stormsovereign']) {
 			assert(!/chip/i.test(Dex.abilities.get(id).desc), id);
 		}

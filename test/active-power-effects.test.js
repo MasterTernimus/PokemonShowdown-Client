@@ -32,7 +32,7 @@ describe('Active aura and team power displays', () => {
 		const move = {...Dex.moves.get('darkpulse'), basePower: 80, category: 'Special', type, flags};
 		return tips.getMoveBasePower(move, type, new ModifiableValue(battle, p, own), q);
 	}
-	for (const [field, factor] of [['Dragon\'s Den Terrain', 2], ['Fairy Tale Terrain', 2],
+	for (const [field, factor] of [['Dragon\'s Den Terrain', 1.5], ['Fairy Tale Terrain', 1.5],
 		['Rocky Terrain', 1.5], ['Cold Eclipse Terrain', 1.5], ['Forest Terrain', 1.3], ['', 1]]) {
 		it(`shows Relentless Hunt's single ${factor}x bonus on ${field || 'no field'}`, () => {
 			battle.pseudoWeather = field ? [[field, 5, 5]] : [];

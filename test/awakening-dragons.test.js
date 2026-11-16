@@ -20,7 +20,7 @@ describe('Approved Awakening dragon client data', () => {
 		assert(/heals 25%/.test(Dex.abilities.get('exaltedaether').desc));
 		assert(/second deals 40%/.test(Dex.abilities.get('exaltedaether').desc));
 		assert(/Defensive screens apply normally/.test(Dex.abilities.get('exaltedaether').desc));
-		assert.equal(Dex.species.get('Hydreigon').abilities.H, 'False Liberation');
+		assert.equal(Dex.species.get('Hydreigon').abilities.H, 'Mold Breaker');
 		assert.equal(Dex.species.get('Hydreigon-Mega').abilities[0], 'Expiration');
 	});
 	it('removes Salamence lunar moves from the teambuilder without removing them globally', () => {

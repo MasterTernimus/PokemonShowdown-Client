@@ -2,6 +2,12 @@
 const assert = require('assert').strict;
 require('./battle.test');
 describe('Combat sequence ability data', () => {
+	it('describes the revised momentum and frost rules', () => {
+		assert.match(Dex.abilities.get('frameperfect').desc, /Changing attacks, misses and blocked attacks preserve momentum/);
+		const frost = Dex.abilities.get('purifyingfrost').desc;
+		assert.match(frost, /half damage from Fire/); assert.match(frost, /3 turns of Safeguard/);
+		assert.match(frost, /Immune to major status/); assert(!/cures.*allies|5 turns/.test(frost));
+	});
 	it('shows the approved ability slots and passives', () => {
 		for (const [id, slot, name] of [['lucario', 1, 'Convergence'], ['metagross', 0, 'Convergence'],
 			['bronzong', 'H', 'Misaligned Stars'], ['bronzong', 'S', 'Reflector'], ['claydol', 0, 'Misaligned Stars'],
@@ -13,7 +19,7 @@ describe('Combat sequence ability data', () => {
 	});
 	it('keeps nested components correct and publishes concise current descriptions', () => {
 		const insight = [...Dex.getAbilityEffects('insight')];
-		assert(insight.includes('convergence')); assert(insight.includes('keeneye')); assert(insight.includes('innerfocus'));
+		assert(insight.includes('ultrainstinct')); assert(insight.includes('convergence')); assert(insight.includes('keeneye')); assert(insight.includes('innerfocus'));
 		assert(!insight.includes('telepathy'));
 		assert([...Dex.getAbilityEffects('coldlogic')].includes('convergence'));
 		assert([...Dex.getAbilityEffects('misalignedstars')].includes('anticipation'));

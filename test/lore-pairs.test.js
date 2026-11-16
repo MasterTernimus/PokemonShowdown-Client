@@ -39,7 +39,7 @@ describe('Lore partnership client metadata', () => {
             const porygon = dex.species.get('porygonz');
             assert.equal(porygon.baseStats.hp, 95); assert.equal(porygon.baseStats.spa, 140);
             assert.equal(porygon.abilities[1], 'Adaptability');
-            assert(dex.abilities.get('defragment').desc.includes('first move aimed at a foe'));
+            assert(dex.abilities.get('defragment').desc.includes('Once per battle'));
             const gardevoir = dex.species.get('gardevoir');
 			assert.deepEqual(Array.from(gardevoir.passives), ['breakingnews']);
 			assert.deepEqual(JSON.parse(JSON.stringify(gardevoir.abilities)), {0: 'Trace', 1: 'Dream Guardian', H: 'Void Veil'});

@@ -10,7 +10,7 @@ describe('Approved October batch metadata',()=>{
  ['snorlax','1','slumberinggiant',['thickfat','comatose']],
  ['lapras','1','oceanlullaby',['shellarmor']],
  ['greninja','H','shadowscreen',['infiltrator']],
- ['clefable','H','voidpromise',['unaware']],
+ ['clefable','0','voidpromise',['pastelveil','mistysurge']],
  ['flygon','0','miragedrift',['overcoat']],
  ['delphox','H','voidguile',['magician']],
  ['garchomp','H','voidwrath',['moldbreaker']],

@@ -225,7 +225,8 @@ const BattleFieldTooltips = {
 		if (!preview) return '';
 		const notes = this.notes(move, preview.result);
 		if (preview.field.id === 'chessboardterrain') notes.push('role bonuses require the assigned chess role; King adds +1 priority');
-		if (move.id === 'terrainpulse' && preview.field.id === 'newworldterrain') {
+		if (move.id === 'terrainpulse' && preview.field.id === 'newworldterrain' &&
+			new Set(preview.results.map(r => r.move.type)).size > 1) {
 			const index = notes.findIndex(n => n.startsWith('type becomes'));
 			if (index >= 0) notes.splice(index, 1);
 			notes.push('type is random');

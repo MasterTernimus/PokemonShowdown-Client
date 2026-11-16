@@ -11,7 +11,8 @@ describe('Primeval fossil pair and Payback client data', () => {
 		assert.equal(Dex.abilities.get('Primeval Skull').name, 'Primeval Skull');
 		assert(Dex.getAbilityEffects('primevalskull').has('rockhead'));
 		assert(!Dex.getAbilityEffects('primevalskull').has('secondwind'));
-		assert(/even if it already has only 1 HP/.test(Dex.abilities.get('primevalskull').desc));
+		assert(/physical Rock moves ignore the target's positive Defense stages/.test(Dex.abilities.get('primevalskull').desc));
+		assert(!/surviv|1 HP/.test(Dex.abilities.get('primevalskull').desc));
 	});
 	it('shows the exact 530-BST Bastiodon spread and matching Shield ability', () => {
 		const species = Dex.species.get('Bastiodon');

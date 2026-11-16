@@ -34,6 +34,9 @@ describe('Mega Hydreigon client integration', () => {
 			const dir = 'gen5' + (front ? '' : '-back') + (shiny ? '-shiny' : '');
 			const sprite = Dex.getSpriteData('Hydreigon-Mega', front ? 1 : 0, {gen: 9, shiny});
 			assert(sprite.url.includes(`/${dir}/hydreigon-mega.png`), sprite.url);
+			const size = front ? (shiny ? 130 : 128) : (shiny ? 139 : 113);
+			assert.equal(sprite.w, size);
+			assert.equal(sprite.h, size);
 			const file = path.join(__dirname, '../play.pokemonshowdown.com/sprites', dir, 'hydreigon-mega.png');
 			const png = fs.readFileSync(file);
 			assert.equal(png.readUInt32BE(16), 192);

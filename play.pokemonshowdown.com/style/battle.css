@@ -678,8 +678,10 @@ License: GPLv2
     color: #441155;
 }
 
-.starlightterrainweather {
-    background: #CCAAEE url(../fx/weather-starlightterrain.png) no-repeat scroll left top;
+.starlightterrainweather,
+.starlightarenaterrainweather {
+    background: #CCAAEE url(../fx/weather-starlightterrain.png) no-repeat center center;
+    background-size: 100% 100%;
     color: #441155;
 }
 
@@ -814,8 +816,10 @@ License: GPLv2
     background: #CCAAEE url(../fx/weather-newworldterrain.png) no-repeat scroll left top;
     color: #441155;
 }
-.chessterrainweather {
-    background: #CCAAEE url(../fx/weather-chessterrain.png) no-repeat scroll left top;
+.chessterrainweather,
+.chessboardterrainweather {
+    background: #CCAAEE url(../fx/weather-chessboardterrain.png) no-repeat center center;
+    background-size: 100% 100%;
     color: #441155;
 }
 .shortcircuitterrainweather {

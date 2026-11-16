@@ -24,11 +24,11 @@ describe('Custom-only passive presentation and Water Barrage',()=>{
   assert(Dex.getAbilityEffects('rechargerelay').has('battery'));
   assert(Dex.getAbilityEffects('mirechorus').has('poisontouch'));
  });
- it('lists Water Barrage as Dual Wield plus Stalwart and prunes duplicate Siege Launcher Includes',()=>{
-  assert.deepEqual(Dex.getAbilityDisplayComponents('waterbarrage'),['dualwield','stalwart']);
-  assert(Dex.getAbilityEffects('waterbarrage').has('stalwart'));
-  const siege=Dex.getAbilityDisplayComponents('siegelauncher');assert(siege.includes('waterbarrage'));assert(siege.includes('megalauncher'));assert(!siege.includes('stalwart'));
-  assert(Dex.abilities.get('waterbarrage').desc.includes('Stalwart'));
-  assert(Dex.abilities.get('siegelauncher').desc.includes('Stalwart exactly once'));
+ it('lists Tidal Monarch armor separately from Bombardment Stalwart',()=>{
+  assert.deepEqual(Dex.getAbilityDisplayComponents('waterbarrage'),['dualwield','shellarmor']);
+  assert(!Dex.getAbilityEffects('waterbarrage').has('stalwart'));
+  const siege=Dex.getAbilityDisplayComponents('siegelauncher');assert(siege.includes('dualwield'));assert(siege.includes('megalauncher'));assert(siege.includes('stalwart'));
+  assert(Dex.abilities.get('waterbarrage').desc.includes('Shell Armor'));
+  assert(Dex.abilities.get('siegelauncher').desc.includes('Stalwart'));
  });
 });

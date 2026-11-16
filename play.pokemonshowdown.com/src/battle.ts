@@ -523,7 +523,9 @@ export class Pokemon implements PokemonDetails, PokemonHealth {
 	}
 	isGrounded(serverPokemon?: ServerPokemon) {
 		const battle = this.side.battle;
-		if (battle.hasPseudoWeather('Gravity')) {
+		const gravityExempt = this.getSpecies(serverPokemon).id === 'gardevoir' &&
+			toID(this.effectiveAbility(serverPokemon)) === 'voidveil';
+		if (battle.hasPseudoWeather('Gravity') && !gravityExempt) {
 			return true;
 		} else if (this.volatiles['ingrain'] && battle.gen >= 4) {
 			return true;
@@ -541,10 +543,11 @@ export class Pokemon implements PokemonDetails, PokemonHealth {
 			return true;
 		}
 		const passives = serverPokemon?.passives ?? this.getSpecies(serverPokemon).passives;
-		if (passives.includes('levitate') || passives.includes('elevate')) return false;
+		const passiveEffects = new Set(passives.flatMap(id => Array.from(Dex.getPassiveAbilityEffects(toID(id)))));
+		if (passiveEffects.has('levitate' as ID) || passiveEffects.has('elevate' as ID)) return false;
 		if (!Dex.getAbilityComponentExclusions(ability, passives).includes('levitate') &&
 			['levitate', 'elevate', 'solaridol', 'lunaridol', 'burningcrown', 'astralwitchcraft',
-			'voidcraft', 'phantombarrage'].some(id => Dex.getAbilityEffects(ability).has(id as ID))) {
+			'voidcraft', 'phantombarrage', 'silentflight'].some(id => Dex.getAbilityEffects(ability).has(id as ID))) {
 			return false;
 		}
 		if (this.volatiles['magnetrise'] || this.volatiles['telekinesis'] || this.volatiles['plasmaairborne']) {
@@ -656,6 +659,7 @@ export class Side {
 	pokemon = [] as Pokemon[];
 
 	/** [effectName, levels, minDuration, maxDuration] */
+	pendingSlotEffects: {[slot: number]: {[id: string]: number}} = {};
 	sideConditions: {[id: string]: [string, number, number, number]} = {};
 	faintCounter = 0;
 
@@ -693,6 +697,7 @@ export class Side {
 	reset() {
 		this.clearPokemon();
 		this.sideConditions = {};
+		this.pendingSlotEffects = {};
 		this.faintCounter = 0;
 	}
 	setAvatar(avatar: string) {
@@ -1533,6 +1538,12 @@ export class Battle {
 			if (pWeather[2]) pWeather[2]--;
 		}
 		for (const side of this.sides) {
+			for (const slot in side.pendingSlotEffects) {
+				const effects = side.pendingSlotEffects[Number(slot)];
+				for (const id in effects) if (--effects[id] <= 0) delete effects[id];
+				const active = side.active[Number(slot)];
+				if (active) this.scene.updateStatbar(active);
+			}
 			for (const id in side.sideConditions) {
 				let cond = side.sideConditions[id];
 				if (cond[2]) cond[2]--;
@@ -2667,6 +2678,17 @@ export class Battle {
 			let ofpoke = this.getPokemon(kwArgs.of);
 			let fromeffect = Dex.getEffect(kwArgs.from);
 
+			if ((effect.id === 'nostraswish' && kwArgs.slot === 'attack') || (effect.id === 'wish' && kwArgs.slot === 'heal')) {
+				const recipient = effect.id === 'nostraswish' ? ofpoke : poke;
+				if (recipient) {
+					const effects = recipient.side.pendingSlotEffects[recipient.slot] ||= {};
+					effects[effect.id] = Math.max(1, Number(kwArgs.turns) || 2);
+					this.scene.updateStatbar(recipient);
+				}
+				this.log(args, kwArgs);
+				break;
+			}
+
 			this.activateAbility(poke, effect);
 			this.activateAbility(ofpoke || poke, fromeffect);
 			switch (effect.id) {
@@ -2844,6 +2866,9 @@ export class Battle {
 			let poke = this.getPokemon(args[1])!;
 			let effect = Dex.getEffect(args[2]);
 			let fromeffect = Dex.getEffect(kwArgs.from);
+			if (effect.id === 'nostraswish' || effect.id === 'wish') {
+				delete poke.side.pendingSlotEffects[poke.slot]?.[effect.id];
+			}
 			poke.removeVolatile(effect.id);
 			if (effect.id === 'mustrecharge') poke.removeMovestatus(effect.id);
 			if (effect.id === 'perishsong') {

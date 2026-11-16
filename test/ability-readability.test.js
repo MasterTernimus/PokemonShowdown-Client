@@ -36,6 +36,6 @@ describe('Current Mega stone choices', () => {
 	it('never exposes Mega Hydreigon X', () => {
 		assert(!Dex.species.get('Hydreigon-Mega-X').exists);
 		assert.deepEqual([...Dex.species.get('Hydreigon').otherFormes], ['Hydreigon-Mega']);
-		assert.equal(Dex.species.get('Hydreigon').abilities.H, 'False Liberation');
+		assert.equal(Dex.species.get('Hydreigon').abilities.H, 'Mold Breaker');
 	});
 });

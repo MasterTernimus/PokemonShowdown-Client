@@ -78,6 +78,7 @@ for (const id of [...groups.abilities].sort()) {
 }
 // Character aliases come from the approved credit tables, not prose substring matching.
 const signatureCredits = {
+ ...Object.fromEntries(Object.entries(require(path.join(server, 'dist/data/reborn-character-moves')).CharacterMoveProfiles).map(([id, profile]) => [id, profile.credit])),
  ...require(path.join(server, 'dist/data/rejuvenation-advanced-moves')).RejuvenationAdvancedCredits,
  ...require(path.join(server, 'dist/data/rejuvenation-signature-moves')).RejuvenationSignatureCredits,
  ...require(path.join(server, 'dist/data/yang-signature-moves-a')).YangSignatureCreditsA,
@@ -90,7 +91,7 @@ function characterAliases(credit) {
 }
 for (const id of [...groups.moves].sort()) {
 	const data = Dex.moves.get(id);
-	snapshot.moves[id] = select(data, ['name', 'num', 'type', 'category', 'basePower', 'accuracy', 'critRatio', 'overrideOffensiveStat', 'pp', 'priority', 'target', 'flags', 'desc', 'shortDesc', 'secondaries', 'hasSheerForceBoost']);
+	snapshot.moves[id] = select(data, ['name', 'num', 'type', 'category', 'basePower', 'accuracy', 'critRatio', 'overrideOffensiveStat', 'overrideOffensivePokemon', 'pp', 'priority', 'target', 'flags', 'desc', 'shortDesc', 'secondaries', 'hasSheerForceBoost']);
 	if (require(path.join(server, 'dist/data/rejuvenation-advanced-moves')).RejuvenationAdvancedMoves[id]) Object.assign(snapshot.moves[id], select(data, ['multihit', 'critRatio', 'secondaries']));
 	if (signatureCredits[id]) snapshot.moves[id].signatureCharacters = characterAliases(signatureCredits[id]);
 }

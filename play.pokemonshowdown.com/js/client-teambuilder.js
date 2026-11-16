@@ -3686,10 +3686,6 @@
 				this.unChooseMove(this.curSet.moves[3]);
 				this.curSet.moves[3] = val;
 				this.chooseMove(val);
-				if (selectNext && !this.pointerMoveSelection) {
-					this.stats();
-					this.$('button.setstats').focus();
-				}
 				break;
 			}
 			this.save();
@@ -5342,7 +5338,17 @@
 		if (before && /^(pokemon|move[1-4])$/.test(field) && JSON.stringify(before) !== JSON.stringify(this.curSetList[index])) {
 			this.selectionUndo = {team: team, index: index, before: before, after: T.clone(this.curSetList[index])}; this.showSelectionUndo();
 		}
-		if (/^(pokemon|move[1-4])$/.test(field) && next && this.curSet && this.curSet.species) this.returnToPokemonEditor();
+		if (next && this.curSet && this.curSet.species) {
+			if (field === 'move4' && this.curSet.moves && this.curSet.moves[3]) {
+				this.stats();
+				var form = this.$('.statform')[0];
+				if (form) {
+					form.tabIndex = -1;
+					form.focus({preventScroll: true});
+					form.scrollIntoView({block: 'start', behavior: 'auto'});
+				}
+			} else if (/^(pokemon|move[1-4])$/.test(field)) this.returnToPokemonEditor();
+		}
 		return result;
 	};
 	proto.showSelectionUndo = function () {

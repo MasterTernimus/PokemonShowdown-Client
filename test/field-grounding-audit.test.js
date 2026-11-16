@@ -31,6 +31,29 @@ describe('Field Speed grounding audit', () => {
   battle.p1.active[0].volatiles.gastroacid = ['gastroacid'];
   assert.equal(tips.calculateModifiedStats(battle.p1.active[0], own).spe, 75);
  });
+ it('recognizes composite passives and their grounding overrides', () => {
+  own.ability = own.baseAbility = 'No Ability'; own.passives = ['hydraflight'];
+  const active = battle.p1.active[0];
+  for (const field of ['Icy Terrain', 'New World Terrain', 'Water Surface Terrain', 'Murkwater Surface Terrain', 'Snowy Terrain']) {
+   battle.pseudoWeather = [[field, 0, 0]];
+   assert.equal(tips.calculateModifiedStats(active, own).spe, 100, field);
+   assert.equal(tips.calculateModifiedStats(null, own).spe, 100, field);
+   battle.pseudoWeather.push(['Gravity', 0, 0]);
+   assert.equal(tips.calculateModifiedStats(active, own).spe, 75, field);
+  }
+ });
+ it('preserves Gardevoir Void Veil Gravity immunity in active and bench stat previews',()=>{
+  battle.add('|switch|p1a: Gardevoir|Gardevoir, L100|100/100');
+  const active=battle.p1.active[0]; active.ability='Void Veil';
+  own.speciesForme='Gardevoir'; own.ability=own.baseAbility='Void Veil';
+  battle.pseudoWeather=[['New World Terrain',0,0],['Gravity',0,0]];
+  assert.equal(active.isGrounded(own),false);
+  assert.equal(tips.calculateModifiedStats(active,own).spe,100);
+  assert.equal(tips.calculateModifiedStats(null,own).spe,100);
+  active.volatiles.gastroacid=['gastroacid'];
+  assert.equal(active.isGrounded(own),true);
+  assert.equal(tips.calculateModifiedStats(active,own).spe,75);
+ });
  it('does not exempt airborne Pokemon from the unconditional Underwater non-Water slowdown', () => {
   battle.pseudoWeather = [['Underwater Terrain', 0, 0]];
   assert.equal(tips.calculateModifiedStats(null, own).spe, 50);

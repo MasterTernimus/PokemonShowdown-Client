@@ -7,13 +7,13 @@ describe('Approved Ultra Instinct and Inferno Ascendant presentation',()=>{
   const text=Dex.getAbilityDisplayDetails(Dex.abilities.get('ultrainstinct'),s.passives,id).desc;
   for(const phrase of ['30%','35%','40%','1/16','1/8','queued to move'])assert(text.includes(phrase),phrase);
  });
- it('Mega Infernape displays three selected components with Proficient only as its passive',()=>{
+ it('Mega Infernape displays two selected components with Proficient only as its passive',()=>{
   const s=Dex.species.get('infernapemega');assert.deepEqual(s.passives,['proficient']);assert.deepEqual(s.abilities,{0:'Inferno Ascendant'});
   const parts=Dex.getAbilityDisplayComponents('burningspirit',Dex,s.passives,s.id);
-  assert.deepEqual(parts,['ultrainstinct','opportunist','magmaarmor']);
-  const effects=Dex.getAbilityEffects('burningspirit');for(const id of ['ultrainstinct','opportunist','magmaarmor','moldbreaker','innerfocus'])assert(effects.has(id),id);
-  for(const id of ['selfsufficient','proficient','flamebody','ironfist','battlefervor'])assert(!effects.has(id),id);
-  const text=Dex.getAbilityDisplayDetails(Dex.abilities.get('burningspirit'),s.passives,s.id).desc;assert(text.includes('does not copy accuracy or evasion'));assert(!parts.includes('proficient'));
+  assert.deepEqual(parts,['ultrainstinct','magmaarmor']);
+  const effects=Dex.getAbilityEffects('burningspirit');for(const id of ['ultrainstinct','magmaarmor','moldbreaker','innerfocus'])assert(effects.has(id),id);
+  for(const id of ['opportunist','selfsufficient','proficient','flamebody','ironfist','battlefervor'])assert(!effects.has(id),id);
+  const text=Dex.getAbilityDisplayDetails(Dex.abilities.get('burningspirit'),s.passives,s.id).desc;assert(!text.includes('Opportunist'));assert(!parts.includes('proficient'));
  });
  it('Relentless Hunt explains the single Cold Eclipse bonus and raised priority threshold',()=>{
   const text=Dex.abilities.get('relentlesshunt').desc;assert(/up to 80 on Cold Eclipse/.test(text));assert(text.includes('applies once'));

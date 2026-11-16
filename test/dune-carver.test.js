@@ -21,6 +21,11 @@ describe('Mega Garchomp rework client data', () => {
   const {BattleSearchIndex: index, BattleSearchIndexOffset: offsets} = require('../play.pokemonshowdown.com/data/search-index');
   assert(index.some(row => row[0] === 'dunecarver' && row[1] === 'ability'));
   assert.equal(index.length, offsets.length);
+  const legacy = index.find(row => row[0] === 'emboarmegareborn' && typeof row[2] === 'number');
+  assert(legacy); assert.equal(index[legacy[2]][0], 'emboarmegaalt');
+  for (const id of ['miloticalt','roseradealt','infernapereborn']) {
+   assert(!index.some(row => row[0] === id && row[1] === 'pokemon' && row.length === 2));
+  }
   for (const entry of index) if (typeof entry[2] === 'number') {
    assert(index[entry[2]], 'missing alias target: ' + entry[0]);
    assert.equal(index[entry[2]][1], entry[1], 'alias category: ' + entry[0]);

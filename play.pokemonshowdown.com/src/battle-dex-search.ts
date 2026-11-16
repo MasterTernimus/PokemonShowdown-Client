@@ -353,14 +353,19 @@ class DexSearch {
 		const species = this.dex.species.get(id);
 		const traits = DexSearch.pokemonPickerTraits(species);
 		const options = this.pickerOptions;
-		return species.exists && !Dex.isSpeciesHidden(species.id) && !traits.totem && !(options.hideMegas && traits.mega) && !(options.hideGimmicks && traits.gimmick) &&
+		return species.exists && species.bst > 0 && species.id === id && !Dex.isSpeciesHidden(species.id) && !traits.totem && !(options.hideMegas && traits.mega) && !(options.hideGimmicks && traits.gimmick) &&
 			!(options.customOnly && !traits.custom) &&
 			(!options.group || options.group === 'all' || !!traits[options.group as 'pulse' | 'rift' | 'regional']);
 	}
 
 	filterPokemonPicker(rows: SearchRow[]): SearchRow[] {
 		rows = rows.filter(row => row[0] !== 'item' || row[1] !== 'empoleonitex');
-		rows = rows.filter(row => row[0] !== 'pokemon' || (!Dex.isSpeciesHidden(this.dex.species.get(row[1]).id) && !isTotemSpecies(window.BattlePokedex?.[row[1]])));
+		rows = rows.filter(row => {
+			if (row[0] !== 'pokemon') return true;
+			const species = this.dex.species.get(row[1]);
+			return species.exists && species.bst > 0 && species.id === row[1] && !Dex.isSpeciesHidden(species.id) &&
+				!isTotemSpecies(window.BattlePokedex?.[row[1]]);
+		});
 		if (this.typedSearch?.searchType !== 'pokemon') return rows;
 		const options = this.pickerOptions;
 		if (!options.hideMegas && !options.hideGimmicks && !options.customOnly && (!options.group || options.group === 'all')) return rows;

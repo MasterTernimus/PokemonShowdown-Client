@@ -850,7 +850,7 @@ describe('Team Builder sprites', () => {
 		assert(Dex.getAbilityEffects('ancientbloom').has('pollenbloom'));
 		assert.match(Dex.abilities.get('Fortress Shell').desc, /All moves have 1\.1x accuracy/);
 		assert.match(Dex.abilities.get('Fortress Shell').desc, /reduces their attack damage by 25%/);
-		assert.match(Dex.abilities.get('Fortress Shell').shortDesc, /without Dual Wield/);
+		assert.match(Dex.abilities.get('Fortress Shell').shortDesc, /Stalwart/);
 		assert.match(Dex.abilities.get('Burning Crown').desc, /Normal moves to Dragon/);
 		assert.match(Dex.abilities.get('Burning Crown').desc, /one 20% attack-damage reduction/);
 		assert.doesNotMatch(Dex.abilities.get('Burning Crown').desc, /Filter/);
@@ -859,7 +859,8 @@ describe('Team Builder sprites', () => {
 		assert.doesNotMatch(Dex.abilities.get('Omen Edge').desc, /Tough Claws/);
 		assert(Dex.getAbilityEffects('omenedge').has('pressure'));
 		assert(!Dex.getAbilityEffects('omenedge').has('toughclaws'));
-		assert(Dex.getAbilityEffects('fortressshell').has('waterbarrage'));
+		assert(Dex.getAbilityEffects('fortressshell').has('stalwart'));
+		assert(!Dex.getAbilityEffects('fortressshell').has('shellarmor'));
 		assert(!Dex.getAbilityEffects('lunardread').has('unaware'));
 		assert(!Dex.getAbilityEffects('territorial').has('unnerve'));
 		assert(Dex.getAbilityEffects('territorial').has('guarddog'));

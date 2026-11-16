@@ -13,6 +13,19 @@ describe('Pokemon picker view filters',()=>{
 	  for (const query of ['', '0', 'missingno', '-custom']) assert(!ids(search({},query)).some(id=>id==='0'||id==='missingno'));
 	 });
  let aliases;before(()=>{aliases=global.BattleAliases;global.BattleAliases={};});after(()=>{if(aliases===undefined)delete global.BattleAliases;else global.BattleAliases=aliases;});
+ it('removes broken screenshot rows while keeping canonical regional species',()=>{
+  const broken=['miloticalt','infernapereborn','roseradealt','infernapealt','empoleonalt','hisuibraviary','galarianslowbro','hisuityphlosion',''];
+  const valid=['braviaryhisui','slowbrogalar','typhlosionhisui','milotic','infernape','roserade','empoleon'];
+  const s=search();
+  for(const options of [{},{hideMegas:true},{group:'regional'}]) {
+   s.pickerOptions=options;
+   const rows=s.filterPokemonPicker([...broken,...valid].map(id=>['pokemon',id]));
+   assert(!rows.some(r=>broken.includes(r[1])));
+   for(const id of valid.slice(0,3))assert(rows.some(r=>r[1]===id),id);
+  }
+  for(const q of ['', '-custom', ...broken.filter(Boolean)])assert(!ids(search({},q)).some(id=>broken.includes(id)),q);
+  for(const id of valid)assert(ids(search({},id)).includes(id),id);
+ });
  it('distinguishes true Megas, Core forms, temporary forms, and regional/cosmetic forms',()=>{
   const traits=id=>DexSearch.pokemonPickerTraits(Dex.species.get(id));
   assert(traits('charizardmegax').mega);assert(traits('cameruptpulse').pulse);assert(!traits('cameruptpulse').mega);assert(traits('cameruptpulse').gimmick);
@@ -44,7 +57,7 @@ describe('Approved ability client metadata',()=>{
  let aliases;before(()=>{aliases=global.BattleAliases;global.BattleAliases={shadowguard:'Void Craft'};});after(()=>{if(aliases===undefined)delete global.BattleAliases;else global.BattleAliases=aliases;});
  it('uses new names, components and descriptions',()=>{
   assert.equal(Dex.abilities.get('Shadow Guard').id,'voidcraft');assert.equal(Dex.species.get('mismagiusmega').abilities[0],'Void Craft');
-  assert.match(Dex.abilities.get('shadowshield').desc,/0.8x.*0.75x/);assert.match(Dex.abilities.get('spentforce').desc,/next two complete turns/);
+  assert.match(Dex.abilities.get('shadowshield').desc,/half attack damage.*full HP/i);assert.match(Dex.abilities.get('spentforce').desc,/next two complete turns/);
   assert(Dex.getAbilityEffects('exalt').has('sharpness'));assert(!Dex.getAbilityEffects('exalt').has('innerfocus'));
   assert.match(Dex.abilities.get('pulsewaste').desc,/Swamp Field for 3 turns/);
   assert.match(Dex.abilities.get('pulsefiltration').desc,/3-turn Murkwater Surface/);

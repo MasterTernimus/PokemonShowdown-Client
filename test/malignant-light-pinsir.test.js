@@ -14,7 +14,7 @@ describe('Malignant Light and Pinsir client data', () => {
 	it('publishes current descriptions and nested components', () => {
 		for (const id of ['malignantlight', 'astralcore']) {
 			const components = [...Dex.getAbilityEffects(id)];
-			assert(components.includes('illuminate')); assert(components.includes('relicbeam'));
+			assert(components.includes('illuminate')); assert(!components.includes('relicbeam'));
 			assert(Dex.abilities.get(id).desc.includes('/relicbeam'));
 		}
 		assert([...Dex.getAbilityEffects('ironmaiden')].includes('moxie'));

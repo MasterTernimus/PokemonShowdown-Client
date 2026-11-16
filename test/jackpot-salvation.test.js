@@ -19,6 +19,7 @@ describe('Jackpot and Salvation metadata', () => {
 		for (const id of ['vitalsigns', 'invigorate', 'falsesalvation', 'telepathy', 'regenerator']) assert(effects.includes(id), id);
 		for (const id of ['triage', 'friendguard']) assert(!effects.includes(id), id);
 		assert.match(Dex.abilities.get('hotstreak').desc, /20%/);
+		assert.match(Dex.abilities.get('hotstreak').desc, /40%.*Serene Grace.*Rainbow Field\/Aura/);
 		assert.match(Dex.abilities.get('hotstreak').desc, /four turns/);
 		assert.match(Dex.abilities.get('falsesalvation').desc, /At full HP/);
 	});

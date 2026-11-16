@@ -36368,6 +36368,16 @@ BattleMoveAnims['scentedgeyser'] = {anim: BattleMoveAnims['waterspout'].anim};
 
 BattleMoveAnims.royalcollision = BattleMoveAnims.wavecrash;
 
+// Character signatures use the existing scene-aware animations at their normal speed.
+for (const [signature, animation] of Object.entries({
+	blacktestament: 'darkpulse', unboundrefrain: 'hypervoice', vanishingact: 'psychic',
+	nullpulse: 'darkpulse', logicpulse: 'psybeam', solacepulse: 'aurorabeam',
+	shockdoctrine: 'thunderbolt', coldshoulder: 'icebeam', solarpledge: 'powergem',
+	lunarpledge: 'powergem', ancestralwrath: 'dragonclaw', steadfaststrike: 'drainpunch',
+	rebelanthem: 'hypervoice', laurellash: 'powerwhip',
+	heavenfall: 'dracometeor',
+})) BattleMoveAnims[signature] = BattleMoveAnims[animation];
+
 BattleMoveAnims.riftopening = {anim(scene, [attacker]) {
 	// A field move has no defender: open the rift at the battlefield center.
 	const center = {x: 0, y: 40, z: 100};

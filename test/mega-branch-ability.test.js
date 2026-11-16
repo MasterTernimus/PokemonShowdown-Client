@@ -50,7 +50,8 @@ describe('Updated local roster displays', () => {
 		assert.deepEqual(base.abilities, {0: 'Coil Up', 1: 'White Smoke', H: 'Flame Body'});
 		assert.deepEqual(base.passives, ['flashfire']);
 		assert(Dex.abilities.get('coilup').desc.includes('Once per switch-in'));
-		assert(Dex.getAbilityDisplayComponents('heatcoil', Dex, ['flamebody'], 'centiskorchgmax').includes('magmaarmor'));
+		assert(!Dex.getAbilityDisplayComponents('heatcoil', Dex, ['flamebody'], 'centiskorchgmax').includes('magmaarmor'));
+		assert(!/Magma Armor|freeze|Water\/Ice/.test(Dex.abilities.get('heatcoil').desc));
 	});
 	it('shows the Lumineon swap on the ordinary and alternate forms', () => {
 		for (const species of ['Lumineon', 'Lumineon-Alt']) {

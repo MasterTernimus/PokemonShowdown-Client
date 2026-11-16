@@ -1886,6 +1886,8 @@ export class Sprite {
 export class PokemonSprite extends Sprite {
 	// HTML strings are constructed from this table and stored back in it to cache them
 	protected static statusTable: {[id: string]: [string, 'good' | 'bad' | 'neutral'] | null | string} = {
+		solarpledge: ['Solar ready', 'good'],
+		lunarpledge: ['Lunar shield', 'good'],
 		sirensveil: '<span class="good" title="Siren’s Veil: next damaging move has 1.3x power for all hits and targets. Spent even on miss or protection; status moves retain it. Does not stack; clears on switching.">Veil ready: 1.3x</span> ' ,
 		// Exact protocol state emitted by Corrosive Strike; independent of the Corrosion ability.
 		corrosion: '<span class="effect-guard effect-corrosive" title="Corrosive Strike: loses 1/16 maximum HP at the end of each turn. Does not stack. Ends on switching; separate from poison." aria-label="Corrosive: residual damage until switching">Corrosive</span> ',
@@ -1909,7 +1911,7 @@ export class PokemonSprite extends Sprite {
 		jackpot: '<span class="good" title="Jackpot: 20% less attack damage; heals 1/4 HP and clears harmful conditions each turn. Lasts four turns, including activation.">Jackpot</span> ',
 		healblock: ['Heal Block', 'bad'],
 		yawn: ['Drowsy', 'bad'],
-		relicarmoractive: '<button type="button" class="relic-armor-badge has-tooltip" data-tooltip="relicarmor|normal" data-ownheight="1" aria-label="Relic Armor: normal defense; tap for details">Relic Armor</button> ',
+		relicarmoractive: null, // Only field-based Rock-weakness protection needs a condition badge.
 		relicarmorfield: '<button type="button" class="relic-armor-badge relic-armor-field has-tooltip" data-tooltip="relicarmor|field" data-ownheight="1" aria-label="Relic Armor: field protection active; tap for details">Relic Armor</button> ',
 		cocoonactive: '<span class="ability-active ability-active-cocoon" title="Cocoon intact: blocks one damaging move, status and secondary effects" aria-label="Cocoon intact">Cocoon</span> ',
 		blazeactive: '<span class="ability-active ability-active-blaze" title="Blaze active" aria-label="Blaze active">Blaze</span> ',
@@ -1975,6 +1977,8 @@ export class PokemonSprite extends Sprite {
 		syrupbomb: ['Syrupy', 'bad'],
 		doomdesire: null,
 		futuresight: null,
+		nostraswish: null, // Older logs placed the delayed attack on the caster.
+		wish: null,
 		mimic: ['Mimic', 'good'],
 		watersport: ['Water Sport', 'good'],
 		mudsport: ['Mud Sport', 'good'],
@@ -2963,6 +2967,14 @@ export class PokemonSprite extends Sprite {
 			}
 		}
 
+		for (const [id, turns] of Object.entries(pokemon.side.pendingSlotEffects[pokemon.slot] || {})) {
+			const healing = id === 'wish';
+			const label = healing ? 'Wish' : 'Nostra';
+			const title = (healing ? 'Wish healing' : "Nostra's Wish attack") + ' reaches this slot ' +
+				(turns === 1 ? 'at the end of this turn.' : 'at the end of the next turn.');
+			status += '<span class="' + (healing ? 'good' : 'bad') + '" title="' + BattleLog.escapeHTML(title) +
+				'">' + (healing ? '&#9825; ' : '&#10022; ') + label + '&nbsp;' + turns + '</span> ';
+		}
 		if (pokemon.adaptation) {
 			const count = Object.values(pokemon.adaptation.types || {}).filter(x => x.stage >= 3).length +
 				Object.values(pokemon.adaptation.opponents || {}).filter(x => x.complete).length;

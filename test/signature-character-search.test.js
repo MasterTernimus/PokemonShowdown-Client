@@ -9,11 +9,16 @@ const {DexSearch}=new Function(fs.readFileSync('play.pokemonshowdown.com/js/batt
 const search=(query,species='primarina')=>{const s=new DexSearch('move','gen9nationaldex',species);s.find(query);return s;};
 const ids=s=>s.results.filter(r=>r[0]==='move').map(r=>r[1]);
 describe('Credited signature character move search',()=>{
+ it('shows Amaria’s credit in both Siren’s Wrath descriptions', () => {
+  const move = Dex.moves.get('sirenswrath');
+  assert(move.shortDesc.startsWith("Amaria's move."));
+  assert(move.desc.startsWith("Amaria's move."));
+ });
  const cases={Allen:['vorpalblade'],Melia:['gildedarrow','gildedhelix'],Damien:['beasthunter'],Amaria:['sirensveil','sirenswrath'],Julia:['kaboom'],Anna:['nostraswish'],Bennett:['swarmsnare'],Venam:['venamskiss'],Flora:['uproot'],Florin:['uproot'],Keta:['galestrike'],Aelita:['galestrike'],Texen:['galestrike'],Narcissa:['spectralscream'],Spector:['spectralscream'],'Puppet Master':['bunrakubeatdown'],Magenta:['bunrakubeatdown'],Neon:['bunrakubeatdown']};
  for(const[name,expected]of Object.entries(cases))for(const query of [name,name.toUpperCase(),name.toLowerCase().split('').join(' . ')])it(query+' finds only credited moves',()=>assert.deepEqual(ids(search(query)).sort(),expected.slice().sort()));
- it('exports searchable credit metadata for all52 signature moves',()=>{
+ it('exports searchable credit metadata for all 67 signature moves',()=>{
   const data=require('../server-data-sync-manifest.json').snapshot.moves;const entries=Object.entries(data).filter(([,m])=>m.signatureCharacters);
-  assert.equal(entries.length,52);for(const[id,m]of entries)for(const name of m.signatureCharacters)assert(ids(search(name)).includes(id),id+'/'+name);
+  assert.equal(entries.length,67);for(const[id,m]of entries)for(const name of m.signatureCharacters)assert(ids(search(name)).includes(id),id+'/'+name);
  });
  it('keeps species legality labels and legal-first ordering',()=>{
   const s=search('Amaria','blastoise');assert.deepEqual(ids(s),['sirenswrath','sirensveil']);assert(!s.illegalLabel('sirenswrath'));assert(s.illegalLabel('sirensveil'));
@@ -25,6 +30,12 @@ describe('Credited signature character move search',()=>{
 });
 
 describe('Signature learner removals',()=>{
+	for (const [move, species] of Object.entries({shoreup: ['hippowdon','hippowdonrift','nidoking','nidoqueen','rhyperior','rhydon'], saltcure: ['corsola','corsolareborn','corsolaalt','bastiodon']})) {
+		for (const id of species) it(id+' cannot select '+move+' as legal',()=>assert(!ids(search('',id)).includes(move)));
+	}
+	for (const id of ['venusaur','bellossom','roserade','cherrim','lilligant','lilliganthisui','smeargle']) it(id+' cannot select Seed Flare as legal',()=>assert(!ids(search('',id)).includes('seedflare')));
+	for (const id of ['shaymin','shayminsky']) it(id+' retains Seed Flare',()=>assert(ids(search('',id)).includes('seedflare')));
+	for (const id of ['kingdra','flapple','appletun','flapplegmax','appletungmax']) it(id+' cannot select Dragon Energy as legal',()=>assert(!ids(search('',id)).includes('dragonenergy')));
  for(const[species,credit,move]of [['noctowl','Ciel','winddance']])it(species+' is illegal for '+move,()=>{const s=search(credit,species);assert(ids(s).includes(move));assert(s.illegalLabel(move));assert(!BattleLearnsets[species].learnset[move]);});
  for(const[species,credit,move]of [['goodrahisui','Saphira','dragonrend'],['altaria','Ciel','winddance'],['dragonite','Saphira','dragonrend'],['goodrahisui','Elias','deiludicium']])it(species+' retains '+move,()=>{assert(!search(credit,species).illegalLabel(move));});
 });
