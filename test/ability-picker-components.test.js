@@ -19,7 +19,7 @@ describe('Component-first Team Builder ability rows', () => {
  it('shows named components before the extra effect for Void Crossing', () => {
   const html=visible(Dex.abilities.get('voidcrossing'));
   assert(html.includes('class="result abilityresult"'));
-  assert(visible(Dex.abilities.get('blazingmane')).includes('Fire Mane'));
+  assert(visible(Dex.abilities.get('blazingmane')).includes('Flash Fire'));
   assert(visible(Dex.abilities.get('cactuschorus')).includes('Water Absorb + Sand Rush'));
   assert(html.includes('Magic Guard + Infiltrator'));
   assert(html.indexOf('Magic Guard + Infiltrator') < html.indexOf('Ghost hits or Power Gem'));
@@ -56,9 +56,9 @@ describe('Readable full ability descriptions', () => {
    'Raises Sp. Atk by 1', 'Moves gain 1.3x power', 'misses do not spend the use', 'Switching resets it.',
   ]);
  });
- it('shows Pollen Bloom components and attack accuracy without obsolete drain', () => {
-  assert.deepEqual(Dex.getAbilityDisplayComponents('pollenbloom'), ['thickfat', 'unaware']);
+ it('shows Pollen Bloom components and ally protection', () => {
+  assert.deepEqual(Dex.getAbilityDisplayComponents('pollenbloom'), ['thickfat', 'aromaveil']);
   const text = Dex.abilities.get('pollenbloom').desc;
-  assert(text.includes('All moves have 1.1x accuracy')); assert(!/drain|chip/i.test(text));
+  assert(text.includes('Aroma Veil')); assert(!/drain|chip/i.test(text));
  });
 });

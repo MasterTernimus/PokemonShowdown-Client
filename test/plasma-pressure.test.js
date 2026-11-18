@@ -23,7 +23,7 @@ describe('Plasma Eruption client parity', () => {
 		const s = Dex.species.get('typhlosionmega');
 		assert.deepEqual(Array.from(s.types), ['Fire', 'Electric']);
 		assert.equal(s.abilities[0], 'Plasma Eruption'); assert.deepEqual(Array.from(s.passives), ['proficient']);
-		assert.equal(s.baseStats.atk, 138); assert.equal(s.baseStats.spa, 139);
+		assert.equal(s.baseStats.atk, 127); assert.equal(s.baseStats.spa, 137);
 		assert(Dex.abilities.get('plasmaeruption').desc.includes('core discharge: +60% power'));
 		assert(Dex.abilities.get('plasmaeruption').desc.includes('first +1 Sp. Atk, second +1 Speed'));
 		assert(Dex.abilities.get('plasmaeruption').desc.includes('75% of the damage actually dealt'));

@@ -6,7 +6,7 @@ const {Battle,BattleTooltips,ModifiableValue}=vm.runInContext('({Battle,BattleTo
 describe('Machamp client parity',()=>{
  it('syncs four forms, passives, components and descriptions',()=>{
   const snapshot=require('../server-data-sync-manifest.json').snapshot;
-  for(const id of ['machamp','machampalt','machampgmax','machampgmaxalt']){const s=Dex.species.get(id);assert.deepEqual(Array.from(s.passives),['innerfocus']);assert.equal(s.abilities[0],id.includes('gmax')?"Titan's Knuckles":'Grit and Glory');assert.equal(s.baseStats.atk,130);}
+  for(const id of ['machamp','machampalt','machampgmax','machampgmaxalt']){const s=Dex.species.get(id);assert.deepEqual(Array.from(s.passives),[id.includes('gmax') ? 'innerfocus' : 'noguard']);assert.equal(s.abilities[0],id.includes('gmax')?"Titan's Knuckles":'Guts');assert.equal(s.baseStats.atk,130);}
   for(const[id,component]of [['gritandglory','guts'],['perfectform','ironfist'],['titansknuckles','ironfist']]){assert(Dex.getAbilityEffects(id).has(component));assert.equal(Dex.abilities.get(id).desc,snapshot.abilities[id].desc);}
   assert(!Dex.getAbilityEffects('fourthholdguard').has('battlearmor'));
  });

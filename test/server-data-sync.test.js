@@ -68,12 +68,23 @@ describe('Server data synchronization', () => {
 				}
 			});
 
+			it('matches the Kanto abilities and starter stat totals in the battle Dex', () => {
+				for (const [id, total] of [['venusaur', 535], ['charizard', 535], ['blastoise', 535], ['charizardmegax', 635], ['meowscarada', 559]]) {
+					assert.equal(dex.species.get(id).bst, total, id);
+				}
+				for (const [id, expected] of [['pollenbloom', ['thickfat', 'aromaveil']], ['sunsovereign', ['drought', 'infernaldominion', 'whitesmoke']]]) {
+					assert.deepEqual(Array.from(dex.getAbilityDisplayComponents(id)).sort(), expected.slice().sort(), id);
+				}
+				assert(dex.getAbilityEffects('sunsovereign').has('intimidate'));
+				assert(!dex.getAbilityEffects('pollenbloom').has('unaware'));
+			});
+
 			it('syncs mixed Poliwrath, Reservoir and Royal Scales components', () => {
 				const p = dex.species.get('Poliwrath');
 				assert.deepEqual(JSON.parse(JSON.stringify(p.abilities)), {0: 'Reservoir', 1: 'Knuckle Tide', H: 'Crosscurrent', S: 'Aevian Ascendance'});
 				assert.equal(p.baseStats.atk, 100);
-				assert.equal(p.baseStats.spa, 95);
-				assert.equal(p.bst, 560);
+				assert.equal(p.baseStats.spa, 80);
+				assert.equal(p.bst, 530);
 				assert(dex.abilities.get('Reservoir').exists);
 				for (const id of ['waterabsorb', 'gluttony']) assert(dex.getAbilityEffects('reservoir').has(id), id);
 				assert(!dex.getAbilityEffects('royalscales').has('selfsufficient'));
@@ -103,7 +114,7 @@ describe('Server data synchronization', () => {
 				assert.match(dex.abilities.get('malicewell').desc, /after the entire move finishes.*Protect, misses and immunity/);
 				assert.match(soul.desc, /30%.*burn|burn.*30%/);
 				assert(dex.abilities.get('soulpyre').exists);
-				assert.match(dex.abilities.get('soulpyre').shortDesc, /1\/8.*Ghost hits/);
+				assert.match(dex.abilities.get('soulpyre').shortDesc, /Infiltrator.*Ghost hits/);
 			});
 
 			if (process.env.PS_SERVER_SOURCE) it('matches every effective server display summary and full description', () => {

@@ -5,7 +5,7 @@ require('./battle.test');
 describe('Approved Fire Mane, Aqua Shell and Corona Furnace metadata', () => {
 	it('keeps Fire Mane Fire-only and Blazing Mane free of extra-hit components', () => {
 		assert(Dex.abilities.get('firemane').desc.includes('effective Fire'));
-		assert(Dex.getAbilityEffects('blazingmane').has('firemane'));
+		assert(Dex.getAbilityEffects('blazingmane').has('flashfire'));
 		assert(!Dex.getAbilityEffects('blazingmane').has('proficient'));
 		assert(Dex.abilities.get('blazingmane').desc.includes('1/4'));
 	});
@@ -17,7 +17,7 @@ describe('Approved Fire Mane, Aqua Shell and Corona Furnace metadata', () => {
 	});
 	it('publishes Fire/Electric Plasma Eruption with unchanged Mega stats/passive', () => {
 		const s = Dex.species.get('typhlosionmega'); assert.deepEqual(s.types, ['Fire', 'Electric']); assert.deepEqual(s.abilities, {0:'Plasma Eruption'}); assert.deepEqual(s.passives, ['proficient']);
-		assert.deepEqual(s.baseStats, {hp:83, atk:138, def:85, spa:139, spd:70, spe:130});
+		assert.deepEqual(s.baseStats, {hp:78, atk:127, def:78, spa:137, spd:85, spe:130});
 		const effects = Dex.getAbilityEffects('coronafurnace'); assert(effects.has('flamebody')); assert(!effects.has('moldbreaker')); assert(Dex.abilities.get('coronafurnace').desc.includes('Negative stages'));
 	});
 	it('uses shared Shed Skin recovery for Scrafty without changing its kit', () => {

@@ -5,8 +5,9 @@ require('./battle.test');
 const {BattlePokemonSearch} = new Function(fs.readFileSync('play.pokemonshowdown.com/js/battle-dex-search.js', 'utf8') + '\nreturn {BattlePokemonSearch};')();
 describe('Approved dancer Own Tempo UI metadata', () => {
  for (const id of ['ludicolo','oricorio','oricoriopompom','oricoriopau','oricoriosensu','quaquaval','lilligant','lilliganthisui','bellossom','meloetta','meloettapirouette']) it(id + ' exposes only its exact form passives', () => {
-  const s = Dex.species.get(id); assert.deepEqual(s.passives, id.startsWith('meloetta') ? ['serenegrace'] : id === 'quaquaval' ? ['torrent'] : id === 'ludicolo' ? ['raindish'] : ['owntempo']);
-  assert.equal(!!BattlePokemonSearch.prototype.filter.call({dex: Dex}, ['pokemon',id], [['ability','owntempo']]), id !== 'quaquaval' && id !== 'ludicolo' && !id.startsWith('meloetta'));
+  const expected = {ludicolo: 'raindish', quaquaval: 'torrent', bellossom: 'petalrhythm', meloetta: 'serenegrace', meloettapirouette: 'serenegrace'}[id] || 'owntempo';
+  assert.deepEqual(Dex.species.get(id).passives, [expected]);
+  assert.equal(!!BattlePokemonSearch.prototype.filter.call({dex: Dex}, ['pokemon',id], [['ability','owntempo']]), expected === 'owntempo');
  });
  it('publishes Rain Dish and retained Dancer/Hospitality without a ward', () => {
   assert.equal(Dex.species.get('ludicolo').abilities.H, 'Rain Revel');

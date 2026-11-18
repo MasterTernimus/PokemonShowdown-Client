@@ -10,7 +10,7 @@ const source = fs.readFileSync(path.join(__dirname, '../play.pokemonshowdown.com
 const {BattlePokemonSearch, DexSearch} = new Function(source + '\nreturn {BattlePokemonSearch, DexSearch};')();
 
 describe('Listed ability search', () => {
-	for (const [name, expected] of [['Charizard', true], ['Ekans', true], ['Arcanine-Hisui', true], ['Charizard-Gmax', true], ['Arcanine', true], ['Zubat', false], ['Abra', false], ['Raichu-Alola', false]]) {
+	for (const [name, expected] of [['Charizard', false], ['Ekans', true], ['Arcanine-Hisui', true], ['Charizard-Gmax', true], ['Arcanine', true], ['Zubat', false], ['Abra', false], ['Raichu-Alola', false]]) {
 		it(`Intimidate ${expected ? 'includes' : 'excludes'} ${name}`, () => {
 			const species = Dex.species.get(name);
 			for (const query of ['Intimidate', 'intimidate']) {
@@ -28,7 +28,7 @@ describe('Listed ability search', () => {
 	});
 	it('uses direct abilities for instant Pokemon results too', () => {
 		const rows = DexSearch.prototype.instafilter.call({dex: Dex}, 'pokemon', 'ability', 'intimidate');
-		assert(rows.some(row => row[0] === 'pokemon' && row[1] === 'charizard'));
+		assert(!rows.some(row => row[0] === 'pokemon' && row[1] === 'charizard'));
 		assert(rows.some(row => row[0] === 'pokemon' && row[1] === 'charizardgmax'));
 		assert(!rows.some(row => row[0] === 'pokemon' && ['zubat', 'abra'].includes(row[1])));
 	});

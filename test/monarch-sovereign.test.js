@@ -11,7 +11,7 @@ describe('Monarch and Sovereign presentation', () => {
 		assert.equal(Dex.abilities.get(name).id, id);
 		assert.equal(Dex.abilities.get(old).name, name);
 		assert.equal(Dex.abilities.get(name).name, name);
-		assert.match(Dex.abilities.get(name).desc, /All moves have 1.1x accuracy/);
+		assert.match(Dex.abilities.get(name).desc, id === 'pollenbloom' ? /Aroma Veil/ : /All moves have 1.1x accuracy/);
 	});
 	it('shows the added components and replacement effects', () => {
 		assert(!Dex.getAbilityDisplayComponents('atrocity').includes('toughclaws'));

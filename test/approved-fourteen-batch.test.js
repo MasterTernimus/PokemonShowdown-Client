@@ -4,8 +4,8 @@ describe('Approved October batch metadata',()=>{
  for(const [species,slot,id,components] of [
  ['hydreigon','1','worldbreaker',['berserk','duskilate']],
  ['slowkinggalar','1','eldritchremedy',['owntempo','curiousmedicine']],
- ['charizard','1','infernaldominion',['intimidate']],
- ['blastoise','H','hydraulicarmor',['stamina']],
+ ['charizard','1','rivalry',[]],
+ ['blastoise','H','raindish',[]],
  ['gengar','1','hauntingpresence',['levitate']],
  ['snorlax','1','slumberinggiant',['thickfat','comatose']],
  ['lapras','1','oceanlullaby',['shellarmor']],
@@ -14,7 +14,7 @@ describe('Approved October batch metadata',()=>{
  ['flygon','0','miragedrift',['overcoat']],
  ['delphox','H','voidguile',['magician']],
  ['garchomp','H','voidwrath',['moldbreaker']],
- ['venusaur','1','soothingbouquet',['friendguard','infiltrator']],
+ ['venusaur','1','unaware',[]],
  ])it(species+' distribution, components and descriptions',()=>{
  const a=Dex.abilities.get(id);assert.equal(Dex.species.get(species).abilities[slot],species==='slowkinggalar'?'Own Tempo':a.name);
  if(species==='slowkinggalar')assert.deepEqual(Dex.species.get(species).passives,['eldritchremedy']);

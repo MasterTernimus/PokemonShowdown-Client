@@ -14,7 +14,7 @@ describe('Field audit preview regressions',()=>{
   assert.equal(evaluate('burningterrain','hydrovortex').factor,1.3);
  });
  it('shows current Magma Armor Eclipse effects in base and composite descriptions',()=>{
-  for(const id of ['magmaarmor','unboundblaze','burningspirit','blazingtempo','hisuianresolve','sunsovereign','burningcrown','calderacore','burningego']){
+  for(const id of ['magmaarmor','unboundblaze','burningspirit','blazingtempo','hisuianresolve','burningcrown','calderacore','burningego']){
    const desc=Dex.abilities.get(id).desc;
    assert.match(desc,/Dragon(?:'s)? Den and Infernal Eclipse block Fire moves/,id);
    assert.match(desc,/Volcanic (?:or|and) Infernal Eclipse entry/,id);

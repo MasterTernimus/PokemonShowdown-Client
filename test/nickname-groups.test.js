@@ -57,7 +57,7 @@ const context = {window: {}, jQuery() {}, Dex, toID, BattleLog: {escapeHTML}};
 vm.runInNewContext(fs.readFileSync('play.pokemonshowdown.com/js/search.js', 'utf8'), context);
 const search = context.window.BattleSearch.prototype;
 describe('Compact picker information parity', () => {
- for (const [name, bst] of [['Nidoqueen', 570], ['Alomomola', 470], ['Ampharos-Aevian', 530]]) {
+ for (const [name, bst] of [['Nidoqueen', 550], ['Alomomola', 470], ['Ampharos-Aevian', 530]]) {
   it('retains all stats, abilities, passive help and selection for ' + name, () => {
    const species = Dex.species.get(name), html = search.renderPokemonRow.call({}, species, 0, 0, '', '');
    assert(html.includes('data-entry="pokemon|' + name + '"'));

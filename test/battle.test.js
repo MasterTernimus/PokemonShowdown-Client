@@ -837,8 +837,8 @@ describe('Team Builder sprites', () => {
 	});
 
 	it('shows the added composite ability effects', () => {
-		assert.match(Dex.abilities.get('Pollen Bloom').desc, /Ignores the foe's Defense/);
-		assert(Dex.getAbilityEffects('pollenbloom').has('unaware'));
+		assert.match(Dex.abilities.get('Pollen Bloom').desc, /Aroma Veil protects/);
+		assert(Dex.getAbilityEffects('pollenbloom').has('aromaveil'));
 		assert.match(Dex.abilities.get('Territorial').desc, /Opposing hits heal 1.16 HP; the first each turn raises Defense/);
 		assert.match(Dex.abilities.get('Lunar Dread').desc, /sleep/i);
 		assert(Dex.abilities.get('Dishearten').exists);

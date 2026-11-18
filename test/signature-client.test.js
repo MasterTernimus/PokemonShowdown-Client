@@ -13,7 +13,7 @@ describe('Approved signature client parity', () => {
 		assert.equal(Dex.species.get('magcargo').bst, 540);
 		for (const id of ['charizardmegax', 'charizardmegaxalt']) {
 			assert.equal(Dex.species.get(id).baseStats.atk, 130);
-			assert.equal(Dex.species.get(id).baseStats.spa, 125);
+			assert.equal(Dex.species.get(id).baseStats.spa, 131);
 		}
 		assert(!Dex.getAbilityEffects('atrocity').has('toughclaws'));assert(Dex.getAbilityEffects('atrocity').has('fireward'));
 		assert(!Dex.getAbilityEffects('atrocity').has('levitate'));
@@ -36,7 +36,7 @@ describe('Approved signature client parity', () => {
 				const value = () => tips.getMoveBasePower(move, move.type,
 					new ModifiableValue(battle, pokemon, own), battle.p2.active[0]).value;
 				assert(Math.abs(value() - move.basePower * multiplier) < 1e-9);
-				if (ability !== 'Atrocity') {pokemon.volatiles.gastroacid = ['gastroacid']; assert.equal(value(), move.basePower);} else {assert(Dex.abilities.get('atrocity').flags.cantsuppress);}
+				if (ability !== 'Atrocity') {pokemon.volatiles.gastroacid = ['gastroacid']; assert.equal(value(), move.basePower);} else {assert(!Dex.abilities.get('atrocity').flags.cantsuppress);}
 				delete pokemon.volatiles.gastroacid;
 			}
 			own.ability = 'Rimebreaker'; own.baseAbility = 'Rimebreaker';

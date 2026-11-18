@@ -7,10 +7,10 @@ describe('Lycanroc and Qwilfish client parity',()=>{
   const actual=Dex.abilities.get(id),raw=require('../play.pokemonshowdown.com/data/abilities').BattleAbilities[id];
   assert(actual.exists);for(const key of ['desc','shortDesc']){assert.equal(actual[key],expected[key]);assert.equal(raw[key],expected[key]);}
  });
- it('Qwilfish has Spiny Hide, without Toxic Debris or changes to the Hisui line',()=>{
+ it('Qwilfish has Spiny Hide and its Hisuian form has Iron Barbs',()=>{
   assert.deepEqual(Dex.species.get('qwilfish').passives,['spinyhide']);
   assert.deepEqual(require('../play.pokemonshowdown.com/data/pokedex').BattlePokedex.qwilfish.passives,['spinyhide']);
   const effects=Dex.getAbilityEffects('spinyhide');assert(effects.has('roughskin'));assert(effects.has('poisonpoint'));assert(!effects.has('toxicdebris'));
-  assert.deepEqual(Dex.species.get('qwilfishhisui').passives,[]);assert.deepEqual(Dex.species.get('overqwil').passives,['aftermath']);
+  assert.deepEqual(Dex.species.get('qwilfishhisui').passives,['ironbarbs']);assert.deepEqual(Dex.species.get('overqwil').passives,['aftermath']);
  });
 });

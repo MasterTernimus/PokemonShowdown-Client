@@ -1,61 +1,36 @@
 {
-	"sourceHead": "44d1a73752bfe3303194527e98f5b3647d59a746",
-	"base": "9f9b01c401438bd81d9a293c128c2aea78b1b803",
-	"builtSourceFingerprint": "440b39a3df466b0db3e0736e5c12ade12692e704f2dbc80dab8a1da3ce3645d7",
-	"sourceDataSHA256": "0da54c4deed26e7f48a0897d910697df79fca3f800061f17a07c783fbb0cad4f",
+	"sourceHead": "a382a24e84eab5c7f8359e1fff103ca70bab6870",
+	"base": "44d1a73752bfe3303194527e98f5b3647d59a746",
+	"builtSourceFingerprint": "24cf3787a39746a353d903f0aa327b3ba3478c1140cfe174a2aa95eb9dd8bbb1",
+	"sourceDataSHA256": "e03cee344a38c9c2a0ad3dbdb1809c434f6a596c0e3bad57458341da10f82a79",
 	"files": [
 		"data/abilities.ts",
 		"data/ability-components.ts",
-		"data/ability-descriptions.ts",
-		"data/ability-display-summaries.ts",
-		"data/ability-prose-audit.ts",
+		"data/ability-display.ts",
 		"data/aliases.ts",
-		"data/audit-cleanup-approved.ts",
-		"data/audit-reworks-approved.ts",
-		"data/bone-spoils-infernal-approved.ts",
-		"data/combat-sequences.ts",
-		"data/concise-ability-descriptions.ts",
-		"data/current-ability-description-cleanup.ts",
-		"data/eclipse-abilities.ts",
-		"data/field-guide-index.json",
-		"data/field-guide-presentation.ts",
-		"data/field-guide-reference-details.ts",
-		"data/field-guide-reviewed-reference-data.ts",
-		"data/field-guide.ts",
-		"data/field-setter-reductions.ts",
-		"data/garchomp-poise-approved.ts",
-		"data/gmax-passive-data.ts",
-		"data/gmax-passive-descriptions.ts",
-		"data/jackpot-salvation.ts",
+		"data/alien-genome.ts",
+		"data/conditions.ts",
+		"data/eeveelution-cloyster-approved.ts",
+		"data/goodra-armor-reworks.ts",
+		"data/lake-guardians.ts",
 		"data/learnsets.ts",
 		"data/malignant-light-pinsir.ts",
+		"data/mime-aim-approved.ts",
 		"data/moves.ts",
 		"data/nov16-balance-descriptions.ts",
 		"data/nov16-movepool-removals.ts",
+		"data/nov18-abilities.ts",
+		"data/nov18-roster.ts",
 		"data/ordinary-approved-reductions.ts",
-		"data/passive-ability-cleanup.ts",
 		"data/pokedex.ts",
-		"data/primeval-fossils.ts",
-		"data/public-field-guide-shared.ts",
-		"data/public-field-guide.ts",
-		"data/queued-abilities-approved.ts",
-		"data/raging-crowns-approved.ts",
-		"data/reborn-character-moves.ts",
-		"data/rejuvenation-advanced-moves.ts",
-		"data/rival-support-descriptions.ts",
-		"data/selected-mega-simplification-data.ts",
-		"data/selected-mega-simplifications.ts",
-		"data/signature-move-summaries.ts",
+		"data/relic-beam.ts",
+		"data/roster-expansion-wave2.ts",
 		"data/signature-passive-data.ts",
+		"data/sky-sea-land.ts",
 		"data/species-passives.ts",
-		"data/terrains.ts",
+		"data/stat-balance-approved.ts",
 		"data/text/abilities.ts",
-		"data/text/moves.ts",
-		"data/ultra-instinct-description.ts",
-		"data/ultra-instinct-rework.ts",
-		"data/yang-bonus-descriptions.ts",
-		"data/yang-field-context.ts",
-		"data/yang-signature-moves-b.ts",
+		"data/tower-and-forest.ts",
 		"sim/dex-species.ts"
 	],
 	"deletedFiles": [],
@@ -204,7 +179,16 @@
 			],
 			"racingspirit": [
 				"rockhead",
-				"limber"
+				"flashfire"
+			],
+			"soulforgedarmor": [
+				"flashfire"
+			],
+			"soulsiphon": [
+				"flashfire"
+			],
+			"soulpyre": [
+				"infiltrator"
 			],
 			"tirelessmuscle": [
 				"innerfocus"
@@ -219,6 +203,15 @@
 			"abyssalrebirth": [
 				"levitate",
 				"hydrabond"
+			],
+			"giftofknowledge": [
+				"levitate"
+			],
+			"giftofemotion": [
+				"levitate"
+			],
+			"giftofwill": [
+				"levitate"
 			],
 			"absolutepressure": [
 				"pressure",
@@ -273,6 +266,10 @@
 			],
 			"malignantlight": [
 				"illuminate"
+			],
+			"doublestrike": [
+				"skilllink",
+				"technician"
 			],
 			"rivalresolve": [
 				"poisonheal"
@@ -400,8 +397,7 @@
 			"sunsovereign": [
 				"proficient",
 				"moldbreaker",
-				"selfsufficient",
-				"intimidate"
+				"selfsufficient"
 			],
 			"burningcrown": [
 				"proficient",
@@ -1301,7 +1297,7 @@
 			},
 			"astralcore": {
 				"passive": "purepower",
-				"desc": "On switching out, cures its major status and heals 1/8 max HP if it had a status to cure. Bewitched Woods also cures its status at turn end. Prevents other Pokemon's accuracy drops and ignores evasion boosts. Reveals opposing Illusions on activation. Mirror Arena entry lowers foes' accuracy by 1. Starlight Arena entry gives +2 Sp. Atk and puts Spotlight on its first adjacent ally. Special moves in the /relicbeam move list use the target’s lower Defense or Sp. Def. They still use the holder’s Sp. Atk and retain their type, category and other effects. This effect adds no power multiplier.",
+				"desc": "On switching out, cures its major status and heals 1/8 max HP if it had a status to cure. Bewitched Woods also cures its status at turn end. Prevents other Pokemon's accuracy drops and ignores evasion boosts. Reveals opposing Illusions on activation. Mirror Arena entry lowers foes' accuracy by 1. Starlight Arena entry gives +2 Sp. Atk and puts Spotlight on its first adjacent ally. Lumina Crash, special Photon Geyser and special moves in the /relicbeam list use the target’s lower Defense or Sp. Def. They still use the holder’s Sp. Atk and retain their type, category and other effects. This effect adds no power multiplier.",
 				"shortDesc": "Natural Cure + Malignant Light."
 			},
 			"woolyconductor": {
@@ -2495,7 +2491,7 @@
 			"ambipom": {
 				"abilities": {
 					"0": "Whiplash",
-					"1": "Double Strike",
+					"1": "Pickup",
 					"H": "Scrappy"
 				},
 				"baseStats": {
@@ -2511,7 +2507,7 @@
 					"Fighting"
 				],
 				"passives": [
-					"pickup"
+					"doublestrike"
 				],
 				"replaceAbilities": true
 			},
@@ -2926,7 +2922,7 @@
 					"Fire"
 				],
 				"passives": [
-					"guarddog"
+					"flashfire"
 				],
 				"replaceAbilities": true
 			},
@@ -2972,7 +2968,7 @@
 					"Fire"
 				],
 				"passives": [
-					"guarddog"
+					"flashfire"
 				],
 				"replaceAbilities": true
 			},
@@ -2997,7 +2993,7 @@
 			"arcaninehisui": {
 				"abilities": {
 					"0": "Intimidate",
-					"1": "Stamina",
+					"1": "Sturdy",
 					"H": "Hisuian Resolve",
 					"S": "Battle Bond"
 				},
@@ -3014,7 +3010,7 @@
 					"Rock"
 				],
 				"passives": [
-					"sturdy"
+					"flashfire"
 				],
 				"replaceAbilities": true
 			},
@@ -3669,7 +3665,7 @@
 			"articuno": {
 				"abilities": {
 					"0": "Winter Herald",
-					"1": "Winter Refuge",
+					"1": "Soundproof",
 					"H": "Mirror Armor"
 				},
 				"baseStats": {
@@ -3942,7 +3938,9 @@
 			},
 			"azelf": {
 				"abilities": {
-					"0": "Levitate"
+					"0": "Mold Breaker",
+					"1": "Vital Spirit",
+					"H": "Valor Seal"
 				},
 				"baseStats": {
 					"hp": 75,
@@ -3955,7 +3953,9 @@
 				"types": [
 					"Psychic"
 				],
-				"passives": [],
+				"passives": [
+					"giftofwill"
+				],
 				"replaceAbilities": true
 			},
 			"azumarill": {
@@ -4583,7 +4583,7 @@
 					"Grass"
 				],
 				"passives": [
-					"owntempo"
+					"petalrhythm"
 				],
 				"replaceAbilities": true
 			},
@@ -4762,14 +4762,14 @@
 				"abilities": {
 					"0": "Tidal Monarch",
 					"1": "Bulletproof",
-					"H": "Hydraulic Armor"
+					"H": "Rain Dish"
 				},
 				"baseStats": {
-					"hp": 89,
-					"atk": 80,
-					"def": 95,
-					"spa": 100,
-					"spd": 108,
+					"hp": 79,
+					"atk": 83,
+					"def": 105,
+					"spa": 85,
+					"spd": 105,
 					"spe": 78
 				},
 				"types": [
@@ -4787,10 +4787,10 @@
 				},
 				"baseStats": {
 					"hp": 145,
-					"atk": 80,
-					"def": 95,
-					"spa": 100,
-					"spd": 108,
+					"atk": 83,
+					"def": 100,
+					"spa": 85,
+					"spd": 105,
 					"spe": 78
 				},
 				"types": [
@@ -4807,11 +4807,11 @@
 					"0": "Bombardment"
 				},
 				"baseStats": {
-					"hp": 89,
-					"atk": 90,
-					"def": 135,
+					"hp": 79,
+					"atk": 103,
+					"def": 125,
 					"spa": 135,
-					"spd": 123,
+					"spd": 115,
 					"spe": 78
 				},
 				"types": [
@@ -4834,7 +4834,7 @@
 					"atk": 120,
 					"def": 70,
 					"spa": 110,
-					"spd": 70,
+					"spd": 75,
 					"spe": 80
 				},
 				"types": [
@@ -4855,7 +4855,7 @@
 					"atk": 160,
 					"def": 80,
 					"spa": 130,
-					"spd": 80,
+					"spd": 85,
 					"spe": 100
 				},
 				"types": [
@@ -5701,11 +5701,11 @@
 				},
 				"baseStats": {
 					"hp": 75,
-					"atk": 160,
+					"atk": 145,
 					"def": 70,
 					"spa": 90,
 					"spd": 70,
-					"spe": 90
+					"spe": 85
 				},
 				"types": [
 					"Grass",
@@ -5724,11 +5724,11 @@
 				},
 				"baseStats": {
 					"hp": 75,
-					"atk": 160,
+					"atk": 145,
 					"def": 70,
 					"spa": 90,
 					"spd": 70,
-					"spe": 90
+					"spe": 85
 				},
 				"types": [
 					"Grass",
@@ -6243,7 +6243,9 @@
 			},
 			"celebi": {
 				"abilities": {
-					"0": "Natural Cure"
+					"0": "Ilex Shrine",
+					"1": "Voice of Tomorrow",
+					"H": "Time Slip"
 				},
 				"baseStats": {
 					"hp": 100,
@@ -6258,7 +6260,7 @@
 					"Grass"
 				],
 				"passives": [
-					"healer"
+					"naturalrecovery"
 				],
 				"replaceAbilities": true
 			},
@@ -6397,7 +6399,7 @@
 			},
 			"chandelure": {
 				"abilities": {
-					"0": "Soul Siphon",
+					"0": "Infiltrator",
 					"1": "Soul Pyre",
 					"H": "Malice Well",
 					"S": "Soul Fire"
@@ -6415,7 +6417,7 @@
 					"Fire"
 				],
 				"passives": [
-					"infiltrator"
+					"soulsiphon"
 				],
 				"replaceAbilities": true
 			},
@@ -6505,15 +6507,15 @@
 			"charizard": {
 				"abilities": {
 					"0": "Blazing Monarch",
-					"1": "Infernal Dominion",
+					"1": "Rivalry",
 					"H": "Solar Power"
 				},
 				"baseStats": {
 					"hp": 78,
-					"atk": 109,
-					"def": 75,
-					"spa": 114,
-					"spd": 78,
+					"atk": 84,
+					"def": 78,
+					"spa": 110,
+					"spd": 85,
 					"spe": 100
 				},
 				"types": [
@@ -6528,15 +6530,15 @@
 			"charizardalt": {
 				"abilities": {
 					"0": "Blazing Monarch",
-					"1": "Infernal Dominion",
+					"1": "Rivalry",
 					"H": "Solar Power"
 				},
 				"baseStats": {
 					"hp": 78,
-					"atk": 109,
-					"def": 75,
-					"spa": 114,
-					"spd": 78,
+					"atk": 84,
+					"def": 78,
+					"spa": 110,
+					"spd": 85,
 					"spe": 100
 				},
 				"types": [
@@ -6554,10 +6556,10 @@
 				},
 				"baseStats": {
 					"hp": 133,
-					"atk": 109,
-					"def": 75,
-					"spa": 114,
-					"spd": 78,
+					"atk": 84,
+					"def": 78,
+					"spa": 109,
+					"spd": 85,
 					"spe": 100
 				},
 				"types": [
@@ -6576,10 +6578,10 @@
 				"baseStats": {
 					"hp": 78,
 					"atk": 130,
-					"def": 110,
-					"spa": 125,
-					"spd": 106,
-					"spe": 105
+					"def": 111,
+					"spa": 131,
+					"spd": 85,
+					"spe": 100
 				},
 				"types": [
 					"Fire",
@@ -6597,10 +6599,10 @@
 				"baseStats": {
 					"hp": 78,
 					"atk": 130,
-					"def": 110,
-					"spa": 125,
-					"spd": 106,
-					"spe": 105
+					"def": 111,
+					"spa": 131,
+					"spd": 85,
+					"spe": 100
 				},
 				"types": [
 					"Fire",
@@ -6617,11 +6619,11 @@
 				},
 				"baseStats": {
 					"hp": 78,
-					"atk": 90,
-					"def": 100,
+					"atk": 104,
+					"def": 78,
 					"spa": 160,
-					"spd": 116,
-					"spe": 110
+					"spd": 115,
+					"spe": 100
 				},
 				"types": [
 					"Fire",
@@ -6787,7 +6789,7 @@
 					"atk": 107,
 					"def": 122,
 					"spa": 74,
-					"spd": 75,
+					"spd": 80,
 					"spe": 64
 				},
 				"types": [
@@ -6808,7 +6810,7 @@
 					"atk": 137,
 					"def": 172,
 					"spa": 74,
-					"spd": 115,
+					"spd": 120,
 					"spe": 44
 				},
 				"types": [
@@ -7172,7 +7174,7 @@
 				},
 				"baseStats": {
 					"hp": 80,
-					"atk": 116,
+					"atk": 121,
 					"def": 75,
 					"spa": 65,
 					"spd": 75,
@@ -7212,7 +7214,7 @@
 				},
 				"baseStats": {
 					"hp": 80,
-					"atk": 146,
+					"atk": 151,
 					"def": 95,
 					"spa": 75,
 					"spd": 85,
@@ -7521,7 +7523,7 @@
 					"Fire"
 				],
 				"passives": [
-					"overcoat"
+					"flashfire"
 				],
 				"replaceAbilities": true
 			},
@@ -7542,7 +7544,7 @@
 					"Fire"
 				],
 				"passives": [
-					"flamebody"
+					"flashfire"
 				],
 				"replaceAbilities": true
 			},
@@ -8817,7 +8819,7 @@
 					"def": 80,
 					"spa": 85,
 					"spd": 90,
-					"spe": 100
+					"spe": 85
 				},
 				"types": [
 					"Grass",
@@ -8840,7 +8842,7 @@
 					"def": 80,
 					"spa": 85,
 					"spd": 90,
-					"spe": 100
+					"spe": 85
 				},
 				"types": [
 					"Grass",
@@ -8863,7 +8865,7 @@
 					"def": 80,
 					"spa": 80,
 					"spd": 85,
-					"spe": 95
+					"spe": 80
 				},
 				"types": [
 					"Grass",
@@ -8886,7 +8888,7 @@
 					"def": 80,
 					"spa": 80,
 					"spd": 85,
-					"spe": 95
+					"spe": 80
 				},
 				"types": [
 					"Grass",
@@ -9080,7 +9082,7 @@
 					"hp": 75,
 					"atk": 69,
 					"def": 72,
-					"spa": 114,
+					"spa": 115,
 					"spd": 100,
 					"spe": 104
 				},
@@ -9101,7 +9103,7 @@
 					"hp": 75,
 					"atk": 69,
 					"def": 72,
-					"spa": 159,
+					"spa": 160,
 					"spd": 125,
 					"spe": 134
 				},
@@ -9116,25 +9118,31 @@
 			},
 			"deoxys": {
 				"abilities": {
-					"0": "Pressure"
+					"0": "Synchronize",
+					"1": "Clear Body",
+					"H": "Alien Genome"
 				},
 				"baseStats": {
 					"hp": 50,
-					"atk": 150,
-					"def": 50,
-					"spa": 150,
-					"spd": 50,
-					"spe": 150
+					"atk": 120,
+					"def": 90,
+					"spa": 120,
+					"spd": 90,
+					"spe": 130
 				},
 				"types": [
 					"Psychic"
 				],
-				"passives": [],
+				"passives": [
+					"pressure"
+				],
 				"replaceAbilities": true
 			},
 			"deoxysattack": {
 				"abilities": {
-					"0": "Pressure"
+					"0": "Inner Focus",
+					"1": "Download",
+					"H": "Alien Genome"
 				},
 				"baseStats": {
 					"hp": 50,
@@ -9147,12 +9155,16 @@
 				"types": [
 					"Psychic"
 				],
-				"passives": [],
+				"passives": [
+					"pressure"
+				],
 				"replaceAbilities": true
 			},
 			"deoxysdefense": {
 				"abilities": {
-					"0": "Pressure"
+					"0": "Sturdy",
+					"1": "Shell Armor",
+					"H": "Alien Genome"
 				},
 				"baseStats": {
 					"hp": 50,
@@ -9165,12 +9177,16 @@
 				"types": [
 					"Psychic"
 				],
-				"passives": [],
+				"passives": [
+					"pressure"
+				],
 				"replaceAbilities": true
 			},
 			"deoxysspeed": {
 				"abilities": {
-					"0": "Pressure"
+					"0": "Infiltrator",
+					"1": "Limber",
+					"H": "Alien Genome"
 				},
 				"baseStats": {
 					"hp": 50,
@@ -9183,7 +9199,9 @@
 				"types": [
 					"Psychic"
 				],
-				"passives": [],
+				"passives": [
+					"pressure"
+				],
 				"replaceAbilities": true
 			},
 			"dewgong": {
@@ -9582,9 +9600,10 @@
 			},
 			"donphan": {
 				"abilities": {
-					"0": "Aevian Frost",
+					"0": "Sturdy",
 					"1": "Rolling Fortress",
-					"H": "Siege Tusks"
+					"H": "Siege Tusks",
+					"S": "Aevian Frost"
 				},
 				"baseStats": {
 					"hp": 90,
@@ -10207,9 +10226,9 @@
 			},
 			"druddigon": {
 				"abilities": {
-					"0": "Solar Recharge",
-					"1": "Cavern Drake",
-					"H": "Rough Scale",
+					"0": "Sheer Force",
+					"1": "Mold Breaker",
+					"H": "Basking Scales",
 					"S": "Aevian Bolt"
 				},
 				"baseStats": {
@@ -10512,11 +10531,12 @@
 			},
 			"dusclops": {
 				"abilities": {
-					"0": "Pressure",
-					"H": "Frisk"
+					"0": "Frisk",
+					"1": "Cursed Body",
+					"H": "Misaligned Stars"
 				},
 				"baseStats": {
-					"hp": 40,
+					"hp": 55,
 					"atk": 70,
 					"def": 130,
 					"spa": 60,
@@ -10527,7 +10547,7 @@
 					"Ghost"
 				],
 				"passives": [
-					"unnerve"
+					"pressure"
 				],
 				"replaceAbilities": true
 			},
@@ -10881,7 +10901,7 @@
 			},
 			"electabuzz": {
 				"abilities": {
-					"0": "Static",
+					"0": "Motor Drive",
 					"1": "Vital Spirit",
 					"H": "Electromorphosis"
 				},
@@ -10896,7 +10916,9 @@
 				"types": [
 					"Electric"
 				],
-				"passives": [],
+				"passives": [
+					"static"
+				],
 				"replaceAbilities": true
 			},
 			"electivire": {
@@ -11080,7 +11102,7 @@
 					"hp": 110,
 					"atk": 123,
 					"def": 75,
-					"spa": 80,
+					"spa": 87,
 					"spd": 75,
 					"spe": 65
 				},
@@ -11103,7 +11125,7 @@
 					"hp": 110,
 					"atk": 123,
 					"def": 75,
-					"spa": 80,
+					"spa": 87,
 					"spd": 75,
 					"spe": 65
 				},
@@ -11126,7 +11148,7 @@
 					"hp": 110,
 					"atk": 123,
 					"def": 75,
-					"spa": 80,
+					"spa": 87,
 					"spd": 75,
 					"spe": 65
 				},
@@ -11147,7 +11169,7 @@
 					"hp": 110,
 					"atk": 150,
 					"def": 93,
-					"spa": 85,
+					"spa": 92,
 					"spd": 115,
 					"spe": 75
 				},
@@ -11168,7 +11190,7 @@
 					"hp": 110,
 					"atk": 150,
 					"def": 93,
-					"spa": 85,
+					"spa": 92,
 					"spd": 115,
 					"spe": 75
 				},
@@ -11189,7 +11211,7 @@
 					"hp": 110,
 					"atk": 150,
 					"def": 93,
-					"spa": 85,
+					"spa": 92,
 					"spd": 115,
 					"spe": 75
 				},
@@ -11210,7 +11232,7 @@
 					"hp": 110,
 					"atk": 150,
 					"def": 93,
-					"spa": 85,
+					"spa": 92,
 					"spd": 115,
 					"spe": 75
 				},
@@ -11233,7 +11255,7 @@
 					"hp": 110,
 					"atk": 123,
 					"def": 75,
-					"spa": 80,
+					"spa": 87,
 					"spd": 75,
 					"spe": 65
 				},
@@ -11867,7 +11889,7 @@
 			"feraligatr": {
 				"abilities": {
 					"0": "Water Veil",
-					"1": "Mighty Jaw",
+					"1": "Tidal Awakening",
 					"H": "Sheer Force"
 				},
 				"baseStats": {
@@ -11875,7 +11897,7 @@
 					"atk": 109,
 					"def": 100,
 					"spa": 59,
-					"spd": 93,
+					"spd": 89,
 					"spe": 78
 				},
 				"types": [
@@ -11917,7 +11939,7 @@
 					"atk": 164,
 					"def": 125,
 					"spa": 59,
-					"spd": 108,
+					"spd": 104,
 					"spe": 83
 				},
 				"types": [
@@ -12575,16 +12597,16 @@
 			},
 			"forretress": {
 				"abilities": {
-					"0": "Overcoat",
+					"0": "Sturdy",
 					"1": "Heatproof",
-					"H": "Aftermath"
+					"H": "Ballast Plating"
 				},
 				"baseStats": {
-					"hp": 75,
-					"atk": 100,
-					"def": 140,
+					"hp": 85,
+					"atk": 105,
+					"def": 145,
 					"spa": 60,
-					"spd": 80,
+					"spd": 85,
 					"spe": 20
 				},
 				"types": [
@@ -12592,7 +12614,7 @@
 					"Steel"
 				],
 				"passives": [
-					"shellarmor"
+					"splintershell"
 				],
 				"replaceAbilities": true
 			},
@@ -12698,8 +12720,8 @@
 			"froslass": {
 				"abilities": {
 					"0": "Haunting Veil",
-					"1": "Ice Mirror",
-					"H": "Wailing Snow",
+					"1": "Ice Body",
+					"H": "Insomnia",
 					"S": "Bad Seeds"
 				},
 				"baseStats": {
@@ -13316,7 +13338,7 @@
 					"Ground"
 				],
 				"passives": [
-					"roughskin"
+					"serratedscales"
 				],
 				"replaceAbilities": true
 			},
@@ -15457,7 +15479,9 @@
 			},
 			"groudon": {
 				"abilities": {
-					"0": "Drought"
+					"0": "Battle Armor",
+					"1": "White Smoke",
+					"H": "Mantle Fracture"
 				},
 				"baseStats": {
 					"hp": 100,
@@ -15470,12 +15494,14 @@
 				"types": [
 					"Ground"
 				],
-				"passives": [],
+				"passives": [
+					"drought"
+				],
 				"replaceAbilities": true
 			},
 			"groudonprimal": {
 				"abilities": {
-					"0": "Desolate Land"
+					"0": "Continental Rupture"
 				},
 				"baseStats": {
 					"hp": 100,
@@ -15489,7 +15515,9 @@
 					"Ground",
 					"Fire"
 				],
-				"passives": [],
+				"passives": [
+					"desolateland"
+				],
 				"replaceAbilities": true
 			},
 			"grovyle": {
@@ -16060,7 +16088,7 @@
 					"Steel"
 				],
 				"passives": [
-					"gluttony"
+					"flashfire"
 				],
 				"replaceAbilities": true
 			},
@@ -16406,8 +16434,9 @@
 			},
 			"hooh": {
 				"abilities": {
-					"0": "Pressure",
-					"H": "Regenerator"
+					"0": "Rainbow Wing Canticle",
+					"1": "Clear Bell Echo",
+					"H": "Burned Tower Oath"
 				},
 				"baseStats": {
 					"hp": 106,
@@ -16422,7 +16451,7 @@
 					"Flying"
 				],
 				"passives": [
-					"bigpecks"
+					"regenerator"
 				],
 				"replaceAbilities": true
 			},
@@ -16529,9 +16558,9 @@
 			},
 			"houndoom": {
 				"abilities": {
-					"0": "Flash Fire",
-					"1": "Infiltrator",
-					"H": "Battle Fervor"
+					"0": "Agony Flame",
+					"1": "Insomnia",
+					"H": "Unnerve"
 				},
 				"baseStats": {
 					"hp": 75,
@@ -16546,7 +16575,7 @@
 					"Fire"
 				],
 				"passives": [
-					"agonyflame"
+					"flashfire"
 				],
 				"replaceAbilities": true
 			},
@@ -16981,7 +17010,7 @@
 					"hp": 70,
 					"atk": 85,
 					"def": 65,
-					"spa": 125,
+					"spa": 130,
 					"spd": 65,
 					"spe": 120
 				},
@@ -18358,7 +18387,9 @@
 			},
 			"kyogre": {
 				"abilities": {
-					"0": "Drizzle"
+					"0": "Rain Dish",
+					"1": "Water Veil",
+					"H": "Trench Current"
 				},
 				"baseStats": {
 					"hp": 100,
@@ -18371,12 +18402,14 @@
 				"types": [
 					"Water"
 				],
-				"passives": [],
+				"passives": [
+					"drizzle"
+				],
 				"replaceAbilities": true
 			},
 			"kyogreprimal": {
 				"abilities": {
-					"0": "Primordial Sea"
+					"0": "Abyssal Deluge"
 				},
 				"baseStats": {
 					"hp": 100,
@@ -18389,7 +18422,9 @@
 				"types": [
 					"Water"
 				],
-				"passives": [],
+				"passives": [
+					"primordialsea"
+				],
 				"replaceAbilities": true
 			},
 			"kyurem": {
@@ -18586,10 +18621,10 @@
 				"baseStats": {
 					"hp": 130,
 					"atk": 85,
-					"def": 90,
-					"spa": 95,
-					"spd": 105,
-					"spe": 65
+					"def": 80,
+					"spa": 85,
+					"spd": 95,
+					"spe": 60
 				},
 				"types": [
 					"Water",
@@ -18608,10 +18643,10 @@
 				},
 				"baseStats": {
 					"hp": 130,
-					"atk": 100,
-					"def": 90,
+					"atk": 85,
+					"def": 80,
 					"spa": 85,
-					"spd": 105,
+					"spd": 95,
 					"spe": 60
 				},
 				"types": [
@@ -18629,10 +18664,10 @@
 				},
 				"baseStats": {
 					"hp": 195,
-					"atk": 100,
-					"def": 90,
+					"atk": 85,
+					"def": 80,
 					"spa": 85,
-					"spd": 105,
+					"spd": 95,
 					"spe": 60
 				},
 				"types": [
@@ -18653,10 +18688,10 @@
 				"baseStats": {
 					"hp": 130,
 					"atk": 85,
-					"def": 90,
-					"spa": 95,
-					"spd": 105,
-					"spe": 65
+					"def": 80,
+					"spa": 85,
+					"spd": 95,
+					"spe": 60
 				},
 				"types": [
 					"Water",
@@ -18674,10 +18709,10 @@
 				"baseStats": {
 					"hp": 195,
 					"atk": 85,
-					"def": 90,
-					"spa": 95,
-					"spd": 105,
-					"spe": 65
+					"def": 80,
+					"spa": 85,
+					"spd": 95,
+					"spe": 60
 				},
 				"types": [
 					"Water",
@@ -18730,7 +18765,9 @@
 			},
 			"latias": {
 				"abilities": {
-					"0": "Levitate"
+					"0": "Synchronize",
+					"1": "Healer",
+					"H": "Mistwing Veil"
 				},
 				"baseStats": {
 					"hp": 80,
@@ -18744,12 +18781,14 @@
 					"Dragon",
 					"Psychic"
 				],
-				"passives": [],
+				"passives": [
+					"levitate"
+				],
 				"replaceAbilities": true
 			},
 			"latiasmega": {
 				"abilities": {
-					"0": "Levitate"
+					"0": "Eon Sanctuary"
 				},
 				"baseStats": {
 					"hp": 80,
@@ -18763,12 +18802,16 @@
 					"Dragon",
 					"Psychic"
 				],
-				"passives": [],
+				"passives": [
+					"levitate"
+				],
 				"replaceAbilities": true
 			},
 			"latios": {
 				"abilities": {
-					"0": "Levitate"
+					"0": "Inner Focus",
+					"1": "Competitive",
+					"H": "Mistwing Lance"
 				},
 				"baseStats": {
 					"hp": 80,
@@ -18782,12 +18825,14 @@
 					"Dragon",
 					"Psychic"
 				],
-				"passives": [],
+				"passives": [
+					"levitate"
+				],
 				"replaceAbilities": true
 			},
 			"latiosmega": {
 				"abilities": {
-					"0": "Levitate"
+					"0": "Eon Onslaught"
 				},
 				"baseStats": {
 					"hp": 80,
@@ -18801,7 +18846,9 @@
 					"Dragon",
 					"Psychic"
 				],
-				"passives": [],
+				"passives": [
+					"levitate"
+				],
 				"replaceAbilities": true
 			},
 			"leafeon": {
@@ -18979,8 +19026,8 @@
 			"liepard": {
 				"abilities": {
 					"0": "Limber",
-					"1": "Strong Jaw",
-					"H": "Prankster"
+					"1": "Unburden",
+					"H": "Alley Ambush"
 				},
 				"baseStats": {
 					"hp": 75,
@@ -18994,7 +19041,7 @@
 					"Dark"
 				],
 				"passives": [
-					"pickpocket"
+					"prankster"
 				],
 				"replaceAbilities": true
 			},
@@ -19446,8 +19493,9 @@
 			},
 			"lugia": {
 				"abilities": {
-					"0": "Pressure",
-					"H": "Multiscale"
+					"0": "Silver Wing Canticle",
+					"1": "Tidal Bell Echo",
+					"H": "Whirl Islands Oath"
 				},
 				"baseStats": {
 					"hp": 106,
@@ -19462,7 +19510,7 @@
 					"Flying"
 				],
 				"passives": [
-					"bigpecks"
+					"multiscale"
 				],
 				"replaceAbilities": true
 			},
@@ -19557,11 +19605,11 @@
 					"H": "Shadow Shield"
 				},
 				"baseStats": {
-					"hp": 110,
+					"hp": 100,
 					"atk": 35,
-					"def": 95,
+					"def": 90,
 					"spa": 125,
-					"spd": 95,
+					"spd": 90,
 					"spe": 70
 				},
 				"types": [
@@ -19795,8 +19843,8 @@
 			},
 			"machamp": {
 				"abilities": {
-					"0": "Grit and Glory",
-					"1": "Fourthhold Guard",
+					"0": "Guts",
+					"1": "Inner Focus",
 					"H": "Perfect Form"
 				},
 				"baseStats": {
@@ -19812,14 +19860,14 @@
 					"Dragon"
 				],
 				"passives": [
-					"innerfocus"
+					"noguard"
 				],
 				"replaceAbilities": true
 			},
 			"machampalt": {
 				"abilities": {
-					"0": "Grit and Glory",
-					"1": "Fourthhold Guard",
+					"0": "Guts",
+					"1": "Inner Focus",
 					"H": "Perfect Form"
 				},
 				"baseStats": {
@@ -19835,7 +19883,7 @@
 					"Dragon"
 				],
 				"passives": [
-					"innerfocus"
+					"noguard"
 				],
 				"replaceAbilities": true
 			},
@@ -20061,7 +20109,7 @@
 			},
 			"magmar": {
 				"abilities": {
-					"0": "Flame Body",
+					"0": "White Smoke",
 					"1": "Magma Armor",
 					"H": "Vital Spirit"
 				},
@@ -20076,7 +20124,9 @@
 				"types": [
 					"Fire"
 				],
-				"passives": [],
+				"passives": [
+					"flamebody"
+				],
 				"replaceAbilities": true
 			},
 			"magmortar": {
@@ -20830,14 +20880,14 @@
 			"meganium": {
 				"abilities": {
 					"0": "Hospitality",
-					"1": "Bloom Shelter",
+					"1": "Verdant Awakening",
 					"H": "Invigorate"
 				},
 				"baseStats": {
 					"hp": 80,
 					"atk": 62,
 					"def": 115,
-					"spa": 73,
+					"spa": 83,
 					"spd": 125,
 					"spe": 70
 				},
@@ -20858,7 +20908,7 @@
 					"hp": 80,
 					"atk": 92,
 					"def": 115,
-					"spa": 143,
+					"spa": 153,
 					"spd": 115,
 					"spe": 80
 				},
@@ -20879,7 +20929,7 @@
 					"hp": 80,
 					"atk": 82,
 					"def": 130,
-					"spa": 113,
+					"spa": 123,
 					"spd": 130,
 					"spe": 90
 				},
@@ -21203,7 +21253,9 @@
 			},
 			"mesprit": {
 				"abilities": {
-					"0": "Levitate"
+					"0": "Telepathy",
+					"1": "Healer",
+					"H": "Verity Seal"
 				},
 				"baseStats": {
 					"hp": 80,
@@ -21216,7 +21268,9 @@
 				"types": [
 					"Psychic"
 				],
-				"passives": [],
+				"passives": [
+					"giftofemotion"
+				],
 				"replaceAbilities": true
 			},
 			"metagross": {
@@ -22205,7 +22259,7 @@
 			"moltres": {
 				"abilities": {
 					"0": "Summer Herald",
-					"1": "Summer Renewal",
+					"1": "Solar Power",
 					"H": "Berserk"
 				},
 				"baseStats": {
@@ -22393,9 +22447,9 @@
 			},
 			"mrmime": {
 				"abilities": {
-					"0": "Invisible Wall",
-					"1": "Silent Act",
-					"H": "Trick Performer"
+					"0": "Soundproof",
+					"1": "Technician",
+					"H": "Filter"
 				},
 				"baseStats": {
 					"hp": 65,
@@ -23003,10 +23057,10 @@
 				},
 				"baseStats": {
 					"hp": 84,
-					"atk": 113,
-					"def": 90,
-					"spa": 106,
-					"spd": 87,
+					"atk": 110,
+					"def": 82,
+					"spa": 102,
+					"spd": 82,
 					"spe": 90
 				},
 				"types": [
@@ -23025,11 +23079,11 @@
 					"H": "Royal Aegis"
 				},
 				"baseStats": {
-					"hp": 92,
-					"atk": 100,
-					"def": 105,
-					"spa": 93,
-					"spd": 100,
+					"hp": 90,
+					"atk": 95,
+					"def": 100,
+					"spa": 88,
+					"spd": 97,
 					"spe": 80
 				},
 				"types": [
@@ -23167,24 +23221,24 @@
 			"ninetales": {
 				"abilities": {
 					"0": "Solar Enchanter",
-					"1": "Serene Grace",
+					"1": "Cursed Body",
 					"H": "Soul Fire",
 					"S": "Ashen Seeds"
 				},
 				"baseStats": {
 					"hp": 73,
-					"atk": 66,
+					"atk": 76,
 					"def": 75,
-					"spa": 111,
-					"spd": 110,
-					"spe": 110
+					"spa": 81,
+					"spd": 100,
+					"spe": 100
 				},
 				"types": [
 					"Fire",
 					"Ghost"
 				],
 				"passives": [
-					"cursedbody"
+					"flashfire"
 				],
 				"replaceAbilities": true
 			},
@@ -23196,11 +23250,11 @@
 				},
 				"baseStats": {
 					"hp": 73,
-					"atk": 57,
+					"atk": 67,
 					"def": 75,
-					"spa": 111,
-					"spd": 110,
-					"spe": 119
+					"spa": 81,
+					"spd": 100,
+					"spe": 109
 				},
 				"types": [
 					"Ice",
@@ -23214,48 +23268,48 @@
 			"ninetalesalt": {
 				"abilities": {
 					"0": "Solar Enchanter",
-					"1": "Serene Grace",
+					"1": "Cursed Body",
 					"H": "Soul Fire",
 					"S": "Ashen Seeds"
 				},
 				"baseStats": {
 					"hp": 73,
-					"atk": 66,
+					"atk": 76,
 					"def": 75,
-					"spa": 111,
-					"spd": 110,
-					"spe": 110
+					"spa": 81,
+					"spd": 100,
+					"spe": 100
 				},
 				"types": [
 					"Fire",
 					"Ghost"
 				],
 				"passives": [
-					"cursedbody"
+					"flashfire"
 				],
 				"replaceAbilities": true
 			},
 			"ninetalesreborn": {
 				"abilities": {
 					"0": "Solar Enchanter",
-					"1": "Serene Grace",
+					"1": "Cursed Body",
 					"H": "Soul Fire",
 					"S": "Ashen Seeds"
 				},
 				"baseStats": {
 					"hp": 73,
-					"atk": 66,
+					"atk": 76,
 					"def": 75,
-					"spa": 111,
-					"spd": 110,
-					"spe": 110
+					"spa": 81,
+					"spd": 100,
+					"spe": 100
 				},
 				"types": [
 					"Fire",
 					"Ghost"
 				],
 				"passives": [
-					"cursedbody"
+					"flashfire"
 				],
 				"replaceAbilities": true
 			},
@@ -23286,7 +23340,7 @@
 				"abilities": {
 					"0": "Duskilate",
 					"1": "Night Watch",
-					"H": "Lunar Spirit"
+					"H": "Tinted Lens"
 				},
 				"baseStats": {
 					"hp": 100,
@@ -23301,7 +23355,7 @@
 					"Flying"
 				],
 				"passives": [
-					"keeneye"
+					"frisk"
 				],
 				"replaceAbilities": true
 			},
@@ -24647,7 +24701,7 @@
 			"pelipper": {
 				"abilities": {
 					"0": "Accumulation",
-					"1": "Keen Eye",
+					"1": "Hydration",
 					"H": "Rain Courier"
 				},
 				"baseStats": {
@@ -24696,11 +24750,11 @@
 					"H": "Gilded Grace"
 				},
 				"baseStats": {
-					"hp": 80,
-					"atk": 105,
-					"def": 70,
-					"spa": 120,
-					"spd": 70,
+					"hp": 75,
+					"atk": 95,
+					"def": 65,
+					"spa": 115,
+					"spd": 65,
 					"spe": 125
 				},
 				"types": [
@@ -24719,11 +24773,11 @@
 					"H": "Stakeout"
 				},
 				"baseStats": {
-					"hp": 100,
-					"atk": 75,
+					"hp": 95,
+					"atk": 70,
 					"def": 80,
-					"spa": 100,
-					"spd": 95,
+					"spa": 95,
+					"spd": 90,
 					"spe": 110
 				},
 				"types": [
@@ -25909,7 +25963,7 @@
 					"S": "Aevian King"
 				},
 				"baseStats": {
-					"hp": 110,
+					"hp": 105,
 					"atk": 75,
 					"def": 80,
 					"spa": 100,
@@ -25929,7 +25983,7 @@
 					"0": "Aevian King"
 				},
 				"baseStats": {
-					"hp": 110,
+					"hp": 105,
 					"atk": 70,
 					"def": 105,
 					"spa": 95,
@@ -25993,11 +26047,11 @@
 					"S": "Aevian Ascendance"
 				},
 				"baseStats": {
-					"hp": 100,
+					"hp": 95,
 					"atk": 100,
-					"def": 100,
-					"spa": 95,
-					"spd": 90,
+					"def": 95,
+					"spa": 80,
+					"spd": 85,
 					"spe": 75
 				},
 				"types": [
@@ -26014,11 +26068,11 @@
 					"0": "Aevian Ascendance"
 				},
 				"baseStats": {
-					"hp": 100,
-					"atk": 75,
-					"def": 95,
-					"spa": 145,
-					"spd": 90,
+					"hp": 95,
+					"atk": 70,
+					"def": 90,
+					"spa": 135,
+					"spd": 85,
 					"spe": 55
 				},
 				"types": [
@@ -26664,7 +26718,7 @@
 			"quagsire": {
 				"abilities": {
 					"0": "Mud Meditation",
-					"1": "Stillwater",
+					"1": "Water Absorb",
 					"H": "Unaware"
 				},
 				"baseStats": {
@@ -26695,7 +26749,7 @@
 					"atk": 120,
 					"def": 80,
 					"spa": 85,
-					"spd": 75,
+					"spd": 80,
 					"spe": 85
 				},
 				"types": [
@@ -26824,7 +26878,9 @@
 					"Dark",
 					"Poison"
 				],
-				"passives": [],
+				"passives": [
+					"ironbarbs"
+				],
 				"replaceAbilities": true
 			},
 			"raboot": {
@@ -27251,7 +27307,9 @@
 			},
 			"rayquaza": {
 				"abilities": {
-					"0": "Air Lock"
+					"0": "Inner Focus",
+					"1": "Unnerve",
+					"H": "Jetstream"
 				},
 				"baseStats": {
 					"hp": 105,
@@ -27265,12 +27323,14 @@
 					"Dragon",
 					"Flying"
 				],
-				"passives": [],
+				"passives": [
+					"airlock"
+				],
 				"replaceAbilities": true
 			},
 			"rayquazamega": {
 				"abilities": {
-					"0": "Delta Stream"
+					"0": "Stratospheric Force"
 				},
 				"baseStats": {
 					"hp": 105,
@@ -27284,7 +27344,9 @@
 					"Dragon",
 					"Flying"
 				],
-				"passives": [],
+				"passives": [
+					"deltastream"
+				],
 				"replaceAbilities": true
 			},
 			"rebble": {
@@ -27636,12 +27698,12 @@
 					"H": "Brute Force"
 				},
 				"baseStats": {
-					"hp": 110,
+					"hp": 105,
 					"atk": 130,
-					"def": 125,
+					"def": 120,
 					"spa": 45,
-					"spd": 60,
-					"spe": 50
+					"spd": 55,
+					"spe": 45
 				},
 				"types": [
 					"Ground",
@@ -27749,7 +27811,7 @@
 					"atk": 125,
 					"def": 90,
 					"spa": 60,
-					"spd": 70,
+					"spd": 75,
 					"spe": 85
 				},
 				"types": [
@@ -28431,9 +28493,9 @@
 				},
 				"baseStats": {
 					"hp": 90,
-					"atk": 105,
+					"atk": 100,
 					"def": 85,
-					"spa": 115,
+					"spa": 105,
 					"spd": 80,
 					"spe": 75
 				},
@@ -28454,9 +28516,9 @@
 				},
 				"baseStats": {
 					"hp": 90,
-					"atk": 105,
+					"atk": 100,
 					"def": 85,
-					"spa": 115,
+					"spa": 105,
 					"spd": 80,
 					"spe": 75
 				},
@@ -28479,9 +28541,9 @@
 					"hp": 90,
 					"atk": 115,
 					"def": 80,
-					"spa": 105,
+					"spa": 100,
 					"spd": 65,
-					"spe": 95
+					"spe": 85
 				},
 				"types": [
 					"Water",
@@ -28502,9 +28564,9 @@
 					"hp": 90,
 					"atk": 115,
 					"def": 80,
-					"spa": 105,
+					"spa": 100,
 					"spd": 65,
-					"spe": 95
+					"spe": 85
 				},
 				"types": [
 					"Water",
@@ -28625,11 +28687,11 @@
 				},
 				"baseStats": {
 					"hp": 95,
-					"atk": 120,
-					"def": 130,
+					"atk": 115,
+					"def": 125,
 					"spa": 45,
 					"spd": 75,
-					"spe": 85
+					"spe": 75
 				},
 				"types": [
 					"Ground",
@@ -28648,11 +28710,11 @@
 				},
 				"baseStats": {
 					"hp": 95,
-					"atk": 120,
-					"def": 130,
+					"atk": 115,
+					"def": 125,
 					"spa": 45,
 					"spd": 75,
-					"spe": 85
+					"spe": 75
 				},
 				"types": [
 					"Ice",
@@ -28671,11 +28733,11 @@
 				},
 				"baseStats": {
 					"hp": 95,
-					"atk": 120,
-					"def": 130,
+					"atk": 115,
+					"def": 125,
 					"spa": 45,
 					"spd": 75,
-					"spe": 85
+					"spe": 75
 				},
 				"types": [
 					"Ground",
@@ -28694,11 +28756,11 @@
 				},
 				"baseStats": {
 					"hp": 95,
-					"atk": 120,
-					"def": 130,
+					"atk": 115,
+					"def": 125,
 					"spa": 45,
 					"spd": 75,
-					"spe": 85
+					"spe": 75
 				},
 				"types": [
 					"Ground",
@@ -28940,7 +29002,7 @@
 					"atk": 105,
 					"def": 60,
 					"spa": 115,
-					"spd": 60,
+					"spd": 65,
 					"spe": 120
 				},
 				"types": [
@@ -28961,7 +29023,7 @@
 					"atk": 130,
 					"def": 70,
 					"spa": 145,
-					"spd": 70,
+					"spd": 75,
 					"spe": 145
 				},
 				"types": [
@@ -29457,7 +29519,7 @@
 					"hp": 75,
 					"atk": 75,
 					"def": 95,
-					"spa": 75,
+					"spa": 82,
 					"spd": 95,
 					"spe": 113
 				},
@@ -29480,7 +29542,7 @@
 					"hp": 75,
 					"atk": 75,
 					"def": 95,
-					"spa": 75,
+					"spa": 82,
 					"spd": 95,
 					"spe": 113
 				},
@@ -29501,7 +29563,7 @@
 					"hp": 75,
 					"atk": 95,
 					"def": 115,
-					"spa": 95,
+					"spa": 102,
 					"spd": 115,
 					"spe": 133
 				},
@@ -29847,7 +29909,7 @@
 			"shiftry": {
 				"abilities": {
 					"0": "Chlorophyll",
-					"1": "Wind Rider",
+					"1": "Early Bird",
 					"H": "Gale Revel"
 				},
 				"baseStats": {
@@ -29863,7 +29925,7 @@
 					"Dark"
 				],
 				"passives": [
-					"keeneye"
+					"windrider"
 				],
 				"replaceAbilities": true
 			},
@@ -30708,7 +30770,7 @@
 				"baseStats": {
 					"hp": 104,
 					"atk": 75,
-					"def": 100,
+					"def": 105,
 					"spa": 110,
 					"spd": 75,
 					"spe": 66
@@ -30732,7 +30794,7 @@
 					"hp": 90,
 					"atk": 50,
 					"def": 110,
-					"spa": 100,
+					"spa": 103,
 					"spd": 105,
 					"spe": 77
 				},
@@ -30754,7 +30816,7 @@
 				"baseStats": {
 					"hp": 104,
 					"atk": 75,
-					"def": 100,
+					"def": 105,
 					"spa": 110,
 					"spd": 75,
 					"spe": 66
@@ -31358,7 +31420,7 @@
 			"sneasel": {
 				"abilities": {
 					"0": "Inner Focus",
-					"1": "Sharpness",
+					"1": "Keen Eye",
 					"H": "Pickpocket"
 				},
 				"baseStats": {
@@ -31373,13 +31435,15 @@
 					"Dark",
 					"Ice"
 				],
-				"passives": [],
+				"passives": [
+					"sharpness"
+				],
 				"replaceAbilities": true
 			},
 			"sneaselhisui": {
 				"abilities": {
 					"0": "Inner Focus",
-					"1": "Sharpness",
+					"1": "Keen Eye",
 					"H": "Pickpocket"
 				},
 				"baseStats": {
@@ -31394,7 +31458,9 @@
 					"Fighting",
 					"Poison"
 				],
-				"passives": [],
+				"passives": [
+					"sharpness"
+				],
 				"replaceAbilities": true
 			},
 			"sneasler": {
@@ -31692,11 +31758,11 @@
 					"H": "Full Metal Body"
 				},
 				"baseStats": {
-					"hp": 110,
+					"hp": 100,
 					"atk": 125,
-					"def": 95,
+					"def": 90,
 					"spa": 35,
-					"spd": 95,
+					"spd": 90,
 					"spe": 70
 				},
 				"types": [
@@ -32751,7 +32817,7 @@
 				"abilities": {
 					"0": "Guts",
 					"1": "Aerilate",
-					"H": "Scrappy"
+					"H": "Slipstream Dive"
 				},
 				"baseStats": {
 					"hp": 75,
@@ -32766,7 +32832,7 @@
 					"Flying"
 				],
 				"passives": [
-					"innerfocus"
+					"scrappy"
 				],
 				"replaceAbilities": true
 			},
@@ -33437,9 +33503,9 @@
 				"baseStats": {
 					"hp": 80,
 					"atk": 70,
-					"def": 85,
-					"spa": 100,
-					"spd": 135,
+					"def": 70,
+					"spa": 90,
+					"spd": 120,
 					"spe": 100
 				},
 				"types": [
@@ -33460,9 +33526,9 @@
 				"baseStats": {
 					"hp": 80,
 					"atk": 70,
-					"def": 85,
-					"spa": 100,
-					"spd": 135,
+					"def": 70,
+					"spa": 90,
+					"spd": 120,
 					"spe": 100
 				},
 				"types": [
@@ -33483,9 +33549,9 @@
 				"baseStats": {
 					"hp": 80,
 					"atk": 70,
-					"def": 85,
-					"spa": 100,
-					"spd": 135,
+					"def": 70,
+					"spa": 90,
+					"spd": 120,
 					"spe": 100
 				},
 				"types": [
@@ -33971,23 +34037,25 @@
 			},
 			"togetic": {
 				"abilities": {
-					"0": "Hustle",
-					"1": "Serene Grace",
+					"0": "Healer",
+					"1": "Sweet Veil",
 					"H": "Super Luck"
 				},
 				"baseStats": {
-					"hp": 55,
+					"hp": 65,
 					"atk": 40,
 					"def": 85,
 					"spa": 80,
 					"spd": 105,
-					"spe": 40
+					"spe": 50
 				},
 				"types": [
 					"Fairy",
 					"Flying"
 				],
-				"passives": [],
+				"passives": [
+					"serenegrace"
+				],
 				"replaceAbilities": true
 			},
 			"tomohawk": {
@@ -34802,21 +34870,21 @@
 			},
 			"typhlosion": {
 				"abilities": {
-					"0": "Blazing Mane",
+					"0": "Plasma Awakening",
 					"1": "Drought",
-					"H": "Sand Rush"
+					"H": "Galvanize"
 				},
 				"baseStats": {
-					"hp": 83,
-					"atk": 95,
-					"def": 85,
-					"spa": 112,
-					"spd": 70,
+					"hp": 78,
+					"atk": 84,
+					"def": 78,
+					"spa": 110,
+					"spd": 85,
 					"spe": 100
 				},
 				"types": [
 					"Fire",
-					"Ground"
+					"Electric"
 				],
 				"passives": [
 					"blaze"
@@ -34825,21 +34893,21 @@
 			},
 			"typhlosionalt": {
 				"abilities": {
-					"0": "Blazing Mane",
+					"0": "Plasma Awakening",
 					"1": "Drought",
-					"H": "Sand Rush"
+					"H": "Galvanize"
 				},
 				"baseStats": {
-					"hp": 83,
-					"atk": 95,
-					"def": 85,
-					"spa": 112,
-					"spd": 70,
+					"hp": 78,
+					"atk": 84,
+					"def": 78,
+					"spa": 110,
+					"spd": 85,
 					"spe": 100
 				},
 				"types": [
 					"Fire",
-					"Ground"
+					"Electric"
 				],
 				"passives": [
 					"blaze"
@@ -34848,17 +34916,17 @@
 			},
 			"typhlosionhisui": {
 				"abilities": {
-					"0": "Blazing Mane",
+					"0": "Plasma Awakening",
 					"1": "Soul Fire",
 					"H": "Wraith Procession",
 					"S": "Ashen Seeds"
 				},
 				"baseStats": {
-					"hp": 83,
-					"atk": 95,
-					"def": 80,
-					"spa": 127,
-					"spd": 65,
+					"hp": 73,
+					"atk": 84,
+					"def": 78,
+					"spa": 120,
+					"spd": 85,
 					"spe": 95
 				},
 				"types": [
@@ -34875,11 +34943,11 @@
 					"0": "Plasma Eruption"
 				},
 				"baseStats": {
-					"hp": 83,
-					"atk": 138,
-					"def": 85,
-					"spa": 139,
-					"spd": 70,
+					"hp": 78,
+					"atk": 127,
+					"def": 78,
+					"spa": 137,
+					"spd": 85,
 					"spe": 130
 				},
 				"types": [
@@ -35275,7 +35343,9 @@
 			},
 			"uxie": {
 				"abilities": {
-					"0": "Levitate"
+					"0": "Forewarn",
+					"1": "Analytic",
+					"H": "Acuity Seal"
 				},
 				"baseStats": {
 					"hp": 75,
@@ -35288,7 +35358,9 @@
 				"types": [
 					"Psychic"
 				],
-				"passives": [],
+				"passives": [
+					"giftofknowledge"
+				],
 				"replaceAbilities": true
 			},
 			"vanillish": {
@@ -35510,9 +35582,9 @@
 				},
 				"baseStats": {
 					"hp": 70,
-					"atk": 65,
-					"def": 75,
-					"spa": 115,
+					"atk": 60,
+					"def": 65,
+					"spa": 110,
 					"spd": 90,
 					"spe": 105
 				},
@@ -35549,12 +35621,12 @@
 			"venusaur": {
 				"abilities": {
 					"0": "Verdant Monarch",
-					"1": "Soothing Bouquet",
+					"1": "Unaware",
 					"H": "Chlorophyll"
 				},
 				"baseStats": {
 					"hp": 80,
-					"atk": 82,
+					"atk": 92,
 					"def": 83,
 					"spa": 100,
 					"spd": 100,
@@ -35575,7 +35647,7 @@
 				},
 				"baseStats": {
 					"hp": 136,
-					"atk": 82,
+					"atk": 92,
 					"def": 83,
 					"spa": 100,
 					"spd": 100,
@@ -35596,10 +35668,10 @@
 				},
 				"baseStats": {
 					"hp": 80,
-					"atk": 80,
-					"def": 133,
+					"atk": 110,
+					"def": 123,
 					"spa": 122,
-					"spd": 130,
+					"spd": 120,
 					"spe": 80
 				},
 				"types": [
@@ -37366,7 +37438,7 @@
 				"abilities": {
 					"0": "Temporal Shift",
 					"1": "Neutralization",
-					"H": "Magic Bounce"
+					"H": "Forewarn"
 				},
 				"baseStats": {
 					"hp": 65,
@@ -37381,7 +37453,7 @@
 					"Flying"
 				],
 				"passives": [
-					"earlybird"
+					"magicbounce"
 				],
 				"replaceAbilities": true
 			},
@@ -37703,7 +37775,7 @@
 			"zapdos": {
 				"abilities": {
 					"0": "Spring Herald",
-					"1": "Spring Tempest",
+					"1": "Lightning Rod",
 					"H": "Competitive"
 				},
 				"baseStats": {
@@ -38151,6 +38223,16 @@
 				},
 				"isNonstandard": null
 			},
+			"abyssaldeluge": {
+				"name": "Abyssal Deluge",
+				"num": 32619,
+				"gen": 9,
+				"desc": "The first Water attack each entry to damage a foe heals the user and its adjacent allies by 1/8 of their own max HP. Water and Ice attacks gain 1.2x power. Origin Pulse ignores positive defensive stages.",
+				"shortDesc": "Water/Ice: 1.2x power. Origin Pulse pierces defensive boosts. Opening Water hit heals the team.",
+				"rating": 5,
+				"flags": {},
+				"isNonstandard": null
+			},
 			"abyssalfang": {
 				"name": "Abyssal Fang",
 				"num": 11489,
@@ -38211,6 +38293,16 @@
 				"gen": 9,
 				"desc": "Frisk reveals opposing held items and Illusions on entry. Each item holder has a 30% chance of Embargo for 5 turns. Heals 1/8 max HP the first time each foe damages it with an attack. Switching out resets this.",
 				"shortDesc": "Frisk. Once per foe each entry, heals 1/8 HP when that foe hits it.",
+				"rating": 3,
+				"flags": {},
+				"isNonstandard": null
+			},
+			"acuityseal": {
+				"name": "Acuity Seal",
+				"num": 32730,
+				"gen": 9,
+				"desc": "Once per switch-in, after surviving a damaging attack from a foe, the user Disables that attack through the end of the following turn. The attack must be the foe’s last move and eligible for Disable.",
+				"shortDesc": "Once per entry, surviving a foe’s damaging hit Disables that move through the next turn.",
 				"rating": 3,
 				"flags": {},
 				"isNonstandard": null
@@ -38538,6 +38630,32 @@
 				"flags": {},
 				"isNonstandard": null
 			},
+			"aliengenome": {
+				"name": "Alien Genome",
+				"num": 32622,
+				"gen": 9,
+				"desc": "Starting in Normal Forme: just before it uses a move, a priority attack or a move that raises its own Speed selects Speed Forme; other status moves select Defense Forme; attacks with at least 100 listed base power select Attack Forme; other attacks select Normal Forme. Switching out restores Normal Forme. Starting in a specialist forme: Psychic attacks ignore positive defensive stages in Attack Forme, heal 1/8 max HP once per turn after damaging a foe in Defense Forme, or bypass accuracy checks in Speed Forme.",
+				"shortDesc": "Normal Deoxys shifts with its moves. A starting specialist enhances its Psychic attacks.",
+				"rating": 4,
+				"flags": {
+					"notrace": 1,
+					"noentrain": 1,
+					"noreceiver": 1,
+					"failskillswap": 1,
+					"failroleplay": 1
+				},
+				"isNonstandard": null
+			},
+			"alleyambush": {
+				"name": "Alley Ambush",
+				"num": 32626,
+				"gen": 9,
+				"desc": "Dark attacks have 1.3× power against foes with a major status condition.",
+				"shortDesc": "Dark attacks have 1.3× power against foes with a major status condition.",
+				"rating": 3,
+				"flags": {},
+				"isNonstandard": null
+			},
 			"alloycore": {
 				"name": "Alloy Core",
 				"num": 10066,
@@ -38610,8 +38728,8 @@
 				"name": "Verdant Crown",
 				"num": 10024,
 				"gen": 9,
-				"desc": "Verdant Monarch supplies Thick Fat and Unaware: Fire and Ice attacks use half the attacking stat; ignores opposing stat stages through local Unaware and reveals Illusions on entry. Friend Guard reduces attack damage to allies by 25%, without protecting the holder. Fairy Tale, New World, Cold Eclipse and Starlight Arena entry grant +1 Defense and Sp. Def; the latter three give 1.5x move power. All moves have 1.1x accuracy.",
-				"shortDesc": "Verdant Monarch + Friend Guard; field bonuses; all moves have 1.1x accuracy.",
+				"desc": "Thick Fat and Aroma Veil protect the holder. Aroma Veil protects allies from move restrictions, and Friend Guard reduces damage to allies by 25%. Fairy Tale, New World, Cold Eclipse and Starlight Arena entry grant +1 Defense and Sp. Def. The latter three grant 1.5× move power. All moves have 1.1× accuracy.",
+				"shortDesc": "Verdant Monarch + Friend Guard; field bonuses and 1.1× accuracy.",
 				"rating": 4.5,
 				"flags": {
 					"breakable": 1
@@ -38901,7 +39019,7 @@
 				"name": "Astral Core",
 				"num": 10261,
 				"gen": 9,
-				"desc": "Doubles Attack, or Sp. Atk instead on Psychic Terrain. On switching out, cures its major status and heals 1/8 max HP if it had a status to cure. Bewitched Woods also cures its status at turn end. Prevents other Pokemon's accuracy drops and ignores evasion boosts. Reveals opposing Illusions on activation. Mirror Arena entry lowers foes' accuracy by 1. Starlight Arena entry gives +2 Sp. Atk and puts Spotlight on its first adjacent ally. Special moves in the /relicbeam move list use the target’s lower Defense or Sp. Def. They still use the holder’s Sp. Atk and retain their type, category and other effects. This effect adds no power multiplier.",
+				"desc": "Doubles Attack, or Sp. Atk instead on Psychic Terrain. On switching out, cures its major status and heals 1/8 max HP if it had a status to cure. Bewitched Woods also cures its status at turn end. Prevents other Pokemon's accuracy drops and ignores evasion boosts. Reveals opposing Illusions on activation. Mirror Arena entry lowers foes' accuracy by 1. Starlight Arena entry gives +2 Sp. Atk and puts Spotlight on its first adjacent ally. Lumina Crash, special Photon Geyser and special moves in the /relicbeam list use the target’s lower Defense or Sp. Def. They still use the holder’s Sp. Atk and retain their type, category and other effects. This effect adds no power multiplier.",
 				"shortDesc": "Pure Power + Natural Cure + Malignant Light.",
 				"rating": 5,
 				"flags": {},
@@ -38962,9 +39080,7 @@
 				"desc": "Blazing Monarch + Fire Ward. All moves have 1.1x accuracy.",
 				"shortDesc": "Blazing Monarch + Fire Ward; all moves have 1.1x accuracy.",
 				"rating": 5,
-				"flags": {
-					"cantsuppress": 1
-				},
+				"flags": {},
 				"isNonstandard": null
 			},
 			"aurabreak": {
@@ -39129,6 +39245,16 @@
 				},
 				"isNonstandard": null
 			},
+			"ballastplating": {
+				"name": "Ballast Plating",
+				"num": 32601,
+				"gen": 9,
+				"desc": "Multiplies the base power of Body Press, Heavy Slam and Gyro Ball by 1.2.",
+				"shortDesc": "Body Press, Heavy Slam and Gyro Ball have 1.2× power.",
+				"rating": 3,
+				"flags": {},
+				"isNonstandard": null
+			},
 			"ballfetch": {
 				"name": "Ball Fetch",
 				"num": 237,
@@ -39149,6 +39275,16 @@
 				"flags": {
 					"breakable": 1
 				},
+				"isNonstandard": null
+			},
+			"baskingscales": {
+				"name": "Basking Scales",
+				"num": 32627,
+				"gen": 9,
+				"desc": "Restores 1/8 max HP at the end of each turn in sunlight.",
+				"shortDesc": "Restores 1/8 max HP at the end of each turn in sunlight.",
+				"rating": 3,
+				"flags": {},
 				"isNonstandard": null
 			},
 			"battery": {
@@ -39391,13 +39527,15 @@
 				"isNonstandard": null
 			},
 			"blazingmane": {
-				"name": "Blazing Mane",
+				"name": "Plasma Awakening",
 				"num": 10158,
 				"gen": 9,
-				"desc": "Full local Fire Mane: damaging moves with effective Fire typing have 1.5x power, whether or not they receive STAB. At 1/4 max HP or less, damaging Fire moves gain +1 priority.",
-				"shortDesc": "Fire Mane; damaging Fire moves gain +1 priority at 1/4 HP or less.",
-				"rating": 4,
-				"flags": {},
+				"desc": "Includes Flash Fire and its field effects. At 1/4 max HP or less, damaging Fire moves gain +1 priority.",
+				"shortDesc": "Flash Fire. At 1/4 HP or less, Fire attacks gain +1 priority.",
+				"rating": 3.5,
+				"flags": {
+					"breakable": 1
+				},
 				"isNonstandard": null
 			},
 			"blazingtempo": {
@@ -39603,6 +39741,16 @@
 				"desc": "Each genuine entry, the first opposing damaging move to hit it deals 30% less damage across all hits, including Substitute damage. Misses, protection and immunity do not spend the use. Ability restarts do not reset it.",
 				"shortDesc": "First opposing damaging move each entry deals 30% less damage across all hits.",
 				"rating": 3,
+				"flags": {},
+				"isNonstandard": null
+			},
+			"burnedtoweroath": {
+				"name": "Burned Tower Oath",
+				"num": 32705,
+				"gen": 9,
+				"desc": "Once per battle, after surviving an opposing attack at half HP or less, sets Reflect for three turns. An existing Reflect preserves this use.",
+				"shortDesc": "Surviving a foe’s hit at half HP or less sets 3-turn Reflect once per battle.",
+				"rating": 4,
 				"flags": {},
 				"isNonstandard": null
 			},
@@ -39947,6 +40095,16 @@
 				"flags": {},
 				"isNonstandard": null
 			},
+			"clearbellecho": {
+				"name": "Clear Bell Echo",
+				"num": 32704,
+				"gen": 9,
+				"desc": "Once per turn, after a Fire or Flying attack damages a foe, the user and each adjacent ally recover 1/16 of their own maximum HP.",
+				"shortDesc": "Fire or Flying hits heal the user and adjacent allies by 1/16 HP once per turn.",
+				"rating": 4,
+				"flags": {},
+				"isNonstandard": null
+			},
 			"clearbody": {
 				"name": "Clear Body",
 				"num": 29,
@@ -40211,6 +40369,16 @@
 				"flags": {},
 				"isNonstandard": null
 			},
+			"continentalrupture": {
+				"name": "Continental Rupture",
+				"num": 32620,
+				"gen": 9,
+				"desc": "The first Ground attack each entry to damage a foe raises Defense by 1 for the user and its adjacent allies. Ground and Fire attacks gain 1.2x power. Precipice Blades ignores positive defensive stages.",
+				"shortDesc": "Ground/Fire: 1.2x power. Precipice Blades pierces defensive boosts. First Ground hit: team +1 Def.",
+				"rating": 5,
+				"flags": {},
+				"isNonstandard": null
+			},
 			"contrary": {
 				"name": "Contrary",
 				"num": 126,
@@ -40391,12 +40559,10 @@
 				"name": "Cruel Shell",
 				"num": 10345,
 				"gen": 9,
-				"desc": "Full local Shell Armor: prevents critical hits and takes 20% less attack damage. Gains +1 Defense on Fairy Tale or Dragon's Den entry and +2 Sp. Def when a foe lowers its stats.",
-				"shortDesc": "Prevents critical hits; takes 20% less attack damage. Field effects vary.",
-				"rating": 4,
-				"flags": {
-					"breakable": 1
-				},
+				"desc": "After surviving an opposing contact hit that damages its HP, raises Attack by one stage, once per turn.",
+				"shortDesc": "The first opposing contact hit each turn raises Attack by 1.",
+				"rating": 3,
+				"flags": {},
 				"isNonstandard": null
 			},
 			"crueltag": {
@@ -41561,6 +41727,26 @@
 				},
 				"isNonstandard": null
 			},
+			"eononslaught": {
+				"name": "Eon Onslaught",
+				"num": 32615,
+				"gen": 9,
+				"desc": "Psychic and Dragon attacks bypass screens. Once per entry, damaging a screened foe with one of these attacks removes Reflect, Light Screen and Aurora Veil on its side. Luster Purge ignores positive defensive stages and its chance to lower Sp. Def becomes 100%.",
+				"shortDesc": "Psychic/Dragon pierce screens and break them once/entry. Luster Purge pierces boosts and drops SpD.",
+				"rating": 4.5,
+				"flags": {},
+				"isNonstandard": null
+			},
+			"eonsanctuary": {
+				"name": "Eon Sanctuary",
+				"num": 32614,
+				"gen": 9,
+				"desc": "Once per entry, damaging a foe with a Psychic or Dragon attack sets Light Screen for the user's side. Mist Ball's chance to lower Sp. Atk becomes 100%.",
+				"shortDesc": "Psychic/Dragon hit sets Light Screen once per entry. Mist Ball has a 100% Sp. Atk drop.",
+				"rating": 4.5,
+				"flags": {},
+				"isNonstandard": null
+			},
 			"errorhandler": {
 				"name": "Error Handler",
 				"num": 11447,
@@ -41854,8 +42040,8 @@
 				"name": "Flash Fire",
 				"num": 18,
 				"gen": 3,
-				"desc": "Absorbs Fire moves and gains a 1.5x Fire boost until switching out or losing the ability. Burning Field or grounded Volcanic Field also grants the boost. On Cold Eclipse, Fire absorption is disabled.",
-				"shortDesc": "Absorbs Fire for a 1.5x Fire boost; Cold Eclipse disables Fire absorption and contact burns.",
+				"desc": "Absorbing a Fire move grants Fire Boost, multiplying Fire attacks by 1.5. The boost carries through Mega Evolution and clears on switching. Burning or grounded Volcanic grants it at turn end. Infernal Eclipse grants a temporary charge while the field lasts. Cold Eclipse disables Fire absorption.",
+				"shortDesc": "Absorbs Fire for a 1.5× Fire Boost that carries through Mega Evolution.",
 				"rating": 3.5,
 				"flags": {
 					"breakable": 1
@@ -42000,7 +42186,7 @@
 				"name": "Tidal Crown",
 				"num": 10025,
 				"gen": 9,
-				"desc": "Stalwart bypasses redirection and gives +1 Sp. Atk on New World, Starlight Arena, Fairy Tale or Chessboard entry. Guardian Presence boosts allies move power by 1.3x, or 1.5x on Haunted, Bewitched Woods, Holy and Psychic fields, and reduces their attack damage by 25%; neither applies to the holder. During Electric Aura or Electric Terrain, Murkwater Surface, Water Surface, Underwater, Midnight Zone, Factory and Short-Circuit, redirects and absorbs Electric moves for +1 Attack and Sp. Atk. Existing Fairy Tale, New World, Cold Eclipse and Starlight Arena entry/terrain bonuses give +1 Defense and Sp. Def; the latter three retain 1.5x move power. All moves have 1.1x accuracy.",
+				"desc": "Stalwart bypasses redirection and Substitute, and gives +1 Sp. Atk on New World, Starlight Arena, Fairy Tale or Chessboard entry. Guardian Presence boosts allies move power by 1.3x, or 1.5x on Haunted, Bewitched Woods, Holy and Psychic fields, and reduces their attack damage by 25%; neither applies to the holder. During Electric Aura or Electric Terrain, Murkwater Surface, Water Surface, Underwater, Midnight Zone, Factory and Short-Circuit, redirects and absorbs Electric moves for +1 Attack and Sp. Atk. Existing Fairy Tale, New World, Cold Eclipse and Starlight Arena entry/terrain bonuses give +1 Defense and Sp. Def; the latter three retain 1.5x move power. All moves have 1.1x accuracy.",
 				"shortDesc": "Stalwart + Guardian Presence; field bonuses and Electric absorption; 10% accuracy.",
 				"rating": 4.5,
 				"flags": {
@@ -42349,6 +42535,36 @@
 				"desc": "Moves have 1.3x accuracy. Mirror Arena entry gives +1 accuracy and Laser Focus. Once per turn, successfully healing an ally with Pollen Puff also cures that ally's major status. Failed or zero healing does not cure status.",
 				"shortDesc": "Pollen Puff healing also cures an ally's major status once per turn.",
 				"rating": 3.5,
+				"flags": {},
+				"isNonstandard": null
+			},
+			"giftofemotion": {
+				"name": "Gift of Emotion",
+				"num": 32624,
+				"gen": 9,
+				"desc": "Levitate keeps the user airborne. Once per turn, when its Psychic attack damages a foe’s HP, the user and each active ally recover 1/8 of their own maximum HP.",
+				"shortDesc": "Levitate. A Psychic hit heals its side’s active Pokémon by 1/8 HP once per turn.",
+				"rating": 4,
+				"flags": {},
+				"isNonstandard": null
+			},
+			"giftofknowledge": {
+				"name": "Gift of Knowledge",
+				"num": 32623,
+				"gen": 9,
+				"desc": "Levitate keeps the user airborne. Its damaging Psychic moves ignore the target’s evasion stages and positive defensive stat stages.",
+				"shortDesc": "Levitate. Psychic attacks ignore evasion and boosted defenses.",
+				"rating": 3.5,
+				"flags": {},
+				"isNonstandard": null
+			},
+			"giftofwill": {
+				"name": "Gift of Will",
+				"num": 32625,
+				"gen": 9,
+				"desc": "Levitate keeps the user airborne. Its physical Psychic attacks have 1.3× power. Opposing Pokémon cannot lower its Attack or Special Attack stages.",
+				"shortDesc": "Levitate. Physical Psychic attacks gain 1.3× power. Foes cannot lower its Atk or Sp. Atk.",
+				"rating": 4,
 				"flags": {},
 				"isNonstandard": null
 			},
@@ -42859,12 +43075,10 @@
 				"name": "Heat Reservoir",
 				"num": 10525,
 				"gen": 9,
-				"desc": "Absorbs Fire moves and gains a 1.5x Fire boost until switching out or losing the ability. Burning Field or grounded Volcanic Field also grants the boost. On Cold Eclipse, Fire absorption is disabled. After a boosted Armor Cannon deals damage, consumes the Flash Fire charge to prevent Armor Cannon's own Defense and Sp. Def drops.",
-				"shortDesc": "A boosted Armor Cannon avoids its own defensive drops.",
-				"rating": 3.5,
-				"flags": {
-					"breakable": 1
-				},
+				"desc": "Once per switch-in, Armor Cannon’s own stat drop lowers only Defense. Later uses lower both Defense and Sp. Def as usual.",
+				"shortDesc": "Preserves Sp. Def on the first Armor Cannon stat drop each entry.",
+				"rating": 4,
+				"flags": {},
 				"isNonstandard": null
 			},
 			"heavenlychorus": {
@@ -43287,6 +43501,16 @@
 				},
 				"isNonstandard": null
 			},
+			"ilexshrine": {
+				"name": "Ilex Shrine",
+				"num": 32706,
+				"gen": 9,
+				"desc": "Grass attacks have 1.2× power. Once per turn, a Grass attack that damages a foe cures a major status on the first afflicted adjacent ally, or on the user if it has no afflicted adjacent ally.",
+				"shortDesc": "1.2× Grass power. A Grass hit cures one adjacent ally or the user once per turn.",
+				"rating": 4,
+				"flags": {},
+				"isNonstandard": null
+			},
 			"illuminate": {
 				"name": "Illuminate",
 				"num": 35,
@@ -43630,6 +43854,16 @@
 				},
 				"isNonstandard": null
 			},
+			"jetstream": {
+				"name": "Jetstream",
+				"num": 32618,
+				"gen": 9,
+				"desc": "Once per entry, a Flying attack that damages a foe with raised Attack or Sp. Atk clears its positive stages in both stats.",
+				"shortDesc": "Once per entry, damaging Flying hits erase a foe’s positive Atk and Sp. Atk stages.",
+				"rating": 3,
+				"flags": {},
+				"isNonstandard": null
+			},
 			"jetstreamballet": {
 				"name": "Jetstream Ballet",
 				"num": 12020,
@@ -43939,7 +44173,7 @@
 				"isNonstandard": null
 			},
 			"lightweightswarm": {
-				"name": "Lightweight Swarm",
+				"name": "Alloy Swarm",
 				"num": 12310,
 				"gen": 9,
 				"desc": "Light Metal halves weight and boosts Speed by 25% while free of major status; Factory entry grants +1 Speed. Swarm boosts Bug attacks by 50% at one-third HP or less.",
@@ -44299,9 +44533,19 @@
 				"name": "Malignant Light",
 				"num": 32596,
 				"gen": 9,
-				"desc": "Prevents other Pokemon's accuracy drops and ignores evasion boosts. Reveals opposing Illusions on activation. Mirror Arena entry lowers foes' accuracy by 1. Starlight Arena entry gives +2 Sp. Atk and puts Spotlight on its first adjacent ally. Special moves in the /relicbeam move list use the target’s lower Defense or Sp. Def. They still use the holder’s Sp. Atk and retain their type, category and other effects. This effect adds no power multiplier.",
-				"shortDesc": "Illuminate; special beam, pulse and bullet moves target the lower defense.",
+				"desc": "Prevents other Pokemon's accuracy drops and ignores evasion boosts. Reveals opposing Illusions on activation. Mirror Arena entry lowers foes' accuracy by 1. Starlight Arena entry gives +2 Sp. Atk and puts Spotlight on its first adjacent ally. Lumina Crash, special Photon Geyser and special moves in the /relicbeam list use the target’s lower Defense or Sp. Def. They still use the holder’s Sp. Atk and retain their type, category and other effects. This effect adds no power multiplier.",
+				"shortDesc": "Illuminate; special beams, pulses, bullets, Photon Geyser and Lumina Crash target the lower defense.",
 				"rating": 4,
+				"flags": {},
+				"isNonstandard": null
+			},
+			"mantlefracture": {
+				"name": "Mantle Fracture",
+				"num": 32617,
+				"gen": 9,
+				"desc": "The first Ground attack each entry to damage a foe raises Defense by 1 for the user and its adjacent allies.",
+				"shortDesc": "First damaging Ground hit each entry gives the user and adjacent allies +1 Defense.",
+				"rating": 3,
 				"flags": {},
 				"isNonstandard": null
 			},
@@ -44482,11 +44726,11 @@
 				"isNonstandard": null
 			},
 			"mightyjaw": {
-				"name": "Mighty Jaw",
+				"name": "Tidal Awakening",
 				"num": 10308,
 				"gen": 9,
-				"desc": "Biting moves have 1.5x power. On entry, lowers adjacent foes' Attack by 1. Substitute and Intimidate protections still apply. On its first action after switching in, its biting moves have 2 higher priority.",
-				"shortDesc": "Biting moves gain +2 priority on first action.",
+				"desc": "On entry, lowers adjacent foes’ Attack with Intimidate. Same-type attacks have 1.3x power and biting attacks have 1.5x power. Both apply to a same-type bite. Biting moves gain +2 priority on its first action after switching in.",
+				"shortDesc": "1.3x same-type power, 1.5x bite power, Intimidate. Opening bites gain +2 priority.",
 				"rating": 4,
 				"flags": {},
 				"isNonstandard": null
@@ -44628,6 +44872,26 @@
 				"desc": "On entry and opposing switch-ins, reveals foes' Illusions and a super-effective or OHKO move. Takes 25% less damage from the latest warned move until switching out, excluding OHKO moves. On Psychic Terrain, gains +2 Sp. Atk for each foe with no threat. Includes Anticipation. After surviving the first opposing damaging move that hits it, blocks the next use of that move against it, from any foe. All hits of the original move finish normally. One recorded move and one block per entry; switching resets both.",
 				"shortDesc": "Anticipation; records the first attack survived each entry; blocks its next use on the holder.",
 				"rating": 4,
+				"flags": {},
+				"isNonstandard": null
+			},
+			"mistwinglance": {
+				"name": "Mistwing Lance",
+				"num": 32613,
+				"gen": 9,
+				"desc": "Psychic attacks bypass screens. Once per entry, damaging a screened foe with one of these attacks removes Reflect, Light Screen and Aurora Veil on its side.",
+				"shortDesc": "Psychic attacks bypass screens and break them once per entry.",
+				"rating": 3.5,
+				"flags": {},
+				"isNonstandard": null
+			},
+			"mistwingveil": {
+				"name": "Mistwing Veil",
+				"num": 32612,
+				"gen": 9,
+				"desc": "Once per entry, damaging a foe with a Psychic attack sets Light Screen for the user's side.",
+				"shortDesc": "Once per entry, damaging a foe with a Psychic attack sets Light Screen for the user's side.",
+				"rating": 3.5,
 				"flags": {},
 				"isNonstandard": null
 			},
@@ -45688,6 +45952,16 @@
 				"flags": {},
 				"isNonstandard": "CAP"
 			},
+			"petalrhythm": {
+				"name": "Petal Rhythm",
+				"num": 32599,
+				"gen": 9,
+				"desc": "The first time the holder successfully uses a dance move after switching in, it restores 1/8 of its maximum HP. Dances copied by Dancer count.",
+				"shortDesc": "The first successful dance each entry restores 1/8 max HP.",
+				"rating": 2,
+				"flags": {},
+				"isNonstandard": null
+			},
 			"phalanxform": {
 				"name": "Phalanx Form",
 				"num": 10284,
@@ -45860,8 +46134,8 @@
 				"name": "Verdant Monarch",
 				"num": 10137,
 				"gen": 9,
-				"desc": "Thick Fat + Unaware. Fire and Ice attacks use half the attacker's attacking stat; hail causes no damage. Ignores the foe's Defense, Sp. Def and evasion changes when attacking, and their Attack, Defense, Sp. Atk and accuracy changes when defending. Reveals opposing Illusions on entry. All moves have 1.1x accuracy.",
-				"shortDesc": "Thick Fat, Unaware; all moves have 1.1x accuracy.",
+				"desc": "Halves the attacking stat of incoming Fire and Ice moves and protects against hail. Aroma Veil protects the holder and its allies from attraction and move restrictions.",
+				"shortDesc": "Thick Fat + Aroma Veil.",
 				"rating": 4,
 				"flags": {
 					"breakable": 1
@@ -46469,8 +46743,8 @@
 				"name": "Racing Spirit",
 				"num": 11519,
 				"gen": 9,
-				"desc": "Rock Head + Limber: prevents move recoil except Struggle; prevents and cures paralysis and blocks opposing Speed drops. Crash damage, Life Orb and self-inflicted Speed costs still apply.",
-				"shortDesc": "Rock Head + Limber.",
+				"desc": "Prevents move recoil except Struggle. Includes Flash Fire: absorbs Fire moves for a 1.5× Fire Boost, with its usual field effects.",
+				"shortDesc": "Rock Head + Flash Fire.",
 				"rating": 4,
 				"flags": {},
 				"isNonstandard": null
@@ -46562,6 +46836,16 @@
 				"desc": "Prevents flinching and Intimidate Attack drops. Once per switch-in, surviving a whole opposing damaging move that hits HP stores a non-stacking 1.5x boost for the next Electric attack. Consumed when that attack executes, including misses, Protect or immunity; charge-only and interrupted turns do not consume it. Switching clears it.",
 				"shortDesc": "Inner Focus; once/entry, surviving a foe HP attack powers the next Electric attack by 1.5x.",
 				"rating": 1,
+				"flags": {},
+				"isNonstandard": null
+			},
+			"rainbowwingcanticle": {
+				"name": "Rainbow Wing Canticle",
+				"num": 32703,
+				"gen": 9,
+				"desc": "Sacred Fire has 1.2× power. The first time each entry that Sacred Fire damages a foe, the user gains one Defense stage.",
+				"shortDesc": "1.2× Sacred Fire power. Its first damaging hit each entry gives +1 Defense.",
+				"rating": 4,
 				"flags": {},
 				"isNonstandard": null
 			},
@@ -48078,7 +48362,7 @@
 				"name": "Bombardment",
 				"num": 10038,
 				"gen": 9,
-				"desc": "Mega Launcher gives pulse and bullet moves 1.5x power. Dual Wield supplies exactly one eligible pair: outside Free-for-All, pulse/bullet attacks use 1.5x power for the first hit and 0.15x for the second before STAB and passives. In Free-for-All both hits use full power, with the second-target selection. Existing multi-hit, charging, delayed, Z/Max and ineligible moves gain no extra pair. Stalwart: redirection bypass and +1 Sp. Atk on New World, Starlight Arena, Fairy Tale or Chessboard entry. All moves have 1.1x accuracy.",
+				"desc": "Mega Launcher gives pulse and bullet moves 1.5x power. Dual Wield supplies exactly one eligible pair: outside Free-for-All, pulse/bullet attacks use 1.5x power for the first hit and 0.15x for the second before STAB and passives. In Free-for-All both hits use full power, with the second-target selection. Existing multi-hit, charging, delayed, Z/Max and ineligible moves gain no extra pair. Stalwart: bypasses redirection and Substitute, and gives +1 Sp. Atk on New World, Starlight Arena, Fairy Tale or Chessboard entry. All moves have 1.1x accuracy.",
 				"shortDesc": "Mega Launcher + Dual Wield + Stalwart; all moves gain 10% accuracy.",
 				"rating": 4.5,
 				"flags": {},
@@ -48208,6 +48492,16 @@
 				},
 				"isNonstandard": null
 			},
+			"silverwingcanticle": {
+				"name": "Silver Wing Canticle",
+				"num": 32700,
+				"gen": 9,
+				"desc": "Aeroblast has 1.2× power. The first time each entry that Aeroblast damages a foe, the user gains one Special Defense stage.",
+				"shortDesc": "1.2× Aeroblast power. Its first damaging hit each entry gives +1 Sp. Def.",
+				"rating": 4,
+				"flags": {},
+				"isNonstandard": null
+			},
 			"simple": {
 				"name": "Simple",
 				"num": 86,
@@ -48293,6 +48587,16 @@
 				"flags": {
 					"breakable": 1
 				},
+				"isNonstandard": null
+			},
+			"slipstreamdive": {
+				"name": "Slipstream Dive",
+				"num": 32611,
+				"gen": 9,
+				"desc": "Physical Flying attacks have 1.2× power.",
+				"shortDesc": "Physical Flying attacks have 1.2× power.",
+				"rating": 3,
+				"flags": {},
 				"isNonstandard": null
 			},
 			"slowclamp": {
@@ -48616,8 +48920,8 @@
 				"name": "Soulforged Armor",
 				"num": 12064,
 				"gen": 9,
-				"desc": "Super-effective attacks deal 20% less damage.",
-				"shortDesc": "Takes 20% less damage from super-effective attacks.",
+				"desc": "Super-effective attacks deal 20% less damage. Includes Flash Fire: absorbs Fire moves for a 1.5× Fire Boost, with its usual field effects.",
+				"shortDesc": "Flash Fire; takes 20% less damage from super-effective attacks.",
 				"rating": 3,
 				"flags": {
 					"breakable": 1
@@ -48638,8 +48942,8 @@
 				"name": "Soul Pyre",
 				"num": 10552,
 				"gen": 9,
-				"desc": "Restores 1/8 max HP at the end of a turn when an opposing Pokemon actually took burn damage. Ghost hits against already-burned foes lower Sp. Def by 1 stage once per turn. Prevented burn damage does not grant healing.",
-				"shortDesc": "Heals 1/8 after foe burn damage; Ghost hits lower burned foes' Sp. Def.",
+				"desc": "Bypasses Substitute, screens, Safeguard and Mist. Heals 1/8 max HP at turn end if a foe took burn damage. Once per turn, a Ghost hit lowers an already-burned foe’s Sp. Def by 1.",
+				"shortDesc": "Infiltrator; heals after foe burn damage. Ghost hits weaken burned foes.",
 				"rating": 4,
 				"flags": {},
 				"isNonstandard": null
@@ -48658,8 +48962,8 @@
 				"name": "Soul Siphon",
 				"num": 11232,
 				"gen": 9,
-				"desc": "Direct Fire/Ghost damage to opponents heals one-third of actual HP damage, capped at one-sixth max HP per turn across all hits and targets. Also prevents the damaged target from recovering HP through the end of the following turn; switching clears this effect and repeated hits refresh it. Does not siphon from substitutes, allies, residual or future damage, or moves that already drain. Normal drain interactions apply. Absorbs Fire moves and gains a 1.5x Fire boost until switching out or losing the ability. Burning Field or grounded Volcanic Field also grants the boost. On Cold Eclipse, Fire absorption is disabled.",
-				"shortDesc": "Absorbs Fire; Fire/Ghost hits drain 1/3 damage, capped at 1/6 HP per turn, and block healing.",
+				"desc": "Includes Flash Fire and its field effects. Fire or Ghost hits to opposing HP block healing through the next turn and restore one third of damage dealt, capped at 1/6 max HP per turn. Delayed attacks do not trigger this effect. Draining moves only grant their own healing.",
+				"shortDesc": "Flash Fire; Fire/Ghost hits drain HP and block healing.",
 				"rating": 4,
 				"flags": {
 					"breakable": 1
@@ -48762,6 +49066,16 @@
 				"flags": {},
 				"isNonstandard": null
 			},
+			"splintershell": {
+				"name": "Splinter Shell",
+				"num": 32600,
+				"gen": 9,
+				"desc": "Prevents critical hits. A foe that knocks out the holder with a contact move loses 1/4 of its maximum HP, or 1/2 on Corrosive Mist. Damp prevents this damage.",
+				"shortDesc": "Blocks critical hits. Contact KOs trigger Aftermath.",
+				"rating": 3,
+				"flags": {},
+				"isNonstandard": null
+			},
 			"sporeshroud": {
 				"name": "Spore Shroud",
 				"num": 11243,
@@ -48860,8 +49174,8 @@
 				"name": "Stalwart",
 				"num": 242,
 				"gen": 8,
-				"desc": "Moves cannot be redirected. On New World, Starlight Arena, Fairy Tale and Chessboard entry, gains +1 Sp. Atk.",
-				"shortDesc": "Ignores redirection; +1 Sp. Atk on specified fields.",
+				"desc": "Moves ignore redirection and bypass the target’s Substitute. On entry in New World, Starlight Arena, Fairy Tale or Chessboard, raises Sp. Atk by 1.",
+				"shortDesc": "Moves ignore redirection and hit through Substitute.",
 				"rating": 0,
 				"flags": {},
 				"isNonstandard": null
@@ -49163,8 +49477,8 @@
 				"name": "Storm Power",
 				"num": 10391,
 				"gen": 9,
-				"desc": "If Rain Dance or Primordial Sea is active, its Special Attack is multiplied by 1.5 and it loses 1/8 of its max HP at turn end.",
-				"shortDesc": "In rain, 1.5x Sp. Atk and loses 1/8 max HP each turn.",
+				"desc": "In rain or heavy rain, Attack and Sp. Atk are multiplied by 1.5. The holder loses 1/8 of its maximum HP at the end of each rain turn.",
+				"shortDesc": "Rain boosts Attack and Sp. Atk by 1.5×. Costs 1/8 max HP each rain turn.",
 				"rating": 2,
 				"flags": {},
 				"isNonstandard": null
@@ -49189,6 +49503,16 @@
 				"flags": {
 					"breakable": 1
 				},
+				"isNonstandard": null
+			},
+			"stratosphericforce": {
+				"name": "Stratospheric Force",
+				"num": 32621,
+				"gen": 9,
+				"desc": "Once per entry, a Flying attack that damages a foe with raised Attack or Sp. Atk clears its positive stages in both stats. Flying and Dragon attacks gain 1.2x power. Dragon Ascent ignores positive defensive stages.",
+				"shortDesc": "Flying/Dragon: 1.2x power. Dragon Ascent pierces defensive boosts. Flying hit clears Atk/SpA boosts.",
+				"rating": 5,
+				"flags": {},
 				"isNonstandard": null
 			},
 			"streettyrant": {
@@ -49335,12 +49659,10 @@
 				"name": "Sun Sovereign",
 				"num": 10039,
 				"gen": 9,
-				"desc": "Summons sun for 8 turns on entry. Eligible Normal moves become Dragon with 1.2x power, or 1.5x on Dragon's Den and Fairy Tale. Prevents freezing outside Cold Eclipse and cures freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den and Infernal Eclipse block Fire moves. On Dragon's Den, Volcanic or Infernal Eclipse entry, gains +1 Defense and Sp. Def. Immune to hail damage. All moves have 1.1x accuracy.",
-				"shortDesc": "Eight-turn sun + Blazing Monarch; all moves have 1.1x accuracy.",
+				"desc": "Summons sun and lowers opposing Attack on entry. White Smoke blocks opposing stat drops. On Volcanic Field or Dragon's Den, entry raises Attack and Sp. Atk by 1. Rock attacks are capped at neutral effectiveness, and Stealth Rock deals no damage to the holder. A direct Fire hit clears sand and grants Molten Guard once per turn against the next opposing Rock attack.",
+				"shortDesc": "Drought + Infernal Dominion + White Smoke.",
 				"rating": 4.5,
-				"flags": {
-					"breakable": 1
-				},
+				"flags": {},
 				"isNonstandard": null
 			},
 			"superluck": {
@@ -49846,6 +50168,16 @@
 				"flags": {},
 				"isNonstandard": null
 			},
+			"tidalbellecho": {
+				"name": "Tidal Bell Echo",
+				"num": 32701,
+				"gen": 9,
+				"desc": "Once per turn, after a Water or Flying attack damages a foe, the user and each adjacent ally recover 1/16 of their own maximum HP.",
+				"shortDesc": "Water or Flying hits heal the user and adjacent allies by 1/16 HP once per turn.",
+				"rating": 4,
+				"flags": {},
+				"isNonstandard": null
+			},
 			"tidaldominion": {
 				"name": "Tidal Dominion",
 				"num": 10504,
@@ -49914,6 +50246,16 @@
 				"flags": {
 					"breakable": 1
 				},
+				"isNonstandard": null
+			},
+			"timeslip": {
+				"name": "Time Slip",
+				"num": 32708,
+				"gen": 9,
+				"desc": "Once per battle, after surviving an opposing attack at half HP or less, restores 1/4 max HP and clears all negative stat stages.",
+				"shortDesc": "Surviving a foe’s hit at half HP or less heals 1/4 HP and clears stat drops once per battle.",
+				"rating": 4,
+				"flags": {},
 				"isNonstandard": null
 			},
 			"tintedlens": {
@@ -50011,8 +50353,8 @@
 				"name": "Virulence",
 				"num": 10037,
 				"gen": 9,
-				"desc": "Incoming Fire and Ice attacks use half the attacker's offensive stat. Immune to hail damage. Ignores target Defense/Sp. Def/evasion stages when attacking, and attacker Attack/Defense/Sp. Atk/accuracy stages when defending. Reveals opposing Illusions on entry. All moves have 1.1x accuracy.",
-				"shortDesc": "Verdant Monarch; all moves have 1.1x accuracy.",
+				"desc": "Includes Thick Fat, Aroma Veil and Toxic Sink. All moves have 1.1× accuracy.",
+				"shortDesc": "Verdant Monarch + Toxic Sink; 1.1× accuracy.",
 				"rating": 4.5,
 				"flags": {
 					"breakable": 1
@@ -50187,6 +50529,16 @@
 				"desc": "Immune to Ground moves. Its Bug-type attacks receive STAB. Damaging sound moves used by it or its allies have 1.5x power; its sound moves use its higher offensive stat, and allies are protected from allied sound moves. In Sandstorm, Desert Terrain, or Ashen Beach Terrain, its Rock-, Ground-, and Steel-type attacks have 1.3x power. It is immune to sandstorm damage.",
 				"shortDesc": "Bug STAB; stronger allied sound moves; stronger Rock/Ground/Steel moves in sand fields.",
 				"rating": 4,
+				"flags": {},
+				"isNonstandard": null
+			},
+			"trenchcurrent": {
+				"name": "Trench Current",
+				"num": 32616,
+				"gen": 9,
+				"desc": "The first Water attack each entry to damage a foe heals the user and its adjacent allies by 1/8 of their own max HP.",
+				"shortDesc": "First damaging Water hit each entry heals the user and adjacent allies by 1/8 HP.",
+				"rating": 3,
 				"flags": {},
 				"isNonstandard": null
 			},
@@ -50621,6 +50973,16 @@
 				"flags": {},
 				"isNonstandard": null
 			},
+			"valorseal": {
+				"name": "Valor Seal",
+				"num": 32732,
+				"gen": 9,
+				"desc": "When the user has half its maximum HP or less, its damaging moves have 1.2× power.",
+				"shortDesc": "Damaging moves gain 1.2× power at half HP or less.",
+				"rating": 3,
+				"flags": {},
+				"isNonstandard": null
+			},
 			"vanguard": {
 				"name": "Solar Vanguard",
 				"num": 10122,
@@ -50794,7 +51156,7 @@
 				"isNonstandard": null
 			},
 			"verdanthospitality": {
-				"name": "Bloom Shelter",
+				"name": "Verdant Awakening",
 				"num": 10160,
 				"gen": 9,
 				"desc": "Friend Guard reduces attack damage to allies by 25%. Natural Cure cures its major status on switching out and heals 1/8 max HP if a status was cured. Bewitched Woods also cures its status at turn end.",
@@ -50812,6 +51174,18 @@
 				"desc": "On entry, sets Grassy Terrain and Hospitality heals each adjacent ally by 1/4 max HP. Friend Guard reduces damage to allies to 3/4.",
 				"shortDesc": "Grassy Terrain on entry; Hospitality and Friend Guard.",
 				"rating": 4,
+				"flags": {
+					"breakable": 1
+				},
+				"isNonstandard": null
+			},
+			"verityseal": {
+				"name": "Verity Seal",
+				"num": 32731,
+				"gen": 9,
+				"desc": "While the user is active, it and its allies are protected from new confusion, infatuation and Taunt.",
+				"shortDesc": "Protects the user and active allies from confusion, infatuation and Taunt.",
+				"rating": 3,
 				"flags": {
 					"breakable": 1
 				},
@@ -50879,6 +51253,16 @@
 				"flags": {
 					"breakable": 1
 				},
+				"isNonstandard": null
+			},
+			"voiceoftomorrow": {
+				"name": "Voice of Tomorrow",
+				"num": 32707,
+				"gen": 9,
+				"desc": "A Future Sight set by the user has 1.25× its usual power when it strikes the targeted position, even if the user has switched out.",
+				"shortDesc": "Future Sight has 1.25× power, even after the user switches out.",
+				"rating": 4,
+				"flags": {},
 				"isNonstandard": null
 			},
 			"voidcommand": {
@@ -51195,6 +51579,16 @@
 				"desc": "On entry, it gains +1 accuracy. Its Tail moves have their power multiplied by 1.5.",
 				"shortDesc": "On entry: +1 accuracy. Tail moves have 1.5x power.",
 				"rating": 3.5,
+				"flags": {},
+				"isNonstandard": null
+			},
+			"whirlislandsoath": {
+				"name": "Whirl Islands Oath",
+				"num": 32702,
+				"gen": 9,
+				"desc": "Once per battle, after surviving an opposing attack at half HP or less, sets Light Screen for three turns. An existing Light Screen preserves this use.",
+				"shortDesc": "Surviving a foe’s hit at half HP or less sets 3-turn Light Screen once per battle.",
+				"rating": 4,
 				"flags": {},
 				"isNonstandard": null
 			},
@@ -58836,7 +59230,7 @@
 				"type": "Ice",
 				"category": "Special",
 				"basePower": 60,
-				"accuracy": 90,
+				"accuracy": 100,
 				"critRatio": 1,
 				"pp": 10,
 				"priority": 0,
@@ -64382,7 +64776,7 @@
 				"type": "Steel",
 				"category": "Status",
 				"basePower": 0,
-				"accuracy": 85,
+				"accuracy": 100,
 				"critRatio": 1,
 				"pp": 40,
 				"priority": 0,
@@ -68253,7 +68647,7 @@
 				"type": "Rock",
 				"category": "Physical",
 				"basePower": 75,
-				"accuracy": 90,
+				"accuracy": 95,
 				"critRatio": 1,
 				"pp": 10,
 				"priority": 0,
@@ -68947,7 +69341,7 @@
 				"type": "Normal",
 				"category": "Status",
 				"basePower": 0,
-				"accuracy": 85,
+				"accuracy": 100,
 				"critRatio": 1,
 				"pp": 40,
 				"priority": 0,
@@ -82598,6 +82992,7 @@
 			"abyssalcurrent": [
 				"waterabsorb"
 			],
+			"abyssaldeluge": [],
 			"abyssalfang": [
 				"strongjaw"
 			],
@@ -82620,6 +83015,7 @@
 			"acquiredtaste": [
 				"frisk"
 			],
+			"acuityseal": [],
 			"adaptability": [],
 			"adaptivearsenal": [],
 			"adaptivecell": [],
@@ -82718,6 +83114,8 @@
 				"hydrabond",
 				"prankster"
 			],
+			"aliengenome": [],
+			"alleyambush": [],
 			"alloycore": [
 				"magicguard",
 				"selfsufficient",
@@ -82861,10 +83259,12 @@
 				"sweetveil",
 				"gluttony"
 			],
+			"ballastplating": [],
 			"ballfetch": [],
 			"barbharvest": [
 				"suctioncups"
 			],
+			"baskingscales": [],
 			"battery": [],
 			"battlearmor": [],
 			"battlebond": [
@@ -82905,7 +83305,7 @@
 				"striker"
 			],
 			"blazingmane": [
-				"firemane"
+				"flashfire"
 			],
 			"blazingtempo": [
 				"speedboost",
@@ -82964,6 +83364,7 @@
 				"sandspit"
 			],
 			"buriedtrio": [],
+			"burnedtoweroath": [],
 			"burningcrown": [
 				"intimidate",
 				"unboundblaze",
@@ -83052,6 +83453,7 @@
 				"flamebody",
 				"swarm"
 			],
+			"clearbellecho": [],
 			"clearbody": [],
 			"climatereserve": [],
 			"closedcircuit": [
@@ -83096,6 +83498,7 @@
 				"whitesmoke"
 			],
 			"continentalpull": [],
+			"continentalrupture": [],
 			"contrary": [],
 			"controlledfury": [
 				"angerpoint"
@@ -83140,9 +83543,7 @@
 				"ironfist",
 				"innerfocus"
 			],
-			"cruelshell": [
-				"shellarmor"
-			],
+			"cruelshell": [],
 			"crueltag": [
 				"shadowtag",
 				"infiltrator",
@@ -83382,6 +83783,8 @@
 				"technician"
 			],
 			"entrenched": [],
+			"eononslaught": [],
+			"eonsanctuary": [],
 			"errorhandler": [
 				"aromaveil",
 				"infiltrator"
@@ -83552,6 +83955,15 @@
 			"gentlescales": [
 				"compoundeyes"
 			],
+			"giftofemotion": [
+				"levitate"
+			],
+			"giftofknowledge": [
+				"levitate"
+			],
+			"giftofwill": [
+				"levitate"
+			],
 			"gigavolt": [
 				"moldbreaker",
 				"lightningrod",
@@ -83682,9 +84094,7 @@
 				"longreach"
 			],
 			"heatproof": [],
-			"heatreservoir": [
-				"flashfire"
-			],
+			"heatreservoir": [],
 			"heavenlychorus": [
 				"pixilate",
 				"fluffy"
@@ -83777,6 +84187,7 @@
 			"iceface": [],
 			"icemirror": [],
 			"icescales": [],
+			"ilexshrine": [],
 			"illuminate": [],
 			"illusion": [],
 			"immaculateform": [],
@@ -83842,6 +84253,7 @@
 				"whiplash"
 			],
 			"islandcurrent": [],
+			"jetstream": [],
 			"jetstreamballet": [
 				"windrider"
 			],
@@ -83981,6 +84393,7 @@
 			"malignantlight": [
 				"illuminate"
 			],
+			"mantlefracture": [],
 			"marshconduit": [
 				"waterabsorb"
 			],
@@ -84045,6 +84458,8 @@
 			"misalignedstars": [
 				"anticipation"
 			],
+			"mistwinglance": [],
+			"mistwingveil": [],
 			"mistysurge": [],
 			"moldbreaker": [],
 			"monarchofice": [
@@ -84282,6 +84697,7 @@
 				"refrigerate"
 			],
 			"persistent": [],
+			"petalrhythm": [],
 			"phalanxform": [
 				"hydrabond",
 				"friendguard",
@@ -84321,7 +84737,7 @@
 			],
 			"pollenbloom": [
 				"thickfat",
-				"unaware"
+				"aromaveil"
 			],
 			"pollenengine": [
 				"chlorophyll"
@@ -84438,7 +84854,7 @@
 			],
 			"racingspirit": [
 				"rockhead",
-				"limber"
+				"flashfire"
 			],
 			"ragingbeast": [
 				"guts",
@@ -84470,6 +84886,7 @@
 			"railsight": [
 				"innerfocus"
 			],
+			"rainbowwingcanticle": [],
 			"raincourier": [
 				"raindish"
 			],
@@ -84837,6 +85254,7 @@
 				"keeneye"
 			],
 			"silkward": [],
+			"silverwingcanticle": [],
 			"simple": [],
 			"sinisterblaze": [],
 			"siphonmuscle": [],
@@ -84854,6 +85272,7 @@
 				"levitate",
 				"keeneye"
 			],
+			"slipstreamdive": [],
 			"slowclamp": [
 				"shellarmor",
 				"owntempo",
@@ -84922,9 +85341,13 @@
 			],
 			"soulescort": [],
 			"soulfire": [],
-			"soulforgedarmor": [],
+			"soulforgedarmor": [
+				"flashfire"
+			],
 			"soulheart": [],
-			"soulpyre": [],
+			"soulpyre": [
+				"infiltrator"
+			],
 			"soulreaver": [
 				"infiltrator"
 			],
@@ -84948,6 +85371,9 @@
 			"spiralevolution": [
 				"powerdrill",
 				"adaptability"
+			],
+			"splintershell": [
+				"aftermath"
 			],
 			"sporeshroud": [
 				"effectspore"
@@ -85043,6 +85469,7 @@
 				"galewings",
 				"updraft"
 			],
+			"stratosphericforce": [],
 			"streettyrant": [
 				"intimidate",
 				"moldbreaker"
@@ -85076,7 +85503,8 @@
 			],
 			"sunsovereign": [
 				"drought",
-				"unboundblaze"
+				"infernaldominion",
+				"whitesmoke"
 			],
 			"superluck": [],
 			"supersweetsyrup": [],
@@ -85172,6 +85600,7 @@
 			"thickfat": [],
 			"thorntempered": [],
 			"threadshelter": [],
+			"tidalbellecho": [],
 			"tidaldominion": [
 				"swiftswim"
 			],
@@ -85195,6 +85624,7 @@
 				"hydration",
 				"raindish"
 			],
+			"timeslip": [],
 			"tintedlens": [],
 			"tirelessmuscle": [
 				"innerfocus"
@@ -85256,6 +85686,7 @@
 				"resonanceforce",
 				"sandforce"
 			],
+			"trenchcurrent": [],
 			"triage": [],
 			"trickperformer": [
 				"technician",
@@ -85358,6 +85789,7 @@
 			"updraft": [
 				"competitive"
 			],
+			"valorseal": [],
 			"vanguard": [
 				"intimidate"
 			],
@@ -85412,6 +85844,7 @@
 				"hospitality",
 				"friendguard"
 			],
+			"verityseal": [],
 			"vesselofruin": [],
 			"victorystar": [],
 			"violentrush": [],
@@ -85420,6 +85853,7 @@
 				"invigorate"
 			],
 			"vitalspirit": [],
+			"voiceoftomorrow": [],
 			"voidcommand": [],
 			"voidcraft": [
 				"elevate",
@@ -85498,6 +85932,7 @@
 			"webassassin": [],
 			"wellbakedbody": [],
 			"whiplash": [],
+			"whirlislandsoath": [],
 			"whitesmoke": [],
 			"wickedsnare": [
 				"intimidate"
@@ -85871,9 +86306,7 @@
 				"infiltrator",
 				"baddreams"
 			],
-			"cruelshell": [
-				"shellarmor"
-			],
+			"cruelshell": [],
 			"adaptability": [],
 			"spiralevolution": [
 				"powerdrill",
@@ -86092,7 +86525,8 @@
 			"drought": [],
 			"sunsovereign": [
 				"drought",
-				"unboundblaze"
+				"infernaldominion",
+				"whitesmoke"
 			],
 			"burningspirit": [
 				"ultrainstinct",
@@ -86488,11 +86922,11 @@
 			],
 			"pollenbloom": [
 				"thickfat",
-				"unaware"
+				"aromaveil"
 			],
 			"firemane": [],
 			"blazingmane": [
-				"firemane"
+				"flashfire"
 			],
 			"coronafurnace": [
 				"flamebody"
@@ -87492,9 +87926,7 @@
 			],
 			"twincannons": [],
 			"twinblades": [],
-			"heatreservoir": [
-				"flashfire"
-			],
+			"heatreservoir": [],
 			"mourningcoat": [
 				"fluffy"
 			],
@@ -87542,7 +87974,9 @@
 			"currentcoil": [
 				"swiftswim"
 			],
-			"soulpyre": [],
+			"soulpyre": [
+				"infiltrator"
+			],
 			"blackviper": [
 				"whiplash",
 				"shedskin"
@@ -88172,7 +88606,7 @@
 			],
 			"racingspirit": [
 				"rockhead",
-				"limber"
+				"flashfire"
 			],
 			"soothingcream": [
 				"ripen"
@@ -88504,7 +88938,9 @@
 				"hydration"
 			],
 			"shellboundfury": [],
-			"soulforgedarmor": [],
+			"soulforgedarmor": [
+				"flashfire"
+			],
 			"dunecarver": [],
 			"tatteredmemory": [
 				"cursedbody",
@@ -88633,7 +89069,47 @@
 			"voidpromise": [
 				"pastelveil",
 				"mistysurge"
-			]
+			],
+			"petalrhythm": [],
+			"splintershell": [
+				"aftermath"
+			],
+			"ballastplating": [],
+			"silverwingcanticle": [],
+			"tidalbellecho": [],
+			"whirlislandsoath": [],
+			"rainbowwingcanticle": [],
+			"clearbellecho": [],
+			"burnedtoweroath": [],
+			"ilexshrine": [],
+			"voiceoftomorrow": [],
+			"timeslip": [],
+			"trenchcurrent": [],
+			"mantlefracture": [],
+			"jetstream": [],
+			"abyssaldeluge": [],
+			"continentalrupture": [],
+			"stratosphericforce": [],
+			"mistwingveil": [],
+			"mistwinglance": [],
+			"eonsanctuary": [],
+			"eononslaught": [],
+			"giftofknowledge": [
+				"levitate"
+			],
+			"giftofemotion": [
+				"levitate"
+			],
+			"giftofwill": [
+				"levitate"
+			],
+			"acuityseal": [],
+			"verityseal": [],
+			"valorseal": [],
+			"aliengenome": [],
+			"alleyambush": [],
+			"baskingscales": [],
+			"slipstreamdive": []
 		},
 		"learnsetExclusions": {
 			"hippowdon": [
@@ -88913,16 +89389,20 @@
 				"diamondstorm"
 			],
 			"typhlosion": [
-				"bitterblade"
+				"bitterblade",
+				"earthpower"
 			],
 			"typhlosionalt": [
-				"bitterblade"
+				"bitterblade",
+				"earthpower"
 			],
 			"typhlosionhisui": [
-				"bitterblade"
+				"bitterblade",
+				"earthpower"
 			],
 			"typhlosionmega": [
-				"bitterblade"
+				"bitterblade",
+				"earthpower"
 			],
 			"venusaur": [
 				"magicpowder"

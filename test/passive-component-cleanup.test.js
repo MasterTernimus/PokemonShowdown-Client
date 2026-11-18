@@ -29,7 +29,7 @@ describe('Passive component separation client parity', () => {
      assert(!Dex.getAbilityEffects(passive).has(component));
      continue;
     }
-    const revised={masquerain:{passive:'prismskimmer',ability:'Scale Shelter'},swalot:{passive:'accumulation',ability:'Adhesive Armor'},vespiquen:{passive:'royalhive',ability:'Royal Presence'}}[row.id];
+    const revised={noctowl:{passive:'frisk',ability:'Night Watch'},masquerain:{passive:'prismskimmer',ability:'Scale Shelter'},swalot:{passive:'accumulation',ability:'Adhesive Armor'},vespiquen:{passive:'royalhive',ability:'Royal Presence'}}[row.id];
     if(revised){assert.deepEqual(species.passives,[revised.passive]);assert.equal(species.abilities[slot.slot],revised.ability);assert(!Dex.getAbilityDisplayComponents(revised.ability,Dex,species.passives).includes(revised.passive));continue;}
     assert(species.passives.includes(component));
     const activeId = Dex.abilities.get(species.abilities[slot.slot]).id;

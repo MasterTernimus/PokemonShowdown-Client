@@ -58,6 +58,6 @@ describe('November roster client data',()=>{
   assert(!Dex.getAbilityEffects('desertshell').has('heatproof'));
  });
  it('shows the exact reduced stat totals',()=>{
-  for(const[id,total]of [['rhydon',520],['lanturn',540]])assert.equal(Object.values(Dex.species.get(id).baseStats).reduce((a,b)=>a+b),total,id);
+  for(const[id,total]of [['rhydon',500],['lanturn',540]])assert.equal(Object.values(Dex.species.get(id).baseStats).reduce((a,b)=>a+b),total,id);
  });
 });
