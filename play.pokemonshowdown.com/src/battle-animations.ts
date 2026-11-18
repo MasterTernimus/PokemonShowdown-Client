@@ -3024,7 +3024,8 @@ export class PokemonSprite extends Sprite {
 			}
 			effect = [label, 'neutral'];
 		}
-		return PokemonSprite.statusTable[id] = `<span class="${effect[1]}">${effect[0].replace(/ /g, '&nbsp;')}</span> `;
+		const title = id === 'laserfocus' ? ` title="${BattleLog.escapeHTML(Dex.moves.get(id).desc)}"` : '';
+		return PokemonSprite.statusTable[id] = `<span class="${effect[1]}"${title}>${effect[0].replace(/ /g, '&nbsp;')}</span> `;
 	}
 
 	updateHPText(pokemon: Pokemon) {

@@ -25,3 +25,19 @@ describe('Ultra rivalry descriptions',()=>{
  const a=Dex.abilities.get(id);assert(a.desc.includes('40%'),id);assert(a.desc.includes('negative Attack'),id);
  });
 });
+
+describe('Ultra Ego combat-turn descriptions', () => {
+ for (const id of ['ultraego', 'burningego', 'perfectego', 'unleashedego', 'primalego']) {
+  it(id + ' describes alternating qualifying turns for damage dealt or taken', () => {
+   const ability = Dex.abilities.get(id);
+   const texts = [ability.desc];
+   if (id === 'perfectego') texts.push(Dex.getAbilityDisplayDetails(ability, ['noguard']).desc);
+   for (const text of texts) {
+    assert.match(text, /end of the first such turn and every other one afterward/i);
+    assert.match(text, /deals or takes direct attack damage to or from a foe/i);
+    assert.match(text, /gains \+1 Attack and Sp\. Atk/i);
+    assert.doesNotMatch(text, /first and every other opposing attack/i);
+   }
+  });
+ }
+});

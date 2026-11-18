@@ -13,7 +13,9 @@ describe('Connection construction failures',()=>{
  });
 });
 describe('Awaited catalog compilation',()=>{
- it('finishes writing bundles and preserves large JSON values',async()=>{
+ it('finishes writing bundles and preserves large JSON values',async function () {
+  // Launches the real compiler and waits for its output on disk.
+  this.timeout(10000);
   const dir=fs.mkdtempSync(path.join(os.tmpdir(),'ps-compiler-test-'));
   try {const input=path.join(dir,'input.ts'),output=path.join(dir,'output.js');
    const data={text:'literal __not_a_token__',values:Array.from({length:6000},(_,i)=>i)};

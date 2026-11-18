@@ -55,6 +55,7 @@ interface BattleMoveRequest {
 	rqid: number;
 	side: BattleRequestSideInfo;
 	active: (BattleRequestActivePokemon | null)[];
+	activeSlotsPerHalf?: number;
 	noCancel?: boolean;
 }
 interface BattleSwitchRequest {
@@ -194,7 +195,8 @@ class BattleChoiceBuilder {
 		}
 		if (choice.choiceType === 'move') {
 			const target = this.getChosenMove(choice, this.index()).target;
-			if (!choice.targetLoc && (this.requestLength() > 1 || target === 'normalOrSelf')) {
+			const slots = (this.request as BattleMoveRequest).activeSlotsPerHalf || this.requestLength();
+			if (!choice.targetLoc && (slots > 1 || target === 'normalOrSelf')) {
 				const choosableTargets = ['normal', 'normalOrSelf', 'any', 'adjacentAlly', 'adjacentAllyOrSelf', 'adjacentFoe'];
 				if (choosableTargets.includes(target)) {
 					this.current.move = choice.move;
@@ -497,6 +499,8 @@ class BattleChoiceBuilder {
 		}
 
 		if (request.active) {
+			// Multi and free-for-all players control one Pokémon on a two-slot half of the field.
+			request.activeSlotsPerHalf = Math.max(request.active.length, battle.nearSide.active.length);
 			request.active = request.active.map(
 				(active: any, i: number) => request.side.pokemon[i].fainted ? null : active
 			);

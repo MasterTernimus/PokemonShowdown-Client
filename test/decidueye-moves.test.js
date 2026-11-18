@@ -12,7 +12,22 @@ describe('Decidueye move removals and Fallen Star wording',()=>{
 		const moves=search.results.filter(row=>row[0]==='move').map(row=>row[1]);assert(moves.length>0);assert(!moves.includes('iciclespear'));assert(!moves.includes('spikecannon'));
 	});
 	it('shows priority wording and omits Skill Link and the hidden Triple Arrows effect',()=>{
-		const a=Dex.abilities.get('fallenstar');for(const text of [a.desc,a.shortDesc]){assert(/\+1 priority at 1\/4 (?:max )?HP/.test(text));assert(!/Skill Link/.test(text));}
+		const a=Dex.abilities.get('fallenstar');for(const text of [a.desc,a.shortDesc]){assert(/priority at 1\/4 (?:max )?HP/.test(text));assert(!/Skill Link|\bheals?\b|\brecovery\b/i.test(text));}
+		assert.match(a.desc, /\+1 priority/);
+		assert.match(a.desc, /Free-for-All, arrows strike one chosen foe twice/i);
 		const m=Dex.moves.get('triplearrows');assert(!/Chi Strike|ally crit|raises the critical|user.s side/i.test(m.desc+' '+m.shortDesc));
+	});
+	it('offers Endure to the six pre-evolutions but excludes it from the twelve final forms', () => {
+		const allowed = ['cyndaquil', 'quilava', 'rowlet', 'dartrix', 'oshawott', 'dewott'];
+		const removed = ['typhlosion', 'typhlosionalt', 'typhlosionhisui', 'typhlosionmega', 'decidueye', 'decidueyealt',
+			'decidueyehisui', 'decidueyehisuialt', 'samurott', 'samurottalt', 'samurotthisui', 'samurotthisuialt'];
+		for (const species of [...allowed, ...removed]) {
+			const search = new DexSearch();
+			search.setType('move', 'gen9nofieldsinglesgame', {species, ability: Dex.species.get(species).abilities[0], moves: []});
+			search.find('');
+			const moves = search.results.filter(row => row[0] === 'move').map(row => row[1]);
+			assert(moves.length, species);
+			assert.equal(moves.includes('endure'), allowed.includes(species), species);
+		}
 	});
 });

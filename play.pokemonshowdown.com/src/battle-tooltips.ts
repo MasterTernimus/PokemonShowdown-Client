@@ -877,6 +877,14 @@ class BattleTooltips {
 		}
 
 		text += '<p>Accuracy: ' + accuracy + '</p>';
+		const guaranteedBy = this.statusMoveHitGuarantee(move, value);
+		if (guaranteedBy) {
+			const effect = move.id === 'zapcannon' ? 'paralysis' : 'confusion';
+			text += `<p>${BattleLog.escapeHTML(guaranteedBy)}: 50% ${effect} chance on hit.</p>`;
+		} else if ((move.id === 'zapcannon' || move.id === 'dynamicpunch') &&
+			pokemon.hasKnownAbilityEffect('precision' as ID, serverPokemon)) {
+			text += '<p>Precision reduces the status chance to 50% when it guarantees a super-effective hit.</p>';
+		}
 		if (!isZOrMax && move.id === 'wildcharge' && pokemon.volatiles.stormcharge && value.tryAbility('Storm Memory')) text += '<p>Storm Charge: this Wild Charge uses the stronger offensive stat, gains 50% power and causes no recoil. The charge is spent only on damage to a foe or Substitute.</p>';
 		if (category !== 'Status' && value.tryAbility('Monarch of Ice')) text += '<p>Monarch of Ice: 30% frostbite chance. Critically hits frostbitten foes, then thaws them after the attack. Ice moves receive STAB.</p>';
 		if (category !== 'Status' && moveType === 'Flying' && value.tryAbility("Emperor's Resolve")) text += '<p>Emperor’s Resolve: this move receives Flying STAB.</p>';
@@ -959,7 +967,9 @@ class BattleTooltips {
 					text += '<p>&#x25ce; Can target distant Pok&eacute;mon in Triples.</p>';
 				}
 			} else if (this.battle.gameType === 'freeforall') {
-				if (move.target === 'allAdjacent' || move.target === 'allAdjacentFoes') {
+				if (move.flags.arrow && value.tryAbility('Fallen Star')) {
+					text += '<p>&#x25ce; Hits one chosen foe twice.</p>';
+				} else if (move.target === 'allAdjacent' || move.target === 'allAdjacentFoes') {
 					text += '<p>&#x25ce; Hits all foes.</p>';
 				} else if (move.target === 'adjacentAlly') {
 					text += '<p>&#x25ce; Can target any foe in Free-For-All.</p>';
@@ -2030,9 +2040,31 @@ class BattleTooltips {
 	}
 
 	// Gets the current accuracy for a move.
+	/** Show a definite secondary chance only for an identifiable attacker-side guarantee. */
+	private statusMoveHitGuarantee(move: Move, value: ModifiableValue) {
+		if (move.id !== 'zapcannon' && move.id !== 'dynamicpunch') return '';
+		const has = (id: string) => value.pokemon?.hasKnownAbilityEffect(id as ID, value.serverPokemon);
+		for (const id of ['noguard', 'perfectego', 'stormsovereign', 'fightingfiend', 'ragingfists', 'pendulumswing',
+			'strikersmomentum', 'amethystglow']) {
+			if (has(id)) return Dex.abilities.get(id).name;
+		}
+		if (move.id === 'dynamicpunch' && has('highnoon')) return 'High Noon';
+		if (this.battle.hasPseudoWeather('Midnight Zone Terrain') && has('illuminate')) return 'Illuminate';
+		if (this.battle.hasPseudoWeather('Fairy Tale Terrain') && has('fairyaura')) return 'Fairy Aura';
+		if (move.type === 'Electric' && ['hail', 'snow'].includes(value.effectiveWeather()) && has('auroracurrent')) {
+			return 'Aurora Current';
+		}
+		// Precision and other target-dependent guarantees are explained by the move's canonical description.
+		return '';
+	}
 	getMoveAccuracy(move: Move, value: ModifiableValue, target?: Pokemon) {
 		if (['dragonrush', 'stoneedge'].includes(move.id) && value.tryAbility('Pyrous Dominion')) move = {...move, accuracy: 100};
 		value.reset(move.accuracy === true ? 0 : move.accuracy, true);
+		const guaranteedBy = this.statusMoveHitGuarantee(move, value);
+		if (guaranteedBy) {
+			value.set(0, guaranteedBy);
+			return value;
+		}
 		const fieldAccuracy = (window as any).BattleFieldTooltips?.preview(this.battle, move, value.pokemon, value.serverPokemon, target);
 		if (fieldAccuracy && fieldAccuracy.result.accuracy !== move.accuracy) {
 			value.set(fieldAccuracy.result.accuracy === true ? 0 : fieldAccuracy.result.accuracy, fieldAccuracy.field.name);
@@ -2569,9 +2601,11 @@ class BattleTooltips {
 			value.powerAbilityModify(1.5, 'Fire Mane');
 		}
 
-		if (move.category !== 'Status' && passives.includes('proficient') && pokemon.getTypeList(serverPokemon).includes(moveType)) {
-			value.powerAbilityModify(1.3, 'Proficient passive');
+		if (move.category !== 'Status' && pokemon.getTypeList(serverPokemon).includes(moveType) &&
+			(passives.includes('proficient') || value.tryAbility('Fallen Star'))) {
+			value.powerAbilityModify(1.3, passives.includes('proficient') ? 'Proficient passive' : 'Fallen Star');
 		}
+		if (move.flags.arrow && target?.volatiles.trapped) value.abilityModify(1.3, 'Fallen Star');
 
 		// Terrain
 		if (!fieldPower) {
@@ -2718,7 +2752,9 @@ class BattleTooltips {
   if (hit === 1 && drillProfile?.hits.length === 2) {
    const second = this.getMoveBasePower(move, moveType, new ModifiableValue(this.battle, pokemon, serverPokemon), target, 2);
    value.secondHitPower = second.value;
-		 if (second.dualWieldPotentialPower > 1 || second.dualWieldPotentialDamage) value.comment.push(' (follow-up is 15% when the offensive ability activates; otherwise 60%)');
+		 if (!second.dualWieldFull && (second.dualWieldPotentialPower > 1 || second.dualWieldPotentialDamage)) {
+			 value.comment.push(' (follow-up is 15% when the offensive ability activates; otherwise 60%)');
+		 }
    value.comment.push(' (first hit; second hit: ' + second.round(second.value) + (second.maxValue ? ' to ' + second.round(second.maxValue) : '') + ' BP; each hit checks accuracy)');
   }
 		return value;

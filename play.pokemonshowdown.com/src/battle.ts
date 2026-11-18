@@ -571,6 +571,20 @@ export class Pokemon implements PokemonDetails, PokemonHealth {
 		}
 		return ability.name;
 	}
+	hasKnownAbilityEffect(id: ID, serverPokemon?: ServerPokemon) {
+		const ability = toID(this.effectiveAbility(serverPokemon));
+		if (this.side.battle.gen < 9) return ability === id;
+		const species = this.getSpecies(serverPokemon);
+		const passives = serverPokemon?.passives ?? species.passives ?? [];
+		if (passives.some(passive => Dex.getPassiveAbilityEffects(toID(passive)).has(id))) return true;
+		if (!ability || Dex.getAbilityComponentExclusions(ability, passives, species.id).includes(id)) return false;
+		if (ability === 'rkssystem') {
+			const item = serverPokemon?.item ?? this.item;
+			return Dex.getAbilityDisplayComponents(ability, this.side.battle.dex, passives, species.id, item).includes(id);
+		}
+		if (id === 'pressure' && ability === 'unstableevo' && species.id === 'umbreon') return true;
+		return Dex.getAbilityEffects(ability).has(id);
+	}
 	getTypeList(serverPokemon?: ServerPokemon, preterastallized = false) {
 		const [types, addedType] = this.getTypes(serverPokemon, preterastallized);
 		return addedType ? types.concat(addedType) : types;
@@ -1595,32 +1609,34 @@ export class Battle {
 				}
 			}
 			let pp = 1;
-			if (this.abilityActive('Pressure') && move.id !== 'stickyweb') {
+			if (this.gen >= 3) {
 				const foeTargets = [];
-				const moveTarget = move.pressureTarget;
+				const singleArrow = this.gameType === 'freeforall' && move.flags.arrow &&
+					pokemon.hasKnownAbilityEffect('fallenstar' as ID);
+				const moveTarget = singleArrow ? 'adjacentFoe' : move.pressureTarget;
+				const allFoes = move.flags.mustpressure || (this.gen < 9 && moveTarget === 'foeSide' && move.id !== 'stickyweb');
 
-				if (
-					!target && this.gameType === 'singles' &&
-					!['self', 'allies', 'allySide', 'adjacentAlly', 'adjacentAllyOrSelf', 'allyTeam'].includes(moveTarget)
-				) {
-					// Hardcode for moves without a target in singles
-					foeTargets.push(pokemon.side.foe.active[0]);
-				} else if (['all', 'allAdjacent', 'allAdjacentFoes', 'foeSide'].includes(moveTarget)) {
+				if (allFoes || ['all', 'allAdjacent', 'allAdjacentFoes'].includes(moveTarget)) {
 					for (const active of this.getAllActive()) {
 						if (active === pokemon) continue;
+						if (!allFoes && moveTarget !== 'all' && this.gameType === 'triples' &&
+							Math.abs(pokemon.slot - (active.side === pokemon.side ? active.slot : 2 - active.slot)) > 1) continue;
 						// Pressure affects allies in gen 3 and 4
 						if (this.gen <= 4 || (active.side !== pokemon.side && active.side.ally !== pokemon.side)) {
 							foeTargets.push(active);
 						}
 					}
-				} else if (target && target.side !== pokemon.side) {
-					foeTargets.push(target);
+				} else if (!['self', 'allies', 'allySide', 'allyTeam', 'foeSide'].includes(moveTarget)) {
+					const implicitFoe = this.gameType === 'singles' && !['adjacentAlly', 'adjacentAllyOrSelf'].includes(moveTarget);
+					const foe = target || (implicitFoe ? pokemon.side.foe.active[0] : null);
+					if (foe && foe !== pokemon && (this.gen <= 4 || (foe.side !== pokemon.side && foe.side.ally !== pokemon.side))) {
+						foeTargets.push(foe);
+					}
 				}
 
+				const surcharge = this.pseudoWeather.some(state => this.getTerrainId(state[0]) === 'midnightzoneterrain') ? 2 : 1;
 				for (const foe of foeTargets) {
-					if (foe && !foe.fainted && foe.effectiveAbility() === 'Pressure') {
-						pp += 1;
-					}
+					if (!foe.fainted && foe.hasKnownAbilityEffect('pressure' as ID)) pp += surcharge;
 				}
 			}
 			if (!callerMoveForPressure) {

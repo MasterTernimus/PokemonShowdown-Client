@@ -68,13 +68,17 @@ describe('Approved ability client metadata',()=>{
 describe('Totem selection visibility', () => {
  let aliases; before(() => { aliases = global.BattleAliases; global.BattleAliases = {}; });
  after(() => { if (aliases === undefined) delete global.BattleAliases; else global.BattleAliases = aliases; });
- it('hides metadata Totem forms from every search view while retaining species data', () => {
+ it('hides metadata Totem forms from every search view while retaining species data', function () {
+  // Exercise every real Totem in each supported catalog view.
+  this.timeout(10000);
   const totems = Object.keys(BattlePokedex).filter(id => DexSearch.pokemonPickerTraits(Dex.species.get(id)).totem);
   const before = JSON.stringify(totems.map(id => Dex.species.get(id)));
   assert(totems.length >= 10);
   for (const options of [{}, {customOnly: true}, {group: 'regional'}, {hideMegas: true}]) {
+   const picker = search(options);
    for (const query of ['', '-custom', 'totem', ...totems]) {
-    assert(!ids(search(options, query)).some(id => totems.includes(id)), query);
+    picker.find(query);
+    assert(!ids(picker).some(id => totems.includes(id)), query);
    }
   }
   assert(!ids(search({}, '', [['type', 'Electric']])).some(id => totems.includes(id)));

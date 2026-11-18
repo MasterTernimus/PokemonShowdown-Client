@@ -14,4 +14,13 @@ describe('Exported field preview dependencies', () => {
   const result = BattleFieldTooltips.evaluate(field, Dex.moves.get('glaciate'), source, source, '', 0);
   assert.equal(result.factor, 0.65);
  });
+ it('previews Midnight Zone accuracy for Illuminate without a live battle target', () => {
+  const field = BattleFieldRules.find(f => f.id === 'midnightzoneterrain');
+  const source = BattleFieldTooltips.pokemon(null, {speciesForme: 'Mew', ability: 'Illuminate', passives: []});
+  const target = BattleFieldTooltips.pokemon();
+  for (const move of ['zapcannon', 'dynamicpunch']) {
+   const result = BattleFieldTooltips.evaluate(field, Dex.moves.get(move), source, target, '', 0);
+   assert.equal(result.accuracy, true);
+  }
+ });
 });

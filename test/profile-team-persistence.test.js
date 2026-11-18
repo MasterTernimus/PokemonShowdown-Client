@@ -100,7 +100,9 @@ describe('Acknowledged profile team replacement', () => {
 });
 
 describe('Profile team storage acknowledgements', () => {
- it('saves restored Safari mirror teams through the actual tnull and iframe boundaries without overwriting newer data', () => {
+ it('saves restored Safari mirror teams through the actual tnull and iframe boundaries without overwriting newer data', function () {
+  // Both conflict paths initialize independent copies of the real client and iframe bridge.
+  this.timeout(10000);
   const bridgeSource=fs.readFileSync('play.pokemonshowdown.com/crossdomain.php','utf8');
   const bridgeCode=bridgeSource.slice(bridgeSource.indexOf('function messageHandler(e)'),bridgeSource.indexOf("window.addEventListener('message'"));
   for(const conflict of [false,true]) {

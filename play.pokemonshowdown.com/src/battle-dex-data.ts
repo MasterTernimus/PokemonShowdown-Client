@@ -1188,6 +1188,8 @@ interface MoveFlags {
 	heal?: 1 | 0;
 	/** Can be copied by Mirror Move. */
 	mirror?: 1 | 0;
+	/** Checks every opposing Pressure holder, regardless of the move's target. */
+	mustpressure?: 1 | 0;
 	/** Prevented from being executed or selected in a Sky Battle. */
 	nonsky?: 1 | 0;
 	/** Has no effect on Grass-type Pokemon, Pokemon with the Overcoat Ability, and Pokemon holding Safety Goggles. */

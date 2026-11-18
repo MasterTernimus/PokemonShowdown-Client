@@ -427,10 +427,14 @@ class BattlePanel extends PSRoomPanel<BattleRoom> {
 	}
 	renderMoveTargetControls(request: BattleMoveRequest, choices: BattleChoiceBuilder) {
 		const battle = this.props.room.battle;
-		const moveTarget = choices.getChosenMove(choices.current, choices.index()).target;
+		let moveTarget = choices.getChosenMove(choices.current, choices.index()).target;
+		if (battle.gameType === 'freeforall' && (moveTarget === 'adjacentAlly' || moveTarget === 'adjacentFoe')) {
+			moveTarget = 'normal';
+		}
 		const moveChoice = choices.stringChoice(choices.current);
 
-		const userSlot = choices.index();
+		const secondTrainer = request.side.id === 'p3' || request.side.id === 'p4';
+		const userSlot = choices.index() + (secondTrainer ? battle.pokemonControlled : 0);
 		const userSlotCross = battle.farSide.active.length - 1 - userSlot;
 
 		return [
@@ -542,11 +546,8 @@ class BattlePanel extends PSRoomPanel<BattleRoom> {
 					}
 				} else if (choice.targetLoc < 0) {
 					const target = battle.nearSide.active[-choice.targetLoc - 1];
-					if (!target) {
-						buf.push(` at ally slot ${choice.targetLoc}`);
-					} else {
-						buf.push(` at ally ${target.name}`);
-					}
+					const ally = battle.gameType === 'freeforall' ? '' : 'ally ';
+					buf.push(` at ${ally}${target ? target.name : 'slot ' + choice.targetLoc}`);
 				}
 			} else if (choice.choiceType === 'switch') {
 				const target = request.side.pokemon[choice.targetPokemon - 1];

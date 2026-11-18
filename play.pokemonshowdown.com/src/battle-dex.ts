@@ -61289,7 +61289,7 @@ const CUSTOM_SHARED_PASSIVE_DESCRIPTIONS: {[id: string]: {passive: string; desc:
 	"perfectego": {
 		"passive": "noguard",
 		"shortDesc": "Never misses; ignores abilities; heals and gains stats in combat.",
-		"desc": "Moves ignore bypassable abilities. After dealing HP damage, heals 1/16 max HP once per turn. The first and every other opposing attack that damages HP gives +1 Attack and Sp. Atk. Heals once per incoming attack: 1/16 max HP, then 1/20 until the holder attacks. On Ashen Beach and Fairy Tale, the first qualifying physical and special hits also give +1 Defense and Sp. Def respectively. In those fields, a qualifying hit at half HP or less instead heals 1/4 max HP once per activation; blocked healing does not spend it. These effects stop on Bewitched Woods, Haunted and Holy Field. Moves cannot miss, including on the suppressing fields. Against an opposing effective Ultra Instinct (including composites), its attacks ignore its own negative Attack and Sp. Atk stages. Ultra Instinct instead reduces its first HP-damaging move each turn by 40% and ignores positive Attack or Sp. Atk stages for that protected move. Stored stages are unchanged; normal +1 retaliation is unchanged. The rivalry is disabled on Bewitched Woods, Haunted and Holy. Against an opposing effective Ultra Instinct (including composites), its attacks ignore its own negative Attack and Sp. Atk stages. Ultra Instinct instead reduces its first HP-damaging move each turn by 40% and ignores positive Attack or Sp. Atk stages for that protected move. Stored stages are unchanged; normal +1 retaliation is unchanged. The rivalry is disabled on Bewitched Woods, Haunted and Holy.",
+		"desc": "Moves ignore bypassable abilities. After dealing HP damage, heals 1/16 max HP once per turn. Each entry, turns when this Pokémon deals or takes direct attack damage to or from a foe count toward Ultra Ego. At the end of the first such turn and every other one afterward, it gains +1 Attack and Sp. Atk. Heals once per incoming attack: 1/16 max HP, then 1/20 until the holder attacks. On Ashen Beach and Fairy Tale, the first qualifying physical and special hits also give +1 Defense and Sp. Def respectively. In those fields, a qualifying hit at half HP or less instead heals 1/4 max HP once per activation; blocked healing does not spend it. These effects stop on Bewitched Woods, Haunted and Holy Field. Moves cannot miss, including on the suppressing fields. Against an opposing effective Ultra Instinct (including composites), its attacks ignore its own negative Attack and Sp. Atk stages. Ultra Instinct instead reduces its first HP-damaging move each turn by 40% and ignores positive Attack or Sp. Atk stages for that protected move. Stored stages are unchanged. The rivalry is disabled on Bewitched Woods, Haunted and Holy. Against an opposing effective Ultra Instinct (including composites), its attacks ignore its own negative Attack and Sp. Atk stages. Ultra Instinct instead reduces its first HP-damaging move each turn by 40% and ignores positive Attack or Sp. Atk stages for that protected move. Stored stages are unchanged. The rivalry is disabled on Bewitched Woods, Haunted and Holy.",
 	},
 	"echosense": {
 		"passive": "frisk",
@@ -63036,7 +63036,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Burning Ego",
 		"num": 10256,
 		"gen": 9,
-		"desc": "Contact attackers have a 30% burn chance, or 60% on Volcanic. On Infernal Eclipse, Flame Body grants +1 Defense and Sp. Def on entry; Cold Eclipse disables contact burns. Prevents freezing outside Cold Eclipse and cures freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den and Infernal Eclipse block Fire moves. On Dragon's Den, Volcanic or Infernal Eclipse entry, gains +1 Defense and Sp. Def. Moves ignore bypassable abilities. After dealing HP damage, heals 1/16 max HP once per turn. The first and every other opposing attack that damages HP gives +1 Attack and Sp. Atk. Heals once per incoming attack: 1/16 max HP, then 1/20 until the holder attacks. On Ashen Beach and Fairy Tale, the first qualifying physical and special hits also give +1 Defense and Sp. Def respectively. In those fields, a qualifying hit at half HP or less instead heals 1/4 max HP once per activation; blocked healing does not spend it. These effects stop on Bewitched Woods, Haunted and Holy Field. On Infernal Eclipse, the two entry effects together give +2 Defense and Sp. Def. Against an opposing effective Ultra Instinct (including composites), its attacks ignore its own negative Attack and Sp. Atk stages. Ultra Instinct instead reduces its first HP-damaging move each turn by 40% and ignores positive Attack or Sp. Atk stages for that protected move. Stored stages are unchanged; normal +1 retaliation is unchanged. The rivalry is disabled on Bewitched Woods, Haunted and Holy.",
+		"desc": "Contact attackers have a 30% burn chance, or 60% on Volcanic. On Infernal Eclipse, Flame Body grants +1 Defense and Sp. Def on entry; Cold Eclipse disables contact burns. Prevents freezing outside Cold Eclipse and cures freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den and Infernal Eclipse block Fire moves. On Dragon's Den, Volcanic or Infernal Eclipse entry, gains +1 Defense and Sp. Def. Moves ignore bypassable abilities. After dealing HP damage, heals 1/16 max HP once per turn. Each entry, turns when this Pokémon deals or takes direct attack damage to or from a foe count toward Ultra Ego. At the end of the first such turn and every other one afterward, it gains +1 Attack and Sp. Atk. Heals once per incoming attack: 1/16 max HP, then 1/20 until the holder attacks. On Ashen Beach and Fairy Tale, the first qualifying physical and special hits also give +1 Defense and Sp. Def respectively. In those fields, a qualifying hit at half HP or less instead heals 1/4 max HP once per activation; blocked healing does not spend it. These effects stop on Bewitched Woods, Haunted and Holy Field. On Infernal Eclipse, the two entry effects together give +2 Defense and Sp. Def. Against an opposing effective Ultra Instinct (including composites), its attacks ignore its own negative Attack and Sp. Atk stages. Ultra Instinct instead reduces its first HP-damaging move each turn by 40% and ignores positive Attack or Sp. Atk stages for that protected move. Stored stages are unchanged. The rivalry is disabled on Bewitched Woods, Haunted and Holy.",
 		"shortDesc": "Contact attackers have a 30% burn chance, or 60% on Volcanic.",
 		"rating": 4,
 		"flags": {},
@@ -63733,7 +63733,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Cosmic Analysis",
 		"num": 32502,
 		"gen": 9,
-		"desc": "Attacks gain 30% power after all other active Pokemon have acted. On entry, raises Attack if foes have lower combined Defense, otherwise Sp. Atk. Its first damaging move each entry is a critical hit. Retains Download’s field bonuses.",
+		"desc": "Attacks gain 30% power after all other active Pokemon have acted. On entry, raises Attack if foes have lower combined Defense, otherwise Sp. Atk. Once per battle on entry, Download grants Laser Focus for the next attack that hits, through the following turn. Retains Download’s field bonuses.",
 		"shortDesc": "Analytic + Download.",
 		"rating": 4,
 		"flags": {},
@@ -64418,7 +64418,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Download",
 		"num": 88,
 		"gen": 4,
-		"desc": "On entry, it compares the opposing side's combined Defense and Special Defense. If Defense is lower, its Attack rises; otherwise its Special Attack rises. Once per battle on entry, gains Laser Focus for two turns.",
+		"desc": "On entry, it compares the opposing side's combined Defense and Special Defense. If Defense is lower, its Attack rises; otherwise its Special Attack rises. Once per battle on entry, gains Laser Focus for its next attack that hits, lasting through the following turn.",
 		"shortDesc": "Boosts the offense targeting foes' weaker defense; Laser Focus once per battle.",
 		"rating": 3.5,
 		"flags": {},
@@ -65145,8 +65145,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Fallen Star",
 		"num": 10043,
 		"gen": 9,
-		"desc": "Mold Breaker: moves ignore bypassable opposing abilities. Designated arrow moves gain +1 priority at 1/4 max HP or less and 1.3x power against trapped foes: Spirit Shackle, Thousand Arrows, Triple Arrows, Snipe Shot, Razor Leaf, Magical Leaf, Spike Cannon, Pin Missile, Icicle Spear, Rock Blast, Bullet Seed, Scale Shot, Psycho Cut and Ceaseless Edge. Has its arrow follow-up and protective effects.",
-		"shortDesc": "Arrows: +1 priority at 1/4 HP. Trapped-target and same-type attacks gain 1.3x power.",
+		"desc": "Mold Breaker. Moves bypass breakable opposing abilities. Dual Wield grants a second strike to eligible moves. Same-type attacks gain 1.3x power. Arrow moves gain 1.3x power against trapped foes and +1 priority at 1/4 HP or less. After landing an arrow, the user takes 25% less attack damage for the rest of the turn. Otherwise, at half HP or less, it takes 20% less. In Free-for-All, arrows strike one chosen foe twice. In other formats, an arrow knockout can trigger a half-power follow-up against another foe.",
+		"shortDesc": "Arrows gain priority at 1/4 HP. Takes 25% less after an arrow or 20% less at half HP.",
 		"rating": 3.5,
 		"flags": {
 			"breakable": 1,
@@ -66000,7 +66000,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Grand Strategy",
 		"num": 10125,
 		"gen": 9,
-		"desc": "Mold Breaker. While the holder is active, its team's attacks dealing opposing HP damage prepare that foe for the holder. Its next physical HP-damaging attack consumes the mark after the whole attack, ignoring positive defensive stages and Reflect, Light Screen and Aurora Veil. That attack cannot rearm the mark. Marks do not stack, survive the holder switching out, and clear when the foe switches or faints, or the holder faints or loses this ability. Once per battle, an end-of-turn major-status cure clears negative accuracy stages and grants Laser Focus through the next turn; switching clears Laser Focus. Suppression delays the cure; other cures do not spend it.",
+		"desc": "Mold Breaker. While the holder is active, its team's attacks dealing opposing HP damage prepare that foe for the holder. Its next physical HP-damaging attack consumes the mark after the whole attack, ignoring positive defensive stages and Reflect, Light Screen and Aurora Veil. That attack cannot rearm the mark. Marks do not stack, survive the holder switching out, and clear when the foe switches or faints, or the holder faints or loses this ability. Once per battle, an end-of-turn major-status cure clears negative accuracy stages and grants Laser Focus for the next attack that hits, through the following turn; switching clears Laser Focus. Suppression delays the cure; other cures do not spend it.",
 		"shortDesc": "Mold Breaker; team hits prepare foes while active; once-battle cure grants Laser Focus.",
 		"rating": 4,
 		"flags": {},
@@ -69107,7 +69107,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Perfect Ego",
 		"num": 10116,
 		"gen": 9,
-		"desc": "Moves ignore bypassable abilities. After dealing HP damage, heals 1/16 max HP once per turn. The first and every other opposing attack that damages HP gives +1 Attack and Sp. Atk. Heals once per incoming attack: 1/16 max HP, then 1/20 until the holder attacks. On Ashen Beach and Fairy Tale, the first qualifying physical and special hits also give +1 Defense and Sp. Def respectively. In those fields, a qualifying hit at half HP or less instead heals 1/4 max HP once per activation; blocked healing does not spend it. These effects stop on Bewitched Woods, Haunted and Holy Field. Moves cannot miss, including on the suppressing fields. Against an opposing effective Ultra Instinct (including composites), its attacks ignore its own negative Attack and Sp. Atk stages. Ultra Instinct instead reduces its first HP-damaging move each turn by 40% and ignores positive Attack or Sp. Atk stages for that protected move. Stored stages are unchanged; normal +1 retaliation is unchanged. The rivalry is disabled on Bewitched Woods, Haunted and Holy.",
+		"desc": "Moves ignore bypassable abilities. After dealing HP damage, heals 1/16 max HP once per turn. Each entry, turns when this Pokémon deals or takes direct attack damage to or from a foe count toward Ultra Ego. At the end of the first such turn and every other one afterward, it gains +1 Attack and Sp. Atk. Heals once per incoming attack: 1/16 max HP, then 1/20 until the holder attacks. On Ashen Beach and Fairy Tale, the first qualifying physical and special hits also give +1 Defense and Sp. Def respectively. In those fields, a qualifying hit at half HP or less instead heals 1/4 max HP once per activation; blocked healing does not spend it. These effects stop on Bewitched Woods, Haunted and Holy Field. Moves cannot miss, including on the suppressing fields. Against an opposing effective Ultra Instinct (including composites), its attacks ignore its own negative Attack and Sp. Atk stages. Ultra Instinct instead reduces its first HP-damaging move each turn by 40% and ignores positive Attack or Sp. Atk stages for that protected move. Stored stages are unchanged. The rivalry is disabled on Bewitched Woods, Haunted and Holy.",
 		"shortDesc": "Never misses; ignores abilities; heals and gains stats in combat.",
 		"rating": 5,
 		"flags": {},
@@ -69544,7 +69544,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Terra Ascendant",
 		"num": 10419,
 		"gen": 9,
-		"desc": "Moves ignore bypassable abilities. After dealing HP damage, heals 1/16 max HP once per turn. The first and every other opposing attack that damages HP gives +1 Attack and Sp. Atk. Heals once per incoming attack: 1/16 max HP, then 1/20 until the holder attacks. On Ashen Beach and Fairy Tale, the first qualifying physical and special hits also give +1 Defense and Sp. Def respectively. In those fields, a qualifying hit at half HP or less instead heals 1/4 max HP once per activation; blocked healing does not spend it. These effects stop on Bewitched Woods, Haunted and Holy Field. Against an opposing effective Ultra Instinct (including composites), its attacks ignore its own negative Attack and Sp. Atk stages. Ultra Instinct instead reduces its first HP-damaging move each turn by 40% and ignores positive Attack or Sp. Atk stages for that protected move. Stored stages are unchanged; normal +1 retaliation is unchanged. The rivalry is disabled on Bewitched Woods, Haunted and Holy. Hospitality heals each adjacent ally by 1/4 max HP on entry.",
+		"desc": "Moves ignore bypassable abilities. After dealing HP damage, heals 1/16 max HP once per turn. Each entry, turns when this Pokémon deals or takes direct attack damage to or from a foe count toward Ultra Ego. At the end of the first such turn and every other one afterward, it gains +1 Attack and Sp. Atk. Heals once per incoming attack: 1/16 max HP, then 1/20 until the holder attacks. On Ashen Beach and Fairy Tale, the first qualifying physical and special hits also give +1 Defense and Sp. Def respectively. In those fields, a qualifying hit at half HP or less instead heals 1/4 max HP once per activation; blocked healing does not spend it. These effects stop on Bewitched Woods, Haunted and Holy Field. Against an opposing effective Ultra Instinct (including composites), its attacks ignore its own negative Attack and Sp. Atk stages. Ultra Instinct instead reduces its first HP-damaging move each turn by 40% and ignores positive Attack or Sp. Atk stages for that protected move. Stored stages are unchanged. The rivalry is disabled on Bewitched Woods, Haunted and Holy. Hospitality heals each adjacent ally by 1/4 max HP on entry.",
 		"shortDesc": "Ultra Ego + Hospitality.",
 		"rating": 4,
 		"flags": {},
@@ -74000,7 +74000,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Ultra Ego",
 		"num": 10012,
 		"gen": 9,
-		"desc": "Moves ignore bypassable abilities. After dealing HP damage, heals 1/16 max HP once per turn. The first and every other opposing attack that damages HP gives +1 Attack and Sp. Atk. Heals once per incoming attack: 1/16 max HP, then 1/20 until the holder attacks. On Ashen Beach and Fairy Tale, the first qualifying physical and special hits also give +1 Defense and Sp. Def respectively. In those fields, a qualifying hit at half HP or less instead heals 1/4 max HP once per activation; blocked healing does not spend it. These effects stop on Bewitched Woods, Haunted and Holy Field. Against an opposing effective Ultra Instinct (including composites), its attacks ignore its own negative Attack and Sp. Atk stages. Ultra Instinct instead reduces its first HP-damaging move each turn by 40% and ignores positive Attack or Sp. Atk stages for that protected move. Stored stages are unchanged; normal +1 retaliation is unchanged. The rivalry is disabled on Bewitched Woods, Haunted and Holy.",
+		"desc": "Moves ignore bypassable abilities. After dealing HP damage, heals 1/16 max HP once per turn. Each entry, turns when this Pokémon deals or takes direct attack damage to or from a foe count toward Ultra Ego. At the end of the first such turn and every other one afterward, it gains +1 Attack and Sp. Atk. Heals once per incoming attack: 1/16 max HP, then 1/20 until the holder attacks. On Ashen Beach and Fairy Tale, the first qualifying physical and special hits also give +1 Defense and Sp. Def respectively. In those fields, a qualifying hit at half HP or less instead heals 1/4 max HP once per activation; blocked healing does not spend it. These effects stop on Bewitched Woods, Haunted and Holy Field. Against an opposing effective Ultra Instinct (including composites), its attacks ignore its own negative Attack and Sp. Atk stages. Ultra Instinct instead reduces its first HP-damaging move each turn by 40% and ignores positive Attack or Sp. Atk stages for that protected move. Stored stages are unchanged. The rivalry is disabled on Bewitched Woods, Haunted and Holy.",
 		"shortDesc": "Ability bypass; healing from damage dealt/taken; attack boosts and field bonuses.",
 		"rating": 3,
 		"flags": {},
@@ -74134,7 +74134,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Unleashed Ego",
 		"num": 10287,
 		"gen": 9,
-		"desc": "Ultra Ego + Levitate + Raging Storm. Airborne unless grounded. The first and every other opposing attack that damages HP gives +1 Attack and Sp. Atk. Heals once per incoming attack: 1/16 max HP, then 1/20 until the holder attacks. Dealing attack damage heals 1/16 once per turn. Ashen Beach and Fairy Tale add once-per-entry Defense/Sp. Def boosts for physical/special hits and a one-use 1/4-HP pinch heal. Royal Decree or Empress enables 1.3x power (except against Battle Bond) and 0.7x incoming damage unless Neutralization is active. Bewitched Woods, Haunted and Holy fields disable Ultra Ego effects. Raging Storm bypasses abilities, screens, Substitute and defensive stat stages; +1 critical-hit ratio. Attack KOs splash 60% of the recorded hit damage onto remaining foes, or grant +1 Attack if no splash damage is dealt. Incoming priority damage is halved. Immune to hail; cannot be suppressed. Against an opposing effective Ultra Instinct (including composites), its attacks ignore its own negative Attack and Sp. Atk stages. Ultra Instinct instead reduces its first HP-damaging move each turn by 40% and ignores positive Attack or Sp. Atk stages for that protected move. Stored stages are unchanged; normal +1 retaliation is unchanged. The rivalry is disabled on Bewitched Woods, Haunted and Holy.",
+		"desc": "Ultra Ego + Levitate + Raging Storm. Airborne unless grounded. Each entry, turns when this Pokémon deals or takes direct attack damage to or from a foe count toward Ultra Ego. At the end of the first such turn and every other one afterward, it gains +1 Attack and Sp. Atk. Heals once per incoming attack: 1/16 max HP, then 1/20 until the holder attacks. Dealing attack damage heals 1/16 once per turn. Ashen Beach and Fairy Tale add once-per-entry Defense/Sp. Def boosts for physical/special hits and a one-use 1/4-HP pinch heal. Royal Decree or Empress enables 1.3x power (except against Battle Bond) and 0.7x incoming damage unless Neutralization is active. Bewitched Woods, Haunted and Holy fields disable Ultra Ego effects. Raging Storm bypasses abilities, screens, Substitute and defensive stat stages; +1 critical-hit ratio. Attack KOs splash 60% of the recorded hit damage onto remaining foes, or grant +1 Attack if no splash damage is dealt. Incoming priority damage is halved. Immune to hail; cannot be suppressed. Against an opposing effective Ultra Instinct (including composites), its attacks ignore its own negative Attack and Sp. Atk stages. Ultra Instinct instead reduces its first HP-damaging move each turn by 40% and ignores positive Attack or Sp. Atk stages for that protected move. Stored stages are unchanged. The rivalry is disabled on Bewitched Woods, Haunted and Holy.",
 		"shortDesc": "Ultra Ego boosts/healing; airborne; bypasses defenses; KO splash.",
 		"rating": 5,
 		"flags": {
@@ -80256,13 +80256,13 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"critRatio": 1,
 		"pp": 1,
 		"priority": 0,
-		"target": "allAdjacentFoes",
+		"target": "adjacentFoe",
 		"flags": {
 			"sound": 1,
 			"bypasssub": 1,
 		},
-		"desc": "Raises the user's Attack, Defense, Special Attack, Special Defense, and Speed by 1 stage.",
-		"shortDesc": "Raises the user's Atk/Def/SpAtk/SpDef/Spe by 1.",
+		"desc": "Hits one adjacent foe and raises the user's Attack, Defense, Special Attack, Special Defense, and Speed by 1 stage.",
+		"shortDesc": "Hits one foe. Raises the user's Atk/Def/SpA/SpD/Spe by 1.",
 		"secondaries": [
 			{},
 		],
@@ -82422,8 +82422,8 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"punch": 1,
 			"metronome": 1,
 		},
-		"desc": "Has a 100% chance to confuse the target.",
-		"shortDesc": "100% chance to confuse the target.",
+		"desc": "A hit confuses the target. The chance is 50% if the user's ability or passive guarantees the hit.",
+		"shortDesc": "Confuses on hit. 50% if the user's ability guarantees the hit.",
 		"secondaries": [
 			{
 				"chance": 100,
@@ -88347,8 +88347,8 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"snatch": 1,
 			"metronome": 1,
 		},
-		"desc": "Until the end of the next turn, the user's attacks will be critical hits.",
-		"shortDesc": "Until the end of the next turn, user's moves crit.",
+		"desc": "The user's next damaging move that hits scores critical hits against every target that can take one. This applies to all hits of that move and expires at the end of the next turn.",
+		"shortDesc": "The user's next attack that hits is a critical hit.",
 		"hasSheerForceBoost": false,
 	},
 	"lashout": {
@@ -100577,8 +100577,8 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"metronome": 1,
 			"bullet": 1,
 		},
-		"desc": "Has a 100% chance to paralyze the target.",
-		"shortDesc": "100% chance to paralyze the target.",
+		"desc": "A hit paralyzes the target. The chance is 50% if the user's ability or passive guarantees the hit.",
+		"shortDesc": "Paralyzes on hit. 50% if the user's ability guarantees the hit.",
 		"secondaries": [
 			{
 				"chance": 100,
@@ -107816,18 +107816,22 @@ const SERVER_GEN9_LEARNSET_EXCLUSIONS: {[id: string]: readonly string[]} = {
 	"typhlosion": [
 		"bitterblade",
 		"earthpower",
+		"endure",
 	],
 	"typhlosionalt": [
 		"bitterblade",
 		"earthpower",
+		"endure",
 	],
 	"typhlosionhisui": [
 		"bitterblade",
 		"earthpower",
+		"endure",
 	],
 	"typhlosionmega": [
 		"bitterblade",
 		"earthpower",
+		"endure",
 	],
 	"venusaur": [
 		"magicpowder",
@@ -107840,6 +107844,30 @@ const SERVER_GEN9_LEARNSET_EXCLUSIONS: {[id: string]: readonly string[]} = {
 	],
 	"volcarona": [
 		"blueflare",
+	],
+	"decidueye": [
+		"endure",
+	],
+	"decidueyealt": [
+		"endure",
+	],
+	"decidueyehisui": [
+		"endure",
+	],
+	"decidueyehisuialt": [
+		"endure",
+	],
+	"samurott": [
+		"endure",
+	],
+	"samurottalt": [
+		"endure",
+	],
+	"samurotthisui": [
+		"endure",
+	],
+	"samurotthisuialt": [
+		"endure",
 	],
 	"poliwrath": [
 		"meteormash",
@@ -118931,7 +118959,9 @@ const Dex = new class implements ModdedDex {
   const drillBoost = (move.flags.drill || move.flags.horn) && (drill || hyper) ? favored ? 2 : 1.5 : 1;
   const launcher = !!(move.flags.pulse || move.flags.bullet) && has('Mega Launcher');
   const arrows = ['spiritshackle','thousandarrows','triplearrows','snipeshot','razorleaf','magicalleaf','spikecannon','pinmissile','iciclespear','rockblast','bulletseed','scaleshot','psychocut','ceaselessedge'];
-  const two = dual && !move.multihit && !move.flags.charge && !(move.flags as any).futuremove && !move.isZ && !move.isMax &&
+		const singleArrow = gameType === 'freeforall' && !!move.flags.arrow && has('Fallen Star');
+		const two = singleArrow || dual && !move.multihit && !move.flags.charge &&
+			!(move.flags as any).futuremove && !move.isZ && !move.isMax &&
    !!(move.flags.slicing || move.flags.pulse || move.flags.bullet || move.flags.horn || move.flags.drill || arrows.includes(move.id));
 
 	 const full = gameType === 'freeforall' && has('Siege Launcher');

@@ -4,7 +4,7 @@ const fs = require('fs');
 require('./battle.test');
 const PokemonSprite = new Function('$', 'window', fs.readFileSync('play.pokemonshowdown.com/js/battle-animations.js', 'utf8') + '\nreturn PokemonSprite;')({easing: {}}, {});
 
-describe('Delayed Wish slot indicators', () => {
+describe('Battle status and delayed Wish indicators', () => {
 	function setup() {
 		const b = new Battle({debug: true, log: ['|init|battle', '|gen|9', '|gametype|doubles',
 			'|switch|p1a: Anna|Gardevoir|100/100', '|switch|p1b: Ally|Mew|100/100',
@@ -44,5 +44,18 @@ describe('Delayed Wish slot indicators', () => {
 		const b = setup(), p = b.p1.active[0];
 		b.runMinor(['-start', 'p1a: Anna', 'move: Nostras Wish'], {});
 		assert(!render(p).includes('Nostras')); assert(!render(p).includes('[['));
+	});
+	it('shows Laser Focus on its holder until the server ends it, with the full move tooltip', () => {
+		const b = setup(), holder = b.p1.active[0], other = b.p2.active[0];
+		const move = Dex.moves.get('laserfocus');
+		assert.match(move.shortDesc, /next (?:damaging )?(?:move|attack) that hits/i);
+		assert.match(move.desc, /(?:next|following) turn/i);
+		assert.match(move.desc, /(?:every|all) (?:hit|target)/i);
+		b.runMinor(['-start', 'p1a: Anna', 'move: Laser Focus'], {});
+		assert(render(holder).includes('title="' + BattleLog.escapeHTML(move.desc) + '"'));
+		assert(render(holder).includes('Laser&nbsp;Focus'));
+		assert(!render(other).includes('Laser&nbsp;Focus'));
+		b.runMinor(['-end', 'p1a: Anna', 'move: Laser Focus'], {silent: '.'});
+		assert(!render(holder).includes('Laser&nbsp;Focus'));
 	});
 });
