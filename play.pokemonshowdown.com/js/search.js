@@ -706,14 +706,7 @@
 		return buf;
 	};
 	Search.prototype.contextualMove = function (move) {
-		var set = this.moveDisplaySet;
-		if (!set || !set.species || !move || !['gildedarrow', 'gildedhelix'].includes(move.id)) return move;
-		var dex = this.engine.dex, display = Dex.getAbilityFormPreviewSet(set, dex);
-		var species = dex.species.get(display.species);
-		if (!species.exists) return move;
-		var profile = Dex.getGildedMoveProfile(move, species.types, display.ability || '');
-		var preview = toID(display.species) !== toID(set.species);
-		return Object.assign({}, move, {type: profile.type, shortDesc: profile.text + (preview ? ' (form preview)' : '') + '. Higher critical-hit chance.'});
+		return this.moveDisplaySet && move ? Dex.getTeambuilderMoveDisplay(move, this.moveDisplaySet, this.engine.dex) : move;
 	};
 
 	Search.prototype.renderMoveRow = function (move, matchStart, matchLength, errorMessage, attrs) {
@@ -812,6 +805,7 @@
 		return buf;
 	};
 	Search.prototype.renderTaggedMoveRow = function (move, tag, errorMessage) {
+		if (this.contextualMove) move = this.contextualMove(move);
 		var attrs = '';
 		if (Search.urlRoot) attrs = ' href="' + Search.urlRoot + 'moves/' + toID(move.name) + '" data-target="push"';
 		var buf = '<li class="result"><a' + attrs + ' data-entry="move|' + BattleLog.escapeHTML(move.name) + '">';

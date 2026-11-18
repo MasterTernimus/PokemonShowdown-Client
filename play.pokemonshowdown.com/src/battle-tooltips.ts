@@ -866,7 +866,7 @@ class BattleTooltips {
 		}
 
 
-		const gilded = Dex.getGildedMoveProfile(move, pokemon.getTypes(serverPokemon)[0], pokemon.effectiveAbility(serverPokemon), this.battle.gameType) || Dex.getSilkenMoveProfile(move, pokemon.effectiveAbility(serverPokemon), serverPokemon.item);
+		const gilded = Dex.getGildedMoveProfile(move, pokemon.getTypeList(serverPokemon), pokemon.effectiveAbility(serverPokemon), this.battle.gameType) || Dex.getSilkenMoveProfile(move, pokemon.effectiveAbility(serverPokemon), serverPokemon.item);
 		if (gilded && !isZOrMax) text += '<p>' + BattleLog.escapeHTML(gilded.text) + ' before conditional modifiers.</p>';
 		let accuracy = this.getMoveAccuracy(move, value);
 
@@ -1862,8 +1862,7 @@ class BattleTooltips {
 		}
 		if (move.id === 'vorpalblade' && this.battle.hasPseudoWeather('Glitch Terrain')) moveType = '???';
 		if (['gildedarrow', 'gildedhelix', 'blacktestament'].includes(move.id)) {
-			const types = pokemon.getTypes(serverPokemon)[0];
-			moveType = types[1] && !['Fairy', 'Dark'].includes(types[1]) ? types[1] : types[0];
+			moveType = Dex.getGildedMoveType(move, pokemonTypes);
 		}
 		// Moves that require an item to change their type.
 		let item = Dex.items.get(value.itemName);
@@ -2499,9 +2498,8 @@ class BattleTooltips {
 			const plate = Dex.items.get(value.itemName);
 			const typedMultipulse = move.id === 'multipulse' && plate.id.endsWith('plate') && plate.onPlate &&
 				plate.onPlate !== 'Normal' && value.tryItem(plate.name);
-			const gildedTypes = pokemon.getTypes(serverPokemon)[0];
 			const typedGilded = ['gildedarrow', 'gildedhelix', 'blacktestament'].includes(move.id) &&
-				(gildedTypes[1] && !['Fairy', 'Dark'].includes(gildedTypes[1]) ? gildedTypes[1] : gildedTypes[0]) !== 'Normal';
+				Dex.getGildedMoveType(move, pokemon.getTypeList(serverPokemon)) !== 'Normal';
 			if (move.type === 'Normal' && !typedMultipulse && !typedGilded) {
 				value.abilityModify(this.battle.gen > 6 ? 1.2 : 1.3, "Aerilate");
 				value.abilityModify(this.battle.gen > 6 ? 1.2 : 1.3, "Galvanize");

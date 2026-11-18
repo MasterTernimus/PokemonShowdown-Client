@@ -476,7 +476,7 @@ class DexSearch {
 					const key = (row: SearchRow) => {
 						if (search.searchType === 'move') {
 							const move = this.dex.moves.get(row[1]);
-							return column === 'type' ? move.type : move.category;
+							return column === 'type' ? Dex.getTeambuilderMoveDisplay(move, search.set, this.dex).type : move.category;
 						}
 						const species = this.dex.species.get(row[1]);
 						return column === 'type' ? species.types.join('/') : Object.values(species.abilities).join('/');
@@ -2490,7 +2490,7 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 		for (const [filterType, value] of filters) {
 			switch (filterType) {
 			case 'type':
-				if (move.type !== value) return false;
+				if (Dex.getTeambuilderMoveDisplay(move, this.set, this.dex).type !== value) return false;
 				break;
 			case 'category':
 				if (move.category !== value) return false;

@@ -1,7 +1,7 @@
 {
-  "sourceHead": "a382a24e84eab5c7f8359e1fff103ca70bab6870",
-  "sourceDataSHA256": "e03cee344a38c9c2a0ad3dbdb1809c434f6a596c0e3bad57458341da10f82a79",
-  "builtSourceFingerprint": "24cf3787a39746a353d903f0aa327b3ba3478c1140cfe174a2aa95eb9dd8bbb1",
+  "sourceHead": "75568def786743f46c6e8d1e644722e2aafb995e",
+  "sourceDataSHA256": "da84736ceca611ec4dd7acc51f41fc87b85f57a15178b98dca446b9913240bf1",
+  "builtSourceFingerprint": "2e19be2f1452b686967e62c62e7bc1a9e5a424a78d2636ebcc7d14d24f9e4d7d",
   "outputs": {
     "data/abilities.js": "87425e8f9d47b5eca02c56995103d4b586fa143790dd97ad2be71edfb16307ee",
     "data/aliases.js": "53ce86ad907b6fa752938d5b321e9931c6cd6b97a246326cb5519a4b30391ef4",
@@ -11,7 +11,7 @@
     "data/items.js": "b5c17b11b66113c91fcac80c65e0d65c65d82f4908f83c08bd68ca5eb17f0967",
     "data/learnsets-g6.js": "12b50ef23b464b59f19b38f8a80aee2c6d5753d9a0de3dcc5db191e22e5ee17a",
     "data/learnsets.js": "a6850df38fa2a5f541e82e89b2dfe99fb79139c2e979452f7694d5a504aa9393",
-    "data/moves.js": "de2b8306c8cf35ca925ad5d79aecc86b3a738cf0812c719a371887d1a3292a03",
+    "data/moves.js": "8687e2077dbbab302ceaec72cf95f6ce1cdf97e8a72e0543470d1bcca63f5505",
     "data/pokedex-mini-bw.js": "c12fe7a73df3280cfc313dd9e05832cb8d9db1ba47a34d279f87d89386bef921",
     "data/pokedex-mini.js": "67109c76fd5e401621fc85c209d78f36d3a4bc7f1866559d9569ffc2aee38226",
     "data/pokedex.js": "7c9751fd666750ae14f43025de4dcdcba22f071c48806e0c0f101f6066b3b427",

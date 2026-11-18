@@ -508,7 +508,7 @@ export class Pokemon implements PokemonDetails, PokemonHealth {
 	getTypes(serverPokemon?: ServerPokemon, preterastallized = false): [ReadonlyArray<TypeName>, TypeName | ''] {
 		let types: ReadonlyArray<TypeName>;
 		if (!preterastallized && this.terastallized && this.terastallized !== 'Stellar') {
-			types = [this.terastallized as TypeName];
+			return [[this.terastallized as TypeName], ''];
 		} else if (this.volatiles.typechange) {
 			types = this.volatiles.typechange[1].split('/');
 		} else {

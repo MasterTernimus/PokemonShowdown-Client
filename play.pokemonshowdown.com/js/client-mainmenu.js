@@ -2048,6 +2048,11 @@
 			} catch (e) { this.$('.calc-status').text('Invalid scenario: ' + e.message); }
 		},
 
+		resultMoveType: function (data) {
+			if (data.move !== 'Black Testament' || typeof data.moveType !== 'string') return '';
+			var type = Dex.types.get(data.moveType);
+			return type.exists ? type.name : '';
+		},
 		receiveCalculator: function (data) {
 			if (!this.requestId || (data && data.requestId && data.requestId !== this.requestId)) return;
 			if (this.pendingScenario && (this.pendingScenario.revision !== this.scenarioRevision ||
@@ -2067,7 +2072,8 @@
 			var main = data.results[1];
 			var summary = this.damageSummary(main, main.normalRange || main.criticalRange);
 			var rangeLabel = main.normalRange ? 'Non-critical damage' : main.criticalRange ? 'Damage with a critical hit' : summary.label;
-			var html = '<div class="calc-result-card"><span class="calc-eyebrow">DEFENDER · SAMPLED</span><div class="calc-result-head"><h3>' + this.escape(data.move) + '</h3></div>' +
+			var moveType = this.resultMoveType(data);
+			var html = '<div class="calc-result-card"><span class="calc-eyebrow">DEFENDER · SAMPLED</span><div class="calc-result-head"><h3>' + this.escape(data.move) + (moveType ? ' ' + Dex.getTypeIcon(moveType) : '') + '</h3></div>' +
 				'<p class="calc-range-label">' + rangeLabel + '</p><div class="calc-roll-range"><strong>' + summary.percent + '</strong> ' + summary.hp + '</div>';
 			if (main.normalRange && main.criticalRange) {
 				var critical = this.damageSummary(main, main.criticalRange);
@@ -2293,7 +2299,8 @@
 				if (data.error) {cell.text(data.error).addClass('calc-error');} else {
 					var r = data.results[1], summary = this.damageSummary(r, r.normalRange || r.criticalRange);
 					var qualifier = r.normalRange ? ' non-critical' : r.criticalRange ? ' with critical hit' : '';
-					cell.removeClass('calc-error').text(summary.percent + qualifier + ' · ' + this.koVerdict(data, 1));
+					var moveType = this.resultMoveType(data);
+					cell.removeClass('calc-error').text((moveType ? moveType + ' · ' : '') + summary.percent + qualifier + ' · ' + this.koVerdict(data, 1));
 					cell.attr('title', 'One sampled move execution at configured current HP, including misses, critical hits, multi-hit and survival effects. Not exact KO odds or a second-turn prediction.' + (data.powerDistribution ? ' ' + data.powerDistribution.map(function (branch) {return branch.power + ' BP: ' + Math.round(branch.probability * 100) + '%';}).join('; ') + '; sampled range may omit a branch.' : ''));
 					this.comparisonResults[key] = data;
 					this.pendingScenario = {json:JSON.stringify(this.scenario()), revision:this.scenarioRevision}; receive.call(this, data);

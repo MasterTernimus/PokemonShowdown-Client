@@ -78844,8 +78844,8 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"protect": 1,
 			"mirror": 1,
 		},
-		"desc": "Sirius's move. Uses Gilded Helix’s type rule: the second current type, unless it is Fairy or Dark, then the first. Uses the higher staged attacking stat, Special on ties. HP damage prevents the target from healing for 2 turns. Wasteland / Corrosive: Healing prevention lasts 3 turns instead of 2.",
-		"shortDesc": "Sirius's move. User-type; adaptive; prevents healing for 2 turns.",
+		"desc": "Sirius's move. Uses the user’s second current type, or its first if the second is Fairy, Dark, or absent. Uses the higher staged attacking stat, Special on ties. Damaging opposing HP blocks healing for 2 turns. Wasteland / Corrosive: Healing prevention lasts 3 turns instead of 2. Dragon's Den / Short-Circuit / New World / Starlight Arena: Power is 1.2×.",
+		"shortDesc": "Sirius's move. User-type, higher offense. Blocks healing for 2 turns.",
 		"hasSheerForceBoost": false,
 		"signatureCharacters": [
 			"sirius",
@@ -118956,9 +118956,24 @@ const Dex = new class implements ModdedDex {
 		return {text: hits + ' hits · 40% calculated power per hit · secondaries on first 2 hits', hits};
 	}
 
-	getGildedMoveProfile(move: Move, types: readonly string[], ability: string, gameType = 'singles') {
+	getGildedMoveType(move: Move, types: readonly TypeName[]): TypeName {
+		return types[1] && !['Fairy', 'Dark'].includes(types[1]) ? types[1] : (types[0] || move.type);
+	}
+
+	getTeambuilderMoveDisplay(move: Move, set: PokemonSet | null | undefined, dex: ModdedDex = this) {
+		if (!set?.species || !['gildedarrow', 'gildedhelix', 'blacktestament'].includes(move.id)) return move;
+		const display = this.getAbilityFormPreviewSet(set, dex);
+		const species = dex.species.get(display.species);
+		if (!species.exists) return move;
+		if (move.id === 'blacktestament') return {...move, type: this.getGildedMoveType(move, species.types)};
+		const profile = this.getGildedMoveProfile(move, species.types, display.ability || '')!;
+		const preview = toID(display.species) !== toID(set.species) ? ' (form preview)' : '';
+		return {...move, type: profile.type, shortDesc: profile.text + preview + '. Higher critical-hit chance.'};
+	}
+
+	getGildedMoveProfile(move: Move, types: readonly TypeName[], ability: string, gameType = 'singles') {
 		if (!['gildedarrow', 'gildedhelix'].includes(move.id)) return null;
-		const type = types[1] && !['Fairy', 'Dark'].includes(types[1]) ? types[1] : (types[0] || move.type);
+		const type = this.getGildedMoveType(move, types);
 		const hydra = this.getAbilityEffects(toID(ability)).has('hydrabond' as ID);
 		const helix = move.id === 'gildedhelix';
 		const hits = helix ? hydra ? 3 : 2 : hydra && gameType !== 'freeforall' ? 3 : 1;

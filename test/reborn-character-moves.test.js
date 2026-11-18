@@ -28,6 +28,67 @@ describe('Reborn character move presentation', () => {
 		const [type, category] = tips.getMoveType(Dex.moves.get('blacktestament'), value());
 		assert.equal(type, 'Poison'); assert.equal(category, 'Physical');
 	});
+	it('shows Black Testament in the correct type group without changing the shared move or its effect text', () => {
+		const picker = require('./helpers/exclusive-move-picker.cjs')();
+		const move = picker.Dex.moves.get('blacktestament');
+		const row = Object.create(picker.BattleSearch.prototype);
+		for (const [species, type] of [['Seviper', 'Poison'], ['Chandelure', 'Fire'], ['Honchkrow', 'Flying']]) {
+			row.moveDisplaySet = {species, moves: [move.name], teraType: 'Steel'};
+			const search = new picker.MoveSearch('move', 'gen9nofieldsinglesgame', row.moveDisplaySet);
+			row.engine = {dex: picker.Dex, typedSearch: search};
+			assert(search.filter(['move', move.id], [['type', type]]));
+			assert(!search.filter(['move', move.id], [['type', 'Normal']]));
+			for (const html of [row.renderMoveRow(move, 0, 0), row.renderMoveRowInner(move), row.renderTaggedMoveRow(move, 'Signature')]) {
+				assert(html.includes('alt="' + type + '"'), species);
+				assert(html.includes(move.shortDesc));
+			}
+		}
+		for (const set of [null, {species: 'Unknown Pokémon', moves: []}]) {
+			assert.equal(picker.Dex.getTeambuilderMoveDisplay(move, set), move);
+		}
+		assert.equal(move.type, 'Normal');
+	});
+	it('uses a type added to a single current type, and only active non-Stellar Tera overrides it', () => {
+		const {p, tips, value} = setup('Chandelure');
+		const move = Dex.moves.get('blacktestament');
+		const shown = () => tips.getMoveType(move, value())[0];
+		assert.equal(shown(), 'Fire');
+		p.volatiles.typechange = ['typechange', 'Water'];
+		p.volatiles.typeadd = ['typeadd', 'Grass'];
+		assert.equal(shown(), 'Grass');
+		p.terastallized = 'Steel';
+		assert.equal(shown(), 'Steel');
+		p.terastallized = 'Stellar';
+		assert.equal(shown(), 'Grass');
+	});
+	it('colors the modern battle move button using the active user’s type', () => {
+		const {p, own} = setup('Honchkrow');
+		const script = fs.readFileSync('play.pokemonshowdown.com/js/panel-battle.js', 'utf8');
+		const Panel = new Function('PSRoom', 'PSRoomPanel', 'ChatRoom', 'PS', 'preact', 'BattleTooltips', 'ModifiableValue',
+			script + '\nreturn BattlePanel;')(class {}, class {}, class {}, {roomTypes: {}, updateRoomTypes() {}},
+			require('preact'), BattleTooltips, ModifiableValue);
+		const choices = {index: () => 0, current: {}, currentMoveRequest: () => ({moves: [{name: 'Black Testament'}]})};
+		const button = () => Panel.prototype.renderMoveControls.call(
+			{props: {room: {battle}}}, {side: {pokemon: [own]}}, choices
+		)[0];
+		assert.equal(button().attributes.type, 'Flying');
+		p.terastallized = 'Steel';
+		assert.equal(button().attributes.type, 'Steel');
+	});
+	it('previews Black Testament’s 1.2x power only on its four power fields', () => {
+		const {p, own} = setup('Seviper');
+		const move = {...Dex.moves.get('blacktestament'), type: 'Poison'};
+		const control = {...move, id: 'control', name: 'Control'};
+		for (const [field, factor] of [
+			["Dragon's Den Terrain", 1.2], ['Short-Circuit Terrain', 1.2], ['New World Terrain', 1.2],
+			['Starlight Arena Terrain', 1.2], ['Wasteland Terrain', 1], ['Corrosive Terrain', 1],
+		]) {
+			battle.pseudoWeather = [[field, 0, 0]];
+			const base = BattleFieldTooltips.preview(battle, control, p, own, battle.p2.active[0]);
+			const shown = BattleFieldTooltips.preview(battle, move, p, own, battle.p2.active[0]);
+			assert.equal(shown.result.factor, base.result.factor * factor, field);
+		}
+	});
 	it('Heavenfall shows the combined New World power, accuracy and reduced drop', () => {
 		const {p, own, tips, value} = setup(); battle.pseudoWeather = [['New World Terrain', 0, 0]];
 		const move = Dex.moves.get('heavenfall');

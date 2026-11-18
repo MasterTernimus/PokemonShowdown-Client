@@ -8,6 +8,17 @@ const end = source.indexOf('var CustomCalculatorRoom =', start);
 const storage = {teams: [], prefs() {return {};}};
 const calc = new Function('Popup','Dex','Storage','BattleLog','app',source.slice(start,end)+'; return CustomCalculatorPopup;').call({}, {extend:x=>x}, Dex, storage, {escapeHTML:x=>String(x)}, {});
 describe('Calculator usability controls', () => {
+ it('labels Black Testament only with a recognized type reported by the engine', () => {
+  const original = global.BattleTypeChart;
+  try {
+   global.BattleTypeChart = require('../play.pokemonshowdown.com/data/typechart').BattleTypeChart;
+   assert.equal(calc.resultMoveType({move:'Black Testament',moveType:'Fire'}),'Fire');
+   assert.equal(calc.resultMoveType({move:'Black Testament',moveType:'Normal'}),'Normal');
+   for(const result of [{move:'Black Testament'},{move:'Black Testament',moveType:'unknown'},{move:'Tackle',moveType:'Fire'}]) {
+    assert.equal(calc.resultMoveType(result),'');
+   }
+  } finally {global.BattleTypeChart=original;}
+ });
  it('rejects an unknown attacker before issuing a calculation', () => {
   const room = Object.assign({},calc, {readActor:()=>({species:'not-a-pokemon'}),validateActorImport(){},$(){return {val:()=> 'singles'};}});
   assert.throws(()=>room.validateCalcInputs(), /Attacker: choose a valid Pokémon/);

@@ -207,7 +207,7 @@ class PSSearchResults extends preact.Component<{
 
 	renderMoveRow(id: ID, matchStart: number, matchEnd: number, errorMessage?: preact.ComponentChildren) {
 		const search = this.props.search;
-		const move = search.dex.moves.get(id);
+		const move = Dex.getTeambuilderMoveDisplay(search.dex.moves.get(id), search.typedSearch?.set, search.dex);
 		if (!move) return <li class="result">Unrecognized move</li>;
 
 		const tagStart = (move.name.startsWith('Hidden Power') ? 12 : 0);
