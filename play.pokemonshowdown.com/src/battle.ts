@@ -435,8 +435,9 @@ export class Pokemon implements PokemonDetails, PokemonHealth {
 	getWeightKg(serverPokemon?: ServerPokemon) {
 		let autotomizeFactor = this.volatiles.autotomize?.[1] * 100 || 0;
 		let weight = Math.max(this.getSpecies(serverPokemon).weightkg - autotomizeFactor, 0.1);
-		const gravityExempt = this.getSpecies(serverPokemon).id === 'gardevoir' &&
-			toID(this.effectiveAbility(serverPokemon)) === 'voidveil';
+		const gravityAbility = toID(this.effectiveAbility(serverPokemon));
+		const gravityExempt = gravityAbility === 'voidvoice' ||
+			(this.getSpecies(serverPokemon).id === 'gardevoir' && gravityAbility === 'voidveil');
 		if (this.side.battle.hasPseudoWeather('Gravity') && !gravityExempt) weight *= 2;
 		return weight;
 	}
@@ -523,8 +524,9 @@ export class Pokemon implements PokemonDetails, PokemonHealth {
 	}
 	isGrounded(serverPokemon?: ServerPokemon) {
 		const battle = this.side.battle;
-		const gravityExempt = this.getSpecies(serverPokemon).id === 'gardevoir' &&
-			toID(this.effectiveAbility(serverPokemon)) === 'voidveil';
+		const gravityAbility = toID(this.effectiveAbility(serverPokemon));
+		const gravityExempt = gravityAbility === 'voidvoice' ||
+			(this.getSpecies(serverPokemon).id === 'gardevoir' && gravityAbility === 'voidveil');
 		if (battle.hasPseudoWeather('Gravity') && !gravityExempt) {
 			return true;
 		} else if (this.volatiles['ingrain'] && battle.gen >= 4) {
@@ -565,6 +567,7 @@ export class Pokemon implements PokemonDetails, PokemonHealth {
 		if (
 			this.fainted ||
 			(this.volatiles['transform'] && ability.flags['notransform']) ||
+			(ability.id === 'ragingstorm' && toID(serverPokemon?.item ?? this.item) !== 'abilityshield' && this.side.battle.ngasActive()) ||
 			(ability.id !== 'adaptivecycle' && !ability.flags['cantsuppress'] && (this.side.battle.ngasActive() || this.volatiles['gastroacid']))
 		) {
 			return '';
@@ -2705,7 +2708,14 @@ export class Battle {
 				break;
 			}
 
-			this.activateAbility(poke, effect);
+			// Older servers announced the seed's Fire Boost as though Flash Fire itself activated.
+			let seedBoost = effect.id === 'flashfire' && fromeffect.id === 'elementalseed';
+			if (effect.id === 'flashfire' && !kwArgs.from && effect.effectType === 'Ability') {
+				let previous = this.currentStep - 1;
+				if (this.stepQueue[previous]?.startsWith('|-boost|' + args[1] + '|spa|')) previous--;
+				seedBoost = this.stepQueue[previous] === '|-message|' + poke.name + ' raised its Fire power!';
+			}
+			if (!seedBoost) this.activateAbility(poke, effect);
 			this.activateAbility(ofpoke || poke, fromeffect);
 			switch (effect.id) {
    case 'prepared': {

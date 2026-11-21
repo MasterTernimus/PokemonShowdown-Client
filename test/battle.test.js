@@ -33,6 +33,20 @@ require('../play.pokemonshowdown.com/js/battle-text-parser.js');
 require('../play.pokemonshowdown.com/js/battle.js');
 
 describe('Battle', () => {
+	for (const event of ['Flash Fire|[from] item: Elemental Seed', 'ability: Flash Fire']) {
+		it('keeps Unburden when a seed grants Fire Boost using ' + event, () => {
+			const battle = new Battle({debug: true, log: [
+				'|init|battle', '|gen|9', '|gametype|singles', '|switch|p1a: Balloon|Drifblim|100/100',
+				'|-ability|p1a: Balloon|Unburden', '|-enditem|p1a: Balloon|Elemental Seed',
+				'|-message|Balloon raised its Fire power!', '|-boost|p1a: Balloon|spa|1',
+				'|-start|p1a: Balloon|' + event,
+			]});
+			const holder = battle.p1.active[0];
+			assert.equal(holder.ability, 'Unburden');
+			assert(holder.volatiles.flashfire);
+			battle.destroy();
+		});
+	}
  it('shows starter boost markers without overwriting the selected composite ability', () => {
   const battle = new Battle({debug: true, log: ['|init|battle', '|gen|9', '|gametype|singles', '|switch|p1a: Bloom|Venusaur, L100|100/100']});
   const pokemon = battle.p1.active[0]; pokemon.ability = 'Pollen Bloom';

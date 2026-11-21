@@ -1,19 +1,44 @@
 {
 	"sourceHead": "d12335e677cc67f292863ef3fad6ccfecd1c05c9",
 	"base": "75568def786743f46c6e8d1e644722e2aafb995e",
-	"builtSourceFingerprint": "3db2233a3e5b905d1a051e484bf0e6b72506c33f496efb9038f13785ff0cca34",
-	"sourceDataSHA256": "f997f50bf63164346b3d8db311b04f7a175bddb7b58dde04d94b7a2f789e9175",
+	"builtSourceFingerprint": "13e8d112c89b371a71134c0a5c336d2230f42e2247395c3503231285240025b5",
+	"sourceDataSHA256": "37c6bf69ee24f6b8b17dd53ce1a88185473c8ff2c74aa8cb50aa9ece789e7b60",
 	"files": [
 		"data/abilities.ts",
 		"data/ability-components.ts",
 		"data/ability-descriptions.ts",
 		"data/ability-display-summaries.ts",
+		"data/ability-display.ts",
+		"data/ability-prose-audit.ts",
 		"data/ability-readability.ts",
+		"data/aliases.ts",
+		"data/base-guardian-reworks.ts",
+		"data/champion-meteor-approved.ts",
+		"data/concise-ability-descriptions.ts",
 		"data/conditions.ts",
+		"data/field-guide-index.json",
+		"data/field-guide-presentation.ts",
+		"data/field-guide-reviewed-reference-data.ts",
+		"data/field-guide.ts",
 		"data/grand-strategy.ts",
+		"data/malignant-light-pinsir.ts",
+		"data/mega-passive-abilities.ts",
 		"data/moves.ts",
 		"data/nov16-balance-descriptions.ts",
 		"data/nov16-movepool-removals.ts",
+		"data/passive-ability-cleanup.ts",
+		"data/plasma-eruption.ts",
+		"data/pokedex.ts",
+		"data/reborn-character-moves.ts",
+		"data/rejuvenation-signature-moves.ts",
+		"data/relic-beam.ts",
+		"data/rival-support-approved.ts",
+		"data/rival-support-descriptions.ts",
+		"data/selected-mega-simplification-data.ts",
+		"data/signature-move-summaries.ts",
+		"data/signature-passive-data.ts",
+		"data/species-passives.ts",
+		"data/terrains.ts",
 		"data/text/abilities.ts",
 		"data/text/moves.ts",
 		"data/ultra-rivalry-description.ts",
@@ -250,7 +275,7 @@
 			"frameperfect": [
 				"innerfocus"
 			],
-			"malignantlight": [
+			"keenlight": [
 				"illuminate"
 			],
 			"doublestrike": [
@@ -292,6 +317,10 @@
 				"frisk",
 				"filter"
 			],
+			"voidvoice": [
+				"insomnia",
+				"magicguard"
+			],
 			"guidinglight": [
 				"illuminate"
 			],
@@ -299,9 +328,6 @@
 				"keeneye"
 			],
 			"chargedtail": [
-				"static"
-			],
-			"woolyconductor": [
 				"static"
 			],
 			"reservoir": [
@@ -885,17 +911,11 @@
 			"joyride": [
 				"aerilate"
 			],
-			"woolyconductor": [
-				"moldbreaker"
-			],
 			"relentlesslink": [
 				"skilllink"
 			],
 			"sandsovereign": [
 				"sandstream"
-			],
-			"voidvoice": [
-				"pixilate"
 			],
 			"mirrorgreed": [
 				"magicbounce"
@@ -1218,7 +1238,7 @@
 			},
 			"ragingstorm": {
 				"passive": "battlearmor",
-				"desc": "Moves ignore bypassable opposing abilities. Attacks bypass Substitute, screens and defensive stat stages and gain +1 critical-hit stage. Takes half damage from priority attacks. Immune to hail damage. Move KOs damage remaining foes by 60% of the last damage dealt; if there is no valid target or no damage is dealt, gains +1 Attack instead. Magic Guard prevents this splash damage. Cannot be suppressed.",
+				"desc": "Moves ignore bypassable opposing abilities. Attacks bypass Substitute, screens and defensive stat stages and gain +1 critical-hit stage. Takes half damage from priority attacks. Immune to hail damage. Move KOs damage remaining foes by 60% of the last damage dealt. Magic Guard prevents this splash damage. Cannot be suppressed.",
 				"shortDesc": "Bypasses screens and defensive stages; halves priority damage; KOs damage other foes."
 			},
 			"mirechorus": {
@@ -1284,12 +1304,7 @@
 			"astralcore": {
 				"passive": "purepower",
 				"desc": "On switching out, cures its major status and heals 1/8 max HP if it had a status to cure. Bewitched Woods also cures its status at turn end. Prevents other Pokemon's accuracy drops and ignores evasion boosts. Reveals opposing Illusions on activation. Mirror Arena entry lowers foes' accuracy by 1. Starlight Arena entry gives +2 Sp. Atk and puts Spotlight on its first adjacent ally. Lumina Crash, special Photon Geyser and special moves in the /relicbeam list use the target’s lower Defense or Sp. Def. They still use the holder’s Sp. Atk and retain their type, category and other effects. This effect adds no power multiplier.",
-				"shortDesc": "Natural Cure + Malignant Light."
-			},
-			"woolyconductor": {
-				"passive": "moldbreaker",
-				"desc": "Fluffy. Once per turn, an opposing contact attacker that deals HP damage loses 1 Speed.",
-				"shortDesc": "Fluffy."
+				"shortDesc": "Natural Cure + Keen Light."
 			},
 			"relentlesslink": {
 				"passive": "skilllink",
@@ -1305,11 +1320,6 @@
 				"passive": "intimidate",
 				"desc": "Contact moves have 1.3x power. Once per switch-in, the first opposing direct hit deals 25% less damage and lowers the attacker's Attack by 1 stage. Multi-hit moves spend this protection on the first hit.",
 				"shortDesc": "Tough Claws + Decoy Pincers."
-			},
-			"voidvoice": {
-				"passive": "pixilate",
-				"desc": "Queenly Majesty and Dream Sickness, retaining its protective and stat-control effects.",
-				"shortDesc": "Queenly Majesty and Dream Sickness, retaining its protective and stat-control effects."
 			},
 			"mirrorgreed": {
 				"passive": "magicbounce",
@@ -2522,7 +2532,7 @@
 			},
 			"ampharos": {
 				"abilities": {
-					"0": "Malignant Light",
+					"0": "Keen Light",
 					"1": "Fluffy",
 					"H": "Electromorphosis"
 				},
@@ -11818,11 +11828,11 @@
 				},
 				"baseStats": {
 					"hp": 80,
-					"atk": 125,
-					"def": 80,
+					"atk": 105,
+					"def": 65,
 					"spa": 45,
-					"spd": 80,
-					"spe": 125
+					"spd": 65,
+					"spe": 110
 				},
 				"types": [
 					"Normal",
@@ -13159,10 +13169,10 @@
 				"baseStats": {
 					"hp": 75,
 					"atk": 165,
-					"def": 95,
+					"def": 97,
 					"spa": 68,
 					"spd": 125,
-					"spe": 112
+					"spe": 110
 				},
 				"types": [
 					"Psychic",
@@ -13180,10 +13190,10 @@
 				"baseStats": {
 					"hp": 75,
 					"atk": 165,
-					"def": 95,
+					"def": 97,
 					"spa": 68,
 					"spd": 125,
-					"spe": 112
+					"spe": 110
 				},
 				"types": [
 					"Psychic",
@@ -13401,8 +13411,8 @@
 					"atk": 75,
 					"def": 80,
 					"spa": 165,
-					"spd": 135,
-					"spe": 110
+					"spd": 145,
+					"spe": 100
 				},
 				"types": [
 					"Psychic",
@@ -13422,8 +13432,8 @@
 					"atk": 75,
 					"def": 80,
 					"spa": 165,
-					"spd": 135,
-					"spe": 110
+					"spd": 145,
+					"spe": 100
 				},
 				"types": [
 					"Psychic",
@@ -17842,7 +17852,7 @@
 				"abilities": {
 					"0": "Defiant",
 					"1": "Conqueror's Will",
-					"H": "Royal Decree"
+					"H": "Pressure"
 				},
 				"baseStats": {
 					"hp": 105,
@@ -22902,7 +22912,7 @@
 			"necrozma": {
 				"abilities": {
 					"0": "Prism Armor",
-					"1": "Malignant Light"
+					"1": "Keen Light"
 				},
 				"baseStats": {
 					"hp": 97,
@@ -29498,7 +29508,7 @@
 			"serperior": {
 				"abilities": {
 					"0": "Multiscale",
-					"1": "Royal Decree",
+					"1": "Leaf Guard",
 					"H": "Contrary"
 				},
 				"baseStats": {
@@ -29521,7 +29531,7 @@
 			"serperiorazzy": {
 				"abilities": {
 					"0": "Multiscale",
-					"1": "Royal Decree",
+					"1": "Leaf Guard",
 					"H": "Contrary"
 				},
 				"baseStats": {
@@ -30678,7 +30688,7 @@
 					"Fighting"
 				],
 				"passives": [
-					"stickyhold"
+					"steadfast"
 				],
 				"replaceAbilities": true
 			},
@@ -32260,7 +32270,7 @@
 					"Psychic"
 				],
 				"passives": [
-					"malignantlight"
+					"keenlight"
 				],
 				"replaceAbilities": true
 			},
@@ -38425,7 +38435,7 @@
 				"name": "Aevian Dream",
 				"num": 10377,
 				"gen": 9,
-				"desc": "Sleeping foes, including Comatose users, lose 1/8 max HP each turn. Disabled on Rainbow Field. At turn end, if statused, affected by a listed ailment, negatively boosted or at half HP or less, has a 50% chance to heal 1/4 max HP, cure status, clear negative stages and remove Attract, confusion, Curse, Disable, Encore, Heal Block, Leech Seed, Nightmare, Perish Song, Taunt, Torment and Yawn. On Dragon's Den, activation is guaranteed but only cures status and heals, then raises its higher attacking stat by 1 and lowers both defenses by 1. Contact moves have 1.3x power. When it enters battle as Musharna, it transforms into Musharna-Rejuv. If this Ability is suppressed, its Rejuv form reverts to the normal species until it switches out, even if suppression ends earlier.",
+				"desc": "Sleeping foes, including Comatose users, lose 1/8 max HP each turn. Disabled on Rainbow Field. At turn end, if statused, affected by a listed ailment, negatively boosted or at half HP or less, has a 50% chance to heal 1/4 max HP, cure status, clear negative stages and remove Attract, confusion, Curse, Disable, Encore, Heal Block, Leech Seed, Nightmare, Perish Song, Taunt, Torment and Yawn. On Dragon's Den, activation is guaranteed but only cures status and heals, then raises Speed and its higher attacking stat by 1 each and lowers both defenses by 1. Contact moves have 1.3x power. When it enters battle as Musharna, it transforms into Musharna-Rejuv. If this Ability is suppressed, its Rejuv form reverts to the normal species until it switches out, even if suppression ends earlier.",
 				"shortDesc": "Transforms Musharna into Musharna-Rejuv.",
 				"rating": 5,
 				"flags": {
@@ -39006,7 +39016,7 @@
 				"num": 10261,
 				"gen": 9,
 				"desc": "Doubles Attack, or Sp. Atk instead on Psychic Terrain. On switching out, cures its major status and heals 1/8 max HP if it had a status to cure. Bewitched Woods also cures its status at turn end. Prevents other Pokemon's accuracy drops and ignores evasion boosts. Reveals opposing Illusions on activation. Mirror Arena entry lowers foes' accuracy by 1. Starlight Arena entry gives +2 Sp. Atk and puts Spotlight on its first adjacent ally. Lumina Crash, special Photon Geyser and special moves in the /relicbeam list use the target’s lower Defense or Sp. Def. They still use the holder’s Sp. Atk and retain their type, category and other effects. This effect adds no power multiplier.",
-				"shortDesc": "Pure Power + Natural Cure + Malignant Light.",
+				"shortDesc": "Pure Power + Natural Cure + Keen Light.",
 				"rating": 5,
 				"flags": {},
 				"isNonstandard": null
@@ -43904,6 +43914,16 @@
 				},
 				"isNonstandard": null
 			},
+			"keenlight": {
+				"name": "Keen Light",
+				"num": 32596,
+				"gen": 9,
+				"desc": "Prevents other Pokemon's accuracy drops and ignores evasion boosts. Reveals opposing Illusions on activation. Mirror Arena entry lowers foes' accuracy by 1. Starlight Arena entry gives +2 Sp. Atk and puts Spotlight on its first adjacent ally. Lumina Crash, special Photon Geyser and special moves in the /relicbeam list use the target’s lower Defense or Sp. Def. They still use the holder’s Sp. Atk and retain their type, category and other effects. This effect adds no power multiplier.",
+				"shortDesc": "Illuminate; special beams, pulses, bullets, Photon Geyser and Lumina Crash target the lower defense.",
+				"rating": 4,
+				"flags": {},
+				"isNonstandard": null
+			},
 			"keystoneseal": {
 				"name": "Keystone Seal",
 				"num": 11513,
@@ -44512,16 +44532,6 @@
 				"desc": "Flame Body: contact attackers have a 30% burn chance (60% on Volcanic Field); Cold Eclipse disables contact burns. Once per actual entry, the first opposing damaging move that executes against it grants +1 Sp. Atk after the entire move finishes if it remains active and survives, including Protect, misses and immunity. All hits and spread targets share one activation. Ally moves, self damage, residual damage and moves that never execute do not qualify. Ability changes or suppression do not reset usage. The activation is consumed even at +6; switching resets usage and normal stat stages, and Haze removes the boost without refreshing usage.",
 				"shortDesc": "Contact may burn; first survived opposing attack each entry: +1 Sp. Atk, even after Protect.",
 				"rating": 3.5,
-				"flags": {},
-				"isNonstandard": null
-			},
-			"malignantlight": {
-				"name": "Malignant Light",
-				"num": 32596,
-				"gen": 9,
-				"desc": "Prevents other Pokemon's accuracy drops and ignores evasion boosts. Reveals opposing Illusions on activation. Mirror Arena entry lowers foes' accuracy by 1. Starlight Arena entry gives +2 Sp. Atk and puts Spotlight on its first adjacent ally. Lumina Crash, special Photon Geyser and special moves in the /relicbeam list use the target’s lower Defense or Sp. Def. They still use the holder’s Sp. Atk and retain their type, category and other effects. This effect adds no power multiplier.",
-				"shortDesc": "Illuminate; special beams, pulses, bullets, Photon Geyser and Lumina Crash target the lower defense.",
-				"rating": 4,
 				"flags": {},
 				"isNonstandard": null
 			},
@@ -45741,7 +45751,7 @@
 				"name": "Pattern Shift",
 				"num": 10281,
 				"gen": 9,
-				"desc": "Before using a move, changes to that move's type. Excludes reflected, delayed, Snatched and move-calling attacks; type-change restrictions still apply. At turn end, if statused, affected by a listed ailment, negatively boosted or at half HP or less, has a 50% chance to heal 1/4 max HP, cure status, clear negative stages and remove Attract, confusion, Curse, Disable, Encore, Heal Block, Leech Seed, Nightmare, Perish Song, Taunt, Torment and Yawn. On Dragon's Den, activation is guaranteed but only cures status and heals, then raises its higher attacking stat by 1 and lowers both defenses by 1. Ignores target Defense/Sp. Def/evasion stages when attacking, and attacker Attack/Defense/Sp. Atk/accuracy stages when defending. Reveals opposing Illusions on entry.",
+				"desc": "Before using a move, changes to that move's type. Excludes reflected, delayed, Snatched and move-calling attacks; type-change restrictions still apply. At turn end, if statused, affected by a listed ailment, negatively boosted or at half HP or less, has a 50% chance to heal 1/4 max HP, cure status, clear negative stages and remove Attract, confusion, Curse, Disable, Encore, Heal Block, Leech Seed, Nightmare, Perish Song, Taunt, Torment and Yawn. On Dragon's Den, activation is guaranteed but only cures status and heals, then raises Speed and its higher attacking stat by 1 each and lowers both defenses by 1. Ignores target Defense/Sp. Def/evasion stages when attacking, and attacker Attack/Defense/Sp. Atk/accuracy stages when defending. Reveals opposing Illusions on entry.",
 				"shortDesc": "Changes type to match each eligible move; Dragon's Den changes the effect; reveals Illusions.",
 				"rating": 4.5,
 				"flags": {
@@ -46032,8 +46042,8 @@
 				"name": "Plasma Eruption",
 				"num": 10149,
 				"gen": 9,
-				"desc": "Fire/Electric attacks have a 50% chance to swap types, avoiding immunity on the first opponent when possible. The final type stays fixed: Electric adds 30% burn; Fire adds 30% paralysis. The holder is immune to both statuses. Each attack that damages an opponent or its Substitute gains one Pressure: first +1 Sp. Atk, second +1 Speed, third readies the core. The next Fire/Electric attack releases a core discharge: +60% power, then resets Pressure and its remaining stat boosts. If the primary foe takes damage, other foes take extra damage equal to 75% of the damage actually dealt to it; all affected foes receive the opposite status if possible. After discharge, flies for two end-of-turn ticks: Ground immunity, +20% Electric power, and no Pressure gain. Iron Ball, Gravity, Smack Down and Ingrain prevent flight. Landing powers up the next Fire attack by 30%. Discharge and landing bonuses are spent even on a miss or block. Switching or losing the ability clears its phases. Strongest field bonus only: Fire +15% on Volcanic, Burning, Superheated or Dragon's Den; Electric +15% on Electric Terrain/Aura, Factory or Short Circuit; both +10% on Mountain, Cave, Crystal Cavern, Desert, Ashen Beach or effective sun; both +5% on Haunted, New World, Inverse, Big Top or Fairy Tale.",
-				"shortDesc": "Fire/Electric may swap and add status. Three hits ready a +60% core discharge.",
+				"desc": "Galvanize converts eligible Normal moves to Electric and gives them its usual power bonus. Fire/Electric attacks have a 50% chance to swap types, avoiding immunity on the first opponent when possible. The final type stays fixed: Electric adds 30% burn; Fire adds 30% paralysis. The holder is immune to both statuses. Each attack that damages an opponent or its Substitute gains one Pressure: first +1 Sp. Atk, second +1 Speed, third readies the core. The next Fire/Electric attack releases a core discharge: +60% power, then resets Pressure and its remaining stat boosts. If the primary foe takes damage, other foes take extra damage equal to 75% of the damage actually dealt to it; all affected foes receive the opposite status if possible. After discharge, flies for two end-of-turn ticks: Ground immunity, +20% Electric power, and no Pressure gain. Iron Ball, Gravity, Smack Down and Ingrain prevent flight. Landing powers up the next Fire attack by 30%. Discharge and landing bonuses are spent even on a miss or block. Switching or losing the ability clears its phases. Strongest field bonus only: Fire +15% on Volcanic, Burning, Superheated or Dragon's Den; Electric +15% on Electric Terrain/Aura, Factory or Short Circuit; both +10% on Mountain, Cave, Crystal Cavern, Desert, Ashen Beach or effective sun; both +5% on Haunted, New World, Inverse, Big Top or Fairy Tale.",
+				"shortDesc": "Galvanize. Fire/Electric may swap and add status. Three hits ready a +60% core discharge.",
 				"rating": 5,
 				"flags": {},
 				"isNonstandard": null
@@ -46675,7 +46685,7 @@
 				"name": "Queen's Guard",
 				"num": 10120,
 				"gen": 9,
-				"desc": "Reverses received stat-stage changes, except Z-Power changes. At turn end, if statused, affected by a listed ailment, negatively boosted or at half HP or less, has a 50% chance to heal 1/4 max HP, cure status, clear negative stages and remove Attract, confusion, Curse, Disable, Encore, Heal Block, Leech Seed, Nightmare, Perish Song, Taunt, Torment and Yawn. On Dragon's Den, activation is guaranteed but only cures status and heals, then raises its higher attacking stat by 1 and lowers both defenses by 1. On entry, lowers adjacent foes' Attack by 1. Substitute and Intimidate protections still apply.",
+				"desc": "Reverses received stat-stage changes, except Z-Power changes. At turn end, if statused, affected by a listed ailment, negatively boosted or at half HP or less, has a 50% chance to heal 1/4 max HP, cure status, clear negative stages and remove Attract, confusion, Curse, Disable, Encore, Heal Block, Leech Seed, Nightmare, Perish Song, Taunt, Torment and Yawn. On Dragon's Den, activation is guaranteed but only cures status and heals, then raises Speed and its higher attacking stat by 1 each and lowers both defenses by 1. On entry, lowers adjacent foes' Attack by 1. Substitute and Intimidate protections still apply.",
 				"shortDesc": "Contrary + Shed Skin + Intimidate.",
 				"rating": 4.5,
 				"flags": {
@@ -46785,7 +46795,7 @@
 				"name": "Raging Overlord",
 				"num": 10385,
 				"gen": 9,
-				"desc": "Moves ignore bypassable opposing abilities. Attacks bypass Substitute, screens and defensive stat stages and gain +1 critical-hit stage. Takes half damage from priority attacks. Immune to hail damage. Move KOs damage remaining foes by 60% of the last damage dealt; if there is no valid target or no damage is dealt, gains +1 Attack instead. Magic Guard prevents this splash damage. Cannot be suppressed. Each fainted ally adds 10% move damage; in Free-for-All, allies count twice. At 2+ fallen allies it gains Infiltrator; 4+, flinch immunity from Inner Focus; 5+, indirect-damage immunity and a one-time +1 Attack and Sp. Atk. Effective fallen count is capped at 5 after Free-for-All doubling, for a maximum 1.5x Supreme Overlord power multiplier.",
+				"desc": "Moves ignore bypassable opposing abilities. Attacks bypass Substitute, screens and defensive stat stages and gain +1 critical-hit stage. Takes half damage from priority attacks. Immune to hail damage. Move KOs damage remaining foes by 60% of the last damage dealt. Magic Guard prevents this splash damage. Cannot be suppressed. Each fainted ally adds 10% move damage; in Free-for-All, allies count twice. At 2+ fallen allies it gains Infiltrator; 4+, flinch immunity from Inner Focus; 5+, indirect-damage immunity and a one-time +1 Attack and Sp. Atk. Effective fallen count is capped at 5 after Free-for-All doubling, for a maximum 1.5x Supreme Overlord power multiplier.",
 				"shortDesc": "Moves ignore bypassable opposing abilities.",
 				"rating": 5,
 				"flags": {
@@ -46797,7 +46807,7 @@
 				"name": "Raging Storm",
 				"num": 10121,
 				"gen": 9,
-				"desc": "Moves ignore bypassable abilities, Substitute, screens and defensive stages and gain one critical-hit stage. Incoming priority attack damage is halved. Immune to hail damage. Move KOs retain the 60% damage splash or Attack increase. Cannot be suppressed.",
+				"desc": "Moves ignore bypassable abilities, Substitute, screens and defensive stages and gain one critical-hit stage. Incoming priority attack damage is halved. Immune to hail damage. Move KOs deal 60% of the last hit's damage to other foes. Neutralizing Gas suppresses this ability.",
 				"shortDesc": "bypasses screens/defensive stages; priority resistance and KO splash.",
 				"rating": 4.5,
 				"flags": {
@@ -47426,8 +47436,8 @@
 				"name": "Rival Malice",
 				"num": 11480,
 				"gen": 9,
-				"desc": "Speed is multiplied by 1.5. Each ordinary calculated attack hit deals 1 + 0.5 times the target current HP fraction in damage. Recalculates each hit. Fixed damage, OHKO and indirect damage are not multiplied.",
-				"shortDesc": "Speed 1.5x; attack damage scales from 1x to 1.5x with target HP.",
+				"desc": "Against poisoned or badly poisoned foes, attacks ignore positive Defense and Sp. Def stages. Each ordinary calculated attack hit deals 1 + 0.5 times the target current HP fraction in damage. Recalculates each hit. Fixed damage, OHKO and indirect damage are not multiplied.",
+				"shortDesc": "Bypasses boosted Defense and Sp. Def on poisoned foes. Damage scales up to 1.5x with target HP.",
 				"rating": 5,
 				"flags": {},
 				"isNonstandard": null
@@ -48235,7 +48245,7 @@
 				"name": "Shed Skin",
 				"num": 61,
 				"gen": 3,
-				"desc": "At turn end, if statused, affected by a listed ailment, negatively boosted or at half HP or less, has a 50% chance to heal 1/4 max HP, cure status, clear negative stages and remove Attract, confusion, Curse, Disable, Encore, Heal Block, Leech Seed, Nightmare, Perish Song, Taunt, Torment and Yawn. On Dragon's Den, activation is guaranteed but only cures status and heals, then raises its higher attacking stat by 1 and lowers both defenses by 1.",
+				"desc": "At turn end, if statused, affected by a listed ailment, negatively boosted or at half HP or less, has a 50% chance to heal 1/4 max HP, cure status, clear negative stages and remove Attract, confusion, Curse, Disable, Encore, Heal Block, Leech Seed, Nightmare, Perish Song, Taunt, Torment and Yawn. On Dragon's Den, activation is guaranteed but only cures status and heals, then raises Speed and its higher attacking stat by 1 each and lowers both defenses by 1.",
 				"shortDesc": "50% end-turn cure/reset and 1/4 heal; Dragon's Den changes the effect.",
 				"rating": 3,
 				"flags": {},
@@ -50582,7 +50592,7 @@
 				"name": "True Hydra",
 				"num": 10413,
 				"gen": 9,
-				"desc": "Eligible single-target attacks hit three times. In singles and doubles, native variable multi-hit moves use their maximum hit count, keeping native per-hit accuracy and damage. Remaining native hits can continue into another living opposing active Pokemon after a KO at 70% damage. Excludes non-FFA spread, charge, delayed, Z/Max and extra-hit-barred moves. Follow-ups deal 30% damage, retargeting another living opposing active Pokemon after a KO. In FFA, single-target moves hit all foes at 1.3x power; spread moves hit all foes three times with 30% follow-ups. Full-power spread stays full power. Moves have 1.2x power on Dragon's Den. Heals 1/3 max HP on switching out. At turn end, if statused, affected by a listed ailment, negatively boosted or at half HP or less, has a 50% chance to heal 1/4 max HP, cure status, clear negative stages and remove Attract, confusion, Curse, Disable, Encore, Heal Block, Leech Seed, Nightmare, Perish Song, Taunt, Torment and Yawn. On Dragon's Den, activation is guaranteed but only cures status and heals, then raises its higher attacking stat by 1 and lowers both defenses by 1. Heals 1/16 max HP each turn. Immune to sandstorm and hail damage.",
+				"desc": "Eligible single-target attacks hit three times. In singles and doubles, native variable multi-hit moves use their maximum hit count, keeping native per-hit accuracy and damage. Remaining native hits can continue into another living opposing active Pokemon after a KO at 70% damage. Excludes non-FFA spread, charge, delayed, Z/Max and extra-hit-barred moves. Follow-ups deal 30% damage, retargeting another living opposing active Pokemon after a KO. In FFA, single-target moves hit all foes at 1.3x power; spread moves hit all foes three times with 30% follow-ups. Full-power spread stays full power. Moves have 1.2x power on Dragon's Den. Heals 1/3 max HP on switching out. At turn end, if statused, affected by a listed ailment, negatively boosted or at half HP or less, has a 50% chance to heal 1/4 max HP, cure status, clear negative stages and remove Attract, confusion, Curse, Disable, Encore, Heal Block, Leech Seed, Nightmare, Perish Song, Taunt, Torment and Yawn. On Dragon's Den, activation is guaranteed but only cures status and heals, then raises Speed and its higher attacking stat by 1 each and lowers both defenses by 1. Heals 1/16 max HP each turn. Immune to sandstorm and hail damage.",
 				"shortDesc": "Eligible attacks hit three times; switch and turn-end healing; ailment recovery.",
 				"rating": 4.5,
 				"flags": {
@@ -50854,7 +50864,7 @@
 				"name": "Unleashed Ego",
 				"num": 10287,
 				"gen": 9,
-				"desc": "Ultra Ego + Levitate + Raging Storm. Airborne unless grounded. Each entry, turns when this Pokémon deals or takes direct attack damage to or from a foe count toward Ultra Ego. At the end of the first such turn and every other one afterward, it gains +1 Attack and Sp. Atk. Heals once per incoming attack: 1/16 max HP, then 1/20 until the holder attacks. Dealing attack damage heals 1/16 once per turn. Ashen Beach and Fairy Tale add once-per-entry Defense/Sp. Def boosts for physical/special hits and a one-use 1/4-HP pinch heal. Royal Decree or Empress enables 1.3x power (except against Battle Bond) and 0.7x incoming damage unless Neutralization is active. Bewitched Woods, Haunted and Holy fields disable Ultra Ego effects. Raging Storm bypasses abilities, screens, Substitute and defensive stat stages; +1 critical-hit ratio. Attack KOs splash 60% of the recorded hit damage onto remaining foes, or grant +1 Attack if no splash damage is dealt. Incoming priority damage is halved. Immune to hail; cannot be suppressed. Against an opposing effective Ultra Instinct (including composites), its attacks ignore its own negative Attack and Sp. Atk stages. Ultra Instinct instead reduces its first HP-damaging move each turn by 40% and ignores positive Attack or Sp. Atk stages for that protected move. Stored stages are unchanged. The rivalry is disabled on Bewitched Woods, Haunted and Holy.",
+				"desc": "Ultra Ego + Levitate + Raging Storm. Airborne unless grounded. Each entry, turns when this Pokémon deals or takes direct attack damage to or from a foe count toward Ultra Ego. At the end of the first such turn and every other one afterward, it gains +1 Attack and Sp. Atk. Heals once per incoming attack: 1/16 max HP, then 1/20 until the holder attacks. Dealing attack damage heals 1/16 once per turn. Ashen Beach and Fairy Tale add once-per-entry Defense/Sp. Def boosts for physical/special hits and a one-use 1/4-HP pinch heal. Royal Decree or Empress enables 1.3x power (except against Battle Bond) and 0.7x incoming damage unless Neutralization is active. Bewitched Woods, Haunted and Holy fields disable Ultra Ego effects. Raging Storm bypasses abilities, screens, Substitute and defensive stat stages; +1 critical-hit ratio. Attack KOs splash 60% of the recorded hit damage onto remaining foes. Incoming priority damage is halved. Immune to hail; cannot be suppressed. Against an opposing effective Ultra Instinct (including composites), its attacks ignore its own negative Attack and Sp. Atk stages. Ultra Instinct instead reduces its first HP-damaging move each turn by 40% and ignores positive Attack or Sp. Atk stages for that protected move. Stored stages are unchanged. The rivalry is disabled on Bewitched Woods, Haunted and Holy.",
 				"shortDesc": "Ultra Ego boosts/healing; airborne; bypasses defenses; KO splash.",
 				"rating": 5,
 				"flags": {
@@ -51386,8 +51396,8 @@
 				"name": "Void Voice",
 				"num": 10113,
 				"gen": 9,
-				"desc": "Eligible Normal moves become Fairy and have 1.2x power, or 1.5x on Misty Terrain. Excludes moves whose type is set by their own effect, damaging Z-Moves and Terastallized Tera Blast. Blocks opposing priority moves aimed at it or its allies. Attacks deal 1.5x damage on Fairy Tale, or on Chessboard unless it has the Queen role. Has Telepathy, including avoiding allied damaging moves and doubled Speed in Psychic Terrain or Psychic Aura. At turn end, it and its active allies each heal 1/16 max HP. Once per switch-in, if an opposing move would knock out an ally, that ally survives at 1 HP and it loses 1/4 max HP, provided it has more HP than the cost.",
-				"shortDesc": "Normal moves become Fairy; blocks foe priority; heals allies and can save one.",
+				"desc": "Blocks opposing priority moves aimed at the holder or its allies. Damaging moves deal 1.5× damage on Fairy Tale or on Chessboard unless the holder is the Queen. Void Veil grants Levitate and Telepathy, doubles Speed in Psychic Terrain or Psychic Aura, and allows beneficial field effects while airborne. Gravity does not ground the holder or disable its airborne moves.",
+				"shortDesc": "Queenly Majesty + Void Veil. Blocks opposing priority and avoids allied attacks.",
 				"rating": 5,
 				"flags": {
 					"breakable": 1
@@ -51804,8 +51814,8 @@
 				"name": "Wooly Conductor",
 				"num": 10192,
 				"gen": 9,
-				"desc": "Takes half damage from contact attacks and double damage from Fire attacks; contact Fire attacks deal normal damage. Moves ignore bypassable opposing abilities. Once per turn after an opposing contact attack deals HP damage, lowers its attacker's Speed by 1.",
-				"shortDesc": "Half contact damage, double Fire damage; ignores abilities; contact paralysis chance.",
+				"desc": "Takes half damage from contact attacks and double damage from Fire attacks; contact Fire attacks deal normal damage. Prevents other Pokemon's accuracy drops and ignores evasion boosts. Reveals opposing Illusions on activation. Mirror Arena entry lowers foes' accuracy by 1. Starlight Arena entry gives +2 Sp. Atk and puts Spotlight on its first adjacent ally. Lumina Crash, special Photon Geyser and special moves in the /relicbeam list use the target’s lower Defense or Sp. Def. They still use the holder’s Sp. Atk and retain their type, category and other effects. This effect adds no power multiplier.",
+				"shortDesc": "Fluffy + Keen Light. Special light moves target the lower defense.",
 				"rating": 4.5,
 				"flags": {
 					"breakable": 1
@@ -53583,7 +53593,8 @@
 				"target": "normal",
 				"flags": {
 					"protect": 1,
-					"mirror": 1
+					"mirror": 1,
+					"tail": 1
 				},
 				"desc": "Sirius's move. Uses the user’s second current type, or its first if the second is Fairy, Dark, or absent. Uses the higher staged attacking stat, Special on ties. Damaging opposing HP blocks healing for 2 turns. Wasteland / Corrosive: Healing prevention lasts 3 turns instead of 2. Dragon's Den / Short-Circuit / New World / Starlight Arena: Power is 1.2×.",
 				"shortDesc": "Sirius's move. User-type, higher offense. Blocks healing for 2 turns.",
@@ -58103,8 +58114,8 @@
 					"mirror": 1,
 					"sound": 1
 				},
-				"desc": "Amber's move. Random 60/80/100 power. Usable asleep; wakes user. Sound move. Cave gains shared volcanic heat; the second heating use changes it to Volcanic with the existing transition boost.",
-				"shortDesc": "Amber's move. 60/80/100 power. Usable asleep; wakes user.",
+				"desc": "Amber's move. Uses the higher staged Attack or Sp. Atk (Special on ties). Random 60/80/100 power. Usable asleep; wakes user. Sound move. Cave gains shared volcanic heat; the second heating use changes it to Volcanic with the existing transition boost.",
+				"shortDesc": "Amber's move. Adaptive. 60/80/100 power. Usable asleep; wakes user.",
 				"hasSheerForceBoost": false,
 				"signatureCharacters": [
 					"amber"
@@ -59571,8 +59582,8 @@
 					"mirror": 1,
 					"metronome": 1
 				},
-				"desc": "After a successful hit, the user must recharge next turn unless this move directly knocks out an opponent.",
-				"shortDesc": "Recharges next turn unless it KOs an opponent.",
+				"desc": "The user recharges after a hit. A direct knockout skips recharge on Glitch Field.",
+				"shortDesc": "Recharge; skips it on a Glitch Field KO.",
 				"hasSheerForceBoost": false
 			},
 			"gigatonhammer": {
@@ -62020,8 +62031,8 @@
 					"mirror": 1,
 					"metronome": 1
 				},
-				"desc": "After a successful hit, the user must recharge next turn unless this move directly knocks out an opponent.",
-				"shortDesc": "Recharges next turn unless it KOs an opponent.",
+				"desc": "The user recharges after a hit. A direct knockout skips recharge on Glitch Field or with Champion's Command.",
+				"shortDesc": "Recharge; Glitch or Champion's Command skips it on KO.",
 				"hasSheerForceBoost": false
 			},
 			"hyperdrill": {
@@ -71093,7 +71104,7 @@
 				"num": 10426,
 				"type": "Ghost",
 				"category": "Special",
-				"basePower": 85,
+				"basePower": 65,
 				"accuracy": 100,
 				"critRatio": 1,
 				"pp": 10,
@@ -71104,7 +71115,7 @@
 					"mirror": 1,
 					"sound": 1
 				},
-				"desc": "Narcissa's move. 85 base power; uses the higher staged Attack or Special Attack, Special on ties. Sound move; heals 25% of damage dealt. Existing field effects apply.",
+				"desc": "Narcissa's move. 65 base power; uses the higher staged Attack or Special Attack, Special on ties. Sound move; heals 25% of damage dealt. Existing field effects apply.",
 				"shortDesc": "Narcissa's move. Adaptive (Special on ties); heals 25% of damage dealt.",
 				"hasSheerForceBoost": false,
 				"signatureCharacters": [
@@ -83184,7 +83195,7 @@
 			"astralcore": [
 				"purepower",
 				"naturalcure",
-				"malignantlight"
+				"keenlight"
 			],
 			"astralengine": [
 				"powerspot"
@@ -84252,6 +84263,9 @@
 			"keenhunt": [
 				"keeneye"
 			],
+			"keenlight": [
+				"illuminate"
+			],
 			"keystoneseal": [
 				"cursedbody"
 			],
@@ -84375,9 +84389,6 @@
 			"magnetpull": [],
 			"malicewell": [
 				"flamebody"
-			],
-			"malignantlight": [
-				"illuminate"
 			],
 			"mantlefracture": [],
 			"marshconduit": [
@@ -84707,7 +84718,9 @@
 				"toughclaws"
 			],
 			"pixilate": [],
-			"plasmaeruption": [],
+			"plasmaeruption": [
+				"galvanize"
+			],
 			"plus": [],
 			"plushwhiplash": [
 				"whiplash",
@@ -85885,9 +85898,8 @@
 				"insomnia"
 			],
 			"voidvoice": [
-				"pixilate",
 				"queenlymajesty",
-				"dreamsickness",
+				"voidveil",
 				"telepathy"
 			],
 			"voidwrath": [
@@ -85977,7 +85989,7 @@
 			"wonderskin": [],
 			"woolyconductor": [
 				"fluffy",
-				"moldbreaker"
+				"keenlight"
 			],
 			"worldaxis": [],
 			"worldbinder": [
@@ -86682,9 +86694,8 @@
 				"vitalspirit"
 			],
 			"voidvoice": [
-				"pixilate",
 				"queenlymajesty",
-				"dreamsickness"
+				"voidveil"
 			],
 			"memoryleak": [],
 			"defragment": [],
@@ -87026,7 +87037,7 @@
 			"astralcore": [
 				"purepower",
 				"naturalcure",
-				"malignantlight"
+				"keenlight"
 			],
 			"divinemockery": [
 				"hydrabond",
@@ -87555,7 +87566,7 @@
 			],
 			"woolyconductor": [
 				"fluffy",
-				"moldbreaker"
+				"keenlight"
 			],
 			"absolutezero": [
 				"snowwarning",
@@ -88860,7 +88871,9 @@
 			"arcanechamber": [],
 			"mirrorchamber": [],
 			"lostepoch": [],
-			"plasmaeruption": [],
+			"plasmaeruption": [
+				"galvanize"
+			],
 			"checkhook": [
 				"unseenfist",
 				"ironfist"
@@ -89043,7 +89056,7 @@
 			"frameperfect": [
 				"innerfocus"
 			],
-			"malignantlight": [
+			"keenlight": [
 				"illuminate"
 			],
 			"ironmaiden": [

@@ -1358,7 +1358,6 @@ class BattleTooltips {
 
 		const passiveStats = new ModifiableValue(this.battle, clientPokemon!, serverPokemon);
 		if (passiveStats.tryAbility('Adaptive Cell') || passiveStats.tryAbility('Eclipse Vision')) stats.spa = Math.floor(stats.spa * 1.3);
-		if (passiveStats.tryAbility('Rival Malice')) stats.spe = Math.floor(stats.spe * 1.5);
 		if (passiveStats.tryAbility('Fairy Ring')) stats.spd = Math.floor(stats.spd * 1.3);
 		const hasQuickFeet = this.battle.gen > 2 && new ModifiableValue(this.battle, clientPokemon!, serverPokemon).tryAbility('Quick Feet');
 		if (hasQuickFeet && (pokemon.status || this.battle.hasPseudoWeather('Electric Terrain'))) {
@@ -1524,7 +1523,8 @@ class BattleTooltips {
 				(!Dex.getAbilityComponentExclusions(ability, passives).includes('levitate') &&
 				['levitate', 'elevate', 'solaridol', 'lunaridol', 'burningcrown',
 					'astralwitchcraft', 'voidcraft', 'phantombarrage', 'silentflight'].some(id => fieldAbilityEffects.has(id as ID)));
-			const gravityExempt = this.battle.dex.species.get(serverPokemon.speciesForme).id === 'gardevoir' && ability === 'voidveil';
+			const gravityExempt = ability === 'voidvoice' ||
+				(this.battle.dex.species.get(serverPokemon.speciesForme).id === 'gardevoir' && ability === 'voidveil');
 			const grounded = clientPokemon ? clientPokemon.isGrounded(serverPokemon) :
 				(this.battle.hasPseudoWeather('Gravity') && !gravityExempt) || item === 'ironball' ||
 				(!types.includes('Flying') && !airborneAbility && item !== 'airballoon');
@@ -2014,7 +2014,7 @@ class BattleTooltips {
 			'swift', 'venamskiss', 'firepledge', 'waterpledge', 'grasspledge',
 			'photongeyser', 'lightthatburnsthesky', 'radiantassault', 'roaroftime', 'spacialrend',
 			'shadowforce', 'veeveevolley', 'blastburn', 'frenzyplant', 'hydrocannon', 'snipeshot',
-			'watershuriken', 'kaboom', 'corrosivestrike', 'spectralscream', 'barbedweb', 'bunrakubeatdown', 'lastrespects', 'sheercold', 'queensgambit', 'winddance', 'timeblade', 'crestcleave', 'swarmsnare', 'wisteriamaelstrom', 'airstreamassault', 'dragonrend', 'sirenswrath', 'blacktestament', 'shockdoctrine', 'coldshoulder', 'solarpledge', 'lunarpledge', 'rebelanthem', 'laurellash',
+			'watershuriken', 'kaboom', 'corrosivestrike', 'feverpitch', 'spectralscream', 'barbedweb', 'bunrakubeatdown', 'lastrespects', 'sheercold', 'queensgambit', 'winddance', 'timeblade', 'crestcleave', 'swarmsnare', 'wisteriamaelstrom', 'airstreamassault', 'dragonrend', 'sirenswrath', 'blacktestament', 'shockdoctrine', 'coldshoulder', 'solarpledge', 'lunarpledge', 'rebelanthem', 'laurellash',
 		].includes(move.id);
 		if (physicalTie || specialTie || (move.id === 'aurasphere' && value.tryAbility('Aura Sight')) || move.id === 'terablast' && pokemon.terastallized ||
 			move.id === 'terastarstorm' && pokemon.terastallized && pokemon.speciesForme === 'Terapagos-Stellar') {
@@ -2191,7 +2191,7 @@ class BattleTooltips {
 		const modifiedStats = this.calculateModifiedStats(pokemon, serverPokemon);
 
 		// Adaptive signatures select category from staged stats before field previews.
-		if (['swift', 'kaboom', 'corrosivestrike', 'spectralscream', 'barbedweb', 'bunrakubeatdown', 'lastrespects', 'sheercold', 'queensgambit', 'winddance', 'timeblade', 'crestcleave', 'swarmsnare',
+		if (['swift', 'kaboom', 'corrosivestrike', 'feverpitch', 'spectralscream', 'barbedweb', 'bunrakubeatdown', 'lastrespects', 'sheercold', 'queensgambit', 'winddance', 'timeblade', 'crestcleave', 'swarmsnare',
 			'wisteriamaelstrom', 'airstreamassault', 'dragonrend', 'sirenswrath', 'blacktestament', 'shockdoctrine', 'coldshoulder', 'solarpledge', 'lunarpledge', 'rebelanthem', 'laurellash'].includes(move.id) || (move.id === 'aurasphere' && value.tryAbility('Aura Sight'))) {
 			const staged = this.calculateModifiedStats(pokemon, serverPokemon, true);
 			move = {...move, category: staged.atk > staged.spa ? 'Physical' : 'Special'};

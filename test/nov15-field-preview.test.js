@@ -28,7 +28,7 @@ describe('Terrain Pulse random-type preview', () => {
 		assert.equal(Dex.species.get('infernape').abilities[0], 'Opportunist');
 		assert(!Dex.getAbilityEffects('burningspirit').has('opportunist'));
 		assert(Dex.getAbilityEffects('insight').has('ultrainstinct'));
-		assert(!Dex.getAbilityEffects('malignantlight').has('relicbeam'));
+		assert(!Dex.getAbilityEffects('keenlight').has('relicbeam'));
 		const learnsets = require('../play.pokemonshowdown.com/data/learnsets.js').BattleLearnsets;
 		assert(!learnsets.rampardos.learnset.accelerock);
 	});

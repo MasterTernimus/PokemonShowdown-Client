@@ -946,7 +946,7 @@ onModifyMove(move) {
 uncertain: true},
 {id: "glitchterrain",
 name: "Glitch Terrain",
-notes: ["Uses its retro category/type rules. Faster attackers gain a critical-hit stage. Psychic is immune to Ghost; Bug/Poison hit each other super effectively; Ice is neutral against Fire; Dragon matchups are neutral; Steel resists Dark/Ghost. Psychic power is 1.2×. Recharge attacks skip recharging after a knockout. Accepts Auras but blocks conversion."],
+notes: ["Uses its retro category/type rules. Faster attackers gain a critical-hit stage. Psychic is immune to Ghost; Bug/Poison hit each other super effectively; Ice is neutral against Fire; Dragon matchups are neutral; Steel resists Dark/Ghost. Psychic power is 1.2×. Recharge attacks skip recharging after knocking out a foe, including Hyper Beam and Giga Impact. Accepts Auras but blocks conversion."],
 onBasePower(basePower, source, target, move) {
     if (move.type === "Psychic") {
         this.add("-message", ".0P pl$ nerf!-//");

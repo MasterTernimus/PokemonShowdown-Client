@@ -8,7 +8,7 @@ describe('Z selection uses the resolved move power',()=>{
  it('server-selected Weather Ball mapping is authoritative',()=>{const html=tooltip('weatherball','normaliumz','hydrovortex','zmove','sunnyday');assert(html.includes('Hydro Vortex'));assert(!html.includes('Inferno Overdrive'));});
  it('matches server precedence for fixed hits and explicit variable-hit Z power',()=>{const m=Dex.moves.get('tripledive');assert.equal(BattleTooltips.getZMoveBasePower({...m,basePower:100,multihit:5,zMove:{basePower:120}}),200);assert.equal(BattleTooltips.getZMoveBasePower({...m,basePower:100,multihit:[2,5],zMove:{basePower:120}}),120);});
  it('multihit inference uses the server-style per-hit total',()=>{assert.equal(BattleTooltips.getZMoveBasePower({...Dex.moves.get('doublehit'),basePower:35,multihit:2,zMove:{}}),140);});
- it('adaptive Ghost Z conversion matches the server data category',()=>{const html=tooltip('spectralscream','ghostiumz','neverendingnightmare');assert(html.includes('Z-Move base power: 160'));assert(html.includes('categories/Special.png'),html);});
+ it('adaptive Ghost Z conversion matches the server data category',()=>{const html=tooltip('spectralscream','ghostiumz','neverendingnightmare');assert(html.includes('Z-Move base power: 120'));assert(html.includes('categories/Special.png'),html);});
  it('ordinary move tooltip is unchanged',()=>{const html=tooltip('poisontail','','','move');assert(html.includes('Poison Tail'));assert(html.includes('Base power: 60'));});
  it('ordinary Max and Gmax tooltip paths remain transformed',()=>{assert(tooltip('flamethrower','','maxflare','maxmove').includes('Max Flare'));assert(tooltip('pyroball','','gmaxfireball','maxmove').includes('G-Max Fireball'));});
 });

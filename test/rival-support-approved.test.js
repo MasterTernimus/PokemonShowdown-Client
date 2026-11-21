@@ -9,6 +9,18 @@ describe('Rival/support approved client',()=>{
    assert.equal(tips.getMoveBasePower(m,m.type,new ModifiableValue(b,p,own),b.p2.active[0]).value,127.5);
   }finally{b.destroy();}
  });
+ it('shows ordinary move accuracy even against a poisoned opponent', () => {
+  const b = new Battle({debug:true, log:['|init|battle','|gen|9','|gametype|singles','|switch|p1a: Seviper|Seviper, L100|100/100','|switch|p2a: Mew|Mew, L100|100/100']});
+  try {
+   const p = b.p1.active[0], foe = b.p2.active[0], tips = new BattleTooltips(b);
+   const own = {speciesForme:'Seviper', ability:'Apex Venom', baseAbility:'Apex Venom', passives:['rivalmalice'], item:''};
+   const move = Dex.moves.get('irontail');
+   for (const status of ['', 'psn', 'tox']) {
+    foe.status = status;
+    assert.equal(tips.getMoveAccuracy(move, new ModifiableValue(b,p,own)).value, move.accuracy);
+   }
+  } finally { b.destroy(); }
+ });
  it('exports exact passives and updated Mega stats',()=>{
   for(const [id,passive]of [['zangoose','rivalresolve'],['sevipermega','rivalmalice'],['parasectparasite','mycelialbond'],['klinklang','aimassist'],['tinkaton','moldbreaker']])assert.deepEqual(Dex.species.get(id).passives,[passive]);
   assert.equal(Dex.species.get('sevipermega').baseStats.spe,65);assert.deepEqual(Dex.species.get('parasectmega').passives,['mycelialbond']);

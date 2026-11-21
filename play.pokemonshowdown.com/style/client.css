@@ -4879,6 +4879,8 @@ a.ilink.yours {
 .teambuilder-workspace .utilichart .sortrow:not(.move-sort-row) .sortcol, .dark .teambuilder-workspace .utilichart .sortrow:not(.move-sort-row) .sortcol { color: #17222b; }
 .teambuilder-workspace .setcell-ability .passive-chip, .dark .teambuilder-workspace .setcell-ability .passive-chip { background: var(--ps-inset); color: var(--ps-ink); border-color: var(--ps-line); }
 .battle-controls .switchcontrols .switchmenu { gap: 5px; }
+.battle-controls .switchmenu > em { grid-column: 1 / -1; }
+.battle-controls .switchmenu > br { display: none; }
 .battle-controls .switchcontrols .switchmenu button { border-radius: 4px; font-size: 12px; }
 .battle-controls .battle-move-options { border-top: 1px solid var(--ps-line); margin-top: 5px; padding-top: 5px; }
 .battle-controls .battle-field-status { border: 1px solid var(--ps-line); border-radius: 3px; background: var(--ps-inset); }
@@ -4958,8 +4960,6 @@ a.ilink.yours {
 		padding: 4px 0;
 	}
 	.battle-controls .switch-controls .switchcontrols .switchmenu { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-	.battle-controls .switchmenu em { grid-column: 1 / -1; }
-	.battle-controls .switchmenu br { display: none; }
 	.battle-controls .controls .battle-target-row,
 	.battle-controls .controls .battle-position-row { display: grid; grid-auto-columns: minmax(0, 1fr); gap: 4px; }
 	.battle-target-label { display: block; grid-row: 1; grid-column: 1 / -1; font-weight: bold; }
