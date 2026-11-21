@@ -49,9 +49,9 @@ describe('Lore partnership client metadata', () => {
 		});
 	}
 	it('labels each visible battle state clearly', () => {
-		const source = fs.readFileSync(path.join(client, 'src/battle-animations.ts'), 'utf8');
+		const labels = require('./helpers/status-table.cjs');
 		for (const [id, label] of [['exposed', 'Exposed'], ['rememberedflame', 'Fire ready'], ['stormcharge', 'Electric ready']]) {
-			assert(new RegExp(id + ':.*>' + label + '<').test(source));
+			assert(labels[id].includes('>' + label + '</span>'));
 		}
 	});
 });

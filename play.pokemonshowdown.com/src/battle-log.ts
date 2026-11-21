@@ -55,7 +55,8 @@ export class BattleLog {
 	preemptElem: HTMLDivElement = null!;
 	atBottom = true;
 	private scrollUpdateScheduled = false;
-	private routineGroup: {element: HTMLDetailsElement, summary: HTMLElement, body: HTMLDivElement, count: number} | null = null;
+	private routineGroup: {element: HTMLDetailsElement, summary: HTMLElement, body: HTMLDivElement, count:
+		number} | null = null;
 	skippedLines = false;
 	className: string;
 	battleParser: BattleTextParser | null = null;
@@ -606,7 +607,11 @@ export class BattleLog {
 
 	static formatName(format: string) { return window.BattleFormats?.[toID(format)]?.name || format; }
 	static html(strings: TemplateStringsArray, ...values: unknown[]) {
-		return strings.reduce((html, text, i) => html + (i ? BattleLog.escapeHTML(String(values[i - 1] ?? '')) : '') + text, '');
+		return strings.reduce(
+			(result, text, i) =>
+				result + (i ? BattleLog.escapeHTML(String(values[i - 1] ?? '')) : '') + text,
+			''
+		);
 	}
 	static escapeHTML(str: string, jsEscapeToo?: boolean) {
 		if (typeof str !== 'string') return '';
@@ -668,7 +673,7 @@ export class BattleLog {
 			result += characters.charAt(Math.floor(Math.random() * charactersLength));
 		}
 		return result;
-	};
+	}
 
 	static readableUsernameColor(hex: string, dark: boolean) {
 		const rgb = [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16) / 255);
@@ -1034,7 +1039,20 @@ export class BattleLog {
 
 				return {
 					tagName: 'iframe',
-					attribs: ['src', `https://open.spotify.com/embed/track/${songId}`, 'width', '300', 'height', '380', 'frameborder', '0', 'allowtransparency', 'true', 'allow', 'encrypted-media'],
+					attribs: [
+						'src',
+						`https://open.spotify.com/embed/track/${songId}`,
+						'width',
+						'300',
+						'height',
+						'380',
+						'frameborder',
+						'0',
+						'allowtransparency',
+						'true',
+						'allow',
+						'encrypted-media',
+					],
 				};
 			} else if (tagName === 'youtube') {
 				// <iframe width="320" height="180" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

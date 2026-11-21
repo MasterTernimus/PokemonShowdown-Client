@@ -2,15 +2,25 @@
 const BattleFieldTooltips = {
 	cache: new Map<string, string[]>(),
 	variantValues(field: any, move: any) {
-		if (move.id === 'terrainpulse' && field.id === 'newworldterrain') return Array.from({length: 18}, (_, i) => i);
-		const uncertain = field.uncertain || (window as any).BattleFieldMoveRules?.[move.id]?.uncertain;
-		return Array.from({length: field.id === 'swampterrain' ? 7 : uncertain ? 5 : 1}, (_, i) => i);
+		if (move.id === 'terrainpulse' && field.id === 'newworldterrain') {
+			return Array.from({length: 18}, (_, i) => i);
+		}
+		const uncertain =
+			field.uncertain || (window as any).BattleFieldMoveRules?.[move.id]?.uncertain;
+		return Array.from(
+			{length: field.id === 'swampterrain' ? 7 : uncertain ? 5 : 1},
+			(_, i) => i
+		);
 	},
 	active(battle: Battle) {
-		return (window as any).BattleFieldRules?.find((field: any) => battle.hasPseudoWeather(field.name));
+		return (window as any).BattleFieldRules?.find((field: any) =>
+			battle.hasPseudoWeather(field.name)
+		);
 	},
 	activeAura(battle: Battle) {
-		return Object.values((window as any).BattleAuraRules || {}).find((aura: any) => battle.hasPseudoWeather(aura.name)) as any;
+		return Object.values((window as any).BattleAuraRules || {}).find((aura: any) =>
+			battle.hasPseudoWeather(aura.name)
+		) as any;
 	},
 	liveStatus(battle: Battle) {
 		const field = this.active(battle);
@@ -18,57 +28,102 @@ const BattleFieldTooltips = {
 		const state = (name: string) => battle.pseudoWeather.find(([active]) => active === name);
 		const duration = (remaining?: [string, number, number]) => {
 			if (!remaining || (!remaining[1] && !remaining[2])) return 'Persistent';
-			if (!remaining[2] || remaining[1] === remaining[2]) return `${remaining[1]} turn${remaining[1] === 1 ? '' : 's'}`;
+			if (!remaining[2] || remaining[1] === remaining[2]) {
+				return `${remaining[1]} turn${remaining[1] === 1 ? '' : 's'}`;
+			}
 			return `${remaining[1]}-${remaining[2]} turns`;
 		};
 		const rooms = battle.pseudoWeather.filter(([name]) =>
-			['trickroom', 'magicroom', 'wonderroom', 'gravity'].includes(toID(name)));
+			['trickroom', 'magicroom', 'wonderroom', 'gravity'].includes(toID(name))
+		);
 		const weatherNames: {[id: string]: string} = {
-			raindance: 'Rain', sunnyday: 'Sun', sandstorm: 'Sandstorm', hail: 'Hail', snow: 'Snow',
-			desolateland: 'Harsh sunlight', primordialsea: 'Heavy rain', deltastream: 'Strong winds',
+			raindance: 'Rain',
+			sunnyday: 'Sun',
+			sandstorm: 'Sandstorm',
+			hail: 'Hail',
+			snow: 'Snow',
+			desolateland: 'Harsh sunlight',
+			primordialsea: 'Heavy rain',
+			deltastream: 'Strong winds',
 		};
 		return {
-			field: field ? {name: field.name, turns: duration(state(field.name)), notes: field.notes || []} : null,
+			field: field
+				? {name: field.name, turns: duration(state(field.name)), notes: field.notes || []}
+				: null,
 			aura: aura ? {name: aura.name, turns: duration(state(aura.name))} : null,
-			weather: battle.weather ? {
-				name: weatherNames[battle.weather] || Dex.getEffect(battle.weather).name,
-				turns: duration(['', battle.weatherMinTimeLeft, battle.weatherTimeLeft]),
-			} : null,
+			weather: battle.weather
+				? {
+						name: weatherNames[battle.weather] || Dex.getEffect(battle.weather).name,
+						turns: duration(['', battle.weatherMinTimeLeft, battle.weatherTimeLeft]),
+					}
+				: null,
 			rooms: rooms.map(room => ({name: room[0], turns: duration(room)})),
 		};
 	},
 	pokemon(pokemon?: Pokemon | null, server?: ServerPokemon) {
 		const types = pokemon?.getTypes(server)[0] || ['Normal'];
 		const ability = toID(pokemon ? pokemon.effectiveAbility(server) : server?.ability || '');
-  const species = toID(server?.speciesForme || pokemon?.speciesForme || '');
-  const passives = server?.passives ?? pokemon?.getSpecies?.(server).passives ?? Dex.species.get(species).passives ?? [];
-  const exclusions = Dex.getAbilityComponentExclusions(ability, passives, species);
-  const passiveEffects = new Set<ID>();
-  for (const passive of passives) for (const id of Array.from(Dex.getPassiveAbilityEffects(toID(passive)))) passiveEffects.add(id);
+		const species = toID(server?.speciesForme || pokemon?.speciesForme || '');
+		const passives =
+			server?.passives ??
+			pokemon?.getSpecies?.(server).passives ??
+			Dex.species.get(species).passives ??
+			[];
+		const exclusions = Dex.getAbilityComponentExclusions(ability, passives, species);
+		const passiveEffects = new Set<ID>();
+		for (const passive of passives) {
+			for (const id of Array.from(Dex.getPassiveAbilityEffects(toID(passive)))) {
+				passiveEffects.add(id);
+			}
+		}
 		return {
-			name: pokemon?.name || 'Target', types, ability, adaptation: pokemon?.adaptation,
-			item: server?.item || pokemon?.item || '', status: pokemon?.status || server?.status || '',
+			name: pokemon?.name || 'Target',
+			types,
+			ability,
+			adaptation: pokemon?.adaptation,
+			item: server?.item || pokemon?.item || '',
+			status: pokemon?.status || server?.status || '',
 			species: {id: toID(server?.speciesForme || pokemon?.speciesForme || '')},
-			positiveBoosts: () => Object.values(pokemon?.boosts || {}).reduce((sum, n) => sum + Math.max(0, n || 0), 0),
-			isSemiInvulnerable: () => !!pokemon && ['fly', 'dig', 'dive', 'phantomforce', 'shadowforce'].some(id => !!pokemon.volatiles[id]),
+			positiveBoosts: () =>
+				Object.values(pokemon?.boosts || {}).reduce(
+					(sum, n) => sum + Math.max(0, n || 0),
+					0
+				),
+			isSemiInvulnerable: () =>
+				!!pokemon &&
+				['fly', 'dig', 'dive', 'phantomforce', 'shadowforce'].some(
+					id => !!pokemon.volatiles[id]
+				),
 			isAlly: () => false,
-			boosts: {...pokemon?.boosts}, volatiles: {...pokemon?.volatiles},
+			boosts: {...pokemon?.boosts},
+			volatiles: {...pokemon?.volatiles},
 			Role: (pokemon as any)?.Role || '',
-			hasType: (type: string | string[]) => (Array.isArray(type) ? type : [type]).some(t => types.includes(t as TypeName)),
-			hasAbility: (ids: string | string[]) => (Array.isArray(ids) ? ids : [ids]).some(id =>
-				Dex.getAbilityEffects(ability).has(toID(id)) && !exclusions.includes(toID(id))),
-   hasAbilityOrPassive(ids: string | string[]) {
-    return this.hasAbility(ids) || (Array.isArray(ids) ? ids : [ids]).some(id => passiveEffects.has(toID(id)));
-   },
-   getPassives: () => passives.slice(),
-			isGrounded: () => pokemon ? pokemon.isGrounded(server) : true,
+			hasType: (type: string | string[]) =>
+				(Array.isArray(type) ? type : [type]).some(t => types.includes(t as TypeName)),
+			hasAbility: (ids: string | string[]) =>
+				(Array.isArray(ids) ? ids : [ids]).some(
+					id =>
+						Dex.getAbilityEffects(ability).has(toID(id)) &&
+						!exclusions.includes(toID(id))
+				),
+			hasAbilityOrPassive(ids: string | string[]) {
+				return (
+					this.hasAbility(ids) ||
+					(Array.isArray(ids) ? ids : [ids]).some(id => passiveEffects.has(toID(id)))
+				);
+			},
+			getPassives: () => passives.slice(),
+			isGrounded: () => (pokemon ? pokemon.isGrounded(server) : true),
 			hasGravityExemption() {
-				return this.hasAbility('voidvoice') || (this.species.id === 'gardevoir' && this.hasAbility('voidveil'));
+				return (
+					this.hasAbility('voidvoice') ||
+					(this.species.id === 'gardevoir' && this.hasAbility('voidveil'))
+				);
 			},
 			canBenefitFromTerrain() {
 				return !!this.isGrounded() || this.hasGravityExemption();
 			},
-			foes: () => pokemon ? pokemon.side.foe.active.filter(Boolean) : [{}],
+			foes: () => (pokemon ? pokemon.side.foe.active.filter(Boolean) : [{}]),
 		};
 	},
 	clone<T>(input: T): T {
@@ -80,7 +135,15 @@ const BattleFieldTooltips = {
 		}
 		return input;
 	},
-	evaluate(field: any, original: any, source: any, target: any, weather = '', variant = 0, aura?: any) {
+	evaluate(
+		field: any,
+		original: any,
+		source: any,
+		target: any,
+		weather = '',
+		variant = 0,
+		aura?: any
+	) {
 		const rule = (window as any).BattleFieldMoveRules?.[original.id];
 		const move: any = this.clone({...rule?.base, ...original});
 		move.flags ||= {};
@@ -88,52 +151,117 @@ const BattleFieldTooltips = {
 		target = {...target, adaptiveField: field.id, effectiveWeather: () => weather};
 		let factor = 1;
 		const context: any = {
-			field: {weather, terrain: field.id, auraField: aura?.id || '', pseudoWeather: {},
-				getAura: () => aura, isAura: (id: string) => aura?.id === id,
+			field: {
+				weather,
+				terrain: field.id,
+				auraField: aura?.id || '',
+				pseudoWeather: {},
+				getAura: () => aura,
+				isAura: (id: string) => aura?.id === id,
 				isTerrainOrAura: (id: string) => id === field.id || id === aura?.id,
 				getTerrain: () => field,
-				moveTransitionBlocked: () => !!source.fieldChangeBlocked || [source, target].some(p => p.hasAbilityOrPassive?.(['neutralization', 'pulseblockade'])),
+				moveTransitionBlocked: () =>
+					!!source.fieldChangeBlocked ||
+					[source, target].some(p =>
+						p.hasAbilityOrPassive?.(['neutralization', 'pulseblockade'])
+					),
 				isTerrain: (ids: any) => (Array.isArray(ids) ? ids : [ids]).includes(field.id),
-				canSetTerrain: (id: string) => id !== field.id && !field.id.startsWith('flowergarden') &&
-					!['underwaterterrain', 'midnightzoneterrain', 'newworldterrain', 'dragonsdenterrain'].includes(field.id) &&
+				canSetTerrain: (id: string) =>
+					id !== field.id &&
+					!field.id.startsWith('flowergarden') &&
+					![
+						'underwaterterrain',
+						'midnightzoneterrain',
+						'newworldterrain',
+						'dragonsdenterrain',
+					].includes(field.id) &&
 					!(field.id === 'hauntedterrain' && id === 'coldeclipseterrain'),
 				isWeather: (w: any) => (Array.isArray(w) ? w : [w]).includes(weather),
-				terrainState: {terrainChanges: {get: () => variant % 3},
-					underlyingTerrain: variant ? 'watersurfaceterrain' : ''}, terrainStack: []},
-			ShortCircuitCounter: variant % 5, CrystalCavernCounter: variant % 4,
-			chainModify: (amount: number | number[]) => { factor *= Array.isArray(amount) ? amount[0] / amount[1] : amount; },
-			add() {}, debug() {}, attrLastMove() {}, hint() {}, gameType: 'singles',
-			dex: {deepClone: (value: any) => this.clone(value), moves: {get: (id: string) => ({...Dex.moves.get(id), ...(window as any).BattleFieldMoveRules?.[id]})}, getActiveMove: (id: string) => this.clone({...Dex.moves.get(id), ...(window as any).BattleFieldMoveRules?.[id]?.base})},
-			effectState: {}, sample: (items: any[]) => items[variant % items.length],
+				terrainState: {
+					terrainChanges: {get: () => variant % 3},
+					underlyingTerrain: variant ? 'watersurfaceterrain' : '',
+				},
+				terrainStack: [],
+			},
+			ShortCircuitCounter: variant % 5,
+			CrystalCavernCounter: variant % 4,
+			chainModify: (amount: number | number[]) => {
+				factor *= Array.isArray(amount) ? amount[0] / amount[1] : amount;
+			},
+			add() {},
+			debug() {},
+			attrLastMove() {},
+			hint() {},
+			gameType: 'singles',
+			dex: {
+				deepClone: (value: any) => this.clone(value),
+				moves: {
+					get: (id: string) => ({
+						...Dex.moves.get(id),
+						...(window as any).BattleFieldMoveRules?.[id],
+					}),
+				},
+				getActiveMove: (id: string) =>
+					this.clone({
+						...Dex.moves.get(id),
+						...(window as any).BattleFieldMoveRules?.[id]?.base,
+					}),
+			},
+			effectState: {},
+			sample: (items: any[]) => items[variant % items.length],
 		};
 		Object.assign(context.field, (window as any).BattleAuraMethods || {}, {battle: context});
 		// Compare move-owned hooks against the same situation without a field. This
 		// isolates field bonuses from weather/status/item bonuses already in the tooltip.
 		const baseline: any = this.clone(move);
-		const neutral = {...context, field: {...context.field, terrain: '', auraField: '', getAura: () => undefined, isAura: () => false, isTerrainOrAura: () => false, getTerrain: () => ({id: ''}), isTerrain: () => false,
-			canSetTerrain: () => true,
-			terrainState: {terrainChanges: {get: () => 0}}}};
+		const neutral = {
+			...context,
+			field: {
+				...context.field,
+				terrain: '',
+				auraField: '',
+				getAura: () => undefined,
+				isAura: () => false,
+				isTerrainOrAura: () => false,
+				getTerrain: () => ({id: ''}),
+				isTerrain: () => false,
+				canSetTerrain: () => true,
+				terrainState: {terrainChanges: {get: () => 0}},
+			},
+		};
 		rule?.onModifyType?.call(neutral, baseline, source, target);
 		rule?.onModifyType?.call(context, move, source, target);
 		field.onModifyType?.call(context, move, source, target);
 		rule?.onModifyMove?.call(neutral, baseline, source, target);
 		rule?.onModifyMove?.call(context, move, source, target);
 		const modifiedPower = move.basePower;
-		if (baseline.basePower && original.basePower) move.basePower = original.basePower * move.basePower / baseline.basePower;
+		if (baseline.basePower && original.basePower) {
+			move.basePower = (original.basePower * move.basePower) / baseline.basePower;
+		}
 		const fieldBefore = this.clone(move);
 		field.onModifyMove?.call(context, move, source, target);
 		const fieldKey = field.id.replace(/^flowergarden[1-5]$/, 'flowergarden');
-		const sourceAdapted = !!source.adaptation?.active && source.adaptation.fields?.[fieldKey]?.stage === 3;
-		const targetAdapted = !!target.adaptation?.active && target.adaptation.fields?.[fieldKey]?.stage === 3;
+		const sourceAdapted =
+			!!source.adaptation?.active && source.adaptation.fields?.[fieldKey]?.stage === 3;
+		const targetAdapted =
+			!!target.adaptation?.active && target.adaptation.fields?.[fieldKey]?.stage === 3;
 		// Mirror the server's direct numeric field rewrites; shared typing/category stays.
 		for (const key of ['basePower', 'damage', 'accuracy']) {
-			const before = fieldBefore[key], after = move[key];
+			const before = fieldBefore[key];
+			const after = move[key];
 			if (typeof before !== 'number' || typeof after !== 'number') continue;
-			if (key === 'accuracy' ? sourceAdapted && after < before :
-				(sourceAdapted && after < before) || (targetAdapted && after > before)) move[key] = before;
+			if (
+				key === 'accuracy'
+					? sourceAdapted && after < before
+					: (sourceAdapted && after < before) || (targetAdapted && after > before)
+			) {
+				move[key] = before;
+			}
 		}
 		if (aura) (window as any).BattleAuraHooks.onModifyMove.call(context, move, source, target);
-		const allowed = sourceAdapted ? undefined : field.onTryMove?.call(context, source, target, move);
+		const allowed = sourceAdapted
+			? undefined
+			: field.onTryMove?.call(context, source, target, move);
 		const failed = allowed === false || allowed === null;
 		if (move.category !== 'Status' && !failed) {
 			rule?.onBasePower?.call(neutral, baseline.basePower, source, target, baseline);
@@ -147,89 +275,214 @@ const BattleFieldTooltips = {
 				if (before) factor *= after / before;
 			}
 			field.onBasePower?.call(context, move.basePower, source, target, move);
-			if (aura) (window as any).BattleAuraHooks.onBasePower.call(context, move.basePower, source, target, move);
+			if (aura) {
+				(window as any).BattleAuraHooks.onBasePower.call(
+					context,
+					move.basePower,
+					source,
+					target,
+					move
+				);
+			}
 		}
 		let accuracy = field.onAccuracy?.call(context, move.accuracy, target, source, move);
-		if (sourceAdapted && typeof accuracy === 'number' && (move.accuracy === true || accuracy < move.accuracy)) accuracy = move.accuracy;
-		const movePriority = rule?.onModifyPriority?.call(context, move.priority || 0, source, target, move) ?? move.priority ?? 0;
-		const priority = field.onModifyPriority?.call(context, movePriority, source, target, move) ?? movePriority;
-		return {move, baseline, factor: failed ? 0 : Number(factor.toFixed(12)), failed,
+		if (
+			sourceAdapted &&
+			typeof accuracy === 'number' &&
+			(move.accuracy === true || accuracy < move.accuracy)
+		) {
+			accuracy = move.accuracy;
+		}
+		const movePriority =
+			rule?.onModifyPriority?.call(context, move.priority || 0, source, target, move) ??
+			move.priority ??
+			0;
+		const priority =
+			field.onModifyPriority?.call(context, movePriority, source, target, move) ??
+			movePriority;
+		return {
+			move,
+			baseline,
+			factor: failed ? 0 : Number(factor.toFixed(12)),
+			failed,
 			accuracy: accuracy === undefined ? move.accuracy : accuracy,
-			priority: priority === undefined ? move.priority || 0 : priority};
+			priority: priority === undefined ? move.priority || 0 : priority,
+		};
 	},
-	preview(battle: Battle, move: any, pokemon: Pokemon, server: ServerPokemon, target?: Pokemon | null) {
+	preview(
+		battle: Battle,
+		move: any,
+		pokemon: Pokemon,
+		server: ServerPokemon,
+		target?: Pokemon | null
+	) {
 		const aura = this.activeAura(battle);
 		const field = this.active(battle) || (aura ? {id: '', name: 'Base field'} : null);
 		if (!field) return null;
 		const source = this.pokemon(pokemon, server);
-		(source as any).fieldChangeBlocked = battle.sides.some(side => side.active.some(p => p && ['neutralization', 'pulseblockade'].includes(toID(p.effectiveAbility()))));
+		(source as any).fieldChangeBlocked = battle.sides.some(side =>
+			side.active.some(
+				p => p && ['neutralization', 'pulseblockade'].includes(toID(p.effectiveAbility()))
+			)
+		);
 		const foe = this.pokemon(target);
-		const crystal = ['Fire','Water','Grass','Psychic'].indexOf(battle.crystalCavernType);
-		const variants = field.id === 'crystalcavernterrain' && crystal >= 0 ? [crystal] : this.variantValues(field, move);
-		const results = variants.map(v => this.evaluate(field, move, source, foe, battle.weather, v, aura));
+		const crystal = ['Fire', 'Water', 'Grass', 'Psychic'].indexOf(battle.crystalCavernType);
+		const variants =
+			field.id === 'crystalcavernterrain' && crystal >= 0
+				? [crystal]
+				: this.variantValues(field, move);
+		const results = variants.map(v =>
+			this.evaluate(field, move, source, foe, battle.weather, v, aura)
+		);
 		if (field.id === 'chessboardterrain' && !source.Role) {
-			results.push(this.evaluate(field, move, {...source, Role: 'Queen'}, foe, battle.weather));
-			results.push(this.evaluate(field, move, {...source, Role: 'Knight'}, {...foe, Role: 'Queen'}, battle.weather));
+			results.push(
+				this.evaluate(field, move, {...source, Role: 'Queen'}, foe, battle.weather)
+			);
+			results.push(
+				this.evaluate(
+					field,
+					move,
+					{...source, Role: 'Knight'},
+					{...foe, Role: 'Queen'},
+					battle.weather
+				)
+			);
 		}
-		return {field, aura, result: results[0], min: Math.min(...results.map(r => r.factor)),
-			max: Math.max(...results.map(r => r.factor)), results};
+		return {
+			field,
+			aura,
+			result: results[0],
+			min: Math.min(...results.map(r => r.factor)),
+			max: Math.max(...results.map(r => r.factor)),
+			results,
+		};
 	},
 	notes(original: any, result: any) {
 		const notes: string[] = [];
 		const move = result.move;
 		const baseline = result.baseline || original;
-		const stats: any = {atk: 'Attack', def: 'Defense', spa: 'Sp. Atk', spd: 'Sp. Def', spe: 'Speed', accuracy: 'accuracy', evasion: 'evasion'};
-		const boosts = (values: any) => Object.keys(values || {}).map(k => `${values[k] > 0 ? '+' : ''}${values[k]} ${stats[k] || k}`).join(', ');
-		const effects = (effect: any): string => [effect.status ? `inflicts ${effect.status}` : '',
-			effect.volatileStatus ? `inflicts ${effect.volatileStatus}` : '', boosts(effect.boosts),
-			effect.self?.boosts ? `user: ${boosts(effect.self.boosts)}` : ''].filter(Boolean).join(', ');
+		const stats: any = {
+			atk: 'Attack',
+			def: 'Defense',
+			spa: 'Sp. Atk',
+			spd: 'Sp. Def',
+			spe: 'Speed',
+			accuracy: 'accuracy',
+			evasion: 'evasion',
+		};
+		const boosts = (values: any) =>
+			Object.keys(values || {})
+				.map(k => `${values[k] > 0 ? '+' : ''}${values[k]} ${stats[k] || k}`)
+				.join(', ');
+		const effects = (effect: any): string =>
+			[
+				effect.status ? `inflicts ${effect.status}` : '',
+				effect.volatileStatus ? `inflicts ${effect.volatileStatus}` : '',
+				boosts(effect.boosts),
+				effect.self?.boosts ? `user: ${boosts(effect.self.boosts)}` : '',
+			]
+				.filter(Boolean)
+				.join(', ');
 		if (result.failed) return ['Fails'];
 		if (result.factor !== 1) notes.push(`power ×${Number(result.factor.toFixed(3))}`);
-		if (move.basePower !== original.basePower) notes.push(`base power becomes ${move.basePower}`);
+		if (move.basePower !== original.basePower) {
+			notes.push(`base power becomes ${move.basePower}`);
+		}
 		if (move.type !== original.type) notes.push(`type becomes ${move.type}`);
 		if (move.types?.length > 1) notes.push(`dual typing: ${move.types.join(' / ')}`);
 		if (move.category !== original.category) notes.push(`becomes ${move.category}`);
-		if (result.accuracy !== baseline.accuracy) notes.push(result.accuracy === true ? 'cannot miss' : `accuracy ${result.accuracy}%`);
-		if (result.priority !== (original.priority || 0)) notes.push(`priority ${result.priority > 0 ? '+' : ''}${result.priority}`);
+		if (result.accuracy !== baseline.accuracy) {
+			notes.push(result.accuracy === true ? 'cannot miss' : `accuracy ${result.accuracy}%`);
+		}
+		if (result.priority !== (original.priority || 0)) {
+			notes.push(`priority ${result.priority > 0 ? '+' : ''}${result.priority}`);
+		}
 		if (original.flags?.charge && !move.flags.charge) notes.push('no charging turn');
-		if (move.target !== original.target) notes.push(`target: ${move.target === 'allAdjacentFoes' ? 'all adjacent foes' : move.target}`);
-		if (JSON.stringify(move.boosts) !== JSON.stringify(baseline.boosts)) notes.push(`stat changes: ${boosts(move.boosts) || 'none'}`);
-		if (JSON.stringify(move.selfBoost) !== JSON.stringify(baseline.selfBoost) && move.selfBoost) notes.push(`user: ${boosts(move.selfBoost.boosts)}`);
-		if (JSON.stringify(move.self) !== JSON.stringify(baseline.self) && move.self) notes.push(`user: ${effects(move.self) || move.self.sideCondition || 'additional effect'}`);
+		if (move.target !== original.target) {
+			notes.push(
+				`target: ${move.target === 'allAdjacentFoes' ? 'all adjacent foes' : move.target}`
+			);
+		}
+		if (JSON.stringify(move.boosts) !== JSON.stringify(baseline.boosts)) {
+			notes.push(`stat changes: ${boosts(move.boosts) || 'none'}`);
+		}
+		if (JSON.stringify(move.selfBoost) !== JSON.stringify(baseline.selfBoost) && move.selfBoost) {
+			notes.push(`user: ${boosts(move.selfBoost.boosts)}`);
+		}
+		if (JSON.stringify(move.self) !== JSON.stringify(baseline.self) && move.self) {
+			notes.push(
+				`user: ${effects(move.self) || move.self.sideCondition || 'additional effect'}`
+			);
+		}
 		for (const key of ['heal', 'recoil', 'drain']) {
-			if (JSON.stringify(move[key]) !== JSON.stringify(baseline[key])) notes.push(`${key}: ${move[key] ? `${Number((100 * move[key][0] / move[key][1]).toFixed(1))}%` : 'none'}`);
+			if (JSON.stringify(move[key]) !== JSON.stringify(baseline[key])) {
+				notes.push(
+					`${key}: ${move[key] ? `${Number(((100 * move[key][0]) / move[key][1]).toFixed(1))}%` : 'none'}`
+				);
+			}
 		}
-		if (move.volatileStatus !== baseline.volatileStatus && move.volatileStatus) notes.push(`adds ${move.volatileStatus}`);
+		if (move.volatileStatus !== baseline.volatileStatus && move.volatileStatus) {
+			notes.push(`adds ${move.volatileStatus}`);
+		}
 		if (JSON.stringify(move.secondaries) !== JSON.stringify(baseline.secondaries)) {
-			notes.push(`secondary effects: ${(move.secondaries || []).map((e: any) => `${e.chance ?? 100}% ${effects(e) || 'special effect'}`).join('; ') || 'none'}`);
+			notes.push(
+				`secondary effects: ${(move.secondaries || []).map((e: any) => `${e.chance ?? 100}% ${effects(e) || 'special effect'}`).join('; ') || 'none'}`
+			);
 		}
-		if (move.critRatio !== original.critRatio) notes.push(`critical-hit stage ${move.critRatio}`);
-		if (move.category !== 'Status' && move.ignoreImmunity?.Normal && !original.ignoreImmunity?.Normal) notes.push('Normal attacks bypass type immunity');
+		if (move.critRatio !== original.critRatio) {
+			notes.push(`critical-hit stage ${move.critRatio}`);
+		}
+		if (
+			move.category !== 'Status' &&
+			move.ignoreImmunity?.Normal &&
+			!original.ignoreImmunity?.Normal
+		) {
+			notes.push('Normal attacks bypass type immunity');
+		}
 		return notes;
 	},
 	transitionBonusNote(fieldId: string, move: Move) {
 		if (move.category === 'Status') return '';
 		const destinations: {[fieldId: string]: {[moveId: string]: string}} = {
 			watersurfaceterrain: {
-				dive: 'Underwater', gravapple: 'Underwater',
+				dive: 'Underwater',
+				gravapple: 'Underwater',
 				aciddownpour: 'Murkwater Surface',
-				blizzard: 'Icy Field', subzeroslammer: 'Icy Field', glaciate: 'Icy Field',
+				blizzard: 'Icy Field',
+				subzeroslammer: 'Icy Field',
+				glaciate: 'Icy Field',
 			},
 			underwaterterrain: {
-				bounce: 'Water Surface', dive: 'Water Surface', skydrop: 'Water Surface', fly: 'Water Surface',
+				bounce: 'Water Surface',
+				dive: 'Water Surface',
+				skydrop: 'Water Surface',
+				fly: 'Water Surface',
 				aciddownpour: 'Murkwater Surface',
 			},
 		};
 		const destination = destinations[fieldId]?.[move.id];
-		return destination ? `field-change power bonus ×1.3 is included above; after use, the field changes to ${destination}` : '';
+		return destination
+			? `field-change power bonus ×1.3 is included above; after use, the field changes to ${destination}`
+			: '';
 	},
-	activeNotes(battle: Battle, move: Move, pokemon: Pokemon, server: ServerPokemon, target?: Pokemon | null) {
+	activeNotes(
+		battle: Battle,
+		move: Move,
+		pokemon: Pokemon,
+		server: ServerPokemon,
+		target?: Pokemon | null
+	) {
 		const preview = this.preview(battle, move, pokemon, server, target);
 		if (!preview) return '';
 		const notes = this.notes(move, preview.result);
-		if (preview.field.id === 'chessboardterrain') notes.push('role bonuses require the assigned chess role; King adds +1 priority');
-		if (move.id === 'terrainpulse' && preview.field.id === 'newworldterrain' &&
-			new Set(preview.results.map(r => r.move.type)).size > 1) {
+		if (preview.field.id === 'chessboardterrain') {
+			notes.push('role bonuses require the assigned chess role; King adds +1 priority');
+		}
+		if (
+			move.id === 'terrainpulse' &&
+			preview.field.id === 'newworldterrain' &&
+			new Set(preview.results.map(r => r.move.type)).size > 1
+		) {
 			const index = notes.findIndex(n => n.startsWith('type becomes'));
 			if (index >= 0) notes.splice(index, 1);
 			notes.push('type is random');
@@ -238,23 +491,37 @@ const BattleFieldTooltips = {
 			const index = notes.findIndex(n => n.startsWith('power ×'));
 			if (index >= 0) notes.splice(index, 1);
 			if (preview.field.id === 'watersurfaceterrain' && move.id === 'sludgewave') {
-				notes.unshift(`power ×${Number(preview.min.toFixed(3))} before Sludge Wave primes the water; ×${Number(preview.max.toFixed(3))} afterward. The second Sludge Wave turns the field into Murkwater Surface`);
+				notes.unshift(
+					`power ×${Number(preview.min.toFixed(3))} before Sludge Wave primes the water; ×${Number(preview.max.toFixed(3))} afterward. The second Sludge Wave turns the field into Murkwater Surface`
+				);
 			} else {
-				notes.unshift(`power ×${Number(preview.min.toFixed(3))}–${Number(preview.max.toFixed(3))}, depending on field conditions`);
+				notes.unshift(
+					`power ×${Number(preview.min.toFixed(3))}–${Number(preview.max.toFixed(3))}, depending on field conditions`
+				);
 			}
 		}
 		if (!preview.result.failed) {
 			const transitionNote = this.transitionBonusNote(preview.field.id, move);
 			if (transitionNote) notes.push(transitionNote);
 		}
-		if (preview.field.id === 'rainbowterrain' && move.type === 'Normal' && move.category === 'Special') {
+		if (
+			preview.field.id === 'rainbowterrain' &&
+			move.type === 'Normal' &&
+			move.category === 'Special'
+		) {
 			const index = notes.findIndex(n => n.startsWith('dual typing:'));
 			if (index >= 0) notes[index] = 'gains a random secondary type';
 		}
-		if (!battle.crystalCavernType && preview.field.id === 'crystalcavernterrain' && notes.some(n => n.startsWith('dual typing:'))) {
+		if (
+			!battle.crystalCavernType &&
+			preview.field.id === 'crystalcavernterrain' &&
+			notes.some(n => n.startsWith('dual typing:'))
+		) {
 			return `${preview.field.name}: ${notes.filter(n => !n.startsWith('dual typing:')).join('; ')}; Rock + Fire/Water/Grass/Psychic, depending on the crystal cycle.`;
 		}
-		return notes.length ? `${preview.field.name}${preview.aura ? ' + ' + preview.aura.name : ''}: ${notes.join('; ')}.` : '';
+		return notes.length
+			? `${preview.field.name}${preview.aura ? ' + ' + preview.aura.name : ''}: ${notes.join('; ')}.`
+			: '';
 	},
 	/** Team Builder is not tied to a battle: list conditional outcomes rather than inventing a current state. */
 	allNotes(move: any): string[] {
@@ -266,36 +533,107 @@ const BattleFieldTooltips = {
 			['', base, base, ''],
 			['user airborne', {...base, isGrounded: () => false}, base, ''],
 			['target airborne', base, {...base, isGrounded: () => false}, ''],
-			['Water-type user', {...base, types: ['Water'], hasType: (t: string) => t === 'Water'}, base, ''],
-			['Ghost-type user', {...base, types: ['Ghost'], hasType: (t: string) => t === 'Ghost'}, base, ''],
+			[
+				'Water-type user',
+				{...base, types: ['Water'], hasType: (t: string) => t === 'Water'},
+				base,
+				'',
+			],
+			[
+				'Ghost-type user',
+				{...base, types: ['Ghost'], hasType: (t: string) => t === 'Ghost'},
+				base,
+				'',
+			],
 			['Grass-type target', base, {...base, hasType: (t: string) => t === 'Grass'}, ''],
-			['sunlight', base, base, 'sunnyday'], ['rain', base, base, 'raindance'],
-			['hail', base, base, 'hail'], ['target has raised evasion', base, {...base, boosts: {evasion: 1}}, ''],
+			['sunlight', base, base, 'sunnyday'],
+			['rain', base, base, 'raindance'],
+			['hail', base, base, 'hail'],
+			['target has raised evasion', base, {...base, boosts: {evasion: 1}}, ''],
 		];
-		['steelworker', 'schooling', 'swiftswim', 'elevate', 'propellertail', 'fullmetalbody', 'turboblaze', 'atrocity', 'soulfire', 'relentlesshunt', 'armorize', 'illuminate'].forEach(ability => {
-			scenarios.push([`${Dex.abilities.get(ability).name} user`, {...base, ability, hasAbility: (ids: any) => (Array.isArray(ids) ? ids : [ids]).includes(ability)}, base, '']);
+		[
+			'steelworker',
+			'schooling',
+			'swiftswim',
+			'elevate',
+			'propellertail',
+			'fullmetalbody',
+			'turboblaze',
+			'atrocity',
+			'soulfire',
+			'relentlesshunt',
+			'armorize',
+			'illuminate',
+		].forEach(ability => {
+			scenarios.push([
+				`${Dex.abilities.get(ability).name} user`,
+				{
+					...base,
+					ability,
+					hasAbility: (ids: any) => (Array.isArray(ids) ? ids : [ids]).includes(ability),
+				},
+				base,
+				'',
+			]);
 		});
-		scenarios.push(['user holding an item', {...base, item: 'leftovers'}, base, ''],
+		scenarios.push(
+			['user holding an item', {...base, item: 'leftovers'}, base, ''],
 			['user has +1 positive stat stage', {...base, positiveBoosts: () => 1}, base, ''],
-			['target poisoned', base, {...base, status: 'psn'}, '']);
+			['target poisoned', base, {...base, status: 'psn'}, '']
+		);
 		((window as any).BattleFieldRules || []).forEach((field: any) => {
 			const groups = new Map<string, string[]>();
 			const cases = scenarios.slice();
 			if (field.id === 'chessboardterrain') {
-				cases.push(['Queen user', {...base, Role: 'Queen'}, base, ''], ['King user', {...base, Role: 'King'}, base, ''],
-					['Knight attacking Queen', {...base, Role: 'Knight'}, {...base, Role: 'Queen'}, ''],
-					['target has Unaware/Simple/Klutz/Oblivious/Defeatist or confusion', base, {...base, ability: 'simple'}, ''],
-					['target has Adaptability/Synchronize/Anticipation/Telepathy', base, {...base, ability: 'adaptability'}, '']);
+				cases.push(
+					['Queen user', {...base, Role: 'Queen'}, base, ''],
+					['King user', {...base, Role: 'King'}, base, ''],
+					[
+						'Knight attacking Queen',
+						{...base, Role: 'Knight'},
+						{...base, Role: 'Queen'},
+						'',
+					],
+					[
+						'target has Unaware/Simple/Klutz/Oblivious/Defeatist or confusion',
+						base,
+						{...base, ability: 'simple'},
+						'',
+					],
+					[
+						'target has Adaptability/Synchronize/Anticipation/Telepathy',
+						base,
+						{...base, ability: 'adaptability'},
+						'',
+					]
+				);
 			}
 			let ordinary = '';
 			cases.forEach(([label, source, target, weather]) => {
-				const results = this.variantValues(field, move).map(v => this.evaluate(field, move, source, target, weather, v));
-				const variants = Array.from(new Set(results.map(r => this.notes(move, r).join('; ') || 'no modifier')));
+				const results = this.variantValues(field, move).map(v =>
+					this.evaluate(field, move, source, target, weather, v)
+				);
+				const variants = Array.from(
+					new Set(results.map(r => this.notes(move, r).join('; ') || 'no modifier'))
+				);
 				if (move.id === 'terrainpulse' && field.id === 'newworldterrain') {
-					variants.splice(0, variants.length, 'random type; power depends on the selected type');
+					variants.splice(
+						0,
+						variants.length,
+						'random type; power depends on the selected type'
+					);
 				}
-				if (field.id === 'rainbowterrain' && move.type === 'Normal' && move.category === 'Special') {
-					for (let i = 0; i < variants.length; i++) variants[i] = variants[i].replace(/dual typing: [^;]+/, 'gains a random secondary type');
+				if (
+					field.id === 'rainbowterrain' &&
+					move.type === 'Normal' &&
+					move.category === 'Special'
+				) {
+					for (let i = 0; i < variants.length; i++) {
+						variants[i] = variants[i].replace(
+							/dual typing: [^;]+/,
+							'gains a random secondary type'
+						);
+					}
 				}
 				const text = variants.join(' OR ');
 				if (!label) ordinary = text;
@@ -304,14 +642,28 @@ const BattleFieldTooltips = {
 				groups.set(text, [...(groups.get(text) || []), label]);
 			});
 			groups.forEach((labels, text) => {
-				rows.push(`${field.name}: ${text}${labels.some(Boolean) ? ` (${labels.filter(Boolean).join(', ')})` : ''}${text.includes(' OR ') ? ' [field cycle/history may vary]' : ''}`);
+				rows.push(
+					`${field.name}: ${text}${labels.some(Boolean) ? ` (${labels.filter(Boolean).join(', ')})` : ''}${text.includes(' OR ') ? ' [field cycle/history may vary]' : ''}`
+				);
 			});
 		});
 		Object.values((window as any).BattleAuraRules || {}).forEach((aura: any) => {
 			for (const [label, source, target] of scenarios.slice(0, 3)) {
-				const result = this.evaluate({id: '', name: 'Base field'}, move, source, target, '', 0, aura);
+				const result = this.evaluate(
+					{id: '', name: 'Base field'},
+					move,
+					source,
+					target,
+					'',
+					0,
+					aura
+				);
 				const notes = this.notes(move, result);
-				if (notes.length) rows.push(`${aura.name}: ${notes.join('; ')}${label ? ' (' + label + ')' : ''}`);
+				if (notes.length) {
+					rows.push(
+						`${aura.name}: ${notes.join('; ')}${label ? ' (' + label + ')' : ''}`
+					);
+				}
 			}
 		});
 		this.cache.set(key, rows);
@@ -323,16 +675,28 @@ const BattleFieldTooltips = {
 	teamBuilderContent(move: Move) {
 		const rows = this.allNotes(move);
 		if (!rows.length) return '<p>No direct field modifiers for this move.</p>';
-		return '<p>Conditional effects are shown separately. Aura rules are additional to the base field. Shared type boosts use the stronger value, with a 1.5x minimum except for Rift Aura. Overlapping type penalties use the stronger reduction; move-specific bonuses can stack.</p>' +
-			rows.map(row => '<p>' + BattleLog.escapeHTML(row) + '</p>').join('');
+		return (
+			'<p>Conditional effects are shown separately. Aura rules are additional to the base field. Shared type boosts use the stronger value, with a 1.5x minimum except for Rift Aura. Overlapping type penalties use the stronger reduction; move-specific bonuses can stack.</p>' +
+			rows.map(row => '<p>' + BattleLog.escapeHTML(row) + '</p>').join('')
+		);
 	},
 };
 // Compute the all-field reference only when expanded, keeping move searches fast.
-if (typeof document !== 'undefined') document.addEventListener('toggle', event => {
-	const details = event.target as HTMLDetailsElement;
-	if (!details.open || !details.dataset.fieldMove) return;
-	const content = details.querySelector('div');
-	if (content && !content.innerHTML) content.innerHTML = BattleFieldTooltips.teamBuilderContent(Dex.moves.get(details.dataset.fieldMove));
-}, true);
+if (typeof document !== 'undefined') {
+	document.addEventListener(
+		'toggle',
+		event => {
+			const details = event.target as HTMLDetailsElement;
+			if (!details.open || !details.dataset.fieldMove) return;
+			const content = details.querySelector('div');
+			if (content && !content.innerHTML) {
+				content.innerHTML = BattleFieldTooltips.teamBuilderContent(
+					Dex.moves.get(details.dataset.fieldMove)
+				);
+			}
+		},
+		true
+	);
+}
 (window as any).BattleFieldTooltips = BattleFieldTooltips;
 if (typeof require === 'function') (global as any).BattleFieldTooltips = BattleFieldTooltips;

@@ -38,12 +38,26 @@ export type WeatherState = [string, number, number];
 export type HPColor = 'r' | 'y' | 'g';
 
 export interface AdaptationDisplay {
- active: boolean; types: {[type: string]: {stage: number}}; activeTypes: string[];
- opponents: {[id: string]: {label: string; points: number; complete: boolean; moves: string[];
- setup: {stage: number}; bypass: string[]; defenses: string[]}};
- statuses: {[id: string]: {stage: number}}; chip: {[id: string]: {stage: number}};
- fields: {[id: string]: {stage: number}}; weather: {[id: string]: {stage: number}};
- field: string; currentWeather: string;
+	active: boolean;
+	types: {[type: string]: {stage: number}};
+	activeTypes: string[];
+	opponents: {
+		[id: string]: {
+			label: string;
+			points: number;
+			complete: boolean;
+			moves: string[];
+			setup: {stage: number};
+			bypass: string[];
+			defenses: string[];
+		};
+	};
+	statuses: {[id: string]: {stage: number}};
+	chip: {[id: string]: {stage: number}};
+	fields: {[id: string]: {stage: number}};
+	weather: {[id: string]: {stage: number}};
+	field: string;
+	currentWeather: string;
 }
 export class Pokemon implements PokemonDetails, PokemonHealth {
  adaptation: AdaptationDisplay | null = null;
@@ -346,24 +360,24 @@ export class Pokemon implements PokemonDetails, PokemonHealth {
 	}
 	rememberMove(moveName: string, pp = 1, recursionSource?: string) {
  if (toID(moveName) === 'royalcollision') moveName = 'Wave Crash';
-		if (recursionSource === this.ident) return;
-		moveName = Dex.moves.get(moveName).name;
-		if (moveName.charAt(0) === '*') return;
-		if (moveName === 'Struggle') return;
-		if (this.volatiles.transform) {
+	if (recursionSource === this.ident) return;
+	moveName = Dex.moves.get(moveName).name;
+	if (moveName.charAt(0) === '*') return;
+	if (moveName === 'Struggle') return;
+	if (this.volatiles.transform) {
 			// make sure there is no infinite recursion if both Pokemon are transformed into each other
 			if (!recursionSource) recursionSource = this.ident;
 			this.volatiles.transform[1].rememberMove(moveName, 0, recursionSource);
 			moveName = '*' + moveName;
 		}
-		for (const entry of this.moveTrack) {
+	for (const entry of this.moveTrack) {
 			if (moveName === entry[0]) {
 				entry[1] += pp;
 				if (entry[1] < 0) entry[1] = 0;
 				return;
 			}
 		}
-		this.moveTrack.push([moveName, pp]);
+	this.moveTrack.push([moveName, pp]);
 	}
 	rememberAbility(ability: string, isNotBase?: boolean) {
 		ability = Dex.abilities.get(ability).name;
@@ -567,8 +581,10 @@ export class Pokemon implements PokemonDetails, PokemonHealth {
 		if (
 			this.fainted ||
 			(this.volatiles['transform'] && ability.flags['notransform']) ||
-			(ability.id === 'ragingstorm' && toID(serverPokemon?.item ?? this.item) !== 'abilityshield' && this.side.battle.ngasActive()) ||
-			(ability.id !== 'adaptivecycle' && !ability.flags['cantsuppress'] && (this.side.battle.ngasActive() || this.volatiles['gastroacid']))
+			(ability.id === 'ragingstorm' && toID(serverPokemon?.item ?? this.item) !== 'abilityshield' &&
+				this.side.battle.ngasActive()) ||
+			(ability.id !== 'adaptivecycle' && !ability.flags['cantsuppress'] && (this.side.battle.ngasActive() ||
+				this.volatiles['gastroacid']))
 		) {
 			return '';
 		}
@@ -851,7 +867,8 @@ export class Side {
 						const canHaveIllusion = Object.values(baseSpecies.abilities || {}).some(
 							ability => ['illusion', 'perfectillusion'].includes(toID(ability))
 						);
-						if (canHaveIllusion || baseSpecies.passives.includes('illusion') || ['illusion', 'perfectillusion'].includes(toID(curPoke.ability))) {
+						if (canHaveIllusion || baseSpecies.passives.includes('illusion') || ['illusion',
+							'perfectillusion'].includes(toID(curPoke.ability))) {
 							illusionFound = curPoke;
 							break;
 						}
@@ -1617,7 +1634,9 @@ export class Battle {
 				const singleArrow = this.gameType === 'freeforall' && move.flags.arrow &&
 					pokemon.hasKnownAbilityEffect('fallenstar' as ID);
 				const moveTarget = singleArrow ? 'adjacentFoe' : move.pressureTarget;
-				const allFoes = move.flags.mustpressure || (this.gen < 9 && moveTarget === 'foeSide' && move.id !== 'stickyweb');
+				const allFoes =
+					move.flags.mustpressure ||
+					(this.gen < 9 && moveTarget === 'foeSide' && move.id !== 'stickyweb');
 
 				if (allFoes || ['all', 'allAdjacent', 'allAdjacentFoes'].includes(moveTarget)) {
 					for (const active of this.getAllActive()) {
@@ -1630,14 +1649,19 @@ export class Battle {
 						}
 					}
 				} else if (!['self', 'allies', 'allySide', 'allyTeam', 'foeSide'].includes(moveTarget)) {
-					const implicitFoe = this.gameType === 'singles' && !['adjacentAlly', 'adjacentAllyOrSelf'].includes(moveTarget);
+					const implicitFoe =
+						this.gameType === 'singles' && !['adjacentAlly', 'adjacentAllyOrSelf'].includes(moveTarget);
 					const foe = target || (implicitFoe ? pokemon.side.foe.active[0] : null);
 					if (foe && foe !== pokemon && (this.gen <= 4 || (foe.side !== pokemon.side && foe.side.ally !== pokemon.side))) {
 						foeTargets.push(foe);
 					}
 				}
 
-				const surcharge = this.pseudoWeather.some(state => this.getTerrainId(state[0]) === 'midnightzoneterrain') ? 2 : 1;
+				const surcharge = this.pseudoWeather.some(
+					state => this.getTerrainId(state[0]) === 'midnightzoneterrain'
+				)
+					? 2
+					: 1;
 				for (const foe of foeTargets) {
 					if (!foe.fainted && foe.hasKnownAbilityEffect('pressure' as ID)) pp += surcharge;
 				}
@@ -1892,7 +1916,7 @@ export class Battle {
 					for (let trackedMove of poke.moveTrack) {
 						trackedMove[1] = 0;
 					}
-					// falls through
+					/* falls through */
 				case 'healingwish':
 					this.lastMove = 'healing-wish';
 					this.scene.runResidualAnim('healingwish' as ID, poke);
@@ -2718,14 +2742,14 @@ export class Battle {
 			if (!seedBoost) this.activateAbility(poke, effect);
 			this.activateAbility(ofpoke || poke, fromeffect);
 			switch (effect.id) {
-   case 'prepared': {
-    const owners = (poke.volatiles.prepared?.[1] || []) as string[];
-    const owner = kwArgs.of || 'revealed Grand Strategy holder';
-    if (!owners.includes(owner)) owners.push(owner);
-    poke.addVolatile('prepared' as ID, owners);
-    this.scene.updateStatbar(poke);
-    break;
-   }
+		case 'prepared': {
+		const owners = (poke.volatiles.prepared?.[1] || []) as string[];
+		const owner = kwArgs.of || 'revealed Grand Strategy holder';
+		if (!owners.includes(owner)) owners.push(owner);
+		poke.addVolatile('prepared' as ID, owners);
+		this.scene.updateStatbar(poke);
+		break;
+		}
 			case 'typechange':
 				if (poke.terastallized) break;
 				if (ofpoke && fromeffect.id === 'reflecttype') {
@@ -3267,7 +3291,7 @@ export class Battle {
 			break;
 		}
 		case '-fieldstart': {
-			if (['Fire','Water','Grass','Psychic'].includes(kwArgs.crystal)) this.crystalCavernType = kwArgs.crystal;
+			if (['Fire', 'Water', 'Grass', 'Psychic'].includes(kwArgs.crystal)) this.crystalCavernType = kwArgs.crystal;
 			let effect = Dex.getEffect(args[1]);
 			let poke = this.getPokemon(kwArgs.of);
 			let fromeffect = Dex.getEffect(kwArgs.from);
@@ -3311,7 +3335,7 @@ export class Battle {
 			break;
 		}
 		case '-fieldactivate': {
-			if (['Fire','Water','Grass','Psychic'].includes(kwArgs.crystal)) {
+			if (['Fire', 'Water', 'Grass', 'Psychic'].includes(kwArgs.crystal)) {
 				this.crystalCavernType = kwArgs.crystal; this.scene.updateWeather(); break;
 			}
 			let effect = Dex.getEffect(args[1]);

@@ -38,7 +38,9 @@ This license DOES NOT extend to any other files in this repository.
 
 // Cropped back sprites must meet the foreground edge in every battle slot.
 function isBottomAlignedBackSprite(url: string) {
-	return /\/gen5-back(?:-shiny)?\/(?:alakazam-alt|alakazam-mega-alt|sharpedo-megay|tentacruel-alt|wishiwashi-seviischooling|wishiwashi-sevii-schooling)\.png(?:\?|$)/.test(url);
+	return /\/gen5-back(?:-shiny)?\/(?:alakazam-alt|alakazam-mega-alt|sharpedo-megay|tentacruel-alt|wishiwashi-seviischooling|wishiwashi-sevii-schooling)\.png(?:\?|$)/.test(
+		url
+	);
 }
 
 export class BattleScene implements BattleSceneStub {
@@ -392,7 +394,6 @@ export class BattleScene implements BattleSceneStub {
 			top = 360 - height - Math.floor(loc.y! * scale);
 		}
 
-
 		let pos: JQuery.PlainObject = {
 			left,
 			top,
@@ -533,7 +534,9 @@ export class BattleScene implements BattleSceneStub {
 				height: 'hide',
 			}, 1, () => {
 				const contentBefore = this.$messagebar.find('.messagebar-content')[0];
-				const followLatest = !contentBefore || contentBefore.scrollHeight - contentBefore.scrollTop - contentBefore.clientHeight < 20;
+				const followLatest =
+					!contentBefore ||
+					contentBefore.scrollHeight - contentBefore.scrollTop - contentBefore.clientHeight < 20;
 				$message.appendTo(this.$messagebar.find('.messagebar-content'));
 
 				$message.animate({
@@ -1114,7 +1117,9 @@ export class BattleScene implements BattleSceneStub {
 		const turn = this.battle.turn;
 		if (turn <= 0) return;
 		const $prevTurn = this.$turn.children();
-		const $newTurn = $('<div class="turn has-tooltip" data-tooltip="field" data-ownheight="1">Turn ' + turn + '</div>');
+		const $newTurn = $(
+			'<div class="turn has-tooltip" data-tooltip="field" data-ownheight="1">Turn ' + turn + '</div>'
+		);
 		$newTurn.css({
 			opacity: 0,
 			left: 160,
@@ -1888,13 +1893,19 @@ export class PokemonSprite extends Sprite {
 	protected static statusTable: {[id: string]: [string, 'good' | 'bad' | 'neutral'] | null | string} = {
 		solarpledge: ['Solar ready', 'good'],
 		lunarpledge: ['Lunar shield', 'good'],
-		sirensveil: '<span class="good" title="Siren’s Veil: next damaging move has 1.3x power for all hits and targets. Spent even on miss or protection; status moves retain it. Does not stack; clears on switching.">Veil ready: 1.3x</span> ' ,
+		sirensveil:
+			'<span class="good" title="Siren’s Veil: next damaging move has 1.3x power for all hits and targets. Spent even on miss or protection; status moves retain it. Does not stack; clears on switching.">Veil ready: 1.3x</span> ',
 		// Exact protocol state emitted by Corrosive Strike; independent of the Corrosion ability.
-		corrosion: '<span class="effect-guard effect-corrosive" title="Corrosive Strike: loses 1/16 maximum HP at the end of each turn. Does not stack. Ends on switching; separate from poison." aria-label="Corrosive: residual damage until switching">Corrosive</span> ',
-        glacialheartice: '<span class="good" title="Glacial Heart: prepared Ice attacks ignore positive defensive stages for the whole move. Successful opposing HP damage prepares Dragon afterward. Inactive while the ability is suppressed; clears on switching.">Ice ready</span> ',
-        artilleryreload: '<span class="good" title="Heavy Artillery: Loaded contributes +1 effective Defense and Sp. Def stage. Any damaging attack changes it to Fired (-1). Separate from ordinary boosts, capped at +/-6; inactive under suppression. Switching or stat resets clear it.">Loaded: Def/SpD +1</span> ',
-        artilleryfired: '<span class="bad" title="Heavy Artillery: Fired contributes -1 effective Defense and Sp. Def stage. An idle turn changes it to Loaded (+1). Never stacks or changes ordinary boosts; capped at +/-6 and inactive under suppression. Switching or stat resets clear it.">Fired: Def/SpD -1</span> ',
-        glacialheartdragon: '<span class="good" title="Glacial Heart: prepared Dragon attacks ignore positive defensive stages for the whole move. Successful opposing HP damage prepares Ice afterward. Inactive while the ability is suppressed; clears on switching.">Dragon ready</span> ',
+		corrosion:
+			'<span class="effect-guard effect-corrosive" title="Corrosive Strike: loses 1/16 maximum HP at the end of each turn. Does not stack. Ends on switching; separate from poison." aria-label="Corrosive: residual damage until switching">Corrosive</span> ',
+	 glacialheartice:
+		'<span class="good" title="Glacial Heart: prepared Ice attacks ignore positive defensive stages for the whole move. Successful opposing HP damage prepares Dragon afterward. Inactive while the ability is suppressed; clears on switching.">Ice ready</span> ',
+	 artilleryreload:
+		'<span class="good" title="Heavy Artillery: Loaded contributes +1 effective Defense and Sp. Def stage. Any damaging attack changes it to Fired (-1). Separate from ordinary boosts, capped at +/-6; inactive under suppression. Switching or stat resets clear it.">Loaded: Def/SpD +1</span> ',
+	 artilleryfired:
+		'<span class="bad" title="Heavy Artillery: Fired contributes -1 effective Defense and Sp. Def stage. An idle turn changes it to Loaded (+1). Never stacks or changes ordinary boosts; capped at +/-6 and inactive under suppression. Switching or stat resets clear it.">Fired: Def/SpD -1</span> ',
+	 glacialheartdragon:
+		'<span class="good" title="Glacial Heart: prepared Dragon attacks ignore positive defensive stages for the whole move. Successful opposing HP damage prepares Ice afterward. Inactive while the ability is suppressed; clears on switching.">Dragon ready</span> ',
 		triplearrows: null, // Retain the critical-hit layers internally, without the startup label.
 		formechange: null,
 		typechange: null,
@@ -1902,23 +1913,35 @@ export class PokemonSprite extends Sprite {
 		dynamax: ['Dynamaxed', 'good'],
 		trapped: null, // linked volatiles are not implemented yet
 		throatchop: ['Throat Chop', 'bad'],
-		opencage: '<span class="good" title="Open Cage: can escape trapping through the end of the turn after the song. Ends on switching.">Free to switch</span> ',
-		exposed: '<span class="bad" title="Breaking News: the reporter and nearby allies ignore positive defensive stages. The reporter’s Psychic/Fairy attacks gain 25% power. Lasts through the following turn.">Exposed</span> ',
-		rememberedflame: '<span class="good" title="Remembered Flame: next Fire attack gains 30% power. Expires after the following turn; spent even on a miss or block.">Fire ready</span> ',
-		stormcharge: '<span class="good" title="Next Electric attack gains 50% power. Charged Wild Charge is adaptive and recoil-free. Spent on damage to a foe or Substitute.">Electric ready</span> ',
+		opencage:
+			'<span class="good" title="Open Cage: can escape trapping through the end of the turn after the song. Ends on switching.">Free to switch</span> ',
+		exposed:
+			'<span class="bad" title="Breaking News: the reporter and nearby allies ignore positive defensive stages. The reporter’s Psychic/Fairy attacks gain 25% power. Lasts through the following turn.">Exposed</span> ',
+		rememberedflame:
+			'<span class="good" title="Remembered Flame: next Fire attack gains 30% power. Expires after the following turn; spent even on a miss or block.">Fire ready</span> ',
+		stormcharge:
+			'<span class="good" title="Next Electric attack gains 50% power. Charged Wild Charge is adaptive and recoil-free. Spent on damage to a foe or Substitute.">Electric ready</span> ',
 		meridianseal: ['Meridian Seal', 'bad'],
 		confusion: ['Confused', 'bad'],
-		jackpot: '<span class="good" title="Jackpot: 20% less attack damage; heals 1/4 HP and clears harmful conditions each turn. Lasts four turns, including activation.">Jackpot</span> ',
+		jackpot:
+			'<span class="good" title="Jackpot: 20% less attack damage; heals 1/4 HP and clears harmful conditions each turn. Lasts four turns, including activation.">Jackpot</span> ',
 		healblock: ['Heal Block', 'bad'],
 		yawn: ['Drowsy', 'bad'],
 		relicarmoractive: null, // Only field-based Rock-weakness protection needs a condition badge.
-		relicarmorfield: '<button type="button" class="relic-armor-badge relic-armor-field has-tooltip" data-tooltip="relicarmor|field" data-ownheight="1" aria-label="Relic Armor: field protection active; tap for details">Relic Armor</button> ',
-		cocoonactive: '<span class="ability-active ability-active-cocoon" title="Cocoon intact: blocks one damaging move, status and secondary effects" aria-label="Cocoon intact">Cocoon</span> ',
-		blazeactive: '<span class="ability-active ability-active-blaze" title="Blaze active" aria-label="Blaze active">Blaze</span> ',
-		torrentactive: '<span class="ability-active ability-active-torrent" title="Torrent active" aria-label="Torrent active">Torrent</span> ',
-		overgrowactive: '<span class="ability-active ability-active-overgrow" title="Overgrow active" aria-label="Overgrow active">Overgrow</span> ',
-		shadowforceguard: '<span class="effect-guard" title="Shadow Force Guard: takes 25% less damage for 2 turns." aria-label="Shadow Force Guard: takes 25% less damage for 2 turns">Shadow Guard</span> ',
-		skycharged: '<span class="effect-guard" title="Sky-Charged: prevents Speed drops; charged Sky Attack ignores evasion, screens and Substitute." aria-label="Sky-Charged: prevents Speed drops; charged Sky Attack ignores evasion, screens and Substitute">Sky-Charged</span> ',
+		relicarmorfield:
+			'<button type="button" class="relic-armor-badge relic-armor-field has-tooltip" data-tooltip="relicarmor|field" data-ownheight="1" aria-label="Relic Armor: field protection active; tap for details">Relic Armor</button> ',
+		cocoonactive:
+			'<span class="ability-active ability-active-cocoon" title="Cocoon intact: blocks one damaging move, status and secondary effects" aria-label="Cocoon intact">Cocoon</span> ',
+		blazeactive:
+			'<span class="ability-active ability-active-blaze" title="Blaze active" aria-label="Blaze active">Blaze</span> ',
+		torrentactive:
+			'<span class="ability-active ability-active-torrent" title="Torrent active" aria-label="Torrent active">Torrent</span> ',
+		overgrowactive:
+			'<span class="ability-active ability-active-overgrow" title="Overgrow active" aria-label="Overgrow active">Overgrow</span> ',
+		shadowforceguard:
+			'<span class="effect-guard" title="Shadow Force Guard: takes 25% less damage for 2 turns." aria-label="Shadow Force Guard: takes 25% less damage for 2 turns">Shadow Guard</span> ',
+		skycharged:
+			'<span class="effect-guard" title="Sky-Charged: prevents Speed drops; charged Sky Attack ignores evasion, screens and Substitute." aria-label="Sky-Charged: prevents Speed drops; charged Sky Attack ignores evasion, screens and Substitute">Sky-Charged</span> ',
 		flashfire: ['Fire Boost', 'good'],
 		imprison: ['Imprisoning foe', 'good'],
 		autotomize: ['Lightened', 'neutral'],
@@ -2013,7 +2036,8 @@ export class PokemonSprite extends Sprite {
 		aimassistlock: ['Lock-On', 'good'],
 		moltenguard: ['Molten Guard', 'good'],
 		activenoguard: ['Active No Guard', 'good'],
-		sealing: '<span class="sealing-status" title="Shared moves are sealed while Keystone Seal is active.">Sealing</span> ',
+		sealing:
+			'<span class="sealing-status" title="Shared moves are sealed while Keystone Seal is active.">Sealing</span> ',
 		spotlight: ['Spotlight', 'neutral'],
 		itemremoved: null,
 		// partial trapping
@@ -2262,7 +2286,13 @@ export class PokemonSprite extends Sprite {
 		if (this.$el) {
 			this.$el.stop(true, false);
 			this.$el.remove();
-			const $newEl = $('<img src="' + this.sp.url + '" style="display:none;position:absolute"' + (this.sp.pixelated ? ' class="pixelated"' : '') + ' />');
+			const $newEl = $(
+				'<img src="' +
+					this.sp.url +
+					'" style="display:none;position:absolute"' +
+					(this.sp.pixelated ? ' class="pixelated"' : '') +
+					' />'
+			);
 			this.$el = $newEl;
 		}
 
@@ -2692,7 +2722,13 @@ export class PokemonSprite extends Sprite {
 			}
 		}
 		// Constructing here gives us 300ms extra time to preload the new sprite
-		let $newEl = $('<img src="' + sp.url + '" style="display:block;opacity:0;position:absolute"' + (sp.pixelated ? ' class="pixelated"' : '') + ' />');
+		let $newEl = $(
+			'<img src="' +
+				sp.url +
+				'" style="display:block;opacity:0;position:absolute"' +
+				(sp.pixelated ? ' class="pixelated"' : '') +
+				' />'
+		);
 		$newEl.css(this.scene.pos({
 			x: this.x,
 			y: this.y,
@@ -2790,8 +2826,12 @@ export class PokemonSprite extends Sprite {
 			this.scene.$spritesFront[spriten].append(leechseed3.$el!);
 			this.effects['leechseed'] = [leechseed1, leechseed2, leechseed3];
 		} else if (id === 'sealing') {
- const seal = new Sprite(BattleEffects.protect, {display: 'block', x: this.x, y: this.y, z: this.behind(-15), opacity: .8}, this.scene);
- seal.$el!.css({background:'transparent',border:'none'}).html('<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160"><ellipse cx="80" cy="100" rx="66" ry="40" fill="none" stroke="#a65aff" stroke-width="4"/><g fill="none" stroke="#d4a0ff" stroke-width="3" transform="rotate(-30 80 80)"><ellipse cx="30" cy="80" rx="14" ry="8"/><ellipse cx="52" cy="80" rx="14" ry="8"/><ellipse cx="74" cy="80" rx="14" ry="8"/><ellipse cx="96" cy="80" rx="14" ry="8"/><ellipse cx="118" cy="80" rx="14" ry="8"/></g></svg>').addClass('keystone-seal-ring');
+ const seal = new Sprite(
+	BattleEffects.protect,
+	{display: 'block', x: this.x, y: this.y, z: this.behind(-15), opacity: 0.8},
+	this.scene
+ );
+ seal.$el!.css({background: 'transparent', border: 'none'}).html('<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160"><ellipse cx="80" cy="100" rx="66" ry="40" fill="none" stroke="#a65aff" stroke-width="4"/><g fill="none" stroke="#d4a0ff" stroke-width="3" transform="rotate(-30 80 80)"><ellipse cx="30" cy="80" rx="14" ry="8"/><ellipse cx="52" cy="80" rx="14" ry="8"/><ellipse cx="74" cy="80" rx="14" ry="8"/><ellipse cx="96" cy="80" rx="14" ry="8"/><ellipse cx="118" cy="80" rx="14" ry="8"/></g></svg>').addClass('keystone-seal-ring');
  this.scene.$spritesFront[spriten].append(seal.$el!);
  this.effects[id] = [seal];
 } else if (id === 'protect' || id === 'magiccoat') {
@@ -2856,7 +2896,12 @@ export class PokemonSprite extends Sprite {
 
 	getStatbarHTML(pokemon: Pokemon) {
 		const doublesClass = this.scene.battle.gameType === 'doubles' ? ' doubles-statbar' : '';
-		let buf = '<div class="statbar' + (this.isFrontSprite ? ' lstatbar' : ' rstatbar') + this.getClassForPosition(pokemon.slot) + doublesClass + '" style="display: none">';
+		let buf =
+			'<div class="statbar' +
+			(this.isFrontSprite ? ' lstatbar' : ' rstatbar') +
+			this.getClassForPosition(pokemon.slot) +
+			doublesClass +
+			'" style="display: none">';
 		const ignoreNick = this.isFrontSprite && (this.scene.battle.ignoreOpponent || this.scene.battle.ignoreNicks);
 		const displayName = BattleLog.escapeHTML(ignoreNick ? pokemon.speciesForme : pokemon.name);
 		buf += `<strong><span class="statbar-name" title="${displayName}">${displayName}</span><span class="statbar-details">`;
@@ -2984,17 +3029,17 @@ export class PokemonSprite extends Sprite {
 				'"><span aria-hidden="true">&#8635;</span> Adapted:&nbsp;' + count + (pokemon.adaptation.active ? '' : '&nbsp;(paused)') + '</span> ';
 		}
 		for (let i in pokemon.volatiles) {
-   if (i === 'prepared') {
-    const owners = (pokemon.volatiles.prepared[1] || []) as string[];
-    status += '<span class="bad" title="' + BattleLog.escapeHTML('Prepared for: ' + owners.join(', ') + '. Only its owner can use this opening; ends when this foe switches.') + '">Prepared</span> ';
-    continue;
-   }
-			const expiry = pokemon.volatiles[i]?.[1]?.expiresTurn;
-			if (expiry && ['firespin', 'desertsmark', 'barbedweb', 'swarmsnare'].includes(i)) {
+		if (i === 'prepared') {
+		const owners = (pokemon.volatiles.prepared[1] || []) as string[];
+		status += '<span class="bad" title="' + BattleLog.escapeHTML('Prepared for: ' + owners.join(', ') + '. Only its owner can use this opening; ends when this foe switches.') + '">Prepared</span> ';
+		continue;
+		}
+		const expiry = pokemon.volatiles[i]?.[1]?.expiresTurn;
+		if (expiry && ['firespin', 'desertsmark', 'barbedweb', 'swarmsnare'].includes(i)) {
 				status += '<span class="bad" title="Binding ends after turn ' + expiry + '. Normal escape effects still apply.">' + BattleLog.escapeHTML(Dex.moves.get(i).name) + ' (ends T' + expiry + ')</span> ';
 				continue;
 			}
-			status += PokemonSprite.getEffectTag(i);
+		status += PokemonSprite.getEffectTag(i);
 		}
 		for (let i in pokemon.turnstatuses) {
 			if (i === 'roost' && !pokemon.getTypeList().includes('Flying')) continue;
@@ -3025,7 +3070,8 @@ export class PokemonSprite extends Sprite {
 			effect = [label, 'neutral'];
 		}
 		const title = id === 'laserfocus' ? ` title="${BattleLog.escapeHTML(Dex.moves.get(id).desc)}"` : '';
-		return PokemonSprite.statusTable[id] = `<span class="${effect[1]}"${title}>${effect[0].replace(/ /g, '&nbsp;')}</span> `;
+		return (PokemonSprite.statusTable[id] =
+			`<span class="${effect[1]}"${title}>${effect[0].replace(/ /g, '&nbsp;')}</span> `);
 	}
 
 	updateHPText(pokemon: Pokemon) {

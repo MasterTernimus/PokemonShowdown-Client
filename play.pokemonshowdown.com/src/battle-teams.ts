@@ -1,68 +1,64 @@
 
-
-
 function isSilvallySpecies(name: string) {
 	return toID(name).startsWith('silvally');
 }
 
-export declare namespace ModernTeams {
-	/**
-	 * ModernTeams.PokemonSet can be sparse, in which case that entry should be
-	 * inferred from the rest of the set, according to sensible
-	 * defaults.
-	 */
-	export interface FullPokemonSet {
-		/** Defaults to species name (not including forme), like in games */
-		name: string;
-		species: string;
-		/** Defaults to no item */
-		item?: string;
-		/** Defaults to no ability (error in Gen 3+) */
-		ability?: string;
-		moves: string[];
-		/** Defaults to no nature (error in Gen 3+) */
-		nature?: NatureName;
-		/** Defaults to random legal gender, NOT subject to gender ratios */
-		gender?: string;
-		/** Defaults to flat 252's (200's/0's in Let's Go) (error in gen 3+) */
-		evs: StatsTable;
-		/** Defaults to whatever makes sense - flat 31's unless you have Gyro Ball etc */
-		ivs: StatsTable;
-		/** Defaults as you'd expect (100 normally, 50 in VGC-likes, 5 in LC) */
-		level: number;
-		/** Defaults to no (error if shiny event) */
-		shiny: boolean;
-		/** Defaults to 255 unless you have Frustration, in which case 0 */
-		happiness: number;
-		/** Defaults to event required ball, otherwise Poké Ball */
-		pokeball: string;
-		/** Defaults to the type of your Hidden Power in Moves, otherwise Dark */
-		hpType?: string;
-		/** Defaults to 10 */
-		dynamaxLevel?: number;
-		/** Defaults to no (can only be yes for certain Pokemon) */
-		gigantamax?: boolean;
-		/** Defaults to the primary type */
-		teraType?: string;
-		initialDisguise?: number;
-	}
-	export interface PokemonSet extends Partial<FullPokemonSet> {
-		/** Defaults to species name (not including forme), like in games */
-		species: string;
-		moves: string[];
-	}
-	export interface Team {
-		name: string;
-		format: ID;
-		folder: string;
-		/** Note that this can be wrong if `.uploaded?.notLoaded` */
-		packedTeam: string;
-		isBox: boolean;
-	}
+/**
+ * PokemonSet can be sparse, in which case that entry should be
+ * inferred from the rest of the set, according to sensible
+ * defaults.
+ */
+export interface FullPokemonSet {
+	/** Defaults to species name (not including forme), like in games */
+	name: string;
+	species: string;
+	/** Defaults to no item */
+	item?: string;
+	/** Defaults to no ability (error in Gen 3+) */
+	ability?: string;
+	moves: string[];
+	/** Defaults to no nature (error in Gen 3+) */
+	nature?: NatureName;
+	/** Defaults to random legal gender, NOT subject to gender ratios */
+	gender?: string;
+	/** Defaults to flat 252's (200's/0's in Let's Go) (error in gen 3+) */
+	evs: StatsTable;
+	/** Defaults to whatever makes sense - flat 31's unless you have Gyro Ball etc */
+	ivs: StatsTable;
+	/** Defaults as you'd expect (100 normally, 50 in VGC-likes, 5 in LC) */
+	level: number;
+	/** Defaults to no (error if shiny event) */
+	shiny: boolean;
+	/** Defaults to 255 unless you have Frustration, in which case 0 */
+	happiness: number;
+	/** Defaults to event required ball, otherwise Poké Ball */
+	pokeball: string;
+	/** Defaults to the type of your Hidden Power in Moves, otherwise Dark */
+	hpType?: string;
+	/** Defaults to 10 */
+	dynamaxLevel?: number;
+	/** Defaults to no (can only be yes for certain Pokemon) */
+	gigantamax?: boolean;
+	/** Defaults to the primary type */
+	teraType?: string;
+	initialDisguise?: number;
+}
+export interface PokemonSet extends Partial<FullPokemonSet> {
+	/** Defaults to species name (not including forme), like in games */
+	species: string;
+	moves: string[];
+}
+export interface Team {
+	name: string;
+	format: ID;
+	folder: string;
+	/** Note that this can be wrong if `.uploaded?.notLoaded` */
+	packedTeam: string;
+	isBox: boolean;
 }
 
 export const ModernTeams = new class {
-	pack(team: ModernTeams.PokemonSet[] | null): string {
+	pack(team: PokemonSet[] | null): string {
 		if (!team) return '';
 
 		function getIv(ivs: StatsTable, s: keyof StatsTable): string {
@@ -139,7 +135,7 @@ export const ModernTeams = new class {
 		return name.replace(/[^A-Za-z0-9]+/g, '');
 	}
 
-	unpack(buf: string): ModernTeams.PokemonSet[] {
+	unpack(buf: string): PokemonSet[] {
 		if (!buf) return [];
 
 		// first, detect if this has team metadata
@@ -158,7 +154,7 @@ export const ModernTeams = new class {
 		let lastI = 0;
 
 		while (true) {
-			const set: ModernTeams.PokemonSet = {} as any;
+			const set: PokemonSet = {} as any;
 			team.push(set);
 
 			// name
@@ -302,7 +298,7 @@ export const ModernTeams = new class {
 	 * (You may wish to manually add two spaces to the end of every line so
 	 * linebreaks are preserved in Markdown; I assume mostly for Reddit.)
 	 */
-	exportSet(set: ModernTeams.PokemonSet, dex: ModdedDex = Dex, newFormat?: boolean) {
+	exportSet(set: PokemonSet, dex: ModdedDex = Dex, newFormat?: boolean) {
 		if (isSilvallySpecies(set.species)) set.shiny = true;
 		let text = '';
 
@@ -420,10 +416,10 @@ export const ModernTeams = new class {
 		return text;
 	}
 	// TODO: finish this impl
-	// getFullSet(set: ModernTeams.PokemonSet, dex: ModdedDex): ModernTeams.FullPokemonSet {
+	// getFullSet(set: PokemonSet, dex: ModdedDex): FullPokemonSet {
 	// 	//
 	// }
-	export(sets: ModernTeams.PokemonSet[], dex?: ModdedDex, newFormat?: boolean) {
+	export(sets: PokemonSet[], dex?: ModdedDex, newFormat?: boolean) {
 		let text = '';
 		for (const set of sets) {
 			// core
@@ -498,7 +494,8 @@ export const ModernTeams = new class {
 		} else if (line.startsWith('EVs: ')) {
 			const evLines = line.slice(5).split('(')[0].split('/');
 			set.evs = { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0 };
-			let plus = '', minus = '';
+			let plus = '';
+			let minus = '';
 			for (let evLine of evLines) {
 				evLine = evLine.trim();
 				const spaceIndex = evLine.indexOf(' ');

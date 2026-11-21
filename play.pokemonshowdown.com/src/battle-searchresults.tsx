@@ -389,7 +389,10 @@ class PSSearchResults extends preact.Component<{
 	render() {
 		const search = this.props.search;
 		const results = [...(search.prependResults || []), ...(search.results || [])];
-		const limit = this.props.windowing === null ? results.length : Math.max(this.props.windowing || this.shownResults, (this.props.resultIndex || 0) + 1);
+		const limit =
+			this.props.windowing === null
+				? results.length
+				: Math.max(this.props.windowing || this.shownResults, (this.props.resultIndex || 0) + 1);
 		return <ul class="dexlist" onClick={this.selectResult}>
 			{!this.props.hideFilters && search.filters && <p>
 				Filters: {}

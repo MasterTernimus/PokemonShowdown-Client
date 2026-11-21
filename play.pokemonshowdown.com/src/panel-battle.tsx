@@ -457,7 +457,8 @@ class BattlePanel extends PSRoomPanel<BattleRoom> {
 				let disabled = false;
 				if (moveTarget === 'adjacentFoe') {
 					disabled = true;
-				} else if (moveTarget === 'normal' || moveTarget === 'normalOrSelf' || moveTarget === 'adjacentAlly' || moveTarget === 'adjacentAllyOrSelf') {
+				} else if (moveTarget === 'normal' || moveTarget === 'normalOrSelf' || moveTarget === 'adjacentAlly' ||
+					moveTarget === 'adjacentAllyOrSelf') {
 					if (Math.abs(userSlot - i) > 1) disabled = true;
 				}
 				if (moveTarget !== 'adjacentAllyOrSelf' && moveTarget !== 'normalOrSelf' && userSlot === i) disabled = true;
@@ -476,7 +477,8 @@ class BattlePanel extends PSRoomPanel<BattleRoom> {
 		const trapped = choices.currentMoveRequest()?.trapped;
 
 		return request.side.pokemon.map((serverPokemon, i) => {
-			const cantSwitch = trapped || i < numActive || choices.alreadySwitchingIn.includes(i + 1) || serverPokemon.fainted;
+			const cantSwitch =
+				trapped || i < numActive || choices.alreadySwitchingIn.includes(i + 1) || serverPokemon.fainted;
 			return <PokemonButton
 				pokemon={serverPokemon} cmd={`/switch ${i + 1}`} disabled={cantSwitch} tooltip={`switchpokemon|${i}`}
 			/>;
@@ -596,9 +598,19 @@ class BattlePanel extends PSRoomPanel<BattleRoom> {
 			let megaXLabel = 'Mega Evolution X';
 			let megaYLabel = 'Mega Evolution Y';
 			const speciesid = toID(pokemon.speciesForme || pokemon.details.split(',')[0]);
-			const isGardevoirMega = ['gardevoirmega', 'gardevoirmegaalt', 'gardevoirmegaz', 'gardevoirvoidmega'].includes(speciesid);
-			const isGardevoiriteMega = canMegaEvo && toID(pokemon.item) === 'gardevoirite' && ['gardevoir', 'gardevoirvoid'].includes(speciesid);
-			const isSharedMega = (toID(pokemon.item) === 'sharpedonite' && ['sharpedo', 'sharpedomega', 'sharpedomegay'].includes(speciesid)) || (toID(pokemon.item) === 'meganiumite' && ['meganium', 'meganiummega', 'meganiummegay'].includes(speciesid)) ||
+			const isGardevoirMega = [
+				'gardevoirmega',
+				'gardevoirmegaalt',
+				'gardevoirmegaz',
+				'gardevoirvoidmega',
+			].includes(speciesid);
+			const isGardevoiriteMega =
+				canMegaEvo &&
+				toID(pokemon.item) === 'gardevoirite' &&
+				['gardevoir', 'gardevoirvoid'].includes(speciesid);
+			const isSharedMega = (toID(pokemon.item) === 'sharpedonite' && ['sharpedo', 'sharpedomega',
+				'sharpedomegay'].includes(speciesid)) || (toID(pokemon.item) === 'meganiumite' && ['meganium',
+				'meganiummega', 'meganiummegay'].includes(speciesid)) ||
 				(toID(pokemon.item) === 'chimechite' && ['chimecho', 'chimechomega', 'chimechomegay'].includes(speciesid)) ||
 				(toID(pokemon.item) === 'arbokite' && ['arbok', 'arbokmegax', 'arbokmegay'].includes(speciesid));
 			const canMegaEvoX = moveRequest.canMegaEvoX && !choices.alreadyMega;
@@ -612,11 +624,18 @@ class BattlePanel extends PSRoomPanel<BattleRoom> {
 				megaXLabel = 'Garchomp-Mega-Z';
 			}
 			if (isSharedMega) {
-				const baseName = speciesid.startsWith('sharpedo') ? 'Sharpedo' : speciesid.startsWith('meganium') ? 'Meganium' : speciesid.startsWith('arbok') ? 'Arbok' : 'Chimecho';
+				const baseName = speciesid.startsWith('sharpedo')
+					? 'Sharpedo'
+					: speciesid.startsWith('meganium')
+						? 'Meganium'
+						: speciesid.startsWith('arbok')
+							? 'Arbok'
+							: 'Chimecho';
 				megaLabel = baseName === 'Arbok' ? 'Arbok-Mega-X' : `${baseName}-Mega`;
 				megaYLabel = `${baseName}-Mega-Y`;
 			}
-			if (toID(pokemon.item) === 'gardevoirite' && (isGardevoirMega || ['gardevoir', 'gardevoirvoid'].includes(speciesid))) {
+			if (toID(pokemon.item) === 'gardevoirite' && (isGardevoirMega || ['gardevoir',
+				'gardevoirvoid'].includes(speciesid))) {
 				if (['gardevoir', 'gardevoirvoid'].includes(speciesid)) {
 					megaLabel = 'Gardevoir-Mega';
 					megaXLabel = 'Gardevoir-Mega-Z';

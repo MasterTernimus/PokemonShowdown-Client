@@ -3,6 +3,7 @@ const path = require('path');
 const sizeOf = require('image-size');
 const {GifReader} = require('omggif');
 const {measureImage} = require('./sprite-image-metrics.cjs');
+const {spriteTableSource} = require('./sprite-table-source.cjs');
 const crypto = require('crypto');
 const root = path.resolve(__dirname, '../play.pokemonshowdown.com');
 const entries = {};
@@ -53,11 +54,11 @@ const sourcePath = path.join(root, 'src/battle-dex.ts');
 let source = fs.readFileSync(sourcePath, 'utf8');
 const start = '// BEGIN GENERATED PREVIEW ANIMATIONS';
 const end = '// END GENERATED PREVIEW ANIMATIONS';
-const block = start + '\nconst TEAM_PREVIEW_ANIMATIONS: {[path: string]: number[]} = ' + JSON.stringify(entries) +
-	';\nconst SPRITE_ASSET_DIMENSIONS: {[path: string]: number[]} = ' + JSON.stringify(assets) +
-	';\nconst SPRITE_IMAGE_METRICS: {[path: string]: number[]} = ' + JSON.stringify(metrics) +
+const block = start + '\nconst TEAM_PREVIEW_ANIMATIONS: {[path: string]: number[]} = ' + spriteTableSource(entries) +
+	';\nconst SPRITE_ASSET_DIMENSIONS: {[path: string]: number[]} = ' + spriteTableSource(assets) +
+	';\nconst SPRITE_IMAGE_METRICS: {[path: string]: number[]} = ' + spriteTableSource(metrics) +
 	';\nconst SHOWDOWN_SPRITE_REFERENCE: {[style: string]: {[id: string]: {[side: string]: number[]}}} = ' +
-	JSON.stringify({bw: reference.bw, xy: reference.xy}) + ';\n' + end;
+	spriteTableSource({bw: reference.bw, xy: reference.xy}) + ';\n' + end;
 if (source.includes(start)) {
 	source = source.slice(0, source.indexOf(start)) + block + source.slice(source.indexOf(end) + end.length);
 } else {

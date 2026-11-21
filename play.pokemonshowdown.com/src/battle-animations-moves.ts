@@ -36198,15 +36198,15 @@ BattleMoveAnims['deluge'] = {anim: BattleMoveAnims['brine'].anim};
 BattleMoveAnims['multipulse'] = {anim: BattleMoveAnims['aurasphere'].anim};
 BattleMoveAnims['aquabatics'] = {
  anim(scene, [attacker]) {
-  BattleMoveAnims['quiverdance'].anim(scene, [attacker]);
-  BattleMoveAnims['aquaring'].anim(scene, [attacker]);
+	BattleMoveAnims['quiverdance'].anim(scene, [attacker]);
+	BattleMoveAnims['aquaring'].anim(scene, [attacker]);
  },
 };
 BattleMoveAnims['feverpitch'] = {
  anim(scene, [attacker, defender]) {
-  BattleMoveAnims['boomburst'].anim(scene, [attacker, defender]);
-  scene.showEffect('fireball', {x: defender.x, y: defender.y, z: defender.z, scale: 0.3, opacity: 0.9},
-   {scale: 1.8, opacity: 0, time: 650}, 'decel', 'fade');
+	BattleMoveAnims['boomburst'].anim(scene, [attacker, defender]);
+	scene.showEffect('fireball', {x: defender.x, y: defender.y, z: defender.z, scale: 0.3, opacity: 0.9},
+		{scale: 1.8, opacity: 0, time: 650}, 'decel', 'fade');
  },
 };
 // One impact per server animation event: an early miss must not show nonexistent later hits.
@@ -36216,38 +36216,38 @@ BattleMoveAnims['superumdmove'] = {anim: BattleMoveAnims['flashcannon'].anim};
 BattleMoveAnims['galestrike'] = {anim: BattleMoveAnims['airslash'].anim};
 BattleMoveAnims['spectralscream'] = {
  anim(scene, [attacker, defender]) {
-  BattleMoveAnims['boomburst'].anim(scene, [attacker, defender]);
-  BattleMoveAnims['shadowball'].anim(scene, [attacker, defender]);
-  BattleMoveAnims['leechlife'].anim(scene, [attacker, defender]);
+	BattleMoveAnims['boomburst'].anim(scene, [attacker, defender]);
+	BattleMoveAnims['shadowball'].anim(scene, [attacker, defender]);
+	BattleMoveAnims['leechlife'].anim(scene, [attacker, defender]);
  },
 };
 BattleMoveAnims['barbedweb'] = {
  anim(scene, [attacker, defender]) {
-  BattleMoveAnims['spiderweb'].anim(scene, [attacker, defender]);
-  BattleMoveAnims['infestation'].anim(scene, [attacker, defender]);
+	BattleMoveAnims['spiderweb'].anim(scene, [attacker, defender]);
+	BattleMoveAnims['infestation'].anim(scene, [attacker, defender]);
  },
 };
 BattleMoveAnims['coldtruth'] = {anim: BattleMoveAnims['icywind'].anim};
 BattleMoveAnims['bunrakubeatdown'] = {
  anim(scene, [attacker, defender]) {
-  BattleMoveAnims['psychic'].anim(scene, [attacker, defender]);
-  BattleMoveAnims['beatup'].anim(scene, [attacker, defender]);
+	BattleMoveAnims['psychic'].anim(scene, [attacker, defender]);
+	BattleMoveAnims['beatup'].anim(scene, [attacker, defender]);
  },
 };
 BattleMoveAnims['matrixshot'] = {anim: BattleMoveAnims['powergem'].anim};
 BattleMoveAnims['pyrokinesis'] = {
  anim(scene, [attacker, defender]) {
-  BattleMoveAnims['psychic'].anim(scene, [attacker, defender]);
-  scene.showEffect('fireball', {x: defender.x, y: defender.y, z: defender.z, scale: 0.2, opacity: 1},
-   {y: defender.y + 30, scale: 2, opacity: 0, time: 700}, 'accel', 'fade');
+	BattleMoveAnims['psychic'].anim(scene, [attacker, defender]);
+	scene.showEffect('fireball', {x: defender.x, y: defender.y, z: defender.z, scale: 0.2, opacity: 1},
+		{y: defender.y + 30, scale: 2, opacity: 0, time: 700}, 'accel', 'fade');
  },
 };
 BattleMoveAnims['venamskiss'] = {anim: BattleMoveAnims['sludgebomb'].anim};
 BattleMoveAnims['heavenlywing'] = {anim: BattleMoveAnims['airslash'].anim};
 BattleMoveAnims['uproot'] = {
  anim(scene, [attacker, defender]) {
-  BattleMoveAnims['earthpower'].anim(scene, [attacker, defender]);
-  BattleMoveAnims['energyball'].anim(scene, [attacker, defender]);
+	BattleMoveAnims['earthpower'].anim(scene, [attacker, defender]);
+	BattleMoveAnims['energyball'].anim(scene, [attacker, defender]);
  },
 };
 

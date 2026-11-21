@@ -6,17 +6,7 @@
  * @license AGPLv3
  */
 
-
-
-
-import { ModernTeams } from './battle-teams';
-
-
-
-
-
-
-
+import { ModernTeams, PokemonSet as ModernPokemonSet } from './battle-teams';
 
 type SelectionType = 'pokemon' | 'ability' | 'item' | 'move' | 'stats' | 'details';
 
@@ -61,8 +51,7 @@ export class TeamEditorState extends PSModel {
 			[teamKey: string]: {
 				team: Team,
 				sets: { [index: number]: PokemonSet },
-				/** was the team added from the team list rather than the team editor's set list?
-				  * (if yes, delete the team itself when moving it) */
+				// Moving a set dragged from the team list also removes its original team.
 				entire: boolean,
 			},
 		} | null,
@@ -419,7 +408,7 @@ export class TeamEditorState extends PSModel {
 
 		const teams: Team[] = [];
 
-		const sets: ModernTeams.PokemonSet[] = [];
+		const sets: ModernPokemonSet[] = [];
 		for (const key in TeamEditorState.clipboard.teams) {
 			const clipboardTeam = TeamEditorState.clipboard.teams[key];
 			if (clipboardTeam.entire) {
@@ -549,7 +538,7 @@ export class TeamEditorState extends PSModel {
 			}
 			return hpTypes[Math.floor(hpTypeX * 15 / 63)];
 		}
-	};
+	}
 	hpTypeMatters(set: PokemonSet): boolean {
 		if (this.gen < 2) return false;
 		if (this.gen > 7) return false;
@@ -657,7 +646,8 @@ export class TeamEditorState extends PSModel {
 				if (!hasMoveBesidesTransform) minAtk = false;
 			} else if (
 				move.category === 'Physical' && !move.damage && !move.ohko &&
-				!['foulplay', 'endeavor', 'counter', 'bodypress', 'seismictoss', 'bide', 'metalburst', 'superfang'].includes(move.id) &&
+				!['foulplay', 'endeavor', 'counter', 'bodypress', 'seismictoss', 'bide', 'metalburst',
+					'superfang'].includes(move.id) &&
 				!(this.gen < 8 && move.id === 'rapidspin')
 			) {
 				minAtk = false;
@@ -825,7 +815,7 @@ export class TeamEditorState extends PSModel {
 		if (this.formeLegality === 'hackmons') {
 			// TODO: support gen 9 hackmons forme legality more completely than this
 			if (this.gen < 9 || species.baseSpecies !== 'Xerneas') return set.ability;
-			// falls through to final return statement
+			// Fall through to the final return statement.
 		} else if (this.abilityLegality === 'hackmons') {
 			if (!species.battleOnly) return set.ability;
 			if (species.requiredItems.length || species.baseSpecies === 'Meloetta') return set.ability;
@@ -870,15 +860,15 @@ export class TeamEditorState extends PSModel {
 	// race condition if fetchSampleSets is called simultaneously from
 	// different TeamEditorState instances, but this way just means two
 	// network requests rather than the UI getting out of sync.
-	_sampleSetPromises: Record<string, Promise<void>> = {};
+	sampleSetPromises: Record<string, Promise<void>> = {};
 	fetchSampleSets(formatid: ID) {
 		if (formatid in TeamEditorState.sampleSets) return;
 		if (formatid.length <= 4) {
 			TeamEditorState.sampleSets[formatid] = null;
 			return;
 		}
-		if (!(formatid in this._sampleSetPromises)) {
-			this._sampleSetPromises[formatid] = Net(
+		if (!(formatid in this.sampleSetPromises)) {
+			this.sampleSetPromises[formatid] = Net(
 				`https://${Config.routes.client}/data/sets/${formatid}.json`
 			).get().then(json => {
 				const data = JSON.parse(json);
@@ -985,13 +975,14 @@ export class TeamEditor extends preact.Component<{
 		return document.body.offsetWidth < 500;
 	}
 	renderDefensiveCoverage() {
-		const { editor } = this;
-		if (editor.team.isBox) return null;
-		if (!editor.sets.length) return null;
+		if (this.editor.team.isBox) return null;
+		if (!this.editor.sets.length) return null;
 
-		const counters = Object.values(editor.teamDefensiveCoverage());
+		const counters = Object.values(this.editor.teamDefensiveCoverage());
 		PSUtils.sortBy(counters, counter => [counter.resists, -counter.weaknesses]);
-		const good = [], medium = [], bad = [];
+		const good = [];
+		const medium = [];
+		const bad = [];
 		const renderTypeDefensive = (counter: typeof counters[number]) => (
 			<tr>
 				<th>{counter.type}</th>
@@ -1035,10 +1026,10 @@ export class TeamEditor extends preact.Component<{
 		}
 		const editor = this.editor;
 		window.editor = editor; // debug
-		editor.updateTeam(!!this.props.readOnly);
-		editor.narrow = this.props.narrow ?? document.body.offsetWidth < 500;
-		if (this.props.team.format !== editor.format) {
-			editor.setFormat(this.props.team.format);
+		this.editor.updateTeam(!!this.props.readOnly);
+		this.editor.narrow = this.props.narrow ?? document.body.offsetWidth < 500;
+		if (this.props.team.format !== this.editor.format) {
+			this.editor.setFormat(this.props.team.format);
 		}
 
 		return <div class="teameditor">
@@ -1370,7 +1361,8 @@ class TeamTextbox extends preact.Component<{
 			}
 
 			const selectionEndCutoff = (selectionStart === selectionEnd ? nlIndex : nlIndex + 1);
-			let start = index, end = index + line.length;
+			let start = index;
+			let end = index + line.length;
 			if (index <= selectionStart && selectionEnd <= selectionEndCutoff) {
 				// both ends within range
 				let type: SelectionType | null = null;
@@ -1667,7 +1659,7 @@ class TeamTextbox extends preact.Component<{
 	}
 	clickDetails = (ev: Event) => {
 		const target = ev.currentTarget as HTMLButtonElement;
-		const i = parseInt(target.value || '0');
+		const i = parseInt(target.value || '0', 10);
 		if (this.innerFocus?.type === target.name) {
 			this.innerFocus = null;
 			this.forceUpdate();
@@ -1886,9 +1878,10 @@ class TeamWizard extends preact.Component<{
 		if (editor.readonly) return;
 		const target = ev.currentTarget as HTMLButtonElement;
 		const [rawType, i] = (target.value || '').split('|');
-		const setIndex = parseInt(i);
+		const setIndex = parseInt(i, 10);
 		const type = rawType as SelectionType;
-		if (!target.value || editor.innerFocus && editor.innerFocus.setIndex === setIndex && editor.innerFocus.type === type) {
+		if (!target.value || editor.innerFocus && editor.innerFocus.setIndex === setIndex &&
+			editor.innerFocus.type === type) {
 			this.changeFocus(null);
 			return;
 		}
@@ -1899,7 +1892,7 @@ class TeamWizard extends preact.Component<{
 	};
 	deleteSet = (ev: Event) => {
 		const target = ev.currentTarget as HTMLButtonElement;
-		const i = parseInt(target.value);
+		const i = parseInt(target.value, 10);
 		const { editor } = this.props;
 		editor.deleteSet(i);
 		if (editor.innerFocus) {
@@ -1913,7 +1906,7 @@ class TeamWizard extends preact.Component<{
 	};
 	copySet = (ev: Event) => {
 		const target = ev.currentTarget as HTMLButtonElement;
-		const i = parseInt(target.value);
+		const i = parseInt(target.value, 10);
 		const { editor } = this.props;
 		editor.copySet(i);
 		editor.innerFocus = null;
@@ -1936,7 +1929,7 @@ class TeamWizard extends preact.Component<{
 	};
 	pasteSet = (ev: Event) => {
 		const target = ev.currentTarget as HTMLButtonElement;
-		const i = parseInt(target.value);
+		const i = parseInt(target.value, 10);
 		const { editor } = this.props;
 		editor.pasteSet(i);
 		this.handleSetChange();
@@ -1945,7 +1938,7 @@ class TeamWizard extends preact.Component<{
 	};
 	moveSet = (ev: Event) => {
 		const target = ev.currentTarget as HTMLButtonElement;
-		const i = parseInt(target.value);
+		const i = parseInt(target.value, 10);
 		const { editor } = this.props;
 		editor.pasteSet(i, true);
 		this.handleSetChange();
@@ -2132,75 +2125,76 @@ class TeamWizard extends preact.Component<{
 		if (type === null) {
 			this.resetScroll();
 			this.forceUpdate();
-		} if (!type) {
+		}
+		if (!type) {
 			editor.setSearchValue('');
 			this.resetScroll();
 			this.forceUpdate();
 		} else {
 			const setIndex = editor.innerFocus!.setIndex;
-			const set = (editor.sets[setIndex] ||= { species: '', moves: [] });
+			const set = (editor.sets[setIndex] ||= {species: '', moves: []});
 			switch (type) {
-			case 'pokemon':
-				editor.changeSpecies(set, name);
-				this.changeFocus({
-					setIndex,
-					type: reverse ? 'details' : 'ability',
-				});
-				break;
-			case 'ability':
-				if (name === 'No Ability' && editor.gen <= 2) name = '';
-				set.ability = name;
-				this.changeFocus({
-					setIndex,
-					type: reverse ? 'pokemon' : 'item',
-				});
-				break;
-			case 'item':
-				set.item = name;
-				this.changeFocus({
-					setIndex,
-					type: reverse ? 'ability' : 'move',
-				});
-				break;
-			case 'move':
-				if (slot) {
-					// intentional; we're _removing_ from the slot
-					const i = parseInt(slot) - 1;
-					if (set.moves[i]) {
-						set.moves[i] = '';
-						// remove empty slots at the end
-						if (i === set.moves.length - 1) {
-							while (set.moves.length > 4 && !set.moves[set.moves.length - 1]) {
-								set.moves.pop();
-							}
-						}
-						// if we have more than 4 moves, move the last move into the newly-cleared slot
-						if (set.moves.length > 4 && i < set.moves.length - 1) {
-							set.moves[i] = set.moves.pop()!;
-						}
-					}
-				} else if (set.moves.includes(name)) {
-					set.moves.splice(set.moves.indexOf(name), 1);
-				} else {
-					for (let i = 0; i < set.moves.length + 1; i++) {
-						if (!set.moves[i]) {
-							set.moves[i] = name;
-							break;
-						}
-					}
-				}
-				if (set.moves.length === 4 && set.moves.every(Boolean)) {
+				case 'pokemon':
+					editor.changeSpecies(set, name);
 					this.changeFocus({
 						setIndex,
-						type: reverse ? 'item' : 'stats',
+						type: reverse ? 'details' : 'ability',
 					});
-				} else {
-					if (editor.search.query) {
-						this.resetScroll();
+					break;
+				case 'ability':
+					if (name === 'No Ability' && editor.gen <= 2) name = '';
+					set.ability = name;
+					this.changeFocus({
+						setIndex,
+						type: reverse ? 'pokemon' : 'item',
+					});
+					break;
+				case 'item':
+					set.item = name;
+					this.changeFocus({
+						setIndex,
+						type: reverse ? 'ability' : 'move',
+					});
+					break;
+				case 'move':
+					if (slot) {
+						// intentional; we're _removing_ from the slot
+						const i = parseInt(slot, 10) - 1;
+						if (set.moves[i]) {
+							set.moves[i] = '';
+							// remove empty slots at the end
+							if (i === set.moves.length - 1) {
+								while (set.moves.length > 4 && !set.moves[set.moves.length - 1]) {
+									set.moves.pop();
+								}
+							}
+							// if we have more than 4 moves, move the last move into the newly-cleared slot
+							if (set.moves.length > 4 && i < set.moves.length - 1) {
+								set.moves[i] = set.moves.pop()!;
+							}
+						}
+					} else if (set.moves.includes(name)) {
+						set.moves.splice(set.moves.indexOf(name), 1);
+					} else {
+						for (let i = 0; i < set.moves.length + 1; i++) {
+							if (!set.moves[i]) {
+								set.moves[i] = name;
+								break;
+							}
+						}
 					}
-					editor.updateSearchMoves(set);
-				}
-				break;
+					if (set.moves.length === 4 && set.moves.every(Boolean)) {
+						this.changeFocus({
+							setIndex,
+							type: reverse ? 'item' : 'stats',
+						});
+					} else {
+						if (editor.search.query) {
+							this.resetScroll();
+						}
+						editor.updateSearchMoves(set);
+					}
+					break;
 			}
 			editor.save();
 			this.props.onChange?.();
@@ -2559,7 +2553,7 @@ class StatForm extends preact.Component<{
 			</select>;
 		}
 		const minStat = editor.gen >= 6 ? 0 : 2;
-		const hpIVs = hpIVdata.map(ivs => ivs.split('').map(iv => parseInt(iv)));
+		const hpIVs = hpIVdata.map(ivs => ivs.split('').map(iv => parseInt(iv, 10)));
 
 		return <select name="ivspread" class="button" onChange={this.changeIVSpread}>
 			<option value="" selected>Hidden Power {hpType} IVs</option>
@@ -2630,9 +2624,9 @@ class StatForm extends preact.Component<{
 
 		let generationNumber = 9;
 		if (format.startsWith('gen')) {
-			let number = parseInt(format.charAt(3), 10);
-			if (1 <= number && number <= 8) {
-				generationNumber = number;
+			let generation = parseInt(format.charAt(3), 10);
+			if (1 <= generation && generation <= 8) {
+				generationNumber = generation;
 			}
 			format = format.slice(4);
 		}
@@ -2787,7 +2781,7 @@ class StatForm extends preact.Component<{
 		const target = ev.currentTarget as HTMLInputElement;
 		const { set } = this.props;
 		const statID = target.name.split('-')[1] as StatName;
-		let value = Math.abs(parseInt(target.value));
+		let value = Math.abs(parseInt(target.value, 10));
 
 		if (isNaN(value)) {
 			if (set.evs) delete set.evs[statID];
@@ -3115,7 +3109,7 @@ class DetailsForm extends preact.Component<{
 		const target = ev.currentTarget as HTMLInputElement;
 		const { set } = this.props;
 		if (target.value) {
-			set.level = parseInt(target.value.trim());
+			set.level = parseInt(target.value.trim(), 10);
 		} else {
 			delete set.level;
 		}
@@ -3135,7 +3129,7 @@ class DetailsForm extends preact.Component<{
 		const target = ev.currentTarget as HTMLInputElement;
 		const { set } = this.props;
 		if (target.value) {
-			set.happiness = parseInt(target.value.trim());
+			set.happiness = parseInt(target.value.trim(), 10);
 		} else {
 			delete set.happiness;
 		}
@@ -3157,7 +3151,7 @@ class DetailsForm extends preact.Component<{
 		const target = ev.currentTarget as HTMLInputElement;
 		const { set } = this.props;
 		if (target.value) {
-			set.dynamaxLevel = parseInt(target.value.trim());
+			set.dynamaxLevel = parseInt(target.value.trim(), 10);
 		} else {
 			delete set.dynamaxLevel;
 		}

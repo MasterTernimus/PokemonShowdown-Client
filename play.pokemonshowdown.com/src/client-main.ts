@@ -307,7 +307,8 @@ class PSTeams extends PSStreamModel<'team' | 'format'> {
  * User
  *********************************************************************/
 
-interface PSLoginState { name?: string; error?: string; needsPassword?: boolean; needsGoogle?: boolean; success?: boolean }
+interface PSLoginState { name?: string; error?: string; needsPassword?: boolean; needsGoogle?:
+	boolean;                success?: boolean; }
 class PSUser extends PSModel {
 	challstr = '';
 	loggingIn = '';
@@ -332,8 +333,12 @@ class PSUser extends PSModel {
 			this.handleAssertion(name, result.assertion);
 		} else {
 			this.loggingIn = '';
-			this.loginState = {name, needsPassword: !options?.needsGoogle, needsGoogle: options?.needsGoogle,
-				error: result?.error || 'Unable to log in. Check your credentials and connection.'};
+			this.loginState = {
+				name,
+				needsPassword: !options?.needsGoogle,
+				needsGoogle: options?.needsGoogle,
+				error: result?.error || 'Unable to log in. Check your credentials and connection.',
+			};
 			this.update();
 		}
 	}
@@ -666,7 +671,13 @@ class PlaceholderRoom extends PSRoom {
  *********************************************************************/
 
 type TimestampOptions = '' | 'off' | 'minutes' | 'seconds';
-type RoomType = {Model?: typeof PSRoom, Component: any, title?: string, routes?: readonly string[], location?: PSRoomLocation};
+type RoomType = {
+	Model?: typeof PSRoom;
+	Component: any;
+	title?: string;
+	routes?: readonly string[];
+	location?: PSRoomLocation;
+};
 
 /**
  * This model updates:
@@ -674,18 +685,37 @@ type RoomType = {Model?: typeof PSRoom, Component: any, title?: string, routes?:
  * - changing which room is focused
  * - changing the width of the left room, in two-panel mode
  */
-const PS = new class extends PSModel {
+const PS = new (class extends PSModel {
 	private popupCounter = 0;
-	addRoomType(...components: Array<{id: string, Model?: typeof PSRoom, title?: string, routes?: readonly string[], location?: PSRoomLocation}>) {
-		for (const Component of components) this.roomTypes[Component.id] = {...Component, Component};
+	addRoomType(
+		...components: {
+			id: string;
+			Model?: typeof PSRoom;
+			title?: string;
+			routes?: readonly string[];
+			location?: PSRoomLocation;
+		}[]
+	) {
+		for (const Component of components) {
+			this.roomTypes[Component.id] = {...Component, Component};
+		}
 		this.updateRoomTypes();
 	}
 	alert(message: string) {
-		this.addRoom({id: ('popup-' + ++this.popupCounter) as RoomID, type: 'popup', location: 'modal-popup', args: {message}});
+		this.addRoom({
+			id: ('popup-' + ++this.popupCounter) as RoomID,
+			type: 'popup',
+			location: 'modal-popup',
+			args: {message},
+		});
 		this.update();
 	}
-	get rightPanel() { return this.rightRoom; }
-	set rightPanel(room: PSRoom | null) { this.rightRoom = room; }
+	get rightPanel() {
+		return this.rightRoom;
+	}
+	set rightPanel(room: PSRoom | null) {
+		this.rightRoom = room;
+	}
 	down: string | boolean = false;
 
 	prefs = new PSPrefs();
@@ -708,7 +738,7 @@ const PS = new class extends PSModel {
 
 	rooms: {[roomid: string]: PSRoom | undefined} = {};
 	roomTypes: {
-		[type: string]: RoomType | undefined,
+		[type: string]: RoomType | undefined;
 	} = {};
 	/** List of rooms on the left side of the top tabbar */
 	leftRoomList: RoomID[] = [];
@@ -785,7 +815,7 @@ const PS = new class extends PSModel {
 	 * for security reasons it's impossible to know what they are until
 	 * they're dropped.
 	 */
-	dragging: {type: 'room', roomid: RoomID} | null = null;
+	dragging: {type: 'room'; roomid: RoomID} | null = null;
 
 	/** Tracks whether or not to display the "Use arrow keys" hint */
 	arrowKeysUsed = false;
@@ -797,19 +827,22 @@ const PS = new class extends PSModel {
 
 		this.addRoom({
 			id: '' as RoomID,
-			title: "Home",
+			title: 'Home',
 		});
 
 		this.addRoom({
 			id: 'rooms' as RoomID,
-			title: "Rooms",
+			title: 'Rooms',
 		});
 
 		if (this.newsHTML) {
-			this.addRoom({
-				id: 'news' as RoomID,
-				title: "News",
-			}, true);
+			this.addRoom(
+				{
+					id: 'news' as RoomID,
+					title: 'News',
+				},
+				true
+			);
 		}
 
 		this.updateLayout();
@@ -836,27 +869,27 @@ const PS = new class extends PSModel {
 	 */
 	getWidthFor(room: PSRoom) {
 		switch (room.type) {
-		case 'mainmenu':
-			return {
-				minWidth: 340,
-				width: 628,
-				maxWidth: 628,
-				isMainMenu: true,
-			};
-		case 'chat':
-		case 'rooms':
-		case 'battles':
-			return {
-				minWidth: 320,
-				width: 570,
-				maxWidth: 640,
-			};
-		case 'battle':
-			return {
-				minWidth: 320,
-				width: 956,
-				maxWidth: 1180,
-			};
+			case 'mainmenu':
+				return {
+					minWidth: 340,
+					width: 628,
+					maxWidth: 628,
+					isMainMenu: true,
+				};
+			case 'chat':
+			case 'rooms':
+			case 'battles':
+				return {
+					minWidth: 320,
+					width: 570,
+					maxWidth: 640,
+				};
+			case 'battle':
+				return {
+					minWidth: 320,
+					width: 956,
+					maxWidth: 1180,
+				};
 		}
 		return {
 			minWidth: 640,
@@ -895,50 +928,56 @@ const PS = new class extends PSModel {
 			roomid = msg.slice(1, nlIndex) as RoomID;
 			msg = msg.slice(nlIndex + 1);
 		}
-		const roomid2 = roomid || 'lobby' as RoomID;
+		const roomid2 = roomid || ('lobby' as RoomID);
 		let room = PS.rooms[roomid];
-		console.log('\u2705 ' + (roomid ? '[' + roomid + '] ' : '') + '%c' + msg, "color: #007700");
+		console.log('\u2705 ' + (roomid ? '[' + roomid + '] ' : '') + '%c' + msg, 'color: #007700');
 		let isInit = false;
 		for (const line of msg.split('\n')) {
 			const args = BattleTextParser.parseLine(line);
 			switch (args[0]) {
-			case 'init': {
-				isInit = true;
-				room = PS.rooms[roomid2];
-				const [, type] = args;
-				if (!room) {
-					this.addRoom({
-						id: roomid2,
-						type,
-						connected: true,
-					}, roomid === 'staff' || roomid === 'upperstaff');
+				case 'init': {
+					isInit = true;
 					room = PS.rooms[roomid2];
-				} else {
-					room.type = type;
-					room.connected = true;
-					this.updateRoomTypes();
-				}
-				this.update();
-				continue;
-			} case 'deinit': {
-				room = PS.rooms[roomid2];
-				if (room) {
-					room.connected = false;
-					this.removeRoom(room);
-				}
-				this.update();
-				continue;
-			} case 'noinit': {
-				room = PS.rooms[roomid2];
-				if (room) {
-					room.connected = false;
-					if (args[1] === 'namerequired') {
-						room.connectWhenLoggedIn = true;
+					const [, type] = args;
+					if (!room) {
+						this.addRoom(
+							{
+								id: roomid2,
+								type,
+								connected: true,
+							},
+							roomid === 'staff' || roomid === 'upperstaff'
+						);
+						room = PS.rooms[roomid2];
+					} else {
+						room.type = type;
+						room.connected = true;
+						this.updateRoomTypes();
 					}
+					this.update();
+					continue;
 				}
-				this.update();
-				continue;
-			}}
+				case 'deinit': {
+					room = PS.rooms[roomid2];
+					if (room) {
+						room.connected = false;
+						this.removeRoom(room);
+					}
+					this.update();
+					continue;
+				}
+				case 'noinit': {
+					room = PS.rooms[roomid2];
+					if (room) {
+						room.connected = false;
+						if (args[1] === 'namerequired') {
+							room.connectWhenLoggedIn = true;
+						}
+					}
+					this.update();
+					continue;
+				}
+			}
 			if (room) room.receiveLine(args);
 		}
 		if (room) room.update(isInit ? [`initdone`] : null);
@@ -947,7 +986,10 @@ const PS = new class extends PSModel {
 		const pipeIndex = fullMsg.indexOf('|');
 		const roomid = fullMsg.slice(0, pipeIndex) as RoomID;
 		const msg = fullMsg.slice(pipeIndex + 1);
-		console.log('\u25b6\ufe0f ' + (roomid ? '[' + roomid + '] ' : '') + '%c' + msg, "color: #776677");
+		console.log(
+			'\u25b6\ufe0f ' + (roomid ? '[' + roomid + '] ' : '') + '%c' + msg,
+			'color: #776677'
+		);
 		if (!this.connection) {
 			alert(`You are not connected and cannot send ${msg}.`);
 			return;
@@ -985,7 +1027,7 @@ const PS = new class extends PSModel {
 			const rightStretch = right.maxWidth - right.width;
 			if (leftStretch + rightStretch >= excess) return left.maxWidth;
 			// evenly distribute the excess
-			return left.width + Math.floor(excess * leftStretch / (leftStretch + rightStretch));
+			return left.width + Math.floor((excess * leftStretch) / (leftStretch + rightStretch));
 		}
 
 		if (left.isMainMenu) {
@@ -1004,7 +1046,14 @@ const PS = new class extends PSModel {
 		if (!options.type) {
 			for (const id in this.roomTypes) {
 				const entry = this.roomTypes[id];
-				if (entry && entry.routes?.some(route => route.endsWith('*') ? options.id.startsWith(route.slice(0, -1)) : route === options.id)) {
+				if (
+					entry &&
+					entry.routes?.some(route =>
+						route.endsWith('*')
+							? options.id.startsWith(route.slice(0, -1))
+							: route === options.id
+					)
+				) {
 					options.type = id;
 					options.location ||= entry.location;
 					break;
@@ -1015,51 +1064,60 @@ const PS = new class extends PSModel {
 		if (!options.type) {
 			const hyphenIndex = options.id.indexOf('-');
 			switch (hyphenIndex < 0 ? options.id : options.id.slice(0, hyphenIndex + 1)) {
-			case 'teambuilder': case 'ladder': case 'battles': case 'rooms':
-			case 'options': case 'volume': case 'teamdropdown': case 'formatdropdown':
-			case 'news':
-				options.type = options.id;
-				break;
-			case 'battle-': case 'user-': case 'team-': case 'ladder-':
-				options.type = options.id.slice(0, hyphenIndex);
-				break;
-			case 'view-':
-				options.type = 'html';
-				break;
-			case '':
-				options.type = 'mainmenu';
-				break;
-			default:
-				options.type = 'chat';
-				break;
+				case 'teambuilder':
+				case 'ladder':
+				case 'battles':
+				case 'rooms':
+				case 'options':
+				case 'volume':
+				case 'teamdropdown':
+				case 'formatdropdown':
+				case 'news':
+					options.type = options.id;
+					break;
+				case 'battle-':
+				case 'user-':
+				case 'team-':
+				case 'ladder-':
+					options.type = options.id.slice(0, hyphenIndex);
+					break;
+				case 'view-':
+					options.type = 'html';
+					break;
+				case '':
+					options.type = 'mainmenu';
+					break;
+				default:
+					options.type = 'chat';
+					break;
 			}
 		}
 
 		if (!options.location) {
 			switch (options.type) {
-			case 'rooms':
-			case 'chat':
-				options.location = 'right';
-				break;
-			case 'options':
-			case 'volume':
-			case 'user':
-				options.location = 'popup';
-				break;
-			case 'teamdropdown':
-			case 'formatdropdown':
-				options.location = 'semimodal-popup';
-				break;
-			case 'news':
-				options.location = 'mini-window';
-				break;
+				case 'rooms':
+				case 'chat':
+					options.location = 'right';
+					break;
+				case 'options':
+				case 'volume':
+				case 'user':
+					options.location = 'popup';
+					break;
+				case 'teamdropdown':
+				case 'formatdropdown':
+					options.location = 'semimodal-popup';
+					break;
+				case 'news':
+					options.location = 'mini-window';
+					break;
 			}
 			if (options.id.startsWith('pm-')) options.location = 'mini-window';
 		}
 
 		const roomType = this.roomTypes[options.type];
 		if (roomType?.title) options.title = roomType.title;
-		const Model = roomType ? (roomType.Model || PSRoom) : PlaceholderRoom;
+		const Model = roomType ? roomType.Model || PSRoom : PlaceholderRoom;
 		return new Model(options);
 	}
 	updateRoomTypes() {
@@ -1102,7 +1160,8 @@ const PS = new class extends PSModel {
 			this.activePanel = this.rightRoom;
 			while (this.popups.length) this.leave(this.popups.pop()!);
 			this.room = this.rightRoom;
-		} else if (this.rooms[roomid]) { // popup
+		} else if (this.rooms[roomid]) {
+			// popup
 			this.room = this.rooms[roomid]!;
 		} else {
 			return false;
@@ -1145,11 +1204,12 @@ const PS = new class extends PSModel {
 			return '';
 		}
 		let buf = '  ';
-		if (roomIndex > 1) { // don't show Home
+		if (roomIndex > 1) {
+			// don't show Home
 			const leftRoom = this.rooms[allRooms[roomIndex - 1]]!;
 			buf += `\u2190 ${leftRoom.title}`;
 		}
-		buf += (this.arrowKeysUsed ? " | " : " (use arrow keys) ");
+		buf += this.arrowKeysUsed ? ' | ' : ' (use arrow keys) ';
 		if (roomIndex < allRooms.length - 1) {
 			const rightRoom = this.rooms[allRooms[roomIndex + 1]]!;
 			buf += `${rightRoom.title} \u2192`;
@@ -1196,7 +1256,10 @@ const PS = new class extends PSModel {
 			return;
 		}
 		if (!noFocus) {
-			while (this.popups.length && this.popups[this.popups.length - 1] !== options.parentRoomid) {
+			while (
+				this.popups.length &&
+				this.popups[this.popups.length - 1] !== options.parentRoomid
+			) {
 				const popupid = this.popups.pop()!;
 				this.leave(popupid);
 			}
@@ -1204,26 +1267,26 @@ const PS = new class extends PSModel {
 		const room = this.createRoom(options);
 		this.rooms[room.id] = room;
 		switch (room.location) {
-		case 'left':
-			this.leftRoomList.push(room.id);
-			if (!noFocus) this.leftRoom = room;
-			break;
-		case 'right':
-			this.rightRoomList.push(room.id);
-			if (this.rightRoomList[this.rightRoomList.length - 2] === 'rooms') {
-				this.rightRoomList.splice(-2, 1);
-				this.rightRoomList.push('rooms' as RoomID);
-			}
-			if (!noFocus || !this.rightRoom) this.rightRoom = room;
-			break;
-		case 'mini-window':
-			this.miniRoomList.push(room.id);
-			break;
-		case 'popup':
-		case 'semimodal-popup':
-		case 'modal-popup':
-			this.popups.push(room.id);
-			break;
+			case 'left':
+				this.leftRoomList.push(room.id);
+				if (!noFocus) this.leftRoom = room;
+				break;
+			case 'right':
+				this.rightRoomList.push(room.id);
+				if (this.rightRoomList[this.rightRoomList.length - 2] === 'rooms') {
+					this.rightRoomList.splice(-2, 1);
+					this.rightRoomList.push('rooms' as RoomID);
+				}
+				if (!noFocus || !this.rightRoom) this.rightRoom = room;
+				break;
+			case 'mini-window':
+				this.miniRoomList.push(room.id);
+				break;
+			case 'popup':
+			case 'semimodal-popup':
+			case 'modal-popup':
+				this.popups.push(room.id);
+				break;
 		}
 		if (!noFocus) {
 			if (!this.popups.length) this.activePanel = room;
@@ -1255,7 +1318,8 @@ const PS = new class extends PSModel {
 			PS.rightRoomList.splice(rightRoomIndex, 1);
 		}
 		if (PS.rightRoom === room) {
-			let newRightRoomid = PS.rightRoomList[rightRoomIndex] || PS.rightRoomList[rightRoomIndex - 1];
+			let newRightRoomid =
+				PS.rightRoomList[rightRoomIndex] || PS.rightRoomList[rightRoomIndex - 1];
 			PS.rightRoom = newRightRoomid ? PS.rooms[newRightRoomid]! : null;
 			if (PS.activePanel === room) PS.activePanel = PS.rightRoom || PS.leftRoom;
 			if (PS.room === room) PS.room = PS.activePanel;
@@ -1270,7 +1334,9 @@ const PS = new class extends PSModel {
 
 		if (this.popups.length && room.id === this.popups[this.popups.length - 1]) {
 			this.popups.pop();
-			PS.room = this.popups.length ? PS.rooms[this.popups[this.popups.length - 1]]! : PS.activePanel;
+			PS.room = this.popups.length
+				? PS.rooms[this.popups[this.popups.length - 1]]!
+				: PS.activePanel;
 		}
 
 		this.update();
@@ -1280,7 +1346,11 @@ const PS = new class extends PSModel {
 		this.leave(this.popups[this.popups.length - 1]);
 		if (!skipUpdate) this.update();
 	}
-	join(roomid: RoomID, side?: PSRoomLocation | Omit<RoomOptions, 'id'> | null, noFocus?: boolean) {
+	join(
+		roomid: RoomID,
+		side?: PSRoomLocation | Omit<RoomOptions, 'id'> | null,
+		noFocus?: boolean
+	) {
 		if (this.room.id === roomid) return;
 		this.addRoom({id: roomid, ...(side && typeof side === 'object' ? side : {side})}, noFocus);
 		this.update();
@@ -1289,4 +1359,4 @@ const PS = new class extends PSModel {
 		const room = PS.rooms[roomid];
 		if (room) this.removeRoom(room);
 	}
-};
+})();

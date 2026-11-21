@@ -5,15 +5,6 @@ function _inheritsLoose(t,o){t.prototype=Object.create(o.prototype),t.prototype.
 
 
 
-
-
-
-
-
-
-
-
-
 UserRoom=function(_PSRoom){
 
 
@@ -402,7 +393,8 @@ preact.h("button",{onClick:this.handleAddFriend,"class":"button"},"Add friend"
 this.state.showConfirm&&preact.h("p",null,
 preact.h("small",null,(_this$state$data=
 this.state.data)==null?void 0:_this$state$data.action," ",preact.h("b",null,targetUser)," ",
-!((_this$state$data2=this.state.data)!=null&&_this$state$data2.action.endsWith('ock'))?preact.h(preact.Fragment,null,"from ",preact.h("b",null,targetRoom==null?void 0:targetRoom.title)):''," for ",(_this$state$data3=this.state.data)==null?void 0:_this$state$data3.duration,"?"
+!((_this$state$data2=this.state.data)!=null&&_this$state$data2.action.endsWith('ock'))?preact.h(preact.Fragment,null,"from ",preact.h("b",null,targetRoom==null?void 0:targetRoom.title)):''," for ",(_this$state$data3=
+this.state.data)==null?void 0:_this$state$data3.duration,"?"
 ),
 preact.h("p",{"class":"buttonbar"},
 preact.h("button",{"class":"button",onClick:this.handleConfirm},
@@ -1362,7 +1354,7 @@ preact.h("p",null,preact.h("strong",null,"Default")),
 preact.h("div",{"class":"bglist"},
 preact.h("button",{onClick:this.setBg,value:"","class":option('')},
 preact.h("strong",{
-style:"\r background: #888888;\r color: white;\r padding: 16px 18px;\r display: block;\r font-size: 12pt;\r "},
+style:" background: #888888; color: white; padding: 16px 18px; display: block; font-size: 12pt; "},
 
 
 
@@ -1891,70 +1883,123 @@ var room=this.props.room;
 var type=(_room$args1=room.args)==null?void 0:_room$args1.type;
 var isWarn=type==='warn';
 var message=((_room$args10=room.args)==null?void 0:_room$args10.message)||'';
-return preact.h(PSPanelWrapper,{room:room,width:((_room$args11=room.args)==null?void 0:_room$args11.width)||780},
+return(
+preact.h(PSPanelWrapper,{room:room,width:((_room$args11=room.args)==null?void 0:_room$args11.width)||780},
 preact.h("div",{"class":"pad"},
-
 isWarn&&
-preact.h("p",null,preact.h("strong",{style:"color:red"},BattleLog.escapeHTML(message)||'You have been warned for breaking the rules.'
-)),
+preact.h("p",null,
+preact.h("strong",{style:"color:red"},
+BattleLog.escapeHTML(message)||
+'You have been warned for breaking the rules.'
+)
+),
 
 preact.h("h2",null,"Pok\xE9mon Showdown Rules"),
-preact.h("p",null,preact.h("b",null,"1.")," Be nice to people. Respect people. Don't be rude or mean to people."),
-preact.h("p",null,preact.h("b",null,"2.")," ",' ',"Follow US laws (PS is based in the US). No porn (minors use PS), don't distribute pirated material, ",
-' ',"and don't slander others."
-),
-preact.h("p",null,preact.h("b",null,"3.")," ",' ',"\xA0No sex. Don't discuss anything sexually explicit, not even in private messages, ",
-' ',"not even if you're both adults."
-),
-preact.h("p",null,preact.h("b",null,"4.")," ",' ',"\xA0No cheating. Don't exploit bugs to gain an unfair advantage. ",
-' ',"Don't game the system (by intentionally losing against yourself or a friend in a ladder match, by timerstalling, etc). ",
-' ',"Don't impersonate staff if you're not."
-),
-preact.h("p",null,preact.h("b",null,"5.")," ",' ',"Moderators have discretion to punish any behaviour they deem inappropriate, whether or not it's on this list. ",
-' ',"If you disagree with a moderator ruling, appeal to an administrator (a user with ~ next to their name) or ",
-' ',
-preact.h("a",{href:"https://pokemonshowdown.com/appeal"},"Discipline Appeals"),"."),
-preact.h("p",null,"(Note: The First Amendment does not apply to PS, since PS is not a government organization.)"),
-preact.h("p",null,preact.h("b",null,"Chat")),
-preact.h("p",null,preact.h("b",null,"1.")," ",' ',"Do not spam, flame, or troll. This includes advertising, raiding, ",
-' ',"asking questions with one-word answers in the lobby, ",
-' ',"and flooding the chat such as by copy/pasting logs in the lobby."
-),
-preact.h("p",null,preact.h("b",null,"2.")," ",' ',"Don't call unnecessary attention to yourself. Don't be obnoxious. ALL CAPS and ",
-preact.h("i",null,"formatting")," ",' ',"are acceptable to emphasize things, but should be used sparingly, not all the time."
-),
-preact.h("p",null,preact.h("b",null,"3.")," ",' ',"No minimodding: don't mod if it's not your job. Don't tell people they'll be muted, ",
-' ',"don't ask for people to be muted, ",
-' ',"and don't talk about whether or not people should be muted ('inb4 mute\\, etc). ",
-' ',"This applies to bans and other punishments, too."
-),
-preact.h("p",null,preact.h("b",null,"4.")," ",' ',"We reserve the right to tell you to stop discussing moderator decisions if you become unreasonable or belligerent"
-),
-preact.h("p",null,preact.h("b",null,"5.")," English only, unless specified otherwise."),
-preact.h("p",null,"(Note: You can opt out of chat rules in private chat rooms and battle rooms, ",' ',"but only if all ROs or players agree to it.)"
-),
+preact.h("p",null,
+preact.h("b",null,"1.")," Be nice to people. Respect people. Don't be rude or mean to people."
 
-!isWarn&&preact.h(preact.Fragment,null,
-preact.h("p",null,preact.h("b",null,"Usernames")),
-preact.h("p",null,"Your username can be chosen and changed at any time. Keep in mind:"),
-preact.h("p",null,preact.h("b",null,"1.")," Usernames may not impersonate a recognized user (a user with %, @, #, or ~ next to their name) ",' ',"or a famous person/organization that uses PS or is associated with Pok\xE9mon."
 ),
-preact.h("p",null,preact.h("b",null,"2.")," Usernames may not be derogatory or insulting in nature, to an individual or group ",' ',"(insulting yourself is okay as long as it's not too serious)."
+preact.h("p",null,
+preact.h("b",null,"2.")," Follow US laws (PS is based in the US). No porn (minors use PS), don't distribute pirated material, and don't slander others."
+
 ),
-preact.h("p",null,preact.h("b",null,"3.")," Usernames may not directly reference sexual activity, or be excessively disgusting."),
-preact.h("p",null,"This policy is less restrictive than that of many places, so you might see some \"borderline\" nicknames ",' ',"that might not be accepted elsewhere. You might consider it unfair that they are allowed to keep their ",
-' ',"nickname. The fact remains that their nickname follows the above rules, and ",
-' ',"if you were asked to choose a new name, yours does not."
+preact.h("p",null,
+preact.h("b",null,"3.")," \xA0No sex. Don't discuss anything sexually explicit, not even in private messages, not even if you're both adults."
+
+),
+preact.h("p",null,
+preact.h("b",null,"4.")," \xA0No cheating. Don't exploit bugs to gain an unfair advantage.",' ',"Don't game the system (by intentionally losing against yourself or a friend in a ladder match, by timerstalling, etc). Don't impersonate staff if you're not."
+
+
+
+),
+preact.h("p",null,
+preact.h("b",null,"5.")," Moderators have discretion to punish any behaviour they deem inappropriate, whether or not it's on this list. If you disagree with a moderator ruling, appeal to an administrator (a user with ~ next to their name) or ",
+
+
+preact.h("a",{href:"https://pokemonshowdown.com/appeal"},"Discipline Appeals"),"."
+
+),
+preact.h("p",null,"(Note: The First Amendment does not apply to PS, since PS is not a government organization.)"
+
+
+),
+preact.h("p",null,
+preact.h("b",null,"Chat")
+),
+preact.h("p",null,
+preact.h("b",null,"1.")," Do not spam, flame, or troll. This includes advertising, raiding,",' ',"asking questions with one-word answers in the lobby, and flooding the chat such as by copy/pasting logs in the lobby."
+
+
+),
+preact.h("p",null,
+preact.h("b",null,"2.")," Don't call unnecessary attention to yourself. Don't be obnoxious. ALL CAPS and ",
+preact.h("i",null,"formatting")," are acceptable to emphasize things, but should be used sparingly, not all the time."
+
+),
+preact.h("p",null,
+preact.h("b",null,"3.")," No minimodding: don't mod if it's not your job. Don't tell people they'll be muted, don't ask for people to be muted, and don't talk about whether or not people should be muted ('inb4 mute\\, etc). This applies to bans and other punishments, too."
+
+
+
+),
+preact.h("p",null,
+preact.h("b",null,"4.")," We reserve the right to tell you to stop discussing moderator decisions if you become unreasonable or belligerent"
+
+),
+preact.h("p",null,
+preact.h("b",null,"5.")," English only, unless specified otherwise."
+),
+preact.h("p",null,"(Note: You can opt out of chat rules in private chat rooms and battle rooms,",
+' ',"but only if all ROs or players agree to it.)"
+
+),
+!isWarn&&
+preact.h(preact.Fragment,null,
+preact.h("p",null,
+preact.h("b",null,"Usernames")
+),
+preact.h("p",null,"Your username can be chosen and changed at any time. Keep in mind:"
+
+),
+preact.h("p",null,
+preact.h("b",null,"1.")," Usernames may not impersonate a recognized user (a user with %, @, #, or ~ next to their name) or a famous person/organization that uses PS or is associated with Pok\xE9mon."
+
+
+),
+preact.h("p",null,
+preact.h("b",null,"2.")," Usernames may not be derogatory or insulting in nature, to an individual or group (insulting yourself is okay as long as it's not too serious)."
+
+
+),
+preact.h("p",null,
+preact.h("b",null,"3.")," Usernames may not directly reference sexual activity, or be excessively disgusting."
+
+),
+preact.h("p",null,"This policy is less restrictive than that of many places, so you might see some \"borderline\" nicknames that might not be accepted elsewhere. You might consider it unfair that they are allowed to keep their nickname. The fact remains that their nickname follows the above rules, and if you were asked to choose a new name, yours does not."
+
+
+
+
+
+
 )
 ),
 
-preact.h("p",{"class":"buttonbar"},preact.h("button",{
+preact.h("p",{"class":"buttonbar"},
+preact.h("button",{
 name:"close",
-"data-cmd":"/close","class":"button autofocus",
+"data-cmd":"/close",
+"class":"button autofocus",
 disabled:!this.state.canClose},
-" Close ",this.state.timerRef&&preact.h(preact.Fragment,null,"(",this.state.timeLeft," sec)")))
+
+' ',"Close ",
+this.state.timerRef&&preact.h(preact.Fragment,null,"(",this.state.timeLeft," sec)")
 )
-);
+)
+)
+));
+
 };return RulesPanel;}(PSRoomPanel);RulesPanel.id='rules';RulesPanel.routes=['rules-*'];RulesPanel.location='modal-popup';RulesPanel.noURL=true;RulesPanel.Model=PopupRoom;
 
 

@@ -1385,7 +1385,9 @@ class Move implements Effect {
 			} else {
 				this.zMove.basePower = 100;
 			}
-			if (data.zMove && (typeof this.multihit !== 'number' || id === 'beatdown')) this.zMove.basePower = data.zMove.basePower;
+			if (data.zMove && (typeof this.multihit !== 'number' || id === 'beatdown')) { this.zMove.basePower =
+				data.zMove.basePower;
+			}
 		}
 
 		this.num = data.num || 0;

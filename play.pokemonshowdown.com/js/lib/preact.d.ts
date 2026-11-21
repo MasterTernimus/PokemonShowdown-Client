@@ -1,130 +1,132 @@
-export = preact;
 export as namespace preact;
 
-declare namespace preact {
-	type Key = string | number;
-	type Ref<T> = (instance: T) => void;
-	type ComponentChild = VNode<any> | string | number | boolean | null | undefined;
-	type ComponentChildren = ComponentChild[] | ComponentChild | object | string | number | null;
+export type Key = string | number;
+export type Ref<T> = (instance: T) => void;
+export type ComponentChild = VNode<any> | string | number | boolean | null | undefined;
+export type ComponentChildren = ComponentChild[] | ComponentChild | object | string | number | null;
 
-	/**
-	 * @deprecated
-	 *
-	 * Use Attributes instead
-	 */
-	type ComponentProps = Attributes;
+/**
+ * @deprecated
+ *
+ * Use Attributes instead
+ */
+export type ComponentProps = Attributes;
 
-	/**
-	 * @deprecated
-	 *
-	 * Use ClassAttributes instead
-	 */
-	type PreactHTMLAttributes = ClassAttributes<any>;
+/**
+ * @deprecated
+ *
+ * Use ClassAttributes instead
+ */
+export type PreactHTMLAttributes = ClassAttributes<any>;
 
-	interface Attributes {
-		key?: string | number | any;
-		jsx?: boolean;
-	}
-
-	interface ClassAttributes<T> extends Attributes {
-		ref?: Ref<T>;
-	}
-
-	interface PreactDOMAttributes {
-		children?: ComponentChildren;
-		dangerouslySetInnerHTML?: {
-			__html: string;
-		};
-	}
-
-	type ComponentFactory<P> = ComponentConstructor<P> | FunctionalComponent<P>;
-	/**
-	 * Define the contract for a virtual node in preact.
-	 *
-	 * A virtual node has a name, a map of attributes, an array
-	 * of child {VNode}s and a key. The key is used by preact for
-	 * internal purposes.
-	 */
-	interface VNode<P = any> {
-		nodeName: ComponentFactory<P> | string;
-		attributes: P;
-		children: Array<VNode<any> | string>;
-		key?: Key | null;
-	}
-
-	type RenderableProps<P, RefType = any> = Readonly<
-		P & Attributes & { children?: ComponentChildren; ref?: Ref<RefType> }
-	>;
-
-	interface FunctionalComponent<P = {}> {
-		(props: RenderableProps<P>, context?: any): VNode<any> | null;
-		displayName?: string;
-		defaultProps?: Partial<P>;
-	}
-
-	interface ComponentConstructor<P = {}, S = {}> {
-		new (props: P, context?: any): Component<P, S>;
-		displayName?: string;
-		defaultProps?: Partial<P>;
-	}
-
-	// Type alias for a component considered generally, whether stateless or stateful.
-	type AnyComponent<P = {}, S = {}> = FunctionalComponent<P> | Component<P, S>;
-
-	interface Component<P = {}, S = {}> {
-		componentWillMount?(): void;
-		componentDidMount?(): void;
-		componentWillUnmount?(): void;
-		getChildContext?(): object;
-		componentWillReceiveProps?(nextProps: Readonly<P>, nextContext: any): void;
-		shouldComponentUpdate?(nextProps: Readonly<P>, nextState: Readonly<S>, nextContext: any): boolean;
-		componentWillUpdate?(nextProps: Readonly<P>, nextState: Readonly<S>, nextContext: any): void;
-		componentDidUpdate?(previousProps: Readonly<P>, previousState: Readonly<S>, previousContext: any): void;
-	}
-
-	abstract class Component<P, S> {
-		constructor(props?: P, context?: any);
-
-		static displayName?: string;
-		static defaultProps?: any;
-
-		state: Readonly<S>;
-		props: RenderableProps<P>;
-		context: any;
-		base?: HTMLElement;
-
-		setState<K extends keyof S>(state: Pick<S, K>, callback?: () => void): void;
-		setState<K extends keyof S>(fn: (prevState: S, props: P) => Pick<S, K>, callback?: () => void): void;
-
-		forceUpdate(callback?: () => void): void;
-
-		abstract render(props?: RenderableProps<P>, state?: Readonly<S>, context?: any): ComponentChild;
-	}
-
-	function h<P>(
-		node: ComponentFactory<P>,
-		params: Attributes & P | null,
-		...children: ComponentChildren[]
-	): VNode<any>;
-	function h(
-		node: string,
-		params: JSX.HTMLAttributes & JSX.SVGAttributes & Record<string, any> | null,
-		...children: ComponentChildren[]
-	): VNode<any>;
-
-	function render(node: ComponentChild, parent: Element | Document | ShadowRoot | DocumentFragment, mergeWith?: Element): Element;
-	function rerender(): void;
-	function cloneElement(element: JSX.Element, props: any): JSX.Element;
-
-	var options: {
-		syncComponentUpdates?: boolean;
-		debounceRendering?: (render: () => void) => void;
-		vnode?: (vnode: VNode<any>) => void;
-		event?: (event: Event) => Event;
-	};
-
-	const Fragment: ComponentConstructor<{}, {}>;
+export interface Attributes {
+	key?: string | number | any;
+	jsx?: boolean;
 }
+
+export interface ClassAttributes<T> extends Attributes {
+	ref?: Ref<T>;
+}
+
+export interface PreactDOMAttributes {
+	children?: ComponentChildren;
+	dangerouslySetInnerHTML?: {
+		__html: string;
+	};
+}
+
+export type ComponentFactory<P> = ComponentConstructor<P> | FunctionalComponent<P>;
+/**
+ * Define the contract for a virtual node in preact.
+ *
+ * A virtual node has a name, a map of attributes, an array
+ * of child {VNode}s and a key. The key is used by preact for
+ * internal purposes.
+ */
+export interface VNode<P = any> {
+	nodeName: ComponentFactory<P> | string;
+	attributes: P;
+	children: (VNode<any> | string)[];
+	key?: Key | null;
+}
+
+export type RenderableProps<P, RefType = any> = Readonly<
+	P & Attributes & { children?: ComponentChildren; ref?: Ref<RefType> }
+>;
+
+export interface FunctionalComponent<P = {}> {
+	(props: RenderableProps<P>, context?: any): VNode<any> | null;
+	displayName?: string;
+	defaultProps?: Partial<P>;
+}
+
+export interface ComponentConstructor<P = {}, S = {}> {
+	new (props: P, context?: any): Component<P, S>;
+	displayName?: string;
+	defaultProps?: Partial<P>;
+}
+
+// Type alias for a component considered generally, whether stateless or stateful.
+export type AnyComponent<P = {}, S = {}> = FunctionalComponent<P> | Component<P, S>;
+
+export interface Component<P = {}, S = {}> {
+	componentWillMount?(): void;
+	componentDidMount?(): void;
+	componentWillUnmount?(): void;
+	getChildContext?(): object;
+	componentWillReceiveProps?(nextProps: Readonly<P>, nextContext: any): void;
+	shouldComponentUpdate?(nextProps: Readonly<P>, nextState: Readonly<S>, nextContext: any): boolean;
+	componentWillUpdate?(nextProps: Readonly<P>, nextState: Readonly<S>, nextContext: any): void;
+	componentDidUpdate?(previousProps: Readonly<P>, previousState: Readonly<S>, previousContext: any): void;
+}
+
+export abstract class Component<P, S> {
+	constructor(props?: P, context?: any);
+
+	static displayName?: string;
+	static defaultProps?: any;
+
+	state: Readonly<S>;
+	props: RenderableProps<P>;
+	context: any;
+	base?: HTMLElement;
+
+	setState<K extends keyof S>(
+		state: Pick<S, K> | ((prevState: S, props: P) => Pick<S, K>), callback?: () => void
+	): void;
+
+	forceUpdate(callback?: () => void): void;
+
+	abstract render(props?: RenderableProps<P>, state?: Readonly<S>, context?: any): ComponentChild;
+}
+
+export function h<P>(
+	node: ComponentFactory<P>,
+	params: Attributes & P | null,
+	...children: ComponentChildren[]
+): VNode<any>;
+export function h(
+	node: string,
+	params: JSX.HTMLAttributes & JSX.SVGAttributes & Record<string, any> | null,
+	...children: ComponentChildren[]
+): VNode<any>;
+
+export function render(
+	node: ComponentChild,
+	parent: Element | Document | ShadowRoot | DocumentFragment,
+	mergeWith?: Element
+): Element;
+export function rerender(): void;
+export function cloneElement(element: JSX.Element, props: any): JSX.Element;
+
+export let options: {
+	syncComponentUpdates?: boolean;
+	debounceRendering?: (render: () => void) => void;
+	vnode?: (vnode: VNode<any>) => void;
+	event?: (event: Event) => Event;
+};
+
+export const Fragment: ComponentConstructor<{}, {}>;
 
 declare global {
 	namespace JSX {
@@ -388,9 +390,7 @@ declare global {
 			d: string;
 		}
 
-		interface EventHandler<E extends Event> {
-			(event: E): void;
-		}
+		type EventHandler<E extends Event> = (event: E) => void;
 
 		type ClipboardEventHandler = EventHandler<ClipboardEvent>;
 		type CompositionEventHandler = EventHandler<CompositionEvent>;
@@ -846,7 +846,7 @@ declare global {
 			video: HTMLAttributes;
 			wbr: HTMLAttributes;
 
-			//SVG
+			// SVG
 			svg: SVGAttributes;
 			animate: SVGAttributes;
 			circle: SVGAttributes;

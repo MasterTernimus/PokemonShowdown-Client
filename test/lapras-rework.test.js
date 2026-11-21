@@ -48,7 +48,7 @@ describe('Lapras client rework',()=>{
   p.volatiles.gastroacid=['gastroacid'];assert.equal(power('watergun'),water);
  });
  it('Storm Charge badge no longer promises draining or expenditure on a miss',()=>{
-  const src=fs.readFileSync(path.join(__dirname,'../play.pokemonshowdown.com/src/battle-animations.ts'),'utf8');
-  const line=src.split('\n').find(x=>x.includes('stormcharge:'));assert(line.includes('recoil-free'));assert(!line.includes('heals'));assert(!line.includes('miss or block'));
+  const {stormcharge} = require('./helpers/status-table.cjs');
+  assert(stormcharge.includes('recoil-free')); assert(!stormcharge.includes('heals')); assert(!stormcharge.includes('miss or block'));
  });
 });

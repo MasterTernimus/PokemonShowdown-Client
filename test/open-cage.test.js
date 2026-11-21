@@ -29,7 +29,7 @@ describe('Open Cage client metadata', () => {
 		});
 	}
 	it('provides a readable escape status in battles', () => {
-		const source = fs.readFileSync(path.join(client, 'src/battle-animations.ts'), 'utf8');
-		assert.match(source, /opencage:.*Free to switch/);
+		const labels = require('./helpers/status-table.cjs');
+		assert.match(labels.opencage, />Free to switch<\/span>/);
 	});
 });

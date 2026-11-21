@@ -31,7 +31,7 @@ export class MiniEdit {
 	 * it doesn't already exist and the user types a newline at the end
 	 * of the text, it wouldn't appear.
 	 */
-	_setContent: (text: string) => void;
+	writeContent: (text: string) => void;
 	pushHistory?: (text: string, selection: MiniEditSelection) => void;
 	onKeyDown = (ev: KeyboardEvent) => {
 		if (ev.keyCode === 13) { // enter
@@ -41,11 +41,11 @@ export class MiniEdit {
 	};
 
 	constructor(
-		el: HTMLElement, options: { setContent: MiniEdit['_setContent'], onKeyDown?: (ev: KeyboardEvent) => void }
+		el: HTMLElement, options: { setContent: MiniEdit['writeContent'], onKeyDown?: (ev: KeyboardEvent) => void }
 	) {
 		this.element = el;
 
-		this._setContent = options.setContent;
+		this.writeContent = options.setContent;
 		this.onKeyDown = options.onKeyDown || this.onKeyDown;
 
 		this.element.setAttribute('contentEditable', 'true');
@@ -56,7 +56,7 @@ export class MiniEdit {
 		});
 		this.element.addEventListener('keydown', this.onKeyDown);
 
-		for (const Plugin of MiniEdit.plugins) new Plugin(this);
+		for (const Plugin of MiniEdit.plugins) Reflect.construct(Plugin, [this]);
 	}
 
 	/** return true from callback for an early return */
@@ -72,7 +72,7 @@ export class MiniEdit {
 	}
 
 	setValue(text: string, selection = this.getSelection()): void {
-		this._setContent(text);
+		this.writeContent(text);
 
 		this.setSelection(selection);
 		this.pushHistory?.(text, selection);

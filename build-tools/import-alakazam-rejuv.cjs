@@ -38,17 +38,18 @@ fs.writeFileSync(path.resolve(__dirname, '../caches/alakazam-rejuv-preview.png')
 const sourcePath = path.resolve(__dirname, '../play.pokemonshowdown.com/src/battle-dex.ts');
 let source = fs.readFileSync(sourcePath, 'utf8');
 const {measureImage} = require('./sprite-image-metrics.cjs');
+const {spriteTableSource} = require('./sprite-table-source.cjs');
 for (const variable of ['SPRITE_ASSET_DIMENSIONS', 'SPRITE_IMAGE_METRICS']) {
-	const expression = new RegExp('^(const ' + variable + ': [^=]+ = )(.*);$', 'm');
+	const expression = new RegExp('^(const ' + variable + ': [^=]+ = )(\\{[\\s\\S]*?\\});\\r?$', 'm');
 	const match = source.match(expression);
 	if (!match) throw new Error('Missing sprite metrics table: ' + variable);
-	const table = JSON.parse(match[2]);
+	const table = JSON.parse(match[2].replace(/,(\s*})/g, '$1'));
 	for (const dir of ['gen5', 'gen5-back', 'gen5-shiny', 'gen5-back-shiny', 'dex', 'dex-shiny']) {
 		const file = dir + '/alakazam-rejuv.png';
 		const metrics = measureImage(fs.readFileSync(path.join(root, file)));
 		table[file] = variable === 'SPRITE_ASSET_DIMENSIONS' ? metrics.slice(0, 2) : metrics;
 	}
-	source = source.replace(expression, () => match[1] + JSON.stringify(table) + ';');
+	source = source.replace(expression, () => match[1] + spriteTableSource(table) + ';');
 }
 fs.writeFileSync(sourcePath, source);
 console.log('Extracted normal/shiny fronts, backs, icons, and teambuilder images.');

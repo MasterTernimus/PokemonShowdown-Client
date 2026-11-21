@@ -24,8 +24,8 @@ describe('Jackpot and Salvation metadata', () => {
 		assert.match(Dex.abilities.get('falsesalvation').desc, /At full HP/);
 	});
 	it('provides a compact active Jackpot label', () => {
-		const source = fs.readFileSync(path.resolve(__dirname, '../play.pokemonshowdown.com/src/battle-animations.ts'), 'utf8');
-		assert.match(source, /jackpot: '<span[^\n]+>Jackpot<\/span>/);
+		const labels = require('./helpers/status-table.cjs');
+		assert.match(labels.jackpot, /^<span.*>Jackpot<\/span>/);
 	});
 	it('tracks Jackpot and cleansed conditions without changing Hot Streak', () => {
 		const battle = new Battle({debug: true, log: [

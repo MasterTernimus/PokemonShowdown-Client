@@ -1,14 +1,8 @@
 
-
-
-
-
-
-
 // we check window.d3 before using it, so d3 doesn't need to be loaded before this file
 // The client ships d3 v3 as a browser global.
-interface D3Point {x: number; y: number}
-interface D3Link<T> {source: T; target: T}
+interface D3Point {x: number; y: number; }
+interface D3Link<T> {source: T; target: T; }
 interface D3Selection<T> {
 	append(name: string): D3Selection<T>;
 	attr(name: string, value: string | number | ((datum: T) => string | number)): D3Selection<T>;
@@ -39,7 +33,6 @@ declare const d3: {
 	select(element: EventTarget): D3Selection<unknown>;
 	event: Event;
 };
-
 
 interface TreeNode {
 	children?: TreeNode[];
@@ -113,8 +106,9 @@ class ChatTournament extends PSModel {
 		return true;
 	}
 	static arrayToPhrase(array: string[], finalSeparator = 'and') {
-		if (array.length <= 1)
+		if (array.length <= 1) {
 			return array.join();
+		}
 		return `${array.slice(0, -1).join(", ")} ${finalSeparator} ${array.slice(-1)[0]}`;
 	}
 	handleJoinLeave(action: 'join' | 'leave', name: string) {
@@ -228,10 +222,10 @@ class ChatTournament extends PSModel {
 				if (data[0] === 'off') {
 					this.tryAdd(`|html|<div class="tournament-message-autodq-off">The tournament's automatic disqualify timer has been turned off.</div>`);
 				} else if (data[0] === 'on') {
-					let minutes = Math.round(parseInt(data[1]) / 1000 / 60);
+					let minutes = Math.round(parseInt(data[1], 10) / 1000 / 60);
 					this.tryAdd(BattleLog.html`|html|<div class="tournament-message-autodq-on">The tournament's automatic disqualify timer has been set to ${minutes} minute${minutes === 1 ? "" : "s"}.</div>`);
 				} else {
-					let seconds = Math.floor(parseInt(data[1]) / 1000);
+					let seconds = Math.floor(parseInt(data[1], 10) / 1000);
 					PS.alert(`Please respond to the tournament within ${seconds} seconds or you may be automatically disqualified.`);
 					if (notify) {
 						this.room.notify({
@@ -247,7 +241,7 @@ class ChatTournament extends PSModel {
 				if (data[0] === 'off') {
 					this.tryAdd(`|html|<div class="tournament-message-autostart">The tournament's automatic start is now off.</div>`);
 				} else if (data[0] === 'on') {
-					let minutes = (parseInt(data[1]) / 1000 / 60);
+					let minutes = (parseInt(data[1], 10) / 1000 / 60);
 					this.tryAdd(BattleLog.html`|html|<div class="tournament-message-autostart">The tournament will automatically start in ${minutes} minute${minutes === 1 ? "" : "s"}.</div>`);
 				}
 				break;
@@ -267,8 +261,9 @@ class ChatTournament extends PSModel {
 			case 'updateend':
 				const info = { ...this.info, ...this.updates };
 				if (!info.isActive) {
-					if (!info.isStarted || info.isJoined)
+					if (!info.isStarted || info.isJoined) {
 						this.boxVisible = true;
+					}
 					info.isActive = true;
 				}
 
@@ -323,10 +318,11 @@ class ChatTournament extends PSModel {
 
 			case 'battleend': {
 				let result = "drawn";
-				if (data[2] === 'win')
+				if (data[2] === 'win') {
 					result = "won";
-				else if (data[2] === 'loss')
+				} else if (data[2] === 'loss') {
 					result = "lost";
+ }
 				const message = `${BattleLog.escapeHTML(data[0])} has ${result} the match ${BattleLog.escapeHTML(data[3].split(',').join(' - '))} against ${BattleLog.escapeHTML(data[1])}${data[4] === 'fail' ? " but the tournament does not support drawing, so it did not count" : ""}.`;
 				const roomid = toRoomid(data[5]);
 				this.tryAdd(`|uhtml|tournament-${roomid}|<div class="tournament-message-battleend"><a href="${roomid}" class="ilink">${message}</a></div>`);
@@ -351,7 +347,7 @@ class ChatTournament extends PSModel {
 					this.tryAdd(BattleLog.html`|html|<div class="tournament-message-end-runnerup">Runner${endData.results[1].length > 1 ? "s" : ""}-up: ${ChatTournament.arrayToPhrase(endData.results[1])}</div>`);
 				}
 
-				// Fallthrough
+				/* falls through */
 
 			case 'forceend':
 				this.room.dismissNotification('tournament-create');
@@ -498,7 +494,8 @@ class TournamentBox extends preact.Component<{ tour: ChatTournament, left?: numb
 		}
 
 		// joined
-		const noMatches = !info.challenges?.length && !info.challengeBys?.length && !info.challenging && !info.challenged;
+		const noMatches =
+			!info.challenges?.length && !info.challengeBys?.length && !info.challenging && !info.challenged;
 		return <div class="tournament-tools">
 			<TeamForm
 				format={info.format} teamFormat={info.teambuilderFormat} hideFormat
@@ -561,8 +558,9 @@ class TournamentBracket extends preact.Component<{
 }> {
 	subscription!: PSSubscription;
 	renderTableBracket(data: TournamentTableBracketData) {
-		if (data.tableContents.length === 0)
+		if (data.tableContents.length === 0) {
 			return null;
+		}
 
 		if (data.tableHeaders.rows.length > 4 && this.props.abbreviated) {
 			let rows = data.tableHeaders.rows.map((row, i) => ({
@@ -956,7 +954,7 @@ class TournamentTreeBracket extends preact.Component<{
 		});
 
 		return div;
-	};
+	}
 	override componentDidMount() {
 		this.base!.appendChild(this.generateTreeBracket(this.props.data, this.props.abbreviated));
 	}

@@ -1,7 +1,6 @@
 export {};
 declare const SockJS: any;
 
-
 let socket: WebSocket | null = null;
 let serverInfo: {protocol: 'http' | 'https'; host: string; port: number; prefix: string};
 let reconnectTimeout: ReturnType<typeof setTimeout> | null = null;
