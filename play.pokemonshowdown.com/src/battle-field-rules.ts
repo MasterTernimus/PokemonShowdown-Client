@@ -5877,7 +5877,7 @@ const BattleFieldMoveRules = {
 		uncertain: false,
 	},
 	stabbyswarm: {
-		onModifyMove() {
+		onModifyMove(move, source) {
 			if (this.field.isTerrain('forestterrain')) {
 				this.add('-message', "They're coming out of the woodwork!");
 			}

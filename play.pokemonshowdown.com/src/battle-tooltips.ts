@@ -2159,10 +2159,10 @@ class BattleTooltips {
 			const stats = this.calculateModifiedStats(pokemon, serverPokemon, true);
 			category = stats.atk >= stats.spa ? 'Physical' : 'Special';
 		}
-		const specialTie = [
+		const specialTie = (!forMaxMove && move.flags.adaptivecategory) || [
 			'swift', 'venamskiss', 'firepledge', 'waterpledge', 'grasspledge',
 			'photongeyser', 'lightthatburnsthesky', 'radiantassault', 'roaroftime', 'spacialrend',
-			'shadowforce', 'veeveevolley', 'bouncybubble', 'buzzybuzz', 'sizzlyslide', 'glitzyglow', 'baddybad', 'sappyseed', 'freezyfrost', 'sparklyswirl', 'blastburn', 'frenzyplant', 'hydrocannon', 'snipeshot',
+			'shadowforce', 'blastburn', 'frenzyplant', 'hydrocannon', 'snipeshot',
 			'cometjab', 'omenslash', 'watershuriken', 'kaboom', 'corrosivestrike', 'feverpitch', 'spectralscream', 'barbedweb', 'bunrakubeatdown', 'lastrespects', 'sheercold', 'queensgambit', 'winddance', 'timeblade', 'crestcleave', 'swarmsnare', 'wisteriamaelstrom', 'airstreamassault', 'dragonrend', 'sirenswrath', 'blacktestament', 'shockdoctrine', 'coldshoulder', 'solarpledge', 'lunarpledge', 'rebelanthem', 'laurellash',
 		].includes(move.id);
 		if (physicalTie || specialTie || (move.id === 'aurasphere' && value.tryAbility('Aura Sight')) || move.id === 'terablast' && pokemon.terastallized ||
@@ -2359,7 +2359,7 @@ class BattleTooltips {
 		const modifiedStats = this.calculateModifiedStats(pokemon, serverPokemon);
 
 		// Adaptive signatures select category from staged stats before field previews.
-		if (['swift', 'veeveevolley', 'bouncybubble', 'buzzybuzz', 'sizzlyslide', 'glitzyglow', 'baddybad', 'sappyseed', 'freezyfrost', 'sparklyswirl',
+		if (move.flags.adaptivecategory || ['swift',
 			'kaboom', 'corrosivestrike', 'feverpitch', 'spectralscream', 'barbedweb', 'bunrakubeatdown', 'lastrespects', 'sheercold', 'queensgambit', 'winddance', 'timeblade', 'crestcleave', 'swarmsnare',
 			'wisteriamaelstrom', 'airstreamassault', 'dragonrend', 'sirenswrath', 'blacktestament', 'shockdoctrine', 'coldshoulder', 'solarpledge', 'lunarpledge', 'rebelanthem', 'laurellash'].includes(move.id) || (move.id === 'aurasphere' && value.tryAbility('Aura Sight'))) {
 			const staged = this.calculateModifiedStats(pokemon, serverPokemon, true);

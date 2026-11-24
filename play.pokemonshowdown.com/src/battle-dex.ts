@@ -149440,6 +149440,7 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"flags": {
 			"protect": 1,
 			"mirror": 1,
+			"adaptivecategory": 1,
 		},
 		"desc": "Uses the higher of Attack and Sp. Atk. This move summons Reflect for 5 turns upon use.",
 		"shortDesc": "Uses the higher of Attack and Sp. Atk. Summons Reflect.",
@@ -150477,6 +150478,7 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"protect": 1,
 			"mirror": 1,
 			"heal": 1,
+			"adaptivecategory": 1,
 		},
 		"desc": "Uses the higher of Attack and Sp. Atk. The user recovers 1/2 the HP lost by the target, rounded half up. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded half down.",
 		"shortDesc": "Uses the higher of Attack and Sp. Atk. User recovers 50% of the damage dealt.",
@@ -150935,6 +150937,7 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"flags": {
 			"protect": 1,
 			"mirror": 1,
+			"adaptivecategory": 1,
 		},
 		"desc": "Uses the higher of Attack and Sp. Atk. Has a 100% chance to paralyze the foe.",
 		"shortDesc": "Uses the higher of Attack and Sp. Atk. 100% chance to paralyze the foe.",
@@ -153758,9 +153761,10 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"protect": 1,
 			"mirror": 1,
 			"metronome": 1,
+			"adaptivecategory": 1,
 		},
-		"desc": "After a successful hit, starts Sandstorm if it is not already active. Sandstorm lasts 8 turns with Smooth Rock or on certain desert fields.",
-		"shortDesc": "After hitting, starts Sandstorm; may last 8 turns.",
+		"desc": "Uses the higher of Attack and Sp. Atk. After a successful hit, starts Sandstorm if it is not already active. Sandstorm lasts 8 turns with Smooth Rock or on certain desert fields.",
+		"shortDesc": "Uses the higher of Attack and Sp. Atk. Starts sand on hit, up to 8 turns.",
 		"hasSheerForceBoost": false,
 	},
 	"dynamaxcannon": {
@@ -155869,6 +155873,7 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"flags": {
 			"protect": 1,
 			"mirror": 1,
+			"adaptivecategory": 1,
 		},
 		"desc": "Uses the higher of Attack and Sp. Atk. Resets the stat stages of all active Pokemon to 0.",
 		"shortDesc": "Uses the higher of Attack and Sp. Atk. Eliminates all stat changes.",
@@ -156548,6 +156553,7 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"flags": {
 			"protect": 1,
 			"mirror": 1,
+			"adaptivecategory": 1,
 		},
 		"desc": "Uses the higher of Attack and Sp. Atk. This move summons Light Screen for 5 turns upon use.",
 		"shortDesc": "Uses the higher of Attack and Sp. Atk. Summons Light Screen.",
@@ -159255,9 +159261,10 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"protect": 1,
 			"mirror": 1,
 			"metronome": 1,
+			"adaptivecategory": 1,
 		},
-		"desc": "Poisons the target. Badly poisons on Corrosive, Corrosive Mist, Murkwater Surface, and Wasteland fields.",
-		"shortDesc": "Poisons; badly poisons in toxic fields.",
+		"desc": "Uses the higher of Attack and Sp. Atk. Poisons the target. Badly poisons on Corrosive, Corrosive Mist, Murkwater Surface, and Wasteland fields.",
+		"shortDesc": "Uses the higher of Attack and Sp. Atk. Poisons. Badly poisons on toxic fields.",
 		"hasSheerForceBoost": false,
 	},
 	"icywind": {
@@ -164649,9 +164656,10 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"protect": 1,
 			"mirror": 1,
 			"metronome": 1,
+			"adaptivecategory": 1,
 		},
-		"desc": "Lowers the target's Defense and Speed by 1 stage after a successful hit.",
-		"shortDesc": "Lowers Defense and Speed by 1 after a successful hit.",
+		"desc": "Uses the higher of Attack and Sp. Atk. Lowers the target's Defense and Speed by 1 stage after a successful hit.",
+		"shortDesc": "Uses the higher of Attack and Sp. Atk. Lowers the target’s Def and Spe by 1.",
 		"hasSheerForceBoost": false,
 	},
 	"punishment": {
@@ -165837,9 +165845,10 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"protect": 1,
 			"mirror": 1,
 			"metronome": 1,
+			"adaptivecategory": 1,
 		},
-		"desc": "After a successful hit, sets Stealth Rock on the target's side if it is not already active.",
-		"shortDesc": "After hitting, sets Stealth Rock on the target's side.",
+		"desc": "Uses the higher of Attack and Sp. Atk. After a successful hit, sets Stealth Rock on the target's side if it is not already active.",
+		"shortDesc": "Uses the higher of Attack and Sp. Atk. Sets Stealth Rock on the target’s side on hit.",
 		"hasSheerForceBoost": false,
 	},
 	"roleplay": {
@@ -166252,6 +166261,7 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"protect": 1,
 			"reflectable": 1,
 			"mirror": 1,
+			"adaptivecategory": 1,
 		},
 		"desc": "Uses the higher of Attack and Sp. Atk. This move summons Leech Seed on the foe.",
 		"shortDesc": "Uses the higher of Attack and Sp. Atk. Summons Leech Seed.",
@@ -166336,9 +166346,10 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"protect": 1,
 			"mirror": 1,
 			"metronome": 1,
+			"adaptivecategory": 1,
 		},
-		"desc": "Raises the user's Special Attack by 1 stage after a successful hit, or by 2 in Dragon's Den or Fairy Tale Field.",
-		"shortDesc": "After hitting, raises Sp. Atk by 1; +2 in Dragon's Den/Fairy Tale.",
+		"desc": "Uses the higher of Attack and Sp. Atk. Raises the user's Special Attack by 1 stage after a successful hit, or by 2 in Dragon's Den or Fairy Tale Field.",
+		"shortDesc": "Uses the higher of Attack and Sp. Atk. Raises SpA by 1, or 2 in Dragon’s Den or Fairy Tale.",
 		"hasSheerForceBoost": false,
 	},
 	"scaryface": {
@@ -167294,6 +167305,7 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"protect": 1,
 			"mirror": 1,
 			"defrost": 1,
+			"adaptivecategory": 1,
 		},
 		"desc": "Uses the higher of Attack and Sp. Atk. Has a 100% chance to burn the foe.",
 		"shortDesc": "Uses the higher of Attack and Sp. Atk. 100% chance to burn the foe.",
@@ -168255,6 +168267,7 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"flags": {
 			"protect": 1,
 			"mirror": 1,
+			"adaptivecategory": 1,
 		},
 		"desc": "Uses the higher of Attack and Sp. Atk. Every Pokemon in the user's party is cured of its non-volatile status condition.",
 		"shortDesc": "Uses the higher of Attack and Sp. Atk. Cures the user's party of all status conditions.",
@@ -168662,9 +168675,10 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"protect": 1,
 			"mirror": 1,
 			"metronome": 1,
+			"adaptivecategory": 1,
 		},
-		"desc": "Applies Curse to the damaged target if it is not already cursed.",
-		"shortDesc": "Damaging a target applies Curse.",
+		"desc": "Uses the higher of Attack and Sp. Atk. Applies Curse to the damaged target if it is not already cursed.",
+		"shortDesc": "Uses the higher of Attack and Sp. Atk. Applies Curse on hit.",
 		"hasSheerForceBoost": false,
 	},
 	"spore": {
@@ -168754,9 +168768,10 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"protect": 1,
 			"mirror": 1,
 			"metronome": 1,
+			"adaptivecategory": 1,
 		},
-		"desc": "Traps opposing Pokemon for 4-5 turns and damages them each turn. In Forest Field, power is 1.5x and Defense falls by 1. Grip Claw extends the trap to 7 turns.",
-		"shortDesc": "Traps foes; 1.5x and -1 Def in Forest; Grip Claw extends it.",
+		"desc": "Uses the higher of Attack and Sp. Atk. Traps opposing Pokemon for 4-5 turns and damages them each turn. In Forest Field, power is 1.5x and Defense falls by 1. Grip Claw extends the trap to 7 turns.",
+		"shortDesc": "Uses the higher of Attack and Sp. Atk. Traps foes. 1.5× power and −1 Def in Forest.",
 		"hasSheerForceBoost": false,
 	},
 	"stackingshot": {
@@ -168967,9 +168982,10 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"mirror": 1,
 			"metronome": 1,
 			"slicing": 1,
+			"adaptivecategory": 1,
 		},
-		"desc": "Ignores and removes Reflect, Light Screen, Aurora Veil, and Arenite Wall from the target's side. 1.5x power in Fairy Tale Field.",
-		"shortDesc": "Removes screens and Arenite Wall; 1.5x in Fairy Tale.",
+		"desc": "Uses the higher of Attack and Sp. Atk. Ignores and removes Reflect, Light Screen, Aurora Veil, and Arenite Wall from the target's side. 1.5x power in Fairy Tale Field.",
+		"shortDesc": "Uses the higher of Attack and Sp. Atk. Breaks screens and Arenite Wall. 1.5× in Fairy Tale.",
 		"hasSheerForceBoost": false,
 	},
 	"stickyweb": {
@@ -171384,9 +171400,10 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"mirror": 1,
 			"metronome": 1,
 			"wind": 1,
+			"adaptivecategory": 1,
 		},
-		"desc": "After a successful hit, removes entry hazards from both sides and all active Substitutes.",
-		"shortDesc": "After hitting, clears hazards and active Substitutes.",
+		"desc": "Uses the higher of Attack and Sp. Atk. After a successful hit, removes entry hazards from both sides and all active Substitutes.",
+		"shortDesc": "Uses the higher of Attack and Sp. Atk. Clears hazards and Substitutes on hit.",
 		"hasSheerForceBoost": false,
 	},
 	"twister": {
@@ -171612,6 +171629,7 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"contact": 1,
 			"protect": 1,
 			"mirror": 1,
+			"adaptivecategory": 1,
 		},
 		"desc": "Power is equal to the greater of (user's Happiness * 2/5), rounded down, or 1. Uses the user's higher offensive stat.",
 		"shortDesc": "Max happiness: 102 power; uses higher Atk or SpA; can't miss.",
@@ -193322,7 +193340,22 @@ const Dex = new class implements ModdedDex {
 		return [...stats, move.shortDesc || move.desc].filter(Boolean).join(' · ');
 	}
 
+	getTeambuilderMoveCategory(move: Move, set: PokemonSet | null | undefined, dex: ModdedDex = this): Move['category'] {
+		if (!move.flags.adaptivecategory || !set?.species) return move.category;
+		const {species, baseStats} = this.getAbilityFormPreview(set, dex);
+		if (!species.exists) return move.category;
+		const nature = set.nature && BattleNatures[set.nature];
+		const stat = (id: 'atk' | 'spa') => {
+			const base = 2 * baseStats[id] + (set.ivs?.[id] ?? 31) + Math.floor((set.evs?.[id] ?? 0) / 4);
+			const neutral = Math.floor(base * (set.level || 100) / 100) + 5;
+			const percent = nature?.plus === id ? 110 : nature?.minus === id ? 90 : 100;
+			return Math.floor(neutral * percent / 100);
+		};
+		return stat('atk') > stat('spa') ? 'Physical' : 'Special';
+	}
 	getTeambuilderMoveDisplay(move: Move, set: PokemonSet | null | undefined, dex: ModdedDex = this) {
+		const category = this.getTeambuilderMoveCategory(move, set, dex);
+		if (category !== move.category) move = {...move, category};
 		const mega = this.getMegaMovePreview(move.id, set, dex);
 		if (mega) {
 			return {...move, shortDesc: move.shortDesc + ' ' + mega.move.name + ': ' + this.getMegaMoveEffect(mega.move)};

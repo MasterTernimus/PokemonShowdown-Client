@@ -572,7 +572,8 @@ class DexSearch {
 		const key = (row: SearchRow) => {
 						if (search.searchType === 'move') {
 							const move = this.dex.moves.get(row[1]);
-							return column === 'type' ? Dex.getTeambuilderMoveDisplay(move, search.set, this.dex).type : move.category;
+							return column === 'type' ? Dex.getTeambuilderMoveDisplay(move, search.set, this.dex).type :
+								Dex.getTeambuilderMoveCategory(move, search.set, this.dex);
 						}
 						const species = this.dex.species.get(row[1]);
 						return column === 'type' ? species.types.join('/') : Object.values(species.abilities).join('/');
@@ -2486,7 +2487,7 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 		const eeveeStarterMoveOrder = [
 			// Eevee signature and Let's Go moves stay together at the top.
 			'spookyspell', 'glitchygraphics', 'searingvoid', 'veeveevolley',
-			'glitzyglow', 'baddybad', 'freezyfrost', 'sappyseed', 'sizzleslide',
+			'glitzyglow', 'baddybad', 'freezyfrost', 'sappyseed', 'sizzlyslide',
 			'buzzybuzz', 'bouncybubble', 'sparklyswirl',
 			'punchypummel', 'twirlytwister', 'rockyrampage', 'dustydrift', 'steelystrike',
 			'stabbyswarm', 'ickyinjection', 'scalyscorn',
@@ -2643,7 +2644,7 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 				if (Dex.getTeambuilderMoveDisplay(move, this.set, this.dex).type !== value) return false;
 				break;
 			case 'category':
-				if (move.category !== value) return false;
+				if (Dex.getTeambuilderMoveCategory(move, this.set, this.dex) !== value) return false;
 				break;
 			case 'pokemon':
 				if (!this.canLearn(value as ID, move.id)) return false;

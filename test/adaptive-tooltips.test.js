@@ -10,7 +10,8 @@ describe('Adaptive category client parity', () => {
  });
  afterEach(() => battle.destroy());
  for (const id of ['venamskiss', 'firepledge', 'waterpledge', 'grasspledge', 'needlegun', 'dragondarts', 'barrage', 'explosion', 'selfdestruct', 'radiantassault', 'roaroftime', 'spacialrend', 'shadowforce', 'veeveevolley',
-  'bouncybubble', 'buzzybuzz', 'sizzlyslide', 'glitzyglow', 'baddybad', 'sappyseed', 'freezyfrost', 'sparklyswirl', 'watershuriken']) {
+  'bouncybubble', 'buzzybuzz', 'sizzlyslide', 'glitzyglow', 'baddybad', 'sappyseed', 'freezyfrost', 'sparklyswirl',
+  'punchypummel', 'twirlytwister', 'rockyrampage', 'dustydrift', 'steelystrike', 'stabbyswarm', 'ickyinjection', 'spookyspell', 'scalyscorn', 'watershuriken']) {
   it(id + ' follows stat stages, tie rules and preserves Dex data', () => {
    const m = Dex.moves.get(id), original = m.category;
    const category = () => tips.getMoveType(m, new ModifiableValue(battle, p, own))[1];
@@ -30,6 +31,46 @@ describe('Adaptive category client parity', () => {
   tips.placeTooltip = () => {};
   tips.showTooltip({dataset:{tooltip:'move|Venams Kiss|0||sevipermega'}});
   assert.equal(category, 'Physical'); assert.equal(JSON.stringify(own), before); assert.equal(p.speciesForme, 'Seviper');
+ });
+ it('previews adaptive Eevee attacks in field power, while Max conversions retain the base category', () => {
+  const previous = window.BattleFieldTooltips;
+  try {
+   for (const [id, boosts, category] of [['punchypummel', {spa: 1}, 'Special'], ['twirlytwister', {atk: 1}, 'Physical']]) {
+    const seen = [], move = Dex.moves.get(id);
+    p.boosts = boosts;
+    window.BattleFieldTooltips = {preview(b, attack) {seen.push(attack.category); return null;}};
+    tips.getMoveBasePower(move, move.type, new ModifiableValue(battle, p, own));
+    assert.deepEqual(seen, [category]);
+    assert.equal(tips.getMoveType(move, new ModifiableValue(battle, p, own), true)[1], move.category);
+   }
+  } finally {window.BattleFieldTooltips = previous;}
+ });
+ it('uses the selected spread for Eevee move icons and category filters in both teambuilders', () => {
+  const picker = require('./helpers/exclusive-move-picker.cjs')();
+  picker.preact = require('preact');
+  const modernCode = fs.readFileSync(path.join(__dirname, '../play.pokemonshowdown.com/js/battle-searchresults.js'), 'utf8');
+  const Results = require('vm').runInContext(modernCode + '\nPSSearchResults', picker);
+  const modern = Object.create(Results.prototype), legacy = Object.create(picker.BattleSearch.prototype);
+  const move = picker.Dex.moves.get('punchypummel');
+  assert.match(move.shortDesc, /higher of Attack and Sp\. Atk/);
+  for (const [spread, category] of [[{}, 'Special'], [{nature: 'Adamant'}, 'Physical'], [{evs: {spa: 252}}, 'Special'], [{ivs: {spa: 0}}, 'Physical']]) {
+   const set = {species: 'Mew', moves: [move.name], ...spread};
+   const search = new picker.MoveSearch('move', 'gen9nofieldsinglesgame', set);
+   modern.props = {search: {dex: picker.Dex, typedSearch: search}};
+   legacy.engine = modern.props.search;
+   legacy.moveDisplaySet = set;
+   assert(search.filter(['move', move.id], [['category', category]]));
+   assert(!search.filter(['move', move.id], [['category', category === 'Physical' ? 'Special' : 'Physical']]));
+   const icon = 'sprites/categories/' + category + '.png';
+   const html = legacy.renderMoveRow(move, 0, 0);
+   assert(html.includes(icon));
+   assert(html.includes(move.shortDesc));
+   const tree = JSON.stringify(modern.renderMoveRow(move.id, 0, 0));
+   assert(tree.includes(icon));
+   assert(tree.includes(move.shortDesc));
+  }
+  assert.equal(move.category, 'Physical');
+  assert.equal(picker.Dex.getTeambuilderMoveCategory(picker.Dex.moves.get('glitchygraphics'), legacy.moveDisplaySet), 'Status');
  });
  it('passes Special Needle Gun to field power and ability previews', () => {
   p.boosts.spa = 1; const previous = window.BattleFieldTooltips, observed = [];

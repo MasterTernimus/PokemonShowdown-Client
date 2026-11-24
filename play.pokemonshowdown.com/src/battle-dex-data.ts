@@ -1150,6 +1150,8 @@ class Item implements Effect {
 }
 
 interface MoveFlags {
+	/** Uses the user's higher staged Attack or Sp. Atk, with ties using Special. */
+	adaptivecategory?: 1 | 0;
 	/** The move has an animation when used on an ally. */
 	allyanim?: 1 | 0;
 	/** Eligible for Fallen Star and Dual Wield's arrow-move effects. */

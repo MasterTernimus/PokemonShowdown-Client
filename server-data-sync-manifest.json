@@ -1,13 +1,11 @@
 {
-	"sourceHead": "310a023d27be821bdff315b4683cab51c149a3cd",
-	"base": "7a6c49850c0d1f82f1bf936ef110f2b84be255fd",
-	"builtSourceFingerprint": "6aca281a0ca096b3977123a3779d2e07097ef001663fbd6012620570fdecbe68",
-	"sourceDataSHA256": "0a457a5c0dc7e85e0deb06dfdf2204bf4bd59f335bb7ecb6b7d0c86e4a9b19fa",
+	"sourceHead": "b39e0566021b8c841fdcbc753a9107eafd5d65d4",
+	"base": "310a023d27be821bdff315b4683cab51c149a3cd",
+	"builtSourceFingerprint": "9664e694a632687795fe41d269d3640696283720f735c37ac40d820d3b2c26d6",
+	"sourceDataSHA256": "a9ba40f47105ffe35a040e3946b4c3aa4b61ea1ae176276540191ad00672c819",
 	"files": [
-		"data/abilities.ts",
-		"data/ability-components.ts",
-		"data/audit-reworks-approved.ts",
-		"data/combat-sequences.ts",
+		"data/moves.ts",
+		"data/text/moves.ts",
 		"sim/dex-species.ts"
 	],
 	"deletedFiles": [],
@@ -53268,7 +53266,8 @@
 				"target": "normal",
 				"flags": {
 					"protect": 1,
-					"mirror": 1
+					"mirror": 1,
+					"adaptivecategory": 1
 				},
 				"desc": "Uses the higher of Attack and Sp. Atk. This move summons Reflect for 5 turns upon use.",
 				"shortDesc": "Uses the higher of Attack and Sp. Atk. Summons Reflect.",
@@ -54305,7 +54304,8 @@
 				"flags": {
 					"protect": 1,
 					"mirror": 1,
-					"heal": 1
+					"heal": 1,
+					"adaptivecategory": 1
 				},
 				"desc": "Uses the higher of Attack and Sp. Atk. The user recovers 1/2 the HP lost by the target, rounded half up. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded half down.",
 				"shortDesc": "Uses the higher of Attack and Sp. Atk. User recovers 50% of the damage dealt.",
@@ -54763,7 +54763,8 @@
 				"target": "normal",
 				"flags": {
 					"protect": 1,
-					"mirror": 1
+					"mirror": 1,
+					"adaptivecategory": 1
 				},
 				"desc": "Uses the higher of Attack and Sp. Atk. Has a 100% chance to paralyze the foe.",
 				"shortDesc": "Uses the higher of Attack and Sp. Atk. 100% chance to paralyze the foe.",
@@ -57586,10 +57587,11 @@
 					"contact": 1,
 					"protect": 1,
 					"mirror": 1,
-					"metronome": 1
+					"metronome": 1,
+					"adaptivecategory": 1
 				},
-				"desc": "After a successful hit, starts Sandstorm if it is not already active. Sandstorm lasts 8 turns with Smooth Rock or on certain desert fields.",
-				"shortDesc": "After hitting, starts Sandstorm; may last 8 turns.",
+				"desc": "Uses the higher of Attack and Sp. Atk. After a successful hit, starts Sandstorm if it is not already active. Sandstorm lasts 8 turns with Smooth Rock or on certain desert fields.",
+				"shortDesc": "Uses the higher of Attack and Sp. Atk. Starts sand on hit, up to 8 turns.",
 				"hasSheerForceBoost": false
 			},
 			"dynamaxcannon": {
@@ -59697,7 +59699,8 @@
 				"target": "normal",
 				"flags": {
 					"protect": 1,
-					"mirror": 1
+					"mirror": 1,
+					"adaptivecategory": 1
 				},
 				"desc": "Uses the higher of Attack and Sp. Atk. Resets the stat stages of all active Pokemon to 0.",
 				"shortDesc": "Uses the higher of Attack and Sp. Atk. Eliminates all stat changes.",
@@ -60376,7 +60379,8 @@
 				"target": "normal",
 				"flags": {
 					"protect": 1,
-					"mirror": 1
+					"mirror": 1,
+					"adaptivecategory": 1
 				},
 				"desc": "Uses the higher of Attack and Sp. Atk. This move summons Light Screen for 5 turns upon use.",
 				"shortDesc": "Uses the higher of Attack and Sp. Atk. Summons Light Screen.",
@@ -63083,10 +63087,11 @@
 					"contact": 1,
 					"protect": 1,
 					"mirror": 1,
-					"metronome": 1
+					"metronome": 1,
+					"adaptivecategory": 1
 				},
-				"desc": "Poisons the target. Badly poisons on Corrosive, Corrosive Mist, Murkwater Surface, and Wasteland fields.",
-				"shortDesc": "Poisons; badly poisons in toxic fields.",
+				"desc": "Uses the higher of Attack and Sp. Atk. Poisons the target. Badly poisons on Corrosive, Corrosive Mist, Murkwater Surface, and Wasteland fields.",
+				"shortDesc": "Uses the higher of Attack and Sp. Atk. Poisons. Badly poisons on toxic fields.",
 				"hasSheerForceBoost": false
 			},
 			"icywind": {
@@ -68477,10 +68482,11 @@
 					"contact": 1,
 					"protect": 1,
 					"mirror": 1,
-					"metronome": 1
+					"metronome": 1,
+					"adaptivecategory": 1
 				},
-				"desc": "Lowers the target's Defense and Speed by 1 stage after a successful hit.",
-				"shortDesc": "Lowers Defense and Speed by 1 after a successful hit.",
+				"desc": "Uses the higher of Attack and Sp. Atk. Lowers the target's Defense and Speed by 1 stage after a successful hit.",
+				"shortDesc": "Uses the higher of Attack and Sp. Atk. Lowers the target’s Def and Spe by 1.",
 				"hasSheerForceBoost": false
 			},
 			"punishment": {
@@ -69665,10 +69671,11 @@
 					"contact": 1,
 					"protect": 1,
 					"mirror": 1,
-					"metronome": 1
+					"metronome": 1,
+					"adaptivecategory": 1
 				},
-				"desc": "After a successful hit, sets Stealth Rock on the target's side if it is not already active.",
-				"shortDesc": "After hitting, sets Stealth Rock on the target's side.",
+				"desc": "Uses the higher of Attack and Sp. Atk. After a successful hit, sets Stealth Rock on the target's side if it is not already active.",
+				"shortDesc": "Uses the higher of Attack and Sp. Atk. Sets Stealth Rock on the target’s side on hit.",
 				"hasSheerForceBoost": false
 			},
 			"roleplay": {
@@ -70080,7 +70087,8 @@
 				"flags": {
 					"protect": 1,
 					"reflectable": 1,
-					"mirror": 1
+					"mirror": 1,
+					"adaptivecategory": 1
 				},
 				"desc": "Uses the higher of Attack and Sp. Atk. This move summons Leech Seed on the foe.",
 				"shortDesc": "Uses the higher of Attack and Sp. Atk. Summons Leech Seed.",
@@ -70164,10 +70172,11 @@
 				"flags": {
 					"protect": 1,
 					"mirror": 1,
-					"metronome": 1
+					"metronome": 1,
+					"adaptivecategory": 1
 				},
-				"desc": "Raises the user's Special Attack by 1 stage after a successful hit, or by 2 in Dragon's Den or Fairy Tale Field.",
-				"shortDesc": "After hitting, raises Sp. Atk by 1; +2 in Dragon's Den/Fairy Tale.",
+				"desc": "Uses the higher of Attack and Sp. Atk. Raises the user's Special Attack by 1 stage after a successful hit, or by 2 in Dragon's Den or Fairy Tale Field.",
+				"shortDesc": "Uses the higher of Attack and Sp. Atk. Raises SpA by 1, or 2 in Dragon’s Den or Fairy Tale.",
 				"hasSheerForceBoost": false
 			},
 			"scaryface": {
@@ -71122,7 +71131,8 @@
 					"contact": 1,
 					"protect": 1,
 					"mirror": 1,
-					"defrost": 1
+					"defrost": 1,
+					"adaptivecategory": 1
 				},
 				"desc": "Uses the higher of Attack and Sp. Atk. Has a 100% chance to burn the foe.",
 				"shortDesc": "Uses the higher of Attack and Sp. Atk. 100% chance to burn the foe.",
@@ -72083,7 +72093,8 @@
 				"target": "normal",
 				"flags": {
 					"protect": 1,
-					"mirror": 1
+					"mirror": 1,
+					"adaptivecategory": 1
 				},
 				"desc": "Uses the higher of Attack and Sp. Atk. Every Pokemon in the user's party is cured of its non-volatile status condition.",
 				"shortDesc": "Uses the higher of Attack and Sp. Atk. Cures the user's party of all status conditions.",
@@ -72490,10 +72501,11 @@
 				"flags": {
 					"protect": 1,
 					"mirror": 1,
-					"metronome": 1
+					"metronome": 1,
+					"adaptivecategory": 1
 				},
-				"desc": "Applies Curse to the damaged target if it is not already cursed.",
-				"shortDesc": "Damaging a target applies Curse.",
+				"desc": "Uses the higher of Attack and Sp. Atk. Applies Curse to the damaged target if it is not already cursed.",
+				"shortDesc": "Uses the higher of Attack and Sp. Atk. Applies Curse on hit.",
 				"hasSheerForceBoost": false
 			},
 			"spore": {
@@ -72582,10 +72594,11 @@
 				"flags": {
 					"protect": 1,
 					"mirror": 1,
-					"metronome": 1
+					"metronome": 1,
+					"adaptivecategory": 1
 				},
-				"desc": "Traps opposing Pokemon for 4-5 turns and damages them each turn. In Forest Field, power is 1.5x and Defense falls by 1. Grip Claw extends the trap to 7 turns.",
-				"shortDesc": "Traps foes; 1.5x and -1 Def in Forest; Grip Claw extends it.",
+				"desc": "Uses the higher of Attack and Sp. Atk. Traps opposing Pokemon for 4-5 turns and damages them each turn. In Forest Field, power is 1.5x and Defense falls by 1. Grip Claw extends the trap to 7 turns.",
+				"shortDesc": "Uses the higher of Attack and Sp. Atk. Traps foes. 1.5× power and −1 Def in Forest.",
 				"hasSheerForceBoost": false
 			},
 			"stackingshot": {
@@ -72795,10 +72808,11 @@
 					"protect": 1,
 					"mirror": 1,
 					"metronome": 1,
-					"slicing": 1
+					"slicing": 1,
+					"adaptivecategory": 1
 				},
-				"desc": "Ignores and removes Reflect, Light Screen, Aurora Veil, and Arenite Wall from the target's side. 1.5x power in Fairy Tale Field.",
-				"shortDesc": "Removes screens and Arenite Wall; 1.5x in Fairy Tale.",
+				"desc": "Uses the higher of Attack and Sp. Atk. Ignores and removes Reflect, Light Screen, Aurora Veil, and Arenite Wall from the target's side. 1.5x power in Fairy Tale Field.",
+				"shortDesc": "Uses the higher of Attack and Sp. Atk. Breaks screens and Arenite Wall. 1.5× in Fairy Tale.",
 				"hasSheerForceBoost": false
 			},
 			"stickyweb": {
@@ -75212,10 +75226,11 @@
 					"protect": 1,
 					"mirror": 1,
 					"metronome": 1,
-					"wind": 1
+					"wind": 1,
+					"adaptivecategory": 1
 				},
-				"desc": "After a successful hit, removes entry hazards from both sides and all active Substitutes.",
-				"shortDesc": "After hitting, clears hazards and active Substitutes.",
+				"desc": "Uses the higher of Attack and Sp. Atk. After a successful hit, removes entry hazards from both sides and all active Substitutes.",
+				"shortDesc": "Uses the higher of Attack and Sp. Atk. Clears hazards and Substitutes on hit.",
 				"hasSheerForceBoost": false
 			},
 			"twister": {
@@ -75440,7 +75455,8 @@
 				"flags": {
 					"contact": 1,
 					"protect": 1,
-					"mirror": 1
+					"mirror": 1,
+					"adaptivecategory": 1
 				},
 				"desc": "Power is equal to the greater of (user's Happiness * 2/5), rounded down, or 1. Uses the user's higher offensive stat.",
 				"shortDesc": "Max happiness: 102 power; uses higher Atk or SpA; can't miss.",
