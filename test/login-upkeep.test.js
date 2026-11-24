@@ -14,7 +14,6 @@ function installTestClient(h, key) {
 	h.context.Storage = {};
 	h.context.Config.testclient = true;
 	h.context.Config.routes = {client: 'play.pokemonshowdown.com'};
-	h.context.$.get = function () {};
 	h.context.POKEMON_SHOWDOWN_TESTCLIENT_KEY = key;
 	const trackers = storageSource.slice(storageSource.indexOf('Storage.makeLoadTracker ='), storageSource.indexOf('var updatePrefs ='));
 	const start = storageSource.indexOf('Storage.initTestClient =');
@@ -48,7 +47,7 @@ function setup(options = {}) {
 		addPopupMessage: () => {throw new Error('Unexpected popup');}, popups: []
 	};
 	const context = vm.createContext({
-		app, $: {post, trim: text => text.trim()}, Backbone: {Model: {extend: definition => definition}},
+		app, $: {get: function () {}, post, trim: text => text.trim()}, Backbone: {Model: {extend: definition => definition}},
 		Config: {server: {id: 'test', host: 'test.invalid', port: 443}},
 		location: {host: 'test.invalid'}, document: {location: 'https://test.invalid/'},
 		window: {}, Dex: {prefs: () => false},
@@ -71,6 +70,44 @@ function setup(options = {}) {
 }
 
 describe('Recoverable session upkeep', function () {
+	it('uses the normal account and team requests on the hosted client', function () {
+		for (const key of [undefined, 'local-only-test-key']) {
+			const h = setup();
+			h.context.Config.hostedTestClient = true;
+			const get = h.context.$.get = function (url, data, done) {
+				assert.equal(url, h.user.getActionPHP());
+				assert.deepEqual(Object.keys(data), ['act']);
+				assert.equal(data.act, 'getteams');
+				done(']{"loggedIn":"alice","teams":[]}');
+			};
+			const post = h.context.$.post;
+			installTestClient(h, key);
+			const storage = h.context.Storage;
+			assert.strictEqual(h.context.$.get, get);
+			assert.strictEqual(h.context.$.post, post);
+			assert(storage.whenPrefsLoaded.isLoaded && storage.whenTeamsLoaded.isLoaded);
+
+			for (const method of ['safeJSON', 'loadRemoteTeams']) {
+				const start = storageSource.indexOf('Storage.' + method + ' =');
+				vm.runInContext(storageSource.slice(start, storageSource.indexOf('\n};', start) + 3), h.context);
+			}
+			storage.teams = [{name: 'Local team'}];
+			let teamsLoaded = false;
+			storage.loadRemoteTeams(() => {teamsLoaded = true;});
+			assert(teamsLoaded);
+			assert.equal(storage.teams[0].name, 'Local team');
+
+			h.user.receiveChallstr('A');
+			h.user.rename('Alice');
+			h.requests[0].callback(';');
+			assert(h.events.includes('login:authrequired:Alice'));
+			h.user.passwordRename('Alice', 'test-password');
+			assert.equal(h.requests[1].url, 'https://play.pokemonshowdown.com/api/login');
+			assert(h.requests.every(request => !('sid' in request.data)));
+			h.requests[1].callback(']{"curuser":{"loggedin":true,"username":"Alice"},"assertion":"signed-token"}');
+			assert.deepEqual(h.sent, ['/trn Alice,0,signed-token']);
+		}
+	});
 	it('connects the hosted guest without opening a manual proxy for optional username colors', function () {
 		const start = source.indexOf('Storage.whenAppLoaded.load(this);');
 		const end = source.indexOf('this.initializeConnection();', start) + 'this.initializeConnection();'.length;

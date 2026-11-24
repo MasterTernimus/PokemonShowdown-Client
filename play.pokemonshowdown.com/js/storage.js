@@ -529,9 +529,14 @@ Storage.postCrossOriginMessage = function (data) {
 Storage.initTestClient = function () {
 	Config.server = Config.server || Config.defaultserver;
 	Storage.whenTeamsLoaded.load();
+	if (Config.hostedTestClient) {
+		// The public build uses local storage and the browser's normal request transport.
+		Storage.whenPrefsLoaded.load();
+		return;
+	}
 
 	var sid = null;
-	if (!Config.hostedTestClient && typeof POKEMON_SHOWDOWN_TESTCLIENT_KEY === 'string') {
+	if (typeof POKEMON_SHOWDOWN_TESTCLIENT_KEY === 'string') {
 		sid = POKEMON_SHOWDOWN_TESTCLIENT_KEY.replace(/\%2C/g, ',');
 	}
 
