@@ -140124,7 +140124,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Plasma Eruption",
 		"num": 10149,
 		"gen": 9,
-		"desc": "Galvanize converts eligible Normal moves to Electric and gives them its usual power bonus. Fire/Electric attacks have a 50% chance to swap types, avoiding immunity on the first opponent when possible. The final type stays fixed: Electric adds 30% burn; Fire adds 30% paralysis. The holder is immune to both statuses. Each attack that damages an opponent or its Substitute gains one Pressure: first +1 to the higher of Attack and Sp. Atk (Sp. Atk on ties), second +1 Speed, third readies the core. The next Fire/Electric attack releases a core discharge: +60% power, then resets Pressure and its remaining stat boosts. If the primary foe takes damage, other foes take extra damage equal to 75% of the damage actually dealt to it; all affected foes receive the opposite status if possible. After discharge, flies for two end-of-turn ticks: Ground immunity, +20% Electric power, and no Pressure gain. Iron Ball, Gravity, Smack Down and Ingrain prevent flight. Landing powers up the next Fire attack by 30%. Discharge and landing bonuses are spent even on a miss or block. Switching or losing the ability clears its phases. Strongest field bonus only: Fire +15% on Volcanic, Burning, Superheated or Dragon's Den; Electric +15% on Electric Terrain/Aura, Factory or Short Circuit; both +10% on Mountain, Cave, Crystal Cavern, Desert, Ashen Beach or effective sun; both +5% on Haunted, New World, Inverse, Big Top or Fairy Tale.",
+		"desc": "Galvanize converts eligible Normal moves to Electric. These attacks can also change to Fire and keep the Galvanize power bonus either way. Fire/Electric attacks have a 50% chance to swap types, avoiding immunity on the first opponent when possible. The final type stays fixed: Electric adds 30% burn; Fire adds 30% paralysis. The holder is immune to both statuses. Each attack that damages an opponent or its Substitute gains one Pressure: first +1 to the higher of Attack and Sp. Atk (Sp. Atk on ties), second +1 Speed, third readies the core. The next Fire/Electric attack releases a core discharge: +60% power, then resets Pressure and its remaining stat boosts. If the primary foe takes damage, other foes take extra damage equal to 75% of the damage actually dealt to it; all affected foes receive the opposite status if possible. After discharge, flies for two end-of-turn ticks: Ground immunity, +20% Electric power, and no Pressure gain. Iron Ball, Gravity, Smack Down and Ingrain prevent flight. Landing powers up the next Fire attack by 30%. Discharge and landing bonuses are spent even on a miss or block. Switching or losing the ability clears its phases. Strongest field bonus only: Fire +15% on Volcanic, Burning, Superheated or Dragon's Den; Electric +15% on Electric Terrain/Aura, Factory or Short Circuit; both +10% on Mountain, Cave, Crystal Cavern, Desert, Ashen Beach or effective sun; both +5% on Haunted, New World, Inverse, Big Top or Fairy Tale.",
 		"shortDesc": "Galvanize. Fire/Electric may swap and add status. Three hits ready a +60% core discharge.",
 		"rating": 5,
 		"flags": {},
@@ -149440,8 +149440,8 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"protect": 1,
 			"mirror": 1,
 		},
-		"desc": "This move summons Reflect for 5 turns upon use.",
-		"shortDesc": "Summons Reflect.",
+		"desc": "Uses the higher of Attack and Sp. Atk. This move summons Reflect for 5 turns upon use.",
+		"shortDesc": "Uses the higher of Attack and Sp. Atk. Summons Reflect.",
 		"hasSheerForceBoost": false,
 	},
 	"banefulbunker": {
@@ -150477,8 +150477,8 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"mirror": 1,
 			"heal": 1,
 		},
-		"desc": "The user recovers 1/2 the HP lost by the target, rounded half up. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded half down.",
-		"shortDesc": "User recovers 50% of the damage dealt.",
+		"desc": "Uses the higher of Attack and Sp. Atk. The user recovers 1/2 the HP lost by the target, rounded half up. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded half down.",
+		"shortDesc": "Uses the higher of Attack and Sp. Atk. User recovers 50% of the damage dealt.",
 		"hasSheerForceBoost": false,
 	},
 	"branchpoke": {
@@ -150935,8 +150935,8 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"protect": 1,
 			"mirror": 1,
 		},
-		"desc": "Has a 100% chance to paralyze the foe.",
-		"shortDesc": "100% chance to paralyze the foe.",
+		"desc": "Uses the higher of Attack and Sp. Atk. Has a 100% chance to paralyze the foe.",
+		"shortDesc": "Uses the higher of Attack and Sp. Atk. 100% chance to paralyze the foe.",
 		"secondaries": [
 			{
 				"chance": 100,
@@ -155869,8 +155869,8 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"protect": 1,
 			"mirror": 1,
 		},
-		"desc": "Resets the stat stages of all active Pokemon to 0.",
-		"shortDesc": "Eliminates all stat changes.",
+		"desc": "Uses the higher of Attack and Sp. Atk. Resets the stat stages of all active Pokemon to 0.",
+		"shortDesc": "Uses the higher of Attack and Sp. Atk. Eliminates all stat changes.",
 		"hasSheerForceBoost": false,
 	},
 	"frenzyplant": {
@@ -156548,8 +156548,8 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"protect": 1,
 			"mirror": 1,
 		},
-		"desc": "This move summons Light Screen for 5 turns upon use.",
-		"shortDesc": "Summons Light Screen.",
+		"desc": "Uses the higher of Attack and Sp. Atk. This move summons Light Screen for 5 turns upon use.",
+		"shortDesc": "Uses the higher of Attack and Sp. Atk. Summons Light Screen.",
 		"hasSheerForceBoost": false,
 	},
 	"gmaxbefuddle": {
@@ -166252,8 +166252,8 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"reflectable": 1,
 			"mirror": 1,
 		},
-		"desc": "This move summons Leech Seed on the foe.",
-		"shortDesc": "Summons Leech Seed.",
+		"desc": "Uses the higher of Attack and Sp. Atk. This move summons Leech Seed on the foe.",
+		"shortDesc": "Uses the higher of Attack and Sp. Atk. Summons Leech Seed.",
 		"hasSheerForceBoost": false,
 	},
 	"savagespinout": {
@@ -167294,8 +167294,8 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"mirror": 1,
 			"defrost": 1,
 		},
-		"desc": "Has a 100% chance to burn the foe.",
-		"shortDesc": "100% chance to burn the foe.",
+		"desc": "Uses the higher of Attack and Sp. Atk. Has a 100% chance to burn the foe.",
+		"shortDesc": "Uses the higher of Attack and Sp. Atk. 100% chance to burn the foe.",
 		"secondaries": [
 			{
 				"chance": 100,
@@ -168255,8 +168255,8 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"protect": 1,
 			"mirror": 1,
 		},
-		"desc": "Every Pokemon in the user's party is cured of its non-volatile status condition.",
-		"shortDesc": "Cures the user's party of all status conditions.",
+		"desc": "Uses the higher of Attack and Sp. Atk. Every Pokemon in the user's party is cured of its non-volatile status condition.",
+		"shortDesc": "Uses the higher of Attack and Sp. Atk. Cures the user's party of all status conditions.",
 		"hasSheerForceBoost": false,
 	},
 	"spectralscream": {
@@ -192415,7 +192415,9 @@ const Dex = new class implements ModdedDex {
 			useMegaAnimationBounds ? limit : Math.min(limit, referenceLimit);
 		// Apply one final policy to the selected asset, after all animation/form fallbacks.
 		// A cropped 2x sprite has the same logical size as the padded 1x original.
-		let scale = Math.min(1 / pixelScale, visibleLimit / visibleWidth, visibleLimit / visibleHeight);
+		// Both Drekeon palettes use the same 2x artwork grid. Fine detail in the regular palette defeats automatic detection.
+		const density = /^gen5(?:-back)?(?:-shiny)?\/drekeon\.png$/.test(asset!) ? 2 : pixelScale;
+		let scale = Math.min(1 / density, visibleLimit / visibleWidth, visibleLimit / visibleHeight);
 		if (!isFront && !options.teamPreview && asset === 'gen5-back/hydreigon-mega.png') {
 			scale = Math.min(scale, 104 / visibleWidth, 104 / visibleHeight);
 		}

@@ -307,8 +307,7 @@ function toId() {
 				name: name,
 				pass: password,
 				challstr: this.challstr
-			}, function (response) {
-				var data = JSON.parse(response.charAt(0) === ']' ? response.slice(1) : response);
+			}, function (data) {
 				if (!data || typeof data !== 'object' || Array.isArray(data)) throw new Error('Invalid response');
 				if (data.curuser && (typeof data.curuser !== 'object' || Array.isArray(data.curuser) || typeof data.curuser.loggedin !== 'boolean')) throw new Error('Invalid account');
 				if (data.curuser && data.curuser.loggedin && (typeof data.assertion !== 'string' || !data.assertion || /[<>\x00-\x1f]/.test(data.assertion) || data.assertion.charAt(0) === ';')) throw new Error('Invalid assertion');
@@ -317,6 +316,7 @@ function toId() {
 					self.set('registered', data.curuser);
 					self.finishRename(name, data.assertion);
 				} else {
+					if (data.actionsuccess !== false && !data.error && !(data.curuser && data.curuser.loggedin === false)) throw new Error('Invalid account');
 					// wrong password
 					if (special === '@gmail') {
 						try {
@@ -348,22 +348,37 @@ function toId() {
 			var self = this, request = {challstr:this.challstr};
 			this.manualLoginRequest = request;
 			var current = function () {return self.manualLoginRequest === request && self.challstr === request.challstr;};
-			var fail = function () {
+			var fail = function (reason) {
 				if (!current()) return;
 				self.cancelManualLogin();
-				app.addPopupMessage('Sign-in could not be completed. Please try signing in again.');
+				app.addPopupMessage(reason === 'timeout' ? 'Sign-in timed out. Choose your name to try again.' :
+					reason === 'invalid' ? 'The login service returned an unreadable response. Please try again.' :
+						'Could not reach the Pokémon Showdown login service. Please try again when it is available.');
 			};
-			request.timer = setTimeout(fail, this.upkeepTimeout);
+			request.timer = setTimeout(function () { fail('timeout'); }, this.upkeepTimeout);
 			try {
-				request.xhr = $.post(this.getActionPHP(), payload, function (response) {
+				var url = Config.hostedTestClient ? 'https://play.pokemonshowdown.com/api/' + payload.act : this.getActionPHP();
+				request.xhr = $.post(url, payload, function (response) {
 					if (!current()) return;
 					try {
 						if (typeof response !== 'string' || !response.trim() || response.length > 65536) throw new Error('Invalid response');
-						success(response.trim());
-					} catch (e) {fail(); return;}
+						response = response.trim();
+						if (payload.act === 'login' || ']{['.includes(response.charAt(0))) {
+							var data = JSON.parse(response.charAt(0) === ']' ? response.slice(1) : response);
+							if (data && typeof data.actionerror === 'string' && data.actionerror) {
+								app.addPopupMessage('Pokémon Showdown: ' + data.actionerror);
+							} else if (payload.act === 'login') {
+								success(data);
+							} else {
+								throw new Error('Expected an assertion');
+							}
+						} else {
+							success(response);
+						}
+					} catch (e) {fail('invalid'); return;}
 					clearTimeout(request.timer); self.manualLoginRequest = null;
 				}, 'text');
-				if (current() && request.xhr && request.xhr.manual) {clearTimeout(request.timer); request.timer = setTimeout(fail, 120000);}
+				if (current() && request.xhr && request.xhr.manual) {clearTimeout(request.timer); request.timer = setTimeout(function () { fail('timeout'); }, 120000);}
 				if (request.xhr && request.xhr.fail) request.xhr.fail(fail);
 			} catch (e) {fail();}
 		},
@@ -467,6 +482,13 @@ function toId() {
 				this.cancelUpkeep();
 				this.loaded = false;
 				this.challstr = challstr;
+				// The public development client has no private test session to restore.
+				if (Config.hostedTestClient) {
+					this.loaded = true;
+					this.upkeepError = '';
+					app.topbar.updateUserbar();
+					return;
+				}
 				this.retryUpkeep();
 			}
 		},
@@ -3171,14 +3193,16 @@ function toId() {
 			this.callback = data.callback;
 
 			var buf = '<form>';
-			buf += '<p>Because of <a href="https://en.wikipedia.org/wiki/Same-origin_policy" target="_blank">your browser\'s security restrictions</a> for <code>testclient.html</code>, we need to do this manually:</p>';
+			if (Config.hostedTestClient) {
+				buf += '<p>Submit the form below to contact Pokémon Showdown, then paste its response here to finish signing in.</p>';
+			} else buf += '<p>Because of <a href="https://en.wikipedia.org/wiki/Same-origin_policy" target="_blank">your browser\'s security restrictions</a> for <code>testclient.html</code>, we need to do this manually:</p>';
 			buf += '<iframe id="overlay_iframe" src="' + data.uri + '" style="width: 100%; height: 50px;" class="textbox"></iframe>';
 			buf += '<p>Please copy <strong>all the text</strong> from the box above and paste it in the box below.</p>';
-			buf += '<p>(You should probably <a href="https://github.com/smogon/pokemon-showdown-client#test-keys" target="_blank">set up</a> <code>config/testclient-key.js</code> so you don\'t have to do this every time.)</p>';
+			if (!Config.hostedTestClient) buf += '<p>(You should probably <a href="https://github.com/smogon/pokemon-showdown-client#test-keys" target="_blank">set up</a> <code>config/testclient-key.js</code> so you don\'t have to do this every time.)</p>';
 			buf += '<p><label class="label" style="float: left;">Data from the box above:</label> <input style="width: 100%;" class="textbox autofocus" type="text" name="result" /></p>';
 			buf += '<p class="buttonbar"><button type="submit" class="button"><strong>Submit</strong></button> <button type="button" name="close" class="button">Cancel</button></p>';
 			buf += '</form>';
-			this.$el.html(buf).css('min-width', 500);
+			this.$el.html(buf).css({width: 'min(500px, 85vw)', 'max-width': '100%'});
 		},
 		submit: function (data) {
 			this.close();

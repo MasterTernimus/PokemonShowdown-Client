@@ -3857,7 +3857,7 @@ const BattleFieldMoveRules = {
 		uncertain: false,
 	},
 	baddybad: {
-		onModifyMove(move) {
+		onModifyMove(move, source) {
 			if (this.field.isTerrain('mirrorarenaterrain')) {
 				move.self = {
 					boosts: {
@@ -4347,7 +4347,7 @@ const BattleFieldMoveRules = {
 		uncertain: false,
 	},
 	glitzyglow: {
-		onModifyMove(move) {
+		onModifyMove(move, source) {
 			if (this.field.isTerrain('mirrorarenaterrain')) {
 				move.self = {
 					boosts: {

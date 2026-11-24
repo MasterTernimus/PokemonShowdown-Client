@@ -1,9 +1,9 @@
 {
-  "sourceHead": "a2554a2bbfa04750f24a55a0e73539ea37092154",
-  "sourceDataSHA256": "7a4692c083882819ddb96810ded8016b339455e5a9c1d547a8950add51dc71e3",
-  "builtSourceFingerprint": "9cb29ab6709e1d86bd2d8a20bd653772d50a7bc49eeb5c41564f46e57c1f463f",
+  "sourceHead": "7a6c49850c0d1f82f1bf936ef110f2b84be255fd",
+  "sourceDataSHA256": "80ec14ef6f6443d7bc3b9d8afc429c7dd8e73ef02803356d053195adb47d3819",
+  "builtSourceFingerprint": "a3efeade55e90a3b014d641b391af62b144985f3421de8872d9aecb1bb9145dd",
   "outputs": {
-    "data/abilities.js": "878628a91aedf397f11e155ad8064879b0cfa6a7e3443880fbec60e85e0ecaef",
+    "data/abilities.js": "3165bafb1f8de1d5590f84918b05fbad5c984ed79efccb740db1d33c268c29db",
     "data/aliases.js": "cdec771b8ca4ca81d66413fe6f1d320eac490dd6f6c1760dc9b1fb2800cdd86f",
     "data/formats-data.js": "2dd21428caff3363c9f8fee18e4589c591f30e64edaf9b482af833890bccfa2b",
     "data/formats.js": "29976fba3df24e105f0da0002fec246d6abde3444eab8a1bef6ef31a7280a289",
@@ -11,7 +11,7 @@
     "data/items.js": "b5c17b11b66113c91fcac80c65e0d65c65d82f4908f83c08bd68ca5eb17f0967",
     "data/learnsets-g6.js": "7cbb17efa2ed5e575b9e3fa8b7e69025dd00ec271555d69f0b9d7f10a8bd7ce0",
     "data/learnsets.js": "1168d3e406bfecb0f9dea2e69932d5a9b41ddb5d8160f46339539999f3964eb5",
-    "data/moves.js": "f0e665f6cfac647214e0ac1a42f08d57d1b2adc1626d0063b2848519fe766c77",
+    "data/moves.js": "732a974aa35d800c54d41d9c05f40a5c94e6f5eb7b08d0d712665753af12497c",
     "data/pokedex-mini-bw.js": "c12fe7a73df3280cfc313dd9e05832cb8d9db1ba47a34d279f87d89386bef921",
     "data/pokedex-mini.js": "67109c76fd5e401621fc85c209d78f36d3a4bc7f1866559d9569ffc2aee38226",
     "data/pokedex.js": "4679e07cefc89cc99c95dfc5fe3b3089394b2f896e050f538b6159d7939f9e69",

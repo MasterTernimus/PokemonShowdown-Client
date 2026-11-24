@@ -71,6 +71,22 @@ function setup(options = {}) {
 }
 
 describe('Recoverable session upkeep', function () {
+	it('offers name selection immediately on the hosted client without restoring a development session', function () {
+		const h = setup();
+		h.context.Config.hostedTestClient = true;
+		h.user.receiveChallstr('A');
+		assert.strictEqual(h.requests.length, 0);
+		assert.strictEqual(h.timers.size, 0);
+		assert.strictEqual(h.user.get('registered'), false);
+		assert(h.html().includes('name="login"'));
+		h.user.rename('Alice');
+		assert.strictEqual(h.requests.length, 1);
+		assert.strictEqual(h.requests[0].data.challstr, 'A');
+		assert.strictEqual(h.requests[0].url, 'https://play.pokemonshowdown.com/api/getassertion');
+		h.user.receiveChallstr('B');
+		h.requests[0].callback('stale-token');
+		assert.strictEqual(h.sent.length, 0);
+	});
 	it('bounds a pending request, keeps authentication incomplete and permits one explicit retry', function () {
 		const h = setup();
 		h.user.receiveChallstr('challenge-A');
@@ -304,6 +320,19 @@ describe('Recoverable manual sign-in', function () {
 		const h = manual(); h.user.passwordRename('Alice', 'secret');
 		h.requests[0].callback(']{"curuser":{"loggedin":true,"username":"Alice"},"assertion":"token"}');
 		assert.equal(h.user.get('registered').username, 'Alice'); assert.equal(h.sent[0], '/trn Alice,0,token'); assert.equal(h.timers.size, 0);
+	});
+	it('shows API rejections for both sign-in steps without submitting them to the battle server', function () {
+		for (const prefix of ['', ']']) {
+			for (const action of ['rename', 'passwordRename']) {
+				const h = manual();
+				h.user[action]('Alice', 'dummy');
+				h.requests[0].callback(prefix + '{"actionerror":"Please try again later."}');
+				assert.deepEqual(h.messages, ['Pokémon Showdown: Please try again later.']);
+				assert.equal(h.sent.length, 0);
+				assert.equal(h.user.get('registered'), false);
+				assert.equal(h.timers.size, 0);
+			}
+		}
 	});
 	it('does not let the background account check overwrite an explicit login', function () {
 		const h = manual(); h.user.retryUpkeep(); h.user.passwordRename('Alice', 'secret'); assert(h.requests[0].aborted);

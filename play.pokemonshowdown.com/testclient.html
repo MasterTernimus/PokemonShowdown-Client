@@ -20,6 +20,7 @@
 				document.head.appendChild(scriptEl);
 			}
 			Config.testclient = true;
+			Config.hostedTestClient = location.hostname === 'play.pokemonreborn-showdown.xyz';
 			(function() {
 				if (location.search !== '') {
 					var m = /\?~~(([^:\/]*)(:[0-9]*)?)/.exec(location.search);
@@ -74,7 +75,9 @@
 		<script src="js/lib/jquery-cookie.js?c840b994"></script>
 		<script src="js/lib/autoresize.jquery.min.js?52413642"></script>
 		<script src="js/battle-sound.js?6dfddeee"></script>
-		<script src="../config/testclient-key.js"></script>
+		<script>
+			if (!Config.hostedTestClient) document.write('<script src="../config/testclient-key.js"><\/script>');
+		</script>
 		<script src="js/lib/html-css-sanitizer-minified.js?38f3f7d3"></script>
 		<script src="js/lib/lodash.core.js?f87de26d"></script>
 		<script src="js/lib/backbone.js?6faf9dcf"></script>
@@ -87,7 +90,7 @@
 
 		<!-- fallback for if you've never done a full build -->
 		<script src="js/server/chat-formatter.js?44037c61" onerror="loadRemoteData(this.src)"></script>
-		<script src="js/battledata.js?39d096ef" onerror="alert('You must build the client with `node build` before using testclient.html')"></script>
+		<script src="js/battledata.js?ec569e54" onerror="alert('You must build the client with `node build` before using testclient.html')"></script>
 		<script src="data/text.js?7dbf8483" onerror="loadRemoteData(this.src)"></script>
 		<script src="data/pokedex-mini.js?081155a1" onerror="loadRemoteData(this.src)"></script>
 		<script src="data/pokedex-mini-bw.js?a66687da" onerror="loadRemoteData(this.src)"></script>
@@ -100,23 +103,23 @@
 			document.getElementById('loading-message').innerHTML += ' DONE<br />Loading client...';
 		</script>
 
-		<script src="js/client.js?6a855baf"></script>
-		<script src="js/client-topbar.js?09250908"></script>
+		<script src="js/client.js?0b9876ca"></script>
+		<script src="js/client-topbar.js?5c0a50d2"></script>
 		<script src="js/client-mainmenu.js?c07f669c"></script>
 		<script src="js/client-teambuilder.js?dd6b3dfc"></script>
 		<script src="js/client-ladder.js?2a2ed9b2"></script>
 		<script src="js/client-chat.js?0a0c834f"></script>
 		<script src="js/client-chat-tournament.js?caff4c98"></script>
-		<script src="js/battle-tooltips.js?302829f1"></script>
+		<script src="js/battle-tooltips.js?482eda0f"></script>
 		<script src="js/client-battle.js?881a84ef"></script>
 		<script src="js/client-rooms.js?89245e2b"></script>
-		<script src="js/storage.js?0f96eb60"></script>
+		<script src="js/storage.js?bbef09ee"></script>
 		<script src="data/graphics.js?578b289f" onerror="loadRemoteData(this.src)"></script>
 
 		<script src="data/pokedex.js?3fd426a9" onerror="loadRemoteData(this.src)"></script>
-		<script src="data/moves.js?012b847f" onerror="loadRemoteData(this.src)"></script>
+		<script src="data/moves.js?c34aa115" onerror="loadRemoteData(this.src)"></script>
 		<script src="data/items.js?3b6b8b30" onerror="loadRemoteData(this.src)"></script>
-		<script src="data/abilities.js?1f164fb6" onerror="loadRemoteData(this.src)"></script>
+		<script src="data/abilities.js?3803e6c6" onerror="loadRemoteData(this.src)"></script>
 
 		<script src="data/search-index.js?8a2405e9" onerror="loadRemoteData(this.src)"></script>
 		<script src="data/teambuilder-tables.js?559b443c" onerror="loadRemoteData(this.src)"></script>

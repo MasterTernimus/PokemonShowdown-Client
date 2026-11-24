@@ -531,7 +531,7 @@ Storage.initTestClient = function () {
 	Storage.whenTeamsLoaded.load();
 
 	var sid = null;
-	if (typeof POKEMON_SHOWDOWN_TESTCLIENT_KEY === 'string') {
+	if (!Config.hostedTestClient && typeof POKEMON_SHOWDOWN_TESTCLIENT_KEY === 'string') {
 		sid = POKEMON_SHOWDOWN_TESTCLIENT_KEY.replace(/\%2C/g, ',');
 	}
 

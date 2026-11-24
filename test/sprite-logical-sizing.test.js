@@ -43,6 +43,16 @@ describe('Logical sprite sizing across the roster', function () {
 			}
 		}
 	});
+	it('matches regular and shiny Drekeon on both sides and in team preview', () => {
+		const {Dex} = loadDex();
+		for (const front of [true, false]) for (const teamPreview of [true, false]) {
+			const regular = Dex.getSpriteData('Drekeon', front, {gen: 9, teamPreview});
+			const shiny = Dex.getSpriteData('Drekeon', front, {gen: 9, teamPreview, shiny: true});
+			assert(regular.url.includes('/drekeon.png') && shiny.url.includes('-shiny/drekeon.png'));
+			assert.deepEqual([regular.w, regular.h], [96, 96]);
+			assert.deepEqual([regular.w, regular.h], [shiny.w, shiny.h]);
+		}
+	});
 	it('keeps the custom school larger than the solitary Wishiwashi', () => {
 		const {Dex} = loadDex();
 		const small = Dex.getSpriteData('Wishiwashi-Sevii', true, {gen: 9, teamPreview: true});

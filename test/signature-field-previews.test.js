@@ -8,6 +8,18 @@ const tips=new Function(fs.readFileSync('play.pokemonshowdown.com/js/battle-fiel
 const actor=()=>tips.pokemon(null,{speciesForme:'Mew',ability:'No Ability',item:'',status:'',hp:100,maxhp:100});
 function evaluate(field,id,weather='',variant=0){const rule=BattleFieldRules.find(f=>f.id===field);assert(rule,field);return tips.evaluate(rule,Dex.moves.get(id),actor(),actor(),weather,variant);}
 describe('Signature move field previews',()=>{
+ for (const [id, screen] of [['baddybad', 'reflect'], ['glitzyglow', 'lightscreen']]) {
+  it(id + ' keeps its adaptive category and Mirror Arena screen bonus', () => {
+   const field = BattleFieldRules.find(f => f.id === 'mirrorarenaterrain');
+   for (const category of ['Physical', 'Special']) {
+    const move = {...Dex.moves.get(id), category};
+    const result = tips.evaluate(field, move, actor(), actor());
+    assert.equal(result.move.category, category);
+    assert.equal(result.move.self.sideCondition, screen);
+    assert.equal(result.move.self.boosts.evasion, 1);
+   }
+  });
+ }
  it('Soothing Tide receives both Underwater multipliers while retaining its signature power',()=>{
   const r=evaluate('underwaterterrain','soothingtide'); assert.equal(r.factor,2.25); assert.equal(r.move.basePower,75); assert.equal(r.move.id,'waterpulse');
  });
