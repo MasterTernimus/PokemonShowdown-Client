@@ -1,12 +1,13 @@
 {
-	"sourceHead": "7a6c49850c0d1f82f1bf936ef110f2b84be255fd",
-	"base": "a2554a2bbfa04750f24a55a0e73539ea37092154",
-	"builtSourceFingerprint": "a3efeade55e90a3b014d641b391af62b144985f3421de8872d9aecb1bb9145dd",
-	"sourceDataSHA256": "80ec14ef6f6443d7bc3b9d8afc429c7dd8e73ef02803356d053195adb47d3819",
+	"sourceHead": "310a023d27be821bdff315b4683cab51c149a3cd",
+	"base": "7a6c49850c0d1f82f1bf936ef110f2b84be255fd",
+	"builtSourceFingerprint": "6aca281a0ca096b3977123a3779d2e07097ef001663fbd6012620570fdecbe68",
+	"sourceDataSHA256": "0a457a5c0dc7e85e0deb06dfdf2204bf4bd59f335bb7ecb6b7d0c86e4a9b19fa",
 	"files": [
-		"data/moves.ts",
-		"data/plasma-eruption.ts",
-		"data/text/moves.ts",
+		"data/abilities.ts",
+		"data/ability-components.ts",
+		"data/audit-reworks-approved.ts",
+		"data/combat-sequences.ts",
 		"sim/dex-species.ts"
 	],
 	"deletedFiles": [],
@@ -46966,8 +46967,8 @@
 				"name": "Reaper's Grip",
 				"num": 10357,
 				"gen": 9,
-				"desc": "Heals 1/16 max HP each turn and ignores sandstorm/hail damage. Entry creates 5-turn Haunted Aura: all Ghost attacks gain 20% power. Its Ghost attacks heal 25% of opposing HP damage dealt. A direct Ghost KO while it survives and Haunted Aura remains attempts to convert the field to Haunted for 5 turns, consuming the Aura only on success. Respects field locks; cannot extend existing Haunted. Later entries can create the Aura again, but ability restarts cannot. Suppression stops new triggers and holder benefits; an existing Aura persists.",
-				"shortDesc": "Self-Sufficient; 5-turn Haunted Aura on entry; Ghost attacks drain 25%. Ghost KO can create Haunted.",
+				"desc": "Includes Anticipation. Misaligned Stars records attacks that damage its HP and opposing status moves that hit it. The next use of each recorded move is blocked and heals 1/4 max HP. Switching out clears the record. Heals 1/16 max HP each turn and ignores sandstorm/hail damage. Entry creates 5-turn Haunted Aura: all Ghost attacks gain 20% power. Its Ghost attacks heal 25% of opposing HP damage dealt. A direct Ghost KO while it survives and Haunted Aura remains attempts to convert the field to Haunted for 5 turns, consuming the Aura only on success. Respects field locks; cannot extend existing Haunted. Later entries can create the Aura again, but ability restarts cannot. Suppression stops new triggers and holder benefits; an existing Aura persists.",
+				"shortDesc": "Self-Sufficient + Misaligned Stars. Haunted Aura. Ghost hits drain 25%. Ghost KOs can set Haunted.",
 				"rating": 5,
 				"flags": {},
 				"isNonstandard": null
@@ -50335,8 +50336,8 @@
 				"name": "Tome of Avarice",
 				"num": 12194,
 				"gen": 9,
-				"desc": "Remembers opposing moves that damage its HP. Later uses of those moves deal 30% less damage to it until it switches out.",
-				"shortDesc": "Takes 30% less damage from moves that already hurt it this entry.",
+				"desc": "Records each opposing move that damages its HP. Later uses of a recorded move deal 30% less damage to this Pokémon, even after it switches out and returns.",
+				"shortDesc": "Takes 30% less damage from opposing moves that already hurt it this battle.",
 				"rating": 4,
 				"flags": {
 					"breakable": 1
@@ -86066,7 +86067,8 @@
 				"keeneye"
 			],
 			"reapersgrip": [
-				"selfsufficient"
+				"selfsufficient",
+				"misalignedstars"
 			],
 			"rebornflower": [
 				"flowerveil"
@@ -88334,7 +88336,8 @@
 				"filter"
 			],
 			"reapersgrip": [
-				"selfsufficient"
+				"selfsufficient",
+				"misalignedstars"
 			],
 			"moonlitwings": [
 				"serenegrace"

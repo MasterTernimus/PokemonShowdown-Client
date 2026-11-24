@@ -1,9 +1,9 @@
 {
-  "sourceHead": "7a6c49850c0d1f82f1bf936ef110f2b84be255fd",
-  "sourceDataSHA256": "80ec14ef6f6443d7bc3b9d8afc429c7dd8e73ef02803356d053195adb47d3819",
-  "builtSourceFingerprint": "a3efeade55e90a3b014d641b391af62b144985f3421de8872d9aecb1bb9145dd",
+  "sourceHead": "310a023d27be821bdff315b4683cab51c149a3cd",
+  "sourceDataSHA256": "0a457a5c0dc7e85e0deb06dfdf2204bf4bd59f335bb7ecb6b7d0c86e4a9b19fa",
+  "builtSourceFingerprint": "6aca281a0ca096b3977123a3779d2e07097ef001663fbd6012620570fdecbe68",
   "outputs": {
-    "data/abilities.js": "3165bafb1f8de1d5590f84918b05fbad5c984ed79efccb740db1d33c268c29db",
+    "data/abilities.js": "91e61e7dd348a8830ec521969983da44415760a2bd7f229f75e2051dbee8939d",
     "data/aliases.js": "cdec771b8ca4ca81d66413fe6f1d320eac490dd6f6c1760dc9b1fb2800cdd86f",
     "data/formats-data.js": "2dd21428caff3363c9f8fee18e4589c591f30e64edaf9b482af833890bccfa2b",
     "data/formats.js": "29976fba3df24e105f0da0002fec246d6abde3444eab8a1bef6ef31a7280a289",
