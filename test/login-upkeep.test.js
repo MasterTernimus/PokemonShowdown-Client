@@ -71,6 +71,22 @@ function setup(options = {}) {
 }
 
 describe('Recoverable session upkeep', function () {
+	it('connects the hosted guest without opening a manual proxy for optional username colors', function () {
+		const start = source.indexOf('Storage.whenAppLoaded.load(this);');
+		const end = source.indexOf('this.initializeConnection();', start) + 'this.initializeConnection();'.length;
+		const boot = new Function('Storage', '$', 'Config', source.slice(start, end));
+		for (const hosted of [true, false]) {
+			let connected = false, requests = 0;
+			const config = {hostedTestClient: hosted, customcolors: {local: 'localred'}};
+			boot.call({initializeConnection() {connected = true;}}, {whenAppLoaded: {load() {}}}, {
+				get(url, data, done) {assert.equal(url, '/config/colors.json'); requests++; done({remote: 'blue'});},
+			}, config);
+			assert.equal(connected, true);
+			assert.equal(requests, hosted ? 0 : 1);
+			assert.equal(config.customcolors.local, 'localred');
+			assert.equal(config.customcolors.remote, hosted ? undefined : 'blue');
+		}
+	});
 	it('offers name selection immediately on the hosted client without restoring a development session', function () {
 		const h = setup();
 		h.context.Config.hostedTestClient = true;

@@ -820,10 +820,12 @@ function toId() {
 
 			Storage.whenAppLoaded.load(this);
 
-			// load custom colors from loginserver
-			$.get('/config/colors.json', {}, function (data) {
-				Object.assign(Config.customcolors, data);
-			});
+			// The hosted client ships its colors in config.js. A login-server GET here opens the manual sign-in dialog.
+			if (!Config.hostedTestClient) {
+				$.get('/config/colors.json', {}, function (data) {
+					Object.assign(Config.customcolors, data);
+				});
+			}
 
 			this.initializeConnection();
 		},
