@@ -210,11 +210,12 @@ class PSSearchResults extends preact.Component<{
 		const move = Dex.getTeambuilderMoveDisplay(search.dex.moves.get(id), search.typedSearch?.set, search.dex);
 		if (!move) return <li class="result">Unrecognized move</li>;
 
+		const megaHint = Dex.getMegaMoveHint(id, search.typedSearch?.set, search.dex);
 		const tagStart = (move.name.startsWith('Hidden Power') ? 12 : 0);
 
 		if (errorMessage) {
 			return <li class="result"><a href={`${this.URL_ROOT}move/${id}`} data-target="push" data-entry={`move|${move.name}`}>
-				<span class="col movenamecol">{this.renderName(move.name, matchStart, matchEnd, tagStart)}</span>
+				<span class="col movenamecol">{this.renderName(move.name, matchStart, matchEnd, tagStart)}{megaHint && <small class="mega-move-hint">{megaHint}</small>}</span>
 
 				{errorMessage}
 			</a></li>;
@@ -223,7 +224,7 @@ class PSSearchResults extends preact.Component<{
 		let pp = (move.pp === 1 || move.noPPBoosts ? move.pp : move.pp * 8 / 5);
 		if (search.dex.gen < 3) pp = Math.min(61, pp);
 		return <li class="result"><a href={`${this.URL_ROOT}move/${id}`} data-target="push" data-entry={`move|${move.name}`}>
-			<span class="col movenamecol">{this.renderName(move.name, matchStart, matchEnd, tagStart)}</span>
+			<span class="col movenamecol">{this.renderName(move.name, matchStart, matchEnd, tagStart)}{megaHint && <small class="mega-move-hint">{megaHint}</small>}</span>
 
 			<span class="col typecol">
 				<img src={`${Dex.resourcePrefix}sprites/types/${move.type}.png`} alt={move.type} height="14" width="32" class="pixelated" />

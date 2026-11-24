@@ -29,10 +29,23 @@ describe('Empoleon X/Y client parity',()=>{
    assert(fs.existsSync(path.resolve('play.pokemonshowdown.com',x.url.slice(x.url.indexOf('sprites/')).split('?')[0])));
   }
  });
- it('displays Royal Collision and its recoil without changing the PP tracker',()=>{
-  setup();const text=tips.showMoveTooltip(Dex.moves.get('wavecrash'),'',p,own);assert(text.includes('Royal Collision'));assert(text.includes('10%'));assert(text.includes('Water and Ice'));
-  assert.equal(Dex.moves.get('royalcollision').recoil[1],10);p.rememberMove('Royal Collision',1);assert.equal(p.moveTrack.find(m=>m[0]==='Wave Crash')[1],1);
-  p.addVolatile('gastroacid');assert(!tips.showMoveTooltip(Dex.moves.get('wavecrash'),'',p,own).includes('Royal Collision'));
+ it('offers alternate Primal Kyogre artwork for each facing and palette',()=>{
+  const prefs=Dex.prefs;
+  try {
+   for(const isFront of [true,false])for(const shiny of [true,false]){
+    Dex.prefs=k=>k==='altprimalart';
+    const path=Dex.getSpriteData('kyogreprimal',isFront,{gen:9,shiny}).url;
+    assert(path.includes('gen5'+(isFront?'':'-back')+(shiny?'-shiny':'')+'/kyogre-primal-alt.png'),path);
+    Dex.prefs=()=>false;
+    assert(!Dex.getSpriteData('kyogreprimal',isFront,{gen:9,shiny}).url.includes('-alt.png'));
+   }
+   assert(!Dex.isSpeciesHidden('empoleonmegax'));
+  } finally { Dex.prefs=prefs; }
+ });
+ it('displays Crown Crash and its recoil without changing the PP tracker',()=>{
+  setup();const text=tips.showMoveTooltip(Dex.moves.get('wavecrash'),'',p,own);assert(text.includes('Crown Crash'));assert(text.includes('10%'));assert(text.includes('Water and Ice'));
+  assert.equal(Dex.moves.get('crowncrash').recoil[1],10);p.rememberMove('Crown Crash',1);assert.equal(p.moveTrack.find(m=>m[0]==='Wave Crash')[1],1);
+  p.addVolatile('gastroacid');assert(!tips.showMoveTooltip(Dex.moves.get('wavecrash'),'',p,own).includes('Crown Crash'));
  });
  it('previews Ice-field Speed and Defense once',()=>{
   setup();battle.weather='hail';battle.addPseudoWeather('Icy Terrain',5,5);const stats=tips.calculateModifiedStats(p,own);assert.equal(stats.spe,200);assert.equal(stats.def,225);

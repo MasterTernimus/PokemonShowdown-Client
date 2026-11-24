@@ -36366,7 +36366,7 @@ BattleMoveAnims['splinteredweb'] = {anim(scene, sprites) {
 }};
 BattleMoveAnims['scentedgeyser'] = {anim: BattleMoveAnims['waterspout'].anim};
 
-BattleMoveAnims.royalcollision = BattleMoveAnims.wavecrash;
+BattleMoveAnims.crowncrash = BattleMoveAnims.wavecrash;
 
 // Character signatures use the existing scene-aware animations at their normal speed.
 for (const [signature, animation] of Object.entries({
@@ -36412,3 +36412,42 @@ BattleMoveAnims.riftopening = {anim(scene, [attacker]) {
 	}
 	scene.wait(1350);
 }};
+
+BattleMoveAnims.gildedwing = BattleMoveAnims.steelwing;
+
+BattleMoveAnims.snarevine = BattleMoveAnims.powerwhip;
+BattleMoveAnims.fmimpression = BattleMoveAnims.firstimpression;
+BattleMoveAnims.sacredrush = BattleMoveAnims.extremespeed;
+BattleMoveAnims.apexcleave = BattleMoveAnims.dualchop;
+BattleMoveAnims.shadowshuriken = BattleMoveAnims.watershuriken;
+BattleMoveAnims.omenslash = BattleMoveAnims.nightslash;
+BattleMoveAnims.pincerjab = BattleMoveAnims.bulletpunch;
+
+BattleMoveAnims.falsesmile = BattleMoveAnims.crunch;
+BattleMoveAnims.riptidefang = BattleMoveAnims.fishiousrend || BattleMoveAnims.crunch;
+BattleMoveAnims.carapacejab = BattleMoveAnims.bulletpunch;
+BattleMoveAnims.crushbite = BattleMoveAnims.riptidefang;
+BattleMoveAnims.razorbite = BattleMoveAnims.riptidefang;
+BattleMoveAnims.cometjab = BattleMoveAnims.carapacejab;
+
+BattleMoveAnims.beaconbeam = BattleMoveAnims.discharge;
+BattleMoveAnims.hexstitch = BattleMoveAnims.shadowclaw;
+BattleMoveAnims.cloudsong = BattleMoveAnims.dragonpulse;
+BattleMoveAnims.pivotkick = BattleMoveAnims.jumpkick;
+BattleMoveAnims.greedgospel = BattleMoveAnims.powergem;
+BattleMoveAnims.craterburst = BattleMoveAnims.lavaplume;
+BattleMoveAnims.armorslam = BattleMoveAnims.heavyslam;
+BattleMoveAnims.pulsechime = BattleMoveAnims.healbell;
+BattleMoveAnims.anchorslam = BattleMoveAnims.irontail;
+BattleMoveAnims.triplesting = BattleMoveAnims.twineedle;
+BattleMoveAnims.talondive = BattleMoveAnims.stoneedge;
+BattleMoveAnims.dreadhowl = BattleMoveAnims.darkpulse;
+BattleMoveAnims.boltdash = BattleMoveAnims.voltswitch;
+BattleMoveAnims.galeslice = BattleMoveAnims.airslash;
+BattleMoveAnims.oathkeepersedge = BattleMoveAnims.saberparry = BattleMoveAnims.psychocut;
+BattleMoveAnims.guardsong = BattleMoveAnims.hypervoice;
+BattleMoveAnims.veilslash = BattleMoveAnims.slash;
+BattleMoveAnims.voidvolley = BattleMoveAnims.swift;
+for (const [signature, base] of Object.entries(Dex.stoneMoveBases)) {
+	BattleMoveAnims[signature] = BattleMoveAnims[base];
+}

@@ -735,7 +735,8 @@
 				name += '<small>' + move.name.substr(tagStart) + '</small>';
 			}
 		}
-		buf += '<span class="col movenamecol">' + name + '</span> ';
+		var hint = this.moveDisplaySet && Dex.getMegaMoveHint(move.id, this.moveDisplaySet, this.engine.dex);
+		buf += '<span class="col movenamecol">' + name + (hint ? '<small class="mega-move-hint">' + BattleLog.escapeHTML(hint) + '</small>' : '') + '</span> ';
 
 		// error
 		if (errorMessage) {
@@ -775,7 +776,8 @@
 		var name = move.name;
 		var tagStart = (name.substr(0, 12) === 'Hidden Power' ? 12 : 0);
 		if (tagStart) name = name.substr(0, tagStart) + '<small>' + move.name.substr(tagStart) + '</small>';
-		buf += '<span class="col movenamecol">' + name + '</span> ';
+		var hint = this.moveDisplaySet && Dex.getMegaMoveHint(move.id, this.moveDisplaySet, this.engine.dex);
+		buf += '<span class="col movenamecol">' + name + (hint ? '<small class="mega-move-hint">' + BattleLog.escapeHTML(hint) + '</small>' : '') + '</span> ';
 
 		// error
 		if (errorMessage) {
@@ -816,7 +818,8 @@
 		// name
 		var name = move.name;
 		if (name.substr(0, 12) === 'Hidden Power') name = 'Hidden Power';
-		buf += '<span class="col shortmovenamecol">' + name + '</span> ';
+		var hint = this.moveDisplaySet && Dex.getMegaMoveHint(move.id, this.moveDisplaySet, this.engine.dex);
+		buf += '<span class="col shortmovenamecol">' + name + (hint ? '<small class="mega-move-hint">' + BattleLog.escapeHTML(hint) + '</small>' : '') + '</span> ';
 
 		// error
 		if (errorMessage) {

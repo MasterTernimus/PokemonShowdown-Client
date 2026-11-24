@@ -20,11 +20,11 @@ describe('Active aura and team power displays', () => {
 		tips = new BattleTooltips(battle);
 	});
 	afterEach(() => battle.destroy());
-	it('shows Seasonal Stride at 1.5x without restoring the removed kick bonus', () => {
+	it('shows Seasonal Stride at 1.2x without restoring the removed kick bonus', () => {
 		own.passives = ['seasonalstride'];
 		p.volatiles.gastroacid = ['gastroacid'];
 		const kick = {...Dex.moves.get('megakick'), basePower: 100, flags: {kick: 1}};
-		assert.equal(tips.getMoveBasePower(kick, 'Grass', new ModifiableValue(battle, p, own), q).value, 150);
+		assert.equal(tips.getMoveBasePower(kick, 'Grass', new ModifiableValue(battle, p, own), q).value, 120);
 		const fightingKick = {...kick, type: 'Fighting'};
 		assert.equal(tips.getMoveBasePower(fightingKick, 'Fighting', new ModifiableValue(battle, p, own), q).value, 100);
 	});

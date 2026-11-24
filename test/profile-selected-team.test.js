@@ -11,9 +11,9 @@ const profile=()=>({id:'n',name:'Coral',rosterProfile:'g',entries:{corsola:'Pear
 const group=()=>({id:'g',species:['corsola','armaldo','garchomp','garchompmega']});
 describe('Standalone unified profile selection',()=>{
  it('rejects hidden legacy profile members while retaining base species and supported Megas',()=>{
-  const g={id:'g',species:['hydreigon','hydreigonmega','empoleon','empoleonmegax','empoleonmegay']};
-  for(const id of ['empoleonmegax'])assert.throws(()=>T.planProfileTeam(g,profile(),[id],[],6),/changed/);
-  assert.deepEqual(T.planProfileTeam(g,profile(),['hydreigonmega','empoleon','empoleonmegay'],[],6).map(s=>s.species),['Hydreigon-Mega','Empoleon','Empoleon-Mega-Y']);
+  const g={id:'g',species:['hydreigonmega','mightyenamega','empoleon','empoleonmegax','empoleonmegay']};
+  for(const id of ['mightyenamega'])assert.throws(()=>T.planProfileTeam(g,profile(),[id],[],6),/changed/);
+  assert.deepEqual(T.planProfileTeam(g,profile(),['hydreigonmega','empoleon','empoleonmegax','empoleonmegay'],[],6).map(s=>s.species),['Hydreigon-Mega','Empoleon','Empoleon-Mega-X','Empoleon-Mega-Y']);
   assert.equal(g.species.length,5); // Legacy records remain intact.
  });
  it('resets a removed disguise teammate to Auto instead of choosing its old numeric slot',()=>{

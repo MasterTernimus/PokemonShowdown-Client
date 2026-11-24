@@ -33,6 +33,11 @@ require('../play.pokemonshowdown.com/js/battle-text-parser.js');
 require('../play.pokemonshowdown.com/js/battle.js');
 
 describe('Battle', () => {
+	it('hides the Ability Shield announcement in replays and keeps other block messages', () => {
+		const parser = new BattleTextParser();
+		assert.equal(parser.extractMessage('|-block|p1a: Espeon|item: Ability Shield').trim(), '');
+		assert.match(parser.extractMessage('|-block|p1a: Espeon|move: Protect'), /protected/i);
+	});
 	for (const event of ['Flash Fire|[from] item: Elemental Seed', 'ability: Flash Fire']) {
 		it('keeps Unburden when a seed grants Fire Boost using ' + event, () => {
 			const battle = new Battle({debug: true, log: [

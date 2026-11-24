@@ -345,6 +345,14 @@ const MEGA_ITEM_PICKER_PREFERENCES: {[id: string]: {canonical: ID, species: ID}}
 };
 
 class DexSearch {
+	static equipNewSetMegaMove(set: PokemonSet, format: ID, dex: ModdedDex) {
+		if (dex.gen !== 9 || set.moves.some(Boolean)) return;
+		const candidates = [...Object.keys(Dex.megaMoveConversions), 'wavecrash'];
+		if (!candidates.some(id => Dex.getMegaMovePreview(id, set, dex))) return;
+		const rows = new BattleMoveSearch('move', format, set).getBaseResults();
+		const start = rows.findIndex(row => row[0] === 'header' && row[1] === 'Mega signature moves');
+		if (start >= 0 && rows[start + 1]?.[0] === 'move') set.moves[0] = dex.moves.get(rows[start + 1][1]).name;
+	}
 	static isHiddenCosmeticPattern(id: string) {
 		return Dex.isSpeciesHidden(id) || VIVILLON_PATTERN_SPECIES.has(toID(id));
 	}
@@ -447,7 +455,6 @@ class DexSearch {
 	}
 
 	filterPokemonPicker(rows: SearchRow[]): SearchRow[] {
-		rows = rows.filter(row => row[0] !== 'item' || row[1] !== 'empoleonitex');
 		rows = rows.filter(row => {
 			if (row[0] !== 'pokemon') return true;
 			const species = this.dex.species.get(row[1]);
@@ -2573,6 +2580,15 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 			for (const id of extras) aevianWebMoves.push(['move', id as ID]);
 		}
 		const signatureMoves: SearchRow[] = [];
+		const megaMoves: SearchRow[] = [];
+		if (dex.gen === 9 && !pulseMoves) {
+			moves = moves.filter(id => {
+				if (!Dex.getMegaMovePreview(id, this.set, dex)) return true;
+				if (!megaMoves.length) megaMoves.push(['header', 'Mega signature moves']);
+				megaMoves.push(['move', id as ID]);
+				return false;
+			});
+		}
 		// Promote only learned Yang/Rejuvenation moves, preserving fixed Pulse pools.
 		if (!isHackmons && !pulseMoves) {
 			moves = moves.filter(id => {
@@ -2608,6 +2624,7 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 			}
 		}
 		return [
+			...megaMoves,
 			...aevianKingMoves,
 			...aevianAscendanceMoves,
 			...aevianWebMoves,

@@ -8,6 +8,13 @@ const end = source.indexOf('var CustomCalculatorRoom =', start);
 const storage = {teams: [], prefs() {return {};}};
 const calc = new Function('Popup','Dex','Storage','BattleLog','app',source.slice(start,end)+'; return CustomCalculatorPopup;').call({}, {extend:x=>x}, Dex, storage, {escapeHTML:x=>String(x)}, {});
 describe('Calculator usability controls', () => {
+ it('shows the signature crystal alongside the type crystal only for eligible users and base moves', () => {
+  const room=Object.assign({},calc,{metadata:{zCrystals:[{name:'Waterium Z',type:'Water'},{name:'Primarium Z',from:'Sparkling Aria',users:['Primarina']}]}});
+  const choices=(species,move)=>room.matchingCalcCrystals({species},Dex.moves.get(move)).map(c=>c.name);
+  assert.deepEqual(choices('Primarina','Sparkling Aria'),['Primarium Z','Waterium Z']);
+  assert.deepEqual(choices('Mew','Sparkling Aria'),['Waterium Z']);
+  assert.deepEqual(choices('Primarina','Surf'),['Waterium Z']);
+ });
  it('labels Black Testament only with a recognized type reported by the engine', () => {
   const original = global.BattleTypeChart;
   try {

@@ -50,6 +50,20 @@ describe('Aura client support', () => {
   assert.equal(result.move.type, 'Dragon');
   assert.equal(result.factor, 4);
  });
+ it('shows Terrain Pulse power after doubling and the matching field bonus', () => {
+  const source = BattleFieldTooltips.pokemon();
+  const move = Dex.moves.get('terrainpulse');
+  for (const [id, type, power] of [
+   ['electricterrain', 'Electric', 150], ['grassyterrain', 'Grass', 150],
+   ['mistyterrain', 'Fairy', 150], ['psychicterrain', 'Psychic', 150],
+   ['rainbowterrain', 'Dragon', 100], ['dragonsdenterrain', 'Dragon', 75],
+  ]) {
+   const field = BattleFieldRules.find(entry => entry.id === id);
+   const result = BattleFieldTooltips.evaluate(field, move, source, source, '', 0);
+   assert.equal(result.move.type, type, id);
+   assert.equal(move.basePower * result.factor, power, id);
+  }
+ });
  it('includes Aura effects in the Team Builder reference', () => {
   assert(BattleFieldTooltips.allNotes(Dex.moves.get('thunderbolt')).some(row => row.startsWith('Electric Aura:')));
  });

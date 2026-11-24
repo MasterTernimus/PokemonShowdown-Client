@@ -15,15 +15,25 @@ function method(name, marker = '') {
 }
 function comparison() {
  let serial = 0; const timers = new Map(), writes = {}, sent = [];
- const rows = [['Tackle','Thunderbolt'], ['Thunder']];
- const chain = selector => ({each(fn) {rows[Number(selector.match(/data-slot=(\d)/)[1])].forEach((value,i)=>fn.call({value},i));}, text(v) {writes[selector] = v; return this;}, attr() {return this;}, removeAttr() {return this;}, addClass() {return this;}, removeClass() {return this;}});
+ const rows = [['Tackle','Thunderbolt'], ['Thunder']], crystals = [[],[]];
+ const chain = selector => ({each(fn) {const side=Number(selector.match(/data-slot=(\d)/)[1]);rows[side].forEach((value,i)=>fn.call({value,dataset:{zCrystal:crystals[side][i]}},i));}, text(v) {writes[selector] = v; return this;}, attr() {return this;}, removeAttr() {return this;}, addClass() {return this;}, removeClass() {return this;}});
  const base = {actors:[{species:'Mew',moves:['Tackle','Thunderbolt']},{species:'Pikachu',moves:['Thunder']},{species:'Mew'},{species:'Mew'}],sideConditions:[[],[]]};
  const room = {scenario:() => base, $:chain, $el:chain('root'), scenarioRevision:0, refreshActors() {},refreshCalcMoves() {},refreshFieldState() {},scenarioEdited() {this.cancelComparison();}, requestCalculator(json) {this.requestId='request-'+ ++serial;this.calculatorLastSentAt=Date.now();sent.push({id:this.requestId,json});}};
  const set = fn => {const id=++serial;timers.set(id,fn);return id;}; const clear = id => timers.delete(id);
  for (const name of ['damageSummary','koVerdict','resultMoveType','cancelComparison','compareMoves','nextComparison','receiveCalculator']) room[name] = new Function('receive','setTimeout','clearTimeout','return '+method(name,name==='receiveCalculator'?'comparisonRequest':''))(() => {},set,clear);
- return {room,base,rows,writes,sent,flush() {const entry=timers.entries().next().value;assert(entry,'timer expected');timers.delete(entry[0]);entry[1]();},reply(id,percent=10) {room.receiveCalculator({requestId:id,results:[{}, {minPercent:percent,maxPercent:percent,kos:0}],samples:32});}};
+ return {room,base,rows,crystals,writes,sent,flush() {const entry=timers.entries().next().value;assert(entry,'timer expected');timers.delete(entry[0]);entry[1]();},reply(id,percent=10) {room.receiveCalculator({requestId:id,results:[{}, {minPercent:percent,maxPercent:percent,kos:0}],samples:32});}};
 }
 describe('Calculator comparison request ownership', () => {
+ it('uses a crystal only on the selected rows, even with the other side attacking',()=>{
+  const h=comparison();h.base.attackMode='z';h.base.actors[0].item='Life Orb';h.base.actors[1].item='Leftovers';
+  h.crystals[0][1]='Electrium Z';h.crystals[1][0]='Electrium Z';h.room.compareMoves();
+  const run=()=>{h.flush();const call=h.sent.at(-1);const request=JSON.parse(call.json);h.reply(call.id);return request;};
+  const plain=run(),left=run(),right=run();
+  assert.deepEqual([plain.attackMode,plain.actors[0].item],['','Life Orb']);
+  assert.deepEqual([left.attackMode,left.actors[0].item,left.actors[1].item],['z','Electrium Z','Leftovers']);
+  assert.deepEqual([right.attackMode,right.actors[0].species,right.actors[1].item],['z','Pikachu','Life Orb']);
+  assert.deepEqual(h.base.actors.slice(0,2).map(a=>a.item),['Life Orb','Leftovers']);
+ });
  it('routes a sparse fourth row to its own result with a compact server moveset', () => {
   const h=comparison();h.rows[0]=['','','','Blizzard'];h.base.actors[0].moves=['Blizzard'];
   h.room.compareMoves('0:3');h.flush();const sent=JSON.parse(h.sent[0].json);

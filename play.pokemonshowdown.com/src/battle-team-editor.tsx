@@ -223,12 +223,14 @@ export class TeamEditorState extends PSModel {
 		return this.getResultValue(result);
 	}
 	changeSpecies(set: PokemonSet, speciesName: string) {
+		const newMember = !set.species && !set.moves.some(Boolean);
 		const species = this.dex.species.get(speciesName);
 		if (set.item === this.getDefaultItem(set.species)) set.item = undefined;
 		if (set.name === set.species.split('-')[0]) delete set.name;
 		set.species = species.name;
 		set.ability = this.getDefaultAbility(set);
 		set.item = this.getDefaultItem(species.name) ?? set.item;
+		if (newMember) DexSearch.equipNewSetMegaMove(set, this.format, this.dex);
 		if (isSilvallySpecies(set.species) || isDefaultShinyCustomSpecies(set.species)) set.shiny = true;
 
 		if (toID(speciesName) === 'Cathy') {
@@ -2001,6 +2003,13 @@ class TeamWizard extends preact.Component<{
 		}
 		while (set.moves.length < 4) set.moves.push('');
 		const overfull = set.moves.length > 4 ? ' overfull' : '';
+		const megaOptions = Dex.getStoneMoveOptions(set, editor.dex);
+		if (!megaOptions.length) {
+			for (const base of set.moves) {
+				const preview = Dex.getMegaMovePreview(base, set, editor.dex);
+				if (preview) megaOptions.push({base, ...preview});
+			}
+		}
 
 		const cur = (t: SelectionType) => (
 			editor.readonly || (editor.innerFocus?.type === t && editor.innerFocus.setIndex === i) ? ' cur' : ''
@@ -2067,12 +2076,22 @@ class TeamWizard extends preact.Component<{
 					<td rowSpan={2} class="set-moves"><div class="border-collapse">
 						<button class={`button button-middle${cur('move')}${overfull}`} onClick={this.setFocus} value={`move|${i}`}>
 							<strong class="label">Moves</strong> {}
-							{set.moves.map((move, mi) => <div>
+							{set.moves.map((move, mi) => {
+								const preview = Dex.getMegaMovePreview(move, set, editor.dex);
+								return <div>
 								{!editor.narrow && <small class="gray">&bull;</small>}
 								{mi >= 4 ? <span class="message-error">{move || (editor.narrow && '-') || ''}</span> : move || (editor.narrow && '-')}
-							</div>)}
+								{preview && <small class="mega-move-hint">{preview.label}</small>}
+							</div>;
+							})}
 							{!set.moves.length && <em>(no moves)</em>}
 						</button>
+						{!!megaOptions.length && <details class="mega-move-details" key={set.species}>
+							<summary><span class="mega-show">Show Mega moves</span><span class="mega-hide">Hide Mega moves</span></summary>
+							<div class="mega-move-effect">{megaOptions.map(option => <div>
+								<strong>{option.base} · {option.label}</strong><br />{Dex.getMegaMoveEffect(option.move)}
+							</div>)}</div>
+						</details>}
 					</div></td>
 					<td rowSpan={2} class="set-stats"><div class="border-collapse">
 						<button class={`button button-last${cur('stats')}`} onClick={this.setFocus} value={`stats|${i}`}>
@@ -2150,7 +2169,11 @@ class TeamWizard extends preact.Component<{
 					});
 					break;
 				case 'item':
+					const itemChanged = toID(set.item) !== toID(name);
 					set.item = name;
+					if (itemChanged && Dex.getStoneMoveOptions(set, editor.dex).length) {
+						DexSearch.equipNewSetMegaMove(set, editor.format, editor.dex);
+					}
 					this.changeFocus({
 						setIndex,
 						type: reverse ? 'ability' : 'move',

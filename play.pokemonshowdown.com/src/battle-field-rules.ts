@@ -4011,7 +4011,7 @@ const BattleFieldMoveRules = {
 				};
 			}
 		},
-		base: {critRatio: 1},
+		base: {boosts: {atk: 1, def: 1, spa: 1, spd: 1, spe: 1}, critRatio: 1},
 		uncertain: false,
 	},
 	coaching: {
@@ -4537,11 +4537,6 @@ const BattleFieldMoveRules = {
 		uncertain: false,
 	},
 	irontail: {
-		onModifyMove(move) {
-			if (this.field.isTerrain('electricterrain')) {
-				move.accuracy = true;
-			}
-		},
 		onBasePower(basePower, source, target) {
 			if (adaptiveCycle.adaptiveEnvironment(target, 'fields')) {
 				return;
@@ -7984,18 +7979,6 @@ const BattleFieldMoveRules = {
 		base: {secondaries: [{chance: 30, status: 'par'}], critRatio: 1},
 		uncertain: false,
 	},
-	royalcollision: {
-		onModifyMove(move) {
-			if (
-				this.field.isTerrain('watersurfaceterrain') ||
-				this.field.isTerrain('underwaterterrain')
-			) {
-				move.recoil = [25, 100];
-			}
-		},
-		base: {recoil: [1, 10], critRatio: 1},
-		uncertain: false,
-	},
 	blacktestament: {
 		onBasePower(power, source, target) {
 			if (
@@ -8099,6 +8082,27 @@ const BattleFieldMoveRules = {
 			}
 		},
 		base: {self: {boosts: {spa: -2}}, critRatio: 1},
+		uncertain: false,
+	},
+	anchorslam: {
+		onModifyMove(move) {
+			if (this.field.isTerrain('electricterrain')) {
+				move.accuracy = true;
+			}
+		},
+		onBasePower(basePower, source, target) {
+			if (adaptiveCycle.adaptiveEnvironment(target, 'fields')) {
+				return;
+			}
+			if (this.field.isTerrain('electricterrain')) {
+				return this.chainModify(1.5);
+			}
+		},
+		base: {
+			secondaries: [{chance: 30, boosts: {def: -1}}],
+			volatileStatus: 'smackdown',
+			critRatio: 1,
+		},
 		uncertain: false,
 	},
 };

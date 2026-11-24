@@ -10,6 +10,13 @@ new Function('window', 'jQuery', 'Storage', 'BattleLog', 'Dex', 'app', 'toID', s
 const T = host.TeambuilderTools;
 
 describe('Nickname saving and profile membership', () => {
+	it('starts a profile with exact forms, existing names, and unnamed team members', () => {
+		const sets = [{species:'Milotic',name:'Marina'}, {species:'Typhlosion-Hisui'}, {species:'Mew',name:'Mew'}, {}];
+		assert.deepEqual(T.namesFromTeam(sets), {species:['milotic','typhlosionhisui','mew'], entries:{milotic:'Marina'}, genderEntries:{}});
+		const twins = [{species:'Pikachu',name:'Sunny',gender:'M'},{species:'Pikachu',name:'Ray',gender:'F'}];
+		assert.deepEqual(T.namesFromTeam(twins).genderEntries,{pikachu:{M:'Sunny',F:'Ray'}});
+		assert.throws(() => T.namesFromTeam([twins[0],{...twins[1],gender:'M'}]), /Conflicting nicknames/);
+	});
 	it('accepts repeated identical rows without merging separate forms', () => {
 		const rows = [['Sceptile', 'Slasher'], ['Typhlosion-Alt', 'Krakatoa'], ['Typhlosion', 'Heatshock'], ['Mr. Mime-Galar', 'Sigmund C#ñ41']];
 		const once = T.nicknameMappings(rows), twice = T.nicknameMappings(rows.concat(rows));

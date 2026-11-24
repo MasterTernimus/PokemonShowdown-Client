@@ -19,6 +19,12 @@ describe('Terrain Pulse random-type preview', () => {
 			battle.pseudoWeather.push(['Electric Aura',5,0]);
 			assert.equal(tips.getMoveType(move,value)[0], 'Electric');
 			assert(!BattleFieldTooltips.activeNotes(battle,move,p,server).includes('type is random'));
+			battle.pseudoWeather = [['Cold Eclipse Terrain', 0, 0], ['Rainbow Aura', 5, 0]];
+			const type = tips.getMoveType(move, value)[0];
+			assert.equal(type, 'Dragon');
+			const power = tips.getMoveBasePower(move, type, value, battle.p2.active[0]);
+			assert.equal(power.value, 200);
+			assert.match(String(power), /Cold Eclipse Terrain \+ Rainbow Aura/);
 		} finally { battle.destroy(); }
 	});
 	it('publishes the changed mechanics and Rampardos move removal', () => {
@@ -28,7 +34,7 @@ describe('Terrain Pulse random-type preview', () => {
 		assert.equal(Dex.species.get('infernape').abilities[0], 'Opportunist');
 		assert(!Dex.getAbilityEffects('burningspirit').has('opportunist'));
 		assert(Dex.getAbilityEffects('insight').has('ultrainstinct'));
-		assert(!Dex.getAbilityEffects('keenlight').has('relicbeam'));
+		assert(!Dex.getAbilityEffects('starlens').has('relicbeam'));
 		const learnsets = require('../play.pokemonshowdown.com/data/learnsets.js').BattleLearnsets;
 		assert(!learnsets.rampardos.learnset.accelerock);
 	});

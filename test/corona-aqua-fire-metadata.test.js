@@ -2,18 +2,18 @@
 'use strict';
 const assert = require('assert').strict;
 require('./battle.test');
-describe('Approved Fire Mane, Aqua Shell and Corona Furnace metadata', () => {
+describe('Approved Fire Mane, Armored Shell and Corona Furnace metadata', () => {
 	it('keeps Fire Mane Fire-only and Blazing Mane free of extra-hit components', () => {
 		assert(Dex.abilities.get('firemane').desc.includes('effective Fire'));
 		assert(Dex.getAbilityEffects('blazingmane').has('flashfire'));
 		assert(!Dex.getAbilityEffects('blazingmane').has('proficient'));
 		assert(Dex.abilities.get('blazingmane').desc.includes('1/4'));
 	});
-	it('gives regular Mega Golisopod Heatproof/Frisk with Tough Claws separately', () => {
-		const s = Dex.species.get('golisopodmega'); assert.equal(s.abilities[0], 'Aqua Shell'); assert.deepEqual(s.passives, ['toughclaws']);
-		const effects = Dex.getAbilityEffects('aquashell'); for (const id of ['heatproof', 'frisk']) assert(effects.has(id));
-		for (const id of ['steadfast', 'waterveil', 'innerfocus']) assert(!effects.has(id), id);
-		assert(Dex.abilities.get('aquashell').desc.includes('30%'));
+	it('gives regular Mega Golisopod Water resistances and Heatproof with Tough Claws separately', () => {
+		const s = Dex.species.get('golisopodmega'); assert.equal(s.abilities[0], 'Armored Shell'); assert.deepEqual(s.passives, ['toughclaws']);
+		const effects = Dex.getAbilityEffects('armoredshell'); assert(effects.has('heatproof'));
+		for (const id of ['frisk', 'steadfast', 'waterveil', 'innerfocus']) assert(!effects.has(id), id);
+		assert(Dex.abilities.get('armoredshell').desc.includes('Water attacks receive STAB'));
 	});
 	it('publishes Fire/Electric Plasma Eruption with unchanged Mega stats/passive', () => {
 		const s = Dex.species.get('typhlosionmega'); assert.deepEqual(s.types, ['Fire', 'Electric']); assert.deepEqual(s.abilities, {0:'Plasma Eruption'}); assert.deepEqual(s.passives, ['proficient']);

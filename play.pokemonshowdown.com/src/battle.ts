@@ -359,25 +359,27 @@ export class Pokemon implements PokemonDetails, PokemonHealth {
 		this.side.battle.scene.clearEffects(this);
 	}
 	rememberMove(moveName: string, pp = 1, recursionSource?: string) {
- if (toID(moveName) === 'royalcollision') moveName = 'Wave Crash';
-	if (recursionSource === this.ident) return;
-	moveName = Dex.moves.get(moveName).name;
-	if (moveName.charAt(0) === '*') return;
-	if (moveName === 'Struggle') return;
-	if (this.volatiles.transform) {
+		moveName = Dex.moves.get(moveName).name;
+		const id = toID(moveName);
+		const base = Dex.signatureFieldBases[id] || Dex.stoneMoveBases[id];
+		if (base) moveName = Dex.moves.get(base).name;
+		if (recursionSource === this.ident) return;
+		if (moveName.charAt(0) === '*') return;
+		if (moveName === 'Struggle') return;
+		if (this.volatiles.transform) {
 			// make sure there is no infinite recursion if both Pokemon are transformed into each other
 			if (!recursionSource) recursionSource = this.ident;
 			this.volatiles.transform[1].rememberMove(moveName, 0, recursionSource);
 			moveName = '*' + moveName;
 		}
-	for (const entry of this.moveTrack) {
+		for (const entry of this.moveTrack) {
 			if (moveName === entry[0]) {
 				entry[1] += pp;
 				if (entry[1] < 0) entry[1] = 0;
 				return;
 			}
 		}
-	this.moveTrack.push([moveName, pp]);
+		this.moveTrack.push([moveName, pp]);
 	}
 	rememberAbility(ability: string, isNotBase?: boolean) {
 		ability = Dex.abilities.get(ability).name;

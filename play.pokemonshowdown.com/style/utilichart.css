@@ -528,3 +528,34 @@
 .utilichart .result > a[data-entry^="pokemon|"]:is(:hover, .cur) { background: rgba(90, 155, 200, .18); }
 .dark .utilichart .result > a[data-entry^="pokemon|"] { background: transparent; text-shadow: 0 1px 2px #000; }
 .dark .utilichart .result > a[data-entry^="pokemon|"]:is(:hover, .cur) { background: rgba(110, 180, 225, .2); }
+
+.mega-move-hint, .utilichart .movenamecol .mega-move-hint, .utilichart .shortmovenamecol .mega-move-hint {
+	display: block;
+	font-size: 11px;
+	line-height: 1.2;
+	font-weight: 600;
+	color: #62438a;
+	white-space: normal;
+}
+.dark .mega-move-hint, .dark .utilichart .result .mega-move-hint { color: #e0c5ff; }
+.mega-move-hint:empty { display: none; }
+.mega-move-details > summary { width: fit-content; padding: 4px 2px; cursor: pointer; font-size: 12px; }
+.mega-move-details[hidden], .mega-move-details:not([open]) .mega-hide, .mega-move-details[open] .mega-show { display: none; }
+.mega-move-effect:not(:empty) {
+	box-sizing: border-box;
+	max-width: 632px;
+	margin-top: 4px;
+	padding: 6px 10px;
+	border-inline-start: 3px solid #946ab6;
+	background: #eee9f4;
+	color: #382c47;
+	line-height: 1.4;
+}
+.dark .mega-move-effect:not(:empty) { background: #282433; color: #f1e6fc; }
+.mega-move-effect > div + div { margin-top: 5px; }
+.setchart:has(.mega-move-hint:not(:empty)) .setcell-ability > .starter-passives { max-width: 100%; }
+.setchart:has(.mega-move-hint:not(:empty)) .setcell-ability .passive-chip {
+	height: auto;
+	white-space: normal;
+	overflow-wrap: anywhere;
+}

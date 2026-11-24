@@ -6,7 +6,7 @@ const BattleFieldTooltips = {
 			return Array.from({length: 18}, (_, i) => i);
 		}
 		const uncertain =
-			field.uncertain || (window as any).BattleFieldMoveRules?.[move.id]?.uncertain;
+			field.uncertain || (window as any).BattleFieldMoveRules?.[Dex.signatureFieldBases[move.id] || move.id]?.uncertain;
 		return Array.from(
 			{length: field.id === 'swampterrain' ? 7 : uncertain ? 5 : 1},
 			(_, i) => i
@@ -144,8 +144,9 @@ const BattleFieldTooltips = {
 		variant = 0,
 		aura?: any
 	) {
-		const rule = (window as any).BattleFieldMoveRules?.[original.id];
-		const move: any = this.clone({...rule?.base, ...original});
+		const fieldMoveID = Dex.signatureFieldBases[original.id] || original.id;
+		const rule = (window as any).BattleFieldMoveRules?.[fieldMoveID];
+		const move: any = this.clone({...rule?.base, ...original, id: fieldMoveID});
 		move.flags ||= {};
 		source = {...source, adaptiveField: field.id, effectiveWeather: () => weather};
 		target = {...target, adaptiveField: field.id, effectiveWeather: () => weather};
@@ -460,7 +461,7 @@ const BattleFieldTooltips = {
 				aciddownpour: 'Murkwater Surface',
 			},
 		};
-		const destination = destinations[fieldId]?.[move.id];
+		const destination = destinations[fieldId]?.[Dex.signatureFieldBases[move.id] || move.id];
 		return destination
 			? `field-change power bonus ×1.3 is included above; after use, the field changes to ${destination}`
 			: '';

@@ -8,6 +8,12 @@ const tips=new Function(fs.readFileSync('play.pokemonshowdown.com/js/battle-fiel
 const actor=()=>tips.pokemon(null,{speciesForme:'Mew',ability:'No Ability',item:'',status:'',hp:100,maxhp:100});
 function evaluate(field,id,weather='',variant=0){const rule=BattleFieldRules.find(f=>f.id===field);assert(rule,field);return tips.evaluate(rule,Dex.moves.get(id),actor(),actor(),weather,variant);}
 describe('Signature move field previews',()=>{
+ it('Soothing Tide receives both Underwater multipliers while retaining its signature power',()=>{
+  const r=evaluate('underwaterterrain','soothingtide'); assert.equal(r.factor,2.25); assert.equal(r.move.basePower,75); assert.equal(r.move.id,'waterpulse');
+ });
+ it('Tide Rush inherits Muddy Water field rules with its physical category',()=>{
+  const sig=evaluate('swampterrain','tiderush'),base=evaluate('swampterrain','muddywater');assert.equal(sig.move.id,'muddywater');assert.equal(sig.move.category,'Physical');assert.equal(sig.factor,base.factor);
+ });
  for(const[field,weather,factor]of [['holyterrain','',1.5],['starlightarenaterrain','',2],['starlightarenaterrain','raindance',1],['newworldterrain','',4]])it('Nostras '+field+'/'+weather+' shows exact field factor',()=>{const r=evaluate(field,'nostraswish',weather);assert.equal(r.factor,factor);assert.equal(r.move.basePower,140);});
  for(const field of ['factoryterrain','shortcircuitterrain'])it('UMD '+field+' previews both computed-category branches without exporting engine closures',()=>{
   const rule=BattleFieldRules.find(f=>f.id===field),move=Dex.moves.get('superumdmove');

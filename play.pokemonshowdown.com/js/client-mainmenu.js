@@ -1679,7 +1679,7 @@
 	var CustomCalculatorPopup = this.CustomCalculatorPopup = Popup.extend({
 		type: 'modal',
 		className: 'ps-popup custom-calculator',
-		events: {'input input': 'scenarioEdited', 'change select': 'scenarioEdited', 'change input': 'scenarioEdited', 'input [name=species]': 'searchSpecies', 'input [name=calc-field-search]': 'searchFields', 'change [name=calc-mode]': 'changeMode', 'change .calc-saved-set': 'loadCalcSavedSet'},
+		events: {'input input': 'scenarioEdited', 'change select': 'scenarioEdited', 'change input': 'calcInputChanged', 'input [name=species]': 'searchSpecies', 'input [name=calc-field-search]': 'searchFields', 'change [name=calc-mode]': 'changeMode', 'change .calc-saved-set': 'loadCalcSavedSet'},
 		initialize: function () {
 			this.scenarioRevision = 0;
 			this.pendingScenario = null;
@@ -1701,8 +1701,14 @@
 			return Popup.prototype.remove.call(this);
 		},
 		escape: function (value) { return BattleLog.escapeHTML('' + value); },
+		calcInputChanged: function (event) {
+			if (event.target.name === 'calc-move' && this.lastEditedCalcMove === event.target.value) return;
+			this.scenarioEdited(event);
+		},
 		scenarioEdited: function (event) {
 			if (event && $(event.target).hasClass('calc-form-choice')) return;
+			if (event && event.target.name === 'calc-move') this.lastEditedCalcMove = event.target.value;
+			else if (!event) this.lastEditedCalcMove = undefined;
 			this.scenarioRevision++;
 			this.pendingScenario = null;
 			this.requestId = null;
@@ -1842,7 +1848,36 @@
 		},
 		refreshCalcMoves: function () {
 			var self = this, actor = this.readActor(0), moves = actor.moves || [];
+			this.refreshPoweredSetup(actor);
 			this.$('.calc-move-shortcuts').html(moves.map(function (move) { return '<button class="button" name="chooseCalcMove" value="' + self.escape(move) + '">' + self.escape(move) + '</button>'; }).join(' '));
+		},
+		matchingCalcCrystals: function (actor, move) {
+			var species = Dex.species.get(actor.species);
+			return (this.metadata.zCrystals || []).filter(function (item) {
+				if (item.users && !item.users.includes(species.name) && !(species.isCosmeticForme && item.users.includes(species.baseSpecies))) return false;
+				return item.from ? [].concat(item.from).includes(move.name) : item.type === move.type;
+			}).sort(function (a, b) {return Number(!!b.from) - Number(!!a.from);});
+		},
+		refreshPoweredSetup: function (actor) {
+			var help = this.$('.calc-powered-help'), mode = this.$('[name=calc-powered]').val();
+			var key = JSON.stringify([mode, this.$('[name=calc-move]').val(), actor.species, actor.item]);
+			// A blur can fire change between pointerdown and click. Keep the current buttons when their inputs match.
+			if (help.data('setupKey') === key) return;
+			help.data('setupKey', key).empty();
+			if (mode === 'max') {help.text('Activate Gigantamax on the attacker and choose the base move for its signature G-Max attack.'); return;}
+			if (mode !== 'z') return;
+			var self = this, move = Dex.moves.get(this.$('[name=calc-move]').val());
+			if (!move.exists || move.isZ || move.isMax) {help.text('Choose a base move, for example Flamethrower with Firium Z.'); return;}
+			var crystals = this.matchingCalcCrystals(actor, move);
+			if (!crystals.length) {help.text('Choose a compatible held Z-Crystal for this base move.'); return;}
+			var held = Dex.items.get(actor.item).id;
+			help.text(crystals.some(function (c) {return Dex.items.get(c.name).id === held;}) ? move.name + ' is paired with ' + Dex.items.get(held).name + '. ' : 'Choose a crystal for ' + move.name + ': ');
+			crystals.forEach(function (c) {if (Dex.items.get(c.name).id !== held) help.append('<button type="button" class="button" name="equipCalcCrystal" value="' + self.escape(c.name) + '">Equip ' + self.escape(c.name) + '</button> ');});
+		},
+		equipCalcCrystal: function (name) {
+			var actor = this.readActor(0), move = Dex.moves.get(this.$('[name=calc-move]').val());
+			if (this.$('[name=calc-powered]').val() !== 'z' || !this.matchingCalcCrystals(actor, move).some(function (c) {return c.name === name;})) return;
+			this.$('.calc-actor[data-slot=0] [name=item]').val(name); this.scenarioEdited();
 		},
 		chooseCalcMove: function (move) { this.$('[name=calc-move]').val(move); this.scenarioEdited(); },
 		swapCalcActors: function () {
@@ -1903,7 +1938,7 @@
 			buf += '<p class="calc-screens"><strong>Defender screens</strong> <label><input type="checkbox" name="reflect" /> Reflect</label> <label><input type="checkbox" name="lightscreen" /> Light Screen</label> <label><input type="checkbox" name="auroraveil" /> Aurora Veil</label></p></section>';
 			buf += '<div class="calc-matchup">' + this.actorHTML(0, 'Attacker') + this.actorHTML(1, 'Defender') + '</div>';
 			buf += '<details><summary>Allies / other players</summary><p>Doubles: attacker ally and defender ally. FFA: two other foes. Defaults are Mew with No Ability.</p><div class="calc-matchup">' + this.actorHTML(2, 'Slot 3') + this.actorHTML(3, 'Slot 4') + '</div></details>';
-			buf += '<section class="calc-action" aria-label="Attack and sampling"><div class="calc-action-fields"><label>Move <input class="textbox" list="calc-list-move" autocomplete="off" name="calc-move" value="Psychic" /></label> <label>Powered move <select name="calc-powered"><option value="">Normal</option><option value="z">Z-move</option><option value="max">Max move (activate Gmax)</option></select></label><details class="calc-sampling"><summary>Advanced sampling</summary><label>Samples <select name="calc-samples"><option>8</option><option selected>32</option><option>64</option></select></label> <label>Seed <input name="calc-seed" type="number" min="1" max="2147483647" value="1"  /></label></details> </div><button type="button" class="button calc-primary" name="calculate"><strong>Calculate damage</strong></button></section><p class="calc-status" role="status">Choose Pokémon and a move, then calculate.</p><div class="calc-results" aria-live="polite"></div>';
+			buf += '<section class="calc-action" aria-label="Attack and sampling"><div class="calc-action-fields"><label>Base move <input class="textbox" list="calc-list-move" autocomplete="off" name="calc-move" value="Psychic" /></label> <label>Attack mode <select name="calc-powered"><option value="">Normal</option><option value="z">Z-move</option><option value="max">G-Max move</option></select></label><div class="calc-powered-help" aria-live="polite"></div><details class="calc-sampling"><summary>Advanced sampling</summary><label>Samples <select name="calc-samples"><option>8</option><option selected>32</option><option>64</option></select></label> <label>Seed <input name="calc-seed" type="number" min="1" max="2147483647" value="1"  /></label></details> </div><button type="button" class="button calc-primary" name="calculate"><strong>Calculate damage</strong></button></section><p class="calc-status" role="status">Choose Pokémon and a move, then calculate.</p><div class="calc-results" aria-live="polite"></div>';
 			buf += '<details><summary>Save / load setup</summary><textarea name="calc-json" rows="5" style="width:98%" aria-label="Scenario JSON"></textarea><br /><button type="button" name="exportScenario" class="button">Export scenario</button> <button type="button" name="importScenario" class="button">Import scenario</button></details><details><summary>How results work</summary><ul>';
 			this.metadata.assumptions.forEach(function (a) { buf += '<li>' + self.escape(a) + '</li>'; });
 			buf += '</ul><p>Custom type rules apply (including this engine\'s Stellar Tera behavior). These are hypothetical sets; this tool does not validate team legality. Delayed and charging moves can show zero damage for this action. Engine log and resolved forms are shown below each result.</p></details>';
@@ -2073,7 +2108,7 @@
 			var summary = this.damageSummary(main, main.normalRange || main.criticalRange);
 			var rangeLabel = main.normalRange ? 'Non-critical damage' : main.criticalRange ? 'Damage with a critical hit' : summary.label;
 			var moveType = this.resultMoveType(data);
-			var html = '<div class="calc-result-card"><span class="calc-eyebrow">DEFENDER · SAMPLED</span><div class="calc-result-head"><h3>' + this.escape(data.move) + (moveType ? ' ' + Dex.getTypeIcon(moveType) : '') + '</h3></div>' +
+			var html = '<div class="calc-result-card"><span class="calc-eyebrow">DEFENDER · SAMPLED</span><div class="calc-result-head"><h3>' + this.escape(data.poweredMove || data.move) + (moveType ? ' ' + Dex.getTypeIcon(moveType) : '') + '</h3></div>' + (data.poweredMove ? '<p>From ' + this.escape(data.move) + '</p>' : '') +
 				'<p class="calc-range-label">' + rangeLabel + '</p><div class="calc-roll-range"><strong>' + summary.percent + '</strong> ' + summary.hp + '</div>';
 			if (main.normalRange && main.criticalRange) {
 				var critical = this.damageSummary(main, main.criticalRange);
@@ -2081,8 +2116,11 @@
 			}
 			html += '<p class="calc-ko-verdict">' + this.escape(this.koVerdict(data, 1)) + '</p>';
 			if (typeof main.damagingSamples === 'number') {
-				html += '<p>No direct HP damage in ' + (data.samples - main.damagingSamples) + ' of ' + data.samples + ' uses.</p>';
-				if (main.moveRange) html += '<small>Percent of maximum HP. A KO can roll more damage than the target has left.</small>';
+				if (main.damagingSamples > 0 && main.damagingSamples < data.samples) html += '<p>Dealt direct damage in ' + main.damagingSamples + ' of ' + data.samples + ' uses.</p>';
+				if (main.moveRange) {
+					var targetHP = data.resolved && data.resolved.actors && data.resolved.actors[1] && data.resolved.actors[1].hp;
+					html += '<small>Percent of the defender’s maximum HP.' + (targetHP !== undefined && main.moveRange.max > targetHP ? ' Some rolls exceed its remaining HP.' : '') + '</small>';
+				}
 			}
 			html += '</div><h3>HP changes across all samples</h3><div style="overflow:auto"><table class="calc-result-table"><tr><th>Slot</th><th>HP removed</th><th>% max HP</th><th>Net HP loss</th><th>Sample KOs</th></tr>';
 			data.results.forEach(function (r) { html += '<tr><th>' + self.escape(r.label) + '</th><td>' + r.min + '–' + r.max + '</td><td>' + r.minPercent.toFixed(1) + '–' + r.maxPercent.toFixed(1) + '%</td><td>' + r.minNetLoss + '–' + r.maxNetLoss + '</td><td>' + r.kos + '/' + data.samples + ' (' + (100 * r.kos / data.samples).toFixed(1) + '%)</td></tr>'; });
@@ -2187,7 +2225,7 @@
 		var write = p.writeActor;
 		p.writeActor = function (index, actor) {
 			var result = write.apply(this, arguments);
-			this.$('.calc-actor[data-slot=' + index + '] .calc-move-entry').each(function (i) {this.value = (actor.moves || [])[i] || '';});
+			this.$('.calc-actor[data-slot=' + index + '] .calc-move-entry').each(function (i) {this.value = (actor.moves || [])[i] || ''; delete this.dataset.zCrystal;});
 			this.refreshActors(); return result;
 		};
 		p.refreshFieldState = function () {
@@ -2213,7 +2251,12 @@
 				actor.find('.calc-state-options').prop('hidden', !Object.keys(relevant).some(function (k) {return relevant[k];}));
 				actor.find('.calc-passives .passive-details > summary').each(function (i) {$(this).text(Dex.abilities.get((info && info.passives || [])[i]).name);});
 				actor.find('.calc-base-stat').each(function () {$(this).text((info && info.baseStats || species.baseStats || {})[$(this).attr('data-stat')] || '—');});
-				actor.find('.calc-move-entry').each(function (i) {if (document.activeElement !== this) this.value = (actor.find('[name=moves]').val() || '').split(',').map(function (m) {return m.trim();})[i] || '';});
+				var moveSlots = (actor.find('[name=moves]').val() || '').split(',');
+				var heldItem = actor.find('[name=item]').val();
+				actor.find('.calc-move-entry').each(function (i) {
+					if (document.activeElement !== this) this.value = (moveSlots[i] || '').trim();
+					self.refreshRowZ(this, species, heldItem);
+				});
 			});
 			return result;
 		};
@@ -2263,6 +2306,34 @@
 				this.$('.calc-field-state select').each(function () {this.value = state[$(this).attr('data-state')] || 0;}); this.refreshFieldState();
 			} catch (e) {this.$('.calc-status').text('Invalid scenario: ' + e.message);} finally {this.$('[name=calc-json]').val(text);}
 		};
+		p.refreshRowZ = function (input, species, heldItem) {
+			var move = Dex.moves.get(input.value);
+			var button = $(input).siblings('.calc-row-z');
+			var key = species.id + '/' + move.id;
+			if (input.dataset.zMatch !== key) delete input.dataset.zCrystal;
+			input.dataset.zMatch = key;
+			var crystals = species.exists && move.exists && !move.isZ && !move.isMax ?
+				this.matchingCalcCrystals({species:species.name}, move) : [];
+			var crystal = crystals.find(function (entry) {return toID(entry.name) === toID(heldItem);}) || crystals[0];
+			if (!crystal) delete input.dataset.zCrystal;
+			else if (input.dataset.zCrystal) input.dataset.zCrystal = crystal.name;
+			var selected = !!input.dataset.zCrystal;
+			var label = crystal ? (selected ? 'Turn off the Z-Move for ' + move.name : 'Calculate Z-' + move.name + ' with ' + crystal.name) :
+				(input.value ? 'No compatible Z-Crystal for this move' : 'Choose a move to preview its Z-Move');
+			button.prop('disabled', !crystal).attr({'aria-pressed': String(selected), 'aria-label':label, title:label});
+			if (crystal) button.attr('data-crystal', crystal.name);
+			else button.removeAttr('data-crystal');
+		};
+		p.toggleRowZ = function (position, button) {
+			if (button.disabled) return;
+			var input = $(button).siblings('.calc-move-entry')[0];
+			if (input.dataset.zCrystal) delete input.dataset.zCrystal;
+			else input.dataset.zCrystal = button.getAttribute('data-crystal');
+			var actor = $(button).closest('.calc-actor');
+			this.refreshRowZ(input, Dex.species.get(actor.find('[name=species]').val()), actor.find('[name=item]').val());
+			$(button).siblings('.calc-move-result').text('Not calculated').removeClass('calc-error').removeAttr('title');
+			this.compareMoves(position);
+		};
 		p.compareMoves = function (value) {
 			this.cancelComparison();
 			var self = this, base = this.scenario(), tasks = [];
@@ -2272,7 +2343,17 @@
 					if (!move) return;
 					if (value && value !== side + ':' + index) return;
 					var task = JSON.parse(JSON.stringify(base)); task.move = move;
-					if (side) {task.actors = [base.actors[1], base.actors[0], base.actors[3], base.actors[2]]; task.sideConditions = [base.sideConditions[1], base.sideConditions[0]];}
+					if (side) {
+						task.actors = [task.actors[1], task.actors[0], task.actors[3], task.actors[2]];
+						task.sideConditions.reverse();
+					}
+					// Each row is an independent matchup, including its hypothetical held item.
+					if (this.dataset.zCrystal) {
+						task.attackMode = 'z';
+						task.actors[0].item = this.dataset.zCrystal;
+					} else if (task.attackMode === 'z') {
+						task.attackMode = '';
+					}
 					tasks.push(Object.freeze({side:side, index:index, scenario:task, json:JSON.stringify(task), generation:self.comparisonGeneration}));
 				});
 			});
@@ -2300,7 +2381,8 @@
 					var r = data.results[1], summary = this.damageSummary(r, r.normalRange || r.criticalRange);
 					var qualifier = r.normalRange ? ' non-critical' : r.criticalRange ? ' with critical hit' : '';
 					var moveType = this.resultMoveType(data);
-					cell.removeClass('calc-error').text((moveType ? moveType + ' · ' : '') + summary.percent + qualifier + ' · ' + this.koVerdict(data, 1));
+					var crystal = task.scenario.attackMode === 'z' ? task.scenario.actors[0].item : '';
+					cell.removeClass('calc-error').text((data.poweredMove ? data.poweredMove + (crystal ? ' (' + crystal + ')' : '') + ' · ' : '') + (moveType ? moveType + ' · ' : '') + summary.percent + qualifier + ' · ' + this.koVerdict(data, 1));
 					cell.attr('title', 'One sampled move execution at configured current HP, including misses, critical hits, multi-hit and survival effects. Not exact KO odds or a second-turn prediction.' + (data.powerDistribution ? ' ' + data.powerDistribution.map(function (branch) {return branch.power + ' BP: ' + Math.round(branch.probability * 100) + '%';}).join('; ') + '; sampled range may omit a branch.' : ''));
 					this.comparisonResults[key] = data;
 					this.pendingScenario = {json:JSON.stringify(this.scenario()), revision:this.scenarioRevision}; receive.call(this, data);
@@ -2334,7 +2416,7 @@
 				['rageFistBonus', 'threadShelterGuard', 'silentFlightSpent', 'buriedTrioSpent', 'elasticBellySpent', 'feedbackMarked'].forEach(function (key) {actor.find('[name=' + key + ']').closest('label').appendTo(special.find('.calc-fields'));});
 				actor.find('.calc-advanced').prop('open', true); actor.find('[name=moves]').closest('label').hide();
 				actor.find('.calc-stats tr').each(function (i) {if (!i)$(this).children().first().after('<th>Base</th>'); else {var stat = ['hp', 'atk', 'def', 'spa', 'spd', 'spe', 'accuracy', 'evasion'][i - 1]; $(this).children().first().after('<td class="calc-base-stat" data-stat="' + stat + '"></td>');}});
-				if (slot < 2) {var rows = '<section class="calc-comparison-moves"><h3>Moves → ' + (slot ? 'Pokémon 1' : 'Pokémon 2') + '</h3>'; for (var i = 0; i < 4; i++)rows += '<div class="calc-comparison-row"><input class="textbox calc-move-entry" list="calc-list-move" aria-label="Pokémon ' + (slot + 1) + ' move ' + (i + 1) + '" placeholder="Move ' + (i + 1) + '" /><button class="button" name="compareMoves" value="' + slot + ':' + i + '" aria-label="Calculate move ' + (i + 1) + ' from Pokémon ' + (slot + 1) + '">Calc</button><output class="calc-move-result" data-result="' + i + '">Not calculated</output></div>'; actor.find('.calc-advanced').after(rows + '</section>');}
+				if (slot < 2) {var rows = '<section class="calc-comparison-moves"><h3>Moves → ' + (slot ? 'Pokémon 1' : 'Pokémon 2') + '</h3>'; for (var i = 0; i < 4; i++)rows += '<div class="calc-comparison-row"><input class="textbox calc-move-entry" list="calc-list-move" aria-label="Pokémon ' + (slot + 1) + ' move ' + (i + 1) + '" placeholder="Move ' + (i + 1) + '" /><button type="button" class="button calc-row-z" name="toggleRowZ" value="' + slot + ':' + i + '" aria-pressed="false">Z</button><button class="button" name="compareMoves" value="' + slot + ':' + i + '" aria-label="Calculate move ' + (i + 1) + ' from Pokémon ' + (slot + 1) + '">Calc</button><output class="calc-move-result" data-result="' + i + '">Not calculated</output></div>'; actor.find('.calc-advanced').after(rows + '</section>');}
 			});
 			// Explicit defaults make both directions useful, while imported sets keep their moves.
 			[0, 1].forEach(function (i) {var actor = self.$('.calc-actor[data-slot=' + i + ']'); if (!actor.find('[name=moves]').val())actor.find('[name=moves]').val(i ? 'Psychic, Shadow Ball, Aura Sphere, Ice Beam' : 'Psychic, Thunderbolt, Ice Beam, Flamethrower');});
@@ -2476,7 +2558,8 @@
 			var extra = $('<details class="calc-extra-conditions"><summary>Screens, team effects and rooms</summary></details>').appendTo(conditions);
 			conditions.find('.calc-sides,.calc-room-controls').appendTo(extra);
 			this.$('.calc-single-attack > summary .calc-action-fields').appendTo(this.$('.calc-single-attack'));
-			this.$('.calc-single-attack').prop('open', false);
+			this.$('.calc-single-attack > summary').text('Calculate one attack');
+			this.$('.calc-single-attack').prop('open', true);
 			this.$('.calc-conditions > small').hide(); this.updateConditionSummary();
 			return result;
 		};
@@ -2563,7 +2646,7 @@
 		p.applyCalcPick = function (value) {var parts = value.split(':'), slot = Number(parts.shift()), kind = parts.shift(), key = parts.join(':'), actor; try {if (kind === 'set') {var r = this.savedCalcSets[Number(key)]; if (!r) return; actor = JSON.parse(JSON.stringify(r.set));} else {var info = this.metadata.species.find(function (s) {return s.name === key;}); if (!info) return; actor = this.readActor(slot); actor.species = info.name; actor.ability = info.abilities[0]; actor.boosts = {}; actor.status = ''; actor.gimmick = ''; actor.hpPercent = 100; ['rageFistBonus', 'threadShelterGuard', 'silentFlightSpent', 'buriedTrioSpent', 'elasticBellySpent', 'feedbackMarked', 'voidCrossingCurse'].forEach(function (k) {actor[k] = k === 'rageFistBonus' ? 0 : false;});} this.writeActor(slot, actor); this.closeCalcPicker(slot); this.$('.calc-status').text(kind === 'set' ? 'Saved set loaded. Battle conditions retained.' : 'Species changed. Moves, item and spread retained; ability and battle state reset. Check move eligibility.');} catch (err) {this.$('.calc-status').addClass('calc-error').text(err.message);}};
 		p.selectValidCalcAbility = function (e) {$(e.target).closest('.calc-actor').find('[name=ability]').val(e.target.value); this.scenarioEdited();};
 		var refresh = p.refreshActors; p.refreshActors = function () {var result = refresh.apply(this, arguments), self = this; this.$('.calc-actor').each(function () {var a = $(this), id = toID(a.find('[name=species]').val()), info = (self.metadata.species || []).find(function (s) {return toID(s.name) === id;}), current = a.find('[name=ability]').val(), choices = Object.values(info && info.abilities || {}); a.find('.calc-valid-ability').html(choices.map(function (name) {var slot = Object.keys(info.abilities).find(function (k) {return info.abilities[k] === name;}); return '<option value="' + self.escape(name) + '">' + self.escape(name + (slot === 'S' ? ' · Event' : slot === 'H' ? ' · Hidden' : '')) + '</option>';}).join('') + (!choices.includes(current) ? '<option value="' + self.escape(current) + '">' + self.escape(current || 'No Ability') + ' · Override</option>' : '')).val(current); var ability = Dex.abilities.get(current); a.find('.calc-ability-summary').text(ability.shortDesc || ability.desc || 'No description available.').attr('title', ability.desc || ability.shortDesc || ''); a.find('.calc-ability-slots,.calc-component-details,.calc-form-label').hide();}); return result;};
-		var render = p.renderCalculator; p.renderCalculator = function () {var result = render.apply(this, arguments); this.$el.addClass('calc-picker-workspace calc-reference'); this.$('.calc-actor').each(function () {var a = $(this), slot = a.attr('data-slot'); a.find('.calc-identity').before('<button type="button" class="button calc-pick-open" name="openCalcPicker" value="' + slot + '">Choose Pokémon / saved set</button><section class="calc-picker" aria-label="Choose Pokémon or saved set" hidden><div class="calc-picker-heading"><strong>Choose Pokémon / saved set</strong><button class="button" name="closeCalcPicker" value="' + slot + '">Cancel</button></div><label>Search<input class="textbox calc-pick-query" placeholder="Species, form, team or set name" autocomplete="off" /></label><label>Show<select class="calc-pick-source"><option value="all">Pokémon + my saved sets</option><option value="sets">My teams and saved sets</option><option value="species">Pokémon / forms only</option></select></label><small>Uses teams loaded on this device and your local saved builds.</small><p class="calc-pick-count" role="status"></p><div class="calc-pick-results"></div></section>'); a.find('.calc-load-details').hide(); a.find('[name=species]').closest('label').hide(); var label = a.find('[name=ability]').closest('label'), box = $('<div class="calc-ability-picker"><label>Ability<select class="calc-valid-ability" aria-label="Species ability"></select></label><p class="calc-ability-summary"></p><details class="calc-ability-override"><summary>Override ability for a hypothetical matchup</summary></details></div>'); label.before(box); box.find('details').append(label); a.find('.calc-advanced').prop('open', true).insertBefore(a.children('.calc-fields')); a.find('.calc-actor-options > summary').text('Gender and transformation'); ['level', 'hpPercent', 'status'].forEach(function (name) {a.find('[name=' + name + ']').closest('label').appendTo(a.children('.calc-fields'));}); a.find('[name=nature]').closest('label').prependTo(a.children('.calc-fields')); a.find('[name=teraType]').closest('label').appendTo(a.find('.calc-actor-options > .calc-fields')); a.find('.calc-accuracy-extra').appendTo(a.find('.calc-actor-options')); a.find('.calc-comparison-moves').insertAfter(a.children('.calc-fields'));}); this.$('.calc-intro').text('Sampled custom-engine results, including misses and critical hits. KO uses current HP; sample frequencies are not exact odds or guarantees.'); this.$('.calc-conditions h3').text('Field'); this.$('.calc-extra-conditions').prop('open', true); this.refreshActors(); return result;};
+		var render = p.renderCalculator; p.renderCalculator = function () {var result = render.apply(this, arguments); this.$el.addClass('calc-picker-workspace calc-reference'); this.$('.calc-actor').each(function () {var a = $(this), slot = a.attr('data-slot'); a.find('.calc-identity').before('<button type="button" class="button calc-pick-open" name="openCalcPicker" value="' + slot + '">Choose Pokémon / saved set</button><section class="calc-picker" aria-label="Choose Pokémon or saved set" hidden><div class="calc-picker-heading"><strong>Choose Pokémon / saved set</strong><button class="button" name="closeCalcPicker" value="' + slot + '">Cancel</button></div><label>Search<input class="textbox calc-pick-query" placeholder="Species, form, team or set name" autocomplete="off" /></label><label>Show<select class="calc-pick-source"><option value="all">Pokémon + my saved sets</option><option value="sets">My teams and saved sets</option><option value="species">Pokémon / forms only</option></select></label><small>Uses teams loaded on this device and your local saved builds.</small><p class="calc-pick-count" role="status"></p><div class="calc-pick-results"></div></section>'); a.find('.calc-load-details').hide(); a.find('[name=species]').closest('label').hide(); var label = a.find('[name=ability]').closest('label'), box = $('<div class="calc-ability-picker"><label>Ability<select class="calc-valid-ability" aria-label="Species ability"></select></label><p class="calc-ability-summary"></p><details class="calc-ability-override"><summary>Override ability for a hypothetical matchup</summary></details></div>'); label.before(box); box.find('details').append(label); a.find('.calc-advanced').prop('open', true).insertBefore(a.children('.calc-fields')); a.find('.calc-actor-options > summary').text('Gender and transformation'); ['level', 'hpPercent', 'status'].forEach(function (name) {a.find('[name=' + name + ']').closest('label').appendTo(a.children('.calc-fields'));}); a.find('[name=nature]').closest('label').prependTo(a.children('.calc-fields')); a.find('[name=teraType]').closest('label').appendTo(a.find('.calc-actor-options > .calc-fields')); a.find('.calc-accuracy-extra').appendTo(a.find('.calc-actor-options')); a.find('.calc-comparison-moves').insertAfter(a.children('.calc-fields'));}); this.$('.calc-intro').text('Tap Z beside a move to calculate it with a matching crystal. Tap again to turn Z off.'); this.$('.calc-conditions h3').text('Field'); this.$('.calc-extra-conditions').prop('open', true); this.refreshActors(); return result;};
 	});
 })();
 

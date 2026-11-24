@@ -113,7 +113,7 @@ describe('Plasma Eruption client parity', () => {
 		assert.equal(s.abilities[0], 'Plasma Eruption'); assert.deepEqual(Array.from(s.passives), ['proficient']);
 		assert.equal(s.baseStats.atk, 127); assert.equal(s.baseStats.spa, 137);
 		assert(Dex.abilities.get('plasmaeruption').desc.includes('core discharge: +60% power'));
-		assert(Dex.abilities.get('plasmaeruption').desc.includes('first +1 Sp. Atk, second +1 Speed'));
+		assert(Dex.abilities.get('plasmaeruption').desc.includes('first +1 to the higher of Attack and Sp. Atk (Sp. Atk on ties), second +1 Speed'));
 		assert(Dex.abilities.get('plasmaeruption').desc.includes('75% of the damage actually dealt'));
 	});
 	it('shows no baseline bonus and displays the ready-core 60% bonus', () => {

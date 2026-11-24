@@ -116,6 +116,15 @@ function block(kind, marker, code) {
 	source = source.replace(marker, begin + '\n' + code + '\n' + end + '\n' + marker);
 }
 const json = data => JSON.stringify(data, null, '\t').replace(/([^\s,{\[])(?=\n\t*[}\]])/g, '$1,');
+const formerMoves = require(path.join(server, 'dist/data/form-move-aliases')).FormerFormMoves;
+block('FORM MOVE ALIASES', 'const Dex = new class', 'const FORMER_FORM_MOVES: Partial<Record<string, string>> = ' + json(formerMoves) + ';');
+const stoneSignatures = require(path.join(server, 'dist/data/stone-signatures')).StoneSignatures;
+snapshot.stoneMoveRoutes = Object.entries(stoneSignatures).map(([form, signature]) => {
+	const species = Dex.species.get(form);
+	return {form, species: Dex.species.get(species.battleOnly).id, stone: Dex.items.get(species.requiredItem).id,
+		base: signature.base, move: Dex.moves.get(signature.name).id};
+});
+block('STONE MOVE ROUTES', 'const Dex = new class', 'const STONE_MOVE_ROUTES = ' + json(snapshot.stoneMoveRoutes) + ';');
 snapshot.learnsetExclusions = require(path.join(server, 'dist/sim/dex-species')).Gen9MoveLearnsetExclusions;
 block('LEARNSET EXCLUSIONS', 'const CUSTOM_LEARNSET_REMOVAL_IDS =', `const SERVER_GEN9_LEARNSET_EXCLUSIONS: {[id: string]: readonly string[]} = ${json(snapshot.learnsetExclusions)};`);
 block('GUARDIAN CONTEXT', 'const CUSTOM_ABILITY_UPDATE_IDS =', `const GUARDIAN_LEGACY_DESCRIPTIONS: {[id: string]: {desc: string; shortDesc: string}} = ${json(require(path.join(server, 'dist/data/base-guardian-reworks')).GuardianLegacyDescriptions)};`);

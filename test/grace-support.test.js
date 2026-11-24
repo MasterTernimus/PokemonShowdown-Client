@@ -12,8 +12,8 @@ describe('Grace support descriptions', () => {
 	it('shows Fortunate Wing ally support and its retained critical-hit reward', () => {
 		const ability = Dex.abilities.get('fortunatewing');
 		assert(ability.desc.includes('Active allies gain Serene Grace'));
-		assert(ability.desc.includes('5 turns of Safeguard'));
-		assert(ability.shortDesc.includes('allies gain Serene Grace'));
+		assert.match(ability.desc, /(?:5|five) turns of Safeguard/i);
+		assert.match(ability.shortDesc, /allies gain Serene Grace/i);
 	});
 	it('shows Void Omen confusion immunity and its separate charge allowance', () => {
 		const ability = Dex.abilities.get('voidomen');

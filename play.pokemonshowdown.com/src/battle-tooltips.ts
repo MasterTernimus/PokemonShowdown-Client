@@ -739,7 +739,23 @@ class BattleTooltips {
 	}
 
 	showMoveTooltip(move: Move, isZOrMax: string, pokemon: Pokemon, serverPokemon: ServerPokemon, gmaxMove?: Move) {
-		if (move.id === 'wavecrash' && !isZOrMax && new ModifiableValue(this.battle, pokemon, serverPokemon).tryAbility('Monarch of Ice')) move = this.battle.dex.moves.get('royalcollision');
+		if (!isZOrMax && move.id === 'extremespeed' && toID(pokemon.getSpeciesForme()) === 'arcaninebattlebond' &&
+			new ModifiableValue(this.battle, pokemon, serverPokemon).tryAbility('Sacred Bond')) {
+			move = this.battle.dex.moves.get('sacredrush');
+		}
+		if (!isZOrMax && move.id === 'dualchop' && toID(pokemon.getSpeciesForme()) === 'garchompbattlebond' &&
+			new ModifiableValue(this.battle, pokemon, serverPokemon).tryAbility('Apex Bond')) {
+			move = this.battle.dex.moves.get('apexcleave');
+		}
+		if (!isZOrMax && move.id === 'watershuriken' && toID(pokemon.getSpeciesForme()) === 'greninjaash' &&
+			new ModifiableValue(this.battle, pokemon, serverPokemon).tryAbility('Shadow Bond')) {
+			move = this.battle.dex.moves.get('shadowshuriken');
+		}
+		if (!isZOrMax) {
+			const signature = Dex.megaMoveConversions[move.id]?.[toID(pokemon.getSpeciesForme())];
+			if (signature) move = this.battle.dex.moves.get(signature);
+		}
+		if (move.id === 'wavecrash' && !isZOrMax && new ModifiableValue(this.battle, pokemon, serverPokemon).tryAbility('Monarch of Ice')) move = this.battle.dex.moves.get('crowncrash');
 		const naturePowerPreview = move.id === 'naturepower' && isZOrMax !== 'zmove' && isZOrMax !== 'maxmove';
 		if (naturePowerPreview) move = BattleTooltips.getNaturePowerMove(this.battle);
 		const gardenStage = [1, 2, 3, 4, 5].find(stage => this.battle.hasPseudoWeather(`Flower Garden ${stage}`)) || 0;
@@ -1632,7 +1648,7 @@ class BattleTooltips {
 			const airborneAbility = passiveEffects.has('levitate' as ID) || passiveEffects.has('elevate' as ID) ||
 				(!Dex.getAbilityComponentExclusions(ability, passives).includes('levitate') &&
 				['levitate', 'elevate', 'solaridol', 'lunaridol', 'burningcrown',
-					'astralwitchcraft', 'voidcraft', 'phantombarrage', 'silentflight'].some(id => fieldAbilityEffects.has(id as ID)));
+					'astralwitchcraft', 'phantombarrage', 'silentflight'].some(id => fieldAbilityEffects.has(id as ID)));
 			const gravityExempt = ability === 'voidvoice' ||
 				(this.battle.dex.species.get(serverPokemon.speciesForme).id === 'gardevoir' && ability === 'voidveil');
 			const grounded = clientPokemon ? clientPokemon.isGrounded(serverPokemon) :
@@ -2035,7 +2051,7 @@ class BattleTooltips {
 				break;
 			}
 		}
-		if (move.id === 'terrainpulse' && pokemon.isGrounded(serverPokemon)) {
+		if (move.id === 'terrainpulse' && (this.battle.gen === 9 || pokemon.isGrounded(serverPokemon))) {
 			if (this.battle.hasPseudoWeather('Electric Terrain')) {
 				moveType = 'Electric';
 			} else if (this.battle.hasPseudoWeather('Grassy Terrain')) {
@@ -2044,6 +2060,8 @@ class BattleTooltips {
 				moveType = 'Fairy';
 			} else if (this.battle.hasPseudoWeather('Psychic Terrain')) {
 				moveType = 'Psychic';
+			} else if (this.battle.gen === 9 && this.battle.hasPseudoWeather('Rainbow Terrain')) {
+				moveType = 'Dragon';
 			}
 		}
 		if (move.id === 'terablast' && pokemon.terastallized) {
@@ -2145,7 +2163,7 @@ class BattleTooltips {
 			'swift', 'venamskiss', 'firepledge', 'waterpledge', 'grasspledge',
 			'photongeyser', 'lightthatburnsthesky', 'radiantassault', 'roaroftime', 'spacialrend',
 			'shadowforce', 'veeveevolley', 'blastburn', 'frenzyplant', 'hydrocannon', 'snipeshot',
-			'watershuriken', 'kaboom', 'corrosivestrike', 'feverpitch', 'spectralscream', 'barbedweb', 'bunrakubeatdown', 'lastrespects', 'sheercold', 'queensgambit', 'winddance', 'timeblade', 'crestcleave', 'swarmsnare', 'wisteriamaelstrom', 'airstreamassault', 'dragonrend', 'sirenswrath', 'blacktestament', 'shockdoctrine', 'coldshoulder', 'solarpledge', 'lunarpledge', 'rebelanthem', 'laurellash',
+			'cometjab', 'omenslash', 'watershuriken', 'kaboom', 'corrosivestrike', 'feverpitch', 'spectralscream', 'barbedweb', 'bunrakubeatdown', 'lastrespects', 'sheercold', 'queensgambit', 'winddance', 'timeblade', 'crestcleave', 'swarmsnare', 'wisteriamaelstrom', 'airstreamassault', 'dragonrend', 'sirenswrath', 'blacktestament', 'shockdoctrine', 'coldshoulder', 'solarpledge', 'lunarpledge', 'rebelanthem', 'laurellash',
 		].includes(move.id);
 		if (physicalTie || specialTie || (move.id === 'aurasphere' && value.tryAbility('Aura Sight')) || move.id === 'terablast' && pokemon.terastallized ||
 			move.id === 'terastarstorm' && pokemon.terastallized && pokemon.speciesForme === 'Terapagos-Stellar') {
@@ -2195,7 +2213,11 @@ class BattleTooltips {
 		return '';
 	}
 	getMoveAccuracy(move: Move, value: ModifiableValue, target?: Pokemon) {
-		if (['dragonrush', 'stoneedge'].includes(move.id) && value.tryAbility('Pyrous Dominion')) { move = {
+		if (move.id === 'ruinedge' && value.effectiveWeather() === 'sandstorm') {
+			value.reset(0, true);
+			return value;
+		}
+		if (['dragonrush', 'stoneedge'].includes(Dex.signatureFieldBases[move.id] || move.id) && value.tryAbility('Pyrous Dominion')) { move = {
 			...move, accuracy: 100};
 		}
 		value.reset(move.accuracy === true ? 0 : move.accuracy, true);
@@ -2470,12 +2492,13 @@ class BattleTooltips {
 		if (!fieldPower && move.id === 'psyblade' && this.battle.hasPseudoWeather('Electric Terrain')) {
 			value.modify(1.5, 'Electric Terrain');
 		}
-		if (!fieldPower && move.id === 'terrainpulse' && pokemon.isGrounded(serverPokemon)) {
+		if (!fieldPower && move.id === 'terrainpulse' && (this.battle.gen === 9 || pokemon.isGrounded(serverPokemon))) {
 			if (
 				this.battle.hasPseudoWeather('Electric Terrain') ||
 				this.battle.hasPseudoWeather('Grassy Terrain') ||
 				this.battle.hasPseudoWeather('Misty Terrain') ||
-				this.battle.hasPseudoWeather('Psychic Terrain')
+				this.battle.hasPseudoWeather('Psychic Terrain') ||
+				(this.battle.gen === 9 && this.battle.hasPseudoWeather('Rainbow Terrain'))
 			) {
 				value.modify(2, 'Terrain Pulse boost');
 			}
@@ -2621,6 +2644,7 @@ class BattleTooltips {
 		if (value.value <= value.technicianThreshold()) {
 			value.abilityModify(1.5, "Technician");
 		}
+		if ((move.flags as any).kick) value.abilityModify(1.1, 'Tripwire Kick');
 		if ((move.flags as any).kick && !value.abilityModify(1.4, 'Striker')) value.abilityModify(1.4, 'Long Stride');
 		if (moveType === 'Grass' || move.flags.slicing) value.abilityModify(1.3, 'Canopy Mastery');
 		if ((move.flags as any).kick) value.abilityModify(1.3, 'Blaze Mastery');
@@ -2635,7 +2659,7 @@ class BattleTooltips {
 		if (!move.isZ && !move.isMax && ['bodyslam', 'heavyslam'].includes(move.id)) { value.abilityModify(1.5,
 			'Leviathan Wake');
 		}
-		if (move.type === 'Normal' && moveType !== 'Normal') value.abilityModify(1.5, 'Seasonal Stride');
+		if (move.type === 'Normal' && moveType !== 'Normal') value.abilityModify(1.2, 'Seasonal Stride');
 		if (move.category !== 'Status' && value.tryAbility('Relentless Hunt')) {
 			const huntPower = ['dragonsdenterrain', 'fairytaleterrain',
 				'rockyterrain', 'bigtopterrain', 'mountainterrain', 'snowymountainterrain', 'coldeclipseterrain']
@@ -2678,7 +2702,8 @@ class BattleTooltips {
 		if (!drillProfile && move.flags['slicing'] && !this.battle.hasPseudoWeather('Cold Eclipse Terrain')) {
 			value.abilityModify(1.5, "Sharpness");
 		}
-		if ((move.flags['slicing'] || move.id === 'steelwing') && (!move.flags.slicing || !value.tryAbility('Sharpness')) &&
+		if ((move.flags['slicing'] || (Dex.signatureFieldBases[move.id] || move.id) === 'steelwing') &&
+			(!move.flags.slicing || !value.tryAbility('Sharpness')) &&
 			!this.battle.hasPseudoWeather('Cold Eclipse Terrain')) {
 			value.abilityModify(1.5, 'Imperial Edge');
 		}
@@ -2852,7 +2877,9 @@ class BattleTooltips {
 		}
 
 		if (fieldPower && move.category !== 'Status') {
-			const reason = fieldPower.field.name;
+			const reason = move.id === 'terrainpulse' && fieldPower.aura ?
+				[fieldPower.field.id ? fieldPower.field.name : '', fieldPower.aura.name].filter(Boolean).join(' + ') :
+				fieldPower.field.name;
 			if (fieldPower.min !== fieldPower.max) {
 				if (fieldPower.field.id === 'watersurfaceterrain' && move.id === 'sludgewave') {
 					value.setRange(Math.floor(value.value * fieldPower.min),

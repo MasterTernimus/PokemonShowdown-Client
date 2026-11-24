@@ -18,7 +18,7 @@ describe('Roster list imports', () => {
 		assert.deepEqual(result.unknown, []);
 	});
 	it('does not add disabled Mega forms', () => {
-		assert(!roster.rosterExpandedSpecies('empoleon').includes('empoleonmegax'));
+		assert(!roster.rosterExpandedSpecies('mightyena').includes('mightyenamega'));
 		assert(!roster.rosterExpandedSpecies('hydreigon').includes('hydreigonmegax'));
 	});
 	it('reports unknown names without converting them into entries', () => {

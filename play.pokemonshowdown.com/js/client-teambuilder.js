@@ -40,6 +40,7 @@
 			}
 		},
 		events: {
+			'input .setcol-moves input': function (event) { this.updateMoveHint(event.currentTarget); },
 			'input .roster-species-search': 'searchRosterSpecies',
 			'input .roster-import-text, .roster-import-name': 'cancelRosterImport',
 			'change .roster-profile-select': 'rosterProfileChange',
@@ -1378,11 +1379,15 @@
 
 			// moves
 			if (!set.moves) set.moves = [];
-			buf += '<div class="setcol setcol-moves"><div class="setcell"><label>Moves</label>';
-			buf += '<input type="text" name="move1" class="textbox chartinput" value="' + BattleLog.escapeHTML(set.moves[0]) + '" autocomplete="off" /></div>';
-			buf += '<div class="setcell"><input type="text" name="move2" class="textbox chartinput" value="' + BattleLog.escapeHTML(set.moves[1]) + '" autocomplete="off" /></div>';
-			buf += '<div class="setcell"><input type="text" name="move3" class="textbox chartinput" value="' + BattleLog.escapeHTML(set.moves[2]) + '" autocomplete="off" /></div>';
-			buf += '<div class="setcell"><input type="text" name="move4" class="textbox chartinput" value="' + BattleLog.escapeHTML(set.moves[3]) + '" autocomplete="off" /></div>';
+			buf += '<div class="setcol setcol-moves">';
+			for (var slot = 0; slot < 4; slot++) {
+				var move = set.moves[slot] || '';
+				var hint = Dex.getMegaMoveHint(move, set, this.curTeam.dex);
+				buf += '<div class="setcell">' + (slot ? '' : '<label>Moves</label>') +
+					'<input type="text" name="move' + (slot + 1) + '" class="textbox chartinput" value="' +
+					BattleLog.escapeHTML(move) + '" autocomplete="off" /><small class="mega-move-hint">' +
+					BattleLog.escapeHTML(hint) + '</small></div>';
+			}
 			buf += '</div>';
 
 			// stats
@@ -1410,8 +1415,32 @@
 			}
 			buf += '</button></div></div>';
 
-			buf += '</div></li>';
+			var effects = this.renderMegaMoveEffect(set);
+			buf += '</div><details class="mega-move-details"' + (effects ? '' : ' hidden') +
+				'><summary><span class="mega-show">Show Mega moves</span><span class="mega-hide">Hide Mega moves</span></summary>' +
+				'<div class="mega-move-effect">' + effects + '</div></details></li>';
 			return buf;
+		},
+
+		renderMegaMoveEffect: function (set) {
+			var dex = this.curTeam.dex;
+			var options = Dex.getStoneMoveOptions(set, dex);
+			if (options.length) {
+				var selected = this.currentFormPreview && this.currentFormPreview(set);
+				if (selected && Dex.getStoneMoveOptions({species: selected.name}, dex).length) {
+					options = Dex.getStoneMoveOptions({species: selected.name}, dex);
+				}
+				return options.map(function (option) {
+					return '<div><strong>' + BattleLog.escapeHTML(option.base + ' · ' + option.label) +
+						'</strong><br />' + BattleLog.escapeHTML(Dex.getMegaMoveEffect(option.move)) + '</div>';
+				}).join('');
+			}
+			return (set.moves || []).map(function (name) {
+				var preview = Dex.getMegaMovePreview(name, set, dex);
+				if (!preview) return '';
+				return '<div><strong>' + BattleLog.escapeHTML(dex.moves.get(name).name + ' · ' + preview.label) +
+					'</strong><br />' + BattleLog.escapeHTML(Dex.getMegaMoveEffect(preview.move)) + '</div>';
+			}).join('');
 		},
 
 		saveImport: function () {
@@ -3631,6 +3660,9 @@
 				return true;
 			}
 		},
+		updateMoveHint: function (input) {
+			$(input).next('.mega-move-hint').text(Dex.getMegaMoveHint(input.value, this.curSet, this.curTeam.dex));
+		},
 		chartSet: function (val, selectNext) {
 			var inputName = this.curChartName;
 			var input = this.$('input[name=' + inputName + ']');
@@ -3641,7 +3673,12 @@
 				this.setPokemon(val, selectNext);
 				break;
 			case 'item':
+				var itemChanged = toID(this.curSet.item) !== toID(val);
 				this.curSet.item = val;
+				if (itemChanged && Dex.getStoneMoveOptions(this.curSet, this.curTeam.dex).length && !this.curSet.moves.some(Boolean)) {
+					DexSearch.equipNewSetMegaMove(this.curSet, this.curTeam.format || 'gen9', this.curTeam.dex);
+					this.$('input[name=move1]').val(this.curSet.moves[0] || '');
+				}
 				this.updatePokemonSprite();
 				if (selectNext) this.$(this.$('input[name=ability]').length ? 'input[name=ability]' : 'input[name=move1]').select();
 				break;
@@ -3687,6 +3724,18 @@
 				this.curSet.moves[3] = val;
 				this.chooseMove(val);
 				break;
+			}
+			if (inputName === 'item') {
+				var room = this;
+				this.$('.setcol-moves input').each(function () { room.updateMoveHint(this); });
+			} else if (/^move[1-4]$/.test(inputName)) {
+				this.updateMoveHint(input[0]);
+			}
+			if (inputName === 'item' || /^move[1-4]$/.test(inputName)) {
+				var effects = this.renderMegaMoveEffect(this.curSet);
+				var panel = this.$('.mega-move-details').prop('hidden', !effects);
+				if (!effects) panel.prop('open', false);
+				panel.find('.mega-move-effect').html(effects);
 			}
 			this.save();
 		},
@@ -3825,6 +3874,7 @@
 		},
 		setPokemon: function (val, selectNext) {
 			var set = this.curSet;
+			var newMember = !set.species && !(set.moves || []).some(Boolean);
 			var species = this.curTeam.dex.species.get(val);
 			if (!species.exists || set.species === species.name) {
 				if (selectNext) this.$('input[name=item]').select();
@@ -3871,6 +3921,7 @@
 			set.ability = species.abilities['0'];
 
 			set.moves = [];
+			if (newMember) DexSearch.equipNewSetMegaMove(set, this.curTeam.format || 'gen9', this.curTeam.dex);
 			set.evs = {};
 			set.ivs = {};
 			set.nature = '';
@@ -4196,10 +4247,11 @@
 		if (data.teamProfiles) Object.keys(data.teamProfiles).forEach(function (key) {if (!keys.has(key)) delete data.teamProfiles[key];});
 		return records;
 	};
-	proto.saveToolsData = function (data, callback, savedProfile) {
+	proto.saveToolsData = function (data, callback, savedProfile, roster) {
 		var key = T.teamKey(this.curTeam), self = this, editRevision = this.nicknameEditRevision;
 		if (key) {data.teamProfiles = data.teamProfiles || {}; data.teamProfiles[key] = {id:data.selectedNickname, auto:data.autoNickname};}
 		var next = Object.assign({}, Storage.prefs.pendingData || Storage.prefs.data);
+		if (roster) next.rosterprofiles = roster;
 		next.pokemontools = T.clone(data); next.teamtoolbindings = this.teamToolState(next.pokemontools);
 		if (savedProfile) {next.nicknamedrafts = Object.assign({}, next.nicknamedrafts); delete next.nicknamedrafts[savedProfile];}
 		this.toolsPendingData = next.pokemontools; this.toolsSaveError = ''; this.toolsSaving = true;
@@ -4387,7 +4439,7 @@
 		var draft = profile && (Storage.prefs('nicknamedrafts') || {})[profile.id];
 		html += '<section class="tools-panel library-names"><header class="library-section-heading"><div><h3>Name profiles</h3><p>Save nicknames and optional appearance rules.</p></div></header><section class="library-step"><h4><span class="library-step-number">1</span> Choose a profile</h4><div class="library-profile-picker"><label>Name profile<select class="nickname-profile-choice"><option value="">Choose a profile…</option>';
 		data.nicknames.forEach(function (p) {html += '<option value="' + escape(p.id) + '"' + (data.selectedNickname === p.id ? ' selected' : '') + '>' + escape(p.name) + '</option>';});
-		html += '</select></label>' + button('newNicknameProfile', 'New profile') + '</div>';
+		html += '</select></label>' + button('newNicknameProfile', 'New profile') + (this.curTeam && (this.curSetList || []).some(function (set) {return !!set.species;}) ? button('createTeamNameProfile', 'Create from this team') : '') + '</div>';
 		if (profile) html += '<label class="library-check"><input type="checkbox" class="auto-nickname"' + (data.autoNickname ? ' checked' : '') + ' /> Use for newly added Pokémon</label><details class="library-secondary"><summary>Manage profile</summary><div class="library-actions">' + button('renameToolEntry', 'Rename', 'nickname:' + profile.id) + button('duplicateToolEntry', 'Duplicate', 'nickname:' + profile.id) + button('deleteToolEntry', 'Delete', 'nickname:' + profile.id) + '</div></details>';
 		else html += '<div class="library-empty"><p>Create a profile, then add Pokémon and their nicknames. Your team stays unchanged until you preview and apply.</p></div>';
 		html += '</section>';
@@ -5868,8 +5920,54 @@ function renderStarterPassives(species) {
 		var query = String(this.$('.nickname-search').val() || '').toLowerCase(), teamOnly = this.$('.nickname-team-only').prop('checked'), ids = new Set((this.curSetList || []).map(function (s) {return T.id(s.species);}));
 		this.$('.nickname-row').not('.nickname-head').each(function () {var row = $(this), species = String(row.find('.nickname-species').val()), name = String(row.find('.nickname-value').val()); row.toggle(!Dex.isSpeciesHidden(species) && (species + ' ' + name).toLowerCase().includes(query) && (!teamOnly || ids.has(T.id(species))));});
 	};
+	T.namesFromTeam = function (sets) {
+		var members = new Set(), bySpecies = Object.create(null), rows = [];
+		for (var set of sets) {
+			if (!set.species) continue;
+			var species = Dex.species.get(set.species), name = (set.name || '').trim();
+			if (!species.exists || Dex.isSpeciesHidden(species.id)) throw new Error('Check the team slot for ' + set.species + ' before creating its profile.');
+			members.add(species.id);
+			if (!name || name === species.name) continue;
+			if (!bySpecies[species.id]) bySpecies[species.id] = [];
+			bySpecies[species.id].push([species.name, name, set.gender || species.gender || '']);
+		}
+		for (var names of Object.values(bySpecies)) {
+			if (new Set(names.map(function (row) {return row[1];})).size === 1) rows.push(names[0].slice(0, 2));
+			else rows.push.apply(rows, names);
+		}
+		var mapped = T.nicknameMappings(rows);
+		return {species:Array.from(members), entries:mapped.entries, genderEntries:mapped.genderEntries};
+	};
+	p.createNameProfile = function (name, initial) {
+		this.saveNicknameDraft();
+		var groups = T.clone(this.rosterData()), data = this.toolsData();
+		var group = {id:T.uid(), name:name, species:initial.species};
+		groups.profiles.push(group); groups.selected = group.id;
+		var profile = {id:T.uid(), name:name, entries:initial.entries, genderEntries:initial.genderEntries,
+			gendered:!!Object.keys(initial.genderEntries).length, rosterProfile:group.id};
+		data.nicknames.push(profile); data.selectedNickname = profile.id;
+		this.profileMemberSearch = '';
+		if (this.libraryViews && this.libraryViews.names) {this.libraryViews.names.names = ''; this.libraryViews.names.teamOnly = false;}
+		this.saveToolsData(data, null, null, groups);
+		this.showToolsManager();
+		this.$(initial.species.length ? '.nickname-value:visible' : '.nickname-species:visible').first().focus();
+	};
+	p.createTeamNameProfile = function () {
+		if (!this.curTeam) return;
+		var initial;
+		try {initial = T.namesFromTeam(this.curSetList || []);} catch (err) {return app.addPopupMessage(err.message);}
+		if (!initial.species.length) return;
+		var base = (this.curTeam.name || 'Team nicknames').trim().slice(0, 74) || 'Team nicknames';
+		var taken = new Set(this.toolsData().nicknames.concat(this.rosterData().profiles).map(function (entry) {return entry.name.toLowerCase();}));
+		var name = base;
+		for (var i = 2; taken.has(name.toLowerCase()); i++) name = base + ' (' + i + ')';
+		this.createNameProfile(name, initial);
+	};
 	p.newUnifiedProfile = function () {
-		this.saveNicknameDraft(); var self = this; app.addPopupPrompt('Profile name:', 'Create', function (name) {if (!name || !name.trim()) return; name = name.trim().slice(0, 80); var groups = self.rosterData(), group = {id:T.uid(), name:name, species:[]}; groups.profiles.push(group); groups.selected = group.id; Storage.prefs('rosterprofiles', groups); var data = self.toolsData(), profile = {id:T.uid(), name:name, entries:{}, genderEntries:{}, rosterProfile:group.id}; data.nicknames.push(profile); data.selectedNickname = profile.id; self.saveToolsData(data); self.showToolsManager(); self.$('.nickname-species').first().focus();});
+		var self = this;
+		app.addPopupPrompt('Profile name:', 'Create', function (name) {
+			if (name && name.trim()) self.createNameProfile(name.trim().slice(0, 80), {species:[], entries:{}, genderEntries:{}});
+		});
 	};
 	T.namedMemberAdditions = function (profile, mapped, group) {
 		var ids = new Set(), empty = !group || !group.species.length;

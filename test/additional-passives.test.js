@@ -4,7 +4,7 @@ const fs = require('fs');
 require('./battle.test');
 const {BattlePokemonSearch} = new Function(fs.readFileSync('play.pokemonshowdown.com/js/battle-dex-search.js', 'utf8') + '\nreturn {BattlePokemonSearch};')();
 describe('Additional passive groups UI and search', () => {
- const groups = {liquidooze: ['grimer','muk'], stickyhold: ['grimeralola','mukalola','trubbish','garbodor'], soundproof: ['whismur','loudred','exploud'], suctioncups: ['octillery','inkay','malamar','grapploct']};
+ const groups = {liquidooze: ['grimer','muk'], stickyhold: ['grimeralola','mukalola','trubbish','garbodor'], soundproof: ['whismur','loudred','exploud'], suctioncups: ['octillery','inkay','malamar'], abyssalgrip: ['grapploct']};
  for (const [passive, ids] of Object.entries(groups)) for (const id of ids) it(id + ' exposes and finds passive ' + passive, () => {
   const s = Dex.species.get(id); assert.deepEqual(s.passives, [passive]);
   assert(BattlePokemonSearch.prototype.filter.call({dex: Dex}, ['pokemon',id], [['ability',passive]]));

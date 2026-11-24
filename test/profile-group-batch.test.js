@@ -15,9 +15,9 @@ const pending = data => ({profileId:'n', groupId:'g', before:JSON.stringify(data
 
 describe('Local group batch previews and preservation', () => {
 	it('preserves hidden legacy members during visible whole-group replacement', () => {
-		const group = {species:['hydreigon', 'hydreigonmega', 'empoleonmegax', 'mew']};
+		const group = {species:['hydreigon', 'hydreigonmega', 'mightyenamega', 'mew']};
 		const before = JSON.stringify(group), plan = T.planGroupBatch(group, 'all', ['hydreigon', 'pikachu'], []);
-		assert.deepEqual(plan.species, ['empoleonmegax', 'hydreigon', 'pikachu']);
+		assert.deepEqual(plan.species, ['mightyenamega', 'hydreigon', 'pikachu']);
 		assert.deepEqual(plan.removed, ['hydreigonmega', 'mew']); assert.deepEqual(plan.added, ['pikachu']);
 		assert.equal(JSON.stringify(group), before);
 	});

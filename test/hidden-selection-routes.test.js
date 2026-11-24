@@ -27,7 +27,7 @@ describe('Hidden species at secondary selection boundaries', () => {
 	  const source = fs.readFileSync(tools, 'utf8');
 	  function Room() {} Room.prototype.events = {};
 	  for (const name of ['initialize','renderSet','renderRosterProfiles','update','back','setPokemon','chartSet','updateChart','getStat']) Room.prototype[name] = function () {};
-	  const rows = [{species:'Hydreigon-Mega'}, {species:'Empoleon-Mega-X'}, {species:'Hydreigon'}, {species:'Mew'}];
+	  const rows = [{species:'Hydreigon-Mega'}, {species:'Mightyena-Mega'}, {species:'Hydreigon'}, {species:'Mew'}];
 	  const jq = row => ({find:selector=>({val:()=>selector === '.nickname-species' ? row.species : 'Saved name'}), attr(){}, toggle:value=>{row.visible=value;}});
 	  const host = {TeambuilderRoom:Room};
 	  new Function('window','jQuery','$','Storage','BattleLog','Dex','app','toID',source.slice(source.indexOf('// BEGIN LOCAL TEAMBUILDER TOOLS')))(host,jq,jq,{prefs(){}},{escapeHTML:String},Dex,{addPopupMessage(){}},toID);
@@ -39,7 +39,7 @@ describe('Hidden species at secondary selection boundaries', () => {
 	  assert.deepEqual(rows.map(row=>row.visible), [true,false,true,true]);
 	 });
 	 it('omits hidden bulk controls and round-trips the default text without changing stored membership', () => {
-	  const group = {species:['hydreigon','hydreigonmega','empoleonmegax','mew']}, before = JSON.stringify(group), controls = {};
+	  const group = {species:['hydreigon','hydreigonmega','mightyenamega','mew']}, before = JSON.stringify(group), controls = {};
 	  const room = {saveNicknameDraft(){},nicknameGroupProfile:()=>group,groupBatchModeChange(){},$(selector){return {
 	   prop(){return this;},val(value){controls[selector]=value;return this;},html(value){controls[selector]=value;return this;},focus(){},
 	  };}};
@@ -48,33 +48,33 @@ describe('Hidden species at secondary selection boundaries', () => {
 	  room.rosterExpandedSpecies = loadFunction(tools,'rosterExpandedSpecies',{Dex,toID,window:dexContext});
 	  const parsed = loadFunction(tools,'parseRosterImport',{}).call(room, controls['.group-batch-text']);
 	  assert.deepEqual(parsed.unknown, []); assert.deepEqual(parsed.species, ['hydreigon','hydreigonmega','mew']);
-	  assert(controls['.group-batch-members'].includes('Hydreigon-Mega')); assert(!controls['.group-batch-members'].includes('Empoleon-Mega-X'));
+	  assert(controls['.group-batch-members'].includes('Hydreigon-Mega')); assert(!controls['.group-batch-members'].includes('Mightyena-Mega'));
 	  assert.equal(JSON.stringify(group), before);
 	 });
  it('expands a base profile member into supported forms only', () => {
   const expand = loadFunction(tools, 'rosterExpandedSpecies', {Dex, toID, window:dexContext});
   assert.deepEqual(expand('hydreigon'), ['hydreigon','hydreigonmega']);
-  assert.deepEqual(expand('empoleon'), ['empoleon', 'empoleonmegay']);
+  assert.deepEqual(expand('empoleon'), ['empoleon', 'empoleonmegax', 'empoleonmegay']);
   assert.deepEqual(expand('hydreigonmega'), ['hydreigonmega']);
   assert(Dex.species.get('Hydreigon-Mega').exists);
  });
  it('hides stored legacy forms from the roster list without changing stored membership', () => {
-  const profile={id:'legacy',name:'Saved list',species:['hydreigon','hydreigonmega','empoleonmegax','empoleonmegay']};
+  const profile={id:'legacy',name:'Saved list',species:['hydreigon','hydreigonmega','mightyenamega','empoleonmegay']};
   const render=loadFunction(tools,'renderRosterProfiles',{Dex,BattleLog:{escapeHTML:String}});
   const html=render.call({profilesView:true,rosterData:()=>({profiles:[profile],selected:'legacy'})});
-  assert(html.includes('Hydreigon-Mega'));assert(!html.includes('Empoleon-Mega-X'));
+  assert(html.includes('Hydreigon-Mega'));assert(!html.includes('Mightyena-Mega'));
   assert(html.includes('Empoleon-Mega-Y'));assert(html.includes('3 Pokémon / forms'));
   assert.equal(profile.species.length,4);
  });
  it('omits hidden forms from local form previews while keeping supported forms', () => {
   const preview=loadFunction(tools,'proto.toggleFormPreview',{Dex,toID,T:{previewKey:()=>''}});
-  const room={curTeam:{dex:Dex},curSetList:[{species:'Empoleon'}],rosterBranchSpecies:()=>['empoleon','empoleonmegax','empoleonmegay'],update(){}};
+  const room={curTeam:{dex:Dex},curSetList:[{species:'Empoleon'}],rosterBranchSpecies:()=>['empoleon','empoleonmegax','empoleonmegay','mightyenamega'],update(){}};
   preview.call(room,0);
-  assert.deepEqual(room.formPreview.options.map(option=>option.id),['empoleonmegay']);
+  assert.deepEqual(room.formPreview.options.map(option=>option.id),['empoleonmegax','empoleonmegay']);
  });
  it('blocks old saved builds at both add and replacement application without deleting them', () => {
   for (const name of ['proto.addLibraryBuild', 'proto.loadSavedBuildNow', 'proto.openBuildComparison']) {
-   for (const species of ['Empoleon-Mega-X', 'Mightyena-Mega']) {
+   for (const species of ['Mightyena-Mega-Grim', 'Mightyena-Mega']) {
     const build = {id:'legacy', set:{species}}, data = {builds:[build]}, messages = [];
     const room = {curTeam:{dex:Dex}, curSetList:[{species:'Mew'}], saveNicknameDraft(){}, toolsData:()=>data};
     const fn = loadFunction(tools, name, {Dex, T:{}, app:{addPopupMessage:message=>messages.push(message)}});
@@ -86,19 +86,19 @@ describe('Hidden species at secondary selection boundaries', () => {
   }
  });
  it('omits hidden Pokémon from saved-team and saved-build calculator choices', () => {
-  const sets = [{species:'Hydreigon-Mega'}, {species:'Hydreigon'}, {species:'Empoleon-Mega-X'}, {species:'Empoleon-Mega-Y'}];
+  const sets = [{species:'Hydreigon-Mega'}, {species:'Hydreigon'}, {species:'Mightyena-Mega'}, {species:'Empoleon-Mega-Y'}];
   const Storage = {teams:[{name:'Old team', team:sets}], unpackTeam:team=>team, prefs:()=>({builds:sets.map((set, i)=>({name:'Set '+i,set}))})};
   let html;
   const room = {escape:String, $:()=>({html(value){html=value;return this;}, prop(){return this;}})};
   loadFunction(calculator, 'populateCalcSets', {Dex, Storage}).call(room);
   assert.deepEqual(room.savedCalcSets.map(entry=>entry.set.species), ['Hydreigon-Mega','Hydreigon','Empoleon-Mega-Y','Hydreigon-Mega','Hydreigon','Empoleon-Mega-Y']);
   assert(html.includes('Hydreigon-Mega'));
-  assert(!html.includes('Empoleon-Mega-X'));
+  assert(!html.includes('Mightyena-Mega'));
   assert.equal(sets.length, 4);
  });
  it('rejects a stale or imported hidden calculator actor before writing controls', () => {
   const validate = loadFunction(calculator, 'validateActorImport', {Dex});
-  for (const species of ['Empoleon-Mega-X', 'Mightyena-Mega']) {
+  for (const species of ['Mightyena-Mega-Grim', 'Mightyena-Mega']) {
    assert.throws(()=>validate.call({$(){throw Error('should not touch controls');}},0,{species}),/unavailable in the calculator/);
   }
  });

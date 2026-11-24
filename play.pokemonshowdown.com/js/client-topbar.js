@@ -463,6 +463,7 @@
 			'input input[name=displaynickname]': 'previewUsernameColor',
 			'change input[name=noanim]': 'setNoanim',
 			'change input[name=nogif]': 'setNogif',
+			'change input[name=altprimalart]': function (event) { Storage.prefs('altprimalart', event.currentTarget.checked); },
 			'change input[name=bwgfx]': 'setBwgfx',
 			'change input[name=nopastgens]': 'setNopastgens',
 			'change select[name=tournaments]': 'setTournaments',
@@ -523,6 +524,7 @@
 				buf += '<p><label class="checkbox"><input type="checkbox" name="nogif"' + (Dex.prefs('nogif') ? ' checked' : '') + ' /> Disable GIFs for Chrome 64 bug</label></p>';
 			}
 			buf += '<p><label class="checkbox"><input type="checkbox" name="bwgfx"' + (Dex.prefs('bwgfx') ? ' checked' : '') + ' /> Use BW sprites instead of XY models</label></p>';
+			buf += '<p><label class="checkbox"><input type="checkbox" name="altprimalart"' + (Dex.prefs('altprimalart') ? ' checked' : '') + ' /> Use alternate Primal Kyogre artwork</label></p>';
 			buf += '<p><label class="checkbox"><input type="checkbox" name="nopastgens"' + (Dex.prefs('nopastgens') ? ' checked' : '') + ' /> Use modern sprites for past generations</label></p>';
 
 			buf += '<hr />';

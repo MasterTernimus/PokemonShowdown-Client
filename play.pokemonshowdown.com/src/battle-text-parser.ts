@@ -430,6 +430,8 @@ class BattleTextParser {
 	}
 
 	parseArgs(args: Args, kwArgs: KWArgs, noSectionBreak?: boolean) {
+		// Older battle logs announce Ability Shield whenever it prevents ability suppression or replacement.
+		if (args[0] === '-block' && BattleTextParser.effectId(args[2]) === 'abilityshield') return '';
 		let buf = !noSectionBreak && this.sectionBreak(args, kwArgs) ? '\n' : '';
 		return buf + this.fixLowercase(this.parseArgsInner(args, kwArgs) || '');
 	}
