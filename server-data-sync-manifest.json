@@ -1,8 +1,8 @@
 {
-	"sourceHead": "0a9005f704da2700961bc1015c5917b14e8e988a",
+	"sourceHead": "4f01aaa44059a393a1243115b8766e5e16852588",
 	"base": "b39e0566021b8c841fdcbc753a9107eafd5d65d4",
-	"builtSourceFingerprint": "a93b5d47571eff7aad57aad54b10c1ac4f1d86d99c127660ec10db8c9c3585a3",
-	"sourceDataSHA256": "835609b06b36083a0d73c183ff3421b4a1da3ad5c8975234628394d1273489ae",
+	"builtSourceFingerprint": "0735a7cc6612c19d5d9b2f294ad0c51b9327331f721efc196ff9bfbbf7bb2b94",
+	"sourceDataSHA256": "3329b73b7b19bd2d3073f201e1644d330b604e6b73eda2509313acd0b74315aa",
 	"files": [
 		"data/abilities.ts",
 		"data/ability-components.ts",
