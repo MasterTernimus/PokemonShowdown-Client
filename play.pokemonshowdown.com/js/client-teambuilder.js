@@ -1416,8 +1416,9 @@
 			buf += '</button></div></div>';
 
 			var effects = this.renderMegaMoveEffect(set);
+			var moveGroup = Dex.getStanceMoveRoute(set.species, set.ability) ? 'ability move' : 'Mega moves';
 			buf += '</div><details class="mega-move-details"' + (effects ? '' : ' hidden') +
-				'><summary><span class="mega-show">Show Mega moves</span><span class="mega-hide">Hide Mega moves</span></summary>' +
+				'><summary><span class="mega-show">Show ' + moveGroup + '</span><span class="mega-hide">Hide ' + moveGroup + '</span></summary>' +
 				'<div class="mega-move-effect">' + effects + '</div></details></li>';
 			return buf;
 		},
@@ -1432,14 +1433,14 @@
 				}
 				return options.map(function (option) {
 					return '<div><strong>' + BattleLog.escapeHTML(option.base + ' · ' + option.label) +
-						'</strong><br />' + BattleLog.escapeHTML(Dex.getMegaMoveEffect(option.move)) + '</div>';
+						'</strong><br />' + BattleLog.escapeHTML(Dex.getMegaMoveEffect(option.move, true)) + '</div>';
 				}).join('');
 			}
 			return (set.moves || []).map(function (name) {
 				var preview = Dex.getMegaMovePreview(name, set, dex);
 				if (!preview) return '';
 				return '<div><strong>' + BattleLog.escapeHTML(dex.moves.get(name).name + ' · ' + preview.label) +
-					'</strong><br />' + BattleLog.escapeHTML(Dex.getMegaMoveEffect(preview.move)) + '</div>';
+					'</strong><br />' + BattleLog.escapeHTML(Dex.getMegaMoveEffect(preview.move, true)) + '</div>';
 			}).join('');
 		},
 
@@ -3684,8 +3685,14 @@
 				break;
 			case 'ability':
 				var previousSpecies = this.curSet.species;
+				var previousStance = Dex.getStanceMoveRoute(previousSpecies, this.curSet.ability);
 				this.curSet.ability = val;
 				this.curSet.species = Dex.getRegionalAbilityForm(this.curSet, this.curTeam.dex);
+				var nextStance = Dex.getStanceMoveRoute(this.curSet.species, val);
+				if (nextStance && !this.curSet.moves.some(Boolean)) {
+					DexSearch.equipNewSetMegaMove(this.curSet, this.curTeam.format || 'gen9', this.curTeam.dex);
+					this.$('input[name=move1]').val(this.curSet.moves[0] || '');
+				}
 				if (this.curSet.species !== previousSpecies) {
 					var regionalScroll = this.$el.scrollTop();
 					if (this.curSet.name === previousSpecies) this.curSet.name = this.curSet.species;
@@ -3725,16 +3732,20 @@
 				this.chooseMove(val);
 				break;
 			}
-			if (inputName === 'item') {
+			var stanceChanged = inputName === 'ability' && previousStance !== nextStance;
+			if (inputName === 'item' || stanceChanged) {
 				var room = this;
 				this.$('.setcol-moves input').each(function () { room.updateMoveHint(this); });
 			} else if (/^move[1-4]$/.test(inputName)) {
 				this.updateMoveHint(input[0]);
 			}
-			if (inputName === 'item' || /^move[1-4]$/.test(inputName)) {
+			if (inputName === 'item' || stanceChanged || /^move[1-4]$/.test(inputName)) {
 				var effects = this.renderMegaMoveEffect(this.curSet);
 				var panel = this.$('.mega-move-details').prop('hidden', !effects);
 				if (!effects) panel.prop('open', false);
+				var moveGroup = Dex.getStanceMoveRoute(this.curSet.species, this.curSet.ability) ? 'ability move' : 'Mega moves';
+				panel.find('.mega-show').text('Show ' + moveGroup);
+				panel.find('.mega-hide').text('Hide ' + moveGroup);
 				panel.find('.mega-move-effect').html(effects);
 			}
 			this.save();

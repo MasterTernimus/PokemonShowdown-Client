@@ -1,5 +1,5 @@
 'use strict';const assert=require('assert').strict,fs=require('fs');require('./battle.test');global.BattleMovedex=require('../play.pokemonshowdown.com/data/moves.js').BattleMovedex;
-const {BattleTooltips}=new Function(fs.readFileSync('play.pokemonshowdown.com/js/battle-tooltips.js','utf8')+'\nreturn {BattleTooltips};')();
+const {BattleTooltips, BattleStatGuesser}=new Function(fs.readFileSync('play.pokemonshowdown.com/js/battle-tooltips.js','utf8')+'\nreturn {BattleTooltips, BattleStatGuesser};')();
 function tooltip(id,item,z,mode='zmove',weather=''){const battle=new Battle({debug:true,log:['|init|battle','|gen|9','|gametype|singles','|switch|p1a: Mew|Mew, L100|100/100','|switch|p2a: Mew|Mew, L100|100/100']});battle.weather=weather;const p=battle.p1.active[0];p.ability='No Ability';const own={speciesForme:'Mew',ability:'No Ability',baseAbility:'No Ability',passives:[],item,hp:100,maxhp:100,level:100,status:'',moves:[],stats:{atk:150,def:100,spa:100,spd:100,spe:100}};const out=new BattleTooltips(battle).showMoveTooltip(Dex.moves.get(id),mode,p,own,z?Dex.moves.get(z):undefined);battle.destroy();return out;}
 describe('Z selection uses the resolved move power',()=>{
  for(const[id,item,z,power]of [['poisontail','poisoniumz','aciddownpour',120],['psychic','mewniumz','genesissupernova',185],['thunderbolt','aloraichiumz','stokedsparksurfer',175],['tackle','snorliumz','pulverizingpancake',100],['rockslide','lycaniumz','splinteredstormshards',140],['tripledive','wateriumz','hydrovortex',120],['hiddenpowerice','normaliumz','breakneckblitz',120]])it(id+' -> '+z+' '+power,()=>{const html=tooltip(id,item,z);assert(html.includes(Dex.moves.get(z).name),html);assert(html.includes('Z-Move base power: '+power),html);});
@@ -11,6 +11,38 @@ describe('Z selection uses the resolved move power',()=>{
  it('adaptive Ghost Z conversion matches the server data category',()=>{const html=tooltip('spectralscream','ghostiumz','neverendingnightmare');assert(html.includes('Z-Move base power: 120'));assert(html.includes('categories/Special.png'),html);});
  it('ordinary move tooltip is unchanged',()=>{const html=tooltip('poisontail','','','move');assert(html.includes('Poison Tail'));assert(html.includes('Base power: 60'));});
  it('ordinary Max and Gmax tooltip paths remain transformed',()=>{assert(tooltip('flamethrower','','maxflare','maxmove').includes('Max Flare'));assert(tooltip('pyroball','','gmaxfireball','maxmove').includes('G-Max Fireball'));});
+});
+
+describe('Eevium Z defenses by active form', () => {
+	for (const [base, form, expected] of [
+		['Eevee-Starter', 'Abysseon', 100], ['Eevee-Starter-Alt', 'Abysseon', 100],
+		['Eevee-Starter', 'Divineon', 150], ['Eevee', 'Eevee-Gmax', 150], ['Mew', 'Eevee-Starter', 100],
+	]) it(base + ' in ' + form + ' form shows both defenses correctly', () => {
+		const battle = new Battle({debug: true, log: ['|init|battle', '|gen|9', '|gametype|singles',
+			'|switch|p1a: Holder|' + base + ', L100|100/100', '|switch|p2a: Mew|Mew, L100|100/100',
+			'|-formechange|p1a: Holder|' + form]});
+		try {
+			const holder = battle.p1.active[0];
+			const own = {speciesForme: base, ability: 'No Ability', passives: [], item: 'Eevium Z',
+				hp: 100, maxhp: 100, level: 100, stats: {atk: 100, def: 100, spa: 100, spd: 100, spe: 100}};
+			assert.equal(holder.getSpeciesForme(own), form);
+			const stats = new BattleTooltips(battle).calculateModifiedStats(holder, own);
+			assert.equal(stats.def, expected);
+			assert.equal(stats.spd, expected);
+		} finally {
+			battle.destroy();
+		}
+	});
+	it('uses the selected ability form when estimating teambuilder bulk', () => {
+		const guesser = new BattleStatGuesser('gen9nofieldsinglesgame');
+		for (const [ability, multiplier] of [['Sinister Blaze', 1], ['Ascendance', 1.5]]) {
+			const set = {species: 'Eevee-Starter', ability, item: '', moves: ['Last Resort']};
+			const ordinary = guesser.guess(set).moveCount;
+			const crystal = guesser.guess({...set, item: 'Eevium Z'}).moveCount;
+			assert.equal(crystal.physicalBulk, ordinary.physicalBulk * multiplier);
+			assert.equal(crystal.specialBulk, ordinary.specialBulk * multiplier);
+		}
+	});
 });
 
 describe('Rampage 140 ordinary and 200 Z tooltips',()=>{for(const[id,item,z]of [['thrash','normaliumz','breakneckblitz'],['outrage','dragoniumz','devastatingdrake'],['petaldance','grassiumz','bloomdoom'],['ragingfury','firiumz','infernooverdrive']])it(id+' displays current ordinary and derived power',()=>{const m=Dex.moves.get(id);assert.equal(m.basePower,140);assert.equal(m.zMove.basePower,200);assert.equal(m.maxMove.basePower,140);assert(tooltip(id,'','','move').includes('Base power: 140'));assert(tooltip(id,item,z).includes('Z-Move base power: 200'));assert.match(m.shortDesc,/30%.*2-3 turns.*confuses/);});});

@@ -2004,6 +2004,7 @@ class TeamWizard extends preact.Component<{
 		while (set.moves.length < 4) set.moves.push('');
 		const overfull = set.moves.length > 4 ? ' overfull' : '';
 		const megaOptions = Dex.getStoneMoveOptions(set, editor.dex);
+		const moveGroup = Dex.getStanceMoveRoute(set.species, set.ability) ? 'ability move' : 'Mega moves';
 		if (!megaOptions.length) {
 			for (const base of set.moves) {
 				const preview = Dex.getMegaMovePreview(base, set, editor.dex);
@@ -2077,19 +2078,19 @@ class TeamWizard extends preact.Component<{
 						<button class={`button button-middle${cur('move')}${overfull}`} onClick={this.setFocus} value={`move|${i}`}>
 							<strong class="label">Moves</strong> {}
 							{set.moves.map((move, mi) => {
-								const preview = Dex.getMegaMovePreview(move, set, editor.dex);
+								const hint = Dex.getMegaMoveHint(move, set, editor.dex);
 								return <div>
 								{!editor.narrow && <small class="gray">&bull;</small>}
 								{mi >= 4 ? <span class="message-error">{move || (editor.narrow && '-') || ''}</span> : move || (editor.narrow && '-')}
-								{preview && <small class="mega-move-hint">{preview.label}</small>}
+								{hint && <small class="mega-move-hint">{hint}</small>}
 							</div>;
 							})}
 							{!set.moves.length && <em>(no moves)</em>}
 						</button>
 						{!!megaOptions.length && <details class="mega-move-details" key={set.species}>
-							<summary><span class="mega-show">Show Mega moves</span><span class="mega-hide">Hide Mega moves</span></summary>
+							<summary><span class="mega-show">Show {moveGroup}</span><span class="mega-hide">Hide {moveGroup}</span></summary>
 							<div class="mega-move-effect">{megaOptions.map(option => <div>
-								<strong>{option.base} · {option.label}</strong><br />{Dex.getMegaMoveEffect(option.move)}
+								<strong>{option.base} · {option.label}</strong><br />{Dex.getMegaMoveEffect(option.move, true)}
 							</div>)}</div>
 						</details>}
 					</div></td>
@@ -2163,6 +2164,9 @@ class TeamWizard extends preact.Component<{
 				case 'ability':
 					if (name === 'No Ability' && editor.gen <= 2) name = '';
 					set.ability = name;
+					if (Dex.getStanceMoveRoute(set.species, name)) {
+						DexSearch.equipNewSetMegaMove(set, editor.format, editor.dex);
+					}
 					this.changeFocus({
 						setIndex,
 						type: reverse ? 'pokemon' : 'item',

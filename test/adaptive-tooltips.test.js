@@ -9,6 +9,51 @@ describe('Adaptive category client parity', () => {
   p = battle.p1.active[0]; own = {speciesForme: 'Mew', ability: 'No Ability', baseAbility: 'No Ability', item: '', hp: 100, maxhp: 100, level: 100, status: '', stats: {atk: 100, def: 100, spa: 100, spd: 100, spe: 100}}; tips = new BattleTooltips(battle);
  });
  afterEach(() => battle.destroy());
+ it('shows the correct stance cut and actual rounded stats on Samurott, including suppression', () => {
+  for (const [form, cut] of [['Samurott', 'Cresting Cut'], ['Samurott-Hisui', 'Moonless Cut']]) {
+   p.speciesForme = own.speciesForme = form;
+   p.ability = own.ability = own.baseAbility = 'Shogun Stance';
+   own.stats = {atk: 103, def: 100, spa: 98, spd: 100, spe: 201};
+   const stats = () => tips.calculateModifiedStats(p, own);
+   const tooltip = () => tips.showMoveTooltip(Dex.moves.get('Razor Shell'), 'move', p, own);
+   assert.equal(stats().atk, 124);
+   assert.equal(stats().spa, 118);
+   assert.equal(stats().spe, 241);
+   assert(tooltip().includes(cut));
+   assert.equal(p.hasKnownAbilityEffect('shellarmor', own), form.includes('Hisui'));
+   p.volatiles.gastroacid = ['gastroacid'];
+   assert.deepEqual(stats(), own.stats);
+   assert(!tooltip().includes(cut));
+   assert.equal(p.hasKnownAbilityEffect('shellarmor', own), false);
+   delete p.volatiles.gastroacid;
+  }
+  p.speciesForme = own.speciesForme = 'Mew';
+  assert.deepEqual(tips.calculateModifiedStats(p, own), own.stats);
+ });
+ it('previews Mega signature categories from staged stats, retaining each move’s category on a tie', () => {
+  for (const id of ['faultcleave', 'soniclance', 'leafrush', 'blazerush', 'tiderush', 'snarevine', 'fmimpression', 'gildedwing', 'crowncrash']) {
+   const move = Dex.moves.get(id);
+   assert(move.flags.adaptivecategory && move.flags.megasignature, id);
+   const category = () => tips.getMoveType(move, new ModifiableValue(battle, p, own))[1];
+   p.boosts = {}; assert.equal(category(), move.category, id);
+   p.boosts = {atk: 1}; assert.equal(category(), 'Physical', id);
+   p.boosts = {spa: 1}; assert.equal(category(), 'Special', id);
+  }
+  for (const id of ['brambleguard', 'pulsechime', 'sacredrush', 'apexcleave', 'shadowshuriken']) {
+   assert(!Dex.moves.get(id).flags.megasignature, id);
+  }
+ });
+ it('compares Defense with Sp. Atk for Armor Slam and previews the matching Wonder Room interaction', () => {
+  const move = Dex.moves.get('armorslam');
+  battle.pseudoWeather = [['Wonder Room', 0, 0]];
+  own.stats.atk = 300;
+  p.boosts = {spa: 1};
+  const category = () => tips.getMoveType(move, new ModifiableValue(battle, p, own))[1];
+  const power = () => tips.getMoveBasePower(move, move.type, new ModifiableValue(battle, p, own), battle.p2.active[0]).toString();
+  assert.equal(category(), 'Special'); assert.doesNotMatch(power(), /Wonder Room/);
+  p.boosts = {spa: 1, spd: 1}; // Wonder Room applies Sp. Def stages to the Defense comparison.
+  assert.equal(category(), 'Physical'); assert.match(power(), /Wonder Room/);
+ });
  for (const id of ['venamskiss', 'firepledge', 'waterpledge', 'grasspledge', 'needlegun', 'dragondarts', 'barrage', 'explosion', 'selfdestruct', 'radiantassault', 'roaroftime', 'spacialrend', 'shadowforce', 'veeveevolley',
   'bouncybubble', 'buzzybuzz', 'sizzlyslide', 'glitzyglow', 'baddybad', 'sappyseed', 'freezyfrost', 'sparklyswirl',
   'punchypummel', 'twirlytwister', 'rockyrampage', 'dustydrift', 'steelystrike', 'stabbyswarm', 'ickyinjection', 'spookyspell', 'scalyscorn', 'watershuriken']) {

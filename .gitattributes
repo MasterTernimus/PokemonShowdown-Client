@@ -1,0 +1,2 @@
+# Release manifests hash the exact bytes of the browser data files.
+play.pokemonshowdown.com/data/*.js text eol=lf

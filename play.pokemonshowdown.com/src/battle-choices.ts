@@ -25,6 +25,9 @@ interface BattleRequestActivePokemon {
 		pp: number,
 		maxpp: number,
 		target: MoveTarget,
+		megaTarget?: MoveTarget,
+		megaXTarget?: MoveTarget,
+		megaYTarget?: MoveTarget,
 		disabled?: boolean,
 	}[];
 	maxMoves?: {
@@ -278,7 +281,9 @@ class BattleChoiceBuilder {
 		if (choice.max || (activePokemon.maxMoves && !activePokemon.canDynamax)) {
 			return activePokemon.maxMoves![moveIndex];
 		}
-		return (choice.mega && activePokemon.pulseMoves || activePokemon.moves)[moveIndex];
+		const move = (choice.mega && activePokemon.pulseMoves || activePokemon.moves)[moveIndex];
+		const target = Dex.getMegaTarget(move, choice.mega, choice.megax, choice.megay);
+		return target ? {...move, target} : move;
 	}
 
 	/**

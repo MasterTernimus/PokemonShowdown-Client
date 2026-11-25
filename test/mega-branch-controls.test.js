@@ -4,13 +4,28 @@ const vm = require('vm');
 const source = fs.readFileSync(require('path').join(__dirname, '../play.pokemonshowdown.com/js/client-battle.js'), 'utf8');
 const controls = source.slice(source.indexOf('\t\t\tvar pokemon = switchables[pos]'), source.indexOf('\t\t\tthis.finalDecisionMove = curActive.maybeDisabled'));
 
-function renderOptions(species, canMegaEvoX, item = 'Banettite') {
+function renderOptions(species, canMegaEvoX, item = 'Banettite', canMegaEvoY = false, Dex) {
 	const context = {switchables: [{species, item}], pos: 0,
-		curActive: {canMegaEvoX, moves: []}, canMegaEvo: species === 'Banette',
+		curActive: {canMegaEvoX, canMegaEvoY, moves: []}, canMegaEvo: species === 'Banette', Dex,
 		toID: value => String(value || '').toLowerCase().replace(/[^a-z0-9]/g, '')};
 	vm.runInNewContext(controls, context);
 	return context;
 }
+
+describe('Shared Mega Y controls', () => {
+	const {Dex} = require('./helpers/isolated-dex.cjs')();
+	for (const [species, item, primary, alternate] of [
+		['Meganium', 'Meganiumite', 'Meganium-Mega', 'Meganium-Mega-Y'],
+		['Torterra', 'Torterranite', 'Torterra-Mega-X', 'Torterra-Mega-Y'],
+		['Chimecho', 'Chimechite', 'Chimecho-Mega', 'Chimecho-Mega-Y'],
+	]) it(species + ' labels each authorized form, including a return from the alternate', () => {
+		assert(!renderOptions(species, false, item, false, Dex).canMegaEvoY);
+		const options = renderOptions(species, false, item, true, Dex);
+		assert.equal(options.megaLabel, primary);
+		assert.equal(options.megaYLabel, alternate);
+		assert.equal(renderOptions(alternate, false, item, true, Dex).megaYLabel, primary);
+	});
+});
 
 describe('Banette branching Mega controls', () => {
 	it('shows the server-authorized Z branch beside regular Mega Evolution', () => {

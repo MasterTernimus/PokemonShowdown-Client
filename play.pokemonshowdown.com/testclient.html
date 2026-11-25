@@ -20,7 +20,6 @@
 				document.head.appendChild(scriptEl);
 			}
 			Config.testclient = true;
-			Config.hostedTestClient = location.hostname === 'play.pokemonreborn-showdown.xyz';
 			(function() {
 				if (location.search !== '') {
 					var m = /\?~~(([^:\/]*)(:[0-9]*)?)/.exec(location.search);
@@ -75,9 +74,7 @@
 		<script src="js/lib/jquery-cookie.js?c840b994"></script>
 		<script src="js/lib/autoresize.jquery.min.js?52413642"></script>
 		<script src="js/battle-sound.js?6dfddeee"></script>
-		<script>
-			if (!Config.hostedTestClient) document.write('<script src="../config/testclient-key.js"><\/script>');
-		</script>
+		<script src="../config/testclient-key.js"></script>
 		<script src="js/lib/html-css-sanitizer-minified.js?38f3f7d3"></script>
 		<script src="js/lib/lodash.core.js?f87de26d"></script>
 		<script src="js/lib/backbone.js?6faf9dcf"></script>
@@ -90,12 +87,12 @@
 
 		<!-- fallback for if you've never done a full build -->
 		<script src="js/server/chat-formatter.js?44037c61" onerror="loadRemoteData(this.src)"></script>
-		<script src="js/battledata.js?b11f95ab" onerror="alert('You must build the client with `node build` before using testclient.html')"></script>
+		<script src="js/battledata.js?ac1df44c" onerror="alert('You must build the client with `node build` before using testclient.html')"></script>
 		<script src="data/text.js?7dbf8483" onerror="loadRemoteData(this.src)"></script>
 		<script src="data/pokedex-mini.js?081155a1" onerror="loadRemoteData(this.src)"></script>
 		<script src="data/pokedex-mini-bw.js?a66687da" onerror="loadRemoteData(this.src)"></script>
 		<script src="data/typechart.js?17da8369" onerror="loadRemoteData(this.src)"></script>
-		<script src="js/battle.js?03837a49"></script>
+		<script src="js/battle.js?7cc4eb9e"></script>
 		<script src="js/lib/sockjs-1.4.0-nwjsfix.min.js?cfe52237"></script>
 		<script src="js/lib/color-thief.min.js?1a474e0b"></script>
 
@@ -103,30 +100,30 @@
 			document.getElementById('loading-message').innerHTML += ' DONE<br />Loading client...';
 		</script>
 
-		<script src="js/client.js?228fcdf4"></script>
-		<script src="js/client-topbar.js?5c0a50d2"></script>
-		<script src="js/client-mainmenu.js?c07f669c"></script>
-		<script src="js/client-teambuilder.js?dd6b3dfc"></script>
-		<script src="js/client-ladder.js?2a2ed9b2"></script>
+		<script src="js/client.js?ec1673d8"></script>
+		<script src="js/client-topbar.js?bb1b212a"></script>
+		<script src="js/client-mainmenu.js?20e51027"></script>
+		<script src="js/client-teambuilder.js?8492c2f1"></script>
+		<script src="js/client-ladder.js?f4914ab5"></script>
 		<script src="js/client-chat.js?0a0c834f"></script>
 		<script src="js/client-chat-tournament.js?caff4c98"></script>
-		<script src="js/battle-tooltips.js?2b5934bc"></script>
-		<script src="js/client-battle.js?881a84ef"></script>
+		<script src="js/battle-tooltips.js?e2c9765a"></script>
+		<script src="js/client-battle.js?0891c4fa"></script>
 		<script src="js/client-rooms.js?89245e2b"></script>
-		<script src="js/storage.js?2604f40f"></script>
-		<script src="data/graphics.js?578b289f" onerror="loadRemoteData(this.src)"></script>
+		<script src="js/storage.js?cbc33b5e"></script>
+		<script src="data/graphics.js?44b278dd" onerror="loadRemoteData(this.src)"></script>
 
-		<script src="data/pokedex.js?3fd426a9" onerror="loadRemoteData(this.src)"></script>
-		<script src="data/moves.js?fbebca57" onerror="loadRemoteData(this.src)"></script>
-		<script src="data/items.js?3b6b8b30" onerror="loadRemoteData(this.src)"></script>
-		<script src="data/abilities.js?0d3f4db7" onerror="loadRemoteData(this.src)"></script>
+		<script src="data/pokedex.js?df187ed7" onerror="loadRemoteData(this.src)"></script>
+		<script src="data/moves.js?1e60034c" onerror="loadRemoteData(this.src)"></script>
+		<script src="data/items.js?f246728f" onerror="loadRemoteData(this.src)"></script>
+		<script src="data/abilities.js?750e29bd" onerror="loadRemoteData(this.src)"></script>
 
-		<script src="data/search-index.js?8a2405e9" onerror="loadRemoteData(this.src)"></script>
+		<script src="data/search-index.js?f84b1dcc" onerror="loadRemoteData(this.src)"></script>
 		<script src="data/teambuilder-tables.js?559b443c" onerror="loadRemoteData(this.src)"></script>
-		<script src="js/battle-dex-search.js?5566794d"></script>
+		<script src="js/battle-dex-search.js?7b7b346f"></script>
 		<script src="js/search.js?636651dd"></script>
 
-		<script src="data/aliases.js?85cee243" async="async" onerror="loadRemoteData(this.src)"></script>
+		<script src="data/aliases.js?05b113ac" async="async" onerror="loadRemoteData(this.src)"></script>
 
 		<script>
 			// Required scripts are ready; do not wait for images to start login.

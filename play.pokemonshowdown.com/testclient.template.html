@@ -20,7 +20,6 @@
 				document.head.appendChild(scriptEl);
 			}
 			Config.testclient = true;
-			Config.hostedTestClient = location.hostname === 'play.pokemonreborn-showdown.xyz';
 			(function() {
 				if (location.search !== '') {
 					var m = /\?~~(([^:\/]*)(:[0-9]*)?)/.exec(location.search);
@@ -75,9 +74,7 @@
 		<script src="js/lib/jquery-cookie.js?"></script>
 		<script src="js/lib/autoresize.jquery.min.js?"></script>
 		<script src="js/battle-sound.js?"></script>
-		<script>
-			if (!Config.hostedTestClient) document.write('<script src="../config/testclient-key.js"><\/script>');
-		</script>
+		<script src="../config/testclient-key.js"></script>
 		<script src="js/lib/html-css-sanitizer-minified.js?"></script>
 		<script src="js/lib/lodash.core.js?"></script>
 		<script src="js/lib/backbone.js?"></script>

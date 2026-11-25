@@ -1150,8 +1150,10 @@ class Item implements Effect {
 }
 
 interface MoveFlags {
-	/** Uses the user's higher staged Attack or Sp. Atk, with ties using Special. */
+	/** Uses the user's higher staged attacking stat. */
 	adaptivecategory?: 1 | 0;
+	/** Mega signatures keep their listed category when the two attacking stats tie. */
+	megasignature?: 1 | 0;
 	/** The move has an animation when used on an ally. */
 	allyanim?: 1 | 0;
 	/** Eligible for Fallen Star and Dual Wield's arrow-move effects. */
@@ -1242,6 +1244,7 @@ class Move implements Effect {
 	readonly flags: Readonly<MoveFlags>;
 	readonly critRatio: number;
 	readonly overrideOffensiveStat?: StatName;
+	readonly ignorePositiveEvasion?: boolean;
 	readonly overrideOffensivePokemon?: 'target' | 'source';
 
 	readonly desc: string;
@@ -1292,6 +1295,7 @@ class Move implements Effect {
 		this.flags = data.flags || {};
 		this.critRatio = data.critRatio === 0 ? 0 : (data.critRatio || 1);
 		this.overrideOffensiveStat = data.overrideOffensiveStat;
+		this.ignorePositiveEvasion = data.ignorePositiveEvasion;
 		this.overrideOffensivePokemon = data.overrideOffensivePokemon;
 
 		// TODO: move to text.js

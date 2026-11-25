@@ -6,5 +6,15 @@ describe('Seventeen approved signature metadata',()=>{
  ])it(species+' slot '+slot+' components and descriptions',()=>{const a=Dex.abilities.get(id);assert.equal(Dex.species.get(species).abilities[slot],a.name);for(const component of components)assert(Dex.getAbilityEffects(id).has(component));assert(a.desc.length>40);assert(a.shortDesc.length<160);});
  it('Ninetales alternate form matches Sun Charm without changing other slots',()=>{assert.deepEqual(Dex.species.get('ninetalesalt').abilities,Dex.species.get('ninetales').abilities);});
  it('keeps all ordinary Tatsugiri shapes and updated solo description',()=>{for(const id of ['tatsugiri','tatsugiridroopy','tatsugiristretchy'])assert.deepEqual(Dex.species.get(id).abilities,{0:'Commander',1:'Sushi Trick',H:'Storm Drain'});assert(Dex.abilities.get('sushitrick').desc.includes('without self-healing'));});
+ it('shows Sushi Savvy as the only Mega Tatsugiri passive and keeps Contrary out of Master Course', () => {
+  for (const style of ['curly', 'droopy', 'stretchy']) {
+   const species = Dex.species.get('tatsugiri' + style + 'mega');
+   assert.deepEqual(species.passives, ['sushisavvy']);
+   assert.equal(species.abilities[0], 'Master Course');
+   assert(!Dex.hasAbilityEffect(species, 'contrary'));
+  }
+  assert(!Dex.getAbilityEffects('mastercourse').has('contrary'));
+  assert.doesNotMatch(Dex.abilities.get('mastercourse').desc, /contrary|reverses/i);
+ });
  it('describes execution-only Set Piece, sleeping phazing protection and non-contact quills',()=>{assert(Dex.abilities.get('setpiece').desc.includes('only when that attack executes'));assert(Dex.abilities.get('dozinggiant').desc.includes('Voluntary switching'));assert(Dex.abilities.get('raisedquills').desc.includes('even without contact'));});
 });

@@ -235,7 +235,7 @@ describe('Server data synchronization', () => {
 			});
 
 			it('describes current ability triggers and charged-move effects', () => {
-				assert.match(dex.abilities.get('temporalshift').desc, /turn after it uses a damaging move.*100 BP/);
+				assert.match(dex.abilities.get('temporalshift').desc, /turn after it uses a damaging move.*100(?: BP|-power) Future Sight/);
 				assert.match(dex.abilities.get('adaptivecell').desc, /first move slot/);
 				assert.match(dex.abilities.get('eclipsevision').desc, /first move slot/);
 				assert.match(dex.abilities.get('schooling').desc, /Mold Breaker/);

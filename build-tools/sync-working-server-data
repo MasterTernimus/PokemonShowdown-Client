@@ -89,10 +89,13 @@ function characterAliases(credit) {
   .replace(/\([^)]*\)/g, '').replace(/^the\s+/i, '').split(/,|\s+and\s+/i);
  return [...new Set(names.map(name => name.toLowerCase().replace(/[^a-z0-9]/g, '')).filter(Boolean))];
 }
+const stoneSignatures = require(path.join(server, 'dist/data/stone-signatures')).StoneSignatures;
+const signatureMoveIDs = new Set(Object.values(stoneSignatures).map(signature => Dex.moves.get(signature.name).id));
 for (const id of [...groups.moves].sort()) {
 	const data = Dex.moves.get(id);
-	snapshot.moves[id] = select(data, ['name', 'num', 'type', 'category', 'basePower', 'accuracy', 'critRatio', 'overrideOffensiveStat', 'overrideOffensivePokemon', 'pp', 'priority', 'target', 'flags', 'desc', 'shortDesc', 'secondaries', 'hasSheerForceBoost']);
+	snapshot.moves[id] = select(data, ['name', 'num', 'type', 'category', 'basePower', 'accuracy', 'critRatio', 'overrideOffensiveStat', 'overrideOffensivePokemon', 'ignorePositiveEvasion', 'pp', 'priority', 'target', 'flags', 'desc', 'shortDesc', 'secondaries', 'hasSheerForceBoost']);
 	if (require(path.join(server, 'dist/data/rejuvenation-advanced-moves')).RejuvenationAdvancedMoves[id]) Object.assign(snapshot.moves[id], select(data, ['multihit', 'critRatio', 'secondaries']));
+	if (signatureMoveIDs.has(id) && data.multihit) snapshot.moves[id].multihit = data.multihit;
 	if (signatureCredits[id]) snapshot.moves[id].signatureCharacters = characterAliases(signatureCredits[id]);
 }
 for (const id of [...groups.items].sort()) {
@@ -116,15 +119,23 @@ function block(kind, marker, code) {
 	source = source.replace(marker, begin + '\n' + code + '\n' + end + '\n' + marker);
 }
 const json = data => JSON.stringify(data, null, '\t').replace(/([^\s,{\[])(?=\n\t*[}\]])/g, '$1,');
+snapshot.gen8SpeciesOverrides = {heatran: {abilities: Dex.forGen(8).species.get('heatran').abilities}};
+block('GEN 8 SPECIES', 'const CUSTOM_SPECIES_UPDATE_IDS =', 'const GEN8_SPECIES_OVERRIDES: Record<string, Partial<Species>> = ' + json(snapshot.gen8SpeciesOverrides) + ';');
 const formerMoves = require(path.join(server, 'dist/data/form-move-aliases')).FormerFormMoves;
 block('FORM MOVE ALIASES', 'const Dex = new class', 'const FORMER_FORM_MOVES: Partial<Record<string, string>> = ' + json(formerMoves) + ';');
-const stoneSignatures = require(path.join(server, 'dist/data/stone-signatures')).StoneSignatures;
-snapshot.stoneMoveRoutes = Object.entries(stoneSignatures).map(([form, signature]) => {
+snapshot.stoneMoveRoutes = Object.entries(stoneSignatures).flatMap(([form, signature]) => {
 	const species = Dex.species.get(form);
-	return {form, species: Dex.species.get(species.battleOnly).id, stone: Dex.items.get(species.requiredItem).id,
-		base: signature.base, move: Dex.moves.get(signature.name).id};
+	const origins = Array.isArray(species.battleOnly) ? species.battleOnly : [species.battleOnly || species.baseSpecies];
+	return origins.flatMap(origin => species.requiredItems.map(item => ({
+		form, species: Dex.species.get(origin).id, stone: Dex.items.get(item).id,
+		base: signature.base, move: Dex.moves.get(signature.name).id,
+	})));
 });
 block('STONE MOVE ROUTES', 'const Dex = new class', 'const STONE_MOVE_ROUTES = ' + json(snapshot.stoneMoveRoutes) + ';');
+snapshot.stanceMoveRoutes = Object.fromEntries(Object.entries(require(path.join(server, 'dist/data/form-signatures')).FormSignatures)
+	.filter(([, route]) => route.ability === 'shogunstance')
+	.map(([species, route]) => [species, {ability: route.ability, base: route.base, move: Dex.moves.get(route.name).id, component: route.component}]));
+block('STANCE MOVE ROUTES', 'const Dex = new class', 'const STANCE_MOVE_ROUTES: Record<string, {ability: string, base: string, move: string, component: string}> = ' + json(snapshot.stanceMoveRoutes) + ';');
 snapshot.learnsetExclusions = require(path.join(server, 'dist/sim/dex-species')).Gen9MoveLearnsetExclusions;
 block('LEARNSET EXCLUSIONS', 'const CUSTOM_LEARNSET_REMOVAL_IDS =', `const SERVER_GEN9_LEARNSET_EXCLUSIONS: {[id: string]: readonly string[]} = ${json(snapshot.learnsetExclusions)};`);
 block('GUARDIAN CONTEXT', 'const CUSTOM_ABILITY_UPDATE_IDS =', `const GUARDIAN_LEGACY_DESCRIPTIONS: {[id: string]: {desc: string; shortDesc: string}} = ${json(require(path.join(server, 'dist/data/base-guardian-reworks')).GuardianLegacyDescriptions)};`);

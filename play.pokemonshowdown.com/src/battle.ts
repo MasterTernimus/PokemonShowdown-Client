@@ -488,6 +488,7 @@ export class Pokemon implements PokemonDetails, PokemonHealth {
 		// this.lastMove = pokemon.lastMove; // I think
 		if (!copySource) {
 			const volatilesToRemove = [
+				'aegischarge',
 				'airballoon', 'attract', 'autotomize', 'disable', 'encore', 'foresight', 'gmaxchistrike', 'imprison', 'laserfocus', 'aimassistlock', 'mimic', 'miracleeye', 'nightmare', 'saltcure', 'smackdown', 'stockpile1', 'stockpile2', 'stockpile3', 'syrupbomb', 'torment', 'triplearrows', 'corrosion', 'prepared', 'relicarmoractive', 'sirensveil', 'relicarmorfield', 'glacialheartice', 'glacialheartdragon', 'artilleryreload', 'artilleryfired', 'typeadd', 'typechange', 'yawn',
 			];
 			for (const statName of Dex.statNamesExceptHP) {
@@ -604,6 +605,7 @@ export class Pokemon implements PokemonDetails, PokemonHealth {
 			return Dex.getAbilityDisplayComponents(ability, this.side.battle.dex, passives, species.id, item).includes(id);
 		}
 		if (id === 'pressure' && ability === 'unstableevo' && species.id === 'umbreon') return true;
+		if (Dex.getStanceMoveRoute(species.id, ability)?.component === id) return true;
 		return Dex.getAbilityEffects(ability).has(id);
 	}
 	getTypeList(serverPokemon?: ServerPokemon, preterastallized = false) {

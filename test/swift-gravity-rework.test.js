@@ -8,6 +8,15 @@ describe('Swift and Gravity client parity',()=>{
  beforeEach(()=>{battle=new Battle({debug:true,log:['|init|battle','|gen|9','|gametype|singles','|switch|p1a: Mew|Mew, L100|100/100','|switch|p2a: Mew|Mew, L100|100/100']});battle.seekTurn(Infinity);p=battle.p1.active[0];q=battle.p2.active[0];own={speciesForme:'Mew',ability:'No Ability',baseAbility:'No Ability',item:'',hp:100,maxhp:100,level:100,status:'',stats:{atk:100,def:100,spa:100,spd:100,spe:100},passives:[]};tips=new BattleTooltips(battle);});
  afterEach(()=>battle.destroy());
  const power=(id)=>tips.getMoveBasePower(Dex.moves.get(id),Dex.moves.get(id).type,new ModifiableValue(battle,p,own),q).value;
+ it('shows the Gravity bonus inherited by the Mega forms of Wood Hammer and Heat Crash', () => {
+  for (const move of ['timbercrash', 'furnacecrash']) {
+   const ordinary = power(move);
+   assert(Dex.moves.get(move).flags.gravityboost);
+   battle.addPseudoWeather('Gravity', 5);
+   assert(Math.abs(power(move) - ordinary * 5325 / 4096) < 0.01, move);
+   battle.removePseudoWeather('Gravity');
+  }
+ });
  it('displays adaptive high-crit Swift with staged-stat tie rules',()=>{const m=Dex.moves.get('swift');assert.equal(m.critRatio,2);assert.equal(m.accuracy,true);assert(m.desc.includes('stat stages'));for(const[atk,spa,boost,expected]of [[100,100,{},'Special'],[200,100,{},'Physical'],[200,100,{spa:3},'Special']]){own.stats.atk=atk;own.stats.spa=spa;p.boosts=boost;assert.equal(tips.getMoveType(m,new ModifiableValue(battle,p,own))[1],expected);}own.status='brn';own.stats.atk=200;own.stats.spa=100;p.boosts={};assert.equal(power('swift'),30);});
  it('shows all impact power bonuses exactly once and leaves unrelated moves alone',()=>{for(const id of ['rockslide','avalanche','iciclecrash','bodyslam','heavyslam','dracometeor','tackle','swift']){const before=power(id);battle.addPseudoWeather('Gravity',5);const after=power(id);const factor=Dex.moves.get(id).flags.gravityboost?5325/4096:1;assert(Math.abs(after-before*factor)<0.01,id+': '+before+' -> '+after);battle.removePseudoWeather('Gravity');assert.equal(power(id),before);}assert(Dex.moves.get('gravity').desc.includes('Effective weight is doubled'));assert(Dex.moves.get('gravity').desc.includes('Rock Slide'));});
  it('does not feed the Gravity bonus into Technician eligibility',()=>{own.ability='Technician';battle.addPseudoWeather('Gravity',5);assert(Math.abs(power('heavyslam')-40*1.5*5325/4096)<0.01);});

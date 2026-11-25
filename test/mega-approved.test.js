@@ -5,10 +5,13 @@ global.BattleMovedex=require('../play.pokemonshowdown.com/data/moves.js').Battle
 const {BattleTooltips}=new Function(fs.readFileSync(path.join(__dirname,'../play.pokemonshowdown.com/js/battle-tooltips.js'),'utf8')+'\nreturn {BattleTooltips};')();
 describe('Approved Mega and Eevee client integration',()=>{
  for(const[id,originalPassive]of Object.entries({...require('./fixtures/mega-approved-choices.json'),golisopodmega:'toughclaws',ariadosmega:'venomthread',floettemega:'eternalflower',sevipermega:'rivalmalice',haxorusmega:'twinfang',parasectmega:'mycelialbond'}))it(id+' publishes its exact passive separately from Includes',()=>{
-  const passive=require('./fixtures/mega-approval-overlays').passives(id,[originalPassive])[0];
-  const s=Dex.species.get(id);assert.deepEqual(s.passives,[passive]);
-  assert(Dex.hasAbilityEffect(s,passive));
-  assert(!Dex.getAbilityDisplayComponents(s.abilities[0],Dex,s.passives).includes(passive));
+  const passives=require('./fixtures/mega-approval-overlays').passives(id,[originalPassive]);
+  const s=Dex.species.get(id);assert.deepEqual(s.passives,passives);
+  const components=Dex.getAbilityDisplayComponents(s.abilities[0],Dex,s.passives);
+  for(const passive of passives){
+   assert(Dex.hasAbilityEffect(s,passive));
+   assert(!components.includes(passive));
+  }
  });
  for(const[id,ability]of [['gengarmega','Shadow Double'],['scovillainmega','Crossfire'],['lucariomega','Insight'],['salamencemega','Exalted Aether']])it(id+' has its approved selected replacement and complete text',()=>{
   assert.equal(Dex.species.get(id).abilities[0],ability);assert(Dex.abilities.get(ability).desc.length>100);

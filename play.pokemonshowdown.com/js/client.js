@@ -307,7 +307,8 @@ function toId() {
 				name: name,
 				pass: password,
 				challstr: this.challstr
-			}, function (data) {
+			}, function (response) {
+				var data = JSON.parse(response.charAt(0) === ']' ? response.slice(1) : response);
 				if (!data || typeof data !== 'object' || Array.isArray(data)) throw new Error('Invalid response');
 				if (data.curuser && (typeof data.curuser !== 'object' || Array.isArray(data.curuser) || typeof data.curuser.loggedin !== 'boolean')) throw new Error('Invalid account');
 				if (data.curuser && data.curuser.loggedin && (typeof data.assertion !== 'string' || !data.assertion || /[<>\x00-\x1f]/.test(data.assertion) || data.assertion.charAt(0) === ';')) throw new Error('Invalid assertion');
@@ -316,7 +317,6 @@ function toId() {
 					self.set('registered', data.curuser);
 					self.finishRename(name, data.assertion);
 				} else {
-					if (data.actionsuccess !== false && !data.error && !(data.curuser && data.curuser.loggedin === false)) throw new Error('Invalid account');
 					// wrong password
 					if (special === '@gmail') {
 						try {
@@ -348,37 +348,22 @@ function toId() {
 			var self = this, request = {challstr:this.challstr};
 			this.manualLoginRequest = request;
 			var current = function () {return self.manualLoginRequest === request && self.challstr === request.challstr;};
-			var fail = function (reason) {
+			var fail = function () {
 				if (!current()) return;
 				self.cancelManualLogin();
-				app.addPopupMessage(reason === 'timeout' ? 'Sign-in timed out. Choose your name to try again.' :
-					reason === 'invalid' ? 'The login service returned an unreadable response. Please try again.' :
-						'Could not reach the Pokémon Showdown login service. Please try again when it is available.');
+				app.addPopupMessage('Sign-in could not be completed. Please try signing in again.');
 			};
-			request.timer = setTimeout(function () { fail('timeout'); }, this.upkeepTimeout);
+			request.timer = setTimeout(fail, this.upkeepTimeout);
 			try {
-				var url = Config.hostedTestClient ? 'https://play.pokemonshowdown.com/api/' + payload.act : this.getActionPHP();
-				request.xhr = $.post(url, payload, function (response) {
+				request.xhr = $.post(this.getActionPHP(), payload, function (response) {
 					if (!current()) return;
 					try {
 						if (typeof response !== 'string' || !response.trim() || response.length > 65536) throw new Error('Invalid response');
-						response = response.trim();
-						if (payload.act === 'login' || ']{['.includes(response.charAt(0))) {
-							var data = JSON.parse(response.charAt(0) === ']' ? response.slice(1) : response);
-							if (data && typeof data.actionerror === 'string' && data.actionerror) {
-								app.addPopupMessage('Pokémon Showdown: ' + data.actionerror);
-							} else if (payload.act === 'login') {
-								success(data);
-							} else {
-								throw new Error('Expected an assertion');
-							}
-						} else {
-							success(response);
-						}
-					} catch (e) {fail('invalid'); return;}
+						success(response.trim());
+					} catch (e) {fail(); return;}
 					clearTimeout(request.timer); self.manualLoginRequest = null;
 				}, 'text');
-				if (current() && request.xhr && request.xhr.manual) {clearTimeout(request.timer); request.timer = setTimeout(function () { fail('timeout'); }, 120000);}
+				if (current() && request.xhr && request.xhr.manual) {clearTimeout(request.timer); request.timer = setTimeout(fail, 120000);}
 				if (request.xhr && request.xhr.fail) request.xhr.fail(fail);
 			} catch (e) {fail();}
 		},
@@ -482,13 +467,6 @@ function toId() {
 				this.cancelUpkeep();
 				this.loaded = false;
 				this.challstr = challstr;
-				// The public development client has no private test session to restore.
-				if (Config.hostedTestClient) {
-					this.loaded = true;
-					this.upkeepError = '';
-					app.topbar.updateUserbar();
-					return;
-				}
 				this.retryUpkeep();
 			}
 		},
@@ -820,12 +798,10 @@ function toId() {
 
 			Storage.whenAppLoaded.load(this);
 
-			// The hosted client ships its colors in config.js. A login-server GET here opens the manual sign-in dialog.
-			if (!Config.hostedTestClient) {
-				$.get('/config/colors.json', {}, function (data) {
-					Object.assign(Config.customcolors, data);
-				});
-			}
+			// load custom colors from loginserver
+			$.get('/config/colors.json', {}, function (data) {
+				Object.assign(Config.customcolors, data);
+			});
 
 			this.initializeConnection();
 		},
@@ -3202,7 +3178,7 @@ function toId() {
 			buf += '<p><label class="label" style="float: left;">Data from the box above:</label> <input style="width: 100%;" class="textbox autofocus" type="text" name="result" /></p>';
 			buf += '<p class="buttonbar"><button type="submit" class="button"><strong>Submit</strong></button> <button type="button" name="close" class="button">Cancel</button></p>';
 			buf += '</form>';
-			this.$el.html(buf).css({width: 'min(500px, 85vw)', 'max-width': '100%'});
+			this.$el.html(buf).css('min-width', 500);
 		},
 		submit: function (data) {
 			this.close();

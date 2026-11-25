@@ -2039,6 +2039,8 @@ export class PokemonSprite extends Sprite {
 		plasmalanding: '<span class="good" title="Next Fire attack gains 30% power">🔥&nbsp;Landing</span> ',
 		laserfocus: ['Laser Focus', 'good'],
 		aimassistlock: ['Lock-On', 'good'],
+		aegischarge:
+			'<span class="good" title="The next damaging attack matching this Aegis (Grass, Fire, or Water) gains 20% power. Attacking spends the charge even on a miss or Protect. Switching clears it.">Aegis&nbsp;Charge</span> ',
 		moltenguard: ['Molten Guard', 'good'],
 		activenoguard: ['Active No Guard', 'good'],
 		sealing:

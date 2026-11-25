@@ -11,9 +11,19 @@ describe('Approved Ultra Instinct and Inferno Ascendant presentation',()=>{
   const s=Dex.species.get('infernapemega');assert.deepEqual(s.passives,['proficient']);assert.deepEqual(s.abilities,{0:'Inferno Ascendant'});
   const parts=Dex.getAbilityDisplayComponents('burningspirit',Dex,s.passives,s.id);
   assert.deepEqual(parts,['ultrainstinct','magmaarmor']);
-  const effects=Dex.getAbilityEffects('burningspirit');for(const id of ['ultrainstinct','magmaarmor','moldbreaker','innerfocus'])assert(effects.has(id),id);
+  const effects=Dex.getAbilityEffects('burningspirit');for(const id of ['ultrainstinct','magmaarmor','innerfocus'])assert(effects.has(id),id);
   for(const id of ['opportunist','selfsufficient','proficient','flamebody','ironfist','battlefervor'])assert(!effects.has(id),id);
   const text=Dex.getAbilityDisplayDetails(Dex.abilities.get('burningspirit'),s.passives,s.id).desc;assert(!text.includes('Opportunist'));assert(!parts.includes('proficient'));
+ });
+ it('shows accuracy protection and removes Mold Breaker from Ultra Instinct and its composites', () => {
+  const ability = Dex.abilities.get('ultrainstinct');
+  assert.match(ability.desc, /foes cannot lower .*accuracy/i);
+  assert.match(ability.desc, /Ultra Ego cannot bypass active Ultra Instinct/i);
+  for (const id of ['ultrainstinct', 'burningspirit', 'twilightinstinct', 'auraprecision', 'insight']) {
+   const effects = Dex.getAbilityEffects(id);
+   assert(effects.has('innerfocus'), id);
+   assert(!effects.has('moldbreaker'), id);
+  }
  });
  it('Relentless Hunt explains the single Cold Eclipse bonus and raised priority threshold',()=>{
   const text=Dex.abilities.get('relentlesshunt').desc;assert(/up to 80 on Cold Eclipse/.test(text));assert(text.includes('applies once'));

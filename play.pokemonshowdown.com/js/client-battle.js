@@ -665,8 +665,12 @@
 				megaLabel = 'Garchomp-Mega';
 				megaXLabel = 'Garchomp-Mega-Z';
 			}
-			if (toID(pokemon.item) === 'sharpedonite' && canMegaEvoY) {
-				megaLabel = 'Sharpedo-Mega'; megaYLabel = 'Sharpedo-Mega-Y';
+			if (curActive.canMegaEvoY) {
+				var sharedLabels = Dex.getSharedMegaYLabels(speciesid, pokemon.item || '');
+				if (sharedLabels) {
+					megaLabel = sharedLabels.mega;
+					megaYLabel = sharedLabels.megay;
+				}
 			}
 			if (toID(pokemon.item) === 'gardevoirite' || megaTargetid.indexOf('gardevoir') === 0) {
 				if (isGardevoirVoid) {
@@ -1384,6 +1388,11 @@
 				var isTerastal = !!(this.$('input[name=terastallize]')[0] || '').checked;
 
 				var target = e.getAttribute('data-target');
+				if (isMega || isMegaX || isMegaY) {
+					var active = this.request.active[this.choice.choices.length];
+					var slot = (isMega && active.pulseMoves || active.moves)[Number(pos) - 1];
+					if (slot) target = Dex.getMegaTarget(slot, isMega, isMegaX, isMegaY) || target;
+				}
 				var choosableTargets = {normal: 1, normalOrSelf: 1, any: 1, adjacentAlly: 1, adjacentAllyOrSelf: 1, adjacentFoe: 1};
 
 				this.choice.choices.push('move ' + pos + (isMega ? ' mega' : '') + (isMegaX ? ' megax' : '') + (isMegaY ? ' megay' : '') + (isZMove ? ' zmove' : '') + (isUltraBurst ? ' ultra' : '') + (isDynamax ? ' dynamax' : '') + (isTerastal ? ' terastallize' : ''));

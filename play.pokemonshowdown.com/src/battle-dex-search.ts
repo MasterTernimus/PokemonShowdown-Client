@@ -348,9 +348,11 @@ class DexSearch {
 	static equipNewSetMegaMove(set: PokemonSet, format: ID, dex: ModdedDex) {
 		if (dex.gen !== 9 || set.moves.some(Boolean)) return;
 		const candidates = [...Object.keys(Dex.megaMoveConversions), 'wavecrash'];
-		if (!candidates.some(id => Dex.getMegaMovePreview(id, set, dex))) return;
+		const stance = Dex.getStanceMoveRoute(set.species, set.ability);
+		if (!stance && !candidates.some(id => Dex.getMegaMovePreview(id, set, dex))) return;
 		const rows = new BattleMoveSearch('move', format, set).getBaseResults();
-		const start = rows.findIndex(row => row[0] === 'header' && row[1] === 'Mega signature moves');
+		const header = stance ? 'Ability signature moves' : 'Mega signature moves';
+		const start = rows.findIndex(row => row[0] === 'header' && row[1] === header);
 		if (start >= 0 && rows[start + 1]?.[0] === 'move') set.moves[0] = dex.moves.get(rows[start + 1][1]).name;
 	}
 	static isHiddenCosmeticPattern(id: string) {
@@ -2583,12 +2585,20 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 		const signatureMoves: SearchRow[] = [];
 		const megaMoves: SearchRow[] = [];
 		if (dex.gen === 9 && !pulseMoves) {
+			const stance = this.set && Dex.getStanceMoveRoute(this.set.species, this.set.ability);
 			moves = moves.filter(id => {
 				if (!Dex.getMegaMovePreview(id, this.set, dex)) return true;
-				if (!megaMoves.length) megaMoves.push(['header', 'Mega signature moves']);
+				if (!megaMoves.length) megaMoves.push(['header', stance ? 'Ability signature moves' : 'Mega signature moves']);
 				megaMoves.push(['move', id as ID]);
 				return false;
 			});
+			if (megaMoves.length > 2 && this.set?.item) {
+				// The first listed move is also equipped on a fresh set.
+				const stone = dex.items.get(this.set.item).megaStone;
+				const primary = toID(typeof stone === 'string' ? stone : stone?.[species.name]);
+				const index = megaMoves.findIndex(([kind, id]) => kind === 'move' && Dex.megaMoveConversions[id]?.[primary]);
+				if (index > 1) megaMoves.splice(1, 0, ...megaMoves.splice(index, 1));
+			}
 		}
 		// Promote only learned Yang/Rejuvenation moves, preserving fixed Pulse pools.
 		if (!isHackmons && !pulseMoves) {
