@@ -9,18 +9,16 @@ describe('Adaptive category client parity', () => {
   p = battle.p1.active[0]; own = {speciesForme: 'Mew', ability: 'No Ability', baseAbility: 'No Ability', item: '', hp: 100, maxhp: 100, level: 100, status: '', stats: {atk: 100, def: 100, spa: 100, spd: 100, spe: 100}}; tips = new BattleTooltips(battle);
  });
  afterEach(() => battle.destroy());
- it('shows the correct stance cut and actual rounded stats on Samurott, including suppression', () => {
+ it('shows the correct stance cut and unmodified attacking stats and Speed, including suppression', () => {
   for (const [form, cut] of [['Samurott', 'Cresting Cut'], ['Samurott-Hisui', 'Moonless Cut']]) {
    p.speciesForme = own.speciesForme = form;
    p.ability = own.ability = own.baseAbility = 'Shogun Stance';
    own.stats = {atk: 103, def: 100, spa: 98, spd: 100, spe: 201};
    const stats = () => tips.calculateModifiedStats(p, own);
    const tooltip = () => tips.showMoveTooltip(Dex.moves.get('Razor Shell'), 'move', p, own);
-   assert.equal(stats().atk, 124);
-   assert.equal(stats().spa, 118);
-   assert.equal(stats().spe, 241);
+   assert.deepEqual(stats(), own.stats);
    assert(tooltip().includes(cut));
-   assert.equal(p.hasKnownAbilityEffect('shellarmor', own), form.includes('Hisui'));
+   assert(p.hasKnownAbilityEffect('shellarmor', own), form);
    p.volatiles.gastroacid = ['gastroacid'];
    assert.deepEqual(stats(), own.stats);
    assert(!tooltip().includes(cut));

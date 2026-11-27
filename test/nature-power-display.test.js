@@ -47,7 +47,9 @@ describe('Nature Power live client display', () => {
 		const source = fs.readFileSync('play.pokemonshowdown.com/js/client-battle.js', 'utf8');
 		const start = source.indexOf('var moveData = curActive.moves[i];');
 		const end = source.indexOf('\n\t\t\t\t}', start);
-		const render = new Function('BattleTooltips', 'ModifiableValue', 'Dex', 'BattleLog', 'curActive', 'typeValueTracker', 'i', 'pos', 'drakeFangPreview', 'var movebuttons="",hasMoves=false;'+source.slice(start,end)+';return movebuttons;');
+		const render = new Function('BattleTooltips', 'ModifiableValue', 'Dex', 'BattleLog', 'curActive',
+			'typeValueTracker', 'i', 'pos', 'previewForm',
+			'var movebuttons="",hasMoves=false,previewTooltip="";'+source.slice(start,end)+';return movebuttons;');
 		for (const field of BattleFieldRules) {
 			battle.pseudoWeather = [[field.name, 0, 0]];
 			const called = BattleTooltips.getNaturePowerMove(battle);

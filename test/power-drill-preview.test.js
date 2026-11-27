@@ -10,6 +10,26 @@ function setup(ability='Power Drill',passives=[],species='Mew'){
  return {battle,p,own,tips,power(id,hit=1){const m=typeof id==='string'?Dex.moves.get(id):id;return tips.getMoveBasePower(m,m.type,new ModifiableValue(battle,p,own),battle.p2.active[0],hit);},field(id){battle.pseudoWeather=id?[[(global.BattleFieldRules.find(f=>f.id===id)||{name:id}).name,0,0]]:[];}};
 }
 describe('Power Drill move previews',()=>{
+ it('includes the inherited Tyrant Stream bite bonus in Crown Rend', () => {
+  const h = setup('Tyrant Domain', [], 'Tyrantrum-Mega');
+  try {
+   assert.equal(h.power('crownrend').value, 120);
+   h.battle.p2.active[0].boosts.def = 1;
+   assert.equal(h.power('crownrend').value, 150);
+  } finally {
+   h.battle.destroy();
+  }
+ });
+ it('shows both the Twineedle and drill bonuses per hit of Triple Sting', () => {
+  const h = setup('Spiral Evolution', [], 'Beedrill-Mega');
+  try {
+   assert.equal(Number(h.power('triplesting').value), 75);
+   h.field('rockyterrain');
+   assert.equal(Number(h.power('triplesting').value), 100);
+  } finally {
+   h.battle.destroy();
+  }
+ });
  for(const ability of ['Power Drill','Deep Bore','Swift Drill','Royal Armament',"Patriarch's Wrath",'Relentless Link'])for(const field of fields)it(ability+' / '+(field||'no field')+' applies drill boost exactly once',()=>{const h=setup(ability);try{h.field(field);const off=setup('No Ability');off.field(field);try{for(const id of ['drillrun','horndrill','stoneedge']){const expected=off.power(id).value*(id==='stoneedge'?1:field&&field!=='coldeclipseterrain'?2:1.5);assert.equal(h.power(id).value,expected,id);}}finally{off.battle.destroy();}}finally{h.battle.destroy();}});
  it('shows expected Rocky power without double counting the Rock field bonus',()=>{const h=setup();try{assert.equal(h.power('drillrun').value,120);assert.equal(h.power('horndrill').value,195);h.field('rockyterrain');assert.equal(h.power('drillrun').value,160);assert.equal(h.power('horndrill').value,390);assert.equal(h.power('stoneedge').value,150);}finally{h.battle.destroy();}});
  it('deduplicates native plus copied Power Drill and preserves passive suppression immunity',()=>{const h=setup('Power Drill',['powerdrill'],'Rhydon');try{assert.equal(h.power('drillrun').value,120);h.p.volatiles.gastroacid=['gastroacid'];assert.equal(h.power('drillrun').value,120);h.own.passives=[];assert.equal(h.power('drillrun').value,80);}finally{h.battle.destroy();}});

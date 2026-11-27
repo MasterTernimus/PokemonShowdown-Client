@@ -1431,16 +1431,20 @@
 				if (selected && Dex.getStoneMoveOptions({species: selected.name}, dex).length) {
 					options = Dex.getStoneMoveOptions({species: selected.name}, dex);
 				}
-				return options.map(function (option) {
-					return '<div><strong>' + BattleLog.escapeHTML(option.base + ' · ' + option.label) +
-						'</strong><br />' + BattleLog.escapeHTML(Dex.getMegaMoveEffect(option.move, true)) + '</div>';
-				}).join('');
+			} else {
+				(set.moves || []).forEach(function (name) {
+					var preview = Dex.getMegaMovePreview(name, set, dex);
+					if (preview) options.push({base: dex.moves.get(name).name, label: preview.label, move: preview.move});
+				});
 			}
-			return (set.moves || []).map(function (name) {
-				var preview = Dex.getMegaMovePreview(name, set, dex);
-				if (!preview) return '';
-				return '<div><strong>' + BattleLog.escapeHTML(dex.moves.get(name).name + ' · ' + preview.label) +
-					'</strong><br />' + BattleLog.escapeHTML(Dex.getMegaMoveEffect(preview.move, true)) + '</div>';
+			return Dex.getMegaMoveDetailGroups(options).map(function (group) {
+				var routes = group.routes.map(function (route) {
+					var adaptive = route.adaptive ? ' · <abbr title="' + BattleLog.escapeHTML(route.adaptive) + '">Adaptive</abbr>' : '';
+					return '<div class="mega-detail-route"><strong>' + BattleLog.escapeHTML(route.label) +
+						'</strong><span>' + BattleLog.escapeHTML(route.stats) + adaptive + '</span></div>';
+				}).join('');
+				return '<div><strong>' + BattleLog.escapeHTML(group.base) + '</strong>' + routes +
+					'<div>' + BattleLog.escapeHTML(group.effect) + '</div></div>';
 			}).join('');
 		},
 
@@ -5774,19 +5778,33 @@ function renderStarterPassives(species) {
 	var p = window.TeambuilderRoom.prototype, render = p.renderSet;
 	p.renderRKSMemory = function (set) {
 		var dex = this.curTeam.dex, species = dex.species.get(set.species);
+		if (toID(set.ability) === 'unstableevo') {
+			var forms = Dex.getUnstableEvoForms();
+			return '<details class="unstable-evo-guide"><summary>Unstable Evo forms</summary><small>All forms keep Filter and Self Sufficient.</small><table><thead><tr><th>Move</th><th>Form</th><th>Ability effects</th></tr></thead><tbody>' +
+				Object.entries(forms).map(function (entry) {
+					var route = entry[1];
+					return '<tr>' + [dex.moves.get(route.move).name, dex.species.get(entry[0]).name,
+						route.components.map(function (id) { return dex.abilities.get(id).name; }).join(' + ')
+					].map(function (label) { return '<td>' + BattleLog.escapeHTML(label) + '</td>'; }).join('') + '</tr>';
+				}).join('') + '</tbody></table></details>';
+		}
 		if (species.baseSpecies !== 'Silvally' || toID(set.ability) !== 'rkssystem') return '';
 		var parts = Dex.getAbilityDisplayComponents('rkssystem', dex, species.passives, species.id, set.item || '');
-		return '<small class="rks-memory-components" style="display:block;white-space:normal;width:230px;margin-left:-122px;padding-top:3px">Heals 1/16 HP each turn. Includes: ' + parts.map(function (id) { return BattleLog.escapeHTML(dex.abilities.get(id).name); }).join(' + ') + '</small>';
+		return '<small class="rks-memory-components" style="display:block;white-space:normal;width:230px;margin-left:-122px;padding-top:3px">Heals 1/16 HP each turn. ' + (Dex.getRKSMemoryPassive(species.id, set.ability, set.item) ? 'Memory passive: ' : 'Ability effect: ') + parts.map(function (id) { return BattleLog.escapeHTML(dex.abilities.get(id).name); }).join(' + ') + '</small>';
 	};
 	p.renderSet = function (set) {
-		return render.apply(this, arguments).replace(/(<input[^>]*name="ability"[^>]*>)/, '$1' + this.renderRKSMemory(set));
+		var html = render.apply(this, arguments), guide = this.renderRKSMemory(set);
+		return toID(set.ability) === 'unstableevo' ? html.replace(/<\/li>\s*$/, guide + '</li>') :
+			html.replace(/(<input[^>]*name="ability"[^>]*>)/, '$1' + guide);
 	};
 	var chartSet = p.chartSet;
 	p.chartSet = function () {
 		var result = chartSet.apply(this, arguments);
-		if (this.curSet && this.curTeam.dex.species.get(this.curSet.species).baseSpecies === 'Silvally') {
-			this.$('.rks-memory-components').remove();
-			this.$('input[name=ability]').after(this.renderRKSMemory(this.curSet));
+		if (this.curSet) {
+			this.$('.rks-memory-components, .unstable-evo-guide').remove();
+			var guide = this.renderRKSMemory(this.curSet);
+			if (toID(this.curSet.ability) === 'unstableevo') this.$('.setchart').first().after(guide);
+			else this.$('input[name=ability]').after(guide);
 		}
 		return result;
 	};

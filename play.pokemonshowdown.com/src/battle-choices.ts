@@ -18,6 +18,8 @@ interface BattleRequestSideInfo {
 	pokemon: ServerPokemon[];
 }
 interface BattleRequestActivePokemon {
+	megaForms?: Partial<Record<'mega' | 'megax' | 'megay', string>>;
+	megaFormStats?: Partial<Record<'mega' | 'megax' | 'megay', {atk: number, spa: number}>>;
 	pulseMoves?: BattleRequestActivePokemon['moves'];
 	moves: {
 		name: string,

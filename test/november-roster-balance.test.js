@@ -27,7 +27,7 @@ describe('November roster client data',()=>{
   assert(!Dex.getAbilityEffects('spinfiend').has('vitalspirit'));
   assert(Dex.getAbilityEffects('dreadpresence').has('darkaura'));
   assert(!/Psychic\/Fairy|attacks also gain 25%/.test(Dex.abilities.get('breakingnews').desc));
-  for(const id of ['analytic','download'])assert(Dex.getAbilityEffects('cosmicanalysis').has(id));
+  for(const id of ['analytic','naturalcure'])assert(Dex.getAbilityEffects('cosmicanalysis').has(id));
   assert.equal(Dex.abilities.get('worldbreaker').id,'stringsofruin');
   assert.equal(Dex.abilities.get('worldbreaker').name,'Strings of Ruin');
   assert.equal(Dex.species.get('hydreigon').abilities[1],'Strings of Ruin');

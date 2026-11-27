@@ -405,21 +405,30 @@ class BattlePanel extends PSRoomPanel<BattleRoom> {
 			});
 		}
 
+		const route = choices.current.megax ? 'megax' : choices.current.megay ? 'megay' :
+			choices.current.mega ? 'mega' : null;
+		const owner = request.side.pokemon[pokemonIndex];
+		const form = route && Dex.getBattleMegaForms(active, owner.speciesForme, owner.item || '')[route];
+		const stats = route && active.megaFormStats?.[route];
 		return active.moves.map((moveData, i) => {
-			const move = dex.moves.get(moveData.name);
+			const move = form && !(route === 'mega' && active.pulseMoves) ?
+				Dex.getPendingMegaMove(form, owner.moves?.[i] || moveData.id, moveData.name) : dex.moves.get(moveData.name);
 			const battle = this.props.room.battle;
 			const calledMove = move.id === 'naturepower' ? BattleTooltips.getNaturePowerMove(battle) : null;
 			let moveType = calledMove?.type || move.type;
-			if (move.id === 'blacktestament') {
+			if (form || ['blacktestament', 'ancestralwrath', 'greedgospel'].includes(move.id)) {
 				const slot = battle.mySide.n > 1 ? pokemonIndex + battle.pokemonControlled : pokemonIndex;
 				const pokemon = battle.nearSide.active[slot];
 				const own = request.side.pokemon[pokemonIndex];
 				if (pokemon && own) {
-					const value = new ModifiableValue(battle, pokemon, own);
+					const preview = form ? BattleTooltips.pendingMegaPokemon(pokemon, own, form, stats || undefined) :
+						{pokemon, serverPokemon: own};
+					const value = new ModifiableValue(battle, preview.pokemon, preview.serverPokemon);
 					moveType = new BattleTooltips(battle).getMoveType(move, value)[0];
 				}
 			}
-			const tooltip = `move|${moveData.name}|${pokemonIndex}`;
+			const projection = form ? '||' + toID(form) + (stats ? '|' + stats.atk + '|' + stats.spa : '') : '';
+			const tooltip = `move|${move.name}|${pokemonIndex}${projection}`;
 			return <MoveButton cmd={`/move ${i + 1}`} type={moveType} tooltip={tooltip} moveData={moveData}>
 				{calledMove ? `Nature Power → ${calledMove.name}` : move.name}
 			</MoveButton>;
@@ -648,6 +657,11 @@ class BattlePanel extends PSRoomPanel<BattleRoom> {
 				megaXLabel = gardevoirRoutes.megax || megaXLabel;
 				megaYLabel = gardevoirRoutes.megay || megaYLabel;
 			}
+
+			const forms = Dex.getBattleMegaForms(moveRequest, pokemon.speciesForme, pokemon.item || '');
+			megaLabel = forms.mega || megaLabel;
+			megaXLabel = forms.megax || megaXLabel;
+			megaYLabel = forms.megay || megaYLabel;
 
 			if (choices.current.move) {
 				const moveName = choices.getChosenMove(choices.current, choices.index()).name;

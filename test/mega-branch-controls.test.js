@@ -41,6 +41,29 @@ describe('Banette branching Mega controls', () => {
 });
 
 describe('Garchompite branching Mega controls', () => {
+	it('prefers the request destinations, including an occupied Battle Bond form', () => {
+		const {Dex} = require('./helpers/isolated-dex.cjs')();
+		const forms = {mega: 'Garchomp-Mega', megax: 'Garchomp-Mega-Z'};
+		assert.deepEqual(Dex.getBattleMegaForms({megaForms:forms}, 'Garchomp-Battle-Bond', 'Garchompite'), forms);
+		assert.deepEqual(Dex.getBattleMegaForms({megaForms:{mega:'Garchomp-Mega-Z'}}, 'Garchomp', 'Garchompite Z'),
+			{mega:'Garchomp-Mega-Z'});
+		assert.equal(Dex.getPendingMegaMove(forms.mega, 'dualchop', 'Apex Cleave').name, 'Dual Chop');
+		assert.equal(Dex.getPendingMegaMove(forms.megax, 'dragonpulse', 'Dragon Pulse').name, 'Sonic Lance');
+		assert.equal(Dex.getPendingMegaMove(forms.mega, 'earthquake', 'Earthquake').name, 'Fault Cleave');
+	});
+	it('maps older boolean requests to known alternate stones, cosmetic forms and Rayquaza', () => {
+		const {Dex} = require('./helpers/isolated-dex.cjs')();
+		const rows = [
+			['Rayquaza','Leftovers','mega','Rayquaza-Mega'], ['Flygon','Flygonite','megax','Flygon-Mega-Z'],
+			['Scolipede-Azzy','Scolipite','mega','Scolipede-Mega-Azzy'], ['Gallade-Azzy','Galladite','mega','Gallade-Mega-Azzy'],
+			['Alakazam-Alt','Alakazite','mega','Alakazam-Mega-Alt'], ['Charizard-Alt','Charizardite X','mega','Charizard-Mega-X-Alt'],
+			['Floette','Floettite','mega','Floette-Mega'], ['Emboar-Mega-Reborn','Emboarite','mega','Emboar-Mega'],
+		];
+		for (const [species, item, token, form] of rows) {
+			const routes = Dex.getBattleMegaForms({canMegaEvo:true, canMegaEvoX:token === 'megax'}, species, item);
+			assert.equal(routes[token], form, species);
+		}
+	});
 	it('equips the shared stone when adding the Z form in the teambuilder', () => {
 		const source = fs.readFileSync(require('path').join(__dirname, '../play.pokemonshowdown.com/js/client-teambuilder.js'), 'utf8');
 		const start = source.indexOf("\t\t\tif (!(this.curTeam.format.includes('hackmons')");

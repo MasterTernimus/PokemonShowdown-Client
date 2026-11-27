@@ -46,6 +46,7 @@ describe('Battle', () => {
 				'|-message|Balloon raised its Fire power!', '|-boost|p1a: Balloon|spa|1',
 				'|-start|p1a: Balloon|' + event,
 			]});
+			battle.seekTurn(Infinity);
 			const holder = battle.p1.active[0];
 			assert.equal(holder.ability, 'Unburden');
 			assert(holder.volatiles.flashfire);

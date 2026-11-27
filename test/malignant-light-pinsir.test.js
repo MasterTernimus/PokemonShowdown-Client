@@ -6,6 +6,7 @@ describe('Star Lens and Pinsir client data', () => {
 		assert.deepEqual(Dex.species.get('pinsir').abilities, {0: 'Siege Grip', 1: 'Iron Maiden', H: 'Violent Rush'});
 		assert.deepEqual(Dex.species.get('pinsir').passives, ['hypercutter']);
 		assert.deepEqual(Dex.species.get('starmie').passives, ['starlens']);
+		assert.equal(Dex.species.get('starmie').abilities[1], 'Misaligned Stars');
 		assert.deepEqual(Dex.species.get('necrozma').abilities, {0: 'Prism Armor', 1: 'Star Lens'});
 		assert.equal(Dex.species.get('ampharos').abilities[0], 'Star Lens');
 		assert.deepEqual(Dex.species.get('pinsirmega').abilities, {0: 'Unbridled Flight'});
@@ -18,6 +19,9 @@ describe('Star Lens and Pinsir client data', () => {
 			assert(components.includes('illuminate')); assert(!components.includes('relicbeam'));
 			assert(Dex.abilities.get(id).desc.includes('/relicbeam'));
 		}
+		for (const part of ['starlens', 'misalignedstars', 'victorystar']) assert(Dex.getAbilityEffects('astralcore').has(part));
+		assert(!Dex.getAbilityEffects('astralcore').has('naturalcure'));
+		assert(!Dex.getAbilityEffects('cosmicanalysis').has('download'));
 		assert([...Dex.getAbilityEffects('ironmaiden')].includes('moxie'));
 		assert([...Dex.getAbilityEffects('siegegrip')].includes('moldbreaker'));
 		assert.match(Dex.abilities.get('ironmaiden').desc, /once per attacking move/);

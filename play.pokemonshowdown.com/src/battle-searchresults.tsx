@@ -207,14 +207,18 @@ class PSSearchResults extends preact.Component<{
 
 	renderMoveRow(id: ID, matchStart: number, matchEnd: number, errorMessage?: preact.ComponentChildren) {
 		const search = this.props.search;
+		const slot = /^_(\d+)_(.*)$/.exec(id);
+		if (slot && !slot[2]) return <li class="result"><a href="#" data-entry={`move||${slot[1]}`}>Empty move slot {slot[1]}</a></li>;
+		if (slot) id = slot[2] as ID;
 		const move = Dex.getTeambuilderMoveDisplay(search.dex.moves.get(id), search.typedSearch?.set, search.dex);
 		if (!move) return <li class="result">Unrecognized move</li>;
 
 		const megaHint = Dex.getMegaMoveHint(id, search.typedSearch?.set, search.dex);
+		const entry = slot ? `move|${move.name}|${slot[1]}` : `move|${move.name}`;
 		const tagStart = (move.name.startsWith('Hidden Power') ? 12 : 0);
 
 		if (errorMessage) {
-			return <li class="result"><a href={`${this.URL_ROOT}move/${id}`} data-target="push" data-entry={`move|${move.name}`}>
+			return <li class="result"><a href={`${this.URL_ROOT}move/${id}`} data-target="push" data-entry={entry}>
 				<span class="col movenamecol">{this.renderName(move.name, matchStart, matchEnd, tagStart)}{megaHint && <small class="mega-move-hint">{megaHint}</small>}</span>
 
 				{errorMessage}
@@ -223,7 +227,7 @@ class PSSearchResults extends preact.Component<{
 
 		let pp = (move.pp === 1 || move.noPPBoosts ? move.pp : move.pp * 8 / 5);
 		if (search.dex.gen < 3) pp = Math.min(61, pp);
-		return <li class="result"><a href={`${this.URL_ROOT}move/${id}`} data-target="push" data-entry={`move|${move.name}`}>
+		return <li class="result"><a href={`${this.URL_ROOT}move/${id}`} data-target="push" data-entry={entry}>
 			<span class="col movenamecol">{this.renderName(move.name, matchStart, matchEnd, tagStart)}{megaHint && <small class="mega-move-hint">{megaHint}</small>}</span>
 
 			<span class="col typecol">
@@ -347,7 +351,7 @@ class PSSearchResults extends preact.Component<{
 		let label;
 		if ((label = search.filterLabel(type))) { // tslint:disable-line
 			errorMessage = <span class="col filtercol"><em>{label}</em></span>;
-		} else if ((label = search.illegalLabel(id as ID))) { // tslint:disable-line
+		} else if ((label = search.illegalLabel((type === 'move' ? id.replace(/^_\d+_/, '') : id) as ID))) { // tslint:disable-line
 			errorMessage = <span class="col illegalcol"><em>{label}</em></span>;
 		}
 
@@ -389,7 +393,7 @@ class PSSearchResults extends preact.Component<{
 
 	render() {
 		const search = this.props.search;
-		const results = [...(search.prependResults || []), ...(search.results || [])];
+		const results = search.getDisplayResults();
 		const limit =
 			this.props.windowing === null
 				? results.length

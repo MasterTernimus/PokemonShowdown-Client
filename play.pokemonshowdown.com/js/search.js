@@ -152,7 +152,9 @@
 			if (this.engine.typedSearch.searchType === 'item') {
 				this.resultSet = this.resultSet.filter(function (row) { return row[0] !== 'item' || row[1] !== firstElem; });
 			}
-			this.resultSet = [[this.engine.typedSearch.searchType, firstElem]].concat(this.resultSet);
+			var pinned = [[this.engine.typedSearch.searchType, firstElem]];
+			this.resultSet = this.engine.typedSearch.searchType === 'move' ?
+				this.engine.getDisplayResults(pinned) : pinned.concat(this.resultSet);
 			if (this.resultSet.length > 1 && ['sortpokemon', 'sortmove'].includes(this.resultSet[1][0])) {
 				var sortRow = this.resultSet[1];
 				this.resultSet[1] = this.resultSet[0];

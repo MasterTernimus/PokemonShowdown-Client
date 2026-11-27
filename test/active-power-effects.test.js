@@ -28,6 +28,15 @@ describe('Active aura and team power displays', () => {
 		const fightingKick = {...kick, type: 'Fighting'};
 		assert.equal(tips.getMoveBasePower(fightingKick, 'Fighting', new ModifiableValue(battle, p, own), q).value, 100);
 	});
+	it('shows the kicking boost only on the selected seasonal Striker slot', () => {
+		const kick = {...Dex.moves.get('doublekick'), basePower: 100, flags: {kick: 1}};
+		for (const season of ['Spring', 'Summer', 'Autumn', 'Winter']) {
+			own.speciesForme = p.speciesForme = 'Sawsbuck-' + season;
+			own.passives = ['seasonalstride'];
+			own.ability = own.baseAbility = p.ability = season + ' Striker';
+			assert.equal(tips.getMoveBasePower(kick, 'Fighting', new ModifiableValue(battle, p, own), q).value, 140);
+		}
+	});
 	function power(type = 'Dark', flags = {}) {
 		const move = {...Dex.moves.get('darkpulse'), basePower: 80, category: 'Special', type, flags};
 		return tips.getMoveBasePower(move, type, new ModifiableValue(battle, p, own), q);

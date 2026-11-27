@@ -1604,7 +1604,7 @@ class Species implements Effect {
 		this.tier = data.tier || '';
 
 		this.isTotem = false;
-		this.isMega = !!(this.forme && ['-mega', '-megax', '-megay', '-megaz'].includes(this.formeid));
+		this.isMega = this.forme.includes('Mega');
 		this.isPrimal = !!(this.forme && (this.formeid === '-primal' || (this.baseSpecies === 'Regigigas' && this.formeid === '-primordial')));
 		this.canGigantamax = !!data.canGigantamax;
 		this.cannotDynamax = !!data.cannotDynamax;
@@ -1622,7 +1622,7 @@ class Species implements Effect {
 				this.gen = 7;
 			} else if (this.isMega || this.isPrimal) {
 				this.gen = 6;
-				this.battleOnly = this.baseSpecies;
+				this.battleOnly ||= this.changesFrom || this.baseSpecies;
 			} else if (this.formeid === '-totem' || this.formeid === '-alolatotem') {
 				this.gen = 7;
 				this.isTotem = true;

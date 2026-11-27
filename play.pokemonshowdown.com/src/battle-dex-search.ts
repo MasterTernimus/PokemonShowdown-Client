@@ -360,6 +360,23 @@ class DexSearch {
 	}
 
 	prependResults: SearchRow[] | null = null;
+	getDisplayResults(pinned = this.prependResults): SearchRow[] {
+		const rows = this.results || [];
+		if (!pinned?.length) return rows;
+		const moveIds = new Set(pinned.filter(row => row[0] === 'move')
+			.map(row => row[1].replace(/^_\d+_/, '')).filter(Boolean));
+		if (!moveIds.size) return [...pinned, ...rows];
+		const isPinnedMove = (row?: SearchRow) => row?.[0] === 'move' && moveIds.has(row[1]);
+		const rest = rows.filter((row, index) => {
+			if (isPinnedMove(row)) return false;
+			if (row[0] !== 'header' || !isPinnedMove(rows[index + 1])) return true;
+			// Remove a heading only when pinning removed its entire section.
+			let next = index + 1;
+			while (isPinnedMove(rows[next])) next++;
+			return next < rows.length && rows[next][0] !== 'header';
+		});
+		return [...pinned, ...rest];
+	}
 	query = '';
 	itemToolFilter = 'all';
 
@@ -1416,7 +1433,9 @@ abstract class BattleTypedSearch<T extends SearchType> {
 		if (lsetSpecies.id === 'sinisteaantique') return 'sinistea' as ID;
 		if (lsetSpecies.id === 'tatsugiristretchy') return 'tatsugiri' as ID;
 
-		const next = lsetSpecies.battleOnly || lsetSpecies.changesFrom || lsetSpecies.prevo;
+		const origin = lsetSpecies.battleOnly;
+		const next = Array.isArray(origin) ? lsetSpecies.changesFrom || origin[0] :
+			origin || lsetSpecies.changesFrom || lsetSpecies.prevo;
 		if (next) return toID(next);
 
 		return '' as ID;

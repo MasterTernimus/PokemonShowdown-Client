@@ -621,3 +621,8 @@
 .unified-profiles .library-step { margin-top: 0; padding-top: 10px; padding-bottom: 10px; }
 .unified-profiles .profile-member-row .profile-select-member { width: 24px; height: 24px; }
 .unified-profiles .profile-member-row { padding-left: 32px; }
+
+.unstable-evo-guide { clear: both; padding: 6px 8px; overflow-x: auto; }
+.unstable-evo-guide summary { cursor: pointer; font-weight: bold; }
+.unstable-evo-guide table { border-collapse: collapse; margin-top: 4px; }
+.unstable-evo-guide th, .unstable-evo-guide td { padding: 3px 8px 3px 0; text-align: left; }

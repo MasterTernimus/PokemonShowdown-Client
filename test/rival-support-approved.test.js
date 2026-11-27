@@ -6,7 +6,7 @@ describe('Rival/support approved client',()=>{
  for(const [ability,id]of [['Apex Venom','poisonfang'],['Sirius','drakefang']])it(ability+' shows Strong Jaw without the removed Fang signature multiplier',()=>{
   const b=new Battle({debug:true,log:['|init|battle','|gen|9','|gametype|singles','|switch|p1a: Mew|Mew, L100|100/100','|switch|p2a: Mew|Mew, L100|100/100']});
   try{const p=b.p1.active[0],own={speciesForme:'Mew',ability,baseAbility:ability,passives:[],item:'',hp:100,maxhp:100,level:100,status:'',stats:{atk:100,def:100,spa:100,spd:100,spe:100}},tips=new BattleTooltips(b),m=Dex.moves.get(id);
-   assert.equal(tips.getMoveBasePower(m,m.type,new ModifiableValue(b,p,own),b.p2.active[0]).value,127.5);
+   assert.equal(tips.getMoveBasePower(m,m.type,new ModifiableValue(b,p,own),b.p2.active[0]).value,m.basePower*1.5);
   }finally{b.destroy();}
  });
  it('shows ordinary move accuracy even against a poisoned opponent', () => {

@@ -13,12 +13,19 @@ describe('Omen Sight and concise warning displays', () => {
 		for (const id of ['anticipation', 'forewarn', 'omensight']) {
 			const ability = Dex.abilities.get(id);
 			assert(ability.exists);
-			assert(ability.shortDesc.includes(id === 'omensight' ? '43.75%' : '25%'));
+			assert(ability.shortDesc.includes(id === 'omensight' ? 'Misaligned Stars' : '25%'));
 			assert(ability.desc.includes('Psychic Terrain'));
 			assert(!/Allies are not checked|initial checks|trigger twice|component:|This replaces/.test(ability.desc));
 			assert(ability.shortDesc.length <= 100);
 		}
 		assert(Dex.abilities.get('omensight').desc.includes("each foe's warned moves"));
+	});
+	it('shows Misaligned Stars on both event evolutions and the revised Absol components', () => {
+		for (const species of ['Abysseon', 'Divineon']) {
+			assert.deepEqual([...Dex.species.get(species).passives], ['misalignedstars']);
+		}
+		assert(Dex.getAbilityEffects('omensight').has('misalignedstars'));
+		assert(!Dex.getAbilityEffects('omenedge').has('dualwield'));
 	});
 	it('keeps Magic Bounce on Doom Warning and moves sensing to the passive', () => {
 		const ability = Dex.abilities.get('doomwarning');

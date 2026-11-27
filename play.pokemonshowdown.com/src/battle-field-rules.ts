@@ -27,6 +27,24 @@ const groundBoneMoves = {
 		return move.type === 'Ground' && ['boneclub', 'bonerush', 'bonemerang'].includes(move.id);
 	},
 };
+const signatureCategoryPower = {
+	categoryPower: function categoryPower(move, category, multiplier) {
+		if (
+			!move.signatureLearnedCategory ||
+			move.signatureLearnedCategory === move.category ||
+			move.category === 'Status'
+		) {
+			return move.category === category ? multiplier : 1;
+		}
+		const totals = (move.signaturePowerTotals ||= {Physical: 1, Special: 1});
+		const before = Math.max(totals.Physical, totals.Special);
+		totals[category] *= multiplier;
+		if (totals.defer) {
+			return 1;
+		}
+		return Math.max(totals.Physical, totals.Special) / before;
+	},
+};
 const denCooling = {
 	surf: 1,
 	muddywater: 1,
@@ -1669,8 +1687,12 @@ const BattleFieldRules = [
 			if (move.type === 'Grass') {
 				modifier *= adaptiveCycle.adaptiveFieldMultiplier(this, source, target, 1.5);
 			}
-			if (move.type === 'Bug' && move.category === 'Special') {
-				modifier *= adaptiveCycle.adaptiveFieldMultiplier(this, source, target, 1.5);
+			if (move.type === 'Bug') {
+				modifier *= signatureCategoryPower.categoryPower(
+					move,
+					'Special',
+					adaptiveCycle.adaptiveFieldMultiplier(this, source, target, 1.5)
+				);
 			}
 			if (boosted.includes(move.id)) {
 				this.add('-message', 'The forest stirred with the rhythm of the attack!');
@@ -1884,9 +1906,16 @@ const BattleFieldRules = [
 				this.add('-message', 'Legendary power accelerated the attack!');
 				modifier *= adaptiveCycle.adaptiveFieldMultiplier(this, source, target, 1.5);
 			}
-			if ((move.type === 'Fairy' || move.type === 'Normal') && move.category === 'Special') {
+			if (
+				(move.type === 'Fairy' || move.type === 'Normal') &&
+				(move.category === 'Special' || move.signatureLearnedCategory === 'Special')
+			) {
 				this.add('-message', 'The holy energy resonated with the attack!');
-				modifier *= adaptiveCycle.adaptiveFieldMultiplier(this, source, target, 1.5);
+				modifier *= signatureCategoryPower.categoryPower(
+					move,
+					'Special',
+					adaptiveCycle.adaptiveFieldMultiplier(this, source, target, 1.5)
+				);
 			}
 			if (move.type === 'Dragon' || move.type === 'Psychic') {
 				this.add('-message', 'The legendary energy resonated with the attack!');
@@ -2275,7 +2304,7 @@ const BattleFieldRules = [
 		id: 'newworldterrain',
 		name: 'New World Terrain',
 		notes: [
-			'Rejects weather and Auras. Grounded Pokémon lose 25% Speed unless protected by Limber, Web Assassin or Spiral Evolution; airborne Pokémon lose 10% Defense and Special Defense except ordinary Gardevoir with Void Veil. Fortress Shell grants +1 Defense and Special Defense once per qualifying field. Terrain Pulse chooses a random type.',
+			'Rejects weather and Auras. Grounded Pokémon lose 25% Speed unless protected by Duskilate, Limber, Web Assassin or Spiral Evolution. Airborne Pokémon normally lose 10% Defense and Sp. Def. Gravity-exempt Pokémon and Void Crossing avoid this penalty. Fortress Shell grants +1 Defense and Sp. Def once per qualifying field. Terrain Pulse chooses a random type.',
 		],
 		onBasePower(basePower, source, target, move) {
 			let modifier = 1;
@@ -2451,8 +2480,12 @@ const BattleFieldRules = [
 				'zenheadbutt',
 			];
 			const weakenedMoves = ['darkpulse', 'nightdaze', 'neverendingnightmare', 'shadowball'];
-			if (move.type === 'Normal' && move.category === 'Special') {
-				modifier *= adaptiveCycle.adaptiveFieldMultiplier(this, source, target, 1.5);
+			if (move.type === 'Normal') {
+				modifier *= signatureCategoryPower.categoryPower(
+					move,
+					'Special',
+					adaptiveCycle.adaptiveFieldMultiplier(this, source, target, 1.5)
+				);
 			}
 			if (strengthenedMoves.includes(move.id)) {
 				this.add('-message', 'The terrain strengthened the attack!');

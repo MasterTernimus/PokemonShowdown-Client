@@ -104,6 +104,7 @@ class ModifiableValue {
 					'bottomlessgullet',
 					'divefisher',
 					'scatterbrain',
+					'springstriker', 'summerstriker', 'autumnstriker', 'winterstriker',
 				].includes(activeId) ||
 				(activeId === 'quarrycannon' && abilityName === 'Mega Launcher') ||
 				(['updraft', 'stormsovereign'].includes(activeId) && abilityName === 'Competitive') ||
@@ -114,11 +115,13 @@ class ModifiableValue {
 					'Sharpness',
 					'Dual Wield',
 					'Power Drill',
+					'Tyrant Stream',
 					'Mega Launcher',
 					'Fire Mane',
 				].includes(abilityName) ||
 				(['atrocity', 'apexpredator'].includes(activeId) && abilityName === 'Tough Claws') ||
 				(activeId === 'rupturedheaven' && abilityName === 'Sharpness') ||
+				(activeId === 'shadowcurrent' && abilityName === 'Technician') ||
 				(activeId === 'wintersmalice' && abilityName === 'Refrigerate')) &&
 			Dex.getAbilityEffects(activeId).has(toID(abilityName)) &&
 			!excluded.includes(toID(abilityName));
@@ -446,19 +449,9 @@ class BattleTooltips {
 			let gmaxMove = args[3] ? this.battle.dex.moves.get(args[3]) : undefined;
 			if (!pokemon) return false;
 			let serverPokemon = this.battle.myPokemon![teamIndex];
-			if (type === 'move' && args[4] === 'sevipermega') {
-				// A selection preview must never mutate the live Pokemon or request.
-				const species = this.battle.dex.species.get('Seviper-Mega');
-				serverPokemon = {
-					...serverPokemon,
-					stats: serverPokemon.megaStats || serverPokemon.stats,
-					speciesForme: species.name,
-					ability: 'Sirius',
-					baseAbility: 'Sirius',
-					passives: species.passives,
-				};
-				pokemon = Object.assign(Object.create(Object.getPrototypeOf(pokemon)), pokemon,
-					{speciesForme: species.name, ability: 'Sirius', baseAbility: 'Sirius'}) as Pokemon;
+			if (type === 'move' && args[4]) {
+				const stats = args[5] && args[6] ? {atk: Number(args[5]), spa: Number(args[6])} : undefined;
+				({pokemon, serverPokemon} = BattleTooltips.pendingMegaPokemon(pokemon, serverPokemon, args[4], stats));
 			}
 			buf = this.showMoveTooltip(move, type, pokemon, serverPokemon, gmaxMove);
 			break;
@@ -748,6 +741,23 @@ class BattleTooltips {
 		return battle.dex.moves.get(mapping[fieldId] || 'triattack');
 	}
 
+	static pendingMegaPokemon(
+		pokemon: Pokemon, serverPokemon: ServerPokemon, form: string, offense?: {atk: number, spa: number}
+	) {
+		const species = pokemon.side.battle.dex.species.get(form);
+		if (!species.exists) return {pokemon, serverPokemon};
+		const ability = species.abilities[0];
+		const stats = species.id === 'sevipermega' && serverPokemon.megaStats || serverPokemon.stats;
+		serverPokemon = {
+			...serverPokemon, speciesForme: species.name, ability, baseAbility: ability,
+			passives: species.passives, stats: {...stats, ...offense},
+		};
+		const volatiles = {...pokemon.volatiles};
+		delete volatiles.formechange;
+		pokemon = Object.assign(Object.create(Object.getPrototypeOf(pokemon)), pokemon,
+			{speciesForme: species.name, ability, baseAbility: ability, volatiles});
+		return {pokemon, serverPokemon};
+	}
 	showMoveTooltip(move: Move, isZOrMax: string, pokemon: Pokemon, serverPokemon: ServerPokemon, gmaxMove?: Move) {
 		if (!isZOrMax && move.id === 'extremespeed' && toID(pokemon.getSpeciesForme()) === 'arcaninebattlebond' &&
 			new ModifiableValue(this.battle, pokemon, serverPokemon).tryAbility('Sacred Bond')) {
@@ -796,6 +806,7 @@ class BattleTooltips {
 
 		let value = new ModifiableValue(this.battle, pokemon, serverPokemon);
 		let [moveType, category] = this.getMoveType(move, value, isZOrMax === 'maxmove' ? gmaxMove || true : undefined);
+		if (move.id === 'ancestralwrath' && isZOrMax === 'zmove') moveType = move.type;
 		let categoryDiff = move.category !== category;
 		move = new Move(move.id, '', { ...move, category });
 
@@ -883,8 +894,19 @@ class BattleTooltips {
 			move = new Move(move.id, move.name, {...move, flags});
 		}
 
-		text += Dex.getTypeIcon(moveType);
+		const typedTargets = ['ancestralwrath', 'greedgospel'].includes(move.id) ?
+			foeActive.filter(p => !!p && !p.fainted) : [];
+		const targetTypes = typedTargets.map(target => move.id === 'greedgospel' ?
+			this.greedGospelType(serverPokemon, target) : this.ancestralWrathType(pokemon, serverPokemon, target));
+		const splitType = new Set(targetTypes).size > 1;
+		text += splitType ? Array.from(new Set(targetTypes), type => Dex.getTypeIcon(type)).join(' ') :
+			Dex.getTypeIcon(targetTypes[0] || moveType);
 		text += ['superumdmove', 'beasthunter', 'attackorder'].includes(move.id) ? ' Physical / Special</h2>' : ` ${Dex.getCategoryIcon(category)}</h2>`;
+		if (splitType) {
+			typedTargets.forEach((target, i) => {
+				text += '<p>' + Dex.getTypeIcon(targetTypes[i]) + ' vs ' + BattleLog.escapeHTML(target!.name) + '</p>';
+			});
+		}
 		if (naturePowerPreview) text += '<p>Calls this move in the current environment. Uses Nature Power\'s PP and status-move priority. Details below describe the called move.</p>';
 		if (rupturedHeaven) text += '<p>Ruptured Heaven: slicing moves are non-contact and receive Sharpness.</p>';
 		if (toID(pokemon.effectiveAbility(serverPokemon || undefined)) === 'burningquake') text += '<p>Burning Quake: +1 critical-hit ratio; after a move deals critical opposing HP damage, +1 Speed once per turn.</p>';
@@ -962,7 +984,12 @@ class BattleTooltips {
 			text += '<p>' + (isZOrMax === 'zmove' ? 'Current power' : 'Base power') + ': ' + value + '</p>';
 		}
 		if (move.id === Dex.megaMoveConversions.watershuriken?.greninjamega && value.tryAbility('Aegis Tide')) {
-			text += '<p>Power shown for the first hit. Each following hit starts at 20 power.</p>';
+			for (const target of foeActive) {
+				if (!target || target.fainted) continue;
+				const followUp = this.getMoveBasePower(move, moveType,
+					new ModifiableValue(this.battle, pokemon, serverPokemon), target, 2);
+				text += '<p>Following hits vs ' + BattleLog.escapeHTML(target.name) + ': ' + followUp + '</p>';
+			}
 		}
 
 		const gilded =
@@ -1344,7 +1371,10 @@ class BattleTooltips {
 		}
 
 		// Owner-only request data is authoritative. Opponents use only their publicly displayed form.
-		const passives = serverPokemon?.passives ?? (clientPokemon ? clientPokemon.getSpecies().passives : []);
+		const publicMemory = clientPokemon && Dex.getRKSMemoryPassive(clientPokemon.getSpecies().id,
+			clientPokemon.ability, clientPokemon.item);
+		const passives = serverPokemon?.passives ??
+			(publicMemory ? [publicMemory] : clientPokemon?.getSpecies().passives ?? []);
 		if (passives.length && !(illusionIndex && illusionIndex > 1)) {
 			text += '<p class="pokemon-passives"><small>' + (passives.length === 1 ? 'Passive' : 'Passives') + ':</small> ' + passives.map(id =>
 				'<span class="passive-tooltip-entry"><strong>' + BattleLog.escapeHTML(Dex.abilities.get(id).name) + '</strong>: ' +
@@ -1542,13 +1572,6 @@ class BattleTooltips {
 			this.battle.dex.species.get(clientPokemon.volatiles.formechange[1]).baseSpecies : species;
 
 		let speedModifiers = [];
-		if (Dex.getStanceMoveRoute(clientPokemon?.getSpeciesForme() || serverPokemon.speciesForme, ability)) {
-			// Showdown stores the 1.2× modifier in 12-bit fixed point and rounds half down.
-			const modifier = 4915 / 4096;
-			stats.atk = Math.ceil(stats.atk * modifier - 0.5);
-			stats.spa = Math.ceil(stats.spa * modifier - 0.5);
-			speedModifiers.push(modifier);
-		}
 
 		// check for light ball, thick club, metal/quick powder
 		// the only stat modifying items in gen 2 were light ball, thick club, metal powder
@@ -1687,7 +1710,7 @@ class BattleTooltips {
 				(!Dex.getAbilityComponentExclusions(ability, passives).includes('levitate') &&
 				['levitate', 'elevate', 'solaridol', 'lunaridol', 'burningcrown',
 					'astralwitchcraft', 'phantombarrage', 'silentflight'].some(id => fieldAbilityEffects.has(id as ID)));
-			const gravityExempt = ability === 'voidvoice' ||
+			const gravityExempt = ['voidvoice', 'execution'].includes(ability) ||
 				(this.battle.dex.species.get(serverPokemon.speciesForme).id === 'gardevoir' && ability === 'voidveil');
 			const grounded = clientPokemon ? clientPokemon.isGrounded(serverPokemon) :
 				(this.battle.hasPseudoWeather('Gravity') && !gravityExempt) || item === 'ironball' ||
@@ -1700,7 +1723,7 @@ class BattleTooltips {
 				['Water Surface Terrain', 0.75, true, ['Water'], ['surgesurfer', 'swiftswim', 'webassassin', 'spiralevolution']],
 				['Murkwater Surface Terrain', 0.75, true, ['Water'], ['surgesurfer', 'swiftswim', 'webassassin',
 					'spiralevolution']],
-				['New World Terrain', 0.75, true, [], ['webassassin', 'spiralevolution']],
+				['New World Terrain', 0.75, true, [], ['limber', 'duskilate', 'webassassin', 'spiralevolution']],
 				['Snowy Terrain', 0.75, true, ['Ice'], ['slushrush', 'icebody', 'snowcloak', 'webassassin', 'spiralevolution']],
 				['Underwater Terrain', 0.5, false, ['Water'],
 					['elevate', 'swiftswim', 'steelworker', 'webassassin', 'spiralevolution']],
@@ -2032,6 +2055,45 @@ class BattleTooltips {
 	/**
 	 * Gets the proper current type for moves with a variable type.
 	 */
+	private greedGospelType(own: ServerPokemon, target?: Pokemon | null): TypeName {
+		if (!target || !own.greedGospelTargets?.includes(target.getIdent().split(':')[0])) return 'Rock';
+		let ghost = 0;
+		let rock = 0;
+		for (const type of target.getTypeList()) {
+			const chart = this.battle.dex.types.get(type).damageTaken;
+			if (!chart || chart.Ghost === 3) return 'Rock';
+			ghost += Number(chart.Ghost === 1) - Number(chart.Ghost === 2);
+			rock += Number(chart.Rock === 1) - Number(chart.Rock === 2);
+		}
+		return ghost >= 0 && rock <= 0 ? 'Ghost' : 'Rock';
+	}
+	private ancestralWrathType(pokemon: Pokemon, own: ServerPokemon, target?: Pokemon | null): TypeName {
+		const types = Array.from(pokemon.getTypeList(own, true));
+		if (pokemon.terastallized && pokemon.terastallized !== 'Stellar' &&
+			!types.includes(pokemon.terastallized as TypeName)) types.push(pokemon.terastallized as TypeName);
+		let bestType = types[0];
+		if (!target) return bestType;
+		const ringTarget = toID(target.item) === 'ringtarget' && !target.volatiles.embargo &&
+			!this.battle.hasPseudoWeather('Magic Room') && !target.hasKnownAbilityEffect('klutz' as ID);
+		let bestScore = -Infinity;
+		for (const type of types) {
+			if (type === 'Ground' && !target.isGrounded(undefined, ringTarget)) continue;
+			let score = 0;
+			for (const defense of target.getTypeList()) {
+				const matchup = this.battle.dex.types.get(defense).damageTaken?.[type];
+				if (matchup === 1) score++;
+				if (matchup === 2) score--;
+				if (matchup === 3 && type !== 'Ground' && !ringTarget &&
+					!(target.volatiles.foresight && (type === 'Fighting' || type === 'Normal')) &&
+					!(target.volatiles.miracleeye && type === 'Psychic')) score = -Infinity;
+			}
+			if (score > bestScore) {
+				bestType = type;
+				bestScore = score;
+			}
+		}
+		return bestType;
+	}
 	getMoveType(move: Move, value: ModifiableValue, forMaxMove?: boolean | Move): [TypeName, 'Physical' | 'Special' | 'Status'] {
 		const pokemon = value.pokemon;
 		const serverPokemon = value.serverPokemon;
@@ -2044,6 +2106,12 @@ class BattleTooltips {
 
 		let pokemonTypes = pokemon.getTypeList(serverPokemon);
 		value.reset();
+		if (['ancestralwrath', 'greedgospel'].includes(move.id) && !forMaxMove) {
+			const foes = pokemon.side.foe.active.filter(p => p && !p.fainted);
+			const target = foes.length === 1 ? foes[0] : null;
+			moveType = move.id === 'greedgospel' ? this.greedGospelType(serverPokemon, target) :
+				this.ancestralWrathType(pokemon, serverPokemon, target);
+		}
 		if (move.id === 'thrash' && value.tryAbility('Raging Heart')) moveType = 'Ghost';
 		if (move.id === 'revelationdance') {
 			moveType = pokemonTypes[0];
@@ -2420,6 +2488,8 @@ class BattleTooltips {
 			move = {...move, category};
 			if (move.flags.megasignature && category === 'Special') move = {...move, overrideOffensiveStat: undefined};
 		}
+		if (move.id === 'ancestralwrath') moveType = this.ancestralWrathType(pokemon, serverPokemon, target);
+		if (move.id === 'greedgospel') moveType = this.greedGospelType(serverPokemon, target);
 		const fieldPower = (window as any).BattleFieldTooltips?.preview(this.battle,
 			{...move, type: moveType, midnightGround: move.type === 'Ground' && this.battle.hasPseudoWeather('Midnight Zone Terrain')},
 			pokemon, serverPokemon, target);
@@ -2428,7 +2498,17 @@ class BattleTooltips {
 		if (move.id === Dex.megaMoveConversions.watershuriken?.greninjamega && value.tryAbility('Aegis Tide')) {
 			value.set(hit === 1 ? 90 : 20, 'Aegis Tide');
 		}
-		if (['coldshoulder', 'steadfaststrike', 'ancestralwrath'].includes(move.id)) {
+		if (move.id === 'ancestralwrath') {
+			const side = pokemon.side;
+			if (target && side.pokemon.length === side.totalPokemon &&
+				target.side.pokemon.length === target.side.totalPokemon) {
+				const living = (team: typeof side) => team.pokemon.filter(p => !p.fainted).length;
+				value.set(living(side) < living(target.side) ? 130 : move.basePower);
+			} else {
+				value.setRange(move.basePower, 130, '130 when your side has fewer Pokémon remaining');
+			}
+		}
+		if (['coldshoulder', 'steadfaststrike'].includes(move.id)) {
 			// Preview cannot reliably see every damage event or the opposing bench's survival state.
 			value.setRange(move.basePower, 120, 'conditional power');
 		}
@@ -2503,7 +2583,7 @@ class BattleTooltips {
 			else basePower = 20;
 			value.set(basePower);
 		}
-		if (move.id === 'hex' || move.id === 'witchinghex') {
+		if (move.id === 'hex') {
 			const knownCondition = target?.status || target?.hasKnownAbilityEffect('comatose' as ID) ||
 				(target && pokemon.hasKnownAbilityEffect('hauntingpresence' as ID, serverPokemon) &&
 				['taunt', 'encore', 'disable', 'healblock'].some(id => target.volatiles[id]));
@@ -2698,6 +2778,7 @@ class BattleTooltips {
 		if (drillProfile.dual) value.powerAbilityModify(drillProfile.boost, drillProfile.label);
 		else value.modify(drillProfile.hits[0], drillProfile.label);
 	}
+		if (move.id === 'twineedle' || move.id === 'triplesting') value.abilityModify(2, 'Spiral Evolution');
 		if (moveType === 'Poison') value.abilityModify(1.3, 'Caustic Ooze');
 		if (moveType === 'Grass' && ['raindance', 'primordialsea'].includes(this.battle.weather) &&
 			value.tryWeather()) value.abilityModify(1.3, 'Rainlit Growth');
@@ -2722,6 +2803,14 @@ class BattleTooltips {
 		if (move.flags['bite']) {
 			value.abilityModify(1.5, "Strong Jaw");
 			value.abilityModify(1.5, "Frozen Feast");
+		}
+		if (value.tryAbility('Tyrant Stream')) {
+			let multiplier = move.flags.bite ? 1.5 : 1;
+			if (move.recoil || move.hasCrashDamage || ['explosion', 'selfdestruct', 'mistyexplosion'].includes(move.id)) {
+				multiplier *= 1.2;
+			}
+			if (this.battle.hasPseudoWeather('Chessboard Terrain')) multiplier *= 1.2;
+			if (multiplier !== 1) value.powerAbilityModify(multiplier, 'Tyrant Stream');
 		}
 		if (value.value <= value.technicianThreshold()) {
 			value.abilityModify(1.5, "Technician");
@@ -3308,8 +3397,9 @@ class BattleTooltips {
 				clientPokemon &&
 				!clientPokemon.effectiveAbility(serverPokemon || undefined);
 			text += '<br /><small>' + BattleLog.escapeHTML(forecastSuppressed ? 'Perfect Forecast suppressed: no form bonuses. Passive Forecast still changes form.' : shown.shortDesc) + '</small>';
-			if (parts.length) { text += '<br /><small>Includes: ' + parts.map(id => BattleLog.escapeHTML(
-				Dex.abilities.get(id).name)).join(' · ') + '</small>';
+			if (parts.length && shown.id !== 'rkssystem') {
+				text += '<br /><small>Includes: ' + parts.map(id => BattleLog.escapeHTML(
+					Dex.abilities.get(id).name)).join(' · ') + '</small>';
 			}
 		}
 		const tier = this.battle.tier;

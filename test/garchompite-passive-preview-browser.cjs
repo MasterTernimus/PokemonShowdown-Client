@@ -26,6 +26,18 @@ for (const width of [1280, 390]) {
  battle.makeChoices('team','team');
  await page.evaluate(({id,log,request})=>{const r=app.rooms[id];r.battle.reset();r.battle.setQueue(log.split('\n'));r.battle.seekTurn(Infinity);r.receiveRequest(request);r.updateControls();window.sentChoices=[];r.sendDecision=choice=>window.sentChoices.push(choice);},{id,log:battle.log.join('\n'),request:battle.getRequests('move')[0]});
  assert((await scope.locator('label.megaevo').allTextContents()).some(t=>t.includes('Garchomp-Mega-Z')));
+ const normal=scope.locator('input[name=megaevo]'), alternate=scope.locator('input[name=megaevox]');
+ const slot=n=>scope.locator('button[name=chooseMove][value="'+n+'"]');
+ await normal.check();
+ assert.match(await slot(3).innerText(),/Fault Cleave/);
+ assert.match(await slot(3).getAttribute('data-tooltip'),/Fault Cleave\|0\|\|garchompmega\|\d+\|\d+$/);
+ await alternate.check();
+ assert(!await normal.isChecked());
+ assert.match(await slot(1).innerText(),/Sonic Lance/);
+ assert.match(await slot(3).innerText(),/Earthquake/);
+ await alternate.uncheck();
+ assert.match(await slot(1).innerText(),/Dragon Pulse/);
+ assert(!(await slot(1).getAttribute('data-tooltip')).includes('garchompmega'));
  await scope.locator('input[name=megaevox]').check();
  await scope.locator('.battle-controls').screenshot({path:output+'/garchompite-choice-after-'+width+'.png'});
  await scope.locator('button[name=chooseMove]').first().click();

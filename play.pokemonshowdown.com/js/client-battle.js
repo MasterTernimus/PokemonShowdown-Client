@@ -584,7 +584,7 @@
 			if (checkbox.checked) this.$('input[name=megaevo], input[name=megaevox], input[name=megaevoy]').not(checkbox).prop('checked', false);
 			var pos = this.choice.choices.length;
 			var active = this.request.active[pos];
-			if (!active || !active.pulseMoves && !this.canPreviewDrakeFang(active, this.battle.myPokemon[pos])) return;
+			if (!active) return;
 			var selected = checkbox.checked ? checkbox.name : '';
 			this.tooltips.hideTooltip();
 			this.pulseMovePreview = {request: this.request, pos: pos, selected: selected};
@@ -693,6 +693,15 @@
 			}
 
 			this.finalDecisionMove = curActive.maybeDisabled || false;
+			var forms = Dex.getBattleMegaForms(curActive, pokemon.speciesForme || pokemon.species || pokemon.details || '', pokemon.item || '');
+			megaLabel = forms.mega || megaLabel;
+			megaXLabel = forms.megax || megaXLabel;
+			megaYLabel = forms.megay || megaYLabel;
+			var selectedRoute = pulsePreview && pulsePreview.request === this.request && pulsePreview.pos === pos &&
+				{megaevo: 'mega', megaevox: 'megax', megaevoy: 'megay'}[pulsePreview.selected];
+			var previewForm = forms[selectedRoute];
+			var previewStats = selectedRoute && curActive.megaFormStats && curActive.megaFormStats[selectedRoute];
+			var previewTooltip = previewForm ? '||' + toID(previewForm) + (previewStats ? '|' + previewStats.atk + '|' + previewStats.spa : '') : '';
 			this.finalDecisionSwitch = curActive.maybeTrapped || false;
 			for (var i = pos + 1; i < this.battle.nearSide.active.length; ++i) {
 				var p = this.battle.nearSide.active[i];
@@ -783,11 +792,21 @@
 				var moveMenu = '';
 				var movebuttons = '';
 				var activePos = this.battle.mySide.n > 1 ? pos + this.battle.pokemonControlled : pos;
-				var typeValueTracker = new ModifiableValue(this.battle, this.battle.nearSide.active[activePos], this.battle.myPokemon[pos]);
+				var previewPokemon = this.battle.nearSide.active[activePos];
+				var previewOwn = this.battle.myPokemon[pos];
+				if (previewForm && previewPokemon && previewOwn) {
+					var preview = BattleTooltips.pendingMegaPokemon(previewPokemon, previewOwn, previewForm, previewStats);
+					previewPokemon = preview.pokemon;
+					previewOwn = preview.serverPokemon;
+				}
+				var typeValueTracker = new ModifiableValue(this.battle, previewPokemon, previewOwn);
 				var currentlyDynamaxed = (!canDynamax && maxMoves);
 				for (var i = 0; i < curActive.moves.length; i++) {
 					var moveData = curActive.moves[i];
 					var move = this.battle.dex.moves.get(moveData.move);
+					if (previewForm && !(selectedRoute === 'mega' && curActive.pulseMoves)) {
+						move = Dex.getPendingMegaMove(previewForm, pokemon.moves && pokemon.moves[i] || moveData.id, moveData.move);
+					}
 					var name = move.name;
 					var pp = moveData.pp + '/' + moveData.maxpp;
 					if (!moveData.maxpp) pp = '&ndash;';
@@ -803,7 +822,7 @@
 						moveType = this.tooltips.getMoveType(calledMove, typeValueTracker)[0];
 					}
 					var crystalType = this.battle.hasPseudoWeather('Crystal Cavern Terrain') && this.battle.crystalCavernType && move.category !== 'Status' && (moveType === 'Rock' || ['judgement', 'multiattack', 'rockclimb', 'strength', 'prismaticlaser'].includes(move.id)) ? this.battle.crystalCavernType : '';
-					var tooltipArgs = 'move|' + moveData.move + '|' + pos + (drakeFangPreview ? '||sevipermega' : '');
+					var tooltipArgs = 'move|' + move.name + '|' + pos + previewTooltip;
 					if (moveData.disabled) {
 						movebuttons += '<button disabled class="has-tooltip" data-tooltip="' + BattleLog.escapeHTML(tooltipArgs) + '">';
 					} else {

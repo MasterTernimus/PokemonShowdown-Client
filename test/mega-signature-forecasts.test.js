@@ -69,19 +69,19 @@ describe('Mega signature battle forecasts', () => {
 		assert.equal(power('furnacecrash').value, 0);
 	});
 
-	it('shows Witching Hex’s status-based power and ordinary accuracy', () => {
+	it('shows the Shadow Ball signature without borrowing the status multiplier from Hex', () => {
 		foe.status = 'brn';
 		other.ability = 'Comatose';
-		assert.equal(power('witchinghex').value, 140);
-		assert.equal(power('witchinghex', other).value, 140);
+		assert.equal(power('witchinghex').value, 90);
+		assert.equal(power('witchinghex', other).value, 90);
 		assert.equal(accuracy('witchinghex'), 100);
 		assert.equal(accuracy('witchinghex', other), 100);
-		const html = tips.showMoveTooltip(Dex.moves.get('hex'), 'move', user, own);
+		const html = tips.showMoveTooltip(Dex.moves.get('shadowball'), 'move', user, own);
 		assert.match(html, /Witching Hex/);
 		assert.match(html, /Accuracy: 100%/);
 		assert.doesNotMatch(html, /Accuracy vs/);
 		foe.status = '';
-		assert.equal(power('witchinghex').value, 70);
+		assert.equal(power('witchinghex').value, 90);
 		assert.equal(accuracy('witchinghex'), 100);
 	});
 
@@ -98,7 +98,7 @@ describe('Mega signature battle forecasts', () => {
 		assert.equal(accuracy('rescuegale', other), 85);
 	});
 
-	it('shows the current form’s Water Pulse and applies Broadside’s evasion rule per target', () => {
+	it('shows the current form’s Water Pulse and Broadside’s Spikes removal and confusion', () => {
 		const pulse = Dex.moves.get('waterpulse');
 		for (const [forme, name] of [
 			['Blastoise-Mega', 'Broadside'], ['Milotic-Mega', 'Soothing Tide'],
@@ -114,16 +114,10 @@ describe('Mega signature battle forecasts', () => {
 		assert(move.flags.pulse);
 		assert.deepEqual(move.secondaries, pulse.secondaries);
 		assert(move.secondaries.some(effect => effect.volatileStatus === 'confusion' && effect.chance === 20));
-		user.boosts.accuracy = -2;
-		foe.boosts.evasion = 2;
-		other.boosts.evasion = -2;
-		assert.equal(accuracy('broadside', foe), 60);
-		assert.equal(accuracy('broadside', other), 100);
+		assert(!move.ignorePositiveEvasion);
 		const html = tips.showMoveTooltip(pulse, 'move', user, own);
-		assert.match(html, /Accuracy vs Left: 60%/);
-		assert.match(html, /Accuracy vs Right: 100%/);
-		user.boosts.accuracy = 0;
-		assert.equal(accuracy('broadside', other), 100);
+		assert.match(html, /Accuracy: 100%/);
+		assert.match(html, /one layer of Spikes/i);
 		assert(tips.showMoveTooltip(Dex.moves.get('flashcannon'), 'move', user, own).includes('<h2>Flash Cannon'));
 	});
 
@@ -159,7 +153,7 @@ describe('Mega signature battle forecasts', () => {
 			}
 			battle.pseudoWeather = [['Infernal Eclipse Terrain', 0, 0]];
 			const fieldOnly = power('witchinghex').value;
-			assert(fieldOnly >= 140);
+			assert.equal(fieldOnly, power('shadowball').value * 90 / 80);
 			foe.status = 'brn';
 			assert.equal(power('witchinghex').value, fieldOnly);
 			battle.pseudoWeather = [['Electric Terrain', 0, 0]];

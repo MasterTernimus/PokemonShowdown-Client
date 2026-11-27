@@ -86984,7 +86984,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"???",
 		],
-		"passives": [],
+		"passives": [
+			"misalignedstars",
+		],
 		"replaceAbilities": true,
 	},
 	"accelgor": {
@@ -87014,7 +87016,7 @@ for (const [id, update] of Object.entries({
 		"abilities": {
 			"0": "Stalwart",
 			"1": "Cursed Body",
-			"H": "Infiltrator",
+			"H": "Misaligned Stars",
 		},
 		"baseStats": {
 			"hp": 80,
@@ -87037,7 +87039,7 @@ for (const [id, update] of Object.entries({
 		"abilities": {
 			"0": "Stalwart",
 			"1": "Cursed Body",
-			"H": "Infiltrator",
+			"H": "Misaligned Stars",
 		},
 		"baseStats": {
 			"hp": 80,
@@ -88140,7 +88142,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Normal",
 		],
-		"passives": [],
+		"passives": [
+			"steadfast",
+		],
 		"replaceAbilities": true,
 	},
 	"arceusbug": {
@@ -88158,7 +88162,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Bug",
 		],
-		"passives": [],
+		"passives": [
+			"steadfast",
+		],
 		"replaceAbilities": true,
 	},
 	"arceusdark": {
@@ -88176,7 +88182,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Dark",
 		],
-		"passives": [],
+		"passives": [
+			"steadfast",
+		],
 		"replaceAbilities": true,
 	},
 	"arceusdragon": {
@@ -88194,7 +88202,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Dragon",
 		],
-		"passives": [],
+		"passives": [
+			"steadfast",
+		],
 		"replaceAbilities": true,
 	},
 	"arceuselectric": {
@@ -88212,7 +88222,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Electric",
 		],
-		"passives": [],
+		"passives": [
+			"steadfast",
+		],
 		"replaceAbilities": true,
 	},
 	"arceusfairy": {
@@ -88230,7 +88242,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Fairy",
 		],
-		"passives": [],
+		"passives": [
+			"steadfast",
+		],
 		"replaceAbilities": true,
 	},
 	"arceusfighting": {
@@ -88248,7 +88262,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Fighting",
 		],
-		"passives": [],
+		"passives": [
+			"steadfast",
+		],
 		"replaceAbilities": true,
 	},
 	"arceusfire": {
@@ -88266,7 +88282,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Fire",
 		],
-		"passives": [],
+		"passives": [
+			"steadfast",
+		],
 		"replaceAbilities": true,
 	},
 	"arceusflying": {
@@ -88284,7 +88302,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Flying",
 		],
-		"passives": [],
+		"passives": [
+			"steadfast",
+		],
 		"replaceAbilities": true,
 	},
 	"arceusghost": {
@@ -88302,7 +88322,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Ghost",
 		],
-		"passives": [],
+		"passives": [
+			"steadfast",
+		],
 		"replaceAbilities": true,
 	},
 	"arceusgrass": {
@@ -88320,7 +88342,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Grass",
 		],
-		"passives": [],
+		"passives": [
+			"steadfast",
+		],
 		"replaceAbilities": true,
 	},
 	"arceusground": {
@@ -88338,7 +88362,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Ground",
 		],
-		"passives": [],
+		"passives": [
+			"steadfast",
+		],
 		"replaceAbilities": true,
 	},
 	"arceusice": {
@@ -88356,7 +88382,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Ice",
 		],
-		"passives": [],
+		"passives": [
+			"steadfast",
+		],
 		"replaceAbilities": true,
 	},
 	"arceuspoison": {
@@ -88374,7 +88402,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Poison",
 		],
-		"passives": [],
+		"passives": [
+			"steadfast",
+		],
 		"replaceAbilities": true,
 	},
 	"arceuspsychic": {
@@ -88392,7 +88422,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Psychic",
 		],
-		"passives": [],
+		"passives": [
+			"steadfast",
+		],
 		"replaceAbilities": true,
 	},
 	"arceusrock": {
@@ -88410,7 +88442,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Rock",
 		],
-		"passives": [],
+		"passives": [
+			"steadfast",
+		],
 		"replaceAbilities": true,
 	},
 	"arceussteel": {
@@ -88428,7 +88462,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Steel",
 		],
-		"passives": [],
+		"passives": [
+			"steadfast",
+		],
 		"replaceAbilities": true,
 	},
 	"arceuswater": {
@@ -88446,7 +88482,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Water",
 		],
-		"passives": [],
+		"passives": [
+			"steadfast",
+		],
 		"replaceAbilities": true,
 	},
 	"archaludon": {
@@ -88799,6 +88837,8 @@ for (const [id, update] of Object.entries({
 	"articunogalar": {
 		"abilities": {
 			"0": "Competitive",
+			"1": "Thick Fat",
+			"H": "Rime Mantle",
 		},
 		"baseStats": {
 			"hp": 90,
@@ -88812,7 +88852,9 @@ for (const [id, update] of Object.entries({
 			"Psychic",
 			"Flying",
 		],
-		"passives": [],
+		"passives": [
+			"keeneye",
+		],
 		"replaceAbilities": true,
 	},
 	"astrolotl": {
@@ -90874,6 +90916,8 @@ for (const [id, update] of Object.entries({
 	"calyrex": {
 		"abilities": {
 			"0": "Unnerve",
+			"1": "Harvest",
+			"H": "Crown Tending",
 		},
 		"baseStats": {
 			"hp": 100,
@@ -90887,7 +90931,9 @@ for (const [id, update] of Object.entries({
 			"Psychic",
 			"Grass",
 		],
-		"passives": [],
+		"passives": [
+			"healer",
+		],
 		"replaceAbilities": true,
 	},
 	"calyrexice": {
@@ -90906,7 +90952,9 @@ for (const [id, update] of Object.entries({
 			"Psychic",
 			"Ice",
 		],
-		"passives": [],
+		"passives": [
+			"healer",
+		],
 		"replaceAbilities": true,
 	},
 	"calyrexshadow": {
@@ -90925,7 +90973,9 @@ for (const [id, update] of Object.entries({
 			"Psychic",
 			"Ghost",
 		],
-		"passives": [],
+		"passives": [
+			"healer",
+		],
 		"replaceAbilities": true,
 	},
 	"camerupt": {
@@ -91510,7 +91560,7 @@ for (const [id, update] of Object.entries({
 	},
 	"chandelure": {
 		"abilities": {
-			"0": "Infiltrator",
+			"0": "Misaligned Stars",
 			"1": "Soul Pyre",
 			"H": "Malice Well",
 			"S": "Soul Fire",
@@ -91988,7 +92038,9 @@ for (const [id, update] of Object.entries({
 			"Dark",
 			"Ice",
 		],
-		"passives": [],
+		"passives": [
+			"snowpassage",
+		],
 		"replaceAbilities": true,
 	},
 	"chikorita": {
@@ -92167,7 +92219,9 @@ for (const [id, update] of Object.entries({
 			"Dark",
 			"Fire",
 		],
-		"passives": [],
+		"passives": [
+			"flamebody",
+		],
 		"replaceAbilities": true,
 	},
 	"chromera": {
@@ -92661,8 +92715,9 @@ for (const [id, update] of Object.entries({
 	},
 	"cobalion": {
 		"abilities": {
-			"0": "Justified",
-			"1": "Sharpness",
+			"0": "Sharpness",
+			"1": "Inner Focus",
+			"H": "Clear Body",
 		},
 		"baseStats": {
 			"hp": 91,
@@ -92676,7 +92731,9 @@ for (const [id, update] of Object.entries({
 			"Steel",
 			"Fighting",
 		],
-		"passives": [],
+		"passives": [
+			"justified",
+		],
 		"replaceAbilities": true,
 	},
 	"cofagrigus": {
@@ -92940,7 +92997,8 @@ for (const [id, update] of Object.entries({
 	"corsolagalar": {
 		"abilities": {
 			"0": "Weak Armor",
-			"H": "Cursed Body",
+			"1": "Cursed Body",
+			"H": "Misaligned Stars",
 		},
 		"baseStats": {
 			"hp": 60,
@@ -93061,12 +93119,15 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Psychic",
 		],
-		"passives": [],
+		"passives": [
+			"nebuladrift",
+		],
 		"replaceAbilities": true,
 	},
 	"cosmog": {
 		"abilities": {
 			"0": "Unaware",
+			"1": "Healer",
 		},
 		"baseStats": {
 			"hp": 43,
@@ -93079,7 +93140,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Psychic",
 		],
-		"passives": [],
+		"passives": [
+			"nebuladrift",
+		],
 		"replaceAbilities": true,
 	},
 	"cottonee": {
@@ -93325,6 +93388,7 @@ for (const [id, update] of Object.entries({
 	"cresselia": {
 		"abilities": {
 			"0": "Levitate",
+			"1": "Lunar Wake",
 		},
 		"baseStats": {
 			"hp": 120,
@@ -93337,7 +93401,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Psychic",
 		],
-		"passives": [],
+		"passives": [
+			"healer",
+		],
 		"replaceAbilities": true,
 	},
 	"croagunk": {
@@ -93742,6 +93808,7 @@ for (const [id, update] of Object.entries({
 	"darkrai": {
 		"abilities": {
 			"0": "Bad Dreams",
+			"1": "Dream Stalker",
 		},
 		"baseStats": {
 			"hp": 70,
@@ -93754,7 +93821,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Dark",
 		],
-		"passives": [],
+		"passives": [
+			"earlybird",
+		],
 		"replaceAbilities": true,
 	},
 	"darkraimega": {
@@ -93772,7 +93841,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Dark",
 		],
-		"passives": [],
+		"passives": [
+			"earlybird",
+		],
 		"replaceAbilities": true,
 	},
 	"darmanitan": {
@@ -94417,7 +94488,9 @@ for (const [id, update] of Object.entries({
 			"Steel",
 			"Dragon",
 		],
-		"passives": [],
+		"passives": [
+			"oblivious",
+		],
 		"replaceAbilities": true,
 	},
 	"dialgaorigin": {
@@ -94437,12 +94510,15 @@ for (const [id, update] of Object.entries({
 			"Steel",
 			"Dragon",
 		],
-		"passives": [],
+		"passives": [
+			"oblivious",
+		],
 		"replaceAbilities": true,
 	},
 	"diancie": {
 		"abilities": {
 			"0": "Clear Body",
+			"1": "Sturdy",
 		},
 		"baseStats": {
 			"hp": 50,
@@ -94456,7 +94532,9 @@ for (const [id, update] of Object.entries({
 			"Rock",
 			"Fairy",
 		],
-		"passives": [],
+		"passives": [
+			"crystalfacet",
+		],
 		"replaceAbilities": true,
 	},
 	"dianciemega": {
@@ -94475,7 +94553,9 @@ for (const [id, update] of Object.entries({
 			"Rock",
 			"Fairy",
 		],
-		"passives": [],
+		"passives": [
+			"crystalfacet",
+		],
 		"replaceAbilities": true,
 	},
 	"diggersby": {
@@ -94620,7 +94700,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"???",
 		],
-		"passives": [],
+		"passives": [
+			"misalignedstars",
+		],
 		"replaceAbilities": true,
 	},
 	"dodrio": {
@@ -94925,7 +95007,7 @@ for (const [id, update] of Object.entries({
 			"Ghost",
 		],
 		"passives": [
-			"cursedbody",
+			"misalignedstars",
 		],
 		"replaceAbilities": true,
 	},
@@ -96484,7 +96566,9 @@ for (const [id, update] of Object.entries({
 			"Fairy",
 			"Flying",
 		],
-		"passives": [],
+		"passives": [
+			"healer",
+		],
 		"replaceAbilities": true,
 	},
 	"enamorustherian": {
@@ -96503,12 +96587,15 @@ for (const [id, update] of Object.entries({
 			"Fairy",
 			"Flying",
 		],
-		"passives": [],
+		"passives": [
+			"healer",
+		],
 		"replaceAbilities": true,
 	},
 	"entei": {
 		"abilities": {
 			"0": "Pressure",
+			"1": "Flame Body",
 			"H": "Flash Fire",
 		},
 		"baseStats": {
@@ -96654,7 +96741,9 @@ for (const [id, update] of Object.entries({
 			"Poison",
 			"Dragon",
 		],
-		"passives": [],
+		"passives": [
+			"poisonpoint",
+		],
 		"replaceAbilities": true,
 	},
 	"eternatuseternamax": {
@@ -97121,7 +97210,9 @@ for (const [id, update] of Object.entries({
 			"Poison",
 			"Fairy",
 		],
-		"passives": [],
+		"passives": [
+			"healer",
+		],
 		"replaceAbilities": true,
 	},
 	"fidgit": {
@@ -98784,7 +98875,9 @@ for (const [id, update] of Object.entries({
 	},
 	"genesect": {
 		"abilities": {
-			"0": "Download",
+			"0": "Clear Body",
+			"1": "Hyper Cutter",
+			"H": "Signature Drive",
 		},
 		"baseStats": {
 			"hp": 71,
@@ -98798,12 +98891,16 @@ for (const [id, update] of Object.entries({
 			"Bug",
 			"Steel",
 		],
-		"passives": [],
+		"passives": [
+			"download",
+		],
 		"replaceAbilities": true,
 	},
 	"genesectburn": {
 		"abilities": {
-			"0": "Download",
+			"0": "Clear Body",
+			"1": "Hyper Cutter",
+			"H": "Signature Drive",
 		},
 		"baseStats": {
 			"hp": 71,
@@ -98817,12 +98914,16 @@ for (const [id, update] of Object.entries({
 			"Bug",
 			"Steel",
 		],
-		"passives": [],
+		"passives": [
+			"download",
+		],
 		"replaceAbilities": true,
 	},
 	"genesectchill": {
 		"abilities": {
-			"0": "Download",
+			"0": "Clear Body",
+			"1": "Hyper Cutter",
+			"H": "Signature Drive",
 		},
 		"baseStats": {
 			"hp": 71,
@@ -98836,12 +98937,16 @@ for (const [id, update] of Object.entries({
 			"Bug",
 			"Steel",
 		],
-		"passives": [],
+		"passives": [
+			"download",
+		],
 		"replaceAbilities": true,
 	},
 	"genesectdouse": {
 		"abilities": {
-			"0": "Download",
+			"0": "Clear Body",
+			"1": "Hyper Cutter",
+			"H": "Signature Drive",
 		},
 		"baseStats": {
 			"hp": 71,
@@ -98855,12 +98960,16 @@ for (const [id, update] of Object.entries({
 			"Bug",
 			"Steel",
 		],
-		"passives": [],
+		"passives": [
+			"download",
+		],
 		"replaceAbilities": true,
 	},
 	"genesectshock": {
 		"abilities": {
-			"0": "Download",
+			"0": "Clear Body",
+			"1": "Hyper Cutter",
+			"H": "Signature Drive",
 		},
 		"baseStats": {
 			"hp": 71,
@@ -98874,7 +98983,9 @@ for (const [id, update] of Object.entries({
 			"Bug",
 			"Steel",
 		],
-		"passives": [],
+		"passives": [
+			"download",
+		],
 		"replaceAbilities": true,
 	},
 	"gengar": {
@@ -99123,7 +99234,9 @@ for (const [id, update] of Object.entries({
 			"Ghost",
 			"Dragon",
 		],
-		"passives": [],
+		"passives": [
+			"infiltrator",
+		],
 		"replaceAbilities": true,
 	},
 	"giratinaorigin": {
@@ -99142,7 +99255,9 @@ for (const [id, update] of Object.entries({
 			"Ghost",
 			"Dragon",
 		],
-		"passives": [],
+		"passives": [
+			"infiltrator",
+		],
 		"replaceAbilities": true,
 	},
 	"glaceon": {
@@ -99292,7 +99407,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Ice",
 		],
-		"passives": [],
+		"passives": [
+			"owntempo",
+		],
 		"replaceAbilities": true,
 	},
 	"gligar": {
@@ -101573,7 +101690,8 @@ for (const [id, update] of Object.entries({
 	},
 	"hoopa": {
 		"abilities": {
-			"0": "Magician",
+			"0": "Infiltrator",
+			"1": "Ring Trick",
 			"S": "Rift Herald",
 		},
 		"baseStats": {
@@ -101588,12 +101706,15 @@ for (const [id, update] of Object.entries({
 			"Psychic",
 			"Ghost",
 		],
-		"passives": [],
+		"passives": [
+			"magician",
+		],
 		"replaceAbilities": true,
 	},
 	"hoopaunbound": {
 		"abilities": {
-			"0": "Magician",
+			"0": "Infiltrator",
+			"1": "Ring Trick",
 		},
 		"baseStats": {
 			"hp": 80,
@@ -101607,7 +101728,9 @@ for (const [id, update] of Object.entries({
 			"Psychic",
 			"Dark",
 		],
-		"passives": [],
+		"passives": [
+			"magician",
+		],
 		"replaceAbilities": true,
 	},
 	"hoothoot": {
@@ -102841,7 +102964,7 @@ for (const [id, update] of Object.entries({
 	},
 	"kartana": {
 		"abilities": {
-			"0": "Sharpness",
+			"0": "Steadfast",
 			"1": "Hyper Cutter",
 			"H": "Paper Aegis",
 		},
@@ -102887,8 +103010,9 @@ for (const [id, update] of Object.entries({
 	},
 	"keldeo": {
 		"abilities": {
-			"0": "Justified",
-			"1": "Sharpness",
+			"0": "Sharpness",
+			"1": "Inner Focus",
+			"H": "Rushing Blade",
 		},
 		"baseStats": {
 			"hp": 91,
@@ -102902,12 +103026,16 @@ for (const [id, update] of Object.entries({
 			"Water",
 			"Fighting",
 		],
-		"passives": [],
+		"passives": [
+			"justified",
+		],
 		"replaceAbilities": true,
 	},
 	"keldeoresolute": {
 		"abilities": {
-			"0": "Justified",
+			"0": "Sharpness",
+			"1": "Inner Focus",
+			"H": "Rushing Blade",
 		},
 		"baseStats": {
 			"hp": 91,
@@ -102921,7 +103049,9 @@ for (const [id, update] of Object.entries({
 			"Water",
 			"Fighting",
 		],
-		"passives": [],
+		"passives": [
+			"justified",
+		],
 		"replaceAbilities": true,
 	},
 	"kerfluffle": {
@@ -103354,7 +103484,9 @@ for (const [id, update] of Object.entries({
 			"Fighting",
 			"Dragon",
 		],
-		"passives": [],
+		"passives": [
+			"hypercutter",
+		],
 		"replaceAbilities": true,
 	},
 	"krabby": {
@@ -103486,6 +103618,8 @@ for (const [id, update] of Object.entries({
 	"kubfu": {
 		"abilities": {
 			"0": "Inner Focus",
+			"1": "Hyper Cutter",
+			"H": "Iron Fist",
 		},
 		"baseStats": {
 			"hp": 60,
@@ -103498,7 +103632,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Fighting",
 		],
-		"passives": [],
+		"passives": [
+			"owntempo",
+		],
 		"replaceAbilities": true,
 	},
 	"kyogre": {
@@ -103559,7 +103695,9 @@ for (const [id, update] of Object.entries({
 			"Dragon",
 			"Ice",
 		],
-		"passives": [],
+		"passives": [
+			"coldreserve",
+		],
 		"replaceAbilities": true,
 	},
 	"kyuremblack": {
@@ -103578,7 +103716,9 @@ for (const [id, update] of Object.entries({
 			"Dragon",
 			"Ice",
 		],
-		"passives": [],
+		"passives": [
+			"coldreserve",
+		],
 		"replaceAbilities": true,
 	},
 	"kyuremwhite": {
@@ -103597,7 +103737,9 @@ for (const [id, update] of Object.entries({
 			"Dragon",
 			"Ice",
 		],
-		"passives": [],
+		"passives": [
+			"coldreserve",
+		],
 		"replaceAbilities": true,
 	},
 	"lairon": {
@@ -103660,7 +103802,9 @@ for (const [id, update] of Object.entries({
 			"Ground",
 			"Flying",
 		],
-		"passives": [],
+		"passives": [
+			"bigpecks",
+		],
 		"replaceAbilities": true,
 	},
 	"landorustherian": {
@@ -103679,7 +103823,9 @@ for (const [id, update] of Object.entries({
 			"Ground",
 			"Flying",
 		],
-		"passives": [],
+		"passives": [
+			"bigpecks",
+		],
 		"replaceAbilities": true,
 	},
 	"lanturn": {
@@ -104711,7 +104857,9 @@ for (const [id, update] of Object.entries({
 			"Psychic",
 			"Ghost",
 		],
-		"passives": [],
+		"passives": [
+			"owntempo",
+		],
 		"replaceAbilities": true,
 	},
 	"lunatone": {
@@ -105144,7 +105292,9 @@ for (const [id, update] of Object.entries({
 			"Steel",
 			"Fairy",
 		],
-		"passives": [],
+		"passives": [
+			"owntempo",
+		],
 		"replaceAbilities": true,
 	},
 	"magearnamega": {
@@ -105163,7 +105313,9 @@ for (const [id, update] of Object.entries({
 			"Steel",
 			"Fairy",
 		],
-		"passives": [],
+		"passives": [
+			"owntempo",
+		],
 		"replaceAbilities": true,
 	},
 	"magearnaoriginal": {
@@ -105182,7 +105334,9 @@ for (const [id, update] of Object.entries({
 			"Steel",
 			"Fairy",
 		],
-		"passives": [],
+		"passives": [
+			"owntempo",
+		],
 		"replaceAbilities": true,
 	},
 	"magearnaoriginalmega": {
@@ -105201,7 +105355,9 @@ for (const [id, update] of Object.entries({
 			"Steel",
 			"Fairy",
 		],
-		"passives": [],
+		"passives": [
+			"owntempo",
+		],
 		"replaceAbilities": true,
 	},
 	"magikarp": {
@@ -105464,7 +105620,9 @@ for (const [id, update] of Object.entries({
 	},
 	"manaphy": {
 		"abilities": {
-			"0": "Hydration",
+			"0": "Healer",
+			"1": "Own Tempo",
+			"H": "Heart Current",
 		},
 		"baseStats": {
 			"hp": 100,
@@ -105477,7 +105635,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Water",
 		],
-		"passives": [],
+		"passives": [
+			"hydration",
+		],
 		"replaceAbilities": true,
 	},
 	"mandibuzz": {
@@ -105698,7 +105858,7 @@ for (const [id, update] of Object.entries({
 		"abilities": {
 			"0": "Mold Breaker",
 			"1": "Lightning Rod",
-			"H": "Cursed Body",
+			"H": "Misaligned Stars",
 		},
 		"baseStats": {
 			"hp": 75,
@@ -105720,7 +105880,7 @@ for (const [id, update] of Object.entries({
 	"marowakalola": {
 		"abilities": {
 			"0": "Lightning Rod",
-			"1": "Cursed Body",
+			"1": "Misaligned Stars",
 			"H": "Soul Fire",
 		},
 		"baseStats": {
@@ -105762,6 +105922,7 @@ for (const [id, update] of Object.entries({
 	"marshadow": {
 		"abilities": {
 			"0": "Technician",
+			"1": "Shadow Step",
 		},
 		"baseStats": {
 			"hp": 90,
@@ -105775,7 +105936,9 @@ for (const [id, update] of Object.entries({
 			"Fighting",
 			"Steel",
 		],
-		"passives": [],
+		"passives": [
+			"infiltrator",
+		],
 		"replaceAbilities": true,
 	},
 	"marshtomp": {
@@ -106073,7 +106236,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Steel",
 		],
-		"passives": [],
+		"passives": [
+			"stickyhold",
+		],
 		"replaceAbilities": true,
 	},
 	"melmetalgmax": {
@@ -106091,7 +106256,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Steel",
 		],
-		"passives": [],
+		"passives": [
+			"stickyhold",
+		],
 		"replaceAbilities": true,
 	},
 	"meloetta": {
@@ -106160,6 +106327,8 @@ for (const [id, update] of Object.entries({
 	"meltan": {
 		"abilities": {
 			"0": "Magnet Pull",
+			"1": "Sturdy",
+			"H": "Scrap Collector",
 		},
 		"baseStats": {
 			"hp": 46,
@@ -106172,7 +106341,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Steel",
 		],
-		"passives": [],
+		"passives": [
+			"stickyhold",
+		],
 		"replaceAbilities": true,
 	},
 	"meowscarada": {
@@ -106474,6 +106645,8 @@ for (const [id, update] of Object.entries({
 	"mew": {
 		"abilities": {
 			"0": "Natural Cure",
+			"1": "Own Tempo",
+			"H": "First Draft",
 		},
 		"baseStats": {
 			"hp": 100,
@@ -106907,7 +107080,7 @@ for (const [id, update] of Object.entries({
 	"mimikyu": {
 		"abilities": {
 			"0": "Cursed Body",
-			"1": "Frisk",
+			"1": "Misaligned Stars",
 			"H": "Infiltrator",
 		},
 		"baseStats": {
@@ -106930,7 +107103,7 @@ for (const [id, update] of Object.entries({
 	"mimikyubusted": {
 		"abilities": {
 			"0": "Cursed Body",
-			"1": "Frisk",
+			"1": "Misaligned Stars",
 			"H": "Infiltrator",
 		},
 		"baseStats": {
@@ -106953,7 +107126,7 @@ for (const [id, update] of Object.entries({
 	"mimikyubustedtotem": {
 		"abilities": {
 			"0": "Cursed Body",
-			"1": "Frisk",
+			"1": "Misaligned Stars",
 			"H": "Infiltrator",
 		},
 		"baseStats": {
@@ -106976,7 +107149,7 @@ for (const [id, update] of Object.entries({
 	"mimikyutotem": {
 		"abilities": {
 			"0": "Cursed Body",
-			"1": "Frisk",
+			"1": "Misaligned Stars",
 			"H": "Infiltrator",
 		},
 		"baseStats": {
@@ -107239,7 +107412,9 @@ for (const [id, update] of Object.entries({
 			"Electric",
 			"Dragon",
 		],
-		"passives": [],
+		"passives": [
+			"steadfast",
+		],
 		"replaceAbilities": true,
 	},
 	"misdreavus": {
@@ -107398,6 +107573,8 @@ for (const [id, update] of Object.entries({
 	"moltresgalar": {
 		"abilities": {
 			"0": "Berserk",
+			"1": "Heatproof",
+			"H": "Cinder Mantle",
 		},
 		"baseStats": {
 			"hp": 90,
@@ -107411,7 +107588,9 @@ for (const [id, update] of Object.entries({
 			"Dark",
 			"Flying",
 		],
-		"passives": [],
+		"passives": [
+			"unnerve",
+		],
 		"replaceAbilities": true,
 	},
 	"monferno": {
@@ -107833,7 +108012,9 @@ for (const [id, update] of Object.entries({
 			"Poison",
 			"Psychic",
 		],
-		"passives": [],
+		"passives": [
+			"owntempo",
+		],
 		"replaceAbilities": true,
 	},
 	"munna": {
@@ -108045,7 +108226,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Psychic",
 		],
-		"passives": [],
+		"passives": [
+			"lightcache",
+		],
 		"replaceAbilities": true,
 	},
 	"necrozmadawnwings": {
@@ -108064,7 +108247,9 @@ for (const [id, update] of Object.entries({
 			"Psychic",
 			"Ghost",
 		],
-		"passives": [],
+		"passives": [
+			"lightcache",
+		],
 		"replaceAbilities": true,
 	},
 	"necrozmaduskmane": {
@@ -108083,7 +108268,9 @@ for (const [id, update] of Object.entries({
 			"Psychic",
 			"Steel",
 		],
-		"passives": [],
+		"passives": [
+			"lightcache",
+		],
 		"replaceAbilities": true,
 	},
 	"necrozmaultra": {
@@ -108102,7 +108289,9 @@ for (const [id, update] of Object.entries({
 			"Psychic",
 			"Dragon",
 		],
-		"passives": [],
+		"passives": [
+			"lightcache",
+		],
 		"replaceAbilities": true,
 	},
 	"necturine": {
@@ -108743,7 +108932,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Grass",
 		],
-		"passives": [],
+		"passives": [
+			"maskmender",
+		],
 		"replaceAbilities": true,
 	},
 	"ogerponcornerstone": {
@@ -108762,7 +108953,9 @@ for (const [id, update] of Object.entries({
 			"Grass",
 			"Rock",
 		],
-		"passives": [],
+		"passives": [
+			"maskmender",
+		],
 		"replaceAbilities": true,
 	},
 	"ogerponcornerstonetera": {
@@ -108781,7 +108974,9 @@ for (const [id, update] of Object.entries({
 			"Grass",
 			"Rock",
 		],
-		"passives": [],
+		"passives": [
+			"maskmender",
+		],
 		"replaceAbilities": true,
 	},
 	"ogerponhearthflame": {
@@ -108800,7 +108995,9 @@ for (const [id, update] of Object.entries({
 			"Grass",
 			"Fire",
 		],
-		"passives": [],
+		"passives": [
+			"maskmender",
+		],
 		"replaceAbilities": true,
 	},
 	"ogerponhearthflametera": {
@@ -108819,7 +109016,9 @@ for (const [id, update] of Object.entries({
 			"Grass",
 			"Fire",
 		],
-		"passives": [],
+		"passives": [
+			"maskmender",
+		],
 		"replaceAbilities": true,
 	},
 	"ogerpontealtera": {
@@ -108837,7 +109036,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Grass",
 		],
-		"passives": [],
+		"passives": [
+			"maskmender",
+		],
 		"replaceAbilities": true,
 	},
 	"ogerponwellspring": {
@@ -108856,7 +109057,9 @@ for (const [id, update] of Object.entries({
 			"Grass",
 			"Water",
 		],
-		"passives": [],
+		"passives": [
+			"maskmender",
+		],
 		"replaceAbilities": true,
 	},
 	"ogerponwellspringtera": {
@@ -108875,7 +109078,9 @@ for (const [id, update] of Object.entries({
 			"Grass",
 			"Water",
 		],
-		"passives": [],
+		"passives": [
+			"maskmender",
+		],
 		"replaceAbilities": true,
 	},
 	"oinkologne": {
@@ -108939,7 +109144,9 @@ for (const [id, update] of Object.entries({
 			"Poison",
 			"Fighting",
 		],
-		"passives": [],
+		"passives": [
+			"bigpecks",
+		],
 		"replaceAbilities": true,
 	},
 	"omanyte": {
@@ -109332,7 +109539,9 @@ for (const [id, update] of Object.entries({
 			"Water",
 			"Dragon",
 		],
-		"passives": [],
+		"passives": [
+			"suctioncups",
+		],
 		"replaceAbilities": true,
 	},
 	"palkiaorigin": {
@@ -109352,7 +109561,9 @@ for (const [id, update] of Object.entries({
 			"Water",
 			"Dragon",
 		],
-		"passives": [],
+		"passives": [
+			"suctioncups",
+		],
 		"replaceAbilities": true,
 	},
 	"palossand": {
@@ -109798,6 +110009,7 @@ for (const [id, update] of Object.entries({
 	"pecharunt": {
 		"abilities": {
 			"0": "Poison Puppeteer",
+			"1": "Binding Chain",
 		},
 		"baseStats": {
 			"hp": 88,
@@ -109811,7 +110023,9 @@ for (const [id, update] of Object.entries({
 			"Poison",
 			"Ghost",
 		],
-		"passives": [],
+		"passives": [
+			"stickyhold",
+		],
 		"replaceAbilities": true,
 	},
 	"pelipper": {
@@ -109991,6 +110205,7 @@ for (const [id, update] of Object.entries({
 	"phione": {
 		"abilities": {
 			"0": "Sea Blessing",
+			"1": "Hydration",
 		},
 		"baseStats": {
 			"hp": 80,
@@ -110003,7 +110218,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Water",
 		],
-		"passives": [],
+		"passives": [
+			"healer",
+		],
 		"replaceAbilities": true,
 	},
 	"pichu": {
@@ -112170,6 +112387,7 @@ for (const [id, update] of Object.entries({
 	"raikou": {
 		"abilities": {
 			"0": "Pressure",
+			"1": "Infiltrator",
 			"H": "Volt Absorb",
 		},
 		"baseStats": {
@@ -112717,7 +112935,9 @@ for (const [id, update] of Object.entries({
 			"Dragon",
 			"Fire",
 		],
-		"passives": [],
+		"passives": [
+			"innerfocus",
+		],
 		"replaceAbilities": true,
 	},
 	"reuniclus": {
@@ -113958,7 +114178,7 @@ for (const [id, update] of Object.entries({
 	},
 	"sawsbuck": {
 		"abilities": {
-			"0": "Overcoat",
+			"0": "Spring Striker",
 			"1": "Swift Swim",
 			"H": "Sap Sipper",
 		},
@@ -113981,7 +114201,7 @@ for (const [id, update] of Object.entries({
 	},
 	"sawsbuckautumn": {
 		"abilities": {
-			"0": "Overcoat",
+			"0": "Autumn Striker",
 			"1": "Sand Rush",
 			"H": "Stamina",
 		},
@@ -114004,7 +114224,7 @@ for (const [id, update] of Object.entries({
 	},
 	"sawsbuckspring": {
 		"abilities": {
-			"0": "Overcoat",
+			"0": "Spring Striker",
 			"1": "Swift Swim",
 			"H": "Sap Sipper",
 		},
@@ -114027,7 +114247,7 @@ for (const [id, update] of Object.entries({
 	},
 	"sawsbucksummer": {
 		"abilities": {
-			"0": "Overcoat",
+			"0": "Summer Striker",
 			"1": "Chlorophyll",
 			"H": "Rock Head",
 		},
@@ -114050,7 +114270,7 @@ for (const [id, update] of Object.entries({
 	},
 	"sawsbuckwinter": {
 		"abilities": {
-			"0": "Overcoat",
+			"0": "Winter Striker",
 			"1": "Slush Rush",
 			"H": "Ice Body",
 		},
@@ -114849,6 +115069,7 @@ for (const [id, update] of Object.entries({
 		"abilities": {
 			"0": "Natural Cure",
 			"1": "Hospitality",
+			"H": "Seed Courier",
 		},
 		"baseStats": {
 			"hp": 100,
@@ -114861,7 +115082,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Grass",
 		],
-		"passives": [],
+		"passives": [
+			"leafguard",
+		],
 		"replaceAbilities": true,
 	},
 	"shayminsky": {
@@ -114880,7 +115103,9 @@ for (const [id, update] of Object.entries({
 			"Grass",
 			"Flying",
 		],
-		"passives": [],
+		"passives": [
+			"leafguard",
+		],
 		"replaceAbilities": true,
 	},
 	"shedinja": {
@@ -116827,7 +117052,9 @@ for (const [id, update] of Object.entries({
 			"Psychic",
 			"Steel",
 		],
-		"passives": [],
+		"passives": [
+			"innerfocus",
+		],
 		"replaceAbilities": true,
 	},
 	"solosis": {
@@ -116948,7 +117175,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Ghost",
 		],
-		"passives": [],
+		"passives": [
+			"earlybird",
+		],
 		"replaceAbilities": true,
 	},
 	"spewpa": {
@@ -117059,7 +117288,7 @@ for (const [id, update] of Object.entries({
 		"abilities": {
 			"0": "Keystone Seal",
 			"1": "Bound Spirits",
-			"H": "Pressure",
+			"H": "Misaligned Stars",
 		},
 		"baseStats": {
 			"hp": 108,
@@ -117255,10 +117484,10 @@ for (const [id, update] of Object.entries({
 			"H": "Living Rampart",
 		},
 		"baseStats": {
-			"hp": 61,
+			"hp": 76,
 			"atk": 131,
 			"def": 211,
-			"spa": 53,
+			"spa": 38,
 			"spd": 101,
 			"spe": 13,
 		},
@@ -117378,7 +117607,7 @@ for (const [id, update] of Object.entries({
 	"starmie": {
 		"abilities": {
 			"0": "Cosmic Analysis",
-			"1": "Natural Cure",
+			"1": "Misaligned Stars",
 			"H": "Victory Star",
 		},
 		"baseStats": {
@@ -117681,6 +117910,7 @@ for (const [id, update] of Object.entries({
 	"suicune": {
 		"abilities": {
 			"0": "Pressure",
+			"1": "Healer",
 			"H": "Water Veil",
 		},
 		"baseStats": {
@@ -118267,7 +118497,9 @@ for (const [id, update] of Object.entries({
 			"Grass",
 			"Fairy",
 		],
-		"passives": [],
+		"passives": [
+			"islandwatch",
+		],
 		"replaceAbilities": true,
 	},
 	"tapufini": {
@@ -118287,7 +118519,9 @@ for (const [id, update] of Object.entries({
 			"Water",
 			"Fairy",
 		],
-		"passives": [],
+		"passives": [
+			"islandwatch",
+		],
 		"replaceAbilities": true,
 	},
 	"tapukoko": {
@@ -118307,7 +118541,9 @@ for (const [id, update] of Object.entries({
 			"Electric",
 			"Fairy",
 		],
-		"passives": [],
+		"passives": [
+			"islandwatch",
+		],
 		"replaceAbilities": true,
 	},
 	"tapulele": {
@@ -118327,7 +118563,9 @@ for (const [id, update] of Object.entries({
 			"Psychic",
 			"Fairy",
 		],
-		"passives": [],
+		"passives": [
+			"islandwatch",
+		],
 		"replaceAbilities": true,
 	},
 	"tarountula": {
@@ -118717,7 +118955,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Normal",
 		],
-		"passives": [],
+		"passives": [
+			"owntempo",
+		],
 		"replaceAbilities": true,
 	},
 	"terapagosstellar": {
@@ -118735,7 +118975,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Normal",
 		],
-		"passives": [],
+		"passives": [
+			"owntempo",
+		],
 		"replaceAbilities": true,
 	},
 	"terapagosterastal": {
@@ -118753,13 +118995,16 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Normal",
 		],
-		"passives": [],
+		"passives": [
+			"owntempo",
+		],
 		"replaceAbilities": true,
 	},
 	"terrakion": {
 		"abilities": {
-			"0": "Justified",
-			"1": "Sharpness",
+			"0": "Sharpness",
+			"1": "Hyper Cutter",
+			"H": "Sturdy",
 		},
 		"baseStats": {
 			"hp": 91,
@@ -118773,7 +119018,9 @@ for (const [id, update] of Object.entries({
 			"Rock",
 			"Fighting",
 		],
-		"passives": [],
+		"passives": [
+			"justified",
+		],
 		"replaceAbilities": true,
 	},
 	"thievul": {
@@ -118839,7 +119086,9 @@ for (const [id, update] of Object.entries({
 			"Electric",
 			"Flying",
 		],
-		"passives": [],
+		"passives": [
+			"static",
+		],
 		"replaceAbilities": true,
 	},
 	"thundurustherian": {
@@ -118858,7 +119107,9 @@ for (const [id, update] of Object.entries({
 			"Electric",
 			"Flying",
 		],
-		"passives": [],
+		"passives": [
+			"static",
+		],
 		"replaceAbilities": true,
 	},
 	"thwackey": {
@@ -118916,7 +119167,9 @@ for (const [id, update] of Object.entries({
 			"Dark",
 			"Ground",
 		],
-		"passives": [],
+		"passives": [
+			"suctioncups",
+		],
 		"replaceAbilities": true,
 	},
 	"tinkatink": {
@@ -119258,7 +119511,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Flying",
 		],
-		"passives": [],
+		"passives": [
+			"keeneye",
+		],
 		"replaceAbilities": true,
 	},
 	"tornadustherian": {
@@ -119276,7 +119531,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Flying",
 		],
-		"passives": [],
+		"passives": [
+			"keeneye",
+		],
 		"replaceAbilities": true,
 	},
 	"torracat": {
@@ -119972,7 +120229,9 @@ for (const [id, update] of Object.entries({
 	},
 	"typenull": {
 		"abilities": {
-			"0": "Battle Armor",
+			"0": "Hyper Cutter",
+			"1": "Steadfast",
+			"H": "Rattled",
 		},
 		"baseStats": {
 			"hp": 95,
@@ -119985,7 +120244,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Normal",
 		],
-		"passives": [],
+		"passives": [
+			"battlearmor",
+		],
 		"replaceAbilities": true,
 	},
 	"typhlosion": {
@@ -120401,7 +120662,9 @@ for (const [id, update] of Object.entries({
 			"Fighting",
 			"Dark",
 		],
-		"passives": [],
+		"passives": [
+			"steadfast",
+		],
 		"replaceAbilities": true,
 	},
 	"urshifugmax": {
@@ -120420,7 +120683,9 @@ for (const [id, update] of Object.entries({
 			"Fighting",
 			"Dark",
 		],
-		"passives": [],
+		"passives": [
+			"steadfast",
+		],
 		"replaceAbilities": true,
 	},
 	"urshifurapidstrike": {
@@ -120439,7 +120704,9 @@ for (const [id, update] of Object.entries({
 			"Fighting",
 			"Water",
 		],
-		"passives": [],
+		"passives": [
+			"steadfast",
+		],
 		"replaceAbilities": true,
 	},
 	"urshifurapidstrikegmax": {
@@ -120458,7 +120725,9 @@ for (const [id, update] of Object.entries({
 			"Fighting",
 			"Water",
 		],
-		"passives": [],
+		"passives": [
+			"steadfast",
+		],
 		"replaceAbilities": true,
 	},
 	"uxie": {
@@ -120849,7 +121118,9 @@ for (const [id, update] of Object.entries({
 	},
 	"victini": {
 		"abilities": {
-			"0": "Victory Star",
+			"0": "Flame Body",
+			"1": "Own Tempo",
+			"H": "Victory Lap",
 		},
 		"baseStats": {
 			"hp": 100,
@@ -120863,7 +121134,9 @@ for (const [id, update] of Object.entries({
 			"Psychic",
 			"Fire",
 		],
-		"passives": [],
+		"passives": [
+			"victorystar",
+		],
 		"replaceAbilities": true,
 	},
 	"victreebel": {
@@ -120912,8 +121185,9 @@ for (const [id, update] of Object.entries({
 	},
 	"vigoroth": {
 		"abilities": {
-			"0": "Vital Spirit",
-			"1": "Tough Claws",
+			"0": "Tough Claws",
+			"1": "Scrappy",
+			"H": "Restless Drive",
 		},
 		"baseStats": {
 			"hp": 80,
@@ -120926,7 +121200,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Normal",
 		],
-		"passives": [],
+		"passives": [
+			"vitalspirit",
+		],
 		"replaceAbilities": true,
 	},
 	"vikavolt": {
@@ -120996,8 +121272,9 @@ for (const [id, update] of Object.entries({
 	},
 	"virizion": {
 		"abilities": {
-			"0": "Justified",
-			"1": "Sharpness",
+			"0": "Sharpness",
+			"1": "Leaf Guard",
+			"H": "Natural Cure",
 		},
 		"baseStats": {
 			"hp": 91,
@@ -121011,7 +121288,9 @@ for (const [id, update] of Object.entries({
 			"Grass",
 			"Fighting",
 		],
-		"passives": [],
+		"passives": [
+			"justified",
+		],
 		"replaceAbilities": true,
 	},
 	"vivillon": {
@@ -121500,6 +121779,8 @@ for (const [id, update] of Object.entries({
 	"volcanion": {
 		"abilities": {
 			"0": "Water Absorb",
+			"1": "Flame Body",
+			"H": "Boiler Vent",
 		},
 		"baseStats": {
 			"hp": 80,
@@ -121513,7 +121794,9 @@ for (const [id, update] of Object.entries({
 			"Fire",
 			"Water",
 		],
-		"passives": [],
+		"passives": [
+			"overcoat",
+		],
 		"replaceAbilities": true,
 	},
 	"volcarona": {
@@ -122257,7 +122540,7 @@ for (const [id, update] of Object.entries({
 			"Ghost",
 		],
 		"passives": [
-			"infiltrator",
+			"misalignedstars",
 		],
 		"replaceAbilities": true,
 	},
@@ -122278,7 +122561,7 @@ for (const [id, update] of Object.entries({
 			"Dragon",
 		],
 		"passives": [
-			"infiltrator",
+			"misalignedstars",
 		],
 		"replaceAbilities": true,
 	},
@@ -122319,7 +122602,9 @@ for (const [id, update] of Object.entries({
 			"Dark",
 			"Grass",
 		],
-		"passives": [],
+		"passives": [
+			"leafguard",
+		],
 		"replaceAbilities": true,
 	},
 	"woobat": {
@@ -122592,7 +122877,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Fairy",
 		],
-		"passives": [],
+		"passives": [
+			"healer",
+		],
 		"replaceAbilities": true,
 	},
 	"xerneasneutral": {
@@ -122610,7 +122897,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Fairy",
 		],
-		"passives": [],
+		"passives": [
+			"healer",
+		],
 		"replaceAbilities": true,
 	},
 	"xurkitree": {
@@ -122771,7 +123060,9 @@ for (const [id, update] of Object.entries({
 			"Dark",
 			"Flying",
 		],
-		"passives": [],
+		"passives": [
+			"unnerve",
+		],
 		"replaceAbilities": true,
 	},
 	"zacian": {
@@ -122789,7 +123080,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Fairy",
 		],
-		"passives": [],
+		"passives": [
+			"steadfast",
+		],
 		"replaceAbilities": true,
 	},
 	"zaciancrowned": {
@@ -122808,7 +123101,9 @@ for (const [id, update] of Object.entries({
 			"Fairy",
 			"Steel",
 		],
-		"passives": [],
+		"passives": [
+			"steadfast",
+		],
 		"replaceAbilities": true,
 	},
 	"zamazenta": {
@@ -122826,7 +123121,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Fighting",
 		],
-		"passives": [],
+		"passives": [
+			"bulwarkrelay",
+		],
 		"replaceAbilities": true,
 	},
 	"zamazentacrowned": {
@@ -122845,7 +123142,9 @@ for (const [id, update] of Object.entries({
 			"Fighting",
 			"Steel",
 		],
-		"passives": [],
+		"passives": [
+			"bulwarkrelay",
+		],
 		"replaceAbilities": true,
 	},
 	"zangoose": {
@@ -122918,6 +123217,8 @@ for (const [id, update] of Object.entries({
 	"zapdosgalar": {
 		"abilities": {
 			"0": "Defiant",
+			"1": "Volt Absorb",
+			"H": "Storm Mantle",
 		},
 		"baseStats": {
 			"hp": 90,
@@ -122931,12 +123232,16 @@ for (const [id, update] of Object.entries({
 			"Fighting",
 			"Flying",
 		],
-		"passives": [],
+		"passives": [
+			"steadfast",
+		],
 		"replaceAbilities": true,
 	},
 	"zarude": {
 		"abilities": {
 			"0": "Invigorate",
+			"1": "Infiltrator",
+			"H": "Vine Relay",
 		},
 		"baseStats": {
 			"hp": 105,
@@ -122950,12 +123255,16 @@ for (const [id, update] of Object.entries({
 			"Dark",
 			"Grass",
 		],
-		"passives": [],
+		"passives": [
+			"leafguard",
+		],
 		"replaceAbilities": true,
 	},
 	"zarudedada": {
 		"abilities": {
 			"0": "Invigorate",
+			"1": "Infiltrator",
+			"H": "Vine Relay",
 		},
 		"baseStats": {
 			"hp": 105,
@@ -122969,7 +123278,9 @@ for (const [id, update] of Object.entries({
 			"Dark",
 			"Grass",
 		],
-		"passives": [],
+		"passives": [
+			"leafguard",
+		],
 		"replaceAbilities": true,
 	},
 	"zebstrika": {
@@ -123011,12 +123322,16 @@ for (const [id, update] of Object.entries({
 			"Dragon",
 			"Electric",
 		],
-		"passives": [],
+		"passives": [
+			"hypercutter",
+		],
 		"replaceAbilities": true,
 	},
 	"zeraora": {
 		"abilities": {
 			"0": "Volt Absorb",
+			"1": "Hyper Cutter",
+			"H": "Scrappy",
 		},
 		"baseStats": {
 			"hp": 88,
@@ -123029,7 +123344,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Electric",
 		],
-		"passives": [],
+		"passives": [
+			"steadfast",
+		],
 		"replaceAbilities": true,
 	},
 	"zeraoramega": {
@@ -123047,7 +123364,9 @@ for (const [id, update] of Object.entries({
 		"types": [
 			"Electric",
 		],
-		"passives": [],
+		"passives": [
+			"steadfast",
+		],
 		"replaceAbilities": true,
 	},
 	"zigzagoon": {
@@ -123236,7 +123555,9 @@ for (const [id, update] of Object.entries({
 			"Dragon",
 			"Ground",
 		],
-		"passives": [],
+		"passives": [
+			"suctioncups",
+		],
 		"replaceAbilities": true,
 	},
 	"zygarde10": {
@@ -123256,7 +123577,9 @@ for (const [id, update] of Object.entries({
 			"Dragon",
 			"Ground",
 		],
-		"passives": [],
+		"passives": [
+			"suctioncups",
+		],
 		"replaceAbilities": true,
 	},
 	"zygardecomplete": {
@@ -123275,7 +123598,9 @@ for (const [id, update] of Object.entries({
 			"Dragon",
 			"Ground",
 		],
-		"passives": [],
+		"passives": [
+			"suctioncups",
+		],
 		"replaceAbilities": true,
 	},
 	"zygardemega": {
@@ -123294,7 +123619,9 @@ for (const [id, update] of Object.entries({
 			"Dragon",
 			"Ground",
 		],
-		"passives": [],
+		"passives": [
+			"suctioncups",
+		],
 		"replaceAbilities": true,
 	},
 })) {
@@ -127401,6 +127728,66 @@ const CUSTOM_PERFECT_FORECAST_FORMS: {[id: string]: {components: string[]; short
 	},
 };
 // END SERVER WORKING SYNC PERFECT FORECAST FORMS
+// BEGIN SERVER WORKING SYNC UNSTABLE EVO FORMS
+const CUSTOM_UNSTABLE_EVO_FORMS: {[species: string]: {move: string, components: string[]}} = {
+	"jolteon": {
+		"move": "buzzybuzz",
+		"components": [
+			"lightningrod",
+			"voltabsorb",
+		],
+	},
+	"flareon": {
+		"move": "sizzlyslide",
+		"components": [
+			"soulfire",
+			"fluffy",
+		],
+	},
+	"vaporeon": {
+		"move": "bouncybubble",
+		"components": [
+			"stormdrain",
+			"waterabsorb",
+		],
+	},
+	"umbreon": {
+		"move": "baddybad",
+		"components": [
+			"pressure",
+			"innerfocus",
+		],
+	},
+	"espeon": {
+		"move": "glitzyglow",
+		"components": [
+			"magicbounce",
+			"telepathy",
+		],
+	},
+	"glaceon": {
+		"move": "freezyfrost",
+		"components": [
+			"icescales",
+			"slushrush",
+		],
+	},
+	"leafeon": {
+		"move": "sappyseed",
+		"components": [
+			"chlorophyll",
+			"regenerator",
+		],
+	},
+	"sylveon": {
+		"move": "sparklyswirl",
+		"components": [
+			"friendguard",
+			"competitive",
+		],
+	},
+};
+// END SERVER WORKING SYNC UNSTABLE EVO FORMS
 // BEGIN SERVER WORKING SYNC RKS MEMORY COMPONENTS
 const CUSTOM_RKS_MEMORY_COMPONENTS: {[id: string]: string[]} = {
 	"bugmemory": [
@@ -127529,7 +127916,10 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 		"liquidvoice",
 		"dissonantecho",
 	],
-	"unstableevo": [],
+	"unstableevo": [
+		"filter",
+		"selfsufficient",
+	],
 	"hisuianpath": [
 		"sapsipper",
 		"innerfocus",
@@ -127787,6 +128177,7 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	],
 	"bonewarrior": [
 		"battlearmor",
+		"cursedbody",
 	],
 	"ironvise": [
 		"toughclaws",
@@ -127829,7 +128220,7 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	"angerpoint": [],
 	"angershell": [],
 	"omensight": [
-		"anticipation",
+		"misalignedstars",
 		"forewarn",
 	],
 	"anticipation": [],
@@ -128075,7 +128466,6 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	],
 	"omenedge": [
 		"sharpness",
-		"dualwield",
 		"pressure",
 	],
 	"dreadmaw": [
@@ -128087,14 +128477,15 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 		"toughclaws",
 		"shadowshield",
 	],
-	"cursedmarionette": [],
+	"cursedmarionette": [
+		"misalignedstars",
+	],
 	"sandsovereign": [
 		"sandstream",
 		"solidrock",
 	],
 	"tyrantstream": [
 		"sandstream",
-		"bruteforce",
 	],
 	"frostsovereign": [
 		"snowwarning",
@@ -128186,6 +128577,7 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	"mourningsnow": [
 		"snowwarning",
 		"icebody",
+		"misalignedstars",
 	],
 	"venombastion": [
 		"stamina",
@@ -128288,6 +128680,8 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	"execution": [
 		"duskilate",
 		"moldbreaker",
+		"misalignedstars",
+		"voidveil",
 	],
 	"earlybird": [],
 	"eartheater": [],
@@ -128324,12 +128718,12 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	],
 	"relicarmor": [],
 	"tyrantdomain": [
+		"tyrantstream",
 		"supremeoverlord",
-		"sandstream",
 	],
 	"auroradomain": [
+		"auroracurrent",
 		"refrigerate",
-		"snowwarning",
 	],
 	"royalscales": [
 		"marvelscale",
@@ -128474,9 +128868,9 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 		"hydrabond",
 	],
 	"astralcore": [
-		"purepower",
-		"naturalcure",
 		"starlens",
+		"misalignedstars",
+		"victorystar",
 	],
 	"divinemockery": [
 		"hydrabond",
@@ -128742,7 +129136,9 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	"screencleaner": [],
 	"seedsower": [],
 	"serenegrace": [],
-	"seasonalstride": [],
+	"seasonalstride": [
+		"overcoat",
+	],
 	"shadowshield": [],
 	"voidcraft": [
 		"temporalshift",
@@ -128767,7 +129163,9 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 		"selfsufficient",
 		"swarm",
 	],
-	"cursedarmament": [],
+	"cursedarmament": [
+		"misalignedstars",
+	],
 	"shedskin": [],
 	"sheerforce": [],
 	"shellarmor": [],
@@ -128942,7 +129340,6 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	"strongjaw": [],
 	"blackfang": [
 		"strongjaw",
-		"insomnia",
 		"moxie",
 	],
 	"mightyjaw": [],
@@ -129796,7 +130193,9 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 		"mindseye",
 	],
 	"auraguard": [],
-	"shadowdouble": [],
+	"shadowdouble": [
+		"misalignedstars",
+	],
 	"crossfire": [],
 	"auraconvergence": [],
 	"crescentrend": [],
@@ -130034,6 +130433,7 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	],
 	"keystoneseal": [
 		"cursedbody",
+		"pressure",
 	],
 	"racingspirit": [
 		"rockhead",
@@ -130286,7 +130686,9 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 		"rockhead",
 	],
 	"primevalshield": [],
-	"wraithprocession": [],
+	"wraithprocession": [
+		"misalignedstars",
+	],
 	"exaltedaether": [],
 	"rightfulexalt": [
 		"serenegrace",
@@ -130430,7 +130832,7 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	"twinfocus": [],
 	"cosmicanalysis": [
 		"analytic",
-		"download",
+		"naturalcure",
 	],
 	"risingstriker": [],
 	"risingrhythm": [],
@@ -130572,7 +130974,52 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	"tripwirekick": [
 		"hydrabond",
 	],
+	"restlessdrive": [],
 	"shogunstance": [],
+	"duskpoise": [],
+	"dawnpoise": [],
+	"springstriker": [
+		"striker",
+		"waterabsorb",
+	],
+	"summerstriker": [
+		"striker",
+		"flashfire",
+	],
+	"autumnstriker": [
+		"striker",
+		"eartheater",
+	],
+	"winterstriker": [
+		"striker",
+		"iceabsorb",
+	],
+	"rimemantle": [],
+	"stormmantle": [],
+	"cindermantle": [],
+	"nebuladrift": [],
+	"heartcurrent": [],
+	"rushingblade": [],
+	"scrapcollector": [],
+	"victorylap": [],
+	"firstdraft": [],
+	"lunarwake": [],
+	"dreamstalker": [],
+	"seedcourier": [],
+	"coldreserve": [],
+	"signaturedrive": [],
+	"crystalfacet": [],
+	"ringtrick": [],
+	"boilervent": [],
+	"islandwatch": [],
+	"lightcache": [],
+	"shadowstep": [],
+	"bulwarkrelay": [],
+	"vinerelay": [],
+	"crowntending": [],
+	"snowpassage": [],
+	"maskmender": [],
+	"bindingchain": [],
 };
 // END SERVER WORKING SYNC DISPLAY COMPONENTS
 // BEGIN SERVER WORKING SYNC PASSIVE COMPONENT EXCLUSIONS
@@ -130635,6 +131082,9 @@ const CUSTOM_SIGNATURE_PASSIVE_REMOVED_COMPONENTS: {[id: string]: readonly strin
 	],
 };
 const CUSTOM_SIGNATURE_PASSIVE_COMPONENTS: {[id: string]: readonly string[]} = {
+	"seasonalstride": [
+		"overcoat",
+	],
 	"kindredfury": [
 		"friendguard",
 		"berserk",
@@ -130655,8 +131105,9 @@ const CUSTOM_SIGNATURE_PASSIVE_COMPONENTS: {[id: string]: readonly string[]} = {
 		"poisonpoint",
 	],
 	"omensight": [
-		"anticipation",
+		"misalignedstars",
 		"forewarn",
+		"anticipation",
 	],
 	"breakingnews": [
 		"forewarn",
@@ -130713,8 +131164,12 @@ const CUSTOM_SIGNATURE_PASSIVE_COMPONENTS: {[id: string]: readonly string[]} = {
 	"mirechorus": [
 		"liquidvoice",
 	],
+	"misalignedstars": [
+		"anticipation",
+	],
 	"bonewarrior": [
 		"battlearmor",
+		"cursedbody",
 	],
 	"polarrest": [
 		"earlybird",
@@ -130841,6 +131296,10 @@ const CUSTOM_SIGNATURE_PASSIVE_COMPONENTS: {[id: string]: readonly string[]} = {
 	],
 };
 const CUSTOM_ABILITY_COMPONENT_EXCLUSIONS: {[id: string]: readonly string[]} = {
+	"execution": [
+		"insomnia",
+		"magicguard",
+	],
 	"uncheckedassault": [
 		"striker",
 	],
@@ -131491,9 +131950,6 @@ const CUSTOM_SHARED_PASSIVE_COMPONENTS: {[id: string]: readonly string[]} = {
 	"lunarorbit": [
 		"magicbounce",
 	],
-	"astralcore": [
-		"purepower",
-	],
 	"neurotoxin": [
 		"shedskin",
 	],
@@ -131862,11 +132318,6 @@ const CUSTOM_SHARED_PASSIVE_DESCRIPTIONS: {[id: string]: {passive: string; desc:
 		"desc": "Magic Guard prevents indirect damage; HP costs, Pain Split, confusion and Struggle recoil still apply. Fairy Tale entry gives +1 Sp. Def. On entry or Mega Evolution, sets Gravity for 5 turns. Water Surface sinks to Underwater, Underwater to Midnight Zone, and Corrosive Mist to Corrosive, except on New World.",
 		"shortDesc": "Magic Guard and five-turn Gravity entry.",
 	},
-	"astralcore": {
-		"passive": "purepower",
-		"desc": "On switching out, cures its major status and heals 1/8 max HP if it had a status to cure. Bewitched Woods also cures its status at turn end. Prevents other Pokemon's accuracy drops and ignores evasion boosts. Reveals opposing Illusions on activation. Mirror Arena entry lowers foes' accuracy by 1. Starlight Arena entry gives +2 Sp. Atk and puts Spotlight on its first adjacent ally. Lumina Crash, special Photon Geyser and special moves in the /relicbeam list use the target’s lower Defense or Sp. Def. They still use the holder’s Sp. Atk and retain their type, category and other effects. This effect adds no power multiplier.",
-		"shortDesc": "Natural Cure + Star Lens.",
-	},
 	"relentlesslink": {
 		"passive": "skilllink",
 		"desc": "Mold Breaker and Power Drill.",
@@ -131969,8 +132420,8 @@ const CUSTOM_SHARED_PASSIVE_DESCRIPTIONS: {[id: string]: {passive: string; desc:
 	},
 	"execution": {
 		"passive": "duskilate",
-		"shortDesc": "Double power against foes at half HP or less; has offense-drop limits, field Speed protection and KO healing.",
-		"desc": "Has Mold Breaker, double attack power against targets at half HP or less, limits to Attack and Special Attack drops, prevention of Speed drops while a field exists, and 1/8 max HP healing per move KO.",
+		"shortDesc": "Misaligned Stars + Void Veil. Bypasses abilities, punishes weakened foes and heals on KOs.",
+		"desc": "Includes Misaligned Stars and Void Veil. Ignores bypassable abilities, deals 1.3× damage at half enemy HP or less, marks weakened foes and heals 1/8 max HP per KO. Attack and Sp. Atk cannot fall below −1. Fields protect its Speed.",
 	},
 	"corrosivetouch": {
 		"passive": "technician",
@@ -131989,7 +132440,7 @@ const CUSTOM_SHARED_PASSIVE_DESCRIPTIONS: {[id: string]: {passive: string; desc:
 	},
 	"sirius": {
 		"passive": "rivalmalice",
-		"desc": "Has full Apex Venom, Whiplash, Venam’s Kiss and local Shed Skin (50% end-turn ailment/low-HP recovery; Dragon’s Den guaranteed). Mega Seviper’s Poison Fang slot becomes Drake Fang: 85 BP Dragon Physical, 100 accuracy, 15 PP, bite/contact and inherited poison effects. Current PP and slot persist through switching; actual form reversal restores Poison Fang. Strong Jaw gives Fang attacks 1.5x power before STAB, with no separate signature multiplier. Dragon Drake Fang uses ordinary Dragon effectiveness and does not trigger Poison-only Venam effects. Poison HP hits poison eligible Steel/Poison foes; all foes can be drained (one-third damage, capped at 1/4 base max HP per turn), while already-poisoned foes are heal-blocked and have 0.75x Speed. Cannot be suppressed, replaced or bypassed by Mold Breaker.",
+		"desc": "Has full Apex Venom, Whiplash, Venam’s Kiss and local Shed Skin (50% end-turn ailment/low-HP recovery; Dragon’s Den guaranteed). Mega Seviper’s Poison Fang slot becomes Drake Fang: 100 BP adaptive Dragon, 100 accuracy, 15 PP, bite/contact and inherited poison effects. Current PP and slot persist through switching; actual form reversal restores Poison Fang. Strong Jaw gives Fang attacks 1.5x power before STAB, with no separate signature multiplier. Dragon Drake Fang uses ordinary Dragon effectiveness and does not trigger Poison-only Venam effects. Poison HP hits poison eligible Steel/Poison foes; all foes can be drained (one-third damage, capped at 1/4 base max HP per turn), while already-poisoned foes are heal-blocked and have 0.75x Speed. Cannot be suppressed, replaced or bypassed by Mold Breaker.",
 		"shortDesc": "Apex Venom + Whiplash + Venam’s Kiss; Poison Fang becomes Drake Fang.",
 	},
 	"windchime": {
@@ -132020,7 +132471,7 @@ const CUSTOM_SHARED_PASSIVE_DESCRIPTIONS: {[id: string]: {passive: string; desc:
 	"voidcraft": {
 		"passive": "elevate",
 		"shortDesc": "Temporal Shift with Misaligned Stars, Shadow Shield, and Fairy STAB.",
-		"desc": "Temporal Shift queues a 100-power Future Sight of the user’s primary type on the turn after a damaging move and prevents opposing stat drops. Includes Anticipation. Records each opposing attack that damages the user and each opposing status move that successfully hits it. Blocks the next use of that move once per battle and heals 1/3 max HP. After switching back in, the first damaging use of each previously blocked attack deals half damage; surviving it heals 1/4 max HP. Each multihit attack counts as one use. Fairy attacks gain STAB. Shadow Shield halves attack damage at full HP and protects against hail on Cold Eclipse.",
+		"desc": "Temporal Shift queues a 100-power Future Sight of the user’s primary type on the turn after a damaging move and prevents opposing stat drops. Includes Anticipation. Opposing attacks deal 10% less damage. Each opposing move alternates: the first successful use is recorded and the next is blocked, healing 1/3 max HP. The cycle repeats separately for each move. After switching back in, the first damaging use of each previously blocked attack deals half damage and heals 1/4 max HP if the holder survives. Its next use is blocked. Each multihit attack counts as one use. Against Ultra Ego and Ultra Instinct, the holder ignores their matchup damage bonuses, protection and positive stat stages they grant. Ultra ability bypass cannot stop the Stars. Fairy attacks gain STAB. Shadow Shield halves attack damage at full HP and protects against hail on Cold Eclipse.",
 	},
 	"stormbell": {
 		"passive": "mirrorarmor",
@@ -133030,8 +133481,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Ascendance",
 		"num": 10378,
 		"gen": 9,
-		"desc": "All damaging moves deal 1.5x damage, can hit type immunities, and gain a 1.5x STAB-style boost when they do not match its type. On Holy Field, its Attack and Special Attack are raised by 1 on entry. Eevee-Starter and Umbreon transform into Divineon on entry; Umbreon uses Umbreon-Perfect's appearance while retaining Umbreon's full movepool.",
-		"shortDesc": "1.5x attack damage, immunity bypass and off-type STAB; Eevee-Starter/Umbreon becomes Divineon.",
+		"desc": "All damaging moves get the same-type attack bonus once, including ??? moves, and bypass type immunities. On Holy Field, its Attack and Special Attack are raised by 1 on entry. Eevee-Starter and Umbreon transform into Divineon on entry; Umbreon uses Umbreon-Perfect's appearance while retaining Umbreon's full movepool.",
+		"shortDesc": "All attacks gain STAB and bypass type immunities. Starter Eevee and Umbreon become Divineon.",
 		"rating": 5,
 		"flags": {
 			"breakable": 1,
@@ -133098,8 +133549,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Astral Core",
 		"num": 10261,
 		"gen": 9,
-		"desc": "Doubles Attack, or Sp. Atk instead on Psychic Terrain. On switching out, cures its major status and heals 1/8 max HP if it had a status to cure. Bewitched Woods also cures its status at turn end. Prevents other Pokemon's accuracy drops and ignores evasion boosts. Reveals opposing Illusions on activation. Mirror Arena entry lowers foes' accuracy by 1. Starlight Arena entry gives +2 Sp. Atk and puts Spotlight on its first adjacent ally. Lumina Crash, special Photon Geyser and special moves in the /relicbeam list use the target’s lower Defense or Sp. Def. They still use the holder’s Sp. Atk and retain their type, category and other effects. This effect adds no power multiplier.",
-		"shortDesc": "Pure Power + Natural Cure + Star Lens.",
+		"desc": "Prevents other Pokemon's accuracy drops and ignores evasion boosts. Reveals opposing Illusions on activation. Mirror Arena entry lowers foes' accuracy by 1. Starlight Arena entry gives +2 Sp. Atk and puts Spotlight on its first adjacent ally. Lumina Crash, special Photon Geyser and special moves in the /relicbeam list use the target’s lower Defense or Sp. Def. They still use the holder’s Sp. Atk and retain their type, category and other effects. This effect adds no power multiplier. On entry and opposing switch-ins, reveals foes' Illusions and a super-effective or OHKO move. Takes 25% less damage from the latest warned move until switching out, excluding OHKO moves. On Psychic Terrain, gains +2 Sp. Atk for each foe with no threat. Includes Anticipation. Opposing attacks deal 10% less damage. Each opposing move alternates: the first successful use is recorded and the next is blocked, healing 1/3 max HP. The cycle repeats separately for each move. After switching back in, the first damaging use of each previously blocked attack deals half damage and heals 1/4 max HP if the holder survives. Its next use is blocked. Each multihit attack counts as one use. Against Ultra Ego and Ultra Instinct, the holder ignores their matchup damage bonuses, protection and positive stat stages they grant. Ultra ability bypass cannot stop the Stars. Victory Star gives the user and its allies 1.1× accuracy. Foes take 1.5× damage on New World and Starlight Arena.",
+		"shortDesc": "Star Lens + Misaligned Stars + Victory Star.",
 		"rating": 5,
 		"flags": {},
 		"isNonstandard": null,
@@ -133250,8 +133701,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Aurora Domain",
 		"num": 11121,
 		"gen": 9,
-		"desc": "Full local Snow Warning + Refrigerate. On fainting, sets or refreshes its side's Aurora Veil for 5 turns, without requiring hail or snow.",
-		"shortDesc": "Hail and Refrigerate; fainting sets Aurora Veil for 5 turns.",
+		"desc": "Aurora Current + Refrigerate. Summons hail and grants Electric STAB. In hail or snow, Electric moves never miss and both defenses rise by 50%. Aurora Current's field entry boosts apply once alongside Relic Armor. Fainting grants or refreshes Aurora Veil for five turns in any weather.",
+		"shortDesc": "Aurora Current + Refrigerate. Fainting grants five turns of Aurora Veil.",
 		"rating": 5,
 		"flags": {},
 		"isNonstandard": null,
@@ -133262,6 +133713,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"gen": 9,
 		"desc": "Water and Ice attacks have 1.3x power while its side has Aurora Veil. Once per turn, damaging a foe with either type cures major status on itself and active allies. Includes G-Max Resonance; its newly created Veil strengthens subsequent attacks.",
 		"shortDesc": "Water/Ice hits cure its active side’s status. During Aurora Veil, those attacks gain 30% power.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null,
+	},
+	"autumnstriker": {
+		"name": "Autumn Striker",
+		"num": 33303,
+		"gen": 9,
+		"desc": "Kicks gain 40% power. Grants Earth Eater, including its field effects.",
+		"shortDesc": "Striker + Earth Eater.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null,
@@ -133523,12 +133984,22 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		},
 		"isNonstandard": null,
 	},
+	"bindingchain": {
+		"name": "Binding Chain",
+		"num": 33537,
+		"gen": 9,
+		"desc": "Once per entry, damaging a poisoned foe with Malignant Chain disables its last successful move for two turns. Checks after poison is applied.",
+		"shortDesc": "Once per entry, Malignant Chain disables a poisoned foe’s last successful move for 2 turns.",
+		"rating": 2,
+		"flags": {},
+		"isNonstandard": null,
+	},
 	"blackfang": {
 		"name": "Black Fang",
 		"num": 10309,
 		"gen": 9,
-		"desc": "Biting moves have 1.5x power. Prevents and cures sleep. Gains +1 Attack for each Pokemon knocked out by its move.",
-		"shortDesc": "Bites have 1.5x power; Prevents and cures sleep; Move KOs give +1 Attack.",
+		"desc": "Biting moves have 1.5× power. Each Pokémon knocked out by its move raises its Attack by 1 stage.",
+		"shortDesc": "Bites have 1.5× power. Move KOs give +1 Attack.",
 		"rating": 3.5,
 		"flags": {},
 		"isNonstandard": null,
@@ -133685,12 +134156,22 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		},
 		"isNonstandard": null,
 	},
+	"boilervent": {
+		"name": "Boiler Vent",
+		"num": 33528,
+		"gen": 9,
+		"desc": "Once per entry, damaging a foe with Steam Eruption clears the user’s negative Speed stages.",
+		"shortDesc": "Once per entry, damaging a foe with Steam Eruption clears the user’s negative Speed stages.",
+		"rating": 2,
+		"flags": {},
+		"isNonstandard": null,
+	},
 	"bonewarrior": {
 		"name": "Bone Warrior",
 		"num": 10282,
 		"gen": 9,
-		"desc": "Battle Armor, including critical-hit immunity, 0.8x incoming attack damage and field effects. Once per turn after a bone-flag attack damages opposing HP, the living active holder restores 1/8 max HP after the whole attack. Normal healing restrictions apply.",
-		"shortDesc": "Battle Armor; bone attacks heal 1/8 max HP once per turn after opposing HP damage.",
+		"desc": "Includes Battle Armor and Cursed Body. A damaging hit can disable the attacking move. Fainting curses active foes for two turns. Once per turn, damaging a foe with a bone move restores 1/8 max HP after the attack.",
+		"shortDesc": "Battle Armor + Cursed Body. Bone attacks heal 1/8 HP once per turn.",
 		"rating": 4.5,
 		"flags": {
 			"breakable": 1,
@@ -133800,6 +134281,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"desc": "On its first active turn, its Speed is 1.5x and its Attack is 1.2x. On entry, lowers adjacent foes' Attack by 1. Substitute and Intimidate protections still apply.",
 		"shortDesc": "First active turn: 1.5x Spe and 1.2x Atk; Entry lowers adjacent foes' Attack by 1.",
 		"rating": 3.5,
+		"flags": {},
+		"isNonstandard": null,
+	},
+	"bulwarkrelay": {
+		"name": "Bulwark Relay",
+		"num": 33532,
+		"gen": 9,
+		"desc": "Once per entry, blocking an enemy spread attack with Wide Guard heals the other active ally with the lowest HP percentage by 1/8.",
+		"shortDesc": "Once per entry, Wide Guard blocking a spread move heals the lowest-HP ally by 1/8.",
+		"rating": 2,
 		"flags": {},
 		"isNonstandard": null,
 	},
@@ -134164,6 +134655,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {},
 		"isNonstandard": null,
 	},
+	"cindermantle": {
+		"name": "Cinder Mantle",
+		"num": 33503,
+		"gen": 9,
+		"desc": "Fiery Wrath uses the better of Dark or Fire against each target with STAB. Halves the first opposing Fire attack to damage its HP each entry.",
+		"shortDesc": "Fiery Wrath picks Dark or Fire STAB. Halves the first Fire hit each entry.",
+		"rating": 3,
+		"flags": {},
+		"isNonstandard": null,
+	},
 	"cinderscales": {
 		"name": "Cinder Scales",
 		"num": 11242,
@@ -134270,6 +134771,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"desc": "Its first successful damaging move each genuine entry ignores positive defensive stat stages and screens. All hits of that move benefit. Misses and Protect preserve the effect; it does not bypass Substitute. Ability changes or restarts do not refresh the spent entry budget.",
 		"shortDesc": "First successful damaging move each entry ignores boosted defenses and screens.",
 		"rating": 4,
+		"flags": {},
+		"isNonstandard": null,
+	},
+	"coldreserve": {
+		"name": "Cold Reserve",
+		"num": 33524,
+		"gen": 9,
+		"desc": "Once per entry, surviving a super-effective hit restores 1/16 max HP after the attack.",
+		"shortDesc": "Once per entry, surviving a super-effective hit restores 1/16 max HP after the attack.",
+		"rating": 2,
 		"flags": {},
 		"isNonstandard": null,
 	},
@@ -134546,8 +135057,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Cosmic Analysis",
 		"num": 32502,
 		"gen": 9,
-		"desc": "Attacks gain 30% power after all other active Pokemon have acted. On entry, raises Attack if foes have lower combined Defense, otherwise Sp. Atk. Once per battle on entry, Download grants Laser Focus for the next attack that hits, through the following turn. Retains Download’s field bonuses.",
-		"shortDesc": "Analytic + Download.",
+		"desc": "Attacks gain 30% power after all other active Pokémon have acted. On switching out, cures its major status and heals 1/8 max HP if it had a status to cure. Bewitched Woods also cures its status at turn end.",
+		"shortDesc": "Analytic + Natural Cure.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null,
@@ -134634,6 +135145,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {},
 		"isNonstandard": null,
 	},
+	"crowntending": {
+		"name": "Crown Tending",
+		"num": 33534,
+		"gen": 9,
+		"desc": "Once per turn, healing an ally with Pollen Puff restores 1/16 of the user’s max HP.",
+		"shortDesc": "Once per turn, healing an ally with Pollen Puff restores 1/16 of the user’s max HP.",
+		"rating": 2,
+		"flags": {},
+		"isNonstandard": null,
+	},
 	"cruelshell": {
 		"name": "Cruel Shell",
 		"num": 10345,
@@ -134694,6 +135215,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {
 			"breakable": 1,
 		},
+		"isNonstandard": null,
+	},
+	"crystalfacet": {
+		"name": "Crystal Facet",
+		"num": 33526,
+		"gen": 9,
+		"desc": "Once per entry, a Rock attack that damages its HP clears its negative Defense stages.",
+		"shortDesc": "Once per entry, a Rock attack that damages its HP clears its negative Defense stages.",
+		"rating": 2,
+		"flags": {},
 		"isNonstandard": null,
 	},
 	"crystalfocus": {
@@ -134764,8 +135295,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Cursed Armament",
 		"num": 10122,
 		"gen": 9,
-		"desc": "Own non-fixed, non-delayed Ghost and Steel attacks gain 20% power, retaining their physical or special category. Once per turn after a whole attack damages a surviving active foe, steal up to 2 PP from its queued move; a newly entered foe without a queued move instead loses up to 2 PP from one random damaging move. Stealing PP stores one charge. The next eligible attack consumes it on attempt, including a miss, protection or immunity, and gains 40% power instead of 20%. A successful charged attack steals up to 3 PP from the last attempted current move, or the queued move if none was used, plus 1 PP from every other current move. Newly entered foes always use one random damaging move as the charged primary, even with earlier move history. Charged attacks cannot recharge themselves. Both drains share one use per turn and affect one surviving foe; Substitute-only damage and KOs do not qualify. Switching, fainting, suppression or losing the ability clears the charge. Curse has its ordinary local behavior and HP cost.",
-		"shortDesc": "Ghost/Steel attacks gain 20% power; stolen PP charges a 40% attack.",
+		"desc": "Own non-fixed, non-delayed Ghost and Steel attacks gain 20% power, retaining their physical or special category. Once per turn after a whole attack damages a surviving active foe, steal up to 2 PP from its queued move; a newly entered foe without a queued move instead loses up to 2 PP from one random damaging move. Stealing PP stores one charge. The next eligible attack consumes it on attempt, including a miss, protection or immunity, and gains 40% power instead of 20%. A successful charged attack steals up to 3 PP from the last attempted current move, or the queued move if none was used, plus 1 PP from every other current move. Newly entered foes always use one random damaging move as the charged primary, even with earlier move history. Charged attacks cannot recharge themselves. Both drains share one use per turn and affect one surviving foe; Substitute-only damage and KOs do not qualify. Switching, fainting, suppression or losing the ability clears the charge. Curse has its ordinary local behavior and HP cost. Rechecks incoming foes on every switch-in. On entry and opposing switch-ins, reveals foes' Illusions and a super-effective or OHKO move. Takes 25% less damage from the latest warned move until switching out, excluding OHKO moves. On Psychic Terrain, gains +2 Sp. Atk for each foe with no threat. Includes Anticipation. Opposing attacks deal 10% less damage. Each opposing move alternates: the first successful use is recorded and the next is blocked, healing 1/3 max HP. The cycle repeats separately for each move. After switching back in, the first damaging use of each previously blocked attack deals half damage and heals 1/4 max HP if the holder survives. Its next use is blocked. Each multihit attack counts as one use. Against Ultra Ego and Ultra Instinct, the holder ignores their matchup damage bonuses, protection and positive stat stages they grant. Ultra ability bypass cannot stop the Stars.",
+		"shortDesc": "Misaligned Stars. Ghost/Steel attacks gain 20% power; stolen PP charges a 40% attack.",
 		"rating": 4.5,
 		"flags": {
 			"breakable": 1,
@@ -134806,8 +135337,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Cursed Marionette",
 		"num": 10104,
 		"gen": 9,
-		"desc": "Once per entry per foe, a successful status move curses that foe. This Curse deals 1/8 max HP each turn. Attacks deal 1.3x damage to cursed foes.",
-		"shortDesc": "First successful status move per foe each entry curses it; 1.3x damage to cursed foes.",
+		"desc": "Once per entry per foe, a successful status move curses that foe. This Curse deals 1/8 max HP each turn. Attacks deal 1.3x damage to cursed foes. On entry and opposing switch-ins, reveals foes' Illusions and a super-effective or OHKO move. Takes 25% less damage from the latest warned move until switching out, excluding OHKO moves. On Psychic Terrain, gains +2 Sp. Atk for each foe with no threat. Includes Anticipation. Opposing attacks deal 10% less damage. Each opposing move alternates: the first successful use is recorded and the next is blocked, healing 1/3 max HP. The cycle repeats separately for each move. After switching back in, the first damaging use of each previously blocked attack deals half damage and heals 1/4 max HP if the holder survives. Its next use is blocked. Each multihit attack counts as one use. Against Ultra Ego and Ultra Instinct, the holder ignores their matchup damage bonuses, protection and positive stat stages they grant. Ultra ability bypass cannot stop the Stars.",
+		"shortDesc": "Misaligned Stars. First status hit per foe each entry curses it; 1.3× damage to cursed foes.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null,
@@ -134915,6 +135446,18 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"desc": "On entry, summons sun for 5 turns, or 8 with Heat Rock. Allies take 25% less attack damage; the holder does not. Normal weather blocking, ability suppression and bypass rules apply.",
 		"shortDesc": "Summons sun; allies take 25% less attack damage.",
 		"rating": 0,
+		"flags": {
+			"breakable": 1,
+		},
+		"isNonstandard": null,
+	},
+	"dawnpoise": {
+		"name": "Dawn Poise",
+		"num": 33306,
+		"gen": 9,
+		"desc": "Prevents opposing Pokémon from lowering Divineon’s accuracy.",
+		"shortDesc": "Foes cannot lower its accuracy.",
+		"rating": 1,
 		"flags": {
 			"breakable": 1,
 		},
@@ -135369,6 +135912,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		},
 		"isNonstandard": null,
 	},
+	"dreamstalker": {
+		"name": "Dream Stalker",
+		"num": 33522,
+		"gen": 9,
+		"desc": "Once per entry, damaging a sleeping foe restores 1/8 max HP.",
+		"shortDesc": "Once per entry, damaging a sleeping foe restores 1/8 max HP.",
+		"rating": 2,
+		"flags": {},
+		"isNonstandard": null,
+	},
 	"dredger": {
 		"name": "Dredger",
 		"num": 11332,
@@ -135525,6 +136078,18 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"shortDesc": "Normal moves become Dark type and have 1.3x power.",
 		"rating": 4,
 		"flags": {},
+		"isNonstandard": null,
+	},
+	"duskpoise": {
+		"name": "Dusk Poise",
+		"num": 33305,
+		"gen": 9,
+		"desc": "Abysseon keeps its composure and cannot flinch.",
+		"shortDesc": "Prevents flinching.",
+		"rating": 1,
+		"flags": {
+			"breakable": 1,
+		},
 		"isNonstandard": null,
 	},
 	"earlybird": {
@@ -135926,8 +136491,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Execution",
 		"num": 10198,
 		"gen": 9,
-		"desc": "Eligible Normal moves become Dark, or Fairy on Holy and Rainbow, with 1.3x power. This rises to 1.5x on Dark Crystal Cavern, New World, Starlight Arena, Cold Eclipse, Short-Circuit, Haunted, Bewitched Woods, Holy and Rainbow. Immune to hail damage on Cold Eclipse. Moves ignore bypassable abilities. Attacks against targets at half HP or less gain 1.3x power. Once per switch-in, a direct hit that brings a surviving foe from above half HP to half or less marks it; the next Dark or Ghost hit against that foe ignores positive defensive boosts and spends the mark. The mark ends if either Pokemon switches. Restores 1/8 max HP per KO; Attack and Sp. Atk cannot fall below -1, and Speed cannot be lowered while a field is active.",
-		"shortDesc": "Normal becomes Dark/Fairy; ability bypass; stronger vs weakened foes; KOs heal 1/8 HP.",
+		"desc": "Includes Duskilate, Mold Breaker, Void Veil and Misaligned Stars. Moves ignore bypassable opposing abilities. Levitate and Telepathy protect against Ground and allied attacks. Gravity cannot ground the user, and beneficial terrain effects apply while airborne. Attacks deal 1.3× damage against foes at half HP or less. Once per entry, a hit that brings a surviving foe from above half HP to half or less marks it: the next Dark or Ghost hit ignores its positive defensive stages. Either Pokémon switching clears the mark. Heals 1/8 max HP per KO. Attack and Sp. Atk cannot fall below −1. Fields protect Speed from stat drops. Includes Anticipation. Opposing attacks deal 10% less damage. Each opposing move alternates: the first successful use is recorded and the next is blocked, healing 1/3 max HP. The cycle repeats separately for each move. After switching back in, the first damaging use of each previously blocked attack deals half damage and heals 1/4 max HP if the holder survives. Its next use is blocked. Each multihit attack counts as one use. Against Ultra Ego and Ultra Instinct, the holder ignores their matchup damage bonuses, protection and positive stat stages they grant. Ultra ability bypass cannot stop the Stars.",
+		"shortDesc": "Misaligned Stars + Void Veil. Bypasses abilities, punishes weakened foes and heals on KOs.",
 		"rating": 4.5,
 		"flags": {
 			"breakable": 1,
@@ -136102,6 +136667,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"desc": "Defense and Sp. Def are multiplied by 1.3.",
 		"shortDesc": "Defense and Sp. Def 1.3x.",
 		"rating": 3,
+		"flags": {},
+		"isNonstandard": null,
+	},
+	"firstdraft": {
+		"name": "First Draft",
+		"num": 33520,
+		"gen": 9,
+		"desc": "Once per entry, a successful Transform or Reflect Type restores 1/8 max HP.",
+		"shortDesc": "Once per entry, a successful Transform or Reflect Type restores 1/8 max HP.",
+		"rating": 2,
 		"flags": {},
 		"isNonstandard": null,
 	},
@@ -137146,6 +137721,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {},
 		"isNonstandard": null,
 	},
+	"heartcurrent": {
+		"name": "Heart Current",
+		"num": 33505,
+		"gen": 9,
+		"desc": "Once per entry, Heart Swap heals 1/4 max HP if it exchanges different stat stages.",
+		"shortDesc": "Once per entry, Heart Swap heals 1/4 max HP if it exchanges different stat stages.",
+		"rating": 3,
+		"flags": {},
+		"isNonstandard": null,
+	},
 	"heatcoil": {
 		"name": "Heat Coil",
 		"num": 10058,
@@ -137953,6 +138538,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		},
 		"isNonstandard": null,
 	},
+	"islandwatch": {
+		"name": "Island Watch",
+		"num": 33529,
+		"gen": 9,
+		"desc": "Once per entry, another teammate recovering from a major status heals the holder by 1/16 max HP.",
+		"shortDesc": "Once per entry, another teammate recovering from a major status heals the holder by 1/16 max HP.",
+		"rating": 2,
+		"flags": {},
+		"isNonstandard": null,
+	},
 	"jetstream": {
 		"name": "Jetstream",
 		"num": 32618,
@@ -138021,8 +138616,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Keystone Seal",
 		"num": 11513,
 		"gen": 9,
-		"desc": "Cursed Body + continuous Imprison using its current moveset. Blocks opposing forced switches. Suppression disables the seal.",
-		"shortDesc": "Cursed Body; continuous Imprison; blocks opposing forced switches.",
+		"desc": "Cursed Body + continuous Imprison using its current moveset. Blocks opposing forced switches. Suppression disables the seal. On entry, lowers foes' Defense and Sp. Def by 1 (2 on Cold Eclipse) and changes Underwater to Midnight Zone. Foes targeting it spend 1 extra PP, or 2 on Midnight Zone. Outside Cold Eclipse, its Defense and Sp. Def drop is attempted only once per opposing Pokemon per battle for each Pressure user. Switching, Transform and ability loss or regain do not reset that allowance; a blocked or reflected attempt spends it. Cold Eclipse retains repeatable -2 drops on entry and neither spends nor resets the ordinary allowance.",
+		"shortDesc": "Pressure. Cursed Body; continuous Imprison; blocks opposing forced switches.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null,
@@ -138257,6 +138852,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {},
 		"isNonstandard": null,
 	},
+	"lightcache": {
+		"name": "Light Cache",
+		"num": 33530,
+		"gen": 9,
+		"desc": "Once per entry, a direct Photon Geyser KO restores 1 PP to Photon Geyser.",
+		"shortDesc": "Once per entry, a direct Photon Geyser KO restores 1 PP to Photon Geyser.",
+		"rating": 2,
+		"flags": {},
+		"isNonstandard": null,
+	},
 	"lightmetal": {
 		"name": "Light Metal",
 		"num": 135,
@@ -138411,8 +139016,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Living Rampart",
 		"num": 12339,
 		"gen": 9,
-		"desc": "Rock and Steel moves gain 20% power while its Defense is boosted.",
-		"shortDesc": "Rock and Steel moves gain 20% power while its Defense is boosted.",
+		"desc": "Halves the first super-effective Ground or Fighting attack to damage its HP each entry.",
+		"shortDesc": "Halves the first super-effective Ground or Fighting attack to damage its HP each entry.",
 		"rating": 3,
 		"flags": {},
 		"isNonstandard": null,
@@ -138539,6 +139144,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"desc": "It has STAB on Psychic- and Normal-type moves.",
 		"shortDesc": "Psychic- and Normal-type moves get STAB.",
 		"rating": 3,
+		"flags": {},
+		"isNonstandard": null,
+	},
+	"lunarwake": {
+		"name": "Lunar Wake",
+		"num": 33521,
+		"gen": 9,
+		"desc": "Once per turn, curing status with Lunar Blessing heals the user by 1/16 max HP.",
+		"shortDesc": "Once per turn, curing status with Lunar Blessing heals the user by 1/16 max HP.",
+		"rating": 2,
 		"flags": {},
 		"isNonstandard": null,
 	},
@@ -138682,6 +139297,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {
 			"breakable": 1,
 		},
+		"isNonstandard": null,
+	},
+	"maskmender": {
+		"name": "Mask Mender",
+		"num": 33536,
+		"gen": 9,
+		"desc": "Once per battle, damaging a foe with Ivy Cudgel while below half HP restores 1/16 max HP.",
+		"shortDesc": "Once per battle, damaging a foe with Ivy Cudgel while below half HP restores 1/16 max HP.",
+		"rating": 2,
+		"flags": {},
 		"isNonstandard": null,
 	},
 	"masonsfist": {
@@ -138976,8 +139601,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Misaligned Stars",
 		"num": 32594,
 		"gen": 9,
-		"desc": "On entry and opposing switch-ins, reveals foes' Illusions and a super-effective or OHKO move. Takes 25% less damage from the latest warned move until switching out, excluding OHKO moves. On Psychic Terrain, gains +2 Sp. Atk for each foe with no threat. Includes Anticipation. Records each opposing attack that damages the user and each opposing status move that successfully hits it. Blocks the next use of that move once per battle and heals 1/3 max HP. After switching back in, the first damaging use of each previously blocked attack deals half damage; surviving it heals 1/4 max HP. Each multihit attack counts as one use.",
-		"shortDesc": "Anticipation. Blocks a repeat and heals 1/3 HP. After switching, halves a repeat and heals 1/4 HP.",
+		"desc": "On entry and opposing switch-ins, reveals foes' Illusions and a super-effective or OHKO move. Takes 25% less damage from the latest warned move until switching out, excluding OHKO moves. On Psychic Terrain, gains +2 Sp. Atk for each foe with no threat. Includes Anticipation. Opposing attacks deal 10% less damage. Each opposing move alternates: the first successful use is recorded and the next is blocked, healing 1/3 max HP. The cycle repeats separately for each move. After switching back in, the first damaging use of each previously blocked attack deals half damage and heals 1/4 max HP if the holder survives. Its next use is blocked. Each multihit attack counts as one use. Against Ultra Ego and Ultra Instinct, the holder ignores their matchup damage bonuses, protection and positive stat stages they grant. Ultra ability bypass cannot stop the Stars.",
+		"shortDesc": "Takes 10% less attack damage. Blocks every other use of each foe move and heals 1/3 HP.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null,
@@ -139188,8 +139813,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Mourning Snow",
 		"num": 10116,
 		"gen": 9,
-		"desc": "On entry, it summons Hail for 8 turns, and Aurora Veil used by it lasts 8 turns. During Hail or Snow, it heals 1/16 max HP each turn. Its damaging moves of any type gain an additional 30% chance to inflict frostbite, preserving their effects; this does not require weather. It is immune to Hail damage. In Free-for-All only, when another Pokemon faints, it restores 1/8 max HP, or 1/4 if the faint was caused by an Ice move, Hail, Snow, or Curse. When it faints, active foes are cursed for two end-of-turn ticks of 1/8 max HP each, then the curse ends. Damaging hits disable the attacker's move when possible.",
-		"shortDesc": "8-turn Hail/Veil; frostbite and Disable; snow healing; FFA faint healing; two-turn faint Curse.",
+		"desc": "On entry, it summons Hail for 8 turns, and Aurora Veil used by it lasts 8 turns. During Hail or Snow, it heals 1/16 max HP each turn. Its damaging moves of any type gain an additional 30% chance to inflict frostbite, preserving their effects; this does not require weather. It is immune to Hail damage. In Free-for-All only, when another Pokemon faints, it restores 1/8 max HP, or 1/4 if the faint was caused by an Ice move, Hail, Snow, or Curse. When it faints, active foes are cursed for two end-of-turn ticks of 1/8 max HP each, then the curse ends. Damaging hits disable the attacker's move when possible. Rechecks incoming foes on every switch-in. On entry and opposing switch-ins, reveals foes' Illusions and a super-effective or OHKO move. Takes 25% less damage from the latest warned move until switching out, excluding OHKO moves. On Psychic Terrain, gains +2 Sp. Atk for each foe with no threat. Includes Anticipation. Opposing attacks deal 10% less damage. Each opposing move alternates: the first successful use is recorded and the next is blocked, healing 1/3 max HP. The cycle repeats separately for each move. After switching back in, the first damaging use of each previously blocked attack deals half damage and heals 1/4 max HP if the holder survives. Its next use is blocked. Each multihit attack counts as one use. Against Ultra Ego and Ultra Instinct, the holder ignores their matchup damage bonuses, protection and positive stat stages they grant. Ultra ability bypass cannot stop the Stars.",
+		"shortDesc": "Misaligned Stars. Hail and Veil; frostbite, Disable, snow healing, FFA KO healing and faint Curse.",
 		"rating": 4.5,
 		"flags": {
 			"breakable": 1,
@@ -139330,6 +139955,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"desc": "Switching out cures major status and restores 1/3 max HP, plus another 1/8 if a status was cured. Bewitched Woods cures status at turn end without healing.",
 		"shortDesc": "Switching out heals an extra 1/8 HP if a major status was cured.",
 		"rating": 4.5,
+		"flags": {},
+		"isNonstandard": null,
+	},
+	"nebuladrift": {
+		"name": "Nebula Drift",
+		"num": 33504,
+		"gen": 9,
+		"desc": "Once per entry, halves the first opposing attack while waiting to Teleport. Teleport heals the incoming ally by 1/3 HP. After Shelter or Cosmic Power this entry, it also cures the ally’s status once per battle.",
+		"shortDesc": "Guards before Teleport once per entry. Teleport heals the incoming ally; setup can also cure status.",
+		"rating": 3,
 		"flags": {},
 		"isNonstandard": null,
 	},
@@ -139594,8 +140229,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Omen Edge",
 		"num": 10102,
 		"gen": 9,
-		"desc": "Slicing moves have 1.5x power, except on Cold Eclipse. Eligible slicing, pulse, bullet, horn, drill, and Arrow moves normally hit twice at 60% power, each with its own accuracy check. If an offensive ability power or damage multiplier applies, the first hit retains its full ability boosts and the second uses 15% of original move power without those offensive ability multipliers. Stat multipliers, items, STAB and ordinary weather or field modifiers remain separate. In Free-for-All, the second hit targets another random living foe when possible; Siege Launcher retains its full-power pair. Existing multi-hit moves do not gain an extra pair. On entry, lowers foes' Defense and Sp. Def by 1 (2 on Cold Eclipse) and changes Underwater to Midnight Zone. Foes targeting it spend 1 extra PP, or 2 on Midnight Zone. On fainting, schedules a physical, 140-power Steel Doom Desire against each foe. An existing delayed attack is delayed by another 2 turns instead. Outside Cold Eclipse, its Defense and Sp. Def drop is attempted only once per opposing Pokemon per battle for each Pressure user. Switching, Transform and ability loss or regain do not reset that allowance; a blocked or reflected attempt spends it. Cold Eclipse retains repeatable -2 drops on entry and neither spends nor resets the ordinary allowance.",
-		"shortDesc": "Stronger slicing; eligible attacks hit twice; extra foe PP cost; physical Doom Desire on fainting.",
+		"desc": "Slicing moves have 1.5x power, except on Cold Eclipse. On entry, lowers foes' Defense and Sp. Def by 1 (2 on Cold Eclipse) and changes Underwater to Midnight Zone. Foes targeting it spend 1 extra PP, or 2 on Midnight Zone. On fainting, schedules a physical, 140-power Steel Doom Desire against each foe. An existing delayed attack is delayed by another 2 turns instead. Outside Cold Eclipse, its Defense and Sp. Def drop is attempted only once per opposing Pokemon per battle for each Pressure user. Switching, Transform and ability loss or regain do not reset that allowance; a blocked or reflected attempt spends it. Cold Eclipse retains repeatable -2 drops on entry and neither spends nor resets the ordinary allowance.",
+		"shortDesc": "Sharpness and Pressure. Calls a physical Doom Desire on fainting.",
 		"rating": 4,
 		"flags": {
 			"breakable": 1,
@@ -139606,8 +140241,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Omen Sight",
 		"num": 11401,
 		"gen": 9,
-		"desc": "On entry and opposing switch-ins, reveals foes' Illusions, a super-effective or OHKO move, and a strongest damaging move. Remembers each foe's warned moves until switching out. Forewarn reduces attack damage by 20%, or 25% for its warning. Anticipation reduces its warned attack by another 25%. Neither warning shields against OHKO moves. On Psychic Terrain, gains +2 Sp. Atk for each strongest-move reveal and each foe with no super-effective or OHKO threat.",
-		"shortDesc": "Anticipation and Forewarn stack: 43.75% less damage when both warn of the same move.",
+		"desc": "On entry and opposing switch-ins, reveals foes' Illusions, a super-effective or OHKO move, and a strongest damaging move. Remembers each foe's warned moves until switching out. Forewarn reduces attack damage by 20%, or 25% for its warning. Anticipation reduces its warned attack by another 25%. Neither warning shields against OHKO moves. On Psychic Terrain, gains +2 Sp. Atk for each strongest-move reveal and each foe with no super-effective or OHKO threat. Includes Misaligned Stars. Includes Anticipation. Opposing attacks deal 10% less damage. Each opposing move alternates: the first successful use is recorded and the next is blocked, healing 1/3 max HP. The cycle repeats separately for each move. After switching back in, the first damaging use of each previously blocked attack deals half damage and heals 1/4 max HP if the holder survives. Its next use is blocked. Each multihit attack counts as one use. Against Ultra Ego and Ultra Instinct, the holder ignores their matchup damage bonuses, protection and positive stat stages they grant. Ultra ability bypass cannot stop the Stars.",
+		"shortDesc": "Forewarn + Misaligned Stars. Scouts threats and blocks repeat moves to heal.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null,
@@ -141062,7 +141697,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Reaper's Grip",
 		"num": 10357,
 		"gen": 9,
-		"desc": "Includes Anticipation. Records each opposing attack that damages the user and each opposing status move that successfully hits it. Blocks the next use of that move once per battle and heals 1/3 max HP. After switching back in, the first damaging use of each previously blocked attack deals half damage; surviving it heals 1/4 max HP. Each multihit attack counts as one use. Heals 1/16 max HP each turn and ignores sandstorm/hail damage. Entry creates 5-turn Haunted Aura: all Ghost attacks gain 20% power. Its Ghost attacks heal 25% of opposing HP damage dealt. A direct Ghost KO while it survives and Haunted Aura remains attempts to convert the field to Haunted for 5 turns, consuming the Aura only on success. Respects field locks; cannot extend existing Haunted. Later entries can create the Aura again, but ability restarts cannot. Suppression stops new triggers and holder benefits; an existing Aura persists.",
+		"desc": "Includes Anticipation. Opposing attacks deal 10% less damage. Each opposing move alternates: the first successful use is recorded and the next is blocked, healing 1/3 max HP. The cycle repeats separately for each move. After switching back in, the first damaging use of each previously blocked attack deals half damage and heals 1/4 max HP if the holder survives. Its next use is blocked. Each multihit attack counts as one use. Against Ultra Ego and Ultra Instinct, the holder ignores their matchup damage bonuses, protection and positive stat stages they grant. Ultra ability bypass cannot stop the Stars. Heals 1/16 max HP each turn and ignores sandstorm/hail damage. Entry creates 5-turn Haunted Aura: all Ghost attacks gain 20% power. Its Ghost attacks heal 25% of opposing HP damage dealt. A direct Ghost KO while it survives and Haunted Aura remains attempts to convert the field to Haunted for 5 turns, consuming the Aura only on success. Respects field locks; cannot extend existing Haunted. Later entries can create the Aura again, but ability restarts cannot. Suppression stops new triggers and holder benefits; an existing Aura persists.",
 		"shortDesc": "Self-Sufficient + Misaligned Stars. Haunted Aura. Ghost hits drain 25%. Ghost KOs can set Haunted.",
 		"rating": 5,
 		"flags": {},
@@ -141303,6 +141938,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {},
 		"isNonstandard": null,
 	},
+	"restlessdrive": {
+		"name": "Restless Drive",
+		"num": 33307,
+		"gen": 9,
+		"desc": "Once per switch-in, if an opposing attack damages its HP, landing a damaging move on a foe later that turn raises its Speed by one stage.",
+		"shortDesc": "Once per entry, +1 Speed after striking back on the turn a foe hits it.",
+		"rating": 2.5,
+		"flags": {},
+		"isNonstandard": null,
+	},
 	"restorativechime": {
 		"name": "Restorative Chime",
 		"num": 11249,
@@ -141429,6 +142074,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		},
 		"isNonstandard": null,
 	},
+	"rimemantle": {
+		"name": "Rime Mantle",
+		"num": 33501,
+		"gen": 9,
+		"desc": "Freezing Glare uses the better of Psychic or Ice against each target with STAB. Halves the first opposing Ice attack to damage its HP each entry.",
+		"shortDesc": "Freezing Glare picks Psychic or Ice STAB. Halves the first Ice hit each entry.",
+		"rating": 3,
+		"flags": {},
+		"isNonstandard": null,
+	},
 	"rimeplate": {
 		"name": "Rimeplate",
 		"num": 10593,
@@ -141458,6 +142113,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"desc": "Tough Claws once. The first damaging Dark move attempted each genuine entry gains +1 priority; misses and protection spend it, but pre-action flinch or paralysis do not. Ability restarts do not reset it. Each successful Dark attack dealing opposing HP damage attempts two-turn Taunt on surviving foes, with ordinary Taunt immunity and reapplication rules. A committed living switch-out, including pivots and forced switches, clears own-side hazards before entry and gives the exact replacement +1 in its highest non-HP stat after entry and Baton Pass transfer. Suppression at departure prevents this benefit; fainting is not a switch-out. Once per entry, damaging a foe with Darkest Lariat raises Defense by one stage.",
 		"shortDesc": "Tough Claws; first Dark attempt +1 priority; Dark hits Taunt; switch-out support.",
 		"rating": 4,
+		"flags": {},
+		"isNonstandard": null,
+	},
+	"ringtrick": {
+		"name": "Ring Trick",
+		"num": 33527,
+		"gen": 9,
+		"desc": "Once per entry, a direct KO with Hyperspace Hole or Hyperspace Fury restores 1 PP to that move.",
+		"shortDesc": "Once per entry, a direct KO with Hyperspace Hole or Hyperspace Fury restores 1 PP to that move.",
+		"rating": 2,
 		"flags": {},
 		"isNonstandard": null,
 	},
@@ -141808,6 +142473,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {},
 		"isNonstandard": null,
 	},
+	"rushingblade": {
+		"name": "Rushing Blade",
+		"num": 33506,
+		"gen": 9,
+		"desc": "Once per entry, heals 1/8 max HP when Secret Sword damages a foe.",
+		"shortDesc": "Once per entry, heals 1/8 max HP when Secret Sword damages a foe.",
+		"rating": 3,
+		"flags": {},
+		"isNonstandard": null,
+	},
 	"sacredbond": {
 		"name": "Sacred Bond",
 		"num": 10410,
@@ -142070,6 +142745,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {},
 		"isNonstandard": null,
 	},
+	"scrapcollector": {
+		"name": "Scrap Collector",
+		"num": 33507,
+		"gen": 9,
+		"desc": "Once per entry, heals 1/8 max HP when a Steel move damages a foe.",
+		"shortDesc": "Once per entry, heals 1/8 max HP when a Steel move damages a foe.",
+		"rating": 3,
+		"flags": {},
+		"isNonstandard": null,
+	},
 	"scrappy": {
 		"name": "Scrappy",
 		"num": 113,
@@ -142128,8 +142813,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Seasonal Stride",
 		"num": 10202,
 		"gen": 9,
-		"desc": "Eligible damaging Normal moves become the current primary type and gain 20% power. At turn end, rain selects Spring, sun Summer, sand Autumn, and hail or snow Winter. Clear weather keeps the current season. Changing season carries the selected ability slot across forms.",
-		"shortDesc": "Normal attacks become the current primary type with 1.2x power. Weather changes season.",
+		"desc": "Overcoat protects against powders, Effect Spore, hail and sandstorm damage. Eligible damaging Normal moves become the current primary type and gain 20% power. At turn end, rain selects Spring, sun Summer, sand Autumn, and hail or snow Winter. Clear weather keeps the current season. Changing season carries the selected ability slot across forms.",
+		"shortDesc": "Overcoat. Converts Normal attacks to the primary type at 1.2× power. Weather changes season.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null,
@@ -142151,6 +142836,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"desc": "The first otherwise lethal attack has a 50% chance to leave it at 1 HP. This Ability rolls only once per battle, even if the roll fails or it switches out.",
 		"shortDesc": "50% chance to survive the first lethal attack at 1 HP; one roll per battle.",
 		"rating": 4,
+		"flags": {},
+		"isNonstandard": null,
+	},
+	"seedcourier": {
+		"name": "Seed Courier",
+		"num": 33523,
+		"gen": 9,
+		"desc": "Once per entry, damaging a foe with Seed Flare cures one active ally’s major status.",
+		"shortDesc": "Once per entry, damaging a foe with Seed Flare cures one active ally’s major status.",
+		"rating": 2,
 		"flags": {},
 		"isNonstandard": null,
 	},
@@ -142272,8 +142967,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Shadow Double",
 		"num": 11421,
 		"gen": 9,
-		"desc": "Once per switch-in, damaging an opponent's HP with a Ghost attack creates a shadow double. The next opposing damaging move deals 25% less damage across all its hits. The double lasts until used or switching out. Does not block status effects, fixed damage, or residual damage.",
-		"shortDesc": "After a Ghost hit, next opposing attack deals 25% less damage. Once per switch-in.",
+		"desc": "Once per switch-in, damaging an opponent's HP with a Ghost attack creates a shadow double. The next opposing damaging move deals 25% less damage across all its hits. The double lasts until used or switching out. Does not block status effects, fixed damage, or residual damage. Rechecks incoming foes on every switch-in. On entry and opposing switch-ins, reveals foes' Illusions and a super-effective or OHKO move. Takes 25% less damage from the latest warned move until switching out, excluding OHKO moves. On Psychic Terrain, gains +2 Sp. Atk for each foe with no threat. Includes Anticipation. Opposing attacks deal 10% less damage. Each opposing move alternates: the first successful use is recorded and the next is blocked, healing 1/3 max HP. The cycle repeats separately for each move. After switching back in, the first damaging use of each previously blocked attack deals half damage and heals 1/4 max HP if the holder survives. Its next use is blocked. Each multihit attack counts as one use. Against Ultra Ego and Ultra Instinct, the holder ignores their matchup damage bonuses, protection and positive stat stages they grant. Ultra ability bypass cannot stop the Stars.",
+		"shortDesc": "Misaligned Stars. After a Ghost hit, next opposing attack deals 25% less damage. Once per switch-in.",
 		"rating": 4,
 		"flags": {
 			"breakable": 1,
@@ -142307,6 +143002,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"desc": "Takes half attack damage at full HP. Ability-ignoring moves cannot bypass this protection; suppression disables it. Immune to hail damage on Cold Eclipse.",
 		"shortDesc": "Half attack damage at full HP; no hail damage on Cold Eclipse.",
 		"rating": 3.5,
+		"flags": {},
+		"isNonstandard": null,
+	},
+	"shadowstep": {
+		"name": "Shadow Step",
+		"num": 33531,
+		"gen": 9,
+		"desc": "Once per entry, Spectral Thief cures the user’s major status if it steals a boost and damages the foe.",
+		"shortDesc": "Once per entry, Spectral Thief cures status after stealing a boost and damaging its foe.",
+		"rating": 2,
 		"flags": {},
 		"isNonstandard": null,
 	},
@@ -142459,8 +143164,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Shogun Stance",
 		"num": 32960,
 		"gen": 9,
-		"desc": "Samurott gains 1.2× Attack, Special Attack and Speed. Its Razor Shell becomes Cresting Cut, or Moonless Cut for Hisuian Samurott. Both are 85-power Water moves that use the higher attacking stat and have a 50% chance to lower Defense. Moonless Cut also has a high critical-hit rate. Hisuian Samurott gains the full effects of Shell Armor.",
-		"shortDesc": "1.2× Atk, Sp. Atk and Speed; signature Razor Shell. Hisuian Samurott also gains Shell Armor.",
+		"desc": "Grants Shell Armor. Razor Shell becomes Cresting Cut for Unovan Samurott or Moonless Cut for Hisuian Samurott. Each is an 85-power Water move that uses the higher attacking stat, ignores the target’s positive defensive stages, and has a 50% chance to lower Defense. Moonless Cut also has a high critical-hit rate.",
+		"shortDesc": "Shell Armor. Samurott’s signature Razor Shell cuts through boosted defenses.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null,
@@ -142512,6 +143217,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"desc": "Full Mold Breaker ignores bypassable opposing abilities. Prevents entry-hazard damage, Toxic Spikes poison and Sticky Web Speed drops.",
 		"shortDesc": "Mold Breaker; immune to entry hazards.",
 		"rating": 3,
+		"flags": {},
+		"isNonstandard": null,
+	},
+	"signaturedrive": {
+		"name": "Signature Drive",
+		"num": 33525,
+		"gen": 9,
+		"desc": "Techno Blast deals 15% more damage when its type matches the active held Drive.",
+		"shortDesc": "Techno Blast deals 15% more damage when its type matches the active held Drive.",
+		"rating": 2,
 		"flags": {},
 		"isNonstandard": null,
 	},
@@ -142645,8 +143360,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Sinister Blaze",
 		"num": 10068,
 		"gen": 9,
-		"desc": "This Ability cannot be suppressed, copied, or transferred. It is burned on entry, even through Misty Terrain, and its burn can overwrite other status conditions. In Fairy Tale, Starlight Arena, New World, Burning Field, Volcanic Field, Superheated Field, or Cold Eclipse, its Defense and Special Defense rise by 1 stage on entry. Its burn damage becomes healing; foes take 1/16 max HP each turn, or 1/8 if already burned. It does not heal from this generated damage, but heals from real burn damage dealt to foes. Its physical attacks are not weakened by burn. It is immune to hail and sandstorm damage and counts as Ice type in hail, snow, and ice fields, except for Abysseon and Divineon.",
-		"shortDesc": "Burn heals user; foes take 1/16, or 1/8 if burned; no burn penalty; hail/sand immune.",
+		"desc": "This Ability cannot be suppressed, copied, or transferred. It is burned on entry, even through Misty Terrain, and its burn can overwrite other status conditions. In Fairy Tale, Starlight Arena, New World, Burning Field, Volcanic Field, or Superheated Field, its Defense and Special Defense rise by 1 stage on entry. Its burn heals it. Burned foes lose an extra 1/16 max HP each turn. Once per turn, the user also recovers HP equal to the burn damage one foe actually takes. Its physical attacks are not weakened by burn. It is immune to hail and sandstorm damage and counts as Ice type in hail, snow, and ice fields, except for Abysseon and Divineon.",
+		"shortDesc": "Burned foes lose an extra 1/16 each turn. Heals from its own burn and one opposing burn per turn.",
 		"rating": 4,
 		"flags": {
 			"cantsuppress": 1,
@@ -142671,7 +143386,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Sirius",
 		"num": 10404,
 		"gen": 9,
-		"desc": "Has full Apex Venom, Whiplash, Venam’s Kiss and local Shed Skin (50% end-turn ailment/low-HP recovery; Dragon’s Den guaranteed). Mega Seviper’s Poison Fang slot becomes Drake Fang: 85 BP Dragon Physical, 100 accuracy, 15 PP, bite/contact and inherited poison effects. Current PP and slot persist through switching; actual form reversal restores Poison Fang. Strong Jaw gives Fang attacks 1.5x power before STAB, with no separate signature multiplier. Dragon Drake Fang uses ordinary Dragon effectiveness and does not trigger Poison-only Venam effects. Poison HP hits poison eligible Steel/Poison foes; all foes can be drained (one-third damage, capped at 1/4 base max HP per turn), while already-poisoned foes are heal-blocked and have 0.75x Speed. Cannot be suppressed, replaced or bypassed by Mold Breaker.",
+		"desc": "Has full Apex Venom, Whiplash, Venam’s Kiss and local Shed Skin (50% end-turn ailment/low-HP recovery; Dragon’s Den guaranteed). Mega Seviper’s Poison Fang slot becomes Drake Fang: 100 BP adaptive Dragon, 100 accuracy, 15 PP, bite/contact and inherited poison effects. Current PP and slot persist through switching; actual form reversal restores Poison Fang. Strong Jaw gives Fang attacks 1.5x power before STAB, with no separate signature multiplier. Dragon Drake Fang uses ordinary Dragon effectiveness and does not trigger Poison-only Venam effects. Poison HP hits poison eligible Steel/Poison foes; all foes can be drained (one-third damage, capped at 1/4 base max HP per turn), while already-poisoned foes are heal-blocked and have 0.75x Speed. Cannot be suppressed, replaced or bypassed by Mold Breaker.",
 		"shortDesc": "Apex Venom + Whiplash + Venam’s Kiss; Poison Fang becomes Drake Fang.",
 		"rating": 5,
 		"flags": {
@@ -142816,6 +143531,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"desc": "Full local Ice Body: immune to hail; contact attackers have a 30% frostbite chance. Heals 1/16 max HP in hail/snow, or on Icy, Snowy Mountain and Cold Eclipse without those weathers; hail on Cold Eclipse heals 1/8.",
 		"shortDesc": "Ice Body.",
 		"rating": 3.5,
+		"flags": {},
+		"isNonstandard": null,
+	},
+	"snowpassage": {
+		"name": "Snow Passage",
+		"num": 33535,
+		"gen": 9,
+		"desc": "Once per entry, cures paralysis at turn end in hail or snow.",
+		"shortDesc": "Once per entry, cures paralysis at turn end in hail or snow.",
+		"rating": 2,
 		"flags": {},
 		"isNonstandard": null,
 	},
@@ -143255,6 +143980,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {},
 		"isNonstandard": null,
 	},
+	"springstriker": {
+		"name": "Spring Striker",
+		"num": 33301,
+		"gen": 9,
+		"desc": "Kicks gain 40% power. Grants Water Absorb, including its field effects.",
+		"shortDesc": "Striker + Water Absorb.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null,
+	},
 	"springtempest": {
 		"name": "Spring Tempest",
 		"num": 11736,
@@ -143608,6 +144343,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		},
 		"isNonstandard": null,
 	},
+	"stormmantle": {
+		"name": "Storm Mantle",
+		"num": 33502,
+		"gen": 9,
+		"desc": "Thunderous Kick uses the better of Fighting or Electric against each target with STAB. Halves the first opposing Electric or Psychic attack to damage its HP each entry.",
+		"shortDesc": "Thunderous Kick picks Fighting or Electric STAB. Halves the first Electric/Psychic hit each entry.",
+		"rating": 3,
+		"flags": {},
+		"isNonstandard": null,
+	},
 	"stormmemory": {
 		"name": "Storm Memory",
 		"num": 12019,
@@ -143777,6 +144522,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"desc": "Full local Regenerator and Solar Power, including their field effects and Solar Power HP cost.",
 		"shortDesc": "Regenerator + Solar Power.",
 		"rating": 2,
+		"flags": {},
+		"isNonstandard": null,
+	},
+	"summerstriker": {
+		"name": "Summer Striker",
+		"num": 33302,
+		"gen": 9,
+		"desc": "Kicks gain 40% power. Grants Flash Fire, including its Fire Boost and field effects.",
+		"shortDesc": "Striker + Flash Fire.",
+		"rating": 4,
 		"flags": {},
 		"isNonstandard": null,
 	},
@@ -144166,7 +144921,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Temporal Shift",
 		"num": 10142,
 		"gen": 9,
-		"desc": "Opposing Pokémon cannot lower the user’s stats. On the turn after it uses a damaging move, it queues a 100-power Future Sight of its primary type against a random foe. Multiple attacks can be queued. Includes Anticipation. Records each opposing attack that damages the user and each opposing status move that successfully hits it. Blocks the next use of that move once per battle and heals 1/3 max HP. After switching back in, the first damaging use of each previously blocked attack deals half damage; surviving it heals 1/4 max HP. Each multihit attack counts as one use.",
+		"desc": "Opposing Pokémon cannot lower the user’s stats. On the turn after it uses a damaging move, it queues a 100-power Future Sight of its primary type against a random foe. Multiple attacks can be queued. Includes Anticipation. Opposing attacks deal 10% less damage. Each opposing move alternates: the first successful use is recorded and the next is blocked, healing 1/3 max HP. The cycle repeats separately for each move. After switching back in, the first damaging use of each previously blocked attack deals half damage and heals 1/4 max HP if the holder survives. Its next use is blocked. Each multihit attack counts as one use. Against Ultra Ego and Ultra Instinct, the holder ignores their matchup damage bonuses, protection and positive stat stages they grant. Ultra ability bypass cannot stop the Stars.",
 		"shortDesc": "Misaligned Stars. Blocks opposing stat drops. Attacking queues a 100-power Future Sight.",
 		"rating": 4,
 		"flags": {
@@ -144461,7 +145216,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Tome of Avarice",
 		"num": 12194,
 		"gen": 9,
-		"desc": "Attacks that previously damaged the user’s HP deal 30% less damage to it for the rest of the battle, including after it switches back in. Includes Anticipation. Records each opposing attack that damages the user and each opposing status move that successfully hits it. Blocks the next use of that move once per battle and heals 1/3 max HP. After switching back in, the first damaging use of each previously blocked attack deals half damage; surviving it heals 1/4 max HP. Each multihit attack counts as one use.",
+		"desc": "Attacks that previously damaged the user’s HP deal 30% less damage to it for the rest of the battle, including after it switches back in. Includes Anticipation. Opposing attacks deal 10% less damage. Each opposing move alternates: the first successful use is recorded and the next is blocked, healing 1/3 max HP. The cycle repeats separately for each move. After switching back in, the first damaging use of each previously blocked attack deals half damage and heals 1/4 max HP if the holder survives. Its next use is blocked. Each multihit attack counts as one use. Against Ultra Ego and Ultra Instinct, the holder ignores their matchup damage bonuses, protection and positive stat stages they grant. Ultra ability bypass cannot stop the Stars.",
 		"shortDesc": "Misaligned Stars. Attacks that previously damaged the user deal 30% less, even after switching.",
 		"rating": 4,
 		"flags": {
@@ -144879,8 +145634,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Tyrant Domain",
 		"num": 11120,
 		"gen": 9,
-		"desc": "Sand Stream + Supreme Overlord. Holds an existing Dragon’s Den while active; entering it lowers each foe’s Defense and Sp. Def by 1. Once per battle, fainting grants its immediate replacement +1 Attack after entry hazards. A replacement that faints on entry consumes the gift.",
-		"shortDesc": "Sand Stream + Supreme Overlord; fainting grants its replacement +1 Attack once per battle.",
+		"desc": "Tyrant Stream + Supreme Overlord. Summons sand. Bites gain 50% power. Recoil, crash and explosion moves gain 20% power, and Chessboard gives a separate 20% boost. Prevents ordinary move recoil. Gains power for fallen allies. Holds an existing Dragon’s Den while active; entering it lowers each foe’s Defense and Sp. Def by 1. Once per battle, fainting grants its immediate replacement +1 Attack after entry hazards. A replacement that faints on entry consumes the gift.",
+		"shortDesc": "Tyrant Stream + Supreme Overlord. Fainting grants its replacement +1 Attack once per battle.",
 		"rating": 5,
 		"flags": {},
 		"isNonstandard": null,
@@ -145368,12 +146123,32 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {},
 		"isNonstandard": null,
 	},
+	"victorylap": {
+		"name": "Victory Lap",
+		"num": 33508,
+		"gen": 9,
+		"desc": "The first V-create to damage a foe each battle skips its Speed drop. Defense and Sp. Def still fall.",
+		"shortDesc": "The first V-create to damage a foe each battle skips its Speed drop. Defense and Sp. Def still fall.",
+		"rating": 3,
+		"flags": {},
+		"isNonstandard": null,
+	},
 	"victorystar": {
 		"name": "Victory Star",
 		"num": 162,
 		"gen": 5,
 		"desc": "It and its allies' moves have their accuracy multiplied by 1.1.",
 		"shortDesc": "It and its allies' moves have their accuracy multiplied by 1.1.",
+		"rating": 2,
+		"flags": {},
+		"isNonstandard": null,
+	},
+	"vinerelay": {
+		"name": "Vine Relay",
+		"num": 33533,
+		"gen": 9,
+		"desc": "Once per entry, curing another ally’s major status with Jungle Healing raises the user’s Defense by 1.",
+		"shortDesc": "Once per entry, curing an ally’s status with Jungle Healing raises Defense by 1.",
 		"rating": 2,
 		"flags": {},
 		"isNonstandard": null,
@@ -145448,7 +146223,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Void Craft",
 		"num": 10121,
 		"gen": 9,
-		"desc": "Temporal Shift queues a 100-power Future Sight of the user’s primary type on the turn after a damaging move and prevents opposing stat drops. Includes Anticipation. Records each opposing attack that damages the user and each opposing status move that successfully hits it. Blocks the next use of that move once per battle and heals 1/3 max HP. After switching back in, the first damaging use of each previously blocked attack deals half damage; surviving it heals 1/4 max HP. Each multihit attack counts as one use. Fairy attacks gain STAB. Shadow Shield halves attack damage at full HP and protects against hail on Cold Eclipse.",
+		"desc": "Temporal Shift queues a 100-power Future Sight of the user’s primary type on the turn after a damaging move and prevents opposing stat drops. Includes Anticipation. Opposing attacks deal 10% less damage. Each opposing move alternates: the first successful use is recorded and the next is blocked, healing 1/3 max HP. The cycle repeats separately for each move. After switching back in, the first damaging use of each previously blocked attack deals half damage and heals 1/4 max HP if the holder survives. Its next use is blocked. Each multihit attack counts as one use. Against Ultra Ego and Ultra Instinct, the holder ignores their matchup damage bonuses, protection and positive stat stages they grant. Ultra ability bypass cannot stop the Stars. Fairy attacks gain STAB. Shadow Shield halves attack damage at full HP and protects against hail on Cold Eclipse.",
 		"shortDesc": "Temporal Shift with Misaligned Stars, Shadow Shield, and Fairy STAB.",
 		"rating": 4,
 		"flags": {
@@ -145909,6 +146684,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {},
 		"isNonstandard": null,
 	},
+	"winterstriker": {
+		"name": "Winter Striker",
+		"num": 33304,
+		"gen": 9,
+		"desc": "Kicks gain 40% power. Ice moves are absorbed to restore 1/4 max HP.",
+		"shortDesc": "Striker + Ice Absorb.",
+		"rating": 4,
+		"flags": {},
+		"isNonstandard": null,
+	},
 	"wisecounsel": {
 		"name": "Wise Counsel",
 		"num": 11312,
@@ -146027,8 +146812,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Wraith Procession",
 		"num": 11984,
 		"gen": 9,
-		"desc": "Eligible single-target Fire- and Ghost-type attacks strike the same target twice, with the second strike dealing 50% of its normal damage. Each strike can apply target secondary effects. Infernal Parade checks status for each strike, so a first-strike burn powers up the second. Uses one PP and the ordinary move accuracy check. The follow-up never transfers to another Pokemon. Spread, existing multi-hit, charging, delayed, OHKO, Z, Max and other moves excluded from bond follow-ups do not gain a strike. Does not bypass abilities or type immunities. Suppression prevents the additional strike.",
-		"shortDesc": "Single-target Fire/Ghost attacks hit twice; second strike deals 50% damage.",
+		"desc": "Eligible single-target Fire- and Ghost-type attacks strike the same target twice, with the second strike dealing 50% of its normal damage. Each strike can apply target secondary effects. Infernal Parade checks status for each strike, so a first-strike burn powers up the second. Uses one PP and the ordinary move accuracy check. The follow-up never transfers to another Pokemon. Spread, existing multi-hit, charging, delayed, OHKO, Z, Max and other moves excluded from bond follow-ups do not gain a strike. Does not bypass abilities or type immunities. Suppression prevents the additional strike. On entry and opposing switch-ins, reveals foes' Illusions and a super-effective or OHKO move. Takes 25% less damage from the latest warned move until switching out, excluding OHKO moves. On Psychic Terrain, gains +2 Sp. Atk for each foe with no threat. Includes Anticipation. Opposing attacks deal 10% less damage. Each opposing move alternates: the first successful use is recorded and the next is blocked, healing 1/3 max HP. The cycle repeats separately for each move. After switching back in, the first damaging use of each previously blocked attack deals half damage and heals 1/4 max HP if the holder survives. Its next use is blocked. Each multihit attack counts as one use. Against Ultra Ego and Ultra Instinct, the holder ignores their matchup damage bonuses, protection and positive stat stages they grant. Ultra ability bypass cannot stop the Stars.",
+		"shortDesc": "Misaligned Stars. Single-target Fire/Ghost attacks hit twice; second strike deals 50% damage.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null,
@@ -148666,7 +149451,7 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"num": 12011,
 		"type": "Dragon",
 		"category": "Physical",
-		"basePower": 90,
+		"basePower": 100,
 		"accuracy": 100,
 		"critRatio": 1,
 		"pp": 10,
@@ -148676,8 +149461,8 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"protect": 1,
 			"mirror": 1,
 		},
-		"desc": "Solaris's move. Power rises from 90 to 120 when the user’s team has fewer surviving Pokemon than the target’s team. Dragon's Den / Superheated: Power is 1.2×.",
-		"shortDesc": "Solaris's move. 120 power while your team has fewer surviving Pokemon.",
+		"desc": "Solaris's move. Uses the user’s type with the best type-chart matchup against the selected target. A non-Stellar Tera type is also eligible. Ties favor the first eligible type in the user’s original type order. Power rises from 100 to 130 if the user’s side has fewer surviving Pokémon than the target’s side. Dragon's Den / Superheated: Power is 1.2×.",
+		"shortDesc": "Solaris's move. Uses the best matchup among the user’s types. 130 power when outnumbered.",
 		"hasSheerForceBoost": false,
 		"signatureCharacters": [
 			"solaris",
@@ -149196,6 +149981,32 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"shortDesc": "Halves super-effective damage for 5 turns (8 when extended).",
 		"hasSheerForceBoost": false,
 	},
+	"atlaspress": {
+		"name": "Atlas Press",
+		"num": 33247,
+		"type": "Fighting",
+		"category": "Physical",
+		"basePower": 115,
+		"accuracy": 95,
+		"critRatio": 1,
+		"pp": 10,
+		"priority": 0,
+		"target": "any",
+		"flags": {
+			"contact": 1,
+			"protect": 1,
+			"mirror": 1,
+			"gravity": 1,
+			"distance": 1,
+			"nonsky": 1,
+			"metronome": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 115 power. Once per entry, damaging a heavier foe clears the user’s negative Defense stages.",
+		"shortDesc": "Adaptive. 115 power. Once per entry, damaging a heavier foe clears the user’s negative Defense stages.",
+		"hasSheerForceBoost": false,
+	},
 	"attackorder": {
 		"name": "Attack Order",
 		"num": 454,
@@ -149466,6 +150277,37 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			{
 				"chance": 30,
 				"volatileStatus": "confusion",
+			},
+		],
+		"hasSheerForceBoost": false,
+	},
+	"axisbreak": {
+		"name": "Axis Break",
+		"num": 33220,
+		"type": "Ground",
+		"category": "Special",
+		"basePower": 100,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 10,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"nonsky": 1,
+			"metronome": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 100 power. Ignores positive defensive stages in Wonder Room. Has a 10% chance to lower Sp. Def.",
+		"shortDesc": "Adaptive. 100 power. Ignores positive defensive stages in Wonder Room. Has a 10% chance to lower Sp. Def.",
+		"secondaries": [
+			{
+				"chance": 10,
+				"boosts": {
+					"spd": -1,
+				},
 			},
 		],
 		"hasSheerForceBoost": false,
@@ -149903,6 +150745,35 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"shortDesc": "Waits 2 turns; deals double the damage taken.",
 		"hasSheerForceBoost": false,
 	},
+	"bilgebomb": {
+		"name": "Bilge Bomb",
+		"num": 33225,
+		"type": "Poison",
+		"category": "Special",
+		"basePower": 100,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 10,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1,
+			"bullet": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 100 power. The first damaging hit on an already poisoned foe per entry prevents its healing for two turns. Can poison.",
+		"shortDesc": "Adaptive. 100 power. The first damaging hit on an already poisoned foe per entry prevents its healing for two turns. Can poison.",
+		"secondaries": [
+			{
+				"chance": 30,
+				"status": "psn",
+			},
+		],
+		"hasSheerForceBoost": false,
+	},
 	"bind": {
 		"name": "Bind",
 		"num": 20,
@@ -150015,6 +150886,30 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"flags": {},
 		"desc": "A one-use Dark-type Z-Move. Its power depends on the damaging Dark-type move selected as its base.",
 		"shortDesc": "Power depends on the base Dark-type move.",
+		"hasSheerForceBoost": false,
+	},
+	"blackice": {
+		"name": "Black Ice",
+		"num": 33290,
+		"type": "Dark",
+		"category": "Physical",
+		"basePower": 90,
+		"accuracy": 100,
+		"critRatio": 2,
+		"pp": 15,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"contact": 1,
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1,
+			"slicing": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 90 power. Reaches 105 against a foe with lowered Speed that stayed in this turn. High critical-hit ratio.",
+		"shortDesc": "Adaptive. 90 power. Reaches 105 against a foe with lowered Speed that stayed in this turn. High critical-hit ratio.",
 		"hasSheerForceBoost": false,
 	},
 	"blacktestament": {
@@ -150173,8 +151068,8 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"adaptivecategory": 1,
 			"megasignature": 1,
 		},
-		"desc": "Uses the higher of the user's Attack and Sp. Atk. A 140-power Fire rampage lasting two turns. The user then becomes confused, except on Burning and Volcanic Field.",
-		"shortDesc": "Adaptive. A 140-power Fire rampage lasting two turns. The user then becomes confused, except on Burning and Volcanic Field.",
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 140 power with a 30% burn chance. Usually locks the user in for two turns, then confuses it. Attacks freely after its last damaging hit this entry was Fighting-type, or on Dragon’s Den, Volcanic or Burning Field. Volcanic also raises Attack by 1.",
+		"shortDesc": "Adaptive. 30% burn. No rampage after a Fighting hit or on Dragon’s Den, Volcanic or Burning Field.",
 		"secondaries": [
 			{
 				"chance": 30,
@@ -150748,6 +151643,29 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"shortDesc": "Power depends on the base Normal-type move.",
 		"hasSheerForceBoost": false,
 	},
+	"briardrain": {
+		"name": "Briar Drain",
+		"num": 33280,
+		"type": "Grass",
+		"category": "Special",
+		"basePower": 85,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 10,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"heal": 1,
+			"metronome": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 85 power. Drains half the damage dealt, or three-quarters against a foe affected by Leech Seed.",
+		"shortDesc": "Adaptive. 85 power. Drains half the damage dealt, or three-quarters against a foe affected by Leech Seed.",
+		"hasSheerForceBoost": false,
+	},
 	"brickbreak": {
 		"name": "Brick Break",
 		"num": 280,
@@ -150797,7 +151715,6 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"basePower": 75,
 		"accuracy": 100,
 		"critRatio": 1,
-		"ignorePositiveEvasion": true,
 		"pp": 20,
 		"priority": 0,
 		"target": "any",
@@ -150810,8 +151727,8 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"adaptivecategory": 1,
 			"megasignature": 1,
 		},
-		"desc": "Uses the higher of the user's Attack and Sp. Atk. A 75-power Water pulse. Ignores the target’s positive evasion stages and has a 20% chance to confuse.",
-		"shortDesc": "Adaptive. A 75-power Water pulse. Ignores the target’s positive evasion stages and has a 20% chance to confuse.",
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. Has a 20% chance to confuse. Damaging a foe clears one layer of Spikes from the user’s side per use.",
+		"shortDesc": "Adaptive. Clears one layer of Spikes on hit. 20% confusion.",
 		"secondaries": [
 			{
 				"chance": 20,
@@ -151219,6 +152136,29 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"shortDesc": "Changes user's type by terrain (default Normal).",
 		"hasSheerForceBoost": false,
 	},
+	"capsize": {
+		"name": "Capsize",
+		"num": 33251,
+		"type": "Fighting",
+		"category": "Physical",
+		"basePower": 130,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 5,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"contact": 1,
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 130 power. On Inverse Field, damaging a foe clears its positive evasion stages. Retains the user’s stat drops.",
+		"shortDesc": "Adaptive. 130 power. On Inverse Field, damaging a foe clears its positive evasion stages. Retains the user’s stat drops.",
+		"hasSheerForceBoost": false,
+	},
 	"captivate": {
 		"name": "Captivate",
 		"num": 445,
@@ -151348,6 +152288,36 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		},
 		"desc": "No competitive use.",
 		"shortDesc": "No competitive use.",
+		"hasSheerForceBoost": false,
+	},
+	"celldivision": {
+		"name": "Cell Division",
+		"num": 33279,
+		"type": "Psychic",
+		"category": "Special",
+		"basePower": 100,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 10,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 100 power. Ignores Light Screen while the user has raised Defense or Sp. Def.",
+		"shortDesc": "Adaptive. 100 power. Ignores Light Screen while the user has raised Defense or Sp. Def.",
+		"secondaries": [
+			{
+				"chance": 10,
+				"boosts": {
+					"spd": -1,
+				},
+			},
+		],
 		"hasSheerForceBoost": false,
 	},
 	"charge": {
@@ -152470,6 +153440,35 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"shortDesc": "Protects allies from Status moves this turn.",
 		"hasSheerForceBoost": false,
 	},
+	"cragslide": {
+		"name": "Crag Slide",
+		"num": 33243,
+		"type": "Rock",
+		"category": "Physical",
+		"basePower": 90,
+		"accuracy": 95,
+		"critRatio": 1,
+		"pp": 10,
+		"priority": 0,
+		"target": "allAdjacentFoes",
+		"flags": {
+			"gravityboost": 1,
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 90 power. Reaches 100% accuracy while the user has a positive Defense stage.",
+		"shortDesc": "Adaptive. 90 power. Reaches 100% accuracy while the user has a positive Defense stage.",
+		"secondaries": [
+			{
+				"chance": 20,
+				"volatileStatus": "flinch",
+			},
+		],
+		"hasSheerForceBoost": false,
+	},
 	"craterburst": {
 		"name": "Crater Burst",
 		"num": 32675,
@@ -152563,8 +153562,8 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"adaptivecategory": 1,
 			"megasignature": 1,
 		},
-		"desc": "Uses the higher of the user's Attack and Sp. Atk. Has a 50% chance to lower the target’s Defense by one stage.",
-		"shortDesc": "Adaptive. 50% chance to lower the target’s Defense.",
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. Uses the higher attacking stat. Ignores positive stages in the defense it hits. Has a 50% chance to lower the target’s Defense by one stage.",
+		"shortDesc": "Adaptive. Ignores defensive boosts. 50% chance to lower Defense.",
 		"secondaries": [
 			{
 				"chance": 50,
@@ -152624,6 +153623,36 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		],
 		"hasSheerForceBoost": false,
 	},
+	"crossstitch": {
+		"name": "Cross Stitch",
+		"num": 33213,
+		"type": "Poison",
+		"category": "Physical",
+		"basePower": 100,
+		"accuracy": 100,
+		"critRatio": 2,
+		"pp": 20,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"contact": 1,
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1,
+			"slicing": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 100 power. On a damaging hit, lowers Speed by one stage or, if the foe is already slower, traps it through the following turn. Keeps Cross Poison’s critical-hit, poison and Defense effects.",
+		"shortDesc": "Adaptive. 100 power. On a damaging hit, lowers Speed by one stage or, if the foe is already slower, traps it through the following turn. Keeps Cross Poison’s critical-hit, poison and Defense effects.",
+		"secondaries": [
+			{
+				"chance": 30,
+				"status": "psn",
+			},
+		],
+		"hasSheerForceBoost": false,
+	},
 	"crowncrash": {
 		"name": "Crown Crash",
 		"num": 20090,
@@ -152659,16 +153688,17 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"priority": 0,
 		"target": "normal",
 		"flags": {
+			"bite": 1,
+			"slicing": 1,
 			"contact": 1,
 			"protect": 1,
 			"mirror": 1,
 			"metronome": 1,
-			"slicing": 1,
 			"adaptivecategory": 1,
 			"megasignature": 1,
 		},
-		"desc": "Uses the higher of the user's Attack and Sp. Atk. A slicing Dragon attack. Power rises from 80 to 100 against a target with boosted Defense.",
-		"shortDesc": "Adaptive. A slicing Dragon attack. Power rises from 80 to 100 against a target with boosted Defense.",
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. A slicing Dragon bite. Power rises from 80 to 100 against a target with boosted Defense.",
+		"shortDesc": "Adaptive. A slicing Dragon bite. Power rises from 80 to 100 against a target with boosted Defense.",
 		"hasSheerForceBoost": false,
 	},
 	"cruciblecoil": {
@@ -153949,7 +154979,7 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"num": 11485,
 		"type": "Dragon",
 		"category": "Physical",
-		"basePower": 85,
+		"basePower": 100,
 		"accuracy": 100,
 		"critRatio": 1,
 		"pp": 15,
@@ -153961,9 +154991,11 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"mirror": 1,
 			"metronome": 1,
 			"bite": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
 		},
-		"desc": "85-power physical Dragon-type biting contact attack with 100% accuracy and 15 PP. Has a 50% chance to badly poison the target. Uses ordinary Dragon effectiveness: Fairy immunity and Steel resistance apply. Mega Seviper converts its Poison Fang slot into this move while preserving PP; Sirius supplies the normal Strong Jaw bite multiplier.",
-		"shortDesc": "Dragon-type biting attack; 50% chance to badly poison.",
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 100-power Dragon-type biting contact attack with 100% accuracy and 15 PP. Uses the higher of Attack and Sp. Atk, choosing Attack on ties. Has a 50% chance to badly poison the target. Fairy immunity and Steel resistance apply. Mega Seviper converts its Poison Fang slot into this move while preserving PP. Sirius supplies the normal Strong Jaw bite multiplier.",
+		"shortDesc": "Adaptive. 100-power adaptive Dragon bite. 50% chance to badly poison.",
 		"secondaries": [
 			{
 				"chance": 50,
@@ -153992,8 +155024,8 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"adaptivecategory": 1,
 			"megasignature": 1,
 		},
-		"desc": "Uses the higher of the user's Attack and Sp. Atk. High critical-hit rate. Clears a foe’s positive evasion stages after damaging it.",
-		"shortDesc": "Adaptive. High critical-hit rate. Clears a foe’s positive evasion stages after damaging it.",
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. High critical-hit rate. A damaging critical hit shatters Reflect, Light Screen and Aurora Veil on the target’s side.",
+		"shortDesc": "Adaptive. High crit rate. A damaging critical hit breaks screens.",
 		"hasSheerForceBoost": false,
 	},
 	"dreadhowl": {
@@ -154255,6 +155287,29 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		],
 		"hasSheerForceBoost": false,
 	},
+	"dynamocrash": {
+		"name": "Dynamo Crash",
+		"num": 33228,
+		"type": "Electric",
+		"category": "Physical",
+		"basePower": 125,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 15,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"contact": 1,
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 125-power Electric charge with recoil of 1/8 damage dealt. Damaging a foe on Electric Terrain or Electric Aura clears the user’s Speed drops.",
+		"shortDesc": "Adaptive. 125-power Electric charge with recoil of 1/8 damage dealt. Damaging a foe on Electric Terrain or Electric Aura clears the user’s Speed drops.",
+		"hasSheerForceBoost": false,
+	},
 	"earthpower": {
 		"name": "Earth Power",
 		"num": 414,
@@ -154303,6 +155358,30 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		},
 		"desc": "Damage doubles if the target is using Dig.",
 		"shortDesc": "Hits adjacent Pokemon. Double damage on Dig.",
+		"hasSheerForceBoost": false,
+	},
+	"echobreak": {
+		"name": "Echo Break",
+		"num": 33259,
+		"type": "Normal",
+		"category": "Special",
+		"basePower": 145,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 10,
+		"priority": 0,
+		"target": "allAdjacent",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"sound": 1,
+			"bypasssub": 1,
+			"metronome": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 145 power. Against each foe damaged by this user’s sound move on the previous turn, reaches 150 power.",
+		"shortDesc": "Adaptive. 145 power. Against each foe damaged by this user’s sound move on the previous turn, reaches 150 power.",
 		"hasSheerForceBoost": false,
 	},
 	"echoedvoice": {
@@ -155145,6 +156224,29 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"shortDesc": "Always leaves the target with at least 1 HP.",
 		"hasSheerForceBoost": false,
 	},
+	"faultarrows": {
+		"name": "Fault Arrows",
+		"num": 33294,
+		"type": "Ground",
+		"category": "Physical",
+		"basePower": 95,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 10,
+		"priority": 0,
+		"target": "allAdjacentFoes",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"nonsky": 1,
+			"arrow": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 95 power. Grounding an airborne foe also lowers its Speed by one stage.",
+		"shortDesc": "Adaptive. 95 power. Grounding an airborne foe also lowers its Speed by one stage.",
+		"hasSheerForceBoost": false,
+	},
 	"faultcleave": {
 		"name": "Fault Cleave",
 		"num": 32820,
@@ -155930,6 +157032,27 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"shortDesc": "Lowers the user's Sp. Atk by 2.",
 		"hasSheerForceBoost": false,
 	},
+	"fleursalvo": {
+		"name": "Fleur Salvo",
+		"num": 33250,
+		"type": "Fairy",
+		"category": "Special",
+		"basePower": 130,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 5,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 130 power and 100% accuracy. Lowers Sp. Atk by one stage on a knockout, otherwise by two.",
+		"shortDesc": "Adaptive. 130 power and 100% accuracy. Lowers Sp. Atk by one stage on a knockout, otherwise by two.",
+		"hasSheerForceBoost": false,
+	},
 	"fling": {
 		"name": "Fling",
 		"num": 374,
@@ -156344,6 +157467,28 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"shortDesc": "Uses target's Attack stat in damage calculation.",
 		"hasSheerForceBoost": false,
 	},
+	"fracturepulse": {
+		"name": "Fracture Pulse",
+		"num": 33253,
+		"type": "Psychic",
+		"category": "Special",
+		"basePower": 95,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 10,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. A 95-power Defense-targeting pulse. On Psychic Terrain or Aura, reaches 120 power and breaks Reflect before damage once per entry.",
+		"shortDesc": "Adaptive. A 95-power Defense-targeting pulse. On Psychic Terrain or Aura, reaches 120 power and breaks Reflect before damage once per entry.",
+		"hasSheerForceBoost": false,
+	},
 	"freezedry": {
 		"name": "Freeze-Dry",
 		"num": 573,
@@ -156514,6 +157659,40 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		},
 		"desc": "Uses the higher of the user's Attack and Sp. Atk. The user takes 1/8 of damage dealt as recoil.",
 		"shortDesc": "Adaptive. The user takes 1/8 of damage dealt as recoil.",
+		"hasSheerForceBoost": false,
+	},
+	"frostsplitter": {
+		"name": "Frost Splitter",
+		"num": 33244,
+		"type": "Ice",
+		"category": "Physical",
+		"basePower": 90,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 15,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"contact": 1,
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1,
+			"bite": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 90 power. A damaging bite lowers a burned foe’s Speed one stage, once per use.",
+		"shortDesc": "Adaptive. 90 power. A damaging bite lowers a burned foe’s Speed one stage, once per use.",
+		"secondaries": [
+			{
+				"chance": 10,
+				"status": "frz",
+			},
+			{
+				"chance": 10,
+				"volatileStatus": "flinch",
+			},
+		],
 		"hasSheerForceBoost": false,
 	},
 	"frozenrefractals": {
@@ -157965,6 +159144,30 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		],
 		"hasSheerForceBoost": false,
 	},
+	"gravegrasp": {
+		"name": "Grave Grasp",
+		"num": 33227,
+		"type": "Ghost",
+		"category": "Physical",
+		"basePower": 95,
+		"accuracy": true,
+		"critRatio": 1,
+		"pp": 20,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"contact": 1,
+			"protect": 1,
+			"mirror": 1,
+			"punch": 1,
+			"metronome": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 95-power Ghost punch that never misses. Has 115 power against a foe whose move the user blocked with Misaligned Stars this turn.",
+		"shortDesc": "Adaptive. 95-power Ghost punch that never misses. Has 115 power against a foe whose move the user blocked with Misaligned Stars this turn.",
+		"hasSheerForceBoost": false,
+	},
 	"gravity": {
 		"name": "Gravity",
 		"num": 356,
@@ -158002,8 +159205,8 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"adaptivecategory": 1,
 			"megasignature": 1,
 		},
-		"desc": "Uses the higher of the user's Attack and Sp. Atk. Turns Ghost against a foe that damaged the user this entry.",
-		"shortDesc": "Adaptive. Turns Ghost against a foe that damaged the user this entry.",
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. Always gets the same-type attack bonus. Starts as Rock. Against a foe that damaged the user since it switched in, it turns Ghost unless the foe resists or is immune to Ghost, or is weak to Rock.",
+		"shortDesc": "Adaptive. Always gets STAB. Can turn Ghost against a foe that damaged the user.",
 		"hasSheerForceBoost": false,
 	},
 	"growl": {
@@ -159307,6 +160510,35 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"shortDesc": "Raises the user's Attack and accuracy by 1.",
 		"hasSheerForceBoost": false,
 	},
+	"hoodflare": {
+		"name": "Hood Flare",
+		"num": 33212,
+		"type": "Poison",
+		"category": "Special",
+		"basePower": 95,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 10,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1,
+			"bullet": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 95-power Poison bullet. A damaging hit on an already poisoned foe lowers Sp. Def one stage, once per use. Has a 30% chance to poison.",
+		"shortDesc": "Adaptive. 95-power Poison bullet. A damaging hit on an already poisoned foe lowers Sp. Def one stage, once per use. Has a 30% chance to poison.",
+		"secondaries": [
+			{
+				"chance": 30,
+				"status": "psn",
+			},
+		],
+		"hasSheerForceBoost": false,
+	},
 	"hornattack": {
 		"name": "Horn Attack",
 		"num": 30,
@@ -159410,6 +160642,30 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			5,
 		],
 	},
+	"hornshears": {
+		"name": "Horn Shears",
+		"num": 33276,
+		"type": "Bug",
+		"category": "Physical",
+		"basePower": 95,
+		"accuracy": 100,
+		"critRatio": 2,
+		"pp": 15,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"contact": 1,
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1,
+			"slicing": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 95 power. Removes Reflect from the opposing side before damage on a successful hit. High critical-hit ratio.",
+		"shortDesc": "Adaptive. 95 power. Removes Reflect from the opposing side before damage on a successful hit. High critical-hit ratio.",
+		"hasSheerForceBoost": false,
+	},
 	"howl": {
 		"name": "Howl",
 		"num": 336,
@@ -159454,6 +160710,36 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			{
 				"chance": 30,
 				"volatileStatus": "confusion",
+			},
+		],
+		"hasSheerForceBoost": false,
+	},
+	"hushwing": {
+		"name": "Hush Wing",
+		"num": 33258,
+		"type": "Flying",
+		"category": "Special",
+		"basePower": 90,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 15,
+		"priority": 0,
+		"target": "any",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"distance": 1,
+			"metronome": 1,
+			"slicing": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 90 power and 100% accuracy. The first damaging hit per entry reveals the foe’s held item.",
+		"shortDesc": "Adaptive. 90 power and 100% accuracy. The first damaging hit per entry reveals the foe’s held item.",
+		"secondaries": [
+			{
+				"chance": 30,
+				"volatileStatus": "flinch",
 			},
 		],
 		"hasSheerForceBoost": false,
@@ -160510,6 +161796,38 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"shortDesc": "High critical hit ratio.",
 		"hasSheerForceBoost": false,
 	},
+	"keelcutter": {
+		"name": "Keel Cutter",
+		"num": 33214,
+		"type": "Water",
+		"category": "Physical",
+		"basePower": 90,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 10,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"contact": 1,
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1,
+			"slicing": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 90 power. Ignores positive defensive stages when the foe has raised Defense. Retains Razor Shell’s Defense-drop chance.",
+		"shortDesc": "Adaptive. 90 power. Ignores positive defensive stages when the foe has raised Defense. Retains Razor Shell’s Defense-drop chance.",
+		"secondaries": [
+			{
+				"chance": 50,
+				"boosts": {
+					"def": -1,
+				},
+			},
+		],
+		"hasSheerForceBoost": false,
+	},
 	"kinesis": {
 		"name": "Kinesis",
 		"num": 134,
@@ -160653,6 +161971,27 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		},
 		"desc": "Power doubles if the user had a stat stage lowered this turn.",
 		"shortDesc": "2x power if the user had a stat lowered this turn.",
+		"hasSheerForceBoost": false,
+	},
+	"lastblossom": {
+		"name": "Last Blossom",
+		"num": 33240,
+		"type": "Fairy",
+		"category": "Special",
+		"basePower": 140,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 5,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 140 power and 100% accuracy. Recoil is one third of damage dealt, or one quarter on Bewitched Woods.",
+		"shortDesc": "Adaptive. 140 power and 100% accuracy. Recoil is one third of damage dealt, or one quarter on Bewitched Woods.",
 		"hasSheerForceBoost": false,
 	},
 	"lastresort": {
@@ -161752,6 +163091,35 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		],
 		"hasSheerForceBoost": false,
 	},
+	"mantrapalm": {
+		"name": "Mantra Palm",
+		"num": 33252,
+		"type": "Fighting",
+		"category": "Physical",
+		"basePower": 60,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 10,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"contact": 1,
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 60 power. Gains 10% power after the Technician check, or 20% if its target has moved this turn.",
+		"shortDesc": "Adaptive. 60 power. Gains 10% power after the Technician check, or 20% if its target has moved this turn.",
+		"secondaries": [
+			{
+				"chance": 30,
+				"status": "par",
+			},
+		],
+		"hasSheerForceBoost": false,
+	},
 	"matblock": {
 		"name": "Mat Block",
 		"num": 561,
@@ -162505,6 +163873,40 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		],
 		"hasSheerForceBoost": false,
 	},
+	"meteorram": {
+		"name": "Meteor Ram",
+		"num": 33260,
+		"type": "Steel",
+		"category": "Physical",
+		"basePower": 105,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 10,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"contact": 1,
+			"protect": 1,
+			"mirror": 1,
+			"punch": 1,
+			"metronome": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 105 power and 100% accuracy. After dealing damage with a Convergence-charged hit, raises the user’s Defense one stage once per use. Keeps Meteor Mash’s Attack boost chance.",
+		"shortDesc": "Adaptive. 105 power and 100% accuracy. After dealing damage with a Convergence-charged hit, raises the user’s Defense one stage once per use. Keeps Meteor Mash’s Attack boost chance.",
+		"secondaries": [
+			{
+				"chance": 30,
+				"self": {
+					"boosts": {
+						"atk": 1,
+					},
+				},
+			},
+		],
+		"hasSheerForceBoost": false,
+	},
 	"metronome": {
 		"name": "Metronome",
 		"num": 118,
@@ -162612,6 +164014,28 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		},
 		"desc": "Whether or not this move is successful and even if it would cause fainting, the user loses 1/2 of its maximum HP, rounded up, unless the user has the Magic Guard Ability. This move is prevented from executing and the user does not lose HP if any active Pokemon has the Damp Ability, or if this move is Fire type and the user is affected by Powder or the weather is Primordial Sea.",
 		"shortDesc": "User loses 50% max HP. Hits adjacent Pokemon.",
+		"hasSheerForceBoost": false,
+	},
+	"mindfracture": {
+		"name": "Mind Fracture",
+		"num": 33256,
+		"type": "Psychic",
+		"category": "Special",
+		"basePower": 105,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 10,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 105 power. Once per entry, breaks the target’s Light Screen before damage. Retains Psystrike’s defensive-stat interactions.",
+		"shortDesc": "Adaptive. 105 power. Once per entry, breaks the target’s Light Screen before damage. Retains Psystrike’s defensive-stat interactions.",
 		"hasSheerForceBoost": false,
 	},
 	"mindreader": {
@@ -162863,7 +164287,7 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"adaptivecategory": 1,
 			"megasignature": 1,
 		},
-		"desc": "Uses the higher of the user's Attack and Sp. Atk. Uses the higher attacking stat. Aegis Tide grants guaranteed critical hits, 90 power on hit one and 20 thereafter, 2–5 hits (3–6 in free-for-all), and one extra hit on a KO. Fully blocking a foe’s damaging move with Protect or Spiky Shield stores a charge. Your next Water attack spends it for 1.2× power, even on a miss. A charged Mist Shuriken lowers the Speed of the first foe that takes damage and survives by 1 stage, once per volley. Switching clears the charge.",
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. With Aegis Tide, each hit is critical. The first hit has 90 power and later hits have 20. Hits 2–5 times (3–6 in Free-for-All), with one extra hit on a KO. Fully blocking a foe’s damaging move with Protect or Spiky Shield charges the next Water attack for 1.2× power. A charged Mist Shuriken lowers the first surviving foe’s Speed by 1. Attacking with Water or switching spends the charge.",
 		"shortDesc": "Adaptive. Priority volley. A charged volley lowers the first surviving foe’s Speed by 1.",
 		"hasSheerForceBoost": false,
 		"multihit": [
@@ -162910,6 +164334,38 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"shortDesc": "5 turns. Fairy moves boosted; grounded Pokemon resist Dragon/status.",
 		"hasSheerForceBoost": false,
 	},
+	"monsoonpulse": {
+		"name": "Monsoon Pulse",
+		"num": 33226,
+		"type": "Dragon",
+		"category": "Special",
+		"basePower": 100,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 10,
+		"priority": 0,
+		"target": "any",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"distance": 1,
+			"metronome": 1,
+			"pulse": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 100 power. In rain, the first damaging hit per entry lowers the foe’s Speed one stage. Can lower Sp. Def.",
+		"shortDesc": "Adaptive. 100 power. In rain, the first damaging hit per entry lowers the foe’s Speed one stage. Can lower Sp. Def.",
+		"secondaries": [
+			{
+				"chance": 30,
+				"boosts": {
+					"spd": -1,
+				},
+			},
+		],
+		"hasSheerForceBoost": false,
+	},
 	"moonblast": {
 		"name": "Moonblast",
 		"num": 585,
@@ -162928,6 +164384,36 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		},
 		"desc": "Has a 30% chance to lower the target's Special Attack by 1 stage.",
 		"shortDesc": "30% chance to lower the target's Sp. Atk by 1.",
+		"secondaries": [
+			{
+				"chance": 30,
+				"boosts": {
+					"spa": -1,
+				},
+			},
+		],
+		"hasSheerForceBoost": false,
+	},
+	"mooncradle": {
+		"name": "Moon Cradle",
+		"num": 33221,
+		"type": "Fairy",
+		"category": "Special",
+		"basePower": 105,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 15,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 105 power. Under Gravity, dealing damage heals the active adjacent ally with the lowest HP percentage by 1/12 of that ally’s maximum HP, or the user when alone, once per turn. Can lower Sp. Atk.",
+		"shortDesc": "Adaptive. 105 power. Under Gravity, dealing damage heals the active adjacent ally with the lowest HP percentage by 1/12 of that ally’s maximum HP, or the user when alone, once per turn. Can lower Sp. Atk.",
 		"secondaries": [
 			{
 				"chance": 30,
@@ -162977,8 +164463,8 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"adaptivecategory": 1,
 			"megasignature": 1,
 		},
-		"desc": "Uses the higher of the user's Attack and Sp. Atk. Has a high critical-hit rate and a 50% chance to lower the target’s Defense by one stage.",
-		"shortDesc": "Adaptive. High critical-hit rate. 50% chance to lower Defense.",
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. Uses the higher attacking stat. Ignores positive stages in the defense it hits. Has a high critical-hit rate and a 50% chance to lower the target’s Defense by one stage.",
+		"shortDesc": "Adaptive. Ignores defensive boosts. High crit rate. 50% chance to lower Defense.",
 		"secondaries": [
 			{
 				"chance": 50,
@@ -163544,6 +165030,36 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"shortDesc": "80 BP. High critical hit ratio.",
 		"hasSheerForceBoost": false,
 	},
+	"nightterror": {
+		"name": "Night Terror",
+		"num": 33223,
+		"type": "Dark",
+		"category": "Special",
+		"basePower": 90,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 15,
+		"priority": 0,
+		"target": "any",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"distance": 1,
+			"metronome": 1,
+			"pulse": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 90 power, or 110 against a sleeping or drowsy foe. Retains Dark Pulse’s flinch chance.",
+		"shortDesc": "Adaptive. 90 power, or 110 against a sleeping or drowsy foe. Retains Dark Pulse’s flinch chance.",
+		"secondaries": [
+			{
+				"chance": 20,
+				"volatileStatus": "flinch",
+			},
+		],
+		"hasSheerForceBoost": false,
+	},
 	"nihillight": {
 		"name": "Nihil Light",
 		"num": 920,
@@ -163889,7 +165405,7 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"num": 32970,
 		"type": "Dark",
 		"category": "Special",
-		"basePower": 85,
+		"basePower": 95,
 		"accuracy": 100,
 		"critRatio": 1,
 		"pp": 15,
@@ -163904,8 +165420,8 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"adaptivecategory": 1,
 			"megasignature": 1,
 		},
-		"desc": "Uses the higher of the user's Attack and Sp. Atk. 85 power, with a 20% chance to flinch. Reveals the held item of a foe it damages.",
-		"shortDesc": "Adaptive. 85 power, with a 20% chance to flinch. Reveals the held item of a foe it damages.",
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 95 power. Reveals the held item of a damaged foe. After Doom Warning reflects a move, the next Omen Pulse this entry has 115 power. Has a 20% chance to flinch.",
+		"shortDesc": "Adaptive. 95 power. Reveals the held item of a damaged foe. After Doom Warning reflects a move, the next Omen Pulse this entry has 115 power. Has a 20% chance to flinch.",
 		"secondaries": [
 			{
 				"chance": 20,
@@ -163970,6 +165486,28 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		],
 		"hasSheerForceBoost": false,
 	},
+	"orbitshards": {
+		"name": "Orbit Shards",
+		"num": 33288,
+		"type": "Rock",
+		"category": "Special",
+		"basePower": 95,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 20,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 95 power. The first damaging hit each entry removes Light Screen from the foe’s side after damage.",
+		"shortDesc": "Adaptive. 95 power. The first damaging hit each entry removes Light Screen from the foe’s side after damage.",
+		"hasSheerForceBoost": false,
+	},
 	"orderup": {
 		"name": "Order Up",
 		"num": 856,
@@ -164026,7 +165564,7 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"metronome": 1,
 			"failinstruct": 1,
 		},
-		"desc": "Has a 30% chance to lower the target's Defense by 1. Choose an adjacent opposing Pokemon on the initial turn. Forced continuation turns target an opposing Pokemon at random.Locks the user into this move for 2-3 turns, then confuses the user if it is not already confused.If the user cannot act, starts a turn asleep, or fails to hit before the final locked turn, the lock ends without confusion. Sleep Talk uses it once without confusion while the user is asleep.Sheer Force removes the 30% effect and gives its normal power boost once; the lock and ending confusion remain.Raging Storm makes it a single-turn attack with no lock or ending confusion; it does not cure existing confusion.On Superheated Field, the lock ends after the attack; ending it early does not cause confusion.",
+		"desc": "Has a 30% chance to lower the target's Defense by 1. Choose an adjacent opposing Pokemon on the initial turn. Forced continuation turns target an opposing Pokemon at random. Locks the user into this move for 2-3 turns, then confuses the user if it is not already confused. If the user cannot act, starts a turn asleep, or fails to hit before the final locked turn, the lock ends without confusion. Sleep Talk uses it once without confusion while the user is asleep. Sheer Force removes the 30% effect and gives its normal power boost once; the lock and ending confusion remain. Raging Storm makes it a single-turn attack with no lock or ending confusion; it does not cure existing confusion. On Superheated Field, the lock ends after the attack; ending it early does not cause confusion.",
 		"shortDesc": "30% -1 target Def. Locks 2-3 turns, then confuses user. Choose initial foe; later hits random.",
 		"secondaries": [
 			{
@@ -164077,6 +165615,54 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		},
 		"desc": "Lowers the user's Special Attack by 2 stages.",
 		"shortDesc": "Lowers the user's Sp. Atk by 2.",
+		"hasSheerForceBoost": false,
+	},
+	"overvoltfist": {
+		"name": "Overvolt Fist",
+		"num": 33292,
+		"type": "Electric",
+		"category": "Physical",
+		"basePower": 110,
+		"accuracy": 100,
+		"critRatio": 2,
+		"pp": 15,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"contact": 1,
+			"protect": 1,
+			"mirror": 1,
+			"punch": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 110 power. If Electric Terrain or Electric Aura was already active, its first damaging use under that condition each entry clears the user’s Speed drops.",
+		"shortDesc": "Adaptive. 110 power. If Electric Terrain or Electric Aura was already active, its first damaging use under that condition each entry clears the user’s Speed drops.",
+		"hasSheerForceBoost": false,
+	},
+	"packicepunch": {
+		"name": "Pack Ice Punch",
+		"num": 33222,
+		"type": "Ice",
+		"category": "Physical",
+		"basePower": 115,
+		"accuracy": 90,
+		"critRatio": 1,
+		"pp": 10,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"gravityboost": 1,
+			"contact": 1,
+			"protect": 1,
+			"mirror": 1,
+			"punch": 1,
+			"metronome": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 115-power Ice punch. Against a foe that has already moved this turn, has 125 power and breaks Reflect and Aurora Veil before damage. Lowers the user’s Speed.",
+		"shortDesc": "Adaptive. 115-power Ice punch. Against a foe that has already moved this turn, has 125 power and breaks Reflect and Aurora Veil before damage. Lowers the user’s Speed.",
 		"hasSheerForceBoost": false,
 	},
 	"painsplit": {
@@ -164171,6 +165757,44 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"shortDesc": "Lowers target's Atk, Sp. Atk by 1. User switches.",
 		"hasSheerForceBoost": false,
 	},
+	"passingbell": {
+		"name": "Passing Bell",
+		"num": 33218,
+		"type": "Ghost",
+		"category": "Special",
+		"basePower": 85,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 5,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"sound": 1,
+			"bypasssub": 1,
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 85-power Ghost sound attack. Has 105 power against a foe with a disabled move. Hits through Substitute and retains Ominous Wind’s 10% chance to raise all five stats.",
+		"shortDesc": "Adaptive. 85-power Ghost sound attack. Has 105 power against a foe with a disabled move. Hits through Substitute and retains Ominous Wind’s 10% chance to raise all five stats.",
+		"secondaries": [
+			{
+				"chance": 10,
+				"self": {
+					"boosts": {
+						"atk": 1,
+						"def": 1,
+						"spa": 1,
+						"spd": 1,
+						"spe": 1,
+					},
+				},
+			},
+		],
+		"hasSheerForceBoost": false,
+	},
 	"payback": {
 		"name": "Payback",
 		"num": 371,
@@ -164234,6 +165858,29 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"shortDesc": "No additional effect.",
 		"hasSheerForceBoost": false,
 	},
+	"pepperburst": {
+		"name": "Pepper Burst",
+		"num": 33283,
+		"type": "Grass",
+		"category": "Physical",
+		"basePower": 95,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 15,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1,
+			"bullet": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 95 power. A hit primed by Crossfire also has a 20% chance to burn.",
+		"shortDesc": "Adaptive. 95 power. A hit primed by Crossfire also has a 20% chance to burn.",
+		"hasSheerForceBoost": false,
+	},
 	"perishsong": {
 		"name": "Perish Song",
 		"num": 195,
@@ -164295,7 +165942,7 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"metronome": 1,
 			"failinstruct": 1,
 		},
-		"desc": "Has a 30% chance to lower the target's Sp. Def by 1. Choose an adjacent opposing Pokemon on the initial turn. Forced continuation turns target an opposing Pokemon at random.Locks the user into this move for 2-3 turns, then confuses the user if it is not already confused.If the user cannot act, starts a turn asleep, or fails to hit before the final locked turn, the lock ends without confusion. Sleep Talk uses it once without confusion while the user is asleep.Sheer Force removes the 30% effect and gives its normal power boost once; the lock and ending confusion remain.Raging Storm makes it a single-turn attack with no lock or ending confusion; it does not cure existing confusion.On Superheated Field, the lock ends after the attack; ending it early does not cause confusion.",
+		"desc": "Has a 30% chance to lower the target's Sp. Def by 1. Choose an adjacent opposing Pokemon on the initial turn. Forced continuation turns target an opposing Pokemon at random. Locks the user into this move for 2-3 turns, then confuses the user if it is not already confused. If the user cannot act, starts a turn asleep, or fails to hit before the final locked turn, the lock ends without confusion. Sleep Talk uses it once without confusion while the user is asleep. Sheer Force removes the 30% effect and gives its normal power boost once; the lock and ending confusion remain. Raging Storm makes it a single-turn attack with no lock or ending confusion; it does not cure existing confusion. On Superheated Field, the lock ends after the attack; ending it early does not cause confusion.",
 		"shortDesc": "30% -1 target SpD. Locks 2-3 turns, then confuses user. Choose initial foe; later hits random.",
 		"secondaries": [
 			{
@@ -164391,6 +166038,36 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		},
 		"desc": "Power is equal to the greater of (user's Happiness * 2/5), rounded down, or 1.",
 		"shortDesc": "Max happiness: 102 power. Can't miss.",
+		"hasSheerForceBoost": false,
+	},
+	"pikecharge": {
+		"name": "Pike Charge",
+		"num": 33282,
+		"type": "Bug",
+		"category": "Physical",
+		"basePower": 125,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 10,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"contact": 1,
+			"protect": 1,
+			"mirror": 1,
+			"horn": 1,
+			"metronome": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 125 power, 100% accuracy. Ignores Reflect if Stamina raised the user’s Defense this turn.",
+		"shortDesc": "Adaptive. 125 power, 100% accuracy. Ignores Reflect if Stamina raised the user’s Defense this turn.",
+		"secondaries": [
+			{
+				"chance": 10,
+				"volatileStatus": "flinch",
+			},
+		],
 		"hasSheerForceBoost": false,
 	},
 	"pincerjab": {
@@ -165235,6 +166912,30 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"shortDesc": "Random power/heal. Evil Santa: 120 BP Dark spread.",
 		"hasSheerForceBoost": false,
 	},
+	"prideroar": {
+		"name": "Pride Roar",
+		"num": 33277,
+		"type": "Normal",
+		"category": "Special",
+		"basePower": 100,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 10,
+		"priority": 0,
+		"target": "allAdjacentFoes",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"sound": 1,
+			"bypasssub": 1,
+			"metronome": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 100 power. The first damaging use in sunlight each entry lowers each damaged foe’s Sp. Atk by one stage.",
+		"shortDesc": "Adaptive. 100 power. The first damaging use in sunlight each entry lowers each damaged foe’s Sp. Atk by one stage.",
+		"hasSheerForceBoost": false,
+	},
 	"prismaticlaser": {
 		"name": "Prismatic Laser",
 		"num": 711,
@@ -165263,6 +166964,30 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		],
 		"hasSheerForceBoost": false,
 	},
+	"prismvolley": {
+		"name": "Prism Volley",
+		"num": 33224,
+		"type": "Rock",
+		"category": "Physical",
+		"basePower": 105,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 5,
+		"priority": 0,
+		"target": "allAdjacentFoes",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 105 power, 100% accuracy. After Diamond Storm raises Defense, clears the user’s Sp. Def drops once per entry.",
+		"shortDesc": "Adaptive. 105 power, 100% accuracy. After Diamond Storm raises Defense, clears the user’s Sp. Def drops once per entry.",
+		"secondaries": [
+			{},
+		],
+		"hasSheerForceBoost": false,
+	},
 	"protect": {
 		"name": "Protect",
 		"num": 182,
@@ -165280,6 +167005,53 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		},
 		"desc": "The user is protected from most attacks made by other Pokemon during this turn. This move has a 1/X chance of being successful, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails, if the user's last move used is not Baneful Bunker, Burning Bulwark, Detect, Endure, King's Shield, Max Guard, Obstruct, Protect, Quick Guard, Silk Trap, Spiky Shield, or Wide Guard, or if it was one of those moves and the user's protection was broken. Fails if the user moves last this turn.",
 		"shortDesc": "Prevents moves from affecting the user this turn.",
+		"hasSheerForceBoost": false,
+	},
+	"psiknuckle": {
+		"name": "Psi Knuckle",
+		"num": 33255,
+		"type": "Fighting",
+		"category": "Physical",
+		"basePower": 85,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 10,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"contact": 1,
+			"protect": 1,
+			"mirror": 1,
+			"punch": 1,
+			"heal": 1,
+			"metronome": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 85 power. Ignores one positive Defense stage when calculating physical damage. Keeps Drain Punch’s recovery.",
+		"shortDesc": "Adaptive. 85 power. Ignores one positive Defense stage when calculating physical damage. Keeps Drain Punch’s recovery.",
+		"hasSheerForceBoost": false,
+	},
+	"psiscalpel": {
+		"name": "Psi Scalpel",
+		"num": 33210,
+		"type": "Psychic",
+		"category": "Special",
+		"basePower": 95,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 10,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 95 power. Targets Defense. Ignores positive Defense stages at a slot awaiting Future Sight.",
+		"shortDesc": "Adaptive. 95 power. Targets Defense. Ignores positive Defense stages at a slot awaiting Future Sight.",
 		"hasSheerForceBoost": false,
 	},
 	"psybeam": {
@@ -165952,13 +167724,13 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"target": "allAdjacentFoes",
 		"flags": {
 			"contact": 1,
-			"recharge": 1,
 			"protect": 1,
 			"mirror": 1,
 			"metronome": 1,
+			"cantusetwice": 1,
 		},
-		"desc": "Hits all opposing Pokemon and uses the higher offensive stat, including stages and field modifiers. Against active Mega, Dynamax/Gmax or Stellar-Terastallized targets, is 2x effective and deals another 1.2x damage, each once even if states overlap. Other Tera types, Primal and Ultra forms do not qualify. Recharges unless it knocks out at least one target.",
-		"shortDesc": "Adaptive spread; 2x effective and 1.2x damage vs Mega/Dynamax/Stellar Tera. Recharges unless KO.",
+		"desc": "Hits all adjacent foes using the higher offensive stat. Deals super-effective damage (2×) to a Z-Crystal holder or an active Tera, G-Max, or Mega target. Overlapping conditions count once. Cannot be used on consecutive turns.",
+		"shortDesc": "Adaptive. Super effective vs Z-Crystal, Tera, G-Max or Mega targets. Cannot be used twice in a row.",
 		"hasSheerForceBoost": false,
 	},
 	"radiantclaw": {
@@ -166080,8 +167852,8 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"protect": 1,
 			"mirror": 1,
 		},
-		"desc": "Has a 30% chance to burn the target. Choose an adjacent opposing Pokemon on the initial turn. Forced continuation turns target an opposing Pokemon at random.Locks the user into this move for 2-3 turns, then confuses the user if it is not already confused.If the user cannot act, starts a turn asleep, or fails to hit before the final locked turn, the lock ends without confusion. Sleep Talk uses it once without confusion while the user is asleep.Sheer Force removes the 30% effect and gives its normal power boost once; the lock and ending confusion remain.Raging Storm makes it a single-turn attack with no lock or ending confusion; it does not cure existing confusion.On Burning or Volcanic Field, ending the rampage does not cause confusion. On Volcanic Field, each use also raises the user's Attack by 1.",
-		"shortDesc": "30% burn. Locks 2-3 turns, then confuses user. Choose initial foe; later hits random.",
+		"desc": "Has a 30% chance to burn the target. Choose an adjacent opposing Pokemon on the initial turn. Forced continuation turns target an opposing Pokemon at random. Locks the user into this move for 2-3 turns, then confuses the user if it is not already confused. If the user cannot act, starts a turn asleep, or fails to hit before the final locked turn, the lock ends without confusion. Sleep Talk uses it once without confusion while the user is asleep. Sheer Force removes the 30% effect and gives its normal power boost once; the lock and ending confusion remain. Raging Storm makes it a single-turn attack with no lock or ending confusion; it does not cure existing confusion. On Dragon’s Den, Volcanic or Burning Field, each use is a single attack. Entering any of these fields ends an ongoing rampage without confusion. Volcanic also raises the user’s Attack by 1.",
+		"shortDesc": "30% burn. Locks 2-3 turns, then confuses, except on Dragon’s Den, Volcanic and Burning Field.",
 		"secondaries": [
 			{
 				"chance": 30,
@@ -166131,6 +167903,29 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"shortDesc": "For 5 turns, heavy rain powers Water moves.",
 		"hasSheerForceBoost": false,
 	},
+	"rankbreak": {
+		"name": "Rank Break",
+		"num": 33229,
+		"type": "Fighting",
+		"category": "Physical",
+		"basePower": 125,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 5,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"contact": 1,
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 125 power. Once per entry, shatters the foe’s Reflect before damage on a successful hit. Lowers Defense and Sp. Def.",
+		"shortDesc": "Adaptive. 125 power. Once per entry, shatters the foe’s Reflect before damage on a successful hit. Lowers Defense and Sp. Def.",
+		"hasSheerForceBoost": false,
+	},
 	"rapidspin": {
 		"name": "Rapid Spin",
 		"num": 229,
@@ -166160,6 +167955,30 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 				},
 			},
 		],
+		"hasSheerForceBoost": false,
+	},
+	"raptordive": {
+		"name": "Raptor Dive",
+		"num": 33287,
+		"type": "Flying",
+		"category": "Physical",
+		"basePower": 125,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 15,
+		"priority": 0,
+		"target": "any",
+		"flags": {
+			"contact": 1,
+			"protect": 1,
+			"mirror": 1,
+			"distance": 1,
+			"metronome": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 125 power. Recoil is one-quarter of damage dealt, or one-fifth on a direct KO.",
+		"shortDesc": "Adaptive. 125 power. Recoil is one-quarter of damage dealt, or one-fifth on a direct KO.",
 		"hasSheerForceBoost": false,
 	},
 	"razorbite": {
@@ -166621,6 +168440,38 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		},
 		"desc": "A physical Water bite boosted by Strong Jaw.",
 		"shortDesc": "A physical Water bite boosted by Strong Jaw.",
+		"hasSheerForceBoost": false,
+	},
+	"riptiderampage": {
+		"name": "Riptide Rampage",
+		"num": 33246,
+		"type": "Water",
+		"category": "Physical",
+		"basePower": 145,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 10,
+		"priority": 0,
+		"target": "adjacentFoe",
+		"flags": {
+			"contact": 1,
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1,
+			"failinstruct": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. A 145-power Water Thrash with its Defense-drop chance. Unleashed Ego’s Raging Storm lets Mega Gyarados switch moves freely.",
+		"shortDesc": "Adaptive. A 145-power Water Thrash with its Defense-drop chance. Unleashed Ego’s Raging Storm lets Mega Gyarados switch moves freely.",
+		"secondaries": [
+			{
+				"chance": 30,
+				"boosts": {
+					"def": -1,
+				},
+			},
+		],
 		"hasSheerForceBoost": false,
 	},
 	"risingvoltage": {
@@ -167431,8 +169282,40 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"metronome": 1,
 			"adaptivecategory": 1,
 		},
-		"desc": "Uses the higher of Attack and Sp. Atk. Raises the user's Special Attack by 1 stage after a successful hit, or by 2 in Dragon's Den or Fairy Tale Field.",
-		"shortDesc": "Uses the higher of Attack and Sp. Atk. Raises SpA by 1, or 2 in Dragon’s Den or Fairy Tale.",
+		"desc": "Uses the higher of the user's Attack and Sp. Atk, including stat stages. A tie uses Sp. Atk. After dealing damage, raises the stat used by 1 stage, or by 2 in Dragon's Den or Fairy Tale Field.",
+		"shortDesc": "Uses and boosts the higher attacking stat. +1 on hit, or +2 in Dragon’s Den or Fairy Tale.",
+		"hasSheerForceBoost": false,
+	},
+	"scarclaw": {
+		"name": "Scar Claw",
+		"num": 33291,
+		"type": "Normal",
+		"category": "Physical",
+		"basePower": 90,
+		"accuracy": 95,
+		"critRatio": 1,
+		"pp": 10,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"contact": 1,
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1,
+			"slicing": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 90 power. Accuracy rises to 100% while the user is poisoned.",
+		"shortDesc": "Adaptive. 90 power. Accuracy rises to 100% while the user is poisoned.",
+		"secondaries": [
+			{
+				"chance": 50,
+				"boosts": {
+					"def": -1,
+				},
+			},
+		],
 		"hasSheerForceBoost": false,
 	},
 	"scaryface": {
@@ -167501,6 +169384,31 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 				"status": "brn",
 			},
 		],
+		"hasSheerForceBoost": false,
+	},
+	"scrapknuckle": {
+		"name": "Scrap Knuckle",
+		"num": 33284,
+		"type": "Fighting",
+		"category": "Physical",
+		"basePower": 90,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 10,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"contact": 1,
+			"protect": 1,
+			"mirror": 1,
+			"punch": 1,
+			"heal": 1,
+			"metronome": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 90 power. Drains half the damage dealt, or two-thirds against a foe with lowered Attack.",
+		"shortDesc": "Adaptive. 90 power. Drains half the damage dealt, or two-thirds against a foe with lowered Attack.",
 		"hasSheerForceBoost": false,
 	},
 	"scratch": {
@@ -167633,8 +169541,8 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"mirror": 1,
 			"metronome": 1,
 		},
-		"desc": "A 40-power typeless special move that hits all active Pokemon except the user and burns each target.",
-		"shortDesc": "40 BP; burns all active Pokemon except the user.",
+		"desc": "Hits every adjacent Pokémon and burns each target that can be burned.",
+		"shortDesc": "Burns all adjacent targets.",
 		"hasSheerForceBoost": false,
 	},
 	"secretpower": {
@@ -168048,6 +169956,35 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		],
 		"hasSheerForceBoost": false,
 	},
+	"shellkettle": {
+		"name": "Shell Kettle",
+		"num": 33286,
+		"type": "Water",
+		"category": "Special",
+		"basePower": 90,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 15,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"defrost": 1,
+			"metronome": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 90 power. Reaches 100 after the user takes damage from an opposing attack this turn. Keeps Scald’s burn chance.",
+		"shortDesc": "Adaptive. 90 power. Reaches 100 after the user takes damage from an opposing attack this turn. Keeps Scald’s burn chance.",
+		"secondaries": [
+			{
+				"chance": 30,
+				"status": "brn",
+			},
+		],
+		"hasSheerForceBoost": false,
+	},
 	"shellsidearm": {
 		"name": "Shell Side Arm",
 		"num": 801,
@@ -168353,6 +170290,36 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"shortDesc": "Exclusive Decidueye Z-Move; no additional effect.",
 		"hasSheerForceBoost": false,
 	},
+	"sirenchime": {
+		"name": "Siren Chime",
+		"num": 33241,
+		"type": "Water",
+		"category": "Special",
+		"basePower": 80,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 20,
+		"priority": 0,
+		"target": "any",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"distance": 1,
+			"metronome": 1,
+			"pulse": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. An 80-power sound pulse that passes through Substitute and retains Water Pulse’s confusion chance.",
+		"shortDesc": "Adaptive. An 80-power sound pulse that passes through Substitute and retains Water Pulse’s confusion chance.",
+		"secondaries": [
+			{
+				"chance": 20,
+				"volatileStatus": "confusion",
+			},
+		],
+		"hasSheerForceBoost": false,
+	},
 	"sirensveil": {
 		"name": "Siren's Veil",
 		"num": 10453,
@@ -168580,6 +170547,29 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		},
 		"desc": "This attack takes the target into the air with the user on the first turn and executes on the second. Pokemon weighing 200 kg or more cannot be lifted. On the first turn, the user and the target avoid all attacks other than Gust, Hurricane, Sky Uppercut, Smack Down, Thousand Arrows, Thunder, and Twister. The user and the target cannot make a move between turns, but the target can select a move to use. This move cannot damage Flying-type Pokemon. Fails on the first turn if the target is an ally, if the target has a substitute, or if the target is using Bounce, Dig, Dive, Fly, Phantom Force, Shadow Force, or Sky Drop.",
 		"shortDesc": "User and foe fly up turn 1. Damages on turn 2.",
+		"hasSheerForceBoost": false,
+	},
+	"skyfalldive": {
+		"name": "Skyfall Dive",
+		"num": 33278,
+		"type": "Flying",
+		"category": "Physical",
+		"basePower": 125,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 5,
+		"priority": 0,
+		"target": "any",
+		"flags": {
+			"contact": 1,
+			"protect": 1,
+			"mirror": 1,
+			"distance": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 125 power. Lowers Defense and Sp. Def one stage. On a direct KO only Sp. Def drops.",
+		"shortDesc": "Adaptive. 125 power. Lowers Defense and Sp. Def one stage. On a direct KO only Sp. Def drops.",
 		"hasSheerForceBoost": false,
 	},
 	"skyrake": {
@@ -169237,6 +171227,34 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"shortDesc": "Charges turn 1. Hits turn 2. No charge in sunlight.",
 		"hasSheerForceBoost": false,
 	},
+	"solarcoil": {
+		"name": "Solar Coil",
+		"num": 33245,
+		"type": "Fire",
+		"category": "Special",
+		"basePower": 100,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 15,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 100 power. In sun, the first damaging hit per entry traps its foe through the following turn.",
+		"shortDesc": "Adaptive. 100 power. In sun, the first damaging hit per entry traps its foe through the following turn.",
+		"secondaries": [
+			{
+				"chance": 10,
+				"status": "brn",
+			},
+		],
+		"hasSheerForceBoost": false,
+	},
 	"solarpledge": {
 		"name": "Solar Pledge",
 		"num": 12009,
@@ -169872,6 +171890,42 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"shortDesc": "Causes the target to fall asleep.",
 		"hasSheerForceBoost": false,
 	},
+	"sporechorus": {
+		"name": "Spore Chorus",
+		"num": 33216,
+		"type": "Bug",
+		"category": "Special",
+		"basePower": 100,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 10,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"sound": 1,
+			"bypasssub": 1,
+			"metronome": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 100-power Bug sound attack. Has independent chances to lower Sp. Def (10%) and poison (20%).",
+		"shortDesc": "Adaptive. 100-power Bug sound attack. Has independent chances to lower Sp. Def (10%) and poison (20%).",
+		"secondaries": [
+			{
+				"chance": 10,
+				"boosts": {
+					"spd": -1,
+				},
+			},
+			{
+				"chance": 20,
+				"status": "psn",
+			},
+		],
+		"hasSheerForceBoost": false,
+	},
 	"sporejab": {
 		"name": "Spore Jab",
 		"num": 32909,
@@ -169894,6 +171948,30 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		},
 		"desc": "Uses the higher of the user's Attack and Sp. Atk. A +1 priority punch that ignores positive defensive stages on a poisoned or badly poisoned foe.",
 		"shortDesc": "Adaptive. A +1 priority punch that ignores positive defensive stages on a poisoned or badly poisoned foe.",
+		"hasSheerForceBoost": false,
+	},
+	"sporetap": {
+		"name": "Spore Tap",
+		"num": 33275,
+		"type": "Bug",
+		"category": "Physical",
+		"basePower": 95,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 10,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"contact": 1,
+			"protect": 1,
+			"mirror": 1,
+			"heal": 1,
+			"metronome": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 95 power. Drains half the damage dealt, or two-thirds against a foe with a major status.",
+		"shortDesc": "Adaptive. 95 power. Drains half the damage dealt, or two-thirds against a foe with a major status.",
 		"hasSheerForceBoost": false,
 	},
 	"spotlight": {
@@ -169991,6 +172069,27 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"signatureCharacters": [
 			"rejuvenation",
 		],
+	},
+	"starverdict": {
+		"name": "Star Verdict",
+		"num": 33248,
+		"type": "Steel",
+		"category": "Special",
+		"basePower": 145,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 5,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"metronome": 1,
+			"futuremove": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 145 power. A damaging hit empowers this entry’s next Wish to heal an additional 1/8 of Jirachi’s max HP. Holds one charge.",
+		"shortDesc": "Adaptive. 145 power. A damaging hit empowers this entry’s next Wish to heal an additional 1/8 of Jirachi’s max HP. Holds one charge.",
+		"hasSheerForceBoost": false,
 	},
 	"steadfaststrike": {
 		"name": "Steadfast Strike",
@@ -170380,6 +172479,36 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"shortDesc": "Always results in a critical hit.",
 		"hasSheerForceBoost": false,
 	},
+	"stormtoll": {
+		"name": "Storm Toll",
+		"num": 33215,
+		"type": "Psychic",
+		"category": "Special",
+		"basePower": 95,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 20,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"sound": 1,
+			"bypasssub": 1,
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 95-power Psychic sound move that hits through Substitute. In rain, the first damaging use per entry lowers the foe’s Sp. Def. Can flinch.",
+		"shortDesc": "Adaptive. 95-power Psychic sound move that hits through Substitute. In rain, the first damaging use per entry lowers the foe’s Sp. Def. Can flinch.",
+		"secondaries": [
+			{
+				"chance": 10,
+				"volatileStatus": "flinch",
+			},
+		],
+		"hasSheerForceBoost": false,
+	},
 	"strangesteam": {
 		"name": "Strange Steam",
 		"num": 790,
@@ -170703,6 +172832,31 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"shortDesc": "Ignores the Abilities of other Pokemon.",
 		"hasSheerForceBoost": false,
 	},
+	"sunwheel": {
+		"name": "Sunwheel",
+		"num": 33289,
+		"type": "Grass",
+		"category": "Special",
+		"basePower": 130,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 10,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"charge": 1,
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1,
+			"nosleeptalk": 1,
+			"failinstruct": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 130 power. Its first use on Grassy Terrain each entry fires immediately. Solar Beam’s weather and field effects apply.",
+		"shortDesc": "Adaptive. 130 power. Its first use on Grassy Terrain each entry fires immediately. Solar Beam’s weather and field effects apply.",
+		"hasSheerForceBoost": false,
+	},
 	"supercellslam": {
 		"name": "Supercell Slam",
 		"num": 916,
@@ -170925,6 +173079,37 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		},
 		"desc": "Hits three times. This move is always a critical hit unless the target is under the effect of Lucky Chant or has the Battle Armor or Shell Armor Abilities.",
 		"shortDesc": "Always results in a critical hit. Hits 3 times.",
+		"hasSheerForceBoost": false,
+	},
+	"sushisurge": {
+		"name": "Sushi Surge",
+		"num": 33293,
+		"type": "Water",
+		"category": "Special",
+		"basePower": 95,
+		"accuracy": 95,
+		"critRatio": 1,
+		"pp": 10,
+		"priority": 0,
+		"target": "allAdjacentFoes",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"nonsky": 1,
+			"metronome": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 95 power, 95% accuracy. The first damaging use per entry clears the user’s accuracy drops.",
+		"shortDesc": "Adaptive. 95 power, 95% accuracy. The first damaging use per entry clears the user’s accuracy drops.",
+		"secondaries": [
+			{
+				"chance": 30,
+				"boosts": {
+					"accuracy": -1,
+				},
+			},
+		],
 		"hasSheerForceBoost": false,
 	},
 	"swagger": {
@@ -171379,6 +173564,36 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"shortDesc": "Adaptive. High critical-hit rate. Makes contact and grounds the target on a hit.",
 		"hasSheerForceBoost": false,
 	},
+	"tandempunch": {
+		"name": "Tandem Punch",
+		"num": 33261,
+		"type": "Normal",
+		"category": "Physical",
+		"basePower": 85,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 10,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"contact": 1,
+			"protect": 1,
+			"mirror": 1,
+			"punch": 1,
+			"metronome": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 85 power. Once per turn, damaging a foe heals the active ally with the lowest HP percentage by 1/12 max HP, or the user if no ally is hurt. Keeps Dizzy Punch’s confusion chance.",
+		"shortDesc": "Adaptive. 85 power. Once per turn, damaging a foe heals the active ally with the lowest HP percentage by 1/12 max HP, or the user if no ally is hurt. Keeps Dizzy Punch’s confusion chance.",
+		"secondaries": [
+			{
+				"chance": 30,
+				"volatileStatus": "confusion",
+			},
+		],
+		"hasSheerForceBoost": false,
+	},
 	"tarshot": {
 		"name": "Tar Shot",
 		"num": 749,
@@ -171755,7 +173970,7 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"metronome": 1,
 			"failinstruct": 1,
 		},
-		"desc": "Has a 30% chance to lower the target's Defense by 1. Choose an adjacent opposing Pokemon on the initial turn. Forced continuation turns target an opposing Pokemon at random.Locks the user into this move for 2-3 turns, then confuses the user if it is not already confused.If the user cannot act, starts a turn asleep, or fails to hit before the final locked turn, the lock ends without confusion. Sleep Talk uses it once without confusion while the user is asleep.Sheer Force removes the 30% effect and gives its normal power boost once; the lock and ending confusion remain.Raging Storm makes it a single-turn attack with no lock or ending confusion; it does not cure existing confusion.On Superheated Field, the lock ends after the attack; ending it early does not cause confusion.",
+		"desc": "Has a 30% chance to lower the target's Defense by 1. Choose an adjacent opposing Pokemon on the initial turn. Forced continuation turns target an opposing Pokemon at random. Locks the user into this move for 2-3 turns, then confuses the user if it is not already confused. If the user cannot act, starts a turn asleep, or fails to hit before the final locked turn, the lock ends without confusion. Sleep Talk uses it once without confusion while the user is asleep. Sheer Force removes the 30% effect and gives its normal power boost once; the lock and ending confusion remain. Raging Storm makes it a single-turn attack with no lock or ending confusion; it does not cure existing confusion. On Superheated Field, the lock ends after the attack; ending it early does not cause confusion.",
 		"shortDesc": "30% -1 target Def. Locks 2-3 turns, then confuses user. Choose initial foe; later hits random.",
 		"secondaries": [
 			{
@@ -172071,7 +174286,7 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"num": 32972,
 		"type": "Water",
 		"category": "Special",
-		"basePower": 65,
+		"basePower": 70,
 		"accuracy": 100,
 		"critRatio": 1,
 		"pp": 20,
@@ -172086,8 +174301,8 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"adaptivecategory": 1,
 			"megasignature": 1,
 		},
-		"desc": "Uses the higher of the user's Attack and Sp. Atk. A 65-power pulse that ignores redirection. Has a 20% chance to confuse.",
-		"shortDesc": "Adaptive. A 65-power pulse that ignores redirection. Has a 20% chance to confuse.",
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. A 70-power pulse that ignores redirection. Has a 20% chance to confuse.",
+		"shortDesc": "Adaptive. A 70-power pulse that ignores redirection. Has a 20% chance to confuse.",
 		"secondaries": [
 			{
 				"chance": 20,
@@ -173094,6 +175309,28 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"shortDesc": "Lowers Atk/Sp. Atk/Speed of poisoned foes by 1.",
 		"hasSheerForceBoost": false,
 	},
+	"venomflash": {
+		"name": "Venom Flash",
+		"num": 33281,
+		"type": "Poison",
+		"category": "Special",
+		"basePower": 70,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 10,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 70 power, doubled by Venoshock’s usual conditions. Damaging a poisoned foe primes the next Fire attack this entry for 15% more power, once per turn.",
+		"shortDesc": "Adaptive. 70 power, doubled by Venoshock’s usual conditions. Damaging a poisoned foe primes the next Fire attack this entry for 15% more power, once per turn.",
+		"hasSheerForceBoost": false,
+	},
 	"venoshock": {
 		"name": "Venoshock",
 		"num": 474,
@@ -173114,6 +175351,38 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"shortDesc": "Power doubles if the target is poisoned.",
 		"hasSheerForceBoost": false,
 	},
+	"vicefang": {
+		"name": "Vice Fang",
+		"num": 33211,
+		"type": "Dark",
+		"category": "Physical",
+		"basePower": 95,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 15,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"contact": 1,
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1,
+			"bite": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 95 power. Damaging a poisoned foe traps it through the following turn. Keeps Crunch’s Defense-drop chance.",
+		"shortDesc": "Adaptive. 95 power. Damaging a poisoned foe traps it through the following turn. Keeps Crunch’s Defense-drop chance.",
+		"secondaries": [
+			{
+				"chance": 20,
+				"boosts": {
+					"def": -1,
+				},
+			},
+		],
+		"hasSheerForceBoost": false,
+	},
 	"victorydance": {
 		"name": "Victory Dance",
 		"num": 837,
@@ -173132,6 +175401,37 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		},
 		"desc": "Raises the user's Attack, Defense, and Speed by 1 stage.",
 		"shortDesc": "Raises the user's Attack, Defense, Speed by 1.",
+		"hasSheerForceBoost": false,
+	},
+	"vigilflame": {
+		"name": "Vigil Flame",
+		"num": 33217,
+		"type": "Ghost",
+		"category": "Special",
+		"basePower": 100,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 15,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1,
+			"bullet": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 100-power Ghost bullet. Against a burned foe, has 120 power and heals 1/8 max HP after dealing damage, once per turn. Keeps Shadow Ball’s Sp. Def-drop chance.",
+		"shortDesc": "Adaptive. 100-power Ghost bullet. Against a burned foe, has 120 power and heals 1/8 max HP after dealing damage, once per turn. Keeps Shadow Ball’s Sp. Def-drop chance.",
+		"secondaries": [
+			{
+				"chance": 20,
+				"boosts": {
+					"spd": -1,
+				},
+			},
+		],
 		"hasSheerForceBoost": false,
 	},
 	"vileassault": {
@@ -173262,6 +175562,36 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"shortDesc": "Adaptive. Never misses. A foe left at half HP or less cannot heal through the end of next turn.",
 		"hasSheerForceBoost": false,
 	},
+	"volleyshot": {
+		"name": "Volley Shot",
+		"num": 33219,
+		"type": "Fire",
+		"category": "Physical",
+		"basePower": 125,
+		"accuracy": 90,
+		"critRatio": 1,
+		"pp": 5,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"defrost": 1,
+			"kick": 1,
+			"bullet": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 125-power Fire kick and bullet. Shatters the foe’s Reflect before damage on a successful hit. Keeps Pyro Ball’s burn and thaw effects.",
+		"shortDesc": "Adaptive. 125-power Fire kick and bullet. Shatters the foe’s Reflect before damage on a successful hit. Keeps Pyro Ball’s burn and thaw effects.",
+		"secondaries": [
+			{
+				"chance": 10,
+				"status": "brn",
+			},
+		],
+		"hasSheerForceBoost": false,
+	},
 	"voltswitch": {
 		"name": "Volt Switch",
 		"num": 521,
@@ -173377,6 +175707,36 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		},
 		"desc": "Power doubles if the target is asleep. If the user has not fainted, the target wakes up.",
 		"shortDesc": "Power doubles if target is asleep, and wakes it.",
+		"hasSheerForceBoost": false,
+	},
+	"wardpulse": {
+		"name": "Ward Pulse",
+		"num": 33254,
+		"type": "Psychic",
+		"category": "Special",
+		"basePower": 100,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 10,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. A 100-power pulse. On Psychic Terrain or Aura, reaches 115 power. Once per entry, a damaging hit sets a three-turn Light Screen or extends the shorter active screen by one turn.",
+		"shortDesc": "Adaptive. A 100-power pulse. On Psychic Terrain or Aura, reaches 115 power. Once per entry, a damaging hit sets a three-turn Light Screen or extends the shorter active screen by one turn.",
+		"secondaries": [
+			{
+				"chance": 10,
+				"boosts": {
+					"spd": -1,
+				},
+			},
+		],
 		"hasSheerForceBoost": false,
 	},
 	"waterfall": {
@@ -173692,6 +176052,37 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"shortDesc": "Protects allies from multi-target moves this turn.",
 		"hasSheerForceBoost": false,
 	},
+	"widowwail": {
+		"name": "Widow Wail",
+		"num": 33242,
+		"type": "Ghost",
+		"category": "Special",
+		"basePower": 95,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 15,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1,
+			"bullet": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 95 power. Once per entry, hitting a foe with a disabled move lowers its Speed one stage.",
+		"shortDesc": "Adaptive. 95 power. Once per entry, hitting a foe with a disabled move lowers its Speed one stage.",
+		"secondaries": [
+			{
+				"chance": 20,
+				"boosts": {
+					"spd": -1,
+				},
+			},
+		],
+		"hasSheerForceBoost": false,
+	},
 	"wildboltstorm": {
 		"name": "Wildbolt Storm",
 		"num": 847,
@@ -173877,10 +176268,41 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"num": 32930,
 		"type": "Ghost",
 		"category": "Special",
-		"basePower": 70,
+		"basePower": 90,
 		"accuracy": 100,
 		"critRatio": 1,
-		"pp": 10,
+		"pp": 15,
+		"priority": 0,
+		"target": "normal",
+		"flags": {
+			"protect": 1,
+			"mirror": 1,
+			"metronome": 1,
+			"bullet": 1,
+			"adaptivecategory": 1,
+			"megasignature": 1,
+		},
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 90 power. Has a 20% chance to lower Sp. Def by 1. Ignores positive Defense and Sp. Def stages on foes with a major status condition.",
+		"shortDesc": "Adaptive. 90 power. Has a 20% chance to lower Sp. Def by 1. Ignores positive Defense and Sp. Def stages on foes with a major status condition.",
+		"secondaries": [
+			{
+				"chance": 20,
+				"boosts": {
+					"spd": -1,
+				},
+			},
+		],
+		"hasSheerForceBoost": false,
+	},
+	"witchmoon": {
+		"name": "Witch Moon",
+		"num": 33257,
+		"type": "Fairy",
+		"category": "Special",
+		"basePower": 105,
+		"accuracy": 100,
+		"critRatio": 1,
+		"pp": 15,
 		"priority": 0,
 		"target": "normal",
 		"flags": {
@@ -173890,8 +176312,16 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 			"adaptivecategory": 1,
 			"megasignature": 1,
 		},
-		"desc": "Uses the higher of the user's Attack and Sp. Atk. 70 power. Keeps Hex’s power boosts. Ignores a foe’s positive Defense and Sp. Def stages if it has a major status condition.",
-		"shortDesc": "Adaptive. 70 power. Keeps Hex’s power boosts. Ignores a foe’s positive Defense and Sp. Def stages if it has a major status condition.",
+		"desc": "Uses the higher of the user's Attack and Sp. Atk. 105 power, rising to 120 against a slot with a pending Future Sight, including Temporal Shift’s. Leaves the delayed attack in place.",
+		"shortDesc": "Adaptive. 105 power, rising to 120 against a slot with a pending Future Sight, including Temporal Shift’s. Leaves the delayed attack in place.",
+		"secondaries": [
+			{
+				"chance": 30,
+				"boosts": {
+					"spa": -1,
+				},
+			},
+		],
 		"hasSheerForceBoost": false,
 	},
 	"withdraw": {
@@ -174411,9 +176841,9 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"competitive",
 	],
 	"astralcore": [
-		"purepower",
-		"naturalcure",
 		"starlens",
+		"misalignedstars",
+		"victorystar",
 	],
 	"astralengine": [
 		"powerspot",
@@ -174455,10 +176885,14 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"snowwarning",
 	],
 	"auroradomain": [
+		"auroracurrent",
 		"refrigerate",
-		"snowwarning",
 	],
 	"auroraresonance": [],
+	"autumnstriker": [
+		"striker",
+		"eartheater",
+	],
 	"baddreams": [],
 	"badseeds": [],
 	"baitedbloom": [
@@ -174502,6 +176936,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	],
 	"beyondfear": [],
 	"bigpecks": [],
+	"bindingchain": [],
 	"blackfang": [],
 	"blackviper": [
 		"whiplash",
@@ -174544,8 +176979,10 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"levitate",
 		"dryskin",
 	],
+	"boilervent": [],
 	"bonewarrior": [
 		"battlearmor",
+		"cursedbody",
 	],
 	"boretunnel": [
 		"eartheater",
@@ -174575,6 +177012,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"violentrush",
 		"intimidate",
 	],
+	"bulwarkrelay": [],
 	"buriedcoil": [
 		"sandspit",
 	],
@@ -174664,6 +177102,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"cheekpouch": [],
 	"chillingneigh": [],
 	"chlorophyll": [],
+	"cindermantle": [],
 	"cinderscales": [
 		"flamebody",
 		"swarm",
@@ -174687,6 +177126,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"convergence",
 	],
 	"coldopen": [],
+	"coldreserve": [],
 	"colorchange": [],
 	"colossalframe": [],
 	"comatose": [],
@@ -174739,7 +177179,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	],
 	"cosmicanalysis": [
 		"analytic",
-		"download",
+		"naturalcure",
 	],
 	"costar": [],
 	"cottondown": [],
@@ -174758,6 +177198,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"ironfist",
 		"innerfocus",
 	],
+	"crowntending": [],
 	"cruelshell": [],
 	"crueltag": [
 		"shadowtag",
@@ -174773,6 +177214,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"filter",
 		"sturdy",
 	],
+	"crystalfacet": [],
 	"crystalfocus": [],
 	"crystalresonance": [
 		"amethystglow",
@@ -174784,14 +177226,18 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"currentcoil": [
 		"swiftswim",
 	],
-	"cursedarmament": [],
+	"cursedarmament": [
+		"misalignedstars",
+	],
 	"cursedbody": [],
 	"curseddoll": [
 		"toughclaws",
 		"shadowshield",
 	],
 	"cursedkeepsake": [],
-	"cursedmarionette": [],
+	"cursedmarionette": [
+		"misalignedstars",
+	],
 	"curtaincall": [
 		"icebody",
 		"filter",
@@ -174815,6 +177261,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"drought",
 		"friendguard",
 	],
+	"dawnpoise": [],
 	"dazzling": [],
 	"deadwater": [],
 	"decoypincers": [],
@@ -174921,6 +177368,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"dreamsickness": [
 		"telepathy",
 	],
+	"dreamstalker": [],
 	"dredger": [],
 	"dreepyvanguard": [
 		"stalwart",
@@ -174956,6 +177404,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"ultraego",
 	],
 	"duskilate": [],
+	"duskpoise": [],
 	"earlybird": [],
 	"eartheater": [],
 	"echofiend": [],
@@ -175022,6 +177471,9 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"execution": [
 		"duskilate",
 		"moldbreaker",
+		"misalignedstars",
+		"voidveil",
+		"telepathy",
 	],
 	"expiration": [
 		"stringsofruin",
@@ -175057,6 +177509,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"finalnote": [],
 	"firemane": [],
 	"fireward": [],
+	"firstdraft": [],
 	"flamebody": [],
 	"flareboost": [],
 	"flashfire": [],
@@ -175310,6 +177763,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"magicbounce",
 		"healer",
 	],
+	"heartcurrent": [],
 	"heatcoil": [
 		"speedboost",
 		"flamebody",
@@ -175475,6 +177929,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"whiplash",
 	],
 	"islandcurrent": [],
+	"islandwatch": [],
 	"jetstream": [],
 	"jetstreamballet": [
 		"windrider",
@@ -175490,6 +177945,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	],
 	"keystoneseal": [
 		"cursedbody",
+		"pressure",
 	],
 	"kickfiend": [
 		"striker",
@@ -175541,6 +177997,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"swornduty",
 		"propellertail",
 	],
+	"lightcache": [],
 	"lightmetal": [],
 	"lightningrod": [],
 	"lightweightswarm": [
@@ -175597,6 +178054,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"magicguard",
 	],
 	"lunarspirit": [],
+	"lunarwake": [],
 	"lunarward": [
 		"pressure",
 		"illuminate",
@@ -175625,6 +178083,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"poisonpoint",
 	],
 	"marvelscale": [],
+	"maskmender": [],
 	"masonsfist": [
 		"ironfist",
 	],
@@ -175732,6 +178191,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"mourningsnow": [
 		"snowwarning",
 		"icebody",
+		"misalignedstars",
 	],
 	"mourningvessel": [],
 	"moxie": [],
@@ -175756,6 +178216,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"naturalcure",
 		"regenerator",
 	],
+	"nebuladrift": [],
 	"nerveparasite": [],
 	"neuroforce": [],
 	"neurotoxin": [
@@ -175816,11 +178277,10 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	],
 	"omenedge": [
 		"sharpness",
-		"dualwield",
 		"pressure",
 	],
 	"omensight": [
-		"anticipation",
+		"misalignedstars",
 		"forewarn",
 	],
 	"oneiricdust": [
@@ -176183,6 +178643,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	],
 	"resonanceforce": [],
 	"resonantblade": [],
+	"restlessdrive": [],
 	"restorativechime": [],
 	"resuscitation": [
 		"selfrepair",
@@ -176219,6 +178680,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"filter",
 		"icebody",
 	],
+	"rimemantle": [],
 	"rimeplate": [],
 	"ringcraft": [
 		"limber",
@@ -176226,6 +178688,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"ringmaster": [
 		"toughclaws",
 	],
+	"ringtrick": [],
 	"riotamp": [
 		"galvanize",
 		"resonanceforce",
@@ -176301,6 +178764,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"rupturedheaven": [
 		"sharpness",
 	],
+	"rushingblade": [],
 	"sacredbond": [
 		"battlebond",
 		"selfsufficient",
@@ -176365,6 +178829,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"rockhead",
 	],
 	"scrapbreaker": [],
+	"scrapcollector": [],
 	"scrappy": [],
 	"screencleaner": [],
 	"seablessing": [
@@ -176375,9 +178840,12 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"toxicdebris",
 	],
 	"searescuer": [],
-	"seasonalstride": [],
+	"seasonalstride": [
+		"overcoat",
+	],
 	"secondbrew": [],
 	"secondwind": [],
+	"seedcourier": [],
 	"seedsower": [],
 	"selfrepair": [],
 	"selfsufficient": [],
@@ -176406,12 +178874,15 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"technician",
 		"anticipation",
 	],
-	"shadowdouble": [],
+	"shadowdouble": [
+		"misalignedstars",
+	],
 	"shadowfeint": [],
 	"shadowscreen": [
 		"infiltrator",
 	],
 	"shadowshield": [],
+	"shadowstep": [],
 	"shadowtag": [],
 	"sharpness": [],
 	"shattercrust": [
@@ -176455,6 +178926,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"siegetusks": [
 		"moldbreaker",
 	],
+	"signaturedrive": [],
 	"silentact": [
 		"soundproof",
 	],
@@ -176519,6 +178991,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"snowpack": [
 		"icebody",
 	],
+	"snowpassage": [],
 	"snowwarning": [],
 	"solarbloom": [],
 	"solarbud": [],
@@ -176618,6 +179091,10 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"static",
 		"pressure",
 	],
+	"springstriker": [
+		"striker",
+		"waterabsorb",
+	],
 	"springtempest": [
 		"lightningrod",
 		"stormpower",
@@ -176692,6 +179169,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"stormpower",
 		"lightningrod",
 	],
+	"stormmantle": [],
 	"stormmemory": [],
 	"stormpower": [],
 	"stormsong": [
@@ -176727,6 +179205,10 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	"summerrenewal": [
 		"regenerator",
 		"solarpower",
+	],
+	"summerstriker": [
+		"striker",
+		"flashfire",
 	],
 	"suncharm": [
 		"drought",
@@ -176973,10 +179455,12 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	],
 	"twinfocus": [],
 	"tyrantdomain": [
+		"tyrantstream",
 		"supremeoverlord",
+	],
+	"tyrantstream": [
 		"sandstream",
 	],
-	"tyrantstream": [],
 	"ultraego": [],
 	"ultrainstinct": [
 		"innerfocus",
@@ -177086,7 +179570,9 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 	],
 	"verityseal": [],
 	"vesselofruin": [],
+	"victorylap": [],
 	"victorystar": [],
+	"vinerelay": [],
 	"violentrush": [],
 	"vitalcircuit": [],
 	"vitalsigns": [
@@ -177207,6 +179693,10 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"berserk",
 		"cursedbody",
 	],
+	"winterstriker": [
+		"striker",
+		"iceabsorb",
+	],
 	"wisecounsel": [
 		"innerfocus",
 		"guardianpresence",
@@ -177235,7 +179725,9 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"moldbreaker",
 	],
 	"worldforged": [],
-	"wraithprocession": [],
+	"wraithprocession": [
+		"misalignedstars",
+	],
 	"wrathshield": [
 		"bulletproof",
 		"stamina",
@@ -177489,9 +179981,9 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 		"competitive",
 	],
 	"astralcore": [
-		"purepower",
-		"naturalcure",
 		"starlens",
+		"misalignedstars",
+		"victorystar",
 	],
 	"astralengine": [
 		"powerspot",
@@ -177533,10 +180025,14 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 		"snowwarning",
 	],
 	"auroradomain": [
+		"auroracurrent",
 		"refrigerate",
-		"snowwarning",
 	],
 	"auroraresonance": [],
+	"autumnstriker": [
+		"striker",
+		"eartheater",
+	],
 	"baddreams": [],
 	"badseeds": [],
 	"baitedbloom": [
@@ -177580,6 +180076,7 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 	],
 	"beyondfear": [],
 	"bigpecks": [],
+	"bindingchain": [],
 	"blackfang": [],
 	"blackviper": [
 		"whiplash",
@@ -177622,8 +180119,10 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 		"levitate",
 		"dryskin",
 	],
+	"boilervent": [],
 	"bonewarrior": [
 		"battlearmor",
+		"cursedbody",
 	],
 	"boretunnel": [
 		"eartheater",
@@ -177653,6 +180152,7 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 		"violentrush",
 		"intimidate",
 	],
+	"bulwarkrelay": [],
 	"buriedcoil": [
 		"sandspit",
 	],
@@ -177742,6 +180242,7 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 	"cheekpouch": [],
 	"chillingneigh": [],
 	"chlorophyll": [],
+	"cindermantle": [],
 	"cinderscales": [
 		"flamebody",
 		"swarm",
@@ -177765,6 +180266,7 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 		"convergence",
 	],
 	"coldopen": [],
+	"coldreserve": [],
 	"colorchange": [],
 	"colossalframe": [],
 	"comatose": [],
@@ -177817,7 +180319,7 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 	],
 	"cosmicanalysis": [
 		"analytic",
-		"download",
+		"naturalcure",
 	],
 	"costar": [],
 	"cottondown": [],
@@ -177836,6 +180338,7 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 		"ironfist",
 		"innerfocus",
 	],
+	"crowntending": [],
 	"cruelshell": [],
 	"crueltag": [
 		"shadowtag",
@@ -177851,6 +180354,7 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 		"filter",
 		"sturdy",
 	],
+	"crystalfacet": [],
 	"crystalfocus": [],
 	"crystalresonance": [
 		"amethystglow",
@@ -177862,14 +180366,18 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 	"currentcoil": [
 		"swiftswim",
 	],
-	"cursedarmament": [],
+	"cursedarmament": [
+		"misalignedstars",
+	],
 	"cursedbody": [],
 	"curseddoll": [
 		"toughclaws",
 		"shadowshield",
 	],
 	"cursedkeepsake": [],
-	"cursedmarionette": [],
+	"cursedmarionette": [
+		"misalignedstars",
+	],
 	"curtaincall": [
 		"icebody",
 		"filter",
@@ -177893,6 +180401,7 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 		"drought",
 		"friendguard",
 	],
+	"dawnpoise": [],
 	"dazzling": [],
 	"deadwater": [],
 	"decoypincers": [],
@@ -177999,6 +180508,7 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 	"dreamsickness": [
 		"telepathy",
 	],
+	"dreamstalker": [],
 	"dredger": [],
 	"dreepyvanguard": [
 		"stalwart",
@@ -178034,6 +180544,7 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 		"ultraego",
 	],
 	"duskilate": [],
+	"duskpoise": [],
 	"earlybird": [],
 	"eartheater": [],
 	"echofiend": [],
@@ -178100,6 +180611,9 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 	"execution": [
 		"duskilate",
 		"moldbreaker",
+		"misalignedstars",
+		"voidveil",
+		"telepathy",
 	],
 	"expiration": [
 		"stringsofruin",
@@ -178135,6 +180649,7 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 	"finalnote": [],
 	"firemane": [],
 	"fireward": [],
+	"firstdraft": [],
 	"flamebody": [],
 	"flareboost": [],
 	"flashfire": [],
@@ -178388,6 +180903,7 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 		"magicbounce",
 		"healer",
 	],
+	"heartcurrent": [],
 	"heatcoil": [
 		"speedboost",
 		"flamebody",
@@ -178553,6 +181069,7 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 		"whiplash",
 	],
 	"islandcurrent": [],
+	"islandwatch": [],
 	"jetstream": [],
 	"jetstreamballet": [
 		"windrider",
@@ -178568,6 +181085,7 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 	],
 	"keystoneseal": [
 		"cursedbody",
+		"pressure",
 	],
 	"kickfiend": [
 		"striker",
@@ -178619,6 +181137,7 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 		"swornduty",
 		"propellertail",
 	],
+	"lightcache": [],
 	"lightmetal": [],
 	"lightningrod": [],
 	"lightweightswarm": [
@@ -178675,6 +181194,7 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 		"magicguard",
 	],
 	"lunarspirit": [],
+	"lunarwake": [],
 	"lunarward": [
 		"pressure",
 		"illuminate",
@@ -178703,6 +181223,7 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 		"poisonpoint",
 	],
 	"marvelscale": [],
+	"maskmender": [],
 	"masonsfist": [
 		"ironfist",
 	],
@@ -178810,6 +181331,7 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 	"mourningsnow": [
 		"snowwarning",
 		"icebody",
+		"misalignedstars",
 	],
 	"mourningvessel": [],
 	"moxie": [],
@@ -178834,6 +181356,7 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 		"naturalcure",
 		"regenerator",
 	],
+	"nebuladrift": [],
 	"nerveparasite": [],
 	"neuroforce": [],
 	"neurotoxin": [
@@ -178894,11 +181417,10 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 	],
 	"omenedge": [
 		"sharpness",
-		"dualwield",
 		"pressure",
 	],
 	"omensight": [
-		"anticipation",
+		"misalignedstars",
 		"forewarn",
 	],
 	"oneiricdust": [
@@ -179261,6 +181783,7 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 	],
 	"resonanceforce": [],
 	"resonantblade": [],
+	"restlessdrive": [],
 	"restorativechime": [],
 	"resuscitation": [
 		"selfrepair",
@@ -179297,6 +181820,7 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 		"filter",
 		"icebody",
 	],
+	"rimemantle": [],
 	"rimeplate": [],
 	"ringcraft": [
 		"limber",
@@ -179304,6 +181828,7 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 	"ringmaster": [
 		"toughclaws",
 	],
+	"ringtrick": [],
 	"riotamp": [
 		"galvanize",
 		"resonanceforce",
@@ -179379,6 +181904,7 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 	"rupturedheaven": [
 		"sharpness",
 	],
+	"rushingblade": [],
 	"sacredbond": [
 		"battlebond",
 		"selfsufficient",
@@ -179443,6 +181969,7 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 		"rockhead",
 	],
 	"scrapbreaker": [],
+	"scrapcollector": [],
 	"scrappy": [],
 	"screencleaner": [],
 	"seablessing": [
@@ -179453,9 +181980,12 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 		"toxicdebris",
 	],
 	"searescuer": [],
-	"seasonalstride": [],
+	"seasonalstride": [
+		"overcoat",
+	],
 	"secondbrew": [],
 	"secondwind": [],
+	"seedcourier": [],
 	"seedsower": [],
 	"selfrepair": [],
 	"selfsufficient": [],
@@ -179484,12 +182014,15 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 		"technician",
 		"anticipation",
 	],
-	"shadowdouble": [],
+	"shadowdouble": [
+		"misalignedstars",
+	],
 	"shadowfeint": [],
 	"shadowscreen": [
 		"infiltrator",
 	],
 	"shadowshield": [],
+	"shadowstep": [],
 	"shadowtag": [],
 	"sharpness": [],
 	"shattercrust": [
@@ -179533,6 +182066,7 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 	"siegetusks": [
 		"moldbreaker",
 	],
+	"signaturedrive": [],
 	"silentact": [
 		"soundproof",
 	],
@@ -179597,6 +182131,7 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 	"snowpack": [
 		"icebody",
 	],
+	"snowpassage": [],
 	"snowwarning": [],
 	"solarbloom": [],
 	"solarbud": [],
@@ -179696,6 +182231,10 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 		"static",
 		"pressure",
 	],
+	"springstriker": [
+		"striker",
+		"waterabsorb",
+	],
 	"springtempest": [
 		"lightningrod",
 		"stormpower",
@@ -179770,6 +182309,7 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 		"stormpower",
 		"lightningrod",
 	],
+	"stormmantle": [],
 	"stormmemory": [],
 	"stormpower": [],
 	"stormsong": [
@@ -179805,6 +182345,10 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 	"summerrenewal": [
 		"regenerator",
 		"solarpower",
+	],
+	"summerstriker": [
+		"striker",
+		"flashfire",
 	],
 	"suncharm": [
 		"drought",
@@ -180051,10 +182595,12 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 	],
 	"twinfocus": [],
 	"tyrantdomain": [
+		"tyrantstream",
 		"supremeoverlord",
+	],
+	"tyrantstream": [
 		"sandstream",
 	],
-	"tyrantstream": [],
 	"ultraego": [],
 	"ultrainstinct": [
 		"innerfocus",
@@ -180164,7 +182710,9 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 	],
 	"verityseal": [],
 	"vesselofruin": [],
+	"victorylap": [],
 	"victorystar": [],
+	"vinerelay": [],
 	"violentrush": [],
 	"vitalcircuit": [],
 	"vitalsigns": [
@@ -180285,6 +182833,10 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 		"berserk",
 		"cursedbody",
 	],
+	"winterstriker": [
+		"striker",
+		"iceabsorb",
+	],
 	"wisecounsel": [
 		"innerfocus",
 		"guardianpresence",
@@ -180313,7 +182865,9 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 		"moldbreaker",
 	],
 	"worldforged": [],
-	"wraithprocession": [],
+	"wraithprocession": [
+		"misalignedstars",
+	],
 	"wrathshield": [
 		"bulletproof",
 		"stamina",
@@ -193385,7 +195939,7 @@ const STONE_MOVE_ROUTES = [
 		"form": "gengarmega",
 		"species": "gengar",
 		"stone": "gengarite",
-		"base": "hex",
+		"base": "shadowball",
 		"move": "witchinghex",
 	},
 	{
@@ -193450,6 +196004,468 @@ const STONE_MOVE_ROUTES = [
 		"stone": "emboarite",
 		"base": "heatcrash",
 		"move": "furnacecrash",
+	},
+	{
+		"form": "alakazammega",
+		"species": "alakazam",
+		"stone": "alakazite",
+		"base": "psyshock",
+		"move": "psiscalpel",
+	},
+	{
+		"form": "alakazammegaalt",
+		"species": "alakazamalt",
+		"stone": "alakazite",
+		"base": "psyshock",
+		"move": "psiscalpel",
+	},
+	{
+		"form": "arbokmegax",
+		"species": "arbok",
+		"stone": "arbokite",
+		"base": "crunch",
+		"move": "vicefang",
+	},
+	{
+		"form": "arbokmegay",
+		"species": "arbok",
+		"stone": "arbokite",
+		"base": "sludgebomb",
+		"move": "hoodflare",
+	},
+	{
+		"form": "ariadosmega",
+		"species": "ariados",
+		"stone": "aridiate",
+		"base": "crosspoison",
+		"move": "crossstitch",
+	},
+	{
+		"form": "barbaraclemega",
+		"species": "barbaracle",
+		"stone": "barbaracite",
+		"base": "razorshell",
+		"move": "keelcutter",
+	},
+	{
+		"form": "bronzongmega",
+		"species": "bronzong",
+		"stone": "bronzongite",
+		"base": "extrasensory",
+		"move": "stormtoll",
+	},
+	{
+		"form": "butterfreemega",
+		"species": "butterfree",
+		"stone": "dawnstone",
+		"base": "bugbuzz",
+		"move": "sporechorus",
+	},
+	{
+		"form": "chandeluremega",
+		"species": "chandelure",
+		"stone": "chandelurite",
+		"base": "shadowball",
+		"move": "vigilflame",
+	},
+	{
+		"form": "chimechomegay",
+		"species": "chimecho",
+		"stone": "chimechite",
+		"base": "ominouswind",
+		"move": "passingbell",
+	},
+	{
+		"form": "cinderacemega",
+		"species": "cinderace",
+		"stone": "cinderite",
+		"base": "pyroball",
+		"move": "volleyshot",
+	},
+	{
+		"form": "claydolmega",
+		"species": "claydol",
+		"stone": "claydolite",
+		"base": "earthpower",
+		"move": "axisbreak",
+	},
+	{
+		"form": "clefablemega",
+		"species": "clefable",
+		"stone": "clefablite",
+		"base": "moonblast",
+		"move": "mooncradle",
+	},
+	{
+		"form": "crabominablemega",
+		"species": "crabominable",
+		"stone": "crabominite",
+		"base": "icehammer",
+		"move": "packicepunch",
+	},
+	{
+		"form": "darkraimega",
+		"species": "darkrai",
+		"stone": "darkranite",
+		"base": "darkpulse",
+		"move": "nightterror",
+	},
+	{
+		"form": "dianciemega",
+		"species": "diancie",
+		"stone": "diancite",
+		"base": "diamondstorm",
+		"move": "prismvolley",
+	},
+	{
+		"form": "dragalgemega",
+		"species": "dragalge",
+		"stone": "dragalgite",
+		"base": "sludgebomb",
+		"move": "bilgebomb",
+	},
+	{
+		"form": "drampamega",
+		"species": "drampa",
+		"stone": "drampanite",
+		"base": "dragonpulse",
+		"move": "monsoonpulse",
+	},
+	{
+		"form": "dusknoirmega",
+		"species": "dusknoir",
+		"stone": "dusknoirite",
+		"base": "shadowpunch",
+		"move": "gravegrasp",
+	},
+	{
+		"form": "eelektrossmega",
+		"species": "eelektross",
+		"stone": "eelektrossite",
+		"base": "wildcharge",
+		"move": "dynamocrash",
+	},
+	{
+		"form": "falinksmega",
+		"species": "falinks",
+		"stone": "falinksite",
+		"base": "closecombat",
+		"move": "rankbreak",
+	},
+	{
+		"form": "floettemega",
+		"species": "floetteeternal",
+		"stone": "floettite",
+		"base": "lightofruin",
+		"move": "lastblossom",
+	},
+	{
+		"form": "froslassaevianmega",
+		"species": "froslassaevian",
+		"stone": "froslassite",
+		"base": "waterpulse",
+		"move": "sirenchime",
+	},
+	{
+		"form": "froslassmega",
+		"species": "froslass",
+		"stone": "froslassite",
+		"base": "shadowball",
+		"move": "widowwail",
+	},
+	{
+		"form": "glalieaevianmega",
+		"species": "glalieaevian",
+		"stone": "glalitite",
+		"base": "rockslide",
+		"move": "cragslide",
+	},
+	{
+		"form": "glaliemega",
+		"species": "glalie",
+		"stone": "glalitite",
+		"base": "icefang",
+		"move": "frostsplitter",
+	},
+	{
+		"form": "gyaradosaevianmega",
+		"species": "gyaradosaevian",
+		"stone": "gyaradosite",
+		"base": "flamethrower",
+		"move": "solarcoil",
+	},
+	{
+		"form": "gyaradosmega",
+		"species": "gyarados",
+		"stone": "gyaradosite",
+		"base": "thrash",
+		"move": "riptiderampage",
+	},
+	{
+		"form": "hawluchamega",
+		"species": "hawlucha",
+		"stone": "hawluchanite",
+		"base": "flyingpress",
+		"move": "atlaspress",
+	},
+	{
+		"form": "jirachimega",
+		"species": "jirachi",
+		"stone": "jirachite",
+		"base": "doomdesire",
+		"move": "starverdict",
+	},
+	{
+		"form": "magearnamega",
+		"species": "magearna",
+		"stone": "magearnite",
+		"base": "fleurcannon",
+		"move": "fleursalvo",
+	},
+	{
+		"form": "magearnaoriginalmega",
+		"species": "magearnaoriginal",
+		"stone": "magearnite",
+		"base": "fleurcannon",
+		"move": "fleursalvo",
+	},
+	{
+		"form": "malamarmega",
+		"species": "malamar",
+		"stone": "malamarite",
+		"base": "superpower",
+		"move": "capsize",
+	},
+	{
+		"form": "medichammega",
+		"species": "medicham",
+		"stone": "medichamite",
+		"base": "forcepalm",
+		"move": "mantrapalm",
+	},
+	{
+		"form": "meowsticfmega",
+		"species": "meowsticf",
+		"stone": "meowsticite",
+		"base": "psyshock",
+		"move": "fracturepulse",
+	},
+	{
+		"form": "meowsticmmega",
+		"species": "meowstic",
+		"stone": "meowsticite",
+		"base": "psychic",
+		"move": "wardpulse",
+	},
+	{
+		"form": "mewtwomegax",
+		"species": "mewtwo",
+		"stone": "mewtwonitex",
+		"base": "drainpunch",
+		"move": "psiknuckle",
+	},
+	{
+		"form": "mewtwomegay",
+		"species": "mewtwo",
+		"stone": "mewtwonitey",
+		"base": "psystrike",
+		"move": "mindfracture",
+	},
+	{
+		"form": "mismagiusmega",
+		"species": "mismagius",
+		"stone": "duskstone",
+		"base": "moonblast",
+		"move": "witchmoon",
+	},
+	{
+		"form": "noctowlmega",
+		"species": "noctowl",
+		"stone": "noctowlite",
+		"base": "airslash",
+		"move": "hushwing",
+	},
+	{
+		"form": "noivernmega",
+		"species": "noivern",
+		"stone": "noivernite",
+		"base": "boomburst",
+		"move": "echobreak",
+	},
+	{
+		"form": "metagrossmega",
+		"species": "metagross",
+		"stone": "metagrossite",
+		"base": "meteormash",
+		"move": "meteorram",
+	},
+	{
+		"form": "kangaskhanmega",
+		"species": "kangaskhan",
+		"stone": "kangaskhanite",
+		"base": "dizzypunch",
+		"move": "tandempunch",
+	},
+	{
+		"form": "parasectmega",
+		"species": "parasect",
+		"stone": "parasectite",
+		"base": "leechlife",
+		"move": "sporetap",
+	},
+	{
+		"form": "pinsirmega",
+		"species": "pinsir",
+		"stone": "pinsirite",
+		"base": "xscissor",
+		"move": "hornshears",
+	},
+	{
+		"form": "pyroarmega",
+		"species": "pyroar",
+		"stone": "pyroarite",
+		"base": "hypervoice",
+		"move": "prideroar",
+	},
+	{
+		"form": "rayquazamega",
+		"species": "rayquaza",
+		"stone": "",
+		"base": "dragonascent",
+		"move": "skyfalldive",
+	},
+	{
+		"form": "reuniclusmega",
+		"species": "reuniclus",
+		"stone": "reuniclusite",
+		"base": "psychic",
+		"move": "celldivision",
+	},
+	{
+		"form": "roserademega",
+		"species": "roserade",
+		"stone": "roseradite",
+		"base": "gigadrain",
+		"move": "briardrain",
+	},
+	{
+		"form": "salazzlemega",
+		"species": "salazzle",
+		"stone": "salazzite",
+		"base": "venoshock",
+		"move": "venomflash",
+	},
+	{
+		"form": "scolipedemega",
+		"species": "scolipede",
+		"stone": "scolipite",
+		"base": "megahorn",
+		"move": "pikecharge",
+	},
+	{
+		"form": "scolipedemegaazzy",
+		"species": "scolipedeazzy",
+		"stone": "scolipite",
+		"base": "megahorn",
+		"move": "pikecharge",
+	},
+	{
+		"form": "scovillainmega",
+		"species": "scovillain",
+		"stone": "scovillainite",
+		"base": "seedbomb",
+		"move": "pepperburst",
+	},
+	{
+		"form": "scraftymega",
+		"species": "scrafty",
+		"stone": "scraftinite",
+		"base": "drainpunch",
+		"move": "scrapknuckle",
+	},
+	{
+		"form": "slowbromega",
+		"species": "slowbro",
+		"stone": "slowbronite",
+		"base": "scald",
+		"move": "shellkettle",
+	},
+	{
+		"form": "staraptormega",
+		"species": "staraptor",
+		"stone": "staraptite",
+		"base": "bravebird",
+		"move": "raptordive",
+	},
+	{
+		"form": "starmiemega",
+		"species": "starmie",
+		"stone": "starminite",
+		"base": "powergem",
+		"move": "orbitshards",
+	},
+	{
+		"form": "sunfloramega",
+		"species": "sunflora",
+		"stone": "sunflorite",
+		"base": "solarbeam",
+		"move": "sunwheel",
+	},
+	{
+		"form": "tatsugiricurlymega",
+		"species": "tatsugiri",
+		"stone": "tatsugirinite",
+		"base": "muddywater",
+		"move": "sushisurge",
+	},
+	{
+		"form": "tatsugiridroopymega",
+		"species": "tatsugiridroopy",
+		"stone": "tatsugirinite",
+		"base": "muddywater",
+		"move": "sushisurge",
+	},
+	{
+		"form": "tatsugiristretchymega",
+		"species": "tatsugiristretchy",
+		"stone": "tatsugirinite",
+		"base": "muddywater",
+		"move": "sushisurge",
+	},
+	{
+		"form": "weavilemega",
+		"species": "weavile",
+		"stone": "weavilite",
+		"base": "nightslash",
+		"move": "blackice",
+	},
+	{
+		"form": "zangoosemega",
+		"species": "zangoose",
+		"stone": "zangoosite",
+		"base": "crushclaw",
+		"move": "scarclaw",
+	},
+	{
+		"form": "zeraoramega",
+		"species": "zeraora",
+		"stone": "zeraorite",
+		"base": "plasmafists",
+		"move": "overvoltfist",
+	},
+	{
+		"form": "zygardemega",
+		"species": "zygarde",
+		"stone": "zygardite",
+		"base": "thousandarrows",
+		"move": "faultarrows",
+	},
+	{
+		"form": "zygardemega",
+		"species": "zygarde10",
+		"stone": "zygardite",
+		"base": "thousandarrows",
+		"move": "faultarrows",
 	},
 	{
 		"form": "miloticmega",
@@ -193542,6 +196558,13 @@ const STONE_MOVE_ROUTES = [
 		"base": "muddywater",
 		"move": "tiderush",
 	},
+	{
+		"form": "sevipermega",
+		"species": "seviper",
+		"stone": "sevipite",
+		"base": "poisonfang",
+		"move": "drakefang",
+	},
 ];
 // END SERVER WORKING SYNC STONE MOVE ROUTES
 // BEGIN SERVER WORKING SYNC STANCE MOVE ROUTES
@@ -193550,13 +196573,13 @@ const STANCE_MOVE_ROUTES: Record<string, {ability: string, base: string, move: s
 		"ability": "shogunstance",
 		"base": "razorshell",
 		"move": "crestingcut",
-		"component": "",
+		"component": "shellarmor",
 	},
 	"samurottalt": {
 		"ability": "shogunstance",
 		"base": "razorshell",
 		"move": "crestingcut",
-		"component": "",
+		"component": "shellarmor",
 	},
 	"samurotthisui": {
 		"ability": "shogunstance",
@@ -194003,7 +197026,8 @@ const Dex = new class implements ModdedDex {
 				'Heals 1/16 HP each turn. ' +
 				(item === undefined
 					? 'Changes type and abilities with its held Memory (item unknown).'
-					: 'Memory abilities: ' + parts.map(id => this.abilities.get(id).name).join(' + ') + '.');
+					: this.getRKSMemoryPassive(species, ability.id, item) ?
+						'Memory passive: ' + parts.map(id => this.abilities.get(id).name).join(' + ') + '.' : 'Gains Scrappy.');
 			return {...ability, shortDesc, desc: shortDesc};
 		}
 		if (ability.id === 'perfectforecast') {
@@ -194069,6 +197093,13 @@ const Dex = new class implements ModdedDex {
 		return rest;
 	}
 
+	getUnstableEvoForms() { return CUSTOM_UNSTABLE_EVO_FORMS; }
+
+	getRKSMemoryPassive(species: string, ability: string, item?: string) {
+		return toID(ability) === 'rkssystem' && this.species.get(species).baseSpecies === 'Silvally' && item ?
+			CUSTOM_RKS_MEMORY_COMPONENTS[toID(item)]?.[0] : undefined;
+	}
+
 	getAbilityDisplayComponents(
 		abilityId: ID,
 		dex: ModdedDex = this,
@@ -194095,6 +197126,9 @@ const Dex = new class implements ModdedDex {
 			return (
 				item === undefined ? [] : CUSTOM_RKS_MEMORY_COMPONENTS[toID(item)] || ['scrappy']
 			) as ID[];
+		}
+		if (ability.id === 'unstableevo') {
+			return ['filter', 'selfsufficient', ...(CUSTOM_UNSTABLE_EVO_FORMS[toID(species)]?.components || [])] as ID[];
 		}
 		if (ability.id === 'perfectforecast') {
 			return (CUSTOM_PERFECT_FORECAST_FORMS[toID(species)]?.components || []) as ID[];
@@ -194252,8 +197286,10 @@ const Dex = new class implements ModdedDex {
 		const facing = isFront ? 'front' : 'back';
 		const gender = pokemon instanceof Pokemon ? pokemon.gender : options.gender;
 		const referenceSize = reference?.[facing + (gender === 'F' ? 'f' : '')] || reference?.[facing];
-		const referenceLimit = referenceSize ? Math.max(...referenceSize) *
-			(exactReference ? 1 : isGmax ? 1.35 : large ? 1.15 : 1) : limit;
+		// Static Tatsugiri art shares the base form's scale. Its Mega animations use their own bounds below.
+		const baseScale = exactReference || (species.baseSpecies === 'Tatsugiri' && species.isMega) ? 1 :
+			isGmax ? 1.35 : large ? 1.15 : 1;
+		const referenceLimit = referenceSize ? Math.max(...referenceSize) * baseScale : limit;
 		// These full-body Mega animations have their own proportions. A base-species
 		// reference (especially Tatsugiri's tiny front sprite) incorrectly shrinks them.
 		// Keep compact previews and custom shiny/static artwork on their existing policy.
@@ -194265,9 +197301,18 @@ const Dex = new class implements ModdedDex {
 			useMegaAnimationBounds ? limit : Math.min(limit, referenceLimit);
 		// Apply one final policy to the selected asset, after all animation/form fallbacks.
 		// A cropped 2x sprite has the same logical size as the padded 1x original.
-		// Both Drekeon palettes use the same 2x artwork grid. Fine detail in the regular palette defeats automatic detection.
-		const density = /^gen5(?:-back)?(?:-shiny)?\/drekeon\.png$/.test(asset!) ? 2 : pixelScale;
+		// These BW sheets need half-size rendering; fine details defeat automatic pixel-density detection.
+		const doubleSizeArt = /^gen5(?:-back)?(?:-shiny)?\/drekeon\.png$/.test(asset!) ||
+			/^gen5(?:-shiny)?\/(?:ceruledge|tsareena)\.png$/.test(asset!);
+		const density = doubleSizeArt ? 2 : pixelScale;
 		let scale = Math.min(1 / density, visibleLimit / visibleWidth, visibleLimit / visibleHeight);
+		if (species.id === 'gardevoirvoidmega') {
+			// Compare the painted height after asset selection; the two forms have different padding.
+			const regular = this.getSpriteData('Gardevoir-Mega', isFront, {...options, dynamax: false});
+			const path = regular.url.split('/sprites/')[1]?.split('?')[0];
+			const bounds = path && SPRITE_IMAGE_METRICS[path];
+			if (bounds) scale = regular.h * bounds[5] / bounds[1] / visibleHeight;
+		}
 		if (!isFront && !options.teamPreview && asset === 'gen5-back/hydreigon-mega.png') {
 			scale = Math.min(scale, 104 / visibleWidth, 104 / visibleHeight);
 		}
@@ -194493,7 +197538,8 @@ const Dex = new class implements ModdedDex {
 		if (miscData.num !== 0 && miscData.num > -5000) {
 			spriteData.cryurl = 'audio/cries/' + cryBaseSpeciesid;
 			let formeid = species.formeid;
-			if (!usesBaseVariantCry && (species.isMega || formeid && (
+			// Compound Mega forms use the family's recording unless they have a custom cry above.
+			if (!usesBaseVariantCry && (/^-mega[xyz]?$/.test(formeid) || formeid && (
 				formeid === '-crowned' ||
 				formeid === '-eternal' ||
 				formeid === '-eternamax' ||
@@ -195159,7 +198205,7 @@ const Dex = new class implements ModdedDex {
 					['Charizard-Mega-X', 'Charizard-Mega-Y'] : ['Charizard-Mega-Y', 'Charizard-Mega-X'];
 			}
 			if (species === 'charizardalt' && item.id === 'charizarditey') return ['Charizard-Mega-Y'];
-			const forms = new Set(routes.filter(route => route.stone === item.id)
+			const forms = new Set(routes.filter(route => route.stone ? route.stone === item.id : !item.zMove)
 				.map(route => dex.species.get(route.form).name));
 			// A shared stone can also offer an older signature on its primary Mega.
 			const primary = typeof item.megaStone === 'object' ? item.megaStone[selected.name] : item.megaStone;
@@ -195207,7 +198253,8 @@ const Dex = new class implements ModdedDex {
 	}
 
 	getMegaMoveHint(moveName: string, set?: Partial<PokemonSet> | null, dex: ModdedDex = this): string {
-		return this.getMegaMovePreviews(moveName, set, dex).map(preview => preview.label).join(' / ');
+		const previews = this.getMegaMovePreviews(moveName, set, dex);
+		return previews.length > 1 ? previews.length + ' Mega options' : previews[0]?.label || '';
 	}
 
 	getMegaTarget(
@@ -195219,7 +198266,7 @@ const Dex = new class implements ModdedDex {
 		if (mega) return move.megaTarget;
 	}
 
-	getMegaMoveEffect(move: Move, detailed = false): string {
+	private getMegaMoveStats(move: Move, detailed: boolean) {
 		const stats = [];
 		if (move.id === this.megaMoveConversions.watershuriken?.greninjamega) {
 			if (!detailed) stats.push('With Aegis Tide: 90 BP on the first hit, then 20');
@@ -195227,7 +198274,31 @@ const Dex = new class implements ModdedDex {
 			stats.push(move.basePower + ' BP' + (move.multihit ? ' per hit' : ''));
 		}
 		if (typeof move.accuracy === 'number') stats.push(move.accuracy + '% accuracy');
-		return [...stats, (detailed && move.desc) || move.shortDesc || move.desc].filter(Boolean).join(' · ');
+		return stats;
+	}
+
+	getMegaMoveEffect(move: Move, detailed = false): string {
+		return [...this.getMegaMoveStats(move, detailed), (detailed && move.desc) || move.shortDesc || move.desc]
+			.filter(Boolean).join(' · ');
+	}
+
+	getMegaMoveDetailGroups(options: {base: string, label: string, move: Move}[]) {
+		const groups: {base: string, effect: string, routes: {label: string, stats: string, adaptive: string}[]}[] = [];
+		for (const {base, label, move} of options) {
+			let effect = move.desc || move.shortDesc || '';
+			const adaptive = effect.match(/^Uses the higher of the user's (?:Attack|Defense) and Sp\. Atk\./)?.[0] || '';
+			if (adaptive) effect = effect.slice(adaptive.length).trimStart();
+			// Only strip a complete sentence repeating this route's unconditional base power.
+			for (const boilerplate of [move.basePower + ' power.', 'A ' + move.basePower + '-power ' + move.type + ' beam.']) {
+				if (effect.startsWith(boilerplate + ' ')) effect = effect.slice(boilerplate.length + 1);
+			}
+			const stats = [move.type, ...this.getMegaMoveStats(move, true)];
+			if (move.accuracy === true) stats.push('Always hits');
+			let group = groups.find(item => item.base === base && item.effect === effect);
+			if (!group) groups.push(group = {base, effect, routes: []});
+			group.routes.push({label, stats: stats.join(' · '), adaptive});
+		}
+		return groups;
 	}
 
 	private adaptiveSetCategory(move: Move, set: Partial<PokemonSet>, species: Species): Move['category'] {
@@ -195276,8 +198347,7 @@ const Dex = new class implements ModdedDex {
 				const {type, basePower, accuracy, shortDesc} = options[0].move;
 				return {...move, type, basePower, accuracy, shortDesc};
 			}
-			const effects = options.map(option => option.move.name + ': ' + this.getMegaMoveEffect(option.move));
-			return {...move, shortDesc: [move.shortDesc, ...effects].join(' ')};
+			return move;
 		}
 		if (!set?.species || !['gildedarrow', 'gildedhelix', 'blacktestament'].includes(move.id)) return move;
 		const display = this.getAbilityFormPreviewSet(set, dex);
@@ -195372,6 +198442,55 @@ const Dex = new class implements ModdedDex {
 				return set.species;
 		}
 
+	getBattleMegaForms(active: Partial<BattleRequestActivePokemon>, speciesName: string, itemName: string) {
+		if (active.megaForms) return active.megaForms;
+		const forms: NonNullable<BattleRequestActivePokemon['megaForms']> = {};
+		const species = this.species.get(speciesName.split(',')[0]);
+		const item = this.items.get(itemName);
+		const base = species.baseSpecies;
+		const stone = item.megaStone;
+		let direct = typeof stone === 'string' ? stone : stone?.[species.name] || stone?.[base];
+		if (species.name !== base && !species.isMega) {
+			const original = this.species.get(base);
+			const variants = (original.otherFormes || []).concat(original.cosmeticFormes || []);
+			const suffix = species.name.slice(base.length);
+			if (direct && suffix) variants.push(direct + suffix);
+			const matching = variants.map(name => this.species.get(name)).filter(candidate =>
+				candidate.isMega && candidate.battleOnly === species.name &&
+				candidate.requiredItems?.some(name => toID(name) === item.id));
+			if (matching.length && matching.every(candidate => candidate.id === matching[0].id)) direct = matching[0].name;
+		}
+		if (!direct) {
+			const original = this.species.get(base);
+			const ordinary = original.isMega ? original : this.species.get(base + '-Mega');
+			if (ordinary.exists && (base === 'Rayquaza' ||
+				ordinary.requiredItems?.some(name => toID(name) === item.id))) direct = ordinary.name;
+		}
+		const gardevoir = this.getGardevoirMegaRoutes(species.name, item.name);
+		const pair = this.getSharedMegaYLabels(species.name, item.name);
+		if (active.canMegaEvo) {
+			const name = typeof active.canMegaEvo === 'string' ? active.canMegaEvo : gardevoir?.mega || pair?.mega || direct;
+			if (name && this.species.get(name).exists) forms.mega = name;
+		}
+		if (active.canMegaEvoX) {
+			const name = gardevoir?.megax ||
+				(base === 'Garchomp' && item.id === 'garchompite' || base === 'Banette' && item.id === 'banettite' ||
+					base === 'Flygon' && item.id === 'flygonite' ?
+					base + '-Mega-Z' : base + '-Mega-X');
+			if (this.species.get(name).exists) forms.megax = name;
+		}
+		if (active.canMegaEvoY) {
+			const name = gardevoir?.megay || pair?.megay || base + '-Mega-Y';
+			if (this.species.get(name).exists) forms.megay = name;
+		}
+		return forms;
+	}
+	getPendingMegaMove(form: string, learned: string | undefined, displayed: string) {
+		const base = this.moves.get(learned || displayed);
+		if (!base.exists || ['struggle', 'recharge'].includes(toID(displayed))) return this.moves.get(displayed);
+		const signature = this.megaMoveConversions[base.id]?.[toID(form)];
+		return this.moves.get(signature || base.id);
+	}
 	getSharedMegaYLabels(speciesName: string, itemName: string) {
 		const species = this.species.get(speciesName);
 		const item = this.items.get(itemName);

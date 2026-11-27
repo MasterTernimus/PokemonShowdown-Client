@@ -100,7 +100,31 @@ describe('Reborn character move presentation', () => {
 	for (const id of ['coldshoulder', 'steadfaststrike', 'ancestralwrath']) it(id + ' honestly displays conditional power as a range', () => {
 		const {tips, value} = setup(), move = Dex.moves.get(id);
 		const result = tips.getMoveBasePower(move, move.type, value(), battle.p2.active[0]);
-		assert.equal(result.value, move.basePower); assert.equal(result.maxValue, 120);
+		assert.equal(result.value, move.basePower); assert.equal(result.maxValue, id === 'ancestralwrath' ? 130 : 120);
+	});
+	it('forecasts Ancestral Wrath’s best STAB, Tera choice and known team count', () => {
+		global.BattleTypeChart = require('../play.pokemonshowdown.com/data/typechart').BattleTypeChart;
+		const {p, own, tips, value} = setup('Garchomp');
+		const foe = battle.p2.active[0], move = Dex.moves.get('ancestralwrath');
+		foe.volatiles.typechange = ['typechange', 'Steel'];
+		assert.equal(tips.getMoveType(move, value())[0], 'Ground');
+		foe.ability = 'Levitate';
+		assert.equal(tips.getMoveType(move, value())[0], 'Dragon');
+		foe.volatiles.typechange = ['typechange', 'Fairy'];
+		p.terastallized = 'Steel';
+		assert.equal(tips.getMoveType(move, value())[0], 'Steel');
+		p.terastallized = 'Stellar';
+		foe.ability = 'No Ability';
+		foe.volatiles.typechange = ['typechange', 'Normal'];
+		assert.equal(tips.getMoveType(move, value())[0], 'Dragon');
+		p.side.totalPokemon = foe.side.totalPokemon = 1;
+		const power = () => tips.getMoveBasePower(move, move.type, value(), foe).value;
+		assert.equal(power(), 100);
+		battle.add('|poke|p2|Clefable, L100|');
+		battle.seekTurn(Infinity);
+		foe.side.totalPokemon = 2;
+		assert.equal(power(), 130);
+		assert.equal(own.speciesForme, 'Garchomp');
 	});
 	it('pledges have compact readable condition labels', () => {
 		const Sprite = new Function('$', 'window', fs.readFileSync('play.pokemonshowdown.com/js/battle-animations.js', 'utf8') + '\nreturn PokemonSprite;')({easing: {}}, {});

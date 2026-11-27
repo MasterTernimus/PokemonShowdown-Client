@@ -89,7 +89,7 @@ function characterAliases(credit) {
   .replace(/\([^)]*\)/g, '').replace(/^the\s+/i, '').split(/,|\s+and\s+/i);
  return [...new Set(names.map(name => name.toLowerCase().replace(/[^a-z0-9]/g, '')).filter(Boolean))];
 }
-const stoneSignatures = require(path.join(server, 'dist/data/stone-signatures')).StoneSignatures;
+const stoneSignatures = require(path.join(server, 'dist/data/stone-signatures')).MegaSignatureDisplayRoutes;
 const signatureMoveIDs = new Set(Object.values(stoneSignatures).map(signature => Dex.moves.get(signature.name).id));
 for (const id of [...groups.moves].sort()) {
 	const data = Dex.moves.get(id);
@@ -126,8 +126,9 @@ block('FORM MOVE ALIASES', 'const Dex = new class', 'const FORMER_FORM_MOVES: Pa
 snapshot.stoneMoveRoutes = Object.entries(stoneSignatures).flatMap(([form, signature]) => {
 	const species = Dex.species.get(form);
 	const origins = Array.isArray(species.battleOnly) ? species.battleOnly : [species.battleOnly || species.baseSpecies];
-	return origins.flatMap(origin => species.requiredItems.map(item => ({
-		form, species: Dex.species.get(origin).id, stone: Dex.items.get(item).id,
+	const items = species.requiredItems || (species.requiredMove ? [''] : []);
+	return origins.flatMap(origin => items.map(item => ({
+		form, species: Dex.species.get(origin).id, stone: item ? Dex.items.get(item).id : '',
 		base: signature.base, move: Dex.moves.get(signature.name).id,
 	})));
 });
@@ -141,6 +142,7 @@ block('LEARNSET EXCLUSIONS', 'const CUSTOM_LEARNSET_REMOVAL_IDS =', `const SERVE
 block('GUARDIAN CONTEXT', 'const CUSTOM_ABILITY_UPDATE_IDS =', `const GUARDIAN_LEGACY_DESCRIPTIONS: {[id: string]: {desc: string; shortDesc: string}} = ${json(require(path.join(server, 'dist/data/base-guardian-reworks')).GuardianLegacyDescriptions)};`);
 block('SPECIES', 'const CUSTOM_SPECIES_UPDATE_IDS =', `for (const [id, update] of Object.entries(${json(snapshot.species)})) {\n\tCUSTOM_SPECIES_UPDATES[id] = {...CUSTOM_SPECIES_UPDATES[id], ...update};\n\tif (CUSTOM_SPECIES[id]) Object.assign(CUSTOM_SPECIES[id].data, update);\n}`);
 block('PERFECT FORECAST FORMS', 'const CUSTOM_ABILITY_UPDATE_IDS =', `const CUSTOM_PERFECT_FORECAST_FORMS: {[id: string]: {components: string[]; shortDesc: string; desc: string}} = ${json(require(path.join(server, 'dist/data/castform-split')).PerfectForecastForms)};`);
+block('UNSTABLE EVO FORMS', 'const CUSTOM_ABILITY_UPDATE_IDS =', `const CUSTOM_UNSTABLE_EVO_FORMS: {[species: string]: {move: string, components: string[]}} = ${json(require(path.join(server, 'dist/data/unstable-evo')).UnstableEvoForms)};`);
 block('RKS MEMORY COMPONENTS', 'const CUSTOM_ABILITY_UPDATE_IDS =', `const CUSTOM_RKS_MEMORY_COMPONENTS: {[id: string]: string[]} = ${json(require(path.join(server, 'dist/data/rks-system-memory')).RKSSystemMemoryAbilities)};`);
 block('DISPLAY COMPONENTS', 'const CUSTOM_ABILITY_UPDATE_IDS =', `const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = ${json(snapshot.displayComponents)};`);
 block('PASSIVE COMPONENT EXCLUSIONS', 'const CUSTOM_ABILITY_UPDATE_IDS =', `const CUSTOM_SIGNATURE_PASSIVE_DESCRIPTIONS: {[id: string]: {shortDesc: string; desc: string}} = ${json(snapshot.signaturePassiveDescriptions)};\nconst CUSTOM_SIGNATURE_PASSIVE_REMOVED_COMPONENTS: {[id: string]: readonly string[]} = ${json(snapshot.signaturePassiveRemovedComponents)};\nconst CUSTOM_SIGNATURE_PASSIVE_COMPONENTS: {[id: string]: readonly string[]} = ${json(snapshot.signaturePassiveComponents)};\nconst CUSTOM_ABILITY_COMPONENT_EXCLUSIONS: {[id: string]: readonly string[]} = ${json(snapshot.componentExclusions)};\nconst CUSTOM_SHARED_PASSIVE_COMPONENTS: {[id: string]: readonly string[]} = ${json(snapshot.sharedPassiveComponents)};\nconst CUSTOM_SHARED_PASSIVE_ADDITIONS: {[id: string]: {passive: string; component: string}} = ${json(snapshot.sharedPassiveAdditions)};\nconst CUSTOM_SHARED_PASSIVE_DESCRIPTIONS: {[id: string]: {passive: string; desc: string; shortDesc: string}} = ${json(snapshot.sharedPassiveDescriptions)};`);

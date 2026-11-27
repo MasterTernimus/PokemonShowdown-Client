@@ -63,6 +63,37 @@ describe('Logical sprite sizing across the roster', function () {
 		};
 		assert(visibleWidth(school) > visibleWidth(small) * 1.4);
 	});
+	it('sizes Ceruledge and Tsareena in each singles and doubles slot', () => {
+		const {Dex} = loadDex();
+		const {BattleScene, PokemonSprite} = new Function('$', 'window',
+			fs.readFileSync(path.join(root, 'js/battle-animations.js'), 'utf8') + '\nreturn {BattleScene, PokemonSprite};'
+		)({easing: {}}, {});
+		const element = {parent() {}, appendTo() {}, prependTo() {}};
+		const heights = {Ceruledge: [83, 107], Tsareena: [80, 100], 'Tsareena-Alt': [64, 100]};
+		for (const mode of ['default', 'noanim', 'nogif', 'bwgfx']) {
+			Dex.prefs = key => key === mode;
+			for (const [species, expected] of Object.entries(heights)) {
+				for (const shiny of [false, true]) for (const front of [true, false]) {
+					const sp = Dex.getSpriteData(species, front, {gen: 9, shiny});
+					const asset = sp.url.split('/sprites/')[1].split('?')[0];
+					const m = measureImage(fs.readFileSync(path.join(root, 'sprites', asset)));
+					for (const activeCount of [1, 2]) {
+						const gameType = activeCount === 1 ? 'singles' : 'doubles';
+						const scene = {gen: 9, activeCount, battle: {gameType}, pos: BattleScene.prototype.pos};
+						const sprite = {scene, sp, isFrontSprite: front, z: front ? 200 : 0, $el: element};
+						for (let slot = 0; slot < activeCount; slot++) {
+							PokemonSprite.prototype.recalculatePos.call(sprite, slot);
+							const height = scene.pos(sprite, sp).height * m[5] / m[1];
+							// BW doubles the foreground perspective. The default renderer uses 1.5×.
+							const bwBack = !front && sp.gen === 5;
+							const expectedHeight = bwBack ? (species === 'Ceruledge' ? 143 : 133) : expected[front ? 0 : 1];
+							assert.equal(Math.round(height), expectedHeight, asset + ' in ' + gameType);
+						}
+					}
+				}
+			}
+		}
+	});
 	it('retains raw sizing and scales Dynamax from the corrected ordinary size', () => {
 		const {Dex} = loadDex();
 		for (const species of ['Indeedee-F', 'Charizard', 'Hydreigon-Mega', 'Politoed-Rejuv']) for (const front of [false, true]) {

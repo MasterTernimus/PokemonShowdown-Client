@@ -5,10 +5,18 @@ const {Dex, BattleSearch, MoveSearch} = context;
 const DexSearch = require('vm').runInContext('DexSearch', context);
 
 describe('Teambuilder Mega move hints', () => {
-	it('omits retired conversions even with the matching Mega Stone', () => {
-		for (const [species, item, move] of [['Absol','Absolite','Night Slash'],['Metagross','Metagrossite','Meteor Mash'],['Kangaskhan','Kangaskhanite','Dizzy Punch']]) {
-			assert.equal(Dex.getMegaMoveHint(move, {species,item}), '');
+	it('opens the inherited move list when a Mega with multiple possible origins is selected directly', () => {
+		for (const [species, learned] of [['Typhlosion-Mega', 'eruption'], ['Breloom-Mega', 'machpunch']]) {
+			const set = {species, ability: Dex.species.get(species).abilities[0], moves: []};
+			const search = new MoveSearch('move', 'gen9nofieldsinglesgame', set);
+			assert(search.canLearn(Dex.species.get(species).id, learned), species);
+			assert(search.getBaseResults().some(row => row[0] === 'move' && row[1] === learned), species);
 		}
+	});
+	it('uses the current signature assignments for Absol, Metagross, and Kangaskhan', () => {
+		assert.equal(Dex.getMegaMoveHint('Night Slash', {species: 'Absol', item: 'Absolite'}), '');
+		assert.equal(Dex.getMegaMoveHint('Meteor Mash', {species: 'Metagross', item: 'Metagrossite'}), 'Mega → Meteor Ram');
+		assert.equal(Dex.getMegaMoveHint('Dizzy Punch', {species: 'Kangaskhan', item: 'Kangaskhanite'}), 'Mega → Tandem Punch');
 	});
 	it('discovers the legal base move with an empty search and equips it on a new set', () => {
 		const set = {species: 'Beedrill', moves: []};
@@ -24,7 +32,7 @@ describe('Teambuilder Mega move hints', () => {
 		assert.deepEqual(set.moves, ['Protect']);
 		const effect = Dex.getMegaMoveEffect(Dex.getMegaMovePreview('Twineedle', set).move);
 		assert.equal(effect, '25 BP per hit · 100% accuracy · Adaptive. Three drill hits. Each has a 20% chance to poison.');
-		assert(Dex.getTeambuilderMoveDisplay(Dex.moves.get('Twineedle'), set).shortDesc.includes(effect));
+		assert.equal(Dex.getTeambuilderMoveDisplay(Dex.moves.get('Twineedle'), set).shortDesc, Dex.moves.get('Twineedle').shortDesc);
 	});
 	it('shows the transformation in search while selecting the original move', () => {
 		const row = Object.create(BattleSearch.prototype);
@@ -50,7 +58,7 @@ describe('Teambuilder Mega move hints', () => {
 					const item = Dex.species.get(id).requiredItems?.[0] || (/gardevoir/i.test(species) ? 'Gardevoirite' : /gallade/i.test(species) ? 'Galladite' : '');
 					const suffix = /-Mega-([XYZ])(?:-Alt)?$/.exec(mega);
 					const label = suffix ? 'Mega ' + suffix[1] : id === 'gardevoirvoidmega' ? 'Void Mega' : 'Mega';
-					const hints = Dex.getMegaMoveHint(baseMove, {species, item}).split(' / ');
+					const hints = Dex.getMegaMovePreviews(baseMove, {species, item}).map(preview => preview.label);
 					assert(hints.includes(label + ' → ' + Dex.moves.get(signature).name), species + ' ' + baseMove);
 					if (species === mega) assert.equal(hints.length, 1);
 				}
@@ -159,8 +167,8 @@ describe('Teambuilder Mega move hints', () => {
 		const previews = Dex.getStoneMoveOptions(set);
 		assert.deepEqual(Array.from(previews, row => [row.base, row.move.type]), [['Solar Beam', 'Grass'], ['Solar Beam', 'Fire']]);
 		const description = Dex.getTeambuilderMoveDisplay(Dex.moves.get('Solar Beam'), set).shortDesc;
-		assert.match(description, /Mega Sol Cannon/);
-		assert.match(description, /Flare Cannon/);
+		assert.equal(description, Dex.moves.get('Solar Beam').shortDesc);
+		assert.equal(Dex.getMegaMoveHint('Solar Beam', set), '2 Mega options');
 		assert.deepEqual(Array.from(Dex.getMegaMovePreviews('Solar Beam', {species: 'Meganium-Mega-Y'}), r => r.move.type), ['Fire']);
 		DexSearch.equipNewSetMegaMove(set, 'gen9nofieldsinglesgame', Dex);
 		assert.deepEqual(set.moves, ['Solar Beam']);
@@ -227,11 +235,12 @@ describe('Teambuilder Mega move hints', () => {
 			assert(start >= 0);
 			assert.equal(rows[start + 1][1], 'razorshell');
 			assert.equal(rows.filter(row => row[1] === 'razorshell').length, 1);
+			assert(rows.some(row => row[0] === 'move' && row[1] === 'shellsmash'), species);
 			const move = Dex.getTeambuilderMoveDisplay(Dex.moves.get('Razor Shell'), set);
 			assert.equal(move.basePower, 85);
 			assert.equal(move.type, type);
 			const parts = Dex.getAbilityDisplayComponents('shogunstance', Dex, [], species);
-			assert.equal(parts.includes('shellarmor'), species.includes('Hisui'));
+			assert(parts.includes('shellarmor'), species);
 			assert.equal(Dex.moves.get(name).critRatio, species.includes('Hisui') ? 2 : 1);
 			DexSearch.equipNewSetMegaMove(set, format, Dex);
 			assert.deepEqual(set.moves, ['Razor Shell']);

@@ -452,7 +452,7 @@ export class Pokemon implements PokemonDetails, PokemonHealth {
 		let autotomizeFactor = this.volatiles.autotomize?.[1] * 100 || 0;
 		let weight = Math.max(this.getSpecies(serverPokemon).weightkg - autotomizeFactor, 0.1);
 		const gravityAbility = toID(this.effectiveAbility(serverPokemon));
-		const gravityExempt = gravityAbility === 'voidvoice' ||
+		const gravityExempt = ['voidvoice', 'execution'].includes(gravityAbility) ||
 			(this.getSpecies(serverPokemon).id === 'gardevoir' && gravityAbility === 'voidveil');
 		if (this.side.battle.hasPseudoWeather('Gravity') && !gravityExempt) weight *= 2;
 		return weight;
@@ -539,10 +539,10 @@ export class Pokemon implements PokemonDetails, PokemonHealth {
 		const addedType = (this.volatiles.typeadd ? this.volatiles.typeadd[1] : '');
 		return [types, addedType];
 	}
-	isGrounded(serverPokemon?: ServerPokemon) {
+	isGrounded(serverPokemon?: ServerPokemon, ignoreFlyingType = false) {
 		const battle = this.side.battle;
 		const gravityAbility = toID(this.effectiveAbility(serverPokemon));
-		const gravityExempt = gravityAbility === 'voidvoice' ||
+		const gravityExempt = ['voidvoice', 'execution'].includes(gravityAbility) ||
 			(this.getSpecies(serverPokemon).id === 'gardevoir' && gravityAbility === 'voidveil');
 		if (battle.hasPseudoWeather('Gravity') && !gravityExempt) {
 			return true;
@@ -575,7 +575,7 @@ export class Pokemon implements PokemonDetails, PokemonHealth {
 		if (item === 'airballoon') {
 			return false;
 		}
-		return !this.getTypeList(serverPokemon).includes('Flying');
+		return ignoreFlyingType || !this.getTypeList(serverPokemon).includes('Flying');
 	}
 	effectiveAbility(serverPokemon?: ServerPokemon) {
 		const ability = this.side.battle.dex.abilities.get(
@@ -604,7 +604,9 @@ export class Pokemon implements PokemonDetails, PokemonHealth {
 			const item = serverPokemon?.item ?? this.item;
 			return Dex.getAbilityDisplayComponents(ability, this.side.battle.dex, passives, species.id, item).includes(id);
 		}
-		if (id === 'pressure' && ability === 'unstableevo' && species.id === 'umbreon') return true;
+		if (ability === 'unstableevo') {
+			return Dex.getAbilityDisplayComponents(ability, this.side.battle.dex, passives, species.id).includes(id);
+		}
 		if (Dex.getStanceMoveRoute(species.id, ability)?.component === id) return true;
 		return Dex.getAbilityEffects(ability).has(id);
 	}
@@ -1054,6 +1056,7 @@ export interface ServerPokemon extends PokemonDetails, PokemonHealth {
 	rageFistBonus?: number;
 	disguise?: {name: string, species: string, mode: 'illusion' | 'perfectillusion'};
 	megaStats?: ServerPokemon['stats'];
+	greedGospelTargets?: string[];
 	ident: string;
 	details: string;
 	condition: string;

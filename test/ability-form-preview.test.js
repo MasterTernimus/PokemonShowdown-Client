@@ -32,6 +32,8 @@ describe('Ability-based Team Builder stat and sprite refresh', () => {
   room.$=selector=>{
    const element=dom[selector] ||= {value:'',attributes:{},styles:{},markup:''};
    const chain={val(v){if(v===undefined)return element.value;element.value=v;return chain;},removeClass(){return chain;},
+    remove(){delete dom[selector];return chain;},
+    after(html){element.after=html;return chain;},
     attr(k,v){element.attributes[k]=v;return chain;},css(k,v){element.styles[k]=v;return chain;},html(v){element.markup=v;return chain;}};
    return chain;
   };
