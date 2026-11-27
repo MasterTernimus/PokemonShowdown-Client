@@ -105017,7 +105017,7 @@ for (const [id, update] of Object.entries({
 		"abilities": {
 			"0": "Keen Hunt",
 			"1": "Sand Rush",
-			"H": "Ultra Instinct",
+			"H": "Daybreak Rush",
 		},
 		"baseStats": {
 			"hp": 75,
@@ -105032,7 +105032,7 @@ for (const [id, update] of Object.entries({
 			"Ground",
 		],
 		"passives": [
-			"infiltrator",
+			"ultrainstinct",
 		],
 		"replaceAbilities": true,
 	},
@@ -105061,7 +105061,7 @@ for (const [id, update] of Object.entries({
 	},
 	"lycanrocmidnight": {
 		"abilities": {
-			"0": "Ultra Ego",
+			"0": "Moonlit Reprisal",
 			"1": "Blood Challenge",
 			"H": "No Guard",
 		},
@@ -105078,7 +105078,7 @@ for (const [id, update] of Object.entries({
 			"Ghost",
 		],
 		"passives": [
-			"defiant",
+			"ultraego",
 		],
 		"replaceAbilities": true,
 	},
@@ -131020,6 +131020,8 @@ const CUSTOM_ABILITY_DISPLAY_COMPONENTS: {[id: string]: string[]} = {
 	"snowpassage": [],
 	"maskmender": [],
 	"bindingchain": [],
+	"daybreakrush": [],
+	"moonlitreprisal": [],
 };
 // END SERVER WORKING SYNC DISPLAY COMPONENTS
 // BEGIN SERVER WORKING SYNC PASSIVE COMPONENT EXCLUSIONS
@@ -134436,7 +134438,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Caldera Core",
 		"num": 10039,
 		"gen": 9,
-		"desc": "Drought summons sun on entry. Magma Armor prevents and cures freeze outside Cold Eclipse. Incoming Water and Ice attacks use half the attacker’s offensive stat. Dragon’s Den and Infernal Eclipse block Fire moves. On entry in Dragon’s Den, Volcanic or Infernal Eclipse, Defense and Sp. Def rise one stage. Surviving an opposing attack that damages its HP builds one Pressure and heals 1/16 max HP, once per move. At two charges, its next damaging Fire or Ground move has 1.35× power and heals 1/8 max HP if it damages a foe or its Substitute. Using the move spends both charges. Switching or losing the ability clears them.",
+		"desc": "Drought and Magma Armor. On entry, summons sun for 5 turns, or 8 with Heat Rock. Prevents freezing outside Cold Eclipse and cures freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den and Infernal Eclipse block Fire moves. On Dragon's Den, Volcanic or Infernal Eclipse entry, gains +1 Defense and Sp. Def. Surviving an opposing attack that damages its HP builds one Pressure and heals 1/16 max HP, once per move. At two charges, its next damaging Fire or Ground move has 1.35× power and heals 1/8 max HP if it damages a foe or its Substitute. Using the move spends both charges. Switching banks the charges. Losing the ability clears active charges.",
 		"shortDesc": "Drought + Magma Armor. Two enemy attacks charge a Fire/Ground counterattack.",
 		"rating": 4.5,
 		"flags": {
@@ -135461,6 +135463,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {
 			"breakable": 1,
 		},
+		"isNonstandard": null,
+	},
+	"daybreakrush": {
+		"name": "Daybreak Rush",
+		"num": 33860,
+		"gen": 9,
+		"desc": "Once per entry, hitting a foe or its Substitute with a damaging Rock move clears all entry hazards from the user’s side. A hit when there are no hazards saves the effect for later.",
+		"shortDesc": "A damaging Rock hit clears entry hazards from its side once per entry.",
+		"rating": 3.5,
+		"flags": {},
 		"isNonstandard": null,
 	},
 	"dazzling": {
@@ -137769,8 +137781,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Heavenly Chorus",
 		"num": 10115,
 		"gen": 9,
-		"desc": "Takes half contact damage and double Fire damage; contact Fire attacks deal normal damage. Switching out cures status and heals 1/8 max HP only if a status was cured. Bewitched Woods cures status at turn end without this heal.",
-		"shortDesc": "Fluffy + Natural Cure.",
+		"desc": "Takes half contact damage and double Fire damage; contact Fire attacks deal normal damage. Switching out cures status and heals 1/8 max HP only if a status was cured. Bewitched Woods cures status at turn end without this heal. Each sound attack that damages a foe or its Substitute banks one charge. At two, its next sound attack has 25% more power. If it connects, the user and its active allies each recover 1/8 max HP. Charges persist through switching. A charged attack spends both even if it misses or is blocked.",
+		"shortDesc": "Fluffy + Natural Cure. Banks stronger, healing sound attacks.",
 		"rating": 5,
 		"flags": {
 			"breakable": 1,
@@ -139697,6 +139709,16 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"flags": {},
 		"isNonstandard": null,
 	},
+	"moonlitreprisal": {
+		"name": "Moonlit Reprisal",
+		"num": 33861,
+		"gen": 9,
+		"desc": "Rock attacks have 30% more power against a foe that dealt direct damage to the user’s HP earlier that turn. Damaging that foe’s HP with a Rock attack also heals 1/8 of the user’s max HP once per turn.",
+		"shortDesc": "Rock attacks have 30% more power against a foe that damaged it this turn. A counterhit heals 1/8 HP.",
+		"rating": 3.5,
+		"flags": {},
+		"isNonstandard": null,
+	},
 	"moonlitwings": {
 		"name": "Moonlit Wings",
 		"num": 10209,
@@ -140788,7 +140810,7 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Plasma Eruption",
 		"num": 10149,
 		"gen": 9,
-		"desc": "Galvanize converts eligible Normal moves to Electric. These attacks can also change to Fire and keep the Galvanize power bonus either way. Fire/Electric attacks have a 50% chance to swap types, avoiding immunity on the first opponent when possible. The final type stays fixed: Electric adds 30% burn; Fire adds 30% paralysis. The holder is immune to both statuses. Outside its airborne phase, Fire and Electric attacks charge the core once per distinct target damaged, including Substitutes. An ally hit by a spread move counts if the same move also hits a foe. Each charging stage restores 1/16 max HP. The first gives +1 to the higher of Attack and Sp. Atk (Sp. Atk on ties). The second gives +1 Speed and readies the core. The next Fire or Electric attack has 1.30× power and restores 1/8 max HP if it damages a foe or its Substitute. A spread move reaching the third hit discharges immediately after damage. Its aftershock deals 30% of the primary foe’s actual HP loss to it and the other foes instead of boosting the initial hit. Discharge healing occurs once. Discharge resets Pressure and its remaining stat boosts. When the core was already ready before the attack, other foes take extra damage equal to 75% of the primary foe’s actual HP loss. All affected foes receive the opposite status if possible. After discharge, flies for two end-of-turn ticks: Ground immunity, +20% Electric power, and no Pressure gain. Iron Ball, Gravity, Smack Down and Ingrain prevent flight. Landing powers up the next Fire attack by 30%. Discharge and landing bonuses are spent even on a miss or block. Switching or losing the ability clears its phases. Strongest field bonus only: Fire +15% on Volcanic, Burning, Superheated or Dragon's Den; Electric +15% on Electric Terrain/Aura, Factory or Short Circuit; both +10% on Mountain, Cave, Crystal Cavern, Desert, Ashen Beach or effective sun; both +5% on Haunted, New World, Inverse, Big Top or Fairy Tale.",
+		"desc": "Galvanize converts eligible Normal moves to Electric. These attacks can also change to Fire and keep the Galvanize power bonus either way. Fire/Electric attacks have a 50% chance to swap types, avoiding immunity on the first opponent when possible. The final type stays fixed: Electric adds 30% burn; Fire adds 30% paralysis. The holder is immune to both statuses. Outside its airborne phase, Fire and Electric attacks charge the core once per distinct target damaged, including Substitutes. An ally hit by a spread move counts if the same move also hits a foe. Each charging stage restores 1/16 max HP. The first gives +1 to the higher of Attack and Sp. Atk (Sp. Atk on ties). The second gives +1 Speed and readies the core. The next Fire or Electric attack has 1.30× power and restores 1/8 max HP if it damages a foe or its Substitute. A spread move reaching the third hit discharges immediately after damage. Its aftershock deals 30% of the primary foe’s actual HP loss to it and the other foes instead of boosting the initial hit. Discharge healing occurs once. Discharge resets Pressure and its remaining stat boosts. When the core was already ready before the attack, other foes take extra damage equal to 75% of the primary foe’s actual HP loss. All affected foes receive the opposite status if possible. After discharge, flies for two end-of-turn ticks: Ground immunity, +20% Electric power, and no Pressure gain. Iron Ball, Gravity, Smack Down and Ingrain prevent flight. Landing powers up the next Fire attack by 30%. Discharge and landing bonuses are spent even on a miss or block. Switching banks Pressure, but clears stat stages, flight and the landing bonus. Returning restores only the charge count. Losing the ability clears active Pressure. Strongest field bonus only: Fire +15% on Volcanic, Burning, Superheated or Dragon's Den; Electric +15% on Electric Terrain/Aura, Factory or Short Circuit; both +10% on Mountain, Cave, Crystal Cavern, Desert, Ashen Beach or effective sun; both +5% on Haunted, New World, Inverse, Big Top or Fairy Tale.",
 		"shortDesc": "Galvanize. Fire/Electric hits heal and charge per target. The third hit discharges.",
 		"rating": 5,
 		"flags": {},
@@ -141675,8 +141697,8 @@ Object.assign(CUSTOM_ABILITY_UPDATES, {
 		"name": "Razor Current",
 		"num": 10153,
 		"gen": 9,
-		"desc": "On entry, summons rain for 5 turns, or 8 with Damp Rock. Gains +1 Speed at the end of each full turn it spends active.",
-		"shortDesc": "Summons rain; gains Speed each full active turn.",
+		"desc": "On entry, summons rain for 5 turns, or 8 with Damp Rock. Gains +1 Speed at the end of each full turn it spends active. Each Water or Dark attack that damages a foe or its Substitute banks one charge. At two, its next damaging bite has 30% more power. Charges persist through switching. A charged attack spends both even if it misses or is blocked.",
+		"shortDesc": "Summons rain; gains Speed each full active turn. Banks stronger bites.",
 		"rating": 4,
 		"flags": {},
 		"isNonstandard": null,
@@ -177268,6 +177290,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"friendguard",
 	],
 	"dawnpoise": [],
+	"daybreakrush": [],
 	"dazzling": [],
 	"deadwater": [],
 	"decoypincers": [],
@@ -178166,6 +178189,7 @@ Object.assign(CUSTOM_ABILITY_COMPONENT_OVERRIDES, {
 		"infiltrator",
 		"limber",
 	],
+	"moonlitreprisal": [],
 	"moonlitwings": [
 		"serenegrace",
 	],
@@ -180408,6 +180432,7 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 		"friendguard",
 	],
 	"dawnpoise": [],
+	"daybreakrush": [],
 	"dazzling": [],
 	"deadwater": [],
 	"decoypincers": [],
@@ -181306,6 +181331,7 @@ const SERVER_ABILITY_COMPONENTS: {[id: string]: readonly string[]} = {
 		"infiltrator",
 		"limber",
 	],
+	"moonlitreprisal": [],
 	"moonlitwings": [
 		"serenegrace",
 	],

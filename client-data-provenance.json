@@ -1,24 +1,24 @@
 {
-  "sourceHead": "3738190e00ef5cbd690997f907d857c04d36d361",
-  "sourceDataSHA256": "7b04c3fe8aa0c3b01dc909971a8667b21ee2216c13c987583a2080e14e491bc7",
-  "builtSourceFingerprint": "264c006dc970b4db8b3048fc48728105549b49458534876fb36bb2cc6c4d121c",
+  "sourceHead": "ed5235f7694735b0a8c17f7b7f6fbce71a1ead34",
+  "sourceDataSHA256": "6e69b152db130c3c930db4de57813f924524c2bb10eaaa2f427c416101e21cfc",
+  "builtSourceFingerprint": "b98ffda0ba520881f4aa226bcf4d9811ef5e09fcd053767075420c9eab9d39d6",
   "outputs": {
-    "data/abilities.js": "da5ef4988aa00a3a26c77fd0a22bc850c256974ce7af5062e9914dc7b838321b",
+    "data/abilities.js": "6230d1dc410855d56d76c1ad92dbe6f56530d894ccaca685ef65794e5e960f07",
     "data/aliases.js": "34c9489b20cfc83043d9b2bb8048a92ace5479fb3b6698f9c4523d3849949641",
     "data/formats-data.js": "2dd21428caff3363c9f8fee18e4589c591f30e64edaf9b482af833890bccfa2b",
     "data/formats.js": "29976fba3df24e105f0da0002fec246d6abde3444eab8a1bef6ef31a7280a289",
-    "data/graphics.js": "22e9c4252fb8233e2ecada3cc2530ab4d7f04c7fb265e81f2b18dc61946a6a20",
+    "data/graphics.js": "ae7d7c12977d6936e5af77204a68b890286b5fb68a238dcf990a4458cc403532",
     "data/items.js": "eee84ee43ee67e08c09ab30ce56c7d45192972e94d4a6940a4e7229d71d70e24",
     "data/learnsets-g6.js": "54c339c9b99d0785fdf30838929580a74cb1be07ddcee3aba1bb1b27e0754420",
     "data/learnsets.js": "b2a2c16e8b23aa1df6a7d6bb26f131919c3db6e11826c4ec9ccd41144935cab4",
     "data/moves.js": "0c611f561d0e80678094f9d686d306de73da3fc57db7f8025d565b9a82083795",
     "data/pokedex-mini-bw.js": "c12fe7a73df3280cfc313dd9e05832cb8d9db1ba47a34d279f87d89386bef921",
     "data/pokedex-mini.js": "67109c76fd5e401621fc85c209d78f36d3a4bc7f1866559d9569ffc2aee38226",
-    "data/pokedex.js": "994cfaf7a9608a13abea4a672c14463539458268d772c4c8132a8ca1b2cc286a",
-    "data/search-index.js": "20ba7b24735b4ed07a2c6d29eca85c2b8c9857ba2f715b949e7d378193ac9d84",
+    "data/pokedex.js": "5c041b273a49cd870d841ea968efd876d76f63a0947391f41b936ee42175a928",
+    "data/search-index.js": "8e022d7151f677fd01c3215259370b1073b0bec2d0fd6dee25af63d2f723c64f",
     "data/teambuilder-tables.js": "d6a538c4dc787b6adb8587e2eef475835531754126206cced8cb51795838acdf",
     "data/text-afd.js": "ad7aa4f4e2ab22178221a36969b9ae849e350c59edde865271deeb543ca3bf6e",
-    "data/text.js": "23c558a373a14480fa0480071901e6f1e3af2df14a8f61275137067c081c6810",
+    "data/text.js": "bd508e116361613b5a0a67757dcd428b132445f40090336578e8d62e301bbb1e",
     "data/typechart.js": "1f28413cf01f8f52c6ab35b694fafc52a537dfe31e68dcea6b9c97d41c7b9523"
   }
 }

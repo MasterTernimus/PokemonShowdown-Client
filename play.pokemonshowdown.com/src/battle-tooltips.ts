@@ -3110,6 +3110,12 @@ class BattleTooltips {
 		if (pokemon.volatiles.worldaxis && move.category !== 'Status' && value.tryAbility('World Axis')) {
 			value.modify(1.5, 'World Axis charge');
 		}
+		if (pokemon.volatiles.undertowready && move.category !== 'Status' && move.flags.bite && value.tryAbility('Razor Current')) {
+			value.modify(1.3, 'Undertow Ready');
+		}
+		if (pokemon.volatiles.chorusready && move.category !== 'Status' && move.flags.sound && value.tryAbility('Heavenly Chorus')) {
+			value.modify(1.25, 'Chorus Ready');
+		}
 		if (pokemon.volatiles.calderaready && move.category !== 'Status' && ['Fire', 'Ground'].includes(moveType) &&
 			value.tryAbility('Caldera Core')) {
 			value.modify(1.35, 'Caldera Core: ready');
