@@ -2,8 +2,10 @@
 const assert=require('assert').strict;
 require('./battle.test');
 describe('Approved Ultra Instinct and Inferno Ascendant presentation',()=>{
- for(const id of ['hitmonlee','infernape','sawk','lycanroc'])it(id+' retains selected Ultra Instinct and its existing species passive',()=>{
-  const s=Dex.species.get(id);assert(Object.values(s.abilities).includes('Ultra Instinct'));assert(s.passives.length);
+ for(const id of ['hitmonlee','infernape','sawk','lycanroc'])it(id+' shows Ultra Instinct in its assigned slot',()=>{
+  const s=Dex.species.get(id);if (id === 'lycanroc') assert.deepEqual(s.passives, ['ultrainstinct']);
+  else assert(Object.values(s.abilities).includes('Ultra Instinct'));
+  assert(s.passives.length);
   const text=Dex.getAbilityDisplayDetails(Dex.abilities.get('ultrainstinct'),s.passives,id).desc;
   for(const phrase of ['30%','35%','40%','1/16','1/8','queued to move'])assert(text.includes(phrase),phrase);
  });
