@@ -3110,8 +3110,12 @@ class BattleTooltips {
 		if (pokemon.volatiles.worldaxis && move.category !== 'Status' && value.tryAbility('World Axis')) {
 			value.modify(1.5, 'World Axis charge');
 		}
+		if (pokemon.volatiles.calderaready && move.category !== 'Status' && ['Fire', 'Ground'].includes(moveType) &&
+			value.tryAbility('Caldera Core')) {
+			value.modify(1.35, 'Caldera Core: ready');
+		}
 		if (move.category !== 'Status' && ['Fire', 'Electric'].includes(moveType) && value.tryAbility('Plasma Eruption')) {
-			if (pokemon.volatiles.plasmacoreready) value.modify(1.75, 'Plasma Eruption: core ready');
+			if (pokemon.volatiles.plasmacoreready) value.modify(1.3, 'Plasma Eruption: core ready');
 			else if (pokemon.volatiles.plasmapressure3) value.modify(1.6, 'Plasma Eruption: core ready');
 			if (pokemon.volatiles.plasmaairborne && moveType === 'Electric') value.modify(1.2, 'Plasma Airborne');
 			if (pokemon.volatiles.plasmalanding && moveType === 'Fire') value.modify(1.3, 'Plasma Landing');

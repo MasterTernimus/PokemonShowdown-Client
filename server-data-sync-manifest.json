@@ -1,8 +1,8 @@
 {
-	"sourceHead": "c5b3824158c1b518121f416fa12c897ffb2b594f",
+	"sourceHead": "3738190e00ef5cbd690997f907d857c04d36d361",
 	"base": "b39e0566021b8c841fdcbc753a9107eafd5d65d4",
-	"builtSourceFingerprint": "a75ed240ebbf164174a04c133769037f397d88f29c42488baae597b90e660805",
-	"sourceDataSHA256": "b8b0795c85d2d3e78c693f72f19634490ae5d13050b637db6ebc607617703a9d",
+	"builtSourceFingerprint": "264c006dc970b4db8b3048fc48728105549b49458534876fb36bb2cc6c4d121c",
+	"sourceDataSHA256": "7b04c3fe8aa0c3b01dc909971a8667b21ee2216c13c987583a2080e14e491bc7",
 	"files": [
 		"data/abilities.ts",
 		"data/ability-components.ts",
@@ -17,6 +17,7 @@
 		"data/audit-reworks-approved.ts",
 		"data/base-guardian-reworks.ts",
 		"data/bone-spoils-infernal-approved.ts",
+		"data/caldera-pressure.ts",
 		"data/combat-sequences.ts",
 		"data/concise-ability-descriptions.ts",
 		"data/conditions.ts",
@@ -40303,8 +40304,8 @@
 				"name": "Caldera Core",
 				"num": 10039,
 				"gen": 9,
-				"desc": "Drought and Magma Armor. On entry, summons sun for 5 turns, or 8 with Heat Rock. Prevents freezing outside Cold Eclipse and cures freeze. Incoming Water and Ice attacks use half the attacker's offensive stat. Dragon's Den and Infernal Eclipse block Fire moves. On Dragon's Den, Volcanic or Infernal Eclipse entry, gains +1 Defense and Sp. Def.",
-				"shortDesc": "Drought + Magma Armor.",
+				"desc": "Drought summons sun on entry. Magma Armor prevents and cures freeze outside Cold Eclipse. Incoming Water and Ice attacks use half the attacker’s offensive stat. Dragon’s Den and Infernal Eclipse block Fire moves. On entry in Dragon’s Den, Volcanic or Infernal Eclipse, Defense and Sp. Def rise one stage. Surviving an opposing attack that damages its HP builds one Pressure and heals 1/16 max HP, once per move. At two charges, its next damaging Fire or Ground move has 1.35× power and heals 1/8 max HP if it damages a foe or its Substitute. Using the move spends both charges. Switching or losing the ability clears them.",
+				"shortDesc": "Drought + Magma Armor. Two enemy attacks charge a Fire/Ground counterattack.",
 				"rating": 4.5,
 				"flags": {
 					"breakable": 1
@@ -46655,7 +46656,7 @@
 				"name": "Plasma Eruption",
 				"num": 10149,
 				"gen": 9,
-				"desc": "Galvanize converts eligible Normal moves to Electric. These attacks can also change to Fire and keep the Galvanize power bonus either way. Fire/Electric attacks have a 50% chance to swap types, avoiding immunity on the first opponent when possible. The final type stays fixed: Electric adds 30% burn; Fire adds 30% paralysis. The holder is immune to both statuses. Outside its airborne phase, Fire and Electric attacks charge the core once per distinct target damaged, including Substitutes. An ally hit by a spread move counts if the same move also hits a foe. Each charging stage restores 1/16 max HP. The first gives +1 to the higher of Attack and Sp. Atk (Sp. Atk on ties). The second gives +1 Speed and readies the core. The next Fire or Electric attack has 1.75× power and restores 1/8 max HP if it damages a foe or its Substitute. A spread move reaching the third hit discharges immediately after damage: the primary foe also takes a 75% aftershock in place of the upfront power boost. Discharge healing occurs once. Discharge resets Pressure and its remaining stat boosts. If the primary foe takes damage, other foes take extra damage equal to 75% of the damage actually dealt to it; all affected foes receive the opposite status if possible. After discharge, flies for two end-of-turn ticks: Ground immunity, +20% Electric power, and no Pressure gain. Iron Ball, Gravity, Smack Down and Ingrain prevent flight. Landing powers up the next Fire attack by 30%. Discharge and landing bonuses are spent even on a miss or block. Switching or losing the ability clears its phases. Strongest field bonus only: Fire +15% on Volcanic, Burning, Superheated or Dragon's Den; Electric +15% on Electric Terrain/Aura, Factory or Short Circuit; both +10% on Mountain, Cave, Crystal Cavern, Desert, Ashen Beach or effective sun; both +5% on Haunted, New World, Inverse, Big Top or Fairy Tale.",
+				"desc": "Galvanize converts eligible Normal moves to Electric. These attacks can also change to Fire and keep the Galvanize power bonus either way. Fire/Electric attacks have a 50% chance to swap types, avoiding immunity on the first opponent when possible. The final type stays fixed: Electric adds 30% burn; Fire adds 30% paralysis. The holder is immune to both statuses. Outside its airborne phase, Fire and Electric attacks charge the core once per distinct target damaged, including Substitutes. An ally hit by a spread move counts if the same move also hits a foe. Each charging stage restores 1/16 max HP. The first gives +1 to the higher of Attack and Sp. Atk (Sp. Atk on ties). The second gives +1 Speed and readies the core. The next Fire or Electric attack has 1.30× power and restores 1/8 max HP if it damages a foe or its Substitute. A spread move reaching the third hit discharges immediately after damage. Its aftershock deals 30% of the primary foe’s actual HP loss to it and the other foes instead of boosting the initial hit. Discharge healing occurs once. Discharge resets Pressure and its remaining stat boosts. When the core was already ready before the attack, other foes take extra damage equal to 75% of the primary foe’s actual HP loss. All affected foes receive the opposite status if possible. After discharge, flies for two end-of-turn ticks: Ground immunity, +20% Electric power, and no Pressure gain. Iron Ball, Gravity, Smack Down and Ingrain prevent flight. Landing powers up the next Fire attack by 30%. Discharge and landing bonuses are spent even on a miss or block. Switching or losing the ability clears its phases. Strongest field bonus only: Fire +15% on Volcanic, Burning, Superheated or Dragon's Den; Electric +15% on Electric Terrain/Aura, Factory or Short Circuit; both +10% on Mountain, Cave, Crystal Cavern, Desert, Ashen Beach or effective sun; both +5% on Haunted, New World, Inverse, Big Top or Fairy Tale.",
 				"shortDesc": "Galvanize. Fire/Electric hits heal and charge per target. The third hit discharges.",
 				"rating": 5,
 				"flags": {},
@@ -58957,7 +58958,7 @@
 				"num": 32809,
 				"type": "Ground",
 				"category": "Special",
-				"basePower": 90,
+				"basePower": 105,
 				"accuracy": 100,
 				"critRatio": 1,
 				"pp": 10,

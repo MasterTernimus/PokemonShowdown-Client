@@ -112,16 +112,28 @@ describe('Plasma Eruption client parity', () => {
 		assert.deepEqual(Array.from(s.types), ['Fire', 'Electric']);
 		assert.equal(s.abilities[0], 'Plasma Eruption'); assert.deepEqual(Array.from(s.passives), ['proficient']);
 		assert.equal(s.baseStats.atk, 127); assert.equal(s.baseStats.spa, 137);
-		assert(Dex.abilities.get('plasmaeruption').desc.includes('1.75× power and restores 1/8 max HP'));
+		assert(Dex.abilities.get('plasmaeruption').desc.includes('1.30× power and restores 1/8 max HP'));
 		assert(Dex.abilities.get('plasmaeruption').desc.includes('second gives +1 Speed and readies the core'));
-		assert(Dex.abilities.get('plasmaeruption').desc.includes('75% of the damage actually dealt'));
+		assert(Dex.abilities.get('plasmaeruption').desc.includes('75% of the primary foe’s actual HP loss'));
 	});
 	it('shows no baseline bonus and displays the current and legacy discharge bonuses', () => {
 		assert.equal(power('flamethrower'), 90); assert.equal(power('firepunch'), 85);
 		start('Plasma Charge'); assert.equal(power('flamethrower'), 90); end('Plasma Charge');
-		start('Plasma Core Ready'); assert.equal(power('flamethrower'), 157.5); end('Plasma Core Ready');
+		start('Plasma Core Ready'); assert.equal(power('flamethrower'), 117); end('Plasma Core Ready');
 		start('Plasma Pressure 3'); assert.equal(power('flamethrower'), 144); end('Plasma Pressure 3');
 		assert.equal(power('flamethrower'), 90);
+	});
+	it('shows Caldera Ready on Fire and Ground attacks, then removes the bonus', () => {
+		p.ability = p.baseAbility = own.ability = own.baseAbility = 'Caldera Core';
+		start('Caldera Charge');
+		assert.equal(power('earthpower'), 90);
+		end('Caldera Charge'); start('Caldera Ready');
+		assert.equal(power('earthpower'), 90 * 1.35);
+		assert.equal(power('flamethrower'), 90 * 1.35);
+		assert.equal(power('thunderbolt'), 90);
+		end('Caldera Ready');
+		assert.equal(power('earthpower'), 90);
+		assert.equal(Dex.moves.get('duneecho').basePower, 105);
 	});
 	it('shows airborne immunity and the Electric bonus, then the landing Fire bonus', () => {
 		start('Plasma Airborne'); assert.equal(p.isGrounded(own), false);
