@@ -1038,7 +1038,8 @@ class BattleTooltips {
 		}
 		if (category !== 'Status' && ['Fire', 'Electric'].includes(moveType) && value.tryAbility('Plasma Eruption')) {
 			text += '<p>Plasma Eruption: may switch Fire/Electric typing. Power shown is for the displayed type; conversion can change field and phase bonuses.</p>';
-			text += '<p>Electric burns; Fire paralyzes. Pressure rises once per successful attack.</p>';
+			text += '<p>Electric can burn; Fire can paralyze. Each charge heals 1/16 HP.</p>';
+			text += '<p>Each target hit counts once. A spread move can trigger the third-hit discharge and heal 1/8 HP.</p>';
 		}
 		if (category !== 'Status' && this.battle.hasPseudoWeather('Wonder Room')) {
 			text += '<p>Wonder Room prevents critical hits.</p>';
@@ -3110,7 +3111,8 @@ class BattleTooltips {
 			value.modify(1.5, 'World Axis charge');
 		}
 		if (move.category !== 'Status' && ['Fire', 'Electric'].includes(moveType) && value.tryAbility('Plasma Eruption')) {
-			if (pokemon.volatiles.plasmapressure3) value.modify(1.6, 'Plasma Eruption: core ready');
+			if (pokemon.volatiles.plasmacoreready) value.modify(1.75, 'Plasma Eruption: core ready');
+			else if (pokemon.volatiles.plasmapressure3) value.modify(1.6, 'Plasma Eruption: core ready');
 			if (pokemon.volatiles.plasmaairborne && moveType === 'Electric') value.modify(1.2, 'Plasma Airborne');
 			if (pokemon.volatiles.plasmalanding && moveType === 'Fire') value.modify(1.3, 'Plasma Landing');
 			const fieldIs = (ids: string[]) => ids.some(id => this.battle.hasPseudoWeather(id));

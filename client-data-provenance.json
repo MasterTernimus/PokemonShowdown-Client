@@ -1,24 +1,24 @@
 {
-  "sourceHead": "ea1fa418f9c7a1ee2d5c4f40ad54daa5305a5943",
-  "sourceDataSHA256": "6398391d0ac4cbc20e4bd2816f70acc543aab59189996f3c828814a2c5a08f60",
-  "builtSourceFingerprint": "c508f358981c0c4944d7d4269ffbfd6a29a512db3884346bd09aa6e8c865acf8",
+  "sourceHead": "c5b3824158c1b518121f416fa12c897ffb2b594f",
+  "sourceDataSHA256": "b8b0795c85d2d3e78c693f72f19634490ae5d13050b637db6ebc607617703a9d",
+  "builtSourceFingerprint": "a75ed240ebbf164174a04c133769037f397d88f29c42488baae597b90e660805",
   "outputs": {
-    "data/abilities.js": "f4f888fc4bdbbbf0f0d51fc2c94541683aba8e46ab505a42fb41d520460c2c5a",
+    "data/abilities.js": "502661bce7622a213a2822ba06772c85f23ec03246111931ea222824e6265867",
     "data/aliases.js": "34c9489b20cfc83043d9b2bb8048a92ace5479fb3b6698f9c4523d3849949641",
     "data/formats-data.js": "2dd21428caff3363c9f8fee18e4589c591f30e64edaf9b482af833890bccfa2b",
     "data/formats.js": "29976fba3df24e105f0da0002fec246d6abde3444eab8a1bef6ef31a7280a289",
-    "data/graphics.js": "172d74415eba3fd29c3c157239f372b0f3674560b335ca8feb24321db7858191",
+    "data/graphics.js": "e9e38fffe0fb975620f843097ae7fe33132086ee11d2e9bedae8ad580d41b350",
     "data/items.js": "eee84ee43ee67e08c09ab30ce56c7d45192972e94d4a6940a4e7229d71d70e24",
     "data/learnsets-g6.js": "54c339c9b99d0785fdf30838929580a74cb1be07ddcee3aba1bb1b27e0754420",
     "data/learnsets.js": "b2a2c16e8b23aa1df6a7d6bb26f131919c3db6e11826c4ec9ccd41144935cab4",
-    "data/moves.js": "192bdb1b8880a75b99c293691277b2d276bfbec0b46091ec3b613c03cc02a72c",
+    "data/moves.js": "fe461ded4fe1ba2bbb691263ea8b2f3f8c880a646dfba8b67685c1792a162d64",
     "data/pokedex-mini-bw.js": "c12fe7a73df3280cfc313dd9e05832cb8d9db1ba47a34d279f87d89386bef921",
     "data/pokedex-mini.js": "67109c76fd5e401621fc85c209d78f36d3a4bc7f1866559d9569ffc2aee38226",
     "data/pokedex.js": "994cfaf7a9608a13abea4a672c14463539458268d772c4c8132a8ca1b2cc286a",
     "data/search-index.js": "20ba7b24735b4ed07a2c6d29eca85c2b8c9857ba2f715b949e7d378193ac9d84",
     "data/teambuilder-tables.js": "d6a538c4dc787b6adb8587e2eef475835531754126206cced8cb51795838acdf",
     "data/text-afd.js": "ad7aa4f4e2ab22178221a36969b9ae849e350c59edde865271deeb543ca3bf6e",
-    "data/text.js": "d8c2953331c15c354ad044de517acb41345dd6fd7dfca920e74f51fc252afa1a",
+    "data/text.js": "05b18b5b244d183ca464dd2b428f7c71ac4f7a1b00f4e5b81141c382112a73e8",
     "data/typechart.js": "1f28413cf01f8f52c6ab35b694fafc52a537dfe31e68dcea6b9c97d41c7b9523"
   }
 }

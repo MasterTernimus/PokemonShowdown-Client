@@ -112,13 +112,14 @@ describe('Plasma Eruption client parity', () => {
 		assert.deepEqual(Array.from(s.types), ['Fire', 'Electric']);
 		assert.equal(s.abilities[0], 'Plasma Eruption'); assert.deepEqual(Array.from(s.passives), ['proficient']);
 		assert.equal(s.baseStats.atk, 127); assert.equal(s.baseStats.spa, 137);
-		assert(Dex.abilities.get('plasmaeruption').desc.includes('core discharge: +60% power'));
-		assert(Dex.abilities.get('plasmaeruption').desc.includes('first +1 to the higher of Attack and Sp. Atk (Sp. Atk on ties), second +1 Speed'));
+		assert(Dex.abilities.get('plasmaeruption').desc.includes('1.75× power and restores 1/8 max HP'));
+		assert(Dex.abilities.get('plasmaeruption').desc.includes('second gives +1 Speed and readies the core'));
 		assert(Dex.abilities.get('plasmaeruption').desc.includes('75% of the damage actually dealt'));
 	});
-	it('shows no baseline bonus and displays the ready-core 60% bonus', () => {
+	it('shows no baseline bonus and displays the current and legacy discharge bonuses', () => {
 		assert.equal(power('flamethrower'), 90); assert.equal(power('firepunch'), 85);
-		start('Plasma Pressure 1'); assert.equal(power('flamethrower'), 90); end('Plasma Pressure 1');
+		start('Plasma Charge'); assert.equal(power('flamethrower'), 90); end('Plasma Charge');
+		start('Plasma Core Ready'); assert.equal(power('flamethrower'), 157.5); end('Plasma Core Ready');
 		start('Plasma Pressure 3'); assert.equal(power('flamethrower'), 144); end('Plasma Pressure 3');
 		assert.equal(power('flamethrower'), 90);
 	});
@@ -134,11 +135,11 @@ describe('Plasma Eruption client parity', () => {
 	it('explains that conversion changes the type used by the displayed power', () => {
 		const text = tips.showMoveTooltip(Dex.moves.get('flamethrower'), '', p, own);
 		assert(text.includes('may switch Fire/Electric')); assert(text.includes('displayed type'));
-		assert(text.includes('Pressure rises once'));
+		assert(text.includes('Each charge heals 1/16 HP'));
 	});
 	it('renders pressure, flight and landing messages without placeholders', () => {
 		const parser = new BattleTextParser('p1');
-		for (const name of ['Plasma Pressure 1', 'Plasma Pressure 2', 'Plasma Pressure 3', 'Plasma Airborne', 'Plasma Landing']) {
+		for (const name of ['Plasma Charge', 'Plasma Core Ready', 'Plasma Pressure 1', 'Plasma Pressure 2', 'Plasma Pressure 3', 'Plasma Airborne', 'Plasma Landing']) {
 			const message = parser.extractMessage('|-start|p1a: Mew|' + name);
 			assert(message.trim().length > 10, name); assert(!message.includes('[POKEMON]'));
 		}

@@ -6921,7 +6921,7 @@ const BattleFieldMoveRules = {
 			}
 			return result;
 		},
-		base: {critRatio: 1},
+		base: {secondaries: [{chance: 30, status: 'brn'}], critRatio: 1},
 		uncertain: false,
 	},
 	m3g4qu4k3: {
