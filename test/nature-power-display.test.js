@@ -49,7 +49,7 @@ describe('Nature Power live client display', () => {
 		const end = source.indexOf('\n\t\t\t\t}', start);
 		const render = new Function('BattleTooltips', 'ModifiableValue', 'Dex', 'BattleLog', 'curActive',
 			'typeValueTracker', 'i', 'pos', 'previewForm',
-			'var movebuttons="",hasMoves=false,previewTooltip="";'+source.slice(start,end)+';return movebuttons;');
+			source.slice(source.indexOf('var inspectButton = function'), source.indexOf('var activePos', source.indexOf('var inspectButton = function'))) + 'var movebuttons="",hasMoves=false,previewTooltip="";'+source.slice(start,end)+';return movebuttons;');
 		for (const field of BattleFieldRules) {
 			battle.pseudoWeather = [[field.name, 0, 0]];
 			const called = BattleTooltips.getNaturePowerMove(battle);

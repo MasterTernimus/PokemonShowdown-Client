@@ -2089,14 +2089,13 @@ class TeamWizard extends preact.Component<{
 						</button>
 						{!!megaOptions.length && <details class="mega-move-details" key={set.species}>
 							<summary><span class="mega-show">Show {moveGroup}</span><span class="mega-hide">Hide {moveGroup}</span></summary>
-							<div class="mega-move-effect">{Dex.getMegaMoveDetailGroups(megaOptions).map(group => <div>
-								<strong>{group.base}</strong>
+							<div class="mega-move-effect">{Dex.getMegaMoveDetailGroups(megaOptions).map(group => <div class="mega-route-group">
+								<strong>{group.base}</strong><div class="mega-route-options">
 								{group.routes.map(route => <div class="mega-detail-route">
 									<strong>{route.label}</strong><span>{route.stats}
 										{route.adaptive && <> · <abbr title={route.adaptive}>Adaptive</abbr></>}
-									</span>
-								</div>)}
-								<div>{group.effect}</div>
+									</span><p>{route.effect}</p>
+								</div>)}</div>
 							</div>)}</div>
 						</details>}
 					</div></td>

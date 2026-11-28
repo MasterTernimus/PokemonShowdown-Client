@@ -555,7 +555,10 @@
 }
 .dark .mega-move-effect:not(:empty) { background: #282433; color: #f1e6fc; }
 .mega-move-effect > div + div { margin-top: 5px; }
-.mega-detail-route { display: flex; flex-wrap: wrap; gap: 0 10px; margin: 3px 0; }
+.mega-route-options { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,205px),1fr)); gap:8px; margin:4px 0; }
+.mega-detail-route { display:grid; align-content:start; gap:3px; padding:6px 8px; border:1px solid currentColor; border-radius:4px; }
+.mega-detail-route > span { font-size:12px; }
+.mega-detail-route p { margin:0; line-height:1.35; }
 .mega-detail-route abbr { cursor: help; }
 .setchart:has(.mega-move-hint:not(:empty)) .setcell-ability > .starter-passives { max-width: 100%; }
 .setchart:has(.mega-move-hint:not(:empty)) .setcell-ability .passive-chip {

@@ -27,6 +27,11 @@ describe('Public battle effects rail', () => {
   assert(!html.includes('<details'));
   assert.equal(JSON.stringify([battle.pseudoWeather, battle.p1.sideConditions, battle.p2.sideConditions]), before);
  });
+ it('shows the announced return field alongside its public timer', () => {
+  const r = room(['|-fieldstart|Fairy Tale Terrain|[turns] 2', "|fieldreturn|fairytaleterrain|Dragon's Den Terrain"]);
+  assert.match(r.publicBattleEffectsHTML(), /Returns to Dragon.s Den/);
+  assert.match(r.publicBattleEffectsHTML(), />2 turns</);
+ });
  it('keeps normal Tailwind at four, follows turn counters and removes ended effects', () => {
   const r = room(['|-sidestart|p1: One|move: Tailwind']);
   assert(r.publicBattleEffectsHTML().includes('>4 turns<'));

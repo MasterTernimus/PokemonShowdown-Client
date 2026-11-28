@@ -170,12 +170,19 @@ class BattleDiv extends preact.Component {
 }
 
 function MoveButton(props: {
-	children: string, cmd: string, moveData: {pp: number, maxpp: number}, type: TypeName, tooltip: string,
+	children: string, battle: Battle, cmd: string, moveData: {pp: number, maxpp: number}, type: TypeName, tooltip: string,
 }) {
-	return <button name="cmd" value={props.cmd} class={`type-${props.type} has-tooltip`} data-tooltip={props.tooltip}>
+	return <span class="battle-move-slot"><button name="cmd" value={props.cmd} class={`type-${props.type} has-tooltip`} data-tooltip={props.tooltip}>
 		{props.children}<br />
 		<small class="type">{props.type}</small> <small class="pp">{props.moveData.pp}/{props.moveData.maxpp}</small>&nbsp;
-	</button>;
+	</button><button type="button" class="move-inspect" data-tooltip={props.tooltip}
+		aria-label={'Inspect ' + props.children} onClick={event => {
+			event.preventDefault();
+			event.stopPropagation();
+			const tooltips = new BattleTooltips(props.battle);
+			BattleTooltips.hideTooltip();
+			if (tooltips.showTooltip(event.currentTarget as HTMLButtonElement)) tooltips.lockTooltip();
+		}}>ⓘ</button></span>;
 }
 function PokemonButton(props: {
 	pokemon: Pokemon | ServerPokemon | null, cmd: string, noHPBar?: boolean, disabled?: boolean | 'fade', tooltip: string,
@@ -203,6 +210,8 @@ function PokemonButton(props: {
 	>
 		<span class="picon" style={Dex.getPokemonIcon(pokemon)}></span>
 		{pokemon.name}
+		{'bankedPressure' in pokemon && pokemon.bankedPressure && !pokemon.active && !pokemon.fainted &&
+			<small class="bench-pressure">{pokemon.bankedPressure === 2 ? 'Pressure ready' : 'Pressure 1/2'}</small>}
 		{
 			!props.noHPBar && !pokemon.fainted &&
 			<span class={hpColorClass}>
@@ -229,6 +238,8 @@ class BattlePanel extends PSRoomPanel<BattleRoom> {
 					<span class="live-field-extra" key={room.name}>{room.name} ({room.turns})</span>)}
 			</summary>
 			<div class="live-field-details">
+				{battle.fieldReturn && battle.hasPseudoWeather(battle.fieldReturn.field) &&
+					<p>Returns to {battle.fieldReturn.destination.replace(/ Terrain$/i, '')}</p>}
 				{status.field?.notes.length ? status.field.notes.map((note: string) => <p>{note}</p>) :
 					<p>No additional field effects.</p>}
 			</div>
@@ -382,7 +393,7 @@ class BattlePanel extends PSRoomPanel<BattleRoom> {
 				const maxMoveData = active.maxMoves![i];
 				const gmaxTooltip = maxMoveData.id.startsWith('gmax') ? `|${maxMoveData.id}` : ``;
 				const tooltip = `maxmove|${moveData.name}|${pokemonIndex}${gmaxTooltip}`;
-				return <MoveButton cmd={`/move ${i + 1} max`} type={move.type} tooltip={tooltip} moveData={moveData}>
+				return <MoveButton battle={this.props.room.battle} cmd={`/move ${i + 1} max`} type={move.type} tooltip={tooltip} moveData={moveData}>
 					{maxMoveData.name}
 				</MoveButton>;
 			});
@@ -399,7 +410,7 @@ class BattlePanel extends PSRoomPanel<BattleRoom> {
 					return <button disabled>&nbsp;</button>;
 				}
 				const tooltip = `zmove|${moveData.name}|${pokemonIndex}|${zMoveData.name}`;
-				return <MoveButton cmd={`/move ${i + 1} zmove`} type={move.type} tooltip={tooltip} moveData={{pp: 1, maxpp: 1}}>
+				return <MoveButton battle={this.props.room.battle} cmd={`/move ${i + 1} zmove`} type={move.type} tooltip={tooltip} moveData={{pp: 1, maxpp: 1}}>
 					{zMoveData.name}
 				</MoveButton>;
 			});
@@ -429,7 +440,7 @@ class BattlePanel extends PSRoomPanel<BattleRoom> {
 			}
 			const projection = form ? '||' + toID(form) + (stats ? '|' + stats.atk + '|' + stats.spa : '') : '';
 			const tooltip = `move|${move.name}|${pokemonIndex}${projection}`;
-			return <MoveButton cmd={`/move ${i + 1}`} type={moveType} tooltip={tooltip} moveData={moveData}>
+			return <MoveButton battle={battle} cmd={`/move ${i + 1}`} type={moveType} tooltip={tooltip} moveData={moveData}>
 				{calledMove ? `Nature Power → ${calledMove.name}` : move.name}
 			</MoveButton>;
 		});
@@ -690,7 +701,7 @@ class BattlePanel extends PSRoomPanel<BattleRoom> {
 				<div class="movecontrols">
 					<h3 class="moveselect">Attack</h3>
 					<div class="movemenu">
-						{this.renderMoveControls(request, choices)}
+						<div class="battle-move-grid">{this.renderMoveControls(request, choices)}</div>
 						<div style="clear:left"></div>
 						{canDynamax && <label class={`megaevo${choices.current.max ? ' cur' : ''}`}>
 							<input type="checkbox" name="max" checked={choices.current.max} onChange={this.toggleBoostedMove} /> {}

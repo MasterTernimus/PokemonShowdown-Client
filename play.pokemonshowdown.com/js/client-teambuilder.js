@@ -1441,10 +1441,10 @@
 				var routes = group.routes.map(function (route) {
 					var adaptive = route.adaptive ? ' · <abbr title="' + BattleLog.escapeHTML(route.adaptive) + '">Adaptive</abbr>' : '';
 					return '<div class="mega-detail-route"><strong>' + BattleLog.escapeHTML(route.label) +
-						'</strong><span>' + BattleLog.escapeHTML(route.stats) + adaptive + '</span></div>';
+						'</strong><span>' + BattleLog.escapeHTML(route.stats) + adaptive + '</span>' +
+						'<p>' + BattleLog.escapeHTML(route.effect) + '</p></div>';
 				}).join('');
-				return '<div><strong>' + BattleLog.escapeHTML(group.base) + '</strong>' + routes +
-					'<div>' + BattleLog.escapeHTML(group.effect) + '</div></div>';
+				return '<div class="mega-route-group"><strong>' + BattleLog.escapeHTML(group.base) + '</strong><div class="mega-route-options">' + routes + '</div></div>';
 			}).join('');
 		},
 

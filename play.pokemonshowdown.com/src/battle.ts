@@ -1057,6 +1057,7 @@ export interface ServerPokemon extends PokemonDetails, PokemonHealth {
 	disguise?: {name: string, species: string, mode: 'illusion' | 'perfectillusion'};
 	megaStats?: ServerPokemon['stats'];
 	greedGospelTargets?: string[];
+	bankedPressure?: 1 | 2;
 	ident: string;
 	details: string;
 	condition: string;
@@ -1351,6 +1352,7 @@ export class Battle {
 		this.weatherTimeLeft = 0;
 		this.weatherMinTimeLeft = 0;
 		this.pseudoWeather = [];
+		this.fieldReturn = null;
 		this.lastMove = '';
 
 		for (const side of this.sides) {
@@ -3607,8 +3609,13 @@ export class Battle {
 		this.preemptStepQueue.push(command);
 		this.add(command);
 	}
+	fieldReturn: { field: ID, destination: string } | null = null;
 	runMajor(args: Args, kwArgs: KWArgs, preempt?: boolean) {
 		switch (args[0]) {
+		case 'fieldreturn':
+			this.fieldReturn = args[2] ? {field: toID(args[1]), destination: args[2]} : null;
+			this.subscription?.('callback');
+			break;
 		case 'gimmickcount': {
 			const used = Number(args[2]);
 			const limit = Number(args[3]);

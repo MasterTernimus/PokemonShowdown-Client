@@ -791,6 +791,9 @@
 				var hasMoves = false;
 				var moveMenu = '';
 				var movebuttons = '';
+				var inspectButton = function (name, args) {
+					return '<button class="move-inspect" type="button" name="inspectMove" aria-label="Inspect ' + BattleLog.escapeHTML(name) + '" value="' + BattleLog.escapeHTML(args) + '">ⓘ</button></span>';
+				};
 				var activePos = this.battle.mySide.n > 1 ? pos + this.battle.pokemonControlled : pos;
 				var previewPokemon = this.battle.nearSide.active[activePos];
 				var previewOwn = this.battle.myPokemon[pos];
@@ -823,13 +826,14 @@
 					}
 					var crystalType = this.battle.hasPseudoWeather('Crystal Cavern Terrain') && this.battle.crystalCavernType && move.category !== 'Status' && (moveType === 'Rock' || ['judgement', 'multiattack', 'rockclimb', 'strength', 'prismaticlaser'].includes(move.id)) ? this.battle.crystalCavernType : '';
 					var tooltipArgs = 'move|' + move.name + '|' + pos + previewTooltip;
+					movebuttons += '<span class="battle-move-slot">';
 					if (moveData.disabled) {
 						movebuttons += '<button disabled class="has-tooltip" data-tooltip="' + BattleLog.escapeHTML(tooltipArgs) + '">';
 					} else {
 						movebuttons += '<button class="type-' + moveType + ' has-tooltip" name="chooseMove" value="' + (i + 1) + '" data-move="' + BattleLog.escapeHTML(moveData.move) + '" data-target="' + BattleLog.escapeHTML(moveData.target) + '" data-tooltip="' + BattleLog.escapeHTML(tooltipArgs) + '">';
 						hasMoves = true;
 					}
-					movebuttons += '<span class="move-name">' + name + '</span><span class="move-footer"><small class="type">' + (moveType ? Dex.types.get(moveType).name : "Unknown") + '</small>' + moveOrigin + '<small class="pp">' + pp + '</small></span></button> ';
+					movebuttons += '<span class="move-name">' + name + '</span><span class="move-footer"><small class="type">' + (moveType ? Dex.types.get(moveType).name : "Unknown") + '</small>' + moveOrigin + '<small class="pp">' + pp + '</small></span></button>' + inspectButton(move.name, tooltipArgs);
 				}
 				if (!hasMoves) {
 					moveMenu += '<button class="movebutton" name="chooseMove" value="0" data-move="Struggle" data-target="randomNormal">Struggle<br /><small class="type">Normal</small> <small class="pp">&ndash;</small>&nbsp;</button> ';
@@ -853,6 +857,7 @@
 								// 	specialMove = this.tooltips.getMaxMoveFromType(moveType);
 								// }
 								var tooltipArgs = classType + 'move|' + baseMove.id + '|' + pos + '|' + specialMove.id;
+								movebuttons += '<span class="battle-move-slot">';
 								var isDisabled = specialMoves[i].disabled ? 'disabled="disabled"' : '';
 								movebuttons += '<button ' + isDisabled + ' class="type-' + moveType + ' has-tooltip" name="chooseMove" value="' + (i + 1) + '" data-move="' + BattleLog.escapeHTML(specialMoves[i].move) + '" data-target="' + BattleLog.escapeHTML(specialMoves[i].target) + '" data-tooltip="' + BattleLog.escapeHTML(tooltipArgs) + '">';
 								var pp = curActive.moves[i].pp + '/' + curActive.moves[i].maxpp;
@@ -861,7 +866,7 @@
 								} else if (!curActive.moves[i].maxpp) {
 									pp = '&ndash;';
 								}
-								movebuttons += '<span class="move-name">' + BattleLog.escapeHTML(specialMove.name) + '</span><span class="move-metadata"></span><span class="move-footer"><small class="type">' + (moveType ? Dex.types.get(moveType).name : "Unknown") + '</small> <small class="pp">' + pp + '</small></span></button> ';
+								movebuttons += '<span class="move-name">' + BattleLog.escapeHTML(specialMove.name) + '</span><span class="move-metadata"></span><span class="move-footer"><small class="type">' + (moveType ? Dex.types.get(moveType).name : "Unknown") + '</small> <small class="pp">' + pp + '</small></span></button>' + inspectButton(specialMove.name, tooltipArgs);
 							} else {
 								movebuttons += '<button disabled>&nbsp;</button>';
 							}
@@ -934,6 +939,16 @@
 				);
 			}
 		},
+		inspectMove: function (args) {
+			var html = this.tooltips.moveInspectionHTML(args.split('|'));
+			if (!html) return;
+			BattleTooltips.hideTooltip();
+			app.addPopup(Popup, {htmlMessage: '<div class="move-inspection">' + html + '</div>'});
+		},
+		bankedPressureHTML: function (pokemon) {
+			if (pokemon.active || pokemon.fainted || ![1, 2].includes(pokemon.bankedPressure)) return '';
+			return '<small class="bench-pressure">' + (pokemon.bankedPressure === 2 ? 'Pressure ready' : 'Pressure 1/2') + '</small>';
+		},
 		displayParty: function (switchables, trapped) {
 			var party = '';
 			for (var i = 0; i < switchables.length; i++) {
@@ -941,9 +956,9 @@
 				pokemon.name = pokemon.ident.substr(4);
 				var tooltipArgs = 'switchpokemon|' + i;
 				if (pokemon.fainted || i < this.battle.pokemonControlled || this.choice.switchFlags[i] || trapped) {
-					party += '<button class="disabled has-tooltip" name="chooseDisabled" value="' + BattleLog.escapeHTML(pokemon.name) + (pokemon.fainted ? ',fainted' : trapped ? ',trapped' : i < this.battle.nearSide.active.length ? ',active' : '') + '" data-tooltip="' + BattleLog.escapeHTML(tooltipArgs) + '"><span class="picon" style="' + Dex.getPokemonIcon(pokemon) + '"></span>' + BattleLog.escapeHTML(pokemon.name) + (pokemon.hp ? '<span role="img" aria-label="HP ' + pokemon.hp + ' of ' + pokemon.maxhp + '" class="' + pokemon.getHPColorClass() + '"><span style="width:' + Math.max(1, Math.min(100, 100 * pokemon.hp / pokemon.maxhp)) + '%"></span></span>' + (pokemon.status ? '<span class="status ' + pokemon.status + '"></span>' : '') : '') + '</button> ';
+					party += '<button class="disabled has-tooltip" name="chooseDisabled" value="' + BattleLog.escapeHTML(pokemon.name) + (pokemon.fainted ? ',fainted' : trapped ? ',trapped' : i < this.battle.nearSide.active.length ? ',active' : '') + '" data-tooltip="' + BattleLog.escapeHTML(tooltipArgs) + '"><span class="picon" style="' + Dex.getPokemonIcon(pokemon) + '"></span>' + BattleLog.escapeHTML(pokemon.name) + this.bankedPressureHTML(pokemon) + (pokemon.hp ? '<span role="img" aria-label="HP ' + pokemon.hp + ' of ' + pokemon.maxhp + '" class="' + pokemon.getHPColorClass() + '"><span style="width:' + Math.max(1, Math.min(100, 100 * pokemon.hp / pokemon.maxhp)) + '%"></span></span>' + (pokemon.status ? '<span class="status ' + pokemon.status + '"></span>' : '') : '') + '</button> ';
 				} else {
-					party += '<button name="chooseSwitch" value="' + i + '" class="has-tooltip" data-tooltip="' + BattleLog.escapeHTML(tooltipArgs) + '"><span class="picon" style="' + Dex.getPokemonIcon(pokemon) + '"></span>' + BattleLog.escapeHTML(pokemon.name) + '<span role="img" aria-label="HP ' + pokemon.hp + ' of ' + pokemon.maxhp + '" class="' + pokemon.getHPColorClass() + '"><span style="width:' + Math.max(1, Math.min(100, 100 * pokemon.hp / pokemon.maxhp)) + '%"></span></span>' + (pokemon.status ? '<span class="status ' + pokemon.status + '"></span>' : '') + '</button> ';
+					party += '<button name="chooseSwitch" value="' + i + '" class="has-tooltip" data-tooltip="' + BattleLog.escapeHTML(tooltipArgs) + '"><span class="picon" style="' + Dex.getPokemonIcon(pokemon) + '"></span>' + BattleLog.escapeHTML(pokemon.name) + this.bankedPressureHTML(pokemon) + '<span role="img" aria-label="HP ' + pokemon.hp + ' of ' + pokemon.maxhp + '" class="' + pokemon.getHPColorClass() + '"><span style="width:' + Math.max(1, Math.min(100, 100 * pokemon.hp / pokemon.maxhp)) + '%"></span></span>' + (pokemon.status ? '<span class="status ' + pokemon.status + '"></span>' : '') + '</button> ';
 				}
 			}
 			if (this.battle.mySide.ally) party += this.displayAllyParty();
@@ -998,11 +1013,11 @@
 					var pokemon = this.battle.myPokemon[i];
 					var tooltipArgs = 'switchpokemon|' + i;
 					if (pokemon && !pokemon.fainted || this.choice.switchOutFlags[i]) {
-						controls += '<button disabled class="has-tooltip" data-tooltip="' + BattleLog.escapeHTML(tooltipArgs) + '"><span class="picon" style="' + Dex.getPokemonIcon(pokemon) + '"></span>' + BattleLog.escapeHTML(pokemon.name) + (!pokemon.fainted ? '<span role="img" aria-label="HP ' + pokemon.hp + ' of ' + pokemon.maxhp + '" class="' + pokemon.getHPColorClass() + '"><span style="width:' + Math.max(1, Math.min(100, 100 * pokemon.hp / pokemon.maxhp)) + '%"></span></span>' + (pokemon.status ? '<span class="status ' + pokemon.status + '"></span>' : '') : '') + '</button> ';
+						controls += '<button disabled class="has-tooltip" data-tooltip="' + BattleLog.escapeHTML(tooltipArgs) + '"><span class="picon" style="' + Dex.getPokemonIcon(pokemon) + '"></span>' + BattleLog.escapeHTML(pokemon.name) + this.bankedPressureHTML(pokemon) + (!pokemon.fainted ? '<span role="img" aria-label="HP ' + pokemon.hp + ' of ' + pokemon.maxhp + '" class="' + pokemon.getHPColorClass() + '"><span style="width:' + Math.max(1, Math.min(100, 100 * pokemon.hp / pokemon.maxhp)) + '%"></span></span>' + (pokemon.status ? '<span class="status ' + pokemon.status + '"></span>' : '') : '') + '</button> ';
 					} else if (!pokemon) {
 						controls += '<button disabled></button> ';
 					} else {
-						controls += '<button name="chooseSwitchTarget" value="' + i + '" class="has-tooltip" data-tooltip="' + BattleLog.escapeHTML(tooltipArgs) + '"><span class="picon" style="' + Dex.getPokemonIcon(pokemon) + '"></span>' + BattleLog.escapeHTML(pokemon.name) + '<span role="img" aria-label="HP ' + pokemon.hp + ' of ' + pokemon.maxhp + '" class="' + pokemon.getHPColorClass() + '"><span style="width:' + Math.max(0, Math.min(100, 100 * pokemon.hp / pokemon.maxhp)) + '%"></span></span>' + (pokemon.status ? '<span class="status ' + pokemon.status + '"></span>' : '') + '</button> ';
+						controls += '<button name="chooseSwitchTarget" value="' + i + '" class="has-tooltip" data-tooltip="' + BattleLog.escapeHTML(tooltipArgs) + '"><span class="picon" style="' + Dex.getPokemonIcon(pokemon) + '"></span>' + BattleLog.escapeHTML(pokemon.name) + this.bankedPressureHTML(pokemon) + '<span role="img" aria-label="HP ' + pokemon.hp + ' of ' + pokemon.maxhp + '" class="' + pokemon.getHPColorClass() + '"><span style="width:' + Math.max(0, Math.min(100, 100 * pokemon.hp / pokemon.maxhp)) + '%"></span></span>' + (pokemon.status ? '<span class="status ' + pokemon.status + '"></span>' : '') + '</button> ';
 					}
 				}
 				controls += '</div>';
@@ -1038,7 +1053,7 @@
 							switchMenu += '<button name="chooseSwitch" value="' + i + '" class="has-tooltip" data-tooltip="' + BattleLog.escapeHTML(tooltipArgs) + '">';
 						}
 					}
-					switchMenu += '<span class="picon" style="' + Dex.getPokemonIcon(pokemon) + '"></span>' + BattleLog.escapeHTML(pokemon.name) + (!pokemon.fainted ? '<span role="img" aria-label="HP ' + pokemon.hp + ' of ' + pokemon.maxhp + '" class="' + pokemon.getHPColorClass() + '"><span style="width:' + Math.max(1, Math.min(100, 100 * pokemon.hp / pokemon.maxhp)) + '%"></span></span>' + (pokemon.status ? '<span class="status ' + pokemon.status + '"></span>' : '') : '') + '</button> ';
+					switchMenu += '<span class="picon" style="' + Dex.getPokemonIcon(pokemon) + '"></span>' + BattleLog.escapeHTML(pokemon.name) + this.bankedPressureHTML(pokemon) + (!pokemon.fainted ? '<span role="img" aria-label="HP ' + pokemon.hp + ' of ' + pokemon.maxhp + '" class="' + pokemon.getHPColorClass() + '"><span style="width:' + Math.max(1, Math.min(100, 100 * pokemon.hp / pokemon.maxhp)) + '%"></span></span>' + (pokemon.status ? '<span class="status ' + pokemon.status + '"></span>' : '') : '') + '</button> ';
 				}
 
 				var controls = (
@@ -1843,12 +1858,13 @@ BattleRoom.prototype.showPassives = function (pos) {
 		if (min) return min + ' turn' + (min === 1 ? '' : 's');
 		return persistent ? 'Persistent' : 'Active';
 	}
-	function chip(kind, name, time, guide, id) {
+	function chip(kind, name, time, guide, id, destination) {
 		var escape = BattleLog.escapeHTML;
 		return '<' + (guide ? 'button type="button" name="openFieldGuide" value="' + escape(guide) + '" title="Open public field rules"' : 'span') +
 			' class="battle-layer ' + kind + '-layer" data-effect="' + escape(id) + '">' +
 			(kind === 'side' ? '' : '<small>' + kind + '</small>') + '<b>' + escape(name) + '</b>' +
-			(time ? '<span class="effect-turns">' + escape(time) + '</span>' : '') + (id === 'wonderroom' ? '<span>Def ↔ SpD</span>' : '') + '</' + (guide ? 'button' : 'span') + '>';
+			(time ? '<span class="effect-turns">' + escape(time) + '</span>' : '') +
+			(destination ? '<span class="field-return">Returns to ' + escape(destination.replace(/ Terrain$/i, '')) + '</span>' : '') + (id === 'wonderroom' ? '<span>Def ↔ SpD</span>' : '') + '</' + (guide ? 'button' : 'span') + '>';
 	}
 	BattleRoom.prototype.openFieldGuide = function (id) {window.openPublicFieldGuide(id);};
 	BattleRoom.prototype.publicBattleEffectsHTML = function () {
@@ -1868,7 +1884,8 @@ BattleRoom.prototype.showPassives = function (pos) {
 			if (raw === 'wonderroom') name = 'Wonder Room';
 			var garden = /^flowergarden([1-5])$/.exec(raw);
 			if (garden) name = 'Flower Garden (Stage ' + garden[1] + ')';
-			entries.push(chip(aura ? 'aura' : field ? 'field' : 'room', name, duration(battle, state[1], state[2], !!field || aura), guide, raw));
+			var destination = field && battle.fieldReturn && field === battle.fieldReturn.field ? battle.fieldReturn.destination : '';
+			entries.push(chip(aura ? 'aura' : field ? 'field' : 'room', name, duration(battle, state[1], state[2], !!field || aura), guide, raw, destination));
 		});
 		var sides = battle.sides.filter(Boolean).slice().sort(function (a, b) {
 			return Number(a.isFar) - Number(b.isFar) || a.n - b.n;

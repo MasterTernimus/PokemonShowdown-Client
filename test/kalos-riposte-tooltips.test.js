@@ -21,18 +21,18 @@ describe('Mega Greninja battle tooltip and Aegis charge', () => {
 			const charged = tooltip('Water Shuriken');
 			assert.match(charged, /Mist Shuriken/);
 			assert.match(charged, /categories\/Physical\.png/);
-			assert.match(charged, /Base power: 108\b/);
+			assert.match(charged, /Base power: 20 → 108\b/);
 			assert.match(charged, /Aegis Charge/);
 			assert.match(charged, /Following hits vs Target: 36\b/);
 			assert.doesNotMatch(tooltip('Dark Pulse'), /Aegis Charge/);
 			battle.add('|-end|p1a: Greninja|Aegis Charge|[silent]');
 			battle.seekTurn(Infinity);
 			assert(!user.volatiles.aegischarge);
-			assert.match(tooltip('Water Shuriken'), /Base power: 90\b/);
+			assert.match(tooltip('Water Shuriken'), /Base power: 20 → 90\b/);
 			assert.match(tooltip('Water Shuriken'), /Following hits vs Target: 30\b/);
 			own.passives = ['proficient'];
 			const withPassive = tooltip('Water Shuriken');
-			assert.match(withPassive, /Base power: 117\b/);
+			assert.match(withPassive, /Base power: 20 → 117\b/);
 			assert.match(withPassive, /Following hits vs Target: 39\b/);
 		} finally {
 			battle.destroy();

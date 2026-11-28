@@ -4039,6 +4039,17 @@ a.ilink.yours {
 }
 
 .battle-move-grid .move-name { font-size:12px; line-height:14px; min-height:14px; }
+.battle-move-slot { display:flex; min-width:0; }
+.battle-controls .battle-move-grid .battle-move-slot > button:first-child { flex:1 1 0; min-width:0; border-radius:4px 0 0 4px; }
+.ps-room .battle-controls .battle-move-grid button.move-inspect { flex:0 0 32px; width:32px; padding:0; margin:0; border-radius:0 4px 4px 0; font: bold 15px Arial,sans-serif; }
+@media (pointer: coarse) {
+	.ps-room .battle-controls .battle-move-grid button.move-inspect { flex-basis:40px; width:40px; min-height:44px; }
+}
+.move-inspection { max-height:65vh; overflow-y:auto; }
+.move-inspection .tooltip { width:auto; max-width:100%; }
+.bench-pressure { display:block; font-size:11px; line-height:1.2; }
+.battle-layer .field-return { display:block; flex-basis:100%; font-size:12px; }
+.battle-layer:has(.field-return) { flex-wrap:wrap; }
 .battle-move-grid .move-metadata:empty { display:none; }
 .battle-move-grid .move-metadata, .battle-move-grid .gilded-battle-profile { min-height:10px; font-size:10px; line-height:10px; }
 .battle-move-grid .move-footer { line-height:12px; }

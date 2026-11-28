@@ -48,6 +48,15 @@ describe('Selected Mega battle move previews', () => {
 		assert.equal(owner.stats.spa,120);
 		assert.deepEqual(names({}),['Apex Cleave','Dragon Pulse','Earthquake']);
 	});
+	it('explains the selected attacking stat, target and Sharpness power for Fault Cleave', () => {
+		const {user, owner} = setup('Garchomp');
+		const view = BattleTooltips.pendingMegaPokemon(user, owner, 'Garchomp-Mega', {atk:250,spa:100});
+		const html = new BattleTooltips(battle).showMoveTooltip(Dex.moves.get('faultcleave'), 'move', view.pokemon, view.serverPokemon);
+		assert.match(html, /100 → 150/);
+		assert.match(html, /Sharpness/);
+		assert.match(html, /Uses Attack/);
+		assert.match(html, /adjacent/i);
+	});
 	it('uses the private foe memory for a pending Mega Sableye and checks the current matchup', () => {
 		global.BattleTypeChart = require('../play.pokemonshowdown.com/data/typechart').BattleTypeChart;
 		const {user,owner,foe} = setup('Sableye');

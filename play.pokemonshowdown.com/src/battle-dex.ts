@@ -198315,7 +198315,7 @@ const Dex = new class implements ModdedDex {
 	}
 
 	getMegaMoveDetailGroups(options: {base: string, label: string, move: Move}[]) {
-		const groups: {base: string, effect: string, routes: {label: string, stats: string, adaptive: string}[]}[] = [];
+		const groups: {base: string, routes: {label: string, stats: string, adaptive: string, effect: string}[]}[] = [];
 		for (const {base, label, move} of options) {
 			let effect = move.desc || move.shortDesc || '';
 			const adaptive = effect.match(/^Uses the higher of the user's (?:Attack|Defense) and Sp\. Atk\./)?.[0] || '';
@@ -198326,9 +198326,9 @@ const Dex = new class implements ModdedDex {
 			}
 			const stats = [move.type, ...this.getMegaMoveStats(move, true)];
 			if (move.accuracy === true) stats.push('Always hits');
-			let group = groups.find(item => item.base === base && item.effect === effect);
-			if (!group) groups.push(group = {base, effect, routes: []});
-			group.routes.push({label, stats: stats.join(' · '), adaptive});
+			let group = groups.find(item => item.base === base);
+			if (!group) groups.push(group = {base, routes: []});
+			group.routes.push({label, stats: stats.join(' · '), adaptive, effect});
 		}
 		return groups;
 	}

@@ -50,13 +50,13 @@ describe('Mega signature move picker layout', () => {
 		assert.deepEqual(Array.from(options, option => option.move.name).sort(), ['Flare Cannon', 'Mega Sol Cannon']);
 		const groups = picker.Dex.getMegaMoveDetailGroups(options);
 		assert.equal(groups.length, 1);
-		assert.equal(groups[0].effect, 'Fires immediately in sunlight; otherwise charges like Solar Beam.');
+		assert(groups[0].routes.every(route => route.effect === 'Fires immediately in sunlight; otherwise charges like Solar Beam.'));
 		assert.deepEqual(Array.from(groups[0].routes, route => route.stats).sort(), [
 			'Fire · 130 BP · 100% accuracy', 'Grass · 140 BP · 100% accuracy',
 		]);
 		assert(groups[0].routes.every(route => route.adaptive.includes("user's Attack and Sp. Atk")));
 		const bell = picker.Dex.moves.get('Passing Bell');
 		const [conditional] = picker.Dex.getMegaMoveDetailGroups([{base: 'Ominous Wind', move: bell, label: bell.name}]);
-		assert(conditional.effect.includes('105 power against a foe with a disabled move'));
+		assert(conditional.routes[0].effect.includes('105 power against a foe with a disabled move'));
 	});
 });

@@ -14,6 +14,7 @@ await page.evaluate(()=>{document.documentElement.classList.add('dark');Dex.reso
 if (!await page.evaluate(() => typeof BattleScene === 'function')) await page.addScriptTag({url:base+'/js/battle-animations.js'});
 const team=['Togekiss','Scolipede','Lucario','Banette','Typhlosion','Kangaskhan'].map(species=>({species,ability:species==='Togekiss'?'Serene Grace':'No Ability',teraType:'Stellar',moves:species==='Togekiss'?['gildedarrow','timeblade','protect','ancientpower']:['splash']}));
 const b=new Battle({formatid:'gen9nofieldsinglesgame',challengeOptions:{gimmicks:2},p1:{name:'Preview',team},p2:{name:'Opponent',team:[{species:'Mew',ability:'No Ability',moves:['splash']}]}});b.makeChoices('team','team');
+b.p1.pokemon.find(p => p.species.id === 'typhlosion').m.bankedPlasma = 2;
 const roomid='battle-gen9nofieldsinglesgame-1002',request=b.getRequests('move')[0];
 await page.evaluate(({roomid,log,request})=>{app.receive('>'+roomid+'\n|init|battle\n'+log);app.focusRoom(roomid);const r=app.rooms[roomid];r.battle.seekTurn(Infinity);r.receiveRequest(request);r.updateControls();},{roomid,log:b.log.join('\n'),request});
 for(const width of [1280,390]){
@@ -28,6 +29,8 @@ if (width === 390) {
  assert.equal(await controls.locator('[name=chooseSwitch]:visible').count(), 0);
  await controls.getByRole('button', {name:'Switch', exact:true}).tap();
  assert.equal(await controls.locator('[name=chooseSwitch]:visible').count(), 5);
+ assert.equal(await controls.locator('[name=chooseSwitch] .bench-pressure:visible').count(), 1);
+ assert.match(await controls.locator('[name=chooseSwitch]').filter({hasText:'Typhlosion'}).innerText(), /Pressure ready/);
  await controls.screenshot({path:output+'/mobile-battle-switch.png'});
  await controls.getByRole('button', {name:'Attack', exact:true}).tap();
  assert.equal(await controls.locator('[name=chooseMove]:visible').count(), 4);
@@ -45,6 +48,11 @@ await receive(b.getRequests('teampreview')[0]);
 await controls.locator('[name=chooseTeamPreview][value="3"]').tap();
 assert.match(await page.evaluate(()=>window.decisions.at(-1)), /^team 4/);
 await receive(request);
+const decisionsBeforeInfo = await page.evaluate(()=>window.decisions.length);
+await controls.locator('[name=inspectMove]').first().tap();
+assert(await page.locator('.move-inspection:visible').count());
+assert.equal(await page.evaluate(()=>window.decisions.length), decisionsBeforeInfo);
+await page.evaluate(()=>app.closePopup());
 await controls.getByRole('button',{name:'Switch',exact:true}).tap();
 const gestures = await page.context().newCDPSession(page);
 const bench = controls.locator('[name=chooseSwitch][value="3"]');

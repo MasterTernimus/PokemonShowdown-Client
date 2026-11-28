@@ -18,14 +18,15 @@ describe('Bounded presentation audit regressions',()=>{
  it('switch-position HP fills are proportional and expose exact health',()=>{
   const mons=[100,50,1,0].map((hp,i)=>({name:'Slot '+i,hp,maxhp:100,fainted:hp===0,getHPColorClass:()=> 'hpbar'}));
   let html='';
-  method('updateSwitchControls').call({choice:{choices:[],switchOutFlags:[]},request:{side:{}},battle:{pokemonControlled:4,myPokemon:mons,nearSide:{active:[]}},getTimerHTML:()=>'',setControlsHTML:s=>{html=s;}},'switchposition');
+  method('updateSwitchControls').call({bankedPressureHTML:method('bankedPressureHTML'),choice:{choices:[],switchOutFlags:[]},request:{side:{}},battle:{pokemonControlled:4,myPokemon:mons,nearSide:{active:[]}},getTimerHTML:()=>'',setControlsHTML:s=>{html=s;}},'switchposition');
   for(const hp of [100,50,1,0]){assert(html.includes('aria-label="HP '+hp+' of 100"'));assert(html.includes('width:'+hp+'%'));}
   assert(!html.includes('width:92px'));
  });
  it('ordinary switch buttons expose health without relying on color',()=>{
-  const pokemon={ident:'p1: Example',hp:50,maxhp:100,getHPColorClass:()=> 'hpbar-yellow'};
-  const html=method('displayParty').call({battle:{pokemonControlled:0,nearSide:{active:[]},mySide:{}},choice:{switchFlags:[]}},[pokemon],false);
+  const pokemon={ident:'p1: Example',hp:50,maxhp:100,bankedPressure:2,getHPColorClass:()=> 'hpbar-yellow'};
+  const html=method('displayParty').call({bankedPressureHTML:method('bankedPressureHTML'),battle:{pokemonControlled:0,nearSide:{active:[]},mySide:{}},choice:{switchFlags:[]}},[pokemon],false);
   assert(html.includes('role="img" aria-label="HP 50 of 100"'));
   assert(html.includes('width:50%'));
+  assert(html.includes('Pressure ready'));
  });
 });

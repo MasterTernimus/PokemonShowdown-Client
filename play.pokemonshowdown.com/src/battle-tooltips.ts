@@ -421,6 +421,23 @@ class BattleTooltips {
 		BattleTooltips.hideTooltip();
 	}
 
+	moveInspectionHTML(args: string[]) {
+		const type = args[0];
+		const move = this.battle.dex.moves.get(args[1]);
+		const teamIndex = parseInt(args[2], 10);
+		let pokemon = this.battle.nearSide.active[
+			teamIndex + this.battle.pokemonControlled * Math.floor(this.battle.mySide.n / 2)
+		];
+		const gmaxMove = args[3] ? this.battle.dex.moves.get(args[3]) : undefined;
+		if (!pokemon || !this.battle.myPokemon?.[teamIndex]) return '';
+		let serverPokemon = this.battle.myPokemon![teamIndex];
+		if (type === 'move' && args[4]) {
+			const stats = args[5] && args[6] ? {atk: Number(args[5]), spa: Number(args[6])} : undefined;
+			({pokemon, serverPokemon} = BattleTooltips.pendingMegaPokemon(pokemon, serverPokemon, args[4], stats));
+		}
+		return this.showMoveTooltip(move, type, pokemon, serverPokemon, gmaxMove);
+	}
+
 	showTooltip(elem: HTMLElement) {
 		const args = (elem.dataset.tooltip || '').split('|');
 		const [type] = args;
@@ -441,19 +458,8 @@ class BattleTooltips {
 		case 'move':
 		case 'zmove':
 		case 'maxmove': { // move|MOVE|ACTIVEPOKEMON|[GMAXMOVE]
-			let move = this.battle.dex.moves.get(args[1]);
-			let teamIndex = parseInt(args[2], 10);
-			let pokemon = this.battle.nearSide.active[
-				teamIndex + this.battle.pokemonControlled * Math.floor(this.battle.mySide.n / 2)
-			];
-			let gmaxMove = args[3] ? this.battle.dex.moves.get(args[3]) : undefined;
-			if (!pokemon) return false;
-			let serverPokemon = this.battle.myPokemon![teamIndex];
-			if (type === 'move' && args[4]) {
-				const stats = args[5] && args[6] ? {atk: Number(args[5]), spa: Number(args[6])} : undefined;
-				({pokemon, serverPokemon} = BattleTooltips.pendingMegaPokemon(pokemon, serverPokemon, args[4], stats));
-			}
-			buf = this.showMoveTooltip(move, type, pokemon, serverPokemon, gmaxMove);
+			buf = this.moveInspectionHTML(args);
+			if (!buf) return false;
 			break;
 		}
 
@@ -902,6 +908,19 @@ class BattleTooltips {
 		text += splitType ? Array.from(new Set(targetTypes), type => Dex.getTypeIcon(type)).join(' ') :
 			Dex.getTypeIcon(targetTypes[0] || moveType);
 		text += ['superumdmove', 'beasthunter', 'attackorder'].includes(move.id) ? ' Physical / Special</h2>' : ` ${Dex.getCategoryIcon(category)}</h2>`;
+		const targetLabels: Partial<Record<MoveTarget, string>> = {
+			normal: 'One adjacent target', adjacentFoe: 'One adjacent foe', any: 'One target',
+			allAdjacentFoes: 'All adjacent foes', allAdjacent: 'All adjacent Pokémon', self: 'User',
+			adjacentAlly: 'One adjacent ally', adjacentAllyOrSelf: 'User or adjacent ally',
+			allySide: 'Your side', foeSide: 'Opposing side', all: 'Whole field', randomNormal: 'Random adjacent foe',
+		};
+		const targetLabel = targetLabels[move.target];
+		const attackingStat = move.flags.adaptivecategory && category !== 'Status' ?
+			(category === 'Special' ? 'Sp. Atk' : move.overrideOffensiveStat === 'def' ? 'Defense' : 'Attack') : '';
+		if (targetLabel || attackingStat) {
+			text += '<p class="move-target-summary">' + [targetLabel, attackingStat && 'Uses ' + attackingStat]
+				.filter(Boolean).join(' · ') + '</p>';
+		}
 		if (splitType) {
 			typedTargets.forEach((target, i) => {
 				text += '<p>' + Dex.getTypeIcon(targetTypes[i]) + ' vs ' + BattleLog.escapeHTML(target!.name) + '</p>';
@@ -981,7 +1000,9 @@ class BattleTooltips {
 		if (!showingMultipleBasePowers && category !== 'Status') {
 			let activeTarget = foeActive[0] || foeActive[1] || foeActive[2];
 			value = this.getMoveBasePower(move, moveType, value, activeTarget);
-			text += '<p>' + (isZOrMax === 'zmove' ? 'Current power' : 'Base power') + ': ' + value + '</p>';
+			const printed = move.flags.megasignature && move.basePower && value.value !== move.basePower ?
+				move.basePower + ' → ' : '';
+			text += '<p>' + (isZOrMax === 'zmove' ? 'Current power' : 'Base power') + ': ' + printed + value + '</p>';
 		}
 		if (move.id === Dex.megaMoveConversions.watershuriken?.greninjamega && value.tryAbility('Aegis Tide')) {
 			for (const target of foeActive) {
