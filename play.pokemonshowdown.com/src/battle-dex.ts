@@ -155216,7 +155216,7 @@ Object.assign(CUSTOM_MOVE_UPDATES, {
 		"num": 32809,
 		"type": "Ground",
 		"category": "Special",
-		"basePower": 115,
+		"basePower": 100,
 		"accuracy": 100,
 		"critRatio": 1,
 		"pp": 10,

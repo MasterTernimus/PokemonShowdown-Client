@@ -1,8 +1,8 @@
 {
-	"sourceHead": "80e20a4e21f65a5191bc25b33985b4e6c09c3b1b",
+	"sourceHead": "71a1774faf62c35656edcaf925f82eb974d08412",
 	"base": "b39e0566021b8c841fdcbc753a9107eafd5d65d4",
-	"builtSourceFingerprint": "45bc77e24c0981ba49b46c4231023e9ee2eaec823f66e4de8efb577a84844cf3",
-	"sourceDataSHA256": "063cebd733e6ab337cd90af9f7b4482cf668fd0308f826caba3887468f7f6433",
+	"builtSourceFingerprint": "fb82bf7a6afb2a6c1a58f1dac45da5bdf68adfbfb7f89c74c043bc4733b525ef",
+	"sourceDataSHA256": "98c3f85f67a7a697089344d7e6ca05c7eb2d3d61e5d4a8f8f5b3707b53534090",
 	"files": [
 		"data/abilities.ts",
 		"data/ability-components.ts",
@@ -58980,7 +58980,7 @@
 				"num": 32809,
 				"type": "Ground",
 				"category": "Special",
-				"basePower": 115,
+				"basePower": 100,
 				"accuracy": 100,
 				"critRatio": 1,
 				"pp": 10,
