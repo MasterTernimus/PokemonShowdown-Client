@@ -228,18 +228,18 @@ class BattlePanel extends PSRoomPanel<BattleRoom> {
 		if (!battle) return null;
 		const status = (window as any).BattleFieldTooltips?.liveStatus(battle);
 		if (!status) return null;
+		const forecast = status.field && battle.getFieldForecast(status.field.name);
 		return <details class="live-field-panel" aria-label="Current field">
 			<summary>
 				<strong>{status.field?.name || 'Normal field'}</strong>
-				{status.field && <span class="live-field-turns">{status.field.turns}</span>}
+				{status.field && !forecast?.held && <span class="live-field-turns">{status.field.turns}</span>}
 				{status.aura && <span class="live-field-extra">{status.aura.name} ({status.aura.turns})</span>}
 				{status.weather && <span class="live-field-extra">{status.weather.name} ({status.weather.turns})</span>}
 				{status.rooms.map((room: {name: string, turns: string}) =>
 					<span class="live-field-extra" key={room.name}>{room.name} ({room.turns})</span>)}
 			</summary>
 			<div class="live-field-details">
-				{battle.fieldReturn && battle.hasPseudoWeather(battle.fieldReturn.field) &&
-					<p>Returns to {battle.fieldReturn.destination.replace(/ Terrain$/i, '')}</p>}
+				{forecast && <p>{forecast.label}</p>}
 				{status.field?.notes.length ? status.field.notes.map((note: string) => <p>{note}</p>) :
 					<p>No additional field effects.</p>}
 			</div>
@@ -439,7 +439,8 @@ class BattlePanel extends PSRoomPanel<BattleRoom> {
 				}
 			}
 			const projection = form ? '||' + toID(form) + (stats ? '|' + stats.atk + '|' + stats.spa : '') : '';
-			const tooltip = `move|${move.name}|${pokemonIndex}${projection}`;
+			const requestTarget = !form && moveData.target && moveData.target !== move.target ? '|' + moveData.target : '';
+			const tooltip = `move|${move.name}|${pokemonIndex}${projection || requestTarget}`;
 			return <MoveButton battle={battle} cmd={`/move ${i + 1}`} type={moveType} tooltip={tooltip} moveData={moveData}>
 				{calledMove ? `Nature Power → ${calledMove.name}` : move.name}
 			</MoveButton>;

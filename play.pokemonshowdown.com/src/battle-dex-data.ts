@@ -1222,7 +1222,7 @@ interface MoveFlags {
 type MoveTarget = 'normal' | 'normalOrSelf' | 'any' | 'adjacentAlly' | 'adjacentFoe' | 'adjacentAllyOrSelf' | // single-target
 	'self' | 'randomNormal' | // single-target, automatic
 	'allAdjacent' | 'allAdjacentFoes' | // spread
-	'allySide' | 'foeSide' | 'all'; // side and field
+	'allySide' | 'foeSide' | 'all' | 'allies' | 'allyTeam' | 'scripted'; // side, field, and move-specific
 
 class Move implements Effect {
 	// effect

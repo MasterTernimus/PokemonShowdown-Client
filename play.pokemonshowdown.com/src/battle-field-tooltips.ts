@@ -116,7 +116,7 @@ const BattleFieldTooltips = {
 			isGrounded: () => (pokemon ? pokemon.isGrounded(server) : true),
 			hasGravityExemption() {
 				return (
-					this.hasAbility('voidvoice') ||
+					this.hasAbility(['voidvoice', 'execution']) ||
 					(this.species.id === 'gardevoir' && this.hasAbility('voidveil'))
 				);
 			},

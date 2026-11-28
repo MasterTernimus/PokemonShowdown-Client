@@ -825,7 +825,8 @@
 						moveType = this.tooltips.getMoveType(calledMove, typeValueTracker)[0];
 					}
 					var crystalType = this.battle.hasPseudoWeather('Crystal Cavern Terrain') && this.battle.crystalCavernType && move.category !== 'Status' && (moveType === 'Rock' || ['judgement', 'multiattack', 'rockclimb', 'strength', 'prismaticlaser'].includes(move.id)) ? this.battle.crystalCavernType : '';
-					var tooltipArgs = 'move|' + move.name + '|' + pos + previewTooltip;
+					var requestTarget = !previewForm && moveData.target && moveData.target !== move.target ? '|' + moveData.target : '';
+					var tooltipArgs = 'move|' + move.name + '|' + pos + (previewTooltip || requestTarget);
 					movebuttons += '<span class="battle-move-slot">';
 					if (moveData.disabled) {
 						movebuttons += '<button disabled class="has-tooltip" data-tooltip="' + BattleLog.escapeHTML(tooltipArgs) + '">';
@@ -1864,7 +1865,7 @@ BattleRoom.prototype.showPassives = function (pos) {
 			' class="battle-layer ' + kind + '-layer" data-effect="' + escape(id) + '">' +
 			(kind === 'side' ? '' : '<small>' + kind + '</small>') + '<b>' + escape(name) + '</b>' +
 			(time ? '<span class="effect-turns">' + escape(time) + '</span>' : '') +
-			(destination ? '<span class="field-return">Returns to ' + escape(destination.replace(/ Terrain$/i, '')) + '</span>' : '') + (id === 'wonderroom' ? '<span>Def ↔ SpD</span>' : '') + '</' + (guide ? 'button' : 'span') + '>';
+			(destination ? '<span class="field-return">' + escape(destination) + '</span>' : '') + (id === 'wonderroom' ? '<span>Def ↔ SpD</span>' : '') + '</' + (guide ? 'button' : 'span') + '>';
 	}
 	BattleRoom.prototype.openFieldGuide = function (id) {window.openPublicFieldGuide(id);};
 	BattleRoom.prototype.publicBattleEffectsHTML = function () {
@@ -1884,8 +1885,9 @@ BattleRoom.prototype.showPassives = function (pos) {
 			if (raw === 'wonderroom') name = 'Wonder Room';
 			var garden = /^flowergarden([1-5])$/.exec(raw);
 			if (garden) name = 'Flower Garden (Stage ' + garden[1] + ')';
-			var destination = field && battle.fieldReturn && field === battle.fieldReturn.field ? battle.fieldReturn.destination : '';
-			entries.push(chip(aura ? 'aura' : field ? 'field' : 'room', name, duration(battle, state[1], state[2], !!field || aura), guide, raw, destination));
+			var forecast = field && battle.getFieldForecast(state[0]);
+			var timer = forecast && forecast.held ? '' : duration(battle, state[1], state[2], !!field || aura);
+			entries.push(chip(aura ? 'aura' : field ? 'field' : 'room', name, timer, guide, raw, forecast && forecast.label));
 		});
 		var sides = battle.sides.filter(Boolean).slice().sort(function (a, b) {
 			return Number(a.isFar) - Number(b.isFar) || a.n - b.n;

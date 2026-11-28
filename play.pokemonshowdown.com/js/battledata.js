@@ -8915,7 +8915,7 @@ getPassives:function(){return passives.slice();},
 isGrounded:function(){return pokemon?pokemon.isGrounded(server):true;},
 hasGravityExemption:function(){
 return(
-this.hasAbility('voidvoice')||
+this.hasAbility(['voidvoice','execution'])||
 this.species.id==='gardevoir'&&this.hasAbility('voidveil'));
 
 },

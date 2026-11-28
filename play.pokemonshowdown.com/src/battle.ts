@@ -1353,6 +1353,7 @@ export class Battle {
 		this.weatherMinTimeLeft = 0;
 		this.pseudoWeather = [];
 		this.fieldReturn = null;
+		this.fieldTickedTurn = null;
 		this.lastMove = '';
 
 		for (const side of this.sides) {
@@ -1571,6 +1572,7 @@ export class Battle {
 		}
 		for (const pWeather of this.pseudoWeather) {
 			const id = toID(pWeather[0]);
+			if (this.fieldTickedTurn === this.turn && this.getTerrainId(pWeather[0])) continue;
 			const turns = authoritativeRooms[id];
 			if (['trickroom', 'magicroom', 'wonderroom', 'gravity'].includes(id) && Number.isInteger(turns) && turns >= 0) {
 				pWeather[1] = pWeather[2] = turns;
@@ -3309,6 +3311,7 @@ export class Battle {
 			let maxTimeLeft = 0;
 			const flowerGarden = /^flowergarden[1-5]$/.test(effect.id);
 			if (this.getTerrainId(effect.name)) {
+				this.fieldTickedTurn = kwArgs.ticked ? this.turn : null;
 				if (this.gen > 6) maxTimeLeft = 8;
 			}
 			if (kwArgs.aura) {
@@ -3609,11 +3612,23 @@ export class Battle {
 		this.preemptStepQueue.push(command);
 		this.add(command);
 	}
-	fieldReturn: { field: ID, destination: string } | null = null;
+	private fieldTickedTurn: number | null = null;
+	fieldReturn: {field: ID, label: string, held: boolean} | null = null;
+	getFieldForecast(name: string) {
+		return this.fieldReturn && this.getTerrainId(name) === this.fieldReturn.field ? this.fieldReturn : null;
+	}
 	runMajor(args: Args, kwArgs: KWArgs, preempt?: boolean) {
 		switch (args[0]) {
 		case 'fieldreturn':
-			this.fieldReturn = args[2] ? {field: toID(args[1]), destination: args[2]} : null;
+			this.fieldReturn = args[2] ? {
+				field: toID(args[1]), held: args[2] === 'held',
+				label: args[2] === 'held' ? 'Field held in place' : 'Returns to ' + args[2].replace(/ Terrain$/i, ''),
+			} : null;
+			if (kwArgs.turns !== undefined) {
+				const turns = Number(kwArgs.turns);
+				const state = this.pseudoWeather.find(([name]) => this.getFieldForecast(name));
+				if (state && Number.isInteger(turns) && turns >= 0) state[1] = state[2] = turns;
+			}
 			this.subscription?.('callback');
 			break;
 		case 'gimmickcount': {

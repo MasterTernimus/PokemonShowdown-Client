@@ -48,6 +48,48 @@ describe('Selected Mega battle move previews', () => {
 		assert.equal(owner.stats.spa,120);
 		assert.deepEqual(names({}),['Apex Cleave','Dragon Pulse','Earthquake']);
 	});
+	it('shows Expanding Force targets for Psychic Terrain, ordinary ground and Psychic Aura', () => {
+		require('../play.pokemonshowdown.com/js/battle-field-rules');
+		require('../play.pokemonshowdown.com/js/battle-field-tooltips');
+		const {user, owner} = setup('Mew');
+		battle.gameType = 'doubles';
+		const move = Dex.moves.get('expandingforce');
+		const targets = () => new BattleTooltips(battle).showMoveTooltip(move, 'move', user, owner);
+		battle.pseudoWeather = [['Psychic Terrain', 3, 3]];
+		assert.match(targets(), /move-target-summary">All adjacent foes/);
+		owner.item = 'Air Balloon';
+		assert.match(targets(), /move-target-summary">One adjacent target/);
+		battle.pseudoWeather = [['Psychic Aura', 3, 3]];
+		assert.match(targets(), /move-target-summary">All adjacent foes/);
+		battle.pseudoWeather = [];
+		assert.match(targets(), /move-target-summary">One adjacent target/);
+		assert.equal(move.target, 'normal');
+	});
+	it('labels both offensive stats for adaptive attacks without the signature flag', () => {
+		const {user, owner} = setup('Mew');
+		const tips = new BattleTooltips(battle);
+		for (const name of ['Black Testament', 'Photon Geyser', 'Fever Pitch']) {
+			for (const [atk, expected] of [[80, 'Sp. Atk'], [200, 'Attack']]) {
+				owner.stats.atk = atk;
+				assert(tips.showMoveTooltip(Dex.moves.get(name), 'move', user, owner).includes('Uses ' + expected), name);
+			}
+		}
+		assert(!tips.showMoveTooltip(Dex.moves.get('Tackle'), 'move', user, owner).includes('Uses Attack'));
+	});
+	it('renders the matching forecast and held state in the alternate field panel', () => {
+		require('../play.pokemonshowdown.com/js/battle-field-rules');
+		require('../play.pokemonshowdown.com/js/battle-field-tooltips');
+		setup('Mew');
+		battle.pseudoWeather = [['Psychic Terrain', 2, 2]];
+		const panel = () => JSON.stringify(Panel.prototype.renderLiveField.call({props:{room:{battle}}}));
+		battle.runMajor(['fieldreturn', 'psychicterrain', 'Rocky Terrain'], {});
+		assert.match(panel(), /Returns to Rocky/);
+		battle.runMajor(['fieldreturn', 'psychicterrain', 'held'], {});
+		assert.match(panel(), /Field held in place/);
+		assert.doesNotMatch(panel(), /2 turns/);
+		battle.pseudoWeather = [['Cave Terrain', 2, 2]];
+		assert.doesNotMatch(panel(), /Field held in place/);
+	});
 	it('explains the selected attacking stat, target and Sharpness power for Fault Cleave', () => {
 		const {user, owner} = setup('Garchomp');
 		const view = BattleTooltips.pendingMegaPokemon(user, owner, 'Garchomp-Mega', {atk:250,spa:100});

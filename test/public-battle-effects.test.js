@@ -32,6 +32,24 @@ describe('Public battle effects rail', () => {
   assert.match(r.publicBattleEffectsHTML(), /Returns to Dragon.s Den/);
   assert.match(r.publicBattleEffectsHTML(), />2 turns</);
  });
+ it('counts a restored Starlight timer once per turn, with and without upkeep lines', () => {
+  for (const upkeep of [true, false]) {
+   const r = room(['|turn|1', '|-fieldstart|Cave Terrain|[turns] 2', '|turn|2',
+    '|-fieldstart|Starlight Arena Terrain|[turns] 3|[ticked]', ...(upkeep ? ['|upkeep'] : []), '|turn|3']);
+   assert.match(r.publicBattleEffectsHTML(), />3 turns</);
+   battle.add(upkeep ? '|upkeep' : '|turn|4'); battle.seekTurn(Infinity);
+   assert.match(r.publicBattleEffectsHTML(), />2 turns</);
+   battle.destroy(); battle = null;
+  }
+ });
+ it('shows a held field without an expiry promise and restores its timer on release', () => {
+  const r = room(["|-fieldstart|Dragon's Den Terrain|[turns] 1", '|fieldreturn|dragonsdenterrain|held']);
+  assert.match(r.publicBattleEffectsHTML(), /Field held in place/);
+  assert.doesNotMatch(r.publicBattleEffectsHTML(), /Returns to|1 turn/);
+  battle.add('|fieldreturn|dragonsdenterrain|Rocky Terrain|[turns] 1'); battle.seekTurn(Infinity);
+  assert.match(r.publicBattleEffectsHTML(), /Returns to Rocky/);
+  assert.match(r.publicBattleEffectsHTML(), />1 turn</);
+ });
  it('keeps normal Tailwind at four, follows turn counters and removes ended effects', () => {
   const r = room(['|-sidestart|p1: One|move: Tailwind']);
   assert(r.publicBattleEffectsHTML().includes('>4 turns<'));

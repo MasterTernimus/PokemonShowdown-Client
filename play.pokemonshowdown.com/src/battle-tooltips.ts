@@ -428,14 +428,15 @@ class BattleTooltips {
 		let pokemon = this.battle.nearSide.active[
 			teamIndex + this.battle.pokemonControlled * Math.floor(this.battle.mySide.n / 2)
 		];
-		const gmaxMove = args[3] ? this.battle.dex.moves.get(args[3]) : undefined;
+		const gmaxMove = type !== 'move' && args[3] ? this.battle.dex.moves.get(args[3]) : undefined;
+		const requestTarget = type === 'move' && args[3] ? args[3] as MoveTarget : undefined;
 		if (!pokemon || !this.battle.myPokemon?.[teamIndex]) return '';
 		let serverPokemon = this.battle.myPokemon![teamIndex];
 		if (type === 'move' && args[4]) {
 			const stats = args[5] && args[6] ? {atk: Number(args[5]), spa: Number(args[6])} : undefined;
 			({pokemon, serverPokemon} = BattleTooltips.pendingMegaPokemon(pokemon, serverPokemon, args[4], stats));
 		}
-		return this.showMoveTooltip(move, type, pokemon, serverPokemon, gmaxMove);
+		return this.showMoveTooltip(move, type, pokemon, serverPokemon, gmaxMove, requestTarget);
 	}
 
 	showTooltip(elem: HTMLElement) {
@@ -764,7 +765,10 @@ class BattleTooltips {
 			{speciesForme: species.name, ability, baseAbility: ability, volatiles});
 		return {pokemon, serverPokemon};
 	}
-	showMoveTooltip(move: Move, isZOrMax: string, pokemon: Pokemon, serverPokemon: ServerPokemon, gmaxMove?: Move) {
+	showMoveTooltip(
+		move: Move, isZOrMax: string, pokemon: Pokemon, serverPokemon: ServerPokemon,
+		gmaxMove?: Move, requestTarget?: MoveTarget
+	) {
 		if (!isZOrMax && move.id === 'extremespeed' && toID(pokemon.getSpeciesForme()) === 'arcaninebattlebond' &&
 			new ModifiableValue(this.battle, pokemon, serverPokemon).tryAbility('Sacred Bond')) {
 			move = this.battle.dex.moves.get('sacredrush');
@@ -811,10 +815,13 @@ class BattleTooltips {
 		let item = this.battle.dex.items.get(serverPokemon.item);
 
 		let value = new ModifiableValue(this.battle, pokemon, serverPokemon);
-		let [moveType, category] = this.getMoveType(move, value, isZOrMax === 'maxmove' ? gmaxMove || true : undefined);
+		const ordinary = isZOrMax !== 'zmove' && isZOrMax !== 'maxmove';
+		const details: {adaptive?: boolean, target?: MoveTarget} = {};
+		let [moveType, category] = this.getMoveType(move, value, isZOrMax === 'maxmove' ? gmaxMove || true : undefined,
+			ordinary ? details : undefined);
 		if (move.id === 'ancestralwrath' && isZOrMax === 'zmove') moveType = move.type;
 		let categoryDiff = move.category !== category;
-		move = new Move(move.id, '', { ...move, category });
+		move = new Move(move.id, '', { ...move, category, target: requestTarget || details.target || move.target });
 
 		if (isZOrMax === 'zmove') {
 			const zMoveFrom = item.zMoveFrom && (Array.isArray(item.zMoveFrom) ? item.zMoveFrom : [item.zMoveFrom]);
@@ -911,11 +918,12 @@ class BattleTooltips {
 		const targetLabels: Partial<Record<MoveTarget, string>> = {
 			normal: 'One adjacent target', adjacentFoe: 'One adjacent foe', any: 'One target',
 			allAdjacentFoes: 'All adjacent foes', allAdjacent: 'All adjacent Pokémon', self: 'User',
-			adjacentAlly: 'One adjacent ally', adjacentAllyOrSelf: 'User or adjacent ally',
+			adjacentAlly: 'One adjacent ally', adjacentAllyOrSelf: 'User or adjacent ally', normalOrSelf: 'User or adjacent target',
+			allies: 'User and allies', allyTeam: 'Your team', scripted: 'Determined by the move',
 			allySide: 'Your side', foeSide: 'Opposing side', all: 'Whole field', randomNormal: 'Random adjacent foe',
 		};
 		const targetLabel = targetLabels[move.target];
-		const attackingStat = move.flags.adaptivecategory && category !== 'Status' ?
+		const attackingStat = details.adaptive && category !== 'Status' ?
 			(category === 'Special' ? 'Sp. Atk' : move.overrideOffensiveStat === 'def' ? 'Defense' : 'Attack') : '';
 		if (targetLabel || attackingStat) {
 			text += '<p class="move-target-summary">' + [targetLabel, attackingStat && 'Uses ' + attackingStat]
@@ -2116,7 +2124,10 @@ class BattleTooltips {
 		}
 		return bestType;
 	}
-	getMoveType(move: Move, value: ModifiableValue, forMaxMove?: boolean | Move): [TypeName, 'Physical' | 'Special' | 'Status'] {
+	getMoveType(
+		move: Move, value: ModifiableValue, forMaxMove?: boolean | Move,
+		details?: {adaptive?: boolean, target?: MoveTarget}
+	): [TypeName, 'Physical' | 'Special' | 'Status'] {
 		const pokemon = value.pokemon;
 		const serverPokemon = value.serverPokemon;
 
@@ -2284,6 +2295,7 @@ class BattleTooltips {
 		].includes(move.id);
 		if (!forMaxMove && !move.isZ && !move.isMax && move.id === 'wildcharge' &&
 			pokemon.volatiles.stormcharge && value.tryAbility('Storm Memory')) {
+			if (details) details.adaptive = true;
 			const stats = this.calculateModifiedStats(pokemon, serverPokemon, true);
 			category = stats.atk >= stats.spa ? 'Physical' : 'Special';
 		}
@@ -2296,12 +2308,14 @@ class BattleTooltips {
 		].includes(move.id);
 		if (physicalTie || specialTie || (move.id === 'aurasphere' && value.tryAbility('Aura Sight')) || move.id === 'terablast' && pokemon.terastallized ||
 			move.id === 'terastarstorm' && pokemon.terastallized && pokemon.speciesForme === 'Terapagos-Stellar') {
+			if (details) details.adaptive = true;
 			const stats = this.calculateModifiedStats(
 				pokemon, serverPokemon, move.flags.megasignature ? 'mega-signature' : true);
 			category = adaptive ? Dex.getAdaptiveCategory(move, stats) :
 				stats.atk > stats.spa || (physicalTie && stats.atk === stats.spa) ? 'Physical' : 'Special';
 		}
 		if (moveType === 'Grass' && category !== 'Status' && value.tryAbility('Canopy Mastery')) {
+			if (details) details.adaptive = true;
 			const stats = this.calculateModifiedStats(pokemon, serverPokemon, true);
 			category = stats.atk >= stats.spa ? 'Physical' : 'Special';
 		}
@@ -2318,6 +2332,7 @@ class BattleTooltips {
 			serverPokemon
 		);
 		if (fieldPreview) {
+			if (details) details.target = fieldPreview.result.move.target;
 			moveType = fieldPreview.result.move.type;
 			if (move.id === 'terrainpulse' && new Set(fieldPreview.results.map((r: any) => r.move.type)).size > 1) moveType = '???';
 			category = fieldPreview.result.move.category;
