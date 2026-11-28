@@ -133,7 +133,8 @@ describe('Plasma Eruption client parity', () => {
 		assert.equal(power('thunderbolt'), 90);
 		end('Caldera Ready');
 		assert.equal(power('earthpower'), 90);
-		assert.equal(Dex.moves.get('duneecho').basePower, 105);
+		assert.equal(Dex.moves.get('duneecho').basePower, 115);
+		assert.equal(Dex.moves.get('faultcleave').basePower, 100);
 	});
 	it('shows airborne immunity and the Electric bonus, then the landing Fire bonus', () => {
 		start('Plasma Airborne'); assert.equal(p.isGrounded(own), false);
